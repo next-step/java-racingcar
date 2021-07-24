@@ -1,9 +1,7 @@
 package racing.service;
 
-import racing.domain.Cars;
-import racing.domain.Count;
-import racing.domain.MovingStrategyFactory;
-import racing.domain.MovingStrategy;
+import org.jetbrains.annotations.NotNull;
+import racing.domain.*;
 import racing.view.GameResultView;
 
 public class RacingGame {
@@ -16,18 +14,23 @@ public class RacingGame {
         this.count = num;
     }
 
-    public static RacingGame initialize(int carNumber, int countNumber) {
-        return new RacingGame(new Cars(new Count(carNumber)), new Count(countNumber));
+    public static RacingGame initialize(Players players, int countNumber) {
+        return new RacingGame(new Cars(players), new Count(countNumber));
     }
 
     public GameResultView play() {
-        MovingStrategy strategy = MovingStrategyFactory.getRandomStrategy();
+        MovingStrategy strategy = getRandomStrategy();
         int count = this.count.getCount();
         for (int i = 0; i < count; i++) {
             cars.race(strategy);
         }
 
         return new GameResultView(cars, count);
+    }
+
+    @NotNull
+    private MovingStrategy getRandomStrategy() {
+        return MovingStrategyFactory.getRandomStrategy();
     }
 
 }

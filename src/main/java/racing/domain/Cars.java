@@ -1,23 +1,21 @@
 package racing.domain;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(Count count) {
-        this.cars = initCars(count);
+    public Cars(Players players) {
+        this.cars = initCars(players);
     }
 
-    private List<Car> initCars(Count count) {
-        List<Car> list = new ArrayList<>();
-        for (int i = 0; i < count.getCount(); i++) {
-            list.add(new Car());
-        }
-
-        return list;
+    private List<Car> initCars(Players players) {
+        return players.getPlayers().stream()
+                .map(player -> new Car(player, CarPosition.ofStartingPoint()))
+                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
@@ -28,6 +26,10 @@ public class Cars {
         for (Car car : cars) {
             car.race(strategy);
         }
+    }
+
+    public Set<String> getWinnerCarsName() {
+        return new WinnerCars(cars).selectWinnersName();
     }
 
 }
