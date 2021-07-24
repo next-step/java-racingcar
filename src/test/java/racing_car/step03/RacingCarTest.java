@@ -29,15 +29,18 @@ class RacingCarTest {
     @DisplayName("난수 생성 테스트")
     void 난수생성테스트() {
         for (int i = 0; i < 5; i++) {
-           assertThat(race.generateRandomNumber()).isLessThan(10);
+            assertThat(race.generateRandomNumber()).isLessThan(10);
         }
     }
 
     @ParameterizedTest
     @DisplayName("random 값이 4이상일 때 전진하는 테스트")
-    @CsvSource(value = {"3:false", "4:true", "2:false", "6:true", "1:false"}, delimiter = ':')
-    void 전진(int number, boolean move) {
-        Assertions.assertThat(race.move(number)).isEqualTo(move);
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7})
+    void 전진(int number) {
+        for (int i=0; i<7; i++){
+            Car car = new Car();
+            Assertions.assertThat(number).isEqualTo(car.getDrivingDistance());
+        }
     }
 
 //    @Test
