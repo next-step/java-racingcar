@@ -1,6 +1,9 @@
 package racing.view;
 
+import racing.model.CarModel;
 import racing.model.RacingModel;
+
+import java.util.List;
 
 public class RacingView {
 
@@ -11,8 +14,9 @@ public class RacingView {
     }
 
     public void printCarMove(RacingModel racingModel) {
-        for (int carNumber=0; carNumber<racingModel.getRacingModelMap().size(); carNumber++) {
-            printMoveLine(racingModel.getRacingModelMap().get(carNumber));
+        List<CarModel> carList = racingModel.participants();
+        for (CarModel car : carList) {
+            printMoveLine(car.totalDistance());
             System.out.println("");
         }
         System.out.println("");

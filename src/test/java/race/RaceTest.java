@@ -4,25 +4,50 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing.RacingCar;
+import racing.Racing;
+import racing.model.CarModel;
+import racing.model.RacingModel;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RaceTest {
-    RacingCar racingCar = new RacingCar();
+    Racing racing = new Racing();
+
 
     @Test
-    @DisplayName("random value Test")
+    @DisplayName("move condition test")
     void randomValueTest() {
-        assertThat(racingCar.getRandomValue()).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(9);
+        assertThatThrownBy(() -> {
+            racing.moveCondition(10);
+        }).isInstanceOf(IllegalStateException.class);
     }
 
     @ParameterizedTest
-    @DisplayName("move Test")
-    @CsvSource(value = {"9:true", "4:true", "1:false"}, delimiter = ':')
-    void isMoveValueTest(int input, boolean expected) {
-        assertEquals(racingCar.isMove(input), expected);
+    @DisplayName("game end test")
+    @CsvSource(value = {"3:false", "5:true"}, delimiter = ':')
+    void gameEndTest(int input, boolean expected) {
+       RacingModel racingModel = new RacingModel();
+       racingModel.settingGame(3, 5);
+
+       assertThat(racing.game(racingModel, input)).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("car distance check Test")
+    void carDistanceCheckTest() {
+        CarModel car = new CarModel();
+        car.go();
+        assertThat(car.totalDistance()).isEqualTo(1);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"3:false", "5:true"}, delimiter = ':')
+    @DisplayName("car move Test")
+    void carMoveTest(int randomValue, boolean expected) {
+        CarModel car = new CarModel();
+        assertThat(racing.carMove(car, randomValue)).isEqualTo(expected);
+    }
+
 
 }

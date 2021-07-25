@@ -2,27 +2,17 @@ package racing;
 
 import racing.model.RacingModel;
 import racing.view.InputView;
-import racing.view.RacingView;
 
 
 public class RacingApplication {
 
     public static void main(String[] args) {
 
-        RacingModel racingModel = new RacingModel();
         InputView inputView = new InputView();
+        RacingModel racingModel = new RacingModel();
         inputView.inputData(racingModel);
-        racing(racingModel);
+        Racing racing = new Racing();
+        racing.gameStart(racingModel);
     }
 
-    static void racing(RacingModel racingModel) {
-        RacingView racingView = new RacingView();
-        RacingCar racingCar = new RacingCar();
-        int count = 0;
-        while (count < racingModel.getCount()) {
-            racingCar.race(racingModel);
-            racingView.printCarMove(racingModel);
-            count++;
-        }
-    }
 }

@@ -1,28 +1,28 @@
 package racing.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingModel {
-    private Map<Integer, Integer> racingModelMap = new HashMap<>();
-    private int count = 0;
+    private List<CarModel> carList;
+    private int playCount;
 
-    public void setCount(int count) {
-        this.count = count;
-    }
-    public void initRacingModelList(int carSize) {
-        for(int i=0; i<carSize; i++) {
-            racingModelMap.put(i, 0);
+   public void settingGame(int carCount, int playCount) {
+        carList = new ArrayList<>();
+        for(int count=0; count<carCount; count++) {
+            CarModel carModel = new CarModel();
+            carList.add(carModel);
         }
-    }
-    public void setRacingModelMap(int carNumber, int moveCount) {
-        racingModelMap.put(carNumber, moveCount);
-    }
-    public Map<Integer, Integer> getRacingModelMap() {
-        return racingModelMap;
-    }
-    public int getCount() {
-        return count;
+
+        this.playCount = playCount;
     }
 
+
+    public List<CarModel> participants() {
+        return this.carList;
+    }
+
+    public Boolean endGame(int gameCount) {
+        return this.playCount == gameCount ? true : false;
+    }
 }
