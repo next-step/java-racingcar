@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Racing {
 
@@ -49,7 +48,7 @@ public class Racing {
     }
 
     private boolean isMoveAble() {
-        return new Random().nextInt(BOUND_RANDOM_NUMBER) >= MORE_THEN_STANDARD_NUMBER;
+        return RandomGenerate.pick(BOUND_RANDOM_NUMBER, MORE_THEN_STANDARD_NUMBER);
     }
 
     public Car[] getRacingCars() {
