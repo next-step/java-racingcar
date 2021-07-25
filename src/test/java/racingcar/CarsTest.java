@@ -15,13 +15,13 @@ class CarsTest {
         assertThat(cars.countCars()).isEqualTo(3);
     }
 
-    @DisplayName("전진 후 점수가 달라져야한다.")
+    @DisplayName("시도 후 점수가 달라져야한다.")
     @Test
     void getScores() {
         Cars cars = new Cars(3);
         List<Integer> before = cars.getScores();
         for (int i = 0; i < 5; i++) {
-            cars.go();
+            cars.attempt();
         }
         List<Integer> after = cars.getScores();
         assertThat(after).isNotEqualTo(before);

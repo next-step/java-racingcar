@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
+    private static final int GO_CONDITION = 4;
     private final List<Car> cars = new ArrayList<>();
 
     Cars(int number) {
@@ -17,9 +18,12 @@ public class Cars {
         return cars.size();
     }
 
-    public void go() {
+    public void attempt() {
         for (Car car : cars) {
-            car.go();
+            RandomUtil randomUtil = new RandomUtil();
+            if (randomUtil.getRandomInt() > GO_CONDITION) {
+                car.go();
+            }
         }
     }
 
@@ -37,10 +41,7 @@ public class Cars {
         }
 
         void go() {
-            RandomUtil randomUtil = new RandomUtil();
-            if (randomUtil.getRandomInt() > 4) {
-                this.score++;
-            }
+            score++;
         }
 
         int getScore() {
