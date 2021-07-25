@@ -4,11 +4,11 @@ import java.util.Random;
 
 public class RandomNumberGenerator {
 
-    private static final int randomIntBound = 10;
+    private static final int RANDOM_INT_BOUND = 10;
 
     private static RandomNumberGenerator randomNumberGenerator = null;
 
-    private Random random;
+    private final Random random;
 
     private RandomNumberGenerator() {
         this.random = new Random();
@@ -23,6 +23,6 @@ public class RandomNumberGenerator {
     }
 
     public int getRandomInt() {
-        return random.nextInt(randomIntBound);
+        return random.nextInt(RANDOM_INT_BOUND);
     }
 }

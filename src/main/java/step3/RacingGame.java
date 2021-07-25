@@ -50,9 +50,7 @@ public class RacingGame {
     }
 
     private List<Car> createCars(RacingGameConfiguration racingGameConfiguration) {
-        return Stream.generate(Car::new)
-                .limit(racingGameConfiguration.getNumberOfCars())
-                .collect(Collectors.toList());
+        return new CarFactory().createCars(racingGameConfiguration.getNumberOfCars());
     }
 
     private void nextTurn() {

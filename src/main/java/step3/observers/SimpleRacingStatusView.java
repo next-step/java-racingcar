@@ -12,7 +12,7 @@ public class SimpleRacingStatusView implements OutputInterface {
         final int firstTurn = 1;
 
         String outputString = racingGame.getCars().stream().map(Car::getLocation)
-                .map(l -> Stream.generate(() -> "-").limit(l).collect(Collectors.joining()))
+                .map(this::repeatDashBy)
                 .map(s -> s + "\n")
                 .collect(Collectors.joining());
 
@@ -21,5 +21,9 @@ public class SimpleRacingStatusView implements OutputInterface {
         }
 
         System.out.println(outputString);
+    }
+
+    private String repeatDashBy(int n) {
+        return Stream.generate(() -> "-").limit(n).collect(Collectors.joining());
     }
 }
