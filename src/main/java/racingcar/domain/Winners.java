@@ -8,7 +8,7 @@ public class Winners {
     private int winnerPosition;
 
     public Winners(Cars cars) {
-        winnerPosition = 0;
+        winnerPosition = cars.getWinnerPosition();
         getWinners(cars);
     }
 
@@ -22,21 +22,8 @@ public class Winners {
     }
 
     private void getWinners(Cars cars){
-        getWinnerPosition(cars);
         for (Car car : cars.getCars()) {
             addWinner(car);
-        }
-    }
-
-    private void getWinnerPosition(Cars cars) {
-        for (Car car : cars.getCars()) {
-            isMoreThanTempWinnerPosition(car);
-        }
-    }
-
-    private void isMoreThanTempWinnerPosition(Car car){
-        if(car.isMoreThan(winnerPosition)){
-            winnerPosition =  car.getPosition();
         }
     }
 
