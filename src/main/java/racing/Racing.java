@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Racing {
 
+	public static final int RANDOM_VALUE = 10;
 	private final List<Car> cars;
 	private final Random random;
 	private final MessageBox messageBox;
@@ -58,12 +59,16 @@ public class Racing {
 
 	public void carRacing(int tryGameCount) {
 		for (int i = 0; i < tryGameCount; i++) {
-			for (Car car : cars) {
-				int resultRacing = car.carMove(randomValue());
-				maxValueCheck(resultRacing);
-				messageBox.racingResultMessage(car.getCarName(), getRacingResultByString(resultRacing));
-			}
-			messageBox.commonMessageBox("");
+			carsRaceForResult();
+			messageBox.MessageBoxNextLine();
+		}
+	}
+
+	private void carsRaceForResult() {
+		for (Car car : cars) {
+			int resultRacing = car.carMove(randomValue());
+			maxValueCheck(resultRacing);
+			messageBox.racingResultMessage(car.getCarName(), getRacingResultByString(resultRacing));
 		}
 	}
 
@@ -82,7 +87,6 @@ public class Racing {
 	}
 
 	public int randomValue() {
-		int RANDOM_VALUE = 10;
 		return random.nextInt(RANDOM_VALUE);
 	}
 
