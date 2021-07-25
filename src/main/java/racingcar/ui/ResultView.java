@@ -13,16 +13,15 @@ public class ResultView {
     }
 
     public static void showRacingInfo(ArrayList<ArrayList<RacingRecord>> racingHistory) {
-        System.out.println(RESULT_PRE_MESSAGE);
+        System.out.print(RESULT_PRE_MESSAGE);
         for (ArrayList<RacingRecord> records : racingHistory) {
-            System.out.println("=========================");
             for (RacingRecord record : records) {
                 for (int i = 0; i < record.getPosition(); i++) {
                     System.out.print(RACING_DISPLAY);
                 }
                 System.out.println();
             }
+            System.out.println();
         }
     }
-
 }

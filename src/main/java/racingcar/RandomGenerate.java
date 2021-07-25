@@ -7,7 +7,6 @@ public class RandomGenerate {
     private static final Random RANDOM = new Random();
 
     private RandomGenerate() {
-
     }
 
     public static boolean pick(int bound, int condition) {
