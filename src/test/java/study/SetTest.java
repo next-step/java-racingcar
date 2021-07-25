@@ -42,7 +42,7 @@ public class SetTest {
     }
 
     @DisplayName("1,2,3은 true, 4,5는 false를 반환한다.")
-   @ParameterizedTest
+    @ParameterizedTest
     @CsvSource(value = {"1$true", "2$true", "3$true", "4$false", "5$false"}, delimiter = '$')
     void when123ThenTrueAndWhen45ThenFalse(int input, boolean expected) {
         Boolean actualValue = numbers.contains(input);
