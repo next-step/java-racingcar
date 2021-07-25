@@ -1,4 +1,4 @@
-package racing;
+package racing.model;
 
 public class RacingCar {
     private static final int MOVABLE_MIN_NUMBER = 4;

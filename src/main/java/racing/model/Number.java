@@ -1,7 +1,7 @@
-package racing;
+package racing.model;
 
-import static racing.NumberGenerator.MIN_NUMBER;
-import static racing.NumberGenerator.MAX_NUMBER;
+import static racing.model.NumberGenerator.MIN_NUMBER;
+import static racing.model.NumberGenerator.MAX_NUMBER;
 
 public class Number {
     private int number;
