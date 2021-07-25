@@ -48,6 +48,4 @@ public class RaceTest {
         CarModel car = new CarModel();
         assertThat(racing.carMove(car, randomValue)).isEqualTo(expected);
     }
-
-
 }
