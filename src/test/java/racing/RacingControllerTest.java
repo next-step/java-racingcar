@@ -6,17 +6,22 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racing.domain.car.entity.*;
 import racing.domain.car.entity.fake.FakeBasicCar;
+import racing.domain.car.vo.fuel.Fuel;
+import racing.domain.car.vo.fuel.RandomFuel;
+import racing.domain.game.vo.turn.Turns;
 import racing.view.DosResultView;
 import racing.view.FakeInputView;
 import racing.view.InputView;
 
 
-class RacingSolutionTest {
+class RacingControllerTest {
     private static CarsTest carsTest;
+    private static Fuel fuel;
 
     @BeforeAll
     public static void setUp() {
         carsTest = new CarsTest();
+        fuel = new RandomFuel();
     }
 
     @DisplayName("Run Test")
@@ -31,8 +36,9 @@ class RacingSolutionTest {
         // fake car 추가
         for (Car iDreamCar : carsTest.initCars(strFakeCarNames, FakeBasicCar::new))
             cars.add(iDreamCar);
+        Turns turns = new Turns(turnSize);
 
-        InputView inputView = new FakeInputView(cars, turnSize);
+        InputView inputView = new FakeInputView(turns, cars, fuel);
         RacingController racingSolution = new RacingController(
                 inputView, new DosResultView()
         );

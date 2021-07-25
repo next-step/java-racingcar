@@ -2,8 +2,6 @@ package racing.domain.game.vo.turn;
 
 import racing.exception.InvalidInputException;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
