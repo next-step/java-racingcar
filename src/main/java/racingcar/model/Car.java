@@ -7,7 +7,6 @@ import java.util.Random;
 
 public class Car {
     private int position;
-    private MovingStrategy movingStrategy;
 
     private static int INIT_POSITION = 0;
 
@@ -23,18 +22,7 @@ public class Car {
         return this.position;
     }
 
-    public void setMovingStrategy(MovingStrategy movingStrategy) {
-        this.movingStrategy = movingStrategy;
-    }
-
-    public void movable() {
-        move(movingStrategy.isMovable());
-    }
-
-
-    public void move(boolean isMovable) {
-        if (isMovable) {
-            this.position += movingStrategy.move();
-        }
+    public void move(MovingStrategy movingStrategy) {
+        this.position += movingStrategy.move();
     }
 }

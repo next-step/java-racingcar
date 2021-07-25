@@ -19,11 +19,11 @@ public class RacingGameTests {
     void racingHistoryCheckTest(int raceTrialCount) {
         RacingInfo racingInfo = new RacingInfo(3, raceTrialCount);
 
-        Cars cars = Cars.of(racingInfo.numberOfCar, new RandomBoundMovingStrategy());
+        Cars cars = Cars.of(racingInfo.numberOfCar);
 
         RacingGame racingGame = new RacingGame(racingInfo, cars);
 
-        Board board = racingGame.gameStart();
+        Board board = racingGame.gameStart(new RandomBoundMovingStrategy());
 
         assertThat(board.getAllRecords().size()).isEqualTo(raceTrialCount);
     }
@@ -34,11 +34,11 @@ public class RacingGameTests {
     void racingCarsCountCheckTest(int numberOfCar) {
         RacingInfo racingInfo = new RacingInfo(numberOfCar, 1);
 
-        Cars cars = Cars.of(racingInfo.numberOfCar, new RandomBoundMovingStrategy());
+        Cars cars = Cars.of(racingInfo.numberOfCar);
 
         RacingGame racingGame = new RacingGame(racingInfo, cars);
 
-        Board board = racingGame.gameStart();
+        Board board = racingGame.gameStart(new RandomBoundMovingStrategy());
 
         assertThat(board.getAllRecords().get(0).size()).isEqualTo(numberOfCar);
 

@@ -14,10 +14,10 @@ public class RacingCarApplication {
         int raceTrialCount = InputView.getRaceTrialCount();
 
         RacingInfo racingInfo = new RacingInfo(numberOfCar, raceTrialCount);
-        Cars cars = Cars.of(racingInfo.numberOfCar, new RandomBoundMovingStrategy());
+        Cars cars = Cars.of(racingInfo.numberOfCar);
 
         RacingGame racingGame = new RacingGame(racingInfo, cars);
-        Board board = racingGame.gameStart();
+        Board board = racingGame.gameStart(new RandomBoundMovingStrategy());
 
         ResultView.printResult(board);
 

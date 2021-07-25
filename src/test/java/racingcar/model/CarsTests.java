@@ -19,7 +19,7 @@ public class CarsTests {
     @ParameterizedTest
     @CsvSource({"3"})
     void createCarsTest(int numberOfCar) {
-        Cars cars = Cars.of(numberOfCar, new RandomBoundMovingStrategy());
+        Cars cars = Cars.of(numberOfCar);
 
         int actualSize = cars.getCarsCount();
 
@@ -30,7 +30,7 @@ public class CarsTests {
     @ParameterizedTest
     @MethodSource("generateData")
     void getCarsPositionsTest(int numberOfCar, List<Integer> expectedPositions) {
-        Cars cars = Cars.of(numberOfCar, new RandomBoundMovingStrategy());
+        Cars cars = Cars.of(numberOfCar);
 
         List<Integer> actualPositions = cars.getCarsPositions();
 
@@ -39,7 +39,9 @@ public class CarsTests {
 
     static Stream<Arguments> generateData() {
         return Stream.of(
-                Arguments.of(3, Arrays.asList(0, 0, 0))
+                Arguments.of(3, Arrays.asList(0, 0, 0)),
+                Arguments.of(5, Arrays.asList(0, 0, 0, 0, 0)),
+                Arguments.of(7, Arrays.asList(0, 0, 0, 0, 0, 0, 0))
         );
     }
 }
