@@ -3,21 +3,19 @@ package step3.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import step3.runType.TestRunStrategy;
-import step3.ui.InputView;
 
 class CarRacingGameTest {
 
     @ParameterizedTest
     @CsvSource(value = {"3,5,3,5", "5,7,5,7", "100,135,100,135"}, delimiter = ',')
     @DisplayName("테스트 운행시, 입력받은 자동차 대수와 시도회수에 의해 일정한 게임결과를 얻는다. ")
-    void testRacingGamePlay(int carCount, int roundCount,
+    void testRacingGamePlay(String carCount, String roundCount,
         int expectedCarCount, int expectedRoundCount) {
         GameSetting testGameSetting = getTestGameSettingWithCarCountAndRoundCount(
             carCount, roundCount);
@@ -35,11 +33,11 @@ class CarRacingGameTest {
     }
 
 
-    private static GameSetting getTestGameSettingWithCarCountAndRoundCount(int carCount,
-        int roundCount) {
-        Map<String, Integer> userInputs = new HashMap<>();
-        userInputs.put(InputView.CAR_COUNT_KEY, carCount);
-        userInputs.put(InputView.ROUND_COUNT_KEY, roundCount);
+    private static GameSetting getTestGameSettingWithCarCountAndRoundCount(String carCount,
+        String roundCount) {
+        List<String> userInputs = new ArrayList<>();
+        userInputs.add(carCount);
+        userInputs.add(roundCount);
         return new GameSetting(userInputs, new TestRunStrategy());
     }
 }

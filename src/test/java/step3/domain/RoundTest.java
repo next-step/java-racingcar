@@ -2,7 +2,9 @@ package step3.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
@@ -30,21 +32,23 @@ class RoundTest {
 
     private static Stream<Arguments> provideTestGameSettings() {
 
-        GameSetting carCount1Setting = getTestGameSettingWithCarCount(1);
-        GameSetting carCount50Setting = getTestGameSettingWithCarCount(50);
-        GameSetting carCount100Setting = getTestGameSettingWithCarCount(100);
+        GameSetting carCount1Setting = getTestGameSettingWithCarCount("1");
+        GameSetting carCount50Setting = getTestGameSettingWithCarCount("50");
+        GameSetting carCount100Setting = getTestGameSettingWithCarCount("100");
 
         return Stream.of(
-            Arguments.of(carCount1Setting, 1),
-            Arguments.of(carCount50Setting, 50),
-            Arguments.of(carCount100Setting, 100)
+            Arguments.of(carCount1Setting, "1"),
+            Arguments.of(carCount50Setting, "50"),
+            Arguments.of(carCount100Setting, "100")
         );
     }
 
-    private static GameSetting getTestGameSettingWithCarCount(int carCount) {
-        Map<String, Integer> userInputs = new HashMap<>();
-        userInputs.put(InputView.CAR_COUNT_KEY, carCount);
-        userInputs.put(InputView.ROUND_COUNT_KEY, 1);
+    private static GameSetting getTestGameSettingWithCarCount(String testCarCount) {
+        String testRoundCount = "5";
+
+        List<String> userInputs = new ArrayList<>();
+        userInputs.add(testCarCount);
+        userInputs.add(testRoundCount);
         return new GameSetting(userInputs, new TestRunStrategy());
     }
 }

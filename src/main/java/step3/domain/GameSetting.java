@@ -7,13 +7,16 @@ import step3.ui.InputView;
 
 public class GameSetting {
 
+    public static final int CAR_COUNT_INDEX = 0;
+    public static final int ROUND_COUNT_INDEX = 1;
+
     private int carCount;
     private int roundCount;
     private RunStrategy runStrategy;
 
-    public GameSetting(Map<String, Integer> userInputs, RunStrategy runStrategy) {
-        this.carCount = userInputs.get(InputView.CAR_COUNT_KEY);
-        this.roundCount = userInputs.get(InputView.ROUND_COUNT_KEY);
+    public GameSetting(List<String> userInputs, RunStrategy runStrategy) {
+        this.carCount = getInt(userInputs.get(CAR_COUNT_INDEX));
+        this.roundCount = getInt(userInputs.get(ROUND_COUNT_INDEX));
         this.runStrategy = runStrategy;
     }
 
@@ -27,5 +30,9 @@ public class GameSetting {
 
     public RunStrategy getRunStrategy() {
         return runStrategy;
+    }
+
+    private int getInt(String string) {
+        return Integer.parseInt(string);
     }
 }
