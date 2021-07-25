@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars = new ArrayList<>();
@@ -16,6 +17,18 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public String getWinner() {
+        int maxScore = cars.stream()
+                .mapToInt(Car::getScore)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getScore() == maxScore)
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
     }
 
 }

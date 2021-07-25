@@ -9,7 +9,6 @@ import java.util.List;
 public class RacingCarApplication {
 
     public static void main(String[] args) {
-
         InputView inputView = new InputView();
         List<String> carNames = inputView.inputCarNames();
         int numberOfAttempts = inputView.inputNumberOfAttempts();
@@ -22,5 +21,7 @@ public class RacingCarApplication {
             cars.attempt();
             outputView.printStatusFromScores(cars.getCars());
         }
+
+        outputView.printWinner(cars);
     }
 }
