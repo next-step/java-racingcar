@@ -1,3 +1,5 @@
+package stringCalc;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,18 +16,6 @@ public class Calc {
         String operator = values[1];
         return calc(operator, first, second);
     }
-
-    private static String[] getOperators(String[] values) {
-        String operators = "";
-        for (String value : values) {
-            if("+".equals(value)) operators+=value;
-            if("-".equals(value)) operators+=value;
-            if("*".equals(value)) operators+=value;
-            if("/".equals(value)) operators+=value;
-        }
-        return operators.split("");
-    }
-
     private static int calc(String operator, int first, int second) {
         if("+".equals(operator)) {
             return first + second;
