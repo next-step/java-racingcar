@@ -1,10 +1,13 @@
 package racing;
 
-import racing.car.Car;
-import racing.car.Cars;
-import racing.car.Fuel;
+import racing.domain.car.Cars;
+import racing.domain.fuel.Fuel;
+import racing.domain.fuel.RandomFuel;
+import racing.exception.DuplicateKeyException;
+import racing.exception.EmptyCarException;
 import racing.exception.InvalidInputException;
 import racing.view.*;
+
 
 public class RacingSolution {
     public static void main(String[] args) {
@@ -24,27 +27,26 @@ public class RacingSolution {
 
     public void run() {
         try {
-            Cars cars = inputCars();
+            Cars cars = inputView.inputCars();
             int turnSize = inputView.inputTurnSize();
 
             racing(cars, turnSize);
-        } catch (InvalidInputException e) {
-            resultView.printException(e);
-        }
-    }
 
-    private Cars inputCars() {
-        Cars cars = new Cars();
-        int carSize = inputView.inputCarSize();
-        for (int i = 0; i < carSize; i++)
-            cars.add(new Car());
-        return cars;
+            resultView.printWinners(cars);
+        } catch (EmptyCarException | InvalidInputException e) {
+            resultView.printException(e);
+        } catch (IllegalStateException e) {
+            resultView.printException(
+                    new DuplicateKeyException("중복된 자동차 이름이 존재 합니다.")
+            );
+        }
     }
 
     private void racing(Cars cars, int turnSize) {
         resultView.printResultTitle();
+        Fuel randomFuel = new RandomFuel();
         for (int i = 0; i < turnSize; i++) {
-            cars.moveAll(Fuel.RANDOM);
+            cars.moveAll(randomFuel);
 
             resultView.printAllCarLocation(cars);
         }

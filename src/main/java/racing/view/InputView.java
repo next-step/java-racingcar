@@ -1,7 +1,9 @@
 package racing.view;
 
+import racing.domain.car.Cars;
+
 public interface InputView {
-    int inputCarSize();
+    Cars inputCars();
 
     int inputTurnSize();
 }
