@@ -13,4 +13,14 @@ public class CaculatorTest {
         int result = Calculator.calculate("3 + 5");
         assertThat(result).isEqualTo(8);
     }
+
+    @Test
+    @DisplayName("뺄셈 계산을 하는지 테스트")
+    void subtract() {
+        int result = Calculator.calculate("10 - 5");
+        assertThat(result).isEqualTo(5);
+
+        result = Calculator.calculate("3 - 5");
+        assertThat(result).isEqualTo(-2);
+    }
 }
