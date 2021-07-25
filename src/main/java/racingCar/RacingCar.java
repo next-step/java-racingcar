@@ -46,4 +46,24 @@ public class RacingCar {
         return move;
     }
 
+    /**
+     * 준비된 Car 객채들 끼리의 경주를 시작합니다.
+     */
+    public void racingStart(List<Car> cars) {
+        System.out.println("실행 결과");
+        for (int i = 0; i < this.moveCount; i++) {
+            for (Car car : cars ) {
+                int move = getMove();
+                if(move > 3) {
+                    car.setCurrentLocation(car.getCurrentLocation()+move);
+                }
+                for(int j = 0 ; j < car.getCurrentLocation(); j++) {
+                    System.out.printf("-");
+                }
+                System.out.println();
+            }
+            System.out.println();
+        }
+    }
+
 }

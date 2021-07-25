@@ -21,5 +21,9 @@ public class RacingCarPlayMain {
         int carCount = Integer.parseInt(br.readLine());
         System.out.println("시도할 회수는 몇 회 인가요 ?");
         int moveCount = Integer.parseInt(br.readLine());
+
+        RacingCar racingCar = new RacingCar(carCount ,moveCount);
+        racingCar.racingStart(racingCar.readyCar());
+
     }
 }
