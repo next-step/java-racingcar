@@ -23,4 +23,12 @@ class StringCalculatorTest {
 
         assertThat(result).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("나눗셈")
+    public void divide() {
+        int result = sut.calculateAll("6 / 2");
+
+        assertThat(result).isEqualTo(3);
+    }
 }
