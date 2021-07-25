@@ -6,13 +6,27 @@ import step4.view.ToDash;
 public class Car {
     private final int INIT_POSITION = 1;
     private int position;
+    private String name;
 
     public Car() {
-        position = INIT_POSITION;
+        setInitPosition();
+    }
+
+    public Car(String name) {
+        setInitPosition();
+        this.name = name;
     }
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setInitPosition(){
+        this.position = INIT_POSITION;
     }
 
     public void move(int movePoint){
@@ -30,6 +44,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return ToDash.positionToDash(position);
+        return this.getName()+" "+ToDash.positionToDash(position);
     }
 }

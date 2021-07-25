@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Cars {
 
-    private List<Car> cars;
+    private List<Car> carList;
     private MoveStrategy movement;
 
     public Cars(MoveStrategy movement) {
@@ -13,16 +13,24 @@ public class Cars {
     }
 
     public void makeCars(int carCount) {
-        cars = new ArrayList<Car>();
+        carList = new ArrayList<Car>();
 
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+            carList.add(new Car());
         }
     }
 
-    public List<Car> getCars() {
+    public void makeCars(String[] cars) {
+        carList = new ArrayList<Car>();
+
+        for(String name : cars){
+            carList.add(new Car(name));
+        }
+    }
+
+    public List<Car> getCarList() {
         stateCheck();
-        return this.cars;
+        return this.carList;
     }
 
     public void moveCars() {
@@ -31,7 +39,7 @@ public class Cars {
     }
 
     public void stateCheck(){
-        if(cars == null || cars.size() == 0){
+        if(carList == null || carList.size() == 0){
             throw new IllegalStateException("자동차를 먼저 생성해 주세요.");
         }
     }

@@ -17,8 +17,17 @@ public class Race {
         this.size = size;
     }
 
+    public Race(String[] names){
+        cars.makeCars(names);
+        this.size = names.length;
+    }
+
     public static Race of(int size) {
         return new Race(size);
+    }
+
+    public static Race of(String[] names){
+        return new Race(names);
     }
 
     public void doRace(){
@@ -34,9 +43,13 @@ public class Race {
             throw new IllegalStateException("주행할 자동차가 없습니다.");
         }
         List<Integer> result = new ArrayList<>();
-        for (Car car : cars.getCars()) {
+        for (Car car : cars.getCarList()) {
             result.add(car.getPosition());
         }
         return result;
+    }
+
+    public List<Car> getCars() {
+        return cars.getCarList();
     }
 }

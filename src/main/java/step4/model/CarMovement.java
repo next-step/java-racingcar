@@ -6,7 +6,7 @@ public class CarMovement implements MoveStrategy {
     
     @Override
     public void move(Cars cars) {
-        for(Car car:cars.getCars()){
+        for(Car car:cars.getCarList()){
             int movePoint = RandomFactory.getRandomInt(RANDOM_BOUND);
             car.move(movePoint);
         }

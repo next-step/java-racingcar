@@ -12,8 +12,8 @@ public class RacingApp {
     }
 
     private static void startApp() {
-        int carCounts = InputView.inputCountCar();
+        String[] carNames = InputView.inputCountCar();
         int raceTimes = InputView.inputRaceTimes();
-        ResultView.startRace(carCounts,raceTimes);
+        ResultView.startRaceStep4(carNames,raceTimes);
     }
 }
