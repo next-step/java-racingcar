@@ -2,7 +2,6 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars = new ArrayList<>();
@@ -15,13 +14,8 @@ public class Cars {
         cars.forEach(Car::attempt);
     }
 
-    public List<Car> getCars(){
+    public List<Car> getCars() {
         return cars;
     }
 
-//    public List<Integer> getScores() {
-//        return cars.stream()
-//                .map(Car::getScore)
-//                .collect(Collectors.toList());
-//    }
 }
