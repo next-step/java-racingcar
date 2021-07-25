@@ -28,6 +28,15 @@ class RacingCarGameTest {
     }
 
     @RepeatedTest(10)
+    void race() {
+        RacingCarGame.race(racingCars, tryNumber);
+        for (RacingCar racingCar: racingCars) {
+            assertThat(racingCar.getPosition()).isLessThanOrEqualTo(tryNumber);
+            assertThat(racingCar.getPosition()).isGreaterThanOrEqualTo(RacingCar.BASE_POSITION);
+        }
+    }
+
+    @RepeatedTest(10)
     @DisplayName("한 번 경주한 차들의 위치는 0 또는 1임을 확인한다.")
     void raceOneStep() {
         RacingCarGame.raceOneStep(racingCars);
