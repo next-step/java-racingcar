@@ -1,6 +1,5 @@
 package calculator;
 
-import java.util.Optional;
 import java.util.function.BiFunction;
 
 public enum Operator {
@@ -23,21 +22,21 @@ public enum Operator {
         this.bf = bf;
     }
 
-    public static Optional<Operator> of(String symbol) {
-        Operator[] operators = Operator.values();
-        for (Operator operator : operators) {
-            if (operator.getSymbol().equals(symbol)) {
-                return Optional.of(operator);
-            }
-        }
-        return Optional.empty();
-    }
-
     public String getSymbol() {
         return symbol;
     }
 
     public int exec(int num1, int num2) {
         return bf.apply(num1, num2);
+    }
+
+    public static Operator of(String symbol) {
+        Operator[] operators = Operator.values();
+        for (Operator operator : operators) {
+            if(operator.getSymbol().equals(symbol)){
+                return operator;
+            }
+        }
+        return null;
     }
 }

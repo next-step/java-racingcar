@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("문자열 사칙 연산 계산기 테스트")
 class StringCalculatorTest {
@@ -49,20 +49,22 @@ class StringCalculatorTest {
     @Test
     @DisplayName("입력 값이 null 이거나 빈 공백 문자일 때 IllegalArgumentException 발생 ")
     void calculatorEmptyExceptionTest() {
-        assertAll(
-                () -> assertThatIllegalArgumentException().isThrownBy(
-                        () -> stringCalculator.arithmeticOperation(null)
-                ),
-                () -> assertThatIllegalArgumentException().isThrownBy(
-                        () -> stringCalculator.arithmeticOperation("")
-                ),
-                () -> assertThatIllegalArgumentException().isThrownBy(
-                        () -> stringCalculator.arithmeticOperation(" ")
-                ),
-                () -> assertThatIllegalArgumentException().isThrownBy(
-                        () -> stringCalculator.arithmeticOperation("   ")
-                )
-        );
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            stringCalculator.arithmeticOperation(null);
+        });
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            stringCalculator.arithmeticOperation("");
+        });
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            stringCalculator.arithmeticOperation("  ");
+        });
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            stringCalculator.arithmeticOperation(" ");
+        });
     }
 
     @DisplayName("사칙연산 기호가 아닌경우 IllegalArgumentException 발생")
