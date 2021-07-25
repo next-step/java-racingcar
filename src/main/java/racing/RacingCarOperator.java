@@ -1,5 +1,7 @@
 package racing;
 
+import view.ResultView;
+
 import java.util.Random;
 
 public class RacingCarOperator {
@@ -22,7 +24,8 @@ public class RacingCarOperator {
         // 4-2) 시도 횟수가 1이상 일 경우 로직 1단계로 이동.
         while (numOfCycle != 0) {
             MoveCarLocation();
-            ShowCurrentCarLocation();
+            // ShowCurrentCarLocation();
+            ResultView.ShowCurrentCarLocation();
 
             // 4) 시도 횟수 -= 1
             numOfCycle--;
