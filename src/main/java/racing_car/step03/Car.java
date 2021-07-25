@@ -5,9 +5,12 @@ import java.util.List;
 
 public class Car {
     private int drivingDistance;
+    private final int MIN_NUMBER = 4;
 
     public void setDrivingDistance() {
-        drivingDistance++;
+        if (RandomUtil.generateRandomNumber()>=MIN_NUMBER){
+            drivingDistance++;
+        }
     }
 
     public int getDrivingDistance(){

@@ -29,14 +29,6 @@ class RacingCarTest {
     }
 
     @Test
-    @DisplayName("난수 생성 테스트")
-    void 난수생성테스트() {
-        for (int i = 0; i < 5; i++) {
-            assertThat(race.generateRandomNumber()).isLessThan(10);
-        }
-    }
-
-    @Test
     @DisplayName("난수 생성 하기")
     void 난수생성하기(){
         for (int i=0; i< 10; i++){
