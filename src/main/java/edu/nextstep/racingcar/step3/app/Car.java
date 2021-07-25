@@ -2,42 +2,30 @@ package edu.nextstep.racingcar.step3.app;
 
 import edu.nextstep.racingcar.common.BusinessException;
 import edu.nextstep.racingcar.step3.error.CarError;
-import edu.nextstep.racingcar.step3.util.RandomUtils;
 import edu.nextstep.racingcar.step3.util.Randoms;
 
 public class Car implements Vehicle {
 
-    private Integer numberOfRandoms = 10;
-    private Integer threshold = 4;
-    private Randoms randomUtils = new RandomUtils();;
-    private Integer distance = 1;
+    private final int threshold;
+    private final Randoms randoms;
+    private int distance = 1;
 
-    public Car() {
-    }
+    public Car(Integer threshold, Randoms randoms) {
 
-    public Car(Integer numberOfRandoms, Integer threshold) {
+        validate(randoms.getNumberOfRandoms(), threshold);
 
-        if (numberOfRandoms <= threshold) {
-            throw new BusinessException(CarError.INVALID_VALUE_GREAT_THAN_THRESHOLD);
-        }
-
-        this.numberOfRandoms = numberOfRandoms;
+        this.randoms = randoms;
         this.threshold = threshold;
     }
 
-    public Car(Integer numberOfRandoms, Integer threshold, Randoms randomUtils) {
-
+    private void validate(Integer numberOfRandoms, Integer threshold) {
         if (numberOfRandoms <= threshold) {
             throw new BusinessException(CarError.INVALID_VALUE_GREAT_THAN_THRESHOLD);
         }
-
-        this.numberOfRandoms = numberOfRandoms;
-        this.threshold = threshold;
-        this.randomUtils = randomUtils;
     }
 
     public boolean isMove() {
-        Integer randomNumber = randomUtils.getRandomNumber(numberOfRandoms);
+        Integer randomNumber = randoms.getRandomNumber();
         return randomNumber >= threshold;
     }
 
