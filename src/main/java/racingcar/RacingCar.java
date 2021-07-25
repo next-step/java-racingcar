@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 public class RacingCar {
 	public int position;
 	public static final int INITIAL_POSITION = 0;
+	private static final int MOVABLE_MINIMUM_VALUE = 4;
 
 	public RacingCar(int position) {
 		this.position = position;
@@ -18,7 +19,7 @@ public class RacingCar {
 	}
 
 	public boolean isMovable(int randomValue) {
-		return randomValue >= 4;
+		return randomValue >= MOVABLE_MINIMUM_VALUE;
 	}
 
 	public void forward() {
