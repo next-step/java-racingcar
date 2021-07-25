@@ -9,9 +9,12 @@ public class StringCalcurator {
         {
             throw new IllegalArgumentException();
         }
-
         String[] value = s.split(" ");
         String operator = value[1];
+
+        if(!("+".equals(operator) || "-".equals(operator) || "*".equals(operator) || "/".equals(operator))){
+            throw new IllegalArgumentException();
+        }
 
         if("+".equals(operator)){
             return Integer.parseInt(value[0]) + Integer.parseInt(value[2]);

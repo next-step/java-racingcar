@@ -36,8 +36,6 @@ public class StringCalcuratorTest {
         assertThat(result).isEqualTo(5);
     }
 
-    // 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
-
     @DisplayName("입력 값 null 체크")
     @Test
     void 입력_값_null_체크() {
@@ -51,10 +49,11 @@ public class StringCalcuratorTest {
                 .isThrownBy(() -> StringCalcurator.cal(" "));
     }
 
-    // 사칙연산 기호가 아닌 경우 IllegalArgumentException throw
+    @DisplayName("사칙연산 기호 체크")
     @Test
     void 사칙연산_기호_체크() {
-
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(()->StringCalcurator.cal("10 ? 2"));
     }
 
     // 사칙 연산을 모두 포함하는 기능 구현
