@@ -19,6 +19,9 @@ public class StringCalculator {
         if ("-".equals(operator)) {
             return result - operand;
         }
+        if ("*".equals(operator)) {
+            return result * operand;
+        }
         return result / operand;
     }
 }
