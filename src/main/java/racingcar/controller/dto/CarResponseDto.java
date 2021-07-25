@@ -1,6 +1,7 @@
 package racingcar.controller.dto;
 
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.domain.Distance;
 import racingcar.domain.Name;
 
@@ -21,8 +22,9 @@ public class CarResponseDto {
         return new CarResponseDto(car);
     }
 
-    public static List<CarResponseDto> toDtos(List<Car> cars) {
-        return cars.stream()
+    public static List<CarResponseDto> toDtos(Cars cars) {
+        return cars.getCars()
+                .stream()
                 .map(CarResponseDto::toDto)
                 .collect(Collectors.toList());
     }

@@ -10,8 +10,8 @@ public class Car {
         this.distance = Distance.from();
     }
 
-    public void move(final int number) {
-        distance.move(number);
+    public void move(boolean isMove) {
+        distance.move(isMove);
     }
 
     public Distance getDistance() {

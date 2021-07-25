@@ -7,7 +7,7 @@ import racingcar.controller.dto.CarRequestDto;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class RacingGameControllerTest {
+class CarsControllerTest {
 
     @ParameterizedTest
     @CsvSource(value = {"pobi,crong,hounx:asd", "pobi:sd", "crong:"}, delimiter = ':')

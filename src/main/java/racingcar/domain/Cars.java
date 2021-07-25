@@ -1,18 +1,30 @@
 package racingcar.domain;
 
+import racingcar.rules.Rule;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RacingGame {
+public class Cars {
 
     private List<Car> cars;
 
-    public RacingGame(List<String> names) {
+    public Cars(List<String> names) {
         this.cars = initialize(names);
     }
 
-    public List<Car> start() {
-        move();
+    public int size() {
+        return cars.size();
+    }
+
+    public Cars move(Rule rule) {
+        for (Car car : this.cars) {
+            car.move(rule.move());
+        }
+        return this;
+    }
+
+    public List<Car> getCars() {
         return cars;
     }
 
@@ -20,11 +32,5 @@ public class RacingGame {
         return names.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
-    }
-
-    private void move() {
-        for (Car car : this.cars) {
-            car.move((int) (Math.random() * 10));
-        }
     }
 }

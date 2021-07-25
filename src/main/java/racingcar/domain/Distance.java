@@ -12,9 +12,9 @@ public class Distance {
         return new Distance();
     }
 
-    public void move(int number) {
-        if (isRange(number)) {
-            this.value++;
+    public void move(boolean isMove) {
+        if (isMove) {
+            value++;
         }
     }
 
@@ -22,7 +22,5 @@ public class Distance {
         return value;
     }
 
-    private boolean isRange(final int random) {
-        return random >= 4 && random < 10;
-    }
+
 }

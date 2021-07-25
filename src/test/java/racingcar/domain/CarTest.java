@@ -19,19 +19,19 @@ class CarTest {
 
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    @DisplayName("전진 조건이 4~9 사이 정수면 전진해서 상태값 1")
+    @DisplayName("움직일 수 있다.")
     void moveRangeCheckSuccess(int number) {
         Car car = new Car("name");
-        car.move(number);
+        car.move(true);
         assertEquals(car.getDistance().getValue(), 1);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {-100, -1, 0, 1, 2, 3, 10, 100})
-    @DisplayName("전진 조건이 4~9 사이 정수가 아니면 전진안해서 상태값 0")
+    @DisplayName("움직일 수 없다.")
     void moveRangeCheckFail(int number) {
         Car car = new Car("name");
-        car.move(number);
+        car.move(false);
         assertEquals(car.getDistance().getValue(), 0);
     }
 }
