@@ -38,8 +38,8 @@ public class SetTest {
 
     @ParameterizedTest
     @DisplayName("containsFourAndFive")
-    @CsvSource(value = {"1","2","3","4","5"})
+    @CsvSource(value = {"4","5"})
     public void containsFourAndFive(int input) {
-        assertThat(numbers.contains(input)).isTrue();
+        assertThat(numbers.contains(input)).isFalse();
     }
 }
