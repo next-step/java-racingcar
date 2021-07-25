@@ -25,7 +25,7 @@
 ---
 ## todo
 * ~~덧셈~~
-* 뺄셈
+* ~~뺄셈~~
 * 곱셈
 * 나눗셈
 * 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw

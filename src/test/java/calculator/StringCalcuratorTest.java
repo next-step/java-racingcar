@@ -14,8 +14,11 @@ public class StringCalcuratorTest {
         assertThat(result).isEqualTo(5);
     }
 
+    @DisplayName("뺄셈")
     @Test
     void 뺄셈() {
+        int result = StringCalcurator.cal("5 - 2");
+        assertThat(result).isEqualTo(3);
     }
 
     @Test
