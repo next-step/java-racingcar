@@ -5,9 +5,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CarFactory {
-    List<Car> createCarsBy(int numberOfCars) {
-        return Stream.generate(Car::new)
-                .limit(numberOfCars)
+    List<Car> createCarsByName(List<String> carNames) {
+        return carNames.stream()
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 }

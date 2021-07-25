@@ -1,5 +1,6 @@
 package step4;
 
+import step4.observers.RacingStatusWithCarNameView;
 import step4.observers.SimpleRacingStatusView;
 
 public class GameMain {
@@ -7,7 +8,8 @@ public class GameMain {
         RacingGameConfiguration racingGameConfiguration = RacingGameInputView.getRacingGameConfigurationWithPrompt();
 
         RacingGame racingGame = new RacingGame(racingGameConfiguration);
-        racingGame.attach(new SimpleRacingStatusView());
+        // racingGame.attach(new SimpleRacingStatusView());
+        racingGame.attach(new RacingStatusWithCarNameView());
 
         racingGame.startGame();
     }

@@ -7,14 +7,14 @@ import step4.interfaces.OutputInterface;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class SimpleRacingStatusView implements OutputInterface {
+public class RacingStatusWithCarNameView implements OutputInterface {
+
     @Override
     public void output(RacingGame racingGame) {
         final int FIRST_TURN = 1;
 
-        String outputString = racingGame.getCars().stream().map(Car::getLocation)
-                .map(this::repeatDashBy)
-                .map(s -> s + "\n")
+        String outputString = racingGame.getCars().stream()
+                .map(car -> String.format("%s : %s\n", car.getName(), repeatDashBy(car.getLocation())))
                 .collect(Collectors.joining());
 
         if (racingGame.getCurrentTurn() == FIRST_TURN) {

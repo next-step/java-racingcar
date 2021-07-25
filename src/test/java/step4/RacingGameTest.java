@@ -6,19 +6,22 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
-
-    private final int numberOfCars = 100;
-    private final int numberOfTurns = 100;
+    private final int NUMBER_OF_TURNS = 100;
+    private final List<String> carNames = Stream.of("pobi", "crong", "honux").collect(Collectors.toList());
 
     private RacingGame racingGame;
 
     @BeforeEach
     void init() {
-        this.racingGame = new RacingGame(new RacingGameConfiguration(carNames, numberOfCars, numberOfTurns));
+        this.racingGame = new RacingGame(new RacingGameConfiguration(carNames, NUMBER_OF_TURNS));
     }
 
     @Test
@@ -52,9 +55,9 @@ public class RacingGameTest {
         this.racingGame.startGame();
 
         racingGame.getCars()
-                .forEach(car -> assertThat(car.getLocation()).isLessThanOrEqualTo(numberOfTurns));
+                .forEach(car -> assertThat(car.getLocation()).isLessThanOrEqualTo(NUMBER_OF_TURNS));
 
-        assertThat(racingGame.getCurrentTurn()).isEqualTo(numberOfTurns);
+        assertThat(racingGame.getCurrentTurn()).isEqualTo(NUMBER_OF_TURNS);
     }
 
 }

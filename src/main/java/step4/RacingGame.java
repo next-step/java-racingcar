@@ -18,7 +18,7 @@ public class RacingGame {
 
     public RacingGame(RacingGameConfiguration racingGameConfiguration) {
         this.racingGameConfiguration = racingGameConfiguration;
-        this.cars = new CarFactory().createCarsBy(racingGameConfiguration.getNumberOfCars());
+        this.cars = new CarFactory().createCarsByName(racingGameConfiguration.getCarNames());
     }
 
     public void attach(OutputInterface output) {

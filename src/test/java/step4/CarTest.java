@@ -25,6 +25,9 @@ public class CarTest {
     @DisplayName("Car 클래스 생성자 테스트")
     void carTest() {
         assertThat(car.getName()).isEqualTo("Car");
+
+        Car longNameCar = new Car("Caaaaar");
+        assertThat(longNameCar.getName()).isEqualTo("Caaaa");
     }
 
     @Test
