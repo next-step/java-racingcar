@@ -20,6 +20,7 @@ public class Car implements Racer, Comparable<Car> {
     }
 
     public static Car deepCopy(Car car) {
+        Objects.requireNonNull(car);
         return new Car(car.name, car.position);
     }
 
@@ -40,6 +41,7 @@ public class Car implements Racer, Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
+        Objects.requireNonNull(o);
         return this.position - o.position;
     }
 }

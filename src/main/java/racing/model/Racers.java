@@ -3,9 +3,9 @@ package racing.model;
 import racing.strategy.ForwardConditionStrategy;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static java.util.List.copyOf;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.range;
 
 public class Racers<T extends Racer> {
@@ -29,7 +29,10 @@ public class Racers<T extends Racer> {
 
     public void turnAround(ForwardConditionStrategy strategy, List<Racers> resultList) {
         range(0, size()).forEach(i -> turnAround(strategy, i));
-        resultList.add(from(copyOf(racers.stream().map(it -> Car.deepCopy((Car) it)).collect(Collectors.toList()))));
+        List<Car> cars = List.copyOf(racers.stream()
+                                           .map(racer -> Car.deepCopy((Car) racer))
+                                           .collect(toList()));
+        resultList.add(Racers.from(cars));
     }
 
     private void turnAround(ForwardConditionStrategy strategy, int i) {
@@ -49,6 +52,6 @@ public class Racers<T extends Racer> {
                      .filter(car -> car.position() == max)
                      .map(it -> (Car) it)
                      .map(car -> car.name())
-                     .collect(Collectors.joining(", "));
+                     .collect(joining(", "));
     }
 }

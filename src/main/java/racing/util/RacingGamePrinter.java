@@ -5,8 +5,6 @@ import racing.model.Racers;
 
 import java.util.List;
 
-import static java.lang.Math.max;
-
 public class RacingGamePrinter {
     private static final String NEW_LINE = System.lineSeparator();
     private static final String RUN_RESULT = "실행 결과";
@@ -15,11 +13,15 @@ public class RacingGamePrinter {
     private static final String DISPLAY_MARK = "-";
 
     public void print(List<Racers> racers) {
+        System.out.print(buildString(racers));
+    }
+
+    private String buildString(List<Racers> racers) {
         StringBuilder sb = new StringBuilder(RUN_RESULT).append(NEW_LINE);
         for (int i = 0; i < racers.size(); i++) {
             append(racers, sb, i, racers.size());
         }
-        System.out.print(sb);
+        return sb.toString();
     }
 
     private void append(List<Racers> racers, StringBuilder sb, int i, int size) {
@@ -40,7 +42,7 @@ public class RacingGamePrinter {
     }
 
     private void append(StringBuilder sb, int position) {
-        sb.append(DISPLAY_MARK.repeat(max(0, position)));
+        sb.append(DISPLAY_MARK.repeat(position));
     }
 
     private void append(StringBuilder sb, int i, int size, Racers racer) {
