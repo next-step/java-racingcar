@@ -9,6 +9,7 @@ import racingcar.view.ResultView;
 public class RacingGameApplication {
 
     public static void main(String[] args) {
+        String carNames = InputView.getCarNames();
         int numberOfCars = InputView.getNumberOfCars();
         int tryCount = InputView.getTryCount();
 
