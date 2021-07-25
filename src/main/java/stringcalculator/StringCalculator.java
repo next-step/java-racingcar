@@ -22,6 +22,9 @@ public class StringCalculator {
         if ("*".equals(operator)) {
             return result * operand;
         }
-        return result / operand;
+        if ("/".equals(operator)) {
+            return result / operand;
+        }
+        throw new IllegalArgumentException("사칙연산 기호가 아닙니다");
     }
 }
