@@ -3,7 +3,7 @@ package racing;
 import java.util.Scanner;
 
 public class RacingCarInput {
-    public int[] requestInput() throws IllegalArgumentException{
+    public int[] requestInput() {
         int numOfCar;
         int numOfCycle;
 

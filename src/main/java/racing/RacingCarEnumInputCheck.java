@@ -12,7 +12,7 @@ public enum RacingCarEnumInputCheck {
         this.errorMessage = errorMessage;
     }
 
-    public void validInputCheck(int cnt) throws IllegalArgumentException {
+    public void validInputCheck(int cnt) {
         if (0 >= cnt || threthold < cnt ) {
             throw new IllegalArgumentException(errorMessage);
         }
