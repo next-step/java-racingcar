@@ -12,6 +12,10 @@ public enum BasicOperation implements Operation {
     TIMES("*", (x, y) -> x * y),
     DIVIDE("/", (x, y) -> x / y);
 
+    private static final Map<String, Operation> stringToEnum =
+            Stream.of(values()).collect(
+                    Collectors.toMap(Object::toString, e -> e));
+
     private final String symbol;
     private final IntBinaryOperator op;
 
@@ -21,20 +25,16 @@ public enum BasicOperation implements Operation {
     }
 
     @Override
-    public String toString() {
-        return symbol;
-    }
-
-    @Override
     public int apply(int x, int y) {
         return op.applyAsInt(x, y);
     }
 
-    private static final Map<String, Operation> stringToEnum =
-            Stream.of(values()).collect(
-                    Collectors.toMap(Object::toString, e -> e));
-
     public static Optional<Operation> fromString(String symbol) {
         return Optional.ofNullable(stringToEnum.get(symbol));
+    }
+
+    @Override
+    public String toString() {
+        return symbol;
     }
 }
