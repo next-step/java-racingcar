@@ -13,14 +13,14 @@ class CarTest {
     @DisplayName("자동차의 이동 여부 계산 테스트")
     @Test
     void is_move() {
-        Car car = new Car(10, 4, new RandomUtils());
+        Car car = new Car(4, new RandomUtils(10));
         assertThat(car.isMove()).isIn(true, false);
     }
 
     @DisplayName("자동차의 이동 여부 계산 에러 테스트")
     @Test
     void is_move_test_error() {
-        assertThatThrownBy(() -> new Car(10, 10, new RandomUtils()))
+        assertThatThrownBy(() -> new Car(10, new RandomUtils(10)))
                 .isInstanceOf(BusinessException.class);
     }
 }
