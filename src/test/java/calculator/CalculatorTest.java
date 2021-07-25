@@ -12,7 +12,7 @@ public class CalculatorTest {
 	void addition() {
 		CalculatorNumber two = new CalculatorNumber(2);
 		CalculatorNumber three = new CalculatorNumber(3);
-		CalculatorOperator addOperator =  CalculatorOperatorFactory.create(CalculatorOperator.PLUS);
+		CalculatorOperator addOperator =  CalculatorOperator.getCalculatorOperator("+");
 
 		CalculatorNumber result = addOperator.operate(two, three);
 
@@ -24,7 +24,7 @@ public class CalculatorTest {
 	void subtraction() {
 		CalculatorNumber three = new CalculatorNumber(3);
 		CalculatorNumber two = new CalculatorNumber(2);
-		CalculatorOperator subOperator =  CalculatorOperatorFactory.create(CalculatorOperator.MINUS);
+		CalculatorOperator subOperator =  CalculatorOperator.getCalculatorOperator("-");
 
 		CalculatorNumber result = subOperator.operate(three, two);
 
@@ -36,7 +36,7 @@ public class CalculatorTest {
 	void multiplication() {
 		CalculatorNumber three = new CalculatorNumber(3);
 		CalculatorNumber two = new CalculatorNumber(2);
-		CalculatorOperator mulOperator =  CalculatorOperatorFactory.create(CalculatorOperator.MULTIPLY);
+		CalculatorOperator mulOperator =  CalculatorOperator.getCalculatorOperator("*");
 
 		CalculatorNumber result = mulOperator.operate(three, two);
 
@@ -48,7 +48,7 @@ public class CalculatorTest {
 	void division() {
 		CalculatorNumber three = new CalculatorNumber(3);
 		CalculatorNumber two = new CalculatorNumber(2);
-		CalculatorOperator divOperator =  CalculatorOperatorFactory.create(CalculatorOperator.DIVIDE);
+		CalculatorOperator divOperator =  CalculatorOperator.getCalculatorOperator("/");
 
 		CalculatorNumber result = divOperator.operate(three, two);
 
@@ -61,10 +61,10 @@ public class CalculatorTest {
 		CalculatorNumber two = new CalculatorNumber(2);
 		CalculatorNumber three = new CalculatorNumber(3);
 		CalculatorNumber four = new CalculatorNumber(4);
-		CalculatorOperator addOperator =  CalculatorOperatorFactory.create(CalculatorOperator.PLUS);
-		CalculatorOperator subOperator =  CalculatorOperatorFactory.create(CalculatorOperator.MINUS);
-		CalculatorOperator mulOperator =  CalculatorOperatorFactory.create(CalculatorOperator.MULTIPLY);
-		CalculatorOperator divOperator =  CalculatorOperatorFactory.create(CalculatorOperator.DIVIDE);
+		CalculatorOperator addOperator =  CalculatorOperator.getCalculatorOperator("+");
+		CalculatorOperator subOperator =  CalculatorOperator.getCalculatorOperator("-");
+		CalculatorOperator mulOperator =  CalculatorOperator.getCalculatorOperator("*");
+		CalculatorOperator divOperator =  CalculatorOperator.getCalculatorOperator("/");
 
 		// 2 + 3 * 4 / 2 - 2 = 8
 		CalculatorNumber result = subOperator.
