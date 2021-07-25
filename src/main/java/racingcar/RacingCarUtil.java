@@ -3,12 +3,13 @@ package racingcar;
 import java.util.Random;
 
 public class RacingCarUtil {
-	public static final int MIN_VALUE = 0;
-	public static final int MAX_VALUE = 9;
+	public static final int VALUE_RANGE = 10;
 
 	private static Random random = new Random();
 
+	private RacingCarUtil() {}
+
 	public static int generateForwardValue() {
-		return random.nextInt(10);
+		return random.nextInt(VALUE_RANGE);
 	}
 }
