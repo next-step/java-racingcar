@@ -1,20 +1,35 @@
 package Car;
 
-public class Car {
-    String status;
-    int moveCount;
+import java.util.Random;
 
-    public Car() {
-        this.status = "-";
-        this.moveCount = 1;
+public class Car {
+    private int moveCount;
+    private Random random;
+
+    private static final int NUMBER_BOUND = 10;
+    private static final int MIN_MOVE_NUMBER = 4;
+
+    public int getMoveCount() {
+        return moveCount;
     }
 
-    public String getStatus() {
-        return this.status;
+    public Car() {
+        moveCount = 0;
+        random = new Random();
     }
 
     public void move() {
-        this.moveCount++;
-        this.status += "-";
+        int randomNumber = getRandomNumber();
+        if (isMove(randomNumber)) {
+            moveCount++;
+        }
+    }
+
+    private int getRandomNumber() {
+        return random.nextInt(NUMBER_BOUND);
+    }
+
+    private boolean isMove(int randomNumber) {
+        return randomNumber >= MIN_MOVE_NUMBER;
     }
 }
