@@ -1,4 +1,4 @@
-package racing_car.step03;
+package racingcar.step3;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ public class Car {
     private int drivingDistance;
     private final int MIN_NUMBER = 4;
 
-    public void setDrivingDistance() {
-        if (RandomUtil.generateRandomNumber()>=MIN_NUMBER){
+    public void setDrivingDistance(int number) {
+        if (number>=MIN_NUMBER){
             drivingDistance++;
         }
     }
@@ -23,5 +23,8 @@ public class Car {
             cars.add(new Car());
         }
         return cars;
+    }
+    public void move(){
+        setDrivingDistance(RandomUtil.generateRandomNumber());
     }
 }

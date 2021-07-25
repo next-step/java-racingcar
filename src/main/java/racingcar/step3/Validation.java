@@ -1,4 +1,4 @@
-package racing_car.step03;
+package racingcar.step3;
 
 public class Validation {
     public static void inputValidation(int carCount, int tryCount) {

@@ -1,4 +1,4 @@
-package racing_car.step02;
+package racingcar.step2;
 
 public class Calculator {
     int result;
