@@ -1,7 +1,7 @@
 package racingcar.utils;
 
 public class StringUtils {
-    public static String[] inputStrSeperator(String inputStr) {
+    public static String[] inputStringSeperator(String inputStr) {
         return inputStr.split(",");
     }
 }
