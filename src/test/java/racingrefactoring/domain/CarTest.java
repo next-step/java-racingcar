@@ -2,11 +2,10 @@ package racingrefactoring.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
@@ -30,28 +29,20 @@ class CarTest {
 		assertThat(car.isMoved()).isEqualTo(moved);
 	}
 
-	@Test
-	@DisplayName("자동차의 이름이 제한 길이가 5를 초과")
-	void wrong_name_car() throws Exception {
-		//given
-		String longName = "long name";
+	@ParameterizedTest(name = "자동차의 우승 상태 {index} [{arguments}]")
+	@CsvSource(value = {
+			"1,false",
+			"2,true"
+	})
+	@DisplayName("자동차의 우승 상태 확인")
+	void isWinner(int maxMoveCount, boolean isWinner) throws Exception {
+		//when
+		car.moveForward(() -> true);
+		car.moveForward(() -> true);
 
-		//when, then
-		assertThatThrownBy(() -> new Car(longName))
-				.isInstanceOf(CarNameException.class)
-				.hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
+		//then
+		assertThat(car.isWinner(maxMoveCount)).isEqualTo(isWinner);
 
-	}
-
-	@Test
-	@DisplayName("자동차의 이름이 제한 길이가 정상 범위")
-	void right_name_car() throws Exception {
-		//given
-		String shortName = "car";
-
-		//when, then
-		assertThatCode(() -> new Car(shortName))
-				.doesNotThrowAnyException();
 	}
 
 }
