@@ -1,33 +1,31 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.function.IntBinaryOperator;
 
 public enum Operator {
-    ADD("+"){
+    ADD("+") {
         @Override
-        public int execute(int a, int b) {
-            return a + b;
+        public IntBinaryOperator execute() {
+            return Integer::sum;
         }
     },
-    SUB("-"){
+    SUB("-") {
         @Override
-        public int execute(int a, int b) {
-            return a - b;
+        public IntBinaryOperator execute() {
+            return (a, b) -> a - b;
         }
     },
-    MUL("*"){
+    MUL("*") {
         @Override
-        public int execute(int a, int b) {
-            return a * b;
+        public IntBinaryOperator execute() {
+            return (a, b) -> a * b;
         }
     },
-    DIV("/"){
+    DIV("/") {
         @Override
-        public int execute(int a, int b) {
-            if(b == 0){
-                throw new IllegalArgumentException();
-            }
-            return a / b;
+        public IntBinaryOperator execute() {
+            return (a, b) -> a / b;
         }
     };
 
@@ -48,5 +46,5 @@ public enum Operator {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    public abstract int execute(int a, int b);
+    public abstract IntBinaryOperator execute();
 }

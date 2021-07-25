@@ -16,7 +16,10 @@ public class StringCalculator {
         for (int i = 1; i < size - 1; i += 2) {
             operator = Operator.valueOfString(strings.get(i));
             num2 = Integer.parseInt(strings.get(i + 1));
-            answer = operator.execute(answer, num2);
+            if (operator.equals(Operator.DIV) && num2 == 0) {
+                throw new IllegalArgumentException();
+            }
+            answer = operator.execute().applyAsInt(answer, num2);
         }
         return answer;
     }
