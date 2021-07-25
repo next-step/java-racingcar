@@ -1,4 +1,4 @@
-package edu.nextstep.racingcar.step3;
+package edu.nextstep.racingcar.step3.view;
 
 import edu.nextstep.racingcar.step3.app.Vehicle;
 
@@ -7,31 +7,30 @@ import java.util.stream.IntStream;
 
 public class ResultView {
 
-    private final String DISPLAY_TOKEN = "-";
-    private final List<Vehicle> vehicles;
+    private static final String DISPLAY_TOKEN = "-";
+    private static final String NEW_LINE = "\n";
     private final Integer numberOfAttempts;
 
-    public ResultView(List<Vehicle> vehicles, int numberOfAttempts) {
-        this.vehicles = vehicles;
+    public ResultView(int numberOfAttempts) {
         this.numberOfAttempts = numberOfAttempts;
     }
 
-    public void play() {
-        IntStream.range(0, numberOfAttempts).forEach(idx -> attempt());
+    public void play(List<Vehicle> vehicles) {
+        IntStream.range(0, numberOfAttempts).forEach(idx -> attempt(vehicles));
     }
 
-    private void attempt() {
+    private void attempt(List<Vehicle> vehicles) {
         vehicles.forEach(vehicle -> {
             calculateDistance(vehicle);
             printDistance(vehicle);
         });
 
-        System.out.print("\n");
+        System.out.print(NEW_LINE);
     }
 
     private void printDistance(Vehicle vehicle) {
         IntStream.range(0, vehicle.getDistance()).forEach(distanceIdx -> System.out.print(DISPLAY_TOKEN));
-        System.out.print("\n");
+        System.out.print(NEW_LINE);
     }
 
     private void calculateDistance(Vehicle vehicle) {
