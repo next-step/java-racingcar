@@ -9,7 +9,7 @@ public class NumberGenerator {
     private final Random random;
     private Number number;
 
-    NumberGenerator() {
+    public NumberGenerator() {
         random = new Random();
     }
 
