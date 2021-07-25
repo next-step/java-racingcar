@@ -20,6 +20,7 @@ public class Calculator implements CalculatorIntf {
     public int calc(String calcStr) {
 
         int result = 0;
+        Calc calc = new Calc();
 
         calcStrArry = calcStr.split(" ");
 
@@ -31,7 +32,7 @@ public class Calculator implements CalculatorIntf {
                     result = Integer.parseInt(calcStrArry[idx - 1]);
                 }
 
-                result = new Calc(idxStr, result, Integer.parseInt(calcStrArry[idx + 1])).calc();
+                result = calc.calc(idxStr, result, Integer.parseInt(calcStrArry[idx + 1]));
             }
         }
 
