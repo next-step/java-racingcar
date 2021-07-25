@@ -1,6 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -9,6 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.strategy.impl.RandomBoundMovingStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +24,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @CsvSource({"3"})
     void createCarsTest(int numberOfCar) {
-        Cars cars = Cars.of(numberOfCar);
+        Cars cars = Cars.of(numberOfCar, new RandomBoundMovingStrategy());
 
         int actualSize = cars.getCarsCount();
 
@@ -33,7 +35,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @MethodSource("generateData")
     void initialPositionTest(int numberOfCar, List<Integer> expectedPositions) {
-        Cars cars = Cars.of(numberOfCar);
+        Cars cars = Cars.of(numberOfCar, new RandomBoundMovingStrategy());
 
         List<Integer> actualPositions = cars.getCarsPositions();
 
@@ -46,26 +48,22 @@ public class RacingCarTest {
         );
     }
 
-    @DisplayName("4~9 숫자가 발생 했을 때 차가 움직이는지 테스트")
-    @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    void moveCarRangeIsCorrectTest(int actualNumber) {
+    @DisplayName("차가 움직이는 조건 일 때 거리가 증가 했는지 테스트")
+    @Test
+    void carMoveTest() {
         Car car = new Car();
-        car.movable(actualNumber);
-
-        int position = car.getPosition();
-
-        assertThat(position).isEqualTo(1);
+        car.setMovingStrategy(new RandomBoundMovingStrategy());
+        car.move(true);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
 
-    @DisplayName("1~3 숫자가 발생 했을 때 차가 움직이지 않는지 테스트")
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    void moveCarRangeIsInCorrectTest(int actualNumber) {
+    @DisplayName("차가 움직이지 않는 조건 일 때 거리가 증가 하지 않았는지 테스트")
+    @Test
+    void carNotMoveTest() {
         Car car = new Car();
-        car.movable(actualNumber);
-
+        car.setMovingStrategy(new RandomBoundMovingStrategy());
+        car.move(false);
         int position = car.getPosition();
 
         assertThat(position).isEqualTo(0);

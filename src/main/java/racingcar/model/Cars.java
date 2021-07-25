@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.strategy.MovingStrategy;
+import racingcar.strategy.impl.RandomBoundMovingStrategy;
 import racingcar.util.RandomNumberUtils;
 
 import java.util.ArrayList;
@@ -17,11 +19,13 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public static Cars of (int numberOfCar) {
+    public static Cars of (int numberOfCar, MovingStrategy movingStrategy) {
         List<Car> cars = new ArrayList<Car>();
 
         for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
+            Car car = new Car();
+            car.setMovingStrategy(movingStrategy);
+            cars.add(car);
         }
         return Cars.of(cars);
     }
@@ -35,7 +39,8 @@ public class Cars {
     }
 
     public void movable() {
-        cars.forEach(car -> car.movable(RandomNumberUtils.executeRandomNumber()));
+        cars.forEach(car -> car.movable());
+
     }
 
 }

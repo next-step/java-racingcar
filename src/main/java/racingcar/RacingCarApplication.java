@@ -4,6 +4,7 @@ import racingcar.service.RacingGame;
 import racingcar.dto.Board;
 import racingcar.model.Cars;
 import racingcar.dto.RacingInfo;
+import racingcar.strategy.impl.RandomBoundMovingStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -13,7 +14,7 @@ public class RacingCarApplication {
         int raceTrialCount = InputView.getRaceTrialCount();
 
         RacingInfo racingInfo = new RacingInfo(numberOfCar, raceTrialCount);
-        Cars cars = Cars.of(racingInfo.numberOfCar);
+        Cars cars = Cars.of(racingInfo.numberOfCar, new RandomBoundMovingStrategy());
 
         RacingGame racingGame = new RacingGame(racingInfo, cars);
         Board board = racingGame.gameStart();
