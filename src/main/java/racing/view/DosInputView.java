@@ -1,8 +1,12 @@
 package racing.view;
 
-import racing.domain.car.BasicCar;
-import racing.domain.car.Cars;
-import racing.domain.Name;
+import racing.domain.car.entity.BasicCar;
+import racing.domain.car.entity.Car;
+import racing.domain.car.entity.Cars;
+import racing.domain.car.vo.Name;
+import racing.domain.car.vo.fuel.RandomFuel;
+import racing.domain.game.entity.RacingGame;
+import racing.domain.game.vo.turn.Turns;
 import racing.exception.InvalidInputException;
 import util.StringUtils;
 
@@ -38,23 +42,31 @@ public class DosInputView implements InputView {
         return scanner.nextLine();
     }
 
-    @Override
-    public Cars inputCars() {
+
+    // 아래가 리팩토링
+    private Cars inputCars() {
         String strNames = inputLine(INPUT_CAR_NAMES);
         String[] strNameSplitValues = strNames.split(NAME_DELIMITER);
 
         return new Cars(
                 Arrays.stream(strNameSplitValues)
                         .map(Name::new)
-                        .collect(Collectors.toMap(
-                                i -> i, BasicCar::new
-                        ))
+                        .map(BasicCar::new)
+                        .collect(Collectors.toSet())
         );
     }
 
+    public Turns inputTurns() {
+        int turnSize = inputNumber(INPUT_TURN_SIZE);
+
+        return new Turns(turnSize);
+    }
+
     @Override
-    public int inputTurnSize() {
-        return inputNumber(INPUT_TURN_SIZE);
+    public RacingGame inputRacingGame() {
+        Cars cars = inputCars();
+        Turns turns = inputTurns();
+        return new RacingGame(turns, cars, new RandomFuel());
     }
 
     protected enum Text {

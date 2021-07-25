@@ -1,9 +1,8 @@
 package racing.view;
 
-import racing.domain.car.Cars;
+import racing.domain.car.entity.Cars;
+import racing.domain.game.entity.RacingGame;
 
 public interface InputView {
-    Cars inputCars();
-
-    int inputTurnSize();
+    RacingGame inputRacingGame();
 }

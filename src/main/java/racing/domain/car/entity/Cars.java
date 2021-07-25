@@ -7,6 +7,7 @@ import racing.exception.EmptyCarException;
 
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Cars implements Iterable<Car>, Cloneable {
@@ -28,7 +29,7 @@ public class Cars implements Iterable<Car>, Cloneable {
     }
 
     public Cars bestCars() {
-        if (values.isEmpty())
+        if (isEmpty())
             throw new EmptyCarException();
 
         Location bestLocation = bestLocation();
@@ -44,15 +45,34 @@ public class Cars implements Iterable<Car>, Cloneable {
             car.move(fuel);
     }
 
-    /* 아래는 Forward 메소드 */
-    public boolean contains(Car car) {
-        return values.contains(car);
-    }
-
+    /* 테스트가 필요한 Foward 메소드들 */
     public void add(Car car) {
         if (values.contains(car))
             throw new IllegalStateException("중복된 자동차 이름이 존재 합니다.");
         values.add(car);
+    }
+
+    public void addAll(Cars cars) {
+        for (Car iCar : cars)
+            add(iCar);
+    }
+
+    @Override
+    public Object clone() {
+        return new Cars(
+                values.stream()
+                        .map(c -> (Car) c.clone())
+                        .collect(Collectors.toSet())
+        );
+    }
+
+    /* 단순 Forward 메소드들 (테스트 X) */
+    public boolean isEmpty() {
+        return values.isEmpty();
+    }
+
+    public boolean contains(Car car) {
+        return values.contains(car);
     }
 
     public int size() {
@@ -62,14 +82,5 @@ public class Cars implements Iterable<Car>, Cloneable {
     @Override
     public Iterator<Car> iterator() {
         return values.iterator();
-    }
-
-    @Override
-    public Object clone() {
-        return new Cars(
-                values.stream()
-                .map(c -> (Car) c.clone())
-                .collect(Collectors.toSet())
-        );
     }
 }

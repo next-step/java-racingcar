@@ -1,6 +1,7 @@
 package racing.view;
 
-import racing.domain.car.Cars;
+import racing.domain.car.entity.Cars;
+import racing.domain.game.entity.RacingGame;
 
 public class FakeInputView implements InputView {
     private Cars cars;
@@ -11,13 +12,12 @@ public class FakeInputView implements InputView {
         this.turnSize = turnSize;
     }
 
-    @Override
     public Cars inputCars() {
         return cars;
     }
 
     @Override
-    public int inputTurnSize() {
-        return turnSize;
+    public RacingGame inputRacingGame() {
+        return null;
     }
 }

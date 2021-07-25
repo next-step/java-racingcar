@@ -2,9 +2,11 @@ package racing.domain.car.entity;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.domain.car.entity.fake.FakeBasicCar;
 import racing.domain.car.vo.Location;
 import racing.domain.car.vo.Name;
 import racing.domain.car.vo.fuel.BasicFuel;
@@ -12,8 +14,6 @@ import racing.domain.car.vo.fuel.Fuel;
 import racing.domain.car.vo.fuel.RandomFuel;
 
 import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -41,9 +41,8 @@ public class CarsTest {
         return new Cars(
                 Arrays.stream(strNameSplitValues)
                         .map(Name::new)
-                        .collect(Collectors.toMap(
-                                i -> i, carCtor
-                        ))
+                        .map(carCtor)
+                        .collect(Collectors.toSet())
         );
     }
 
@@ -62,49 +61,61 @@ public class CarsTest {
         return builder.toString();
     }
 
+    @DisplayName("Car ctor (인자 없음) 테스트")
+    @Test
+    public void ctorTest() {
+        assertThat(new Cars().isEmpty())
+                .isTrue();
+    }
+
     @ValueSource(ints = {
             10, 100, 1000
     })
-    @DisplayName("Car Add Test")
+    @DisplayName("Car ctor (Set 전달) 테스트")
+    @ParameterizedTest
+    public void ctorTest(int size) {
+        Cars srcCars = initCars(
+                sizeToNames(size),
+                BasicCar::new
+        );
+
+        assertThat(srcCars.size())
+                .isEqualTo(size);
+    }
+
+    @ValueSource(ints = {
+            10, 100, 1000
+    })
+    @DisplayName("Car Add 테스트")
     @ParameterizedTest
     public void addTest(int size) {
-        Cars cars = initCars(
-                sizeToNames(size), BasicCar::new
+        Cars srcCars = initCars(
+                sizeToNames(size),
+                BasicCar::new
         );
+        Cars cars = new Cars();
+        for (Car iCar : srcCars)
+            cars.add(iCar);
 
         assertThat(cars.size())
                 .isEqualTo(size);
     }
 
-    // cars.iterator().hasNext() 를 이용해서 테스트를 만들어보면 어떨까요? :)
-    @ValueSource(ints = { 1, 100, 1000 })
-    @DisplayName("Car Iterator Test With For")
+    @ValueSource(ints = {
+            10, 100, 1000
+    })
+    @DisplayName("Car Add All 테스트")
     @ParameterizedTest
-    public void carIteratorForTest(int size) {
-        Cars cars = initCars(
-                sizeToNames(size), BasicCar::new
+    public void addAllTest(int size) {
+        Cars srcCars = initCars(
+                sizeToNames(size),
+                BasicCar::new
         );
+        Cars cars = new Cars();
+        cars.addAll(srcCars);
 
-        Iterator<Car> iterator = cars.iterator();
-        for (int i = 0; i < size; i++) {
-            iterator.next();
-        }
-        assertThat(iterator.hasNext())
-                .isEqualTo(false);
-    }
-
-    @ValueSource(ints = { 1, 100, 1000 })
-    @DisplayName("Car Test With While")
-    @ParameterizedTest
-    public void carIteratorWhileTest(int size) {
-        Cars cars = initCars(
-                sizeToNames(size), BasicCar::new
-        );
-
-        Iterator<Car> iterator = cars.iterator();
-        while (iterator.hasNext()) {
-            iterator.next();
-        }
+        assertThat(cars.size())
+                .isEqualTo(size);
     }
 
     // 요구사항 "주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다." 에 대한 테스트를 추가 해보면 어떨까요?
@@ -142,63 +153,91 @@ public class CarsTest {
         }
     }
 
-    @ValueSource(strings = "A|AA|AAA")
-    @ParameterizedTest
-    public void addTest(String strNames) {
-        initCars(strNames, BasicCar::new);
+    @Test
+    public void addTest() {
+        Cars cars = new Cars();
+        cars.add(
+                new BasicCar(
+                        new Name("AAA1")
+                )
+        );
+        cars.add(
+                new BasicCar(
+                        new Name("AAA2")
+                )
+        );
+        cars.add(
+                new BasicCar(
+                        new Name("AAA3")
+                )
+        );
     }
 
-    @ValueSource(strings = "AA|AA|AAA")
-    @ParameterizedTest
-    public void addTest_IllegalStateException(String strNames) {
+    @Test
+    public void addTest_IllegalStateException() {
         assertThatThrownBy(() -> {
             Cars cars = new Cars();
-            String[] splitNames = strNames.split(NAME_DELIMITER);
-            List<Car> carList = Arrays.stream(splitNames)
-                    .map(Name::new)
-                    .map(BasicCar::new)
-                    .collect(Collectors.toList());
-            for (Car iCar : carList) {
-                cars.add(iCar);
-            }
+            cars.add(
+                    new BasicCar(
+                            new Name("AAA")
+                    )
+            );
+            cars.add(
+                    new BasicCar(
+                            new Name("AAA")
+                    )
+            );
+            cars.add(
+                    new BasicCar(
+                            new Name("AAA")
+                    )
+            );
         }).isInstanceOf(IllegalStateException.class);
     }
 
     @DisplayName("bestCar Test")
     @CsvSource({
-            "A|B|C,D,D,100000",
-            "A|B|C,D|E,D|E,100000",
-            "A|B|C|D|E|F,G|P|Q,G|P|Q,1000000"
+            "A|B|C,D,100000",
+            "A|B|C,D|E,100000",
+            "A|B|C|D|E|F,G|P|Q,1000000"
     })
     @ParameterizedTest
-    public void bestCarsTest(String strBasicCarNames, String strFakeCarNames, String strWinnerNames, int turnSize) {
+    public void bestCarsTest(String strBasicCarNames, String strFakeCarName, int turnSize) {
         Cars cars = initCars(strBasicCarNames, BasicCar::new);
-        // fake car 추가
-        for (Car iDreamCar : initCars(strFakeCarNames, FakeCar::new))
-            cars.add(iDreamCar);
-
-        List<Name> winnerNames = Arrays.stream(strWinnerNames.split(NAME_DELIMITER))
-                .map(Name::new)
-                .collect(Collectors.toList());
+        Cars fakeCars = initCars(strFakeCarName, FakeBasicCar::new);
+        cars.addAll(fakeCars);
 
         // 이동
-        for(Car iCar : cars)
-            moveCars(iCar, turnSize, randomFuel);
+        for (int i = 0; i < turnSize; i++)
+            cars.moveAll(randomFuel);
 
         Cars winners = cars.bestCars();
-        for(Name iName : winnerNames) {
-            assertThat(winners.containsName(iName))
+        for(Car iFakeCar : fakeCars) {
+            assertThat(winners.contains(iFakeCar))
                     .withFailMessage("예상한 우승자가 포함되어 있지 않습니다.")
                     .isTrue();
         }
-        assertThat(winners.size() == winnerNames.size())
+        assertThat(winners.size() == fakeCars.size())
                 .withFailMessage("우승자의 수가 예상한 수와 다릅니다.")
                 .isTrue();
     }
 
-    private void moveCars(Car car, int turnSize, Fuel fuel) {
-        for (int i = 0; i < turnSize; i++) {
-            car.move(fuel);
-        }
+    @DisplayName("Deep Copy 테스트")
+    @Test
+    public void cloneTest() {
+        Location resultLocation = new Location(100);
+        Fuel randomFuel = new RandomFuel();
+
+        Cars cars = initCars(sizeToNames(1), FakeBasicCar::new);
+        Cars cloneCars = (Cars) cars.clone();
+
+        cloneCars.moveAll(randomFuel);
+
+        assertThat(cars.iterator().next().checkLocation(resultLocation))
+                .withFailMessage("원본의 값도 같이 변경됨")
+                .isFalse();
+        assertThat(cloneCars.iterator().next().checkLocation(resultLocation))
+                .withFailMessage("복사된 자동차가 움직이지 못함")
+                .isTrue();
     }
 }
