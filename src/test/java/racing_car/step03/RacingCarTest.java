@@ -37,6 +37,14 @@ class RacingCarTest {
     }
 
     @Test
+    @DisplayName("난수 생성 하기")
+    void 난수생성하기(){
+        for (int i=0; i< 10; i++){
+            assertThat(RandomUtil.generateRandomNumber()).isBetween(0,9);
+        }
+    }
+
+    @Test
     @DisplayName("Car 전진 테스트 ")
     void 자동차전진() {
         car.setDrivingDistance();
