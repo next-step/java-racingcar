@@ -3,8 +3,8 @@ package step2;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.BinaryOperator;
 import java.util.function.Function;
+import java.util.function.IntBinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -25,20 +25,21 @@ public enum OperatorType {
 
     private String symbol;
 
-    private BinaryOperator<Integer> operator;
+    private IntBinaryOperator operator;
 
-    OperatorType(String symbol, BinaryOperator<Integer> operator) {
+    OperatorType(String symbol, IntBinaryOperator operator) {
         this.symbol = symbol;
         this.operator = operator;
     }
 
-    public static OperatorType find(String operator) {
-        return Optional.ofNullable(operatorTypeMap.get(operator))
-                .orElseThrow(IllegalArgumentException::new);
+    public static int operate(int first, int second, String operator) {
+        OperatorType operatorType = find(operator);
+        return operatorType.operator.applyAsInt(first, second);
     }
 
-    public int operate(int first, int second) {
-        return operator.apply(first, second);
+    static OperatorType find(String operator) {
+        return Optional.ofNullable(operatorTypeMap.get(operator))
+                .orElseThrow(() -> new IllegalArgumentException("Operator를 찾을 수 없습니다."));
     }
 
     public String getSymbol() {
