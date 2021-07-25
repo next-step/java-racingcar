@@ -1,13 +1,13 @@
 package stringcalculator;
 
 public class DivideOperator implements Operator {
-    private static final String symbol = "/";
-    private static final DivideOperator instance = new DivideOperator();
+    private static final String SYMBOL = "/";
+    private static final DivideOperator INSTANCE = new DivideOperator();
 
     private DivideOperator() {}
 
     public static Operator getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
@@ -17,6 +17,6 @@ public class DivideOperator implements Operator {
 
     @Override
     public boolean match(String symbol) {
-        return DivideOperator.symbol.equals(symbol);
+        return DivideOperator.SYMBOL.equals(symbol);
     }
 }

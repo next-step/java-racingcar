@@ -1,15 +1,21 @@
 package stringcalculator;
 
+import javafx.util.Pair;
+
 public class StringCalculator {
-    public int calculateAll(String input) {
+    public int calculate(String input) {
         validate(input);
+        InputParser parser = new InputParser(input);
+        return calculateAll(parser);
+    }
 
-        String[] args = input.split(" ");
+    private int calculateAll(InputParser parser) {
+        int result = 0;
+        for (Pair<Operator, Integer> pair : parser) {
+            Operator operator = pair.getKey();
+            Integer operand = pair.getValue();
 
-        int result = Integer.parseInt(args[0]);
-        for (int i = 1; i < args.length; i += 2) {
-            Operator operator = OperatorFactory.create(args[i]);
-            result = operator.calculate(result, Integer.parseInt(args[i + 1]));
+            result = operator.calculate(result, operand);
         }
 
         return result;

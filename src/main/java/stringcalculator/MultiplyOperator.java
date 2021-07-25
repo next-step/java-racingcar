@@ -1,13 +1,13 @@
 package stringcalculator;
 
 public class MultiplyOperator implements Operator {
-    private static final String symbol = "*";
-    private static final MultiplyOperator instance = new MultiplyOperator();
+    private static final String SYMBOL = "*";
+    private static final MultiplyOperator INSTANCE = new MultiplyOperator();
 
     private MultiplyOperator() {}
 
     public static Operator getInstance() {
-        return instance;
+        return INSTANCE;
     }
     @Override
     public int calculate(int x, int y) {
@@ -16,6 +16,6 @@ public class MultiplyOperator implements Operator {
 
     @Override
     public boolean match(String symbol) {
-        return MultiplyOperator.symbol.equals(symbol);
+        return MultiplyOperator.SYMBOL.equals(symbol);
     }
 }

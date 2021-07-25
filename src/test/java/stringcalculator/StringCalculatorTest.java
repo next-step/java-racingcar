@@ -15,7 +15,7 @@ class StringCalculatorTest {
     @Test
     @DisplayName("덧셈")
     public void plus() {
-        int result = sut.calculateAll("1 + 2");
+        int result = sut.calculate("1 + 2");
 
         assertThat(result).isEqualTo(3);
     }
@@ -23,7 +23,7 @@ class StringCalculatorTest {
     @Test
     @DisplayName("뺄셈")
     public void minus() {
-        int result = sut.calculateAll("3 - 1");
+        int result = sut.calculate("3 - 1");
 
         assertThat(result).isEqualTo(2);
     }
@@ -31,7 +31,7 @@ class StringCalculatorTest {
     @Test
     @DisplayName("나눗셈")
     public void divide() {
-        int result = sut.calculateAll("6 / 2");
+        int result = sut.calculate("6 / 2");
 
         assertThat(result).isEqualTo(3);
     }
@@ -39,7 +39,7 @@ class StringCalculatorTest {
     @Test
     @DisplayName("곱셈")
     public void multiply() {
-        int result = sut.calculateAll("2 * 4");
+        int result = sut.calculate("2 * 4");
 
         assertThat(result).isEqualTo(8);
     }
@@ -47,7 +47,7 @@ class StringCalculatorTest {
     @Test
     @DisplayName("사칙연산 모두 포함")
     public void complex() {
-        int result = sut.calculateAll("2 + 3 * 4 / 2");
+        int result = sut.calculate("2 + 3 * 4 / 2");
 
         assertThat(result).isEqualTo(10);
     }
@@ -56,7 +56,7 @@ class StringCalculatorTest {
     @DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException throw")
     public void exception1() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            sut.calculateAll("1 & 3");
+            sut.calculate("1 & 3");
         }).withMessageContaining("사칙연산 기호가 아닙니다");
     }
 
@@ -66,7 +66,7 @@ class StringCalculatorTest {
     @NullAndEmptySource
     public void exception2(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            sut.calculateAll(input);
+            sut.calculate(input);
         }).withMessageContaining("유효하지 않은 입력값");
     }
 }

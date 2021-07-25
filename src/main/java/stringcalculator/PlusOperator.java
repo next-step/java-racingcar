@@ -1,13 +1,13 @@
 package stringcalculator;
 
 public class PlusOperator implements Operator {
-    private static final String symbol = "+";
-    private static final PlusOperator instance = new PlusOperator();
+    private static final String SYMBOL = "+";
+    private static final PlusOperator INSTANCE = new PlusOperator();
 
     private PlusOperator() {}
 
     public static Operator getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
@@ -17,6 +17,6 @@ public class PlusOperator implements Operator {
 
     @Override
     public boolean match(String symbol) {
-        return PlusOperator.symbol.equals(symbol);
+        return PlusOperator.SYMBOL.equals(symbol);
     }
 }

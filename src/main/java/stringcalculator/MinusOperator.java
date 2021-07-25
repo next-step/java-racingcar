@@ -1,13 +1,13 @@
 package stringcalculator;
 
 public class MinusOperator implements Operator {
-    private static final String symbol = "-";
-    private static final MinusOperator instance = new MinusOperator();
+    private static final String SYMBOL = "-";
+    private static final MinusOperator INSTANCE = new MinusOperator();
 
     private MinusOperator() {}
 
     public static Operator getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
@@ -17,6 +17,6 @@ public class MinusOperator implements Operator {
 
     @Override
     public boolean match(String symbol) {
-        return MinusOperator.symbol.equals(symbol);
+        return MinusOperator.SYMBOL.equals(symbol);
     }
 }
