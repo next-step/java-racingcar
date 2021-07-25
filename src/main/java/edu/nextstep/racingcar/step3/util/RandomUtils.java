@@ -4,9 +4,20 @@ import java.util.Random;
 
 public class RandomUtils implements Randoms {
 
+    private final int numberOfRandoms;
+
+    public RandomUtils(Integer numberOfRandoms) {
+        this.numberOfRandoms = numberOfRandoms;
+    }
+
     @Override
-    public Integer getRandomNumber(Integer numberOfRandoms) {
+    public Integer getRandomNumber() {
         Random random = new Random();
         return random.nextInt(numberOfRandoms);
+    }
+
+    @Override
+    public Integer getNumberOfRandoms() {
+        return numberOfRandoms;
     }
 }
