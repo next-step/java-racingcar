@@ -1,5 +1,5 @@
 /*
- *   Class name : UserPlay.java
+ *   Class name : RacingCarPlayMain.java
  *   Version : 0.0.1
  *   Date : 2021/07/24
  */
@@ -23,6 +23,7 @@ public class RacingCarPlayMain {
         int moveCount = Integer.parseInt(br.readLine());
 
         RacingCar racingCar = new RacingCar(carCount ,moveCount);
+        System.out.println("실행 결과");
         racingCar.racingStart(racingCar.readyCar());
 
     }

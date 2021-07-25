@@ -39,9 +39,9 @@ public class RacingCar {
      * 자동차가 이동할 무작위 숫자를 반환합니다.
      * @return
      */
-    private int getMove() {
+    public int getMove() {
         Random moveIndex = new Random();
-        int move = moveIndex.nextInt(9);
+        int move = moveIndex.nextInt(10);
         return move;
     }
 
@@ -49,7 +49,6 @@ public class RacingCar {
      * 준비된 Car 객채들 끼리의 경주를 시작합니다.
      */
     public void racingStart(List<Car> cars) {
-        System.out.println("실행 결과");
         for (int i = 0; i < this.moveCount; i++) {
             for (Car car : cars ) {
                 int move = getMove();
