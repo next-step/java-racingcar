@@ -31,4 +31,12 @@ class StringCalculatorTest {
 
         assertThat(result).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("곱셈")
+    public void multiply() {
+        int result = sut.calculateAll("2 * 4");
+
+        assertThat(result).isEqualTo(8);
+    }
 }
