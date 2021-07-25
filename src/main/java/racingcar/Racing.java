@@ -6,7 +6,7 @@ import java.util.Random;
 public class Racing {
 
     private final int BOUND_RANDOM_NUMBER = 10;
-    private final int MORE_THEN_NUMBER = 4;
+    private final int MORE_THEN_STANDARD_NUMBER = 4;
 
     private ArrayList<Car> cars = new ArrayList<>();
     private ArrayList<ArrayList<RacingRecord>> racingHistory = new ArrayList<>();
@@ -48,7 +48,7 @@ public class Racing {
     }
 
     private boolean isMoveAble() {
-        return new Random().nextInt(BOUND_RANDOM_NUMBER) >= MORE_THEN_NUMBER;
+        return new Random().nextInt(BOUND_RANDOM_NUMBER) >= MORE_THEN_STANDARD_NUMBER;
     }
 
     public ArrayList<Car> getCars() {
@@ -58,6 +58,5 @@ public class Racing {
     public ArrayList<ArrayList<RacingRecord>> getRacingHistory() {
         return racingHistory;
     }
-
 }
 
