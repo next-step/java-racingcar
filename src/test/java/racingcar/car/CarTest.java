@@ -15,14 +15,8 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("Car 한칸 움직이기 성공 테스트")
-    void move_성공_한칸() {
-        assertThat(car.getPosition().getPosition()).isEqualTo(1);
-    }
-
-    @Test
-    @DisplayName("Car 움직이기 실패 테스트")
-    void move_실패_제자리() {
+    @DisplayName("Car 처음 위치 0 테스트")
+    void car_처음_위치_0() {
         assertThat(car.getPosition().getPosition()).isEqualTo(0);
     }
 }
