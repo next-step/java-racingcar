@@ -1,12 +1,12 @@
-package study.step3.controller;
+package study.step3.view;
 
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Scanner;
 
 public class ConsoleInput {
 
     private static final String NULL_INPUT = "입력값이 null 입니다";
+    private static final String NOT_NUMBER = "입력값이 숫자가 아닙니다 -> ";
     private final Scanner scanner = new Scanner(System.in);
 
     public int getNumber(String question) {
@@ -35,8 +35,10 @@ public class ConsoleInput {
     }
 
     private void requireNumber(String number) {
-        Optional.of(number)
-                .map(Integer::parseInt)
-                .orElseThrow(() -> new IllegalArgumentException("require number : " + number));
+        try {
+            Integer.parseInt(number);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException(NOT_NUMBER + number);
+        }
     }
 }

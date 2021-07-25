@@ -1,9 +1,8 @@
 package study.step3;
 
-import study.step3.controller.ConsoleInput;
-import study.step3.domain.CarManager;
-import study.step3.domain.RaceManager;
-import study.step3.domain.RoundManager;
+import study.step3.controller.RaceController;
+import study.step3.service.RaceService;
+import study.step3.view.ConsoleInput;
 import study.step3.view.ConsoleOutput;
 
 public class CarRacing {
@@ -14,12 +13,12 @@ public class CarRacing {
 
     public static void main(String[] args) {
         ConsoleInput consoleInput = new ConsoleInput();
-        RaceManager raceManager = new RaceManager(new CarManager(), new RoundManager());
+        RaceController raceController = new RaceController(new RaceService());
         ConsoleOutput consoleOutput = new ConsoleOutput();
 
         int carNumber = consoleInput.getNumber(CAR_QUESTION);
         int roundNumber = consoleInput.getNumber(ROUND_QUESTION);
-        consoleOutput.printRaceRecords(raceManager.manageRace(carNumber, roundNumber), CAR_SYMBOL);
+        consoleOutput.printRaceRecords(raceController.play(carNumber, roundNumber), CAR_SYMBOL);
     }
 
 }
