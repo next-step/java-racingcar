@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class SimpleRacingStatusView implements OutputInterface {
+
     @Override
     public void output(RacingGame racingGame) {
         final int FIRST_TURN = 1;
