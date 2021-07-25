@@ -20,6 +20,7 @@ public class Calculation {
         return result;
     }
 
+
     public int calculate(int operand1, int operand2, String operation) {
         return Operation.findByOperation(operation).calc(operand1, operand2);
     }
