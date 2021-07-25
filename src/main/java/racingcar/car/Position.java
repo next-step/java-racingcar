@@ -6,7 +6,6 @@ import racingcar.view.ResultView;
 public class Position {
     private int position;
 
-    public static final int DEFAULT_DISTANCE = 0;
     public static final int FORWARD_DISTANCE = 1;
 
     public Position() {
@@ -21,16 +20,17 @@ public class Position {
         return number >= 4;
     }
 
-    public void move() {
+    public void movePosition() {
         if (isMovable(Util.generateRandom())) {
             moveForward();
         }
         printPositionStatus();
     }
 
-    private void printPositionStatus(){
+    private void printPositionStatus() {
         ResultView.printCarPositionStatus(this.position);
     }
+
     public void moveForward() {
         this.position += FORWARD_DISTANCE;
     }
