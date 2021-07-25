@@ -8,7 +8,7 @@ public class Cars {
     private static final int GO_CONDITION = 4;
     private final List<Car> cars = new ArrayList<>();
 
-    Cars(int number) {
+    public Cars(int number) {
         for (int i = 0; i < number; i++) {
             cars.add(new Car());
         }
@@ -32,6 +32,15 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public String toString(){
+        StringBuilder result = new StringBuilder();
+        for(Car car: cars){
+            result.append(car.toString()).append("\n");
+        }
+        return result.toString();
+    }
+
 
     private static class Car {
         private int score;
@@ -46,6 +55,15 @@ public class Cars {
 
         int getScore() {
             return this.score;
+        }
+
+        @Override
+        public String toString(){
+            StringBuilder result = new StringBuilder();
+            for(int i=0; i<score; i++){
+                result.append("-");
+            }
+            return result.toString();
         }
     }
 }
