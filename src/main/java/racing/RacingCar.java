@@ -1,7 +1,7 @@
 package racing;
 
 public class RacingCar {
-    private static final int MOVABLE_MIN_VALUE = 4;
+    private static final int MOVABLE_MIN_NUMBER = 4;
 
     private Position position;
 
@@ -9,8 +9,8 @@ public class RacingCar {
         position = new Position();
     }
 
-    public void moveOrStop(int value) {
-        if (value >= MOVABLE_MIN_VALUE) {
+    void moveOrStop(int number) {
+        if (number >= MOVABLE_MIN_NUMBER) {
             moveForwardOneSpace();
         }
     }
@@ -19,7 +19,7 @@ public class RacingCar {
         position.increaseOne();
     }
 
-    public int getPosition() {
+    int getPosition() {
         return position.getPosition();
     }
 }

@@ -1,23 +1,23 @@
 package racing;
 
-import static racing.NumberGenerator.MAX_VALUE;
-import static racing.NumberGenerator.MIN_VALUE;
+import static racing.NumberGenerator.MIN_NUMBER;
+import static racing.NumberGenerator.MAX_NUMBER;
 
 public class Number {
-    private int value;
+    private int number;
 
-    Number(int value) {
-        validateRange(value);
-        this.value = value;
+    Number(int number) {
+        validateRange(number);
+        this.number = number;
     }
 
-    int getValue() {
-        return value;
+    int getNumber() {
+        return number;
     }
 
-    private void validateRange(int value) {
-        if (value < MIN_VALUE || value > MAX_VALUE) {
-            throw new IllegalArgumentException(String.format("값이 유효한 범위 안에 있지 않습니다. (value: %d)", value));
+    private void validateRange(int number) {
+        if (number < MIN_NUMBER || number > MAX_NUMBER) {
+            throw new IllegalArgumentException(String.format("값이 유효한 범위 안에 있지 않습니다. (number: %d)", number));
         }
     }
 }

@@ -3,8 +3,8 @@ package racing;
 import java.util.Random;
 
 public class NumberGenerator {
-    static final int MIN_VALUE = 0;
-    static final int MAX_VALUE = 9;
+    static final int MIN_NUMBER = 0;
+    static final int MAX_NUMBER = 9;
 
     private final Random random;
     private Number number;
@@ -14,15 +14,15 @@ public class NumberGenerator {
     }
 
     public void generateRandomNumber() {
-        number = new Number(random.nextInt(MAX_VALUE + 1) + MIN_VALUE);
+        number = new Number(random.nextInt(MAX_NUMBER + 1) + MIN_NUMBER);
     }
 
-    public int getRandomNumber() {
-        validateNotEmpty(number);
-        return number.getValue();
+    public int getNumber() {
+        validateNotNull(number);
+        return number.getNumber();
     }
 
-    private void validateNotEmpty(Number number) {
+    private void validateNotNull(Number number) {
        if (number == null) {
            throw new IllegalArgumentException("Number가 생성되지 않았습니다.");
        }

@@ -19,7 +19,7 @@ public class NumberGeneratorTest {
             numberGenerator.generateRandomNumber();
 
             // then
-            assertThat(numberGenerator.getRandomNumber())
+            assertThat(numberGenerator.getNumber())
                     .isGreaterThanOrEqualTo(0)
                     .isLessThanOrEqualTo(9);
         }
