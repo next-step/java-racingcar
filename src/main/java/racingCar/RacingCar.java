@@ -8,6 +8,7 @@ package racingCar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * 해당 클래스는 Racing을 하기 위한 기능이 구현되어있는 클래스입니다.
@@ -32,6 +33,17 @@ public class RacingCar {
             cars.add(new Car());
         }
         return cars;
+    }
+
+    /**
+     * 자동차가 이동할 무작위 숫자를 반환합니다.
+     * @return
+     */
+    private int getMove() {
+        Random moveIndex = new Random();
+        moveIndex.setSeed(System.currentTimeMillis());
+        int move = moveIndex.nextInt(9);
+        return move;
     }
 
 }
