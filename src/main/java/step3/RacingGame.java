@@ -8,13 +8,10 @@ import java.util.stream.IntStream;
 public class RacingGame {
     // Observable Interfaces
     private OutputInterface outputInterface;
-
     // Class Members
-    private List<Car> cars;
-
     private int currentTurn = 0;
-
-    RacingGameConfiguration racingGameConfiguration;
+    private List<Car> cars;
+    private RacingGameConfiguration racingGameConfiguration;
 
     public RacingGame() {
     }
