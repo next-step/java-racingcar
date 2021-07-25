@@ -7,6 +7,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import racingcar.model.RacingCar;
+
 class RacingCarTest {
 	RacingCar racingCar;
 

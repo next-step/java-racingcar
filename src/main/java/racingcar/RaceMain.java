@@ -1,5 +1,9 @@
 package racingcar;
 
+import racingcar.model.RacingCars;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
 public class RaceMain {
 	private static InputView inputView = new InputView();
 	private static ResultView resultView = new ResultView();
