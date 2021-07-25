@@ -1,7 +1,7 @@
 package stage2;
 
 public class Calculator {
-    public Integer execute(String input) {
+    public Integer calculate(String input) {
 
         if (" ".equals(input) || "".equals(input) || input == null) {
             throw new IllegalArgumentException();
@@ -18,7 +18,7 @@ public class Calculator {
                 Integer second = Integer.parseInt(split[i]);
 
                 Operation op = Operation.findOperation(operation);
-                init = op.calculate(first, second);
+                init = op.operate(first, second);
             }
         }
 

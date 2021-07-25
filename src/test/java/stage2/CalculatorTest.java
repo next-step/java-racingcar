@@ -24,7 +24,7 @@ public class CalculatorTest {
         String input = "2 + 3 * 4 / 2";
         Integer expectedValue = 10;
 
-        Integer result = c.execute(input);
+        Integer result = c.calculate(input);
 
         assertThat(expectedValue).isEqualTo(result);
     }
@@ -34,7 +34,7 @@ public class CalculatorTest {
     void calculator_null_test() {
         String input = null;
 
-        Throwable throwable = catchThrowable(() -> c.execute(input));
+        Throwable throwable = catchThrowable(() -> c.calculate(input));
 
         assertThat(throwable).isExactlyInstanceOf(IllegalArgumentException.class);
     }
@@ -43,7 +43,7 @@ public class CalculatorTest {
     @DisplayName("입력값 공백 테스트")
     @ValueSource(strings = {" ", ""})
     void calculator_blank_test(String input) {
-        Throwable throwable = catchThrowable(() -> c.execute(input));
+        Throwable throwable = catchThrowable(() -> c.calculate(input));
 
         assertThat(throwable).isExactlyInstanceOf(IllegalArgumentException.class);
     }
@@ -54,7 +54,7 @@ public class CalculatorTest {
         String input = "1 + 2 + 3 + 4 + 5";
         Integer expectedValue = 15;
 
-        Integer result = c.execute(input);
+        Integer result = c.calculate(input);
 
         assertThat(result).isEqualTo(expectedValue);
     }
@@ -65,7 +65,7 @@ public class CalculatorTest {
         String input = "50 - 10 - 5 - 1";
         Integer expectedValue = 34;
 
-        Integer result = c.execute(input);
+        Integer result = c.calculate(input);
 
         assertThat(result).isEqualTo(expectedValue);
     }
@@ -76,7 +76,7 @@ public class CalculatorTest {
         String input = "2 * 2 * 2 * 2";
         Integer expectedValue = 16;
 
-        Integer result = c.execute(input);
+        Integer result = c.calculate(input);
 
         assertThat(result).isEqualTo(expectedValue);
     }
@@ -87,7 +87,7 @@ public class CalculatorTest {
         String input = "50 / 5 / 5 / 2";
         Integer expectedValue = 1;
 
-        Integer result = c.execute(input);
+        Integer result = c.calculate(input);
 
         assertThat(result).isEqualTo(expectedValue);
     }
@@ -97,7 +97,7 @@ public class CalculatorTest {
     void calculator_invalid_operation_test() {
         String input = "1 ? 2";
 
-        Throwable throwable = catchThrowable(() -> c.execute(input));
+        Throwable throwable = catchThrowable(() -> c.calculate(input));
 
         assertThat(throwable).isExactlyInstanceOf(IllegalArgumentException.class);
     }
