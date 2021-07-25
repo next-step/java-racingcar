@@ -3,8 +3,8 @@ package racingcar;
 import java.util.Objects;
 
 public class Car {
-    private final int MOVE_NUM = 4;
-    private final int WINNER_POSITION = 5;
+    private static final int MOVE_NUM = 4;
+    private static final int WINNER_POSITION = 5;
     private String name;
     private int position;
 
