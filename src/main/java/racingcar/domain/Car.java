@@ -13,7 +13,7 @@ public class Car {
         }
     }
 
-    public Position getPosition() {
+    Position getPosition() {
         return position;
     }
 }
