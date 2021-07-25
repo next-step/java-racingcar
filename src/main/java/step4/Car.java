@@ -1,12 +1,21 @@
-package step3;
+package step4;
 
-import step3.enums.MOVE;
+import step4.enums.MOVE;
 
 public class Car {
     private int location = 0;
+    private String name;
+
+    public Car(String name) {
+        this.name = name;
+    }
 
     public int getLocation() {
         return this.location;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void goOrStop() {

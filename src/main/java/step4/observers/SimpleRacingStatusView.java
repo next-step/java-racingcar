@@ -1,8 +1,8 @@
-package step3.observers;
+package step4.observers;
 
-import step3.Car;
-import step3.RacingGame;
-import step3.interfaces.OutputInterface;
+import step4.Car;
+import step4.RacingGame;
+import step4.interfaces.OutputInterface;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;

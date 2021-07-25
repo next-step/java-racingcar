@@ -1,10 +1,10 @@
-package step3;
+package step4;
 
 import helper.TestHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.enums.MOVE;
+import step4.enums.MOVE;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashSet;
@@ -18,7 +18,13 @@ public class CarTest {
 
     @BeforeEach
     void init() {
-        car = new Car();
+        car = new Car("Car");
+    }
+
+    @Test
+    @DisplayName("Car 클래스 생성자 테스트")
+    void carTest() {
+        assertThat(car.getName()).isEqualTo("Car");
     }
 
     @Test

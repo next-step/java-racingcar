@@ -1,8 +1,6 @@
-package step3;
+package step4;
 
-import step3.observers.SimpleRacingStatusView;
-
-import java.util.Scanner;
+import step4.observers.SimpleRacingStatusView;
 
 public class GameMain {
     public static void main(String[] args) {

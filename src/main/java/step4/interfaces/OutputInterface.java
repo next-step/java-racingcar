@@ -1,6 +1,6 @@
-package step3.interfaces;
+package step4.interfaces;
 
-import step3.RacingGame;
+import step4.RacingGame;
 
 public interface OutputInterface {
 

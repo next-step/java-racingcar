@@ -1,14 +1,11 @@
-package step3;
+package step4;
 
 import helper.TestHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.enums.MOVE;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.HashSet;
-import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,7 +18,7 @@ public class RacingGameTest {
 
     @BeforeEach
     void init() {
-        this.racingGame = new RacingGame(new RacingGameConfiguration(numberOfCars, numberOfTurns));
+        this.racingGame = new RacingGame(new RacingGameConfiguration(carNames, numberOfCars, numberOfTurns));
     }
 
     @Test

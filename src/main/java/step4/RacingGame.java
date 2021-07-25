@@ -1,6 +1,6 @@
-package step3;
+package step4;
 
-import step3.interfaces.OutputInterface;
+import step4.interfaces.OutputInterface;
 
 import java.util.List;
 import java.util.stream.IntStream;
