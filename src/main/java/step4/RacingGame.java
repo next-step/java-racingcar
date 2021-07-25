@@ -14,7 +14,6 @@ public class RacingGame {
     private OutputInterface outputInterface;
     // Class Members
     private int currentTurn = 0;
-
     private List<Car> winner;
     private RacingEntry racingEntry;
     private RacingGameConfiguration racingGameConfiguration;
