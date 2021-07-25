@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
@@ -35,11 +36,12 @@ class RacingCarTest {
         }
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("Car 전진 테스트 ")
-    void 자동차전진() {
-        car.setDrivingDistance();
-        Assertions.assertThat(car.getDrivingDistance()).isEqualTo(1);
+    @CsvSource(value = {"1:0" ,"2:0","4:1","6:1","9:1"} , delimiter = ':')
+    void 자동차전진(int number , int result) {
+        car.setDrivingDistance(number);
+        Assertions.assertThat(car.getDrivingDistance()).isEqualTo(result);
     }
 
     @ParameterizedTest
@@ -53,11 +55,12 @@ class RacingCarTest {
     @Test
     @DisplayName("자동차 이동 거리 출력 테스트")
     void 자동차이동거리출력() {
-        for (int i = 0; i < 5; i++) {
-            car.setDrivingDistance();
+        int testNumbers[] = {2,4,5,9,6,1};
+        for (int i=0; i<testNumbers.length; i++){
+            car.setDrivingDistance(testNumbers[i]);
         }
         String printResultContents = ResultView.printResultContents(car);
-        Assertions.assertThat(printResultContents).isEqualTo("-----");
+        Assertions.assertThat(printResultContents).isEqualTo("----");
 
     }
 
