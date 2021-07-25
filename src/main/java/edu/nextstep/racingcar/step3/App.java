@@ -1,30 +1,44 @@
 package edu.nextstep.racingcar.step3;
 
+import edu.nextstep.racingcar.common.BusinessException;
+import edu.nextstep.racingcar.step3.app.Car;
+import edu.nextstep.racingcar.step3.app.Vehicle;
+import edu.nextstep.racingcar.step3.error.CarError;
+import edu.nextstep.racingcar.step3.util.RandomUtils;
 import edu.nextstep.racingcar.step3.view.InputView;
 import edu.nextstep.racingcar.step3.view.ResultView;
 
-import java.util.Scanner;
+import java.util.List;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class App {
 
-    private static final String QUESTION_NUMBER_OF_CARS = "자동차 대수는 몇 대 인가요?";
-    private static final String QUESTION_NUMBER_OF_ATTEMPTS = "시도할 회수는 몇 회 인가요?";
-
-    private static final Integer NUMBER_OF_RANDOMS = 10;
-    private static final Integer THRESHOLD = 4;
+    private static final int NUMBER_OF_RANDOMS = 10;
+    private static final int THRESHOLD = 4;
+    private static final InputView inputView = new InputView();
+    private static final ResultView resultView = new ResultView();
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        resultView.play(inputView.getNumberOfAttempts(), make(inputView.getNumberOfCars(), NUMBER_OF_RANDOMS, THRESHOLD));
+    }
 
-        System.out.println(QUESTION_NUMBER_OF_CARS);
-        int numberOfCars = scanner.nextInt();
+    public static List<Vehicle> make(int numberOfCars, int numberOfRandoms, int threshold) {
 
-        System.out.println(QUESTION_NUMBER_OF_ATTEMPTS);
-        int numberOfAttempts = scanner.nextInt();
+        Car.ParamsValidator validator = () -> {
+            if (numberOfRandoms <= threshold) {
+                throw new BusinessException(CarError.INVALID_VALUE_GREAT_THAN_THRESHOLD);
+            }
+        };
 
-        InputView inputView = new InputView(numberOfCars);
-        ResultView resultView = new ResultView(numberOfAttempts);
+        Supplier<Boolean> movement = () -> {
+            RandomUtils randomUtils = new RandomUtils(numberOfRandoms);
+            return randomUtils.getRandomNumber() >= threshold;
+        };
 
-        resultView.play(inputView.make(NUMBER_OF_RANDOMS, THRESHOLD));
+        return IntStream.range(0, numberOfCars)
+                .mapToObj(idx -> new Car(validator, movement))
+                .collect(Collectors.toList());
     }
 }

@@ -9,13 +9,8 @@ public class ResultView {
 
     private static final String DISPLAY_TOKEN = "-";
     private static final String NEW_LINE = "\n";
-    private final Integer numberOfAttempts;
 
-    public ResultView(int numberOfAttempts) {
-        this.numberOfAttempts = numberOfAttempts;
-    }
-
-    public void play(List<Vehicle> vehicles) {
+    public void play(int numberOfAttempts, List<Vehicle> vehicles) {
         IntStream.range(0, numberOfAttempts).forEach(idx -> attempt(vehicles));
     }
 
