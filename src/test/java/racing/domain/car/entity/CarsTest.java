@@ -1,15 +1,15 @@
-package racing.domain.car;
+package racing.domain.car.entity;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.domain.Location;
-import racing.domain.Name;
-import racing.domain.fuel.BasicFuel;
-import racing.domain.fuel.Fuel;
-import racing.domain.fuel.RandomFuel;
+import racing.domain.car.vo.Location;
+import racing.domain.car.vo.Name;
+import racing.domain.car.vo.fuel.BasicFuel;
+import racing.domain.car.vo.fuel.Fuel;
+import racing.domain.car.vo.fuel.RandomFuel;
 
 import java.util.Arrays;
 import java.util.Iterator;

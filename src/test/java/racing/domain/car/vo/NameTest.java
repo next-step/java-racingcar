@@ -1,7 +1,8 @@
-package racing.domain;
+package racing.domain.car.vo;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.domain.car.vo.Name;
 import racing.exception.InvalidInputException;
 
 import static org.assertj.core.api.Assertions.*;
