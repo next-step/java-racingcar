@@ -6,7 +6,7 @@ public class MovingStrategyFactory {
     private MovingStrategyFactory() {
     }
 
-    public static MovingStrategy getStrategy() {
+    public static MovingStrategy getRandomStrategy() {
         return new RandomMovingStrategy(new RandomNumber());
     }
 }

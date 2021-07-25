@@ -1,28 +1,31 @@
 package racing.domain;
 
 public class Car {
-    private static final int INITIAL_POSITION = 0;
-    private int position;
-    private final PositionRecord positionRecord;
+    private final Player player;
+    private final CarPosition carPosition;
 
-    public Car() {
-        this.position = INITIAL_POSITION;
-        this.positionRecord = new PositionRecord();
+    public Car(Player player, CarPosition carPosition) {
+        this.player = player;
+        this.carPosition = carPosition;
     }
 
     public void race(MovingStrategy strategy) {
         if (strategy.isMove()) {
-            position++;
+            carPosition.movePosition();
         }
 
-        positionRecord.save(position);
+        carPosition.save();
     }
 
-    public PositionRecord getPositionRecord() {
-        return positionRecord;
+    public int getPositionRecord(int index) {
+        return carPosition.getPositionRecord(index);
     }
 
-    protected int getPosition() {
-        return position;
+    public int getPosition() {
+        return carPosition.getPosition();
+    }
+
+    public String getPlayerName() {
+        return player.getName();
     }
 }

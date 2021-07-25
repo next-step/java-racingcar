@@ -1,5 +1,6 @@
 package racing.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,11 +8,17 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CarTest {
 
+    Car car;
+
+    @BeforeEach
+    void setUp() {
+        car = new Car(new Player("jayce"), new CarPosition());
+    }
+
     @DisplayName("이동 조건을 만족하면 position 값을 증가 시킨다.")
     @Test
     void moveCar() {
         //given
-        Car car = new Car();
         MovingStrategy movingStrategy = () -> true;
 
         //when
@@ -25,7 +32,6 @@ public class CarTest {
     @Test
     void stopCar() {
         //given
-        Car car = new Car();
         MovingStrategy movingStrategy = () -> false;
 
         //when
@@ -39,7 +45,6 @@ public class CarTest {
     @Test
     void carPositionTest() {
         //given
-        Car car = new Car();
         MovingStrategy moveStrategy = () -> true;
         MovingStrategy stopStrategy = () -> false;
 
