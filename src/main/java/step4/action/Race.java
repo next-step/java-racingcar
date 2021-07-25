@@ -22,6 +22,11 @@ public class Race {
         this.size = names.length;
     }
 
+    public Race(List<Car> cars) {
+        this.cars = new Cars(cars,new CarsMethod());
+        this.size = cars.size();
+    }
+
     public static Race of(int size) {
         return new Race(size);
     }
@@ -30,6 +35,9 @@ public class Race {
         return new Race(names);
     }
 
+    public static Race of(List<Car> cars){
+        return new Race(cars);
+    }
     public void doRace(){
         cars.moveCars();
     }
@@ -53,7 +61,24 @@ public class Race {
         return cars.getCarList();
     }
 
-    public String getWinner(){
-        return  "";
+    public List<Car> getWinner(){
+        List<Car> arrangeCars = cars.arrangeCars();
+        return findWinner(arrangeCars);
+    }
+
+    protected List<Car> findWinner(List<Car> cars){
+        List<Car> winners = new ArrayList<Car>();
+        int longestLength = cars.get(0).getPosition();
+        winners.add(cars.get(0));
+        for(int idx=1; idx < cars.size(); idx++){
+            sameWithFirst(winners, cars.get(idx),longestLength);
+        }
+        return winners;
+    }
+
+    private void sameWithFirst(List<Car> winners, Car car,int target) {
+        if(car.getPosition() == target){
+            winners.add(car);
+        }
     }
 }

@@ -28,4 +28,14 @@ public class Print {
         }
     }
 
+    public static void printWinner(List<Car> cars){
+        // pobi, honux가 최종 우승했습니다.
+        StringBuffer winners = new StringBuffer("");
+        for(Car car: cars){
+            winners.append(car.getName());
+            winners.append(", ");
+        }
+        print(winners.substring(0,winners.length()-2) + "가 최종 우승했습니다.");
+    }
+
 }

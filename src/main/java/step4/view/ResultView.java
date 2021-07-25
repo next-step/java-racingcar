@@ -17,11 +17,12 @@ public class ResultView {
     public static void startRaceStep4(String[] carNames, int raceTimes) {
         Race race = Race.of(carNames);
         for(int i=0; i<raceTimes; i++){
-            Print.print(race.getCars());
             race.doRace();
+            Print.print(race.getCars());
             System.out.println();
         }
         Print.print("실행 결과");
+        Print.printWinner(race.getWinner());
         race.doRace();
     }
 }

@@ -33,5 +33,13 @@ class CarTest {
         assertThat(car1.compareTo(car2) > 0).isEqualTo(true);
     }
 
+    @DisplayName("비어있는 이름 에러처리")
+    @Test
+    void errorNameTest(){
+        assertThatIllegalArgumentException().isThrownBy(
+                () -> new Car("")
+        ).withMessageContaining("이름이 비어");
+    }
+
 
 }
