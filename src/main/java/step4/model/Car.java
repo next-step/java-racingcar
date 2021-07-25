@@ -1,11 +1,10 @@
 package step4.model;
 
-import com.sun.tools.javac.util.StringUtils;
 import step4.RacingApp;
 import step4.view.ToDash;
 
 public class Car implements Comparable<Car>{
-    private final int INIT_POSITION = 1;
+    private final int INIT_POSITION = 0;
     private String name;
     private int position;
 
@@ -19,6 +18,9 @@ public class Car implements Comparable<Car>{
     }
 
     public Car(String name) {
+        if(isBlank(name)){
+            throw new IllegalArgumentException("차 이름이 비어있습니다.");
+        }
         if(name.length()>5){
             throw new IllegalArgumentException("차 이름 5글자 초과!");
         }
@@ -53,11 +55,15 @@ public class Car implements Comparable<Car>{
 
     @Override
     public String toString() {
-        return this.getName()+" "+ToDash.positionToDash(position);
+        return this.getName()+" : "+ToDash.positionToDash(position);
     }
 
     @Override
     public int compareTo(Car car) {
         return Integer.compare(this.getPosition(),car.getPosition());
+    }
+
+    private boolean isBlank(String name){
+        return "".equals(name) ? true : false;
     }
 }

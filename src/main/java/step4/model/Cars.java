@@ -6,10 +6,15 @@ import java.util.stream.Collectors;
 
 public class Cars{
 
-    private List<Car> carList;
+    protected List<Car> carList;
     private CarsStrategy carsMethod;
 
     public Cars(CarsStrategy carsMethod) {
+        this.carsMethod = carsMethod;
+    }
+
+    public Cars(List<Car> carList, CarsStrategy carsMethod){
+        this.carList = carList;
         this.carsMethod = carsMethod;
     }
 
@@ -26,6 +31,13 @@ public class Cars{
 
         for(String name : cars){
             carList.add(new Car(name));
+        }
+    }
+
+    protected void makeCars(Car... cars){
+        carList = new ArrayList<Car>();
+        for(Car car : cars){
+            carList.add(car);
         }
     }
 
@@ -47,7 +59,7 @@ public class Cars{
 
     public List<Car> arrangeCars() {
         stateCheck();
-        carList = this.carsMethod.arrange(this.carList);
+        carList = carsMethod.arrange(this.carList);
         return carList;
     }
 }

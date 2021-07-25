@@ -18,7 +18,7 @@ public class CarsMethod implements CarsStrategy {
     @Override
     public List<Car> arrange(List<Car> carsList) {
         return carsList.stream()
-                .sorted((car1,car2) -> car1.compareTo(car2))
+                .sorted((car1,car2) -> car2.compareTo(car1))
                 .collect(Collectors.toList());
     }
 }
