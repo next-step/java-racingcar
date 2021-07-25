@@ -15,11 +15,11 @@ public class RacingCarGame {
             carstadium.enterCar(new Car(new CarEngine()));
         }
 
-        ResultView resultView = new ResultView(carstadium);
+        ResultView resultView = new ResultView();
 
         for (int i = 0; i < tryCount; i++) {
             carstadium.moveCars();
-            resultView.printResult();
+            resultView.printResult(carstadium);
         }
     }
 }

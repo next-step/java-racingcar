@@ -2,13 +2,7 @@ package step3;
 
 public class ResultView {
 
-    private final CarStadium carStadium;
-
-    public ResultView(CarStadium carStadium) {
-        this.carStadium = carStadium;
-    }
-
-    public void printResult() {
+    public void printResult(CarStadium carStadium) {
         carStadium.getAllCars().forEach(this::print);
         System.out.println("");
     }
