@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
-class CarsTest {
+public class CarsTest {
     private static RandomFuel randomFuel;
 
     @BeforeAll
@@ -35,7 +35,7 @@ class CarsTest {
     * 테스트 에서는 이름 구분자를 '|' 로 변경
     */
     private static final String NAME_DELIMITER = "\\|";
-    private Cars initCars(String strNames, Function<Name, Car> carCtor) {
+    public Cars initCars(String strNames, Function<Name, Car> carCtor) {
         String[] strNameSplitValues = strNames.split(NAME_DELIMITER);
 
         return new Cars(
