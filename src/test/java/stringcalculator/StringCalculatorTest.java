@@ -45,6 +45,14 @@ class StringCalculatorTest {
     }
 
     @Test
+    @DisplayName("사칙연산 모두 포함")
+    public void complex() {
+        int result = sut.calculateAll("2 + 3 * 4 / 2");
+
+        assertThat(result).isEqualTo(10);
+    }
+
+    @Test
     @DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException throw")
     public void exception1() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
