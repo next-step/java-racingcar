@@ -1,25 +1,21 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RaceMain {
-	public static void main(String[] args) {
-		int carNum = InputView.inputRacingCarNum();
-		int forwardCount = InputView.inputTryCount();
-		System.out.println();
+	private static InputView inputView = new InputView();
+	private static ResultView resultView = new ResultView();
 
-		List<RacingCar> racingCars = new ArrayList<>();
-		for (int i = 0 ; i < carNum ; i++) {
-			racingCars.add(new RacingCar());
-		}
-
-		System.out.println("실행 결과");
+	public void startRace(int forwardCount, RacingCars racingCars) {
+		System.out.println("\n실행결과");
 		for (int i = 0 ; i < forwardCount ; i++) {
-			for (int j = 0 ; j < carNum ; j++) {
-				racingCars.get(j).forward();
-			}
-			ResultView.outputResult(racingCars);
+			racingCars.forwardCars();
+			resultView.outputResult(racingCars.getCars());
 		}
+	}
+
+	public static void main(String[] args) {
+		RaceMain raceMain = new RaceMain();
+		RacingCars racingCars = new RacingCars(inputView.inputRacingCarNum());
+		raceMain.startRace(inputView.inputTryCount(), racingCars);
+		inputView.scannerClose();
 	}
 }
