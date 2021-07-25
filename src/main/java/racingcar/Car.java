@@ -5,14 +5,11 @@ import java.util.Objects;
 public class Car {
     private static final int MOVE_NUM = 4;
     private static final int WINNER_POSITION = 5;
-    private String name;
+    private CarName name;
     private int position;
 
     public Car(String name) {
-        if (name.length() > 5) {
-            throw new RuntimeException();
-        }
-        this.name = name;
+        this.name = new CarName(name);
         this.position = 0;
     }
 
@@ -27,7 +24,7 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return this.name.getName();
     }
 
     public boolean isMove(int randomNumber) {
