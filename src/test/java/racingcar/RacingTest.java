@@ -24,7 +24,7 @@ class RacingTest {
     @Test
     @DisplayName("자동차 경주에 참여하는 자동차 대수 확인")
     void racingCarCountCheckTest() {
-        assertThat(racing.getCars().size()).isEqualTo(3);
+        assertThat(racing.getRacingCars().length).isEqualTo(3);
     }
 
     @Test

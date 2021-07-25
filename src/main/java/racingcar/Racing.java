@@ -8,7 +8,7 @@ public class Racing {
     private final int BOUND_RANDOM_NUMBER = 10;
     private final int MORE_THEN_STANDARD_NUMBER = 4;
 
-    private ArrayList<Car> cars = new ArrayList<>();
+    private Car[] racingCars;
     private ArrayList<ArrayList<RacingRecord>> racingHistory = new ArrayList<>();
 
     public Racing() {
@@ -16,14 +16,15 @@ public class Racing {
     }
 
     public Racing(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            addCar();
-        }
+        racingCars = new Car[carCount];
+        addCars();
     }
 
-    private void addCar() {
-        Car car = new Car();
-        cars.add(car);
+    private void addCars() {
+        for (int i = 0; i < racingCars.length; i++) {
+            Car car = new Car();
+            racingCars[i] = car;
+        }
     }
 
     public void start(int tryCount) {
@@ -34,7 +35,7 @@ public class Racing {
 
     private void moveTryCarsAndHistorySave() {
         ArrayList<RacingRecord> records = new ArrayList<>();
-        for (Car car : cars) {
+        for (Car car : racingCars) {
             moveTryCar(car);
             records.add(new RacingRecord(car, car.getPosition()));
         }
@@ -51,8 +52,8 @@ public class Racing {
         return new Random().nextInt(BOUND_RANDOM_NUMBER) >= MORE_THEN_STANDARD_NUMBER;
     }
 
-    public ArrayList<Car> getCars() {
-        return cars;
+    public Car[] getRacingCars() {
+        return racingCars;
     }
 
     public ArrayList<ArrayList<RacingRecord>> getRacingHistory() {

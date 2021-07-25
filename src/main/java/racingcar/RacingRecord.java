@@ -10,6 +10,10 @@ public class RacingRecord {
         this.position = position;
     }
 
+    public Car getCar() {
+        return car;
+    }
+
     public int getPosition() {
         return position;
     }
