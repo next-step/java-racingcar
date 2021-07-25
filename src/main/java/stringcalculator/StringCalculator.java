@@ -2,6 +2,10 @@ package stringcalculator;
 
 public class StringCalculator {
     public int calculateAll(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("유효하지 않은 입력값입니다!");
+        }
+
         String[] args = input.split(" ");
 
         int result = Integer.parseInt(args[0]);
