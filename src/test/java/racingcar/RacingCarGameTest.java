@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingCarGameTest {
     private final List<RacingCar> racingCars = new ArrayList<>();
@@ -28,4 +27,13 @@ class RacingCarGameTest {
         assertThat(racingCars.size()).isEqualTo(carNumber);
     }
 
+    @RepeatedTest(10)
+    @DisplayName("한 번 경주한 차들의 위치는 0 또는 1임을 확인한다.")
+    void raceOneStep() {
+        RacingCarGame.raceOneStep(racingCars);
+        for (RacingCar racingCar: racingCars) {
+            assertThat(racingCar.getPosition()).isLessThanOrEqualTo(1);
+            assertThat(racingCar.getPosition()).isGreaterThanOrEqualTo(0);
+        }
+    }
 }
