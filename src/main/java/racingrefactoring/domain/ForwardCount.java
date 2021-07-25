@@ -1,22 +1,24 @@
 package racingrefactoring.domain;
 
+import java.util.Objects;
+
 public class ForwardCount {
 
-	private int count;
+	private int value;
 
 	public ForwardCount() {
 		this(0);
 	}
 
-	public ForwardCount(int count) {
-		if (count < 0) {
+	public ForwardCount(int value) {
+		if (value < 0) {
 			throw new IllegalArgumentException();
 		}
-		this.count = count;
+		this.value = value;
 	}
 
 	public void increase() {
-		count++;
+		value++;
 	}
 
 	public boolean isPositive() {
@@ -24,11 +26,15 @@ public class ForwardCount {
 	}
 
 	public boolean greatThan(int value) {
-		return count > value;
+		return this.value > value;
 	}
 
-	public int count() {
-		return count;
+	public boolean isSame(int winnerCount) {
+		return value == winnerCount;
+	}
+
+	public int value() {
+		return value;
 	}
 
 }
