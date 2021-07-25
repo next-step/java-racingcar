@@ -3,13 +3,11 @@ package racingrefactoring.domain;
 public class Car {
 
 	private int forwardCount = 0;
-	private final String name;
+	private final Name name;
 
 	public Car(String name) {
-		if (CarValidator.isInvalidName(name)) {
-			throw new CarNameException();
-		}
-		this.name = name;
+
+		this.name = new Name(name);
 	}
 
 	public void moveForward(Moving moving) {
@@ -22,8 +20,8 @@ public class Car {
 		return forwardCount;
 	}
 
-	public String getName() {
-		return name;
+	public String name() {
+		return name.toString();
 	}
 
 	protected boolean isMoved() {

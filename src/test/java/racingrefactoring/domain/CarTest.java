@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class CarTest {
 
@@ -32,16 +31,27 @@ class CarTest {
 	}
 
 	@Test
-	@DisplayName("자동차의 이름이 제한 길이를 초과하는 경우")
+	@DisplayName("자동차의 이름이 제한 길이가 5를 초과")
 	void wrong_name_car() throws Exception {
 		//given
 		String longName = "long name";
 
 		//when, then
 		assertThatThrownBy(() -> new Car(longName))
-				.isInstanceOf(IllegalArgumentException.class)
+				.isInstanceOf(CarNameException.class)
 				.hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
 
+	}
+
+	@Test
+	@DisplayName("자동차의 이름이 제한 길이가 정상 범위")
+	void right_name_car() throws Exception {
+		//given
+		String shortName = "car";
+
+		//when, then
+		assertThatCode(() -> new Car(shortName))
+				.doesNotThrowAnyException();
 	}
 
 }
