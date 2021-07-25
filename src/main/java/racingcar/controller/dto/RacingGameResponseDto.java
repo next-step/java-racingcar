@@ -1,39 +1,27 @@
 package racingcar.controller.dto;
 
-import racingcar.domain.Distance;
-import racingcar.domain.Name;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import racingcar.domain.Cars;
+import racingcar.domain.Winners;
 
 public class RacingGameResponseDto {
 
-    private List<CarResponseDto> cars;
+    private Cars cars;
     private boolean finish;
 
-    public RacingGameResponseDto(List<CarResponseDto> cars, boolean finish) {
+    public RacingGameResponseDto(Cars cars, boolean finish) {
         this.cars = cars;
         this.finish = finish;
     }
 
-    public List<CarResponseDto> getCars() {
+    public Winners winners() {
+        return cars.getWinners();
+    }
+
+    public Cars getCars() {
         return cars;
     }
 
     public boolean isFinish() {
         return finish;
-    }
-
-    public List<Name> winners() {
-        int max = this.cars.stream()
-                .map(CarResponseDto::getDistance)
-                .mapToInt(Distance::getValue)
-                .max()
-                .orElseThrow(IllegalArgumentException::new);
-
-        return cars.stream()
-                .filter(car -> car.getDistance().getValue() == max)
-                .map(CarResponseDto::getName)
-                .collect(Collectors.toList());
     }
 }

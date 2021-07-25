@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.controller.RacingGameController;
-import racingcar.controller.dto.CarRequestDto;
+import racingcar.controller.dto.RacingGameRequestDto;
 import racingcar.controller.dto.RacingGameResponseDto;
 import racingcar.view.ConsoleInputView;
 import racingcar.view.ConsoleOutputView;
@@ -12,10 +12,10 @@ public class ApplicationRunner {
 
     public static void main(String[] args) {
         ConsoleInputView consoleInputView = new ConsoleInputView();
-        CarRequestDto carRequestDto = consoleInputView.input();
+        RacingGameRequestDto racingGameRequestDto = consoleInputView.input();
 
         RacingGameController racingGameController = new RacingGameController();
-        List<RacingGameResponseDto> responses = racingGameController.racingGameStart(carRequestDto);
+        List<RacingGameResponseDto> responses = racingGameController.start(racingGameRequestDto);
 
         ConsoleOutputView consoleOutputView = new ConsoleOutputView();
         for (RacingGameResponseDto response : responses) {

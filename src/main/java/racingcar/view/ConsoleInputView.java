@@ -1,16 +1,16 @@
 package racingcar.view;
 
-import racingcar.controller.dto.CarRequestDto;
+import racingcar.controller.dto.RacingGameRequestDto;
 
 import java.util.Scanner;
 
 public class ConsoleInputView {
 
-    public CarRequestDto input() {
+    public RacingGameRequestDto input() {
         Scanner scanner = new Scanner(System.in);
         String names = enterOfName(scanner);
         String numberOfAttempts = enterNumberOfAttempts(scanner);
-        return new CarRequestDto(names, numberOfAttempts);
+        return new RacingGameRequestDto(names, numberOfAttempts);
     }
 
     private String enterNumberOfAttempts(Scanner scanner) {

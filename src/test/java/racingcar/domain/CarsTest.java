@@ -6,10 +6,10 @@ import racingcar.rules.MoveRule;
 import racingcar.rules.NotMoveRule;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CarsTest {
 
@@ -17,6 +17,14 @@ class CarsTest {
     @DisplayName("객체 생성 테스트")
     void create() {
         assertDoesNotThrow(() -> new Cars(Arrays.asList("pobi", "crong", "honux")));
+    }
+
+    @Test
+    @DisplayName("이름이 비어있는 경우")
+    void nameEmpty() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Cars(Collections.emptyList());
+        });
     }
 
     @Test

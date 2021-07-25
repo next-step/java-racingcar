@@ -1,36 +1,34 @@
 package racingcar.controller;
 
-import racingcar.controller.dto.CarRequestDto;
-import racingcar.controller.dto.CarResponseDto;
+import racingcar.controller.dto.RacingGameRequestDto;
 import racingcar.controller.dto.RacingGameResponseDto;
 import racingcar.domain.Cars;
+import racingcar.domain.RacingGame;
 import racingcar.rules.RandomRule;
-import racingcar.rules.Rule;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
 public class RacingGameController {
 
-    public List<RacingGameResponseDto> racingGameStart(CarRequestDto carRequestDto) {
+    public List<RacingGameResponseDto> start(RacingGameRequestDto racingGameRequestDto) {
 
-        final List<String> names = Arrays.asList(carRequestDto.getNames().split(","));
-        final int numberOfAttempts = parseInt(carRequestDto.getNumberOfAttempts());
+        final List<String> names = Arrays.asList(racingGameRequestDto.getNames().split(","));
+        final int numberOfAttempts = parseInt(racingGameRequestDto.getNumberOfAttempts());
 
-        Cars cars = new Cars(names);
-
+        RacingGame racingGame = new RacingGame(names, new RandomRule());
         List<RacingGameResponseDto> response = new ArrayList<>();
 
         for (int i = 0; i < numberOfAttempts; i++) {
-            Rule rule = new RandomRule();
-            cars = cars.move(rule);
-            response.add(new RacingGameResponseDto(CarResponseDto.toDtos(cars), i == numberOfAttempts - 1));
+            Cars cars = racingGame.next();
+            boolean isFinish = i == numberOfAttempts - 1;
+            response.add(new RacingGameResponseDto(cars, isFinish));
         }
 
         return response;
     }
-
 
     private int parseInt(String input) {
         try {
