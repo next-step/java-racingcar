@@ -1,24 +1,26 @@
 package racing.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class RacingCars {
     private List<RacingCar> racingCars = new ArrayList<>();
 
-    public RacingCars(int count) {
-        prepare(count);
+    public RacingCars(int racingCarCount) {
+        prepare(racingCarCount);
     }
 
-    private void prepare(int count) {
-        for (int i = 0; i < count; i++) {
+    private void prepare(int racingCarCount) {
+        for (int i = 0; i < racingCarCount; i++) {
             addRacingCar();
         }
     }
 
     private void addRacingCar() {
         racingCars.add(new RacingCar());
+    }
+
+    public int getSize() {
+        return racingCars.size();
     }
 
     public void moveOrStop(Map<Integer, Integer> racingCarIndexAndNumber) {
@@ -42,5 +44,20 @@ public class RacingCars {
         if (index < 0 || index >= racingCars.size()) {
             throw new IllegalArgumentException(String.format("값이 유효한 범위 안에 있지 않습니다. (index: %d)", index));
         }
+    }
+
+    public int[] getRacingCarsPosition() {
+        List<RacingCar> racingCars = getRacingCars();
+        int[] positions = new int[racingCars.size()];
+
+        for (int i = 0; i < positions.length; i++) {
+            RacingCar racingCar = racingCars.get(i);
+            positions[i] = racingCar.getPosition();
+        }
+        return positions;
+    }
+
+    private List<RacingCar> getRacingCars() {
+        return Collections.unmodifiableList(racingCars);
     }
 }
