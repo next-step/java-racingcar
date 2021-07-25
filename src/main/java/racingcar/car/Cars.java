@@ -1,22 +1,24 @@
 package racingcar.car;
 
+import racingcar.strategy.MoveStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import racingcar.strategy.MoveStrategy;
-
 public class Cars {
 
+	private static final String DELIMITER = ",";
 	private final List<Car> cars;
 
 	private Cars(List<Car> cars) {
 		this.cars = cars;
 	}
 
-	public static Cars of(int numberOfCars) {
+	public static Cars of(String carNames, int carCount) {
 		List<Car> cars = new ArrayList<>();
-		for (int i = 0; i < numberOfCars; i++) {
-			cars.add(new Car());
+		String[] names = carNames.split(DELIMITER);
+		for (int i = 0; i < carCount; i++) {
+			cars.add(new Car(new Name(names[i])));
 		}
 		return new Cars(cars);
 	}

@@ -14,14 +14,16 @@ class CarsTest {
 	@DisplayName("주어진 대수만큼 자동차들을 생성한다.")
 	@Test
 	void create() {
-		Cars cars = Cars.of(5);
-		assertThat(cars.cars()).hasSize(5);
+		String carNames = "pobi,crong,honux";
+		Cars cars = Cars.of(carNames, 3);
+		assertThat(cars.cars()).hasSize(3);
 	}
 
 	@DisplayName("자동차들이 이동하면 위치가 증가한다.")
 	@Test
 	void race() {
-		Cars cars = Cars.of(3);
+		String carNames = "pobi,crong,honux";
+		Cars cars = Cars.of(carNames, 3);
 		cars.move(new AlwaysMoveStrategy());
 		List<Integer> carPositions = cars.cars()
 										.stream()

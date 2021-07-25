@@ -10,10 +10,10 @@ public class RacingGameApplication {
 
     public static void main(String[] args) {
         String carNames = InputView.getCarNames();
-        int numberOfCars = InputView.getNumberOfCars();
+        int carCount = InputView.getNumberOfCars();
         int tryCount = InputView.getTryCount();
 
-        Cars cars = Cars.of(numberOfCars);
+        Cars cars = Cars.of(carNames, carCount);
         RacingGame racingGame = new RacingGame(cars, new RandomMoveStrategy());
 
         ResultView.printResultMessage();
