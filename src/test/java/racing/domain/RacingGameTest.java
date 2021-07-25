@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingGameTest {
-    private NumberMoreThanFourConditionStrategy strategy = NumberMoreThanFourConditionStrategy.getInstance();
+    private final NumberMoreThanFourConditionStrategy strategy = NumberMoreThanFourConditionStrategy.getInstance();
 
     @Test
     @DisplayName("정적_팩토리가_인스턴스를_생성하는지_확인한다")
@@ -18,10 +18,10 @@ public class RacingGameTest {
     }
 
     @Test
-    @DisplayName("자동차와_시도할_회수는_3회씩_결과_문자열은_1글자_이상일_것이다")
+    @DisplayName("자동차와_시도할_회수는_3회씩_결과_크기는_3")
     void run() throws Exception {
-        String actual = RacingGame.init(strategy, "pobi,crong,honux", 3).run();
-        assertThat(actual.length()).isGreaterThanOrEqualTo(1);
+        int actual = RacingGame.init(strategy, "pobi,crong,honux", 3).run().size();
+        assertThat(actual).isGreaterThanOrEqualTo(3);
     }
 
     @Test

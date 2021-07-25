@@ -3,30 +3,34 @@ package racing.model;
 import java.util.Objects;
 
 public class Car implements Racer, Comparable<Car> {
-    private static final String MARK = "-";
-
     private String name;
-    private String position;
+    private int position;
 
-    private Car(String name, String position) {
+    private Car(String name) {
+        this.name = name;
+    }
+
+    private Car(String name, int position) {
         this.name = name;
         this.position = position;
     }
 
-    public static Car of(String name, String position) {
-        Objects.requireNonNull(name);
-        Objects.requireNonNull(position);
-        return new Car(name, position);
+    public static Car of(String name) {
+        return new Car(Objects.requireNonNull(name));
+    }
+
+    public static Car deepCopy(Car car) {
+        return new Car(car.name, car.position);
     }
 
     @Override
     public Car go() {
-        this.position += MARK;
+        this.position++;
         return this;
     }
 
     @Override
-    public String position() {
+    public int position() {
         return position;
     }
 
@@ -36,6 +40,6 @@ public class Car implements Racer, Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        return this.position.length() - o.position.length();
+        return this.position - o.position;
     }
 }

@@ -21,7 +21,7 @@ public class RacersTest {
     @BeforeEach
     void setUp() {
         racers = Racers.from((List<? extends Racer>) range(0, 3)
-                .mapToObj(it -> Car.of("pobi", ""))
+                .mapToObj(it -> Car.of("pobi"))
                 .collect(toCollection(ArrayList::new)));
     }
 
@@ -34,21 +34,21 @@ public class RacersTest {
     @Test
     @DisplayName("조회_테스트")
     void get() throws Exception {
-        assertThat(racers.get(0).position()).isEqualTo("");
+        assertThat(racers.get(0).position()).isEqualTo(0);
     }
 
     @Test
     @DisplayName("전진_테스트_조건은_참")
     void goForward() throws Exception {
-        racers.turnAround(move, new StringBuilder());
-        assertThat(racers.get(0).position()).isEqualTo("-");
+        racers.turnAround(move, new ArrayList<Racers>());
+        assertThat(racers.get(0).position()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("전진_테스트_조건은_거짓")
     void goForwardNot() throws Exception {
-        racers.turnAround(stay, new StringBuilder());
-        assertThat(racers.get(0).position()).isEqualTo("");
+        racers.turnAround(stay, new ArrayList<Racers>());
+        assertThat(racers.get(0).position()).isEqualTo(0);
     }
 
     @Test

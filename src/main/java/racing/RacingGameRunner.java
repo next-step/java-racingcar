@@ -1,16 +1,19 @@
 package racing;
 
-import racing.strategy.NumberMoreThanFourConditionStrategy;
 import racing.domain.RacingGame;
+import racing.strategy.NumberMoreThanFourConditionStrategy;
+import racing.util.RacingGamePrinter;
 
-import static racing.util.RacingGamePrinter.print;
-import static racing.util.RacingGameScanner.enterNames;
-import static racing.util.RacingGameScanner.enterStageCount;
+import static java.lang.Integer.parseInt;
+import static racing.util.RacingGameScanner.enter;
 
 public class RacingGameRunner {
     public static void main(String[] args) {
-        NumberMoreThanFourConditionStrategy strategy = NumberMoreThanFourConditionStrategy.getInstance();
-        RacingGame game = RacingGame.init(strategy, enterNames(), enterStageCount());
-        print(game.run());
+        String[] enter = enter();
+        RacingGame game = RacingGame.init(NumberMoreThanFourConditionStrategy.getInstance(),
+                                          enter[0], parseInt(enter[1]));
+
+        RacingGamePrinter printer = new RacingGamePrinter();
+        printer.print(game.run());
     }
 }
