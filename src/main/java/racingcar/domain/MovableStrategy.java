@@ -1,6 +1,6 @@
 package racingcar.domain;
 
 @FunctionalInterface
-public interface Movable {
+public interface MovableStrategy {
     boolean move();
 }

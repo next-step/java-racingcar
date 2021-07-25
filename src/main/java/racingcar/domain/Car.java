@@ -7,7 +7,7 @@ public class Car {
         this.position = new Position();
     }
 
-    public void move(Movable movable) {
+    public void move(MovableStrategy movable) {
         if (movable.move()) {
             position = position.move();
         }
