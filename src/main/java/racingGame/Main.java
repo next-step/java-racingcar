@@ -5,16 +5,17 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        int carCount = InputView.inputCarCount();
+        List<Car> cars = InputView.inputCarNames();
         int repeatCount = InputView.inputRepeatCount();
 
-        Game game = new Game(carCount, repeatCount);
+        Game game = new Game(cars, repeatCount);
 
         ResultView.printGameStart();
         for (int i = 0; i < repeatCount; i++) {
-            List<Integer> list = RandomNumber.makeRandomNumber(carCount);
-            game.runOnce(list);
-            ResultView.printResult(game.getCarsStatus());
+            List<Integer> randomNumbers = RandomNumber.makeRandomNumber(cars.size());
+            game.runOnce(randomNumbers);
+            ResultView.printResult(game.getCars());
         }
+        ResultView.printWinnerMessage(game.findWinners());
     }
 }

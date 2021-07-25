@@ -7,6 +7,7 @@ import java.util.Random;
 public class RandomNumber {
 
     public static final int BOUND = 10;
+
     public static final Random random = new Random();
 
     public static List<Integer> makeRandomNumber(int count) {

@@ -7,18 +7,19 @@ import java.util.stream.Collectors;
 
 public class Game {
 
+    public static final String VALID_CAR_COUNT_MESSAGE = "자동차 수는 0 혹은 음수가 될 수 없습니다.";
+    public static final String VALID_REPEAT_COUNT_MESSAGE = "반복 횟수는 0 혹은 음수가 될 수 없습니다.";
     public static final int MIN_CAR_COUNT = 0;
     public static final int MIN_REPEAT_COUNT = 0;
 
     private final int repeatCount;
     private List<Car> cars = new ArrayList<>();
 
-    public Game(int carCount, int repeatCount) {
-        valid(carCount, repeatCount);
+    public Game(List<Car> cars, int repeatCount) {
+        validCarCount(cars.size());
+        validRepeatCount(repeatCount);
 
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
+        this.cars.addAll(cars);
         this.repeatCount = repeatCount;
     }
 
@@ -30,30 +31,36 @@ public class Game {
         return true;
     }
 
-    public List<Integer> getCarsStatus() {
+    public List<Car> findWinners() {
+        int maxDistance = getMaxCarDistance();
         return cars.stream()
-                .map(Car::getDistance)
+                .filter(car -> car.equalsDistance(maxDistance))
                 .collect(Collectors.toList());
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     public int getRepeatCount() {
         return repeatCount;
     }
 
-    private void valid(int carCount, int repeatCount) {
-        validCarCount(carCount);
-        validRepeatCount(repeatCount);
+    private int getMaxCarDistance() {
+        return cars.stream()
+                .mapToInt(Car::getDistance)
+                .max().orElse(0);
     }
 
     private void validCarCount(int carCount) {
         if (carCount <= MIN_CAR_COUNT) {
-            throw new IllegalArgumentException("자동차 수는 0 혹은 음수가 될 수 없습니다.");
+            throw new IllegalArgumentException(VALID_CAR_COUNT_MESSAGE);
         }
     }
 
     private void validRepeatCount(int repeatCount) {
         if (repeatCount <= MIN_REPEAT_COUNT) {
-            throw new IllegalArgumentException("반복 횟수는 0 혹은 음수가 될 수 없습니다.");
+            throw new IllegalArgumentException(VALID_REPEAT_COUNT_MESSAGE);
         }
     }
 }
