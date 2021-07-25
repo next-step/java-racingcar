@@ -2,17 +2,17 @@ package racing.domain;
 
 public class Racing {
 
-    private boolean[] racing;
+    private boolean[] racingResult;
 
-    public Racing(boolean[] racing) {
-        this.racing = racing;
+    public Racing(boolean[] racingResult) {
+        this.racingResult = racingResult;
     }
     public int getRacingLength() {
-        return racing.length;
+        return racingResult.length;
     }
 
-    public boolean getRacingResult(int car) {
-        return racing[car];
+    public boolean getRacingDetailResult(int car) {
+        return racingResult[car];
     }
 
 }

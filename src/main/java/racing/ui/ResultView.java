@@ -10,34 +10,34 @@ public class ResultView {
     private static final String RACING_RESULT_MESSAGE = "실행결과";
     private static final String RACING_SIGN = "-";
 
-    private String[] racingResult;
+    private String[] raceResult;
 
-    public void result(List<Racing> racingList, int racingCar){
+    public void result(List<Racing> racingResultList, int racingCar){
 
         System.out.println(RACING_RESULT_MESSAGE);
 
-        racingResult = new String[racingCar];
-        Arrays.fill(racingResult, "");
+        raceResult = new String[racingCar];
+        Arrays.fill(raceResult, "");
 
-        for (Racing racing : racingList) {
-            getRacingResult(racing);
+        for (Racing racingResult : racingResultList) {
+            getRacingResult(racingResult);
             System.out.println();
         }
     }
 
-    private void getRacingResult(Racing racing) {
-        int length = racing.getRacingLength();
+    private void getRacingResult(Racing racingResult) {
+        int length = racingResult.getRacingLength();
         for (int car = 0; car < length; car++) {
-            racingResult[car] = checkIsMoved(racing, car, racingResult[car]);
-            System.out.println(racingResult[car]);
+            raceResult[car] = checkIsMoved(racingResult, car, raceResult[car]);
+            System.out.println(raceResult[car]);
         }
     }
 
-    public String checkIsMoved(Racing racing, int car, String result){
-        if(racing.getRacingResult(car)){
-            result += RACING_SIGN;
+    public String checkIsMoved(Racing racingResult, int car, String raceResultConvert){
+        if(racingResult.getRacingDetailResult(car)){
+            raceResultConvert += RACING_SIGN;
         }
-        return result;
+        return raceResultConvert;
     }
 
 }

@@ -14,21 +14,21 @@ public class RacingService {
     }
 
     public boolean[] race(int cars) {
-        boolean[] racingResult = new boolean[cars];
+        boolean[] racingDetailResult = new boolean[cars];
         for (int i = 0; i < cars; i++) {
-            racingResult[i] = randomPlay();
+            racingDetailResult[i] = randomPlay();
         }
-        return racingResult;
+        return racingDetailResult;
     }
 
     public List<Racing> exec(int racingRound, int racingCar){
 
         RacingUtils.checkInputValue(racingRound, racingCar);
-        List<Racing> racingList = new ArrayList<>();
+        List<Racing> racingResultList = new ArrayList<>();
         for (int i = 0; i < racingRound; i++) {
-            Racing racing = new Racing(race(racingCar));
-            racingList.add(i, racing);
+            Racing racingResult = new Racing(race(racingCar));
+            racingResultList.add(i, racingResult);
         }
-        return racingList;
+        return racingResultList;
     }
 }
