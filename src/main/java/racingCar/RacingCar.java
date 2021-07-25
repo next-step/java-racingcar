@@ -41,7 +41,6 @@ public class RacingCar {
      */
     private int getMove() {
         Random moveIndex = new Random();
-        moveIndex.setSeed(System.currentTimeMillis());
         int move = moveIndex.nextInt(9);
         return move;
     }
