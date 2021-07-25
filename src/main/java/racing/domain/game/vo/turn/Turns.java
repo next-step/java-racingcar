@@ -33,22 +33,19 @@ public class Turns implements Iterable<Turn> {
                 .collect(Collectors.toList());
     }
 
-    private List<Turn> filtered(Predicate<Turn> filter) {
-        return values.stream()
+    private Turns filter(Predicate<Turn> filter) {
+        return new Turns(values.stream()
                 .filter(filter)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList())
+        );
     }
 
     public Turns waitingTurns() {
-        return new Turns(
-                filtered(Turn::isWaiting)
-        );
+        return filter(Turn::isWaiting);
     }
 
     public Turns endedTurns() {
-        return new Turns(
-                filtered(t -> !t.isWaiting())
-        );
+        return filter(t -> !t.isWaiting());
     }
 
     public boolean isEmpty() {

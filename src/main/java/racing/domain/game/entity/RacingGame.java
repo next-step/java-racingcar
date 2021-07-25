@@ -5,9 +5,7 @@ import racing.domain.car.vo.fuel.Fuel;
 import racing.domain.game.vo.turn.Turn;
 import racing.domain.game.vo.turn.Turns;
 
-import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class RacingGame {
     private final Cars cars;

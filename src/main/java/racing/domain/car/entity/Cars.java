@@ -1,13 +1,10 @@
 package racing.domain.car.entity;
 
 import racing.domain.car.vo.Location;
-import racing.domain.car.vo.Name;
 import racing.domain.car.vo.fuel.Fuel;
 import racing.exception.EmptyCarException;
 
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Cars implements Iterable<Car>, Cloneable {

@@ -1,7 +1,6 @@
 package racing.view;
 
 import racing.domain.car.entity.BasicCar;
-import racing.domain.car.entity.Car;
 import racing.domain.car.entity.Cars;
 import racing.domain.car.vo.Name;
 import racing.domain.car.vo.fuel.RandomFuel;
@@ -19,7 +18,6 @@ import static racing.view.DosInputView.Text.*;
 public class DosInputView implements InputView {
     private final Scanner scanner;
     private static final String NAME_DELIMITER = ",";
-    private static final int MIN_TURN_SIZE = 1;
 
     public DosInputView() {
         this.scanner = new Scanner(System.in);
@@ -28,12 +26,9 @@ public class DosInputView implements InputView {
     private int inputNumber(Text guideText) {
         String input = inputLine(guideText);
         if (!StringUtils.isNumber(input))
-            throw new InvalidInputException();
+            throw new InvalidInputException("숫자만 입력 해주세요.");
 
-        int intInput = Integer.parseInt(input);
-        if (intInput < MIN_TURN_SIZE)
-            throw new InvalidInputException("자동차 경주는 1회 이상 이어야 시작 됩니다.");
-        return intInput;
+        return Integer.parseInt(input);
     }
 
     private String inputLine(Text guideText) {
@@ -42,8 +37,6 @@ public class DosInputView implements InputView {
         return scanner.nextLine();
     }
 
-
-    // 아래가 리팩토링
     private Cars inputCars() {
         String strNames = inputLine(INPUT_CAR_NAMES);
         String[] strNameSplitValues = strNames.split(NAME_DELIMITER);
