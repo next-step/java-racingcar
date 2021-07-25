@@ -2,6 +2,11 @@ package stage2;
 
 public class Calculator {
     public Integer execute(String input) {
+
+        if ("".equals(input) || input == null) {
+            throw new IllegalArgumentException();
+        }
+
         String[] split = input.split(" ");
         Integer init = Integer.parseInt(split[0]);
         String operation = "";
