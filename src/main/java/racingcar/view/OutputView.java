@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.model.Car;
+
 import java.util.List;
 
 public class OutputView {
@@ -9,9 +11,10 @@ public class OutputView {
         System.out.println(MSG_RESULT);
     }
 
-    public void printStatusFromScores(List<Integer> scores) {
-        scores.forEach(score -> {
-            for (int i = 0; i < score; i++) {
+    public void printStatusFromScores(List<Car> cars) {
+        cars.forEach(car -> {
+            System.out.print(car.getName()+" : ");
+            for (int i = 0; i < car.getScore(); i++) {
                 System.out.print("-");
             }
             System.out.println();

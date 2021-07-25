@@ -2,7 +2,7 @@ package racingcar.model;
 
 import java.util.Random;
 
-class Car {
+public class Car {
     private static final int BOUND = 10;
     private static final int GO_CONDITION = 4;
 
@@ -14,12 +14,16 @@ class Car {
         score = 0;
     }
 
-    private void go() {
-        score++;
+    public String getName(){
+        return name;
     }
 
-    int getScore() {
-        return this.score;
+    public int getScore() {
+        return score;
+    }
+
+    private void go() {
+        score++;
     }
 
     void attempt(){

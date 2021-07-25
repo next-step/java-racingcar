@@ -15,9 +15,13 @@ public class Cars {
         cars.forEach(Car::attempt);
     }
 
-    public List<Integer> getScores() {
-        return cars.stream()
-                .map(Car::getScore)
-                .collect(Collectors.toList());
+    public List<Car> getCars(){
+        return cars;
     }
+
+//    public List<Integer> getScores() {
+//        return cars.stream()
+//                .map(Car::getScore)
+//                .collect(Collectors.toList());
+//    }
 }
