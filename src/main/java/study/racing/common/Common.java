@@ -21,7 +21,4 @@ public class Common {
         return random.nextInt(RANDOM_MAX_NUMBER);
     }
 
-    public static String[] splitCarsName(String carsName) {
-        return carsName.split(",");
-    }
 }

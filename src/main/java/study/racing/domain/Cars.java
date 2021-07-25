@@ -1,7 +1,6 @@
 package study.racing.domain;
 
 import static study.racing.common.Common.createRandomNumber;
-import static study.racing.common.Common.splitCarsName;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,6 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
+
+    public static final String SPLIT_MARK = ",";
 
     private final List<Car> cars = new ArrayList<>();
 
@@ -19,7 +20,7 @@ public class Cars {
     }
 
     public Cars(String carName) {
-        Arrays.asList(splitCarsName(carName)).forEach(name -> cars.add(readyToCar(name)));
+        Arrays.asList(carName.split(SPLIT_MARK)).forEach(name -> cars.add(readyToCar(name)));
     }
 
     public int getMaxMoveDistance() {
@@ -52,4 +53,5 @@ public class Cars {
             .filter(car -> car.isWinner(getMaxMoveDistance()))
             .collect(Collectors.toList());
     }
+
 }
