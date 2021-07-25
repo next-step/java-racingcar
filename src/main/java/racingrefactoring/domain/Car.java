@@ -2,22 +2,21 @@ package racingrefactoring.domain;
 
 public class Car {
 
-	private int forwardCount = 0;
 	private final Name name;
+	private final ForwardCount forwardCount = new ForwardCount();
 
 	public Car(String name) {
-
 		this.name = new Name(name);
 	}
 
 	public void moveForward(Moving moving) {
 		if (moving.canMoveForward()) {
-			forwardCount++;
+			forwardCount.increase();
 		}
 	}
 
 	public int getForwardCount() {
-		return forwardCount;
+		return forwardCount.count();
 	}
 
 	public String name() {
@@ -25,7 +24,7 @@ public class Car {
 	}
 
 	protected boolean isMoved() {
-		return forwardCount > 0;
+		return forwardCount.greatThan(0);
 	}
 
 }
