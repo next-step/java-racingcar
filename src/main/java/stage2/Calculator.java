@@ -6,27 +6,14 @@ public class Calculator {
         Integer init = Integer.parseInt(split[0]);
         String operation = "";
 
-        for (int i = 1; i < split.length; i++) {
+        for (int i = 2; i < split.length; i++) {
             if (i % 2 == 0) {
                 operation = split[i - 1];
                 Integer first = init;
                 Integer second = Integer.parseInt(split[i]);
-                switch (operation) {
-                    case "+":
-                        init = first + second;
-                        break;
-                    case "-":
-                        init = first - second;
-                        break;
-                    case "*":
-                        init = first * second;
-                        break;
-                    case "/":
-                        init = first / second;
-                        break;
-                    default:
-                        break;
-                }
+
+                Operation op = Operation.findOperation(operation);
+                init = op.calculate(first, second);
             }
         }
 
