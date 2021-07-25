@@ -19,7 +19,7 @@ public class StringCalculator {
             if (operator.equals(Operator.DIV) && num2 == 0) {
                 throw new IllegalArgumentException();
             }
-            answer = operator.execute().applyAsInt(answer, num2);
+            answer = operator.execute(answer, num2);
         }
         return answer;
     }

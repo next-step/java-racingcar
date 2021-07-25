@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Cars;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,7 +14,7 @@ class CarsTest {
     @Test
     void countCars() {
         Cars cars = new Cars(3);
-        assertThat(cars.countCars()).isEqualTo(3);
+        assertThat(cars.getScores()).isEqualTo(Arrays.asList(0,0,0));
     }
 
     @DisplayName("시도 후 점수가 달라져야한다.")
