@@ -5,7 +5,7 @@ import racingcar.domain.MoveStrategy;
 
 public class Car {
 
-    private Position position;
+    private final Position position;
 
     public Car() {
         this(0);
@@ -41,5 +41,10 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(position);
+    }
+
+    @Override
+    public String toString() {
+        return position.toString();
     }
 }

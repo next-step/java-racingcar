@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
-//import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
@@ -12,31 +11,25 @@ import racingcar.domain.car.Car;
 public class CarsTest {
 
     private Cars cars;
-    private List<Car> rawCars;
 
     @BeforeEach
     void setUp() {
-        Car pobi = new Car(1);
-        Car crong = new Car(2);
-        Car honux = new Car(3);
-        rawCars = Arrays.asList(pobi, crong, honux);
-        cars = new Cars(rawCars);
+        cars = Cars.createWithDefaults(3);
     }
 
     @Test
     void move() {
-//        List<Car> movedCarList = rawCars
-//                .stream()
-//                .map(car -> car.move(() -> true))
-//                .collect(Collectors.toList());
-        List<Car> movedCarList = Arrays.asList(new Car(2), new Car(3), new Car(4));
-        Cars expected = new Cars(movedCarList);
+        List<Car> carList = Arrays.asList(
+                new Car(1),
+                new Car(1),
+                new Car(1));
+        Cars expected = Cars.createFromList(carList);
         assertThat(cars.move(() -> true)).isEqualTo(expected);
     }
 
     @Test
     void stop() {
-        Cars expected = new Cars(rawCars);
+        Cars expected = Cars.createWithDefaults(3);
         assertThat(cars.move(() -> false)).isEqualTo(expected);
     }
 }
