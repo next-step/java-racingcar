@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Car {
 
-    public static final int MOVABLE_LIMIT_NUMBER = 4;
     public static final String VALID_CAR_NAME_MESSAGE = "자동차 이름은 5자를 초과할 수 없습니다.";
+    public static final int MOVABLE_LIMIT_NUMBER = 4;
     public static final int MAXIMUM_CAR_NAME_LENGTH = 5;
     public static final int DEFAULT_CAR_DISTANCE = 0;
 
@@ -39,6 +39,10 @@ public class Car {
 
     public int getDistance() {
         return distance;
+    }
+
+    public boolean equalsDistance(int distance) {
+        return this.distance == distance;
     }
 
     @Override
