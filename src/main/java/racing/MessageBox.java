@@ -27,6 +27,10 @@ public class MessageBox {
 		System.out.println(message);
 	}
 
+	public void MessageBoxNextLine() {
+		System.out.print("\n");
+	}
+
 	public void racingResultMessage(String playerName, String racingResult) {
 		commonMessageBox(playerName + racingResult);
 	}
