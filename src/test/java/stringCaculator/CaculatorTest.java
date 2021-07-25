@@ -23,4 +23,11 @@ public class CaculatorTest {
         result = Calculator.calculate("3 - 5");
         assertThat(result).isEqualTo(-2);
     }
+
+    @Test
+    @DisplayName("나눗셈 계산을 하는지 테스트")
+    void divide() {
+        int result = Calculator.calculate("10 / 5");
+        assertThat(result).isEqualTo(2);
+    }
 }
