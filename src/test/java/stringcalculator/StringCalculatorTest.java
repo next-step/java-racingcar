@@ -13,6 +13,14 @@ class StringCalculatorTest {
     private final StringCalculator sut = new StringCalculator();
 
     @Test
+    @DisplayName("수 하나만 들어가면 그대로 나와야 함")
+    public void one() {
+        int result = sut.calculate("1");
+
+        assertThat(result).isEqualTo(1);
+    }
+
+    @Test
     @DisplayName("덧셈")
     public void plus() {
         int result = sut.calculate("1 + 2");
