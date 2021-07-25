@@ -30,4 +30,11 @@ public class CaculatorTest {
         int result = Calculator.calculate("10 / 5");
         assertThat(result).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("곱셈 계산을 하는지 테스트")
+    void multiple() {
+        int result = Calculator.calculate("10 * 5");
+        assertThat(result).isEqualTo(50);
+    }
 }

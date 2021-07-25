@@ -16,6 +16,8 @@ public class Calculator {
             result = first - second;
         } else if (operator.equals("/")) {
             result = first / second;
+        } else if (operator.equals("*")) {
+            result = first * second;
         }
 
         return result;
