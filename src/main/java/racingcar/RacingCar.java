@@ -1,21 +1,27 @@
 package racingcar;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class RacingCar {
-	public int pos;
+	public int position;
+	public static final int INITIAL_POSITION = 0;
 
-	public RacingCar() {
-		this.pos = 0;
+	public RacingCar(int position) {
+		this.position = position;
 	}
 
-	public int getPos() {
-		return this.pos;
+	public String getRacingCarDashString() {
+		return Arrays.stream(new String[this.position])
+					 .map(s -> "-")
+			         .collect(Collectors.joining(""));
 	}
 
-	public void setPos(int pos) {
-		this.pos = pos;
+	public boolean movable(int randomValue) {
+		return randomValue >= 4;
 	}
 
 	public void forward() {
-		pos += ( Util.generateForwardValue() >= 4 ) ? 1 : 0;
+		position++;
 	}
 }
