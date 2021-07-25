@@ -14,7 +14,11 @@ public class StringCalcurator {
             return Integer.parseInt(value[0]) - Integer.parseInt(value[2]);
         }
 
-        return Integer.parseInt(value[0]) * Integer.parseInt(value[2]);
+        if("*".equals(operator)){
+            return Integer.parseInt(value[0]) * Integer.parseInt(value[2]);
+        }
+
+        return Integer.parseInt(value[0]) / Integer.parseInt(value[2]);
     }
 
 }

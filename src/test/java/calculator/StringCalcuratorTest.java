@@ -28,11 +28,15 @@ public class StringCalcuratorTest {
         assertThat(result).isEqualTo(10);
     }
 
+    @DisplayName("나눗셈")
     @Test
     void 나눗셈() {
-
+        int result = StringCalcurator.cal("10 / 2");
+        assertThat(result).isEqualTo(5);
     }
+
     // 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
+
     @Test
     void null_체크() {
     }
