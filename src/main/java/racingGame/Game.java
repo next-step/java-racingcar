@@ -9,6 +9,8 @@ public class Game {
 
     public static final int MIN_CAR_COUNT = 0;
     public static final int MIN_REPEAT_COUNT = 0;
+    public static final String VALID_CAR_COUNT_MESSAGE = "자동차 수는 0 혹은 음수가 될 수 없습니다.";
+    public static final String VALID_REPEAT_COUNT_MESSAGE = "반복 횟수는 0 혹은 음수가 될 수 없습니다.";
 
     private final int repeatCount;
     private List<Car> cars = new ArrayList<>();
@@ -52,13 +54,13 @@ public class Game {
 
     private void validCarCount(int carCount) {
         if (carCount <= MIN_CAR_COUNT) {
-            throw new IllegalArgumentException("자동차 수는 0 혹은 음수가 될 수 없습니다.");
+            throw new IllegalArgumentException(VALID_CAR_COUNT_MESSAGE);
         }
     }
 
     private void validRepeatCount(int repeatCount) {
         if (repeatCount <= MIN_REPEAT_COUNT) {
-            throw new IllegalArgumentException("반복 횟수는 0 혹은 음수가 될 수 없습니다.");
+            throw new IllegalArgumentException(VALID_REPEAT_COUNT_MESSAGE);
         }
     }
 }
