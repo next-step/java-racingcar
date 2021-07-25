@@ -13,6 +13,12 @@ public class RacingUtils {
         return RANDOM_NUMBER.nextInt(RANDOM_NUMBER_LIMIT);
     }
 
+    public static void checkRandomNumber(int number){
+        if(number < INPUT_VALUE_RULE || number > RANDOM_NUMBER_LIMIT){
+            throw new IllegalArgumentException("생성된 숫자가 0보다 작거나 10보다 큽니다");
+        }
+    }
+
     public static boolean compareNumbers(int number){
         return number >= RANDOM_NUMBER_RULE;
     }

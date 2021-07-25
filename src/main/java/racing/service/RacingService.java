@@ -10,6 +10,7 @@ public class RacingService {
 
     public boolean randomPlay() {
         int randomNumber = RacingUtils.randomNumber();
+        RacingUtils.checkRandomNumber(randomNumber);
         return RacingUtils.compareNumbers(randomNumber);
     }
 
