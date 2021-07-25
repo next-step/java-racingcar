@@ -19,7 +19,7 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public static Cars of (int numberOfCar, MovingStrategy movingStrategy) {
+    public static Cars of(int numberOfCar, MovingStrategy movingStrategy) {
         List<Car> cars = new ArrayList<Car>();
 
         for (int i = 0; i < numberOfCar; i++) {
@@ -40,7 +40,6 @@ public class Cars {
 
     public void movable() {
         cars.forEach(car -> car.movable());
-
     }
 
 }

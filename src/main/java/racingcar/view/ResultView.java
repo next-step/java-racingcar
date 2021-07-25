@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ResultView {
 
-    private static final String CAR_POSITION = "-";
+    private static final String CAR_POSITION_DISPLAY = "-";
 
     public static void printResult(Board board) {
         List<List<Integer>> allRecords = board.getAllRecords();
@@ -23,10 +23,10 @@ public class ResultView {
         });
     }
 
-    private static void appendCarPosition(Integer carPosition){
+    private static void appendCarPosition(Integer carPosition) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < carPosition; i++) {
-            sb.append(CAR_POSITION);
+            sb.append(CAR_POSITION_DISPLAY);
         }
         System.out.println(sb);
     }
