@@ -1,7 +1,5 @@
 package racingrefactoring.domain;
 
-import java.util.Objects;
-
 public class ForwardCount {
 
 	private int value;
@@ -22,10 +20,10 @@ public class ForwardCount {
 	}
 
 	public boolean isPositive() {
-		return greatThan(0);
+		return greaterThan(0);
 	}
 
-	public boolean greatThan(int value) {
+	public boolean greaterThan(int value) {
 		return this.value > value;
 	}
 

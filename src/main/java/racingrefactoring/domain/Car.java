@@ -1,7 +1,5 @@
 package racingrefactoring.domain;
 
-import java.util.Objects;
-
 public class Car {
 
 	private final Name name;
@@ -31,7 +29,7 @@ public class Car {
 	}
 
 	public boolean isMoved() {
-		return forwardCount.greatThan(0);
+		return forwardCount.greaterThan(0);
 	}
 
 	public boolean isWinner(int winnerCount) {
@@ -49,6 +47,5 @@ public class Car {
 		Car car = (Car) o;
 		return name.equals(car.name);
 	}
-
 
 }
