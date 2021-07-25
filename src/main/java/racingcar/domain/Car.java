@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class Car {
     private static final int MOVE_NUM = 4;
-    private static final int WINNER_POSITION = 5;
     private CarName name;
     private int position;
 
@@ -31,6 +30,10 @@ public class Car {
         return randomNumber >= MOVE_NUM;
     }
 
+    public boolean isMoreThan(int tempWinnerPosition){
+        return tempWinnerPosition<=this.position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -42,12 +45,5 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name);
-    }
-
-    public boolean isWinner() {
-        if (this.position >= WINNER_POSITION) {
-            return true;
-        }
-        return false;
     }
 }
