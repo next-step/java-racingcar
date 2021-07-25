@@ -3,7 +3,7 @@ package stage2;
 public class Calculator {
     public Integer execute(String input) {
 
-        if ("".equals(input) || input == null) {
+        if (" ".equals(input) || "".equals(input) || input == null) {
             throw new IllegalArgumentException();
         }
 
