@@ -12,13 +12,15 @@ public class RacingApplication {
     private static List<Racing> racingList = new ArrayList<>();
 
     public static void main(String[] args) {
+        RacingService racingService = new RacingService();
+
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
         int racingCar = inputView.getRacingCar();
         int racingRound = inputView.getRacingRound();
 
-        racingList = RacingService.exec(racingRound, racingCar);
+        racingList = racingService.exec(racingRound, racingCar);
         resultView.result(racingList, racingCar);
     }
 }

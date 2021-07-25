@@ -8,12 +8,12 @@ import java.util.List;
 
 public class RacingService {
 
-    public static boolean randomPlay() {
+    public boolean randomPlay() {
         int randomNumber = RacingUtils.randomNumber();
         return RacingUtils.compareNumbers(randomNumber);
     }
 
-    public static boolean[] race(int cars) {
+    public boolean[] race(int cars) {
         boolean[] racingResult = new boolean[cars];
         for (int i = 0; i < cars; i++) {
             racingResult[i] = randomPlay();
@@ -21,7 +21,7 @@ public class RacingService {
         return racingResult;
     }
 
-    public static List<Racing> exec(int racingRound, int racingCar){
+    public List<Racing> exec(int racingRound, int racingCar){
 
         RacingUtils.checkInputValue(racingRound, racingCar);
         List<Racing> racingList = new ArrayList<>();
