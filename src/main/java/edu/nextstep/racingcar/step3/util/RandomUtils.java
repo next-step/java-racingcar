@@ -2,22 +2,16 @@ package edu.nextstep.racingcar.step3.util;
 
 import java.util.Random;
 
-public class RandomUtils implements Randoms {
+public class RandomUtils {
 
     private final int numberOfRandoms;
 
-    public RandomUtils(Integer numberOfRandoms) {
+    public RandomUtils(int numberOfRandoms) {
         this.numberOfRandoms = numberOfRandoms;
     }
 
-    @Override
-    public Integer getRandomNumber() {
+    public int getRandomNumber() {
         Random random = new Random();
         return random.nextInt(numberOfRandoms);
-    }
-
-    @Override
-    public Integer getNumberOfRandoms() {
-        return numberOfRandoms;
     }
 }
