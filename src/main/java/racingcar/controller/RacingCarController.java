@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.Car;
 import racingcar.domain.Winner;
+import racingcar.utils.RandomNumber;
 import racingcar.view.ResultView;
 
 import java.util.Collections;
@@ -9,17 +10,18 @@ import java.util.List;
 
 public class RacingCarController {
     private final ResultView resultView = new ResultView();
+    private final RandomNumber randomNumber = new RandomNumber();
 
-
-    public List<Car> getWinner(String[] carNames, int tryNumber) {
+    public void getWinner(String[] carNames, int tryNumber) {
         List<Car> cars = Car.createCars(carNames);
 
         for(int i = 0; i < tryNumber; i++) {
-            resultView.printAll(cars);
+            printAll(cars);
         }
 
         Collections.reverse(cars);
-        return createWinnerList(cars);
+        List<Car> winners = createWinnerList(cars);
+        resultView.getWinner(winners);
     }
 
     private List<Car> createWinnerList(List<Car> cars) {
@@ -27,4 +29,11 @@ public class RacingCarController {
         return winner.winnerSelection(cars);
     }
 
+    private void printAll(List<Car> cars) {
+        for(Car car : cars) {
+            int moveNumber = car.move(randomNumber.producedRandomNumber());
+            resultView.print(car.getName(), moveNumber);
+        }
+        System.out.println();
+    }
 }

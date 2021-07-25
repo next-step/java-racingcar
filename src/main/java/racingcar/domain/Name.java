@@ -2,7 +2,7 @@ package racingcar.domain;
 
 public class Name {
     private static final int LIMIT_CAR_NAME_LENGTH = 5;
-    private static final String ERR_MESSAGE = "이름은 5글자가 최대입니다.";
+    private static final String ERR_MESSAGE = "이름은 " + LIMIT_CAR_NAME_LENGTH + "글자가 최대입니다.";
 
     private String carName;
 
