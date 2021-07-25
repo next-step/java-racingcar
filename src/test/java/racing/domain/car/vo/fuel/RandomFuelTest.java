@@ -1,11 +1,10 @@
-package racing.domain.fuel;
+package racing.domain.car.vo.fuel;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;

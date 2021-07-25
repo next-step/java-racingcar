@@ -1,4 +1,4 @@
-package racing.domain;
+package racing.domain.car.vo;
 
 public class Location {
     private static final String UNDER_LOCATION_MESSAGE = "연료는 음수르 충전할 수 없습니다.";

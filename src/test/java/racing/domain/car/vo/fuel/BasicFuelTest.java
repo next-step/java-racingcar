@@ -1,4 +1,4 @@
-package racing.domain.fuel;
+package racing.domain.car.vo.fuel;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

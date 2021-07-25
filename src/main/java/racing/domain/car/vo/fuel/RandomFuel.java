@@ -1,4 +1,4 @@
-package racing.domain.fuel;
+package racing.domain.car.vo.fuel;
 
 import util.RandomUtils;
 

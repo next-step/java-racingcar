@@ -1,8 +1,8 @@
-package racing.domain.car;
+package racing.domain.car.entity;
 
-import racing.domain.Location;
-import racing.domain.Name;
-import racing.domain.fuel.Fuel;
+import racing.domain.car.vo.Location;
+import racing.domain.car.vo.Name;
+import racing.domain.car.vo.fuel.Fuel;
 import racing.exception.EmptyCarException;
 
 import java.util.*;

@@ -1,5 +1,6 @@
-package racing.domain.fuel;
+package racing.domain.car.vo.fuel;
 
+@FunctionalInterface
 public interface Fuel {
     int MIN_VALUE = 0;
 

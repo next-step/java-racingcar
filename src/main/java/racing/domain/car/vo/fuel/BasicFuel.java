@@ -1,4 +1,4 @@
-package racing.domain.fuel;
+package racing.domain.car.vo.fuel;
 
 public class BasicFuel implements Fuel {
     private static final String OVER_FULL_MESSAGE = "최대 충전 가능한 연료를 넘었습니다.";
