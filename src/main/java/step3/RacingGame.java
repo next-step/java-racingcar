@@ -1,12 +1,9 @@
 package step3;
 
-import step3.enums.MOVE;
 import step3.interfaces.OutputInterface;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class RacingGame {
     // Observable Interfaces
@@ -24,7 +21,7 @@ public class RacingGame {
 
     public RacingGame(RacingGameConfiguration racingGameConfiguration) {
         this.racingGameConfiguration = racingGameConfiguration;
-        this.cars = createCars(racingGameConfiguration);
+        this.cars = new CarFactory().createCarsBy(racingGameConfiguration.getNumberOfCars());
     }
 
     public void attach(OutputInterface output) {
@@ -47,10 +44,6 @@ public class RacingGame {
 
     public List<Car> getCars() {
         return this.cars.subList(0, this.cars.size());
-    }
-
-    private List<Car> createCars(RacingGameConfiguration racingGameConfiguration) {
-        return new CarFactory().createCars(racingGameConfiguration.getNumberOfCars());
     }
 
     private void nextTurn() {

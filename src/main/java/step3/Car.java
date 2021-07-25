@@ -10,9 +10,9 @@ public class Car {
     }
 
     public void goOrStop() {
-        MOVE move = MOVE.fromInt(RandomNumberGenerator.getRandomNumberGenerator().getRandomInt());
+        int luckyNumber = RandomNumberGenerator.getRandomNumberGenerator().getRandomInt();
 
-        if (move.equals(MOVE.GO)) {
+        if (MOVE.fromInt(luckyNumber).equals(MOVE.GO)) {
             this.progress();
         }
     }

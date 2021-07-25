@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarFactoryTest {
     @Test
     void createCars() {
-        List<Car> cars = new CarFactory().createCars(5);
+        List<Car> cars = new CarFactory().createCarsBy(5);
 
         assertThat(cars).hasSize(5);
 
