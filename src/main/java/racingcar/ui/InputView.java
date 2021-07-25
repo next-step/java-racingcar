@@ -12,15 +12,18 @@ public class InputView {
 
     public static int getInputCarCount() {
         System.out.println(MESSAGE_INPUT_CAR_COUNT);
+        return getInput();
+    }
+
+    public static int getInputTryCount() {
+        System.out.println(MESSAGE_INPUT_TRY_COUNT);
+        return getInput();
+    }
+
+    public static int getInput() {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         return Integer.parseInt(input);
     }
 
-    public static int getInputTryCount() {
-        System.out.println(MESSAGE_INPUT_TRY_COUNT);
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        return Integer.parseInt(input);
-    }
 }
