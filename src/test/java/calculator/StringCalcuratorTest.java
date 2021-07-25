@@ -21,8 +21,11 @@ public class StringCalcuratorTest {
         assertThat(result).isEqualTo(3);
     }
 
+    @DisplayName("곱셈")
     @Test
     void 곱셈() {
+        int result = StringCalcurator.cal("5 * 2");
+        assertThat(result).isEqualTo(10);
     }
 
     @Test
