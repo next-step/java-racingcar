@@ -9,7 +9,7 @@ public class RaceMain {
 	private static ResultView resultView = new ResultView();
 
 	public void startRace(int forwardCount, RacingCars racingCars) {
-		System.out.println("\n실행결과");
+		resultView.outputStatement();
 		for (int i = 0 ; i < forwardCount ; i++) {
 			racingCars.forwardCars();
 			resultView.outputResult(racingCars.getCars());
