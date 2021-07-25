@@ -1,6 +1,6 @@
 package racing;
 
-import view.ResultView;
+
 
 import java.util.Random;
 
@@ -25,7 +25,7 @@ public class RacingCarOperator {
         while (numOfCycle != 0) {
             MoveCarLocation();
             // ShowCurrentCarLocation();
-            ResultView.ShowCurrentCarLocation();
+            ShowCurrentCarLocation();
 
             // 4) 시도 횟수 -= 1
             numOfCycle--;
