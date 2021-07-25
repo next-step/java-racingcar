@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringCalcuratorTest {
 
@@ -37,8 +38,17 @@ public class StringCalcuratorTest {
 
     // 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
 
+    @DisplayName("입력 값 null 체크")
     @Test
-    void null_체크() {
+    void 입력_값_null_체크() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> StringCalcurator.cal(null));
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> StringCalcurator.cal(""));
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> StringCalcurator.cal(" "));
     }
 
     // 사칙연산 기호가 아닌 경우 IllegalArgumentException throw

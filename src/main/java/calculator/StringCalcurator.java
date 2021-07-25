@@ -1,8 +1,15 @@
 package calculator;
 
+import com.sun.tools.javac.util.StringUtils;
+
 public class StringCalcurator {
 
     public static int cal(String s) {
+        if(s==null || s.equals("") || s.equals(" "))
+        {
+            throw new IllegalArgumentException();
+        }
+
         String[] value = s.split(" ");
         String operator = value[1];
 
