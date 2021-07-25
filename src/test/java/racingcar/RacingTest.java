@@ -38,4 +38,14 @@ class RacingTest {
     void racingHistoryCheckForCarCountTest() {
         assertThat(racingHistory.get(0).size()).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("자동차 경주내역에 자동차 순서가 알맞게 기록되는지 확인")
+    void racingHistoryOrderCheckTest() {
+        Car car1 = racingHistory.get(0).get(1).getCar();
+        Car car2 = racingHistory.get(1).get(1).getCar();
+        Car car3 = racingHistory.get(2).get(1).getCar();
+
+        assertThat(car1).isEqualTo(car2).isEqualTo(car3);
+    }
 }
