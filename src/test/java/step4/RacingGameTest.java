@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -27,9 +26,9 @@ public class RacingGameTest {
     @Test
     @DisplayName("생성자 테스트")
     void gameTest() {
-        assertThat(racingGame.getCars().size()).isEqualTo(100);
+        assertThat(racingGame.getRacingEntry().getCars().size()).isEqualTo(3);
 
-        racingGame.getCars().forEach(e -> assertThat(e).isExactlyInstanceOf(Car.class));
+        racingGame.getRacingEntry().getCars().forEach(e -> assertThat(e).isExactlyInstanceOf(Car.class));
     }
 
     @Test
@@ -42,7 +41,7 @@ public class RacingGameTest {
         }
 
         // 차량이 한칸 이동 (안)했는지 확인
-        racingGame.getCars()
+        racingGame.getRacingEntry().getCars()
                 .forEach(car -> assertThat(car.getLocation()).isLessThanOrEqualTo(1));
 
         // 턴이 진행되었는지 확인
@@ -54,10 +53,18 @@ public class RacingGameTest {
     void startGameTest() {
         this.racingGame.startGame();
 
-        racingGame.getCars()
+        racingGame.getRacingEntry().getCars()
                 .forEach(car -> assertThat(car.getLocation()).isLessThanOrEqualTo(NUMBER_OF_TURNS));
 
         assertThat(racingGame.getCurrentTurn()).isEqualTo(NUMBER_OF_TURNS);
+    }
+
+    @Test
+    @DisplayName("우승자를 찾는 메소드 테스트")
+    void findWinnerCarsTest() {
+        this.racingGame.startGame();
+
+        assertThat(this.racingGame.getRacingEntry().findWinners().size()).isGreaterThanOrEqualTo(1);
     }
 
 }

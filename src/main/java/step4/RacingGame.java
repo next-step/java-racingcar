@@ -2,15 +2,21 @@ package step4;
 
 import step4.interfaces.OutputInterface;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class RacingGame {
     // Observable Interfaces
     private OutputInterface outputInterface;
     // Class Members
     private int currentTurn = 0;
-    private List<Car> cars;
+
+    private List<Car> winner;
+    private RacingEntry racingEntry;
     private RacingGameConfiguration racingGameConfiguration;
 
     public RacingGame() {
@@ -18,7 +24,7 @@ public class RacingGame {
 
     public RacingGame(RacingGameConfiguration racingGameConfiguration) {
         this.racingGameConfiguration = racingGameConfiguration;
-        this.cars = new CarFactory().createCarsByName(racingGameConfiguration.getCarNames());
+        this.racingEntry = new RacingEntry(racingGameConfiguration.getCarNames());
     }
 
     public void attach(OutputInterface output) {
@@ -39,12 +45,16 @@ public class RacingGame {
         return this.currentTurn;
     }
 
-    public List<Car> getCars() {
-        return this.cars.subList(0, this.cars.size());
+    public RacingEntry getRacingEntry() {
+        return this.racingEntry;
+    }
+
+    public RacingGameConfiguration getRacingGameConfiguration() {
+        return this.racingGameConfiguration;
     }
 
     private void nextTurn() {
-        this.cars.forEach(Car::goOrStop);
+        this.racingEntry.getCars().forEach(Car::goOrStop);
         this.currentTurn += 1;
     }
 
