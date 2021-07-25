@@ -44,11 +44,15 @@ public class Car {
         return name;
     }
 
-    public int maxDistance(int moveDistance) {
-        return distance.getMaxValue(moveDistance);
+    public int maxDistance(Car car) {
+        return distance.getMaxValue(car.getDistance().getMoveDistance());
     }
 
     public boolean isWinner(int maxMoveDistance) {
         return distance.getMoveDistance() == maxMoveDistance;
+    }
+
+    public boolean isMaxDistance(Distance distance, int max){
+        return distance.isMax(distance, max);
     }
 }

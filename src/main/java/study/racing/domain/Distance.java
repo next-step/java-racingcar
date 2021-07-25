@@ -19,4 +19,7 @@ public class Distance {
         return Math.max(moveDistance,max);
     }
 
+    public boolean isMax(Distance distance, int max) {
+        return distance.getMoveDistance() > max;
+    }
 }

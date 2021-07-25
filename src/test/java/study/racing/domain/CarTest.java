@@ -56,7 +56,7 @@ class CarTest {
         Car car = Car.createCar(input);
         car.moveTheCar(move);
 
-        int max = car.maxDistance(car.getDistance().getMoveDistance());
+        int max = car.maxDistance(car);
 
         assertThat(max).isGreaterThan(target);
     }

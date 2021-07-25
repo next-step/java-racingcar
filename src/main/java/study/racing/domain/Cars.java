@@ -9,49 +9,56 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-    public static final String SPLIT_MARK = ",";
+  public static final String SPLIT_MARK = ",";
 
-    private final List<Car> cars = new ArrayList<>();
+  private final List<Car> cars = new ArrayList<>();
 
-    public Cars(int count) {
-        for(int i = 0; i < count; i++){
-            cars.add(readyToCar());
-        }
+  public Cars(int count) {
+    for (int i = 0; i < count; i++) {
+      cars.add(readyToCar());
+    }
+  }
+
+  public Cars(String carName) {
+    Arrays.asList(carName.split(SPLIT_MARK)).forEach(name -> cars.add(readyToCar(name)));
+  }
+
+  public int getMaxMoveDistance() {
+    int max = 0;
+    for (Car car : cars) {
+      max = getMaximumDistance(max, car);
     }
 
-    public Cars(String carName) {
-        Arrays.asList(carName.split(SPLIT_MARK)).forEach(name -> cars.add(readyToCar(name)));
-    }
+    return max;
+  }
 
-    public int getMaxMoveDistance() {
-        int max = 0;
-        for (Car car : cars) {
-            max = car.maxDistance(max);
-        }
-        
-        return max;
+  private int getMaximumDistance(int max, Car car) {
+    if(car.isMaxDistance(car.getDistance(), max)){
+      return car.maxDistance(car);
     }
+    return max;
+  }
 
-    private Car readyToCar(String carName) {
-        return Car.createCar(carName);
-    }
+  private Car readyToCar(String carName) {
+    return Car.createCar(carName);
+  }
 
-    private Car readyToCar() {
-        return Car.createCar();
-    }
+  private Car readyToCar() {
+    return Car.createCar();
+  }
 
-    public List<Car> getCars() {
-        return cars;
-    }
+  public List<Car> getCars() {
+    return cars;
+  }
 
-    public void moveTheCar(){
-        cars.forEach(car -> car.moveTheCar(createRandomNumber()));
-    }
+  public void moveTheCar() {
+    cars.forEach(car -> car.moveTheCar(createRandomNumber()));
+  }
 
-    public List<Car> getWinners() {
-        return cars.stream()
-            .filter(car -> car.isWinner(getMaxMoveDistance()))
-            .collect(Collectors.toList());
-    }
+  public List<Car> getWinners() {
+    return cars.stream()
+        .filter(car -> car.isWinner(getMaxMoveDistance()))
+        .collect(Collectors.toList());
+  }
 
 }
