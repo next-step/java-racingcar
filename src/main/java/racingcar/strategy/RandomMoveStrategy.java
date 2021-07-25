@@ -8,7 +8,12 @@ public class RandomMoveStrategy implements MoveStrategy {
 
 	@Override
 	public boolean isMovable() {
-		return RandomNumber.pick() >= MOVABLE_MINIMUM_NUMBER;
+		return isMovable(RandomNumber.pick());
+	}
+
+	@Override
+	public boolean isMovable(int number) {
+		return number >= MOVABLE_MINIMUM_NUMBER;
 	}
 
 }

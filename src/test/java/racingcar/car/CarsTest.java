@@ -1,11 +1,13 @@
 package racingcar.car;
 
-import static org.assertj.core.api.Assertions.*;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.strategy.AlwaysMoveStrategy;
 
-import racingcar.strategy.RandomMoveStrategy;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
 
@@ -14,6 +16,19 @@ class CarsTest {
 	void create() {
 		Cars cars = Cars.of(5);
 		assertThat(cars.cars()).hasSize(5);
+	}
+
+	@DisplayName("자동차들이 이동하면 위치가 증가한다.")
+	@Test
+	void race() {
+		Cars cars = Cars.of(3);
+		cars.move(new AlwaysMoveStrategy());
+		List<Integer> carPositions = cars.cars()
+										.stream()
+										.map(Car::getPosition)
+										.collect(Collectors.toList());
+
+		assertThat(carPositions).containsOnly(1);
 	}
 
 }
