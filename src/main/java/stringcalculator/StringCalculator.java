@@ -1,14 +1,21 @@
 package stringcalculator;
 
 public class StringCalculator {
-    public int calculate(String input) {
+    public int calculateAll(String input) {
         String[] args = input.split(" ");
 
         int result = Integer.parseInt(args[0]);
         for (int i = 1; i < args.length; i += 2) {
-            result += Integer.parseInt(args[i + 1]);
+            result = calculate(result, args[i], Integer.parseInt(args[i + 1]));
         }
 
         return result;
+    }
+
+    private int calculate(int result, String operator, int operand) {
+        if ("+".equals(operator)) {
+            return result + operand;
+        }
+        return result - operand;
     }
 }

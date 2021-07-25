@@ -11,7 +11,7 @@ class StringCalculatorTest {
     @Test
     @DisplayName("덧셈")
     public void plus() {
-        int result = sut.calculate("1 + 2");
+        int result = sut.calculateAll("1 + 2");
 
         assertThat(result).isEqualTo(3);
     }
@@ -19,7 +19,7 @@ class StringCalculatorTest {
     @Test
     @DisplayName("뺄셈")
     public void minus() {
-        int result = sut.calculate("3 - 1");
+        int result = sut.calculateAll("3 - 1");
 
         assertThat(result).isEqualTo(2);
     }
