@@ -3,10 +3,11 @@ package racingrefactoring.domain;
 public class Car {
 
 	private final Name name;
-	private ForwardCount forwardCount = new ForwardCount();
+	private final ForwardCount forwardCount;
 
 	public Car(String name) {
 		this.name = new Name(name);
+		this.forwardCount = new ForwardCount();
 	}
 
 	public Car(String name, int forwardCount) {
