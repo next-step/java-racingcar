@@ -7,6 +7,7 @@ import java.util.LinkedList;
 
 public class StringCalculator {
     private Deque<String> calculateElements;
+    private static final String BLANK = " ";
 
     public StringCalculator(String input) {
         calculateElements = new LinkedList<>();
@@ -16,7 +17,7 @@ public class StringCalculator {
 
     private void initCalculateElements(String input) {
 
-        String[] calculateStringList = input.split(" ");
+        String[] calculateStringList = input.split(BLANK);
 
         for (String currentString : calculateStringList) {
             calculateElements.add(currentString);
@@ -24,7 +25,7 @@ public class StringCalculator {
     }
 
     private void checkInputBlank(String input) {
-        if (input == null || input == "" || input == " ") {
+        if (input == null || input.trim() == "") {
             throw new InputBlankException();
         }
     }
