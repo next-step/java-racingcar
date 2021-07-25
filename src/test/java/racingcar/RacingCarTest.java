@@ -18,7 +18,7 @@ class RacingCarTest {
 	@ParameterizedTest
 	@CsvSource(value = { "0:false", "2:false", "4:true", "6:true", "8:true"}, delimiter = ':')
 	void 주어진_인수를_입력받았을_때_4이상이면_전진가능하다(int forwardValue, boolean expected) {
-		assertThat(racingCar.movable(forwardValue)).isEqualTo(expected);
+		assertThat(racingCar.isMovable(forwardValue)).isEqualTo(expected);
 	}
 
 	@ParameterizedTest

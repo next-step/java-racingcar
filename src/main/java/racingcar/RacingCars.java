@@ -18,7 +18,7 @@ public class RacingCars {
 
 	public void forwardCars() {
 		racingCars.stream()
-			.filter(racingCar -> racingCar.movable(RacingCarUtil.generateForwardValue()))
+			.filter(racingCar -> racingCar.isMovable(RacingCarUtil.generateForwardValue()))
 			.forEach(racingCar -> {
 				racingCar.forward();
 			});

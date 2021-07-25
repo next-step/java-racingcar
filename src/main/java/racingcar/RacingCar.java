@@ -17,7 +17,7 @@ public class RacingCar {
 			         .collect(Collectors.joining(""));
 	}
 
-	public boolean movable(int randomValue) {
+	public boolean isMovable(int randomValue) {
 		return randomValue >= 4;
 	}
 
