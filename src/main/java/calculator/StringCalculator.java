@@ -4,27 +4,22 @@ import java.util.function.BinaryOperator;
 
 public class StringCalculator {
 
-    private int result;
-    private String[] splitExpression;
-
     public int calculate(String expression) {
         validateInput(expression);
 
-        splitExpression = expression.split(" ");
-        result = Integer.parseInt(splitExpression[0]);
-
-        for (int idx = 1; idx < splitExpression.length; idx += 2) {
-            calculateOneByOne(idx);
-        }
-
-        return result;
+        return calculateOneByOne(expression.split(" "));
     }
 
-    private void calculateOneByOne(int idx) {
-        BinaryOperator<Integer> calculateFunction = distinguishOperator(splitExpression[idx]);
-        int operand = Integer.parseInt(splitExpression[idx + 1]);
+    private int calculateOneByOne(String[] expressions) {
+        int result = Integer.parseInt(expressions[0]);
 
-        result = calculateFunction.apply(result, operand);
+        for (int idx = 1; idx < expressions.length; idx += 2) {
+            BinaryOperator<Integer> calculateFunction = distinguishOperator(expressions[idx]);
+            int operand = Integer.parseInt(expressions[idx + 1]);
+
+            result = calculateFunction.apply(result, operand);
+        }
+        return result;
     }
 
     private void validateInput(String expression) {
