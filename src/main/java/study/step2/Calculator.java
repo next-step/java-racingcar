@@ -19,6 +19,10 @@ public class Calculator implements CalculatorIntf {
     @Override
     public int calc(String calcStr) {
 
+        if(calcStr == null || calcStr.length() == 0) {
+            throw new IllegalArgumentException("Input value is null or empty");
+        }
+
         int result = 0;
         Calc calc = new Calc();
 
