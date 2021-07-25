@@ -7,8 +7,10 @@ class Car {
     private static final int GO_CONDITION = 4;
 
     private int score;
+    private String name;
 
-    Car() {
+    Car(String name) {
+        this.name = name;
         score = 0;
     }
 

@@ -7,10 +7,8 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
-    public Cars(int number) {
-        for (int i = 0; i < number; i++) {
-            cars.add(new Car());
-        }
+    public Cars(List<String> names) {
+        names.forEach(name -> cars.add(new Car(name)));
     }
 
     public void attempt() {
