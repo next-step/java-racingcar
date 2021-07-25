@@ -32,8 +32,8 @@ class RacingCarGameTest {
     void raceOneStep() {
         RacingCarGame.raceOneStep(racingCars);
         for (RacingCar racingCar: racingCars) {
-            assertThat(racingCar.getPosition()).isLessThanOrEqualTo(1);
-            assertThat(racingCar.getPosition()).isGreaterThanOrEqualTo(0);
+            assertThat(racingCar.getPosition()).isLessThanOrEqualTo(RacingCar.ONE_STEP);
+            assertThat(racingCar.getPosition()).isGreaterThanOrEqualTo(RacingCar.BASE_POSITION);
         }
     }
 }
