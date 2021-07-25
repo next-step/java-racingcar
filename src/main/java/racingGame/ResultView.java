@@ -29,7 +29,7 @@ public class ResultView {
         StringBuilder sb = new StringBuilder();
         sb.append(winner.get(0).getName());
         for (int i = 1; i < winner.size(); i++) {
-            sb.append(", " + winner.get(i).getName());
+            sb.append(", ").append(winner.get(i).getName());
         }
         System.out.println(sb + WINNER_PRINT_MESSAGE);
     }
