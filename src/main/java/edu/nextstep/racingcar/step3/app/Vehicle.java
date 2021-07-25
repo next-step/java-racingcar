@@ -4,7 +4,7 @@ public interface Vehicle {
 
     boolean isMove();
 
-    void setDistance(Integer distance);
+    void setDistance(int distance);
 
-    Integer getDistance();
+    int getDistance();
 }
