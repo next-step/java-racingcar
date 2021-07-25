@@ -15,4 +15,12 @@ class StringCalculatorTest {
 
         assertThat(result).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("뺄셈")
+    public void minus() {
+        int result = sut.calculate("3 - 1");
+
+        assertThat(result).isEqualTo(2);
+    }
 }
