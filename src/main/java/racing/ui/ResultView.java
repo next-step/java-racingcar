@@ -26,7 +26,7 @@ public class ResultView {
     }
 
     private void getRacingResult(Racing racingResult) {
-        int length = racingResult.getRacingLength();
+        int length = racingResult.getResultLength();
         for (int car = 0; car < length; car++) {
             raceResult[car] = checkIsMoved(racingResult, car, raceResult[car]);
             System.out.println(raceResult[car]);
@@ -34,7 +34,7 @@ public class ResultView {
     }
 
     public String checkIsMoved(Racing racingResult, int car, String raceResultConvert){
-        if(racingResult.getRacingDetailResult(car)){
+        if(racingResult.getDetailResult(car)){
             raceResultConvert += RACING_SIGN;
         }
         return raceResultConvert;
