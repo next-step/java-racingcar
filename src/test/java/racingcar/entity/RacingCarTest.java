@@ -23,4 +23,12 @@ class RacingCarTest {
         assertThat(racingCar.getPosition()).isEqualTo(RacingCar.BASE_POSITION);
     }
 
+    @RepeatedTest(10)
+    @DisplayName("레이싱 카가 랜덤 확률로 움직였을 때 위치는 0 또는 1임을 확인한다.")
+    void moveIfMovable(){
+        racingCar.moveIfMovable();
+        assertThat(racingCar.getPosition()).isGreaterThanOrEqualTo(RacingCar.BASE_POSITION);
+        assertThat(racingCar.getPosition()).isLessThanOrEqualTo(RacingCar.ONE_STEP);
+    }
+
 }
