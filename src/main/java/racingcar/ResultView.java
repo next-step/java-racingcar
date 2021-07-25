@@ -1,15 +1,13 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
-	public static void outputResult(List<RacingCar> racingCars) {
-		for (int i = 0 ; i < racingCars.size() ; i++) {
-			for (int j = 0 ; j < racingCars.get(i).getPos() ; j++) {
-				System.out.print("-");
-			}
-			System.out.print("\n");
-		}
-		System.out.print("\n");
+	public void outputResult(List<RacingCar> racingCars) {
+		String result = racingCars.stream().map(racingCar ->
+			racingCar.getRacingCarDashString()
+		).collect(Collectors.joining("\n"));
+		System.out.println(result + "\n");
 	}
 }
