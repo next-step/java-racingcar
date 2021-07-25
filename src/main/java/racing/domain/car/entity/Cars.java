@@ -5,22 +5,23 @@ import racing.domain.car.vo.Name;
 import racing.domain.car.vo.fuel.Fuel;
 import racing.exception.EmptyCarException;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Cars implements Iterable<Car> {
-    private final Map<Name, Car> values;
+public class Cars implements Iterable<Car>, Cloneable {
+    private final Set<Car> values;
 
-    public Cars(Map<Name, Car> values) {
+    public Cars(Set<Car> values) {
         this.values = values;
     }
 
     public Cars() {
-        this(new HashMap<>());
+        this(new HashSet<>());
     }
 
     private Location bestLocation() {
-        return values.values().stream()
+        return values.stream()
                 .map(Car::location)
                 .max(Comparator.comparing(Location::value))
                 .orElse(Location.empty());
@@ -32,11 +33,9 @@ public class Cars implements Iterable<Car> {
 
         Location bestLocation = bestLocation();
         return new Cars(
-                values.values().stream()
+                values.stream()
                 .filter(c -> c.checkLocation(bestLocation))
-                .collect(Collectors.toMap(
-                        Car::name, i -> i
-                ))
+                .collect(Collectors.toSet())
         );
     }
 
@@ -46,14 +45,14 @@ public class Cars implements Iterable<Car> {
     }
 
     /* 아래는 Forward 메소드 */
-    public boolean containsName(Name name) {
-        return this.values.containsKey(name);
+    public boolean contains(Car car) {
+        return values.contains(car);
     }
 
     public void add(Car car) {
-        if (values.containsKey(car.name()))
+        if (values.contains(car))
             throw new IllegalStateException("중복된 자동차 이름이 존재 합니다.");
-        values.put(car.name(), car);
+        values.add(car);
     }
 
     public int size() {
@@ -62,6 +61,15 @@ public class Cars implements Iterable<Car> {
 
     @Override
     public Iterator<Car> iterator() {
-        return values.values().iterator();
+        return values.iterator();
+    }
+
+    @Override
+    public Object clone() {
+        return new Cars(
+                values.stream()
+                .map(c -> (Car) c.clone())
+                .collect(Collectors.toSet())
+        );
     }
 }

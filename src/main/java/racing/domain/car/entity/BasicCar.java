@@ -30,4 +30,14 @@ public class BasicCar implements Car {
     private boolean isMovable(Fuel fuel) {
         return fuel.value() >= REQUIRED_FUEL_VALUE;
     }
+
+    @Override
+    public Object clone() {
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

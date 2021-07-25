@@ -4,7 +4,7 @@ import racing.domain.car.vo.Location;
 import racing.domain.car.vo.Name;
 import racing.domain.car.vo.fuel.Fuel;
 
-public interface Car {
+public interface Car extends Cloneable {
     default boolean checkLocation(Location location) {
         return location().equals(location);
     }
@@ -14,4 +14,6 @@ public interface Car {
     Name name();
 
     void move(Fuel fuel);
+
+    Object clone();
 }
