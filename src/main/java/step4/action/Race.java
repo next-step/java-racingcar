@@ -1,7 +1,7 @@
 package step4.action;
 
 import step4.model.Car;
-import step4.model.CarMovement;
+import step4.model.CarsMethod;
 import step4.model.Cars;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 public class Race {
 
     private int size;
-    private Cars cars = new Cars(new CarMovement());
+    private Cars cars = new Cars(new CarsMethod());
 
     public Race(int size) {
         cars.makeCars(size);
@@ -51,5 +51,9 @@ public class Race {
 
     public List<Car> getCars() {
         return cars.getCarList();
+    }
+
+    public String getWinner(){
+        return  "";
     }
 }

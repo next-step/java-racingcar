@@ -2,14 +2,15 @@ package step4.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Cars {
+public class Cars{
 
     private List<Car> carList;
-    private MoveStrategy movement;
+    private CarsStrategy carsMethod;
 
-    public Cars(MoveStrategy movement) {
-        this.movement = movement;
+    public Cars(CarsStrategy carsMethod) {
+        this.carsMethod = carsMethod;
     }
 
     public void makeCars(int carCount) {
@@ -35,12 +36,18 @@ public class Cars {
 
     public void moveCars() {
         stateCheck();
-        movement.move(this);
+        carsMethod.move(this);
     }
 
-    public void stateCheck(){
-        if(carList == null || carList.size() == 0){
+    public void stateCheck() {
+        if (carList == null || carList.size() == 0) {
             throw new IllegalStateException("자동차를 먼저 생성해 주세요.");
         }
+    }
+
+    public List<Car> arrangeCars() {
+        stateCheck();
+        carList = this.carsMethod.arrange(this.carList);
+        return carList;
     }
 }
