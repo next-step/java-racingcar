@@ -17,7 +17,7 @@ public class DosResultView implements ResultView {
     }
 
     private void printTurn(Turn turn) {
-        String line = turn.asString((car, location) ->
+        String line = turn.toString((car, location) ->
             CAR_LOCATION.formatString(car, new RepeatString(location, LOCATION_REPEAT_UNIT)), NEW_LINE);
         System.out.println(line);
     }

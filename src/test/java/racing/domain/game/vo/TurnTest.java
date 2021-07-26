@@ -8,7 +8,6 @@ import racing.domain.car.entity.BasicCar;
 import racing.domain.car.entity.Car;
 import racing.domain.car.vo.Location;
 import racing.domain.car.vo.Name;
-import racing.domain.game.vo.Turn;
 
 import java.util.Arrays;
 import java.util.List;
@@ -46,9 +45,9 @@ class TurnTest {
     @CsvSource({
             "테스트카1|테스트카2|테스트카3|테스트카4,*"
     })
-    @DisplayName("asString 테스트")
+    @DisplayName("toString 테스트")
     @ParameterizedTest
-    public void asStringTest(String carNames, String dividedString) {
+    public void toStringTest(String carNames, String dividedString) {
         Turn turn = new Turn();
 
         List<Car> cars = Arrays.stream(carNames.split("\\|"))
@@ -58,7 +57,7 @@ class TurnTest {
         for (Car iCar : cars)
             turn.register(iCar, Location.empty());
 
-        String testString = turn.asString((iCar, iLocation) ->
+        String testString = turn.toString((iCar, iLocation) ->
                 String.format("%s %s", iCar, iLocation), dividedString);
 
         assertThat(testString).isNotEmpty();

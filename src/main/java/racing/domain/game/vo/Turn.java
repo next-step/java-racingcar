@@ -39,7 +39,7 @@ public class Turn {
         this.movementRecord.put(car, location);
     }
 
-    public String asString(BiFunction<Car, Location, String> mapper, String dividedString) {
+    public String toString(BiFunction<Car, Location, String> mapper, String dividedString) {
         StringBuilder builder = new StringBuilder();
         for (Map.Entry<Car, Location> iEntry : movementRecord.entrySet()) {
             builder.append(
