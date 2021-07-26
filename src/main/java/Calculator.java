@@ -8,6 +8,7 @@ public class Calculator {
     public static final String MULTIPLICATION = "*";
 
     public static final String EMPTY = " ";
+    public static final int ZERO = 0;
 
     public static int result = 0;
 
@@ -51,6 +52,9 @@ public class Calculator {
     }
 
     private int devision(int rightInt) {
+        if(ZERO == rightInt) {
+            throw new IllegalArgumentException("0 으로 나눌수 없습니다.");
+        }
         return result /= rightInt;
     }
 
