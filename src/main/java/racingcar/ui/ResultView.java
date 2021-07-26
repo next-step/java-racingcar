@@ -2,7 +2,7 @@ package racingcar.ui;
 
 import racingcar.RacingRecord;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ResultView {
 
@@ -12,9 +12,9 @@ public class ResultView {
     private ResultView() {
     }
 
-    public static void showRacingInfo(ArrayList<ArrayList<RacingRecord>> racingHistory) {
+    public static void showRacingInfo(List<List<RacingRecord>> racingHistory) {
         System.out.print(RESULT_PRE_MESSAGE);
-        for (ArrayList<RacingRecord> records : racingHistory) {
+        for (List<RacingRecord> records : racingHistory) {
             for (RacingRecord record : records) {
                 for (int i = 0; i < record.getPosition(); i++) {
                     System.out.print(RACING_DISPLAY);

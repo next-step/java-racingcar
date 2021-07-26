@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Racing {
 
@@ -8,7 +9,7 @@ public class Racing {
     private final int MORE_THEN_STANDARD_NUMBER = 4;
 
     private Car[] racingCars;
-    private ArrayList<ArrayList<RacingRecord>> racingHistory = new ArrayList<>();
+    private List<List<RacingRecord>> racingHistory = new ArrayList<>();
 
     public Racing() {
         this(10);
@@ -54,7 +55,7 @@ public class Racing {
         return racingCars;
     }
 
-    public ArrayList<ArrayList<RacingRecord>> getRacingHistory() {
+    public List<List<RacingRecord>> getRacingHistory() {
         return racingHistory;
     }
 }
