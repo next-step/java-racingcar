@@ -22,4 +22,8 @@ public class RacingGame {
         return cars.cars();
     }
 
+    public List<Car> getRaceWinners() {
+        return cars.getRaceWinners();
+    }
+
 }

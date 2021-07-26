@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Cars {
 
+	private static final int INITIAL_POSITION = 0;
 	private static final String DELIMITER = ",";
 	private final List<Car> cars;
 
@@ -31,5 +32,32 @@ public class Cars {
 
 	public List<Car> cars() {
 		return cars;
+	}
+
+	public List<Car> getRaceWinners() {
+		List<Car> raceWinners = new ArrayList<>();
+		int maxPosition = getMaxPosition();
+		for (Car car : cars) {
+			if (car.isMaxPosition(maxPosition)) {
+				raceWinners.add(car);
+			}
+		}
+		return raceWinners;
+	}
+
+	private int getMaxPosition() {
+		int maxPosition = INITIAL_POSITION;
+		for (Car car : cars) {
+			maxPosition = max(car, maxPosition);
+		}
+		return maxPosition;
+	}
+
+	private int max(Car car, int maxPosition) {
+		int position = car.getPosition();
+		if (position > maxPosition) {
+			maxPosition = position;
+		}
+		return maxPosition;
 	}
 }

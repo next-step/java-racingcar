@@ -21,6 +21,7 @@ public class RacingGameApplication {
             racingGame.race();
             ResultView.show(racingGame.getCars());
         }
+        ResultView.printRaceWinners(racingGame.getRaceWinners());
     }
 
 }
