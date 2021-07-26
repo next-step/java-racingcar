@@ -7,8 +7,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import racing.domain.car.vo.Location;
 import racing.domain.car.vo.Name;
 import racing.domain.car.vo.fuel.BasicFuel;
-import racing.domain.game.dto.Turn;
-import racing.domain.game.dto.Turns;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -30,16 +28,17 @@ class BasicCarTest {
     public void moveTest(int fuelValue, int turnSize, int locationValue) {
         Location location = new Location(locationValue);
         BasicFuel fuel = new BasicFuel(fuelValue);
-        Turns turns = new Turns(turnSize);
 
+        Location resultLocation;
         Car car = new BasicCar(anonymousName);
-        for (Turn iTurn : turns)
-            car.move(iTurn, fuel);
+        for (int i = 0; i < turnSize - 1; i++)
+            car.move(fuel);
+        resultLocation = car.move(fuel);
 
         assertThat(
-                turns.lastTurn().checkLocation(car, location)
+                resultLocation
         ).withFailMessage("자동차가 요청한대로 행동하지 않았습니다.")
-                .isTrue();
+                .isEqualTo(location);
     }
 
     @CsvSource({

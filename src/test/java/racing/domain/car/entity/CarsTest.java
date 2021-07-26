@@ -9,7 +9,7 @@ import racing.domain.car.vo.Location;
 import racing.domain.car.vo.Name;
 import racing.domain.car.vo.fuel.BasicFuel;
 import racing.domain.car.vo.fuel.Fuel;
-import racing.domain.game.dto.Turn;
+import racing.domain.game.vo.Turn;
 
 import java.util.Arrays;
 import java.util.HashSet;

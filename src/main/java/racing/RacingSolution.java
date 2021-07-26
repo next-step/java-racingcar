@@ -2,7 +2,7 @@ package racing;
 
 import racing.controller.RacingController;
 import racing.domain.game.dto.GameRequest;
-import racing.domain.game.dto.Turns;
+import racing.domain.game.vo.Turns;
 import racing.exception.DuplicateKeyException;
 import racing.exception.EmptyCarException;
 import racing.exception.InvalidInputException;

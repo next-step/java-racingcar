@@ -3,12 +3,10 @@ package racing.domain.car.entity;
 import racing.domain.car.vo.Location;
 import racing.domain.car.vo.Name;
 import racing.domain.car.vo.fuel.Fuel;
-import racing.domain.game.dto.Turn;
 
 import java.util.Objects;
 
 public class BasicCar implements Car {
-    private static final int REQUIRED_FUEL_VALUE = 4; // 자동차가 움직이기 위한 최소 연료
     private final Name name;
     private Location location;
 
@@ -17,10 +15,10 @@ public class BasicCar implements Car {
         this.location = Location.empty();
     }
 
-    public void move(Turn turn, Fuel fuel) {
+    public Location move(Fuel fuel) {
         if (fuel.isMovable())
             this.location = location.add(Location.oneBlock());
-        turn.register(this, location);
+        return location;
     }
 
     @Override

@@ -2,38 +2,63 @@ package racing.domain.game.dto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import racing.domain.car.entity.BasicCar;
-import racing.domain.game.RacingGame;
+import org.junit.jupiter.params.provider.ValueSource;
 import racing.exception.InvalidInputException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class GameRequestTest {
-    @DisplayName("asGame 테스트")
-    @CsvSource(value = {
-            "A,B,C,D|10",
-            "A,B,C|15",
-            "A|20"
-    }, delimiter = '|')
+    @DisplayName("cars 테스트")
+    @ValueSource(strings = {
+            "A,B,C,D",
+            "A,B,C",
+            "A"
+    })
     @ParameterizedTest
-    public void asGameTest(String carNames, int turnSize) {
-        GameRequest gameRequest = new GameRequest(carNames, turnSize);
-        RacingGame game = gameRequest.asGame(BasicCar::new);
-        assertThat(game).isNotNull();
+    public void carsTest(String carNames) {
+        GameRequest gameRequest = new GameRequest(carNames, 1);
+        assertThat(
+                gameRequest.cars()
+        ).isNotNull();
     }
 
-    @DisplayName("asGame InvalidInputException 나오는 경우")
-    @CsvSource(value = {
-            "ABCDEF,GHIJK|10", // 5자 초과
-            "A,D|0" // turn 횟수 1회 미만
-    }, delimiter = '|')
+    @DisplayName("cars InvalidInputException 나오는 경우")
+    @ValueSource(strings = {
+            "",
+            "ABCEDF"
+    })
     @ParameterizedTest
-    public void asGameText_InvalidInputException(String carNames, int turnSize) {
-        assertThatThrownBy(() -> {
-            GameRequest gameRequest = new GameRequest(carNames, turnSize);
-            gameRequest.asGame(BasicCar::new);
-        }).isInstanceOf(InvalidInputException.class);
+    public void carsTest_InvalidInputException(String carNames) {
+        assertThatThrownBy(() ->
+                carsTest(carNames)
+        ).isInstanceOf(InvalidInputException.class);
+    }
+
+
+    @DisplayName("turns 테스트")
+    @ValueSource(ints = {
+            1,
+            10,
+            100000
+    })
+    @ParameterizedTest
+    public void turnsTest(int turnSize) {
+        GameRequest gameRequest = new GameRequest("A", turnSize);
+        assertThat(
+                gameRequest.turns()
+        ).isNotNull();
+    }
+
+    @DisplayName("turns InvalidInputException 나오는 경우")
+    @ValueSource(ints = {
+            -1,
+            0
+    })
+    @ParameterizedTest
+    public void turnsTest_InvalidInputException(int turnSize) {
+        assertThatThrownBy(() ->
+                turnsTest(turnSize)
+        ).isInstanceOf(InvalidInputException.class);
     }
 }

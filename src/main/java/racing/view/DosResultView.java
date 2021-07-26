@@ -1,7 +1,7 @@
 package racing.view;
 
-import racing.domain.game.dto.Turn;
-import racing.domain.game.dto.Turns;
+import racing.domain.game.vo.Turn;
+import racing.domain.game.vo.Turns;
 import util.RepeatString;
 
 import static racing.view.DosResultView.Text.*;

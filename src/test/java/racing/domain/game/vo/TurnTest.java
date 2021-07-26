@@ -1,4 +1,4 @@
-package racing.domain.game.dto;
+package racing.domain.game.vo;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,6 +8,7 @@ import racing.domain.car.entity.BasicCar;
 import racing.domain.car.entity.Car;
 import racing.domain.car.vo.Location;
 import racing.domain.car.vo.Name;
+import racing.domain.game.vo.Turn;
 
 import java.util.Arrays;
 import java.util.List;

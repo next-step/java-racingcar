@@ -2,8 +2,8 @@ package racing.domain.game;
 
 import racing.domain.car.entity.Cars;
 import racing.domain.car.vo.fuel.Fuel;
-import racing.domain.game.dto.Turn;
-import racing.domain.game.dto.Turns;
+import racing.domain.game.vo.Turn;
+import racing.domain.game.vo.Turns;
 
 import java.util.Objects;
 

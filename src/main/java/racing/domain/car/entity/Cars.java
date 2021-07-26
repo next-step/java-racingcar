@@ -1,7 +1,8 @@
 package racing.domain.car.entity;
 
+import racing.domain.car.vo.Location;
 import racing.domain.car.vo.fuel.Fuel;
-import racing.domain.game.dto.Turn;
+import racing.domain.game.vo.Turn;
 
 import java.util.*;
 
@@ -14,7 +15,8 @@ public class Cars implements Iterable<Car> {
 
     public void moveAll(Turn turn, Fuel fuel) {
         for (Car iCar : this) {
-            iCar.move(turn, fuel);
+            Location resultLocation = iCar.move(fuel);
+            turn.register(iCar, resultLocation);
         }
     }
 

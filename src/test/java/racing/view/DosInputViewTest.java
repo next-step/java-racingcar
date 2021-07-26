@@ -3,6 +3,7 @@ package racing.view;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racing.domain.car.entity.BasicCar;
+import racing.domain.game.dto.GameRequest;
 import racing.exception.InvalidInputException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -16,7 +17,9 @@ class DosInputViewTest {
     @ParameterizedTest
     public void inputGameRequestTest(String carNames, int turnSize) {
         InputView inputView = new FakeDosInputView(carNames, turnSize);
-        inputView.inputGameRequest().asGame(BasicCar::new);
+        GameRequest gameRequest = inputView.inputGameRequest();
+        gameRequest.cars();
+        gameRequest.turns();
     }
 
     @CsvSource(value = {
@@ -26,9 +29,8 @@ class DosInputViewTest {
     }, delimiter = '|')
     @ParameterizedTest
     public void inputGameRequestTest_InvalidInputException(String carNames, int turnSize) {
-        assertThatThrownBy(() -> {
-            InputView inputView = new FakeDosInputView(carNames, turnSize);
-            inputView.inputGameRequest().asGame(BasicCar::new);
-        }).isInstanceOf(InvalidInputException.class);
+        assertThatThrownBy(() ->
+            inputGameRequestTest(carNames, turnSize)
+        ).isInstanceOf(InvalidInputException.class);
     }
 }

@@ -11,7 +11,7 @@ import racing.domain.car.entity.fake.FakeBasicCar;
 import racing.domain.car.vo.Name;
 import racing.domain.car.vo.fuel.Fuel;
 import racing.domain.car.vo.fuel.RandomFuel;
-import racing.domain.game.dto.Turns;
+import racing.domain.game.vo.Turns;
 
 import java.util.Arrays;
 import java.util.HashSet;

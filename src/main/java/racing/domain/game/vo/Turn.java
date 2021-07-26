@@ -1,4 +1,4 @@
-package racing.domain.game.dto;
+package racing.domain.game.vo;
 
 import racing.domain.car.entity.Car;
 import racing.domain.car.vo.Location;

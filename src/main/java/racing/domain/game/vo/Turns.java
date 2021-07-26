@@ -1,4 +1,4 @@
-package racing.domain.game.dto;
+package racing.domain.game.vo;
 
 import racing.exception.InvalidInputException;
 
