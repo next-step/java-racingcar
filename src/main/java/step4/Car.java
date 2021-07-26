@@ -9,11 +9,7 @@ public class Car {
     private final String name;
 
     public Car(String name) {
-        this.name = namingRuleTest(name) ? name : name.substring(0, MAX_CAR_NAME_LENGTH);
-    }
-
-    private boolean namingRuleTest(String name) {
-        return name.length() <= MAX_CAR_NAME_LENGTH;
+        this.name = name;
     }
 
     public int getLocation() {

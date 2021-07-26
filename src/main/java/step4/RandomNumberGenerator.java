@@ -8,11 +8,9 @@ public class RandomNumberGenerator {
 
     private static RandomNumberGenerator randomNumberGenerator = null;
 
-    private final Random random;
+    private final Random random = new Random();
 
-    private RandomNumberGenerator() {
-        this.random = new Random();
-    }
+    private RandomNumberGenerator() { }
 
     public static RandomNumberGenerator getRandomNumberGenerator(){
         if (randomNumberGenerator == null) {

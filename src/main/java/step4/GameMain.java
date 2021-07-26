@@ -7,7 +7,6 @@ public class GameMain {
         RacingGameConfiguration racingGameConfiguration = RacingGameInputView.getRacingGameConfigurationWithPrompt();
 
         RacingGame racingGame = new RacingGame(racingGameConfiguration);
-        // racingGame.attach(new SimpleRacingStatusView());
         racingGame.attach(new RacingStatusByCarWithWinnerView());
 
         racingGame.startGame();
