@@ -9,6 +9,6 @@ public class RacingMain {
 		String[] names = InputView.inputCarNames();
 		int tryCount = InputView.inputTryCount();
 
-		RacingController.start(carCount, tryCount);
+		RacingController.start(names, tryCount);
 	}
 }

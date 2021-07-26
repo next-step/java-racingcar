@@ -1,7 +1,8 @@
 package racing.domain;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import racing.utils.RandomUtils;
 
@@ -9,16 +10,14 @@ public class Racing {
 
 	private List<Car> cars;
 
-	public Racing(int carCount) {
-		initCars(carCount);
+	public Racing(String[] names) {
+		initCars(names);
 	}
 
-	private void initCars(int carCount) {
-		cars = new ArrayList<>(carCount);
-
-		for (int i = 0; i < carCount; i++) {
-			cars.add(new Car());
-		}
+	private void initCars(String[] names) {
+		cars = Arrays.stream(names)
+			.map(Car::new)
+			.collect(Collectors.toList());
 	}
 
 	public List<Car> move() {
