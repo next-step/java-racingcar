@@ -34,7 +34,7 @@ public class ResultView {
 
     private static void printBoard(List<String> carsNames, List<Integer> carsPositions) {
 
-        for(int i =0 ; i < carsNames.size(); i++){
+        for (int i = 0; i < carsNames.size(); i++) {
             appendCarPosition(carsNames.get(i), carsPositions.get(i));
         }
 

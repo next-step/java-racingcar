@@ -12,7 +12,7 @@ public class RandomBoundMovingStrategy implements MovingStrategy {
     @Override
     public int move() {
         int randomNumber = RandomNumberUtils.executeRandomNumber();
-        if(randomNumber >= MOVABLE_BOUND) {
+        if (randomNumber >= MOVABLE_BOUND) {
             return MOVE_ONE_DISTANCE;
         }
         return MOVE_ZERO_DISTANCE;

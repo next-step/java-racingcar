@@ -52,6 +52,7 @@ public class RacingGameTests {
         assertThat(board.getAllRecords().get(0).size()).isEqualTo(racingInfo.numberOfCar);
 
     }
+
     @DisplayName("3명이 경기를 했다면 우승자는 최소 1명 이상 3명 이하의 우승자가 나오는지 테스트")
     @ParameterizedTest
     @CsvSource(value = {"pobi,crong,honux : 5", "pobi, crong, honux, test1, test2 : 7"}, delimiter = ':')
