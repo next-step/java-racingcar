@@ -1,7 +1,5 @@
 package racing.domain.car.vo;
 
-import java.util.Comparator;
-
 public class Location extends Number implements Comparable<Location> {
     private static final String UNDER_LOCATION_MESSAGE = "연료는 음수르 충전할 수 없습니다.";
 

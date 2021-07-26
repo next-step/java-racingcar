@@ -40,4 +40,18 @@ class LocationTest {
         assertThat(location.add(addLocation))
                 .isEqualTo(resultLocation);
     }
+
+    @CsvSource({
+            "1,1,0",
+            "3,5,-1",
+            "15,9,1",
+    })
+    @ParameterizedTest
+    public void compareToTest(int leftLocationValue, int rightLocationValue, int compareResult) {
+        Location leftLocation = new Location(leftLocationValue);
+        Location rightLocation = new Location(rightLocationValue);
+
+        assertThat(leftLocation.compareTo(rightLocation))
+                .isEqualTo(compareResult);
+    }
 }

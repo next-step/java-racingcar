@@ -15,20 +15,6 @@ public class Turn {
         movementRecord = new HashMap<>();
     }
 
-    public void register(Car car, Location location) {
-        this.movementRecord.put(car, location);
-    }
-
-    public String asString(BiFunction<Car, Location, String> mapper, String dividedString) {
-        StringBuilder builder = new StringBuilder();
-        for (Map.Entry<Car, Location> iEntry : movementRecord.entrySet()) {
-            builder.append(
-                    mapper.apply(iEntry.getKey(), iEntry.getValue())
-            ).append(dividedString);
-        }
-        return builder.toString();
-    }
-
     private Optional<Location> findMaxLocation() {
         return movementRecord.values().stream()
                 .max(Location::compareTo);
@@ -47,5 +33,23 @@ public class Turn {
                 .map(Map.Entry::getKey)
                 .map(Object::toString)
                 .collect(Collectors.toList());
+    }
+
+    public void register(Car car, Location location) {
+        this.movementRecord.put(car, location);
+    }
+
+    public String asString(BiFunction<Car, Location, String> mapper, String dividedString) {
+        StringBuilder builder = new StringBuilder();
+        for (Map.Entry<Car, Location> iEntry : movementRecord.entrySet()) {
+            builder.append(
+                    mapper.apply(iEntry.getKey(), iEntry.getValue())
+            ).append(dividedString);
+        }
+        return builder.toString();
+    }
+
+    public boolean checkLocation(Car car, Location location) {
+        return movementRecord.get(car).equals(location);
     }
 }

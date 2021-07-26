@@ -4,14 +4,16 @@ import racing.domain.car.entity.Car;
 import racing.domain.car.entity.Cars;
 import racing.domain.car.vo.Name;
 import racing.domain.game.RacingGame;
+import racing.exception.InvalidInputException;
+import util.StringUtils;
 
 import java.util.Arrays;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class GameRequest {
-    private String carNames;
-    private int turnSize;
+    private final String carNames;
+    private final int turnSize;
 
     private static final String NAME_DELIMITER = ",";
 
@@ -25,6 +27,9 @@ public class GameRequest {
     }
 
     private Cars asCars(Function<Name, Car> carCtor) {
+        if (StringUtils.isEmpty(carNames))
+            throw new InvalidInputException("자동차를 입력 해주세요.");
+
         String[] strNameSplitValues = carNames.split(NAME_DELIMITER);
 
         return new Cars(

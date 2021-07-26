@@ -1,6 +1,5 @@
 package racing.view;
 
-import racing.domain.car.vo.Location;
 import racing.domain.game.dto.Turn;
 import racing.domain.game.dto.Turns;
 import util.RepeatString;

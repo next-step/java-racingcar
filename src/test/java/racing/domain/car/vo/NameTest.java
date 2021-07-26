@@ -21,7 +21,16 @@ public class NameTest {
     @ParameterizedTest
     public void ctorInvalidInputExceptionTest(String strName) {
         assertThatThrownBy(() ->
-                        new Name(strName))
-        .isInstanceOf(InvalidInputException.class);
+                new Name(strName))
+                .isInstanceOf(InvalidInputException.class);
+    }
+
+    @ValueSource(strings = {
+            "A", "B", "abc", "jaewo", "스포츠카임"
+    })
+    @ParameterizedTest
+    public void toStringTest(String strName) {
+        assertThat(new Name(strName).toString())
+                .isEqualTo(strName);
     }
 }

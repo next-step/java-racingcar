@@ -12,10 +12,6 @@ public class Cars implements Iterable<Car> {
         this.values = values;
     }
 
-    public Cars() {
-        this(new HashSet<>());
-    }
-
     public void moveAll(Turn turn, Fuel fuel) {
         for (Car iCar : this) {
             iCar.move(turn, fuel);
@@ -29,18 +25,9 @@ public class Cars implements Iterable<Car> {
         values.add(car);
     }
 
-    public void addAll(Cars cars) {
-        for (Car iCar : cars)
-            add(iCar);
-    }
-
     /* 단순 Forward 메소드들 (테스트 X) */
     public boolean isEmpty() {
         return values.isEmpty();
-    }
-
-    public boolean contains(Car car) {
-        return values.contains(car);
     }
 
     public int size() {

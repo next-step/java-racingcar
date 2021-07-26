@@ -8,16 +8,6 @@ public class RepeatString {
         this.repeatUnit = repeatUnit;
     }
 
-    /*
-    public RepeatString(Integer number) {
-        this.number = number;
-    }
-
-    public RepeatString(int number) {
-        this.number = number;
-    }
-    */
-
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();

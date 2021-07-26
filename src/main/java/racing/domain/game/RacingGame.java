@@ -21,7 +21,7 @@ public class RacingGame {
     private void validate(Turns turns, Cars cars) {
         if (Objects.isNull(cars) || cars.isEmpty())
             throw new IllegalArgumentException("경기를 진행할 차가 없습니다.");
-        if (Objects.isNull(turns) || turns.isEmpty())
+        if (Objects.isNull(turns))
             throw new IllegalArgumentException("대기중인 턴이 없습니다.");
     }
 

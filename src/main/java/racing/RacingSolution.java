@@ -20,8 +20,8 @@ public class RacingSolution {
         solution.run();
     }
 
-    private InputView inputView;
-    private ResultView resultView;
+    private final InputView inputView;
+    private final ResultView resultView;
     RacingController racingController;
     public RacingSolution(InputView inputView, ResultView resultView) {
         this.inputView = inputView;

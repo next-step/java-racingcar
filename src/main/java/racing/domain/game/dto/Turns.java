@@ -32,8 +32,8 @@ public class Turns implements Iterable<Turn> {
                 .collect(Collectors.toList());
     }
 
-    public boolean isEmpty() {
-        return values.isEmpty();
+    public int size() {
+        return values.size();
     }
 
     @Override

@@ -20,6 +20,6 @@ public class BasicFuel implements Fuel {
 
     @Override
     public boolean isMovable() {
-        return this.value > MOVABLE_VALUE;
+        return this.value >= MOVABLE_VALUE;
     }
 }

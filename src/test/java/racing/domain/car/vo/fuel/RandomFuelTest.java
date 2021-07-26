@@ -21,10 +21,10 @@ public class RandomFuelTest {
             10, 100, 1000, 10000
     })
     @ParameterizedTest
-    public void randomFuelTest(int testSize) {
-        Set<Integer> values = new HashSet<>();
+    public void isMovableTest(int testSize) {
+        Set<Boolean> values = new HashSet<>();
         for (int i = 0; i < testSize; i++) {
-            values.add(randomFuel.value());
+            values.add(randomFuel.isMovable());
         }
         assertThat(values.size())
                 .withFailMessage("무조건 하나의 결과만 반환 됩니다.")
