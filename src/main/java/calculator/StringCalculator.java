@@ -1,8 +1,11 @@
 package calculator;
 
+import errors.EmptyArgumentException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -29,16 +32,16 @@ public class StringCalculator {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, EmptyArgumentException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input = br.readLine();
         System.out.println(calculate(input));
     }
 
-    public static int calculate(String input) {
+    public static int calculate(String input) throws EmptyArgumentException {
 
-        if (input == null || input.trim().isEmpty())
-            throw new IllegalArgumentException();
+        if (Objects.isNull(input) || input.trim().isEmpty())
+            throw new EmptyArgumentException("계산식을 입력해주세요.");
 
         String[] inputArray = input.split(" ");
 
@@ -55,19 +58,11 @@ public class StringCalculator {
                 continue;
             }
 
-            if (inputElement.equals(Operator.ADD.getOperator())) {
-                add(postElement);
+            for (Operator o : Operator.values()) {
+                if (inputElement.trim().equals(o.getOperator()))
+                    o.expression.apply(answer, toInt(postElement));
             }
-            if (inputElement.equals(Operator.SUBTRACT.getOperator())) {
-                subtract(postElement);
-            }
-            if (inputElement.equals(Operator.MULTIPLY.getOperator())) {
-                multiply(postElement);
-            }
-            if (inputElement.equals(Operator.DIVIDE.getOperator())) {
-                divide(postElement);
-            }
-            throw new IllegalArgumentException(); //숫자나 사칙연산 이외의 입력값 예외처리
+            throw new InvalidInputException("올바른 연산자를 입력해주세요."); //숫자나 사칙연산 이외의 입력값 예외처리
         }
         return answer;
     }
