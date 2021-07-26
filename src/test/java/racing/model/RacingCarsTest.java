@@ -26,7 +26,7 @@ public class RacingCarsTest {
 
     @DisplayName("자동차 대수가 0대 이하라면, IllegalArgumentException이 발생한다.")
     @ParameterizedTest
-    @ValueSource(ints = {-10, -3, -1, 0})
+    @ValueSource(ints = {-1, 0})
     public void minRacingCarCountExceptionTest(int racingCarCount) {
         // when, then
         assertThatIllegalArgumentException()

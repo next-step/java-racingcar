@@ -26,7 +26,7 @@ public class NumberTest {
 
     @DisplayName("0에서 9 사이의 숫자가 아니라면, IllegalArgumentException이 발생한다")
     @ParameterizedTest
-    @ValueSource(ints = {-10, -3, -1, 10, 20, 30})
+    @ValueSource(ints = {-1, 10})
     public void outOfBoundsNumberExceptionTest(int number) {
         // when, then
         assertThatIllegalArgumentException()
