@@ -72,7 +72,7 @@ class SimpleCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = { "123+", "!", "1 ! 3", "1 @ 3 & 5 ^ 7 | 9" })
     @DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException throw 테스트")
-    void throwIllegalArgumentExceptionIfNotFourFundamentalOperatorTest(String expression) throws Exception {
+    void throwIllegalArgumentExceptionIfNotFourFundamentalOperatorTest(String expression) {
         assertThatThrownBy(() -> sc.calculate(expression))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -80,7 +80,7 @@ class SimpleCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = { "1+2", "1+ 2", "1 +2" })
     @DisplayName("입력 문자열의 숫자와 사칙 연산 사이에 빈 공백 문자열이 없을 경우 IllegalArgumentException throw 테스트")
-    void throwIllegalArgumentExceptionIfNotExistSpaceBetweenNumberAndOperator(String expression) throws Exception {
+    void throwIllegalArgumentExceptionIfNotExistSpaceBetweenNumberAndOperator(String expression) {
         assertThatThrownBy(() -> sc.calculate(expression))
                 .isInstanceOf(IllegalArgumentException.class);
     }
