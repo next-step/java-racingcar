@@ -18,6 +18,7 @@ public class Car {
 
     public Car(String name, int distance) {
         validName(name);
+        validDistance(distance);
         this.name = name;
         this.distance = distance;
     }
@@ -26,6 +27,11 @@ public class Car {
         if (name.length() > MAXIMUM_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(VALID_CAR_NAME_MESSAGE);
         }
+    }
+
+    private void validDistance(int distance) {
+        if (distance < DEFAULT_CAR_DISTANCE)
+            throw new IllegalArgumentException("거리는 음수가 될 수 없습니다.");
     }
 
     public Car move(int random) {

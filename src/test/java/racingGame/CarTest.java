@@ -21,6 +21,13 @@ public class CarTest {
         assertThatThrownBy(() -> new Car("dododo"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    
+    @Test
+    @DisplayName("자동차 거리는 음수가 될 수 없다.")
+    void validCarDistance() {
+        assertThatThrownBy(() -> new Car("dododo", -1))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     @DisplayName("매개변수가 4 이상일때 이동한다.")
