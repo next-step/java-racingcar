@@ -20,4 +20,8 @@ public class Number {
             throw new IllegalArgumentException(String.format("값이 유효한 범위 안에 있지 않습니다. (number: %d)", number));
         }
     }
+
+    boolean isGreaterThanOrEqualTo(int number) {
+        return this.number >= number;
+    }
 }
