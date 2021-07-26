@@ -1,4 +1,4 @@
-package edu.nextstep.racingcar.step2;
+package edu.nextstep.racingcar.common;
 
 public class BusinessException extends RuntimeException {
 
