@@ -20,7 +20,7 @@ public class RacingGameTests {
 
     @DisplayName("자동차 경주에서 주어진 횟수 만큼 경주내역이 기록되는지 확인")
     @ParameterizedTest
-    @CsvSource(value = {"pobi, crong, honux : 5", "pobi, crong, honux, test1, test2 : 7"}, delimiter = ':')
+    @CsvSource(value = {"pobi,crong,honux : 5", "pobi,crong,honux,test1,test2 : 7"}, delimiter = ':')
     void racingHistoryCheckTest(String inputName, int trialRaceCount) {
         String[] carNames = InputCarNameSplitUtils.getSplitStringArray(inputName);
 
@@ -37,7 +37,7 @@ public class RacingGameTests {
 
     @DisplayName("자동차 경주에서 주어진 자동차 대수 만큼 경주하는지 확인")
     @ParameterizedTest
-    @CsvSource(value = {"pobi, crong, honux : 5", "pobi, crong, honux, test1, test2 : 7"}, delimiter = ':')
+    @CsvSource(value = {"pobi,crong,honux : 5", "pobi,crong,honux,test1,test2 : 7"}, delimiter = ':')
     void racingCarsCountCheckTest(String inputName, int trialRaceCount) {
         String[] carNames = InputCarNameSplitUtils.getSplitStringArray(inputName);
 
@@ -55,7 +55,7 @@ public class RacingGameTests {
 
     @DisplayName("3명이 경기를 했다면 우승자는 최소 1명 이상 3명 이하의 우승자가 나오는지 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"pobi,crong,honux : 5", "pobi, crong, honux, test1, test2 : 7"}, delimiter = ':')
+    @CsvSource(value = {"pobi,crong,honux : 5", "pobi,crong,honux,test1,test2 : 7"}, delimiter = ':')
     void racingWinnerTest(String inputName, int trialRaceCount) {
 
         String[] carNames = InputCarNameSplitUtils.getSplitStringArray(inputName);
