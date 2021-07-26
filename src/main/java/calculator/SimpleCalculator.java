@@ -3,87 +3,17 @@ package calculator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Stream;
 
 public class SimpleCalculator {
-	private static final List<Character> opList = new ArrayList<>(Arrays.asList('+', '-', '*', '/'));
+	private static final List<Character> operators = new ArrayList<>(Arrays.asList('+', '-', '*', '/'));
 	List<String> splitExpressionList = new ArrayList<>();
-
-	public Integer selectOperand(String s, int idx) {
-		return Integer.valueOf(s.split(" ")[idx]);
-	}
-
-	public String plus(String s) {
-		return (selectOperand(s, 0) + selectOperand(s, 2)) + "";
-	}
-
-	public String minus(String s) {
-		return (selectOperand(s, 0) - selectOperand(s, 2)) + "";
-	}
-
-	public String multiply(String s) {
-		return (selectOperand(s, 0) * selectOperand(s, 2)) + "";
-	}
-
-	public String divide(String s) throws NotEqualRemainderZero {
-		int firstOperand  = selectOperand(s, 0);
-		int secondOperand = selectOperand(s, 2);
-		if (firstOperand % secondOperand != 0) {
-			throw new NotEqualRemainderZero();
-		}
-		return (selectOperand(s, 0) / selectOperand(s, 2)) + "";
-	}
-
-	public String calc(String s) throws Exception {
-		checkSpaceValidation(s);
-
-		splitExpressionList.clear();
-		splitExpressionList.addAll(Arrays.asList(s.split(" ")));
-		checkSpaceBetweenNumberAndOperatorValidation();
-
-		while (splitExpressionList.size() != 1) {
-			String result = null;
-			result = callFunctionByOperator(splitExpressionList);
-			for (int i = 0 ; i <= 2 ; i++) {
-				splitExpressionList.remove(0);
-			}
-			splitExpressionList.add(0, result);
-		}
-		return splitExpressionList.get(0);
-	}
-
-	private void checkSpaceValidation(String s) throws Exception {
-		if (s == null) {
-			throw new IllegalArgumentException();
-		}
-
-		int whiteSpaceCount = 0;
-		for (int i = 0; i < s.length() ; i++) {
-			if (Character.isWhitespace(s.charAt(i))) {
-				whiteSpaceCount++;
-			}
-		}
-		if (whiteSpaceCount == s.length()) {
-			throw new IllegalArgumentException();
-		}
-	}
-
-	private void checkSpaceBetweenNumberAndOperatorValidation() {
-		for (String exp : splitExpressionList) {
-			if (isNumeric(exp)) {
-				continue;
-			}
-
-			if (exp.length() == 1 && opList.contains(exp.charAt(0))) {
-				continue;
-			}
-
-			throw new IllegalArgumentException();
-		}
-	}
 
 	private static boolean isNumeric(String s) {
 		int len = s.length();
-		for (int i = 0 ; i < len ; i++) {
+		for (int i = 0; i < len; i++) {
 			if (s.charAt(i) <= '0' || '9' <= s.charAt(i)) {
 				return false;
 			}
@@ -91,20 +21,84 @@ public class SimpleCalculator {
 		return true;
 	}
 
-	private String callFunctionByOperator(List<String> tempList) throws NotEqualRemainderZero {
-		String result = null;
-		if ("+".equals(tempList.get(1))) {
-			result = plus(tempList.get(0) + " + " + tempList.get(2));
+	public int selectOperand(String expressionUnit, int expressionUnitIndex) {
+		return Integer.valueOf(expressionUnit.split(" ")[expressionUnitIndex]);
+	}
+
+	public int plus(String expressionUnit) {
+		return (selectOperand(expressionUnit, 0) + selectOperand(expressionUnit, 2));
+	}
+
+	public int minus(String expressionUnit) {
+		return (selectOperand(expressionUnit, 0) - selectOperand(expressionUnit, 2));
+	}
+
+	public int multiply(String expressionUnit) {
+		return (selectOperand(expressionUnit, 0) * selectOperand(expressionUnit, 2));
+	}
+
+	public int divide(String expressionUnit) throws NotEqualRemainderZeroException {
+		int firstOperand = selectOperand(expressionUnit, 0);
+		int secondOperand = selectOperand(expressionUnit, 2);
+		if (firstOperand % secondOperand != 0) {
+			throw new NotEqualRemainderZeroException();
 		}
-		if ("-".equals(tempList.get(1))) {
-			result = minus(tempList.get(0) + " - " + tempList.get(2));
+		return firstOperand / secondOperand;
+	}
+
+	public String calculate(String expression) throws Exception {
+		checkNullValidation(expression);
+		checkEmptyValidation(expression);
+
+		splitExpressionList.clear();
+		splitExpressionList.addAll(Arrays.asList(expression.split(" ")));
+		checkSpaceBetweenNumberAndOperatorValidation();
+
+		while (splitExpressionList.size() != 1) {
+			String result = null;
+			result = callFunctionByOperator(splitExpressionList);
+			for (int i = 0; i <= 2; i++) {
+				splitExpressionList.remove(0);
+			}
+			splitExpressionList.add(0, result);
 		}
-		if ("*".equals(tempList.get(1))) {
-			result = multiply(tempList.get(0) + " * " + tempList.get(2));
+		return splitExpressionList.get(0);
+	}
+
+	private void checkNullValidation(String expression) throws Exception {
+		if (expression == null) {
+			throw new IllegalArgumentException();
 		}
-		if ("/".equals(tempList.get(1))) {
-			result = divide(tempList.get(0) + " / " + tempList.get(2));
+	}
+
+	private void checkEmptyValidation(String expression) throws Exception {
+		if ("".equals(expression)) {
+			throw new IllegalArgumentException();
 		}
-		return result;
+	}
+
+	private void checkSpaceBetweenNumberAndOperatorValidation() {
+		for (String exp : splitExpressionList) {
+			boolean isNumeric = isNumeric(exp);
+			boolean isOperator = exp.length() == 1 && operators.contains(exp.charAt(0));
+
+			if (isNumeric || isOperator) {
+				continue;
+			}
+			throw new IllegalArgumentException();
+		}
+	}
+
+
+	private String callFunctionByOperator(List<String> expressionUnit) throws IllegalArgumentException {
+		Operator operator = Arrays.stream(Operator.values())
+				.filter(op -> op.getOperator().equals(expressionUnit.get(1)))
+				.findFirst()
+				.orElseThrow(() -> new IllegalArgumentException("지원하는 연산자가 아닙니다."));
+
+		int firstOperand  = Integer.valueOf(expressionUnit.get(0));
+		int secondOperand = Integer.valueOf(expressionUnit.get(2));
+
+		return operator.calculate(firstOperand, secondOperand) + "";
 	}
 }
