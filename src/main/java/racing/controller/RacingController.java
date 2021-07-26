@@ -11,5 +11,11 @@ public class RacingController {
 		for (int i = 0; i < tryCount; i++) {
 			ResultView.printRacingResult(racing.move());
 		}
+
+		ResultView.printRacingWinnerResult(racing.getTopRankResult());
+	}
+
+	private static boolean lastTry(int tryCount, int lastCount) {
+		return tryCount >= lastCount - 1;
 	}
 }

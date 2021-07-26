@@ -13,6 +13,14 @@ public class Car {
 		this.move = 0;
 	}
 
+	public int getMove() {
+		return move;
+	}
+
+	public String getName() {
+		return name;
+	}
+
 	public void move(int randomValue) {
 		if (randomValue >= COMPARE_VALUE) {
 			this.move++;

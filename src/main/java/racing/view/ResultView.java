@@ -16,4 +16,8 @@ public class ResultView {
 		}
 		System.out.println();
 	}
+
+	public static void printRacingWinnerResult(String winnerNames) {
+		System.out.println(winnerNames + "가 최종 우승했습니다.");
+	}
 }

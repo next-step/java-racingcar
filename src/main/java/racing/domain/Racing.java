@@ -1,6 +1,7 @@
 package racing.domain;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,5 +25,21 @@ public class Racing {
 		cars.forEach(car -> car.move(RandomUtils.getRandomValue()));
 
 		return cars;
+	}
+
+	public String getTopRankResult() {
+		String[] topNames = cars.stream()
+			.filter(car -> car.getMove() == getMaxDistance())
+			.map(Car::getName)
+			.toArray(String[]::new);
+
+		return String.join(",", topNames);
+	}
+
+	private int getMaxDistance() {
+		return cars.stream()
+			.max(Comparator.comparingInt(Car::getMove))
+			.get()
+			.getMove();
 	}
 }
