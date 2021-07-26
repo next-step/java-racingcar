@@ -10,7 +10,7 @@ public enum Operation {
     DIVIDE("/", ((first, second) -> first / second));
 
     private final String value;
-    private BiFunction<Integer, Integer, Integer> expression;
+    private final BiFunction<Integer, Integer, Integer> expression;
 
     Operation(String value, BiFunction<Integer, Integer, Integer> expression) {
         this.value = value;

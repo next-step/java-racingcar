@@ -24,8 +24,10 @@
 #### TODO
 - ~~Calculator~~ 
   - 문자열 입력 후 문자열 분리
-  - 입력된 문자열 숫자, 연산자 구분해 operation 실행
   - 계산 결과 받고 반환
+
+- ~~Expression~~
+  - 입력된 문자열 숫자, 연산자 구분해 operation 실행
   
 - ~~Operation~~  
   - 문자열 > 사칙연산 변환

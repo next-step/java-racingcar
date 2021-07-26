@@ -11,10 +11,10 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class CalculatorTest {
 
-    private Calculator c;
+    private static Calculator c;
 
     @BeforeAll
-    public void setup() {
+    public static void setup() {
         c = new Calculator();
     }
 
