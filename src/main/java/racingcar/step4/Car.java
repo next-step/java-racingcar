@@ -7,6 +7,7 @@ public class Car {
 
     private final String name;
     private int distance;
+    private static final int MIN_NUMBER = 4;
 
     public Car(String name, int distance) {
         this.name = name;
@@ -16,14 +17,17 @@ public class Car {
     public static List<Car> createCar(String[] carNames) {
         List<Car> carList = new ArrayList<>();
         for (String name : carNames) {
-            carList.add(new Car(name,0));
+            carList.add(new Car(name, 0));
         }
 
         return carList;
     }
 
-    public void setDistance() {
-        distance++;
+    public void move(int randomNumber) {
+        if (randomNumber >= MIN_NUMBER) {
+            distance++;
+        }
+
     }
 
     public int getDistance() {
