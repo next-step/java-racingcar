@@ -3,6 +3,8 @@ package com.racingcar.calculator;
 import com.racingcar.calculator.operator.Operator;
 import com.racingcar.calculator.operator.StringOperator;
 
+import java.util.Objects;
+
 public class StringCalculator {
     private static final String ADD = "+";
     private static final String SUBTRACT = "-";
@@ -12,6 +14,8 @@ public class StringCalculator {
     private static final Operator operator = new StringOperator();
 
     public static int calculate(String input) {
+        validate(input);
+
         String[] values = input.split(" ");
 
         int result = Integer.parseInt(values[0]);
@@ -23,6 +27,12 @@ public class StringCalculator {
         }
 
         return result;
+    }
+
+    private static void validate(String input) {
+        if (Objects.isNull(input)) {
+            throw new IllegalArgumentException("input String is null");
+        }
     }
 
     private static int calculate(String operatorSign, int value01, int value02) {
