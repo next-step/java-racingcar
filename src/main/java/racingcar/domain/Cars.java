@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -14,12 +13,10 @@ public class Cars {
         this.cars = carList;
     }
 
-    public static Cars createWithDefaults(int numberOfCars) {
-        List<Car> rawCars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            rawCars.add(new Car());
-        }
-        return new Cars(rawCars);
+    public static Cars createWithNames(List<String> names) {
+        List<Car> carList = names.stream().map(Car::createWithName)
+                .collect(Collectors.toList());
+        return createFromList(carList);
     }
 
     public static Cars createFromList(List<Car> carList) {
@@ -47,11 +44,11 @@ public class Cars {
             return false;
         }
         Cars cars1 = (Cars) o;
-        return Objects.equals(cars, cars1.cars);
+        return Objects.equals(getCars(), cars1.getCars());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cars);
+        return Objects.hash(getCars());
     }
 }

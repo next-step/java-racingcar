@@ -11,21 +11,24 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = Car.createWithName("pobi");
     }
 
     @Test
     void constructor() {
-        assertThat(car).isEqualTo(new Car(0));
+        Car expected = Car.createWithNameAndPosition("pobi", 0);
+        assertThat(car).isEqualTo(expected);
     }
 
     @Test
     void move() {
-        assertThat(car.move(() -> true)).isEqualTo(new Car(1));
+        Car expected = Car.createWithNameAndPosition("pobi", 1);
+        assertThat(car.move(() -> true)).isEqualTo(expected);
     }
 
     @Test
     void stop() {
-        assertThat(car.move(() -> false)).isEqualTo(new Car());
+        Car expected = Car.createWithNameAndPosition("pobi", 0);
+        assertThat(car.move(() -> false)).isEqualTo(expected);
     }
 }
