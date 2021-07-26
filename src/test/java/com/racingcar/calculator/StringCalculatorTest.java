@@ -1,12 +1,14 @@
 package com.racingcar.calculator;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringCalculatorTest {
     @Test
-    public void 덧셈() {
+    @DisplayName("덧셈 테스트")
+    public void add() {
         //given
         String given = "5 + 3";
 
@@ -15,5 +17,18 @@ public class StringCalculatorTest {
 
         //then
         assertThat(result).isEqualTo(8);
+    }
+
+    @Test
+    @DisplayName("뺄셈 테스트")
+    public void subtract() {
+        //given
+        String given = "5 - 3";
+
+        //when
+        int result = StringCalculator.calculate(given);
+
+        //then
+        assertThat(result).isEqualTo(2);
     }
 }
