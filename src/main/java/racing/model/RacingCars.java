@@ -1,6 +1,9 @@
 package racing.model;
 
 import java.util.*;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 public class RacingCars {
     private static final int MIN_RACING_CAR_COUNT = 1;
@@ -19,9 +22,9 @@ public class RacingCars {
     }
 
     private void prepare(int racingCarCount) {
-        for (int i = 0; i < racingCarCount; i++) {
-            racingCars.add(new RacingCar());
-        }
+        racingCars = Stream.generate(RacingCar::new)
+                .limit(racingCarCount)
+                .collect(toList());
     }
 
     public int getSize() {
