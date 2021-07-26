@@ -3,7 +3,9 @@ package calculator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Stream;
 
 public class SimpleCalculator {
 	private static final List<Character> operators = new ArrayList<>(Arrays.asList('+', '-', '*', '/'));
@@ -87,12 +89,16 @@ public class SimpleCalculator {
 		}
 	}
 
-	// 수정 필요
-	private String callFunctionByOperator(List<String> expressionUnit) throws NotEqualRemainderZeroException {
-		AtomicInteger result = new AtomicInteger();
-		Arrays.stream(Operator.values())
-			.filter(operator -> operator.getOperator().equals(expressionUnit.get(1)))
-			.forEach(operator -> result.set(operator.calculate(Integer.valueOf(expressionUnit.get(0)),Integer.valueOf(expressionUnit.get(2)))));
-		return result.toString();
+
+	private String callFunctionByOperator(List<String> expressionUnit) throws IllegalArgumentException {
+		Operator operator = Arrays.stream(Operator.values())
+				.filter(op -> op.getOperator().equals(expressionUnit.get(1)))
+				.findFirst()
+				.orElseThrow(() -> new IllegalArgumentException("지원하는 연산자가 아닙니다."));
+
+		int firstOperand  = Integer.valueOf(expressionUnit.get(0));
+		int secondOperand = Integer.valueOf(expressionUnit.get(2));
+
+		return operator.calculate(firstOperand, secondOperand) + "";
 	}
 }
