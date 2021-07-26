@@ -28,7 +28,7 @@ public class RacingCars {
         return racingCars.size();
     }
 
-    public void moveOrStop(List<Integer> numbers) {
+    public void moveOrStop(List<Number> numbers) {
         validateEqualSize(numbers);
 
         for (int i = 0; i < numbers.size(); i++) {
@@ -37,7 +37,7 @@ public class RacingCars {
         }
     }
 
-    private void validateEqualSize(List<Integer> numbers) {
+    private void validateEqualSize(List<Number> numbers) {
         if (numbers == null || numbers.isEmpty()) {
             throw new IllegalArgumentException("숫자 목록이 비어있습니다.");
         }

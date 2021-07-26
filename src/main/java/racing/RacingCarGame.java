@@ -1,5 +1,6 @@
 package racing;
 
+import racing.model.Number;
 import racing.model.NumberGenerator;
 import racing.model.RacingCars;
 import racing.view.InputView;
@@ -29,7 +30,7 @@ public class RacingCarGame {
 
     private static void tryMovingRacingCars(RacingCars racingCars, NumberGenerator numberGenerator,
                                             ResultView resultView) {
-        List<Integer> numbers = new ArrayList<>();
+        List<Number> numbers = new ArrayList<>();
         for (int index = 0; index < racingCars.getSize(); index++) {
             numberGenerator.generateRandomNumber();
             numbers.add(numberGenerator.getNumber());

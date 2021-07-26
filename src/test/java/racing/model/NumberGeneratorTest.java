@@ -17,9 +17,10 @@ public class NumberGeneratorTest {
         for (int i = 0; i < 10; i++) {
             // when
             numberGenerator.generateRandomNumber();
+            Number number = numberGenerator.getNumber();
 
             // then
-            assertThat(numberGenerator.getNumber())
+            assertThat(number.getNumber())
                     .isGreaterThanOrEqualTo(0)
                     .isLessThanOrEqualTo(9);
         }

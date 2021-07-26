@@ -9,8 +9,8 @@ public class RacingCar {
         position = new Position();
     }
 
-    void moveOrStop(int number) {
-        if (number >= MOVABLE_MIN_NUMBER) {
+    void moveOrStop(Number number) {
+        if (number.getNumber() >= MOVABLE_MIN_NUMBER) {
             position.increaseOne();
         }
     }

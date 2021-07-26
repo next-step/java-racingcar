@@ -17,9 +17,9 @@ public class NumberGenerator {
         number = new Number(random.nextInt(MAX_NUMBER + 1) + MIN_NUMBER);
     }
 
-    public int getNumber() {
+    public Number getNumber() {
         validateNotNull(number);
-        return number.getNumber();
+        return number;
     }
 
     private void validateNotNull(Number number) {
