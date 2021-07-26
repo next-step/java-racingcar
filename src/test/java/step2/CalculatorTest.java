@@ -57,4 +57,38 @@ public class CalculatorTest {
         assertThat(result).isEqualTo(5);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"2 + 3 * 4 / 2", "10 + 10 * 5 / 10"})
+    @DisplayName("사칙연산 계산")
+    public void calculate(String input) {
+        //given
+        Calculator c = new Calculator();
+
+        //when
+        int result = c.calculate(input);
+
+        //then
+        assertThat(result).isEqualTo(10);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {""," "})
+    @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우 예외가 발생해야한다.")
+    public void is_blank_should_throw_IllegalArgumentException(String input) {
+        Calculator c = new Calculator();
+
+        IllegalStateException e = assertThrows(IllegalStateException.class,
+                () -> c.calculate(input));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"2 & 2 ^ 4","4 * 3 # 9"})
+    @DisplayName("사칙연산 기호가 아닌 경우 예외가 발생해야한다.")
+    public void is_correct_operations_should_throw_IllegalArgumentException(String input) {
+        Calculator c = new Calculator();
+
+        IllegalStateException e = assertThrows(IllegalStateException.class,
+                () -> c.calculate(input));
+    }
+
 }
