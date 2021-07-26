@@ -44,4 +44,17 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(100);
     }
+
+    @Test
+    public void divide() {
+        //given
+        Calculator c = new Calculator();
+
+        //when
+        int result = c.divide(10, 2);
+
+        //then
+        assertThat(result).isEqualTo(5);
+    }
+
 }
