@@ -31,10 +31,10 @@ public class RacingCars {
         return racingCars.size();
     }
 
-    public void moveOrStop() {
+    public void moveForwardOneStepOrStop() {
         for (RacingCar racingCar : racingCars) {
             Number number = NumberGenerator.getNewRandomNumber();
-            racingCar.moveOrStop(number);
+            racingCar.moveForwardOneStepOrStop(number);
         }
     }
 

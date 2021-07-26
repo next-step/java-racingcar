@@ -17,7 +17,7 @@ public class RacingCarTest {
         RacingCar racingCar = new RacingCar();
 
         // when
-        racingCar.moveOrStop(new Number(number));
+        racingCar.moveForwardOneStepOrStop(new Number(number));
 
         // then
         assertEquals(racingCar.getPosition(), position);

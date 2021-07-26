@@ -19,7 +19,7 @@ public class RacingCarGame {
         resultView.printRacingCarGameResultOutputMessage();
 
         for (int trialOrder = 0; trialOrder < movementTrialCount; trialOrder++) {
-            racingCars.moveOrStop();
+            racingCars.moveForwardOneStepOrStop();
             resultView.printRacingCarsPosition(racingCars.getRacingCarPositions());
         }
     }

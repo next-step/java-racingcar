@@ -9,7 +9,7 @@ public class RacingCar {
         position = new Position();
     }
 
-    void moveOrStop(Number number) {
+    void moveForwardOneStepOrStop(Number number) {
         if (number.isGreaterThanOrEqualTo(MOVABLE_MIN_NUMBER)) {
             position.increaseOne();
         }
