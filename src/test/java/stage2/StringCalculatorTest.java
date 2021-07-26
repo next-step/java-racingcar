@@ -55,4 +55,19 @@ public class StringCalculatorTest {
             print(result);
         });
     }
+
+    @Test
+    @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw")
+    public void 입력_값이_null이거나_빈_공백_문자일_경우() {
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            int result = StringCalculator.calculation("  + 4");
+            print(result);
+        });
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            int result = StringCalculator.calculation("5 - null");
+            print(result);
+        });
+    }
 }
