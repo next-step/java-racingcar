@@ -3,15 +3,28 @@ package com.racingcar.calculator;
 public class StringCalculator {
     public static int calculate(String input) {
         String[] values = input.split(" ");
-        if ("+".equals(values[1])) {
-            return add(Integer.parseInt(values[0]), Integer.parseInt(values[2]));
-        } else if ("-".equals(values[1])) {
-            return subtract(Integer.parseInt(values[0]), Integer.parseInt(values[2]));
-        } else if("/".equals(values[1])) {
-            return divide(Integer.parseInt(values[0]), Integer.parseInt(values[2]));
+
+        int result = Integer.parseInt(values[0]);
+
+        for (int i = 1; i < values.length; i += 2) {
+            String operator = values[i];
+            int operatedValue = Integer.parseInt(values[i+1]);
+            if ("+".equals(operator)) {
+                 result = add(result, operatedValue);
+                 continue;
+            } else if ("-".equals(operator)) {
+                result = subtract(result, operatedValue);
+                continue;
+            } else if("/".equals(operator)) {
+                result = divide(result, operatedValue);
+                continue;
+            }
+
+            result = multiply(result, operatedValue);
         }
 
-        return multiply(Integer.parseInt(values[0]), Integer.parseInt(values[2]));
+
+        return result;
     }
 
     private static int add(int value1, int value2) {
