@@ -11,7 +11,7 @@ public class CarsDTO {
         cars = new ArrayList<>();
     }
 
-    public void add(int position){
+    public void add(int position) {
         cars.add(position);
     }
 

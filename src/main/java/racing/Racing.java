@@ -12,8 +12,8 @@ public class Racing {
     private RandomNumberGenerator numberGenerator;
 
 
-    public Racing(int carCount, int totalRound) {
-        this.totalRound = totalRound;
+    public Racing(int carCount, int moveCount) {
+        this.totalRound = moveCount;
         this.nowRound = 0;
         this.cars = IntStream.range(0, carCount).mapToObj(a -> new Car()).collect(Collectors.toList());
         this.numberGenerator = new RandomNumberGenerator();
@@ -26,7 +26,7 @@ public class Racing {
     public CarsDTO play() {
         this.nowRound++;
         CarsDTO carsDTO = new CarsDTO();
-        for(Car car : cars){
+        for (Car car : cars) {
             car.move(numberGenerator.generate());
             carsDTO.add(car.getNowPosition());
         }

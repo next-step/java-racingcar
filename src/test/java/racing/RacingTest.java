@@ -12,7 +12,7 @@ public class RacingTest {
     private int carCount;
 
     @BeforeEach
-    void 기본_설정(){
+    void 기본_설정() {
         totalRound = 5;
         carCount = 5;
         racing = new Racing(carCount, totalRound);
