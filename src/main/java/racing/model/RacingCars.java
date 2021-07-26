@@ -20,12 +20,8 @@ public class RacingCars {
 
     private void prepare(int racingCarCount) {
         for (int i = 0; i < racingCarCount; i++) {
-            addRacingCar();
+            racingCars.add(new RacingCar());
         }
-    }
-
-    private void addRacingCar() {
-        racingCars.add(new RacingCar());
     }
 
     public int getSize() {
