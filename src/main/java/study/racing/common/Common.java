@@ -1,11 +1,6 @@
 package study.racing.common;
 
-import study.racing.exception.Exception;
-import study.racing.validation.Validation;
-
-import java.util.InputMismatchException;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Common {
 

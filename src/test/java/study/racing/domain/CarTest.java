@@ -49,7 +49,7 @@ class CarTest {
         assertThat(car.getName().getCarName()).isEqualTo(expected);
     }
 
-    @DisplayName("차객체 이동거리 최대값 판별 테스트")
+    @DisplayName("차를 생성하고 이동시키는 조건을 부여할때 정상적으로 이동되는지 테스트")
     @ParameterizedTest
     @CsvSource(value = {"test1,6,0","test1,5,0"})
     void 차이동거리최대값테스트(String input, int move, int target) {
