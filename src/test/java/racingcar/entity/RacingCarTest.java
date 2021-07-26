@@ -49,6 +49,15 @@ class RacingCarTest {
     @DisplayName("alwaysMoveRacingCar의 moveIfMoveable함수 실행시 항상 position이 1씩 증가한다.")
     void moveIfMovableByAlwaysMoveRacingCar(){
         alwaysMoveRacingCar.moveIfMovable();
-        assertThat(alwaysMoveRacingCar.getPosition()).isEqualTo(RacingCar.BASE_POSITION + 1);
+        assertThat(alwaysMoveRacingCar.getPosition()).isEqualTo(RacingCar.ONE_STEP);
+    }
+
+    @Test
+    @DisplayName("alwaysMove 레이싱 카가 tryNumber 횟수만큼 움직였을 때 위치는 tryNumber임을 확인한다.")
+    void moveIfMovableByAlwaysMoveRacingCarMultiple(){
+        for(int i=0; i< tryNumber; i++){
+            alwaysMoveRacingCar.moveIfMovable();
+        }
+        assertThat(alwaysMoveRacingCar.getPosition()).isEqualTo(tryNumber);
     }
 }
