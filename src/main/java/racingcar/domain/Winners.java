@@ -19,9 +19,18 @@ public class Winners {
     }
 
     private void getWinners(Cars cars){
+        int winnerPosition = getWinnerPosition(cars);
         for (Car car : cars.getCars()) {
-            addWinner(car, cars.getWinnerPosition());
+            addWinner(car, winnerPosition);
         }
+    }
+
+    private int getWinnerPosition(Cars cars) {
+        int winnerPosition = 0;
+        for (Car car : cars.getCars()) {
+            winnerPosition = Math.max(winnerPosition,car.getPosition());
+        }
+        return winnerPosition;
     }
 
     private void addWinner(Car car, int winnerPosition) {
