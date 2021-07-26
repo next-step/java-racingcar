@@ -24,7 +24,7 @@ public class NumberGenerator {
 
     private void validateNotNull(Number number) {
        if (number == null) {
-           throw new IllegalArgumentException("Number가 생성되지 않았습니다.");
+           throw new IllegalStateException("Number가 생성되지 않았습니다.");
        }
     }
 }
