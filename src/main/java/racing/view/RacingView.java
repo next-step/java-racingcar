@@ -7,9 +7,11 @@ import java.util.List;
 
 public class RacingView {
 
+    private static final String moveText = "-";
+
     void printMoveLine(int carMove) {
         for (int i=0; i<carMove; i++) {
-            System.out.print("-");
+            System.out.print(moveText);
         }
     }
 

@@ -1,6 +1,7 @@
 package racing.model;
 
 public class CarModel {
+    private static final int moveValue = 1;
     private int distance;
 
     public CarModel() {
@@ -8,7 +9,7 @@ public class CarModel {
     }
 
     public void go() {
-        this.distance = this.distance+1;
+        this.distance = this.distance + moveValue;
     }
 
     public int totalDistance() {
