@@ -16,7 +16,14 @@ class CarsTest {
 	void create() {
 		String carNames = "pobi,crong,honux";
 		Cars cars = Cars.of(carNames, 3);
-		assertThat(cars.cars()).hasSize(3);
+
+		List<Car> createdCars = cars.cars();
+		List<String> createdCarNames = createdCars.stream()
+												.map(Car::getName)
+												.collect(Collectors.toList());
+
+		assertThat(createdCars).hasSize(3);
+		assertThat(createdCarNames).containsExactly("pobi", "crong", "honux");
 	}
 
 	@DisplayName("자동차들이 이동하면 위치가 증가한다.")
