@@ -80,14 +80,8 @@ class SimpleCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = { "1+2", "1+ 2", "1 +2" })
     @DisplayName("입력 문자열의 숫자와 사칙 연산 사이에 빈 공백 문자열이 없을 경우 IllegalArgumentException throw 테스트")
-    void throwIllegalArgumentExceptionIfNotExistSpaceBetweenNumberAndOperator() throws Exception {
-        assertThatThrownBy(() -> sc.calculate("1+2"))
-                .isInstanceOf(IllegalArgumentException.class);
-
-        assertThatThrownBy(() -> sc.calculate("1+ 2"))
-                .isInstanceOf(IllegalArgumentException.class);
-
-        assertThatThrownBy(() -> sc.calculate("1 +2"))
+    void throwIllegalArgumentExceptionIfNotExistSpaceBetweenNumberAndOperator(String expression) throws Exception {
+        assertThatThrownBy(() -> sc.calculate(expression))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
