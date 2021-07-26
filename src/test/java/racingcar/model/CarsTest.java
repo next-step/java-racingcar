@@ -46,8 +46,7 @@ class CarsTest {
     @Test
     void getWinner() {
         repeatAttempt();
-        System.out.println(cars.getWinner());
-        assertThat(cars.getWinner()).isNotEmpty();
+        assertThat(cars.getWinners()).isNotEmpty();
     }
 
     private void repeatAttempt() {

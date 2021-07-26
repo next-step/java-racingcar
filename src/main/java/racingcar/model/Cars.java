@@ -1,7 +1,5 @@
 package racingcar.model;
 
-import racingcar.RandomGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +20,7 @@ public class Cars {
         return cars;
     }
 
-    public String getWinner() {
+    public List<Car> getWinners() {
         int maxScore = cars.stream()
                 .mapToInt(Car::getScore)
                 .max()
@@ -30,8 +28,7 @@ public class Cars {
 
         return cars.stream()
                 .filter(car -> car.getScore() == maxScore)
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.toList());
     }
 
 }

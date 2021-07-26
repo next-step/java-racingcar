@@ -1,9 +1,6 @@
 package racingcar.model;
 
-import java.util.Random;
-
 public class Car {
-    private static final int BOUND = 10;
     private static final int GO_CONDITION = 4;
     private static final int MAX_NAME_LENGTH = 5;
 
