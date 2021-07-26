@@ -3,26 +3,20 @@ package racing.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
 @DisplayName("랜덤 숫자 생성기 테스트")
 public class NumberGeneratorTest {
 
-    @DisplayName("0에서 9사이의 랜덤 자연수를 생성한다.")
+    @DisplayName("랜덤 숫자를 생성하지 않은 상태에서 조회하면, IllegalStateException이 발생한다.")
     @Test
-    public void generateRandomNumberTest() {
+    public void getNotGeneratedNumberExceptionTest() {
         // given
         NumberGenerator numberGenerator = new NumberGenerator();
 
-        for (int i = 0; i < 10; i++) {
-            // when
-            numberGenerator.generateRandomNumber();
-            Number number = numberGenerator.getNumber();
-
-            // then
-            assertThat(number.getNumber())
-                    .isGreaterThanOrEqualTo(0)
-                    .isLessThanOrEqualTo(9);
-        }
+        // when, then
+        assertThatIllegalStateException()
+                .isThrownBy(() -> numberGenerator.getNumber())
+                .withMessage("Number가 생성되지 않았습니다.");
     }
 }
