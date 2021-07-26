@@ -57,4 +57,17 @@ public class StringCalculatorTest {
         //then
         assertThat(result).isEqualTo(21);
     }
+
+    @Test
+    @DisplayName("복합 연산 테스트")
+    public void multiCalculateTest() {
+        //given
+        String given = "2 + 3 * 4 / 2";
+
+        //when
+        int result = StringCalculator.calculate(given);
+
+        //then
+        assertThat(result).isEqualTo(10);
+    }
 }
