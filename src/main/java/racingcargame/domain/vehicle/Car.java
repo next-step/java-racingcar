@@ -21,6 +21,10 @@ public class Car {
         distance = distance.forward(engine.running());
     }
 
+    public boolean isEquals(Distance distance) {
+        return this.distance.equals(distance);
+    }
+
     public Name getName() {
         return name;
     }

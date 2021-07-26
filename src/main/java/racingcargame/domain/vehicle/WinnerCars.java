@@ -12,7 +12,7 @@ public class WinnerCars {
     public WinnerCars(List<Car> cars) {
         Distance farthestDistance = findFarthestDistance(cars);
         this.cars = cars.stream()
-            .filter(car -> car.getDistance().equals(farthestDistance))
+            .filter(car -> car.isEquals(farthestDistance))
             .collect(Collectors.toList());
     }
 
