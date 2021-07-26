@@ -1,12 +1,8 @@
 package racing;
 
-import racing.model.Number;
-import racing.model.NumberGenerator;
 import racing.model.RacingCars;
 import racing.view.InputView;
 import racing.view.ResultView;
-
-import java.util.*;
 
 public class RacingCarGame {
     public static void main(String[] args) {
@@ -18,25 +14,13 @@ public class RacingCarGame {
         int movementTrialCount = inputView.inputMovementTrialCount();
 
         RacingCars racingCars = new RacingCars(racingCarCount);
-        NumberGenerator numberGenerator = new NumberGenerator();
 
         ResultView resultView = new ResultView();
         resultView.printRacingCarGameResultOutputMessage();
 
         for (int trialOrder = 0; trialOrder < movementTrialCount; trialOrder++) {
-            tryMovingRacingCars(racingCars, numberGenerator, resultView);
+            racingCars.moveOrStop();
+            resultView.printRacingCarsPosition(racingCars.getRacingCarPositions());
         }
-    }
-
-    private static void tryMovingRacingCars(RacingCars racingCars, NumberGenerator numberGenerator,
-                                            ResultView resultView) {
-        List<Number> numbers = new ArrayList<>();
-        for (int index = 0; index < racingCars.getSize(); index++) {
-            numberGenerator.generateRandomNumber();
-            numbers.add(numberGenerator.getNumber());
-        }
-
-        racingCars.moveOrStop(Collections.unmodifiableList(numbers));
-        resultView.printRacingCarsPosition(racingCars.getRacingCarPositions());
     }
 }
