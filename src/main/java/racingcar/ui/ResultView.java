@@ -16,6 +16,7 @@ public class ResultView {
         System.out.print(RESULT_PRE_MESSAGE);
         for (List<RacingRecord> records : racingHistory) {
             for (RacingRecord record : records) {
+                System.out.print(record.getCar().getName() + " : ");
                 for (int i = 0; i < record.getPosition(); i++) {
                     System.out.print(RACING_DISPLAY);
                 }
