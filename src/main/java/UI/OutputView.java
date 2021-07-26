@@ -1,40 +1,30 @@
 package UI;
 
-import Car.RacingCar;
+import Car.Car;
 
 import java.util.List;
 
 public class OutputView {
-    private StringBuilder stringBuilder;
     private static final String RESULT_INTRO = "실행 결과\n";
     private static final String MOVEMENT = "-";
 
     public OutputView() {
-        stringBuilder = new StringBuilder();
+        System.out.println(RESULT_INTRO);
     }
 
-    public void printResult(RacingCar racingCar) {
-        stringBuilder.append(RESULT_INTRO);
-
-        List<List<Integer>> results = racingCar.getGameResults();
-        results.stream()
-                .forEach(result -> drawResult(result));
-        System.out.println(stringBuilder);
-    }
-
-    private void drawResult(List<Integer> result) {
-        for (int moveCount :
-                result) {
-            drawMovement(moveCount);
-            stringBuilder.append('\n');
+    public void printResult(List<Car> cars) {
+        for (Car car :
+                cars) {
+            drawMovements(car.getMoveCount());
         }
-        stringBuilder.append('\n');
+        System.out.println();
     }
 
-    private void drawMovement(int moveCount) {
+    private void drawMovements(int moveCount){
         for (int i = 0; i <= moveCount; i++) {
-            stringBuilder.append(MOVEMENT);
+            System.out.print(MOVEMENT);
         }
+        System.out.println();
     }
 
 }
