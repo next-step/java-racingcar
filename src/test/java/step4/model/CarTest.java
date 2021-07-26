@@ -40,6 +40,4 @@ class CarTest {
                 () -> new Car("")
         ).withMessageContaining("이름이 비어");
     }
-
-
 }

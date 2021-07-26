@@ -2,9 +2,8 @@ package step4.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Cars{
+public class Cars {
 
     protected List<Car> carList;
     private CarsStrategy carsMethod;
@@ -13,14 +12,13 @@ public class Cars{
         this.carsMethod = carsMethod;
     }
 
-    public Cars(List<Car> carList, CarsStrategy carsMethod){
+    public Cars(List<Car> carList, CarsStrategy carsMethod) {
         this.carList = carList;
         this.carsMethod = carsMethod;
     }
 
     public void makeCars(int carCount) {
         carList = new ArrayList<Car>();
-
         for (int i = 0; i < carCount; i++) {
             carList.add(new Car());
         }
@@ -28,15 +26,14 @@ public class Cars{
 
     public void makeCars(String[] cars) {
         carList = new ArrayList<Car>();
-
-        for(String name : cars){
+        for (String name : cars) {
             carList.add(new Car(name));
         }
     }
 
-    protected void makeCars(Car... cars){
+    protected void makeCars(Car... cars) {
         carList = new ArrayList<Car>();
-        for(Car car : cars){
+        for (Car car : cars) {
             carList.add(car);
         }
     }

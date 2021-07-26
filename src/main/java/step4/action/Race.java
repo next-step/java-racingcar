@@ -12,27 +12,9 @@ public class Race {
     private int size;
     private Cars cars = new Cars(new CarsMethod());
 
-    public Race(int size) {
-        cars.makeCars(size);
-        this.size = size;
-    }
-
-    public Race(String[] names){
-        cars.makeCars(names);
-        this.size = names.length;
-    }
-
-    public Race(List<Car> cars) {
+    private Race(List<Car> cars) {
         this.cars = new Cars(cars,new CarsMethod());
         this.size = cars.size();
-    }
-
-    public static Race of(int size) {
-        return new Race(size);
-    }
-
-    public static Race of(String[] names){
-        return new Race(names);
     }
 
     public static Race of(List<Car> cars){
