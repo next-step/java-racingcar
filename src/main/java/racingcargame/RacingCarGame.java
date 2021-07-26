@@ -10,6 +10,7 @@ public class RacingCarGame {
     private int count;
 
     ResultView resultView = new ResultView();
+    Random random = new Random();
 
     RacingCarGame(int numberOfCars, int count) {
         this.cars = createCars(numberOfCars);
@@ -36,7 +37,6 @@ public class RacingCarGame {
     }
 
     private void doRandomCalculation(RacingCar racingCar) {
-        Random random = new Random();
         if (random.nextInt(10) >= 4) {
             moveForward(racingCar);
         }
