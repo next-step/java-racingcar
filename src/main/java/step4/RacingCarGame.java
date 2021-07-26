@@ -6,7 +6,8 @@ public class RacingCarGame {
 
     public static void main(String[] args) {
         int carCount = InputView.inputCarCount();
-        int tryCount = InputView.inputTryCount();
+        String[] names = InputView.inputCarNames().split(",");
+        int tryCount = names.length;
 
         Referee referee = new Referee(tryCount);
         CarStadium carstadium = new CarStadium(referee, new ArrayList<>());
