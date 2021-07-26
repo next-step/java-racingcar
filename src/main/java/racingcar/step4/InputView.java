@@ -16,5 +16,6 @@ public class InputView {
     public static int InputTryCount() {
         System.out.println(INPUT_TRY_COUNT_MESSAGE);
         return sc.nextInt();
+
     }
 }
