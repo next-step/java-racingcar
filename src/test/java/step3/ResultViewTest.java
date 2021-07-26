@@ -14,12 +14,7 @@ class ResultViewTest {
 
   @BeforeEach
   void init() {
-    resultView = new ResultView();
-  }
-
-  @Test
-  void concat() {
-    final String actual = resultView.concat(of(
+    resultView = new ResultView(of(
         new Result(of(car("pobi", 1), car("crong", 1), car("honux", 1))),
         new Result(of(car("pobi", 2), car("crong", 1), car("honux", 2))),
         new Result(of(car("pobi", 3), car("crong", 2), car("honux", 3))),
@@ -27,6 +22,11 @@ class ResultViewTest {
         new Result(of(car("pobi", 5), car("crong", 4), car("honux", 5))),
         new Result(of(car("pobi", 5), car("crong", 4), car("honux", 5)))
     ));
+  }
+
+  @Test
+  void concat() {
+    final String actual = resultView.concat();
 
     final String expected = "실행 결과" + NEWLINE
         + "pobi : -" + NEWLINE

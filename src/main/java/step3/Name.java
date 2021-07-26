@@ -13,7 +13,7 @@ public class Name {
 
   private void validate(String name) {
     if (name.length() > MAX) {
-      throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다");
+      throw new IllegalArgumentException("자동차 이름은 " + MAX + "자를 초과할 수 없다");
     }
   }
 

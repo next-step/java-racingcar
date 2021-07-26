@@ -9,30 +9,26 @@ import org.junit.jupiter.api.Test;
 
 class ResultTest {
 
-  public static final String NEWLINE = System.lineSeparator();
-
   private Result result;
 
   @BeforeEach
   void init() {
     result = new Result(
         List.of(
-            new Car(new Name("pobi"), 1),
-            new Car(new Name("crong"), 0),
-            new Car(new Name("honux"), 1)
+            new Car(new Name("pobi"), 5),
+            new Car(new Name("crong"), 3),
+            new Car(new Name("honux"), 5)
         )
     );
   }
 
-  @DisplayName("3대의 자동차가 1번 움직였을 때 위치가 1,0, 1일떄 실행 결과는 다음과 같다.")
+  @DisplayName("우승자는 두명이며, pobi와 honux이다")
   @Test
-  void log() {
-    final String actual = result.log();
+  void winners() {
 
-    final String expected = "pobi : -" + NEWLINE
-        + "crong : " + NEWLINE
-        + "honux : -";
+    final List<String> actual = result.getWinners();
+    assertThat(actual).hasSize(2)
+        .containsExactly("pobi", "honux");
 
-    assertThat(actual).isEqualTo(expected);
   }
 }

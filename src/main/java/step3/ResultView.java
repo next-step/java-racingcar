@@ -7,11 +7,22 @@ public class ResultView {
 
   private static final String NEWLINE = System.lineSeparator();
   private static final String NEWLINE_TWICE = NEWLINE.repeat(2);
-  private static final String RESULT_VIEW_PREFIX = "실행 결과" + NEWLINE;
-  private static final String RESULT_VIEW_SUFFIX = NEWLINE_TWICE;
+  private static final String NAME_LOCATION_DELIMITER = " : ";
+  private static final String LOCATION_SIGN = "-";
+  private static final String LOCATION_LOG_PREFIX = "실행 결과" + NEWLINE;
+  private static final String LOCATION_LOG_SUFFIX = NEWLINE;
+  private static final String WINNER_DELIMITER = ", ";
+  private static final String WINNER_LOG_PREFIX = NEWLINE;
+  private static final String WINNER_LOG_SUFFIX = "가 최종 우승했습니다.";
 
-  public void render(List<Result> results) {
-    final String text = concat(results);
+  private final List<Result> results;
+
+  public ResultView(List<Result> results) {
+    this.results = results;
+  }
+
+  public void render() {
+    final String text = concat();
     print(text);
   }
 
@@ -19,15 +30,24 @@ public class ResultView {
     System.out.println(text);
   }
 
-  protected String concat(List<Result> results) {
-    return results.stream()
-        .map(Result::log)
-        .collect(Collectors.joining(NEWLINE_TWICE, RESULT_VIEW_PREFIX, RESULT_VIEW_SUFFIX))
-        + winnerLog(results);
+  protected String concat() {
+    return locationLog() + winnerLog();
   }
 
-  private String winnerLog(List<Result> results) {
-    return results.get(results.size() - 1).winnerLog();
+  private String locationLog() {
+    return results.stream()
+        .map(result -> result.getCars().stream()
+            .map(car -> car.getName() + NAME_LOCATION_DELIMITER + LOCATION_SIGN.repeat(car.getLocation()))
+            .collect(Collectors.joining(NEWLINE))
+        )
+        .collect(Collectors.joining(NEWLINE_TWICE, LOCATION_LOG_PREFIX, LOCATION_LOG_SUFFIX));
+  }
+
+  private String winnerLog() {
+    final int last = results.size() - 1;
+    return results.get(last)
+        .getWinners().stream()
+        .collect(Collectors.joining(WINNER_DELIMITER, WINNER_LOG_PREFIX, WINNER_LOG_SUFFIX));
   }
 
 }

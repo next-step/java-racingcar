@@ -6,19 +6,18 @@ public class RacingGame {
 
   private final InputView inputView;
   private final Racing racing;
-  private final ResultView resultView;
 
   public RacingGame() {
     this.inputView = new InputView();
     this.racing = new Racing();
-    this.resultView = new ResultView();
   }
 
   public void start() {
     inputView.render();
     final Input input = inputView.getInput();
-    final List<Result> result = racing.race(input);
-    resultView.render(result);
+    final List<Result> results = racing.race(input);
+    final ResultView resultView = new ResultView(results);
+    resultView.render();
   }
 
   public static void main(String[] args) {

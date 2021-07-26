@@ -7,10 +7,8 @@ import java.util.stream.IntStream;
 
 public class Racing {
 
-  private Cars cars;
-
   public List<Result> race(final Input input) {
-    cars = new Cars(input.getNames());
+    final Cars cars = new Cars(input.getNames());
 
     return IntStream.range(0, input.getNumberOfAttempts())
         .peek(i -> cars.move())
