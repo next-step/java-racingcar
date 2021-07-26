@@ -1,6 +1,7 @@
 package carracing;
 
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,6 +22,14 @@ class RandomNumberTest {
     public void randomNumberCreateSuccessTest(int inputNumber) {
         assertThat(RandomNumber.of(inputNumber))
                 .isExactlyInstanceOf(RandomNumber.class);
+    }
+
+    @ParameterizedTest(name = "비교 대상 보다 큰 경우 true")
+    @CsvSource(value = {"1, 1, false", "1, 2, false", "2, 1, true"})
+    public void isOverTest(int targetNumber, int otherNumber, boolean isOver) {
+        RandomNumber number = RandomNumber.of(targetNumber);
+        assertThat(number.isOver(otherNumber))
+                .isEqualTo(isOver);
     }
 
 }

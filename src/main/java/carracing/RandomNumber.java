@@ -22,4 +22,8 @@ public class RandomNumber {
             throw new IllegalArgumentException(String.format(OUT_OF_RANGE_EXCEPTION_MESSAGE_FORMAT, number));
         }
     }
+
+    public boolean isOver(int number) {
+        return this.number > number;
+    }
 }
