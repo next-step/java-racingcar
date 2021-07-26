@@ -5,10 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import static org.assertj.core.api.Assertions.*;
 
 class CarTest {
@@ -23,6 +19,20 @@ class CarTest {
     void 자동차초기상태테스트() {
         int carMoveCount = car.getMoveCount();
         assertThat(carMoveCount).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1, 0",
+            "3, 0",
+            "4, 1",
+            "5, 1",
+            "8, 1"
+    })
+    void 자동차움직임테스트(int inputNumber, int moveAnswer) {
+        car.move(inputNumber);
+        int carMoveCount = car.getMoveCount();
+        assertThat(carMoveCount).isEqualTo(moveAnswer);
     }
 
 }
