@@ -31,4 +31,17 @@ public class StringCalculatorTest {
         //then
         assertThat(result).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("나눗셈 테스트")
+    public void divide() {
+        //given
+        String given = "21 / 7";
+
+        //when
+        int result = StringCalculator.calculate(given);
+
+        //then
+        assertThat(result).isEqualTo(3);
+    }
 }
