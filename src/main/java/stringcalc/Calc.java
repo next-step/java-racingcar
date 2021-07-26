@@ -1,4 +1,4 @@
-package stringCalc;
+package stringcalc;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

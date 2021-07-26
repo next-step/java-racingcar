@@ -1,4 +1,4 @@
-package stringCalc;
+package stringcalc;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

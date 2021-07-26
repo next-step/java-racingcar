@@ -4,7 +4,7 @@
  *   Date : 2021/07/24
  */
 
-package racingCar;
+package racingcar;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class RacingCarPlayMain {
 
         RacingCar racingCar = new RacingCar(carCount ,moveCount);
         System.out.println("실행 결과");
-        racingCar.racingStart(racingCar.readyCar());
+        racingCar.doRacingStart(racingCar.createAsCarsNumberOfEnteredByUser());
 
     }
 }
