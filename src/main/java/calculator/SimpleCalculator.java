@@ -87,6 +87,7 @@ public class SimpleCalculator {
 		}
 	}
 
+	// 수정 필요
 	private String callFunctionByOperator(List<String> expressionUnit) throws NotEqualRemainderZeroException {
 		AtomicInteger result = new AtomicInteger();
 		Arrays.stream(Operator.values())
