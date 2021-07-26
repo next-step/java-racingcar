@@ -8,6 +8,7 @@ public class Car {
     public static final int MAXIMUM_CAR_NAME_LENGTH = 5;
     public static final int DEFAULT_CAR_DISTANCE = 0;
     public static final String VALID_CAR_NAME_MESSAGE = "자동차 이름은" + MAXIMUM_CAR_NAME_LENGTH + "자를 초과할 수 없습니다.";
+    public static final String VALID_CAR_DISTANCE_MESSAGE = "거리는 " + DEFAULT_CAR_DISTANCE + "보다 작을 수 없습니다.";
 
     private final String name;
     private final int distance;
@@ -30,8 +31,9 @@ public class Car {
     }
 
     private void validDistance(int distance) {
-        if (distance < DEFAULT_CAR_DISTANCE)
-            throw new IllegalArgumentException("거리는 음수가 될 수 없습니다.");
+        if (distance < DEFAULT_CAR_DISTANCE) {
+            throw new IllegalArgumentException(VALID_CAR_DISTANCE_MESSAGE);
+        }
     }
 
     public Car move(int random) {
