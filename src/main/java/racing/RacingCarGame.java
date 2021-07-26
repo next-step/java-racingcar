@@ -5,9 +5,7 @@ import racing.model.RacingCars;
 import racing.view.InputView;
 import racing.view.ResultView;
 
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class RacingCarGame {
     public static void main(String[] args) {
@@ -31,13 +29,13 @@ public class RacingCarGame {
 
     private static void tryMovingRacingCars(RacingCars racingCars, NumberGenerator numberGenerator,
                                             ResultView resultView) {
-        Map<Integer, Integer> racingCarIndexAndNumber = new LinkedHashMap<>();
+        List<Integer> numbers = new ArrayList<>();
         for (int index = 0; index < racingCars.getSize(); index++) {
             numberGenerator.generateRandomNumber();
-            racingCarIndexAndNumber.put(index, numberGenerator.getNumber());
+            numbers.add(numberGenerator.getNumber());
         }
 
-        racingCars.moveOrStop(Collections.unmodifiableMap(racingCarIndexAndNumber));
+        racingCars.moveOrStop(Collections.unmodifiableList(numbers));
         resultView.printRacingCarsPosition(racingCars.getRacingCarPositions());
     }
 }

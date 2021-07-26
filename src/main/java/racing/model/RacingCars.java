@@ -3,10 +3,19 @@ package racing.model;
 import java.util.*;
 
 public class RacingCars {
+    private static final int MIN_RACING_CAR_COUNT = 1;
+
     private List<RacingCar> racingCars = new ArrayList<>();
 
     public RacingCars(int racingCarCount) {
+        validateMinCount(racingCarCount);
         prepare(racingCarCount);
+    }
+
+    private void validateMinCount(int racingCarCount) {
+        if (racingCarCount < MIN_RACING_CAR_COUNT) {
+            throw new IllegalArgumentException(String.format("자동차는 %d 대 이상이어야 합니다.", MIN_RACING_CAR_COUNT));
+        }
     }
 
     private void prepare(int racingCarCount) {
@@ -23,26 +32,22 @@ public class RacingCars {
         return racingCars.size();
     }
 
-    public void moveOrStop(Map<Integer, Integer> racingCarIndexAndNumber) {
-        for (Integer index : racingCarIndexAndNumber.keySet()) {
-            validateNotNull(index);
-            validateRange(index);
+    public void moveOrStop(List<Integer> numbers) {
+        validateEqualSize(numbers);
 
-            RacingCar racingCar = racingCars.get(index);
-            int number = racingCarIndexAndNumber.get(index);
-            racingCar.moveOrStop(number);
+        for (int i = 0; i < numbers.size(); i++) {
+            RacingCar racingCar = racingCars.get(i);
+            racingCar.moveOrStop(numbers.get(i));
         }
     }
 
-    private void validateNotNull(Integer index) {
-        if (index == null) {
-            throw new IllegalArgumentException("index 값이 null이 될 수 없습니다.");
+    private void validateEqualSize(List<Integer> numbers) {
+        if (numbers == null || numbers.isEmpty()) {
+            throw new IllegalArgumentException("숫자 목록이 비어있습니다.");
         }
-    }
 
-    private void validateRange(Integer index) {
-        if (index < 0 || index >= racingCars.size()) {
-            throw new IllegalArgumentException(String.format("값이 유효한 범위 안에 있지 않습니다. (index: %d)", index));
+        if (racingCars.size() != numbers.size()) {
+            throw new IllegalArgumentException("숫자의 개수가 자동차 개수와 같지 않습니다.");
         }
     }
 
