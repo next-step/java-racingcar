@@ -2,24 +2,29 @@ package study.racing.domain;
 
 public class Distance {
 
-    private int moveDistance;
+  private int moveDistance;
 
-    public Distance() {
-    }
+  public Distance() {
+  }
 
-    public int getMoveDistance() {
-        return moveDistance;
-    }
+  public int getMoveDistance() {
+    return moveDistance;
+  }
 
-    public void move() {
-        moveDistance += 1;
-    }
+  public void move() {
+    moveDistance += 1;
+  }
 
-    public int getMaxValue(int max) {
-        return Math.max(moveDistance,max);
-    }
+  public int getMaxValue(int max) {
+    return Math.max(moveDistance, max);
+  }
 
-    public boolean isMax(Distance distance, int max) {
-        return distance.getMoveDistance() > max;
-    }
+  public boolean isMax(int distance, int max) {
+    return distance > max;
+  }
+
+  public boolean isSameToMaxDistance(int maxMoveDistance) {
+    return moveDistance == maxMoveDistance;
+  }
+
 }

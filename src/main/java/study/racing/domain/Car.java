@@ -49,10 +49,10 @@ public class Car {
     }
 
     public boolean isWinner(int maxMoveDistance) {
-        return distance.getMoveDistance() == maxMoveDistance;
+        return distance.isSameToMaxDistance(maxMoveDistance);
     }
 
     public boolean isMaxDistance(Distance distance, int max){
-        return distance.isMax(distance, max);
+        return distance.isMax(distance.getMoveDistance(), max);
     }
 }
