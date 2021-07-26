@@ -8,6 +8,7 @@ public class ResultView {
     }
 
     private void print(Car car) {
+        System.out.print(car.getCarName() + " : ");
         for (int i = 0; i < car.getMovedCount(); i++) {
             System.out.print("-");
         }
