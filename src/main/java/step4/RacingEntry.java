@@ -1,21 +1,22 @@
 package step4;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingEntry {
 
-    private final List<Car> cars;
+    private List<Car> cars = new ArrayList<>();
 
     public RacingEntry(List<String> carNames) {
-        this.cars = registerCars(carNames);
+        registerCars(carNames);
     }
 
-    private List<Car> registerCars(List<String> carNames) {
-        return carNames.stream()
+    private void registerCars(List<String> carNames) {
+        carNames.stream()
                 .map(Car::new)
-                .collect(Collectors.toList());
+                .forEach(this.cars::add);
     }
 
     public List<Car> getCars() {
