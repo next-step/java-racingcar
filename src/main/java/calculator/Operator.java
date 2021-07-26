@@ -4,47 +4,27 @@ import java.util.Arrays;
 import java.util.function.IntBinaryOperator;
 
 public enum Operator {
-    ADD("+") {
-        @Override
-        public IntBinaryOperator execute() {
-            return Integer::sum;
-        }
-    },
-    SUB("-") {
-        @Override
-        public IntBinaryOperator execute() {
-            return (a, b) -> a - b;
-        }
-    },
-    MUL("*") {
-        @Override
-        public IntBinaryOperator execute() {
-            return (a, b) -> a * b;
-        }
-    },
-    DIV("/") {
-        @Override
-        public IntBinaryOperator execute() {
-            return (a, b) -> a / b;
-        }
-    };
+    ADD("+", Integer::sum),
+    SUB("-", (left, right) -> left - right),
+    MUL("*", (left, right) -> left * right),
+    DIV("/", (left, right) -> left / right);
 
-    private String operator;
+    private String description;
+    private IntBinaryOperator operator;
 
-    Operator(String operator) {
+    Operator(String description, IntBinaryOperator operator) {
+        this.description = description;
         this.operator = operator;
-    }
-
-    public String getOperator() {
-        return operator;
     }
 
     public static Operator valueOfString(String str) {
         return Arrays.stream(Operator.values())
-                .filter(i -> str.equals(i.getOperator()))
+                .filter(i -> str.equals(i.description))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    public abstract IntBinaryOperator execute();
+    public int execute(int a, int b) {
+        return operator.applyAsInt(a, b);
+    }
 }

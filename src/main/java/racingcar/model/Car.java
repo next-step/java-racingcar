@@ -1,17 +1,35 @@
 package racingcar.model;
 
-class Car {
-    private int score;
+public class Car {
+    private static final int GO_CONDITION = 4;
+    private static final int MAX_NAME_LENGTH = 5;
 
-    Car() {
+    private int score;
+    private String name;
+
+    Car(String name) {
+        checkNameValidation(name);
+        this.name = name;
         score = 0;
     }
 
-    void go() {
-        score++;
+    public String getName() {
+        return name;
     }
 
-    int getScore() {
-        return this.score;
+    public int getScore() {
+        return score;
+    }
+
+    void go(int number) {
+        if (number > GO_CONDITION) {
+            score++;
+        }
+    }
+
+    private void checkNameValidation(String name) {
+        if (name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException();
+        }
     }
 }

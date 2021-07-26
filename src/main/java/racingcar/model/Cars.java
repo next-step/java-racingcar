@@ -1,36 +1,34 @@
 package racingcar.model;
 
-import racingcar.service.RandomService;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private static final int GO_CONDITION = 4;
     private final List<Car> cars = new ArrayList<>();
 
-    public Cars(int number) {
-        for (int i = 0; i < number; i++) {
-            cars.add(new Car());
-        }
-    }
-
-    public int countCars() {
-        return cars.size();
+    public Cars(List<String> names) {
+        names.forEach(name -> cars.add(new Car(name)));
     }
 
     public void attempt() {
-        for (Car car : cars) {
-            RandomService randomUtil = new RandomService();
-            if (randomUtil.getRandomInt() > GO_CONDITION) {
-                car.go();
-            }
-        }
+        RandomGenerator randomGenerator = new RandomGenerator();
+        cars.forEach(car -> car.go(randomGenerator.getRandomInt()));
     }
 
-    public List<Integer> getScores() {
-        return cars.stream().map(Car::getScore)
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public List<Car> getWinners() {
+        int maxScore = cars.stream()
+                .mapToInt(Car::getScore)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getScore() == maxScore)
                 .collect(Collectors.toList());
     }
+
 }

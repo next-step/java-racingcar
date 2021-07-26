@@ -1,12 +1,12 @@
-package racingcar.service;
+package racingcar.model;
 
 import java.util.Random;
 
-public class RandomService {
+public class RandomGenerator {
     private static final int BOUND = 10;
 
     public int getRandomInt() {
-        Random random = new java.util.Random();
+        Random random = new Random();
         return random.nextInt(BOUND);
     }
 }
