@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class SelectingWinnerCars {
+public class WinnerCarsSelector {
     private final List<Car> cars;
 
-    public SelectingWinnerCars(List<Car> cars) {
+    public WinnerCarsSelector(List<Car> cars) {
         this.cars = cars;
     }
 

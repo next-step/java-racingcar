@@ -1,6 +1,6 @@
 package racing.domain;
 
-import racing.util.RandomNumber;
+import racing.utils.RandomNumber;
 
 public class MovingStrategyFactory {
     private MovingStrategyFactory() {

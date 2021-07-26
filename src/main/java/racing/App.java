@@ -12,7 +12,7 @@ public class App {
         int countNumber = InputView.inputNumberOfCount();
 
         RacingGame racingGame = RacingGame.initialize(players, countNumber);
-        GameResultView resultView = racingGame.play();
+        GameResultView resultView = racingGame.playGame();
 
         resultView.printResult();
     }

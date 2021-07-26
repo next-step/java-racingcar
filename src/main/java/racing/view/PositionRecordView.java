@@ -13,7 +13,7 @@ public class PositionRecordView {
         this.recordValue = recordValue;
     }
 
-    public String createView() {
+    public String createMessage() {
         currentPosition.setLength(0);
         currentPosition.append(name);
         currentPosition.append(RACE_NAME_POINTER_STRING);

@@ -2,7 +2,7 @@ package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.util.RandomNumber;
+import racing.utils.RandomNumber;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -35,14 +35,14 @@ class RandomMovingStrategyTest {
         assertTrue(strategy.isMove());
     }
 
-    static class RandomNumberTestUpThresholdNumber extends RandomNumber {
+    private static class RandomNumberTestUpThresholdNumber extends RandomNumber {
         @Override
         public int create() {
             return 6;
         }
     }
 
-    static class RandomNumberTestDownThresholdNumber extends RandomNumber {
+    private static class RandomNumberTestDownThresholdNumber extends RandomNumber {
         @Override
         public int create() {
             return 3;

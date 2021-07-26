@@ -14,20 +14,20 @@ class SelectingWinnerCarsTest {
     @Test
     public void should_select_winner_cars() throws Exception {
         //arrange
-        SelectingWinnerCars selectingWinnerCars = makeCarWinners();
+        WinnerCarsSelector winnerCarsSelector = makeCarWinners();
         Set<String> expectedWinners = new HashSet<String>(){{
             add("car3");
-        }};;
+        }};
 
         //act
-        Set<String> winners = selectingWinnerCars.selectWinnersName();
+        Set<String> winners = winnerCarsSelector.selectWinnersName();
 
         //assert
         assertThat(winners).isEqualTo(expectedWinners);
     }
 
     @NotNull
-    private SelectingWinnerCars makeCarWinners() {
+    private WinnerCarsSelector makeCarWinners() {
         CarPosition carPosition1 = new CarPosition();
         CarPosition carPosition2 = new CarPosition();
         CarPosition carPosition3 = new CarPosition();
@@ -38,7 +38,7 @@ class SelectingWinnerCarsTest {
         Car car2 = new Car(new Player("car2"), carPosition2);
         Car car3 = new Car(new Player("car3"), carPosition3);
 
-        return new SelectingWinnerCars(Arrays.asList(car1, car2, car3));
+        return new WinnerCarsSelector(Arrays.asList(car1, car2, car3));
     }
 
     private void moveCarPosition(CarPosition carPosition1, CarPosition carPosition2, CarPosition carPosition3) {
