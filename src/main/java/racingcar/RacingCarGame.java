@@ -14,11 +14,8 @@ public class RacingCarGame {
 
     public static void main(String[] args) {
         List<RacingCar> racingCars = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-        inputView.requestCarNumber();
-        int carNumber = scanner.nextInt();
-        inputView.requestTryNumber();
-        int tryNumber = scanner.nextInt();
+        int carNumber = inputView.requestCarNumber();
+        int tryNumber = inputView.requestTryNumber();
         initializeRacingCars(racingCars, carNumber);
         race(racingCars, tryNumber);
     }
