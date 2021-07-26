@@ -33,6 +33,13 @@ class StringCalculatorTest {
         assertThat(Operation.DIVIDE.calculate(4, 3)).isEqualTo(1);
     }
 
+    @DisplayName("0으로 나눌 때 IllegalArgumentException throw")
+    @Test
+    void 나눗셈_0으로_나눌때() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Operation.DIVIDE.calculate(1, 0));
+    }
+
     @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw")
     @Test
     void 입력값() {
