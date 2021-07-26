@@ -71,44 +71,6 @@ public class CarsTest {
                 .isEqualTo(size);
     }
 
-    /*
-    // 요구사항 "주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다." 에 대한 테스트를 추가 해보면 어떨까요?
-    // 꼭 Cars가 아니여도 상관이 없습니다. 🤔
-    @CsvSource({
-            "5,100,0,0",
-            "5,100,1,0",
-            "5,100,2,0",
-            "5,100,3,0",
-            "5,100,4,100",
-            "5,100,5,100",
-            "5,100,6,100",
-            "5,100,7,100",
-            "5,100,8,100",
-            "5,100,9,100"
-    })
-    @DisplayName("주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.")
-    @ParameterizedTest
-    public void moveAllTest(int carSize, int turnSize, int fuelValue, int locationValue) {
-        Cars cars = initCars(
-                sizeToNames(carSize), BasicCar::new
-        );
-        Turns turns = new Turns(turnSize);
-        BasicFuel basicFuel = new BasicFuel(fuelValue);
-        Location location = new Location(locationValue);
-
-        for (int i = 0; i < turnSize; i++) {
-            cars.moveAll(basicFuel);
-        }
-
-        for (Car iCar : cars) {
-            assertThat(
-                    iCar.checkLocation(location)
-            ).withFailMessage("요청한대로 이동하지 않았습니다.")
-                    .isTrue();
-        }
-    }
-    */
-
     @CsvSource({
             "5,0,0",
             "5,4,1",

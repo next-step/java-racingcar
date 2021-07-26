@@ -8,7 +8,6 @@ import racing.domain.car.entity.BasicCar;
 import racing.domain.car.entity.Car;
 import racing.domain.car.vo.Location;
 import racing.domain.car.vo.Name;
-import racing.domain.game.dto.Turn;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,8 +17,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 class TurnTest {
-    private static final String DIVIDED_STRING = "\n";
-
     @DisplayName("findWinners 테스트")
     @Test
     public void findWinnersTest() {

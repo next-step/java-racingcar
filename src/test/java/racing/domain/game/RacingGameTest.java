@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.car.entity.BasicCar;
 import racing.domain.car.entity.Car;
 import racing.domain.car.entity.Cars;
@@ -13,7 +12,6 @@ import racing.domain.car.vo.Name;
 import racing.domain.car.vo.fuel.Fuel;
 import racing.domain.car.vo.fuel.RandomFuel;
 import racing.domain.game.dto.Turns;
-import racing.exception.InvalidInputException;
 
 import java.util.Arrays;
 import java.util.HashSet;

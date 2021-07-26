@@ -1,22 +1,11 @@
 package racing.view;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racing.domain.car.entity.BasicCar;
-import racing.domain.car.entity.Car;
-import racing.domain.car.entity.Cars;
-import racing.domain.car.vo.Name;
-import racing.domain.game.RacingGame;
-import racing.domain.game.dto.GameRequest;
 import racing.exception.InvalidInputException;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class DosInputViewTest {
     @CsvSource(value = {
