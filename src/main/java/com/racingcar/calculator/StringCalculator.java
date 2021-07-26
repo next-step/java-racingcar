@@ -18,11 +18,12 @@ public class StringCalculator {
 
         String[] values = input.split(" ");
 
-        int result = Integer.parseInt(values[0]);
+        int result = parseInt(values[0]);
 
         for (int i = 1; i < values.length; i += 2) {
             String operatorSign = values[i];
-            int operatedValue = Integer.parseInt(values[i + 1]);
+            int operatedValue = parseInt(values[i + 1]);
+
             result = calculate(operatorSign, result, operatedValue);
         }
 
@@ -51,5 +52,13 @@ public class StringCalculator {
         }
 
         throw new IllegalArgumentException("Invalid Operator - target is " + operatorSign);
+    }
+
+    private static int parseInt(String value) {
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException exception) {
+            throw new IllegalArgumentException("input value is not integer, value is " + value, exception);
+        }
     }
 }
