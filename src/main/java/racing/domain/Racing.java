@@ -9,8 +9,6 @@ public class Racing {
 
 	private List<Car> cars;
 
-	private static final int COMPARE_VALUE = 4;
-
 	public Racing(int carCount) {
 		initCars(carCount);
 	}
@@ -24,9 +22,7 @@ public class Racing {
 	}
 
 	public List<Car> move() {
-		for (Car car : cars) {
-			car.move(RandomUtils.getRandomValue(), COMPARE_VALUE);
-		}
+		cars.forEach(car -> car.move(RandomUtils.getRandomValue()));
 
 		return cars;
 	}
