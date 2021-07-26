@@ -81,4 +81,14 @@ public class StringCalculatorTest {
         //then
         assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.calculate(given));
     }
+
+    @Test
+    @DisplayName("입력 값에 있는 연산 식이 완료되지 않을 때")
+    public void inputValueIsNotCompleted() {
+        //given
+        String given = "2 + 1 -";
+
+        //then
+        assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.calculate(given));
+    }
 }
