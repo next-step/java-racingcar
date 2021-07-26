@@ -8,6 +8,11 @@ public class Game {
     InputView inputView = new InputView();
     ResultView resultView = new ResultView();
 
+    public static void main(String[] args) {
+        Game game = new Game();
+        game.play();
+    }
+
     public void play() {
         Condition condition = this.prepare();
         Cars cars = Cars.of(condition);

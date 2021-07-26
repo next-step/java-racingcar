@@ -8,6 +8,12 @@ public class Cars {
 
     private final List<Car> cars = new ArrayList<>();
 
+    private Cars(Condition condition) {
+        for (int i = 0; i < condition.getCarCount(); i++) {
+            cars.add(Car.of(condition.getTryCount()));
+        }
+    }
+
     public static Cars of(Condition condition) {
         return new Cars(condition);
     }
@@ -18,14 +24,8 @@ public class Cars {
 
     public List<Integer> getDistanceByRound(int round) {
         return cars.stream()
-                .map(car-> car.getDistance(round))
+                .map(car -> car.getDistance(round))
                 .collect(Collectors.toList());
-    }
-
-    private Cars(Condition condition) {
-        for (int i = 0; i < condition.getCarCount(); i++) {
-            cars.add(Car.of(condition.getTryCount()));
-        }
     }
 
     public List<Car> getCars() {

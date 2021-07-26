@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -15,21 +14,13 @@ class CarTest {
 
     private static final int DEFAULT_TRY_COUNT = 5;
 
-    @DisplayName("몇라운드 시도인지에 따라서 이동거리값 반환")
+    @DisplayName("라운드까지의 이동거리값 반환")
     @ParameterizedTest
     @CsvSource(value = {"0:0", "1:0", "2:0", "3:0", "4:0"}, delimiter = ':')
     void getDistance(int round, int expected) {
         Car car = Car.of(DEFAULT_TRY_COUNT);
         car.move();
         assertThat(car.getDistance(round)).isGreaterThanOrEqualTo(expected);
-    }
-
-    @DisplayName("전진 조건(true,false)여부에 따라 이동거리를 담은 반환")
-    @Test
-    void getDistances() {
-        Car car = Car.of(DEFAULT_TRY_COUNT);
-        car.move();
-        assertThat(car.getDistances().size()).isEqualTo(DEFAULT_TRY_COUNT);
     }
 
     @DisplayName("시도할 회수만큼 자동차 이동(전진 또는 멈춤)되었는지 확인")
