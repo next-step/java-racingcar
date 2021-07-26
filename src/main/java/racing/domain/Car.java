@@ -19,8 +19,16 @@ public class Car {
 		}
 	}
 
-	public int getMove() {
-		return move;
+	public String showDistanceOfMovement() {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append(name + " : ");
+
+		for (int i = 0; i < move; i++) {
+			sb.append('-');
+		}
+
+		return sb.toString();
 	}
 
 	public static boolean validate(String name) {

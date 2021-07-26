@@ -12,18 +12,8 @@ public class ResultView {
 
 	public static void printRacingResult(List<Car> cars) {
 		for (Car car: cars) {
-			System.out.println(showDistanceOfMovement(car.getMove()));
+			System.out.println(car.showDistanceOfMovement());
 		}
 		System.out.println();
-	}
-
-	private static String showDistanceOfMovement(int move) {
-		StringBuilder sb = new StringBuilder();
-
-		for (int i = 0; i < move; i++) {
-			sb.append('-');
-		}
-
-		return sb.toString();
 	}
 }
