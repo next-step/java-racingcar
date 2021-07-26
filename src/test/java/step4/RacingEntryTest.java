@@ -13,13 +13,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingEntryTest {
 
-    private final List<String> carNames = Stream.of("pobi", "crong", "honux").collect(Collectors.toList());
+    private final List<Car> cars = Stream.of(new Car("pobi"), new Car("crong"), new Car("honux"))
+            .collect(Collectors.toList());
 
     private RacingEntry racingEntry;
 
     @BeforeEach
     void init() {
-        this.racingEntry = new RacingEntry(carNames);
+        this.racingEntry = new RacingEntry(cars);
     }
 
     @Test
@@ -37,7 +38,8 @@ public class RacingEntryTest {
     @Test
     @DisplayName("우승자를 찾는 테스트")
     void findWinnerTest() {
-        this.racingEntry = new RacingEntry(Stream.of("w", "l1", "l2").collect(Collectors.toList()));
+        this.racingEntry = new RacingEntry(Stream.of(new Car("w"), new Car("l1"), new Car("l2"))
+                .collect(Collectors.toList()));
 
         // 첫번째 차만 100턴 진행
         IntStream.range(0, 100)

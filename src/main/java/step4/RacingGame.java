@@ -22,7 +22,11 @@ public class RacingGame {
 
     public RacingGame(RacingGameConfiguration racingGameConfiguration) {
         this.racingGameConfiguration = racingGameConfiguration;
-        this.racingEntry = new RacingEntry(racingGameConfiguration.getCarNames());
+        this.racingEntry = getRacingEntry(racingGameConfiguration);
+    }
+
+    private RacingEntry getRacingEntry(RacingGameConfiguration racingGameConfiguration) {
+        return new RacingEntry(CarFactory.createCarsFromNames(racingGameConfiguration.getCarNames()));
     }
 
     public void attach(OutputInterface output) {

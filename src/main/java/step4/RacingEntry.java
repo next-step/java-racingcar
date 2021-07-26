@@ -7,16 +7,10 @@ import java.util.stream.Collectors;
 
 public class RacingEntry {
 
-    private List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
 
-    public RacingEntry(List<String> carNames) {
-        registerCars(carNames);
-    }
-
-    private void registerCars(List<String> carNames) {
-        carNames.stream()
-                .map(Car::new)
-                .forEach(this.cars::add);
+    public RacingEntry(List<Car> cars) {
+        this.cars = cars;
     }
 
     public List<Car> getCars() {
