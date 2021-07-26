@@ -58,5 +58,20 @@ class RoundTest {
         Round round = new Round(cars);
         assertThat(round.getFirstCar().size() > 0).isTrue();
     }
+    
+    @DisplayName("우승자 리스트를 제대로 반환하는지 확인")
+    @Test
+    void testAddWinner() {
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car(new Name("ABC"), new Distance(3)));
+        cars.add(new Car(new Name("DEF"), new Distance(5)));
+        cars.add(new Car(new Name("GHI"), new Distance(6)));
+        cars.add(new Car(new Name("JKL"), new Distance(4)));
+        cars.add(new Car(new Name("MNO"), new Distance(6)));
+
+        Round round = new Round(cars);
+
+        assertThat(round.getFirstCar()).contains("GHI", "MNO");
+    }
 
 }

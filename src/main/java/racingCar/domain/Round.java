@@ -2,8 +2,7 @@ package racingCar.domain;
 
 import racingCar.domain.strategy.MoveStrategy;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Round {
 
@@ -17,7 +16,7 @@ public class Round {
     }
 
     private void validateCarsSize(List<Car> cars) {
-        if(isCarsSizeOverZero(cars)) {
+        if (isCarsSizeOverZero(cars)) {
             throw new IllegalArgumentException(IS_NOT_DUAL_NUMBER_ERROR_MESSAGE);
         }
     }
@@ -42,28 +41,27 @@ public class Round {
         return this.cars.get(carNumber);
     }
 
+
     public List<String> getFirstCar() {
         List<String> winners = new ArrayList<>();
-        int maxDistance = 0;
-
-        for(Car car : cars) {
-            maxDistance = judgeFirstCar(winners, car, maxDistance);
+        int maxDistance = getMaxDistance();
+        for (Car car : cars) {
+            addWinner(winners, maxDistance, car);
         }
-
         return winners;
     }
 
-    private int judgeFirstCar(List<String> winners, Car car, int maxDistance) {
-        if(car.getCarDistance() < maxDistance) {
-            return maxDistance;
-        }
-        if(car.getCarDistance() == maxDistance) {
+    private int getMaxDistance() {
+        return this.cars.stream()
+                .max(Comparator.comparing(Car::getCarDistance))
+                .orElseGet(() -> new Car(new Name("temp")))
+                .getCarDistance();
+    }
+
+    private void addWinner(List<String> winners, int maxDistance, Car car) {
+        if (car.getCarDistance() == maxDistance) {
             winners.add(car.getCarName());
-            return maxDistance;
         }
-        winners.clear();
-        winners.add(car.getCarName());
-        return car.getCarDistance();
     }
 
 }
