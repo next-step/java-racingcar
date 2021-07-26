@@ -6,7 +6,6 @@ import racingcargame.domain.common.Distance;
 import racingcargame.domain.common.Name;
 import racingcargame.domain.vehicle.Car;
 import racingcargame.domain.vehicle.Cars;
-import racingcargame.domain.vehicle.WinnerCars;
 
 public class ResultView {
 
@@ -36,10 +35,8 @@ public class ResultView {
         System.out.println(string);
     }
 
-    public static void printWinners(Cars cars) {
-        WinnerCars winners = cars.getWinners();
-        String winnerNames = winners.getNames()
-            .stream()
+    public static void printWinners(List<Name> names) {
+        String winnerNames = names.stream()
             .map(Name::getValue)
             .collect(Collectors.joining(","));
         System.out.println(winnerNames + "가 최종 우승했습니다.");

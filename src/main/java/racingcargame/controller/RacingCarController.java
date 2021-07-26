@@ -2,9 +2,11 @@ package racingcargame.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcargame.domain.common.Name;
 import racingcargame.domain.common.Names;
 import racingcargame.domain.vehicle.Car;
 import racingcargame.domain.vehicle.Cars;
+import racingcargame.domain.vehicle.WinnerCars;
 import racingcargame.domain.vehicle.factory.CarFactory;
 import racingcargame.domain.vehicle.factory.NormalCarFactory;
 import racingcargame.view.InputView;
@@ -20,7 +22,9 @@ public class RacingCarController {
 
         doDrive(racingCars, roundCount);
 
-        ResultView.printWinners(racingCars);
+        WinnerCars winnerCars = racingCars.getWinners();
+        List<Name> winnerCarnames = winnerCars.getNames();
+        ResultView.printWinners(winnerCarnames);
     }
 
     private static void doDrive(Cars racingCars, int roundCount) {
