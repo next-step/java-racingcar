@@ -11,12 +11,8 @@ public class RacingCar {
 
     void moveOrStop(int number) {
         if (number >= MOVABLE_MIN_NUMBER) {
-            moveForwardOneSpace();
+            position.increaseOne();
         }
-    }
-
-    private void moveForwardOneSpace() {
-        position.increaseOne();
     }
 
     int getPosition() {
