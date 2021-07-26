@@ -33,6 +33,10 @@ public class StringCalculator {
         if (Objects.isNull(input)) {
             throw new IllegalArgumentException("input String is null");
         }
+
+        if (input.split(" ").length % 2 != 1) {
+            throw new IllegalArgumentException("input String is not completed");
+        }
     }
 
     private static int calculate(String operatorSign, int value01, int value02) {
