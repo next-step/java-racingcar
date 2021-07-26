@@ -1,9 +1,9 @@
 package racing.model;
 
-import static racing.model.NumberGenerator.MIN_NUMBER;
-import static racing.model.NumberGenerator.MAX_NUMBER;
-
 public class Number {
+    private static final int MIN_NUMBER = 0;
+    private static final int MAX_NUMBER = 9;
+
     private int number;
 
     Number(int number) {
