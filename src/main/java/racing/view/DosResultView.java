@@ -1,8 +1,12 @@
 package racing.view;
 
+import racing.domain.car.entity.Car;
+import racing.domain.car.vo.Location;
 import racing.domain.game.vo.Turn;
 import racing.domain.game.vo.Turns;
 import util.RepeatString;
+
+import java.util.Map;
 
 import static racing.view.DosResultView.Text.*;
 
@@ -17,9 +21,15 @@ public class DosResultView implements ResultView {
     }
 
     private void printTurn(Turn turn) {
-        String line = turn.toString((car, location) ->
-            CAR_LOCATION.formatString(car, new RepeatString(location, LOCATION_REPEAT_UNIT)), NEW_LINE);
-        System.out.println(line);
+        for (Map.Entry<Car, Location> iEntry : turn.entrySet()) {
+            Car iCar = iEntry.getKey();
+            Location iLocation = iEntry.getValue();
+
+            System.out.println(
+                    CAR_LOCATION.formatString(iCar, new RepeatString(iLocation, LOCATION_REPEAT_UNIT))
+            );
+        }
+        System.out.println();
     }
 
     private void printWinners(Turns turns) {
