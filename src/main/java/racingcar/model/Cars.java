@@ -19,11 +19,11 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public static Cars of(int numberOfCar) {
+    public static Cars of(String[] carsNames) {
         List<Car> cars = new ArrayList<Car>();
 
-        for (int i = 0; i < numberOfCar; i++) {
-            Car car = new Car();
+        for (int i = 0; i < carsNames.length; i++) {
+            Car car = new Car(carsNames[i]);
             cars.add(car);
         }
         return Cars.of(cars);
@@ -36,6 +36,12 @@ public class Cars {
     public List<Integer> getCarsPositions() {
         return cars.stream()
                 .map(car -> car.getPosition())
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getNames() {
+        return cars.stream()
+                .map(car -> car.getName())
                 .collect(Collectors.toList());
     }
 

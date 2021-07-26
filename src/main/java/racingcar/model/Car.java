@@ -7,15 +7,16 @@ import java.util.Random;
 
 public class Car {
     private int position;
-
+    private String name;
     private static int INIT_POSITION = 0;
 
-    public Car(int position) {
-        this.position = position;
+    public Car(String name) {
+        this.name = name;
+        this.position = INIT_POSITION;
     }
 
-    public Car() {
-        this(INIT_POSITION);
+    public String getName() {
+        return this.name;
     }
 
     public int getPosition() {

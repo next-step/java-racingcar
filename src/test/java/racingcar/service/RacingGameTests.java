@@ -3,11 +3,16 @@ package racingcar.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.dto.Board;
 import racingcar.dto.RacingInfo;
 import racingcar.model.Cars;
 import racingcar.strategy.impl.RandomBoundMovingStrategy;
+import racingcar.util.InputCarNameSplitUtils;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,34 +20,37 @@ public class RacingGameTests {
 
     @DisplayName("자동차 경주에서 주어진 횟수 만큼 경주내역이 기록되는지 확인")
     @ParameterizedTest
-    @ValueSource(ints = {3, 4, 5})
-    void racingHistoryCheckTest(int raceTrialCount) {
-        RacingInfo racingInfo = new RacingInfo(3, raceTrialCount);
+    @CsvSource(value = {"pobi, crong, honux : 5", "pobi, crong, honux, test1, test2 : 7"}, delimiter = ':')
+    void racingHistoryCheckTest(String inputName, int trialRaceCount) {
+        String[] carNames = InputCarNameSplitUtils.getSplitStringArray(inputName);
 
-        Cars cars = Cars.of(racingInfo.numberOfCar);
+        RacingInfo racingInfo = new RacingInfo(carNames.length, trialRaceCount);
+
+        Cars cars = Cars.of(carNames);
 
         RacingGame racingGame = new RacingGame(racingInfo, cars);
 
         Board board = racingGame.gameStart(new RandomBoundMovingStrategy());
 
-        assertThat(board.getAllRecords().size()).isEqualTo(raceTrialCount);
+        assertThat(board.getAllRecords().size()).isEqualTo(trialRaceCount);
     }
 
     @DisplayName("자동차 경주에서 주어진 자동차 대수 만큼 경주하는지 확인")
     @ParameterizedTest
-    @ValueSource(ints = {3, 4, 5})
-    void racingCarsCountCheckTest(int numberOfCar) {
-        RacingInfo racingInfo = new RacingInfo(numberOfCar, 1);
+    @CsvSource(value = {"pobi, crong, honux : 5", "pobi, crong, honux, test1, test2 : 7"}, delimiter = ':')
+    void racingCarsCountCheckTest(String inputName, int trialRaceCount) {
+        String[] carNames = InputCarNameSplitUtils.getSplitStringArray(inputName);
 
-        Cars cars = Cars.of(racingInfo.numberOfCar);
+        RacingInfo racingInfo = new RacingInfo(carNames.length, trialRaceCount);
+
+        Cars cars = Cars.of(carNames);
 
         RacingGame racingGame = new RacingGame(racingInfo, cars);
 
         Board board = racingGame.gameStart(new RandomBoundMovingStrategy());
 
-        assertThat(board.getAllRecords().get(0).size()).isEqualTo(numberOfCar);
+        assertThat(board.getAllRecords().get(0).size()).isEqualTo(racingInfo.numberOfCar);
 
     }
-
 
 }

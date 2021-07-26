@@ -13,7 +13,7 @@ public class RandomBoundMovingStrategyTests {
 
         int actual = randomBoundMovingStrategy.move();
 
-        assertThat(actual).isBetween(0,1);
+        assertThat(actual).isBetween(0, 1);
     }
 
 }
