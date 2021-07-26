@@ -44,4 +44,17 @@ public class StringCalculatorTest {
         //then
         assertThat(result).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("곱셈 테스트")
+    public void multiply() {
+        //given
+        String given = "3 * 7";
+
+        //when
+        int result = StringCalculator.calculate(given);
+
+        //then
+        assertThat(result).isEqualTo(21);
+    }
 }
