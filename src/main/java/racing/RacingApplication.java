@@ -1,6 +1,5 @@
 package racing;
 
-import racing.model.RacingModel;
 import racing.view.InputView;
 
 
@@ -8,11 +7,10 @@ public class RacingApplication {
 
     public static void main(String[] args) {
 
-        InputView inputView = new InputView();
-        RacingModel racingModel = new RacingModel();
-        inputView.inputData(racingModel);
+        int carSize = InputView.getCarSize();
+        int gameCount = InputView.getGameCount();
         Racing racing = new Racing();
-        racing.gameStart(racingModel);
+        racing.gameStart(carSize, gameCount);
     }
 
 }

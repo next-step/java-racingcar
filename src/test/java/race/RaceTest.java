@@ -28,7 +28,7 @@ public class RaceTest {
     @CsvSource(value = {"3:false", "5:true"}, delimiter = ':')
     void gameEndTest(int input, boolean expected) {
        RacingModel racingModel = new RacingModel();
-       racingModel.settingGame(3, 5);
+       racingModel.prepareGame(3, 5);
 
        assertThat(racing.game(racingModel, input)).isEqualTo(expected);
     }

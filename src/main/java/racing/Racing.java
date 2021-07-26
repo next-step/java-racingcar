@@ -11,9 +11,12 @@ public class Racing {
 
     private static final int minimumCondition = 4;
     private static final int maximumCondition = 9;
-
-    public void gameStart(RacingModel racingModel) {
+    
+    public void gameStart(int carSize, int gameCount) {
         int count = 1;
+        RacingModel racingModel = new RacingModel();
+        racingModel.prepareGame(carSize, gameCount);
+
         RacingView racingView = new RacingView();
         while (!game(racingModel, count)) {
             count++;

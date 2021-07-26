@@ -7,7 +7,7 @@ public class RacingModel {
     private List<CarModel> carList;
     private int playCount;
 
-   public void settingGame(int carCount, int playCount) {
+   public void prepareGame(int carCount, int playCount) {
         carList = new ArrayList<>();
         for(int count=0; count<carCount; count++) {
             CarModel carModel = new CarModel();
