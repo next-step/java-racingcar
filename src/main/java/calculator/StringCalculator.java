@@ -22,7 +22,7 @@ public class StringCalculator {
         return temp;
     }
 
-    public static int calculator(int num1, String opr, String stringNum){
+    private static int calculator(int num1, String opr, String stringNum){
         int num2 = Integer.parseInt(stringNum);
 
         switch (opr){
@@ -38,32 +38,32 @@ public class StringCalculator {
         return 0;
     }
 
-    public static void stringValidationChecker(String s){
+    private static void stringValidationChecker(String s){
         if(s==null || s.equals("") || s.equals(" "))
         {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void operatorChecker(String operator){
+    private static void operatorChecker(String operator){
         if(!("+".equals(operator) || "-".equals(operator) || "*".equals(operator) || "/".equals(operator))){
             throw new IllegalArgumentException();
         }
     }
 
-    public static Integer adder(int num1, int num2){
+    private static Integer adder(int num1, int num2){
         return num1 + num2;
     }
 
-    public static Integer subtractor(int num1, int num2){
+    private static Integer subtractor(int num1, int num2){
         return num1 - num2;
     }
 
-    public static Integer multiplier(int num1, int num2){
+    private static Integer multiplier(int num1, int num2){
         return num1 * num2;
     }
 
-    public static Integer divider(int num1, int num2){
+    private static Integer divider(int num1, int num2){
         return num1 / num2;
     }
 
