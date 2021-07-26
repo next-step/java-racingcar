@@ -20,4 +20,16 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(7);
     }
+
+    @Test
+    public void subtract() {
+        //given
+        Calculator c = new Calculator();
+
+        //when
+        int result = c.subtract(10, 6);
+
+        //then
+        assertThat(result).isEqualTo(4);
+    }
 }
