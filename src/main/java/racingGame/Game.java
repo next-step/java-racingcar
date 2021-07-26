@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 
 public class Game {
 
-    public static final String VALID_CAR_COUNT_MESSAGE = "자동차 수는 0 혹은 음수가 될 수 없습니다.";
-    public static final String VALID_REPEAT_COUNT_MESSAGE = "반복 횟수는 0 혹은 음수가 될 수 없습니다.";
     public static final int MIN_CAR_COUNT = 0;
     public static final int MIN_REPEAT_COUNT = 0;
+    public static final String VALID_CAR_COUNT_MESSAGE = "자동차 수는" + MIN_CAR_COUNT + " 혹은 음수가 될 수 없습니다.";
+    public static final String VALID_REPEAT_COUNT_MESSAGE = "반복 횟수는" + MIN_REPEAT_COUNT + "혹은 음수가 될 수 없습니다.";
 
     private final int repeatCount;
     private List<Car> cars = new ArrayList<>();

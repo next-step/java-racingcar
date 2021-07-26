@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Car {
 
-    public static final String VALID_CAR_NAME_MESSAGE = "자동차 이름은 5자를 초과할 수 없습니다.";
     public static final int MOVABLE_LIMIT_NUMBER = 4;
     public static final int MAXIMUM_CAR_NAME_LENGTH = 5;
     public static final int DEFAULT_CAR_DISTANCE = 0;
+    public static final String VALID_CAR_NAME_MESSAGE = "자동차 이름은" + MAXIMUM_CAR_NAME_LENGTH + "자를 초과할 수 없습니다.";
 
     private final String name;
     private final int distance;
@@ -23,7 +23,9 @@ public class Car {
     }
 
     private void validName(String name) {
-        if (name.length() > MAXIMUM_CAR_NAME_LENGTH) throw new IllegalArgumentException(VALID_CAR_NAME_MESSAGE);
+        if (name.length() > MAXIMUM_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException(VALID_CAR_NAME_MESSAGE);
+        }
     }
 
     public Car move(int random) {
