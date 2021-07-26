@@ -25,22 +25,16 @@ public class ResultView {
         for(int i = 0; i < car.getCarDistance(); i++) {
             System.out.print(DASH);
         }
-        System.out.println();
+        printEnter();
     }
 
     public void printWinners(List<String> winners) {
-        for(int i = 0; i < winners.size(); i++) {
-            System.out.print(winners.get(i));
-            printComma(winners.size(), i);
+        StringBuilder txt = new StringBuilder();
+        for(int i = 0; i < winners.size()-1; i++) {
+            txt.append(winners.get(i) + COMMA);
         }
-        System.out.print(WINNERS_MESSAGE);
-
-    }
-
-    private void printComma(int winnerCount, int index) {
-        if(winnerCount != index+1) {
-            System.out.print(COMMA);
-        }
+        txt.append(winners.get(winners.size()-1) + WINNERS_MESSAGE);
+        System.out.print(txt);
     }
 
 }

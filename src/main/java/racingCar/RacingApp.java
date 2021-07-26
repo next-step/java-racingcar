@@ -18,6 +18,7 @@ public class RacingApp {
     private void Race() {
         String nameList = this.inputView.EnterCarName();
         int moveCount = this.inputView.EnterMoveCount();
+        this.inputView.closeScanner();
 
         Race race = new Race(nameList, moveCount);
 
