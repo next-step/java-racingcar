@@ -52,5 +52,27 @@ public class RacingGameTests {
         assertThat(board.getAllRecords().get(0).size()).isEqualTo(racingInfo.numberOfCar);
 
     }
+    @DisplayName("3명이 경기를 했다면 우승자는 최소 1명 이상 3명 이하의 우승자가 나오는지 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"pobi,crong,honux : 5", "pobi, crong, honux, test1, test2 : 7"}, delimiter = ':')
+    void racingWinnerTest(String inputName, int trialRaceCount) {
+
+        String[] carNames = InputCarNameSplitUtils.getSplitStringArray(inputName);
+
+        RacingInfo racingInfo = new RacingInfo(carNames.length, trialRaceCount);
+
+        Cars cars = Cars.of(carNames);
+
+        RacingGame racingGame = new RacingGame(racingInfo, cars);
+
+        Board board = racingGame.gameStart(new RandomBoundMovingStrategy());
+
+        board.record(Arrays.asList(carNames.clone()), Arrays.asList(5, 5, 5));
+
+        List<String> winners = board.getWinnerCarsNames();
+
+        assertThat(winners.size()).isBetween(1, carNames.length);
+
+    }
 
 }
