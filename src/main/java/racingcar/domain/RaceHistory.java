@@ -5,24 +5,22 @@ import java.util.List;
 
 public class RaceHistory {
 
-    public static final String SEPARATE_ROUNDS = "\n\n";
-    private final List<String> states;
+    private final List<Cars> history;
 
     public RaceHistory() {
-        states = new ArrayList<>();
+        history = new ArrayList<>();
     }
 
-    public RaceHistory(List<String> states) {
-        this.states = states;
+    public RaceHistory(List<Cars> history) {
+        this.history = history;
+    }
+
+    public List<Cars> getHistory() {
+        return history;
     }
 
     public RaceHistory update(Cars cars) {
-        states.add(cars.toString());
-        return new RaceHistory(states);
-    }
-
-    @Override
-    public String toString() {
-        return String.join(SEPARATE_ROUNDS, states);
+        history.add(cars);
+        return new RaceHistory(history);
     }
 }

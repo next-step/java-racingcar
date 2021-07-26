@@ -26,6 +26,10 @@ public class Car {
         return this;
     }
 
+    public int getIntPosition() {
+        return position.getPosition();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -41,10 +45,5 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(position);
-    }
-
-    @Override
-    public String toString() {
-        return position.toString();
     }
 }

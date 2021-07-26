@@ -8,7 +8,6 @@ import racingcar.domain.car.Car;
 
 public class Cars {
 
-    public static final String NEWLINE = "\n";
     private final List<Car> cars;
 
     private Cars(List<Car> carList) {
@@ -25,6 +24,10 @@ public class Cars {
 
     public static Cars createFromList(List<Car> carList) {
         return new Cars(carList);
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     public Cars move(MoveStrategy moveStrategy) {
@@ -50,14 +53,5 @@ public class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(cars);
-    }
-
-    @Override
-    public String toString() {
-        List<String> carStates = cars
-                .stream()
-                .map(Object::toString)
-                .collect(Collectors.toList());
-        return String.join(NEWLINE, carStates);
     }
 }
