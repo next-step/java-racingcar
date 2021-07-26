@@ -12,7 +12,7 @@ public class ResultView {
         System.out.println();
     }
 
-    private static void printPosition(int position) {
+    private void printPosition(int position) {
         for (int i = 0; i < position; i++) {
             System.out.print('-');
         }
