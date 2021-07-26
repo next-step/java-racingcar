@@ -14,7 +14,7 @@ public class RacingCars {
 
     private void validateMinCount(int racingCarCount) {
         if (racingCarCount < MIN_RACING_CAR_COUNT) {
-            throw new IllegalArgumentException(String.format("자동차는 %d 대 이상이어야 합니다.", MIN_RACING_CAR_COUNT));
+            throw new IllegalArgumentException(String.format("자동차는 %d대 이상이어야 합니다.", MIN_RACING_CAR_COUNT));
         }
     }
 
