@@ -2,7 +2,13 @@ package racingcar.step4;
 
 public class Application {
     public static void main(String[] args) {
-        String[] carNames = InputView.InputCarNames().split(",");
-        int tryCount = InputView.InputTryCount();
+        try {
+            String strLiterals = InputView.InputCarNames();
+            Validation.checkForNull(strLiterals);
+            int tryCount = InputView.InputTryCount();
+            Validation.isValidInteger(tryCount);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
