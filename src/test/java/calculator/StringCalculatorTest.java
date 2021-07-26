@@ -2,6 +2,9 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -36,17 +39,13 @@ public class StringCalculatorTest {
         assertThat(result).isEqualTo(5);
     }
 
-    @DisplayName("입력 값 null 체크")
-    @Test
-    void 입력_값_null_체크() {
+    @DisplayName("입력 값 null, 공백 체크")
+    @ParameterizedTest
+    @NullAndEmptySource
+    @ValueSource(strings={" "})
+    void 입력_값_null_공백_체크(String input) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> StringCalculator.cal(null));
-
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> StringCalculator.cal(""));
-
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> StringCalculator.cal(" "));
+                .isThrownBy(() -> StringCalculator.cal(input));
     }
 
     @DisplayName("사칙연산 기호 체크")
