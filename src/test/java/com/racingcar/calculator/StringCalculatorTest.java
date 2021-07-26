@@ -2,6 +2,8 @@ package com.racingcar.calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -100,5 +102,16 @@ public class StringCalculatorTest {
 
         //then
         assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.calculate(given));
+    }
+
+    @ParameterizedTest
+    @DisplayName("모든 올바른 경우 테스트")
+    @CsvSource({"3 + 2 - 1 * 10,40", "12 / 3 - 2 * 6,12", "6 / 2 + 3 - 1 * 4,20"})
+    public void allCorrectCase(String input, int expected) {
+        //when
+        int result = StringCalculator.calculate(input);
+
+        //then
+        assertThat(result).isEqualTo(expected);
     }
 }
