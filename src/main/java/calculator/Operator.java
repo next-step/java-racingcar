@@ -17,13 +17,9 @@ public enum Operator {
         this.operator = operator;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public static Operator valueOfString(String str) {
         return Arrays.stream(Operator.values())
-                .filter(i -> str.equals(i.getDescription()))
+                .filter(i -> str.equals(i.description))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
     }

@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.RandomGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,7 +14,8 @@ public class Cars {
     }
 
     public void attempt() {
-        cars.forEach(Car::attempt);
+        RandomGenerator randomGenerator = new RandomGenerator();
+        cars.forEach(car -> car.go(randomGenerator.getRandomInt()));
     }
 
     public List<Car> getCars() {

@@ -11,10 +11,9 @@ public class Car {
     private String name;
 
     Car(String name) {
-        if (isValidName(name)) {
-            this.name = name;
-            score = 0;
-        }
+        checkNameValidation(name);
+        this.name = name;
+        score = 0;
     }
 
     public String getName() {
@@ -25,25 +24,15 @@ public class Car {
         return score;
     }
 
-    private void go() {
-        score++;
-    }
-
-    void attempt() {
-        if (isAbleToMove()) {
-            this.go();
+    void go(int number) {
+        if (number > GO_CONDITION) {
+            score++;
         }
     }
 
-    private boolean isAbleToMove() {
-        Random random = new java.util.Random();
-        return random.nextInt(BOUND) > GO_CONDITION;
-    }
-
-    private boolean isValidName(String name) {
+    private void checkNameValidation(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException();
         }
-        return true;
     }
 }
