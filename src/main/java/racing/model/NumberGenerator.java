@@ -3,9 +3,6 @@ package racing.model;
 import java.util.Random;
 
 public class NumberGenerator {
-    static final int MIN_NUMBER = 0;
-    static final int MAX_NUMBER = 9;
-
     private final Random random;
     private Number number;
 
@@ -14,7 +11,7 @@ public class NumberGenerator {
     }
 
     public void generateRandomNumber() {
-        number = new Number(random.nextInt(MAX_NUMBER - MIN_NUMBER + 1) + MIN_NUMBER);
+        number = new Number(random.nextInt(10));
     }
 
     public Number getNumber() {
