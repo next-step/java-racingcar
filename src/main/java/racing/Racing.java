@@ -5,8 +5,6 @@ import racing.model.RacingModel;
 import racing.util.RandomUtil;
 import racing.view.RacingView;
 
-import java.util.List;
-
 public class Racing {
 
     private static final int minimumCondition = 4;
@@ -26,10 +24,7 @@ public class Racing {
     }
 
     public Boolean game(RacingModel racingModel, int count) {
-        List<CarModel> carList = racingModel.participants();
-        for(CarModel car : carList) {
-            carMove(car, RandomUtil.randomValue());
-        }
+        racingModel.participants().forEach(car -> carMove(car, RandomUtil.randomValue()));
         return racingModel.endGame(count);
     }
 

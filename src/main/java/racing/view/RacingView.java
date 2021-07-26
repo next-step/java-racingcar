@@ -13,14 +13,13 @@ public class RacingView {
         for (int i=0; i<carMove; i++) {
             System.out.print(moveText);
         }
+        System.out.println("");
     }
 
     public void printCarMove(RacingModel racingModel) {
-        List<CarModel> carList = racingModel.participants();
-        for (CarModel car : carList) {
-            printMoveLine(car.totalDistance());
-            System.out.println("");
-        }
+        racingModel.participants()
+                .stream()
+                .forEach(car -> printMoveLine(car.totalDistance()));
         System.out.println("");
     }
 
