@@ -21,7 +21,10 @@ public class App {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
-        resultView.play(inputView.getNumberOfAttempts(), make(inputView.getNumberOfCars(), NUMBER_OF_RANDOMS, THRESHOLD));
+        Cars cars = make(inputView.getNumberOfCars(), NUMBER_OF_RANDOMS, THRESHOLD);
+        cars.play(inputView.getNumberOfAttempts());
+
+        resultView.print(inputView.getNumberOfAttempts(), cars);
     }
 
     public static Cars make(int numberOfCars, int numberOfRandoms, int threshold) {

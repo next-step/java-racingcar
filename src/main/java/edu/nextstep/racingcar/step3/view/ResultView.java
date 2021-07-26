@@ -10,16 +10,12 @@ public class ResultView {
     private static final String DISPLAY_TOKEN = "-";
     private static final String NEW_LINE = "\n";
 
-    public void play(int numberOfAttempts, Cars cars) {
+    public void print(int numberOfAttempts, Cars cars) {
         IntStream.range(0, numberOfAttempts).forEach(idx -> attempt(cars));
     }
 
     private void attempt(Cars cars) {
-        cars.forEach(car -> {
-            car.move();
-            printDistance(car);
-        });
-
+        cars.forEach(this::printDistance);
         System.out.print(NEW_LINE);
     }
 
