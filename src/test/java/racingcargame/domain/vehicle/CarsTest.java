@@ -2,13 +2,13 @@ package racingcargame.domain.vehicle;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcargame.domain.common.Name;
-import racingcargame.domain.common.Names;
 import racingcargame.domain.vehicle.factory.AlwaysForwardCarFactory;
 import racingcargame.domain.vehicle.factory.CarFactory;
 import racingcargame.domain.vehicle.factory.NormalCarFactory;
@@ -24,9 +24,10 @@ class CarsTest {
     @ValueSource(strings = "pobi,crong,honux,hyune")
     public void winners(String nameString) {
         // given
-        Names names = new Names(nameString, ",");
-        List<Car> carList = names.getNames()
-            .stream()
+        List<Name> names = Arrays.stream(nameString.split(","))
+            .map(Name::new)
+            .collect(Collectors.toList());
+        List<Car> carList = names.stream()
             .map(normalCarFactory::create)
             .collect(Collectors.toList());
         Name winnerName1 = new Name("win1");

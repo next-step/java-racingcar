@@ -3,7 +3,6 @@ package racingcargame.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcargame.domain.common.Name;
-import racingcargame.domain.common.Names;
 import racingcargame.domain.vehicle.Car;
 import racingcargame.domain.vehicle.Cars;
 import racingcargame.domain.vehicle.WinnerCars;
@@ -38,9 +37,8 @@ public class RacingCarController {
     }
 
     private static Cars inputRacingCars() {
-        Names names = InputView.inputCarNames();
-        List<Car> carList = names.getNames()
-            .stream()
+        List<Name> names = InputView.inputCarNames();
+        List<Car> carList = names.stream()
             .map(NORMAL_CAR_FACTORY::create)
             .collect(Collectors.toList());
 

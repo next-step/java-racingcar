@@ -1,7 +1,10 @@
 package racingcargame.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
-import racingcargame.domain.common.Names;
+import java.util.stream.Collectors;
+import racingcargame.domain.common.Name;
 
 public class InputView {
 
@@ -10,11 +13,13 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static Names inputCarNames() {
+    public static List<Name> inputCarNames() {
         System.out.println(CAR_NAME_INPUT_MESSAGE);
         String input = scanner.nextLine();
 
-        return new Names(input, ",");
+        return Arrays.stream(input.split(","))
+            .map(Name::new)
+            .collect(Collectors.toList());
     }
 
     public static int inputRoundCount() {
