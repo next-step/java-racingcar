@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import racingcargame.domain.common.Distance;
 import racingcargame.domain.common.Name;
-import racingcargame.domain.vehicle.factory.AllwaysForwardCarFactory;
+import racingcargame.domain.vehicle.factory.AlwaysForwardCarFactory;
 import racingcargame.domain.vehicle.factory.CarFactory;
 import racingcargame.domain.vehicle.factory.NormalCarFactory;
 
@@ -17,9 +17,9 @@ import racingcargame.domain.vehicle.factory.NormalCarFactory;
 class CarTest {
 
     private final CarFactory normalCarFactory = new NormalCarFactory();
-    private final CarFactory allwaysForwardEngine = new AllwaysForwardCarFactory();
+    private final CarFactory alwaysForwardEngine = new AlwaysForwardCarFactory();
 
-    public static Stream<Arguments> NORMAL_CAR_INFO() {
+    public static Stream<Arguments> normalCarInfo() {
         return Stream.of(Arguments.of(
             new Name("pobi"), new Distance(0))
         );
@@ -27,7 +27,7 @@ class CarTest {
 
     @DisplayName("[성공] 생성")
     @ParameterizedTest
-    @MethodSource("NORMAL_CAR_INFO")
+    @MethodSource("normalCarInfo")
     public void create(Name name, Distance distance) {
         // given
 
@@ -41,10 +41,10 @@ class CarTest {
 
     @DisplayName("[성공] 주행")
     @ParameterizedTest
-    @MethodSource("NORMAL_CAR_INFO")
+    @MethodSource("normalCarInfo")
     public void drive(Name name, Distance distance) {
         // given
-        Car car = allwaysForwardEngine.create(name, distance);
+        Car car = alwaysForwardEngine.create(name, distance);
 
         // when
         car.drive();

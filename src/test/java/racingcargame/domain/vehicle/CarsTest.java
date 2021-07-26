@@ -9,7 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcargame.domain.common.Name;
 import racingcargame.domain.common.Names;
-import racingcargame.domain.vehicle.factory.AllwaysForwardCarFactory;
+import racingcargame.domain.vehicle.factory.AlwaysForwardCarFactory;
 import racingcargame.domain.vehicle.factory.CarFactory;
 import racingcargame.domain.vehicle.factory.NormalCarFactory;
 
@@ -17,25 +17,7 @@ import racingcargame.domain.vehicle.factory.NormalCarFactory;
 class CarsTest {
 
     private final CarFactory normalCarFactory = new NormalCarFactory();
-    private final CarFactory allwaysForwardCarFactory = new AllwaysForwardCarFactory();
-
-    @DisplayName("[성공] 생성")
-    @ParameterizedTest
-    @ValueSource(strings = "pobi,crong,honux,hyune")
-    public void create(String nameString) {
-        // given
-        Names names = new Names(nameString, ",");
-        List<Car> carList = names.getNames()
-            .stream()
-            .map(normalCarFactory::create)
-            .collect(Collectors.toList());
-
-        // when
-        Cars cars = new Cars(carList);
-
-        // then
-        assertThat(cars.getCars().size()).isEqualTo(4);
-    }
+    private final CarFactory alwaysForwardCarFactory = new AlwaysForwardCarFactory();
 
     @DisplayName("[성공] 우승")
     @ParameterizedTest
@@ -49,8 +31,8 @@ class CarsTest {
             .collect(Collectors.toList());
         Name winnerName1 = new Name("win1");
         Name winnerName2 = new Name("win2");
-        carList.add(allwaysForwardCarFactory.create(winnerName1));
-        carList.add(allwaysForwardCarFactory.create(winnerName2));
+        carList.add(alwaysForwardCarFactory.create(winnerName1));
+        carList.add(alwaysForwardCarFactory.create(winnerName2));
 
         Cars cars = new Cars(carList);
 

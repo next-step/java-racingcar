@@ -2,7 +2,7 @@ package racingcargame.domain.vehicle.engine;
 
 import racingcargame.domain.common.Distance;
 
-public class AllwaysForwardEngine implements Engine {
+public class AlwaysForwardEngine implements Engine {
 
     @Override
     public Distance running() {
