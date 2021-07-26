@@ -28,7 +28,7 @@ public class StringCalTest {
     @DisplayName("빈 칸의 따라 문자나눈후 잘나뉘어져있는지 요소 찾기.")
     void emptySplit() {
 
-        String [] numberAndOperator = "2 + 3 * 4 / 2".split(" ");
+        String[] numberAndOperator = "2 + 3 * 4 / 2".split(" ");
         assertThat(numberAndOperator).contains("2");
         assertThat(numberAndOperator).contains("+");
         assertThat(numberAndOperator).contains("3");
@@ -38,30 +38,31 @@ public class StringCalTest {
     @Test
     @DisplayName("더하기 테스트")
     void plusCalculate() {
-        assertThat(plus.calculate(1 , 2)).isEqualTo(3);
+        assertThat(plus.calculate(1, 2)).isEqualTo(3);
     }
+
     @Test
     @DisplayName("마이너스 테스트")
     void subtarctCalculate() {
-        assertThat(substract.calculate(3 , 2)).isEqualTo(1);
+        assertThat(substract.calculate(3, 2)).isEqualTo(1);
     }
 
     @Test
     @DisplayName("곱하기 테스트")
     void multyplyCalculate() {
-        assertThat(multiply.calculate(1 , 2)).isEqualTo(2);
+        assertThat(multiply.calculate(1, 2)).isEqualTo(2);
     }
 
     @Test
     @DisplayName("나누기 테스트")
     void divisionCalculate() {
-        assertThat(division.calculate(10 ,5)).isEqualTo(2);
+        assertThat(division.calculate(10, 5)).isEqualTo(2);
     }
 
     @Test
     @DisplayName("문자열 최종계산")
     void repeatStringCalculate() {
-        String [] numberAndOperator = "2 + 3 * 4 / 2".split(" ");
+        String[] numberAndOperator = "2 + 3 * 4 / 2".split(" ");
         int result = stringCalculationExecutor.stringCalculator(numberAndOperator);
         assertThat(result).isEqualTo(10);
     }

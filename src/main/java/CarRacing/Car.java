@@ -4,30 +4,18 @@ import java.util.Objects;
 
 public class Car {
 
-    private CarMove carMove;
+    private Position position;
 
     public Car() {
-        this.carMove = new CarMove();
+        this.position = new Position();
     }
 
-    public void carMove(int carMove) {
-        this.carMove.increaseCarDistance(carMove);
+    public void move(int carMove) {
+        this.position.move(carMove);
     }
 
-    public StringBuffer getCarMovingDistance() {
-        return this.carMove.getCarMovingDistance();
+    public int getCarPosition() {
+        return this.position.getPosition();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return Objects.equals(carMove, car.carMove);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(carMove);
-    }
 }

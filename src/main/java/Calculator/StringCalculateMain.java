@@ -6,7 +6,7 @@ public class StringCalculateMain {
 
     public static void main(String[] args) {
 
-        String [] numberAndOperator = "2 + 3 * 4 / 2".split(" ");
+        String[] numberAndOperator = "2 + 3 * 4 / 2".split(" ");
 
         int result = stringCalculaterExecutor.stringCalculator(numberAndOperator);
 

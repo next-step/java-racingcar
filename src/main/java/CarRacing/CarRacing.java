@@ -1,27 +1,30 @@
 package CarRacing;
 
+import java.util.List;
+import java.util.Random;
+
 public class CarRacing {
     private CarList carList = new CarList();
-    private int numberOfAttempts;
+    private Random random = new Random();
+    private int carCount;
 
-    public CarRacing(int carCount, int numberOfAttempts) {
-        if (carCount == 0 || numberOfAttempts == 0) {
-            throw new IllegalArgumentException("자동차 개수나 시도 횟수는 0이 아닌값을 넣어 주세요.");
+    public CarRacing(int carCount) {
+        this.carCount = carCount;
+        setCarList();
+    }
+
+    private void setCarList() {
+        if (carCount < 0) {
+            throw new IllegalArgumentException("자동차 개수는 음수는 허용하지 않습니다.");
         }
-        setCarList(carCount);
-        this.numberOfAttempts = numberOfAttempts;
+        carList.addCarCount(carCount);
     }
 
-    public void setCarList(int carCount) {
-        carList.addCar(carCount);
+    public List<Car> getCarList() {
+        return carList.getCarList();
     }
 
-    public void raceStart() {
-        for (int i = 0; i < numberOfAttempts; i++) {
-            carList.movingCarList();
-            carList.getCarListDistance();
-        }
+    public void moveCarList() {
+        carList.getCarList().forEach(car -> car.move(random.nextInt(10)));
     }
-
-
 }
