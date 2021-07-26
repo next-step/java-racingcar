@@ -3,18 +3,25 @@ package calculator;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 public class StringCalculator {
 
     static int answer = 0;
 
     public enum Operator {
-        ADD("+"), SUBTRACT("-"), MULTIPLY("*"), DIVIDE("/");
+        ADD("+", (inputElement, postElement) -> inputElement + postElement),
+        SUBTRACT("-", (inputElement, postElement) -> inputElement - postElement),
+        MULTIPLY("*", (inputElement, postElement) -> inputElement * postElement),
+        DIVIDE("/", (inputElement, postElement) -> inputElement / postElement);
 
         private final String operator;
+        private BiFunction<Integer, Integer, Integer> expression;
 
-        private Operator(String operator) {
+        private Operator(String operator, BiFunction<Integer, Integer, Integer> expression) {
             this.operator = operator;
+            this.expression = expression;
         }
 
         public String getOperator() {
@@ -30,7 +37,7 @@ public class StringCalculator {
 
     public static int calculate(String input) {
 
-        if (input == null || input.equals(""))
+        if (input == null || input.trim().isEmpty())
             throw new IllegalArgumentException();
 
         String[] inputArray = input.split(" ");
@@ -50,23 +57,15 @@ public class StringCalculator {
 
             if (inputElement.equals(Operator.ADD.getOperator())) {
                 add(postElement);
-                i++;
-                continue;
             }
             if (inputElement.equals(Operator.SUBTRACT.getOperator())) {
                 subtract(postElement);
-                i++;
-                continue;
             }
             if (inputElement.equals(Operator.MULTIPLY.getOperator())) {
                 multiply(postElement);
-                i++;
-                continue;
             }
             if (inputElement.equals(Operator.DIVIDE.getOperator())) {
-                i++;
                 divide(postElement);
-                continue;
             }
             throw new IllegalArgumentException(); //숫자나 사칙연산 이외의 입력값 예외처리
         }
