@@ -31,6 +31,6 @@ public class Calculator {
 	private int calculate(String operator, int number1, int number2) {
 		OperatorType operatorType = OperatorType.getByOperator(operator);
 
-		return operatorType.getCalculationResult(number1, number2);
+		return operatorType.calculate(number1, number2);
 	}
 }
