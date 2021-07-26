@@ -28,10 +28,11 @@ public class RacingApp {
 
     private void start(Race race) {
         this.resultView.printExecutionResultMessage();
-        int roundCount = race.getRoundCount();
+        int roundNumber = 1;
 
-        for(int i = 1; i < roundCount; i++) {
-            outputCarDistance(race.getRoundResult(i));
+        while (race.isNotEnd(roundNumber)) {
+            outputCarDistance(race.getRoundResult(roundNumber));
+            roundNumber++;
         }
     }
 

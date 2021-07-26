@@ -63,8 +63,8 @@ public class Race {
         return rounds.get(roundNumber);
     }
 
-    public int getRoundCount() {
-        return rounds.size();
+    public boolean isNotEnd(int roundNumber) {
+        return roundNumber < rounds.size();
     }
 
     public List<String> announceWinners() {
