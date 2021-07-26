@@ -4,7 +4,7 @@ public class Car {
 
     private final String carName;
 
-    private CarEngine carEngine;
+    private final CarEngine carEngine;
     private int movedCount = 0;
 
     public Car(String carName, CarEngine carEngine) {

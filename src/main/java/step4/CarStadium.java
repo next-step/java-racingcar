@@ -21,7 +21,7 @@ public class CarStadium {
     }
 
     public void moveCars() {
-        if(cars.isEmpty()){
+        if (cars.isEmpty()) {
             throw new IllegalArgumentException("자동차가 아직 입장이 안되었습니다.");
         }
 
