@@ -1,13 +1,7 @@
 package racingcargame;
 
 public class ResultView {
-    String resultView = "";
-
-    public void inputResultView(String inputResultView) {
-        resultView = inputResultView;
-    }
-
-    public void showResultView() {
+    public void showResultView(String resultView) {
         System.out.println(resultView);
     }
 }

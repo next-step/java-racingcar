@@ -29,7 +29,7 @@ public class RacingCarGame {
         for (int i = 0; i < count; i++) {
             for (int j = 0; j < cars.size(); j++) {
                 doRandomCalculation(cars.get(j));
-                resultView.showResultView();
+                resultView.showResultView(cars.get(j).getMovingLine());
             }
             System.out.println();
         }
@@ -43,6 +43,6 @@ public class RacingCarGame {
     }
 
     private void moveForward(RacingCar racingCar) {
-        resultView.inputResultView(racingCar.move());
+        racingCar.move();
     }
 }

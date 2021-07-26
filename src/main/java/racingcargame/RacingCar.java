@@ -7,4 +7,8 @@ public class RacingCar {
         movingLine += "-";
         return movingLine;
     }
+
+    public String getMovingLine() {
+        return movingLine;
+    }
 }
