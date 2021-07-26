@@ -1,6 +1,8 @@
 package racingcar;
 
 import racingcar.entity.RacingCar;
+import racingcar.strategy.MoveStrategy;
+import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -16,13 +18,13 @@ public class RacingCarGame {
         List<RacingCar> racingCars = new ArrayList<>();
         int carNumber = inputView.requestCarNumber();
         int tryNumber = inputView.requestTryNumber();
-        initializeRacingCars(racingCars, carNumber);
+        initializeRacingCars(racingCars, carNumber, new RandomMoveStrategy());
         race(racingCars, tryNumber);
     }
 
-    public static void initializeRacingCars(List<RacingCar> racingCars, int carNumber) {
+    public static void initializeRacingCars(List<RacingCar> racingCars, int carNumber, MoveStrategy moveStrategy) {
         for (int i = 0; i < carNumber; i++) {
-            racingCars.add(new RacingCar());
+            racingCars.add(new RacingCar(moveStrategy));
         }
     }
 
