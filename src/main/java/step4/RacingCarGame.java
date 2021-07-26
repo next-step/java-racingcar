@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class RacingCarGame {
 
     public static void main(String[] args) {
-        int carCount = InputView.inputCarCount();
+        int carCount = InputView.inputTryCount();
         String[] names = InputView.inputCarNames().split(",");
         int tryCount = names.length;
 
@@ -13,7 +13,7 @@ public class RacingCarGame {
         CarStadium carstadium = new CarStadium(referee, new ArrayList<>());
 
         for (int i = 0; i < carCount; i++) {
-            carstadium.enterCar(new Car(new CarEngine()));
+            carstadium.enterCar(new Car(names[i], new CarEngine()));
         }
 
         ResultView resultView = new ResultView();
@@ -22,5 +22,7 @@ public class RacingCarGame {
             carstadium.moveCars();
             resultView.printResult(carstadium);
         }
+
+        resultView.printWinners(carstadium.winners());
     }
 }
