@@ -43,7 +43,7 @@ public class RacingCars {
         }
 
         if (racingCars.size() != numbers.size()) {
-            throw new IllegalArgumentException("숫자의 개수가 자동차 개수와 같지 않습니다.");
+            throw new IllegalArgumentException("숫자의 개수가 자동차 대수와 같지 않습니다.");
         }
     }
 
