@@ -11,7 +11,7 @@ public class Racing {
 
     private static final int minimumCondition = 4;
     private static final int maximumCondition = 9;
-    
+
     public void gameStart(int carSize, int gameCount) {
         int count = 1;
         RacingModel racingModel = new RacingModel();
