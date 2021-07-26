@@ -10,4 +10,8 @@ public class Car {
     public Position getPosition() {
         return this.position;
     }
+
+    public void movePosition() {
+        position.movePosition();
+    }
 }

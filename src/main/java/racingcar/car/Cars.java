@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Cars {
 
-    public List<Car> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
 
     public void setUserInputCountOfCar() {
         addCars(InputView.inputCountOfCar());
@@ -25,7 +25,7 @@ public class Cars {
 
     public void moveCars() {
         for (Car car : cars) {
-            car.getPosition().movePosition();
+            car.movePosition();
         }
         System.out.println();
     }
