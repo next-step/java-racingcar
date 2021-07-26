@@ -18,8 +18,6 @@ public enum ArithmeticOperation {
     }
 
     static public ArithmeticOperation arithmetic(String label) {
-        System.out.println("산술연산자 : " + label);
-        System.out.println();
 
         return Arrays.stream(values())
                 .filter(operation -> operation.label.equals(label))
@@ -27,7 +25,10 @@ public enum ArithmeticOperation {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    public int calculation(int a, int b) {
-        return biFunction.apply(a, b);
+    public int calculation(int before, int after) {
+        System.out.println("before " + before);
+        System.out.println("산술연산자 " + label);
+        System.out.println("after " + after);
+        return biFunction.apply(before, after);
     }
 }

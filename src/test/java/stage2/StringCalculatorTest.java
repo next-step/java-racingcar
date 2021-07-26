@@ -61,7 +61,12 @@ public class StringCalculatorTest {
     public void 입력_값이_null이거나_빈_공백_문자일_경우() {
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            int result = StringCalculator.calculation("  + 4");
+            int result = StringCalculator.calculation("  + 3");
+            print(result);
+        });
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            int result = StringCalculator.calculation("6 +  ");
             print(result);
         });
 
@@ -69,5 +74,18 @@ public class StringCalculatorTest {
             int result = StringCalculator.calculation("5 - null");
             print(result);
         });
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            int result = StringCalculator.calculation("null * 2");
+            print(result);
+        });
+    }
+
+    @Test
+    @DisplayName("2 + 3 * 4 / 2")
+    public void finalCalculation() {
+        int result = StringCalculator.calculation("2 + 3 * 4 / 2");
+        print(result);
+        assertThat(result).isEqualTo(10);
     }
 }

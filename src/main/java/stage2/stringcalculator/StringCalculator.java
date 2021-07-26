@@ -1,5 +1,7 @@
 package stage2.stringcalculator;
 
+import stage2.stringcalculator.exception.InvalidArithmeticOperatorException;
+
 public class StringCalculator {
 
     public static int calculation(String inputString) {
@@ -8,13 +10,27 @@ public class StringCalculator {
 
         String[] inputArray = inputString.split(" ");
 
-        int before = getParseInt(inputArray[0]);
-        int after = getParseInt(inputArray[2]);
+        if ("".equals(inputArray[0]) || inputArray.length == 2) {
+            throw new InvalidArithmeticOperatorException();
+        }
 
-        return ArithmeticOperation.arithmetic(inputArray[1]).calculation(before, after);
+        int calculationResult = calculator(getParseInt(inputArray[0]), inputArray[1], getParseInt(inputArray[2]));
+
+        for (int i = 3; i < inputArray.length; i++) {
+            calculationResult = calculator(calculationResult, inputArray[i], getParseInt(inputArray[i + 1]));
+            i++;
+        }
+
+        return calculationResult;
     }
 
-    private static int getParseInt(String inputArray) {
-        return Integer.parseInt(inputArray);
+    private static int calculator(int before, String operatorSymbol, int after) {
+
+        return ArithmeticOperation.arithmetic(operatorSymbol).calculation(before, after);
+    }
+
+    private static int getParseInt(String inputString) {
+
+        return Integer.parseInt(inputString);
     }
 }
