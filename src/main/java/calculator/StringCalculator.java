@@ -1,6 +1,7 @@
 package calculator;
 
 import errors.EmptyArgumentException;
+import errors.InvalidInputException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,58 +33,48 @@ public class StringCalculator {
         }
     }
 
-    public static void main(String[] args) throws IOException, EmptyArgumentException {
+    public static void main(String[] args) throws IOException, EmptyArgumentException, InvalidInputException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input = br.readLine();
         System.out.println(calculate(input));
     }
 
-    public static int calculate(String input) throws EmptyArgumentException {
-
+    public static int calculate(String input) throws EmptyArgumentException, InvalidInputException {
         if (Objects.isNull(input) || input.trim().isEmpty())
             throw new EmptyArgumentException("계산식을 입력해주세요.");
 
-        String[] inputArray = input.split(" ");
-
-        for (int i = 0; i < inputArray.length; i++) {
-
-            if (i == inputArray.length - 1)
-                break;
-
-            String inputElement = inputArray[i];
-            String postElement = inputArray[i + 1];
-
-            if (i == 0) {
-                answer = toInt(inputElement);
-                continue;
-            }
-
-            for (Operator o : Operator.values()) {
-                if (inputElement.trim().equals(o.getOperator()))
-                    o.expression.apply(answer, toInt(postElement));
-            }
-            throw new InvalidInputException("올바른 연산자를 입력해주세요."); //숫자나 사칙연산 이외의 입력값 예외처리
-        }
-        return answer;
+        return operatorLoop(processInput(input));
     }
 
     public static int toInt(String inputElement) {
         return Integer.parseInt(inputElement);
     }
 
-    public static int add(String postElement) {
-        return answer += toInt(postElement);
+    private static String[] processInput(String input) {
+        return input.split(" ");
     }
 
-    public static int subtract(String postElement) {
-        return answer -= toInt(postElement);
+    private static int operatorLoop(String[] inputArray) throws InvalidInputException {
+        int size = inputArray.length;
+        int i = 0;
+        while(i < size - 1) {
+            String inputElement = inputArray[i];
+            String postElement = inputArray[i + 1];
+            answer = processOperator(inputElement, postElement);
+            i++;
+        }
+        throw new InvalidInputException("올바른 연산자를 입력해주세요."); //숫자나 사칙연산 이외의 입력값 예외처리
     }
 
-    public static int multiply(String postElement) {
-        return answer *= toInt(postElement);
+    private static int processOperator(String inputElement, String postElement) {
+        for (Operator o : Operator.values()) {
+            operateTwoNums(inputElement, postElement, o);
+        }
+        return answer;
     }
 
-    public static int divide(String postElement) {
-        return answer /= toInt(postElement);
+    private static void operateTwoNums(String inputElement, String postElement, Operator o) {
+        if (inputElement.trim().equals(o.getOperator()))
+            o.expression.apply(answer, toInt(postElement));
     }
 }
