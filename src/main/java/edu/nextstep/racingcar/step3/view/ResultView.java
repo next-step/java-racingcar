@@ -1,8 +1,8 @@
 package edu.nextstep.racingcar.step3.view;
 
-import edu.nextstep.racingcar.step3.app.Vehicle;
+import edu.nextstep.racingcar.step3.app.Car;
+import edu.nextstep.racingcar.step3.app.Cars;
 
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class ResultView {
@@ -10,27 +10,21 @@ public class ResultView {
     private static final String DISPLAY_TOKEN = "-";
     private static final String NEW_LINE = "\n";
 
-    public void play(int numberOfAttempts, List<Vehicle> vehicles) {
-        IntStream.range(0, numberOfAttempts).forEach(idx -> attempt(vehicles));
+    public void play(int numberOfAttempts, Cars cars) {
+        IntStream.range(0, numberOfAttempts).forEach(idx -> attempt(cars));
     }
 
-    private void attempt(List<Vehicle> vehicles) {
-        vehicles.forEach(vehicle -> {
-            calculateDistance(vehicle);
-            printDistance(vehicle);
+    private void attempt(Cars cars) {
+        cars.forEach(car -> {
+            car.move();
+            printDistance(car);
         });
 
         System.out.print(NEW_LINE);
     }
 
-    private void printDistance(Vehicle vehicle) {
-        IntStream.range(0, vehicle.getDistance()).forEach(distanceIdx -> System.out.print(DISPLAY_TOKEN));
+    private void printDistance(Car car) {
+        IntStream.range(0, car.getDistance()).forEach(distanceIdx -> System.out.print(DISPLAY_TOKEN));
         System.out.print(NEW_LINE);
-    }
-
-    private void calculateDistance(Vehicle vehicle) {
-        if (vehicle.isMove()) {
-            vehicle.setDistance(vehicle.getDistance() + 1);
-        }
     }
 }

@@ -1,24 +1,20 @@
 package edu.nextstep.racingcar.step3.app;
 
-import java.util.function.Supplier;
+public class Car {
 
-public class Car implements Vehicle {
-
-    private final Supplier<Boolean> movement;
+    private final MoveStrategy moveStrategy;
     private int distance = 1;
 
-    public Car(ParamsValidator paramsValidator, Supplier<Boolean> movement) {
+    public Car(ParamsValidator paramsValidator, MoveStrategy moveStrategy) {
         paramsValidator.validate();
 
-        this.movement = movement;
+        this.moveStrategy = moveStrategy;
     }
 
-    public boolean isMove() {
-        return movement.get();
-    }
-
-    public void setDistance(int distance) {
-        this.distance = distance;
+    public void move() {
+        if (moveStrategy.isMove()) {
+            this.distance++;
+        }
     }
 
     public int getDistance() {
@@ -27,5 +23,9 @@ public class Car implements Vehicle {
 
     public interface ParamsValidator {
         void validate();
+    }
+
+    public interface MoveStrategy {
+        Boolean isMove();
     }
 }
