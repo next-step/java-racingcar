@@ -18,10 +18,7 @@ public class RacingCarApplication {
         int carNum = InputView.inputCarNum();
         int moveNum = InputView.inputMoveNum();
 
-        List<RacingCar> racingCarList = new ArrayList<>();
-        for (int i = 0; i < carNum; i++) {
-            racingCarList.add(new RacingCar());
-        }
+        List<RacingCar> racingCarList = RacingCar.createCarList(carNum);
 
         ResultView.startSign();
         for (int i = 0; i < moveNum; i++) {

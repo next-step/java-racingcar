@@ -9,10 +9,39 @@
 
 package edu.nextstep.racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class RacingCar {
 
-    private int movedDistance;
+    private int movedDistance = 0;
 
     public void move() {
+        int n = getRandomNum();
+        if (n >= 4) {
+            moveRacingCar();
+        }
+    }
+
+    private int getRandomNum() {
+        Random randomUtil = new Random();
+        return randomUtil.nextInt(10);
+    }
+
+    private void moveRacingCar() {
+        this.movedDistance++;
+    }
+
+    public int getMovedDistance() {
+        return movedDistance;
+    }
+
+    public static List<RacingCar> createCarList(int carNum) {
+        List<RacingCar> racingCarList = new ArrayList<>();
+        for (int i = 0; i < carNum; i++) {
+            racingCarList.add(new RacingCar());
+        }
+        return racingCarList;
     }
 }
