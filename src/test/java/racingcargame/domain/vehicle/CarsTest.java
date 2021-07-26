@@ -27,23 +27,23 @@ class CarsTest {
         List<Name> names = Arrays.stream(nameString.split(","))
             .map(Name::new)
             .collect(Collectors.toList());
-        List<Car> carList = names.stream()
+        List<Car> cars = names.stream()
             .map(normalCarFactory::create)
             .collect(Collectors.toList());
         Name winnerName1 = new Name("win1");
         Name winnerName2 = new Name("win2");
-        carList.add(alwaysForwardCarFactory.create(winnerName1));
-        carList.add(alwaysForwardCarFactory.create(winnerName2));
+        cars.add(alwaysForwardCarFactory.create(winnerName1));
+        cars.add(alwaysForwardCarFactory.create(winnerName2));
 
-        Cars cars = new Cars(carList);
+        Cars racingCars = new Cars(cars);
 
         // when
         for (int i = 0; i < 100; i++) {
-            cars.doDrive();
+            racingCars.doDrive();
         }
 
         // then
-        WinnerCars winners = cars.getWinners();
+        WinnerCars winners = racingCars.getWinners();
         List<Name> winnerNames = winners.getNames();
         assertThat(winnerNames).contains(winnerName1, winnerName2);
     }
