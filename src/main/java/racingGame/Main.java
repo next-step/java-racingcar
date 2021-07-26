@@ -1,5 +1,11 @@
 package racingGame;
 
+import racingGame.domain.Car;
+import racingGame.domain.Game;
+import racingGame.domain.RandomNumber;
+import racingGame.view.InputView;
+import racingGame.view.ResultView;
+
 import java.util.List;
 
 public class Main {

@@ -1,4 +1,4 @@
-package racingGame;
+package racingGame.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ public class CarTest {
         assertThatThrownBy(() -> new Car("dododo"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    
+
     @Test
     @DisplayName("자동차 거리는 음수가 될 수 없다.")
     void validCarDistance() {
