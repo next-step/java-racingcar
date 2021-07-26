@@ -6,7 +6,7 @@ import racing.view.InputView;
 public class RacingMain {
 
 	public static void main(String[] args) {
-		int carCount = InputView.inputCarCount();
+		String[] names = InputView.inputCarNames();
 		int tryCount = InputView.inputTryCount();
 
 		RacingController.start(carCount, tryCount);
