@@ -1,6 +1,5 @@
 package step4;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,8 +20,12 @@ public class RacingEntry {
         final int maxLocation = findMaxLocation();
 
         return this.cars.stream()
-                .filter(car -> car.getLocation() == maxLocation)
+                .filter(car -> isSameLocation(maxLocation, car.getLocation()))
                 .collect(Collectors.toList());
+    }
+
+    private boolean isSameLocation(int maxLocation, int location) {
+        return maxLocation == location;
     }
 
     private int findMaxLocation() {
