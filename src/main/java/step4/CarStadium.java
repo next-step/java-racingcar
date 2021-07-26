@@ -1,6 +1,10 @@
 package step4;
 
 import java.util.List;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class CarStadium {
 
@@ -32,12 +36,15 @@ public class CarStadium {
         referee.passedTime();
     }
 
+    public List<Car> winners() {
+        return cars.stream()
+            .collect(Collectors.groupingBy(Car::getMovedCount, TreeMap::new, toList()))
+            .lastEntry()
+            .getValue();
+    }
+
     public List<Car> getAllCars() {
         return cars;
     }
 
-
-    public int carsCount() {
-        return cars.size();
-    }
 }
