@@ -1,8 +1,9 @@
-package racingGame;
+package racingGame.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingGame.domain.Car;
 
 import java.util.List;
 
