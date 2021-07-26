@@ -17,5 +17,7 @@ public class Application {
             ResultView.showGameResult(cars);
         }
 
+        List<String> winners = Race.getWinners(cars);
+        ResultView.printWinnerNames(winners);
     }
 }

@@ -5,6 +5,7 @@ import java.util.List;
 public class ResultView {
     private static String RESULT_MESSAGE = "실행 결과";
     private static final String DISTANCE_SYMBOL = "-";
+    private static final String DELIMITER = ",";
 
     public static void printResultMessage() {
         System.out.println(RESULT_MESSAGE);
@@ -24,5 +25,10 @@ public class ResultView {
             sb.append(DISTANCE_SYMBOL);
         }
         System.out.println(sb);
+    }
+
+    public static void printWinnerNames(List<String> winners) {
+        System.out.println(String.join(DELIMITER,winners)+"가 최종 우승했습니다.");
+
     }
 }
