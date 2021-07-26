@@ -9,11 +9,11 @@ public class RandomNumber {
     private final int number;
 
     private RandomNumber(int number) {
-        validateNumberRange(number);
         this.number = number;
     }
 
     public static RandomNumber of(int number) {
+        validateNumberRange(number);
         return new RandomNumber(number);
     }
 
