@@ -15,10 +15,10 @@ public class Cars {
 		this.cars = cars;
 	}
 
-	public static Cars of(String carNames, int carCount) {
+	public static Cars of(String carNames) {
 		List<Car> cars = new ArrayList<>();
 		String[] names = carNames.split(DELIMITER);
-		for (int i = 0; i < carCount; i++) {
+		for (int i = 0; i < names.length; i++) {
 			cars.add(new Car(new Name(names[i])));
 		}
 		return new Cars(cars);

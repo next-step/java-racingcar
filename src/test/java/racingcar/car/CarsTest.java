@@ -15,7 +15,7 @@ class CarsTest {
 	@Test
 	void create() {
 		String carNames = "pobi,crong,honux";
-		Cars cars = Cars.of(carNames, 3);
+		Cars cars = Cars.of(carNames);
 
 		List<Car> createdCars = cars.cars();
 		List<String> createdCarNames = createdCars.stream()
@@ -30,7 +30,7 @@ class CarsTest {
 	@Test
 	void race() {
 		String carNames = "pobi,crong,honux";
-		Cars cars = Cars.of(carNames, 3);
+		Cars cars = Cars.of(carNames);
 		cars.move(new AlwaysMoveStrategy());
 		List<Integer> carPositions = cars.cars()
 										.stream()
