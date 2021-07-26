@@ -65,10 +65,8 @@ class CarsTest {
     Cars cars = new Cars("a,b,c");
     int randomValue = 6;
     String winner = "b";
-    
-    for (Car car : cars.getCars()) {
-      movingCarForWinner(randomValue, car, winner);
-    }
+
+    cars.getCars().forEach(car -> movingCarForWinner(randomValue, car, winner));
 
     assertThat(cars.getWinners()).extracting(car -> car.getName().getCarName()).containsExactly("b");
   }
@@ -87,9 +85,7 @@ class CarsTest {
     int randomValue = 6;
     String winner = "b";
 
-    for (Car car : cars.getCars()) {
-      movingCarForWinner(randomValue, car, winner);
-    }
+    cars.getCars().forEach(car -> movingCarForWinner(randomValue, car, winner));
 
     assertThat(cars.getWinners()).extracting(car -> car.getName().getCarName()).containsExactly("b");
   }

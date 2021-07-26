@@ -2,6 +2,7 @@ package study.racing.domain;
 
 public class Distance {
 
+  public static final int MOVE_DISTANCE = 1;
   private int moveDistance;
 
   public Distance() {
@@ -12,7 +13,7 @@ public class Distance {
   }
 
   public void move() {
-    moveDistance += 1;
+    moveDistance += MOVE_DISTANCE;
   }
 
   public int getMaxValue(int max) {

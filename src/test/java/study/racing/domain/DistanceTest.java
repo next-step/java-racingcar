@@ -1,5 +1,6 @@
 package study.racing.domain;
 
+import java.util.stream.IntStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -22,9 +23,7 @@ class DistanceTest {
     @ValueSource(ints = {1,2,3})
     void name(int input) {
         Distance distance1 = new Distance();
-        for(int i=0; i < input+1; i++){
-            distance1.move();
-        }
+        IntStream.range(0, input + 1).forEach(i -> distance1.move());
 
         assertThat(distance1.getMaxValue(input)).isGreaterThan(input);
     }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import study.racing.generator.Generator;
 import study.racing.generator.RandomGenerator;
 
@@ -16,9 +17,7 @@ public class Cars {
   private Generator generator = new RandomGenerator();
 
   public Cars(int count) {
-    for (int i = 0; i < count; i++) {
-      cars.add(readyToCar());
-    }
+    IntStream.range(0, count).mapToObj(i -> readyToCar()).forEach(cars::add);
   }
 
   public Cars(String carName) {

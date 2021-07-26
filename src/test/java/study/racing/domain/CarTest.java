@@ -1,10 +1,9 @@
 package study.racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static study.racing.common.Common.toInt;
 
+import java.util.stream.IntStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -25,9 +24,7 @@ class CarTest {
 
         Car car = Car.createCar();
 
-        for(int i =0; i < toInt(input); i++){
-            car.getDistance().move();
-        }
+        IntStream.range(0, toInt(input)).forEach(i -> car.getDistance().move());
 
         assertThat(car.getDistance().getMoveDistance()).isEqualTo(toInt(expected));
     }
