@@ -37,10 +37,10 @@ public class RacingApp {
     }
 
     private void outputCarDistance(Round round) {
-        int carCount = round.getCarsSize();
-
-        for(int i = 0; i < carCount; i++) {
-            this.resultView.printCarDistance(round.getCar(i));
+        int carCount = 0;
+        while (round.isNotMaximum(carCount)) {
+            this.resultView.printCarDistance(round.getCar(carCount));
+            carCount++;
         }
         this.resultView.printEnter();
     }
