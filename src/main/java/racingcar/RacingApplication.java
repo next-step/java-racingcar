@@ -3,6 +3,8 @@ package racingcar;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
+import java.util.List;
+
 public class RacingApplication {
 
     public static void main(String[] args) {
@@ -11,8 +13,8 @@ public class RacingApplication {
         int tryCount = InputView.getInputTryCount();
 
         Racing racing = new Racing(carCount);
-        racing.start(tryCount);
+        List<List<RacingRecord>> racingRecords = racing.start(tryCount);
 
-        ResultView.showRacingInfo(racing.getRacingHistory());
+        ResultView.showRacingInfo(racingRecords);
     }
 }

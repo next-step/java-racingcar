@@ -9,7 +9,6 @@ public class Racing {
     private final int MORE_THEN_STANDARD_NUMBER = 4;
 
     private Car[] racingCars;
-    private List<List<RacingRecord>> racingHistory = new ArrayList<>();
 
     public Racing() {
         this(10);
@@ -26,19 +25,22 @@ public class Racing {
         }
     }
 
-    public void start(int tryCount) {
+    public List<List<RacingRecord>> start(int tryCount) {
+        List<List<RacingRecord>> racingRecords = new ArrayList<>();
         for (int i = 0; i < tryCount; i++) {
-            moveTryCarsAndHistorySave();
+            List<RacingRecord> records = moveTryCars();
+            racingRecords.add(records);
         }
+        return racingRecords;
     }
 
-    private void moveTryCarsAndHistorySave() {
-        ArrayList<RacingRecord> records = new ArrayList<>();
+    private List<RacingRecord> moveTryCars() {
+        List<RacingRecord> records = new ArrayList<>();
         for (Car car : racingCars) {
             moveTryCar(car);
             records.add(new RacingRecord(car, car.getPosition()));
         }
-        racingHistory.add(records);
+        return records;
     }
 
     private void moveTryCar(Car car) {
@@ -53,10 +55,6 @@ public class Racing {
 
     public Car[] getRacingCars() {
         return racingCars;
-    }
-
-    public List<List<RacingRecord>> getRacingHistory() {
-        return racingHistory;
     }
 }
 
