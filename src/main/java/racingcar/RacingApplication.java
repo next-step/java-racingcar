@@ -9,10 +9,10 @@ public class RacingApplication {
 
     public static void main(String[] args) {
 
-        int carCount = InputView.getInputCarCount();
+        String[] carNames = InputView.getInputCarNames();
         int tryCount = InputView.getInputTryCount();
 
-        Racing racing = new Racing(carCount);
+        Racing racing = new Racing(carNames);
         List<List<RacingRecord>> racingRecords = racing.start(tryCount);
 
         ResultView.showRacingInfo(racingRecords);

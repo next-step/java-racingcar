@@ -10,18 +10,14 @@ public class Racing {
 
     private Car[] racingCars;
 
-    public Racing() {
-        this(10);
+    public Racing(String[] carNames) {
+        racingCars = new Car[carNames.length];
+        addCars(carNames);
     }
 
-    public Racing(int carCount) {
-        racingCars = new Car[carCount];
-        addCars();
-    }
-
-    private void addCars() {
-        for (int i = 0; i < racingCars.length; i++) {
-            racingCars[i] = new Car();
+    private void addCars(String[] names) {
+        for (int i = 0; i < names.length; i++) {
+            racingCars[i] = new Car(names[i]);
         }
     }
 

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DisplayName("자동차 경주 테스트")
 class RacingTest {
@@ -16,7 +17,8 @@ class RacingTest {
 
     @BeforeEach
     void setUp() {
-        racing = new Racing(3);
+        String[] carNames = {"bmw", "benz", "audi"};
+        racing = new Racing(carNames);
         racingRecords = racing.start(5);
     }
 
@@ -46,5 +48,19 @@ class RacingTest {
         Car car3 = racingRecords.get(2).get(1).getCar();
 
         assertThat(car1).isEqualTo(car2).isEqualTo(car3);
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 순서대로 잘 등록되었는지 확인")
+    void racingHistoryCarNameOrderTest() {
+        String carName1 = racingRecords.get(0).get(0).getCar().getName();
+        String carName2 = racingRecords.get(0).get(1).getCar().getName();
+        String carName3 = racingRecords.get(0).get(2).getCar().getName();
+
+        assertAll(
+                () -> assertThat(carName1).isEqualTo("bmw"),
+                () -> assertThat(carName2).isEqualTo("benz"),
+                () -> assertThat(carName3).isEqualTo("audi")
+        );
     }
 }
