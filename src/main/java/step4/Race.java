@@ -23,6 +23,11 @@ public class Race {
         }
     }
 
+    public void validInputConfirm() {
+        inputView.inputCarCheck(numOfCar);
+        inputView.inputRoundCheck(numOfCycle);
+    }
+
     public void playRace() {
         for (int i = 0; i < numOfCar; i++) {
             carManagers[i].CanIGo();

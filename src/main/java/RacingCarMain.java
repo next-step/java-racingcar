@@ -9,7 +9,9 @@ public class RacingCarMain {
         int numOfCar = raceInfo[0];
         int numOfCycle = raceInfo[1];
 
+        race.validInputConfirm();
         race.prepareCars();
+
         for (int i = 0; i < numOfCycle; i++) {
             race.printResult();
             race.playRace();
