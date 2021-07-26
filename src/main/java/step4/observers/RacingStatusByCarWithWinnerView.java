@@ -25,12 +25,14 @@ public class RacingStatusByCarWithWinnerView implements OutputInterface {
         System.out.println(outputString);
 
         if (racingGame.getCurrentTurn() == LAST_TURN) {
-            String winnerNames = racingGame.getRacingEntry().findWinners().stream()
-                    .map(Car::getName)
-                    .collect(Collectors.joining(", "));
-
-            System.out.printf("%s 가 최종 우승했습니다.%n", winnerNames);
+            System.out.printf("%s 가 최종 우승했습니다.%n", getWinnerNames(racingGame));
         }
+    }
+
+    private String getWinnerNames(RacingGame racingGame) {
+        return racingGame.getRacingEntry().findWinners().stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
     }
 
     private int getLastTurn(RacingGame racingGame) {
@@ -38,6 +40,8 @@ public class RacingStatusByCarWithWinnerView implements OutputInterface {
     }
 
     private String repeatDashBy(int n) {
-        return Stream.generate(() -> "-").limit(n).collect(Collectors.joining());
+        return Stream.generate(() -> "-")
+                .limit(n)
+                .collect(Collectors.joining());
     }
 }
