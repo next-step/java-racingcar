@@ -3,6 +3,7 @@ package racing.domain.car.entity;
 import racing.domain.car.vo.Location;
 import racing.domain.car.vo.Name;
 import racing.domain.car.vo.fuel.Fuel;
+import racing.domain.game.dto.Turn;
 
 import java.util.Objects;
 
@@ -16,31 +17,10 @@ public class BasicCar implements Car {
         this.location = Location.empty();
     }
 
-    public Location location() {
-        return location;
-    }
-
-    public Name name() {
-        return name;
-    }
-
-    public void move(Fuel fuel) {
-        if (isMovable(fuel))
+    public void move(Turn turn, Fuel fuel) {
+        if (fuel.isMovable())
             this.location = location.add(Location.oneBlock());
-    }
-
-    private boolean isMovable(Fuel fuel) {
-        return fuel.value() >= REQUIRED_FUEL_VALUE;
-    }
-
-    @Override
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-        return null;
+        turn.register(this, location);
     }
 
     @Override
@@ -54,5 +34,10 @@ public class BasicCar implements Car {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return name.toString();
     }
 }

@@ -1,10 +1,9 @@
-package racing.domain.game.vo.turn;
+package racing.domain.game.dto;
 
 import racing.exception.InvalidInputException;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -13,13 +12,13 @@ public class Turns implements Iterable<Turn> {
 
     private static final int MIN_TURN_SIZE = 1;
 
-    public Turns(List<Turn> values) {
-        this.values = values;
-    }
-
     public Turns(int size) {
         validate(size);
         initValues(size);
+    }
+
+    public Turn lastTurn() {
+        return values.get(values.size() - 1);
     }
 
     private void validate(int size) {
@@ -33,27 +32,8 @@ public class Turns implements Iterable<Turn> {
                 .collect(Collectors.toList());
     }
 
-    private Turns filter(Predicate<Turn> filter) {
-        return new Turns(values.stream()
-                .filter(filter)
-                .collect(Collectors.toList())
-        );
-    }
-
-    public Turns waitingTurns() {
-        return filter(Turn::isWaiting);
-    }
-
-    public Turns endedTurns() {
-        return filter(t -> !t.isWaiting());
-    }
-
     public boolean isEmpty() {
         return values.isEmpty();
-    }
-
-    public int size() {
-        return values.size();
     }
 
     @Override

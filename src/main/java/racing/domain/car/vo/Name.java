@@ -16,10 +16,6 @@ public class Name {
             throw new InvalidInputException("자동차의 이름은 " + MAX_LENGTH + "자를 초과할 수 없습니다.");
     }
 
-    public String value() {
-        return value;
-    }
-
     @Override
     public int hashCode() {
         return value.hashCode();
@@ -30,7 +26,7 @@ public class Name {
         if (!(obj instanceof Name))
             return false;
         Name compareName = (Name) obj;
-        return this.value().equals(compareName.value());
+        return this.value.equals(compareName.value);
     }
 
     @Override

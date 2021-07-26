@@ -1,13 +1,11 @@
 package racing.domain.car.entity;
 
-import racing.domain.car.vo.Location;
 import racing.domain.car.vo.fuel.Fuel;
-import racing.exception.EmptyCarException;
+import racing.domain.game.dto.Turn;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
-public class Cars implements Iterable<Car>, Cloneable {
+public class Cars implements Iterable<Car> {
     private final Set<Car> values;
 
     public Cars(Set<Car> values) {
@@ -18,28 +16,10 @@ public class Cars implements Iterable<Car>, Cloneable {
         this(new HashSet<>());
     }
 
-    private Location bestLocation() {
-        return values.stream()
-                .map(Car::location)
-                .max(Comparator.comparing(Location::value))
-                .orElse(Location.empty());
-    }
-
-    public Cars bestCars() {
-        if (isEmpty())
-            throw new EmptyCarException();
-
-        Location bestLocation = bestLocation();
-        return new Cars(
-                values.stream()
-                .filter(c -> c.checkLocation(bestLocation))
-                .collect(Collectors.toSet())
-        );
-    }
-
-    public void moveAll(Fuel fuel) {
-        for (Car car : this)
-            car.move(fuel);
+    public void moveAll(Turn turn, Fuel fuel) {
+        for (Car iCar : this) {
+            iCar.move(turn, fuel);
+        }
     }
 
     /* 테스트가 필요한 Foward 메소드들 */
@@ -52,15 +32,6 @@ public class Cars implements Iterable<Car>, Cloneable {
     public void addAll(Cars cars) {
         for (Car iCar : cars)
             add(iCar);
-    }
-
-    @Override
-    public Object clone() {
-        return new Cars(
-                values.stream()
-                        .map(c -> (Car) c.clone())
-                        .collect(Collectors.toSet())
-        );
     }
 
     /* 단순 Forward 메소드들 (테스트 X) */

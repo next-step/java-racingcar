@@ -6,7 +6,7 @@ public final class RandomFuel implements Fuel {
     private static final Random random = new Random();
 
     @Override
-    public int value() {
-        return random.nextInt(Fuel.MAX_VALUE);
+    public boolean isMovable() {
+        return random.nextInt(Fuel.MAX_VALUE) > MOVABLE_VALUE;
     }
 }

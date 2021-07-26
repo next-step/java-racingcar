@@ -1,19 +1,8 @@
 package racing.domain.car.entity;
 
-import racing.domain.car.vo.Location;
-import racing.domain.car.vo.Name;
 import racing.domain.car.vo.fuel.Fuel;
+import racing.domain.game.dto.Turn;
 
-public interface Car extends Cloneable {
-    default boolean checkLocation(Location location) {
-        return location().equals(location);
-    }
-
-    Location location();
-
-    Name name();
-
-    void move(Fuel fuel);
-
-    Object clone();
+public interface Car {
+    void move(Turn turn, Fuel fuel);
 }

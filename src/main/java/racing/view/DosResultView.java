@@ -1,41 +1,32 @@
 package racing.view;
 
-import racing.domain.car.entity.Car;
-import racing.domain.car.entity.Cars;
-import racing.domain.game.entity.RacingGame;
-import racing.domain.game.vo.turn.Turn;
+import racing.domain.car.vo.Location;
+import racing.domain.game.dto.Turn;
+import racing.domain.game.dto.Turns;
+import util.RepeatString;
 
 import static racing.view.DosResultView.Text.*;
 
 public class DosResultView implements ResultView {
     private static final String NAME_DELIMITER = ",";
-    private static final char LOCATION_UNIT = '-';
+    private static final String NEW_LINE = "\n";
+    private static final String LOCATION_REPEAT_UNIT = "-";
 
     private void printResultTitle() {
         System.out.println(RESULT_TITLE);
         System.out.println();
     }
 
-    private void printCarLocation(Car car) {
-        int locationValue = car.location().value();
-        System.out.print(
-                CAR_NAME.formatString(car.name())
-        );
-        for (int i = 0; i < locationValue; i++)
-            System.out.print(LOCATION_UNIT);
-        System.out.println();
+    private void printTurn(Turn turn) {
+        String line = turn.asString((car, location) ->
+            CAR_LOCATION.formatString(car, new RepeatString(location, LOCATION_REPEAT_UNIT)), NEW_LINE);
+        System.out.println(line);
     }
 
-    private void printAllCarLocation(Cars cars) {
-        for (Car iCar : cars)
-            printCarLocation(iCar);
-        System.out.println();
-    }
-
-    private void printWinners(Cars cars) {
+    private void printWinners(Turns turns) {
         StringBuilder builder = new StringBuilder();
-        for (Car iCar : cars.bestCars()) {
-            builder.append(iCar.name())
+        for (String iCarName : turns.lastTurn().findWinnerNames()) {
+            builder.append(iCarName)
                     .append(NAME_DELIMITER);
         }
         String strWinners = builder.substring(0, builder.length() - 1); // 우승자는 반드시 나온다.
@@ -44,12 +35,13 @@ public class DosResultView implements ResultView {
     }
 
     @Override
-    public void printResult(RacingGame game) {
+    public void printResult(Turns turns) {
         printResultTitle();
-        for (Turn iTurn : game.endedTurns()) {
-            printAllCarLocation(iTurn.snapshot());
+
+        for (Turn iTurn : turns) {
+            printTurn(iTurn);
         }
-        printWinners(game.bestCars());
+        printWinners(turns);
     }
 
     @Override
@@ -58,7 +50,7 @@ public class DosResultView implements ResultView {
     }
 
     protected enum Text {
-        CAR_NAME("%s : "),
+        CAR_LOCATION("%s : %s"),
         RESULT_TITLE("실행 결과"),
         EXCEPTION("[ERROR] %s"),
         WINNERS("%s가 최종 우승 했습니다.");

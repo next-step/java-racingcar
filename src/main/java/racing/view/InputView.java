@@ -1,7 +1,7 @@
 package racing.view;
 
-import racing.domain.game.entity.RacingGame;
+import racing.domain.game.dto.GameRequest;
 
 public interface InputView {
-    RacingGame inputRacingGame();
+    GameRequest inputGameRequest();
 }
