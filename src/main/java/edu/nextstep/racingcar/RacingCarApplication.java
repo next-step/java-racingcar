@@ -9,7 +9,6 @@
 
 package edu.nextstep.racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarApplication {
@@ -22,10 +21,10 @@ public class RacingCarApplication {
 
         ResultView.startSign();
         for (int i = 0; i < moveNum; i++) {
-            for(int j = 0; j < carNum; j++){
-                racingCarList.get(i).move();
+            for(RacingCar racingCar : racingCarList){
+                racingCar.move();
             }
-            ResultView.outputCurrentRacing();
+            ResultView.outputCurrentRacing(racingCarList);
         }
 
     }
