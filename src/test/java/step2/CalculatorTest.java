@@ -32,4 +32,16 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(4);
     }
+
+    @Test
+    public void multiply() {
+        //given
+        Calculator c = new Calculator();
+
+        //when
+        int result = c.multiply(10, 10);
+
+        //then
+        assertThat(result).isEqualTo(100);
+    }
 }
