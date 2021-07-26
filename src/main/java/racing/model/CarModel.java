@@ -16,6 +16,6 @@ public class CarModel {
     }
 
     public int totalDistance() {
-        return this.distance.size();
+        return distance.stream().mapToInt(Integer::intValue).sum();
     }
 }
