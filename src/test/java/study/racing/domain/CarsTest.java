@@ -2,11 +2,16 @@ package study.racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import study.racing.generator.Generator;
+import study.racing.generator.MakeNumberGenerator;
 
 class CarsTest {
 
@@ -37,16 +42,20 @@ class CarsTest {
   }
 
   @DisplayName("차량 객체를 생성해서 주행거리가 비교값보다 큰지 테스트.")
-  @ParameterizedTest
-  @CsvSource(value = {"test1,5,0", "test1,7,0"})
-  void 차량생성및주행거리비교테스트(String name, int randomValue, int target) {
-    Cars cars = new Cars(name);
+  @Test
+  void 차량생성및주행거리비교테스트() {
+    Cars cars = new Cars("test1,test2");
+    List<Integer> numbers = new ArrayList<>();
+    numbers.add(3);
+    numbers.add(4);
 
-    for (Car car : cars.getCars()) {
-      car.moveTheCar(randomValue);
-    }
+    Generator generator = new MakeNumberGenerator(numbers);
+    cars.getCars().get(0).moveTheCar(generator.generateNewNumber());
+    cars.getCars().get(1).moveTheCar(generator.generateNewNumber());
 
-    assertThat(cars.getMaxMoveDistance()).isGreaterThan(target);
+    assertThat(cars.getCars().get(0).getDistance().getMoveDistance()).isEqualTo(0);
+    assertThat(cars.getCars().get(1).getDistance().getMoveDistance()).isEqualTo(1);
+
   }
 
   @DisplayName("우승자를 알아내기 위해 경주완료시 최대값 가져오기 테스트.")

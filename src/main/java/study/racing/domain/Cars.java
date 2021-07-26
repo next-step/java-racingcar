@@ -1,17 +1,19 @@
 package study.racing.domain;
 
-import static study.racing.common.Common.createRandomNumber;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import study.racing.generator.Generator;
+import study.racing.generator.RandomGenerator;
 
 public class Cars {
 
   public static final String SPLIT_MARK = ",";
 
   private final List<Car> cars = new ArrayList<>();
+
+  private Generator generator = new RandomGenerator();
 
   public Cars(int count) {
     for (int i = 0; i < count; i++) {
@@ -52,7 +54,7 @@ public class Cars {
   }
 
   public void moveTheCar() {
-    cars.forEach(car -> car.moveTheCar(createRandomNumber()));
+    cars.forEach(car -> car.moveTheCar(generator.generateNewNumber()));
   }
 
   public List<Car> getWinners() {
