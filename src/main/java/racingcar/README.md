@@ -19,32 +19,14 @@ Result view 는 현재 차들을 관리하는 Cars 객체의 위치로
 
 ### Todo
 
-Controller
-
-- Main 함수 만들기(Race 로 경주 시작 해보자)
-
-View
-
-- InputView 자동차 대수, 시도할 횟수 입력 부분 만들기
-- ResultView 시도할 횟수만큼 돌려서 현재 자동차들의 위치를 표시해주는 View 만들기
-
-Domain
-
-- Car 클래스 만들기 (상태 값 현재 위치)
-- Cars (Car 들을 관리하는 클래스)
-- RaceInfo Race 정보를 전달하는 객체 만들기
-
-Service
-
-- RACE 클래스 만들기
-- RacingService
+- InputView 이름 받게 수정
+- Split 관련 Util 구현
+- RacingInfo 이름 받게 수정
+- RacingGame 에서 이름 출력하게 구현
+- 우승자 로직 구현
 
 ### Done
 
-- Main 함수 만들기
-  
-- InputView 자동차 대수, 시도할 횟수 입력 부분 만들기
-
-- Car 클래스 만들기 (상태 값 현재 위치)
-- Cars (Car 들을 관리하는 클래스)
-- RaceInfo Race 정보를 전달하는 객체 만들기
+- InputView 이름 받게 수정
+- Split 관련 Util 구현
+- RacingInfo 이름 받게 수정

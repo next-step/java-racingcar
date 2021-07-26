@@ -5,15 +5,20 @@ import racingcar.dto.Board;
 import racingcar.model.Cars;
 import racingcar.dto.RacingInfo;
 import racingcar.strategy.impl.RandomBoundMovingStrategy;
+import racingcar.util.InputCarNameSplitUtils;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
-        int numberOfCar = InputView.getNumberOfCar();
+
+        String nameOfCar = InputView.getNameOfCar();
+        String[] names = InputCarNameSplitUtils.getSplitStringArray(nameOfCar);
+        int numberOfCar = names.length;
         int raceTrialCount = InputView.getRaceTrialCount();
 
-        RacingInfo racingInfo = new RacingInfo(numberOfCar, raceTrialCount);
+        RacingInfo racingInfo = new RacingInfo(names, numberOfCar, raceTrialCount);
+
         Cars cars = Cars.of(racingInfo.numberOfCar);
 
         RacingGame racingGame = new RacingGame(racingInfo, cars);
