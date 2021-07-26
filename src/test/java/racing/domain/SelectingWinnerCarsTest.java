@@ -28,11 +28,12 @@ class SelectingWinnerCarsTest {
 
     @NotNull
     private WinnerCarsSelector makeCarWinners() {
-        CarPosition carPosition1 = new CarPosition();
-        CarPosition carPosition2 = new CarPosition();
-        CarPosition carPosition3 = new CarPosition();
-
-        moveCarPosition(carPosition1, carPosition2, carPosition3);
+        CarPosition carPosition1 = new CarPosition(1);
+        carPosition1.save();
+        CarPosition carPosition2 = new CarPosition(2);
+        carPosition2.save();
+        CarPosition carPosition3 = new CarPosition(3);
+        carPosition3.save();
 
         Car car1 = new Car(new Player("car1"), carPosition1);
         Car car2 = new Car(new Player("car2"), carPosition2);
@@ -41,17 +42,4 @@ class SelectingWinnerCarsTest {
         return new WinnerCarsSelector(Arrays.asList(car1, car2, car3));
     }
 
-    private void moveCarPosition(CarPosition carPosition1, CarPosition carPosition2, CarPosition carPosition3) {
-        carPosition1.movePosition();
-        carPosition1.save();
-
-        carPosition2.movePosition();
-        carPosition2.movePosition();
-        carPosition2.save();
-
-        carPosition3.movePosition();
-        carPosition3.movePosition();
-        carPosition3.movePosition();
-        carPosition3.save();
-    }
 }
