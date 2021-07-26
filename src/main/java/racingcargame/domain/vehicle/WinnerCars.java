@@ -9,9 +9,18 @@ public class WinnerCars {
 
     private final List<Car> cars;
 
-    public WinnerCars(Cars cars) {
-        Distance farthestDistance = cars.findFarthestDistance();
-        this.cars = cars.findByDistance(farthestDistance).getCars();
+    public WinnerCars(List<Car> cars) {
+        Distance farthestDistance = findFarthestDistance(cars);
+        this.cars = cars.stream()
+            .filter(car -> car.getDistance().equals(farthestDistance))
+            .collect(Collectors.toList());
+    }
+
+    private Distance findFarthestDistance(List<Car> cars) {
+        return cars.stream()
+            .map(Car::getDistance)
+            .max(Distance::compareTo)
+            .orElseGet(() -> new Distance(0));
     }
 
     public List<Name> getNames() {
