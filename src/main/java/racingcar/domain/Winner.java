@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.view.ResultView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +16,12 @@ public class Winner {
         return new Winner(firstResultPoint);
     }
 
+    public static int resultPointOfFirst(List<Car> cars) {
+        return cars.stream().map(Car::getMoveSpace)
+                            .max(Integer::compareTo)
+                            .get();
+    }
+
     public int firstResultPoint() {
         return getFirstResultPoint();
     }
@@ -22,17 +30,11 @@ public class Winner {
         return firstResultPoint;
     }
 
-    public void extracted(ResultView resultView, List<Car> cars, Winner winner) {
+    public List<Car> winnerSelection(List<Car> cars) {
         List<Car> winners = cars.stream()
-                .filter(car -> car.getMoveSpace() == winner.firstResultPoint())
+                .filter(car -> car.getMoveSpace() == firstResultPoint())
                 .collect(Collectors.toList());
 
-        resultView.getWinner(winners);
-    }
-
-    public static int resultPointOfFirst(List<Car> cars) {
-        return cars.stream().map(Car::getMoveSpace)
-                            .max(Integer::compareTo)
-                            .get();
+        return winners;
     }
 }

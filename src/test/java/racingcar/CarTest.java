@@ -3,6 +3,8 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.view.InputView;
 
 import java.util.List;
 import java.util.Random;
@@ -12,14 +14,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CarTest {
     Car car;
-    Random random;
 
     @BeforeEach
     void setUpCar() {
         String[] carNames = {"pobi"};
         List<Car> cars = Car.createCars(carNames);
         car = cars.get(0);
-        random = new Random();
     }
 
     @Test
@@ -29,8 +29,7 @@ class CarTest {
         int result = 0;
 
         for(int i = 0; i < tryNumber; i++){
-            int randomNumber = random.nextInt(10);
-            result = car.move(randomNumber);
+            result = car.move(5);
         }
 
         assertThat(car.getMoveSpace()).isEqualTo(result);
