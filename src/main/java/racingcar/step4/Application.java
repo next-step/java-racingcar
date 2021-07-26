@@ -7,5 +7,6 @@ public class Application {
         int tryCount = InputView.InputTryCount();
         Validation.checkValidTryCount(tryCount);
 
+
     }
 }
