@@ -1,6 +1,5 @@
 package racingcargame.domain.vehicle;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcargame.domain.common.Distance;
@@ -13,10 +12,6 @@ public class WinnerCars {
     public WinnerCars(Cars cars) {
         Distance farthestDistance = cars.findFarthestDistance();
         this.cars = cars.findByDistance(farthestDistance).getCars();
-    }
-
-    public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
     }
 
     public List<Name> getNames() {

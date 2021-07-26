@@ -1,7 +1,6 @@
 package racingcargame.domain.vehicle;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcargame.domain.common.Distance;
@@ -33,7 +32,7 @@ public class Cars {
     public Distance findFarthestDistance() {
         return cars.stream()
             .map(Car::getDistance)
-            .max(Comparator.naturalOrder())
+            .max(Distance::compareTo)
             .orElseGet(() -> new Distance(0));
     }
 
