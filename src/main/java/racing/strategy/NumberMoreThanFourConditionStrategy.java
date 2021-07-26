@@ -1,6 +1,8 @@
-package racing;
+package racing.strategy;
 
-class NumberMoreThanFourConditionStrategy implements ForwardConditionStrategy {
+import racing.util.RandomNumberGenerator;
+
+public class NumberMoreThanFourConditionStrategy implements ForwardConditionStrategy {
     private static final NumberMoreThanFourConditionStrategy INSTANCE = new NumberMoreThanFourConditionStrategy();
 
     private final int CONDITION = 4;

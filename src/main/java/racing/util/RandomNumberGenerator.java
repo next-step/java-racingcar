@@ -1,8 +1,8 @@
-package racing;
+package racing.util;
 
 import java.util.Random;
 
-class RandomNumberGenerator {
+public class RandomNumberGenerator {
     private static final Random RANDOM = new Random();
 
     private static final int BOUND = 10;

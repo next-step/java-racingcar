@@ -1,9 +1,9 @@
-package racing;
+package racing.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.BDDMockito;
+import racing.strategy.ForwardConditionStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,14 +13,15 @@ import static java.util.stream.IntStream.range;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacersTest {
-    private final ForwardConditionStrategy mockStrategy = BDDMockito.mock(NumberMoreThanFourConditionStrategy.class);
+    private final ForwardConditionStrategy stay = () -> true;
+    private final ForwardConditionStrategy move = () -> false;
 
     private Racers racers;
 
     @BeforeEach
     void setUp() {
         racers = Racers.from((List<? extends Racer>) range(0, 3)
-                .mapToObj(it -> UnnamedCar.emptyCar())
+                .mapToObj(it -> Car.of("pobi"))
                 .collect(toCollection(ArrayList::new)));
     }
 
@@ -33,28 +34,32 @@ public class RacersTest {
     @Test
     @DisplayName("조회_테스트")
     void get() throws Exception {
-        assertThat(racers.get(0).position()).isEqualTo("");
+        assertThat(racers.get(0).position()).isEqualTo(0);
     }
 
     @Test
     @DisplayName("전진_테스트_조건은_참")
     void goForward() throws Exception {
-        BDDMockito.given(mockStrategy.judgeCondition()).willReturn(false);
-        racers.turnAround(mockStrategy, new StringBuilder());
-        assertThat(racers.get(0).position()).isEqualTo("-");
+        racers.turnAround(move, new ArrayList<Racers>());
+        assertThat(racers.get(0).position()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("전진_테스트_조건은_거짓")
     void goForwardNot() throws Exception {
-        BDDMockito.when(mockStrategy.judgeCondition()).thenReturn(true);
-        racers.turnAround(mockStrategy, new StringBuilder());
-        assertThat(racers.get(0).position()).isEqualTo("");
+        racers.turnAround(stay, new ArrayList<Racers>());
+        assertThat(racers.get(0).position()).isEqualTo(0);
     }
 
     @Test
     @DisplayName("사이즈_조회_테스트")
     void size() throws Exception {
         assertThat(racers.size()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("우승자를_반환한다")
+    void winner() throws Exception {
+        assertThat(racers.winner()).isEqualTo("pobi, pobi, pobi");
     }
 }
