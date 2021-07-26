@@ -6,8 +6,8 @@ import java.util.List;
 
 public class ResultView {
     public void printRacingCarsPosition(List<RacingCar> racingCars) {
-        for (int i = 0; i < racingCars.size(); i++) {
-            printPosition(racingCars.get(i).getPosition());
+        for (RacingCar racingCar: racingCars) {
+            printPosition(racingCar.getPosition());
         }
         System.out.println();
     }
