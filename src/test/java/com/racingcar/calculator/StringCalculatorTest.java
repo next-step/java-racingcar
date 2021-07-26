@@ -83,10 +83,20 @@ public class StringCalculatorTest {
     }
 
     @Test
-    @DisplayName("입력 값에 있는 연산 식이 완료되지 않을 때")
+    @DisplayName("입력 값에 있는 연산 식이 완료되지 않을 때 테스트")
     public void inputValueIsNotCompleted() {
         //given
         String given = "2 + 1 -";
+
+        //then
+        assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.calculate(given));
+    }
+
+    @Test
+    @DisplayName("입력 값의 숫자 부분에 유효하지 않는 형식 들어 갔을 때 테스트")
+    public void inputSomeValuesIsNotNumberFormat() {
+        //given
+        String given = "2 + 1 - ?";
 
         //then
         assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.calculate(given));
