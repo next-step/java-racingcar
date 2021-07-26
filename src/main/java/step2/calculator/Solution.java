@@ -1,4 +1,4 @@
-import calculator.Calculator;
+package step2.calculator;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -7,7 +7,6 @@ public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
         solution.run();
-
     }
     private void run(){
         /*
