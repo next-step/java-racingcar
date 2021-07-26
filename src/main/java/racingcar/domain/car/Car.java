@@ -28,6 +28,10 @@ public class Car {
         return this;
     }
 
+    public String getStringName() {
+        return name.getName();
+    }
+
     public int getIntPosition() {
         return position.getPosition();
     }

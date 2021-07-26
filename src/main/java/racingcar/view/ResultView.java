@@ -12,10 +12,15 @@ public class ResultView {
     public static final String POSITION = "-";
     public static final String NEWLINE = System.lineSeparator();
     public static final String TWO_NEWLINES = System.lineSeparator() + System.lineSeparator();
+    public static final String END = "\0";
 
     private static String carToString(Car car) {
+        // extract data from Car instance
+        String name = car.getStringName();
         int position = car.getIntPosition();
-        return new String(new char[position]).replace("\0", POSITION);
+        String positionString = new String(new char[position]).replace(END, POSITION);
+        // build string representation
+        return name + " : " + positionString;
     }
 
     private static String carsToString(Cars cars) {

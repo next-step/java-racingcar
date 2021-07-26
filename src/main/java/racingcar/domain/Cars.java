@@ -16,7 +16,7 @@ public class Cars {
     public static Cars createWithNames(List<String> names) {
         List<Car> carList = names.stream().map(Car::createWithName)
                 .collect(Collectors.toList());
-        return createFromList(carList);
+        return new Cars(carList);
     }
 
     public static Cars createFromList(List<Car> carList) {
