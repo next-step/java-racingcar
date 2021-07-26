@@ -1,12 +1,13 @@
 package study.racing.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static study.racing.common.Common.toInt;
+
+import java.util.stream.IntStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static study.racing.common.Common.toInt;
 
 class CarTest {
 
@@ -23,9 +24,7 @@ class CarTest {
 
         Car car = Car.createCar();
 
-        for(int i =0; i < toInt(input); i++){
-            car.getDistance().move();
-        }
+        IntStream.range(0, toInt(input)).forEach(i -> car.getDistance().move());
 
         assertThat(car.getDistance().getMoveDistance()).isEqualTo(toInt(expected));
     }
@@ -37,5 +36,25 @@ class CarTest {
         Car car = new Car();
         car.moveTheCar(input);
         assertThat(car.getDistance().getMoveDistance()).isEqualTo(expected);
+    }
+
+    @DisplayName("차객체 생성시 이름주입 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"test1,test1","test!,test!","12345,12345","가나다라마,가나다라마"})
+    void 차이름입력테스트(String input, String expected) {
+        Car car = Car.createCar(input);
+        assertThat(car.getName().getCarName()).isEqualTo(expected);
+    }
+
+    @DisplayName("차를 생성하고 이동시키는 조건을 부여할때 정상적으로 이동되는지 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"test1,6,0","test1,5,0"})
+    void 차이동거리최대값테스트(String input, int move, int target) {
+        Car car = Car.createCar(input);
+        car.moveTheCar(move);
+
+        int max = car.maxDistance(car);
+
+        assertThat(max).isGreaterThan(target);
     }
 }

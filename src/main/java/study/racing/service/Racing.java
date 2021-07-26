@@ -1,23 +1,24 @@
 package study.racing.service;
 
+import static study.racing.common.Message.MSG_ROUND_RESULT;
+import static study.racing.view.InsertView.printMessage;
+
+import java.util.List;
 import study.racing.domain.Car;
 import study.racing.domain.Cars;
 import study.racing.view.DrawDisplay;
-
-import java.util.List;
-
-import static study.racing.common.Common.printMessage;
-import static study.racing.common.Message.MSG_ROUND_RESULT;
-import static study.racing.validation.Validation.checkValue;
 
 public class Racing {
 
     private Cars cars;
 
-    public Racing(int carCount, int roundCount) {
-        //validationValues(carCount, roundCount);
-        this.cars = createCars(carCount);
+    public Racing(String carsName, int roundCount) {
+        this.cars = createCars(carsName);
+        playingRounds(roundCount);
+    }
 
+    public Racing(int carCount, int roundCount) {
+        this.cars = createCars(carCount);
         playingRounds(roundCount);
     }
 
@@ -37,9 +38,8 @@ public class Racing {
         return new Cars(carCount);
     }
 
-    private void validationValues(Integer carCount, Integer roundCount) {
-        checkValue(carCount);
-        checkValue(roundCount);
+    private Cars createCars(String carsName) {
+        return new Cars(carsName);
     }
 
     private void runningCars() {
@@ -50,4 +50,7 @@ public class Racing {
         return cars.getCars();
     }
 
+    public List<Car> getWinnersName() {
+        return cars.getWinners();
+    }
 }
