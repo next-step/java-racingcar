@@ -14,7 +14,7 @@ public class NumberGenerator {
     }
 
     public void generateRandomNumber() {
-        number = new Number(random.nextInt(MAX_NUMBER + 1) + MIN_NUMBER);
+        number = new Number(random.nextInt(MAX_NUMBER - MIN_NUMBER + 1) + MIN_NUMBER);
     }
 
     public Number getNumber() {
