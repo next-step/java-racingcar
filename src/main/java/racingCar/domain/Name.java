@@ -21,23 +21,15 @@ public class Name {
     }
 
     private void validateEmpty(String name) {
-        if(isNameEmpty(name)) {
+        if(Objects.isNull(name) || name.trim().isEmpty()) {
             throw new IllegalArgumentException(IS_NULL_OR_EMPTY_ERROR_MESSAGE);
         }
     }
 
-    private boolean isNameEmpty(String name) {
-        return Objects.isNull(name) || name.trim().isEmpty();
-    }
-
     private void validateNameLength(String name) {
-        if(isNameOverSize(name.trim())) {
+        if(name.trim().length() < MIN_LENGTH_BY_NAME || name.trim().length() > MAX_VALUE_BY_NAME) {
             throw new IllegalArgumentException(IS_NOT_BETWEEN_ONE_AND_FIVE_ERROR_MESSAGE);
         }
-    }
-
-    private boolean isNameOverSize(String name) {
-        return name.length() < MIN_LENGTH_BY_NAME || name.length() > MAX_VALUE_BY_NAME;
     }
 
     public String getName() {

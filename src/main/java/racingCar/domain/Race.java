@@ -23,19 +23,19 @@ public class Race {
     }
 
     private void validateInput(String nameList, int roundCount) {
-        if(isCarCountOverZero(nameList)) {
+        if(isNotCarCountOverZero(nameList)) {
             throw new IllegalArgumentException(IS_NOT_DUAL_CAR_COUNT_ERROR_MESSAGE);
         }
-        if(isRoundCountOverZero(roundCount)) {
+        if(isNotRoundCountOverZero(roundCount)) {
             throw new IllegalArgumentException(IS_NOT_DUAL_ROUND_COUNT_ERROR_MESSAGE);
         }
     }
 
-    private boolean isCarCountOverZero(String nameList) {
+    private boolean isNotCarCountOverZero(String nameList) {
         return nameList.split(COMMA).length < MIN_VALUE_BY_CAR;
     }
 
-    private boolean isRoundCountOverZero(int roundCount) {
+    private boolean isNotRoundCountOverZero(int roundCount) {
         return roundCount < MIN_VALUE_BY_CAR;
     }
 
