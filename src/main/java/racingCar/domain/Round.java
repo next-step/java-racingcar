@@ -2,7 +2,9 @@ package racingCar.domain;
 
 import racingCar.domain.strategy.MoveStrategy;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class Round {
 
@@ -41,7 +43,6 @@ public class Round {
         return this.cars.get(carNumber);
     }
 
-
     public List<String> getFirstCar() {
         List<String> winners = new ArrayList<>();
         int maxDistance = getMaxDistance();
@@ -58,8 +59,12 @@ public class Round {
                 .getCarDistance();
     }
 
+    public boolean isNotMaximum(int carCount) {
+        return carCount < cars.size();
+    }
+
     private void addWinner(List<String> winners, int maxDistance, Car car) {
-        if (car.getCarDistance() == maxDistance) {
+        if (car.isSameCarDistance(maxDistance)) {
             winners.add(car.getCarName());
         }
     }

@@ -28,4 +28,11 @@ class CarTest {
         assertThat(car.getCarName()).isEqualTo(input);
     }
 
+    @DisplayName("자동차간 거리 비교 테스트")
+    @Test
+    void testIsSameCarDistance() {
+        assertThat(new Car(new Name("ABC"), new Distance(5)).isSameCarDistance(5)).isTrue();
+        assertThat(new Car(new Name("ABC"), new Distance(3)).isSameCarDistance(5)).isFalse();
+    }
+
 }

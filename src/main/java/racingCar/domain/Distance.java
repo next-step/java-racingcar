@@ -21,4 +21,8 @@ public class Distance {
         return this.distance;
     }
 
+    public boolean isSameDistance(int distance) {
+        return this.distance == distance;
+    }
+
 }

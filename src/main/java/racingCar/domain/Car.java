@@ -30,4 +30,8 @@ public class Car {
         return distance.getDistance();
     }
 
+    public boolean isSameCarDistance(int distance) {
+        return this.distance.isSameDistance(distance);
+    }
+
 }
