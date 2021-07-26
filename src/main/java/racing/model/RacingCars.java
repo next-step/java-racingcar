@@ -46,18 +46,9 @@ public class RacingCars {
         }
     }
 
-    public int[] getRacingCarsPosition() {
-        List<RacingCar> racingCars = getRacingCars();
-        int[] positions = new int[racingCars.size()];
-
-        for (int i = 0; i < positions.length; i++) {
-            RacingCar racingCar = racingCars.get(i);
-            positions[i] = racingCar.getPosition();
-        }
-        return positions;
-    }
-
-    private List<RacingCar> getRacingCars() {
-        return Collections.unmodifiableList(racingCars);
+    public int[] getRacingCarPositions() {
+        return racingCars.stream()
+                .mapToInt(RacingCar::getPosition)
+                .toArray();
     }
 }

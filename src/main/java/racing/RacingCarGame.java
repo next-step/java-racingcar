@@ -38,6 +38,6 @@ public class RacingCarGame {
         }
 
         racingCars.moveOrStop(Collections.unmodifiableMap(racingCarIndexAndNumber));
-        resultView.printRacingCarsPosition(racingCars.getRacingCarsPosition());
+        resultView.printRacingCarsPosition(racingCars.getRacingCarPositions());
     }
 }
