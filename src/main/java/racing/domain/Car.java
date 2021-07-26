@@ -2,11 +2,13 @@ package racing.domain;
 
 public class Car {
 
+	private final String name;
 	private int move;
 
 	private static final int COMPARE_VALUE = 4;
 
-	public Car() {
+	public Car(String name) {
+		this.name = name;
 		this.move = 0;
 	}
 
