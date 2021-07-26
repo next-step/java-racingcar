@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@DisplayName("자동차 위지 테스트")
+@DisplayName("자동차 위치 테스트")
 public class PositionTest {
     private Position position;
 
