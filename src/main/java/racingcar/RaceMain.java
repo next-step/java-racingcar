@@ -5,10 +5,8 @@ import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class RaceMain {
-	private static InputView inputView = new InputView();
-	private static ResultView resultView = new ResultView();
-
 	public void startRace(int forwardCount, RacingCars racingCars) {
+		ResultView resultView = new ResultView();
 		resultView.outputStatement();
 		for (int i = 0 ; i < forwardCount ; i++) {
 			racingCars.forwardCars();
@@ -17,8 +15,10 @@ public class RaceMain {
 	}
 
 	public static void main(String[] args) {
+		InputView inputView = new InputView();
 		RaceMain raceMain = new RaceMain();
 		RacingCars racingCars = new RacingCars(inputView.inputRacingCarNum());
+
 		raceMain.startRace(inputView.inputTryCount(), racingCars);
 		inputView.scannerClose();
 	}
