@@ -32,14 +32,18 @@
 ## 기능 구현 목록
 * Model
   * 거리(Distance) 도메인 객체 (거리증가, 거리반환)
+  * 이름(Name) 도메인 객체 (글자길이 체크, 이름반환)
   * 자동차(Car) 도메인 객체 (전진, 거리반환)
-  * 경기(Race) 도메인 객체 (자동차대수 유효성검사, 출발, 자동차 거리 반환)
+  * 이동전략 도메인 객체 (랜덤값으로 이동유무 반환)
+  * 라운드(Round) 도메인 객체 (자동차대수 유효성검사, 출발, 자동차 거리/이름 반환)
+  * 경기(Race) 도메인 객체 (참여자동차수/경기수 유효성검사, 경기결과 저장, 우승자반환)
 * View
   * 입력값을 받는 InputView, 결과값을 보여주는 OutView 클래스를 만든다.
 * Controller
-  * InputView에서 받은 자동차 대수를 Race에 넣어준다.
+  * InputView에서 받은 참여자 이름을 Race에 넣어준다.
   * InputView에서 받은 시도할 횟수를 Race에 넣어준다.
-  * OutView에 Race를 넘겨주고 매 경기 실행결과를 보여준다.
+  * OutView에 Race를 넘겨주고 매 경기 실행결과를 이름과 같이 보여준다.
+  * OutView에서 우승자 안내 메시지를 보여준다.
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
