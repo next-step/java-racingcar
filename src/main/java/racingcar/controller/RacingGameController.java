@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class RacingGameController {
 
     public List<RacingGameResponseDto> start(RacingGameRequestDto racingGameRequestDto) {
@@ -18,7 +17,7 @@ public class RacingGameController {
         final List<String> names = Arrays.asList(racingGameRequestDto.getNames().split(","));
         final int numberOfAttempts = parseInt(racingGameRequestDto.getNumberOfAttempts());
 
-        RacingGame racingGame = new RacingGame(names, new RandomRule());
+        RacingGame racingGame = new RacingGame(Cars.of(names), new RandomRule());
         List<RacingGameResponseDto> response = new ArrayList<>();
 
         for (int i = 0; i < numberOfAttempts; i++) {

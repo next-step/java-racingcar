@@ -7,15 +7,26 @@ public class Car {
     private Name name;
     private Distance distance;
 
-    public Car(final String name) {
+    public Car(String name) {
         this.name = Name.from(name);
-        this.distance = Distance.from();
+        this.distance = Distance.from(0);
     }
 
-    public void move(boolean isMove) {
+    public Car(String name, int distance) {
+        this.name = Name.from(name);
+        this.distance = Distance.from(distance);
+    }
+
+    public Car move(boolean isMove) {
         if (isMove) {
-            distance.move();
+            distance = distance.move();
+            return new Car(name.getValue(), distance.getValue());
         }
+        return new Car(name.getValue(), distance.getValue());
+    }
+
+    public boolean isEqualsDistance(Distance distance) {
+        return this.distance.equals(distance);
     }
 
     public Distance getDistance() {

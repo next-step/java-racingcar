@@ -1,21 +1,27 @@
 package racingcar.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Winners {
 
-    private List<Name> names;
+    private List<Car> cars;
 
-    private Winners(List<Name> names) {
-        this.names = names;
+    private Winners(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public static Winners valueOf(List<Name> names) {
-        return new Winners(names);
+    public static Winners valueOf(List<Car> cars) {
+        return new Winners(cars);
     }
 
-    @Override
-    public String toString() {
-        return names.toString();
+    public boolean isWinner(Car car) {
+        return cars.contains(car);
+    }
+
+    public List<Name> getNames() {
+        return cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }

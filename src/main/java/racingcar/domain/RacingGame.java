@@ -2,19 +2,17 @@ package racingcar.domain;
 
 import racingcar.rules.Rule;
 
-import java.util.List;
-
 public class RacingGame {
 
-    private final Cars cars;
-    private final Rule rule;
+    private Cars cars;
+    private Rule rule;
 
-    public RacingGame(List<String> names, Rule rule) {
-        this.cars = new Cars(names);
+    public RacingGame(Cars cars, Rule rule) {
+        this.cars = cars;
         this.rule = rule;
     }
 
     public Cars next() {
-        return cars.move(rule);
+        return new Cars(cars.move(rule).getElements());
     }
 }

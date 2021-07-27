@@ -4,26 +4,18 @@ import java.util.Objects;
 
 public class Distance {
 
-    private int value;
-
-    private Distance() {
-
-    }
+    private final int value;
 
     private Distance(int value) {
         this.value = value;
     }
 
-    public static Distance from() {
-        return new Distance();
-    }
-
-    public static Distance valueOf(int value) {
+    public static Distance from(int value) {
         return new Distance(value);
     }
 
-    public void move() {
-        value++;
+    public Distance move() {
+        return new Distance(this.value + 1);
     }
 
     public int getValue() {

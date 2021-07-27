@@ -2,37 +2,55 @@ package racingcar.domain;
 
 import racingcar.rules.Rule;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-    private List<Car> cars;
+    private List<Car> elements;
 
-    public Cars(List<String> names) {
-        this.cars = initialize(names);
+    public Cars(List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        this.elements = new ArrayList<>(cars);
+    }
+
+    public static Cars of(final List<String> names) {
+        List<Car> cars = names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        return new Cars(cars);
+    }
+
+    public Cars move(Rule rule) {
+        List<Car> result = new ArrayList<>();
+        for (Car car : this.elements) {
+            boolean isMove = rule.move();
+            result.add(car.move(isMove));
+        }
+        return new Cars(result);
     }
 
     public int size() {
-        return cars.size();
+        return this.elements.size();
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Car> getElements() {
+        return Collections.unmodifiableList(this.elements);
     }
 
     public Winners getWinners() {
-        int max = getMax();
-        List<Name> names = findByDistance(Distance.valueOf(max))
-                .stream()
-                .map(Car::getName)
-                .collect(Collectors.toList());
-        return Winners.valueOf(names);
+        int max = getMaxDistance();
+        List<Car> cars = findByDistance(Distance.from(max));
+        return Winners.valueOf(cars);
     }
 
-    private int getMax() {
-        return this.cars.stream()
+    private int getMaxDistance() {
+        return this.elements.stream()
                 .map(Car::getDistance)
                 .mapToInt(Distance::getValue)
                 .max()
@@ -40,24 +58,8 @@ public class Cars {
     }
 
     private List<Car> findByDistance(Distance distance) {
-        return cars.stream()
-                .filter(car -> car.getDistance().equals(distance))
-                .collect(Collectors.toList());
-    }
-
-    public Cars move(Rule rule) {
-        for (Car car : this.cars) {
-            car.move(rule.move());
-        }
-        return this;
-    }
-
-    private List<Car> initialize(final List<String> names) {
-        if (names.isEmpty()) {
-            throw new IllegalArgumentException("이름이 비어있습니다.");
-        }
-        return names.stream()
-                .map(Car::new)
+        return this.elements.stream()
+                .filter(car -> car.isEqualsDistance(distance))
                 .collect(Collectors.toList());
     }
 
@@ -66,11 +68,11 @@ public class Cars {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cars cars1 = (Cars) o;
-        return Objects.equals(cars, cars1.cars);
+        return Objects.equals(this.elements, cars1.elements);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cars);
+        return Objects.hash(this.elements);
     }
 }
