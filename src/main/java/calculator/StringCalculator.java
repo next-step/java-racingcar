@@ -30,7 +30,7 @@ public class StringCalculator {
     }
 
     private boolean isEmpty(String input) {
-        return Objects.isNull(input) || input.trim().isEmpty();
+        return input == null || input.trim().isEmpty();
     }
 
     private boolean isNotOperator(String input) {

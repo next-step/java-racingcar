@@ -16,7 +16,7 @@ public class Car {
     }
 
     public Car move(boolean command) {
-        if(command) {
+        if (command) {
             return new Car(this.name, this.distance.addDistance());
         }
         return this;

@@ -3,10 +3,11 @@ package racingCar.domain;
 public class Distance {
 
     private final int distance;
-    private final static int ADD = 1;
+    private static final int INITIAL_POSITION = 0;
+    private static final int ADD = 1;
 
     public Distance() {
-        this.distance = 0;
+        this.distance = INITIAL_POSITION;
     }
 
     public Distance(int distance) {

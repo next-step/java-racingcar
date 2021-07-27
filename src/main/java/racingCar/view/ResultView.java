@@ -22,7 +22,7 @@ public class ResultView {
 
     public void printCarDistance(Car car) {
         System.out.print(car.getCarName() + COLON);
-        for(int i = 0; i < car.getCarDistance(); i++) {
+        for (int i = 0; i < car.getCarDistance(); i++) {
             System.out.print(DASH);
         }
         printEnter();
@@ -30,10 +30,10 @@ public class ResultView {
 
     public void printWinners(List<String> winners) {
         StringBuilder txt = new StringBuilder();
-        for(int i = 0; i < winners.size()-1; i++) {
-            txt.append(winners.get(i) + COMMA);
+        for (int i = 0; i < winners.size() - 1; i++) {
+            txt.append(winners.get(i)).append(COMMA);
         }
-        txt.append(winners.get(winners.size()-1) + WINNERS_MESSAGE);
+        txt.append(winners.get(winners.size() - 1)).append(WINNERS_MESSAGE);
         System.out.print(txt);
     }
 
