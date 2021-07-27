@@ -2,8 +2,7 @@ package racing.view;
 
 import racing.domain.car.Car;
 import racing.domain.Location;
-import racing.domain.turn.Turn;
-import racing.domain.turn.Turns;
+import racing.domain.Turn;
 import util.RepeatString;
 
 import java.util.Map;
@@ -12,15 +11,16 @@ import static racing.view.DosResultView.Text.*;
 
 public class DosResultView implements ResultView {
     private static final String NAME_DELIMITER = ",";
-    private static final String NEW_LINE = "\n";
     private static final String LOCATION_REPEAT_UNIT = "-";
 
-    private void printResultTitle() {
+    @Override
+    public void printResultTitle() {
         System.out.println(RESULT_TITLE);
         System.out.println();
     }
 
-    private void printTurn(Turn turn) {
+    @Override
+    public void printTurn(Turn turn) {
         for (Map.Entry<Car, Location> iEntry : turn.entrySet()) {
             Car iCar = iEntry.getKey();
             Location iLocation = iEntry.getValue();
@@ -32,25 +32,9 @@ public class DosResultView implements ResultView {
         System.out.println();
     }
 
-    private void printWinners(Turns turns) {
-        StringBuilder builder = new StringBuilder();
-        for (String iCarName : turns.lastTurn().findWinnerNames()) {
-            builder.append(iCarName)
-                    .append(NAME_DELIMITER);
-        }
-        String strWinners = builder.substring(0, builder.length() - 1); // 우승자는 반드시 나온다.
-
-        System.out.println(WINNERS.formatString(strWinners));
-    }
-
     @Override
-    public void printResult(Turns turns) {
-        printResultTitle();
-
-        for (Turn iTurn : turns) {
-            printTurn(iTurn);
-        }
-        printWinners(turns);
+    public void printWinners(Turn turn) {
+        System.out.println(WINNERS.formatString(turn.findWinnerNames().toArray()));
     }
 
     @Override

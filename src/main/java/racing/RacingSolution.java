@@ -2,7 +2,6 @@ package racing;
 
 import racing.controller.RacingController;
 import racing.domain.dto.GameRequest;
-import racing.domain.turn.Turns;
 import racing.exception.DuplicateKeyException;
 import racing.exception.EmptyCarException;
 import racing.exception.InvalidInputException;
@@ -22,18 +21,17 @@ public class RacingSolution {
 
     private final InputView inputView;
     private final ResultView resultView;
-    RacingController racingController;
+    private final RacingController racingController;
     public RacingSolution(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
         this.resultView = resultView;
-        racingController = new RacingController();
+        racingController = new RacingController(resultView);
     }
 
     public void run() {
         try {
             GameRequest gameRequest = inputView.inputGameRequest();
-            Turns turns = racingController.gameRun(gameRequest);
-            resultView.printResult(turns);
+            racingController.gameRun(gameRequest);
         } catch (EmptyCarException | InvalidInputException e) {
             resultView.printException(e);
         } catch (IllegalStateException e) {

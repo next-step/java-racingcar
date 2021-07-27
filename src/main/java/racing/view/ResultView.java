@@ -1,9 +1,13 @@
 package racing.view;
 
-import racing.domain.turn.Turns;
+import racing.domain.Turn;
 
 public interface ResultView {
-    void printResult(Turns turns);
+    void printResultTitle();
+
+    void printTurn(Turn turn);
+
+    void printWinners(Turn turn);
 
     void printException(Exception e);
 }

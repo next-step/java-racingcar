@@ -1,9 +1,7 @@
 package racing.domain.dto;
 
 import racing.domain.car.Cars;
-import racing.domain.turn.Turns;
 import racing.util.converter.CarsConverter;
-import racing.util.converter.TurnsConverter;
 
 
 public class GameRequest {
@@ -19,7 +17,11 @@ public class GameRequest {
         return CarsConverter.getInstance().convert(carNames);
     }
 
-    public Turns turns() {
-        return TurnsConverter.getInstance().convert(turnSize);
+    public int turnSize() {
+        return turnSize;
+    }
+
+    public boolean hasTurn() {
+        return turnSize > 0;
     }
 }

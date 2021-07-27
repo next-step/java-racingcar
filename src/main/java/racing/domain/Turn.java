@@ -1,4 +1,4 @@
-package racing.domain.turn;
+package racing.domain;
 
 import racing.domain.car.Car;
 import racing.domain.Location;
@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 public class Turn {
     private final Map<Car, Location> movementRecord;
 
-    public Turn() {
-        movementRecord = new HashMap<>();
+    public Turn(Map<Car, Location> movementRecord) {
+        this.movementRecord = movementRecord;
     }
 
     private Optional<Location> findMaxLocation() {
@@ -32,10 +32,6 @@ public class Turn {
                 .map(Map.Entry::getKey)
                 .map(Object::toString)
                 .collect(Collectors.toList());
-    }
-
-    public void register(Car car, Location location) {
-        this.movementRecord.put(car, location);
     }
 
     public Set<Map.Entry<Car, Location>> entrySet() {

@@ -2,7 +2,7 @@ package racing.domain.car;
 
 import racing.domain.fuel.Fuel;
 import racing.domain.Location;
-import racing.domain.turn.Turn;
+import racing.domain.Turn;
 
 import java.util.*;
 
@@ -13,11 +13,13 @@ public class Cars implements Iterable<Car> {
         this.values = values;
     }
 
-    public void moveAll(Turn turn, Fuel fuel) {
+    public Turn moveAll(Fuel fuel) {
+        Map<Car, Location> result = new HashMap<>();
         for (Car iCar : this) {
             Location resultLocation = iCar.move(fuel);
-            turn.register(iCar, resultLocation);
+            result.put(iCar, resultLocation);
         }
+        return new Turn(result);
     }
 
     /* 테스트가 필요한 Foward 메소드들 */
