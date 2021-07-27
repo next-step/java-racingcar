@@ -19,7 +19,7 @@ public class RacingCarGame {
         int carNumber = inputView.requestCarNumber();
         int tryNumber = inputView.requestTryNumber();
         initializeRacingCars(racingCars, carNumber);
-        race(racingCars, tryNumber);
+        race(racingCars, tryNumber, new RandomMoveStrategy());
     }
 
     public static void initializeRacingCars(List<RacingCar> racingCars, int carNumber) {
@@ -28,17 +28,17 @@ public class RacingCarGame {
         }
     }
 
-    public static void race(List<RacingCar> racingCars, int tryNumber) {
+    public static void race(List<RacingCar> racingCars, int tryNumber, MoveStrategy moveStrategy) {
         resultView.printResultFirstLine();
         for (int i = 0; i < tryNumber; i++) {
-            raceOneStep(racingCars);
+            raceOneStep(racingCars, moveStrategy);
             resultView.printRacingCarsPosition(racingCars);
         }
     }
 
-    public static void raceOneStep(List<RacingCar> racingCars) {
+    public static void raceOneStep(List<RacingCar> racingCars, MoveStrategy moveStrategy) {
         for (int i = 0; i < racingCars.size(); i++) {
-            racingCars.get(i).moveIfMovable(new RandomMoveStrategy());
+            racingCars.get(i).moveIfMovable(moveStrategy);
         }
     }
 }
