@@ -5,11 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing.Racing;
-import racing.model.CarModel;
-import racing.model.CarsModel;
-import racing.model.RacingModel;
-import racing.util.RandomUtil;
+import racing.RacingGame;
+import racing.model.Car;
+import racing.model.Racing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,15 +17,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RaceTest {
 
+    RacingGame racingGame = new RacingGame();
     Racing racing = new Racing();
-    RacingModel racingModel = new RacingModel();
-    List<CarModel> cars = new ArrayList<>();
+    List<Car> cars = new ArrayList<>();
 
     @BeforeEach
     void setting() {
-        racingModel.prepareRacing(3, 5);
-        racing.game(racingModel,1);
-        cars = racingModel.participants().carList();
+        racing.prepareRacing(3, 5);
+        racingGame.game(racing,1);
+        cars = racing.participants().carList();
     }
 
 
@@ -35,7 +33,7 @@ public class RaceTest {
     @DisplayName("move condition test")
     void randomValueTest() {
         assertThatThrownBy(() -> {
-            racing.moveCondition(10);
+            racingGame.moveCondition(10);
         }).isInstanceOf(IllegalStateException.class);
     }
 
@@ -43,14 +41,14 @@ public class RaceTest {
     @DisplayName("game end test")
     @CsvSource(value = {"3:false", "5:true"}, delimiter = ':')
     void gameEndTest(int input, boolean expected) {
-       assertThat(racing.game(racingModel, input)).isEqualTo(expected);
+       assertThat(racingGame.game(racing, input)).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"3:false", "5:true"}, delimiter = ':')
     @DisplayName("car move Test")
     void carMoveTest(int randomValue, boolean expected) {
-        assertThat(racing.carMove(cars.get(0), randomValue)).isEqualTo(expected);
+        assertThat(racingGame.carMove(cars.get(0), randomValue)).isEqualTo(expected);
     }
 
 }

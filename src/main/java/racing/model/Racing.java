@@ -1,8 +1,8 @@
 package racing.model;
 
 
-public class RacingModel {
-    private CarsModel cars = new CarsModel();
+public class Racing {
+    private Cars cars = new Cars();
     private int playCount = 0;
 
     public void prepareRacing(int carCount, int playCount) {
@@ -10,7 +10,7 @@ public class RacingModel {
         this.cars.prepareCars(carCount);
     }
 
-    public CarsModel participants() {
+    public Cars participants() {
         return this.cars;
     }
 

@@ -1,6 +1,6 @@
 package racing.model;
 
-public class CarModel {
+public class Car {
     private int distance = 0;
 
     public void go() {

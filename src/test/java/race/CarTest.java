@@ -2,13 +2,13 @@ package race;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.model.CarModel;
+import racing.model.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    CarModel car = new CarModel();
+    Car car = new Car();
 
     @Test
     @DisplayName("car distance check Test")

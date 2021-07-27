@@ -3,17 +3,17 @@ package racing.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarsModel {
-    private List<CarModel> carList = new ArrayList<>();;
+public class Cars {
+    private List<Car> carList = new ArrayList<>();;
 
    public void prepareCars(int carCount) {
         for(int count=0; count<carCount; count++) {
-            CarModel carModel = new CarModel();
+            Car carModel = new Car();
             carList.add(carModel);
         }
     }
 
-    public List<CarModel> carList() {
+    public List<Car> carList() {
        return this.carList;
     }
 }

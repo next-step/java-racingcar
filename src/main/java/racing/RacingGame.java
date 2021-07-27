@@ -1,37 +1,37 @@
 package racing;
 
-import racing.model.CarModel;
-import racing.model.CarsModel;
-import racing.model.RacingModel;
+import racing.model.Car;
+import racing.model.Cars;
+import racing.model.Racing;
 import racing.util.RandomUtil;
 import racing.view.RacingView;
 
-public class Racing {
+public class RacingGame {
 
     private static final int minimumCondition = 4;
     private static final int maximumCondition = 9;
 
     public void gameStart(int carSize, int gameCount) {
         int count = 1;
-        RacingModel racingModel = new RacingModel();
-        racingModel.prepareRacing(carSize, gameCount);
+        Racing racing = new racing.model.Racing();
+        racing.prepareRacing(carSize, gameCount);
 
         RacingView racingView = new RacingView();
-        while (!game(racingModel, count)) {
+        while (!game(racing, count)) {
             count++;
-            racingView.printCarMove(racingModel);
+            racingView.printCarMove(racing);
         }
-        racingView.printCarMove(racingModel);
+        racingView.printCarMove(racing);
     }
 
-    public Boolean game(RacingModel racingModel, int count) {
-        CarsModel cars = racingModel.participants();
+    public Boolean game(Racing racing, int count) {
+        Cars cars = racing.participants();
         cars.carList()
                 .forEach(car -> carMove(car, RandomUtil.randomValue()));
-        return racingModel.endGame(count);
+        return racing.endGame(count);
     }
 
-    public boolean carMove(CarModel car, int move) {
+    public boolean carMove(Car car, int move) {
         if(moveCondition(move)) {
             car.go();
             return true;
