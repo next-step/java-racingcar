@@ -65,23 +65,18 @@ public class StringCalculator {
         while(index < size - 1) {
             String inputElement = inputArray[index];
             String postElement = inputArray[index + 1];
-            index = processOperator(inputElement, postElement, index);
+            index = compareInputToOperator(inputElement, postElement, index);
             index++;
         }
         return answer;
     }
 
-    private static int processOperator(String inputElement, String postElement, int index) throws InvalidInputException {
+    private static int compareInputToOperator(String inputElement, String postElement, int index) throws InvalidInputException {
         for (Operator o : Operator.values()) {
-            index = operateTwoNums(inputElement, postElement, o, index);
-        }
-        return index;
-    }
-
-    private static int operateTwoNums(String inputElement, String postElement, Operator o, int index) throws InvalidInputException {
-        if (inputElement.trim().equals(o.getOperator())) {
-            o.expression.apply(answer, toInt(postElement));
-            return index++;
+            if (inputElement.trim().equals(o.getOperator())) {
+                answer = o.expression.apply(answer, toInt(postElement));
+                return ++index;
+            }
         }
         throw new InvalidInputException("올바른 연산자를 입력해주세요."); //숫자나 사칙연산 이외의 입력값 예외처리
     }
