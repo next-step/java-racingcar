@@ -2,6 +2,7 @@ package racingcar.car;
 
 import racingcar.strategy.MoveStrategy;
 
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
@@ -21,7 +22,7 @@ public class RacingGame {
     }
 
     public List<Car> getRaceWinners() {
-        return cars.getRaceWinners();
+        return Collections.unmodifiableList(cars.getRaceWinners());
     }
 
 }
