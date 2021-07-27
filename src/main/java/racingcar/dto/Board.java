@@ -25,7 +25,7 @@ public class Board {
         this.winnerCarNames = winnerCarNames;
     }
 
-    public List<String> getWinnerCarsNames() {
+    public List<String> getWinnerCarNames() {
         return winnerCarNames;
     }
 

@@ -25,7 +25,7 @@ public class ResultView {
     }
 
     private static void printWinners(Board board) {
-        List<String> winners = board.getWinnerCarsNames();
+        List<String> winners = board.getWinnerCarNames();
 
         System.out.print(winners.stream()
                 .collect(Collectors.joining(COMMA)));

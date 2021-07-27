@@ -70,7 +70,7 @@ public class RacingGameTests {
 
         board.record(Arrays.asList(carNames.clone()), Arrays.asList(5, 5, 5));
 
-        List<String> winners = board.getWinnerCarsNames();
+        List<String> winners = board.getWinnerCarNames();
 
         assertThat(winners.size()).isBetween(1, carNames.length);
 
