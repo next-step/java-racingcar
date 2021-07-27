@@ -17,12 +17,12 @@ import java.io.InputStreamReader;
 public class RacingCarPlayMain {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("자동차 대수는 몇 대 인가요 ?");
-        int carCount = Integer.parseInt(br.readLine());
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분");
+        String[] carNames = br.readLine().replaceAll(" ", "").split(",");
         System.out.println("시도할 회수는 몇 회 인가요 ?");
         int moveCount = Integer.parseInt(br.readLine());
 
-        RacingCar racingCar = new RacingCar(carCount ,moveCount);
+        RacingCar racingCar = new RacingCar(carNames ,moveCount);
         System.out.println("실행 결과");
         racingCar.doRacingStart(racingCar.createAsCarsNumberOfEnteredByUser());
 

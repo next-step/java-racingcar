@@ -7,8 +7,9 @@
 
 ---
 CarRacingWinner
-1. Car 객체의 name 변수 추가
-2. Car 객체 생성시 name 주입
-3. 우승자 출력 문구 작성
-4. 테스트 코드 수정
+1. Main 문구 수정
+2. Car 객체의 name 변수 추가
+3. Car 객체 생성시 name 주입
+4. 우승자 출력 문구 작성
+5. 테스트 코드 수정
 
