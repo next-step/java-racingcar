@@ -22,12 +22,8 @@ public class Car {
         }
     }
 
-    public boolean isLocatedAt(CarPosition position) {
-        return carPosition.equals(position);
-    }
-
-    public CarPosition maxPosition(CarPosition position) {
-        return carPosition.max(position);
+    public boolean hasSamePositionWith(Car car) {
+        return carPosition.equals(car.carPosition);
     }
 
     public String getName() {

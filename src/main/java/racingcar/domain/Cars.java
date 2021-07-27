@@ -1,11 +1,13 @@
 package racingcar.domain;
 
-import racingcar.strategy.MoveStrategy;
-
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
+
+import racingcar.strategy.MoveStrategy;
 
 public class Cars {
 
@@ -36,21 +38,19 @@ public class Cars {
 		}
 	}
 
-	public RaceWinners getRaceWinners() {
-		CarPosition maxPosition = getMaxPosition();
+	public RaceWinners findRaceWinners() {
+		Car carLocatedAtMaxPosition = findCarLocatedAtMaxPosition();
 		List<Car> winners = cars.stream()
-								.filter(car -> car.isLocatedAt(maxPosition))
+								.filter(car -> car.hasSamePositionWith(carLocatedAtMaxPosition))
 								.collect(Collectors.toList());
 
 		return new RaceWinners(Collections.unmodifiableList(winners));
 	}
 
-	private CarPosition getMaxPosition() {
-		CarPosition position = new CarPosition();
-		for (Car car : cars) {
-			position = car.maxPosition(position);
-		}
-		return position;
+	private Car findCarLocatedAtMaxPosition() {
+		return cars.stream()
+			.max(Comparator.comparingInt(Car::getCarPosition))
+			.orElseThrow(NoSuchElementException::new);
 	}
 
 	public List<Car> cars() {

@@ -21,7 +21,7 @@ public class RacingGame {
     }
 
     public RaceWinners getRaceWinners() {
-        return cars.getRaceWinners();
+        return cars.findRaceWinners();
     }
 
 }

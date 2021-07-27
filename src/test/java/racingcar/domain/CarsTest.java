@@ -50,7 +50,7 @@ class CarsTest {
 		Car honux = new Car(new CarName("honux"), new CarPosition(2));
 		Cars cars = Cars.of(Arrays.asList(pobi, crong, honux));
 
-		RaceWinners winners = cars.getRaceWinners();
+		RaceWinners winners = cars.findRaceWinners();
 		RaceWinners expectedWinners = new RaceWinners(new ArrayList<>(Arrays.asList(pobi, crong)));
 
 		assertThat(winners).isEqualTo(expectedWinners);
