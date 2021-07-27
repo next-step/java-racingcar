@@ -3,7 +3,7 @@ package step4.model;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CarsMethod implements CarsStrategy {
+public class CarsManager implements CarsStrategy {
 
     private final int RANDOM_BOUND = 10;
     

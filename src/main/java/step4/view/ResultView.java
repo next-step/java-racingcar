@@ -9,7 +9,6 @@ public class ResultView {
         Print.print("실행 결과");
         Print.printWinner(cars);
     }
-
     public static void printCars(List<Car> cars) {
         Print.print(cars);
     }

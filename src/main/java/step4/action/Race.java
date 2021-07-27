@@ -1,7 +1,7 @@
 package step4.action;
 
 import step4.model.Car;
-import step4.model.CarsMethod;
+import step4.model.CarsManager;
 import step4.model.Cars;
 
 import java.util.ArrayList;
@@ -10,10 +10,10 @@ import java.util.List;
 public class Race {
 
     private int size;
-    private Cars cars = new Cars(new CarsMethod());
+    private Cars cars;
 
     private Race(List<Car> cars) {
-        this.cars = new Cars(cars,new CarsMethod());
+        this.cars = new Cars(cars,new CarsManager());
         this.size = cars.size();
     }
 
