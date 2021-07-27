@@ -1,8 +1,8 @@
-package racingcar.model;
+package racingcar.domain;
 
 import java.util.Random;
 
-public class RandomGenerator {
+public class RandomNumber {
     private static final int BOUND = 10;
 
     public int getRandomInt() {
