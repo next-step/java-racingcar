@@ -25,7 +25,7 @@ public class ResultView {
     }
 
     public static void printRaceWinners(RaceWinners raceWinners) {
-        System.out.printf("%s가 최종 우승했습니다.", raceWinners.winnerNames());
+        System.out.printf("최종 우승자는 %s 입니다.", raceWinners.winnerNames());
     }
 
     private static String getPositionAsSymbol(int position) {
