@@ -1,29 +1,31 @@
 package racingcar.car;
 
+import racingcar.strategy.MoveStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import racingcar.strategy.MoveStrategy;
+import java.util.stream.Collectors;
 
 public class Cars {
 
+	private static final int INITIAL_POSITION = 0;
+	private static final String DELIMITER = ",";
 	private final List<Car> cars;
-	private final MoveStrategy moveStrategy;
 
-	public Cars(List<Car> cars, MoveStrategy moveStrategy) {
+	private Cars(List<Car> cars) {
 		this.cars = cars;
-		this.moveStrategy = moveStrategy;
 	}
 
-	public static Cars of(int numberOfCars, MoveStrategy moveStrategy) {
+	public static Cars of(String carNames) {
 		List<Car> cars = new ArrayList<>();
-		for (int i = 0; i < numberOfCars; i++) {
-			cars.add(new Car());
+		String[] names = carNames.split(DELIMITER);
+		for (String name : names) {
+			cars.add(new Car(new CarName(name)));
 		}
-		return new Cars(cars, moveStrategy);
+		return new Cars(cars);
 	}
 
-	public void move() {
+	public void move(MoveStrategy moveStrategy) {
 		for (Car car : cars) {
 			car.move(moveStrategy);
 		}
@@ -32,4 +34,20 @@ public class Cars {
 	public List<Car> cars() {
 		return cars;
 	}
+
+	public List<Car> getRaceWinners() {
+		int maxPosition = getMaxPosition();
+		return cars.stream()
+				.filter(car -> car.isMaxPosition(maxPosition))
+				.collect(Collectors.toList());
+	}
+
+	private int getMaxPosition() {
+		int maxPosition = INITIAL_POSITION;
+		for (Car car : cars) {
+			maxPosition = Math.max(maxPosition, car.getPosition());
+		}
+		return maxPosition;
+	}
+
 }

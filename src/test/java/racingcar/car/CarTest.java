@@ -1,10 +1,10 @@
 package racingcar.car;
 
-import static org.assertj.core.api.Assertions.*;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
@@ -12,17 +12,17 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car(new CarName("pobi"));
     }
 
-    @DisplayName("이동 조건을 충족하면 자동차는 이동한다.")
+    @DisplayName("이동 조건을 만족하면 자동차는 전진한다.")
     @Test
     void move() {
         car.move(() -> true);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
-    @DisplayName("이동 조건을 충족하지 않으면 자동차는 이동하지 않는다.")
+    @DisplayName("이동 조건을 만족하지 않으면 자동차는 이동하지 않는다.")
     @Test
     void stop() {
         car.move(() -> false);
