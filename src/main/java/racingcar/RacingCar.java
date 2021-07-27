@@ -29,8 +29,9 @@ public class RacingCar {
     public List<Car> createAsCarsNumberOfEnteredByUser() {
         List<Car> cars = new ArrayList<Car>();
         for(int i = 0; i < this.carNames.length; i++) {
-            Car  car = new Car();
+            Car car = new Car();
             car.setCarName(this.carNames[i]);
+            cars.add(car);
         }
         return cars;
     }
