@@ -9,13 +9,8 @@ public class RacingCarGame {
     private List<RacingCar> cars;
     private int count;
 
-    ResultView resultView = new ResultView();
-    Random random = new Random();
-
-    RacingCarGame(int numberOfCars, int count) {
-        this.cars = createCars(numberOfCars);
-        this.count = count;
-    }
+    private ResultView resultView = new ResultView();
+    private Random random = new Random();
 
     private List<RacingCar> createCars(int numberOfCars) {
         List<RacingCar> cars = new ArrayList<>();
@@ -25,24 +20,14 @@ public class RacingCarGame {
         return cars;
     }
 
-    public void startGame() {
+    public void startGame(int car, int count) {
+        cars = createCars(car);
         System.out.println("\n실행 결과");
         for (int i = 0; i < count; i++) {
-            for (int j = 0; j < cars.size(); j++) {
-                doRandomCalculation(cars.get(j));
-                resultView.showResultView(cars.get(j).getMovingLine());
+            for (int j = 0; j < car; j++) {
+                resultView.showResultView((cars.get(j).doRandomCalculation(random.nextInt(10))));
             }
             System.out.println();
         }
-    }
-
-    private void doRandomCalculation(RacingCar racingCar) {
-        if (random.nextInt(10) >= 4) {
-            moveForward(racingCar);
-        }
-    }
-
-    private void moveForward(RacingCar racingCar) {
-        racingCar.move();
     }
 }
