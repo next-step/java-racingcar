@@ -7,7 +7,7 @@ public class RacingModel {
 
     public void prepareRacing(int carCount, int playCount) {
         this.playCount = playCount;
-        this.cars.prepareGame(carCount);
+        this.cars.prepareCars(carCount);
     }
 
     public CarsModel participants() {
