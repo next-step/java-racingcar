@@ -14,8 +14,5 @@ public class App {
         } catch (IllegalArgumentException e) {
             System.out.println("잘못된 수식");
         }
-
-
     }
-
 }
