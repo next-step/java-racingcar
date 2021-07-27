@@ -1,6 +1,8 @@
 package racingcar.domain;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import racingcar.domain.car.Car;
@@ -33,6 +35,14 @@ public class Cars {
                 .map(car -> car.move(moveStrategy))
                 .collect(Collectors.toList());
         return new Cars(movedCars);
+    }
+
+    public List<Car> findWinners() {
+        Car maxPositionCar = cars.stream().max(Comparator.comparing(Car::getIntPosition))
+                .orElseThrow(
+                        NoSuchElementException::new);
+        return cars.stream().filter(car -> car.isSamePosition(maxPositionCar))
+                .collect(Collectors.toList());
     }
 
     @Override

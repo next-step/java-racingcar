@@ -10,6 +10,6 @@ public class RacingCarApplication {
     public static void main(String[] args) {
         RacingCarController racingCarController = RacingCarController.createFromUserInput();
         RaceHistory raceHistory = racingCarController.run(new RandomMoveStrategy());
-        ResultView.printRaceResult(raceHistory);
+        ResultView.printRace(raceHistory);
     }
 }

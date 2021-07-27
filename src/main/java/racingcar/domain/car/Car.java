@@ -28,6 +28,10 @@ public class Car {
         return this;
     }
 
+    public boolean isSamePosition(Car maxPositionCar) {
+        return Objects.equals(position, maxPositionCar.position);
+    }
+
     public String getStringName() {
         return name.getName();
     }

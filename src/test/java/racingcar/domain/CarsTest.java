@@ -36,4 +36,24 @@ public class CarsTest {
         Cars expected = Cars.createFromList(carList);
         assertThat(cars.move(() -> false)).isEqualTo(expected);
     }
+
+    @Test
+    void winner() {
+        Car pobi = Car.createWithNameAndPosition("pobi", 1);
+        Car crong = Car.createWithNameAndPosition("crong", 2);
+        Car honux = Car.createWithNameAndPosition("honux", 3);
+        Cars cars = Cars.createFromList(Arrays.asList(pobi, crong, honux));
+        List<Car> winners = cars.findWinners();
+        assertThat(winners).containsExactly(honux);
+    }
+
+    @Test
+    void multiple_winners() {
+        Car pobi = Car.createWithNameAndPosition("pobi", 5);
+        Car crong = Car.createWithNameAndPosition("crong", 4);
+        Car honux = Car.createWithNameAndPosition("honux", 5);
+        Cars cars = Cars.createFromList(Arrays.asList(pobi, crong, honux));
+        List<Car> winners = cars.findWinners();
+        assertThat(winners).containsExactly(pobi, honux);
+    }
 }
