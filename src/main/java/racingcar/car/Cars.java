@@ -45,16 +45,9 @@ public class Cars {
 	private int getMaxPosition() {
 		int maxPosition = INITIAL_POSITION;
 		for (Car car : cars) {
-			maxPosition = max(car, maxPosition);
+			maxPosition = Math.max(maxPosition, car.getPosition());
 		}
 		return maxPosition;
 	}
 
-	private int max(Car car, int maxPosition) {
-		int position = car.getPosition();
-		if (position > maxPosition) {
-			maxPosition = position;
-		}
-		return maxPosition;
-	}
 }
