@@ -7,6 +7,7 @@ import java.util.List;
 
 public class ResultView {
 
+    private static final String DELIMITER = ",";
     private static final String MESSAGE_RESULT = "\n실행 결과";
     private static final String SYMBOL = "-";
 
@@ -25,7 +26,7 @@ public class ResultView {
     }
 
     public static void printRaceWinners(RaceWinners raceWinners) {
-        System.out.printf("최종 우승자는 %s 입니다.", raceWinners.winnerNames());
+        System.out.printf("최종 우승자는 %s 입니다.", String.join(DELIMITER, raceWinners.winnerNames()));
     }
 
     private static String getPositionAsSymbol(int position) {

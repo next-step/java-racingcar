@@ -6,24 +6,16 @@ import java.util.stream.Collectors;
 
 public class RaceWinners {
 
-    private static final String DELIMITER = ",";
-
     private final List<Car> winners;
 
     public RaceWinners(List<Car> winners) {
         this.winners = winners;
     }
 
-    public String winnerNames() {
-        List<String> winnerNames = winners.stream()
-                                        .map(Car::getName)
-                                        .collect(Collectors.toList());
-
-        return String.join(DELIMITER, winnerNames);
-    }
-
-    public List<Car> getWinners() {
-        return winners;
+    public List<String> winnerNames() {
+        return winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
     @Override
