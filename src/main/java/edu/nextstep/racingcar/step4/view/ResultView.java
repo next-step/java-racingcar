@@ -16,7 +16,7 @@ public class ResultView {
     }
 
     private void attempt(Cars cars) {
-        cars.forEach(this::outputDistance);
+        cars.getCars().forEach(this::outputDistance);
         System.out.print(NEW_LINE);
     }
 
