@@ -8,18 +8,39 @@ import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toCollection;
 
-public class Cars extends ArrayList<Car> {
+public class Cars {
 
-    public void play(int numberOfAttempts) {
-        IntStream.range(0, numberOfAttempts).forEach(idx -> attempt(Cars.this));
+    private final List<Car> cars;
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    private void attempt(Cars cars) {
-        cars.forEach(Car::move);
+    public void play(int numberOfAttempts, MoveStrategy moveStrategy) {
+        IntStream.range(0, numberOfAttempts).forEach(idx -> attempt(moveStrategy));
+    }
+
+    private void attempt(MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.move(moveStrategy));
     }
 
     public List<String> getWinners() {
-        int maxDistance = this.stream().mapToInt(Car::getDistance).max().orElse(0);
-        return this.stream().filter(car -> car.getDistance() == maxDistance).map(Car::getName).collect(Collectors.toList());
+        int maxDistance = cars.stream().mapToInt(Car::getDistance).max().orElse(0);
+        return cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    public static Cars make(String namesOfCars, int numberOfRandoms, int threshold) {
+        List<Car> cars = Arrays.stream(namesOfCars.split(","))
+                .map(name -> new Car(name, numberOfRandoms, threshold))
+                .collect(Collectors.toList());
+
+        return new Cars(cars);
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

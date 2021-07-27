@@ -1,20 +1,32 @@
 package edu.nextstep.racingcar.step4.domain;
 
+import edu.nextstep.racingcar.common.BusinessException;
+import edu.nextstep.racingcar.step4.error.CarError;
+
 public class Car {
 
-    private final MoveStrategy moveStrategy;
     private int distance = 1;
 
-    private String name;
+    private final String name;
 
-    public Car(String name,ParamsValidator paramsValidator, MoveStrategy moveStrategy) {
-        paramsValidator.validate();
+    public Car(String name, int numberOfRandoms, int threshold) {
+        validate(name, numberOfRandoms, threshold);
 
         this.name = name;
-        this.moveStrategy = moveStrategy;
     }
 
-    public void move() {
+    public void validate(String name, int numberOfRandoms, int threshold) {
+        if (numberOfRandoms <= threshold) {
+            throw new BusinessException(CarError.INVALID_VALUE_GREAT_THAN_THRESHOLD);
+        }
+
+        if (name.length() > 5) {
+            throw new BusinessException(CarError.INVALID_VALUE_TOO_LONG_CAR_NAME);
+        }
+    }
+
+
+    public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMove()) {
             this.distance++;
         }
@@ -26,13 +38,5 @@ public class Car {
 
     public String getName() {
         return name;
-    }
-
-    public interface ParamsValidator {
-        void validate();
-    }
-
-    public interface MoveStrategy {
-        Boolean isMove();
     }
 }
