@@ -14,7 +14,7 @@ public class InputView {
     public static int enterNumberOfAttempt() {
         System.out.println("시도할 대수는 몇 회 인가요?");
         Scanner scanner = new Scanner(System.in);
-        int numberOfAttept = scanner.nextInt();
-        return numberOfAttept;
+        int numberOfAttempt = scanner.nextInt();
+        return numberOfAttempt;
     }
 }
