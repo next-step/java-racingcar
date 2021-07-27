@@ -1,3 +1,10 @@
+/*
+* 클래스 이름  : Racing
+* 버전 정보 : 0.0v
+* 날짜 2021.07.27
+* 저작권 주의 : 본 과제는 next-step 자료입니다.
+* */
+
 package racing;
 
 import java.util.ArrayList;
@@ -6,7 +13,7 @@ import java.util.Scanner;
 
 public class Racing {
 
-    static Boolean isShow = false;
+    private static ShowRacing showRacing = new ShowRacing();
 
     public static void main(String args[]) {
 
@@ -19,77 +26,73 @@ public class Racing {
     }
 
     public static Integer setNumber() {
+
         Scanner input = new Scanner(System.in);
         return input.nextInt();
+
     }
 
     public static void playGame(Integer carNum, Integer tryNum) {
 
-        Integer[] carList = gameInitiate(carNum);
+        ArrayList<Integer> carList = gameInitiate(carNum);
 
         while(isGameOver(carList, tryNum)) {
             carList = setCarMove(carList);
-            showGame(carList);
+            //showGame(carList);
         }
     }
 
-    public static Boolean isGameOver(Integer[] carList, Integer tryNum) {
-        for(int idx = 0; idx < carList.length ; idx++) {
-            if (tryNum.equals(carList[idx])) {
+    public static Boolean isGameOver(ArrayList<Integer> carList, Integer tryNum) {
+
+        for(int idx = 0; idx < carList.size(); idx++) {
+            if (tryNum.equals(carList.get(idx))) {
                 return false;
             }
         }
+
         return true;
     }
 
-    public static Integer[] gameInitiate(int carNum) {
-        Integer[] carList = new Integer[carNum];
+    public static ArrayList<Integer> gameInitiate(int carNum) {
+
+        ArrayList<Integer> carList = new ArrayList<>();
         for(int idx = 0; idx < carNum; idx++) {
-            carList[idx] = 0;
+            carList.add(0);
         }
+
         return carList;
     }
 
-    public static void showGame(Integer[] carList) {
-        if(!isShow) {
-            return;
-        }
+    public static ArrayList<Integer> setCarMove(ArrayList<Integer> carList) {
 
-        System.out.println("");
-
-        for(int idx = 0; idx < carList.length; idx++) {
+        for(int idx = 0; idx < carList.size(); idx++) {
             String movement = "";
-            for(int cnt = 0; cnt < carList[idx]; cnt++) {
-                movement = movement + "-";
-            }
-            System.out.println(movement);
-        }
-    }
-
-    public static Integer[] setCarMove(Integer[] carList) {
-        isShow = false;
-        for(int idx = 0; idx < carList.length; idx++) {
 
             if(isMove(makeRanNum())) {
-                carList[idx] = carList[idx] + 1;
+                int cntSize = carList.get(idx) + 1;
+                carList.set(idx, cntSize);
+
+                showRacing.showGame(cntSize, carList.size(), idx);
             }
         }
+
         return carList;
     }
 
     public static Integer makeRanNum() {
-        Random random = new Random(); //랜덤 객체 생성(디폴트 시드값 : 현재시간)
-        random.setSeed(System.currentTimeMillis()); //시드값 설정을 따로 할수도 있음
+
+        Random random = new Random();
+        random.setSeed(System.currentTimeMillis());
         return random.nextInt(10);
+
     }
 
     public static Boolean isMove(Integer number) {
 
-
         if(number >= 4) {
-            isShow =  true;
             return true;
         }
+
         return false;
     }
 
