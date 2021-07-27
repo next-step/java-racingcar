@@ -1,10 +1,10 @@
 package racing.controller;
 
-import racing.domain.car.vo.fuel.Fuel;
-import racing.domain.car.vo.fuel.RandomFuel;
-import racing.domain.game.dto.GameRequest;
-import racing.domain.game.RacingGame;
-import racing.domain.game.vo.Turns;
+import racing.domain.fuel.Fuel;
+import racing.domain.fuel.RandomFuel;
+import racing.domain.dto.GameRequest;
+import racing.domain.RacingGame;
+import racing.domain.turn.Turns;
 
 public class RacingController {
     public Turns gameRun(GameRequest gameRequest) {

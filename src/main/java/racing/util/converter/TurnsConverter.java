@@ -1,6 +1,6 @@
 package racing.util.converter;
 
-import racing.domain.game.vo.Turns;
+import racing.domain.turn.Turns;
 
 public class TurnsConverter implements Converter<Integer, Turns> {
     @Override

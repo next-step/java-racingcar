@@ -1,9 +1,9 @@
 package racing.util.converter;
 
-import racing.domain.car.entity.BasicCar;
-import racing.domain.car.entity.Car;
-import racing.domain.car.entity.Cars;
-import racing.domain.car.vo.Name;
+import racing.domain.car.BasicCar;
+import racing.domain.car.Car;
+import racing.domain.car.Cars;
+import racing.domain.Name;
 import racing.exception.InvalidInputException;
 import util.StringUtils;
 

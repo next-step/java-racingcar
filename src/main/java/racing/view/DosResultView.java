@@ -1,9 +1,9 @@
 package racing.view;
 
-import racing.domain.car.entity.Car;
-import racing.domain.car.vo.Location;
-import racing.domain.game.vo.Turn;
-import racing.domain.game.vo.Turns;
+import racing.domain.car.Car;
+import racing.domain.Location;
+import racing.domain.turn.Turn;
+import racing.domain.turn.Turns;
 import util.RepeatString;
 
 import java.util.Map;

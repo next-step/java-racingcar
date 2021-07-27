@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.domain.game.vo.Turns;
+import racing.domain.turn.Turns;
 
 public interface ResultView {
     void printResult(Turns turns);

@@ -2,7 +2,7 @@ package racing.view;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing.domain.game.dto.GameRequest;
+import racing.domain.dto.GameRequest;
 import racing.exception.InvalidInputException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

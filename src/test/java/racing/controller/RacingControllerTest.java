@@ -3,8 +3,8 @@ package racing.controller;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing.domain.game.dto.GameRequest;
-import racing.domain.game.vo.Turns;
+import racing.domain.dto.GameRequest;
+import racing.domain.turn.Turns;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

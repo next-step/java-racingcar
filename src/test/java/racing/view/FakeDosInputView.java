@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.domain.game.dto.GameRequest;
+import racing.domain.dto.GameRequest;
 
 public class FakeDosInputView implements InputView {
     private String carNames;
