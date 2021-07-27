@@ -67,4 +67,15 @@ public class CalculatorTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> Calculator.calculate(""));
     }
+
+    @Test
+    @DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException이 발생한다")
+    public void 사칙연산_기호가_아닌_경우_IllegalArgumentException이_발생한다(){
+        //given
+        String given = "1 # 2";
+        //when
+        //then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> Calculator.calculate(given));
+    }
 }

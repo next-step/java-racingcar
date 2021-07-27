@@ -29,8 +29,11 @@ public class Calculator {
             return sub(first, second);
         } else if ("*".equals(operator)) {
             return mul(first, second);
+        } else if ("/".equals(operator)){
+            return div(first, second);
+        } else {
+            throw new IllegalArgumentException();
         }
-        return div(first, second);
     }
 
     private static int sum(int first, int second) {
