@@ -1,15 +1,15 @@
+import step4.InputView;
 import step4.Race;
 
 import java.util.Scanner;
 
 public class RacingCarMain {
     public static void main(String[] args) {
-        Race race = new Race();
-        int numOfCar = race.getNumOfCar();
-        int numOfCycle = race.getNumOfCycle();
+        InputView inputView = new InputView();
+        int numOfCar = inputView.getNumOfCar();
+        int numOfCycle = inputView.getNumOfCycle();
 
-        race.validInputConfirm();
-        race.prepareCars();
+        Race race = new Race(numOfCar, numOfCycle);
 
         for (int i = 0; i < numOfCycle; i++) {
             race.printResult();

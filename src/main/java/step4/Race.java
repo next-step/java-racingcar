@@ -5,21 +5,18 @@ import java.util.List;
 import java.util.Random;
 
 public class Race {
-    private int numOfCar;
-    private int numOfCycle;
+    private static int numOfCar;
+    private static int numOfCycle;
     private static final int INIT_CAR_POSITION = 1;
     private InputView inputView = new InputView();
     private ResultView resultView = new ResultView();
     private List<CarManager> carManagers;
 
-    public int getNumOfCar() {
-        numOfCar = inputView.getNumOfCar();
-        return numOfCar;
-    }
-
-    public int getNumOfCycle() {
-        numOfCycle = inputView.getNumOfCycle();
-        return numOfCycle;
+    public Race(int numOfCar, int numOfCycle) {
+        this.numOfCar = numOfCar;
+        this.numOfCycle = numOfCycle;
+        validInputConfirm();
+        prepareCars();
     }
 
     public void prepareCars() {
