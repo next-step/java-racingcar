@@ -14,8 +14,4 @@ public class RacingController {
 
 		ResultView.printRacingWinnerResult(racing.getTopRankResult());
 	}
-
-	private static boolean lastTry(int tryCount, int lastCount) {
-		return tryCount >= lastCount - 1;
-	}
 }
