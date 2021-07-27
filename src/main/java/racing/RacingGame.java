@@ -16,12 +16,12 @@ public class RacingGame {
         Racing racing = new Racing();
         racing.prepareRacing(carNames, gameCount);
 
-        RacingView racingView = new RacingView();
         while (!game(racing, count)) {
             count++;
-            racingView.printCarMove(racing);
+            RacingView.printCarMove(racing);
         }
-        racingView.printCarMove(racing);
+        RacingView.printCarMove(racing);
+        RacingView.printWinner(racing.winner());
     }
 
     public Boolean game(Racing racing, int count) {

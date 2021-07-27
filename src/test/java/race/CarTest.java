@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    Car car = new Car();
+    Car car = new Car("test");
 
     @Test
     @DisplayName("car distance check Test")

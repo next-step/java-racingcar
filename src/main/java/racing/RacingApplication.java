@@ -9,7 +9,7 @@ public class RacingApplication {
         String carNames = InputView.getCarNames();
         int gameCount = InputView.getGameCount();
         RacingGame racingGame = new RacingGame();
-        racingGame.gameStart(carNames.split(",").length, gameCount);
+        racingGame.gameStart(carNames, gameCount);
     }
 
 }
