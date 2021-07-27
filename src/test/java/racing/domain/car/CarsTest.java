@@ -8,10 +8,9 @@ import racing.domain.Location;
 import racing.domain.Name;
 import racing.domain.fuel.BasicFuel;
 import racing.domain.fuel.Fuel;
+import racing.util.converter.CarsConverter;
 
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,18 +21,6 @@ public class CarsTest {
     * @CsvSource의 기본 구분 문자가 ',' 이기 때문에
     * 테스트 에서는 이름 구분자를 '|' 로 변경
     */
-    private static final String NAME_DELIMITER = "\\|";
-    public Cars initCars(String strNames, Function<Name, Car> carCtor) {
-        String[] strNameSplitValues = strNames.split(NAME_DELIMITER);
-
-        return new Cars(
-                Arrays.stream(strNameSplitValues)
-                        .map(Name::new)
-                        .map(carCtor)
-                        .collect(Collectors.toSet())
-        );
-    }
-
     private String newAnonymousName(int identity) {
         return String.valueOf(identity);
     }
@@ -56,11 +43,10 @@ public class CarsTest {
     })
     @DisplayName("moveAll Test")
     @ParameterizedTest
-    public void moveAllTest(int carSize, int fuelValue, int locationValue) {
+    public void moveAllTest(int carSize, int fuelValue) {
         Fuel fuel = new BasicFuel(fuelValue);
-        Location location = new Location(locationValue);
 
-        Cars cars = initCars(sizeToNames(carSize), Car::new);
+        Cars cars = CarsConverter.getInstance().convert(sizeToNames(carSize));
         Cars newCars = cars.moveAll(fuel);
 
         assertThat(cars)
