@@ -1,12 +1,11 @@
 package edu.nextstep.racingcar.step4.domain;
 
-import edu.nextstep.racingcar.step4.util.RandomUtils;
+import java.util.Random;
 
 public class CarStrategy implements MoveStrategy {
 
     @Override
     public boolean isMove(int numberOfRandoms, int threshold) {
-        RandomUtils randomUtils = new RandomUtils(numberOfRandoms);
-        return randomUtils.getRandomNumber() >= threshold;
+        return new Random().nextInt(numberOfRandoms) >= threshold;
     }
 }
