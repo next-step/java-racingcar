@@ -15,13 +15,8 @@ public class PositionTest {
     }
 
     @Test
-    @DisplayName("Car 2회 전진 성공 테스트")
-    void 앞으로_2회_움직이기_성공() {
+    @DisplayName("Position 처음 위치 확인 테스트")
+    void 처음_위치_0_테스트() {
         assertThat(position.getPosition()).isEqualTo(0);
-
-        position.moveForward();
-        position.moveForward();
-
-        assertThat(position.getPosition()).isEqualTo(2);
     }
 }

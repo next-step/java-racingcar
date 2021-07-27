@@ -3,7 +3,7 @@ package racingcar.car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.InvalidUserInputException;
+import racingcar.exception.InvalidCarSettingException;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -21,41 +21,50 @@ public class CarsTest {
 
 
     @Test
-    @DisplayName("사용자 자동차 갯수 입력 성공 테스트")
-    void 자동차_갯수_입력_성공() {
-
-        int input = 2;
-        InputStream in = new ByteArrayInputStream(Integer.toString(input).getBytes());
-        System.setIn(in);
-
-        cars.setUserInputCountOfCar();
-        assertThat(cars.getCars().size()).isEqualTo(input);
-    }
-
-    @Test
-    @DisplayName("사용자 자동차 갯수 입력 실패 테스트(1대 입력)")
-    void 자동차_갯수_입력_실패_1대입력() {
-        int input = 1;
-        InputStream in = new ByteArrayInputStream(Integer.toString(input).getBytes());
-        System.setIn(in);
-
-        assertThatThrownBy(() -> cars.setUserInputCountOfCar())
-                .isInstanceOf(InvalidUserInputException.class)
-                .hasMessage("2개 이상의 자동차를 입력해야 시작 가능합니다.");
-    }
-
-    @Test
     @DisplayName("Car 추가 성공 테스트")
-    void addCar_성공() {
-        cars.addCars(2);
-        assertThat(cars.getCars().size()).isEqualTo(2);
-    }
-
-    @Test
-    @DisplayName("Cars 생성 성공 테스트")
     void setCars_성공() {
-        cars.addCars(3);
+
+        InputStream in = new ByteArrayInputStream("a,b,c".getBytes());
+        System.setIn(in);
+
+        cars.setCarsByUserInputNames();
+
         assertThat(cars.getCars().size()).isEqualTo(3);
     }
 
+    @Test
+    @DisplayName("Car 추가 실패(공백 입력)테스트")
+    void setCars_실패_공백입력() {
+
+        InputStream in = new ByteArrayInputStream(" ,b,c".getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(() -> cars.setCarsByUserInputNames())
+                .isInstanceOf(InvalidCarSettingException.class)
+                .hasMessage("자동차 이름은 공백이 불가합니다.");
+    }
+
+    @Test
+    @DisplayName("Car 추가 실패(자동차 이름 5자 초과)테스트")
+    void setCars_실패_이름5자초과() {
+
+        InputStream in = new ByteArrayInputStream("abcdefg,h,i".getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(() -> cars.setCarsByUserInputNames())
+                .isInstanceOf(InvalidCarSettingException.class)
+                .hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
+    }
+
+    @Test
+    @DisplayName("Car 추가 실패(자동차 1대 입력)테스트")
+    void setCars_실패_1대입력() {
+
+        InputStream in = new ByteArrayInputStream("a".getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(() -> cars.setCarsByUserInputNames())
+                .isInstanceOf(InvalidCarSettingException.class)
+                .hasMessage("2개 이상의 자동차를 입력해야 시작 가능합니다.");
+    }
 }

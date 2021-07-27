@@ -16,14 +16,14 @@ public class Position {
         return position;
     }
 
-    public boolean isMovable(int number) {
-        return number >= 4;
-    }
-
     public void movePosition() {
         if (isMovable(Util.generateRandom())) {
             moveForward();
         }
+    }
+
+    private boolean isMovable(int number) {
+        return number >= 4;
     }
 
     private void moveForward() {
