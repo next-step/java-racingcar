@@ -31,9 +31,6 @@ public class Race {
 
     protected List<Car> findWinner(List<Car> cars){
         List<Car> winners = new ArrayList<Car>();
-        int winnerPosition = cars.get(0).getPosition();
-
-        winners.add(cars.get(0));
         findCoWinner(winners, cars);
 
         return winners;
@@ -43,6 +40,7 @@ public class Race {
         Iterator<Car> iterator = cars.iterator();
         Car winner = iterator.next();
 
+        winners.add(winner);
         while(iterator.hasNext()){
             Car nextCar = iterator.next();
             if(winner.getPosition() != nextCar.getPosition()){
