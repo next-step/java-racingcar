@@ -41,7 +41,7 @@ public class SimpleCalculator {
 		int firstOperand = selectOperand(expressionUnit, 0);
 		int secondOperand = selectOperand(expressionUnit, 2);
 		if (firstOperand % secondOperand != 0) {
-			throw new NotEqualRemainderZeroException();
+			throw new NotEqualRemainderZeroException("나눗셈 결과 나머지가 존재합니다.");
 		}
 		return firstOperand / secondOperand;
 	}
