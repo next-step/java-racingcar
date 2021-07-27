@@ -15,8 +15,8 @@ public class Racers<T extends Racer> {
         this.racers = racers;
     }
 
-    public static Racers from(List<? extends Racer> cars) {
-        return new Racers(cars);
+    public static <T extends Racer> Racers<T> from(List<T> cars) {
+        return new Racers<>(cars);
     }
 
     public int size() {
