@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.*;
@@ -61,6 +62,16 @@ class CalculatorTest {
         });
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Calculator.calculate(emptyInput);
+        });
+    }
+
+    @ParameterizedTest(name = "[잘못된 연산자 테스트] {0}")
+    @ValueSource( strings = {"1 . 2", "1 & 2", "1 1 1", "1 = 2", "1 0 2"})
+    void wrongOperatorTest(String wrongInput) {
+
+        //then
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Calculator.calculate(wrongInput);
         });
     }
 }
