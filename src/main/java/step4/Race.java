@@ -30,7 +30,7 @@ public class Race {
 
     public void playRace() {
         for (int i = 0; i < numOfCar; i++) {
-            carManagers[i].CanIGo();
+            carManagers[i].canIGo();
         }
     }
 

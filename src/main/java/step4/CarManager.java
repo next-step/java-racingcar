@@ -8,9 +8,9 @@ public class CarManager {
         this.car = car;
     }
 
-    public void CanIGo() {
+    public void canIGo() {
         if (raceManager.judge()) {
-            car.MoveForward();
+            car.moveForward();
         }
     }
 

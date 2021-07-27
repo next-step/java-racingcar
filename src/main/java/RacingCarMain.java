@@ -18,6 +18,5 @@ public class RacingCarMain {
             System.out.println();
         }
         race.printResult();
-
     }
 }
