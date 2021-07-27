@@ -1,11 +1,14 @@
 package racingcar;
 
 import racingcar.ui.InputView;
+import racingcar.ui.ResultView;
 
 public class MainApplication {
     public static void main(String[] args) {
-        int carCount = InputView.inputCarCount();
+        String carNames = InputView.inputCarNames();
         int moveCount = InputView.inputMoveCount();
-        RacingCar.play(carCount,moveCount);
+        InputView.closeScanner();
+        String winners = RacingCar.play(carNames, moveCount);
+        ResultView.printWinners(winners);
     }
 }
