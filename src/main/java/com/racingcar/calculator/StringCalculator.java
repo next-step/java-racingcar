@@ -35,9 +35,13 @@ public class StringCalculator {
             throw new IllegalArgumentException("input String is null");
         }
 
-        if (input.split(" ").length % 2 != 1) {
+        if (isNotCompletedFormula(input)) {
             throw new IllegalArgumentException("input String is not completed");
         }
+    }
+
+    private static boolean isNotCompletedFormula(String input) {
+        return input.split(" ").length % 2 != 1;
     }
 
     private static int calculate(String operatorSign, int value01, int value02) {
