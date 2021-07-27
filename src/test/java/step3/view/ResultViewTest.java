@@ -1,10 +1,13 @@
-package step3;
+package step3.view;
 
 import static java.util.List.of;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import step3.domain.Car;
+import step3.domain.Name;
+import step3.domain.Result;
 
 class ResultViewTest {
 

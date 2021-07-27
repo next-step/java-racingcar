@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import static java.util.stream.Collectors.toList;
 
@@ -16,7 +16,7 @@ public class Cars {
   public void move() {
     for (Car car : cars) {
       final int randomNumber = randomNumberGenerator.generate();
-      car.move(randomNumber);
+      car.move(new NumberMovableCondition(randomNumber));
     }
   }
 
