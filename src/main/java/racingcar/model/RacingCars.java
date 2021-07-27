@@ -14,7 +14,7 @@ public class RacingCars {
 
 	public RacingCars(int carNum) {
 		for (int i = 0 ; i < carNum ; i++) {
-			racingCars.add(new RacingCar(RacingCar.INITIAL_POSITION));
+			racingCars.add(new RacingCar());
 		}
 	}
 

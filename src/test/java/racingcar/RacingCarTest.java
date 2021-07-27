@@ -14,7 +14,7 @@ class RacingCarTest {
 
 	@BeforeEach
 	void setUp() {
-		racingCar = new RacingCar(RacingCar.INITIAL_POSITION);
+		racingCar = new RacingCar();
 	}
 
 	@ParameterizedTest
