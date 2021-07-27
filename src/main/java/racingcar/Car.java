@@ -12,6 +12,7 @@ import java.util.Random;
  * 해당 클래스는 Racing의 필요한 Car 객채입니다.
  */
 public class Car {
+    private String carName;
     private int currentLocation = 0;
 
     public int getCurrentLocation() {
@@ -20,6 +21,14 @@ public class Car {
 
     public void setCurrentLocation(int currentLocation) {
         this.currentLocation = currentLocation;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public void setCarName(String carName) {
+        this.carName = carName;
     }
 
     /**
