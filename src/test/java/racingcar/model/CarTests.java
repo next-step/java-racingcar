@@ -8,21 +8,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTests {
 
-    @DisplayName("차가 움직이는지 테스트")
+    @DisplayName("차의 거리가 0,1 사이로 움직이는지 테스트")
     @Test
     void moveTest() {
-        Car car = new Car();
-        car.setMovingStrategy(new RandomBoundMovingStrategy());
-        car.move(true);
-        assertThat(car.getPosition()).isEqualTo(1);
-    }
-
-    @DisplayName("움직이는 조건이 아닐 때 차가 움직이지 않는지 테스트")
-    @Test
-    void notMoveTest() {
-        Car car = new Car();
-        car.setMovingStrategy(new RandomBoundMovingStrategy());
-        car.move(false);
-        assertThat(car.getPosition()).isEqualTo(0);
+        Car car = new Car("test");
+        car.move(new RandomBoundMovingStrategy());
+        assertThat(car.getPosition()).isBetween(0, 1);
     }
 }
