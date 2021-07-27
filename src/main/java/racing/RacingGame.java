@@ -8,8 +8,8 @@ import racing.view.RacingView;
 
 public class RacingGame {
 
-    private static final int minimumCondition = 4;
-    private static final int maximumCondition = 9;
+    private static final int MINIMUM_CONDITION = 4;
+    private static final int MAXIMUM_CONDITION = 9;
 
     public void gameStart(int carSize, int gameCount) {
         int count = 1;
@@ -27,11 +27,11 @@ public class RacingGame {
     public Boolean game(Racing racing, int count) {
         Cars cars = racing.participants();
         cars.carList()
-                .forEach(car -> carMove(car, RandomUtil.randomValue()));
+                .forEach(car -> run(car, RandomUtil.randomValue()));
         return racing.endGame(count);
     }
 
-    public boolean carMove(Car car, int move) {
+    public boolean run(Car car, int move) {
         if(moveCondition(move)) {
             car.go();
             return true;
@@ -40,10 +40,10 @@ public class RacingGame {
     }
 
     public Boolean moveCondition(int randomValue) {
-        if(randomValue > maximumCondition) {
+        if(randomValue > MAXIMUM_CONDITION) {
             throw new IllegalStateException();
         }
-        if(randomValue >= minimumCondition && randomValue <= maximumCondition) {
+        if(randomValue >= MINIMUM_CONDITION && randomValue <= MAXIMUM_CONDITION) {
             return true;
         }
         return false;

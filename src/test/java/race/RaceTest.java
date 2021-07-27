@@ -48,7 +48,7 @@ public class RaceTest {
     @CsvSource(value = {"3:false", "5:true"}, delimiter = ':')
     @DisplayName("car move Test")
     void carMoveTest(int randomValue, boolean expected) {
-        assertThat(racingGame.carMove(cars.get(0), randomValue)).isEqualTo(expected);
+        assertThat(racingGame.run(cars.get(0), randomValue)).isEqualTo(expected);
     }
 
 }
