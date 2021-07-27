@@ -14,8 +14,8 @@ class DistanceTest {
     @Test
     void 거리1전진테스트() {
         Distance distance = new Distance();
-        distance.move();
-        assertThat(distance.getMoveDistance()).isEqualTo(1);
+        Distance distance1 = distance.moveAndReturnObject();
+        assertThat(distance1).isEqualTo(new Distance(1));
     }
 
     @DisplayName("전진한 거리가 비교값과 비교하여 더 큰값인지 확인하는 테스트.")
@@ -27,4 +27,5 @@ class DistanceTest {
 
         assertThat(distance1.getMaxValue(input)).isGreaterThan(input);
     }
+
 }
