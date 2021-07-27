@@ -1,15 +1,22 @@
 package racingcar.model;
 
+import racingcar.strategy.MovableStrategy;
+
 public class RacingCar {
 	// https://velog.io/@kwj1270/JAVA-%EC%BD%94%EB%93%9C-%EC%BB%A8%EB%B2%A4%EC%85%98
 	// 4. 클래스 변수(static) public -> protected -> package(default) -> private
 	private static final int INITIAL_POSITION = 0;
-	private static final int MOVABLE_MINIMUM_VALUE = 4;
 
 	// 5. 일반 변수 public -> protected -> package(default) -> private
 	public int position;
+	private MovableStrategy movableStrategy;
 
 	public RacingCar() {
+		this.position = INITIAL_POSITION;
+	}
+
+	public RacingCar(MovableStrategy movableStrategy) {
+		this.movableStrategy = movableStrategy;
 		this.position = INITIAL_POSITION;
 	}
 
@@ -25,11 +32,9 @@ public class RacingCar {
 		return new String(new char[this.position]).replace("\0", "-");
 	}
 
-	public boolean isMovable(int randomValue) {
-		return randomValue >= MOVABLE_MINIMUM_VALUE;
-	}
-
 	public void forward() {
-		position++;
+		if (movableStrategy.isMovable()) {
+			position++;
+		}
 	}
 }
