@@ -1,55 +1,35 @@
 package calculator;
 
+import errors.EmptyArgumentException;
+import errors.InvalidInputException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
 class StringCalculatorTest {
 
-    @Test
-    @DisplayName("덧셈 테스트")
-    public void addTest() {
-        //given
-        StringCalculator.answer = 0;
+    @ParameterizedTest
+    @ValueSource(strings = {"5 + 4 * 3 * 9", "5 + 5 - 2 / 4 * 2", "1 + 1 * 2 ! 9"})
+    public void calculateTest(String input) throws EmptyArgumentException, InvalidInputException {
         //when, then
-        assertThat(StringCalculator.add("5")).isEqualTo(5);
+        assertThat(StringCalculator.calculate(input)).isEqualTo(4);
     }
 
-    @Test
-    @DisplayName("뺄셈 테스트")
-    public void subtractTest() {
-        //given
-        StringCalculator.answer = 2;
+    @ParameterizedTest
+    @ValueSource(strings = {"5 + 4 * 3 * 9", "5 + 5 - 2 / 4 * 2", "1 + 1 * 2 ! 9"})
+    @DisplayName("사칙연산 예외테스트")
+    public void operatorExceptionTest(String input) {
         //when, then
-        assertThat(StringCalculator.subtract("2")).isEqualTo(0);
-    }
-
-    @Test
-    @DisplayName("곱셈 테스트")
-    public void multiplyTest() {
-        //given
-        StringCalculator.answer = 2;
-        //when, then
-        assertThat(StringCalculator.multiply("3")).isEqualTo(6);
-    }
-
-    @Test
-    @DisplayName("나눗셈 테스트")
-    public void divideTest() {
-        //given
-        StringCalculator.answer = 2;
-        //when, then
-        assertThat(StringCalculator.divide("1")).isEqualTo(2);
-    }
-
-    @Test
-    @DisplayName("연산 테스트")
-    public void calculateTest() {
-        //given
-        String input = "5 + 4 * 3 / 9";
-        //when, then
-        assertThat(StringCalculator.calculate(input)).isEqualTo(3);
+//        assertThatIllegalArgumentException().isThrownBy(() -> {
+//            StringCalculator.calculate(input);
+//        });
+        assertThatExceptionOfType(InvalidInputException.class).isThrownBy(() -> {
+            StringCalculator.calculate(input);
+        });
     }
 
     @Test
@@ -63,14 +43,18 @@ class StringCalculatorTest {
         });
     }
 
-    @Test
-    @DisplayName("사칙연산 예외테스트")
-    public void operatorExceptionTest() {
+    @ParameterizedTest
+//    @ValueSource(strings = {"+", "-", "*", "/"})
+    @CsvSource(value = {"5,2", "4,3", "6,9"})
+    @DisplayName("Enum 테스트")
+    public void enumTest(int input1, int input2) {
         //given
-        String input = "5 + 4 * 3 ! 9";
-        //when, then
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            StringCalculator.calculate(input);
-        });
+//        String operator = StringCalculator.Operator.ADD.getOperator();
+        //then
+//        assertThat(operator.contains(input)).isTrue();
+        //when
+        int answer = StringCalculator.Operator.DIVIDE.expression.apply(input1, input2);
+        //then
+        assertThat(answer).isEqualTo(5);
     }
 }
