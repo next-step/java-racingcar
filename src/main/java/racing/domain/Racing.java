@@ -30,14 +30,14 @@ public class Racing {
 
 	public String getTopRankResult() {
 		String[] topNames = cars.stream()
-			.filter(car -> car.checkVictory(getMaxDistance()))
+			.filter(car -> car.checkVictory(measureMaxDistance()))
 			.map(Car::getName)
 			.toArray(String[]::new);
 
 		return String.join(",", topNames);
 	}
 
-	private int getMaxDistance() {
+	private int measureMaxDistance() {
 		return cars.stream()
 			.max(Comparator.comparingInt(Car::getMove))
 			.orElseThrow(() -> new NotFoundMaxDistanceException("최대 거리를 찾을 수 없습니다."))
