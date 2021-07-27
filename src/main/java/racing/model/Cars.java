@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> carList = new ArrayList<>();;
+    private List<Car> carList = new ArrayList<>();
 
-   public void prepareCars(int carCount) {
-        for(int count=0; count<carCount; count++) {
-            Car carModel = new Car();
-            carList.add(carModel);
-        }
+   public void prepareCars(String carNames) {
+       String[] carNameArr = carNames.split(",");
+       for(String carName : carNameArr) {
+           Car car = new Car();
+           car.setCarName(carName);
+           carList.add(car);
+       }
     }
 
     public List<Car> carList() {

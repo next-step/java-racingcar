@@ -11,10 +11,10 @@ public class RacingGame {
     private static final int MINIMUM_CONDITION = 4;
     private static final int MAXIMUM_CONDITION = 9;
 
-    public void gameStart(int carSize, int gameCount) {
+    public void gameStart(String carNames, int gameCount) {
         int count = 1;
-        Racing racing = new racing.model.Racing();
-        racing.prepareRacing(carSize, gameCount);
+        Racing racing = new Racing();
+        racing.prepareRacing(carNames, gameCount);
 
         RacingView racingView = new RacingView();
         while (!game(racing, count)) {

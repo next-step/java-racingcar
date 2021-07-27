@@ -23,7 +23,7 @@ public class RaceTest {
 
     @BeforeEach
     void setting() {
-        racing.prepareRacing(3, 5);
+        racing.prepareRacing("pobi,test1,test2", 5);
         racingGame.game(racing,1);
         cars = racing.participants().carList();
     }

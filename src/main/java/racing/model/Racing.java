@@ -5,9 +5,9 @@ public class Racing {
     private Cars cars = new Cars();
     private int playCount = 0;
 
-    public void prepareRacing(int carCount, int playCount) {
+    public void prepareRacing(String carNames, int playCount) {
         this.playCount = playCount;
-        this.cars.prepareCars(carCount);
+        this.cars.prepareCars(carNames);
     }
 
     public Cars participants() {
