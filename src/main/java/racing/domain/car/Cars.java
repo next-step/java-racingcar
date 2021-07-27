@@ -1,10 +1,10 @@
 package racing.domain.car;
 
 import racing.domain.fuel.Fuel;
-import racing.domain.Location;
-import racing.domain.Turn;
+import racing.exception.EmptyCarException;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Cars implements Iterable<Car> {
     private final Set<Car> values;
@@ -13,20 +13,27 @@ public class Cars implements Iterable<Car> {
         this.values = values;
     }
 
-    public Turn moveAll(Fuel fuel) {
-        Map<Car, Location> result = new HashMap<>();
-        for (Car iCar : this) {
-            Location resultLocation = iCar.move(fuel);
-            result.put(iCar, resultLocation);
-        }
-        return new Turn(result);
+    public Optional<Car> findWinner() {
+        return values.stream()
+                .max(Car::compareLocation);
     }
 
-    /* 테스트가 필요한 Foward 메소드들 */
-    public void add(Car car) {
-        if (values.contains(car))
-            throw new IllegalStateException("중복된 자동차 이름이 존재 합니다.");
-        values.add(car);
+    public Cars findWinners() {
+        Car winner = findWinner().orElseThrow(EmptyCarException::new);
+
+        return new Cars(this.values.stream()
+                .filter(iCar -> iCar.compareLocation(winner) == 0)
+                .collect(Collectors.toSet()));
+    }
+
+    public Cars moveAll(Fuel fuel) {
+        Set<Car> newList = new HashSet<>();
+        for (Car iCar : this) {
+            newList.add(
+                    iCar.move(fuel)
+            );
+        }
+        return new Cars(newList);
     }
 
     /* 단순 Forward 메소드들 (테스트 X) */

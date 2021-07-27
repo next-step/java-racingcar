@@ -1,33 +1,36 @@
 package racing.controller;
 
+import racing.domain.car.Cars;
+import racing.domain.dto.GameResponse;
 import racing.domain.fuel.Fuel;
 import racing.domain.fuel.RandomFuel;
 import racing.domain.dto.GameRequest;
-import racing.domain.RacingGame;
-import racing.domain.Turn;
+import racing.service.RacingGame;
 import racing.exception.InvalidInputException;
-import racing.view.ResultView;
 
-public class RacingController {
-    private ResultView resultView;
+import java.util.List;
 
-    public RacingController(ResultView resultView) {
-        this.resultView = resultView;
+
+public final class RacingController {
+    private RacingController() {}
+
+    public static RacingController getInstance() {
+        return InnerClazz.racingGame;
     }
 
-    public void gameRun(GameRequest gameRequest) {
+    public GameResponse gameRun(GameRequest gameRequest) {
         if (!gameRequest.hasTurn()) {
             throw new InvalidInputException("진행할 턴이 없습니다.");
         }
         Fuel fuel = new RandomFuel();
-        RacingGame game = new RacingGame(gameRequest.cars());
+        List<Cars> gameResults = RacingGame.getInstance().racingAll(
+                gameRequest.cars(), gameRequest.turnSize(), fuel
+        );
 
-        Turn result = null;
-        for (int i = 0; i < gameRequest.turnSize(); i++) {
-            result = game.racing(fuel);
-            resultView.printTurn(result);
-        }
-        resultView.printResultTitle();
-        resultView.printWinners(result);
+        return new GameResponse(gameResults);
+    }
+
+    private static class InnerClazz {
+        private static RacingController racingGame = new RacingController();
     }
 }

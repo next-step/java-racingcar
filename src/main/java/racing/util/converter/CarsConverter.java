@@ -1,6 +1,5 @@
 package racing.util.converter;
 
-import racing.domain.car.BasicCar;
 import racing.domain.car.Car;
 import racing.domain.car.Cars;
 import racing.domain.Name;
@@ -12,7 +11,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class CarsConverter implements Converter<String, Cars> {
-    private static final Function<Name, Car> DEFAULT_CAR_CTOR = BasicCar::new;
+    private static final Function<Name, Car> DEFAULT_CAR_CTOR = Car::new;
     private static final String NAME_DELIMITER = ",";
 
     @Override
