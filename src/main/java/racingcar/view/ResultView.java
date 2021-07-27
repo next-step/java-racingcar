@@ -8,7 +8,6 @@ import java.util.List;
 public class ResultView {
 
     private static final String MESSAGE_RESULT = "\n실행 결과";
-    private static final String DELIMITER = ",";
     private static final String SYMBOL = "-";
 
     private ResultView() {
