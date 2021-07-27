@@ -30,16 +30,19 @@ public class Race {
 
     protected List<Car> findWinner(List<Car> cars){
         List<Car> winners = new ArrayList<Car>();
-        int longestLength = cars.get(0).getPosition();
+        int winnerPosition = cars.get(0).getPosition();
+
         winners.add(cars.get(0));
-        for(int idx = 1; idx < cars.size(); idx++){
-            findCoWinner(winners, cars.get(idx),longestLength);
-        }
+        findCoWinner(winners, cars,winnerPosition);
+
         return winners;
     }
 
-    private void findCoWinner(List<Car> winners, Car car, int target) {
-        if(car.getPosition() == target){
+    private void findCoWinner(List<Car> winners, List<Car> cars, int target) {
+        for (Car car : cars) {
+            if(target != car.getPosition()){
+                break;
+            }
             winners.add(car);
         }
     }
