@@ -5,7 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racing.domain.dto.GameRequest;
 import racing.domain.dto.GameResponse;
-import racing.view.DosResultView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,17 +1,15 @@
-package racing.domain;
+package racing.service;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racing.domain.Name;
 import racing.domain.car.Car;
 import racing.domain.car.Cars;
 import racing.domain.car.FakeBasicCar;
 import racing.domain.fuel.Fuel;
 import racing.domain.fuel.RandomFuel;
 import racing.service.RacingGame;
-import util.StringUtils;
-
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;

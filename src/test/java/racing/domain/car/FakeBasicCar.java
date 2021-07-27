@@ -2,7 +2,6 @@ package racing.domain.car;
 
 import racing.domain.Location;
 import racing.domain.Name;
-import racing.domain.fuel.BasicFuel;
 import racing.domain.fuel.Fuel;
 
 // Fake 객체
