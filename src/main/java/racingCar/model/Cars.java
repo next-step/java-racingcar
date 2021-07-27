@@ -7,18 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
+
     private List<Car> cars;
     private int playCount;
 
-    public Cars(int carCount, int playCount) {
-        this.cars = makeCars(carCount);
+    public Cars(String[] carNames, int playCount) {
+        this.cars = makeCars(carNames);
         this.playCount = playCount;
     }
 
-    private List<Car> makeCars(int carCount) {
+    private List<Car> makeCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for(String carName: carNames){
+            cars.add(new Car(carName));
         }
         return cars;
     }
