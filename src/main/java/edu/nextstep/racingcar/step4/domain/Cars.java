@@ -29,13 +29,13 @@ public class Cars {
 
         return cars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
-                .map(Car::getName)
+                .map(car -> car.getCarName().getName())
                 .collect(Collectors.toList());
     }
 
-    public static Cars create(String namesOfCars, int numberOfRandoms, int threshold) {
+    public static Cars create(String namesOfCars) {
         List<Car> cars = Arrays.stream(namesOfCars.split(","))
-                .map(name -> new Car(name, numberOfRandoms, threshold))
+                .map(name -> new Car(new CarName(name)))
                 .collect(Collectors.toList());
 
         return new Cars(cars);
