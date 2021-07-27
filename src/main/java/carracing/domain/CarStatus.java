@@ -2,23 +2,23 @@ package carracing.domain;
 
 public class CarStatus {
 
-    private final String name;
-    private int position;
+    private final CarName carName;
+    private final int position;
 
-    public CarStatus(String name, int position) {
-        this.name = name;
+    public CarStatus(CarName carName, int position) {
+        this.carName = carName;
         this.position = position;
     }
 
     public String getName() {
-        return name;
+        return carName.getName();
     }
 
     public int getPosition() {
         return position;
     }
 
-    public void increasePosition() {
-        position++;
+    public boolean isEqualToPosition(int position) {
+        return this.position == position;
     }
 }
