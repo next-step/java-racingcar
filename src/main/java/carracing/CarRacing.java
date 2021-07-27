@@ -2,7 +2,7 @@ package carracing;
 
 import carracing.controller.RaceController;
 import carracing.domain.RaceResult;
-import carracing.service.RaceService;
+import carracing.domain.RaceManager;
 import carracing.view.CarNameConsoleInput;
 import carracing.view.RoundConsoleInput;
 import carracing.view.RaceResultConsoleOutput;
@@ -14,7 +14,7 @@ public class CarRacing {
     public static void main(String[] args) {
         CarNameConsoleInput carNameConsoleInput = new CarNameConsoleInput();
         RoundConsoleInput roundConsoleInput = new RoundConsoleInput();
-        RaceController raceController = new RaceController(new RaceService());
+        RaceController raceController = new RaceController(new RaceManager());
         RaceResultConsoleOutput raceResultConsoleOutput = new RaceResultConsoleOutput();
 
         List<String> carNames = carNameConsoleInput.getCarNames();

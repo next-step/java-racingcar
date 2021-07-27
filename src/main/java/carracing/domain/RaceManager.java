@@ -1,4 +1,4 @@
-package carracing.service;
+package carracing.domain;
 
 import carracing.domain.Car;
 import carracing.domain.CarStatus;
@@ -11,14 +11,14 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class RaceService {
+public class RaceManager {
 
     private static final int RANDOM_NUMBER_BOUND = 10;
 
     private final List<Car> cars;
     private final List<RoundRecord> roundRecords;
 
-    public RaceService() {
+    public RaceManager() {
         this.cars = new ArrayList<>();
         this.roundRecords = new ArrayList<>();
     }

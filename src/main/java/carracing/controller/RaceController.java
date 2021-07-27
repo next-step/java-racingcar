@@ -1,7 +1,7 @@
 package carracing.controller;
 
 import carracing.domain.RaceResult;
-import carracing.service.RaceService;
+import carracing.domain.RaceManager;
 
 import java.util.List;
 import java.util.Objects;
@@ -12,16 +12,16 @@ public class RaceController {
     public static final String NOT_EMPTY_CAR_NAMES = "carNames 리스트 입력값은 비어있을 수 없습니다";
     public static final String LESS_THAN_OR_EQUAL_ZERO = "입력값은 0보다 커야합니다 -> ";
 
-    private final RaceService raceService;
+    private final RaceManager raceManager;
 
-    public RaceController(RaceService raceService) {
-        this.raceService = raceService;
+    public RaceController(RaceManager raceManager) {
+        this.raceManager = raceManager;
     }
 
     public RaceResult play(List<String> carNames, int roundNumber) {
         validateCarNames(carNames);
         validateRoundNumber(roundNumber);
-        return raceService.play(carNames, roundNumber);
+        return raceManager.play(carNames, roundNumber);
     }
 
     private void validateCarNames(List<String> carNames) {
