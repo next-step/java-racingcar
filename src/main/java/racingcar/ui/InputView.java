@@ -30,19 +30,19 @@ public class InputView {
         return carNames;
     }
 
-    public static void emptyCheck(String input) {
+    private static void emptyCheck(String input) {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException("invalid value - input empty");
         }
     }
 
-    public static void validationCheck(String[] carNames) {
+    private static void validationCheck(String[] carNames) {
         for (String carName : carNames) {
             validationCarNameLengthCheck(carName);
         }
     }
 
-    public static void validationCarNameLengthCheck(String carName) {
+    private static void validationCarNameLengthCheck(String carName) {
         if (carName.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("invalid value - car name long!");
         }
