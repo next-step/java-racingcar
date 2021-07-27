@@ -53,12 +53,12 @@ public class Race {
         int longestLength = cars.get(0).getPosition();
         winners.add(cars.get(0));
         for(int idx=1; idx < cars.size(); idx++){
-            sameWithFirst(winners, cars.get(idx),longestLength);
+            findWinner(winners, cars.get(idx),longestLength);
         }
         return winners;
     }
 
-    private void sameWithFirst(List<Car> winners, Car car,int target) {
+    private void findWinner(List<Car> winners, Car car, int target) {
         if(car.getPosition() == target){
             winners.add(car);
         }

@@ -1,6 +1,5 @@
 package step4.model;
 
-import step4.RacingApp;
 import step4.view.ToDash;
 
 public class Car implements Comparable<Car>{
@@ -36,26 +35,19 @@ public class Car implements Comparable<Car>{
         return name;
     }
 
-    public void setInitPosition(){
+    public void setInitPosition() {
         this.position = INIT_POSITION;
     }
 
-    public void move(int movePoint){
-        if(moveForward(movePoint)){
+    public void move(boolean isForward) {
+        if (isForward) {
             position++;
         }
     }
 
-    private boolean moveForward(int movePoint) {
-        if(movePoint < 0){
-            throw new IllegalArgumentException("0 보다 작은수");
-        }
-        return movePoint >= RacingApp.MOVE_BOUNDARY;
-    }
-
     @Override
     public String toString() {
-        return this.getName()+" : "+ToDash.positionToDash(position);
+        return this.getName() + " : " + ToDash.positionToDash(position);
     }
 
     @Override

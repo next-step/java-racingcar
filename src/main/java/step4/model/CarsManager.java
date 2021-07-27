@@ -1,5 +1,7 @@
 package step4.model;
 
+import step4.RacingApp;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,8 +12,8 @@ public class CarsManager implements CarsStrategy {
     @Override
     public void move(Cars cars) {
         for(Car car:cars.getCarList()){
-            int movePoint = RandomFactory.getRandomInt(RANDOM_BOUND);
-            car.move(movePoint);
+            boolean isForward = RandomFactory.getRandomInt(RANDOM_BOUND) >= RacingApp.MOVE_BOUNDARY;
+            car.move(isForward);
         }
     }
 
