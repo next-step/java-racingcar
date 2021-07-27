@@ -31,8 +31,8 @@ public class Racing {
         return racingModel.endGame(count);
     }
 
-    public boolean carMove(CarModel car, int randomValue) {
-        if(moveCondition(randomValue)) {
+    public boolean carMove(CarModel car, int move) {
+        if(moveCondition(move)) {
             car.go();
             return true;
         }
