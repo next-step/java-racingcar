@@ -1,8 +1,8 @@
 package racingcar.view;
 
 import racingcar.car.Car;
+import racingcar.car.RaceWinners;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ResultView {
@@ -25,12 +25,8 @@ public class ResultView {
         System.out.println(MESSAGE_RESULT);
     }
 
-    public static void printRaceWinners(List<Car> raceWinners) {
-        List<String> winnerNames = new ArrayList<>();
-        for (Car winner : raceWinners) {
-            winnerNames.add(winner.getName());
-        }
-        System.out.printf("%s가 최종 우승했습니다.", String.join(DELIMITER, winnerNames));
+    public static void printRaceWinners(RaceWinners raceWinners) {
+        System.out.printf("%s가 최종 우승했습니다.", raceWinners.winnerNames());
     }
 
     private static String getPositionAsSymbol(int position) {

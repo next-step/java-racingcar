@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.strategy.AlwaysMoveStrategy;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,11 +48,12 @@ class CarsTest {
 		Car pobi = new Car(new CarName("pobi"), new CarPosition(3));
 		Car crong = new Car(new CarName("crong"), new CarPosition(3));
 		Car honux = new Car(new CarName("honux"), new CarPosition(2));
-
 		Cars cars = Cars.of(Arrays.asList(pobi, crong, honux));
-		List<Car> winners = cars.getRaceWinners();
 
-		assertThat(winners).containsExactly(pobi, crong);
+		RaceWinners winners = cars.getRaceWinners();
+		RaceWinners expectedWinners = new RaceWinners(new ArrayList<>(Arrays.asList(pobi, crong)));
+
+		assertThat(winners).isEqualTo(expectedWinners);
 	}
 
 }

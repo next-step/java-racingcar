@@ -3,6 +3,7 @@ package racingcar.car;
 import racingcar.strategy.MoveStrategy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,11 +36,13 @@ public class Cars {
 		}
 	}
 
-	public List<Car> getRaceWinners() {
+	public RaceWinners getRaceWinners() {
 		CarPosition maxPosition = getMaxPosition();
-		return cars.stream()
-				.filter(car -> car.isLocatedAt(maxPosition))
-				.collect(Collectors.toList());
+		List<Car> winners = cars.stream()
+								.filter(car -> car.isLocatedAt(maxPosition))
+								.collect(Collectors.toList());
+
+		return new RaceWinners(Collections.unmodifiableList(winners));
 	}
 
 	private CarPosition getMaxPosition() {

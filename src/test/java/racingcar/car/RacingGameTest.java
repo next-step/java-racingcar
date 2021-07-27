@@ -4,8 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.strategy.AlwaysMoveStrategy;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
@@ -15,8 +13,8 @@ class RacingGameTest {
     void raceWinners() {
         RacingGame racingGame = new RacingGame(Cars.of("pobi,crong,honux"));
         racingGame.race(new AlwaysMoveStrategy());
-        List<Car> winners = racingGame.getRaceWinners();
-        assertThat(winners).hasSize(3);
+        RaceWinners winners = racingGame.getRaceWinners();
+        assertThat(winners.getWinners()).hasSize(3);
     }
 
 }
