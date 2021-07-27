@@ -1,6 +1,7 @@
 package racing;
 
 import racing.model.CarModel;
+import racing.model.CarsModel;
 import racing.model.RacingModel;
 import racing.util.RandomUtil;
 import racing.view.RacingView;
@@ -13,7 +14,7 @@ public class Racing {
     public void gameStart(int carSize, int gameCount) {
         int count = 1;
         RacingModel racingModel = new RacingModel();
-        racingModel.prepareGame(carSize, gameCount);
+        racingModel.prepareRacing(carSize, gameCount);
 
         RacingView racingView = new RacingView();
         while (!game(racingModel, count)) {
@@ -24,7 +25,9 @@ public class Racing {
     }
 
     public Boolean game(RacingModel racingModel, int count) {
-        racingModel.participants().forEach(car -> carMove(car, RandomUtil.randomValue()));
+        CarsModel cars = racingModel.participants();
+        cars.carList()
+                .forEach(car -> carMove(car, RandomUtil.randomValue()));
         return racingModel.endGame(count);
     }
 

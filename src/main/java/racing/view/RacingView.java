@@ -18,6 +18,7 @@ public class RacingView {
 
     public void printCarMove(RacingModel racingModel) {
         racingModel.participants()
+                .carList()
                 .stream()
                 .forEach(car -> printMoveLine(car.totalDistance()));
         System.out.println("");

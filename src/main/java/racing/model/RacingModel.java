@@ -1,25 +1,17 @@
 package racing.model;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class RacingModel {
-    private List<CarModel> carList;
-    private int playCount;
+    private CarsModel cars = new CarsModel();
+    private int playCount = 0;
 
-   public void prepareGame(int carCount, int playCount) {
-        carList = new ArrayList<>();
-        for(int count=0; count<carCount; count++) {
-            CarModel carModel = new CarModel();
-            carList.add(carModel);
-        }
-
+    public void prepareRacing(int carCount, int playCount) {
         this.playCount = playCount;
+        this.cars.prepareGame(carCount);
     }
 
-
-    public List<CarModel> participants() {
-        return this.carList;
+    public CarsModel participants() {
+        return this.cars;
     }
 
     public Boolean endGame(int gameCount) {

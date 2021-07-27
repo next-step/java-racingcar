@@ -19,7 +19,7 @@ public class RaceTest {
 
     @BeforeEach
     void setting() {
-        racingModel.prepareGame(3, 5);
+        racingModel.prepareRacing(3, 5);
     }
 
 
