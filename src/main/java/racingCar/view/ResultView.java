@@ -1,5 +1,6 @@
 package racingCar.view;
 
+import racingCar.model.Car;
 import racingCar.model.Cars;
 
 public class ResultView {
@@ -11,8 +12,9 @@ public class ResultView {
         cars.play();
     }
 
-    public static void printLocation(int location) {
-        for (int i = 0; i < location; i++) {
+    public static void printLocation(Car car) {
+        System.out.print(car.getName() + " : ");
+        for (int i = 0; i < car.getLocation(); i++) {
             System.out.print("-");
         }
     }

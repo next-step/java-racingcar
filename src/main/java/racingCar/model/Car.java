@@ -29,4 +29,7 @@ public class Car {
         return location;
     }
 
+    public String getName() {
+        return carName;
+    }
 }

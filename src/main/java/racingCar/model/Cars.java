@@ -27,7 +27,7 @@ public class Cars {
     private void moveCars() {
         for (Car car : cars) {
             car.move(RandomUtil.getNumber());
-            ResultView.printLocation(car.getLocation());
+            ResultView.printLocation(car);
             System.out.println();
         }
     }
@@ -37,5 +37,9 @@ public class Cars {
             moveCars();
             System.out.println();
         }
+    }
+
+    public int getPlayCount(){
+        return playCount;
     }
 }
