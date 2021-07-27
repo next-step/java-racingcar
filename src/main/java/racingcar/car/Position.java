@@ -24,15 +24,15 @@ public class Position {
         if (isMovable(Util.generateRandom())) {
             moveForward();
         }
-        printPositionStatus();
     }
 
-    private void printPositionStatus() {
-        ResultView.printCarPositionStatus(this.position);
-    }
-
-    public void moveForward() {
+    private void moveForward() {
         this.position += FORWARD_DISTANCE;
     }
+
+    public void printCarPosition() {
+        ResultView.printCarPosition(this.position);
+    }
+
 
 }

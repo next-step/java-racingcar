@@ -16,11 +16,12 @@ public class Racing {
         getInputFromUser();
         ResultView.printResultTitle();
         startRace();
+        resultOfRace();
     }
 
     private void getInputFromUser() {
-        cars.setUserInputCountOfCar();
-        setUserInputCountOfRacing();
+        cars.setCarsByUserInputNames();
+        setUserInputCountOfRace();
     }
 
     private void startRace() {
@@ -29,11 +30,12 @@ public class Racing {
         }
     }
 
-    public void setUserInputCountOfRacing() {
-        racingTime = InputView.inputCountOfGame();
+    private void resultOfRace() {
+        cars.produceResult();
     }
 
-    public int getRacingTime() {
-        return this.racingTime;
+    private void setUserInputCountOfRace() {
+        racingTime = Integer.parseInt(InputView.inputCountOfGame());
     }
+
 }

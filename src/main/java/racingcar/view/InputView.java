@@ -6,28 +6,27 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private static final String INPUT_CAR_COUNT_MESSAGE = "자동차 대수는 몇 대 인가요?";
+    private static final String INPUT_CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String INPUT_RACING_TIME_MESSAGE = "시도할 회수는 몇 회 인가요?";
 
-    private static int getUserInputValue(String message) {
+    private static String getUserInputValue(String message) {
         System.out.println(message);
-
         Scanner sc = new Scanner(System.in);
-        String userInputValue = sc.nextLine();
-        ValidationUtil.checkUserInput(userInputValue);
+        String inputValue = sc.nextLine();
 
-        return Integer.parseInt(userInputValue);
+        ValidationUtil.checkUserInput(inputValue);
+
+        return inputValue;
     }
 
-    public static int inputCountOfCar() {
-        int countOfCar = getUserInputValue(INPUT_CAR_COUNT_MESSAGE);
-        ValidationUtil.checkCountOfCar(countOfCar);
-
-        return countOfCar;
+    public static String[] inputNameOfCars() {
+        String[] names = getUserInputValue(INPUT_CAR_NAME_MESSAGE).split(",");
+        ValidationUtil.checkCarsValidationByNames(names);
+        return names;
     }
 
-    public static int inputCountOfGame() {
-        int countOfGame = getUserInputValue(INPUT_RACING_TIME_MESSAGE);
+    public static String inputCountOfGame() {
+        String countOfGame = getUserInputValue(INPUT_RACING_TIME_MESSAGE);
         ValidationUtil.checkCountOfGame(countOfGame);
         return countOfGame;
     }
