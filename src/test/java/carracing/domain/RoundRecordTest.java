@@ -50,8 +50,8 @@ class RoundRecordTest {
     public void getCarStatuses() {
         // given
         List<CarStatus> carStatuses = Arrays.asList(
-                new CarStatus("iiaii", 1),
-                new CarStatus("!!e!!", 2));
+                new CarStatus(new CarName("iiaii"), 1),
+                new CarStatus(new CarName("!!e!!"), 2));
         int expectedSize = 2;
 
         // when

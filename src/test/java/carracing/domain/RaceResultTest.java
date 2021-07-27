@@ -50,8 +50,8 @@ class RaceResultTest {
     public void getRoundRecords() {
         // given
         List<CarStatus> carStatuses = Arrays.asList(
-                new CarStatus("iiaii", 1),
-                new CarStatus("!!e!!", 2));
+                new CarStatus(new CarName("iiaii"), 1),
+                new CarStatus(new CarName("!!e!!"), 2));
         List<RoundRecord> roundRecords = Collections.singletonList(new RoundRecord(carStatuses));
         int expectedSize = 1;
 
@@ -67,8 +67,8 @@ class RaceResultTest {
     public void oneWinner() {
         // given
         List<CarStatus> carStatuses = Arrays.asList(
-                new CarStatus("iiaii", 1),
-                new CarStatus("!!e!!", 2));
+                new CarStatus(new CarName("iiaii"), 1),
+                new CarStatus(new CarName("!!e!!"), 2));
         List<RoundRecord> roundRecords = Collections.singletonList(new RoundRecord(carStatuses));
         int expectedWinnerSize = 1;
         String expectedWinnerName = "!!e!!";
@@ -86,8 +86,8 @@ class RaceResultTest {
     public void twoWinners() {
         // given
         List<CarStatus> carStatuses = Arrays.asList(
-                new CarStatus("iiaii", 2),
-                new CarStatus("!!e!!", 2));
+                new CarStatus(new CarName("iiaii"), 2),
+                new CarStatus(new CarName("!!e!!"), 2));
         List<RoundRecord> roundRecords = Collections.singletonList(new RoundRecord(carStatuses));
         int expectedWinnerSize = 2;
         String expectedWinnerName1 = "iiaii";
