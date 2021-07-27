@@ -18,9 +18,15 @@ public class RacingCar {
 	}
 
 	public String getRacingCarDashString() {
-		return Arrays.stream(new String[this.position])
-					 .map(s -> "-")
-			         .collect(Collectors.joining(""));
+		// #1
+//		StringBuilder stringBuilder = new StringBuilder();
+//		for (int i = 0; i < this.position; i++) {
+//			stringBuilder.append('-');
+//		}
+//		return stringBuilder.toString();
+
+		// #2
+		return new String(new char[this.position]).replace("\0", "-");
 	}
 
 	public boolean isMovable(int randomValue) {
