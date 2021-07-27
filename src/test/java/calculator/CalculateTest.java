@@ -7,6 +7,7 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 
@@ -64,5 +65,19 @@ public class CalculateTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .isNotInstanceOf(NullPointerException.class);
 
+    }
+
+    @ParameterizedTest
+    @DisplayName("나눗셈의 결과값이 정수일 때 테스트하기")
+    @CsvSource({"4,2,2", "6,3,2"})
+    void divisionResultIsIntegerTest(int num1, int num2, int excpected){
+        assertThat(calculator.division(num1, num2)).isEqualTo(excpected);
+    }
+
+    @Test
+    @DisplayName("나눗셈의 결과값이 정수가 아닐 때 테스트하기")
+    void divisionResultIsNotIntegerTest(){
+        assertThatThrownBy(()->{calculator.division(5,4);})
+            .isInstanceOf(IllegalArgumentException.class);
     }
 }
