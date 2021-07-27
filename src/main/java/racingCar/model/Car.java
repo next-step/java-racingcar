@@ -9,16 +9,15 @@ public class Car {
         return randomNumber >= CAN_MOVE_NUMBER;
     }
 
-    public int move(int randomNumber){
-        if(canMove(randomNumber)){
+    public int move(int randomNumber) {
+        if (canMove(randomNumber)) {
             location++;
         }
         return location;
     }
 
-    public void printLocation(){
-        for(int i=0; i<location; i++){
-            System.out.print("-");
-        }
+    public int getLocation() {
+        return location;
     }
+
 }

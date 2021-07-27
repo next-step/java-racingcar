@@ -1,20 +1,21 @@
 package racingCar.model;
 
 import racingCar.utils.RandomUtil;
+import racingCar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> carList;
+    private List<Car> cars;
     private int playCount;
 
     public Cars(int carCount, int playCount) {
-        this.carList = addCars(carCount);
+        this.cars = makeCars(carCount);
         this.playCount = playCount;
     }
 
-    private List<Car> addCars(int carCount) {
+    private List<Car> makeCars(int carCount) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
@@ -23,9 +24,9 @@ public class Cars {
     }
 
     private void moveCars() {
-        for (Car car : carList) {
+        for (Car car : cars) {
             car.move(RandomUtil.getNumber());
-            car.printLocation();
+            ResultView.printLocation(car.getLocation());
             System.out.println();
         }
     }

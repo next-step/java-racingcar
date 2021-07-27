@@ -10,4 +10,10 @@ public class ResultView {
         System.out.println("\n실행결과");
         cars.play();
     }
+
+    public static void printLocation(int location) {
+        for (int i = 0; i < location; i++) {
+            System.out.print("-");
+        }
+    }
 }
