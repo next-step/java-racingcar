@@ -8,11 +8,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarTest {
+
   private Car car;
 
   @BeforeEach
   void init() {
-    car = new Car();
+    car = new Car(new Name("pobi"));
   }
 
   @DisplayName("주어진 숫자의 값이 4이상일 경우 자동차가 한 칸 움직인다.")

@@ -8,13 +8,13 @@ import org.junit.jupiter.api.Test;
 
 class RacingTest {
 
-  @DisplayName("값을 입력하지 않았을 경우 0개의 결과를 반환한다")
+  @DisplayName("시도 횟수와 결과의 갯수는 같아야 한다")
   @Test
   void race() {
     Racing racing = new Racing();
-    final List<Result> results = racing.race(new Input());
+    final List<Result> results = racing.race(new Input("pobi,crong,honux", 5));
 
-    assertThat(results.size()).isEqualTo(0);
+    assertThat(results.size()).isEqualTo(5);
   }
 
 }

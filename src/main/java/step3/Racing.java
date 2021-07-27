@@ -7,15 +7,12 @@ import java.util.stream.IntStream;
 
 public class Racing {
 
-  private Cars cars;
-
   public List<Result> race(final Input input) {
-    if (input.isValid())
-    cars = new Cars(input.getNumberOfCars());
+    final Cars cars = new Cars(input.getNames());
 
     return IntStream.range(0, input.getNumberOfAttempts())
         .peek(i -> cars.move())
-        .mapToObj(i -> cars.getResult())
+        .mapToObj(i -> new Result(cars.getCars()))
         .collect(toList());
   }
 

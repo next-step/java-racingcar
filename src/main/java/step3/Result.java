@@ -1,21 +1,34 @@
 package step3;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Result {
 
-  public static final String LOCATION_VIEW_SIGN = "-";
-  public static final String NEWLINE = "\n";
-  private final List<Integer> locationOfCars;
+  private final List<Car> cars;
 
-  public Result(List<Integer> locationOfCars) {
-    this.locationOfCars = locationOfCars;
+  public Result(List<Car> cars) {
+    this.cars = cars;
   }
 
-  public String log() {
-    return locationOfCars.stream()
-        .map(location -> LOCATION_VIEW_SIGN.repeat(location + 1))
-        .collect(Collectors.joining(NEWLINE));
+  public List<String> getWinners() {
+    final int maxLocation = getMaxLocation();
+
+    return cars.stream()
+        .filter(car -> car.getLocation() >= maxLocation)
+        .map(Car::getName)
+        .collect(Collectors.toList());
+  }
+
+  private Integer getMaxLocation() {
+    return cars.stream()
+        .map(Car::getLocation)
+        .max(Comparator.naturalOrder())
+        .get();
+  }
+
+  public List<Car> getCars() {
+    return cars;
   }
 }
