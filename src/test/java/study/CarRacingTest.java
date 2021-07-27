@@ -1,12 +1,13 @@
 package study;
 
 import CarRacing.Car;
-import CarRacing.CarList;
+import CarRacing.Cars;
 import CarRacing.CarRacing;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import view.InputView;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,27 +17,39 @@ public class CarRacingTest {
 
 
     @Test
-    @DisplayName("자동차 전진테스트 4이상의 값일때만")
-    void carMoveIfFourOver() {
+    @DisplayName("자동차 전진테스트")
+    void carMove() {
         Car car = new Car();
-        car.move(4);
-        assertThat(car.getCarPosition()).isEqualTo(1);
+        car.move();
+        assertTrue(car.getCarPosition() == 0 || car.getCarPosition() == 1);
     }
 
     @Test
-    @DisplayName("자동차를 리스트에 추가하고 자동차대수 받기")
+    @DisplayName("자동차 대수 입력받고 자동차 대수 확인.")
     void insertCarAndGetCarCount() {
-        CarList carList = new CarList();
-        carList.addCarCount(5);
-        assertThat(carList.getCarList().size()).isEqualTo(5);
+        Cars carList = new Cars(5);
+        assertThat(carList.getCars().size()).isEqualTo(5);
     }
 
     @Test
-    @DisplayName("자동차들 전진유무 확인")
-    void checkCarListMove() {
-        CarRacing carRacing = new CarRacing(5);
-        carRacing.moveCarList();
-        carRacing.getCarList().forEach(s -> assertTrue(s.getCarPosition() == 0 || s.getCarPosition() == 1));
+    @DisplayName("자동차레이싱 테스트")
+    void carRacing() {
+        CarRacing carRacing = new CarRacing(new Cars(5));
+        carRacing.moveCars();
+        Cars cars = carRacing.getCars();
+        cars.getCars().forEach(s -> assertTrue(s.getCarPosition() == 0 || s.getCarPosition() == 1));
     }
+
+
+    @Test
+    @DisplayName("자동차레이싱 문자열 출력")
+    void carRacingPrintString() {
+        CarRacing carRacing = new CarRacing(new Cars(5));
+        carRacing.moveCars();
+        Cars cars = carRacing.getCars();
+        cars.getCars().forEach(s -> assertTrue(s.getCarPosition() == 0 || s.getCarPosition() == 1));
+    }
+
+
 }
 

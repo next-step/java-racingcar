@@ -1,7 +1,5 @@
 package CarRacing;
 
-import java.util.Objects;
-
 public class Car {
 
     private Position position;
@@ -10,8 +8,8 @@ public class Car {
         this.position = new Position();
     }
 
-    public void move(int carMove) {
-        this.position.move(carMove);
+    public void move() {
+        this.position.move();
     }
 
     public int getCarPosition() {

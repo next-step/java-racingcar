@@ -1,13 +1,15 @@
 package CarRacing;
 
+import java.util.Random;
+
 public class Position {
 
     private int position = 0;
-    private StringBuffer sb = new StringBuffer();
+    private Random random = new Random();
 
 
-    public void move(int carMove) {
-        if (carMove > 3) {
+    public void move() {
+        if (random.nextInt(10) > 3) {
             this.position++;
         }
     }
