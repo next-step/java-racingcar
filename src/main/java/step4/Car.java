@@ -1,7 +1,7 @@
 package step4;
 
 public class Car {
-
+    private static final int LIMIT_NAME_LENGTH = 5;
     private final String name;
 
     private final CarEngine carEngine;
@@ -29,7 +29,7 @@ public class Car {
     }
 
     protected String checkCarNameLength(String carName) {
-        if (carName.length() > 5) {
+        if (carName.length() > LIMIT_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자리 초과 할 수 없습니다.");
         }
 
