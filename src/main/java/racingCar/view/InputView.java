@@ -13,9 +13,7 @@ public class InputView {
     }
 
     public void closeScanner() {
-        if(scanner != null) {
-            scanner.close();
-        }
+        scanner.close();
     }
 
     public String EnterCarName() {

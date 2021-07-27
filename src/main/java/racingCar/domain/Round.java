@@ -9,8 +9,8 @@ import java.util.List;
 public class Round {
 
     private final List<Car> cars;
-    private final int MIN_VALUE_BY_CAR = 1;
-    private final static String IS_NOT_DUAL_NUMBER_ERROR_MESSAGE = "자동차 대수는 1대 이상이어야 합니다.";
+    private static final int MIN_VALUE_BY_CAR = 1;
+    private static final String IS_NOT_DUAL_NUMBER_ERROR_MESSAGE = "자동차 대수는 1대 이상이어야 합니다.";
 
     public Round(List<Car> cars) {
         validateCarsSize(cars);
@@ -39,10 +39,6 @@ public class Round {
         return this.cars.size();
     }
 
-    public Car getCar(int carNumber) {
-        return this.cars.get(carNumber);
-    }
-
     public List<String> getFirstCar() {
         List<String> winners = new ArrayList<>();
         int maxDistance = getMaxDistance();
@@ -59,14 +55,14 @@ public class Round {
                 .getCarDistance();
     }
 
-    public boolean isNotMaximum(int carCount) {
-        return carCount < cars.size();
-    }
-
     private void addWinner(List<String> winners, int maxDistance, Car car) {
         if (car.isSameCarDistance(maxDistance)) {
             winners.add(car.getCarName());
         }
+    }
+
+    public List<Car> getCars() {
+        return this.cars;
     }
 
 }

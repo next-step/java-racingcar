@@ -6,7 +6,8 @@ public class RandomNumber {
 
     private static Random random = new Random();
 
-    private RandomNumber() {}
+    private RandomNumber() {
+    }
 
     public static int getRandomNumber(int bound) {
         return random.nextInt(bound);
