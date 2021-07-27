@@ -11,11 +11,11 @@ public class Position {
     }
 
     public Position(int position) {
-        checkIsPositive(position);
+        checkIsNegative(position);
         this.position = position;
     }
 
-    private void checkIsPositive(int position) {
+    private void checkIsNegative(int position) {
         if (position < 0) {
             throw new IllegalArgumentException("position 값은 0보다 작을 수 없습니다.");
         }
