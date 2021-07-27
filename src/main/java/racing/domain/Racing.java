@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import racing.exception.NotFoundMaxDistanceException;
 import racing.utils.RandomUtils;
 
 public class Racing {
@@ -39,7 +40,7 @@ public class Racing {
 	private int getMaxDistance() {
 		return cars.stream()
 			.max(Comparator.comparingInt(Car::getMove))
-			.get()
+			.orElseThrow(() -> new NotFoundMaxDistanceException("최대 거리를 찾을 수 없습니다."))
 			.getMove();
 	}
 }
