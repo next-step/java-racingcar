@@ -37,4 +37,14 @@ public class CaculatorTest {
         int result = Calculator.calculate("10 * 5");
         assertThat(result).isEqualTo(50);
     }
+
+    @Test
+    @DisplayName("여러 연산자가 혼합되어 있을 때 계산을 하는지 테스트")
+    void complicatedCal() {
+        int result = Calculator.calculate("10 * 5 + 5 / 5 - 3");
+        assertThat(result).isEqualTo(8);
+
+        result = Calculator.calculate("2 - 3 * 10 - 7 + 5");
+        assertThat(result).isEqualTo(-12);
+    }
 }
