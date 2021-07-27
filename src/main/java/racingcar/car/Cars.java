@@ -4,6 +4,7 @@ import racingcar.strategy.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -18,8 +19,8 @@ public class Cars {
 	public static Cars of(String carNames) {
 		List<Car> cars = new ArrayList<>();
 		String[] names = carNames.split(DELIMITER);
-		for (int i = 0; i < names.length; i++) {
-			cars.add(new Car(new CarName(names[i])));
+		for (String name : names) {
+			cars.add(new Car(new CarName(name)));
 		}
 		return new Cars(cars);
 	}
@@ -35,14 +36,10 @@ public class Cars {
 	}
 
 	public List<Car> getRaceWinners() {
-		List<Car> raceWinners = new ArrayList<>();
 		int maxPosition = getMaxPosition();
-		for (Car car : cars) {
-			if (car.isMaxPosition(maxPosition)) {
-				raceWinners.add(car);
-			}
-		}
-		return raceWinners;
+		return cars.stream()
+				.filter(car -> car.isMaxPosition(maxPosition))
+				.collect(Collectors.toList());
 	}
 
 	private int getMaxPosition() {
