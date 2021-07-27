@@ -2,13 +2,11 @@ package racing.view;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.stream.Stream;
-
-import racing.domain.Car;
 
 public class InputView {
 
 	private static final Scanner scanner = new Scanner(System.in);
+	private static final int NAME_MAX_LENGTH = 5;
 
 	private InputView() {
 
@@ -21,7 +19,7 @@ public class InputView {
 		String[] names = input.split(",");
 
 		return Arrays.stream(names)
-			.filter(Car::validate)
+			.filter(InputView::validate)
 			.toArray(String[]::new);
 	}
 
@@ -29,5 +27,9 @@ public class InputView {
 		System.out.println("시도할 회수는 몇 회 인가요?");
 
 		return scanner.nextInt();
+	}
+
+	private static boolean validate(String name) {
+		return name.length() <= NAME_MAX_LENGTH;
 	}
 }

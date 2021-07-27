@@ -72,11 +72,4 @@ class CarTest {
 
 		assertThat(car.showDistanceOfMovement()).isEqualTo("test : --");
 	}
-
-	@ParameterizedTest
-	@CsvSource(value = {"test:true", "test2:true", "test3:true", "test5555:false"}, delimiter = ':')
-	@DisplayName("validate() 메서드 호출 시 이름 검증")
-	void validate(String carName, boolean expected) {
-		assertThat(Car.validate(carName)).isEqualTo(expected);
-	}
 }
