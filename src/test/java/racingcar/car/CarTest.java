@@ -19,14 +19,14 @@ class CarTest {
     @Test
     void move() {
         car.move(() -> true);
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getCarPosition()).isEqualTo(1);
     }
 
     @DisplayName("이동 조건을 만족하지 않으면 자동차는 이동하지 않는다.")
     @Test
     void stop() {
         car.move(() -> false);
-        assertThat(car.getPosition()).isZero();
+        assertThat(car.getCarPosition()).isZero();
     }
 
 }

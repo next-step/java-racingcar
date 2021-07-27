@@ -16,7 +16,7 @@ public class ResultView {
 
     public static void show(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.getName() + " : " + getPositionAsSymbol(car.getPosition()));
+            System.out.println(car.getName() + " : " + getPositionAsSymbol(car.getCarPosition()));
         }
         System.out.println();
     }

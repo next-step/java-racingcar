@@ -4,28 +4,38 @@ import racingcar.strategy.MoveStrategy;
 
 public class Car {
 
-    private CarName carName;
-    private int position;
+    private final CarName carName;
+    private final CarPosition carPosition;
 
     public Car(CarName carName) {
+        this(carName, new CarPosition());
+    }
+
+    public Car(CarName carName, CarPosition carPosition) {
         this.carName = carName;
+        this.carPosition = carPosition;
     }
 
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
-            position++;
+            carPosition.increase();
         }
+    }
+
+    public boolean isLocatedAt(CarPosition position) {
+        return carPosition.equals(position);
+    }
+
+    public CarPosition maxPosition(CarPosition position) {
+        return carPosition.max(position);
     }
 
     public String getName() {
         return carName.getName();
     }
 
-    public int getPosition() {
-        return position;
+    public int getCarPosition() {
+        return carPosition.getPosition();
     }
 
-    public boolean isMaxPosition(int maxPosition) {
-        return position == maxPosition;
-    }
 }

@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-	private static final int INITIAL_POSITION = 0;
 	private static final String DELIMITER = ",";
+
 	private final List<Car> cars;
 
 	private Cars(List<Car> cars) {
@@ -25,29 +25,33 @@ public class Cars {
 		return new Cars(cars);
 	}
 
+	public static Cars of(List<Car> cars) {
+		return new Cars(cars);
+	}
+
 	public void move(MoveStrategy moveStrategy) {
 		for (Car car : cars) {
 			car.move(moveStrategy);
 		}
 	}
 
-	public List<Car> cars() {
-		return cars;
-	}
-
 	public List<Car> getRaceWinners() {
-		int maxPosition = getMaxPosition();
+		CarPosition maxPosition = getMaxPosition();
 		return cars.stream()
-				.filter(car -> car.isMaxPosition(maxPosition))
+				.filter(car -> car.isLocatedAt(maxPosition))
 				.collect(Collectors.toList());
 	}
 
-	private int getMaxPosition() {
-		int maxPosition = INITIAL_POSITION;
+	private CarPosition getMaxPosition() {
+		CarPosition position = new CarPosition();
 		for (Car car : cars) {
-			maxPosition = Math.max(maxPosition, car.getPosition());
+			position = car.maxPosition(position);
 		}
-		return maxPosition;
+		return position;
+	}
+
+	public List<Car> cars() {
+		return cars;
 	}
 
 }
