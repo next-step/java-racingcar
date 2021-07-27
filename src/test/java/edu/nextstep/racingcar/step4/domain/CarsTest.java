@@ -1,6 +1,5 @@
 package edu.nextstep.racingcar.step4.domain;
 
-import edu.nextstep.racingcar.step4.App;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,7 @@ class CarsTest {
 
     @BeforeAll
     static void getCars() {
-        cars = Cars.make("AAA,BBB,CCC,DDD,EEE", 10, 4);
+        cars = Cars.create("AAA,BBB,CCC,DDD,EEE", 10, 4);
     }
 
     @DisplayName("우승자 출력 테스트")

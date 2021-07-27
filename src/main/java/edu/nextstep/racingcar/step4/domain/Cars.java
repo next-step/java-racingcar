@@ -29,7 +29,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public static Cars make(String namesOfCars, int numberOfRandoms, int threshold) {
+    public static Cars create(String namesOfCars, int numberOfRandoms, int threshold) {
         List<Car> cars = Arrays.stream(namesOfCars.split(","))
                 .map(name -> new Car(name, numberOfRandoms, threshold))
                 .collect(Collectors.toList());
