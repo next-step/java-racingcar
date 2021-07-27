@@ -12,14 +12,23 @@ public class Race {
     private int size;
     private Cars cars;
 
-    private Race(List<Car> cars) {
-        this.cars = new Cars(cars,new CarMoveAndArrangeStrategy());
-        this.size = cars.size();
+    public Race(List<Car> carList) {
+        this.cars = new Cars(carList,new CarMoveAndArrangeStrategy());
+        this.size = carList.size();
     }
-
-    public static Race of(List<Car> cars){
-        return new Race(cars);
-    }
+//
+//    private Race(String[] names){
+//        this.cars = new Cars(new CarMoveAndArrangeStrategy());
+//        cars.makeCars(names);
+//        this.size = cars.getCarList().size();
+//    }
+//
+//    public static Race of(List<Car> cars){
+//        return new Race(cars);
+//    }
+//    public static Race of(String[] names){
+//        return new Race(names);
+//    }
     public void doRace(){
         cars.moveCars();
     }

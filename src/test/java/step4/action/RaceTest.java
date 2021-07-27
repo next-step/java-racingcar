@@ -2,16 +2,12 @@ package step4.action;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 import step4.model.Car;
-import step4.model.Cars;
-import step4.model.CarsMethod;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RaceTest {
 
@@ -30,7 +26,7 @@ class RaceTest {
         carList.add(car3);
         carList.add(car4);
 
-        Race race = Race.of(carList);
+        Race race = new Race(carList);
 
         assertThat(race.getWinner()).containsExactly(car1,car2);
     }

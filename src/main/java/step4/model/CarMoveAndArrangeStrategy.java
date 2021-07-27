@@ -2,6 +2,7 @@ package step4.model;
 
 import step4.RacingApp;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +21,7 @@ public class CarMoveAndArrangeStrategy implements CarsStrategy {
     @Override
     public List<Car> arrange(List<Car> carsList) {
         return carsList.stream()
-                .sorted( (car1,car2) -> car2.compareTo(car1))
+                .sorted(Comparator.comparing(Car::getPosition).reversed())
                 .collect(Collectors.toList());
     }
 }

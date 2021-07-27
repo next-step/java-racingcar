@@ -1,6 +1,7 @@
 package step4;
 
 import step4.action.Race;
+import step4.model.MakeCarList;
 import step4.view.InputView;
 import step4.view.ResultView;
 
@@ -16,7 +17,7 @@ public class RacingApp {
         String[] carNames = InputView.inputCountCar();
         int raceTimes = InputView.inputRaceTimes();
 
-        Race race = Race.of(carNames);
+        Race race = new Race(MakeCarList.makeList(carNames));
 
         for(int i=0; i<raceTimes; i++){
             race.doRace();
