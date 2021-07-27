@@ -1,8 +1,11 @@
 package step2;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
@@ -44,5 +47,20 @@ class CalculatorTest {
 
         //then
         assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("[입력값 null, 공백 테스트]")
+    void emptyInputTest() {
+        //given
+        String emptyInput = "";
+
+        //then
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Calculator.calculate(null);
+        });
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Calculator.calculate(emptyInput);
+        });
     }
 }
