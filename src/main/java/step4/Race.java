@@ -5,6 +5,7 @@ import java.util.Random;
 public class Race {
     private int numOfCar;
     private int numOfCycle;
+    private static final int INIT_CAR_POSITION = 1;
     private InputView inputView = new InputView();
     private ResultView resultView = new ResultView();
     private CarManager[] carManagers;
@@ -20,7 +21,7 @@ public class Race {
     public void prepareCars() {
         carManagers = new CarManager[numOfCar];
         for (int i = 0; i < numOfCar; i++) {
-            Car car = new Car(1);
+            Car car = new Car(INIT_CAR_POSITION);
             carManagers[i] = new CarManager(car);
         }
     }
