@@ -12,13 +12,13 @@ class CarsTest {
 
     @BeforeAll
     static void getCars() {
-        cars = Cars.create("AAA,BBB,CCC,DDD,EEE", 10, 4);
+        cars = Cars.create("AAA,BBB,CCC,DDD,EEE");
     }
 
     @DisplayName("우승자 출력 테스트")
     @Test
     void getWInners() {
-        cars.play(5, new CarStrategy());
+        cars.play(5, new DefaultMoveStrategy());
         assertThat(cars.getWinners()).isNotEmpty();
     }
 }
