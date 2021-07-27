@@ -1,8 +1,5 @@
 package racingcar.model;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 public class RacingCar {
 	// https://velog.io/@kwj1270/JAVA-%EC%BD%94%EB%93%9C-%EC%BB%A8%EB%B2%A4%EC%85%98
 	// 4. 클래스 변수(static) public -> protected -> package(default) -> private
@@ -12,7 +9,6 @@ public class RacingCar {
 	// 5. 일반 변수 public -> protected -> package(default) -> private
 	public int position;
 
-	//public RacingCar(int position) {
 	public RacingCar() {
 		this.position = INITIAL_POSITION;
 	}
