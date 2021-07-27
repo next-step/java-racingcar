@@ -7,9 +7,4 @@ public class AlwaysMoveStrategy implements MoveStrategy {
         return true;
     }
 
-    @Override
-    public boolean isMovable(int number) {
-        return true;
-    }
-
 }

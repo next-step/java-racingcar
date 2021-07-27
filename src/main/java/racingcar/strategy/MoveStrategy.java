@@ -4,6 +4,4 @@ public interface MoveStrategy {
 
 	boolean isMovable();
 
-	boolean isMovable(int number);
-
 }
