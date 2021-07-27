@@ -25,4 +25,24 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(1);
     }
+
+    @Test
+    public void 곱셈(){
+        //given
+        String given = "3 * 2";
+        //when
+        int result = Calculator.calculate(given);
+        //then
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    public void 나눗셈(){
+        //given
+        String given = "4 / 2";
+        //when
+        int result = Calculator.calculate(given);
+        //then
+        assertThat(result).isEqualTo(2);
+    }
 }
