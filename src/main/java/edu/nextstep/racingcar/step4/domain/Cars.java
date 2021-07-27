@@ -22,7 +22,11 @@ public class Cars {
     }
 
     public List<String> getWinners() {
-        int maxDistance = cars.stream().mapToInt(Car::getDistance).max().orElse(0);
+        int maxDistance = cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
+
         return cars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .map(Car::getName)

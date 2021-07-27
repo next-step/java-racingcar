@@ -28,7 +28,6 @@ public class Car {
         }
     }
 
-
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMove(numberOfRandoms, threshold)) {
             this.distance++;

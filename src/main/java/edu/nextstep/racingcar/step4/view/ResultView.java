@@ -22,7 +22,7 @@ public class ResultView {
 
     private void outputDistance(Car car) {
         System.out.printf("%s : ", car.getName());
-        IntStream.range(0, car.getDistance()).forEach(distanceIdx -> System.out.print(DISPLAY_TOKEN));
+        IntStream.range(0, car.getDistance()).forEach(idx -> System.out.print(DISPLAY_TOKEN));
         System.out.print(NEW_LINE);
     }
 
