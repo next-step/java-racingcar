@@ -20,6 +20,9 @@ public class Cars extends ArrayList<Car> {
 
     public List<String> getWinners() {
         int maxDistance = this.stream().mapToInt(Car::getDistance).max().orElse(0);
-        return this.stream().filter(car -> car.getDistance() == maxDistance).map(Car::getName).collect(Collectors.toList());
+        return stream()
+            .filter(car -> car.getDistance() == maxDistance)
+            .map(Car::getName)
+            .collect(Collectors.toList());
     }
 }
