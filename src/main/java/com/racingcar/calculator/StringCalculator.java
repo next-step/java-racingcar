@@ -47,11 +47,17 @@ public class StringCalculator {
     private static int calculate(String operatorSign, int value01, int value02) {
         if (ADD.equals(operatorSign)) {
             return operator.add(value01, value02);
-        } else if (SUBTRACT.equals(operatorSign)) {
+        }
+
+        if (SUBTRACT.equals(operatorSign)) {
             return operator.subtract(value01, value02);
-        } else if (MULTIPLY.equals(operatorSign)) {
+        }
+
+        if (MULTIPLY.equals(operatorSign)) {
             return operator.multiply(value01, value02);
-        } else if (DIVIDE.equals(operatorSign)) {
+        }
+
+        if (DIVIDE.equals(operatorSign)) {
             return operator.divide(value01, value02);
         }
 
