@@ -17,6 +17,7 @@
 
 3. 함수(또는 메소드)가 한 가지 일만 잘 하도록 구현한다.
 
+
 4. 모든 로직에 단위 테스트를 구현한다. 단, UI(System.out, System.in) 로직은 제외
 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 구분한다.
 UI 로직을 InputView, ResultView와 같은 클래스를 추가해 분리한다.
@@ -27,3 +28,4 @@ UI 로직을 InputView, ResultView와 같은 클래스를 추가해 분리한다
 6. else 예약어를 쓰지 않는다.
 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
 else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
+

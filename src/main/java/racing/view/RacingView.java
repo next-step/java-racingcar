@@ -15,6 +15,7 @@ public class RacingView {
         System.out.print(String.format("%s : ", car.getCarInfo()));
         for (int i=0; i<car.totalDistance(); i++) {
             System.out.print(MOVE_TEXT);
+
         }
         System.out.println("");
     }
@@ -35,6 +36,5 @@ public class RacingView {
 
         System.out.println(message);
     }
-
 
 }
