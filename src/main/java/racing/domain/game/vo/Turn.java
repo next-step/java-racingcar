@@ -5,7 +5,6 @@ import racing.domain.car.vo.Location;
 import racing.exception.EmptyCarException;
 
 import java.util.*;
-import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 public class Turn {

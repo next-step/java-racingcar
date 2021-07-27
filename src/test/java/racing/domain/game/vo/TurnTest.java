@@ -41,25 +41,4 @@ class TurnTest {
         assertThat(turn.checkLocation(car, Location.empty()))
                 .isTrue();
     }
-
-    @CsvSource({
-            "테스트카1|테스트카2|테스트카3|테스트카4,*"
-    })
-    @DisplayName("toString 테스트")
-    @ParameterizedTest
-    public void toStringTest(String carNames, String dividedString) {
-        Turn turn = new Turn();
-
-        List<Car> cars = Arrays.stream(carNames.split("\\|"))
-                .map(Name::new)
-                .map(BasicCar::new)
-                .collect(Collectors.toList());
-        for (Car iCar : cars)
-            turn.register(iCar, Location.empty());
-
-        String testString = turn.toString((iCar, iLocation) ->
-                String.format("%s %s", iCar, iLocation), dividedString);
-
-        assertThat(testString).isNotEmpty();
-    }
 }
