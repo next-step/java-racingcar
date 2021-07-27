@@ -2,39 +2,34 @@ package racing.domain;
 
 public class Car {
 
-	private static final int CHECK_LENGTH = 4;
-	private static final int RANDOM_CHECK_VALUE = 3;
-	private final String carName;
-	private int raceDistance;
+	private final Name name;
+	private Position position;
 
 	public Car(String carName) {
-		validStringLength(carName);
-		this.carName = carName;
+		name = new Name(carName);
+		position = new Position(0);
 	}
 
-	private void validStringLength(String value) {
-		if (value.length() > CHECK_LENGTH) {
-			throw new IllegalArgumentException("자동차 이름은 5글자를 초과할수 없습니다.");
+	public Car(String carName, int position) {
+		name = new Name(carName);
+		this.position = new Position(position);
+	}
+
+	public void move(boolean moveResult) {
+		if (moveResult) {
+			position = position.move();
 		}
 	}
 
-	public int carMove(int value) {
-		carMoveCheck(value);
-		return raceDistance;
+	public String printCarName() {
+		return name.printName();
 	}
 
-	private void carMoveCheck(int value) {
-		if (value > RANDOM_CHECK_VALUE) {
-			++raceDistance;
-		}
+	public int printPosition() {
+		return position.resultPosition();
 	}
 
-	public String getCarName() {
-		return carName;
+	public boolean isWinner(int maxPosition) {
+		return position.maxPositionCheck(maxPosition);
 	}
-
-	public int resultRacing() {
-		return raceDistance;
-	}
-
 }
