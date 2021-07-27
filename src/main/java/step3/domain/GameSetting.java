@@ -14,7 +14,6 @@ public class GameSetting {
     private static final String COMMA_DELIMITER = ",";
 
     private List<String> carNames;
-    private int carCount;
     private int roundCount;
     private RunStrategy runStrategy;
 
@@ -22,7 +21,6 @@ public class GameSetting {
         List<String> inputCarNames = generateCarNameList(userInputs);
 
         this.carNames = inputCarNames;
-        this.carCount = this.carNames.size();
         this.roundCount = getInt(userInputs.get(ROUND_COUNT_INDEX));
         this.runStrategy = runStrategy;
     }
@@ -51,7 +49,7 @@ public class GameSetting {
     }
 
     public int getCarCount() {
-        return carCount;
+        return this.carNames.size();
     }
 
     public int getRoundCount() {
