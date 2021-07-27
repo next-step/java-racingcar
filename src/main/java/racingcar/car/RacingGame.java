@@ -7,14 +7,12 @@ import java.util.List;
 public class RacingGame {
 
     private final Cars cars;
-    private final MoveStrategy moveStrategy;
 
-    public RacingGame(Cars cars, MoveStrategy moveStrategy) {
+    public RacingGame(Cars cars) {
         this.cars = cars;
-        this.moveStrategy = moveStrategy;
     }
 
-    public void race() {
+    public void race(MoveStrategy moveStrategy) {
         cars.move(moveStrategy);
     }
 

@@ -13,11 +13,11 @@ public class RacingGameApplication {
         int tryCount = InputView.getTryCount();
 
         Cars cars = Cars.of(carNames);
-        RacingGame racingGame = new RacingGame(cars, new RandomMoveStrategy());
+        RacingGame racingGame = new RacingGame(cars);
 
         ResultView.printResultMessage();
         for (int i = 0; i < tryCount; i++) {
-            racingGame.race();
+            racingGame.race(new RandomMoveStrategy());
             ResultView.show(racingGame.getCars());
         }
         ResultView.printRaceWinners(racingGame.getRaceWinners());
