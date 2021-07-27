@@ -16,7 +16,7 @@ public class App {
         String namesOfCars = inputView.getNamesOfCars();
         int numberOfAttempts = inputView.getNumberOfAttempts();
 
-        Cars cars = Cars.make(namesOfCars, NUMBER_OF_RANDOMS, THRESHOLD);
+        Cars cars = Cars.create(namesOfCars, NUMBER_OF_RANDOMS, THRESHOLD);
         cars.play(numberOfAttempts, new CarStrategy());
 
         resultView.output(numberOfAttempts, cars);
