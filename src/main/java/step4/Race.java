@@ -9,10 +9,12 @@ public class Race {
     private ResultView resultView = new ResultView();
     private CarManager[] carManagers;
 
-    public int[] requestInput() {
-        numOfCar = inputView.getNumOfCar();
-        numOfCycle = inputView.getNumOfCycle();
-        return new int[]{numOfCar, numOfCycle};
+    public int getNumOfCar() {
+        return inputView.getNumOfCar();
+    }
+
+    public int getNumOfCycle() {
+        return inputView.getNumOfCycle();
     }
 
     public void prepareCars() {

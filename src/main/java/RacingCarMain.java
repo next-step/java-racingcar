@@ -5,9 +5,8 @@ import java.util.Scanner;
 public class RacingCarMain {
     public static void main(String[] args) {
         Race race = new Race();
-        int[] raceInfo = race.requestInput();
-        int numOfCar = raceInfo[0];
-        int numOfCycle = raceInfo[1];
+        int numOfCar = race.getNumOfCar();
+        int numOfCycle = race.getNumOfCycle();
 
         race.validInputConfirm();
         race.prepareCars();
