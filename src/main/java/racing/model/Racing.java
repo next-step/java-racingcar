@@ -8,6 +8,13 @@ public class Racing {
     private Cars cars = new Cars();
     private int playCount = 0;
 
+    public Racing() {
+    }
+
+    public Racing(List<Car> cars) {
+        this.cars = new Cars(cars);
+    }
+
     public void prepareRacing(String carNames, int playCount) {
         this.playCount = playCount;
         this.cars.prepareCars(carNames);

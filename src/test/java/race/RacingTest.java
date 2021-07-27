@@ -7,7 +7,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racing.RacingGame;
 import racing.model.Car;
+import racing.model.Cars;
 import racing.model.Racing;
+import sun.util.resources.cldr.ar.CalendarData_ar_SY;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class RaceTest {
+public class RacingTest {
 
     RacingGame racingGame = new RacingGame();
     Racing racing = new Racing();
@@ -23,7 +25,7 @@ public class RaceTest {
 
     @BeforeEach
     void setting() {
-        racing.prepareRacing("pobi,test1,test2", 5);
+        racing.prepareRacing("test1,test2,test3", 5);
         racingGame.game(racing,1);
         cars = racing.participants().carList();
     }
@@ -49,6 +51,18 @@ public class RaceTest {
     @DisplayName("car move Test")
     void carMoveTest(int randomValue, boolean expected) {
         assertThat(racingGame.run(cars.get(0), randomValue)).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("winner test")
+    void winnerTest() {
+        List<Car> testCars = new ArrayList<>();
+        testCars.add(new Car("test1", 10));
+        testCars.add(new Car("test2", 30));
+        testCars.add(new Car("test3", 20));
+        cars = testCars;
+        racing = new Racing(cars);
+        assertThat(racing.winner().get(0).getCarInfo()).isEqualTo("test2");
     }
 
 }

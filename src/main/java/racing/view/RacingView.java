@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class RacingView {
 
     private static final String MOVE_TEXT = "-";
-
+    private static final String WIN_MESSAGE = "%s가 최종 우승했습니다.";
     static void printMoveLine(Car car) {
         System.out.print(String.format("%s : ", car.getCarInfo()));
         for (int i=0; i<car.totalDistance(); i++) {
@@ -28,9 +28,10 @@ public class RacingView {
     }
 
     public static void printWinner(List<Car> cars) {
-        //pobi, honux가 최종 우승했습니다.c
-        String message = cars.stream().map(car -> car.getCarInfo()).collect(Collectors.joining(","))
-                +"가 최종 우승했습니다.";
+        String message = String.format(WIN_MESSAGE,
+                cars.stream()
+                .map(car -> car.getCarInfo())
+                .collect(Collectors.joining(",")));
 
         System.out.println(message);
     }

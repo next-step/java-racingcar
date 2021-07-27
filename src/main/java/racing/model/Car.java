@@ -9,6 +9,11 @@ public class Car {
         this.carName = name;
     }
 
+    public Car(String name, int distance) {
+        this.carName = name;
+        this.distance = distance;
+    }
+
     public void go() {
         this.distance = ++this.distance;
     }

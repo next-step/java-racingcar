@@ -7,16 +7,22 @@ import java.util.List;
 public class Cars {
     private List<Car> carList = new ArrayList<>();
 
-   public void prepareCars(String carNames) {
-       String[] carNameArr = carNames.split(",");
-       for(String carName : carNameArr) {
+    public Cars() {
+    }
+
+    public Cars(List<Car> cars) {
+        this.carList = cars;
+    }
+    public void prepareCars(String carNames) {
+        String[] carNameArr = carNames.split(",");
+        for(String carName : carNameArr) {
            Car car = new Car(carName);
            carList.add(car);
-       }
+        }
     }
 
     public List<Car> carList() {
-       return this.carList;
+        return this.carList;
     }
 
     public int getMaxDistance() {
@@ -26,4 +32,6 @@ public class Cars {
                 .get()
                 .totalDistance();
     }
+
+
 }
