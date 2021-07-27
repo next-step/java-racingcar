@@ -57,7 +57,7 @@ public class RaceResult {
     }
 
     private boolean isWinner(int winnerPosition, CarStatus carStatus) {
-        return winnerPosition == carStatus.getPosition();
+        return carStatus.isEqualToPosition(winnerPosition);
     }
 
     private RoundRecord getLastRound(List<RoundRecord> roundRecords) {
