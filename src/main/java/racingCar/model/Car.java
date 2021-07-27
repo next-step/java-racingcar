@@ -32,4 +32,12 @@ public class Car {
     public String getName() {
         return carName;
     }
+
+    public int greaterThan(int maxLocation) {
+        if (this.location > maxLocation) {
+            return this.location;
+        }
+        return maxLocation;
+    }
+
 }

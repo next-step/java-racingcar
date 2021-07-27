@@ -5,6 +5,7 @@ import racingCar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -18,7 +19,7 @@ public class Cars {
 
     private List<Car> makeCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for(String carName: carNames){
+        for (String carName : carNames) {
             cars.add(new Car(carName));
         }
         return cars;
@@ -28,7 +29,6 @@ public class Cars {
         for (Car car : cars) {
             car.move(RandomUtil.getNumber());
             ResultView.printLocation(car);
-            System.out.println();
         }
     }
 
@@ -39,7 +39,19 @@ public class Cars {
         }
     }
 
-    public int getPlayCount(){
-        return playCount;
+    private int findMaxLocation() {
+        int maxLocation = 0;
+        for (Car car : cars) {
+            maxLocation = car.greaterThan(maxLocation);
+        }
+        return maxLocation;
+    }
+
+    public String findWinners() {
+        int maxLocation = findMaxLocation();
+        return cars.stream()
+                .filter(car -> car.getLocation() == maxLocation)
+                .map(car -> car.getName())
+                .collect(Collectors.joining(", "));
     }
 }
