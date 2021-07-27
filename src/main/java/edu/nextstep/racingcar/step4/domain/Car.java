@@ -6,7 +6,6 @@ import edu.nextstep.racingcar.step4.error.CarError;
 public class Car {
 
     private int distance = 1;
-
     private final String name;
     private final int numberOfRandoms;
     private final int threshold;
