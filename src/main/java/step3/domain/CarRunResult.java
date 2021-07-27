@@ -25,4 +25,11 @@ public class CarRunResult {
         return progress;
     }
 
+    public int getRunDistance() {
+        return runDistance;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
 }

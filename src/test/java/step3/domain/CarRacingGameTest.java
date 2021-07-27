@@ -24,7 +24,9 @@ class CarRacingGameTest {
 
         CarRacingGame carRacingGame = new CarRacingGame(testGameSetting);
         carRacingGame.gameStart();
-        List<Round> playedRounds = carRacingGame.getPlayedRounds();
+
+        CarRacingGameResult gameResult = carRacingGame.getCarRacingGameResult();
+        List<Round> playedRounds = gameResult.getPlayedRounds();
 
         Round finalRound = playedRounds.get(playedRounds.size() - 1);
 

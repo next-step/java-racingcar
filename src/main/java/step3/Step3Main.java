@@ -3,6 +3,7 @@ package step3;
 import java.util.List;
 import java.util.Map;
 import step3.domain.CarRacingGame;
+import step3.domain.CarRacingGameResult;
 import step3.domain.GameSetting;
 import step3.domain.Round;
 import step3.runType.NormalRunStrategy;
@@ -21,9 +22,9 @@ public class Step3Main {
         CarRacingGame carRacingGame = new CarRacingGame(gameSetting);
         carRacingGame.gameStart();
 
-        List<Round> playedRounds = carRacingGame.getPlayedRounds();
+        CarRacingGameResult result = carRacingGame.getCarRacingGameResult();
         ResultView resultView = ResultView.getInstance();
-        resultView.printAllRoundResult(playedRounds);
+        resultView.printAllRoundResult(result);
 
     }
 
