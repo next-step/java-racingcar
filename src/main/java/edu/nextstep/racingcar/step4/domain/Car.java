@@ -8,11 +8,15 @@ public class Car {
     private int distance = 1;
 
     private final String name;
+    private final int numberOfRandoms;
+    private final int threshold;
 
     public Car(String name, int numberOfRandoms, int threshold) {
         validate(name, numberOfRandoms, threshold);
 
         this.name = name;
+        this.numberOfRandoms = numberOfRandoms;
+        this.threshold = threshold;
     }
 
     public void validate(String name, int numberOfRandoms, int threshold) {
@@ -27,7 +31,7 @@ public class Car {
 
 
     public void move(MoveStrategy moveStrategy) {
-        if (moveStrategy.isMove()) {
+        if (moveStrategy.isMove(numberOfRandoms, threshold)) {
             this.distance++;
         }
     }

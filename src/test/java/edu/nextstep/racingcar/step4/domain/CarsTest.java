@@ -19,7 +19,7 @@ class CarsTest {
     @DisplayName("우승자 출력 테스트")
     @Test
     void getWInners() {
-        cars.play(5, CarStrategy.getMoveStrategy(10, 4));
+        cars.play(5, new CarStrategy());
         assertThat(cars.getWinners()).isNotEmpty();
     }
 }

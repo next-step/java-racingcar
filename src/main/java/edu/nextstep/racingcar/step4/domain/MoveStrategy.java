@@ -1,5 +1,5 @@
 package edu.nextstep.racingcar.step4.domain;
 
 public interface MoveStrategy {
-    boolean isMove();
+    boolean isMove(int numberOfRandoms, int threshold);
 }
