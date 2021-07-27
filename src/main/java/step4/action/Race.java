@@ -5,6 +5,7 @@ import step4.model.CarMoveAndArrangeStrategy;
 import step4.model.Cars;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Race {
@@ -33,17 +34,21 @@ public class Race {
         int winnerPosition = cars.get(0).getPosition();
 
         winners.add(cars.get(0));
-        findCoWinner(winners, cars,winnerPosition);
+        findCoWinner(winners, cars);
 
         return winners;
     }
 
-    private void findCoWinner(List<Car> winners, List<Car> cars, int target) {
-        for (Car car : cars) {
-            if(target != car.getPosition()){
+    private void findCoWinner(List<Car> winners, List<Car> cars) {
+        Iterator<Car> iterator = cars.iterator();
+        Car winner = iterator.next();
+
+        while(iterator.hasNext()){
+            Car nextCar = iterator.next();
+            if(winner.getPosition() != nextCar.getPosition()){
                 break;
             }
-            winners.add(car);
+            winners.add(nextCar);
         }
     }
 }
