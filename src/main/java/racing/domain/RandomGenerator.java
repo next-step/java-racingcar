@@ -14,7 +14,7 @@ public class RandomGenerator implements RandomUtil {
 	}
 
 	public void validRandomRangeCheck(int randomValue) {
-		if(randomValue < 0 || randomValue > 9){
+		if (randomValue < 0 || randomValue > 9) {
 			throw new IllegalArgumentException();
 		}
 	}

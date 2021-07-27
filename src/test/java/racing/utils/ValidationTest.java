@@ -15,48 +15,48 @@ class ValidationTest {
 
 	@Test
 	@DisplayName("빈값을 입력하면 예외가 발생된다.")
-	public void validEmptyCheck(){
+	public void validEmptyCheck() {
 		assertThrows(IllegalArgumentException.class, () ->
-			Validation.validEmptyCheck("",VALID_EMPTY_MESSAGE)
+			Validation.validEmptyCheck("", VALID_EMPTY_MESSAGE)
 		);
 
-		assertThatThrownBy(() -> Validation.validEmptyCheck("",VALID_EMPTY_MESSAGE))
+		assertThatThrownBy(() -> Validation.validEmptyCheck("", VALID_EMPTY_MESSAGE))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage(VALID_EMPTY_MESSAGE);
 	}
 
 	@Test
 	@DisplayName("숫자형태가 아닌 다른 문자를 입력하면 예외가 발생된다.")
-	public void validIntTypeMatchCheck(){
+	public void validIntTypeMatchCheck() {
 		assertThrows(IllegalArgumentException.class, () ->
-			Validation.validIntTypeMatchCheck("",VALID_INT_TYPE_MESSAGE)
+			Validation.validIntTypeMatchCheck("", VALID_INT_TYPE_MESSAGE)
 		);
 
-		assertThatThrownBy(() -> Validation.validIntTypeMatchCheck("+1",VALID_INT_TYPE_MESSAGE))
+		assertThatThrownBy(() -> Validation.validIntTypeMatchCheck("+1", VALID_INT_TYPE_MESSAGE))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage(VALID_INT_TYPE_MESSAGE);
 	}
 
 	@Test
 	@DisplayName("입력받은 문자열이 최소길이를 초과하면 예외가 발생된다.")
-	public void validStringLength(){
+	public void validStringLength() {
 		assertThrows(IllegalArgumentException.class, () ->
-			Validation.validStringLength("lastTest",7,STRING_LIMIT_LENGTH_MESSAGE)
+			Validation.validStringLength("lastTest", 7, STRING_LIMIT_LENGTH_MESSAGE)
 		);
 
-		assertThatThrownBy(() -> Validation.validStringLength("lamda",4,STRING_LIMIT_LENGTH_MESSAGE))
+		assertThatThrownBy(() -> Validation.validStringLength("lamda", 4, STRING_LIMIT_LENGTH_MESSAGE))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage(STRING_LIMIT_LENGTH_MESSAGE);
 	}
 
 	@Test
 	@DisplayName("음수를 입력하면 예외가 발생된다.")
-	public void validPositiveCheck(){
+	public void validPositiveCheck() {
 		assertThrows(IllegalArgumentException.class, () ->
-			Validation.validPositiveCheck(-5,POSITIVE_CHECK_MESSAGE)
+			Validation.validPositiveCheck(-5, POSITIVE_CHECK_MESSAGE)
 		);
 
-		assertThatThrownBy(() -> Validation.validPositiveCheck(-9,POSITIVE_CHECK_MESSAGE))
+		assertThatThrownBy(() -> Validation.validPositiveCheck(-9, POSITIVE_CHECK_MESSAGE))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage(POSITIVE_CHECK_MESSAGE);
 	}

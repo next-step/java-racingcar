@@ -10,11 +10,10 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class PositionTest {
 
-
 	@DisplayName("이동거리를 입력하면 이동거리만큼 생성된다.")
 	@ParameterizedTest
 	@CsvSource(value = {"1,3,5,7,9"})
-	public void createPosition(int value){
+	public void createPosition(int value) {
 		Position position = new Position(value);
 
 		assertThat(position.resultPosition()).isEqualTo(value);
@@ -22,7 +21,7 @@ class PositionTest {
 
 	@Test
 	@DisplayName("음수값을 입력하면 예외가 발생된다.")
-	public void valuePositiveCheck(){
+	public void valuePositiveCheck() {
 		assertThrows(IllegalArgumentException.class, () ->
 			new Position(-5)
 		);
@@ -34,7 +33,7 @@ class PositionTest {
 
 	@Test
 	@DisplayName("이동에 대한 명령을 하면 1칸씩 이동된다.")
-	public void positionMoving(){
+	public void positionMoving() {
 		Position position = new Position(0);
 		Position move1 = position.move();
 
@@ -45,7 +44,7 @@ class PositionTest {
 
 	@Test
 	@DisplayName("현재 위치값이 최고위치값과 동일하면 true 아니면 false 가 반환한다.")
-	public void maxPositionCheck(){
+	public void maxPositionCheck() {
 		int maxPosition = 3;
 		Position position = new Position(0);
 		position.move();
