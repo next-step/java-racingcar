@@ -29,7 +29,7 @@ public class Racing {
 
 	public String getTopRankResult() {
 		String[] topNames = cars.stream()
-			.filter(car -> car.getMove() == getMaxDistance())
+			.filter(car -> car.checkVictory(getMaxDistance()))
 			.map(Car::getName)
 			.toArray(String[]::new);
 

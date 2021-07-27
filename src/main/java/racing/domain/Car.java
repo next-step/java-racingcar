@@ -21,6 +21,10 @@ public class Car {
 		return name;
 	}
 
+	public boolean checkVictory(int winDistance) {
+		return move == winDistance;
+	}
+
 	public void move(int randomValue) {
 		if (randomValue >= COMPARE_VALUE) {
 			this.move++;
