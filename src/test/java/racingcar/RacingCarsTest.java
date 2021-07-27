@@ -36,7 +36,7 @@ class RacingCarsTest {
 			});
 
 		for (int i = 0 ; i < 3 ; i++) {
-			assertThat(racingCars.getCars().get(i)).isEqualTo("-");
+			assertThat(racingCars.getCars().get(i).getRacingCarDashString()).isEqualTo("-");
 		}
 	}
 }
