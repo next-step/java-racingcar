@@ -14,6 +14,9 @@ import step3.runType.TestRunStrategy;
 
 class CarRacingGameTest {
 
+    private static final char PROGRESS_CHAR = '-';
+
+
     @ParameterizedTest
     @MethodSource("provideTestGameSettings")
     @DisplayName("테스트 운행시, 입력받은 자동차 대수와 시도회수에 의해 일정한 게임결과를 얻는다. ")
@@ -26,8 +29,12 @@ class CarRacingGameTest {
         Round finalRound = playedRounds.get(playedRounds.size() - 1);
 
         assertThat(playedRounds.size()).isEqualTo(testGameSetting.getRoundCount());
-        assertThat(finalRound.getResults().size()).isEqualTo(testGameSetting.getCarCount());
-        assertThat(finalRound.getResults()).containsOnly(testGameSetting.getRoundCount());
+        assertThat(finalRound.getCarRunResults().size()).isEqualTo(testGameSetting.getCarCount());
+
+        for (CarRunResult result : finalRound.getCarRunResults()) {
+            long progressCount = countCharInString(result.generateCarRunResultString(), PROGRESS_CHAR);
+            assertThat(progressCount).isEqualTo(testGameSetting.getRoundCount());
+        }
 
     }
 
@@ -58,6 +65,13 @@ class CarRacingGameTest {
         userInputs.add(testCarNames);
         userInputs.add(testRoundCount);
         return new GameSetting(userInputs, new TestRunStrategy());
+    }
+
+    private long countCharInString(String string, char c) {
+
+        long count = string.chars().filter(ch -> ch == c).count();
+
+        return count;
     }
 
 }

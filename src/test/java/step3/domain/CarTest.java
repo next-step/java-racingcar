@@ -13,7 +13,7 @@ class CarTest {
     @Test
     @DisplayName("자동차 운행방식이 '테스트운행'일 경우, 자동차는 반드시 1만큼 전진한다.")
     void test_run() {
-        String carName = String.format(RacingCars.CAR_NUMBER_FORMAT, 1);
+        String carName = "car1";
 
         Car testCar = new Car(carName);
         testCar.run(new TestRunStrategy());
@@ -25,7 +25,7 @@ class CarTest {
     @Test
     @DisplayName("자동차 운행방식이 '정상운행'일 경우, 자동차는 0 또는 1 만큼 전진한다.")
     void normal_run() {
-        String carName = String.format(RacingCars.CAR_NUMBER_FORMAT, 1);
+        String carName = "car1";
 
         Car testCar = new Car(carName);
         testCar.run(new NormalRunStrategy());
@@ -39,7 +39,7 @@ class CarTest {
     @Test
     @DisplayName("자동차 운행방식이 '초스피드운행'일 경우, 자동차는 0 또는 2 만큼 전진한다.")
     void high_speed_run() {
-        String carName = String.format(RacingCars.CAR_NUMBER_FORMAT, 1);
+        String carName = "car1";
 
         Car testCar = new Car(carName);
         testCar.run(new HighSpeedRunStrategy());

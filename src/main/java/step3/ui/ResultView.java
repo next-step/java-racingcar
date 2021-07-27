@@ -1,12 +1,10 @@
 package step3.ui;
 
-import java.util.ArrayList;
 import java.util.List;
+import step3.domain.CarRunResult;
 import step3.domain.Round;
 
 public class ResultView {
-
-    private static final String PROGRESS_SYMBOL = "-";
 
     private static ResultView instance = new ResultView();
 
@@ -28,19 +26,11 @@ public class ResultView {
     }
 
     private void printRoundResult(Round playedRound) {
-        List<Integer> results = playedRound.getResults();
-        for (int runDistance : results) {
-            System.out.println(generateProgressString(runDistance));
+        List<CarRunResult> carRunResults = playedRound.getCarRunResults();
+        for (CarRunResult result : carRunResults) {
+            System.out.println(result.generateCarRunResultString());
         }
         System.out.println();
-    }
-
-    private String generateProgressString(int runDistance) {
-        String progress = "";
-        for (int i = 0; i < runDistance; i++) {
-            progress = progress + PROGRESS_SYMBOL;
-        }
-        return progress;
     }
 
 }

@@ -36,6 +36,20 @@ public class GameSetting {
         return inputCarNames;
     }
 
+    private List<String> splitAndTrimString(String string) {
+
+        String[] stringArray = string.split(COMMA_DELIMITER);
+        List<String> trimmedAndSplitStringList = trimStringArray(stringArray);
+
+        return trimmedAndSplitStringList;
+    }
+
+    private List<String> trimStringArray(String[] stringArray) {
+        return Arrays.stream(stringArray)
+            .map(String::trim)
+            .collect(Collectors.toList());
+    }
+
     public int getCarCount() {
         return carCount;
     }
@@ -52,18 +66,7 @@ public class GameSetting {
         return Integer.parseInt(string);
     }
 
-    private List<String> splitAndTrimString(String string) {
-
-        String[] stringArray = string.split(COMMA_DELIMITER);
-        List<String> trimmedAndSplitStringList = trimStringArray(stringArray);
-
-        return trimmedAndSplitStringList;
+    public List<String> getCarNames() {
+        return carNames;
     }
-
-    private List<String> trimStringArray(String[] stringArray) {
-        return Arrays.stream(stringArray)
-                .map(String::trim)
-                .collect(Collectors.toList());
-    }
-
 }

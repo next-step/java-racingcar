@@ -23,7 +23,7 @@ class RoundTest {
         Round roundToPlay = new Round();
         roundToPlay.start(cars, gameSetting);
 
-        assertThat(roundToPlay.getResults().size()).isEqualTo(gameSetting.getCarCount());
+        assertThat(roundToPlay.getCarRunResults().size()).isEqualTo(gameSetting.getCarCount());
     }
 
 

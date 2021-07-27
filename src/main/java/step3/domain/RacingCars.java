@@ -5,8 +5,6 @@ import java.util.List;
 
 public class RacingCars {
 
-    public static final String CAR_NUMBER_FORMAT = "car_number_%d";
-
     private final List<Car> cars;
 
     public RacingCars(GameSetting gameSetting) {
@@ -15,12 +13,11 @@ public class RacingCars {
     }
 
     private List<Car> prepareCars(GameSetting gameSetting) {
-        int carCount = gameSetting.getCarCount();
+        List<String> carNames = gameSetting.getCarNames();
         List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < carCount; i++) {
-            String carNumber = String.format(CAR_NUMBER_FORMAT, i);
-            cars.add(new Car(carNumber));
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
 
         return cars;
