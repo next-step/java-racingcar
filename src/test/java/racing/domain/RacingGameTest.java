@@ -10,7 +10,6 @@ import racing.domain.car.Cars;
 import racing.domain.car.FakeBasicCar;
 import racing.domain.fuel.Fuel;
 import racing.domain.fuel.RandomFuel;
-import racing.domain.turn.Turns;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -28,16 +27,15 @@ class RacingGameTest {
                 .collect(Collectors.toSet()));
     }
     @CsvSource(value = {
-            "A|B|C|D,10",
-            "A|B|C|,15",
-            "A,20"
+            "A|B|C|D",
+            "A|B|C|",
+            "A"
     })
     @DisplayName("ctor Test")
     @ParameterizedTest
-    public void ctorTest(String carNames, int turnSize) {
+    public void ctorTest(String carNames) {
         Cars cars = newCars(carNames, BasicCar::new);
-        Turns turns = new Turns(turnSize);
-        new RacingGame(cars, turns);
+        new RacingGame(cars);
     }
 
     @DisplayName("ctor IllegalArgumentException Test")
@@ -45,17 +43,10 @@ class RacingGameTest {
     public void ctorTest_IllegalArgumentException() {
         // Car가 없는 경우
         assertThatThrownBy(() ->
-                new RacingGame(null, new Turns(1))
+                new RacingGame(null)
         ).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() ->
-                new RacingGame(new Cars(new HashSet<>()), new Turns(1))
-        ).isInstanceOf(IllegalArgumentException.class);
-
-        Cars sampleCars = newCars("A|B|C", BasicCar::new);
-
-        // Turn이 없는 겿우
-        assertThatThrownBy(() ->
-                new RacingGame(sampleCars, null)
+                new RacingGame(new Cars(new HashSet<>()))
         ).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -63,17 +54,17 @@ class RacingGameTest {
             "A|B|C|D,E|F,10"
     )
     @ParameterizedTest
-    public void racingAllTest(String carNames, String winnerCarNames, int turnSize) {
+    public void racingTest(String carNames, String winnerCarNames, int turnSize) {
         Cars cars = newCars(carNames, BasicCar::new);
         Cars fakeCars = newCars(winnerCarNames, FakeBasicCar::new);
         for (Car iCar : fakeCars)
             cars.add(iCar);
         Fuel fuel = new RandomFuel();
 
-        RacingGame game = new RacingGame(cars, new Turns(turnSize));
+        RacingGame game = new RacingGame(cars);
 
-        Turns turns = game.racingAll(fuel);
-        assertThat(turns.lastTurn().findWinnerNames())
+        Turn turn = game.racing(fuel);
+        assertThat(turn.findWinnerNames())
                 .containsOnly(winnerCarNames.split("\\|"));
     }
 }

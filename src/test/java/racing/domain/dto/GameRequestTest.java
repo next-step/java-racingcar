@@ -44,22 +44,10 @@ class GameRequestTest {
             100000
     })
     @ParameterizedTest
-    public void turnsTest(int turnSize) {
+    public void turnSizeTest(int turnSize) {
         GameRequest gameRequest = new GameRequest("A", turnSize);
         assertThat(
-                gameRequest.turns()
-        ).isNotNull();
-    }
-
-    @DisplayName("turns InvalidInputException 나오는 경우")
-    @ValueSource(ints = {
-            -1,
-            0
-    })
-    @ParameterizedTest
-    public void turnsTest_InvalidInputException(int turnSize) {
-        assertThatThrownBy(() ->
-                turnsTest(turnSize)
-        ).isInstanceOf(InvalidInputException.class);
+                gameRequest.turnSize()
+        ).isEqualTo(turnSize);
     }
 }

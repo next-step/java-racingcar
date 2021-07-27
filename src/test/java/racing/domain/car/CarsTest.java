@@ -5,14 +5,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.domain.car.BasicCar;
-import racing.domain.car.Car;
-import racing.domain.car.Cars;
 import racing.domain.Location;
 import racing.domain.Name;
 import racing.domain.fuel.BasicFuel;
 import racing.domain.fuel.Fuel;
-import racing.domain.turn.Turn;
+import racing.domain.Turn;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -83,11 +80,10 @@ public class CarsTest {
     @ParameterizedTest
     public void moveAllTest(int carSize, int fuelValue, int locationValue) {
         Cars cars = initCars(sizeToNames(carSize), BasicCar::new);
-        Turn turn = new Turn();
         Fuel fuel = new BasicFuel(fuelValue);
         Location location = new Location(locationValue);
+        Turn turn = cars.moveAll(fuel);
 
-        cars.moveAll(turn, fuel);
         for (Car iCar : cars) {
             assertThat(
                     turn.checkLocation(iCar, location)
