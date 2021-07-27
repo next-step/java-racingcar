@@ -1,9 +1,13 @@
 package stringCaculator;
 
+import org.assertj.core.util.Strings;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CaculatorTest {
 
@@ -46,5 +50,14 @@ public class CaculatorTest {
 
         result = Calculator.calculate("2 - 3 * 10 - 7 + 5");
         assertThat(result).isEqualTo(-12);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {" ", "3 $ 5", "4 + 5 & 1"})
+    @DisplayName("입력값이 이상할 때 예외를 던지는지 테스트")
+    void invalidInput(String value) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+                Calculator.calculate(value);
+        });
     }
 }
