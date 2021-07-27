@@ -1,5 +1,6 @@
 package racingCar;
 
+import racingCar.domain.Car;
 import racingCar.domain.Race;
 import racingCar.domain.Round;
 import racingCar.view.InputView;
@@ -28,19 +29,14 @@ public class RacingApp {
 
     private void start(Race race) {
         this.resultView.printExecutionResultMessage();
-        int roundNumber = 1;
-
-        while (race.isNotEnd(roundNumber)) {
-            outputCarDistance(race.getRoundResult(roundNumber));
-            roundNumber++;
+        for (Round round : race.getRounds()) {
+            outputCarDistance(round);
         }
     }
 
     private void outputCarDistance(Round round) {
-        int carCount = 0;
-        while (round.isNotMaximum(carCount)) {
-            this.resultView.printCarDistance(round.getCar(carCount));
-            carCount++;
+        for (Car car : round.getCars()) {
+            this.resultView.printCarDistance(car);
         }
         this.resultView.printEnter();
     }
