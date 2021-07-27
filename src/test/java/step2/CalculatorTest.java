@@ -1,8 +1,10 @@
 package step2;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CalculatorTest {
 
@@ -44,5 +46,25 @@ public class CalculatorTest {
         int result = Calculator.calculate(given);
         //then
         assertThat(result).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("입력 값이 null일 경우 IllegalArgumentException이 발생한다")
+    public void 입력_값이_null일_경우_IllegalArgumentException이_발생한다(){
+        //given
+        //when
+        //then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> Calculator.calculate(null));
+    }
+
+    @Test
+    @DisplayName("입력 값이 빈 공백 문자일 경우 IllegalArgumentException이 발생한다")
+    public void 입력_값이_빈_공백_문자일_경우_IllegalArgumentException이_발생한다(){
+        //given
+        //when
+        //then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> Calculator.calculate(""));
     }
 }
