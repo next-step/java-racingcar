@@ -6,7 +6,7 @@ import java.util.List;
 import racingcar.util.RacingCarUtil;
 
 public class RacingCars {
-	List<RacingCar> racingCars = new ArrayList<>();
+	private List<RacingCar> racingCars = new ArrayList<>();
 
 	public List<RacingCar> getCars() {
 		return racingCars;
