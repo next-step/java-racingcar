@@ -26,8 +26,15 @@ public class ConsoleOutputView {
         }
     }
 
+    private List<Name> getNames(Winners winners) {
+        return winners.getCars()
+                .stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
     private String getWinners(Winners winners) {
-        List<Name> names = winners.getNames();
+        List<Name> names = getNames(winners);
         return names.stream()
                 .map(Name::getValue)
                 .collect(Collectors.joining(", "));

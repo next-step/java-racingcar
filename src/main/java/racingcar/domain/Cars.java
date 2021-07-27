@@ -27,16 +27,9 @@ public class Cars {
     }
 
     public Cars move(Rule rule) {
-        List<Car> result = new ArrayList<>();
-        for (Car car : this.elements) {
-            boolean isMove = rule.move();
-            result.add(car.move(isMove));
-        }
-        return new Cars(result);
-    }
-
-    public int size() {
-        return this.elements.size();
+        return new Cars(this.elements.stream()
+                .map(car -> car.move(rule.move()))
+                .collect(Collectors.toList()));
     }
 
     public List<Car> getElements() {
@@ -44,16 +37,15 @@ public class Cars {
     }
 
     public Winners getWinners() {
-        int max = getMaxDistance();
-        List<Car> cars = findByDistance(Distance.from(max));
+        Distance distance = getMaxDistance();
+        List<Car> cars = findByDistance(distance);
         return Winners.valueOf(cars);
     }
 
-    private int getMaxDistance() {
+    private Distance getMaxDistance() {
         return this.elements.stream()
                 .map(Car::getDistance)
-                .mapToInt(Distance::getValue)
-                .max()
+                .max(Distance::compareTo)
                 .orElseThrow(IllegalArgumentException::new);
     }
 

@@ -13,6 +13,6 @@ public class RacingGame {
     }
 
     public Cars next() {
-        return new Cars(cars.move(rule).getElements());
+        return cars.move(rule);
     }
 }

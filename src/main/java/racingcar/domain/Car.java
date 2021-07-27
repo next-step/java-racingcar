@@ -17,12 +17,17 @@ public class Car {
         this.distance = Distance.from(distance);
     }
 
+    public Car(Name name, Distance distance) {
+        this.name = name;
+        this.distance = distance;
+    }
+
     public Car move(boolean isMove) {
         if (isMove) {
             distance = distance.move();
-            return new Car(name.getValue(), distance.getValue());
+            return new Car(name, distance);
         }
-        return new Car(name.getValue(), distance.getValue());
+        return new Car(name, distance);
     }
 
     public boolean isEqualsDistance(Distance distance) {

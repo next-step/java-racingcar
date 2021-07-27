@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Winners {
 
@@ -15,13 +14,7 @@ public class Winners {
         return new Winners(cars);
     }
 
-    public boolean isWinner(Car car) {
-        return cars.contains(car);
-    }
-
-    public List<Name> getNames() {
-        return cars.stream()
-                .map(Car::getName)
-                .collect(Collectors.toList());
+    public List<Car> getCars() {
+        return cars;
     }
 }

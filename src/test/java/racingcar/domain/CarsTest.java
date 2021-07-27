@@ -45,8 +45,12 @@ class CarsTest {
             List<Car> carList = Arrays.asList(pobi, crong, hounx);
             Cars cars = new Cars(carList);
             Winners winners = cars.getWinners();
+            List<Name> names = winners.getCars()
+                    .stream()
+                    .map(Car::getName)
+                    .collect(Collectors.toList());
 
-            assertTrue(winners.isWinner(hounx));
+            assertTrue(names.contains(hounx.getName()));
         });
     }
 
@@ -60,7 +64,7 @@ class CarsTest {
         Cars cars = new Cars(carList);
         cars = cars.move(new MoveRule());
 
-        assertEquals(cars.size(), names.size());
+        assertEquals(cars.getElements().size(), names.size());
         cars.getElements().forEach(car -> assertEquals(1, car.getDistance().getValue()));
     }
 
@@ -74,7 +78,7 @@ class CarsTest {
         Cars cars = new Cars(carList);
         cars = cars.move(new NotMoveRule());
 
-        assertEquals(cars.size(), names.size());
+        assertEquals(cars.getElements().size(), names.size());
         cars.getElements().forEach(car -> assertEquals(0, car.getDistance().getValue()));
     }
 }
