@@ -10,7 +10,7 @@ import racing.domain.fuel.BasicFuel;
 
 import static org.assertj.core.api.Assertions.*;
 
-class BasicCarTest {
+class CarTest {
     private static Name anonymousName;
 
     @BeforeAll

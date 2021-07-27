@@ -6,7 +6,6 @@ import racing.domain.fuel.Fuel;
 import racing.domain.fuel.RandomFuel;
 import racing.domain.dto.GameRequest;
 import racing.service.RacingGame;
-import racing.exception.InvalidInputException;
 
 import java.util.List;
 
