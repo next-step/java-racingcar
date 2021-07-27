@@ -14,11 +14,11 @@ import java.util.List;
  */
 public class RacingCar {
 
-    private final int carCount;   // 자동차 대 수
-    private int moveCount; // 자동차 이동 횟수
+    private final String[] carNames;   // 자동차 대 수
+    private final int moveCount; // 자동차 이동 횟수
 
-    public RacingCar(int carCount, int moveCount) {
-        this.carCount = carCount;
+    public RacingCar(String[] carNames, int moveCount) {
+        this.carNames = carNames;
         this.moveCount = moveCount;
     }
 
@@ -28,8 +28,9 @@ public class RacingCar {
      */
     public List<Car> createAsCarsNumberOfEnteredByUser() {
         List<Car> cars = new ArrayList<Car>();
-        for(int i = 0; i < this.carCount; i++) {
-            cars.add(new Car());
+        for(int i = 0; i < this.carNames.length; i++) {
+            Car  car = new Car();
+            car.setCarName(this.carNames[i]);
         }
         return cars;
     }
