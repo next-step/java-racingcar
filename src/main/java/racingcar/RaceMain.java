@@ -22,5 +22,6 @@ public class RaceMain {
 
 		raceMain.startRace(inputView.inputTryCount(), racingCars);
 		inputView.scannerClose();
+		
 	}
 }
