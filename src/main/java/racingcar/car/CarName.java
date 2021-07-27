@@ -1,13 +1,14 @@
 package racingcar.car;
 
-public class Name {
+public class CarName {
 
     private static final String MESSAGE_EMPTY_CAR_NAME = "자동차 이름은 한 글자 이상이어야 합니다.";
     private static final String MESSAGE_INVALID_CAR_NAME_LENGTH = "자동차의 이름은 5자를 초과할 수 없습니다.";
     private static final int MAXIMUM_NAME_LENGTH = 5;
+
     private final String name;
 
-    public Name(String name) {
+    public CarName(String name) {
         validateName(name);
         this.name = name;
     }

@@ -19,7 +19,7 @@ public class Cars {
 		List<Car> cars = new ArrayList<>();
 		String[] names = carNames.split(DELIMITER);
 		for (int i = 0; i < names.length; i++) {
-			cars.add(new Car(new Name(names[i])));
+			cars.add(new Car(new CarName(names[i])));
 		}
 		return new Cars(cars);
 	}

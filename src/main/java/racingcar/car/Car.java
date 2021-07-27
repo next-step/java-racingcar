@@ -4,11 +4,11 @@ import racingcar.strategy.MoveStrategy;
 
 public class Car {
 
-    private Name name;
+    private CarName carName;
     private int position;
 
-    public Car(Name name) {
-        this.name = name;
+    public Car(CarName carName) {
+        this.carName = carName;
     }
 
     public void move(MoveStrategy moveStrategy) {
@@ -18,7 +18,7 @@ public class Car {
     }
 
     public String getName() {
-        return name.getName();
+        return carName.getName();
     }
 
     public int getPosition() {

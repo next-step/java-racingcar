@@ -13,7 +13,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car(new Name("pobi"));
+        car = new Car(new CarName("pobi"));
     }
 
     @DisplayName("숫자가 4 이상이면 자동차는 전진한다.")
