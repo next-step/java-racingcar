@@ -6,7 +6,11 @@ public class CarPosition {
     private final PositionRecord positionRecord;
 
     public CarPosition() {
-        this.position = INITIAL_POSITION;
+        this(INITIAL_POSITION);
+    }
+
+    public CarPosition(int position) {
+        this.position = position;
         this.positionRecord = new PositionRecord();
     }
 

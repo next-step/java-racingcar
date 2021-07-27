@@ -4,7 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
+
 
 public class CarTest {
 
@@ -55,6 +57,26 @@ public class CarTest {
 
         //then
         assertThat(car.getPosition()).isEqualTo(2);
+    }
+
+    @DisplayName("두번 움직이고 한번 움직이지 못하는 조건일경우 자동차 Postion Record는 1, 2, 2로 나와야한다")
+    @Test
+    void carPositionRecordTest() {
+        //given
+        MovingStrategy moveStrategy = () -> true;
+        MovingStrategy stopStrategy = () -> false;
+
+        //when
+        car.race(moveStrategy);
+        car.race(moveStrategy);
+        car.race(stopStrategy);
+
+        //then
+        assertAll(
+                () -> assertThat(car.getPositionRecord(0)).isEqualTo(1),
+                () -> assertThat(car.getPositionRecord(1)).isEqualTo(2),
+                () -> assertThat(car.getPositionRecord(2)).isEqualTo(2)
+        );
     }
     
 }

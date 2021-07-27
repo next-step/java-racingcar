@@ -1,4 +1,4 @@
-package racing.util;
+package racing.utils;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -6,9 +6,6 @@ import racing.domain.CarNameException;
 import racing.domain.Players;
 import racing.domain.Player;
 import racing.view.InputCarPlayer;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
