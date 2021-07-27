@@ -1,4 +1,5 @@
-import org.junit.jupiter.api.Test;
+package stringcalc;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -6,28 +7,32 @@ import static org.assertj.core.api.Assertions.*;
 
 public class StringCalc {
 
-    @Test
-    public void addition() {
-        int output = Calc.calc("2 + 3");
+    @ParameterizedTest
+    @ValueSource(strings = "2 + 3")
+    public void addition(String input) {
+        int output = Calc.calc(input);
         assertThat(output).isEqualTo(5);
     }
 
-    @Test
-    public void subtraction() {
-        int output = Calc.calc("5 - 2");
+    @ParameterizedTest
+    @ValueSource(strings = "5 - 2")
+    public void subtraction(String input) {
+        int output = Calc.calc(input);
         assertThat(output).isEqualTo(3);
     }
 
-    @Test
-    public void division() {
-        int output = Calc.calc("10 / 2");
+    @ParameterizedTest
+    @ValueSource(strings = "10 / 2")
+    public void division(String input) {
+        int output = Calc.calc(input);
 
         assertThat(output).isEqualTo(5);
     }
 
-    @Test
-    public void multiplication() {
-        int output = Calc.calc("4 * 3");
+    @ParameterizedTest
+    @ValueSource(strings = "4 * 3")
+    public void multiplication(String input) {
+        int output = Calc.calc(input);
 
         assertThat(output).isEqualTo(12);
     }
