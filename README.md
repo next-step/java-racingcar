@@ -27,7 +27,7 @@
 - Commit Message Convertion 지키기 
 
 #### TODO 
-- 사용자 입력 
+- ~~사용자 입력~~ 
   - 자동차 대수
   - 시도 횟수
   - 잘못된 input exception
