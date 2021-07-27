@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class Position {
 
-    public static final String STRING = "-";
     private final int position;
 
     public Position() {
@@ -22,6 +21,10 @@ public class Position {
         return new Position(position + 1);
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -37,10 +40,5 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(position);
-    }
-
-    @Override
-    public String toString() {
-        return new String(new char[position]).replace("\0", STRING);
     }
 }

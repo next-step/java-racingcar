@@ -6,4 +6,4 @@
 * 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
 
 ## 온라인 코드 리뷰 과정
-* [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-calculator.docs/tree/master/codereview)
+* [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)

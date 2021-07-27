@@ -1,30 +1,32 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import racingcar.domain.car.Car;
 
 public class Cars {
 
-    public static final String NEWLINE = "\n";
     private final List<Car> cars;
 
     private Cars(List<Car> carList) {
         this.cars = carList;
     }
 
-    public static Cars createWithDefaults(int numberOfCars) {
-        List<Car> rawCars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            rawCars.add(new Car());
-        }
-        return new Cars(rawCars);
+    public static Cars createWithNames(List<String> names) {
+        List<Car> carList = names.stream().map(Car::createWithName)
+                .collect(Collectors.toList());
+        return new Cars(carList);
     }
 
     public static Cars createFromList(List<Car> carList) {
         return new Cars(carList);
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     public Cars move(MoveStrategy moveStrategy) {
@@ -33,6 +35,14 @@ public class Cars {
                 .map(car -> car.move(moveStrategy))
                 .collect(Collectors.toList());
         return new Cars(movedCars);
+    }
+
+    public List<Car> findWinners() {
+        Car maxPositionCar = cars.stream().max(Comparator.comparing(Car::getIntPosition))
+                .orElseThrow(
+                        NoSuchElementException::new);
+        return cars.stream().filter(car -> car.isSamePosition(maxPositionCar))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -44,20 +54,11 @@ public class Cars {
             return false;
         }
         Cars cars1 = (Cars) o;
-        return Objects.equals(cars, cars1.cars);
+        return Objects.equals(getCars(), cars1.getCars());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cars);
-    }
-
-    @Override
-    public String toString() {
-        List<String> carStates = cars
-                .stream()
-                .map(Object::toString)
-                .collect(Collectors.toList());
-        return String.join(NEWLINE, carStates);
+        return Objects.hash(getCars());
     }
 }

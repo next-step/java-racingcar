@@ -2,27 +2,47 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RaceHistory {
 
-    public static final String SEPARATE_ROUNDS = "\n\n";
-    private final List<String> states;
+    private final List<Cars> history;
 
     public RaceHistory() {
-        states = new ArrayList<>();
+        history = new ArrayList<>();
     }
 
-    public RaceHistory(List<String> states) {
-        this.states = states;
+    public RaceHistory(List<Cars> history) {
+        this.history = history;
+    }
+
+    public List<Cars> getHistory() {
+        return history;
+    }
+
+    public Cars getFinishedCars() {
+        return history.get(history.size() - 1);
     }
 
     public RaceHistory update(Cars cars) {
-        states.add(cars.toString());
-        return new RaceHistory(states);
+        history.add(cars);
+        return new RaceHistory(history);
     }
 
     @Override
-    public String toString() {
-        return String.join(SEPARATE_ROUNDS, states);
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof RaceHistory)) {
+            return false;
+        }
+        RaceHistory that = (RaceHistory) o;
+        return Objects.equals(getHistory(), that.getHistory());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getHistory());
     }
 }
