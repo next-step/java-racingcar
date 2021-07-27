@@ -12,12 +12,12 @@ public class Racing {
 
 	private List<Car> cars;
 
-	public Racing(String[] names) {
+	public Racing(List<String> names) {
 		initCars(names);
 	}
 
-	private void initCars(String[] names) {
-		cars = Arrays.stream(names)
+	private void initCars(List<String> names) {
+		cars = names.stream()
 			.map(Car::new)
 			.collect(Collectors.toList());
 	}
