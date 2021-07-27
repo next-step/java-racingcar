@@ -27,22 +27,22 @@ public class ResultView {
     }
 
     private static StringBuffer getRacingCarsInfo(List<RacingRecord> records) {
-        StringBuffer sb = new StringBuffer();
+        StringBuffer stringBuffer = new StringBuffer();
         for (RacingRecord record : records) {
-            sb.append(record.getCar().getName());
-            sb.append(CAR_SEPARATOR);
-            sb.append(getRacingPositionDisplay(record));
-            sb.append(LINE_BREAK);
+            stringBuffer.append(record.getCar().getName());
+            stringBuffer.append(CAR_SEPARATOR);
+            stringBuffer.append(getRacingPositionDisplay(record));
+            stringBuffer.append(LINE_BREAK);
         }
-        return sb;
+        return stringBuffer;
     }
 
     private static StringBuffer getRacingPositionDisplay(RacingRecord record) {
-        StringBuffer sb = new StringBuffer();
+        StringBuffer stringBuffer = new StringBuffer();
         for (int i = 0; i < record.getPosition(); i++) {
-            sb.append(RACING_DISPLAY);
+            stringBuffer.append(RACING_DISPLAY);
         }
-        return sb;
+        return stringBuffer;
     }
 
     public static void showRacingWinner(List<RacingRecord> finalRacingHistory) {
