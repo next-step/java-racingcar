@@ -11,9 +11,8 @@ public class Cars {
         names.forEach(name -> cars.add(new Car(name)));
     }
 
-    public void attempt() {
-        RandomNumber randomNumber = new RandomNumber();
-        cars.forEach(car -> car.go(randomNumber.getRandomInt()));
+    public void attempt(RandomState randomState) {
+        cars.forEach(car -> car.go(randomState));
     }
 
     public List<Car> getCars() {

@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Cars;
+import racingcar.domain.RandomState;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -18,7 +19,7 @@ public class RacingCarApplication {
 
         Cars cars = new Cars(carNames);
         for (int i = 0; i < numberOfAttempts; i++) {
-            cars.attempt();
+            cars.attempt(new RandomState());
             outputView.printStatusFromScores(cars.getCars());
         }
 

@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Car {
-    private static final int GO_CONDITION = 4;
+
 
     private Score score;
     private CarName name;
@@ -19,8 +19,8 @@ public class Car {
         return score.getScore();
     }
 
-    void go(int number) {
-        if (number >= GO_CONDITION) {
+    void go(RandomState randomState) {
+        if (randomState.isMovable()) {
             score.add();
         }
     }
