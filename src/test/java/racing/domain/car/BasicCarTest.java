@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing.domain.car.BasicCar;
-import racing.domain.car.Car;
 import racing.domain.Location;
 import racing.domain.Name;
 import racing.domain.fuel.BasicFuel;

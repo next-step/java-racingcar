@@ -1,7 +1,5 @@
 package racing.domain.fuel;
 
-import racing.domain.fuel.Fuel;
-
 import java.util.Random;
 
 public final class RandomFuel implements Fuel {

@@ -10,7 +10,6 @@ import java.util.Map;
 import static racing.view.DosResultView.Text.*;
 
 public class DosResultView implements ResultView {
-    private static final String NAME_DELIMITER = ",";
     private static final String LOCATION_REPEAT_UNIT = "-";
 
     @Override

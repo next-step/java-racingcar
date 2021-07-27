@@ -1,7 +1,6 @@
 package racing.domain;
 
 import racing.domain.car.Car;
-import racing.domain.Location;
 import racing.exception.EmptyCarException;
 
 import java.util.*;

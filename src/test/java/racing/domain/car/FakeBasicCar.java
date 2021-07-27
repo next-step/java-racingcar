@@ -1,6 +1,5 @@
 package racing.domain.car;
 
-import racing.domain.car.BasicCar;
 import racing.domain.Location;
 import racing.domain.Name;
 import racing.domain.fuel.Fuel;
