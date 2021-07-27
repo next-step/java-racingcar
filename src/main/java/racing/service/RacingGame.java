@@ -10,7 +10,7 @@ import java.util.Objects;
 // Service
 public class RacingGame {
     public static RacingGame getInstance() {
-        return InnerClazz.racingGame;
+        return InnerClazz.instance;
     }
 
     private void validateCars(Cars cars) {
@@ -36,6 +36,6 @@ public class RacingGame {
     }
 
     private static class InnerClazz {
-        private static RacingGame racingGame = new RacingGame();
+        private static final RacingGame instance = new RacingGame();
     }
 }

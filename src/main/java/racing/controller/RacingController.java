@@ -14,7 +14,7 @@ public final class RacingController {
     private RacingController() {}
 
     public static RacingController getInstance() {
-        return InnerClazz.racingGame;
+        return InnerClazz.instance;
     }
 
     public GameResponse gameRun(GameRequest gameRequest) {
@@ -27,6 +27,6 @@ public final class RacingController {
     }
 
     private static class InnerClazz {
-        private static RacingController racingGame = new RacingController();
+        private static final RacingController instance = new RacingController();
     }
 }
