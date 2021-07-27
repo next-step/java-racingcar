@@ -74,4 +74,14 @@ class CalculatorTest {
             Calculator.calculate(wrongInput);
         });
     }
+
+    @ParameterizedTest(name = "[사칙연산 모두 포함 테스트] {0} = {1}")
+    @CsvSource(value = {"2 + 3 * 4 / 2 - 0=10", "2 - 3 + 4 * 2 / 1=6"}, delimiter = '=')
+    void allArithmeticOperationTest(String input, long expected) {
+        //when
+        long actual = Calculator.calculate(input);
+
+        //then
+        assertEquals(expected, actual);
+    }
 }
