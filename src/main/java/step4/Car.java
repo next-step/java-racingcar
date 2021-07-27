@@ -2,13 +2,13 @@ package step4;
 
 public class Car {
 
-    private final String carName;
+    private final String name;
 
     private final CarEngine carEngine;
     private int movedCount = 0;
 
     public Car(String carName, CarEngine carEngine) {
-        this.carName = checkCarNameLength(carName);
+        this.name = checkCarNameLength(carName);
         this.carEngine = carEngine;
     }
 
@@ -20,8 +20,8 @@ public class Car {
         this.movedCount++;
     }
 
-    public String getCarName() {
-        return carName;
+    public String getName() {
+        return name;
     }
 
     public int getMovedCount() {

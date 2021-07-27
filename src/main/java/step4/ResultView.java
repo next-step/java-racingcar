@@ -7,7 +7,7 @@ public class ResultView {
 
     public void printWinners(List<Car> winners) {
         String winner = winners.stream()
-            .map(Car::getCarName)
+            .map(Car::getName)
             .collect(Collectors.joining(","));
         System.out.println(winner + "가 최종 우승했습니다.\n");
     }
@@ -18,7 +18,7 @@ public class ResultView {
     }
 
     private void print(Car car) {
-        System.out.print(car.getCarName() + " : ");
+        System.out.print(car.getName() + " : ");
         for (int i = 0; i < car.getMovedCount(); i++) {
             System.out.print("-");
         }
