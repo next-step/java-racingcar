@@ -1,6 +1,9 @@
-package racing;
+package racing.controller;
 
 import java.util.Scanner;
+
+import racing.view.MessageBox;
+import racing.domain.Racing;
 
 public class CarRacingMain {
 

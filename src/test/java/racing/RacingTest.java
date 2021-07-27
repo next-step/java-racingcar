@@ -11,6 +11,10 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import racing.domain.Car;
+import racing.domain.Racing;
+import racing.view.MessageBox;
+
 public class RacingTest {
 
     private Racing racing;

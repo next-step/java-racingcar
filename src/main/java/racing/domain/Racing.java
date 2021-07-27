@@ -1,8 +1,11 @@
-package racing;
+package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import racing.domain.Car;
+import racing.view.MessageBox;
 
 public class Racing {
 
