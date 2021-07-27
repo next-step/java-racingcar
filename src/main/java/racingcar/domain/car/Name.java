@@ -5,13 +5,14 @@ import utils.StringUtils;
 
 public class Name {
 
+    public static final int MAXLENGTH = 5;
     private String name;
 
     public Name(String name) {
         if (StringUtils.isNullOrBlank(name)) {
             throw new IllegalArgumentException("이름값이 있어야 합니다.");
         }
-        if (name.length() > 5) {
+        if (name.length() > MAXLENGTH) {
             throw new IllegalArgumentException("이름이 5자 이하만 가능합니다.");
         }
         this.name = name;
