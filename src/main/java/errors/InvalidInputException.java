@@ -6,5 +6,6 @@ public class InvalidInputException extends Throwable {
 
     public InvalidInputException(String message) {
         this.message = message;
+        System.out.println(message);
     }
 }
