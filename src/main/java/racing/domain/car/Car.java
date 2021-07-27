@@ -7,7 +7,7 @@ import util.RepeatString;
 
 import java.util.Objects;
 
-public final class Car {
+public class Car {
     private final Name name;
     private final Location location;
 
@@ -29,8 +29,12 @@ public final class Car {
         return this;
     }
 
+    public int compareLocation(Location compareValue) {
+        return this.location.compareTo(compareValue);
+    }
+
     public int compareLocation(Car compareValue) {
-        return this.location.compareTo(compareValue.location);
+        return this.compareLocation(compareValue.location);
     }
 
     public RepeatString locationToRepeatString(String repeatUnit) {

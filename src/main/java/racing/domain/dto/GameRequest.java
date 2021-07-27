@@ -20,8 +20,4 @@ public class GameRequest {
     public int turnSize() {
         return turnSize;
     }
-
-    public boolean hasTurn() {
-        return turnSize > 0;
-    }
 }

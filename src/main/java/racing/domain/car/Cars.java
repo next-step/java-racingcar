@@ -49,4 +49,17 @@ public class Cars implements Iterable<Car> {
     public Iterator<Car> iterator() {
         return values.iterator();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars = (Cars) o;
+        return Objects.equals(values, cars.values);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(values);
+    }
 }

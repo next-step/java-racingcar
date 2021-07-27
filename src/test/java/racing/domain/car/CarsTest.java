@@ -9,10 +9,8 @@ import racing.domain.Location;
 import racing.domain.Name;
 import racing.domain.fuel.BasicFuel;
 import racing.domain.fuel.Fuel;
-import racing.domain.Turn;
 
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -53,24 +51,6 @@ public class CarsTest {
         return builder.toString();
     }
 
-    @ValueSource(ints = {
-            10, 100, 1000
-    })
-    @DisplayName("Car Add 테스트")
-    @ParameterizedTest
-    public void addTest(int size) {
-        Cars srcCars = initCars(
-                sizeToNames(size),
-                BasicCar::new
-        );
-        Cars cars = new Cars(new HashSet<>());
-        for (Car iCar : srcCars)
-            cars.add(iCar);
-
-        assertThat(cars.size())
-                .isEqualTo(size);
-    }
-
     @CsvSource({
             "5,0,0",
             "5,4,1",
@@ -79,57 +59,35 @@ public class CarsTest {
     @DisplayName("moveAll Test")
     @ParameterizedTest
     public void moveAllTest(int carSize, int fuelValue, int locationValue) {
-        Cars cars = initCars(sizeToNames(carSize), BasicCar::new);
         Fuel fuel = new BasicFuel(fuelValue);
         Location location = new Location(locationValue);
-        Turn turn = cars.moveAll(fuel);
 
-        for (Car iCar : cars) {
-            assertThat(
-                    turn.checkLocation(iCar, location)
-            ).isTrue();
-        }
+        Cars cars = initCars(sizeToNames(carSize), Car::new);
+        Cars newCars = cars.moveAll(fuel);
+
+        assertThat(cars)
+                .isEqualTo(cars);
+        assertThat(cars.findWinners())
+                .isEqualTo(newCars);
     }
 
+    @DisplayName("findWinners 테스트")
     @Test
-    public void addTest() {
-        Cars cars = new Cars(new HashSet<>());
-        cars.add(
-                new BasicCar(
-                        new Name("AAA1")
-                )
-        );
-        cars.add(
-                new BasicCar(
-                        new Name("AAA2")
-                )
-        );
-        cars.add(
-                new BasicCar(
-                        new Name("AAA3")
-                )
-        );
-    }
+    public void findWinnersTest() {
+        Set<Car> winnersCarSet = new HashSet<>();
+        winnersCarSet.add(new Car(new Name("우승자"), Location.oneBlock()));
+        winnersCarSet.add(new Car(new Name("우승자2"), Location.oneBlock()));
 
-    @Test
-    public void addTest_IllegalStateException() {
-        assertThatThrownBy(() -> {
-            Cars cars = new Cars(new HashSet<>());
-            cars.add(
-                    new BasicCar(
-                            new Name("AAA")
-                    )
-            );
-            cars.add(
-                    new BasicCar(
-                            new Name("AAA")
-                    )
-            );
-            cars.add(
-                    new BasicCar(
-                            new Name("AAA")
-                    )
-            );
-        }).isInstanceOf(IllegalStateException.class);
+        Set<Car> carList = new HashSet<>();
+        carList.add(new Car(new Name("패배자"), Location.empty()));
+
+        carList.addAll(winnersCarSet);
+
+        Cars expertWinners = new Cars(winnersCarSet);
+        Cars cars = new Cars(carList);
+        Cars winners = cars.findWinners();
+
+        assertThat(expertWinners)
+                .isEqualTo(winners);
     }
 }

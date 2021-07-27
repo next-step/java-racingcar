@@ -18,8 +18,14 @@ public class RacingGame {
             throw new IllegalArgumentException("경기를 진행할 차가 없습니다.");
     }
 
+    private void validateTurnSize(int turnSize) {
+        if (turnSize < 1)
+            throw new IllegalArgumentException("경기를 진행할 횟수가 1보다 작습니다.");
+    }
+
     public List<Cars> racingAll(Cars cars, int turnSize, Fuel fuel) {
         validateCars(cars);
+        validateTurnSize(turnSize);
 
         List<Cars> carsList = new ArrayList<>();
         for (int i = 0; i < turnSize; i++) {

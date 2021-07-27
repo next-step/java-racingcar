@@ -19,9 +19,6 @@ public final class RacingController {
     }
 
     public GameResponse gameRun(GameRequest gameRequest) {
-        if (!gameRequest.hasTurn()) {
-            throw new InvalidInputException("진행할 턴이 없습니다.");
-        }
         Fuel fuel = new RandomFuel();
         List<Cars> gameResults = RacingGame.getInstance().racingAll(
                 gameRequest.cars(), gameRequest.turnSize(), fuel

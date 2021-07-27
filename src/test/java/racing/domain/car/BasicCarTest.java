@@ -29,16 +29,14 @@ class BasicCarTest {
         Location location = new Location(locationValue);
         BasicFuel fuel = new BasicFuel(fuelValue);
 
-        Location resultLocation;
-        Car car = new BasicCar(anonymousName);
-        for (int i = 0; i < turnSize - 1; i++)
-            car.move(fuel);
-        resultLocation = car.move(fuel);
+        Car car = new Car(anonymousName);
+        for (int i = 0; i < turnSize; i++)
+            car = car.move(fuel);
 
         assertThat(
-                resultLocation
+                car.compareLocation(location)
         ).withFailMessage("자동차가 요청한대로 행동하지 않았습니다.")
-                .isEqualTo(location);
+                .isEqualTo(0);
     }
 
     @CsvSource({
