@@ -1,7 +1,6 @@
 package racing.model;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -10,9 +9,9 @@ public class RacingCars {
 
     private List<RacingCar> racingCars;
 
-    public RacingCars(int racingCarCount) {
-        validateMinCount(racingCarCount);
-        prepare(racingCarCount);
+    public RacingCars(String[] racingCarNames) {
+        validateMinCount(racingCarNames.length);
+        prepare(racingCarNames);
     }
 
     private void validateMinCount(int racingCarCount) {
@@ -21,14 +20,10 @@ public class RacingCars {
         }
     }
 
-    private void prepare(int racingCarCount) {
-        racingCars = Stream.generate(RacingCar::new)
-                .limit(racingCarCount)
+    private void prepare(String[] racingCarNames) {
+        racingCars = Arrays.stream(racingCarNames)
+                .map(name -> new RacingCar(name))
                 .collect(toList());
-    }
-
-    public int getSize() {
-        return racingCars.size();
     }
 
     public void moveForwardOneStepOrStop(MovingCondition movingCondition) {
@@ -37,7 +32,13 @@ public class RacingCars {
         }
     }
 
-    public int[] getPositions() {
+    String[] getNames() {
+        return racingCars.stream()
+                .map(RacingCar::getName)
+                .toArray(String[]::new);
+    }
+
+    int[] getPositions() {
         return racingCars.stream()
                 .mapToInt(RacingCar::getPosition)
                 .toArray();

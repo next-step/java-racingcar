@@ -1,16 +1,22 @@
 package racing.model;
 
 public class RacingCar {
-    private final Position position;
+    private final RacingCarName name;
+    private final RacingCarPosition position;
 
-    RacingCar() {
-        position = new Position();
+    RacingCar(String name) {
+        this.name = RacingCarName.valueOf(name);
+        this.position = new RacingCarPosition();
     }
 
     void moveForwardOneStepOrStop(MovingCondition movingCondition) {
         if (movingCondition.isMovable()) {
             position.increaseOne();
         }
+    }
+
+    String getName() {
+        return name.getName();
     }
 
     int getPosition() {

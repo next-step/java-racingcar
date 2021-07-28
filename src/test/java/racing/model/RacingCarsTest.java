@@ -2,36 +2,35 @@ package racing.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DisplayName("경주용 자동차 컬렉션 테스트")
 public class RacingCarsTest {
 
-    @DisplayName("자동차는 생성시 주입받은 자동차 개수 만큼 생성되어야 한다")
+    @DisplayName("자동차 이름은 주입받은 자동차 이름으로 만들어져야 한다.")
     @Test
-    public void initialRacingCarsCountTest() {
+    public void racingCarNamesTest() {
         // given
-        int racingCarCount = 5;
+        String[] racingCarNames = new String[]{ "pobi", "crong", "honux" };
 
         // when
-        RacingCars racingCars = new RacingCars(racingCarCount);
+        RacingCars racingCars = new RacingCars(racingCarNames);
 
         // then
-        assertEquals(racingCars.getSize(), racingCarCount);
+        assertThat(racingCars.getNames()).containsExactly(racingCarNames);
     }
 
-    @DisplayName("자동차 대수가 0대 이하라면, IllegalArgumentException이 발생한다.")
-    @ParameterizedTest
-    @ValueSource(ints = {-1, 0})
-    public void minRacingCarCountExceptionTest(int racingCarCount) {
+    @DisplayName("자동차 대수가 1대 미만이면, IllegalArgumentException이 발생한다.")
+    @Test
+    public void minRacingCarCountExceptionTest() {
+        // given
+        String[] racingCarNames = new String[0];
+
         // when, then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new RacingCars(racingCarCount))
+                .isThrownBy(() -> new RacingCars(racingCarNames))
                 .withMessage("자동차는 1대 이상이어야 합니다.");
     }
 
@@ -39,7 +38,7 @@ public class RacingCarsTest {
     @Test
     public void moveTest() {
         // given
-        RacingCars racingCars = new RacingCars(3);
+        RacingCars racingCars = new RacingCars(new String[]{ "pobi", "crong", "honux" });
 
         // when
         racingCars.moveForwardOneStepOrStop(() -> true);
@@ -52,7 +51,7 @@ public class RacingCarsTest {
     @Test
     public void stopTest() {
         // given
-        RacingCars racingCars = new RacingCars(3);
+        RacingCars racingCars = new RacingCars(new String[]{ "pobi", "crong", "honux" });
 
         // when
         racingCars.moveForwardOneStepOrStop(() -> false);
