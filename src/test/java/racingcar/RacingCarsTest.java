@@ -1,42 +1,72 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import racingcar.exception.OverFiveCarNameException;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
 import racingcar.strategy.AlwaysMovableStrategy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 class RacingCarsTest {
+	private static final int INITIAL_POSITION = 0;
+	private static final int POSITION_AFTER_ONE_MOVE = 1;
 	RacingCars racingCars;
 
 	@BeforeEach
 	void setUp() throws OverFiveCarNameException {
-		racingCars = new RacingCars(3, new AlwaysMovableStrategy());
+		racingCars = new RacingCars(new String[]{"chang", "sub", "kwak"}, new AlwaysMovableStrategy());
 	}
 
+	@Test
+	void 자동차그룹을_전부_forward하는_forwardCars를_호출하면_모든_자동차가_이동한다() {
+		// given
+		List<RacingCar> racingCarList = racingCars.getCars();
+
+		// check given data
+		for (int i = 0 ; i < racingCarList.size() ; i++) {
+			assertThat(racingCarList.get(i).getPosition()).isEqualTo(INITIAL_POSITION);
+		}
+
+		// when
+		racingCars.forwardCars();
+
+		// then
+		for (int i = 0 ; i < racingCarList.size() ; i++) {
+			assertThat(racingCarList.get(i).getPosition()).isEqualTo(POSITION_AFTER_ONE_MOVE);
+		}
+	}
 
 	@ParameterizedTest
-	@ValueSource(ints = { 1, 2, 4 })
-	void 생성자를_호출하였을_때_초기값_0으로_위치값이_세팅된다(int carNum) throws OverFiveCarNameException {
-		racingCars = new RacingCars(carNum, new AlwaysMovableStrategy());
+	@MethodSource
+	void 생성자를_호출하였을_때_초기값_0으로_위치값이_세팅된다(String[] carNames) throws OverFiveCarNameException {
+		racingCars = new RacingCars(carNames, new AlwaysMovableStrategy());
 		racingCars.getCars().stream().forEach(racingCar -> {
 			assertThat(racingCar.getRacingCarDashString()).isEqualTo("");
 		});
+	}
+
+	private static Stream<Arguments> 생성자를_호출하였을_때_초기값_0으로_위치값이_세팅된다() {
+		return Stream.of(
+			Arguments.of(
+				(Object) new String[] {"chang"}
+			),
+			Arguments.of(
+				(Object) new String[] {"chang", "sub"}
+			),
+			Arguments.of(
+				(Object) new String[] {"chang", "sub", "kwak", "bravo"}
+			)
+		);
 	}
 
 	@Test
@@ -91,5 +121,11 @@ class RacingCarsTest {
 						"red, green, blue"
 				)
 		);
+	}
+
+	@Test
+	void 길이가_5이하의_자동차이름_문자열이_주어질_때_예외가_발생하지_않는다() {
+		String[] carNames = { "five", "chang", "long" };
+		assertDoesNotThrow(() -> new RacingCars(carNames, null));
 	}
 }
