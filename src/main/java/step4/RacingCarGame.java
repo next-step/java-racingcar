@@ -14,7 +14,7 @@ public class RacingCarGame {
         ArrayList<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(names[i], new CarEngine()));
+            cars.add(new Car(names[i], new CarEngine(), new RandomDrivingStrategy()));
         }
 
         CarStadium carstadium = new CarStadium(referee, cars);

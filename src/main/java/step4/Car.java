@@ -4,18 +4,21 @@ public class Car {
 
     private static final int LIMIT_NAME_LENGTH = 5;
     private final String name;
+    private final MovingStrategy movingStrategy;
 
     private final CarEngine carEngine;
     private int movedCount = 0;
 
-    public Car(String carName, CarEngine carEngine) {
+
+    public Car(String carName, CarEngine carEngine, MovingStrategy movingStrategy) {
         checkNameLength(carName);
         this.name = carName;
         this.carEngine = carEngine;
+        this.movingStrategy = movingStrategy;
     }
 
-    public void move(int randomValue) {
-        if (!carEngine.canMove(randomValue)) {
+    public void move() {
+        if (!carEngine.canMove(movingStrategy.move())) {
             return;
         }
 
