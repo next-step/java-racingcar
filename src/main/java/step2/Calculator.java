@@ -1,5 +1,7 @@
 package step2;
 
+import java.util.Arrays;
+
 public class Calculator {
     public static int calculate(String value) {
         validate(value);
@@ -46,33 +48,6 @@ public class Calculator {
     }
 
     private static int doCalculate(String operator, int first, int second) {
-        if ("+".equals(operator)) {
-            return sum(first, second);
-        } else if ("-".equals(operator)) {
-            return sub(first, second);
-        } else if ("*".equals(operator)) {
-            return mul(first, second);
-        } else if ("/".equals(operator)) {
-            return div(first, second);
-        } else {
-            throw new IllegalArgumentException("Unsupported Operation : " + operator);
-        }
+        return OperatorUtil.operate(operator, first, second);
     }
-
-    private static int sum(int first, int second) {
-        return first + second;
-    }
-
-    private static int sub(int first, int second) {
-        return first - second;
-    }
-
-    private static int mul(int first, int second) {
-        return first * second;
-    }
-
-    private static int div(int first, int second) {
-        return first / second;
-    }
-
 }
