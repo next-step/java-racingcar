@@ -5,11 +5,14 @@ import java.util.List;
 
 public class CarRacingGame {
 
-    private GameSetting gameSetting;
-    private List<Round> playedRounds = new ArrayList<>();
+    private final GameSetting gameSetting;
+    private CarRacingGameResult gameResult;
 
     public CarRacingGame(GameSetting gameSetting) {
+        List<Round> playedRounds = new ArrayList<>();
+
         this.gameSetting = gameSetting;
+        this.gameResult = new CarRacingGameResult(playedRounds);
     }
 
     public void gameStart() {
@@ -19,7 +22,7 @@ public class CarRacingGame {
 
 
     private void playAllRounds(RacingCars cars) {
-        int roundCount = gameSetting.getRoundCount();
+        int roundCount = gameSetting.getRoundCount().getInt();
 
         for (int i = 0; i < roundCount; i++) {
             playOneRound(cars);
@@ -29,11 +32,10 @@ public class CarRacingGame {
     private void playOneRound(RacingCars cars) {
         Round round = new Round();
         round.start(cars, gameSetting);
-
-        playedRounds.add(round);
+        this.gameResult.getPlayedRounds().add(round);
     }
 
-    public List<Round> getPlayedRounds() {
-        return playedRounds;
+    public CarRacingGameResult getCarRacingGameResult() {
+        return this.gameResult;
     }
 }

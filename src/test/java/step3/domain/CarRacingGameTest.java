@@ -3,43 +3,67 @@ package step3.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import step3.runType.TestRunStrategy;
-import step3.ui.InputView;
 
 class CarRacingGameTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"3,5,3,5", "5,7,5,7", "100,135,100,135"}, delimiter = ',')
+    @MethodSource("provideTestGameSettings")
     @DisplayName("테스트 운행시, 입력받은 자동차 대수와 시도회수에 의해 일정한 게임결과를 얻는다. ")
-    void testRacingGamePlay(int carCount, int roundCount,
-        int expectedCarCount, int expectedRoundCount) {
-        GameSetting testGameSetting = getTestGameSettingWithCarCountAndRoundCount(
-            carCount, roundCount);
+    void testRacingGamePlay(GameSetting testGameSetting) {
 
         CarRacingGame carRacingGame = new CarRacingGame(testGameSetting);
         carRacingGame.gameStart();
-        List<Round> playedRounds = carRacingGame.getPlayedRounds();
+
+        CarRacingGameResult gameResult = carRacingGame.getCarRacingGameResult();
+        List<Round> playedRounds = gameResult.getPlayedRounds();
 
         Round finalRound = playedRounds.get(playedRounds.size() - 1);
 
-        assertThat(playedRounds.size()).isEqualTo(expectedRoundCount);
-        assertThat(finalRound.getResults().size()).isEqualTo(expectedCarCount);
-        assertThat(finalRound.getResults()).containsOnly(expectedRoundCount);
+        assertThat(playedRounds.size()).isEqualTo(testGameSetting.getRoundCount().getInt());
+        assertThat(finalRound.getCarRunResults().size()).isEqualTo(testGameSetting.getCarCount());
+
+        for (CarRunResult result : finalRound.getCarRunResults()) {
+            assertThat(result.getRunDistance()).isEqualTo(testGameSetting.getRoundCount().getInt());
+        }
 
     }
 
+    private static Stream<Arguments> provideTestGameSettings() {
 
-    private static GameSetting getTestGameSettingWithCarCountAndRoundCount(int carCount,
-        int roundCount) {
-        Map<String, Integer> userInputs = new HashMap<>();
-        userInputs.put(InputView.CAR_COUNT_KEY, carCount);
-        userInputs.put(InputView.ROUND_COUNT_KEY, roundCount);
+        String carNameString1 = "car1";
+        String carNameString2 = "car1,car2,car3";
+        String carNameString3 = "car1,car2,car3, car4, car5";
+
+        String testRoundCount1 = "1";
+        String testRoundCount2 = "50";
+        String testRoundCount3 = "100";
+
+        GameSetting testGameSetting1 = getTestGameSetting(carNameString1, testRoundCount1);
+        GameSetting testGameSetting2 = getTestGameSetting(carNameString2, testRoundCount2);
+        GameSetting testGameSetting3 = getTestGameSetting(carNameString3, testRoundCount3);
+
+        return Stream.of(
+            Arguments.of(testGameSetting1),
+            Arguments.of(testGameSetting2),
+            Arguments.of(testGameSetting3)
+        );
+    }
+
+    private static GameSetting getTestGameSetting(String testCarNames, String testRoundCount) {
+
+        List<String> userInputs = new ArrayList<>();
+        userInputs.add(testCarNames);
+        userInputs.add(testRoundCount);
         return new GameSetting(userInputs, new TestRunStrategy());
     }
+
+
 }
