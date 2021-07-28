@@ -13,4 +13,16 @@ public class RacingCar {
         distance++;
     }
 
+    public String initPrintTxt(){
+        return name+" : ";
+    }
+
+    public String drawDistance(String code){
+        String distanceLine = initPrintTxt();
+        for(int i = 0; i < distance; i++){
+            distanceLine+=code;
+        }
+        return distanceLine;
+    }
+
 }
