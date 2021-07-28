@@ -28,14 +28,14 @@ public class NumberTest {
     @DisplayName("0에서 9 사이의 숫자가 아니라면, IllegalArgumentException이 발생한다")
     @ParameterizedTest
     @ValueSource(ints = {-1, 10})
-    public void outOfBoundsNumberExceptionTest(int number) {
+    public void outOfBoundsExceptionTest(int number) {
         // when, then
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> Number.valueOf(number))
                 .withMessage(String.format("값이 유효한 범위 안에 있지 않습니다. (number: %d)", number));
     }
 
-    @DisplayName("이전에 이미 생성된 Number 객체의 숫자 값과 같으면, 같은 Number 객체를 재사용한다.")
+    @DisplayName("이전에 이미 생성된 Number 객체의 숫자 값과 같으면, 같은 객체를 재사용한다.")
     @Test
     public void sameNumberReuseTest() {
         // given, when, then
