@@ -34,7 +34,7 @@ public class ResultView {
     }
 
     public String checkIsMoved(Racing racingResult, int car, String raceResultConvert){
-        if(racingResult.getDetailResult(car)){
+        if(racingResult.compareDetailResult(car)){
             raceResultConvert += RACING_SIGN;
         }
         return raceResultConvert;

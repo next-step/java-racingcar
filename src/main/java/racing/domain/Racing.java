@@ -11,8 +11,8 @@ public class Racing {
         return result.length;
     }
 
-    public boolean getDetailResult(int car) {
-        return result[car];
+    public boolean compareDetailResult(int car) {
+        return result[car] == true;
     }
 
 }
