@@ -1,21 +1,23 @@
 package carracing.controller;
 
+import carracing.domain.RaceManager;
+import carracing.domain.RaceResult;
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import carracing.domain.RaceManager;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class RaceControllerTest {
 
-    RaceController raceController = new RaceController(new RaceManager());
+    private final RaceController raceController = new RaceController(new RaceManager());
 
     @Test
     @DisplayName("carNames 리스트가 null 인 경우")
@@ -65,6 +67,29 @@ public class RaceControllerTest {
         assertThatThrownBy(throwingCallable)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(message);
+    }
+
+    @Test
+    @DisplayName("play 테스트")
+    public void play() {
+        // given
+        List<String> carNames = Arrays.asList("iiaii", "!!e!!");
+        int roundNumber = 3;
+        int expectedWinnerSizeGte = 1;
+        int expectedWinnerSizeLte = 2;
+        int expectedRoundNumber = 4;
+
+        // when
+        RaceResult raceResult = raceController.play(carNames, roundNumber);
+        int winnerSize = raceResult.getWinners().size();
+        int roundRecordSize = raceResult.getRoundRecords().size();
+
+        // then
+        assertThat(winnerSize)
+                .isGreaterThanOrEqualTo(expectedWinnerSizeGte)
+                .isLessThanOrEqualTo(expectedWinnerSizeLte);
+        assertThat(roundRecordSize)
+                .isEqualTo(expectedRoundNumber);
     }
 
 }
