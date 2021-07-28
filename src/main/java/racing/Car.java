@@ -4,6 +4,7 @@ public class Car {
 
     private static final int LOWER_BOUND = 4;
     private static final int UPPER_BOUND = 9;
+
     private Position position;
 
     public Car() {
@@ -15,8 +16,9 @@ public class Car {
     }
 
     public void move(int number) {
-        if (number >= LOWER_BOUND && number <= UPPER_BOUND)
+        if (number >= LOWER_BOUND && number <= UPPER_BOUND) {
             this.position = position.add(1);
+        }
     }
 
     public int getNowPosition() {

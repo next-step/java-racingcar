@@ -12,7 +12,7 @@ public class RacingGame {
         Racing racing = new Racing(carCount, moveCount);
 
         outputView.startPrintResult();
-        while(!racing.isEnd()){
+        while (!racing.isEnd()) {
             CarsDTO carsDTO = racing.play();
             outputView.printResult(carsDTO);
         }
