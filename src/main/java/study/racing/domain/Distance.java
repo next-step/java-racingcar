@@ -4,8 +4,9 @@ import java.util.Objects;
 
 public class Distance {
 
-  public static final int MOVE_DISTANCE = 1;
   private int moveDistance;
+  
+  public static final int MOVE_DISTANCE = 1;
 
   public Distance() {
 
