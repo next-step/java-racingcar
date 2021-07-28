@@ -21,6 +21,7 @@ public class CarsTest {
     * @CsvSource의 기본 구분 문자가 ',' 이기 때문에
     * 테스트 에서는 이름 구분자를 '|' 로 변경
     */
+
     private String newAnonymousName(int identity) {
         return String.valueOf(identity);
     }
@@ -29,7 +30,7 @@ public class CarsTest {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < size; i++) {
             builder.append(
-                    newAnonymousName(i)).append("|");
+                    newAnonymousName(i)).append(",");
         }
         if (builder.length() > 0)
             return builder.substring(0, builder.length() - 1);
