@@ -61,7 +61,7 @@ public class Car implements Comparable<Car>{
 
     public void move(int randomNumber) {
         if(strategy.isMove(randomNumber)){
-            this.position += 1;
+            this.position ++;
         }
     }
 }

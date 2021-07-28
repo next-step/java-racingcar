@@ -29,7 +29,7 @@ class CarTest {
         assertThat(car.getName()).isEqualTo(name);
     }
 
-    @DisplayName("자동차 대소비교 (위치가 높으면 큰것)")
+    @DisplayName("자동차 대소비교 (position 으로 대소비교)")
     @Test
     void compareCarsByPositionTest(){
         Car car1 = Car.of("car1",10);
