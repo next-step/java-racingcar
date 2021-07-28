@@ -1,5 +1,8 @@
 package carracing;
 
+import carracing.domain.Car;
+import carracing.domain.Position;
+import carracing.domain.RandomNumber;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
