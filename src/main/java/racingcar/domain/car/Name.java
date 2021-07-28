@@ -13,7 +13,7 @@ public class Name {
             throw new IllegalArgumentException("이름값이 있어야 합니다.");
         }
         if (name.length() > MAXLENGTH) {
-            throw new IllegalArgumentException("이름이 5자 이하만 가능합니다.");
+            throw new IllegalArgumentException("이름이 " + MAXLENGTH + "자 이하만 가능합니다.");
         }
         this.name = name;
     }

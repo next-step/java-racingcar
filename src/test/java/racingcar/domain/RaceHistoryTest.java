@@ -26,7 +26,7 @@ public class RaceHistoryTest {
     @Test
     void move() {
         cars = cars.move(() -> true);
-        raceHistory = raceHistory.update(cars);
+        raceHistory.update(cars);
 
         List<Car> carList = Arrays.asList(Car.createWithNameAndPosition("pobi", 1),
                 Car.createWithNameAndPosition("crong", 1),
@@ -41,7 +41,7 @@ public class RaceHistoryTest {
     void moves_multiple_times() {
         for (int i = 0; i < 2; i++) {
             cars = cars.move(() -> true);
-            raceHistory = raceHistory.update(cars);
+            raceHistory.update(cars);
         }
         for (int i = 0; i < 2; i++) {
             List<Car> carList = Arrays.asList(Car.createWithNameAndPosition("pobi", i + 1),
