@@ -3,6 +3,7 @@ package study.step2;
 public class Calculator {
 
     private static final String emptyStr = " ";
+
     private int calculatorResult;
     private String[] calculatorInputStrings;
 
