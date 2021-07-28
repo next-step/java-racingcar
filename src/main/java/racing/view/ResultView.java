@@ -1,17 +1,9 @@
 package racing.view;
 
-import racing.domain.car.BasicCar;
-import racing.domain.car.Car;
-import racing.domain.car.Cars;
+import racing.domain.dto.GameResponse;
 
 public interface ResultView {
-    void printResultTitle();
-
-    void printAllCarLocation(Cars cars);
-
-    void printCarLocation(Car car);
+    void printResult(GameResponse response);
 
     void printException(Exception e);
-
-    void printWinners(Cars cars);
 }

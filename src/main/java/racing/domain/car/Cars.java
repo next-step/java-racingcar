@@ -1,7 +1,5 @@
 package racing.domain.car;
 
-import racing.domain.Location;
-import racing.domain.Name;
 import racing.domain.fuel.Fuel;
 import racing.exception.EmptyCarException;
 
@@ -9,51 +7,38 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars implements Iterable<Car> {
-    private final Map<Name, Car> values;
+    private final Set<Car> values;
 
-    public Cars(Map<Name, Car> values) {
+    public Cars(Set<Car> values) {
         this.values = values;
     }
 
-    public Cars() {
-        this(new HashMap<>());
+    public Optional<Car> findWinner() {
+        return values.stream()
+                .max(Car::compareLocation);
     }
 
-    private Location bestLocation() {
-        return values.values().stream()
-                .map(Car::location)
-                .max(Comparator.comparing(Location::value))
-                .orElse(Location.empty());
+    public Cars findWinners() {
+        Car winner = findWinner().orElseThrow(EmptyCarException::new);
+
+        return new Cars(this.values.stream()
+                .filter(iCar -> iCar.compareLocation(winner) == 0)
+                .collect(Collectors.toSet()));
     }
 
-    public Cars bestCars() {
-        if (values.isEmpty())
-            throw new EmptyCarException();
-
-        Location bestLocation = bestLocation();
-        return new Cars(
-                values.values().stream()
-                .filter(c -> c.checkLocation(bestLocation))
-                .collect(Collectors.toMap(
-                        Car::name, i -> i
-                ))
-        );
+    public Cars moveAll(Fuel fuel) {
+        Set<Car> newList = new HashSet<>();
+        for (Car iCar : this) {
+            newList.add(
+                    iCar.move(fuel)
+            );
+        }
+        return new Cars(newList);
     }
 
-    public void moveAll(Fuel fuel) {
-        for (Car car : this)
-            car.move(fuel);
-    }
-
-    /* 아래는 Forward 메소드 */
-    public boolean containsName(Name name) {
-        return this.values.containsKey(name);
-    }
-
-    public void add(Car car) {
-        if (values.containsKey(car.name()))
-            throw new IllegalStateException("중복된 자동차 이름이 존재 합니다.");
-        values.put(car.name(), car);
+    /* 단순 Forward 메소드들 (테스트 X) */
+    public boolean isEmpty() {
+        return values.isEmpty();
     }
 
     public int size() {
@@ -62,6 +47,19 @@ public class Cars implements Iterable<Car> {
 
     @Override
     public Iterator<Car> iterator() {
-        return values.values().iterator();
+        return values.iterator();
+    }
+
+    @Override
+    public boolean equals(Object compareObject) {
+        if (this == compareObject) return true;
+        if (compareObject == null || getClass() != compareObject.getClass()) return false;
+        Cars cars = (Cars) compareObject;
+        return Objects.equals(values, cars.values);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(values);
     }
 }

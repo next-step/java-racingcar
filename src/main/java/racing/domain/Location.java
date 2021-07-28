@@ -1,6 +1,6 @@
 package racing.domain;
 
-public class Location {
+public class Location extends Number implements Comparable<Location> {
     private static final String UNDER_LOCATION_MESSAGE = "연료는 음수르 충전할 수 없습니다.";
 
     private static final int MIN_VALUE = 0;
@@ -8,17 +8,9 @@ public class Location {
 
     private final int value;
 
-    public Location() {
-        this(0);
-    }
-
     public Location(int location) {
         validate(location);
         this.value = location;
-    }
-
-    public int value() {
-        return value;
     }
 
     public static Location empty() {
@@ -36,7 +28,7 @@ public class Location {
 
     public Location add(Location location) {
         return new Location(
-                this.value() + location.value()
+                this.value + location.value
         );
     }
 
@@ -46,10 +38,10 @@ public class Location {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Location) {
-            Location compareLocation = (Location) obj;
-            return this.value() == compareLocation.value();
+    public boolean equals(Object compareObject) {
+        if (compareObject instanceof Location) {
+            Location compareLocation = (Location) compareObject;
+            return this.value == compareLocation.value;
         }
         return false;
     }
@@ -57,6 +49,31 @@ public class Location {
     @Override
     public String toString() {
         return String.valueOf(value);
+    }
+
+    @Override
+    public int compareTo(Location compareLocation) {
+        return Integer.compare(this.value, compareLocation.value);
+    }
+
+    @Override
+    public int intValue() {
+        return value;
+    }
+
+    @Override
+    public long longValue() {
+        return value;
+    }
+
+    @Override
+    public float floatValue() {
+        return (float) value;
+    }
+
+    @Override
+    public double doubleValue() {
+        return value;
     }
 
     private static class InnerInstanceClazz {

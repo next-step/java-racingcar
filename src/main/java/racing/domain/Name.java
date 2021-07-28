@@ -16,21 +16,17 @@ public class Name {
             throw new InvalidInputException("자동차의 이름은 " + MAX_LENGTH + "자를 초과할 수 없습니다.");
     }
 
-    public String value() {
-        return value;
-    }
-
     @Override
     public int hashCode() {
         return value.hashCode();
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Name))
+    public boolean equals(Object compareObject) {
+        if (!(compareObject instanceof Name))
             return false;
-        Name compareName = (Name) obj;
-        return this.value().equals(compareName.value());
+        Name compareName = (Name) compareObject;
+        return this.value.equals(compareName.value);
     }
 
     @Override

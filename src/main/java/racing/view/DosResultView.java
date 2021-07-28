@@ -2,34 +2,46 @@ package racing.view;
 
 import racing.domain.car.Car;
 import racing.domain.car.Cars;
+import racing.domain.dto.GameResponse;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static racing.view.DosResultView.Text.*;
 
 public class DosResultView implements ResultView {
-    private static final String NAME_DELIMITER = ",";
-    private static final char LOCATION_UNIT = '-';
+    private static final String LOCATION_REPEAT_UNIT = "-";
 
-    @Override
     public void printResultTitle() {
         System.out.println(RESULT_TITLE);
         System.out.println();
     }
 
-    @Override
-    public void printAllCarLocation(Cars cars) {
-        for (Car iCar : cars)
-            printCarLocation(iCar);
-        System.out.println();
+    public void printWinners(Cars winners) {
+        List<String> winnerNames = new ArrayList<>();
+        for (Car iCar : winners)
+            winnerNames.add(iCar.toString());
+        System.out.println(
+                WINNERS.formatString(winnerNames.toArray())
+        );
     }
 
     @Override
-    public void printCarLocation(Car car) {
-        int locationValue = car.location().value();
-        System.out.print(
-                CAR_NAME.formatString(car.name())
-        );
-        for (int i = 0; i < locationValue; i++)
-            System.out.print(LOCATION_UNIT);
+    public void printResult(GameResponse response) {
+        printResultTitle();
+
+        for (Cars iCars : response) {
+            printCarsLocation(iCars);
+        }
+        printWinners(response.lastValue().findWinners());
+    }
+
+    private void printCarsLocation(Cars cars) {
+        for (Car iCar : cars) {
+            System.out.println(
+                    CAR_LOCATION.formatString(iCar, iCar.locationToRepeatString(LOCATION_REPEAT_UNIT))
+            );
+        }
         System.out.println();
     }
 
@@ -38,20 +50,8 @@ public class DosResultView implements ResultView {
         System.out.println(EXCEPTION.formatString(e.getMessage()));
     }
 
-    @Override
-    public void printWinners(Cars cars) {
-        StringBuilder builder = new StringBuilder();
-        for (Car iCar : cars.bestCars()) {
-            builder.append(iCar.name())
-                    .append(NAME_DELIMITER);
-        }
-        String strWinners = builder.substring(0, builder.length() - 1); // 우승자는 반드시 나온다.
-
-        System.out.println(WINNERS.formatString(strWinners));
-    }
-
     protected enum Text {
-        CAR_NAME("%s : "),
+        CAR_LOCATION("%s : %s"),
         RESULT_TITLE("실행 결과"),
         EXCEPTION("[ERROR] %s"),
         WINNERS("%s가 최종 우승 했습니다.");

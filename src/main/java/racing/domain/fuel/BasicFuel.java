@@ -11,14 +11,15 @@ public class BasicFuel implements Fuel {
         this.value = value;
     }
 
-    public int value() {
-        return value;
-    }
-
     private void validate(int value) {
         if (value < MIN_VALUE)
             throw new IllegalArgumentException(UNDER_EMPTY_MESSAGE);
         if (value > MAX_VALUE)
             throw new IllegalArgumentException(OVER_FULL_MESSAGE);
+    }
+
+    @Override
+    public boolean isMovable() {
+        return this.value >= MOVABLE_VALUE;
     }
 }
