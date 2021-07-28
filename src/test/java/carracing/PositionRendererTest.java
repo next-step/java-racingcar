@@ -1,5 +1,7 @@
 package carracing;
 
+import carracing.domain.Position;
+import carracing.view.PositionRenderer;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -15,13 +17,14 @@ class PositionRendererTest {
     @NullSource
     public void notNullTest(Position nullPosition) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> PositionRenderer.render(nullPosition));
+                .isThrownBy(() -> PositionRenderer.of(nullPosition));
     }
 
     @ParameterizedTest(name = "Position 객체의 value 만큼 '-' 를 반복하여 그린다.")
     @ValueSource(ints = {0, 1, 5})
     public void positionRenderTest(int positionValue) {
-        assertThat(PositionRenderer.render(Position.of(positionValue)))
+        PositionRenderer renderer = PositionRenderer.of(Position.of(positionValue));
+        assertThat(renderer.render())
                 .isEqualTo(String.join("", Collections.nCopies(positionValue, "-")));
     }
 

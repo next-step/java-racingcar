@@ -1,4 +1,4 @@
-package carracing;
+package carracing.domain;
 
 public class RandomNumber {
 
@@ -25,5 +25,18 @@ public class RandomNumber {
 
     public boolean isOver(int number) {
         return this.number > number;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RandomNumber)) return false;
+        RandomNumber that = (RandomNumber) o;
+        return this.number == that.number;
+    }
+
+    @Override
+    public int hashCode() {
+        return number;
     }
 }

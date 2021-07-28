@@ -1,10 +1,11 @@
-package carracing;
+package carracing.domain;
 
 import java.util.Objects;
 
 public class Car {
 
-    public static final int MOVE_THRESHOLD = 3;
+    private static final int MOVE_THRESHOLD = 3;
+
     private Position position;
 
     private Car(Position position) {
@@ -20,7 +21,7 @@ public class Car {
     }
 
     public void move(RandomNumber randomNumber) {
-        if (randomNumber.isOver(MOVE_THRESHOLD)) {
+        if (Objects.requireNonNull(randomNumber).isOver(MOVE_THRESHOLD)) {
             position = position.next();
         }
     }
