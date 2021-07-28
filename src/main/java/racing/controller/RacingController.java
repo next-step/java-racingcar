@@ -5,9 +5,8 @@ import racing.view.RacingView;
 
 public class RacingController {
 
-	private static final RacingView racingView = new RacingView();
-
 	public static void main(String[] args) {
+		RacingView racingView = new RacingView();
 		String carsName = racingView.firstRequestView();
 		int roundCount = racingView.secondRequestView();
 		Racing racing = Racing.raceStart(carsName);
