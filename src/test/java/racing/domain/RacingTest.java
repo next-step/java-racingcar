@@ -29,15 +29,15 @@ public class RacingTest {
 	}
 
 	private Cars racingMovedResult() {
-		Car car1 = new dummyCar("car1", 2);
-		Car car2 = new dummyCar("car2", 3);
-		Car car3 = new dummyCar("car3", 2);
+		Car car1 = new DummyCar("car1", 2);
+		Car car2 = new DummyCar("car2", 3);
+		Car car3 = new DummyCar("car3", 2);
 
 		return new Cars(car1, car2, car3);
 	}
 
-	private static class dummyCar extends Car {
-		public dummyCar(String carName, int position) {
+	private static class DummyCar extends Car {
+		public DummyCar(String carName, int position) {
 			super(carName, position);
 		}
 
