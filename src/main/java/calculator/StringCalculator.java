@@ -6,7 +6,7 @@ import errors.InvalidInputException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -72,12 +72,14 @@ public class StringCalculator {
     }
 
     private static int compareInputToOperator(String inputElement, String postElement, int index) throws InvalidInputException {
+        Map<String, Operator> operatorEnumMap = new HashMap<>();
         for (Operator o : Operator.values()) {
-            if (inputElement.trim().equals(o.getOperator())) {
-                answer = o.expression.apply(answer, toInt(postElement));
-                return ++index;
-            }
+            operatorEnumMap.put(o.operator, o);
         }
-        throw new InvalidInputException("올바른 연산자를 입력해주세요."); //숫자나 사칙연산 이외의 입력값 예외처리
+        Operator inputOperator = operatorEnumMap.get(inputElement);
+        if (Objects.isNull(inputOperator))
+            throw new InvalidInputException("올바른 연산자를 입력해주세요."); //숫자나 사칙연산 이외의 입력값 예외처리
+        answer = inputOperator.expression.apply(answer, toInt(postElement));
+        return ++index;
     }
 }
