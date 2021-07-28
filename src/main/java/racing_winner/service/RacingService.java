@@ -1,6 +1,7 @@
 package racing_winner.service;
 
 import racing_winner.domain.RacingCar;
+import racing_winner.utils.CommonUtils;
 import racing_winner.utils.RacingUtils;
 
 import java.util.ArrayList;
@@ -24,4 +25,17 @@ public class RacingService {
 
         return racingCarList;
     }
+
+    private boolean randomPlay() {
+        int randomNumber = CommonUtils.randomNumber();
+        CommonUtils.checkRandomNumber(randomNumber);
+        return CommonUtils.compareNumber(randomNumber);
+    }
+
+    private void race(RacingCar racingCar) {
+        if (randomPlay()) {
+            racingCar.move();
+        }
+    }
+
 }
