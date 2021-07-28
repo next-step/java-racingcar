@@ -1,4 +1,4 @@
-package step3.enums;
+package step4.enums;
 
 import java.util.function.Predicate;
 import java.util.stream.Stream;

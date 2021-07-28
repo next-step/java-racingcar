@@ -1,8 +1,9 @@
-package step3;
+package step4;
 
-import step3.enums.MOVE;
-import step3.interfaces.OutputInterface;
+import step4.interfaces.OutputInterface;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -11,20 +12,21 @@ import java.util.stream.Stream;
 public class RacingGame {
     // Observable Interfaces
     private OutputInterface outputInterface;
-
     // Class Members
-    private List<Car> cars;
-
     private int currentTurn = 0;
-
-    RacingGameConfiguration racingGameConfiguration;
+    private RacingEntry racingEntry;
+    private RacingGameConfiguration racingGameConfiguration;
 
     public RacingGame() {
     }
 
     public RacingGame(RacingGameConfiguration racingGameConfiguration) {
         this.racingGameConfiguration = racingGameConfiguration;
-        this.cars = createCars(racingGameConfiguration);
+        this.racingEntry = getRacingEntry(racingGameConfiguration);
+    }
+
+    private RacingEntry getRacingEntry(RacingGameConfiguration racingGameConfiguration) {
+        return new RacingEntry(CarFactory.createCarsFromNames(racingGameConfiguration.getCarNames()));
     }
 
     public void attach(OutputInterface output) {
@@ -45,18 +47,16 @@ public class RacingGame {
         return this.currentTurn;
     }
 
-    public List<Car> getCars() {
-        return this.cars.subList(0, this.cars.size());
+    public RacingEntry getRacingEntry() {
+        return this.racingEntry;
     }
 
-    private List<Car> createCars(RacingGameConfiguration racingGameConfiguration) {
-        return Stream.generate(Car::new)
-                .limit(racingGameConfiguration.getNumberOfCars())
-                .collect(Collectors.toList());
+    public RacingGameConfiguration getRacingGameConfiguration() {
+        return this.racingGameConfiguration;
     }
 
     private void nextTurn() {
-        this.cars.forEach(Car::goOrStop);
+        this.racingEntry.getCars().forEach(Car::goOrStop);
         this.currentTurn += 1;
     }
 
