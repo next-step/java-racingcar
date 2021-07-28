@@ -38,4 +38,11 @@ public class RacingService {
         }
     }
 
+    public List<RacingCar> exec(List<RacingCar> racingCarList){
+        for (RacingCar racingCar : racingCarList){
+            race(racingCar);
+        }
+        return racingCarList;
+    }
+
 }

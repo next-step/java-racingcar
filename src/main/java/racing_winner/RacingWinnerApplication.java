@@ -16,5 +16,9 @@ public class RacingWinnerApplication {
         int totalRound = inputView.getRacingRound();
         List<RacingCar> racingCarList = racingService.setInitialCarList(totalRound, racingCar);
 
+        for (int round = 0; round < totalRound; round++) {
+            racingCarList = racingService.exec(racingCarList);
+        }
+
     }
 }
