@@ -15,11 +15,15 @@ public class RacingCar {
         }
     }
 
-    String getName() {
+    public String getName() {
         return name.getName();
     }
 
-    int getPosition() {
+    public int getPosition() {
         return position.getPosition();
+    }
+
+    boolean isEqualPosition(int position) {
+        return this.position.isEqual(position);
     }
 }

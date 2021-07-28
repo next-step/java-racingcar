@@ -12,4 +12,8 @@ public class RacingCarPosition {
     int getPosition() {
         return position;
     }
+
+    boolean isEqual(int position) {
+        return this.position == position;
+    }
 }

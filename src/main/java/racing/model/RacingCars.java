@@ -22,7 +22,7 @@ public class RacingCars {
 
     private void prepare(String[] racingCarNames) {
         racingCars = Arrays.stream(racingCarNames)
-                .map(name -> new RacingCar(name))
+                .map(RacingCar::new)
                 .collect(toList());
     }
 
@@ -42,5 +42,23 @@ public class RacingCars {
         return racingCars.stream()
                 .mapToInt(RacingCar::getPosition)
                 .toArray();
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
+    }
+
+    public List<RacingCar> getWinners() {
+        int maxPosition = getMaxPosition();
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.isEqualPosition(maxPosition))
+                .collect(toList());
+    }
+
+    private int getMaxPosition() {
+        return racingCars.stream()
+                .max(Comparator.comparing(RacingCar::getPosition))
+                .orElseThrow(NoSuchElementException::new)
+                .getPosition();
     }
 }
