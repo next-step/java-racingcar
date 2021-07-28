@@ -1,10 +1,15 @@
 package racingCar;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import sun.jvm.hotspot.tools.soql.SOQL;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,7 +38,16 @@ public class RacingCarTest {
         assertThat(RacingManager.isMovableNumber(number)).isEqualTo(expect);
     }
 
-   @Test
+    @DisplayName("레이싱카의 주행거리를 -로 변환하는 테스트")
+    @Test
+    void 주행거리_변환_테스트() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        PrintService printService = new PrintService();
+        Method method = printService.getClass().getDeclaredMethod("getDistance", int.class);
+        method.setAccessible(true);
+        assertThat(method.invoke("printService",3)).isEqualTo("---");
+    }
+
+    @Test
     void 차량_상태_출력() {
 
     }
