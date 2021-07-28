@@ -3,10 +3,12 @@ package racingcar;
 public class Race {
     private final Cars cars;
     private final int tryNum;
+    private final RaceStrategy strategy;
 
-    public Race(int carNum, int tryNum) {
+    public Race(int carNum, int tryNum, RaceStrategy strategy) {
         this.cars = new Cars(carNum);
         this.tryNum = tryNum;
+        this.strategy = strategy;
     }
 
     public RaceResult play() {
@@ -20,7 +22,7 @@ public class Race {
 
     private void moveCars() {
         for (Car car : cars) {
-            car.move();
+            strategy.move(car);
         }
     }
 }

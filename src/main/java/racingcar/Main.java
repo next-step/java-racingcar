@@ -5,7 +5,7 @@ public class Main {
         int carNum = InputView.readCarNum();
         int tryNum = InputView.readTryNum();
 
-        Race race = new Race(carNum, tryNum);
+        Race race = new Race(carNum, tryNum, new RandomRaceStrategy());
         RaceResult result = race.play();
 
         OutputView.printResult(result);

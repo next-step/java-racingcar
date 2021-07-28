@@ -1,7 +1,7 @@
 package racingcar;
 
 public class Car {
-    private Distance distance;
+    private Distance distance = new Distance();
 
     public Distance getDistance() {
         return distance;

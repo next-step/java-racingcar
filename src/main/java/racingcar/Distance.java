@@ -7,6 +7,10 @@ public class Distance {
         this.distance = distance;
     }
 
+    public Distance() {
+        this(0);
+    }
+
     public Distance increase() {
         return new Distance(distance + 1);
     }
