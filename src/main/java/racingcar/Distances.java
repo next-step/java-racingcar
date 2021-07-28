@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Distances implements Iterable<Distance> {
-    private List<Distance> distances = new ArrayList<>();
+    private final List<Distance> distances = new ArrayList<>();
 
     public Distances(Cars cars) {
         for (Car car : cars) {
