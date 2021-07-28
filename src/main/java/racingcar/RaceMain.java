@@ -20,7 +20,7 @@ public class RaceMain {
 	public static void main(String[] args) throws OverFiveCarNameException {
 		InputView inputView = new InputView();
 		RaceMain raceMain = new RaceMain();
-		RacingCars racingCars = new RacingCars(inputView.inputCarNameList(), new RandomlyMovableStrategy());
+		RacingCars racingCars = new RacingCars(inputView.inputCarNames(), new RandomlyMovableStrategy());
 
 		raceMain.startRace(inputView.inputTryCount(), racingCars);
 		inputView.scannerClose();
