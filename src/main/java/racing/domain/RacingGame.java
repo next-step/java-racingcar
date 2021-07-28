@@ -70,7 +70,7 @@ public class RacingGame {
         }
 
         private void verify(String names, int stageCount) {
-            if (!DELIMITER.contains(names) || DELIMITER.equals(names) || isPatternMatching(names)) {
+            if (!names.contains(DELIMITER) || names.equals(DELIMITER) || isPatternMatching(names)) {
                 throw new IllegalArgumentException("자동차 이름은 " + LIMIT_RACER + "개 이상이어야 하고, 공백이 있으면 안되며 쉼표(" + DELIMITER + ")로 구분되어야 합니다.");
             }
 

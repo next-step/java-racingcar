@@ -35,7 +35,7 @@ public class RacingGameTest {
     @Test
     @DisplayName("자동차는_반드시_2대_이상이어야_한다_아무것도_입력하지_않은_경우")
     void racerCountExceptionV2() throws Exception {
-        assertThatThrownBy(() -> RacingGame.init(strategy, null, 2))
+        assertThatThrownBy(() -> RacingGame.init(strategy, "pobi", 2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 2개 이상이어야 하고, 공백이 있으면 안되며 쉼표(,)로 구분되어야 합니다.");
     }
