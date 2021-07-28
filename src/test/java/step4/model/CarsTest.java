@@ -22,7 +22,7 @@ public class CarsTest {
         list.add(car2);
         list.add(car3);
 
-        Cars cars = new Cars(new CarsMethod());
+        Cars cars = new Cars(new CarMoveAndArrangeStrategy());
 
         cars.makeCars(list.toArray(new Car[0]));
 
