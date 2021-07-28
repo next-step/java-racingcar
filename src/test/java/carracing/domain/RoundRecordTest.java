@@ -52,13 +52,30 @@ class RoundRecordTest {
         List<CarStatus> carStatuses = Arrays.asList(
                 new CarStatus(new CarName("iiaii"), 1),
                 new CarStatus(new CarName("!!e!!"), 2));
+        RoundRecord roundRecord = new RoundRecord(carStatuses);
         int expectedSize = 2;
 
         // when
-        RoundRecord roundRecord = new RoundRecord(carStatuses);
+        int roundRecordSize = roundRecord.getCarStatuses().size();
 
         // then
-        assertThat(roundRecord.getCarStatuses().size()).isEqualTo(expectedSize);
+        assertThat(roundRecordSize).isEqualTo(expectedSize);
+    }
+
+    @Test
+    @DisplayName("정상적으로 getBestCarNames 반환하는지 테스트")
+    public void getBestCarNames() {
+        // given
+        List<CarStatus> carStatuses = Arrays.asList(
+                new CarStatus(new CarName("iiaii"), 1),
+                new CarStatus(new CarName("!!e!!"), 2));
+        RoundRecord roundRecord = new RoundRecord(carStatuses);
+
+        // when
+        List<String> bestCarNames = roundRecord.getBestCarNames();
+
+        // then
+        assertThat(bestCarNames).contains("!!e!!");
     }
 
 }
