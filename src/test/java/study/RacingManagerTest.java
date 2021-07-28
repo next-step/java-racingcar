@@ -11,11 +11,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingManagerTest {
 
-    RacingManager racingManager = new RacingManager();
+    final int NUMBER_OF_CAR = 5;
+
+    RacingManager racingManager = new RacingManager(NUMBER_OF_CAR);
 
     @DisplayName("랜덤 숫자가 0~9사이에서 리턴되는지 테스트")
     @Test
     public void getRandomNumberTest() {
+
         int randomNumber = racingManager.getRandomNumber();
         assertThat(randomNumber).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(9);
     }
@@ -31,8 +34,7 @@ public class RacingManagerTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     public void makeRacingCarTest(int numberOfCar) {
-        racingManager.makeRacingCar(numberOfCar);
+        RacingManager racingManager = new RacingManager(numberOfCar);
         assertThat(numberOfCar).isEqualTo(racingManager.getCarList().size());
     }
-
 }

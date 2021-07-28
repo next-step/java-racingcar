@@ -2,8 +2,8 @@ package study;
 
 public class Car {
 
-    private int position = 0;
-    
+    private int position;
+
     public void moveCar() {
         position++;
     }
