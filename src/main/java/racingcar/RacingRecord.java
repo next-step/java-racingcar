@@ -1,9 +1,9 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class RacingRecord {
 
@@ -20,11 +20,10 @@ public class RacingRecord {
 
         int maxPosition = getRacingMaxPosition(finalRacingHistory);
 
-        List<String> winners = new ArrayList<>();
-        finalRacingHistory.stream()
+        return finalRacingHistory.stream()
                 .filter(u -> u.getPosition() == maxPosition)
-                .forEach(u -> winners.add(u.getCar().getName()));
-        return winners;
+                .map(u -> u.getCar().getName())
+                .collect(Collectors.toList());
     }
 
     private static List<RacingRecord> getFinalRacingRecord(List<List<RacingRecord>> racingRecords) {
