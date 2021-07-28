@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import racing.strategy.ForwardConditionStrategy;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static java.util.stream.Collectors.toCollection;
 import static java.util.stream.IntStream.range;
@@ -16,13 +15,13 @@ public class RacersTest {
     private final ForwardConditionStrategy stay = () -> true;
     private final ForwardConditionStrategy move = () -> false;
 
-    private Racers racers;
+    private Racers<? extends Racer> racers;
 
     @BeforeEach
     void setUp() {
-        racers = Racers.from((List<? extends Racer>) range(0, 3)
-                .mapToObj(it -> Car.of("pobi"))
-                .collect(toCollection(ArrayList::new)));
+        racers = Racers.from(range(0, 3)
+                                     .mapToObj(it -> Car.of("pobi"))
+                                     .collect(toCollection(ArrayList::new)));
     }
 
     @Test
@@ -40,14 +39,14 @@ public class RacersTest {
     @Test
     @DisplayName("전진_테스트_조건은_참")
     void goForward() throws Exception {
-        racers.turnAround(move, new ArrayList<Racers>());
+        racers.turnAround(move, new ArrayList<>());
         assertThat(racers.get(0).position()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("전진_테스트_조건은_거짓")
     void goForwardNot() throws Exception {
-        racers.turnAround(stay, new ArrayList<Racers>());
+        racers.turnAround(stay, new ArrayList<>());
         assertThat(racers.get(0).position()).isEqualTo(0);
     }
 
