@@ -25,4 +25,18 @@ public class RacingCar {
         return distanceLine;
     }
 
+    public int compareDistance(int baseDistance){
+        if (distance > baseDistance) {
+            return distance;
+        }
+        return baseDistance;
+    }
+
+    public String findMovedMaxDistance(int maxDistance, String winner) {
+        if(distance == maxDistance){
+            winner+= name;
+        }
+        return winner;
+    }
+
 }

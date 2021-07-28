@@ -1,5 +1,9 @@
 package racing_winner.utils;
 
+import racing_winner.domain.RacingCar;
+
+import java.util.List;
+
 public class RacingUtils {
 
     public static final int INPUT_VALUE_RULE = 0;
@@ -29,6 +33,14 @@ public class RacingUtils {
             checkNameLength(carName);
         }
         return carList;
+    }
+
+    public static int measureMaxDistance(List<RacingCar> racingCarList) {
+        int baseDistance = 0;
+        for (RacingCar racingCar : racingCarList) {
+            baseDistance = racingCar.compareDistance(baseDistance);
+        }
+        return baseDistance;
     }
 
 }

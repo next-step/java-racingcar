@@ -45,4 +45,12 @@ public class RacingService {
         return racingCarList;
     }
 
+    public static String findWinners(List<RacingCar> racingCarList) {
+        String winner = "";
+        int maxDistance = RacingUtils.measureMaxDistance(racingCarList);
+        for(RacingCar racingCar : racingCarList){
+            winner = racingCar.findMovedMaxDistance(maxDistance, winner);
+        }
+        return winner;
+    }
 }
