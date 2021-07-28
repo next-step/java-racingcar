@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+@SuppressWarnings("NonAsciiCharacters")
 public class ValidatorTest {
 
     @ParameterizedTest
