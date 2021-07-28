@@ -5,16 +5,19 @@ import java.util.ArrayList;
 public class RacingCarGame {
 
     public static void main(String[] args) {
-        int carCount = InputView.inputTryCount();
         String[] names = InputView.inputCarNames().split(",");
+        int carCount = InputView.inputTryCount();
         int tryCount = names.length;
 
         Referee referee = new Referee(tryCount);
-        CarStadium carstadium = new CarStadium(referee, new ArrayList<>());
+
+        ArrayList<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < carCount; i++) {
-            carstadium.enterCar(new Car(names[i], new CarEngine()));
+            cars.add(new Car(names[i], new CarEngine()));
         }
+
+        CarStadium carstadium = new CarStadium(referee, cars);
 
         ResultView resultView = new ResultView();
 
