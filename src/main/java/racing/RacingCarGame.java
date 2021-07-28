@@ -8,20 +8,20 @@ import racing.view.ResultView;
 public class RacingCarGame {
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        inputView.printRacingCarCountInputMessage();
-        int racingCarCount = inputView.inputRacingCarCount();
+        inputView.printRacingCarNamesInputMessage();
+        String[] racingCarNames = inputView.inputRacingCarNames();
 
         inputView.printMovementTrialCountInputMessage();
         int movementTrialCount = inputView.inputMovementTrialCount();
 
-        RacingCars racingCars = new RacingCars(racingCarCount);
+        RacingCars racingCars = new RacingCars(racingCarNames);
 
         ResultView resultView = new ResultView();
         resultView.printRacingCarGameResultOutputMessage();
 
         for (int trialOrder = 0; trialOrder < movementTrialCount; trialOrder++) {
             racingCars.moveForwardOneStepOrStop(new RandomNumberComparison());
-            resultView.printRacingCarsPosition(racingCars.getPositions());
+            resultView.printRacingCarsStatus(racingCars.getRacingCars());
         }
     }
 }
