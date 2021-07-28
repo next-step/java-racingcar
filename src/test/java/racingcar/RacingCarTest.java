@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import racingcar.exception.OverFiveCarNameException;
 import racingcar.model.RacingCar;
 import racingcar.strategy.AlwaysMovableStrategy;
 import racingcar.strategy.RandomlyMovableStrategy;
@@ -38,7 +40,7 @@ class RacingCarTest {
 		assertThat(racingCar.getRacingCarDashString()).isEqualTo(expected);
 	}
 
-	private static Stream<Arguments> RandomlyMovable_전략을_입력받았을_때_랜덤값에_따라_전진가능하다() {
+	private static Stream<Arguments> RandomlyMovable_전략을_입력받았을_때_랜덤값이_4이상_일때에만_전진가능하다() {
 		return Stream.of(
 			Arguments.of(new Random() {
 				@Override
@@ -76,4 +78,20 @@ class RacingCarTest {
 		assertThat(racingCar.getRacingCarDashString()).isEqualTo(new String(new char[forwardValue]).replace("\0", "-"));
 	}
 
+	@ParameterizedTest
+	@ValueSource(strings = { "overfive", "changsub", "longname" })
+	void 길이가_5를_초과하는_자동차이름_문자열이_주어질_때_예외가_발생한다(String carName) {
+		assertThatThrownBy(() -> {
+			racingCar = new RacingCar(carName);
+		}).isInstanceOf(OverFiveCarNameException.class)
+				.hasMessageContaining("자동차 이름의 길이가 5를 초과합니다");
+	}
+
+	@ParameterizedTest
+	@ValueSource(strings = { "five", "chang", "long" })
+	void 길이가_5를_이하의_자동차이름_문자열이_주어질_때_예외가_발생하지_않는다(String carName) {
+		assertDoesNotThrow(() -> {
+			racingCar = new RacingCar(carName);
+		});
+	}
 }
