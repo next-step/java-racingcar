@@ -3,18 +3,17 @@ package CarRacing;
 import view.InputView;
 import view.ResultView;
 
-import java.util.Scanner;
-
 public class Main {
 
 
     public static void main(String[] args) {
 
         InputView inputView = new InputView();
-        inputView.CallInsertElement();
 
-//        ResultView resultView = new ResultView(inputView.getCarCount(), inputView.getTryCount());
-//        resultView.startRacing();
+        ResultView resultView = new ResultView();
+
+        resultView.setStringBuilder(inputView.startInsertReturnStringBuilder());
+        resultView.getResultRacing();
 
     }
 }
