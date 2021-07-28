@@ -2,10 +2,7 @@ package racingcar.ui;
 
 import racingcar.RacingRecord;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class ResultView {
 
@@ -23,6 +20,7 @@ public class ResultView {
         for (List<RacingRecord> records : racingHistory) {
             System.out.println(getRacingCarsInfo(records));
         }
+        showRacingWinner(racingHistory);
     }
 
     private static StringBuffer getRacingCarsInfo(List<RacingRecord> records) {
@@ -44,24 +42,8 @@ public class ResultView {
         return stringBuffer;
     }
 
-    public static void showRacingWinner(List<RacingRecord> finalRacingHistory) {
-        List<String> winners = getRacingWinner(finalRacingHistory);
+    private static void showRacingWinner(List<List<RacingRecord>> racingRecords) {
+        List<String> winners = RacingRecord.getRacingWinner(racingRecords);
         System.out.println(String.join(WINNER_SEPARATOR, winners) + RESULT_MESSAGE_WINNER_POST);
-    }
-
-    private static List<String> getRacingWinner(List<RacingRecord> racingRecords) {
-        int maxPosition = getRacingMaxPosition(racingRecords);
-        List<String> winners = new ArrayList<>();
-        racingRecords.stream()
-                .filter(u -> u.getPosition() == maxPosition)
-                .forEach(u -> winners.add(u.getCar().getName()));
-        return winners;
-    }
-
-    private static int getRacingMaxPosition(List<RacingRecord> finalRacingHistory) {
-        return finalRacingHistory.stream()
-                .max(Comparator.comparing(RacingRecord::getPosition))
-                .orElseThrow(NoSuchElementException::new)
-                .getPosition();
     }
 }

@@ -16,8 +16,5 @@ public class RacingApplication {
         List<List<RacingRecord>> racingRecords = racing.start(tryCount);
 
         ResultView.showRacingInfo(racingRecords);
-
-        List<RacingRecord> finalRacingRecord = racingRecords.get(racingRecords.size() - 1);
-        ResultView.showRacingWinner(finalRacingRecord);
     }
 }
