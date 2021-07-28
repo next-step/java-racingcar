@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 import step3.action.Race;
 import step5.domain.Car;
 import step5.domain.Cars;
+import step5.domain.strategy.ArrangeStrategy;
 import step5.domain.strategy.MoveStrategy;
+import step5.domain.strategy.WinnerStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +54,34 @@ class RaceGameTest {
         game.move(strategy);
         List<Car> list = game.getCars().showCarList();
         assertThat(getCarPositionList(list)).containsExactly(11,6,7);
+    }
+
+    @DisplayName("우승자 가져오기")
+    @Test
+    void getWinner(){
+        List<Car> carList = new ArrayList<>();
+        carList.add(Car.of("car1",10));
+        carList.add(Car.of("car2",5));
+        carList.add(Car.of("car3",6));
+        RaceGame game = RaceGame.of(Cars.from(carList));
+
+        ArrangeStrategy arrangeStrategy = new ArrangeStrategy() {
+            @Override
+            public List<Car> arrangeCarList(List<Car> carList) {
+                return carList;
+            }
+        };
+
+        WinnerStrategy winnerStrategy = new WinnerStrategy() {
+            @Override
+            public List<Car> getWinner(List<Car> carList) {
+                return null;
+            }
+        };
+
+        List<Integer> positions = getCarPositionList(game.getWinner(winnerStrategy,arrangeStrategy));
+
+        assertThat(positions).containsExactly(10);
     }
 
     List<String> getCarNameList(List<Car> carList){
