@@ -18,7 +18,7 @@ public enum ArithmeticOperator {
             if (operator.getSymbol().equals(symbol))
                 return operator;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("연산자는 사칙연산기호(+,-,*,/)만 사용할 수 있습니다.");
     }
 
     abstract long operate(long num1, long num2);

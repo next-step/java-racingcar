@@ -9,7 +9,7 @@ public class InputSeparator {
 
     public static String[] separate(String input) {
         if (checkInputIsEmpty(input))
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("input 값은 null 또는 공백 문자열이 올수 없습니다.");
 
         return input.split(SEPARATOR);
     }
