@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -32,5 +33,31 @@ public class RacingCarsTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new RacingCars(racingCarCount))
                 .withMessage("자동차는 1대 이상이어야 합니다.");
+    }
+
+    @DisplayName("이동 조건이 true면 자동차는 한 칸 전진한다.")
+    @Test
+    public void moveTest() {
+        // given
+        RacingCars racingCars = new RacingCars(3);
+
+        // when
+        racingCars.moveForwardOneStepOrStop(() -> true);
+
+        // then
+        assertThat(racingCars.getPositions()).containsExactly(1, 1, 1);
+    }
+
+    @DisplayName("이동 조건이 false면 자동차는 멈춘다.")
+    @Test
+    public void stopTest() {
+        // given
+        RacingCars racingCars = new RacingCars(3);
+
+        // when
+        racingCars.moveForwardOneStepOrStop(() -> false);
+
+        // then
+        assertThat(racingCars.getPositions()).containsExactly(0, 0, 0);
     }
 }
