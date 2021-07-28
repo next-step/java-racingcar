@@ -6,19 +6,19 @@ public class Car {
     private final String name;
     private final MovingStrategy movingStrategy;
 
-    private final CarEngine carEngine;
+    private final CarEngine engine;
     private int movedCount = 0;
 
 
-    public Car(String carName, CarEngine carEngine, MovingStrategy movingStrategy) {
-        checkNameLength(carName);
-        this.name = carName;
-        this.carEngine = carEngine;
+    public Car(String name, CarEngine engine, MovingStrategy movingStrategy) {
+        checkNameLength(name);
+        this.name = name;
+        this.engine = engine;
         this.movingStrategy = movingStrategy;
     }
 
     public void move() {
-        if (!carEngine.canMove(movingStrategy.move())) {
+        if (!engine.canMove(movingStrategy.move())) {
             return;
         }
 
