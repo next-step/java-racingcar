@@ -2,15 +2,9 @@ package step2;
 
 public class Calculator {
 
-    private static boolean checkInputValid(String input) {
-        return input != null && !input.equals("");
-    }
-
     public static long calculate(String input){
-        if (!checkInputValid(input))
-            throw new IllegalArgumentException();
 
-        String[] tokens = input.split(" ");
+        String[] tokens = InputSeparator.separate(input);
 
         long result = Long.parseLong(tokens[0]);
         for (int i = 1; i < tokens.length; i += 2) {
