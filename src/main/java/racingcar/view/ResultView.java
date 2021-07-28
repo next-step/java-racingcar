@@ -15,19 +15,12 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void printCarName(String name) {
+    public static void printCarStatus(String name, int position) {
         carStatusString.setLength(0);
         carStatusString.append(name + " : ");
-
-        System.out.print(carStatusString);
-    }
-
-    public static void printCarPosition(int position) {
-        carStatusString.setLength(0);
         for (int i = 0; i < position; i++) {
             carStatusString.append("-");
         }
-
         System.out.println(carStatusString);
     }
 

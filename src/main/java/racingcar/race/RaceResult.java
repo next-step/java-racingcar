@@ -29,8 +29,7 @@ public class RaceResult {
 
     private void printEachRaceOfCarStatus(Cars cars) {
         for (Car car : cars.getCars()) {
-            ResultView.printCarName(car.getName());
-            ResultView.printCarPosition(car.getPosition());
+            ResultView.printCarStatus(car.getName(), car.getPosition());
         }
         System.out.println();
     }
