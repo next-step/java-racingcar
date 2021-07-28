@@ -12,15 +12,15 @@ public class stringStep1 {
     }
 
     @Test
-     String stringStep1_2() {
+    String stringStep1_2() {
         String numberSub = "(1,2)";
         String numSub = numberSub.substring(1,4);
 
         return numSub;
     }
-
+    @Test
     @DisplayName("indexExceptionTest")
-     void stringStep1_3() {
+    void stringStep1_3() {
             String abc = "abc";
             char abcException = abc.charAt(10);
     }
