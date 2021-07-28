@@ -1,14 +1,13 @@
 package step5.domain;
 
 import step5.common.PositionToDash;
-import step5.domain.strategy.CarMoveStrategy;
-import step5.domain.strategy.CarStrategy;
+import step5.domain.strategy.MoveStrategy;
 
-public class Car implements Comparable<Car>{
+public class Car implements Comparable<Car> {
     public static final int INIT_POSITION = 0;
     private String name;
     private int position;
-    private CarStrategy strategy = new CarMoveStrategy();
+
     private Car(String name) {
         validation(name);
         this.name = name;
@@ -21,7 +20,8 @@ public class Car implements Comparable<Car>{
         this.position = position;
     }
 
-    public static Car of(String name) {
+
+    public static Car from(String name) {
         return new Car(name);
     }
 
@@ -44,24 +44,24 @@ public class Car implements Comparable<Car>{
 
     @Override
     public int compareTo(Car other) {
-        if(this.getPosition() > other.getPosition()){
+        if (this.getPosition() > other.getPosition()) {
             return 1;
         }
-        if(this.getPosition() == other.getPosition()){
+        if (this.getPosition() == other.getPosition()) {
             return 0;
         }
         return -1;
     }
 
-    private void validation(String name){
-        if(name.length() > 5){
+    private void validation(String name) {
+        if (name.length() > 5) {
             throw new IllegalStateException("이름은 5글자 이하로 설정해야 합니다.");
         }
     }
 
-    public void move(int randomNumber) {
-        if(strategy.isMove(randomNumber)){
-            this.position ++;
+    public void move(MoveStrategy strategy) {
+        if (isMove) {
+            this.position++;
         }
     }
 }

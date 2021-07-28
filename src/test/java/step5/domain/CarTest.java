@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
 
@@ -13,7 +12,7 @@ class CarTest {
     @Test
     void createCarWithNameTest(){
         String name = "first";
-        Car car = Car.of(name);
+        Car car = Car.from(name);
         assertThat(car.getName()).isEqualTo(name);
     }
 
@@ -52,17 +51,17 @@ class CarTest {
     @Test
     void carNamingExceptionTest(){
         assertThatIllegalStateException().isThrownBy(
-                ()->Car.of("123456")
+                ()->Car.from("123456")
         ).withMessageContaining("5글자 이하");
     }
 
-    @DisplayName("입력받은 숫자에 따라 차가 움직인다. (4이상일때 이동)")
+    @DisplayName("입력받은 boolean 따라 차가 움직인다.")
     @Test
     void moveCarTest(){
-        Car car = Car.of("car1");
-        car.move(3);
+        Car car = Car.from("car1");
+        car.move(false);
         assertThat(car.getPosition()).isEqualTo(0);
-        car.move(4);
+        car.move(true);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 }
