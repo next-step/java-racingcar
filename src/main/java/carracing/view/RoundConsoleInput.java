@@ -1,20 +1,21 @@
-package study.step3.controller;
+package carracing.view;
 
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Scanner;
 
-public class ConsoleInput {
+public class RoundConsoleInput {
 
+    private static final String ROUND_QUESTION = "시도할 회수는 몇 회 인가요?";
     private static final String NULL_INPUT = "입력값이 null 입니다";
+    private static final String NOT_NUMBER = "입력값이 숫자가 아닙니다 -> ";
     private final Scanner scanner = new Scanner(System.in);
 
-    public int getNumber(String question) {
-        return parseIntOrThrow(askNumber(question));
+    public int getNumber() {
+        return parseIntOrThrow(askNumber());
     }
 
-    private String askNumber(String question) {
-        System.out.println(question);
+    private String askNumber() {
+        System.out.println(ROUND_QUESTION);
         return scanner.nextLine();
     }
 
@@ -35,8 +36,10 @@ public class ConsoleInput {
     }
 
     private void requireNumber(String number) {
-        Optional.of(number)
-                .map(Integer::parseInt)
-                .orElseThrow(() -> new IllegalArgumentException("require number : " + number));
+        try {
+            Integer.parseInt(number);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException(NOT_NUMBER + number);
+        }
     }
 }
