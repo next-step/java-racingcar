@@ -1,9 +1,10 @@
 package racingcar.view;
 
-import racingcar.controller.dto.CarResponseDto;
 import racingcar.controller.dto.RacingGameResponseDto;
+import racingcar.domain.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ConsoleOutputView {
 
@@ -12,21 +13,36 @@ public class ConsoleOutputView {
     }
 
     public void print(RacingGameResponseDto game) {
-        for (CarResponseDto car : game.getCars()) {
-            String progressBar = getProgressBar(car.getNumberOfMove());
-            System.out.println(car.getName() + " : " + progressBar);
+        Cars cars = game.getCars();
+        for (Car car : cars.getElements()) {
+            String progressBar = getProgressBar(car.getDistance());
+            System.out.println(car.getName().getValue() + " : " + progressBar);
         }
         System.out.println();
 
         if (game.isFinish()) {
-            List<String> winners = game.winners();
-            System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
+            Winners winners = game.winners();
+            System.out.println(getWinners(winners) + "가 최종 우승했습니다.");
         }
     }
 
-    private String getProgressBar(int numberOfMove) {
+    private List<Name> getNames(Winners winners) {
+        return winners.getCars()
+                .stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    private String getWinners(Winners winners) {
+        List<Name> names = getNames(winners);
+        return names.stream()
+                .map(Name::getValue)
+                .collect(Collectors.joining(", "));
+    }
+
+    private String getProgressBar(Distance distance) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < numberOfMove; i++) {
+        for (int i = 0; i < distance.getValue(); i++) {
             sb.append("-");
         }
         return sb.toString();

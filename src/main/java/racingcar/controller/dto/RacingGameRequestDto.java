@@ -1,12 +1,12 @@
 package racingcar.controller.dto;
 
 
-public class CarRequestDto {
+public class RacingGameRequestDto {
 
     private String names;
     private String numberOfAttempts;
 
-    public CarRequestDto(String names, String numberOfAttempts) {
+    public RacingGameRequestDto(String names, String numberOfAttempts) {
         this.names = names;
         this.numberOfAttempts = numberOfAttempts;
     }

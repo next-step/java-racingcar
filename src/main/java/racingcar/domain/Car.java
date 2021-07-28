@@ -1,29 +1,57 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class Car {
 
-    private String name;
-    private int numberOfMove = 0;
+    private Name name;
+    private Distance distance;
 
     public Car(String name) {
+        this.name = Name.from(name);
+        this.distance = Distance.from(0);
+    }
+
+    public Car(String name, int distance) {
+        this.name = Name.from(name);
+        this.distance = Distance.from(distance);
+    }
+
+    public Car(Name name, Distance distance) {
         this.name = name;
+        this.distance = distance;
     }
 
-    public void move(final int number) {
-        if (isRange(number)) {
-            this.numberOfMove++;
+    public Car move(boolean isMove) {
+        if (isMove) {
+            distance = distance.move();
+            return new Car(name, distance);
         }
+        return new Car(name, distance);
     }
 
-    private boolean isRange(final int random) {
-        return random >= 4 && random < 10;
+    public boolean isEqualsDistance(Distance distance) {
+        return this.distance.equals(distance);
     }
 
-    public int getNumberOfMove() {
-        return this.numberOfMove;
+    public Distance getDistance() {
+        return this.distance;
     }
 
-    public String getName() {
-        return name;
+    public Name getName() {
+        return this.name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name) && Objects.equals(distance, car.distance);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, distance);
     }
 }
