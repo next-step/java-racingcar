@@ -1,5 +1,6 @@
 package racing;
 
+import racing.model.RandomNumberComparison;
 import racing.model.RacingCars;
 import racing.view.InputView;
 import racing.view.ResultView;
@@ -19,8 +20,8 @@ public class RacingCarGame {
         resultView.printRacingCarGameResultOutputMessage();
 
         for (int trialOrder = 0; trialOrder < movementTrialCount; trialOrder++) {
-            racingCars.moveForwardOneStepOrStop();
-            resultView.printRacingCarsPosition(racingCars.getRacingCarPositions());
+            racingCars.moveForwardOneStepOrStop(new RandomNumberComparison());
+            resultView.printRacingCarsPosition(racingCars.getPositions());
         }
     }
 }

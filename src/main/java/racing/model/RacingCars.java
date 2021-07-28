@@ -31,14 +31,13 @@ public class RacingCars {
         return racingCars.size();
     }
 
-    public void moveForwardOneStepOrStop() {
+    public void moveForwardOneStepOrStop(MovingCondition movingCondition) {
         for (RacingCar racingCar : racingCars) {
-            Number number = NumberGenerator.getNewRandomNumber();
-            racingCar.moveForwardOneStepOrStop(number);
+            racingCar.moveForwardOneStepOrStop(movingCondition);
         }
     }
 
-    public int[] getRacingCarPositions() {
+    public int[] getPositions() {
         return racingCars.stream()
                 .mapToInt(RacingCar::getPosition)
                 .toArray();
