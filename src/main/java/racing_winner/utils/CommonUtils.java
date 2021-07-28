@@ -23,4 +23,10 @@ public class CommonUtils {
         return number >= RANDOM_NUMBER_RULE;
     }
 
+    public static String addComma(String str){
+        if(!str.equals("")){
+            return ", ";
+        }
+        return "";
+    }
 }

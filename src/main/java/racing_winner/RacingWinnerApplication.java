@@ -20,7 +20,7 @@ public class RacingWinnerApplication {
 
         for (int round = 0; round < totalRound; round++) {
             racingCarList = racingService.exec(racingCarList);
-            resultView.result(racingCarList, round);
+            resultView.result(racingCarList, round, totalRound);
         }
 
     }

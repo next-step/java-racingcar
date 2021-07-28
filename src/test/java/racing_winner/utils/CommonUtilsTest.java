@@ -26,4 +26,11 @@ class CommonUtilsTest {
         assertThat(result).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @DisplayName("우승자가 한명 이상일 경우 ',' 추가")
+    @CsvSource(value = {"'':''", "pobi:', '"}, delimiter = ':')
+    void addComma(String name, String expectedValue) {
+        String value = CommonUtils.addComma(name);
+        assertThat(value).isEqualTo(expectedValue);
+    }
 }
