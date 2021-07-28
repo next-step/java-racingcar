@@ -4,15 +4,17 @@ import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Operator {
-    PLUS("+"),
-    MINUS("-"),
-    MULTIPLICATION("*"),
-    DIVISION("/");
+    PLUS("+", (x, y) -> x + y),
+    MINUS("-", (x, y) -> x - y),
+    MULTIPLICATION("*", (x, y) -> x * y),
+    DIVISION("/", (x, y) -> x / y);
 
     String operator;
+    private BiFunction<Integer, Integer, Integer> expression;
 
-    Operator(String operator) {
+    Operator(String operator, BiFunction<Integer, Integer, Integer> expression) {
         this.operator = operator;
+        this.expression = expression;
     }
 
 
@@ -20,28 +22,11 @@ public enum Operator {
         return Arrays.stream(Operator.values()).anyMatch(v -> v.operator.equals(str));
     }
 
+
     int calculate(int firstNum, int secondNum) {
-
-        int result = 0;
-
-        if (operator.equals(Operator.PLUS.operator)) {
-            return firstNum + secondNum;
-        }
-
-        if (operator.equals(Operator.MINUS.operator)) {
-            return firstNum - secondNum;
-        }
-
-        if (operator.equals(Operator.MULTIPLICATION.operator)) {
-            return firstNum * secondNum;
-        }
-
-        if (operator.equals(Operator.DIVISION.operator)) {
-            return firstNum / secondNum;
-        }
-
-        return result;
+        return expression.apply(firstNum, secondNum);
     }
+
 
     static Operator valueOfStr(String str) {
         return Arrays.stream(Operator.values())
