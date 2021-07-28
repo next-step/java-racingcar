@@ -14,7 +14,6 @@ public class ResultView {
     private static final String RACING_DISPLAY = "-";
     private static final String CAR_SEPARATOR = " : ";
     private static final String WINNER_SEPARATOR = ", ";
-    private static final String LINE_BREAK = "\n";
 
     private ResultView() {
     }
@@ -32,7 +31,7 @@ public class ResultView {
             stringBuffer.append(record.getCar().getName());
             stringBuffer.append(CAR_SEPARATOR);
             stringBuffer.append(getRacingPositionDisplay(record));
-            stringBuffer.append(LINE_BREAK);
+            stringBuffer.append(System.lineSeparator());
         }
         return stringBuffer;
     }
