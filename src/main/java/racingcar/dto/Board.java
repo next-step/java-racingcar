@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Board {
     List<List<Integer>> racingRecord;
-    List<List<String>> racingCarNames;
+    List<List<CarName>> racingCarNames;
 
-    List<String> winnerCarNames;
+    List<CarName> winnerCarNames;
 
     public Board() {
         this.racingCarNames = new ArrayList<>();
@@ -16,16 +16,16 @@ public class Board {
         this.winnerCarNames = new ArrayList<>();
     }
 
-    public void record(List<String> carNames, List<Integer> carsPositions) {
+    public void record(List<CarName> carNames, List<Integer> carsPositions) {
         racingCarNames.add(carNames);
         racingRecord.add(carsPositions);
     }
 
-    public void recordWinner(List<String> winnerCarNames) {
+    public void recordWinner(List<CarName> winnerCarNames) {
         this.winnerCarNames = winnerCarNames;
     }
 
-    public List<String> getWinnerCarNames() {
+    public List<CarName> getWinnerCarNames() {
         return winnerCarNames;
     }
 
@@ -33,7 +33,7 @@ public class Board {
         return racingRecord;
     }
 
-    public List<List<String>> getAllRecordsCarsNames() {
+    public List<List<CarName>> getAllRecordsCarsNames() {
         return racingCarNames;
     }
 }

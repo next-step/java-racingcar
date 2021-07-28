@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.dto.Board;
+import racingcar.dto.CarName;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ public class ResultView {
 
     public static void printResult(Board board) {
         List<List<Integer>> allRecords = board.getAllRecords();
-        List<List<String>> allRecordsCarNames = board.getAllRecordsCarsNames();
+        List<List<CarName>> allRecordsCarNames = board.getAllRecordsCarsNames();
 
         for (int i = 0; i < allRecords.size(); i++) {
             printBoard(allRecordsCarNames.get(i), allRecords.get(i));
@@ -25,17 +26,19 @@ public class ResultView {
     }
 
     private static void printWinners(Board board) {
-        List<String> winners = board.getWinnerCarNames();
+        List<CarName> winners = board.getWinnerCarNames();
 
         System.out.print(winners.stream()
+                .map(winner -> winner.getName())
                 .collect(Collectors.joining(COMMA)));
+
         System.out.print(" 가 최종 우승했습니다.");
     }
 
-    private static void printBoard(List<String> carsNames, List<Integer> carsPositions) {
+    private static void printBoard(List<CarName> carsNames, List<Integer> carsPositions) {
 
         for (int i = 0; i < carsNames.size(); i++) {
-            appendCarPosition(carsNames.get(i), carsPositions.get(i));
+            appendCarPosition(carsNames.get(i).getName(), carsPositions.get(i));
         }
 
     }

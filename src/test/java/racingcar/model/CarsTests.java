@@ -32,6 +32,17 @@ public class CarsTests {
         assertThat(actualSize).isEqualTo(carNames.length);
     }
 
+    @DisplayName("차 생성, 차들의 갯수 테스트 문자열을 통째로 받는 생성자(3개의 차 생성)")
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi,crong,honux"})
+    void createCarsDifferentConstructorTest(String input) {
+        String[] carNames = InputCarNameSplitUtils.getSplitStringArray(input);
+        Cars cars = Cars.of(input);
+
+        assertThat(cars.getCarsCount()).isEqualTo(carNames.length);
+    }
+
+
     @DisplayName("차들의 초기 위치를 제대로 가져 올 수 있는지 테스트")
     @ParameterizedTest
     @MethodSource("generateData")

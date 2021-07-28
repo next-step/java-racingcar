@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import racingcar.dto.Board;
+import racingcar.dto.CarName;
 import racingcar.model.Cars;
 import racingcar.dto.RacingInfo;
 import racingcar.strategy.MovingStrategy;
@@ -21,13 +22,13 @@ public class RacingGame {
         this.board = new Board();
     }
 
-    private List<String> getWinners(Board board) {
+    private List<CarName> getWinners(Board board) {
         List<List<Integer>> allRecords = board.getAllRecords();
 
         int lastGameIndex = allRecords.size() - 1;
 
         List<Integer> lastGameRecord = allRecords.get(lastGameIndex);
-        List<String> lastGameCarNames = cars.getNames();
+        List<CarName> lastGameCarNames = cars.getNames();
 
         int winnersScore = Collections.max(lastGameRecord);
 

@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.dto.Board;
+import racingcar.dto.CarName;
 import racingcar.dto.RacingInfo;
 import racingcar.model.Cars;
 import racingcar.strategy.impl.RandomBoundMovingStrategy;
@@ -68,9 +69,7 @@ public class RacingGameTests {
 
         Board board = racingGame.gameStart(new RandomBoundMovingStrategy());
 
-        board.record(Arrays.asList(carNames.clone()), Arrays.asList(5, 5, 5));
-
-        List<String> winners = board.getWinnerCarNames();
+        List<CarName> winners = board.getWinnerCarNames();
 
         assertThat(winners.size()).isBetween(1, carNames.length);
 

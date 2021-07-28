@@ -17,14 +17,14 @@ public class BoardTests {
     void boardRecordTest() {
         Board board = new Board();
         List<Integer> firstRacingResult = new ArrayList<>(Arrays.asList(1, 1, 1));
-        List<String> firstRacingCarNames = new ArrayList<>(Arrays.asList("pobi", "crong", "honux"));
+        List<CarName> firstRacingCarNames = new ArrayList<>(Arrays.asList(new CarName("pobi"), new CarName("crong"), new CarName("honux")));
         List<Integer> secondRacingResult = new ArrayList<>(Arrays.asList(1, 2, 2));
-        List<String> secondRacingCarNames = new ArrayList<>(Arrays.asList("pobi", "crong", "honux"));
+        List<CarName> secondRacingCarNames = new ArrayList<>(Arrays.asList(new CarName("pobi"), new CarName("crong"), new CarName("honux")));
 
         board.record(firstRacingCarNames, firstRacingResult);
         board.record(secondRacingCarNames, secondRacingResult);
 
-        List<List<String>> actualCarNames = board.getAllRecordsCarsNames();
+        List<List<CarName>> actualCarNames = board.getAllRecordsCarsNames();
         List<List<Integer>> actualAllRecords = board.getAllRecords();
 
         assertThat(actualCarNames.toString()).isEqualTo("[[pobi, crong, honux], [pobi, crong, honux]]");

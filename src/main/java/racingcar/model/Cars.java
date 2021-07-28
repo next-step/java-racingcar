@@ -1,7 +1,9 @@
 package racingcar.model;
 
+import racingcar.dto.CarName;
 import racingcar.strategy.MovingStrategy;
 import racingcar.strategy.impl.RandomBoundMovingStrategy;
+import racingcar.util.InputCarNameSplitUtils;
 import racingcar.util.RandomNumberUtils;
 
 import java.util.ArrayList;
@@ -23,10 +25,15 @@ public class Cars {
         List<Car> cars = new ArrayList<Car>();
 
         for (int i = 0; i < carsNames.length; i++) {
-            Car car = new Car(carsNames[i]);
+            Car car = new Car(new CarName(carsNames[i]));
             cars.add(car);
         }
         return Cars.of(cars);
+    }
+
+    public static Cars of(String carNames) {
+        String[] carsNames = InputCarNameSplitUtils.getSplitStringArray(carNames);
+        return Cars.of(carsNames);
     }
 
     public int getCarsCount() {
@@ -39,7 +46,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public List<String> getNames() {
+    public List<CarName> getNames() {
         return cars.stream()
                 .map(car -> car.getName())
                 .collect(Collectors.toList());
