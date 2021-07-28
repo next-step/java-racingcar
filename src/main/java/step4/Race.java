@@ -7,22 +7,31 @@ import java.util.Random;
 public class Race {
     private static int numOfCar;
     private static int numOfCycle;
+    private static String nameOfCar;
     private static final int INIT_CAR_POSITION = 1;
+
     private InputView inputView = new InputView();
     private ResultView resultView = new ResultView();
     private List<CarManager> carManagers;
 
-    public Race(int numOfCar, int numOfCycle) {
-        this.numOfCar = numOfCar;
+    public Race(String nameOfCar, int numOfCycle) {
+        this.nameOfCar = nameOfCar;
+        this.numOfCar = getNumOfCar();
         this.numOfCycle = numOfCycle;
         validInputConfirm();
         prepareCars();
     }
 
+    public int getNumOfCar() {
+        return nameOfCar.split(",").length;
+    }
+
     public void prepareCars() {
+        String[] carNamesAry = nameOfCar.split(",");
         carManagers = new ArrayList<>();
         for (int i = 0; i < numOfCar; i++) {
-            Car car = new Car(INIT_CAR_POSITION);
+            System.out.println(carNamesAry[i]);
+            Car car = new Car(INIT_CAR_POSITION,carNamesAry[i]);
             carManagers.add(new CarManager(car));
         }
     }
@@ -40,7 +49,11 @@ public class Race {
 
     public void printResult() {
         for (CarManager carManager: carManagers) {
+            resultView.showCurrCarName(carManager.getCurrCarName());
             resultView.showCurrCarPosition(carManager.getCurrCarPosition());
+            resultView.findMaxPositionCarName(carManager.getCurrCarName(), carManager.getCurrCarPosition());
         }
     }
+
+
 }

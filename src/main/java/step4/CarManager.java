@@ -17,4 +17,8 @@ public class CarManager {
     public int getCurrCarPosition() {
         return car.getPosition();
     }
+
+    public String getCurrCarName() {
+        return car.getName();
+    }
 }
