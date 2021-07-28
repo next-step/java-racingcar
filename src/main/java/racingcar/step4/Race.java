@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
-    private static int MAX = Integer.MIN_VALUE;
 
     public static List<Car> startRaceGame(List<Car> cars) {
         for (Car car : cars) {
@@ -26,16 +25,18 @@ public class Race {
     }
 
     public static int getMaxDistance(List<Car> cars) {
+        int max =0;
         for (Car car : cars) {
-            getMax(car.getDistance());
+            if (car.getDistance()>max){
+                max = car.getDistance();
+            }
         }
-        return MAX;
+        return max;
     }
 
-    public static int getMax(int distance) {
-        if (distance > MAX) {
-            MAX = distance;
-        }
-        return MAX;
-    }
+//    public static void getMax(int distance) {
+//        if (distance > max) {
+//            max = distance;
+//        }
+//    }
 }

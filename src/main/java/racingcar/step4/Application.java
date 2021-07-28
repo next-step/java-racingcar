@@ -1,5 +1,6 @@
 package racingcar.step4;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
@@ -16,8 +17,5 @@ public class Application {
             Race.startRaceGame(cars);
             ResultView.showGameResult(cars);
         }
-
-        List<String> winners = Race.getWinners(cars);
-        ResultView.printWinnerNames(winners);
     }
 }

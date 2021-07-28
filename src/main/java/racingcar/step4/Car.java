@@ -3,7 +3,7 @@ package racingcar.step4;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private final String name;
     private int distance;
@@ -36,5 +36,10 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return car.getDistance() - distance;
     }
 }
