@@ -13,4 +13,4 @@
 * ~~for/if문 리팩토링~~
 * ~~custom Exception 만들어주기~~
 * ~~ParameterizedTest 사용해 테스트하기~~
-* compareInputToOperator() for/if문 리팩토링
+* ~~compareInputToOperator() for/if문 리팩토링~~
