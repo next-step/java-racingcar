@@ -3,7 +3,6 @@ package study.step2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -29,7 +28,7 @@ public class CalculatorTest {
     @Test
     void CalcPlusTest() {
         Calculator calculator = new Calculator();
-        int reuslt = calculator.calc(inputStrOnlyPlus);
+        int reuslt = calculator.calculate(inputStrOnlyPlus);
         System.out.println("result : " + reuslt);
         assertThat(reuslt).isEqualTo(11);
     }
@@ -38,7 +37,7 @@ public class CalculatorTest {
     @Test
     void CalcMinusTest() {
         Calculator calculator = new Calculator();
-        int reuslt = calculator.calc(inputStrOnlyMinus);
+        int reuslt = calculator.calculate(inputStrOnlyMinus);
         System.out.println("result : " + reuslt);
         assertThat(reuslt).isEqualTo(3);
     }
@@ -47,7 +46,7 @@ public class CalculatorTest {
     @Test
     void CalcMultiplicationTest() {
         Calculator calculator = new Calculator();
-        int reuslt = calculator.calc(inputStrOnlyMultiplication);
+        int reuslt = calculator.calculate(inputStrOnlyMultiplication);
         System.out.println("result : " + reuslt);
         assertThat(reuslt).isEqualTo(48);
     }
@@ -56,7 +55,7 @@ public class CalculatorTest {
     @Test
     void CalcDivideTest() {
         Calculator calculator = new Calculator();
-        int reuslt = calculator.calc(inputStrOnlyDevide);
+        int reuslt = calculator.calculate(inputStrOnlyDevide);
         System.out.println("result : " + reuslt);
         assertThat(reuslt).isEqualTo(25);
     }
@@ -65,7 +64,7 @@ public class CalculatorTest {
     @Test
     void CalcTotalTest() {
         Calculator calculator = new Calculator();
-        int reuslt = calculator.calc(inputStr);
+        int reuslt = calculator.calculate(inputStr);
         System.out.println("result : " + reuslt);
         assertThat(reuslt).isEqualTo(10);
     }
@@ -74,13 +73,13 @@ public class CalculatorTest {
     @Test
     void CalcValidateInputStringNullTest() {
         Calculator calculator = new Calculator();
-        assertThrows(IllegalArgumentException.class, () -> calculator.calc(null));
+        assertThrows(IllegalArgumentException.class, () -> calculator.calculate(null));
     }
 
     @DisplayName("Test validate calculator input empty string")
     @Test
     void CalcValidateInputStringTest() {
         Calculator calculator = new Calculator();
-        assertThrows(IllegalArgumentException.class, () -> calculator.calc(""));
+        assertThrows(IllegalArgumentException.class, () -> calculator.calculate(""));
     }
 }

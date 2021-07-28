@@ -2,44 +2,60 @@ package study.step2;
 
 import study.step2.Intf.CalculatorIntf;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Calculator implements CalculatorIntf {
 
 
-    private List operator;
+    int result;
     private String[] calcStrArry;
 
 
     public Calculator() {
-        this.operator = Arrays.asList("+", "-", "*", "/");
+        result = 0;
     }
 
     @Override
-    public int calc(String calcStr) {
+    public int calculate(String calcStr) {
 
-        if(calcStr == null || calcStr.length() == 0) {
+        if (calcStr == null || calcStr.length() == 0) {
             throw new IllegalArgumentException("Input value is null or empty");
         }
 
-        int result = 0;
-        Calc calc = new Calc();
+        calculateInit(calcStr);
 
-        calcStrArry = calcStr.split(" ");
-
-        for (int idx = 0; idx < calcStrArry.length; idx++) {
-
-            String idxStr = calcStrArry[idx];
-            if (operator.contains(idxStr)) {
-                if (result == 0) {
-                    result = Integer.parseInt(calcStrArry[idx - 1]);
-                }
-
-                result = calc.calc(idxStr, result, Integer.parseInt(calcStrArry[idx + 1]));
-            }
+        for (int idx = 1; idx < getCalcStrArry().length; idx++) {
+            getOperatorResult(idx);
         }
 
         return result;
+    }
+
+    private void calculateInit(String calcStr) {
+        setCalcStrArry(calcStr.split(Constants.emptyStr));
+        setResult(Integer.parseInt(getCalcStrArry()[0]));
+    }
+
+    private void getOperatorResult(int idx) {
+
+        String operand = getCalcStrArry()[idx];
+
+        if (Operator.isOperator(operand)) {
+            result = Operator.valueOfStr(operand).calculate(result, Integer.parseInt(getCalcStrArry()[idx + 1]));
+        }
+    }
+
+    public void setCalcStrArry(String[] calcStrArry) {
+        this.calcStrArry = calcStrArry;
+    }
+
+    public String[] getCalcStrArry() {
+        return calcStrArry;
+    }
+
+    public int getResult() {
+        return result;
+    }
+
+    public void setResult(int result) {
+        this.result = result;
     }
 }
