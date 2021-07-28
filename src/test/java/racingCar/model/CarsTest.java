@@ -23,6 +23,11 @@ class CarsTest {
     }
 
     @Test
+    void move(){
+        assertThat(cars.moveCars()).isEqualTo(cars.getCars());
+    }
+
+    @Test
     void findWinner() {
         assertThat(cars.findWinners())
                 .isEqualTo(Arrays.asList(cars.getCars().get(2)));

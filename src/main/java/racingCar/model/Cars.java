@@ -1,7 +1,6 @@
 package racingCar.model;
 
 import racingCar.utils.RandomUtil;
-import racingCar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -27,6 +26,13 @@ public class Cars {
         return cars;
     }
 
+    public List<Car> moveCars() {
+        for(Car car: cars){
+            car.move(RandomUtil.getNumber());
+        }
+        return cars;
+    }
+
     private int findMaxLocation() {
         return cars.stream()
                 .max(Comparator.comparingInt(Car::getLocation))
@@ -48,4 +54,5 @@ public class Cars {
     public List<Car> getCars() {
         return cars;
     }
+
 }

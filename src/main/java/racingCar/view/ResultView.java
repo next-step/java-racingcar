@@ -2,7 +2,6 @@ package racingCar.view;
 
 import racingCar.model.Car;
 import racingCar.model.Cars;
-import racingCar.utils.RandomUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +13,7 @@ public class ResultView {
     private ResultView() {
     }
 
-    public static void printCars(Cars cars) {
+    public static void printCarsLocation(Cars cars) {
         System.out.println("\n실행결과");
         play(cars);
         printWinner(cars);
@@ -22,13 +21,12 @@ public class ResultView {
 
     public static void play(Cars cars) {
         for (int i = 0; i < cars.getPlayCount(); i++) {
-            moveCars(cars.getCars());
+            printCarsLocation(cars.moveCars());
         }
     }
 
-    public static void moveCars(List<Car> cars) {
+    public static void printCarsLocation(List<Car> cars) {
         for (Car car : cars) {
-            car.move(RandomUtil.getNumber());
             printLocation(car);
         }
         System.out.println();

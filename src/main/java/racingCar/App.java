@@ -10,6 +10,6 @@ public class App {
         int playCount = InputView.getPlayCount();
 
         Cars cars = new Cars(carNames, playCount);
-        ResultView.printCars(cars);
+        ResultView.printCarsLocation(cars);
     }
 }
