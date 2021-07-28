@@ -3,6 +3,8 @@ package step2;
 public class InputSeparator {
     private static final String SEPARATOR = " ";
 
+    private InputSeparator() {}
+
     private static boolean checkInputIsEmpty(String input) {
         return input == null || input.equals("");
     }

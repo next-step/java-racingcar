@@ -2,6 +2,8 @@ package step2;
 
 public class Calculator {
 
+    private Calculator() {};
+
     public static long calculate(String input){
 
         String[] tokens = InputSeparator.separate(input);
