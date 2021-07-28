@@ -28,7 +28,7 @@ public class CarRacingGameResult {
             .getValue();
 
         String winnerNames = winnerResults.stream()
-            .map(CarRunResult::getCarName)
+            .map(CarRunResult::getCarNameString)
             .collect(Collectors.joining(","));
 
         return winnerNames;

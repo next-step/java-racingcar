@@ -18,9 +18,9 @@ class CarRacingGameResultTest {
     @DisplayName("게임이 끝난후 최종 주행거리가 가장 긴 차량의 이름을 반환한다.")
     void name(List<Integer> runDistances, String expectedWinner) {
 
-        CarRunResult carRunResult1 = new CarRunResult("car1", runDistances.get(0));
-        CarRunResult carRunResult2 = new CarRunResult("car2", runDistances.get(1));
-        CarRunResult carRunResult3 = new CarRunResult("car3", runDistances.get(2));
+        CarRunResult carRunResult1 = new CarRunResult(new CarName("car1"), runDistances.get(0));
+        CarRunResult carRunResult2 = new CarRunResult(new CarName("car2"), runDistances.get(1));
+        CarRunResult carRunResult3 = new CarRunResult(new CarName("car3"), runDistances.get(2));
 
         Round round = new Round();
         round.getCarRunResults().add(carRunResult1);

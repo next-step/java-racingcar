@@ -40,7 +40,7 @@ public class ResultView {
     }
 
     public String generateCarRunResultString(CarRunResult result) {
-        String carName = result.getCarName();
+        String carName = result.getCarNameString();
         int runDistance = result.getRunDistance();
 
         return carName + COLON_DELIMITER + generateProgressString(runDistance);

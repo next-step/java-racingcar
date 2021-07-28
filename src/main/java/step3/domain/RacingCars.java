@@ -13,10 +13,10 @@ public class RacingCars {
     }
 
     private List<Car> prepareCars(GameSetting gameSetting) {
-        List<String> carNames = gameSetting.getCarNames();
+        List<CarName> carNames = gameSetting.getCarNames();
         List<Car> cars = new ArrayList<>();
 
-        for (String carName : carNames) {
+        for (CarName carName : carNames) {
             cars.add(new Car(carName));
         }
 

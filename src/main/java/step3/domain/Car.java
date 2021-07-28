@@ -4,10 +4,10 @@ import step3.runType.RunStrategy;
 
 public class Car {
 
-    private final String carName;
+    private final CarName carName;
     private int runDistance;
 
-    public Car(String carName) {
+    public Car(CarName carName) {
         this.carName = carName;
     }
 
@@ -15,7 +15,7 @@ public class Car {
         runDistance += runStrategy.run();
     }
 
-    public String getCarName() {
+    public CarName getCarName() {
         return carName;
     }
 

@@ -2,10 +2,10 @@ package step3.domain;
 
 public class CarRunResult {
 
-    private String carName;
+    private CarName carName;
     private int runDistance;
 
-    public CarRunResult(String carName, int runDistance) {
+    public CarRunResult(CarName carName, int runDistance) {
         this.carName = carName;
         this.runDistance = runDistance;
     }
@@ -14,7 +14,7 @@ public class CarRunResult {
         return runDistance;
     }
 
-    public String getCarName() {
-        return carName;
+    public String getCarNameString() {
+        return carName.getString();
     }
 }
