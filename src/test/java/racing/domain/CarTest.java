@@ -35,7 +35,7 @@ class CarTest {
 	@CsvSource(value = {"smith", "tester", "freeze"})
 	public void nameLengthCheck(String value) {
 		assertThrows(IllegalArgumentException.class, () ->
-			new Name(value)
+			new Car(value)
 		);
 	}
 
