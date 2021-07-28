@@ -28,9 +28,9 @@ public class CarsTest {
 
     private String sizeToNames(int size) {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < size; i++) {
+        for (int sizeCounter = 0; sizeCounter < size; sizeCounter++) {
             builder.append(
-                    newAnonymousName(i)).append(",");
+                    newAnonymousName(sizeCounter)).append(",");
         }
         if (builder.length() > 0)
             return builder.substring(0, builder.length() - 1);

@@ -51,10 +51,10 @@ public class Cars implements Iterable<Car> {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cars cars = (Cars) o;
+    public boolean equals(Object compareObject) {
+        if (this == compareObject) return true;
+        if (compareObject == null || getClass() != compareObject.getClass()) return false;
+        Cars cars = (Cars) compareObject;
         return Objects.equals(values, cars.values);
     }
 

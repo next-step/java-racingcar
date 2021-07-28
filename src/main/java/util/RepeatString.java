@@ -11,7 +11,7 @@ public class RepeatString {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < number; i++) {
+        for (int numberCounter = 0; numberCounter < number; numberCounter++) {
             builder.append(repeatUnit);
         }
         return builder.toString();

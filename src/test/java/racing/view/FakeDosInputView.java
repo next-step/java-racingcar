@@ -3,8 +3,8 @@ package racing.view;
 import racing.domain.dto.GameRequest;
 
 public class FakeDosInputView implements InputView {
-    private String carNames;
-    private int turnSize;
+    private final String carNames;
+    private final int turnSize;
 
     public FakeDosInputView(String carNames, int turnSize) {
         this.carNames = carNames;

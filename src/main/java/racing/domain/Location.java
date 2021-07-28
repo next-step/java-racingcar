@@ -38,9 +38,9 @@ public class Location extends Number implements Comparable<Location> {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Location) {
-            Location compareLocation = (Location) obj;
+    public boolean equals(Object compareObject) {
+        if (compareObject instanceof Location) {
+            Location compareLocation = (Location) compareObject;
             return this.value == compareLocation.value;
         }
         return false;

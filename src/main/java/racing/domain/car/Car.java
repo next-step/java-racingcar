@@ -42,10 +42,10 @@ public class Car {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car basicCar = (Car) o;
+    public boolean equals(Object compareObject) {
+        if (this == compareObject) return true;
+        if (compareObject == null || getClass() != compareObject.getClass()) return false;
+        Car basicCar = (Car) compareObject;
         return name.equals(basicCar.name);
     }
 

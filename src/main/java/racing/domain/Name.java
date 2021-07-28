@@ -22,10 +22,10 @@ public class Name {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Name))
+    public boolean equals(Object compareObject) {
+        if (!(compareObject instanceof Name))
             return false;
-        Name compareName = (Name) obj;
+        Name compareName = (Name) compareObject;
         return this.value.equals(compareName.value);
     }
 

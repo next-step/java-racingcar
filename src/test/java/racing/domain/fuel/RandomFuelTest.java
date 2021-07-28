@@ -23,7 +23,7 @@ public class RandomFuelTest {
     @ParameterizedTest
     public void isMovableTest(int testSize) {
         Set<Boolean> values = new HashSet<>();
-        for (int i = 0; i < testSize; i++) {
+        for (int testCounter = 0; testCounter < testSize; testCounter++) {
             values.add(randomFuel.isMovable());
         }
         assertThat(values.size())

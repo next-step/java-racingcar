@@ -30,7 +30,7 @@ class CarTest {
         BasicFuel fuel = new BasicFuel(fuelValue);
 
         Car car = new Car(anonymousName);
-        for (int i = 0; i < turnSize; i++)
+        for (int carCounter = 0; carCounter < turnSize; carCounter++)
             car = car.move(fuel);
 
         assertThat(
