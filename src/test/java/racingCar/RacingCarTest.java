@@ -3,6 +3,8 @@ package racingCar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,9 +22,11 @@ public class RacingCarTest {
 
     }
 
-    @Test
-    void 랜덤_조건_판단() {
-
+    @DisplayName("전진 가능한 숫자인지 판단하는 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"1:false", "4:true", "9:true"}, delimiter = ':')
+    void 전진_여부_판단(int number, boolean expect) {
+        assertThat(RacingManager.isMovableNumber(number)).isEqualTo(expect);
     }
 
    @Test
