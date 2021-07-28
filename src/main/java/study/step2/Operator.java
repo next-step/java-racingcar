@@ -1,18 +1,20 @@
 package study.step2;
 
 import java.util.Arrays;
+import java.util.function.BiFunction;
 
 public enum Operator {
     PLUS("+"),
     MINUS("-"),
     MULTIPLICATION("*"),
-    DEVISION("/");
+    DIVISION("/");
 
     String operator;
 
     Operator(String operator) {
         this.operator = operator;
     }
+
 
     static boolean isOperator(String str) {
         return Arrays.stream(Operator.values()).anyMatch(v -> v.operator.equals(str));
@@ -22,24 +24,6 @@ public enum Operator {
 
         int result = 0;
 
-
-        /*
-         * else 사용 코드
-         * */
-        if (operator.equals(Operator.PLUS.operator)) {
-            result = firstNum + secondNum;
-        } else if (operator.equals(Operator.MINUS.operator)) {
-            result = firstNum - secondNum;
-        } else if (operator.equals(Operator.MULTIPLICATION.operator)) {
-            result = firstNum * secondNum;
-        } else if (operator.equals(Operator.DEVISION.operator)) {
-            result = firstNum / secondNum;
-        }
-
-
-        /*
-        * else 미사용 코드
-        * */
         if (operator.equals(Operator.PLUS.operator)) {
             return firstNum + secondNum;
         }
@@ -52,13 +36,12 @@ public enum Operator {
             return firstNum * secondNum;
         }
 
-        if (operator.equals(Operator.DEVISION.operator)) {
+        if (operator.equals(Operator.DIVISION.operator)) {
             return firstNum / secondNum;
         }
 
         return result;
     }
-
 
     static Operator valueOfStr(String str) {
         return Arrays.stream(Operator.values())

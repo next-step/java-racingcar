@@ -1,19 +1,15 @@
 package study.step2;
 
-import study.step2.Intf.CalculatorIntf;
+public class Calculator {
 
-public class Calculator implements CalculatorIntf {
-
-
-    int result;
-    private String[] calcStrArry;
-
+    private static final String emptyStr = " ";
+    private int calculatorResult;
+    private String[] calculatorInputStrings;
 
     public Calculator() {
-        result = 0;
+        calculatorResult = 0;
     }
 
-    @Override
     public int calculate(String calcStr) {
 
         if (calcStr == null || calcStr.length() == 0) {
@@ -22,40 +18,40 @@ public class Calculator implements CalculatorIntf {
 
         calculateInit(calcStr);
 
-        for (int idx = 1; idx < getCalcStrArry().length; idx++) {
+        for (int idx = 1; idx < getCalculatorInputStrings().length; idx++) {
             getOperatorResult(idx);
         }
 
-        return result;
+        return calculatorResult;
     }
 
     private void calculateInit(String calcStr) {
-        setCalcStrArry(calcStr.split(Constants.emptyStr));
-        setResult(Integer.parseInt(getCalcStrArry()[0]));
+        setCalculatorInputStrings(calcStr.split(emptyStr));
+        setCalculatorResult(Integer.parseInt(getCalculatorInputStrings()[0]));
     }
 
     private void getOperatorResult(int idx) {
 
-        String operand = getCalcStrArry()[idx];
+        String operand = getCalculatorInputStrings()[idx];
 
         if (Operator.isOperator(operand)) {
-            result = Operator.valueOfStr(operand).calculate(result, Integer.parseInt(getCalcStrArry()[idx + 1]));
+            calculatorResult = Operator.valueOfStr(operand).calculate(calculatorResult, Integer.parseInt(getCalculatorInputStrings()[idx + 1]));
         }
     }
 
-    public void setCalcStrArry(String[] calcStrArry) {
-        this.calcStrArry = calcStrArry;
+    public void setCalculatorInputStrings(String[] calculatorInputStrings) {
+        this.calculatorInputStrings = calculatorInputStrings;
     }
 
-    public String[] getCalcStrArry() {
-        return calcStrArry;
+    public String[] getCalculatorInputStrings() {
+        return calculatorInputStrings;
     }
 
-    public int getResult() {
-        return result;
+    public int getCalculatorResult() {
+        return calculatorResult;
     }
 
-    public void setResult(int result) {
-        this.result = result;
+    public void setCalculatorResult(int calculatorResult) {
+        this.calculatorResult = calculatorResult;
     }
 }
