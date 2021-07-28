@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Winners;
-import racingcar.ui.ResultView;
+import racingcar.view.ResultView;
 
 import java.util.List;
 
