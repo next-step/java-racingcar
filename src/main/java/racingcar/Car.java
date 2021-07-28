@@ -1,7 +1,15 @@
 package racingcar;
 
 public class Car {
-    private Distance distance = new Distance();
+    private Distance distance;
+
+    public Car(int distance) {
+        this.distance = new Distance(distance);
+    }
+
+    public Car() {
+        this(0);
+    }
 
     public Distance getDistance() {
         return distance;
