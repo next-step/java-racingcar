@@ -18,4 +18,14 @@ class CarTest {
 
         assertThat(car.getPosition()).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("자동차 이름 저장 테스트")
+    void carNameCheckTest() {
+        Car car = new Car("benz");
+
+        String carName = car.getName();
+
+        assertThat(carName).isEqualTo("benz");
+    }
 }

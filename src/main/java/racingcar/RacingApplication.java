@@ -3,16 +3,18 @@ package racingcar;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
+import java.util.List;
+
 public class RacingApplication {
 
     public static void main(String[] args) {
 
-        int carCount = InputView.getInputCarCount();
+        String[] carNames = InputView.getInputCarNames();
         int tryCount = InputView.getInputTryCount();
 
-        Racing racing = new Racing(carCount);
-        racing.start(tryCount);
+        Racing racing = new Racing(carNames);
+        List<List<RacingRecord>> racingRecords = racing.start(tryCount);
 
-        ResultView.showRacingInfo(racing.getRacingHistory());
+        ResultView.showRacingInfo(racingRecords);
     }
 }

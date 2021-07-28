@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Racing {
 
@@ -8,36 +9,34 @@ public class Racing {
     private final int MORE_THEN_STANDARD_NUMBER = 4;
 
     private Car[] racingCars;
-    private ArrayList<ArrayList<RacingRecord>> racingHistory = new ArrayList<>();
 
-    public Racing() {
-        this(10);
+    public Racing(String[] carNames) {
+        racingCars = new Car[carNames.length];
+        addCars(carNames);
     }
 
-    public Racing(int carCount) {
-        racingCars = new Car[carCount];
-        addCars();
-    }
-
-    private void addCars() {
-        for (int i = 0; i < racingCars.length; i++) {
-            racingCars[i] = new Car();
+    private void addCars(String[] carNames) {
+        for (int i = 0; i < carNames.length; i++) {
+            racingCars[i] = new Car(carNames[i]);
         }
     }
 
-    public void start(int tryCount) {
+    public List<List<RacingRecord>> start(int tryCount) {
+        List<List<RacingRecord>> racingRecords = new ArrayList<>();
         for (int i = 0; i < tryCount; i++) {
-            moveTryCarsAndHistorySave();
+            List<RacingRecord> records = moveTryCars();
+            racingRecords.add(records);
         }
+        return racingRecords;
     }
 
-    private void moveTryCarsAndHistorySave() {
-        ArrayList<RacingRecord> records = new ArrayList<>();
+    private List<RacingRecord> moveTryCars() {
+        List<RacingRecord> records = new ArrayList<>();
         for (Car car : racingCars) {
             moveTryCar(car);
             records.add(new RacingRecord(car, car.getPosition()));
         }
-        racingHistory.add(records);
+        return records;
     }
 
     private void moveTryCar(Car car) {
@@ -52,10 +51,6 @@ public class Racing {
 
     public Car[] getRacingCars() {
         return racingCars;
-    }
-
-    public ArrayList<ArrayList<RacingRecord>> getRacingHistory() {
-        return racingHistory;
     }
 }
 
