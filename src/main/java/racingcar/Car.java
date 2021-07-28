@@ -1,13 +1,13 @@
 package racingcar;
 
 public class Car {
-    private int distance = 0;
+    private Distance distance;
 
-    public int getDistance() {
+    public Distance getDistance() {
         return distance;
     }
 
     public void move() {
-        distance++;
+        distance = distance.increase();
     }
 }

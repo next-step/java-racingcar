@@ -11,10 +11,10 @@ class CarTest {
     @Test
     @DisplayName("move 하면 distance 가 1 증가")
     public void move() {
-        int beforeDistance = sut.getDistance();
+        Distance beforeDistance = sut.getDistance();
 
         sut.move();
 
-        assertThat(sut.getDistance()).isEqualTo(beforeDistance + 1);
+        assertThat(sut.getDistance()).isEqualTo(beforeDistance.increase());
     }
 }

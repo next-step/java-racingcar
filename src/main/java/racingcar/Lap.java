@@ -1,18 +1,13 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Lap {
-    private List<Integer> distances = new ArrayList<>();
+    private Distances distances;
 
-    public Lap(List<Car> cars) {
-        for (Car car : cars) {
-            distances.add(car.getDistance());
-        }
+    public Lap(Cars cars) {
+        this.distances = new Distances(cars);
     }
 
-    public List<Integer> getDistances() {
+    public Distances getDistances() {
         return distances;
     }
 }

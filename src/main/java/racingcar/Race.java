@@ -1,16 +1,11 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Race {
-    private List<Car> cars = new ArrayList<>();
-    private int tryNum;
+    private final Cars cars;
+    private final int tryNum;
 
     public Race(int carNum, int tryNum) {
-        for (int i = 0; i < carNum; i++) {
-            cars.add(new Car());
-        }
+        this.cars = new Cars(carNum);
         this.tryNum = tryNum;
     }
 

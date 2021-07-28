@@ -1,16 +1,13 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RaceResult {
-    private List<Lap> laps = new ArrayList<>();
+    private Laps laps;
 
-    public List<Lap> getLaps() {
+    public Laps getLaps() {
         return laps;
     }
 
-    public void recordLap(List<Car> cars) {
-        laps.add(new Lap(cars));
+    public void recordLap(Cars cars) {
+        laps.record(cars);
     }
 }
