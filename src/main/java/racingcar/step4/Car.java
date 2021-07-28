@@ -14,7 +14,7 @@ public class Car {
         this.distance = distance;
     }
 
-    public static List<Car> createCar(String[] carNames) {
+    public static List<Car> createCars(String[] carNames) {
         List<Car> carList = new ArrayList<>();
         for (String name : carNames) {
             carList.add(new Car(name, 0));

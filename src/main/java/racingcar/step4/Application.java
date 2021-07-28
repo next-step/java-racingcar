@@ -9,7 +9,7 @@ public class Application {
         int tryCount = InputView.InputTryCount();
         Validation.checkValidTryCount(tryCount);
 
-        List<Car> cars = Car.createCar(strLiterals.split(","));
+        List<Car> cars = Car.createCars(strLiterals.split(","));
 
         ResultView.printResultMessage();
         for (int i = 0; i < tryCount; i++) {
