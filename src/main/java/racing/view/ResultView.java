@@ -37,6 +37,19 @@ public class ResultView {
         return sb.toString();
     }
 
+    public void printRacingWinners(List<RacingCar> winners) {
+        StringBuilder racingWinnersOutputMessage = new StringBuilder();
+        for (RacingCar winner : winners) {
+            racingWinnersOutputMessage.append(winner.getName());
+            racingWinnersOutputMessage.append(COMMA);
+            racingWinnersOutputMessage.append(ONE_BLANK_SPACE);
+        }
+        racingWinnersOutputMessage.deleteCharAt(racingWinnersOutputMessage.length() - 1);
+        racingWinnersOutputMessage.deleteCharAt(racingWinnersOutputMessage.length() - 1);
+        racingWinnersOutputMessage.append(RACING_WINNERS_OUTPUT_MESSAGE);
+        System.out.println(racingWinnersOutputMessage);
+    }
+
     private void printNewLine() {
         System.out.println();
     }

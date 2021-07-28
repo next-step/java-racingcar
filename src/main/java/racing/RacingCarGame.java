@@ -23,5 +23,6 @@ public class RacingCarGame {
             racingCars.moveForwardOneStepOrStop(new RandomNumberComparison());
             resultView.printRacingCarsStatus(racingCars.getRacingCars());
         }
+        resultView.printRacingWinners(racingCars.getWinners());
     }
 }
