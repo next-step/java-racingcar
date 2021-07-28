@@ -9,12 +9,9 @@ public class RacingCarGame {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         inputView.printRacingCarNamesInputMessage();
-        String[] racingCarNames = inputView.inputRacingCarNames();
-
+        RacingCars racingCars = new RacingCars(inputView.inputRacingCarNames());
         inputView.printMovementTrialCountInputMessage();
         int movementTrialCount = inputView.inputMovementTrialCount();
-
-        RacingCars racingCars = new RacingCars(racingCarNames);
 
         ResultView resultView = new ResultView();
         resultView.printRacingCarGameResultOutputMessage();
