@@ -1,6 +1,6 @@
 package racing.model;
 
-public class Position {
+public class RacingCarPosition {
     private static final int ONE_SPACE = 1;
 
     private int position;
