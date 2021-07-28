@@ -3,37 +3,56 @@ package racingCar.model;
 import racingCar.utils.RandomUtil;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class Cars {
-    private List<Car> carList;
+
+    private List<Car> cars;
     private int playCount;
 
-    public Cars(int carCount, int playCount) {
-        this.carList = addCars(carCount);
+    public Cars(String[] carNames, int playCount) {
+        this.cars = makeCars(carNames);
         this.playCount = playCount;
     }
 
-    private List<Car> addCars(int carCount) {
+    private List<Car> makeCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
         return cars;
     }
 
-    private void moveCars() {
-        for (Car car : carList) {
+    public List<Car> moveCars() {
+        for(Car car: cars){
             car.move(RandomUtil.getNumber());
-            car.printLocation();
-            System.out.println();
         }
+        return cars;
     }
 
-    public void play() {
-        for (int i = 0; i < playCount; i++) {
-            moveCars();
-            System.out.println();
-        }
+    private int findMaxLocation() {
+        return cars.stream()
+                .max(Comparator.comparingInt(Car::getLocation))
+                .orElseThrow(() -> new NoSuchElementException())
+                .getLocation();
     }
+
+    public List<Car> findWinners() {
+        int maxLocation = findMaxLocation();
+        return cars.stream()
+                .filter(car -> car.getLocation() == maxLocation)
+                .collect(Collectors.toList());
+    }
+
+    public int getPlayCount() {
+        return playCount;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
 }

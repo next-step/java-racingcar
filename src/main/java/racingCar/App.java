@@ -6,10 +6,10 @@ import racingCar.view.ResultView;
 
 public class App {
     public static void main(String[] args) {
-        int carCount = InputView.getCarCount();
+        String[] carNames = InputView.getCarNames();
         int playCount = InputView.getPlayCount();
 
-        Cars cars = new Cars(carCount, playCount);
-        ResultView.printCars(cars);
+        Cars cars = new Cars(carNames, playCount);
+        ResultView.printCarsLocation(cars);
     }
 }
