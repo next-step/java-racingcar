@@ -16,4 +16,8 @@ public class Cars {
             throw new IllegalArgumentException("차는 최소 1대 이상이어야 합니다.");
         }
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
