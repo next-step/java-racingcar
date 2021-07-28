@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import java.util.Random;
 
@@ -11,5 +11,4 @@ public class RandomNumberGenerator {
   public int generate() {
     return random.nextInt(BOUNDARY);
   }
-
 }

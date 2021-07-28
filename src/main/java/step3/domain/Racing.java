@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import static java.util.stream.Collectors.toList;
 
@@ -12,7 +12,11 @@ public class Racing {
 
     return IntStream.range(0, input.getNumberOfAttempts())
         .peek(i -> cars.move())
-        .mapToObj(i -> new Result(cars.getCars()))
+        .mapToObj(i -> new Result(
+            cars.getCars().stream()
+                .map(car -> new Car(car.getName(), car.getLocation()))
+                .collect(toList())
+        ))
         .collect(toList());
   }
 

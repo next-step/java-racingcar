@@ -1,7 +1,8 @@
-package step3;
+package step3.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import step3.domain.Result;
 
 public class ResultView {
 
@@ -30,7 +31,7 @@ public class ResultView {
     System.out.println(text);
   }
 
-  protected String concat() {
+  public String concat() {
     return locationLog() + winnerLog();
   }
 

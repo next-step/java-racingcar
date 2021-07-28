@@ -1,4 +1,4 @@
-package step3;
+package step3.view;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
