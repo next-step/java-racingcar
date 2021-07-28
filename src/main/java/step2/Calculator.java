@@ -3,7 +3,7 @@ package step2;
 public class Calculator {
     public static int calculate(String value) {
         validate(value);
-        return doCalculate(value);
+        return doCalculate(resolveValues(value));
     }
 
     private static void validate(String value) {
@@ -15,9 +15,12 @@ public class Calculator {
         return value == null || value.isEmpty();
     }
 
-    private static int doCalculate(String value) {
-        String[] values = value.split(" ");
+    private static int doCalculate(String[] values) {
         return doCalculateSequentially(values);
+    }
+
+    private static String[] resolveValues(String value) {
+        return value.split(" ");
     }
 
     private static int doCalculateSequentially(String[] values) {
