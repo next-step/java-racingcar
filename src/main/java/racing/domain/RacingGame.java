@@ -7,6 +7,7 @@ import racing.strategy.ForwardConditionStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 import static java.util.Arrays.stream;
@@ -21,6 +22,8 @@ public class RacingGame {
     private int stageCount;
 
     private RacingGame(ForwardConditionStrategy strategy, String names, int stageCount) {
+        Objects.requireNonNull(strategy);
+        Objects.requireNonNull(names);
         this.config = new RacingConfig(strategy, names, stageCount);
         this.racers = stream(names.split(RacingConfig.DELIMITER))
                 .map(name -> Car.of(name))
@@ -67,7 +70,7 @@ public class RacingGame {
         }
 
         private void verify(String names, int stageCount) {
-            if (names == null || !names.contains(DELIMITER) || names.equals(DELIMITER) || isPatternMatching(names)) {
+            if (!DELIMITER.contains(names) || DELIMITER.equals(names) || isPatternMatching(names)) {
                 throw new IllegalArgumentException("자동차 이름은 " + LIMIT_RACER + "개 이상이어야 하고, 공백이 있으면 안되며 쉼표(" + DELIMITER + ")로 구분되어야 합니다.");
             }
 
