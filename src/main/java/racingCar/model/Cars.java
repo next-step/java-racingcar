@@ -4,7 +4,9 @@ import racingCar.utils.RandomUtil;
 import racingCar.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -25,33 +27,25 @@ public class Cars {
         return cars;
     }
 
-    private void moveCars() {
-        for (Car car : cars) {
-            car.move(RandomUtil.getNumber());
-            ResultView.printLocation(car);
-        }
-    }
-
-    public void play() {
-        for (int i = 0; i < playCount; i++) {
-            moveCars();
-            System.out.println();
-        }
-    }
-
     private int findMaxLocation() {
-        int maxLocation = 0;
-        for (Car car : cars) {
-            maxLocation = car.greaterThan(maxLocation);
-        }
-        return maxLocation;
+        return cars.stream()
+                .max(Comparator.comparingInt(Car::getLocation))
+                .orElseThrow(() -> new NoSuchElementException())
+                .getLocation();
     }
 
-    public String findWinners() {
+    public List<Car> findWinners() {
         int maxLocation = findMaxLocation();
         return cars.stream()
                 .filter(car -> car.getLocation() == maxLocation)
-                .map(car -> car.getName())
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.toList());
+    }
+
+    public int getPlayCount() {
+        return playCount;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

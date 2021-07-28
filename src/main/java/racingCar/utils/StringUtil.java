@@ -1,8 +1,12 @@
 package racingCar.utils;
 
 public class StringUtil {
-    private StringUtil(){}
+    private static final String SEPARATOR = ",";
+
+    private StringUtil() {
+    }
+
     public static String[] divideByComma(String inputName) {
-        return inputName.split(",");
+        return inputName.split(SEPARATOR);
     }
 }

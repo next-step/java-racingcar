@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,12 +18,14 @@ class CarsTest {
     @BeforeEach
     void setUp() {
         cars = new Cars(new String[]{"pobi", "crong", "honux"}, 5);
-        cars.play();
+        List<Car> racingCars = cars.getCars();
+        racingCars.get(2).move(6);
     }
 
-    @DisplayName("우승자는 1명 이상")
     @Test
-    void findMaxLocation() {
-        assertThat(cars.findWinners().length()).isGreaterThan(0);
+    void findWinner() {
+        assertThat(cars.findWinners())
+                .isEqualTo(Arrays.asList(cars.getCars().get(2)));
     }
+
 }
