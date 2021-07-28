@@ -12,19 +12,12 @@ public class RandomlyMovableStrategy implements MovableStrategy {
         random = new Random();
     }
 
-    private RandomlyMovableStrategy(Random random) {
+    public RandomlyMovableStrategy(Random random) {
         this.random = random;
-    }
-
-    public static RandomlyMovableStrategy initRandomSeed(Random random) {
-        return new RandomlyMovableStrategy(random);
     }
 
     @Override
     public boolean isMovable() {
-        if (MOVABLE_MINIMUM_VALUE <= random.nextInt(VALUE_RANGE)) {
-            return true;
-        }
-        return false;
+        return MOVABLE_MINIMUM_VALUE <= random.nextInt(VALUE_RANGE);
     }
 }
