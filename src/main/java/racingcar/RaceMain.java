@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.exception.OverFiveCarNameException;
 import racingcar.model.RacingCars;
 import racingcar.strategy.RandomlyMovableStrategy;
 import racingcar.view.InputView;
@@ -13,15 +14,15 @@ public class RaceMain {
 			racingCars.forwardCars();
 			resultView.outputResult(racingCars.getCars());
 		}
+		resultView.outputWinners(racingCars);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws OverFiveCarNameException {
 		InputView inputView = new InputView();
 		RaceMain raceMain = new RaceMain();
-		RacingCars racingCars = new RacingCars(inputView.inputRacingCarNum(), new RandomlyMovableStrategy());
+		RacingCars racingCars = new RacingCars(inputView.inputCarNameList(), new RandomlyMovableStrategy());
 
 		raceMain.startRace(inputView.inputTryCount(), racingCars);
 		inputView.scannerClose();
-		
 	}
 }
