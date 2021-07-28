@@ -1,8 +1,7 @@
-package racingcar.car;
+package racingcar.domain;
 
 import racingcar.strategy.MoveStrategy;
 
-import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
@@ -21,8 +20,8 @@ public class RacingGame {
         return cars.cars();
     }
 
-    public List<Car> getRaceWinners() {
-        return Collections.unmodifiableList(cars.getRaceWinners());
+    public RaceWinners getRaceWinners() {
+        return cars.findRaceWinners();
     }
 
 }

@@ -1,14 +1,14 @@
 package racingcar.view;
 
-import racingcar.car.Car;
+import racingcar.domain.Car;
+import racingcar.domain.RaceWinners;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ResultView {
 
-    private static final String MESSAGE_RESULT = "\n실행 결과";
     private static final String DELIMITER = ",";
+    private static final String MESSAGE_RESULT = "\n실행 결과";
     private static final String SYMBOL = "-";
 
     private ResultView() {
@@ -16,7 +16,7 @@ public class ResultView {
 
     public static void show(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.getName() + " : " + getPositionAsSymbol(car.getPosition()));
+            System.out.println(car.getName() + " : " + getPositionAsSymbol(car.getCarPosition()));
         }
         System.out.println();
     }
@@ -25,12 +25,8 @@ public class ResultView {
         System.out.println(MESSAGE_RESULT);
     }
 
-    public static void printRaceWinners(List<Car> raceWinners) {
-        List<String> winnerNames = new ArrayList<>();
-        for (Car winner : raceWinners) {
-            winnerNames.add(winner.getName());
-        }
-        System.out.printf("%s가 최종 우승했습니다.", String.join(DELIMITER, winnerNames));
+    public static void printRaceWinners(RaceWinners raceWinners) {
+        System.out.printf("최종 우승자는 %s 입니다.", String.join(DELIMITER, raceWinners.winnerNames()));
     }
 
     private static String getPositionAsSymbol(int position) {
