@@ -2,19 +2,43 @@ package racing.domain;
 
 public class Car {
 
+	private final String name;
 	private int move;
 
-	public Car() {
-		this.move = 0;
-	}
+	private static final int COMPARE_VALUE = 4;
 
-	public void move(int randomValue, int compareValue) {
-		if (randomValue >= compareValue) {
-			this.move++;
-		}
+	public Car(String name) {
+		this.name = name;
+		this.move = 0;
 	}
 
 	public int getMove() {
 		return move;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public boolean checkVictory(int winDistance) {
+		return move == winDistance;
+	}
+
+	public void move(int randomValue) {
+		if (randomValue >= COMPARE_VALUE) {
+			this.move++;
+		}
+	}
+
+	public String showDistanceOfMovement() {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append(name + " : ");
+
+		for (int i = 0; i < move; i++) {
+			sb.append('-');
+		}
+
+		return sb.toString();
 	}
 }

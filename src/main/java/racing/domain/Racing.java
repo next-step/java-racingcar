@@ -1,33 +1,46 @@
 package racing.domain;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import racing.exception.NotFoundMaxDistanceException;
 import racing.utils.RandomUtils;
 
 public class Racing {
 
 	private List<Car> cars;
 
-	private static final int COMPARE_VALUE = 4;
-
-	public Racing(int carCount) {
-		initCars(carCount);
+	public Racing(List<String> names) {
+		initCars(names);
 	}
 
-	private void initCars(int carCount) {
-		cars = new ArrayList<>(carCount);
-
-		for (int i = 0; i < carCount; i++) {
-			cars.add(new Car());
-		}
+	private void initCars(List<String> names) {
+		cars = names.stream()
+			.map(Car::new)
+			.collect(Collectors.toList());
 	}
 
 	public List<Car> move() {
-		for (Car car : cars) {
-			car.move(RandomUtils.getRandomValue(), COMPARE_VALUE);
-		}
+		cars.forEach(car -> car.move(RandomUtils.getRandomValue()));
 
 		return cars;
+	}
+
+	public String getTopRankResult() {
+		String[] topNames = cars.stream()
+			.filter(car -> car.checkVictory(measureMaxDistance()))
+			.map(Car::getName)
+			.toArray(String[]::new);
+
+		return String.join(",", topNames);
+	}
+
+	private int measureMaxDistance() {
+		return cars.stream()
+			.max(Comparator.comparingInt(Car::getMove))
+			.orElseThrow(() -> new NotFoundMaxDistanceException("최대 거리를 찾을 수 없습니다."))
+			.getMove();
 	}
 }
