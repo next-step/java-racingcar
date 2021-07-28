@@ -12,36 +12,34 @@ import racingcar.strategy.MovableStrategy;
 public class RacingCars {
 	private List<RacingCar> racingCars = new ArrayList<>();
 
-	public List<RacingCar> getCars() {
-		return racingCars;
-	}
-
-	public RacingCars(int carNum, MovableStrategy movableStrategy) {
-		for (int i = 0; i < carNum; i++) {
-			racingCars.add(new RacingCar(movableStrategy));
-		}
-	}
-
 	public RacingCars(String[] carNames, MovableStrategy movableStrategy) throws OverFiveCarNameException {
 		for (int i = 0; i < carNames.length; i++) {
 			racingCars.add(new RacingCar(carNames[i], movableStrategy));
 		}
 	}
 
+	public List<RacingCar> getCars() {
+		return racingCars;
+	}
+
 	public void forwardCars() {
 		racingCars.stream()
-			.forEach(racingCar -> {
-				racingCar.forward();
-			});
+			.forEach(RacingCar::forward);
+	}
+
+	private int getRacingCarsMaxPosition() {
+		Stream<RacingCar> stream = racingCars.stream();
+		return stream.map(RacingCar::getPosition)
+					.mapToInt(carPosition -> carPosition)
+					.max()
+					.orElseThrow(NoSuchElementException::new);
 	}
 
 	public List<String> getWinners() {
 		Stream<RacingCar> stream = racingCars.stream();
-		int maxPosition = stream.map(RacingCar::getPosition).mapToInt(carPosition -> carPosition).max().orElseThrow(NoSuchElementException::new);
-
-		stream = racingCars.stream();
-		List<String> winners = stream.filter(car -> car.getPosition() == maxPosition).map(RacingCar::getCarName).collect(Collectors.toList());
-
+		List<String> winners = stream.filter(car -> car.getPosition() == getRacingCarsMaxPosition())
+									.map(RacingCar::getCarName)
+									.collect(Collectors.toList());
 		return winners;
 	}
 }
