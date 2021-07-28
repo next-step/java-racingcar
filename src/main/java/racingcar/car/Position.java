@@ -1,19 +1,13 @@
 package racingcar.car;
 
 import racingcar.util.Util;
-import racingcar.view.ResultView;
 
 public class Position {
     private int position;
+    private static final int FORWARD_DISTANCE = 1;
 
-    public static final int FORWARD_DISTANCE = 1;
-
-    public Position() {
-        this.position = 0;
-    }
-
-    public int getPosition() {
-        return position;
+    public Position(int position) {
+        this.position = position;
     }
 
     public void movePosition() {
@@ -30,9 +24,7 @@ public class Position {
         this.position += FORWARD_DISTANCE;
     }
 
-    public void printCarPosition() {
-        ResultView.printCarPosition(this.position);
+    public int getPosition() {
+        return position;
     }
-
-
 }

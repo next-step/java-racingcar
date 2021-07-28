@@ -4,8 +4,8 @@ public class Car {
     private Position position;
     private Name name;
 
-    public Car(String name) {
-        this.position = new Position();
+    public Car(String name, int position) {
+        this.position = new Position(position);
         this.name = new Name(name);
     }
 
@@ -19,10 +19,5 @@ public class Car {
 
     public void movePosition() {
         position.movePosition();
-    }
-
-    public void printCarStatus() {
-        name.printCarName();
-        position.printCarPosition();
     }
 }

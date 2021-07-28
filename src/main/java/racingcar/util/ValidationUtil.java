@@ -22,7 +22,7 @@ public class ValidationUtil {
         }
     }
 
-    public static void checkCarsValidationByNames(String[] names) {
+    public static void checkCarsValidation(String[] names) {
         checkBlankCarName(names);
         checkLengthCarName(names);
         checkDuplicateCar(names);

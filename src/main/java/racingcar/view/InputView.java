@@ -21,7 +21,7 @@ public class InputView {
 
     public static String[] inputNameOfCars() {
         String[] names = getUserInputValue(INPUT_CAR_NAME_MESSAGE).split(",");
-        ValidationUtil.checkCarsValidationByNames(names);
+        ValidationUtil.checkCarsValidation(names);
         return names;
     }
 
