@@ -60,8 +60,6 @@ public class Car implements Comparable<Car> {
     }
 
     public void move(MoveStrategy strategy) {
-        if (isMove) {
-            this.position++;
-        }
+
     }
 }
