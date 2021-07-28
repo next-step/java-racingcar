@@ -48,8 +48,10 @@ public class Cars {
     }
 
     public List<Car> move(MoveStrategy strategy){
-        strategy.move(carList);
-        return carList;
+        return strategy.move(carList);
     }
 
+    public List<Car> showCarList(){
+        return new ArrayList<>(carList);
+    }
 }

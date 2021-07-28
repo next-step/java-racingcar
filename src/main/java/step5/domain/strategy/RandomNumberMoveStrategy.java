@@ -3,9 +3,10 @@ package step5.domain.strategy;
 import step5.common.RandomFactory;
 import step5.domain.Car;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class CarMoveStrategy implements MoveStrategy {
+public class RandomNumberMoveStrategy implements MoveStrategy {
     private final int MOVE_BOUNDARY = 4;
 
     @Override
@@ -17,9 +18,10 @@ public class CarMoveStrategy implements MoveStrategy {
     }
 
     @Override
-    public void move(List<Car> carList) {
+    public List move(List<Car> carList) {
         for (Car car : carList) {
             car.move(isMove(RandomFactory.getRandomNumber()));
         }
+        return new ArrayList<>(carList);
     }
 }

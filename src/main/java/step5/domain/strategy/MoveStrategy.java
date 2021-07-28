@@ -7,5 +7,5 @@ import java.util.List;
 public interface MoveStrategy {
     boolean isMove(int randomNumber);
 
-    void move(List<Car> carList);
+    List<Car> move(List<Car> carList);
 }

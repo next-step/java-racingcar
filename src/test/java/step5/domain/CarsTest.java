@@ -12,9 +12,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
 
-    Cars cars;
+    static Cars cars;
     @BeforeAll
-    void createList(){
+    static void createListTest(){
         cars = Cars.from(Arrays.asList(
                 Car.of("a",1),
                 Car.of("b",2),
@@ -50,7 +50,12 @@ class CarsTest {
     @Test
     void moveCarsTest(){
         Cars cars = Cars.from(new String[]{"a","b","c"});
-        assertThat(cars.getSize());
+        assertThat(
+                cars.showCarList().stream()
+                        .map(Car::getName)
+                        .collect(Collectors.toList())
+        ).containsExactly("a","b","c");
     }
+
 
 }

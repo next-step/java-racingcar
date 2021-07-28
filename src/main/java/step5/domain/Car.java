@@ -59,7 +59,9 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public void move(MoveStrategy strategy) {
-
+    public void move(boolean isMove) {
+        if(isMove){
+            position ++;
+        }
     }
 }
