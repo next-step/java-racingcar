@@ -9,7 +9,7 @@ public class Car {
     private int distance;
     private static final int MIN_NUMBER = 4;
 
-    public Car(String name, int distance) {
+    private Car(String name, int distance) {
         this.name = name;
         this.distance = distance;
     }
