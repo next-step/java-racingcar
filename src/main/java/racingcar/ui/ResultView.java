@@ -1,6 +1,7 @@
 package racingcar.ui;
 
 import racingcar.RacingRecord;
+import racingcar.RacingRecordManager;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class ResultView {
     }
 
     private static void showRacingWinner(List<List<RacingRecord>> racingRecords) {
-        List<String> winners = RacingRecord.getRacingWinner(racingRecords);
+        List<String> winners = RacingRecordManager.getRacingWinner(racingRecords);
         System.out.println(String.join(WINNER_SEPARATOR, winners) + RESULT_MESSAGE_WINNER_POST);
     }
 }

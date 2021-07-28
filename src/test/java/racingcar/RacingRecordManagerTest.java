@@ -9,7 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("자동차 경주 기록 테스트")
-class RacingRecordTest {
+class RacingRecordManagerTest {
 
     @Test
     @DisplayName("자동차 경주 우승자 확인")
@@ -24,7 +24,7 @@ class RacingRecordTest {
         racingRecords.add(finalRacingRecord);
 
         // when
-        String winner = RacingRecord.getRacingWinner(racingRecords).get(0);
+        String winner = RacingRecordManager.getRacingWinner(racingRecords).get(0);
 
         //then
         assertThat(winner).isEqualTo("benz");
