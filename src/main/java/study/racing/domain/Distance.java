@@ -1,6 +1,7 @@
 package study.racing.domain;
 
 import java.util.Objects;
+import study.racing.validation.Validation;
 
 public class Distance {
 
@@ -13,6 +14,7 @@ public class Distance {
   }
 
   public Distance(int moveDistance) {
+    Validation.checkMinimumNumber(moveDistance);
     this.moveDistance = moveDistance;
   }
 

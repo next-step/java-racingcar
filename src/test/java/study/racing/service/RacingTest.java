@@ -24,7 +24,7 @@ class RacingTest {
 
     assertThat(racingWithCarNames.getCars()).hasSize(2);
     assertThat(racingWithCarNames.getCars()).extracting(car2 -> car2.getDistance().getMoveDistance())
-        .anyMatch(distance2 -> distance2 < 1);
+        .anyMatch(distance2 -> distance2 < 2);
   }
 
   @DisplayName("입력값이 null이거나 빈값인 경우 검증하여 IllegalArgumentException이 발생하는지 테스트.")
