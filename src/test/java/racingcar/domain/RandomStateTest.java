@@ -20,16 +20,4 @@ class RandomStateTest {
         RandomState randomState = new RandomState();
         assertThat(randomState.getRandomInt()).isBetween(0, 9);
     }
-
-    @DisplayName("항상 참이 나와야한다.")
-    @Test
-    void isMovable() {
-        RandomState randomState = new RandomState() {
-            @Override
-            boolean isMovable() {
-                return true;
-            }
-        };
-        assertThat(randomState.isMovable()).isTrue();
-    }
 }

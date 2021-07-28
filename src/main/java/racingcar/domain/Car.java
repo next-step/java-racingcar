@@ -1,8 +1,6 @@
 package racingcar.domain;
 
 public class Car {
-
-
     private Score score;
     private CarName name;
 
@@ -15,19 +13,17 @@ public class Car {
         return name.getName();
     }
 
-    public int getScore() {
-        return score.getScore();
+    public Score getScore() {
+        return score;
     }
 
-    void go(RandomState randomState) {
-        if (randomState.isMovable()) {
+    void go(MoveState moveState) {
+        if (moveState.isMovable()) {
             score.add();
         }
     }
 
-    public boolean isSameScore(int score) {
-        return this.score.isSameScore(score);
+    boolean isSameNumber(int number) {
+        return this.score.equals(new Score(number));
     }
-
-
 }

@@ -1,22 +1,29 @@
 package racingcar.domain;
 
-class Score {
-    private int score;
+public class Score {
+    private int number;
 
-    Score(){
-        this.score = 0;
+    Score() {
+        this.number = 0;
     }
 
-    int getScore(){
-        return this.score;
+    Score(int number) {
+        this.number = number;
     }
 
-    void add(){
-        this.score++;
+    public int getNumber() {
+        return this.number;
     }
 
-    boolean isSameScore(int score) {
-        return this.score == score;
+    void add() {
+        this.number++;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Score score = (Score) o;
+        return number == score.number;
+    }
 }

@@ -14,17 +14,12 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 class CarsTest {
     private static final List<String> CAR_NAMES = Arrays.asList("pobi", "crong", "honux");
     private static Cars cars;
-    private static RandomState randomState;
+    private static MoveState moveState;
 
     @BeforeAll
     static void setUp() {
         cars = new Cars(CAR_NAMES);
-        randomState = new RandomState() {
-            @Override
-            boolean isMovable() {
-                return true;
-            }
-        };
+        moveState = () -> true;
     }
 
     @DisplayName("주어진 개수만큼 자동차 객체가 생성되어야한다.")
@@ -36,9 +31,9 @@ class CarsTest {
     @DisplayName("시도 후 점수가 달라져야한다.")
     @Test
     void getScores() {
-        int before = cars.getCars().get(0).getScore();
-        cars.attempt(randomState);
-        int after = cars.getCars().get(0).getScore();
+        int before = cars.getCars().get(0).getScore().getNumber();
+        cars.attempt(moveState);
+        int after = cars.getCars().get(0).getScore().getNumber();
         assertThat(after).isNotEqualTo(before);
     }
 
@@ -51,7 +46,7 @@ class CarsTest {
     @DisplayName("우승자가 한명 이상 있어야한다.")
     @Test
     void getWinner() {
-        cars.attempt(randomState);
+        cars.attempt(moveState);
         assertThat(cars.getWinners()).isNotEmpty();
     }
 
