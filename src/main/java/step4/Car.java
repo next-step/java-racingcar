@@ -15,7 +15,7 @@ public class Car {
     }
 
     public void move(int randomValue) {
-        if (!carEngine.canGo(randomValue)) {
+        if (!carEngine.canMove(randomValue)) {
             return;
         }
 
