@@ -24,5 +24,11 @@ public class RacingUtils {
         }
     }
 
+    public static String[] checkValidateArray(String[] carList){
+        for(String carName : carList){
+            checkNameLength(carName);
+        }
+        return carList;
+    }
 
 }
