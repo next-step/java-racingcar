@@ -16,6 +16,7 @@ public class Winner {
     public void getWinnerList() {
         Collections.sort(cars);
         findWinners();
+
     }
 
     public void findWinners() {
