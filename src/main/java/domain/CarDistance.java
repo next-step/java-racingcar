@@ -8,11 +8,11 @@ public class CarDistance {
         carDistance = 0;
     }
 
-    public int checkCarDistance() {
+    public int takeCarDistance() {
         return carDistance;
     }
 
-    public void changeCarDistance(int distance) {
+    public void addCarDistance(int distance) {
         carDistance += distance;
     }
 

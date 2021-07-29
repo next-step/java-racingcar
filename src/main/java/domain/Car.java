@@ -16,17 +16,19 @@ public class Car {
 
         if (randomNumber >= CAR_MOVE_CHECK) {
             move(()->CAR_ADVANCE);
-            return;
         }
 
-        move(()->CAR_STOP);
+        if (randomNumber < CAR_MOVE_CHECK) {
+            move(()->CAR_STOP);
+        }
+
     }
 
     public void move(CarBehavior carBehavior) {
-        carDistance.changeCarDistance(carBehavior.carMove());
+        carDistance.addCarDistance(carBehavior.carMove());
     }
 
     public int checkCarMoveDistance() {
-        return carDistance.checkCarDistance();
+        return carDistance.takeCarDistance();
     }
 }

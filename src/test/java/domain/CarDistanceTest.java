@@ -3,7 +3,6 @@ package domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarDistanceTest {
@@ -12,8 +11,8 @@ class CarDistanceTest {
     @Test
     public void moveDistanceTest() {
         CarDistance carDistance = new CarDistance();
-        carDistance.changeCarDistance(1);
-        assertThat(carDistance.checkCarDistance()).isEqualTo(1);
+        carDistance.addCarDistance(1);
+        assertThat(carDistance.takeCarDistance()).isEqualTo(1);
     }
 
 }

@@ -11,7 +11,6 @@ import java.util.List;
 public class GameController {
 
     List<Car> participant;
-    private int playerCount;
     private int gameCount;
 
     public GameController() {
@@ -20,7 +19,7 @@ public class GameController {
 
     public void init() {
         InputView inputView = new InputView();
-        playerCount = inputView.carInputView();
+        int playerCount = inputView.carInputView();
         gameCount = inputView.playInputView();
 
         for (int count = 0; count < playerCount; count++) {
@@ -34,7 +33,7 @@ public class GameController {
     }
 
     public void playGame() {
-        for(int count = 0; count < playerCount; count++) {
+        for(int count = 0; count < participant.size(); count++) {
             participant.get(count).carMoveBehavior(RandomNumUtil.makeRandomNumber());
         }
     }
