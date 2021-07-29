@@ -2,6 +2,7 @@ package racing.domain;
 
 import java.util.List;
 
+
 public class Racing {
 
 	private final Cars cars;
@@ -23,7 +24,7 @@ public class Racing {
 	}
 
 	public Cars carsRaceForResult() {
-		return cars.racing(new RandomMoving());
+		return cars.racing();
 	}
 
 	public List<Car> winnerPlayer() {

@@ -27,4 +27,11 @@ public class Validation {
 			throw new IllegalArgumentException(positiveCheckMessage);
 		}
 	}
+
+	public static void validRandomRangeCheck(int randomValue, String numberRangeCheckMessage) {
+		if (randomValue < 0 || randomValue > 9) {
+			throw new IllegalArgumentException(numberRangeCheckMessage);
+		}
+	}
+
 }

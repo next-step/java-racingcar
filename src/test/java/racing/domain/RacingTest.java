@@ -42,8 +42,15 @@ public class RacingTest {
 		}
 
 		@Override
-		public void move(boolean moveResult) {
-			super.move(false);
+		public void move(RandomMoving randomMoving) {
+			super.move(new DummyFalseRandomMove());
+		}
+	}
+
+	private static class DummyFalseRandomMove extends RandomMoving{
+		@Override
+		public boolean movable(int randomValue) {
+			return false;
 		}
 	}
 
