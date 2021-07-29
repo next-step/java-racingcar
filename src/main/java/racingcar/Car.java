@@ -14,6 +14,7 @@ import java.util.Random;
 public class Car {
     private String carName;
     private int currentLocation = 0;
+    private final int minLocation = 3;
 
     public int getCurrentLocation() {
         return currentLocation;
@@ -35,18 +36,19 @@ public class Car {
      * 자동차가 이동할 무작위 숫자를 반환합니다.
      * @return
      */
-    public int getMove() {
+    public int getMove(int range) {
         Random moveIndex = new Random();
-        int move = moveIndex.nextInt(10);
+        int move = moveIndex.nextInt(range);
         return move;
     }
 
     /**
      * 무작위의 숫자가 4보다 크다면 이동합니다.
      */
-    public void moveCar() {
-        int move = getMove();
-        if(move > 3) {
+    public void moveCar(int range) {
+
+        int move = getMove(range);
+        if(move > minLocation) {
             this.setCurrentLocation(this.getCurrentLocation() + move);
         }
     }
