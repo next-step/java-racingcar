@@ -13,11 +13,21 @@ public class Car {
         this.random = random;
     }
 
-    private boolean isMove() {
-        return random.nextInt(MAX_BOUNDS) >= MOVE_STANDARD;
+    private boolean isMove(int number) {
+        return number >= MOVE_STANDARD;
+    }
+
+    private int getRandomNumber() {
+        return random.nextInt(MAX_BOUNDS);
     }
 
     int go() {
-        return isMove() ? ++position : position;
+        int number = getRandomNumber();
+
+        if (number < 0 || number > 9) {
+            throw new IllegalStateException("랜덤 숫자의 유효범위를 벗어납니다.");
+        }
+
+        return isMove(number) ? ++position : position;
     }
 }
