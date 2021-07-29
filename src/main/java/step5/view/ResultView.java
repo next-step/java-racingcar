@@ -1,5 +1,7 @@
-package step5;
+package step5.view;
 
+import step5.domain.Car;
+import step5.domain.CarStadium;
 import java.util.List;
 import java.util.stream.Collectors;
 
