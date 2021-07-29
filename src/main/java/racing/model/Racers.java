@@ -4,7 +4,6 @@ import racing.strategy.ForwardConditionStrategy;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.range;
 
@@ -42,7 +41,7 @@ public class Racers<T extends Racer> {
         get(i).go();
     }
 
-    public String winner() {
+    public List<T> winner() {
         int max = racers.stream()
                         .map(it -> (Car) it)
                         .max(Car::compareTo)
@@ -50,8 +49,6 @@ public class Racers<T extends Racer> {
 
         return racers.stream()
                      .filter(car -> car.position() == max)
-                     .map(it -> (Car) it)
-                     .map(car -> car.name())
-                     .collect(joining(", "));
+                     .collect(toList());
     }
 }
