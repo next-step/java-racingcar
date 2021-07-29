@@ -1,12 +1,12 @@
-package step5.strategy;
+package step5;
 
 import step5.strategy.MovingStrategy;
 
-public class SpeedMovingStrategy implements MovingStrategy {
+public class SpeedMovingStrategyTest implements MovingStrategy {
 
     private final int speed;
 
-    public SpeedMovingStrategy(int speed) {
+    public SpeedMovingStrategyTest(int speed) {
         this.speed = speed;
     }
 

@@ -6,7 +6,6 @@ import step5.domain.Car;
 import step5.domain.CarEngine;
 import step5.domain.CarStadium;
 import step5.domain.Referee;
-import step5.strategy.SpeedMovingStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ class CarStadiumTest {
     void moveCars(int givenSpeed, int givenTryCnt, String name, int movedResultCount) {
         // Given
         List<Car> givenCars = new ArrayList<>();
-        givenCars.add(new Car(name, new CarEngine(), new SpeedMovingStrategy(givenSpeed)));
+        givenCars.add(new Car(name, new CarEngine(), new SpeedMovingStrategyTest(givenSpeed)));
         CarStadium carStadium = new CarStadium(new Referee(givenTryCnt), givenCars);
 
         List<Car> expectedCars = carStadium.getAllCars();
