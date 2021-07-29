@@ -6,22 +6,20 @@ import java.util.Random;
 
 public class CarRacing {
 
-    public static void main(String[] args) {
-        InputView inputView = new InputView();
-
-        inputView.printNumberOfCars();
-        int numberOfCars = inputView.inputNumber();
-
-        inputView.printNumberOfRacing();
-        int numberOfRacing = inputView.inputNumber();
-
+    private ArrayList<Car> prepareCars(int numberOfCars) {
         ArrayList<Car> cars = new ArrayList<>();
+
         for (int i = 0; i<numberOfCars; i++) {
             cars.add(new Car());
         }
 
-        // start
+        return cars;
+    }
+
+    void start(int numberOfCars, int numberOfRacing) {
         Random random = new Random();
+        ArrayList<Car> cars = prepareCars(numberOfCars);
+
         for (int round = 1; round <= numberOfRacing; round++) {
             System.out.println();
             if (round == 1) {
