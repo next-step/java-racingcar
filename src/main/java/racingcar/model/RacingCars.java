@@ -6,13 +6,13 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import racingcar.exception.OverFiveCarNameException;
+import racingcar.exception.NameValidationException;
 import racingcar.strategy.MovableStrategy;
 
 public class RacingCars {
 	private List<RacingCar> racingCars = new ArrayList<>();
 
-	public RacingCars(String[] carNames, MovableStrategy movableStrategy) throws OverFiveCarNameException {
+	public RacingCars(String[] carNames, MovableStrategy movableStrategy) throws NameValidationException {
 		for (int i = 0; i < carNames.length; i++) {
 			racingCars.add(new RacingCar(carNames[i], movableStrategy));
 		}
@@ -29,10 +29,11 @@ public class RacingCars {
 
 	private int getRacingCarsMaxPosition() {
 		Stream<RacingCar> stream = racingCars.stream();
-		return stream.map(RacingCar::getPosition)
-					.mapToInt(carPosition -> carPosition)
-					.max()
-					.orElseThrow(NoSuchElementException::new);
+		return racingCars.stream()
+				.map(RacingCar::getPosition)
+				.mapToInt(carPosition -> carPosition)
+				.max()
+				.orElseThrow(NoSuchElementException::new);
 	}
 
 	public List<String> getWinners() {
