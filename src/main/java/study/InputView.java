@@ -8,13 +8,15 @@ public class InputView {
 
     public static int enterNumberOfCar() {
         System.out.println("자동차 대수는 몇 대 인가요?");
-        int numberOfCar = SCANNER.nextInt();
-        return numberOfCar;
+        return enterNumber();
     }
 
     public static int enterNumberOfAttempt() {
         System.out.println("시도할 대수는 몇 회 인가요?");
-        int numberOfAttempt = SCANNER.nextInt();
-        return numberOfAttempt;
+        return enterNumber();
+    }
+
+    private static int enterNumber() {
+        return SCANNER.nextInt();
     }
 }

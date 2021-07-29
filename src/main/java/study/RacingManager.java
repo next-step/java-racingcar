@@ -3,16 +3,10 @@ package study;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class RacingManager {
 
     private List<Car> ragingCarList = new ArrayList<>();
-
-    private static final int LOWER_LIMIT_TO_MOVE_CAR = 4;
-    private static final int UPPER_LIMIT_TO_MOVE_CAR = 10;
-
-    private Random random = new Random();
 
 
     /**
@@ -29,9 +23,7 @@ public class RacingManager {
     }
 
     private void moveRacingCar(Car car) {
-        if (canMoveCar(getRandomNumber())) {
-            car.moveCar();
-        }
+        car.moveCar(new RandomMovingStrategy());
     }
 
     /**
@@ -43,17 +35,6 @@ public class RacingManager {
             ragingCarList.add(new Car());
         }
         ragingCarList = Collections.unmodifiableList(ragingCarList);
-    }
-
-    public boolean canMoveCar(int randomNumber) {
-        if (randomNumber >= LOWER_LIMIT_TO_MOVE_CAR) {
-            return true;
-        }
-        return false;
-    }
-
-    public int getRandomNumber() {
-        return random.nextInt(UPPER_LIMIT_TO_MOVE_CAR);
     }
 
     public List<Car> getCarList() {

@@ -7,11 +7,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    @DisplayName("자동차 이동 테스트")
+    @DisplayName("자동차 이동성공 테스트")
     @Test
     public void moveCarTest() {
         Car car = new Car();
-        car.moveCar();
+        car.moveCar(() -> true);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 }
