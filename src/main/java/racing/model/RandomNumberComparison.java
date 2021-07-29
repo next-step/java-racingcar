@@ -14,7 +14,6 @@ public class RandomNumberComparison implements MovingCondition {
 
     @Override
     public boolean isMovable() {
-        Number randomNumber = Number.valueOf(random.nextInt(RANDOM_NUMBER_UPPER_BOUND));
-        return randomNumber.isGreaterThanOrEqualTo(MOVABLE_MIN_NUMBER);
+        return random.nextInt(RANDOM_NUMBER_UPPER_BOUND) >= MOVABLE_MIN_NUMBER;
     }
 }
