@@ -1,20 +1,23 @@
 package racing.controller;
 
 import racing.domain.Racing;
-import racing.view.RacingView;
+import racing.view.RacingInputView;
+import racing.view.RacingOutputView;
 
 public class RacingController {
 
 	public static void main(String[] args) {
-		RacingView racingView = new RacingView();
-		String carsName = racingView.firstRequestView();
-		int roundCount = racingView.secondRequestView();
+		RacingInputView racingInputView = new RacingInputView();
+		String carsName = racingInputView.firstRequestView();
+		int roundCount = racingInputView.secondRequestView();
+
+		RacingOutputView racingOutputView = new RacingOutputView();
 		Racing racing = Racing.raceStart(carsName);
-		racingView.racingStartView();
+		racingOutputView.racingStartView();
 		for (int i = 0; i < roundCount; i++) {
-			racingView.racingResultView(racing.carsRaceForResult());
+			racingOutputView.racingResultView(racing.carsRaceForResult());
 		}
-		racingView.racingWinnerView(racing.winnerPlayer());
+		racingOutputView.racingWinnerView(racing.winnerPlayer());
 	}
 
 }
