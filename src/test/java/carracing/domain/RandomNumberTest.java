@@ -1,5 +1,7 @@
 package carracing.domain;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -30,6 +32,13 @@ class RandomNumberTest {
         RandomNumber number = RandomNumber.of(targetNumber);
         assertThat(number.isOver(otherNumber))
                 .isEqualTo(isOver);
+    }
+
+    @DisplayName("값 객체 캐시 테스트")
+    @Test
+    public void cacheTest() {
+        assertThat(RandomNumber.of(3) == RandomNumber.of(3)).isTrue();
+        assertThat(RandomNumber.of(3) == RandomNumber.of(4)).isFalse();
     }
 
 }

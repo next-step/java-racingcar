@@ -34,4 +34,11 @@ class PositionTest {
         assertThat(Position.of(3) == Position.of(4)).isFalse();
     }
 
+    @DisplayName("값 객체 캐시 테스트")
+    @Test
+    public void cacheTest() {
+        assertThat(Position.of(3) == Position.of(3)).isTrue();
+        assertThat(Position.of(3) == Position.of(4)).isFalse();
+    }
+
 }
