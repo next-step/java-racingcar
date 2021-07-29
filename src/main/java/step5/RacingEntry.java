@@ -19,7 +19,7 @@ public class RacingEntry {
         CarLocation maxLocation = findMaxLocation();
 
         return this.cars.stream()
-                .filter(car -> car.getCarLocation().equals(maxLocation))
+                .filter(car -> car.isWinner(maxLocation))
                 .collect(Collectors.toList());
     }
 

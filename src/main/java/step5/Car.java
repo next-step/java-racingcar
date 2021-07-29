@@ -25,6 +25,10 @@ public class Car implements Comparable<Car> {
         }
     }
 
+    public boolean isWinner(CarLocation maxCarLocation) {
+        return this.carLocation.equals(maxCarLocation);
+    }
+
     @Override
     public int compareTo(Car o) {
         return Integer.compare(this.carLocation.getValue(), o.carLocation.getValue());
