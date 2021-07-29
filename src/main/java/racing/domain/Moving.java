@@ -2,5 +2,5 @@ package racing.domain;
 
 @FunctionalInterface
 public interface Moving {
-	boolean movable();
+	boolean movable(int randomValue);
 }
