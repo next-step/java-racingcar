@@ -42,7 +42,7 @@ public class RacingGameTest {
 
         // 차량이 한칸 이동 (안)했는지 확인
         racingGame.getRacingEntry().getCars()
-                .forEach(car -> assertThat(car.getLocation()).isLessThanOrEqualTo(1));
+                .forEach(car -> assertThat(car.getCarLocation().getValue()).isLessThanOrEqualTo(1));
 
         // 턴이 진행되었는지 확인
         assertThat(racingGame.getCurrentTurn()).isEqualTo(1);
@@ -54,7 +54,7 @@ public class RacingGameTest {
         this.racingGame.startGame();
 
         racingGame.getRacingEntry().getCars()
-                .forEach(car -> assertThat(car.getLocation()).isLessThanOrEqualTo(NUMBER_OF_TURNS));
+                .forEach(car -> assertThat(car.getCarLocation().getValue()).isLessThanOrEqualTo(NUMBER_OF_TURNS));
 
         assertThat(racingGame.getCurrentTurn()).isEqualTo(NUMBER_OF_TURNS);
     }
@@ -64,7 +64,7 @@ public class RacingGameTest {
     void findWinnerCarsTest() {
         this.racingGame.startGame();
 
-        assertThat(this.racingGame.getRacingEntry().findWinners().size()).isGreaterThanOrEqualTo(1);
+        assertThat(this.racingGame.getRacingEntry().findWinnerCars().size()).isGreaterThanOrEqualTo(1);
     }
 
 }

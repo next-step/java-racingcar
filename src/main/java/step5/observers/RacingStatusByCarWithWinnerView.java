@@ -16,7 +16,7 @@ public class RacingStatusByCarWithWinnerView implements OutputInterface {
         final int LAST_TURN = getLastTurn(racingGame);
 
         String outputString = racingGame.getRacingEntry().getCars().stream()
-                .map(car -> String.format("%s : %s\n", car.getCarName().getValue(), repeatDashBy(car.getLocation())))
+                .map(car -> String.format("%s : %s\n", car.getCarName().getValue(), repeatDashBy(car.getCarLocation().getValue())))
                 .collect(Collectors.joining());
 
         if (racingGame.getCurrentTurn() == FIRST_TURN) {
@@ -31,7 +31,7 @@ public class RacingStatusByCarWithWinnerView implements OutputInterface {
     }
 
     private String getWinnerNames(RacingGame racingGame) {
-        return racingGame.getRacingEntry().findWinners().stream()
+        return racingGame.getRacingEntry().findWinnerCars().stream()
                 .map(Car::getCarName)
                 .map(CarName::getValue)
                 .collect(Collectors.joining(", "));

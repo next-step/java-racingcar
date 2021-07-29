@@ -28,11 +28,11 @@ public class CarTest {
 
         IntStream.range(0, 100)
                 .forEach((i) -> {
-                    int before = car.getLocation();
+                    int before = car.getCarLocation().getValue();
 
                     car.goOrStop(() -> true);
 
-                    int after = car.getLocation();
+                    int after = car.getCarLocation().getValue();
 
                     if (before == after) {
                         moveResult.add(MOVE.STOP);
@@ -50,11 +50,11 @@ public class CarTest {
     @DisplayName("Car의 위치(location)이 증가하는지 테스트")
     void progressTest() {
         try {
-            int before = car.getLocation();
+            int before = car.getCarLocation().getValue();
 
             TestHelper.invokePrivateMethod(car, "progress");
 
-            int after = car.getLocation();
+            int after = car.getCarLocation().getValue();
 
             assertThat(after).isEqualTo(before + 1);
         } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {

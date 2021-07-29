@@ -46,7 +46,7 @@ public class RacingEntryTest {
         IntStream.range(0, 100)
                 .forEach(x -> this.racingEntry.getCars().get(0).goOrStop(new RandomMoveStrategy()));
 
-        List<Car> winners = this.racingEntry.findWinners();
+        List<Car> winners = this.racingEntry.findWinnerCars();
 
         assertThat(winners.size()).isEqualTo(1);
 

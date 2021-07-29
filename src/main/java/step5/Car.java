@@ -2,16 +2,17 @@ package step5;
 
 import step5.interfaces.MoveStrategy;
 
-public class Car {
-    private int location = 0;
+public class Car implements Comparable<Car> {
+    private CarLocation carLocation;
     private final CarName carName;
 
     public Car(String name) {
+        this.carLocation = new CarLocation();
         this.carName = new CarName(name);
     }
 
-    public int getLocation() {
-        return this.location;
+    public CarLocation getCarLocation() {
+        return this.carLocation;
     }
 
     public CarName getCarName() {
@@ -20,11 +21,12 @@ public class Car {
 
     public void goOrStop(MoveStrategy moveStrategy) {
         if (moveStrategy.movable()) {
-            this.progress();
+            this.carLocation = this.carLocation.progress();
         }
     }
 
-    private void progress() {
-        this.location += 1;
+    @Override
+    public int compareTo(Car o) {
+        return Integer.compare(this.carLocation.getValue(), o.carLocation.getValue());
     }
 }
