@@ -12,11 +12,9 @@ public class RacingController {
 		int roundCount = racingInputView.secondRequestView();
 
 		RacingOutputView racingOutputView = new RacingOutputView();
-		Racing racing = Racing.raceStart(carsName);
+		Racing racing = Racing.raceStart(carsName,roundCount);
 		racingOutputView.racingStartView();
-		for (int i = 0; i < roundCount; i++) {
-			racingOutputView.racingResultView(racing.carsRaceForResult());
-		}
+		racingOutputView.racingResultView(racing.carsRaceForResult());
 		racingOutputView.racingWinnerView(racing.winnerPlayer());
 	}
 

@@ -12,10 +12,10 @@ public class RacingTest {
 	@DisplayName("경주에 경기 경과를 알 수 있다.")
 	public void returnRacingResult() {
 		Cars cars = racingMovedResult();
-		Racing racing = Racing.raceStart(cars);
-		Cars result = racing.carsRaceForResult();
+		Racing racing = Racing.raceStart(cars,1);
+		List<Cars> result = racing.carsRaceForResult();
 
-		Assertions.assertThat(result.getInformation()).extracting("position.position").containsExactly(2, 3, 2);
+		Assertions.assertThat(result.get(0).getInformation()).extracting("position.position").containsExactly(2, 3, 2);
 	}
 
 	@Test

@@ -16,7 +16,13 @@ public class RacingOutputView {
 		System.out.println(RESULT_MESSAGE);
 	}
 
-	public void racingResultView(Cars cars) {
+	public void racingResultView(List<Cars> carsList) {
+		for (Cars cars : carsList) {
+			printByRoundResult(cars);
+		}
+	}
+
+	public void printByRoundResult(Cars cars) {
 		for (Car car : cars.getInformation()) {
 			System.out.println(car.printCarName() + intResultToStringResult(car.printPosition()));
 		}
