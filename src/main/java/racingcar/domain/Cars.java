@@ -1,10 +1,7 @@
-package racingcar.model;
+package racingcar.domain;
 
-import racingcar.dto.CarName;
 import racingcar.strategy.MovingStrategy;
-import racingcar.strategy.impl.RandomBoundMovingStrategy;
 import racingcar.util.InputCarNameSplitUtils;
-import racingcar.util.RandomNumberUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +22,7 @@ public class Cars {
         List<Car> cars = new ArrayList<Car>();
 
         for (int i = 0; i < carsNames.length; i++) {
-            Car car = new Car(new CarName(carsNames[i]));
+            Car car = new Car(new Name(carsNames[i]));
             cars.add(car);
         }
         return Cars.of(cars);
@@ -40,13 +37,13 @@ public class Cars {
         return cars.size();
     }
 
-    public List<Integer> getCarsPositions() {
+    public List<Position> getCarsPositions() {
         return cars.stream()
                 .map(car -> car.getPosition())
                 .collect(Collectors.toList());
     }
 
-    public List<CarName> getNames() {
+    public List<Name> getNames() {
         return cars.stream()
                 .map(car -> car.getName())
                 .collect(Collectors.toList());

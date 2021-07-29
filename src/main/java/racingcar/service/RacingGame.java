@@ -1,9 +1,11 @@
 package racingcar.service;
 
+import racingcar.comparator.PositionComparator;
 import racingcar.dto.Board;
-import racingcar.dto.CarName;
-import racingcar.model.Cars;
+import racingcar.domain.Name;
+import racingcar.domain.Cars;
 import racingcar.dto.RacingInfo;
+import racingcar.domain.Position;
 import racingcar.strategy.MovingStrategy;
 
 import java.util.Collections;
@@ -22,30 +24,21 @@ public class RacingGame {
         this.board = new Board();
     }
 
-    private List<CarName> getWinners(Board board) {
-        List<List<Integer>> allRecords = board.getAllRecords();
+    public List<Name> findWinners() {
+        List<Position> lastRecords = cars.getCarsPositions();
+        List<Name> lastGameNames = cars.getNames();
 
-        int lastGameIndex = allRecords.size() - 1;
+        Position winnersPosition = Collections.max(lastRecords, new PositionComparator());
 
-        List<Integer> lastGameRecord = allRecords.get(lastGameIndex);
-        List<CarName> lastGameCarNames = cars.getNames();
-
-        int winnersScore = Collections.max(lastGameRecord);
-
-        return IntStream.range(0, lastGameRecord.size())
-                .filter(i -> lastGameRecord.get(i) >= winnersScore)
-                .mapToObj(i -> lastGameCarNames.get(i))
+        return IntStream.range(0, lastRecords.size())
+                .filter(i -> lastRecords.get(i).compare(winnersPosition))
+                .mapToObj(i -> lastGameNames.get(i))
                 .collect(Collectors.toList());
-
     }
 
-    public Board gameStart(MovingStrategy movingStrategy) {
-        for (int i = 0; i < racingInfo.raceTrialCount; i++) {
-            cars.move(movingStrategy);
-            board.record(cars.getNames(), cars.getCarsPositions());
-        }
-
-        board.recordWinner(getWinners(board));
+    public Board race(MovingStrategy movingStrategy) {
+        cars.move(movingStrategy);
+        board.record(cars);
 
         return board;
     }

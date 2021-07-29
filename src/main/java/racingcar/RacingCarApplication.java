@@ -2,7 +2,7 @@ package racingcar;
 
 import racingcar.service.RacingGame;
 import racingcar.dto.Board;
-import racingcar.model.Cars;
+import racingcar.domain.Cars;
 import racingcar.dto.RacingInfo;
 import racingcar.strategy.impl.RandomBoundMovingStrategy;
 import racingcar.util.InputCarNameSplitUtils;
@@ -22,9 +22,15 @@ public class RacingCarApplication {
         Cars cars = Cars.of(names);
 
         RacingGame racingGame = new RacingGame(racingInfo, cars);
-        Board board = racingGame.gameStart(new RandomBoundMovingStrategy());
 
-        ResultView.printResult(board);
+        Board board;
+
+        for(int i = 0 ; i < raceTrialCount ; i++) {
+            board = racingGame.race(new RandomBoundMovingStrategy());
+            ResultView.printCurrentRace(board);
+        }
+
+        ResultView.printWinners(racingGame.findWinners());
 
     }
 

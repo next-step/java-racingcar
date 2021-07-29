@@ -1,14 +1,11 @@
-package racingcar.model;
+package racingcar.domain;
 
-import calculator.exception.InvalidOperatorException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.InvalidCarNameException;
-import racingcar.strategy.impl.RandomBoundMovingStrategy;
 import racingcar.util.InputCarNameSplitUtils;
 
 import java.util.Arrays;
@@ -50,16 +47,16 @@ public class CarsTests {
         String[] carNames = InputCarNameSplitUtils.getSplitStringArray(input);
         Cars cars = Cars.of(carNames);
 
-        List<Integer> actualPositions = cars.getCarsPositions();
+        List<Position> actualPositions = cars.getCarsPositions();
 
         assertThat(actualPositions).isEqualTo(expectedPositions);
     }
 
     static Stream<Arguments> generateData() {
         return Stream.of(
-                Arguments.of("pobi,crong,honux", Arrays.asList(0, 0, 0)),
-                Arguments.of("pobi,crong,honux,test1,test2", Arrays.asList(0, 0, 0, 0, 0)),
-                Arguments.of("pobi,crong,honux,test1,test2,test3,test4", Arrays.asList(0, 0, 0, 0, 0, 0, 0))
+                Arguments.of("pobi,crong,honux", Arrays.asList(new Position(0), new Position(0), new Position(0))),
+                Arguments.of("pobi,crong,honux,test1,test2", Arrays.asList(new Position(0), new Position(0), new Position(0), new Position(0), new Position(0))),
+                Arguments.of("pobi,crong,honux,test1,test2,test3,test4", Arrays.asList(new Position(0), new Position(0), new Position(0), new Position(0), new Position(0), new Position(0), new Position(0)))
         );
     }
 

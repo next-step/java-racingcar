@@ -1,39 +1,32 @@
 package racingcar.dto;
 
+import racingcar.domain.Cars;
+import racingcar.domain.Name;
+import racingcar.domain.Position;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Board {
-    List<List<Integer>> racingRecord;
-    List<List<CarName>> racingCarNames;
+    List<Position> racingCarPositions;
+    List<Name> racingCarNames;
 
-    List<CarName> winnerCarNames;
 
     public Board() {
         this.racingCarNames = new ArrayList<>();
-        this.racingRecord = new ArrayList<>();
-        this.winnerCarNames = new ArrayList<>();
+        this.racingCarPositions = new ArrayList<>();
     }
 
-    public void record(List<CarName> carNames, List<Integer> carsPositions) {
-        racingCarNames.add(carNames);
-        racingRecord.add(carsPositions);
+    public void record(Cars cars) {
+        this.racingCarNames = cars.getNames();
+        this.racingCarPositions = cars.getCarsPositions();
     }
 
-    public void recordWinner(List<CarName> winnerCarNames) {
-        this.winnerCarNames = winnerCarNames;
+    public List<Position> getRacingCarPositions() {
+        return racingCarPositions;
     }
 
-    public List<CarName> getWinnerCarNames() {
-        return winnerCarNames;
-    }
-
-    public List<List<Integer>> getAllRecords() {
-        return racingRecord;
-    }
-
-    public List<List<CarName>> getAllRecordsCarsNames() {
+    public List<Name> getRacingCarNames() {
         return racingCarNames;
     }
 }

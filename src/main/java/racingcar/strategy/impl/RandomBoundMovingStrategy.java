@@ -1,6 +1,5 @@
 package racingcar.strategy.impl;
 
-import racingcar.model.Car;
 import racingcar.strategy.MovingStrategy;
 import racingcar.util.RandomNumberUtils;
 

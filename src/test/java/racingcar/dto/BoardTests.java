@@ -2,8 +2,10 @@ package racingcar.dto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.service.RacingGame;
-import racingcar.view.ResultView;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.Name;
+import racingcar.domain.Position;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,19 +17,19 @@ public class BoardTests {
     @DisplayName("기록판에 기록이 잘 입력되는지 테스트")
     @Test
     void boardRecordTest() {
+        Car car1 = new Car(new Name("pobi"), new Position(5));
+        Car car2 = new Car(new Name("crong"), new Position(3));
+        Car car3 = new Car(new Name("honux"), new Position(5));
+
+        Cars cars = Cars.of(Arrays.asList(car1, car2, car3));
+
         Board board = new Board();
-        List<Integer> firstRacingResult = new ArrayList<>(Arrays.asList(1, 1, 1));
-        List<CarName> firstRacingCarNames = new ArrayList<>(Arrays.asList(new CarName("pobi"), new CarName("crong"), new CarName("honux")));
-        List<Integer> secondRacingResult = new ArrayList<>(Arrays.asList(1, 2, 2));
-        List<CarName> secondRacingCarNames = new ArrayList<>(Arrays.asList(new CarName("pobi"), new CarName("crong"), new CarName("honux")));
+        board.record(cars);
 
-        board.record(firstRacingCarNames, firstRacingResult);
-        board.record(secondRacingCarNames, secondRacingResult);
+        List<Name> actualCarNames = board.getRacingCarNames();
+        List<Position> actualAllRecords = board.getRacingCarPositions();
 
-        List<List<CarName>> actualCarNames = board.getAllRecordsCarsNames();
-        List<List<Integer>> actualAllRecords = board.getAllRecords();
-
-        assertThat(actualCarNames.toString()).isEqualTo("[[pobi, crong, honux], [pobi, crong, honux]]");
-        assertThat(actualAllRecords.toString()).isEqualTo("[[1, 1, 1], [1, 2, 2]]");
+        assertThat(actualCarNames.toString()).isEqualTo("[pobi, crong, honux]");
+        assertThat(actualAllRecords.toString()).isEqualTo("[5, 3, 5]");
     }
 }
