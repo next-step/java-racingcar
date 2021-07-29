@@ -30,7 +30,6 @@ public class InputView {
     }
 
     public void inputCarCheck(int numOfCar) {
-        System.out.println(numOfCar);
         if (numOfCar <= MIN_CAR) {
             throw new IllegalArgumentException(CAR_ERROR_MESSAGE);
         }
