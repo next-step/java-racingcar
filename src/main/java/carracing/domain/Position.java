@@ -1,6 +1,8 @@
 package carracing.domain;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Position implements Renderer {
 
@@ -10,15 +12,18 @@ public class Position implements Renderer {
     private static final int ADDITION_VALUE = 1;
     private static final int LOWER_LIMIT = 0;
 
+    private static final Map<Integer, Position> cache = new HashMap<>();
+
     private final int value;
 
     private Position(int value) {
         this.value = value;
+        cache.put(value, this);
     }
 
     public static Position of(int value) {
         validateLowerLimit(value);
-        return new Position(value);
+        return cache.containsKey(value) ? cache.get(value) : new Position(value);
     }
 
     private static void validateLowerLimit(int value) {
