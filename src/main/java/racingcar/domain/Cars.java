@@ -21,7 +21,7 @@ public class Cars {
 
     public List<Car> getWinners() {
         int maxScore = cars.stream()
-                .mapToInt(car -> car.getScore().getNumber())
+                .mapToInt(car -> car.getScore().getValue())
                 .max()
                 .orElse(0);
 

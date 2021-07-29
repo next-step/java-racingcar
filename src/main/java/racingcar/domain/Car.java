@@ -19,7 +19,7 @@ public class Car {
 
     void go(MoveState moveState) {
         if (moveState.isMovable()) {
-            score.add();
+            this.score = score.getAddedScore();
         }
     }
 

@@ -31,9 +31,9 @@ class CarsTest {
     @DisplayName("시도 후 점수가 달라져야한다.")
     @Test
     void getScores() {
-        int before = cars.getCars().get(0).getScore().getNumber();
+        int before = cars.getCars().get(0).getScore().getValue();
         cars.attempt(moveState);
-        int after = cars.getCars().get(0).getScore().getNumber();
+        int after = cars.getCars().get(0).getScore().getValue();
         assertThat(after).isNotEqualTo(before);
     }
 

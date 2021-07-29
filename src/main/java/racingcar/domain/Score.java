@@ -1,22 +1,24 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class Score {
-    private int number;
+    private int value;
 
     Score() {
-        this.number = 0;
+        this.value = 0;
     }
 
-    Score(int number) {
-        this.number = number;
+    Score(int value) {
+        this.value = value;
     }
 
-    public int getNumber() {
-        return this.number;
+    public int getValue() {
+        return this.value;
     }
 
-    void add() {
-        this.number++;
+    Score getAddedScore() {
+        return new Score(this.value + 1);
     }
 
     @Override
@@ -24,6 +26,11 @@ public class Score {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Score score = (Score) o;
-        return number == score.number;
+        return value == score.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
