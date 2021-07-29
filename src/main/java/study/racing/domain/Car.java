@@ -33,8 +33,8 @@ public class Car {
         return distance;
     }
 
-    public void moveTheCar(int randomNumber) {
-        if(moveStrategy.movable(randomNumber)){
+    public void moveTheCar(MoveStrategy moveStrategy) {
+        if(moveStrategy.movable()){
             distance.move();
         }
     }

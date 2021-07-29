@@ -10,10 +10,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import study.racing.generator.Generator;
-import study.racing.generator.MakeNumberGenerator;
+import study.racing.strategy.CarMovableTestStrategy;
+import study.racing.strategy.MoveStrategy;
 
 class CarsTest {
+
+
 
   @ParameterizedTest
   @CsvSource({"1,1", "2,2", "3,3"})
@@ -45,48 +47,36 @@ class CarsTest {
   @Test
   void 차량생성및주행거리비교테스트() {
     Cars cars = new Cars("test1,test2");
-    List<Integer> numbers = new ArrayList<>();
-    numbers.add(3);
-    numbers.add(4);
 
-    Generator generator = new MakeNumberGenerator(numbers);
-    cars.getCars().get(0).moveTheCar(generator.generateNewNumber());
-    cars.getCars().get(1).moveTheCar(generator.generateNewNumber());
+    List<Integer> numbers = new ArrayList<>();
+    numbers.add(4);
+    numbers.add(5);
+
+    MoveStrategy moveStrategy = new CarMovableTestStrategy(numbers);
+    cars.getCars().get(0).moveTheCar(moveStrategy);
+    cars.getCars().get(1).moveTheCar(moveStrategy);
 
     assertThat(cars.getCars().get(0).getDistance().getMoveDistance()).isEqualTo(0);
     assertThat(cars.getCars().get(1).getDistance().getMoveDistance()).isEqualTo(1);
 
   }
 
-  @DisplayName("우승자를 알아내기 위해 경주완료시 최대값 가져오기 테스트.")
-  @Test
-  void 경주최종거리비교() {
-
-    Cars cars = new Cars("a,b,c");
-    int randomValue = 6;
-    String winner = "b";
-
-    cars.getCars().forEach(car -> movingCarForWinner(randomValue, car, winner));
-
-    assertThat(cars.getWinners()).extracting(car -> car.getName().getCarName()).containsExactly("b");
-  }
-
-  private void movingCarForWinner(int randomValue, Car car, String winner) {
-    if(winner.equals(car.getName().getCarName())){
-      car.moveTheCar(randomValue);
-    }
-  }
-
-  @DisplayName("우승자 이름 가져오기 테스트.")
+  @DisplayName("우승자 확인 테스트.")
   @Test
   void 경주승링자이름알기() {
 
     Cars cars = new Cars("a,b,c");
-    int randomValue = 6;
-    String winner = "b";
 
-    cars.getCars().forEach(car -> movingCarForWinner(randomValue, car, winner));
+    List<Integer> numbers = new ArrayList<>();
+    numbers.add(4);
+    numbers.add(5);
+    numbers.add(5);
 
-    assertThat(cars.getWinners()).extracting(car -> car.getName().getCarName()).containsExactly("b");
+    MoveStrategy moveStrategy = new CarMovableTestStrategy(numbers);
+
+    cars.getCars().forEach(car -> car.moveTheCar(moveStrategy));
+
+    assertThat(cars.getWinners()).extracting(car -> car.getName().getCarName()).containsExactly("b","c");
   }
+
 }
