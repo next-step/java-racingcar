@@ -1,7 +1,7 @@
 package racingcar.exception;
 
-public class OverFiveCarNameException extends Exception {
-    public OverFiveCarNameException(String message) {
+public class NameValidationException extends Exception {
+    public NameValidationException(String message) {
         super(message);
     }
 }
