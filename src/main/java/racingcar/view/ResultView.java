@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.dto.Board;
-import racingcar.domain.Name;
+import racingcar.domain.Cars;
+import racingcar.domain.CarName;
 import racingcar.domain.Position;
 
 import java.util.List;
@@ -12,18 +12,18 @@ public class ResultView {
     private static final String CAR_POSITION_DISPLAY = "-";
     private static final String COMMA = ",";
 
-    public static void printCurrentRace(Board board) {
-        List<Position> currentRacingCarPositions = board.getRacingCarPositions();
-        List<Name> currentCarNames = board.getRacingCarNames();
+    public static void printCurrentRace(Cars cars) {
+        List<Position> currentRacingCarPositions = cars.getCarsPositions();
+        List<CarName> currentCarCarNames = cars.getNames();
 
         for (int i = 0; i < currentRacingCarPositions.size(); i++) {
-            appendCarPosition(currentCarNames.get(i), currentRacingCarPositions.get(i));
+            appendCarPosition(currentCarCarNames.get(i), currentRacingCarPositions.get(i));
         }
         System.out.println();
 
     }
 
-    public static void printWinners(List<Name> winners) {
+    public static void printWinners(List<CarName> winners) {
 
         System.out.print(winners.stream()
                 .map(winner -> winner.toString())
@@ -32,7 +32,7 @@ public class ResultView {
         System.out.print(" 가 최종 우승했습니다.");
     }
 
-    private static void appendCarPosition(Name carName, Position carPosition) {
+    private static void appendCarPosition(CarName carName, Position carPosition) {
 
         StringBuilder sb = new StringBuilder();
         Position p1 = new Position();

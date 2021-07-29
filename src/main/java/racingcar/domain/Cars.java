@@ -22,7 +22,7 @@ public class Cars {
         List<Car> cars = new ArrayList<Car>();
 
         for (int i = 0; i < carsNames.length; i++) {
-            Car car = new Car(new Name(carsNames[i]));
+            Car car = new Car(new CarName(carsNames[i]));
             cars.add(car);
         }
         return Cars.of(cars);
@@ -43,7 +43,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public List<Name> getNames() {
+    public List<CarName> getNames() {
         return cars.stream()
                 .map(car -> car.getName())
                 .collect(Collectors.toList());

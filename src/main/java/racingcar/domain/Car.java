@@ -4,20 +4,20 @@ import racingcar.strategy.MovingStrategy;
 
 public class Car {
     private Position position;
-    private Name name;
+    private CarName carName;
 
-    public Car(Name name) {
-        this.name = name;
+    public Car(CarName carName) {
+        this.carName = carName;
         this.position = new Position();
     }
 
-    public Car(Name name, Position position) {
-        this.name = name;
+    public Car(CarName carName, Position position) {
+        this.carName = carName;
         this.position = position;
     }
 
-    public Name getName() {
-        return name;
+    public CarName getName() {
+        return carName;
     }
 
     public Position getPosition() {

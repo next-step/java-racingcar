@@ -4,11 +4,11 @@ import racingcar.exception.InvalidCarNameException;
 
 import java.util.Objects;
 
-public class Name {
+public class CarName {
     private final String name;
     private static final int BOUND = 5;
 
-    public Name(String name) {
+    public CarName(String name) {
         this.name = name.trim();
         if(name.length() > BOUND) {
             throw new InvalidCarNameException(name);
@@ -24,8 +24,8 @@ public class Name {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Name name1 = (Name) o;
-        return Objects.equals(name, name1.name);
+        CarName carName1 = (CarName) o;
+        return Objects.equals(name, carName1.name);
     }
 
     @Override

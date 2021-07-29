@@ -11,15 +11,15 @@ public class CarNameTests {
     @Test
     @DisplayName("Car 원시값 포장 객체 create test")
     void create(){
-        Name name = new Name("pobi");
-        assertThat(name.toString()).isEqualTo("pobi");
+        CarName carName = new CarName("pobi");
+        assertThat(carName.toString()).isEqualTo("pobi");
     }
 
     @Test
     @DisplayName("차 이름이 5글자 초과일 때 test")
     void valid(){
         assertThatThrownBy(() ->{
-            new Car(new Name("test123"));
+            new Car(new CarName("test123"));
         }).isInstanceOf(InvalidCarNameException.class);
     }
 }

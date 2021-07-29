@@ -1,9 +1,7 @@
 package racingcar;
 
 import racingcar.service.RacingGame;
-import racingcar.dto.Board;
 import racingcar.domain.Cars;
-import racingcar.dto.RacingInfo;
 import racingcar.strategy.impl.RandomBoundMovingStrategy;
 import racingcar.util.InputCarNameSplitUtils;
 import racingcar.view.InputView;
@@ -14,20 +12,16 @@ public class RacingCarApplication {
 
         String nameOfCars = InputView.getNameOfCar();
         String[] names = InputCarNameSplitUtils.getSplitStringArray(nameOfCars);
-        int numberOfCar = names.length;
-        int raceTrialCount = InputView.getRaceTrialCount();
 
-        RacingInfo racingInfo = new RacingInfo(numberOfCar, raceTrialCount);
+        int raceTrialCount = InputView.getRaceTrialCount();
 
         Cars cars = Cars.of(names);
 
-        RacingGame racingGame = new RacingGame(racingInfo, cars);
+        RacingGame racingGame = new RacingGame(cars, raceTrialCount);
 
-        Board board;
-
-        for(int i = 0 ; i < raceTrialCount ; i++) {
-            board = racingGame.race(new RandomBoundMovingStrategy());
-            ResultView.printCurrentRace(board);
+        while(!racingGame.isEnd()) {
+            racingGame.race(new RandomBoundMovingStrategy());
+            ResultView.printCurrentRace(cars);
         }
 
         ResultView.printWinners(racingGame.findWinners());
