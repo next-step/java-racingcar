@@ -9,7 +9,7 @@ public class RandomMovableStrategy implements MovableStrategy {
     private SecureRandom secureRandom = new SecureRandom();
 
     @Override
-    public boolean move() {
+    public boolean canMove() {
         return secureRandom.nextInt(MAX_BOUND) >= MOVABLE_NUMBER;
     }
 }
