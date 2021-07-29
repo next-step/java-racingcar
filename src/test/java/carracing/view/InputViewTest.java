@@ -13,7 +13,7 @@ class InputViewTest {
     @ValueSource(strings = {"-1", "a"})
     public void validateMoveCountTest(String invalidInput) {
         InputView inputView = InputView.of(new ByteArrayInputStream(invalidInput.getBytes()));
-        assertThatIllegalArgumentException().isThrownBy(() -> inputView.getMoveCount());
+        assertThatIllegalArgumentException().isThrownBy(() -> inputView.getCount());
     }
 
 }

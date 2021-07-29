@@ -1,4 +1,4 @@
-package carracing;
+package carracing.domain;
 
 import carracing.domain.Position;
 import org.junit.jupiter.api.DisplayName;
@@ -25,7 +25,7 @@ class PositionTest {
     public void positionCreateTest(int validPositionValue) {
         assertThat(Position.of(validPositionValue))
                 .isExactlyInstanceOf(Position.class)
-                .matches(position -> position.getValue() == validPositionValue);
+                .matches(position -> position.isAt(validPositionValue));
     }
 
 }

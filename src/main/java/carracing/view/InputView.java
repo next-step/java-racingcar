@@ -19,7 +19,7 @@ public class InputView {
         return new InputView(new Scanner(inputStream));
     }
 
-    public int getMoveCount() {
+    public int getCount() {
         try {
             int inputCount = scanner.nextInt();
             validateLowerLimit(inputCount);

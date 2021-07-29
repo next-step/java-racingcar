@@ -1,8 +1,12 @@
 package carracing.domain;
 
-public class Position {
+import java.util.Collections;
+
+public class Position implements Renderer {
 
     private static final String OUT_OF_RANGE_EXCEPTION_MESSAGE_FORMAT = "유효하지 않은 위치 값입니다. value: %d";
+    private static final String POSITION_RENDER_DELIMITER = "";
+    private static final String POSITION_EXPRESSION = "-";
     private static final int ADDITION_VALUE = 1;
     private static final int LOWER_LIMIT = 0;
 
@@ -27,6 +31,10 @@ public class Position {
         return Position.of(value + ADDITION_VALUE);
     }
 
+    public boolean isAt(int value) {
+        return this.value == value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -40,7 +48,8 @@ public class Position {
         return value;
     }
 
-    public int getValue() {
-        return value;
+    @Override
+    public String render() {
+        return String.join(POSITION_RENDER_DELIMITER, Collections.nCopies(value, POSITION_EXPRESSION));
     }
 }

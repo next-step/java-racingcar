@@ -1,15 +1,20 @@
 package carracing;
 
-import carracing.domain.*;
+import carracing.domain.Car;
+import carracing.domain.Cars;
+import carracing.domain.Positions;
+import carracing.domain.RandomNumberGenerator;
 import carracing.view.InputView;
 import carracing.view.OutputView;
-import carracing.view.PositionRenderer;
 
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingGame {
 
-    public static final int STARTING_LINE_POSITION = 0;
+    private static final int STARTING_LINE_POSITION = 0;
 
     private final InputView inputView;
     private final OutputView outputView;
@@ -22,13 +27,30 @@ public class RacingGame {
     }
 
     public void start() {
+        Cars cars = Cars.of(getCars());
+        int moveCount = getMoveCount();
+        race(cars, moveCount);
+    }
+
+    private List<Car> getCars() {
+        outputView.printInputCarCountMessage();
+        int carCount = inputView.getCount();
+        return Stream.generate(() -> Car.of(STARTING_LINE_POSITION))
+                .limit(carCount)
+                .collect(Collectors.toList());
+    }
+
+    private int getMoveCount() {
         outputView.printInputMoveCountMessage();
-        int moveCount = inputView.getMoveCount();
-        Car car = Car.of(STARTING_LINE_POSITION);
+        return inputView.getCount();
+    }
+
+    private void race(Cars cars, int moveCount) {
         outputView.printResultMessage();
         for (int i = 0; i < moveCount; ++i) {
-            car.move(randomNumberGenerator.generateRandomNumber());
-            outputView.printPosition(PositionRenderer.of(car.getPosition()));
+            cars.move(randomNumberGenerator::generateRandomNumber);
+            outputView.print(Positions.of(cars.getPositions()));
+            outputView.printNewLine();
         }
     }
 
