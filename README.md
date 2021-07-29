@@ -10,13 +10,13 @@
 
 ## 요구분석
 
-- [ ] RacingGame
+- [x] RacingGame
   - Cars 반환
   - 우승자 반환
-- [ ] Cars
+- [x] Cars
   - 자동차 이동
   - 우승자 출력  
-- [ ] Car
+- [x] Car
   - 자동차 이름 출력
   - 자동차 거리 출력
   - 자동차 거리 비교  
