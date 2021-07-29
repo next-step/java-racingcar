@@ -1,28 +1,50 @@
 package racingcar.model;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import racingcar.exception.OverFiveCarNameException;
+import racingcar.strategy.MovableStrategy;
 
 public class RacingCar {
-	public int position;
-	public static final int INITIAL_POSITION = 0;
-	private static final int MOVABLE_MINIMUM_VALUE = 4;
+	// 4. 클래스 변수(static) public -> protected -> package(default) -> private
+	private static final int INITIAL_POSITION = 0;
+	private static final int NAME_MAX_LENGTH = 5;
 
-	public RacingCar(int position) {
-		this.position = position;
+	// 5. 일반 변수 public -> protected -> package(default) -> private
+	public int position;
+	public String carName;
+	private MovableStrategy movableStrategy;
+
+	private void checkNameValidation(String carName) throws OverFiveCarNameException {
+		if (carName.length() > NAME_MAX_LENGTH) {
+			throw new OverFiveCarNameException("자동차 이름의 길이가 5를 초과합니다");
+		}
+	}
+
+	public RacingCar(String carName, MovableStrategy movableStrategy) throws OverFiveCarNameException {
+		checkNameValidation(carName);
+		this.position = INITIAL_POSITION;
+		this.carName = carName;
+		this.movableStrategy = movableStrategy;
 	}
 
 	public String getRacingCarDashString() {
-		return Arrays.stream(new String[this.position])
-					 .map(s -> "-")
-			         .collect(Collectors.joining(""));
-	}
-
-	public boolean isMovable(int randomValue) {
-		return randomValue >= MOVABLE_MINIMUM_VALUE;
+		StringBuilder stringBuilder = new StringBuilder();
+		for (int i = 0; i < this.position; i++) {
+			stringBuilder.append('-');
+		}
+		return stringBuilder.toString();
 	}
 
 	public void forward() {
-		position++;
+		if (movableStrategy.isMovable()) {
+			position++;
+		}
+	}
+
+	public int getPosition() {
+		return position;
+	}
+
+	public String getCarName() {
+		return carName;
 	}
 }

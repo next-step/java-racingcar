@@ -1,7 +1,7 @@
 package calculator;
 
 public class NotEqualRemainderZeroException extends Exception {
-    NotEqualRemainderZeroException() {
-        super();
+    public NotEqualRemainderZeroException(String message) {
+        super(message);
     }
 }

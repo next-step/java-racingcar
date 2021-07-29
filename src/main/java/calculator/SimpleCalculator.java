@@ -5,20 +5,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class SimpleCalculator {
 	private static final List<Character> operators = new ArrayList<>(Arrays.asList('+', '-', '*', '/'));
 	List<String> splitExpressionList = new ArrayList<>();
 
-	private static boolean isNumeric(String s) {
-		int len = s.length();
-		for (int i = 0; i < len; i++) {
-			if (s.charAt(i) <= '0' || '9' <= s.charAt(i)) {
-				return false;
-			}
-		}
-		return true;
+	private static boolean isNumeric(String expression) {
+		Pattern pattern = Pattern.compile("-?\\d+");
+		return pattern.matcher(expression).matches();
 	}
 
 	public int selectOperand(String expressionUnit, int expressionUnitIndex) {
@@ -41,7 +37,7 @@ public class SimpleCalculator {
 		int firstOperand = selectOperand(expressionUnit, 0);
 		int secondOperand = selectOperand(expressionUnit, 2);
 		if (firstOperand % secondOperand != 0) {
-			throw new NotEqualRemainderZeroException();
+			throw new NotEqualRemainderZeroException("나눗셈 결과 나머지가 존재합니다.");
 		}
 		return firstOperand / secondOperand;
 	}
