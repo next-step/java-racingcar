@@ -6,15 +6,15 @@ import java.util.Map;
 public class Number {
     private static final int MIN_NUMBER = 0;
     private static final int MAX_NUMBER = 9;
-    private static final Map<Integer, Number> numberMap = new HashMap<>();
+    private static final Map<Integer, Number> NUMBER_MAP = new HashMap<>();
 
     private int number;
 
     static Number valueOf(int givenNumber) {
-        Number number = numberMap.get(Integer.valueOf(givenNumber));
+        Number number = NUMBER_MAP.get(Integer.valueOf(givenNumber));
         if (number == null) {
             number = new Number(givenNumber);
-            numberMap.put(givenNumber, number);
+            NUMBER_MAP.put(givenNumber, number);
         }
         return number;
     }

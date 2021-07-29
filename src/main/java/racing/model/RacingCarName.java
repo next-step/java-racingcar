@@ -5,15 +5,15 @@ import java.util.Map;
 
 public class RacingCarName {
     private static final int MAX_RACING_CAR_NAME_LENGTH = 5;
-    private static final Map<String, RacingCarName> racingCarNameMap = new HashMap<>();
+    private static final Map<String, RacingCarName> RACING_CAR_NAME_MAP = new HashMap<>();
 
     private final String name;
 
     static RacingCarName valueOf(String name) {
-        RacingCarName racingCarName = racingCarNameMap.get(name);
+        RacingCarName racingCarName = RACING_CAR_NAME_MAP.get(name);
         if (racingCarName == null) {
             racingCarName = new RacingCarName(name);
-            racingCarNameMap.put(name, racingCarName);
+            RACING_CAR_NAME_MAP.put(name, racingCarName);
         }
         return racingCarName;
     }
