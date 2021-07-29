@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class Racing {
     private Cars cars = new Cars();
-
+    
     public Racing(String[] carNames) {
         this.cars.prepareCars(carNames);
     }

@@ -14,7 +14,7 @@ public class RacingGame {
     public void gameStart(String[] carNames, int gameCount) {
         int count = 1;
         Racing racing = new Racing(carNames);
-        while (count <= gameCount) {
+        while (count < gameCount) {
             game(racing);
             count++;
             RacingView.printCarMove(racing);

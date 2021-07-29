@@ -11,6 +11,7 @@ public class RacingView {
 
     private static final String MOVE_TEXT = "-";
     private static final String WIN_MESSAGE = "%s가 최종 우승했습니다.";
+
     static void printMoveLine(Car car) {
         System.out.print(String.format("%s : ", car.getCarInfo()));
         for (int i=0; i<car.totalDistance(); i++) {
