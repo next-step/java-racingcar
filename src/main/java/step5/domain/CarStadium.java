@@ -12,17 +12,17 @@ public class CarStadium {
     private final List<Car> cars;
 
     public CarStadium(Referee referee, List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException("자동차가 아직 입장이 안되었습니다.");
+        }
+
         this.referee = referee;
         this.cars = cars;
     }
 
     public void moveCars() {
-        if (cars.isEmpty()) {
-            throw new IllegalArgumentException("자동차가 아직 입장이 안되었습니다.");
-        }
-
         if (referee.isOverTime()) {
-            throw new IllegalArgumentException("더 이상 자동차는 움직일 수 없습니다.");
+            throw new IllegalArgumentException("주어진 시간이 지나 더 이상 자동차는 움직일 수 없습니다.");
         }
 
         for (Car car : cars) {
