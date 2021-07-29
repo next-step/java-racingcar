@@ -1,27 +1,30 @@
 package step3.car;
 
-import java.util.Random;
-
 public class Car {
 
-    private int movedDistance = 0;
-    private Random random = new Random();
+    private static final int STAY_THRESHOLD = 3;
+    private static final String MOVED_MARKER = "-";
 
-    public void tryMove() {
-        int value = random.nextInt(10);
-        if (isMoveCondition(value))
+    private int movedDistance = 0;
+
+    public void tryMove(int randomValue) {
+        if (isMoveCondition(randomValue))
             move();
     }
 
     private boolean isMoveCondition(int value) {
-        return value >= 4;
+        return value > STAY_THRESHOLD;
     }
 
     private void move() {
         movedDistance++;
     }
 
-    public int getMovedDistance() {
-        return movedDistance;
+    public String getMovedDistance() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < movedDistance; i++) {
+            sb.append(MOVED_MARKER);
+        }
+        return sb.toString();
     }
 }
