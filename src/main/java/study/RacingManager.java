@@ -2,7 +2,9 @@ package study;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingManager {
 
@@ -14,6 +16,24 @@ public class RacingManager {
      */
     public RacingManager(int numberOfCar) {
         makeRacingCar(numberOfCar);
+    }
+
+    public RacingManager(String nameOfCars) {
+        String[] carNameList = nameOfCars.split(",");
+        checkAllCarNameLength(carNameList);
+        makeRacingCar(carNameList);
+    }
+
+    private void checkAllCarNameLength(String[] carNameList) {
+        for (String carName : carNameList) {
+            validateCarNameLength(carName);
+        }
+    }
+
+    private void validateCarNameLength(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 넘을 수 없습니다");
+        }
     }
 
     public void startRacing() {
@@ -37,7 +57,24 @@ public class RacingManager {
         ragingCarList = Collections.unmodifiableList(ragingCarList);
     }
 
+    private void makeRacingCar(String[] carNameList) {
+        for (String carName : carNameList) {
+            ragingCarList.add(new Car(carName));
+        }
+        ragingCarList = Collections.unmodifiableList(ragingCarList);
+    }
+
+
     public List<Car> getCarList() {
         return this.ragingCarList;
+    }
+
+    public List<Car> getRacingWinners() {
+        int maxPosition = ragingCarList.stream()
+                .max(Comparator.comparingInt(Car::getPosition))
+                .get().getPosition();
+
+        return ragingCarList.stream()
+                .filter(car -> car.getPosition() == maxPosition).collect(Collectors.toList());
     }
 }
