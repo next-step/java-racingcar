@@ -7,15 +7,12 @@ import java.util.stream.Collectors;
 public class Racing {
     private Cars cars = new Cars();
 
-    public Racing() {
+    public Racing(String[] carNames) {
+        this.cars.prepareCars(carNames);
     }
 
     public Racing(List<Car> cars) {
-        this.cars = new Cars(cars);
-    }
-
-    public void prepareRacing(String[] carNames) {
-        this.cars.prepareCars(carNames);
+        this.cars.prepareCars(cars);
     }
 
     public Cars participants() {

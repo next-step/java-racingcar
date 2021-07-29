@@ -19,12 +19,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class RacingTest {
 
     RacingGame racingGame = new RacingGame();
-    Racing racing = new Racing();
+    Racing racing;
     List<Car> cars = new ArrayList<>();
 
     @BeforeEach
     void setting() {
-        racing.prepareRacing(new String[]{"test1","test2","test3"});
+        racing = new Racing(new String[]{"test1","test2","test3"});
         racingGame.game(racing);
         cars = racing.participants().carList();
     }
@@ -53,7 +53,7 @@ public class RacingTest {
         testCars.add(new Car("test2", 30));
         testCars.add(new Car("test3", 20));
         cars = testCars;
-        racing = new Racing(cars);
+        racing = new Racing(testCars);
         assertThat(racing.winner().get(0).getCarInfo()).isEqualTo("test2");
     }
 

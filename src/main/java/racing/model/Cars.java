@@ -8,13 +8,6 @@ import java.util.stream.Collectors;
 public class Cars {
     private List<Car> carList = new ArrayList<>();
 
-    public Cars() {
-    }
-
-    public Cars(List<Car> cars) {
-        this.carList = cars;
-    }
-
     public void prepareCars(String[] carNames) {
         String[] carNameArr = carNames;
         for(String carName : carNameArr) {
@@ -22,6 +15,11 @@ public class Cars {
            carList.add(car);
         }
     }
+
+    public void prepareCars(List<Car> cars) {
+        carList = cars;
+    }
+
 
     public List<Car> carList() {
         return this.carList;

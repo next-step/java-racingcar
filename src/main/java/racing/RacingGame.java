@@ -13,9 +13,7 @@ public class RacingGame {
 
     public void gameStart(String[] carNames, int gameCount) {
         int count = 1;
-        Racing racing = new Racing();
-        racing.prepareRacing(carNames);
-
+        Racing racing = new Racing(carNames);
         while (count <= gameCount) {
             game(racing);
             count++;
