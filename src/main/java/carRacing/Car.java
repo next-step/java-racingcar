@@ -3,16 +3,21 @@ package carRacing;
 import java.util.Random;
 
 public class Car {
-    private static final int MAX_BOUNDS = 10;
     private static final int MOVE_STANDARD = 4;
+    private static final int MAX_BOUNDS = 10;
 
     private int position;
+    private final Random random;
 
-    private boolean isMove(Random random) {
+    public Car(Random random) {
+        this.random = random;
+    }
+
+    private boolean isMove() {
         return random.nextInt(MAX_BOUNDS) >= MOVE_STANDARD;
     }
 
-    int go(Random random) {
-        return isMove(random) ? ++position : position;
+    int go() {
+        return isMove() ? ++position : position;
     }
 }

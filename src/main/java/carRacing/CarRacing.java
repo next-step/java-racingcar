@@ -10,14 +10,13 @@ public class CarRacing {
         ArrayList<Car> cars = new ArrayList<>();
 
         for (int i = 0; i<numberOfCars; i++) {
-            cars.add(new Car());
+            cars.add(new Car(new Random()));
         }
 
         return cars;
     }
 
     void start(int numberOfCars, int numberOfRacing) {
-        Random random = new Random();
         ArrayList<Car> cars = prepareCars(numberOfCars);
 
         for (int round = 1; round <= numberOfRacing; round++) {
@@ -27,7 +26,7 @@ public class CarRacing {
                 if (car == null) {
                     throw new NullPointerException("유효하지 않은 car 객체입니다.");
                 }
-                int position = car.go(random);
+                int position = car.go();
                 ResultView.printPosition(position);
             }
         }
