@@ -1,6 +1,4 @@
-package racingCar;
-
-import sun.jvm.hotspot.utilities.AssertionFailure;
+package racingCar.domain;
 
 import java.util.Random;
 
@@ -9,7 +7,7 @@ public class RandomNumberGenerator {
     static Random random = new Random();
 
     private RandomNumberGenerator() {
-        throw new AssertionFailure();
+
     }
 
     static public int getRandomNumber(){

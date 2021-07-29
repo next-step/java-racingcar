@@ -1,11 +1,11 @@
-package racingCar;
+package racingCar.ui;
 
 import java.util.Scanner;
 
 public class InputService {
 
     private InputService() {
-        throw new AssertionError();
+
     }
 
     static Scanner scanner = new Scanner(System.in);

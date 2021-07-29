@@ -5,7 +5,7 @@ import com.sun.tools.javac.util.StringUtils;
 public class StringCalculator {
 
     private StringCalculator() {
-        throw new AssertionError();
+
     }
 
     public static int cal(String s) {
