@@ -26,10 +26,7 @@ public class Car {
     }
 
     public Boolean checkDistance(int distance) {
-        if (this.distance == distance) {
-            return true;
-        }
-        return false;
+        return this.distance == distance;
     }
 
     public void checkCarName(String name) {

@@ -32,11 +32,4 @@ public class Cars {
                 .get()
                 .totalDistance();
     }
-
-    public List<Car> checkDistance(int distance) {
-        return carList().stream()
-                .filter(car -> car.totalDistance() == distance)
-                .collect(Collectors.toList());
-    }
-
 }
