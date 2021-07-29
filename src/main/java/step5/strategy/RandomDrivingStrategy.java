@@ -1,6 +1,5 @@
 package step5.strategy;
 
-import step5.strategy.MovingStrategy;
 import step5.util.NumberGenerator;
 
 public class RandomDrivingStrategy implements MovingStrategy {
