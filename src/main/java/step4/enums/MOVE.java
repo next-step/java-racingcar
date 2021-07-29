@@ -13,8 +13,13 @@ public enum MOVE {
         this.condition = condition;
     }
 
-    public static MOVE fromInt(int num) {
-        return Stream.of(values()).filter(t -> t.condition.test(num))
+    public static MOVE fromInt(int number) {
+        return Stream.of(values())
+                .filter(t -> t.condition.test(number))
                 .findFirst().orElse(MOVE.GO);
+    }
+
+    public static boolean movable(int number) {
+        return fromInt(number).equals(GO);
     }
 }

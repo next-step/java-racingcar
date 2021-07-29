@@ -23,7 +23,7 @@ public class Car {
     public void goOrStop() {
         int luckyNumber = RandomNumberGenerator.getRandomNumberGenerator().getRandomInt();
 
-        if (MOVE.fromInt(luckyNumber).equals(MOVE.GO)) {
+        if (MOVE.movable(luckyNumber)) {
             this.progress();
         }
     }
