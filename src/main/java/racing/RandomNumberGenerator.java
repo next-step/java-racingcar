@@ -2,7 +2,7 @@ package racing;
 
 import java.util.Random;
 
-public class RandomNumberGenerator {
+public class RandomNumberGenerator implements NumberGenerator {
 
     private Random random;
 
