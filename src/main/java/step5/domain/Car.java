@@ -1,4 +1,6 @@
-package step5;
+package step5.domain;
+
+import step5.MovingStrategy;
 
 public class Car {
 
