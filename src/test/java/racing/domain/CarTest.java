@@ -20,14 +20,16 @@ class CarTest {
 		assertThat(playerName).isEqualTo(value);
 	}
 
-	@ParameterizedTest
+	@Test
 	@DisplayName("결과값의 따라 자동차가 움직인다.")
-	@CsvSource(value = {"true,1,", "false,0", "true,1"})
-	public void carRacingConditionCheck(boolean moveFlag, int position) {
+	public void carRacingConditionCheck() {
 		Car car = new Car("car1");
 
-		car.move(moveFlag);
-		assertThat(car.printPosition()).isEqualTo(position);
+		car.move(new DummyFalseRandomMove());
+		assertThat(car.printPosition()).isEqualTo(0);
+
+		car.move(new DummyTrueRandomMove());
+		assertThat(car.printPosition()).isEqualTo(1);
 	}
 
 	@ParameterizedTest
@@ -39,32 +41,42 @@ class CarTest {
 		);
 	}
 
-	@ParameterizedTest
-	@DisplayName("경주시 움직인 값과 결과값이 동일하다.")
-	@CsvSource(value = {"car1,true,1,false,1", "car2,false,0,true,1", "car3,false,0,false,0"})
-	public void returnCarResultRacing(String value, boolean race1, int raceResult1, boolean race2, int raceResult2) {
-		Car car = new Car(value);
-		car.move(race1);
-
-		assertThat(car.printPosition()).isEqualTo(raceResult1);
-
-		car.move(race2);
-
-		assertThat(car.printPosition()).isEqualTo(raceResult2);
-	}
-
 	@Test
 	@DisplayName("경주에서 최고값이 해당 위치와 일치하면 true 그렇지 않으면 false 를 반환한다.")
 	public void isWinnerCheck() {
 		int maxPosition = 3;
 		Car car = new Car("car");
-		car.move(true);
-		car.move(true);
+		car.move(new DummyTrueRandomMove());
+		car.move(new DummyTrueRandomMove());
 
 		assertThat(car.isWinner(maxPosition)).isFalse();
 
-		car.move(true);
+		car.move(new DummyTrueRandomMove());
 		assertThat(car.isWinner(maxPosition)).isTrue();
+	}
+
+	@Test
+	@DisplayName("랜덤값은 0이상 10미만의 값을 반환한다.")
+	public void randomValueCheck() {
+		Car car = new Car("car");
+
+		int result = car.randomValue();
+
+		assertThat(result).isGreaterThanOrEqualTo(0).isLessThan(10);
+	}
+
+	private static class DummyFalseRandomMove extends RandomMoving {
+		@Override
+		public boolean movable(int randomValue) {
+			return false;
+		}
+	}
+
+	private static class DummyTrueRandomMove extends RandomMoving {
+		@Override
+		public boolean movable(int randomValue) {
+			return true;
+		}
 	}
 
 }
