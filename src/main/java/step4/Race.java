@@ -9,6 +9,8 @@ public class Race {
     private static int numOfCycle;
     private static String nameOfCar;
     private static final int INIT_CAR_POSITION = 1;
+    private static String maxCarName;
+    private static int maxCarPosition = 0;
 
     private InputView inputView = new InputView();
     private ResultView resultView = new ResultView();
@@ -30,7 +32,6 @@ public class Race {
         String[] carNamesAry = nameOfCar.split(",");
         carManagers = new ArrayList<>();
         for (int i = 0; i < numOfCar; i++) {
-            System.out.println(carNamesAry[i]);
             Car car = new Car(INIT_CAR_POSITION,carNamesAry[i]);
             carManagers.add(new CarManager(car));
         }
@@ -51,9 +52,26 @@ public class Race {
         for (CarManager carManager: carManagers) {
             resultView.showCurrCarName(carManager.getCurrCarName());
             resultView.showCurrCarPosition(carManager.getCurrCarPosition());
-            resultView.findMaxPositionCarName(carManager.getCurrCarName(), carManager.getCurrCarPosition());
+            findMaxPositionCarName(carManager.getCurrCarName(), carManager.getCurrCarPosition());
         }
     }
+
+    public void findMaxPositionCarName(String carName, int carPosition) {
+        if (carPosition > maxCarPosition) {
+            maxCarName = carName;
+            maxCarPosition = carPosition;
+            return;
+        }
+        if (carPosition == maxCarPosition) {
+            maxCarName += ", "+carName;
+            return;
+        }
+    }
+
+    public String getMaxCarName() {
+        return maxCarName;
+    }
+
 
 
 }

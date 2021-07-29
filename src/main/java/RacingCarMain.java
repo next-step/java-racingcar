@@ -19,6 +19,6 @@ public class RacingCarMain {
         }
         race.printResult();
         ResultView resultView = new ResultView();
-        resultView.printFinalResult();
+        resultView.printFinalResult(race.getMaxCarName());
     }
 }
