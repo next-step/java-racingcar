@@ -51,7 +51,9 @@ public class RacingGame {
     }
 
     private void nextTurn() {
-        this.racingEntry.getCars().forEach(Car::goOrStop);
+        this.racingEntry.getCars()
+                .forEach(car -> car.goOrStop(new RandomMoveStrategy()));
+
         this.currentTurn += 1;
     }
 

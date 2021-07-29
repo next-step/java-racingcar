@@ -44,7 +44,7 @@ public class RacingEntryTest {
 
         // 첫번째 차만 100턴 진행
         IntStream.range(0, 100)
-                .forEach(x -> this.racingEntry.getCars().get(0).goOrStop());
+                .forEach(x -> this.racingEntry.getCars().get(0).goOrStop(new RandomMoveStrategy()));
 
         List<Car> winners = this.racingEntry.findWinners();
 

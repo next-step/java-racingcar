@@ -30,7 +30,7 @@ public class CarTest {
                 .forEach((i) -> {
                     int before = car.getLocation();
 
-                    car.goOrStop();
+                    car.goOrStop(() -> true);
 
                     int after = car.getLocation();
 

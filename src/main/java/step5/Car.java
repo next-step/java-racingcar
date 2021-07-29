@@ -1,10 +1,8 @@
 package step5;
 
-import step5.enums.MOVE;
+import step5.interfaces.MoveStrategy;
 
 public class Car {
-    private static final int MAX_CAR_NAME_LENGTH = 5;
-
     private int location = 0;
     private final CarName carName;
 
@@ -20,10 +18,8 @@ public class Car {
         return carName;
     }
 
-    public void goOrStop() {
-        int luckyNumber = RandomNumberGenerator.getRandomNumberGenerator().getRandomInt();
-
-        if (MOVE.movable(luckyNumber)) {
+    public void goOrStop(MoveStrategy moveStrategy) {
+        if (moveStrategy.movable()) {
             this.progress();
         }
     }

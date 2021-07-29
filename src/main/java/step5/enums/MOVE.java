@@ -1,5 +1,7 @@
 package step5.enums;
 
+import step5.RandomNumberGenerator;
+
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -17,9 +19,5 @@ public enum MOVE {
         return Stream.of(values())
                 .filter(t -> t.condition.test(number))
                 .findFirst().orElse(MOVE.GO);
-    }
-
-    public static boolean movable(int number) {
-        return fromInt(number).equals(GO);
     }
 }
