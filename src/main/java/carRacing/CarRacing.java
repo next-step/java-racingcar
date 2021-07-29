@@ -21,17 +21,11 @@ public class CarRacing {
         ArrayList<Car> cars = prepareCars(numberOfCars);
 
         for (int round = 1; round <= numberOfRacing; round++) {
-            System.out.println();
-            if (round == 1) {
-                System.out.println("실행결과");
-            }
+            ResultView.divideRound(round);
+
             for (Car car : cars) {
                 int position = car.go(random);
-                StringBuilder state = new StringBuilder();
-                for (int i = 0; i < position; i++) {
-                    state.append("-");
-                }
-                System.out.println(state);
+                ResultView.printPosition(position);
             }
         }
     }
