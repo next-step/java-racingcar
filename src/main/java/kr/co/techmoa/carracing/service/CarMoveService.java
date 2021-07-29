@@ -26,15 +26,11 @@ public class CarMoveService {
 
                 if(i != FIRST_ROUND) {
                     cars[j].setTotalMove(isAdvence + ((Car[])roundList.get(i-1))[j].getTotalMove());
-
                 }else {
                     cars[j].setTotalMove(isAdvence);
-
                 }
             }
-
             roundList.add(cars);
-
         }
 
         racingCarGame.setRounds(roundList);
