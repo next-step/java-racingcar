@@ -1,5 +1,6 @@
 package step5;
 
+import step5.interfaces.MoveStrategy;
 import step5.interfaces.OutputInterface;
 
 import java.util.stream.IntStream;
@@ -50,16 +51,16 @@ public class RacingGame {
         return this.racingGameConfiguration;
     }
 
-    private void nextTurn() {
+    private void nextTurn(MoveStrategy moveStrategy) {
         this.racingEntry.getCars()
-                .forEach(car -> car.goOrStop(new RandomMoveStrategy()));
+                .forEach(car -> car.goOrStop(moveStrategy));
 
         this.currentTurn += 1;
     }
 
-    public void startGame() {
+    public void startGame(MoveStrategy moveStrategy) {
         IntStream.range(0, this.racingGameConfiguration.getNumberOfTurns()).forEach(x -> {
-            nextTurn();
+            nextTurn(moveStrategy);
             send();
         });
     }

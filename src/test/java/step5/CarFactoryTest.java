@@ -18,8 +18,7 @@ public class CarFactoryTest {
         assertThat(cars.stream()
                 .map(Car::getCarName)
                 .map(CarName::getValue)
-                .collect(Collectors.toList()))
-                .containsExactly("a", "b", "c");
+                .collect(Collectors.toList())).contains("a", "b", "c");
 
         cars.forEach(car -> assertThat(car).isInstanceOf(Car.class));
     }

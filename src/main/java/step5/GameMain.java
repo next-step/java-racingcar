@@ -9,6 +9,6 @@ public class GameMain {
         RacingGame racingGame = new RacingGame(racingGameConfiguration);
         racingGame.attach(new RacingStatusByCarWithWinnerView());
 
-        racingGame.startGame();
+        racingGame.startGame(new RandomMoveStrategy());
     }
 }

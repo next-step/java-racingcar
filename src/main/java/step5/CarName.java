@@ -20,4 +20,9 @@ public class CarName {
     private static boolean isShorterThanOrEqualToMaxLength(String name) {
         return name.length() <= MAX_NAME_LENGTH;
     }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
 }
