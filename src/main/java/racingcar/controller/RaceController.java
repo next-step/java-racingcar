@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.exception.OverFiveCarNameException;
+import racingcar.exception.NameValidationException;
 import racingcar.model.RacingCars;
 import racingcar.strategy.RandomlyMovableStrategy;
 import racingcar.view.InputView;
@@ -17,7 +17,7 @@ public class RaceMain {
 		resultView.outputWinners(racingCars);
 	}
 
-	public static void main(String[] args) throws OverFiveCarNameException {
+	public static void main(String[] args) throws NameValidationException {
 		InputView inputView = new InputView();
 		RaceMain raceMain = new RaceMain();
 		RacingCars racingCars = new RacingCars(inputView.inputCarNames(), new RandomlyMovableStrategy());
