@@ -9,6 +9,7 @@ package racingcar;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 /**
  * 해당 메소드의 기능은 자동차 경주 게임을 시작합니다.
@@ -24,7 +25,14 @@ public class RacingCarPlayMain {
 
         RacingCar racingCar = new RacingCar(carNames ,moveCount);
         System.out.println("실행 결과");
-        racingCar.doRacingStart(racingCar.createAsCarsNumberOfEnteredByUser());
+        List<Car> carsAfterTheRace = racingCar.doRacingStart(racingCar.createAsCarsNumberOfEnteredByUser());
+        List<Car> winners = racingCar.whoIsWinner(carsAfterTheRace);
+
+        StringBuffer sb = new StringBuffer();
+        for (Car winner : winners) {
+            sb.append(winner.getCarName() + ",");
+        }
+        System.out.println(sb.toString().substring(0,sb.toString().lastIndexOf(',')) + "가 최종 우승했습니다.");
 
     }
 }

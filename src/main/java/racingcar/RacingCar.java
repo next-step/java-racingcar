@@ -6,8 +6,7 @@
 
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 해당 클래스는 Racing을 하기 위한 기능이 구현되어있는 클래스입니다.
@@ -18,6 +17,7 @@ public class RacingCar {
     private final int moveCount; // 자동차 이동 횟수
 
     public RacingCar(String[] carNames, int moveCount) {
+
         this.carNames = carNames;
         this.moveCount = moveCount;
     }
@@ -27,8 +27,9 @@ public class RacingCar {
      * @return List<Car>
      */
     public List<Car> createAsCarsNumberOfEnteredByUser() {
+
         List<Car> cars = new ArrayList<Car>();
-        for(int i = 0; i < this.carNames.length; i++) {
+        for (int i = 0; i < this.carNames.length; i++) {
             Car car = new Car();
             car.setCarName(this.carNames[i]);
             cars.add(car);
@@ -39,10 +40,12 @@ public class RacingCar {
     /**
      * 준비된 Car 객채들 끼리의 경주를 시작합니다.
      */
-    public void doRacingStart(List<Car> cars) {
+    public List<Car> doRacingStart(List<Car> cars) {
+
         for (int i = 0; i < this.moveCount; i++) {
             moveAsCarUserEntered(cars);
         }
+        return cars;
     }
 
     /**
@@ -50,6 +53,7 @@ public class RacingCar {
      * @param cars
      */
     public void moveAsCarUserEntered(List<Car> cars) {
+
         for (Car car : cars) {
             car.moveCar();
             drawCarMoving(car);
@@ -62,11 +66,39 @@ public class RacingCar {
      * @param car
      */
     public void drawCarMoving(Car car) {
-        for(int j = 0; j < car.getCurrentLocation(); j++) {
+
+        System.out.printf(car.getCarName() + " : ");
+        for (int j = 0; j < car.getCurrentLocation(); j++) {
             System.out.printf("-");
         }
         System.out.println();
     }
 
+    public List<Car> whoIsWinner(List<Car> cars) {
 
+        int winnerLocation = getWinnerLocation(cars);
+
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getCurrentLocation() == winnerLocation) {
+                winners.add(car);
+            }
+        }
+
+        return winners;
+
+    }
+
+    private int getWinnerLocation(List<Car> cars) {
+
+        int maxLocation = cars.get(0).getCurrentLocation();
+
+        for (Car car : cars) {
+            if(maxLocation < car.getCurrentLocation()) {
+                maxLocation = car.getCurrentLocation();
+            }
+        }
+
+        return maxLocation;
+    }
 }
