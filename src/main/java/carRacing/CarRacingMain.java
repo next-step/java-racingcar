@@ -3,13 +3,11 @@ package carRacing;
 
 public class CarRacingMain {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
+        InputView.printNumberOfCars();
+        int numberOfCars = InputView.inputNumber();
 
-        inputView.printNumberOfCars();
-        int numberOfCars = inputView.inputNumber();
-
-        inputView.printNumberOfRacing();
-        int numberOfRacing = inputView.inputNumber();
+        InputView.printNumberOfRacing();
+        int numberOfRacing = InputView.inputNumber();
 
         CarRacing racing = new CarRacing();
         racing.start(numberOfCars, numberOfRacing);
