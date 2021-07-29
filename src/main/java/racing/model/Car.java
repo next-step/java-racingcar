@@ -3,7 +3,7 @@ package racing.model;
 public class Car {
     private String carName = "";
     private int distance = 0;
-
+    private final static int MAX_WORD_NAME = 5;
     public Car(String name) {
         checkCarName(name);
         this.carName = name;
@@ -23,7 +23,7 @@ public class Car {
     }
 
     public void checkCarName(String name) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_WORD_NAME) {
             throw new IllegalArgumentException();
         }
     }
