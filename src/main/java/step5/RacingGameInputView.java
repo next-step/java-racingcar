@@ -1,11 +1,10 @@
-package step4;
+package step5;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class RacingGameInputView {
-    final static int MAX_NAME_LENGTH = 5;
 
     public static RacingGameConfiguration getRacingGameConfigurationWithPrompt() {
         try (Scanner standardInput = new Scanner(System.in)) {
@@ -36,12 +35,8 @@ public class RacingGameInputView {
     }
 
     private static boolean validateNames(List<String> names) {
-        return names.stream().map(RacingGameInputView::isShorterThanOrEqualToMaxLength)
+        return names.stream().map(CarName::isValidCarName)
                 .reduce((returnValue, result) -> returnValue & result)
                 .orElse(false);
-    }
-
-    private static boolean isShorterThanOrEqualToMaxLength(String name) {
-        return name.length() <= MAX_NAME_LENGTH;
     }
 }

@@ -1,4 +1,4 @@
-package step4;
+package step5;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -29,7 +29,8 @@ public class RacingEntryTest {
         assertThat(racingEntry.getCars().size()).isEqualTo(3);
 
         List<String> carNames = racingEntry.getCars().stream()
-                .map(Car::getName)
+                .map(Car::getCarName)
+                .map(CarName::getValue)
                 .collect(Collectors.toList());
 
         assertThat(carNames).containsExactly("pobi", "crong", "honux");
@@ -49,6 +50,6 @@ public class RacingEntryTest {
 
         assertThat(winners.size()).isEqualTo(1);
 
-        assertThat(winners.get(0).getName()).isEqualTo("w");
+        assertThat(winners.get(0).getCarName().getValue()).isEqualTo("w");
     }
 }

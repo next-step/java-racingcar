@@ -1,4 +1,4 @@
-package step4;
+package step5;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,10 @@ public class CarFactoryTest {
     void createCarsFromNames() {
         List<Car> cars = CarFactory.createCarsFromNames(Stream.of("a", "b", "c").collect(Collectors.toList()));
 
-        assertThat(cars.stream().map(Car::getName).collect(Collectors.toList()))
+        assertThat(cars.stream()
+                .map(Car::getCarName)
+                .map(CarName::getValue)
+                .collect(Collectors.toList()))
                 .containsExactly("a", "b", "c");
 
         cars.forEach(car -> assertThat(car).isInstanceOf(Car.class));
