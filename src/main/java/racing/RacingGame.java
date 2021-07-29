@@ -14,9 +14,10 @@ public class RacingGame {
     public void gameStart(String carNames, int gameCount) {
         int count = 1;
         Racing racing = new Racing();
-        racing.prepareRacing(carNames, gameCount);
+        racing.prepareRacing(carNames);
 
-        while (!game(racing, count)) {
+        while (count <= gameCount) {
+            game(racing);
             count++;
             RacingView.printCarMove(racing);
         }
@@ -24,12 +25,12 @@ public class RacingGame {
         RacingView.printWinner(racing.winner());
     }
 
-    public Boolean game(Racing racing, int count) {
+    public void game(Racing racing) {
         Cars cars = racing.participants();
         cars.carList()
                 .forEach(car -> run(car, RandomUtil.randomValue()));
-        return racing.endGame(count);
     }
+
 
     public boolean run(Car car, int move) {
         if(moveCondition(move)) {

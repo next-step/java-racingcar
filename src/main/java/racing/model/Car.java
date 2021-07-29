@@ -22,6 +22,13 @@ public class Car {
         return this.distance;
     }
 
+    public Boolean checkDistance(int distance) {
+        if (this.distance == distance) {
+            return true;
+        }
+        return false;
+    }
+
     public void checkCarName(String name) {
         if (name.length() > MAX_WORD_NAME) {
             throw new IllegalArgumentException();

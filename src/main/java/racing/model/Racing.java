@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 public class Racing {
     private Cars cars = new Cars();
-    private int playCount = 0;
 
     public Racing() {
     }
@@ -15,8 +14,7 @@ public class Racing {
         this.cars = new Cars(cars);
     }
 
-    public void prepareRacing(String carNames, int playCount) {
-        this.playCount = playCount;
+    public void prepareRacing(String carNames) {
         this.cars.prepareCars(carNames);
     }
 
@@ -24,15 +22,11 @@ public class Racing {
         return this.cars;
     }
 
-    public Boolean endGame(int gameCount) {
-        return this.playCount == gameCount ? true : false;
-    }
-
     public List<Car> winner() {
         int maxDistance = cars.getMaxDistance();
         List<Car> cars = participants().carList()
                 .stream()
-                .filter(car -> car.totalDistance() == maxDistance)
+                .filter(car -> car.checkDistance(maxDistance))
                 .collect(Collectors.toList());
         return cars;
     }

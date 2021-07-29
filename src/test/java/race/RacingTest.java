@@ -1,6 +1,5 @@
 package race;
 
-import org.assertj.core.api.Assert;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -9,16 +8,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racing.RacingGame;
 import racing.model.Car;
-import racing.model.Cars;
 import racing.model.Racing;
-import sun.util.resources.cldr.ar.CalendarData_ar_SY;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RacingTest {
 
@@ -28,8 +24,8 @@ public class RacingTest {
 
     @BeforeEach
     void setting() {
-        racing.prepareRacing("test1,test2,test3", 5);
-        racingGame.game(racing,1);
+        racing.prepareRacing("test1,test2,test3");
+        racingGame.game(racing);
         cars = racing.participants().carList();
     }
 
@@ -40,13 +36,6 @@ public class RacingTest {
         assertThatThrownBy(() -> {
             racingGame.moveCondition(10);
         }).isInstanceOf(IllegalStateException.class);
-    }
-
-    @ParameterizedTest
-    @DisplayName("game end test")
-    @CsvSource(value = {"3:false", "5:true"}, delimiter = ':')
-    void gameEndTest(int input, boolean expected) {
-       assertThat(racingGame.game(racing, input)).isEqualTo(expected);
     }
 
     @ParameterizedTest

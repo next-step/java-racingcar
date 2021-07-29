@@ -3,6 +3,7 @@ package racing.model;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> carList = new ArrayList<>();
@@ -13,6 +14,7 @@ public class Cars {
     public Cars(List<Car> cars) {
         this.carList = cars;
     }
+
     public void prepareCars(String carNames) {
         String[] carNameArr = carNames.split(",");
         for(String carName : carNameArr) {
@@ -33,5 +35,10 @@ public class Cars {
                 .totalDistance();
     }
 
+    public List<Car> checkDistance(int distance) {
+        return carList().stream()
+                .filter(car -> car.totalDistance() == distance)
+                .collect(Collectors.toList());
+    }
 
 }
