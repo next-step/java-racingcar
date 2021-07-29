@@ -25,21 +25,13 @@ public class Cars {
 		return new Cars(cars);
 	}
 
-	public List<Car> getWinner() {
-		return cars.stream()
-				   .filter(car -> car.sameWinnerCarDistance(getMaxDistance()))
-				   .collect(Collectors.toList());
+	public RacingRecord ofRecord() {
+		return RacingRecord.of(cars);
 	}
 
 	public void move(Moveable moveable) {
 		for (Car car : cars) {
 			car.move(moveable);
 		}
-	}
-
-	private Car getMaxDistance() {
-		return cars.stream()
-				   .max(Comparator.comparingInt(Car::getCarDistance))
-				   .orElseThrow(IndexOutOfBoundsException::new);
 	}
 }
