@@ -24,7 +24,7 @@ public class RacingTest {
 
     @BeforeEach
     void setting() {
-        racing.prepareRacing("test1,test2,test3");
+        racing.prepareRacing(new String[]{"test1","test2","test3"});
         racingGame.game(racing);
         cars = racing.participants().carList();
     }

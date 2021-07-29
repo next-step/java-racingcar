@@ -14,7 +14,7 @@ public class Racing {
         this.cars = new Cars(cars);
     }
 
-    public void prepareRacing(String carNames) {
+    public void prepareRacing(String[] carNames) {
         this.cars.prepareCars(carNames);
     }
 

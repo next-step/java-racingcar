@@ -20,7 +20,7 @@ public class CarsTest {
 
     @BeforeEach
     void setting() {
-        cars.prepareCars("test1,test2,test3");
+        cars.prepareCars(new String[]{"test1","test2","test3"});
         for (Car car : cars.carList()) {
             car.go();
         }

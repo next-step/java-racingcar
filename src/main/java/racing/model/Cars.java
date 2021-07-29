@@ -15,8 +15,8 @@ public class Cars {
         this.carList = cars;
     }
 
-    public void prepareCars(String carNames) {
-        String[] carNameArr = carNames.split(",");
+    public void prepareCars(String[] carNames) {
+        String[] carNameArr = carNames;
         for(String carName : carNameArr) {
            Car car = new Car(carName);
            carList.add(car);
