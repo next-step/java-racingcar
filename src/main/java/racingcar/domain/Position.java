@@ -4,13 +4,13 @@ import java.util.Objects;
 
 public class Position {
 
-    private int position;
+    private final int position;
 
     public Position() {
         this(0);
     }
 
-    public Position(int position) {
+    Position(int position) {
         checkIsNegative(position);
         this.position = position;
     }
@@ -19,10 +19,6 @@ public class Position {
         if (position < 0) {
             throw new IllegalArgumentException("position 값은 0보다 작을 수 없습니다.");
         }
-    }
-
-    public Position move() {
-        return new Position(position + 1);
     }
 
     public int getPosition() {
