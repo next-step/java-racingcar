@@ -6,6 +6,7 @@ import step5.domain.Car;
 import step5.domain.CarEngine;
 import step5.domain.CarStadium;
 import step5.domain.Referee;
+import step5.strategy.SpeedMovingStrategy;
 import java.util.ArrayList;
 import java.util.List;
 

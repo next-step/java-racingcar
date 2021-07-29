@@ -1,4 +1,6 @@
-package step5;
+package step5.strategy;
+
+import step5.strategy.MovingStrategy;
 
 public class SpeedMovingStrategy implements MovingStrategy {
 
