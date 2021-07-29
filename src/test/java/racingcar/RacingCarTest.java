@@ -1,33 +1,27 @@
 package racingcar;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import racingcar.exception.OverFiveCarNameException;
+import racingcar.exception.NameValidationException;
 import racingcar.model.RacingCar;
-import racingcar.strategy.AlwaysMovableStrategy;
 import racingcar.strategy.RandomlyMovableStrategy;
 
 import java.util.Random;
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 class RacingCarTest {
 	RacingCar racingCar;
 
-	public static RandomlyMovableStrategy getRandomMovableStrategyByRandomObject(Random random) {
-		return new RandomlyMovableStrategy(random);
-	}
-
 	@BeforeEach
-	void setUp() throws OverFiveCarNameException {
-		racingCar = new RacingCar("chang", new AlwaysMovableStrategy());
+	void setUp() throws NameValidationException {
+		racingCar = new RacingCar("chang", () -> true);
 	}
 
 	@Test
@@ -39,8 +33,8 @@ class RacingCarTest {
 	@ParameterizedTest
 	@MethodSource
 	void RandomlyMovable_전략을_입력받았을_때_랜덤값이_4이상_일때에만_전진가능하다(Random random, String expected) throws
-		OverFiveCarNameException {
-		racingCar = new RacingCar("chang", getRandomMovableStrategyByRandomObject(random));
+            NameValidationException {
+		racingCar = new RacingCar("chang", new RandomlyMovableStrategy(random));
 		racingCar.forward();
 		assertThat(racingCar.getRacingCarDashString()).isEqualTo(expected);
 	}
@@ -88,15 +82,7 @@ class RacingCarTest {
 	void 길이가_5를_초과하는_자동차이름_문자열이_주어질_때_예외가_발생한다(String carName) {
 		assertThatThrownBy(() -> {
 			racingCar = new RacingCar(carName, null);
-		}).isInstanceOf(OverFiveCarNameException.class)
+		}).isInstanceOf(NameValidationException.class)
 				.hasMessageContaining("자동차 이름의 길이가 5를 초과합니다");
 	}
-
-	// @ParameterizedTest
-	// @ValueSource(strings = { "five", "chang", "long" })
-	// void 길이가_5이하의_자동차이름_문자열이_주어질_때_예외가_발생하지_않는다(String carName) {
-	// 	assertDoesNotThrow(() -> {
-	// 		racingCar = new RacingCar(carName, null);
-	// 	});
-	// }
 }
