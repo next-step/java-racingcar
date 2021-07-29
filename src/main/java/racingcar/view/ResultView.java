@@ -26,7 +26,7 @@ public class ResultView {
     public static void printWinners(List<CarName> winners) {
 
         System.out.print(winners.stream()
-                .map(winner -> winner.toString())
+                .map(winner -> winner.value())
                 .collect(Collectors.joining(COMMA)));
 
         System.out.print(" 가 최종 우승했습니다.");
@@ -40,7 +40,7 @@ public class ResultView {
             sb.append(CAR_POSITION_DISPLAY);
             p1.move();
         }
-        System.out.println(carName + " : " + sb);
+        System.out.println(carName.value() + " : " + sb);
 
     }
 

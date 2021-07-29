@@ -18,7 +18,8 @@ public class RacingGame {
     public RacingGame(Cars cars) {
         this.cars = cars;
     }
-    public RacingGame(Cars cars , int raceTrialCount) {
+
+    public RacingGame(Cars cars, int raceTrialCount) {
         this.cars = cars;
         this.raceTrialCount = raceTrialCount;
     }
@@ -37,7 +38,7 @@ public class RacingGame {
 
     public void race(MovingStrategy movingStrategy) {
         cars.move(movingStrategy);
-        raceTrialCount --;
+        raceTrialCount--;
     }
 
     public boolean isEnd() {

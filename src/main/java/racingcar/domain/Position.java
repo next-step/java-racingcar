@@ -34,8 +34,7 @@ public class Position {
         return Objects.hash(position);
     }
 
-    @Override
-    public String toString() {
+    public String value() {
         return Integer.toString(position);
     }
 

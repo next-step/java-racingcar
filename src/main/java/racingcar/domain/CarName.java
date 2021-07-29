@@ -9,14 +9,17 @@ public class CarName {
     private static final int BOUND = 5;
 
     public CarName(String name) {
+        nameValidateCheck(name);
         this.name = name.trim();
-        if(name.length() > BOUND) {
+    }
+
+    private void nameValidateCheck(String name) {
+        if (name.length() > BOUND) {
             throw new InvalidCarNameException(name);
         }
     }
 
-    @Override
-    public String toString(){
+    public String value() {
         return name;
     }
 

@@ -6,14 +6,13 @@ public class Car {
     private Position position;
     private CarName carName;
 
-    public Car(CarName carName) {
-        this.carName = carName;
-        this.position = new Position();
-    }
-
     public Car(CarName carName, Position position) {
         this.carName = carName;
         this.position = position;
+    }
+
+    public Car(CarName carName) {
+        this(carName, new Position());
     }
 
     public CarName getName() {

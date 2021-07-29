@@ -65,10 +65,10 @@ public class CarsTests {
     @ValueSource(strings = {"pobi,crong123,honux"})
     void createCarNameOverFiveWordsExceptionTest(String input) {
 
-    assertThatExceptionOfType(InvalidCarNameException.class)
-            .isThrownBy(() -> {
-                String[] carNames = InputCarNameSplitUtils.getSplitStringArray(input);
-            }).withMessageMatching("자동차 이름은 5자를 초과할 수 없습니다 : crong123");
+        assertThatExceptionOfType(InvalidCarNameException.class)
+                .isThrownBy(() -> {
+                    String[] carNames = InputCarNameSplitUtils.getSplitStringArray(input);
+                }).withMessageMatching("자동차 이름은 5자를 초과할 수 없습니다 : crong123");
 
     }
 

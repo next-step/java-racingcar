@@ -10,15 +10,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarNameTests {
     @Test
     @DisplayName("Car 원시값 포장 객체 create test")
-    void create(){
+    void create() {
         CarName carName = new CarName("pobi");
-        assertThat(carName.toString()).isEqualTo("pobi");
+        assertThat(carName.value()).isEqualTo("pobi");
     }
 
     @Test
     @DisplayName("차 이름이 5글자 초과일 때 test")
-    void valid(){
-        assertThatThrownBy(() ->{
+    void valid() {
+        assertThatThrownBy(() -> {
             new Car(new CarName("test123"));
         }).isInstanceOf(InvalidCarNameException.class);
     }
