@@ -1,6 +1,7 @@
 package racingCar.domain;
 
 public class RacingCar {
+
     private int drivenDistance;
 
     private ForwardPolicy forwardPolicy;
@@ -11,7 +12,7 @@ public class RacingCar {
     }
 
     public void goForward(int number) {
-        if(forwardPolicy.isMovableNumber(number)) {
+        if (forwardPolicy.isMovableNumber(number)) {
             this.drivenDistance++;
         }
     }

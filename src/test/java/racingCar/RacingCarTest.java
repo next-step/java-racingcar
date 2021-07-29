@@ -11,6 +11,7 @@ import java.lang.reflect.Method;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
+
     @DisplayName("차량 전진 테스트")
     @Test
     void 차량_전진_테스트() {
@@ -23,7 +24,7 @@ public class RacingCarTest {
     @Test
     void 차량_부분_전진_테스트() {
         RacingCar racingCar = new RacingCar();
-        int[] numbers = new int[]{3,3,3,4,4};
+        int[] numbers = new int[]{3, 3, 3, 4, 4};
         for (int i = 0; i < numbers.length; i++) {
             racingCar.goForward(numbers[i]);
         }
@@ -32,7 +33,8 @@ public class RacingCarTest {
 
     @DisplayName("레이싱카의 주행거리를 -로 변환하는 테스트")
     @Test
-    void 주행거리_변환_테스트() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    void 주행거리_변환_테스트()
+        throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         PrintService printService = new PrintService();
         Method method = printService.getClass().getDeclaredMethod("getDistance", int.class);
         method.setAccessible(true);

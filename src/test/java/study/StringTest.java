@@ -17,6 +17,7 @@ public class StringTest {
         assertThat(result).contains("1", "2");
         assertThat(result).containsExactly("1", "2");
     }
+
     //"1"을 ,로 split 했을 때 1만을 포함하는 배열이 반환되는지에 대한 학습 테스트를 구현한다.
     @DisplayName("split 테스트 2")
     @Test
@@ -31,7 +32,7 @@ public class StringTest {
     @DisplayName("substring 테스트")
     @Test
     void substringTest() {
-        String result = "(1,2)".substring(1,4);
+        String result = "(1,2)".substring(1, 4);
         assertThat(result).contains("1,2");
     }
 
@@ -50,10 +51,10 @@ public class StringTest {
     @DisplayName("StringIndexOutOfBoundsException 테스트")
     @Test
     void StringIndexOutOfBoundsExceptionTest() {
-        assertThatThrownBy(()->"abc".charAt(4))
-                .isInstanceOf(StringIndexOutOfBoundsException.class);
+        assertThatThrownBy(() -> "abc".charAt(4))
+            .isInstanceOf(StringIndexOutOfBoundsException.class);
 
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
-                .isThrownBy(()->"abc".charAt(4));
+            .isThrownBy(() -> "abc".charAt(4));
     }
 }

@@ -25,7 +25,7 @@ public class RacingCarApplication {
         }
     }
 
-    public static void runGame(RacingCar[] cars){
+    public static void runGame(RacingCar[] cars) {
         for (int j = 0; j < cars.length; j++) {
             cars[j].goForward(RandomNumberGenerator.getRandomNumber());
             PrintService.printDistance(cars[j].showDrivenDistance());

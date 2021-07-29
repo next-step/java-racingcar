@@ -42,17 +42,17 @@ public class StringCalculatorTest {
     @DisplayName("입력 값 null, 공백 체크")
     @ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings={" "})
+    @ValueSource(strings = {" "})
     void 입력_값_null_공백_체크(String input) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> StringCalculator.cal(input));
+            .isThrownBy(() -> StringCalculator.cal(input));
     }
 
     @DisplayName("사칙연산 기호 체크")
     @Test
     void 사칙연산_기호_체크() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(()-> StringCalculator.cal("10 ? 2"));
+            .isThrownBy(() -> StringCalculator.cal("10 ? 2"));
     }
 
     @DisplayName("통합 기능 테스트")
