@@ -2,7 +2,7 @@ package refactoring.domain;
 
 public class CarName {
 
-	private final int MAX_NAME_LENGTH = 5;
+	private final static int MAX_NAME_LENGTH = 5;
 
 	private final String name;
 

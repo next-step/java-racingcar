@@ -1,7 +1,6 @@
 package refactoring.view;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import refactoring.domain.Car;
 
