@@ -1,7 +1,6 @@
-import racingCar.domain.ForwardPolicyImpl;
+import racingCar.domain.RacingCar;
 import racingCar.domain.RandomNumberGenerator;
 import racingCar.ui.InputService;
-import racingCar.domain.RacingCar;
 import racingCar.ui.PrintService;
 
 public class RacingCarApplication {
@@ -19,16 +18,17 @@ public class RacingCarApplication {
         }
 
         System.out.println("실행결과");
-        ForwardPolicyImpl fowardPolicy = new ForwardPolicyImpl();
 
         for (int i = 0; i < tryCount; i++) {
-            for (int j = 0; j < numberOfCar; j++) {
-                cars[j].goForward(RandomNumberGenerator.getRandomNumber());
-                PrintService.printDistance(cars[j].showDrivenDistance());
-            }
+            runGame(cars);
             System.out.println();
         }
+    }
 
-
+    public static void runGame(RacingCar[] cars){
+        for (int j = 0; j < cars.length; j++) {
+            cars[j].goForward(RandomNumberGenerator.getRandomNumber());
+            PrintService.printDistance(cars[j].showDrivenDistance());
+        }
     }
 }
