@@ -2,6 +2,7 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -9,11 +10,15 @@ public class Cars {
 	private final List<Car> cars = new ArrayList<>();
 
 	public Cars(String carsName) {
-		String[] carsNameArray = carsName.split(",");
+		String[] carsNameArray = stringToSplit(carsName);
 		for (String carName : carsNameArray) {
 			Car car = new Car(carName);
 			cars.add(car);
 		}
+	}
+
+	private String[] stringToSplit(String carsName) {
+		return carsName.split(",");
 	}
 
 	public Cars(Car... carArray) {
@@ -21,7 +26,7 @@ public class Cars {
 	}
 
 	public List<Car> getInformation() {
-		return new ArrayList<>(cars);
+		return Collections.unmodifiableList(cars);
 	}
 
 	public Cars racing(RandomMoving randomMoving) {
@@ -32,7 +37,11 @@ public class Cars {
 	}
 
 	public int maxPosition() {
-		return cars.stream().mapToInt(Car::printPosition).filter(car -> car >= 0).max().orElse(0);
+		return cars.stream()
+			.mapToInt(Car::printPosition)
+			.filter(car -> car >= 0)
+			.max()
+			.orElse(0);
 	}
 
 	public List<Car> winnerCars() {
