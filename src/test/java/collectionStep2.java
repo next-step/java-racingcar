@@ -1,6 +1,8 @@
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,17 +23,17 @@ public class collectionStep2 {
 
     // Test Case 구현
     @Test
-    public void stringStep1_1() {
-        String[] numbers = "1,2".split(",");
-        assertThat(numbers).contains("1", "2");
+    public void sizeCheck() {
+       numbers.size();
     }
 
     @Test
-    public String stringStep1_2() {
-        String numberSub = "(1,2)";
-        String numSub = numberSub.substring(1,4);
-
-        return numSub;
+    @ParameterizedTest
+    @ValueSource(strings = {"", "  "})
+    void contains() {
+        assertThat(numbers.contains(1)).isTrue();
+        assertThat(numbers.contains(2)).isTrue();
+        assertThat(numbers.contains(3)).isTrue();
     }
     @Test
     @DisplayName("indexExceptionTest")
