@@ -1,7 +1,5 @@
 package calculator;
 
-import com.sun.tools.javac.util.StringUtils;
-
 public class StringCalculator {
 
     private StringCalculator() {

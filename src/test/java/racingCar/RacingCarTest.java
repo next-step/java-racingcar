@@ -2,10 +2,7 @@ package racingCar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import racingCar.domain.RacingCar;
-import racingCar.domain.ForwardPolicy;
 import racingCar.ui.PrintService;
 
 import java.lang.reflect.InvocationTargetException;
