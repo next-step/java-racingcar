@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 public enum Move {
 
     ADVANCE(1 , "전진"),
-    REVERSE(2 , "후진"),
+    REVERSE(0 , "후진"),
 ;
 
     private final int carMove;
