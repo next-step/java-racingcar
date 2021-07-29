@@ -1,8 +1,9 @@
 package racingcar.service;
 
-import racingcar.dto.Board;
-import racingcar.model.Cars;
-import racingcar.dto.RacingInfo;
+import racingcar.comparator.PositionComparator;
+import racingcar.domain.CarName;
+import racingcar.domain.Cars;
+import racingcar.domain.Position;
 import racingcar.strategy.MovingStrategy;
 
 import java.util.Collections;
@@ -11,41 +12,36 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingGame {
-    private final RacingInfo racingInfo;
     private final Cars cars;
-    private Board board;
+    int raceTrialCount;
 
-    public RacingGame(RacingInfo racingInfo, Cars cars) {
-        this.racingInfo = racingInfo;
+    public RacingGame(Cars cars) {
         this.cars = cars;
-        this.board = new Board();
     }
 
-    private List<String> getWinners(Board board) {
-        List<List<Integer>> allRecords = board.getAllRecords();
+    public RacingGame(Cars cars, int raceTrialCount) {
+        this.cars = cars;
+        this.raceTrialCount = raceTrialCount;
+    }
 
-        int lastGameIndex = allRecords.size() - 1;
+    public List<CarName> findWinners() {
+        List<Position> lastRecords = cars.getCarsPositions();
+        List<CarName> lastGameCarNames = cars.getNames();
 
-        List<Integer> lastGameRecord = allRecords.get(lastGameIndex);
-        List<String> lastGameCarNames = cars.getNames();
+        Position winnersPosition = Collections.max(lastRecords, new PositionComparator());
 
-        int winnersScore = Collections.max(lastGameRecord);
-
-        return IntStream.range(0, lastGameRecord.size())
-                .filter(i -> lastGameRecord.get(i) >= winnersScore)
+        return IntStream.range(0, lastRecords.size())
+                .filter(i -> lastRecords.get(i).compare(winnersPosition))
                 .mapToObj(i -> lastGameCarNames.get(i))
                 .collect(Collectors.toList());
-
     }
 
-    public Board gameStart(MovingStrategy movingStrategy) {
-        for (int i = 0; i < racingInfo.raceTrialCount; i++) {
-            cars.move(movingStrategy);
-            board.record(cars.getNames(), cars.getCarsPositions());
-        }
+    public void race(MovingStrategy movingStrategy) {
+        cars.move(movingStrategy);
+        raceTrialCount--;
+    }
 
-        board.recordWinner(getWinners(board));
-
-        return board;
+    public boolean isEnd() {
+        return raceTrialCount == 0 ? true : false;
     }
 }

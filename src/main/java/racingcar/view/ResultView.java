@@ -1,8 +1,9 @@
 package racingcar.view;
 
-import racingcar.dto.Board;
+import racingcar.domain.Cars;
+import racingcar.domain.CarName;
+import racingcar.domain.Position;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,40 +12,36 @@ public class ResultView {
     private static final String CAR_POSITION_DISPLAY = "-";
     private static final String COMMA = ",";
 
-    public static void printResult(Board board) {
-        List<List<Integer>> allRecords = board.getAllRecords();
-        List<List<String>> allRecordsCarNames = board.getAllRecordsCarsNames();
+    public static void printCurrentRace(Cars cars) {
+        List<Position> currentRacingCarPositions = cars.getCarsPositions();
+        List<CarName> currentCarCarNames = cars.getNames();
 
-        for (int i = 0; i < allRecords.size(); i++) {
-            printBoard(allRecordsCarNames.get(i), allRecords.get(i));
-            System.out.println();
+        for (int i = 0; i < currentRacingCarPositions.size(); i++) {
+            appendCarPosition(currentCarCarNames.get(i), currentRacingCarPositions.get(i));
         }
-
-        printWinners(board);
+        System.out.println();
 
     }
 
-    private static void printWinners(Board board) {
-        List<String> winners = board.getWinnerCarNames();
+    public static void printWinners(List<CarName> winners) {
 
         System.out.print(winners.stream()
+                .map(winner -> winner.value())
                 .collect(Collectors.joining(COMMA)));
+
         System.out.print(" 가 최종 우승했습니다.");
     }
 
-    private static void printBoard(List<String> carsNames, List<Integer> carsPositions) {
+    private static void appendCarPosition(CarName carName, Position carPosition) {
 
-        for (int i = 0; i < carsNames.size(); i++) {
-            appendCarPosition(carsNames.get(i), carsPositions.get(i));
-        }
-
-    }
-
-    private static void appendCarPosition(String carsNames, Integer carPosition) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < carPosition; i++) {
+        Position p1 = new Position();
+        while (!p1.equals(carPosition)) {
             sb.append(CAR_POSITION_DISPLAY);
+            p1.move();
         }
-        System.out.println(carsNames + " : " + sb);
+        System.out.println(carName.value() + " : " + sb);
+
     }
+
 }
