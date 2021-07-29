@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.utils;
+
+import racingcar.domain.RacingRecord;
 
 import java.util.Comparator;
 import java.util.List;
