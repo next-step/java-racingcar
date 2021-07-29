@@ -17,6 +17,6 @@ public class Name {
 	}
 
 	public String printName() {
-		return this.name;
+		return name;
 	}
 }
