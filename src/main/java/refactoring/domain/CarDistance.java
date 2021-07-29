@@ -4,8 +4,8 @@ public class CarDistance {
 
 	private int distance;
 
-	public CarDistance(int distance) {
-		this.distance = distance;
+	public CarDistance() {
+		this.distance = 0;
 	}
 
 	public void increaseDistance() {
