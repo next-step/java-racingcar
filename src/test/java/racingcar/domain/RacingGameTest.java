@@ -9,20 +9,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class RacingGameTest {
+    private MovableStrategy movableStrategy = () -> true;
 
     @DisplayName("생성 시 자동차 대수 또는 라운드 수가 0 이하일 경우 IllegalArgumentException 발생")
     @ParameterizedTest(name = "{index} {displayName} {arguments}")
     @CsvSource({"0, 5", "3, 0", "0, 0"})
     void create_ThrowsIllegalArgumentException_IfCarCountOrRoundCountUnderOne(int carCount, int roundCount) {
         assertThatIllegalArgumentException().isThrownBy(
-                () -> new RacingGame(carCount, roundCount));
+                () -> new RacingGame(carCount, roundCount, movableStrategy));
     }
 
     @DisplayName("생성")
     @Test
     void create() {
         int carCount = 3;
-        RacingGame racingGame = new RacingGame(carCount, 3);
+        RacingGame racingGame = new RacingGame(carCount, 3, movableStrategy);
         Cars cars = racingGame.getCars();
         assertThat(cars.getCars()).hasSize(carCount);
     }
@@ -30,8 +31,8 @@ public class RacingGameTest {
     @DisplayName("경주")
     @Test
     void race() {
-        RacingGame racingGame = new RacingGame(3, 4);
-        racingGame.race(() -> true);
+        RacingGame racingGame = new RacingGame(3, 4, movableStrategy);
+        racingGame.race();
 
         Cars cars = racingGame.getCars();
         for (Car car : cars.getCars()) {
@@ -43,10 +44,10 @@ public class RacingGameTest {
     @ParameterizedTest(name = "{index} {displayName} {arguments}")
     @CsvSource({"4,4,true", "3,4,false"})
     void isEnd_True_IfCurrentRoundIsEqualToRoundCount(int repeatCount, int roundCount, boolean expected) {
-        RacingGame racingGame = new RacingGame(3, roundCount);
+        RacingGame racingGame = new RacingGame(3, roundCount, movableStrategy);
 
         for (int i = 0; i < repeatCount; i++) {
-            racingGame.race(() -> true);
+            racingGame.race();
         }
 
         assertThat(racingGame.isEnd()).isEqualTo(expected);

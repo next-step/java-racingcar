@@ -1,18 +1,21 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RacingGame {
 
     private Cars cars;
     private int roundCount;
     private int currentRound = 0;
+    private MovableStrategy movableStrategy;
 
-    public RacingGame(int carCount, int roundCount) {
+    public RacingGame(int carCount, int roundCount, MovableStrategy movableStrategy) {
         checkGreaterThanZero(roundCount);
         this.roundCount = roundCount;
         this.cars = initCars(carCount);
+        this.movableStrategy = movableStrategy;
     }
 
     private void checkGreaterThanZero(int roundCount) {
@@ -22,14 +25,13 @@ public class RacingGame {
     }
 
     private Cars initCars(int carCount) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
+        List<Car> cars = IntStream.range(0, carCount).
+                mapToObj(index -> new Car())
+                .collect(Collectors.toList());
         return new Cars(cars);
     }
 
-    public void race(MovableStrategy movableStrategy) {
+    public void race() {
         for (Car car : cars.getCars()) {
             car.move(movableStrategy);
         }
