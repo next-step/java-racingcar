@@ -1,5 +1,7 @@
 package race;
 
+import org.assertj.core.api.Assert;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,6 +18,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RacingTest {
 
@@ -63,6 +66,21 @@ public class RacingTest {
         cars = testCars;
         racing = new Racing(cars);
         assertThat(racing.winner().get(0).getCarInfo()).isEqualTo("test2");
+    }
+
+
+    @Test
+    @DisplayName("more than one winner test")
+    void moreThanOneWinnerTest() {
+        List<Car> testCars = new ArrayList<>();
+        testCars.add(new Car("test1", 30));
+        testCars.add(new Car("test2", 30));
+        testCars.add(new Car("test3", 30));
+        cars = testCars;
+        racing = new Racing(cars);
+        Assertions.assertThat(racing.winner().stream())
+                .extracting(Car::getCarInfo)
+                .containsExactly("test1", "test2", "test3");
     }
 
 }
