@@ -82,7 +82,7 @@ public class RacingCarsTest {
         aidenCar.moveForwardOneStepOrStop(() -> true);
 
         // then
-        assertThat(racingCars.getWinners().toArray())
+        assertThat(racingCars.findWinners().toArray())
                 .containsExactlyInAnyOrder(crongCar, aidenCar);
     }
 }

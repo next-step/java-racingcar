@@ -48,14 +48,14 @@ public class RacingCars {
         return racingCars;
     }
 
-    public List<RacingCar> getWinners() {
-        RacingCar fastestRacingCar = getFastestCar();
+    public List<RacingCar> findWinners() {
+        RacingCar fastestRacingCar = findFastestCar();
         return racingCars.stream()
                 .filter(racingCar -> racingCar.isEqualPosition(fastestRacingCar))
                 .collect(toList());
     }
 
-    private RacingCar getFastestCar() {
+    private RacingCar findFastestCar() {
         return racingCars.stream()
                 .max(RacingCar::compareTo)
                 .get();
