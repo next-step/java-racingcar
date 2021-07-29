@@ -1,6 +1,6 @@
 package racing.model;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
     private final RacingCarName name;
     private final RacingCarPosition position;
 
@@ -23,7 +23,12 @@ public class RacingCar {
         return position.getPosition();
     }
 
-    boolean isEqualPosition(int position) {
-        return this.position.isEqual(position);
+    boolean isEqualPosition(RacingCar racingCar) {
+        return position.equals(racingCar.position);
+    }
+
+    @Override
+    public int compareTo(RacingCar racingCar) {
+        return position.compareTo(racingCar.position);
     }
 }

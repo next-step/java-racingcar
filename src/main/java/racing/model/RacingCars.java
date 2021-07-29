@@ -49,16 +49,15 @@ public class RacingCars {
     }
 
     public List<RacingCar> getWinners() {
-        int maxPosition = getMaxPosition();
+        RacingCar fastestRacingCar = getFastestCar();
         return racingCars.stream()
-                .filter(racingCar -> racingCar.isEqualPosition(maxPosition))
+                .filter(racingCar -> racingCar.isEqualPosition(fastestRacingCar))
                 .collect(toList());
     }
 
-    private int getMaxPosition() {
+    private RacingCar getFastestCar() {
         return racingCars.stream()
-                .max(Comparator.comparing(RacingCar::getPosition))
-                .orElseThrow(NoSuchElementException::new)
-                .getPosition();
+                .max(RacingCar::compareTo)
+                .get();
     }
 }
