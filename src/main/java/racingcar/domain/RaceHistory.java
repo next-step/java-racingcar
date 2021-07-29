@@ -24,9 +24,8 @@ public class RaceHistory {
         return history.get(history.size() - 1);
     }
 
-    public RaceHistory update(Cars cars) {
+    public void update(Cars cars) {
         history.add(cars);
-        return new RaceHistory(history);
     }
 
     @Override
