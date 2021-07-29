@@ -1,4 +1,3 @@
-import racingcar.domain.MovableStrategy;
 import racingcar.domain.RacingGame;
 import racingcar.domain.RandomMovableStrategy;
 import racingcar.view.InputView;
@@ -9,10 +8,9 @@ public class Main {
         int carCount = InputView.receiveCarCount();
         int roundCount = InputView.receiveRoundCount();
 
-        RacingGame racingGame = new RacingGame(carCount, roundCount);
-        MovableStrategy movableStrategy = new RandomMovableStrategy();
+        RacingGame racingGame = new RacingGame(carCount, roundCount, new RandomMovableStrategy());
         while (!racingGame.isEnd()) {
-            racingGame.race(movableStrategy);
+            racingGame.race();
             ResultView.print(racingGame.getCars());
         }
     }
