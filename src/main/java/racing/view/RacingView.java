@@ -13,7 +13,7 @@ public class RacingView {
     private static final String WIN_MESSAGE = "%s가 최종 우승했습니다.";
 
     static void printMoveLine(Car car) {
-        System.out.print(String.format("%s : ", car.getCarInfo()));
+        System.out.print(String.format("%s : ", car.carName()));
         for (int i=0; i<car.totalDistance(); i++) {
             System.out.print(MOVE_TEXT);
         }
@@ -31,7 +31,7 @@ public class RacingView {
     public static void printWinner(List<Car> cars) {
         String message = String.format(WIN_MESSAGE,
                 cars.stream()
-                .map(car -> car.getCarInfo())
+                .map(car -> car.carName())
                 .collect(Collectors.joining(",")));
 
         System.out.println(message);

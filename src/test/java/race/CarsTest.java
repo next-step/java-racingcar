@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing.RacingGame;
 import racing.model.Car;
 import racing.model.Cars;
 import java.util.List;
@@ -22,7 +21,7 @@ public class CarsTest {
     void setting() {
         cars.prepareCars(new String[]{"test1","test2","test3"});
         for (Car car : cars.carList()) {
-            car.go();
+            car.forward();
         }
     }
 
@@ -32,7 +31,7 @@ public class CarsTest {
     void carsNameTest(String name, boolean expected) {
         List<String> carNameList = cars.carList()
                 .stream()
-                .map(car -> car.getCarInfo())
+                .map(car -> car.carName())
                 .collect(Collectors.toList());
         assertEquals(carNameList.contains(name), expected);
     }

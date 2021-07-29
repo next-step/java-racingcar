@@ -2,40 +2,53 @@ package racing.model;
 
 public class Car {
 
-    private int distance = 0;
-    private final static int MAX_WORD_NAME = 5;
+    private static final int MINIMUM_CONDITION = 4;
+    private static final int MAXIMUM_CONDITION = 9;
 
-    private String carName = "";
+    private CarInfo carInfo;
+    private int distance;
 
-    public Car(String name) {
-        checkCarName(name);
-        this.carName = name;
+    public Car(String carName) {
+        this.carInfo = new CarInfo(carName);
     }
 
-    public Car(String name, int distance) {
-        this.carName = name;
+    public Car(String carName, int distance) {
+        this.carInfo = new CarInfo(carName);
         this.distance = distance;
-    }
-
-    public void go() {
-        this.distance = ++this.distance;
     }
 
     public int totalDistance() {
         return this.distance;
     }
 
+    public int forward() {
+        this.distance = ++distance;
+        return this.distance;
+    }
+
+    public boolean run(int move) {
+        if(moveCondition(move)) {
+            this.distance = ++distance;
+            return true;
+        }
+        return false;
+    }
+
+    public Boolean moveCondition(int randomValue) {
+        if(randomValue > MAXIMUM_CONDITION) {
+            throw new IllegalStateException();
+        }
+        if(randomValue >= MINIMUM_CONDITION && randomValue <= MAXIMUM_CONDITION) {
+            return true;
+        }
+        return false;
+    }
+
     public Boolean checkDistance(int distance) {
         return this.distance == distance;
     }
 
-    public void checkCarName(String name) {
-        if (name.length() > MAX_WORD_NAME) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public String getCarInfo() {
-        return this.carName;
+    public String carName() {
+        return this.carInfo.name();
     }
 }
