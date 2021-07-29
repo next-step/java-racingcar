@@ -29,9 +29,9 @@ public class Cars {
 		return Collections.unmodifiableList(cars);
 	}
 
-	public Cars racing(RandomMoving randomMoving) {
+	public Cars racing() {
 		for (Car car : cars) {
-			car.move(randomMoving.movable());
+			car.move(new RandomMoving());
 		}
 		return this;
 	}
