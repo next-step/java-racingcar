@@ -10,12 +10,13 @@ import racingcar.strategy.RandomMoveStrategy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarTest {
+    public static final String TEST_CAR_NAME = "harris";
     private RacingCar racingCar;
     public static final int tryNumber = 5;
 
     @BeforeEach
     void setUp() {
-        racingCar = new RacingCar();
+        racingCar = new RacingCar(TEST_CAR_NAME);
     }
 
     @Test
