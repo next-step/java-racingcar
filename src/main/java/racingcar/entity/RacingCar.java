@@ -7,14 +7,20 @@ public class RacingCar {
     public static final int BASE_POSITION = 0;
     public static final int ONE_STEP = 1;
 
+    private String name;
     private int position;
+
+    public String getName() {
+        return name;
+    }
 
     public int getPosition() {
         return position;
     }
 
-    public RacingCar() {
+    public RacingCar(String carName) {
         this.position = BASE_POSITION;
+        this.name = carName;
     }
 
     public void moveIfMovable(MoveStrategy moveStrategy) {
