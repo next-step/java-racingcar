@@ -16,7 +16,13 @@ public class CarMoveService {
 
     public RacingCarGame move(RacingCarGame racingCarGame) {
 
+<<<<<<< HEAD
         List<Car[]> roundList = new ArrayList<>();
+=======
+        int sum = 0;
+
+        List<Car[]> roundList = new ArrayList<Car[]>();
+>>>>>>> 63bf8cf50f08b57ad98385a2882b56997dd8ea12
         for(int i = 0 ; i < racingCarGame.getTryNumber() ; i++) {
             Car[] cars = new Car[racingCarGame.getCarNum()];
             moveOrder(i, roundList, cars);
