@@ -29,9 +29,9 @@ public class RacingCars {
         racingCars.forEach(RacingCar::doMoveOrStop);
     }
 
-    public String printStatus() {
+    public String getStatus() {
         StringBuilder statusBuilder = new StringBuilder();
-        racingCars.forEach(racingCar -> statusBuilder.append(racingCar.printStatus()).append("\n"));
+        racingCars.forEach(racingCar -> statusBuilder.append(racingCar.getStatus()).append("\n"));
         return statusBuilder.toString();
     }
 }

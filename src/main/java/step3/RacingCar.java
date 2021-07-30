@@ -25,7 +25,7 @@ public class RacingCar {
         return this;
     }
 
-    public String printStatus() {
+    public String getStatus() {
         StringBuilder statusBuilder = new StringBuilder();
         status.forEach(statusBuilder::append);
         return statusBuilder.toString();

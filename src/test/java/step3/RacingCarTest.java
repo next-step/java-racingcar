@@ -14,7 +14,7 @@ public class RacingCarTest {
         //when
         RacingCar car = RacingCar.create().move();
         //then
-        assertThat(car.printStatus()).isEqualTo("--");
+        assertThat(car.getStatus()).isEqualTo("--");
     }
 
     @Test
@@ -25,7 +25,7 @@ public class RacingCarTest {
         //when
         RacingCar car = RacingCar.create().stop();
         //then
-        assertThat(car.printStatus()).isEqualTo("-");
+        assertThat(car.getStatus()).isEqualTo("-");
     }
 
 }

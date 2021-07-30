@@ -27,7 +27,7 @@ public class RacingCarsTest {
     }
 
     /**
-     * 랜덤한 값을 가지기 때문에
+     * 랜덤한 값을 가지기 때문에 늘 테스트 통과를 보장할 수 없다
      * */
     @Disabled
     @Test
@@ -35,10 +35,10 @@ public class RacingCarsTest {
     public void _1회_실행한_후_자동차의_상태값이_기존과_다른지_확인한다(){
         //given
         RacingCars racingCars = RacingCars.create(cars);
-        String beforeRunningRacingCarsStatus = racingCars.printStatus();
+        String beforeRunningRacingCarsStatus = racingCars.getStatus();
         //when
         racingCars.run();
         //then
-        assertThat(racingCars.printStatus()).isNotEqualTo(beforeRunningRacingCarsStatus);
+        assertThat(racingCars.getStatus()).isNotEqualTo(beforeRunningRacingCarsStatus);
     }
 }
