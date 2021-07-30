@@ -15,8 +15,12 @@ public class Cars {
 
     public Cars(int carCount) {
         cars = new ArrayList<>();
+        createCars(carCount);
+    }
+
+    private void createCars(int carCount) {
         for(int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+            cars.add(new Car(new RandomNumberMovingStrategy(new RandomGenerator())));
         }
     }
 
