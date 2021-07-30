@@ -12,8 +12,8 @@ public class Car {
         return position;
     }
 
-    public void move() {
-         if(Math.random() * 10 >= moveCount) {
+    public void move(MovingStrategy movingStrategy) {
+         if(movingStrategy.isMove()) {
              position ++;
          }
     }
