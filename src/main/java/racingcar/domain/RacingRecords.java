@@ -8,13 +8,9 @@ import java.util.stream.Collectors;
 
 public class RacingRecords {
 
-    private List<RacingRecord> racingRecords = new ArrayList<>();
+    private final List<RacingRecord> racingRecords = new ArrayList<>();
 
     public RacingRecords() {
-    }
-
-    public RacingRecords(List<RacingRecord> racingRecords) {
-        this.racingRecords = racingRecords;
     }
 
     public void add(RacingRecord racingRecord) {
