@@ -1,13 +1,33 @@
 package step3;
 
 public class Car {
-    int moveDistance;
+    private int moveDistance;
+    private String moveStatus;
 
-    public int getMoveDistance() {
-        return moveDistance;
+    public Car() {
+        this.moveDistance = 0;
+        this.moveStatus = new String();
+    }
+
+    public String getMoveStatus() {
+        return moveStatus;
     }
 
     public void moveForward() {
-        this.moveDistance+=1;
+        if (checkProgressPossible(CarUtils.getNumberForMovement())) {
+            this.moveDistance += 1;
+            updateMoveStatus();
+        }
+    }
+
+    public void updateMoveStatus() {
+        this.moveStatus += "-";
+    }
+
+    public boolean checkProgressPossible(int number) {
+        if (number >= 4) {
+            return true;
+        }
+        return false;
     }
 }
