@@ -15,6 +15,11 @@ public class RacingCar {
         status.add("-");
     }
 
+    public RacingCar doMoveOrStop() {
+        if (RandomMoveDeterminator.doMoving()) return move();
+        return stop();
+    }
+
     public RacingCar move() {
         status.add("-");
         return this;
