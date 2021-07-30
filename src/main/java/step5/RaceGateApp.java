@@ -8,9 +8,7 @@ import step5.view.InputView;
 import step5.view.ResultView;
 
 public class RaceGateApp {
-    // Setting Value
-    private static final int MOVE_BOUNDARY = 4;
-    private static final int RANDOM_BOUNDARY = 10;
+
 
     public static void main(String[] args) {
         startGame();
@@ -26,10 +24,8 @@ public class RaceGateApp {
     private static void playGame(InputData input) {
         RaceGame game = RaceGame.of(Cars.from(input.getNames()));
 
-        MoveStrategy strategy = new RandomNumberMoveStrategy(MOVE_BOUNDARY,RANDOM_BOUNDARY);
-
         for(int i=0; i<input.getTimes(); i++){
-            game.move(strategy);
+            game.move();
             ResultView.showAroundRace(game.getCars());
         }
 
