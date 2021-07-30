@@ -1,9 +1,13 @@
 package step3;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class CarGame {
     private Car[] cars;
+
+    public CarGame() {
+    }
 
     public CarGame(int carCnt, int tryCnt) {
         cars = new Car[carCnt];
@@ -13,7 +17,7 @@ public class CarGame {
         this.cars = cars;
     }
 
-    public int getAllCar() {
+    public int getCarCnt() {
         return cars.length;
     }
 
@@ -36,15 +40,14 @@ public class CarGame {
         cars[carIdx].setPlay(curPlay - 1);
     }
 
-    public String printDistance(int carIdx) {
+    public void printDistance(int carIdx) {
         int curMove = cars[carIdx].getMove();
 
         StringBuilder sb = new StringBuilder();
         while (curMove-- > 0){
             sb.append("-");
         }
-
-        return sb.toString();
+        System.out.println(sb.toString());
     }
 
 
@@ -56,7 +59,7 @@ public class CarGame {
         return false;
     }
 
-    public static int ask(Message category) {
+    public int ask(Message category) {
         int cnt = 0;
         while (cnt <= 0){
             //시도횟수 입출력
@@ -72,6 +75,7 @@ public class CarGame {
 
             cnt = Integer.parseInt(userInput);
             if(cnt > 0){
+                System.out.println("입력되었습니다.");
                 return cnt;
             }
             //0개 이하 예외처리
@@ -81,13 +85,23 @@ public class CarGame {
         return cnt;
     }
 
-    public static void main(String[] args) {
-        int carCnt = ask(Message.ASK_CAR_CNT);
-        System.out.println("자동차 대수 :" + carCnt);
+    public void playGame(int tryCnt) {
+        for (int i=1; i<=tryCnt; i++) {
+            System.out.println(i + "회차 결과");
+            for (int j = 0; j < getCarCnt(); j++) {
+                int randomNum = generateRandomNumbers();
+                System.out.print((j+1) +"번차 랜덤숫자 = " + randomNum + "  ");
+                canMove(j, randomNum);
+                printDistance(j);
+            }
 
-        int playCnt = ask(Message.ASK_TRY_CNT);
-        System.out.println("시도 횟수 :" + playCnt);
+            System.out.println();
+        }
+
     }
 
-
+    public int generateRandomNumbers() {
+        Random random = new Random();
+        return random.nextInt(9);
+    }
 }

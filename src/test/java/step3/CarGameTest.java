@@ -23,9 +23,9 @@ public class CarGameTest {
     @Test
     @DisplayName("자동차수, 시도횟수 입력받아 자동차 수만큼 세팅한다.")
     public void save_cars() {
-        assertThat(game.getAllCar()).isEqualTo(carCnt);
+        assertThat(game.getCarCnt()).isEqualTo(carCnt);
 
-        for (int i=0; i< game.getAllCar(); i++) {
+        for (int i=0; i< game.getCarCnt(); i++) {
             int move = game.getCar(i).getMove();
             int play = game.getCar(i).getPlay();
             assertThat(move).isEqualTo(0);
