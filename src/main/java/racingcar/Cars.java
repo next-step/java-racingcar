@@ -20,7 +20,7 @@ public class Cars {
 
     private void createCars(int carCount) {
         for(int i = 0; i < carCount; i++) {
-            cars.add(new Car(new RandomNumberMovingStrategy(new RandomGenerator())));
+                cars.add(new Car(new RandomNumberMovingStrategy(RandomGenerator.getInstance())));
         }
     }
 
