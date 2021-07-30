@@ -1,12 +1,15 @@
 package study.racing.domain;
 
-public class Car {
+import study.racing.strategy.CarMovableStrategy;
+import study.racing.strategy.MoveStrategy;
 
-    private static final int LIMIT_NUMBER = 4;
+public class Car {
 
     private Distance distance;
 
     private Name name;
+
+    private MoveStrategy moveStrategy = new CarMovableStrategy();
 
     public Car() {
         distance = new Distance();
@@ -30,12 +33,8 @@ public class Car {
         return distance;
     }
 
-    private static Boolean checkMoveableCar(int targetNumber) {
-        return targetNumber >= LIMIT_NUMBER;
-    }
-
-    public void moveTheCar(int randomNumber) {
-        if(checkMoveableCar(randomNumber)){
+    public void moveTheCar(MoveStrategy moveStrategy) {
+        if(moveStrategy.movable()){
             distance.move();
         }
     }

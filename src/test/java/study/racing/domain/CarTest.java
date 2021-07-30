@@ -3,11 +3,15 @@ package study.racing.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static study.racing.common.Common.toInt;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import study.racing.strategy.CarMovableTestStrategy;
+import study.racing.strategy.MoveStrategy;
 
 class CarTest {
 
@@ -31,10 +35,16 @@ class CarTest {
 
     @DisplayName("파라메터값이 4이상인지 체크 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"1,0","2,0","4,1","9,1"})
+    @CsvSource(value = {"1,0","2,0","4,0","5,1"})
     void 선택된랜덤값이4이상인지체크테스트(int input, int expected) {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(input);
+
+        MoveStrategy moveStrategy = new CarMovableTestStrategy(numbers);
+
         Car car = new Car();
-        car.moveTheCar(input);
+        car.moveTheCar(moveStrategy);
+
         assertThat(car.getDistance().getMoveDistance()).isEqualTo(expected);
     }
 
@@ -51,10 +61,14 @@ class CarTest {
     @CsvSource(value = {"test1,6,0","test1,5,0"})
     void 차이동거리최대값테스트(String input, int move, int target) {
         Car car = Car.createCar(input);
-        car.moveTheCar(move);
 
-        int max = car.maxDistance(car);
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(move);
 
-        assertThat(max).isGreaterThan(target);
+        MoveStrategy moveStrategy = new CarMovableTestStrategy(numbers);
+
+        car.moveTheCar(moveStrategy);
+
+        assertThat(car.maxDistance(car)).isGreaterThan(target);
     }
 }

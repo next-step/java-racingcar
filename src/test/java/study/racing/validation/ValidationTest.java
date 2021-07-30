@@ -52,4 +52,14 @@ class ValidationTest {
           Validation.checkName(input,5);
         });
   }
+
+  @DisplayName("거리입력시 0이상만 가능한지 테스트")
+  @ParameterizedTest
+  @ValueSource(ints = {-1,-2})
+  void checkWholeNumber(int input) {
+    assertThrows(IllegalArgumentException.class,
+        ()->{
+          Validation.checkMinimumNumber(input);
+        });
+  }
 }

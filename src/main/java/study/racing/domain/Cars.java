@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import study.racing.generator.Generator;
-import study.racing.generator.RandomGenerator;
+import study.racing.strategy.CarMovableStrategy;
+import study.racing.strategy.MoveStrategy;
 
 public class Cars {
 
@@ -14,7 +14,7 @@ public class Cars {
 
   private final List<Car> cars = new ArrayList<>();
 
-  private Generator generator = new RandomGenerator();
+  private MoveStrategy moveStrategy = new CarMovableStrategy();
 
   public Cars(int count) {
     IntStream.range(0, count).mapToObj(i -> readyToCar()).forEach(cars::add);
@@ -53,7 +53,7 @@ public class Cars {
   }
 
   public void moveTheCar() {
-    cars.forEach(car -> car.moveTheCar(generator.generateNewNumber()));
+    cars.forEach(car -> car.moveTheCar(moveStrategy));
   }
 
   public List<Car> getWinners() {
