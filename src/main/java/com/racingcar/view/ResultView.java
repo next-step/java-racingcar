@@ -12,6 +12,7 @@ public class ResultView {
     private static void drawOneRound(int[] distances) {
         for (int i = 0; i < distances.length; i++) {
             drawCar(distances[i]);
+            System.out.println();
         }
     }
 
