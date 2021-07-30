@@ -1,6 +1,6 @@
 package carracing.view;
 
-import carracing.domain.Renderer;
+import carracing.domain.Renderable;
 
 import java.io.PrintStream;
 
@@ -36,7 +36,7 @@ public class OutputView {
         printStream.println();
     }
 
-    public void print(Renderer renderer) {
-        printStream.println(renderer.render());
+    public void print(Renderable renderable) {
+        printStream.println(renderable.render());
     }
 }

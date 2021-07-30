@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Positions implements Renderer {
+public class Positions implements Renderable {
 
     private static final String NEW_LINE = System.getProperty("line.separator");
 

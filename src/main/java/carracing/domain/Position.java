@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Position implements Renderer {
+public class Position implements Renderable {
 
     private static final String OUT_OF_RANGE_EXCEPTION_MESSAGE_FORMAT = "유효하지 않은 위치 값입니다. value: %d";
     private static final String POSITION_RENDER_DELIMITER = "";

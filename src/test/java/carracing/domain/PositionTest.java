@@ -32,7 +32,7 @@ class PositionTest {
     @ParameterizedTest(name = "위치(value) 만큼 '-' 를 반복하여 그린다.")
     @ValueSource(ints = {0, 1, 5})
     public void positionRenderTest(int positionValue) {
-        Renderer position = Position.of(positionValue);
+        Renderable position = Position.of(positionValue);
         assertThat(position.render())
                 .isEqualTo(String.join("", Collections.nCopies(positionValue, "-")));
     }
