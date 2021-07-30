@@ -23,22 +23,22 @@ public class Racing {
         }
     }
 
-    public List<List<RacingRecord>> start(int tryCount) {
-        List<List<RacingRecord>> racingRecords = new ArrayList<>();
+    public List<RacingRecords> start(int tryCount) {
+        List<RacingRecords> racingRecords = new ArrayList<>();
         for (int i = 0; i < tryCount; i++) {
-            List<RacingRecord> records = moveTryCars();
+            RacingRecords records = moveTryCars();
             racingRecords.add(records);
         }
         return racingRecords;
     }
 
-    private List<RacingRecord> moveTryCars() {
+    private RacingRecords moveTryCars() {
         List<RacingRecord> records = new ArrayList<>();
         for (Car car : racingCars) {
             moveTryCar(car);
             records.add(new RacingRecord(car, car.getPosition()));
         }
-        return records;
+        return new RacingRecords(records);
     }
 
     private void moveTryCar(Car car) {

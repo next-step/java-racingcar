@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Racing;
-import racingcar.domain.RacingRecord;
+import racingcar.domain.RacingRecords;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -15,7 +15,7 @@ public class RacingApplication {
         int tryCount = InputView.getInputTryCount();
 
         Racing racing = new Racing(carNames);
-        List<List<RacingRecord>> racingRecords = racing.start(tryCount);
+        List<RacingRecords> racingRecords = racing.start(tryCount);
 
         ResultView.showRacingInfo(racingRecords);
     }
