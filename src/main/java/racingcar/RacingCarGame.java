@@ -8,7 +8,7 @@ import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RacingCarGame {
     private static final InputView inputView = new InputView();
@@ -22,6 +22,15 @@ public class RacingCarGame {
         int tryNumber = inputView.requestTryNumber();
         initializeRacingCars(racingCars, carNames);
         race(racingCars, tryNumber, new RandomMoveStrategy());
+        String[] winners = pickWinners(racingCars);
+        ResultView.printWinners(winners);
+    }
+
+    public static String[] pickWinners(List<RacingCar> racingCars) {
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.getPosition() == winnerRecord)
+                .map(RacingCar::getName)
+                .toArray(String[]::new);
     }
 
     public static void initializeRacingCars(List<RacingCar> racingCars, String[] carNames) {
