@@ -1,11 +1,10 @@
-package racingcar;
+package racingcar.utils;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.RacingRecord;
 import racingcar.domain.RacingRecords;
-import racingcar.utils.RacingRecordManager;
 
 import java.util.Arrays;
 import java.util.Collections;
