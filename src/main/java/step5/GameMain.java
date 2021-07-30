@@ -1,6 +1,6 @@
-package step4;
+package step5;
 
-import step4.observers.RacingStatusByCarWithWinnerView;
+import step5.observers.RacingStatusByCarWithWinnerView;
 
 public class GameMain {
     public static void main(String[] args) {
@@ -9,6 +9,6 @@ public class GameMain {
         RacingGame racingGame = new RacingGame(racingGameConfiguration);
         racingGame.attach(new RacingStatusByCarWithWinnerView());
 
-        racingGame.startGame();
+        racingGame.startGame(new RandomMoveStrategy());
     }
 }

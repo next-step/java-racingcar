@@ -1,6 +1,5 @@
-package step4;
+package step5;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,22 +15,18 @@ public class RacingEntry {
         return this.cars.subList(0, this.cars.size());
     }
 
-    public List<Car> findWinners() {
-        final int maxLocation = findMaxLocation();
+    public List<Car> findWinnerCars() {
+        CarLocation maxLocation = findMaxLocation();
 
         return this.cars.stream()
-                .filter(car -> isSameLocation(maxLocation, car.getLocation()))
+                .filter(car -> car.isWinner(maxLocation))
                 .collect(Collectors.toList());
     }
 
-    private boolean isSameLocation(int maxLocation, int location) {
-        return maxLocation == location;
-    }
-
-    private int findMaxLocation() {
+    private CarLocation findMaxLocation() {
         return this.cars.stream()
-                .max(Comparator.comparing(Car::getLocation))
+                .max(Car::compareTo)
                 .orElse(new Car(""))
-                .getLocation();
+                .getCarLocation();
     }
 }

@@ -1,8 +1,9 @@
-package step4.observers;
+package step5.observers;
 
-import step4.Car;
-import step4.RacingGame;
-import step4.interfaces.OutputInterface;
+import step5.Car;
+import step5.CarName;
+import step5.RacingGame;
+import step5.interfaces.OutputInterface;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -15,7 +16,7 @@ public class RacingStatusByCarWithWinnerView implements OutputInterface {
         final int LAST_TURN = getLastTurn(racingGame);
 
         String outputString = racingGame.getRacingEntry().getCars().stream()
-                .map(car -> String.format("%s : %s\n", car.getName(), repeatDashBy(car.getLocation())))
+                .map(car -> String.format("%s : %s\n", car.getCarName(), repeatDashBy(car.getCarLocation().getValue())))
                 .collect(Collectors.joining());
 
         if (racingGame.getCurrentTurn() == FIRST_TURN) {
@@ -30,8 +31,9 @@ public class RacingStatusByCarWithWinnerView implements OutputInterface {
     }
 
     private String getWinnerNames(RacingGame racingGame) {
-        return racingGame.getRacingEntry().findWinners().stream()
-                .map(Car::getName)
+        return racingGame.getRacingEntry().findWinnerCars().stream()
+                .map(Car::getCarName)
+                .map(CarName::getValue)
                 .collect(Collectors.joining(", "));
     }
 

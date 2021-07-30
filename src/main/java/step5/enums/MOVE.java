@@ -1,4 +1,6 @@
-package step4.enums;
+package step5.enums;
+
+import step5.RandomNumberGenerator;
 
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -13,8 +15,9 @@ public enum MOVE {
         this.condition = condition;
     }
 
-    public static MOVE fromInt(int num) {
-        return Stream.of(values()).filter(t -> t.condition.test(num))
+    public static MOVE fromInt(int number) {
+        return Stream.of(values())
+                .filter(t -> t.condition.test(number))
                 .findFirst().orElse(MOVE.GO);
     }
 }
