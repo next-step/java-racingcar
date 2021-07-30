@@ -8,9 +8,13 @@ import java.util.List;
 public class ResultView {
 
 
-    public void startRacing(List<Car> car) {
+    public void printCarPosition(List<Car> car) {
         StringBuilder stringBuilder = new StringBuilder();
-        car.forEach(s -> stringBuilder.append(new String(new char[s.getPositon()]).replace("\0", "-") + "\n"));
+        car.forEach(s -> stringBuilder.append(printPosition(s.getPosition())));
         System.out.println(stringBuilder);
+    }
+
+    private String printPosition(int position) {
+        return new String(new char[position]).replace("\0", "-") + "\n";
     }
 }

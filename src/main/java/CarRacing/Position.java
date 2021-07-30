@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class Position {
 
+    private static final int FORWARD_NUM = 4;
     private int position = 0;
-    private Random random = new Random();
 
 
-    public void move() {
-        if (random.nextInt(10) > 3) {
-            this.position++;
+    public void increasePosition(int randomNum) {
+        if (randomNum >= FORWARD_NUM) {
+            position++;
         }
     }
 
