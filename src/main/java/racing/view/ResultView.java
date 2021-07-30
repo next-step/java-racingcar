@@ -44,8 +44,9 @@ public class ResultView {
             racingWinnersOutputMessage.append(COMMA);
             racingWinnersOutputMessage.append(ONE_BLANK_SPACE);
         }
-        racingWinnersOutputMessage.deleteCharAt(racingWinnersOutputMessage.length() - 1);
-        racingWinnersOutputMessage.deleteCharAt(racingWinnersOutputMessage.length() - 1);
+        racingWinnersOutputMessage.deleteCharAt(racingWinnersOutputMessage.lastIndexOf(COMMA));
+        racingWinnersOutputMessage.deleteCharAt(racingWinnersOutputMessage.lastIndexOf(ONE_BLANK_SPACE));
+
         racingWinnersOutputMessage.append(RACING_WINNERS_OUTPUT_MESSAGE);
         System.out.println(racingWinnersOutputMessage);
     }
