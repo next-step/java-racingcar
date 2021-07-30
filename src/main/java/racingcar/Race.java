@@ -22,7 +22,13 @@ public class Race {
 
     private void moveCars() {
         for (Car car : cars) {
-            strategy.move(car);
+            moveByStrategy(car);
+        }
+    }
+
+    private void moveByStrategy(Car car) {
+        if (strategy.decideToMove()) {
+            car.move();
         }
     }
 }

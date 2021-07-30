@@ -8,9 +8,7 @@ public class RandomRaceStrategy implements RaceStrategy {
     private static final Random random = new Random();
 
     @Override
-    public void move(Car car) {
-        if (random.nextInt(BOUND) >= THRESHOLD) {
-            car.move();
-        }
+    public boolean decideToMove() {
+        return random.nextInt(BOUND) >= THRESHOLD;
     }
 }
