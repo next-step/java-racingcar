@@ -21,14 +21,14 @@ public class Winner {
 
     }
 
-    public void findWinners() {
+    private void findWinners() {
         maxDistance = cars.get(0).getDistance();
         for (Car car : cars) {
             addWinner(car);
         }
     }
 
-    public void addWinner(Car car) {
+    private void addWinner(Car car) {
         if (car.getDistance() == maxDistance) {
             winners.add(car.getName());
         }

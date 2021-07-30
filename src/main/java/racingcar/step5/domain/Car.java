@@ -21,16 +21,11 @@ public class Car implements Comparable<Car> {
 
         return carList;
     }
+
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.movable())
             distance++;
     }
-
-//    public void move(int number) {
-//        if (number >= MOVABLE_CONDITION) {
-//            distance++;
-//        }
-//    }
 
     public int getDistance() {
         return distance;
