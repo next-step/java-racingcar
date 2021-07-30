@@ -1,10 +1,17 @@
 package racingcar;
 
+import racingcar.util.RandomGenerator;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
     private final List<Car> cars;
+
+    public Cars(List<Car> cars) {
+        this.cars = new ArrayList<>(cars);
+    }
 
     public Cars(int carCount) {
         cars = new ArrayList<>();
@@ -14,7 +21,7 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public int getCarsSize() {
