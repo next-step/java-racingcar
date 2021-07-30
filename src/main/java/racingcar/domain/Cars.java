@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +11,8 @@ public class Cars {
         names.forEach(name -> cars.add(new Car(name)));
     }
 
-    public void attempt() {
-        RandomGenerator randomGenerator = new RandomGenerator();
-        cars.forEach(car -> car.go(randomGenerator.getRandomInt()));
+    public void attempt(MoveState moveState) {
+        cars.forEach(car -> car.go(moveState));
     }
 
     public List<Car> getCars() {
@@ -22,12 +21,12 @@ public class Cars {
 
     public List<Car> getWinners() {
         int maxScore = cars.stream()
-                .mapToInt(Car::getScore)
+                .mapToInt(car -> car.getScore().getValue())
                 .max()
                 .orElse(0);
 
         return cars.stream()
-                .filter(car -> car.getScore() == maxScore)
+                .filter(car -> car.isSameNumber(maxScore))
                 .collect(Collectors.toList());
     }
 

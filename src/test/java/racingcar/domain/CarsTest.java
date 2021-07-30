@@ -1,9 +1,8 @@
-package racingcar.model;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.Cars;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,10 +14,12 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 class CarsTest {
     private static final List<String> CAR_NAMES = Arrays.asList("pobi", "crong", "honux");
     private static Cars cars;
+    private static MoveState moveState;
 
     @BeforeAll
     static void setUp() {
         cars = new Cars(CAR_NAMES);
+        moveState = () -> true;
     }
 
     @DisplayName("주어진 개수만큼 자동차 객체가 생성되어야한다.")
@@ -30,9 +31,9 @@ class CarsTest {
     @DisplayName("시도 후 점수가 달라져야한다.")
     @Test
     void getScores() {
-        int before = cars.getCars().get(0).getScore();
-        repeatAttempt();
-        int after = cars.getCars().get(0).getScore();
+        int before = cars.getCars().get(0).getScore().getValue();
+        cars.attempt(moveState);
+        int after = cars.getCars().get(0).getScore().getValue();
         assertThat(after).isNotEqualTo(before);
     }
 
@@ -45,14 +46,8 @@ class CarsTest {
     @DisplayName("우승자가 한명 이상 있어야한다.")
     @Test
     void getWinner() {
-        repeatAttempt();
+        cars.attempt(moveState);
         assertThat(cars.getWinners()).isNotEmpty();
-    }
-
-    private void repeatAttempt() {
-        for (int i = 0; i < 5; i++) {
-            cars.attempt();
-        }
     }
 
 }

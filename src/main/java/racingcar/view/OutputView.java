@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.model.Car;
+import racingcar.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,7 +18,7 @@ public class OutputView {
     public void printStatusFromScores(List<Car> cars) {
         cars.forEach(car -> {
             System.out.print(car.getName() + NAME_SEPARATE_KEYWORD);
-            for (int i = 0; i < car.getScore(); i++) {
+            for (int i = 0; i < car.getScore().getValue(); i++) {
                 System.out.print(GO_KEYWORD);
             }
             System.out.println();
