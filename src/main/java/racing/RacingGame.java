@@ -6,15 +6,20 @@ public class RacingGame {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
 
-        int carCount = inputView.readCarCount();
+        String names = inputView.readCarCount();
         int moveCount = inputView.readMoveCount();
 
-        Racing racing = new Racing(carCount, moveCount);
-
-        outputView.startPrintResult();
-        while (!racing.isEnd()) {
-            CarsDTO carsDTO = racing.play();
-            outputView.printResult(carsDTO);
+        try {
+            Racing racing = new Racing(names, moveCount, new RandomNumberGenerator());
+            outputView.startPrintResult();
+            while (!racing.isEnd()) {
+                racing.play();
+                outputView.printResult(racing.getRoundResult());
+            }
+            outputView.printWinners(racing.getRoundResult());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return;
         }
     }
 }
