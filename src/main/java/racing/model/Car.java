@@ -23,7 +23,7 @@ public class Car {
 
     public boolean run(int move) {
         if(moveCondition(move)) {
-            this.distance = ++distance;
+            this.distance++;
             return true;
         }
         return false;
