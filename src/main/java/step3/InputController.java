@@ -2,7 +2,7 @@ package step3;
 
 import java.util.Scanner;
 
-public class InputView {
+public class InputController {
 
     public static int inputCars() {
         System.out.println("자동차 대수는 몇 대 인가요?");
