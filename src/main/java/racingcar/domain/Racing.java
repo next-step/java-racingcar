@@ -24,21 +24,20 @@ public class Racing {
     }
 
     public List<RacingRecords> start(int tryCount) {
-        List<RacingRecords> racingRecords = new ArrayList<>();
+        List<RacingRecords> racingRecordsList = new ArrayList<>();
         for (int i = 0; i < tryCount; i++) {
-            RacingRecords records = moveTryCars();
-            racingRecords.add(records);
+            racingRecordsList.add(moveTryCars());
         }
-        return racingRecords;
+        return racingRecordsList;
     }
 
     private RacingRecords moveTryCars() {
-        List<RacingRecord> records = new ArrayList<>();
+        RacingRecords racingRecords = new RacingRecords();
         for (Car car : racingCars) {
             moveTryCar(car);
-            records.add(new RacingRecord(car, car.getPosition()));
+            racingRecords.add(new RacingRecord(car, car.getPosition()));
         }
-        return new RacingRecords(records);
+        return racingRecords;
     }
 
     private void moveTryCar(Car car) {
