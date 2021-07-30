@@ -1,14 +1,11 @@
 package carracing.domain;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Position implements Renderable {
+public class Position {
 
     private static final String OUT_OF_RANGE_EXCEPTION_MESSAGE_FORMAT = "유효하지 않은 위치 값입니다. value: %d";
-    private static final String POSITION_RENDER_DELIMITER = "";
-    private static final String POSITION_EXPRESSION = "-";
     private static final int ADDITION_VALUE = 1;
     private static final int LOWER_LIMIT = 0;
 
@@ -40,6 +37,10 @@ public class Position implements Renderable {
         return this.value == value;
     }
 
+    public int getValue() {
+        return value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,10 +52,5 @@ public class Position implements Renderable {
     @Override
     public int hashCode() {
         return value;
-    }
-
-    @Override
-    public String render() {
-        return String.join(POSITION_RENDER_DELIMITER, Collections.nCopies(value, POSITION_EXPRESSION));
     }
 }

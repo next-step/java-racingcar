@@ -3,11 +3,9 @@ package carracing.domain;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
+import java.util.function.Consumer;
 
-public class Positions implements Renderable {
-
-    private static final String NEW_LINE = System.getProperty("line.separator");
+public class Positions {
 
     private final List<Position> positions;
 
@@ -19,10 +17,7 @@ public class Positions implements Renderable {
         return new Positions(positions);
     }
 
-    @Override
-    public String render() {
-        return positions.stream()
-                .map(position -> position.render())
-                .collect(Collectors.joining(NEW_LINE));
+    public void forEach(Consumer<Position> action) {
+        positions.forEach(action);
     }
 }

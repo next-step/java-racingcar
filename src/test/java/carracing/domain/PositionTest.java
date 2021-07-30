@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Collections;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
@@ -27,14 +25,6 @@ class PositionTest {
         assertThat(Position.of(validPositionValue))
                 .isExactlyInstanceOf(Position.class)
                 .matches(position -> position.isAt(validPositionValue));
-    }
-
-    @ParameterizedTest(name = "위치(value) 만큼 '-' 를 반복하여 그린다.")
-    @ValueSource(ints = {0, 1, 5})
-    public void positionRenderTest(int positionValue) {
-        Renderable position = Position.of(positionValue);
-        assertThat(position.render())
-                .isEqualTo(String.join("", Collections.nCopies(positionValue, "-")));
     }
 
     @DisplayName("값 객체 캐시 테스트")
