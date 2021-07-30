@@ -9,15 +9,23 @@ public class Car {
         this.moveStatus = new String();
     }
 
+    public int getMoveDistance() {
+        return moveDistance;
+    }
+
     public String getMoveStatus() {
         return moveStatus;
     }
 
     public void moveForward() {
         if (checkProgressPossible(CarUtils.getNumberForMovement())) {
-            this.moveDistance += 1;
+            addMoveDistance();
             updateMoveStatus();
         }
+    }
+
+    public void addMoveDistance() {
+        this.moveDistance += 1;
     }
 
     public void updateMoveStatus() {
