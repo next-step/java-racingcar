@@ -12,8 +12,9 @@ public class Car {
         this.position.move();
     }
 
-    public int getCarPosition() {
-        return this.position.getPosition();
+    public int getPositon() {
+        return position.getPosition();
     }
+
 
 }

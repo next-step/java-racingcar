@@ -2,8 +2,8 @@ package study;
 
 import CarRacing.Car;
 import CarRacing.Cars;
-import CarRacing.CarRacing;
 import CarRacing.Position;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,35 +15,31 @@ public class CarRacingTest {
 
 
     @Test
-    @DisplayName("포지션 랜덤값테스트")
+    @DisplayName("포지션 출력테스트")
     void positionRandom() {
         Position position = new Position();
         position.move();
-        assertTrue(position.getPosition() == 0 || position.getPosition() == 1);
+        assertTrue(position.getPosition() == 1 || position.getPosition() == 0);
+
     }
 
     @Test
-    @DisplayName("자동차 전진테스트")
-    void carMove() {
-        Car car = new Car();
-        car.move();
-        assertTrue(car.getCarPosition() == 0 || car.getCarPosition() == 1);
+    @DisplayName("자동차 대수 exceptionTest")
+    void carCountException() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Cars(0));
+        String message = exception.getMessage();
+        assertEquals("자동차 개수는 0이하의 수를 허용하지 않습니다.", message);
+
     }
 
     @Test
-    @DisplayName("자동차 대수 입력받고 자동차 대수 확인.")
+    @DisplayName("자동차 대수 입력받고 자동차 move 테스트.")
     void insertCarAndGetCarCount() {
         Cars cars = new Cars(5);
-        assertThat(cars.getCars().size()).isEqualTo(5);
+        cars.moveAll();
+        cars.getCars().forEach(s -> assertTrue(s.getPositon() == 1 || s.getPositon() == 0));
     }
 
-    @Test
-    @DisplayName("자동차레이싱 시작후 문자출력 테스트")
-    void carRacing() {
-        CarRacing carRacing = new CarRacing(new Cars(5));
-        StringBuilder sb = carRacing.moveCarsToString(5);
-        assertThat(sb).contains("-");
-    }
 
 }
 

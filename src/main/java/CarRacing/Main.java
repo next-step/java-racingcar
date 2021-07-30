@@ -5,15 +5,20 @@ import view.ResultView;
 
 public class Main {
 
+    static final InputView inputView = new InputView();
+
+    static final ResultView resultView = new ResultView();
+    static Cars cars = null;
 
     public static void main(String[] args) {
 
-        InputView inputView = new InputView();
+        cars = new Cars(inputView.insertCarCount());
 
-        ResultView resultView = new ResultView();
+        int tryCount = inputView.insertTryCount();
 
-        resultView.setStringBuilder(inputView.startInsertReturnStringBuilder());
-        resultView.getResultRacing();
-
+        for (int i = 0; i < tryCount; i++) {
+            cars.moveAll();
+            resultView.startRacing(cars.getCars());
+        }
     }
 }
