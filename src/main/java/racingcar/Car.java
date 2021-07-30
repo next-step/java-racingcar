@@ -1,8 +1,7 @@
 package racingcar;
 
 public class Car {
-    private final int moveCount = 4;
-    private int position = 1;
+정    private int position = 1;
 
     public int getPosition() {
         return position;
