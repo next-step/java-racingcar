@@ -17,6 +17,10 @@ public class Cars {
         }
     }
 
+    public void moveCars(MovableStrategy movableStrategy) {
+        cars.stream().forEach(car -> car.move(movableStrategy));
+    }
+
     public List<Car> getCars() {
         return cars;
     }
