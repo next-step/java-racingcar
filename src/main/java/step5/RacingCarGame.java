@@ -4,7 +4,7 @@ import step5.domain.Car;
 import step5.domain.CarEngine;
 import step5.domain.CarStadium;
 import step5.domain.Referee;
-import step5.strategy.RandomDrivingStrategy;
+import step5.domain.RandomDrivingStrategy;
 import step5.view.InputView;
 import step5.view.ResultView;
 import java.util.ArrayList;

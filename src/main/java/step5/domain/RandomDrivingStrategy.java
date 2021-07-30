@@ -1,4 +1,4 @@
-package step5.strategy;
+package step5.domain;
 
 import step5.util.NumberGenerator;
 

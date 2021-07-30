@@ -1,6 +1,6 @@
 package step5;
 
-import step5.strategy.MovingStrategy;
+import step5.domain.MovingStrategy;
 
 public class SpeedMovingStrategyTest implements MovingStrategy {
 

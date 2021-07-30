@@ -1,7 +1,5 @@
 package step5.domain;
 
-import step5.strategy.MovingStrategy;
-
 public class Car {
 
     private static final int LIMIT_NAME_LENGTH = 5;
