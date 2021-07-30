@@ -16,15 +16,15 @@ public class RacingCarGame {
 
     public static void main(String[] args) {
         List<RacingCar> racingCars = new ArrayList<>();
-        int carNumber = inputView.requestCarNumber();
+        String[] carNames = inputView.requestCarNames();
         int tryNumber = inputView.requestTryNumber();
-        initializeRacingCars(racingCars, carNumber);
+        initializeRacingCars(racingCars, carNames);
         race(racingCars, tryNumber, new RandomMoveStrategy());
     }
 
-    public static void initializeRacingCars(List<RacingCar> racingCars, int carNumber) {
-        for (int i = 0; i < carNumber; i++) {
-            racingCars.add(new RacingCar());
+    public static void initializeRacingCars(List<RacingCar> racingCars, String[] carNames) {
+        for (int i = 0; i < carNames.length; i++) {
+            racingCars.add(new RacingCar(carNames[i]));
         }
     }
 
