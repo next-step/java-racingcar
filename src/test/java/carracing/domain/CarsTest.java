@@ -17,7 +17,7 @@ class CarsTest {
     public void carsMoveTest(int mockRandomNumber) {
         int[] carPositions = new int[] {1, 3, 5};
         Cars cars = createCars(carPositions);
-        cars.move(() -> RandomNumber.of(mockRandomNumber));
+        cars.move(() -> Number.of(mockRandomNumber));
         assertThat(cars.getPositions())
                 .isEqualTo(expectedPositions(carPositions, mockRandomNumber > 3));
     }

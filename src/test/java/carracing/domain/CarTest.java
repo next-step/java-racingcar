@@ -12,7 +12,7 @@ class CarTest {
     public void goTest(int randomNumber) {
         int positionBeforeMove = 0;
         Car car = Car.of(positionBeforeMove);
-        car.move(RandomNumber.of(randomNumber));
+        car.move(Number.of(randomNumber));
         assertThat(car.getPosition())
                 .matches(position -> position.equals(Position.of(positionBeforeMove + 1)));
     }
@@ -22,7 +22,7 @@ class CarTest {
     public void stopTest(int randomNumber) {
         int positionBeforeMove = 0;
         Car car = Car.of(positionBeforeMove);
-        car.move(RandomNumber.of(randomNumber));
+        car.move(Number.of(randomNumber));
         assertThat(car.getPosition())
                 .isEqualTo(Position.of(positionBeforeMove));
     }

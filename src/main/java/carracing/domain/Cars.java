@@ -18,13 +18,13 @@ public class Cars {
         return new Cars(carList);
     }
 
-    public void move(Supplier<RandomNumber> randomNumberSupplier) {
-        cars.forEach(car -> car.move(randomNumberSupplier.get()));
+    public void move(Supplier<Number> numberSupplier) {
+        cars.forEach(car -> car.move(numberSupplier.get()));
     }
 
     public List<Position> getPositions() {
         return cars.stream()
-                .map(car -> car.getPosition())
+                .map(Car::getPosition)
                 .collect(Collectors.toList());
     }
 }

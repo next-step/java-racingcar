@@ -15,7 +15,7 @@ class RandomNumberGeneratorTest {
         int fixedIntValue = 5;
         RandomNumberGenerator generator = RandomNumberGenerator.of(new MockRandom(fixedIntValue));
         assertThat(generator.generateRandomNumber())
-                .isEqualTo(RandomNumber.of(fixedIntValue));
+                .isEqualTo(Number.of(fixedIntValue));
     }
 
     private static class MockRandom extends Random {

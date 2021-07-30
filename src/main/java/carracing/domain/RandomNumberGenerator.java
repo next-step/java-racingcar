@@ -16,7 +16,7 @@ public class RandomNumberGenerator {
         return new RandomNumberGenerator(random);
     }
 
-    public RandomNumber generateRandomNumber() {
-        return RandomNumber.of(random.nextInt(RANDOM_NUMBER_BOUND));
+    public Number generateRandomNumber() {
+        return Number.of(random.nextInt(RANDOM_NUMBER_BOUND));
     }
 }

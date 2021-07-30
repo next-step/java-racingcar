@@ -20,8 +20,8 @@ public class Car {
         return position;
     }
 
-    public void move(RandomNumber randomNumber) {
-        if (Objects.requireNonNull(randomNumber).isOver(MOVE_THRESHOLD)) {
+    public void move(Number number) {
+        if (Objects.requireNonNull(number).isOver(MOVE_THRESHOLD)) {
             position = position.next();
         }
     }
