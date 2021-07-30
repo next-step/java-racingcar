@@ -6,13 +6,13 @@ public class ResultView {
 
         for (int i = 0; i < result.length; i++) {
             drawOneRound(result[i]);
+            System.out.println();
         }
     }
 
     private static void drawOneRound(int[] distances) {
         for (int i = 0; i < distances.length; i++) {
             drawCar(distances[i]);
-            System.out.println();
         }
     }
 
