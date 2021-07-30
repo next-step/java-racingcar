@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+import racingCar.domain.NumberGenerator;
 import racingCar.domain.RacingCar;
 import racingCar.domain.RandomNumberGenerator;
 import racingCar.ui.InputService;
@@ -11,10 +14,11 @@ public class RacingCarApplication {
         numberOfCar = InputService.getNumberOfCar();
         tryCount = InputService.getTryCount();
 
-        RacingCar[] cars = new RacingCar[numberOfCar];
+        List<RacingCar> cars = new ArrayList<>();
 
         for (int i = 0; i < numberOfCar; i++) {
-            cars[i] = new RacingCar();
+            cars.add(new RacingCar());
+
         }
 
         System.out.println("실행결과");
@@ -25,10 +29,11 @@ public class RacingCarApplication {
         }
     }
 
-    public static void runGame(RacingCar[] cars) {
-        for (int j = 0; j < cars.length; j++) {
-            cars[j].goForward(RandomNumberGenerator.getRandomNumber());
-            PrintService.printDistance(cars[j].showDrivenDistance());
+    public static void runGame(List<RacingCar> cars) {
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        for (int j = 0; j < cars.size(); j++) {
+            cars.get(j).goForward(numberGenerator.getNumber());
+            PrintService.printDistance(cars.get(j).showDrivenDistance());
         }
     }
 }
