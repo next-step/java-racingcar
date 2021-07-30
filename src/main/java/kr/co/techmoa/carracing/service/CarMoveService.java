@@ -5,6 +5,8 @@ import kr.co.techmoa.carracing.model.Move;
 import kr.co.techmoa.carracing.model.RacingCarGame;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class CarMoveService {
 
@@ -14,34 +16,22 @@ public class CarMoveService {
 
     public RacingCarGame move(RacingCarGame racingCarGame) {
 
-        int sum = 0;
-
-        ArrayList roundList = new ArrayList<Car[]>();
+        List<Car[]> roundList = new ArrayList<>();
         for(int i = 0 ; i < racingCarGame.getTryNumber() ; i++) {
             Car[] cars = new Car[racingCarGame.getCarNum()];
-            for(int j = 0 ; j < cars.length ; j++) {
-                cars[j] = new Car();
-                int isAdvence = operator();
-                cars[j].setMove(isAdvence);
-
-                if(i != FIRST_ROUND) {
-                    cars[j].setTotalMove(isAdvence + ((Car[])roundList.get(i-1))[j].getTotalMove());
-                }else {
-                    cars[j].setTotalMove(isAdvence);
-                }
-            }
+            moveOrder(i, roundList, cars);
             roundList.add(cars);
         }
 
         racingCarGame.setRounds(roundList);
-
         return racingCarGame;
 
     }
 
     private int operator() {
 
-        int operatorSu = (int)(Math.random() * OPERATION_MAX);
+        int operatorSu = new Random().nextInt(OPERATION_MAX);;
+
         return isAdvence(operatorSu);
 
     }
@@ -53,6 +43,23 @@ public class CarMoveService {
         return Move.ADVANCE.getCarMove();
     }
 
+    private Car[] moveOrder(int roundNum , List roundList, Car[] cars) {
+        for(int j = 0 ; j < cars.length ; j++) {
+            cars[j] = new Car();
+            int isAdvence = operator();
+            int sumTotalMove = calTotalMove(roundNum, isAdvence, roundList , j);
+            cars[j].setMove(isAdvence);
+            cars[j].setTotalMove(sumTotalMove);
+        }
+        return cars;
+    }
+
+    private int calTotalMove(int roundNum , int isAdvence , List roundList , int carNum) {
+        if(roundNum != FIRST_ROUND) {
+            return isAdvence + ((Car[])roundList.get(roundNum-1))[carNum].getTotalMove();
+        }
+        return isAdvence;
+    }
 
 
 }
