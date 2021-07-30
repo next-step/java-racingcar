@@ -7,12 +7,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("자동차 위치 테스트")
-public class PositionTest {
-    private Position position;
+public class RacingCarPositionTest {
+    private RacingCarPosition position;
 
     @BeforeEach
     void setUp() {
-        position = new Position();
+        position = new RacingCarPosition();
     }
 
     @DisplayName("초기 자동차 위치값은 0 이어야 한다.")

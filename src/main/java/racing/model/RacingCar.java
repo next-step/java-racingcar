@@ -1,21 +1,34 @@
 package racing.model;
 
-public class RacingCar {
-    private static final int MOVABLE_MIN_NUMBER = 4;
+public class RacingCar implements Comparable<RacingCar> {
+    private final RacingCarName name;
+    private final RacingCarPosition position;
 
-    private Position position;
-
-    RacingCar() {
-        position = new Position();
+    RacingCar(String name) {
+        this.name = RacingCarName.valueOf(name);
+        this.position = new RacingCarPosition();
     }
 
-    void moveForwardOneStepOrStop(Number number) {
-        if (number.isGreaterThanOrEqualTo(MOVABLE_MIN_NUMBER)) {
+    void moveForwardOneStepOrStop(MovingCondition movingCondition) {
+        if (movingCondition.isMovable()) {
             position.increaseOne();
         }
     }
 
-    int getPosition() {
+    public String getName() {
+        return name.getName();
+    }
+
+    public int getPosition() {
         return position.getPosition();
+    }
+
+    boolean isEqualPosition(RacingCar racingCar) {
+        return position.equals(racingCar.position);
+    }
+
+    @Override
+    public int compareTo(RacingCar racingCar) {
+        return position.compareTo(racingCar.position);
     }
 }
