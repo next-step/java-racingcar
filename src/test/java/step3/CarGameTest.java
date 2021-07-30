@@ -1,29 +1,23 @@
 package step3;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-
-import java.io.*;
-import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("자동차 경주 게임 테스트")
 public class CarGameTest {
     int carCnt;
-    int tryCnt;
+    int playCnt;
     CarGame game;
 
     @BeforeEach
     public void beforeEach() {
         carCnt = 3;
-        tryCnt = 5;
+        playCnt = 5;
 
-        game = new CarGame(carCnt, tryCnt);
+        game = new CarGame(carCnt, playCnt);
     }
 
     @Test
@@ -35,7 +29,7 @@ public class CarGameTest {
             int move = game.getCar(i).getMove();
             int play = game.getCar(i).getPlay();
             assertThat(move).isEqualTo(0);
-            assertThat(play).isEqualTo(tryCnt);
+            assertThat(play).isEqualTo(playCnt);
         }
     }
 
@@ -52,7 +46,7 @@ public class CarGameTest {
         int move = game.getCar(carIdx).getMove();
         int play = game.getCar(carIdx).getPlay();
         assertThat(move).isEqualTo(1);
-        assertThat(play).isEqualTo(tryCnt-1);
+        assertThat(play).isEqualTo(playCnt-1);
 
     }
 
@@ -70,7 +64,7 @@ public class CarGameTest {
         int move = game.getCar(carIdx).getMove();
         int play = game.getCar(carIdx).getPlay();
         assertThat(move).isEqualTo(0);
-        assertThat(play).isEqualTo(tryCnt);
+        assertThat(play).isEqualTo(playCnt);
     }
 
     @Test
