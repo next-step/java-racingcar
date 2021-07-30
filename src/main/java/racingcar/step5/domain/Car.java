@@ -7,7 +7,6 @@ public class Car implements Comparable<Car> {
 
     private final String name;
     private int distance;
-    private static final int MOVABLE_CONDITION = 4;
 
     private Car(String name, int distance) {
         this.name = name;
@@ -22,13 +21,16 @@ public class Car implements Comparable<Car> {
 
         return carList;
     }
-
-    public void move(int number) {
-        if (number >= MOVABLE_CONDITION) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.movable())
             distance++;
-        }
-
     }
+
+//    public void move(int number) {
+//        if (number >= MOVABLE_CONDITION) {
+//            distance++;
+//        }
+//    }
 
     public int getDistance() {
         return distance;
