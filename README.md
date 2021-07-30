@@ -5,5 +5,9 @@
 * 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
 * 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
 
-## 온라인 코드 리뷰 과정
-* [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+## 기능 정의서
+* 자동차 대수와 시도할 회수를 입력받는다.
+* UI를 구현한다.
+* Car 클래스를 정의한다.
+* move 값 선정하는 random 산출 business를 구현한다.
+* 화면 출력을 한다. 
