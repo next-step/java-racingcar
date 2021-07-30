@@ -6,15 +6,15 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class CarTest {
-    private final Car sut = new Car();
+    private final Car car = new Car();
 
     @Test
     @DisplayName("move 하면 distance 가 1 증가")
     public void move() {
-        Distance beforeDistance = sut.getDistance();
+        Distance beforeDistance = car.getDistance();
 
-        sut.move();
+        car.move();
 
-        assertThat(sut.getDistance()).isEqualTo(beforeDistance.increase());
+        assertThat(car.getDistance()).isEqualTo(beforeDistance.increase());
     }
 }

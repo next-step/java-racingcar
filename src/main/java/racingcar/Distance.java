@@ -20,4 +20,18 @@ public class Distance {
     public int getDistance() {
         return distance;
     }
+
+    @Override
+    public int hashCode() {
+        return ((Integer) distance).hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Distance)) {
+            return false;
+        }
+
+        return ((Integer) distance).equals(((Distance) obj).distance);
+    }
 }
