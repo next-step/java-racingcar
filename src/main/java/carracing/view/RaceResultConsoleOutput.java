@@ -11,26 +11,24 @@ import java.util.stream.IntStream;
 public class RaceResultConsoleOutput {
 
     private static final String CAR_SYMBOL = "-";
+    private static final String WINNER_RESULT_PREFIX = "실행 결과\n";
     private static final String WINNER_RESULT_SUFFIX = "가 최종 우승했습니다.";
 
-    public void printRaceRecords(RaceResult raceResult) {
-        System.out.println("실행 결과");
-        printAllRounds(raceResult.getRoundRecords());
-        printAllWinners(raceResult.getWinners());
+    private final RaceResult raceResult;
+
+    public RaceResultConsoleOutput(RaceResult raceResult) {
+        this.raceResult = raceResult;
     }
 
-    private void printAllRounds(List<RoundRecord> roundRecords) {
-        System.out.println(roundsToConsoleOutput(roundRecords));
-    }
-
-    private void printAllWinners(List<String> winners) {
-        System.out.println(winnersToConsoleOutput(winners));
+    public void printRaceRecords() {
+        System.out.println(roundsToConsoleOutput(raceResult.getRoundRecords()) +
+                winnersToConsoleOutput(raceResult.getWinners()));
     }
 
     private String roundsToConsoleOutput(List<RoundRecord> roundRecords) {
         return roundRecords.stream()
                 .map(this::drawAllCarPosition)
-                .collect(Collectors.joining());
+                .collect(Collectors.joining("", WINNER_RESULT_PREFIX, "\n"));
     }
 
     private String winnersToConsoleOutput(List<String> winners) {
