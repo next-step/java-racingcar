@@ -6,7 +6,7 @@ public class RacingGame {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
 
-        String names = inputView.readCarCount();
+        String names = inputView.readCarNames();
         int moveCount = inputView.readMoveCount();
 
         try {
