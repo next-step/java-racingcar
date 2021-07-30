@@ -7,19 +7,18 @@ import java.util.stream.Collectors;
 public class CarRasingGame {
 	private final LinkedList<RacingCar> cars;
 
-	public CarRasingGame(int input) {
+	public CarRasingGame(int CountOfCar) {
 		cars = new LinkedList<RacingCar>();
-		for(int i = 0; i < input; i++) {
+		for(int i = 0; i < CountOfCar; i++) {
 			cars.add(new RacingCar());
 		}
 	}
 
 	public List<Integer> start() {
-		cars.stream()
-			.forEach(racingCar -> {
-				CarBehavior behavior = CarBehavior.getCarBehavior(CarUtil.makeRadomNumber());
-				behavior.apply(racingCar);
-			});
+		cars.forEach(racingCar -> {
+			CarBehavior behavior = CarBehavior.getCarBehavior(CarUtil.makeRadomNumber());
+			behavior.apply(racingCar);
+		});
 		return cars.stream()
 			.map(RacingCar::getMileage)
 			.collect(Collectors.toList());
