@@ -12,12 +12,12 @@ import java.util.List;
 
 public class RacingController {
     public static void main(String[] args) {
-        String strLiterals = racingcar.step4.InputView.InputCarNames();
-        Validation.checkForNull(strLiterals);
+        String str =InputView.InputCarNames();
+        Validation.checkForNull(str);
         int tryCount = InputView.InputTryCount();
         Validation.checkValidTryCount(tryCount);
 
-        List<Car> cars = Car.createCars(strLiterals.split(","));
+        List<Car> cars = Car.createCars(str.split(","));
 
         ResultView.printResultMessage();
         for (int i = 0; i < tryCount; i++) {

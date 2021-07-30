@@ -8,9 +8,7 @@ public class Validation {
         if (strLiterals.isEmpty() || strLiterals == null || strLiterals.equals(" ")) {
             throw new IllegalArgumentException("자동차 이름을 입력하세요 ");
         }
-
         isValidCarNames(strLiterals);
-
     }
 
     public static void isValidCarNames(String strLiterals) {

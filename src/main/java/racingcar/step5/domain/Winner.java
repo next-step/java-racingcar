@@ -6,9 +6,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Winner {
-    private List<String> winners = new ArrayList<>();
-    private List<Car> cars;
     private int maxDistance = 0;
+    private List<Car> cars;
+    private List<String> winners = new ArrayList<>();
 
     public Winner(List<Car> cars) {
         this.cars = cars;
