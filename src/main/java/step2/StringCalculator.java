@@ -7,18 +7,17 @@ public class StringCalculator {
 
     public static int calculate(Formulas input) {
         String[] formulas = input.getFormulas();
-        int result = getInt(formulas[0]);
+        int result = toInt(formulas[0]);
         for (int i = 1; i < formulas.length; i += 2) {
-            OperatorType operatorType = OperatorType.find(formulas[i]);
-            result = operatorType.operate(result, getInt(formulas[i + 1]));
+            result = OperatorType.operate(result, toInt(formulas[i + 1]), formulas[i]);
         }
         return result;
     }
 
-    private static int getInt(String formula) {
+    private static int toInt(String formula) {
         if (pattern.matcher(formula).find()) {
             return Integer.parseInt(formula);
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("숫자가 아닌 값을 숫자로 변형할 수 없습니다.");
     }
 }
