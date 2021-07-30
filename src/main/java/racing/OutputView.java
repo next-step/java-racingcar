@@ -17,8 +17,7 @@ public class OutputView {
     }
 
     public void printWinners(RoundResult roundResult) {
-        List<String> winners = roundResult.getWinners();
-        System.out.println(String.join(",", winners) + "가 최종 우승했습니다.");
+        System.out.println(String.join(",", roundResult.getWinners()) + "가 최종 우승했습니다.");
     }
 
     private String convertToFormat(int position) {
