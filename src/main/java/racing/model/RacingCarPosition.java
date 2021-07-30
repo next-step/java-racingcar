@@ -33,7 +33,7 @@ public class RacingCarPosition implements Comparable<RacingCarPosition> {
     }
 
     @Override
-    public int compareTo(RacingCarPosition racingCarPosition) {
-        return position - racingCarPosition.position;
+    public int compareTo(RacingCarPosition otherRacingCarPosition) {
+        return position - otherRacingCarPosition.position;
     }
 }
