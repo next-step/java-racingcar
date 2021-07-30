@@ -17,8 +17,13 @@ public class CarRacing {
   }
 
   public void startRacing() {
+    ResultView.printResultTitle();
     for (int i = 0; i < numOfMove; i++) {
       allCarsMoveOrStopOnce();
+      if (i != 0) {
+        System.out.println();
+      }
+      ResultView.printResult(carList);
     }
   }
 
