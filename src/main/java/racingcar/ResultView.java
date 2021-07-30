@@ -1,6 +1,7 @@
 package racingcar;
 
 public class ResultView {
+    private static final String RESULT = "실행 결과";
     private static final String LINE = "-";
     private static final String result = "실행 결과";
 
@@ -13,7 +14,7 @@ public class ResultView {
     }
 
     public void printResult() {
-        System.out.println(result);
+        System.out.println(RESULT);
         while (tryCount > 0) {
             for(int i = 0; i < cars.getCarsSize(); i ++) {
                 Car car = cars.getCars().get(i);
