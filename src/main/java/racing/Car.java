@@ -26,4 +26,8 @@ public class Car {
     public int getNowPosition() {
         return this.position.getPos();
     }
+
+    public String getName() {
+        return name.getName();
+    }
 }

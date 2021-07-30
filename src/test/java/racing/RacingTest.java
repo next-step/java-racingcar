@@ -36,4 +36,50 @@ public class RacingTest {
         assertDoesNotThrow(() -> new Racing("one,two", round, new RandomNumberGenerator()));
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {1, 10})
+    void 모두_동일하게_움직일_경우_라운드의_결과_검증(int round) {
+        Racing racing = new Racing("one,two", round, () -> 5);
+
+        for (int i = 1; i <= round; i++) {
+            racing.play();
+            RoundResult roundResult = racing.getRoundResult();
+            assertThat(roundResult.getCars().size()).isEqualTo(2);
+            assertThat(roundResult.getCars().get(0).getPosition()).isEqualTo(i);
+        }
+
+        RoundResult finalRoundResult = racing.getRoundResult();
+        assertThat(finalRoundResult.getWinners().size()).isEqualTo(2);
+        assertThat(finalRoundResult.getWinners().get(0)).isEqualTo("one");
+        assertThat(finalRoundResult.getWinners().get(1)).isEqualTo("two");
+    }
+
+    @Test
+    void 서로_다르게_움직일_경우_라운드의_결과_검증() {
+        Racing racing = new Racing("one,two", 1, new NumberGenerator() {
+
+            private int[] randomNumbers = new int[]{1, 4};
+            private int index = 0;
+
+            // 1, 4를 번갈아 반환한다.
+            @Override
+            public int generate() {
+                return randomNumbers[index++%2];
+            }
+        });
+
+        racing.play();
+        RoundResult roundResult = racing.getRoundResult();
+        assertThat(roundResult.getCars().size()).isEqualTo(2);
+
+        assertThat(roundResult.getCars().get(0).getName()).isEqualTo("one");
+        assertThat(roundResult.getCars().get(0).getPosition()).isEqualTo(0);
+
+        assertThat(roundResult.getCars().get(1).getName()).isEqualTo("two");
+        assertThat(roundResult.getCars().get(1).getPosition()).isEqualTo(1);
+
+        assertThat(roundResult.getWinners().get(0)).isEqualTo("two");
+    }
+
+
 }

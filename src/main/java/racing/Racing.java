@@ -1,6 +1,7 @@
 package racing;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -40,5 +41,15 @@ public class Racing {
         }
     }
 
+    public RoundResult getRoundResult() {
+        return new RoundResult(cars, findWinners());
+    }
 
+    private List<Car> findWinners() {
+        int maxPosition = cars.stream().max(Comparator.comparingInt(Car::getNowPosition)).get().getNowPosition();
+
+        return cars.stream()
+                .filter(car -> car.getNowPosition() == maxPosition)
+                .collect(Collectors.toList());
+    }
 }

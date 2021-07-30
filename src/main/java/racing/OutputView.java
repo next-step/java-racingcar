@@ -6,10 +6,8 @@ public class OutputView {
         System.out.println("실행결과");
     }
 
-    public void printResult(CarsDTO carsDTO) {
-        for (int position : carsDTO.getCars()) {
-            System.out.println(convertToFormat(position));
-        }
+    public void printResult() {
+
         System.out.println();
     }
 
