@@ -6,20 +6,24 @@ import racingcar.strategy.MoveStrategy;
 public class RacingCar {
     public static final int BASE_POSITION = 0;
     public static final int ONE_STEP = 1;
-    private MoveStrategy moveStrategy;
 
+    private String name;
     private int position;
+
+    public String getName() {
+        return name;
+    }
 
     public int getPosition() {
         return position;
     }
 
-    public RacingCar(MoveStrategy moveStrategy) {
+    public RacingCar(String carName) {
         this.position = BASE_POSITION;
-        this.moveStrategy = moveStrategy;
+        this.name = carName;
     }
 
-    public void moveIfMovable() {
+    public void moveIfMovable(MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable())
             position += ONE_STEP;
     }

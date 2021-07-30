@@ -8,37 +8,57 @@ import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RacingCarGame {
     private static final InputView inputView = new InputView();
     private static final ResultView resultView = new ResultView();
 
+    public static int winnerRecord = 0;
+
     public static void main(String[] args) {
         List<RacingCar> racingCars = new ArrayList<>();
-        int carNumber = inputView.requestCarNumber();
+        String[] carNames = inputView.requestCarNames();
         int tryNumber = inputView.requestTryNumber();
-        initializeRacingCars(racingCars, carNumber, new RandomMoveStrategy());
-        race(racingCars, tryNumber);
+        initializeRacingCars(racingCars, carNames);
+        race(racingCars, tryNumber, new RandomMoveStrategy());
+        String[] winners = pickWinners(racingCars);
+        ResultView.printWinners(winners);
     }
 
-    public static void initializeRacingCars(List<RacingCar> racingCars, int carNumber, MoveStrategy moveStrategy) {
-        for (int i = 0; i < carNumber; i++) {
-            racingCars.add(new RacingCar(moveStrategy));
+    public static String[] pickWinners(List<RacingCar> racingCars) {
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.getPosition() == winnerRecord)
+                .map(RacingCar::getName)
+                .toArray(String[]::new);
+    }
+
+    public static void initializeRacingCars(List<RacingCar> racingCars, String[] carNames) {
+        for (int i = 0; i < carNames.length; i++) {
+            racingCars.add(new RacingCar(carNames[i]));
         }
+        winnerRecord = 0;
     }
 
-    public static void race(List<RacingCar> racingCars, int tryNumber) {
+    public static void race(List<RacingCar> racingCars, int tryNumber, MoveStrategy moveStrategy) {
         resultView.printResultFirstLine();
         for (int i = 0; i < tryNumber; i++) {
-            raceOneStep(racingCars);
+            raceOneStep(racingCars, moveStrategy);
             resultView.printRacingCarsPosition(racingCars);
         }
     }
 
-    public static void raceOneStep(List<RacingCar> racingCars) {
+    public static void raceOneStep(List<RacingCar> racingCars, MoveStrategy moveStrategy) {
         for (int i = 0; i < racingCars.size(); i++) {
-            racingCars.get(i).moveIfMovable();
+            RacingCar racingCar = racingCars.get(i);
+            racingCar.moveIfMovable(moveStrategy);
+            recordWinnerScore(racingCar);
+        }
+    }
+
+    public static void recordWinnerScore(RacingCar racingCar) {
+        if (racingCar.getPosition() > winnerRecord) {
+            winnerRecord = racingCar.getPosition();
         }
     }
 }
