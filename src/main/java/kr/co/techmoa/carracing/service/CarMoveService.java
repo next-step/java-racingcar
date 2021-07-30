@@ -16,7 +16,7 @@ public class CarMoveService {
 
         int sum = 0;
 
-        ArrayList roundList = new ArrayList<Car[]>();
+        List<Car[]> roundList = new ArrayList<Car[]>();
         for(int i = 0 ; i < racingCarGame.getTryNumber() ; i++) {
             Car[] cars = new Car[racingCarGame.getCarNum()];
             for(int j = 0 ; j < cars.length ; j++) {
