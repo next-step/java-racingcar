@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 
 public class CarRacingGameResult {
 
+    private static final String NAME_DELIMITER = ",";
+
     private List<Round> playedRounds;
 
     public CarRacingGameResult(List<Round> playedRounds) {
@@ -19,19 +21,25 @@ public class CarRacingGameResult {
 
         List<CarRunResult> finalRoundResult = getFinalRoundCarRunResult();
 
-        List<CarRunResult> winnerResults = finalRoundResult.stream()
+        List<CarRunResult> winnerResults = findWinnerResults(finalRoundResult);
+
+        return joiningWinnerNames(winnerResults);
+    }
+
+    private List<CarRunResult> findWinnerResults(List<CarRunResult> finalRoundResult) {
+        return finalRoundResult.stream()
             .collect(groupingBy(CarRunResult::getRunDistance))
             .entrySet()
             .stream()
-            .max(Comparator.comparing(Entry::getKey))
+            .max(Entry.comparingByKey())
             .get()
             .getValue();
+    }
 
-        String winnerNames = winnerResults.stream()
+    private String joiningWinnerNames(List<CarRunResult> winnerResults) {
+        return winnerResults.stream()
             .map(CarRunResult::getCarNameString)
-            .collect(Collectors.joining(","));
-
-        return winnerNames;
+            .collect(Collectors.joining(NAME_DELIMITER));
     }
 
     private List<CarRunResult> getFinalRoundCarRunResult() {
@@ -41,5 +49,9 @@ public class CarRacingGameResult {
 
     public List<Round> getPlayedRounds() {
         return playedRounds;
+    }
+
+    public void addRound(Round round) {
+        playedRounds.add(round);
     }
 }

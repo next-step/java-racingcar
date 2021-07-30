@@ -19,7 +19,7 @@ public class CarName {
         }
     }
 
-    public String getString() {
+    public String value() {
         return this.carName;
     }
 

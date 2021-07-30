@@ -7,7 +7,7 @@ import step3.domain.Round;
 
 public class ResultView {
 
-    public static final char PROGRESS_SYMBOL = '-';
+    public static final String PROGRESS_SYMBOL = "-";
     private static final String COLON_DELIMITER = " : ";
 
     private static ResultView instance = new ResultView();
@@ -28,7 +28,7 @@ public class ResultView {
         for (Round playedRound : playedRounds) {
             printRoundResult(playedRound);
         }
-        System.out.println(result.getWinnerNames()+"가 최종 우승했습니다.");
+        System.out.println(result.getWinnerNames() + "가 최종 우승했습니다.");
     }
 
     private void printRoundResult(Round playedRound) {
@@ -49,7 +49,7 @@ public class ResultView {
     private String generateProgressString(int runDistance) {
         String progress = "";
         for (int i = 0; i < runDistance; i++) {
-            progress = progress + PROGRESS_SYMBOL;
+            progress = progress.concat(PROGRESS_SYMBOL);
         }
         return progress;
     }

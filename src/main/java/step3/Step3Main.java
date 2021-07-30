@@ -1,11 +1,9 @@
 package step3;
 
 import java.util.List;
-import java.util.Map;
 import step3.domain.CarRacingGame;
 import step3.domain.CarRacingGameResult;
 import step3.domain.GameSetting;
-import step3.domain.Round;
 import step3.runType.NormalRunStrategy;
 import step3.ui.InputView;
 import step3.ui.ResultView;

@@ -27,11 +27,11 @@ class CarRacingGameTest {
 
         Round finalRound = playedRounds.get(playedRounds.size() - 1);
 
-        assertThat(playedRounds.size()).isEqualTo(testGameSetting.getRoundCount().getInt());
+        assertThat(playedRounds.size()).isEqualTo(testGameSetting.getRoundCount().value());
         assertThat(finalRound.getCarRunResults().size()).isEqualTo(testGameSetting.getCarCount());
 
         for (CarRunResult result : finalRound.getCarRunResults()) {
-            assertThat(result.getRunDistance()).isEqualTo(testGameSetting.getRoundCount().getInt());
+            assertThat(result.getRunDistance()).isEqualTo(testGameSetting.getRoundCount().value());
         }
 
     }

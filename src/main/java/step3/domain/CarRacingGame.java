@@ -22,7 +22,7 @@ public class CarRacingGame {
 
 
     private void playAllRounds(RacingCars cars) {
-        int roundCount = gameSetting.getRoundCount().getInt();
+        int roundCount = gameSetting.getRoundCount().value();
 
         for (int i = 0; i < roundCount; i++) {
             playOneRound(cars);
@@ -32,10 +32,11 @@ public class CarRacingGame {
     private void playOneRound(RacingCars cars) {
         Round round = new Round();
         round.start(cars, gameSetting);
-        this.gameResult.getPlayedRounds().add(round);
+
+        gameResult.addRound(round);
     }
 
     public CarRacingGameResult getCarRacingGameResult() {
-        return this.gameResult;
+        return gameResult;
     }
 }
