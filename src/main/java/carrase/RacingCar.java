@@ -7,10 +7,12 @@ public class RacingCar implements Car {
 		return mileage;
 	}
 
+	@Override
 	public void stop() {
 		// nothing to do
 	}
 
+	@Override
 	public void moveForward() {
 		mileage += 1;
 	}
