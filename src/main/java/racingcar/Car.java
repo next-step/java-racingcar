@@ -1,7 +1,12 @@
 package racingcar;
 
 public class Car {
-정    private int position = 1;
+    private int position = 1;
+    private final MovingStrategy movingStrategy;
+
+    public Car(MovingStrategy movingStrategy) {
+        this.movingStrategy = movingStrategy;
+    }
 
     public int getPosition() {
         return position;
