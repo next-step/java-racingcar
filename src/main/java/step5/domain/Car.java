@@ -5,10 +5,11 @@ import step5.strategy.MovingStrategy;
 public class Car {
 
     private static final int LIMIT_NAME_LENGTH = 5;
+
     private final String name;
     private final MovingStrategy movingStrategy;
-
     private final CarEngine engine;
+
     private int movedCount = 0;
 
 
@@ -35,7 +36,7 @@ public class Car {
         return movedCount;
     }
 
-    protected void checkNameLength(String carName) {
+    private void checkNameLength(String carName) {
         if (carName.length() > LIMIT_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자리 초과 할 수 없습니다.");
         }
