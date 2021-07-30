@@ -24,8 +24,8 @@ public class RacingCarTest {
         Car winnerCar = carsList.get(0);
         Car winnerCar1 = carsList.get(1);
         for(int i=0; i<3; i++){
-            winnerCar.move(4);
-            winnerCar1.move(4);
+            winnerCar.move(() -> true);
+            winnerCar1.move(() -> true);
         }
         Winners winners = new Winners(cars);
         Car pobi = new Car("pobi");

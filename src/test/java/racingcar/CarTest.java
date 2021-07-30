@@ -4,6 +4,7 @@ import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.CarPosition;
 import racingcar.domain.Cars;
 
 import java.util.List;
@@ -37,22 +38,9 @@ public class CarTest {
     @DisplayName("자동차 전진 또는 멈춤")
     void moveCarTest() {
         Car car = new Car("pobi");
-        car.move(4);
-        assertThat(car.getPosition()).isEqualTo(1);
-        car.move(3);
-        assertThat(car.getPosition()).isEqualTo(1);
-    }
-
-    @Test
-    @DisplayName("random값에 의한 전진 여부 테스트")
-    void randomTest() {
-        Car car = new Car("pobi");
-        int randomNumber = 4;
-        boolean move = car.isMove(randomNumber);
-        int randomNumber1 = 0;
-        boolean stop = car.isMove(randomNumber1);
-
-        assertThat(move).isTrue();
-        assertThat(stop).isFalse();
+        car.move(() -> true);
+        assertThat(car.getPosition()).isEqualTo(new CarPosition(1));
+        car.move(() -> false);
+        assertThat(car.getPosition()).isEqualTo(new CarPosition(1));
     }
 }

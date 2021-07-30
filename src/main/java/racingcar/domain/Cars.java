@@ -25,7 +25,7 @@ public class Cars {
 
     public void moveCars() {
         for (Car car : cars) {
-            car.move(CreateRandomNumber.getRandomNumber());
+            car.move(new CreateRandomNumber());
         }
     }
 }

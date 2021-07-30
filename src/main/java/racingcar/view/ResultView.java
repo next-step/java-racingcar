@@ -14,7 +14,8 @@ public class ResultView {
 
     private static void printMovingCar(Car car) {
         System.out.print(car.getName() + " : ");
-        for(int i=0; i<car.getPosition(); i++){
+        // get을 없애려고 하는데 이부분에서 막히네요 ㅠㅠ carposition의 position값을 알아야 하는데 다른 방법이 있을까요??
+        for(int i=0; i<car.getPosition().getPosition(); i++){
             System.out.print("-");
         }
         System.out.println();

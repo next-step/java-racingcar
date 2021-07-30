@@ -19,21 +19,21 @@ public class Winners {
     }
 
     private void getWinners(Cars cars){
-        int winnerPosition = getWinnerPosition(cars);
+        CarPosition winnerPosition = getWinnerPosition(cars);
         for (Car car : cars.getCars()) {
             addWinner(car, winnerPosition);
         }
     }
 
-    private int getWinnerPosition(Cars cars) {
-        int winnerPosition = 0;
+    private CarPosition getWinnerPosition(Cars cars) {
+        CarPosition winnerPosition = new CarPosition();
         for (Car car : cars.getCars()) {
-            winnerPosition = Math.max(winnerPosition,car.getPosition());
+            winnerPosition = car.getPosition().comparePosition(winnerPosition);
         }
         return winnerPosition;
     }
 
-    private void addWinner(Car car, int winnerPosition) {
+    private void addWinner(Car car, CarPosition winnerPosition) {
         if(car.isMoreThan(winnerPosition)){
             winnerCars.add(car);
         }
