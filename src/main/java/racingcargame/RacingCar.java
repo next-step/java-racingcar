@@ -1,22 +1,21 @@
 package racingcargame;
 
 public class RacingCar {
-    private String movingLine = "";
+    private static final int MOVING_VALUE = 4;
+    private ResultView resultView = new ResultView();
 
-    public String doRandomCalculation(int randomValue) {
-        if(randomValue >= 4) {
+    public String tryToMoveCar(int randomValue) {
+        if(randomValue >= MOVING_VALUE) {
             return this.move();
         }
         return this.stop();
     }
 
-    private String move() {
-        movingLine += "-";
-        return movingLine;
+    public String move() {
+        return resultView.move();
     }
 
-    private String stop() {
-        movingLine += "";
-        return movingLine;
+    public String stop() {
+        return resultView.stop();
     }
 }

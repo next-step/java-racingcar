@@ -2,17 +2,18 @@ package racingcargame;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingCarGame {
-
     private List<RacingCar> cars;
-    private int count;
+    private int car, count = 0;
 
-    private ResultView resultView = new ResultView();
-    private Random random = new Random();
+    RacingCarGame(int car, int count) {
+        this.car = car;
+        this.count = count;
+        cars = createCars(car);
+    }
 
-    private List<RacingCar> createCars(int numberOfCars) {
+    public List<RacingCar> createCars(int numberOfCars) {
         List<RacingCar> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
             cars.add(new RacingCar());
@@ -20,12 +21,10 @@ public class RacingCarGame {
         return cars;
     }
 
-    public void startGame(int car, int count) {
-        cars = createCars(car);
-        System.out.println("\n실행 결과");
+    public void startGame(final RandomOption randomOption) {
         for (int i = 0; i < count; i++) {
             for (int j = 0; j < car; j++) {
-                resultView.showResultView((cars.get(j).doRandomCalculation(random.nextInt(10))));
+                cars.get(j).tryToMoveCar(randomOption.randomValue());
             }
             System.out.println();
         }

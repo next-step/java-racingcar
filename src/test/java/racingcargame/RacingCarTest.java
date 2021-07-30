@@ -15,7 +15,7 @@ public class RacingCarTest {
             , delimiter = '$')
     void stop(int input, String expected) {
         RacingCar racingCar = new RacingCar();
-        String actual = racingCar.doRandomCalculation(input);
+        String actual = racingCar.tryToMoveCar(input);
         assertEquals(expected, actual);
     }
 
@@ -27,7 +27,7 @@ public class RacingCarTest {
             , delimiter = '$')
     void move(int input, String expected) {
         RacingCar racingCar = new RacingCar();
-        String actual = racingCar.doRandomCalculation(input);
+        String actual = racingCar.tryToMoveCar(input);
         assertEquals(expected, actual);
     }
 }
