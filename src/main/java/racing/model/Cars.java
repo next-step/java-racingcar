@@ -1,5 +1,8 @@
 package racing.model;
 
+import racing.util.RandomUtil;
+import racing.view.RacingView;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -20,16 +23,23 @@ public class Cars {
         carList = cars;
     }
 
-
-    public List<Car> carList() {
-        return this.carList;
-    }
-
     public int getMaxDistance() {
-        return carList()
-                .stream()
+        return carList.stream()
                 .max(Comparator.comparing(Car::totalDistance))
                 .get()
                 .totalDistance();
+    }
+
+    public List<Car> winner() {
+        int maxDistance = getMaxDistance();
+        List<Car> cars = carList.stream()
+                .filter(car -> car.checkDistance(maxDistance))
+                .collect(Collectors.toList());
+        return cars;
+    }
+
+    public void carsMove() {
+        carList.forEach(car -> car.run(RandomUtil.randomValue()));
+        RacingView.printCarMove(carList);
     }
 }

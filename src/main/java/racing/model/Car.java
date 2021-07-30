@@ -1,5 +1,6 @@
 package racing.model;
 
+
 public class Car {
 
     private static final int MINIMUM_CONDITION = 4;
@@ -38,6 +39,7 @@ public class Car {
         }
         return false;
     }
+
 
     public Boolean checkDistance(int distance) {
         return this.distance == distance;

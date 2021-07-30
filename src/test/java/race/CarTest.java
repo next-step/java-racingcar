@@ -13,6 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarTest {
 
     Car car;
+
     @BeforeEach
     void setting() {
         car = new Car("test1");

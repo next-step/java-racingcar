@@ -27,7 +27,7 @@ public class RacingTest {
         testCars.add(new Car("test3", 20));
         cars = testCars;
         racing = new Racing(testCars);
-        assertThat(racing.winner().get(0).carName()).isEqualTo("test2");
+        assertThat(racing.winnerCarList().get(0).carName()).isEqualTo("test2");
     }
 
     @Test
@@ -39,7 +39,7 @@ public class RacingTest {
         testCars.add(new Car("test3", 30));
         cars = testCars;
         racing = new Racing(cars);
-        Assertions.assertThat(racing.winner().stream())
+        Assertions.assertThat(racing.winnerCarList().stream())
                 .extracting(Car::carName)
                 .containsExactly("test1", "test2", "test3");
     }

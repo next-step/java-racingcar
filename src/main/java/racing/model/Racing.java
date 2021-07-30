@@ -2,10 +2,8 @@ package racing.model;
 
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Racing {
-
 
     private Cars cars = new Cars();
 
@@ -17,18 +15,11 @@ public class Racing {
         this.cars.prepareCars(cars);
     }
 
-    public Cars participants() {
-        return this.cars;
+    public List<Car> winnerCarList() {
+        return cars.winner();
     }
 
-    public List<Car> winner() {
-        int maxDistance = cars.getMaxDistance();
-        List<Car> cars = participants().carList()
-                .stream()
-                .filter(car -> car.checkDistance(maxDistance))
-                .collect(Collectors.toList());
-        return cars;
+    public void game() {
+        cars.carsMove();
     }
-
-
 }

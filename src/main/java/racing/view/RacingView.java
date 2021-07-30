@@ -20,10 +20,8 @@ public class RacingView {
         System.out.println("");
     }
 
-    public static void printCarMove(Racing racing) {
-        racing.participants()
-                .carList()
-                .stream()
+    public static void printCarMove(List<Car> cars) {
+        cars.stream()
                 .forEach(car -> printMoveLine(car));
         System.out.println("");
     }
