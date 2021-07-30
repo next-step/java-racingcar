@@ -4,6 +4,8 @@ import racing.model.Car;
 import racing.model.Racers;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingGamePrinter {
     private static final String NEW_LINE = System.lineSeparator();
@@ -47,7 +49,10 @@ public class RacingGamePrinter {
 
     private void append(StringBuilder sb, int i, int size, Racers racer) {
         if (i == size - 1) {
-            sb.append(racer.winner());
+            sb.append(((Stream<Car>) racer.winner().stream())
+                              .map(car -> car.name())
+                              .collect(Collectors.joining(", ")));
+
             sb.append(END_MESSAGE);
         }
     }
