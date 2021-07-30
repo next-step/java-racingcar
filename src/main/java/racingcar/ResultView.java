@@ -1,9 +1,10 @@
 package racingcar;
 
+import racingcar.util.RandomGenerator;
+
 public class ResultView {
     private static final String RESULT = "실행 결과";
     private static final String LINE = "-";
-    private static final String result = "실행 결과";
 
     private final Cars cars;
     private int tryCount;
@@ -16,16 +17,20 @@ public class ResultView {
     public void printResult() {
         System.out.println(RESULT);
         while (tryCount > 0) {
-            for(int i = 0; i < cars.getCarsSize(); i ++) {
-                Car car = cars.getCars().get(i);
-                car.move();
-                System.out.println();
-                for(int j = 0; j < car.getPosition(); j ++) {
-                    System.out.print(LINE);
-                }
-            }
+            printLine();
             System.out.println();
             tryCount --;
+        }
+    }
+
+    private void printLine() {
+        for(int i = 0; i < cars.getCarsSize(); i ++) {
+            Car car = cars.getCars().get(i);
+            car.move(new RandomNumberMovingStrategy(new RandomGenerator()));
+            System.out.println();
+            for(int j = 0; j < car.getPosition(); j ++) {
+                System.out.print(LINE);
+            }
         }
     }
 }
