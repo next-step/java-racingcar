@@ -7,6 +7,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racing.model.Car;
 import racing.model.Cars;
+import racing.util.RandomUtil;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +23,7 @@ public class CarsTest {
     void setting() {
         cars.prepareCars(new String[]{"test1","test2","test3"});
         for (Car car : cars.carList()) {
-            car.forward();
+            car.run(9);
         }
     }
 

@@ -21,11 +21,6 @@ public class Car {
         return this.distance;
     }
 
-    public int forward() {
-        this.distance = ++distance;
-        return this.distance;
-    }
-
     public boolean run(int move) {
         if(moveCondition(move)) {
             this.distance = ++distance;

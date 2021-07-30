@@ -21,7 +21,7 @@ public class CarTest {
     @Test
     @DisplayName("go Test")
     void goTest() {
-        car.forward();
+        car.run(9);
         assertThat(car.totalDistance()).isEqualTo(1);
     }
 
