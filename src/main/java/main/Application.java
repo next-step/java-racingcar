@@ -5,19 +5,38 @@ import java.util.List;
 import calculator.Calculator;
 import calculator.CalculcatorUI;
 import carrase.CarRasingGame;
-import carrase.CarRasingGameUI;
+import carrase.CarRacingGameUI;
 
 public class Application {
 	public static void main(String[] args) {
-		// 계산기 게임
-		// Calculator calculator = new Calculator();
-		// CalculcatorUI.printIntro();
-		// int result = calculator.calculate(CalculcatorUI.getInput());
-		// CalculcatorUI.printResult(result);
-
+		Application app = new Application();
+		// 계산기
+		//app.runCalculator();
 
 		// 레이싱 게임
-		CarRasingGameUI ui = new CarRasingGameUI();
-		ui.start();
+		app.runRacingGame();
+	}
+
+	private void runCalculator() {
+		Calculator calculator = new Calculator();
+		CalculcatorUI.printIntro();
+		int result = calculator.calculate(CalculcatorUI.getInput());
+		CalculcatorUI.printResult(result);
+	}
+
+	private void runRacingGame() {
+		CarRacingGameUI ui = new CarRacingGameUI();
+
+		ui.printQuestionOfCarCount();
+		CarRasingGame game = new CarRasingGame(ui.getInput());
+		ui.printQuestionOfGameCount();
+
+		int countOfGame = ui.getInput();
+
+		ui.printMessageOfGameResult();
+		for(int i = 0; i < countOfGame; i++) {
+			List<Integer> result = game.start();
+			ui.printResult(result);
+		}
 	}
 }
