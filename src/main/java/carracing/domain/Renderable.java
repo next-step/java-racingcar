@@ -1,5 +1,5 @@
 package carracing.domain;
 
-public interface Renderer {
+public interface Renderable {
     String render();
 }
