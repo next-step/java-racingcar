@@ -1,15 +1,9 @@
 package carracing.domain;
 
-import carracing.domain.Car;
-import carracing.domain.CarStatus;
-import carracing.domain.RaceResult;
-import carracing.domain.RoundRecord;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RaceManager {
 
@@ -23,14 +17,14 @@ public class RaceManager {
         this.roundRecords = new ArrayList<>();
     }
 
-    public RaceResult play(List<String> carNames, int roundNumber) {
+    public RaceResult play(CarNames carNames, RoundNumber roundNumber) {
         addCars(carNames);
         initRoundRecords();
         startRace(roundNumber);
         return new RaceResult(roundRecords);
     }
 
-    private void addCars(List<String> carNames) {
+    private void addCars(CarNames carNames) {
         cars.clear();
         cars.addAll(getCars(carNames));
     }
@@ -40,14 +34,14 @@ public class RaceManager {
         recordCarRecords();
     }
 
-    private List<Car> getCars(List<String> carNames) {
-        return carNames.stream()
+    private List<Car> getCars(CarNames carNames) {
+        return carNames.getCarNamesStream()
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
 
-    private void startRace(int roundNumber) {
-        IntStream.range(0, roundNumber)
+    private void startRace(RoundNumber roundNumber) {
+        roundNumber.getRoundIntStream()
                 .forEach(index -> startRound());
     }
 
