@@ -5,7 +5,7 @@ public class RacingCar implements Comparable<RacingCar> {
     private final RacingCarPosition position;
 
     RacingCar(String name) {
-        this.name = RacingCarName.valueOf(name);
+        this.name = new RacingCarName(name);
         this.position = new RacingCarPosition();
     }
 
