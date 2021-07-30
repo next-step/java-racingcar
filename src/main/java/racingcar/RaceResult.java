@@ -7,6 +7,10 @@ public class RaceResult {
         return laps;
     }
 
+    public Lap getLastLap() {
+        return laps.getLastLap();
+    }
+
     public void recordLap(Cars cars) {
         laps.record(cars);
     }

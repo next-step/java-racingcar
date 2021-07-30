@@ -15,4 +15,19 @@ class RaceTest {
 
          assertThat(result).isNotNull();
     }
+
+    @Test
+    @DisplayName("play 하면 전략에 맞게 move 여부 결정")
+    public void playByStrategy() {
+        assertFinalLapDistance(race.play(), 2);
+
+        Race notMoveRace = new Race(3, 2, new NotMoveRaceStrategy());
+        assertFinalLapDistance(notMoveRace.play(), 0);
+    }
+
+    private void assertFinalLapDistance(RaceResult result, int expectedDistance) {
+        for (Distance distance : result.getLastLap().getDistances()) {
+            assertThat(distance).isEqualTo(new Distance(expectedDistance));
+        }
+    }
 }

@@ -15,4 +15,8 @@ public class Laps implements Iterable<Lap> {
     public Iterator<Lap> iterator() {
         return laps.iterator();
     }
+
+    public Lap getLastLap() {
+        return laps.get(laps.size() - 1);
+    }
 }
