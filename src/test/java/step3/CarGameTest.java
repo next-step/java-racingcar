@@ -17,41 +17,37 @@ public class CarGameTest {
         carCnt = 3;
         playCnt = 5;
 
-        game = new CarGame(carCnt, playCnt);
+        game = new CarGame(carCnt);
     }
 
     @Test
-    @DisplayName("자동차수, 시도횟수 입력받아 자동차 수만큼 세팅한다.")
+    @DisplayName("자동차수를 입력받아 자동차 수만큼 세팅한다.")
     public void save_cars() {
         assertThat(game.getCarCnt()).isEqualTo(carCnt);
 
-        for (int i=0; i< game.getCarCnt(); i++) {
+        for (int i=0; i<game.getCarCnt(); i++) {
             int move = game.getCar(i).getMove();
-            int play = game.getCar(i).getPlay();
             assertThat(move).isEqualTo(0);
-            assertThat(play).isEqualTo(playCnt);
         }
     }
 
     @Test
-    @DisplayName("4이상일 경우 자동차가 전진하고, 시도횟수는 한개 줄어야한다.")
+    @DisplayName("4이상일 경우 자동차가 전진해야한다.")
     public void car_should_be_moved() {
         //given
         int randomNum = 4;
         int carIdx = 0;
 
+        //when
         game.canMove(carIdx, randomNum);
 
         //then
         int move = game.getCar(carIdx).getMove();
-        int play = game.getCar(carIdx).getPlay();
         assertThat(move).isEqualTo(1);
-        assertThat(play).isEqualTo(playCnt-1);
-
     }
 
     @Test
-    @DisplayName("4미만일 경우 자동차가 움직이지 않고, 시도횟수는 한개 줄어야한다.")
+    @DisplayName("4미만일 경우 자동차가 움직이지 않아야한다.")
     public void car_should_be_not_moved() {
         //given
         int randomNum = 3;
@@ -62,19 +58,17 @@ public class CarGameTest {
 
         //then
         int move = game.getCar(carIdx).getMove();
-        int play = game.getCar(carIdx).getPlay();
         assertThat(move).isEqualTo(0);
-        assertThat(play).isEqualTo(playCnt);
     }
 
     @Test
+    @DisplayName("여러개의 랜덤숫자가 주어질 경우 테스트")
     public void car_should_be_moved_or_not() {
         //given
         int carIdx = 0;
 
         int[] randomNums    = {4, 3, 2, 8, 9};
         int[] expectedMove  = {1, 1, 1, 2, 3};
-        int[] expectedPlay  = {4, 3, 2, 1, 0};
 
         for (int i=0; i<randomNums.length; i++) {
             //when
@@ -82,28 +76,7 @@ public class CarGameTest {
 
             //then
             int move = game.getCar(carIdx).getMove();
-            int play = game.getCar(carIdx).getPlay();
             assertThat(move).isEqualTo(expectedMove[i]);
-            assertThat(play).isEqualTo(expectedPlay[i]);
         }
-
     }
-
-
-    @Test
-    @DisplayName("자동차 움직임만큼 -를 출력한다.")
-    public void should_print_cars_move() {
-        //given
-        int randomNum = 4;
-        int carIdx = 0;
-
-        //when
-        game.canMove(carIdx, randomNum);
-
-        //then
-        String distance = game.printDistance(carIdx);
-        assertThat(distance.length()).isEqualTo(1);
-    }
-
-
 }

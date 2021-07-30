@@ -3,20 +3,10 @@ package step3;
 import java.util.Scanner;
 
 public class Car {
-    private int play;
     private int move;
 
-    public Car(int play) {
-        this.play = play;
+    public Car() {
         this.move = 0;
-    }
-
-    public int getPlay() {
-        return play;
-    }
-
-    public void setPlay(int play) {
-        this.play = play;
     }
 
     public int getMove() {
@@ -25,5 +15,9 @@ public class Car {
 
     public void setMove(int move) {
         this.move = move;
+    }
+
+    public void go(){
+        this.move += 1;
     }
 }

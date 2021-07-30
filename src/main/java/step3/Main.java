@@ -10,7 +10,7 @@ public class Main {
         System.out.println("시도 횟수 :" + tryCnt);
         System.out.println();
 
-        user = new CarGame(carCnt, tryCnt);
+        user = new CarGame(carCnt);
         user.playGame(tryCnt);
     }
 }
