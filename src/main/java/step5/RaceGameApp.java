@@ -7,7 +7,7 @@ import step5.view.InputData;
 import step5.view.InputView;
 import step5.view.ResultView;
 
-public class RaceGateApp {
+public class RaceGameApp {
 
 
     public static void main(String[] args) {
