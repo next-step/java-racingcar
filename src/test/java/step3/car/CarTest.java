@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CarTest {
 
@@ -18,8 +19,8 @@ public class CarTest {
         car.tryMove(randomValue);
 
         //then
-        String actual = car.getMovedDistance();
-        assertEquals("-", actual);
+        int actual = car.getMovedDistance();
+        assertEquals(1, actual);
     }
 
     @ParameterizedTest
@@ -30,7 +31,14 @@ public class CarTest {
         car.tryMove(randomValue);
 
         //then
-        String actual = car.getMovedDistance();
-        assertEquals("", actual);
+        int actual = car.getMovedDistance();
+        assertEquals(0, actual);
+    }
+
+    @ParameterizedTest
+    @DisplayName("random 값의 범위는 0 <= randomValue <= 9여야 한다")
+    @ValueSource(ints = {-1, 10})
+    void randomValueValidation(int randomValue) {
+        assertThrows(IllegalArgumentException.class, () -> car.tryMove(randomValue));
     }
 }

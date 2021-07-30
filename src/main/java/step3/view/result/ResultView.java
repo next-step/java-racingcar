@@ -10,12 +10,16 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public void printMoveResult(List<Car> cars) {
+    public void printRacingResult(List<Car> cars) {
         cars.forEach(this::printCarMovedDistance);
         System.out.println();
     }
 
     private void printCarMovedDistance(Car car) {
-        System.out.println(car.getMovedDistance());
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < car.getMovedDistance(); i++) {
+            sb.append("-");
+        }
+        System.out.println(sb.toString());
     }
 }

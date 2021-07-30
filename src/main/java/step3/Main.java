@@ -15,6 +15,8 @@ public class Main {
         int carCount = inputDTO.getCarCount();
 
         RacingGame racingGame = new RacingGame(tryCount, carCount);
-        racingGame.start();
+        for (int i = 0; i < tryCount; i++) {
+            racingGame.race();
+        }
     }
 }

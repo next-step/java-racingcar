@@ -9,22 +9,35 @@ import java.util.Random;
 
 public class RacingGame {
 
-    private final int tryCount;
+    private final int tryLimit;
     private final List<Car> cars;
     private final Random random = new Random();
+    private final ResultView resultView = new ResultView();
 
-    public RacingGame(int tryCount, int carCount) {
-        this.tryCount = tryCount;
+    private int triedCount = 0;
+
+    public RacingGame(int tryLimit, int carCount) {
+        this.tryLimit = tryLimit;
         this.cars = generateCar(carCount);
     }
 
-    public void start() {
-        ResultView resultView = new ResultView();
-        resultView.printTitle();
-        for (int i = 0; i < tryCount; i++) {
-            tryMoveCars();
-            resultView.printMoveResult(cars);
-        }
+    public void race() {
+        triedCount++;
+        validateTryCount();
+        tryMoveCars();
+        checkProgressOfRacing();
+    }
+
+    private void validateTryCount() {
+        if (tryLimit < triedCount)
+            throw new IllegalStateException("tryCount is over");
+    }
+
+    private void checkProgressOfRacing() {
+        if (triedCount == 1)
+            resultView.printTitle();
+
+        resultView.printRacingResult(cars);
     }
 
     private void tryMoveCars() {
