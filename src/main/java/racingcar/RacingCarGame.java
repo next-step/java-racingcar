@@ -14,6 +14,8 @@ public class RacingCarGame {
     private static final InputView inputView = new InputView();
     private static final ResultView resultView = new ResultView();
 
+    public static int winnerRecord = 0;
+
     public static void main(String[] args) {
         List<RacingCar> racingCars = new ArrayList<>();
         String[] carNames = inputView.requestCarNames();
@@ -26,6 +28,7 @@ public class RacingCarGame {
         for (int i = 0; i < carNames.length; i++) {
             racingCars.add(new RacingCar(carNames[i]));
         }
+        winnerRecord = 0;
     }
 
     public static void race(List<RacingCar> racingCars, int tryNumber, MoveStrategy moveStrategy) {
@@ -38,7 +41,15 @@ public class RacingCarGame {
 
     public static void raceOneStep(List<RacingCar> racingCars, MoveStrategy moveStrategy) {
         for (int i = 0; i < racingCars.size(); i++) {
-            racingCars.get(i).moveIfMovable(moveStrategy);
+            RacingCar racingCar = racingCars.get(i);
+            racingCar.moveIfMovable(moveStrategy);
+            recordWinnerScore(racingCar);
+        }
+    }
+
+    public static void recordWinnerScore(RacingCar racingCar) {
+        if (racingCar.getPosition() > winnerRecord) {
+            winnerRecord = racingCar.getPosition();
         }
     }
 }
