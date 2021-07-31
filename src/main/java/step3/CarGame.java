@@ -1,27 +1,26 @@
 package step3;
 
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.IntStream;
 
 public class CarGame {
-    private Car[] cars;
+    private List<Car> cars;
 
     public CarGame() {
     }
 
     public CarGame(int carCnt) {
-        cars = new Car[carCnt];
+        cars = new ArrayList<>();
         for (int i=0; i<carCnt; i++) {
-            cars[i] = new Car();
+            cars.add(new Car());
         }
-        this.cars = cars;
     }
 
     /**
      * 자동차 총대수 반환
      */
     public int getCarCnt() {
-        return cars.length;
+        return cars.size();
     }
 
     /**
@@ -30,7 +29,7 @@ public class CarGame {
      * @return환
      */
     public Car getCar(int i) {
-        return cars[i];
+        return cars.get(i);
     }
 
     /**
@@ -45,7 +44,7 @@ public class CarGame {
         }
 
         //4이상일때는 전진하고 시도횟수 줄임
-        cars[carIdx].go();
+        getCar(carIdx).go();
     }
 
     /**
@@ -53,7 +52,7 @@ public class CarGame {
      * @param carIdx
      */
     public void printDistance(int carIdx) {
-        int curMove = cars[carIdx].getMove();
+        int curMove = getCar(carIdx).getMove();
 
         StringBuilder sb = new StringBuilder();
         while (curMove-- > 0) {
@@ -115,18 +114,20 @@ public class CarGame {
      * @param tryCnt
      */
     public void playGame(int tryCnt) {
-        for (int i=1; i<=tryCnt; i++) {
-            System.out.println(i + "회차 결과");
-
-            for (int j=0; j<getCarCnt(); j++) {
-                int randomNum = generateRandomNumbers();
-                System.out.print((j+1) +"번차 랜덤숫자 = " + randomNum + "  ");
-                canMove(j, randomNum);
-                printDistance(j);
-            }
-
-            System.out.println();
-        }
+        IntStream
+                .range(0, tryCnt)
+                .forEach(i -> {
+                    System.out.println((i+1) + "회차 결과");
+                    IntStream
+                            .range(0, getCarCnt())
+                            .forEach(j -> {
+                                int randomNum = generateRandomNumbers();
+                                System.out.print((j+1) +"번차 랜덤숫자 = " + randomNum + "  ");
+                                canMove(j, randomNum);
+                                printDistance(j);
+                            });
+                    System.out.println();
+                });
     }
 
     /**
