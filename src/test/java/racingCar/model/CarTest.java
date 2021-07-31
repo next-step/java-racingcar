@@ -27,12 +27,12 @@ class CarTest {
 
     @Test
     void 이동() {
-        assertThat(car.move(() -> true)).isEqualTo(1);
+        assertThat(car.move(() -> true)).isEqualTo(new Position(1));
     }
 
     @Test
     void 정지() {
-        assertThat(car.move(() -> false)).isEqualTo(0);
+        assertThat(car.move(() -> false)).isEqualTo(new Position());
     }
 
     @AfterEach

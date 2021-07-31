@@ -1,7 +1,5 @@
 package racingCar.model;
 
-import racingCar.utils.RandomUtil;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -35,15 +33,15 @@ public class Cars {
 
     private int findMaxLocation() {
         return cars.stream()
-                .max(Comparator.comparingInt(Car::getLocation))
+                .max(Comparator.comparingInt(Car::getPosition))
                 .orElseThrow(() -> new NoSuchElementException())
-                .getLocation();
+                .getPosition();
     }
 
     public List<Car> findWinners() {
         int maxLocation = findMaxLocation();
         return cars.stream()
-                .filter(car -> car.getLocation() == maxLocation)
+                .filter(car -> car.getPosition() == maxLocation)
                 .collect(Collectors.toList());
     }
 
@@ -54,5 +52,7 @@ public class Cars {
     public List<Car> getCars() {
         return cars;
     }
+
+
 
 }
