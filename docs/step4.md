@@ -70,8 +70,8 @@ String[] names = inputName.split(",");
 - git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가한다.
 
 ---
-##요구사항 분석
-###todo
+## 요구사항 분석
+### todo
 ### 기능
 - [ ] 자동차에 이름 부여 
 - [ ] 자동차 이름 길이 제한
