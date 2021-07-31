@@ -7,7 +7,7 @@ public class Car {
     private static final int MOVE_THRESHOLD = 3;
 
     private Position position;
-    private CarName carName;
+    private final CarName carName;
 
     public Car(Position position, CarName carName) {
         this.position = position;
@@ -20,6 +20,10 @@ public class Car {
 
     public Position getPosition() {
         return position;
+    }
+
+    public CarName getCarName() {
+        return carName;
     }
 
     public void move(Number number) {

@@ -3,6 +3,7 @@ package carracing.domain;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -26,5 +27,9 @@ public class Cars {
         return cars.stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList());
+    }
+
+    public void forEach(Consumer<Car> action) {
+        cars.forEach(action);
     }
 }

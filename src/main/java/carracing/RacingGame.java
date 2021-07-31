@@ -45,7 +45,7 @@ public class RacingGame {
         outputView.printResultMessage();
         for (int i = 0; i < moveCount; ++i) {
             cars.move(randomNumberGenerator::generateRandomNumber);
-            outputView.print(Positions.of(cars.getPositions()));
+            outputView.print(cars);
             outputView.printNewLine();
         }
     }
