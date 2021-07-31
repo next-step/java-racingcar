@@ -1,6 +1,6 @@
 package step3;
 
-public class CarRacingUI {
+public class CarRacingController {
 
     public static void main(String[] args) {
         int carCount = InputView.inputCarCount();
