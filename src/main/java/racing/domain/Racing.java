@@ -1,10 +1,11 @@
-package racing;
+package racing.domain;
+
+import racing.dto.RoundResult;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Racing {
 
@@ -26,7 +27,7 @@ public class Racing {
 
     private void validateRound(int moveCount) {
         if (moveCount < MIN_ROUND || moveCount > MAX_ROUND) {
-            throw new IllegalArgumentException("이동 횟수는 10이하의 자연수만 가능합니다.");
+            throw new IllegalArgumentException("이동 횟수는 " + MAX_ROUND + "이하의 자연수만 가능합니다.");
         }
     }
 

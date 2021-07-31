@@ -1,5 +1,8 @@
-package racing;
+package racing.dto;
 
+
+import racing.domain.Car;
+import racing.dto.CarDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;
