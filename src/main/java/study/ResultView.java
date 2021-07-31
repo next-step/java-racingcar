@@ -1,5 +1,6 @@
 package study;
 
+import java.util.List;
 import java.util.Map;
 
 public class ResultView {
@@ -8,9 +9,9 @@ public class ResultView {
 		System.out.println("실행 결과");
 	}
 
-	public void startResultView(Map<Integer, String> carContainer) {
-		for(int i = 1 ; i <= carContainer.size() ; ++i) {
-			System.out.println(carContainer.get(i));
+	public void viewResult(List<Car> carList) {
+		for(Car car : carList) {
+			System.out.println(car.getDistance());
 		}
 		System.out.println();
 	}

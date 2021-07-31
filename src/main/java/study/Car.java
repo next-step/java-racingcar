@@ -17,4 +17,12 @@ public class Car {
 	public String getDistance() {
 		return distance;
 	}
+
+	public void go() {
+		distance += "-";
+	}
+
+	public void stop() {
+		distance += "";
+	}
 }
