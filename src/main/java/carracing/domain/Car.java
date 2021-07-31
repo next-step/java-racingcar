@@ -7,13 +7,15 @@ public class Car {
     private static final int MOVE_THRESHOLD = 3;
 
     private Position position;
+    private CarName carName;
 
-    private Car(Position position) {
-        this.position = Objects.requireNonNull(position);
+    public Car(Position position, CarName carName) {
+        this.position = position;
+        this.carName = carName;
     }
 
-    public static Car of(int initPosition) {
-        return new Car(Position.of(initPosition));
+    public static Car of(Position initPosition, CarName carName) {
+        return new Car(initPosition, carName);
     }
 
     public Position getPosition() {

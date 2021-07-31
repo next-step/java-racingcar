@@ -1,16 +1,12 @@
 package carracing;
 
-import carracing.domain.Car;
-import carracing.domain.Cars;
-import carracing.domain.Positions;
-import carracing.domain.RandomNumberGenerator;
+import carracing.domain.*;
 import carracing.view.InputView;
 import carracing.view.OutputView;
 
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class RacingGame {
 
@@ -33,10 +29,10 @@ public class RacingGame {
     }
 
     private List<Car> getCars() {
-        outputView.printInputCarCountMessage();
-        int carCount = inputView.getMoveCount();
-        return Stream.generate(() -> Car.of(STARTING_LINE_POSITION))
-                .limit(carCount)
+        outputView.printCarNameInputMessage();
+        List<CarName> carNames = inputView.getCarNames();
+        return carNames.stream()
+                .map(carName -> Car.of(Position.of(STARTING_LINE_POSITION), carName))
                 .collect(Collectors.toList());
     }
 

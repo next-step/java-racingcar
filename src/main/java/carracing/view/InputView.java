@@ -1,12 +1,18 @@
 package carracing.view;
 
+import carracing.domain.CarName;
+
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputView {
 
     private static final int INPUT_COUNT_LOWER_LIMIT = 0;
     public static final String INVALID_INPUT_EXCEPTION_MESSAGE_FORMAT = "입력값이 유효하지 않습니다. input: %s";
+    private static final String CAR_NAMES_INPUT_DELIMITER = ",";
 
     private final Scanner scanner;
 
@@ -37,5 +43,16 @@ public class InputView {
         if (inputCount < INPUT_COUNT_LOWER_LIMIT) {
             throw new IllegalArgumentException(String.format(INVALID_INPUT_EXCEPTION_MESSAGE_FORMAT, inputCount));
         }
+    }
+
+    public List<CarName> getCarNames() {
+        return parseCarNamesInput().stream()
+                .map(CarName::of)
+                .collect(Collectors.toList());
+    }
+
+    private List<String> parseCarNamesInput() {
+        String carNames = scanner.nextLine();
+        return Arrays.asList(carNames.split(CAR_NAMES_INPUT_DELIMITER));
     }
 }

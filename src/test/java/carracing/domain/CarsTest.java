@@ -25,7 +25,7 @@ class CarsTest {
     private Cars createCars(int[] carPositions) {
         List<Car> cars = new ArrayList<>();
         for (int carPosition : carPositions) {
-            cars.add(Car.of(carPosition));
+            cars.add(Car.of(Position.of(carPosition), CarName.of("car"+carPosition)));
         }
         return Cars.of(cars);
     }
