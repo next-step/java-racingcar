@@ -4,6 +4,8 @@ public class Car {
     private int moveDistance;
     private String moveStatus;
 
+    private static final int MOVE_CRITERION = 4;
+
     public Car() {
         this.moveDistance = 0;
         this.moveStatus = new String();
@@ -17,8 +19,8 @@ public class Car {
         return moveStatus;
     }
 
-    public void moveForward() {
-        if (checkProgressPossible(CarUtils.getNumberForMovement())) {
+    public void moveForward(int number) {
+        if (checkProgressPossible(number)) {
             addMoveDistance();
             updateMoveStatus();
         }
@@ -32,10 +34,7 @@ public class Car {
         this.moveStatus += "-";
     }
 
-    public boolean checkProgressPossible(int number) {
-        if (number >= 4) {
-            return true;
-        }
-        return false;
+    private boolean checkProgressPossible(int number) {
+        return number >= MOVE_CRITERION;
     }
 }

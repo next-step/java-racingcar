@@ -2,9 +2,8 @@ package step3;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,40 +17,26 @@ class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1:false", "2:false", "4:true", "5:true"}, delimiter = ':')
-    @DisplayName("4이상인지 아닌지 판별한다.")
-    void check_possible_moving(int input, boolean expected) {
-
-        boolean result = car.checkProgressPossible(input);
-
-        assertThat(result).isEqualTo(expected);
-    }
-
-    @Test
-    @DisplayName("이동거리가 늘어나는지 테스트한다.")
-    void add_move_distance() {
-        //given
-        int expected = 1;
-        car.addMoveDistance();
-
+    @ValueSource(ints = {4,5,6,7,8,9})
+    @DisplayName("4이상이동거리가 인 경우 이동한다.")
+    void add_move_distance(int input) {
         //when
+        car.moveForward(input);
         int getMoveDistance = car.getMoveDistance();
 
         //then
-        assertThat(getMoveDistance).isEqualTo(expected);
+        assertThat(getMoveDistance).isEqualTo(1);
     }
 
-    @Test
-    @DisplayName("이동거리 상태가 늘어나는지 테스트한다.")
-    void add_move_status() {
-        //given
-        String expected = "-";
-        car.updateMoveStatus();
-
+    @ParameterizedTest
+    @ValueSource(ints = {0,1,2,3})
+    @DisplayName("3 이하인 경우 이동하지 않는다.")
+    void add_move_status(int input) {
         //when
-        String getMoveStatus = car.getMoveStatus();
+        car.moveForward(input);
+        int getMoveDistance = car.getMoveDistance();
 
         //then
-        assertThat(getMoveStatus).isEqualTo(expected);
+        assertThat(getMoveDistance).isEqualTo(0);
     }
 }
