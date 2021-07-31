@@ -41,9 +41,6 @@ public class AutomobileRaceService {
 	private boolean getRaceStatus() {
 		Random rand = new Random();
 		int number =  rand.nextInt(10);
-		if(number >= 4) {
-			return true;
-		}
-		return false;
+		return number >= 4;
 	}
 }
