@@ -1,4 +1,6 @@
-import enums.Operator;
+package step2;
+
+import step2.enums.Operator;
 
 import java.util.Objects;
 
