@@ -4,7 +4,7 @@ public class RacingCar {
 
     private int drivenDistance;
 
-    private ForwardPolicy forwardPolicy;
+    private final ForwardPolicy forwardPolicy;
 
     public RacingCar() {
         this.drivenDistance = 0;

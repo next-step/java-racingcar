@@ -15,4 +15,8 @@ public class PrintService {
         return distance.toString();
     }
 
+    public static void printEmptyLine(){
+        System.out.println();
+    }
+
 }
