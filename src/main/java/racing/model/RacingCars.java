@@ -2,6 +2,7 @@ package racing.model;
 
 import java.util.*;
 
+import static java.util.Collections.max;
 import static java.util.stream.Collectors.toList;
 
 public class RacingCars {
@@ -49,15 +50,9 @@ public class RacingCars {
     }
 
     public List<RacingCar> findWinners() {
-        RacingCar fastestRacingCar = findFastestCar();
+        RacingCar fastestRacingCar = max(racingCars);
         return racingCars.stream()
                 .filter(racingCar -> racingCar.isEqualPosition(fastestRacingCar))
                 .collect(toList());
-    }
-
-    private RacingCar findFastestCar() {
-        return racingCars.stream()
-                .max(RacingCar::compareTo)
-                .get();
     }
 }

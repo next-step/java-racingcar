@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 
 @DisplayName("자동차 이름 테스트")
 public class RacingCarNameTest {
@@ -17,7 +16,7 @@ public class RacingCarNameTest {
         String name = "aiden";
 
         // when
-        RacingCarName racingCarName = RacingCarName.valueOf(name);
+        RacingCarName racingCarName = new RacingCarName(name);
 
         // then
         assertEquals(racingCarName.getName(), name);
@@ -31,7 +30,7 @@ public class RacingCarNameTest {
 
         // when, then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> RacingCarName.valueOf(name))
+                .isThrownBy(() -> new RacingCarName(name))
                 .withMessage("자동차 이름이 비었습니다.");
     }
 
@@ -43,7 +42,7 @@ public class RacingCarNameTest {
 
         // when, then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> RacingCarName.valueOf(name))
+                .isThrownBy(() -> new RacingCarName(name))
                 .withMessage("자동차 이름이 비었습니다.");
     }
 
@@ -55,14 +54,7 @@ public class RacingCarNameTest {
 
         // when, then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> RacingCarName.valueOf(name))
+                .isThrownBy(() -> new RacingCarName(name))
                 .withMessage("자동차 이름은 5자를 넘을 수 없습니다.");
-    }
-
-    @DisplayName("이전에 이미 생성된 RacingCarName 객체와 이름이 같으면, 같은 객체를 재사용한다.")
-    @Test
-    public void sameNameReuseTest() {
-        // given, when, then
-        assertSame(RacingCarName.valueOf("aiden"), RacingCarName.valueOf("aiden"));
     }
 }

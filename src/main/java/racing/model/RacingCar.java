@@ -5,7 +5,7 @@ public class RacingCar implements Comparable<RacingCar> {
     private final RacingCarPosition position;
 
     RacingCar(String name) {
-        this.name = RacingCarName.valueOf(name);
+        this.name = new RacingCarName(name);
         this.position = new RacingCarPosition();
     }
 
@@ -28,7 +28,7 @@ public class RacingCar implements Comparable<RacingCar> {
     }
 
     @Override
-    public int compareTo(RacingCar racingCar) {
-        return position.compareTo(racingCar.position);
+    public int compareTo(RacingCar otherRacingCar) {
+        return position.compareTo(otherRacingCar.position);
     }
 }
