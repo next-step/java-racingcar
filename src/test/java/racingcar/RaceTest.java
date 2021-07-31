@@ -26,8 +26,8 @@ class RaceTest {
     }
 
     private void assertFinalLapDistance(RaceResult result, int expectedDistance) {
-        for (Distance distance : result.getLastLap().getDistances()) {
-            assertThat(distance).isEqualTo(new Distance(expectedDistance));
+        for (Record record : result.getLastLap().getRecords()) {
+            assertThat(record.getDistance()).isEqualTo(expectedDistance);
         }
     }
 }

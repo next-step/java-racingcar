@@ -18,8 +18,8 @@ class LapsTest {
         laps.record(cars);
 
         for (Lap lap : laps) {
-            for (Distance distance : lap.getDistances()) {
-                assertThat(distance.getDistance()).isIn(1, 2);
+            for (Record record : lap.getRecords()) {
+                assertThat(record.getDistance()).isIn(1, 2);
             }
         }
     }
