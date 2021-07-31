@@ -17,6 +17,13 @@ public class CarRacing {
         return cars;
     }
 
+    private void startCars(ArrayList<Car> cars) {
+        for (Car car : cars) {
+            int position = car.go(randomMovigStrategy);
+            ResultView.printPosition(position);
+        }
+    }
+
     void start(int numberOfCars, int numberOfRacing) {
         if (numberOfCars <= 0 || numberOfRacing <= 0) {
             throw new IllegalArgumentException("레이싱 시작을 하기 위한 숫자 값이 올바르지 않습니다.");
@@ -26,11 +33,7 @@ public class CarRacing {
 
         for (int round = 1; round <= numberOfRacing; round++) {
             ResultView.divideRound(round);
-
-            for (Car car : cars) {
-                int position = car.go(randomMovigStrategy);
-                ResultView.printPosition(position);
-            }
+            startCars(cars);
         }
     }
 }
