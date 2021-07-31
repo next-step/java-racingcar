@@ -5,8 +5,8 @@ public class Race {
     private final int tryNum;
     private final RaceStrategy strategy;
 
-    public Race(int carNum, int tryNum, RaceStrategy strategy) {
-        this.cars = new Cars(carNum);
+    public Race(Cars cars, int tryNum, RaceStrategy strategy) {
+        this.cars = cars;
         this.tryNum = tryNum;
         this.strategy = strategy;
     }
