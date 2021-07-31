@@ -1,14 +1,16 @@
 import racingCar.domain.RacingManager;
+import racingCar.domain.StringUtils;
 import racingCar.ui.InputService;
 
 public class RacingCarApplication {
 
     public static void main(String[] args) {
+        //pobi,crong,honux
 
         RacingManager racingManager = new RacingManager(
-            InputService.getNumberOfCar(), InputService.getTryCount()
+            StringUtils.namesSpliter(InputService.getCarNameString()), InputService.getTryCount()
         );
-        racingManager.generateCars();
+
         racingManager.doFullRace();
     }
 }

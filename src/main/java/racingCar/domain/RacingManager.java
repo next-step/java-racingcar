@@ -82,6 +82,12 @@ public class RacingManager {
         }
     }
 
+    private void showCurrentDrivenDistanceWithName() {
+        for (RacingCar car : cars) {
+            PrintService.printDistanceWithName(car.showDrivenDistance(), car.getCarName());
+        }
+    }
+
     public void doFullRace() {
         System.out.println("실행 결과");
         for (int i = 0; i < tryCount; i++) {
