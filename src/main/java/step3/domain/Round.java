@@ -35,8 +35,5 @@ public class Round {
     public int getCarCount() {
         return carRunResults.size();
     }
-
-//    public int getCarCount() {
-//        return carRunResults.size();
-//    }
+    
 }
