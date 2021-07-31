@@ -11,7 +11,6 @@ class RacingManagerTest {
     @Test
     void generate_0_car_test() {
         RacingManager racingManager = new RacingManager();
-        racingManager.generateCars();
         assertThat(racingManager.getCarsArraySize()).isEqualTo(racingManager.getNumberOfCar());
         assertThat(racingManager.getCarsArraySize()).isEqualTo(0);
     }
@@ -20,7 +19,6 @@ class RacingManagerTest {
     @Test
     void generate_4_car_test() {
         RacingManager racingManager = new RacingManager(4);
-        racingManager.generateCars();
         assertThat(racingManager.getCarsArraySize()).isEqualTo(racingManager.getNumberOfCar());
         assertThat(racingManager.getCarsArraySize()).isEqualTo(4);
     }

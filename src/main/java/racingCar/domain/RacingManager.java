@@ -35,22 +35,38 @@ public class RacingManager {
         this.numberOfCar = 0;
         this.tryCount = 0;
         numberGenerator = new RandomNumberGenerator();
+        generateCars();
     }
 
     public RacingManager(int numberOfCar) {
         this.numberOfCar = numberOfCar;
         numberGenerator = new RandomNumberGenerator();
+        generateCars();
     }
 
     public RacingManager(int numberOfCar, int tryCount) {
         this.numberOfCar = numberOfCar;
         this.tryCount = tryCount;
         numberGenerator = new RandomNumberGenerator();
+        generateCars();
     }
 
-    public void generateCars() {
+    public RacingManager(String[] names, int tryCount) {
+        this.numberOfCar = names.length;
+        this.tryCount = tryCount;
+        numberGenerator = new RandomNumberGenerator();
+        generateCars(names);
+    }
+
+    private void generateCars() {
         for (int i = 0; i < numberOfCar; i++) {
             this.cars.add(new RacingCar());
+        }
+    }
+
+    private void generateCars(String[] names) {
+        for (int i = 0; i < numberOfCar; i++) {
+            this.cars.add(new RacingCar(names[i]));
         }
     }
 
@@ -71,7 +87,7 @@ public class RacingManager {
         for (int i = 0; i < tryCount; i++) {
             doOneLap();
             PrintService.printEmptyLine();
-            showCurrentDrivenDistance();
+            showCurrentDrivenDistanceWithName();
         }
     }
 
