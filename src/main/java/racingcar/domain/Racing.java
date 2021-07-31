@@ -8,11 +8,9 @@ import static racingcar.utils.RandomGenerate.pickRandomNumber;
 public class Racing {
 
     private final Car[] racingCars;
-    private final MoveStrategy moveStrategy;
 
     public Racing(String[] carNames) {
         racingCars = new Car[carNames.length];
-        moveStrategy = new RacingMoveStrategy();
         addCars(carNames);
     }
 
