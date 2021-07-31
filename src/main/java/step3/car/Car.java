@@ -8,15 +8,15 @@ public class Car {
 
     private int movedDistance = 0;
 
-    public void tryMove(int randomValue) {
-        validateRandomValue(randomValue);
+    public void tryMove(int value) {
+        validateValue(value);
 
-        if (isMoveCondition(randomValue))
+        if (isMoveCondition(value))
             move();
     }
 
-    private void validateRandomValue(int randomValue) {
-        if (randomValue < VALUE_LOWER_BOUND || randomValue >= VALUE_UPPER_BOUND)
+    private void validateValue(int value) {
+        if (value < VALUE_LOWER_BOUND || value >= VALUE_UPPER_BOUND)
             throw new IllegalArgumentException();
     }
 

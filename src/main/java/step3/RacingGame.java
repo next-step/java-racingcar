@@ -5,12 +5,10 @@ import step3.view.result.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
 
     private static final int GAME_COUNT_LOWER_BOUND = 0;
-    private static final int RANDOM_VALUE_UPPER_BOUND = 10;
 
     private int remainGameCount;
     private final List<Car> cars;
@@ -22,11 +20,13 @@ public class RacingGame {
         resultView.printTitle();
     }
 
-    public void race() {
-        remainGameCount--;
-        validateRemainGameCount();
-        tryMoveCars();
-        checkProgressOfRacing();
+    public void race(int gameCount) {
+        for (int i = 1; i <= gameCount; i++) {
+            remainGameCount--;
+            validateRemainGameCount();
+            tryMoveCars();
+            checkProgressOfRacing();
+        }
     }
 
     private void validateRemainGameCount() {
@@ -40,9 +40,8 @@ public class RacingGame {
     }
 
     private void tryMoveCars() {
-        Random random = new Random();
         for (int i = 0; i < cars.size(); i++) {
-            int randomValue = random.nextInt(RANDOM_VALUE_UPPER_BOUND);
+            int randomValue = RandomValueGenerator.generate();
             Car car = cars.get(i);
             car.tryMove(randomValue);
         }

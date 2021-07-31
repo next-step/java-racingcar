@@ -16,7 +16,7 @@ class RacingGameTest {
     @CsvSource(value = {"3,5", "3,3"})
     void race(int tryCount, int carCount) {
         racingGame = new RacingGame(tryCount, carCount);
-        assertDoesNotThrow(() -> racingGame.race());
+        assertDoesNotThrow(() -> racingGame.race(tryCount));
     }
 
     @ParameterizedTest
@@ -26,10 +26,6 @@ class RacingGameTest {
         racingGame = new RacingGame(tryCount, carCount);
 
         int limitOverTryCount = tryCount + 1;
-        assertThrows(IllegalStateException.class, () -> {
-            for (int i = 1; i <= limitOverTryCount; i++) {
-                racingGame.race();
-            }
-        });
+        assertThrows(IllegalStateException.class, () -> racingGame.race(limitOverTryCount));
     }
 }

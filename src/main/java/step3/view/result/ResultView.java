@@ -14,11 +14,11 @@ public class ResultView {
     }
 
     public void printRacingResult(List<Car> cars) {
-        cars.forEach(this::printCarMovedDistance);
+        cars.forEach(this::printCarPosition);
         System.out.println();
     }
 
-    private void printCarMovedDistance(Car car) {
+    private void printCarPosition(Car car) {
         StringBuilder sb = new StringBuilder();
         Position currentPosition = car.getCurrentPosition();
         int value = currentPosition.getValue();
