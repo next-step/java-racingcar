@@ -10,7 +10,7 @@ public class CarTest {
     public void getMove() {
 
         int range = 10;
-        Car car = new Car();
+        Car car = new Car("myCar");
         assertThat(car.getMove(range)).isBetween(0,range);
     }
 
@@ -18,7 +18,7 @@ public class CarTest {
     public void moveCar() {
 
         int range = 10;
-        Car car = new Car();
+        Car car = new Car("myCar");
         car.moveCar(range);
 
         assertThat(car.getCurrentLocation()).isNotEqualTo(0);

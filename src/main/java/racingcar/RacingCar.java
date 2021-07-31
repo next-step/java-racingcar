@@ -16,12 +16,17 @@ public class RacingCar {
 
     private final String[] carNames;   // 자동차 대 수
     private final int moveCount; // 자동차 이동 횟수
-    private final int range = 10; // 자동차 최대 이동거리
+    private final int range; // 자동차 최대 이동거리
+    private List<Car> cars;
+    private RacingCarResultView view;
 
-    public RacingCar(String[] carNames, int moveCount) {
+    public RacingCar(String[] carNames, int moveCount, int range) {
 
         this.carNames = carNames;
         this.moveCount = moveCount;
+        this.range = range;
+        this.cars = new ArrayList<Car>();
+        this.view = new RacingCarResultView();
     }
 
     /**
@@ -29,12 +34,20 @@ public class RacingCar {
      * @return List<Car>
      */
     public List<Car> createAsCarsNumberOfEnteredByUser() {
-
-        List<Car> cars = new ArrayList<Car>();
         for (int i = 0; i < this.carNames.length; i++) {
-            Car car = new Car();
-            car.setCarName(this.carNames[i]);
-            cars.add(car);
+            Car car = new Car(this.carNames[i]);
+            this.cars.add(car);
+        }
+        return this.cars;
+    }
+
+    /**
+     * 준비된 Car 객채들 끼리의 경주를 시작합니다.
+     */
+    public List<Car> doRacingStart(List<Car> cars) {
+
+        for (int i = 0; i < this.moveCount; i++) {
+            moveAsCarUserEntered(cars);
         }
         return cars;
     }
@@ -46,27 +59,14 @@ public class RacingCar {
     public void moveAsCarUserEntered(List<Car> cars) {
 
         for (Car car : cars) {
-            car.moveCar(range);
+            car.moveCar(this.range);
         }
 
-        drawCarMoving(cars);
+        this.view.drawCarMoving(cars);
     }
 
     /**
-     * 준비된 Car 객채들 끼리의 경주를 시작합니다.
-     */
-    public List<Car> doRacingStart(List<Car> cars) {
-
-        System.out.println();
-        System.out.println("실행 결과");
-        for (int i = 0; i < this.moveCount; i++) {
-            moveAsCarUserEntered(cars);
-        }
-        return cars;
-    }
-
-    /**
-     * 승리한 자동차를 반환합니다.
+     * 가장 멀리 이동한 자동차들을 반환합니다.
      * @param cars
      * @return
      */
@@ -76,13 +76,16 @@ public class RacingCar {
 
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getCurrentLocation() == winnerLocation) {
-                winners.add(car);
-            }
+            addWinnerCar(winnerLocation, winners, car);
         }
 
         return winners;
+    }
 
+    private void addWinnerCar(int winnerLocation, List<Car> winners, Car car) {
+        if (car.getCurrentLocation() == winnerLocation) {
+            winners.add(car);
+        }
     }
 
     /**
@@ -107,49 +110,11 @@ public class RacingCar {
      * RacingCar 실행함수
      */
     public void start() {
-
         List<Car> carsAfterTheRace = this.doRacingStart(this.createAsCarsNumberOfEnteredByUser());
-        List<Car> winners = this.getWinners(carsAfterTheRace);
-        drawWinnerView(winners);
+        this.view.drawWinnerView(this.getWinners(carsAfterTheRace));
     }
 
-    /**
-     * RacingCar 승자를 그립니다.
-     * @param winners
-     */
-    public void drawWinnerView(List<Car> winners) {
-
-        StringBuffer sb = new StringBuffer();
-        for (Car winner : winners) {
-            sb.append(winner.getCarName() + ",");
-        }
-        System.out.println(sb.toString().substring(0,sb.toString().lastIndexOf(',')) + "가 최종 우승했습니다.");
+    public List<Car> getCars() {
+        return cars;
     }
-
-    /**
-     * 자동차들이 이동하는것을 그립니다.
-     * @param cars
-     */
-    public void drawCarMoving(List<Car> cars) {
-
-        for (Car car : cars) {
-            drawUI(car);
-        }
-        System.out.println();
-    }
-
-    /**
-     * 자동차가 움직인 만큼 UI 를 그립니다.
-     * @param car
-     */
-    public void drawUI(Car car) {
-
-        System.out.printf(car.getCarName() + " : ");
-        for (int j = 0; j < car.getCurrentLocation(); j++) {
-            System.out.printf("-");
-        }
-        System.out.println();
-    }
-
-
 }
