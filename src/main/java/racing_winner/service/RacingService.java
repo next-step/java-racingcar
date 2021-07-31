@@ -9,11 +9,9 @@ import java.util.List;
 
 public class RacingService {
 
-    private String[] carList;
-
     public List<RacingCar> setInitialCarList(int round, String carNames){
         RacingUtils.checkInputValue(round, carNames);
-        carList = RacingUtils.splitCarArray(carNames);
+        String[] carList = RacingUtils.splitCarArray(carNames);
         RacingUtils.checkValidateArray(carList);
 
         List<RacingCar> racingCarList = new ArrayList<>();
@@ -45,7 +43,7 @@ public class RacingService {
         return racingCarList;
     }
 
-    public static String findWinners(List<RacingCar> racingCarList) {
+    public String findWinners(List<RacingCar> racingCarList) {
         String winner = "";
         int maxDistance = RacingUtils.measureMaxDistance(racingCarList);
         for(RacingCar racingCar : racingCarList){
