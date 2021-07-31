@@ -1,7 +1,7 @@
 package racingCar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,5 +22,13 @@ class StringUtilsTest {
     @ParameterizedTest()
     void string_length_test(String name, boolean expect) {
         assertThat(StringUtils.checkStringLength(name)).isEqualTo(expect);
+    }
+
+    @DisplayName("문자열 길이가 6이상이면 에러가 발생하는지 테스트")
+    @Test
+    void possible_name_test() {
+        String name = "sponge";
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> StringUtils.isPossibleName(name));
     }
 }
