@@ -56,4 +56,10 @@ public class RacingCarTest {
         assertThat(racingCar.showDrivenDistance()).isEqualTo(0);
     }
 
+    @DisplayName("차량 이름 설정 테스트")
+    @Test
+    void car_name_test() {
+        RacingCar racingCar = new RacingCar("Tesla");
+        assertThat(racingCar.getCarName()).isEqualTo("Tesla");
+    }
 }
