@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class CarNameTest {
 
-	private final static int MAX_NAME_LENGTH = 5;
+	private static final int MAX_NAME_LENGTH = 5;
 	private CarName carName;
 
 	@Test
