@@ -21,4 +21,17 @@ public class CarRacingGameTest {
     assertThat(carCount).isEqualTo(Integer.parseInt(userMatchNumber));
   }
 
+  @Test
+  public void carRacingGameRepeatNumberInputTest() {
+    String userMatchNumber = "5";
+    InputStream in = new ByteArrayInputStream(userMatchNumber.getBytes());
+    System.setIn(in);
+
+    CarRacingGame carRacingGame = new CarRacingGame();
+    int carCount = carRacingGame.getRacingGameRepeatNumber();
+    System.out.println(userMatchNumber);
+    assertThat(carCount).isEqualTo(Integer.parseInt(userMatchNumber));
+  }
+
+
 }
