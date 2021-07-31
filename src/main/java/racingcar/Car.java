@@ -16,20 +16,16 @@ public class Car {
     private int currentLocation = 0;
     private final int minLocation = 3;
 
+    public Car(String carName) {
+        this.carName = carName;
+    }
+
     public int getCurrentLocation() {
         return currentLocation;
     }
 
-    public void setCurrentLocation(int currentLocation) {
-        this.currentLocation = currentLocation;
-    }
-
     public String getCarName() {
         return carName;
-    }
-
-    public void setCarName(String carName) {
-        this.carName = carName;
     }
 
     /**
@@ -48,8 +44,8 @@ public class Car {
     public void moveCar(int range) {
 
         int move = getMove(range);
-        if(move > minLocation) {
-            this.setCurrentLocation(this.getCurrentLocation() + move);
+        if (move > minLocation) {
+            this.currentLocation = (this.getCurrentLocation() + move);
         }
     }
 }
