@@ -10,6 +10,12 @@ public class StringUtils {
         return names.split(",");
     }
 
+    public static void isPossibleName(String name){
+        if(!checkStringLength(name)){
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static boolean checkStringLength(String name){
         return name.length() <= THRESHOLD;
     }
