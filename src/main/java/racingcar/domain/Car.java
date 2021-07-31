@@ -1,24 +1,25 @@
 package racingcar.domain;
 
+import racingcar.utils.MovingStrategy;
+
 import java.util.Objects;
 
 public class Car {
-    private static final int MOVE_NUM = 4;
     private CarName name;
-    private int position;
+    private CarPosition position;
 
     public Car(String name) {
         this.name = new CarName(name);
-        this.position = 0;
+        position = new CarPosition();
     }
 
-    public void move(int randomNumber) {
-        if(isMove(randomNumber)){
-            this.position++;
+    public void move(MovingStrategy movingStrategy) {
+        if(movingStrategy.isMoving()){
+            this.position.addOne();
         }
     }
 
-    public int getPosition() {
+    public CarPosition getPosition() {
         return position;
     }
 
@@ -26,12 +27,8 @@ public class Car {
         return this.name.getName();
     }
 
-    public boolean isMove(int randomNumber) {
-        return randomNumber >= MOVE_NUM;
-    }
-
-    public boolean isMoreThan(int tempWinnerPosition){
-        return tempWinnerPosition<=this.position;
+    public boolean isMoreThan(CarPosition tempWinnerPosition){
+        return this.position.isMoreThan(tempWinnerPosition);
     }
 
     @Override

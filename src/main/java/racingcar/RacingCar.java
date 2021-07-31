@@ -2,7 +2,7 @@ package racingcar;
 
 import racingcar.domain.Cars;
 import racingcar.domain.Winners;
-import racingcar.ui.ResultView;
+import racingcar.view.ResultView;
 
 import static racingcar.utils.StringUtils.inputStringSeparator;
 
