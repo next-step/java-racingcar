@@ -2,20 +2,19 @@ package racingcar.domain;
 
 public class Car {
 
-    private MoveStrategy moveStrategy;
+    private static final MoveStrategy moveStrategy = new RacingMoveStrategy();
     private final String name;
     private int position;
 
-    public Car(MoveStrategy moveStrategy) {
-        this(moveStrategy, "unknown", 0);
+    public Car() {
+        this("unknown");
     }
 
-    public Car(MoveStrategy moveStrategy, String name) {
-        this(moveStrategy, name, 0);
+    public Car(String name) {
+        this(name, 0);
     }
 
-    public Car(MoveStrategy moveStrategy, String name, int position) {
-        this.moveStrategy = moveStrategy;
+    public Car(String name, int position) {
         this.name = name;
         this.position = position;
     }

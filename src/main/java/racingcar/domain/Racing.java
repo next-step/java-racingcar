@@ -18,7 +18,7 @@ public class Racing {
 
     private void addCars(String[] carNames) {
         for (int i = 0; i < carNames.length; i++) {
-            racingCars[i] = new Car(moveStrategy, carNames[i], 0);
+            racingCars[i] = new Car(carNames[i]);
         }
     }
 
