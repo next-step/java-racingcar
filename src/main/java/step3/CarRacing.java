@@ -5,20 +5,20 @@ import java.util.List;
 
 public class CarRacing {
 
-    private List<Car> carList;
+    private List<Car> cars;
 
     public CarRacing(int carCount) {
-        this.carList = new ArrayList<>();
+        this.cars = new ArrayList<>();
 
         for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+            cars.add(new Car());
         }
     }
 
     public List<Car> racing() {
-        for (Car car : carList) {
-            car.moveForward();
+        for (Car car : cars) {
+            car.moveForward(CarUtils.getNumberForMovement());
         }
-        return carList;
+        return cars;
     }
 }
