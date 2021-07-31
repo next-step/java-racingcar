@@ -17,7 +17,6 @@ class WinnerTest {
 
     @BeforeEach
     void init() {
-
         cars = Car.createCars(carList);
         cars.get(0).move(new RandomUtil());
         cars.get(1).move(new RandomUtil());
@@ -29,7 +28,7 @@ class WinnerTest {
     @Test
     @DisplayName("우승자 출력 테스트")
     void 우승자출력() {
-        Assertions.assertThat(winner.getWinnerList().get(0)).isEqualTo(cars.get(0).getName());
+        Assertions.assertThat(winner.getWinners().get(0)).isEqualTo(cars.get(0).getName());
     }
 
 }

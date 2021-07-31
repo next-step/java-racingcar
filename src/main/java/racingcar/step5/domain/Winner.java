@@ -1,38 +1,35 @@
 package racingcar.step5.domain;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Winner {
-    private int maxDistance = 0;
     private List<Car> cars;
-    private List<String> winners = new ArrayList<>();
 
     public Winner(List<Car> cars) {
         this.cars = cars;
     }
 
-    public List<String> getWinnerList() {
+    public List<String> getWinners() {
+        List<String> winners = new ArrayList<>();
         Collections.sort(cars);
-        findWinners();
+        findWinners(winners);
         return winners;
-
     }
 
-    private void findWinners() {
-        maxDistance = cars.get(0).getDistance();
+    private void findWinners(List<String> winners) {
         for (Car car : cars) {
-            addWinner(car);
+            addWinner(car, winners);
         }
     }
 
-    private void addWinner(Car car) {
+    private List<String> addWinner(Car car, List<String> winners) {
+        int maxDistance = cars.get(0).getDistance();
         if (car.getDistance() == maxDistance) {
             winners.add(car.getName());
         }
+        return winners;
     }
-
 }
 
