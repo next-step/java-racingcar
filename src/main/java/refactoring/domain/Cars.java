@@ -24,7 +24,7 @@ public class Cars {
 	}
 
 	public RacingRecord ofRecord() {
-		return RacingRecord.of(cars);
+		return new RacingRecord(cars);
 	}
 
 	public void move(Moveable moveable) {

@@ -8,12 +8,8 @@ public class RacingRecord {
 
 	private final List<Car> cars;
 
-	private RacingRecord(List<Car> cars) {
+	public RacingRecord(List<Car> cars) {
 		this.cars = cars;
-	}
-
-	public static RacingRecord of(List<Car> cars) {
-		return new RacingRecord(cars);
 	}
 
 	public List<Car> getRecords() {
