@@ -12,6 +12,7 @@ public class RacingCar {
     }
 
     public RacingCar(String carName) {
+        StringUtils.isPossibleName(carName);
         this.CarName = carName;
         this.drivenDistance = 0;
         this.forwardPolicy = new ForwardPolicyImpl();
