@@ -13,6 +13,7 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SetTest {
+
     private Set<Integer> numbers;
 
     @BeforeEach
@@ -34,7 +35,7 @@ public class SetTest {
     //ParameterizedTest를 활용한 중복 코드 제거 테스트를 작성한다.
     @DisplayName("ParameterizedTest, ValueSource을 사용한 테스트")
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
+    @ValueSource(ints = {1, 2, 3})
     void removeReduplicationTest1(int input) {
         assertThat(numbers.contains(input)).isTrue();
     }
@@ -42,7 +43,7 @@ public class SetTest {
     @DisplayName("ParameterizedTest, CsvSource를 사용한 테스트")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void removeReduplicationTest2(int input, boolean expect){
+    void removeReduplicationTest2(int input, boolean expect) {
         assertThat(numbers.contains(input)).isEqualTo(expect);
     }
 }
