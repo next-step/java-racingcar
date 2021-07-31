@@ -13,8 +13,8 @@ public class CarTest {
     @DisplayName("차량 생성 테스트")
     public void createCar() {
         // given
-        String name = "iiaii";
-        Car car = new Car(name);
+        CarName carName = new CarName("iiaii");
+        Car car = new Car(carName);
         String expectedName = "iiaii";
         int expectedPosition = 1;
 
@@ -29,8 +29,8 @@ public class CarTest {
     @CsvSource(value = {"0:1", "1:1", "2:1", "3:1", "4:2", "5:2", "6:2", "7:2", "8:2", "9:2"}, delimiter = ':')
     public void moveForward(int randomNumber, int expectedPosition) {
         // given
-        String name = "iiaii";
-        Car car = new Car(name);
+        CarName carName = new CarName("iiaii");
+        Car car = new Car(carName);
 
         // when
         car.moveForwardIfNumberValid(randomNumber);

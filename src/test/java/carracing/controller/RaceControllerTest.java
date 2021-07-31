@@ -1,70 +1,62 @@
 package carracing.controller;
 
-import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
+import carracing.view.CarNameConsoleInput;
+import carracing.view.RaceResultConsoleOutput;
+import carracing.view.RoundConsoleInput;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import carracing.domain.RaceManager;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RaceControllerTest {
 
-    RaceController raceController = new RaceController(new RaceManager());
+    private final RaceController raceController = new RaceController();
 
     @Test
-    @DisplayName("carNames 리스트가 null 인 경우")
-    public void carNamesNull() {
+    @DisplayName("차량 이름 리스트 콘솔 입력 뷰 가져오기 테스트")
+    public void getCarNameConsoleInput() {
         // given
-        List<String> carNames = null;
-        int roundNumber = 3;
-        String message = RaceController.NON_NULL_CAR_NAMES;
 
         // when
-        ThrowingCallable throwingCallable = () -> raceController.play(carNames, roundNumber);
+        CarNameConsoleInput carNameConsoleInput = raceController.getCarNameConsoleInput();
 
         // then
-        assertThatThrownBy(throwingCallable)
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(message);
+        assertThat(carNameConsoleInput)
+                .isNotNull()
+                .isInstanceOf(CarNameConsoleInput.class);
     }
 
     @Test
-    @DisplayName("carNames 리스트가 비어있는 경우")
-    public void carNamesEmpty() {
+    @DisplayName("라운드 수 콘솔 입력 뷰 가져오기 테스트")
+    public void getRoundConsoleInput() {
         // given
-        List<String> carNames = Collections.EMPTY_LIST;
-        int roundNumber = 3;
-        String message = RaceController.NOT_EMPTY_CAR_NAMES;
 
         // when
-        ThrowingCallable throwingCallable = () -> raceController.play(carNames, roundNumber);
+        RoundConsoleInput roundConsoleInput = raceController.getRoundConsoleInput();
 
         // then
-        assertThatThrownBy(throwingCallable)
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(message);
+        assertThat(roundConsoleInput)
+                .isNotNull()
+                .isInstanceOf(RoundConsoleInput.class);
     }
 
-    @ParameterizedTest(name = "입력값이 숫자가 0 보다 같거나 작은 경우 | {arguments}")
-    @CsvSource(value = {"-1:-1", "0:0", "-3:-3"}, delimiter = ':')
-    public void lteZero(int roundNumber, int illegalNumber) {
+    @Test
+    @DisplayName("RaceResult 콘솔 출력 뷰 가져오기 테스트")
+    public void getRaceResultConsoleOutput() {
         // given
         List<String> carNames = Arrays.asList("iiaii", "!!e!!");
-        String message = RaceController.LESS_THAN_OR_EQUAL_ZERO + illegalNumber;
+        int roundNumber = 3;
 
         // when
-        ThrowingCallable throwingCallable = () -> raceController.play(carNames, roundNumber);
+        RaceResultConsoleOutput raceResultConsoleOutput = raceController.getRaceResultConsoleOutput(carNames, roundNumber);
 
         // then
-        assertThatThrownBy(throwingCallable)
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(message);
+        assertThat(raceResultConsoleOutput)
+                .isNotNull()
+                .isInstanceOf(RaceResultConsoleOutput.class);
     }
 
 }

@@ -1,9 +1,16 @@
 package carracing.domain;
 
+import carracing.controller.RaceController;
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class CarNameTest {
@@ -38,5 +45,18 @@ class CarNameTest {
         assertThatThrownBy(throwingCallable)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(message);
+    }
+
+    @ParameterizedTest(name = "getCarName 테스트 | {arguments}")
+    @CsvSource(value = {"iiaii:iiaii", "!!e!!:!!e!!"}, delimiter = ':')
+    public void getCarName(String name, String expected) {
+        // given
+        CarName carName = new CarName(name);
+
+        // when
+        String result = carName.getName();
+
+        // then
+        assertThat(result).isEqualTo(expected);
     }
 }

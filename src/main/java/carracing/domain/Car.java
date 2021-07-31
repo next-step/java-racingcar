@@ -8,8 +8,8 @@ public class Car {
     private final CarName carName;
     private int position;
 
-    public Car(String name) {
-        this.carName = new CarName(name);
+    public Car(CarName carName) {
+        this.carName = carName;
         this.position = START_POSITION;
     }
 

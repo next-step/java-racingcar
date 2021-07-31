@@ -37,27 +37,7 @@ public class RaceResult {
     }
 
     private List<String> extractWinners(List<RoundRecord> roundRecords) {
-        List<CarStatus> carStatuses = getLastRound(roundRecords).getCarStatuses();
-        int winnerPosition = getWinnerPosition(carStatuses);
-        return carStatuses
-                .stream()
-                .filter(carStatus -> isWinner(winnerPosition, carStatus))
-                .map(CarStatus::getName)
-                .collect(Collectors.toList());
-    }
-
-    private int getWinnerPosition(List<CarStatus> carStatuses) {
-        return Collections.max(getPositions(carStatuses));
-    }
-
-    private List<Integer> getPositions(List<CarStatus> carStatuses) {
-        return carStatuses.stream()
-                .map(CarStatus::getPosition)
-                .collect(Collectors.toList());
-    }
-
-    private boolean isWinner(int winnerPosition, CarStatus carStatus) {
-        return carStatus.isEqualToPosition(winnerPosition);
+        return getLastRound(roundRecords).getBestCarNames();
     }
 
     private RoundRecord getLastRound(List<RoundRecord> roundRecords) {
