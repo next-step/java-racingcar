@@ -1,5 +1,7 @@
 package refactoring.domain;
 
+import java.util.Objects;
+
 public class CarDistance {
 
 	private int distance;
@@ -25,5 +27,10 @@ public class CarDistance {
 		CarDistance carDistance = (CarDistance) obj;
 
 		return distance == carDistance.distance;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(distance);
 	}
 }
