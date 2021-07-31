@@ -6,7 +6,7 @@ import racingcar.step5.domain.Car;
 import java.util.List;
 
 public class ResultView {
-    private static String RESULT_MESSAGE = "실행 결과";
+    private static final String RESULT_MESSAGE = "실행 결과";
     private static final String DISTANCE_SYMBOL = "-";
     private static final String DELIMITER = ",";
 

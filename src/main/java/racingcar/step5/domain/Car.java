@@ -23,8 +23,9 @@ public class Car implements Comparable<Car> {
     }
 
     public void move(MoveStrategy moveStrategy) {
-        if (moveStrategy.movable())
+        if (moveStrategy.movable()) {
             distance++;
+        }
     }
 
     public int getDistance() {
