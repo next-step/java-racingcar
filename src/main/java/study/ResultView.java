@@ -1,18 +1,17 @@
 package study;
 
-public class ResultView {
+import java.util.Map;
 
-	private int carCount;
-	private int executionCount;
+public class ResultView {
 
 	public void getResultComment() {
 		System.out.println("실행 결과");
 	}
 
-	public void setValues(int carCount, int executionCount) {
-		this.carCount = carCount;
-		this.executionCount = executionCount;
+	public void startResultView(Map<Integer, String> carContainer) {
+		for(int i = 1 ; i <= carContainer.size() ; ++i) {
+			System.out.println(carContainer.get(i));
+		}
+		System.out.println();
 	}
-
-
 }

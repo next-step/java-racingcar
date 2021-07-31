@@ -1,5 +1,6 @@
 package study;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -10,10 +11,11 @@ public class AutomobileRaceService {
 
 	public AutomobileRaceService(int carCount) {
 		this.carCount = carCount;
+		carContainer = new HashMap<>();
+		setCarContainer();
 	}
 
 	public void startRace() {
-		setCarContainer();
 		for(int i = 1 ; i <= carCount ; ++i) {
 			race(i);
 		}
