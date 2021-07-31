@@ -3,6 +3,8 @@ package step3.car;
 public class Car {
 
     private static final int STAY_THRESHOLD = 3;
+    private static final int VALUE_LOWER_BOUND = 0;
+    private static final int VALUE_UPPER_BOUND = 10;
 
     private int movedDistance = 0;
 
@@ -14,7 +16,7 @@ public class Car {
     }
 
     private void validateRandomValue(int randomValue) {
-        if (randomValue < 0 || randomValue > 9)
+        if (randomValue < VALUE_LOWER_BOUND || randomValue >= VALUE_UPPER_BOUND)
             throw new IllegalArgumentException();
     }
 
@@ -26,7 +28,7 @@ public class Car {
         movedDistance++;
     }
 
-    public int getMovedDistance() {
-        return movedDistance;
+    public Position getCurrentPosition() {
+        return new Position(movedDistance);
     }
 }

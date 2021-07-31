@@ -1,6 +1,6 @@
 package step3;
 
-import step3.view.input.InputDTO;
+import step3.view.input.Input;
 import step3.view.input.InputView;
 
 /**
@@ -10,9 +10,9 @@ public class Main {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        InputDTO inputDTO = inputView.receiveInput();
-        int tryCount = inputDTO.getTryCount();
-        int carCount = inputDTO.getCarCount();
+        Input input = inputView.receiveInput();
+        int tryCount = input.getTryCount();
+        int carCount = input.getCarCount();
 
         RacingGame racingGame = new RacingGame(tryCount, carCount);
         for (int i = 0; i < tryCount; i++) {

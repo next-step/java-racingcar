@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public InputDTO receiveInput() {
+    public Input receiveInput() {
         Scanner scanner = new Scanner(System.in);
         int carCountInput = receiveCarCountInput(scanner);
         int tryCountInput = receiveTryCountInput(scanner);
         scanner.close();
-        return new InputDTO(carCountInput, tryCountInput);
+        return new Input(carCountInput, tryCountInput);
     }
 
     private int receiveCarCountInput(Scanner scanner) {

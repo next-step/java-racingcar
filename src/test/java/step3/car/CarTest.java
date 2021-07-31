@@ -19,8 +19,8 @@ public class CarTest {
         car.tryMove(randomValue);
 
         //then
-        int actual = car.getMovedDistance();
-        assertEquals(1, actual);
+        Position actual = car.getCurrentPosition();
+        assertEquals(new Position(1), actual);
     }
 
     @ParameterizedTest
@@ -31,8 +31,8 @@ public class CarTest {
         car.tryMove(randomValue);
 
         //then
-        int actual = car.getMovedDistance();
-        assertEquals(0, actual);
+        Position actual = car.getCurrentPosition();
+        assertEquals(new Position(0), actual);
     }
 
     @ParameterizedTest

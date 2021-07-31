@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RacingGameTest {
@@ -15,7 +16,7 @@ class RacingGameTest {
     @CsvSource(value = {"3,5", "3,3"})
     void race(int tryCount, int carCount) {
         racingGame = new RacingGame(tryCount, carCount);
-        racingGame.race();
+        assertDoesNotThrow(() -> racingGame.race());
     }
 
     @ParameterizedTest

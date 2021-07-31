@@ -1,11 +1,11 @@
 package step3.view.input;
 
-public class InputDTO {
+public class Input {
 
     private int carCount;
     private int tryCount;
 
-    public InputDTO(int carCount, int tryCount) {
+    public Input(int carCount, int tryCount) {
         this.carCount = carCount;
         this.tryCount = tryCount;
     }
