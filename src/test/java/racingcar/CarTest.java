@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class CarTest {
-    private final Car car = new Car();
+    private final Car car = new Car("test");
 
     @Test
     @DisplayName("move 하면 distance 가 1 증가")

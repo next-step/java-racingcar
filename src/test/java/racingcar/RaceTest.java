@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class RaceTest {
-    private Cars cars = new Cars("a", "b", "c");
-    private Race race = new Race(cars, 2, new MoveRaceStrategy());
+    private Race race = new Race(new Cars("a", "b"), 2, new MoveRaceStrategy());
 
     @Test
     @DisplayName("play 하면 결과로 raceResult 리턴")
@@ -22,7 +21,7 @@ class RaceTest {
     public void playByStrategy() {
         assertFinalLapDistance(race.play(), 2);
 
-        Race notMoveRace = new Race(cars, 2, new NotMoveRaceStrategy());
+        Race notMoveRace = new Race(new Cars("c", "d"), 2, new NotMoveRaceStrategy());
         assertFinalLapDistance(notMoveRace.play(), 0);
     }
 
