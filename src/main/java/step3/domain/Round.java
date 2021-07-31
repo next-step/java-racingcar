@@ -31,4 +31,12 @@ public class Round {
     public List<CarRunResult> getCarRunResults() {
         return carRunResults;
     }
+
+    public int getCarCount() {
+        return carRunResults.size();
+    }
+
+//    public int getCarCount() {
+//        return carRunResults.size();
+//    }
 }

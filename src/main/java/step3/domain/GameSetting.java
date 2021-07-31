@@ -74,4 +74,8 @@ public class GameSetting {
     public RoundCount getRoundCount() {
         return roundCount;
     }
+
+    public int getRoundCountInt() {
+        return roundCount.value();
+    }
 }

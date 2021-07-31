@@ -2,7 +2,6 @@ package step3.domain;
 
 import static java.util.stream.Collectors.groupingBy;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
@@ -19,15 +18,17 @@ public class CarRacingGameResult {
 
     public String getWinnerNames() {
 
-        List<CarRunResult> finalRoundResult = getFinalRoundCarRunResult();
+        Round finalRound = getFinalRound();
 
-        List<CarRunResult> winnerResults = findWinnerResults(finalRoundResult);
+        List<CarRunResult> winnerResults = findWinnerResultsFromRound(finalRound);
 
-        return joiningWinnerNames(winnerResults);
+        return generateWinnerNames(winnerResults);
     }
 
-    private List<CarRunResult> findWinnerResults(List<CarRunResult> finalRoundResult) {
-        return finalRoundResult.stream()
+    private List<CarRunResult> findWinnerResultsFromRound(Round round) {
+        List<CarRunResult> carRunResults = round.getCarRunResults();
+
+        return carRunResults.stream()
             .collect(groupingBy(CarRunResult::getRunDistance))
             .entrySet()
             .stream()
@@ -36,19 +37,22 @@ public class CarRacingGameResult {
             .getValue();
     }
 
-    private String joiningWinnerNames(List<CarRunResult> winnerResults) {
+    private String generateWinnerNames(List<CarRunResult> winnerResults) {
         return winnerResults.stream()
             .map(CarRunResult::getCarNameString)
             .collect(Collectors.joining(NAME_DELIMITER));
     }
 
-    private List<CarRunResult> getFinalRoundCarRunResult() {
-        Round finalRound = playedRounds.get(playedRounds.size() - 1);
-        return finalRound.getCarRunResults();
+    public Round getFinalRound() {
+        return playedRounds.get(playedRounds.size() - 1);
     }
 
     public List<Round> getPlayedRounds() {
         return playedRounds;
+    }
+
+    public int getPlayedRoundsCount() {
+        return playedRounds.size();
     }
 
     public void addRound(Round round) {

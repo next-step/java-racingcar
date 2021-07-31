@@ -5,10 +5,10 @@ import step3.domain.CarRacingGame;
 import step3.domain.CarRacingGameResult;
 import step3.domain.GameSetting;
 import step3.runType.NormalRunStrategy;
-import step3.ui.InputView;
-import step3.ui.ResultView;
+import step3.view.InputView;
+import step3.view.ResultView;
 
-public class Step3Main {
+public class RacingCarGameMain {
 
     public static void main(String[] args) {
 
@@ -18,9 +18,8 @@ public class Step3Main {
         GameSetting gameSetting = new GameSetting(userInputs, new NormalRunStrategy());
 
         CarRacingGame carRacingGame = new CarRacingGame(gameSetting);
-        carRacingGame.gameStart();
+        CarRacingGameResult result = carRacingGame.gameStart();
 
-        CarRacingGameResult result = carRacingGame.getCarRacingGameResult();
         ResultView resultView = ResultView.getInstance();
         resultView.printAllRoundResult(result);
 
