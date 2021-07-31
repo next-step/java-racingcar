@@ -23,7 +23,7 @@ public class RacingGame {
 
 	public List<String> getWinnerResults() {
 		return cars.ofRecord()
-				.getWinnerRecourds()
+				.winRacingCars()
 				.stream()
 				.map(Car::getCarName)
 				.collect(Collectors.toList());

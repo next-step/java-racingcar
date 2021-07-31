@@ -16,13 +16,15 @@ public class RacingRecord {
 		return cars;
 	}
 
-	public List<Car> getWinnerRecourds() {
+	public List<Car> winRacingCars() {
+		Car maxDistanceCar = getMaxDistanceCar();
+
 		return cars.stream()
-				.filter(car -> car.sameWinnerCarDistance(getMaxDistance()))
+				.filter(car -> car.sameWinnerCarDistance(maxDistanceCar))
 				.collect(Collectors.toList());
 	}
 
-	private Car getMaxDistance() {
+	private Car getMaxDistanceCar() {
 		return cars.stream()
 			.max(Comparator.comparingInt(Car::getCarDistance))
 			.orElseThrow(IndexOutOfBoundsException::new);
