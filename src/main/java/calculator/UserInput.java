@@ -21,7 +21,6 @@ public class UserInput {
 
     public String getOperator() {
         String operator = pollInput();
-        checkInputIsArithmeticOperator(operator);
         return operator;
     }
 
@@ -32,14 +31,6 @@ public class UserInput {
     private void checkIfInputIsNull(String input) {
         if (EMPTY_STRING.equals(input.trim())) {
             throw new IllegalArgumentException("사용자 입력은 null이거나 빈 공백 문자열일 수 없습니다.");
-        }
-    }
-
-    private void checkInputIsArithmeticOperator(String operator) {
-        String[] validOperators = new String[]{"+", "-", "*", "/"};
-        boolean isNotValidOperator = Arrays.stream(validOperators).noneMatch(operator::equals);
-        if (isNotValidOperator) {
-            throw new IllegalArgumentException("입력 값에서 홀수번째 문자는 사칙연산자만 가능합니다.");
         }
     }
 
