@@ -9,7 +9,6 @@ package racingcar;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
 
 /**
  * 해당 메소드의 기능은 자동차 경주 게임을 시작합니다.
