@@ -11,8 +11,7 @@ public class ResultView {
 	}
 
 	public static void printRacingResult(List<String> names) {
-		String[] winnerNames = names.toArray(new String[0]);
-		String result = String.join(",", winnerNames);
+		String result = String.join(",", names);
 
 		System.out.println(result + "가 최종 우승했습니다.");
 	}
