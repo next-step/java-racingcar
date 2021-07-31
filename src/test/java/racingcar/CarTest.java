@@ -11,7 +11,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car(new RandomNumberMovingStrategy(new RandomGenerator()));
+        car = new Car(new RandomNumberMovingStrategy(RandomGenerator.getInstance()), "pobi");
     }
 
     @Test
