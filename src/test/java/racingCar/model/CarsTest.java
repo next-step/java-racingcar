@@ -19,11 +19,11 @@ class CarsTest {
     void setUp() {
         cars = new Cars(new String[]{"pobi", "crong", "honux"}, 5);
         List<Car> racingCars = cars.getCars();
-        racingCars.get(2).move(6);
+        racingCars.get(2).move(() -> true);
     }
 
     @Test
-    void move(){
+    void move() {
         assertThat(cars.moveCars()).isEqualTo(cars.getCars());
     }
 

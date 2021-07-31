@@ -27,8 +27,8 @@ public class Cars {
     }
 
     public List<Car> moveCars() {
-        for(Car car: cars){
-            car.move(RandomUtil.getNumber());
+        for (Car car : cars) {
+            car.move(new RandomMovingStrategy());
         }
         return cars;
     }

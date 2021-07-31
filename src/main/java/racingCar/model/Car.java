@@ -3,7 +3,7 @@ package racingCar.model;
 import java.util.Objects;
 
 public class Car {
-    private static final int CAN_MOVE_NUMBER = 4;
+
     private static final int CAR_NAME_MAX_LENGTH = 5;
 
     private String carName;
@@ -16,12 +16,8 @@ public class Car {
         this.carName = carName;
     }
 
-    public boolean canMove(int randomNumber) {
-        return randomNumber >= CAN_MOVE_NUMBER;
-    }
-
-    public int move(int randomNumber) {
-        if (canMove(randomNumber)) {
+    public int move(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) {
             location++;
         }
         return location;
