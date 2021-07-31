@@ -1,27 +1,39 @@
 package racing.view;
 
-import racing.model.CarModel;
-import racing.model.RacingModel;
+import racing.model.Car;
+import racing.model.Cars;
+import racing.model.Racing;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingView {
 
-    private static final String moveText = "-";
+    private static final String MOVE_TEXT = "-";
+    private static final String WIN_MESSAGE = "%s가 최종 우승했습니다.";
 
-    void printMoveLine(int carMove) {
-        for (int i=0; i<carMove; i++) {
-            System.out.print(moveText);
+    static void printMoveLine(Car car) {
+        System.out.print(String.format("%s : ", car.carName()));
+        for (int i=0; i<car.totalDistance(); i++) {
+            System.out.print(MOVE_TEXT);
         }
         System.out.println("");
     }
 
-    public void printCarMove(RacingModel racingModel) {
-        racingModel.participants()
-                .carList()
-                .stream()
-                .forEach(car -> printMoveLine(car.totalDistance()));
+    public static void printCarMove(List<Car> cars) {
+        cars.stream()
+                .forEach(car -> printMoveLine(car));
         System.out.println("");
     }
+
+    public static void printWinner(List<Car> cars) {
+        String message = String.format(WIN_MESSAGE,
+                cars.stream()
+                .map(car -> car.carName())
+                .collect(Collectors.joining(",")));
+
+        System.out.println(message);
+    }
+
 
 }

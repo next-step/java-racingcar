@@ -1,15 +1,16 @@
 package racing;
 
+import racing.model.Racing;
 import racing.view.InputView;
 
 
 public class RacingApplication {
 
     public static void main(String[] args) {
-        int carSize = InputView.getCarSize();
+        String[] carNames = InputView.getCarNames();
         int gameCount = InputView.getGameCount();
-        Racing racing = new Racing();
-        racing.gameStart(carSize, gameCount);
+        RacingGame racingGame = new RacingGame(gameCount);
+        racingGame.gameStart(new Racing(carNames));
     }
 
 }
