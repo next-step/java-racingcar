@@ -1,15 +1,11 @@
 package racingcar;
 
 public class Car {
-    private Distance distance;
+    private Distance distance = new Distance();
     private String name;
 
     public Car(int distance) {
         this.distance = new Distance(distance);
-    }
-
-    public Car() {
-        this(0);
     }
 
     public Car(String name) {
