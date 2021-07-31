@@ -1,32 +1,43 @@
 package racingCar.model;
 
+import java.util.Objects;
+
 public class Car {
 
-    private static final int CAR_NAME_MAX_LENGTH = 5;
-
-    private String carName;
-    private final Position position;
+    private final CarName carName;
+    private Position position;
 
     public Car(String carName) {
-        if (carName.length() > CAR_NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 " + CAR_NAME_MAX_LENGTH + "자를 초과할 수 없습니다.");
-        }
-        this.carName = carName;
-        position = new Position();
+        this.carName = new CarName(carName);
+        this.position = new Position();
     }
 
     public Position move(MovingStrategy movingStrategy) {
         if (movingStrategy.movable()) {
-            return position.move();
+            this.position = position.move();
         }
         return position;
     }
 
     public String getName() {
-        return carName;
+        return carName.getCarName();
     }
 
     public int getPosition(){
         return position.getPosition();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(carName, car.carName) &&
+                Objects.equals(position, car.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName, position);
     }
 }

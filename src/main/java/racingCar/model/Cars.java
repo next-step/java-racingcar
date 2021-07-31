@@ -1,15 +1,12 @@
 package racingCar.model;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-    private List<Car> cars;
-    private int playCount;
+    private final List<Car> cars;
+    private final int playCount;
 
     public Cars(String[] carNames, int playCount) {
         this.cars = makeCars(carNames);
@@ -53,6 +50,17 @@ public class Cars {
         return cars;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars1 = (Cars) o;
+        return playCount == cars1.playCount &&
+                Objects.equals(cars, cars1.cars);
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars, playCount);
+    }
 }

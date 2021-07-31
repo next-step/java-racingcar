@@ -29,7 +29,8 @@ class CarsTest {
 
     @Test
     void findWinner() {
-        assertThat(cars.findWinners())
+        List<Car> winners = cars.findWinners();
+        assertThat(winners)
                 .isEqualTo(Arrays.asList(cars.getCars().get(2)));
     }
 

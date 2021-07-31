@@ -38,16 +38,16 @@ public class ResultView {
 
     public static void printLocation(Car car) {
         System.out.print(car.getName() + NAME_DELIMITER);
-//        for (int i = 0; i < car.getLocation(); i++) {
-//            System.out.print(CAR_MARKING);
-//        }
+        for (int i = 0; i < car.getPosition(); i++) {
+            System.out.print(CAR_MARKING);
+        }
         System.out.println();
     }
 
     public static void printWinner(Cars cars) {
-//        String winners = cars.findWinners().stream()
-//                .map(Car::getName)
-//                .collect(Collectors.joining(SEPARATOR));
-//        System.out.println(winners + RACING_GAME_MESSAGE_WINNER);
+        String winners = cars.findWinners().stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(SEPARATOR));
+        System.out.println(winners + RACING_GAME_MESSAGE_WINNER);
     }
 }
