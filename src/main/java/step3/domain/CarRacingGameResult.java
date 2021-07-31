@@ -2,12 +2,13 @@ package step3.domain;
 
 import static java.util.stream.Collectors.groupingBy;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class CarRacingGameResult {
+
+    private static final String NAME_DELIMITER = ",";
 
     private List<Round> playedRounds;
 
@@ -17,29 +18,44 @@ public class CarRacingGameResult {
 
     public String getWinnerNames() {
 
-        List<CarRunResult> finalRoundResult = getFinalRoundCarRunResult();
+        Round finalRound = getFinalRound();
 
-        List<CarRunResult> winnerResults = finalRoundResult.stream()
+        List<CarRunResult> winnerResults = findWinnerResultsFromRound(finalRound);
+
+        return generateWinnerNames(winnerResults);
+    }
+
+    private List<CarRunResult> findWinnerResultsFromRound(Round round) {
+        List<CarRunResult> carRunResults = round.getCarRunResults();
+
+        return carRunResults.stream()
             .collect(groupingBy(CarRunResult::getRunDistance))
             .entrySet()
             .stream()
-            .max(Comparator.comparing(Entry::getKey))
+            .max(Entry.comparingByKey())
             .get()
             .getValue();
-
-        String winnerNames = winnerResults.stream()
-            .map(CarRunResult::getCarNameString)
-            .collect(Collectors.joining(","));
-
-        return winnerNames;
     }
 
-    private List<CarRunResult> getFinalRoundCarRunResult() {
-        Round finalRound = playedRounds.get(playedRounds.size() - 1);
-        return finalRound.getCarRunResults();
+    private String generateWinnerNames(List<CarRunResult> winnerResults) {
+        return winnerResults.stream()
+            .map(CarRunResult::getCarNameString)
+            .collect(Collectors.joining(NAME_DELIMITER));
+    }
+
+    public Round getFinalRound() {
+        return playedRounds.get(playedRounds.size() - 1);
     }
 
     public List<Round> getPlayedRounds() {
         return playedRounds;
+    }
+
+    public int getPlayedRoundsCount() {
+        return playedRounds.size();
+    }
+
+    public void addRound(Round round) {
+        playedRounds.add(round);
     }
 }

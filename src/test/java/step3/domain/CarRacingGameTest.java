@@ -20,18 +20,15 @@ class CarRacingGameTest {
     void testRacingGamePlay(GameSetting testGameSetting) {
 
         CarRacingGame carRacingGame = new CarRacingGame(testGameSetting);
-        carRacingGame.gameStart();
+        CarRacingGameResult gameResult = carRacingGame.gameStart();
 
-        CarRacingGameResult gameResult = carRacingGame.getCarRacingGameResult();
-        List<Round> playedRounds = gameResult.getPlayedRounds();
+        Round finalRound = gameResult.getFinalRound();
 
-        Round finalRound = playedRounds.get(playedRounds.size() - 1);
-
-        assertThat(playedRounds.size()).isEqualTo(testGameSetting.getRoundCount().getInt());
-        assertThat(finalRound.getCarRunResults().size()).isEqualTo(testGameSetting.getCarCount());
+        assertThat(gameResult.getPlayedRoundsCount()).isEqualTo(testGameSetting.getRoundCountInt());
+        assertThat(finalRound.getCarCount()).isEqualTo(testGameSetting.getCarCount());
 
         for (CarRunResult result : finalRound.getCarRunResults()) {
-            assertThat(result.getRunDistance()).isEqualTo(testGameSetting.getRoundCount().getInt());
+            assertThat(result.getRunDistance()).isEqualTo(testGameSetting.getRoundCountInt());
         }
 
     }

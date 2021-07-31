@@ -15,7 +15,7 @@ class RoundCountTest {
     @DisplayName("시도회수가 1이상이면 예외를 던지지 않는다.")
     void roundCount_ok_values(int count) {
         assertThatCode(() -> {
-            RoundCount roundCount = new RoundCount(count);
+            new RoundCount(count);
         }).doesNotThrowAnyException();
     }
 
@@ -26,7 +26,7 @@ class RoundCountTest {
     void roundCount_ng_values(int count) {
 
         assertThatThrownBy(() -> {
-            RoundCount roundCount = new RoundCount(count);
+            new RoundCount(count);
         }).isInstanceOf(WrongGameSettingException.class);
 
     }

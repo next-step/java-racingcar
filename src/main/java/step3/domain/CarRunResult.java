@@ -15,6 +15,6 @@ public class CarRunResult {
     }
 
     public String getCarNameString() {
-        return carName.getString();
+        return carName.value();
     }
 }

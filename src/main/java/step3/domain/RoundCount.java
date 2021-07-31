@@ -17,7 +17,7 @@ public class RoundCount {
         }
     }
 
-    public int getInt() {
+    public int value() {
         return this.roundCount;
     }
 

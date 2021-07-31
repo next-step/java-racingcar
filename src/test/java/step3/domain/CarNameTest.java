@@ -15,7 +15,7 @@ class CarNameTest {
     @DisplayName("자동차 이름은 5글자 이하라면 아무런 예외없이 생성될수있다.")
     void carName_ok(String carNameString) {
         assertThatCode(() -> {
-            CarName carName = new CarName(carNameString);
+            new CarName(carNameString);
         }).doesNotThrowAnyException();
 
     }
@@ -26,7 +26,7 @@ class CarNameTest {
     void carName_ng(String carNameString) {
 
         assertThatThrownBy(() -> {
-            CarName carName = new CarName(carNameString);
+            new CarName(carNameString);
         }).isInstanceOf(WrongGameSettingException.class);
     }
 }

@@ -15,14 +15,16 @@ public class CarRacingGame {
         this.gameResult = new CarRacingGameResult(playedRounds);
     }
 
-    public void gameStart() {
+    public CarRacingGameResult gameStart() {
         RacingCars cars = new RacingCars(gameSetting);
         playAllRounds(cars);
+
+        return gameResult;
     }
 
 
     private void playAllRounds(RacingCars cars) {
-        int roundCount = gameSetting.getRoundCount().getInt();
+        int roundCount = gameSetting.getRoundCountInt();
 
         for (int i = 0; i < roundCount; i++) {
             playOneRound(cars);
@@ -32,10 +34,7 @@ public class CarRacingGame {
     private void playOneRound(RacingCars cars) {
         Round round = new Round();
         round.start(cars, gameSetting);
-        this.gameResult.getPlayedRounds().add(round);
-    }
 
-    public CarRacingGameResult getCarRacingGameResult() {
-        return this.gameResult;
+        gameResult.addRound(round);
     }
 }

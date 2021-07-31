@@ -2,10 +2,10 @@ package step3.runType;
 
 public class NormalRunStrategy implements RunStrategy {
 
-    public static int NO_PROGRESS_DISTANCE = 0;
-    public static int NORMAL_PROGRESS_DISTANCE = 1;
-    private static int ENGINE_POWER_LIMIT = 9;
-    private static int HIGH_POWER_BOUNDARY = 4;
+    public static final int NO_PROGRESS_DISTANCE = 0;
+    public static final int NORMAL_PROGRESS_DISTANCE = 1;
+    private static final int ENGINE_POWER_LIMIT = 9;
+    private static final int HIGH_POWER_BOUNDARY = 4;
 
     @Override
     public int run() {
