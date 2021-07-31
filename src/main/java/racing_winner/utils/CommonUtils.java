@@ -23,10 +23,19 @@ public class CommonUtils {
         return number >= RANDOM_NUMBER_RULE;
     }
 
-    public static String addComma(String str){
-        if(!str.equals("")){
+    public static boolean checkExistComma(String str){
+        int length = str.length();
+        if(str.equals("")){
+            return true;
+        }
+        String splitStr = str.substring(length-2, length-1);
+        return splitStr.equals(",");
+    }
+
+    public static String addComma(String str1, String str2){
+        if(!str1.equals("") && !checkExistComma(str2)){
             return ", ";
         }
-        return "";
+         return "";
     }
 }

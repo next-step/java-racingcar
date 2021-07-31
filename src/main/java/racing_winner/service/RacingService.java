@@ -47,7 +47,8 @@ public class RacingService {
         String winner = "";
         int maxDistance = RacingUtils.measureMaxDistance(racingCarList);
         for(RacingCar racingCar : racingCarList){
-            winner = racingCar.findMovedMaxDistance(maxDistance, winner);
+            String favorite = racingCar.findMovedMaxDistanceCar(maxDistance);
+            winner += CommonUtils.addComma(winner, favorite) + favorite;
         }
         return winner;
     }
