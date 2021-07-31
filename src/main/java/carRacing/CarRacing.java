@@ -24,9 +24,6 @@ public class CarRacing {
             ResultView.divideRound(round);
 
             for (Car car : cars) {
-                if (car == null) {
-                    throw new NullPointerException("유효하지 않은 car 객체입니다.");
-                }
                 int position = car.go(randomMovigStrategy);
                 ResultView.printPosition(position);
             }
