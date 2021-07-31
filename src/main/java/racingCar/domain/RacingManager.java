@@ -10,21 +10,10 @@ public class RacingManager {
     private int tryCount;
     final private List<RacingCar> cars = new ArrayList<>();
     private final NumberGenerator numberGenerator;
-
-    public void setNumberOfCar(int numberOfCar) {
-        this.numberOfCar = numberOfCar;
-    }
-
-    public void setTryCount(int tryCount) {
-        this.tryCount = tryCount;
-    }
+    private final WinnerPolicy winnerPolicy;
 
     public int getNumberOfCar() {
         return numberOfCar;
-    }
-
-    public int getTryCount() {
-        return tryCount;
     }
 
     public int getCarsArraySize() {
@@ -35,19 +24,14 @@ public class RacingManager {
         this.numberOfCar = 0;
         this.tryCount = 0;
         numberGenerator = new RandomNumberGenerator();
+        winnerPolicy = new WinnerPolicyImpl();
         generateCars();
     }
 
     public RacingManager(int numberOfCar) {
         this.numberOfCar = numberOfCar;
         numberGenerator = new RandomNumberGenerator();
-        generateCars();
-    }
-
-    public RacingManager(int numberOfCar, int tryCount) {
-        this.numberOfCar = numberOfCar;
-        this.tryCount = tryCount;
-        numberGenerator = new RandomNumberGenerator();
+        winnerPolicy = new WinnerPolicyImpl();
         generateCars();
     }
 
@@ -55,6 +39,7 @@ public class RacingManager {
         this.numberOfCar = names.length;
         this.tryCount = tryCount;
         numberGenerator = new RandomNumberGenerator();
+        winnerPolicy = new WinnerPolicyImpl();
         generateCars(names);
     }
 
@@ -95,6 +80,8 @@ public class RacingManager {
             PrintService.printEmptyLine();
             showCurrentDrivenDistanceWithName();
         }
+        PrintService.printEmptyLine();
+        PrintService.printWinners(winnerPolicy.winnerDecision(cars));
     }
 
 }

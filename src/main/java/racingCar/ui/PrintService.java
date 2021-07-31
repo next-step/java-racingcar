@@ -1,5 +1,7 @@
 package racingCar.ui;
 
+import java.util.List;
+
 public class PrintService {
 
     static public void printDistance(int number){
@@ -22,6 +24,11 @@ public class PrintService {
 
     public static void printEmptyLine(){
         System.out.println();
+    }
+
+    public static void printWinners(List<String> winners){
+        String winner = String.join(",",winners);
+        System.out.println(winner + "가 최종 우승했습니다.");
     }
 
 }
