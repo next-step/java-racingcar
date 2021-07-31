@@ -10,8 +10,15 @@ package study;
 public class AutomobileRace {
 
 	public static void main(String[] args) {
+
 		InputView inputView = new InputView();
+		ResultView resultView = new ResultView();
+
 		inputView.setValues();
-		System.out.println(inputView.getCarCount());
+
+		int carCount = inputView.getCarCount();
+		int executionCount = inputView.getExecutionCount();
+
+		resultView.getResultComment();
 	}
 }
