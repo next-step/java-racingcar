@@ -31,9 +31,11 @@ public class Car implements Comparable<Car> {
         return distance;
     }
 
+
     public String getName() {
         return name;
     }
+
 
     @Override
     public int compareTo(Car car) {
