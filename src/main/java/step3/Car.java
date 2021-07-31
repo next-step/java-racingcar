@@ -1,7 +1,5 @@
 package step3;
 
-import java.util.Scanner;
-
 public class Car {
     private int move;
 
@@ -11,10 +9,6 @@ public class Car {
 
     public int getMove() {
         return move;
-    }
-
-    public void setMove(int move) {
-        this.move = move;
     }
 
     public void go(){
