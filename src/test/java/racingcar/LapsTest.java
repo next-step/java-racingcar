@@ -13,7 +13,7 @@ class LapsTest {
     @Test
     @DisplayName("record 하면 주어진 cars 의 distance 를 Lap으로 기록한다")
     public void record() {
-        Cars cars = new Cars(Arrays.asList(new Car(1), new Car(2)));
+        Cars cars = new Cars(Arrays.asList(new Car("a", 1), new Car("b", 2)));
 
         laps.record(cars);
 

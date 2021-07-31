@@ -4,8 +4,9 @@ public class Car {
     private Distance distance = new Distance();
     private String name;
 
-    public Car(int distance) {
+    public Car(String name, int distance) {
         this.distance = new Distance(distance);
+        this.name = name;
     }
 
     public Car(String name) {
