@@ -8,7 +8,7 @@ public class ResultView {
     private static final String RACING_CAR_GAME_RESULT_OUTPUT_MESSAGE = "실행 결과";
     private static final String RACING_WINNERS_OUTPUT_MESSAGE = "이(가) 최종 우승했습니다.";
     private static final String RACING_CAR_POSITION_MARK = "-";
-    private static final String ONE_BLANK_SPACE= " ";
+    private static final String ONE_BLANK_SPACE = " ";
     private static final String COLON = ":";
     private static final String COMMA = ",";
 
