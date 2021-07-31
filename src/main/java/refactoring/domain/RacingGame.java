@@ -18,15 +18,15 @@ public class RacingGame {
 
 	public List<Car> getRecords() {
 		return cars.ofRecord()
-				   .getRecords();
+				.getRecords();
 	}
 
 	public List<String> getWinnerResults() {
 		return cars.ofRecord()
-				   .getWinnerRecourds()
-				   .stream()
-				   .map(Car::getCarName)
-				   .collect(Collectors.toList());
+				.getWinnerRecourds()
+				.stream()
+				.map(Car::getCarName)
+				.collect(Collectors.toList());
 	}
 
 	public void move() {

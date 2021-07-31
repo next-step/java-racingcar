@@ -18,8 +18,8 @@ public class Cars {
 		String[] names = carNames.split(",");
 
 		List<Car> cars = Arrays.stream(names)
-							   .map(Car::new)
-					   		   .collect(Collectors.toList());
+							.map(Car::new)
+					   		.collect(Collectors.toList());
 		return new Cars(cars);
 	}
 

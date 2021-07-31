@@ -22,8 +22,8 @@ public class RacingRecord {
 
 	public List<Car> getWinnerRecourds() {
 		return cars.stream()
-				   .filter(car -> car.sameWinnerCarDistance(getMaxDistance()))
-				   .collect(Collectors.toList());
+				.filter(car -> car.sameWinnerCarDistance(getMaxDistance()))
+				.collect(Collectors.toList());
 	}
 
 	private Car getMaxDistance() {
