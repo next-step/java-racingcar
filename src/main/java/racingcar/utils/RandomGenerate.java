@@ -9,7 +9,8 @@ public class RandomGenerate {
     private RandomGenerate() {
     }
 
-    public static boolean pick(int bound, int condition) {
-        return RANDOM.nextInt(bound) >= condition;
+    public static int pickRandomNumber(int bound) {
+        return RANDOM.nextInt(bound);
     }
+
 }

@@ -8,9 +8,7 @@ import java.util.List;
 public class Racing {
 
     private final int BOUND_RANDOM_NUMBER = 10;
-    private final int MORE_THEN_STANDARD_NUMBER = 4;
-
-    private Car[] racingCars;
+    private final Car[] racingCars;
 
     public Racing(String[] carNames) {
         racingCars = new Car[carNames.length];
@@ -34,20 +32,10 @@ public class Racing {
     private RacingRecords moveTryCars() {
         RacingRecords racingRecords = new RacingRecords();
         for (Car car : racingCars) {
-            moveTryCar(car);
+            car.move(RandomGenerate.pickRandomNumber(BOUND_RANDOM_NUMBER));
             racingRecords.add(new RacingRecord(car, car.getPosition()));
         }
         return racingRecords;
-    }
-
-    private void moveTryCar(Car car) {
-        if (isMoveAble()) {
-            car.move();
-        }
-    }
-
-    private boolean isMoveAble() {
-        return RandomGenerate.pick(BOUND_RANDOM_NUMBER, MORE_THEN_STANDARD_NUMBER);
     }
 
     public Car[] getRacingCars() {
