@@ -1,8 +1,6 @@
 package study;
 
-import CarRacing.Car;
-import CarRacing.Cars;
-import CarRacing.Position;
+import CarRacing.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,15 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CarRacingTest {
 
-
-    @Test
-    @DisplayName("포지션 예외처리 테스트")
-    void positionException() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Position());
-        String message = exception.getMessage();
-        assertEquals("posision은 음수 값을 가질 수 없습니다.", message);
-
-    }
 
     @Test
     @DisplayName("포지션 4이상일때 포지션값증가")
@@ -43,13 +32,50 @@ public class CarRacingTest {
 
     }
 
+
     @Test
-    @DisplayName("자동차 대수 exceptionTest")
-    void carCountException() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Cars(0));
+    @DisplayName("자동차이름 다섯글자 초과시")
+    void carNameOverFive() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new CarName("test124"));
         String message = exception.getMessage();
-        assertEquals("자동차 개수는 0이하의 수를 허용하지 않습니다.", message);
+        assertEquals("자동차 이름은 5글자를 초과하지 않습니다.", message);
 
     }
+
+    @Test
+    @DisplayName("자동차이름 빈칸")
+    void carNameBlank() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new CarName(""));
+        String message = exception.getMessage();
+        assertEquals("자동차 이름이 비어있으면 안됍니다.", message);
+    }
+
+    @Test
+    @DisplayName("cars 이름 확인 테스트")
+    void carsCarNameCheck() {
+        String carNames = "test1,test2,test3,test4,test5";
+        Cars cars = new Cars(carNames);
+        assertThat(cars.getCars()).extracting(s -> s.getCarName()).contains("test1", "test2", "test3", "test4", "test5");
+    }
+
+    @Test
+    @DisplayName("자동차경주 출력 확인")
+    void carRacingPrintCheck() {
+        String carNames = "test1,test2,test3,test4,test5";
+        StringBuilder stringBuilder = new StringBuilder();
+        Winner winner = new Winner();
+        Cars cars = new Cars(carNames);
+
+        for (int i = 0; i < 5; i++) {
+            cars.moveAll();
+        }
+
+        cars.getCars().forEach(s -> stringBuilder.append(s.getCarName() + " : " + new String(new char[s.getPosition()]).replace("\0", "-") + "\n"));
+
+        System.out.println(stringBuilder);
+
+        System.out.println(winner.printWinner(cars.getCars()) + "우승자 입니다");
+    }
+
 }
 

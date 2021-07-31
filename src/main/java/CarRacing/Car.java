@@ -3,9 +3,11 @@ package CarRacing;
 public class Car {
 
     private Position position;
+    private CarName carName;
 
-    public Car() {
+    public Car(CarName carName) {
         this.position = new Position();
+        this.carName = carName;
     }
 
     public void move(int randomNum) {
@@ -17,6 +19,10 @@ public class Car {
 
     public int getPosition() {
         return position.getPosition();
+    }
+
+    public String getCarName() {
+        return carName.getCarName();
     }
 
 
