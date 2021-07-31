@@ -8,8 +8,9 @@ import strategy.Moveable;
 
 public class RacingGame {
 
-	private final Cars cars;
 	private static final Moveable MOVEABLE = new AutoMoveable();
+
+	private final Cars cars;
 
 	public RacingGame(String carsNames) {
 		this.cars = Cars.of(carsNames);
