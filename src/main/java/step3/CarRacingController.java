@@ -6,12 +6,9 @@ public class CarRacingController {
         int carCount = InputView.inputCarCount();
         int tryCount = InputView.inputTryCount();
 
-        CarRacing carRacing = new CarRacing(carCount);
+        CarRacing carRacing = new CarRacing(carCount,tryCount);
 
         ResultView.printResultStart();
-
-        for (int i = 0; i < tryCount; i++) {
-            ResultView.printResult(carRacing.racing());
-        }
+        carRacing.racingStart();
     }
 }
