@@ -10,6 +10,10 @@ public class InputView {
 
     static Scanner scanner = new Scanner(System.in);
 
+    static void refreshScanner() {
+        scanner.next();
+    }
+
     static void printNumberQuestion(InputType type) {
         switch (type) {
             case CAR:

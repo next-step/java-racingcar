@@ -28,6 +28,7 @@ public class CarRacingMain {
             }
         } catch (InputMismatchException e) {
             InputView.printError();
+            InputView.refreshScanner();
             number = requestInputNumber(type);
         }
 
