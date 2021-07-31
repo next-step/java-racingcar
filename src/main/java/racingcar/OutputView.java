@@ -10,14 +10,15 @@ public class OutputView {
     }
 
     private static void printLap(Lap lap) {
-        for (Distance distance : lap.getDistances()) {
-            printDistance(distance);
+        for (Record record : lap.getRecords()) {
+            printDistance(record);
         }
     }
 
-    private static void printDistance(Distance distance) {
-        StringBuffer sb = new StringBuffer();
-        for (int d = 0; d < distance.getDistance(); d++) {
+    private static void printDistance(Record record) {
+        StringBuffer sb = new StringBuffer(record.getName());
+        sb.append(" : ");
+        for (int d = 0; d < record.getDistance().getDistance(); d++) {
             sb.append('-');
         }
         System.out.println(sb);

@@ -1,13 +1,13 @@
 package racingcar;
 
 public class Lap {
-    private final Distances distances;
+    private final Records records;
 
     public Lap(Cars cars) {
-        this.distances = new Distances(cars);
+        this.records = new Records(cars);
     }
 
-    public Distances getDistances() {
-        return distances;
+    public Records getRecords() {
+        return records;
     }
 }
