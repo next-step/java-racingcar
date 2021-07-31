@@ -34,7 +34,7 @@ public class RacingGame {
 
     private List<Car> getCars() {
         outputView.printInputCarCountMessage();
-        int carCount = inputView.getCount();
+        int carCount = inputView.getMoveCount();
         return Stream.generate(() -> Car.of(STARTING_LINE_POSITION))
                 .limit(carCount)
                 .collect(Collectors.toList());
@@ -42,7 +42,7 @@ public class RacingGame {
 
     private int getMoveCount() {
         outputView.printInputMoveCountMessage();
-        return inputView.getCount();
+        return inputView.getMoveCount();
     }
 
     private void race(Cars cars, int moveCount) {
