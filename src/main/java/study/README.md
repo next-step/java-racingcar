@@ -11,3 +11,4 @@
 
 1. NumberContainer를 생성한다. 그 역할은 랜덤인 숫자를 제공하는 것이다.
 2. Car를 생성한다.
+3. inputView로 입력받은 CarCount를 이용하여 Car를 생성한다.
