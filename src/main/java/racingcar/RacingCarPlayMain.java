@@ -9,6 +9,7 @@ package racingcar;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 /**
  * 해당 메소드의 기능은 자동차 경주 게임을 시작합니다.
@@ -18,12 +19,13 @@ public class RacingCarPlayMain {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분");
-        String[] carNames = br.readLine().replaceAll(" ", "").split(",");
-        System.out.println("시도할 회수는 몇 회 인가요 ?");
-        int moveCount = Integer.parseInt(br.readLine());
+        RacingCarResultView view  = new RacingCarResultView();
+        String[] carNames = view.getCarNames(br);
+        int moveCount = view.getMoveCount(br);
+        int range = 10;
 
-        RacingCar racingCar = new RacingCar(carNames ,moveCount);
+        RacingCar racingCar = new RacingCar(carNames ,moveCount, range);
+        view.drawRacingResult();
         racingCar.start();
 
     }
