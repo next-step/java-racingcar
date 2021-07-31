@@ -2,29 +2,26 @@ package racingcar.domain;
 
 public class Car {
 
-    private final int MORE_THEN_CONDITION_NUMBER = 4;
+    private MoveStrategy moveStrategy;
     private final String name;
     private int position;
 
-    public Car() {
-        this("unknown", 0);
+    public Car(MoveStrategy moveStrategy) {
+        this(moveStrategy, "unknown", 0);
     }
 
-    public Car(String name) {
-        this(name, 0);
+    public Car(MoveStrategy moveStrategy, String name) {
+        this(moveStrategy, name, 0);
     }
 
-    public Car(String name, int position) {
-        this.position = position;
+    public Car(MoveStrategy moveStrategy, String name, int position) {
+        this.moveStrategy = moveStrategy;
         this.name = name;
-    }
-
-    public void move() {
-        position++;
+        this.position = position;
     }
 
     public void move(int bound) {
-        if (bound >= MORE_THEN_CONDITION_NUMBER) {
+        if (moveStrategy.isMoveAble(bound)) {
             position++;
         }
     }
