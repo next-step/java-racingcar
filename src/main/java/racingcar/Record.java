@@ -9,8 +9,8 @@ public class Record {
         this.distance = distance;
     }
 
-    public Distance getDistance() {
-        return distance;
+    public int getDistance() {
+        return distance.getDistance();
     }
 
     public String getName() {

@@ -18,7 +18,7 @@ public class OutputView {
     private static void printDistance(Record record) {
         StringBuffer sb = new StringBuffer(record.getName());
         sb.append(" : ");
-        for (int d = 0; d < record.getDistance().getDistance(); d++) {
+        for (int d = 0; d < record.getDistance(); d++) {
             sb.append('-');
         }
         System.out.println(sb);
