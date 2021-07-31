@@ -1,6 +1,7 @@
 package racing_winner.domain;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,7 +10,6 @@ class RacingCarTest {
 
     private RacingCar racingCar;
     private static final int BASE_NUMBER = 0;
-    private static final String BASE_WINNER = "";
 
     @BeforeEach
     void setUp() {
@@ -17,15 +17,17 @@ class RacingCarTest {
     }
 
     @Test
-    void compareDistance() {
+    @DisplayName("더 멀리 움직인 자동차 거리 확인")
+    void findFartherDistance() {
         racingCar.move();
-        int distance = racingCar.compareDistance(BASE_NUMBER);
+        int distance = racingCar.findFartherDistance(BASE_NUMBER);
         assertThat(distance).isEqualTo(1);
     }
 
     @Test
+    @DisplayName("가장 멀리 움직인 자동차 이름 확인")
     void findMovedMaxDistance() {
-        String winner = racingCar.findMovedMaxDistance(BASE_NUMBER, BASE_WINNER);
+        String winner = racingCar.findMovedMaxDistanceCar(BASE_NUMBER);
         assertThat(winner).isEqualTo("pobi");
     }
 

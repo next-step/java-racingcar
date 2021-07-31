@@ -38,7 +38,7 @@ public class RacingUtils {
     public static int measureMaxDistance(List<RacingCar> racingCarList) {
         int baseDistance = 0;
         for (RacingCar racingCar : racingCarList) {
-            baseDistance = racingCar.compareDistance(baseDistance);
+            baseDistance = racingCar.findFartherDistance(baseDistance);
         }
         return baseDistance;
     }

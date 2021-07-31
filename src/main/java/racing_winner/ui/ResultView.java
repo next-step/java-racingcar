@@ -10,26 +10,35 @@ public class ResultView {
     private static final String RACING_RESULT_MESSAGE = "실행결과";
     private static final String RACING_WINNER_MESSAGE = "가 최종 우승했습니다.";
     private static final String RACING_SIGN = "-";
-    private static final int FIRST_ROUND = 0;
+    private static final int INIT_NUMBER = 0;
 
     public void result(List<RacingCar> racingCarList, int round, int totalRound){
-        if(round == FIRST_ROUND){
+        if(round == INIT_NUMBER){
             System.out.println(RACING_RESULT_MESSAGE);
         }
         for (RacingCar racingCar : racingCarList){
-            getRacingResult(racingCar);
+            drawRacingResult(racingCar);
         }
         System.out.println();
         if(round == totalRound-1){
-            printWinner(racingCarList);
+            selectWinner(racingCarList);
         }
     }
 
-    private void drawRacingResult(RacingCar racingCar) {
-        System.out.println(racingCar.drawDistance(RACING_SIGN));
+    public String drawDistance(RacingCar racingCar){
+        String distanceLine = racingCar.racingNameTxt();
+        int distance = racingCar.findFartherDistance(INIT_NUMBER);
+        for(int i = 0; i < distance; i++){
+            distanceLine += RACING_SIGN;
+        }
+        return distanceLine;
     }
 
-    private void printWinner(List<RacingCar> racingCarList) {
+    private void drawRacingResult(RacingCar racingCar) {
+        System.out.println(drawDistance(racingCar));
+    }
+
+    private void selectWinner(List<RacingCar> racingCarList) {
         RacingService service = new RacingService();
 
         String name = service.findWinners(racingCarList);

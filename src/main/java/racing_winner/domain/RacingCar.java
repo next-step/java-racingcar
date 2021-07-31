@@ -13,30 +13,26 @@ public class RacingCar {
         distance++;
     }
 
-    public String initPrintTxt(){
+    public String racingNameTxt(){
         return name+" : ";
     }
 
-    public String drawDistance(String code){
-        String distanceLine = initPrintTxt();
-        for(int i = 0; i < distance; i++){
-            distanceLine+=code;
-        }
-        return distanceLine;
+    public boolean compareDistance(int baseDistance){
+        return distance >= baseDistance;
     }
 
-    public int compareDistance(int baseDistance){
-        if (distance > baseDistance) {
+    public int findFartherDistance(int baseDistance){
+        if (compareDistance(baseDistance)) {
             return distance;
         }
         return baseDistance;
     }
 
-    public String findMovedMaxDistance(int maxDistance, String winner) {
-        if(distance == maxDistance){
-            winner+= name;
+    public String findMovedMaxDistanceCar(int maxDistance) {
+        if(compareDistance(maxDistance)){
+            return name;
         }
-        return winner;
+        return "";
     }
 
 }
