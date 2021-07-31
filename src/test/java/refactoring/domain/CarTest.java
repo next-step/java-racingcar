@@ -9,9 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import strategy.ManualMoveable;
-import strategy.Moveable;
-
 class CarTest {
 
 	private Car car;
@@ -31,15 +28,14 @@ class CarTest {
 	@Test
 	@DisplayName("우승자와 같은 Car 클래스")
 	void compareWinnerCar() {
-		Moveable moveable = new ManualMoveable();
 		Car compareCar = new Car("test2");
 
-		car.move(moveable);
-		compareCar.move(moveable);
+		car.move(() -> true);
+		compareCar.move(() -> true);
 
 		assertThat(car.sameWinnerCarDistance(compareCar)).isTrue();
 
-		compareCar.move(moveable);
+		compareCar.move(() -> true);
 
 		assertThat(car.sameWinnerCarDistance(compareCar)).isFalse();
 	}

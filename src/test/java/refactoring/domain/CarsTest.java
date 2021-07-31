@@ -10,8 +10,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import strategy.ManualMoveable;
-
 class CarsTest {
 
 	private Cars cars;
@@ -25,7 +23,7 @@ class CarsTest {
 	@CsvSource(value = {"0=false", "1=true", "2=false"}, delimiter = '=')
 	@DisplayName("자동차들 움직이기 테스트")
 	void moveCars(int input, boolean expected) {
-		cars.move(new ManualMoveable());
+		cars.move(() -> true);
 
 		List<Car> carRecourds = cars.ofRecord()
 									.getRecords();
