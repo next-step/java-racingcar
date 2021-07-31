@@ -25,7 +25,7 @@ public class ResultView {
         }
     }
 
-    private void getRacingResult(RacingCar racingCar) {
+    private void drawRacingResult(RacingCar racingCar) {
         System.out.println(racingCar.drawDistance(RACING_SIGN));
     }
 
