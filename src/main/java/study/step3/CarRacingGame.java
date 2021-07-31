@@ -54,7 +54,19 @@ public class CarRacingGame {
       }
     }
 
+    printCarDistance();
+
     return movedCar;
+  }
+
+  private void printCarDistance() {
+    for (Car car : racingGameCars) {
+      for (int i = 0; i < car.distance; i++) {
+        System.out.print("-");
+      }
+      System.out.println();
+    }
+    System.out.println();
   }
 
   private int getRandomNumber() {
