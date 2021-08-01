@@ -68,7 +68,7 @@ public class RacingManager {
     }
 
     public void doFullRace() {
-        System.out.println("실행 결과");
+        PrintService.printResultMessage();
         for (int i = 0; i < tryCount; i++) {
             doOneLap();
             PrintService.printEmptyLine();
