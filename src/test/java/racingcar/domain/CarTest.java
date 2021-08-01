@@ -16,4 +16,12 @@ public class CarTest {
         car.move(() -> movable);
         assertThat(car.getPosition()).isEqualTo(new Position(expected));
     }
+
+    @DisplayName("같은 포지션 값 확인 메소드")
+    @ParameterizedTest(name = "{index} {displayName} {arguments}")
+    @CsvSource({"1,true", "0,false"})
+    void isSame(int position, boolean expected) {
+        car.move(() -> true);
+        assertThat(car.isSame(new Position(position))).isEqualTo(expected);
+    }
 }
