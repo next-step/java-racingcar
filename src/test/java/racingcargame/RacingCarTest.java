@@ -10,7 +10,9 @@ public class RacingCarTest {
     @DisplayName("값이 4미만일 경우 멈춘다.")
     @ParameterizedTest
     @CsvSource(value = {
-            "1$0"
+            "0$0"
+            , "1$0"
+            , "2$0"
             , "3$0"}
             , delimiter = '$')
     void stop(int input, int expected) {
@@ -25,6 +27,10 @@ public class RacingCarTest {
     @ParameterizedTest
     @CsvSource(value = {
             "4$1"
+            , "5$1"
+            , "6$1"
+            , "7$1"
+            , "8$1"
             , "9$1"}
             , delimiter = '$')
     void move(int input, int expected) {
