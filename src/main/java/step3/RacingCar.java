@@ -5,33 +5,43 @@ import java.util.List;
 
 public class RacingCar {
     private final List<String> status;
+    private final Movable movable;
 
     public static RacingCar create() {
         return new RacingCar();
     }
 
+    public static RacingCar create(Movable movable) {
+        return new RacingCar(movable);
+    }
+
     private RacingCar() {
-        status = new ArrayList<>();
-        status.add("-");
+        status = initializeStatus();
+        movable = setDefaultMovable();
     }
 
-    public RacingCar doMoveOrStop() {
-        if (RandomMoveDeterminator.doMoving()) return move();
-        return stop();
+    private List<String> initializeStatus() {
+        List<String> status = new ArrayList<>();
+        status.add("-");
+        return status;
     }
 
-    public RacingCar move() {
-        status.add("-");
-        return this;
+    private Movable setDefaultMovable() {
+        return new RandomMovable();
+    }
+
+    private RacingCar(Movable movable) {
+        status = initializeStatus();
+        this.movable = movable;
+    }
+
+    public void move() {
+        movable.move(status);
     }
 
     public String getStatus() {
         StringBuilder statusBuilder = new StringBuilder();
         status.forEach(statusBuilder::append);
         return statusBuilder.toString();
-    }
-
-    public RacingCar stop() {
-        return this;
     }
 }

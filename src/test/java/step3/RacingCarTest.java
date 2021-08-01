@@ -8,24 +8,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingCarTest {
 
     @Test
-    @DisplayName("자동차가 이동하면 상태값에 하이픈이 추가된다")
-    public void 자동차가_이동하면_상태값에_하이픈이_추가된다() {
+    @DisplayName("자동차가 RandomMovable전략을 가지면 이동하거나 이동하지 않는다")
+    public void 자동차가_RandomMovable전략을_가지면_이동하거나_이동하지_않는다() {
         //given
+        Movable movable = new RandomMovable();
+        RacingCar car = RacingCar.create(movable);
         //when
-        RacingCar car = RacingCar.create().move();
+        car.move();
         //then
-        assertThat(car.getStatus()).isEqualTo("--");
+        assertThat(car.getStatus()).isIn("-", "--");
     }
-
-    @Test
-    @DisplayName("자동차가 멈추면 상태값은 변하지 않는다")
-    public void 자동차가_멈추면_상태값은_변하지_않는다() {
-        //given
-
-        //when
-        RacingCar car = RacingCar.create().stop();
-        //then
-        assertThat(car.getStatus()).isEqualTo("-");
-    }
-
 }

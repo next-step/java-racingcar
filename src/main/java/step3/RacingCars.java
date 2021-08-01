@@ -26,7 +26,7 @@ public class RacingCars {
     }
 
     public void run() {
-        racingCars.forEach(RacingCar::doMoveOrStop);
+        racingCars.forEach(RacingCar::move);
     }
 
     public String getStatus() {
