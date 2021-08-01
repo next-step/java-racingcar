@@ -6,7 +6,7 @@
  * [저작권 및 라이센스 관련 정보를 여기 작성]
  * Copyright (c) 2021 Younhwan Son.
  */
-package edu.nextstep.racingcar;
+package edu.nextstep.racingcar.view;
 
 import java.util.Scanner;
 

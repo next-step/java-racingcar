@@ -1,4 +1,6 @@
-package edu.nextstep.racingcar;
+package edu.nextstep.racingcar.car;
+
+import edu.nextstep.racingcar.strategy.RandomStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,7 @@ public class Cars {
 
     public void playRacingOneRound() {
         for (RacingCar car : cars) {
-            car.move();
+            car.move(new RandomStrategy());
         }
     }
 

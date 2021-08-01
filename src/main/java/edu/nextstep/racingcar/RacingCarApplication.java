@@ -9,6 +9,11 @@
 
 package edu.nextstep.racingcar;
 
+import edu.nextstep.racingcar.car.Cars;
+import edu.nextstep.racingcar.car.RacingCar;
+import edu.nextstep.racingcar.view.InputView;
+import edu.nextstep.racingcar.view.ResultView;
+
 public class RacingCarApplication {
 
     public static void main(String[] args) {

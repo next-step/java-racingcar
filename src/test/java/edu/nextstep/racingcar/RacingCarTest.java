@@ -1,13 +1,12 @@
 package edu.nextstep.racingcar;
 
-import org.assertj.core.api.Assert;
-import org.assertj.core.api.Assertions;
+import edu.nextstep.racingcar.car.Cars;
+import edu.nextstep.racingcar.car.RacingCar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

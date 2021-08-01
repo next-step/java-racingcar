@@ -7,32 +7,21 @@
  * Copyright (c) 2021 Younhwan Son.
  */
 
-package edu.nextstep.racingcar;
+package edu.nextstep.racingcar.car;
+
+import edu.nextstep.racingcar.strategy.RacingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingCar {
 
     private int movedDistance = 0;
-    private static final int CRITERIA = 4;
-    private static final int MAX_RANDOM_VALUE = 10;
 
-    public void move() {
-        int n = getRandomNum();
-        if (n >= CRITERIA) {
-            moveRacingCar();
+    public void move(RacingStrategy racingStrategy) {
+        if (racingStrategy.canMove()) {
+            this.movedDistance++;
         }
-    }
-
-    private int getRandomNum() {
-        Random randomUtil = new Random();
-        return randomUtil.nextInt(MAX_RANDOM_VALUE);
-    }
-
-    private void moveRacingCar() {
-        this.movedDistance++;
     }
 
     public int getMovedDistance() {

@@ -7,7 +7,9 @@
  * Copyright (c) 2021 Younhwan Son.
  */
 
-package edu.nextstep.racingcar;
+package edu.nextstep.racingcar.view;
+
+import edu.nextstep.racingcar.car.Cars;
 
 public class ResultView {
     public static void startSign() {
