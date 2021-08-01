@@ -9,35 +9,22 @@ public class RacingManager {
     private final List<RacingCar> cars = new ArrayList<>();
     private final NumberGenerator numberGenerator;
     private final WinnerPolicy winnerPolicy;
-
-    private int numberOfCar;
-    private int tryCount;
+    private final int tryCount;
 
     public RacingManager(String[] names, int tryCount) {
-        this.numberOfCar = names.length;
         this.tryCount = tryCount;
         numberGenerator = new RandomNumberGenerator();
         winnerPolicy = new WinnerPolicyImpl();
         generateCars(names);
     }
 
-    public int getNumberOfCar() {
-        return numberOfCar;
-    }
-
     public int getCarsArraySize() {
         return cars.size();
     }
 
-    private void generateCars() {
-        for (int i = 0; i < numberOfCar; i++) {
-            this.cars.add(new RacingCar());
-        }
-    }
-
     private void generateCars(String[] names) {
-        for (int i = 0; i < numberOfCar; i++) {
-            this.cars.add(new RacingCar(names[i]));
+        for (String name : names) {
+            this.cars.add(new RacingCar(name));
         }
     }
 

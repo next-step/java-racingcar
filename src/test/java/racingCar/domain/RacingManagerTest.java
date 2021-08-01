@@ -11,7 +11,7 @@ class RacingManagerTest {
     @Test
     void generate_0_car_test() {
         RacingManager racingManager = new RacingManager(new String[]{},3);
-        assertThat(racingManager.getCarsArraySize()).isEqualTo(racingManager.getNumberOfCar());
+        assertThat(racingManager.getCarsArraySize()).isEqualTo(racingManager.getCarsArraySize());
         assertThat(racingManager.getCarsArraySize()).isEqualTo(0);
     }
 
@@ -19,6 +19,6 @@ class RacingManagerTest {
     @Test
     void generate_3_car_with_name_test() {
         RacingManager racingManager = new RacingManager(new String[]{"pobi","crong","honux"}, 3);
-        assertThat(racingManager.getNumberOfCar()).isEqualTo(3);
+        assertThat(racingManager.getCarsArraySize()).isEqualTo(3);
     }
 }
