@@ -4,20 +4,15 @@ import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
-    private static final String MESSAGE_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
-    private static final String MESSAGE_ROUND_COUNT = "시도할 회수는 몇 회 인가요?";
 
-    public static int receiveCarCount() {
-        return receiveCount(MESSAGE_CAR_COUNT);
+    public static String receiveCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return scanner.nextLine();
     }
 
     public static int receiveRoundCount() {
-        return receiveCount(MESSAGE_ROUND_COUNT);
-    }
-
-    private static int receiveCount(String message) {
         String input;
-        System.out.println(message);
+        System.out.println("시도할 회수는 몇 회 인가요?");
         do {
             input = scanner.nextLine();
         } while (!isNumber(input));
