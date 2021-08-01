@@ -37,7 +37,7 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 6, 8, 10})
     @DisplayName("입력값이 4이상이 들어오면 자동차는 이동해야 한다.")
-    void cmdByForwardTest(int cmd) {
+    void moveSuccessTest(int cmd) {
 
         // given
         Car car = new Car();
