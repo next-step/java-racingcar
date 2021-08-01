@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 public class RacingCar {
     private static final int RANDOM_NUMBER_BOUND = 10;
-    private static final Random random = new Random();
 
     private List<Car> cars;
 
