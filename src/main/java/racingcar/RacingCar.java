@@ -14,12 +14,19 @@ import java.util.List;
  */
 public class RacingCar {
 
-    private final int carCount;   // 자동차 대 수
-    private int moveCount; // 자동차 이동 횟수
+    private final String[] carNames;   // 자동차 대 수
+    private final int moveCount; // 자동차 이동 횟수
+    private final int range; // 자동차 최대 이동거리
+    private List<Car> cars;
+    private RacingCarResultView view;
 
-    public RacingCar(int carCount, int moveCount) {
-        this.carCount = carCount;
+    public RacingCar(String[] carNames, int moveCount, int range) {
+
+        this.carNames = carNames;
         this.moveCount = moveCount;
+        this.range = range;
+        this.cars = new ArrayList<Car>();
+        this.view = new RacingCarResultView();
     }
 
     /**
@@ -27,20 +34,22 @@ public class RacingCar {
      * @return List<Car>
      */
     public List<Car> createAsCarsNumberOfEnteredByUser() {
-        List<Car> cars = new ArrayList<Car>();
-        for(int i = 0; i < this.carCount; i++) {
-            cars.add(new Car());
+        for (int i = 0; i < this.carNames.length; i++) {
+            Car car = new Car(this.carNames[i]);
+            this.cars.add(car);
         }
-        return cars;
+        return this.cars;
     }
 
     /**
      * 준비된 Car 객채들 끼리의 경주를 시작합니다.
      */
-    public void doRacingStart(List<Car> cars) {
+    public List<Car> doRacingStart(List<Car> cars) {
+
         for (int i = 0; i < this.moveCount; i++) {
             moveAsCarUserEntered(cars);
         }
+        return cars;
     }
 
     /**
@@ -48,23 +57,64 @@ public class RacingCar {
      * @param cars
      */
     public void moveAsCarUserEntered(List<Car> cars) {
+
         for (Car car : cars) {
-            car.moveCar();
-            drawCarMoving(car);
+            car.moveCar(this.range);
         }
-        System.out.println();
+
+        this.view.drawCarMoving(cars);
     }
 
     /**
-     * 자동차가 이동하는것을 그립니다.
-     * @param car
+     * 가장 멀리 이동한 자동차들을 반환합니다.
+     * @param cars
+     * @return
      */
-    public void drawCarMoving(Car car) {
-        for(int j = 0; j < car.getCurrentLocation(); j++) {
-            System.out.printf("-");
+    public List<Car> getWinners(List<Car> cars) {
+
+        int winnerLocation = getWinnerLocation(cars);
+
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            addWinnerCar(winnerLocation, winners, car);
         }
-        System.out.println();
+
+        return winners;
     }
 
+    private void addWinnerCar(int winnerLocation, List<Car> winners, Car car) {
+        if (car.getCurrentLocation() == winnerLocation) {
+            winners.add(car);
+        }
+    }
 
+    /**
+     * 자동차들 중 가장 멀리간 자동차의 위치를 반환합니다.
+     * @param cars
+     * @return
+     */
+    public int getWinnerLocation(List<Car> cars) {
+
+        int maxLocation = cars.get(0).getCurrentLocation();
+
+        for (Car car : cars) {
+            if(maxLocation < car.getCurrentLocation()) {
+                maxLocation = car.getCurrentLocation();
+            }
+        }
+
+        return maxLocation;
+    }
+
+    /**
+     * RacingCar 실행함수
+     */
+    public void start() {
+        List<Car> carsAfterTheRace = this.doRacingStart(this.createAsCarsNumberOfEnteredByUser());
+        this.view.drawWinnerView(this.getWinners(carsAfterTheRace));
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }

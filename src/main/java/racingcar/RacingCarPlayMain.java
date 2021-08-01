@@ -16,15 +16,16 @@ import java.io.InputStreamReader;
  */
 public class RacingCarPlayMain {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("자동차 대수는 몇 대 인가요 ?");
-        int carCount = Integer.parseInt(br.readLine());
-        System.out.println("시도할 회수는 몇 회 인가요 ?");
-        int moveCount = Integer.parseInt(br.readLine());
 
-        RacingCar racingCar = new RacingCar(carCount ,moveCount);
-        System.out.println("실행 결과");
-        racingCar.doRacingStart(racingCar.createAsCarsNumberOfEnteredByUser());
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        RacingCarResultView view  = new RacingCarResultView();
+        String[] carNames = view.getCarNames(br);
+        int moveCount = view.getMoveCount(br);
+        int range = 10;
+
+        RacingCar racingCar = new RacingCar(carNames ,moveCount, range);
+        view.drawRacingResult();
+        racingCar.start();
 
     }
 }

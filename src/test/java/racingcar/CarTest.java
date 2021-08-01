@@ -1,26 +1,27 @@
 package racingcar;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
 
 public class CarTest {
 
     @Test
     public void getMove() {
-        Car car = new Car();
-        assertThat(car.getMove()).isBetween(0,10);
+
+        int range = 10;
+        Car car = new Car("myCar");
+        assertThat(car.getMove(range)).isBetween(0,range);
     }
 
     @Test
     public void moveCar() {
-        assertThatCode(() -> {
-            Car car = new Car();
-            car.moveCar();
-        }).doesNotThrowAnyException();
+
+        int range = 10;
+        Car car = new Car("myCar");
+        car.moveCar(range);
+
+        assertThat(car.getCurrentLocation()).isNotEqualTo(0);
     }
 
 }
