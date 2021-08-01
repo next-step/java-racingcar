@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 
 public class RacingCar {
     private static final int RANDOM_NUMBER_BOUND = 10;
+    private static final int MAX_SIZE_NAME_LENGTH = 5;
+    private static final int MIN_CAR_COUNT = 0;
 
     private List<Car> cars;
 
@@ -28,8 +30,8 @@ public class RacingCar {
     }
 
     private void validate(int carCount, String[] carNames) {
-        if (carCount <= 0) {
-            throw new IllegalArgumentException("0보다 큰 값을 입력해주세요.");
+        if (carCount <= MIN_CAR_COUNT) {
+            throw new IllegalArgumentException(MIN_CAR_COUNT + "보다 큰 값을 입력해주세요.");
         }
         for (String carName : carNames) {
             validateCarNameLength(carName);
@@ -37,8 +39,8 @@ public class RacingCar {
     }
 
     private void validateCarNameLength(String carName) {
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        if (carName.length() > MAX_SIZE_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 " + MAX_SIZE_NAME_LENGTH + "자를 초과할 수 없습니다.");
         }
     }
 
