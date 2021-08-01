@@ -2,10 +2,13 @@ package Car;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 import static org.assertj.core.api.Assertions.*;
@@ -16,7 +19,7 @@ class RacingCarTest {
     @BeforeEach
     void setUp() {
         String[] carNames = {"pobi", "crong", "honux"};
-        racingCar = new RacingCar(3, carNames);
+        racingCar = new RacingCar(carNames);
 
     }
 
@@ -28,7 +31,7 @@ class RacingCarTest {
     void 자동차대수_테스트(int inputCarCount, int carCountAnswer, String carNames) {
         System.out.println(carNames);
         String[] splitedCarName = carNames.split(",");
-        racingCar = new RacingCar(inputCarCount, splitedCarName);
+        racingCar = new RacingCar(splitedCarName);
 
         int carsSize = racingCar.getCars().size();
         assertThat(carsSize).isEqualTo(carCountAnswer);
@@ -41,15 +44,15 @@ class RacingCarTest {
     })
     void 자동차대수_테스트_예외발생(int carCount, String errMessage) throws IllegalAccessException {
         String[] carNames = {};
-        assertThatThrownBy(() -> new RacingCar(carCount, carNames))
+        assertThatThrownBy(() -> new RacingCar(carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(errMessage);
     }
 
-    @RepeatedTest(5)
-    void 우승자_테스트(){
+    @Test
+    void 우승자_테스트() {
         for (int i = 0; i < 5; i++) {
-            racingCar.gameStart();
+            racingCar.gameStart(new Random());
         }
         List<Car> cars = racingCar.getCars();
         List<Car> winnerList = new ArrayList<Car>();
@@ -59,15 +62,11 @@ class RacingCarTest {
             maxMoveCount = Math.max(maxMoveCount, car.getMoveCount());
         }
         for (Car car : cars) {
-            if(car.getMoveCount() == maxMoveCount){
+            if (car.getMoveCount() == maxMoveCount) {
                 winnerList.add(car);
             }
         }
-
         assertThat(racingCar.getWinner()).isEqualTo(winnerList);
-
-
-
     }
 
 }

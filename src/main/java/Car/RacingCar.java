@@ -10,7 +10,8 @@ public class RacingCar {
 
     private List<Car> cars;
 
-    public RacingCar(int carCount, String[] carNames) {
+    public RacingCar(String[] carNames) {
+        int carCount = carNames.length;
         validate(carCount, carNames);
 
         cars = new ArrayList<>();
