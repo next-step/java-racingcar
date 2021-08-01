@@ -11,8 +11,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class SetTest {
+class SetTest {
 
     private Set<Integer> numbers;
 
