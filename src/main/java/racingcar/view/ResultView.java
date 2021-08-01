@@ -5,12 +5,9 @@ import racingcar.entity.RacingCar;
 import java.util.List;
 
 public class ResultView {
-    public static void printWinners(String[] winners) {
-        int i;
-        for (i = 0; i < winners.length - 1; i++) {
-            System.out.print(winners[i] + ", ");
-        }
-        System.out.print(winners[i]);
+    public static void printWinners(List<String> winners) {
+        String winnerListWithComma = String.join(",", winners);
+        System.out.print(winnerListWithComma);
         System.out.println("가 최종 우승했습니다.");
     }
 
