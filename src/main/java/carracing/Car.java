@@ -14,4 +14,10 @@ public class Car {
     public void forward() {
         this.location += "-";
     }
+
+    public void ordered(int cmd) {
+        if (cmd >= 4) {
+            forward();
+        }
+    }
 }

@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
 
@@ -28,6 +30,21 @@ class CarTest {
 
         // when
         car.forward();
+
+        // then
+        assertThat(car.location()).isEqualTo("-");
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {4, 6, 8, 10})
+    @DisplayName("입력값이 4이상이 들어오면 자동차는 이동해야 한다.")
+    void cmdByForwardTest(int cmd) {
+
+        // given
+        Car car = new Car();
+
+        // when
+        car.ordered(cmd);
 
         // then
         assertThat(car.location()).isEqualTo("-");
