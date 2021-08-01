@@ -1,22 +1,14 @@
 package com.racingcar.game;
 
-import com.racingcar.car.Car;
+public class GameMaker <T> {
+    MakeCarsRule makeCarsRule;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class GameMaker {
-    public static Game make(int gameRound, int numberOfCar) {
-        return new Game(gameRound, makeCars(numberOfCar));
+    public GameMaker(MakeCarsRule makeCarsRule) {
+        this.makeCarsRule = makeCarsRule;
     }
 
-    private static List<Car> makeCars(int numberOfCar) {
-        List<Car> cars = new ArrayList<>();
-
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car(i));
-        }
-
-        return cars;
+    public Game make(int gameRound, T input) {
+        return new Game(gameRound, this.makeCarsRule.makeCar(input));
     }
+
 }
