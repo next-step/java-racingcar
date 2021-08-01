@@ -1,8 +1,12 @@
 package Car;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 class RacingCarTest {
@@ -37,5 +41,29 @@ class RacingCarTest {
         assertThatThrownBy(() -> new RacingCar(carCount, carNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(errMessage);
+    }
+
+    @RepeatedTest(5)
+    void 우승자_테스트(){
+        for (int i = 0; i < 5; i++) {
+            racingCar.gameStart();
+        }
+        List<Car> cars = racingCar.getCars();
+        List<Car> winnerList = new ArrayList<Car>();
+        int maxMoveCount = 0;
+
+        for (Car car : cars) {
+            maxMoveCount = Math.max(maxMoveCount, car.getMoveCount());
+        }
+        for (Car car : cars) {
+            if(car.getMoveCount() == maxMoveCount){
+                winnerList.add(car);
+            }
+        }
+
+        assertThat(racingCar.getWinner()).isEqualTo(winnerList);
+
+
+
     }
 }
