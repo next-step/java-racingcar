@@ -27,8 +27,8 @@ public class RacingGameTest {
     @DisplayName("경주")
     @Test
     void race() {
-        List<Car> collect = makeCars(3);
-        Cars cars = new Cars(collect);
+        List<Car> inputCars = makeCars(3);
+        Cars cars = new Cars(inputCars);
 
         RacingGame racingGame = new RacingGame(4, movableStrategy);
         racingGame.race(cars);
@@ -42,8 +42,8 @@ public class RacingGameTest {
     @ParameterizedTest(name = "{index} {displayName} {arguments}")
     @CsvSource({"4,4,true", "3,4,false"})
     void isEnd_True_IfCurrentRoundIsEqualToRoundCount(int repeatCount, int roundCount, boolean expected) {
-        List<Car> collect = makeCars(3);
-        Cars cars = new Cars(collect);
+        List<Car> inputCars = makeCars(3);
+        Cars cars = new Cars(inputCars);
         RacingGame racingGame = new RacingGame(roundCount, movableStrategy);
 
         for (int i = 0; i < repeatCount; i++) {
@@ -54,7 +54,7 @@ public class RacingGameTest {
     }
 
     private List<Car> makeCars(int carCount) {
-        List<Car> collect = IntStream.range(0, carCount).mapToObj(index -> new Car()).collect(Collectors.toList());
-        return collect;
+        List<Car> inputCars = IntStream.range(0, carCount).mapToObj(index -> new Car()).collect(Collectors.toList());
+        return inputCars;
     }
 }

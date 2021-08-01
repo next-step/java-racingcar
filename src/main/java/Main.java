@@ -14,10 +14,10 @@ public class Main {
         int carCount = InputView.receiveCarCount();
         int roundCount = InputView.receiveRoundCount();
 
-        List<Car> collect = IntStream.range(0, carCount).
+        List<Car> inputCars = IntStream.range(0, carCount).
                 mapToObj(index -> new Car())
                 .collect(Collectors.toList());
-        Cars cars = new Cars(collect);
+        Cars cars = new Cars(inputCars);
 
         RacingGame racingGame = new RacingGame(roundCount, new RandomMovableStrategy());
         while (!racingGame.isEnd()) {
