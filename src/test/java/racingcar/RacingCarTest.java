@@ -30,6 +30,7 @@ class RacingCarTest {
     @CsvSource({"apple;banana;orange, 2"})
     public void moveAsCarUserEntered(String input ,int moveCount) {
         String[] carNames  = input.split(";");
+
         assertThatCode(() -> {
             RacingCar racingCar = new RacingCar(carNames, moveCount ,10);
             List<Car> cars = racingCar.createAsCarsNumberOfEnteredByUser();
@@ -41,6 +42,7 @@ class RacingCarTest {
     @CsvSource({"apple;banana;orange, 4"})
     public void doRacingStart(String input ,int moveCount) {
         String[] carNames  = input.split(";");
+
         assertThatCode(() -> {
             RacingCar racingCar = new RacingCar(carNames, moveCount, 10);
             List<Car> cars = racingCar.createAsCarsNumberOfEnteredByUser();
@@ -51,9 +53,9 @@ class RacingCarTest {
     @ParameterizedTest
     @CsvSource({"apple;banana;orange, 4"})
     public void getWinners(String input ,int moveCount) {
-
         String[] carNames  = input.split(";");
         RacingCar racingCar = new RacingCar(carNames, moveCount, 10);
+
         racingCar.start();
 
         List<Car> cars = racingCar.getCars();
@@ -64,16 +66,14 @@ class RacingCarTest {
         for (Car car : winners) {
             assertThat(car.getCurrentLocation()).isEqualTo(winnerLocation);
         }
-
-
     }
 
     @ParameterizedTest
     @CsvSource({"apple;banana;orange, 4"})
     public void start(String input ,int moveCount) {
+        String[] carNames  = input.split(";");
 
         assertThatCode(() -> {
-            String[] carNames  = input.split(";");
             RacingCar racingCar = new RacingCar(carNames, moveCount, 10);
             racingCar.start();
         }).doesNotThrowAnyException();

@@ -32,7 +32,6 @@ public class RacingCarResultView {
      * @param cars
      */
     public void drawCarMoving(List<Car> cars) {
-
         for (Car car : cars) {
             drawUI(car);
         }
@@ -44,7 +43,6 @@ public class RacingCarResultView {
      * @param car
      */
     public void drawUI(Car car) {
-
         System.out.printf(car.getCarName() + " : ");
         for (int j = 0; j < car.getCurrentLocation(); j++) {
             System.out.printf("-");
@@ -62,8 +60,8 @@ public class RacingCarResultView {
      * @param winners
      */
     public void drawWinnerView(List<Car> winners) {
-
         StringBuffer sb = new StringBuffer();
+
         for (Car winner : winners) {
             sb.append(winner.getCarName() + ",");
         }

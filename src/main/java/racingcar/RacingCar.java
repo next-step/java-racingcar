@@ -14,19 +14,14 @@ import java.util.List;
  */
 public class RacingCar {
 
-    private final String[] carNames;   // 자동차 대 수
+    private final String[] carNames;   // 자동차들의 이름
     private final int moveCount; // 자동차 이동 횟수
-    private final int range; // 자동차 최대 이동거리
-    private List<Car> cars;
-    private RacingCarResultView view;
+    private List<Car> cars; // 자동차들의 객체
 
     public RacingCar(String[] carNames, int moveCount, int range) {
-
         this.carNames = carNames;
         this.moveCount = moveCount;
-        this.range = range;
         this.cars = new ArrayList<Car>();
-        this.view = new RacingCarResultView();
     }
 
     /**
@@ -45,7 +40,6 @@ public class RacingCar {
      * 준비된 Car 객채들 끼리의 경주를 시작합니다.
      */
     public List<Car> doRacingStart(List<Car> cars) {
-
         for (int i = 0; i < this.moveCount; i++) {
             moveAsCarUserEntered(cars);
         }
@@ -57,12 +51,12 @@ public class RacingCar {
      * @param cars
      */
     public void moveAsCarUserEntered(List<Car> cars) {
-
         for (Car car : cars) {
-            car.moveCar(this.range);
+            car.moveCar(Car.RANGE);
         }
 
-        this.view.drawCarMoving(cars);
+        RacingCarResultView view = new RacingCarResultView();
+        view.drawCarMoving(cars);
     }
 
     /**
@@ -71,7 +65,6 @@ public class RacingCar {
      * @return
      */
     public List<Car> getWinners(List<Car> cars) {
-
         int winnerLocation = getWinnerLocation(cars);
 
         List<Car> winners = new ArrayList<>();
@@ -94,7 +87,6 @@ public class RacingCar {
      * @return
      */
     public int getWinnerLocation(List<Car> cars) {
-
         int maxLocation = cars.get(0).getCurrentLocation();
 
         for (Car car : cars) {
@@ -111,7 +103,9 @@ public class RacingCar {
      */
     public void start() {
         List<Car> carsAfterTheRace = this.doRacingStart(this.createAsCarsNumberOfEnteredByUser());
-        this.view.drawWinnerView(this.getWinners(carsAfterTheRace));
+
+        RacingCarResultView view = new RacingCarResultView();
+        view.drawWinnerView(this.getWinners(carsAfterTheRace));
     }
 
     public List<Car> getCars() {

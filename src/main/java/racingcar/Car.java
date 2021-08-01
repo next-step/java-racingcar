@@ -12,6 +12,8 @@ import java.util.Random;
  * 해당 클래스는 Racing의 필요한 Car 객채입니다.
  */
 public class Car {
+
+    public static final int RANGE = 10;
     private String carName;
     private int currentLocation = 0;
     private final int minLocation = 3;

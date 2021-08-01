@@ -16,7 +16,6 @@ import java.io.InputStreamReader;
  */
 public class RacingCarPlayMain {
     public static void main(String[] args) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         RacingCarResultView view  = new RacingCarResultView();
         String[] carNames = view.getCarNames(br);
