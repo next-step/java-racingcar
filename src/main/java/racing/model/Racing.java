@@ -1,6 +1,5 @@
 package racing.model;
 
-
 import java.util.List;
 
 public class Racing {
@@ -11,15 +10,16 @@ public class Racing {
         this.cars.prepareCars(carNames);
     }
 
-    public Racing(List<Car> cars) {
-        this.cars.prepareCars(cars);
-    }
-
     public List<Car> winnerCarList() {
-        return cars.winner();
+        return cars.findWinner();
     }
 
-    public void game() {
-        cars.carsMove();
+    public void game(MovingStrategy movingStrategy) {
+        cars.carsMove(movingStrategy);
     }
+
+    public List<String> getCarMoveLines() {
+        return this.cars.getCarMoveLines();
+    }
+
 }

@@ -3,9 +3,8 @@ package race;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import racing.model.Car;
+import racing.model.RandomMovingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -22,14 +21,14 @@ public class CarTest {
     @Test
     @DisplayName("go Test")
     void goTest() {
-        car.run(9);
+        car.run(() -> true);
         assertThat(car.totalDistance()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("stop Test")
     void stopTest() {
-        car.run(3);
+        car.run(() -> false);
         assertThat(car.totalDistance()).isEqualTo(0);
     }
 
@@ -37,16 +36,22 @@ public class CarTest {
     @DisplayName("move condition test")
     void randomValueTest() {
         assertThatThrownBy(() -> {
-            car.moveCondition(10);
+            new RandomMovingStrategy().moveCondition(10);
         }).isInstanceOf(IllegalStateException.class);
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"3:false", "5:true"}, delimiter = ':')
-    @DisplayName("car move Test")
-    void carMoveTest(int randomValue, boolean expected) {
-        assertThat(car.run(randomValue)).isEqualTo(expected);
+    @Test
+    @DisplayName("valid distance test")
+    void validDistanceTest() {
+        car.run(() -> true);
+        assertThat(car.validDistance(1)).isEqualTo(true);
     }
 
-
+    @Test
+    @DisplayName("move line test")
+    void moveLineTest() {
+        String moveLine = "test1:-";
+        car.run(() -> true);
+        assertThat(car.getMoveLine()).isEqualTo(moveLine);
+    }
 }
