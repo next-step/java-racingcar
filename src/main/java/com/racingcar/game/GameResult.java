@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public class GameResult <T extends Car> {
     List<RoundResult> roundResults = new ArrayList<>();
     List<T> cars = new ArrayList<>();
+    List<T> winners = new ArrayList<>();
 
     public void addRoundResult(RoundResult roundResult) {
         roundResults.add(roundResult);
@@ -28,5 +29,9 @@ public class GameResult <T extends Car> {
 
     public List<Integer> getCarIdList() {
         return cars.stream().map((car) -> car.getId()).collect(Collectors.toList());
+    }
+
+    public void addAllWinners(List<T> winnerList) {
+        winnerList.stream().forEach((winner) -> this.winners.add(winner));
     }
 }
