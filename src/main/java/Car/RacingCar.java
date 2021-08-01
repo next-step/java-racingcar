@@ -24,9 +24,10 @@ public class RacingCar {
         return cars;
     }
 
-    public void gameStart() {
-        cars.stream()
-                .forEach(car -> car.move(random.nextInt(RANDOM_NUMBER_BOUND)));
+    public void gameStart(Random random) {
+        for (Car car : cars) {
+            car.move(random.nextInt(RANDOM_NUMBER_BOUND));
+        }
     }
 
     private void validate(int carCount, String[] carNames) {
