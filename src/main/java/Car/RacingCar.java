@@ -1,6 +1,7 @@
 package Car;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class RacingCar {
     private static final int RANDOM_NUMBER_BOUND = 10;
@@ -39,5 +40,17 @@ public class RacingCar {
         if (carName.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
+    }
+
+    public List<Car> getWinner() {
+        Comparator<Car> carComparatorMaxMoveCount = Comparator.comparingInt(Car::getMoveCount);
+        int maxMoveCount = cars.stream()
+                .max(Comparator.comparingInt(Car::getMoveCount))
+                .get()
+                .getMoveCount();
+
+        return cars.stream()
+                .filter(car -> car.getMoveCount() == maxMoveCount)
+                .collect(Collectors.toList());
     }
 }
