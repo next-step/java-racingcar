@@ -2,25 +2,35 @@ package racingCar.domain;
 
 public class RacingCar {
 
-    private String CarName;
+    private String carName;
     private int drivenDistance;
 
     private final ForwardPolicy forwardPolicy;
+    private final CarNamePolicy carNamePolicy;
 
     public RacingCar(String carName) {
-        StringUtils.isPossibleName(carName);
-        this.CarName = carName;
+        this.carName = carName;
         this.drivenDistance = 0;
         this.forwardPolicy = new ForwardPolicyImpl();
+        this.carNamePolicy = new CarNamePolicyImpl();
+        setCarName(carName);
     }
 
     public RacingCar() {
         this.drivenDistance = 0;
         this.forwardPolicy = new ForwardPolicyImpl();
+        this.carNamePolicy = new CarNamePolicyImpl();
+    }
+
+    private void setCarName(String carName){
+        if(!carNamePolicy.isPossibleName(carName)){
+            throw new IllegalArgumentException();
+        }
+        this.carName = carName;
     }
 
     public String getCarName() {
-        return CarName;
+        return carName;
     }
 
     public void goForward(int number) {

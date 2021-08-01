@@ -1,5 +1,4 @@
 import racingCar.domain.RacingManager;
-import racingCar.domain.StringUtils;
 import racingCar.ui.InputService;
 
 public class RacingCarApplication {
@@ -8,7 +7,7 @@ public class RacingCarApplication {
         //pobi,crong,honux
 
         RacingManager racingManager = new RacingManager(
-            StringUtils.namesSpliter(InputService.getCarNameString()), InputService.getTryCount()
+            InputService.getCarNameString().split(","), InputService.getTryCount()
         );
 
         racingManager.doFullRace();
