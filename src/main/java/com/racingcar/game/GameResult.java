@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GameResult {
+public class GameResult <T extends Car> {
     List<RoundResult> roundResults = new ArrayList<>();
-    List<Car> cars = new ArrayList<>();
+    List<T> cars = new ArrayList<>();
 
     public void addRoundResult(RoundResult roundResult) {
         roundResults.add(roundResult);
@@ -22,7 +22,7 @@ public class GameResult {
         return roundResults.get(roundIndex);
     }
 
-    public void addAllCars(List<Car> carList) {
+    public void addAllCars(List<T> carList) {
         carList.stream().forEach((car) -> this.cars.add(car));
     }
 

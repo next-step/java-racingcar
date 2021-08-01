@@ -5,12 +5,12 @@ import com.racingcar.dice.Dice;
 
 import java.util.List;
 
-public class Game {
+public class Game <T extends Car> {
     private int currentRound;
     private final int gameRound;
-    private List<Car> cars;
+    private List<T> cars;
 
-    public Game(int gameRound, List<Car> cars) {
+    public Game(int gameRound, List<T> cars) {
         this.gameRound = gameRound;
         this.cars = cars;
     }
@@ -35,7 +35,7 @@ public class Game {
         }
     }
 
-    private RoundResult getRoundResult(List<Car> cars) {
+    private RoundResult getRoundResult(List<T> cars) {
         RoundResult result = new RoundResult();
         cars.forEach((car) -> {
             result.add(car);
