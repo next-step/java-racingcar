@@ -13,7 +13,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
-import racingcar.strategy.MovableStrategy;
 
 class RacingCarsTest {
 	private static final int INITIAL_POSITION = 0;
