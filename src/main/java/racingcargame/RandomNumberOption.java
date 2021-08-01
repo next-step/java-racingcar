@@ -3,10 +3,11 @@ package racingcargame;
 import java.util.Random;
 
 public class RandomNumberOption implements RandomOption {
-    private final Random random = new Random();
+    private static final Random RANDOM = new Random();
+    private static final int LIMIT_NUMBER = 10;
 
     @Override
     public int randomValue() {
-        return random.nextInt(10);
+        return RANDOM.nextInt(LIMIT_NUMBER);
     }
 }
