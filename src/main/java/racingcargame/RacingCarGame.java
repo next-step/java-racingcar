@@ -5,7 +5,9 @@ import java.util.List;
 
 public class RacingCarGame {
     private List<RacingCar> cars;
-    private int car, count = 0;
+    private ResultView resultView = new ResultView();
+    private int car;
+    private int count;
 
     RacingCarGame(int car, int count) {
         this.car = car;
@@ -13,7 +15,7 @@ public class RacingCarGame {
         cars = createCars(car);
     }
 
-    public List<RacingCar> createCars(int numberOfCars) {
+    private List<RacingCar> createCars(int numberOfCars) {
         List<RacingCar> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
             cars.add(new RacingCar());
@@ -22,11 +24,20 @@ public class RacingCarGame {
     }
 
     public void startGame(final RandomOption randomOption) {
+        resultView.printResultMessage();
         for (int i = 0; i < count; i++) {
-            for (int j = 0; j < car; j++) {
-                cars.get(j).tryToMoveCar(randomOption.randomValue());
-            }
-            System.out.println();
+            round(randomOption);
+            resultView.showResultView(cars);
         }
+    }
+
+    private void round(RandomOption randomOption) {
+        for (RacingCar car : cars) {
+            car.tryToMove(randomOption.randomValue());
+        }
+    }
+
+    public List<RacingCar> getCars() {
+        return cars;
     }
 }
