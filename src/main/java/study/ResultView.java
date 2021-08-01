@@ -1,7 +1,6 @@
 package study;
 
 import java.util.List;
-import java.util.Map;
 
 public class ResultView {
 

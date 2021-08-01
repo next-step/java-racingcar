@@ -7,8 +7,8 @@ public class Stadium {
 	private NumberContainer numberContainer;
 	private static int RACE_WIN_RANGE = 4;
 
-	public Stadium() {
-		numberContainer = new NumberContainer();
+	public Stadium(NumberContainer numberContainer) {
+		this.numberContainer = numberContainer;
 	}
 
 	public void startRace(List<Car> carList) {
