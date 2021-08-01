@@ -9,10 +9,6 @@ public class RacingCar {
 
     private List<Car> cars;
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
     public RacingCar(int carCount, String[] carNames) {
         validate(carCount, carNames);
 
@@ -21,6 +17,10 @@ public class RacingCar {
             cars.add(new Car(carNames[i]));
 
         }
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     public void gameStart() {
