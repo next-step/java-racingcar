@@ -50,7 +50,7 @@ public class CarTest {
         //then
         int expected = (int)diceInputs.stream()
                 .filter((value) -> value >= 4)
-                .count();
+                .count() + 1;
 
         assertThat(car.getDistance()).isEqualTo(expected);
     }
