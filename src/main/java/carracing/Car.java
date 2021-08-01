@@ -15,8 +15,12 @@ public class Car {
         this.location += "-";
     }
 
+    public boolean isMovable(int cmd) {
+        return cmd >= 4;
+    }
+
     public void ordered(int cmd) {
-        if (cmd >= 4) {
+        if (isMovable(cmd)) {
             forward();
         }
     }
