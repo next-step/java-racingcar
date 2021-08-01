@@ -1,4 +1,4 @@
-package step3;
+package step3.utils;
 
 public class Validator {
 	public static void validateOverZero(int number) {
