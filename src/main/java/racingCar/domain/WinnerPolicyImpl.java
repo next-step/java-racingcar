@@ -7,9 +7,7 @@ public class WinnerPolicyImpl implements WinnerPolicy{
 
     @Override
     public List<String> winnerDecision(List<RacingCar> cars) {
-        //1. max num
         int winnerDistance = getMaxDistance(cars);
-        //2, get
         return getWinners(winnerDistance, cars);
     }
 
@@ -36,7 +34,7 @@ public class WinnerPolicyImpl implements WinnerPolicy{
     }
 
     private void isWinner(int winnerDistance, RacingCar car, List<String> winners){
-        if(winnerDistance == car.showDrivenDistance()){
+        if(car.equalsDistance(winnerDistance)){
             winners.add(car.getCarName());
         }
     }

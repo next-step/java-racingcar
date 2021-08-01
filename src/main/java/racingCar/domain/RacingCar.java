@@ -7,10 +7,6 @@ public class RacingCar {
 
     private final ForwardPolicy forwardPolicy;
 
-    public String getCarName() {
-        return CarName;
-    }
-
     public RacingCar(String carName) {
         StringUtils.isPossibleName(carName);
         this.CarName = carName;
@@ -23,6 +19,10 @@ public class RacingCar {
         this.forwardPolicy = new ForwardPolicyImpl();
     }
 
+    public String getCarName() {
+        return CarName;
+    }
+
     public void goForward(int number) {
         if (forwardPolicy.isMovableNumber(number)) {
             this.drivenDistance++;
@@ -31,5 +31,9 @@ public class RacingCar {
 
     public int showDrivenDistance() {
         return this.drivenDistance;
+    }
+
+    public boolean equalsDistance(int distance){
+        return drivenDistance == distance;
     }
 }
