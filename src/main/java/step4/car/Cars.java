@@ -5,15 +5,18 @@ import step4.number.Number;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Cars {
-
-    private static final int CAR_NAME_LENGTH_LIMIT = 5;
 
     private List<Car> cars;
 
     public Cars(String[] carNames) {
         this.cars = generateCars(carNames);
+    }
+
+    private Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public void tryMove() {
@@ -37,7 +40,11 @@ public class Cars {
         }
     }
 
-    public List<Car> getFarthestMovedCars() {
+    public Stream<Car> stream() {
+        return cars.stream();
+    }
+
+    public Cars getFarthestMovedCars() {
         List<Car> farthestCars = new ArrayList<>();
         Position maxPosition = Position.zero();
 
@@ -46,7 +53,7 @@ public class Cars {
             clearIfPositionIsFarther(car, maxPosition, farthestCars);
             maxPosition = replaceMaxPositionIfFarther(car, maxPosition, farthestCars);
         }
-        return farthestCars;
+        return new Cars(farthestCars);
     }
 
     private void clearIfPositionIsFarther(Car car, Position maxPosition, List<Car> farthestCars) {
@@ -73,18 +80,8 @@ public class Cars {
 
         for (int i = 0; i < carNames.length; i++) {
             String carName = carNames[i];
-            validateCarName(carName);
             cars.add(new Car(carName));
         }
         return cars;
-    }
-
-    private void validateCarName(String carName) {
-        if (isOverCarNameLengthLimit(carName))
-            throw new IllegalArgumentException("carName's length must be less than five length");
-    }
-
-    private boolean isOverCarNameLengthLimit(String carName) {
-        return carName.length() > CAR_NAME_LENGTH_LIMIT;
     }
 }

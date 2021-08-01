@@ -5,7 +5,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import step4.number.Number;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
 
@@ -13,7 +15,7 @@ class CarTest {
 
     @ParameterizedTest
     @DisplayName("4<=Number<=9인 경우 자동차는 전진한다")
-    @ValueSource(ints = {4,5,6,7,8,9})
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void tryMove_Move(int value) {
         Number number = new Number(value);
         car.tryMove(number);
@@ -24,7 +26,7 @@ class CarTest {
 
     @ParameterizedTest
     @DisplayName("0<=Number<=3인 경우 자동차는 이동하지 않는다")
-    @ValueSource(ints = {0,1,2,3})
+    @ValueSource(ints = {0, 1, 2, 3})
     void tryMove_Stay(int value) {
         Number number = new Number(value);
         car.tryMove(number);

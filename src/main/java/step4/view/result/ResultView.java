@@ -40,12 +40,7 @@ public class ResultView {
         return sb.toString();
     }
 
-    public void printWinnerOfRacing(Cars cars) {
-        List<Car> farthestMovedCars = cars.getFarthestMovedCars();
-        String winnerNames = farthestMovedCars.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(","));
-
-        System.out.println(String.format("%s가 최종 우승했습니다.", winnerNames));
+    public void printWinnerOfRacing(String winnersName) {
+        System.out.println(String.format("%s가 최종 우승했습니다.", winnersName));
     }
 }
