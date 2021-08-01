@@ -4,7 +4,10 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import step3.domain.Car;
 
 public class CarTest {
 	private Car car;
@@ -15,18 +18,11 @@ public class CarTest {
 	}
 
 	@DisplayName(value = "자동차 전진 테스트")
-	@Test
-	void advance() {
-		car.advance();
-		int position = car.getPosition();
-		assertThat(position).isEqualTo(1);
-	}
-
-	@DisplayName(value = "자동차 멈춤 테스트")
-	@Test
-	void stop() {
-		car.stop();
-		int position = car.getPosition();
-		assertThat(position).isEqualTo(0);
+	@CsvSource(value = {"1:0", "4:1", "8:1"}, delimiter = ':')
+	@ParameterizedTest
+	void advanceOrStop(int randomNumber, int expect) {
+		car.advanceOrStop(randomNumber);
+		int result = car.getPosition();
+		assertThat(result).isEqualTo(expect);
 	}
 }
