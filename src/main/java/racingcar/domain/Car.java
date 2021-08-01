@@ -1,9 +1,7 @@
 package racingcar.domain;
 
 public class Car {
-
-    private static final MoveStrategy moveStrategy = new RacingMoveStrategy();
-
+    
     private final String name;
     private int position;
 
@@ -20,8 +18,8 @@ public class Car {
         this.position = position;
     }
 
-    public void move(int bound) {
-        if (moveStrategy.isMoveAble(bound)) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMoveAble()) {
             position++;
         }
     }

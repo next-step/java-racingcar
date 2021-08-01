@@ -18,7 +18,8 @@ class RacingTest {
     @BeforeEach
     void setUp() {
         String[] carNames = {"bmw", "benz", "audi"};
-        racing = new Racing(carNames);
+        MoveStrategy moveStrategy = new RacingMoveStrategy();
+        racing = new Racing(carNames, moveStrategy);
         racingRecordsList = racing.start(5);
     }
 

@@ -3,14 +3,14 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import static racingcar.utils.RandomGenerate.pickRandomNumber;
-
 public class Racing {
 
     private final Car[] racingCars;
+    private final MoveStrategy moveStrategy;
 
-    public Racing(String[] carNames) {
+    public Racing(String[] carNames, MoveStrategy moveStrategy) {
         racingCars = new Car[carNames.length];
+        this.moveStrategy = moveStrategy;
         addCars(carNames);
     }
 
@@ -31,15 +31,10 @@ public class Racing {
     private RacingRecords moveTryCars() {
         RacingRecords racingRecords = new RacingRecords();
         for (Car car : racingCars) {
-            moveTryCar(car);
+            car.move(moveStrategy);
             racingRecords.add(new RacingRecord(car, car.getPosition()));
         }
         return racingRecords;
-    }
-
-    private void moveTryCar(Car car) {
-        int randomNumber = pickRandomNumber();
-        car.move(randomNumber);
     }
 
     public Car[] getRacingCars() {

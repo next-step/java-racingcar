@@ -14,11 +14,12 @@ class CarTest {
 
         // given
         Car car = new Car("volvo", 0);
+        MoveStrategy moveStrategy = new RacingMoveStrategy();
 
         // when
-        car.move(3);
-        car.move(4);
-        car.move(5);
+        car.move(moveStrategy);
+        car.move(moveStrategy);
+        car.move(moveStrategy);
 
         // then
         assertThat(car.getPosition()).isEqualTo(2);
