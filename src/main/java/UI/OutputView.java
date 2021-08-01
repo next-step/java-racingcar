@@ -5,7 +5,7 @@ import Car.Car;
 import java.util.List;
 
 public class OutputView {
-    private static final String RESULT_INTRO = "실행 결과\n";
+    private static final String RESULT_INTRO = "실행 결과";
     private static final String MOVEMENT = "-";
 
     public OutputView() {
@@ -13,17 +13,19 @@ public class OutputView {
     }
 
     public void printResult(List<Car> cars) {
+        StringBuilder stringBuilder = new StringBuilder();
         for (Car car : cars) {
-            drawMovements(car.getMoveCount());
+            stringBuilder.append(car.getCarName()).append(" : -");
+            drawMovements(stringBuilder, car.getMoveCount());
         }
-        System.out.println();
+        System.out.println(stringBuilder);
     }
 
-    private void drawMovements(int moveCount) {
-        for (int i = 0; i <= moveCount; i++) {
-            System.out.print(MOVEMENT);
+    private void drawMovements(StringBuilder stringBuilder,int moveCount) {
+        for (int i = 0; i < moveCount; i++) {
+            stringBuilder.append(MOVEMENT);
         }
-        System.out.println();
+        stringBuilder.append('\n');
     }
 
 }
