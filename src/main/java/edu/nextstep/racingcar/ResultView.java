@@ -9,8 +9,6 @@
 
 package edu.nextstep.racingcar;
 
-import java.util.List;
-
 public class ResultView {
     public static void startSign() {
         System.out.println("\n실행 결과");
@@ -18,10 +16,14 @@ public class ResultView {
 
     public static void outputCurrentRacing(Cars racingCars) {
         for (int i = 0; i < racingCars.size(); i++) {
-            for(int j = 0; j < racingCars.getCar(i).getMovedDistance(); j++){
-                System.out.print("-");
-            }
-            System.out.println();
+            printDistance(racingCars.getCar(i).getMovedDistance());
+        }
+        System.out.println();
+    }
+
+    private static void printDistance(int distance) {
+        for(int j = 0; j < distance; j++){
+            System.out.print("-");
         }
         System.out.println();
     }
