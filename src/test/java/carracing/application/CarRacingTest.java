@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import carracing.domain.Car;
+import carracing.view.ResultView;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,8 +35,11 @@ class CarRacingTest {
         int raceCount = 3;
         CarRacing carRacing = new CarRacing();
 
-        // when & then
-        carRacing.race(carCount, raceCount);
+        // when
+        Object view = carRacing.race(carCount, raceCount);
+
+        // then
+        assertThat(view).isInstanceOf(ResultView.class);
     }
 
 }
