@@ -81,9 +81,9 @@ class RacingCarGameTest {
     void pickWinners(){
         racingCars.get(0).moveIfMovable(new AlwaysMoveStrategy());
         RacingCarGame.winnerRecord = 1;
-        String[] winners = RacingCarGame.pickWinners(racingCars);
-        assertThat(winners.length).isEqualTo(1);
-        assertThat(winners[0]).isEqualTo(racingCars.get(0).getName());
+        List<String> winners = RacingCarGame.pickWinners(racingCars);
+        assertThat(winners.size()).isEqualTo(1);
+        assertThat(winners.get(0)).isEqualTo(racingCars.get(0).getName());
 
     }
 }

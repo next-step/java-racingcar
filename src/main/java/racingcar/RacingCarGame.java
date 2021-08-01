@@ -22,15 +22,15 @@ public class RacingCarGame {
         int tryNumber = inputView.requestTryNumber();
         initializeRacingCars(racingCars, carNames);
         race(racingCars, tryNumber, new RandomMoveStrategy());
-        String[] winners = pickWinners(racingCars);
+        List<String> winners = pickWinners(racingCars);
         ResultView.printWinners(winners);
     }
 
-    public static String[] pickWinners(List<RacingCar> racingCars) {
+    public static List<String> pickWinners(List<RacingCar> racingCars) {
         return racingCars.stream()
                 .filter(racingCar -> racingCar.getPosition() == winnerRecord)
                 .map(RacingCar::getName)
-                .toArray(String[]::new);
+                .collect(Collectors.toList());
     }
 
     public static void initializeRacingCars(List<RacingCar> racingCars, String[] carNames) {
