@@ -4,6 +4,8 @@ import com.racingcar.car.Car;
 import com.racingcar.dice.Dice;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class Game <T extends Car> {
     private int currentRound;
@@ -26,6 +28,7 @@ public class Game <T extends Car> {
         }
 
         gameResult.addAllCars(cars);
+        gameResult.addAllWinners(decideWinners(cars));
         return gameResult;
     }
 
@@ -41,5 +44,11 @@ public class Game <T extends Car> {
             result.add(car);
         });
         return result;
+    }
+
+    private List<Car> decideWinners(List<T> cars) {
+        int max = cars.stream().mapToInt((car) -> car.getDistance()).max().orElseThrow(() -> new NoSuchElementException("can not find max distance"));
+
+        return cars.stream().filter((car) -> car.getDistance() == max).collect(Collectors.toList());
     }
 }
