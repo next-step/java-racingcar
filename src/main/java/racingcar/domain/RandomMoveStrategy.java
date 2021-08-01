@@ -13,7 +13,7 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean isMoveAble() {
-        return pickRandomNumber() > MORE_THEN_CONDITION_NUMBER;
+        return pickRandomNumber() >= MORE_THEN_CONDITION_NUMBER;
     }
 
     public int pickRandomNumber() {
