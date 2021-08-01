@@ -4,9 +4,9 @@ import com.racingcar.car.Car;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.NoSuchElementException;
 
-public class GameResult <T extends Car> {
+public class GameResult<T extends Car> {
     List<RoundResult> roundResults = new ArrayList<>();
     List<T> cars = new ArrayList<>();
     List<T> winners = new ArrayList<>();
@@ -24,14 +24,19 @@ public class GameResult <T extends Car> {
     }
 
     public void addAllCars(List<T> carList) {
-        carList.stream().forEach((car) -> this.cars.add(car));
-    }
-
-    public List<Integer> getCarIdList() {
-        return cars.stream().map((car) -> car.getId()).collect(Collectors.toList());
+        cars.addAll(carList);
     }
 
     public void addAllWinners(List<T> winnerList) {
-        winnerList.stream().forEach((winner) -> this.winners.add(winner));
+        winners.addAll(winnerList);
+    }
+
+    public T getCar(int id) {
+        return cars.stream().filter((car) -> car.getId() == id).findFirst()
+                .orElseThrow(() -> new NoSuchElementException("this car doesn't exist, car id : " + id));
+    }
+
+    public List<T> getWinners() {
+        return new ArrayList<>(winners);
     }
 }
