@@ -11,7 +11,7 @@ public class RandomMovingStrategy implements MovingStrategy{
         return moveCondition(RandomUtil.randomValue());
     }
 
-    public Boolean moveCondition(int randomValue) {
+    public static Boolean moveCondition(int randomValue) {
         if(randomValue > MAXIMUM_CONDITION) {
             throw new IllegalStateException();
         }

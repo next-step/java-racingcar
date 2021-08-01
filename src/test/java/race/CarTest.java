@@ -21,14 +21,14 @@ public class CarTest {
     @Test
     @DisplayName("go Test")
     void goTest() {
-        car.run(() -> true);
+        car.run(4);
         assertThat(car.totalDistance()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("stop Test")
     void stopTest() {
-        car.run(() -> false);
+        car.run(3);
         assertThat(car.totalDistance()).isEqualTo(0);
     }
 

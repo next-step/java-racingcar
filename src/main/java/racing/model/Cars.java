@@ -35,8 +35,8 @@ public class Cars {
         return cars;
     }
 
-    public void carsMove(MovingStrategy randomMovingStrategy) {
-        carList.forEach(car -> car.run(randomMovingStrategy));
+    public void carsMove() {
+        carList.forEach(car -> car.run(() -> true));
     }
 
     public List<String> getCarMoveLines() {

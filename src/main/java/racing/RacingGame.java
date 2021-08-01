@@ -14,7 +14,7 @@ public class RacingGame {
 
     public void gameStart(Racing racing) {
         do {
-            racing.game(new RandomMovingStrategy());
+            racing.game();
             RacingView.printCarMove(racing);
         } while (!endGame());
         RacingView.printWinner(racing.winnerCarList());

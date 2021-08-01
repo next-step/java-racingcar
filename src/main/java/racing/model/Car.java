@@ -28,6 +28,15 @@ public class Car {
         return false;
     }
 
+    public boolean run(int number) {
+        if(RandomMovingStrategy.moveCondition(number)) {
+            distance.forward();
+            return true;
+        }
+        return false;
+    }
+
+
     public Boolean validDistance(int distance) {
         return this.distance.getDistance() == distance;
     }

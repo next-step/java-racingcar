@@ -6,9 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.model.Car;
 import racing.model.Cars;
-import racing.model.MovingStrategy;
-import racing.model.Racing;
-import racing.model.RandomMovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +54,7 @@ public class CarsTest {
     @Test
     @DisplayName("more than one winner test")
     void carsMoveTest(){
-        this.cars.carsMove(() -> true);
+        this.cars.carsMove();
         assertThat(this.cars.getMaxDistance()).isEqualTo(4);
     }
 }

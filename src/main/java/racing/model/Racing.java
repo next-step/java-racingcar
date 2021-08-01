@@ -14,8 +14,8 @@ public class Racing {
         return cars.findWinner();
     }
 
-    public void game(MovingStrategy movingStrategy) {
-        cars.carsMove(movingStrategy);
+    public void game() {
+        cars.carsMove();
     }
 
     public List<String> getCarMoveLines() {
