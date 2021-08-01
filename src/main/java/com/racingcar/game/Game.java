@@ -3,28 +3,30 @@ package com.racingcar.game;
 import com.racingcar.car.Car;
 import com.racingcar.dice.Dice;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class Game {
     private int currentRound;
     private final int gameRound;
-    private Car[] cars;
+    private List<Car> cars;
 
-    public Game(int gameRound, Car[] cars) {
+    public Game(int gameRound, List<Car> cars) {
         this.gameRound = gameRound;
         this.cars = cars;
     }
 
-    public int[][] play() {
-        int[][] result = new int[gameRound][cars.length];
-        currentRound = 0;
+    public GameResult play() {
+        GameResult gameResult = new GameResult();
 
+        this.currentRound = 0;
         while (currentRound < gameRound) {
             playOneRound();
-            result[currentRound++] = getRoundResult();
+            gameResult.addRoundResult(getRoundResult(cars));
+            currentRound++;
         }
 
-        return result;
+        gameResult.addAllCars(cars);
+        return gameResult;
     }
 
     private void playOneRound() {
@@ -33,11 +35,11 @@ public class Game {
         }
     }
 
-    private int[] getRoundResult() {
-        return Arrays.stream(cars)
-                .mapToInt(car -> car.getDistance())
-                .toArray();
+    private RoundResult getRoundResult(List<Car> cars) {
+        RoundResult result = new RoundResult();
+        cars.forEach((car) -> {
+            result.add(car);
+        });
+        return result;
     }
-
-
 }
