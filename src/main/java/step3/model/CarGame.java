@@ -20,20 +20,12 @@ public class CarGame {
             IntStream
                     .range(0, cars.getCarCnt())
                     .forEach(j -> {
-                        int randomNum = generateRandomNumbers();
-                        results.add((j+1) + "/" + randomNum + "/" + cars.canMove(j, randomNum));
+                        RandomMovingStrategy strategy = new RandomMovingStrategy();
+                        int nextMove = cars.move(j, strategy);
+                        results.add((j+1) + "/" + strategy.getRandomNumber() + "/" + nextMove);
                     });
         }
 
         return results;
-    }
-
-    /**
-     * 0~9 범위 랜덤숫자 발생
-     * @return
-     */
-    public int generateRandomNumbers() {
-        Random random = new Random();
-        return random.nextInt(9);
     }
 }

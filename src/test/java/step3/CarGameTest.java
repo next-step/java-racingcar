@@ -26,12 +26,11 @@ public class CarGameTest {
     @DisplayName("4이상일 경우 자동차가 전진해야한다.")
     public void car_should_be_moved() {
         //given
-        int randomNum = 4;
         int carIdx = 0;
 
         //when
         Cars cars = new Cars(carCnt);
-        cars.canMove(carIdx, randomNum);
+        cars.move(carIdx, ()->true);
 
         //then
         int move = cars.getCar(carIdx).getMove();
@@ -47,7 +46,7 @@ public class CarGameTest {
 
         //when
         Cars cars = new Cars(carCnt);
-        cars.canMove(carIdx, randomNum);
+        cars.move(carIdx, ()->false);
 
         //then
         int move = cars.getCar(carIdx).getMove();
@@ -60,14 +59,15 @@ public class CarGameTest {
         //given
         int carIdx = 0;
 
-        int[] randomNums    = {4, 3, 2, 8, 9};
-        int[] expectedMove  = {1, 1, 1, 2, 3};
+        boolean[] randomNums = {true, false, false, true, true};
+        int[] expectedMove = {1, 1, 1, 2, 3};
 
         Cars cars = new Cars(carCnt);
 
         for (int i=0; i<randomNums.length; i++) {
             //when
-            cars.canMove(carIdx, randomNums[i]);
+            boolean random = randomNums[i];
+            cars.move(carIdx, ()->random);
 
             //then
             int move = cars.getCar(carIdx).getMove();

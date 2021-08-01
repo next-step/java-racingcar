@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    public static final int LIMIT = 4;
-
     private List<Car> cars;
 
     public Cars(int carCnt) {
@@ -23,7 +21,7 @@ public class Cars {
     }
 
     /**
-     * 자동차 인스턴스 반
+     * 자동차 인스턴스 반환
      * @param i
      * @return환
      */
@@ -32,17 +30,16 @@ public class Cars {
     }
 
     /**
-     * 랜덤 숫자를 기준으로 움직일수 있는지 판단해서 자동차를 움직인다.
+     * 자동차 움직임 조정, 랜덤 숫자를 받아 4이상이 나오면 전진한다.
      * @param carIdx
-     * @param randomNum
+     * @param movingStrategy
+     * @return
      */
-    public int canMove(int carIdx, int randomNum) {
-        //4미만일때는 시도횟수만줄임
-        if (randomNum < LIMIT) {
-            return getCar(carIdx).getMove();
+    public int move(int carIdx, MovingStrategy movingStrategy){
+        if (movingStrategy.canMove()){
+            return getCar(carIdx).go();
         }
 
-        //4이상일때는 전진하고 시도횟수 줄임
-        return getCar(carIdx).go();
+        return getCar(carIdx).getMove();
     }
 }
