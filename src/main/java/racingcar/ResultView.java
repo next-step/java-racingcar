@@ -1,36 +1,24 @@
 package racingcar;
 
-import racingcar.util.RandomGenerator;
-
 public class ResultView {
-    private static final String RESULT = "실행 결과";
+    public static final String RESULT = "실행 결과";
     private static final String LINE = "-";
 
-    private final Cars cars;
-    private int tryCount;
-
-    public ResultView(int askTryCount, Cars cars) {
-        this.tryCount = askTryCount;
-        this.cars = cars;
-    }
-
-    public void printResult() {
-        System.out.println(RESULT);
-        while (tryCount > 0) {
-            printLine();
-            System.out.println();
-            tryCount --;
-        }
-    }
-
-    private void printLine() {
+    public void printLine(Cars cars) {
         for(int i = 0; i < cars.getCarsSize(); i ++) {
             Car car = cars.getCars().get(i);
-            car.move(new RandomNumberMovingStrategy(new RandomGenerator()));
             System.out.println();
+            System.out.print(car.getName() + " ");
             for(int j = 0; j < car.getPosition(); j ++) {
                 System.out.print(LINE);
             }
         }
+    }
+
+    public void printWinner(Cars cars) {
+        for(Car winners : cars.findWinner()) {
+            System.out.print(winners.getName() + " ");
+        }
+        System.out.print("가 최종 우승 했습니다.");
     }
 }
