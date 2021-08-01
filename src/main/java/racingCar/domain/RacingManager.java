@@ -61,12 +61,6 @@ public class RacingManager {
         }
     }
 
-    private void showCurrentDrivenDistance() {
-        for (RacingCar car : cars) {
-            PrintService.printDistance(car.showDrivenDistance());
-        }
-    }
-
     private void showCurrentDrivenDistanceWithName() {
         for (RacingCar car : cars) {
             PrintService.printDistanceWithName(car.showDrivenDistance(), car.getCarName());
