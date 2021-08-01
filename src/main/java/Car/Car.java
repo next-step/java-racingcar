@@ -15,9 +15,7 @@ public class Car {
     }
 
     public Car(String carName) {
-        moveCount = 0;
         this.carName = carName;
-
     }
 
     public int getMoveCount() {
