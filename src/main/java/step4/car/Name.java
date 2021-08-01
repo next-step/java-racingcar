@@ -1,11 +1,11 @@
 package step4.car;
 
-public class CarName {
+public class Name {
 
     private final String value;
     private static final int CAR_NAME_LENGTH_LIMIT = 5;
 
-    public CarName(String carName) {
+    public Name(String carName) {
         validateCarName(carName);
         this.value = carName;
     }

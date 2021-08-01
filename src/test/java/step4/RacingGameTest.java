@@ -2,11 +2,12 @@ package step4;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import step4.car.Cars;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class RacingGameTest {
 
@@ -51,5 +52,31 @@ class RacingGameTest {
                 .isNotNull()
                 .isNotBlank()
                 .isNotEmpty();
+    }
+
+    @ParameterizedTest
+    @DisplayName("게임이 끝난 경우 isFinished()는 true를 리턴한다")
+    @CsvSource(value = {"a:b:c,5"})
+    void isFinished(String input, int gameCount) {
+        String[] carNames = input.split(":");
+
+        RacingGame racingGame = new RacingGame(carNames, gameCount);
+
+        racingGame.race();
+        assertFalse(racingGame.isFinished());
+
+        racingGame.race();
+        assertFalse(racingGame.isFinished());
+
+        racingGame.race();
+        assertFalse(racingGame.isFinished());
+
+        racingGame.race();
+        assertFalse(racingGame.isFinished());
+
+        racingGame.race();
+        assertTrue(racingGame.isFinished());
+
+
     }
 }

@@ -3,7 +3,6 @@ package step4.car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step4.RacingGame;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,7 +19,7 @@ class CarsTest {
 
         for (int i = 0; i < cars.size(); i++) {
             Car car = cars.get(i);
-            CarName name = car.getName();
+            Name name = car.getName();
             assertEquals(carNames[i], name.getValue());
         }
     }

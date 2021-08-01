@@ -1,8 +1,8 @@
 package step4;
 
 import step4.car.Car;
-import step4.car.CarName;
 import step4.car.Cars;
+import step4.car.Name;
 import step4.view.result.ResultView;
 
 import java.util.stream.Collectors;
@@ -22,26 +22,30 @@ public class RacingGame {
 
     public void race(int gameCount) {
         for (int i = 1; i <= gameCount; i++) {
-            validateLimit();
-            remainGameCount--;
-            cars.tryMove();
-            printProgressOfRace();
+            race();
         }
     }
 
+    public void race() {
+        validateLimit();
+        remainGameCount--;
+        cars.tryMove();
+        printProgressOfRace();
+    }
+
     public Cars getWinnerCarsOfRace() {
-        if (isRaceFinished())
+        if (isFinished())
             return cars.getFarthestMovedCars();
 
         throw new IllegalStateException("race is not finished yet");
     }
 
     public String getWinnersName() {
-        if (isRaceFinished()) {
+        if (isFinished()) {
             Cars farthestMovedCars = cars.getFarthestMovedCars();
             String winnersName = farthestMovedCars.stream()
                     .map(Car::getName)
-                    .map(CarName::getValue)
+                    .map(Name::getValue)
                     .collect(Collectors.joining(","));
             return winnersName;
         }
@@ -53,12 +57,12 @@ public class RacingGame {
         ResultView resultView = new ResultView();
         resultView.printProgressOfRace(cars);
 
-        if (isRaceFinished()) {
+        if (isFinished()) {
             resultView.printWinnerOfRacing(getWinnersName());
         }
     }
 
-    private boolean isRaceFinished() {
+    public boolean isFinished() {
         return remainGameCount == GAME_COUNT_LOWER_BOUND;
     }
 

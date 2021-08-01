@@ -6,12 +6,12 @@ public class Car {
 
     private static final int STAY_THRESHOLD = 3;
 
-    private final CarName name;
+    private final Name name;
 
     private int movedDistance = 0;
 
     public Car(String name) {
-        this.name = new CarName(name);
+        this.name = new Name(name);
     }
 
     public void tryMove(Number number) {
@@ -31,7 +31,7 @@ public class Car {
         return new Position(movedDistance);
     }
 
-    public CarName getName() {
+    public Name getName() {
         return name;
     }
 }
