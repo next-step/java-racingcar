@@ -25,9 +25,18 @@ class RacingTest {
 
     @Test
     @DisplayName("자동차 경주 우승자 확인")
-    void racingCarPositionCheck() {
+    void racingCarWinnerCheck() {
         List<String> racingWinner = racingRecordsList.get(4).getRacingWinner();
         assertThat(racingWinner).contains("benz", "audi", "audi");
+    }
+
+    @Test
+    @DisplayName("자동차 경주 완료후 첫번재 자동차 위치 확인")
+    void racingCarPositionCheck() {
+        RacingRecord racingRecord = racingRecordsList.get(4).getRacingRecords().get(0);
+        int firstCarFinalPosition = racingRecord.getPosition();
+
+        assertThat(firstCarFinalPosition).isEqualTo(5);
     }
 
     @Test
