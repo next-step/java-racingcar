@@ -1,4 +1,4 @@
-package step3;
+package step3.model;
 
 public enum Message {
     ASK_CAR_CNT("자동차 대수는 몇 대 인가요?", "1대 이상 입력하셔야 게임이 가능합니다."),
