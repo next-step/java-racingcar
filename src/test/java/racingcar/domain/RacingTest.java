@@ -18,9 +18,16 @@ class RacingTest {
     @BeforeEach
     void setUp() {
         String[] carNames = {"bmw", "benz", "audi"};
-        MoveStrategy moveStrategy = new RacingMoveStrategy();
+        MoveStrategy moveStrategy = () -> true;
         racing = new Racing(carNames, moveStrategy);
         racingRecordsList = racing.start(5);
+    }
+
+    @Test
+    @DisplayName("자동차 경주 우승자 확인")
+    void racingCarPositionCheck() {
+        List<String> racingWinner = racingRecordsList.get(4).getRacingWinner();
+        assertThat(racingWinner).contains("benz", "audi", "audi");
     }
 
     @Test

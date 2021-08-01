@@ -9,20 +9,33 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
 
     @Test
-    @DisplayName("자동차 4이상일 경우만 전진 테스트")
-    void carMoveTrueTest() {
-
+    @DisplayName("자동차 전진 테스트")
+    void carMoveTest() {
         // given
         Car car = new Car("volvo", 0);
-        MoveStrategy moveStrategy = new RacingMoveStrategy();
+        MoveStrategy moveStrategy = () -> true;
 
         // when
-        car.move(moveStrategy);
         car.move(moveStrategy);
         car.move(moveStrategy);
 
         // then
         assertThat(car.getPosition()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("자동차 전진 실패 테스트")
+    void carMoveFailTest() {
+        // given
+        Car car = new Car("volvo", 0);
+        MoveStrategy moveStrategy = () -> false;
+
+        // when
+        car.move(moveStrategy);
+        car.move(moveStrategy);
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
