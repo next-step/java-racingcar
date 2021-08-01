@@ -35,14 +35,14 @@ class WinnerPolicyImplTest {
     @DisplayName("우승 주행 거리를 구하는 테스트")
     @Test
     void get_winner_test() {
-        assertThat(winnerPolicy.winnerDecision(racingCars).get(0)).isEqualTo("A");
+        assertThat(winnerPolicy.winnerDecision(racingCars).get(0).getCarName()).isEqualTo("A");
     }
 
     @DisplayName("공동 우승자 테스트")
     @Test
     void get_multi_winner_test() {
         racingCars.get(1).goForward(5);
-        assertThat(winnerPolicy.winnerDecision(racingCars).get(0)).isEqualTo("A");
-        assertThat(winnerPolicy.winnerDecision(racingCars).get(1)).isEqualTo("B");
+        assertThat(winnerPolicy.winnerDecision(racingCars).get(0).getCarName()).isEqualTo("A");
+        assertThat(winnerPolicy.winnerDecision(racingCars).get(1).getCarName()).isEqualTo("B");
     }
 }

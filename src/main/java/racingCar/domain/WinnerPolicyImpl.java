@@ -6,7 +6,7 @@ import java.util.List;
 public class WinnerPolicyImpl implements WinnerPolicy{
 
     @Override
-    public List<String> winnerDecision(List<RacingCar> cars) {
+    public List<RacingCar> winnerDecision(List<RacingCar> cars) {
         int winnerDistance = getMaxDistance(cars);
         return getWinners(winnerDistance, cars);
     }
@@ -25,17 +25,17 @@ public class WinnerPolicyImpl implements WinnerPolicy{
         return Math.max(num1, num2);
     }
 
-    private List<String> getWinners(int winnerDistance, List<RacingCar> cars){
-        List<String> winners = new ArrayList<>();
+    private List<RacingCar> getWinners(int winnerDistance, List<RacingCar> cars){
+        List<RacingCar> winners = new ArrayList<>();
         for(RacingCar car : cars){
             isWinner(winnerDistance, car, winners);
         }
         return winners;
     }
 
-    private void isWinner(int winnerDistance, RacingCar car, List<String> winners){
+    private void isWinner(int winnerDistance, RacingCar car, List<RacingCar> winners){
         if(car.equalsDistance(winnerDistance)){
-            winners.add(car.getCarName());
+            winners.add(car);
         }
     }
 }

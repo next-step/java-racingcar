@@ -1,6 +1,8 @@
 package racingCar.ui;
 
+import java.util.ArrayList;
 import java.util.List;
+import racingCar.domain.RacingCar;
 
 public class PrintService {
 
@@ -26,9 +28,13 @@ public class PrintService {
         System.out.println();
     }
 
-    public static void printWinners(List<String> winners){
-        String winner = String.join(",",winners);
-        System.out.println(winner + "가 최종 우승했습니다.");
+    public static void printWinners(List<RacingCar> winners){
+        List<String> names = new ArrayList<>();
+        for (RacingCar winner : winners) {
+            names.add(winner.getCarName());
+        }
+        String winnerName = String.join(", ", names);
+        System.out.println(winnerName + "가 최종 우승했습니다.");
     }
 
     public static void printResultMessage(){
