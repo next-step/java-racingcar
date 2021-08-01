@@ -12,11 +12,14 @@ public class NamedCarTest {
     public void create() {
         //given
         String name = "test";
+        int id = 0;
+
         //when
-        NamedCar car = new NamedCar(name);
+        NamedCar car = new NamedCar(id, name);
 
         //then
         assertThat(car.getName()).isEqualTo(name);
+        assertThat(car.getId()).isEqualTo(id);
     }
 
     @Test
@@ -24,10 +27,11 @@ public class NamedCarTest {
     public void exceedNameLength() {
         //given
         String name = "12345";
+        int id = 0;
 
         //then
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new NamedCar(name);
+            new NamedCar(id, name);
         });
     }
 }

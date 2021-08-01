@@ -1,5 +1,7 @@
 package com.racingcar.view;
 
-public abstract class InputView<T> {
-    public abstract T drawAndParse();
+import com.racingcar.view.model.GameInput;
+
+public abstract class InputView {
+    public abstract GameInput drawAndParse();
 }
