@@ -19,7 +19,7 @@ public class CarRacing {
     for (int i = 0; i < numOfMove; i++) {
       moveAllCars();
       if (i != 0) {
-        System.out.println();
+        ResultView.printResultDivider();
       }
       ResultView.printResult(carList);
     }

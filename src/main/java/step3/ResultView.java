@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class ResultView {
 
+  private static final String RESULT_DIVIDER = "\n";
+
   public static void printResultTitle() {
     System.out.println("\n실행 결과");
   }
@@ -20,5 +22,9 @@ public class ResultView {
       sb.append("-");
     }
     System.out.println(sb);
+  }
+
+  public static void printResultDivider() {
+    System.out.print(RESULT_DIVIDER);
   }
 }
