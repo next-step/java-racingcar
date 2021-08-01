@@ -19,6 +19,7 @@ public class RacingCar {
         cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car(carNames[i]));
+
         }
     }
 

@@ -3,6 +3,7 @@ package UI;
 import Car.Car;
 
 import java.util.List;
+
 import java.util.stream.Collectors;
 
 public class OutputView {
@@ -10,11 +11,13 @@ public class OutputView {
     private static final String MOVEMENT = "-";
     private static final String WINNER_MESSAGE = "가 최종 우승했습니다.";
 
+
     public OutputView() {
         System.out.println(RESULT_INTRO);
     }
 
     public void printResult(List<Car> cars) {
+
         StringBuilder stringBuilder = new StringBuilder();
         for (Car car : cars) {
             stringBuilder.append(car.getCarName()).append(" : -");
@@ -42,4 +45,5 @@ public class OutputView {
 
         System.out.println(stringBuilder);
     }
+
 }

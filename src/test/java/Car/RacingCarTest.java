@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import static org.assertj.core.api.Assertions.*;
 
 class RacingCarTest {
@@ -16,6 +17,7 @@ class RacingCarTest {
     void setUp() {
         String[] carNames = {"pobi", "crong", "honux"};
         racingCar = new RacingCar(3, carNames);
+
     }
 
     @ParameterizedTest
@@ -27,6 +29,7 @@ class RacingCarTest {
         System.out.println(carNames);
         String[] splitedCarName = carNames.split(",");
         racingCar = new RacingCar(inputCarCount, splitedCarName);
+
         int carsSize = racingCar.getCars().size();
         assertThat(carsSize).isEqualTo(carCountAnswer);
     }
@@ -66,4 +69,5 @@ class RacingCarTest {
 
 
     }
+
 }

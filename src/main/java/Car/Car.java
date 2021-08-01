@@ -1,5 +1,9 @@
 package Car;
 
+
+import java.util.Random;
+
+
 public class Car {
     private static final int MIN_MOVE_NUMBER = 4;
 
@@ -13,6 +17,7 @@ public class Car {
     public Car(String carName) {
         moveCount = 0;
         this.carName = carName;
+
     }
 
     public int getMoveCount() {
@@ -24,4 +29,5 @@ public class Car {
             moveCount++;
         }
     }
+
 }
