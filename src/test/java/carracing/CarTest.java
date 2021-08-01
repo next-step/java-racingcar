@@ -19,4 +19,18 @@ class CarTest {
         assertThat(car.location()).isEqualTo("");
     }
 
+    @Test
+    @DisplayName("자동차는 이동할 수 있다.")
+    void forwardCarTest() {
+
+        // given
+        Car car = new Car();
+
+        // when
+        car.forward();
+
+        // then
+        assertThat(car.location()).isEqualTo("-");
+    }
+
 }

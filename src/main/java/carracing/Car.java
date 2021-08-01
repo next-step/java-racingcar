@@ -10,4 +10,8 @@ public class Car {
     public String location() {
         return location;
     }
+
+    public void forward() {
+        this.location += "-";
+    }
 }
