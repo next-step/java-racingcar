@@ -1,21 +1,25 @@
 package com.racingcar;
 
-import com.racingcar.game.Game;
-import com.racingcar.game.GameMaker;
-import com.racingcar.view.DefaultInputView;
+import com.racingcar.game.*;
 import com.racingcar.view.InputView;
-import com.racingcar.view.ResultView;
+import com.racingcar.view.NamedCarInputView;
+import com.racingcar.view.NamedCarResultView;
 import com.racingcar.view.model.GameInput;
 
 public class RacingGame {
     public static void main(String[] args) {
-        InputView<GameInput> view = new DefaultInputView();
+        InputView view = new NamedCarInputView();
         GameInput input = view.drawAndParse();
 
-        Game game = GameMaker.make(input.getGameRound(), input.getNumberOfCars());
+        CarsMakeRule makeCarsRule = new NamedCarsMakeRule();
 
-        int[][] result = game.play();
+        GameMaker gameMaker = new GameMaker(makeCarsRule);
 
-        ResultView.draw(result);
+        Game game = gameMaker.make(input.getGameRound(), input.getCarInput());
+
+        GameResult result = game.play();
+
+        NamedCarResultView resultView = new NamedCarResultView(result);
+        resultView.draw();
     }
 }
