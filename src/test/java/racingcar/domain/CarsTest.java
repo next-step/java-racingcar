@@ -40,7 +40,7 @@ public class CarsTest {
         Cars cars = new Cars(Arrays.asList(car1, car2, car3));
         List<Car> winners = cars.findWinners();
 
-        assertThat(winners.size()).isEqualTo(1);
+        assertThat(winners).hasSize(1);
         assertThat(winners).containsExactly(car2);
     }
 
@@ -54,7 +54,7 @@ public class CarsTest {
         Cars cars = new Cars(Arrays.asList(car1, car2, car3));
         List<Car> winners = cars.findWinners();
 
-        assertThat(winners.size()).isEqualTo(2);
+        assertThat(winners).hasSize(2);
         assertThat(winners).containsOnly(car2, car3);
     }
 
