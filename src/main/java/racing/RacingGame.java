@@ -1,8 +1,11 @@
 package racing;
 
+import racing.model.Car;
 import racing.model.Racing;
 import racing.model.RandomMovingStrategy;
 import racing.view.RacingView;
+
+import java.util.List;
 
 public class RacingGame {
 
@@ -12,12 +15,14 @@ public class RacingGame {
         this.gameCount = gameCount;
     }
 
-    public void gameStart(Racing racing) {
+    public List<Car> gameStart(Racing racing) {
+        List<Car> carList;
         do {
-            racing.game();
-            RacingView.printCarMove(racing);
+            carList = racing.game();
+            RacingView.printCarMove(carList);
         } while (!endGame());
         RacingView.printWinner(racing.winnerCarList());
+        return carList;
     }
 
     public Boolean endGame() {

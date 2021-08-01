@@ -28,28 +28,11 @@ public class Car {
         return false;
     }
 
-    public boolean run(int number) {
-        if(RandomMovingStrategy.moveCondition(number)) {
-            distance.forward();
-            return true;
-        }
-        return false;
-    }
-
-
     public Boolean validDistance(int distance) {
         return this.distance.getDistance() == distance;
     }
 
     public String carName() {
         return this.carInfo.name();
-    }
-
-    public String getMoveLine() {
-        String str = this.carName() + ":";
-        for (int count=0; count<this.distance.getDistance(); count++) {
-            str += "-";
-        }
-        return str;
     }
 }

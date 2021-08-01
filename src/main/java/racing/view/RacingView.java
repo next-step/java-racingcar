@@ -9,12 +9,20 @@ import java.util.stream.Collectors;
 
 public class RacingView {
 
+    private static final String MOVE_TEXT = "-";
     private static final String WIN_MESSAGE = "%s가 최종 우승했습니다.";
 
-    public static void printCarMove(Racing racing) {
-        racing.getCarMoveLines()
-                .stream()
-                .forEach(line -> System.out.println(line));
+    public static void printCarMove(List<Car> cars) {
+        cars.stream()
+                .forEach(car -> printMoveLine(car));
+        System.out.println("");
+    }
+
+    static void printMoveLine(Car car) {
+        System.out.print(String.format("%s : ", car.carName()));
+        for (int i=0; i<car.totalDistance(); i++) {
+            System.out.print(MOVE_TEXT);
+        }
         System.out.println("");
     }
 

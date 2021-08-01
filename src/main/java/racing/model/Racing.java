@@ -14,12 +14,7 @@ public class Racing {
         return cars.findWinner();
     }
 
-    public void game() {
-        cars.carsMove();
+    public List<Car> game() {
+        return cars.carsMove();
     }
-
-    public List<String> getCarMoveLines() {
-        return this.cars.getCarMoveLines();
-    }
-
 }
