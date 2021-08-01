@@ -39,11 +39,11 @@ public class RacingCar {
         return movedDistance;
     }
 
-    public static List<RacingCar> createCarList(int carNum) {
+    public static Cars createCarList(int carNum) {
         List<RacingCar> racingCarList = new ArrayList<>();
         for (int i = 0; i < carNum; i++) {
             racingCarList.add(new RacingCar());
         }
-        return racingCarList;
+        return new Cars(racingCarList);
     }
 }

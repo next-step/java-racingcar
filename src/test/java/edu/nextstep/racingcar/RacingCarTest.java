@@ -21,11 +21,10 @@ class RacingCarTest {
         int carNum = 3;
 
         // when
-        List<RacingCar> racingCarList = RacingCar.createCarList(3);
+        Cars racingCarList = RacingCar.createCarList(3);
 
         // then
         assertThat(racingCarList.size()).isEqualTo(carNum);
-        assertThat(racingCarList.get(0) instanceof RacingCar).isTrue();
     }
 
     /*

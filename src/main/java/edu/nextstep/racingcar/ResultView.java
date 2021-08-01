@@ -16,9 +16,9 @@ public class ResultView {
         System.out.println("\n실행 결과");
     }
 
-    public static void outputCurrentRacing(List<RacingCar> racingCarList) {
-        for (RacingCar racingCar : racingCarList) {
-            for(int j = 0; j < racingCar.getMovedDistance(); j++){
+    public static void outputCurrentRacing(Cars racingCars) {
+        for (int i = 0; i < racingCars.size(); i++) {
+            for(int j = 0; j < racingCars.getCar(i).getMovedDistance(); j++){
                 System.out.print("-");
             }
             System.out.println();

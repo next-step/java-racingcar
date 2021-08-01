@@ -9,22 +9,18 @@
 
 package edu.nextstep.racingcar;
 
-import java.util.List;
-
 public class RacingCarApplication {
 
     public static void main(String[] args) {
         int carNum = InputView.inputCarNum();
         int moveNum = InputView.inputMoveNum();
 
-        List<RacingCar> racingCarList = RacingCar.createCarList(carNum);
+        Cars racingCars = RacingCar.createCarList(carNum);
 
         ResultView.startSign();
         for (int i = 0; i < moveNum; i++) {
-            for(RacingCar racingCar : racingCarList){
-                racingCar.move();
-            }
-            ResultView.outputCurrentRacing(racingCarList);
+            racingCars.playRacingOneRound();
+            ResultView.outputCurrentRacing(racingCars);
         }
 
     }
