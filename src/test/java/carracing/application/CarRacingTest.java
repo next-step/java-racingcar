@@ -25,4 +25,17 @@ class CarRacingTest {
         assertThat(result.size()).isEqualTo(count);
     }
 
+    @Test
+    @DisplayName("게임이 시작하면 지정된 회수만큼 게임이 진행된다.")
+    void raceTest() {
+
+        // given
+        int carCount = 5;
+        int raceCount = 3;
+        CarRacing carRacing = new CarRacing();
+
+        // when & then
+        carRacing.race(carCount, raceCount);
+    }
+
 }
