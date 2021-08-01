@@ -11,6 +11,10 @@ public class RaceResult {
         return laps.getLastLap();
     }
 
+    public Records getBestRecords() {
+        return getLastLap().getBestRecords();
+    }
+
     public void recordLap(Cars cars) {
         laps.record(cars);
     }
