@@ -11,8 +11,14 @@ public class RaceResult {
         return laps.getLastLap();
     }
 
-    public Records getBestRecords() {
-        return getLastLap().getBestRecords();
+    public Winners getWinners() {
+        Winners winners = new Winners();
+
+        for (Record record : getLastLap().getRecords()) {
+            winners.updateWinner(record);
+        }
+
+        return winners;
     }
 
     public void recordLap(Cars cars) {

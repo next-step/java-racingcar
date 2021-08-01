@@ -19,19 +19,4 @@ public class Records implements Iterable<Record> {
     public Iterator<Record> iterator() {
         return records.iterator();
     }
-
-    public void recordBest(Record record) {
-        if (records.isEmpty()) {
-            records.add(record);
-            return;
-        }
-        if (records.get(0).getDistance() < record.getDistance()) {
-            records.clear();
-            records.add(record);
-            return;
-        }
-        if (records.get(0).getDistance() == record.getDistance()) {
-            records.add(record);
-        }
-    }
 }

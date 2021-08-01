@@ -33,10 +33,6 @@ public class OutputView {
     }
 
     private static void printWinners(RaceResult result) {
-        List<String> names = new ArrayList<>();
-        for (Record record : result.getBestRecords()) {
-            names.add(record.getName());
-        }
-        System.out.println(String.join(",", names) + "가 최종 우승했습니다.");
+        System.out.println(String.join(",", result.getWinners().getNames()) + "가 최종 우승했습니다.");
     }
 }

@@ -10,12 +10,4 @@ public class Lap {
     public Records getRecords() {
         return records;
     }
-
-    public Records getBestRecords() {
-        Records bestRecords = new Records();
-        for (Record record : records) {
-            bestRecords.recordBest(record);
-        }
-        return bestRecords;
-    }
 }
