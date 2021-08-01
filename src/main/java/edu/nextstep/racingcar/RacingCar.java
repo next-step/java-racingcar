@@ -16,17 +16,19 @@ import java.util.Random;
 public class RacingCar {
 
     private int movedDistance = 0;
+    private static final int CRITERIA = 4;
+    private static final int MAX_RANDOM_VALUE = 10;
 
     public void move() {
         int n = getRandomNum();
-        if (n >= 4) {
+        if (n >= CRITERIA) {
             moveRacingCar();
         }
     }
 
     private int getRandomNum() {
         Random randomUtil = new Random();
-        return randomUtil.nextInt(10);
+        return randomUtil.nextInt(MAX_RANDOM_VALUE);
     }
 
     private void moveRacingCar() {
