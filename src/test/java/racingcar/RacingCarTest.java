@@ -17,26 +17,28 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingCarTest {
+	private static final int INITIAL_POSITION = 0;
+	private static final int POSITION_AFTER_ONE_MOVE = 1;
+
 	RacingCar racingCar;
 
 	@BeforeEach
-	void setUp() throws NameValidationException {
+	void setUp() {
 		racingCar = new RacingCar("chang", () -> true);
 	}
 
 	@Test
 	void AlwaysMovable_전략을_입력받았을_항상_전진가능하다() {
 		racingCar.forward();
-		assertThat(racingCar.getRacingCarDashString()).isEqualTo("-");
+		assertThat(racingCar.getPosition()).isEqualTo(POSITION_AFTER_ONE_MOVE);
 	}
 
 	@ParameterizedTest
 	@MethodSource
-	void RandomlyMovable_전략을_입력받았을_때_랜덤값이_4이상_일때에만_전진가능하다(Random random, String expected) throws
-            NameValidationException {
+	void RandomlyMovable_전략을_입력받았을_때_랜덤값이_4이상_일때에만_전진가능하다(Random random, Integer expected) {
 		racingCar = new RacingCar("chang", new RandomlyMovableStrategy(random));
 		racingCar.forward();
-		assertThat(racingCar.getRacingCarDashString()).isEqualTo(expected);
+		assertThat(racingCar.getPosition()).isEqualTo(expected);
 	}
 
 	private static Stream<Arguments> RandomlyMovable_전략을_입력받았을_때_랜덤값이_4이상_일때에만_전진가능하다() {
@@ -46,25 +48,25 @@ class RacingCarTest {
 				public int nextInt(int bound) {
 					return 0;
 				}
-			}, ""),
+			}, INITIAL_POSITION),
 			Arguments.of(new Random() {
 				@Override
 				public int nextInt(int bound) {
 					return 3;
 				}
-			}, ""),
+			}, INITIAL_POSITION),
 			Arguments.of(new Random() {
 				@Override
 				public int nextInt(int bound) {
 					return 4;
 				}
-			}, "-"),
+			}, POSITION_AFTER_ONE_MOVE),
 			Arguments.of(new Random() {
 				@Override
 				public int nextInt(int bound) {
 					return 9;
 				}
-			}, "-")
+			}, POSITION_AFTER_ONE_MOVE)
 		);
 	}
 
@@ -74,7 +76,7 @@ class RacingCarTest {
 		for (int i = 0; i < forwardValue; i++ ) {
 			racingCar.forward();
 		}
-		assertThat(racingCar.getRacingCarDashString()).isEqualTo(new String(new char[forwardValue]).replace("\0", "-"));
+		assertThat(racingCar.getPosition()).isEqualTo(forwardValue);
 	}
 
 	@ParameterizedTest
