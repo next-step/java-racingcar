@@ -39,9 +39,8 @@ public class RacingCar {
         movable.move(status);
     }
 
-    public String getStatus() {
-        StringBuilder statusBuilder = new StringBuilder();
-        status.forEach(statusBuilder::append);
-        return statusBuilder.toString();
+    public List<String> getStatus() {
+        return this.status;
     }
+
 }

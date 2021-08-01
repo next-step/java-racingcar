@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.anyOf;
 
 public class RacingCarTest {
 
@@ -16,6 +17,6 @@ public class RacingCarTest {
         //when
         car.move();
         //then
-        assertThat(car.getStatus()).isIn("-", "--");
+        assertThat(car.getStatus()).isSubsetOf("-", "--");
     }
 }
