@@ -5,7 +5,7 @@ import com.racingcar.car.Car;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumberOfCarsMakeRule implements MakeCarsRule {
+public class NumberOfCarsMakeMakeRule implements CarsMakeRule {
     @Override
     public List<Car> makeCar(String input) {
         int numberOfCar = Integer.parseInt(input);

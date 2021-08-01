@@ -4,6 +4,6 @@ import com.racingcar.car.Car;
 
 import java.util.List;
 
-public interface MakeCarsRule {
+public interface CarsMakeRule {
     List<Car> makeCar(String input);
 }

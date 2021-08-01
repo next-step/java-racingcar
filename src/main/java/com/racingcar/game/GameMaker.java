@@ -1,9 +1,9 @@
 package com.racingcar.game;
 
 public class GameMaker {
-    MakeCarsRule makeCarsRule;
+    CarsMakeRule makeCarsRule;
 
-    public GameMaker(MakeCarsRule makeCarsRule) {
+    public GameMaker(CarsMakeRule makeCarsRule) {
         this.makeCarsRule = makeCarsRule;
     }
 
