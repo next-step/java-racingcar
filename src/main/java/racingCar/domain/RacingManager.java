@@ -6,34 +6,12 @@ import racingCar.ui.PrintService;
 
 public class RacingManager {
 
-    private int numberOfCar;
-    private int tryCount;
-    final private List<RacingCar> cars = new ArrayList<>();
+    private final List<RacingCar> cars = new ArrayList<>();
     private final NumberGenerator numberGenerator;
     private final WinnerPolicy winnerPolicy;
 
-    public int getNumberOfCar() {
-        return numberOfCar;
-    }
-
-    public int getCarsArraySize() {
-        return cars.size();
-    }
-
-    public RacingManager() {
-        this.numberOfCar = 0;
-        this.tryCount = 0;
-        numberGenerator = new RandomNumberGenerator();
-        winnerPolicy = new WinnerPolicyImpl();
-        generateCars();
-    }
-
-    public RacingManager(int numberOfCar) {
-        this.numberOfCar = numberOfCar;
-        numberGenerator = new RandomNumberGenerator();
-        winnerPolicy = new WinnerPolicyImpl();
-        generateCars();
-    }
+    private int numberOfCar;
+    private int tryCount;
 
     public RacingManager(String[] names, int tryCount) {
         this.numberOfCar = names.length;
@@ -41,6 +19,14 @@ public class RacingManager {
         numberGenerator = new RandomNumberGenerator();
         winnerPolicy = new WinnerPolicyImpl();
         generateCars(names);
+    }
+
+    public int getNumberOfCar() {
+        return numberOfCar;
+    }
+
+    public int getCarsArraySize() {
+        return cars.size();
     }
 
     private void generateCars() {
