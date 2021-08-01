@@ -1,4 +1,7 @@
-package racing;
+package racing.domain;
+
+import racing.dto.RoundResult;
+import racing.dto.CarDTO;
 
 import java.util.List;
 

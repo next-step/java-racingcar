@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 public class Name {
 
@@ -17,7 +17,7 @@ public class Name {
         }
 
         if (name.length() > MAX_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하로 가능합니다.");
+            throw new IllegalArgumentException("자동차 이름은 " + MAX_LENGTH + "자 이하로 가능합니다.");
         }
     }
 
