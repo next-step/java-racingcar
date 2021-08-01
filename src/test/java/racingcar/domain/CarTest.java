@@ -7,11 +7,11 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    private Car car = new Car();
+    private Car car = new Car("benz");
 
     @DisplayName("이동")
     @ParameterizedTest(name = "{index} {displayName} {arguments}")
-    @CsvSource(value = {"true:1", "false:0"}, delimiter = ':')
+    @CsvSource({"true,1", "false,0"})
     void move(boolean movable, int expected) {
         car.move(() -> movable);
         assertThat(car.getPosition()).isEqualTo(new Position(expected));
