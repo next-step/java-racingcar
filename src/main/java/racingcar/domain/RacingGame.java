@@ -2,7 +2,6 @@ package racingcar.domain;
 
 public class RacingGame {
     private int roundCount;
-    private int currentRound = 0;
     private MovableStrategy movableStrategy;
 
     public RacingGame(int roundCount, MovableStrategy movableStrategy) {
@@ -17,12 +16,13 @@ public class RacingGame {
         }
     }
 
-    public void race(Cars cars) {
-        cars.moveCars(movableStrategy);
-        currentRound++;
-    }
-
-    public boolean isEnd() {
-        return currentRound >= roundCount;
+    public RaceResult race(Cars cars) {
+        RaceResult raceResult = new RaceResult();
+        for (int i = 0; i < roundCount; i++) {
+            cars.moveCars(movableStrategy);
+            raceResult.report(i+1, cars);
+        }
+        raceResult.reportWinners(cars.findWinners());
+        return raceResult;
     }
 }
