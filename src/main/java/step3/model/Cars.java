@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
+    public static final int LIMIT = 4;
+
     private List<Car> cars;
 
     public Cars(int carCnt) {
@@ -36,7 +38,7 @@ public class Cars {
      */
     public int canMove(int carIdx, int randomNum) {
         //4미만일때는 시도횟수만줄임
-        if (randomNum < 4) {
+        if (randomNum < LIMIT) {
             return getCar(carIdx).getMove();
         }
 
