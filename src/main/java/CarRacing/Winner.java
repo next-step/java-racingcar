@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 
 public class Winner {
 
-    public String printWinner(List<Car> cars) {
+    public static String printWinner(List<Car> cars) {
         Comparator<Car> comparatoryByPosition = Comparator.comparingInt(Car::getPosition);
         StringBuffer victors = new StringBuffer();
         Car winnerCar = cars.stream()
