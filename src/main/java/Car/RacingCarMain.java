@@ -18,5 +18,7 @@ public class RacingCarMain {
             outputView.printResult(racingCar.getCars());
         }
 
+        outputView.printWinner(racingCar.getWinner());
+
     }
 }
