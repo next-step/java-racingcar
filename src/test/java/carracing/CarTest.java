@@ -49,4 +49,20 @@ class CarTest {
         assertThat(result).isEqualTo("-");
     }
 
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
+    @DisplayName("입력값이 3이하가 들어오면 자동차는 이동하지 않는다.")
+    void moveFailTest(int cmd) {
+
+        // given
+        Car car = new Car();
+
+        // when
+        String result = car.move(cmd);
+
+        // then
+        assertThat(result).isEqualTo("");
+    }
+
 }
