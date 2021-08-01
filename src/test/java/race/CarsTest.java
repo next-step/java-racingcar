@@ -38,7 +38,7 @@ public class CarsTest {
     @Test
     @DisplayName("winner test")
     void winnerTest() {
-        assertThat(cars.findWinner()).isEqualTo("test2");
+        assertThat(cars.findWinner().get(0).carName()).isEqualTo("test2");
     }
 
     @Test
