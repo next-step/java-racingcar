@@ -1,7 +1,6 @@
 package carracing;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -44,10 +43,10 @@ class CarTest {
         Car car = new Car();
 
         // when
-        car.ordered(cmd);
+        String result = car.move(cmd);
 
         // then
-        assertThat(car.location()).isEqualTo("-");
+        assertThat(result).isEqualTo("-");
     }
 
 }

@@ -2,6 +2,7 @@ package carracing;
 
 public class Car {
     private String location;
+    private static final int MOVE_NUMBER = 4;
 
     public Car() {
         this.location = "";
@@ -16,12 +17,13 @@ public class Car {
     }
 
     public boolean isMovable(int cmd) {
-        return cmd >= 4;
+        return cmd >= MOVE_NUMBER;
     }
 
-    public void ordered(int cmd) {
+    public String move(int cmd) {
         if (isMovable(cmd)) {
             forward();
         }
+        return this.location;
     }
 }
