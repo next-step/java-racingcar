@@ -34,4 +34,18 @@ public class NamedCarTest {
             new NamedCar(id, name);
         });
     }
+
+    @Test
+    @DisplayName("빈 글자일 때 자동차 생성 테스트")
+    public void zeroEmptyName() {
+        //given
+        String name = " ";
+        int id = 0;
+
+        //then
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new NamedCar(id, name);
+        });
+
+    }
 }
