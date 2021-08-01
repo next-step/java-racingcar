@@ -4,22 +4,20 @@ import java.util.ArrayList;
 
 public class CarRacing {
 
-  private final int MOVE_THRESHOLD = 4;
-
   private final int numOfMove;
   private final ArrayList<Car> carList = new ArrayList<>();
 
   public CarRacing(final int numOfCars, final int numOfMove) {
     this.numOfMove = numOfMove;
     for (int i = 0; i < numOfCars; i++) {
-      carList.add(new Car());
+      carList.add(new Car(new RandomMoveStrategy()));
     }
   }
 
   public void startRacing() {
     ResultView.printResultTitle();
     for (int i = 0; i < numOfMove; i++) {
-      allCarsMoveOrStopOnce();
+      moveAllCars();
       if (i != 0) {
         System.out.println();
       }
@@ -27,18 +25,7 @@ public class CarRacing {
     }
   }
 
-  private void allCarsMoveOrStopOnce() {
-    for (Car car : carList) {
-      if (canMove()) {
-        car.move();
-      }
-    }
-  }
-
-  private boolean canMove() {
-    if (RandomValueGenerator.getRandomNumber() >= MOVE_THRESHOLD) {
-      return true;
-    }
-    return false;
+  private void moveAllCars() {
+    carList.forEach(Car::move);
   }
 }
