@@ -14,7 +14,7 @@ class WinnerPolicyImplTest {
     WinnerPolicy winnerPolicy = new WinnerPolicyImpl();
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         RacingCar A = new RacingCar("A");
         A.goForward(5);
         A.goForward(5);

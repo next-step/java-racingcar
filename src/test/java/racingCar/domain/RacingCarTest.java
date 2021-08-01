@@ -1,14 +1,12 @@
 package racingCar.domain;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import racingCar.domain.RacingCar;
-import racingCar.ui.PrintService;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import racingCar.ui.PrintService;
 
 public class RacingCarTest {
 

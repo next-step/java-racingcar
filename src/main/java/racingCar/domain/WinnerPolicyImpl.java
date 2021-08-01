@@ -3,7 +3,7 @@ package racingCar.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WinnerPolicyImpl implements WinnerPolicy{
+public class WinnerPolicyImpl implements WinnerPolicy {
 
     @Override
     public List<RacingCar> winnerDecision(List<RacingCar> cars) {
@@ -11,30 +11,30 @@ public class WinnerPolicyImpl implements WinnerPolicy{
         return getWinners(winnerDistance, cars);
     }
 
-    private int getMaxDistance(List<RacingCar> cars){
+    private int getMaxDistance(List<RacingCar> cars) {
         int max = 0;
-        for(RacingCar car : cars){
+        for (RacingCar car : cars) {
             int distance = car.showDrivenDistance();
-            max = getBigggerNum(max,distance);
+            max = getBigggerNum(max, distance);
 
         }
         return max;
     }
 
-    private int getBigggerNum(int num1, int num2){
+    private int getBigggerNum(int num1, int num2) {
         return Math.max(num1, num2);
     }
 
-    private List<RacingCar> getWinners(int winnerDistance, List<RacingCar> cars){
+    private List<RacingCar> getWinners(int winnerDistance, List<RacingCar> cars) {
         List<RacingCar> winners = new ArrayList<>();
-        for(RacingCar car : cars){
+        for (RacingCar car : cars) {
             isWinner(winnerDistance, car, winners);
         }
         return winners;
     }
 
-    private void isWinner(int winnerDistance, RacingCar car, List<RacingCar> winners){
-        if(car.equalsDistance(winnerDistance)){
+    private void isWinner(int winnerDistance, RacingCar car, List<RacingCar> winners) {
+        if (car.equalsDistance(winnerDistance)) {
             winners.add(car);
         }
     }

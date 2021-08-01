@@ -22,8 +22,8 @@ public class RacingCar {
         this.carNamePolicy = new CarNamePolicyImpl();
     }
 
-    private void setCarName(String carName){
-        if(!carNamePolicy.isPossibleName(carName)){
+    private void setCarName(String carName) {
+        if (!carNamePolicy.isPossibleName(carName)) {
             throw new IllegalArgumentException();
         }
         this.carName = carName;
@@ -43,7 +43,7 @@ public class RacingCar {
         return this.drivenDistance;
     }
 
-    public boolean equalsDistance(int distance){
+    public boolean equalsDistance(int distance) {
         return drivenDistance == distance;
     }
 }
