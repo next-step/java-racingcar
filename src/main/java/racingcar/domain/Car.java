@@ -3,6 +3,7 @@ package racingcar.domain;
 public class Car {
 
     private static final MoveStrategy moveStrategy = new RacingMoveStrategy();
+
     private final String name;
     private int position;
 
