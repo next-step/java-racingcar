@@ -1,7 +1,6 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -12,10 +11,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import racingcar.exception.OverFiveCarNameException;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCars;
-import racingcar.strategy.AlwaysMovableStrategy;
 
 class RacingCarsTest {
 	private static final int INITIAL_POSITION = 0;
@@ -23,8 +20,8 @@ class RacingCarsTest {
 	RacingCars racingCars;
 
 	@BeforeEach
-	void setUp() throws OverFiveCarNameException {
-		racingCars = new RacingCars(new String[]{"chang", "sub", "kwak"}, new AlwaysMovableStrategy());
+	void setUp() {
+		racingCars = new RacingCars(new String[]{"chang", "sub", "kwak"}, () -> true);
 	}
 
 	@Test
@@ -48,10 +45,10 @@ class RacingCarsTest {
 
 	@ParameterizedTest
 	@MethodSource
-	void 생성자를_호출하였을_때_초기값_0으로_위치값이_세팅된다(String[] carNames) throws OverFiveCarNameException {
-		racingCars = new RacingCars(carNames, new AlwaysMovableStrategy());
+	void 생성자를_호출하였을_때_초기값_0으로_위치값이_세팅된다(String[] carNames) {
+		racingCars = new RacingCars(carNames, () -> true);
 		racingCars.getCars().stream().forEach(racingCar -> {
-			assertThat(racingCar.getRacingCarDashString()).isEqualTo("");
+			assertThat(racingCar.getPosition()).isEqualTo(INITIAL_POSITION);
 		});
 	}
 
@@ -77,7 +74,7 @@ class RacingCarsTest {
 			});
 
 		for (int i = 0; i < 3 ; i++) {
-			assertThat(racingCars.getCars().get(i).getRacingCarDashString()).isEqualTo("-");
+			assertThat(racingCars.getCars().get(i).getPosition()).isEqualTo(POSITION_AFTER_ONE_MOVE);
 		}
 	}
 
@@ -86,8 +83,8 @@ class RacingCarsTest {
 	@MethodSource
 	void 전진횟수와_자동차이름이_주어지고_항상전진전략을_가지는_자동차그룹이_있을때_우승자를_예측한다(
 			String[] carNames, Integer[] forwardIterationNumber, String expected
-	) throws OverFiveCarNameException {
-		racingCars = new RacingCars(carNames, new AlwaysMovableStrategy());
+	) {
+		racingCars = new RacingCars(carNames, () -> true);
 		for (int i = 0; i < carNames.length ; i++) {
 			iterateForward(racingCars.getCars().get(i), forwardIterationNumber[i]);
 		}
@@ -124,8 +121,16 @@ class RacingCarsTest {
 	}
 
 	@Test
-	void 길이가_5이하의_자동차이름_문자열이_주어질_때_예외가_발생하지_않는다() {
+	void 길이가_5이하의_자동차이름_문자열이_주어질_때_주어진_문자열_개수만큼_position값이_0인_RacingCar_클래스가_생성된다() {
 		String[] carNames = { "five", "chang", "long" };
-		assertDoesNotThrow(() -> new RacingCars(carNames, null));
+		RacingCars racingCars = new RacingCars(carNames, () -> false);
+
+		int[] positions = racingCars.getCars()
+				.stream()
+				.mapToInt(racingCar -> racingCar.getPosition())
+				.toArray();
+
+		assertThat(racingCars.getRacingCarsNumber()).isEqualTo(carNames.length);
+		assertThat(positions).containsExactly(INITIAL_POSITION, INITIAL_POSITION, INITIAL_POSITION);
 	}
 }

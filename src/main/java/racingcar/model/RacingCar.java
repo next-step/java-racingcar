@@ -1,37 +1,27 @@
 package racingcar.model;
 
-import racingcar.exception.OverFiveCarNameException;
+import racingcar.exception.NameValidationException;
 import racingcar.strategy.MovableStrategy;
 
 public class RacingCar {
-	// 4. 클래스 변수(static) public -> protected -> package(default) -> private
 	private static final int INITIAL_POSITION = 0;
 	private static final int NAME_MAX_LENGTH = 5;
 
-	// 5. 일반 변수 public -> protected -> package(default) -> private
-	public int position;
-	public String carName;
+	private int position;
+	private String carName;
 	private MovableStrategy movableStrategy;
 
-	private void checkNameValidation(String carName) throws OverFiveCarNameException {
-		if (carName.length() > NAME_MAX_LENGTH) {
-			throw new OverFiveCarNameException("자동차 이름의 길이가 5를 초과합니다");
-		}
-	}
-
-	public RacingCar(String carName, MovableStrategy movableStrategy) throws OverFiveCarNameException {
+	public RacingCar(String carName, MovableStrategy movableStrategy) {
 		checkNameValidation(carName);
 		this.position = INITIAL_POSITION;
 		this.carName = carName;
 		this.movableStrategy = movableStrategy;
 	}
 
-	public String getRacingCarDashString() {
-		StringBuilder stringBuilder = new StringBuilder();
-		for (int i = 0; i < this.position; i++) {
-			stringBuilder.append('-');
+	private void checkNameValidation(String carName) {
+		if (carName.length() > NAME_MAX_LENGTH) {
+			throw new NameValidationException("자동차 이름의 길이가 " + NAME_MAX_LENGTH + "를 초과합니다");
 		}
-		return stringBuilder.toString();
 	}
 
 	public void forward() {

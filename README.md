@@ -8,6 +8,12 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
+## 5단계 - 자동차 경주(리팩토링) Todo-List 🎯
+- [X] MVC 패턴 기반으로 리팩토링 하기
+  - [X] 자동차에 관련 객체를 model 패키지로 이동
+  - [X] UI 관련 객체를 view 패키지로 이동
+  - [X] model 패키지 객체가 view 패키지 객체 의존여부 확인
+
 ## 4단계 - 자동차 경주(우승자) Todo-List 🎯
 - [X] 입력 클래스(InputView)
   - [X] 자동차 이름 입력 함수 추가
