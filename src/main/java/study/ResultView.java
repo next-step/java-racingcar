@@ -16,7 +16,7 @@ public class ResultView {
 		System.out.println();
 	}
 
-	private String carResult(Car car) {
+	private void carResult(Car car) {
 		for(int i = 1 ; i <= car.getDistance(); i++) {
 			System.out.print("-");
 		}

@@ -3,6 +3,8 @@ package study;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,13 +36,12 @@ public class AutomobileRaceTest {
 	}
 
 	@DisplayName("자동차가 가는지 결과를 확인하는 테스트")
-	@Test
-	void goTest() {
+	@ParameterizedTest
+	@CsvSource(value = {"3:0", "4:1","5:1"}, delimiter = ':')
+	void goTest(int randomNumber, int resultDistance) {
 		Car car = carList.get(0);
-		int currentDistance = car.getDistance();
-		car.go();
-		int changedDistance = car.getDistance();
-		assertThat(currentDistance + 1).isEqualTo(changedDistance);
+		car.move(randomNumber);
+		int carDistance = car.getDistance();
+		assertThat(carDistance).isEqualTo(resultDistance);
 	}
-
 }
