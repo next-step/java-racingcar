@@ -9,7 +9,19 @@ import static java.lang.System.out;
 
 public class InputView {
 
+    private static InputView inputView;
     private Condition condition;
+
+    public static synchronized InputView getInstance() {
+        if (inputView == null) {
+            return new InputView();
+        }
+        return inputView;
+    }
+
+    private InputView() {
+
+    }
 
     public Condition operate() {
         return input();
@@ -27,9 +39,6 @@ public class InputView {
         return new Condition(carCount, tryCount, Arrays.asList(names));
     }
 
-    public InputView() {
-
-    }
 
     public Condition getCondition() {
         return condition;
