@@ -1,6 +1,6 @@
 package carrase;
 
-public class RacingCar implements Car {
+public class RacingCar implements Car, Comparable<RacingCar>{
 	private int mileage;
 	private String name;
 
@@ -27,5 +27,10 @@ public class RacingCar implements Car {
 	@Override
 	public void moveForward() {
 		mileage += 1;
+	}
+
+	@Override
+	public int compareTo(RacingCar other) {
+		return Integer.compare(mileage, other.getMileage());
 	}
 }

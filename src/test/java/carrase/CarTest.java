@@ -65,4 +65,15 @@ public class CarTest {
 		game.start();
 		assertThat(game.getGameResult()).containsKeys(sampleName.stream().toArray(String[]::new));
 	}
+
+	@Test
+	@DisplayName("자동차 경주 우승자")
+	void carGameWinner() {
+		List<String> sampleName = Arrays.asList("pobi", "crong", "honux");
+		CarRacingGame game = new CarRacingGame(sampleName);
+		for(int i = 0; i < 5; i++) {
+			game.start();
+		}
+		assertThat(game.getCarGameWinner()).containsAnyOf(sampleName.stream().toArray(String[]::new));
+	}
 }

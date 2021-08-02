@@ -30,13 +30,13 @@ public class Application {
 		ui.printQuestionOfCarNames();
 		CarRacingGame game = new CarRacingGame(ui.getCarNames());
 		ui.printQuestionOfGameCount();
-
-		int countOfGame = ui.getInput();
+		int countOfGame = ui.getGameCount();
 
 		ui.printMessageOfGameResult();
 		for(int i = 0; i < countOfGame; i++) {
 			game.start();
 			ui.printResult(game.getGameResult());
 		}
+		ui.printWinner(game.getCarGameWinner());
 	}
 }
