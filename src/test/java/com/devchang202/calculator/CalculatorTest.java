@@ -5,11 +5,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.common.ArgumentUtils;
 
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CalculatorTest {
     public static Calculator calculator = new Calculator();
@@ -23,10 +23,10 @@ public class CalculatorTest {
     }
 
     @Test
-    void substrate() {
+    void subtract() {
         int a = (int)(Math.random() * 100);
         int b = (int) (Math.random() * 100);
-        int result = calculator.substrate(a, b);
+        int result = calculator.subtract(a, b);
         assertThat(result).isEqualTo(a - b);
     }
 
@@ -134,7 +134,7 @@ public class CalculatorTest {
     public static Stream<Arguments> provideIntegerForcalculate() {
         return Stream.of(
                 Arguments.of("+", 36, 45, calculator.add(36, 45)),
-                Arguments.of("-", 36, 45, calculator.substrate(36, 45)),
+                Arguments.of("-", 36, 45, calculator.subtract(36, 45)),
                 Arguments.of("*", 36, 45, calculator.multiply(36, 45)),
                 Arguments.of("/", 36, 45, calculator.divide(36, 45))
         );

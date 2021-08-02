@@ -9,11 +9,11 @@ public class Calculator {
         return a + b;
     }
 
-    int substrate (int a, int b){
+    int subtract (int a, int b){
         return a - b;
     }
 
-    int divide (int a, int b) {
+    int divide(int a, int b) {
         return a / b;
     }
 
@@ -21,8 +21,8 @@ public class Calculator {
         return a * b;
     }
 
-    String[] parseEquation(String UserInput) {
-        String[] equation = UserInput.trim().split(" ");
+    String[] parseEquation(String userInput) {
+        String[] equation = userInput.trim().split(" ");
 
         for (int i = 0; i < equation.length - 1; i = i + 2) {
             checkNumber(equation[i]);
@@ -47,7 +47,7 @@ public class Calculator {
             case "+":
                 return add(a, b);
             case "-":
-                return substrate(a, b);
+                return subtract(a, b);
             case "*":
                 return multiply(a, b);
             case "/":
