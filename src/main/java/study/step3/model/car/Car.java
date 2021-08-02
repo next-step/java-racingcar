@@ -2,9 +2,9 @@ package study.step3.model.car;
 
 public class Car {
 
-    private int distance;
+    private static final int CAR_MOVE_CONDITION = 4;
 
-    private final int CAR_MOVE_CONDITION = 4;
+    private int distance;
 
     public Car() {
         this.distance = 0;
