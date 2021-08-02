@@ -10,7 +10,6 @@ import static java.lang.System.out;
 public class ResultView {
 
     private static ResultView resultView;
-    private static int HIGH_DISTANCE = -1;
 
     public static synchronized ResultView getInstance() {
         if (resultView == null) {
