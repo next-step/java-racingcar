@@ -17,11 +17,18 @@ public class RaceResult {
     public void saveResult(List<Car> cars) {
         StringBuilder sb = new StringBuilder();
         cars.forEach(car -> {
-            sb.append(car.location());
+            sb.append(makeLocation(car.location()));
             sb.append("\n");
         });
-        sb.append("\n");
         raceResult = sb.toString();
+    }
+
+    private String makeLocation(int location) {
+        String result = "";
+        for (int i=0; i<location; i++){
+            result += "-";
+        }
+        return result;
     }
 
 }

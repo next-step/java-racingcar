@@ -1,26 +1,18 @@
 package carracing.view;
 
-import carracing.domain.Car;
+import carracing.domain.RaceResult;
 import java.util.List;
 
 public class ResultView {
 
-    public StringBuilder sb;
-
     public ResultView() {
-        sb = new StringBuilder();
-        sb.append("실행 결과\n");
+        System.out.println("실행 결과");
     }
 
-    public void saveResult(List<Car> cars) {
-        cars.forEach(car -> {
-            sb.append(car.location());
-            sb.append("\n");
-        });
-        sb.append("\n");
+    public void showResult(List<RaceResult> results) {
+        for (RaceResult result : results) {
+            System.out.println(result.raceResult());
+        }
     }
 
-    public void getResult() {
-        System.out.println(sb.toString());
-    }
 }
