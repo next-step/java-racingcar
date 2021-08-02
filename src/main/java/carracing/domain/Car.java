@@ -4,25 +4,25 @@ public class Car {
 
     private static final int MOVE_NUMBER = 4;
 
-    private String location;
+    private int location;
 
     public Car() {
-        this.location = "";
+        this.location = 0;
     }
 
-    public String location() {
+    public int location() {
         return location;
     }
 
     public void forward() {
-        this.location += "-";
+        this.location++;
     }
 
     public boolean isMovable(int cmd) {
         return cmd >= MOVE_NUMBER;
     }
 
-    public String move(int cmd) {
+    public int move(int cmd) {
         if (isMovable(cmd)) {
             forward();
         }

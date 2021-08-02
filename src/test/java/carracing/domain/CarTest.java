@@ -18,7 +18,7 @@ class CarTest {
         Car car = new Car();
 
         // whe & then
-        assertThat(car.location()).isEqualTo("");
+        assertThat(car.location()).isEqualTo(0);
     }
 
     @Test
@@ -32,7 +32,7 @@ class CarTest {
         car.forward();
 
         // then
-        assertThat(car.location()).isEqualTo("-");
+        assertThat(car.location()).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -44,10 +44,10 @@ class CarTest {
         Car car = new Car();
 
         // when
-        String result = car.move(cmd);
+        int result = car.move(cmd);
 
         // then
-        assertThat(result).isEqualTo("-");
+        assertThat(result).isEqualTo(1);
     }
 
 
@@ -60,10 +60,10 @@ class CarTest {
         Car car = new Car();
 
         // when
-        String result = car.move(cmd);
+        int result = car.move(cmd);
 
         // then
-        assertThat(result).isEqualTo("");
+        assertThat(result).isEqualTo(0);
     }
 
 }
