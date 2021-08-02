@@ -1,9 +1,9 @@
 package step3.domain;
 
 public class Car {
-	private int position;
 	private static final int COUNT_ADVANCE = 1;
 	private static final int CONDITION_ADVANCE = 4;
+	private int position;
 
 	public Car() {
 		this.position = 0;
