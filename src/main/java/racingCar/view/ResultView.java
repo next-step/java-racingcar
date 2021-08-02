@@ -20,24 +20,19 @@ public class ResultView {
 
     public static void printCarsLocation(RacingGame racingGame) {
         System.out.println(RACING_GAME_MESSAGE_RESULT);
-        play(racingGame);
-        printWinner(racingGame);
-    }
-
-    public static void play(RacingGame racingGame) {
         for (int i = 0; i < racingGame.getPlayCount(); i++) {
             printCarsLocation(racingGame.moveCars(new RandomMovingStrategy()));
         }
     }
 
-    public static void printCarsLocation(List<Car> cars) {
+    private static void printCarsLocation(List<Car> cars) {
         for (Car car : cars) {
             printLocation(car);
         }
         System.out.println();
     }
 
-    public static void printLocation(Car car) {
+    private static void printLocation(Car car) {
         System.out.print(car.getName() + NAME_DELIMITER);
         for (int i = 0; i < car.getPosition(); i++) {
             System.out.print(CAR_MARKING);
