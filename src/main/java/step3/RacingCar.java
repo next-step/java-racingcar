@@ -36,11 +36,18 @@ public class RacingCar {
     }
 
     public void move() {
-        movable.move(status);
+        if (movable.move()) {
+            go(status);
+        }
+    }
+
+    private void go(List<String> status) {
+        status.add("-");
     }
 
     public List<String> getStatus() {
         return this.status;
     }
+
 
 }
