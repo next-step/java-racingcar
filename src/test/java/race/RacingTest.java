@@ -24,6 +24,7 @@ public class RacingTest {
             assertThat(car.totalDistance()).isGreaterThanOrEqualTo(0);
             assertThat(car.totalDistance()).isLessThanOrEqualTo(5);
         }
+        assertThat(racingGame.getPlayingCount()).isEqualTo(GAME_COUNT);
     }
 
 }

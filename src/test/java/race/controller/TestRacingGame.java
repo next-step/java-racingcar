@@ -9,6 +9,8 @@ import java.util.List;
 
 public class TestRacingGame extends RacingGame {
 
+    private int playingCount = 0;
+
     public TestRacingGame(int gameCount) {
         super(gameCount);
     }
@@ -17,7 +19,12 @@ public class TestRacingGame extends RacingGame {
         List<Car> carList;
         do {
             carList = racing.game();
+            playingCount++;
         } while (!endGame());
         return carList;
+    }
+
+    public int getPlayingCount() {
+        return this.playingCount;
     }
 }
