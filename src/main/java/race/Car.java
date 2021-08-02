@@ -33,10 +33,10 @@ public class Car {
         }
     }
 
-    public int getDistanceByRound(int round) {
+    public int getDistance(int tryCount) {
         return (int) distance.stream()
-                .limit(round)
-                .filter(i -> i == 1)
+                .limit(tryCount)
+                .filter(i -> i == FORWARD)
                 .count();
     }
 
