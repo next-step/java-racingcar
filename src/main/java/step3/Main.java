@@ -15,8 +15,6 @@ public class Main {
         int carCount = input.getCarCount();
 
         RacingGame racingGame = new RacingGame(tryCount, carCount);
-        for (int i = 0; i < tryCount; i++) {
-            racingGame.race();
-        }
+        racingGame.race(tryCount);
     }
 }
