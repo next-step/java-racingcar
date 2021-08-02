@@ -2,8 +2,6 @@ package step3.view;
 
 import java.util.Scanner;
 
-import step3.utils.Validator;
-
 public class InputView {
 	private final static Scanner SCANNER = new Scanner(System.in);
 	private final static String QUESTION_NUMBER_OF_CARS = "자동차 대수는 몇 대 인가요?";
@@ -21,8 +19,14 @@ public class InputView {
 		System.out.println(question);
 		int answer = SCANNER.nextInt();
 
-		Validator.validateOverZero(answer);
+		validateOverZero(answer);
 
 		return answer;
+	}
+
+	private static void validateOverZero(int number) {
+		if (number < 1) {
+			throw new IllegalArgumentException("0보다 큰 숫자를 입력해주세요!");
+		}
 	}
 }
