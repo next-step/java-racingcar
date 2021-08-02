@@ -15,7 +15,7 @@ public class ResultView {
     }
 
     public static void setPlayerView(StringBuffer sb, Car car) {
-        for (int distance = 0; distance < car.checkCarMoveDistance(); distance++) {
+        for (int distance = 0; distance < car.readCarDistance(); distance++) {
             sb.append("-");
         }
         sb.append("\r\n");

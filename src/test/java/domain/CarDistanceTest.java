@@ -12,7 +12,7 @@ class CarDistanceTest {
     public void moveDistanceTest() {
         CarDistance carDistance = new CarDistance();
         carDistance.addCarDistance(1);
-        assertThat(carDistance.takeCarDistance()).isEqualTo(1);
+        assertThat(carDistance.readCarDistance()).isEqualTo(1);
     }
 
 }

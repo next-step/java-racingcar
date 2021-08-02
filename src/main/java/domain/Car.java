@@ -28,7 +28,7 @@ public class Car {
         carDistance.addCarDistance(carBehavior.carMove());
     }
 
-    public int checkCarMoveDistance() {
-        return carDistance.takeCarDistance();
+    public int readCarDistance() {
+        return carDistance.readCarDistance();
     }
 }
