@@ -13,7 +13,7 @@ public class CarRacing {
         List<Car> cars = makeCars(carCount);
         ResultView resultView = new ResultView();
 
-        for (int i=0; i<raceCount; i++) {
+        for (int i = 0; i < raceCount; i++) {
             cars.stream().forEach(car -> car.move(generateRandom()));
             resultView.saveResult(cars);
         }

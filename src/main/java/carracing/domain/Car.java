@@ -1,6 +1,7 @@
 package carracing.domain;
 
 public class Car {
+
     private String location;
     private static final int MOVE_NUMBER = 4;
 
