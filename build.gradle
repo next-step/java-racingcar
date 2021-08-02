@@ -9,6 +9,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.assertthat.plugins:assertthat-bdd-standalone:1.9.3'
+    implementation 'com.assertthat.plugins:assertthat-bdd-gradle-tasks:1.6'
     testCompile('org.junit.jupiter:junit-jupiter:5.4.2')
     testCompile('org.assertj:assertj-core:3.11.1')
 }
