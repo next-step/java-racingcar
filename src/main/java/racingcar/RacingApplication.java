@@ -1,7 +1,11 @@
 package racingcar;
 
-import racingcar.ui.InputView;
-import racingcar.ui.ResultView;
+import racingcar.domain.MoveStrategy;
+import racingcar.domain.Racing;
+import racingcar.domain.RacingRecords;
+import racingcar.domain.RandomMoveStrategy;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.List;
 
@@ -12,8 +16,10 @@ public class RacingApplication {
         String[] carNames = InputView.getInputCarNames();
         int tryCount = InputView.getInputTryCount();
 
-        Racing racing = new Racing(carNames);
-        List<List<RacingRecord>> racingRecords = racing.start(tryCount);
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
+
+        Racing racing = new Racing(carNames, moveStrategy);
+        List<RacingRecords> racingRecords = racing.start(tryCount);
 
         ResultView.showRacingInfo(racingRecords);
     }

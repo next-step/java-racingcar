@@ -1,6 +1,8 @@
-package racingcar.ui;
+package racingcar.view;
 
-import racingcar.RacingRecord;
+import racingcar.domain.RacingRecord;
+import racingcar.domain.RacingRecords;
+import racingcar.utils.RacingRecordManager;
 
 import java.util.List;
 
@@ -15,17 +17,17 @@ public class ResultView {
     private ResultView() {
     }
 
-    public static void showRacingInfo(List<List<RacingRecord>> racingHistory) {
+    public static void showRacingInfo(List<RacingRecords> racingHistory) {
         System.out.print(RESULT_MESSAGE_PRE);
-        for (List<RacingRecord> records : racingHistory) {
+        for (RacingRecords records : racingHistory) {
             System.out.println(getRacingCarsInfo(records));
         }
         showRacingWinner(racingHistory);
     }
 
-    private static StringBuffer getRacingCarsInfo(List<RacingRecord> records) {
+    private static StringBuffer getRacingCarsInfo(RacingRecords records) {
         StringBuffer stringBuffer = new StringBuffer();
-        for (RacingRecord record : records) {
+        for (RacingRecord record : records.getRacingRecords()) {
             stringBuffer.append(record.getCar().getName());
             stringBuffer.append(CAR_SEPARATOR);
             stringBuffer.append(getRacingPositionDisplay(record));
@@ -42,8 +44,8 @@ public class ResultView {
         return stringBuffer;
     }
 
-    private static void showRacingWinner(List<List<RacingRecord>> racingRecords) {
-        List<String> winners = RacingRecord.getRacingWinner(racingRecords);
+    private static void showRacingWinner(List<RacingRecords> racingRecords) {
+        List<String> winners = RacingRecordManager.getRacingWinner(racingRecords);
         System.out.println(String.join(WINNER_SEPARATOR, winners) + RESULT_MESSAGE_WINNER_POST);
     }
 }
