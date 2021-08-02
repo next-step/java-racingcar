@@ -5,15 +5,15 @@ public class StringCalculator {
     public int calculate(String input) {
 
         validateInput(input);
-        String[] result = input.split(" ");
+        String[] inputArray = input.split(" ");
 
-        int rst = toInt(result[0]);
+        int result = toInt(inputArray[0]);
 
-        for (int i = 1; i < result.length; i+=2) {
-            rst = calculate(rst, toInt(result[i+1]), result[i]);
+        for (int i = 1; i < inputArray.length; i+=2) {
+            result = calculate(result, toInt(inputArray[i+1]), inputArray[i]);
         }
 
-        return rst;
+        return result;
     }
 
     private void validateInput(String input) {
