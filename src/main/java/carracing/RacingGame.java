@@ -24,14 +24,14 @@ public class RacingGame {
 
     public void start() {
         Cars cars = Cars.of(getCars());
-        int moveCount = getMoveCount();
-        race(cars, moveCount);
+        RaceResult result = race(cars, getMoveCount());
+        outputView.printWinners(result.getWinners());
     }
 
     private List<Car> getCars() {
         outputView.printCarNameInputMessage();
-        List<CarName> carNames = inputView.getCarNames();
-        return carNames.stream()
+        return inputView.getCarNames()
+                .stream()
                 .map(carName -> Car.of(Position.of(STARTING_LINE_POSITION), carName))
                 .collect(Collectors.toList());
     }
@@ -41,13 +41,14 @@ public class RacingGame {
         return inputView.getMoveCount();
     }
 
-    private void race(Cars cars, int moveCount) {
+    private RaceResult race(Cars cars, int moveCount) {
         outputView.printResultMessage();
         for (int i = 0; i < moveCount; ++i) {
             cars.move(randomNumberGenerator::generateRandomNumber);
-            outputView.print(cars);
+            outputView.printPositions(cars);
             outputView.printNewLine();
         }
+        return RaceResult.of(cars.groupByPosition());
     }
 
     public static void main(String[] args) {

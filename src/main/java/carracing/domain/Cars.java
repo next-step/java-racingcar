@@ -1,8 +1,6 @@
 package carracing.domain;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -31,5 +29,15 @@ public class Cars {
 
     public void forEach(Consumer<Car> action) {
         cars.forEach(action);
+    }
+
+    public Map<Position, List<Car>> groupByPosition() {
+        Map<Position, List<Car>> carsGroupByPosition = new HashMap<>();
+        for (Car car : cars) {
+            List<Car> cars = carsGroupByPosition.getOrDefault(car.getPosition(), new ArrayList<>());
+            cars.add(car);
+            carsGroupByPosition.put(car.getPosition(), cars);
+        }
+        return carsGroupByPosition;
     }
 }

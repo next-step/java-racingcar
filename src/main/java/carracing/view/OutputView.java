@@ -6,6 +6,8 @@ import carracing.domain.Position;
 import carracing.util.StringUtils;
 
 import java.io.PrintStream;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
 
@@ -14,6 +16,8 @@ public class OutputView {
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String POSITION_EXPRESSION = "-";
     private static final String CAR_POSITION_PRINT_FORMAT = "%-5s\t: %s";
+    private static final String WINNER_PRINT_FORMAT = "최종 우승자는 %s입니다.";
+    private static final String WINNER_PRINT_DELIMITER = ", ";
 
     private final PrintStream printStream;
 
@@ -41,11 +45,11 @@ public class OutputView {
         printStream.println();
     }
 
-    public void print(Cars cars) {
-        cars.forEach(this::print);
+    public void printPositions(Cars cars) {
+        cars.forEach(this::printPosition);
     }
 
-    public void print(Car car) {
+    public void printPosition(Car car) {
         printStream.println(String.format(CAR_POSITION_PRINT_FORMAT, car.getCarName(), render(car.getPosition())));
     }
 
@@ -53,4 +57,13 @@ public class OutputView {
         return StringUtils.repeat(POSITION_EXPRESSION, position.getValue());
     }
 
+    public void printWinners(List<Car> winners) {
+        printStream.println(String.format(WINNER_PRINT_FORMAT, joinNames(winners)));
+    }
+
+    private String joinNames(List<Car> winners) {
+        return winners.stream()
+                .map(car -> car.getCarName().toString())
+                .collect(Collectors.joining(WINNER_PRINT_DELIMITER));
+    }
 }

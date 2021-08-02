@@ -3,7 +3,7 @@ package carracing.domain;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
     private static final String OUT_OF_RANGE_EXCEPTION_MESSAGE_FORMAT = "유효하지 않은 위치 값입니다. value: %d";
     private static final int ADDITION_VALUE = 1;
@@ -52,5 +52,10 @@ public class Position {
     @Override
     public int hashCode() {
         return value;
+    }
+
+    @Override
+    public int compareTo(Position other) {
+        return Integer.compare(this.value, other.value);
     }
 }

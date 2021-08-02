@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class InputView {
 
     private static final int INPUT_COUNT_LOWER_LIMIT = 0;
-    public static final String INVALID_INPUT_EXCEPTION_MESSAGE_FORMAT = "입력값이 유효하지 않습니다. input: %s";
+    private static final String INVALID_INPUT_EXCEPTION_MESSAGE_FORMAT = "입력값이 유효하지 않습니다. input: %s";
     private static final String CAR_NAMES_INPUT_DELIMITER = ",";
 
     private final Scanner scanner;
@@ -25,8 +25,7 @@ public class InputView {
     }
 
     public int getMoveCount() {
-        String inputCount = scanner.nextLine();
-        int moveCount = convertStrToInt(inputCount);
+        int moveCount = convertStrToInt(scanner.nextLine());
         validateLowerLimit(moveCount);
         return moveCount;
     }
