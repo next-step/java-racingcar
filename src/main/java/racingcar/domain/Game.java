@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class Game {
     private final InputView inputView = new InputView();

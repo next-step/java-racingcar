@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import racingcar.util.RandomGenerator;
 
@@ -17,7 +17,7 @@ public class Cars {
 
     private List<Car> createCars(String[] carsName) {
         return Stream.of(carsName)
-                .map(s -> new Car(new RandomNumberMovingStrategy(RandomGenerator.getInstance()), s))
+                .map(s -> new Car(s))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
