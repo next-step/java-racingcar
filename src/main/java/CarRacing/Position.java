@@ -6,10 +6,8 @@ public class Position {
     private int position = 0;
 
 
-    public void increasePosition(int randomNum) {
-        if (randomNum >= FORWARD_NUM) {
-            position++;
-        }
+    public void increasePosition() {
+        position++;
     }
 
     public int getPosition() {

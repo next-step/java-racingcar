@@ -3,21 +3,27 @@ package CarRacing;
 import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 
 public class Winner {
 
-    public static String printWinner(List<Car> cars) {
+    public static List<String> printWinner(List<Car> cars) {
+
+        List<String> winner =
+                cars.stream()
+                        .filter(car -> car.isSamePostion(getMaxPositionCar(cars)))
+                        .map(Car::getCarName).collect(Collectors.toList());
+        return winner;
+    }
+
+    private static Car getMaxPositionCar(List<Car> cars) {
+
         Comparator<Car> comparatoryByPosition = Comparator.comparingInt(Car::getPosition);
-        StringBuffer winner = new StringBuffer();
+
         Car winnerCar = cars.stream()
                 .max(comparatoryByPosition)
                 .orElseThrow(NoSuchElementException::new);
-        IntStream
-                .range(0, cars.size())
-                .filter(i -> cars.get(i).getPosition() == winnerCar.getPosition())
-                .forEach(i -> winner.append(cars.get(i).getCarName()).append(","));
-        return winner.substring(0, winner.length() - 1);
+        return winnerCar;
     }
 
 }

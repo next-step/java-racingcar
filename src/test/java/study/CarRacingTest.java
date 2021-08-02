@@ -1,6 +1,9 @@
 package study;
 
-import CarRacing.*;
+import CarRacing.Car;
+import CarRacing.CarName;
+import CarRacing.Cars;
+import CarRacing.Winner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,25 +16,11 @@ public class CarRacingTest {
 
 
     @Test
-    @DisplayName("포지션 4이상일때 포지션값증가")
-    void positionFourOverValue() {
-        Position position = new Position();
-
-        position.increasePosition(4);
-
-        assertEquals(1, position.getPosition());
-
-    }
-
-    @Test
-    @DisplayName("포지션 4미만일때 포지션값증가")
+    @DisplayName("자동차 이동 테스트")
     void positionFourUnderValue() {
-        Position position = new Position();
-
-        position.increasePosition(3);
-
-        assertEquals(0, position.getPosition());
-
+        Car car = new Car(new CarName("test"));
+        car.move(() -> true);
+        assertEquals(1, car.getPosition());
     }
 
 
@@ -67,14 +56,24 @@ public class CarRacingTest {
     }
 
     @Test
+    @DisplayName("cars Allmove 거리 확인")
+    void carsAllmoveCheck() {
+        String carNames = "test1,test2,test3,test4,test5";
+
+        Cars cars = new Cars(carNames);
+
+        cars.moveAll();
+
+        assertThat(cars.getCars()).extracting(Car::getCarName).contains("test1", "test2", "test3", "test4", "test5");
+    }
+
+    @Test
     @DisplayName("자동차경주 출력 확인")
     void carRacingPrintCheck() {
 
         String carNames = "test1,test2,test3,test4,test5";
 
         StringBuilder stringBuilder = new StringBuilder();
-
-        Winner winner = new Winner();
 
         Cars cars = new Cars(carNames);
 
@@ -86,7 +85,7 @@ public class CarRacingTest {
 
         System.out.println(stringBuilder);
 
-        System.out.println(Winner.printWinner(cars.getCars()) + "우승자 입니다");
+        System.out.println(Winner.printWinner(cars.getCars()) + "가 최종 우승했습니다");
     }
 
 }

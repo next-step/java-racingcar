@@ -10,11 +10,12 @@ public class Car {
         this.carName = carName;
     }
 
-    public void move(int randomNum) {
-        if (randomNum < 0) {
-            throw new IllegalArgumentException("posision은 음수 값을 가질 수 없습니다.");
+    public void move(MovigStrategy movigStrategy) {
+
+        if (movigStrategy.moveAble()) {
+            position.increasePosition();
+
         }
-        position.increasePosition(randomNum);
     }
 
     public int getPosition() {
@@ -23,6 +24,10 @@ public class Car {
 
     public String getCarName() {
         return carName.getCarName();
+    }
+
+    public Boolean isSamePostion(Car other) {
+        return this.getPosition() == other.getPosition();
     }
 
 

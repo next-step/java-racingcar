@@ -14,7 +14,7 @@ public class ResultView {
         System.out.println(stringBuilder);
     }
 
-    public static void printWinner(String winner) {
+    public static void printWinner(List<String> winner) {
         System.out.println(winner + "가 최종 우승했습니다.");
     }
 
