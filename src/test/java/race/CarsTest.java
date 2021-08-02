@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class CarsTest {
@@ -36,7 +38,7 @@ class CarsTest {
     }
 
     private Cars getCars() {
-        return Cars.of(Condition.of(DEFAULT_CAR_COUNT, DEFAULT_TRY_COUNT, DEFAULT_CAR_NAMES));
+        return Cars.of(new Condition(DEFAULT_CAR_COUNT, DEFAULT_TRY_COUNT, Arrays.asList(DEFAULT_CAR_NAMES)));
     }
 
 }
