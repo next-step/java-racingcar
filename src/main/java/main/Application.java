@@ -28,15 +28,15 @@ public class Application {
 		CarRacingGameUI ui = new CarRacingGameUI();
 
 		ui.printQuestionOfCarCount();
-		CarRacingGame game = new CarRacingGame(ui.getInput());
+		CarRacingGame game = new CarRacingGame(null);
 		ui.printQuestionOfGameCount();
 
 		int countOfGame = ui.getInput();
 
 		ui.printMessageOfGameResult();
 		for(int i = 0; i < countOfGame; i++) {
-			List<Integer> result = game.start();
-			ui.printResult(result);
+			game.start();
+			ui.printResult(game.getGameResult());
 		}
 	}
 }

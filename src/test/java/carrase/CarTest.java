@@ -56,4 +56,13 @@ public class CarTest {
 			new RacingCar("longName");
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@Test
+	@DisplayName("전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다")
+	void printCarName() {
+		List<String> sampleName = Arrays.asList("pobi", "crong", "honux");
+		CarRacingGame game = new CarRacingGame(sampleName);
+		game.start();
+		assertThat(game.getGameResult()).containsKeys(sampleName.stream().toArray(String[]::new));
+	}
 }

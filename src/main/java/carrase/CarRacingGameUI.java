@@ -1,6 +1,6 @@
 package carrase;
 
-import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class CarRacingGameUI {
@@ -14,10 +14,11 @@ public class CarRacingGameUI {
 		return sc.nextInt();
 	}
 
-	public void printResult(List<Integer> result) {
-		for(int distance : result) {
-			printCarMileage(distance);
-		}
+	public void printResult(Map<String, Integer> result) {
+		result.forEach((name, mileage) -> {
+			System.out.print(name + " : ");
+			printCarMileage(mileage);
+		});
 		System.out.println();
 	}
 
