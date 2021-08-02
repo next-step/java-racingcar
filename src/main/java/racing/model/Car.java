@@ -3,12 +3,13 @@ package racing.model;
 
 public class Car {
 
+    private static final int INIT_DISTANCE = 0;
     private CarInfo carInfo;
     private Distance distance;
 
     public Car(String carName) {
         this.carInfo = new CarInfo(carName);
-        this.distance = new Distance(0);
+        this.distance = new Distance(INIT_DISTANCE);
     }
 
     public Car(String carName, int distance) {

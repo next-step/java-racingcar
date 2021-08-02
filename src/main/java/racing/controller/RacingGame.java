@@ -2,34 +2,33 @@ package racing.controller;
 
 import racing.model.Car;
 import racing.model.Racing;
-import racing.model.RandomMovingStrategy;
-import racing.view.RacingView;
+import racing.view.Output;
 
 import java.util.List;
 
 public class RacingGame {
 
-    private int gameCount = 0;
+    private static final int END_GAME_COUNT = 0;
+    private int gameCount;
 
     public RacingGame(int gameCount) {
         this.gameCount = gameCount;
     }
 
-    public List<Car> gameStart(Racing racing) {
+    public void gameStart(Racing racing) {
         List<Car> carList;
         do {
             carList = racing.game();
-            RacingView.printCarMove(carList);
+            Output.printCarMove(carList);
         } while (!endGame());
-        RacingView.printWinner(racing.winnerCarList());
-        return carList;
+        Output.printWinner(racing.winnerCarList());
     }
 
     public Boolean endGame() {
-        if (this.gameCount > 0) {
+        if (this.gameCount > END_GAME_COUNT) {
             this.gameCount--;
         }
-        return gameCount == 0;
+        return gameCount == END_GAME_COUNT;
     }
 
 }

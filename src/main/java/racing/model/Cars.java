@@ -6,12 +6,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
+
     private List<Car> carList = new ArrayList<>();
+    private RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
 
     public void prepareCars(String[] carNames) {
         String[] carNameArr = carNames;
         for(String carName : carNameArr) {
-           Car car = new Car(carName, 0);
+           Car car = new Car(carName);
            carList.add(car);
         }
     }
@@ -35,8 +37,8 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> carsMove(MovingStrategy movingStrategy) {
-        carList.forEach(car -> car.run(movingStrategy));
+    public List<Car> carsMove() {
+        carList.forEach(car -> car.run(randomMovingStrategy));
         return carList;
     }
 

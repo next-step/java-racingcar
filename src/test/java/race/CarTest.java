@@ -3,9 +3,7 @@ package race;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.model.Car;
-import racing.model.CarInfo;
-import racing.model.Distance;
+import race.model.TestCar;
 import racing.model.RandomMovingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -49,20 +47,6 @@ public class CarTest {
         assertThat(car.validDistance(1)).isEqualTo(true);
     }
 
-    class TestCar extends Car {
-
-        public TestCar(String carName) {
-            super(carName);
-        }
-
-        public boolean run(int number) {
-            if(RandomMovingStrategy.moveCondition(number)) {
-                super.run(() -> true);
-                return true;
-            }
-            return false;
-        }
-    }
 
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 public class Racing {
 
     private Cars cars = new Cars();
-    private RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
+
 
     public Racing(String[] carNames) {
         this.cars.prepareCars(carNames);
@@ -16,6 +16,6 @@ public class Racing {
     }
 
     public List<Car> game() {
-        return cars.carsMove(randomMovingStrategy);
+        return cars.carsMove();
     }
 }
