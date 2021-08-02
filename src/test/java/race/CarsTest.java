@@ -54,7 +54,9 @@ public class CarsTest {
     @Test
     @DisplayName("more than one winner test")
     void carsMoveTest(){
-        this.cars.carsMove();
+        this.cars.carsMove(() -> true);
         assertThat(this.cars.getMaxDistance()).isEqualTo(4);
     }
+
+
 }

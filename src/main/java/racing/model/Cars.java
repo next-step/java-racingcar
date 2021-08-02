@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> carList = new ArrayList<>();
-    private RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
+
     public void prepareCars(String[] carNames) {
         String[] carNameArr = carNames;
         for(String carName : carNameArr) {
@@ -35,8 +35,8 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> carsMove() {
-        carList.forEach(car -> car.run(randomMovingStrategy));
+    public List<Car> carsMove(MovingStrategy movingStrategy) {
+        carList.forEach(car -> car.run(movingStrategy));
         return carList;
     }
 
