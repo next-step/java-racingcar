@@ -3,6 +3,8 @@ package Car;
 import UI.InputView;
 import UI.OutputView;
 
+import java.util.Random;
+
 public class RacingCarMain {
     public static void main(String[] args) {
         InputView inputView = new InputView();
@@ -11,11 +13,12 @@ public class RacingCarMain {
         int carCount = carNames.length;
         int gameCount = inputView.getInt("시도할 회수는 몇 회 인가요?");
 
-        RacingCar racingCar = new RacingCar(carCount, carNames);
+        RacingCar racingCar = new RacingCar(carNames);
         OutputView outputView = new OutputView();
         outputView.printResult(racingCar.getCars());
+        Random random = new Random();
         for (int i = 0; i < gameCount; i++) {
-            racingCar.gameStart();
+            racingCar.gameStart(random);
             outputView.printResult(racingCar.getCars());
         }
         outputView.printWinner(racingCar.getWinner());
