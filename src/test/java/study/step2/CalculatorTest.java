@@ -4,9 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import step2.Calculator;
 
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CalculatorTest {
@@ -21,7 +22,7 @@ class CalculatorTest {
             "12 + 10 + 1200 + 500, 1722"
     })
     void addTest(String formula, int result) {
-        assertEquals(calculator.calculate(formula), result);
+        assertEquals(result, calculator.calculate(formula));
     }
 
     @DisplayName("calculate 메소드 테스트 : -")
@@ -32,7 +33,7 @@ class CalculatorTest {
             "500 - 100 - 100 - 100, 200"
     })
     void minusTest(String formula, int result) {
-        assertEquals(calculator.calculate(formula), result);
+        assertEquals(result, calculator.calculate(formula));
     }
 
     @DisplayName("calculate 메소드 테스트 : *")
@@ -43,7 +44,7 @@ class CalculatorTest {
             "1 * 100 * 0 * 700, 0"
     })
     void multiplyTest(String formula, int result) {
-        assertEquals(calculator.calculate(formula), result);
+        assertEquals(result, calculator.calculate(formula));
     }
 
     @DisplayName("calculate 메소드 테스트 : /")
@@ -54,7 +55,7 @@ class CalculatorTest {
             "500 / 100 / 5 / 100, 0"
     })
     void divideTest(String formula, int result) {
-        assertEquals(calculator.calculate(formula), result);
+        assertEquals(result, calculator.calculate(formula));
     }
 
     @DisplayName("calculate 메소드 테스트 : 랜덤")
@@ -64,32 +65,26 @@ class CalculatorTest {
             "3 * 9 + 100 / 5 - 10, 15",
             "5 - 20 / 3 + 120 * 10, 1150"
     })
-    void randomTest(String formula, int result) {
-        assertEquals(calculator.calculate(formula), result);
+    void calculateTest(String formula, int result) {
+        assertEquals(result, calculator.calculate(formula));
     }
 
-    @Test
-    @DisplayName("input check 테스트 : null")
-    void inputCheckTest1() {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.calculate(null))
-                .withMessage("input 값이 없습니다.");
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("input check 테스트")
+    void inputCheckTest(String formula) {
+        assertThatThrownBy(() -> calculator.calculate(formula))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("input 값이 없습니다.");
     }
 
-    @Test
-    @DisplayName("input check 테스트 : empty")
-    void inputCheckTest2() {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.calculate(""))
-                .withMessage("input 값이 없습니다.");
-    }
 
     @Test
     @DisplayName("operator check 테스트")
-    void operatorCheckTest2() {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.calculate("1 x 2"))
-                .withMessage("+, -, *, / 외에 다른 문자가 입력 되었습니다.");
+    void operatorCheckTest() {
+        assertThatThrownBy(() -> calculator.calculate("1 x 2"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("올바른 연산자가 아닙니다.");
     }
 
 }
