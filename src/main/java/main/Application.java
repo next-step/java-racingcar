@@ -4,7 +4,7 @@ import java.util.List;
 
 import calculator.Calculator;
 import calculator.CalculcatorUI;
-import carrase.CarRasingGame;
+import carrase.CarRacingGame;
 import carrase.CarRacingGameUI;
 
 public class Application {
@@ -28,7 +28,7 @@ public class Application {
 		CarRacingGameUI ui = new CarRacingGameUI();
 
 		ui.printQuestionOfCarCount();
-		CarRasingGame game = new CarRasingGame(ui.getInput());
+		CarRacingGame game = new CarRacingGame(ui.getInput());
 		ui.printQuestionOfGameCount();
 
 		int countOfGame = ui.getInput();
