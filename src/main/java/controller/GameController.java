@@ -2,6 +2,7 @@ package controller;
 
 import domain.Car;
 import util.RandomNumUtil;
+import util.StringUtil;
 import view.InputView;
 import view.ResultView;
 
@@ -17,14 +18,15 @@ public class GameController {
         participant = new ArrayList<>();
     }
 
-    public void init() {
+    public void init() throws IllegalArgumentException {
         InputView inputView = new InputView();
-        int playerCount = inputView.carInputView();
-        gameCount = inputView.playInputView();
+        String[] carNames = StringUtil.participants(inputView.participantInputView());
 
-        for (int count = 0; count < playerCount; count++) {
-            participant.add(new Car());
+        for (int count = 0; count < carNames.length; count++) {
+            participant.add(new Car(carNames[count]));
         }
+
+        gameCount = inputView.playInputView();
 
         for (int count = 0; count < gameCount; count++) {
             playGame();

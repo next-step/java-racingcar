@@ -12,7 +12,7 @@ class CarTest {
 
     @BeforeEach
     public void setUp() {
-        car = new Car();
+        car = new Car("name");
     }
 
     @DisplayName("4이상일 경우 전진 테스트")

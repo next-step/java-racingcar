@@ -15,6 +15,9 @@ public class ResultView {
     }
 
     public static void setPlayerView(StringBuffer sb, Car car) {
+        sb.append(car.readParticipantName());
+        sb.append(" : ");
+
         for (int distance = 0; distance < car.readCarDistance(); distance++) {
             sb.append("-");
         }

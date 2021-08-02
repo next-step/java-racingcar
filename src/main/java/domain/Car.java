@@ -7,9 +7,11 @@ public class Car {
     public static final int CAR_STOP = 0;
 
     private CarDistance carDistance;
+    private CarName carName;
 
-    public Car() {
+    public Car(String particapantName) {
         carDistance = new CarDistance();
+        carName = new CarName(particapantName);
     }
 
     public void carMoveBehavior(int randomNumber) {
@@ -31,4 +33,9 @@ public class Car {
     public int readCarDistance() {
         return carDistance.readCarDistance();
     }
+
+    public String readParticipantName() {
+        return carName.readCarName();
+    }
+
 }
