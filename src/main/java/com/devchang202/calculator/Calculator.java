@@ -1,5 +1,9 @@
 package com.devchang202.calculator;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Calculator {
     int add(int a, int b) {
         return a + b;
@@ -83,6 +87,26 @@ public class Calculator {
             return true;
         } catch (NumberFormatException e) {
             return false;
+        }
+    }
+
+    String inputEquation() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        return br.readLine();
+    }
+
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+
+        while (true) {
+            try {
+                System.out.println("input equation : ");
+                System.out.println("Result : " + calculator.getResultOfCalculator(calculator.parseEquation(calculator.inputEquation())));
+            } catch (IOException e) {
+                System.out.println("try again. : " + e.getMessage());
+            } catch (IllegalArgumentException e) {
+                System.out.println("invalid equation, try again. : " + e.getMessage());
+            }
         }
     }
 }
