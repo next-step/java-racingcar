@@ -1,6 +1,7 @@
 package UI;
 
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class InputView {
@@ -20,7 +21,7 @@ public class InputView {
         }
         return returnNumber;
     }
-    
+
     public String[] getCarNames(String message){
         System.out.println(message);
         String carNames = "";
@@ -29,8 +30,10 @@ public class InputView {
             carNames = scanner.nextLine();
             validateStringVoid(carNames);
             returnNames = spliteCarNames(carNames);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("올바른 값을 입력해주세요.");
+        } catch (IllegalStateException e) {
+            throw new IllegalStateException("scanner가 닫혀있습니다.");
+        } catch (NoSuchElementException e) {
+            throw new NoSuchElementException("입력값을 받지 못 했습니다..");
         }
         return returnNames;
     }
