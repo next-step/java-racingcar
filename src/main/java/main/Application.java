@@ -27,8 +27,8 @@ public class Application {
 	private void runRacingGame() {
 		CarRacingGameUI ui = new CarRacingGameUI();
 
-		ui.printQuestionOfCarCount();
-		CarRacingGame game = new CarRacingGame(null);
+		ui.printQuestionOfCarNames();
+		CarRacingGame game = new CarRacingGame(ui.getCarNames());
 		ui.printQuestionOfGameCount();
 
 		int countOfGame = ui.getInput();
