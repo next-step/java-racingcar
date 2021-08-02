@@ -27,7 +27,7 @@ public class Cars {
                 .totalDistance();
     }
 
-    public List<Car> findWinner() {
+    public List<Car> findWinners() {
         int maxDistance = getMaxDistance();
         List<Car> cars = carList.stream()
                 .filter(car -> car.validDistance(maxDistance))

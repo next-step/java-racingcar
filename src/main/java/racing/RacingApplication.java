@@ -1,5 +1,6 @@
 package racing;
 
+import racing.controller.RacingGame;
 import racing.model.Racing;
 import racing.view.InputView;
 

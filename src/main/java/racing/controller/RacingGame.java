@@ -1,4 +1,4 @@
-package racing;
+package racing.controller;
 
 import racing.model.Car;
 import racing.model.Racing;

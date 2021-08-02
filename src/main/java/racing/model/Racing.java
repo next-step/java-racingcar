@@ -12,7 +12,7 @@ public class Racing {
     }
 
     public List<Car> winnerCarList() {
-        return cars.findWinner();
+        return cars.findWinners();
     }
 
     public List<Car> game() {

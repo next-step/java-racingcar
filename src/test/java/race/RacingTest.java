@@ -2,7 +2,7 @@ package race;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.RacingGame;
+import racing.controller.RacingGame;
 import racing.model.Car;
 import racing.model.Racing;
 
