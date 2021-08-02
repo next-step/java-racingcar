@@ -1,10 +1,9 @@
 package carracing.application;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import carracing.domain.Car;
-import carracing.view.ResultView;
+import carracing.domain.RaceResult;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -36,10 +35,10 @@ class CarRacingTest {
         CarRacing carRacing = new CarRacing();
 
         // when
-        Object view = carRacing.race(carCount, raceCount);
+        List<RaceResult> results = carRacing.race(carCount, raceCount);
 
         // then
-        assertThat(view).isInstanceOf(ResultView.class);
+        assertThat(results.size()).isEqualTo(raceCount);
     }
 
 }
