@@ -2,6 +2,7 @@ package race.view;
 
 import race.Condition;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static java.lang.System.out;
@@ -23,7 +24,7 @@ public class InputView {
         out.println("시도할 횟수는 몇 회 인가요?");
         int tryCount = scanner.nextInt();
 
-        return Condition.of(carCount, tryCount, names);
+        return new Condition(carCount, tryCount, Arrays.asList(names));
     }
 
     public InputView() {
