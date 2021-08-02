@@ -9,14 +9,14 @@ public class Car {
 		this.position = 0;
 	}
 
-	private void advance() {
-		this.position += COUNT_ADVANCE;
-	}
-
 	public void advanceOrStop(int randomNumber) {
 		if (randomNumber >= CONDITION_ADVANCE) {
 			advance();
 		}
+	}
+
+	private void advance() {
+		this.position += COUNT_ADVANCE;
 	}
 
 	public int getPosition() {
