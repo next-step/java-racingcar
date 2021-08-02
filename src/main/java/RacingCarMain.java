@@ -11,5 +11,6 @@ public class RacingCarMain {
         int round = inputView.requestRound();
 
         Race race = new Race(carNames.split(","), round);
+        race.startGame();
     }
 }
