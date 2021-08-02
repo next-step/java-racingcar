@@ -13,7 +13,7 @@ public class ResultView {
     private static int HIGH_DISTANCE = -1;
 
     public static synchronized ResultView getInstance() {
-        if(resultView == null) {
+        if (resultView == null) {
             return new ResultView();
         }
         return resultView;
@@ -26,7 +26,7 @@ public class ResultView {
     }
 
     private void printWinner(Cars cars) {
-        String winners = cars.getWinner(HIGH_DISTANCE);
+        String winners = String.join(",", cars.findWinners());
         out.println(winners + "가 최종 우승했습니다.");
     }
 
@@ -47,20 +47,12 @@ public class ResultView {
         String carName = car.getName();
         int distance = car.getDistance(tryCount);
 
-        if (isHighDistance(distance)) {
-            HIGH_DISTANCE = distance;
-        }
-
         out.print(carName + " : ");
         out.print("-");
         for (int i = 0; i < distance; i++) {
             out.print("-");
         }
         out.println();
-    }
-
-    private boolean isHighDistance(int distance) {
-        return HIGH_DISTANCE < distance;
     }
 
     private ResultView() {

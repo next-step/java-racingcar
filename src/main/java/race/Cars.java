@@ -1,5 +1,6 @@
 package race;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -30,15 +31,22 @@ public class Cars {
         });
     }
 
-    public String getWinner(int highDistance) {
+    public List<String> findWinners() {
+        int highDistance = findHighDistance();
         return cars.stream()
-                .filter(car -> car.getDistance(maxTryCount) >= highDistance)
+                .filter(car -> car.getTotalDistance() >= highDistance)
                 .map(Car::getName)
-                .collect(Collectors.joining(","));
+                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
         return this.cars;
+    }
+
+    private int findHighDistance() {
+        return cars.stream()
+                .max(Comparator.comparingInt(Car::getTotalDistance)).get()
+                .getTotalDistance();
     }
 
     private boolean movable() {

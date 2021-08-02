@@ -14,7 +14,6 @@ class CarsTest {
     private static final int DEFAULT_TRY_COUNT = 5;
     private static final int DEFAULT_CAR_COUNT = 3;
     private static final String[] DEFAULT_CAR_NAMES = {"pobi", "crong", "honux"};
-    private static final int MINIMUM_DISTANCE = 0;
 
     @DisplayName("생성된 Car객체에 각 시도 횟수(라운드)만큼 이동(전진,후진)이 있는지 확인")
     @ParameterizedTest
@@ -24,7 +23,7 @@ class CarsTest {
         cars.moveAll();
 
         Car car = cars.getCars().get(index);
-        int distanceCount = car.getDistance().size() - 1;
+        int distanceCount = car.getDistance().size();
         assertThat(distanceCount).isEqualTo(DEFAULT_TRY_COUNT);
     }
 
@@ -34,7 +33,8 @@ class CarsTest {
         Cars cars = getCars();
         cars.moveAll();
 
-        assertThat(cars.getWinner(MINIMUM_DISTANCE).split(",").length).isGreaterThanOrEqualTo(1);
+        String winners = String.join(",", cars.findWinners());
+        assertThat(winners.split(",").length).isGreaterThanOrEqualTo(1);
     }
 
     private Cars getCars() {

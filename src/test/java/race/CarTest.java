@@ -12,7 +12,7 @@ class CarTest {
     private static final String DEFAULT_NAMES = "pobi";
     private static final boolean FORWARD_MOVE = true;
     private static final boolean STOP_MOVE = false;
-    private static final int FIRST_TRY = 1;
+    private static final int FIRST_TRY = 0;
 
     private static final int FORWARD_DISTANCE = 1;
     private static final int STOP_DISTANCE = 0;

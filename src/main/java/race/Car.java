@@ -16,7 +16,6 @@ public class Car {
 
     private Car(String name) {
         this.name = name;
-        distance.add(FORWARD);
     }
 
     public static Car of(String name) {
@@ -34,6 +33,12 @@ public class Car {
     public int getDistance(int tryCount) {
         return (int) distance.stream()
                 .limit(tryCount)
+                .filter(i -> i == FORWARD)
+                .count();
+    }
+
+    public int getTotalDistance() {
+        return (int) distance.stream()
                 .filter(i -> i == FORWARD)
                 .count();
     }
