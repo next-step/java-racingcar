@@ -1,20 +1,16 @@
 package race;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
 
     private Cars(Condition condition) {
-        cars.addAll(
-                Arrays.stream(condition.getNames())
-                        .map(name -> Car.of(condition.getTryCount(), name))
-                        .collect(Collectors.toList())
-        );
+        this.cars = condition.getNames().stream()
+                .map(name -> Car.of(condition.getTryCount(), name))
+                .collect(Collectors.toList());
     }
 
     public static Cars of(Condition condition) {
@@ -27,7 +23,7 @@ public class Cars {
 
     public String getWinner(int highDistance) {
         return cars.stream()
-                .filter(car -> car.getDistanceByRound(car.getMaxTryCount()) >= highDistance)
+                .filter(car -> car.getDistance(car.getMaxTryCount()) >= highDistance)
                 .map(Car::getName)
                 .collect(Collectors.joining(","));
     }
