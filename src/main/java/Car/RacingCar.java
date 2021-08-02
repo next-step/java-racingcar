@@ -50,7 +50,7 @@ public class RacingCar {
         Comparator<Car> carComparatorMaxMoveCount = Comparator.comparingInt(Car::getMoveCount);
         int maxMoveCount = cars.stream()
                 .max(Comparator.comparingInt(Car::getMoveCount))
-                .get()
+                .orElse(new Car("empty"))
                 .getMoveCount();
 
         return cars.stream()
