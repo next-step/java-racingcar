@@ -19,9 +19,9 @@ public class AutomobileRaceTest {
 	void init() {
 		numberContainer = new NumberContainer();
 		stadium = new Stadium(numberContainer);
-		Car car = new Car(1,"");
-		Car car2 = new Car(2,"");
-		Car car3 = new Car(3,"");
+		Car car = new Car(0);
+		Car car2 = new Car(0);
+		Car car3 = new Car(0);
 		carList = Arrays.asList(car,car2,car3);
 	}
 
@@ -37,19 +37,10 @@ public class AutomobileRaceTest {
 	@Test
 	void goTest() {
 		Car car = carList.get(0);
-		String currentDistance = car.getDistance();
+		int currentDistance = car.getDistance();
 		car.go();
-		String changedDistance = car.getDistance();
-		assertThat(currentDistance+"-").isEqualTo(changedDistance);
+		int changedDistance = car.getDistance();
+		assertThat(currentDistance + 1).isEqualTo(changedDistance);
 	}
 
-	@DisplayName("자동차가 멈추는 결과를 확인하는 테스트")
-	@Test
-	void stopTest() {
-		Car car = carList.get(0);
-		String currentDistance = car.getDistance();
-		car.stop();
-		String changedDistance = car.getDistance();
-		assertThat(currentDistance).isEqualTo(changedDistance);
-	}
 }

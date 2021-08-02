@@ -5,27 +5,15 @@ import java.util.List;
 public class Stadium {
 
 	private NumberContainer numberContainer;
-	private static int RACE_WIN_RANGE = 4;
 
 	public Stadium(NumberContainer numberContainer) {
 		this.numberContainer = numberContainer;
 	}
 
 	public void startRace(List<Car> carList) {
+		int randomNumber = numberContainer.getRandomNumber();
 		for(Car car : carList) {
-			carRace(car);
+			car.move(randomNumber);
 		}
-	}
-
-	private void carRace(Car car) {
-		if(getRaceResult()) {
-			car.go();
-			return ;
-		}
-		car.stop();
-	}
-
-	private boolean getRaceResult() {
-		return numberContainer.getRandomNumber() >= RACE_WIN_RANGE;
 	}
 }

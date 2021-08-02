@@ -2,11 +2,10 @@ package study;
 
 public class Car {
 
-	private int carId;
 	private int distance;
+	private static int RACE_WIN_RANGE = 4;
 
-	public Car(int carId, int distance) {
-		this.carId = carId;
+	public Car(int distance) {
 		this.distance = distance;
 	}
 
@@ -14,8 +13,9 @@ public class Car {
 		return distance;
 	}
 
-	public void go() {
-		distance += 1;
+	public void move(int randomNumber) {
+		if(randomNumber >= RACE_WIN_RANGE) {
+			distance += 1;
+		}
 	}
-
 }

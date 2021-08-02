@@ -25,7 +25,7 @@ public class AutomobileRace {
 		// 차 생성
 		List<Car> carList = new ArrayList<>();
 		for(int carId = 1 ; carId <= inputView.getCarCount() ; ++carId) {
-			carList.add(new Car(carId, ""));
+			carList.add(new Car( 0));
 		}
 
 		// 경기 시작 & 결과
