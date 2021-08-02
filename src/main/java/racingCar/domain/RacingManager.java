@@ -2,7 +2,6 @@ package racingCar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingCar.ui.PrintService;
 
 public class RacingManager {
 
@@ -39,20 +38,6 @@ public class RacingManager {
     public void doOneLap() {
         for (RacingCar car : cars) {
             car.goForward(numberGenerator.getNumber());
-        }
-    }
-
-    private void showCurrentDrivenDistanceWithName() {
-        for (RacingCar car : cars) {
-            PrintService.printDistanceWithName(car.showDrivenDistance(), car.getCarName());
-        }
-        PrintService.printEmptyLine();
-    }
-
-    public void doFullRace() {
-        for (int i = 0; i < tryCount; i++) {
-            doOneLap();
-            showCurrentDrivenDistanceWithName();
         }
     }
 
