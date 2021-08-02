@@ -1,5 +1,6 @@
 import racingCar.domain.RacingManager;
 import racingCar.ui.InputService;
+import racingCar.ui.PrintService;
 
 public class RacingCarApplication {
 
@@ -9,7 +10,13 @@ public class RacingCarApplication {
         RacingManager racingManager = new RacingManager(
             InputService.getCarNameString().split(","), InputService.getTryCount()
         );
+        PrintService.printResultMessage();
 
-        racingManager.doFullRace();
+        for(int i = 0 ; i< racingManager.getTryCount() ; i++){
+            racingManager.doOneLap();
+            PrintService.showCurrentDrivenDistanceWithName(racingManager.getCars());
+        }
+
+        PrintService.printWinners(racingManager.getWinner());
     }
 }

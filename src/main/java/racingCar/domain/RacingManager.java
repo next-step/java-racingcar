@@ -18,6 +18,14 @@ public class RacingManager {
         generateCars(names);
     }
 
+    public List<RacingCar> getCars() {
+        return cars;
+    }
+
+    public int getTryCount() {
+        return tryCount;
+    }
+
     public int getCarsArraySize() {
         return cars.size();
     }
@@ -28,7 +36,7 @@ public class RacingManager {
         }
     }
 
-    private void doOneLap() {
+    public void doOneLap() {
         for (RacingCar car : cars) {
             car.goForward(numberGenerator.getNumber());
         }
@@ -38,17 +46,17 @@ public class RacingManager {
         for (RacingCar car : cars) {
             PrintService.printDistanceWithName(car.showDrivenDistance(), car.getCarName());
         }
+        PrintService.printEmptyLine();
     }
 
     public void doFullRace() {
-        PrintService.printResultMessage();
         for (int i = 0; i < tryCount; i++) {
             doOneLap();
-            PrintService.printEmptyLine();
             showCurrentDrivenDistanceWithName();
         }
-        PrintService.printEmptyLine();
-        PrintService.printWinners(winnerPolicy.winnerDecision(cars));
     }
 
+    public List<RacingCar> getWinner(){
+        return winnerPolicy.winnerDecision(cars);
+    }
 }

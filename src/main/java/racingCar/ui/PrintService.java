@@ -40,4 +40,11 @@ public class PrintService {
     public static void printResultMessage() {
         System.out.println("실행 결과");
     }
+
+    public static void showCurrentDrivenDistanceWithName(List<RacingCar> cars) {
+        for (RacingCar car : cars) {
+            PrintService.printDistanceWithName(car.showDrivenDistance(), car.getCarName());
+        }
+        PrintService.printEmptyLine();
+    }
 }

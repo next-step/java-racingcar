@@ -13,7 +13,7 @@ public class RacingCarTest {
     @DisplayName("차량 전진 테스트")
     @Test
     void 차량_전진_테스트() {
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar("tesla");
         racingCar.goForward(4);
         assertThat(racingCar.showDrivenDistance()).isEqualTo(1);
     }
@@ -21,7 +21,7 @@ public class RacingCarTest {
     @DisplayName("차량 정지 테스트")
     @Test
     void 차량_정지_테스트() {
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar("tesla");
         racingCar.goForward(3);
         assertThat(racingCar.showDrivenDistance()).isEqualTo(0);
     }
@@ -29,7 +29,7 @@ public class RacingCarTest {
     @DisplayName("차량 부분 전진 테스트")
     @Test
     void 차량_부분_전진_테스트() {
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar("tesla");
         int[] numbers = new int[]{3, 3, 3, 4, 4};
         for (int i = 0; i < numbers.length; i++) {
             racingCar.goForward(numbers[i]);
@@ -50,7 +50,7 @@ public class RacingCarTest {
     @DisplayName("차량 생성시 상태 테스트")
     @Test
     void 차량_상태_출력() {
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar("tesla");
         assertThat(racingCar.showDrivenDistance()).isEqualTo(0);
     }
 
