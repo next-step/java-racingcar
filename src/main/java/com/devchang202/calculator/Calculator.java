@@ -42,7 +42,7 @@ public class Calculator {
         return result;
     }
 
-    int calculate(String op, int a, int b) {
+    int calculate(String op, int a, int b) throws IllegalArgumentException {
         switch (op) {
             case "+":
                 return add(a, b);
@@ -53,17 +53,17 @@ public class Calculator {
             case "/":
                 return divide(a, b);
             default:
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("invalid operator");
         }
     }
 
-    void checkOperator(String op) {
+    void checkOperator(String op) throws  IllegalArgumentException {
         if (isBlank(op) || !isOperator(op)) {
             throw new IllegalArgumentException();
         }
     }
 
-    void checkNumber(String num) {
+    void checkNumber(String num) throws IllegalArgumentException {
         if (!isNumebr(num)) {
             throw new IllegalArgumentException();
         }
