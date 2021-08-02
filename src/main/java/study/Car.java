@@ -3,26 +3,19 @@ package study;
 public class Car {
 
 	private int carId;
-	private String distance;
+	private int distance;
 
-	public Car(int carId, String distance) {
+	public Car(int carId, int distance) {
 		this.carId = carId;
 		this.distance = distance;
 	}
 
-	public int getCarId() {
-		return carId;
-	}
-
-	public String getDistance() {
+	public int getDistance() {
 		return distance;
 	}
 
 	public void go() {
-		distance += "-";
+		distance += 1;
 	}
 
-	public void stop() {
-		distance += "";
-	}
 }
