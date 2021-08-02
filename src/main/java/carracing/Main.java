@@ -12,7 +12,8 @@ public class Main {
         InputView inputView = new InputView();
 
         CarRacing carRacing = new CarRacing();
-        List<RaceResult> results = carRacing.race(inputView.inputCarCount(), inputView.inputTryCount());
+        List<RaceResult> results = carRacing
+            .race(inputView.inputCarCount(), inputView.inputTryCount());
         ResultView resultView = new ResultView();
         resultView.showResult(results);
     }
