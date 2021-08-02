@@ -1,13 +1,15 @@
 package study.step3.model.car;
 
+import study.step3.model.strategy.MoveStrategy;
+
 public class Car {
 
-    private static final int CAR_MOVE_CONDITION = 4;
-
     private int distance;
+    private final MoveStrategy moveStrategy;
 
-    public Car() {
+    public Car(MoveStrategy moveStrategy) {
         this.distance = 0;
+        this.moveStrategy = moveStrategy;
     }
 
     public int getDistance() {
@@ -19,12 +21,8 @@ public class Car {
     }
 
     public void move(int randomNumber) {
-        if (isMoveCondition(randomNumber)) {
+        if(moveStrategy.isMoveCondition(randomNumber)) {
             moveCar();
         }
-    }
-
-    private boolean isMoveCondition(int randomNumber) {
-        return (randomNumber >= CAR_MOVE_CONDITION);
     }
 }

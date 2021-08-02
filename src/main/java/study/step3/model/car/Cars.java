@@ -1,6 +1,6 @@
 package study.step3.model.car;
 
-import study.step3.view.ResultView;
+import study.step3.model.strategy.CarMoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,16 +24,8 @@ public class Cars {
 
     private void addCars(int carNumber) {
         for (int i = 0; i < carNumber; i++) {
-            racingGameCars.add(new Car());
+            racingGameCars.add(new Car(new CarMoveStrategy()));
         }
-    }
-
-    public void printResult() {
-        ResultView resultView = new ResultView();
-        for (Car car : racingGameCars) {
-            resultView.printCarDistance(car);
-        }
-        System.out.println();
     }
 
     public List<Car> getRacingGameCars() {
