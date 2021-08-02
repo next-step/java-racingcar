@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class ResultView {
     public static final String RESULT = "실행 결과";
