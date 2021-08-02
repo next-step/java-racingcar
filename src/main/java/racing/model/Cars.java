@@ -1,15 +1,14 @@
 package racing.model;
 
-import racing.util.RandomUtil;
-import racing.view.RacingView;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
+
     private List<Car> carList = new ArrayList<>();
+    private RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
 
     public void prepareCars(String[] carNames) {
         String[] carNameArr = carNames;
@@ -30,16 +29,17 @@ public class Cars {
                 .totalDistance();
     }
 
-    public List<Car> winner() {
+    public List<Car> findWinners() {
         int maxDistance = getMaxDistance();
         List<Car> cars = carList.stream()
-                .filter(car -> car.checkDistance(maxDistance))
+                .filter(car -> car.validDistance(maxDistance))
                 .collect(Collectors.toList());
         return cars;
     }
 
-    public void carsMove() {
-        carList.forEach(car -> car.run(RandomUtil.randomValue()));
-        RacingView.printCarMove(carList);
+    public List<Car> carsMove() {
+        carList.forEach(car -> car.run(randomMovingStrategy));
+        return carList;
     }
+
 }

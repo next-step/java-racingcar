@@ -7,22 +7,22 @@ import racing.model.Racing;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RacingView {
+public class Output {
 
     private static final String MOVE_TEXT = "-";
     private static final String WIN_MESSAGE = "%s가 최종 우승했습니다.";
+
+    public static void printCarMove(List<Car> cars) {
+        cars.stream()
+                .forEach(car -> printMoveLine(car));
+        System.out.println("");
+    }
 
     static void printMoveLine(Car car) {
         System.out.print(String.format("%s : ", car.carName()));
         for (int i=0; i<car.totalDistance(); i++) {
             System.out.print(MOVE_TEXT);
         }
-        System.out.println("");
-    }
-
-    public static void printCarMove(List<Car> cars) {
-        cars.stream()
-                .forEach(car -> printMoveLine(car));
         System.out.println("");
     }
 

@@ -3,46 +3,34 @@ package racing.model;
 
 public class Car {
 
-    private static final int MINIMUM_CONDITION = 4;
-    private static final int MAXIMUM_CONDITION = 9;
-
+    private static final int INIT_DISTANCE = 0;
     private CarInfo carInfo;
-    private int distance;
+    private Distance distance;
 
     public Car(String carName) {
         this.carInfo = new CarInfo(carName);
+        this.distance = new Distance(INIT_DISTANCE);
     }
 
     public Car(String carName, int distance) {
         this.carInfo = new CarInfo(carName);
-        this.distance = distance;
+        this.distance = new Distance(distance);
     }
 
     public int totalDistance() {
-        return this.distance;
+        return this.distance.getDistance();
     }
 
-    public boolean run(int move) {
-        if(moveCondition(move)) {
-            this.distance++;
+    public boolean run(MovingStrategy move) {
+        if(move.movable()) {
+            distance.forward();
             return true;
         }
         return false;
     }
 
-    public Boolean moveCondition(int randomValue) {
-        if(randomValue > MAXIMUM_CONDITION) {
-            throw new IllegalStateException();
-        }
-        if(randomValue >= MINIMUM_CONDITION && randomValue <= MAXIMUM_CONDITION) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public Boolean checkDistance(int distance) {
-        return this.distance == distance;
+    public Boolean validDistance(int distance) {
+        return this.distance.getDistance() == distance;
     }
 
     public String carName() {
