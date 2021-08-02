@@ -7,9 +7,13 @@ public class Car {
     private final CarName carName;
     private Position position;
 
-    public Car(String carName) {
+    public Car(final String carName) {
+        this(carName, 0);
+    }
+
+    public Car(final String carName, int position) {
         this.carName = new CarName(carName);
-        this.position = new Position();
+        this.position = new Position(position);
     }
 
     public Position move(MovingStrategy movingStrategy) {
@@ -19,11 +23,22 @@ public class Car {
         return position;
     }
 
+    public boolean isWinner(Position maxPosition) {
+        return this.position.equals(maxPosition);
+    }
+
+    public Position getMaxPosition(Position maxPosition) {
+        if (position.lessThan(maxPosition.getPosition())) {
+            return maxPosition;
+        }
+        return this.position;
+    }
+
     public String getName() {
         return carName.getCarName();
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return position.getPosition();
     }
 
@@ -40,4 +55,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(carName, position);
     }
+
 }

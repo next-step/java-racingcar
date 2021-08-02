@@ -1,53 +1,39 @@
 package racingCar.model;
 
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
-
     private final List<Car> cars;
-    private final int playCount;
 
-    public Cars(String[] carNames, int playCount) {
-        this.cars = makeCars(carNames);
-        this.playCount = playCount;
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    private List<Car> makeCars(String[] carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-        return cars;
-    }
-
-    public List<Car> moveCars() {
+    public List<Car> move(MovingStrategy movingStrategy) {
         for (Car car : cars) {
-            car.move(new RandomMovingStrategy());
+            car.move(movingStrategy);
         }
         return cars;
-    }
-
-    private int findMaxLocation() {
-        return cars.stream()
-                .max(Comparator.comparingInt(Car::getPosition))
-                .orElseThrow(() -> new NoSuchElementException())
-                .getPosition();
     }
 
     public List<Car> findWinners() {
-        int maxLocation = findMaxLocation();
+        return findWinners(cars, getMaxPosition());
+    }
+
+    public static List<Car> findWinners(List<Car> cars, Position maxPosition) {
         return cars.stream()
-                .filter(car -> car.getPosition() == maxLocation)
+                .filter(car -> car.isWinner(maxPosition))
                 .collect(Collectors.toList());
     }
 
-    public int getPlayCount() {
-        return playCount;
-    }
-
-    public List<Car> getCars() {
-        return cars;
+    public Position getMaxPosition() {
+        Position maxPosition = new Position();
+        for (Car car : cars) {
+            maxPosition = car.getMaxPosition(maxPosition);
+        }
+        return maxPosition;
     }
 
     @Override
@@ -55,12 +41,11 @@ public class Cars {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cars cars1 = (Cars) o;
-        return playCount == cars1.playCount &&
-                Objects.equals(cars, cars1.cars);
+        return Objects.equals(cars, cars1.cars);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cars, playCount);
+        return Objects.hash(cars);
     }
 }

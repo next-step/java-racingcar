@@ -1,7 +1,8 @@
 package racingCar.view;
 
 import racingCar.model.Car;
-import racingCar.model.Cars;
+import racingCar.model.RacingGame;
+import racingCar.model.RandomMovingStrategy;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,15 +18,15 @@ public class ResultView {
     private ResultView() {
     }
 
-    public static void printCarsLocation(Cars cars) {
+    public static void printCarsLocation(RacingGame racingGame) {
         System.out.println(RACING_GAME_MESSAGE_RESULT);
-        play(cars);
-        printWinner(cars);
+        play(racingGame);
+        printWinner(racingGame);
     }
 
-    public static void play(Cars cars) {
-        for (int i = 0; i < cars.getPlayCount(); i++) {
-            printCarsLocation(cars.moveCars());
+    public static void play(RacingGame racingGame) {
+        for (int i = 0; i < racingGame.getPlayCount(); i++) {
+            printCarsLocation(racingGame.moveCars(new RandomMovingStrategy()));
         }
     }
 
@@ -44,8 +45,8 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void printWinner(Cars cars) {
-        String winners = cars.findWinners().stream()
+    public static void printWinner(RacingGame racingGame) {
+        String winners = racingGame.findWinners().stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(SEPARATOR));
         System.out.println(winners + RACING_GAME_MESSAGE_WINNER);

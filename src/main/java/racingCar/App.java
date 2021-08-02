@@ -1,6 +1,6 @@
 package racingCar;
 
-import racingCar.model.Cars;
+import racingCar.model.RacingGame;
 import racingCar.view.InputView;
 import racingCar.view.ResultView;
 
@@ -9,7 +9,7 @@ public class App {
         String[] carNames = InputView.getCarNames();
         int playCount = InputView.getPlayCount();
 
-        Cars cars = new Cars(carNames, playCount);
-        ResultView.printCarsLocation(cars);
+        RacingGame racingGame = new RacingGame(carNames, playCount);
+        ResultView.printCarsLocation(racingGame);
     }
 }

@@ -23,6 +23,10 @@ public class Position {
         return new Position(position + 1);
     }
 
+    public boolean lessThan(int position) {
+        return position > this.position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -39,4 +43,5 @@ public class Position {
     public int getPosition() {
         return position;
     }
+
 }
