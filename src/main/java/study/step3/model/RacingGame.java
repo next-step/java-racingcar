@@ -5,10 +5,10 @@ import study.step3.view.ResultView;
 
 public class RacingGame {
 
-  private Cars cars;
-  private ResultView resultView;
+  private final Cars cars;
+  private final ResultView resultView;
 
-  private int racingGameRound;
+  private final int racingGameRound;
 
   public RacingGame(int carNumber, int gameRound) {
     cars = new Cars(carNumber);
