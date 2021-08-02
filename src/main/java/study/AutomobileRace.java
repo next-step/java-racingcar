@@ -24,14 +24,14 @@ public class AutomobileRace {
 
 		// 차 생성
 		List<Car> carList = new ArrayList<>();
-		for(int carId = 1 ; carId <= inputView.getCarCount() ; ++carId) {
+		for(int carId = 1 ; carId <= inputView.getCarCount() ; carId++) {
 			carList.add(new Car( 0));
 		}
 
 		// 경기 시작 & 결과
 		resultView.getResultComment();
 		Stadium stadium = new Stadium(numberContainer);
-		for(int raceIndex = 1; raceIndex <= inputView.getExecutionCount() ; ++raceIndex) {
+		for(int raceIndex = 1; raceIndex <= inputView.getExecutionCount() ; raceIndex++) {
 			stadium.startRace(carList);
 			resultView.viewResult(carList);
 		}
