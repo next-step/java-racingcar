@@ -1,17 +1,22 @@
 package race;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
+    private int maxTryCount;
+    private static final int MINIMUM_BOUND = 4;
+
 
     private Cars(Condition condition) {
-        for (int i = 0; i < condition.getCarCount(); i++) {
-            cars.add(Car.of(condition.getTryCount()));
-        }
+        this.cars = condition.getNames().stream()
+                .map(Car::of)
+                .collect(Collectors.toList());
+        this.maxTryCount = condition.getTryCount();
     }
 
     public static Cars of(Condition condition) {
@@ -19,17 +24,34 @@ public class Cars {
     }
 
     public void moveAll() {
-        cars.forEach(Car::move);
+        cars.forEach(car -> {
+            for (int tryCount = 0; tryCount < maxTryCount; tryCount++) {
+                car.move(movable());
+            }
+        });
     }
 
-    public List<Integer> getDistanceByRound(int round) {
+    public List<String> findWinners() {
+        int highDistance = findHighDistance();
         return cars.stream()
-                .map(car -> car.getDistance(round))
+                .filter(car -> car.getTotalDistance() >= highDistance)
+                .map(Car::getName)
                 .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
         return this.cars;
+    }
+
+    private int findHighDistance() {
+        return cars.stream()
+                .max(Comparator.comparingInt(Car::getTotalDistance)).get()
+                .getTotalDistance();
+    }
+
+    private boolean movable() {
+        Random random = new Random();
+        return random.nextInt(10) >= MINIMUM_BOUND;
     }
 
 }

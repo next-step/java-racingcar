@@ -1,17 +1,17 @@
 package race;
 
+import java.util.List;
+
 public class Condition {
 
-    private int carCount = 0;
-    private int tryCount = 0;
+    private int carCount;
+    private int tryCount;
+    private List<String> names;
 
-    public static Condition of(int carCount, int tryCount) {
-        return new Condition(carCount, tryCount);
-    }
-
-    private Condition(int carCount, int tryCount) {
+    public Condition(int carCount, int tryCount, List<String> names) {
         this.carCount = carCount;
         this.tryCount = tryCount;
+        this.names = names;
     }
 
     public int getCarCount() {
@@ -22,4 +22,7 @@ public class Condition {
         return tryCount;
     }
 
+    public List<String> getNames() {
+        return names;
+    }
 }

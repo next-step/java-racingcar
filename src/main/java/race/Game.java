@@ -5,8 +5,8 @@ import race.view.ResultView;
 
 public class Game {
 
-    InputView inputView = new InputView();
-    ResultView resultView = new ResultView();
+    InputView inputView = InputView.getInstance();
+    ResultView resultView = ResultView.getInstance();
 
     public static void main(String[] args) {
         Game game = new Game();

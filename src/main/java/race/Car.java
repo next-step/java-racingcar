@@ -2,46 +2,53 @@ package race;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Car {
 
-    private final List<Boolean> moveCondition = new ArrayList<>();
-    private int maxTryCount;
-    private static final int MINIMUM_BOUND = 4;
+    private String name;
+    private final List<Integer> distance = new ArrayList<>();
+    private static final int FORWARD = 1;
+    private static final int STOP = 0;
 
     private Car() {
 
     }
 
-    private Car(int tryCount) {
-        this.maxTryCount = tryCount;
+    private Car(String name) {
+        this.name = name;
     }
 
-    public static Car of(int tryCount) {
-        return new Car(tryCount);
+    public static Car of(String name) {
+        return new Car(name);
     }
 
-    public void move() {
-        for (int i = 0; i < maxTryCount; i++) {
-            moveCondition.add(movable());
+    public void move(boolean isMove) {
+        if (isMove) {
+            distance.add(FORWARD);
+            return;
         }
+        distance.add(STOP);
     }
 
-    public List<Boolean> getMoveCondition() {
-        return this.moveCondition;
-    }
-
-    public int getDistance(int round) {
-        return (int) moveCondition.stream()
-                .limit(round)
-                .filter(i->i)
+    public int getDistance(int tryCount) {
+        return (int) distance.stream()
+                .limit(tryCount)
+                .filter(i -> i == FORWARD)
                 .count();
     }
 
-    private boolean movable() {
-        Random random = new Random();
-        return random.nextInt(10) >= MINIMUM_BOUND;
+    public int getTotalDistance() {
+        return (int) distance.stream()
+                .filter(i -> i == FORWARD)
+                .count();
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public List<Integer> getDistance() {
+        return this.distance;
     }
 
 }

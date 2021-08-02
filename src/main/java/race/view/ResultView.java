@@ -1,5 +1,6 @@
 package race.view;
 
+import race.Car;
 import race.Cars;
 
 import java.util.List;
@@ -8,27 +9,52 @@ import static java.lang.System.out;
 
 public class ResultView {
 
-    public void operate(Cars cars, int tryCount) {
+    private static ResultView resultView;
+
+    public static synchronized ResultView getInstance() {
+        if (resultView == null) {
+            return new ResultView();
+        }
+        return resultView;
+    }
+
+    public void operate(Cars cars, int finalTryCount) {
         out.println("실행 결과");
-        for(int i=0; i< tryCount; i++){
-            print(cars.getDistanceByRound(i));
+        printCarsByRound(cars.getCars(), finalTryCount);
+        printWinner(cars);
+    }
+
+    private void printWinner(Cars cars) {
+        String winners = String.join(",", cars.findWinners());
+        out.println(winners + "가 최종 우승했습니다.");
+    }
+
+    private void printCarsByRound(List<Car> cars, int finalTryCount) {
+        for (int tryCount = 0; tryCount <= finalTryCount; tryCount++) {
+            printCars(cars, tryCount);
             out.println();
         }
     }
 
-    private void print(List<Integer> distances) {
-        distances.forEach(this::printDash);
+    private void printCars(List<Car> cars, int tryCount) {
+        for (Car car : cars) {
+            printCar(car, tryCount);
+        }
     }
 
-    private void printDash(int distance) {
+    private void printCar(Car car, int tryCount) {
+        String carName = car.getName();
+        int distance = car.getDistance(tryCount);
+
+        out.print(carName + " : ");
         out.print("-");
-        for(int i=0; i<distance;i++){
+        for (int i = 0; i < distance; i++) {
             out.print("-");
         }
         out.println();
     }
 
-    public ResultView() {
+    private ResultView() {
 
     }
 
