@@ -6,7 +6,7 @@
 ## TODO
 * UI 코드 구현하기
     * 입력값은 Scanner
-    * 자동차 대수, 시도할 회수 변수정하기
+    * 자동차 대수, 시도할 회수 변수화하기
 * 로직 코드 구현하기
     * Random값은 java.util.Random 클래스의 nextInt(10) 메소드 활용
     * output 출력 main 메서드
