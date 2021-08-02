@@ -9,17 +9,10 @@ public class RacingCar {
     private final CarNamePolicy carNamePolicy;
 
     public RacingCar(String carName) {
-        this.carName = carName;
         this.drivenDistance = 0;
         this.forwardPolicy = new ForwardPolicyImpl();
         this.carNamePolicy = new CarNamePolicyImpl();
         setCarName(carName);
-    }
-
-    public RacingCar() {
-        this.drivenDistance = 0;
-        this.forwardPolicy = new ForwardPolicyImpl();
-        this.carNamePolicy = new CarNamePolicyImpl();
     }
 
     private void setCarName(String carName) {
