@@ -2,6 +2,7 @@ package step3.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import step3.utils.RandomUtils;
 
@@ -14,12 +15,13 @@ public class Racing {
 		this.cars.addAll(prepareCars(cars));
 	}
 
-	public int[][] race() {
-		int[][] result = new int[trials][cars.size()];
+	public List<RacingResult> race() {
+		List<RacingResult> result = new ArrayList<>();
 
 		for (int i = 0; i < trials; i++) {
 			raceOneTrial();
-			result[i] = getResultOneTrial();
+			RacingResult racingResult = new RacingResult(trials, getResultOneTrial());
+			result.add(racingResult);
 		}
 
 		return result;
@@ -40,9 +42,9 @@ public class Racing {
 		});
 	}
 
-	private int[] getResultOneTrial() {
+	private List<Integer> getResultOneTrial() {
 		return cars.stream()
-			.mapToInt(Car::getPosition)
-			.toArray();
+			.map(Car::getPosition)
+			.collect(Collectors.toList());
 	}
 }

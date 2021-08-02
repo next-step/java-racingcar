@@ -1,18 +1,23 @@
 package step3.view;
 
+import java.util.List;
+
+import step3.domain.RacingResult;
+
 public class OutputView {
 	private static final String MOVE_OUTPUT = "-";
 
-	public static void viewResult(int[][] result) {
-		for (int i = 0; i < result.length; i++) {
-			viewOneTrial(result[i]);
+	public static void viewResult(List<RacingResult> result) {
+		for (int i = 0; i < result.size(); i++) {
+			RacingResult resultOne = result.get(i);
+			viewOneTrial(resultOne.getPositionOfCars());
 			System.out.println();
 		}
 	}
 
-	private static void viewOneTrial(int[] cars) {
-		for (int i = 0; i < cars.length; i++) {
-			viewOneCar(cars[i]);
+	private static void viewOneTrial(List<Integer> cars) {
+		for (int i = 0; i < cars.size(); i++) {
+			viewOneCar(cars.get(i));
 		}
 	}
 
