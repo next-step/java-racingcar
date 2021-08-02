@@ -1,18 +1,17 @@
 package race;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-
-import java.util.Scanner;
-
 public class CarRace {
 
-    private final int carCount;
+    private int carCount;
 
-    private final int gameCount;
+    private int gameCount;
+    
+    private final String messageCarCount = "자동차 대수는 몇 대 인가요?";
 
-    protected CarRace(int carCount, int gameCount) {
-        this.carCount = carCount;
-        this.gameCount = gameCount;
+    private final String messageGameCount = "시도할 회수는 몇 회 인가요?";
+
+    public CarRace() {
+
     }
 
     public int getCarCount() {
@@ -27,11 +26,22 @@ public class CarRace {
         setGameProfile();
     }
 
-    protected static CarRace setGameProfile() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int carCountInput = InputOutput.inputOutput();
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int gameCountInput = InputOutput.inputOutput();
-        return new CarRace(carCountInput, gameCountInput);
+    protected void setGameProfile() {
+        carCount = setCarCount();
+        gameCount = setGameCount();
+    }
+
+    protected int setCarCount() {
+        printOut(messageCarCount);
+       return InputOutput.inputOutput();
+    } 
+
+    protected int setGameCount() {
+        printOut(messageGameCount);
+        return InputOutput.inputOutput();
+    }
+    
+    private void printOut(String message) {
+        System.out.println(message);   
     }
 }

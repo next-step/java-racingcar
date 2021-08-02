@@ -18,11 +18,11 @@ class CarRaceTest {
     @ValueSource(strings = {"5", "!"})
     @DisplayName("게임프로필 테스트")
     void setGameProfileTest(String input) {
-        InputOutput inputOutput = new InputOutput();
         InputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
-        int output = InputOutput.inputOutput();
-        assertThat(output).isEqualTo(2);
+        CarRace carRace = new CarRace();
+        carRace.setGameProfile();
+        assertThat(carRace.getCarCount()).isEqualTo(2);
     }
 
 
