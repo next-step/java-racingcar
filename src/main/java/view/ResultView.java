@@ -3,6 +3,7 @@ package view;
 import domain.Car;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 public class ResultView {
 
@@ -22,6 +23,14 @@ public class ResultView {
             sb.append("-");
         }
         sb.append("\r\n");
+    }
+
+    public static void winnersView(List<Car> winners) {
+        StringJoiner stringJoiner = new StringJoiner(",");
+        for (Car winner : winners) {
+            stringJoiner.add(winner.readParticipantName());
+        }
+        System.out.println(stringJoiner.toString() + "가 최종 우승했습니다.");
     }
 
 }
