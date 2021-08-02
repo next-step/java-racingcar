@@ -10,11 +10,8 @@ public class Cars {
     private Random random = new Random();
 
     public Cars(String carNames) {
-        addCar(carNames);
-    }
-
-    private void addCar(String carNames) {
         Arrays.asList(carNames.split(",")).forEach(s -> cars.add(new Car(new CarName(s))));
+
     }
 
     public void moveAll() {

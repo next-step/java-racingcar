@@ -1,7 +1,5 @@
 package CarRacing;
 
-import java.util.Random;
-
 public class Position {
 
     private static final int FORWARD_NUM = 4;

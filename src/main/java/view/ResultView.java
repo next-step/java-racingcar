@@ -1,7 +1,6 @@
 package view;
 
 import CarRacing.Car;
-import CarRacing.Cars;
 
 import java.util.List;
 
