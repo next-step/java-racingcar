@@ -11,7 +11,7 @@ public class RacingGameController {
         int playCount = InputView.getPlayCount();
 
         RacingGame racingGame = new RacingGame(carNames, playCount);
-        
+
         System.out.println("\n실행결과");
         for(int i=0; i<racingGame.getPlayCount(); i++) {
             ResultView.printCarsLocation(racingGame.moveCars(new RandomMovingStrategy()));
