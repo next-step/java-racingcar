@@ -37,5 +37,7 @@ public class App {
 			race.startRace(cars);
 			resultView.viewResult(cars);
 		}
+
+		resultView.winnerResult(race.getWinners(cars));
 	}
 }

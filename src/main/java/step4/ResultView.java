@@ -16,6 +16,12 @@ public class ResultView  {
 		System.out.println();
 	}
 
+	public void winnerResult(List<Car> winners) {
+		for(Car winner : winners) {
+			System.out.print(winner.getCarName() + " ");
+		}
+	}
+
 	private void carResult(Car car) {
 		System.out.print(car.getCarName() + " : ");
 		for(int i = 1 ; i <= car.getDistance(); i++) {
