@@ -1,52 +1,53 @@
 package racingcar.domain;
 
-import racingcar.dto.CarDto;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RaceResult {
-    private List<RoundResult> roundResults = new ArrayList<>();
+    private int roundCount;
+    private List<MovingRecord> movingRecords;
 
-    private List<String> winners;
-
-    public void report(int round, Cars cars) {
-        List<CarDto> createdCars = new ArrayList<>();
-        for (Car car : cars.getCars()) {
-            createdCars.add(new CarDto(car));
-        }
-
-        roundResults.add(new RoundResult(round, createdCars));
+    public RaceResult(int roundCount, List<Car> cars) {
+        this.roundCount = roundCount;
+        movingRecords = cars.stream().map(car -> new MovingRecord(car.getName())).collect(Collectors.toList());
     }
 
-    public void reportWinners(List<Car> winners) {
-        this.winners = winners.stream().map(car -> car.getName().getName()).collect(Collectors.toList());
+    public void report(List<Car> cars) {
+        for (Car car : cars) {
+            MovingRecord movingRecord = findMovingRecord(car.getName());
+            movingRecord.addPositionRecord(car.getPosition());
+        }
     }
 
-    public List<RoundResult> getRoundResults() {
-        return roundResults;
+    private MovingRecord findMovingRecord(Name name) {
+        MovingRecord findMovingRecord = movingRecords.stream()
+                .filter(movingRecord -> movingRecord.isSame(name))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 차 이름입니다."));
+        return findMovingRecord;
     }
 
-    public List<String> getWinners() {
-        return winners;
+    public List<String> findWinners() {
+        int maxPosition = getMaxPosition();
+        return movingRecords.stream()
+                .filter(movingRecord -> movingRecord.isLastPositionSame(maxPosition))
+                .map(MovingRecord::getCarName)
+                .collect(Collectors.toList());
     }
 
-    public static class RoundResult {
-        private int round;
-        private List<CarDto> carDtos;
+    private int getMaxPosition() {
+        return movingRecords.stream()
+                .max(Comparator.comparingInt(movingRecord -> movingRecord.getLastPosition()))
+                .orElseThrow(() -> new NoSuchElementException("값이 없습니다."))
+                .getLastPosition();
+    }
 
-        public RoundResult(int round, List<CarDto> carDtos) {
-            this.round = round;
-            this.carDtos = carDtos;
-        }
 
-        public int getRound() {
-            return round;
-        }
+    public int getRoundCount() {
+        return roundCount;
+    }
 
-        public List<CarDto> getCarDtos() {
-            return carDtos;
-        }
+    public List<MovingRecord> getMovingRecords() {
+        return movingRecords;
     }
 }
