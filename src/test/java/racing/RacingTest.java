@@ -1,11 +1,11 @@
 package racing;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import step2.Calculator;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,40 +13,54 @@ public class RacingTest {
 
     public static Racing racing = new Racing();
 
+    private List<Car> carList1;
+    private List<Car> carList2;
+
+    @BeforeEach
+    public void setUp() {
+        carList1 = new ArrayList<>();
+        Car car1 = new Car();
+        car1.setCount(1);
+        car1.setCarName("R1");
+        Car car2 = new Car();
+        car2.setCount(2);
+        car2.setCarName("R2");
+        Car car3 = new Car();
+        car3.setCount(3);
+        car3.setCarName("R3");
+        carList1.add(car1);
+        carList1.add(car2);
+        carList1.add(car3);
+
+        carList2 = new ArrayList<>();
+        Car car4 = new Car();
+        car4.setCount(1);
+        car4.setCarName("R4");
+        Car car5 = new Car();
+        car5.setCount(5);
+        car5.setCarName("R5");
+        Car car6 = new Car();
+        car6.setCount(5);
+        car6.setCarName("R6");
+        carList2.add(car4);
+        carList2.add(car5);
+        carList2.add(car6);
+    }
+
     @Test
     public void isGameOverTest() {
 
         Integer tryNum = 5;
 
-        ArrayList<Integer> carList1 = new ArrayList<>();
-        ArrayList<Integer> carList2 = new ArrayList<>();
-        carList1.add(1);
-        carList1.add(2);
-        carList1.add(3);
-
-        carList2.add(1);
-        carList2.add(5);
-        carList2.add(3);
-
         Boolean result1 = racing.isGameOver(carList1, tryNum);
         Boolean result2 = racing.isGameOver(carList2, tryNum);
 
-        assertEquals(result1,true);
-        assertEquals(result2,false);
+        assertEquals(result1,false);
+        assertEquals(result2,true);
 
     }
 
-    @Test
-    public void gameInitiateTest() {
-        Integer carNum = 3;
 
-        ArrayList<Integer> result = racing.gameInitiate(carNum);
-
-        for(int idx = 0; idx < carNum; idx++) {
-            assertEquals(0,result.get(idx));
-        }
-
-    }
 
     @Test
     public void isMoveTest() {
@@ -67,18 +81,4 @@ public class RacingTest {
 
         assertEquals(result1.toString().matches(regExp), true);
     }
-
-    @Test
-    public void setCarMoveTest() {
-
-        ArrayList<Integer> carList1 = new ArrayList<>();
-        carList1.add(1);
-        carList1.add(2);
-        carList1.add(3);
-
-        racing.setCarMove(carList1);
-
-        //??
-    }
-
 }
