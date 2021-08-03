@@ -16,7 +16,7 @@ public class Game {
     public void play() {
         Condition condition = this.prepare();
         Cars cars = Cars.of(condition);
-        cars.moveAll();
+        cars.playMaximumRound();
         terminate(cars, condition);
     }
 
