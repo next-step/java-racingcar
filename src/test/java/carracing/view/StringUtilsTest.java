@@ -1,7 +1,5 @@
 package carracing.view;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -19,23 +17,13 @@ class StringUtilsTest {
                 .isEqualTo(String.join("", Collections.nCopies(count, str)));
     }
 
-    @DisplayName("빈 문자열이나 count 가 0 보다 작은 경우 예외가 발생한다.")
-    @Test
-    public void repeatFailTest() {
+    @ParameterizedTest(name = "빈 문자열이나 null인 경우 예외가 발생한다.")
+    @CsvSource(value = {",3", "'',3", "test,-1"})
+    public void repeatFailTest(String str, int count) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> StringUtils.repeat("", 3))
-                .withMessageContaining("")
-                .withMessageContaining("3");
-
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> StringUtils.repeat(null, 3))
-                .withMessageContaining("null")
-                .withMessageContaining("3");
-
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> StringUtils.repeat("test", -1))
-                .withMessageContaining("test")
-                .withMessageContaining("-1");
+                .isThrownBy(() -> StringUtils.repeat(str, count))
+                .withMessageContaining(String.valueOf(str))
+                .withMessageContaining(String.valueOf(count));
     }
 
 }
