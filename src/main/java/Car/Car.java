@@ -10,12 +10,12 @@ public class Car {
     private int moveCount;
     private String carName;
 
-    public String getCarName() {
-        return carName;
-    }
-
     public Car(String carName) {
         this.carName = carName;
+    }
+
+    public String getCarName() {
+        return carName;
     }
 
     public int getMoveCount() {
