@@ -1,8 +1,8 @@
 package carracing.view;
 
 import carracing.domain.Car;
-import carracing.domain.Cars;
 import carracing.domain.Position;
+import carracing.domain.RacingCars;
 
 import java.io.PrintStream;
 import java.util.List;
@@ -44,8 +44,8 @@ public class OutputView {
         printStream.println();
     }
 
-    public void printPositions(Cars cars) {
-        cars.forEach(this::printPosition);
+    public void printPositions(RacingCars racingCars) {
+        racingCars.forEach(this::printPosition);
     }
 
     public void printPosition(Car car) {

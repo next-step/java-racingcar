@@ -8,16 +8,16 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-public class Cars {
+public class RacingCars {
 
     private final List<Car> cars;
 
-    private Cars(List<Car> cars) {
+    private RacingCars(List<Car> cars) {
         this.cars = Collections.unmodifiableList(Objects.requireNonNull(cars));
     }
 
-    public static Cars of(List<Car> carList) {
-        return new Cars(carList);
+    public static RacingCars of(List<Car> carList) {
+        return new RacingCars(carList);
     }
 
     public void move(Supplier<Number> numberSupplier) {

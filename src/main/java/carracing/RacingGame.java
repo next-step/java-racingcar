@@ -1,8 +1,8 @@
 package carracing;
 
 import carracing.domain.Car;
-import carracing.domain.Cars;
 import carracing.domain.Position;
+import carracing.domain.RacingCars;
 import carracing.domain.RandomNumberGenerator;
 import carracing.view.InputView;
 import carracing.view.OutputView;
@@ -26,9 +26,9 @@ public class RacingGame {
     }
 
     public void start() {
-        Cars cars = Cars.of(getCars());
-        race(cars, getMoveCount());
-        outputView.printWinners(cars.getWinners());
+        RacingCars racingCars = RacingCars.of(getCars());
+        race(racingCars, getMoveCount());
+        outputView.printWinners(racingCars.getWinners());
     }
 
     private List<Car> getCars() {
@@ -44,11 +44,11 @@ public class RacingGame {
         return inputView.getMoveCount();
     }
 
-    private void race(Cars cars, int moveCount) {
+    private void race(RacingCars racingCars, int moveCount) {
         outputView.printResultMessage();
         for (int i = 0; i < moveCount; ++i) {
-            cars.move(randomNumberGenerator::generateRandomNumber);
-            outputView.printPositions(cars);
+            racingCars.move(randomNumberGenerator::generateRandomNumber);
+            outputView.printPositions(racingCars);
             outputView.printNewLine();
         }
     }

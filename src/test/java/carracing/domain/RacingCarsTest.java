@@ -12,15 +12,15 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CarsTest {
+class RacingCarsTest {
 
     @ParameterizedTest(name = "입력 값에 따라 자동차 목록 내 모든 자동차가 한번씩 움직인다.")
     @ValueSource(ints = {0, 3, 4, 9})
     public void carsMoveTest(int mockRandomNumber) {
         List<Position> carPositions = createPositions(1, 3, 5);
-        Cars cars = Cars.of(createCars(carPositions));
-        cars.move(() -> Number.of(mockRandomNumber));
-        assertThat(cars.getPositions())
+        RacingCars racingCars = RacingCars.of(createCars(carPositions));
+        racingCars.move(() -> Number.of(mockRandomNumber));
+        assertThat(racingCars.getPositions())
                 .isEqualTo(expectedPositions(carPositions, mockRandomNumber > 3));
     }
 
@@ -29,8 +29,8 @@ class CarsTest {
     public void groupByPositionTest() {
         List<Car> losers = createCars(createPositions(1, 1, 3, 5));
         List<Car> winners = createCars(createPositions(6, 6));
-        Cars cars = Cars.of(allOf(losers, winners));
-        assertThat(cars.getWinners()).isEqualTo(winners);
+        RacingCars racingCars = RacingCars.of(allOf(losers, winners));
+        assertThat(racingCars.getWinners()).isEqualTo(winners);
     }
 
     private List<Car> allOf(List<Car> losers, List<Car> winners) {
