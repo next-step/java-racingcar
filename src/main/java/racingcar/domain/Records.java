@@ -13,8 +13,6 @@ public class Records implements Iterable<Record> {
         }
     }
 
-    public Records() {}
-
     @Override
     public Iterator<Record> iterator() {
         return records.iterator();

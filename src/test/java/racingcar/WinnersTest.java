@@ -20,10 +20,7 @@ class WinnersTest {
 
         Records records = new Records(cars);
 
-        Winners winners = new Winners();
-        for (Record record : records) {
-            winners.updateWinner(record);
-        }
+        Winners winners = new Winners(records);
 
         assertThat(winners.getNames().size()).isEqualTo(1);
         assertThat(winners.getNames()).contains("b");
@@ -51,10 +48,7 @@ class WinnersTest {
         moveNthCarByDistance(cars, 2, 2);
 
         Records records = new Records(cars);
-        Winners winners = new Winners();
-        for (Record record : records) {
-            winners.updateWinner(record);
-        }
+        Winners winners = new Winners(records);
 
         assertThat(winners.getNames().size()).isEqualTo(2);
         assertThat(winners.getNames()).contains("c", "b");

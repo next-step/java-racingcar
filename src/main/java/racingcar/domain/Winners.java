@@ -15,7 +15,13 @@ public class Winners {
         return distance;
     }
 
-    public void updateWinner(Record record) {
+    public Winners(Records records) {
+        for (Record record : records) {
+            updateWinner(record);
+        }
+    }
+
+    private void updateWinner(Record record) {
         if (distance.getDistance() < record.getDistance()) {
             names.clear();
             names.add(record.getName());

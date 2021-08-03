@@ -12,13 +12,7 @@ public class RaceResult {
     }
 
     public Winners getWinners() {
-        Winners winners = new Winners();
-
-        for (Record record : getLastLap().getRecords()) {
-            winners.updateWinner(record);
-        }
-
-        return winners;
+        return new Winners(getLastLap().getRecords());
     }
 
     public void recordLap(Cars cars) {
