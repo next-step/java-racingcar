@@ -1,6 +1,6 @@
-import study.InputView;
-import study.RacingManager;
-import study.ResultView;
+import study.racingcar.domain.RacingManager;
+import study.racingcar.view.InputView;
+import study.racingcar.view.ResultView;
 
 public class RacingCarMain {
 

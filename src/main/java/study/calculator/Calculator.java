@@ -1,4 +1,4 @@
-package study;
+package study.calculator;
 
 public class Calculator {
 

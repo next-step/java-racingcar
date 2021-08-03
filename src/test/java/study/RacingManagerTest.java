@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import study.racingcar.domain.Car;
+import study.racingcar.domain.RacingManager;
+import study.racingcar.domain.RandomMovingStrategy;
 
 import java.util.List;
 import java.util.stream.Collectors;
