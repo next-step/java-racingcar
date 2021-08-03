@@ -14,7 +14,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarGameTest {
-    private static final String[] TEST_CAR_NAMES = {"harris1", "harris2", "harris3"};
+    private static final String[] TEST_CAR_NAMES = {"harr1", "harr2", "harr3"};
     public static final AlwaysMoveStrategy ALWAYS_MOVE_STRATEGY = new AlwaysMoveStrategy();
     private final List<RacingCar> racingCars = new ArrayList<>();
     public static final int TRY_NUMBER = 10;

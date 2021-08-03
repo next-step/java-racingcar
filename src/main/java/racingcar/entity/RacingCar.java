@@ -12,6 +12,9 @@ public class RacingCar {
 
     public RacingCar(String carName) {
         this.position = BASE_POSITION;
+        if(carName.length() > 5){
+            throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다.");
+        }
         this.name = carName;
     }
 
