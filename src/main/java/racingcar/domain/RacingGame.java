@@ -17,12 +17,11 @@ public class RacingGame {
     }
 
     public RaceResult race(Cars cars) {
-        RaceResult raceResult = new RaceResult();
+        RaceResult raceResult = new RaceResult(roundCount, cars.getCars());
         for (int i = 0; i < roundCount; i++) {
             cars.moveCars(movableStrategy);
-            raceResult.report(i+1, cars);
+            raceResult.report(cars.getCars());
         }
-        raceResult.reportWinners(cars.findWinners());
         return raceResult;
     }
 }
