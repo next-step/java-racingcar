@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
@@ -27,6 +28,16 @@ class CarTest {
 
         //then
         assertThat(getMoveDistance).isEqualTo(1);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"macbook", "nextstep", "nekarakubae"})
+    @DisplayName("자동차 이름이 5글자를 초과하는 경우 IllegalArgumentException가 발생한다.")
+    void check_validate_carname_test(String carName) {
+        assertThatThrownBy(() -> {
+            new Car(carName);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 다섯 글자를 초과할 수 없습니다");
     }
 
     @ParameterizedTest
