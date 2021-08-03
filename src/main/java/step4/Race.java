@@ -10,8 +10,8 @@ public class Race {
 	}
 
 	public void startRace(List<Car> cars) {
-		int randomNumber = numberContainer.getRandomNumber();
 		for(Car car : cars) {
+			int randomNumber = numberContainer.getRandomNumber();
 			car.move(randomNumber);
 		}
 	}

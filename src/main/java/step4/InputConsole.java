@@ -12,6 +12,10 @@ public class InputConsole {
 		this.scanner = new Scanner(System.in);
 	}
 
+	public int getCarNumber() {
+		return carNames.length;
+	}
+
 	public void setValues() {
 		setCarNames();
 		setExecutionCount();
