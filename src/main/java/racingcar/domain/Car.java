@@ -1,25 +1,25 @@
 package racingcar.domain;
 
 public class Car {
-    private int position = 1;
-    private final String name;
+    private final CarName carName;
+    private final Position position;
 
-    public Car(String name) {
-        this.name = name;
+    public Car(CarName carName) {
+        this.carName = carName;
+        this.position = new Position();
     }
 
     public int getPosition() {
-        return position;
-    }
-
-    public String getName() {
-        return name;
+        return position.getPosition();
     }
 
     public void move(MovingStrategy movingStrategy) {
-         if(movingStrategy.isMove()) {
-             position ++;
+         if (movingStrategy.isMove()) {
+             position.move(position);
          }
     }
 
+    public String getName() {
+        return carName.getCarName();
+    }
 }

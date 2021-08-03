@@ -2,7 +2,8 @@ package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.util.RandomGenerator;
+import racingcar.domain.Car;
+import racingcar.domain.CarName;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,7 +12,8 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car(new RandomNumberMovingStrategy(RandomGenerator.getInstance()), "pobi");
+        CarName carName = new CarName("pobi");
+        car = new Car(carName);
     }
 
     @Test
