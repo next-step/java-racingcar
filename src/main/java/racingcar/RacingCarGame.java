@@ -40,8 +40,7 @@ public class RacingCarGame {
     }
 
     public static void raceOneStep(List<RacingCar> racingCars, MoveStrategy moveStrategy) {
-        for (int i = 0; i < racingCars.size(); i++) {
-            RacingCar racingCar = racingCars.get(i);
+        for (RacingCar racingCar: racingCars) {
             racingCar.moveIfMovable(moveStrategy);
         }
     }
