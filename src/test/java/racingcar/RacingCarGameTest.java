@@ -15,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarGameTest {
     private static final String[] TEST_CAR_NAMES = {"harris1", "harris2", "harris3"};
+    public static final AlwaysMoveStrategy ALWAYS_MOVE_STRATEGY = new AlwaysMoveStrategy();
     private final List<RacingCar> racingCars = new ArrayList<>();
     public static final int TRY_NUMBER = 10;
 
@@ -52,7 +53,7 @@ class RacingCarGameTest {
     @Test
     @DisplayName("항상 움직이는 전략을 사용한 레이싱카 게임의 race()를 완료했을 때 racingCar position 은 모두 tryNumber 임을 확인한다.")
     void alwaysMoveRace() {
-        RacingCarGame.race(racingCars, TRY_NUMBER, new AlwaysMoveStrategy());
+        RacingCarGame.race(racingCars, TRY_NUMBER, ALWAYS_MOVE_STRATEGY);
         for (RacingCar racingCar : racingCars) {
             assertThat(racingCar.getPosition()).isEqualTo(TRY_NUMBER);
         }
@@ -61,27 +62,27 @@ class RacingCarGameTest {
     @Test
     @DisplayName("항상 움직이는 전략을 사용한 레이싱카 게임의 raceOneStep()을 완료했을 때 차의 위치는 1임을 확인한다.")
     void alwaysMoveRaceOneStep() {
-        RacingCarGame.raceOneStep(racingCars, new AlwaysMoveStrategy());
+        RacingCarGame.raceOneStep(racingCars, ALWAYS_MOVE_STRATEGY);
         for (RacingCar racingCar : racingCars) {
             assertThat(racingCar.getPosition()).isEqualTo(RacingCar.ONE_STEP);
         }
     }
 
     @Test
-    @DisplayName("레이싱 카 게임에서 레이싱 카의 위치가 증가했을 때 위너 스코어를 갱신하는 것을 확인한다.")
-    void recordWinnerScore(){
-        assertThat(RacingCarGame.winnerRecord).isEqualTo(0);
-        RacingCarGame.raceOneStep(racingCars, new AlwaysMoveStrategy());
-        RacingCarGame.recordWinnerScore(racingCars.get(0));
-        assertThat(RacingCarGame.winnerRecord).isEqualTo(1);
+    @DisplayName("레이싱 카들의 위치의 최대값을 확인한다.")
+    void findMaxPosition(){
+        racingCars.get(0).moveIfMovable(ALWAYS_MOVE_STRATEGY);
+        racingCars.get(0).moveIfMovable(ALWAYS_MOVE_STRATEGY);
+        int maxPosition = RacingCarGame.findMaxPosition(racingCars);
+        assertThat(maxPosition).isEqualTo(2);
     }
 
     @Test
     @DisplayName("하나의 레이싱카만 움직였을 때 해당 레이싱카가 우승한다.")
     void pickWinners(){
-        racingCars.get(0).moveIfMovable(new AlwaysMoveStrategy());
-        RacingCarGame.winnerRecord = 1;
-        List<String> winners = RacingCarGame.pickWinners(racingCars);
+        racingCars.get(0).moveIfMovable(ALWAYS_MOVE_STRATEGY);
+        int maxPosition = RacingCarGame.findMaxPosition(racingCars);
+        List<String> winners = RacingCarGame.pickWinners(racingCars, maxPosition);
         assertThat(winners.size()).isEqualTo(1);
         assertThat(winners.get(0)).isEqualTo(racingCars.get(0).getName());
 
