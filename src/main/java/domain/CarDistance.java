@@ -8,7 +8,7 @@ public class CarDistance {
         carDistance = 0;
     }
 
-    public int takeCarDistance() {
+    public int readCarDistance() {
         return carDistance;
     }
 

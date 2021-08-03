@@ -12,21 +12,21 @@ class CarTest {
 
     @BeforeEach
     public void setUp() {
-        car = new Car();
+        car = new Car("name");
     }
 
     @DisplayName("4이상일 경우 전진 테스트")
     @Test
     public void moveAdvanceTest() {
         car.carMoveBehavior(5);
-        assertThat(car.checkCarMoveDistance()).isEqualTo(1);
+        assertThat(car.readCarDistance()).isEqualTo(1);
     }
 
     @DisplayName("3이하일 경우 정지 테스트")
     @Test
     public void moveStopTest() {
         car.carMoveBehavior(3);
-        assertThat(car.checkCarMoveDistance()).isEqualTo(0);
+        assertThat(car.readCarDistance()).isEqualTo(0);
     }
 
 }

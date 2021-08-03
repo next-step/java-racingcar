@@ -3,7 +3,13 @@ import controller.GameController;
 public class RacingGame {
 
     public static void main(String[] args) {
-        new GameController().init();
+
+        try {
+            new GameController().init();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
