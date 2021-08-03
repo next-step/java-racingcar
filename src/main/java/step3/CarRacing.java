@@ -2,6 +2,8 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.stream.Collectors;
 
 public class CarRacing {
 
@@ -29,4 +31,18 @@ public class CarRacing {
         return cars;
     }
 
+    public String extractWinner() {
+        int maxMoveDistance = getMaxMoveDistance();
+        return cars.stream().filter(o->o.getMoveDistance()==maxMoveDistance).map(Car::getCarName).collect(Collectors.joining(","));
+    }
+
+    private int getMaxMoveDistance() {
+        int maxMoveDistance = 0;
+        for (Car car : cars) {
+            if(car.getMoveDistance() >= maxMoveDistance) {
+                maxMoveDistance = car.getMoveDistance();
+            }
+        }
+        return maxMoveDistance;
+    }
 }

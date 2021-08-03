@@ -1,6 +1,7 @@
 package step3;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -26,7 +27,8 @@ public class ResultView {
         return String.valueOf(stringBuilder);
     }
 
-    public static void printWinner(List<String> winners) {
+    public static void printWinner(String winners) {
 
+        System.out.println(winners + "가 최종 우승했습니다.");
     }
 }

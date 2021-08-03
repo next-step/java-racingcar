@@ -13,5 +13,7 @@ public class CarRacingController {
         for (int i = 0; i < tryCount; i++) {
             ResultView.printResult(carRacing.racing());
         }
+
+        ResultView.printWinner(carRacing.extractWinner());
     }
 }
