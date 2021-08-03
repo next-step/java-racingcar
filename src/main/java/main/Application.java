@@ -1,11 +1,10 @@
 package main;
 
-import java.util.List;
-
 import calculator.Calculator;
 import calculator.CalculcatorUI;
-import carrase.CarRasingGame;
-import carrase.CarRacingGameUI;
+import carrase.CarRacingGame;
+import carrase.InputView;
+import carrase.ResultView;
 
 public class Application {
 	public static void main(String[] args) {
@@ -25,18 +24,19 @@ public class Application {
 	}
 
 	private void runRacingGame() {
-		CarRacingGameUI ui = new CarRacingGameUI();
+		InputView inputView = new InputView();
+		ResultView resultView = new ResultView();
 
-		ui.printQuestionOfCarCount();
-		CarRasingGame game = new CarRasingGame(ui.getInput());
-		ui.printQuestionOfGameCount();
+		inputView.drawQuestionOfCarNames();
+		CarRacingGame game = new CarRacingGame(inputView.getCarNames());
+		inputView.drawQuestionOfGameCount();
+		int countOfGame = inputView.getGameCount();
 
-		int countOfGame = ui.getInput();
-
-		ui.printMessageOfGameResult();
+		resultView.drawMessageOfGameResult();
 		for(int i = 0; i < countOfGame; i++) {
-			List<Integer> result = game.start();
-			ui.printResult(result);
+			game.start();
+			resultView.drawTotalResult(game.getGameResult());
 		}
+		resultView.drawWinner(game.getCarGameWinner());
 	}
 }
