@@ -13,6 +13,7 @@ public class CarMoveService {
     public static final int OPERATION_MAX = 10;
     public static final int ADVENCE_LIMIT = 4;
     public static final int FIRST_ROUND = 0;
+    public static final int CARNAME_MAX = 5;
 
     public RacingCarGame move(RacingCarGame racingCarGame) {
 
@@ -72,7 +73,14 @@ public class CarMoveService {
     }
 
     private String parseCarName(String carNames , int order) {
-        return carNames.split(",")[order];
+        return checkCarName(carNames.split(",")[order]);
+    }
+
+    public String checkCarName(String carName) {
+        if(carName.length() > CARNAME_MAX){
+            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+        }
+        return carName;
     }
 
 
