@@ -11,7 +11,7 @@ public class RacingGame {
   private final int racingGameRound;
 
   public RacingGame(int carNumber, int gameRound) {
-    cars = new Cars(carNumber);
+    cars = Cars.of(carNumber);
     racingGameRound = gameRound;
     resultView = new ResultView();
   }

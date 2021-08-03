@@ -5,12 +5,6 @@ import study.step3.model.strategy.MoveStrategy;
 public class Car {
 
     private int distance;
-    private final MoveStrategy moveStrategy;
-
-    public Car(MoveStrategy moveStrategy) {
-        this.distance = 0;
-        this.moveStrategy = moveStrategy;
-    }
 
     public int getDistance() {
         return distance;
@@ -20,8 +14,8 @@ public class Car {
         distance++;
     }
 
-    public void move(int randomNumber) {
-        if(moveStrategy.isMoveCondition(randomNumber)) {
+    public void move(MoveStrategy moveStrategy, int randomNumber) {
+        if (moveStrategy.isMoveCondition(randomNumber)) {
             moveCar();
         }
     }
