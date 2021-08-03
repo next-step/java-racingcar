@@ -20,7 +20,7 @@ class CarsTest {
     @ValueSource(ints = {0, 1, 2})
     void moveAll(int index) {
         Cars cars = getCars();
-        cars.moveAll();
+        cars.playMaximumRound();
 
         Car car = cars.getCars().get(index);
         int distanceCount = car.getDistance().size();
@@ -31,7 +31,7 @@ class CarsTest {
     @Test
     void getWinner() {
         Cars cars = getCars();
-        cars.moveAll();
+        cars.playMaximumRound();
 
         String winners = String.join(",", cars.findWinners());
         assertThat(winners.split(",").length).isGreaterThanOrEqualTo(1);

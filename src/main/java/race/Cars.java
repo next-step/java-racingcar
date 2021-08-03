@@ -8,13 +8,13 @@ import java.util.stream.Collectors;
 public class Cars {
 
     private final List<Car> cars;
-    private int maxTryCount;
+    private final int maxTryCount;
     private static final int MINIMUM_BOUND = 4;
 
 
     private Cars(Condition condition) {
         this.cars = condition.getNames().stream()
-                .map(Car::of)
+                .map(Car::new)
                 .collect(Collectors.toList());
         this.maxTryCount = condition.getTryCount();
     }
@@ -23,12 +23,10 @@ public class Cars {
         return new Cars(condition);
     }
 
-    public void moveAll() {
-        cars.forEach(car -> {
-            for (int tryCount = 0; tryCount < maxTryCount; tryCount++) {
-                car.move(movable());
-            }
-        });
+    public void playMaximumRound() {
+        for(int tryCount = 0; tryCount < maxTryCount ; tryCount++){
+            playOneRound();
+        }
     }
 
     public List<String> findWinners() {
@@ -49,7 +47,11 @@ public class Cars {
                 .getTotalDistance();
     }
 
-    private boolean movable() {
+    private void playOneRound() {
+        cars.forEach(car->car.move(canMove()));
+    }
+
+    private boolean canMove() {
         Random random = new Random();
         return random.nextInt(10) >= MINIMUM_BOUND;
     }
