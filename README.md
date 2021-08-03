@@ -29,8 +29,8 @@
 
 ### 기능 목록
 - RacingCarApplication : main()
-- RacingCar : move(), createCarList()
-- Cars : playRacingOneRound()
+- RacingCar : move()
+- Cars : playRacingOneRound(), createCarList()
 - RacingStrategy(interface) : canMove()
 - RandomStrategy : canMove(), getRandomNum()
 - InputView : inputCarNum(), inputMoveNum()

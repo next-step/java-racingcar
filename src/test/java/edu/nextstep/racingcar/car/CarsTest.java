@@ -15,7 +15,7 @@ class CarsTest {
         int carNum = 3;
 
         // when
-        Cars racingCars = RacingCar.createCarList(3);
+        Cars racingCars = Cars.createCarList(3);
 
         // then
         assertThat(racingCars.getCar(0) instanceof RacingCar).isTrue();

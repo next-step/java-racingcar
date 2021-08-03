@@ -5,6 +5,7 @@ import java.util.Random;
 public class RandomStrategy implements RacingStrategy {
     private static final int CRITERIA = 4;
     private static final int MAX_RANDOM_VALUE = 10;
+    private static final Random randomUtil = new Random();
 
     @Override
     public boolean canMove() {
@@ -12,7 +13,6 @@ public class RandomStrategy implements RacingStrategy {
     }
 
     private int getRandomNum() {
-        Random randomUtil = new Random();
         return randomUtil.nextInt(MAX_RANDOM_VALUE);
     }
 }

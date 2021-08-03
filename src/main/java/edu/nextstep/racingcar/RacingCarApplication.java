@@ -10,7 +10,7 @@
 package edu.nextstep.racingcar;
 
 import edu.nextstep.racingcar.car.Cars;
-import edu.nextstep.racingcar.car.RacingCar;
+import edu.nextstep.racingcar.strategy.RandomStrategy;
 import edu.nextstep.racingcar.view.InputView;
 import edu.nextstep.racingcar.view.ResultView;
 
@@ -20,11 +20,11 @@ public class RacingCarApplication {
         int carNum = InputView.inputCarNum();
         int moveNum = InputView.inputMoveNum();
 
-        Cars racingCars = RacingCar.createCarList(carNum);
+        Cars racingCars = Cars.createCarList(carNum);
 
         ResultView.startSign();
         for (int i = 0; i < moveNum; i++) {
-            racingCars.playRacingOneRound();
+            racingCars.playRacingOneRound(new RandomStrategy());
             ResultView.outputCurrentRacing(racingCars);
         }
 

@@ -20,16 +20,14 @@ class RandomStrategyTest {
 
         // when
         boolean check = true;
-        for (int i = 0; i < 100; i++) {
+        int i = 0;
+        while (i < 100 && check == true) {
             int num = (int) getRandomNum.invoke(randomStrategy);
-            if (num < 0 || 10 < num) {
-                check = false;
-                break;
-            }
+            check = (0 <= num && num <= 10);
+            i++;
         }
 
         // then
         assertThat(check).isEqualTo(true);
     }
-
 }
