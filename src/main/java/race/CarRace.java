@@ -67,17 +67,25 @@ public class CarRace {
 
     }
 
-    //TODO: 컨밴션 지켜 리팩토링
     private void playGame() {
         while(gameCount-- > 0) {
             int tempCarCount = 0;
-            while (tempCarCount < carCount) {
-                if (RandomNum.getRandomNum() > 4)
-                    carDistance[tempCarCount] += "-";
-                tempCarCount++;
-            }
+            loopCarCount();
             ResultView.printResult(carDistance);
         }
+    }
+
+    private void loopCarCount() {
+        int tempCarCount = 0;
+        while (tempCarCount < carCount) {
+            checkRandomNum(tempCarCount);
+            tempCarCount++;
+        }
+    }
+
+    private void checkRandomNum(int tempCarCount) {
+        if (RandomNum.getRandomNum() > 4)
+            carDistance[tempCarCount] += "-";
     }
 
 }

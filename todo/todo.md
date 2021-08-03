@@ -11,4 +11,4 @@
     * ~~Random값은 java.util.Random 클래스의 nextInt(10) 메소드 활용~~
     * ~~output 출력 main 메서드~~
     * ~~자동차 이동 메서드~~
-* Java 컨벤션 리팩토링
+* ~~Java 컨벤션 리팩토링~~
