@@ -10,16 +10,8 @@ public class Car {
     private static final int FORWARD = 1;
     private static final int STOP = 0;
 
-    private Car() {
-
-    }
-
-    private Car(String name) {
+    public Car(String name) {
         this.name = name;
-    }
-
-    public static Car of(String name) {
-        return new Car(name);
     }
 
     public void move(boolean isMove) {
