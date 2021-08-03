@@ -24,8 +24,12 @@ public class CarMoveService {
             roundList.add(cars);
         }
 
-        racingCarGame.setRounds(roundList);
-        return racingCarGame;
+        return RacingCarGame.builder()
+                .carNum(racingCarGame.getCarNum())
+                .carNames(racingCarGame.getCarNames())
+                .rounds(racingCarGame.getRounds())
+                .tryNumber(racingCarGame.getTryNumber())
+                .build();
 
     }
 
@@ -46,11 +50,11 @@ public class CarMoveService {
 
     private Car[] moveOrder(int roundNum , List roundList, Car[] cars) {
         for(int j = 0 ; j < cars.length ; j++) {
-            cars[j] = new Car();
+
             int isAdvence = operator();
             int sumTotalMove = calTotalMove(roundNum, isAdvence, roundList , j);
-            cars[j].setMove(isAdvence);
-            cars[j].setTotalMove(sumTotalMove);
+            cars[j] = new Car(isAdvence, sumTotalMove);
+
         }
         return cars;
     }

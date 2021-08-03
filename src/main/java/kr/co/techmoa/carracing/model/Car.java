@@ -1,14 +1,17 @@
 package kr.co.techmoa.carracing.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.RequiredArgsConstructor;
 
-@Setter
 @Getter
 public class Car {
 
-    int move;
-    int totalMove;
+    private int move;
+    private int totalMove;
+    private String carName;
 
+    public Car(int move, int totalMove) {
+        this.move = move;
+        this.totalMove = totalMove;
+    }
 }

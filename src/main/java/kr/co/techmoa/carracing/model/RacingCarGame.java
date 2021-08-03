@@ -1,16 +1,15 @@
 package kr.co.techmoa.carracing.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
-import java.util.Map;
 
 @Getter
-@Setter
+@Builder
 public class RacingCarGame {
 
     private int carNum;
+    private String carNames;
     private int tryNumber ;
 
     private List<Car[]> rounds;
