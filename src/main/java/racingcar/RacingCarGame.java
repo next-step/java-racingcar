@@ -25,23 +25,6 @@ public class RacingCarGame {
         ResultView.printWinners(winners);
     }
 
-    public static int findMaxPosition(List<RacingCar> racingCars) {
-        int maxPosition = 0;
-        for (RacingCar racingCar : racingCars) {
-            if(racingCar.getPosition()>maxPosition){
-                maxPosition = racingCar.getPosition();
-            }
-        }
-        return maxPosition;
-    }
-
-    public static List<String> pickWinners(List<RacingCar> racingCars, int winnerRecord) {
-        return racingCars.stream()
-                .filter(racingCar -> racingCar.getPosition() == winnerRecord)
-                .map(RacingCar::getName)
-                .collect(Collectors.toList());
-    }
-
     public static void initializeRacingCars(List<RacingCar> racingCars, String[] carNames) {
         for (int i = 0; i < carNames.length; i++) {
             racingCars.add(new RacingCar(carNames[i]));
@@ -61,5 +44,22 @@ public class RacingCarGame {
             RacingCar racingCar = racingCars.get(i);
             racingCar.moveIfMovable(moveStrategy);
         }
+    }
+
+    public static int findMaxPosition(List<RacingCar> racingCars) {
+        int maxPosition = 0;
+        for (RacingCar racingCar : racingCars) {
+            if (racingCar.getPosition() > maxPosition) {
+                maxPosition = racingCar.getPosition();
+            }
+        }
+        return maxPosition;
+    }
+
+    public static List<String> pickWinners(List<RacingCar> racingCars, int winnerRecord) {
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.getPosition() == winnerRecord)
+                .map(RacingCar::getName)
+                .collect(Collectors.toList());
     }
 }
