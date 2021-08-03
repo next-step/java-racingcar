@@ -1,24 +1,16 @@
-import step4.InputView;
-import step4.Race;
 import step4.ResultView;
+import step5.domain.Race;
+import step5.view.InputView;
 
 import java.util.Scanner;
 
 public class RacingCarMain {
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        String nameOfCar = inputView.getNameOfCar();
-        int numOfCycle = inputView.getNumOfCycle();
+        String carNames = inputView.requestCars();
+        int round = inputView.requestRound();
 
-        Race race = new Race(nameOfCar, numOfCycle);
-
-        for (int i = 0; i < numOfCycle; i++) {
-            race.printResult();
-            race.playRace();
-            System.out.println();
-        }
-        race.printResult();
-        ResultView resultView = new ResultView();
-        resultView.printFinalResult(race.getMaxCarName());
+        Race race = new Race(carNames.split(","), round);
+        race.startGame();
     }
 }
