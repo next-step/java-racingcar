@@ -1,21 +1,24 @@
-package step3;
+package step4;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public class RacingCar {
+public class RacingCar{
+    private final String name;
     private final List<String> status;
     private final Movable movable;
 
-    public static RacingCar create() {
-        return new RacingCar();
+    public static RacingCar create(String name) {
+        return new RacingCar(name);
     }
 
-    public static RacingCar create(Movable movable) {
-        return new RacingCar(movable);
+    public static RacingCar create(String name, Movable movable) {
+        return new RacingCar(name, movable);
     }
 
-    private RacingCar() {
+    private RacingCar(String name) {
+        this.name = name;
         status = initializeStatus();
         movable = setDefaultMovable();
     }
@@ -30,7 +33,8 @@ public class RacingCar {
         return new RandomMovable();
     }
 
-    private RacingCar(Movable movable) {
+    private RacingCar(String name, Movable movable) {
+        this.name = name;
         status = initializeStatus();
         this.movable = movable;
     }
@@ -49,5 +53,8 @@ public class RacingCar {
         return this.status;
     }
 
+    public String getName() {
+        return name;
+    }
 
 }
