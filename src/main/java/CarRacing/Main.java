@@ -12,7 +12,7 @@ public class Main {
         int tryCount = InputView.insertTryCount();
 
         for (int i = 0; i < tryCount; i++) {
-            cars.moveAll();
+            cars.moveAll(new RandomMove());
             ResultView.printCarPosition(cars.getCars());
         }
 

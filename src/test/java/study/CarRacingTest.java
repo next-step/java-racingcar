@@ -17,12 +17,21 @@ public class CarRacingTest {
 
     @Test
     @DisplayName("자동차 이동 테스트")
-    void positionFourUnderValue() {
+    void carMove() {
         Car car = new Car(new CarName("test"));
         car.move(() -> true);
         assertEquals(1, car.getPosition());
     }
 
+    @Test
+    @DisplayName("서로 다른 두 자동차 거리 비교")
+    void comparePositionTwoCar() {
+        Car car1 = new Car(new CarName("test"));
+        Car car2 = new Car(new CarName("test"));
+        car1.move(() -> true);
+        car2.move(() -> false);
+        assertThat(car1.isSamePostion(car2)).isFalse();
+    }
 
     @Test
     @DisplayName("자동차이름 다섯글자 초과시")
@@ -62,30 +71,23 @@ public class CarRacingTest {
 
         Cars cars = new Cars(carNames);
 
-        cars.moveAll();
+        cars.moveAll(() -> true);
+        cars.getCars().forEach(car -> assertThat(car.getPosition()).isEqualTo(1));
 
-        assertThat(cars.getCars()).extracting(Car::getCarName).contains("test1", "test2", "test3", "test4", "test5");
     }
 
     @Test
-    @DisplayName("자동차경주 출력 확인")
+    @DisplayName("자동차경주 우승자 확인")
     void carRacingPrintCheck() {
-
         String carNames = "test1,test2,test3,test4,test5";
-
-        StringBuilder stringBuilder = new StringBuilder();
 
         Cars cars = new Cars(carNames);
 
         for (int i = 0; i < 5; i++) {
-            cars.moveAll();
+            cars.getCars().get(0).move(() -> true);
         }
 
-        cars.getCars().forEach(s -> stringBuilder.append(s.getCarName()).append(" : ").append(new String(new char[s.getPosition()]).replace("\0", "-")).append("\n"));
-
-        System.out.println(stringBuilder);
-
-        System.out.println(Winner.printWinner(cars.getCars()) + "가 최종 우승했습니다");
+        assertThat(Winner.printWinner(cars.getCars()).get(0)).isEqualTo("test1");
     }
 
 }
