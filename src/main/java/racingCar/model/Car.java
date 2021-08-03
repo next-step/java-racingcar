@@ -27,7 +27,7 @@ public class Car {
         return this.position.equals(maxPosition);
     }
 
-    public Position getMaxPosition(Position maxPosition) {
+    public Position findMaxPosition(Position maxPosition) {
         if (position.lessThan(maxPosition.getPosition())) {
             return maxPosition;
         }
