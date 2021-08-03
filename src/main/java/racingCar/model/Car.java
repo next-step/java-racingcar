@@ -23,7 +23,7 @@ public class Car {
         return position;
     }
 
-    public boolean isWinner(Position maxPosition) {
+    public boolean samePosition(Position maxPosition) {
         return this.position.equals(maxPosition);
     }
 
@@ -35,7 +35,7 @@ public class Car {
     }
 
     public String getName() {
-        return carName.getCarName();
+        return carName.value();
     }
 
     public int getPosition() {

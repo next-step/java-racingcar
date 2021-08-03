@@ -13,19 +13,11 @@ public class ResultView {
     private static final String NAME_DELIMITER = " : ";
     private static final String CAR_MARKING = "-";
     private static final String RACING_GAME_MESSAGE_WINNER = "가 최종 우승했습니다.";
-    private static final String RACING_GAME_MESSAGE_RESULT = "\n실행결과";
 
     private ResultView() {
     }
 
-    public static void printCarsLocation(RacingGame racingGame) {
-        System.out.println(RACING_GAME_MESSAGE_RESULT);
-        for (int i = 0; i < racingGame.getPlayCount(); i++) {
-            printCarsLocation(racingGame.moveCars(new RandomMovingStrategy()));
-        }
-    }
-
-    private static void printCarsLocation(List<Car> cars) {
+    public static void printCarsLocation(List<Car> cars) {
         for (Car car : cars) {
             printLocation(car);
         }
@@ -40,8 +32,8 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void printWinner(RacingGame racingGame) {
-        String winners = racingGame.findWinners().stream()
+    public static void printWinner(List<Car> cars) {
+        String winners = cars.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(SEPARATOR));
         System.out.println(winners + RACING_GAME_MESSAGE_WINNER);

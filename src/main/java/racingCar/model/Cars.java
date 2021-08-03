@@ -19,16 +19,16 @@ public class Cars {
     }
 
     public List<Car> findWinners() {
-        return findWinners(cars, getMaxPosition());
+        return findWinners(cars, findMaxPosition());
     }
 
     public static List<Car> findWinners(List<Car> cars, Position maxPosition) {
         return cars.stream()
-                .filter(car -> car.isWinner(maxPosition))
+                .filter(car -> car.samePosition(maxPosition))
                 .collect(Collectors.toList());
     }
 
-    public Position getMaxPosition() {
+    public Position findMaxPosition() {
         Position maxPosition = new Position();
         for (Car car : cars) {
             maxPosition = car.getMaxPosition(maxPosition);
