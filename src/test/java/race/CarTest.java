@@ -1,5 +1,6 @@
 package race;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,12 +17,17 @@ class CarTest {
 
     private static final int FORWARD_DISTANCE = 1;
     private static final int STOP_DISTANCE = 0;
+    private Car car;
+
+    @BeforeEach
+    void setUp() {
+        car = new Car(DEFAULT_NAMES);
+    }
 
     @DisplayName("각 시도횟수만큼 이동거리값 반환")
     @ParameterizedTest
     @CsvSource(value = {"0:0", "1:1", "2:2", "3:3", "4:4"}, delimiter = ':')
     void getDistance(int maxTryCount, int expected) {
-        Car car = Car.of(DEFAULT_NAMES);
         for (int tryCount = 0; tryCount < maxTryCount; tryCount++) {
             car.move(FORWARD_MOVE);
         }
@@ -31,7 +37,6 @@ class CarTest {
     @DisplayName("시도할 회수만큼 자동차 이동(전진)되었는지 확인")
     @Test
     void move_forward() {
-        Car car = Car.of(DEFAULT_NAMES);
         car.move(FORWARD_MOVE);
 
         assertThat(car.getDistance().get(FIRST_TRY)).isEqualTo(FORWARD_DISTANCE);
@@ -40,7 +45,6 @@ class CarTest {
     @DisplayName("시도할 회수만큼 자동차 이동(정지)되었는지 확인")
     @Test
     void move_stop() {
-        Car car = Car.of(DEFAULT_NAMES);
         car.move(STOP_MOVE);
         assertThat(car.getDistance().get(FIRST_TRY)).isEqualTo(STOP_DISTANCE);
     }
