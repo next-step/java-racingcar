@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import racingcar.entity.RacingCar;
+import racingcar.entity.RacingCars;
 import racingcar.strategy.AlwaysMoveStrategy;
 import racingcar.strategy.RandomMoveStrategy;
 
@@ -18,10 +19,11 @@ class RacingCarGameTest {
     private static final AlwaysMoveStrategy ALWAYS_MOVE_STRATEGY = new AlwaysMoveStrategy();
     private static final int TRY_NUMBER = 10;
     private RacingCarGame racingCarGame;
-    private final List<RacingCar> racingCars = new ArrayList<>();
+    private RacingCars racingCars;
 
     @BeforeEach
     void setUp() {
+        racingCars = new RacingCars(new ArrayList<>());
         racingCarGame = new RacingCarGame(racingCars, TEST_CAR_NAMES);
     }
 
@@ -35,7 +37,7 @@ class RacingCarGameTest {
     @DisplayName("랜덤무브 레이싱카 게임의 race()를 완료했을 때 racingCar position 은 0 이상 tryNumber 이하 임을 확인한다.")
     void randomMoveRace() {
         racingCarGame.race(racingCars, TRY_NUMBER, new RandomMoveStrategy());
-        for (RacingCar racingCar : racingCars) {
+        for (RacingCar racingCar : racingCars.getRacingCars()) {
             assertThat(racingCar.getPosition()).isLessThanOrEqualTo(TRY_NUMBER);
             assertThat(racingCar.getPosition()).isGreaterThanOrEqualTo(RacingCar.BASE_POSITION);
         }
@@ -45,7 +47,7 @@ class RacingCarGameTest {
     @DisplayName("한 번 경주한 랜덤 무브 차들의 위치는 0 또는 1임을 확인한다.")
     void randomMoveRaceOneStep() {
         racingCarGame.raceOneStep(racingCars, new RandomMoveStrategy());
-        for (RacingCar racingCar : racingCars) {
+        for (RacingCar racingCar : racingCars.getRacingCars()) {
             assertThat(racingCar.getPosition()).isLessThanOrEqualTo(RacingCar.ONE_STEP);
             assertThat(racingCar.getPosition()).isGreaterThanOrEqualTo(RacingCar.BASE_POSITION);
         }
@@ -55,7 +57,7 @@ class RacingCarGameTest {
     @DisplayName("항상 움직이는 전략을 사용한 레이싱카 게임의 race()를 완료했을 때 racingCar position 은 모두 tryNumber 임을 확인한다.")
     void alwaysMoveRace() {
         racingCarGame.race(racingCars, TRY_NUMBER, ALWAYS_MOVE_STRATEGY);
-        for (RacingCar racingCar : racingCars) {
+        for (RacingCar racingCar : racingCars.getRacingCars()) {
             assertThat(racingCar.getPosition()).isEqualTo(TRY_NUMBER);
         }
     }
@@ -64,7 +66,7 @@ class RacingCarGameTest {
     @DisplayName("항상 움직이는 전략을 사용한 레이싱카 게임의 raceOneStep()을 완료했을 때 차의 위치는 1임을 확인한다.")
     void alwaysMoveRaceOneStep() {
         racingCarGame.raceOneStep(racingCars, ALWAYS_MOVE_STRATEGY);
-        for (RacingCar racingCar : racingCars) {
+        for (RacingCar racingCar : racingCars.getRacingCars()) {
             assertThat(racingCar.getPosition()).isEqualTo(RacingCar.ONE_STEP);
         }
     }

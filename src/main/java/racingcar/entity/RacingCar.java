@@ -23,6 +23,12 @@ public class RacingCar {
             position += ONE_STEP;
     }
 
+    public int ifBiggerThanReturnPosition(int maxPosition){
+        if (this.position > maxPosition) {
+            return this.position;
+        }
+        return maxPosition;
+    }
     public String getName() {
         return name;
     }

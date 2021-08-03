@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.entity.RacingCar;
+import racingcar.entity.RacingCars;
 import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class RacingCarGameMain {
     public static void main(String[] args) {
-        List<RacingCar> racingCars = new ArrayList<>();
+        RacingCars racingCars = new RacingCars(new ArrayList<>());
         String[] carNames = InputView.requestCarNames();
         int tryNumber = InputView.requestTryNumber();
         RacingCarGame racingCarGame = new RacingCarGame(racingCars, carNames);

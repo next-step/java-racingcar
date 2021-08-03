@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.entity.RacingCar;
+import racingcar.entity.RacingCars;
 
 import java.util.List;
 
@@ -11,8 +12,8 @@ public class ResultView {
         System.out.println("가 최종 우승했습니다.");
     }
 
-    public static void printRacingCarsPosition(List<RacingCar> racingCars) {
-        for (RacingCar racingCar: racingCars) {
+    public static void printRacingCarsPosition(RacingCars racingCars) {
+        for (RacingCar racingCar: racingCars.getRacingCars()) {
             printName(racingCar.getName());
             printPosition(racingCar.getPosition());
         }
