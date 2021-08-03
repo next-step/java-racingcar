@@ -14,19 +14,28 @@ public class RacingCarGame {
     private static final InputView inputView = new InputView();
     private static final ResultView resultView = new ResultView();
 
-    public static int winnerRecord = 0;
-
     public static void main(String[] args) {
         List<RacingCar> racingCars = new ArrayList<>();
         String[] carNames = inputView.requestCarNames();
         int tryNumber = inputView.requestTryNumber();
         initializeRacingCars(racingCars, carNames);
         race(racingCars, tryNumber, new RandomMoveStrategy());
-        List<String> winners = pickWinners(racingCars);
+        int winnerRecord = findMaxPosition(racingCars);
+        List<String> winners = pickWinners(racingCars, winnerRecord);
         ResultView.printWinners(winners);
     }
 
-    public static List<String> pickWinners(List<RacingCar> racingCars) {
+    public static int findMaxPosition(List<RacingCar> racingCars) {
+        int maxPosition = 0;
+        for (RacingCar racingCar : racingCars) {
+            if(racingCar.getPosition()>maxPosition){
+                maxPosition = racingCar.getPosition();
+            }
+        }
+        return maxPosition;
+    }
+
+    public static List<String> pickWinners(List<RacingCar> racingCars, int winnerRecord) {
         return racingCars.stream()
                 .filter(racingCar -> racingCar.getPosition() == winnerRecord)
                 .map(RacingCar::getName)
@@ -37,7 +46,6 @@ public class RacingCarGame {
         for (int i = 0; i < carNames.length; i++) {
             racingCars.add(new RacingCar(carNames[i]));
         }
-        winnerRecord = 0;
     }
 
     public static void race(List<RacingCar> racingCars, int tryNumber, MoveStrategy moveStrategy) {
@@ -52,13 +60,6 @@ public class RacingCarGame {
         for (int i = 0; i < racingCars.size(); i++) {
             RacingCar racingCar = racingCars.get(i);
             racingCar.moveIfMovable(moveStrategy);
-            recordWinnerScore(racingCar);
-        }
-    }
-
-    public static void recordWinnerScore(RacingCar racingCar) {
-        if (racingCar.getPosition() > winnerRecord) {
-            winnerRecord = racingCar.getPosition();
         }
     }
 }
