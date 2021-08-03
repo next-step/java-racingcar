@@ -2,11 +2,8 @@ package step3;
 
 public class ResultView {
 
-    public void printResultHeader() {
-        System.out.println("실행 결과");
-    }
-
     public void printGameResult(int[][] gameResults) {
+        System.out.println("실행 결과");
 
         for(int i = 0; i < gameResults.length; i++) {
             int[] result = gameResults[i];

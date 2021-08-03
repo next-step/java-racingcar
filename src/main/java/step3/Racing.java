@@ -15,8 +15,6 @@ public class Racing {
 
         checkInput(carCount, gameCount);
 
-        resultView.printResultHeader(); // 실행결과
-
         int[][] result = getRaceResult(carCount, gameCount);
 
         resultView.printGameResult(result);
