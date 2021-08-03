@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,38 +29,38 @@ public class CarsTest {
         assertThat(cars.getCars().size()).isEqualTo(3);
     }
 
-    @DisplayName("우승자 찾기")
-    @Test
-    void findWinners() {
-        Car car1 = createMovedCar("bmw", 2);
-        Car car2 = createMovedCar("audi", 3);
-        Car car3 = createMovedCar("benz", 1);
-
-        Cars cars = new Cars(Arrays.asList(car1, car2, car3));
-        List<Car> winners = cars.findWinners();
-
-        assertThat(winners).hasSize(1);
-        assertThat(winners).containsExactly(car2);
-    }
-
-    @DisplayName("복수 우승자 찾기")
-    @Test
-    void findWinners_MultipleWinners_IfMoveCountAreSame() {
-        Car car1 = createMovedCar("bmw", 2);
-        Car car2 = createMovedCar("audi", 3);
-        Car car3 = createMovedCar("benz", 3);
-
-        Cars cars = new Cars(Arrays.asList(car1, car2, car3));
-        List<Car> winners = cars.findWinners();
-
-        assertThat(winners).hasSize(2);
-        assertThat(winners).containsOnly(car2, car3);
-    }
-
-    private static Car createMovedCar(String carName, int moveCount) {
-        Car car = new Car(carName);
-        IntStream.range(0, moveCount)
-                .forEach((index) -> car.move(() -> true));
-        return car;
-    }
+//    @DisplayName("우승자 찾기")
+//    @Test
+//    void findWinners() {
+//        Car car1 = createMovedCar("bmw", 2);
+//        Car car2 = createMovedCar("audi", 3);
+//        Car car3 = createMovedCar("benz", 1);
+//
+//        Cars cars = new Cars(Arrays.asList(car1, car2, car3));
+//        List<Car> winners = cars.findWinners();
+//
+//        assertThat(winners).hasSize(1);
+//        assertThat(winners).containsExactly(car2);
+//    }
+//
+//    @DisplayName("복수 우승자 찾기")
+//    @Test
+//    void findWinners_MultipleWinners_IfMoveCountAreSame() {
+//        Car car1 = createMovedCar("bmw", 2);
+//        Car car2 = createMovedCar("audi", 3);
+//        Car car3 = createMovedCar("benz", 3);
+//
+//        Cars cars = new Cars(Arrays.asList(car1, car2, car3));
+//        List<Car> winners = cars.findWinners();
+//
+//        assertThat(winners).hasSize(2);
+//        assertThat(winners).containsOnly(car2, car3);
+//    }
+//
+//    private static Car createMovedCar(String carName, int moveCount) {
+//        Car car = new Car(carName);
+//        IntStream.range(0, moveCount)
+//                .forEach((index) -> car.move(() -> true));
+//        return car;
+//    }
 }
