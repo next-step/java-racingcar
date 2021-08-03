@@ -15,7 +15,7 @@ class CarTest {
     @BeforeEach
     void setUp() {
 
-        car = new Car("testCar");
+        car = new Car("test");
     }
 
     @Test
@@ -44,6 +44,5 @@ class CarTest {
         Car car = new Car(carName);
         assertThat(car.getCarName()).isEqualTo(carName);
     }
-
 
 }
