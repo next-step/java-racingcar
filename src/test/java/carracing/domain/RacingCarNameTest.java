@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-class CarNameTest {
+class RacingCarNameTest {
 
     @DisplayName("자동차 이름은 5자를 초과할 수 없다.")
     @Test

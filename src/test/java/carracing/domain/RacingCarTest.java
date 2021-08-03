@@ -5,16 +5,16 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class CarTest {
+class RacingCarTest {
 
     @ParameterizedTest(name = "랜덤 값이 4이상인 경우 전진한다.")
     @ValueSource(ints = {4, 7, 9})
     public void goTest(int randomNumber) {
         Position positionBeforeMove = Position.of(0);
         CarName carName = CarName.of("yunb");
-        Car car = Car.of(positionBeforeMove, carName);
-        car.move(Number.of(randomNumber));
-        assertThat(car.getPosition())
+        RacingCar racingCar = RacingCar.of(positionBeforeMove, carName);
+        racingCar.move(Number.of(randomNumber));
+        assertThat(racingCar.getPosition())
                 .matches(position -> position.equals(positionBeforeMove.next()));
     }
 
@@ -23,9 +23,9 @@ class CarTest {
     public void stopTest(int randomNumber) {
         Position positionBeforeMove = Position.of(0);
         CarName carName = CarName.of("yunb");
-        Car car = Car.of(positionBeforeMove, carName);
-        car.move(Number.of(randomNumber));
-        assertThat(car.getPosition())
+        RacingCar racingCar = RacingCar.of(positionBeforeMove, carName);
+        racingCar.move(Number.of(randomNumber));
+        assertThat(racingCar.getPosition())
                 .isEqualTo(positionBeforeMove);
     }
 

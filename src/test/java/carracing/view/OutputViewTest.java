@@ -1,8 +1,8 @@
 package carracing.view;
 
-import carracing.domain.Car;
 import carracing.domain.CarName;
 import carracing.domain.Position;
+import carracing.domain.RacingCar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,8 +30,8 @@ class OutputViewTest {
     @ParameterizedTest(name = "자동차 위치 출력 테스트")
     @CsvSource(value = {"한글이름,2", "abc,4", "abcde,5"})
     public void carMoveResultPrintTest(String name, int position) {
-        Car car = Car.of(Position.of(position), CarName.of(name));
-        outputView.printPosition(car);
+        RacingCar racingCar = RacingCar.of(Position.of(position), CarName.of(name));
+        outputView.printPosition(racingCar);
         assertThat(output.toString().trim())
                 .isEqualTo(String.format("%-5s\t: %s", name, StringUtils.repeat("-", position)));
     }
@@ -39,10 +39,10 @@ class OutputViewTest {
     @DisplayName("우승자의 이름을 출력한다.")
     @Test
     public void printWinnerTest() {
-        List<Car> cars = new ArrayList<>();
-        cars.add(Car.of(Position.of(3), CarName.of("car1")));
-        cars.add(Car.of(Position.of(3), CarName.of("car2")));
-        outputView.printWinners(cars);
+        List<RacingCar> racingCars = new ArrayList<>();
+        racingCars.add(RacingCar.of(Position.of(3), CarName.of("car1")));
+        racingCars.add(RacingCar.of(Position.of(3), CarName.of("car2")));
+        outputView.printWinners(racingCars);
         assertThat(output.toString().trim())
                 .contains("car1", "car2");
     }

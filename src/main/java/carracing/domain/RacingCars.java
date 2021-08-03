@@ -10,34 +10,34 @@ import java.util.stream.Collectors;
 
 public class RacingCars {
 
-    private final List<Car> cars;
+    private final List<RacingCar> racingCars;
 
-    private RacingCars(List<Car> cars) {
-        this.cars = Collections.unmodifiableList(Objects.requireNonNull(cars));
+    private RacingCars(List<RacingCar> racingCars) {
+        this.racingCars = Collections.unmodifiableList(Objects.requireNonNull(racingCars));
     }
 
-    public static RacingCars of(List<Car> carList) {
-        return new RacingCars(carList);
+    public static RacingCars of(List<RacingCar> racingCarList) {
+        return new RacingCars(racingCarList);
     }
 
     public void move(Supplier<Number> numberSupplier) {
-        cars.forEach(car -> car.move(numberSupplier.get()));
+        racingCars.forEach(car -> car.move(numberSupplier.get()));
     }
 
     public List<Position> getPositions() {
-        return cars.stream()
-                .map(Car::getPosition)
+        return racingCars.stream()
+                .map(RacingCar::getPosition)
                 .collect(Collectors.toList());
     }
 
-    public void forEach(Consumer<Car> action) {
-        cars.forEach(action);
+    public void forEach(Consumer<RacingCar> action) {
+        racingCars.forEach(action);
     }
 
-    public List<Car> getWinners() {
-        Position farthestPosition = Collections.max(cars, Comparator.comparing(Car::getPosition)).getPosition();
-        return cars.stream()
-                .collect(Collectors.groupingBy(Car::getPosition))
+    public List<RacingCar> getWinners() {
+        Position farthestPosition = Collections.max(racingCars, Comparator.comparing(RacingCar::getPosition)).getPosition();
+        return racingCars.stream()
+                .collect(Collectors.groupingBy(RacingCar::getPosition))
                 .get(farthestPosition);
     }
 }

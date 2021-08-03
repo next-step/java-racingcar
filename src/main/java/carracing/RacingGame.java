@@ -1,7 +1,7 @@
 package carracing;
 
-import carracing.domain.Car;
 import carracing.domain.Position;
+import carracing.domain.RacingCar;
 import carracing.domain.RacingCars;
 import carracing.domain.RandomNumberGenerator;
 import carracing.view.InputView;
@@ -31,11 +31,11 @@ public class RacingGame {
         outputView.printWinners(racingCars.getWinners());
     }
 
-    private List<Car> getCars() {
+    private List<RacingCar> getCars() {
         outputView.printCarNameInputMessage();
         return inputView.getCarNames()
                 .stream()
-                .map(carName -> Car.of(Position.of(STARTING_LINE_POSITION), carName))
+                .map(carName -> RacingCar.of(Position.of(STARTING_LINE_POSITION), carName))
                 .collect(Collectors.toList());
     }
 

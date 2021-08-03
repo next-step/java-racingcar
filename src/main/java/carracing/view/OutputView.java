@@ -1,7 +1,7 @@
 package carracing.view;
 
-import carracing.domain.Car;
 import carracing.domain.Position;
+import carracing.domain.RacingCar;
 import carracing.domain.RacingCars;
 
 import java.io.PrintStream;
@@ -48,19 +48,19 @@ public class OutputView {
         racingCars.forEach(this::printPosition);
     }
 
-    public void printPosition(Car car) {
-        printStream.println(String.format(CAR_POSITION_PRINT_FORMAT, car.getCarName(), render(car.getPosition())));
+    public void printPosition(RacingCar racingCar) {
+        printStream.println(String.format(CAR_POSITION_PRINT_FORMAT, racingCar.getCarName(), render(racingCar.getPosition())));
     }
 
     private String render(Position position) {
         return StringUtils.repeat(POSITION_EXPRESSION, position.getValue());
     }
 
-    public void printWinners(List<Car> winners) {
+    public void printWinners(List<RacingCar> winners) {
         printStream.println(String.format(WINNER_PRINT_FORMAT, joinNames(winners)));
     }
 
-    private String joinNames(List<Car> winners) {
+    private String joinNames(List<RacingCar> winners) {
         return winners.stream()
                 .map(car -> car.getCarName().toString())
                 .collect(Collectors.joining(WINNER_PRINT_DELIMITER));

@@ -27,14 +27,14 @@ class RacingCarsTest {
     @DisplayName("우승자를 추출 할 수 있다.")
     @Test
     public void groupByPositionTest() {
-        List<Car> losers = createCars(createPositions(1, 1, 3, 5));
-        List<Car> winners = createCars(createPositions(6, 6));
+        List<RacingCar> losers = createCars(createPositions(1, 1, 3, 5));
+        List<RacingCar> winners = createCars(createPositions(6, 6));
         RacingCars racingCars = RacingCars.of(allOf(losers, winners));
         assertThat(racingCars.getWinners()).isEqualTo(winners);
     }
 
-    private List<Car> allOf(List<Car> losers, List<Car> winners) {
-        List<Car> all = new ArrayList<>();
+    private List<RacingCar> allOf(List<RacingCar> losers, List<RacingCar> winners) {
+        List<RacingCar> all = new ArrayList<>();
         all.addAll(losers);
         all.addAll(winners);
         return all;
@@ -46,12 +46,12 @@ class RacingCarsTest {
                 .collect(Collectors.toList());
     }
 
-    private List<Car> createCars(List<Position> carPositions) {
-        List<Car> cars = new ArrayList<>();
+    private List<RacingCar> createCars(List<Position> carPositions) {
+        List<RacingCar> racingCars = new ArrayList<>();
         for(int i=0; i<carPositions.size(); ++i) {
-            cars.add(Car.of(carPositions.get(i), CarName.of("car"+i)));
+            racingCars.add(RacingCar.of(carPositions.get(i), CarName.of("car"+i)));
         }
-        return cars;
+        return racingCars;
     }
 
     private List<Position> expectedPositions(List<Position> carPositions, boolean move) {
