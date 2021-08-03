@@ -1,9 +1,9 @@
 package step5;
 
-import step5.domain.race.RaceResult;
 import step5.domain.race.RacingGame;
 import step5.view.input.Input;
 import step5.view.input.InputView;
+import step5.view.result.ResultView;
 
 public class Main {
 
@@ -14,10 +14,9 @@ public class Main {
         String[] carNames = input.getCarNames();
         int tryLimit = input.getTryLimit();
 
-        RacingGame racingGame = new RacingGame(carNames, tryLimit);
-        for (int i = 1; i <= tryLimit; i++) {
-            RaceResult raceResult = racingGame.race();
-            raceResult.printProgressOfRace();
-        }
+        RacingGame racingGame = new RacingGame(carNames, tryLimit, new ResultView());
+        for (int i = 1; i <= tryLimit; i++)
+            racingGame.race();
+
     }
 }

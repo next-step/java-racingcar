@@ -3,12 +3,27 @@ package step5.view.result;
 import step5.domain.car.Car;
 import step5.domain.car.Cars;
 import step5.domain.car.Position;
+import step5.domain.race.RacingGame;
 
 public class ResultView {
 
     private static final String MARKER = "-";
+    private boolean isFirstView = true;
 
-    public void printProgressOfRace(Cars cars) {
+    public void printProgressOfRace(Cars cars, RacingGame racingGame) {
+        if (isFirstView) {
+            printTitle();
+            isFirstView = false;
+        }
+
+        printPositionOfCars(cars);
+
+        if (racingGame.isFinished())
+            printWinnerOfRacing(racingGame.getWinnersName());
+
+    }
+
+    private void printPositionOfCars(Cars cars) {
         int size = cars.size();
         for (int i = 0; i < size; i++) {
             Car car = cars.get(i);
@@ -35,6 +50,10 @@ public class ResultView {
             sb.append(MARKER);
         }
         return sb.toString();
+    }
+
+    private void printTitle() {
+        System.out.println("실행 결과");
     }
 
     public void printWinnerOfRacing(String winnersName) {
