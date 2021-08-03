@@ -6,13 +6,19 @@ public class Car {
     private static final int MOVE_CRITERION = 4;
 
     private int moveDistance;
+    private String carName;
 
-    public Car() {
+    public Car(String carName) {
         this.moveDistance = 0;
+        this.carName = carName;
     }
 
     public int getMoveDistance() {
         return moveDistance;
+    }
+
+    public String getCarName() {
+        return carName;
     }
 
     public void moveForward(int number) {
@@ -34,18 +40,19 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return moveDistance == car.moveDistance;
+        return moveDistance == car.moveDistance && carName.equals(car.carName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(moveDistance);
+        return Objects.hash(moveDistance, carName);
     }
 
     @Override
     public String toString() {
         return "Car{" +
                 "moveDistance=" + moveDistance +
+                ", carName='" + carName + '\'' +
                 '}';
     }
 }

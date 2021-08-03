@@ -13,7 +13,7 @@ public class ResultView {
 
     public static void printResult(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(makeProgress(car.getMoveDistance()));
+            System.out.println(car.getCarName() + " : " + makeProgress(car.getMoveDistance()));
         }
         System.out.println();
     }
@@ -26,4 +26,7 @@ public class ResultView {
         return String.valueOf(stringBuilder);
     }
 
+    public static void printWinner(List<String> winners) {
+
+    }
 }
