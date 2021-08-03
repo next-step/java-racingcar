@@ -1,18 +1,23 @@
 package step3;
 
-import java.util.Arrays;
-
 public class ResultView {
 
     public void printResultHeader() {
         System.out.println("실행 결과");
     }
 
-    public void printGameResult(int[] gameResults) {
+    public void printGameResult(int[][] gameResults) {
 
-        Arrays.stream(gameResults).forEach((result) -> printOneResult(result));
+        for(int i = 0; i < gameResults.length; i++) {
+            int[] result = gameResults[i];
 
-        System.out.println();
+            for (int j = 0; j < result.length; j++) {
+                printOneResult(result[j]);
+            }
+
+            System.out.println();
+        }
+
     }
 
     private void printOneResult(int result) {
