@@ -9,7 +9,11 @@ public class RaceResult {
 
     public RaceResult(int roundCount, List<Car> cars) {
         this.roundCount = roundCount;
-        movingRecords = cars.stream().map(car -> new MovingRecord(car.getName())).collect(Collectors.toList());
+        movingRecords = initMovingRecords(cars);
+    }
+
+    private List<MovingRecord> initMovingRecords(List<Car> cars) {
+        return cars.stream().map(car -> new MovingRecord(car.getName())).collect(Collectors.toList());
     }
 
     public void report(List<Car> cars) {
