@@ -10,7 +10,14 @@ public class Car {
 
     public Car(String carName) {
         this.moveDistance = 0;
+        validateCarName(carName);
         this.carName = carName;
+    }
+
+    private void validateCarName(String carName) {
+        if(!CarUtils.validateNameLength(carName)) {
+            throw new IllegalArgumentException("자동차 이름은 다섯 글자를 초과할 수 없습니다.");
+        }
     }
 
     public int getMoveDistance() {
