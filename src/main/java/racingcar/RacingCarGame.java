@@ -11,13 +11,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCarGame {
-    private static final InputView inputView = new InputView();
-    private static final ResultView resultView = new ResultView();
 
     public static void main(String[] args) {
         List<RacingCar> racingCars = new ArrayList<>();
-        String[] carNames = inputView.requestCarNames();
-        int tryNumber = inputView.requestTryNumber();
+        String[] carNames = InputView.requestCarNames();
+        int tryNumber = InputView.requestTryNumber();
         initializeRacingCars(racingCars, carNames);
         race(racingCars, tryNumber, new RandomMoveStrategy());
         int winnerRecord = findMaxPosition(racingCars);
@@ -32,15 +30,15 @@ public class RacingCarGame {
     }
 
     public static void race(List<RacingCar> racingCars, int tryNumber, MoveStrategy moveStrategy) {
-        resultView.printResultFirstLine();
+        ResultView.printResultFirstLine();
         for (int i = 0; i < tryNumber; i++) {
             raceOneStep(racingCars, moveStrategy);
-            resultView.printRacingCarsPosition(racingCars);
+            ResultView.printRacingCarsPosition(racingCars);
         }
     }
 
     public static void raceOneStep(List<RacingCar> racingCars, MoveStrategy moveStrategy) {
-        for (RacingCar racingCar: racingCars) {
+        for (RacingCar racingCar : racingCars) {
             racingCar.moveIfMovable(moveStrategy);
         }
     }
