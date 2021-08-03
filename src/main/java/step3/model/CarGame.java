@@ -1,7 +1,6 @@
 package step3.model;
 
 import java.util.*;
-import java.util.stream.IntStream;
 
 public class CarGame {
     /**
@@ -17,13 +16,9 @@ public class CarGame {
         List<String> results = new ArrayList<>();
 
         while (tryCnt-- > 0) {
-            IntStream
-                    .range(0, cars.getCarCnt())
-                    .forEach(j -> {
-                        RandomMovingStrategy strategy = new RandomMovingStrategy();
-                        int nextMove = cars.move(j, strategy);
-                        results.add((j+1) + "/" + strategy.getRandomNumber() + "/" + nextMove);
-                    });
+            RandomMovingStrategy strategy = new RandomMovingStrategy();
+            List<String> result = cars.moveAll(strategy);
+            results.addAll(result);
         }
 
         return results;
