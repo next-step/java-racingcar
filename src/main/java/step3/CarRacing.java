@@ -31,17 +31,22 @@ public class CarRacing {
         return cars;
     }
 
-    public String extractWinner() {
-        int maxMoveDistance = getMaxMoveDistance();
+    public String extractWinner(List<Car> cars) {
+        int maxMoveDistance = getMaxMoveDistance(cars);
         return cars.stream().filter(o->o.getMoveDistance()==maxMoveDistance).map(Car::getCarName).collect(Collectors.joining(","));
     }
 
-    private int getMaxMoveDistance() {
+    private int getMaxMoveDistance(List<Car> cars) {
         int maxMoveDistance = 0;
         for (Car car : cars) {
-            if(car.getMoveDistance() >= maxMoveDistance) {
-                maxMoveDistance = car.getMoveDistance();
-            }
+            maxMoveDistance = compareMoveDistance(maxMoveDistance, car);
+        }
+        return maxMoveDistance;
+    }
+
+    private int compareMoveDistance(int maxMoveDistance, Car car) {
+        if(car.getMoveDistance() >= maxMoveDistance) {
+            return car.getMoveDistance();
         }
         return maxMoveDistance;
     }
