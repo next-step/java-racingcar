@@ -75,7 +75,7 @@ int number = scanner.nextInt();
 ## 요구사항 분석
 ### todo
 - [ ] Car 클래스
-  - [ ] Random 값으로 전진여부 판단
+  - [X] Random 값으로 전진여부 판단
   - [X] 정지 or 전진 동작
 - [ ] Race 클래스
   - [ ] 입력된 자동차 수 만큼 Car 객체 생성
