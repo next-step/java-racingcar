@@ -9,6 +9,7 @@ import java.util.List;
 public class ResultView {
 
     public static final String RASCING_DISTINC = "-";
+    public static final String SEPARATOR = " : ";
 
     public void printResult(RacingCarGame racingCarGame) {
 
@@ -28,6 +29,7 @@ public class ResultView {
     }
 
     public void print(Car car) {
+        System.out.print(car.getCarName() + SEPARATOR);
         for(int i = 0 ; i < car.getTotalMove() ; i++) {
             System.out.print(RASCING_DISTINC);
         }

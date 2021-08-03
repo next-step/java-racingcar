@@ -20,14 +20,15 @@ public class CarMoveService {
 
         for(int i = 0 ; i < racingCarGame.getTryNumber() ; i++) {
             Car[] cars = new Car[racingCarGame.getCarNum()];
-            moveOrder(i, roundList, cars);
-            roundList.add(cars);
+
+            roundList.add(moveOrder(i, roundList, cars ,racingCarGame.getCarNames() ));
+
         }
 
         return RacingCarGame.builder()
                 .carNum(racingCarGame.getCarNum())
                 .carNames(racingCarGame.getCarNames())
-                .rounds(racingCarGame.getRounds())
+                .rounds(roundList)
                 .tryNumber(racingCarGame.getTryNumber())
                 .build();
 
@@ -48,13 +49,17 @@ public class CarMoveService {
         return Move.ADVANCE.getCarMove();
     }
 
-    private Car[] moveOrder(int roundNum , List roundList, Car[] cars) {
+    private Car[] moveOrder(int roundNum , List roundList, Car[] cars, String carNames) {
         for(int j = 0 ; j < cars.length ; j++) {
 
+            String carName = parseCarName(carNames ,j);
             int isAdvence = operator();
             int sumTotalMove = calTotalMove(roundNum, isAdvence, roundList , j);
-            cars[j] = new Car(isAdvence, sumTotalMove);
-
+            cars[j] = Car.builder()
+                    .totalMove(sumTotalMove)
+                    .move(isAdvence)
+                    .carName(carName)
+                    .build();
         }
         return cars;
     }
@@ -64,6 +69,10 @@ public class CarMoveService {
             return isAdvence + ((Car[])roundList.get(roundNum-1))[carNum].getTotalMove();
         }
         return isAdvence;
+    }
+
+    private String parseCarName(String carNames , int order) {
+        return carNames.split(",")[order];
     }
 
 

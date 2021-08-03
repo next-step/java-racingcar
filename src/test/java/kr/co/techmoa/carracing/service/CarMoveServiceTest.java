@@ -14,9 +14,11 @@ class CarMoveServiceTest {
     public void moveTest() {
 
         //given
-        RacingCarGame racingCarGame = new RacingCarGame();
-        racingCarGame.setCarNum(3);
-        racingCarGame.setTryNumber(5);
+        RacingCarGame racingCarGame = RacingCarGame.builder()
+                .carNum(3)
+                .carNames("joo,ker,goekf")
+                .tryNumber(5)
+                .build();
 
         //when
         RacingCarGame resultRacingCarGame = carMoveService.move(racingCarGame);
