@@ -2,7 +2,6 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
 public class CarRacing {
@@ -24,7 +23,10 @@ public class CarRacing {
         return carNameListSplit;
     }
 
-    public List<Car> racing() {
+    public List<Car> getCars() {
+        return this.cars;
+    }
+    public List<Car> racing(List<Car> cars) {
         for (Car car : cars) {
             car.moveForward(CarUtils.getNumberForMovement());
         }

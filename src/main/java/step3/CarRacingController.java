@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.List;
+
 public class CarRacingController {
 
     public static void main(String[] args) {
@@ -10,10 +12,12 @@ public class CarRacingController {
 
         ResultView.printResultStart();
 
+        List<Car> cars = carRacing.getCars();
+
         for (int i = 0; i < tryCount; i++) {
-            ResultView.printResult(carRacing.racing());
+            ResultView.printResult(carRacing.racing(cars));
         }
 
-        ResultView.printWinner(carRacing.extractWinner());
+        ResultView.printWinner(carRacing.extractWinner(cars));
     }
 }

@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -24,10 +25,10 @@ class CarRacingTest {
         CarRacing carRacing = new CarRacing(carNameList);
 
         //then
-        assertThat(carRacing.racing().size()).isEqualTo(expected);
-        assertThat(carRacing.racing().get(0).getCarName()).isEqualTo(carNameArray[0]);
-        assertThat(carRacing.racing().get(1).getCarName()).isEqualTo(carNameArray[1]);
-        assertThat(carRacing.racing().get(2).getCarName()).isEqualTo(carNameArray[2]);
+        assertThat(carRacing.getCars().size()).isEqualTo(expected);
+        assertThat(carRacing.getCars().get(0).getCarName()).isEqualTo(carNameArray[0]);
+        assertThat(carRacing.getCars().get(1).getCarName()).isEqualTo(carNameArray[1]);
+        assertThat(carRacing.getCars().get(2).getCarName()).isEqualTo(carNameArray[2]);
     }
 
     @ParameterizedTest
@@ -43,14 +44,33 @@ class CarRacingTest {
 
     @ParameterizedTest
     @CsvSource(value = {"a,b:2", "test1,test2,test3:3"}, delimiter = ':')
-    @DisplayName("racing()을 테스트한다.")
-    void doRacingStart(String carCount, int expexctedCount) {
+    @DisplayName("racing 및 전진했을 때, 값이 증가하는지 테스트한다.")
+    void doRacingStart(String carNameString, int expexctedCount) {
         assertThatCode(() -> {
-            CarRacing carRacing = new CarRacing(carCount);
-            List<Car> racing = carRacing.racing();
+            CarRacing carRacing = new CarRacing(carNameString);
+
+            List<Car> racing = carRacing.getCars();
+            int expected = 1;
+
+            racing.get(0).moveForward(4);
 
             assertThat(racing.size()).isEqualTo(expexctedCount);
+            assertThat(racing.get(0).getMoveDistance()).isEqualTo(expected);
         }).doesNotThrowAnyException();
     }
 
+    @Test
+    @DisplayName("우승자를 확인한다.")
+    void extract_winner_test() {
+        String carNameList = "test1,test2,test3";
+        CarRacing carRacing = new CarRacing(carNameList);
+        String expected = "test1,test2";
+
+        List<Car> racing = carRacing.getCars();
+        racing.get(0).moveForward(4);
+        racing.get(1).moveForward(4);
+
+        String result = carRacing.extractWinner(racing);
+        assertThat(result).isEqualTo(expected);
+    }
 }
