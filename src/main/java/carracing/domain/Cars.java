@@ -1,8 +1,8 @@
 package carracing.domain;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -34,7 +34,10 @@ public class Cars {
         cars.forEach(action);
     }
 
-    public Map<Position, List<Car>> groupByPosition() {
-        return cars.stream().collect(Collectors.groupingBy(Car::getPosition));
+    public List<Car> getWinners() {
+        Position farthestPosition = Collections.max(cars, Comparator.comparing(Car::getPosition)).getPosition();
+        return cars.stream()
+                .collect(Collectors.groupingBy(Car::getPosition))
+                .get(farthestPosition);
     }
 }
