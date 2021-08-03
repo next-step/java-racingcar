@@ -1,11 +1,12 @@
 package racingcar.view;
 
+import racingcar.domain.MovingRecord;
+import racingcar.domain.Position;
 import racingcar.domain.RaceResult;
-import racingcar.dto.CarDto;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
-import static racingcar.domain.RaceResult.RoundResult;
 
 public class ResultView {
     private static final String INDICATION = "-";
@@ -13,26 +14,24 @@ public class ResultView {
 
     public static void print(RaceResult raceResult) {
         System.out.println("실행 결과");
-        for (RoundResult roundResult : raceResult.getRoundResults()) {
-            System.out.println(roundResult.getRound() + "라운드");
-            printCars(roundResult.getCarDtos());
-        }
-        printWinners(raceResult.getWinners());
+        IntStream.rangeClosed(1, raceResult.getRoundCount())
+                .forEach((round) -> printCars(raceResult.getMovingRecords(), round));
+        printWinners(raceResult.findWinners());
     }
 
-    private static void printCars(List<CarDto> carDtos) {
-        for (CarDto car : carDtos) {
-            System.out.print(car.getName() + " : ");
+    private static void printCars(List<MovingRecord> movingRecords, int round) {
+        for (MovingRecord movingRecord : movingRecords) {
+            System.out.print(movingRecord.getCarName() + " : ");
 
-            printIndication(car.getPosition());
+            List<Position> positions = movingRecord.getPositions();
+            Position currentPosition = positions.get(round-1);
+            printIndication(currentPosition.getPosition());
         }
         System.out.println();
     }
 
     private static void printIndication(int position) {
-        for (int i = 0; i < position; i++) {
-            System.out.print(INDICATION);
-        }
+        IntStream.range(0, position).forEach((index) -> System.out.print(INDICATION));
         System.out.println();
     }
 
