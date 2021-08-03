@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarNameTest {
@@ -25,13 +24,6 @@ class CarNameTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> CarName.of(nullOrEmpty))
                 .withMessageContaining("자동차 이름이 유효하지 않습니다.");
-    }
-
-    @DisplayName("값 객체 캐시 테스트")
-    @Test
-    public void cacheTest() {
-        assertThat(CarName.of("abc") == CarName.of("abc")).isTrue();
-        assertThat(CarName.of("abc") == CarName.of("cba")).isFalse();
     }
 
 }
