@@ -35,7 +35,7 @@ public enum OperatorType {
 		return operatorType.get();
 	}
 
-	public int getCalculationResult(int number1, int number2) {
+	public int calculate(int number1, int number2) {
 		return calculationMethod.applyAsInt(number1, number2);
 	}
 }
