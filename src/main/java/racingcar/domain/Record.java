@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.domain.Distance;
-
 public class Record {
     private final String name;
     private final Distance distance;
