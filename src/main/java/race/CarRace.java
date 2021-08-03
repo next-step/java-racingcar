@@ -8,10 +8,6 @@ public class CarRace {
 
     private String[] carDistance;
 
-    private final String messageCarCount = "자동차 대수는 몇 대 인가요?";
-
-    private final String messageGameCount = "시도할 회수는 몇 회 인가요?";
-
     public CarRace() {
 
     }
@@ -42,12 +38,12 @@ public class CarRace {
     }
 
     protected int setCarCount() {
-        printOut(messageCarCount);
+       Message.askCarCount();
        return InputView.inputOutput();
     }
 
     protected int setGameCount() {
-        printOut(messageGameCount);
+        Message.askGameCount();
         return InputView.inputOutput();
     }
 
@@ -56,11 +52,6 @@ public class CarRace {
         for (int i = 0; i < carCount; i++) {
             carDistance[i] = "";
         }
-    }
-
-
-    private void printOut(String message) {
-        System.out.println(message);
     }
 
     private void saveCarMovement() {
