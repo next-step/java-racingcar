@@ -1,17 +1,13 @@
 package CarRacing;
 
-import java.util.Random;
-
 public class Position {
 
     private static final int FORWARD_NUM = 4;
     private int position = 0;
 
 
-    public void increasePosition(int randomNum) {
-        if (randomNum >= FORWARD_NUM) {
-            position++;
-        }
+    public void increasePosition() {
+        position++;
     }
 
     public int getPosition() {

@@ -5,20 +5,18 @@ import view.ResultView;
 
 public class Main {
 
-
     public static void main(String[] args) {
 
-        InputView inputView = new InputView();
+        Cars cars = new Cars(InputView.insertCarName());
 
-        ResultView resultView = new ResultView();
-
-        Cars cars = new Cars(inputView.insertCarCount());
-
-        int tryCount = inputView.insertTryCount();
+        int tryCount = InputView.insertTryCount();
 
         for (int i = 0; i < tryCount; i++) {
             cars.moveAll();
-            resultView.printCarPosition(cars.getCars());
+            ResultView.printCarPosition(cars.getCars());
         }
+
+        ResultView.printWinner(Winner.printWinner(cars.getCars()));
+
     }
 }

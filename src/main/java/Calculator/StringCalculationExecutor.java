@@ -26,10 +26,10 @@ public class StringCalculationExecutor {
 
         for (int i = 0; i <= numberAndOperator.length / 2 + 2; i += 2) {
             if (result == 0) {
-                result = this.executeCalculation(numberAndOperator[i + 1], Integer.parseInt(numberAndOperator[i]), Integer.parseInt(numberAndOperator[i + 2]));
+                result = executeCalculation(numberAndOperator[i + 1], Integer.parseInt(numberAndOperator[i]), Integer.parseInt(numberAndOperator[i + 2]));
                 continue;
             }
-            result = this.executeCalculation(numberAndOperator[i + 1], result, Integer.parseInt(numberAndOperator[i + 2]));
+            result = executeCalculation(numberAndOperator[i + 1], result, Integer.parseInt(numberAndOperator[i + 2]));
         }
         return result;
     }
