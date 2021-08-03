@@ -1,28 +1,15 @@
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.RacingGame;
-import racingcar.domain.RandomMovableStrategy;
+import racingcar.domain.*;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 public class Main {
     public static void main(String[] args) {
-        int carCount = InputView.receiveCarCount();
+        String carNames = InputView.receiveCarNames();
         int roundCount = InputView.receiveRoundCount();
 
-        List<Car> collect = IntStream.range(0, carCount).
-                mapToObj(index -> new Car())
-                .collect(Collectors.toList());
-        Cars cars = new Cars(collect);
-
+        Cars cars = new Cars(CarFactory.makeCars(carNames));
         RacingGame racingGame = new RacingGame(roundCount, new RandomMovableStrategy());
-        while (!racingGame.isEnd()) {
-            racingGame.race(cars);
-            ResultView.print(cars);
-        }
+        RaceResult raceResult = racingGame.race(cars);
+        ResultView.print(raceResult);
     }
 }

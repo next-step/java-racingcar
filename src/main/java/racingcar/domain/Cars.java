@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         checkNullOrEmpty(cars);
@@ -12,7 +12,7 @@ public class Cars {
     }
 
     private void checkNullOrEmpty(List<Car> cars) {
-        if(Objects.isNull(cars) || cars.isEmpty()) {
+        if (Objects.isNull(cars) || cars.isEmpty()) {
             throw new IllegalArgumentException("차는 최소 1대 이상이어야 합니다.");
         }
     }
