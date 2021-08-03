@@ -2,6 +2,7 @@ package Car;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingCar {
     private static final int RANDOM_NUMBER_BOUND = 10;
@@ -11,14 +12,10 @@ public class RacingCar {
     private List<Car> cars;
 
     public RacingCar(String[] carNames) {
-        int carCount = carNames.length;
-        validate(carCount, carNames);
-
-        cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(carNames[i]));
-
-        }
+        validateCarsSize(carNames);
+        cars = Arrays.stream(carNames)
+                .map(carName -> new Car(carName))
+                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
@@ -31,18 +28,9 @@ public class RacingCar {
         }
     }
 
-    private void validate(int carCount, String[] carNames) {
-        if (carCount <= MIN_CAR_COUNT) {
+    private void validateCarsSize(String[] carNames) {
+        if (carNames.length <= MIN_CAR_COUNT) {
             throw new IllegalArgumentException(MIN_CAR_COUNT + "보다 큰 값을 입력해주세요.");
-        }
-        for (String carName : carNames) {
-            validateCarNameLength(carName);
-        }
-    }
-
-    private void validateCarNameLength(String carName) {
-        if (carName.length() > MAX_SIZE_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 " + MAX_SIZE_NAME_LENGTH + "자를 초과할 수 없습니다.");
         }
     }
 
