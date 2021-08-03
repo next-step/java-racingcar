@@ -21,7 +21,6 @@ public class Race {
 			int randomNumber = numberContainer.getRandomNumber();
 			car.move(randomNumber);
 		}
-		updateLongestDistance(cars);
 	}
 
 	public List<Car> getWinners(List<Car> cars) {
@@ -31,15 +30,15 @@ public class Race {
 		return winners;
 	}
 
-	private void setWinners(Car car) {
-		if(car.getDistance() == longestDistance) {
-			winners.add(car);
+	public void updateLongestDistance(List<Car> cars) {
+		for(Car car : cars) {
+			checkCarDistance(car);
 		}
 	}
 
-	private void updateLongestDistance(List<Car> cars) {
-		for(Car car : cars) {
-			checkCarDistance(car);
+	private void setWinners(Car car) {
+		if(car.getDistance() == longestDistance) {
+			winners.add(car);
 		}
 	}
 

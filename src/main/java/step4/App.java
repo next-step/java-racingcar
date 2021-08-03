@@ -35,6 +35,7 @@ public class App {
 		Race race = new Race(numberContainer);
 		for(int raceIndex = 1; raceIndex <= inputConsole.getExecutionCount() ; raceIndex++) {
 			race.startRace(cars);
+			race.updateLongestDistance(cars);
 			resultView.viewResult(cars);
 		}
 
