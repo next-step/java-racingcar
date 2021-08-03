@@ -37,9 +37,9 @@ public class RacingCar {
     public List<Car> getWinner() {
         Comparator<Car> carComparatorMaxMoveCount = Comparator.comparingInt(Car::getMoveCount);
         int maxMoveCount = cars.stream()
-                .max(Comparator.comparingInt(Car::getMoveCount))
-                .orElse(new Car("empty"))
-                .getMoveCount();
+                .mapToInt(Car::getMoveCount)
+                .max()
+                .orElse(0);
 
         return cars.stream()
                 .filter(car -> car.getMoveCount() == maxMoveCount)
