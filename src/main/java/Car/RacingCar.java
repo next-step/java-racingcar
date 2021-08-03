@@ -25,7 +25,7 @@ public class RacingCar {
         return cars;
     }
 
-    public void gameStart(Random random) {
+    public void gameStart(Random random, int randomNumberBound) {
         for (Car car : cars) {
             car.move(random.nextInt(RANDOM_NUMBER_BOUND));
         }

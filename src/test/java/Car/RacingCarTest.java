@@ -52,7 +52,7 @@ class RacingCarTest {
     @Test
     void 우승자_테스트() {
         for (int i = 0; i < 5; i++) {
-            racingCar.gameStart(new Random());
+            racingCar.gameStart(new Random(), 5);
         }
         List<Car> cars = racingCar.getCars();
         List<Car> winnerList = new ArrayList<Car>();

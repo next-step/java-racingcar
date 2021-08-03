@@ -17,8 +17,9 @@ public class RacingCarMain {
         OutputView outputView = new OutputView();
         outputView.printResult(racingCar.getCars());
         Random random = new Random();
+        int randomNumberBound = 5;
         for (int i = 0; i < gameCount; i++) {
-            racingCar.gameStart(random);
+            racingCar.gameStart(random, randomNumberBound);
             outputView.printResult(racingCar.getCars());
         }
         outputView.printWinner(racingCar.getWinner());
