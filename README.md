@@ -20,7 +20,6 @@ Scanner를 통해 입력값을 받는 클래스
 자동차 경주 게임을 담당하는 메인 클래스
 
 * race(int, int) : 자동차 대수와 시도 횟수를 받아 게임을 진행하는 메소드
-* boolean isMove() : random 값이 4 이상일 때 true 그 외에는 false
 * printResult() : "실행 결과" 텍스트를 출력 호출
 * printResult(int[]) : 게임 한 회 결과 출력 호출
 
