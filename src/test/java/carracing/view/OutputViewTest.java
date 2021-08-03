@@ -3,7 +3,6 @@ package carracing.view;
 import carracing.domain.Car;
 import carracing.domain.CarName;
 import carracing.domain.Position;
-import carracing.util.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

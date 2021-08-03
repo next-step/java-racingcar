@@ -3,7 +3,6 @@ package carracing.view;
 import carracing.domain.Car;
 import carracing.domain.Cars;
 import carracing.domain.Position;
-import carracing.util.StringUtils;
 
 import java.io.PrintStream;
 import java.util.List;

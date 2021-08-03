@@ -1,4 +1,4 @@
-package carracing.util;
+package carracing.view;
 
 import java.util.Collections;
 
