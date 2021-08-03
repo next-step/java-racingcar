@@ -1,7 +1,7 @@
 package carracing.domain;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Number {
 
@@ -9,23 +9,29 @@ public class Number {
     private static final int LOWER_LIMIT = 0;
     private static final int UPPER_LIMIT = 9;
 
-    private static final Map<Integer, Number> cache = new HashMap<>();
+    private static final Map<Integer, Number> cache = new ConcurrentHashMap<>();
 
     private final int number;
 
     private Number(int number) {
         this.number = number;
-        cache.put(number, this);
     }
 
     public static Number of(int number) {
         validateNumberRange(number);
-        return cache.containsKey(number) ? cache.get(number) : new Number(number);
+        cacheIfAbsent(number);
+        return cache.get(number);
     }
 
     private static void validateNumberRange(int number) {
         if (number < LOWER_LIMIT || number > UPPER_LIMIT) {
             throw new IllegalArgumentException(String.format(OUT_OF_RANGE_EXCEPTION_MESSAGE_FORMAT, number));
+        }
+    }
+
+    private static void cacheIfAbsent(int number) {
+        if (!cache.containsKey(number)) {
+            cache.putIfAbsent(number, new Number(number));
         }
     }
 
