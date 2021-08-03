@@ -11,7 +11,7 @@
 
 ## 주요 기능 목록
 * java-racingcar/src/main/java/racingcar
-    - /RacingcarApplication.java : 자동차 경주 게임 main 메소드로 Race를 호출하여 게임을 시작하고 RaceResult를 통해 게임 결과를 출력한다.
+    - /RacingcarApplication.java : 자동차 경주 게임 main 메소드로 게임을 시작하고 게임 결과를 출력한다.
     
 * java-racingcar/src/main/java/racingcar/car
     - /car/Car.java : 자동차 경주 게임에 참여하는 자동차
@@ -22,10 +22,6 @@
 * java-racingcar/src/main/java/racingcar/exception
     - /InvalidCarException.java : Car에 대한 exception 처리
     - /InvalidUserInputException.java : 사용자 입력 값에 대한 exception 처리
-    
-* java-racingcar/src/main/java/racingcar/race
-    - /Race.java : 사용자의 입력값을 받아서 게임을 구성하며 race를 시작한다.
-    - /RaceResult.java : Race의 결과를 출력한다.
     
 * java-racingcar/src/main/java/racingcar/util/
     - /Util.java : 랜덤 숫자를 생성하는 메소드가 존재하는 Util 클래스
