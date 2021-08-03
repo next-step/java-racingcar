@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.car.Car;
+import racingcar.car.Cars;
 
 import java.util.List;
 import java.util.StringJoiner;
@@ -15,10 +16,17 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void printCarStatus(String name, int position) {
+    public static void printEachRacing(Cars cars) {
+        for (Car car : cars.getCars()) {
+            printCarStatus(car);
+        }
+        System.out.println();
+    }
+
+    private static void printCarStatus(Car car) {
         carStatusString.setLength(0);
-        carStatusString.append(name + " : ");
-        for (int i = 0; i < position; i++) {
+        carStatusString.append(car.getName() + " : ");
+        for (int i = 0; i < car.getPosition(); i++) {
             carStatusString.append("-");
         }
         System.out.println(carStatusString);
@@ -30,5 +38,6 @@ public class ResultView {
         }
         System.out.println(winnerCarsNameString + "가 최종 우승했습니다.");
     }
+
 
 }

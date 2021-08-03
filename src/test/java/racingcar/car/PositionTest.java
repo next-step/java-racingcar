@@ -11,7 +11,7 @@ public class PositionTest {
 
     @BeforeEach
     void init() {
-        this.position = new Position(0);
+        this.position = new Position();
     }
 
     @Test

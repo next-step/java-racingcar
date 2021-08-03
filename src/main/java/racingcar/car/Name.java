@@ -3,7 +3,7 @@ package racingcar.car;
 public class Name {
     private String name;
 
-    Name(String name) {
+    public Name(String name) {
         this.name = name;
     }
 

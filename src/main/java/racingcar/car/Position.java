@@ -6,8 +6,8 @@ public class Position {
     private int position;
     private static final int FORWARD_DISTANCE = 1;
 
-    public Position(int position) {
-        this.position = position;
+    public Position() {
+        this.position = 0;
     }
 
     public void movePosition() {
