@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.view;
 
-import java.util.ArrayList;
-import java.util.List;
+import racingcar.domain.Lap;
+import racingcar.domain.RaceResult;
+import racingcar.domain.Record;
 
 public class OutputView {
     public static void printResult(RaceResult result) {

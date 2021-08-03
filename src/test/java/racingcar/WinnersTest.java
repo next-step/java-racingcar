@@ -2,6 +2,12 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.Distance;
+import racingcar.domain.Record;
+import racingcar.domain.Records;
+import racingcar.domain.Winners;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

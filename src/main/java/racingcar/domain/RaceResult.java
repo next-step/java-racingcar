@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class RaceResult {
     private final Laps laps = new Laps();
