@@ -6,15 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Cars implements Iterable<Car> {
-    private List<Car> cars = new ArrayList<>();
-
-    public Cars(List<Car> cars) {
-        this.cars = cars;
-    }
-
-    public Cars(Car ...cars) {
-        this(Arrays.asList(cars));
-    }
+    private final List<Car> cars = new ArrayList<>();
 
     public Cars(String ...names) {
         for(String name : names) {

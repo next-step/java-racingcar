@@ -7,12 +7,6 @@ import java.util.List;
 public class Distances implements Iterable<Distance> {
     private final List<Distance> distances = new ArrayList<>();
 
-    public Distances(Cars cars) {
-        for (Car car : cars) {
-            distances.add(car.getDistance());
-        }
-    }
-
     @Override
     public Iterator<Distance> iterator() {
         return distances.iterator();
