@@ -83,4 +83,13 @@ public class ExpressionTest {
 
         assertThat(throwable).isExactlyInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void invalidExpressionTest() {
+        String input = "+ 1 + 2";
+
+        final Throwable throwable = catchThrowable(() -> new Expression(expressionSplit(input)));
+
+        assertThat(throwable).isExactlyInstanceOf(NumberFormatException.class);
+    }
 }

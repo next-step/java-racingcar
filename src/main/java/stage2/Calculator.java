@@ -2,10 +2,16 @@ package stage2;
 
 public class Calculator {
     public int calculate(String input) {
+        int result = 0;
         inputValidate(input);
         final String[] data = expressionSplit(input);
-        final Expression ep = new Expression(data);
-        return ep.express();
+        try {
+            final Expression ep = new Expression(data);
+            result = ep.express();
+        } catch (NumberFormatException nfe) {
+            nfe.printStackTrace();
+        }
+        return result;
     }
 
     private void inputValidate(String input) {
