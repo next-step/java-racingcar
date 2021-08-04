@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 import java.util.Comparator;
 import java.util.List;
@@ -12,46 +12,42 @@ public class Cars {
     private static final int MINIMUM_BOUND = 4;
 
 
-    private Cars(Condition condition) {
+    public Cars(Condition condition) {
         this.cars = condition.getNames().stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
         this.maxTryCount = condition.getTryCount();
     }
 
-    public static Cars of(Condition condition) {
-        return new Cars(condition);
-    }
-
-    public void playMaximumRound() {
+    public void playUntilEnd() {
         for(int tryCount = 0; tryCount < maxTryCount ; tryCount++){
             playOneRound();
         }
     }
 
-    public List<String> findWinners() {
-        int highDistance = findHighDistance();
+    public List<Name> findWinners() {
+        int highDistance = findHighestDistance();
         return cars.stream()
                 .filter(car -> car.getTotalDistance() >= highDistance)
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
 
-    public List<Car> getCars() {
+    public List<Car> findCarsInfo() {
         return this.cars;
     }
 
-    private int findHighDistance() {
+    private int findHighestDistance() {
         return cars.stream()
                 .max(Comparator.comparingInt(Car::getTotalDistance)).get()
                 .getTotalDistance();
     }
 
     private void playOneRound() {
-        cars.forEach(car->car.move(canMove()));
+        cars.forEach(car->car.move(movable()));
     }
 
-    private boolean canMove() {
+    private boolean movable() {
         Random random = new Random();
         return random.nextInt(10) >= MINIMUM_BOUND;
     }

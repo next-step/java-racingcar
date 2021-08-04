@@ -4,8 +4,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import race.domain.Car;
+import race.domain.Cars;
+import race.domain.Condition;
+import race.domain.Name;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -20,9 +25,9 @@ class CarsTest {
     @ValueSource(ints = {0, 1, 2})
     void moveAll(int index) {
         Cars cars = getCars();
-        cars.playMaximumRound();
+        cars.playUntilEnd();
 
-        Car car = cars.getCars().get(index);
+        Car car = cars.findCarsInfo().get(index);
         int distanceCount = car.getDistance().size();
         assertThat(distanceCount).isEqualTo(DEFAULT_TRY_COUNT);
     }
@@ -31,14 +36,16 @@ class CarsTest {
     @Test
     void getWinner() {
         Cars cars = getCars();
-        cars.playMaximumRound();
+        cars.playUntilEnd();
 
-        String winners = String.join(",", cars.findWinners());
+        String winners = cars.findWinners().stream()
+                .map(Name::toString)
+                .collect(Collectors.joining(","));
         assertThat(winners.split(",").length).isGreaterThanOrEqualTo(1);
     }
 
     private Cars getCars() {
-        return Cars.of(new Condition(DEFAULT_CAR_COUNT, DEFAULT_TRY_COUNT, Arrays.asList(DEFAULT_CAR_NAMES)));
+        return new Cars(new Condition(DEFAULT_CAR_COUNT, DEFAULT_TRY_COUNT, Arrays.asList(DEFAULT_CAR_NAMES)));
     }
 
 }
