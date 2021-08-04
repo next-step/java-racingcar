@@ -1,9 +1,8 @@
 package study.step3.model.car;
 
-import study.step3.model.strategy.RandomMoveStrategy;
+import study.step3.model.strategy.MoveStrategy;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.collectingAndThen;
@@ -27,19 +26,13 @@ public class Cars {
                 .collect(collectingAndThen(toList(), Cars::of));
     }
 
-    public void move() {
+    public void move(MoveStrategy moveStrategy) {
         for (Car car : racingGameCars) {
-            car.move(new RandomMoveStrategy());
+            car.move(moveStrategy);
         }
     }
 
     public List<Car> getRacingGameCars() {
         return racingGameCars;
-    }
-
-    private int getRandomNumber() {
-        Random random = new Random();
-        random.setSeed(System.currentTimeMillis() * random.nextInt());
-        return random.nextInt(10);
     }
 }

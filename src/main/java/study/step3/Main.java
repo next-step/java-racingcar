@@ -1,5 +1,6 @@
 package study.step3;
 
+import study.step3.model.strategy.RandomMoveStrategy;
 import study.step3.model.view.Input;
 import study.step3.model.RacingGame;
 import study.step3.view.InputView;
@@ -15,7 +16,7 @@ public class Main {
     int gameRound = userInput.getGameRound();
 
     RacingGame racingGame = new RacingGame(carNumber, gameRound);
-    racingGame.start();
+    racingGame.start(new RandomMoveStrategy());
   }
 
 }
