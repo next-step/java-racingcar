@@ -2,35 +2,44 @@ package com.racingcar.game;
 
 import com.racingcar.car.Car;
 import com.racingcar.dice.Dice;
+import com.racingcar.game.result.RoundCarRecord;
+import com.racingcar.view.GameDrawer;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class Game {
     private int currentRound;
     private final int gameRound;
-    private Car[] cars;
+    private List<Car> cars;
 
-    public Game(int gameRound, Car[] cars) {
+    public Game(int gameRound, List<Car> cars) {
         this.gameRound = gameRound;
         this.cars = cars;
     }
 
-    public int[][] play() {
-        int[][] result = new int[gameRound][cars.length];
-        currentRound = 0;
+    public void play() {
+        GameDrawer.drawGameStart();
 
         while (currentRound < gameRound) {
-            playOneRound();
-            result[currentRound++] = getRoundResult();
+            GameDrawer.drawOneRound(playOneRound());
+            currentRound++;
         }
 
-        return result;
+        GameDrawer.drawWinners(decideWinners());
     }
 
-    private void playOneRound() {
+    private List<RoundCarRecord> playOneRound() {
+        List<RoundCarRecord> roundRecords = new ArrayList<>();
+
         for (Car car : this.cars) {
             car.move(Dice.getNumber());
+            roundRecords.add(RoundCarRecord.of(car));
         }
+
+        return roundRecords;
     }
 
     private int[] getRoundResult() {
@@ -38,6 +47,4 @@ public class Game {
                 .mapToInt(car -> car.getDistance())
                 .toArray();
     }
-
-
 }
