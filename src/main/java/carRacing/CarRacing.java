@@ -7,11 +7,11 @@ public class CarRacing {
 
     private final RandomMovigStrategy randomMovigStrategy = new RandomMovigStrategy();
 
-    private ArrayList<Car> prepareCars(int numberOfCars) {
+    private ArrayList<Car> prepareCars(String[] carNames) {
         ArrayList<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i<numberOfCars; i++) {
-            cars.add(new Car());
+        for (String name : carNames) {
+            cars.add(new Car(name));
         }
 
         return cars;
@@ -24,12 +24,17 @@ public class CarRacing {
         }
     }
 
-    void start(int numberOfCars, int numberOfRacing) {
-        if (numberOfCars <= 0 || numberOfRacing <= 0) {
+    void start(String[] carNames, int numberOfRacing) {
+
+        if (carNames == null || carNames.length == 0) {
+            throw new IllegalArgumentException("레이싱 시작을 하기 위한 자동차 이름들이 존재하지 않습니다.");
+        }
+
+        if (numberOfRacing <= 0) {
             throw new IllegalArgumentException("레이싱 시작을 하기 위한 숫자 값이 올바르지 않습니다.");
         }
 
-        ArrayList<Car> cars = prepareCars(numberOfCars);
+        ArrayList<Car> cars = prepareCars(carNames);
 
         for (int round = 1; round <= numberOfRacing; round++) {
             ResultView.divideRound(round);

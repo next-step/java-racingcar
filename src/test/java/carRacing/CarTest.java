@@ -12,7 +12,14 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("test");
+    }
+
+    @Test
+    @DisplayName("자동차 이름의 길이가 유효한지 테스트")
+    void setCar() {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car(""));
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car("abcdef"));
     }
 
     @Test

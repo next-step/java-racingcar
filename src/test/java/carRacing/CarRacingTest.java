@@ -9,18 +9,20 @@ import static org.junit.jupiter.api.Assertions.*;
 class CarRacingTest {
 
     private CarRacing carRacing;
+    private String[] carNames;
 
     @BeforeEach
     void setUp() {
         carRacing = new CarRacing();
+        carNames = new String[]{"star", "jae", "hong"};
     }
 
     @Test
     void start() {
-        assertThatIllegalArgumentException().isThrownBy(() -> carRacing.start(-1, 2));
+        assertThatIllegalArgumentException().isThrownBy(() -> carRacing.start(null, 2));
 
-        assertThatIllegalArgumentException().isThrownBy(() -> carRacing.start(6, 0));
+        assertThatIllegalArgumentException().isThrownBy(() -> carRacing.start(carNames, 0));
 
-        assertDoesNotThrow(() -> carRacing.start(2, 5));
+        assertDoesNotThrow(() -> carRacing.start(carNames, 5));
     }
 }
