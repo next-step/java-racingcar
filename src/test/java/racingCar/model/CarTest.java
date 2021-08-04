@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.model;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,16 +26,13 @@ class CarTest {
     }
 
     @Test
-    void canMove() {
-        assertThat(car.canMove(4)).isTrue();
-        assertThat(car.canMove(3)).isFalse();
+    void 이동() {
+        assertThat(car.move(() -> true)).isEqualTo(new Position(1));
     }
 
     @Test
-    void 이동() {
-        assertThat(car.move(5)).isEqualTo(1);
-        assertThat(car.move(4)).isEqualTo(2);
-        assertThat(car.move(3)).isEqualTo(2);
+    void 정지() {
+        assertThat(car.move(() -> false)).isEqualTo(new Position());
     }
 
     @AfterEach

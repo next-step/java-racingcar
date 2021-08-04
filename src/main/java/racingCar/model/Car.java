@@ -3,36 +3,43 @@ package racingCar.model;
 import java.util.Objects;
 
 public class Car {
-    private static final int CAN_MOVE_NUMBER = 4;
-    private static final int CAR_NAME_MAX_LENGTH = 5;
 
-    private String carName;
-    private int location = 0;
+    private final CarName carName;
+    private Position position;
 
-    public Car(String carName) {
-        if (carName.length() > CAR_NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 " + CAR_NAME_MAX_LENGTH + "자를 초과할 수 없습니다.");
+    public Car(final String carName) {
+        this(carName, 0);
+    }
+
+    public Car(final String carName, int position) {
+        this.carName = new CarName(carName);
+        this.position = new Position(position);
+    }
+
+    public Position move(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) {
+            this.position = position.move();
         }
-        this.carName = carName;
+        return position;
     }
 
-    public boolean canMove(int randomNumber) {
-        return randomNumber >= CAN_MOVE_NUMBER;
+    public boolean samePosition(Position maxPosition) {
+        return this.position.equals(maxPosition);
     }
 
-    public int move(int randomNumber) {
-        if (canMove(randomNumber)) {
-            location++;
+    public Position findMaxPosition(Position maxPosition) {
+        if (position.lessThan(maxPosition.getPosition())) {
+            return maxPosition;
         }
-        return location;
-    }
-
-    public int getLocation() {
-        return location;
+        return this.position;
     }
 
     public String getName() {
-        return carName;
+        return carName.value();
+    }
+
+    public int getPosition() {
+        return position.getPosition();
     }
 
     @Override
@@ -40,12 +47,13 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return location == car.location &&
-                Objects.equals(carName, car.carName);
+        return Objects.equals(carName, car.carName) &&
+                Objects.equals(position, car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carName, location);
+        return Objects.hash(carName, position);
     }
+
 }

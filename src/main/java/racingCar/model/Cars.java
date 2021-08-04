@@ -1,58 +1,51 @@
 package racingCar.model;
 
-import racingCar.utils.RandomUtil;
-
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
+    private final List<Car> cars;
 
-    private List<Car> cars;
-    private int playCount;
-
-    public Cars(String[] carNames, int playCount) {
-        this.cars = makeCars(carNames);
-        this.playCount = playCount;
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    private List<Car> makeCars(String[] carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
+    public List<Car> move(MovingStrategy movingStrategy) {
+        for (Car car : cars) {
+            car.move(movingStrategy);
         }
         return cars;
-    }
-
-    public List<Car> moveCars() {
-        for(Car car: cars){
-            car.move(RandomUtil.getNumber());
-        }
-        return cars;
-    }
-
-    private int findMaxLocation() {
-        return cars.stream()
-                .max(Comparator.comparingInt(Car::getLocation))
-                .orElseThrow(() -> new NoSuchElementException())
-                .getLocation();
     }
 
     public List<Car> findWinners() {
-        int maxLocation = findMaxLocation();
+        return findWinners(cars, findMaxPosition());
+    }
+
+    public static List<Car> findWinners(List<Car> cars, Position maxPosition) {
         return cars.stream()
-                .filter(car -> car.getLocation() == maxLocation)
+                .filter(car -> car.samePosition(maxPosition))
                 .collect(Collectors.toList());
     }
 
-    public int getPlayCount() {
-        return playCount;
+    public Position findMaxPosition() {
+        Position maxPosition = new Position();
+        for (Car car : cars) {
+            maxPosition = car.findMaxPosition(maxPosition);
+        }
+        return maxPosition;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars1 = (Cars) o;
+        return Objects.equals(cars, cars1.cars);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
+    }
 }

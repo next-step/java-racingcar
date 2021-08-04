@@ -1,36 +1,39 @@
 package racingCar.model;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarsTest {
 
-    private Cars cars;
+    Car pobi, crong, honux;
+    List<Car> original;
 
     @BeforeEach
     void setUp() {
-        cars = new Cars(new String[]{"pobi", "crong", "honux"}, 5);
-        List<Car> racingCars = cars.getCars();
-        racingCars.get(2).move(6);
+        pobi = new Car("pobi", 2);
+        crong = new Car("crong", 2);
+        honux = new Car("honux", 1);
+        original = Arrays.asList(pobi, crong, honux);
     }
 
     @Test
-    void move(){
-        assertThat(cars.moveCars()).isEqualTo(cars.getCars());
+    void move() {
+        Cars cars = new Cars(original);
+        assertThat(cars.move(() -> true)).isEqualTo(original);
     }
 
     @Test
-    void findWinner() {
+    void findWinners() {
+        original = Arrays.asList(pobi, crong, honux);
+        Cars cars = new Cars(original);
         assertThat(cars.findWinners())
-                .isEqualTo(Arrays.asList(cars.getCars().get(2)));
+                .containsExactly(pobi, crong);
+        assertThat(Cars.findWinners(original, new Position(2)))
+                .containsExactly(pobi, crong);
     }
-
 }
