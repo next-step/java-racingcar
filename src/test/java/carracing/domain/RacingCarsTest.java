@@ -15,13 +15,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingCarsTest {
 
     @ParameterizedTest(name = "이동전략에 따라 자동차 목록 내 모든 자동차가 한번씩 움직인다.")
-    @ValueSource(ints = {0, 3, 4, 9})
-    public void carsMoveTest(int mockRandomNumber) {
+    @ValueSource(strings = {"false", "true"})
+    public void carsMoveTest(boolean movable) {
         List<Position> carPositions = createPositions(1, 3, 5);
         RacingCars racingCars = RacingCars.of(createCars(carPositions));
-        racingCars.move(() -> mockRandomNumber > 3);
+        racingCars.forEach(car -> car.move(() -> movable));
         assertThat(racingCars.getPositions())
-                .isEqualTo(expectedPositions(carPositions, mockRandomNumber > 3));
+                .isEqualTo(expectedPositions(carPositions, movable));
     }
 
     @DisplayName("우승자를 추출 할 수 있다.")
