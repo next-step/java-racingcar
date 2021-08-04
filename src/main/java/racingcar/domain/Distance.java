@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class Distance {
     private static final int DEFAULT_DISTANCE = 0;

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class RaceResult {
     private final Laps laps = new Laps();
@@ -9,6 +9,10 @@ public class RaceResult {
 
     public Lap getLastLap() {
         return laps.getLastLap();
+    }
+
+    public Winners getWinners() {
+        return new Winners(getLastLap().getRecords());
     }
 
     public void recordLap(Cars cars) {
