@@ -8,15 +8,15 @@ import racingcar.view.ResultView;
 public class RacingCarApplication {
 
     public static void main(String[] args) {
-        Race race = new Race();
-        Cars cars = new Cars(InputView.inputNameOfCars());
+        Race race = new Race(new Cars(InputView.inputNameOfCars()));
         int racingTime = Integer.parseInt(InputView.inputCountOfGame());
+        Cars cars = race.getCars();
 
         ResultView.printResultTitle();
         for (int i = 0; i < racingTime; i++) {
-            race.startRace(cars);
+            race.startRace();
             ResultView.printEachRacing(cars);
         }
-        ResultView.printWinnerCars(race.getRaceWinner(cars));
+        ResultView.printWinnerCars(cars.getRaceWinners());
     }
 }

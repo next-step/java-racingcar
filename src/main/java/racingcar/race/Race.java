@@ -1,19 +1,19 @@
 package racingcar.race;
 
-import racingcar.car.Car;
 import racingcar.car.Cars;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Race {
-    public void startRace(Cars cars) {
+    private Cars cars;
+
+    public Race(Cars cars) {
+        this.cars = cars;
+    }
+
+    public void startRace() {
         cars.moveCars();
     }
 
-    public List<Car> getRaceWinner(Cars cars) {
-        int maxPosition = Collections.max(cars.getCars()).getPosition();
-        return cars.getCars().stream().filter(c -> c.getPosition() == maxPosition).collect(Collectors.toList());
+    public Cars getCars() {
+        return this.cars;
     }
 }
