@@ -25,7 +25,7 @@ public class GameController {
     }
 
     public void init() throws IllegalArgumentException {
-        String[] carNames = StringUtil.participants(inputView.participantInputView());
+        String[] carNames = StringUtil.participantsSplit(inputView.participantInputView());
 
         for (int count = 0; count < carNames.length; count++) {
             participant.add(new Car(carNames[count]));
