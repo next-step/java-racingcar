@@ -5,6 +5,11 @@ public class Expression {
     private Integer init;
     private String operation;
 
+    public Expression(String[] data) {
+        this.data = data;
+        this.init = Integer.parseInt(data[0]);
+    }
+
     public Expression(String[] data, Integer init) {
         this.data = data;
         this.init = init;
