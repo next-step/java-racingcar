@@ -25,6 +25,7 @@ public class CarRacing {
     public List<Car> getCars() {
         return this.cars;
     }
+
     public List<Car> racing(List<Car> cars) {
         for (Car car : cars) {
             car.moveForward(CarUtils.getNumberForMovement());
@@ -34,7 +35,10 @@ public class CarRacing {
 
     public String extractWinner(List<Car> cars) {
         int maxMoveDistance = getMaxMoveDistance(cars);
-        return cars.stream().filter(o->o.getMoveDistance()==maxMoveDistance).map(Car::getCarName).collect(Collectors.joining(","));
+        return cars.stream()
+                .filter(o -> o.getMoveDistance() == maxMoveDistance)
+                .map(Car::getCarName)
+                .collect(Collectors.joining(","));
     }
 
     private int getMaxMoveDistance(List<Car> cars) {
@@ -46,7 +50,7 @@ public class CarRacing {
     }
 
     private int compareMoveDistance(int maxMoveDistance, Car car) {
-        if(car.getMoveDistance() >= maxMoveDistance) {
+        if (car.getMoveDistance() >= maxMoveDistance) {
             return car.getMoveDistance();
         }
         return maxMoveDistance;
