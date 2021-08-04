@@ -1,13 +1,31 @@
 package racingcar.car;
 
-public class Car {
+public class Car implements Comparable<Car> {
+    private Name name;
     private Position position;
 
-    public Car() {
+    public Car(String name) {
+        this.name = new Name(name);
         this.position = new Position();
     }
 
-    public Position getPosition() {
-        return this.position;
+    public void movePosition() {
+        position.movePosition();
+    }
+
+    public String getName() {
+        return name.getName();
+    }
+
+    public int getPosition() {
+        return position.getPosition();
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        if (this.getPosition() > o.getPosition()) {
+            return 1;
+        }
+        return 0;
     }
 }

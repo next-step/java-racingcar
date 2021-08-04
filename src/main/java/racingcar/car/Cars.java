@@ -1,36 +1,33 @@
 package racingcar.car;
 
-import racingcar.view.InputView;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
+    private List<Car> cars;
 
-    public List<Car> cars = new ArrayList<>();
+    public Cars(List<String> names) {
+        cars = new ArrayList<>();
 
-    public void setUserInputCountOfCar() {
-        addCars(InputView.inputCountOfCar());
-    }
-
-    private void addCar(Car car) {
-        cars.add(car);
-    }
-
-    public void addCars(int countOfCar) {
-        for (int i = 0; i < countOfCar; i++) {
-            addCar(new Car());
+        for (String name : names) {
+            cars.add(new Car(name));
         }
     }
 
     public void moveCars() {
         for (Car car : cars) {
-            car.getPosition().movePosition();
+            car.movePosition();
         }
-        System.out.println();
     }
 
     public List<Car> getCars() {
         return this.cars;
+    }
+
+    public List<Car> getRaceWinners() {
+        int maxPosition = Collections.max(this.cars).getPosition();
+        return cars.stream().filter(c -> c.getPosition() == maxPosition).collect(Collectors.toList());
     }
 }
