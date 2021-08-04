@@ -19,8 +19,7 @@ public class CarRacing {
     }
 
     private String[] getCarNameListSplit(String carNameList) {
-        String[] carNameListSplit = carNameList.split(",");
-        return carNameListSplit;
+        return carNameList.split(",");
     }
 
     public List<Car> getCars() {
