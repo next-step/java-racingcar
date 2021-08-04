@@ -1,17 +1,17 @@
-package race;
+package race.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
 
-    private String name;
+    private final Name name;
     private final List<Integer> distance = new ArrayList<>();
     private static final int FORWARD = 1;
     private static final int STOP = 0;
 
     public Car(String name) {
-        this.name = name;
+        this.name = new Name(name);
     }
 
     public void move(boolean isMove) {
@@ -35,7 +35,7 @@ public class Car {
                 .count();
     }
 
-    public String getName() {
+    public Name getName() {
         return this.name;
     }
 
