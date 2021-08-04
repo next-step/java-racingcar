@@ -9,37 +9,43 @@ public class Cars {
     public Cars(int carCnt) {
         cars = new ArrayList<>();
         for (int i=0; i<carCnt; i++) {
-            cars.add(new Car());
+            cars.add(new Car(i+1));
         }
-    }
-
-    /**
-     * 자동차 총대수 반환
-     */
-    public int getCarCnt() {
-        return cars.size();
     }
 
     /**
      * 자동차 인스턴스 반환
-     * @param i
-     * @return환
      */
-    public Car getCar(int i) {
-        return cars.get(i);
+    public List<Car> getCars() {
+        return cars;
     }
 
     /**
-     * 자동차 움직임 조정, 랜덤 숫자를 받아 4이상이 나오면 전진한다.
-     * @param carIdx
+     * 자동차 움직임 기준에 따라 조정한다.
      * @param movingStrategy
      * @return
      */
-    public int move(int carIdx, MovingStrategy movingStrategy){
-        if (movingStrategy.canMove()){
-            return getCar(carIdx).go();
+    public List<String> moveAll(MovingStrategy movingStrategy){
+        List<String> result = new ArrayList<>();
+
+        cars.forEach(car -> {
+            canMoveCar(movingStrategy, result, car);
+        });
+
+        return result;
+    }
+
+    /**
+     * 랜덤 숫자가 4 이상이 나오면 전진한다.
+     * @param movingStrategy
+     * @param result
+     * @param car
+     */
+    private void canMoveCar(MovingStrategy movingStrategy, List<String> result, Car car) {
+        if (movingStrategy.canMove()) {
+            car.go();
         }
 
-        return getCar(carIdx).getMove();
+        result.add(car.getIndex() + "/" + car.getMove());
     }
 }

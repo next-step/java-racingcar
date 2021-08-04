@@ -13,65 +13,64 @@ public class CarGameTest {
     @Test
     @DisplayName("자동차수를 입력받아 자동차 수만큼 세팅한다.")
     public void set_cars() {
-        Cars cars = new Cars(carCnt);
-        assertThat(cars.getCarCnt()).isEqualTo(carCnt);
+        //given
+        Cars carSet = new Cars(carCnt);
 
-        for (int i=0; i<cars.getCarCnt(); i++) {
-            int move = cars.getCar(i).getMove();
-            assertThat(move).isEqualTo(0);
-        }
+        //then
+        carSet.getCars().forEach(car -> {
+            assertThat(car.getMove()).isEqualTo(0);
+        });
     }
 
     @Test
     @DisplayName("4이상일 경우 자동차가 전진해야한다.")
     public void car_should_be_moved() {
         //given
-        int carIdx = 0;
+        Cars carSet = new Cars(carCnt);
 
         //when
-        Cars cars = new Cars(carCnt);
-        cars.move(carIdx, ()->true);
+        carSet.moveAll(()->true);
 
         //then
-        int move = cars.getCar(carIdx).getMove();
-        assertThat(move).isEqualTo(1);
+        carSet.getCars().forEach(car -> {
+            assertThat(car.getMove()).isEqualTo(1);
+        });
     }
 
     @Test
     @DisplayName("4미만일 경우 자동차가 움직이지 않아야한다.")
     public void car_should_be_not_moved() {
         //given
-        int randomNum = 3;
-        int carIdx = 0;
+        Cars carSet = new Cars(carCnt);
 
         //when
-        Cars cars = new Cars(carCnt);
-        cars.move(carIdx, ()->false);
+        carSet.moveAll(()->false);
 
         //then
-        int move = cars.getCar(carIdx).getMove();
-        assertThat(move).isEqualTo(0);
+        carSet.getCars().forEach(car -> {
+            assertThat(car.getMove()).isEqualTo(0);
+        });
     }
 
     @Test
     @DisplayName("여러개의 랜덤숫자가 주어질 경우 테스트")
     public void car_should_be_moved_or_not() {
         //given
-        int carIdx = 0;
-
         boolean[] randomNums = {true, false, false, true, true};
         int[] expectedMove = {1, 1, 1, 2, 3};
 
-        Cars cars = new Cars(carCnt);
+        Cars carSet = new Cars(carCnt);
 
         for (int i=0; i<randomNums.length; i++) {
             //when
+            int expect = expectedMove[i];
             boolean random = randomNums[i];
-            cars.move(carIdx, ()->random);
+            carSet.moveAll(()->random);
 
             //then
-            int move = cars.getCar(carIdx).getMove();
-            assertThat(move).isEqualTo(expectedMove[i]);
+            carSet.getCars().forEach(car -> {
+                assertThat(car.getMove()).isEqualTo(expect);
+            });
         }
     }
 }

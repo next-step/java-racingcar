@@ -1,8 +1,8 @@
-package step3.model;
+package step4.model;
 
 import java.util.Random;
 
-public class RandomMovingStrategy implements MovingStrategy{
+public class RandomMovingStrategy implements MovingStrategy {
     public static final int LIMIT = 4;
 
     /**

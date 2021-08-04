@@ -12,7 +12,7 @@ public class InputView {
      * @return
      */
     public static boolean isDigit(String input) {
-        if (input == null || input.trim().length() > 0) {
+        if (input != null || input.trim().length() > 0) {
             return input.matches("[0-9]*");
         }
 

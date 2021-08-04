@@ -8,11 +8,10 @@ public class ResultView {
      * @param results
      */
     public void showResult(List<String> results, int carCnt){
-        results.stream()
-                .forEach(str -> {
+        results.forEach(str -> {
                     String[] result = str.split("/");
-                    String move = printDistance(Integer.parseInt(result[2]));
-                    System.out.println(result[0] + "번차 랜덤숫자 : " + result[1] + " " + move);
+                    String move = printDistance(Integer.parseInt(result[1]));
+                    System.out.println(result[0] + "번차 : " + move);
                     if (Integer.parseInt(result[0]) == carCnt) {
                         System.out.println();
                     }
