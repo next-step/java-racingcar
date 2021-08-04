@@ -14,7 +14,6 @@ import java.util.List;
 public class GameController {
 
     List<Car> participant;
-    private int gameCount;
     private InputView inputView;
     private Winner winners;
 
@@ -30,7 +29,7 @@ public class GameController {
         for (int count = 0; count < carNames.length; count++) {
             participant.add(new Car(carNames[count]));
         }
-        gameCount = inputView.playInputView();
+        int gameCount = inputView.playInputView();
         for (int count = 0; count < gameCount; count++) {
             playGame();
             ResultView.racingView(participant);
