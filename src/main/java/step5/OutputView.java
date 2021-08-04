@@ -15,10 +15,6 @@ public class OutputView {
         System.out.println(CarsStatusHelper.getCarStatusView(status));
     }
 
-    public static void println(){
-        System.out.println();
-    }
-
     public static void printWinner(List<String> winners) {
         System.out.println(String.join(", ", winners) + WIN_RESULT_POSTFIX);
     }

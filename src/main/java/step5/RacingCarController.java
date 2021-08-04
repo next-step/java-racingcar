@@ -16,21 +16,20 @@ public class RacingCarController {
         RacingCars racingCars = RacingCars.create(carNames);
         OutputView.printActionResult();
         for (int i = 0; i < tries; i++) {
-            boolean isFirstTry = isFirstTry(i);
-
-            if (!isFirstTry) {
+            if (!isFirstTry(i)) {
                 racingCars.run();
             }
-
-            racingCars.getAll()
-                    .stream()
-                    .map(RacingCar::getStatus)
-                    .forEach(OutputView::printResult);
-
-            OutputView.println();
-
+            printRacingCarsStatus(racingCars);
         }
         OutputView.printWinner(racingCars.getWinners());
+    }
+
+    private static void printRacingCarsStatus(RacingCars racingCars) {
+        racingCars.getAll()
+                .stream()
+                .map(RacingCar::getStatusInteger)
+                .forEach(OutputView::printResult);
+        newLine();
     }
 
     private static boolean isFirstTry(int i) {

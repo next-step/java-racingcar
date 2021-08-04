@@ -15,10 +15,11 @@ public class RacingCarTest {
         //when
         car.move(new RandomMovable());
         //then
-        assertThat(car.getStatus()).isBetween(1, 2);
+        assertThat(car.getStatusInteger()).isBetween(1, 2);
     }
 
     @Test
+    @DisplayName("자동차는 Movable이 true를 반환할 때 이동할 수 있다")
     public void 자동차는_Movable이_true를_반환할_때_이동할_수_있다(){
         //given
         RacingCar car = RacingCar.create("pobi");

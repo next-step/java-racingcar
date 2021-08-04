@@ -39,15 +39,20 @@ public class RacingCars {
     }
 
     public List<String> getWinners() {
-        int winnerStatus = racingCars.stream()
-                .map(RacingCar::getStatus)
+        int winnerStatus = getWinnerStatus();
+
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.isWinner(winnerStatus))
+                .map(RacingCar::getName)
+                .map(Name::toString)
+                .collect(Collectors.toList());
+    }
+
+    private int getWinnerStatus() {
+        return racingCars.stream()
+                .map(RacingCar::getStatusInteger)
                 .mapToInt(value -> value)
                 .max()
                 .orElseThrow(NoSuchElementException::new);
-
-        return racingCars.stream()
-                .filter(racingCar -> racingCar.getStatus() == winnerStatus)
-                .map(RacingCar::getName)
-                .collect(Collectors.toList());
     }
 }

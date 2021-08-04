@@ -3,21 +3,9 @@ package step5;
 import java.util.Objects;
 
 public class RacingCar {
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RacingCar racingCar = (RacingCar) o;
-        return status == racingCar.status && Objects.equals(name, racingCar.name);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, status);
-    }
-
-    private final String name;
-    private int status;
+    private final Name name;
+    private final Status status;
 
     public static RacingCar create(String name) {
         return new RacingCar(name);
@@ -28,28 +16,44 @@ public class RacingCar {
     }
 
     private RacingCar(String name) {
-        this.name = name;
-        this.status = 1;
+        this.name = new Name(name);
+        this.status = new Status(1);
     }
 
     private RacingCar(String name, int status) {
-        this.name = name;
-        this.status = status;
+        this.name = new Name(name);
+        this.status = new Status(status);
     }
 
     public RacingCar move(Movable movable) {
         if (movable.move()) {
-            this.status++;
+            status.increase();
         }
         return this;
     }
 
-    public int getStatus() {
-        return status;
+    public int getStatusInteger() {
+        return this.status.getStatus();
     }
 
-    public String getName() {
+    public boolean isWinner(int value) {
+        return getStatusInteger() == value;
+    }
+
+    public Name getName() {
         return name;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return Objects.equals(name, racingCar.name) && Objects.equals(status, racingCar.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, status);
+    }
 }
