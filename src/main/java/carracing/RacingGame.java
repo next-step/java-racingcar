@@ -44,7 +44,7 @@ public class RacingGame {
     private void race(RacingCars racingCars, int moveCount) {
         outputView.printResultMessage();
         for (int i = 0; i < moveCount; ++i) {
-            racingCars.move(moveStrategy);
+            racingCars.forEach(car -> car.move(moveStrategy));
             outputView.printPositions(racingCars);
             outputView.printNewLine();
         }

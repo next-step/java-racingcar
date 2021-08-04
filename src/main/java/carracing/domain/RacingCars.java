@@ -19,10 +19,6 @@ public class RacingCars {
         return new RacingCars(racingCarList);
     }
 
-    public void move(MoveStrategy moveStrategy) {
-        racingCars.forEach(car -> car.move(moveStrategy));
-    }
-
     public List<Position> getPositions() {
         return racingCars.stream()
                 .map(RacingCar::getPosition)
