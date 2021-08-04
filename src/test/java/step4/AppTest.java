@@ -48,15 +48,15 @@ public class AppTest {
 		assertThat(car.getCarName()).isEqualTo(carName);
 	}
 
-	@DisplayName("우승자를 확실히 반환하는지 확인하는 테스트")
-	@Test
-	void winnerTest() {
-		car.move(3);
-		car2.move(5);
-		race.updateLongestDistance(cars);
-		List<Car> winners = race.getWinners(cars);
-		assertThat(winners.get(0)).isEqualTo(car2);
-	}
+//	@DisplayName("우승자를 확실히 반환하는지 확인하는 테스트")
+//	@Test
+//	void winnerTest() {
+//		car.move(3);
+//		car2.move(5);
+//		race.updateLongestDistance(cars);
+//		List<Car> winners = race.getWinners(cars);
+//		assertThat(winners.get(0)).isEqualTo(car2);
+//	}
 
 //	@DisplayName("쉼표로 String Name을 구분했을 때 잘 구분하는 지 확인하는 테스트")
 //	@ParameterizedTest

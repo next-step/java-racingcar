@@ -18,27 +18,27 @@ public class App {
 		inputConsole.setValues();
 		ResultView resultView = new ResultView();
 
-		// 랜덤 숫자 제조기
+		// 랜덤 숫자 제조기 & 경기 생성
 		NumberContainer numberContainer = new NumberContainer();
+		Race race = new Race(numberContainer);
 
 		// 차 생성
-		List<Car> cars = new ArrayList<>();
 		int carNumber = inputConsole.getCarNumber();
 
 		for(int index = 0 ; index < carNumber ; index++) {
 			String carName = inputConsole.getCarNames()[index];
-			cars.add(new Car(carName));
+			race.addCar(carName);
 		}
 
 		// 경기 시작 & 결과
 		resultView.getResultComment();
-		Race race = new Race(numberContainer);
 		for(int raceIndex = 1; raceIndex <= inputConsole.getExecutionCount() ; raceIndex++) {
-			race.startRace(cars);
-			race.updateLongestDistance(cars);
+			race.startRace();
+			race.updateLongestDistance();
+			List<Car> cars = race.getCars();
 			resultView.viewResult(cars);
 		}
 
-		resultView.winnerResult(race.getWinners(cars));
+		resultView.winnerResult(race.getWinners());
 	}
 }

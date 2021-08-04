@@ -9,28 +9,38 @@ public class Race {
 	private int longestDistance;
 	private final int INIT_DISTANCE = 0;
 	private List<Car> winners;
+	private List<Car> cars;
 
 	public Race(NumberContainer numberContainer) {
 		this.numberContainer = numberContainer;
 		this.longestDistance = INIT_DISTANCE;
 		winners = new ArrayList<>();
+		cars = new ArrayList<>();
 	}
 
-	public void startRace(List<Car> cars) {
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void startRace() {
 		for(Car car : cars) {
 			int randomNumber = numberContainer.getRandomNumber();
 			car.move(randomNumber);
 		}
 	}
 
-	public List<Car> getWinners(List<Car> cars) {
+	public void addCar(String carName) {
+		cars.add(new Car(carName));
+	}
+
+	public List<Car> getWinners() {
 		for(Car car : cars) {
 			setWinners(car);
 		}
 		return winners;
 	}
 
-	public void updateLongestDistance(List<Car> cars) {
+	public void updateLongestDistance() {
 		for(Car car : cars) {
 			checkCarDistance(car);
 		}
