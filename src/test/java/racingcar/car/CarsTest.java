@@ -7,6 +7,7 @@ import racingcar.view.InputView;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -15,7 +16,7 @@ public class CarsTest {
     @Test
     @DisplayName("Car 추가 성공 테스트")
     void setCars_성공() {
-        Cars cars = new Cars(new String[]{"a", "b", "c"});
+        Cars cars = new Cars(Arrays.asList("a", "b", "c"));
         assertThat(cars.getCars().size()).isEqualTo(3);
     }
 
