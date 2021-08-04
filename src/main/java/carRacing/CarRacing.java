@@ -24,17 +24,6 @@ public class CarRacing {
         }
     }
 
-    private ArrayList<Car> getWinners(ArrayList<Car> cars) {
-        ArrayList<Car> winners = new ArrayList<>();
-        winners.add(cars.get(0));
-
-        for (int i = 1; i < cars.size(); i++) {
-            comparePosition(winners, cars.get(i));
-        }
-
-        return winners;
-    }
-
     private void comparePosition(ArrayList<Car> winners, Car car) {
         int curMaxPosition = winners.get(0).getPosition();
         int comparePosition = car.getPosition();
@@ -50,7 +39,7 @@ public class CarRacing {
         }
     }
 
-    void start(String[] carNames, int numberOfRacing) {
+    ArrayList<Car> start(String[] carNames, int numberOfRacing) {
 
         if (carNames == null || carNames.length == 0) {
             throw new IllegalArgumentException("레이싱 시작을 하기 위한 자동차 이름들이 존재하지 않습니다.");
@@ -67,6 +56,17 @@ public class CarRacing {
             startCars(cars);
         }
 
-        ResultView.printWinners(getWinners(cars));
+        return cars;
+    }
+
+    ArrayList<Car> getWinners(ArrayList<Car> cars) {
+        ArrayList<Car> winners = new ArrayList<>();
+        winners.add(cars.get(0));
+
+        for (int i = 1; i < cars.size(); i++) {
+            comparePosition(winners, cars.get(i));
+        }
+
+        return winners;
     }
 }

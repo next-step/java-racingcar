@@ -1,6 +1,7 @@
 package carRacing;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 
@@ -14,7 +15,9 @@ public class CarRacingMain {
         int numberOfRacing = requestInputNumber(InputView.InputType.RACING);
 
         CarRacing racing = new CarRacing();
-        racing.start(carNames, numberOfRacing);
+        ArrayList<Car> cars = racing.start(carNames, numberOfRacing);
+        ArrayList<Car> winners = racing.getWinners(cars);
+        ResultView.printWinners(winners);
     }
 
     static String[] requestInputCarName() {
