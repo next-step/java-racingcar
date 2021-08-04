@@ -4,7 +4,6 @@ import java.util.function.BinaryOperator;
 
 import static java.lang.Double.valueOf;
 
-
 class StringCalculator {
     private String[] values;
 

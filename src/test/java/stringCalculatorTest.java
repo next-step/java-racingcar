@@ -20,10 +20,7 @@ public class stringCalculatorTest {
 
     @DisplayName("inputTest")
     @ParameterizedTest
-    @ValueSource(strings = {"","++*/","12345",
-                " 9 9 99 999 ",
-                "1 /*++ 8 * 7",
-                "+ + + + + + /,"})
+    @ValueSource(strings = {"","++*/","12345"," 9 9 99 999 ", "1 /*++ 8 * 7"})
     void enter(String param) {
         assertThatThrownBy(() -> {
             calculator.enter(param);
