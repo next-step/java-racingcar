@@ -11,12 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CarTest {
-    private CarApplication ca;
     private Car car;
 
     @BeforeAll
     void setup() {
-        ca = new CarApplication();
         car = new Car();
     }
 
@@ -46,7 +44,7 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("전진 테스트")
+    @DisplayName("forward - 전진 기능 테스트")
     void forwardTest() {
         // given
         final int currentStatus = 3;
@@ -59,18 +57,4 @@ public class CarTest {
         // then
         assertThat(expectedStatus).isEqualTo(car.getStatus());
     }
-
-    // todo 통합 테스트
-//    @Test
-//    @DisplayName("멈춤 테스트")
-//    void stopTest() {
-//        // given
-//        final int currentStatus = 3;
-//        Car car = new Car(currentStatus);
-//
-//        // when
-//
-//        // then
-//
-//    }
 }
