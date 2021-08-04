@@ -13,8 +13,8 @@ public class CarRacing {
 
         String[] carNameArray = getCarNameListSplit(carNameString);
 
-        for (int i = 0; i < carNameArray.length; i++) {
-            cars.add(new Car(carNameArray[i]));
+        for (String s : carNameArray) {
+            cars.add(new Car(s));
         }
     }
 
