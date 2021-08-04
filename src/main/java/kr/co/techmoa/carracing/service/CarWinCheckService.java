@@ -8,22 +8,27 @@ import java.util.List;
 public class CarWinCheckService {
 
     public List<Car> checkGameResult(List<Car[]> rounds) {
-        Car[] cars = rounds.get(rounds.size()-1);
+        Car[] togetherCars = rounds.get(rounds.size()-1);
 
-        int max = cars[0].getTotalMove();
+        int max = togetherCars[0].getTotalMove();
 
-        for(int i = 1 ; i < cars.length;i++) {
-            if(cars[i].getTotalMove() >= max) {
-                max = cars[i].getTotalMove();
-            }
+        for(int i = 1 ; i < togetherCars.length;i++) {
+            max = maxCheck(togetherCars, i, max);
         }
 
-        return compare(cars, max);
+        return compare(togetherCars, max);
     }
 
-    private List<Car> compare(Car[] cars , int max) {
+    private int maxCheck(Car[] togetherCars, int order , int max) {
+        if(togetherCars[order].getTotalMove() >= max) {
+            max = togetherCars[order].getTotalMove();
+        }
+        return max;
+    }
+
+    private List<Car> compare(Car[] togetherCars , int max) {
         List<Car> winList = new ArrayList<>();
-        for(Car car : cars) {
+        for(Car car : togetherCars) {
             if(car.getTotalMove() == max) {
                 winList.add(car);
             }

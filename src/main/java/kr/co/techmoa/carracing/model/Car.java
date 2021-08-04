@@ -2,7 +2,6 @@ package kr.co.techmoa.carracing.model;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
@@ -16,5 +15,6 @@ public class Car {
 
     @Builder.Default
     private boolean isWin = false;
+
 
 }
