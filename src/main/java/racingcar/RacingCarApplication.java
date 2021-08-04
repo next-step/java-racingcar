@@ -17,6 +17,6 @@ public class RacingCarApplication {
             race.startRace();
             ResultView.printEachRacing(cars);
         }
-        ResultView.printWinnerCars(cars.getRaceWinners());
+        ResultView.printWinnerCars(race.getRaceWinners());
     }
 }

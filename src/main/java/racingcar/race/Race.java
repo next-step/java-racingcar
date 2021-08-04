@@ -1,6 +1,9 @@
 package racingcar.race;
 
+import racingcar.car.Car;
 import racingcar.car.Cars;
+
+import java.util.List;
 
 public class Race {
     private Cars cars;
@@ -15,5 +18,10 @@ public class Race {
 
     public Cars getCars() {
         return this.cars;
+    }
+
+    public List<Car> getRaceWinners() {
+        int maxPosition = cars.getCarsMaxPosition();
+        return cars.getWinnerCars(maxPosition);
     }
 }
