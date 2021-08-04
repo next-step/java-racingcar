@@ -1,15 +1,15 @@
 package com.racingcar.view.model;
 
-public class GameInput {
-    private int numberOfCars;
+public class GameInputDto {
+    private String names;
     private int gameRound;
 
-    public int getNumberOfCars() {
-        return numberOfCars;
+    public String getNames() {
+        return names;
     }
 
-    public void setNumberOfCars(int numberOfCars) {
-        this.numberOfCars = numberOfCars;
+    public void setNames(String names) {
+        this.names = names;
     }
 
     public int getGameRound() {
