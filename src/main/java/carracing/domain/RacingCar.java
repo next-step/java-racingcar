@@ -2,22 +2,28 @@ package carracing.domain;
 
 import java.util.Objects;
 
-public class Car {
+public class RacingCar {
 
     private static final int MOVE_THRESHOLD = 3;
 
     private Position position;
+    private final CarName carName;
 
-    private Car(Position position) {
-        this.position = Objects.requireNonNull(position);
+    public RacingCar(Position position, CarName carName) {
+        this.position = position;
+        this.carName = carName;
     }
 
-    public static Car of(int initPosition) {
-        return new Car(Position.of(initPosition));
+    public static RacingCar of(Position initPosition, CarName carName) {
+        return new RacingCar(initPosition, carName);
     }
 
     public Position getPosition() {
         return position;
+    }
+
+    public CarName getCarName() {
+        return carName;
     }
 
     public void move(Number number) {

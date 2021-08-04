@@ -1,8 +1,8 @@
 package carracing;
 
-import carracing.domain.Car;
-import carracing.domain.Cars;
-import carracing.domain.Positions;
+import carracing.domain.Position;
+import carracing.domain.RacingCar;
+import carracing.domain.RacingCars;
 import carracing.domain.RandomNumberGenerator;
 import carracing.view.InputView;
 import carracing.view.OutputView;
@@ -10,7 +10,6 @@ import carracing.view.OutputView;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class RacingGame {
 
@@ -27,29 +26,29 @@ public class RacingGame {
     }
 
     public void start() {
-        Cars cars = Cars.of(getCars());
-        int moveCount = getMoveCount();
-        race(cars, moveCount);
+        RacingCars racingCars = RacingCars.of(getCars());
+        race(racingCars, getMoveCount());
+        outputView.printWinners(racingCars.getWinners());
     }
 
-    private List<Car> getCars() {
-        outputView.printInputCarCountMessage();
-        int carCount = inputView.getCount();
-        return Stream.generate(() -> Car.of(STARTING_LINE_POSITION))
-                .limit(carCount)
+    private List<RacingCar> getCars() {
+        outputView.printCarNameInputMessage();
+        return inputView.getCarNames()
+                .stream()
+                .map(carName -> RacingCar.of(Position.of(STARTING_LINE_POSITION), carName))
                 .collect(Collectors.toList());
     }
 
     private int getMoveCount() {
         outputView.printInputMoveCountMessage();
-        return inputView.getCount();
+        return inputView.getMoveCount();
     }
 
-    private void race(Cars cars, int moveCount) {
+    private void race(RacingCars racingCars, int moveCount) {
         outputView.printResultMessage();
         for (int i = 0; i < moveCount; ++i) {
-            cars.move(randomNumberGenerator::generateRandomNumber);
-            outputView.print(Positions.of(cars.getPositions()));
+            racingCars.move(randomNumberGenerator::generateRandomNumber);
+            outputView.printPositions(racingCars);
             outputView.printNewLine();
         }
     }
