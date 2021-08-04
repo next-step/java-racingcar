@@ -42,9 +42,14 @@ public class Game {
         return roundRecords;
     }
 
-    private int[] getRoundResult() {
-        return Arrays.stream(cars)
-                .mapToInt(car -> car.getDistance())
-                .toArray();
+    private List<Car> decideWinners() {
+        int max = this.cars.stream()
+                .mapToInt((car) -> car.getDistance()
+                ).max()
+                .orElseThrow(() -> new NoSuchElementException("can not find max distance"));
+
+        return cars.stream()
+                .filter((car) -> car.isWinner(max))
+                .collect(Collectors.toList());
     }
 }
