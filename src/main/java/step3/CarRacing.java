@@ -50,9 +50,6 @@ public class CarRacing {
     }
 
     private int compareMoveDistance(int maxMoveDistance, Car car) {
-        if (car.getMoveDistance() >= maxMoveDistance) {
-            return car.getMoveDistance();
-        }
-        return maxMoveDistance;
+        return Math.max(car.getMoveDistance(), maxMoveDistance);
     }
 }
