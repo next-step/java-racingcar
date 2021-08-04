@@ -9,24 +9,37 @@ public class CarApplication {
     private static int tryNum;
 
     public static void main(String[] args) {
+        start();
+        List<CarService> carList = init();
+
+        System.out.println("실행 결과");
+        execute(carList);
+    }
+
+    private static void execute(List<CarService> carList) {
+        for (int i = 0; i < tryNum; i++) {
+            for (CarService car : carList) {
+                final int condition = car.getCondition();
+                car.tryForward(condition);
+                System.out.println(car.getStatus());
+            }
+            System.out.println();
+        }
+    }
+
+    private static void start() {
         Scanner sc = new Scanner(System.in);
         System.out.println("자동차 대수는 몇 대 인가요?");
         carNum = sc.nextInt();
         System.out.println("시도할 회수는 몇 회 인가요?");
         tryNum = sc.nextInt();
+    }
 
-        List<Car> carList = new ArrayList<>(carNum);
+    private static List<CarService> init() {
+        List<CarService> carList = new ArrayList<>();
         for (int i = 0; i < carNum; i++) {
-            carList.add(new Car());
+            carList.add(new CarService(new Car()));
         }
-
-        System.out.println("실행 결과");
-        for (int i = 0; i < tryNum; i++) {
-            for (Car car : carList) {
-                if (car.isForward(car.getForwardCondition())) car.forward();
-                System.out.println(car.getStatus());
-            }
-            System.out.println();
-        }
+        return carList;
     }
 }
