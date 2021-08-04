@@ -1,7 +1,7 @@
 package stage2;
 
 public class Calculator {
-    public Integer calculate(String input) {
+    public int calculate(String input) {
         inputValidate(input);
         final String[] data = expressionSplit(input);
         final Expression ep = new Expression(data);

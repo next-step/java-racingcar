@@ -13,7 +13,7 @@ public class OperationTest {
     @Test
     void operateAddTest() {
         operation = Operation.ADD;
-        final Integer result = operation.operate(1, 2);
+        final int result = operation.operate(1, 2);
         final int expectedValue = 3;
         assertThat(expectedValue).isEqualTo(result);
     }
@@ -21,7 +21,7 @@ public class OperationTest {
     @Test
     void operateMinusTest() {
         operation = Operation.MINUS;
-        final Integer result = operation.operate(1, 2);
+        final int result = operation.operate(1, 2);
         final int expectedValue = -1;
         assertThat(expectedValue).isEqualTo(result);
     }
@@ -29,7 +29,7 @@ public class OperationTest {
     @Test
     void operateMultiTest() {
         operation = Operation.MULTI;
-        final Integer result = operation.operate(1, 2);
+        final int result = operation.operate(1, 2);
         final int expectedValue = 2;
         assertThat(expectedValue).isEqualTo(result);
     }
@@ -37,7 +37,7 @@ public class OperationTest {
     @Test
     void operateDivideTest() {
         operation = Operation.DIVIDE;
-        final Integer result = operation.operate(2, 2);
+        final int result = operation.operate(2, 2);
         final int expectedValue = 1;
         assertThat(expectedValue).isEqualTo(result);
     }

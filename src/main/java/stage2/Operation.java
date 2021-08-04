@@ -17,7 +17,7 @@ public enum Operation {
         this.expression = expression;
     }
 
-    public Integer operate(Integer first, Integer second) {
+    public int operate(int first, int second) {
         return expression.apply(first, second);
     }
 

@@ -24,9 +24,9 @@ public class CalculatorTest {
     @DisplayName("통합 기능 테스트")
     void calculator() {
         String input = "2 + 3 * 4 / 2";
-        Integer expectedValue = 10;
+        int expectedValue = 10;
 
-        Integer result = c.calculate(input);
+        int result = c.calculate(input);
 
         assertThat(expectedValue).isEqualTo(result);
     }

@@ -18,10 +18,10 @@ public class ExpressionTest {
     @DisplayName("사칙연산 기능 테스트 - 덧셈")
     void calculatorAddTest() {
         String input = "1 + 2 + 3 + 4 + 5";
-        Integer expectedValue = 15;
+        int expectedValue = 15;
 
         expression = new Expression(expressionSplit(input));
-        final Integer result = expression.express();
+        final int result = expression.express();
 
         assertThat(result).isEqualTo(expectedValue);
     }
@@ -30,10 +30,10 @@ public class ExpressionTest {
     @DisplayName("사칙연산 기능 테스트 - 뺄셈")
     void calculatorMinusTest() {
         String input = "50 - 10 - 5 - 1";
-        Integer expectedValue = 34;
+        int expectedValue = 34;
 
         expression = new Expression(expressionSplit(input));
-        final Integer result = expression.express();
+        final int result = expression.express();
 
         assertThat(result).isEqualTo(expectedValue);
     }
@@ -42,10 +42,10 @@ public class ExpressionTest {
     @DisplayName("사칙연산 기능 테스트 - 곱셈")
     void calculatorMultiTest() {
         String input = "2 * 2 * 2 * 2";
-        Integer expectedValue = 16;
+        int expectedValue = 16;
 
         expression = new Expression(expressionSplit(input));
-        final Integer result = expression.express();
+        final int result = expression.express();
 
         assertThat(result).isEqualTo(expectedValue);
     }
@@ -54,10 +54,10 @@ public class ExpressionTest {
     @DisplayName("사칙연산 기능 테스트 - 나눗셈")
     void calculatorDivideTest() {
         String input = "50 / 5 / 5 / 2";
-        Integer expectedValue = 1;
+        int expectedValue = 1;
 
         expression = new Expression(expressionSplit(input));
-        final Integer result = expression.express();
+        final int result = expression.express();
 
         assertThat(result).isEqualTo(expectedValue);
     }
