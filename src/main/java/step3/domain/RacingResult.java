@@ -3,11 +3,9 @@ package step3.domain;
 import java.util.List;
 
 public class RacingResult {
-	private final int trial;
 	private List<Integer> positionOfCars;
 
-	public RacingResult(int trial, List<Integer> positions) {
-		this.trial = trial;
+	public RacingResult(List<Integer> positions) {
 		this.positionOfCars = positions;
 	}
 
