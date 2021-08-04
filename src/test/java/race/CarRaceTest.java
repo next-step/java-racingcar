@@ -3,7 +3,6 @@ package race;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
@@ -14,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRaceTest {
 
-    private CarRace carRace = new CarRace();
+    private final CarRace carRace = new CarRace();
 
     @ParameterizedTest
     @ValueSource(strings = {"5", "!"})
@@ -29,14 +28,20 @@ class CarRaceTest {
     @Test
     @DisplayName("랜덤숫자 테스트")
     void getRandomNumTest() {
-        RandomNum randomNum = new RandomNum();
-        assertThat(randomNum.getRandomNum()).isLessThanOrEqualTo(0);
+        assertThat(RandomNum.getRandomNum()).isLessThanOrEqualTo(0);
     }
 
     @Test
     @DisplayName("자동차 경주 테스트")
     void playGameTest() {
         carRace.initGame();
+    }
+
+    @Test
+    @DisplayName("메세지 테스트")
+    void messageTest() {
+        Message.askCarCount();
+        Message.askGameCount();
     }
 
 
