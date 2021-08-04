@@ -1,25 +1,46 @@
 package carRacing;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.InputMismatchException;
+
+import static carRacing.Car.NAME_MAX_LENGTH;
 
 public class CarRacingMain {
 
     public static void main(String[] args) {
 
-        int numberOfCars = requestInputNumber(InputView.InputType.CAR);
-
+        String[] carNames = requestInputCarName();
         int numberOfRacing = requestInputNumber(InputView.InputType.RACING);
 
         CarRacing racing = new CarRacing();
-        racing.start(numberOfCars, numberOfRacing);
+        ArrayList<Car> cars = racing.start(carNames, numberOfRacing);
+        ArrayList<Car> winners = racing.getWinners(cars);
+        ResultView.printWinners(winners);
+    }
+
+    static String[] requestInputCarName() {
+        InputView.printQuestion(InputView.InputType.NAME);
+
+        String[] carNames = Arrays.stream(InputView.inputNames().split(","))
+                .map(String::trim)
+                .toArray(String[]::new);
+
+        boolean isValidName = Arrays.stream(carNames).allMatch(s -> !s.isEmpty() && s.length() <= NAME_MAX_LENGTH);
+        if (!isValidName) {
+            InputView.printNamesError();
+            carNames = requestInputCarName();
+        }
+
+        return carNames;
     }
 
     static int requestInputNumber(InputView.InputType type) {
 
         int number;
 
-        InputView.printNumberQuestion(type);
+        InputView.printQuestion(type);
 
         try {
             number = InputView.inputNumber();
@@ -27,7 +48,7 @@ public class CarRacingMain {
                 throw new InputMismatchException();
             }
         } catch (InputMismatchException e) {
-            InputView.printError();
+            InputView.printNumberError();
             InputView.refreshScanner();
             number = requestInputNumber(type);
         }

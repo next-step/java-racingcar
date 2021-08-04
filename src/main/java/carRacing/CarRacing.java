@@ -1,17 +1,17 @@
 package carRacing;
 
-import java.util.ArrayList;
+import java.util.*;
 
 
 public class CarRacing {
 
     private final RandomMovigStrategy randomMovigStrategy = new RandomMovigStrategy();
 
-    private ArrayList<Car> prepareCars(int numberOfCars) {
+    private ArrayList<Car> prepareCars(String[] carNames) {
         ArrayList<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i<numberOfCars; i++) {
-            cars.add(new Car());
+        for (String name : carNames) {
+            cars.add(new Car(name));
         }
 
         return cars;
@@ -19,21 +19,54 @@ public class CarRacing {
 
     private void startCars(ArrayList<Car> cars) {
         for (Car car : cars) {
-            int position = car.go(randomMovigStrategy);
-            ResultView.printPosition(position);
+            car.go(randomMovigStrategy);
+            ResultView.printPosition(car);
         }
     }
 
-    void start(int numberOfCars, int numberOfRacing) {
-        if (numberOfCars <= 0 || numberOfRacing <= 0) {
+    private void comparePosition(ArrayList<Car> winners, Car car) {
+        int curMaxPosition = winners.get(0).getPosition();
+        int comparePosition = car.getPosition();
+
+        if (curMaxPosition < comparePosition) {
+            winners.clear();
+            winners.add(car);
+            return;
+        }
+
+        if (curMaxPosition == comparePosition) {
+            winners.add(car);
+        }
+    }
+
+    ArrayList<Car> start(String[] carNames, int numberOfRacing) {
+
+        if (carNames == null || carNames.length == 0) {
+            throw new IllegalArgumentException("레이싱 시작을 하기 위한 자동차 이름들이 존재하지 않습니다.");
+        }
+
+        if (numberOfRacing <= 0) {
             throw new IllegalArgumentException("레이싱 시작을 하기 위한 숫자 값이 올바르지 않습니다.");
         }
 
-        ArrayList<Car> cars = prepareCars(numberOfCars);
+        ArrayList<Car> cars = prepareCars(carNames);
 
         for (int round = 1; round <= numberOfRacing; round++) {
             ResultView.divideRound(round);
             startCars(cars);
         }
+
+        return cars;
+    }
+
+    ArrayList<Car> getWinners(ArrayList<Car> cars) {
+        ArrayList<Car> winners = new ArrayList<>();
+        winners.add(cars.get(0));
+
+        for (int i = 1; i < cars.size(); i++) {
+            comparePosition(winners, cars.get(i));
+        }
+
+        return winners;
     }
 }
