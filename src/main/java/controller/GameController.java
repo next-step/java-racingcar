@@ -18,18 +18,27 @@ public class GameController {
         winners = new Winner();
     }
 
-    public void init() throws IllegalArgumentException {
+    public void playRacingGame() throws IllegalArgumentException {
         String[] carNames = StringUtil.participantsSplit(inputView.participantInputView());
 
         for (int count = 0; count < carNames.length; count++) {
             participant.addParticipants(carNames[count]);
         }
-        int gameCount = inputView.playInputView();
+        startGame(inputView.playInputView());
+        endGameResult();
+    }
+
+    public void startGame(int gameCount) {
         for (int count = 0; count < gameCount; count++) {
             participant.playGame();
             ResultView.racingView(participant.readParticipants());
         }
-        winners.createWinnersData(participant.readParticipants(), participant.readWinnerCarDistance());
+    }
+
+    public void endGameResult() {
+        winners.createWinnersData(participant.readParticipants(),
+                participant.readWinnerCarDistance());
+
         ResultView.winnersView(winners.readWinners());
     }
 
