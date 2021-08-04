@@ -1,12 +1,12 @@
-package race;
+package race.domain;
 
 import java.util.List;
 
 public class Condition {
 
-    private int carCount;
-    private int tryCount;
-    private List<String> names;
+    private final int carCount;
+    private final int tryCount;
+    private final List<String> names;
 
     public Condition(int carCount, int tryCount, List<String> names) {
         this.carCount = carCount;

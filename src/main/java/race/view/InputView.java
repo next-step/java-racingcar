@@ -1,6 +1,6 @@
 package race.view;
 
-import race.Condition;
+import race.domain.Condition;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -10,7 +10,6 @@ import static java.lang.System.out;
 public class InputView {
 
     private static InputView inputView;
-    private Condition condition;
 
     public static synchronized InputView getInstance() {
         if (inputView == null) {
@@ -37,11 +36,6 @@ public class InputView {
         int tryCount = scanner.nextInt();
 
         return new Condition(carCount, tryCount, Arrays.asList(names));
-    }
-
-
-    public Condition getCondition() {
-        return condition;
     }
 
 }
