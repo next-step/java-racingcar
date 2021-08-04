@@ -14,8 +14,8 @@ public class Car {
         distance++;
     }
 
-    public void move(MoveStrategy moveStrategy, int randomNumber) {
-        if (moveStrategy.isMoveCondition(randomNumber)) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMoveCondition()) {
             moveCar();
         }
     }

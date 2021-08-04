@@ -5,7 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import study.step3.model.RacingGame;
 import study.step3.model.car.Car;
-import study.step3.model.strategy.CarMoveStrategy;
+import study.step3.model.strategy.RandomMoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,7 +20,7 @@ public class CarTest {
         RacingGame racingGame = new RacingGame(userCarNumber, userGameRound);
 
         for (Car car : racingGame.getCars().getRacingGameCars()) {
-            car.move(new CarMoveStrategy(), inputCarDistance);
+            car.move(new RandomMoveStrategy(inputCarDistance));
             assertThat(car.getDistance()).isEqualTo(expectedCarDistance);
         }
     }
@@ -34,7 +34,7 @@ public class CarTest {
         RacingGame racingGame = new RacingGame(userCarNumber, userGameRound);
 
         for (Car car : racingGame.getCars().getRacingGameCars()) {
-            car.move(new CarMoveStrategy(), inputCarDistance);
+            car.move(new RandomMoveStrategy(inputCarDistance));
             assertThat(car.getDistance()).isEqualTo(expectedCarDistance);
         }
     }

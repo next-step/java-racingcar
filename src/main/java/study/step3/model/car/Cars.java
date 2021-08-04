@@ -1,6 +1,6 @@
 package study.step3.model.car;
 
-import study.step3.model.strategy.CarMoveStrategy;
+import study.step3.model.strategy.RandomMoveStrategy;
 
 import java.util.List;
 import java.util.Random;
@@ -29,8 +29,7 @@ public class Cars {
 
     public void move() {
         for (Car car : racingGameCars) {
-            int randomNumber = getRandomNumber();
-            car.move(new CarMoveStrategy(), randomNumber);
+            car.move(new RandomMoveStrategy());
         }
     }
 

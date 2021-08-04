@@ -11,8 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import study.step3.model.RacingGame;
-import study.step3.model.car.Car;
-import study.step3.model.strategy.CarMoveStrategy;
 import study.step3.view.InputView;
 
 public class RacingGameTest {

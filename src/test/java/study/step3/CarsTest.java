@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import study.step3.model.car.Car;
 import study.step3.model.car.Cars;
-import study.step3.model.strategy.CarMoveStrategy;
+import study.step3.model.strategy.RandomMoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,7 +28,7 @@ public class CarsTest {
         Cars cars = Cars.of(inputCarNumber);
 
         for (Car car : cars.getRacingGameCars()) {
-            car.move(new CarMoveStrategy(), inputCarDistance);
+            car.move(new RandomMoveStrategy(inputCarDistance));
             assertThat(car.getDistance()).isEqualTo(expectedCarDistance);
         }
     }
