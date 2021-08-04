@@ -36,7 +36,7 @@ class StringCalculator {
     public void enter(final String s) {
         values = s.split(" ");
         if(values.length < 3) {
-            throw new IllegalArgumentException("입력값이 올바르지 않습니다");
+            throw new IllegalArgumentException("입력값을 확인해주세요.");
         }
         for(int i = 0; i < values.length; i++) {
             validate(i, values[i]);
@@ -46,10 +46,10 @@ class StringCalculator {
 
     private void validate(final int idx, final String value) {
         if(idx % 2 == 0 && !isNumeric(value)) {
-            throw new IllegalArgumentException("입력값이 올바르지 않습니다");
+            throw new IllegalArgumentException("입력값을 확인해주세요.");
         }
         if(idx % 2 == 1 && isNumeric(value)) {
-            throw new IllegalArgumentException("입력값이 올바르지 않습니다");
+            throw new IllegalArgumentException("입력값을 확인해주세요.");
         }
     }
 
@@ -87,7 +87,7 @@ class StringCalculator {
             return Arrays.stream(Operator.values())
                     .filter(value->value.operator.equals(operator))
                     .findFirst()
-                    .orElseThrow(()->new IllegalArgumentException("유효한 연산자 형식이 아닙니다."));
+                    .orElseThrow(()->new IllegalArgumentException("연산자가 올바르지 않습니다."));
         }
 
         private Double calculate(final Double e1, final Double e2) {
