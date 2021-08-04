@@ -1,9 +1,6 @@
 package stage3;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -18,7 +15,7 @@ public class CarTest {
         car = new Car();
     }
 
-    @Test
+    @RepeatedTest(100)
     @DisplayName("전진 조건 테스트")
     void forwardConditionTest() {
         int minValue = 0;
