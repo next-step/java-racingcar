@@ -100,5 +100,22 @@ public class CarRacingTest {
         });
     }
 
+    @Test
+    @DisplayName("우승자의 이름을 반환해야한다.")
+    public void should_return_winners() {
+        //given
+        List<String> carName = Arrays.asList("car1","car2","car3");
+        Cars carSet = new Cars(carName);
+
+        //when
+        carSet.getCars().get(0).setMove(5);
+
+        //then
+        List<String> topMoveCar = carSet.getTopMoveCar();
+
+        //then
+        assertThat(topMoveCar.get(0)).isEqualTo("car1");
+    }
+
 
 }

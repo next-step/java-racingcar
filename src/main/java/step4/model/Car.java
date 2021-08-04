@@ -19,4 +19,8 @@ public class Car {
     public void go(){
         this.move = move+1;
     }
+
+    public void setMove(int i) {
+        this.move = move;
+    }
 }

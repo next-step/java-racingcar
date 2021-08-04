@@ -21,9 +21,12 @@ public class Main {
 
         CarGame user = new CarGame();
         List<String> results = user.playGame(nameList, tryCnt);
+        List<String> winners = user.getWinner();
+
 
         ResultView result = new ResultView();
         result.showResult(results, carCnt);
+        result.showWinners(winners);
 
     }
 }

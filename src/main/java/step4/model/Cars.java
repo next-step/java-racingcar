@@ -1,7 +1,7 @@
 package step4.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars;
@@ -46,5 +46,38 @@ public class Cars {
         }
 
         result.add(car.getName() + "/" + car.getMove());
+    }
+
+    /**
+     * 자동차들의 거리를 비교해 우승자를 뽑는다.
+     * @return
+     */
+    public List<String> getTopMoveCar() {
+        //모든 자동차의 거리를 담는다.
+        List<Integer> allCarsMove = cars.stream()
+                                        .map(Car::getMove)
+                                        .collect(Collectors.toList());
+        //정렬해서 가장 큰값을 가져온다.
+        Collections.sort(allCarsMove, Collections.reverseOrder());
+        int max = allCarsMove.get(0);
+
+        //자동차 이름을 따로 저장
+        List<String> winners = new ArrayList<>();
+        getWinnersName(max, winners);
+
+        return winners;
+    }
+
+    /**
+     * 최대 움직임과 같은 차들의 이름을 리스트에 담아 반환한다.
+     * @param max
+     * @param winners
+     */
+    public void getWinnersName(int max, List<String> winners) {
+        for (Car car : cars) {
+            if (max == car.getMove()) {
+                winners.add(car.getName());
+            }
+        }
     }
 }
