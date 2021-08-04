@@ -1,6 +1,6 @@
 package carRacing;
 
-import java.util.ArrayList;
+import java.util.*;
 
 
 public class CarRacing {
@@ -24,6 +24,32 @@ public class CarRacing {
         }
     }
 
+    private ArrayList<Car> getWinners(ArrayList<Car> cars) {
+        ArrayList<Car> winners = new ArrayList<>();
+        winners.add(cars.get(0));
+
+        for (int i = 1; i < cars.size(); i++) {
+            comparePosition(winners, cars.get(i));
+        }
+
+        return winners;
+    }
+
+    private void comparePosition(ArrayList<Car> winners, Car car) {
+        int curMaxPosition = winners.get(0).getPosition();
+        int comparePosition = car.getPosition();
+
+        if (curMaxPosition < comparePosition) {
+            winners.clear();
+            winners.add(car);
+            return;
+        }
+
+        if (curMaxPosition == comparePosition) {
+            winners.add(car);
+        }
+    }
+
     void start(String[] carNames, int numberOfRacing) {
 
         if (carNames == null || carNames.length == 0) {
@@ -40,5 +66,7 @@ public class CarRacing {
             ResultView.divideRound(round);
             startCars(cars);
         }
+
+        ResultView.printWinners(getWinners(cars));
     }
 }

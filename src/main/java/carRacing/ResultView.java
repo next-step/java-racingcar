@@ -1,6 +1,9 @@
 package carRacing;
 
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 public class ResultView {
     static void divideRound(int round) {
         if (round == 1) {
@@ -18,5 +21,11 @@ public class ResultView {
         }
 
         System.out.println(state);
+    }
+
+    public static void printWinners(ArrayList<Car> winners) {
+        String winnerNames = winners.stream().map(Car::getName).collect(Collectors.joining(", "));
+        System.out.println();
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
     }
 }
