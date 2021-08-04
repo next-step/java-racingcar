@@ -6,6 +6,7 @@ public class InputConsole {
 
 	private String[] carNames;
 	private int executionCount;
+
 	private Scanner scanner;
 
 	public InputConsole() {

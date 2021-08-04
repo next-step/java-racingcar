@@ -2,12 +2,12 @@ package step4;
 
 public class Car {
 
-	private String carName;
-	private int distance;
-
 	private final int RACE_WIN_RANGE = 4;
 	private final int MOVE_DISTANCE = 1;
 	private final int CAR_INIT_DISTANCE = 0;
+
+	private String carName;
+	private int distance;
 
 	public Car(String carName) {
 		this.carName = carName;

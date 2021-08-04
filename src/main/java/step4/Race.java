@@ -5,11 +5,13 @@ import java.util.List;
 
 public class Race {
 
-	private NumberContainer numberContainer;
-	private int longestDistance;
 	private final int INIT_DISTANCE = 0;
+
+	private int longestDistance;
 	private List<Car> winners;
 	private List<Car> cars;
+
+	private NumberContainer numberContainer;
 
 	public Race(NumberContainer numberContainer) {
 		this.numberContainer = numberContainer;
