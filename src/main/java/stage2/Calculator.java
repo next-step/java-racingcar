@@ -2,12 +2,15 @@ package stage2;
 
 public class Calculator {
     public Integer calculate(String input) {
-        if (" ".equals(input) || "".equals(input) || input == null) {
-            throw new IllegalArgumentException();
-        }
-
+        inputValidate(input);
         final Expression ep = parse(input);
         return ep.express();
+    }
+
+    private void inputValidate(String input) {
+        if (" ".equals(input) || "".equals(input) || input == null) {
+            throw new IllegalArgumentException("잘못된 입력값 입니다 => " + input);
+        }
     }
 
     private Expression parse(String text) {

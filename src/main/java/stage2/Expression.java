@@ -1,9 +1,9 @@
 package stage2;
 
 public class Expression {
-    String[] data;
-    Integer init;
-    String operation;
+    private String[] data;
+    private Integer init;
+    private String operation;
 
     public Expression(String[] data, Integer init) {
         this.data = data;
