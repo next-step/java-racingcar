@@ -11,20 +11,27 @@ public class CarApplication {
     public static void main(String[] args) {
         start();
         List<CarService> carList = init();
-
-        System.out.println("실행 결과");
         execute(carList);
     }
 
     private static void execute(List<CarService> carList) {
+        System.out.println("실행 결과");
         for (int i = 0; i < tryNum; i++) {
             for (CarService car : carList) {
                 final int condition = car.getCondition();
                 car.tryForward(condition);
-                System.out.println(car.getStatus());
+                printResult(car.getStatus());
             }
             System.out.println();
         }
+    }
+
+    private static void printResult(int carStatus) {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < carStatus; i++) {
+            sb.append("-");
+        }
+        System.out.println(sb);
     }
 
     private static void start() {
