@@ -19,8 +19,8 @@ public class CarRacing {
 
     private void startCars(ArrayList<Car> cars) {
         for (Car car : cars) {
-            int position = car.go(randomMovigStrategy);
-            ResultView.printPosition(position);
+            car.go(randomMovigStrategy);
+            ResultView.printPosition(car);
         }
     }
 

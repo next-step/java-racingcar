@@ -9,10 +9,11 @@ public class ResultView {
         System.out.println();
     }
 
-    static void printPosition(int position) {
+    static void printPosition(Car car) {
         StringBuilder state = new StringBuilder();
 
-        for (int i = 0; i < position; i++) {
+        state.append(car.getName()).append(" : ");
+        for (int i = 0; i < car.getPosition(); i++) {
             state.append("-");
         }
 
