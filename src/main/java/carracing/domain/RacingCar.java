@@ -4,8 +4,6 @@ import java.util.Objects;
 
 public class RacingCar {
 
-    private static final int MOVE_THRESHOLD = 3;
-
     private Position position;
     private final CarName carName;
 
@@ -26,8 +24,8 @@ public class RacingCar {
         return carName;
     }
 
-    public void move(Number number) {
-        if (Objects.requireNonNull(number).isOver(MOVE_THRESHOLD)) {
+    public void move(MoveStrategy moveStrategy) {
+        if (Objects.requireNonNull(moveStrategy).movable()) {
             position = position.next();
         }
     }

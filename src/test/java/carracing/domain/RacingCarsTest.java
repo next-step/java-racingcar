@@ -14,12 +14,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarsTest {
 
-    @ParameterizedTest(name = "입력 값에 따라 자동차 목록 내 모든 자동차가 한번씩 움직인다.")
+    @ParameterizedTest(name = "이동전략에 따라 자동차 목록 내 모든 자동차가 한번씩 움직인다.")
     @ValueSource(ints = {0, 3, 4, 9})
     public void carsMoveTest(int mockRandomNumber) {
         List<Position> carPositions = createPositions(1, 3, 5);
         RacingCars racingCars = RacingCars.of(createCars(carPositions));
-        racingCars.move(() -> Number.of(mockRandomNumber));
+        racingCars.move(() -> mockRandomNumber > 3);
         assertThat(racingCars.getPositions())
                 .isEqualTo(expectedPositions(carPositions, mockRandomNumber > 3));
     }
