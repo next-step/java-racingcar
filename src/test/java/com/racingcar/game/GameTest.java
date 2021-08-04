@@ -1,24 +1,22 @@
 package com.racingcar.game;
 
+import com.racingcar.view.model.GameInputDto;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
 
 public class GameTest {
     @DisplayName("Game 정상 동작 테스트")
-    @ParameterizedTest
-    @CsvSource({"5,3", "3,2", "7,6"})
-    public void play(int numberOfCars, int gameRound) {
+    @Test
+    public void play() {
         //given
-        Game game = GameMaker.make(gameRound, numberOfCars);
+        String names = "john,cart,mon,see";
+        int gameRound = 5;
+        GameInputDto input = new GameInputDto(names, gameRound);
 
         //when
-        int[][] result = game.play();
+        Game game = GameMaker.make(input);
 
         //then
-        assertThat(result.length).isEqualTo(gameRound);
-        assertThat(result[0].length).isEqualTo(numberOfCars);
+        game.play();
     }
 }
