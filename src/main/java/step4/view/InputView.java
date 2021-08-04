@@ -26,6 +26,17 @@ public class InputView {
             return true;
         }
 
+        //이름 각각에 대한 빈값 검사
+        String[] names = splitName(input);
+        System.out.println(names.length);
+        if(names.length == 0) return true;
+
+        for (String name : names) {
+            if (name == null || name.trim().isEmpty()){
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -69,6 +80,7 @@ public class InputView {
 
         return Arrays.asList(splitName(input));
     }
+
 
     /**
      * 시도횟수를 입력받는다.
