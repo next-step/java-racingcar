@@ -11,6 +11,7 @@ public class RandomMovingStrategy implements MovingStrategy {
     @Override
     public boolean canMove() {
         int randomNumber = generateRandomNumbers();
+        System.out.println(randomNumber);
         return randomNumber >= LIMIT;
     }
 

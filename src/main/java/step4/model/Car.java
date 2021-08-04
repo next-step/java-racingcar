@@ -1,15 +1,15 @@
 package step4.model;
 
 public class Car {
-    private int index;
+    private String name;
     private int move;
 
-    public Car(int index) {
-        this.index = index;
+    public Car(String name) {
+        this.name = name;
     }
 
-    public int getIndex() {
-        return index;
+    public String getName() {
+        return name;
     }
 
     public int getMove() {

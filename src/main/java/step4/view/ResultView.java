@@ -8,14 +8,14 @@ public class ResultView {
      * @param results
      */
     public void showResult(List<String> results, int carCnt){
-        results.forEach(str -> {
-                    String[] result = str.split("/");
-                    String move = printDistance(Integer.parseInt(result[1]));
-                    System.out.println(result[0] + "번차 : " + move);
-                    if (Integer.parseInt(result[0]) == carCnt) {
-                        System.out.println();
-                    }
-                });
+        for(int i=0; i<results.size(); i++){
+            String[] result = results.get(i).split("/");
+            String move = printDistance(Integer.parseInt(result[1]));
+            System.out.println(result[0] + " : " + move);
+            if ((i+1)%carCnt == 0) {
+                System.out.println();
+            }
+        }
     }
 
 

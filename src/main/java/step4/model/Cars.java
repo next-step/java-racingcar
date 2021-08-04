@@ -6,11 +6,10 @@ import java.util.List;
 public class Cars {
     private List<Car> cars;
 
-    public Cars(int carCnt) {
+    public Cars(List<String> nameList) {
         cars = new ArrayList<>();
-        for (int i=0; i<carCnt; i++) {
-            cars.add(new Car(i+1));
-        }
+        nameList.forEach(name -> cars.add(new Car(name)));
+
     }
 
     /**
@@ -46,6 +45,6 @@ public class Cars {
             car.go();
         }
 
-        result.add(car.getIndex() + "/" + car.getMove());
+        result.add(car.getName() + "/" + car.getMove());
     }
 }

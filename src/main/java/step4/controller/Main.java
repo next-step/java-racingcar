@@ -10,18 +10,20 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         InputView input = new InputView();
-        List<String> carList = input.askName(Message.ASK_CAR_NAME);
+        List<String> nameList = input.askName(Message.ASK_CAR_NAME);
         int tryCnt = input.askTryCnt(Message.ASK_TRY_CNT);
-//
-//        System.out.println("자동차 대수 :" + carCnt);
-//        System.out.println("시도 횟수 :" + tryCnt);
-//        System.out.println();
-//
-//        CarGame user = new CarGame();
-//        List<String> results = user.playGame(carCnt, tryCnt);
-//
-//        ResultView result = new ResultView();
-//        result.showResult(results, carCnt);
+        int carCnt = nameList.size();
+
+        System.out.println("자동차 대수 :" + carCnt);
+        System.out.println("시도 횟수 :" + tryCnt);
+        System.out.println("실행결과");
+        System.out.println();
+
+        CarGame user = new CarGame();
+        List<String> results = user.playGame(nameList, tryCnt);
+
+        ResultView result = new ResultView();
+        result.showResult(results, carCnt);
 
     }
 }
