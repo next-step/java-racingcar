@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -27,9 +28,19 @@ public class CarTest {
         assertTrue(result >= minValue && result <= maxValue);
     }
 
-//    @Test
-//    @DisplayName("전진 조건 얻기")
-//    void tryTest() {
-//        car.tryForward();
-//    }
+    @Test
+    @DisplayName("전진 조건 얻기 - 전진")
+    void tryTest1() {
+        int condition = 4;
+        boolean result = car.isForward(condition);
+        assertTrue(result);
+    }
+
+    @Test
+    @DisplayName("전진 조건 얻기 - 멈춤")
+    void tryTest2() {
+        int condition = 3;
+        boolean result = car.isForward(condition);
+        assertFalse(result);
+    }
 }

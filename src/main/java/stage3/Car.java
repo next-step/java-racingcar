@@ -13,4 +13,9 @@ public class Car {
         Random random = new Random();
         return random.nextInt(10);
     }
+
+    public boolean isForward(int condition) {
+        if (condition >= 4) return true;
+        return false;
+    }
 }
