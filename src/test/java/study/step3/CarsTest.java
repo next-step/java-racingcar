@@ -1,12 +1,12 @@
 package study.step3;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import study.step3.model.car.Car;
 import study.step3.model.car.Cars;
-import study.step3.model.strategy.RandomMoveStrategy;
+import study.step3.model.strategy.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,16 +20,29 @@ public class CarsTest {
         assertThat(cars.getRacingGameCars().size()).isEqualTo(inputCarNumber);
     }
 
+    @Test
     @DisplayName("Car Move Test")
-    @ParameterizedTest
-    @CsvSource({"0,0", "1,0", "2,0", "3,0", "4,1", "5,1"})
-    void carMoveTest(int inputCarDistance, int expectedCarDistance) {
+    void carMoveTest() {
         int inputCarNumber = 3;
         Cars cars = Cars.of(inputCarNumber);
 
         for (Car car : cars.getRacingGameCars()) {
-            car.move(new RandomMoveStrategy(inputCarDistance));
-            assertThat(car.getDistance()).isEqualTo(expectedCarDistance);
+            MoveStrategy moveStrategy = () -> true;
+            car.move(moveStrategy);
+            assertThat(car.getDistance()).isEqualTo(1);
+        }
+    }
+
+    @Test
+    @DisplayName("Car Move Stop Test")
+    void carStopTest() {
+        int inputCarNumber = 3;
+        Cars cars = Cars.of(inputCarNumber);
+
+        for (Car car : cars.getRacingGameCars()) {
+            MoveStrategy moveStrategy = () -> false;
+            car.move(moveStrategy);
+            assertThat(car.getDistance()).isEqualTo(0);
         }
     }
 }

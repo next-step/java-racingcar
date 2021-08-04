@@ -2,40 +2,40 @@ package study.step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import study.step3.model.RacingGame;
+import org.junit.jupiter.params.provider.ValueSource;
 import study.step3.model.car.Car;
-import study.step3.model.strategy.RandomMoveStrategy;
+import study.step3.model.strategy.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
     @ParameterizedTest
-    @CsvSource({"0,0", "1,0", "2,0", "3,0", "4,1", "5,1"})
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7})
     @DisplayName("Car Move Test")
-    void carMoveTest(int inputCarDistance, int expectedCarDistance) {
-        int userCarNumber = 3;
-        int userGameRound = 5;
-        RacingGame racingGame = new RacingGame(userCarNumber, userGameRound);
+    void carMoveTest(int moveCount) {
+        Car car = new Car();
+        MoveStrategy moveStrategy = () -> true;
 
-        for (Car car : racingGame.getCars().getRacingGameCars()) {
-            car.move(new RandomMoveStrategy(inputCarDistance));
-            assertThat(car.getDistance()).isEqualTo(expectedCarDistance);
+        for (int i = 0; i < moveCount; i++) {
+            car.move(moveStrategy);
         }
+
+        assertThat(car.getDistance()).isEqualTo(moveCount);
+
     }
 
     @ParameterizedTest
-    @CsvSource({"0,0", "1,0", "2,0", "3,0"})
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7})
     @DisplayName("Car Stop Test")
-    void carStopTest(int inputCarDistance, int expectedCarDistance) {
-        int userCarNumber = 3;
-        int userGameRound = 5;
-        RacingGame racingGame = new RacingGame(userCarNumber, userGameRound);
+    void carStopTest(int moveCount) {
+        Car car = new Car();
+        MoveStrategy moveStrategy = () -> false;
 
-        for (Car car : racingGame.getCars().getRacingGameCars()) {
-            car.move(new RandomMoveStrategy(inputCarDistance));
-            assertThat(car.getDistance()).isEqualTo(expectedCarDistance);
+        for (int i = 0; i < moveCount; i++) {
+            car.move(moveStrategy);
         }
+
+        assertThat(car.getDistance()).isEqualTo(0);
     }
 }

@@ -10,6 +10,10 @@ public class Car {
         return distance;
     }
 
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
     private void moveCar() {
         distance++;
     }
