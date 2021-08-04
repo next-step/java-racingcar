@@ -36,7 +36,7 @@ class CarRacingTest {
     @DisplayName("자동차 이름이 5글자를 초과하는 경우 IllegalArgumentException가 발생한다.")
     void check_validate_carname_test(String carNameString) {
         assertThatThrownBy(() -> {
-            CarRacing carRacing = new CarRacing(carNameString);
+            new CarRacing(carNameString);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 다섯 글자를 초과할 수 없습니다");
 
@@ -45,7 +45,7 @@ class CarRacingTest {
     @ParameterizedTest
     @CsvSource(value = {"a,b:2", "test1,test2,test3:3"}, delimiter = ':')
     @DisplayName("racing 및 전진했을 때, 값이 증가하는지 테스트한다.")
-    void doRacingStart(String carNameString, int expexctedCount) {
+    void doRacingStart(String carNameString, int expectedCount) {
         assertThatCode(() -> {
             CarRacing carRacing = new CarRacing(carNameString);
 
@@ -54,7 +54,7 @@ class CarRacingTest {
 
             racing.get(0).moveForward(4);
 
-            assertThat(racing.size()).isEqualTo(expexctedCount);
+            assertThat(racing.size()).isEqualTo(expectedCount);
             assertThat(racing.get(0).getMoveDistance()).isEqualTo(expected);
         }).doesNotThrowAnyException();
     }
