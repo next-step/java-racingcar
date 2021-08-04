@@ -26,15 +26,16 @@
 - Commit 단위는 Readme.md에 정리한 기능 목록 단위로 추가 
 - Commit Message Convertion 지키기 
 
-#### TODO 
-- ~~사용자 입력~~ 
-  - 자동차 대수
-  - 시도 횟수
-  - 잘못된 input exception
-- 전진 조건 구하기
-  - Random 값 구하기 (0-9)
-  - Random 값 제한 (4이상)
-- 전진, 멈춤 구현
+#### TODO
+- Application
+  - 사용자 입력
+    - 자동차 대수
+    - 시도 횟수
+- Car
+  - ~~전진 조건 구하기~~
+    - Random 값 구하기 (0-9)
+    - Random 값 제한 (4이상)
+  - ~~전진, 멈춤 구현~~
 - 자동차 상태 출력 
 
 ---
