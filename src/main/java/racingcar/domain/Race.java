@@ -7,10 +7,10 @@ public class Race {
     private ArrayList<Car> cars;
 
     int carNum = 1;
-    int raceNum = 1;
-    Race(int carNum, int raceNum) {
+    int roundNum = 1;
+    Race(int carNum, int roundNum) {
         this.carNum = carNum;
-        this.raceNum = raceNum;
+        this.roundNum = roundNum;
         checkIfValidArgumentsForRace();
 
         cars = new ArrayList<>(10);
@@ -23,11 +23,15 @@ public class Race {
     }
 
     private void checkIfValidArgumentsForRace() throws IllegalArgumentException {
-        if (carNum == 0 || raceNum == 0)
+        if (carNum == 0 || roundNum == 0)
             throw new IllegalArgumentException("Invalid Arguments for Race");
     }
 
     int getNumberOfCars() {
         return cars.size();
+    }
+
+    void runRace() {
+        
     }
 }

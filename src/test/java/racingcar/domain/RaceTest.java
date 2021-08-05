@@ -22,10 +22,10 @@ public class RaceTest {
     @DisplayName("Race() : Car 개수 입력이 잘 못될 경우 Exception 발생")
     @ParameterizedTest
     @CsvSource({"0, 0", "0, 1", "1, 0"})
-    void Race_ShouldThrowIllegalArgumentException(int carNum, int raceNum) {
+    void Race_ShouldThrowIllegalArgumentException(int carNum, int roundNum) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    Race race = new Race(carNum, raceNum);
+                    Race race = new Race(carNum, roundNum);
                 });
     }
 }
