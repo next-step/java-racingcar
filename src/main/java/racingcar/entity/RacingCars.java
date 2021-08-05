@@ -35,8 +35,8 @@ public class RacingCars {
     }
 
     public void initialize(String[] carNames) {
-        for (int i = 0; i < carNames.length; i++) {
-            racingCars.add(new RacingCar(carNames[i]));
+        for (String carName: carNames) {
+            racingCars.add(new RacingCar(carName));
         }
     }
 
