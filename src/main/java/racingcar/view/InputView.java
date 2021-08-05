@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import racingcar.exception.InvalidCarSettingException;
 import racingcar.exception.InvalidUserInputException;
 
 import java.util.Arrays;
@@ -16,10 +15,6 @@ public class InputView {
     private static final String INVALID_GAME_COUNT_MESSAGE = "1회 이상의 게임 횟수를 입력해야 시작 가능합니다.";
     private static final String INVALID_BLANK_STRING_MESSAGE = "공백은 입력이 불가합니다.";
 
-    private static final String INVALID_DUPLICATE_CAR_NAME_MESSAGE = "중복된 자동차가 있습니다.";
-    private static final String INVALID_BLANK_CAR_NAME_MESSAGE = "자동차 이름은 공백이 불가합니다.";
-    private static final String INVALID_LENGTH_CAR_NAME_MESSAGE = "자동차 이름은 5자를 초과할 수 없습니다.";
-    private static final String INVALID_CAR_COUNT_MESSAGE = "2개 이상의 자동차를 입력해야 시작 가능합니다.";
 
     private static String getUserInputValue(String message) {
         System.out.println(message);
@@ -33,7 +28,6 @@ public class InputView {
 
     public static List<String> inputNameOfCars() {
         List<String> names = Arrays.asList(getUserInputValue(INPUT_CAR_NAME_MESSAGE).split(","));
-        checkCarsValidation(names);
         return names;
     }
 
@@ -43,41 +37,9 @@ public class InputView {
         return countOfGame;
     }
 
-
     private static void checkUserInput(String input) {
         if (input == null || input.isEmpty()) {
             throw new InvalidUserInputException(INVALID_BLANK_STRING_MESSAGE);
-        }
-    }
-
-    private static void checkCarsValidation(List<String> names) {
-        checkBlankCarName(names);
-        checkLengthCarName(names);
-        checkDuplicateCar(names);
-        checkCountOfCar(names);
-    }
-
-    private static void checkBlankCarName(List<String> names) {
-        if (names.stream().anyMatch(n -> n == null || n.trim().isEmpty())) {
-            throw new InvalidCarSettingException(INVALID_BLANK_CAR_NAME_MESSAGE);
-        }
-    }
-
-    private static void checkLengthCarName(List<String> names) {
-        if (names.stream().anyMatch(n -> n.length() > 5)) {
-            throw new InvalidCarSettingException(INVALID_LENGTH_CAR_NAME_MESSAGE);
-        }
-    }
-
-    private static void checkDuplicateCar(List<String> names) {
-        if (names.size() != names.stream().distinct().count()) {
-            throw new InvalidCarSettingException(INVALID_DUPLICATE_CAR_NAME_MESSAGE);
-        }
-    }
-
-    private static void checkCountOfCar(List<String> names) {
-        if (names.size() <= 1) {
-            throw new InvalidCarSettingException(INVALID_CAR_COUNT_MESSAGE);
         }
     }
 

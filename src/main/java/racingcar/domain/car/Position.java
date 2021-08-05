@@ -1,13 +1,15 @@
 package racingcar.domain.car;
 
+import racingcar.exception.InvalidCarSettingException;
 import racingcar.util.Util;
 
 public class Position {
     private int position;
     private static final int FORWARD_DISTANCE = 1;
+    private static final String INVALID_CAR_POSITION_MESSAGE = "자동차 위치는 음수값을 가질수 없습니다.";
 
-    public Position() {
-        this.position = 0;
+    public Position(int position) {
+        this.position = position;
     }
 
     public void movePosition() {
@@ -26,5 +28,11 @@ public class Position {
 
     public int getPosition() {
         return position;
+    }
+
+    private void checkPositionValidation(int position) {
+        if (position < 0) {
+            throw new InvalidCarSettingException(INVALID_CAR_POSITION_MESSAGE);
+        }
     }
 }
