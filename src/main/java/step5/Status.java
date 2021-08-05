@@ -4,21 +4,21 @@ import java.util.Objects;
 
 public class Status {
 
-    private int status;
+    private int value;
 
-    public Status(int status) {
-        if (status < 0) {
+    public Status(int value) {
+        if (value < 0) {
             throw new IllegalArgumentException();
         }
-        this.status = status;
+        this.value = value;
     }
 
-    public int getStatus() {
-        return status;
+    public int getValue() {
+        return value;
     }
 
     public void increase() {
-        status++;
+        value++;
     }
 
     @Override
@@ -26,11 +26,11 @@ public class Status {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Status status1 = (Status) o;
-        return status == status1.status;
+        return value == status1.value;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(status);
+        return Objects.hash(value);
     }
 }

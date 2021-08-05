@@ -33,7 +33,7 @@ public class RacingCar {
     }
 
     public int getStatus() {
-        return this.status.getStatus();
+        return this.status.getValue();
     }
 
     public boolean isWinner(int value) {
