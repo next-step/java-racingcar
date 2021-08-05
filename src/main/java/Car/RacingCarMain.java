@@ -1,7 +1,8 @@
 package Car;
 
-import UI.InputView;
-import UI.OutputView;
+import Car.domain.RacingCar;
+import Car.view.InputView;
+import Car.view.OutputView;
 
 import java.util.Random;
 

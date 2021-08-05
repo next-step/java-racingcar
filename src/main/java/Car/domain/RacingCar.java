@@ -1,8 +1,7 @@
-package Car;
+package Car.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class RacingCar {
     private static final int RANDOM_NUMBER_BOUND = 10;

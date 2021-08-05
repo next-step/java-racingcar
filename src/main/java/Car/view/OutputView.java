@@ -1,6 +1,6 @@
-package UI;
+package Car.view;
 
-import Car.Car;
+import Car.domain.Car;
 
 import java.util.List;
 
