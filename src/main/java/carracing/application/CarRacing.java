@@ -10,8 +10,9 @@ import java.util.List;
 
 public class CarRacing {
 
-    public List<RaceResult> race(int carCount, int raceCount) {
-        List<Car> cars = makeCars(carCount);
+    public List<RaceResult> race(String inputName, int raceCount) {
+        String[] names = inputName.split(",");
+        List<Car> cars = makeCars(names);
         List<RaceResult> results = new ArrayList<>();
 
         for (int i = 0; i < raceCount; i++) {
@@ -23,8 +24,8 @@ public class CarRacing {
         return results;
     }
 
-    public List<Car> makeCars(int count) {
-        return CarFactory.makeCars(new String[1]);
+    public List<Car> makeCars(String[] names) {
+        return CarFactory.makeCars(names);
     }
 
 }

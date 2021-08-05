@@ -15,14 +15,14 @@ class CarRacingTest {
     void makeCarTest() {
 
         // given
-        int count = 5;
+        String[] names = {"1", "2", "3"};
         CarRacing carRacing = new CarRacing();
 
         // when
-        List<Car> result = carRacing.makeCars(count);
+        List<Car> result = carRacing.makeCars(names);
 
         // then
-        assertThat(result.size()).isEqualTo(count);
+        assertThat(result.size()).isEqualTo(names.length);
     }
 
     @Test
@@ -30,12 +30,12 @@ class CarRacingTest {
     void raceTest() {
 
         // given
-        int carCount = 5;
+        String inputName = "test1,test2,test3";
         int raceCount = 3;
         CarRacing carRacing = new CarRacing();
 
         // when
-        List<RaceResult> results = carRacing.race(carCount, raceCount);
+        List<RaceResult> results = carRacing.race(inputName, raceCount);
 
         // then
         assertThat(results.size()).isEqualTo(raceCount);
