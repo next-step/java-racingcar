@@ -12,7 +12,7 @@ public class Name {
         if (isNullOrEmpty(name)) {
             throw new IllegalArgumentException("자동차의 이름이 비었습니다.");
         }
-        if (outOfMaxLength(name)){
+        if (isNameSizeOutOfRange(name)){
             throw new IllegalArgumentException("자동차 이름은 " + MAX_NAME_LENGTH + "자를 초과할 수 없습니다.");
         }
         this.name = name;
@@ -22,7 +22,7 @@ public class Name {
         return name == null || name.isEmpty();
     }
 
-    private boolean outOfMaxLength(String name) {
+    private boolean isNameSizeOutOfRange(String name) {
         return name.length() > MAX_NAME_LENGTH;
     }
 
