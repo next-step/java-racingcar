@@ -9,11 +9,11 @@ public class Race {
 
     private ArrayList<Car> cars;
 
-    int carNum = 1;
-    int roundNum = 1;
-    int currentRound = 0;
+    private int carNum = 1;
+    private int roundNum = 1;
+    private int currentRound = 0;
 
-    Race(int carNum, int roundNum) {
+    public Race(int carNum, int roundNum) {
         this.carNum = carNum;
         this.roundNum = roundNum;
         checkIfValidArgumentsForRace();
@@ -37,11 +37,15 @@ public class Race {
         return cars.size();
     }
 
-    ArrayList getCars() {
+    public ArrayList getCars() {
         return cars;
     }
 
-    void runOneRound() {
+    public int getCurrentRound() {
+        return currentRound;
+    }
+
+    public void runOneRound() {
         Random ran = new Random();
 
         for (Car car : cars) {
@@ -51,7 +55,7 @@ public class Race {
         currentRound++;
     }
 
-    boolean isRaceOver() {
+    public boolean isRaceOver() {
         return roundNum == currentRound;
     }
 }

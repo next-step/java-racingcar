@@ -1,14 +1,17 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
+import racingcar.domain.Race;
 
 import java.util.ArrayList;
 
 public class ResultView {
-    static void printCurrentState(ArrayList<Car> cars) {
+    public static void printCurrentState(Race race, ArrayList<Car> cars) {
+        System.out.println("< Round " + race.getCurrentRound() + ">");
         for (Car car : cars) {
             printLocationOfCar(car);
         }
+        System.out.println();
     }
 
     static void printLocationOfCar(Car car) {
@@ -16,5 +19,9 @@ public class ResultView {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    public static void printGameOver() {
+        System.out.println("Game Over");
     }
 }
