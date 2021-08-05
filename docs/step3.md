@@ -78,11 +78,11 @@ int number = scanner.nextInt();
   - [X] Random 값으로 전진여부 판단
   - [X] 정지 or 전진 동작
 - [ ] Race 클래스
-  - [ ] 입력된 자동차 수 만큼 Car 객체 생성
-  - [ ] 현재 회차 Car 전진 상태 출력
-  - [ ] 회차별 Car 동작 진행
+  - [X] 입력된 자동차 수 만큼 Car 객체 생성
+  - [X] 현재 회차 Car 전진 상태 출력
+  - [X] 회차별 Car 동작 진행
 - [ ] View 클래스
   - [ ] Race할 자동차 수 입력
   - [ ] Race 진행 횟수 입력
-  - [ ] 현재 Race 상태 출력
+  - [X] 현재 Race 상태 출력
 
