@@ -9,5 +9,7 @@ public class RaceGame {
 
         carNum = StartView.inputCarNum();
         roundNum = StartView.inputRoundNum();
+
+
     }
 }
