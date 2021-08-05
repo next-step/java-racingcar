@@ -1,4 +1,4 @@
-package racingcar.car;
+package racingcar.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
