@@ -9,13 +9,10 @@ public class CarWinCheckService {
 
     public List<Car> checkGameResult(List<Car[]> rounds) {
         Car[] togetherCars = rounds.get(rounds.size()-1);
-
         int max = togetherCars[0].getTotalMove();
-
         for(int i = 1 ; i < togetherCars.length;i++) {
             max = maxCheck(togetherCars, i, max);
         }
-
         return compare(togetherCars, max);
     }
 
