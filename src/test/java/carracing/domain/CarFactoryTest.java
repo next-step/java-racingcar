@@ -1,8 +1,6 @@
 package carracing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +20,7 @@ class CarFactoryTest {
 
         // then
         assertThat(cars.size()).isEqualTo(names.length);
-        for(int i=0; i<cars.size(); i++){
+        for (int i = 0; i < cars.size(); i++) {
             assertThat(cars.get(i).name()).isEqualTo(names[i]);
         }
     }
