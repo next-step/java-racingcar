@@ -8,6 +8,6 @@ public class RaceGame {
         int roundNum;
 
         carNum = StartView.inputCarNum();
-        round
+        roundNum = StartView.inputRoundNum();
     }
 }
