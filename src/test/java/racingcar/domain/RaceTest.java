@@ -31,7 +31,8 @@ public class RaceTest {
     }
 
     @DisplayName("isRaceOver : 입력한 Round 만큼 Race를 진행 완료하면 true 반환")
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 4, 5, 6, 7, 10})
     void isRaceOver(int roundNum) {
         Race race = new Race(3, roundNum);
 
