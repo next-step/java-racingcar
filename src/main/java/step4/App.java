@@ -34,7 +34,6 @@ public class App {
 		resultView.getResultComment();
 		for(int raceIndex = 1; raceIndex <= inputConsole.getExecutionCount() ; raceIndex++) {
 			race.startRace();
-			race.updateLongestDistance();
 			List<Car> cars = race.getCars();
 			resultView.viewResult(cars);
 		}

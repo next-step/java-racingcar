@@ -5,18 +5,14 @@ import java.util.List;
 
 public class Race {
 
-	private final int INIT_DISTANCE = 0;
+	private static final int INIT_DISTANCE = 0;
 
-	private int longestDistance;
-	private List<Car> winners;
 	private List<Car> cars;
 
 	private NumberContainer numberContainer;
 
 	public Race(NumberContainer numberContainer) {
 		this.numberContainer = numberContainer;
-		this.longestDistance = INIT_DISTANCE;
-		winners = new ArrayList<>();
 		cars = new ArrayList<>();
 	}
 
@@ -25,38 +21,33 @@ public class Race {
 	}
 
 	public void startRace() {
-		for(Car car : cars) {
+		for (Car car : cars) {
 			int randomNumber = numberContainer.getRandomNumber();
 			car.move(randomNumber);
 		}
 	}
 
-	public void addCar(String carName) {
+	public void addCar(final String carName) {
 		cars.add(new Car(carName));
 	}
 
 	public List<Car> getWinners() {
-		for(Car car : cars) {
-			setWinners(car);
+		List<Car> winners = new ArrayList<>();
+		for (Car car : cars) {
+
 		}
 		return winners;
 	}
 
-	public void updateLongestDistance() {
-		for(Car car : cars) {
-			checkCarDistance(car);
+	public int getLongestDistance() {
+		int longestDistance = INIT_DISTANCE;
+		for (Car car : cars) {
+			longestDistance = compareDistance(car, longestDistance);
 		}
+		return longestDistance;
 	}
 
-	private void setWinners(Car car) {
-		if(car.getDistance() == longestDistance) {
-			winners.add(car);
-		}
-	}
-
-	private void checkCarDistance(Car car) {
-		if(car.getDistance() > longestDistance) {
-			longestDistance = car.getDistance();
-		}
+	private int compareDistance(Car car, int currentLongestDistance) {
+		return car.getDistance() > currentLongestDistance ? car.getDistance() : currentLongestDistance;
 	}
 }
