@@ -1,63 +1,42 @@
 package racingcar.domain.race;
 
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.car.Cars;
 import racingcar.exception.InvalidUserInputException;
-import racingcar.view.InputView;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RaceTest {
+    Cars cars = new Cars(Arrays.asList("pobi", "bass", "hj"));
 
     @Test
-    @DisplayName("사용자 게임 횟수 입력 성공 테스트")
-    void 게임_횟수_입력_성공() {
-
-        int input = 2;
-        InputStream in = new ByteArrayInputStream(Integer.toString(input).getBytes());
-        System.setIn(in);
-
-        String racingTime = InputView.inputCountOfGame();
-        assertThat(Integer.parseInt(racingTime)).isEqualTo(2);
+    @DisplayName("레이스 생성 테스트")
+    void 레이스_생성_성공_테스트() {
+        Race race = new Race(cars, 2);
+        assertThat(race.getCars()).isEqualTo(cars);
+        assertThat(race.getRacingTime()).isEqualTo(2);
     }
 
     @Test
-    @DisplayName("사용자 게임 회수 입력 실패 테스트(음수 입력)")
-    void 게임_회수_입력_실패_음수입력() {
-        int input = -1;
-        InputStream in = new ByteArrayInputStream(Integer.toString(input).getBytes());
-        System.setIn(in);
-
-        assertThatThrownBy(() -> InputView.inputCountOfGame())
+    @DisplayName("게임 횟수 음수 입력 테스트")
+    void 게임_횟수_음수_입력_실패_테스트() {
+        assertThatThrownBy(() -> new Race(cars, -1))
                 .isInstanceOf(InvalidUserInputException.class)
                 .hasMessage("1회 이상의 게임 횟수를 입력해야 시작 가능합니다.");
     }
 
-    @Test
-    @DisplayName("사용자 게임 횟수 입력 실패 테스트(0 입력)")
-    void 게임_횟수_입력_실패_0입력() {
-        int input = 0;
-        InputStream in = new ByteArrayInputStream(Integer.toString(input).getBytes());
-        System.setIn(in);
-
-        assertThatThrownBy(() -> InputView.inputCountOfGame())
-                .isInstanceOf(InvalidUserInputException.class)
-                .hasMessage("1회 이상의 게임 횟수를 입력해야 시작 가능합니다.");
-    }
-
-    @Test
-    @DisplayName("사용자 게임 횟수 입력 실패 테스트(문자 입력)")
-    void 게임_횟수_입력_실패_문자입력() {
-        InputStream in = new ByteArrayInputStream("one".getBytes());
-        System.setIn(in);
-
-        assertThatThrownBy(() -> InputView.inputCountOfGame())
-                .isInstanceOf(InvalidUserInputException.class)
-                .hasMessage("숫자만 입력 가능합니다.");
-    }
+    /*@Test
+    @DisplayName("레이스 우승자 선정 테스트")
+    void 레이스_우승자_선정_성공_테스트() {
+        cars.getCars()
+        Car carA = new Car("pobi");
+        carA.movePosition(4);
+        carA.movePosition(4);
+        Car carB = new Car("hj");
+        carB.movePosition(4);
+    }*/
 }

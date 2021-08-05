@@ -1,22 +1,26 @@
 package racingcar.domain.car;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.InvalidCarSettingException;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class PositionTest {
-    private Position position;
 
-    @BeforeEach
-    void init() {
-        this.position = new Position();
+    @Test
+    @DisplayName("Position 0 입력 테스트")
+    void 위치_설정_성공_테스트() {
+        Position position = new Position(0);
+        assertThat(position.getPosition()).isEqualTo(0);
     }
 
     @Test
-    @DisplayName("Position 처음 위치 확인 테스트")
-    void 처음_위치_0_테스트() {
-        assertThat(position.getPosition()).isEqualTo(0);
+    @DisplayName("Position 음수 입력 테스트")
+    void 위치_음수_설정_실패_테스트() {
+        assertThatThrownBy(() -> new Position(-1))
+                .isInstanceOf(InvalidCarSettingException.class)
+                .hasMessage("자동차 위치는 음수값을 가질수 없습니다.");
     }
 }
