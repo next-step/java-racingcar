@@ -1,4 +1,4 @@
-package study;
+package study.racingcar.domain;
 
 public interface CarMovingStrategy {
 

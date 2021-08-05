@@ -1,4 +1,6 @@
-package study;
+package study.racingcar.view;
+
+import study.racingcar.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;

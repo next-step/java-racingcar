@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import study.racingcar.domain.Car;
+import study.racingcar.domain.RacingManager;
+import study.racingcar.domain.RandomMovingStrategy;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,14 +25,6 @@ public class RacingManagerTest {
         RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
         int randomNumber = randomMovingStrategy.getRandomNumber();
         assertThat(randomNumber).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(9);
-    }
-
-    @DisplayName("레이싱 카 리스트가 만들어지는지 테스트")
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    public void makeRacingCarTest(int numberOfCar) {
-        RacingManager racingManager = new RacingManager(numberOfCar);
-        assertThat(numberOfCar).isEqualTo(racingManager.getCarList().size());
     }
 
     @DisplayName("레이싱 카 리스트가 이름으로 만들어지는지 테스트")

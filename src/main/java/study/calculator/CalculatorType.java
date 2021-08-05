@@ -1,4 +1,4 @@
-package study;
+package study.calculator;
 
 import java.util.Arrays;
 import java.util.Optional;
