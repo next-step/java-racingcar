@@ -3,6 +3,7 @@ package racingcar.entity;
 import racingcar.strategy.MoveStrategy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,6 +50,6 @@ public class RacingCars {
     }
 
     public List<RacingCar> getRacingCars() {
-        return racingCars;
+        return Collections.unmodifiableList(racingCars);
     }
 }
