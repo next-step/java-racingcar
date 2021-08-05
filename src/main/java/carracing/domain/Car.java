@@ -3,15 +3,25 @@ package carracing.domain;
 public class Car {
 
     private static final int MOVE_NUMBER = 4;
+    private static final int NAME_LIMIT_LENGTH = 5;
 
     private int location;
 
-    public Car() {
+    private final String name;
+
+    public Car(String name) {
+        checkNameLength(name);
+
         this.location = 0;
+        this.name = name;
     }
 
     public int location() {
         return location;
+    }
+
+    public String name() {
+        return name;
     }
 
     public void forward() {
@@ -27,5 +37,11 @@ public class Car {
             forward();
         }
         return this.location;
+    }
+
+    public void checkNameLength(String name) {
+        if (name.length() > NAME_LIMIT_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 5 이하여야 합니다.");
+        }
     }
 }
