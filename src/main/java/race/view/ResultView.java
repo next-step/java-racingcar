@@ -4,6 +4,7 @@ import race.domain.Car;
 import race.domain.Cars;
 import race.domain.Name;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,7 +14,7 @@ public class ResultView {
 
     private static ResultView resultView;
     private static final String DELIMITER = ",";
-    private static final char DASH = '-';
+    private static final String DASH = "-";
     private static final String COLON = " : ";
     private static final String RESULT_START_FORMAT = "실행 결과";
     private static final String RESULT_END_FORMAT = "가 최종 우승했습니다.";
@@ -48,9 +49,10 @@ public class ResultView {
 
     private void printCars(Cars cars, int tryCount) {
         List<Car> carsInfo = cars.findCarsInfo();
+
         carsInfo.forEach(car -> {
                     out.print(car.getName().toString() + COLON + DASH);
-                    out.println(DASH * car.getDistance(tryCount));
+                    out.println(String.join("", Collections.nCopies(car.getDistance(tryCount), DASH)));
                 });
     }
 
