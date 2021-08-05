@@ -7,9 +7,7 @@ import racingcar.view.ResultView;
 import java.util.List;
 
 public class RacingCarGame {
-    public RacingCarGame(RacingCars racingCars, String[] carNames) {
-        racingCars.initialize(carNames);
-    }
+    public RacingCarGame() {}
 
     public void race(RacingCars racingCars, int tryNumber, MoveStrategy moveStrategy) {
         ResultView.printResultFirstLine();

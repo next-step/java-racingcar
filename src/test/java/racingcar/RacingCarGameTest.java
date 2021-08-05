@@ -8,8 +8,8 @@ import racingcar.entity.RacingCar;
 import racingcar.entity.RacingCars;
 import racingcar.strategy.AlwaysMoveStrategy;
 import racingcar.strategy.RandomMoveStrategy;
+import racingcar.view.InputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,8 +23,9 @@ class RacingCarGameTest {
 
     @BeforeEach
     void setUp() {
-        racingCars = new RacingCars(new ArrayList<>());
-        racingCarGame = new RacingCarGame(racingCars, TEST_CAR_NAMES);
+        racingCars = new RacingCars(InputView.requestCarNames());
+        racingCars.initialize(TEST_CAR_NAMES);
+        racingCarGame = new RacingCarGame();
     }
 
     @Test
