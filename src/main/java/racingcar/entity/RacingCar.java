@@ -36,4 +36,8 @@ public class RacingCar {
     public int getPosition() {
         return position;
     }
+
+    public boolean isSamePositionAs(int winnerRecord) {
+        return position == winnerRecord;
+    }
 }

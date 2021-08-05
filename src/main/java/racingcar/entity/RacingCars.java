@@ -29,7 +29,7 @@ public class RacingCars {
 
     public List<String> pickWinners(int winnerRecord) {
         return racingCars.stream()
-                .filter(racingCar -> racingCar.getPosition() == winnerRecord)
+                .filter(racingCar -> racingCar.isSamePositionAs(winnerRecord))
                 .map(RacingCar::getName)
                 .collect(Collectors.toList());
     }
