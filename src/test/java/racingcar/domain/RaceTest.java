@@ -1,10 +1,8 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,13 +16,13 @@ public class RaceTest {
     void Race(int carNum) {
         Race race = new Race(carNum, 1);
 
-        assertThat(race.cars.size()).isEqualTo(carNum);
+        assertThat(race.getNumberOfCars()).isEqualTo(carNum);
     }
 
     @DisplayName("Race() : Car 개수 입력이 잘 못될 경우 Exception 발생")
     @ParameterizedTest
-    @NullAndEmptySource
-    void Race_ShouldThrowIllegalArgumentException(carNum, raceNum) {
+    @CsvSource({"0, 0", "0, 1", "1, 0"})
+    void Race_ShouldThrowIllegalArgumentException(int carNum, int raceNum) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     Race race = new Race(carNum, raceNum);
