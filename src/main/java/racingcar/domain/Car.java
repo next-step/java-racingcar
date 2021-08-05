@@ -4,11 +4,11 @@ public class Car {
     static final int CRITERION_FOR_MOVING = 4;
     private int location = 0;
 
-    int getLocation() {
+    public int getLocation() {
         return location;
     }
 
-    void resetLocation() {
+    public void resetLocation() {
         location = 0;
     }
 

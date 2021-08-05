@@ -11,6 +11,7 @@ public class Race {
 
     int carNum = 1;
     int roundNum = 1;
+
     Race(int carNum, int roundNum) {
         this.carNum = carNum;
         this.roundNum = roundNum;
@@ -21,6 +22,7 @@ public class Race {
             this.cars.add(new Car());
         }
     }
+
     Race() {
         this(1, 1);
     }
@@ -32,6 +34,10 @@ public class Race {
 
     int getNumberOfCars() {
         return cars.size();
+    }
+
+    ArrayList getCars() {
+        return cars;
     }
 
     void runOneRound() {
