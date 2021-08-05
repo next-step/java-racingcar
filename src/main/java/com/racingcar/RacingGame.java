@@ -3,17 +3,14 @@ package com.racingcar;
 import com.racingcar.game.Game;
 import com.racingcar.game.GameMaker;
 import com.racingcar.view.InputView;
-import com.racingcar.view.ResultView;
-import com.racingcar.view.model.GameInput;
+import com.racingcar.view.model.GameInputDto;
 
 public class RacingGame {
     public static void main(String[] args) {
-        GameInput input = InputView.drawAndParse();
+        GameInputDto input = InputView.drawAndParse();
 
-        Game game = GameMaker.make(input.getGameRound(), input.getNumberOfCars());
+        Game game = GameMaker.make(input);
 
-        int[][] result = game.play();
-
-        ResultView.draw(result);
+        game.play();
     }
 }
