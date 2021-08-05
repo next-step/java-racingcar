@@ -46,7 +46,6 @@ class CarRacingTest {
     @DisplayName("자동차 경주 결과의 우승자 리스트를 반환할 수 있어야 한다.")
     void findRaceWinnerTest() {
 
-
         // given
         Car winner = new Car("우승자");
         winner.forward();
@@ -64,6 +63,33 @@ class CarRacingTest {
         // then
         assertThat(winners.size()).isEqualTo(1);
         assertThat(winners.get(0).name()).isEqualTo(winner.name());
+    }
+
+    @Test
+    @DisplayName("자동차 경주 결과의 우승자가 여러명인 경우 모두 반환할 수 있어야 한다.")
+    void findRaceWinnersTest() {
+
+        // given
+        Car winner1 = new Car("우승자1");
+        Car winner2 = new Car("우승자2");
+        winner1.forward();
+        winner2.forward();
+        List<Car> cars = Arrays.asList(
+            new Car("자동차1"),
+            new Car("자동차2"),
+            new Car("자동차3"),
+            winner1,
+            winner2
+        );
+        CarRacing carRacing = new CarRacing();
+
+        // when
+        List<Car> winners = carRacing.findWinners(cars);
+
+        // then
+        assertThat(winners.size()).isEqualTo(2);
+        assertThat(winners).contains(winner1);
+        assertThat(winners).contains(winner2);
     }
 
 }
