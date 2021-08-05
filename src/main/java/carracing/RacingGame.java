@@ -1,9 +1,6 @@
 package carracing;
 
-import carracing.domain.Position;
-import carracing.domain.RacingCar;
-import carracing.domain.RacingCars;
-import carracing.domain.RandomNumberGenerator;
+import carracing.domain.*;
 import carracing.view.InputView;
 import carracing.view.OutputView;
 
@@ -17,12 +14,12 @@ public class RacingGame {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private final RandomNumberGenerator randomNumberGenerator;
+    private final MoveStrategy moveStrategy;
 
-    public RacingGame(InputView inputView, OutputView outputView, RandomNumberGenerator randomNumberGenerator) {
+    public RacingGame(InputView inputView, OutputView outputView, MoveStrategy moveStrategy) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.randomNumberGenerator = randomNumberGenerator;
+        this.moveStrategy = moveStrategy;
     }
 
     public void start() {
@@ -47,7 +44,7 @@ public class RacingGame {
     private void race(RacingCars racingCars, int moveCount) {
         outputView.printResultMessage();
         for (int i = 0; i < moveCount; ++i) {
-            racingCars.move(randomNumberGenerator::generateRandomNumber);
+            racingCars.forEach(car -> car.move(moveStrategy));
             outputView.printPositions(racingCars);
             outputView.printNewLine();
         }
@@ -57,8 +54,8 @@ public class RacingGame {
         try {
             InputView inputView = InputView.of(System.in);
             OutputView outputView = OutputView.of(System.out);
-            RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.of(new Random());
-            RacingGame racingGame = new RacingGame(inputView, outputView, randomNumberGenerator);
+            MoveStrategy moveStrategy = RandomMoveStrategy.of(new Random());
+            RacingGame racingGame = new RacingGame(inputView, outputView, moveStrategy);
             racingGame.start();
         } catch (Exception e) {
             e.printStackTrace();

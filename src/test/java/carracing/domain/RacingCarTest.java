@@ -7,26 +7,15 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class RacingCarTest {
 
-    @ParameterizedTest(name = "랜덤 값이 4이상인 경우 전진한다.")
-    @ValueSource(ints = {4, 7, 9})
-    public void goTest(int randomNumber) {
+    @ParameterizedTest(name = "이동전략에 따라 자동차가 이동한다.")
+    @ValueSource(strings = {"false", "true"})
+    public void moveTest(boolean movable) {
         Position positionBeforeMove = Position.of(0);
         CarName carName = CarName.of("yunb");
         RacingCar racingCar = RacingCar.of(positionBeforeMove, carName);
-        racingCar.move(Number.of(randomNumber));
+        racingCar.move(() -> movable);
         assertThat(racingCar.getPosition())
-                .matches(position -> position.equals(positionBeforeMove.next()));
-    }
-
-    @ParameterizedTest(name = "랜덤 값이 4미만인 경우 제자리에 위치한다.")
-    @ValueSource(ints = {0, 2, 3})
-    public void stopTest(int randomNumber) {
-        Position positionBeforeMove = Position.of(0);
-        CarName carName = CarName.of("yunb");
-        RacingCar racingCar = RacingCar.of(positionBeforeMove, carName);
-        racingCar.move(Number.of(randomNumber));
-        assertThat(racingCar.getPosition())
-                .isEqualTo(positionBeforeMove);
+                .isEqualTo(movable ? positionBeforeMove.next() : positionBeforeMove);
     }
 
 }

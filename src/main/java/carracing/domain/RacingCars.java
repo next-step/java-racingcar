@@ -5,7 +5,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class RacingCars {
@@ -18,10 +17,6 @@ public class RacingCars {
 
     public static RacingCars of(List<RacingCar> racingCarList) {
         return new RacingCars(racingCarList);
-    }
-
-    public void move(Supplier<Number> numberSupplier) {
-        racingCars.forEach(car -> car.move(numberSupplier.get()));
     }
 
     public List<Position> getPositions() {
