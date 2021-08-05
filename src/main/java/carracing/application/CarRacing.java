@@ -24,7 +24,7 @@ public class CarRacing {
     }
 
     public List<Car> makeCars(int count) {
-        return CarFactory.makeCars(count);
+        return CarFactory.makeCars(new String[1]);
     }
 
 }
