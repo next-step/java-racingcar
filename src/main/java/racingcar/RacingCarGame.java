@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.entity.Name;
 import racingcar.entity.RacingCars;
 import racingcar.strategy.MoveStrategy;
 import racingcar.view.ResultView;
@@ -27,7 +28,7 @@ public class RacingCarGame {
 
     }
 
-    public List<String> pickWinners(RacingCars racingCars, int winnerRecord) {
+    public List<Name> pickWinners(RacingCars racingCars, int winnerRecord) {
         return racingCars.pickWinners(winnerRecord);
     }
 }

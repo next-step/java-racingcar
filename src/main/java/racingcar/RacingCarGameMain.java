@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.entity.Name;
 import racingcar.entity.RacingCars;
 import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
@@ -16,7 +17,7 @@ public class RacingCarGameMain {
         racingCarGame.race(racingCars, tryNumber, new RandomMoveStrategy());
 
         int winnerRecord = racingCarGame.findMaxPosition(racingCars);
-        List<String> winners = racingCarGame.pickWinners(racingCars, winnerRecord);
+        List<Name> winners = racingCarGame.pickWinners(racingCars, winnerRecord);
         ResultView.printWinners(winners);
     }
 }

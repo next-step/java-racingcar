@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class RacingCars {
     private final List<RacingCar> racingCars;
 
-    public RacingCars(String[] carNames) {
+    public RacingCars(List<Name> carNames) {
         this.racingCars = new ArrayList<>();
         initialize(carNames);
     }
@@ -29,15 +29,15 @@ public class RacingCars {
         return maxPosition;
     }
 
-    public List<String> pickWinners(int winnerRecord) {
+    public List<Name> pickWinners(int winnerRecord) {
         return racingCars.stream()
                 .filter(racingCar -> racingCar.isSamePositionAs(winnerRecord))
                 .map(RacingCar::getName)
                 .collect(Collectors.toList());
     }
 
-    public void initialize(String[] carNames) {
-        for (String carName: carNames) {
+    private void initialize(List<Name> carNames) {
+        for (Name carName: carNames) {
             racingCars.add(new RacingCar(carName));
         }
     }

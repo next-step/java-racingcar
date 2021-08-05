@@ -17,13 +17,13 @@ class RacingCarTest {
 
     @BeforeEach
     void setUp() {
-        racingCar = new RacingCar(TEST_CAR_NAME);
+        racingCar = new RacingCar(new Name(TEST_CAR_NAME));
     }
 
     @Test
     @DisplayName("레이싱카 이름이 5자를 초과하면 IllegalArgumentException이 발생한다.")
     void constructor(){
-        assertThatIllegalArgumentException().isThrownBy(() -> new RacingCar("harris")).withMessage("이름은 5자를 초과할 수 없습니다.");
+        assertThatIllegalArgumentException().isThrownBy(() -> new RacingCar(new Name("harris"))).withMessage("이름은 5자를 초과할 수 없습니다.");
     }
 
     @Test

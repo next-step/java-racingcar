@@ -1,13 +1,15 @@
 package racingcar.view;
 
+import racingcar.entity.Name;
 import racingcar.entity.RacingCar;
 import racingcar.entity.RacingCars;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
-    public static void printWinners(List<String> winners) {
-        String winnerListWithComma = String.join(",", winners);
+    public static void printWinners(List<Name> winners) {
+        String winnerListWithComma = String.join(",", winners.stream().map(winner -> winner.getName()).collect(Collectors.toList()));
         System.out.print(winnerListWithComma);
         System.out.println("가 최종 우승했습니다.");
     }
@@ -20,8 +22,8 @@ public class ResultView {
         System.out.println();
     }
 
-    private static void printName(String name) {
-        System.out.print(name + " : ");
+    private static void printName(Name name) {
+        System.out.print(name.getName() + " : ");
     }
 
     private static void printPosition(int position) {

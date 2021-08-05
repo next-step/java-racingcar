@@ -7,15 +7,12 @@ public class RacingCar {
     public static final int BASE_POSITION = 0;
     public static final int ONE_STEP = 1;
 
-    private final String name;
+    private final Name name;
     private int position;
 
-    public RacingCar(String carName) {
-        this.position = BASE_POSITION;
-        if(carName.length() > 5){
-            throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다.");
-        }
+    public RacingCar(Name carName) {
         this.name = carName;
+        this.position = BASE_POSITION;
     }
 
     public void moveIfMovable(MoveStrategy moveStrategy) {
@@ -29,7 +26,7 @@ public class RacingCar {
         }
         return maxPosition;
     }
-    public String getName() {
+    public Name getName() {
         return name;
     }
 

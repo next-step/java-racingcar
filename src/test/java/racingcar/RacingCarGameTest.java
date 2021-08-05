@@ -4,34 +4,39 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import racingcar.entity.Name;
 import racingcar.entity.RacingCar;
 import racingcar.entity.RacingCars;
 import racingcar.strategy.AlwaysMoveStrategy;
 import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarGameTest {
-    private static final String[] TEST_CAR_NAMES = {"harr1", "harr2", "harr3"};
+    private List<Name> names = new ArrayList<>();
+
     private static final AlwaysMoveStrategy ALWAYS_MOVE_STRATEGY = new AlwaysMoveStrategy();
     private static final int TRY_NUMBER = 10;
     private RacingCarGame racingCarGame;
     private RacingCars racingCars;
 
     @BeforeEach
-    void setUp() {
-        racingCars = new RacingCars(InputView.requestCarNames());
-        racingCars.initialize(TEST_CAR_NAMES);
+    void setUp()  {
+        names.add(new Name("harr1"));
+        names.add(new Name("harr2"));
+        names.add(new Name("harr3"));
+        racingCars = new RacingCars(names);
         racingCarGame = new RacingCarGame();
     }
 
     @Test
     @DisplayName("레이싱 카의 차량대수로 초괴화를 했을 때 리스트의 사이즈가 변하는 것을 확인한다.")
     void initializeRacingCars() {
-        assertThat(racingCars.size()).isEqualTo(TEST_CAR_NAMES.length);
+        assertThat(racingCars.size()).isEqualTo(names.size());
     }
 
     @RepeatedTest(10)
@@ -86,9 +91,8 @@ class RacingCarGameTest {
     void pickWinners(){
         racingCars.get(0).moveIfMovable(ALWAYS_MOVE_STRATEGY);
         int maxPosition = racingCarGame.findMaxPosition(racingCars);
-        List<String> winners = racingCarGame.pickWinners(racingCars, maxPosition);
+        List<Name> winners = racingCarGame.pickWinners(racingCars, maxPosition);
         assertThat(winners.size()).isEqualTo(1);
         assertThat(winners.get(0)).isEqualTo(racingCars.get(0).getName());
-
     }
 }
