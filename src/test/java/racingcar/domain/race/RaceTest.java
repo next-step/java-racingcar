@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.race;
 
 
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +12,7 @@ import java.io.InputStream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class RacingTest {
+public class RaceTest {
 
     @Test
     @DisplayName("사용자 게임 횟수 입력 성공 테스트")
