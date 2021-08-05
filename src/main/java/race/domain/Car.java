@@ -29,12 +29,6 @@ public class Car {
                 .count();
     }
 
-    public int getTotalDistance() {
-        return (int) distance.stream()
-                .filter(i -> i == FORWARD)
-                .count();
-    }
-
     public Name getName() {
         return this.name;
     }

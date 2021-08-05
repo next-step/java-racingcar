@@ -1,6 +1,5 @@
 package race.domain;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -20,7 +19,7 @@ public class Cars {
     }
 
     public void playUntilEnd() {
-        for(int tryCount = 0; tryCount < maxTryCount ; tryCount++){
+        for (int tryCount = 0; tryCount < maxTryCount; tryCount++) {
             playOneRound();
         }
     }
@@ -28,7 +27,7 @@ public class Cars {
     public List<Name> findWinners() {
         int highDistance = findHighestDistance();
         return cars.stream()
-                .filter(car -> car.getTotalDistance() >= highDistance)
+                .filter(car -> car.getDistance(maxTryCount) >= highDistance)
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
@@ -39,12 +38,12 @@ public class Cars {
 
     private int findHighestDistance() {
         return cars.stream()
-                .max(Comparator.comparingInt(Car::getTotalDistance)).get()
-                .getTotalDistance();
+                .map(car -> car.getDistance(maxTryCount))
+                .max(Integer::compare).get().intValue();
     }
 
     private void playOneRound() {
-        cars.forEach(car->car.move(movable()));
+        cars.forEach(car -> car.move(movable()));
     }
 
     private boolean movable() {
