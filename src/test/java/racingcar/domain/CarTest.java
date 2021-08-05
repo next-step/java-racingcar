@@ -6,6 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Random;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -51,5 +53,25 @@ public class CarTest {
         assertThat(car.getLocation()).isNotEqualTo(0);
         car.resetLocation();
         assertThat(car.getLocation()).isEqualTo(0);
+    }
+
+    @DisplayName("move : 입력 값이 4 이상이면 car가 전진하는 기능 테스트")
+    @ParameterizedTest
+    @CsvSource({"0, 0", "3, 0", "4, 1", "9, 1"})
+    void move(int value, int expected) {
+        Random ran = new Random();
+        Car car = new Car();
+        int previousLocation;
+        int currentLocation;
+
+        for (int i = 0; i < ran.nextInt(10); i++) {
+            goForward();
+        }
+        previousLocation = car.getLocation();
+
+        car.move(value);
+        currentLocation = car.getLocation();
+
+        assertThat(currentLocation - previousLocation).isEqualTo(expected);
     }
 }
