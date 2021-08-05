@@ -32,12 +32,12 @@ public class RacingCar {
         return this;
     }
 
-    public int getStatusInteger() {
+    public int getStatus() {
         return this.status.getStatus();
     }
 
     public boolean isWinner(int value) {
-        return getStatusInteger() == value;
+        return getStatus() == value;
     }
 
     public Name getName() {

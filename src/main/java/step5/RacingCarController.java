@@ -27,7 +27,7 @@ public class RacingCarController {
     private static void printRacingCarsStatus(RacingCars racingCars) {
         racingCars.getAll()
                 .stream()
-                .map(RacingCar::getStatusInteger)
+                .map(RacingCar::getStatus)
                 .forEach(OutputView::printResult);
         newLine();
     }

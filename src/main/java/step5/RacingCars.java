@@ -50,7 +50,7 @@ public class RacingCars {
 
     private int getWinnerStatus() {
         return racingCars.stream()
-                .map(RacingCar::getStatusInteger)
+                .map(RacingCar::getStatus)
                 .mapToInt(value -> value)
                 .max()
                 .orElseThrow(NoSuchElementException::new);

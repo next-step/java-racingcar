@@ -15,7 +15,7 @@ public class RacingCarTest {
         //when
         car.move(new RandomMovable());
         //then
-        assertThat(car.getStatusInteger()).isBetween(1, 2);
+        assertThat(car.getStatus()).isBetween(1, 2);
     }
 
     @Test
