@@ -11,6 +11,7 @@ public class Race {
 
     int carNum = 1;
     int roundNum = 1;
+    int currentRound = 0;
 
     Race(int carNum, int roundNum) {
         this.carNum = carNum;
@@ -42,8 +43,15 @@ public class Race {
 
     void runOneRound() {
         Random ran = new Random();
+
         for (Car car : cars) {
             car.move(ran.nextInt(MAX_RANDOM_NUM));
         }
+
+        currentRound++;
+    }
+
+    boolean isRaceOver() {
+        return roundNum == currentRound;
     }
 }

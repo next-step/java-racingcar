@@ -1,10 +1,13 @@
 package racingcar;
 
+import racingcar.view.StartView;
+
 public class RaceGame {
     public static void main(String[] args) {
-        int CarNum;
-        int RoundNum;
+        int carNum;
+        int roundNum;
 
-
+        carNum = StartView.inputCarNum();
+        round
     }
 }
