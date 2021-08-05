@@ -7,7 +7,7 @@ public class RacingCar {
     public static final int BASE_POSITION = 0;
     public static final int ONE_STEP = 1;
 
-    private String name;
+    private final String name;
     private int position;
 
     public RacingCar(String carName) {
