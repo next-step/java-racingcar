@@ -9,8 +9,10 @@ public class Car implements Comparable<Car> {
         this.position = new Position(0);
     }
 
-    public void movePosition() {
-        position.movePosition();
+    public void movePosition(int number) {
+        if (number >= 4) {
+            position.moveForward();
+        }
     }
 
     public String getName() {

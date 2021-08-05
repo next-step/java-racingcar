@@ -1,6 +1,7 @@
 package racingcar.domain.car;
 
 import racingcar.exception.InvalidCarSettingException;
+import racingcar.util.Util;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,7 +23,7 @@ public class Cars {
 
     public void moveCars() {
         for (Car car : cars) {
-            car.movePosition();
+            car.movePosition(Util.generateRandom());
         }
     }
 
@@ -40,7 +41,7 @@ public class Cars {
 
     private void checkCarsValidation(List<String> names) {
         checkDuplicateCar(names);
-        checkCountOfCar(names);
+        checkCountOfCars(names);
     }
 
     private void checkDuplicateCar(List<String> names) {
@@ -49,7 +50,7 @@ public class Cars {
         }
     }
 
-    private void checkCountOfCar(List<String> names) {
+    private void checkCountOfCars(List<String> names) {
         if (names.size() <= 1) {
             throw new InvalidCarSettingException(INVALID_CAR_COUNT_MESSAGE);
         }
