@@ -2,14 +2,15 @@ package racingcar.entity;
 
 import racingcar.strategy.MoveStrategy;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCars {
     private List<RacingCar> racingCars;
 
-    public RacingCars(List<RacingCar> racingCars) {
-        this.racingCars = racingCars;
+    public RacingCars() {
+        this.racingCars = new ArrayList<>();
     }
 
     public void moveIfMovableAll(MoveStrategy moveStrategy) {
