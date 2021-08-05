@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Race {
 
-	private static final int INIT_DISTANCE = 0;
+	private static final int INIT_INSTANCE = 0;
 
 	private List<Car> cars;
 
@@ -27,27 +27,26 @@ public class Race {
 		}
 	}
 
-	public void addCar(final String carName) {
-		cars.add(new Car(carName));
+	public void addCar(Car car) {
+		cars.add(car);
 	}
 
 	public List<Car> getWinners() {
 		List<Car> winners = new ArrayList<>();
+		int maxDistance = getMaxDistance();
 		for (Car car : cars) {
-
+			if (car.getStatusWinnerStatus(maxDistance)) {
+				winners.add(car);
+			}
 		}
 		return winners;
 	}
 
-	public int getLongestDistance() {
-		int longestDistance = INIT_DISTANCE;
+	private int getMaxDistance() {
+		int maxDistance = INIT_INSTANCE;
 		for (Car car : cars) {
-			longestDistance = compareDistance(car, longestDistance);
+			maxDistance = car.getMaxDistance(maxDistance);
 		}
-		return longestDistance;
-	}
-
-	private int compareDistance(Car car, int currentLongestDistance) {
-		return car.getDistance() > currentLongestDistance ? car.getDistance() : currentLongestDistance;
+		return maxDistance;
 	}
 }

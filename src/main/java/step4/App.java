@@ -12,6 +12,8 @@ import java.util.List;
 
 public class App {
 
+	private static final int INIT_DISTANCE = 0;
+
 	public static void main(String[] args) {
 		// 입력 역할 & 출력 역할
 		InputConsole inputConsole = new InputConsole();
@@ -27,7 +29,7 @@ public class App {
 
 		for(int index = 0 ; index < carNumber ; index++) {
 			String carName = inputConsole.getCarNames()[index];
-			race.addCar(carName);
+			race.addCar(new Car(carName, INIT_DISTANCE));
 		}
 
 		// 경기 시작 & 결과
