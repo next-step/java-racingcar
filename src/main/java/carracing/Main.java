@@ -13,6 +13,7 @@ public class Main {
         CarRacing carRacing = new CarRacing();
         RaceResult results = carRacing
             .race(inputView.inputCarCount(), inputView.inputTryCount());
+
         ResultView resultView = new ResultView();
         resultView.showResult(results);
     }
