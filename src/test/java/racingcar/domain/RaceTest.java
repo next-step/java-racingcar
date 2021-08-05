@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -27,5 +28,17 @@ public class RaceTest {
                 .isThrownBy(() -> {
                     Race race = new Race(carNum, roundNum);
                 });
+    }
+
+    @DisplayName("isRaceOver : 입력한 Round 만큼 Race를 진행 완료하면 true 반환")
+    @Test
+    void isRaceOver(int roundNum) {
+        Race race = new Race(3, roundNum);
+
+        for (int i = 0; i < roundNum; i++) {
+            race.runOneRound();
+        }
+
+        assertThat(race.isRaceOver()).isEqualTo(true);
     }
 }

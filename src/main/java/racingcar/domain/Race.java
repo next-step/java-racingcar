@@ -46,4 +46,5 @@ public class Race {
             car.move(ran.nextInt(MAX_RANDOM_NUM));
         }
     }
+
 }
