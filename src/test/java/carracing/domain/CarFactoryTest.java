@@ -2,6 +2,7 @@ package carracing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,9 +21,7 @@ class CarFactoryTest {
 
         // then
         assertThat(cars.size()).isEqualTo(names.length);
-        for (int i = 0; i < cars.size(); i++) {
-            assertThat(cars.get(i).name()).isEqualTo(names[i]);
-        }
+        assertThat(cars).extracting("name").hasSameElementsAs(Arrays.asList(names));
     }
 
 }
