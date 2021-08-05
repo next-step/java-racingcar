@@ -2,7 +2,7 @@ package controller;
 
 import domain.Participants;
 import domain.Winner;
-import util.StringUtil;
+import util.CarNameUtil;
 import view.InputView;
 import view.ResultView;
 
@@ -19,7 +19,7 @@ public class GameController {
     }
 
     public void playRacingGame() throws IllegalArgumentException {
-        String[] carNames = StringUtil.participantsSplit(inputView.participantInputView());
+        String[] carNames = CarNameUtil.participantsSplit(inputView.participantInputView());
 
         for (int count = 0; count < carNames.length; count++) {
             participant.addParticipants(carNames[count]);

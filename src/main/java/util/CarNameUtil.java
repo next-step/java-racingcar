@@ -1,6 +1,6 @@
 package util;
 
-public class StringUtil {
+public class CarNameUtil {
 
     public static String[] participantsSplit(String carName) {
 

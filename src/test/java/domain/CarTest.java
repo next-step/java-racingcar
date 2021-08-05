@@ -18,7 +18,7 @@ class CarTest {
     @DisplayName("4이상일 경우 전진 테스트")
     @Test
     public void moveAdvanceTest() {
-        car.carMoveBehavior(5);
+        car.carMoveBehavior(4);
         assertThat(car.readCarDistance()).isEqualTo(1);
     }
 
