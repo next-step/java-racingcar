@@ -36,10 +36,10 @@ class CarRacingTest {
         CarRacing carRacing = new CarRacing();
 
         // when
-        List<RaceResult> results = carRacing.race(inputName, raceCount);
+        RaceResult results = carRacing.race(inputName, raceCount);
 
         // then
-        assertThat(results.size()).isEqualTo(raceCount);
+        assertThat(results.raceResult().size()).isEqualTo(raceCount);
     }
 
     @Test
