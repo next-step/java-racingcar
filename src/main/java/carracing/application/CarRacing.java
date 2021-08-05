@@ -31,7 +31,7 @@ public class CarRacing {
             .max(Comparator.comparingInt(o -> o.location()))
             .get().location();
         List<Car> winners = cars.stream()
-            .filter(car -> car.location()==maxLocation)
+            .filter(car -> car.location() == maxLocation)
             .collect(Collectors.toList());
         return winners;
     }
