@@ -23,4 +23,10 @@ public class Car {
 
         return value >= CRITERION_FOR_MOVING;
     }
+
+    void move(int value) {
+        if (isAbleToMove(value)) {
+            goForward();
+        }
+    }
 }

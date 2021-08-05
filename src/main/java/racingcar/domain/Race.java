@@ -1,8 +1,11 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Random;
+
 public class Race {
     final int MAX_CAR_NUM = 10;
+    final int MAX_RANDOM_NUM = 10;
 
     private ArrayList<Car> cars;
 
@@ -31,7 +34,10 @@ public class Race {
         return cars.size();
     }
 
-    void runRace() {
-        
+    void runOneRound() {
+        Random ran = new Random();
+        for (Car car : cars) {
+            car.move(ran.nextInt(MAX_RANDOM_NUM));
+        }
     }
 }
