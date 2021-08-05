@@ -27,14 +27,6 @@ public class RacingManagerTest {
         assertThat(randomNumber).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(9);
     }
 
-    @DisplayName("레이싱 카 리스트가 만들어지는지 테스트")
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    public void makeRacingCarTest(int numberOfCar) {
-        RacingManager racingManager = new RacingManager(numberOfCar);
-        assertThat(numberOfCar).isEqualTo(racingManager.getCarList().size());
-    }
-
     @DisplayName("레이싱 카 리스트가 이름으로 만들어지는지 테스트")
     @ParameterizedTest
     @CsvSource(value = {"eddy : 1", "eddy,lily : 2", "eddy,lily,boss : 3"}, delimiter = ':')

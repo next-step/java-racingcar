@@ -13,13 +13,13 @@ public class CarTest {
     @DisplayName("자동차 이동성공 테스트")
     @Test
     public void moveCarTest() {
-        Car car = new Car();
+        Car car = new Car("boss");
         car.moveCar(() -> true);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"eddy, lily, boss"})
+    @ValueSource(strings = {"eddy", "lily", "boss"})
     public void getCarNameTest(String name) {
         Car car = new Car(name);
         assertThat(car.getName()).isEqualTo(name);

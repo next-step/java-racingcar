@@ -2,30 +2,31 @@ package study.racingcar.domain;
 
 public class Car {
 
-    private int position;
+    private Position position;
 
-    private String name;
-
-    public Car() {
-
+    private CarName carName;
+    
+    public Car(String name, int position) {
+        this.carName = new CarName(name);
+        this.position = new Position(position);
     }
 
     public Car(String name) {
-        this.name = name;
+        this(name, 0);
     }
 
     public void moveCar(CarMovingStrategy carMovingStrategy) {
         if (carMovingStrategy.canMoveCar()) {
-            position++;
+            this.position = position.moveForward();
         }
     }
 
     public int getPosition() {
-        return this.position;
+        return this.position.getValue();
     }
 
     public String getName() {
-        return this.name;
+        return carName.getValue();
     }
 
 }
