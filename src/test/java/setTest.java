@@ -1,19 +1,18 @@
-import org.assertj.core.api.StringAssert;
 import org.assertj.core.internal.Strings;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.platform.commons.util.StringUtils.isBlank;
 
 public class setTest {
 
@@ -30,11 +29,13 @@ public class setTest {
 
     // Test Case 구현
     @Test
+    @DisplayName("sizeCheck")
     void size() {
-        numbers.size();
+            assertThat(numbers.size()).isEqualTo(3);
     }
 
     @Test
+    @DisplayName("")
     void contains() {
         assertThat(numbers.contains(1)).isTrue();
         assertThat(numbers.contains(2)).isTrue();
@@ -44,13 +45,13 @@ public class setTest {
     @ParameterizedTest
     @ValueSource(strings = {"1", "1","2", "3"})
     void isBlank_ShouldReturnTrueForNullOrBlankStrings(String input) {
-     //   assertTrue(Strings.isBlank(input));
+        assertTrue(isBlank(input));
     }
 
     @ParameterizedTest
     @NullAndEmptySource
     void isBlank_ShouldReturnTrueForNullAndEmptyStrings(String input) {
-    //    assertTrue(Strings.isBlank(input));
+        assertTrue(isBlank(input));
     }
 
     @ParameterizedTest
@@ -59,6 +60,5 @@ public class setTest {
         String actualValue = input.toLowerCase();
         assertEquals(expected, actualValue);
     }
-
 
 }
