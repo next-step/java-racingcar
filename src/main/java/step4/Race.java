@@ -9,10 +9,9 @@ public class Race {
 
 	private List<Car> cars;
 
-	private NumberContainer numberContainer;
-
-	public Race(NumberContainer numberContainer, String[] carNames) {
-		this.numberContainer = numberContainer;
+	private NumberGenerator generator;
+	public Race(NumberGenerator generator, String[] carNames) {
+		this.generator = generator;
 		cars = new ArrayList<>();
 		setCars(carNames);
 	}
@@ -23,8 +22,7 @@ public class Race {
 
 	public void startRace() {
 		for (Car car : cars) {
-			int randomNumber = numberContainer.getRandomNumber();
-			car.move(randomNumber);
+			car.move(generator);
 		}
 	}
 

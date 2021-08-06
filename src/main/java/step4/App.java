@@ -15,9 +15,9 @@ public class App {
 		inputConsole.setValues();
 		ResultView resultView = new ResultView();
 
-		// 랜덤 숫자 제조기 & 경기 생성
-		NumberContainer numberContainer = new NumberContainer();
-		Race race = new Race(numberContainer, inputConsole.getCarNames());
+		// 제조기 전략 & 경기 생성
+		NumberGenerator generator = new Generatorstrategy();
+		Race race = new Race(generator, inputConsole.getCarNames());
 
 		// 경기 시작 & 결과
 		resultView.getResultComment();

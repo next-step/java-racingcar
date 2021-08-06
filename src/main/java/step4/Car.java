@@ -29,8 +29,8 @@ public class Car {
 		return carName.getName();
 	}
 
-	public void move(int randomNumber) {
-		if(randomNumber >= RACE_WIN_RANGE) {
+	public void move(NumberGenerator generator) {
+		if(generator.getNumber() >= RACE_WIN_RANGE) {
 			distance += MOVE_DISTANCE;
 		}
 	}
