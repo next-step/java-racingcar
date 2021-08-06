@@ -14,6 +14,7 @@ public class Car {
         if(randomNum >= moveNumber) {
             distance ++;
         }
+
     }
 
     public int getDistance() {
