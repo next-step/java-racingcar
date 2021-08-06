@@ -15,7 +15,7 @@ public class RacingCarGameTest {
 
     @BeforeEach
     void setUp() {
-        racingCarGame = new RacingCarGame(3,1);
+        racingCarGame = new RacingCarGame("a,b,c",1);
     }
 
     @DisplayName("입력한 자동차 수 만큼 자동차 객체를 생성한다.")

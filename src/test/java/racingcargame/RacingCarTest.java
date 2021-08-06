@@ -16,7 +16,8 @@ public class RacingCarTest {
             , "3$0"}
             , delimiter = '$')
     void stop(int input, int expected) {
-        RacingCar racingCar = new RacingCar();
+        String carName = "a,b";
+        RacingCar racingCar = new RacingCar(carName);
 
         int actual = racingCar.tryToMove(input);
 
@@ -34,7 +35,8 @@ public class RacingCarTest {
             , "9$1"}
             , delimiter = '$')
     void move(int input, int expected) {
-        RacingCar racingCar = new RacingCar();
+        String carName = "a,b";
+        RacingCar racingCar = new RacingCar(carName);
 
         int actual = racingCar.tryToMove(input);
 
