@@ -13,5 +13,6 @@ public class CarRacingStarter {
 
         ResultView resultView = new ResultView();
         resultView.printResult(racingCarGame);
+
     }
 }
