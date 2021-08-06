@@ -9,21 +9,9 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 ## 구현 기능 목록
+1. 자동차 대수와 자동차 횟수를 입력한다.
+2. 랜덤값에 따라 자동차를 이동시킨다.
+3. 경기 결과를 출력한다.
 
-### InputView
-Scanner를 통해 입력값을 받는 클래스
 
-* int getCarCount : 자동차의 대수 입력
-* int getGameCount : 게임을 시도할 횟수 입력
 
-### Racing
-자동차 경주 게임을 담당하는 메인 클래스
-
-* race(int, int) : 자동차 대수와 시도 횟수를 받아 게임을 진행하는 메소드
-* printResult() : "실행 결과" 텍스트를 출력 호출
-* printResult(int[]) : 게임 한 회 결과 출력 호출
-
-### ResultView
-게임 결과를 출력하는 클래스
-* printResultHeader() : "실행 결과" 텍스트 호출
-* printGameResult(int[]) : 게임 한 회 결과를 출력 
