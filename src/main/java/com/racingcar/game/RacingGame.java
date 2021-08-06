@@ -20,18 +20,12 @@ public class RacingGame {
         this.cars = cars;
     }
 
-    public void play() {
-        GameDrawer.drawGameStart();
-
-        while (currentRound < gameRound) {
-            GameDrawer.drawOneRound(playOneRound());
-            currentRound++;
+    public List<RoundCarRecord> playOneRound() {
+        if (isGameFinished()) {
+            throw new IllegalStateException("Game is already finished");
         }
 
-        GameDrawer.drawWinners(decideWinners());
-    }
-
-    private List<RoundCarRecord> playOneRound() {
+        currentRound++;
         List<RoundCarRecord> roundRecords = new ArrayList<>();
 
         for (Car car : this.cars) {
@@ -42,7 +36,19 @@ public class RacingGame {
         return roundRecords;
     }
 
-    private List<Car> decideWinners() {
+    public boolean isGameFinished() {
+        return currentRound >= gameRound;
+    }
+
+    public boolean isNotGameFinished() {
+        return !isGameFinished();
+    }
+
+    public List<Car> getWinners() {
+        if (isNotGameFinished()) {
+            throw new IllegalStateException("Can not get winners because Game is not finished");
+        }
+
         int max = gameWinnerDistance();
 
         return cars.stream()
