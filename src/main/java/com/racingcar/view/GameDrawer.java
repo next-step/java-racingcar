@@ -1,6 +1,6 @@
 package com.racingcar.view;
 
-import com.racingcar.car.Car;
+import com.racingcar.game.car.Car;
 import com.racingcar.game.result.RoundCarRecord;
 
 import java.util.List;

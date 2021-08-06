@@ -1,6 +1,6 @@
 package com.racingcar.game;
 
-import com.racingcar.car.Car;
+import com.racingcar.game.car.Car;
 import com.racingcar.dice.Dice;
 import com.racingcar.game.result.RoundCarRecord;
 import com.racingcar.view.GameDrawer;
@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-public class Game {
+public class RacingGame {
     private int currentRound;
     private final int gameRound;
     private List<Car> cars;
 
-    public Game(int gameRound, List<Car> cars) {
+    public RacingGame(int gameRound, List<Car> cars) {
         this.gameRound = gameRound;
         this.cars = cars;
     }

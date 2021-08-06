@@ -4,8 +4,8 @@ import com.racingcar.view.model.GameInputDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class GameTest {
-    @DisplayName("Game 정상 동작 테스트")
+public class RacingGameTest {
+    @DisplayName("RacingGame 정상 동작 테스트")
     @Test
     public void play() {
         //given
@@ -14,9 +14,9 @@ public class GameTest {
         GameInputDto input = new GameInputDto(names, gameRound);
 
         //when
-        Game game = GameMaker.make(input);
+        RacingGame racingGame = GameMaker.make(input);
 
         //then
-        game.play();
+        racingGame.play();
     }
 }

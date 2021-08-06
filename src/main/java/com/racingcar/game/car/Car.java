@@ -1,4 +1,4 @@
-package com.racingcar.car;
+package com.racingcar.game.car;
 
 import com.racingcar.game.result.RoundCarRecord;
 

@@ -1,6 +1,6 @@
 package com.racingcar.game.result;
 
-import com.racingcar.car.Car;
+import com.racingcar.game.car.Car;
 
 public class RoundCarRecord {
     private final String name;
