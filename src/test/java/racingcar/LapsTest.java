@@ -6,6 +6,8 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Lap;
 import racingcar.domain.Laps;
+import racingcar.domain.Name;
+import racingcar.domain.Names;
 import racingcar.domain.Record;
 
 import java.util.Arrays;
@@ -18,7 +20,7 @@ class LapsTest {
     @Test
     @DisplayName("record 하면 주어진 cars 의 distance 를 Lap으로 기록한다")
     public void record() {
-        Cars cars = new Cars("a", "b");
+        Cars cars = new Cars(new Names(Arrays.asList("a", "b")));
 
         laps.record(cars);
 

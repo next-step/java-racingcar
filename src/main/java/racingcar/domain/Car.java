@@ -2,9 +2,9 @@ package racingcar.domain;
 
 public class Car {
     private Distance distance = new Distance();
-    private final String name;
+    private final Name name;
 
-    public Car(String name) {
+    public Car(Name name) {
         this.name = name;
     }
 
@@ -16,7 +16,7 @@ public class Car {
         distance = distance.increase();
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 }

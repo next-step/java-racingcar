@@ -5,9 +5,12 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Distance;
-import racingcar.domain.Record;
+import racingcar.domain.Name;
+import racingcar.domain.Names;
 import racingcar.domain.Records;
 import racingcar.domain.Winners;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,7 +18,7 @@ class WinnersTest {
     @Test
     @DisplayName("가장 잘한 기록이 하나면 한명의 이름을 가진 Winner")
     public void getBestRecord() {
-        Cars cars = new Cars("a", "b", "c");
+        Cars cars = new Cars(new Names(Arrays.asList("a", "b", "c")));
         moveNthCarByDistance(cars, 1, 3);
 
         Records records = new Records(cars);
@@ -23,7 +26,7 @@ class WinnersTest {
         Winners winners = new Winners(records);
 
         assertThat(winners.getNames().size()).isEqualTo(1);
-        assertThat(winners.getNames()).contains("b");
+        assertThat(winners.getNames()).contains(new Name("b"));
         assertThat(winners.getDistance()).isEqualTo(new Distance(3));
     }
 
@@ -42,7 +45,7 @@ class WinnersTest {
     @Test
     @DisplayName("가장 잘한 기록이 여러개면 n size records 리턴")
     public void getBestRecords() {
-        Cars cars = new Cars("a", "b", "c");
+        Cars cars = new Cars(new Names(Arrays.asList("a", "b", "c")));
 
         moveNthCarByDistance(cars, 1, 2);
         moveNthCarByDistance(cars, 2, 2);
@@ -51,7 +54,7 @@ class WinnersTest {
         Winners winners = new Winners(records);
 
         assertThat(winners.getNames().size()).isEqualTo(2);
-        assertThat(winners.getNames()).contains("c", "b");
+        assertThat(winners.getNames()).contains(new Name("b"), new Name("c"));
         assertThat(winners.getDistance()).isEqualTo(new Distance(2));
     }
 }

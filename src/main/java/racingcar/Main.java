@@ -1,15 +1,18 @@
 package racingcar;
 
 import racingcar.domain.Cars;
+import racingcar.domain.Names;
 import racingcar.domain.Race;
 import racingcar.domain.RaceResult;
 import racingcar.domain.RandomRaceStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        String[] names = InputView.readCarNames();
+        Names names = new Names(InputView.readCarNames());
         int tryNum = InputView.readTryNum();
 
         Cars cars = new Cars(names);

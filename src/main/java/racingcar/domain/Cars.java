@@ -8,8 +8,8 @@ import java.util.List;
 public class Cars implements Iterable<Car> {
     private final List<Car> cars = new ArrayList<>();
 
-    public Cars(String ...names) {
-        for(String name : names) {
+    public Cars(Names names) {
+        for(Name name : names) {
             cars.add(new Car(name));
         }
     }

@@ -4,11 +4,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Distance;
+import racingcar.domain.Name;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class CarTest {
-    private final Car car = new Car("test");
+    private final Car car = new Car(new Name("test"));
 
     @Test
     @DisplayName("move 하면 distance 가 1 증가")

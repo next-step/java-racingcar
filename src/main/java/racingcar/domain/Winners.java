@@ -1,13 +1,10 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Winners {
-    private final List<String> names = new ArrayList<>();
+    private Names names = new Names();
     private Distance distance = new Distance();
 
-    public List<String> getNames() {
+    public Names getNames() {
         return names;
     }
 
