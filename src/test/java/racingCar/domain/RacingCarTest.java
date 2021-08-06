@@ -37,16 +37,6 @@ public class RacingCarTest {
         assertThat(racingCar.showDrivenDistance()).isEqualTo(2);
     }
 
-    @DisplayName("레이싱카의 주행거리를 -로 변환하는 테스트")
-    @Test
-    void 주행거리_변환_테스트()
-        throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        PrintService printService = new PrintService();
-        Method method = printService.getClass().getDeclaredMethod("getDistance", int.class);
-        method.setAccessible(true);
-        assertThat(method.invoke("printService", 3)).isEqualTo("---");
-    }
-
     @DisplayName("차량 생성시 상태 테스트")
     @Test
     void 차량_상태_출력() {

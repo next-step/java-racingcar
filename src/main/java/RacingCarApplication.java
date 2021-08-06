@@ -14,7 +14,7 @@ public class RacingCarApplication {
 
         for(int i = 0 ; i< racingManager.getTryCount() ; i++){
             racingManager.doOneLap();
-            PrintService.showCurrentDrivenDistanceWithName(racingManager.getCars());
+            PrintService.printCurrentDrivenDistanceWithName(racingManager.getCars());
         }
 
         PrintService.printWinners(racingManager.getWinner());

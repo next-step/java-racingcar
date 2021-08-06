@@ -11,6 +11,10 @@ public class WinnerPolicyImpl implements WinnerPolicy {
         return getWinners(winnerDistance, cars);
     }
 
+    private int getBigggerNum(int num1, int num2) {
+        return Math.max(num1, num2);
+    }
+
     private int getMaxDistance(List<RacingCar> cars) {
         int max = 0;
         for (RacingCar car : cars) {
@@ -21,8 +25,10 @@ public class WinnerPolicyImpl implements WinnerPolicy {
         return max;
     }
 
-    private int getBigggerNum(int num1, int num2) {
-        return Math.max(num1, num2);
+    private void isWinner(int winnerDistance, RacingCar car, List<RacingCar> winners) {
+        if (car.equalsDistance(winnerDistance)) {
+            winners.add(car);
+        }
     }
 
     private List<RacingCar> getWinners(int winnerDistance, List<RacingCar> cars) {
@@ -31,11 +37,5 @@ public class WinnerPolicyImpl implements WinnerPolicy {
             isWinner(winnerDistance, car, winners);
         }
         return winners;
-    }
-
-    private void isWinner(int winnerDistance, RacingCar car, List<RacingCar> winners) {
-        if (car.equalsDistance(winnerDistance)) {
-            winners.add(car);
-        }
     }
 }
