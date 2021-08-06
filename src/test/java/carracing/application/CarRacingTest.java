@@ -6,10 +6,18 @@ import carracing.domain.Car;
 import carracing.domain.RaceResult;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarRacingTest {
+
+    private CarRacing carRacing;
+
+    @BeforeEach
+    void beforeEach() {
+        carRacing = new CarRacing();
+    }
 
     @Test
     @DisplayName("게임을 시작할 자동차를 원하는 갯수만큼 생성할 수 있다.")
@@ -17,7 +25,6 @@ class CarRacingTest {
 
         // given
         String[] names = {"1", "2", "3"};
-        CarRacing carRacing = new CarRacing();
 
         // when
         List<Car> result = carRacing.makeCars(names);
@@ -33,7 +40,6 @@ class CarRacingTest {
         // given
         String inputName = "test1,test2,test3";
         int raceCount = 3;
-        CarRacing carRacing = new CarRacing();
 
         // when
         RaceResult results = carRacing.race(inputName, raceCount);
@@ -55,7 +61,6 @@ class CarRacingTest {
             new Car("자동차3"),
             winner
         );
-        CarRacing carRacing = new CarRacing();
 
         // when
         List<Car> winners = carRacing.findWinners(cars);
@@ -81,7 +86,6 @@ class CarRacingTest {
             winner1,
             winner2
         );
-        CarRacing carRacing = new CarRacing();
 
         // when
         List<Car> winners = carRacing.findWinners(cars);
