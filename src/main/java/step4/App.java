@@ -7,12 +7,9 @@ package step4;
  * 저작권 주의 : by MinYul
  */
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class App {
-
-	private static final int INIT_DISTANCE = 0;
 
 	public static void main(String[] args) {
 		// 입력 역할 & 출력 역할
@@ -22,24 +19,14 @@ public class App {
 
 		// 랜덤 숫자 제조기 & 경기 생성
 		NumberContainer numberContainer = new NumberContainer();
-		Race race = new Race(numberContainer);
-
-		// 차 생성
-		int carNumber = inputConsole.getCarNumber();
-
-		for(int index = 0 ; index < carNumber ; index++) {
-			String carName = inputConsole.getCarNames()[index];
-			race.addCar(new Car(carName, INIT_DISTANCE));
-		}
+		Race race = new Race(numberContainer, inputConsole.getCarNames());
 
 		// 경기 시작 & 결과
 		resultView.getResultComment();
 		for(int raceIndex = 1; raceIndex <= inputConsole.getExecutionCount() ; raceIndex++) {
 			race.startRace();
-			List<Car> cars = race.getCars();
-			resultView.viewResult(cars);
+			resultView.viewResult(race.getCars());
 		}
-
 		resultView.winnerResult(race.getWinners());
 	}
 }

@@ -20,7 +20,7 @@ public class AppTest {
 	void init() {
 		inputConsole = new InputConsole();
 		numberContainer = new NumberContainer();
-		race = new Race(numberContainer);
+		race = new Race(numberContainer,new String[]{"carOne","carTwo"});
 	}
 
 	@DisplayName("자동차가 가는지 결과를 확인하는 테스트")

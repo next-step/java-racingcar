@@ -5,15 +5,16 @@ import java.util.List;
 
 public class Race {
 
-	private static final int INIT_INSTANCE = 0;
+	private static final int INIT_DISTANCE = 0;
 
 	private List<Car> cars;
 
 	private NumberContainer numberContainer;
 
-	public Race(NumberContainer numberContainer) {
+	public Race(NumberContainer numberContainer, String[] carNames) {
 		this.numberContainer = numberContainer;
 		cars = new ArrayList<>();
+		setCars(carNames);
 	}
 
 	public List<Car> getCars() {
@@ -42,8 +43,14 @@ public class Race {
 		return winners;
 	}
 
+	private void setCars(String[] carNames) {
+		for(String name : carNames) {
+			cars.add(new Car(name, INIT_DISTANCE));
+		}
+	}
+
 	private int getMaxDistance() {
-		int maxDistance = INIT_INSTANCE;
+		int maxDistance = INIT_DISTANCE;
 		for (Car car : cars) {
 			maxDistance = car.getMaxDistance(maxDistance);
 		}
