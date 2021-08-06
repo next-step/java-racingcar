@@ -3,8 +3,6 @@ package step4;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -47,13 +45,29 @@ public class AppTest {
 		assertThat(carDistance).isEqualTo(0);
 	}
 
-//	@DisplayName("우승자를 확실히 반환하는지 확인하는 테스트")
-//	@Test
-//	void winnerTest() {
-//		race = new Race(numberContainer,new String[]{"car","car2"});
-//		List<Car> winners = race.getWinners();
-//		assertThat(winners).contains(new Car("car",0), new Car("car2", 0));
-//	}
+	@DisplayName("우승자를 확실히 반환하는지 확인하는 테스트")
+	@Test
+	void winnerTest() {
+		NumberGenerator numberGenerator = new Generatorstrategy();
+		Race race = new Race(numberGenerator, new String[]{"car","car2"});
+		List<Car> cars = race.getCars();
+
+		cars.get(0).move(new NumberGenerator() {
+			@Override
+			public int getNumber() {
+				return 7;
+			}
+		});
+
+		cars.get(1).move(new NumberGenerator() {
+			@Override
+			public int getNumber() {
+				return 3;
+			}
+		});
+
+		assertThat(race.getWinners()).contains(cars.get(0));
+	}
 
 	@DisplayName("5글자 초과시 에러를 던지는 테스트")
 	@Test
