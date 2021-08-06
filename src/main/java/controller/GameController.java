@@ -1,19 +1,23 @@
 package controller;
 
-import domain.Participants;
+import domain.Car;
 import domain.Winner;
 import util.CarNameUtil;
+import util.RandomNumUtil;
 import view.InputView;
 import view.ResultView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameController {
 
-    private Participants participant;
+    private List<Car> participants;
     private InputView inputView;
     private Winner winners;
 
     public GameController() {
-        participant = new Participants();
+        participants = new ArrayList<>();
         inputView = new InputView();
         winners = new Winner();
     }
@@ -22,7 +26,7 @@ public class GameController {
         String[] carNames = CarNameUtil.participantsSplit(inputView.participantInputView());
 
         for (int count = 0; count < carNames.length; count++) {
-            participant.addParticipants(carNames[count]);
+            participants.add(new Car(carNames[count]));
         }
         startGame(inputView.playInputView());
         endGameResult();
@@ -30,17 +34,20 @@ public class GameController {
 
     public void startGame(int gameCount) {
         for (int count = 0; count < gameCount; count++) {
-            participant.playGame();
-            ResultView.racingView(participant.readParticipants());
+            racing();
+            ResultView.racingView(participants);
+        }
+    }
+
+    private void racing() {
+        for (Car entryCar : participants) {
+            entryCar.carMoveBehavior(RandomNumUtil.makeRandomNumber());
         }
     }
 
     public void endGameResult() {
-        winners.createWinnersData(participant.readParticipants(),
-                participant.readWinnerCarDistance());
-
+        winners.createWinnersData(participants);
         ResultView.winnersView(winners.readWinners());
     }
-
 
 }
