@@ -4,48 +4,52 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+import step3.Car;
 import step3.Racing;
+import step3.Validator;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RacingTest {
 
-    private Racing racing = new Racing();
-
     @Test
-    @DisplayName("checkInput 메소드 carCount 0 체크 : IllegalArgumentException")
+    @DisplayName("Validator checkInput 메소드 carCount 0 체크 : IllegalArgumentException")
     void carCountZeroTest() {
-        assertThatThrownBy(() -> racing.checkInput(0, 1))
+        assertThatThrownBy(() -> Validator.checkInput(0, 1))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차는 0대 이상이어야 합니다.");
+                .hasMessageContaining("자동차는 1대 이상이어야 합니다.");
     }
 
     @Test
     @DisplayName("checkInput 메소드 gameCount 0 체크 : IllegalArgumentException")
     void gameCountZeroTest() {
-        assertThatThrownBy(() -> racing.checkInput(1, 0))
+        assertThatThrownBy(() -> Validator.checkInput(1, 0))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("게임 횟수는 0번 이상이어야 합니다.");
+                .hasMessageContaining("게임 횟수는 1번 이상이어야 합니다.");
     }
 
-    @DisplayName("getMoveNumberTest 메소드 테스트")
+    @DisplayName("Car 객체의 move 메소드 테스트")
     @ParameterizedTest
     @CsvSource({
             "1, 0",
-            "9, 1"
+            "4, 1",
+            "9, 1",
     })
-    void getMoveNumberTest(int number, int result) {
-        assertEquals(result, racing.getMoveNumber(number));
+    void moveTest(int number, int result) {
+        Car car = new Car(4);
+        car.move(number);
+
+        assertEquals(result, car.getDistance());
     }
 
-    @DisplayName("getRaceResult 메소드 테스트")
-    @Test
-    void getRaceResultTest() {
-        int[][] result = racing.getRaceResult(3, 5);
-
-        assertEquals(5, result.length);
-        assertEquals(3, result[0].length);
+    @DisplayName("initCarsTest 메소드 테스트")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void initCarsTest(int count) {
+        Car[] cars = Racing.initCars(count);
+        assertEquals(count, cars.length);
     }
 
 }
