@@ -35,8 +35,8 @@ public class Game {
         List<RoundCarRecord> roundRecords = new ArrayList<>();
 
         for (Car car : this.cars) {
-            car.move(Dice.getNumber());
-            roundRecords.add(RoundCarRecord.of(car));
+            RoundCarRecord roundCarRecord = car.move(Dice.getNumber());
+            roundRecords.add(roundCarRecord);
         }
 
         return roundRecords;
