@@ -32,7 +32,7 @@ public class PrintService {
 
     public static void printCurrentDrivenDistanceWithName(List<RacingCar> cars) {
         for (RacingCar car : cars) {
-            PrintService.printDistanceWithName(car.showDrivenDistance(), car.getCarName());
+            PrintService.printDistanceWithName(car.getDrivenDistnace(), car.getCarName());
         }
         PrintService.printEmptyLine();
     }

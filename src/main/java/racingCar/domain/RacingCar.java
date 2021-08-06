@@ -2,14 +2,18 @@ package racingCar.domain;
 
 public class RacingCar {
 
-    private String carName;
-    private int drivenDistance;
-
     private final ForwardPolicy forwardPolicy;
     private final CarNamePolicy carNamePolicy;
 
+    private String carName;
+    private int drivenDistance;
+
     public RacingCar(String carName) {
-        this.drivenDistance = 0;
+        this(carName, 0);
+    }
+
+    public RacingCar(String carName, int drivenDistance) {
+        this.drivenDistance = drivenDistance;
         this.forwardPolicy = new ForwardPolicyImpl();
         this.carNamePolicy = new CarNamePolicyImpl();
         setCarName(carName);
@@ -32,7 +36,7 @@ public class RacingCar {
         }
     }
 
-    public int showDrivenDistance() {
+    public int getDrivenDistnace() {
         return this.drivenDistance;
     }
 

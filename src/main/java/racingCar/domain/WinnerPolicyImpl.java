@@ -18,7 +18,7 @@ public class WinnerPolicyImpl implements WinnerPolicy {
     private int getMaxDistance(List<RacingCar> cars) {
         int max = 0;
         for (RacingCar car : cars) {
-            int distance = car.showDrivenDistance();
+            int distance = car.getDrivenDistnace();
             max = getBigggerNum(max, distance);
 
         }
