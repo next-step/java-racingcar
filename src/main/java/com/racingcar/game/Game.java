@@ -43,13 +43,17 @@ public class Game {
     }
 
     private List<Car> decideWinners() {
-        int max = this.cars.stream()
-                .mapToInt((car) -> car.getDistance()
-                ).max()
-                .orElseThrow(() -> new NoSuchElementException("can not find max distance"));
+        int max = gameWinnerDistance();
 
         return cars.stream()
                 .filter((car) -> car.isWinner(max))
                 .collect(Collectors.toList());
+    }
+
+    private int gameWinnerDistance() {
+        return this.cars.stream()
+                .mapToInt((car) -> car.getDistance()
+                ).max()
+                .orElseThrow(() -> new NoSuchElementException("can not find max distance"));
     }
 }
