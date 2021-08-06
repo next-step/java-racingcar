@@ -7,10 +7,26 @@ public class RacingCar {
     public static final int BASE_POSITION = 0;
     public static final int ONE_STEP = 1;
 
-    private String name;
+    private final Name name;
     private int position;
 
-    public String getName() {
+    public RacingCar(Name carName) {
+        this.name = carName;
+        this.position = BASE_POSITION;
+    }
+
+    public void moveIfMovable(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable())
+            position += ONE_STEP;
+    }
+
+    public int ifBiggerThanReturnPosition(int maxPosition){
+        if (this.position > maxPosition) {
+            return this.position;
+        }
+        return maxPosition;
+    }
+    public Name getName() {
         return name;
     }
 
@@ -18,13 +34,7 @@ public class RacingCar {
         return position;
     }
 
-    public RacingCar(String carName) {
-        this.position = BASE_POSITION;
-        this.name = carName;
-    }
-
-    public void moveIfMovable(MoveStrategy moveStrategy) {
-        if (moveStrategy.isMovable())
-            position += ONE_STEP;
+    public boolean isSamePositionAs(int winnerRecord) {
+        return position == winnerRecord;
     }
 }
