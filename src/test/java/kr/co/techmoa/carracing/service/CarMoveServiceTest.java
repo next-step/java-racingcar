@@ -4,6 +4,7 @@ import kr.co.techmoa.carracing.model.RacingCarGame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarMoveServiceTest {
@@ -14,9 +15,11 @@ class CarMoveServiceTest {
     public void moveTest() {
 
         //given
-        RacingCarGame racingCarGame = new RacingCarGame();
-        racingCarGame.setCarNum(3);
-        racingCarGame.setTryNumber(5);
+        RacingCarGame racingCarGame = RacingCarGame.builder()
+                .carNum(3)
+                .carNames("joo,ker,goekf")
+                .tryNumber(5)
+                .build();
 
         //when
         RacingCarGame resultRacingCarGame = carMoveService.move(racingCarGame);
@@ -26,4 +29,16 @@ class CarMoveServiceTest {
         assertEquals(3, resultRacingCarGame.getRounds().get(0).length);
     }
 
+    @Test
+    public void carNameNumTest() {
+        //given
+        String carNames = "joo2424,ekf,ejo";
+
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(
+                () -> {
+                    carMoveService.checkCarName(carNames);
+                }
+        ).withMessageMatching("자동차 이름은 5자 이하여야 합니다.");
+
+    }
 }

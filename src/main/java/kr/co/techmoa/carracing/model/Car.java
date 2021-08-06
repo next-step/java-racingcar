@@ -1,14 +1,20 @@
 package kr.co.techmoa.carracing.model;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
+@Builder
 public class Car {
 
-    int move;
-    int totalMove;
+    private int move;
+    private int totalMove;
+    private String carName;
+
+    @Builder.Default
+    private boolean isWin = false;
+
 
 }

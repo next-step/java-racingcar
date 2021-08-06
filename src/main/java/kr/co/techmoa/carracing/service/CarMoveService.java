@@ -13,6 +13,7 @@ public class CarMoveService {
     public static final int OPERATION_MAX = 10;
     public static final int ADVENCE_LIMIT = 4;
     public static final int FIRST_ROUND = 0;
+    public static final int CARNAME_MAX = 5;
 
     public RacingCarGame move(RacingCarGame racingCarGame) {
 
@@ -20,21 +21,21 @@ public class CarMoveService {
 
         for(int i = 0 ; i < racingCarGame.getTryNumber() ; i++) {
             Car[] cars = new Car[racingCarGame.getCarNum()];
-            moveOrder(i, roundList, cars);
-            roundList.add(cars);
+            roundList.add(moveOrder(i, roundList, cars ,racingCarGame.getCarNames() ));
         }
 
-        racingCarGame.setRounds(roundList);
-        return racingCarGame;
+        return RacingCarGame.builder()
+                .carNum(racingCarGame.getCarNum())
+                .carNames(racingCarGame.getCarNames())
+                .rounds(roundList)
+                .tryNumber(racingCarGame.getTryNumber())
+                .build();
 
     }
 
     private int operator() {
-
         int operatorSu = new Random().nextInt(OPERATION_MAX);;
-
         return isAdvence(operatorSu);
-
     }
 
     private int isAdvence(int operator) {
@@ -44,13 +45,16 @@ public class CarMoveService {
         return Move.ADVANCE.getCarMove();
     }
 
-    private Car[] moveOrder(int roundNum , List roundList, Car[] cars) {
+    private Car[] moveOrder(int roundNum , List roundList, Car[] cars, String carNames) {
         for(int j = 0 ; j < cars.length ; j++) {
-            cars[j] = new Car();
+            String carName = parseCarName(carNames ,j);
             int isAdvence = operator();
             int sumTotalMove = calTotalMove(roundNum, isAdvence, roundList , j);
-            cars[j].setMove(isAdvence);
-            cars[j].setTotalMove(sumTotalMove);
+            cars[j] = Car.builder()
+                    .totalMove(sumTotalMove)
+                    .move(isAdvence)
+                    .carName(carName)
+                    .build();
         }
         return cars;
     }
@@ -60,6 +64,17 @@ public class CarMoveService {
             return isAdvence + ((Car[])roundList.get(roundNum-1))[carNum].getTotalMove();
         }
         return isAdvence;
+    }
+
+    private String parseCarName(String carNames , int order) {
+        return checkCarName(carNames.split(",")[order]);
+    }
+
+    public String checkCarName(String carName) {
+        if(carName.length() > CARNAME_MAX){
+            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+        }
+        return carName;
     }
 
 
