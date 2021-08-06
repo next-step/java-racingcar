@@ -1,5 +1,6 @@
 package step4;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,7 +13,7 @@ class CarTest {
   @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
   void goTest(int num) {
     //given
-    Car car = new Car("test");
+    Car car = new Car("test", new RandomMoveStrategy());
 
     //when
     for (int i = 0; i < num; i++) {
@@ -20,14 +21,14 @@ class CarTest {
     }
 
     //then
-    assertEquals(num, car.getLocation());
+    assertThat(car.getLocation()).isBetween(0, num);
   }
 
   @ParameterizedTest(name = "Car 이름확인 테스트 {0}")
   @ValueSource(strings = {"pobi", "crong", "honux"})
   void carNameTest(String name) {
     //given
-    Car car = new Car(name);
+    Car car = new Car(name, new RandomMoveStrategy());
 
     //then
     assertEquals(name, car.getName());
@@ -38,7 +39,7 @@ class CarTest {
   void carNameExceptionTest(String name) {
     //then
     assertThatIllegalArgumentException().isThrownBy(() -> {
-      new Car(name);
+      new Car(name, new RandomMoveStrategy());
     });
   }
 }

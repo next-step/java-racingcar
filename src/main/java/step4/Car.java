@@ -4,15 +4,17 @@ public class Car {
 
   private final String name;
   private int location;
+  private final MoveStrategy moveStrategy;
 
-  public Car(String name) {
+  public Car(String name, MoveStrategy moveStrategy) {
     checkNameLength(name);
     this.name = name;
-    location = 0;
+    this.location = 0;
+    this.moveStrategy = moveStrategy;
   }
 
   public void move() {
-    location++;
+    this.location += moveStrategy.getMoveDistance();
   }
 
   public String getName() {
