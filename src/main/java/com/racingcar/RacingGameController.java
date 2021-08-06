@@ -1,7 +1,8 @@
 package com.racingcar;
 
-import com.racingcar.game.RacingGame;
 import com.racingcar.game.GameMaker;
+import com.racingcar.game.RacingGame;
+import com.racingcar.view.GameDrawer;
 import com.racingcar.view.InputView;
 import com.racingcar.view.model.GameInputDto;
 
@@ -11,6 +12,12 @@ public class RacingGameController {
 
         RacingGame racingGame = GameMaker.make(input);
 
-        racingGame.play();
+        GameDrawer.drawGameStart();
+
+        while (racingGame.isNotGameFinished()) {
+            GameDrawer.drawOneRound(racingGame.playOneRound());
+        }
+
+        GameDrawer.drawWinners(racingGame.getWinners());
     }
 }
