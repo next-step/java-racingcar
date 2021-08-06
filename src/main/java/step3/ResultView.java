@@ -1,29 +1,30 @@
 package step3;
 
+import java.util.Arrays;
+
 public class ResultView {
 
-    public void printGameResult(int[][] gameResults) {
-        System.out.println("실행 결과");
+    private final String GAME_RESULT = "실행결과";
+    private final String DASH = "-";
 
-        for(int i = 0; i < gameResults.length; i++) {
-            int[] result = gameResults[i];
-
-            for (int j = 0; j < result.length; j++) {
-                printOneResult(result[j]);
-            }
-
-            System.out.println();
-        }
-
+    public void printGameResult(Car[] cars) {
+        Arrays.stream(cars).forEach(a -> printGameResult(a.getDistance()));
     }
 
-    private void printOneResult(int result) {
+    public void printGameResult(int result) {
 
         for(int i = 0; i < result; i++) {
-            System.out.print("-");
+            System.out.println(DASH);
         }
 
         System.out.println();
     }
 
+    public void printGameResultText() {
+        System.out.println(GAME_RESULT);
+    }
+
+    public void printNewLine() {
+        System.out.println();
+    }
 }
