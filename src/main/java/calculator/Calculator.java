@@ -1,30 +1,34 @@
 package calculator;
 
-
-import calculator.enumerate.CalculatorType;
+import java.util.Scanner;
 
 public class Calculator {
 
     static final String STRING_BLANK = " ";
 
-    public boolean isBlank(String input) {
+    static String input() {
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine();
+    }
+
+    static boolean isBlank(String input) {
         if (input == null || input.equals(STRING_BLANK) || input.isEmpty()) {
             throw new IllegalArgumentException("IllegalArgumentException..");
         }
         return false;
     }
 
-    public String[] splitBlank(String input) {
+    static String[] splitBlank(String input) {
         return input.split(STRING_BLANK);
     }
 
-    public int makeResult(String input) {
+    static int makeResult(String input) {
         if (isBlank(input))
             throw new IllegalArgumentException("IllegalArgumentException..");
         return calculateSplitString(splitBlank(input));
     }
 
-    public int calculateSplitString(String[] str) {
+    static int calculateSplitString(String[] str) {
         int result = toInt(str[0]);
         for (int i = 0; i < str.length - 2; i += 2) {
             result = calculate(result, str[i + 1].charAt(0), toInt(str[i + 2]));
@@ -32,20 +36,36 @@ public class Calculator {
         return result;
     }
 
-    public int calculate(int first, char operator, int second) {
-        if (operator == CalculatorType.ADDITION.getSymbol())
-            return CalculatorType.ADDITION.operate(first, second);
-        if (operator == CalculatorType.SUBTRACTION.getSymbol())
-            return CalculatorType.SUBTRACTION.operate(first, second);
-        if (operator == CalculatorType.MULTIPLICATION.getSymbol())
-            return CalculatorType.MULTIPLICATION.operate(first, second);
-        if (operator == CalculatorType.DIVISION.getSymbol())
-            return CalculatorType.DIVISION.operate(first, second);
+    static int calculate(int first, char operator, int second) {
+        if (operator == '+')
+            return addition(first, second);
+        if (operator == '-')
+            return subtraction(first, second);
+        if (operator == '*')
+            return multiplication(first, second);
+        if (operator == '/')
+            return division(first, second);
 
         throw new IllegalArgumentException("IllegalArgumentException..");
     }
 
-    private int toInt(String str) {
+    static int addition(int i, int j) {
+        return i + j;
+    }
+
+    static int subtraction(int i, int j) {
+        return i - j;
+    }
+
+    static int multiplication(int i, int j) {
+        return i * j;
+    }
+
+    static int division(int i, int j) {
+        return i / j;
+    }
+
+    static int toInt(String str) {
         return Integer.parseInt(str);
     }
 
