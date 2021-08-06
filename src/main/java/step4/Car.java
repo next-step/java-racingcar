@@ -4,16 +4,12 @@ public class Car {
 
 	private static final int RACE_WIN_RANGE = 4;
 	private static final int MOVE_DISTANCE = 1;
-	private static final int CAR_NAME_RANGE = 5;
 
-	private String carName;
+	private Name carName;
 	private int distance;
 
 	public Car(final String carName, int distance) {
-		if (carName.length() > CAR_NAME_RANGE) {
-			throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다.");
-		}
-		this.carName = carName;
+		this.carName = new Name(carName);
 		this.distance = distance;
 	}
 
@@ -30,7 +26,7 @@ public class Car {
 	}
 
 	public String getCarName() {
-		return carName;
+		return carName.getName();
 	}
 
 	public void move(int randomNumber) {

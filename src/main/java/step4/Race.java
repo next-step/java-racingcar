@@ -28,10 +28,6 @@ public class Race {
 		}
 	}
 
-	public void addCar(Car car) {
-		cars.add(car);
-	}
-
 	public List<Car> getWinners() {
 		List<Car> winners = new ArrayList<>();
 		int maxDistance = getMaxDistance();

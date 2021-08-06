@@ -7,8 +7,6 @@ package step4;
  * 저작권 주의 : by MinYul
  */
 
-import java.util.List;
-
 public class App {
 
 	public static void main(String[] args) {

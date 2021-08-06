@@ -20,7 +20,6 @@ public class AppTest {
 	void init() {
 		inputConsole = new InputConsole();
 		numberContainer = new NumberContainer();
-		race = new Race(numberContainer,new String[]{"carOne","carTwo"});
 	}
 
 	@DisplayName("자동차가 가는지 결과를 확인하는 테스트")
@@ -36,14 +35,9 @@ public class AppTest {
 	@DisplayName("우승자를 확실히 반환하는지 확인하는 테스트")
 	@Test
 	void winnerTest() {
-		Car carOne = new Car("1", 5);
-		Car carTwo = new Car("2",3);
-		Car carThree = new Car("3",5);
-		race.addCar(carOne);
-		race.addCar(carTwo);
-		race.addCar(carThree);
+		race = new Race(numberContainer,new String[]{"car","car2"});
 		List<Car> winners = race.getWinners();
-		assertThat(winners).contains(carOne, carThree);
+		assertThat(winners).contains(new Car("car",0), new Car("car2", 0));
 	}
 
 	@DisplayName("5글자 초과시 에러를 던지는 테스트")
