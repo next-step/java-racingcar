@@ -3,7 +3,6 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Cars;
-import racingcar.domain.Name;
 import racingcar.domain.Names;
 import racingcar.domain.Race;
 import racingcar.domain.RaceResult;

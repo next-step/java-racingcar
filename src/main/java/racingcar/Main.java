@@ -8,8 +8,6 @@ import racingcar.domain.RandomRaceStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
         Names names = new Names(InputView.readCarNames());

@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Winners {
-    private Names names = new Names();
+    private final Names names = new Names();
     private Distance distance = new Distance();
 
     public Names getNames() {
