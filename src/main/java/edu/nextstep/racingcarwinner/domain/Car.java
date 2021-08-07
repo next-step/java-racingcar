@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Car {
-    private final String name;
+    private String name;
     private int distance;
 
     public Car(String name) {
@@ -18,11 +18,14 @@ public class Car {
     }
 
     public void move() {
-        Random random = new Random();
-        int randomNum = random.nextInt(10);
-        if (randomNum > 4) {
+        if (getRandomNum() >= 4) {
             this.distance++;
         }
+    }
+
+    protected int getRandomNum(){
+        Random random = new Random();
+        return random.nextInt(10);
     }
 
     @Override
@@ -36,5 +39,21 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name, distance);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "name='" + name + '\'' +
+                ", distance=" + distance +
+                '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDistance() {
+        return distance;
     }
 }

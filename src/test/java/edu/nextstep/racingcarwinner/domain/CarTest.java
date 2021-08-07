@@ -21,24 +21,38 @@ public class CarTest {
     @Test
     void moveSuccess() {
         // given
-        Car car = new Car("hwan");
+        String name = "hwan";
+        Car car = new Car(name){
+            @Override
+            protected int getRandomNum() {
+                return 4;
+            }
+        };
 
         // when
         car.move();
 
         // then
-        assertThat(car).isEqualTo(new Car("hwan", 1));
+        assertThat(car.getName()).isEqualTo("hwan");
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 
     @Test
     void moveFail() {
         // given
-        Car car = new Car("hwan");
+        String name = "hwan";
+        Car car = new Car(name){
+            @Override
+            protected int getRandomNum() {
+                return 3;
+            }
+        };
 
         // when
         car.move();
 
         // then
-        assertThat(car).isEqualTo(new Car("hwan", 0));
+        assertThat(car.getName()).isEqualTo("hwan");
+        assertThat(car.getDistance()).isEqualTo(0);
     }
 }
