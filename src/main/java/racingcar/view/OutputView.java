@@ -25,7 +25,7 @@ public class OutputView {
     }
 
     private static void printDistance(Record record) {
-        StringBuffer sb = new StringBuffer(record.getName());
+        StringBuffer sb = new StringBuffer(record.getName().getName());
         sb.append(" : ");
         for (int d = 0; d < record.getDistance(); d++) {
             sb.append('-');
