@@ -10,6 +10,8 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Car {
+    private static final int MOVING_CRITERIA = 4;
+    private static final int MAX_RANDOM_VALUE = 10;
     private String name;
     private int distance;
 
@@ -24,14 +26,14 @@ public class Car {
     }
 
     public void move(int randomNum) {
-        if (randomNum >= 4) {
+        if (randomNum >= MOVING_CRITERIA) {
             this.distance++;
         }
     }
 
     public int getRandomNum(){
         Random random = new Random();
-        return random.nextInt(10);
+        return random.nextInt(MAX_RANDOM_VALUE);
     }
 
     @Override
