@@ -35,3 +35,25 @@
 - RandomStrategy : canMove(), getRandomNum()
 - InputView : inputCarNum(), inputMoveNum()
 - OutputView : startSign(), outputCurrentRacing()
+
+----------
+## 4단계 - 자동차 경주(우승자)
+### 기능 요구사항
+- 각 자동차에 이름을 부여할 수 있다. 자동차 이름은 5자를 초과할 수 없다.
+- 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
+- 자동차 이름은 쉼표(,)를 기준으로 구분한다.
+- 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
+
+### 기능목록
+1. 초기 설계
+  - domain
+    - Car : 생성, 이동
+    - RacingGame : 게임 진행, 우승자 선정
+  - utils
+    - 자동차 이름 별 분리 split
+  - view
+    - input : 자동차 이름 입력, 시도 횟수 입력
+    - output : 각 라운드 결과 출력, 최종 우승자 출력
+  - main : 입력 -> 진행 -> 결과출력 통합 
+
+
