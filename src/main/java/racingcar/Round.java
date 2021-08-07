@@ -5,16 +5,13 @@ import java.util.List;
 
 public class Round {
 
-    List<Car> cars;
-
-    public Round(List<Car> carsFromPreviousRound) {
-        this.cars = new LinkedList<>();
-        carsFromPreviousRound.stream().forEach(car -> this.cars.add(new Car(car)));
+    Cars cars;
+    public Round(Cars carsFromPreviousRound) {
+        cars = new Cars(carsFromPreviousRound);
     }
 
-    public List<Car> moveCars() {
-        cars.stream().forEach(car-> car.move(new RandomNumGenerator().getRandomNumber()));
-        return cars;
+    public Cars moveCars() {
+        return cars.move();
     }
 
 

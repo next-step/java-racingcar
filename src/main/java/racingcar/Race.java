@@ -6,18 +6,13 @@ import java.util.stream.IntStream;
 
 public class Race {
     private List<Round> rounds;
-    private List<Car> cars;
+    private Cars cars;
     private int roundNum;
 
     public Race(int carNum, int roundNum) {
-        crateCars(carNum);
+        cars = new Cars(carNum);
         this.roundNum = roundNum;
         rounds = new LinkedList<>();
-    }
-
-    private void crateCars(int carNum) {
-        cars = new LinkedList<>();
-        IntStream.range(0, carNum).forEach(i -> cars.add(new Car()));
     }
 
     public void doRace() {

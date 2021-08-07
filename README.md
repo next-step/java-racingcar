@@ -19,4 +19,4 @@
 - [X] position 일급 컬렉션으로 분리
 - [X] position 테스트 클래스 추가
 - [X] position은 0 이상의 정수이다. 
-- [ ] cars 일급 컬렉션으로 분리
+- [X] cars 일급 컬렉션으로 분리
