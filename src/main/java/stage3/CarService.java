@@ -19,8 +19,4 @@ public class CarService {
     public int getStatus() {
         return this.car.getStatus();
     }
-
-    public Car getCar() {
-        return this.car;
-    }
 }
