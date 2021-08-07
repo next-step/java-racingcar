@@ -2,6 +2,7 @@ package step4;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Race {
 
@@ -27,14 +28,10 @@ public class Race {
 	}
 
 	public List<Car> getWinners() {
-		List<Car> winners = new ArrayList<>();
 		int maxDistance = getMaxDistance();
-		for (Car car : cars) {
-			if (car.getStatusWinnerStatus(maxDistance)) {
-				winners.add(car);
-			}
-		}
-		return winners;
+		return cars.stream()
+						.filter(car -> car.getStatusWinnerStatus(maxDistance))
+						.collect(Collectors.toList());
 	}
 
 	private void setCars(String[] carNames) {
