@@ -55,4 +55,12 @@ public class AppTest {
 			Car car = new Car("123456",0);
 		});
 	}
+
+	@DisplayName("일급객체인 Distance의 같음을 확인하는 테스트")
+	@Test
+	void distance_test() {
+		Distance distance = new Distance(2);
+		Distance result = new Distance(2);
+		assertThat(distance).isEqualTo(result);
+	}
 }
