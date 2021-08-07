@@ -25,6 +25,19 @@ public class RacingGame {
     }
 
     public List<Car> getWinner() {
-        return new ArrayList<>();
+        List<Car> winners = new ArrayList<>();
+        int maxDistance = 0;
+
+        for (Car car : joinedCarList) {
+            maxDistance = Math.max(maxDistance, car.getDistance());
+        }
+
+        for (Car car : joinedCarList) {
+            if (car.getDistance() == maxDistance) {
+                winners.add(car);
+            }
+        }
+
+        return winners;
     }
 }

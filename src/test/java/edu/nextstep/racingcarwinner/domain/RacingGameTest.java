@@ -29,7 +29,7 @@ public class RacingGameTest {
     void getWinner(){
         // given
         RacingGame racingGame = new RacingGame();
-        racingGame.joinGame(Arrays.asList(new Car("youn", 3),
+        racingGame.joinGame(Arrays.asList(new Car("hwan", 3),
                 new Car("hyun", 2),
                 new Car("kook", 3)));
 
@@ -37,7 +37,8 @@ public class RacingGameTest {
         List<Car> winners = racingGame.getWinner();
 
         // then
-        assertThat(winners).contains(new Car("hwan"),
-                new Car("kook"));
+        System.out.println(winners);
+        assertThat(winners).contains(new Car("hwan",3),
+                new Car("kook",3));
     }
 }
