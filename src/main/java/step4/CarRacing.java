@@ -1,11 +1,12 @@
 package step4;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CarRacing {
 
   private final int numOfMove;
-  private final ArrayList<Car> carList = new ArrayList<>();
+  private final List<Car> carList = new ArrayList<>();
 
   public CarRacing(final String[] carNames, final int numOfMove) {
     this.numOfMove = numOfMove;
@@ -29,7 +30,7 @@ public class CarRacing {
   }
 
   private String[] getWinnerList() {
-    ArrayList<String> winnerList = new ArrayList<>();
+    List<String> winnerList = new ArrayList<>();
     int winnerLocation = 0;
     for (Car car : carList) {
       int carLocation = car.getLocation();
@@ -40,13 +41,13 @@ public class CarRacing {
     return winnerList.toArray(new String[winnerList.size()]);
   }
 
-  private void clearWinnerList(ArrayList<String> winnerList, int winnerLocation, int carLocation) {
+  private void clearWinnerList(List<String> winnerList, int winnerLocation, int carLocation) {
     if (carLocation > 0 && carLocation > winnerLocation) {
       winnerList.clear();
     }
   }
 
-  private void addToWinnerList(ArrayList<String> winnerList, int winnerLocation, int carLocation,
+  private void addToWinnerList(List<String> winnerList, int winnerLocation, int carLocation,
       String carName) {
     if (carLocation > 0 && carLocation >= winnerLocation) {
       winnerList.add(carName);

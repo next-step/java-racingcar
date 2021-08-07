@@ -1,6 +1,6 @@
 package step4;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ResultView {
 
@@ -10,7 +10,7 @@ public class ResultView {
     System.out.println("\n실행 결과");
   }
 
-  public static void printCurrentRoundResult(ArrayList<Car> carList) {
+  public static void printCurrentRoundResult(List<Car> carList) {
     for (Car car : carList) {
       System.out.print(car.getName() + " : ");
       printCarLocation(car);
