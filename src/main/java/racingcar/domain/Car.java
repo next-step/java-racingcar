@@ -2,14 +2,11 @@ package racingcar.domain;
 
 public class Car {
     static final int CRITERION_FOR_MOVING = 4;
+
     private int location = 0;
 
     public int getLocation() {
         return location;
-    }
-
-    public void resetLocation() {
-        location = 0;
     }
 
     void goForward() {

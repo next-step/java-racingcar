@@ -45,16 +45,6 @@ public class CarTest {
         assertThat(car.getLocation()).isEqualTo(currentLocation + 3);
     }
 
-    @DisplayName("resetLocation : Car Location reset 테스트")
-    @Test
-    void resetLocation() {
-        car.goForward();
-        car.goForward();
-        assertThat(car.getLocation()).isNotEqualTo(0);
-        car.resetLocation();
-        assertThat(car.getLocation()).isEqualTo(0);
-    }
-
     @DisplayName("move : 입력 값이 4 이상이면 car가 전진하는 기능 테스트")
     @ParameterizedTest
     @CsvSource({"0, 0", "3, 0", "4, 1", "9, 1"})

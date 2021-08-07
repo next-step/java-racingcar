@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.domain.Race;
+
 import java.util.Scanner;
 
 public class StartView {
@@ -7,16 +9,6 @@ public class StartView {
             = "레이스에 참가하는 차량의 수를 입력하세요 : ";
     static final String INPUT_ROUND_NUM_INSTRUCTION
             = "진행할 레이스의 라운드 수를 입력하세요 : ";
-    static final int MIN_CAR_NUM = 1;
-    static final int MIN_ROUND_NUM = 1;
-
-    static boolean isValidCarNum(int input) {
-        return input >= MIN_CAR_NUM;
-    }
-
-    static boolean isValidRoundNum(int input) {
-        return input >= MIN_ROUND_NUM;
-    }
 
     public static int inputCarNum() {
         int input;
@@ -25,7 +17,7 @@ public class StartView {
 
         do {
             input = new Scanner(System.in).nextInt();
-        } while (!isValidCarNum(input));
+        } while (!Race.isValidCarNum(input));
 
         return input;
     }
@@ -37,7 +29,7 @@ public class StartView {
 
         do {
             input = new Scanner(System.in).nextInt();
-        } while (!isValidRoundNum(input));
+        } while (!Race.isValidRoundNum(input));
 
         return input;
     }

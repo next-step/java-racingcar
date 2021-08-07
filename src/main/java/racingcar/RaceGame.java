@@ -6,11 +6,8 @@ import racingcar.view.StartView;
 
 public class RaceGame {
     public static void main(String[] args) {
-        int carNum;
-        int roundNum;
-
-        carNum = StartView.inputCarNum();
-        roundNum = StartView.inputRoundNum();
+        int carNum = StartView.inputCarNum();
+        int roundNum = StartView.inputRoundNum();
 
         Race race = new Race(carNum, roundNum);
 

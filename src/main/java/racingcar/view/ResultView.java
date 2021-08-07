@@ -3,10 +3,10 @@ package racingcar.view;
 import racingcar.domain.Car;
 import racingcar.domain.Race;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ResultView {
-    public static void printCurrentState(Race race, ArrayList<Car> cars) {
+    public static void printCurrentState(Race race, List<Car> cars) {
         System.out.println("< Round " + race.getCurrentRound() + ">");
         for (Car car : cars) {
             printLocationOfCar(car);
