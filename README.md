@@ -20,3 +20,7 @@
 - [X] position 테스트 클래스 추가
 - [X] position은 0 이상의 정수이다. 
 - [X] cars 일급 컬렉션으로 분리
+- [X] rounds 일큽 컬렉션으로 분리
+- [ ] cars 테스트 코드 추가 
+- [ ] rounds 테스트 코드 추가
+- [ ] Movable 클래스 추가 (자동차의 움직임 결정)
