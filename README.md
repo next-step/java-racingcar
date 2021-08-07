@@ -48,9 +48,10 @@
 1. 초기 설계
   - domain
     - Car : 생성, 이동
-    - RacingGame : 게임 진행, 우승자 선정
+    - RacingGame : CarList 생성, 게임 진행, 우승자 선정
   - utils
-    - 자동차 이름 별 분리 split
+    - 자동차 이름 별 분리
+    - 0~10 사이의 random 값 생성 
   - view
     - input : 자동차 이름 입력, 시도 횟수 입력
     - output : 각 라운드 결과 출력, 최종 우승자 출력
