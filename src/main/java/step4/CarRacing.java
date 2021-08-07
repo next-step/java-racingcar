@@ -41,14 +41,14 @@ public class CarRacing {
   }
 
   private void clearWinnerList(ArrayList<String> winnerList, int winnerLocation, int carLocation) {
-    if (winnerLocation < carLocation) {
+    if (carLocation > 0 && carLocation > winnerLocation) {
       winnerList.clear();
     }
   }
 
   private void addToWinnerList(ArrayList<String> winnerList, int winnerLocation, int carLocation,
       String carName) {
-    if (winnerLocation <= carLocation) {
+    if (carLocation > 0 && carLocation >= winnerLocation) {
       winnerList.add(carName);
     }
   }
