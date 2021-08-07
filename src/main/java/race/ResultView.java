@@ -1,7 +1,5 @@
 package race;
 
-import java.util.List;
-
 public class ResultView {
 
     protected static void printResult(Cars cars) {
