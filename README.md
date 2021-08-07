@@ -27,12 +27,15 @@
 - Commit Message Convertion 지키기 
 
 #### TODO
-- Application
-  - ~~사용자 입력~~
-    - 자동차 대수
-    - 시도 횟수
-  - ~~자동차 상태 출력~~
-- Car
+- ~~InputView~~
+  - 자동차 대수, 시도 횟수 입력 
+  - 입력 받은 데이터 return 
+- ~~Application~~
+  - InputView에서 받은 데이터로 로직 실행
+  - 로직의 결과 ResultView 전달
+- ~~ResultView~~
+  - Application에서 전달 받은 데이터를 요구사항대로 출력
+- ~~Car~~
   - ~~전진 조건 구하기~~
     - Random 값 구하기 (0-9)
     - Random 값 제한 (4이상)
