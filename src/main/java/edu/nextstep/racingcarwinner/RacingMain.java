@@ -8,6 +8,7 @@ package edu.nextstep.racingcarwinner;
 
 import edu.nextstep.racingcarwinner.domain.Car;
 import edu.nextstep.racingcarwinner.domain.RacingGame;
+import edu.nextstep.racingcarwinner.strategy.RandomStrategy;
 import edu.nextstep.racingcarwinner.view.InputView;
 import edu.nextstep.racingcarwinner.view.OutputView;
 
@@ -32,7 +33,7 @@ public class RacingMain {
         // RacingGame 진행
         outputView.printStartSign();
         for (int i = 0; i < roundNum; i++) {
-            racingGame.playOneRound();
+            racingGame.playOneRound(new RandomStrategy());
             outputView.printOneRound(racingGame);
         }
 

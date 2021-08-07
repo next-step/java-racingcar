@@ -6,13 +6,12 @@
 
 package edu.nextstep.racingcarwinner.domain;
 
+import edu.nextstep.racingcarwinner.strategy.RacingStrategy;
+
 import java.util.Objects;
-import java.util.Random;
 
 public class Car {
-    private static final int MOVING_CRITERIA = 4;
-    private static final int MAX_RANDOM_VALUE = 10;
-    private String name;
+    private final String name;
     private int distance;
 
     public Car(String name) {
@@ -25,15 +24,10 @@ public class Car {
         this.distance = distance;
     }
 
-    public void move(int randomNum) {
-        if (randomNum >= MOVING_CRITERIA) {
+    public void move(RacingStrategy racingStrategy) {
+        if (racingStrategy.movable()) {
             this.distance++;
         }
-    }
-
-    public int getRandomNum(){
-        Random random = new Random();
-        return random.nextInt(MAX_RANDOM_VALUE);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package edu.nextstep.racingcarwinner.domain;
 
+import edu.nextstep.racingcarwinner.strategy.RandomStrategy;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -23,6 +24,19 @@ public class RacingGameTest {
         assertThat(racingGame.getJoinedCarList()).contains(new Car("hwan"),
                 new Car("hyun"),
                 new Car("kook"));
+    }
+
+    @Test
+    void playOneRound(){
+        // given
+        RacingGame racingGame = new RacingGame();
+        racingGame.joinGame(Arrays.asList(new Car("hwan"), new Car("hyun"), new Car("kook")));
+        // when
+        racingGame.playOneRound(() -> true);
+        // then
+        assertThat(racingGame.getJoinedCarList()).contains(new Car("hwan",1),
+                new Car("hyun",1),
+                new Car("kook",1));
     }
 
     @Test

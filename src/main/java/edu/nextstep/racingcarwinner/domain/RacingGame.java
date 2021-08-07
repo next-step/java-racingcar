@@ -6,6 +6,8 @@
 
 package edu.nextstep.racingcarwinner.domain;
 
+import edu.nextstep.racingcarwinner.strategy.RacingStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,9 +27,9 @@ public class RacingGame {
         this.joinedCarList = carList;
     }
 
-    public void playOneRound(){
+    public void playOneRound(RacingStrategy racingStrategy){
         for (Car car : joinedCarList) {
-            car.move(car.getRandomNum());
+            car.move(racingStrategy);
         }
     }
 
