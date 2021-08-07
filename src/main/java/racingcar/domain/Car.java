@@ -4,6 +4,13 @@ public class Car {
     static final int CRITERION_FOR_MOVING = 4;
 
     private int location = 0;
+    private String name = "Unknown";
+
+    Car(String name) {
+        this.name = name;
+    }
+
+    Car() {}
 
     public int getLocation() {
         return location;
