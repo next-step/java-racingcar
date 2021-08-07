@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Objects;
+
 public class Car {
 
     private Position position;
@@ -12,8 +14,9 @@ public class Car {
         this.position = new Position(car.position);
     }
 
-    public int getPosition() {
-        return position;
+    /* 테스트용 생성자 */
+    protected Car(int position) {
+        this.position = new Position(position);
     }
 
     public void move(int randomNum) {
@@ -22,4 +25,16 @@ public class Car {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(position, car.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
+    }
 }
