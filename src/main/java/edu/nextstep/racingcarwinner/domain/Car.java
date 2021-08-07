@@ -49,4 +49,8 @@ public class Car {
     public int getDistance() {
         return distance;
     }
+
+    public int max(int maxDistance) {
+       return Math.max(maxDistance, this.distance);
+    }
 }

@@ -6,17 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCars {
-    private final List<Car> carList;
+    private final List<Car> racingCars;
 
     private RacingCars(List<Car> carList) {
-        this.carList = carList;
+        this.racingCars = carList;
     }
 
-    public static RacingCars makeRacingCars(List<Car> carList) {
+    public static RacingCars of(List<Car> carList) {
         return new RacingCars(carList);
     }
 
-    public static List<Car> makeCarList(String[] carNameArr) {
+    public static RacingCars of(String[] carNameArr) {
+        List<Car> carList = makeCarList(carNameArr);
+        return RacingCars.of(carList);
+    }
+
+    private static List<Car> makeCarList(String[] carNameArr) {
         List<Car> carList = new ArrayList<>();
         for (String name : carNameArr) {
             carList.add(new Car(name));
@@ -26,29 +31,34 @@ public class RacingCars {
 
 
     public void move(RacingStrategy racingStrategy) {
-        for (Car car : carList) {
-            car.move(racingStrategy);
-        }
+        racingCars.forEach(C -> C.move(racingStrategy));
     }
 
-    public List<Car> getWinner() {
+    public List<Car> findWinner() {
+        return getWinners(getMaxDistance());
+    }
+
+    private List<Car> getWinners(int maxDistance) {
         List<Car> winners = new ArrayList<>();
-        int maxDistance = 0;
 
-        for (Car car : carList) {
-            maxDistance = Math.max(maxDistance, car.getDistance());
-        }
-
-        for (Car car : carList) {
-            if (car.getDistance() == maxDistance) {
-                winners.add(car);
-            }
-        }
+        racingCars.stream()
+                .filter(C -> C.getDistance() == maxDistance)
+                .forEach(winners::add);
 
         return winners;
     }
 
-    public List<Car> getCarList() {
-        return this.carList;
+    private int getMaxDistance() {
+        int maxDistance = 0;
+
+        for (Car car : racingCars) {
+            maxDistance = car.max(maxDistance);
+        }
+
+        return maxDistance;
+    }
+
+    public List<Car> getRacingCars() {
+        return this.racingCars;
     }
 }

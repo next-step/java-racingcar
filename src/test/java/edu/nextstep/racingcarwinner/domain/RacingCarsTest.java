@@ -13,14 +13,13 @@ class RacingCarsTest {
     void makeRacingCars() {
         // given
         String inputString = "hwan,hyun,kook";
-        String[] inputStringArr = inputString.split(",");
-        List<Car> carList = RacingCars.makeCarList(inputStringArr);
+        String[] carNameArr = inputString.split(",");
 
         // when
-        RacingCars racingCars = RacingCars.makeRacingCars(carList);
+        RacingCars racingCars = RacingCars.of(carNameArr);
 
         // then
-        assertThat(racingCars.getCarList()).contains(new Car("hwan"),
+        assertThat(racingCars.getRacingCars()).contains(new Car("hwan"),
                 new Car("hyun"),
                 new Car("kook"));
     }
@@ -28,12 +27,11 @@ class RacingCarsTest {
     @Test
     void move() {
         // given
-        List<Car> carList = RacingCars.makeCarList(new String[]{"hwan", "hyun", "kook"});
-        RacingCars racingCars = RacingCars.makeRacingCars(carList);
+        RacingCars racingCars = RacingCars.of(new String[]{"hwan", "hyun", "kook"});
         // when
         racingCars.move(() -> true);
         // then
-        assertThat(racingCars.getCarList()).contains(new Car("hwan",1),
+        assertThat(racingCars.getRacingCars()).contains(new Car("hwan",1),
                 new Car("hyun",1),
                 new Car("kook",1));
     }
@@ -41,12 +39,12 @@ class RacingCarsTest {
     @Test
     void getWinner() {
         // given
-        RacingCars racingCars = RacingCars.makeRacingCars(Arrays.asList(new Car("hwan", 3),
+        RacingCars racingCars = RacingCars.of(Arrays.asList(new Car("hwan", 3),
                 new Car("hyun", 2),
                 new Car("kook", 3)));
 
         // when
-        List<Car> winners = racingCars.getWinner();
+        List<Car> winners = racingCars.findWinner();
 
         // then
         assertThat(winners).contains(new Car("hwan",3),

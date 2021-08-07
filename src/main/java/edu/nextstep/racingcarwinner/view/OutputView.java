@@ -18,7 +18,7 @@ public class OutputView {
     }
 
     public void printOneRound(RacingCars racingCars) {
-        List<Car> carList = racingCars.getCarList();
+        List<Car> carList = racingCars.getRacingCars();
         for (Car car : carList) {
             System.out.print(car.getName() + " : ");
             System.out.println(makeDistanceView("-", car.getDistance()));
