@@ -2,60 +2,28 @@ package step2;
 
 public class Calculator {
 
-    public static int calculate(String in) {
+    public int calculate(String formula) {
 
-        _checkInput(in);
+        checkInput(formula);
 
-        return _calculate(in.split(" "));
+        return calculate(formula.split(" "));
     }
 
-    private static void _checkInput(String in) {
-        if(in == null || in.isEmpty()) {
+    private void checkInput(String formula) {
+        if(formula == null || formula.isEmpty()) {
             throw new IllegalArgumentException("input 값이 없습니다.");
         }
     }
 
-    private static int _calculate(String[] arr) {
+    private int calculate(String[] terms) {
 
-        int current = Integer.parseInt(arr[0]); // 왼쪽 항
+        int current = Integer.parseInt(terms[0]); // 왼쪽 항
 
-        for(int i = 1; i < arr.length; i ++) {
-            switch (arr[i]) {
-                case "+" :
-                    current = _add(current, Integer.parseInt(arr[i + 1]));
-                    break;
-                case "-" :
-                    current = _subtract(current, Integer.parseInt(arr[i + 1]));
-                    break;
-                case "*" :
-                    current = _multiply(current, Integer.parseInt(arr[i + 1]));
-                    break;
-                case "/" :
-                    current = _divide(current, Integer.parseInt(arr[i + 1]));
-                    break;
-                default :
-                    throw new IllegalArgumentException("+, -, *, / 외에 다른 문자가 입력 되었습니다.");
-            }
-
-            i ++;
+        for(int i = 1; i < terms.length; i +=2) {
+            current = Operator.calculate(terms[i], current, Integer.parseInt(terms[i + 1]));
         }
 
         return current;
     }
 
-    private static int _add(int a, int b) {
-        return a + b;
-    }
-
-    private static int _subtract(int a, int b) {
-        return a - b;
-    }
-
-    private static int _multiply(int a, int b) {
-        return a * b;
-    }
-
-    private static int _divide(int a, int b) {
-        return a / b;
-    }
 }
