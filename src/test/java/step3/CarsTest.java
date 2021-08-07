@@ -6,19 +6,21 @@ import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
+import step3.domain.Car;
 import step3.domain.Cars;
 
 public class CarsTest {
 	@DisplayName(value = "Cars 동작 테스트")
-	@ValueSource(ints = {1, 2, 3})
+	@CsvSource("A,B,C")
 	@ParameterizedTest
-	void raceOneTrial(int numberOfCars) {
-		Cars cars = new Cars(numberOfCars);
+	void raceOneTrial(String carA, String carB, String carC) {
+		String[] names = {carA, carB, carC};
+		Cars cars = new Cars(names);
 		cars.raceOneTrial();
-		List<Integer> results = cars.getResultOneTrial();
+		List<Car> carList = cars.getResultOneTrial();
 
-		assertThat(results.size()).isEqualTo(numberOfCars);
+		assertThat(carList.size()).isEqualTo(names.length);
 	}
 }
