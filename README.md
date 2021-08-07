@@ -54,4 +54,15 @@
     - output : 각 라운드 결과 출력, 최종 우승자 출력
   - main : 입력 -> 진행 -> 결과출력 통합 
 
-
+2. Refactoring(1차)
+    - domain
+        - Car(이름, 이동거리 포함) : 생성, 이동(정책에 따라)
+        - RacingCars(일급 컬렉션) : CarList 생성, 게임 1라운드 진행, 우승자 선정
+        - RacingGame(자동차 리스트 포함) : RacingCars 로 요청 전달
+    - strategy
+        - RacingStrategy : racing 정책 interface
+        - RandomStrategy : random 숫자에 따라 자동차의 움직임 여부를 결정하는 정책
+    - view
+        - input : 자동차 이름 입력, 시도 횟수 입력
+        - output : 각 라운드 결과 출력, 최종 우승자 출력
+    - main : 입력 -> 진행 -> 결과출력 통합 
