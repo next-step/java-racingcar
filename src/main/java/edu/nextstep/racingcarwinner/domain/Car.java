@@ -15,8 +15,7 @@ public class Car {
     private int distance;
 
     public Car(String name) {
-        this.name = name;
-        this.distance = 0;
+        this(name, 0);
     }
 
     public Car(String name, int distance) {
@@ -41,14 +40,6 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name, distance);
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "name='" + name + '\'' +
-                ", distance=" + distance +
-                '}';
     }
 
     public String getName() {

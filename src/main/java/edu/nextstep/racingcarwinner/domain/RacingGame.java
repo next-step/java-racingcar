@@ -8,49 +8,20 @@ package edu.nextstep.racingcarwinner.domain;
 
 import edu.nextstep.racingcarwinner.strategy.RacingStrategy;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private List<Car> joinedCarList;
+    private RacingCars racingCars;
 
-    public List<Car> makeCarList(String carNames) {
-        List<Car> carList = new ArrayList<>();
-        String[] nameArr = carNames.split(",");
-        for (String name : nameArr) {
-            carList.add(new Car(name));
-        }
-        return carList;
-    }
-
-    public void joinGame(List<Car> carList) {
-        this.joinedCarList = carList;
+    public void joinGame(RacingCars racingCars) {
+        this.racingCars = racingCars;
     }
 
     public void playOneRound(RacingStrategy racingStrategy){
-        for (Car car : joinedCarList) {
-            car.move(racingStrategy);
-        }
-    }
-
-    public List<Car> getJoinedCarList() {
-        return this.joinedCarList;
+        racingCars.move(racingStrategy);
     }
 
     public List<Car> getWinner() {
-        List<Car> winners = new ArrayList<>();
-        int maxDistance = 0;
-
-        for (Car car : joinedCarList) {
-            maxDistance = Math.max(maxDistance, car.getDistance());
-        }
-
-        for (Car car : joinedCarList) {
-            if (car.getDistance() == maxDistance) {
-                winners.add(car);
-            }
-        }
-
-        return winners;
+        return racingCars.getWinner();
     }
 }

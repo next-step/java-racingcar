@@ -7,6 +7,7 @@
 package edu.nextstep.racingcarwinner;
 
 import edu.nextstep.racingcarwinner.domain.Car;
+import edu.nextstep.racingcarwinner.domain.RacingCars;
 import edu.nextstep.racingcarwinner.domain.RacingGame;
 import edu.nextstep.racingcarwinner.strategy.RandomStrategy;
 import edu.nextstep.racingcarwinner.view.InputView;
@@ -27,14 +28,16 @@ public class RacingMain {
 
         // 입력값에 맞는 자동차 생성 및 RacingGame 참여
         RacingGame racingGame = new RacingGame();
-        List<Car> carList = racingGame.makeCarList(carName);
-        racingGame.joinGame(carList);
+        String[] carNameArr = carName.split(",");
+        List<Car> carList = RacingCars.makeCarList(carNameArr);
+        RacingCars racingCars = RacingCars.makeRacingCars(carList);
+        racingGame.joinGame(racingCars);
 
         // RacingGame 진행
         outputView.printStartSign();
         for (int i = 0; i < roundNum; i++) {
             racingGame.playOneRound(new RandomStrategy());
-            outputView.printOneRound(racingGame);
+            outputView.printOneRound(racingCars);
         }
 
         // winner 출력

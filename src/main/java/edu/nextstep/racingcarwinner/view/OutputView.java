@@ -7,7 +7,7 @@
 package edu.nextstep.racingcarwinner.view;
 
 import edu.nextstep.racingcarwinner.domain.Car;
-import edu.nextstep.racingcarwinner.domain.RacingGame;
+import edu.nextstep.racingcarwinner.domain.RacingCars;
 
 import java.util.List;
 
@@ -17,8 +17,8 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public void printOneRound(RacingGame racingGame) {
-        List<Car> carList = racingGame.getJoinedCarList();
+    public void printOneRound(RacingCars racingCars) {
+        List<Car> carList = racingCars.getCarList();
         for (Car car : carList) {
             System.out.print(car.getName() + " : ");
             System.out.println(makeDistanceView("-", car.getDistance()));

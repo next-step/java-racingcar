@@ -7,19 +7,17 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingGameTest {
+class RacingCarsTest {
 
     @Test
-    void joinGame(){
+    void makeRacingCars() {
         // given
         String inputString = "hwan,hyun,kook";
         String[] inputStringArr = inputString.split(",");
         List<Car> carList = RacingCars.makeCarList(inputStringArr);
-        RacingCars racingCars = RacingCars.makeRacingCars(carList);
 
         // when
-        RacingGame racingGame = new RacingGame();
-        racingGame.joinGame(racingCars);
+        RacingCars racingCars = RacingCars.makeRacingCars(carList);
 
         // then
         assertThat(racingCars.getCarList()).contains(new Car("hwan"),
@@ -28,7 +26,7 @@ public class RacingGameTest {
     }
 
     @Test
-    void playOneRound(){
+    void move() {
         // given
         List<Car> carList = RacingCars.makeCarList(new String[]{"hwan", "hyun", "kook"});
         RacingCars racingCars = RacingCars.makeRacingCars(carList);
@@ -41,16 +39,14 @@ public class RacingGameTest {
     }
 
     @Test
-    void getWinner(){
+    void getWinner() {
         // given
         RacingCars racingCars = RacingCars.makeRacingCars(Arrays.asList(new Car("hwan", 3),
-                                                                    new Car("hyun", 2),
-                                                                    new Car("kook", 3)));
-        RacingGame racingGame = new RacingGame();
-        racingGame.joinGame(racingCars);
+                new Car("hyun", 2),
+                new Car("kook", 3)));
 
         // when
-        List<Car> winners = racingGame.getWinner();
+        List<Car> winners = racingCars.getWinner();
 
         // then
         assertThat(winners).contains(new Car("hwan",3),
