@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class Car {
     private int status;
-//    private Random random;
 
     public Car() {
         status = 0;
@@ -12,12 +11,12 @@ public class Car {
 
     public Car(int status) {
         this.status = status;
-//        this.random = new Random();
     }
 
     public int getForwardCondition() {
         Random random = new Random();
-        return random.nextInt(10);
+        final int standard = 10;
+        return random.nextInt(standard);
     }
 
     public boolean isForward(int condition) {
