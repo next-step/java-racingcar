@@ -1,3 +1,5 @@
+package kr.co.techmoa.calculator;
+
 import java.util.Scanner;
 
 public class Calculator {
