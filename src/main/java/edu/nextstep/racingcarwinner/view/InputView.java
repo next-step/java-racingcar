@@ -1,3 +1,9 @@
+/*
+ * edu.nextstep.racingcarwinner.view.InputView.java
+ * 0.1 2021.08.07 18:24
+ * 해당 클래스의 경우 TDD, CleanCode with Java 수업의 RacingCar step4에 해당됩니다.
+ */
+
 package edu.nextstep.racingcarwinner.view;
 
 import java.util.Scanner;
