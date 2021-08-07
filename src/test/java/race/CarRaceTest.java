@@ -1,40 +1,26 @@
 package race;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRaceTest {
 
-    private final CarRace carRace = new CarRace();
+    private CarRace carRace;
 
-    @ParameterizedTest
-    @ValueSource(strings = {"5", "!"})
-    @DisplayName("게임프로필 테스트")
-    void setGameProfileTest(String input) {
-        InputStream in = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
-        System.setIn(in);
-        carRace.setGameProfile();
-        assertThat(carRace.getCarCount()).isEqualTo(2);
+    @BeforeEach
+    void setUp() {
+        carRace = new CarRace();
+        carRace.setCarCount(3);
+        carRace.setGameCount(5);
     }
 
     @Test
     @DisplayName("랜덤숫자 테스트")
     void getRandomNumTest() {
-        assertThat(RandomNum.getRandomNum()).isLessThanOrEqualTo(0);
-    }
-
-    @Test
-    @DisplayName("자동차 경주 테스트")
-    void playGameTest() {
-        carRace.initGame();
+        assertThat(RandomNum.getRandomNum()).isLessThanOrEqualTo(9);
     }
 
     @Test
@@ -44,5 +30,18 @@ class CarRaceTest {
         Message.askGameCount();
     }
 
+    @Test
+    @DisplayName("createCarList 테스트")
+    void createCarListTest() {
+        //then
+        assertThat(carRace.createCarList().getCarList().get(0).getDistance()).contains("");
+    }
+
+    @Test
+    @DisplayName("playGame 테스트")
+    void playGameTest() {
+        //then
+        carRace.playGame();
+    }
 
 }
