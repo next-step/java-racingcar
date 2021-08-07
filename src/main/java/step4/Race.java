@@ -43,7 +43,7 @@ public class Race {
 	private int getMaxDistance() {
 		int maxDistance = INIT_DISTANCE;
 		for (Car car : cars) {
-			maxDistance = car.getMaxDistance(maxDistance);
+			maxDistance = car.getMaxDistance(maxDistance).getDistance();
 		}
 		return maxDistance;
 	}

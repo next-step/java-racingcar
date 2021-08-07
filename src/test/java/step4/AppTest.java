@@ -22,7 +22,7 @@ public class AppTest {
 	void goTest() {
 		Car car = new Car("yul", 0);
 		car.move(()->4);
-		int carDistance = car.getDistance();
+		int carDistance = car.getDistance().getDistance();
 		assertThat(carDistance).isEqualTo(1);
 	}
 
@@ -31,7 +31,7 @@ public class AppTest {
 	void stopTest() {
 		Car car = new Car("yul", 0);
 		car.move(()->3);
-		int carDistance = car.getDistance();
+		int carDistance = car.getDistance().getDistance();
 		assertThat(carDistance).isEqualTo(0);
 	}
 
