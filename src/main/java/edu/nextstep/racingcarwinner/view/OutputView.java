@@ -1,0 +1,44 @@
+package edu.nextstep.racingcarwinner.view;
+
+import edu.nextstep.racingcarwinner.domain.Car;
+import edu.nextstep.racingcarwinner.domain.RacingGame;
+
+import java.util.List;
+
+public class OutputView {
+
+    public void printStartSign() {
+        System.out.println("실행 결과");
+    }
+
+    public void printOneRound(RacingGame racingGame) {
+        List<Car> carList = racingGame.getJoinedCarList();
+        for (Car car : carList) {
+            System.out.print(car.getName() + " : ");
+            System.out.println(makeDistanceView("-", car.getDistance()));
+        }
+        System.out.println();
+
+    }
+
+    private String makeDistanceView(String s, int distance) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < distance; i++) {
+            result.append(s);
+        }
+        return result.toString();
+    }
+
+
+    public void printWinner(List<Car> winners) {
+        StringBuilder result = new StringBuilder();
+        for (Car car : winners) {
+            result.append(", ").append(car.getName());
+        }
+        result.delete(0, 2);
+        result.append("가 최종 우승했습니다.");
+        System.out.println(result.toString());
+    }
+
+
+}
