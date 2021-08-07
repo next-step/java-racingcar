@@ -10,12 +10,6 @@ public class Expression {
         this.init = Integer.parseInt(data[0]);
     }
 
-    public Expression(String[] data, int init) {
-        this.data = data;
-        this.init = init;
-        this.operation = "";
-    }
-
     public int express() {
         for (int i = 2; i < data.length; i+=2) {
             operation = data[i - 1];

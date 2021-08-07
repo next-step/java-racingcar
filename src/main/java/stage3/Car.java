@@ -19,8 +19,8 @@ public class Car {
     }
 
     public boolean isForward(int condition) {
-        if (condition >= 4) return true;
-        return false;
+        final int threshold = 4;
+        return condition >= threshold;
     }
 
     public int getStatus() {

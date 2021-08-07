@@ -15,15 +15,6 @@ public class CarTest {
         car = new Car();
     }
 
-    @RepeatedTest(100)
-    @DisplayName("전진 조건 테스트")
-    void forwardConditionTest() {
-        int minValue = 0;
-        int maxValue = 9;
-        int result = car.getForwardCondition();
-        assertTrue(result >= minValue && result <= maxValue);
-    }
-
     @Test
     @DisplayName("전진 조건 얻기 - 전진")
     void tryTest1() {
