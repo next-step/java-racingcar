@@ -15,12 +15,20 @@ public class CarRacing {
   }
 
   public void startRacing() {
+    ResultView.printResultTitle();
     for (int i = 0; i < numOfMove; i++) {
       moveAllCars();
+      ResultView.printCurrentRoundResult(carList);
+      ResultView.printRoundDivider();
     }
+    ResultView.printWinnerList(getWinnerList());
   }
 
-  public ArrayList<String> getWinnerList() {
+  private void moveAllCars() {
+    carList.forEach(Car::move);
+  }
+
+  private String[] getWinnerList() {
     ArrayList<String> winnerList = new ArrayList<>();
     int winnerLocation = 0;
     for (Car car : carList) {
@@ -29,11 +37,7 @@ public class CarRacing {
       addToWinnerList(winnerList, winnerLocation, carLocation, car.getName());
       winnerLocation = Math.max(winnerLocation, carLocation);
     }
-    return winnerList;
-  }
-
-  private void moveAllCars() {
-    carList.forEach(Car::move);
+    return winnerList.toArray(new String[winnerList.size()]);
   }
 
   private void clearWinnerList(ArrayList<String> winnerList, int winnerLocation, int carLocation) {
