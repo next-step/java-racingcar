@@ -1,4 +1,6 @@
-package com.racingcar.car;
+package com.racingcar.game.car;
+
+import com.racingcar.game.result.RoundCarRecord;
 
 public class Car {
     private int distance = 1;
@@ -14,12 +16,12 @@ public class Car {
         this.name = name;
     }
 
-    public void move(int value) {
-        if (value < MOVE_STANDARD) {
-            return;
+    public RoundCarRecord move(int value) {
+        if (value >= MOVE_STANDARD) {
+            distance++;
         }
 
-        distance++;
+        return RoundCarRecord.of(this);
     }
 
     public int getDistance() {

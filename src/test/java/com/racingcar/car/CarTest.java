@@ -1,6 +1,7 @@
 package com.racingcar.car;
 
 import com.racingcar.dice.Dice;
+import com.racingcar.game.car.Car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
