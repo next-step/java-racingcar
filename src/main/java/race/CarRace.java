@@ -1,5 +1,8 @@
 package race;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CarRace {
 
     private int carCount;
@@ -8,34 +11,31 @@ public class CarRace {
 
     private String[] carDistance;
 
-    public CarRace() {
-
-    }
-
-    public int getCarCount() {
-        return carCount;
-    }
-
-    public int getGameCount() {
-        return gameCount;
-    }
-
     public static void main(String[] args) {
         CarRace carRace = new CarRace();
-        carRace.initGame();
     }
 
     public void initGame() {
-        setGameProfile();
-        playGame();
-    }
-
-
-    protected void setGameProfile() {
         carCount = setCarCount();
         gameCount = setGameCount();
-        setCarDistance();
+        Cars carList = new Cars(createCarList());
+        for (Car car: carList.getCarList()) {
+            car.addDistance();
+        }
+        ResultView.printResult(carList);
     }
+
+    private List<Car> createCarList() {
+        List<Car> carList = new ArrayList<>();
+        int tempCarCount = carCount;
+        while (tempCarCount-- > 0) {
+            Car car = new Car("");
+            carList.add(car);
+        }
+
+        return carList;
+    }
+
 
     protected int setCarCount() {
        Message.askCarCount();
@@ -45,38 +45,6 @@ public class CarRace {
     protected int setGameCount() {
         Message.askGameCount();
         return InputView.inputOutput();
-    }
-
-    protected void setCarDistance() {
-        carDistance = new String[carCount];
-        for (int i = 0; i < carCount; i++) {
-            carDistance[i] = "";
-        }
-    }
-
-    private void saveCarMovement() {
-
-    }
-
-    private void playGame() {
-        while(gameCount-- > 0) {
-            int tempCarCount = 0;
-            loopCarCount();
-            ResultView.printResult(carDistance);
-        }
-    }
-
-    private void loopCarCount() {
-        int tempCarCount = 0;
-        while (tempCarCount < carCount) {
-            checkRandomNum(tempCarCount);
-            tempCarCount++;
-        }
-    }
-
-    private void checkRandomNum(int tempCarCount) {
-        if (RandomNum.getRandomNum() > 4)
-            carDistance[tempCarCount] += "-";
     }
 
 }
