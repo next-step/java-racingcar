@@ -22,15 +22,9 @@ public class CarTest {
     void moveSuccess() {
         // given
         String name = "hwan";
-        Car car = new Car(name){
-            @Override
-            protected int getRandomNum() {
-                return 4;
-            }
-        };
-
+        Car car = new Car(name);
         // when
-        car.move();
+        car.move(4);
 
         // then
         assertThat(car.getName()).isEqualTo("hwan");
@@ -41,15 +35,10 @@ public class CarTest {
     void moveFail() {
         // given
         String name = "hwan";
-        Car car = new Car(name){
-            @Override
-            protected int getRandomNum() {
-                return 3;
-            }
-        };
+        Car car = new Car(name);
 
         // when
-        car.move();
+        car.move(3);
 
         // then
         assertThat(car.getName()).isEqualTo("hwan");

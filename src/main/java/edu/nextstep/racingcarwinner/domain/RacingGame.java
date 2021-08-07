@@ -27,7 +27,7 @@ public class RacingGame {
 
     public void playOneRound(){
         for (Car car : joinedCarList) {
-            car.move();
+            car.move(car.getRandomNum());
         }
     }
 

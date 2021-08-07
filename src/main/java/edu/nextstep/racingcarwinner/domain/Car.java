@@ -23,13 +23,13 @@ public class Car {
         this.distance = distance;
     }
 
-    public void move() {
-        if (getRandomNum() >= 4) {
+    public void move(int randomNum) {
+        if (randomNum >= 4) {
             this.distance++;
         }
     }
 
-    protected int getRandomNum(){
+    public int getRandomNum(){
         Random random = new Random();
         return random.nextInt(10);
     }
