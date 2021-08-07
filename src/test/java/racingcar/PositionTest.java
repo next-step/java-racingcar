@@ -1,0 +1,26 @@
+package racingcar;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class PositionTest {
+
+    @DisplayName("increse메소드는 position을 1 증가 시킨다.")
+    @Test
+    void increaseMethodAddOneToCurrentPosition() {
+        assertThat(new Position(0).increase()).isEqualTo(new Position(1));
+    }
+
+    @DisplayName("Position의 생성자를 이용해서 깊은 복사가 가능하다.")
+    @Test
+    void deepCopyIsAvailableUsingConstructor() {
+        Position toBeCopied = new Position(0);
+        Position copied = new Position(toBeCopied);
+        assertThat(toBeCopied.equals(copied)).isTrue();
+        assertThat(toBeCopied==copied).isFalse();
+    }
+}
