@@ -5,37 +5,26 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Race {
-    private int round;
+    private List<Round> rounds;
     private List<Car> cars;
-    protected List<List<Integer>> posForEachRound;
+    private int roundNum;
 
-    public Race(int carNum, int round) {
-        this.round = round;
-        this.cars = new LinkedList<>();
-        this.posForEachRound = new LinkedList<>();
+    public Race(int carNum, int roundNum) {
         crateCars(carNum);
+        this.roundNum = roundNum;
+        rounds = new LinkedList<>();
     }
 
     private void crateCars(int carNum) {
-        for (int i = 0; i < carNum; i++) {
-            cars.add(new Car());
-        }
+        cars = new LinkedList<>();
+        IntStream.range(0, carNum).forEach(i -> cars.add(new Car()));
     }
 
     public void doRace() {
-        for (int i = 0; i < round; i++) {
-            raceForRound();
-            saveRoundResult();
+        for (int i = 0; i < roundNum; i++) {
+            Round round = new Round(this.cars);
+            this.cars = round.moveCars();
+            rounds.add(round);
         }
-    }
-
-    private void raceForRound() {
-        cars.stream().forEach(car-> car.move(new RandomNumGenerator().getRandomNumber()));
-    }
-
-    private void saveRoundResult() {
-        List<Integer> posForRound = new LinkedList<>();
-        cars.stream().forEach(car-> posForRound.add(car.getPosition()));
-        posForEachRound.add(posForRound);
     }
 }

@@ -1,13 +1,15 @@
 package racingcar;
 
-import java.util.Random;
-
-public class Car {
+public class Car implements Cloneable{
 
     private int position;
 
     public Car() {
         this.position = 0;
+    }
+
+    public Car (Car car) {
+        this.position = car.getPosition();
     }
 
     public int getPosition() {

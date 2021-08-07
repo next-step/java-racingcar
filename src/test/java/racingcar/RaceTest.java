@@ -10,7 +10,8 @@ public class RaceTest {
     void testRaceGameEntireProcess() {
         Race race = new Race(3, 5);
         race.doRace();
-        ResultView.printResult(race.posForEachRound);
+        System.out.println("OMG");
+        // ResultView.printResult(race.posForEachRound);
     }
 
 }

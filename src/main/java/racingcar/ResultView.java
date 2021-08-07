@@ -2,11 +2,10 @@ package racingcar;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class ResultView {
 
-    public static void printResult(List<int[]> posesForEachRound) {
+    public static void printResult(List<List<Integer>> posesForEachRound) {
         printResultTitle();
         posesForEachRound.stream().forEach(posses -> printCarPositionOfRound(posses));
     }
@@ -15,8 +14,8 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    private static void printCarPositionOfRound(int[] poses) {
-        Arrays.stream(poses).forEach(position -> printPositionDrawing(position));
+    private static void printCarPositionOfRound(List<Integer> poses) {
+        poses.stream().forEach(position -> printPositionDrawing(position));
         printEmptyLine();
     }
 
