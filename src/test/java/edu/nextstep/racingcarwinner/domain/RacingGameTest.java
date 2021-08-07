@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingGameTest {
 
     @Test
-    void makeCarList(){
+    void joinRacingGame(){
         // given
         String inputString = "hwan,hyun,kook";
         RacingGame racingGame = new RacingGame();
@@ -20,7 +20,7 @@ public class RacingGameTest {
         racingGame.joinGame(carList);
 
         // then
-        assertThat(racingGame.getCarList()).contains(new Car("hwan"),
+        assertThat(racingGame.getJoinedCarList()).contains(new Car("hwan"),
                 new Car("hyun"),
                 new Car("kook"));
     }
