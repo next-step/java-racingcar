@@ -7,7 +7,7 @@ public class CarRacing {
   private final int numOfMove;
   private final ArrayList<Car> carList = new ArrayList<>();
 
-  public CarRacing(final ArrayList<String> carNames, final int numOfMove) {
+  public CarRacing(final String[] carNames, final int numOfMove) {
     this.numOfMove = numOfMove;
     for (String carName : carNames) {
       carList.add(new Car(carName, new RandomMoveStrategy()));
