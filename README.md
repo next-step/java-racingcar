@@ -9,6 +9,30 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 ---
+### 4단계 자동차 경주 
+> 3단계에 이어서 작성 
+
+#### 기능 요구사항
+- 각 자동차에 이름을 부여
+- 자동차 이름은 5자 이하
+- 자동차 출력시 이름을 같이 출력
+- 자동차 이름은 쉼표를 기준으로 구분
+- 자동차 경주 게임 우승자를 알려준다
+  - 우승자는 한명 이상일 수 있음.
+
+#### TODO
+- InputValue
+  - 기존 carNum(자동차 갯수), tryNum(시도 횟수) \
+    -> `{자동차이름},{자동차이름}...` 형태로 변경해 받음.
+  - 자동차 이름 validation (5자 이하)
+- Application
+  - Car 데이터 세팅 변경
+  - 우승자 선정 로직 추가 
+- ResultView
+  - 자동차 출력시 이름 출력 추가 
+  - 우승자 출력 추가 
+
+---
 
 ### 3단계 자동차 경주 
 #### 기능 요구사항
@@ -24,22 +48,24 @@
 - else 예약어 및 Switch/Case 사용 X 
 - Readme.md에 구현할 기능 목록 정리해 추가한 뒤 진행
 - Commit 단위는 Readme.md에 정리한 기능 목록 단위로 추가 
-- Commit Message Convertion 지키기 
+- Commit Message Convention 지키기 
 
 #### TODO
 - ~~InputView~~
   - 자동차 대수, 시도 횟수 입력 
   - 입력 받은 데이터 return 
 - ~~Application~~
-  - InputView에서 받은 데이터로 로직 실행
+  - InputView 에서 받은 데이터로 로직 실행
   - 로직의 결과 ResultView 전달
 - ~~ResultView~~
-  - Application에서 전달 받은 데이터를 요구사항대로 출력
+  - Application 에서 전달 받은 데이터를 요구사항대로 출력
 - ~~Car~~
   - ~~전진 조건 구하기~~
     - Random 값 구하기 (0-9)
     - Random 값 제한 (4이상)
   - ~~전진, 멈춤 구현~~
+- ~~CarService~~
+  - Car 기능 단위로 묶기 
 
 ---
 
