@@ -21,12 +21,7 @@ public class AppTest {
 	@Test
 	void goTest() {
 		Car car = new Car("yul", 0);
-		car.move(new NumberGenerator() {
-			@Override
-			public int getNumber() {
-				return 4;
-			}
-		});
+		car.move(()->4);
 		int carDistance = car.getDistance();
 		assertThat(carDistance).isEqualTo(1);
 	}
@@ -35,12 +30,7 @@ public class AppTest {
 	@Test
 	void stopTest() {
 		Car car = new Car("yul", 0);
-		car.move(new NumberGenerator() {
-			@Override
-			public int getNumber() {
-				return 3;
-			}
-		});
+		car.move(()->3);
 		int carDistance = car.getDistance();
 		assertThat(carDistance).isEqualTo(0);
 	}
@@ -52,19 +42,8 @@ public class AppTest {
 		Race race = new Race(numberGenerator, new String[]{"car","car2"});
 		List<Car> cars = race.getCars();
 
-		cars.get(0).move(new NumberGenerator() {
-			@Override
-			public int getNumber() {
-				return 7;
-			}
-		});
-
-		cars.get(1).move(new NumberGenerator() {
-			@Override
-			public int getNumber() {
-				return 3;
-			}
-		});
+		cars.get(0).move(()->7);
+		cars.get(1).move(()->3);
 
 		assertThat(race.getWinners()).contains(cars.get(0));
 	}
