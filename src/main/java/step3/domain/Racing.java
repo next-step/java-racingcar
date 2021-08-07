@@ -7,21 +7,21 @@ public class Racing {
 	private final int trials;
 	private final Cars cars;
 
-	public Racing(int trials, int cars) {
+	public Racing(int trials, String[] cars) {
 		this.trials = trials;
 		this.cars = new Cars(cars);
 	}
 
-	public List<RacingResult> race() {
-		List<RacingResult> result = new ArrayList<>();
+	public List<RacingResults> race() {
+		List<RacingResults> results = new ArrayList<>();
 
 		for (int i = 0; i < trials; i++) {
 			cars.raceOneTrial();
-			List<Integer> resultOneTrial = cars.getResultOneTrial();
-			RacingResult racingResult = new RacingResult(resultOneTrial);
-			result.add(racingResult);
+			List<Car> resultOneTrial = cars.getResultOneTrial();
+			RacingResults result = new RacingResults(resultOneTrial);
+			results.add(result);
 		}
 
-		return result;
+		return results;
 	}
 }

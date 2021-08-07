@@ -2,17 +2,16 @@ package step3.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import step3.utils.RandomUtils;
 
 public class Cars {
 	private final List<Car> cars;
 
-	public Cars(int numberOfCars) {
+	public Cars(String[] names) {
 		List<Car> cars = new ArrayList<>();
-		for (int i = 0; i < numberOfCars; i++) {
-			Car car = new Car();
+		for (String name : names) {
+			Car car = new Car(name);
 			cars.add(car);
 		}
 		this.cars = cars;
@@ -25,9 +24,7 @@ public class Cars {
 		});
 	}
 
-	public List<Integer> getResultOneTrial() {
-		return cars.stream()
-			.map(Car::getPosition)
-			.collect(Collectors.toList());
+	public List<Car> getResultOneTrial() {
+		return cars;
 	}
 }
