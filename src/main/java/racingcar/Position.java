@@ -6,6 +6,7 @@ public class Position {
     int position;
 
     public Position (int position) {
+        validatePosition(position);
         this.position = position;
     }
 
@@ -16,6 +17,12 @@ public class Position {
     public Position increase() {
         position++;
         return new Position(position);
+    }
+
+    private void validatePosition(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("자동차의 위치는 0 이상의 정수여야합니다.");
+        }
     }
 
     @Override

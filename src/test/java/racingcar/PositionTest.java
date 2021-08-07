@@ -1,11 +1,13 @@
 package racingcar;
 
+import calculator.UserInput;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class PositionTest {
 
@@ -22,5 +24,11 @@ public class PositionTest {
         Position copied = new Position(toBeCopied);
         assertThat(toBeCopied.equals(copied)).isTrue();
         assertThat(toBeCopied==copied).isFalse();
+    }
+
+    @DisplayName("Position은 0이상의 정수이다")
+    @Test
+    void positionHasToBeIntegerNotLessThanZere() {
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> new Position(-1)).withMessageMatching("자동차의 위치는 0 이상의 정수여야합니다.");
     }
 }
