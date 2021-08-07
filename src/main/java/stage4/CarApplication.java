@@ -9,10 +9,11 @@ public class CarApplication {
 
     public static void main(String[] args) {
         final InputValue ipValue = inputView.input();
-        final int carNum = ipValue.getCarNum();
+        final String[] carNames = ipValue.getCarNames();
+        final int carNum = carNames.length;
         final int tryNum = ipValue.getTryNum();
 
-        List<CarService> carList = init(carNum);
+        List<CarService> carList = init(carNames);
 
         final List<ResultValue> results = execute(tryNum, carList);
         resultView.printResult(carNum, results);
@@ -24,16 +25,16 @@ public class CarApplication {
             for (CarService cs : carList) {
                 final int condition = cs.getCondition();
                 cs.tryForward(condition);
-                result.add(new ResultValue(cs.getStatus()));
+                result.add(new ResultValue(cs.getCar().getName(), cs.getStatus()));
             }
         }
         return result;
     }
 
-    private static List<CarService> init(int carNum) {
+    private static List<CarService> init(String[] carNames) {
         List<CarService> carList = new ArrayList<>();
-        for (int i = 0; i < carNum; i++) {
-            carList.add(new CarService(new Car()));
+        for (int i = 0; i < carNames.length; i++) {
+            carList.add(new CarService(new Car(carNames[i])));
         }
         return carList;
     }

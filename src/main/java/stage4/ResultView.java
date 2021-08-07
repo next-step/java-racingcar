@@ -11,13 +11,15 @@ public class ResultView {
     public void printResult(int carNum, List<ResultValue> results) {
         printNotice();
         for (int i = 1; i <= results.size(); i++) {
-            changePrintFormat(results.get(i - 1).getCurrentStatus());
+            final ResultValue resultValue = results.get(i - 1);
+            changePrintFormat(resultValue.getCarName(), resultValue.getCurrentStatus());
             if (i % carNum == 0) System.out.println();
         }
     }
 
-    public void changePrintFormat(int carStatus) {
+    public void changePrintFormat(String carName, int carStatus) {
         StringBuffer sb = new StringBuffer();
+        sb.append(carName).append(" : ");
         for (int i = 0; i < carStatus; i++) {
             sb.append("-");
         }

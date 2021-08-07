@@ -12,10 +12,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CarTest {
     private Car car;
+    private String carName;
 
     @BeforeAll
     void setup() {
-        car = new Car();
+        carName = "name";
+        car = new Car(carName);
     }
 
     @Test
@@ -39,7 +41,7 @@ public class CarTest {
     void forwardTest() {
         // given
         final int currentStatus = 3;
-        Car car = new Car(currentStatus);
+        Car car = new Car(carName, currentStatus);
         final int expectedStatus = 4;
 
         // when

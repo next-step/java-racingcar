@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarServiceTest {
+
+    private String carName = "name";
+
     @Test
     @DisplayName("tryForward - 멈춤 테스트")
     void tryStopTest() {
@@ -13,7 +16,7 @@ public class CarServiceTest {
         final int currentStatus = 0;
         final int impossible = 3;
         final int expectedStatus = 0;
-        Car car = new Car(currentStatus);
+        Car car = new Car(carName, currentStatus);
         CarService carService = new CarService(car);
 
         // when
@@ -30,7 +33,7 @@ public class CarServiceTest {
         final int currentStatus = 0;
         final int possible = 4;
         final int expectedStatus = 1;
-        Car car = new Car(currentStatus);
+        Car car = new Car(carName, currentStatus);
         CarService carService = new CarService(car);
 
         // when

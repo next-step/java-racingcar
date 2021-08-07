@@ -1,7 +1,7 @@
 package stage4;
 
 public class CarService {
-    private Car car;
+    private final Car car;
 
     public CarService(Car car) {
         this.car = car;
@@ -18,5 +18,9 @@ public class CarService {
 
     public int getStatus() {
         return this.car.getStatus();
+    }
+
+    public Car getCar() {
+        return this.car;
     }
 }
