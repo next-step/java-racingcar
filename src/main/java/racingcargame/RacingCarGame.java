@@ -8,7 +8,6 @@ public class RacingCarGame {
     private List<RacingCar> cars;
     private ResultView resultView = new ResultView();
     private int count;
-    private String winners = "";
 
     RacingCarGame(String nameOfCars, int count) {
         this.count = count;
@@ -32,26 +31,27 @@ public class RacingCarGame {
         }
     }
 
-    public void showGameResult() {
-        sortDistance(cars);
-        for (int i = 0; i < cars.size(); i++) {
-            selectTie(cars, i);
+    public void showWinner() {
+        resultView.printWinner(findWinners());
+    }
+
+    private String findWinners() {
+        cars.sort(Collections.reverseOrder());
+
+        int winnerDistance = cars.get(0).getDistance();
+        String winners = cars.get(0).getCarName();
+        for (int i = 1; i < cars.size(); i++) {
+            winners += selectTie(cars.get(i), winnerDistance);
         }
-        printWinner(winners);
+        return winners;
     }
 
-    private void sortDistance(List<RacingCar> cars) {
-        Collections.sort(cars, Collections.reverseOrder());
-    }
-
-    private void selectTie(List<RacingCar> cars, int index) {
-        if(cars.get(0).getDistance() == cars.get(index).getDistance()) {
-            winners += cars.get(index).getCarName() + ", ";
+    private String selectTie(RacingCar car, int winnerDistance) {
+        String tie = "";
+        if(car.isWinner(winnerDistance)) {
+            tie = ", " + car.getCarName();
         }
-    }
-
-    private void printWinner(String winners) {
-        resultView.printWinner(winners);
+        return tie;
     }
 
     private void round(RandomOption randomOption) {

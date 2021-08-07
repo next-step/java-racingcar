@@ -20,9 +20,9 @@ public class InputView {
     }
 
     public String checkWordCount(String nameOfCars) throws WordCountException {
-        String[] carName = nameOfCars.split(",");
-        for (int i = 0; i < carName.length; i++) {
-            wordCountException(carName[i]);
+        String[] carsName = nameOfCars.split(",");
+        for (String carName : carsName) {
+            wordCountException(carName);
         }
         return nameOfCars;
     }

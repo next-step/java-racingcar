@@ -3,7 +3,6 @@ package racingcargame;
 public class RacingCar implements Comparable<RacingCar> {
     private static final int MOVING_VALUE = 4;
     private int distance = 0;
-    private int rank = 0;
     private String carName = "";
 
     RacingCar (String carName) {
@@ -29,25 +28,16 @@ public class RacingCar implements Comparable<RacingCar> {
         return distance;
     }
 
-    public int getRank() {
-        return rank;
-    }
-
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
-
     public String getCarName() {
         return carName;
     }
 
+    public boolean isWinner(int winnerDistance) {
+        return distance == winnerDistance;
+    }
+
     @Override
     public int compareTo(RacingCar racingCar) {
-        if (racingCar.distance < distance) {
-            return 1;
-        } else if (racingCar.distance > distance) {
-            return -1;
-        }
-        return 0;
+       return Integer.compare(this.distance, racingCar.distance);
     }
 }

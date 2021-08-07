@@ -8,7 +8,7 @@ public class Client {
         try {
             RacingCarGame racingCarGame = new RacingCarGame(inputView.inputNameOfCars(), inputView.inputCount());
             racingCarGame.startGame(randomOption);
-            racingCarGame.showGameResult();
+            racingCarGame.showWinner();
 
             inputView.close();
         } catch (Exception e) {
