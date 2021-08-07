@@ -1,15 +1,15 @@
 package racingcar;
 
-public class Car implements Cloneable{
+public class Car {
 
-    private int position;
+    private Position position;
 
     public Car() {
-        this.position = 0;
+        this.position = new Position(0);
     }
 
     public Car (Car car) {
-        this.position = car.getPosition();
+        this.position = new Position(car.position);
     }
 
     public int getPosition() {
@@ -18,7 +18,8 @@ public class Car implements Cloneable{
 
     public void move(int randomNum) {
         if (randomNum >= 4) {
-            position++;
+            position = position.increase();
         }
     }
+
 }
