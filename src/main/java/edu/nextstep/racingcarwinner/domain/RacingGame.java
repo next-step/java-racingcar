@@ -17,7 +17,12 @@ public class RacingGame {
 
     public void joinGame(List<Car> carList) {
         this.joinedCarList = carList;
+    }
 
+    public void playOneRound(){
+        for (Car car : joinedCarList) {
+            car.move();
+        }
     }
 
     public List<Car> getJoinedCarList() {
