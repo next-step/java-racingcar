@@ -31,26 +31,24 @@ public class CarRacing {
 
   private String[] getWinnerList() {
     List<String> winnerList = new ArrayList<>();
-    int winnerLocation = 0;
+    int maxLocation = getMaxLocation();
     for (Car car : carList) {
-      int carLocation = car.getLocation();
-      clearWinnerList(winnerList, winnerLocation, carLocation);
-      addToWinnerList(winnerList, winnerLocation, carLocation, car.getName());
-      winnerLocation = Math.max(winnerLocation, carLocation);
+      addToWinnerList(winnerList, maxLocation, car);
     }
     return winnerList.toArray(new String[winnerList.size()]);
   }
 
-  private void clearWinnerList(List<String> winnerList, int winnerLocation, int carLocation) {
-    if (carLocation > 0 && carLocation > winnerLocation) {
-      winnerList.clear();
+  private int getMaxLocation() {
+    int maxLocation = 0;
+    for (Car car : carList) {
+      maxLocation = Math.max(maxLocation, car.getLocation());
     }
+    return maxLocation;
   }
 
-  private void addToWinnerList(List<String> winnerList, int winnerLocation, int carLocation,
-      String carName) {
-    if (carLocation > 0 && carLocation >= winnerLocation) {
-      winnerList.add(carName);
+  private void addToWinnerList(List<String> winnerList, int maxLocation, Car car) {
+    if (car.getLocation() != 0 && maxLocation == car.getLocation()) {
+      winnerList.add(car.getName());
     }
   }
 }
