@@ -6,6 +6,10 @@
 
 package racingcar;
 
+import racingcar.domain.Car;
+import racingcar.domain.RacingCar;
+import racingcar.view.RacingCarResultView;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,14 +21,8 @@ import java.io.InputStreamReader;
 public class RacingCarPlayMain {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        RacingCarResultView view  = new RacingCarResultView();
-        String[] carNames = view.getCarNames(br);
-        int moveCount = view.getMoveCount(br);
-        int range = 10;
+        RacingCarResultView view = new RacingCarResultView();
 
-        RacingCar racingCar = new RacingCar(carNames ,moveCount, range);
-        view.drawRacingResult();
-        racingCar.start();
-
+        view.start(br);
     }
 }

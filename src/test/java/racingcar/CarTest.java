@@ -1,6 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -8,20 +9,24 @@ public class CarTest {
 
     @Test
     public void getMove() {
-
-        int range = 10;
         Car car = new Car("myCar");
-        assertThat(car.getMove(range)).isBetween(0,range);
+
+        assertThat(car.getRandomNum(Car.FORWARD_RANGE)).isBetween(0,Car.FORWARD_RANGE);
     }
 
     @Test
     public void moveCar() {
-
-        int range = 10;
         Car car = new Car("myCar");
-        car.moveCar(range);
+        int moveCount = car.getRandomNum(Car.FORWARD_RANGE);
 
-        assertThat(car.getCurrentLocation()).isNotEqualTo(0);
+        car.moveCar(moveCount);
+        if (moveCount >= Car.MIN_LOCATION) {
+            assertThat(car.getCurrentLocation()).isNotEqualTo(0)
+                                                .isBetween(0, Car.FORWARD_RANGE);
+        }else {
+            assertThat(car.getCurrentLocation()).isEqualTo(0);
+        }
+
     }
 
 }

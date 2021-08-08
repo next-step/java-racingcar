@@ -4,7 +4,7 @@
  *   Date : 2021/07/24
  */
 
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class RacingCar {
     private final int moveCount; // 자동차 이동 횟수
     private List<Car> cars; // 자동차들의 객체
 
-    public RacingCar(String[] carNames, int moveCount, int range) {
+    public RacingCar(String[] carNames, int moveCount) {
         this.carNames = carNames;
         this.moveCount = moveCount;
         this.cars = new ArrayList<Car>();
@@ -37,26 +37,14 @@ public class RacingCar {
     }
 
     /**
-     * 준비된 Car 객채들 끼리의 경주를 시작합니다.
-     */
-    public List<Car> doRacingStart(List<Car> cars) {
-        for (int i = 0; i < this.moveCount; i++) {
-            moveAsCarUserEntered(cars);
-        }
-        return cars;
-    }
-
-    /**
      * 사용자가 입력한 횟수만큼 자동차들을 움직입니다.
      * @param cars
      */
-    public void moveAsCarUserEntered(List<Car> cars) {
+    public List<Car> moveAsCarUserEntered(List<Car> cars) {
         for (Car car : cars) {
-            car.moveCar(Car.RANGE);
+            car.moveCar(car.getRandomNum(Car.FORWARD_RANGE));
         }
-
-        RacingCarResultView view = new RacingCarResultView();
-        view.drawCarMoving(cars);
+        return cars;
     }
 
     /**
@@ -90,22 +78,17 @@ public class RacingCar {
         int maxLocation = cars.get(0).getCurrentLocation();
 
         for (Car car : cars) {
-            if(maxLocation < car.getCurrentLocation()) {
-                maxLocation = car.getCurrentLocation();
-            }
+            maxLocation = isMaxLocation(maxLocation, car);
         }
 
         return maxLocation;
     }
 
-    /**
-     * RacingCar 실행함수
-     */
-    public void start() {
-        List<Car> carsAfterTheRace = this.doRacingStart(this.createAsCarsNumberOfEnteredByUser());
-
-        RacingCarResultView view = new RacingCarResultView();
-        view.drawWinnerView(this.getWinners(carsAfterTheRace));
+    private int isMaxLocation(int maxLocation, Car car) {
+        if(maxLocation < car.getCurrentLocation()) {
+            maxLocation = car.getCurrentLocation();
+        }
+        return maxLocation;
     }
 
     public List<Car> getCars() {

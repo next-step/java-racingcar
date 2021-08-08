@@ -4,7 +4,7 @@
  *   Date : 2021/07/24
  */
 
-package racingcar;
+package racingcar.domain;
 
 import java.util.Random;
 
@@ -13,10 +13,10 @@ import java.util.Random;
  */
 public class Car {
 
-    public static final int RANGE = 10;
+    public static final int FORWARD_RANGE = 10;
+    public static final int MIN_LOCATION = 4;
     private String carName;
     private int currentLocation = 0;
-    private final int minLocation = 3;
 
     public Car(String carName) {
         this.carName = carName;
@@ -34,7 +34,7 @@ public class Car {
      * 자동차가 이동할 무작위 숫자를 반환합니다.
      * @return
      */
-    public int getMove(int range) {
+    public int getRandomNum(int range) {
         Random moveIndex = new Random();
         int move = moveIndex.nextInt(range);
         return move;
@@ -43,10 +43,8 @@ public class Car {
     /**
      * 무작위의 숫자가 4보다 크다면 이동합니다.
      */
-    public void moveCar(int range) {
-
-        int move = getMove(range);
-        if (move > minLocation) {
+    public void moveCar(int move) {
+        if (move >= MIN_LOCATION) {
             this.currentLocation = (this.getCurrentLocation() + move);
         }
     }
