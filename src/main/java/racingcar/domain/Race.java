@@ -12,17 +12,17 @@ public class Race {
 
     private List<Car> cars;
 
-    private int carNum = 1;
+    private String[] carNames = {"Unknown"};
     private int roundNum = 1;
     private int currentRound = 0;
 
     public Race(String[] carNames, int roundNum) {
-        this.carNum = carNum;
+        this.carNames = carNames;
         this.roundNum = roundNum;
-        checkIfValidArgumentsForRace(carNum, roundNum);
+        checkIfValidArgumentsForRace(carNames, roundNum);
 
-        cars = new ArrayList<>(carNum);
-        for (int i = 0; i < carNum; i++) {
+        cars = new ArrayList<>(carNames.length);
+        for (int i = 0; i < carNames.length; i++) {
             this.cars.add(new Car());
         }
     }
@@ -31,14 +31,19 @@ public class Race {
         this(new String[]{""}, 1);
     }
 
-    void checkIfValidArgumentsForRace(int carNum, int roundNum) throws IllegalArgumentException {
-        if (!isValidCarNum(carNum) || !isValidRoundNum(roundNum)) {
+    void checkIfValidArgumentsForRace(String[] carNames, int roundNum) throws IllegalArgumentException {
+        if (!isValidCarNames(carNames) || !isValidRoundNum(roundNum)) {
             throw new IllegalArgumentException("Invalid Arguments for Race");
         }
     }
 
-    public static boolean isValidCarNum(int carNum) {
-        return carNum >= MIN_CAR_NUM;
+    public static boolean isValidCarNames(String[] carNames) {
+        boolean result = true;
+        for (String name : carNames) {
+            result &= !name.trim().isEmpty();
+        }
+
+        return result;
     }
 
     public static boolean isValidRoundNum(int roundNum) {

@@ -5,11 +5,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.common.ArgumentUtils;
 
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CalculatorTest {
     public static Calculator calculator = new Calculator();
@@ -50,8 +50,8 @@ public class CalculatorTest {
         assertThat(result).isEqualTo(a * b);
     }
 
-    @ParameterizedTest
-    @MethodSource("provideStringForisOperator")
+        @ParameterizedTest(name = "{index} {displayName} {arguments}")
+        @MethodSource("provideStringForisOperator")
     void isOperator_ShouldReturnTrueForOperators(String input) {
         assertThat(calculator.isOperator(input)).isTrue();
     }
@@ -69,8 +69,8 @@ public class CalculatorTest {
             );
     }
 
-    @ParameterizedTest
-    @MethodSource("provideStringsForisBlank")
+        @ParameterizedTest(name = "{index} {displayName} {arguments}")
+        @MethodSource("provideStringsForisBlank")
     void isBlank_ShouldReturnTrueForBlanks(String input, boolean expected) {
         assertThat(calculator.isBlank(input)).isEqualTo(expected);
     }
@@ -85,8 +85,8 @@ public class CalculatorTest {
         );
     }
 
-    @ParameterizedTest
-    @MethodSource("provideStringsForisNumber")
+        @ParameterizedTest(name = "{index} {displayName} {arguments}")
+        @MethodSource("provideStringsForisNumber")
     void isNumber_ShouldReturnTrueForNumbers(String input, boolean expected) {
         assertThat(calculator.isNumebr(input)).isEqualTo(expected);
     }
@@ -103,8 +103,8 @@ public class CalculatorTest {
         );
     }
 
-    @ParameterizedTest
-    @MethodSource("provideStringsForisNumber")
+        @ParameterizedTest(name = "{index} {displayName} {arguments}")
+        @MethodSource("provideStringsForisNumber")
     void checkNumber(String input, boolean expected) {
         if (expected == false) {
             assertThatExceptionOfType(IllegalArgumentException.class)
@@ -114,8 +114,8 @@ public class CalculatorTest {
         }
     }
 
-    @ParameterizedTest
-    @MethodSource("provideStringForisOperator")
+        @ParameterizedTest(name = "{index} {displayName} {arguments}")
+        @MethodSource("provideStringForisOperator")
     void checkOperator(String input, boolean expected) {
         if (expected == false) {
             assertThatExceptionOfType(IllegalArgumentException.class)
@@ -125,8 +125,8 @@ public class CalculatorTest {
         }
     }
 
-    @ParameterizedTest
-    @MethodSource("provideIntegerForcalculate")
+        @ParameterizedTest(name = "{index} {displayName} {arguments}")
+        @MethodSource("provideIntegerForcalculate")
     void calculate(String op, int a, int b, int result) {
         assertThat(calculator.calculate("+", a, b)).isEqualTo(result);
     }
@@ -140,8 +140,8 @@ public class CalculatorTest {
         );
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"@", "a", "8"})
+        @ParameterizedTest(name = "{index} {displayName} {arguments}")
+        @ValueSource(strings = {"@", "a", "8"})
     void calculate_ShouldThrowIllegalArgumentException(String input) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
@@ -159,8 +159,8 @@ public class CalculatorTest {
                 .containsExactly("8", "+", "5", "*", "7", "+", "7", "-", "6", "-", "135", "/", "7", "*", "0", "-", "1000");
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {
+        @ParameterizedTest(name = "{index} {displayName} {arguments}")
+        @ValueSource(strings = {
             "+ 3 * 2",
             "3 + 2  * 3",
             "3 3 * 2 + 100",
@@ -172,8 +172,8 @@ public class CalculatorTest {
                 });
     }
 
-    @ParameterizedTest
-    @MethodSource("provideEquationForgetResultOfCalculator")
+        @ParameterizedTest(name = "{index} {displayName} {arguments}")
+        @MethodSource("provideEquationForgetResultOfCalculator")
     void getResultOfCalculator(String[] parsedEquation, int result) {
         assertThat(calculator.getResultOfCalculator(parsedEquation)).isEqualTo(result);
     }

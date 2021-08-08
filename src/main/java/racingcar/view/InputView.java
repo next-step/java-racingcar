@@ -20,7 +20,7 @@ public class InputView {
             input = new Scanner(System.in).nextLine();
         } while (!isValidInputOfCars(input));
 
-        return getNameOfCars(input);
+        return getNamesOfCars(input);
     }
 
     public static boolean isValidInputOfCars(String input) {
@@ -30,7 +30,7 @@ public class InputView {
         }
 
         boolean result = true;
-        String[] carNames = getNameOfCars(input);
+        String[] carNames = getNamesOfCars(input);
         for (String name : carNames) {
             result &= !name.isEmpty();
         }
@@ -42,11 +42,11 @@ public class InputView {
         return result;
     }
 
-    static String[] getNameOfCars(String input) {
+    static String[] getNamesOfCars(String input) {
         String[] names = input.split(",");
 
-        for (String name : names) {
-            name = name.trim();
+        for (int i = 0; i < names.length; i++) {
+            names[i] = names[i].trim();
         }
 
         return names;
