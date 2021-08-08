@@ -36,7 +36,7 @@ public class RacingCar {
         }
     }
 
-    public int getDrivenDistnace() {
+    public int getDrivenDistance() {
         return this.drivenDistance;
     }
 

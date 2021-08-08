@@ -12,7 +12,7 @@ public class RacingCarTest {
     void 차량_전진_테스트() {
         RacingCar racingCar = new RacingCar("tesla");
         racingCar.goForward(4);
-        assertThat(racingCar.getDrivenDistnace()).isEqualTo(1);
+        assertThat(racingCar.getDrivenDistance()).isEqualTo(1);
     }
 
     @DisplayName("차량 정지 테스트")
@@ -20,7 +20,7 @@ public class RacingCarTest {
     void 차량_정지_테스트() {
         RacingCar racingCar = new RacingCar("tesla");
         racingCar.goForward(3);
-        assertThat(racingCar.getDrivenDistnace()).isEqualTo(0);
+        assertThat(racingCar.getDrivenDistance()).isEqualTo(0);
     }
 
     @DisplayName("차량 부분 전진 테스트")
@@ -31,14 +31,14 @@ public class RacingCarTest {
         for (int i = 0; i < numbers.length; i++) {
             racingCar.goForward(numbers[i]);
         }
-        assertThat(racingCar.getDrivenDistnace()).isEqualTo(2);
+        assertThat(racingCar.getDrivenDistance()).isEqualTo(2);
     }
 
     @DisplayName("차량 생성시 상태 테스트")
     @Test
     void 차량_상태_출력() {
         RacingCar racingCar = new RacingCar("tesla",5);
-        assertThat(racingCar.getDrivenDistnace()).isEqualTo(5);
+        assertThat(racingCar.getDrivenDistance()).isEqualTo(5);
     }
 
     @DisplayName("차량 이름 설정 테스트")
