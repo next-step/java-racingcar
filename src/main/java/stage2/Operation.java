@@ -17,7 +17,7 @@ public enum Operation {
         this.expression = expression;
     }
 
-    public Integer operate(Integer first, Integer second) {
+    public int operate(int first, int second) {
         return expression.apply(first, second);
     }
 
@@ -25,7 +25,7 @@ public enum Operation {
         return Arrays.stream(Operation.values())
                 .filter(i -> i.value.equals(input))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 연산자 입니다. => " + input));
     }
 
 }

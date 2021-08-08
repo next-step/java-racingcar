@@ -1,21 +1,20 @@
 package stage2;
 
 public class Expression {
-    String[] data;
-    Integer init;
-    String operation;
+    private String[] data;
+    private int init;
+    private String operation;
 
-    public Expression(String[] data, Integer init) {
+    public Expression(String[] data) {
         this.data = data;
-        this.init = init;
-        this.operation = "";
+        this.init = Integer.parseInt(data[0]);
     }
 
-    public Integer express() {
+    public int express() {
         for (int i = 2; i < data.length; i+=2) {
             operation = data[i - 1];
-            Integer first = init;
-            Integer second = Integer.parseInt(data[i]);
+            int first = init;
+            int second = Integer.parseInt(data[i]);
 
             Operation op = Operation.findOperation(operation);
             init = op.operate(first, second);

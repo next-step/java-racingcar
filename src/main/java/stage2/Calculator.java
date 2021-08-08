@@ -1,20 +1,22 @@
 package stage2;
 
 public class Calculator {
-    public Integer calculate(String input) {
-        if (" ".equals(input) || "".equals(input) || input == null) {
-            throw new IllegalArgumentException();
+    public int calculate(String input) {
+        int result = 0;
+        inputValidate(input);
+        final String[] data = expressionSplit(input);
+        try {
+            final Expression ep = new Expression(data);
+            result = ep.express();
+        } catch (NumberFormatException nfe) {
+            nfe.printStackTrace();
         }
-
-        final Expression ep = parse(input);
-        return ep.express();
+        return result;
     }
 
-    private Expression parse(String text) {
-        String[] data = expressionSplit(text);
-        Integer init = Integer.parseInt(data[0]);
-
-        return new Expression(data, init);
+    private void inputValidate(String input) {
+        if (" ".equals(input) || "".equals(input) || input == null)
+            throw new IllegalArgumentException("잘못된 입력값 입니다 => " + input);
     }
 
     private String[] expressionSplit(String expression) {
