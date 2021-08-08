@@ -10,6 +10,6 @@ public class CarUtilTest {
 	@Test
 	@DisplayName("0에서 9사이의 랜덤값을 구한다")
 	void randomNumber() {
-		assertThat(CarUtil.makeRandomNumber()).isGreaterThan(-1).isLessThan(10);
+		assertThat(CarUtil.makeRandomNumber(9)).isGreaterThan(-1).isLessThan(10);
 	}
 }
