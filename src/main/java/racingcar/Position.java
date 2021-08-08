@@ -25,6 +25,14 @@ public class Position {
         }
     }
 
+    String convertCurrentPositionAsHypens() {
+        StringBuilder sb  = new StringBuilder();
+        for (int k = 0; k < position; k++) {
+            sb.append("-");
+        }
+        return sb.toString();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

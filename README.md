@@ -27,3 +27,4 @@
 - [X] MoveRule 클래스 추가 (자동차의 움직임 결정)
 - [X] Cars에서 car의 수는 1이상이다.
 - [X] roundNum(시도횟수)는 0 이상의 정수이다. 
+- [X] ResultView 리팩토랑

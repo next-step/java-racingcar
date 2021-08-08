@@ -1,9 +1,8 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Rounds {
     private Round[] rounds;
@@ -43,5 +42,11 @@ public class Rounds {
     @Override
     public int hashCode() {
         return Arrays.hashCode(rounds);
+    }
+
+    List<List<String>> getCarPositionForEachRound() {
+        List<List<String>> result = new LinkedList<>();
+        Arrays.stream(this.rounds).forEach(round -> result.add(round.getCarPositionOfCurrentRound()));
+        return result;
     }
 }

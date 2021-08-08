@@ -37,6 +37,12 @@ public class Cars {
         }
     }
 
+    List<String> getCarsPositionsAsHypens() {
+        List<String> result = new LinkedList<>();
+        this.cars.stream().forEach(car -> result.add(car.getCarPositionAsHypens()));
+        return result;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,6 +1,10 @@
 package racingcar;
 
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 public class Race {
     private Rounds rounds;
     private Cars cars;
@@ -14,5 +18,9 @@ public class Race {
 
     public void doRace() {
         rounds.moveCarsForEachRound(cars, moveRule);
+    }
+
+    public List<List<String>> getCarsPositionPerRound() {
+        return rounds.getCarPositionForEachRound();
     }
 }

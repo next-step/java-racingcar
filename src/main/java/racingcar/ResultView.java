@@ -5,33 +5,26 @@ import java.util.List;
 
 public class ResultView {
 
-    public static void printResult(List<List<Integer>> posesForEachRound) {
+    public static void printResult(List<List<String>> carsPositionPerRound) {
         printResultTitle();
-        posesForEachRound.stream().forEach(posses -> printCarPositionOfRound(posses));
+        carsPositionPerRound.stream().forEach( roundResult -> printCarPositionOfRound(roundResult));
     }
 
     private static void printResultTitle() {
         System.out.println("실행 결과");
     }
 
-    private static void printCarPositionOfRound(List<Integer> poses) {
-        poses.stream().forEach(position -> printPositionDrawing(position));
+    private static void printCarPositionOfRound(List<String> roundResult) {
+        roundResult.stream().forEach(posDrawing -> printPositionDrawing(posDrawing));
         printEmptyLine();
     }
 
     private static void printEmptyLine() {
-        System.out.println("");
+        System.out.println();
     }
 
-    private static void printPositionDrawing(int position) {
-        System.out.println(makePositionDrawing(position));
+    private static void printPositionDrawing(String posDrawing) {
+        System.out.println(posDrawing);
     }
 
-    private static String makePositionDrawing(int position) {
-        StringBuilder sb  = new StringBuilder();
-        for (int k = 0; k < position; k++) {
-            sb.append("-");
-        }
-        return sb.toString();
-    }
 }

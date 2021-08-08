@@ -25,6 +25,10 @@ public class Car {
         }
     }
 
+    String getCarPositionAsHypens() {
+        return position.convertCurrentPositionAsHypens();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

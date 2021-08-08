@@ -29,4 +29,8 @@ public class Round {
     public int hashCode() {
         return Objects.hash(cars);
     }
+
+    List<String> getCarPositionOfCurrentRound() {
+        return cars.getCarsPositionsAsHypens();
+    }
 }
