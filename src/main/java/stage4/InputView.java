@@ -3,7 +3,6 @@ package stage4;
 import java.util.Scanner;
 
 public class InputView {
-
     private final Scanner scanner;
 
     public InputView() {
@@ -17,10 +16,10 @@ public class InputView {
         validateCarName(splitNames);
 
         System.out.println("시도할 회수는 몇회인가요?");
-        int tryNum = scanner.nextInt();
+        int numberOfTries = scanner.nextInt();
         System.out.println();
 
-        return new InputValue(splitNames, tryNum);
+        return new InputValue(splitNames, numberOfTries);
     }
 
     private void validateCarName(String[] carNames) {

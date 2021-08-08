@@ -27,6 +27,7 @@
   - 자동차 이름 validation (5자 이하)
 - ~~Application~~
   - 전체 로직 흐름 제어 
+  - 입력 실패시 재시도 
 - CarService
   - ~~Car 데이터 세팅(init) 변경~~
   - 우승자 선정 로직 추가 
