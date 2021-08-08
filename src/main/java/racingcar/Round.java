@@ -6,7 +6,8 @@ import java.util.Objects;
 
 public class Round {
 
-    Cars cars;
+    private Cars cars;
+
     public Round(Cars carsFromPreviousRound) {
         cars = new Cars(carsFromPreviousRound);
     }

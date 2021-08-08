@@ -3,7 +3,7 @@ package racingcar;
 import java.util.Objects;
 
 public class Position {
-    int position;
+    private int position;
 
     public Position (int position) {
         validatePosition(position);
