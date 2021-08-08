@@ -1,6 +1,6 @@
 package racingcar;
 
-import static org.assertj.core.api.AssertionsForClassTypes.*;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ public class CarTest {
 		RacingCarMoveStrategy strategy = new RacingCarMoveStrategy(4);
 		car.move(strategy);
 		Car dummy = new Car("dummy", 1);
-		assertThat(car.getMileage()).isEqualTo(dummy.getMileage());
+		assertThat(car).isEqualByComparingTo(dummy);
 	}
 
 	@Test
@@ -24,7 +24,7 @@ public class CarTest {
 		RacingCarMoveStrategy strategy = new RacingCarMoveStrategy(3);
 		car.move(strategy);
 		Car dummy = new Car("dummy", 0);
-		assertThat(car.getMileage()).isEqualTo(dummy.getMileage());
+		assertThat(car).isEqualByComparingTo(dummy);
 	}
 	
 	@Test
@@ -33,6 +33,6 @@ public class CarTest {
 		assertThatThrownBy(() -> {
 			Car car = new Car("5자를초과함");
 		}).isExactlyInstanceOf(IllegalArgumentException.class)
-			.hasMessage(CarName.NAME_CORRECT_CONDITION);
+			.hasMessage(CarName.NAME_INCORRECT_MESSAGE);
 	}
 }

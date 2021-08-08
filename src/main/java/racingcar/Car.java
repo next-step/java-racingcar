@@ -1,6 +1,6 @@
 package racingcar;
 
-public class Car {
+public class Car implements Comparable<Car> {
 	private final CarName name;
 	private final CarMileage mileage;
 
@@ -21,5 +21,14 @@ public class Car {
 
 	public CarMileage getMileage() {
 		return this.mileage;
+	}
+
+	public CarName getName() {
+		return this.name;
+	}
+
+	@Override
+	public int compareTo(Car other) {
+		return this.mileage.compareTo(other.getMileage());
 	}
 }
