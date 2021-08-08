@@ -2,8 +2,8 @@ package racingCar.domain;
 
 public class RacingCar {
 
+    private static final int THRESHOLD = 5;
     private final ForwardPolicy forwardPolicy;
-    private final CarNamePolicy carNamePolicy;
 
     private String carName;
     private int drivenDistance;
@@ -15,12 +15,11 @@ public class RacingCar {
     public RacingCar(String carName, int drivenDistance) {
         this.drivenDistance = drivenDistance;
         this.forwardPolicy = new ForwardPolicyImpl();
-        this.carNamePolicy = new CarNamePolicyImpl();
         setCarName(carName);
     }
 
     private void setCarName(String carName) {
-        if (!carNamePolicy.isPossibleName(carName)) {
+        if (!isPossibleName(carName)) {
             throw new IllegalArgumentException();
         }
         this.carName = carName;
@@ -42,5 +41,13 @@ public class RacingCar {
 
     public boolean equalsDistance(int distance) {
         return drivenDistance == distance;
+    }
+
+    private Boolean isPossibleName(String name) {
+        return checkStringLength(name);
+    }
+
+    private boolean checkStringLength(String name) {
+        return name.length() <= THRESHOLD;
     }
 }
