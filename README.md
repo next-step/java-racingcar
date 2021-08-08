@@ -21,11 +21,13 @@
   - 우승자는 한명 이상일 수 있음.
 
 #### TODO
-- InputView
-  - ~~기존 carNum(자동차 갯수), tryNum(시도 횟수) \
-    -> `{자동차이름},{자동차이름}...` 형태로 변경해 받음.~~
+- ~~InputView~~
+  - 기존 carNum(자동차 갯수), tryNum(시도 횟수) \
+    -> `{자동차이름},{자동차이름}...` 형태로 변경해 받음.
   - 자동차 이름 validation (5자 이하)
-- Application
+- ~~Application~~
+  - 전체 로직 흐름 제어 
+- CarService
   - ~~Car 데이터 세팅(init) 변경~~
   - 우승자 선정 로직 추가 
 - ResultView
