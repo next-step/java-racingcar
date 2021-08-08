@@ -4,9 +4,9 @@ package racingcar;
 import java.util.List;
 
 public class Race {
-    private Rounds rounds;
-    private Cars cars;
-    private MoveStrategy moveStrategy;
+    private final Rounds rounds;
+    private final Cars cars;
+    private final MoveStrategy moveStrategy;
 
     public Race(int carNum, int roundNum, MoveStrategy moveStrategy) {
         this.cars = new Cars(carNum);

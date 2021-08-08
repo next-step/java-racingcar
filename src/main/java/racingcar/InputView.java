@@ -15,10 +15,10 @@ public class InputView {
 
     private static int getUserInput() {
         Scanner scanner = new Scanner(System.in);
-        return  scanner.nextInt();
+        return scanner.nextInt();
     }
 
-    private static void printIntroMessage(String message){
+    private static void printIntroMessage(String message) {
         System.out.println(message);
     }
 }

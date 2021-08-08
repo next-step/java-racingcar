@@ -10,7 +10,7 @@ public class Car {
         this.position = new Position(0);
     }
 
-    public Car (Car car) {
+    public Car(Car car) {
         this.position = new Position(car.position);
     }
 

@@ -12,7 +12,7 @@ public class RandomNumberTest {
     void randomNumberIsAnIntegerBetween0And9() {
         int testNum = 50000;
         for (int i = 0; i < testNum; i++) {
-            assertThat(new RandomNumber().getRandomNumber()).isBetween(0,9);
+            assertThat(new RandomNumber().getRandomNumber()).isBetween(0, 9);
         }
     }
 }

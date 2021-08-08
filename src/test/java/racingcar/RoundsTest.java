@@ -16,7 +16,7 @@ public class RoundsTest {
 
         Round[] rounds = new Round[5];
         for (int i = 0; i < rounds.length; i++) {
-            rounds[i] = new Round(new Cars(new Car(i+1), new Car(i+1)));
+            rounds[i] = new Round(new Cars(new Car(i + 1), new Car(i + 1)));
         }
 
         Rounds expected = new Rounds(rounds);

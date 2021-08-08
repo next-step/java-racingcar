@@ -5,12 +5,12 @@ import java.util.Objects;
 public class Position {
     private int position;
 
-    public Position (int position) {
+    public Position(int position) {
         validatePosition(position);
         this.position = position;
     }
 
-    public Position (Position posToBeCopied) {
+    public Position(Position posToBeCopied) {
         this.position = posToBeCopied.position;
     }
 
@@ -26,7 +26,7 @@ public class Position {
     }
 
     String convertCurrentPositionAsHypens() {
-        StringBuilder sb  = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         for (int k = 0; k < position; k++) {
             sb.append("-");
         }

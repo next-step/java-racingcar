@@ -7,27 +7,27 @@ import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
-    public Cars (int carNum) {
+    public Cars(int carNum) {
         isValidCarNumber(carNum);
         cars = new LinkedList<>();
         IntStream.range(0, carNum).forEach(i -> cars.add(new Car()));
     }
 
-    public Cars (Cars carsToBeCopied) {
+    public Cars(Cars carsToBeCopied) {
         cars = new LinkedList<>();
         carsToBeCopied.cars.forEach(car -> this.cars.add(new Car(car)));
     }
 
     /* 테스트를 위한 생성자 */
-    public Cars (Car ... cars) {
+    public Cars(Car... cars) {
         this.cars = new LinkedList<>();
-        Arrays.stream(cars).forEach(car-> this.cars.add(car));
+        this.cars.addAll(Arrays.asList(cars));
     }
 
     public Cars move(MoveStrategy moveStrategy) {
-        cars.stream().forEach(car-> car.move(moveStrategy));
+        cars.forEach(car -> car.move(moveStrategy));
         return this;
     }
 
@@ -39,7 +39,7 @@ public class Cars {
 
     List<String> getCarsPositionsAsHypens() {
         List<String> result = new LinkedList<>();
-        this.cars.stream().forEach(car -> result.add(car.getCarPositionAsHypens()));
+        this.cars.forEach(car -> result.add(car.getCarPositionAsHypens()));
         return result;
     }
 

@@ -11,7 +11,7 @@ public class RoundTest {
     @Test
     void roundMoveCarsTest() {
         Round actual = new Round(new Cars(2));
-        actual.moveCars(()->true);
+        actual.moveCars(() -> true);
         Round expected = new Round(new Cars(new Car(1), new Car(1)));
         assertThat(actual).isEqualTo(expected);
     }

@@ -5,6 +5,7 @@ public class RandomStrategy implements MoveStrategy {
     private final static int MIN_NUM_TO_MOVE = 4;
 
     RandomNumber randomNumber;
+
     public RandomStrategy() {
         this.randomNumber = new RandomNumber();
     }

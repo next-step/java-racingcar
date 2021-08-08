@@ -1,10 +1,7 @@
 package racingcar;
 
-import calculator.UserInput;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -23,7 +20,7 @@ public class PositionTest {
         Position toBeCopied = new Position(0);
         Position copied = new Position(toBeCopied);
         assertThat(toBeCopied.equals(copied)).isTrue();
-        assertThat(toBeCopied==copied).isFalse();
+        assertThat(toBeCopied == copied).isFalse();
     }
 
     @DisplayName("Position은 0이상의 정수이다")

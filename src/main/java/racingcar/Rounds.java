@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Rounds {
-    private Round[] rounds;
+    private final Round[] rounds;
 
     public Rounds(int roundNum) {
         isValidRoundNumber(roundNum);
