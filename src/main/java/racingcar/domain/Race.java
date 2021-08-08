@@ -16,7 +16,7 @@ public class Race {
     private int roundNum = 1;
     private int currentRound = 0;
 
-    public Race(int carNum, int roundNum) {
+    public Race(String[] carNames, int roundNum) {
         this.carNum = carNum;
         this.roundNum = roundNum;
         checkIfValidArgumentsForRace(carNum, roundNum);
@@ -28,7 +28,7 @@ public class Race {
     }
 
     Race() {
-        this(1, 1);
+        this(new String[]{""}, 1);
     }
 
     void checkIfValidArgumentsForRace(int carNum, int roundNum) throws IllegalArgumentException {

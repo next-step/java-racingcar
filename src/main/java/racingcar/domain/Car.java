@@ -7,7 +7,9 @@ public class Car {
     private String name = "Unknown";
 
     Car(String name) {
-        this.name = name;
+        if (isValidName(name)) {
+            this.name = name;
+        }
     }
 
     Car() {}
@@ -32,5 +34,13 @@ public class Car {
         if (isAbleToMove(value)) {
             goForward();
         }
+    }
+
+    String getName() {
+        return this.name;
+    }
+
+    boolean isValidName(String name) {
+        return !(name == null || name.trim().isEmpty());
     }
 }

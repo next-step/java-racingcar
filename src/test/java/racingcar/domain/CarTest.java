@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Random;
@@ -63,5 +64,23 @@ public class CarTest {
         currentLocation = car.getLocation();
 
         assertThat(currentLocation - previousLocation).isEqualTo(expected);
+    }
+
+    @DisplayName("isValidName : Car의 이름으로 입력하기 적합한 데이터인지 검사")
+    @ParameterizedTest
+    @NullAndEmptySource
+    void isValidName(String name) {
+        Car car = new Car();
+
+        assertThat(car.isValidName(name)).isEqualTo(false);
+    }
+
+    @DisplayName("Car : Car 객체 생성 시 입력하는 이름이 정상적으로 출력된다.")
+    @ParameterizedTest
+    @CsvSource({"ABCD, ABCD", "Porsche, Porsche", "Ferrari, Ferrari", "Hyundai, Hyundai", ", Unknown", "' ', Unknown"})
+    void Car(String name, String expected) {
+        Car car = new Car(name);
+
+        assertThat(car.getName()).isEqualTo(expected);
     }
 }
