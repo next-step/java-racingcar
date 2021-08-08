@@ -40,15 +40,14 @@ public class ResultView {
      * @param winners
      */
     public void showWinners(List<String> winners) {
-        StringBuilder sb = new StringBuilder();
+        String winnerName = "";
 
         for (String name : winners) {
-            sb.append(name+",");
+            winnerName = String.join(",", winnerName, name);
         }
 
-        String winnerName = sb.toString();
-        //마지막 쉼표 제거
-        winnerName = winnerName.substring(0, winnerName.length()-1);
+        //앞쉼표 제거
+        winnerName = winnerName.substring(1);
 
         System.out.println(winnerName + " 가 우승하였습니다.");
 
