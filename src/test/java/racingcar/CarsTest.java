@@ -42,8 +42,9 @@ public class CarsTest {
 		Car honux = new Car("honux");
 		Cars cars = new Cars(Arrays.asList(pobi, crong, honux));
 		cars.move(new CarNumberGenerator() {
-			List<Integer> numbers = Arrays.asList(4,4,3);
+			List<Integer> numbers = Arrays.asList(4, 4, 3);
 			int index = 0;
+
 			@Override
 			public int generate() {
 				return numbers.get(index++);

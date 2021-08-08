@@ -16,7 +16,7 @@ public class Application {
 		int count = inputView.readNumber();
 
 		resultView.renderResultMessage();
-		for(int i = 0; i < count; i++) {
+		for (int i = 0; i < count; i++) {
 			game.run();
 			resultView.renderResult(game.getGameResult());
 		}

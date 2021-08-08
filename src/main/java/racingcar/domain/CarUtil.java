@@ -6,6 +6,6 @@ public class CarUtil {
 	private static Random random = new Random();
 
 	public static int makeRandomNumber(int maximum) {
-		return random.nextInt(maximum+1);
+		return random.nextInt(maximum + 1);
 	}
 }

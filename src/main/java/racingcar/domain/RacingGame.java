@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
 	public static final String NAME_SEPARATION_REGEX = ",";
-	private Cars cars;
-	private CarNumberGenerator generator;
+	private final Cars cars;
+	private final CarNumberGenerator generator;
 
 	public RacingGame(String names) {
 		this.cars = new Cars(createCarNames(names));
@@ -26,11 +26,11 @@ public class RacingGame {
 	}
 
 	public void run() {
-		cars.move(generator);
+		this.cars.move(this.generator);
 	}
 
 	public List<String> getWinners() {
-		return cars.getWinners()
+		return this.cars.getWinners()
 			.stream()
 			.map(Car::getName)
 			.map(CarName::toString)
@@ -38,7 +38,7 @@ public class RacingGame {
 	}
 
 	public Map<String, Integer> getGameResult() {
-		return cars
+		return this.cars
 			.toList()
 			.stream()
 			.collect(Collectors.toMap(car -> car.getName().toString(), car -> car.getMileage().toInteger()));

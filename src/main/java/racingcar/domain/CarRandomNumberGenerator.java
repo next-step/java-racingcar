@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-public class CarRandomNumberGenerator implements CarNumberGenerator{
+public class CarRandomNumberGenerator implements CarNumberGenerator {
 
 	public static final int MAXIMUM_NUMBER = 9;
 

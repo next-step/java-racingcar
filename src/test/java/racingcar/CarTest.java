@@ -30,7 +30,7 @@ public class CarTest {
 		Car dummy = new Car("dummy", 0);
 		assertThat(car).isEqualByComparingTo(dummy);
 	}
-	
+
 	@Test
 	@DisplayName("자동차 이름이 5를 초과할 수 없다")
 	void carName() {

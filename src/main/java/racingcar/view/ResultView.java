@@ -10,25 +10,28 @@ public class ResultView {
 	public static final String COMMA = ",";
 	public static final String HYPHEN = "-";
 	public static final String COLON = " : ";
+	public static final String MESSAGE_FOR_EMPTY_WINNERS = "우승자가 없습니다.";
+
+	private void renderSingleResult(String name, int mileage) {
+		System.out.print(name + COLON);
+		for (int i = 0; i < mileage; i++) {
+			System.out.print(HYPHEN);
+		}
+		System.out.println();
+	}
 
 	public void renderResultMessage() {
 		System.out.println(MESSAGE_FOR_GAME_RESULT);
 	}
 
 	public void renderResult(Map<String, Integer> gameResult) {
-		gameResult.forEach((name, mileage) -> {
-			System.out.print(name + COLON);
-			for(int i = 0; i < mileage; i++) {
-				System.out.print(HYPHEN);
-			}
-			System.out.println();
-		});
+		gameResult.forEach((name, mileage) -> renderSingleResult(name, mileage));
 		System.out.println();
 	}
 
 	public void renderWinner(List<String> winners) {
-		if(winners.isEmpty()) {
-			throw new IllegalArgumentException("우승자가 없습니다.");
+		if (winners.isEmpty()) {
+			throw new IllegalArgumentException(MESSAGE_FOR_EMPTY_WINNERS);
 		}
 		System.out.print(winners.get(0));
 		for (int i = 1; i < winners.size(); i++) {

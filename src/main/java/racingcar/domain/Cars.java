@@ -5,14 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-	private List<Car> cars;
+	private final List<Car> cars;
 
 	public Cars(List<Car> cars) {
 		this.cars = cars;
 	}
 
 	private Car getMaximumMileageCar() {
-		return Collections.max(cars);
+		return Collections.max(this.cars);
 	}
 
 	public void move(CarNumberGenerator generator) {
