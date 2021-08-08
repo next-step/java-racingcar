@@ -1,6 +1,7 @@
 package controller;
 
 import domain.Car;
+import domain.MovingStragey;
 import domain.Winner;
 import util.CarNameUtil;
 import util.RandomNumUtil;
@@ -41,7 +42,12 @@ public class GameController {
 
     private void racing() {
         for (Car entryCar : participants) {
-            entryCar.carMoveBehavior(RandomNumUtil.makeRandomNumber());
+            entryCar.move(new MovingStragey() {
+                @Override
+                public int carMove() {
+                    return super.carMove();
+                }
+            });
         }
     }
 
