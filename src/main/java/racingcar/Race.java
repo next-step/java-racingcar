@@ -1,19 +1,18 @@
 package racingcar;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.IntStream;
 
 public class Race {
     private Rounds rounds;
     private Cars cars;
+    private MoveRule moveRule;
 
-    public Race(int carNum, int roundNum) {
-        cars = new Cars(carNum);
-        rounds = new Rounds(roundNum);
+    public Race(int carNum, int roundNum, MoveRule moveRule) {
+        this.cars = new Cars(carNum);
+        this.rounds = new Rounds(roundNum);
+        this.moveRule = moveRule;
     }
 
     public void doRace() {
-        rounds.moveCarsForEachRound(cars);
+        rounds.moveCarsForEachRound(cars, moveRule);
     }
 }

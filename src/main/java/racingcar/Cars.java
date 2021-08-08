@@ -17,8 +17,8 @@ public class Cars {
         carsToBeCopied.cars.forEach(car -> this.cars.add(new Car(car)));
     }
 
-    public Cars move() {
-        cars.stream().forEach(car-> car.move(new RandomNumGenerator().getRandomNumber()));
+    public Cars move(MoveRule moveRule) {
+        cars.stream().forEach(car-> car.move(moveRule));
         return this;
     }
 

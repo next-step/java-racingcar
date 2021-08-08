@@ -15,12 +15,12 @@ public class CarTest {
         assertThat(new Car()).isEqualTo(new Car(0));
     }
 
-    @DisplayName("랜덤 값이 4이상일 때 자동차는 전진")
+    @DisplayName("자동차 전진 규칙에 합당할 경우 전진")
     @ParameterizedTest(name="랜덤값 {0}: 포지션 {1}")
-    @CsvSource(value = {"3:0", "4:1"}, delimiter = ':')
-    void moveCarAccordingToRandomValue(int randomValue, int position ) {
+    @CsvSource(value = {"false:0", "true:1"}, delimiter = ':')
+    void moveCarAccordingToRandomValue(boolean movable, int position ) {
         Car actual = new Car();
-        actual.move(randomValue);
+        actual.move(new MoveRuleByRandomValue(movable));
         assertThat(actual).isEqualTo(new Car(position));
     }
 

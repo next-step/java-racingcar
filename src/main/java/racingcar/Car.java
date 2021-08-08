@@ -19,8 +19,8 @@ public class Car {
         this.position = new Position(position);
     }
 
-    public void move(int randomNum) {
-        if (randomNum >= 4) {
+    public void move(MoveRule moveRule) {
+        if (moveRule.ableToMoveCar()) {
             position = position.increase();
         }
     }

@@ -12,10 +12,10 @@ public class Rounds {
         this.rounds = new Round[totalRoundNum];
     }
 
-    public void moveCarsForEachRound(Cars cars) {
+    public void moveCarsForEachRound(Cars cars, MoveRule moveRule) {
         for (int i = 0; i < rounds.length; i++) {
             Round newRound = new Round(cars);
-            cars = newRound.moveCars();
+            cars = newRound.moveCars(moveRule);
             rounds[i] = newRound;
         }
     }

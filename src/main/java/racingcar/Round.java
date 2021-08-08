@@ -10,8 +10,8 @@ public class Round {
         cars = new Cars(carsFromPreviousRound);
     }
 
-    public Cars moveCars() {
-        return cars.move();
+    public Cars moveCars(MoveRule moveRule) {
+        return cars.move(moveRule);
     }
 
 
