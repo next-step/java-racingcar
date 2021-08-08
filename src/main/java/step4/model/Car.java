@@ -1,26 +1,15 @@
 package step4.model;
 
 public class Car {
-    private String name;
-    private int move;
+    private Position position;
+    private Name name;
 
     public Car(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getMove() {
-        return move;
+        this.name = new Name(name);
+        this.position = new Position(0);
     }
 
     public void go(){
-        this.move = move+1;
-    }
-
-    public void setMove(int i) {
-        this.move = move;
+        this.position.move();
     }
 }
