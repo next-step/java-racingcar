@@ -6,7 +6,6 @@ public class Name {
     private String name;
     public static final int MAX_LENGTH = 5;
 
-
     public Name(String name) {
         isOverLength(name);
         this.name = name.trim();

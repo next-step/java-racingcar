@@ -15,7 +15,7 @@ public class CarGame {
         //자동차 세팅
         List<Car> carList = new ArrayList<>();
 
-        for (String name : nameList){
+        for (String name : nameList) {
             carList.add(new Car(name));
         }
 
@@ -33,6 +33,11 @@ public class CarGame {
         return results;
     }
 
+    /**
+     * 차이름/거리 형식으로 변경해서 리스트에 넣는다.
+     * @param results
+     * @param result
+     */
     private void formatResult(List<String> results, List<Car> result) {
         for (Car car : result) {
             Name carName = car.getName();
