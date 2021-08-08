@@ -23,7 +23,7 @@ class CarTest {
     @DisplayName("자동차 생성 테스트")
     void setUp() {
         Car car = new Car("crong");
-        assertThat(car.getName()).isEqualTo("crong");
+        assertThat(car.toString()).isEqualTo("crong");
     }
 
     @ParameterizedTest

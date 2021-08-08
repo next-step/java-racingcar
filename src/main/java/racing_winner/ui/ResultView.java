@@ -27,7 +27,7 @@ public class ResultView {
         }
     }
     public void drawDistance(Car car){
-        StringBuilder distanceLine = new StringBuilder(car.getName()).append(" : ");
+        StringBuilder distanceLine = new StringBuilder(car.toString()).append(" : ");
         int distance = car.getDistance();
 
         for(int i = 0; i < distance; i++){
@@ -41,7 +41,7 @@ public class ResultView {
         StringBuilder winnerName = new StringBuilder();
 
         for(Car car : winners){
-            winnerName.append(", ").append(car.getName());
+            winnerName.append(", ").append(car.toString());
         }
         winnerName.delete(0,2);
 
