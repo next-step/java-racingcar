@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class CarName {
 	public static final String NAME_INCORRECT_MESSAGE = "이름이 5자를 초과함.";

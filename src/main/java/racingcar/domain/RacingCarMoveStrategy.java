@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class RacingCarMoveStrategy implements CarMoveStrategy {
 	public static final int MOVABLE_CONDITION = 4;
