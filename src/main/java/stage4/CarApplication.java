@@ -10,13 +10,13 @@ public class CarApplication {
     public static void main(String[] args) {
         final InputValue ipValue = inputView.input();
         final String[] carNames = ipValue.getCarNames();
-        final int carNum = carNames.length;
-        final int tryNum = ipValue.getTryNum();
+        final int numberOfCars = carNames.length;
+        final int numberOfTries = ipValue.getTryNum();
 
-        List<CarService> carList = init(carNames);
+        List<CarService> cars = init(carNames);
 
-        final List<ResultValue> results = execute(tryNum, carList);
-        resultView.printResult(carNum, results);
+        final List<ResultValue> results = execute(numberOfTries, cars);
+        resultView.printResult(numberOfCars, results);
     }
 
     private static List<ResultValue> execute(int tryNum, List<CarService> carList) {

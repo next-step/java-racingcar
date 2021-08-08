@@ -3,6 +3,9 @@ package stage4;
 import java.util.Random;
 
 public class Car {
+    private final static int STANDARD = 10;
+    private final static int THRESHOLD = 4;
+
     private final String name;
     private int status;
 
@@ -17,14 +20,11 @@ public class Car {
     }
 
     public int getForwardCondition() {
-        Random random = new Random();
-        final int standard = 10;
-        return random.nextInt(standard);
+        return new Random().nextInt(STANDARD);
     }
 
     public boolean isForward(int condition) {
-        final int threshold = 4;
-        return condition >= threshold;
+        return condition >= THRESHOLD;
     }
 
     public int getStatus() {

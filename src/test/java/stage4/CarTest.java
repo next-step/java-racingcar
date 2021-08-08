@@ -23,16 +23,16 @@ public class CarTest {
     @Test
     @DisplayName("전진 조건 얻기 - 전진")
     void tryTest1() {
-        int condition = 4;
-        boolean result = car.isForward(condition);
+        int possible = 4;
+        boolean result = car.isForward(possible);
         assertTrue(result);
     }
 
     @Test
     @DisplayName("전진 조건 얻기 - 멈춤")
     void tryTest2() {
-        int condition = 3;
-        boolean result = car.isForward(condition);
+        int impossible = 3;
+        boolean result = car.isForward(impossible);
         assertFalse(result);
     }
 
