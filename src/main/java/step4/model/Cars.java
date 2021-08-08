@@ -6,10 +6,13 @@ import java.util.stream.Collectors;
 public class Cars {
     private List<Car> cars;
 
-    public Cars(List<String> nameList) {
+    public Cars(String nameList) {
         cars = new ArrayList<>();
-        nameList.forEach(name -> cars.add(new Car(name.trim())));
+//        nameList.forEach(name -> cars.add(new Car(name.trim())));
+    }
 
+    public Cars(List<Car> carList) {
+        this.cars = carList;
     }
 
     /**
@@ -45,7 +48,7 @@ public class Cars {
             car.go();
         }
 
-        result.add(car.getName() + "/" + car.getMove());
+        result.add(car.getName() + "/" + car.getPosition());
     }
 
     /**
@@ -54,18 +57,27 @@ public class Cars {
      */
     public List<String> getTopMoveCar() {
         //모든 자동차의 거리를 담는다.
-        List<Integer> allCarsMove = cars.stream()
-                                        .map(Car::getMove)
+        List<Position> allCarsMove = cars.stream()
+                                        .map(Car::getPosition)
                                         .collect(Collectors.toList());
         //정렬해서 가장 큰값을 가져온다.
         Collections.sort(allCarsMove, Collections.reverseOrder());
-        int max = allCarsMove.get(0);
+        Position max = allCarsMove.get(0);
 
         //자동차 이름을 따로 저장
-        List<String> winners = new ArrayList<>();
-        getWinnersName(max, winners);
+        List<Name> winners = new ArrayList<>();
+        getWinners(max, winners);
+        List<String> names = getWinnersName(winners);
 
-        return winners;
+        return names;
+    }
+
+    private List<String> getWinnersName(List<Name> winners) {
+        List<String> names = winners.stream()
+                                    .map(Name::getName)
+                                    .collect(Collectors.toList());
+
+        return names;
     }
 
     /**
@@ -73,11 +85,15 @@ public class Cars {
      * @param max
      * @param winners
      */
-    public void getWinnersName(int max, List<String> winners) {
+    public void getWinners(Position max, List<Name> winners) {
         for (Car car : cars) {
-            if (max == car.getMove()) {
-                winners.add(car.getName());
-            }
+            isWinners(max, winners, car);
+        }
+    }
+
+    private void isWinners(Position max, List<Name> winners, Car car) {
+        if (max.equals(car.getPosition())) {
+            winners.add(car.getName());
         }
     }
 }

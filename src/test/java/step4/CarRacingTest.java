@@ -4,9 +4,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import step4.model.Car;
 import step4.model.Cars;
 import step4.view.InputView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -59,28 +61,37 @@ public class CarRacingTest {
     @DisplayName("자동차수를 입력받아 자동차 수만큼 세팅한다.")
     public void set_cars() {
         //given
-        List<String> carName = Arrays.asList("car1","car2","car3");
-        Cars carSet = new Cars(carName);
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        Car car3 = new Car("car3");
+
+        List<Car> carList = new ArrayList<>();
+
+        carList.add(car1);
+        carList.add(car2);
+        carList.add(car3);
+
+        //when
+        Cars carSet = new Cars(carList);
 
         //then
-        carSet.getCars().forEach(car -> {
-            assertThat(car.getMove()).isEqualTo(0);
-        });
+        assertThat(carSet.getCars().size()).isEqualTo(3);
     }
 
     @Test
     @DisplayName("4이상일 경우 자동차가 전진해야한다.")
     public void car_should_be_moved() {
         //given
-        List<String> carName = Arrays.asList("car1","car2","car3");
-        Cars carSet = new Cars(carName);
+        Car expected = new Car("test", 1);
 
         //when
+        List<Car> carName = Arrays.asList(new Car("test"));
+        Cars carSet = new Cars(carName);
         carSet.moveAll(()->true);
 
         //then
         carSet.getCars().forEach(car -> {
-            assertThat(car.getMove()).isEqualTo(1);
+            assertThat(car).isEqualTo(expected);
         });
     }
 
@@ -88,29 +99,35 @@ public class CarRacingTest {
     @DisplayName("4미만일 경우 자동차가 움직이지 않아야한다.")
     public void car_should_be_not_moved() {
         //given
-        List<String> carName = Arrays.asList("car1","car2","car3");
-        Cars carSet = new Cars(carName);
+        Car expected = new Car("test", 0);
 
         //when
+        List<Car> carName = Arrays.asList(new Car("test"));
+        Cars carSet = new Cars(carName);
         carSet.moveAll(()->false);
 
         //then
         carSet.getCars().forEach(car -> {
-            assertThat(car.getMove()).isEqualTo(0);
+            assertThat(car).isEqualTo(expected);
         });
     }
 
     @Test
     @DisplayName("우승자의 이름을 반환해야한다.")
-    public void should_return_winners() {
+    public void should_return_winners_name() {
         //given
-        List<String> carName = Arrays.asList("car1","car2","car3");
-        Cars carSet = new Cars(carName);
+        Car car1 = new Car("car1", 1);
+        Car car2 = new Car("car2", 0);
+        Car car3 = new Car("car3", 0);
+
+        List<Car> expectedCars = new ArrayList<>();
+
+        expectedCars.add(car1);
+        expectedCars.add(car2);
+        expectedCars.add(car3);
 
         //when
-        carSet.getCars().get(0).setMove(5);
-
-        //then
+        Cars carSet = new Cars(expectedCars);
         List<String> topMoveCar = carSet.getTopMoveCar();
 
         //then
