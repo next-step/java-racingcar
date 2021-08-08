@@ -6,9 +6,8 @@ public class MoveRuleByRandomValue implements MoveRule {
     private final static int MIN_NUM_TO_MOVE = 4;
 
     public MoveRuleByRandomValue() {
-        this.movable = new RandomNumGenerator().getRandomNumber() >= MIN_NUM_TO_MOVE;
-    }
 
+    }
     /* 테스트를 위한 생성자 */
     public MoveRuleByRandomValue(int randomNumber) {
         this.movable = randomNumber >= MIN_NUM_TO_MOVE;
@@ -21,6 +20,7 @@ public class MoveRuleByRandomValue implements MoveRule {
 
     @Override
     public boolean ableToMoveCar() {
+        movable = new RandomNumGenerator().getRandomNumber() >= MIN_NUM_TO_MOVE;
         return movable;
     }
 }
