@@ -1,27 +1,28 @@
 package racing_winner;
 
-import racing_winner.domain.RacingCar;
-import racing_winner.service.RacingService;
+import racing_winner.domain.Racing;
+import racing_winner.strategy.RacingGameStrategy;
+import racing_winner.strategy.RacingStrategy;
 import racing_winner.ui.InputView;
 import racing_winner.ui.ResultView;
-
-import java.util.List;
+import racing_winner.utils.CommonUtils;
 
 public class RacingWinnerApplication {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
-        RacingService racingService = new RacingService();
+        RacingStrategy racingStrategy = new RacingGameStrategy();
 
-        String racingCar = inputView.getRacingCar();
         int totalRound = inputView.getRacingRound();
-        List<RacingCar> racingCarList = racingService.setInitialCarList(totalRound, racingCar);
+        String inputCars = inputView.getRacingCar();
 
-        for (int round = 0; round < totalRound; round++) {
-            racingCarList = racingService.exec(racingCarList);
-            resultView.result(racingCarList, round, totalRound);
+        String[] racingCars = CommonUtils.splitInput(inputCars);
+        Racing racing = Racing.setRacingCars(racingCars);
+
+        for (int i = 0; i < totalRound ; i++) {
+            racing.move(racingStrategy);
+            resultView.result(i, totalRound, racing);
         }
-
     }
 }
