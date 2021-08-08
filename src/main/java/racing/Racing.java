@@ -20,6 +20,7 @@ public class Racing {
         System.out.println("시도할 회수는 몇 회 인가요?");
         Integer tryNum = setNumber();
         playGame(carList, tryNum);
+        showRacing.showWinner(getWinnerList(carList, tryNum));
 
     }
 
@@ -32,7 +33,6 @@ public class Racing {
         for(int i = 0; i < nameArray.length; i++) {
             Car car = new Car();
             car.setCarName(nameArray[i]);
-            car.setCount(0);
             result.add(car);
         }
 
@@ -50,39 +50,42 @@ public class Racing {
     public static void playGame(List<Car> carList, Integer tryNum) {
 
         while(!isGameOver(carList, tryNum)) {
-            carList = setCarMove(carList);
+            carList = carListMove(carList);
         }
     }
 
     public static Boolean isGameOver(List<Car> carList, Integer tryNum) {
 
-        List<Car> winnerList = new ArrayList<>();
-
-        for(Car car : carList) {
-            if (tryNum.equals(car.getCount())) {
-                winnerList.add(car);
-            }
-        }
+        List<Car> winnerList = getWinnerList(carList, tryNum);
 
         if(winnerList.size() != 0) {
-            showRacing.showWinner(winnerList);
             return true;
         }
 
         return false;
     }
 
-    public static List<Car> setCarMove(List<Car> carList) {
+    public static void addWinnerLsit(List<Car> winnerList, Integer tryNum, Car car) {
 
-        for(Car car : carList) {
-            if(isMove(makeRanNum())) {
-                int cntSize = car.getCount() + 1;
-                car.setCount(cntSize);
-                showRacing.showGame(cntSize, car.getCarName());
-            }
+        if (tryNum.equals(car.getDistance())) {
+            winnerList.add(car);
+        }
+    }
+
+    public static List<Car> carListMove(List<Car> carList) {
+
+        for (Car car : carList) {
+            setCarMove(car);
         }
 
         return carList;
+    }
+
+    public static void setCarMove(Car car) {
+        if(isMove(makeRanNum())) {
+            car.plusDistance();
+            showRacing.showGame(car.getDistance(), car.getCarName());
+        }
     }
 
     public static Integer makeRanNum() {
@@ -102,5 +105,14 @@ public class Racing {
         return false;
     }
 
+    public static List<Car> getWinnerList (List<Car> carList, Integer tryNum) {
 
+        List<Car> winnerList = new ArrayList<>();
+
+        for (Car car : carList) {
+            addWinnerLsit(winnerList, tryNum, car);
+        }
+
+        return winnerList;
+    }
 }

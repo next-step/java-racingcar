@@ -4,7 +4,11 @@ public class Car {
 
     private String carName;
 
-    private Integer count;
+    private Integer distance;
+
+    public Car() {
+        this.distance = 0;
+    }
 
     public String getCarName() {
         return carName;
@@ -14,11 +18,15 @@ public class Car {
         this.carName = carName;
     }
 
-    public Integer getCount() {
-        return count;
+    public Integer getDistance() {
+        return distance;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setDistance(Integer distance) {
+        this.distance = distance;
+    }
+
+    public void plusDistance() {
+        this.distance = this.distance + 1;
     }
 }

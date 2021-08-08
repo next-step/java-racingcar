@@ -22,16 +22,14 @@ public class ShowRacing {
 
     public static void showWinner(List<Car> carList) {
 
-        String winners = "";
+        StringBuilder winners = new StringBuilder();
 
         for(Car car : carList) {
-            winners = winners + car.getCarName();
-            winners = winners + ", ";
+            winners.append(car.getCarName());
+            winners.append(", ");
         }
 
-        winners  = winners.substring(0, winners.length()-2);
-
-        System.out.println(winners + "가 최종 우승했습니다.");
+        System.out.println(winners.substring(0, winners.length()-2) + "가 최종 우승했습니다.");
 
     }
 }

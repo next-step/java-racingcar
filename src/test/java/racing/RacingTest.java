@@ -20,13 +20,13 @@ public class RacingTest {
     public void setUp() {
         carList1 = new ArrayList<>();
         Car car1 = new Car();
-        car1.setCount(1);
+        car1.setDistance(1);
         car1.setCarName("R1");
         Car car2 = new Car();
-        car2.setCount(2);
+        car2.setDistance(2);
         car2.setCarName("R2");
         Car car3 = new Car();
-        car3.setCount(3);
+        car3.setDistance(3);
         car3.setCarName("R3");
         carList1.add(car1);
         carList1.add(car2);
@@ -34,13 +34,13 @@ public class RacingTest {
 
         carList2 = new ArrayList<>();
         Car car4 = new Car();
-        car4.setCount(1);
+        car4.setDistance(1);
         car4.setCarName("R4");
         Car car5 = new Car();
-        car5.setCount(5);
+        car5.setDistance(5);
         car5.setCarName("R5");
         Car car6 = new Car();
-        car6.setCount(5);
+        car6.setDistance(5);
         car6.setCarName("R6");
         carList2.add(car4);
         carList2.add(car5);
