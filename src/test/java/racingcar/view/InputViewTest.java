@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
@@ -16,6 +17,7 @@ public class InputViewTest {
     void getNamesOfCars() {
         assertThat(InputView.getNamesOfCars(" ABC, DEF ,GHIJ")).containsExactly("ABC", "DEF", "GHIJ");
         assertThat(InputView.getNamesOfCars(" ABC ,  D EF")).containsExactly("ABC", "D EF");
+        assertThat(InputView.getNamesOfCars("a, b, c, d")).containsExactly("a", "b", "c", "d");
     }
 
     @DisplayName("isValidInputOfCars : Console에서 입력한 String이 유효한지 검사")
@@ -34,5 +36,12 @@ public class InputViewTest {
                 Arguments.of("", false),
                 Arguments.of(" ,", false)
         );
+    }
+
+    @DisplayName("isValidInputOfRoundNum")
+    @ParameterizedTest(name = "{index} {displayName} {arguments}")
+    @CsvSource({"0, false", "1, true", "3, true"})
+    void isValidInputOfRoundNum(int input, boolean expected) {
+        assertThat(InputView.isValidInputOfRoundNum(input)).isEqualTo(expected);
     }
 }

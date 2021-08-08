@@ -6,17 +6,15 @@ import java.util.Scanner;
 
 public class InputView {
     static final String INPUT_CAR_NUM_INSTRUCTION
-            = "레이스에 참가하는 자동차의 이름을 입력하세요(이름은 쉽표(,)를 기준으로 구분 : ";
+            = "레이스에 참가하는 자동차의 이름을 입력하세요(이름은 쉽표(,)를 기준으로 구분) : ";
     static final String INPUT_ROUND_NUM_INSTRUCTION
             = "진행할 레이스의 라운드 수를 입력하세요 : ";
 
-    public static String[] inputNameOfCars() {
+    public static String[] inputNamesOfCars() {
         String input = "";
-        String[] carNames = {""};
-
-        System.out.print(INPUT_CAR_NUM_INSTRUCTION);
 
         do {
+            System.out.print(INPUT_CAR_NUM_INSTRUCTION);
             input = new Scanner(System.in).nextLine();
         } while (!isValidInputOfCars(input));
 
@@ -52,14 +50,22 @@ public class InputView {
         return names;
     }
 
+    static boolean isValidInputOfRoundNum(int input) {
+        if (input < Race.MIN_ROUND_NUM) {
+            System.out.println("invalid input for the number of round : " + input);
+            return false;
+        }
+
+        return true;
+    }
+
     public static int inputRoundNum() {
         int input;
 
-        System.out.print(INPUT_ROUND_NUM_INSTRUCTION);
-
         do {
+            System.out.print(INPUT_ROUND_NUM_INSTRUCTION);
             input = new Scanner(System.in).nextInt();
-        } while (!Race.isValidRoundNum(input));
+        } while (!isValidInputOfRoundNum(input));
 
         return input;
     }

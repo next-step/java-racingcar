@@ -13,12 +13,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CarTest {
-    Car car = new Car();
 
     @DisplayName("isAbleToMove : 전진 가능 기준인 4 이상의 값일 떄 true 반환")
     @ParameterizedTest(name = "{index} {displayName} {arguments}")
     @CsvSource({"4, true", "3, false", "0, false", "8, true"})
     void isAbleToMove(int input, boolean expected) {
+        Car car = new Car();
+
         assertThat(car.isAbleToMove(input)).isEqualTo(expected);
     }
 
@@ -26,6 +27,8 @@ public class CarTest {
     @ParameterizedTest(name = "{index} {displayName} {arguments}")
     @ValueSource(ints = {-1, 10})
     void isAbleToMove_ShouldThrowIllegalArgumentException(int input) {
+        Car car = new Car();
+
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     car.isAbleToMove(input);
@@ -35,6 +38,8 @@ public class CarTest {
     @DisplayName("goForward : Car 전진 테스트")
     @Test
     void goForward() {
+        Car car = new Car();
+
         int currentLocation = car.getLocation();
         car.goForward();
         assertThat(car.getLocation()).isEqualTo(currentLocation + 1);
@@ -47,7 +52,8 @@ public class CarTest {
     }
 
     @DisplayName("move : 입력 값이 4 이상이면 car가 전진하는 기능 테스트")
-        @ParameterizedTest(name = "{index} {displayName} {arguments}")    @CsvSource({"0, 0", "3, 0", "4, 1", "9, 1"})
+    @ParameterizedTest(name = "{index} {displayName} {arguments}")
+    @CsvSource({"0, 0", "3, 0", "4, 1", "9, 1"})
     void move(int value, int expected) {
         Random ran = new Random();
         Car car = new Car();
@@ -66,7 +72,8 @@ public class CarTest {
     }
 
     @DisplayName("isValidName : Car의 이름으로 입력하기 적합한 데이터인지 검사")
-        @ParameterizedTest(name = "{index} {displayName} {arguments}")    @NullAndEmptySource
+    @ParameterizedTest(name = "{index} {displayName} {arguments}")
+    @NullAndEmptySource
     void isValidName(String name) {
         Car car = new Car();
 
@@ -74,7 +81,8 @@ public class CarTest {
     }
 
     @DisplayName("Car : Car 객체 생성 시 입력하는 이름이 정상적으로 출력된다.")
-        @ParameterizedTest(name = "{index} {displayName} {arguments}")    @CsvSource({"ABCD, ABCD", "Porsche, Porsche", "Ferrari, Ferrari", "Hyundai, Hyundai", ", Unknown", "' ', Unknown"})
+    @ParameterizedTest(name = "{index} {displayName} {arguments}")
+    @CsvSource({"ABCD, ABCD", "Porsche, Porsche", "Ferrari, Ferrari", "Hyundai, Hyundai", ", Unknown", "' ', Unknown"})
     void Car(String name, String expected) {
         Car car = new Car(name);
 

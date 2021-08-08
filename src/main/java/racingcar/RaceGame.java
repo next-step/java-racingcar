@@ -6,16 +6,16 @@ import racingcar.view.InputView;
 
 public class RaceGame {
     public static void main(String[] args) {
-        String[] carNames = InputView.inputNameOfCars();
+        String[] carNames = InputView.inputNamesOfCars();
         int roundNum = InputView.inputRoundNum();
 
         Race race = new Race(carNames, roundNum);
 
         do {
             race.runOneRound();
-            ResultView.printCurrentState(race, race.getCars());
+            ResultView.printCurrentState(race);
         } while (!race.isRaceOver());
 
-        ResultView.printGameOver();
+        ResultView.printGameOver(race);
     }
 }

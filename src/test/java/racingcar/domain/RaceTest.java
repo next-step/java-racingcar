@@ -72,7 +72,8 @@ public class RaceTest {
     @ParameterizedTest(name = "{index} {displayName} {arguments}")
     @MethodSource("provideCarNamesForisValidCarNames")
     void isValidCarNames(String[] carNames, boolean expected) {
-        assertThat(Race.isValidCarNames(carNames)).isEqualTo(expected);
+        Race race = new Race();
+        assertThat(race.isValidCarNames(carNames)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> provideCarNamesForisValidCarNames() {
@@ -91,7 +92,8 @@ public class RaceTest {
     @ParameterizedTest(name = "{index} {displayName} {arguments}")
     @CsvSource({"-1, false", "0, false", "1, true", "3, true", "5, true", "100, true"})
     void inValidRoundNum(int roundNum, boolean expected) {
-        assertThat(Race.isValidRoundNum(roundNum)).isEqualTo(expected);
+        Race race = new Race();
+        assertThat(race.isValidRoundNum(roundNum)).isEqualTo(expected);
     }
 
     Race simulateRace(int[] locations) {

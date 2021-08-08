@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Race {
-    static final int MIN_ROUND_NUM = 1;
+    public static final int MIN_ROUND_NUM = 1;
     static final int MAX_RANDOM_NUM = 10;
     static Random random = new Random();
 
@@ -24,8 +24,8 @@ public class Race {
 
         carNum = carNames.length;
         cars = new ArrayList<>(carNum);
-        for (int i = 0; i < carNames.length; i++) {
-            this.cars.add(new Car());
+        for (String name : carNames) {
+            this.cars.add(new Car(name));
         }
     }
 
@@ -39,7 +39,7 @@ public class Race {
         }
     }
 
-    public static boolean isValidCarNames(String[] carNames) {
+    public boolean isValidCarNames(String[] carNames) {
         boolean result = true;
         for (String name : carNames) {
             result &= !name.trim().isEmpty();
@@ -48,7 +48,7 @@ public class Race {
         return result;
     }
 
-    public static boolean isValidRoundNum(int roundNum) {
+    public boolean isValidRoundNum(int roundNum) {
         return roundNum >= MIN_ROUND_NUM;
     }
 
@@ -80,7 +80,7 @@ public class Race {
         cars.sort(new SortByLocation());
     }
 
-    List<Car> getWinners() {
+    public List<Car> getWinners() {
         sortByLocation();
 
         List<Car> winners = new ArrayList<>(carNum);
