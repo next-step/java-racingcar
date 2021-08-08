@@ -8,8 +8,9 @@ import java.util.stream.IntStream;
 public class Rounds {
     private Round[] rounds;
 
-    public Rounds(int totalRoundNum) {
-        this.rounds = new Round[totalRoundNum];
+    public Rounds(int roundNum) {
+        isValidRoundNumber(roundNum);
+        this.rounds = new Round[roundNum];
     }
 
     /* 테스트를 위한 생성자 */
@@ -22,6 +23,12 @@ public class Rounds {
             Round newRound = new Round(cars);
             cars = newRound.moveCars(moveRule);
             rounds[i] = newRound;
+        }
+    }
+
+    private void isValidRoundNumber(int roundNum) {
+        if (roundNum <= 0) {
+            throw new IllegalArgumentException("시도 회수는 1이상의 정수입니다.");
         }
     }
 
