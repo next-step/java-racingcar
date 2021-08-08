@@ -1,6 +1,7 @@
 package step3;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -11,8 +12,14 @@ public class ResultView {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public static void printResult(List<Car> cars) {
-        for (Car car : cars) {
+    public static void printResult(List<Cars> racingSheets) {
+        for (Cars cars : racingSheets) {
+            printRound(cars);
+        }
+    }
+
+    private static void printRound(Cars cars) {
+        for (Car car : cars.getCars()) {
             System.out.println(car.getCarName() + " : " + makeProgress(car.getMoveDistance()));
         }
         System.out.println();
@@ -26,8 +33,10 @@ public class ResultView {
         return String.valueOf(stringBuilder);
     }
 
-    public static void printWinner(String winners) {
-
-        System.out.println(winners + "가 최종 우승했습니다.");
+    public static void printWinner(List<Car> winners) {
+        String winner = winners.stream()
+                .map(Car::getCarName)
+                .collect(Collectors.joining(","));
+        System.out.println(winner + "가 최종 우승했습니다.");
     }
 }

@@ -34,9 +34,9 @@ class CarTest {
     @ValueSource(strings = {"macbook", "nextstep", "nekarakubae"})
     @DisplayName("자동차 이름이 5글자를 초과하는 경우 IllegalArgumentException가 발생한다.")
     void check_validate_carname_test(String carName) {
-        assertThatThrownBy(() -> {
-            new Car(carName);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() ->
+            new Car(carName)
+        ).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 다섯 글자를 초과할 수 없습니다");
     }
 

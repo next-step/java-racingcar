@@ -2,54 +2,43 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CarRacing {
 
-    private final List<Car> cars;
+    private final Cars cars;
+    private int tryCount;
+    private final RacingSheet racingSheet;
 
-    public CarRacing(String carNameString) {
-        this.cars = new ArrayList<>();
+    public CarRacing(String carNameString, int tryCount) {
+        this.cars = new Cars(initCars(carNameString));
+        this.tryCount = tryCount;
+        this.racingSheet = new RacingSheet();
+    }
 
-        String[] carNameArray = getCarNameListSplit(carNameString);
+    private List<Car> initCars(String carNameString) {
+        List<Car> cars = new ArrayList<>();
+        String[] carNameArray = carNameString.split(",");
 
         for (String s : carNameArray) {
             cars.add(new Car(s));
         }
-    }
 
-    private String[] getCarNameListSplit(String carNameList) {
-        return carNameList.split(",");
-    }
-
-    public List<Car> getCars() {
-        return this.cars;
-    }
-
-    public List<Car> racing(List<Car> cars) {
-        for (Car car : cars) {
-            car.moveForward(CarUtils.getNumberForMovement());
-        }
         return cars;
     }
 
-    public String extractWinner(List<Car> cars) {
-        int maxMoveDistance = getMaxMoveDistance(cars);
-        return cars.stream()
-                .filter(o -> o.getMoveDistance() == maxMoveDistance)
-                .map(Car::getCarName)
-                .collect(Collectors.joining(","));
-    }
+    public List<Cars> racingGameStart() {
 
-    private int getMaxMoveDistance(List<Car> cars) {
-        int maxMoveDistance = 0;
-        for (Car car : cars) {
-            maxMoveDistance = compareMoveDistance(maxMoveDistance, car);
+        while (tryCount > 0) {
+            cars.racing();
+            racingSheet.addSheet(cars);
+            tryCount--;
         }
-        return maxMoveDistance;
+
+        return racingSheet.getRacingSheets();
     }
 
-    private int compareMoveDistance(int maxMoveDistance, Car car) {
-        return Math.max(car.getMoveDistance(), maxMoveDistance);
+    public List<Car> extractWinner() {
+        return cars.extractWinner();
     }
+
 }

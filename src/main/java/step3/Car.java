@@ -14,8 +14,14 @@ public class Car {
         this.carName = carName;
     }
 
+    public Car(String carName, int moveDistance) {
+        this.moveDistance = moveDistance;
+        validateCarName(carName);
+        this.carName = carName;
+    }
+
     private void validateCarName(String carName) {
-        if(!CarUtils.validateNameLength(carName)) {
+        if (!CarUtils.validateNameLength(carName)) {
             throw new IllegalArgumentException("자동차 이름은 다섯 글자를 초과할 수 없습니다.");
         }
     }
