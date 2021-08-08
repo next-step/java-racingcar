@@ -44,7 +44,7 @@ public class Car {
         return number >= MOVE_CRITERION;
     }
 
-    public void addMoveDistance() {
+    private void addMoveDistance() {
         this.moveDistance += 1;
     }
 
