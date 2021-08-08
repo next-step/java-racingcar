@@ -1,11 +1,11 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
 public class Race {
-    static final int MIN_CAR_NUM = 1;
     static final int MIN_ROUND_NUM = 1;
     static final int MAX_RANDOM_NUM = 10;
     static Random random = new Random();
@@ -13,6 +13,7 @@ public class Race {
     private List<Car> cars;
 
     private String[] carNames = {"Unknown"};
+    private int carNum = 1;
     private int roundNum = 1;
     private int currentRound = 0;
 
@@ -21,7 +22,8 @@ public class Race {
         this.roundNum = roundNum;
         checkIfValidArgumentsForRace(carNames, roundNum);
 
-        cars = new ArrayList<>(carNames.length);
+        carNum = carNames.length;
+        cars = new ArrayList<>(carNum);
         for (int i = 0; i < carNames.length; i++) {
             this.cars.add(new Car());
         }
@@ -72,5 +74,31 @@ public class Race {
 
     public boolean isRaceOver() {
         return roundNum == currentRound;
+    }
+
+    void sortByLocation() {
+        cars.sort(new SortByLocation());
+    }
+
+    List<Car> getWinners() {
+        sortByLocation();
+
+        List<Car> winners = new ArrayList<>(carNum);
+        int furthestLocation = cars.get(0).getLocation();
+
+        winners.add(cars.get(0));
+        for (int i = 1; i < carNum && cars.get(i).getLocation() == furthestLocation; i++) {
+            winners.add(cars.get(i));
+        }
+
+        return winners;
+    }
+}
+
+class SortByLocation implements Comparator<Car>
+{
+    public int compare(Car a, Car b)
+    {
+        return b.getLocation() - a.getLocation();
     }
 }
