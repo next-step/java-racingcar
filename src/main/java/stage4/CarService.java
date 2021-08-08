@@ -1,26 +1,29 @@
 package stage4;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CarService {
-    private final Car car;
 
-    public CarService(Car car) {
-        this.car = car;
+    public List<ResultValue> startRace(String[] carNames, int numberOfTries) {
+        final List<Car> cars = init(carNames);
+
+        List<ResultValue> results = new ArrayList<>();
+        for (int i = 0; i < numberOfTries; i++) {
+            for (Car car : cars) {
+                final int forwardCondition = car.getForwardCondition();
+                car.tryForward(forwardCondition);
+                results.add(new ResultValue(car.getName(), car.getStatus()));
+            }
+        }
+        return results;
     }
 
-    public int getCondition() {
-        return this.car.getForwardCondition();
-    }
-
-    public int tryForward(int condition) {
-        if (this.car.isForward(condition)) this.car.forward();
-        return this.car.getStatus();
-    }
-
-    public int getStatus() {
-        return this.car.getStatus();
-    }
-
-    public Car getCar() {
-        return this.car;
+    private List<Car> init(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+        return cars;
     }
 }

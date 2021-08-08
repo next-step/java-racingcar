@@ -19,23 +19,28 @@ public class Car {
         this.status = status;
     }
 
-    public int getForwardCondition() {
-        return new Random().nextInt(STANDARD);
-    }
-
-    public boolean isForward(int condition) {
-        return condition >= THRESHOLD;
-    }
-
     public int getStatus() {
         return this.status;
     }
 
-    public void forward() {
+    public String getName() {
+        return this.name;
+    }
+
+    public int getForwardCondition() {
+        return new Random().nextInt(STANDARD);
+    }
+
+    private boolean isForward(int condition) {
+        return condition >= THRESHOLD;
+    }
+
+    private void forward() {
         this.status++;
     }
 
-    public String getName() {
-        return this.name;
+    public int tryForward(int condition) {
+        if (this.isForward(condition)) this.forward();
+        return this.getStatus();
     }
 }

@@ -1,53 +1,45 @@
 package stage4;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CarTest {
-    private Car car;
-    private String carName;
 
-    @BeforeAll
-    void setup() {
-        carName = "name";
-        car = new Car(carName);
-    }
+    private String carName = "name";
 
     @Test
-    @DisplayName("전진 조건 얻기 - 전진")
-    void tryTest1() {
-        int possible = 4;
-        boolean result = car.isForward(possible);
-        assertTrue(result);
-    }
-
-    @Test
-    @DisplayName("전진 조건 얻기 - 멈춤")
-    void tryTest2() {
-        int impossible = 3;
-        boolean result = car.isForward(impossible);
-        assertFalse(result);
-    }
-
-    @Test
-    @DisplayName("forward - 전진 기능 테스트")
-    void forwardTest() {
+    @DisplayName("tryForward - 자동차 멈춤 테스트")
+    void tryStopTest() {
         // given
-        final int currentStatus = 3;
+        final int currentStatus = 0;
+        final int impossible = 3;
+        final int expectedStatus = 0;
         Car car = new Car(carName, currentStatus);
-        final int expectedStatus = 4;
 
         // when
-        car.forward();
+        final int result = car.tryForward(impossible);
 
         // then
-        assertThat(expectedStatus).isEqualTo(car.getStatus());
+        assertThat(expectedStatus).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("tryForward - 자동차 전진 테스트")
+    void tryForwardTest() {
+        // given
+        final int currentStatus = 0;
+        final int possible = 4;
+        final int expectedStatus = 1;
+        Car car = new Car(carName, currentStatus);
+
+        // when
+        final int result = car.tryForward(possible);
+
+        // then
+        assertThat(expectedStatus).isEqualTo(result);
     }
 }
