@@ -21,7 +21,8 @@
 - [X] position은 0 이상의 정수이다. 
 - [X] cars 일급 컬렉션으로 분리
 - [X] rounds 일큽 컬렉션으로 분리
-- [X] cars 테스트 코드 추가 
+- [X] cars 테스트 코드 추가
+- [X] round 테스트 코드 추가
 - [ ] rounds 테스트 코드 추가
 - [X] MoveRule 클래스 추가 (자동차의 움직임 결정)
-- [X] Cars에서 car의 수는 1이상이다. 
+- [X] Cars에서 car의 수는 1이상이다.
