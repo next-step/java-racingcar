@@ -10,6 +10,7 @@ public class Cars {
     private List<Car> cars;
 
     public Cars (int carNum) {
+        isValidCarNumber(carNum);
         cars = new LinkedList<>();
         IntStream.range(0, carNum).forEach(i -> cars.add(new Car()));
     }
@@ -28,6 +29,12 @@ public class Cars {
     public Cars move(MoveRule moveRule) {
         cars.stream().forEach(car-> car.move(moveRule));
         return this;
+    }
+
+    private void isValidCarNumber(int carNum) {
+        if (carNum <= 0) {
+            throw new IllegalArgumentException("자동차 수는 1 이상의 정수입니다.");
+        }
     }
 
     @Override
