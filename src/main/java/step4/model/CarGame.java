@@ -26,11 +26,19 @@ public class CarGame {
 
         while (tryCnt-- > 0) {
             RandomMovingStrategy strategy = new RandomMovingStrategy();
-            List<String> result = cars.moveAll(strategy);
-            results.addAll(result);
+            List<Car> result = cars.moveAll(strategy);
+            formatResult(results, result);
         }
 
         return results;
+    }
+
+    private void formatResult(List<String> results, List<Car> result) {
+        for (Car car : result) {
+            Name carName = car.getName();
+            Position carPosition = car.getPosition();
+            results.add(carName.getName() + "/" + carPosition.getPosition());
+        }
     }
 
 

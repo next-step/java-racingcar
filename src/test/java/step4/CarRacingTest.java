@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import step2.Calculator;
 import step4.model.Car;
 import step4.model.Cars;
 import step4.view.InputView;
@@ -22,11 +23,9 @@ public class CarRacingTest {
         //given
         String carName = "carcarcar";
 
-        //when
-        InputView view = new InputView();
-
         //then
-        assertTrue(view.isOverLength(carName));
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
+                () -> new Car(carName));
     }
 
     @ParameterizedTest

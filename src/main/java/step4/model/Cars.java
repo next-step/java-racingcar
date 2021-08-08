@@ -6,11 +6,6 @@ import java.util.stream.Collectors;
 public class Cars {
     private List<Car> cars;
 
-    public Cars(String nameList) {
-        cars = new ArrayList<>();
-//        nameList.forEach(name -> cars.add(new Car(name.trim())));
-    }
-
     public Cars(List<Car> carList) {
         this.cars = carList;
     }
@@ -27,11 +22,12 @@ public class Cars {
      * @param movingStrategy
      * @return
      */
-    public List<String> moveAll(MovingStrategy movingStrategy){
-        List<String> result = new ArrayList<>();
+    public List<Car> moveAll(MovingStrategy movingStrategy){
+        List<Car> result = new ArrayList<>();
 
         cars.forEach(car -> {
-            canMoveCar(movingStrategy, result, car);
+            canMoveCar(movingStrategy, car);
+            result.add(car);
         });
 
         return result;
@@ -40,15 +36,12 @@ public class Cars {
     /**
      * 랜덤 숫자가 4 이상이 나오면 전진한다.
      * @param movingStrategy
-     * @param result
      * @param car
      */
-    private void canMoveCar(MovingStrategy movingStrategy, List<String> result, Car car) {
+    private void canMoveCar(MovingStrategy movingStrategy, Car car) {
         if (movingStrategy.canMove()) {
             car.go();
         }
-
-        result.add(car.getName() + "/" + car.getPosition());
     }
 
     /**

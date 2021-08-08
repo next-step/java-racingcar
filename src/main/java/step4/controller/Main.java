@@ -12,16 +12,16 @@ public class Main {
         InputView input = new InputView();
         List<String> nameList = input.askName(Message.ASK_CAR_NAME);
         int tryCnt = input.askTryCnt(Message.ASK_TRY_CNT);
-        int carCnt = nameList.size();
-
-        System.out.println("자동차 대수 :" + carCnt);
-        System.out.println("시도 횟수 :" + tryCnt);
-        System.out.println("실행결과");
-        System.out.println();
 
         CarGame user = new CarGame();
         List<String> results = user.playGame(nameList, tryCnt);
         List<String> winners = user.getWinner();
+
+        int carCnt = nameList.size();
+        System.out.println("자동차 대수 :" + carCnt);
+        System.out.println("시도 횟수 :" + tryCnt);
+        System.out.println("실행결과");
+        System.out.println();
 
 
         ResultView result = new ResultView();

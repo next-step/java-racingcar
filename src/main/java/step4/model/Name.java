@@ -4,13 +4,27 @@ import java.util.Objects;
 
 public class Name {
     private String name;
+    public static final int MAX_LENGTH = 5;
+
 
     public Name(String name) {
-        this.name = name;
+        isOverLength(name);
+        this.name = name.trim();
     }
 
     public String getName() {
         return name;
+    }
+
+    /**
+     * 자동차 이름이 5자를 초과하는지 검사한다.
+     * @param name
+     * @return
+     */
+    public void isOverLength(String name) {
+        if (name.length() > MAX_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이상 입력할 수 없습니다.");
+        }
     }
 
     @Override

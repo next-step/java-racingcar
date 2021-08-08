@@ -9,6 +9,10 @@ public class Position implements Comparable<Position>{
         this.position = position;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     public void move() {
         this.position += 1;
     }
