@@ -12,7 +12,7 @@ public class RoundsTest {
     @Test
     void roundMoveCarsTest() {
         Rounds actual = new Rounds(5);
-        actual.moveCarsForEachRound(new Cars(2), new MoveRuleByRandomValue(true));
+        actual.moveCarsForEachRound(new Cars(2), () -> true);
 
         Round[] rounds = new Round[5];
         for (int i = 0; i < rounds.length; i++) {

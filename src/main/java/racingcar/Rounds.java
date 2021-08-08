@@ -17,10 +17,10 @@ public class Rounds {
         this.rounds = rounds;
     }
 
-    public void moveCarsForEachRound(Cars cars, MoveRule moveRule) {
+    public void moveCarsForEachRound(Cars cars, MoveStrategy moveStrategy) {
         for (int i = 0; i < rounds.length; i++) {
             Round newRound = new Round(cars);
-            cars = newRound.moveCars(moveRule);
+            cars = newRound.moveCars(moveStrategy);
             rounds[i] = newRound;
         }
     }

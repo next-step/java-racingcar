@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,8 +11,8 @@ public class Round {
         cars = new Cars(carsFromPreviousRound);
     }
 
-    public Cars moveCars(MoveRule moveRule) {
-        cars = cars.move(moveRule);
+    public Cars moveCars(MoveStrategy moveStrategy) {
+        cars = cars.move(moveStrategy);
         return cars;
     }
 

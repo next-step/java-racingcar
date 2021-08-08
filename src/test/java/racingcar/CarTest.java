@@ -20,7 +20,7 @@ public class CarTest {
     @CsvSource(value = {"false:0", "true:1"}, delimiter = ':')
     void moveCarAccordingToRandomValue(boolean movable, int position ) {
         Car actual = new Car();
-        actual.move(new MoveRuleByRandomValue(movable));
+        actual.move(() -> movable);
         assertThat(actual).isEqualTo(new Car(position));
     }
 

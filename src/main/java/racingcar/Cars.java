@@ -26,8 +26,8 @@ public class Cars {
         Arrays.stream(cars).forEach(car-> this.cars.add(car));
     }
 
-    public Cars move(MoveRule moveRule) {
-        cars.stream().forEach(car-> car.move(moveRule));
+    public Cars move(MoveStrategy moveStrategy) {
+        cars.stream().forEach(car-> car.move(moveStrategy));
         return this;
     }
 
