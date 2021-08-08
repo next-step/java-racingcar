@@ -6,23 +6,23 @@ public class Car {
 	private static final int MOVE_DISTANCE = 1;
 
 	private Name carName;
-	private int distance;
+	private Distance distance;
 
-	public Car(final String carName, int distance) {
+	public Car(final String carName, final int distance) {
 		this.carName = new Name(carName);
-		this.distance = distance;
+		this.distance = new Distance(distance);
 	}
 
-	public int getMaxDistance(int maxDistance) {
-		return maxDistance > distance ? maxDistance : distance;
+	public Distance getMaxDistance(int maxDistance) {
+		return distance.getMaxDistance(maxDistance);
 	}
 
-	public int getDistance() {
+	public Distance getDistance() {
 		return distance;
 	}
 
 	public boolean getStatusWinnerStatus(int maxDistance) {
-		return maxDistance == distance;
+		return maxDistance == distance.getDistance();
 	}
 
 	public String getCarName() {
@@ -31,7 +31,7 @@ public class Car {
 
 	public void move(NumberGenerator generator) {
 		if(generator.getNumber() >= RACE_WIN_RANGE) {
-			distance += MOVE_DISTANCE;
+			distance = new Distance(distance.getDistance() + MOVE_DISTANCE);
 		}
 	}
 }
