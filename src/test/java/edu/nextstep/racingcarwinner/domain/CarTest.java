@@ -12,10 +12,10 @@ public class CarTest {
         String name = "hwan";
 
         // when
-        Car car = new Car("hwan");
+        Car car = new Car(name);
 
         // then
-        assertThat(car).isEqualTo(new Car("hwan", 0));
+        assertThat(car).isEqualTo(new Car(name, 0));
     }
 
     @Test

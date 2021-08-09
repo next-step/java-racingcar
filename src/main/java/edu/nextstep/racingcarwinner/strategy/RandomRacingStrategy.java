@@ -9,7 +9,7 @@ public class RandomRacingStrategy implements RacingStrategy {
 
     @Override
     public boolean movable() {
-        return getRandomNum() > MOVING_CRITERIA;
+        return getRandomNum() >= MOVING_CRITERIA;
     }
 
     public int getRandomNum(){
