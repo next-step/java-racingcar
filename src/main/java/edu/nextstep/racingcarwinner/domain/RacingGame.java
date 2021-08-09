@@ -11,6 +11,7 @@ import edu.nextstep.racingcarwinner.strategy.RacingStrategy;
 import java.util.List;
 
 public class RacingGame {
+
     private RacingCars racingCars;
 
     public void joinGame(RacingCars racingCars) {
@@ -23,5 +24,9 @@ public class RacingGame {
 
     public List<Car> getWinner() {
         return racingCars.findWinner();
+    }
+
+    public RacingCars getRacingCars() {
+        return racingCars;
     }
 }

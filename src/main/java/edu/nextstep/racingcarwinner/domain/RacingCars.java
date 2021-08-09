@@ -17,6 +17,10 @@ public class RacingCars {
         return new RacingCars(carList);
     }
 
+    public static RacingCars of(String carNameStr) {
+        return RacingCars.of(carNameStr.split(","));
+    }
+
     public static RacingCars of(String[] carNameArr) {
         List<Car> carList = makeCarList(carNameArr);
         return RacingCars.of(carList);
