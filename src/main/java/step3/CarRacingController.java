@@ -3,15 +3,15 @@ package step3;
 public class CarRacingController {
 
     public static void main(String[] args) {
-        int carCount = InputView.inputCarCount();
+        String carNameString = InputView.inputCarCount();
         int tryCount = InputView.inputTryCount();
 
-        CarRacing carRacing = new CarRacing(carCount);
+        CarRacing carRacing = new CarRacing(carNameString, tryCount);
 
         ResultView.printResultStart();
 
-        for (int i = 0; i < tryCount; i++) {
-            ResultView.printResult(carRacing.racing());
-        }
+        ResultView.printResult(carRacing.racingGameStart());
+
+        ResultView.printWinner(carRacing.extractWinner());
     }
 }
