@@ -11,7 +11,16 @@
     * ~~Random값은 java.util.Random 클래스의 nextInt(10) 메소드 활용~~
     * ~~output 출력 main 메서드~~
     * ~~자동차 이동 메서드~~
+
+**1차 피드백**
 * ~~Java 컨벤션 리팩토링~~
 * 클래스 분리하기
   * ~~멤버변수, 상수 분리하기~~
   * ~~Car의`일급컬렉션` Cars 구현하기~~
+
+**2차 피드백**
+* 객체 클래스 역할 나누기
+  * 전략패턴 사용해 Car 내 전진 조건 수정하기 
+* ~~CarRace setter 생성 시점에 받아오기~~
+* Message Inputview 클래스로 묶기
+* CarRace 메서드 Cars 클래스로 역할 나누기
