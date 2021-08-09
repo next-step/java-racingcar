@@ -10,7 +10,9 @@ import step3.view.OutputView;
 
 public class Main {
 	public static void main(String[] args) {
-		String[] cars = InputView.nameOfCars();
+		String nameOfCars = InputView.nameOfCars();
+		String[] cars = nameOfCars.split(",");
+
 		int trials = InputView.numberOfTrials();
 
 		List<RacingResults> results = new Racing(trials, cars).race();
