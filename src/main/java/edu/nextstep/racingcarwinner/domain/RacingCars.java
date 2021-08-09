@@ -4,6 +4,7 @@ import edu.nextstep.racingcarwinner.strategy.RacingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCars {
     private final List<Car> racingCars;
@@ -39,13 +40,10 @@ public class RacingCars {
     }
 
     private List<Car> getWinners(int maxDistance) {
-        List<Car> winners = new ArrayList<>();
 
-        racingCars.stream()
+        return racingCars.stream()
                 .filter(C -> C.getDistance() == maxDistance)
-                .forEach(winners::add);
-
-        return winners;
+                .collect(Collectors.toList());
     }
 
     private int getMaxDistance() {
