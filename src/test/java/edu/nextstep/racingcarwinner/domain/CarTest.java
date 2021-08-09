@@ -1,7 +1,5 @@
 package edu.nextstep.racingcarwinner.domain;
 
-import edu.nextstep.racingcarwinner.strategy.RacingStrategy;
-import edu.nextstep.racingcarwinner.strategy.RandomStrategy;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -41,13 +39,7 @@ public class CarTest {
         Car car = new Car(name);
 
         // when
-        RacingStrategy racingStrategy = new RandomStrategy(){
-            @Override
-            public boolean movable() {
-                return false;
-            }
-        };
-        car.move(racingStrategy);
+        car.move(() -> false);
 
         // then
         assertThat(car.getName()).isEqualTo("hwan");
