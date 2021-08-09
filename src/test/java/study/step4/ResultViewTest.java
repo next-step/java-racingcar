@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.step4.model.RacingGame;
+import study.step4.model.car.Cars;
 import study.step4.model.view.Result;
 import study.step4.view.ResultView;
 
@@ -32,4 +33,33 @@ public class ResultViewTest {
     }
   }
 
+  @DisplayName("Car Winner Output Test")
+  @Test
+  public void carWinnerOutputTest() {
+
+    final int CAR_GAME_ROUND = 5;
+    final String CAR_NAME_SPLITER = ",";
+    final String userCarNameInput = "car1,car2,car3";
+    final int[] carDistances = {1, 2, 3};
+    final int carWinnerDistance = carDistances[2];
+
+    String[] userCarNameSplited = userCarNameInput.split(CAR_NAME_SPLITER);
+
+    // game init
+    RacingGame racingGame = new RacingGame(userCarNameSplited, CAR_GAME_ROUND);
+    ResultView resultView = new ResultView(racingGame.getCars());
+
+    // game start and car move
+    Cars cars = racingGame.getCars();
+    for (int i = 0; i < cars.getRacingGameCars().size(); i++) {
+      cars.getRacingGameCars().get(i).setDistance(carDistances[i]);
+      resultView.printResult();
+    }
+
+    // print winner car
+    resultView.printWinner();
+
+    assertThat(resultView.getResult().getCarWinnerDistance()).isEqualTo(carWinnerDistance);
+
+  }
 }

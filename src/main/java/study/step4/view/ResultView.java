@@ -7,6 +7,7 @@ import study.step4.model.view.Result;
 public class ResultView {
 
   private static final String DISTANCE_SEPERATOR = "-";
+  private static final String CAR_NAME_SPLITER = ",";
 
   Result result;
 
@@ -19,6 +20,8 @@ public class ResultView {
       printCarDistance(car);
     }
     System.out.println();
+
+    result.updateWinnerDistance();
   }
 
   public void printCarDistance(Car car) {
@@ -33,5 +36,26 @@ public class ResultView {
 
   public Result getResult() {
     return result;
+  }
+
+  public void printWinner() {
+
+    StringBuilder stringBuilder = new StringBuilder();
+
+    for (Car car : result.getRacingGameCars()) {
+      setPrintString(stringBuilder, car);
+    }
+
+    stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(CAR_NAME_SPLITER));
+    stringBuilder.append("가 최종 우승했습니다.");
+
+    System.out.println(stringBuilder);
+  }
+
+  private void setPrintString(StringBuilder stringBuilder, Car car) {
+    if (car.getDistance() == result.getCarWinnerDistance()) {
+      stringBuilder.append(car.getName());
+      stringBuilder.append(CAR_NAME_SPLITER);
+    }
   }
 }
