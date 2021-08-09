@@ -9,34 +9,25 @@ public class CarRace {
 
     private int carCount;
 
-    public void setCarCount(int carCount) {
-        this.carCount = carCount;
-    }
-
     private int gameCount;
 
-    public void setGameCount(int gameCount) {
-        this.gameCount = gameCount;
+    public CarRace() {
+        this.carCount = setCarCount();
+        this.gameCount = setGameCount();
     }
 
     public static void main(String[] args) {
         CarRace carRace = new CarRace();
-        carRace.initGame();
         carRace.playGame();
     }
 
-    public void initGame() {
-        carCount = setCarCount();
-        gameCount = setGameCount();
-    }
-
     protected int setCarCount() {
-        Message.askCarCount();
+        InputView.askCarCount();
         return InputView.inputOutput();
     }
 
     protected int setGameCount() {
-        Message.askGameCount();
+        InputView.askGameCount();
         return InputView.inputOutput();
     }
 

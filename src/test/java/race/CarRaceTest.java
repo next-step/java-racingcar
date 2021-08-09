@@ -1,5 +1,6 @@
 package race;
 
+import jdk.internal.util.xml.impl.Input;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,8 +14,6 @@ class CarRaceTest {
     @BeforeEach
     void setUp() {
         carRace = new CarRace();
-        carRace.setCarCount(3);
-        carRace.setGameCount(5);
     }
 
     @Test
@@ -26,8 +25,8 @@ class CarRaceTest {
     @Test
     @DisplayName("메세지 테스트")
     void messageTest() {
-        Message.askCarCount();
-        Message.askGameCount();
+        InputView.askCarCount();
+        InputView.askGameCount();
     }
 
     @Test
