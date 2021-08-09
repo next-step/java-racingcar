@@ -2,23 +2,20 @@ package racingcar;
 
 import racingcar.domain.Race;
 import racingcar.view.ResultView;
-import racingcar.view.StartView;
+import racingcar.view.InputView;
 
 public class RaceGame {
     public static void main(String[] args) {
-        int carNum;
-        int roundNum;
+        String[] carNames = InputView.inputNamesOfCars();
+        int roundNum = InputView.inputRoundNum();
 
-        carNum = StartView.inputCarNum();
-        roundNum = StartView.inputRoundNum();
-
-        Race race = new Race(carNum, roundNum);
+        Race race = new Race(carNames, roundNum);
 
         do {
             race.runOneRound();
-            ResultView.printCurrentState(race, race.getCars());
+            ResultView.printCurrentState(race);
         } while (!race.isRaceOver());
 
-        ResultView.printGameOver();
+        ResultView.printGameOver(race);
     }
 }

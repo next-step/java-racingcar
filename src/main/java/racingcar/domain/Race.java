@@ -1,43 +1,62 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Random;
 
 public class Race {
-    final int MAX_CAR_NUM = 10;
-    final int MAX_RANDOM_NUM = 10;
+    public static final int MIN_ROUND_NUM = 1;
+    static final int MAX_RANDOM_NUM = 10;
+    static Random random = new Random();
 
-    private ArrayList<Car> cars;
+    private List<Car> cars;
 
+    private String[] carNames = {"Unknown"};
     private int carNum = 1;
     private int roundNum = 1;
     private int currentRound = 0;
 
-    public Race(int carNum, int roundNum) {
-        this.carNum = carNum;
+    public Race(String[] carNames, int roundNum) {
+        this.carNames = carNames;
         this.roundNum = roundNum;
-        checkIfValidArgumentsForRace();
+        checkIfValidArgumentsForRace(carNames, roundNum);
 
-        cars = new ArrayList<>(10);
-        for (int i = 0; i < carNum; i++) {
-            this.cars.add(new Car());
+        carNum = carNames.length;
+        cars = new ArrayList<>(carNum);
+        for (String name : carNames) {
+            this.cars.add(new Car(name));
         }
     }
 
     Race() {
-        this(1, 1);
+        this(new String[]{""}, 1);
     }
 
-    private void checkIfValidArgumentsForRace() throws IllegalArgumentException {
-        if (carNum == 0 || roundNum == 0)
+    void checkIfValidArgumentsForRace(String[] carNames, int roundNum) throws IllegalArgumentException {
+        if (!isValidCarNames(carNames) || !isValidRoundNum(roundNum)) {
             throw new IllegalArgumentException("Invalid Arguments for Race");
+        }
+    }
+
+    public boolean isValidCarNames(String[] carNames) {
+        boolean result = true;
+        for (String name : carNames) {
+            result &= !name.trim().isEmpty();
+        }
+
+        return result;
+    }
+
+    public boolean isValidRoundNum(int roundNum) {
+        return roundNum >= MIN_ROUND_NUM;
     }
 
     int getNumberOfCars() {
         return cars.size();
     }
 
-    public ArrayList getCars() {
+    public List<Car> getCars() {
         return cars;
     }
 
@@ -46,10 +65,8 @@ public class Race {
     }
 
     public void runOneRound() {
-        Random ran = new Random();
-
         for (Car car : cars) {
-            car.move(ran.nextInt(MAX_RANDOM_NUM));
+            car.move(random.nextInt(MAX_RANDOM_NUM));
         }
 
         currentRound++;
@@ -57,5 +74,31 @@ public class Race {
 
     public boolean isRaceOver() {
         return roundNum == currentRound;
+    }
+
+    void sortByLocation() {
+        cars.sort(new SortByLocation());
+    }
+
+    public List<Car> getWinners() {
+        sortByLocation();
+
+        List<Car> winners = new ArrayList<>(carNum);
+        int furthestLocation = cars.get(0).getLocation();
+
+        winners.add(cars.get(0));
+        for (int i = 1; i < carNum && cars.get(i).getLocation() == furthestLocation; i++) {
+            winners.add(cars.get(i));
+        }
+
+        return winners;
+    }
+}
+
+class SortByLocation implements Comparator<Car>
+{
+    public int compare(Car a, Car b)
+    {
+        return b.getLocation() - a.getLocation();
     }
 }
