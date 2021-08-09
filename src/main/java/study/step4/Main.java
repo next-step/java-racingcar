@@ -11,10 +11,10 @@ public class Main {
     InputView inputView = new InputView();
     Input userInput = inputView.getUserInput();
 
-    int carNumber = userInput.getCarNumber();
     int gameRound = userInput.getGameRound();
+    String[] carNames = userInput.getCarNames();
 
-    RacingGame racingGame = new RacingGame(carNumber, gameRound);
+    RacingGame racingGame = new RacingGame(carNames, gameRound);
     racingGame.start();
   }
 
