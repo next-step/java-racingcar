@@ -7,9 +7,7 @@
 
 package racing;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Racing {
 
@@ -17,11 +15,28 @@ public class Racing {
 
     public static void main(String args[]) {
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        Integer carNum = setNumber();
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        List<Car> carList = setCar();
         System.out.println("시도할 회수는 몇 회 인가요?");
         Integer tryNum = setNumber();
-        playGame(carNum, tryNum);
+        playGame(carList, tryNum);
+        showRacing.showWinner(getWinnerList(carList, tryNum));
+
+    }
+
+    public static List<Car> setCar() {
+
+        Scanner input = new Scanner(System.in);
+        String names = input.nextLine();
+        String[] nameArray = names.split(",");
+        List<Car> result = new ArrayList<>();
+        for(int i = 0; i < nameArray.length; i++) {
+            Car car = new Car();
+            car.setCarName(nameArray[i]);
+            result.add(car);
+        }
+
+        return result;
 
     }
 
@@ -32,51 +47,45 @@ public class Racing {
 
     }
 
-    public static void playGame(Integer carNum, Integer tryNum) {
+    public static void playGame(List<Car> carList, Integer tryNum) {
 
-        ArrayList<Integer> carList = gameInitiate(carNum);
-
-        while(isGameOver(carList, tryNum)) {
-            carList = setCarMove(carList);
-            //showGame(carList);
+        while(!isGameOver(carList, tryNum)) {
+            carList = carListMove(carList);
         }
     }
 
-    public static Boolean isGameOver(ArrayList<Integer> carList, Integer tryNum) {
+    public static Boolean isGameOver(List<Car> carList, Integer tryNum) {
 
-        for(int idx = 0; idx < carList.size(); idx++) {
-            if (tryNum.equals(carList.get(idx))) {
-                return false;
-            }
+        List<Car> winnerList = getWinnerList(carList, tryNum);
+
+        if(winnerList.size() != 0) {
+            return true;
         }
 
-        return true;
+        return false;
     }
 
-    public static ArrayList<Integer> gameInitiate(int carNum) {
+    public static void addWinnerLsit(List<Car> winnerList, Integer tryNum, Car car) {
 
-        ArrayList<Integer> carList = new ArrayList<>();
-        for(int idx = 0; idx < carNum; idx++) {
-            carList.add(0);
+        if (tryNum.equals(car.getDistance())) {
+            winnerList.add(car);
+        }
+    }
+
+    public static List<Car> carListMove(List<Car> carList) {
+
+        for (Car car : carList) {
+            setCarMove(car);
         }
 
         return carList;
     }
 
-    public static ArrayList<Integer> setCarMove(ArrayList<Integer> carList) {
-
-        for(int idx = 0; idx < carList.size(); idx++) {
-            String movement = "";
-
-            if(isMove(makeRanNum())) {
-                int cntSize = carList.get(idx) + 1;
-                carList.set(idx, cntSize);
-
-                showRacing.showGame(cntSize, carList.size(), idx);
-            }
+    public static void setCarMove(Car car) {
+        if(isMove(makeRanNum())) {
+            car.plusDistance();
+            showRacing.showGame(car.getDistance(), car.getCarName());
         }
-
-        return carList;
     }
 
     public static Integer makeRanNum() {
@@ -96,5 +105,14 @@ public class Racing {
         return false;
     }
 
+    public static List<Car> getWinnerList (List<Car> carList, Integer tryNum) {
 
+        List<Car> winnerList = new ArrayList<>();
+
+        for (Car car : carList) {
+            addWinnerLsit(winnerList, tryNum, car);
+        }
+
+        return winnerList;
+    }
 }
