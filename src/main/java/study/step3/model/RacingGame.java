@@ -18,7 +18,7 @@ public class RacingGame {
   }
 
   public void start(MoveStrategy moveStrategy) {
-    for(int i=0; i<racingGameRound; i++) {
+    for (int i = 0; i < racingGameRound; i++) {
       cars.move(moveStrategy);
       resultView.printResult(cars.getRacingGameCars());
     }

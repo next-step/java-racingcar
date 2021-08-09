@@ -18,5 +18,4 @@ public class Main {
     RacingGame racingGame = new RacingGame(carNumber, gameRound);
     racingGame.start(new RandomMoveStrategy());
   }
-
 }
