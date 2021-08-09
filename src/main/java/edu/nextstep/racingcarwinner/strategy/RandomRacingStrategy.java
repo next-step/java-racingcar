@@ -2,9 +2,10 @@ package edu.nextstep.racingcarwinner.strategy;
 
 import java.util.Random;
 
-public class RandomStrategy implements RacingStrategy {
+public class RandomRacingStrategy implements RacingStrategy {
     private static final int MOVING_CRITERIA = 4;
     private static final int MAX_RANDOM_VALUE = 10;
+    private static final Random random = new Random();
 
     @Override
     public boolean movable() {
@@ -12,7 +13,6 @@ public class RandomStrategy implements RacingStrategy {
     }
 
     public int getRandomNum(){
-        Random random = new Random();
         return random.nextInt(MAX_RANDOM_VALUE);
     }
 }
