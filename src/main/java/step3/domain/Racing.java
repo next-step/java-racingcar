@@ -4,15 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
-	private final int trials;
-	private final Cars cars;
+	public static List<RacingResults> race(int trials, String[] nameOfCars) {
+		Cars cars = new Cars(nameOfCars);
 
-	public Racing(int trials, String[] cars) {
-		this.trials = trials;
-		this.cars = new Cars(cars);
-	}
-
-	public List<RacingResults> race() {
 		List<RacingResults> results = new ArrayList<>();
 
 		for (int i = 0; i < trials; i++) {

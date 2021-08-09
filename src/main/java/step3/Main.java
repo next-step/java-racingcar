@@ -15,7 +15,7 @@ public class Main {
 
 		int trials = InputView.numberOfTrials();
 
-		List<RacingResults> results = new Racing(trials, cars).race();
+		List<RacingResults> results = Racing.race(trials, cars);
 		OutputView.viewResult(results);
 
 		int lastResultIndex = results.size() - 1;

@@ -17,8 +17,7 @@ public class RacingTest {
 	@ParameterizedTest
 	void race(int numberOfTrials, String carA, String carB, String carC) {
 		String[] cars = {carA, carB, carC};
-		Racing racing = new Racing(numberOfTrials, cars);
-		List<RacingResults> results = racing.race();
+		List<RacingResults> results = Racing.race(numberOfTrials, cars);
 
 		int resultTrials = results.size();
 		int resultCars = results.get(0).getResults().size();
