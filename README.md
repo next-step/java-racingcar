@@ -30,7 +30,7 @@
 - [X] ResultView 리팩토링
 
 ## 피드백 반영 
-- [ ] 하이픈 리턴 대신 Position 리턴. 
+- [X] 하이픈 리턴 대신 Position 리턴. 
 - [ ] 전략 패턴 테스트 변경
    - [ ] RandomNumber Test 제거
    - [ ] carMoveTest 변경 (포지션 대신 strategy 주입)

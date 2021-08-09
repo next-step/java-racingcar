@@ -29,7 +29,7 @@ public class Round {
         return Objects.hash(cars);
     }
 
-    List<String> getCarPositionOfCurrentRound() {
-        return cars.getCarsPositionsAsHypens();
+    List<Integer> getCarsPositionOfCurrentRound() {
+        return cars.getCarsPosition();
     }
 }

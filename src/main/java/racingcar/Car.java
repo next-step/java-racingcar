@@ -25,8 +25,8 @@ public class Car {
         }
     }
 
-    String getCarPositionAsHypens() {
-        return position.convertCurrentPositionAsHypens();
+    int getCarPosition() {
+        return position.getPosition();
     }
 
     @Override

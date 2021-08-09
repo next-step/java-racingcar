@@ -37,9 +37,9 @@ public class Cars {
         }
     }
 
-    List<String> getCarsPositionsAsHypens() {
-        List<String> result = new LinkedList<>();
-        this.cars.forEach(car -> result.add(car.getCarPositionAsHypens()));
+    List<Integer> getCarsPosition() {
+        List<Integer> result = new LinkedList<>();
+        this.cars.forEach(car -> result.add(car.getCarPosition()));
         return result;
     }
 

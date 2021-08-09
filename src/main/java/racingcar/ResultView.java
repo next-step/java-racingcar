@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ResultView {
 
-    public static void printResult(List<List<String>> carsPositionPerRound) {
+    public static void printResult(List<List<Integer>> carsPositionPerRound) {
         printResultTitle();
         carsPositionPerRound.forEach(ResultView::printCarPositionOfRound);
     }
@@ -13,8 +13,8 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    private static void printCarPositionOfRound(List<String> roundResult) {
-        roundResult.forEach(ResultView::printPositionDrawing);
+    private static void printCarPositionOfRound(List<Integer> positions) {
+        positions.forEach(ResultView::printCarPositionAsHyphens);
         printEmptyLine();
     }
 
@@ -22,8 +22,11 @@ public class ResultView {
         System.out.println();
     }
 
-    private static void printPositionDrawing(String posDrawing) {
-        System.out.println(posDrawing);
+    private static void printCarPositionAsHyphens(Integer position) {
+        StringBuilder sb = new StringBuilder();
+        for (int k = 0; k < position; k++) {
+            sb.append("-");
+        }
+        System.out.println(sb);
     }
-
 }
