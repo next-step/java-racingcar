@@ -5,15 +5,14 @@ import java.util.Objects;
 
 public class Round {
 
-    private Cars cars;
+    private final Cars cars;
 
     public Round(Cars carsFromPreviousRound) {
         cars = new Cars(carsFromPreviousRound);
     }
 
     public Cars moveCars(MoveStrategy moveStrategy) {
-        cars = cars.move(moveStrategy);
-        return cars;
+        return cars.move(moveStrategy);
     }
 
     @Override
