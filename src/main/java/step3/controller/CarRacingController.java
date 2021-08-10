@@ -1,4 +1,6 @@
-package step3;
+package step3.controller;
+
+import step3.domain.CarRacing;
 
 public class CarRacingController {
 

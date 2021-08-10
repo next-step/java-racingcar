@@ -3,6 +3,8 @@ package step3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.domain.Car;
+import step3.domain.Cars;
 
 import java.util.Arrays;
 import java.util.List;
