@@ -16,7 +16,7 @@ public class Cars {
 
     public void racing() {
         for (Car car : cars) {
-            car.moveForward(CarUtils.getNumberForMovement());
+            car.moveForward(new RandomMovingStrategy());
         }
     }
 

@@ -44,13 +44,11 @@ class CarsTest {
     @Test
     @DisplayName("우승자를 확인한다.")
     void extract_winner_test() {
-        //given
-
 
         //when
         List<Car> racing = cars.getCars();
-        racing.get(0).moveForward(4);
-        racing.get(1).moveForward(4);
+        racing.get(0).moveForward(() -> true);
+        racing.get(1).moveForward(() -> true);
 
         //then
         List<Car> cars = this.cars.extractWinner();

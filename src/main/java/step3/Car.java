@@ -3,7 +3,6 @@ package step3;
 import java.util.Objects;
 
 public class Car {
-    private static final int MOVE_CRITERION = 4;
 
     private int moveDistance;
     private String carName;
@@ -34,14 +33,10 @@ public class Car {
         return carName;
     }
 
-    public void moveForward(int number) {
-        if (checkProgressPossible(number)) {
+    public void moveForward(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) {
             addMoveDistance();
         }
-    }
-
-    private boolean checkProgressPossible(int number) {
-        return number >= MOVE_CRITERION;
     }
 
     private void addMoveDistance() {
