@@ -11,6 +11,12 @@ public class RandomStrategyTest {
     @ParameterizedTest(name = "랜덤값 {0}: 움직일수 있다={1}")
     @CsvSource(value = {"3:false", "4:true"}, delimiter = ':')
     void randomNumMoreThan4ReturnsTrue(int randomNum, boolean movable) {
-        assertThat(new RandomStrategy(randomNum).movable()).isEqualTo(movable);
+        RandomNumber rn = new RandomNumber() {
+            @Override
+            public int getRandomNumber() {
+                return randomNum;
+            }
+        };
+        assertThat(new RandomStrategy(rn).movable()).isEqualTo(movable);
     }
 }
