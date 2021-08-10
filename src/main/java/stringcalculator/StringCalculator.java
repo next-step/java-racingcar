@@ -2,6 +2,10 @@ package stringcalculator;
 
 public class StringCalculator {
     private static final String BLANK = " ";
+<<<<<<< HEAD
+=======
+    private static final String SEPARATOR = " ";
+>>>>>>> origin/step2
 
     public void checkBlank(String input) {
         if (input == null || input.equals(BLANK)) {
@@ -10,6 +14,7 @@ public class StringCalculator {
     }
 
     public String[] splitBySeparator(String input) {
+<<<<<<< HEAD
         String separator = " ";
         return input.split(separator);
     }
@@ -20,14 +25,28 @@ public class StringCalculator {
         int intervalBetweenNumbers = 2;
         for (int i = 0; i < numberOfOperations; i += intervalBetweenNumbers) {
             result = calculateTwoNumbers(result, splitString[i + 1].charAt(0), convertToInt(splitString[i + 2]));
+=======
+        return input.split(SEPARATOR);
+    }
+
+    public int calculateSplitString(String[] splitString) {
+        int result = Integer.parseInt(splitString[0]);
+        int numberOfOperations = splitString.length - 2;
+        int intervalBetweenNumbers = 2;
+        for (int i = 0; i < numberOfOperations; i += intervalBetweenNumbers) {
+            result = calculateTwoNumbers(result, splitString[i + 1].charAt(0), Integer.parseInt(splitString[i + 2]));
+>>>>>>> origin/step2
         }
         return result;
     }
 
+<<<<<<< HEAD
     private int convertToInt(String stringNumber) {
         return Integer.parseInt(stringNumber);
     }
 
+=======
+>>>>>>> origin/step2
     private int calculateTwoNumbers(int firstNumber, char operator, int secondNumber) {
         if (operator == '+') {
             return add(firstNumber, secondNumber);

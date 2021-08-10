@@ -1,7 +1,13 @@
 package racingcargame.controller;
 
+<<<<<<< HEAD
 import racingcargame.model.RandomNumber;
 import racingcargame.model.RacingCar;
+=======
+import racingcargame.model.RacingCar;
+import racingcargame.model.RacingCars;
+import racingcargame.model.RacingGame;
+>>>>>>> origin/step2
 import racingcargame.view.RacingCarGameInputView;
 import racingcargame.view.RacingCarGameOutputView;
 
@@ -10,6 +16,7 @@ import java.util.List;
 
 public class RacingCarGameController {
     private static final String SEPARATOR = ",";
+<<<<<<< HEAD
 
     private RacingCarGameInputView inputView = new RacingCarGameInputView();
     private RacingCarGameOutputView outputView = new RacingCarGameOutputView();
@@ -28,12 +35,32 @@ public class RacingCarGameController {
         List<RacingCar> racingCars = new ArrayList<>();
         createRacingCarsWithCarNames(racingCars, splitCarNames);
         return racingCars;
+=======
+    private final RacingCarGameInputView inputView = new RacingCarGameInputView();
+    private final RacingCarGameOutputView outputView = new RacingCarGameOutputView();
+
+
+    public void start() {
+        RacingCars racingCars = new RacingCars(createRacingCars());
+        int roundNumber = inputView.inputRoundNumber();
+        RacingGame racingGame = new RacingGame(racingCars, roundNumber);
+        outputView.outputGame(racingGame.getHistories());
+        List<String> winners = racingCars.findWinners();
+        outputView.outputWinners(winners);
+    }
+
+    private List<RacingCar> createRacingCars() {
+        String carNames = inputView.inputCarNames();
+        String[] splitCarNames = splitBySeparator(carNames);
+        return createRacingCarsWithCarNames(splitCarNames);
+>>>>>>> origin/step2
     }
 
     private String[] splitBySeparator(String carNames) {
         return carNames.split(SEPARATOR);
     }
 
+<<<<<<< HEAD
     private void createRacingCarsWithCarNames(List<RacingCar> racingCars, String[] carNames) {
         for (String carName : carNames) {
             RacingCar car = new RacingCar(carName);
@@ -80,5 +107,13 @@ public class RacingCarGameController {
         }
         winners = winners.substring(0, winners.length() - 1);
         return winners;
+=======
+    private List<RacingCar> createRacingCarsWithCarNames(String[] carNames) {
+        List<RacingCar> racingCars = new ArrayList<>();
+        for (String carName : carNames) {
+            racingCars.add(new RacingCar(carName));
+        }
+        return racingCars;
+>>>>>>> origin/step2
     }
 }
