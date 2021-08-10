@@ -31,9 +31,9 @@
 
 ## 피드백 반영 
 - [X] 하이픈 리턴 대신 Position 리턴. 
-- [ ] 전략 패턴 테스트 변경
+- [X] 전략 패턴 테스트 변경
    - [X] RandomNumber Test 제거
-   - [ ] carMoveTest 변경 (포지션 대신 strategy 주입)
+   - [X] carMoveTest 변경 (포지션 대신 strategy 주입)
 - [X] 테스트를 위한 생성자 제거
 - [ ] position increase 변경
   - [ ] int position을 final로 변경 (Position return은 유지)
