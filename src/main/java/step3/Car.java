@@ -7,16 +7,14 @@ public class Car {
     private int moveDistance;
     private String carName;
 
-    public Car(String carName) {
-        this.moveDistance = 0;
-        validateCarName(carName);
-        this.carName = carName;
-    }
-
     public Car(String carName, int moveDistance) {
         this.moveDistance = moveDistance;
         validateCarName(carName);
         this.carName = carName;
+    }
+
+    public Car(String carName) {
+        this(carName, 0);
     }
 
     private void validateCarName(String carName) {
