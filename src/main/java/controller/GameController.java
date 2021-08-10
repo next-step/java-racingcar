@@ -42,12 +42,7 @@ public class GameController {
 
     private void racing() {
         for (Car entryCar : participants) {
-            entryCar.move(new MovingStragey() {
-                @Override
-                public int carMove() {
-                    return super.carMove();
-                }
-            });
+            entryCar.move(new MovingStragey());
         }
     }
 
