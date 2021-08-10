@@ -20,12 +20,6 @@ public class Cars {
         carsToBeCopied.cars.forEach(car -> this.cars.add(new Car(car)));
     }
 
-    /* 테스트를 위한 생성자 */
-    public Cars(Car... cars) {
-        this.cars = new LinkedList<>();
-        this.cars.addAll(Arrays.asList(cars));
-    }
-
     public Cars move(MoveStrategy moveStrategy) {
         cars.forEach(car -> car.move(moveStrategy));
         return this;

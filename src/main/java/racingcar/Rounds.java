@@ -12,11 +12,6 @@ public class Rounds {
         this.rounds = new Round[roundNum];
     }
 
-    /* 테스트를 위한 생성자 */
-    public Rounds(Round[] rounds) {
-        this.rounds = rounds;
-    }
-
     public void moveCarsForEachRound(Cars cars, MoveStrategy moveStrategy) {
         for (int i = 0; i < rounds.length; i++) {
             Round newRound = new Round(cars);

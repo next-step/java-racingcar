@@ -12,7 +12,7 @@ public class CarTest {
     @Test
     @DisplayName("처음 자동차의 위치는 0")
     void checkPosition() {
-        assertThat(new Car()).isEqualTo(new Car(0));
+        assertThat(new Car().getCarPosition()).isEqualTo(0);
     }
 
     @DisplayName("자동차 전진 규칙에 합당할 경우 전진")
@@ -21,7 +21,7 @@ public class CarTest {
     void moveCarAccordingToRandomValue(boolean movable, int position) {
         Car actual = new Car();
         actual.move(() -> movable);
-        assertThat(actual).isEqualTo(new Car(position));
+        assertThat(actual.getCarPosition()).isEqualTo(position);
     }
 
     @DisplayName("Car의 생성자를 이용해서 깊은 복사가 가능하다.")

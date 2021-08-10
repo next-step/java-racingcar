@@ -14,11 +14,6 @@ public class Car {
         this.position = new Position(car.position);
     }
 
-    /* 테스트용 생성자 */
-    protected Car(int position) {
-        this.position = new Position(position);
-    }
-
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.movable()) {
             position = position.increase();

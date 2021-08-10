@@ -12,10 +12,10 @@ public class CarsTest {
 
     @DisplayName("Cars는")
     @ParameterizedTest(name = "전진규칙이 {0}이면 {1} 움직인다")
-    @CsvSource(value = {"true:1:1", "false:0:0"}, delimiter = ':')
-    void carMoveTest(boolean movable, int pos1, int pos2) {
-        Cars cars = new Cars(2);
-        assertThat(cars.move(() -> movable)).isEqualTo(new Cars(new Car(pos1), new Car(pos2)));
+    @CsvSource(value = {"true:1", "false:0"}, delimiter = ':')
+    void carMoveTest(boolean movable, int expectedPos) {
+        Cars actual = new Cars(2).move(() -> movable);
+        actual.getCarsPosition().forEach(pos -> assertThat(pos).isEqualTo(expectedPos));
     }
 
     @DisplayName("Car의 수는 1이상의 정수이다.")

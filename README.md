@@ -34,7 +34,7 @@
 - [ ] 전략 패턴 테스트 변경
    - [X] RandomNumber Test 제거
    - [ ] carMoveTest 변경 (포지션 대신 strategy 주입)
-- [ ] 테스트를 위한 생성자 제거
+- [X] 테스트를 위한 생성자 제거
 - [ ] position increase 변경
   - [ ] int position을 final로 변경 (Position return은 유지)
 - [X] 랜덤 Strategy 생성자 변경

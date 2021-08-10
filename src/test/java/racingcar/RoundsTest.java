@@ -3,6 +3,9 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -11,15 +14,10 @@ public class RoundsTest {
     @DisplayName("Rounds의 moveCarsForEachRound는 전진규칙이 true면 1 움직인다. ")
     @Test
     void roundMoveCarsTest() {
-        Rounds actual = new Rounds(5);
-        actual.moveCarsForEachRound(new Cars(2), () -> true);
-
-        Round[] rounds = new Round[5];
-        for (int i = 0; i < rounds.length; i++) {
-            rounds[i] = new Round(new Cars(new Car(i + 1), new Car(i + 1)));
-        }
-
-        Rounds expected = new Rounds(rounds);
+        Rounds rounds = new Rounds(2);
+        rounds.moveCarsForEachRound(new Cars(3), () -> true);
+        List<List<Integer>> actual = rounds.getCarsPositionForEachRound();
+        List<List<Integer>> expected = Arrays.asList(Arrays.asList(1,1,1), Arrays.asList(2,2,2));
         assertThat(actual).isEqualTo(expected);
     }
 
