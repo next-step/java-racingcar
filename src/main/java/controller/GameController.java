@@ -1,53 +1,54 @@
 package controller;
 
 import domain.Car;
+import domain.MovingStragey;
 import domain.Winner;
+import util.CarNameUtil;
 import util.RandomNumUtil;
-import util.StringUtil;
 import view.InputView;
 import view.ResultView;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class GameController {
 
-    List<Car> participant;
-    private int gameCount;
+    private List<Car> participants;
     private InputView inputView;
     private Winner winners;
 
     public GameController() {
-        participant = new ArrayList<>();
+        participants = new ArrayList<>();
         inputView = new InputView();
         winners = new Winner();
     }
 
-    public void init() throws IllegalArgumentException {
-        String[] carNames = StringUtil.participants(inputView.participantInputView());
+    public void playRacingGame() throws IllegalArgumentException {
+        String[] carNames = CarNameUtil.participantsSplit(inputView.participantInputView());
 
         for (int count = 0; count < carNames.length; count++) {
-            participant.add(new Car(carNames[count]));
+            participants.add(new Car(carNames[count]));
         }
-        gameCount = inputView.playInputView();
+        startGame(inputView.playInputView());
+        endGameResult();
+    }
+
+    public void startGame(int gameCount) {
         for (int count = 0; count < gameCount; count++) {
-            playGame();
-            ResultView.racingView(participant);
+            racing();
+            ResultView.racingView(participants);
         }
-        winners.createWinnersData(participant, readWinnerCarDistance());
+    }
+
+    private void racing() {
+        for (Car entryCar : participants) {
+            entryCar.move(new MovingStragey());
+        }
+    }
+
+    public void endGameResult() {
+        winners.createWinnersData(participants);
         ResultView.winnersView(winners.readWinners());
-    }
-
-    public void playGame() {
-        for(int count = 0; count < participant.size(); count++) {
-            participant.get(count).carMoveBehavior(RandomNumUtil.makeRandomNumber());
-        }
-    }
-
-    public int readWinnerCarDistance() {
-        participant.sort(Comparator.comparing(Car::readCarDistance).reversed());
-        return participant.get(0).readCarDistance();
     }
 
 }
