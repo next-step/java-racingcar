@@ -2,7 +2,6 @@ package step3;
 
 import java.util.List;
 
-import step3.domain.Champion;
 import step3.domain.Racing;
 import step3.domain.RacingResults;
 import step3.view.InputView;
@@ -20,7 +19,8 @@ public class Main {
 
 		int lastResultIndex = results.size() - 1;
 		RacingResults lastResults = results.get(lastResultIndex);
-		List<String> champions = Champion.getChampion(lastResults);
+
+		List<String> champions = lastResults.getChampions();
 		OutputView.viewChampion(champions);
 	}
 }

@@ -15,4 +15,18 @@ public class RacingResults {
 	public List<RacingResult> getResults() {
 		return results;
 	}
+
+	private int getHighestPosition() {
+		return results.stream()
+			.mapToInt(RacingResult::getPosition)
+			.max()
+			.getAsInt();
+	}
+
+	public List<String> getChampions() {
+		return results.stream()
+			.filter(result -> result.getPosition() == getHighestPosition())
+			.map(RacingResult::getName)
+			.collect(Collectors.toList());
+	}
 }
