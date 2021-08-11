@@ -14,9 +14,9 @@ public class Cars {
         return carList;
     }
 
-    protected Cars moveCar(Cars carList) {
+    protected Cars moveCars(Cars carList) {
         for (Car car: carList.getCarList()) {
-            car.addDistance();
+            car.move(new RandomNumCondition());
         }
         return carList;
     }
