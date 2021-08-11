@@ -1,23 +1,20 @@
-package step3;
+package step3.domain;
 
 import java.util.Objects;
 
 public class Car {
-    private static final int MOVE_CRITERION = 4;
 
     private int moveDistance;
     private String carName;
-
-    public Car(String carName) {
-        this.moveDistance = 0;
-        validateCarName(carName);
-        this.carName = carName;
-    }
 
     public Car(String carName, int moveDistance) {
         this.moveDistance = moveDistance;
         validateCarName(carName);
         this.carName = carName;
+    }
+
+    public Car(String carName) {
+        this(carName, 0);
     }
 
     private void validateCarName(String carName) {
@@ -34,14 +31,10 @@ public class Car {
         return carName;
     }
 
-    public void moveForward(int number) {
-        if (checkProgressPossible(number)) {
+    public void moveForward(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) {
             addMoveDistance();
         }
-    }
-
-    private boolean checkProgressPossible(int number) {
-        return number >= MOVE_CRITERION;
     }
 
     private void addMoveDistance() {

@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +16,7 @@ public class Cars {
 
     public void racing() {
         for (Car car : cars) {
-            car.moveForward(CarUtils.getNumberForMovement());
+            car.moveForward(new RandomMovingStrategy());
         }
     }
 

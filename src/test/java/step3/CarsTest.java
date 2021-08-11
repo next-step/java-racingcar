@@ -3,6 +3,8 @@ package step3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.domain.Car;
+import step3.domain.Cars;
 
 import java.util.Arrays;
 import java.util.List;
@@ -44,13 +46,11 @@ class CarsTest {
     @Test
     @DisplayName("우승자를 확인한다.")
     void extract_winner_test() {
-        //given
-
 
         //when
         List<Car> racing = cars.getCars();
-        racing.get(0).moveForward(4);
-        racing.get(1).moveForward(4);
+        racing.get(0).moveForward(() -> true);
+        racing.get(1).moveForward(() -> true);
 
         //then
         List<Car> cars = this.cars.extractWinner();

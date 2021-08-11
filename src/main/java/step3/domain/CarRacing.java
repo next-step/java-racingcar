@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +19,8 @@ public class CarRacing {
         List<Car> cars = new ArrayList<>();
         String[] carNameArray = carNameString.split(",");
 
-        for (String s : carNameArray) {
-            cars.add(new Car(s));
+        for (String carName : carNameArray) {
+            cars.add(new Car(carName));
         }
 
         return cars;
