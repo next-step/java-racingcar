@@ -1,6 +1,5 @@
 package race;
 
-import jdk.internal.util.xml.impl.Input;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,13 +19,6 @@ class CarRaceTest {
     @DisplayName("랜덤숫자 테스트")
     void getRandomNumTest() {
         assertThat(RandomNum.getRandomNum()).isLessThanOrEqualTo(9);
-    }
-
-    @Test
-    @DisplayName("메세지 테스트")
-    void messageTest() {
-        InputView.askCarCount();
-        InputView.askGameCount();
     }
 
     @Test

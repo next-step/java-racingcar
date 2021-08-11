@@ -22,13 +22,11 @@ public class CarRace {
     }
 
     protected int setCarCount() {
-        InputView.askCarCount();
-        return InputView.inputOutput();
+        return InputView.carCountInputOutput();
     }
 
     protected int setGameCount() {
-        InputView.askGameCount();
-        return InputView.inputOutput();
+        return InputView.gameCountInputOutput();
     }
 
     protected void playGame() {
