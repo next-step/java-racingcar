@@ -17,13 +17,17 @@ public final class Car {
         this.name = name;
     }
 
+    public Car(String name, int distance) {
+        if(!CAR_STRATEGY.isUsable(name) || !CAR_STRATEGY.isUsable(distance)){
+            throw new IllegalArgumentException("이름은 1-5글자 사이로, 경기는 1이상 입력해주세요");
+        }
+        this.name = name;
+        this.distance = distance;
+    }
+
     @Override
     public String toString() {
         return name;
-    }
-
-    public int getDistance() {
-        return distance;
     }
 
     public void move(final RacingStrategy racingStrategy){
