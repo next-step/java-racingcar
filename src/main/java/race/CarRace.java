@@ -39,7 +39,7 @@ public class CarRace {
         Cars carList = createCarList();
         for (int i = 0; i < gameCount; i++) {
             ResultView.printResult(
-                    carList.moveCar(carList)
+                    carList.moveCars(carList)
             );
         }
     }

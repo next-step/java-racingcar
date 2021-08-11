@@ -12,7 +12,7 @@ class CarTest {
     void addDistanceTest() {
         //given
         Car car = new Car("");
-        car.addDistance();
+        car.move(new RandomNumCondition());
         //then
         assertThat(car.getDistance()).contains("");
     }

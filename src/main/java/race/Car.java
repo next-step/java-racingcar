@@ -10,8 +10,8 @@ public class Car {
         distance = input;
     }
 
-    public void addDistance() {
-        if (RandomNum.getRandomNum() > STANDARD_NUM)
+    public void move(MoveCondition moveCondition) {
+        if (moveCondition.getValue() >= STANDARD_NUM)
             distance += "-";
     }
 

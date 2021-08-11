@@ -16,12 +16,6 @@ class CarRaceTest {
     }
 
     @Test
-    @DisplayName("랜덤숫자 테스트")
-    void getRandomNumTest() {
-        assertThat(RandomNum.getRandomNum()).isLessThanOrEqualTo(9);
-    }
-
-    @Test
     @DisplayName("createCarList 테스트")
     void createCarListTest() {
         //then
