@@ -2,7 +2,7 @@ package study.step4.model.car;
 
 import study.step4.model.strategy.MoveStrategy;
 
-public class Car {
+public class Car implements Comparable<Car>{
 
   private static final int CAR_NAME_MAX_LENGTH = 5;
 
@@ -21,32 +21,22 @@ public class Car {
     this.distance = 0;
   }
 
-
   public int getDistance() {
     return distance;
-  }
-
-  public void setDistance(int distance) {
-    this.distance = distance;
   }
 
   public String getName() {
     return name;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  private void moveCar() {
-    distance++;
-  }
-
   public void move(MoveStrategy moveStrategy) {
     if (moveStrategy.isMoveCondition()) {
-      moveCar();
+      distance++;
     }
   }
 
-
+  @Override
+  public int compareTo(Car other) {
+    return Integer.compare(this.distance, other.distance);
+  }
 }

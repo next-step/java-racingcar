@@ -3,33 +3,35 @@ package study.step4.model.car;
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import study.step4.model.strategy.RandomMoveStrategy;
+import study.step4.model.strategy.MoveStrategy;
 
 public class Cars {
 
-  private final List<Car> racingGameCars;
+  private static final String CAR_NAME_SPLITER = ",";
 
-  private Cars(String[] carNames) {
-    this.racingGameCars = new ArrayList<>();
-    for (String car : carNames) {
-      this.racingGameCars.add(new Car(car));
-    }
-  }
+  private final List<Car> racingGameCars;
 
   private Cars(List<Car> cars) {
     this.racingGameCars = cars;
   }
 
-  public static Cars of(List<Car> cars) {
+  private static Cars of(List<Car> cars) {
     return new Cars(cars);
   }
 
-  public static Cars of(String[] carNames) {
-    return new Cars(carNames);
+  private static Cars of(String[] carNames) {
+    return Arrays.stream(carNames)
+        .map(Car::new)
+        .collect(collectingAndThen(toList(), Cars::of));
+  }
+
+  public static Cars of(String carNameStr) {
+    return of(carNameStr.split(CAR_NAME_SPLITER));
   }
 
   public static Cars of(int carNumber) {
@@ -38,19 +40,25 @@ public class Cars {
         .collect(collectingAndThen(toList(), Cars::of));
   }
 
-  public void move() {
+  public void move(MoveStrategy moveStrategy) {
     for (Car car : racingGameCars) {
-      car.move(new RandomMoveStrategy());
+      car.move(moveStrategy);
     }
   }
 
-  public List<Car> getRacingGameCars() {
-    return racingGameCars;
+  public int getRacingGameCarsCount() {
+    return racingGameCars.size();
   }
 
-  private int getRandomNumber() {
-    Random random = new Random();
-    random.setSeed(System.currentTimeMillis() * random.nextInt());
-    return random.nextInt(10);
+  public Car getCar(int carIndex) {
+    return racingGameCars.get(carIndex);
   }
+
+  public List<Car> getWinners() {
+    Car winnerCarStandard = Collections.max(this.racingGameCars);
+    return racingGameCars.stream().filter(car -> car.compareTo(winnerCarStandard) == 0)
+        .collect(Collectors.toList());
+  }
+
+
 }

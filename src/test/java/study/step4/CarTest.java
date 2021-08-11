@@ -1,47 +1,28 @@
 package study.step4;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.Arrays;
-import java.util.List;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import study.step4.model.car.Car;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import study.step4.model.RacingGame;
 
 public class CarTest {
 
-
-  @DisplayName("자동차 이름 추가 테스트")
-  @Test
-  public void carNameTest() {
-
-    List<String> carNames = Arrays.asList("car1", "car2", "car3");
-
-    for (String carName : carNames) {
-
-      Car car = new Car(carName);
-      assertThat(car.getName()).isEqualTo(carName);
-    }
+  @DisplayName("자동차 이름 길이 제한 성공 테스트")
+  @ParameterizedTest
+  @ValueSource(strings = {"car1", "car1,car2", "car1,car2,car3"})
+  public void carNameLenghthSuccessTest(String carNames) {
+    final int carGameRound = 5;
+    assertDoesNotThrow(() -> new RacingGame(carNames, carGameRound));
   }
 
-  @DisplayName("자동차 이름 길이 제한 테스트")
-  @Test
-  public void carNameLenghthTest() {
-
-    final int carNameMaxLenth = 5;
-
-    List<String> carNames = Arrays.asList("car12", "car123", "car1234");
-
-    for (String carName : carNames) {
-
-      if (carName.length() > carNameMaxLenth) {
-        assertThrows(IllegalArgumentException.class, () -> new Car(carName));
-      } else {
-        Car car = new Car(carName);
-        assertThat(car.getName()).isEqualTo(carName);
-      }
-    }
+  @DisplayName("자동차 이름 길이 제한 실패 테스트")
+  @ParameterizedTest
+  @ValueSource(strings = {"car123", "car123,car234", "car123,car234,car345"})
+  public void carNameLenghthFailTest(String carNames) {
+    final int carGameRound = 5;
+    assertThrows(IllegalArgumentException.class, () -> new RacingGame(carNames, carGameRound));
   }
-
 }

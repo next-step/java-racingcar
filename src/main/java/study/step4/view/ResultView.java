@@ -1,61 +1,30 @@
 package study.step4.view;
 
+import java.util.List;
 import study.step4.model.car.Car;
-import study.step4.model.car.Cars;
-import study.step4.model.view.Result;
 
 public class ResultView {
 
   private static final String DISTANCE_SEPERATOR = "-";
   private static final String CAR_NAME_SPLITER = ",";
 
-  Result result;
-
-  public ResultView(Cars cars) {
-    result = new Result(cars);
-  }
-
-  public void printResult() {
-    for (Car car : result.getRacingGameCars()) {
-      printCarDistance(car);
-    }
-    System.out.println();
-
-    result.updateWinnerDistance();
-  }
-
-  public void printCarDistance(Car car) {
-
-    System.out.print(car.getName() + " : ");
-
-    for (int i = 0; i < car.getDistance(); i++) {
+  public void printResult(String carName, int carDistance) {
+    System.out.print(carName + " : ");
+    for (int i = 0; i < carDistance; i++) {
       System.out.print(DISTANCE_SEPERATOR);
     }
     System.out.println();
   }
 
-  public Result getResult() {
-    return result;
-  }
-
-  public void printWinner() {
-
+  public void printWinner(List<Car> cars) {
     StringBuilder stringBuilder = new StringBuilder();
 
-    for (Car car : result.getRacingGameCars()) {
-      setPrintString(stringBuilder, car);
-    }
-
-    stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(CAR_NAME_SPLITER));
-    stringBuilder.append("가 최종 우승했습니다.");
-
-    System.out.println(stringBuilder);
-  }
-
-  private void setPrintString(StringBuilder stringBuilder, Car car) {
-    if (car.getDistance() == result.getCarWinnerDistance()) {
+    for (Car car : cars) {
       stringBuilder.append(car.getName());
       stringBuilder.append(CAR_NAME_SPLITER);
     }
+    stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(CAR_NAME_SPLITER));
+    stringBuilder.append("가 최종 우승했습니다.");
+    System.out.println(stringBuilder);
   }
 }
