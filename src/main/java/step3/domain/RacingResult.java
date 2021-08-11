@@ -1,17 +1,19 @@
 package step3.domain;
 
-import java.util.List;
-
 public class RacingResult {
-	private final int trial;
-	private List<Integer> positionOfCars;
+	private String name;
+	private int position;
 
-	public RacingResult(int trial, List<Integer> positions) {
-		this.trial = trial;
-		this.positionOfCars = positions;
+	public RacingResult(String name, int position) {
+		this.name = name;
+		this.position = position;
 	}
 
-	public List<Integer> getPositionOfCars() {
-		return positionOfCars;
+	public String getName() {
+		return name;
+	}
+
+	public int getPosition() {
+		return position;
 	}
 }

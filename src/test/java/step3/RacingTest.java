@@ -9,20 +9,20 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import step3.domain.Racing;
-import step3.domain.RacingResult;
+import step3.domain.RacingResults;
 
 public class RacingTest {
 	@DisplayName("레이싱 동작 테스트")
-	@CsvSource(value = {"3:5", "2:4", "5:5"}, delimiter = ':')
+	@CsvSource(value = {"3,A,B,C", "2,A,B,C", "5,A,B,C"})
 	@ParameterizedTest
-	void race(int numberOfTrials, int numberOfCars) {
-		Racing racing = new Racing(numberOfTrials, numberOfCars);
-		List<RacingResult> result = racing.race();
+	void race(int numberOfTrials, String carA, String carB, String carC) {
+		String[] cars = {carA, carB, carC};
+		List<RacingResults> results = Racing.race(numberOfTrials, cars);
 
-		int resultTrials = result.size();
-		int resultCars = result.get(0).getPositionOfCars().size();
+		int resultTrials = results.size();
+		int resultCars = results.get(0).getResults().size();
 
 		assertThat(resultTrials).isEqualTo(numberOfTrials);
-		assertThat(resultCars).isEqualTo(numberOfCars);
+		assertThat(resultCars).isEqualTo(cars.length);
 	}
 }

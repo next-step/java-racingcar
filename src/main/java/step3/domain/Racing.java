@@ -4,24 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
-	private final int trials;
-	private final Cars cars;
+	public static List<RacingResults> race(int trials, String[] nameOfCars) {
+		Cars cars = new Cars(nameOfCars);
 
-	public Racing(int trials, int cars) {
-		this.trials = trials;
-		this.cars = new Cars(cars);
-	}
-
-	public List<RacingResult> race() {
-		List<RacingResult> result = new ArrayList<>();
+		List<RacingResults> results = new ArrayList<>();
 
 		for (int i = 0; i < trials; i++) {
 			cars.raceOneTrial();
-			List<Integer> resultOneTrial = cars.getResultOneTrial();
-			RacingResult racingResult = new RacingResult(trials, resultOneTrial);
-			result.add(racingResult);
+			List<Car> resultOneTrial = cars.getResultOneTrial();
+			RacingResults result = new RacingResults(resultOneTrial);
+			results.add(result);
 		}
 
-		return result;
+		return results;
 	}
 }
