@@ -38,15 +38,10 @@ public class CarRace {
     protected void playGame() {
         Cars carList = createCarList();
         for (int i = 0; i < gameCount; i++) {
-            ResultView.printResult(moveCar(carList));
+            ResultView.printResult(
+                    carList.moveCar(carList)
+            );
         }
-    }
-
-    protected Cars moveCar(Cars carList) {
-        for (Car car: carList.getCarList()) {
-            car.addDistance();
-        }
-        return carList;
     }
 
     protected Cars createCarList() {
