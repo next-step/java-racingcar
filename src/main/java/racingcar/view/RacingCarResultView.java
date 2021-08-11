@@ -4,7 +4,9 @@
  *   Date : 2021/07/31
  */
 
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.Car;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,26 +30,16 @@ public class RacingCarResultView {
     }
 
     /**
-     * 자동차들이 이동하는것을 그립니다.
+     * 자동차가 움직인 만큼 UI 를 그립니다.
      * @param cars
      */
-    public void drawCarMoving(List<Car> cars) {
-
+    public void drawUI(List<Car> cars) {
         for (Car car : cars) {
-            drawUI(car);
-        }
-        System.out.println();
-    }
-
-    /**
-     * 자동차가 움직인 만큼 UI 를 그립니다.
-     * @param car
-     */
-    public void drawUI(Car car) {
-
-        System.out.printf(car.getCarName() + " : ");
-        for (int j = 0; j < car.getCurrentLocation(); j++) {
-            System.out.printf("-");
+            System.out.printf(car.getCarName() + " : ");
+            for (int j = 0; j < car.getCurrentLocation(); j++) {
+                System.out.printf("-");
+            }
+            System.out.println();
         }
         System.out.println();
     }
@@ -62,11 +54,12 @@ public class RacingCarResultView {
      * @param winners
      */
     public void drawWinnerView(List<Car> winners) {
-
         StringBuffer sb = new StringBuffer();
+
         for (Car winner : winners) {
             sb.append(winner.getCarName() + ",");
         }
         System.out.println(sb.toString().substring(0,sb.toString().lastIndexOf(',')) + "가 최종 우승했습니다.");
     }
+
 }

@@ -6,9 +6,14 @@
 
 package racingcar;
 
+import racingcar.domain.Car;
+import racingcar.domain.RacingCar;
+import racingcar.view.RacingCarResultView;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 /**
  * 해당 메소드의 기능은 자동차 경주 게임을 시작합니다.
@@ -16,16 +21,20 @@ import java.io.InputStreamReader;
  */
 public class RacingCarPlayMain {
     public static void main(String[] args) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        RacingCarResultView view  = new RacingCarResultView();
+        RacingCarResultView view = new RacingCarResultView();
+
         String[] carNames = view.getCarNames(br);
         int moveCount = view.getMoveCount(br);
-        int range = 10;
 
-        RacingCar racingCar = new RacingCar(carNames ,moveCount, range);
+        RacingCar racingCar = new RacingCar(carNames, moveCount);
+        List<Car> asCarsNumberOfEnteredByUser = racingCar.createAsCarsNumberOfEnteredByUser();
+
         view.drawRacingResult();
-        racingCar.start();
+        for (int i = 0; i < moveCount; i++) {
+            view.drawUI(racingCar.moveAsCarUserEntered(asCarsNumberOfEnteredByUser));
+        }
 
+        view.drawWinnerView(racingCar.getWinners(racingCar.getCars()));
     }
 }

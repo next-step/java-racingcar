@@ -8,7 +8,10 @@ package racingcar;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.domain.Car;
+import racingcar.domain.RacingCar;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,7 +23,7 @@ class RacingCarTest {
     @CsvSource({"apple;banana;orange, 5"})
     public void createAsCarsNumberOfEnteredByUser(String input ,int moveCount) {
         String[] carNames  = input.split(";");
-        RacingCar racingCar = new RacingCar(carNames, moveCount , 10);
+        RacingCar racingCar = new RacingCar(carNames, moveCount);
         List<Car> cars = racingCar.createAsCarsNumberOfEnteredByUser();
 
         assertThat(cars.size()).isEqualTo(carNames.length);
@@ -30,8 +33,9 @@ class RacingCarTest {
     @CsvSource({"apple;banana;orange, 2"})
     public void moveAsCarUserEntered(String input ,int moveCount) {
         String[] carNames  = input.split(";");
+
         assertThatCode(() -> {
-            RacingCar racingCar = new RacingCar(carNames, moveCount ,10);
+            RacingCar racingCar = new RacingCar(carNames, moveCount);
             List<Car> cars = racingCar.createAsCarsNumberOfEnteredByUser();
             racingCar.moveAsCarUserEntered(cars);
         }).doesNotThrowAnyException();
@@ -39,44 +43,35 @@ class RacingCarTest {
 
     @ParameterizedTest
     @CsvSource({"apple;banana;orange, 4"})
-    public void doRacingStart(String input ,int moveCount) {
+    public void getWinners(String input ,int moveCount) {
         String[] carNames  = input.split(";");
-        assertThatCode(() -> {
-            RacingCar racingCar = new RacingCar(carNames, moveCount, 10);
-            List<Car> cars = racingCar.createAsCarsNumberOfEnteredByUser();
-            racingCar.doRacingStart(cars);
-        }).doesNotThrowAnyException();
+        RacingCar racingCar = new RacingCar(carNames, moveCount);
+
+        List<Car> beforeRacingCars = racingCar.moveAsCarUserEntered(racingCar.createAsCarsNumberOfEnteredByUser());
+        List<Car> winners = racingCar.getWinners(beforeRacingCars);
+        int winnerLocation = racingCar.getWinnerLocation(beforeRacingCars);
+
+        for (Car winner : winners) {
+            assertThat(winner.getCurrentLocation()).isEqualTo(winnerLocation);
+        }
     }
 
     @ParameterizedTest
     @CsvSource({"apple;banana;orange, 4"})
-    public void getWinners(String input ,int moveCount) {
-
+    public void getWinnerLocation(String input ,int moveCount) {
         String[] carNames  = input.split(";");
-        RacingCar racingCar = new RacingCar(carNames, moveCount, 10);
-        racingCar.start();
+        RacingCar racingCar = new RacingCar(carNames, moveCount);
 
-        List<Car> cars = racingCar.getCars();
-        List<Car> winners = racingCar.getWinners(cars);
+        Car car0 = new Car(carNames[0], 3);
+        Car car1 = new Car(carNames[1], 4);
+        Car car2 = new Car(carNames[2], 5);
+
+        List<Car> cars = Arrays.asList(car0, car1, car2);
 
         int winnerLocation = racingCar.getWinnerLocation(cars);
 
-        for (Car car : winners) {
-            assertThat(car.getCurrentLocation()).isEqualTo(winnerLocation);
-        }
+        assertThat(winnerLocation).isEqualTo(car2.getCurrentLocation());
 
-
-    }
-
-    @ParameterizedTest
-    @CsvSource({"apple;banana;orange, 4"})
-    public void start(String input ,int moveCount) {
-
-        assertThatCode(() -> {
-            String[] carNames  = input.split(";");
-            RacingCar racingCar = new RacingCar(carNames, moveCount, 10);
-            racingCar.start();
-        }).doesNotThrowAnyException();
     }
 
 }
