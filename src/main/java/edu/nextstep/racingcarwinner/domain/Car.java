@@ -19,6 +19,9 @@ public class Car {
     }
 
     public Car(String name, int distance) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 필수 입니다.");
+        }
         this.name = name;
         this.distance = distance;
     }
