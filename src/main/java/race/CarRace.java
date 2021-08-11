@@ -16,6 +16,12 @@ public class CarRace {
         this.gameCount = setGameCount();
     }
 
+    //for test
+    public CarRace(int carCount, int gameCount) {
+        this.carCount = carCount;
+        this.gameCount = gameCount;
+    }
+
     public static void main(String[] args) {
         CarRace carRace = new CarRace();
         carRace.playGame();

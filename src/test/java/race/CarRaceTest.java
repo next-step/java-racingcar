@@ -12,7 +12,7 @@ class CarRaceTest {
 
     @BeforeEach
     void setUp() {
-        carRace = new CarRace();
+        carRace = new CarRace(3,5);
     }
 
     @Test

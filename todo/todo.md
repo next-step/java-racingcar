@@ -22,5 +22,5 @@
 * 객체 클래스 역할 나누기
   * 전략패턴 사용해 Car 내 전진 조건 수정하기 
 * ~~CarRace setter 생성 시점에 받아오기~~
-* Message Inputview 클래스로 묶기
+* ~~Message Inputview 클래스로 묶기~~
 * CarRace 메서드 Cars 클래스로 역할 나누기
