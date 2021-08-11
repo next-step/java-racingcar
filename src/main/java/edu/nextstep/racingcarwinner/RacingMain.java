@@ -21,12 +21,12 @@ public class RacingMain {
         OutputView outputView = new OutputView();
 
         // 입력값 입력
-        String carName = inputView.inputCarName();
+        String carNames = inputView.inputCarName();
         int roundNum = inputView.inputRoundNum();
 
         // 입력값에 맞는 자동차 생성 및 RacingGame 참여
         RacingGame racingGame = new RacingGame();
-        racingGame.joinGame(RacingCars.of(carName));
+        racingGame.joinGame(RacingCars.of(carNames));
 
         // RacingGame 진행
         final RacingStrategy racingStrategy = new RandomRacingStrategy();
