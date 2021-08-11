@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public class Car {
     private final String name;
-    private int distance;
+    private Distance distance;
 
     public Car(String name) {
         this(name, 0);
@@ -23,26 +23,13 @@ public class Car {
             throw new IllegalArgumentException("자동차 이름은 필수 입니다.");
         }
         this.name = name;
-        this.distance = distance;
+        this.distance = new Distance(distance);
     }
 
     public void move(RacingStrategy racingStrategy) {
         if (racingStrategy.movable()) {
-            this.distance++;
+            this.distance = distance.move();
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return distance == car.distance && Objects.equals(name, car.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, distance);
     }
 
     public String getName() {
@@ -50,10 +37,23 @@ public class Car {
     }
 
     public int getDistance() {
-        return distance;
+        return distance.getDistance();
     }
 
     public int max(int maxDistance) {
-       return Math.max(maxDistance, this.distance);
+        return Math.max(maxDistance, this.distance.getDistance());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(getName(), car.getName()) && Objects.equals(getDistance(), car.getDistance());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getDistance());
     }
 }
