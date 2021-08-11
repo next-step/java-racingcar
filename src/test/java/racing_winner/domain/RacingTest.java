@@ -1,35 +1,24 @@
 package racing_winner.domain;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingTest {
-    private Racing racing;
 
-    @BeforeEach
-    void setRacingCar(){
-        String[] racingCars = new String[]{"pobi", "crong", "honux"};
-        racing = Racing.setRacingCars(racingCars);
+    @ParameterizedTest
+    @DisplayName("주어진 횟수 동안 경주-전진- 테스트")
+    @ValueSource(ints = {3,4,5})
+    void race(int round) {
+        String[] cars = new String[]{"pobi", "crong"};
+        Racing racing = new Racing(cars, round);
+
+        for (int onRound = 0; onRound < round; onRound++) {
+            racing.race(() -> true);
+        }
+
+        assertThat(racing.roundFinish()).isTrue();
     }
-
-    @Test
-    @DisplayName("입력한 자동차 수 만큼 생성됐는지 테스트")
-    void getRacingNumber() {
-        assertThat(racing.getRacingNumber()).isEqualTo(3);
-    }
-
-    @Test
-    @DisplayName("경기 후 우승자 찾기 테스트")
-    void findWinners() {
-        racing.move(() -> true);
-
-        List<Car> winner = racing.findWinners();
-        assertThat(winner.size()).isEqualTo(3);
-    }
-
 }

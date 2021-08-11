@@ -2,55 +2,29 @@ package racing_winner.domain;
 
 import racing_winner.strategy.RacingStrategy;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Racing {
 
-public final class Racing {
+    private Participants participants;
+    private Round round;
 
-    private List<Car> racingCar;
-
-    public Racing(final List<Car> racingCar) {
-        this.racingCar = racingCar;
+    public Racing(Participants participants, Round round) {
+        this.participants = participants;
+        this.round = round;
+    }
+    public Racing(final String[] carNames, int round) {
+        this.participants = new Participants(carNames);
+        this.round = new Round(round);
     }
 
-    public List<Car> getRacingCar() {
-        return racingCar;
-    }
-
-    public static Racing setRacingCars(final String[] racingCars){
-        List<Car> car = new ArrayList<>();
-        for (String name : racingCars){
-            car.add(new Car(name));
+    public RacingResult race(RacingStrategy racingStrategy){
+        if(roundFinish()) {
+            throw new IllegalArgumentException("입력한 경기 이상의 경주는 불가능합니다");
         }
-        return new Racing(car);
+        round.race();
+        return participants.race(racingStrategy);
     }
 
-    public int getRacingNumber(){
-        return racingCar.size();
-    }
-
-    public void move(final RacingStrategy racingStrategy) {
-        for(Car car : racingCar){
-            car.move(racingStrategy);
-        }
-    }
-
-    public int findMaxDistance(){
-        int maxDistance = 0;
-        for (Car car : racingCar) {
-            maxDistance = car.findFartherDistance(maxDistance);
-        }
-        return maxDistance;
-    }
-
-    public List<Car> findWinners(){
-        List<Car> winners = new ArrayList<>();
-        int maxDistance = findMaxDistance();
-
-        racingCar.stream()
-                .filter(car -> car.compareDistance(maxDistance))
-                .forEach(winners::add);
-
-        return winners;
+    public boolean roundFinish(){
+        return round.isFinish();
     }
 }
