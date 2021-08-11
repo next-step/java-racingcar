@@ -31,7 +31,7 @@ public class ResultView {
         StringBuilder distanceLine = new StringBuilder(car.toString()).append(" : ");
         int distance = car.findFartherDistance(INIT_NUMBER);
 
-        for(int i = 0; i < distance; i++){
+        for(int length = 0; length < distance; length++){
             distanceLine.append(RACING_SIGN);
         }
         System.out.println(distanceLine);
