@@ -2,11 +2,12 @@ package racingcargame;
 
 public class RacingCar implements Comparable<RacingCar> {
     private static final int MOVING_VALUE = 4;
+    private static final int FIRST_DISTANCE = 0;
     private final RacingCarName carName;
     private Distance distance;
 
     RacingCar (RacingCarName carName) {
-        this(carName, new Distance(0)); // 처음엔 거리가 0 이니까..?
+        this(carName, new Distance(FIRST_DISTANCE));
     }
 
     RacingCar (RacingCarName carName, Distance distance) {
