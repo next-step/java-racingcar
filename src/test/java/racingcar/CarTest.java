@@ -5,8 +5,16 @@ import racingcar.domain.Car;
 import util.Number;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
+
+    @Test
+    public void create() {
+        assertThatThrownBy(() -> {
+           Car car = new Car("banana");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     public void moveCar() {

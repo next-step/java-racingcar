@@ -21,6 +21,9 @@ public class Car {
     }
 
     public Car(String carName, int currentLocation) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("carName max length 5");
+        }
         this.carName = carName;
         this.currentLocation = currentLocation;
     }
