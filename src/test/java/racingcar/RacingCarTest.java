@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.domain.Car;
 import racingcar.domain.RacingCar;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -62,18 +62,11 @@ class RacingCarTest {
         String[] carNames  = input.split(";");
         RacingCar racingCar = new RacingCar(carNames, moveCount);
 
-        Car car0 = new Car(carNames[0]);
-        Car car1 = new Car(carNames[1]);
-        Car car2 = new Car(carNames[2]);
+        Car car0 = new Car(carNames[0], 3);
+        Car car1 = new Car(carNames[1], 4);
+        Car car2 = new Car(carNames[2], 5);
 
-        car0.moveCar(3);
-        car1.moveCar(4);
-        car2.moveCar(5);
-
-        List<Car> cars = new ArrayList<Car>();
-        cars.add(car0);
-        cars.add(car1);
-        cars.add(car2);
+        List<Car> cars = Arrays.asList(car0, car1, car2);
 
         int winnerLocation = racingCar.getWinnerLocation(cars);
 

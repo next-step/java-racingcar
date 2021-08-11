@@ -6,6 +6,8 @@
 
 package racingcar.domain;
 
+import util.Number;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +44,7 @@ public class RacingCar {
      */
     public List<Car> moveAsCarUserEntered(List<Car> cars) {
         for (Car car : cars) {
-            car.moveCar(car.getRandomNum(Car.FORWARD_RANGE));
+            car.moveCar(Number.getRandomNum(Car.FORWARD_RANGE));
         }
         return cars;
     }
@@ -54,8 +56,8 @@ public class RacingCar {
      */
     public List<Car> getWinners(List<Car> cars) {
         int winnerLocation = getWinnerLocation(cars);
-
         List<Car> winners = new ArrayList<>();
+
         for (Car car : cars) {
             addWinnerCar(winnerLocation, winners, car);
         }

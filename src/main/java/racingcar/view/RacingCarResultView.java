@@ -7,7 +7,6 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
-import racingcar.domain.RacingCar;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,8 +16,6 @@ import java.util.List;
  * RacingCar에 필요한 UI를 제공합니다.
  */
 public class RacingCarResultView {
-
-    public RacingCar racingCar;
 
     public String[] getCarNames(BufferedReader br) throws IOException {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분");
@@ -65,16 +62,4 @@ public class RacingCarResultView {
         System.out.println(sb.toString().substring(0,sb.toString().lastIndexOf(',')) + "가 최종 우승했습니다.");
     }
 
-    public void start(BufferedReader br) throws IOException {
-        String[] carNames = this.getCarNames(br);
-        int moveCount = this.getMoveCount(br);
-        racingCar = new RacingCar(carNames, moveCount);
-        List<Car> asCarsNumberOfEnteredByUser = racingCar.createAsCarsNumberOfEnteredByUser();
-
-        this.drawRacingResult();
-        for (int i = 0; i < moveCount; i++) {
-            this.drawUI(racingCar.moveAsCarUserEntered(asCarsNumberOfEnteredByUser));
-        }
-        this.drawWinnerView(racingCar.getWinners(racingCar.getCars()));
-    }
 }
