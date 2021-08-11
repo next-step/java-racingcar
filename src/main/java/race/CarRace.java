@@ -38,7 +38,7 @@ public class CarRace {
     protected void playGame() {
         Cars carList = createCarList();
         for (int i = 0; i < gameCount; i++) {
-            printResult(moveCar(carList));
+            ResultView.printResult(moveCar(carList));
         }
     }
 
@@ -47,10 +47,6 @@ public class CarRace {
             car.addDistance();
         }
         return carList;
-    }
-
-    protected void printResult(Cars carList) {
-        ResultView.printResult(carList);
     }
 
     protected Cars createCarList() {
