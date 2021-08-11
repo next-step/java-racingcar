@@ -5,7 +5,7 @@ import racing_winner.strategy.RacingStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Participants {
+public final class Participants {
 
     private List<Car> cars;
 

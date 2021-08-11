@@ -3,11 +3,11 @@ package racing_winner.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingResult {
+public final class RacingResult {
 
-    private final List<Car> roundResult;
+    private List<Car> roundResult;
 
-    public RacingResult(List<Car> roundResult) {
+    public RacingResult(final List<Car> roundResult) {
         this.roundResult = roundResult;
     }
 

@@ -17,7 +17,7 @@ public final class Car {
         this.name = name;
     }
 
-    public Car(String name, int distance) {
+    public Car(final String name, final int distance) {
         if(!CAR_STRATEGY.isUsable(name) || !CAR_STRATEGY.isUsable(distance)){
             throw new IllegalArgumentException("이름은 1-5글자 사이로, 경기는 1이상 입력해주세요");
         }
