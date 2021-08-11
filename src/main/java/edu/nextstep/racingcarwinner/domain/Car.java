@@ -11,7 +11,7 @@ import edu.nextstep.racingcarwinner.strategy.RacingStrategy;
 import java.util.Objects;
 
 public class Car {
-    private final String name;
+    private final Name name;
     private Distance distance;
 
     public Car(String name) {
@@ -19,10 +19,7 @@ public class Car {
     }
 
     public Car(String name, int distance) {
-        if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름은 필수 입니다.");
-        }
-        this.name = name;
+        this.name = new Name(name);
         this.distance = new Distance(distance);
     }
 
@@ -33,7 +30,7 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int getDistance() {
