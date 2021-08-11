@@ -2,11 +2,16 @@ package racingcargame;
 
 public class RacingCar implements Comparable<RacingCar> {
     private static final int MOVING_VALUE = 4;
-    private int distance = 0;
-    private String carName = "";
+    private final RacingCarName carName;
+    private Distance distance;
 
-    RacingCar (String carName) {
+    RacingCar (RacingCarName carName) {
+        this(carName, new Distance(0)); // 처음엔 거리가 0 이니까..?
+    }
+
+    RacingCar (RacingCarName carName, Distance distance) {
         this.carName = carName;
+        this.distance = distance;
     }
 
     public int tryToMove(int randomValue) {
@@ -17,27 +22,27 @@ public class RacingCar implements Comparable<RacingCar> {
     }
 
     private int move() {
-        return distance += 1;
+        return distance.increase();
     }
 
     private int stop() {
-        return distance += 0;
+        return distance.getValue();
     }
 
-    public int getDistance() {
-        return distance;
+    public int showDistance() {
+        return distance.getValue();
     }
 
-    public String getCarName() {
-        return carName;
+    public String showCarName() {
+        return carName.getName();
     }
 
     public boolean isWinner(int winnerDistance) {
-        return distance == winnerDistance;
+        return distance.getValue() == winnerDistance;
     }
 
     @Override
     public int compareTo(RacingCar racingCar) {
-       return Integer.compare(this.distance, racingCar.distance);
+       return Integer.compare(distance.getValue(), racingCar.showDistance());
     }
 }

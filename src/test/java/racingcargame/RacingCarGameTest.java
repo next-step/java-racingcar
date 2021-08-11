@@ -34,7 +34,7 @@ public class RacingCarGameTest {
         List<RacingCar> cars = racingCarGame.getCars();
 
         for (RacingCar actual : cars) {
-            assertEquals(expected, actual.getDistance());
+            assertEquals(expected, actual.showDistance());
         }
     }
 
@@ -48,7 +48,7 @@ public class RacingCarGameTest {
         List<RacingCar> cars = racingCarGame.getCars();
 
         for (RacingCar actual : cars) {
-            assertEquals(expected, actual.getDistance());
+            assertEquals(expected, actual.showDistance());
         }
     }
 }

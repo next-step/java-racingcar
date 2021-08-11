@@ -19,7 +19,7 @@ public class RacingCarTest {
             , delimiter = '$')
     void stop(int input, int expected) {
         String carName = "a,b";
-        RacingCar racingCar = new RacingCar(carName);
+        RacingCar racingCar = new RacingCar(new RacingCarName(carName));
 
         int actual = racingCar.tryToMove(input);
 
@@ -38,7 +38,7 @@ public class RacingCarTest {
             , delimiter = '$')
     void move(int input, int expected) {
         String carName = "a,b";
-        RacingCar racingCar = new RacingCar(carName);
+        RacingCar racingCar = new RacingCar(new RacingCarName(carName));
 
         int actual = racingCar.tryToMove(input);
 
@@ -51,7 +51,7 @@ public class RacingCarTest {
         RandomOption movableOption = new FakeSuccessMoveRandomOption();
         boolean expected = true;
         int winnerDistance = 3;
-        RacingCar car = new RacingCar("a");
+        RacingCar car = new RacingCar(new RacingCarName("a"));
         car.tryToMove(movableOption.randomValue());
         car.tryToMove(movableOption.randomValue());
         car.tryToMove(movableOption.randomValue());

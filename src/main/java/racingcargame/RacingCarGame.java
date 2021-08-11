@@ -1,7 +1,6 @@
 package racingcargame;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class RacingCarGame {
@@ -16,9 +15,9 @@ public class RacingCarGame {
 
     private List<RacingCar> createCars(String nameOfCars) {
         List<RacingCar> cars = new ArrayList<>();
-        String[] separateCars = nameOfCars.split(",");
-        for (int i = 0; i < separateCars.length; i++) {
-            cars.add(new RacingCar(separateCars[i]));
+        String[] carsName = nameOfCars.split(",");
+        for (String carName : carsName) {
+            cars.add(new RacingCar(new RacingCarName(carName)));
         }
         return cars;
     }
@@ -32,26 +31,8 @@ public class RacingCarGame {
     }
 
     public void showWinner() {
-        resultView.printWinner(findWinners());
-    }
-
-    private String findWinners() {
-        cars.sort(Collections.reverseOrder());
-
-        int winnerDistance = cars.get(0).getDistance();
-        String winners = cars.get(0).getCarName();
-        for (int i = 1; i < cars.size(); i++) {
-            winners += selectTie(cars.get(i), winnerDistance);
-        }
-        return winners;
-    }
-
-    private String selectTie(RacingCar car, int winnerDistance) {
-        String tie = "";
-        if(car.isWinner(winnerDistance)) {
-            tie = ", " + car.getCarName();
-        }
-        return tie;
+        Winner winner = new Winner();
+        resultView.printWinner(winner.findWinners(cars));
     }
 
     private void round(RandomOption randomOption) {

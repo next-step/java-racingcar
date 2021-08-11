@@ -7,7 +7,7 @@ public class ResultView {
 
     public void showResultView(List<RacingCar> cars) {
         for (RacingCar car : cars) {
-            System.out.println(car.getCarName() + " : " + convertDistanceToLine(car.getDistance()));
+            System.out.println(car.showCarName() + " : " + convertDistanceToLine(car.showDistance()));
         }
         printNewLine();
     }
@@ -16,9 +16,9 @@ public class ResultView {
         System.out.println(System.lineSeparator() + "실행 결과");
     }
 
-    public void printWinner(String winners) {
-        winners = removeLastComma(winners);
-        System.out.println(winners.replaceAll(",$", "") + "가 최종 우승했습니다.");
+    public void printWinner(String winner) {
+        removeLastComma(winner);
+        System.out.println(winner.replaceAll(",$", "") + "가 최종 우승했습니다.");
     }
 
     private String convertDistanceToLine(int distance) {
