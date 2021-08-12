@@ -1,7 +1,7 @@
 package kr.co.techmoa.carracing.ui;
 
 import kr.co.techmoa.carracing.model.Car;
-import kr.co.techmoa.carracing.model.RacingCarGame;
+import kr.co.techmoa.carracing.ui.dto.OutputDTO;
 import kr.co.techmoa.carracing.service.CarWinCheckService;
 
 import java.util.List;
@@ -13,35 +13,26 @@ public class ResultView {
     public static final String SEPARATOR_WIN = " , ";
     public static final String WIN_TEXT = " 가 최종 우승했습니다.";
 
-    public void printResult(RacingCarGame racingCarGame) {
+    public void printResult(OutputDTO outputDTO) {
 
-        List<Car[]> carList = racingCarGame.getRounds();
-
-        for(int i = 0 ; i < carList.size() ; i++) {
-            Car[] cars = carList.get(i);
-            printMove(cars);
+        List<List<Car>> roundAll = outputDTO.getRounds();
+        for(int i= 0; i< roundAll.size(); i++) {
+            List<Car> round = roundAll.get(i);
+            printMove(round);
         }
 
-        CarWinCheckService carWinCheckService = new CarWinCheckService();
-        List<Car> winList = carWinCheckService.checkGameResult(carList);
+        List<Car> winList = outputDTO.getWinList();
         System.out.println(printWin(winList));
     }
 
-    public void printMove(Car[] cars) {
-        for(Car car: cars) {
-            print(car);
-        }
-        System.out.println("");
-    }
-
-    public void print(Car car) {
-        System.out.print(car.getCarName() + SEPARATOR);
-        for(int i = 0 ; i < car.getTotalMove() ; i++) {
+    public void printMove(List<Car> round) {
+        for(Car car: round) {
+            System.out.print(car.getCarName() + SEPARATOR);
             System.out.print(RASCING_DISTINC);
         }
         System.out.println("");
-
     }
+
 
     public String printWin(List<Car> cars) {
         String winUser = "";

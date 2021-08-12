@@ -1,26 +1,21 @@
 package kr.co.techmoa.carracing.ui;
 
-import kr.co.techmoa.carracing.model.Car;
-import kr.co.techmoa.carracing.model.RacingCarGame;
-import kr.co.techmoa.carracing.service.CarMoveService;
+import kr.co.techmoa.carracing.ui.dto.InputDTO;
 
 import java.util.Scanner;
 
 public class InputView {
 
-    public static final Scanner SCANNER = new Scanner(System.in);
+    public final InputDTO inputDTO = new InputDTO();
+    public final Scanner SCANNER = new Scanner(System.in);
 
-    public RacingCarGame view() {
-
-        return new CarMoveService().move(
-                RacingCarGame.builder()
-                .carNum(getCarSu())
-                .carNames(getCarNames())
-                .tryNumber(getRounds())
-                .build());
+    public InputView() {
+        inputDTO.setCarNum(getCarSu());
+        inputDTO.setCarNames(getCarNames());
+        inputDTO.setTryNumber(getRounds());
     }
 
-    public static int getCarSu() {
+    public int getCarSu() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         if(SCANNER.hasNextLine()) {
             return SCANNER.nextInt();
@@ -28,7 +23,7 @@ public class InputView {
         throw new IllegalArgumentException("입력 값이 없습니다.");
     }
 
-    public static String getCarNames() {
+    public String getCarNames() {
         System.out.println("자동차 이름은 어떻게 되나요?");
         if(SCANNER.hasNextLine()) {
             return SCANNER.next();
@@ -36,11 +31,15 @@ public class InputView {
         throw new IllegalArgumentException("입력 값이 없습니다.");
     }
 
-    public static int getRounds() {
+    public int getRounds() {
         System.out.println("시도할 회수는 몇 회 인가요?");
         if(SCANNER.hasNextLine()) {
             return SCANNER.nextInt();
         }
         throw new IllegalArgumentException("입력 값이 없습니다.");
+    }
+
+    public InputDTO getInputDTO() {
+        return this.inputDTO;
     }
 }

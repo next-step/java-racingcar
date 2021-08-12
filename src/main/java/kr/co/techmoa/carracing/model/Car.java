@@ -1,20 +1,34 @@
 package kr.co.techmoa.carracing.model;
 
-import lombok.Builder;
+import kr.co.techmoa.carracing.service.move.MoveStategy;
+import kr.co.techmoa.carracing.service.move.RandomMoveStrategy;
 import lombok.Getter;
-import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
-@Setter
-@Builder
 public class Car {
 
-    private int move;
-    private int totalMove;
+    private Position position;
     private String carName;
+    private CarEngine carEngine;
 
-    @Builder.Default
-    private boolean isWin = false;
+    public static final int CARNAME_MAX = 5;
 
+    public Car(String carName) {
+        if(carName.length() > CARNAME_MAX){
+            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+        }
+        this.carName = carName;
+        carEngine = new CarEngine();
+        position = new Position(0);
+    }
+
+    public Car move(MoveStategy moveStategy) {
+        Position moveStep = new Position(carEngine.operator(moveStategy));
+        this.position = position.plus(moveStep);
+        return this;
+    }
 
 }
