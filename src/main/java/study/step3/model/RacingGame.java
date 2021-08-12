@@ -1,6 +1,7 @@
 package study.step3.model;
 
 import study.step3.model.car.Cars;
+import study.step3.model.strategy.MoveStrategy;
 import study.step3.view.ResultView;
 
 public class RacingGame {
@@ -16,9 +17,9 @@ public class RacingGame {
     resultView = new ResultView();
   }
 
-  public void start() {
-    for(int i=0; i<racingGameRound; i++) {
-      cars.move();
+  public void start(MoveStrategy moveStrategy) {
+    for (int i = 0; i < racingGameRound; i++) {
+      cars.move(moveStrategy);
       resultView.printResult(cars.getRacingGameCars());
     }
   }

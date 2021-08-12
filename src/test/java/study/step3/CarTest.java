@@ -22,7 +22,6 @@ public class CarTest {
         }
 
         assertThat(car.getDistance()).isEqualTo(moveCount);
-
     }
 
     @ParameterizedTest

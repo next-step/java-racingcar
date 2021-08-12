@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import study.step3.model.RacingGame;
+import study.step3.model.strategy.RandomMoveStrategy;
 import study.step3.view.InputView;
 
 public class RacingGameTest {
@@ -47,6 +48,6 @@ public class RacingGameTest {
     @CsvSource(value = {"3,5", "3,3"})
     public void carRacingGameStartTest(int userCarNumber, int userGameRound) {
         RacingGame racingGame = new RacingGame(userCarNumber, userGameRound);
-        assertDoesNotThrow(racingGame::start);
+        assertDoesNotThrow(() -> racingGame.start(new RandomMoveStrategy()));
     }
 }
