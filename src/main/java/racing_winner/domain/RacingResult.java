@@ -11,14 +11,6 @@ public final class RacingResult {
         this.roundResult = roundResult;
     }
 
-    public int findMaxDistance(){
-        int maxDistance = 0;
-        for (Car car : roundResult) {
-            maxDistance = car.findFartherDistance(maxDistance);
-        }
-        return maxDistance;
-    }
-
     public List<Car> findWinners(){
         List<Car> winners = new ArrayList<>();
         int maxDistance = findMaxDistance();
@@ -32,5 +24,13 @@ public final class RacingResult {
 
     public List<Car> getRoundResult() {
         return roundResult;
+    }
+
+    private int findMaxDistance(){
+        int maxDistance = 0;
+        for (Car car : roundResult) {
+            maxDistance = car.findFartherDistance(maxDistance);
+        }
+        return maxDistance;
     }
 }
