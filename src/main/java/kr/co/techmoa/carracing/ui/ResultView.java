@@ -20,9 +20,9 @@ public class ResultView {
             List<Car> round = roundAll.get(i);
             printMove(round);
         }
-
-        List<Car> winList = outputDTO.getWinList();
-        System.out.println(printWin(winList));
+        List<Car> round = roundAll.get(0);
+        List<Integer> winList = outputDTO.getWinList();
+        System.out.println(printWin(winList , round));
     }
 
     public void printMove(List<Car> round) {
@@ -34,10 +34,10 @@ public class ResultView {
     }
 
 
-    public String printWin(List<Car> cars) {
+    public String printWin(List<Integer> cars , List<Car> round) {
         String winUser = "";
         for(int i = 0 ; i < cars.size() ; i++) {
-            winUser += cars.get(i).getCarName();
+            winUser += round.get(cars.get(i)).getCarName();
             if(i != cars.size()-1) {
                 winUser += SEPARATOR_WIN;
             }

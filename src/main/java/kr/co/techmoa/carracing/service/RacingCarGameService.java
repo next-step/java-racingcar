@@ -1,6 +1,7 @@
 package kr.co.techmoa.carracing.service;
 
 import kr.co.techmoa.carracing.model.Car;
+import kr.co.techmoa.carracing.model.CarEngine;
 import kr.co.techmoa.carracing.service.move.RandomMoveStrategy;
 import kr.co.techmoa.carracing.ui.dto.InputDTO;
 import kr.co.techmoa.carracing.ui.dto.OutputDTO;
@@ -10,19 +11,23 @@ import java.util.List;
 
 public class RacingCarGameService {
 
+    public static int[] totalCarResult ;
+
     public OutputDTO start(InputDTO inputDTO) {
         List<List<Car>> roundAll = createRound(createCar(inputDTO));
-        List<Car> finalCarResult = roundAll.get(roundAll.size());
-        List<Car> winList = checkWin(finalCarResult);
+        List<Integer> winList = checkWin(totalCarResult);
         return new OutputDTO(roundAll, winList);
     }
 
     public List<Car> createCar(InputDTO inputDTO) {
         List<Car> round = new ArrayList<>();
+        totalCarResult = new int[inputDTO.getCarNum()];
         String[] carNames = parseCarName(inputDTO.getCarNames());
-        for(String carName : carNames) {
-            Car car = new Car(carName);
-            car.move(new RandomMoveStrategy());
+        for(int i= 0; i< carNames.length; i++) {
+            Car car = new Car(carNames[i]);
+            int moveCnt = new CarEngine().operator(new RandomMoveStrategy());
+            car.move(moveCnt);
+            totalCarResult[i] += moveCnt;
             round.add(car);
         }
         return round;
@@ -38,9 +43,9 @@ public class RacingCarGameService {
         return roundAll;
     }
 
-    public List<Car> checkWin(List<Car> cars) {
+    public List<Integer> checkWin(int[] totalCarResult) {
         CarWinCheckService carWinCheckService = new CarWinCheckService();
-        return carWinCheckService.checkGameResult(cars);
+        return carWinCheckService.checkGameResult(totalCarResult);
     }
 
 }

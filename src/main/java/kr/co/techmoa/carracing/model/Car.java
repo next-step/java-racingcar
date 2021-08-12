@@ -25,8 +25,8 @@ public class Car {
         position = new Position(0);
     }
 
-    public Car move(MoveStategy moveStategy) {
-        Position moveStep = new Position(carEngine.operator(moveStategy));
+    public Car move(int moveCnt) {
+        Position moveStep = new Position(moveCnt);
         this.position = position.plus(moveStep);
         return this;
     }

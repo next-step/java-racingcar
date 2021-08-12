@@ -7,27 +7,27 @@ import java.util.List;
 
 public class CarWinCheckService {
 
-    public List<Car> checkGameResult(List<Car> cars) {
-        int max = cars.get(0).getPosition().getCoordinate();
-        for(int i= 1; i < cars.size(); i++) {
-            max = maxExtract(cars , i , max);
+    public List<Integer> checkGameResult(int[] totalCarResult) {
+        int max = totalCarResult[0];
+        for(int i= 1; i < totalCarResult.length; i++) {
+            max = maxExtract(totalCarResult , i , max);
         }
-        return checkMax(cars, max);
+        return checkMax(totalCarResult, max);
     }
 
-    private int maxExtract(List<Car> cars, int order , int max) {
-        int current= cars.get(order).getPosition().getCoordinate();
+    private int maxExtract(int[] totalCarResult, int order , int max) {
+        int current= totalCarResult[order];
         if(current>= max){
             return current;
         }
         return max;
     }
 
-    private List<Car> checkMax(List<Car> cars , int max) {
-        List<Car> winList = new ArrayList<>();
-        for(Car car : cars) {
-            if(car.getPosition().getCoordinate() == max) {
-                winList.add(car);
+    private List<Integer> checkMax(int[] totalCarResult , int max) {
+        List<Integer> winList = new ArrayList<>();
+        for(int i= 0; i < totalCarResult.length; i++) {
+            if(totalCarResult[i] == max) {
+                winList.add(totalCarResult[i]);
             }
         }
         return winList;
