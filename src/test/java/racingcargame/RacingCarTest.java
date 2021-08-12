@@ -1,8 +1,10 @@
 package racingcargame;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcargame.fake.FakeSuccessMoveRandomOption;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,7 +18,8 @@ public class RacingCarTest {
             , "3$0"}
             , delimiter = '$')
     void stop(int input, int expected) {
-        RacingCar racingCar = new RacingCar();
+        String carName = "a,b";
+        RacingCar racingCar = new RacingCar(new RacingCarName(carName));
 
         int actual = racingCar.tryToMove(input);
 
@@ -34,9 +37,26 @@ public class RacingCarTest {
             , "9$1"}
             , delimiter = '$')
     void move(int input, int expected) {
-        RacingCar racingCar = new RacingCar();
+        String carName = "a,b";
+        RacingCar racingCar = new RacingCar(new RacingCarName(carName));
 
         int actual = racingCar.tryToMove(input);
+
+        assertEquals(expected, actual);
+    }
+
+    @DisplayName("우승한 자동차인지 확인할 수 있다.")
+    @Test
+    void isWinner() {
+        RandomOption movableOption = new FakeSuccessMoveRandomOption();
+        boolean expected = true;
+        int winnerDistance = 3;
+        RacingCar car = new RacingCar(new RacingCarName("a"));
+        car.tryToMove(movableOption.randomValue());
+        car.tryToMove(movableOption.randomValue());
+        car.tryToMove(movableOption.randomValue());
+
+        boolean actual = car.isWinner(winnerDistance);
 
         assertEquals(expected, actual);
     }

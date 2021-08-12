@@ -1,9 +1,19 @@
 package racingcargame;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
     private static final int MOVING_VALUE = 4;
+    private static final int FIRST_DISTANCE = 0;
+    private final RacingCarName carName;
+    private Distance distance;
 
-    private int distance = 0;
+    RacingCar (RacingCarName carName) {
+        this(carName, new Distance(FIRST_DISTANCE));
+    }
+
+    RacingCar (RacingCarName carName, Distance distance) {
+        this.carName = carName;
+        this.distance = distance;
+    }
 
     public int tryToMove(int randomValue) {
         if (randomValue >= MOVING_VALUE) {
@@ -13,14 +23,27 @@ public class RacingCar {
     }
 
     private int move() {
-        return distance += 1;
+        return distance.increase();
     }
 
     private int stop() {
-        return distance += 0;
+        return distance.getValue();
     }
 
-    public int getDistance() {
-        return distance;
+    public int showDistance() {
+        return distance.getValue();
+    }
+
+    public String showCarName() {
+        return carName.getName();
+    }
+
+    public boolean isWinner(int winnerDistance) {
+        return distance.getValue() == winnerDistance;
+    }
+
+    @Override
+    public int compareTo(RacingCar racingCar) {
+       return Integer.compare(distance.getValue(), racingCar.showDistance());
     }
 }

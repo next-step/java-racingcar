@@ -5,9 +5,14 @@ public class Client {
         InputView inputView = new InputView();
         RandomOption randomOption = new RandomNumberOption();
 
-        RacingCarGame racingCarGame = new RacingCarGame(inputView.inputNumberOfCars(), inputView.inputCount());
-        racingCarGame.startGame(randomOption);
+        try {
+            RacingCarGame racingCarGame = new RacingCarGame(inputView.inputNameOfCars(), inputView.inputCount());
+            racingCarGame.startGame(randomOption);
+            racingCarGame.showWinner();
 
-        inputView.close();
+            inputView.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

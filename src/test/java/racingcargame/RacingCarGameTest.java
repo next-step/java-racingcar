@@ -15,7 +15,7 @@ public class RacingCarGameTest {
 
     @BeforeEach
     void setUp() {
-        racingCarGame = new RacingCarGame(3,1);
+        racingCarGame = new RacingCarGame("a,b,c",1);
     }
 
     @DisplayName("입력한 자동차 수 만큼 자동차 객체를 생성한다.")
@@ -34,7 +34,7 @@ public class RacingCarGameTest {
         List<RacingCar> cars = racingCarGame.getCars();
 
         for (RacingCar actual : cars) {
-            assertEquals(expected, actual.getDistance());
+            assertEquals(expected, actual.showDistance());
         }
     }
 
@@ -48,7 +48,7 @@ public class RacingCarGameTest {
         List<RacingCar> cars = racingCarGame.getCars();
 
         for (RacingCar actual : cars) {
-            assertEquals(expected, actual.getDistance());
+            assertEquals(expected, actual.showDistance());
         }
     }
 }

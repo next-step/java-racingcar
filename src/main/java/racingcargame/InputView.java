@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class InputView {
     private Scanner scanner = new Scanner(System.in);
 
-    public int inputNumberOfCars() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return scanner.nextInt();
+    public String inputNameOfCars() throws WordCountException {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return checkWordCount(scanner.nextLine());
     }
 
     public int inputCount() {
@@ -17,5 +17,19 @@ public class InputView {
 
     public void close() {
         scanner.close();
+    }
+
+    public String checkWordCount(String nameOfCars) throws WordCountException {
+        String[] carsName = nameOfCars.split(",");
+        for (String carName : carsName) {
+            wordCountException(carName);
+        }
+        return nameOfCars;
+    }
+
+    private void wordCountException(String carName) throws WordCountException {
+        if(carName.length() > 5) {
+            throw new WordCountException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
     }
 }
