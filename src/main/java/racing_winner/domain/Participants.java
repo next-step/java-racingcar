@@ -21,10 +21,6 @@ public final class Participants {
         return car;
     }
 
-    public int getParticipantList(){
-        return cars.size();
-    }
-
     public RacingResult race(final RacingStrategy racingStrategy) {
         List<Car> result = new ArrayList<>();
         for(Car car : cars) {
