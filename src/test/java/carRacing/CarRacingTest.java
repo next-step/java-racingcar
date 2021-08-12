@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -28,20 +30,5 @@ class CarRacingTest {
         assertThatIllegalArgumentException().isThrownBy(() -> carRacing.start(carNames, 0));
 
         assertDoesNotThrow(() -> carRacing.start(carNames, 5));
-    }
-
-    @Test
-    @DisplayName("레이싱 우승자를 구하는 로직 테스트")
-    void getWinners() {
-        ArrayList<Car> cars = new ArrayList<>();
-
-        for (String name : carNames) {
-            Car car = new Car(name);
-            car.go(() -> true);
-            cars.add(car);
-        }
-
-        ArrayList<Car> winners = carRacing.getWinners(cars);
-        assertThat(winners.containsAll(cars)).isEqualTo(true);
     }
 }

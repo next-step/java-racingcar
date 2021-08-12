@@ -10,10 +10,15 @@ public class Car {
     private String name;
 
     public Car(String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
         if (name.length() < NAME_MIN_LENGTH || name.length() > NAME_MAX_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 1자 ~ 5자 사이여야 합니다.");
         }
         this.name = name;
+        this.position = position;
     }
 
     public int getPosition() {
