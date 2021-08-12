@@ -32,7 +32,7 @@ public class Cars {
         }
     }
 
-    public List<Car> getWinners() {
+    public Winners getWinners() {
         List<Car> winners = new ArrayList<>();
         winners.add(cars.get(0));
 
@@ -40,6 +40,6 @@ public class Cars {
             comparePosition(winners, cars.get(i));
         }
 
-        return winners;
+        return new Winners(winners);
     }
 }

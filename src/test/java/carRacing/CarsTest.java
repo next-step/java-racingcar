@@ -3,6 +3,7 @@ package carRacing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,7 +20,7 @@ class CarsTest {
         Car hong = new Car("hong", 2);
 
         Cars cars = new Cars(Arrays.asList(choi, jae, hong));
-        List<Car> winners = cars.getWinners();
+        Winners winners = cars.getWinners();
 
         assertThat(winners.contains(jae)).isEqualTo(true);
     }

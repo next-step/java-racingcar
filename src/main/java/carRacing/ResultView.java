@@ -1,7 +1,5 @@
 package carRacing;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultView {
     static void divideRound(int round) {
@@ -22,9 +20,8 @@ public class ResultView {
         System.out.println(state);
     }
 
-    public static void printWinners(List<Car> winners) {
-        String winnerNames = winners.stream().map(Car::getName).collect(Collectors.joining(", "));
+    public static void printWinners(Winners winners) {
         System.out.println();
-        System.out.println(winnerNames + "가 최종 우승했습니다.");
+        System.out.println(winners.toStringWinners() + "가 최종 우승했습니다.");
     }
 }

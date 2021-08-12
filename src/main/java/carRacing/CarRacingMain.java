@@ -1,10 +1,8 @@
 package carRacing;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
-import java.util.List;
 
 import static carRacing.Car.NAME_MAX_LENGTH;
 
@@ -16,8 +14,7 @@ public class CarRacingMain {
         int numberOfRacing = requestInputNumber(InputView.InputType.RACING);
 
         CarRacing racing = new CarRacing();
-        List<Car> winners = racing.start(carNames, numberOfRacing).getWinners();
-//        List<Car> winners = cars.getWinners();
+        Winners winners = racing.start(carNames, numberOfRacing).getWinners();
         ResultView.printWinners(winners);
     }
 
