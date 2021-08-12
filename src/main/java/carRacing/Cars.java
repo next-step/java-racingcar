@@ -1,7 +1,7 @@
 package carRacing;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -10,19 +10,12 @@ public class Cars {
         this.cars = cars;
     }
 
-    private void comparePosition(List<Car> winners, Car car) {
-        int curMaxPosition = winners.get(0).getPosition();
-        int comparePosition = car.getPosition();
-
-        if (curMaxPosition < comparePosition) {
-            winners.clear();
-            winners.add(car);
-            return;
+    private Position getMaxPosition() {
+        Position maxPosition = new Position(0);
+        for (Car car : cars) {
+            maxPosition = car.max(maxPosition);
         }
-
-        if (curMaxPosition == comparePosition) {
-            winners.add(car);
-        }
+        return maxPosition;
     }
 
     public void move(CarMovingStrategy strategy) {
@@ -33,13 +26,10 @@ public class Cars {
     }
 
     public Winners getWinners() {
-        List<Car> winners = new ArrayList<>();
-        winners.add(cars.get(0));
-
-        for (int i = 1; i < cars.size(); i++) {
-            comparePosition(winners, cars.get(i));
-        }
-
-        return new Winners(winners);
+        return new Winners(
+                cars.stream()
+                        .filter((Car car) -> car.isEqualPosition(getMaxPosition()))
+                        .collect(Collectors.toList())
+        );
     }
 }

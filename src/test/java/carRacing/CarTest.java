@@ -25,12 +25,14 @@ class CarTest {
     @Test
     @DisplayName("자동차가 전략에 따라 움직이는지 테스트")
     void go() {
-        assertThat(car.go(() -> true)).isEqualTo(1);
+        car.go(() -> true);
+        assertThat(car.isEqualPosition(new Position(1))).isEqualTo(true);
     }
 
     @Test
     @DisplayName("자동차가 전략에 따라 멈추는지 테스트")
     void stop() {
-        assertThat(car.go(() -> false)).isEqualTo(0);
+        car.go(() -> false);
+        assertThat(car.isEqualPosition(new Position(0))).isEqualTo(true);
     }
 }

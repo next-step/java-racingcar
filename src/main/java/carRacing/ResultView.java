@@ -10,14 +10,7 @@ public class ResultView {
     }
 
     static void printPosition(Car car) {
-        StringBuilder state = new StringBuilder();
-
-        state.append(car.getName()).append(" : ");
-        for (int i = 0; i < car.getPosition(); i++) {
-            state.append("-");
-        }
-
-        System.out.println(state);
+        System.out.println(car.toStringPosition());
     }
 
     public static void printWinners(Winners winners) {
