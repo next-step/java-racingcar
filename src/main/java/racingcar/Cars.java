@@ -9,10 +9,10 @@ import java.util.stream.IntStream;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(int carNum) {
-        isValidCarNumber(carNum);
+    public Cars(List<String> carNames) {
+        isValidCarNumber(carNames.size());
         cars = new LinkedList<>();
-        IntStream.range(0, carNum).forEach(i -> cars.add(new Car()));
+        carNames.forEach(name -> cars.add(new Car(name)));
     }
 
     public Cars(Cars carsToBeCopied) {

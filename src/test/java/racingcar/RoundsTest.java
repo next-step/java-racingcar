@@ -15,7 +15,7 @@ public class RoundsTest {
     @Test
     void roundMoveCarsTest() {
         Rounds rounds = new Rounds(2);
-        rounds.moveCarsForEachRound(new Cars(3), () -> true);
+        rounds.moveCarsForEachRound(new Cars(Arrays.asList("Dave", "Bob", "Kevin")), () -> true);
         List<List<Integer>> actual = rounds.getCarsPositionForEachRound();
         List<List<Integer>> expected = Arrays.asList(Arrays.asList(1,1,1), Arrays.asList(2,2,2));
         assertThat(actual).isEqualTo(expected);

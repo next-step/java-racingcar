@@ -13,7 +13,7 @@ public class RoundTest {
     @DisplayName("Round의 moveCars는 전진규칙이 true면 1 움직인다. ")
     @Test
     void roundMoveCarsTest() {
-        Round round = new Round(new Cars(2));
+        Round round = new Round(new Cars(Arrays.asList("Dave","Bob")));
         round.moveCars(() -> true);
         List<Integer> actual = round.getCarsPositionOfCurrentRound();
         List<Integer> expected = Arrays.asList(1,1);
