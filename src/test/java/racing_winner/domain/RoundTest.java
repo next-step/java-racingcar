@@ -13,7 +13,7 @@ class RoundTest {
     @DisplayName("경주 끝났는지 체크")
     void isFinish(int roundValue, boolean expectedResult) {
         Round round = new Round(roundValue);
-        round.race();
+        round.next();
 
         assertThat(round.isFinish()).isEqualTo(expectedResult);
     }

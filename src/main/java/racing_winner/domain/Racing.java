@@ -20,7 +20,7 @@ public final class Racing {
         if(roundFinish()) {
             throw new IllegalArgumentException("입력한 경기 이상의 경주는 불가능합니다");
         }
-        round.race();
+        round.next();
         return participants.race(racingStrategy);
     }
 
