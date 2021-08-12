@@ -3,14 +3,14 @@ package carRacing;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
+import java.util.stream.Collectors;
 
-import static carRacing.Car.NAME_MAX_LENGTH;
 
 public class CarRacingMain {
 
     public static void main(String[] args) {
-
-        String[] carNames = requestInputCarName();
+        List<String> carNames = requestInputCarName();
         int numberOfRacing = requestInputNumber(InputView.InputType.RACING);
 
         CarRacing racing = new CarRacing();
@@ -18,24 +18,26 @@ public class CarRacingMain {
         ResultView.printWinners(winners);
     }
 
-    static String[] requestInputCarName() {
+    static List<String> requestInputCarName() {
+        List<String> namesList;
+
         InputView.printQuestion(InputView.InputType.NAME);
 
-        String[] carNames = Arrays.stream(InputView.inputNames().split(","))
-                .map(String::trim)
-                .toArray(String[]::new);
+        String names = InputView.inputNames().trim();
 
-        boolean isValidName = Arrays.stream(carNames).allMatch(s -> !s.isEmpty() && s.length() <= NAME_MAX_LENGTH);
-        if (!isValidName) {
+        if (names.isEmpty()) {
             InputView.printNamesError();
-            carNames = requestInputCarName();
+            return requestInputCarName();
         }
 
-        return carNames;
+        namesList = Arrays.stream(names.split(","))
+                .map(String::trim)
+                .collect(Collectors.toList());
+
+        return namesList;
     }
 
     static int requestInputNumber(InputView.InputType type) {
-
         int number;
 
         InputView.printQuestion(type);

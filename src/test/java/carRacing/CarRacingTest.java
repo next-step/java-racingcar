@@ -3,18 +3,22 @@ package carRacing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarRacingTest {
 
     private CarRacing carRacing;
-    private String[] carNames;
+    private List<String> carNames;
 
     @BeforeEach
     void setUp() {
         carRacing = new CarRacing();
-        carNames = new String[]{"star", "jae", "hong"};
+        carNames = Arrays.asList("star", "jae", "hong");
     }
 
     @Test

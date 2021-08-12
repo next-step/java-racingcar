@@ -7,9 +7,9 @@ public class CarRacing {
 
     private final RandomMovigStrategy randomMovigStrategy = new RandomMovigStrategy();
 
-    private Cars prepareCars(String[] carNames) {
+    private Cars prepareCars(List<String> carNames) {
 
-        if (carNames == null || carNames.length == 0) {
+        if (carNames == null || carNames.size() == 0) {
             throw new IllegalArgumentException("레이싱 시작을 하기 위한 자동차 이름들이 존재하지 않습니다.");
         }
 
@@ -23,7 +23,7 @@ public class CarRacing {
     }
 
 
-    Cars start(String[] carNames, int numberOfRacing) {
+    Cars start(List<String> carNames, int numberOfRacing) {
 
         if (numberOfRacing <= 0) {
             throw new IllegalArgumentException("레이싱 시작을 하기 위한 숫자 값이 올바르지 않습니다.");
