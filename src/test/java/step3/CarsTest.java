@@ -19,7 +19,7 @@ public class CarsTest {
 		String[] names = {carA, carB, carC};
 		Cars cars = new Cars(names);
 		cars.raceOneTrial();
-		List<Car> carList = cars.getResultOneTrial();
+		List<Car> carList = cars.getCars();
 
 		assertThat(carList.size()).isEqualTo(names.length);
 	}

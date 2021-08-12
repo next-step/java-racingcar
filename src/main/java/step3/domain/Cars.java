@@ -22,7 +22,7 @@ public class Cars {
 		});
 	}
 
-	public List<Car> getResultOneTrial() {
+	public List<Car> getCars() {
 		return cars;
 	}
 }

@@ -6,8 +6,9 @@ import java.util.stream.Collectors;
 public class RacingResults {
 	private List<RacingResult> results;
 
-	public RacingResults(List<Car> cars) {
-		this.results = cars.stream()
+	public RacingResults(Cars cars) {
+		this.results = cars.getCars()
+			.stream()
 			.map(car -> new RacingResult(car.getName(), car.getPosition()))
 			.collect(Collectors.toList());
 	}

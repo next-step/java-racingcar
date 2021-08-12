@@ -11,8 +11,7 @@ public class Racing {
 
 		for (int i = 0; i < trials; i++) {
 			cars.raceOneTrial();
-			List<Car> resultOneTrial = cars.getResultOneTrial();
-			RacingResults result = new RacingResults(resultOneTrial);
+			RacingResults result = new RacingResults(cars);
 			results.add(result);
 		}
 
