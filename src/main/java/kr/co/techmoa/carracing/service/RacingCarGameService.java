@@ -2,7 +2,7 @@ package kr.co.techmoa.carracing.service;
 
 import kr.co.techmoa.carracing.model.Car;
 import kr.co.techmoa.carracing.model.CarEngine;
-import kr.co.techmoa.carracing.service.move.RandomMoveStrategy;
+import kr.co.techmoa.carracing.service.move.RandomMoveStrategyImpl;
 import kr.co.techmoa.carracing.ui.dto.InputDTO;
 import kr.co.techmoa.carracing.ui.dto.OutputDTO;
 
@@ -11,41 +11,60 @@ import java.util.List;
 
 public class RacingCarGameService {
 
-    public static int[] totalCarResult ;
+    private int[] totalCarResult ;
+    private InputDTO inputDTO;
 
-    public OutputDTO start(InputDTO inputDTO) {
-        List<List<Car>> roundAll = createRound(createCar(inputDTO));
-        List<Integer> winList = checkWin(totalCarResult);
-        return new OutputDTO(roundAll, winList);
+    public RacingCarGameService(InputDTO inputDTO) {
+        this.totalCarResult = new int[inputDTO.getCarNum()];
+        this.inputDTO = inputDTO;
     }
 
-    public List<Car> createCar(InputDTO inputDTO) {
-        List<Car> round = new ArrayList<>();
-        totalCarResult = new int[inputDTO.getCarNum()];
-        String[] carNames = parseCarName(inputDTO.getCarNames());
-        for(int i= 0; i< carNames.length; i++) {
-            Car car = new Car(carNames[i]);
-            int moveCnt = new CarEngine().operator(new RandomMoveStrategy());
-            car.move(moveCnt);
-            totalCarResult[i] += moveCnt;
-            round.add(car);
+    public OutputDTO start() {
+        List<List<Car>> roundAll = createRound();
+        return new OutputDTO(roundAll, checkWin(totalCarResult));
+    }
+
+    public List<List<Car>> createRound() {
+        List<List<Car>> roundAll = new ArrayList<>();
+
+        for (int i = 0; i < inputDTO.getTryNumber(); i++) {
+            List<Car> round = createCar();
+            roundAll.add(round);
         }
-        return round;
+        return roundAll;
     }
 
     private String[] parseCarName(String carNames) {
         return carNames.split(",");
     }
 
-    public List<List<Car>> createRound(List<Car> round) {
-        List<List<Car>> roundAll = new ArrayList<>();
-        roundAll.add(round);
-        return roundAll;
+    public List<Car> createCar() {
+        String[] carNames = parseCarName(inputDTO.getCarNames());
+        List<Car> round = new ArrayList<>();
+        for (int j = 0; j < inputDTO.getCarNum(); j++) {
+            Car car = new Car(carNames[j]);
+            car.move(createMove(j));
+            round.add(car);
+        }
+        return round;
+    }
+
+    public int createMove(int position) {
+        int moveCnt = new CarEngine().moveOperator(new RandomMoveStrategyImpl());
+        totalSumResult(position, moveCnt);
+        return moveCnt;
+    }
+
+    public void totalSumResult(int position, int moveCnt){
+        this.totalCarResult[position] += moveCnt;
     }
 
     public List<Integer> checkWin(int[] totalCarResult) {
-        CarWinCheckService carWinCheckService = new CarWinCheckService();
-        return carWinCheckService.checkGameResult(totalCarResult);
+        return new CarWinCheckService().checkGameResult(totalCarResult);
+    }
+
+    public int[] getTotalCarResult() {
+        return totalCarResult;
     }
 
 }

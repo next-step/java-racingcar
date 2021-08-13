@@ -1,11 +1,6 @@
 package kr.co.techmoa.carracing.model;
 
-import kr.co.techmoa.carracing.service.move.MoveStategy;
-import kr.co.techmoa.carracing.service.move.RandomMoveStrategy;
 import lombok.Getter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 public class Car {

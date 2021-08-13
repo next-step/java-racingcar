@@ -1,7 +1,5 @@
 package kr.co.techmoa.carracing.service;
 
-import kr.co.techmoa.carracing.model.Car;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +25,7 @@ public class CarWinCheckService {
         List<Integer> winList = new ArrayList<>();
         for(int i= 0; i < totalCarResult.length; i++) {
             if(totalCarResult[i] == max) {
-                winList.add(totalCarResult[i]);
+                winList.add(i);
             }
         }
         return winList;

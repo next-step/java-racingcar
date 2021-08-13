@@ -12,9 +12,26 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarWinCheckServiceTest {
 
-    @Test
-    void checkGameResult() {
-        CarWinCheckService carWinCheckService = new CarWinCheckService();
+    CarWinCheckService carWinCheckService = new CarWinCheckService();
 
+    @Test
+    void 우승자_한명_test() {
+        int[] totalCarResult = new int[]{2,3,4,5};
+
+        List<Integer> winList = carWinCheckService.checkGameResult(totalCarResult);
+
+        assertEquals(1, winList.size() );
+        assertEquals(5, winList.get(0) );
+    }
+
+    @Test
+    void 우승자_복수_test() {
+        int[] totalCarResult = new int[]{2,3,5,5};
+
+        List<Integer> winList = carWinCheckService.checkGameResult(totalCarResult);
+
+        assertEquals(2, winList.size() );
+        assertEquals(5, winList.get(0) );
+        assertEquals(5, winList.get(1) );
     }
 }

@@ -28,11 +28,13 @@ public class ResultView {
     public void printMove(List<Car> round) {
         for(Car car: round) {
             System.out.print(car.getCarName() + SEPARATOR);
-            System.out.print(RASCING_DISTINC);
+            for(int i = 0; i<car.getPosition().getCoordinate(); i++) {
+                System.out.print(RASCING_DISTINC);
+            }
+            System.out.println("");
         }
         System.out.println("");
     }
-
 
     public String printWin(List<Integer> cars , List<Car> round) {
         String winUser = "";

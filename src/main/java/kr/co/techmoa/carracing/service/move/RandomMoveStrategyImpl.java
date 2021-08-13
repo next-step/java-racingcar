@@ -2,7 +2,7 @@ package kr.co.techmoa.carracing.service.move;
 
 import java.util.Random;
 
-public class RandomMoveStrategy implements MoveStategy{
+public class RandomMoveStrategyImpl implements MoveStategy{
     public static final int OPERATION_MAX = 10;
 
     @Override
