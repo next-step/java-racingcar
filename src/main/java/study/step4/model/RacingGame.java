@@ -9,18 +9,13 @@ public class RacingGame {
 
   private final int racingGameRound;
 
-  public RacingGame(int carNumber, int gameRound) {
-    cars = Cars.of(carNumber);
-    racingGameRound = gameRound;
-  }
-
   public RacingGame(String carNames, int gameRound) {
     cars = Cars.of(carNames);
     racingGameRound = gameRound;
   }
 
   public void start(MoveStrategy moveStrategy) {
-      cars.move(moveStrategy);
+    cars.move(moveStrategy);
   }
 
   public Cars getCars() {
