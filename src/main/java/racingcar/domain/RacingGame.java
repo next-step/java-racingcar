@@ -9,11 +9,13 @@ import java.util.List;
 public class RacingGame {
     private final static int RANDOM_NUMBER_RANGE = 10;
 
+    private int car;
     private int attempts;
-    private List<RacingCar> cars;
+    private List<RacingCar> cars = new ArrayList<>();
 
-    public RacingGame() {
-        cars = new ArrayList<>();
+    public RacingGame(int car, int attempts) {
+        this.car = car;
+        this.attempts = attempts;
     }
 
     public List<RacingCar> playGame() {
@@ -23,11 +25,11 @@ public class RacingGame {
         return cars;
     }
 
-    public void readGame(int cars, int attempts) {
-        this.attempts = attempts;
-        for (int i = 0; i < cars; i++) {
-            this.cars.add(new RacingCar());
+    public void readGame() {
+        for (int i = 0; i < car; i++) {
+            cars.add(new RacingCar());
         }
+        playGame();
     }
 
     private void moveCars() {
