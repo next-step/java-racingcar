@@ -3,10 +3,12 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.RacingCar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingCarTest {
 
@@ -19,12 +21,13 @@ public class RacingCarTest {
                 .isEqualTo(0);
     }
 
-    @DisplayName("Random 4 이상 이면 전진 또는 Random 4 미만 이면 정지")
+    @DisplayName("자동차 4 이상 4 미만 작동 확인")
     @ParameterizedTest
-    @ValueSource(ints = {4, 7, 8, 3, 2})
-    void randomNumberCheck(int input) {
-        racingCar.move(input);
-        assertThat(racingCar.getPosition() >= 4 && racingCar.getPosition() < 4);
+    @CsvSource(value = {"1:0", "4:1", "8:1"}, delimiter = ':')
+    void racingCarMove (int randomNumber, int expect){
+        racingCar.move(randomNumber);
+        int result = racingCar.getPosition();
+        assertThat(result).isEqualTo(expect);
     }
 
 }
