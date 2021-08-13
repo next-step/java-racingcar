@@ -1,8 +1,9 @@
 package study.step4.model.car;
 
+import study.step4.model.exception.CarGameArgumentException;
 import study.step4.model.strategy.MoveStrategy;
 
-public class Car implements Comparable<Car>{
+public class Car implements Comparable<Car> {
 
   private static final int CAR_NAME_MAX_LENGTH = 5;
 
@@ -13,12 +14,16 @@ public class Car implements Comparable<Car>{
   }
 
   public Car(String carName) {
-    if (carName.length() > CAR_NAME_MAX_LENGTH) {
-      throw new IllegalArgumentException();
-    }
+    validateCarName(carName);
 
     this.name = carName;
     this.distance = 0;
+  }
+
+  private void validateCarName(String carName) {
+    if (carName.length() > CAR_NAME_MAX_LENGTH) {
+      throw new CarGameArgumentException("자동차 이름은 " + CAR_NAME_MAX_LENGTH + "자를 넘을 수 없습니다.");
+    }
   }
 
   public int getDistance() {

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import study.step4.model.RacingGame;
+import study.step4.model.exception.CarGameArgumentException;
 
 public class CarTest {
 
@@ -23,6 +24,6 @@ public class CarTest {
   @ValueSource(strings = {"car123", "car123,car234", "car123,car234,car345"})
   public void carNameLenghthFailTest(String carNames) {
     final int carGameRound = 5;
-    assertThrows(IllegalArgumentException.class, () -> new RacingGame(carNames, carGameRound));
+    assertThrows(CarGameArgumentException.class, () -> new RacingGame(carNames, carGameRound));
   }
 }

@@ -2,7 +2,6 @@ package study.step4.model;
 
 import study.step4.model.car.Cars;
 import study.step4.model.strategy.MoveStrategy;
-import study.step4.view.ResultView;
 
 public class RacingGame {
 
@@ -20,20 +19,8 @@ public class RacingGame {
     racingGameRound = gameRound;
   }
 
-  public void start(MoveStrategy moveStrategy, ResultView resultView) {
-    for (int i = 0; i < racingGameRound; i++) {
+  public void start(MoveStrategy moveStrategy) {
       cars.move(moveStrategy);
-      printGameResult(cars, resultView);
-    }
-
-    resultView.printWinner(cars.getWinners());
-  }
-
-  private void printGameResult(Cars cars, ResultView resultView) {
-    for (int i = 0; i < cars.getRacingGameCarsCount(); i++) {
-      resultView.printResult(cars.getCar(i).getName(), cars.getCar(i).getDistance());
-    }
-    System.out.println();
   }
 
   public Cars getCars() {

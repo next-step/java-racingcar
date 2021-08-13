@@ -2,13 +2,21 @@ package study.step4.view;
 
 import java.util.List;
 import study.step4.model.car.Car;
+import study.step4.model.car.Cars;
 
 public class ResultView {
 
   private static final String DISTANCE_SEPERATOR = "-";
   private static final String CAR_NAME_SPLITER = ",";
 
-  public void printResult(String carName, int carDistance) {
+  public void printGameResult(Cars cars) {
+    for (int i = 0; i < cars.getRacingGameCarsCount(); i++) {
+      printResult(cars.getCar(i).getName(), cars.getCar(i).getDistance());
+    }
+    System.out.println();
+  }
+
+  private void printResult(String carName, int carDistance) {
     System.out.print(carName + " : ");
     for (int i = 0; i < carDistance; i++) {
       System.out.print(DISTANCE_SEPERATOR);

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.step3.model.strategy.MoveStrategy;
 
-public class RandomMoveStrategyTest {
+public class MoveStrategyTest {
 
     @Test
     @DisplayName("Car Randome Move Stategy Fail Test")

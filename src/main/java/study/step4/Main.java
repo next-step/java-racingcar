@@ -9,7 +9,18 @@ public class Main {
 
   public static void main(String[] args) {
     InputView inputView = new InputView();
-    RacingGame racingGame = new RacingGame(inputView.getCarNames(), inputView.getGameRound());
-    racingGame.start(new RandomMoveStrategy(), new ResultView());
+
+    String carNames = inputView.getCarNamesInput();
+    int carGameRound = inputView.getRacingGameRound();
+
+    ResultView resultView = new ResultView();
+    RacingGame racingGame = new RacingGame(carNames, carGameRound);
+
+    for (int i = 0; i < carGameRound; i++) {
+      racingGame.start(new RandomMoveStrategy());
+      resultView.printGameResult(racingGame.getCars());
+    }
+
+    resultView.printWinner(racingGame.getCars().getWinners());
   }
 }
