@@ -1,4 +1,4 @@
-package study.step4.model.exception;
+package study.step4.exception;
 
 public class CarGameArgumentException extends IllegalArgumentException {
 

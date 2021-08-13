@@ -1,6 +1,6 @@
 package study.step4.model.car;
 
-import study.step4.model.exception.CarGameArgumentException;
+import study.step4.exception.CarGameArgumentException;
 import study.step4.model.strategy.MoveStrategy;
 
 public class Car implements Comparable<Car> {
@@ -14,10 +14,14 @@ public class Car implements Comparable<Car> {
   }
 
   public Car(String carName) {
+    this(carName, 0);
+  }
+
+  public Car(String carName, int distance) {
     validateCarName(carName);
 
     this.name = carName;
-    this.distance = 0;
+    this.distance = distance;
   }
 
   private void validateCarName(String carName) {

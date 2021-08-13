@@ -25,8 +25,7 @@ public class CarsTest {
   @ValueSource(strings = {"car1", "car2", "car3"})
   void carMoveTest(String carNames) {
     Cars cars = Cars.of(carNames);
-    MoveStrategy moveStrategy = () -> true;
-    cars.move(moveStrategy);
+    cars.move(() -> true);
     for (int i = 0; i < cars.getRacingGameCarsCount(); i++) {
       assertThat(cars.getCar(i).getDistance()).isEqualTo(1);
     }
@@ -37,8 +36,7 @@ public class CarsTest {
   @ValueSource(strings = {"car1", "car2", "car3"})
   void carStopTest(String carNames) {
     Cars cars = Cars.of(carNames);
-    MoveStrategy moveStrategy = () -> false;
-    cars.move(moveStrategy);
+    cars.move(() -> true);
     for (int i = 0; i < cars.getRacingGameCarsCount(); i++) {
       assertThat(cars.getCar(i).getDistance()).isEqualTo(0);
     }
