@@ -7,7 +7,7 @@ public class RacingCarMain {
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame(InputView.inputCar(), InputView.inputAttempt());
 
-        racingGame.readGame();
+        racingGame.startGame();
     }
 
 }

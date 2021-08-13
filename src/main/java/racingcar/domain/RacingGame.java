@@ -18,33 +18,28 @@ public class RacingGame {
         this.attempts = attempts;
     }
 
-    public List<RacingCar> playGame() {
-        for (int i = 0; i < attempts; i++) {
-            moveCars();
-        }
-        return cars;
-    }
-
-    public void readGame() {
+    public void startGame() {
         for (int i = 0; i < car; i++) {
             cars.add(new RacingCar());
         }
         playGame();
     }
 
+    private void playGame() {
+        for (int i = 0; i < attempts; i++) {
+            moveCars();
+            ResultView.showRacingCarOutput(cars);
+        }
+    }
+
     private void moveCars() {
         for (RacingCar car : cars) {
-            moveOrStopCar(car);
+            int randomNumber = getRandomNumber();
+            car.move(randomNumber);
         }
-        ResultView.showRacingCarOutput(cars);
     }
 
-    private void moveOrStopCar(RacingCar car) {
-        int randomInt = getRandomInt();
-        car.move(randomInt);
-    }
-
-    private int getRandomInt() {
+    private int getRandomNumber() {
         return RandomGenerator.getRandomNumber(RANDOM_NUMBER_RANGE);
     }
 }
