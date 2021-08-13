@@ -1,32 +1,32 @@
 package racingcar.domain;
 
-import racingcar.util.RandomGenerator;
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RacingGame {
-    private final static int RANDOM_NUMBER_RANGE = 10;
 
     private int car;
-    private int attempts;
+    private int attempt;
     private List<RacingCar> cars = new ArrayList<>();
 
-    public RacingGame(int car, int attempts) {
+    public RacingGame(int car, int attempt) {
         this.car = car;
-        this.attempts = attempts;
+        this.attempt = attempt;
     }
 
-    public void startGame() {
+    public List<RacingCar> startGame() {
         for (int i = 0; i < car; i++) {
             cars.add(new RacingCar());
         }
         playGame();
+        return cars;
     }
 
     private void playGame() {
-        for (int i = 0; i < attempts; i++) {
+        for (int i = 0; i < attempt; i++) {
             moveCars();
             ResultView.showRacingCarOutput(cars);
         }
@@ -34,12 +34,8 @@ public class RacingGame {
 
     private void moveCars() {
         for (RacingCar car : cars) {
-            int randomNumber = getRandomNumber();
-            car.move(randomNumber);
+            car.move(new Random().nextInt(10));
         }
     }
 
-    private int getRandomNumber() {
-        return RandomGenerator.getRandomNumber(RANDOM_NUMBER_RANGE);
-    }
 }

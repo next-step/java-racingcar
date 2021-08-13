@@ -5,7 +5,9 @@ import racingcar.view.InputView;
 
 public class RacingCarMain {
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame(InputView.inputCar(), InputView.inputAttempt());
+        InputView inputView = new InputView();
+
+        RacingGame racingGame = new RacingGame(inputView.inputCar(), inputView.inputAttempt());
 
         racingGame.startGame();
     }

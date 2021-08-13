@@ -22,10 +22,9 @@ public class RacingCarTest {
     @DisplayName("Random 4 이상 이면 전진 또는 Random 4 미만 이면 정지")
     @ParameterizedTest
     @ValueSource(ints = {4, 7, 8, 3, 2})
-    void random4OrHigherForward(int input) {
+    void randomNumberCheck(int input) {
         racingCar.move(input);
         assertThat(racingCar.getPosition() >= 4 && racingCar.getPosition() < 4);
     }
-
 
 }
