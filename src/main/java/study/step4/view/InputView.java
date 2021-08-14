@@ -6,14 +6,6 @@ public class InputView {
 
   private static final Scanner scanner = new Scanner(System.in);
 
-  private int gameRound;
-  private String carNames;
-
-  public InputView() {
-    this.carNames = getCarNamesInput();
-    this.gameRound = getRacingGameRound();
-  }
-
   public int getCarNumber() {
     System.out.println("자동차 대수는 몇 대 인가요?");
     return scanner.nextInt();
@@ -27,13 +19,5 @@ public class InputView {
   public int getRacingGameRound() {
     System.out.println("시도할 회수는 몇 회 인가요?");
     return scanner.nextInt();
-  }
-
-  public int getGameRound() {
-    return gameRound;
-  }
-
-  public String getCarNames() {
-    return carNames;
   }
 }

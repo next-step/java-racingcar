@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import study.step4.model.car.Cars;
-import study.step4.model.strategy.MoveStrategy;
 
 public class CarsTest {
 
@@ -25,8 +24,7 @@ public class CarsTest {
   @ValueSource(strings = {"car1", "car2", "car3"})
   void carMoveTest(String carNames) {
     Cars cars = Cars.of(carNames);
-    MoveStrategy moveStrategy = () -> true;
-    cars.move(moveStrategy);
+    cars.move(() -> true);
     for (int i = 0; i < cars.getRacingGameCarsCount(); i++) {
       assertThat(cars.getCar(i).getDistance()).isEqualTo(1);
     }
@@ -37,8 +35,7 @@ public class CarsTest {
   @ValueSource(strings = {"car1", "car2", "car3"})
   void carStopTest(String carNames) {
     Cars cars = Cars.of(carNames);
-    MoveStrategy moveStrategy = () -> false;
-    cars.move(moveStrategy);
+    cars.move(() -> false);
     for (int i = 0; i < cars.getRacingGameCarsCount(); i++) {
       assertThat(cars.getCar(i).getDistance()).isEqualTo(0);
     }

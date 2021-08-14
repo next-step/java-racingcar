@@ -7,7 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import study.step4.model.RacingGame;
 import study.step4.model.strategy.RandomMoveStrategy;
-import study.step4.view.ResultView;
 
 public class RacingGameTest {
 
@@ -17,6 +16,6 @@ public class RacingGameTest {
   public void carRacingGameStartTest(String carNames) {
     final int CAR_GAME_ROUND = 5;
     RacingGame racingGame = new RacingGame(carNames, CAR_GAME_ROUND);
-    assertDoesNotThrow(() -> racingGame.start(new RandomMoveStrategy(), new ResultView()));
+    assertDoesNotThrow(() -> racingGame.start(new RandomMoveStrategy()));
   }
 }
