@@ -1,4 +1,6 @@
-package racingcargame;
+package racingcargame.view;
+
+import racingcargame.domain.RacingCar;
 
 import java.util.List;
 
@@ -16,9 +18,12 @@ public class ResultView {
         System.out.println(System.lineSeparator() + "실행 결과");
     }
 
-    public void printWinner(String winner) {
-        removeLastComma(winner);
-        System.out.println(winner.replaceAll(",$", "") + "가 최종 우승했습니다.");
+    public void printWinner(List<String> winners) {
+        String winner = "";
+        for(String name : winners) {
+            winner += name + ", ";
+        }
+        System.out.println(removeLastComma(winner) + "가 최종 우승했습니다.");
     }
 
     private String convertDistanceToLine(int distance) {

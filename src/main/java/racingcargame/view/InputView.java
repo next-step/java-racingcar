@@ -1,4 +1,7 @@
-package racingcargame;
+package racingcargame.view;
+
+import racingcargame.domain.RacingCarName;
+import racingcargame.exception.WordCountException;
 
 import java.util.Scanner;
 
@@ -21,15 +24,11 @@ public class InputView {
 
     public String checkWordCount(String nameOfCars) throws WordCountException {
         String[] carsName = nameOfCars.split(",");
+        RacingCarName racingCarName;
         for (String carName : carsName) {
-            wordCountException(carName);
+            racingCarName = new RacingCarName(carName);
+            racingCarName.wordCountException(carName);
         }
         return nameOfCars;
-    }
-
-    private void wordCountException(String carName) throws WordCountException {
-        if(carName.length() > 5) {
-            throw new WordCountException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
     }
 }

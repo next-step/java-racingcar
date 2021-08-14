@@ -1,6 +1,6 @@
 package racingcargame.fake;
 
-import racingcargame.RandomOption;
+import racingcargame.domain.RandomOption;
 
 public class FakeFailMoveRandomOption implements RandomOption {
 
