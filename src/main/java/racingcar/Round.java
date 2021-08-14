@@ -28,10 +28,6 @@ public class Round {
         return Objects.hash(cars);
     }
 
-    List<Integer> getCarsPositionOfCurrentRound() {
-        return cars.getCarsPosition();
-    }
-
     List<Car> getCarsStatusOfCurrentRound() {
         return cars.getCars();
     }

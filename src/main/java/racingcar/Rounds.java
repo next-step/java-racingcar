@@ -39,12 +39,6 @@ public class Rounds {
         return Arrays.hashCode(rounds);
     }
 
-    List<List<Integer>> getCarsPositionForEachRound() {
-        List<List<Integer>> result = new LinkedList<>();
-        Arrays.stream(this.rounds).forEach(round -> result.add(round.getCarsPositionOfCurrentRound()));
-        return result;
-    }
-
     List<List<Car>> getCarsStatusForEachRound() {
         List<List<Car>> result = new LinkedList<>();
         Arrays.stream(rounds).forEach(round -> result.add(round.getCarsStatusOfCurrentRound()));

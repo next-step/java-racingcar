@@ -29,12 +29,6 @@ public class Cars {
         }
     }
 
-    List<Integer> getCarsPosition() {
-        List<Integer> result = new LinkedList<>();
-        this.cars.forEach(car -> result.add(car.getCarPosition()));
-        return result;
-    }
-
     List<Car> getCars(){
         return cars;
     }
