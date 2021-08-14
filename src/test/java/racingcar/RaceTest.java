@@ -12,7 +12,7 @@ public class RaceTest {
     void testRaceGameEntireProcess() {
         Race race = new Race(Arrays.asList("Kevin","Bob","Dave"), 5, new RandomStrategy(new RandomNumber()));
         race.doRace();
-        ResultView.printResult(race.getCarsPositionPerRound());
+        ResultView.printResult(race.getCarsStatusForEachRound());
     }
 
 }

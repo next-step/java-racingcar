@@ -4,17 +4,17 @@ import java.util.List;
 
 public class ResultView {
 
-    public static void printResult(List<List<Integer>> carsPositionPerRound) {
+    public static void printResult(List<List<Car>> carsStatusPerRound) {
         printResultTitle();
-        carsPositionPerRound.forEach(ResultView::printCarPositionOfRound);
+        carsStatusPerRound.forEach(ResultView::printCarsStatusOfCurrentRound);
     }
 
     private static void printResultTitle() {
         System.out.println("실행 결과");
     }
 
-    private static void printCarPositionOfRound(List<Integer> positions) {
-        positions.forEach(ResultView::printCarPositionAsHyphens);
+    private static void printCarsStatusOfCurrentRound(List<Car> cars) {
+        cars.forEach(ResultView::printCarStatus);
         printEmptyLine();
     }
 
@@ -22,6 +22,19 @@ public class ResultView {
         System.out.println();
     }
 
+    private static void printCarStatus(Car car) {
+        printCarName(car.getCarName());
+        printDelimiter();
+        printCarPositionAsHyphens(car.getCarPosition());
+    }
+
+    private static void printDelimiter() {
+        System.out.print(" : ");
+    }
+
+    private static void printCarName(String name) {
+        System.out.print(name);
+    }
     private static void printCarPositionAsHyphens(Integer position) {
         StringBuilder sb = new StringBuilder();
         for (int k = 0; k < position; k++) {

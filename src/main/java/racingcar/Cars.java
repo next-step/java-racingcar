@@ -1,10 +1,8 @@
 package racingcar;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;
@@ -35,6 +33,10 @@ public class Cars {
         List<Integer> result = new LinkedList<>();
         this.cars.forEach(car -> result.add(car.getCarPosition()));
         return result;
+    }
+
+    List<Car> getCars(){
+        return cars;
     }
 
     @Override

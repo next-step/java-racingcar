@@ -18,7 +18,7 @@ public class Race {
         rounds.moveCarsForEachRound(cars, moveStrategy);
     }
 
-    public List<List<Integer>> getCarsPositionPerRound() {
-        return rounds.getCarsPositionForEachRound();
+    public List<List<Car>> getCarsStatusForEachRound() {
+        return rounds.getCarsStatusForEachRound();
     }
 }

@@ -31,4 +31,8 @@ public class Round {
     List<Integer> getCarsPositionOfCurrentRound() {
         return cars.getCarsPosition();
     }
+
+    List<Car> getCarsStatusOfCurrentRound() {
+        return cars.getCars();
+    }
 }
