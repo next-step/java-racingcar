@@ -5,15 +5,17 @@ import java.util.List;
 import java.util.Objects;
 
 public class MovingRecord {
+    private int carId;
     private Name name;
     private List<Position> positions = new ArrayList<>();
 
-    public MovingRecord(Name name) {
-        this.name = name;
+    public MovingRecord(Car car) {
+        this.carId = car.getId();
+        this.name = car.getName();
     }
 
-    public boolean isSame(Name name) {
-        return Objects.equals(this.name, name);
+    public boolean isSame(int carId) {
+        return Objects.equals(this.carId, carId);
     }
 
     public boolean isLastPositionSame(int position) {
