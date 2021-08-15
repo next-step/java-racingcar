@@ -1,18 +1,16 @@
 package racingcar;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(int carNum) {
-        isValidCarNumber(carNum);
+    public Cars(List<String> carNames) {
+        isValidCarNumber(carNames.size());
         cars = new LinkedList<>();
-        IntStream.range(0, carNum).forEach(i -> cars.add(new Car()));
+        carNames.forEach(name -> cars.add(new Car(name)));
     }
 
     public Cars(Cars carsToBeCopied) {
@@ -31,10 +29,8 @@ public class Cars {
         }
     }
 
-    List<Integer> getCarsPosition() {
-        List<Integer> result = new LinkedList<>();
-        this.cars.forEach(car -> result.add(car.getCarPosition()));
-        return result;
+    List<Car> getCars(){
+        return cars;
     }
 
     @Override

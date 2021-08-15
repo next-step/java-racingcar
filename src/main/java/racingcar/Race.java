@@ -8,8 +8,8 @@ public class Race {
     private final Cars cars;
     private final MoveStrategy moveStrategy;
 
-    public Race(int carNum, int roundNum, MoveStrategy moveStrategy) {
-        this.cars = new Cars(carNum);
+    public Race(List<String> carNames, int roundNum, MoveStrategy moveStrategy) {
+        this.cars = new Cars(carNames);
         this.rounds = new Rounds(roundNum);
         this.moveStrategy = moveStrategy;
     }
@@ -18,7 +18,7 @@ public class Race {
         rounds.moveCarsForEachRound(cars, moveStrategy);
     }
 
-    public List<List<Integer>> getCarsPositionPerRound() {
-        return rounds.getCarsPositionForEachRound();
+    public List<List<Car>> getCarsStatusForEachRound() {
+        return rounds.getCarsStatusForEachRound();
     }
 }
