@@ -7,7 +7,7 @@ public class Racing {
     private Participants participants;
     private Round round;
 
-    public Racing(final String carNames, final int trial) {
+    public Racing(final String[] carNames, final int trial) {
         this.participants = new Participants(carNames);
         this.round = new Round(trial);
     }

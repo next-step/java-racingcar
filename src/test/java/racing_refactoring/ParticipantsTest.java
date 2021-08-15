@@ -12,7 +12,7 @@ public class ParticipantsTest {
     @Test
     @DisplayName(",으로 자동차 이름을 구분하여 참여할 자동차 객체를 생성한다")
     void setParticipants(){
-        String carNames = "pobi,crong,honux";
+        String[] carNames = new String[]{"pobi","crong","honux"};
         Participants participants = new Participants(carNames);
 
         assertThat(participants).isNotNull();
@@ -22,7 +22,7 @@ public class ParticipantsTest {
     void setParticipantsException(){
 
         Assertions.assertThatThrownBy(
-                () -> new Participants("")
+                () -> new Participants(new String[]{""})
         ).isInstanceOf(IllegalArgumentException.class);
     }
 }

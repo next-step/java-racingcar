@@ -9,11 +9,11 @@ import java.util.List;
 
 public final class Participants {
     private final static CarStrategy CAR_STRATEGY = new CarStrategyImpl();
-    private final static String NAME_SEPARATOR = ",";
+    private final static int INIT_DISTANCE = 0;
 
     private List<Car> carList;
 
-    public Participants(final String carNames) {
+    public Participants(final String[] carNames) {
         if(CAR_STRATEGY.underMinLength(carNames)){
             throw new IllegalArgumentException("이름을 입력해주세요");
         }
@@ -23,22 +23,18 @@ public final class Participants {
     public RacingResult race(final RacingStrategy racingStrategy){
         List<Car> racingResult = new ArrayList<>();
         for(Car car : carList){
-            racingResult.add(car.move(racingStrategy));
+            car.move(racingStrategy);
+            racingResult.add(car);
         }
         return new RacingResult(racingResult);
     }
 
-    private List<Car> setParticipants(final String carNames) {
+    private List<Car> setParticipants(final String[] carNames) {
         List<Car> participants = new ArrayList<>();
-
-        for(String names : splitParticipant(carNames)){
-            participants.add(new Car(names));
+        for(String names : carNames){
+            participants.add(new Car(names, INIT_DISTANCE));
         }
-
         return participants;
     }
 
-    private String[] splitParticipant(final String carNames){
-        return carNames.split(NAME_SEPARATOR);
-    }
 }

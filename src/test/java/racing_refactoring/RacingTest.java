@@ -11,10 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingTest {
 
     @ParameterizedTest
-    @DisplayName("주어진 자동차 이름과 경주 횟수로 Racing 객체 생성")
+    @DisplayName("주어진 자동차 이름과 경주 횟수로 Racing객체 생성")
     @CsvSource(value = {"'pobi,crong,honux',1", "'test,test2',3"})
     void setRacingValue(String carNames, int round) {
-        Racing racing = new Racing(carNames, round);
+        String[] carList = carNames.split(",");
+        Racing racing = new Racing(carList, round);
         assertThat(racing).isNotNull();
     }
 
@@ -23,7 +24,8 @@ class RacingTest {
     @ValueSource(ints = {4,5,6})
     void race(int round) {
         String carNames = "pobi,crong,honux";
-        Racing racing = new Racing(carNames, round);
+        String[] carList = carNames.split(",");
+        Racing racing = new Racing(carList, round);
 
         for (int trial = 0; trial < round; trial++) {
             racing.race(() -> true);

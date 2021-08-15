@@ -21,4 +21,9 @@ public class CarStrategyImpl implements CarStrategy{
         int nameLen = name.length();
         return nameLen > INPUT_MAX_LENGTH;
     }
+
+    @Override
+    public boolean underMinLength(String[] carNames) {
+        return carNames.length < INPUT_MIN_LENGTH;
+    }
 }

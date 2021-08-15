@@ -7,4 +7,6 @@ public interface CarStrategy {
     boolean underMinLength(int trial);
 
     boolean overMaxLength(String name);
+
+    boolean underMinLength(String[] carNames);
 }
