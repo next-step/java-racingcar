@@ -26,7 +26,7 @@ public class RacingResult {
         return winners;
     }
 
-    public int findMaxDistance(){
+    private int findMaxDistance(){
         int maxDistance = 0;
         for (Car car : carList) {
             maxDistance = car.findFartherDistance(maxDistance);

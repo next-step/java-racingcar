@@ -16,7 +16,7 @@ public class CarTest {
 
     @BeforeEach
     void setRacingCar(){
-        car = new Car("pobi");
+        car = new Car("pobi", 0);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class CarTest {
     @DisplayName("Car 생성 예외 테스트")
     void setCarException(){
         assertThatThrownBy(
-                () -> new Car("carException")
+                () -> new Car("carException", 0)
         ).isInstanceOf(IllegalArgumentException.class);
     }
 

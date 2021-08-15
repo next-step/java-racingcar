@@ -11,11 +11,12 @@ public final class Car {
     private String name;
     private int distance;
 
-    public Car(final String name) {
+    public Car(final String name, final int distance) {
         if(CAR_STRATEGY.underMinLength(name) || CAR_STRATEGY.overMaxLength(name)){
             throw new IllegalArgumentException("이름은 한글자 이상, 5글자 이하로 입력되어야합니다.");
         }
         this.name = name;
+        this.distance = distance;
     }
 
     @Override
@@ -23,11 +24,10 @@ public final class Car {
         return name;
     }
 
-    public Car move(final RacingStrategy racingStrategy){
+    public void move(final RacingStrategy racingStrategy){
         if(racingStrategy.isMovable()){
             distance++;
         }
-        return this;
     }
 
     public boolean compareDistance(final int target){
