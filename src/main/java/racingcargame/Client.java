@@ -1,5 +1,10 @@
 package racingcargame;
 
+import racingcargame.controller.RacingCarGame;
+import racingcargame.domain.RandomNumberOption;
+import racingcargame.domain.RandomOption;
+import racingcargame.view.InputView;
+
 public class Client {
     public static void main(String[] args) {
         InputView inputView = new InputView();

@@ -1,7 +1,12 @@
-package racingcargame;
+package racingcargame.controller;
+
+import racingcargame.domain.RacingCar;
+import racingcargame.domain.RacingCarName;
+import racingcargame.domain.RandomOption;
+import racingcargame.domain.Winner;
+import racingcargame.view.ResultView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class RacingCarGame {
@@ -9,7 +14,7 @@ public class RacingCarGame {
     private ResultView resultView = new ResultView();
     private int count;
 
-    RacingCarGame(String nameOfCars, int count) {
+    public RacingCarGame(String nameOfCars, int count) {
         this.count = count;
         cars = createCars(nameOfCars);
     }
@@ -32,28 +37,8 @@ public class RacingCarGame {
     }
 
     public void showWinner() {
-        resultView.printWinner(findWinners(cars));
-    }
-
-    public String findWinners(List<RacingCar> cars) {
-        cars.sort(Collections.reverseOrder());
-
-        RacingCar winner = cars.get(0);
-        int winnerDistance = winner.showDistance();
-        String winnerName = winner.showCarName();
-
-        for (int i = 1; i < cars.size(); i++) {
-            winnerName += selectTie(cars.get(i), winnerDistance);
-        }
-        return winnerName;
-    }
-
-    private String selectTie(RacingCar car, int winnerDistance) {
-        String tie = "";
-        if(car.isWinner(winnerDistance)) {
-            tie = ", " + car.showCarName();
-        }
-        return tie;
+       Winner winners = new Winner(cars);
+       resultView.printWinner(winners.getCarNames());
     }
 
     private void round(RandomOption randomOption) {

@@ -1,8 +1,10 @@
-package racingcargame;
+package racingcargame.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcargame.domain.RacingCar;
+import racingcargame.domain.RandomOption;
 import racingcargame.fake.FakeFailMoveRandomOption;
 import racingcargame.fake.FakeSuccessMoveRandomOption;
 

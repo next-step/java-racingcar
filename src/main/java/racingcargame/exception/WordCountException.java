@@ -1,10 +1,6 @@
-package racingcargame;
+package racingcargame.exception;
 
 public class WordCountException extends Exception {
-    public WordCountException() {
-
-    }
-
     public WordCountException(String message) {
         super(message);
     }

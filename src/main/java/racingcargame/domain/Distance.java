@@ -1,17 +1,21 @@
-package racingcargame;
+package racingcargame.domain;
 
 public class Distance {
-    private int value = 0;
+    private int value;
 
     public Distance(int value) {
         this.value = value;
     }
 
     public int increase() {
-        return value += 1;
+        return ++value;
     }
 
     public int getValue() {
         return value;
+    }
+
+    public boolean isSame(int winnerDistance) {
+        return this.value == winnerDistance;
     }
 }

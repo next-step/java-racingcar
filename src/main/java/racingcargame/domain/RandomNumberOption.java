@@ -1,4 +1,4 @@
-package racingcargame;
+package racingcargame.domain;
 
 import java.util.Random;
 
