@@ -8,7 +8,7 @@ public class Main {
         int roundCount = InputView.receiveRoundCount();
 
         Cars cars = new Cars(CarFactory.makeCars(carNames));
-        RacingGame racingGame = new RacingGame(roundCount, new RandomMovableStrategy());
+        RacingGame racingGame = new RacingGame(new RoundCount(roundCount), new RandomMovableStrategy());
         RaceResult raceResult = racingGame.race(cars);
         ResultView.print(raceResult);
     }

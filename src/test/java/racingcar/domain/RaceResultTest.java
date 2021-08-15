@@ -18,7 +18,7 @@ public class RaceResultTest {
         Car benz = new Car("benz");
         Car audi = new Car("audi");
         List<Car> cars = Arrays.asList(bmw, benz, audi);
-        RaceResult raceResult = new RaceResult(3, cars);
+        RaceResult raceResult = new RaceResult(new RoundCount(3), cars);
 
         moveCars(cars, 3);
         raceResult.report(cars);
@@ -41,7 +41,7 @@ public class RaceResultTest {
         Car benz = new Car("benz");
         Car audi = new Car("audi");
         List<Car> cars = Arrays.asList(bmw, benz, audi);
-        RaceResult raceResult = new RaceResult(3, cars);
+        RaceResult raceResult = new RaceResult(new RoundCount(3), cars);
 
         moveCars(cars, 3);
         raceResult.report(cars);
