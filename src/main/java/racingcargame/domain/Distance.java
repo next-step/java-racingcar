@@ -16,9 +16,6 @@ public class Distance {
     }
 
     public boolean isSame(int winnerDistance) {
-        if(this.value == winnerDistance) {
-            return true;
-        }
-        return false;
+        return this.value == winnerDistance;
     }
 }
