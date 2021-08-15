@@ -11,7 +11,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RacingTest {
-
     Racing racing = new Racing();
 
     @DisplayName("initCars 메소드 호출하여 입력값과 return list size가 동일한지 확인")
