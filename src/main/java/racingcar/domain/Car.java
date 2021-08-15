@@ -1,12 +1,13 @@
 package racingcar.domain;
 
-import java.util.Objects;
-
 public class Car {
+    private static int ID_INDEX = 1;
+    private int id;
     private Name name;
     private Position position;
 
     public Car(String name) {
+        this.id = ID_INDEX++;
         this.name = new Name(name);
         this.position = new Position();
     }
@@ -17,24 +18,15 @@ public class Car {
         }
     }
 
+    public int getId() {
+        return id;
+    }
+
     public Position getPosition() {
         return position;
     }
 
     public Name getName() {
         return name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, position);
     }
 }
