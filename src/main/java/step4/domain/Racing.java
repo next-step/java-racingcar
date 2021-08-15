@@ -44,14 +44,16 @@ public class Racing {
     }
 
     public List<String> addIfWinner(List<String> winners, Car car) {
+        int distance = car.getDistance().length();
 
-        if (winnerDistance == car.getDistance().length()) {
+        if (winnerDistance == distance) {
             // 같을 경우 이름 추가
             winners.add(car.getName());
-        } else if (winnerDistance < car.getDistance().length()) {
+        } else if (winnerDistance < distance) {
             // input 차의 거리가 더 클 경우 list 생성
             winners = new ArrayList<>();
             winners.add(car.getName());
+            winnerDistance = distance;
         }
 
         return winners;

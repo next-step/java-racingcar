@@ -15,7 +15,7 @@ public class ResultView {
 
     public void printDistance(List<Car> cars) {
         for(Car car : cars) {
-            System.out.print(car);
+            System.out.print(car.getName());
             System.out.print(COLON);
             System.out.println(car.getDistance());
         }
