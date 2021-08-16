@@ -1,38 +1,29 @@
 package Car.domain;
 
-
-import java.util.Random;
-
-
 public class Car {
-    private static final int MIN_MOVE_NUMBER = 4;
-    private static final int MAX_SIZE_NAME_LENGTH = 5;
-
-    private int moveCount;
-    private String carName;
+    private MoveCount moveCount;
+    private final CarName carName;
 
     public Car(String carName) {
-        validateCarName(carName);
-        this.carName = carName;
+        this.carName = new CarName(carName);
+        this.moveCount = new MoveCount();
+    }
+
+    public Car(String carName, MovingStrategy movingStrategy) {
+        this.carName = new CarName(carName);
+        moveCount = new MoveCount(movingStrategy);
     }
 
     public String getCarName() {
-        return carName;
+        return carName.getCarName();
     }
 
     public int getMoveCount() {
-        return moveCount;
+        return moveCount.getMoveCount();
     }
 
     public void move(int inputNumber) {
-        if (inputNumber >= MIN_MOVE_NUMBER) {
-            moveCount++;
-        }
+        moveCount = moveCount.move(inputNumber);
     }
 
-    private void validateCarName(String carName) {
-        if (carName.length() > MAX_SIZE_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 " + MAX_SIZE_NAME_LENGTH + "자를 초과할 수 없습니다.");
-        }
-    }
 }
