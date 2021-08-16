@@ -1,25 +1,5 @@
 package racingcargame.view;
 
-<<<<<<< HEAD
-import racingcargame.model.RacingCar;
-
-import java.util.List;
-
-public class RacingCarGameOutputView {
-    private static final String STEP = "-";
-
-    public void outputRound(List<RacingCar> cars) {
-        for (RacingCar car : cars) {
-            System.out.println(car.getName() + " : " + stackUpSteps(car.getStep()));
-        }
-        System.out.println();
-    }
-
-    private String stackUpSteps(int step) {
-        StringBuilder bar = new StringBuilder();
-        for (int i = 0; i < step; i++) {
-            bar.append(STEP);
-=======
 import racingcargame.model.History;
 import racingcargame.model.RacingCar;
 
@@ -47,17 +27,11 @@ public class RacingCarGameOutputView {
         StringBuilder bar = new StringBuilder();
         for (int i = 0; i < step; i++) {
             bar.append(BAR);
->>>>>>> origin/step2
         }
         return bar.toString();
     }
 
-<<<<<<< HEAD
-    public void outputWinners(String winners) {
-        System.out.println("최종 우승자:" + winners);
-=======
     public void outputWinners(List<String> winners) {
         System.out.println("최종 우승자: " + String.join(", ", winners));
->>>>>>> origin/step2
     }
 }

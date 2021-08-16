@@ -58,7 +58,7 @@ step2
 - MVC 패턴 기반으로 리팩터링해 view 패키지의 객체가 domain 패키지 객체에 의존할 수 있지만, domain 패키지의 객체는 view 패키지 객체에 의존하지 않도록 구현한다.
 
 ## Racing Car Game 구현 기능 목록
-- [x] 사용자로부터 자동차 경주에 참가하는 자동차들의 이름을 문자열로 입력받는다. 
+- [x] 사용자로부터 자동차 경주에 참가하는 자동차들의 이름을 문자열로 입력받는다.
 - [x] 사용자로부터 게임을 시도할 횟수를 입력받는다.
 - [x] 게임을 시도할 횟수로 음수를 입력할 경우 IllegalArgumentException을 발생시킨다.
 - [x] 쉼표(,)를 기준으로 자동차 이름을 구별하여 racingcargame.model.RacingCar 객체를 생성한다.
@@ -86,18 +86,18 @@ step2
 - `RacingCar#getStep` : getter
 
 ### RacingCars 의 기능
-- BAR 
+- BAR
 - (List<RacingCar>) cars
 - (RacingCarHistory) history
 - `RacingCars#RacingCars` : 생성자
-- `RacingCars#playGame` : 게임 시작  
+- `RacingCars#playGame` : 게임 시작
 - `RacingCars#playRound` : 라운드 시작
-- `RacingCars#stackUpBars` : 자동차 이동한 정도 나타내기  
+- `RacingCars#stackUpBars` : 자동차 이동한 정도 나타내기
 - `RacingCars#findMaxScore` : 최고 점수 반환
 - `RacingCars#findWinners` : 우승자 반환
 
 ### RacingCarHistory 의 기능
-- (List<String>) history 
+- (List<String>) history
 - `RacingCarHistory#RacingCarHistory` : 생성자
 - `RacingCarHistory#addHistory` : 실행 결과 한 줄씩 쌓기
 - `RacingCarHistory#getHistory` : getter
@@ -116,7 +116,7 @@ step2
 - SEPARATOR
 - (RacingCarGameInputView) inputView
 - (RacingCarGameOutputView) outputView
-- (RacingCarHistory) racingCarHistory  
+- (RacingCarHistory) racingCarHistory
 - `RacingCarGameController#start` : 시작. 흐름 제어
 - `RacingCarGameController#createRacingCars` : 입력받은 자동차이름으로 자동차들을 생성
 - `RacingCarGameController#splitBySeparator` : 문자열을 구분자로 분리

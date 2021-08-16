@@ -3,15 +3,9 @@ package racingcargame.view;
 import java.util.Scanner;
 
 public class RacingCarGameInputView {
-<<<<<<< HEAD
-    private static Scanner scanner = new Scanner(System.in);
-
-    public static String inputCarNames() {
-=======
     private final Scanner scanner = new Scanner(System.in);
 
     public String inputCarNames() {
->>>>>>> origin/step2
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         return scanner.nextLine();
     }
