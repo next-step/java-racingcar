@@ -1,18 +1,13 @@
 package racingcar.domain;
 
-import org.codehaus.plexus.util.StringUtils;
-
 public class Car {
     static final int CRITERION_FOR_MOVING = 4;
 
     private Location location;
-    private String name = "Unknown";
+    private Name name;
 
     Car(String name) {
-        if (isValidName(name)) {
-            this.name = name;
-        }
-
+        this.name = new Name(name);
         this.location = new Location(0);
     }
 
@@ -43,10 +38,6 @@ public class Car {
     }
 
     public String getName() {
-        return this.name;
-    }
-
-    boolean isValidName(String name) {
-        return !(StringUtils.isBlank(name));
+        return this.name.getName();
     }
 }

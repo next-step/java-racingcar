@@ -71,15 +71,6 @@ public class CarTest {
         assertThat(currentLocation - previousLocation).isEqualTo(expected);
     }
 
-    @DisplayName("isValidName : Car의 이름으로 입력하기 적합한 데이터인지 검사")
-    @ParameterizedTest(name = "{index} {displayName} {arguments}")
-    @NullAndEmptySource
-    void isValidName(String name) {
-        Car car = new Car();
-
-        assertThat(car.isValidName(name)).isEqualTo(false);
-    }
-
     @DisplayName("Car : Car 객체 생성 시 입력하는 이름이 정상적으로 출력된다.")
     @ParameterizedTest(name = "{index} {displayName} {arguments}")
     @CsvSource({"ABCD, ABCD", "Porsche, Porsche", "Ferrari, Ferrari", "Hyundai, Hyundai", ", Unknown", "' ', Unknown"})

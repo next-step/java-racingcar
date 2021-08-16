@@ -11,8 +11,10 @@
 ## 리팩토링 To-do List
 - [X] StartView.java 삭제 반영
 - [X] Car : Car 클래스 location 상태값 클래스로 분리
-- [ ] Car의 getLocation 삭제 (getLocation을 참조하는 곳을 메세지 전송 형태로 변경)
+- [ ] Car의 getLocation 삭제 (getLocation을 호출하는 곳을 메세지 전송 형태로 변경)
 - [X] Car : Car name 유효성 검사에서 String API isBlank 사용하도록 변경
+- [X] Car : name 변수 클래스로 분리
+- [ ] Car : getName 삭제 (getName을 호출하는 곳을 메세지 전송 형태로 변경)
 - [ ] Random : Random 인스턴스의 의존성을 최상위 node로 옮기기
 - [ ] Race : ArrayList cars를 일급 컬랙션 클래스로 분리
 - [ ] Overall : 인스턴스 변수의 default 값을 명시적 초기화가 아닌 생성자에서 초기화 되도록 변경
