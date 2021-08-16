@@ -30,4 +30,11 @@ public class CarWinCheckService {
         }
         return winList;
     }
+
+    private int insertTotalCarResult(int position, int max) {
+        if(position == max) {
+
+        }
+        return position;
+    }
 }

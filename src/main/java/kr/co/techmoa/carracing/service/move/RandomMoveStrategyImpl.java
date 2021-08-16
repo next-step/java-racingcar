@@ -4,9 +4,10 @@ import java.util.Random;
 
 public class RandomMoveStrategyImpl implements MoveStategy{
     public static final int OPERATION_MAX = 10;
+    public static final Random RANDOM = new Random();
 
     @Override
     public int move() {
-        return new Random().nextInt(OPERATION_MAX);
+        return RANDOM.nextInt(OPERATION_MAX);
     }
 }

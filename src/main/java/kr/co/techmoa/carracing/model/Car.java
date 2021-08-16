@@ -1,29 +1,43 @@
 package kr.co.techmoa.carracing.model;
 
-import lombok.Getter;
+import kr.co.techmoa.carracing.service.move.MoveStategy;
 
-@Getter
 public class Car {
 
+    private static final int ADVENCE_LIMIT = 4;
+
     private Position position;
-    private String carName;
-    private CarEngine carEngine;
+    private CarName carName;
 
-    public static final int CARNAME_MAX = 5;
-
-    public Car(String carName) {
-        if(carName.length() > CARNAME_MAX){
-            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
-        }
+    public Car(CarName carName) {
         this.carName = carName;
-        carEngine = new CarEngine();
         position = new Position(0);
     }
 
-    public Car move(int moveCnt) {
-        Position moveStep = new Position(moveCnt);
-        this.position = position.plus(moveStep);
+    public String getCarName() {
+        return carName.getCarName();
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public Car move(boolean isMove) {
+        if(isMove)
+            this.position = position.plus();
         return this;
+    }
+
+    public boolean moveOperator(MoveStategy moveStategy) {
+        int operatorSu = moveStategy.move();
+        return isAdvence(operatorSu);
+    }
+
+    private boolean isAdvence(int operator) {
+        if(operator < ADVENCE_LIMIT) {
+            return Move.REVERSE.isCarMove();
+        }
+        return Move.ADVANCE.isCarMove();
     }
 
 }

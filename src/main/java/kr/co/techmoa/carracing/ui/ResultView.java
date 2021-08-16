@@ -28,7 +28,7 @@ public class ResultView {
     public void printMove(List<Car> round) {
         for(Car car: round) {
             System.out.print(car.getCarName() + SEPARATOR);
-            for(int i = 0; i<car.getPosition().getCoordinate(); i++) {
+            for(int i= 0; i< car.getPosition().getCoordinate(); i++) {
                 System.out.print(RASCING_DISTINC);
             }
             System.out.println("");
@@ -38,7 +38,7 @@ public class ResultView {
 
     public String printWin(List<Integer> cars , List<Car> round) {
         String winUser = "";
-        for(int i = 0 ; i < cars.size() ; i++) {
+        for(int i= 0 ; i< cars.size() ; i++) {
             winUser += round.get(cars.get(i)).getCarName();
             if(i != cars.size()-1) {
                 winUser += SEPARATOR_WIN;

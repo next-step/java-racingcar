@@ -8,13 +8,14 @@ import java.util.Objects;
 public class Position {
 
     private int coordinate;
+    private final int addon = 1;
 
     public Position(final int coordinate) {
         this.coordinate = coordinate;
     }
 
-    public Position plus(Position position) {
-        this.coordinate += position.getCoordinate();
+    public Position plus() {
+        this.coordinate += addon;
         return this;
     }
 

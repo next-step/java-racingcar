@@ -9,17 +9,13 @@ class CarEngineTest {
 
     @Test
     void 전진() {
-        CarEngine carEngine = new CarEngine();
-        int move = carEngine.moveOperator(() -> 4);
-
-        assertEquals(1, move);
+        boolean move = new Car(new CarName("joo")).moveOperator(() -> 4);
+        assertEquals(true, move);
     }
 
     @Test
     void 후진() {
-        CarEngine carEngine = new CarEngine();
-        int move = carEngine.moveOperator(() -> 3);
-
-        assertEquals(0, move);
+        boolean move = new Car(new CarName("joo")).moveOperator(() -> 3);
+        assertEquals(false, move);
     }
 }
