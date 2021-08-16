@@ -1,6 +1,7 @@
-package step45;
+package step45.view;
 
 import java.util.List;
+import step45.domain.Car;
 
 public class ResultView {
 

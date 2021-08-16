@@ -1,4 +1,4 @@
-package step45;
+package step45.domain;
 
 public interface MoveStrategy {
 

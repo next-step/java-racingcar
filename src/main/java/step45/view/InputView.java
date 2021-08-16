@@ -1,4 +1,4 @@
-package step45;
+package step45.view;
 
 import java.util.Scanner;
 

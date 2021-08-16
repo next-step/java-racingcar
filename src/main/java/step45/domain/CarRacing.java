@@ -1,7 +1,8 @@
-package step45;
+package step45.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import step45.view.ResultView;
 
 public class CarRacing {
 

@@ -1,4 +1,6 @@
-package step45;
+package step45.domain;
+
+import step45.utils.RandomValueGenerator;
 
 public class RandomMoveStrategy implements MoveStrategy {
 

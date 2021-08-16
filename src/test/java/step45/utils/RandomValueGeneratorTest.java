@@ -1,4 +1,4 @@
-package step45;
+package step45.utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
