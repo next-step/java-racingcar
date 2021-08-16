@@ -1,7 +1,8 @@
 package step3.domain;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import step3.utils.RandomUtils;
 
@@ -9,12 +10,9 @@ public class Cars {
 	private final List<Car> cars;
 
 	public Cars(String[] names) {
-		List<Car> cars = new ArrayList<>();
-		for (String name : names) {
-			Car car = new Car(name);
-			cars.add(car);
-		}
-		this.cars = cars;
+		this.cars = Arrays.stream(names)
+			.map(Car::new)
+			.collect(Collectors.toList());
 	}
 
 	public void raceOneTrial() {
@@ -24,7 +22,7 @@ public class Cars {
 		});
 	}
 
-	public List<Car> getResultOneTrial() {
+	public List<Car> getCars() {
 		return cars;
 	}
 }
