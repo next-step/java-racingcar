@@ -7,12 +7,14 @@ public class CarRacing {
 
   private int numOfMove;
   private final List<Car> carList = new ArrayList<>();
+  private final MoveStrategy moveStrategy;
 
-  public CarRacing(final String[] carNames, final int numOfMove) {
+  public CarRacing(final String[] carNames, final int numOfMove, MoveStrategy moveStrategy) {
     this.numOfMove = numOfMove;
     for (String carName : carNames) {
-      carList.add(new Car(carName, new RandomMoveStrategy()));
+      carList.add(new Car(carName));
     }
+    this.moveStrategy = moveStrategy;
   }
 
   public boolean isFinish() {
@@ -20,7 +22,7 @@ public class CarRacing {
   }
 
   public void moveAllCars() {
-    carList.forEach(Car::move);
+    carList.forEach((car) -> car.move(moveStrategy.getMoveDistance()));
     this.numOfMove--;
   }
 
