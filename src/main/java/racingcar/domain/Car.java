@@ -1,25 +1,31 @@
 package racingcar.domain;
 
+import org.codehaus.plexus.util.StringUtils;
+
 public class Car {
     static final int CRITERION_FOR_MOVING = 4;
 
-    private int location = 0;
+    private Location location;
     private String name = "Unknown";
 
     Car(String name) {
         if (isValidName(name)) {
             this.name = name;
         }
+
+        this.location = new Location(0);
     }
 
-    Car() {}
+    Car() {
+        this("Unknown");
+    }
 
     public int getLocation() {
-        return location;
+        return location.getLocation();
     }
 
     void goForward() {
-        location++;
+        location = location.goForward();
     }
 
     boolean isAbleToMove(int value) throws IllegalArgumentException {
@@ -41,6 +47,6 @@ public class Car {
     }
 
     boolean isValidName(String name) {
-        return !(name == null || name.trim().isEmpty());
+        return !(StringUtils.isBlank(name));
     }
 }
