@@ -2,11 +2,10 @@ package step45.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import step45.view.ResultView;
 
 public class CarRacing {
 
-  private final int numOfMove;
+  private int numOfMove;
   private final List<Car> carList = new ArrayList<>();
 
   public CarRacing(final String[] carNames, final int numOfMove) {
@@ -16,27 +15,26 @@ public class CarRacing {
     }
   }
 
-  public void startRacing() {
-    ResultView.printResultTitle();
-    for (int i = 0; i < numOfMove; i++) {
-      moveAllCars();
-      ResultView.printCurrentRoundResult(carList);
-      ResultView.printRoundDivider();
-    }
-    ResultView.printWinnerList(getWinnerList());
+  public boolean isFinish() {
+    return this.numOfMove > 0;
   }
 
-  private void moveAllCars() {
+  public void moveAllCars() {
     carList.forEach(Car::move);
+    this.numOfMove--;
   }
 
-  private String[] getWinnerList() {
+  public String[] getWinnerList() {
     List<String> winnerList = new ArrayList<>();
     int maxLocation = getMaxLocation();
     for (Car car : carList) {
       addToWinnerList(winnerList, maxLocation, car);
     }
     return winnerList.toArray(new String[winnerList.size()]);
+  }
+
+  public List<Car> getCarList() {
+    return carList;
   }
 
   private int getMaxLocation() {
