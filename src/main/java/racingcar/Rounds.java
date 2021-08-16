@@ -44,4 +44,8 @@ public class Rounds {
         Arrays.stream(rounds).forEach(round -> result.add(round.getCarsStatusOfCurrentRound()));
         return result;
     }
+
+    List<Car> getCarsStatusOfLastRound() {
+        return rounds[rounds.length-1].getCarsStatusOfCurrentRound();
+    }
 }
