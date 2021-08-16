@@ -1,23 +1,19 @@
-package racing_winner.domain;
+package racing_refactoring.domain;
 
-import racing_winner.strategy.RacingStrategy;
+import racing_refactoring.strategy.RacingStrategy;
 
-public final class Racing {
+public class Racing {
 
     private Participants participants;
     private Round round;
 
-    public Racing(final Participants participants, final Round round) {
-        this.participants = participants;
-        this.round = round;
-    }
-    public Racing(final String[] carNames, final int round) {
+    public Racing(final String[] carNames, final int trial) {
         this.participants = new Participants(carNames);
-        this.round = new Round(round);
+        this.round = new Round(trial);
     }
 
     public RacingResult race(final RacingStrategy racingStrategy){
-        if(roundFinish()) {
+        if(roundFinish()){
             throw new IllegalArgumentException("입력한 경기 이상의 경주는 불가능합니다");
         }
         round.next();
@@ -25,6 +21,6 @@ public final class Racing {
     }
 
     public boolean roundFinish(){
-        return round.isFinish();
+        return round.isFinished();
     }
 }

@@ -11,7 +11,7 @@ public final class Round {
         this.trial = trial;
     }
 
-    public void race(){
+    public void next(){
         trial--;
     }
 
