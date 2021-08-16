@@ -1,6 +1,8 @@
 package Car.view;
 
 import Car.domain.Car;
+import Car.domain.Cars;
+import Car.domain.MoveCount;
 
 import java.util.List;
 
@@ -17,8 +19,8 @@ public class OutputView {
     }
 
     public void printResult(List<Car> cars) {
-
         StringBuilder stringBuilder = new StringBuilder();
+
         for (Car car : cars) {
             stringBuilder.append(car.getCarName()).append(" : -");
             drawMovements(stringBuilder, car.getMoveCount());

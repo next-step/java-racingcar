@@ -1,47 +1,37 @@
 package Car.domain;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class RacingCar {
     private static final int RANDOM_NUMBER_BOUND = 10;
-    private static final int MAX_SIZE_NAME_LENGTH = 5;
     private static final int MIN_CAR_COUNT = 0;
 
-    private List<Car> cars;
+    private Cars cars;
 
     public RacingCar(String[] carNames) {
-        validateCarsSize(carNames);
-        cars = Arrays.stream(carNames)
-                .map(carName -> new Car(carName))
-                .collect(Collectors.toList());
+        cars = new Cars(carNames);
+    }
+
+    public RacingCar(String[] carNames, MovingStrategy movingStrategy) {
+        cars = new Cars(carNames, movingStrategy);
     }
 
     public List<Car> getCars() {
-        return cars;
+        return cars.getCars();
     }
 
-    public void gameStart(Random random, int randomNumberBound) {
-        for (Car car : cars) {
-            car.move(random.nextInt(RANDOM_NUMBER_BOUND));
-        }
-    }
+    public void gameStart(Random random, int bound) {
+        List<Integer> inputList = new ArrayList<>();
+        int carsSize = cars.getCarsSize();
 
-    private void validateCarsSize(String[] carNames) {
-        if (carNames.length <= MIN_CAR_COUNT) {
-            throw new IllegalArgumentException(MIN_CAR_COUNT + "보다 큰 값을 입력해주세요.");
+        for (int i = 0; i < carsSize; i++) {
+            inputList.add(random.nextInt(bound));
         }
+
+        cars.move(inputList);
     }
 
     public List<Car> getWinner() {
-        Comparator<Car> carComparatorMaxMoveCount = Comparator.comparingInt(Car::getMoveCount);
-        int maxMoveCount = cars.stream()
-                .mapToInt(Car::getMoveCount)
-                .max()
-                .orElse(0);
-
-        return cars.stream()
-                .filter(car -> car.getMoveCount() == maxMoveCount)
-                .collect(Collectors.toList());
+        return cars.getWinner();
     }
 }
