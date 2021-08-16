@@ -14,14 +14,6 @@ public class Car {
         position = new Position(0);
     }
 
-    public String getCarName() {
-        return carName.getCarName();
-    }
-
-    public Position getPosition() {
-        return position;
-    }
-
     public Car move(boolean isMove) {
         if(isMove)
             this.position = position.plus();
@@ -40,4 +32,11 @@ public class Car {
         return Move.ADVANCE.isCarMove();
     }
 
+    public String getCarName() {
+        return carName.getCarName();
+    }
+
+    public Position getPosition() {
+        return position;
+    }
 }

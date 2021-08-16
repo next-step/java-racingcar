@@ -1,24 +1,20 @@
 package kr.co.techmoa.carracing.ui.dto;
 
 import kr.co.techmoa.carracing.model.Car;
+import kr.co.techmoa.carracing.service.RacingResults;
 
 import java.util.List;
 
 public class OutputDTO {
 
-    private List<List<Car>> rounds;
-    private List<Integer> winList;
+    private List<RacingResults> results;
 
-    public List<List<Car>> getRounds() {
-        return rounds;
+    public OutputDTO(List<RacingResults> results) {
+        this.results = results;
     }
 
-    public OutputDTO(List<List<Car>> rounds , List<Integer> winList) {
-        this.rounds = rounds;
-        this.winList = winList;
+    public List<RacingResults> getResults() {
+        return results;
     }
 
-    public List<Integer> getWinList() {
-        return winList;
-    }
 }

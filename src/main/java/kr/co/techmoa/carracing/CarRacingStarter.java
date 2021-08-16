@@ -13,8 +13,7 @@ public class CarRacingStarter {
         InputView inputView = new InputView();
         InputDTO inputDTO =  inputView.getInputDTO();
 
-        RacingCarGameService racingCarGameService = new RacingCarGameService(inputDTO);
-        OutputDTO outputDTO = racingCarGameService.start();
+        OutputDTO outputDTO = new RacingCarGameService().start(inputDTO);
 
         ResultView resultView = new ResultView();
         resultView.printResult(outputDTO);

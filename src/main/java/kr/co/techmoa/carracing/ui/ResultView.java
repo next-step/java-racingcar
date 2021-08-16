@@ -1,49 +1,48 @@
 package kr.co.techmoa.carracing.ui;
 
-import kr.co.techmoa.carracing.model.Car;
+import kr.co.techmoa.carracing.service.RacingResult;
+import kr.co.techmoa.carracing.service.RacingResults;
 import kr.co.techmoa.carracing.ui.dto.OutputDTO;
-import kr.co.techmoa.carracing.service.CarWinCheckService;
 
 import java.util.List;
 
 public class ResultView {
 
-    public static final String RASCING_DISTINC = "-";
-    public static final String SEPARATOR = " : ";
-    public static final String SEPARATOR_WIN = " , ";
-    public static final String WIN_TEXT = " 가 최종 우승했습니다.";
+    private static final String MOVE_OUTPUT = "-";
 
-    public void printResult(OutputDTO outputDTO) {
+    public void printResult(OutputDTO outputDTO){
+        List<RacingResults> racingResultsList = outputDTO.getResults();
+        viewResult(racingResultsList);
+        int lastResult = racingResultsList.size() - 1;
+        RacingResults racingResults = racingResultsList.get(lastResult);
 
-        List<List<Car>> roundAll = outputDTO.getRounds();
-        for(int i= 0; i< roundAll.size(); i++) {
-            List<Car> round = roundAll.get(i);
-            printMove(round);
+        List<String> winner = racingResults.getWinner();
+        viewChampion(winner);
+    }
+    public void viewResult(List<RacingResults> results) {
+        for (int i = 0; i < results.size(); i++) {
+            RacingResults resultOne = results.get(i);
+            viewOneTrial(resultOne.getResults());
+            System.out.println();
         }
-        List<Car> round = roundAll.get(0);
-        List<Integer> winList = outputDTO.getWinList();
-        System.out.println(printWin(winList , round));
     }
 
-    public void printMove(List<Car> round) {
-        for(Car car: round) {
-            System.out.print(car.getCarName() + SEPARATOR);
-            for(int i= 0; i< car.getPosition().getCoordinate(); i++) {
-                System.out.print(RASCING_DISTINC);
-            }
-            System.out.println("");
+    private void viewOneTrial(List<RacingResult> cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            viewOneCar(cars.get(i));
         }
-        System.out.println("");
     }
 
-    public String printWin(List<Integer> cars , List<Car> round) {
-        String winUser = "";
-        for(int i= 0 ; i< cars.size() ; i++) {
-            winUser += round.get(cars.get(i)).getCarName();
-            if(i != cars.size()-1) {
-                winUser += SEPARATOR_WIN;
-            }
+    private void viewOneCar(RacingResult result) {
+        System.out.print(result.getName() + " : ");
+        for (int i = 0; i < result.getPosition(); i++) {
+            System.out.print(MOVE_OUTPUT);
         }
-        return winUser + WIN_TEXT;
+        System.out.println();
+    }
+
+    public void viewChampion(List<String> names) {
+        String champions = String.join(", ", names);
+        System.out.println(champions + "가 최종 우승했습니다.");
     }
 }
