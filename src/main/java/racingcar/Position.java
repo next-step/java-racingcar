@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Position {
     private final int position;
+    private static final int CAR_POSITION_MINIMUM = 0;
 
     public Position(int position) {
         validatePosition(position);
@@ -19,8 +20,8 @@ public class Position {
     }
 
     private void validatePosition(int position) {
-        if (position < 0) {
-            throw new IllegalArgumentException("자동차의 위치는 0 이상의 정수여야합니다.");
+        if (position < CAR_POSITION_MINIMUM) {
+            throw new IllegalArgumentException("자동차의 위치는 "+CAR_POSITION_MINIMUM+" 이상의 정수여야합니다.");
         }
     }
 

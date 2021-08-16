@@ -3,6 +3,8 @@ package racingcar;
 public class Name {
 
     private final String name;
+    private static final int CAR_NANE_MINIMUM_LENGTH = 1;
+    private static final int CAR_NANE_MAXIMUM_LENGTH = 5;
 
     public Name(String name) {
         validateName(name);
@@ -14,8 +16,8 @@ public class Name {
     }
 
     private void validateName(String name) {
-        if (name.length() <= 0 || name.length() > 5) {
-            throw new IllegalArgumentException("자동차의 이름은 1글자 이상, 5글자 이하입니다.");
+        if (name.length() < CAR_NANE_MINIMUM_LENGTH || name.length() > CAR_NANE_MAXIMUM_LENGTH) {
+            throw new IllegalArgumentException("자동차의 이름은 "+CAR_NANE_MINIMUM_LENGTH+"글자 이상, "+CAR_NANE_MAXIMUM_LENGTH+"글자 이하입니다.");
         }
     }
 
