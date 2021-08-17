@@ -19,7 +19,7 @@ public class InputView {
   }
 
   private static void trim(String[] carNames) {
-    for (int i = 0; i < carNames.length; i++){
+    for (int i = 0; i < carNames.length; i++) {
       carNames[i] = carNames[i].trim();
     }
   }

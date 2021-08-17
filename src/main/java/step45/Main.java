@@ -15,10 +15,10 @@ public class Main {
 
     ResultView.printResultTitle();
     while (carRacing.isFinish()) {
-      carRacing.moveAllCars();
-      ResultView.printCurrentRoundResult(carRacing.getCarList());
+      carRacing.moveCars();
+      ResultView.printCurrentRoundResult(carRacing.getCars());
       ResultView.printRoundDivider();
     }
-    ResultView.printWinnerList(carRacing.getWinnerList());
+    ResultView.printWinnerList(carRacing.getWinners());
   }
 }
