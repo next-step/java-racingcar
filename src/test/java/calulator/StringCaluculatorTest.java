@@ -45,4 +45,11 @@ class StringCaluculatorTest {
         StringCaluculator stringCaluculator = new StringCaluculator();
         assertThat(stringCaluculator.calculate("1+2+3")).isEqualTo(6);
     }
+
+    //2 + 3 * 4 / 2
+    @Test
+    void numbersTest2() {
+        StringCaluculator stringCaluculator = new StringCaluculator();
+        assertThat(stringCaluculator.calculate("2+3*4/2")).isEqualTo(10);
+    }
 }
