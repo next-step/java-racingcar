@@ -2,6 +2,7 @@ package calulator;
 
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,5 +35,11 @@ class OperatorTest {
     @Test
     void operatorTest5() {
         assertThat(Operator.MINUS.calculate(2, 1)).isEqualTo(1);
+    }
+
+    @Test
+    void operatorException() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Operator.SUBTRACT.calculate(2, 0));
     }
 }

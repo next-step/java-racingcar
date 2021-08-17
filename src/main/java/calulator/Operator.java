@@ -24,6 +24,9 @@ public enum Operator {
     SUBTRACT("/") {
         @Override
         public int calculate(int i, int i1) {
+            if (i1 == 0) {
+                throw new IllegalArgumentException();
+            }
             return i / i1;
         }
     };
