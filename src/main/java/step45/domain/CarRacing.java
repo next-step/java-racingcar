@@ -26,7 +26,7 @@ public class CarRacing {
   }
 
   public boolean isFinish() {
-    return this.numOfMove > 0;
+    return this.numOfMove <= 0;
   }
 
   public void moveCars() {

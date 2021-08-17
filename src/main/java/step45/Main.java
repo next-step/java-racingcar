@@ -14,7 +14,7 @@ public class Main {
     CarRacing carRacing = new CarRacing(carNames, numOfMove, new RandomMoveStrategy());
 
     ResultView.printResultTitle();
-    while (carRacing.isFinish()) {
+    while (!carRacing.isFinish()) {
       carRacing.moveCars();
       ResultView.printCurrentRoundResult(carRacing.getCars());
       ResultView.printRoundDivider();
