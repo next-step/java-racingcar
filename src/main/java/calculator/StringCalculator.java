@@ -1,9 +1,9 @@
-package calulator;
+package calculator;
 
-public class StringCaluculator {
+public class StringCalculator {
 
-    public int calculate(String s) {
-        String[] input = s.split("");
+    public int calculate(String text) {
+        String[] input = text.split("");
 
         int result = Integer.parseInt(input[0]);
         for (int i = 0; i < input.length - 2; i = i + 2) {
@@ -13,9 +13,9 @@ public class StringCaluculator {
         return result;
     }
 
-    private int calculate(int a, String symbol, int b) {
+    private int calculate(int left, String symbol, int right) {
         Operator operator = Operator.find(symbol);
-        return operator.calculate(a, b);
+        return operator.calculate(left, right);
     }
 
 }
