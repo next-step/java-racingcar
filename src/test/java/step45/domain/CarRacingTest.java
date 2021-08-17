@@ -16,9 +16,9 @@ class CarRacingTest {
 
     //then
     for (int i = 0; i < 10; i++) {
-      assertThat(carRacing.isFinish()).isEqualTo(true);
+      assertThat(carRacing.isFinish()).isEqualTo(false);
       carRacing.moveCars();
     }
-    assertThat(carRacing.isFinish()).isEqualTo(false);
+    assertThat(carRacing.isFinish()).isEqualTo(true);
   }
 }
