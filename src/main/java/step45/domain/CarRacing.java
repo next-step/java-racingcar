@@ -15,14 +15,6 @@ public class CarRacing {
     this.moveStrategy = moveStrategy;
   }
 
-  private Cars initCars(String[] carNames) {
-    List<Car> carList = new ArrayList<>();
-    for (String carName : carNames) {
-      carList.add(new Car(carName));
-    }
-    return new Cars(carList);
-  }
-
   public boolean isFinish() {
     return this.tryNum.isFinish();
   }
@@ -38,5 +30,13 @@ public class CarRacing {
 
   public List<Car> getCars() {
     return cars.getCars();
+  }
+
+  private Cars initCars(String[] carNames) {
+    List<Car> carList = new ArrayList<>();
+    for (String carName : carNames) {
+      carList.add(new Car(carName));
+    }
+    return new Cars(carList);
   }
 }

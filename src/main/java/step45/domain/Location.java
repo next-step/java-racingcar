@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Location {
 
-  public final int location;
+  private final int location;
 
   public Location(int location) {
     checkLocation(location);

@@ -4,7 +4,7 @@ import step45.utils.StringUtils;
 
 public class Name {
 
-  public final String name;
+  private final String name;
 
   public Name(String name) {
     checkName(name);
