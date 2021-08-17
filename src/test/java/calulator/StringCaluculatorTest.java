@@ -32,4 +32,12 @@ class StringCaluculatorTest {
         StringCaluculator stringCaluculator = new StringCaluculator();
         assertThat(stringCaluculator.calculate("4/2")).isEqualTo(2);
     }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    void name(String input) {
+        StringCaluculator stringCaluculator = new StringCaluculator();
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> stringCaluculator.calculate(input));
+    }
 }
