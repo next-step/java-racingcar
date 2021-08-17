@@ -16,13 +16,11 @@ public class CarRacing {
   }
 
   private Cars initCars(String[] carNames) {
-    final Cars cars;
     List<Car> carList = new ArrayList<>();
     for (String carName : carNames) {
       carList.add(new Car(carName));
     }
-    cars = new Cars(carList);
-    return cars;
+    return new Cars(carList);
   }
 
   public boolean isFinish() {
