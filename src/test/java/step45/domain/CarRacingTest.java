@@ -10,9 +10,9 @@ class CarRacingTest {
   @Test
   void isFinishTest() {
     //given
-    int numOfMove = 10;
+    int tryNum = 10;
     String[] carNames = {"car1", "car2", "car3"};
-    CarRacing carRacing = new CarRacing(carNames, numOfMove, new RandomMoveStrategy());
+    CarRacing carRacing = new CarRacing(carNames, tryNum, new RandomMoveStrategy());
 
     //then
     for (int i = 0; i < 10; i++) {

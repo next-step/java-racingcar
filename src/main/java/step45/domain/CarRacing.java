@@ -5,12 +5,12 @@ import java.util.List;
 
 public class CarRacing {
 
-  private int numOfMove;
+  private int tryNum;
   private final Cars cars;
   private final MoveStrategy moveStrategy;
 
-  public CarRacing(final String[] carNames, final int numOfMove, MoveStrategy moveStrategy) {
-    this.numOfMove = numOfMove;
+  public CarRacing(final String[] carNames, final int tryNum, MoveStrategy moveStrategy) {
+    this.tryNum = tryNum;
     this.cars = initCars(carNames);
     this.moveStrategy = moveStrategy;
   }
@@ -26,12 +26,12 @@ public class CarRacing {
   }
 
   public boolean isFinish() {
-    return this.numOfMove <= 0;
+    return this.tryNum <= 0;
   }
 
   public void moveCars() {
     cars.moveCars(moveStrategy);
-    this.numOfMove--;
+    this.tryNum--;
   }
 
   public List<Car> getWinners() {

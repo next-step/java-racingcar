@@ -9,9 +9,9 @@ public class Main {
 
   public static void main(String[] args) {
     String[] carNames = InputView.getCarNames();
-    int numOfMove = InputView.getNumOfMove();
+    int tryNum = InputView.getTryNum();
 
-    CarRacing carRacing = new CarRacing(carNames, numOfMove, new RandomMoveStrategy());
+    CarRacing carRacing = new CarRacing(carNames, tryNum, new RandomMoveStrategy());
 
     ResultView.printResultTitle();
     while (!carRacing.isFinish()) {
