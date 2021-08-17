@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Cars {
     private final List<Car> cars;
+    private static final int MINIMUM_CAR_NUMBER = 1;
 
     public Cars(List<String> carNames) {
         isValidCarNumber(carNames.size());
@@ -24,8 +25,8 @@ public class Cars {
     }
 
     private void isValidCarNumber(int carNum) {
-        if (carNum <= 0) {
-            throw new IllegalArgumentException("자동차 수는 1 이상의 정수입니다.");
+        if (carNum < MINIMUM_CAR_NUMBER) {
+            throw new IllegalArgumentException("자동차 수는 "+MINIMUM_CAR_NUMBER+" 이상의 정수입니다.");
         }
     }
 

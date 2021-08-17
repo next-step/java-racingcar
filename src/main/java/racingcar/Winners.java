@@ -10,16 +10,15 @@ public class Winners {
 
     private final List<Car> winners;
 
-    public Winners(Race race) {
-        winners = pickWinnerOfRace(race);
+    public Winners(List<Car> cars) {
+        winners = pickWinnerOfRace(cars);
     }
 
     public List<Car> getWinners() {
         return winners;
     }
 
-    private List<Car> pickWinnerOfRace(Race race) {
-        List<Car> cars = getLastRoundCars(race);
+    private List<Car> pickWinnerOfRace(List<Car> cars) {
         final int maxCarPosition = getMaxCarPositionOfLastRound(cars);
         return pickCarsOnGivenPosition(cars, maxCarPosition);
     }
@@ -31,8 +30,4 @@ public class Winners {
         return Objects.requireNonNull(cars.stream().max(Comparator.comparingInt(Car::getCarPosition)).orElse(null)).getCarPosition();
     }
 
-    private List<Car> getLastRoundCars(Race race) {
-        List<List<Car>> carsInRounds = race.getCarsStatusForEachRound();
-        return carsInRounds.get(carsInRounds.size()-1);
-    }
 }

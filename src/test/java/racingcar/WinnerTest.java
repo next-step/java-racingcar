@@ -18,7 +18,7 @@ public class WinnerTest {
     void numberOfWinnerCanBeMoreThan2(Boolean movable) {
         Race race = new Race(Arrays.asList("Kevin","Bob","Dave"), 5, () -> movable);
         race.doRace();
-        Winners winner = new Winners(race);
+        Winners winner = new Winners(race.getCarsStatusOfLastRound());
         assertThat(winner.getWinners().size()).isGreaterThan(1);
     }
 }
