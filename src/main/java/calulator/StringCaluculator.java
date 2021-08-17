@@ -3,9 +3,19 @@ package calulator;
 public class StringCaluculator {
 
     public int calculate(String s) {
-        //"1+2"
         String[] input = s.split("");
-        return Operator.find(input[1]).calculate(Integer.parseInt(input[0]), Integer.parseInt(input[2]));
+
+        int result = Integer.parseInt(input[0]);
+        for (int i = 0; i < input.length - 2; i = i + 2) {
+            result = calculate(result, input[i + 1], Integer.parseInt(input[i + 2]));
+        }
+
+        return result;
+    }
+
+    private int calculate(int a, String symbol, int b) {
+        Operator operator = Operator.find(symbol);
+        return operator.calculate(a, b);
     }
 
 }

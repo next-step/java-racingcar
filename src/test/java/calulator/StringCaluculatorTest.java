@@ -1,10 +1,11 @@
 package calulator;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class StringCaluculatorTest {
     @Test
@@ -20,14 +21,12 @@ class StringCaluculatorTest {
     }
 
     @Test
-   // @DisplayName("곱하기")
     void mulTest() {
         StringCaluculator stringCaluculator = new StringCaluculator();
         assertThat(stringCaluculator.calculate("2*3")).isEqualTo(6);
     }
 
     @Test
-  //  @DisplayName("나누기")
     void diviTest() {
         StringCaluculator stringCaluculator = new StringCaluculator();
         assertThat(stringCaluculator.calculate("4/2")).isEqualTo(2);
@@ -39,5 +38,11 @@ class StringCaluculatorTest {
         StringCaluculator stringCaluculator = new StringCaluculator();
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> stringCaluculator.calculate(input));
+    }
+
+    @Test
+    void numbersTest() {
+        StringCaluculator stringCaluculator = new StringCaluculator();
+        assertThat(stringCaluculator.calculate("1+2+3")).isEqualTo(6);
     }
 }
