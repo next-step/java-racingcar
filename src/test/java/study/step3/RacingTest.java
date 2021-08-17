@@ -29,3 +29,4 @@ class RacingTest {
         racing.startRace(racing.initCars(carCount));
     }
 }
+
