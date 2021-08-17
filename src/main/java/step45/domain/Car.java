@@ -3,15 +3,15 @@ package step45.domain;
 public class Car {
 
   private final Name name;
-  private int location;
+  private Location location;
 
   public Car(String name) {
     this.name = new Name(name);
-    this.location = 0;
+    this.location = new Location(0);
   }
 
   public void move(int distance) {
-    this.location += distance;
+    this.location = this.location.increase(distance);
   }
 
   public String getName() {
@@ -19,6 +19,6 @@ public class Car {
   }
 
   public int getLocation() {
-    return location;
+    return location.getLocation();
   }
 }
