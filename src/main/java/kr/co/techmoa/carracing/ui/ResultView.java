@@ -13,12 +13,13 @@ public class ResultView {
     public void printResult(OutputDTO outputDTO){
         List<RacingResults> racingResultsList = outputDTO.getResults();
         viewResult(racingResultsList);
+
         int lastResult = racingResultsList.size() - 1;
         RacingResults racingResults = racingResultsList.get(lastResult);
-
         List<String> winner = racingResults.getWinner();
         viewChampion(winner);
     }
+
     public void viewResult(List<RacingResults> results) {
         for (int i = 0; i < results.size(); i++) {
             RacingResults resultOne = results.get(i);
@@ -28,8 +29,8 @@ public class ResultView {
     }
 
     private void viewOneTrial(List<RacingResult> cars) {
-        for (int i = 0; i < cars.size(); i++) {
-            viewOneCar(cars.get(i));
+        for (RacingResult result : cars) {
+            viewOneCar(result);
         }
     }
 

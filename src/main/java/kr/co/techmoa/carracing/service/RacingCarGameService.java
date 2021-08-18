@@ -12,22 +12,48 @@ import java.util.List;
 
 public class RacingCarGameService {
 
-    public OutputDTO start(InputDTO inputDTO) {
+    public static OutputDTO start(InputDTO inputDTO) {
         String[] carNames = parseCarName(inputDTO.getCarNames());
         Cars cars = new Cars(carNames);
         List<RacingResults> results = new ArrayList<>();
 
         for (int i = 0; i < inputDTO.getTryNumber(); i++) {
             cars.roundOneTry();
-            List<Car> resultOneTrial = cars.getCars();
-            RacingResults result = new RacingResults(resultOneTrial);
-            results.add(result);
-        }
+            RacingResults result = new RacingResults(cars);
 
+
+            System.out.println("****");
+            System.out.println(result.getResults().get(0).getName() + " : " + result.getResults().get(0).getPosition());
+            System.out.println(result.getResults().get(1).getName() + " : " + result.getResults().get(0).getPosition());
+            System.out.println(result.getResults().get(2).getName() + " : " + result.getResults().get(0).getPosition());
+            System.out.println("****");
+
+            results.add(result);
+            /*
+            System.out.println("****");
+            System.out.println(results.get(0).getResults().get(0).getName() + " : " + results.get(0).getResults().get(0).getPosition());
+            System.out.println(results.get(0).getResults().get(1).getName() + " : " + results.get(0).getResults().get(1).getPosition());
+            System.out.println(results.get(0).getResults().get(2).getName() + " : " + results.get(0).getResults().get(2).getPosition());
+            System.out.println("****");
+
+             */
+        }
+        System.out.println(results.get(0).getResults().get(0).getName() + " : " +results.get(0).getResults().get(0).getPosition());
+        System.out.println(results.get(0).getResults().get(1).getName() + " : " +results.get(0).getResults().get(1).getPosition());
+        System.out.println(results.get(0).getResults().get(2).getName() + " : " +results.get(0).getResults().get(2).getPosition());
+        System.out.println("------");
+        System.out.println(results.get(1).getResults().get(0).getName() + " : " +results.get(1).getResults().get(0).getPosition());
+        System.out.println(results.get(1).getResults().get(1).getName() + " : " +results.get(1).getResults().get(1).getPosition());
+        System.out.println(results.get(1).getResults().get(2).getName() + " : " +results.get(1).getResults().get(2).getPosition());
+        System.out.println("------");
+        System.out.println(results.get(2).getResults().get(0).getName() + " : " +results.get(2).getResults().get(0).getPosition());
+        System.out.println(results.get(2).getResults().get(1).getName() + " : " +results.get(2).getResults().get(1).getPosition());
+        System.out.println(results.get(2).getResults().get(2).getName() + " : " +results.get(2).getResults().get(2).getPosition());
+        System.out.println("------");
         return new OutputDTO(results);
     }
 
-    private String[] parseCarName(String carNames) {
+    private static String[] parseCarName(String carNames) {
         return carNames.split(",");
     }
 
