@@ -24,3 +24,10 @@
 * ~~CarRace setter 생성 시점에 받아오기~~
 * ~~Message Inputview 클래스로 묶기~~
 * ~~CarRace 메서드 Cars 클래스로 역할 나누기~~
+
+**3차 피드백**
+* 모든 도메인 객체 테스트 코드 작성
+  * 도메인 객체 외에는 테스트 코드 작성 불필요
+* Car 전략패턴 리팩토링 수정
+  * ~~Car 클래스 내 로직을 전략 클래스(RandomNumCondition)으로 이동~~
+* Cars moveCars 메서드 전략패턴 사용해 리팩토링
