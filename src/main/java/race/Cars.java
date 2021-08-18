@@ -16,7 +16,7 @@ public class Cars {
 
     protected Cars moveCars(Cars carList) {
         for (Car car: carList.getCarList()) {
-            car.move(new RandomNumCondition());
+            car.setDistance(RandomNumCondition.move(new RandomNumCondition()));
         }
         return carList;
     }

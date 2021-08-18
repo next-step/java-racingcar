@@ -8,11 +8,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
 
     @Test
-    @DisplayName("addDistance 테스트")
+    @DisplayName("setDistance 테스트")
     void addDistanceTest() {
         //given
         Car car = new Car("");
-        car.move(new RandomNumCondition());
+        car.setDistance(RandomNumCondition.move(new RandomNumCondition()));
         //then
         assertThat(car.getDistance()).contains("");
     }
