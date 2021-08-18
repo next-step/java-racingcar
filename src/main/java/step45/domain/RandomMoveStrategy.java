@@ -1,8 +1,10 @@
-package step4;
+package step45.domain;
+
+import step45.utils.RandomValueGenerator;
 
 public class RandomMoveStrategy implements MoveStrategy {
 
-  private final int MOVE_THRESHOLD = 4;
+  private static final int MOVE_THRESHOLD = 4;
 
   @Override
   public int getMoveDistance() {

@@ -1,4 +1,4 @@
-package step4;
+package step45.view;
 
 import java.util.Scanner;
 
@@ -13,13 +13,13 @@ public class InputView {
     return carNames;
   }
 
-  public static int getNumOfMove() {
+  public static int getTryNum() {
     System.out.println("시도할 회수는 몇 회 인가요?");
     return scanner.nextInt();
   }
 
   private static void trim(String[] carNames) {
-    for (int i = 0; i < carNames.length; i++){
+    for (int i = 0; i < carNames.length; i++) {
       carNames[i] = carNames[i].trim();
     }
   }

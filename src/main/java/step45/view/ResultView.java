@@ -1,6 +1,7 @@
-package step4;
+package step45.view;
 
 import java.util.List;
+import step45.domain.Car;
 
 public class ResultView {
 
@@ -21,14 +22,14 @@ public class ResultView {
     System.out.print(RESULT_DIVIDER);
   }
 
-  public static void printWinnerList(final String[] winnerList) {
-    if (winnerList.length == 0) {
+  public static void printWinnerList(final List<Car> winners) {
+    if (winners.size() == 0) {
       System.out.println("우승자가 없습니다.");
       return;
     }
-    System.out.print(winnerList[0]);
-    for (int i = 1; i < winnerList.length; i++) {
-      System.out.print(", " + winnerList[i]);
+    System.out.print(winners.get(0).getName());
+    for (int i = 1; i < winners.size(); i++) {
+      System.out.print(", " + winners.get(i).getName());
     }
     System.out.println("가 최종 우승했습니다.");
   }
