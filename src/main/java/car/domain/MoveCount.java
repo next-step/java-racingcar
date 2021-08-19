@@ -2,27 +2,14 @@ package car.domain;
 
 public final class MoveCount {
     private final int moveCount;
-    private final MovingStrategy movingStrategy;
 
     public MoveCount() {
-        movingStrategy = new DefaultStrategy();
-        moveCount = 0;
-    }
-
-    public MoveCount(MovingStrategy movingStrategy) {
-        this.movingStrategy = movingStrategy;
         moveCount = 0;
     }
 
     public MoveCount(int moveCount) {
         validateMoveCount(moveCount);
-        movingStrategy = new DefaultStrategy();
         this.moveCount = moveCount;
-    }
-
-    public MoveCount(int moveCount, MovingStrategy movingStrategy) {
-        this.moveCount = moveCount;
-        this.movingStrategy = movingStrategy;
     }
 
     public int getMoveCount() {
@@ -35,10 +22,7 @@ public final class MoveCount {
         }
     }
 
-    public MoveCount move(int inputNumber) {
-        if (movingStrategy.isMovable(inputNumber)) {
-            return new MoveCount(moveCount + 1);
-        }
-        return this;
+    public MoveCount move() {
+        return new MoveCount(moveCount + 1);
     }
 }
