@@ -1,5 +1,7 @@
-package Car;
+package car;
 
+import car.domain.Car;
+import car.domain.MoveCount;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,8 +22,8 @@ class CarTest {
 
     @Test
     void 자동차초기상태테스트() {
-        int carMoveCount = car.getMoveCount();
-        assertThat(carMoveCount).isEqualTo(0);
+        int actual = car.getMoveCount();
+        assertThat(actual).isEqualTo(new MoveCount().getMoveCount());
     }
 
     @ParameterizedTest
@@ -34,8 +36,8 @@ class CarTest {
     })
     void 자동차움직임테스트(int inputNumber, int moveAnswer) {
         car.move(inputNumber);
-        int carMoveCount = car.getMoveCount();
-        assertThat(carMoveCount).isEqualTo(moveAnswer);
+        int actual = car.getMoveCount();
+        assertThat(actual).isEqualTo(new MoveCount(moveAnswer).getMoveCount());
     }
 
     @ParameterizedTest

@@ -1,4 +1,4 @@
-package UI;
+package car.view;
 
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
