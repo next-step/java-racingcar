@@ -1,5 +1,6 @@
 package kr.co.techmoa.carracing.service;
 
+import kr.co.techmoa.carracing.model.Car;
 import kr.co.techmoa.carracing.model.Cars;
 
 import java.util.List;
@@ -9,8 +10,8 @@ public class RacingResults {
 
     private List<RacingResult> results;
 
-    public RacingResults(Cars cars) {
-        this.results = cars.getCars()
+    public RacingResults(List<Car> cars) {
+        this.results = cars
                 .stream()
                 .map(car -> new RacingResult(car.getCarName(), car.getPosition()))
                 .collect(Collectors.toList());

@@ -14,10 +14,9 @@ public class Car {
         position = new Position(0);
     }
 
-    public Car move(boolean isMove) {
+    public void move(boolean isMove) {
         if(isMove)
             this.position = position.plus();
-        return this;
     }
 
     public boolean moveOperator(MoveStategy moveStategy) {
