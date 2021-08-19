@@ -1,4 +1,4 @@
-package Car.domain;
+package car.domain;
 
 public final class MoveCount {
     private final int moveCount;
@@ -36,7 +36,7 @@ public final class MoveCount {
     }
 
     public MoveCount move(int inputNumber) {
-        if (movingStrategy.isMove(inputNumber)) {
+        if (movingStrategy.isMovable(inputNumber)) {
             return new MoveCount(moveCount + 1);
         }
         return this;

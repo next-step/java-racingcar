@@ -1,8 +1,6 @@
-package Car.view;
+package car.view;
 
-import Car.domain.Car;
-import Car.domain.Cars;
-import Car.domain.MoveCount;
+import car.domain.Car;
 
 import java.util.List;
 

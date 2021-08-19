@@ -1,11 +1,9 @@
-package Car;
+package car;
 
-import Car.domain.RacingCar;
-import Car.view.InputView;
-import Car.view.OutputView;
+import car.domain.RacingCar;
+import car.view.InputView;
+import car.view.OutputView;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class RacingCarMain {

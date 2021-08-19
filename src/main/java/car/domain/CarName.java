@@ -1,4 +1,4 @@
-package Car.domain;
+package car.domain;
 
 public final class CarName {
     private final int MAX_SIZE_NAME_LENGTH = 5;

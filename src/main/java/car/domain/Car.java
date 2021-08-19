@@ -1,4 +1,4 @@
-package Car.domain;
+package car.domain;
 
 public class Car {
     private MoveCount moveCount;

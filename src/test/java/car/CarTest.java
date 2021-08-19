@@ -1,7 +1,7 @@
-package Car;
+package car;
 
-import Car.domain.Car;
-import Car.domain.MoveCount;
+import car.domain.Car;
+import car.domain.MoveCount;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
