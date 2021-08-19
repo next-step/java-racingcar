@@ -1,4 +1,4 @@
-package Car.domain;
+package car.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;

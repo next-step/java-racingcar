@@ -1,4 +1,4 @@
-package Car.domain;
+package car.domain;
 
 public class DefaultStrategy implements MovingStrategy{
     private final int MINNUMBER = 4;
