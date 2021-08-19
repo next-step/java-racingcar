@@ -3,9 +3,6 @@ package car.domain;
 import java.util.*;
 
 public class RacingCar {
-    private static final int RANDOM_NUMBER_BOUND = 10;
-    private static final int MIN_CAR_COUNT = 0;
-
     private Cars cars;
 
     public RacingCar(String[] carNames) {
