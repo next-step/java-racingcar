@@ -10,7 +10,10 @@ public class Position {
     private int coordinate;
     private final int addon = 1;
 
-    public Position(final int coordinate) {
+    public Position() {
+
+    }
+    public Position(int coordinate) {
         this.coordinate = coordinate;
     }
 

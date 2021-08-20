@@ -19,13 +19,13 @@ public class Cars {
     }
 
     public void roundOneTry() {
-        cars.forEach(car -> {
+        this.cars.forEach(car -> {
             boolean isMove = car.moveOperator(new RandomMoveStrategyImpl());
             car.move(isMove);
         });
     }
 
     public List<Car> getCars() {
-        return cars;
+        return this.cars;
     }
 }
