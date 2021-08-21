@@ -1,20 +1,41 @@
 package race;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
+    private Car car;
+    private RandomNumCondition randomNumCondition;
+
+    @BeforeEach
+    void setUp() {
+        randomNumCondition = new RandomNumCondition();
+        car = new Car();
+    }
+
     @Test
     @DisplayName("addDistance 테스트")
     void addDistanceTest() {
         //given
-        Car car = new Car("");
-        car.move(new RandomNumCondition());
-        //then
-        assertThat(car.getDistance()).contains("");
-    }
+        car.addDistance(new MoveCondition() {
+            @Override
+            public int getValue() {
+                return 1;
+            }
 
+            @Override
+            public boolean moveOrNot() {
+                return true;
+            }
+        });
+        //then
+        assertThat(car.getDistance().get(0)).isTrue();
+    }
 }

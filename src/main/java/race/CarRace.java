@@ -1,10 +1,5 @@
 package race;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class CarRace {
 
     private int carCount;
@@ -36,22 +31,12 @@ public class CarRace {
     }
 
     protected void playGame() {
-        Cars carList = createCarList();
+        Cars carList = Cars.createCarList(carCount);
         for (int i = 0; i < gameCount; i++) {
             ResultView.printResult(
                     carList.moveCars(carList)
             );
         }
-    }
-
-    protected Cars createCarList() {
-        List<Car> carList = new ArrayList<>();
-        int tempCarCount = carCount;
-        while (tempCarCount-- > 0) {
-            Car car = new Car("");
-            carList.add(car);
-        }
-        return new Cars(carList);
     }
 
 }

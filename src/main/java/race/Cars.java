@@ -1,22 +1,33 @@
 package race;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
 
-    private final List<Car> carList;
+    private static final List<Car> carList = new ArrayList<>();
 
-    public Cars(List<Car> carList) {
-        this.carList = carList;
+    private RandomNumCondition randomNumCondition = new RandomNumCondition();
+
+    private Cars() {
     }
 
-    public List<Car> getCarList() {
-        return carList;
+    public static Cars createCarList(int carCount) {
+        for (int i = carCount; i > 0; i--) {
+            Car car = new Car();
+            carList.add(car);
+        }
+        return new Cars();
+    }
+
+    protected final List<Car> getCarList() {
+        return Collections.unmodifiableList(carList);
     }
 
     protected Cars moveCars(Cars carList) {
         for (Car car: carList.getCarList()) {
-            car.move(new RandomNumCondition());
+            car.addDistance(randomNumCondition);
         }
         return carList;
     }
