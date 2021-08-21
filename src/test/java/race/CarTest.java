@@ -21,7 +21,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("addDistance 테스트")
+    @DisplayName("setDistance 테스트")
     void addDistanceTest() {
         //given
         car.addDistance(new MoveCondition() {
