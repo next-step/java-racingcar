@@ -1,19 +1,19 @@
 package race;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Car {
 
-    private String distance;
+    private List<Boolean> distance = new ArrayList<>();
 
-    public Car(String input) {
-        distance = input;
+    protected List<Boolean> getDistance() {
+        return Collections.unmodifiableList(distance);
     }
 
-    public String getDistance() {
-        return distance;
-    }
-
-    public void addDistance() {
-        this.distance += "-";
+    public void addDistance(MoveCondition moveCondition) {
+        distance.add(moveCondition.moveOrNot());
     }
 
 }

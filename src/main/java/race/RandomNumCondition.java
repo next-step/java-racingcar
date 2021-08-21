@@ -6,20 +6,17 @@ public class RandomNumCondition implements MoveCondition {
 
     private final int STANDARD_NUM = 4;
 
-    public RandomNumCondition() {
-        getValue();
-    }
+    private final int LIMIT_NUM = 10;
 
     protected static final Random random = new Random();
 
     @Override
     public int getValue() {
-        return random.nextInt(10);
+        return random.nextInt(LIMIT_NUM);
     }
 
     @Override
-    public void moveOrNot(Car car) {
-        if(getValue() >= STANDARD_NUM)
-            car.addDistance();
+    public boolean moveOrNot() {
+        return getValue() >= STANDARD_NUM;
     }
 }

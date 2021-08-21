@@ -4,5 +4,5 @@ public interface MoveCondition {
 
     int getValue();
 
-    void moveOrNot(Car car);
+    boolean moveOrNot();
 }
