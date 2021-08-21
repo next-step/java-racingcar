@@ -24,3 +24,12 @@
 * ~~CarRace setter 생성 시점에 받아오기~~
 * ~~Message Inputview 클래스로 묶기~~
 * ~~CarRace 메서드 Cars 클래스로 역할 나누기~~
+
+**3차 피드백**
+* 도메인 객체만 테스트하기
+  * ~~Car~~
+  * ~~Cars~~
+  * CarRace
+* ~~while -> for문~~
+  - 조건이 없을 경우(loop가 언제 끝날지 아는경우) for문을 쓰는게 나음
+* ~~createCarList() Cars 클래스에 위임~~
