@@ -7,10 +7,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum Move {
 
-    ADVANCE(1 , "전진"),
-    REVERSE(0 , "후진"),
+    ADVANCE(true , "전진"),
+    REVERSE(false , "후진"),
 ;
 
-    private final int carMove;
+    private final boolean carMove;
     private final String discription;
 }
