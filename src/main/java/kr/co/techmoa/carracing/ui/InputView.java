@@ -41,5 +41,6 @@ public class InputView {
 
     public InputDTO getInputDTO() {
         return this.inputDTO;
+
     }
 }

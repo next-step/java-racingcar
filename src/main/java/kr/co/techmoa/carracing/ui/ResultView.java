@@ -46,4 +46,5 @@ public class ResultView {
         String champions = String.join(", ", names);
         System.out.println(champions + "가 최종 우승했습니다.");
     }
+
 }

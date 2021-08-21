@@ -5,7 +5,6 @@ import kr.co.techmoa.carracing.service.move.MoveStategy;
 public class Car {
 
     private static final int ADVENCE_LIMIT = 4;
-
     private Position position;
     private CarName carName;
 
