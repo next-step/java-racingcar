@@ -17,10 +17,6 @@ public class Car implements Comparable<Car> {
         this("Unknown");
     }
 
-    public int getLocation() {
-        return location.getLocation();
-    }
-
     void goForward() {
         location = location.goForward();
     }
@@ -46,8 +42,18 @@ public class Car implements Comparable<Car> {
 
     public boolean equals(Object o) {
         if (o instanceof Car) {
-            return name.equals(((Car) o).name) &&
-                    location.equals(((Car) o).location);
+            Car compared = (Car) o;
+            return name.equals(compared.name) &&
+                    location.equals(compared.location);
+        }
+
+        return false;
+    }
+
+    public boolean equalsLocation(Object o) {
+        if (o instanceof Car) {
+            Car compared = (Car) o;
+            return location.equals(compared.location);
         }
 
         return false;

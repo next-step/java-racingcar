@@ -3,8 +3,7 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,25 +11,16 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CarsTest {
-
     @ParameterizedTest
-    @MethodSource("provideCarNamesForCars")
-    void Cars(String[] carNames, int carNum) {
-        Cars cars = new Cars(carNames);
-
-        for (int i = 0; i < carNames.length; i++) {
-            assertThat(cars.getCarsList().get(i).getNameInString()).isEqualTo(carNames[i].trim());
-        }
-    }
-
-    private static Stream<Arguments> provideCarNamesForCars() {
-        return Stream.of(
-                Arguments.of(new String[]{"ABC"}, 1),
-                Arguments.of(new String[]{"ABC", "DEF"}, 2),
-                Arguments.of(new String[]{"ABC", "DEF", "HIJ", "KLM"}, 4)
-        );
+    @NullAndEmptySource
+    void checkValidCarNames(String[] CarNames) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    Cars cars = new Cars(CarNames);
+                });
     }
 
     @Test
@@ -88,6 +78,7 @@ public class CarsTest {
         });
         assertThat(cars.equals(expectedCars)).isEqualTo(true);
         assertThat(cars.equalsExactly(expectedCars)).isEqualTo(false);
+        assertThat(cars).isEqualToComparingFieldByField(expectedCars);
     }
 
     @Test

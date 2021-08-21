@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import org.codehaus.plexus.util.StringUtils;
 import racingcar.domain.Race;
 import racingcar.domain.RoundNum;
 
@@ -23,7 +24,7 @@ public class InputView {
     }
 
     public static boolean isValidInputOfCars(String input) {
-        if (input == null || input.trim().isEmpty()) {
+        if (input == null || StringUtils.isBlank(input)) {
             System.out.println("Nothing has been entered");
             return false;
         }

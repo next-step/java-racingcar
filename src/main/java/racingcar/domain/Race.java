@@ -6,14 +6,12 @@ public class Race {
     private Cars cars;
     private Winners winners;
     private RoundNum roundNum;
+    private CurrentRound currentRound;
 
     public Race(String[] carNames, int round) {
         roundNum = new RoundNum(round);
         cars = new Cars(carNames);
-    }
-
-    Race() {
-        this(new String[]{"Unknown"}, 1);
+        currentRound = new CurrentRound();
     }
 
     Race(int round) {
@@ -23,6 +21,7 @@ public class Race {
     public void runOneRound() {
         cars.runOneRound();
         roundNum = roundNum.runOneRound();
+        currentRound = currentRound.runOneRound();
     }
 
     public boolean isRaceOver() {
@@ -46,6 +45,6 @@ public class Race {
     }
 
     public String getCurrentStateInString() {
-        return roundNum.toString() + "\n" + cars.getCarsStateInString();
+        return currentRound.toString() + "\n" + cars.getCarsStateInString();
     }
 }

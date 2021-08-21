@@ -33,4 +33,11 @@ public class CarTest {
         assertThat(new Car("B", 4).equals(new Car("B", 5))).isEqualTo(false);
         assertThat(new Car("C", 5).equals(new Car("D", 5))).isEqualTo(false);
     }
+
+    @Test
+    void equalsLocation() {
+        assertThat(new Car("A", 3).equalsLocation(new Car("A", 3))).isEqualTo(true);
+        assertThat(new Car("B", 4).equalsLocation(new Car("B", 5))).isEqualTo(false);
+        assertThat(new Car("C", 5).equalsLocation(new Car("D", 5))).isEqualTo(true);
+    }
 }

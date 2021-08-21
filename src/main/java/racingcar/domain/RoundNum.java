@@ -3,7 +3,6 @@ package racingcar.domain;
 public class RoundNum {
     public static final int MIN_ROUND_NUM = 0;
     private static final int ROUND_OVER_NUM = 0;
-    private static int currentRound = 0;
 
     private final int roundNum;
 
@@ -19,15 +18,10 @@ public class RoundNum {
     }
 
     RoundNum runOneRound() {
-        currentRound++;
         return new RoundNum(roundNum - 1);
     }
 
     boolean isRoundOver() {
         return roundNum == ROUND_OVER_NUM;
-    }
-
-    public String toString() {
-        return "< Round " + currentRound + " >";
     }
 }

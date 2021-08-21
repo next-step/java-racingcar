@@ -29,7 +29,7 @@ public class Cars {
     }
 
     void checkValidCarNames(String[] CarNames) {
-        if (CarNames.length == 0) {
+        if (CarNames == null || CarNames.length == 0) {
             throw new IllegalArgumentException("유효한 Car Name 들이 아닙니다.");
         }
     }
@@ -40,19 +40,14 @@ public class Cars {
         }
     }
 
-    // TODO: temporary
-    public List<Car> getCarsList() {
-        return carList;
-    }
-
     Winners calculateWinners() {
         sortByLocation();
 
         List<Car> winners = new ArrayList<>(carList.size());
-        int furthestLocation = carList.get(0).getLocation();
+        Car firstCar = carList.get(0);
 
-        winners.add(carList.get(0));
-        for (int i = 1; i < carList.size() && carList.get(i).getLocation() == furthestLocation; i++) {
+        winners.add(firstCar);
+        for (int i = 1; i < carList.size() && carList.get(i).equalsLocation(firstCar); i++) {
             winners.add(carList.get(i));
         }
 
