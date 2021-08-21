@@ -7,9 +7,7 @@ import java.util.Random;
 
 public class Race {
     public static final int MIN_ROUND_NUM = 1;
-    static final int MAX_RANDOM_NUM = 10;
     private static final String STR_RACE_NOT_OVER_YET = "아직 경기가 끝나지 않았습니다.";
-    static Random random = new Random();
 
     private Cars cars;
     private Winners winners;
@@ -26,7 +24,7 @@ public class Race {
     }
 
     Race() {
-        this(new String[]{""}, 1);
+        this(new String[]{"Unknown"}, 1);
     }
 
     void checkIfValidArgumentsForRace(int roundNum) throws IllegalArgumentException {
@@ -44,7 +42,7 @@ public class Race {
     }
 
     public void runOneRound() {
-        cars.runOneRound(random, MAX_RANDOM_NUM);
+        cars.runOneRound();
 
         currentRound++;
     }
@@ -54,7 +52,7 @@ public class Race {
     }
 
     public void findWinners() {
-        winners = new Winners(cars.calculateWinners());
+        winners = cars.calculateWinners();
     }
 
     public String getWinnersInString() {

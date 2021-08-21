@@ -6,6 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -52,7 +54,7 @@ public class CarsTest {
 
         cars.sortByLocation();
 
-        assertThat(cars.equals(expectedCars)).isEqualTo(true);
+        assertThat(cars.equalsExactly(expectedCars)).isEqualTo(true);
     }
 
     @Test
@@ -73,7 +75,36 @@ public class CarsTest {
                 new Car("E", 3),
                 new Car("F", 8)
         });
-
         assertThat(cars.equals(expectedCars)).isEqualTo(true);
+        assertThat(cars.equalsExactly(expectedCars)).isEqualTo(true);
+
+        cars = new Cars(new Car[]{
+                new Car("C", 4),
+                new Car("A", 7),
+                new Car("F", 8),
+                new Car("B", 1),
+                new Car("E", 3),
+                new Car("D", 5)
+        });
+        assertThat(cars.equals(expectedCars)).isEqualTo(true);
+        assertThat(cars.equalsExactly(expectedCars)).isEqualTo(false);
+    }
+
+    @Test
+    void calculateWinners() {
+        Cars cars = new Cars(new Car[]{
+                new Car("A", 7),
+                new Car("B", 1),
+                new Car("C", 4),
+                new Car("D", 10),
+                new Car("E", 3),
+                new Car("F", 8),
+                new Car("G", 10)
+        });
+
+        List<Car> expected = new ArrayList<>();
+        expected.add(new Car("D", 10));
+        expected.add(new Car("G", 10));
+        assertThat(cars.calculateWinners().equals(new Winners(expected))).isEqualTo(true);
     }
 }

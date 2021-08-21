@@ -3,6 +3,8 @@ package racingcar.domain;
 import java.util.*;
 
 public class Cars {
+    private final static MovingStrategy movingStrategy = new CarMovingStrategy();
+
     private final List<Car> carList;
 
     public Cars(String[] carNames) {
@@ -25,15 +27,9 @@ public class Cars {
         carList = list;
     }
 
-    // TODO: temporary
-    public int getNumOfCars() {
-        return carList.size();
-    }
-
-    // TODO: random 주입 변경
-    public void runOneRound(Random random, int max_num) {
+    public void runOneRound() {
         for (Car car : carList) {
-            car.move(random.nextInt(max_num));
+            car.move(movingStrategy);
         }
     }
 
@@ -42,7 +38,7 @@ public class Cars {
         return carList;
     }
 
-    List<Car> calculateWinners() {
+    Winners calculateWinners() {
         sortByLocation();
 
         List<Car> winners = new ArrayList<>(carList.size());
@@ -53,7 +49,7 @@ public class Cars {
             winners.add(carList.get(i));
         }
 
-        return winners;
+        return new Winners(winners);
     }
 
     public void sortByLocation() {
@@ -71,7 +67,7 @@ public class Cars {
         return state.toString();
     }
 
-    public boolean equals(Object o) {
+    public boolean equalsExactly(Object o) {
         if (o instanceof Cars == false) {
             return false;
         }
@@ -87,6 +83,39 @@ public class Cars {
 
         while (originIter.hasNext()) {
             result &= originIter.next().equals(comparedIter.next());
+        }
+
+        return result;
+    }
+
+    boolean contains(Object o) {
+        if (o instanceof Car == false) {
+            return false;
+        }
+
+        boolean result = false;
+        Car element = (Car) o;
+        for (Car car : carList) {
+            result |= car.equals(element);
+        }
+
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Cars == false) {
+            return false;
+        }
+
+        Cars compared = (Cars) o;
+        if (carList.size() != compared.carList.size()) {
+            return false;
+        }
+
+        boolean result = true;
+        for (Car car : compared.carList) {
+            result &= contains(car);
         }
 
         return result;

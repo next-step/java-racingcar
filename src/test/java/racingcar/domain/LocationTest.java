@@ -10,9 +10,8 @@ public class LocationTest {
     void goForward() {
         int loc = 2;
         Location location = new Location(loc);
-        goForward();
 
-        assertThat(location.equals(new Location(loc + 1)));
+        assertThat(location.goForward()).isEqualTo(new Location(loc + 1));
     }
 
     @Test

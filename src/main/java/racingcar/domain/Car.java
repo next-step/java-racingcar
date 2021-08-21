@@ -1,8 +1,6 @@
 package racingcar.domain;
 
 public class Car implements Comparable<Car> {
-    static final int CRITERION_FOR_MOVING = 4;
-
     private Location location;
     private Name name;
 
@@ -27,16 +25,8 @@ public class Car implements Comparable<Car> {
         location = location.goForward();
     }
 
-    boolean isAbleToMove(int value) throws IllegalArgumentException {
-        if (value < 0 || value > 9) {
-            throw new IllegalArgumentException("invalid argument for isAbleToMove : " + value);
-        }
-
-        return value >= CRITERION_FOR_MOVING;
-    }
-
-    void move(int value) {
-        if (isAbleToMove(value)) {
+    void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.isMovable()) {
             goForward();
         }
     }
