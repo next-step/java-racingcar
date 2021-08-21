@@ -25,5 +25,9 @@ public class LocationTest {
         assertThat(new Location(0));
     }
 
-
+    @Test
+    void toStringTest() {
+        assertThat(new Location(5).toString()).isEqualTo("-----");
+        assertThat(new Location(7).toString()).isEqualTo("-------");
+    }
 }

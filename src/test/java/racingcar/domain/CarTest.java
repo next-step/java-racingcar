@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Random;
@@ -77,6 +76,13 @@ public class CarTest {
     void Car(String name, String expected) {
         Car car = new Car(name);
 
-        assertThat(car.getName()).isEqualTo(expected);
+        assertThat(car.getNameInString()).isEqualTo(expected);
+    }
+
+    @Test
+    void equals() {
+        assertThat(new Car("A", 3).equals(new Car("A", 3))).isEqualTo(true);
+        assertThat(new Car("B", 4).equals(new Car("B", 5))).isEqualTo(false);
+        assertThat(new Car("C", 5).equals(new Car("D", 5))).isEqualTo(false);
     }
 }

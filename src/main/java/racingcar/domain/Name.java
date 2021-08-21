@@ -7,7 +7,7 @@ public class Name {
 
     public Name(String name) {
         checkValidName(name);
-        this.name = name;
+        this.name = name.trim();
     }
 
     private void checkValidName(String name) {
@@ -16,7 +16,15 @@ public class Name {
         }
     }
 
-    public String getName() {
+    public String toString() {
         return name;
+    }
+
+    public boolean equals(Object o) {
+        if (o instanceof Name == false) {
+            return false;
+        }
+
+        return name.equals(((Name) o).name);
     }
 }

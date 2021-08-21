@@ -16,6 +16,7 @@ public class RaceGame {
             ResultView.printCurrentState(race);
         } while (!race.isRaceOver());
 
+        race.findWinners();
         ResultView.printGameOver(race);
     }
 }

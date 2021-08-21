@@ -18,5 +18,10 @@ public class NameTest {
                 });
     }
 
-
+    @Test
+    void equals() {
+        assertThat(new Name("A").equals(new Name("A"))).isEqualTo(true);
+        assertThat(new Name("BAC").equals(new Name("BAC"))).isEqualTo(true);
+        assertThat(new Name("ABC").equals(new Name("CBA"))).isEqualTo(false);
+    }
 }

@@ -8,66 +8,43 @@ import java.util.Random;
 public class Race {
     public static final int MIN_ROUND_NUM = 1;
     static final int MAX_RANDOM_NUM = 10;
+    private static final String STR_RACE_NOT_OVER_YET = "아직 경기가 끝나지 않았습니다.";
     static Random random = new Random();
 
-    private List<Car> cars;
+    private Cars cars;
+    private Winners winners;
 
-    private String[] carNames = {"Unknown"};
-    private int carNum = 1;
-    private int roundNum = 1;
-    private int currentRound = 0;
+    private int roundNum;
+    private int currentRound;
 
     public Race(String[] carNames, int roundNum) {
-        this.carNames = carNames;
         this.roundNum = roundNum;
-        checkIfValidArgumentsForRace(carNames, roundNum);
+        checkIfValidArgumentsForRace(roundNum);
 
-        carNum = carNames.length;
-        cars = new ArrayList<>(carNum);
-        for (String name : carNames) {
-            this.cars.add(new Car(name));
-        }
+        currentRound = 0;
+        cars = new Cars(carNames);
     }
 
     Race() {
         this(new String[]{""}, 1);
     }
 
-    void checkIfValidArgumentsForRace(String[] carNames, int roundNum) throws IllegalArgumentException {
-        if (!isValidCarNames(carNames) || !isValidRoundNum(roundNum)) {
+    void checkIfValidArgumentsForRace(int roundNum) throws IllegalArgumentException {
+        if (!isValidRoundNum(roundNum)) {
             throw new IllegalArgumentException("Invalid Arguments for Race");
         }
-    }
-
-    public boolean isValidCarNames(String[] carNames) {
-        boolean result = true;
-        for (String name : carNames) {
-            result &= !name.trim().isEmpty();
-        }
-
-        return result;
     }
 
     public boolean isValidRoundNum(int roundNum) {
         return roundNum >= MIN_ROUND_NUM;
     }
 
-    int getNumberOfCars() {
-        return cars.size();
-    }
-
     public List<Car> getCars() {
-        return cars;
-    }
-
-    public int getCurrentRound() {
-        return currentRound;
+        return cars.getCarsList();
     }
 
     public void runOneRound() {
-        for (Car car : cars) {
-            car.move(random.nextInt(MAX_RANDOM_NUM));
-        }
+        cars.runOneRound(random, MAX_RANDOM_NUM);
 
         currentRound++;
     }
@@ -76,29 +53,24 @@ public class Race {
         return roundNum == currentRound;
     }
 
-    void sortByLocation() {
-        cars.sort(new SortByLocation());
+    public void findWinners() {
+        winners = new Winners(cars.calculateWinners());
     }
 
-    public List<Car> getWinners() {
-        sortByLocation();
+    public String getWinnersInString() {
+        try {
+            return winners.toString();
+        } catch (NullPointerException e) {
+            if (isRaceOver() == false) {
+                return STR_RACE_NOT_OVER_YET;
+            }
 
-        List<Car> winners = new ArrayList<>(carNum);
-        int furthestLocation = cars.get(0).getLocation();
-
-        winners.add(cars.get(0));
-        for (int i = 1; i < carNum && cars.get(i).getLocation() == furthestLocation; i++) {
-            winners.add(cars.get(i));
+            findWinners();
+            return winners.toString();
         }
-
-        return winners;
     }
-}
 
-class SortByLocation implements Comparator<Car>
-{
-    public int compare(Car a, Car b)
-    {
-        return b.getLocation() - a.getLocation();
+    public String getCurrentStateInString() {
+        return "< Round " + currentRound + " >\n" + cars.getCarsStateInString();
     }
 }

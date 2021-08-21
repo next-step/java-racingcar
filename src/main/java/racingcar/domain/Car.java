@@ -1,14 +1,18 @@
 package racingcar.domain;
 
-public class Car {
+public class Car implements Comparable<Car> {
     static final int CRITERION_FOR_MOVING = 4;
 
     private Location location;
     private Name name;
 
     Car(String name) {
+        this(name, 0);
+    }
+
+    Car(String name, int location) {
         this.name = new Name(name);
-        this.location = new Location(0);
+        this.location = new Location(location);
     }
 
     Car() {
@@ -37,7 +41,25 @@ public class Car {
         }
     }
 
-    public String getName() {
-        return this.name.getName();
+    public String getNameInString() {
+        return this.name.toString();
+    }
+
+    @Override
+    public int compareTo(Car o1) {
+        return location.compareTo(o1.location);
+    }
+
+    public String getCarStateInString() {
+        return name.toString() + " : " + location.toString();
+    }
+
+    public boolean equals(Object o) {
+        if (o instanceof Car) {
+            return name.equals(((Car) o).name) &&
+                    location.equals(((Car) o).location);
+        }
+
+        return false;
     }
 }

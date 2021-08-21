@@ -39,4 +39,19 @@ public class Location {
     public int hashCode() {
         return Objects.hash(location);
     }
+
+    public int compareTo(Location location1) {
+        return location1.location - location;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder locStr = new StringBuilder(location);
+
+        for (int i = 0; i < location; i++) {
+            locStr.append("-");
+        }
+
+        return locStr.toString();
+    }
 }
