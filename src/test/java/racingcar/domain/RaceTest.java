@@ -16,23 +16,6 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class RaceTest {
 
-//    @DisplayName("Race() : 입력된 Car 개수 만큼의 Car 객체 생성")
-//    @ParameterizedTest(name = "{index} {displayName} {arguments}")
-//    @MethodSource("provideCarNamesForRace")
-//    void Race(String[] carNames, int carNum) {
-//        Race race = new Race(carNames, 1);
-//
-//        assertThat(race.getNumberOfCars()).isEqualTo(carNum);
-//    }
-//
-//    private static Stream<Arguments> provideCarNamesForRace() {
-//        return Stream.of(
-//                Arguments.of(new String[]{"ABC"}, 1),
-//                Arguments.of(new String[]{"ABC", "DEF"}, 2),
-//                Arguments.of(new String[]{"ABC", "DEF", "HIJ", "KLM"}, 4)
-//        );
-//    }
-
     @DisplayName("Race() : Car 개수 입력이 잘 못될 경우 Exception 발생")
     @ParameterizedTest(name = "{index} {displayName} {arguments}")
     @MethodSource("provideCarNamesAndRoundNumForException")
@@ -46,7 +29,7 @@ public class RaceTest {
     private static Stream<Arguments> provideCarNamesAndRoundNumForException() {
         return Stream.of(
                 // Exception due to roundNum
-                Arguments.of(new String[]{"ABC"}, 0),
+                Arguments.of(new String[]{"ABC"}, -1),
                 // Exception due to carNames
                 Arguments.of(new String[]{" ", "ABC", "DEF"}, 1),
                 Arguments.of(new String[]{"ABC", " ", "DEF", "GHI"}, 1),
@@ -69,11 +52,10 @@ public class RaceTest {
         assertThat(race.isRaceOver()).isEqualTo(true);
     }
 
-    @DisplayName("isValidRoundNum : RoundNum 데이터 유효성 검사 - 최소값 이상이면 true")
-    @ParameterizedTest(name = "{index} {displayName} {arguments}")
-    @CsvSource({"-1, false", "0, false", "1, true", "3, true", "5, true", "100, true"})
-    void inValidRoundNum(int roundNum, boolean expected) {
-        Race race = new Race();
-        assertThat(race.isValidRoundNum(roundNum)).isEqualTo(expected);
+    @Test
+    void getWinnersInString() {
+        Race race = new Race(3);
+
+        assertThat(race.getWinnersInString()).isEqualTo(race.STR_RACE_NOT_OVER_YET);
     }
 }

@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.Race;
+import racingcar.domain.RoundNum;
 
 import java.util.Scanner;
 
@@ -51,7 +52,7 @@ public class InputView {
     }
 
     static boolean isValidInputOfRoundNum(int input) {
-        if (input < Race.MIN_ROUND_NUM) {
+        if (input <= RoundNum.MIN_ROUND_NUM) {
             System.out.println("invalid input for the number of round : " + input);
             return false;
         }

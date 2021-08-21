@@ -11,10 +11,10 @@ public class RaceGame {
 
         Race race = new Race(carNames, roundNum);
 
-        do {
+        while(!race.isRaceOver()){
             race.runOneRound();
             ResultView.printCurrentState(race);
-        } while (!race.isRaceOver());
+        }
 
         race.findWinners();
         ResultView.printGameOver(race);

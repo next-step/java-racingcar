@@ -8,6 +8,7 @@ public class Cars {
     private final List<Car> carList;
 
     public Cars(String[] carNames) {
+        checkValidCarNames(carNames);
         List<Car> list = new ArrayList<>(carNames.length);
 
         for (String name : carNames) {
@@ -25,6 +26,12 @@ public class Cars {
         }
 
         carList = list;
+    }
+
+    void checkValidCarNames(String[] CarNames) {
+        if (CarNames.length == 0) {
+            throw new IllegalArgumentException("유효한 Car Name 들이 아닙니다.");
+        }
     }
 
     public void runOneRound() {
