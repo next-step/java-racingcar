@@ -1,4 +1,8 @@
-package step3;
+package step3.domain;
+
+import step3.util.InputView;
+import step3.util.ResultView;
+import step3.util.Validator;
 
 import java.util.Arrays;
 import java.util.Random;
