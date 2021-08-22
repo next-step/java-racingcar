@@ -2,23 +2,28 @@ package step3.domain;
 
 public class Car {
 
-    public Car(int moveNumber) {
+    private final String DASH = "-";
+    private String name;
+    private int moveNumber;
+    private StringBuilder distance = new StringBuilder();
+
+    public Car(String name, int moveNumber) {
+        this.name = name;
         this.moveNumber = moveNumber;
     }
 
-    private int distance = 0;
-    private int moveNumber;
-
-    public void move(int randomNum) {
-
-        if(randomNum >= moveNumber) {
-            distance ++;
-        }
-
+    public String getName() {
+        return name;
     }
 
-    public int getDistance() {
-        return distance;
+    public String getDistance() {
+        return distance.toString();
+    }
+
+    public void move(int randomNum) {
+        if(randomNum >= moveNumber) {
+            distance.append(DASH);
+        }
     }
 
 }
