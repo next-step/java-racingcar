@@ -1,53 +1,62 @@
 package step3.domain;
 
-import step3.util.InputView;
-import step3.util.ResultView;
-import step3.util.Validator;
-
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Racing {
 
+    private final int MOVE_NUMBER = 4;
+    private final String COMMA = ",";
 
-    private final static String CAR_COUNT_MESSAGE = "자동차 대수는 몇 대 인가요?";
-    private final static String GAME_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
+    private int winnerDistance = 0; // 우승자의 distance
 
-    private final static int MOVE_NUMBER = 4;
+    public List<Car> initCars(String[] names) {
+        List<Car> cars = new ArrayList<>();
 
-    public static void main(String[] args) {
-
-        InputView inputView = new InputView();
-        int carCount = inputView.getCount(CAR_COUNT_MESSAGE);
-        int gameCount = inputView.getCount(GAME_COUNT_MESSAGE);
-
-        Validator.checkInput(carCount, gameCount);
-
-        ResultView resultView = new ResultView();
-        resultView.printGameResultText();
-
-        Car[] cars = initCars(carCount);
-
-        Random random = new Random();
-
-        for(int i = 0; i < gameCount; i++) {
-            Arrays.stream(cars)
-                    .forEach(a -> {
-                        a.move(random.nextInt(10));
-                        resultView.printGameResult(a.getDistance());
-                    });
-
-            resultView.printNewLine();
-        }
-    }
-
-    public static Car[] initCars(int carCount) {
-        Car[] cars = new Car[carCount];
-
-        for(int i = 0; i < carCount; i++) {
-            cars[i] = new Car(MOVE_NUMBER);
+        for(int i = 0; i < names.length; i++) {
+            cars.add(new Car(names[i].trim(), MOVE_NUMBER));
         }
 
         return cars;
     }
+
+    public String[] splitNames(String names) {
+        return names.split(COMMA);
+    }
+
+    public void startRace(List<Car> cars) {
+        Random random = new Random();
+
+        for(Car car : cars) {
+            car.move(random.nextInt(10));
+        }
+    }
+
+    public List<String> getWinner(List<Car> cars) {
+        List<String> winners = new ArrayList<>();
+
+        for(Car car : cars) {
+            winners = addIfWinner(winners, car);
+        }
+
+        return winners;
+    }
+
+    public List<String> addIfWinner(List<String> winners, Car car) {
+        int distance = car.getDistance().length();
+
+        if (winnerDistance == distance) {
+            // 같을 경우 이름 추가
+            winners.add(car.getName());
+        } else if (winnerDistance < distance) {
+            // input 차의 거리가 더 클 경우 list 생성
+            winners = new ArrayList<>();
+            winners.add(car.getName());
+            winnerDistance = distance;
+        }
+
+        return winners;
+    }
+
 }
