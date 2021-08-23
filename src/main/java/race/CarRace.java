@@ -34,7 +34,7 @@ public class CarRace {
         Cars carList = Cars.createCarList(carCount);
         for (int i = 0; i < gameCount; i++) {
             ResultView.printResult(
-                    carList.moveCars(carList, new RandomNumCondition())
+                    carList.moveCars(carList, new RandomNumCondition())              
             );
         }
     }
