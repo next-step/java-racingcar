@@ -8,8 +8,6 @@ public class Cars {
 
     private static final List<Car> carList = new ArrayList<>();
 
-    private RandomNumCondition randomNumCondition = new RandomNumCondition();
-
     private Cars() {
     }
 
@@ -25,9 +23,9 @@ public class Cars {
         return Collections.unmodifiableList(carList);
     }
 
-    protected Cars moveCars(Cars carList) {
+    protected Cars moveCars(Cars carList, MoveCondition moveCondition) {
         for (Car car: carList.getCarList()) {
-            car.addDistance(randomNumCondition);
+            car.addDistance(moveCondition);
         }
         return carList;
     }
