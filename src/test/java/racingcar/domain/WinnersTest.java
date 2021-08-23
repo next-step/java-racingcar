@@ -8,15 +8,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WinnersTest {
-    @Test
-    void toStringTest() {
-        assertThat(new Winners().toString()).isEqualTo("우승자 없음");
-
-        List<Car> CarList = new ArrayList<>();
-        CarList.add(new Car("A"));
-        CarList.add(new Car("B"));
-        assertThat(new Winners(CarList).toString()).isEqualTo("A, B 우승!");
-    }
 
     @Test
     void contains() {
@@ -53,5 +44,25 @@ public class WinnersTest {
         compared.add(new Car("D"));
 
         assertThat(new Winners(list).equals(new Winners(compared))).isEqualTo(false);
+    }
+
+    @Test
+    void getName() {
+        List<Car> winnersList = new ArrayList<>();
+        winnersList.add(new Car("A"));
+        winnersList.add(new Car("B"));
+        winnersList.add(new Car("C"));
+
+        Winners winners = new Winners(winnersList);
+
+        assertThat(winners.getName()).isEqualTo("A, B, C");
+    }
+
+    @Test
+    void getName_winner가_없을_때_empty_string_return() {
+        Winners winners = new Winners();
+
+        assertThat(winners.getName()).isEqualTo("");
+        assertThat(winners.getName().isEmpty()).isTrue();
     }
 }

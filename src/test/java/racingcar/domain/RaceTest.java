@@ -51,11 +51,4 @@ public class RaceTest {
 
         assertThat(race.isRaceOver()).isEqualTo(true);
     }
-
-    @Test
-    void getWinnersInString() {
-        Race race = new Race(3);
-
-        assertThat(race.getWinnersInString()).isEqualTo(race.STR_RACE_NOT_OVER_YET);
-    }
 }

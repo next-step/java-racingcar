@@ -1,8 +1,6 @@
 package racingcar.domain;
 
 public class Race {
-    static final String STR_RACE_NOT_OVER_YET = "아직 경기가 끝나지 않았습니다.";
-
     private Cars cars;
     private Winners winners;
     private RoundNum roundNum;
@@ -32,19 +30,19 @@ public class Race {
         winners = cars.calculateWinners();
     }
 
-    public String getWinnersInString() {
+    public String getWinnersName() {
         if (winners == null) {
             findWinners();
         }
 
-        if (isRaceOver() == false) {
-            return STR_RACE_NOT_OVER_YET;
-        }
-
-        return winners.toString();
+        return winners.getName();
     }
 
-    public String getCurrentStateInString() {
-        return currentRound.toString() + "\n" + cars.getCarsStateInString();
+    public String getCurrentRoundString() {
+        return currentRound.toString();
+    }
+
+    public String getCarsStateInString() {
+        return cars.getCarsStateInString();
     }
 }

@@ -2,6 +2,7 @@ package racingcar.domain;
 
 public class CurrentRound {
     private static final int MIN_CURRENT_ROUND = 0;
+
     private final int currentRound;
 
     public CurrentRound(int currentRound) {
@@ -23,7 +24,8 @@ public class CurrentRound {
         return new CurrentRound(currentRound + 1);
     }
 
+    @Override
     public String toString() {
-        return "< Round " + currentRound + " >";
+        return Integer.toString(currentRound);
     }
 }

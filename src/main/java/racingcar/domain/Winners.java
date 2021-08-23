@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Winners {
-    private static final String STR_NO_WINNERS = "우승자 없음";
 
     private final List<Car> winners;
 
@@ -15,6 +14,22 @@ public class Winners {
 
     Winners() {
         this(new ArrayList<Car>());
+    }
+
+    public String getName() {
+        StringBuilder winnerNames = new StringBuilder();
+        Iterator<Car> it = winners.iterator();
+
+        if (it.hasNext() == false) {
+            return winnerNames.toString();
+        }
+
+        winnerNames.append(it.next().getNameInString());
+        while (it.hasNext()) {
+            winnerNames.append(", " + it.next().getNameInString());
+        }
+
+        return winnerNames.toString();
     }
 
     boolean contains(Object o) {
@@ -29,25 +44,6 @@ public class Winners {
         }
 
         return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder winnerNames = new StringBuilder();
-        Iterator<Car> it = winners.iterator();
-
-        if (it.hasNext() == false) {
-            return STR_NO_WINNERS;
-        }
-
-        winnerNames.append(it.next().getNameInString());
-        while (it.hasNext()) {
-            winnerNames.append(", " + it.next().getNameInString());
-        }
-
-        winnerNames.append(" 우승!");
-
-        return winnerNames.toString();
     }
 
     @Override
