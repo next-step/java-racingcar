@@ -8,7 +8,7 @@ public class Car {
 
     private List<Boolean> distance = new ArrayList<>();
 
-    protected List<Boolean> getDistance() {
+    public List<Boolean> getDistance() {
         return Collections.unmodifiableList(distance);
     }
 
