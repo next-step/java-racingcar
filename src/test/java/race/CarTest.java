@@ -24,17 +24,7 @@ class CarTest {
     @DisplayName("setDistance 테스트")
     void addDistanceTest() {
         //given
-        car.addDistance(new MoveCondition() {
-            @Override
-            public int getValue() {
-                return 1;
-            }
-
-            @Override
-            public boolean moveOrNot() {
-                return true;
-            }
-        });
+        car.addDistance(() -> true);
         //then
         assertThat(car.getDistance().get(0)).isTrue();
     }
