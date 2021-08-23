@@ -10,12 +10,8 @@ public class RandomNumCondition implements MoveCondition {
 
     protected static final Random random = new Random();
 
-    public int getValue() {
-        return random.nextInt(LIMIT_NUM);
-    }
-
     @Override
     public boolean moveOrNot() {
-        return getValue() >= STANDARD_NUM;
+        return random.nextInt(LIMIT_NUM) >= STANDARD_NUM;
     }
 }
