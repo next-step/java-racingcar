@@ -23,8 +23,8 @@ public class Location {
         return new Location(location + 1);
     }
 
-    public int getLocation() {
-        return location;
+    public int compareTo(Location location1) {
+        return location1.location - location;
     }
 
     @Override
@@ -38,10 +38,6 @@ public class Location {
     @Override
     public int hashCode() {
         return Objects.hash(location);
-    }
-
-    public int compareTo(Location location1) {
-        return location1.location - location;
     }
 
     @Override

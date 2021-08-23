@@ -78,7 +78,6 @@ public class CarsTest {
         });
         assertThat(cars.equals(expectedCars)).isEqualTo(true);
         assertThat(cars.equalsExactly(expectedCars)).isEqualTo(false);
-        assertThat(cars).isEqualToComparingFieldByField(expectedCars);
     }
 
     @Test

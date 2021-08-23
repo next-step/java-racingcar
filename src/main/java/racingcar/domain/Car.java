@@ -31,29 +31,25 @@ public class Car implements Comparable<Car> {
         return this.name.toString();
     }
 
+    public String getCarStateInString() {
+        return name.toString() + " : " + location.toString();
+    }
+
+    public boolean equalsLocation(Car compared) {
+        return location.equals(compared.location);
+    }
+
     @Override
     public int compareTo(Car o1) {
         return location.compareTo(o1.location);
     }
 
-    public String getCarStateInString() {
-        return name.toString() + " : " + location.toString();
-    }
-
+    @Override
     public boolean equals(Object o) {
         if (o instanceof Car) {
             Car compared = (Car) o;
             return name.equals(compared.name) &&
                     location.equals(compared.location);
-        }
-
-        return false;
-    }
-
-    public boolean equalsLocation(Object o) {
-        if (o instanceof Car) {
-            Car compared = (Car) o;
-            return location.equals(compared.location);
         }
 
         return false;

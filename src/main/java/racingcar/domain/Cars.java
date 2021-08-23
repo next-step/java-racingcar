@@ -69,12 +69,7 @@ public class Cars {
         return state.toString();
     }
 
-    public boolean equalsExactly(Object o) {
-        if (o instanceof Cars == false) {
-            return false;
-        }
-
-        Cars compared = (Cars) o;
+    public boolean equalsExactly(Cars compared) {
         if (carList.size() != compared.carList.size()) {
             return false;
         }
@@ -90,13 +85,8 @@ public class Cars {
         return result;
     }
 
-    boolean contains(Object o) {
-        if (o instanceof Car == false) {
-            return false;
-        }
-
+    boolean contains(Car element) {
         boolean result = false;
-        Car element = (Car) o;
         for (Car car : carList) {
             result |= car.equals(element);
         }

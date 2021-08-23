@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Winners {
     private static final String STR_NO_WINNERS = "우승자 없음";
+
     private final List<Car> winners;
 
     Winners(List<Car> winners) {
@@ -16,6 +17,21 @@ public class Winners {
         this(new ArrayList<Car>());
     }
 
+    boolean contains(Object o) {
+        if (o instanceof Car == false) {
+            return false;
+        }
+
+        boolean result = false;
+        Car element = (Car) o;
+        for (Car winner : winners) {
+            result |= winner.equals(element);
+        }
+
+        return result;
+    }
+
+    @Override
     public String toString() {
         StringBuilder winnerNames = new StringBuilder();
         Iterator<Car> it = winners.iterator();
@@ -32,20 +48,6 @@ public class Winners {
         winnerNames.append(" 우승!");
 
         return winnerNames.toString();
-    }
-
-    boolean contains(Object o) {
-        if (o instanceof Car == false) {
-            return false;
-        }
-
-        boolean result = false;
-        Car element = (Car) o;
-        for (Car winner : winners) {
-            result |= winner.equals(element);
-        }
-
-        return result;
     }
 
     @Override

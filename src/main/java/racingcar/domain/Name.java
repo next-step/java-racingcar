@@ -16,10 +16,12 @@ public class Name {
         }
     }
 
+    @Override
     public String toString() {
         return name;
     }
 
+    @Override
     public boolean equals(Object o) {
         if (o instanceof Name == false) {
             return false;
