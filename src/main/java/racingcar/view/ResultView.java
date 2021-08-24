@@ -1,49 +1,32 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
 import racingcar.domain.Race;
 
-import java.util.Iterator;
-import java.util.List;
-
 public class ResultView {
+    private static final String NOTI_RACE_NOT_OVER_YET = "아직 경기가 끝나지 않았습니다.";
+    private static final String NOTI_NO_WINNERS = "우승자 없음";
+    private static final String NOTI_WINS = "우승!";
+
     public static void printCurrentState(Race race) {
-        List<Car> cars = race.getCars();
-
-        System.out.println("< Round " + race.getCurrentRound() + ">");
-        for (Car car : cars) {
-            printLocationOfCar(car);
-        }
-        System.out.println();
-    }
-
-    static void printLocationOfCar(Car car) {
-        System.out.print(car.getName() + " : ");
-        for (int i = 0; i < car.getLocation(); i++) {
-            System.out.print("-");
-        }
-        System.out.println();
+        System.out.println("< Round " + race.getCurrentRoundString() + " >\n" + race.getCarsStateInString());
     }
 
     public static void printGameOver(Race race) {
+        if (race.isRaceOver() == false) {
+            System.out.println(NOTI_RACE_NOT_OVER_YET);
+            return;
+        }
+
         printWinners(race);
     }
 
     public static void printWinners(Race race) {
-        List<Car> winners = race.getWinners();
-
-        System.out.print("레이스 결과 : ");
-        Iterator it = winners.iterator();
-
-        if (it.hasNext() == false) {
-            System.out.println("우승자 없음");
+        String winnerNames = race.getWinnersName();
+        if (winnerNames.isEmpty()) {
+            System.out.println(NOTI_NO_WINNERS);
             return;
         }
 
-        System.out.print(((Car) it.next()).getName());
-        while (it.hasNext()) {
-            System.out.print(", " + ((Car) it.next()).getName());
-        }
-        System.out.println(" 우승!");
+        System.out.println(race.getWinnersName() + " " + NOTI_WINS);
     }
 }

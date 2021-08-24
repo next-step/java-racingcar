@@ -52,8 +52,8 @@ public class CalculatorTest {
 
         @ParameterizedTest(name = "{index} {displayName} {arguments}")
         @MethodSource("provideStringForisOperator")
-    void isOperator_ShouldReturnTrueForOperators(String input) {
-        assertThat(calculator.isOperator(input)).isTrue();
+    void isOperator_ShouldReturnTrueForOperators(String input, boolean expected) {
+        assertThat(calculator.isOperator(input)).isEqualTo(expected);
     }
 
     public static Stream<Arguments> provideStringForisOperator() {
@@ -128,7 +128,7 @@ public class CalculatorTest {
         @ParameterizedTest(name = "{index} {displayName} {arguments}")
         @MethodSource("provideIntegerForcalculate")
     void calculate(String op, int a, int b, int result) {
-        assertThat(calculator.calculate("+", a, b)).isEqualTo(result);
+        assertThat(calculator.calculate(op, a, b)).isEqualTo(result);
     }
 
     public static Stream<Arguments> provideIntegerForcalculate() {

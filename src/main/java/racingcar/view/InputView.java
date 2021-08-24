@@ -1,6 +1,8 @@
 package racingcar.view;
 
+import org.codehaus.plexus.util.StringUtils;
 import racingcar.domain.Race;
+import racingcar.domain.RoundNum;
 
 import java.util.Scanner;
 
@@ -9,6 +11,9 @@ public class InputView {
             = "레이스에 참가하는 자동차의 이름을 입력하세요(이름은 쉽표(,)를 기준으로 구분) : ";
     static final String INPUT_ROUND_NUM_INSTRUCTION
             = "진행할 레이스의 라운드 수를 입력하세요 : ";
+    static final String NOTI_EMPTY_INPUT = "Nothing has been entered";
+    static final String NOTI_EMPTY_CAR_NAME = "empty string is invalid for car name";
+    static final String NOTI_INVALID_ROUNDNUM = "invalid input for the number of round : ";
 
     public static String[] inputNamesOfCars() {
         String input = "";
@@ -22,8 +27,8 @@ public class InputView {
     }
 
     public static boolean isValidInputOfCars(String input) {
-        if (input == null || input.trim().isEmpty()) {
-            System.out.println("Nothing has been entered");
+        if (input == null || StringUtils.isBlank(input)) {
+            System.out.println(NOTI_EMPTY_INPUT);
             return false;
         }
 
@@ -34,7 +39,7 @@ public class InputView {
         }
 
         if (result == false) {
-            System.out.println("empty string is invalid for car name");
+            System.out.println(NOTI_EMPTY_CAR_NAME);
         }
 
         return result;
@@ -51,8 +56,8 @@ public class InputView {
     }
 
     static boolean isValidInputOfRoundNum(int input) {
-        if (input < Race.MIN_ROUND_NUM) {
-            System.out.println("invalid input for the number of round : " + input);
+        if (input <= RoundNum.MIN_ROUND_NUM) {
+            System.out.println(NOTI_INVALID_ROUNDNUM + input);
             return false;
         }
 

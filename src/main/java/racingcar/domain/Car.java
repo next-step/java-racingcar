@@ -1,46 +1,57 @@
 package racingcar.domain;
 
-public class Car {
-    static final int CRITERION_FOR_MOVING = 4;
-
-    private int location = 0;
-    private String name = "Unknown";
+public class Car implements Comparable<Car> {
+    private Location location;
+    private Name name;
 
     Car(String name) {
-        if (isValidName(name)) {
-            this.name = name;
-        }
+        this(name, 0);
     }
 
-    Car() {}
+    Car(String name, int location) {
+        this.name = new Name(name);
+        this.location = new Location(location);
+    }
 
-    public int getLocation() {
-        return location;
+    Car() {
+        this("Unknown");
     }
 
     void goForward() {
-        location++;
+        location = location.goForward();
     }
 
-    boolean isAbleToMove(int value) throws IllegalArgumentException {
-        if (value < 0 || value > 9) {
-            throw new IllegalArgumentException("invalid argument for isAbleToMove : " + value);
-        }
-
-        return value >= CRITERION_FOR_MOVING;
-    }
-
-    void move(int value) {
-        if (isAbleToMove(value)) {
+    void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.isMovable()) {
             goForward();
         }
     }
 
-    public String getName() {
-        return this.name;
+    public String getNameInString() {
+        return this.name.toString();
     }
 
-    boolean isValidName(String name) {
-        return !(name == null || name.trim().isEmpty());
+    public String getCarStateInString() {
+        return name.toString() + " : " + location.toString();
+    }
+
+    public boolean equalsLocation(Car compared) {
+        return location.equals(compared.location);
+    }
+
+    @Override
+    public int compareTo(Car o1) {
+        return location.compareTo(o1.location);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Car) {
+            Car compared = (Car) o;
+            return name.equals(compared.name) &&
+                    location.equals(compared.location);
+        }
+
+        return false;
     }
 }
