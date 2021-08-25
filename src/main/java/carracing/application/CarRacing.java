@@ -24,20 +24,5 @@ public class CarRacing {
     private List<Car> makeCars(String[] names) {
         return CarFactory.makeCars(names);
     }
-//
-//    public List<Car> findWinners(List<Car> cars) {
-//        Position maxPosition = findMaxPosition(cars);
-//
-//        return cars.stream()
-//            .filter(car -> car.position().equals(maxPosition))
-//            .collect(Collectors.toList());
-//    }
-//
-//    private Position findMaxPosition(List<Car> cars) {
-//        return cars.stream()
-//            .map(car -> car.position())
-//            .reduce(Position::calBiggerPosition)
-//            .get();
-//    }
 
 }
