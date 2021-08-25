@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RaceResult {
 
-    private List<List<Car>> raceResult;
+    private List<Cars> raceResult;
 
     private List<Car> winners;
 
@@ -14,7 +14,7 @@ public class RaceResult {
         this.winners = new ArrayList<>();
     }
 
-    public List<List<Car>> raceResult() {
+    public List<Cars> raceResult() {
         return raceResult;
     }
 
@@ -22,7 +22,7 @@ public class RaceResult {
         return winners;
     }
 
-    public void saveResult(List<Car> cars) {
+    public void saveResult(Cars cars) {
         raceResult.add(cars);
     }
 

@@ -1,6 +1,7 @@
 package carracing.view;
 
 import carracing.domain.Car;
+import carracing.domain.Cars;
 import carracing.domain.RaceResult;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,16 +15,16 @@ public class ResultView {
     }
 
     public void showResult(RaceResult result) {
-        for (List<Car> cars : result.raceResult()) {
+        for (Cars cars : result.raceResult()) {
             showGameResult(cars);
         }
 
         showWinnerResult(result.winners());
     }
 
-    public void showGameResult(List<Car> cars) {
+    public void showGameResult(Cars cars) {
         StringBuilder sb = new StringBuilder();
-        for (Car car : cars) {
+        for (Car car : cars.cars()) {
             sb.append(car.name().value() + " : ");
             sb.append(makePosition(car.position().value()));
             sb.append("\n");
