@@ -1,5 +1,6 @@
 package carracing.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.junit.jupiter.api.DisplayName;
@@ -49,6 +50,21 @@ public class NameTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
             .isThrownBy(() -> new Name(input, len))
             .withMessageMatching("이름은 공백이 들어올 수 없습니다.");
+    }
+
+    @Test
+    void nameEqualsTest() {
+
+        // given
+        String input1 = "car";
+        String input2 = "car";
+
+        // when
+        Name name1 = new Name(input1, 5);
+        Name name2 = new Name(input2, 5);
+
+        // then
+        assertThat(name1).isEqualTo(name2);
     }
 
 }
