@@ -1,6 +1,7 @@
 package carracing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.util.Arrays;
 import java.util.List;
@@ -49,6 +50,20 @@ class CarsTest {
         assertThat(result.size()).isEqualTo(2);
         assertThat(result).contains(car1);
         assertThat(result).contains(car2);
+    }
+
+    @Test
+    @DisplayName("중복된 이름의 자동차가 들어오면 exception이 발생해야 한다.")
+    void checkDuplicateNameTest() {
+
+        // given
+        Car car1 = new Car("car");
+        Car car2 = new Car("car");
+
+        // when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> new Cars(Arrays.asList(car1, car2)))
+            .withMessageMatching("차의 이름은 중복될 수 없습니다.");
     }
 
 }
