@@ -20,4 +20,8 @@ public class Position {
         }
     }
 
+    public void move() {
+        this.position++;
+    }
+
 }
