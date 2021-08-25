@@ -41,7 +41,7 @@ public class Car {
 
     public void checkNameLength(String name) {
         if (name.length() > NAME_LIMIT_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5 이하여야 합니다.");
+            throw new IllegalArgumentException("자동차 이름은 " + NAME_LIMIT_LENGTH + " 이하여야 합니다.");
         }
     }
 }
