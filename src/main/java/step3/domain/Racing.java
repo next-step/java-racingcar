@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class Racing {
 
-    private final int MOVE_NUMBER = 4;
     private final String COMMA = ",";
 
     private int winnerDistance = 0; // 우승자의 distance
@@ -15,7 +14,7 @@ public class Racing {
         List<Car> cars = new ArrayList<>();
 
         for(int i = 0; i < names.length; i++) {
-            cars.add(new Car(names[i].trim(), MOVE_NUMBER));
+            cars.add(new Car(names[i].trim()));
         }
 
         return cars;
@@ -44,7 +43,7 @@ public class Racing {
     }
 
     public List<String> addIfWinner(List<String> winners, Car car) {
-        int distance = car.getDistance().length();
+        int distance = car.getDistance();
 
         if (winnerDistance == distance) {
             // 같을 경우 이름 추가
