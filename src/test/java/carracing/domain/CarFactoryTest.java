@@ -21,7 +21,9 @@ class CarFactoryTest {
 
         // then
         assertThat(cars.size()).isEqualTo(names.length);
-        assertThat(cars).extracting("name").hasSameElementsAs(Arrays.asList(names));
+        assertThat(cars.get(0).name()).isEqualTo(new Name(names[0], 5));
+        assertThat(cars.get(1).name()).isEqualTo(new Name(names[1], 5));
+        assertThat(cars.get(2).name()).isEqualTo(new Name(names[2], 5));
     }
 
 }
