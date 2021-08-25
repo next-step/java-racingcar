@@ -26,6 +26,10 @@ public class Name {
         }
     }
 
+    public String value() {
+        return name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

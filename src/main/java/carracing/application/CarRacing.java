@@ -15,14 +15,18 @@ public class CarRacing {
         String[] names = inputName.split(",");
         List<Car> cars = makeCars(names);
 
-        RaceResult raceResult = new RaceResult(raceCount);
+        RaceResult raceResults = new RaceResult(raceCount);
 
         for (int i = 0; i < raceCount; i++) {
             cars.stream().forEach(car -> car.move(generateRandom()));
-            raceResult.saveResult(cars);
+            raceResults.saveResult(cars);
         }
-        raceResult.saveWinners(findWinners(cars));
-        return raceResult;
+        raceResults.saveWinners(findWinners(cars));
+        return raceResults;
+    }
+
+    private List<Car> makeCars(String[] names) {
+        return CarFactory.makeCars(names);
     }
 
     public List<Car> findWinners(List<Car> cars) {
@@ -31,10 +35,6 @@ public class CarRacing {
         return cars.stream()
             .filter(car -> car.position().equals(maxPosition))
             .collect(Collectors.toList());
-    }
-
-    private List<Car> makeCars(String[] names) {
-        return CarFactory.makeCars(names);
     }
 
     private Position findMaxPosition(List<Car> cars) {
