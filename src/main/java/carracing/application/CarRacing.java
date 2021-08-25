@@ -4,8 +4,8 @@ import static carracing.utils.RandomValueGenerator.generateRandom;
 
 import carracing.domain.Car;
 import carracing.domain.CarFactory;
+import carracing.domain.Position;
 import carracing.domain.RaceResult;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,16 +26,17 @@ public class CarRacing {
     }
 
     public List<Car> findWinners(List<Car> cars) {
-        int maxLocation = cars.stream()
-            .max(Comparator.comparingInt(o -> o.location()))
-            .get().location();
-        List<Car> winners = cars.stream()
-            .filter(car -> car.location() == maxLocation)
+        Position maxPosition = cars.stream()
+            .map(car -> car.position())
+            .reduce(Position::calBiggerPosition)
+            .get();
+
+        return cars.stream()
+            .filter(car -> car.position().equals(maxPosition))
             .collect(Collectors.toList());
-        return winners;
     }
 
-    public List<Car> makeCars(String[] names) {
+    private List<Car> makeCars(String[] names) {
         return CarFactory.makeCars(names);
     }
 

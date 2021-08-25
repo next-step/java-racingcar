@@ -26,7 +26,7 @@ public class RaceResult {
         StringBuilder sb = new StringBuilder();
         cars.forEach(car -> {
             sb.append(car.name() + " : ");
-            sb.append(makeLocation(car.location()));
+            sb.append(makeLocation(car.position().value()));
             sb.append("\n");
         });
         raceResult.add(sb.toString());

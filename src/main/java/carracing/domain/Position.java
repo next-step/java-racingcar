@@ -22,6 +22,10 @@ public class Position {
         }
     }
 
+    public int value() {
+        return position;
+    }
+
     public void move() {
         this.position++;
     }

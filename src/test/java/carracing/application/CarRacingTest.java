@@ -20,20 +20,6 @@ class CarRacingTest {
     }
 
     @Test
-    @DisplayName("게임을 시작할 자동차를 원하는 갯수만큼 생성할 수 있다.")
-    void makeCarTest() {
-
-        // given
-        String[] names = {"1", "2", "3"};
-
-        // when
-        List<Car> result = carRacing.makeCars(names);
-
-        // then
-        assertThat(result.size()).isEqualTo(names.length);
-    }
-
-    @Test
     @DisplayName("게임이 시작하면 지정된 회수만큼 게임이 진행된다.")
     void raceTest() {
 
@@ -54,7 +40,7 @@ class CarRacingTest {
 
         // given
         Car winner = new Car("우승자");
-        winner.forward();
+        winner.move(5);
         List<Car> cars = Arrays.asList(
             new Car("자동차1"),
             new Car("자동차2"),
@@ -77,8 +63,8 @@ class CarRacingTest {
         // given
         Car winner1 = new Car("우승자1");
         Car winner2 = new Car("우승자2");
-        winner1.forward();
-        winner2.forward();
+        winner1.move(5);
+        winner2.move(5);
         List<Car> cars = Arrays.asList(
             new Car("자동차1"),
             new Car("자동차2"),
