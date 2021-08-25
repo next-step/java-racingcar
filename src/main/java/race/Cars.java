@@ -1,12 +1,12 @@
 package race;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Cars {
 
     private static final List<Car> carList = new ArrayList<>();
+
+    private Map<String, List<Boolean>> carMap = new HashMap<>();
 
     private Cars() {
     }

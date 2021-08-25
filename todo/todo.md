@@ -7,3 +7,6 @@
 ### 프로그래밍 요구사항
 - indent < 2
 - 메서드 길이 <= 15 lines
+
+###메모
+- Map<String, List<Boolean>> (이름, 승/패)
