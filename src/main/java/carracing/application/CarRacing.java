@@ -26,10 +26,7 @@ public class CarRacing {
     }
 
     public List<Car> findWinners(List<Car> cars) {
-        Position maxPosition = cars.stream()
-            .map(car -> car.position())
-            .reduce(Position::calBiggerPosition)
-            .get();
+        Position maxPosition = findMaxPosition(cars);
 
         return cars.stream()
             .filter(car -> car.position().equals(maxPosition))
@@ -38,6 +35,13 @@ public class CarRacing {
 
     private List<Car> makeCars(String[] names) {
         return CarFactory.makeCars(names);
+    }
+
+    private Position findMaxPosition(List<Car> cars) {
+        return cars.stream()
+            .map(car -> car.position())
+            .reduce(Position::calBiggerPosition)
+            .get();
     }
 
 }
