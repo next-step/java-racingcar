@@ -1,5 +1,7 @@
 package carracing.domain;
 
+import java.util.Objects;
+
 public class Car {
 
     private static final int MOVE_NUMBER = 4;
@@ -7,20 +9,18 @@ public class Car {
 
     private int location;
 
-    private final String name;
+    private final Name name;
 
     public Car(String name) {
-        checkNameLength(name);
-
         this.location = 0;
-        this.name = name;
+        this.name = new Name(name, NAME_LIMIT_LENGTH);
     }
 
     public int location() {
         return location;
     }
 
-    public String name() {
+    public Name name() {
         return name;
     }
 
@@ -39,9 +39,21 @@ public class Car {
         return this.location;
     }
 
-    public void checkNameLength(String name) {
-        if (name.length() > NAME_LIMIT_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 " + NAME_LIMIT_LENGTH + " 이하여야 합니다.");
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
         }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return Objects.equals(name, car.name);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
 }
