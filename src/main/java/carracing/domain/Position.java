@@ -4,10 +4,12 @@ import java.util.Objects;
 
 public class Position {
 
+    private static final int ZERO = 0;
+
     private int position;
 
     public Position() {
-        this(0);
+        this(ZERO);
     }
 
     public Position(int position) {
@@ -17,7 +19,7 @@ public class Position {
     }
 
     private void checkPosition(int position) {
-        if (position < 0) {
+        if (position < ZERO) {
             throw new IllegalArgumentException("현재 위치는 음수가 될 수 없습니다.");
         }
     }

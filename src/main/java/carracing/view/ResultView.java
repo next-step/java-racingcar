@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 public class ResultView {
 
+    private static final String POSITION_VIEW_STYLE = "-";
+
     public ResultView() {
         System.out.println("실행 결과");
     }
@@ -32,7 +34,7 @@ public class ResultView {
     private String makePosition(int location) {
         String result = "";
         for (int i = 0; i < location; i++) {
-            result += "-";
+            result += POSITION_VIEW_STYLE;
         }
         return result;
     }
