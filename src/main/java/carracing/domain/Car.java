@@ -7,36 +7,32 @@ public class Car {
     private static final int MOVE_NUMBER = 4;
     private static final int NAME_LIMIT_LENGTH = 5;
 
-    private int location;
+    private final Position position;
 
     private final Name name;
 
     public Car(String name) {
-        this.location = 0;
+        this.position = new Position();
         this.name = new Name(name, NAME_LIMIT_LENGTH);
     }
 
-    public int location() {
-        return location;
+    public Position position() {
+        return position;
     }
 
     public Name name() {
         return name;
     }
 
-    public void forward() {
-        this.location++;
-    }
-
     public boolean isMovable(int cmd) {
         return cmd >= MOVE_NUMBER;
     }
 
-    public int move(int cmd) {
+    public Position move(int cmd) {
         if (isMovable(cmd)) {
-            forward();
+            position.move();
         }
-        return this.location;
+        return position;
     }
 
     @Override

@@ -1,7 +1,6 @@
 package carracing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,21 +17,7 @@ class CarTest {
         Car car = new Car("car");
 
         // whe & then
-        assertThat(car.location()).isEqualTo(0);
-    }
-
-    @Test
-    @DisplayName("자동차는 이동할 수 있다.")
-    void forwardCarTest() {
-
-        // given
-        Car car = new Car("car");
-
-        // when
-        car.forward();
-
-        // then
-        assertThat(car.location()).isEqualTo(1);
+        assertThat(car.position()).isEqualTo(new Position());
     }
 
     @ParameterizedTest
@@ -44,10 +29,10 @@ class CarTest {
         Car car = new Car("car");
 
         // when
-        int result = car.move(cmd);
+        Position result = car.move(cmd);
 
         // then
-        assertThat(result).isEqualTo(1);
+        assertThat(result).isEqualTo(new Position(1));
     }
 
 
@@ -60,10 +45,10 @@ class CarTest {
         Car car = new Car("car");
 
         // when
-        int result = car.move(cmd);
+        Position result = car.move(cmd);
 
         // then
-        assertThat(result).isEqualTo(0);
+        assertThat(result).isEqualTo(new Position(0));
     }
 
     @Test
