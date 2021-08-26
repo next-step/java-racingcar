@@ -1,10 +1,12 @@
 package race;
 
+import java.util.Map;
+
 public class ResultView {
 
     protected static void printResult(Cars cars) {
-        for (Car car: cars.getCarList()) {
-            System.out.println(convertDistanceToLine(car));
+        for (Map.Entry<String, Car> entry : cars.getCarMap().entrySet()) {
+            System.out.println(convertDistanceToLine(entry.getValue()));
         }
         System.out.println();
     }

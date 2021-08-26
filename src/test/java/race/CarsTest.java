@@ -13,21 +13,21 @@ class CarsTest {
 
     @BeforeEach
     void setUp() {
-        cars = Cars.createCarList(3);
+        cars = Cars.createCarMap(3);
     }
 
     @Test
     @DisplayName("createCarList 테스트")
     void createCarListTest() {
         //then
-        assertThat(cars.getCarList().size()).isEqualTo(3);
+        assertThat(cars.getCarMap().size()).isEqualTo(3);
     }
 
     @Test
-    @DisplayName("Collection unmodifiableList 테스트")
+    @DisplayName("Collection unmodifiableMap 테스트")
     void unmodifiableListTest() {
         assertThatExceptionOfType(UnsupportedOperationException.class).isThrownBy(() -> {
-            cars.getCarList().add(new Car());
+            cars.getCarMap().put("test", new Car());
         });
     }
 

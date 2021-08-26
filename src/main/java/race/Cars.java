@@ -4,30 +4,32 @@ import java.util.*;
 
 public class Cars {
 
-    private static final List<Car> carList = new ArrayList<>();
+    private static Map<String, Car> carMap = new HashMap<>();
 
-    private Map<String, List<Boolean>> carMap = new HashMap<>();
-
-    private Cars() {
+    public Cars() {
     }
 
-    public static Cars createCarList(int carCount) {
+    public Cars(Map<String, Car> carMap) {
+        this.carMap = carMap;
+    }
+
+    public static Cars createCarMap(int carCount) {
         for (int i = carCount; i > 0; i--) {
             Car car = new Car();
-            carList.add(car);
+            carMap.put("name", car);
         }
         return new Cars();
     }
 
-    protected final List<Car> getCarList() {
-        return Collections.unmodifiableList(carList);
+    protected final Map<String, Car> getCarMap() {
+        return Collections.unmodifiableMap(carMap);
     }
 
-    protected Cars moveCars(Cars carList, MoveCondition moveCondition) {
-        for (Car car: carList.getCarList()) {
-            car.addDistance(moveCondition);
+    protected Cars moveCars(Cars cars, MoveCondition moveCondition) {
+        for (Map.Entry<String, Car> carEntry : cars.getCarMap().entrySet()) {
+            carEntry.getValue().addDistance(moveCondition);
         }
-        return carList;
+        return cars;
     }
 
 }
