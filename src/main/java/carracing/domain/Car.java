@@ -44,12 +44,12 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return Objects.equals(name, car.name);
+        return Objects.equals(position, car.position) && Objects.equals(name, car.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(position, name);
     }
 
 }
