@@ -5,7 +5,6 @@ import java.util.Objects;
 public class Car {
 
     private static final int MOVE_NUMBER = 4;
-    private static final int NAME_LIMIT_LENGTH = 5;
 
     private final Position position;
 
@@ -13,7 +12,7 @@ public class Car {
 
     public Car(String name) {
         this.position = new Position();
-        this.name = new Name(name, NAME_LIMIT_LENGTH);
+        this.name = new Name(name);
     }
 
     public Position position() {

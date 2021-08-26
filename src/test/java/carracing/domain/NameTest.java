@@ -12,16 +12,13 @@ public class NameTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"자동차자동차", "자동차자동차자동차"})
-    @DisplayName("이름이 limit len이하가 아니라면 exception이 발생해야 한다.")
+    @DisplayName("이름이 5 이하가 아니라면 exception이 발생해야 한다.")
     void nameByInvalidLengthTest(String input) {
-
-        // given
-        int len = 5;
 
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> new Name(input, len))
-            .withMessageMatching("이름은 " + len + " 이하여야 합니다.");
+            .isThrownBy(() -> new Name(input))
+            .withMessageMatching("이름은 5 이하여야 합니다.");
     }
 
     @ParameterizedTest
@@ -34,7 +31,7 @@ public class NameTest {
 
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> new Name(input, len))
+            .isThrownBy(() -> new Name(input))
             .withMessageMatching("이름은 공백이 들어올 수 없습니다.");
     }
 
@@ -48,7 +45,7 @@ public class NameTest {
 
         // when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> new Name(input, len))
+            .isThrownBy(() -> new Name(input))
             .withMessageMatching("이름은 공백이 들어올 수 없습니다.");
     }
 
@@ -60,8 +57,8 @@ public class NameTest {
         String input2 = "car";
 
         // when
-        Name name1 = new Name(input1, 5);
-        Name name2 = new Name(input2, 5);
+        Name name1 = new Name(input1);
+        Name name2 = new Name(input2);
 
         // then
         assertThat(name1).isEqualTo(name2);

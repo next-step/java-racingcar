@@ -5,18 +5,20 @@ import org.apache.commons.lang3.StringUtils;
 
 public class Name {
 
+    private final int NAME_LIMIT_LENGTH = 5;
+
     private final String name;
 
-    public Name(String name, int limitLength) {
+    public Name(String name) {
         checkNameBlank(name);
-        checkNameLength(name, limitLength);
+        checkNameLength(name);
 
         this.name = name;
     }
 
-    private void checkNameLength(String name, int limitLength) {
-        if (name.length() > limitLength) {
-            throw new IllegalArgumentException("이름은 " + limitLength + " 이하여야 합니다.");
+    private void checkNameLength(String name) {
+        if (name.length() > NAME_LIMIT_LENGTH) {
+            throw new IllegalArgumentException("이름은 " + NAME_LIMIT_LENGTH + " 이하여야 합니다.");
         }
     }
 
