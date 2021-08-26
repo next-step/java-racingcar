@@ -23,7 +23,7 @@ public class CarRace {
     }
 
     protected int setCarCount() {
-        return InputView.carCountInputOutput();
+        return InputView.carRegisterInputOutput();
     }
 
     protected int setGameCount() {
@@ -31,7 +31,7 @@ public class CarRace {
     }
 
     protected void playGame() {
-        Cars carList = Cars.createCarList(carCount);
+        Cars carList = Cars.createCarMap(carCount);
         for (int i = 0; i < gameCount; i++) {
             ResultView.printResult(
                     carList.moveCars(carList, new RandomNumCondition())
