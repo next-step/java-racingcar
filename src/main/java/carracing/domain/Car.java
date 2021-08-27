@@ -1,47 +1,54 @@
 package carracing.domain;
 
+import java.util.Objects;
+
 public class Car {
 
     private static final int MOVE_NUMBER = 4;
-    private static final int NAME_LIMIT_LENGTH = 5;
 
-    private int location;
+    private final Position position;
 
-    private final String name;
+    private final Name name;
 
     public Car(String name) {
-        checkNameLength(name);
-
-        this.location = 0;
-        this.name = name;
+        this.position = new Position();
+        this.name = new Name(name);
     }
 
-    public int location() {
-        return location;
+    public Position position() {
+        return position;
     }
 
-    public String name() {
+    public Name name() {
         return name;
-    }
-
-    public void forward() {
-        this.location++;
     }
 
     public boolean isMovable(int cmd) {
         return cmd >= MOVE_NUMBER;
     }
 
-    public int move(int cmd) {
+    public Position move(int cmd) {
         if (isMovable(cmd)) {
-            forward();
+            position.move();
         }
-        return this.location;
+        return position;
     }
 
-    public void checkNameLength(String name) {
-        if (name.length() > NAME_LIMIT_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5 이하여야 합니다.");
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
         }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return Objects.equals(position, car.position) && Objects.equals(name, car.name);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, name);
+    }
+
 }

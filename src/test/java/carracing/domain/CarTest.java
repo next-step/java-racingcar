@@ -1,7 +1,6 @@
 package carracing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,24 +14,10 @@ class CarTest {
     void carLocationTest() {
 
         // given
-        Car car = new Car("");
+        Car car = new Car("car");
 
         // whe & then
-        assertThat(car.location()).isEqualTo(0);
-    }
-
-    @Test
-    @DisplayName("자동차는 이동할 수 있다.")
-    void forwardCarTest() {
-
-        // given
-        Car car = new Car("");
-
-        // when
-        car.forward();
-
-        // then
-        assertThat(car.location()).isEqualTo(1);
+        assertThat(car.position()).isEqualTo(new Position());
     }
 
     @ParameterizedTest
@@ -41,13 +26,13 @@ class CarTest {
     void moveSuccessTest(int cmd) {
 
         // given
-        Car car = new Car("");
+        Car car = new Car("car");
 
         // when
-        int result = car.move(cmd);
+        Position result = car.move(cmd);
 
         // then
-        assertThat(result).isEqualTo(1);
+        assertThat(result).isEqualTo(new Position(1));
     }
 
 
@@ -57,40 +42,28 @@ class CarTest {
     void moveFailTest(int cmd) {
 
         // given
-        Car car = new Car("");
+        Car car = new Car("car");
 
         // when
-        int result = car.move(cmd);
+        Position result = car.move(cmd);
 
         // then
-        assertThat(result).isEqualTo(0);
+        assertThat(result).isEqualTo(new Position(0));
     }
 
     @Test
-    @DisplayName("자동차는 이름을 입력받아 가질 수 있어야 한다.")
-    void carNameTest() {
+    void carEqualsTest() {
 
         // given
-        String name = "자동차";
+        String input1 = "name";
+        String input2 = "name";
 
         // when
-        Car car = new Car(name);
+        Car car1 = new Car(input1);
+        Car car2 = new Car(input2);
 
         // then
-        assertThat(car.name()).isEqualTo(name);
-    }
-
-    @Test
-    @DisplayName("자동차의 이름이 5이하가 아니라면 exception이 발생해야 한다.")
-    void carNameByInvalidLengthTest() {
-
-        // given
-        String name = "자동차자동차";
-
-        // when & then
-        assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> new Car(name))
-            .withMessageMatching("자동차 이름은 5 이하여야 합니다.");
+        assertThat(car1).isEqualTo(car2);
     }
 
 }
