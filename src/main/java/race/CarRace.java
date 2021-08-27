@@ -36,7 +36,7 @@ public class CarRace {
         Cars cars = Cars.createCars(new ArrayList<Car>());
         for (int i = 0; i < gameCount; i++) {
             ResultView.printResult(
-                    cars.moveCars(cars, new RandomNumCondition())
+                    cars.moveCars(new RandomNumCondition())
             );
         }
     }

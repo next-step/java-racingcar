@@ -22,11 +22,11 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    protected Cars moveCars(Cars cars, MoveCondition moveCondition) {
-        for (Car car : cars.getCars()) {
-            car.addDistance(moveCondition);
+    protected Cars moveCars(MoveCondition moveCondition) {
+        for (int i = 0; i < this.getCars().size(); i++) {
+            this.getCars().get(i).addDistance(moveCondition);
         }
-        return cars;
+        return this;
     }
 
 }
