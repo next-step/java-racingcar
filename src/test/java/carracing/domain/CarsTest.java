@@ -66,4 +66,19 @@ class CarsTest {
             .withMessageMatching("차의 이름은 중복될 수 없습니다.");
     }
 
+    @Test
+    @DisplayName("위치가 다른 중복된 이름의 자동차가 들어오면 exception이 발생해야 한다.")
+    void checkDUplicateNameAndPositionTest() {
+
+        // given
+        Car car1 = new Car("car");
+        Car car2 = new Car("car");
+        car2.move(5);
+
+        // when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> new Cars(Arrays.asList(car1, car2)))
+            .withMessageMatching("차의 이름은 중복될 수 없습니다.");
+    }
+
 }
