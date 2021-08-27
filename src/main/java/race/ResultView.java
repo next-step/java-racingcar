@@ -5,8 +5,8 @@ import java.util.Map;
 public class ResultView {
 
     protected static void printResult(Cars cars) {
-        for (Map.Entry<String, Car> entry : cars.getCarMap().entrySet()) {
-            System.out.println(convertDistanceToLine(entry.getValue()));
+        for (Car car : cars.getCars()) {
+            System.out.println(car.getName() + " :" + car.getDistance());
         }
         System.out.println();
     }

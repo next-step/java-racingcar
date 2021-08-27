@@ -1,5 +1,7 @@
 package race;
 
+import java.util.ArrayList;
+
 public class CarRace {
 
     private int carCount;
@@ -31,10 +33,10 @@ public class CarRace {
     }
 
     protected void playGame() {
-        Cars carList = Cars.createCarMap(carCount);
+        Cars cars = Cars.createCars(new ArrayList<Car>());
         for (int i = 0; i < gameCount; i++) {
             ResultView.printResult(
-                    carList.moveCars(carList, new RandomNumCondition())
+                    cars.moveCars(cars, new RandomNumCondition())
             );
         }
     }
