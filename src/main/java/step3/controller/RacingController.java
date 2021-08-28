@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class RacingController {
 
-    private static final String SEPERATOR = ",";
+    private static final String SEPARATOR = ",";
 
     public void startRace() {
         // 입력 받기
@@ -24,7 +24,7 @@ public class RacingController {
         Racing racing = new Racing(new Random());
 
         // 입력 받은 차 이름 나누기
-        String[] names = carNames.split(SEPERATOR);
+        String[] names = carNames.split(SEPARATOR);
 
         // input check
         Validator validator = new Validator();
