@@ -129,6 +129,7 @@ class RacingTest {
         assertEquals(0, cars.get(2).getDistance());
     }
 
+    // 랜덤값을 동일하게
     private Random createRandom(int returnValue) {
         return new Random() {
             public int nextInt(int bound) {

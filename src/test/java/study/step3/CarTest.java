@@ -1,5 +1,6 @@
 package study.step3;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,7 +12,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CarTest {
 
     String name = "TEST";
-    Car car = new Car(name);
+    Car car;
+
+    //Test 전 마다 매번 실행된다.
+    @BeforeEach
+    public void initialize() {
+
+        car = new Car(name);
+    }
 
     @DisplayName("이름 getter 테스트")
     @Test
