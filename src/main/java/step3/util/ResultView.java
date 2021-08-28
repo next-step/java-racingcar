@@ -6,10 +6,10 @@ import java.util.List;
 
 public class ResultView {
 
-    private final String GAME_RESULT_HEADER = "실행결과";
-    private final String GAME_RESULT = "가 최종 우승했습니다.";
-    private final String COLON = " : ";
-    private final String COMMA = ", ";
+    private static final String GAME_RESULT_HEADER = "실행결과";
+    private static final String GAME_RESULT = "가 최종 우승했습니다.";
+    private static final String COLON = " : ";
+    private static final String SEPARATOR = ", ";
 
     public void printDistance(List<Car> cars) {
         for(Car car : cars) {
@@ -28,7 +28,7 @@ public class ResultView {
 
         for(String winner : winners) {
             sb.append(winner);
-            sb.append(COMMA);
+            sb.append(SEPARATOR);
         }
 
         System.out.print(sb.substring(0, sb.length() - 2));
