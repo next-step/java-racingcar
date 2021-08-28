@@ -39,7 +39,7 @@ public class Racing {
         return winners;
     }
 
-    public List<String> addIfWinner(List<String> winners, Car car) {
+    private List<String> addIfWinner(List<String> winners, Car car) {
         int distance = car.getDistance();
 
         if (winnerDistance == distance) {
