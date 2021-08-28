@@ -11,6 +11,8 @@ public class ResultView {
     private static final String COLON = " : ";
     private static final String DASH = "-";
     private static final String SEPARATOR = ", ";
+    private static final int SUBSTRING_START_IDX = 0;
+    private static final int SUBSTRING_LENGTH = 2;
 
     public void printDistance(List<Car> cars) {
         for(Car car : cars) {
@@ -32,14 +34,14 @@ public class ResultView {
     }
 
     public void printGameWinners(List<String> winners) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
 
         for(String winner : winners) {
-            sb.append(winner);
-            sb.append(SEPARATOR);
+            stringBuilder.append(winner);
+            stringBuilder.append(SEPARATOR);
         }
 
-        System.out.print(sb.substring(0, sb.length() - 2));
+        System.out.print(stringBuilder.substring(SUBSTRING_START_IDX, stringBuilder.length() - SUBSTRING_LENGTH));
         System.out.println(GAME_RESULT);
     }
 
