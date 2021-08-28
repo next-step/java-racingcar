@@ -7,9 +7,12 @@ import step3.util.ResultView;
 import step3.util.Validator;
 
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class RacingController {
+
+    private static final String SEPERATOR = ",";
 
     public void startRace() {
         // 입력 받기
@@ -18,9 +21,10 @@ public class RacingController {
         String carNames = inputView.enterCarName();
         int gameCount = inputView.enterGameCount();
 
-        Racing racing = new Racing();
+        Racing racing = new Racing(new Random());
+
         // 입력 받은 차 이름 나누기
-        String[] names = racing.splitNames(carNames);
+        String[] names = carNames.split(SEPERATOR);
 
         // input check
         Validator validator = new Validator();

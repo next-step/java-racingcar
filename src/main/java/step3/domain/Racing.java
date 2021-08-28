@@ -6,9 +6,12 @@ import java.util.Random;
 
 public class Racing {
 
-    private final String COMMA = ",";
-
     private int winnerDistance = 0; // 우승자의 distance
+    private Random random;
+
+    public Racing(Random random) {
+        this.random = random;
+    }
 
     public List<Car> initCars(String[] names) {
         List<Car> cars = new ArrayList<>();
@@ -20,13 +23,7 @@ public class Racing {
         return cars;
     }
 
-    public String[] splitNames(String names) {
-        return names.split(COMMA);
-    }
-
     public void startRace(List<Car> cars) {
-        Random random = new Random();
-
         for(Car car : cars) {
             car.move(random.nextInt(10));
         }
@@ -48,7 +45,10 @@ public class Racing {
         if (winnerDistance == distance) {
             // 같을 경우 이름 추가
             winners.add(car.getName());
-        } else if (winnerDistance < distance) {
+            return winners;
+        }
+
+        if (winnerDistance < distance) {
             // input 차의 거리가 더 클 경우 list 생성
             winners = new ArrayList<>();
             winners.add(car.getName());
