@@ -9,13 +9,21 @@ public class ResultView {
     private static final String GAME_RESULT_HEADER = "실행결과";
     private static final String GAME_RESULT = "가 최종 우승했습니다.";
     private static final String COLON = " : ";
+    private static final String DASH = "-";
     private static final String SEPARATOR = ", ";
 
     public void printDistance(List<Car> cars) {
         for(Car car : cars) {
             System.out.print(car.getName());
             System.out.print(COLON);
-            System.out.println(car.getDistance());
+            printDistance(car.getDistance());
+            printNewLine();
+        }
+    }
+
+    private void printDistance(int distance) {
+        for(int i = 0; i < distance; i++) {
+            System.out.print(DASH);
         }
     }
 
