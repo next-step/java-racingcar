@@ -30,4 +30,30 @@ public class Cars {
         return this;
     }
 
+    protected List<String> getWinner() {
+
+        int max = getMaxDistance();
+        List<String> winners = new ArrayList<>();
+        for (Car car :cars) {
+            compareDistance(car, max, winners);
+        }
+
+        return winners;
+    }
+
+    private int getMaxDistance() {
+        List<Integer> distances = new ArrayList<>();
+        for (Car c : cars) {
+            distances.add(c.getDistance());
+        }
+        distances.sort(Collections.reverseOrder());
+        return distances.get(0);
+    }
+
+    private List<String> compareDistance(Car car, int max, List<String> winners) {
+        if (car.getDistance() >= max)
+            winners.add(car.getName());
+        return winners;
+    }
+
 }

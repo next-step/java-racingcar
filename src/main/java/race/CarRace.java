@@ -39,6 +39,7 @@ public class CarRace {
                     cars.moveCars(new RandomNumCondition())
             );
         }
+        ResultView.printWinner(cars.getWinner());
     }
 
 }

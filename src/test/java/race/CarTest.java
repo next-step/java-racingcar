@@ -23,6 +23,6 @@ class CarTest {
         //given
         car.addDistance(() -> true);
         //then
-        assertThat(car.getDistance().get(0)).isTrue();
+        assertThat(car.getWinOrLoseLog().get(0)).isTrue();
     }
 }
