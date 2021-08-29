@@ -6,7 +6,7 @@ public class CarName {
     private final String name;
 
     public CarName(String name) {
-        if (name.isEmpty()) {
+        if (name.isEmpty() || name.equals(" ")) {
             throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
         }
         if (name.length() > 5) {
