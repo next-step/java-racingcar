@@ -8,22 +8,27 @@ public class InputView {
 
     private static final String messageGameCount = "시도할 회수는 몇 회 인가요?";
 
-    private static int askInput() {
+    private static int inputAnswerToInt() {
         Scanner input = new Scanner(System.in);
         return input.nextInt();
     }
-    protected static int carRegisterInputOutput() {
+
+    private static String[] inputAnswerToStringArray() {
+        Scanner input = new Scanner(System.in);
+        return splitInput(input.nextLine());
+    }
+
+    protected static String[] carRegisterInputOutput() {
         System.out.println(messageRegisterCar);
-        return askInput();
+        return inputAnswerToStringArray();
     }
 
     protected static int gameCountInputOutput() {
         System.out.println(messageGameCount);
-        return askInput();
+        return inputAnswerToInt();
     }
 
-    private String[] splitInput(String input) {
-        String[] carNames = input.split(",");
-        return null;
+    private static String[] splitInput(String input) {
+        return input.split(",");
     }
 }

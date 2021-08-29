@@ -22,10 +22,13 @@ public class Car {
         distance.add(moveCondition.moveOrNot());
     }
 
-    public Car(String name, List<Boolean> distance) {
-        this.name = name;
-        this.distance = distance;
+    public static Car createCar(String name, List<Boolean> distance) {
+        Car car = new Car();
+        car.name = name;
+        car.distance = distance;
+        return car;
     }
+
 
     public Car() {
     }

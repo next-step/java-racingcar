@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class CarRace {
 
-    private int carCount;
-
     private int gameCount;
 
+    private String[] carNames;
+
     public CarRace() {
-        this.carCount = setCarCount();
+        this.carNames = setCarNames();
         this.gameCount = setGameCount();
     }
 
     //for test
-    public CarRace(int carCount, int gameCount) {
-        this.carCount = carCount;
+    public CarRace(String[] carNames, int gameCount) {
+        this.carNames = carNames;
         this.gameCount = gameCount;
     }
 
@@ -24,7 +24,7 @@ public class CarRace {
         carRace.playGame();
     }
 
-    protected int setCarCount() {
+    protected String[] setCarNames() {
         return InputView.carRegisterInputOutput();
     }
 
@@ -33,7 +33,7 @@ public class CarRace {
     }
 
     protected void playGame() {
-        Cars cars = Cars.createCars(new ArrayList<Car>());
+        Cars cars = Cars.createCars(carNames, new ArrayList<Car>());
         for (int i = 0; i < gameCount; i++) {
             ResultView.printResult(
                     cars.moveCars(new RandomNumCondition())
