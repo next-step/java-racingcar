@@ -8,10 +8,12 @@ public class Car {
 
     private String name;
 
-    private List<Boolean> distance = new ArrayList<>();
+    private List<Boolean> winOrLoseLog = new ArrayList<>();
 
-    public List<Boolean> getDistance() {
-        return Collections.unmodifiableList(distance);
+    private int distance;
+
+    public List<Boolean> getWinOrLoseLog() {
+        return Collections.unmodifiableList(winOrLoseLog);
     }
 
     public String getName() {
@@ -19,13 +21,24 @@ public class Car {
     }
 
     public void addDistance(MoveCondition moveCondition) {
-        distance.add(moveCondition.moveOrNot());
+        boolean result = moveCondition.moveOrNot();
+        winOrLoseLog.add(result);
+        setDistance(result);
+    }
+
+    private void setDistance(boolean result) {
+        if (result)
+            this.distance += 1;
+    }
+
+    public int getDistance() {
+        return distance;
     }
 
     public static Car createCar(String name, List<Boolean> distance) {
         Car car = new Car();
         car.name = name;
-        car.distance = distance;
+        car.winOrLoseLog = distance;
         return car;
     }
 
