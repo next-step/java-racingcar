@@ -5,6 +5,7 @@ public class Car {
     private final CarName name;
     private final Position position;
 
+
     public Car(CarName name) {
         this.name = name;
         this.position = new Position();
@@ -16,15 +17,12 @@ public class Car {
     }
 
     public Car(Car car) {
-        this.name = new CarName(car.name.getName());
-        this.position = new Position(car.position.getPosition());
+        this.name = new CarName(car.name);
+        this.position = new Position(car.position);
     }
 
-    public boolean isMaxPosition(Position maxPosition) {
-        return this.position.equals(maxPosition);
-    }
 
-    public Position getPosition() { // todo 안쓸 수 없을까?
+    public Position getPosition() {
         return this.position;
     }
 
@@ -32,16 +30,32 @@ public class Car {
         return this.name;
     }
 
-    private void move() {
-        this.position.forward();
-    }
 
-    public Position tryForward(RandomMovableStrategy randomMovableStrategy) {
+    public Position tryForward(MovableStrategy randomMovableStrategy) {
         if (this.isForward(randomMovableStrategy.getForwardPosition())) this.move();
         return this.position;
     }
 
+    private void move() {
+        this.position.forward();
+    }
+
     private boolean isForward(int condition) {
         return condition >= THRESHOLD;
+    }
+
+    public boolean isPosition(Position maxPosition) {
+        return this.position.equals(maxPosition);
+    }
+
+    private boolean isGreaterThan(Position max) {
+        return this.position.greaterThan(max);
+    }
+
+    public Position getMaxPosition(Position max) {
+        if (isGreaterThan(max)) {
+            max = this.position;
+        }
+        return max;
     }
 }

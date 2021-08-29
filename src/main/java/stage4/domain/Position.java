@@ -10,10 +10,19 @@ public class Position {
     }
 
     public Position(int position) {
+        validateNagative(position);
+        this.position = position;
+    }
+
+    public Position(Position position) {
+        validateNagative(position.position);
+        this.position = position.position;
+    }
+
+    private void validateNagative(int position) {
         if (position < 0) {
             throw new IllegalArgumentException("위치는 음수일 수 없습니다");
         }
-        this.position = position;
     }
 
     public int getPosition() {
@@ -22,6 +31,10 @@ public class Position {
 
     public void forward() {
         this.position++;
+    }
+
+    public boolean greaterThan(Position position) {
+        return this.position > position.position;
     }
 
     @Override
@@ -37,7 +50,4 @@ public class Position {
         return Objects.hash(position);
     }
 
-    public boolean greaterThan(Position position) {
-        return this.position > position.position;
-    }
 }

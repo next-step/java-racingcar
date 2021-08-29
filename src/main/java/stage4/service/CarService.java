@@ -1,60 +1,20 @@
 package stage4.service;
 
-import stage4.domain.Car;
-import stage4.domain.CarName;
-import stage4.domain.Position;
-import stage4.domain.RandomMovableStrategy;
-
-import java.util.ArrayList;
-import java.util.List;
+import stage4.domain.*;
 
 public class CarService {
 
-    public List<Car> startRace(String[] carNames, int numberOfTries) {
-        final List<Car> cars = init(carNames);
+    public Cars startRace(String[] carNames, int numberOfTries) {
+        final Cars cars = new Cars(carNames);
 
-        List<Car> results = new ArrayList<>();
+        Cars results = new Cars();
         for (int i = 0; i < numberOfTries; i++) {
-            results.addAll(this.tryRacing(cars));
+            results.addCars(cars.tryRacing());
         }
         return results;
     }
 
-    private List<Car> init(String[] carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(new CarName(carName)));
-        }
-        return cars;
-    }
-
-    private List<Car> tryRacing(List<Car> cars) {
-        List<Car> results = new ArrayList<>();
-        for (Car car : cars) {
-            car.tryForward(new RandomMovableStrategy());
-            results.add(new Car(car));
-        }
-        return results;
-    }
-
-    public List<Car> checkWinner(List<Car> lastRacingResults) {
-        List<Car> winners = new ArrayList<>();
-        Position maxPosition = this.getMaxPosition(lastRacingResults);
-        for (Car car : lastRacingResults) {
-            if (car.isMaxPosition(maxPosition)) {
-                winners.add(car);
-            }
-        }
-        return winners;
-    }
-
-    private Position getMaxPosition(List<Car> resultValues) {
-        Position max = new Position();
-        for (Car resultValue : resultValues) {
-            if (resultValue.getPosition().greaterThan(max)) { // todo getter
-                max = resultValue.getPosition();
-            }
-        }
-        return max;
+    public Cars checkWinner(Cars lastRacingResults) {
+        return lastRacingResults.findWinners();
     }
 }

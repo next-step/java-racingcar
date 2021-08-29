@@ -1,6 +1,7 @@
 package stage4.controller;
 
 import stage4.domain.Car;
+import stage4.domain.Cars;
 import stage4.dto.InputValue;
 import stage4.dto.ResultValue;
 import stage4.service.CarService;
@@ -20,22 +21,19 @@ public class CarApplication {
         final String[] carNames = inputValue.getCarNames();
         final int numberOfTries = inputValue.getTryNum();
 
-        final List<Car> resultsOfCars = carService.startRace(carNames, numberOfTries);
+        final Cars resultsOfCars = carService.startRace(carNames, numberOfTries);
 
         final int numberOfCars = carNames.length;
         resultView.printResult(numberOfCars, formatCarListToResultValueList(resultsOfCars));
 
-        final List<Car> lastRacingResults = getLastRacingResults(numberOfCars, resultsOfCars, resultsOfCars.size());
-        final List<Car> winners = carService.checkWinner(lastRacingResults);
+        final Cars lastRacingResults = resultsOfCars.getLastRacingResults(numberOfCars);
+        final Cars winners = carService.checkWinner(lastRacingResults);
         resultView.printWinner(formatCarListToResultValueList(winners));
     }
 
-    private static List<Car> getLastRacingResults(int numberOfCars, List<Car> resultOfCars, int lastIndex) {
-        return resultOfCars.subList(lastIndex - numberOfCars, lastIndex);
-    }
-
-    private static List<ResultValue> formatCarListToResultValueList(List<Car> carList) {
+    private static List<ResultValue> formatCarListToResultValueList(Cars cars) {
         List<ResultValue> resultValueList = new ArrayList<>();
+        final List<Car> carList = cars.getCars();
         for (Car car : carList) {
             resultValueList.add(ResultValue.formatCarToResultValue(car));
         }

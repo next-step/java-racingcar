@@ -6,7 +6,6 @@ import org.junit.jupiter.api.TestInstance;
 import stage4.domain.Car;
 import stage4.domain.CarName;
 import stage4.domain.Position;
-import stage4.domain.RandomMovableStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,12 +23,7 @@ public class CarTest {
         Car car = new Car(new CarName(carName), currentPosition);
 
         // when
-        final Position result = car.tryForward(new RandomMovableStrategy() {
-            @Override
-            public int getForwardPosition() {
-                return 3;
-            }
-        });
+        final Position result = car.tryForward(() -> 3);
 
         // then
         assertThat(expectedStatus).isEqualTo(result);
@@ -44,12 +38,7 @@ public class CarTest {
         Car car = new Car(new CarName(carName), currentPosition);
 
         // when
-        final Position result = car.tryForward(new RandomMovableStrategy(){
-            @Override
-            public int getForwardPosition() {
-                return 4;
-            }
-        });
+        final Position result = car.tryForward(() -> 4);
 
         // then
         assertThat(expectedStatus).isEqualTo(result);
