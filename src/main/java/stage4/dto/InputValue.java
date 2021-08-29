@@ -1,4 +1,4 @@
-package stage4;
+package stage4.dto;
 
 public class InputValue {
     private final String[] carNames;

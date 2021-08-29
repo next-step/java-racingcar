@@ -1,4 +1,4 @@
-package stage4;
+package stage4.exception;
 
 public class TooLongCarNameException extends RuntimeException{
     public TooLongCarNameException() {

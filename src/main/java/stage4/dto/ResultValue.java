@@ -1,4 +1,6 @@
-package stage4;
+package stage4.dto;
+
+import stage4.domain.Car;
 
 public class ResultValue {
     private final String carName;
@@ -15,5 +17,9 @@ public class ResultValue {
 
     public String getCarName() {
         return this.carName;
+    }
+
+    public static ResultValue formatCarToResultValue(Car car) {
+        return new ResultValue(car.getName(), car.getStatus());
     }
 }

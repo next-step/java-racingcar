@@ -1,4 +1,4 @@
-package stage4;
+package stage4.domain;
 
 import java.util.Random;
 

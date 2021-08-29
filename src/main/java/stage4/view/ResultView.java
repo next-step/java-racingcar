@@ -1,4 +1,6 @@
-package stage4;
+package stage4.view;
+
+import stage4.dto.ResultValue;
 
 import java.util.List;
 
@@ -24,5 +26,22 @@ public class ResultView {
             sb.append("-");
         }
         System.out.println(sb);
+    }
+
+    public void printWinner(List<ResultValue> resultWinnerList) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < resultWinnerList.size(); i++) {
+            sb.append(resultWinnerList.get(i).getCarName());
+            final int lastIndex = resultWinnerList.size() - 1;
+            this.addDelimiter(lastIndex, sb, i);
+        }
+        sb.append("(이)가 최종 우승했습니다.");
+        System.out.println(sb);
+    }
+
+    private void addDelimiter(int lastIndex, StringBuilder sb, int i) {
+        if (i != lastIndex) {
+            sb.append(", ");
+        }
     }
 }
