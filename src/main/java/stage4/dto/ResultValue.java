@@ -20,6 +20,6 @@ public class ResultValue {
     }
 
     public static ResultValue formatCarToResultValue(Car car) {
-        return new ResultValue(car.getName(), car.getStatus());
+        return new ResultValue(car.getName().getName(), car.getPosition().getPosition());
     }
 }

@@ -4,6 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import stage4.domain.Car;
+import stage4.domain.CarName;
+import stage4.domain.Position;
+import stage4.domain.RandomMovableStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,13 +19,17 @@ public class CarTest {
     @DisplayName("tryForward - 자동차 멈춤 테스트")
     void tryStopTest() {
         // given
-        final int currentStatus = 0;
-        final int impossible = 3;
-        final int expectedStatus = 0;
-        Car car = new Car(carName, currentStatus);
+        final Position currentPosition = new Position(0);
+        final Position expectedStatus = new Position(0);
+        Car car = new Car(new CarName(carName), currentPosition);
 
         // when
-        final int result = car.tryForward(impossible);
+        final Position result = car.tryForward(new RandomMovableStrategy() {
+            @Override
+            public int getForwardPosition() {
+                return 3;
+            }
+        });
 
         // then
         assertThat(expectedStatus).isEqualTo(result);
@@ -32,13 +39,17 @@ public class CarTest {
     @DisplayName("tryForward - 자동차 전진 테스트")
     void tryForwardTest() {
         // given
-        final int currentStatus = 0;
-        final int possible = 4;
-        final int expectedStatus = 1;
-        Car car = new Car(carName, currentStatus);
+        final Position currentPosition = new Position(0);
+        final Position expectedStatus = new Position(1);
+        Car car = new Car(new CarName(carName), currentPosition);
 
         // when
-        final int result = car.tryForward(possible);
+        final Position result = car.tryForward(new RandomMovableStrategy(){
+            @Override
+            public int getForwardPosition() {
+                return 4;
+            }
+        });
 
         // then
         assertThat(expectedStatus).isEqualTo(result);

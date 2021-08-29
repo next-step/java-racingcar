@@ -1,6 +1,9 @@
 package stage4.service;
 
 import stage4.domain.Car;
+import stage4.domain.CarName;
+import stage4.domain.Position;
+import stage4.domain.RandomMovableStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +23,7 @@ public class CarService {
     private List<Car> init(String[] carNames) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
-            cars.add(new Car(carName));
+            cars.add(new Car(new CarName(carName)));
         }
         return cars;
     }
@@ -28,39 +31,29 @@ public class CarService {
     private List<Car> tryRacing(List<Car> cars) {
         List<Car> results = new ArrayList<>();
         for (Car car : cars) {
-            final int forwardCondition = car.getForwardCondition();
-            car.tryForward(forwardCondition);
-            results.add(new Car(car.getName(), car.getStatus()));
+            car.tryForward(new RandomMovableStrategy());
+            results.add(new Car(car));
         }
         return results;
     }
 
     public List<Car> checkWinner(List<Car> lastRacingResults) {
         List<Car> winners = new ArrayList<>();
-        int max = this.getMaxStatus(lastRacingResults);
+        Position maxPosition = this.getMaxPosition(lastRacingResults);
         for (Car car : lastRacingResults) {
-            this.checkMaxStatus(winners, max, car);
+            if (car.isMaxPosition(maxPosition)) {
+                winners.add(car);
+            }
         }
         return winners;
     }
 
-    private void checkMaxStatus(List<Car> winners, int max, Car car) {
-        if (car.getStatus() == max) {
-            winners.add(car);
-        }
-    }
-
-    private int getMaxStatus(List<Car> resultValues) {
-        int max = 0;
+    private Position getMaxPosition(List<Car> resultValues) {
+        Position max = new Position();
         for (Car resultValue : resultValues) {
-            max = getMax(max, resultValue);
-        }
-        return max;
-    }
-
-    private int getMax(int max, Car resultValue) {
-        if (resultValue.getStatus() > max) {
-            max = resultValue.getStatus();
+            if (resultValue.getPosition().greaterThan(max)) { // todo getter
+                max = resultValue.getPosition();
+            }
         }
         return max;
     }
