@@ -28,5 +28,4 @@ public enum Operation {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(String.format("잘못된 연산자 입니다. => %S", input)));
     }
-
 }

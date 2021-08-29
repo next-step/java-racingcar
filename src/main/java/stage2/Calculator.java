@@ -3,6 +3,7 @@ package stage2;
 public class Calculator {
     public int calculate(String input) {
         int result = 0;
+
         validateInputString(input);
         final String[] data = expressionSplit(input);
         try {
