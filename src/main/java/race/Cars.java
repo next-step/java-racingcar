@@ -35,7 +35,7 @@ public class Cars {
         int max = getMaxDistance();
         List<String> winners = new ArrayList<>();
         for (Car car :cars) {
-            compareDistance(car, max, winners);
+            addWinners(car, max, winners);
         }
 
         return winners;
@@ -50,7 +50,7 @@ public class Cars {
         return distances.get(0);
     }
 
-    private List<String> compareDistance(Car car, int max, List<String> winners) {
+    private List<String> addWinners(Car car, int max, List<String> winners) {
         if (car.getDistance() >= max)
             winners.add(car.getName());
         return winners;
