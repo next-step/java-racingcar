@@ -3,24 +3,26 @@ package stage4.domain;
 import java.util.Objects;
 
 public class Position {
+    private static final int DEFAULT_VALUE = 0;
+    private static final int POSITION = 0;
+
     private int position;
 
-    public Position() {
-        this.position = 0;
-    }
-
     public Position(int position) {
-        validateNagative(position);
+        validateNegative(position);
         this.position = position;
     }
 
-    public Position(Position position) {
-        validateNagative(position.position);
-        this.position = position.position;
+    public Position() {
+        this(DEFAULT_VALUE);
     }
 
-    private void validateNagative(int position) {
-        if (position < 0) {
+    public Position(Position position) {
+        this(position.position);
+    }
+
+    private void validateNegative(int position) {
+        if (position < POSITION) {
             throw new IllegalArgumentException("위치는 음수일 수 없습니다");
         }
     }

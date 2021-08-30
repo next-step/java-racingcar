@@ -2,6 +2,7 @@ package stage4.domain;
 
 public class Car {
     private final static int THRESHOLD = 4;
+
     private final CarName name;
     private final Position position;
 
@@ -32,7 +33,9 @@ public class Car {
 
 
     public Position tryForward(MovableStrategy randomMovableStrategy) {
-        if (this.isForward(randomMovableStrategy.getForwardPosition())) this.move();
+        if (this.isForward(randomMovableStrategy.getForwardPosition())) {
+            this.move();
+        }
         return this.position;
     }
 
@@ -48,14 +51,14 @@ public class Car {
         return this.position.equals(maxPosition);
     }
 
-    private boolean isGreaterThan(Position max) {
-        return this.position.greaterThan(max);
-    }
-
-    public Position getMaxPosition(Position max) {
+    public Position findMaxPosition(Position max) {
         if (isGreaterThan(max)) {
             max = this.position;
         }
         return max;
+    }
+
+    private boolean isGreaterThan(Position max) {
+        return this.position.greaterThan(max);
     }
 }

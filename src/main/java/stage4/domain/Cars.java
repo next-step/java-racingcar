@@ -1,9 +1,6 @@
 package stage4.domain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Cars {
     private final List<Car> cars;
@@ -43,13 +40,14 @@ public class Cars {
         this.cars.addAll(carList);
     }
 
-    public Cars getLastRacingResults(int numberOfCars) {
+    public Cars findLastRacingResults(int numberOfCars) {
         final int lastIndex = this.cars.size();
-        return new Cars(this.cars.subList(lastIndex - numberOfCars, lastIndex));
+        Collections.unmodifiableList(this.cars.subList(lastIndex - numberOfCars, lastIndex));
+        return new Cars(Collections.unmodifiableList(this.cars.subList(lastIndex - numberOfCars, lastIndex)));
     }
 
     public Cars findWinners() {
-        Position maxPosition = this.getMaxPosition();
+        Position maxPosition = this.findMaxPosition();
         Cars winners = new Cars();
         for (Car car : this.cars) {
             winners.addCars(findWinner(maxPosition, car));
@@ -57,10 +55,10 @@ public class Cars {
         return winners;
     }
 
-    private Position getMaxPosition() {
+    private Position findMaxPosition() {
         Position max = new Position();
         for (Car car : this.cars) {
-            max = car.getMaxPosition(max);
+            max = car.findMaxPosition(max);
         }
         return max;
     }

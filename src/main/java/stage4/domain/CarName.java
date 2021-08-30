@@ -3,6 +3,8 @@ package stage4.domain;
 import stage4.exception.TooLongCarNameException;
 
 public class CarName {
+    private static final int STANDARD = 5;
+
     private final String name;
 
     public CarName(String name) {
@@ -12,9 +14,7 @@ public class CarName {
     }
 
     public CarName(CarName carName) {
-        validateEmpty(carName.name);
-        validateLength(carName.name);
-        this.name = carName.name;
+        this(carName.name);
     }
 
     private void validateEmpty(String name) {
@@ -24,7 +24,7 @@ public class CarName {
     }
 
     private void validateLength(String name) {
-        if (name.length() > 5) {
+        if (name.length() > STANDARD) {
             throw new TooLongCarNameException("자동차 이름은 5자 이하만 가능합니다.");
         }
     }

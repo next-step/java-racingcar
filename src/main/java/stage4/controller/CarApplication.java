@@ -26,7 +26,7 @@ public class CarApplication {
         final int numberOfCars = carNames.length;
         resultView.printResult(numberOfCars, formatCarListToResultValueList(resultsOfCars));
 
-        final Cars lastRacingResults = resultsOfCars.getLastRacingResults(numberOfCars);
+        final Cars lastRacingResults = resultsOfCars.findLastRacingResults(numberOfCars);
         final Cars winners = carService.checkWinner(lastRacingResults);
         resultView.printWinner(formatCarListToResultValueList(winners));
     }
