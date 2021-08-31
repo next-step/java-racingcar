@@ -18,8 +18,8 @@ public class Car {
         this.winOrLoseLog = winOrLoseLog;
     }
 
-    public static Car createCar(String name, List<Boolean> distance) {
-        return new Car(name, distance);
+    public static Car createCar(String name, List<Boolean> winOrLoseLog) {
+        return new Car(name, winOrLoseLog);
     }
 
     public List<Boolean> getWinOrLoseLog() {
