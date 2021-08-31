@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -15,8 +16,10 @@ class CarsTest {
 
     @BeforeEach
     void setUp() {
-        String[] carNames = new String[]{"testCar1", "testCar2"};
-        cars = Cars.createCars(carNames, new ArrayList<Car>());
+        List<String> carNames = new ArrayList<>();
+        carNames.add("test1");
+        carNames.add("test2");
+        cars = Cars.createCars(carNames);
     }
 
     @Test

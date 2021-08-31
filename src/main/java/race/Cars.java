@@ -1,6 +1,8 @@
 package race;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Cars {
 
@@ -10,15 +12,13 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars createCars(String[] carNames, List<Car> cars) {
-        Car car;
+    public static Cars createCars(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
-            car = Car.createCar(carName, new ArrayList<Boolean>());
-            cars.add(car);
+            cars.add(Car.createCar(carName, new ArrayList<Boolean>()));
         }
         return new Cars(cars);
     }
-
     protected final List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
@@ -43,16 +43,16 @@ public class Cars {
 
     private int getMaxDistance() {
         List<Integer> distances = new ArrayList<>();
-        for (Car c : cars) {
-            distances.add(c.getDistance());
-        }
+//        for (Car c : cars) {
+//            distances.add(c.getDistance());
+//        }
         distances.sort(Collections.reverseOrder());
         return distances.get(0);
     }
 
     private List<String> addWinners(Car car, int max, List<String> winners) {
-        if (car.getDistance() >= max)
-            winners.add(car.getName());
+//        if (car.getDistance() >= max)
+//            winners.add(car.getName());
         return winners;
     }
 
