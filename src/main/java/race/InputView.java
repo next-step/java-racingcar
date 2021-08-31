@@ -1,5 +1,8 @@
 package race;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -13,14 +16,10 @@ public class InputView {
         return input.nextInt();
     }
 
-    private static String[] inputAnswerToStringArray() {
+    protected static List<String> carNamesToList() {
+        System.out.println(messageRegisterCar);
         Scanner input = new Scanner(System.in);
         return splitInput(input.nextLine());
-    }
-
-    protected static String[] carRegisterInputOutput() {
-        System.out.println(messageRegisterCar);
-        return inputAnswerToStringArray();
     }
 
     protected static int gameCountInputOutput() {
@@ -28,7 +27,7 @@ public class InputView {
         return inputAnswerToInt();
     }
 
-    private static String[] splitInput(String input) {
-        return input.split(",");
+    private static List<String> splitInput(String input) {
+        return Arrays.asList(input.split(","));
     }
 }
