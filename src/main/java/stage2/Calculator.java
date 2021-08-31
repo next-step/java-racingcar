@@ -3,20 +3,26 @@ package stage2;
 public class Calculator {
     public int calculate(String input) {
         int result = 0;
-        inputValidate(input);
+
+        validateInputString(input);
         final String[] data = expressionSplit(input);
         try {
             final Expression ep = new Expression(data);
             result = ep.express();
-        } catch (NumberFormatException nfe) {
-            nfe.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
         return result;
     }
 
-    private void inputValidate(String input) {
-        if (" ".equals(input) || "".equals(input) || input == null)
-            throw new IllegalArgumentException("잘못된 입력값 입니다 => " + input);
+    private void validateInputString(String input) {
+        if (isBlank(input)) {
+            throw new IllegalArgumentException("공백을 입력할 수 없습니다.");
+        }
+    }
+
+    private boolean isBlank(String input) {
+        return " ".equals(input) || "".equals(input) || input == null;
     }
 
     private String[] expressionSplit(String expression) {

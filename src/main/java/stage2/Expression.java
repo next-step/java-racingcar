@@ -1,9 +1,8 @@
 package stage2;
 
 public class Expression {
-    private String[] data;
+    private final String[] data;
     private int init;
-    private String operation;
 
     public Expression(String[] data) {
         this.data = data;
@@ -12,7 +11,7 @@ public class Expression {
 
     public int express() {
         for (int i = 2; i < data.length; i+=2) {
-            operation = data[i - 1];
+            String operation = data[i - 1];
             int first = init;
             int second = Integer.parseInt(data[i]);
 

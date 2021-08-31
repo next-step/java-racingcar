@@ -22,10 +22,10 @@ public enum Operation {
     }
 
     public static Operation findOperation(String input) {
-        return Arrays.stream(Operation.values())
+        return Arrays
+                .stream(Operation.values())
                 .filter(i -> i.value.equals(input))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("잘못된 연산자 입니다. => " + input));
+                .orElseThrow(() -> new IllegalArgumentException(String.format("잘못된 연산자 입니다. => %S", input)));
     }
-
 }
