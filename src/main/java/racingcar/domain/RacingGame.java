@@ -1,41 +1,28 @@
 package racingcar.domain;
 
-import racingcar.view.ResultView;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
 
-    private int car;
-    private int attempt;
-    private List<RacingCar> cars = new ArrayList<>();
+    private final int attempt;
+    private final RacingCars racingCars;
 
-    public RacingGame(int car, int attempt) {
-        this.car = car;
+    public RacingGame(int attempt, int racingCar) {
         this.attempt = attempt;
+        this.racingCars = new RacingCars(racingCar);
     }
 
-    public List<RacingCar> startGame() {
-        for (int i = 0; i < car; i++) {
-            cars.add(new RacingCar());
-        }
-        playGame();
-        return cars;
-    }
+    public List<RacingResult> startRace() {
+        List<RacingResult> result = new ArrayList<>();
 
-    private void playGame() {
         for (int i = 0; i < attempt; i++) {
-            moveCars();
-            ResultView.showRacingCarOutput(cars);
+            racingCars.racingAttempt();
+            List<Integer> resultAttempt = racingCars.getResultAttempt();
+            RacingResult racingResult = new RacingResult(attempt, resultAttempt);
+            result.add(racingResult);
         }
-    }
-
-    private void moveCars() {
-        for (RacingCar car : cars) {
-            car.move(new Random().nextInt(10));
-        }
+        return result;
     }
 
 }
