@@ -17,7 +17,6 @@ public class CarTest {
     //Test 전 마다 매번 실행된다.
     @BeforeEach
     public void initialize() {
-
         car = new Car(name);
     }
 
