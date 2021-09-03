@@ -1,32 +1,32 @@
 package racingcar.domain;
 
-import racingcar.utils.RandomUtils;
+import racingcar.utils.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCars {
-    public final List<RacingCar> cars;
+    public final List<RacingCar> racingCars;
 
     public RacingCars(int numberOfCars) {
         List<RacingCar> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            RacingCar car = new RacingCar();
-            cars.add(car);
+            RacingCar racingCar = new RacingCar();
+            cars.add(racingCar);
         }
-        this.cars = cars;
+        this.racingCars = cars;
     }
 
     public void racingAttempt() {
-        cars.forEach(car -> {
-            int randomNumber = RandomUtils.randomNumber();
-            car.moveOrStop(randomNumber);
+        racingCars.forEach(racingCar -> {
+            int randomNumber = RandomGenerator.randomNumber();
+            racingCar.moveOrStop(randomNumber);
         });
     }
 
     public List<Integer> getResultAttempt() {
-        return cars.stream()
+        return racingCars.stream()
                 .map(RacingCar::getPosition)
                 .collect(Collectors.toList());
     }

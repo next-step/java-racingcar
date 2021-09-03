@@ -7,15 +7,15 @@ public class InputView {
     private final static String QUESTION_OF_CARS = "자동자 대수는 몇 대 인가요?";
     private final static String QUESTION_OF_ATTEMPT = "시도할 횟수는 몇 회 인가요?";
 
-    public int inputCar() {
+    public static int inputCar() {
         return answer(QUESTION_OF_CARS);
     }
 
-    public int inputAttempt() {
+    public static int inputAttempt() {
         return answer(QUESTION_OF_ATTEMPT);
     }
 
-    public int answer(String question) {
+    public static int answer(String question) {
         System.out.println(question);
         int answer = SCANNER.nextInt();
 

@@ -5,12 +5,12 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final int attempt;
     private final RacingCars racingCars;
+    private final int attempt;
 
-    public RacingGame(int attempt, int racingCar) {
-        this.attempt = attempt;
+    public RacingGame(int racingCar, int attempt) {
         this.racingCars = new RacingCars(racingCar);
+        this.attempt = attempt;
     }
 
     public List<RacingResult> startRace() {

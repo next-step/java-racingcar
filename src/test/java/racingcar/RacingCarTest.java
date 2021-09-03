@@ -47,12 +47,12 @@ public class RacingCarTest {
     @DisplayName(value = "Confirm Race Progress")
     @ParameterizedTest
     @CsvSource(value = {"3:5", "1:3", "4:6"}, delimiter = ':')
-    void startRace(int numberOfAttempt, int numberOfCar) {
-        RacingGame racingGame = new RacingGame(numberOfAttempt, numberOfCar);
+    void startRace(int numberOfCar, int numberOfAttempt) {
+        RacingGame racingGame = new RacingGame(numberOfCar, numberOfAttempt);
         List<RacingResult> result = racingGame.startRace();
 
-        assertThat(result.size()).isEqualTo(numberOfAttempt);
         assertThat(result.get(0).getPositions().size()).isEqualTo(numberOfCar);
+        assertThat(result.size()).isEqualTo(numberOfAttempt);
     }
 
 }
