@@ -16,16 +16,25 @@ public class ValidatorTest {
 
     String[] names = {"pobi"};
 
+    @DisplayName("게임 횟수 검증 정상 케이스")
     @Test
-    void checkInputTest_정상_실행_케이스() {
-        validator.checkInput(names, 5);
+    void checkGameCountTest_게임_횟수_5() {
+        validator.checkGameCount(5);
+    }
+
+    @DisplayName("게임 횟수 검증 에러 케이스")
+    @Test
+    void checkInputTest_게임_횟수_0() {
+        assertThatThrownBy(() -> validator.checkGameCount(0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(GAME_COUNT_ERROR);
     }
 
     @DisplayName("자동차명 배열이 null일 때 에러 케이스")
     @Test
     void checkInputTest_자동차명_null_에러_케이스() {
         String[] names = new String[0];
-        assertThatThrownBy(() -> validator.checkInput(names, 1))
+        assertThatThrownBy(() -> validator.checkNames(names))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(CAR_COUNT_ERROR);
     }
@@ -33,7 +42,7 @@ public class ValidatorTest {
     @DisplayName("자동차명 배열 사이즈가 0일 때 에러 케이스")
     @Test
     void checkInputTest_자동차명_배열_0_에러_케이스() {
-        assertThatThrownBy(() -> validator.checkInput(null, 1))
+        assertThatThrownBy(() -> validator.checkNames(null))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(CAR_COUNT_ERROR);
     }
@@ -42,7 +51,7 @@ public class ValidatorTest {
     @Test
     void checkInputTest_자동차명_빈값_에러_케이스() {
         String[] emptyName = {"pobi", ""};
-        assertThatThrownBy(() -> validator.checkInput(emptyName, 1))
+        assertThatThrownBy(() -> validator.checkNames(emptyName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(NAME_LENGTH_MIN_ERROR);
     }
@@ -51,15 +60,9 @@ public class ValidatorTest {
     @Test
     void checkInputTest_자동차명_길이_5이상_에러_케이스() {
         String[] longName = {"pobipobi"};
-        assertThatThrownBy(() -> validator.checkInput(longName, 1))
+        assertThatThrownBy(() -> validator.checkNames(longName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(NAME_LENGTH_MAX_ERROR);
     }
 
-    @Test
-    void checkInputTest_게임_횟수_에러_케이스() {
-        assertThatThrownBy(() -> validator.checkInput(names, 0))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(GAME_COUNT_ERROR);
-    }
 }
