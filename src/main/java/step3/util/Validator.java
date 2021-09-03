@@ -9,12 +9,11 @@ public class Validator {
     private static final String NAME_LENGTH_MAX_ERROR = "자동차 이름은 5자 이하여야 합니다.";
     private static final int MAX_NAME_LENGTH = 5;
 
-    public void checkInput(String[] names, int gameCount) {
-        checkNames(names);
+    public void checkGameCount(int gameCount) {
         checkCount(gameCount, GAME_COUNT_ERROR);
     }
 
-    private void checkNames(String[] names) {
+    public void checkNames(String[] names) {
         if (names == null || names.length == 0) {
             throw new IllegalArgumentException(CAR_COUNT_ERROR);
         }

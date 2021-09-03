@@ -20,19 +20,19 @@ public class Racing {
         return this.cars;
     }
 
-    public void initRace(String carNames, int gameCount) {
+    public void initRace(String carNames) {
         // 입력 받은 차 이름 나누기
         String[] names = carNames.split(SEPARATOR);
 
-        // input check
+        // 이름 검증
         Validator validator = new Validator();
-        validator.checkInput(names, gameCount);
+        validator.checkNames(names);
 
         // 입력 받은 이름으로 Car 객체 생성
         cars = initCars(names);
     }
 
-    public List<Car> initCars(String[] names) {
+    private List<Car> initCars(String[] names) {
         List<Car> cars = new ArrayList<>();
 
         for(int i = 0; i < names.length; i++) {
