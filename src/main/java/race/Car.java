@@ -1,6 +1,7 @@
 package race;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,6 +34,13 @@ public class Car {
     public void addDistance(MoveCondition moveCondition) {
         boolean result = moveCondition.moveOrNot();
         winOrLoseLog.add(result);
+    }
+
+    public int distance() {
+        int result = 0;
+        return (int) this.winOrLoseLog.stream()
+                .filter(d -> d)
+                .count();
     }
 
 }

@@ -2,7 +2,9 @@ package race;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -30,30 +32,18 @@ public class Cars {
         return this;
     }
 
-    protected List<String> getWinner() {
-
+    protected List<Car> getWinner() {
         int max = getMaxDistance();
-        List<String> winners = new ArrayList<>();
-        for (Car car :cars) {
-            addWinners(car, max, winners);
-        }
-
-        return winners;
+        return cars.stream()
+                .filter(c -> c.distance() >= max)
+                .collect(Collectors.toList());
     }
 
     private int getMaxDistance() {
-        List<Integer> distances = new ArrayList<>();
-//        for (Car c : cars) {
-//            distances.add(c.getDistance());
-//        }
-        distances.sort(Collections.reverseOrder());
-        return distances.get(0);
-    }
-
-    private List<String> addWinners(Car car, int max, List<String> winners) {
-//        if (car.getDistance() >= max)
-//            winners.add(car.getName());
-        return winners;
+        return cars.stream()
+                .map(Car::distance)
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList()).get(0);
     }
 
 }

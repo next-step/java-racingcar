@@ -2,6 +2,7 @@ package race;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -20,9 +21,13 @@ public class ResultView {
         return sb.toString();
     }
 
-    public static void printWinner(List<String> winner) {
+    public static void printWinner(List<Car> winner) {
         StringBuilder sb = new StringBuilder();
-        Iterator<String> iter = winner.listIterator();
+        List<String> winnerNames =
+                winner.stream()
+                        .map(Car::getName)
+                        .collect(Collectors.toList());
+        Iterator<String> iter = winnerNames.listIterator();
         sb.append(iter.next());
         while (iter.hasNext()) {
             sb.append(",").append(iter.next());
