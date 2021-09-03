@@ -22,8 +22,11 @@ public class InputView {
         System.out.println(GAME_COUNT_MESSAGE);
 
         int count = scanner.nextInt();
-        scanner.close();
 
         return count;
+    }
+
+    public void closeScanner() {
+        scanner.close();
     }
 }

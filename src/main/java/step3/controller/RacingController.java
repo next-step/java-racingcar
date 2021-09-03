@@ -8,24 +8,24 @@ import step3.util.Validator;
 
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class RacingController {
 
     private static final String SEPARATOR = ",";
+    private InputView inputView;
     private ResultView resultView;
     private Racing racing;
     private List<Car> cars;
 
-    public RacingController() {
-        resultView = new ResultView();
-        racing = new Racing(new Random());
+    public RacingController(InputView inputView) {
+        this.inputView = inputView;
+        this.resultView = new ResultView();
+        this.racing = new Racing(new Random());
     }
 
     // 차 이름, 게임 횟수 입력 후 경기 준비(입력값 검증 및 Car 객체 생성)
     public int initGame() {
         // 입력
-        InputView inputView = new InputView(new Scanner(System.in));
         String carNames = inputView.enterCarName();
         int gameCount = inputView.enterGameCount();
         
