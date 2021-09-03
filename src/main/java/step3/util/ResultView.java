@@ -19,14 +19,16 @@ public class ResultView {
             System.out.print(car.getName());
             System.out.print(COLON);
             printDistance(car.getDistance());
-            printNewLine();
         }
     }
 
     private void printDistance(int distance) {
+        StringBuilder stringBuilder = new StringBuilder();
         for(int i = 0; i < distance; i++) {
-            System.out.print(DASH);
+            stringBuilder.append(DASH);
         }
+
+        System.out.println(stringBuilder.toString());
     }
 
     public void printGameResultHeader() {
