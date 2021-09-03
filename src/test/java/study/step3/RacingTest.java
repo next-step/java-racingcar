@@ -9,6 +9,7 @@ import step3.domain.Racing;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,21 +26,22 @@ class RacingTest {
 
     @DisplayName("initCars 메소드 이름 1개일 때 출력 list size와 이름 테스트")
     @Test
-    void initCarsTest_이름_1개() {
-        String[] names = {"pobi"};
-        List<Car> cars = racing.initCars(names);
+    void initRace_이름_1개() {
+        racing.initRace("pobi");
+        List<Car> cars = racing.getCars();
         assertEquals(1, cars.size());
-        assertEquals(names[0], cars.get(0).getName());
+        assertEquals("pobi", cars.get(0).getName());
     }
 
     @DisplayName("initCars 메소드 이름 3개일 때 출력 list size와 이름 테스트")
     @Test
-    void initCarsTest_이름_3개() {
-        String[] names = {"pobi1", "pobi2", "pobi3"};
-        List<Car> cars = racing.initCars(names);
+    void initRace_이름_3개() {
+        racing.initRace("pobi1,pobi2,pobi3");
+        List<Car> cars = racing.getCars();
 
+        List<String> names = cars.stream().map(a -> { return a.getName(); }).collect(Collectors.toList());
         assertEquals(3, cars.size());
-        assertThat(names).containsOnly(names[0], names[1], names[2]);
+        assertThat(names).containsOnly("pobi1", "pobi2", "pobi3");
     }
 
     @DisplayName("자동차 거리가 모두 다를 경우 우승자 1명 확인")
@@ -63,7 +65,7 @@ class RacingTest {
         car = new Car("pobi2");
         cars.add(car);
 
-        List<String> winner = racing.getWinner(cars);
+        List<String> winner = racing.getWinner();
 
         assertEquals(1, winner.size());
         assertEquals("winner", winner.get(0));
@@ -100,33 +102,29 @@ class RacingTest {
     @DisplayName("startRace 메소드 랜덤값 4일 때 테스트 진행")
     @Test
     void startRaceTest_랜덤값_4_일_경우() {
-        String[] names = {"pobi1", "pobi2", "pobi3"};
-        List<Car> cars = racing.initCars(names);
-
         Racing racing = new Racing(createRandom(4));
+        racing.initRace("pobi1,pobi2,pobi3");
 
-        racing.startRace(cars);
+        racing.startRace();
 
-        assertThat(racing.getWinner(cars)).containsExactlyInAnyOrder("pobi1", "pobi2", "pobi3"); // 우승자 동일
-        assertEquals(1, cars.get(0).getDistance()); // 이동거리 0
-        assertEquals(1, cars.get(1).getDistance());
-        assertEquals(1, cars.get(2).getDistance());
+        assertThat(racing.getWinner()).containsExactlyInAnyOrder("pobi1", "pobi2", "pobi3"); // 우승자 동일
+        assertEquals(1, racing.getCars().get(0).getDistance()); // 이동거리 0
+        assertEquals(1, racing.getCars().get(1).getDistance());
+        assertEquals(1, racing.getCars().get(2).getDistance());
     }
 
     @DisplayName("startRace 메소드 랜덤값 1일 때 테스트 진행")
     @Test
     void startRaceTest_랜덤값_1_일_경우() {
-        String[] names = {"pobi1", "pobi2", "pobi3"};
-        List<Car> cars = racing.initCars(names);
-
         Racing racing = new Racing(createRandom(1));
+        racing.initRace("pobi1,pobi2,pobi3");
 
-        racing.startRace(cars);
+        racing.startRace();
 
-        assertThat(racing.getWinner(cars)).containsExactlyInAnyOrder("pobi1", "pobi2", "pobi3"); // 우승자 동일
-        assertEquals(0, cars.get(0).getDistance()); // 이동거리 0
-        assertEquals(0, cars.get(1).getDistance());
-        assertEquals(0, cars.get(2).getDistance());
+        assertThat(racing.getWinner()).containsExactlyInAnyOrder("pobi1", "pobi2", "pobi3"); // 우승자 동일
+        assertEquals(0, racing.getCars().get(0).getDistance()); // 이동거리 0
+        assertEquals(0, racing.getCars().get(1).getDistance());
+        assertEquals(0, racing.getCars().get(2).getDistance());
     }
 
     // 랜덤값을 동일하게

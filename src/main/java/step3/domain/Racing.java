@@ -10,17 +10,12 @@ public class Racing {
 
     private Random random;
     private int gameCount = 0;
-    private List<Car> cars;
 
     public Racing(Random random) {
         this.random = random;
     }
 
-    public List<Car> getCars() {
-        return this.cars;
-    }
-
-    public void initRace(String carNames) {
+    public List<Car> initRace(String carNames) {
         // 입력 받은 차 이름 나누기
         String[] names = carNames.split(SEPARATOR);
 
@@ -29,7 +24,7 @@ public class Racing {
         validator.checkNames(names);
 
         // 입력 받은 이름으로 Car 객체 생성
-        cars = initCars(names);
+        return initCars(names);
     }
 
     private List<Car> initCars(String[] names) {
@@ -42,13 +37,13 @@ public class Racing {
         return cars;
     }
 
-    public void startRace() {
+    public void startRace(List<Car> cars) {
         for(Car car : cars) {
             car.move(random.nextInt(10));
         }
     }
 
-    public List<String> getWinner() {
+    public List<String> getWinner(List<Car> cars) {
         // distance 기준 역순으로 정렬
         Collections.sort(cars, new Comparator<Car>() {
             @Override
