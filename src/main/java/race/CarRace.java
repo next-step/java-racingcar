@@ -1,20 +1,15 @@
 package race;
 
-public class CarRace {
+import java.util.List;
 
-    private int carCount;
+public class CarRace {
 
     private int gameCount;
 
-    public CarRace() {
-        this.carCount = setCarCount();
-        this.gameCount = setGameCount();
-    }
+    private RandomNumCondition randomNumCondition;
 
-    //for test
-    public CarRace(int carCount, int gameCount) {
-        this.carCount = carCount;
-        this.gameCount = gameCount;
+    public CarRace() {
+        this.gameCount = setGameCount();
     }
 
     public static void main(String[] args) {
@@ -22,8 +17,8 @@ public class CarRace {
         carRace.playGame();
     }
 
-    protected int setCarCount() {
-        return InputView.carCountInputOutput();
+    protected List<String> getCarNames() {
+        return InputView.carNamesToList();
     }
 
     protected int setGameCount() {
@@ -31,12 +26,14 @@ public class CarRace {
     }
 
     protected void playGame() {
-        Cars carList = Cars.createCarList(carCount);
+        Cars cars = Cars.createCars(getCarNames());
+        randomNumCondition = new RandomNumCondition();
         for (int i = 0; i < gameCount; i++) {
             ResultView.printResult(
-                    carList.moveCars(carList, new RandomNumCondition())              
+                    cars.moveCars(randomNumCondition)
             );
         }
+        ResultView.printWinner(cars.getWinner());
     }
 
 }

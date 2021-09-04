@@ -12,11 +12,6 @@ class RandomNumConditionTest {
     void moveOrNotTest() {
         MoveCondition moveCondition = new RandomNumCondition() {
             @Override
-            public int getValue() {
-                return 1;
-            }
-
-            @Override
             public boolean moveOrNot() {
                 return true;
             }

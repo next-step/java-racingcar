@@ -4,9 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
@@ -26,6 +23,6 @@ class CarTest {
         //given
         car.addDistance(() -> true);
         //then
-        assertThat(car.getDistance().get(0)).isTrue();
+        assertThat(car.getWinOrLoseLog().get(0)).isTrue();
     }
 }

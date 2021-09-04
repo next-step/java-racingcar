@@ -6,14 +6,40 @@ import java.util.List;
 
 public class Car {
 
-    private List<Boolean> distance = new ArrayList<>();
+    private String name;
 
-    public List<Boolean> getDistance() {
-        return Collections.unmodifiableList(distance);
+    private List<Boolean> winOrLoseLog = new ArrayList<>();
+
+    public Car() {
+    }
+
+    private Car(String name, List<Boolean> winOrLoseLog) {
+        this.name = name;
+        this.winOrLoseLog = winOrLoseLog;
+    }
+
+    public static Car createCar(String name, List<Boolean> winOrLoseLog) {
+        return new Car(name, winOrLoseLog);
+    }
+
+    public List<Boolean> getWinOrLoseLog() {
+        return Collections.unmodifiableList(winOrLoseLog);
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void addDistance(MoveCondition moveCondition) {
-        distance.add(moveCondition.moveOrNot());
+        boolean result = moveCondition.moveOrNot();
+        winOrLoseLog.add(result);
+    }
+
+    public int distance() {
+        int result = 0;
+        return (int) this.winOrLoseLog.stream()
+                .filter(d -> d)
+                .count();
     }
 
 }

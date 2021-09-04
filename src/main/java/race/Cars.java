@@ -2,32 +2,48 @@ package race;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
-    private static final List<Car> carList = new ArrayList<>();
+    private final List<Car> cars;
 
-    private Cars() {
+    private Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public static Cars createCarList(int carCount) {
-        for (int i = carCount; i > 0; i--) {
-            Car car = new Car();
-            carList.add(car);
+    public static Cars createCars(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(Car.createCar(carName, new ArrayList<Boolean>()));
         }
-        return new Cars();
+        return new Cars(cars);
+    }
+    protected final List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 
-    protected final List<Car> getCarList() {
-        return Collections.unmodifiableList(carList);
-    }
-
-    protected Cars moveCars(Cars carList, MoveCondition moveCondition) {
-        for (Car car: carList.getCarList()) {
-            car.addDistance(moveCondition);
+    protected Cars moveCars(MoveCondition moveCondition) {
+        for (int i = 0; i < this.getCars().size(); i++) {
+            this.getCars().get(i).addDistance(moveCondition);
         }
-        return carList;
+        return this;
+    }
+
+    protected List<Car> getWinner() {
+        int max = getMaxDistance();
+        return cars.stream()
+                .filter(c -> c.distance() >= max)
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxDistance() {
+        return cars.stream()
+                .map(Car::distance)
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList()).get(0);
     }
 
 }
