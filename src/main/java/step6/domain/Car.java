@@ -1,14 +1,21 @@
 package step6.domain;
 
-public class CarName {
+public class Car {
     private static final String MAX_CARNAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 5자를 초과할 수 없습니다.";
     private static final int MAX_CARNAME_LEGNTH = 5;
 
     private final String carName;
 
-    public CarName(String carName) {
+    private int position;
+
+    public Car(String carName) {
+        this(carName, 0);
+    }
+
+    public Car(String carName, int position) {
         validCarName(carName);
         this.carName = carName;
+        this.position = position;
     }
 
     private void validCarName(String carName) {
