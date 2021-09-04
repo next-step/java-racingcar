@@ -17,6 +17,4 @@ public class CarNames {
                 .map(carName -> new CarName(carName))
                 .collect(Collectors.toList());
     }
-
-
 }
