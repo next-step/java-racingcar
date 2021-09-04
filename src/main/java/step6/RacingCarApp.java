@@ -9,6 +9,10 @@ public class RacingCarApp {
     public static void main(String[] args) {
         Cars cars = new Cars(InputView.requireCarName());
         TryNumber tryNumber = new TryNumber(InputView.requireTryNumber());
+
         RacingGame racingGame = new RacingGame(cars, tryNumber);
+        cars = racingGame.run();
+
+
     }
 }

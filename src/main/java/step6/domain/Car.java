@@ -10,7 +10,7 @@ public class Car {
     private int position;
 
     public Car(String carName) {
-        this(carName, 0);
+        this(carName, 1);
     }
 
     public Car(String carName, int position) {
@@ -29,5 +29,13 @@ public class Car {
         if (randomNumber >= MOVE_THRETHOLD) {
             this.position++;
         }
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }

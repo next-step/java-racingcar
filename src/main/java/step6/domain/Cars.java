@@ -24,10 +24,13 @@ public class Cars {
     public void runRacingGame(TryNumber tryNumber) {
         cars.stream()
                 .forEach(car -> car.move(getRandomNumber()));
-
     }
 
     private int getRandomNumber() {
         return rd.nextInt(MAX_RANDOM_NUMBER) + 1;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
