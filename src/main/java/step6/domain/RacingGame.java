@@ -12,7 +12,7 @@ public class RacingGame {
     }
 
     public Cars run() {
-
+        ResultView.printResultGuideMessage();
         ResultView.printCurrentPosition(cars);
         while (!tryNumber.finish()) {
             cars.runRacingGame(tryNumber);
