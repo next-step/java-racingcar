@@ -11,7 +11,7 @@ public class RacingGame {
         this.tryNumber = tryNumber;
     }
 
-    public Cars run() {
+    public void run() {
         ResultView.printResultGuideMessage();
         ResultView.printCurrentPosition(cars);
         while (!tryNumber.finish()) {
@@ -19,6 +19,5 @@ public class RacingGame {
             ResultView.printCurrentPosition(cars);
             tryNumber.minus();
         }
-        return cars;
     }
 }

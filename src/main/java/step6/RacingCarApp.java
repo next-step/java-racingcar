@@ -11,8 +11,6 @@ public class RacingCarApp {
         TryNumber tryNumber = new TryNumber(InputView.requireTryNumber());
 
         RacingGame racingGame = new RacingGame(cars, tryNumber);
-        cars = racingGame.run();
-
-
+        racingGame.run();
     }
 }
