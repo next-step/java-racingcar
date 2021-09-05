@@ -17,7 +17,12 @@ class CarTest {
     @Test
     void moveStrategyTest() {
         Car actual = new Car("a");
-        actual.move(4);
+        actual.move(new MoveStrategy() {
+            @Override
+            public boolean move() {
+                return true;
+            }
+        });
 
         Car expected = new Car("a", 2);
         Assertions.assertThat(actual).isEqualTo(actual);
@@ -27,7 +32,12 @@ class CarTest {
     @Test
     void moveStrategyTest2() {
         Car actual = new Car("a");
-        actual.move(3);
+        actual.move(new MoveStrategy() {
+            @Override
+            public boolean move() {
+                return false;
+            }
+        });
 
         Car expected = new Car("a", 1);
         Assertions.assertThat(actual).isEqualTo(actual);

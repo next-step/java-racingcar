@@ -5,7 +5,6 @@ import java.util.Objects;
 public class Car {
     private static final String MAX_CARNAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 5자를 초과할 수 없습니다.";
     private static final int MAX_CARNAME_LEGNTH = 5;
-    private static final int MOVE_THRETHOLD = 4;
 
     private final String carName;
 
@@ -27,8 +26,8 @@ public class Car {
         }
     }
 
-    public void move(int randomNumber) {
-        if (randomNumber >= MOVE_THRETHOLD) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.move()) {
             this.position++;
         }
     }
