@@ -5,13 +5,14 @@ import stage4.domain.*;
 public class CarService {
 
     public Cars startRace(String[] carNames, int numberOfTries) {
-        final Cars cars = new Cars(carNames);
+        final Cars targetCars = new Cars(carNames);
 
-        Cars results = new Cars();
+        Cars resultCars = new Cars();
         for (int i = 0; i < numberOfTries; i++) {
-            results.addCars(cars.tryRacing(new RandomMovableStrategy()));
+            final Cars racingResult = targetCars.tryRacing(new RandomMovableStrategy());
+            resultCars.addCars(racingResult);
         }
-        return results;
+        return resultCars;
     }
 
     public Cars checkWinner(Cars lastRacingResults) {

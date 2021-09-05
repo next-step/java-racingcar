@@ -26,18 +26,17 @@ public class Cars {
         return this.cars;
     }
 
-
-    public List<Car> tryRacing(MovableStrategy strategy) {
+    public Cars tryRacing(MovableStrategy strategy) {
         List<Car> results = new ArrayList<>();
         for (Car car : this.cars) {
             car.tryForward(strategy);
             results.add(new Car(car));
         }
-        return results;
+        return new Cars(results);
     }
 
-    public void addCars(List<Car> carList) {
-        this.cars.addAll(carList);
+    public void addCars(Cars resultCars) {
+        this.cars.addAll(resultCars.cars);
     }
 
     public Cars findLastRacingResults(int numberOfCars) {
@@ -62,11 +61,11 @@ public class Cars {
         return max;
     }
 
-    private List<Car> findWinner(Position maxPosition, Car car) {
+    private Cars findWinner(Position maxPosition, Car car) {
         if (isWinner(maxPosition, car)) {
-            return Arrays.asList(car);
+            return new Cars(Arrays.asList(car));
         }
-        return Arrays.asList();
+        return new Cars(Arrays.asList());
     }
 
     private boolean isWinner(Position maxPosition, Car car) {
