@@ -12,7 +12,6 @@ public class RacingGame {
     }
 
     public void run() {
-        ResultView.printResultGuideMessage();
         ResultView.printCurrentPosition(cars);
         while (!tryNumber.finish()) {
             cars.runRacingGame(tryNumber);
