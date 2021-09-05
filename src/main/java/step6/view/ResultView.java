@@ -3,6 +3,8 @@ package step6.view;
 import step6.domain.Car;
 import step6.domain.Cars;
 
+import java.util.ArrayList;
+
 public class ResultView {
     private static final String GUIDE_MESSAGE = "실행 결과";
     public static void printCurrentPosition(Cars cars) {
@@ -22,5 +24,10 @@ public class ResultView {
 
     public static void printResultGuideMessage() {
         System.out.println(GUIDE_MESSAGE);
+    }
+
+    public static void printWinnerCars(ArrayList<String> winnerCars) {
+        winnerCars.stream()
+                .forEach(System.out::println);
     }
 }
