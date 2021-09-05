@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Position {
     private static final int DEFAULT_VALUE = 0;
-    private static final int POSITION = 0;
+    private static final int ZERO_VALUE = 0;
 
     private int position;
 
@@ -22,7 +22,7 @@ public class Position {
     }
 
     private void validateNegative(int position) {
-        if (position < POSITION) {
+        if (position < ZERO_VALUE) {
             throw new IllegalArgumentException("위치는 음수일 수 없습니다");
         }
     }
@@ -52,4 +52,10 @@ public class Position {
         return Objects.hash(position);
     }
 
+    @Override
+    public String toString() {
+        return "Position{" +
+                "position=" + position +
+                '}';
+    }
 }

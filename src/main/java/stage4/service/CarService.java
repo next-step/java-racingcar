@@ -9,7 +9,7 @@ public class CarService {
 
         Cars results = new Cars();
         for (int i = 0; i < numberOfTries; i++) {
-            results.addCars(cars.tryRacing());
+            results.addCars(cars.tryRacing(new RandomMovableStrategy()));
         }
         return results;
     }

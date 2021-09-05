@@ -27,10 +27,10 @@ public class Cars {
     }
 
 
-    public List<Car> tryRacing() {
+    public List<Car> tryRacing(MovableStrategy strategy) {
         List<Car> results = new ArrayList<>();
         for (Car car : this.cars) {
-            car.tryForward(new RandomMovableStrategy());
+            car.tryForward(strategy);
             results.add(new Car(car));
         }
         return results;
@@ -42,7 +42,6 @@ public class Cars {
 
     public Cars findLastRacingResults(int numberOfCars) {
         final int lastIndex = this.cars.size();
-        Collections.unmodifiableList(this.cars.subList(lastIndex - numberOfCars, lastIndex));
         return new Cars(Collections.unmodifiableList(this.cars.subList(lastIndex - numberOfCars, lastIndex)));
     }
 
@@ -85,5 +84,12 @@ public class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(getCars());
+    }
+
+    @Override
+    public String toString() {
+        return "Cars{" +
+                "cars=" + cars +
+                '}';
     }
 }
