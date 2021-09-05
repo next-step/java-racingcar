@@ -2,14 +2,9 @@ package step6.domain;
 
 import step6.view.ResultView;
 
-import java.util.ArrayList;
-
 public class RacingGame {
     private final Cars cars;
     private final TryNumber tryNumber;
-
-
-
 
     public RacingGame(Cars cars, TryNumber tryNumber) {
         this.cars = cars;

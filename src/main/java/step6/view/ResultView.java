@@ -27,7 +27,6 @@ public class ResultView {
     }
 
     public static void printWinnerCars(ArrayList<String> winnerCars) {
-        winnerCars.stream()
-                .forEach(System.out::println);
+        System.out.println(String.join(",", winnerCars)+"가 최종 우승했습니다.");
     }
 }

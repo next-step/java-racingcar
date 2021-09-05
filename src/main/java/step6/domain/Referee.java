@@ -29,13 +29,13 @@ public class Referee {
                 .forEach(car -> findMaxPositionByCar(car));
     }
 
-    private void findMaxPositionByCar(Car car) {
+    private void findWinnerCar(Car car) {
         if (car.getPosition() == maxPosition) {
             winnerCars.add(car.getCarName());
         }
     }
 
-    public void findWinnerCar(Car car) {
+    public void findMaxPositionByCar(Car car) {
         if (car.getPosition() > maxPosition) {
             maxPosition = car.getPosition();
         }

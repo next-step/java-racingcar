@@ -16,9 +16,7 @@ public class ResultView {
         }
         System.out.println();
     }
-
     public void printFinalResult(String maxCarName) {
         System.out.println(maxCarName+"가 최종 우승했습니다.");
     }
-
 }
