@@ -1,8 +1,5 @@
-import step4.ResultView;
 import step5.domain.Race;
 import step5.view.InputView;
-
-import java.util.Scanner;
 
 public class RacingCarMain {
     public static void main(String[] args) {
