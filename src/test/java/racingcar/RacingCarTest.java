@@ -24,15 +24,15 @@ public class RacingCarTest {
                 .isEqualTo(0);
     }
 
-    @DisplayName(value = "Confirm Car Progress")
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    void carMove(int numberOfCar) {
-        RacingCars racingCars = new RacingCars(numberOfCar);
-        racingCars.racingAttempt();
-        List<Integer> results = racingCars.getResultAttempt();
-        assertThat(results.size()).isEqualTo(numberOfCar);
-    }
+//    @DisplayName(value = "Confirm Car Progress")
+//    @ParameterizedTest
+//    @ValueSource(ints = {1, 2, 3})
+//    void carMove(int numberOfCar) {
+//        RacingCars racingCars = new RacingCars(numberOfCar);
+//        racingCars.racingAttempt();
+//        List<Integer> results = racingCars.getResultAttempt();
+//        assertThat(results.size()).isEqualTo(numberOfCar);
+//    }
 
     @DisplayName(value = "Confirm Car 4 or more and less than 4 operation")
     @ParameterizedTest
@@ -46,13 +46,14 @@ public class RacingCarTest {
 
     @DisplayName(value = "Confirm Race Progress")
     @ParameterizedTest
-    @CsvSource(value = {"3:5", "1:3", "4:6"}, delimiter = ':')
-    void startRace(int numberOfCar, int numberOfAttempt) {
-        RacingGame racingGame = new RacingGame(numberOfCar, numberOfAttempt);
-        List<RacingResult> result = racingGame.startRace();
+    @CsvSource("pobi,crong,honux")
+    void startRace(String car1, String car2, String car3) {
+        String[] names = {car1, car2, car3};
+        RacingCars racingCars = new RacingCars(names);
+        racingCars.racingAttempt();
+        List<RacingCar> racingCarList = racingCars.getRacingCars();
 
-        assertThat(result.get(0).getPositions().size()).isEqualTo(numberOfCar);
-        assertThat(result.size()).isEqualTo(numberOfAttempt);
+        assertThat(racingCarList.size()).isEqualTo(names.length);
     }
 
 }
