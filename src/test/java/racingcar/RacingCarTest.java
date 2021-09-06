@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
 
-    @DisplayName(value = "Car is starting position is 0")
+    @DisplayName("Car is starting position is 0")
     @Test
     void startingPositionOfTheCarIsZero() {
         RacingCar racingCar = new RacingCar();
@@ -23,7 +23,7 @@ public class RacingCarTest {
                 .isEqualTo(0);
     }
 
-    @DisplayName(value = "Confirm Race Progress")
+    @DisplayName("Confirm Race Progress")
     @ParameterizedTest
     @CsvSource("pobi,crong,honux")
     void carMove(String car1, String car2, String car3) {
@@ -35,7 +35,7 @@ public class RacingCarTest {
         assertThat(racingCarList.size()).isEqualTo(names.length);
     }
 
-    @DisplayName(value = "Confirm Car 4 or more and less than 4 operation")
+    @DisplayName("Confirm Car 4 or more and less than 4 operation")
     @ParameterizedTest
     @CsvSource(value = {"1:0", "4:1", "8:1"}, delimiter = ':')
     void racingCarMove(int randomNumber, int expect) {
@@ -45,12 +45,14 @@ public class RacingCarTest {
         assertThat(result).isEqualTo(expect);
     }
 
-    @DisplayName(value = "Confirm Race Progress")
+    @DisplayName("Confirm Race Progress")
     @ParameterizedTest
     @CsvSource(value = {"3,pobi,crong,honux", "4,pobi,crong,honux,sun"})
     void startRace(int attempt, String car1, String car2, String car3) {
+        RacingGame racingGame = new RacingGame();
         String[] names = {car1, car2, car3};
-        List<RacingResults> results = RacingGame.startRace(attempt, names);
+
+        List<RacingResults> results = racingGame.startRace(attempt, names);
 
         assertThat(results.size()).isEqualTo(attempt);
         assertThat(results.get(0).getRacingResults().size()).isEqualTo(names.length);

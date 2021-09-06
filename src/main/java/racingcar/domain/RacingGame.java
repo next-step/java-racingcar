@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RacingGame {
 
-    public static List<RacingResults> startRace(int attempt, String[] carNames) {
+    public List<RacingResults> startRace(int attempt, String[] carNames) {
         RacingCars racingCars = new RacingCars(carNames);
 
         List<RacingResults> racingResults = new ArrayList<>();
@@ -16,6 +16,5 @@ public class RacingGame {
         }
         return racingResults;
     }
-
 
 }
