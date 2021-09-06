@@ -1,4 +1,4 @@
-package race;
+package race.strategy;
 
 public interface MoveCondition {
 

@@ -1,4 +1,4 @@
-package race;
+package race.view;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,13 +16,13 @@ public class InputView {
         return input.nextInt();
     }
 
-    protected static List<String> carNamesToList() {
+    public static List<String> carNamesToList() {
         System.out.println(messageRegisterCar);
         Scanner input = new Scanner(System.in);
         return splitInput(input.nextLine());
     }
 
-    protected static int gameCountInputOutput() {
+    public static int gameCountInputOutput() {
         System.out.println(messageGameCount);
         return inputAnswerToInt();
     }

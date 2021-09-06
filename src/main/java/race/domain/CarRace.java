@@ -1,4 +1,8 @@
-package race;
+package race.domain;
+
+import race.view.InputView;
+import race.strategy.RandomNumCondition;
+import race.view.ResultView;
 
 import java.util.List;
 

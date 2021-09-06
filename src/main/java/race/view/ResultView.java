@@ -1,4 +1,7 @@
-package race;
+package race.view;
+
+import race.domain.Car;
+import race.domain.Cars;
 
 import java.util.Iterator;
 import java.util.List;
@@ -6,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class ResultView {
 
-    protected static void printResult(Cars cars) {
+    public static void printResult(Cars cars) {
         for (Car car : cars.getCars()) {
             System.out.println(car.getName() + " :" + convertDistanceToLine(car));
         }

@@ -1,4 +1,6 @@
-package race;
+package race.domain;
+
+import race.strategy.MoveCondition;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,7 +23,8 @@ public class Cars {
         }
         return new Cars(cars);
     }
-    protected final List<Car> getCars() {
+
+    public final List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
 
@@ -34,6 +37,7 @@ public class Cars {
 
     protected List<Car> getWinner() {
         int max = getMaxDistance();
+        //TODO: reduce 써서 리팩토링 하기
         return cars.stream()
                 .filter(c -> c.distance() >= max)
                 .collect(Collectors.toList());
