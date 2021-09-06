@@ -1,5 +1,7 @@
 package stage4.domain;
 
+import java.util.Objects;
+
 public class Car {
     private final static int THRESHOLD = 4;
 
@@ -60,5 +62,26 @@ public class Car {
 
     private boolean isGreaterThan(Position max) {
         return this.position.greaterThan(max);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "name=" + name +
+                ", position=" + position +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return Objects.equals(getName(), car.getName()) && Objects.equals(getPosition(), car.getPosition());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getPosition());
     }
 }

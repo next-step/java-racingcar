@@ -26,23 +26,21 @@ public class Cars {
         return this.cars;
     }
 
-
-    public List<Car> tryRacing() {
+    public Cars tryRacing(MovableStrategy strategy) {
         List<Car> results = new ArrayList<>();
         for (Car car : this.cars) {
-            car.tryForward(new RandomMovableStrategy());
+            car.tryForward(strategy);
             results.add(new Car(car));
         }
-        return results;
+        return new Cars(results);
     }
 
-    public void addCars(List<Car> carList) {
-        this.cars.addAll(carList);
+    public void addCars(Cars resultCars) {
+        this.cars.addAll(resultCars.cars);
     }
 
     public Cars findLastRacingResults(int numberOfCars) {
         final int lastIndex = this.cars.size();
-        Collections.unmodifiableList(this.cars.subList(lastIndex - numberOfCars, lastIndex));
         return new Cars(Collections.unmodifiableList(this.cars.subList(lastIndex - numberOfCars, lastIndex)));
     }
 
@@ -63,11 +61,11 @@ public class Cars {
         return max;
     }
 
-    private List<Car> findWinner(Position maxPosition, Car car) {
+    private Cars findWinner(Position maxPosition, Car car) {
         if (isWinner(maxPosition, car)) {
-            return Arrays.asList(car);
+            return new Cars(Arrays.asList(car));
         }
-        return Arrays.asList();
+        return new Cars(Arrays.asList());
     }
 
     private boolean isWinner(Position maxPosition, Car car) {
@@ -85,5 +83,12 @@ public class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(getCars());
+    }
+
+    @Override
+    public String toString() {
+        return "Cars{" +
+                "cars=" + cars +
+                '}';
     }
 }
