@@ -30,4 +30,10 @@ public class ResultView {
         }
         System.out.println();
     }
+
+    public static void showWinner(List<String> names){
+        String winners = String.join(", ", names);
+        System.out.println(winners + " 가 최종 우승했습니다.");
+    }
+
 }

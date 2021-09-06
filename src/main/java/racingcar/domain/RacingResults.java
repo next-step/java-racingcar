@@ -18,4 +18,16 @@ public class RacingResults {
         return racingResults;
     }
 
+    private int getTopPosition() {
+        return racingResults.stream()
+                .mapToInt(RacingResult::getPosition)
+                .max().getAsInt();
+    }
+
+    public List<String> getWinners() {
+        return racingResults.stream()
+                .filter(racingResult -> racingResult.getPosition() == getTopPosition())
+                .map(RacingResult::getName)
+                .collect(Collectors.toList());
+    }
 }

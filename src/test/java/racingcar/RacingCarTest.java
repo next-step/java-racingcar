@@ -4,11 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
 import racingcar.domain.RacingGame;
-import racingcar.domain.RacingResult;
+import racingcar.domain.RacingResults;
 
 import java.util.List;
 
@@ -24,15 +23,17 @@ public class RacingCarTest {
                 .isEqualTo(0);
     }
 
-//    @DisplayName(value = "Confirm Car Progress")
-//    @ParameterizedTest
-//    @ValueSource(ints = {1, 2, 3})
-//    void carMove(int numberOfCar) {
-//        RacingCars racingCars = new RacingCars(numberOfCar);
-//        racingCars.racingAttempt();
-//        List<Integer> results = racingCars.getResultAttempt();
-//        assertThat(results.size()).isEqualTo(numberOfCar);
-//    }
+    @DisplayName(value = "Confirm Race Progress")
+    @ParameterizedTest
+    @CsvSource("pobi,crong,honux")
+    void carMove(String car1, String car2, String car3) {
+        String[] names = {car1, car2, car3};
+        RacingCars racingCars = new RacingCars(names);
+        racingCars.racingAttempt();
+        List<RacingCar> racingCarList = racingCars.getRacingCars();
+
+        assertThat(racingCarList.size()).isEqualTo(names.length);
+    }
 
     @DisplayName(value = "Confirm Car 4 or more and less than 4 operation")
     @ParameterizedTest
@@ -46,14 +47,13 @@ public class RacingCarTest {
 
     @DisplayName(value = "Confirm Race Progress")
     @ParameterizedTest
-    @CsvSource("pobi,crong,honux")
-    void startRace(String car1, String car2, String car3) {
+    @CsvSource(value = {"3,pobi,crong,honux", "4,pobi,crong,honux,sun"})
+    void startRace(int attempt, String car1, String car2, String car3) {
         String[] names = {car1, car2, car3};
-        RacingCars racingCars = new RacingCars(names);
-        racingCars.racingAttempt();
-        List<RacingCar> racingCarList = racingCars.getRacingCars();
+        List<RacingResults> results = RacingGame.startRace(attempt, names);
 
-        assertThat(racingCarList.size()).isEqualTo(names.length);
+        assertThat(results.size()).isEqualTo(attempt);
+        assertThat(results.get(0).getRacingResults().size()).isEqualTo(names.length);
     }
 
 }
