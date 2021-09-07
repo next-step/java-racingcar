@@ -1,8 +1,10 @@
-package race;
+package race.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import race.domain.Car;
+import race.domain.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +24,8 @@ class CarsTest {
     }
 
     @Test
-    @DisplayName("createCarList 테스트")
-    void createCarListTest() {
+    @DisplayName("Cars_정적팩토리_메서드_테스트")
+    void Cars_정적팩토리_메서드_테스트() {
         //then
         assertThat(cars.getCars().size()).isEqualTo(2);
     }

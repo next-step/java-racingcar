@@ -1,4 +1,6 @@
-package race;
+package race.domain;
+
+import race.strategy.MoveCondition;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,7 +38,6 @@ public class Car {
     }
 
     public int distance() {
-        int result = 0;
         return (int) this.winOrLoseLog.stream()
                 .filter(d -> d)
                 .count();

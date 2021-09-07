@@ -1,7 +1,9 @@
-package race;
+package race.strategy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import race.strategy.MoveCondition;
+import race.strategy.RandomNumCondition;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
