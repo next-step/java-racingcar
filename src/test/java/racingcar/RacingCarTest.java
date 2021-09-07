@@ -4,11 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
 import racingcar.domain.RacingGame;
-import racingcar.domain.RacingResult;
+import racingcar.domain.RacingResults;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
 
-    @DisplayName(value = "Car is starting position is 0")
+    @DisplayName("Car is starting position is 0")
     @Test
     void startingPositionOfTheCarIsZero() {
         RacingCar racingCar = new RacingCar();
@@ -24,17 +23,19 @@ public class RacingCarTest {
                 .isEqualTo(0);
     }
 
-    @DisplayName(value = "Confirm Car Progress")
+    @DisplayName("Confirm Race Progress")
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    void carMove(int numberOfCar) {
-        RacingCars racingCars = new RacingCars(numberOfCar);
+    @CsvSource("pobi,crong,honux")
+    void carMove(String car1, String car2, String car3) {
+        String[] names = {car1, car2, car3};
+        RacingCars racingCars = new RacingCars(names);
         racingCars.racingAttempt();
-        List<Integer> results = racingCars.getResultAttempt();
-        assertThat(results.size()).isEqualTo(numberOfCar);
+        List<RacingCar> racingCarList = racingCars.getRacingCars();
+
+        assertThat(racingCarList.size()).isEqualTo(names.length);
     }
 
-    @DisplayName(value = "Confirm Car 4 or more and less than 4 operation")
+    @DisplayName("Confirm Car 4 or more and less than 4 operation")
     @ParameterizedTest
     @CsvSource(value = {"1:0", "4:1", "8:1"}, delimiter = ':')
     void racingCarMove(int randomNumber, int expect) {
@@ -44,15 +45,17 @@ public class RacingCarTest {
         assertThat(result).isEqualTo(expect);
     }
 
-    @DisplayName(value = "Confirm Race Progress")
+    @DisplayName("Confirm Race Progress")
     @ParameterizedTest
-    @CsvSource(value = {"3:5", "1:3", "4:6"}, delimiter = ':')
-    void startRace(int numberOfAttempt, int numberOfCar) {
-        RacingGame racingGame = new RacingGame(numberOfAttempt, numberOfCar);
-        List<RacingResult> result = racingGame.startRace();
+    @CsvSource(value = {"3,pobi,crong,honux", "4,pobi,crong,honux,sun"})
+    void startRace(int attempt, String car1, String car2, String car3) {
+        RacingGame racingGame = new RacingGame();
+        String[] names = {car1, car2, car3};
 
-        assertThat(result.size()).isEqualTo(numberOfAttempt);
-        assertThat(result.get(0).getPositions().size()).isEqualTo(numberOfCar);
+        List<RacingResults> results = racingGame.startRace(attempt, names);
+
+        assertThat(results.size()).isEqualTo(attempt);
+        assertThat(results.get(0).getRacingResults().size()).isEqualTo(names.length);
     }
 
 }

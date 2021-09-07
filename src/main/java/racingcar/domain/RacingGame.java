@@ -5,24 +5,16 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final int attempt;
-    private final RacingCars racingCars;
+    public List<RacingResults> startRace(int attempt, String[] carNames) {
+        RacingCars racingCars = new RacingCars(carNames);
 
-    public RacingGame(int attempt, int racingCar) {
-        this.attempt = attempt;
-        this.racingCars = new RacingCars(racingCar);
-    }
-
-    public List<RacingResult> startRace() {
-        List<RacingResult> result = new ArrayList<>();
-
+        List<RacingResults> racingResults = new ArrayList<>();
         for (int i = 0; i < attempt; i++) {
             racingCars.racingAttempt();
-            List<Integer> resultAttempt = racingCars.getResultAttempt();
-            RacingResult racingResult = new RacingResult(attempt, resultAttempt);
-            result.add(racingResult);
+            RacingResults racingResult = new RacingResults(racingCars);
+            racingResults.add(racingResult);
         }
-        return result;
+        return racingResults;
     }
 
 }

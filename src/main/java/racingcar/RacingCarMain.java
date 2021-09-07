@@ -1,8 +1,7 @@
 package racingcar;
 
-import racingcar.domain.RacingCars;
 import racingcar.domain.RacingGame;
-import racingcar.domain.RacingResult;
+import racingcar.domain.RacingResults;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -10,12 +9,20 @@ import java.util.List;
 
 public class RacingCarMain {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
 
-        List<RacingResult> results = new RacingGame(inputView.inputCar(), inputView.inputAttempt()).startRace();
-        resultView.showRacing(results);
+        RacingGame racingGame = new RacingGame();
+        String carsName = InputView.inputCarName();
+        String[] cars = carsName.split(",");
+        int attempt = InputView.inputAttempt();
 
+        List<RacingResults> results = racingGame.startRace(attempt, cars);
+        ResultView.showRacing(results);
+
+        int lastResultIndex = results.size() -1;
+        RacingResults lastResult = results.get(lastResultIndex);
+
+        List<String> winners = lastResult.getWinners();
+        ResultView.showWinner(winners);
     }
 
 }

@@ -1,18 +1,20 @@
 package racingcar.domain;
 
-import java.util.List;
-
 public class RacingResult {
-    private final int attempt;
-    private List<Integer> positions;
 
-    public RacingResult(int attempt, List<Integer> positions) {
-        this.attempt = attempt;
-        this.positions = positions;
+    private String name;
+    private int position;
+
+    public RacingResult(String name, int position) {
+        this.name = name;
+        this.position = position;
     }
 
-    public List<Integer> getPositions(){
-        return positions;
+    public String getName() {
+        return name;
     }
 
+    public int getPosition() {
+        return position;
+    }
 }
