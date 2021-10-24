@@ -14,9 +14,12 @@ public class Main {
         RacingGame racingGame = new RacingGame(racingInfoMap);
         racingGame.race();
 
-        //우승자 뽑기
+//        String winnerNames = racingGame.getWinners();
 
+        //각 라운드별, 각 자동차의 위치 출력하기
+        //우승자 출력하기
 //        ResultView resultView = new ResultView();
 //        resultView.printRacingResult();
+//        resultview.printRacingWinner(winnerNames);
     }
 }
