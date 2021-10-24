@@ -29,6 +29,37 @@ public class Cars {
         return this;
     }
 
+    public String getWinners() {
+        Car maxPositionCar = getMaxPositionCar();
+        return buildWinnerNames(maxPositionCar);
+    }
+
+    private String buildWinnerNames(Car maxPositionCar) {
+        StringBuilder winnerNames = new StringBuilder();
+
+        for (Car car : cars) {
+            if (car.equalsPosition(maxPositionCar)) {
+                winnerNames.append(car.getName());
+                winnerNames.append(",");
+            }
+        }
+
+        winnerNames.deleteCharAt(winnerNames.length() - 1);
+
+        return winnerNames.toString();
+    }
+
+    private Car getMaxPositionCar() {
+        Car maxPositionCar = new Car("max", 0);
+
+        for (Car car : cars) {
+            if (car.isAhead(maxPositionCar)) {
+                maxPositionCar.changePosition(car);
+            }
+        }
+        return maxPositionCar;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -41,4 +72,5 @@ public class Cars {
     public int hashCode() {
         return Objects.hash(cars);
     }
+
 }

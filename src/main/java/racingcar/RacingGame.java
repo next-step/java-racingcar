@@ -28,7 +28,7 @@ public class RacingGame {
     }
 
 
-    public void race() {
+    public List<Cars> race() {
         getReadyRacingCars();
 
         RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy();
@@ -36,6 +36,8 @@ public class RacingGame {
         IntStream.range(0, round)
                 .mapToObj(i -> cars.move(randomMoveStrategy))
                 .forEach(raceResults::add);
+
+        return raceResults;
     }
 
 
@@ -44,6 +46,11 @@ public class RacingGame {
             Car newCar = new Car(carName);
             cars.add(newCar);
         }
+    }
+
+
+    public String getWinners() {
+        return cars.getWinners();
     }
 
 }

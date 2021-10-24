@@ -20,6 +20,10 @@ public class Car {
         this.position = position;
     }
 
+    public String getName() {
+        return name;
+    }
+
     private void validateCarName(String name) {
         boolean result = StringUtils.isLengthWithinLimits(1, 5, name);
         if (!result) {
@@ -31,6 +35,18 @@ public class Car {
         if (moveStrategy.isMovable()) {
             position++;
         }
+    }
+
+    public boolean isAhead(Car maxPositionCar) {
+        return position > maxPositionCar.position;
+    }
+
+    public void changePosition(Car car) {
+        position = car.position;
+    }
+
+    public boolean equalsPosition(Car maxPositionCar) {
+        return position == maxPositionCar.position;
     }
 
     @Override
@@ -45,4 +61,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name, position);
     }
+
 }
