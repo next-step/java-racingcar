@@ -5,16 +5,19 @@ import racingcar.strategies.MoveStrategy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
-public class Cars {
+public class Cars implements Cloneable {
 
-    private final List<Car> cars;
-
+    private List<Car> cars;
 
     public Cars() {
         cars = new ArrayList<>();
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
 
     public void add(Car car) {
         cars.add(car);
@@ -25,7 +28,6 @@ public class Cars {
         for (Car car: cars) {
             car.move(moveStrategy);
         }
-
         return this;
     }
 
@@ -58,6 +60,19 @@ public class Cars {
             }
         }
         return maxPositionCar;
+    }
+
+    @Override
+    public Cars clone() {
+        Cars result = null;
+
+        try {
+            result = (Cars) super.clone();
+            result.cars = cars.stream().map(car -> car.clone()).collect(Collectors.toList());
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override

@@ -10,7 +10,6 @@ import racingcar.views.InputView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.IntStream;
 
 public class RacingGame {
 
@@ -33,9 +32,11 @@ public class RacingGame {
 
         RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy();
 
-        IntStream.range(0, round)
-                .mapToObj(i -> cars.move(randomMoveStrategy))
-                .forEach(raceResults::add);
+        for (int i = 0; i < round; i++) {
+            cars.move(randomMoveStrategy);
+            Cars raceResult = cars.clone();
+            raceResults.add(raceResult);
+        }
 
         return raceResults;
     }

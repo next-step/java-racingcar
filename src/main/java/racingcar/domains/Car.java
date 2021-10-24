@@ -5,7 +5,7 @@ import racingcar.utils.StringUtils;
 
 import java.util.Objects;
 
-public class Car {
+public class Car implements Cloneable {
 
     private final String name;
     private int position;
@@ -24,6 +24,11 @@ public class Car {
         return name;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
+
     private void validateCarName(String name) {
         boolean result = StringUtils.isLengthWithinLimits(1, 5, name);
         if (!result) {
@@ -33,7 +38,7 @@ public class Car {
 
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
-            position++;
+            position += 1;
         }
     }
 
@@ -47,6 +52,16 @@ public class Car {
 
     public boolean equalsPosition(Car maxPositionCar) {
         return position == maxPositionCar.position;
+    }
+
+    @Override
+    protected Car clone() {
+        try {
+            return (Car) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return this;
     }
 
     @Override

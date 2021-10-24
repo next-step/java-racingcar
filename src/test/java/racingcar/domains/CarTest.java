@@ -20,8 +20,9 @@ class CarTest {
         };
 
         car.move(moveStrategy);
+        car.move(moveStrategy);
 
-        assertThat(car).isEqualTo(new Car("blue", 1));
+        assertThat(car).isEqualTo(new Car("blue", 2));
     }
 
     @Test
