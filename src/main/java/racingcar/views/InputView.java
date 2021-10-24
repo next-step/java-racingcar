@@ -15,12 +15,13 @@ public class InputView {
     }
 
 
-    public void getRacingInformation() {
-
+    public Map<String, String> getRacingInformation() {
         Scanner scanner = new Scanner(System.in);
 
         runQuestionAndAnswers(QUESTION_NAMES, scanner);
         runQuestionAndAnswers(QUESTION_ROUND, scanner);
+
+        return answerMap;
     }
 
 
@@ -47,11 +48,6 @@ public class InputView {
 
     private void printQuestion(String question) {
         System.out.println(question);
-    }
-
-
-    public Map<String, String> getAnswerMap() {
-        return answerMap;
     }
 
 }

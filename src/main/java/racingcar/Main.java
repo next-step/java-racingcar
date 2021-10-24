@@ -9,9 +9,14 @@ public class Main {
     public static void main(String[] args) {
 
         InputView inputView = new InputView();
-        inputView.getRacingInformation();
+        Map<String, String> racingInfoMap = inputView.getRacingInformation();
 
-        Map<String, String> answerMap = inputView.getAnswerMap();
+        RacingGame racingGame = new RacingGame(racingInfoMap);
+        racingGame.race();
 
+        //우승자 뽑기
+
+//        ResultView resultView = new ResultView();
+//        resultView.printRacingResult();
     }
 }
