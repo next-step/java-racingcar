@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.domains.Cars;
 import racingcar.views.InputView;
+import racingcar.views.ResultView;
 
 import java.util.List;
 import java.util.Map;
@@ -18,10 +19,8 @@ public class Main {
 
         String winnerNames = racingGame.getWinners();
 
-        //각 라운드별, 각 자동차의 위치 출력하기
-        //우승자 출력하기
-//        ResultView resultView = new ResultView();
-//        resultView.printRacingResult(racingResult);
-//        resultview.printRacingWinner(winnerNames);
+        ResultView resultView = new ResultView();
+        resultView.printRacingResult(racingResult);
+        resultView.printRacingWinner(winnerNames);
     }
 }
