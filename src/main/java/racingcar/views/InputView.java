@@ -1,47 +1,53 @@
 package racingcar.views;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class InputView {
 
-    private static final String QUESTION_CAR_NUM_TOTAL = "자동차 대수는 몇 대 인가요?";
-    private static final String QUESTION_ROUND_NUM_TOTAL = "시도할 회수는 몇 회 인가요?";
+    public static final String QUESTION_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    public static final String QUESTION_ROUND = "시도할 회수는 몇회인가요?";
 
-    public static final String CAR_NUM_TOTAL = "CAR_NUM_TOTAL";
-    public static final String ROUND_NUM_TOTAL = "ROUND_NUM_TOTAL";
+    private final Map<String, String> answerMap;
 
-    private InputView() {}
 
-    public static Map<String, Integer> input() {
-        Map<String, Integer> racingCarInfos  = new HashMap<>();
+    public InputView () {
+        answerMap = new HashMap<>();
+    }
 
+
+    public Map<String, String> getRacingInformation() {
         Scanner scanner = new Scanner(System.in);
 
-        askCarInfo(QUESTION_CAR_NUM_TOTAL);
-        getAnswerForCarInfo(racingCarInfos, scanner, CAR_NUM_TOTAL);
+        runQuestionAndAnswers(QUESTION_NAMES, scanner);
+        runQuestionAndAnswers(QUESTION_ROUND, scanner);
 
-        askCarInfo(QUESTION_ROUND_NUM_TOTAL);
-        getAnswerForCarInfo(racingCarInfos, scanner, ROUND_NUM_TOTAL);
-
-        scanner.close();
-
-        return racingCarInfos;
+        return answerMap;
     }
 
-    private static void askCarInfo(String question) {
-        System.out.println(question);
+
+    private void runQuestionAndAnswers(String question, Scanner scanner) {
+        printQuestion(question);
+        String answer = getAnswer(scanner);
+        saveAnswers(question, answer);
     }
 
-    private static void getAnswerForCarInfo(Map<String, Integer> racingCarInfos,
-                                            Scanner scanner,
-                                            String infoType) {
 
-        if (scanner.hasNextLine()) {
-            int value = scanner.nextInt();
-            racingCarInfos.put(infoType, value);
+    private void saveAnswers(String questionKey, String answerValue) {
+        answerMap.put(questionKey, answerValue);
+    }
+
+
+    private String getAnswer(Scanner scanner) {
+        if (!scanner.hasNext()) {
+            System.out.println("입력값이 없습니다. 다시 한 번 입력해주세요!");
         }
+
+        return scanner.nextLine();
+    }
+
+
+    private void printQuestion(String question) {
+        System.out.println(question);
     }
 
 }
