@@ -30,5 +30,23 @@ public class StringTest {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("(1,2) 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 1,2를 반환.")
+    void subStringTest(String str, String expected) {
+        String actual = str.substring(1, 4);
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> subStringTest() {
+        return Stream.of(
+                Arguments.of(
+                        "(1,2)", "1,2"
+                )
+        );
+    }
+
+
 
 }
