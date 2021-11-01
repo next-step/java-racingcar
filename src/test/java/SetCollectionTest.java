@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
@@ -62,6 +63,14 @@ public class SetCollectionTest {
         //when
         //then
         assertThat(numbers.contains(number)).isFalse();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"}, delimiter = ',')
+    void numbers_에_정수_1_2_3은_존재하고_4_5는_존재하지_않는다(Integer number, boolean expected) {
+        //given
+        //when & then
+        assertThat(numbers.contains(number)).isEqualTo(expected);
     }
 
 }
