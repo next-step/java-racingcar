@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringClassTest {
 
@@ -23,5 +24,20 @@ public class StringClassTest {
         String str = "(1,2)";
         String result = str.substring(1, 4);
         assertThat(result).isEqualTo("1,2");
+    }
+
+
+    @Test
+    @DisplayName("step 3 - charAt test")
+    void charAtTest() {
+        String str = "abc";
+
+        assertThat(str.charAt(0)).isEqualTo('a');
+        assertThat(str.charAt(1)).isEqualTo('b');
+        assertThat(str.charAt(2)).isEqualTo('c');
+
+        assertThatThrownBy(() -> str.charAt(3))
+                .isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining("Index: 2, size: 2");
     }
 }
