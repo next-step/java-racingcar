@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
 
@@ -21,4 +22,18 @@ public class StringTest {
 
         assertThat(result).isEqualTo("1,2");
     }
+
+    @Test
+    @DisplayName("특정 위치의 문자 가져오기")
+    void charAt() {
+        String str = "abc";
+
+        assertThat(str.charAt(0)).isEqualTo('a');
+
+        assertThatThrownBy(() -> {
+            str.charAt(4);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class)
+        .hasMessageContaining("4");
+    }
+
 }
