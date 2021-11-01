@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 
 public class StringTest {
 
@@ -47,6 +48,26 @@ public class StringTest {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("\"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습 테스트")
+    void charAtTest(int index, Character expected) {
+        String abc = "abc";
 
+        assertThat(abc.charAt(index)).isEqualTo(expected);
+    }
 
+    static Stream<Arguments> charAtTest() {
+        return Stream.of(
+                Arguments.of(
+                        0, 'a'
+                ),
+                Arguments.of(
+                        1, 'b'
+                ),
+                Arguments.of(
+                        2, 'c'
+                )
+        );
+    }
 }
