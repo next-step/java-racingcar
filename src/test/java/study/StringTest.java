@@ -23,7 +23,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("요구사항2 : ()를 제거한 값 반환")
+    @DisplayName("요구사항2 : ()를 제거한 값 반환하기")
     void substringTest(){
         String input = "(1,2)";
         String result = input.substring(1,input.length()-1);
@@ -31,7 +31,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("요구사항3 : 위치 값 over")
+    @DisplayName("요구사항3 : 위치 값 over일 경우 예외 발생 확인")
     void charAtTestIndexOver(){
         String input = "abc";
         int index = input.length() + 1;
@@ -39,7 +39,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("요구사항3 : 위치 값 under")
+    @DisplayName("요구사항3 : 위치 값 under일 경우 예외 발생 확인")
     void charAtTestIndexUnder(){
         indexOutOfBoundsExceptionCheck("abc",-1,"String index out of range: -\\d+");
     }
