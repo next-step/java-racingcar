@@ -60,4 +60,11 @@ public class StringTest {
     void size() {
         assertThat(numbers.size()).isEqualTo(3);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("값이 존재하는지 확인")
+    void contains(int input) {
+        assertThat(numbers.contains(input)).isTrue();
+    }
 }
