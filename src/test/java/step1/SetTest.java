@@ -28,4 +28,11 @@ public class SetTest {
     void sizeTest() {
         assertThat(numbers.size()).isEqualTo(3);
     }
+    
+    @ParameterizedTest
+    @DisplayName("step 2 - contains test")
+    @ValueSource(ints = {1,2,3})
+    void containsTest(int number) {
+        assertThat(numbers.contains(number)).isTrue();
+    }
 }
