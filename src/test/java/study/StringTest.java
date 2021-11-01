@@ -20,4 +20,11 @@ public class StringTest {
         String[] result = "1".split(",");
         assertThat(result).contains("1");
     }
+
+    @Test
+    @DisplayName("\"(1,2)\"에서 substring() 메소드로 ()를 제거하는 테스트")
+    void substringTest() {
+        String result = "(1,2)".substring(1, 4);
+        assertThat(result).isEqualTo("1,2");
+    }
 }
