@@ -29,7 +29,7 @@ public class SetTest {
     @Test
     @DisplayName("요구사항1")
     void size() {
-        assertThat(numbers).size().isEqualTo(numbers.size());
+        assertThat(numbers).size().isEqualTo(3);
     }
 
     @DisplayName("요구사항2")
@@ -41,12 +41,8 @@ public class SetTest {
 
     @DisplayName("요구사항3")
     @ParameterizedTest
-    @CsvSource(value = {"1,2,3,4,5"})
-    void containsOtherCase(int one, int two, int three, int four, int five) {
-        System.out.println(numbers.contains(one));
-        System.out.println(numbers.contains(two));
-        System.out.println(numbers.contains(three));
-        System.out.println(numbers.contains(four));
-        System.out.println(numbers.contains(five));
+    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
+    void containsOtherCase(int num, boolean bool) {
+        assertThat(numbers.contains(num)).isEqualTo(bool);
     }
 }
