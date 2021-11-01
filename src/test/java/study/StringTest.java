@@ -17,4 +17,12 @@ public class StringTest {
         assertThat(result).contains("2");
         assertThat(result).containsExactly("1", "2");
     }
+
+    @Test
+    @DisplayName("(1,2) 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 '1,2'가 반환되는지 검증")
+    void substring() {
+        String str = "(1,2)";
+        String result = str.substring(1, str.length() - 1);
+        assertThat(result).isEqualTo("1,2");
+    }
 }
