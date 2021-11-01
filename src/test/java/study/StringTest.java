@@ -19,4 +19,16 @@ public class StringTest {
 
         assertThat(split).containsExactly("1");
     }
+
+    @Test
+    void testRemoveParentheses() {
+        // Given
+        String given = "(1,2)";
+
+        // When
+        String substring = given.substring(1, given.length() - 1);
+
+        // Then
+        assertThat(substring).isEqualTo("1,2");
+    }
 }
