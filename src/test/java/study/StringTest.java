@@ -3,7 +3,11 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
 
@@ -26,5 +30,29 @@ public class StringTest {
     void substringTest() {
         String result = "(1,2)".substring(1, 4);
         assertThat(result).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("charAt() 메소드 테스트")
+    void charAtTest1() {
+        String string = "abc";
+        assertThat(string.charAt(0)).isEqualTo('a');
+        assertThat(string.charAt(1)).isEqualTo('b');
+        assertThat(string.charAt(2)).isEqualTo('c');
+    }
+
+    @Test
+    @DisplayName("charAt() 메소드 StringIndexOutOfBoundsException 테스트")
+    void charAtTest2() {
+        String string = "abc";
+        List<Integer> indexes = new ArrayList<>();
+        indexes.add(-1);
+        indexes.add(string.length());
+
+        for (Integer index : indexes) {
+            assertThatThrownBy(() -> string.charAt(index))
+                    .isInstanceOf(StringIndexOutOfBoundsException.class)
+                    .hasMessage("String index out of range: " + index);
+        }
     }
 }
