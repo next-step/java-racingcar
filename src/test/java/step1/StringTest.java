@@ -9,8 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
 
@@ -69,5 +68,12 @@ public class StringTest {
                         2, 'c'
                 )
         );
+    }
+
+    @Test
+    void indexOutOfBoundsExceptionTest() {
+        String abc = "abc";
+
+        assertThatThrownBy(() -> abc.charAt(5)).isInstanceOf(IndexOutOfBoundsException.class);
     }
 }
