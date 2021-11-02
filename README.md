@@ -16,8 +16,13 @@
   - from(Long count, Long time) 정적 팩토리 메서드 구현
   - getCount() 구현
   - getTime() 구현
+- Input Validator Util 구현
+  - null check 구현
+  - string null or empty 구현
+  - isNumber() 구현
 - Game 구현
   - RuleDto를 통해 Game 생성
+  - Game 생성 시 RuleDto validation  
   - Game 전체 실행 메서드 구현
   - 1초 메서드 step() 구현
 - Car 구현
