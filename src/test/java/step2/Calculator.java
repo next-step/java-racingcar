@@ -36,7 +36,7 @@ public class Calculator {
 
     private List<Operator> getOperators(String[] split) {
         //TODO stream 으로 해결 할 수 없을까요?
-        ArrayList<Operator> operators = new ArrayList<>();
+        List<Operator> operators = new ArrayList<>();
         for (int i = 1; i < split.length; i += 2) {
             isOperator(split[i]);
             operators.add(Operator.from(split[i]));
@@ -46,7 +46,7 @@ public class Calculator {
 
     private List<Integer> getNumbers(String[] split) {
         //TODO stream 으로 해결 할 수 없을까요?
-        ArrayList<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < split.length; i += 2) {
             isNumber(split[i]);
             numbers.add(Integer.parseInt(split[i]));
