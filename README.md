@@ -7,3 +7,17 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능 목록
+- Input view 구현
+    - Input 받은 값 validation(null check, 숫자 값 체크)
+    - Input 받은 값 전달 객체(RuleDto) 생성 후 return
+- Game 구현
+  - RuleDto를 통해 Game 생성
+  - Game 전체 실행 메서드 구현
+  - 1초 메서드 step() 구현
+- Car 구현
+  - 랜덤 값을 통해 갈 수 있는지 없는지 판별하는 메서드 isGo 구현
+  - move() 함수 구현
+- Result view 구현
+  - ResultDto를 받으면 순서대로 프린트 한다.
