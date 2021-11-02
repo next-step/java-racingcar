@@ -2,7 +2,10 @@ package calculator;
 
 import calculator.TextCalculator.Operator;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -19,28 +22,34 @@ class TextCalculatorTest {
         calculator = new TextCalculator();
     }
 
-    @Test
-    void plus() {
-        String input = "2 + 2";
-        assertThat(calculator.calculate(input)).isEqualTo(4);
+    @ParameterizedTest
+    @CsvSource(value = {"2 + 2=4", "2 + 2 + 2 + 2=8", "1 + 2 + 0=3"}, delimiter = '=')
+    void plus(String value, int expected) {
+        assertThat(calculator.calculate(value)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"2 - 2=0", "1 - 2 - 3=-4", "10 - 2=8"}, delimiter = '=')
+    void minus(String value, int expected) {
+        assertThat(calculator.calculate(value)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1 * 1=1", "1 * 2 * 3=6", "0 * -999=0"}, delimiter = '=')
+    void multiplication(String value, int expected) {
+        assertThat(calculator.calculate(value)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1 * 1=1", "1 * 2 * 3=6", "0 * -999=0"}, delimiter = '=')
+    void division(String value, int expected) {
+        assertThat(calculator.calculate(value)).isEqualTo(expected);
     }
 
     @Test
-    void minus() {
-        String input = "2 + 2";
-        assertThat(calculator.calculate(input)).isEqualTo(4);
-    }
-
-    @Test
-    void multiplication() {
-        String input = "2 + 2";
-        assertThat(calculator.calculate(input)).isEqualTo(4);
-    }
-
-    @Test
-    void division() {
-        String input = "2 + 2";
-        assertThat(calculator.calculate(input)).isEqualTo(4);
+    void mix() {
+        String input = "2 + 3 * 4 / 2";
+        assertThat(calculator.calculate(input)).isEqualTo(10);
     }
 
     @Test
