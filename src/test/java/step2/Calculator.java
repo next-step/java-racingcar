@@ -13,6 +13,9 @@ public class Calculator {
     private final static String OPERATOR_PATTERN = "[+\\-*/]";
 
     public int calculate(String input) {
+        if(Strings.isNullOrEmpty(input)) {
+            throw new IllegalArgumentException("입력 값은 null이거나 빈값일 수 없습니다.");
+        }
         //idx 짝수 숫자 홀수 연산자
         String[] split = input.split(DELIMITER);
 

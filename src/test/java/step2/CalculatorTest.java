@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -64,6 +65,13 @@ class CalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"- 3 + 7", "4 k 8", "4   8"})
     void wrongStringTest(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculate(input));
+    }
+
+    @DisplayName("숫자 연산자가 잘못된 경우 IllegalArgumentException throw")
+    @ParameterizedTest
+    @NullAndEmptySource
+    void nullStringTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculate(input));
     }
 }
