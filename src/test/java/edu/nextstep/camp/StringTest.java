@@ -1,6 +1,5 @@
 package edu.nextstep.camp;
 
-
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,5 +11,12 @@ public class StringTest {
     public void testSplit() {
         assertThat("1,2".split(",")).containsExactly("1","2");
         assertThat("1".split(",")).containsExactly("1");
+    }
+
+    // "(1,2)" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 "1,2"를 반환하도록 구현한다.
+    @Test
+    public void testSubstring() {
+        final String given = "(1,2)";
+        assertThat(given.substring(given.indexOf("(") + 1, given.lastIndexOf(")"))).isEqualTo("1,2");
     }
 }
