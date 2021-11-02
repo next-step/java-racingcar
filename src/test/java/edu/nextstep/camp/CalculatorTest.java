@@ -67,4 +67,21 @@ public class CalculatorTest {
     public void testInvalidOperand(int first, String operand, int second) {
         assertThatIllegalArgumentException().isThrownBy(() -> cal.calculate(first, operand, second));
     }
+
+    @ParameterizedTest(name = "test simple calculate: {arguments}")
+    @CsvSource(value = {"3 + 5,8", "8 - 3,5", "5 * 3,15"})
+    public void testSimpleCalculate(String command, int expected) {
+        assertThat(cal.calculate(command)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest(name = "test complicate calculate: {arguments}")
+    @CsvSource(value = {
+            "2 + 3 * 4 / 2,10",
+            "3 + 5 * 7 - 2,54",
+            "8 - 3 / 2 * 4, 8",
+            "5 * 3 + 4 / 2 ,9"
+    })
+    public void testComplicateCalculate(String command, int expected) {
+        assertThat(cal.calculate(command)).isEqualTo(expected);
+    }
 }

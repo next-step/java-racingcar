@@ -21,7 +21,13 @@ public class Calculator {
         if (command == null || command.isEmpty())
             throw new IllegalArgumentException("command must not be empty: " + command);
 
-        return 0;
+        String[] op = command.split(" ");
+        int number = Integer.parseInt(op[0]);
+        for (int i = 1; i < op.length; i += 2) {
+            number = calculate(number, op[i], Integer.parseInt(op[i + 1]));
+        }
+
+        return number;
     }
 
     public int calculate(int first, String operand, int second) {
