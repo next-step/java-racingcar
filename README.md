@@ -27,6 +27,7 @@
   - 1초 메서드 step() 구현
 - Car 구현
   - 랜덤 값을 통해 갈 수 있는지 없는지 판별하는 메서드 isGo 구현
+  - moveOrStop() 함수 구현
   - move() 함수 구현
 - Result view 구현
   - ResultDto를 받으면 순서대로 프린트 한다.
