@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class InputView {
     private final static String NUMBER_PATTERN = "\\d*$";
 
-    public void input() {
+    public RuleDto input() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("자동차 대수는 몇 대 인가요?");
@@ -17,6 +17,8 @@ public class InputView {
         System.out.println("시도할 회수는 몇 회 인가요?");
         String timeStr = scanner.nextLine();
         Long time = getLongValue(timeStr);
+
+        return RuleDto.from(carCount, time);
     }
 
     private Long getLongValue(String input) {
