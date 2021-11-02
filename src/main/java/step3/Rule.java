@@ -1,18 +1,18 @@
 package step3;
 
-public class RuleDto {
+public class Rule {
 
     private final Long count;
     private final Long time;
 
-    private RuleDto(Long count, Long time) {
+    private Rule(Long count, Long time) {
         this.count = count;
         this.time = time;
     }
 
-    public static RuleDto from(Long count, Long time) {
+    public static Rule from(Long count, Long time) {
 
-        return new RuleDto(count, time);
+        return new Rule(count, time);
     }
 
     public Long getCount() {

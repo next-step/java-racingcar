@@ -11,8 +11,8 @@
 ## 기능 목록
 - Input view 구현
     - Input 받은 값 validation(null check, 숫자 값 체크)
-    - Input 받은 값 전달 객체(RuleDto) 생성 후 return
-- RuleDto 구현
+    - Input 받은 값 전달 객체(Rule) 생성 후 return
+- Rule 구현
   - from(Long count, Long time) 정적 팩토리 메서드 구현
   - getCount() 구현
   - getTime() 구현
@@ -21,7 +21,7 @@
   - string null or empty 구현
   - isNumber() 구현
 - Game 구현
-  - RuleDto를 통해 Game 생성
+  - Rule를 통해 Game 생성
   - Game 생성 시 RuleDto validation  
   - Game 전체 실행 메서드 구현
   - 1초 메서드 step() 구현
@@ -34,4 +34,5 @@
   - moveOrStop() 함수 구현
   - move() 함수 구현
 - Result view 구현
-  - ResultDto를 받으면 순서대로 프린트 한다.
+  - view() 를 호출하면 "실행 결과"를 프린트 한다.
+  - GameHistory를 받으면 순서대로 프린트 한다.

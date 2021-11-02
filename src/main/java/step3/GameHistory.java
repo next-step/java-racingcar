@@ -25,7 +25,7 @@ public class GameHistory {
     }
 
     private void isValid(Long time) {
-        if(!history.containsKey(time)) {
+        if (!history.containsKey(time)) {
             throw new IllegalArgumentException("history가 존재하지 않습니다.");
         }
     }

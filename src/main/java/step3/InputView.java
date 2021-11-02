@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public RuleDto input() {
+    public Rule input() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("자동차 대수는 몇 대 인가요?");
@@ -15,7 +15,7 @@ public class InputView {
         String timeStr = scanner.nextLine();
         Long time = getLongValue(timeStr);
 
-        return RuleDto.from(carCount, time);
+        return Rule.from(carCount, time);
     }
 
     private Long getLongValue(String input) {

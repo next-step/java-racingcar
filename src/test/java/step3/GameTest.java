@@ -11,21 +11,13 @@ class GameTest {
     @Test
     void ofTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Game.of(RuleDto.from(null, 10L));
+            Game.of(Rule.from(null, 10L));
         });
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Game.of(RuleDto.from(10L, null));
+            Game.of(Rule.from(10L, null));
         });
     }
-
-//    @DisplayName("Game Start 시 Time 만큼 step() 메서드를 호출 한다.")
-//    @ParameterizedTest
-//    @CsvSource(value = {"4:5:5", "6:3:5"}, delimiter = ':')
-//    void startTest() {
-//    }
-
-//    @DisplayName("Step() 메서드는 ")
 
 
 }
