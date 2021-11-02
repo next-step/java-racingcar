@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class CalculatorTest {
@@ -55,24 +56,47 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = "2 + 3 * 4 a 2")
+    @CsvSource(value = "2 + 3 * 4 a 2:a", delimiter = ':')
     @DisplayName("연산자가 아닌 다른 값이 들어왔을 경우 DataFormatException 테스트")
-    void dataFormatException(String input) throws DataFormatException {
+    void dataFormatException(String input, String expected) throws DataFormatException {
         assertThatExceptionOfType(DataFormatException.class)
             .isThrownBy(() -> {
                 calculator.calculate(input);
             })
-            .withMessage("올바르지 않은 연산자 입니다.");
+            .withMessage("올바르지 않은 연산자 입니다. : %s", expected);
     }
 
     @ParameterizedTest
     @ValueSource(strings = "2 + 3 * 4 * a")
-    @DisplayName("연산자가 아닌 다른 값이 들어왔을 경우 NumberFormatException 테스트")
+    @DisplayName("숫자가 아닌 다른 값이 들어왔을 경우 NumberFormatException 테스트")
     void numberFormatException(String input) throws DataFormatException {
         assertThatExceptionOfType(NumberFormatException.class)
             .isThrownBy(() -> {
                 calculator.calculate(input);
             })
             .withMessage("For input string: %s", "\"a\"");
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    @ValueSource(strings = { " ", "   "})
+    @DisplayName("파라미터가 빈 값일 경우 IllegalArgumentException 테스트")
+    void illegalArgumentExceptionByEmpty(String input) throws DataFormatException {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> {
+                calculator.calculate(input);
+            })
+            .withMessage("입력 값이 존재하지 않습니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = { "2 * 5 * 2 *" })
+    @DisplayName("파라미터가 빈 값일 경우 IllegalArgumentException 테스트")
+    void illegalArgumentExceptionByWrongLength(String input) throws DataFormatException {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> {
+                calculator.calculate(input);
+            })
+            .withMessage("수식이 올바르지 않습니다.");
     }
 }
