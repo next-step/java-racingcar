@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -30,19 +31,12 @@ class CalculatorTest {
         assertThat(calculator.execute(input)).isEqualTo(result);
     }
 
-    @Test
-    @DisplayName("input의 값이 null인 경우 에러 발생 검증")
-    void inputException() {
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("input의 값이 null 또는 공백인 경우 에러 발생 검증")
+    void inputException(String input) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> calculator.execute(null))
-                .withMessage(CalculatorValidator.EMPTY_ERROR_MESSAGE);
-    }
-
-    @Test
-    @DisplayName("input의 값이 공백인 경우 에러 발생 검증")
-    void inputException2() {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> calculator.execute(EMPTY))
+                .isThrownBy(() -> calculator.execute(input))
                 .withMessage(CalculatorValidator.EMPTY_ERROR_MESSAGE);
     }
 
