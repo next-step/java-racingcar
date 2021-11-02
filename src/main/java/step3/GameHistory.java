@@ -16,10 +16,17 @@ public class GameHistory {
     }
 
     public List<Long> getHistory(Long time) {
+        isValid(time);
         List<Long> saveHistory = history.get(time);
         List<Long> returnHistory = new ArrayList<>();
         saveHistory.stream()
                 .forEach(returnHistory::add);
         return returnHistory;
+    }
+
+    private void isValid(Long time) {
+        if(!history.containsKey(time)) {
+            throw new IllegalArgumentException("history가 존재하지 않습니다.");
+        }
     }
 }

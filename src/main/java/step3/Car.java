@@ -1,13 +1,13 @@
 package step3;
 
 public class Car {
-    private Long now = 0L;
+    private Long position = 0L;
 
     public Car() {
     }
 
-    public Long getNow() {
-        return now;
+    public Long getPosition() {
+        return position;
     }
 
     public void moveOrStop(int rand) {
@@ -17,7 +17,7 @@ public class Car {
     }
 
     private void move() {
-        this.now++;
+        this.position++;
     }
 
     private boolean isGo(int rand) {

@@ -9,12 +9,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    @DisplayName("getNow를 통해 현재 위치를 받아 올 수 있다.")
+    @DisplayName("getPosition 을 통해 현재 위치를 받아 올 수 있다.")
     @Test
     void getCountTest() {
         Car car = new Car();
         Long expectNow = 0L;
-        assertThat(car.getNow()).isEqualTo(expectNow);
+        assertThat(car.getPosition()).isEqualTo(expectNow);
     }
 
     @DisplayName("MoveOrStop(rand) 메서드에 4이상 10 이하 값이 오면 now가 +1 증가한다.")
@@ -23,6 +23,6 @@ class CarTest {
     void moveOrStopTest(int input, Long expectNow) {
         Car car = new Car();
         car.moveOrStop(input);
-        assertThat(car.getNow()).isEqualTo(expectNow);
+        assertThat(car.getPosition()).isEqualTo(expectNow);
     }
 }

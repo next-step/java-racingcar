@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameHistoryTest {
@@ -42,6 +43,18 @@ class GameHistoryTest {
 
         List<Long> returnHistory = gameHistory.getHistory(time);
         assertThat(history).isNotSameAs(returnHistory);
+    }
+
+    @DisplayName("getHistory(time) 없는 time을 가져오려고하면 IllegalException이 발생한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"1:0,1,0"}, delimiter = ':')
+    void getNoSearchTest(Long time, String historyStr) {
+        List<Long> history = stringParser(historyStr);
+        gameHistory.save(time, history);
+
+        assertThatIllegalArgumentException().isThrownBy(()->{
+            gameHistory.getHistory(2L);
+        });
     }
 
     private List<Long> stringParser(String str) {
