@@ -5,7 +5,6 @@ import org.assertj.core.util.Strings;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.BinaryOperator;
 
 public class Calculator {
     private final static String DELIMITER = " ";
@@ -20,26 +19,24 @@ public class Calculator {
         String[] split = input.split(DELIMITER);
 
         List<Integer> numbers = getNumbers(split);
-        List<Operator> operators = getOperators(split);
+        List<String> operators = getOperators(split);
 
         //TODO idx 변수가 애매한거 같은데 해결할 방법이 없을까요?
         AtomicInteger idx = new AtomicInteger();
         return numbers.stream()
                 .reduce((left, right) -> {
-                    Operator operator = operators.get(idx.getAndIncrement());
-                    BinaryOperator<Integer> binaryOperator = operator.getBinaryOperator();
-                    Integer apply = binaryOperator.apply(left, right);
-                    return apply;
+                    Operation operation = Operation.getOperation(operators.get(idx.getAndIncrement()));
+                    return operation.apply(left, right);
                 })
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    private List<Operator> getOperators(String[] split) {
+    private List<String> getOperators(String[] split) {
         //TODO stream 으로 해결 할 수 없을까요?
-        List<Operator> operators = new ArrayList<>();
+        List<String> operators = new ArrayList<>();
         for (int i = 1; i < split.length; i += 2) {
             isOperator(split[i]);
-            operators.add(Operator.from(split[i]));
+            operators.add(split[i]);
         }
         return operators;
     }
