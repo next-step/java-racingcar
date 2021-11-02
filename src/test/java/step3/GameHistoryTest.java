@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.junit.jupiter.api.Assertions.*;
 
 class GameHistoryTest {
 
@@ -52,7 +51,7 @@ class GameHistoryTest {
         List<Long> history = stringParser(historyStr);
         gameHistory.save(time, history);
 
-        assertThatIllegalArgumentException().isThrownBy(()->{
+        assertThatIllegalArgumentException().isThrownBy(() -> {
             gameHistory.getHistory(2L);
         });
     }

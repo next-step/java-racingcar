@@ -30,7 +30,7 @@ public class ResultView {
     }
 
     private void printPosition(Long item) {
-        for(Long i = 0L; i < item; i++) {
+        for (Long i = 0L; i < item; i++) {
             System.out.print("-");
         }
         System.out.println();
