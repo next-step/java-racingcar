@@ -5,7 +5,6 @@ import com.sun.tools.javac.util.StringUtils;
 import java.util.Scanner;
 
 public class InputView {
-    private final static String NUMBER_PATTERN = "\\d*$";
 
     public RuleDto input() {
         Scanner scanner = new Scanner(System.in);
@@ -27,11 +26,7 @@ public class InputView {
     }
 
     public void isValid(String input) {
-        if(input == null || input.length() == 0) {
-            throw new IllegalArgumentException("입력 값이 없습니다.");
-        }
-        if(!input.matches(NUMBER_PATTERN)) {
-            throw new IllegalArgumentException("입력 값이 숫자가 아닙니다.");
-        }
+        InputValidator.isNullOrEmptyForString(input);
+        InputValidator.isNumberForString(input);
     }
 }
