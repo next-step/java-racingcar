@@ -1,5 +1,6 @@
 package study;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -66,5 +67,12 @@ public class StringTest {
     @DisplayName("값이 존재하는지 확인")
     void contains(int input) {
         assertThat(numbers.contains(input)).isTrue();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value= {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    @DisplayName("입력 값에 따라 결과 값이 다른 경우")
+    void containsFalse(int input, boolean expected) {
+        Assertions.assertEquals(numbers.contains(input), expected);
     }
 }
