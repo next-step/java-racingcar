@@ -18,4 +18,14 @@ public class StringTest {
         return data.split(",");
     }
 
+    @Test
+    void substring(){
+        String data = "(1,2)";
+        String result = data.substring(1, data.length() - 1);
+
+        assertThat(result).isEqualTo("1,2");
+    }
+
+    
+
 }
