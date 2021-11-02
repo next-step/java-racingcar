@@ -25,6 +25,10 @@
   - Game 생성 시 RuleDto validation  
   - Game 전체 실행 메서드 구현
   - 1초 메서드 step() 구현
+- GameHistory 구현
+   - save(time, List<Long>) 게임 진행 내역 저장
+   - getHistory(time) 을 통해 내역을 제공한다.
+   - isValid(time) 히스토리가 없으면 illegegalArgument Expception 발생
 - Car 구현
   - 랜덤 값을 통해 갈 수 있는지 없는지 판별하는 메서드 isGo 구현
   - moveOrStop() 함수 구현
