@@ -1,6 +1,7 @@
 package Calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.util.zip.DataFormatException;
 import org.junit.jupiter.api.BeforeEach;
@@ -44,5 +45,34 @@ public class CalculatorTest {
     @DisplayName("나눗셈 테스트")
     void divide(String input, Integer expected) throws DataFormatException {
         assertThat(calculator.calculate(input)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = "2 + 3 * 4 / 2:10", delimiter = ':')
+    @DisplayName("다중 연산 테스트")
+    void calculate(String input, Integer expected) throws DataFormatException {
+        assertThat(calculator.calculate(input)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = "2 + 3 * 4 a 2")
+    @DisplayName("연산자가 아닌 다른 값이 들어왔을 경우 DataFormatException 테스트")
+    void dataFormatException(String input) throws DataFormatException {
+        assertThatExceptionOfType(DataFormatException.class)
+            .isThrownBy(() -> {
+                calculator.calculate(input);
+            })
+            .withMessage("올바르지 않은 연산자 입니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = "2 + 3 * 4 * a")
+    @DisplayName("연산자가 아닌 다른 값이 들어왔을 경우 NumberFormatException 테스트")
+    void numberFormatException(String input) throws DataFormatException {
+        assertThatExceptionOfType(NumberFormatException.class)
+            .isThrownBy(() -> {
+                calculator.calculate(input);
+            })
+            .withMessage("For input string: %s", "\"a\"");
     }
 }
