@@ -12,6 +12,7 @@ public class Operator {
 
     public static Operator from(String operator) {
         BinaryOperator<Integer> binaryOperator;
+        //TODO switch - case 로직을 삭제 할 좋은 방법은 없을까요?!
         switch (operator) {
             case "+":
                 binaryOperator = (left, right) -> left + right;

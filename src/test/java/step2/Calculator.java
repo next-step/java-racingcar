@@ -19,7 +19,7 @@ public class Calculator {
         List<Integer> numbers = getNumbers(split);
         List<Operator> operators = getOperators(split);
 
-        //todo idx 변수가 애매한걸 해결할 방법이 없을까?
+        //TODO idx 변수가 애매한거 같은데 해결할 방법이 없을까요?
         AtomicInteger idx = new AtomicInteger();
         return numbers.stream()
                 .reduce((left, right) -> {
@@ -32,7 +32,7 @@ public class Calculator {
     }
 
     private List<Operator> getOperators(String[] split) {
-        //todo stream 으로 해결 할 수 없을까?
+        //TODO stream 으로 해결 할 수 없을까요?
         ArrayList<Operator> operators = new ArrayList<>();
         for (int i = 1; i < split.length; i += 2) {
             isOperator(split[i]);
@@ -42,7 +42,7 @@ public class Calculator {
     }
 
     private List<Integer> getNumbers(String[] split) {
-        //todo stream 으로 해결 할 수 없을까?
+        //TODO stream 으로 해결 할 수 없을까요?
         ArrayList<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < split.length; i += 2) {
             isNumber(split[i]);

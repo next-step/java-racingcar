@@ -60,7 +60,6 @@ class CalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculate(input));
     }
 
-
     @DisplayName("숫자 연산자가 잘못된 경우 IllegalArgumentException throw")
     @ParameterizedTest
     @ValueSource(strings = {"- 3 + 7", "4 k 8", "4   8"})
