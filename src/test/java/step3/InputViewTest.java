@@ -6,9 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.junit.jupiter.api.Assertions.*;
 
 class InputViewTest {
 
@@ -21,10 +19,10 @@ class InputViewTest {
 
     @DisplayName("입력이 숫자가 아니면 익셉션이 발생한다.")
     @ParameterizedTest
-    @ValueSource(strings = {"a","한"})
+    @ValueSource(strings = {"a", "한"})
     void validInputTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-           inputView.isValid(input);
+            inputView.isValid(input);
         });
     }
 

@@ -6,7 +6,6 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class InputValidatorTest {
@@ -14,7 +13,7 @@ class InputValidatorTest {
     @DisplayName("String null이거나 Empty 값이 나오면 IllegalException")
     @ParameterizedTest
     @NullAndEmptySource
-    void nullOrEmptyTest(String input){
+    void nullOrEmptyTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             InputValidator.isNullOrEmptyForString(input);
         });
@@ -22,8 +21,8 @@ class InputValidatorTest {
 
     @DisplayName("String이 Number가 아니면 IllegalException")
     @ParameterizedTest
-    @ValueSource(strings = {"k","한글","test"})
-    void notNumberTest(String input){
+    @ValueSource(strings = {"k", "한글", "test"})
+    void notNumberTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             InputValidator.isNumberForString(input);
         });
@@ -33,7 +32,7 @@ class InputValidatorTest {
     @DisplayName("Long 값이 null 이면 IllegalException")
     @ParameterizedTest
     @NullSource
-    void nullTest(Long input){
+    void nullTest(Long input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             InputValidator.isNull(input);
         });
