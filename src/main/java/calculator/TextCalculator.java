@@ -32,7 +32,6 @@ public class TextCalculator {
                     return o;
                 }
             }
-
             throw new IllegalArgumentException();
         }
     }
