@@ -44,9 +44,7 @@ public class StringTest {
     void indexCharAtTest(int index, char expected) {
         //given
         String input = "abc";
-        //when
         char actual = input.charAt(index);
-        //then
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -61,10 +59,7 @@ public class StringTest {
     @Test
     @DisplayName("StringIndexOutOfBoundsException 테스트")
     void StringIndexOutOfBoundsExceptionTest() {
-        //given
         String input = "abc";
-        //when
-        //then
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> input.charAt(3)).withMessageMatching("String index out of range: \\d+");
     }
