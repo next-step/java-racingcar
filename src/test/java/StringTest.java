@@ -1,5 +1,6 @@
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("String 학습 테스트")
@@ -29,5 +30,21 @@ public class StringTest {
         int closeParentheses = 4;
         String substring = withParentheses.substring(openParentheses, closeParentheses);
         Assertions.assertThat(substring).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("abc 로 charAt() 함수를 사용할 때 입력 값이 정상일 경우 정상 수행")
+    public void inputValueIsWithinNormalRange() {
+        String inputValue = "abc";
+        char extractedCharacter = inputValue.charAt(1);
+        Assertions.assertThat(extractedCharacter).isEqualTo('b');
+    }
+
+    @Test
+    @DisplayName("abc 로 charAt() 함수를 사용할 때 입력 값이 검색 범위를 넘어가면 StringIndexOutOfBoundsException 발생")
+    public void rangeOfInputValueExceedsTheNormalRange() {
+        String inputValue = "abc";
+        Assertions.assertThatThrownBy(() -> inputValue.charAt(3))
+                  .isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 }
