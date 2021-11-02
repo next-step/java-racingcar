@@ -16,4 +16,11 @@ public class Calculator {
     public int divide(int first, int second) {
         return first / second;
     }
+
+    public int calculate(String command) {
+        if (command == null || command.isEmpty())
+            throw new IllegalArgumentException("command must not be empty: " + command);
+
+        return 0;
+    }
 }

@@ -44,4 +44,15 @@ public class CalculatorTest {
         int n = random.nextInt();
         assertThat(cal.divide(m, n)).isEqualTo(m / n);
     }
+
+    @ParameterizedTest(name = "test invalid input: {arguments}")
+    @ValueSource(strings = {""})
+    public void testInvalidInput(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> cal.calculate(input));
+    }
+
+    @Test
+    public void testNullInput() {
+        assertThatIllegalArgumentException().isThrownBy(() -> cal.calculate(null));
+    }
 }
