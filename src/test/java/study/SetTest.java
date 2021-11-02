@@ -3,7 +3,12 @@ package study;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.assertj.core.api.Assertions.*;
+
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -42,11 +47,28 @@ public class SetTest {
         numbers.add(3);
     }
 
-
     @Test
-    void contains() {
-        assertThat(numbers.contains(1)).isTrue();
-        assertThat(numbers.contains(2)).isTrue();
-        assertThat(numbers.contains(3)).isTrue();
+    @DisplayName("SetTest size()")
+    void size() {
+        assertThat(numbers.size()).isEqualTo(3);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("SetTest contains()")
+    void contains(int numParam) {
+        assertThat(numbers.contains(numParam)).isTrue();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"123:45"}, delimiter = ':')
+    @DisplayName("SetTest csvSourceContain()")
+    void csvSourceContain(String numParam1, String numParam2) {
+        for (int i=0; i<numParam1.length(); i++){
+            assertThat(numbers.contains(Character.getNumericValue(numParam1.charAt(i)))).isTrue();
+        }
+        for (int j=0; j<numParam2.length(); j++){
+            assertThat(numbers.contains(Character.getNumericValue(numParam2.charAt(j)))).isFalse();
+        }
     }
 }

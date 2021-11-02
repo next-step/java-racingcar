@@ -1,6 +1,8 @@
 package study;
 
 import static org.assertj.core.api.Assertions.*;
+
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -34,12 +36,41 @@ import org.junit.jupiter.api.Test;
 public class StringTest {
 
     @Test
+    @DisplayName("StringTest split()")
     void split(){
         String[] result1 = "1,2".split(",");
         assertThat(result1).containsExactly("1","2");
 
         String[] result2 = "1".split(",");
         assertThat(result2).contains("1");
+    }
 
+    @Test
+    @DisplayName("StringTest substring()")
+    void substring(){
+        String result3 = "(1,2)".substring(1,4);
+        assertThat(result3).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("StringTest charAt()")
+    void charAt(){
+        String param = "abc";
+        char result4 = param.charAt(0);
+        assertThat(result4).isEqualTo('a');
+
+        char result5 = param.charAt(1);
+        assertThat(result5).isEqualTo('b');
+
+        char result6 = param.charAt(2);
+        assertThat(result6).isEqualTo('c');
+
+//        assertThatThrownBy(() -> {
+//            param.charAt(10);
+//        }).isInstanceOf(IndexOutOfBoundsException.class);
+
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+            .isThrownBy(() -> param.charAt(10));
+//            .withMessageMatching("integer overflow");
     }
 }
