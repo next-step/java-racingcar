@@ -20,4 +20,14 @@ public class StringTest {
         String[] splitResult = oneLengthValue.split(",");
         Assertions.assertThat(splitResult).contains("1");
     }
+
+    @Test
+    @DisplayName("(1,2) 값이 주어졌을 때 괄호를 제거하여 리턴")
+    public void withoutParenthesesOfString() {
+        String withParentheses = "(1,2)";
+        int openParentheses  = 1;
+        int closeParentheses = 4;
+        String substring = withParentheses.substring(openParentheses, closeParentheses);
+        Assertions.assertThat(substring).isEqualTo("1,2");
+    }
 }
