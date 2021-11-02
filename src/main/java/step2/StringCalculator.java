@@ -33,7 +33,7 @@ public class StringCalculator {
             case "/" :
                 return Calculate.divide(iValue1, iValue2);
             default:
-                throw new IllegalArgumentException("해당 기호는 사칙연산을 지원하지 않습니다!!!!");
+                throw new IllegalArgumentException("해당 연산 기호는 사칙연산을 지원하지 않습니다!!!!");
         }
     }
 }
