@@ -22,4 +22,12 @@ public class StringTest {
         assertThat(arr).containsExactly("1");
     }
 
+    @ValueSource(strings = "(1,2)")
+    @ParameterizedTest(name = "\"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 \"1,2\"를 반환한다.")
+    void subStringTest(String input) {
+        String subString = input.substring(1, input.length() - 1);
+
+        assertThat(subString).isEqualTo("1,2");
+    }
+
 }
