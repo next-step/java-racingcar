@@ -30,5 +30,4 @@ public class Calculator {
             throw new IllegalArgumentException("input 규격이 맞지 않습니다.");
         }
     }
-
 }
