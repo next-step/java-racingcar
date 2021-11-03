@@ -16,6 +16,7 @@ public class RacingCarService {
 
     private RacingCarService(int carCount) {
         rule = new RandomRule();
+
         cars = IntStream.rangeClosed(1, carCount)
                 .mapToObj(Car::new)
                 .collect(toList());

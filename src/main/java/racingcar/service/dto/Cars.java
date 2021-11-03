@@ -23,6 +23,8 @@ public class Cars {
     }
 
     public List<Integer> getPositions() {
-        return carList.stream().map(Car::getPosition).collect(Collectors.toList());
+        return carList.stream()
+                .map(Car::getPosition)
+                .collect(Collectors.toList());
     }
 }
