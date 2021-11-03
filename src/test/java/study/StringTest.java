@@ -47,7 +47,7 @@ public class StringTest {
         String string = "abc";
         List<Integer> indexes = new ArrayList<>();
         indexes.add(-1);
-        indexes.add(string.length());
+        indexes.add(3);
 
         for (Integer index : indexes) {
             assertThatThrownBy(() -> string.charAt(index))
