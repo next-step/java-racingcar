@@ -26,13 +26,13 @@ public class SetTest {
     @Test
     @DisplayName("Set 자료구조는 중복값이 들어가지 않으므로 size는 3이다.")
     void sizeTest() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ValueSource(ints = {1, 2, 3})
     @ParameterizedTest(name = "{arguments}가 numbers(Set)에 존재한다.")
     void containsTest(int expected) {
-        assertThat(numbers.contains(expected)).isTrue();
+        assertThat(numbers).contains(expected);
     }
 
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
