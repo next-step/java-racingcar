@@ -1,4 +1,4 @@
-package racingcar_2step.operation;
+package racingcar.step2.operation;
 
 public abstract class AbstractOperation {
 
