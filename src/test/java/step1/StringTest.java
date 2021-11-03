@@ -1,44 +1,40 @@
 package step1;
-
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.HashSet;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
 
     @Test
-    public void split() {
+    @DisplayName("특정 문자로 문자열을 분리해서 배열에 담는 split method test")
+    void split() {
         String[] result_1 = "1".split(",");
         assertThat(result_1).containsExactly("1");
         String[] result_2 = "1,2".split(",");
         assertThat(result_2).containsExactly("1", "2");
-        assertThat(result_1).containsExactly("2", "1");
     }
 
     @Test
-    public void substring() {
+    @DisplayName("원하는 문자열만 뽑아내는 substring method test")
+    void substring() {
         String str = "(1,2)";
         String result = str.substring(1,str.length()-1);
         assertThat(result).isEqualTo("1,2");
     }
 
     @Test
-    public void charAt() {
+    @DisplayName("charAt() method test")
+    void charAt() {
+        Character result = "0123456".charAt(1);
+        assertThat(result).isEqualTo('1');
+    }
+    @Test
+    @DisplayName("charAt()의 인덱스가 문자열을 벗어날때 exception 발생 test")
+    void stringIndexOutOfBoundsException(){
         assertThatThrownBy(() -> {
-            String str = "0123456";
-            Character result = str.charAt(11);
-            assertThat(result).isEqualTo('1');
+            Character result = "0123456".charAt(11);
         }).isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageContaining("Index: 11, Size: 7");
-
-        assertThatThrownBy(() -> {
-            String str = "0123456";
-            Character result = str.charAt(1);
-            assertThat(result).isEqualTo('1');
-        }).isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageContaining("Index: 1, Size: 7");
+                .hasMessageContaining("String index out of range:");
     }
 }
