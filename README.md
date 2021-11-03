@@ -9,10 +9,6 @@
   - 시도할 횟수를 입력받는다.
 - ResultView
   - 사용자가 입력한 정보에 따라 게임 진행 결과를 출력한다.
-- Validator
-  - InputValidator
-    - IntegerInputValidator
-      - 전달 받은 input 이 integer 타입인지 검증한다.
 - Generator
   - RandomGenerator
     - 전진 조건을 위한 특정 범위의 랜덤한 값을 생성한다.
@@ -39,3 +35,4 @@
 - util
   - RandomUtils 
   - ScannerUtils
+  - NumberUtils
