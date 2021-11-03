@@ -54,15 +54,11 @@ public class TextCalculator {
                 throw new IllegalArgumentException();
             }
 
-            if (i % 2 == 0) {
-                this.numbers.add(Integer.parseInt(strings[i]));
-            } else {
-                this.operator = Operator.getInstance(strings[i]);
-            }
+            setValues(i, strings[i]);
 
             if (shouldCalculation()) {
                 result = calculation();
-                this.clear();
+                clear();
                 this.numbers.add(result);
             }
         }
@@ -110,5 +106,13 @@ public class TextCalculator {
         }
         this.numbers.clear();
         this.operator = null;
+    }
+
+    private void setValues(int index, String input) {
+        if (index % 2 == 0) {
+            this.numbers.add(Integer.parseInt(input));
+            return;
+        }
+        this.operator = Operator.getInstance(input);
     }
 }
