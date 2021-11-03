@@ -46,7 +46,7 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest(name = "test invalid input: {arguments}")
-    @ValueSource(strings = {""})
+    @ValueSource(strings = {"", "+", "3", "1 $ 2", "6234 54", "3 + - 3", "4 - 1 /"})
     public void testInvalidInput(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> cal.calculate(input));
     }
@@ -69,7 +69,7 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest(name = "test simple calculate: {arguments}")
-    @CsvSource(value = {"3 + 5,8", "8 - 3,5", "5 * 3,15"})
+    @CsvSource(value = {"3 + 5,8", "8 - 3,5", "5 * 3,15", "5  * 3,15"})
     public void testSimpleCalculate(String command, int expected) {
         assertThat(cal.calculate(command)).isEqualTo(expected);
     }
@@ -79,7 +79,7 @@ public class CalculatorTest {
             "2 + 3 * 4 / 2,10",
             "3 + 5 * 7 - 2,54",
             "8 - 3 / 2 * 4, 8",
-            "5 * 3 + 4 / 2 ,9"
+            "5 * 3 + 4 / 2 + 14 - 3 * 2 + 5 / 2,22"
     })
     public void testComplicateCalculate(String command, int expected) {
         assertThat(cal.calculate(command)).isEqualTo(expected);
