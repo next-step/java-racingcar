@@ -1,6 +1,7 @@
 package calculator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -36,6 +37,7 @@ public class TextCalculator {
         }
     }
 
+    private List<String> split;
     private List<Integer> numbers = new ArrayList<>();
     private Operator operator;
 
@@ -44,17 +46,15 @@ public class TextCalculator {
             throw new IllegalArgumentException();
         }
 
-        String[] split = input.split(" ");
-
+        this.split = Arrays.asList(input.split(" "));
         int result = 0;
-        for (int i = 0; i < split.length; i++) {
-            String s = split[i];
 
+        for (String s : this.split) {
             if (isNullOrEmpty(s)) {
                 throw new IllegalArgumentException();
             }
 
-            setValues(i, split[i]);
+            setValues(this.split.indexOf(s), s);
 
             if (shouldCalculation()) {
                 result = calculation();
