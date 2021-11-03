@@ -48,7 +48,6 @@ public class TextCalculator {
         String[] strings = input.split(" ");
         this.size = strings.length;
 
-
         int result = 0;
         for (int i = 0; i < size; i++) {
             String s = strings[i];
@@ -58,15 +57,15 @@ public class TextCalculator {
             }
 
             if (i % 2 == 0) {
-                numbers.add(Integer.parseInt(strings[i]));
+                this.numbers.add(Integer.parseInt(strings[i]));
             } else {
-                operator = Operator.getInstance(strings[i]);
+                this.operator = Operator.getInstance(strings[i]);
             }
 
-            if (numbers.size() == 2 && operator != null) {
-                result = calculation(numbers, operator);
-                numbers.clear();
-                numbers.add(result);
+            if (this.numbers.size() == 2 && this.operator != null) {
+                result = calculation(this.numbers, this.operator);
+                this.numbers.clear();
+                this.numbers.add(result);
                 this.operator = null;
             }
         }
