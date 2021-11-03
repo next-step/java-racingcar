@@ -1,42 +1,47 @@
 package study;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.HashSet;
+import java.util.Set;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class StringTest {
-    @Test
-    @DisplayName("요구사항1 테스트 verify contains")
-    void splitTest() {
-        String[] result = "1,2".split(",");
-        assertThat(result).contains("1", "2");
-        assertThat(result).containsExactly("1", "2");
+@DisplayName("Set Collection에 대한 학습 테스트")
+public class SetTest {
+    private Set<Integer> numbers;
+
+    @BeforeEach
+    void setUp() {
+        numbers = new HashSet<>();
+        numbers.add(1);
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
     }
 
     @Test
+    @DisplayName("요구사항1 테스트")
+    void sizeTest() {
+        assertThat(this.numbers.size()).isEqualTo(3);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
     @DisplayName("요구사항2 테스트")
-    void substringTest() {
-        String value = "(1,2)";
-        String result = value.substring(1, value.length() - 1);
-        assertThat(result).isEqualTo("1,2");
+    void containsTest(int input) {
+        assertThat(this.numbers.contains(input)).isTrue();
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false"})
     @DisplayName("요구사항3 테스트")
-    void charAtTest() {
-        String value = "abc";
-        int ascii = 97;
-        AtomicInteger idx = new AtomicInteger(0);
-
-        for (; idx.get() < value.length(); ) {
-            assertThat(value.charAt(idx.getAndIncrement())).isEqualTo((char)ascii++);
-        }
-
-        assertThatExceptionOfType(IndexOutOfBoundsException.class)
-                .isThrownBy(() -> value.charAt(idx.get()))
-                .withMessage("String index out of range: " + idx.get());
+    void charAtTest(int input, boolean expected) {
+        assertThat(this.numbers.contains(input)).isEqualTo(expected);
     }
 }
