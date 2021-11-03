@@ -6,8 +6,12 @@ public class Position {
 
     private final Long position;
 
-    public Position(Long position) {
+    private Position(Long position) {
         this.position = position;
+    }
+
+    public static Position create(Long position) {
+        return new Position(position);
     }
 
     @Override
