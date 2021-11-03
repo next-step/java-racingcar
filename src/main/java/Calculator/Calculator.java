@@ -4,32 +4,37 @@ import java.util.zip.DataFormatException;
 
 public class Calculator {
 
-    public Integer calculate(String input) throws DataFormatException {
-        String[] arr = getSpaceSplitAndValidation(input);
-        Integer result = Integer.parseInt(arr[0]);
+    private final String[] formula;
 
-        for(int i = 1; i < arr.length; i = i + 2) {
-            try {
-                result = EOperation.getValue(arr[i]).calculate(result, Integer.parseInt(arr[i + 1]));
-            } catch (DataFormatException e) {
-                throw new DataFormatException(e.getMessage() + " : " + arr[i]);
-            }
+    public Calculator(String formula) {
+        this.formula = getSplitInputByValidationParam(formula);
+    }
+
+    public Integer execute() throws DataFormatException {
+        Integer result = Integer.parseInt(formula[0]);
+
+        for (int i = 1; i < formula.length; i = i + 2) {
+            result = calculate(result, i);
         }
 
         return result;
     }
 
-    private void validationParam(String input) {
-        if(input == null || input.trim().isEmpty()) {
-            throw new IllegalArgumentException("입력 값이 존재하지 않습니다.");
+    private Integer calculate(Integer first, Integer operatorIdx) throws DataFormatException {
+        try {
+            return Operator.getValue(formula[operatorIdx]).calculate(first, Integer.parseInt(formula[operatorIdx + 1]));
+        } catch (DataFormatException e) {
+            throw new DataFormatException(e.getMessage() + " : " + formula[operatorIdx]);
         }
     }
 
-    private String[] getSpaceSplitAndValidation(String input) {
-        this.validationParam(input);
-        String[] result = input.split(" ");
+    private String[] getSplitInputByValidationParam(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("입력 값이 존재하지 않습니다.");
+        }
 
-        if(!this.isOdd(result.length)) {
+        String[] result = input.split(CalculatorUtils.BLANK);
+        if (!this.isOdd(result.length)) {
             throw new IllegalArgumentException("수식이 올바르지 않습니다.");
         }
 

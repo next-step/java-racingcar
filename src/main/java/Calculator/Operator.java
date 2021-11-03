@@ -2,7 +2,7 @@ package Calculator;
 
 import java.util.zip.DataFormatException;
 
-public enum EOperation {
+public enum Operator {
     ADD("+") {
         @Override
         Integer calculate(Integer first, Integer second) {
@@ -21,6 +21,9 @@ public enum EOperation {
     }, DIVIDE("/") {
         @Override
         Integer calculate(Integer first, Integer second) {
+            if(second.equals(0)) {
+                throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+            }
             return first / second;
         }
     }, NONE("NONE") {
@@ -32,7 +35,7 @@ public enum EOperation {
 
     private String code;
 
-    EOperation(String code) {
+    Operator(String code) {
         this.code = code;
     }
 
@@ -40,8 +43,8 @@ public enum EOperation {
         return this.code;
     }
 
-    public static EOperation getValue(String code) {
-        for(EOperation key : EOperation.values()) {
+    public static Operator getValue(String code) {
+        for(Operator key : Operator.values()) {
             if(key.getCode().equals(code)) {
                 return key;
             }
