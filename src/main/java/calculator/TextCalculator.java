@@ -20,7 +20,7 @@ public class TextCalculator {
             this.text = text;
         }
 
-        public static Operator getOperator(String input) {
+        public static Operator getInstance(String input) {
             if (input == null || input.isEmpty()) {
                 throw new IllegalArgumentException();
             }
@@ -60,11 +60,11 @@ public class TextCalculator {
             if (i % 2 == 0) {
                 numbers.add(Integer.parseInt(strings[i]));
             } else {
-                operator = Operator.getOperator(strings[i]);
+                operator = Operator.getInstance(strings[i]);
             }
 
             if (numbers.size() == 2 && operator != null) {
-                result = calculate(numbers, operator);
+                result = calculation(numbers, operator);
                 numbers.clear();
                 numbers.add(result);
                 this.operator = null;
@@ -73,7 +73,7 @@ public class TextCalculator {
         return result;
     }
 
-    private Integer calculate(List<Integer> numbers, Operator operator) {
+    private Integer calculation(List<Integer> numbers, Operator operator) {
         if (numbers == null || numbers.size() != 2 || operator == null) {
             throw new IllegalArgumentException();
         }

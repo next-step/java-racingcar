@@ -2,7 +2,6 @@ package calculator;
 
 import calculator.TextCalculator.Operator;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -54,21 +53,21 @@ class TextCalculatorTest {
 
     @Test
     void operator() {
-        Operator plus = Operator.getOperator("+");
+        Operator plus = Operator.getInstance("+");
         assertThat(plus).isEqualTo(Operator.PLUS);
 
-        Operator minus = Operator.getOperator("-");
+        Operator minus = Operator.getInstance("-");
         assertThat(minus).isEqualTo(Operator.MINUS);
 
-        Operator multiplication = Operator.getOperator("*");
+        Operator multiplication = Operator.getInstance("*");
         assertThat(multiplication).isEqualTo(Operator.MULTIPLICATION);
 
-        Operator division = Operator.getOperator("/");
+        Operator division = Operator.getInstance("/");
         assertThat(division).isEqualTo(Operator.DIVISION);
     }
 
     @Test
     void throwExceptionIfWrongOperator() {
-        assertThatThrownBy(() -> Operator.getOperator("%")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Operator.getInstance("%")).isInstanceOf(IllegalArgumentException.class);
     }
 }
