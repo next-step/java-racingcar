@@ -38,7 +38,6 @@ public class TextCalculator {
 
     private List<Integer> numbers = new ArrayList<>();
     private Operator operator;
-    private int size;
 
     public int calculate(String input) {
         if (input == null || input.isEmpty()) {
@@ -46,10 +45,9 @@ public class TextCalculator {
         }
 
         String[] strings = input.split(" ");
-        this.size = strings.length;
 
         int result = 0;
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < strings.length; i++) {
             String s = strings[i];
 
             if (s == null || s.isEmpty()) {
