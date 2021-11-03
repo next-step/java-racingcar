@@ -75,4 +75,9 @@ class TextCalculatorTest {
     void throwExceptionIfIntegerOverFlow() {
         assertThatThrownBy(() -> calculator.calculate(Integer.MAX_VALUE + " + " + "1")).isInstanceOf(ArithmeticException.class);
     }
+
+    @Test
+    void throwExceptionIfInputWrongValue() {
+        assertThatThrownBy(() -> calculator.calculate("1" + "+ " + "1")).isInstanceOf(IllegalArgumentException.class);
+    }
 }
