@@ -29,9 +29,16 @@ public class Calculator {
         for (int i = 0; i < numbers.size(); i++) {
             Integer number = numbers.get(i);
             Operator operator = operators.get(i);
+            validateZeroDivide(number, operator);
             result = operator.operate(result, number);
         }
         return result;
+    }
+
+    private void validateZeroDivide(Integer number, Operator operator) {
+        if (operator == Operator.DIVIDE && number == 0) {
+            throw new IllegalArgumentException("0으로 나눌수 없습니다.");
+        }
     }
 
     private void verifyCanBeCalculated(List<Integer> numbers, List<Operator> operators) {

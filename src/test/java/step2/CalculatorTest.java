@@ -2,6 +2,7 @@ package step2;
 
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -39,5 +40,12 @@ class CalculatorTest {
 
         //then
         assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void dividedByZero() throws Exception {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> calculator.calculate("1 + 3 / 0"))
+                .withMessage("0으로 나눌수 없습니다.");
     }
 }
