@@ -40,4 +40,11 @@ public class SetTest {
     void 요구사항2(int number) {
         assertTrue(numbers.contains(number));
     }
+
+    @DisplayName("1,2,3값은 ture 4,5값은 false가 반환되는지 확인한다")
+    @ParameterizedTest
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void 요구사항3(int number, boolean check) {
+        assertEquals(check, numbers.contains(number));
+    }
 }
