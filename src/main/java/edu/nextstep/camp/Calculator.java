@@ -24,17 +24,19 @@ public class Calculator {
     public int calculate(String command) {
         final Iterator<String> iter = parseCommand(command).iterator();
 
-        int number = Integer.parseInt(iter.next());
-        while (iter.hasNext()) {
-            final String operand = iter.next();
+        return calculateRecursive(Integer.parseInt(iter.next()), iter);
+    }
 
-            if (!iter.hasNext()) // 연산자를 뽑았는데 다음항이 없다면 입력이 뭔가 잘못됐겠지..
-                throw new IllegalArgumentException("invalid input: " + command);
+    public int calculateRecursive(int number, Iterator<String> iter) {
+        if (!iter.hasNext())
+            return number;
 
-            number = calculate(number, operand, Integer.parseInt(iter.next()));
-        }
+        final String operand = iter.next();
 
-        return number;
+        if (!iter.hasNext()) // 연산자를 뽑았는데 다음항이 없다면 입력이 뭔가 잘못됐겠지..
+            throw new IllegalArgumentException("invalid input - last element is operand:" + operand);
+
+        return calculateRecursive(calculate(number, operand, Integer.parseInt(iter.next())), iter);
     }
 
     public Stream<String> parseCommand(String command) {

@@ -1,5 +1,7 @@
 package edu.nextstep.camp;
 
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -97,5 +99,13 @@ public class CalculatorTest {
     @CsvSource(value = {"1 2 3 4 5,1;2;3;4;5", "1  2  3,1;2;3"})
     public void testParseCommand(String command, String expected) {
         assertThat(cal.parseCommand(command).collect(Collectors.joining(";"))).isEqualTo(expected);
+    }
+
+    @Test
+    public void testCalculateRecursive() {
+        final int n = 2;
+        final String[] input = {"+", "4", "+", "8", "/", "2"};
+        final Iterator<String> iter = Arrays.stream(input).iterator();
+        assertThat(cal.calculateRecursive(n, iter)).isEqualTo(7);
     }
 }
