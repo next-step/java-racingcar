@@ -60,7 +60,7 @@ public class TextCalculator {
                 this.operator = Operator.getInstance(strings[i]);
             }
 
-            if (shouldAccumulate()) {
+            if (shouldCalculation()) {
                 result = calculation();
                 this.clear();
                 this.numbers.add(result);
@@ -97,7 +97,7 @@ public class TextCalculator {
         return result;
     }
 
-    private boolean shouldAccumulate() {
+    private boolean shouldCalculation() {
         if (this.numbers == null || this.numbers.isEmpty() || this.operator == null) {
             return false;
         }
