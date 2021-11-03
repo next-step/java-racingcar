@@ -30,4 +30,26 @@ public class Calculator {
             throw new IllegalArgumentException("input 규격이 맞지 않습니다.");
         }
     }
+
+    private int calculate(int first, String operation, int second) {
+        if (operation.equals("+")) {
+            return first + second;
+        }
+
+        if (operation.equals("-")) {
+            return first - second;
+        }
+
+        if (operation.equals("*")) {
+            return first * second;
+        }
+
+        if (operation.equals("/")) {
+            return first / second;
+        }
+
+        throw new IllegalArgumentException("operation이 잘못되었습니다.");
+    }
+
+
 }
