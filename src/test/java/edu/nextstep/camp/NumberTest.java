@@ -11,6 +11,7 @@ public class NumberTest {
     final Random random = new Random();
 
     @Test
+    @SuppressWarnings("all")
     public void create() {
         final Number n = Number.of(5);
         assertThat(n.equals(Number.of(5))).isTrue();
@@ -21,6 +22,7 @@ public class NumberTest {
     }
 
     @Test
+    @SuppressWarnings("all")
     public void createFailed() {
         assertThatIllegalArgumentException().isThrownBy(() -> Number.of(null));
         assertThatIllegalArgumentException().isThrownBy(() -> Number.of(""));
