@@ -1,13 +1,15 @@
 package edu.nextstep.camp;
 
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CalculatorTest {
     final Calculator cal = new Calculator();
@@ -83,5 +85,17 @@ public class CalculatorTest {
     })
     public void testComplicateCalculate(String command, int expected) {
         assertThat(cal.calculate(command)).isEqualTo(expected);
+    }
+
+    @Test
+    public void testParseInvalidCommand() {
+        final String invalid = "1 2";
+        assertThatIllegalArgumentException().isThrownBy(() -> cal.parseCommand(invalid));
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1 2 3 4 5,1;2;3;4;5", "1  2  3,1;2;3"})
+    public void testParseCommand(String command, String expected) {
+        assertThat(cal.parseCommand(command).collect(Collectors.joining(";"))).isEqualTo(expected);
     }
 }

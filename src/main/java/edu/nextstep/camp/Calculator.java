@@ -2,6 +2,7 @@ package edu.nextstep.camp;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.stream.Stream;
 
 public class Calculator {
     public int add(int first, int second) {
@@ -21,48 +22,32 @@ public class Calculator {
     }
 
     public int calculate(String command) {
-        if (command == null || command.isEmpty())
-            throw new IllegalArgumentException("command must not be empty: " + command);
+        final Iterator<String> iter = parseCommand(command).iterator();
 
-        String[] op = command.split(" ");
-
-        if (op.length < 3)
-            throw new IllegalArgumentException("invalid input: " + command);
-
-        Iterator<String> iter = Arrays.stream(op)
-                .filter(s -> s != null && !s.isEmpty())
-                .iterator();
-
-        Step step = Step.FIRST;
-        int number = 0;
-        String operand = "";
+        int number = Integer.parseInt(iter.next());
         while (iter.hasNext()) {
-            switch (step) {
-                case FIRST:
-                    number = Integer.parseInt(iter.next());
-                    step = Step.OPERAND;
-                    break;
-                case OPERAND:
-                    operand = iter.next();
-                    step = Step.SECOND;
-                    break;
-                case SECOND:
-                    number = calculate(number, operand, Integer.parseInt(iter.next()));
-                    step = Step.OPERAND; // 가장 첫항을 제외하고는 좌항은 계산의 좌과이므로 연산자를 추출할 차래다.
-                    break;
-            }
-        }
+            final String operand = iter.next();
 
-        if (step != Step.OPERAND) // 우항 처리가 안됐다는 의미. 입력이 뭔가 잘못됐겠지..
-            throw new IllegalArgumentException("invalid input: " + command);
+            if (!iter.hasNext()) // 연산자를 뽑았는데 다음항이 없다면 입력이 뭔가 잘못됐겠지..
+                throw new IllegalArgumentException("invalid input: " + command);
+
+            number = calculate(number, operand, Integer.parseInt(iter.next()));
+        }
 
         return number;
     }
 
-    private enum Step {
-        FIRST,
-        OPERAND,
-        SECOND,
+    public Stream<String> parseCommand(String command) {
+        if (command == null || command.isEmpty())
+            throw new IllegalArgumentException("command must not be empty: " + command);
+
+        final String[] op = command.split(" ");
+
+        if (op.length < 3)
+            throw new IllegalArgumentException("invalid input: " + command);
+
+         return Arrays.stream(op)
+                .filter(s -> s != null && !s.isEmpty());
     }
 
     public int calculate(int first, String operand, int second) {
