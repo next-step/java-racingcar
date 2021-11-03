@@ -64,7 +64,7 @@ public class TextCalculator {
 
             if (shouldAccumulate(this.numbers, this.operator)) {
                 result = calculation(this.numbers, this.operator);
-                this.numbers.clear();
+                this.clear();
                 this.numbers.add(result);
                 this.operator = null;
             }
@@ -105,5 +105,13 @@ public class TextCalculator {
             return false;
         }
         return numbers.size() == 2 && operator != null;
+    }
+
+    private void clear() {
+        if (this.numbers == null && this.operator == null) {
+            return;
+        }
+        this.numbers.clear();
+        this.operator = null;
     }
 }
