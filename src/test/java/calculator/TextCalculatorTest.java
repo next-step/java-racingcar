@@ -70,4 +70,9 @@ class TextCalculatorTest {
     void throwExceptionIfWrongOperator() {
         assertThatThrownBy(() -> Operator.getInstance("%")).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void throwExceptionIfIntegerOverFlow() {
+        assertThatThrownBy(() -> calculator.calculate(Integer.MAX_VALUE + " + " + "1")).isInstanceOf(ArithmeticException.class);
+    }
 }
