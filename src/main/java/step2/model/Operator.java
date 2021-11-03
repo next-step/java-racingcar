@@ -2,23 +2,26 @@ package step2.model;
 
 public class Operator {
 
-    CalculatorComponents calculatorComponents = new CalculatorComponents();
-
-    public Integer calculator(String input) {
-        String[] inputSplit = input.split(" ");
-        int result = Integer.parseInt(inputSplit[0]);
-        for(int index = 1; index < inputSplit.length; index += 2){
-            if (inputSplit[index].equals("+") ) {
-                result += Integer.parseInt(inputSplit[index + 1]);
-            } else if (inputSplit[index].equals("-") ) {
-                result -= Integer.parseInt(inputSplit[index + 1]);
-            } else if (inputSplit[index].equals("*")){
-                result *= Integer.parseInt(inputSplit[index + 1]);
-            } else if (inputSplit[index].equals("/")) {
-                result /= Integer.parseInt(inputSplit[index + 1]);
-            }
-        }
-        return result;
+    public static Integer operator(String str) {
+        String[] value = str.split(" ");
+        return calculator(Integer.parseInt(value[0]), Integer.parseInt(value[2]), value[1]);
     }
+
+    public static Integer calculator(int num1, int num2, String o) {
+        if (o.equals("+")) {
+            return num1 + num2;
+        }
+        if (o.equals("-")) {
+            return num1 - num2;
+        }
+        if (o.equals("*")) {
+            return num1 * num2;
+        }
+        if (o.equals("/")) {
+            return num1 / num2;
+        }
+        throw new IllegalArgumentException();
+    }
+
 
 }
