@@ -49,6 +49,11 @@ public class CalculatorTest {
         assertThat(cal.divide(m, n)).isEqualTo(m / n);
     }
 
+    @Test
+    public void testDivideBy0() {
+        assertThatIllegalArgumentException().isThrownBy(() -> cal.divide(5, 0));
+    }
+
     @ParameterizedTest(name = "test invalid input: {arguments}")
     @ValueSource(strings = {"", "+", "3", "1 $ 2", "6234 54", "3 + - 3", "4 - 1 /"})
     public void testInvalidInput(String input) {
