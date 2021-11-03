@@ -61,7 +61,7 @@ public class TextCalculator {
             }
 
             if (shouldAccumulate()) {
-                result = calculation(this.numbers, this.operator);
+                result = calculation();
                 this.clear();
                 this.numbers.add(result);
             }
@@ -69,16 +69,16 @@ public class TextCalculator {
         return result;
     }
 
-    private Integer calculation(List<Integer> numbers, Operator operator) {
-        if (numbers == null || numbers.size() != 2 || operator == null) {
+    private Integer calculation() {
+        if (this.numbers == null || this.numbers.size() != 2 || this.operator == null) {
             throw new IllegalArgumentException();
         }
 
         Integer result = null;
-        Integer a = numbers.get(0);
-        Integer b = numbers.get(1);
+        Integer a = this.numbers.get(0);
+        Integer b = this.numbers.get(1);
 
-        switch (operator) {
+        switch (this.operator) {
 
             case PLUS:
                 result = Math.addExact(a, b);
