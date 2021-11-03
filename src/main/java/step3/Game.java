@@ -2,27 +2,27 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Game {
 
-    private static final Random random = new Random();
     private final Integer time;
     private final Integer count;
+    private final MoveStrategy moveStrategy;
     private final List<Car> cars = new ArrayList<>();
     private final GameHistory gameHistory = new GameHistory();
 
-    private Game(Integer count, Integer time) {
+    private Game(Integer count, Integer time, MoveStrategy moveStrategy) {
         this.time = time;
         this.count = count;
+        this.moveStrategy = moveStrategy;
     }
 
-    public static Game of(Rule rule) {
+    public static Game of(Rule rule, MoveStrategy moveStrategy) {
         InputValidator.isNull(rule.getCount());
         InputValidator.isNull(rule.getTime());
 
-        return new Game(rule.getCount(), rule.getTime());
+        return new Game(rule.getCount(), rule.getTime(), moveStrategy);
     }
 
     public void start() {
@@ -50,12 +50,12 @@ public class Game {
 
     private void addCar() {
         for (int i = 0; i < this.count; i++) {
-            cars.add(new Car());
+            cars.add(Car.create(moveStrategy));
         }
     }
 
     private void step() {
         this.cars.stream()
-                .forEach(car -> car.moveOrStop(random.nextInt(10)));
+                .forEach(car -> car.moveOrStop());
     }
 }

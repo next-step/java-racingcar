@@ -5,7 +5,8 @@ public class main {
         InputView inputView = new InputView();
         Rule rule = inputView.input();
 
-        Game game = Game.of(rule);
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
+        Game game = Game.of(rule, moveStrategy);
         game.start();
 
         ResultView resultView = ResultView.from(game.getGameHistory(), rule);
