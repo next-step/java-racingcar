@@ -39,7 +39,7 @@ class SetTest {
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true","4:false","5:false"}, delimiter = ':')
     @DisplayName("HashSet이 포함하고 있는 숫자는 true를 반환, 반대는 false를 반환하는 contains method test")
-    void containsUsingCsvSource(String input, String expected) {
-        assertEquals(numbers.contains(Integer.parseInt(input)),Boolean.valueOf(expected));
+    void containsUsingCsvSource(int input, String expected) {
+        assertEquals(numbers.contains(input),Boolean.valueOf(expected));
     }
 }
