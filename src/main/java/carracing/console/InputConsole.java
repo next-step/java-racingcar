@@ -6,7 +6,7 @@ import java.util.Scanner;
  * 자동차 경주를 위한 정보를 입력받는 콘솔
  */
 public class InputConsole {
-    private static final String CAR_NAMES_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String NUMBER_OF_CARS_INPUT_MESSAGE = "자동차 대수는 몇 대 인가요?";
     private static final String NUMBER_OF_TRIALS_INPUT_MESSAGE = "시도할 회수는 몇 회 인가요?";
 
     private InputConsole() {
@@ -17,9 +17,9 @@ public class InputConsole {
         return Integer.parseInt(readString());
     }
 
-    public static String readCarNames() {
-        System.out.println(CAR_NAMES_INPUT_MESSAGE);
-        return readString();
+    public static int readNumberOfCars() {
+        System.out.println(NUMBER_OF_CARS_INPUT_MESSAGE);
+        return Integer.parseInt(readString());
     }
 
     private static String readString() {

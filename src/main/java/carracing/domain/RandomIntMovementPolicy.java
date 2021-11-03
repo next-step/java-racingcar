@@ -8,6 +8,7 @@ import carracing.util.RandomGenerator;
  */
 public class RandomIntMovementPolicy implements MovementPolicy {
 
+    public static final int RANDOM_BOUND_NUMBER = 10;
     public static final int BASE_POSITION_NUMBER = 4;
     public static final int MAX_POSITION_NUMBER = 9;
     public static final int MIN_POSITION_NUMBER = 0;
@@ -26,7 +27,7 @@ public class RandomIntMovementPolicy implements MovementPolicy {
 
     @Override
     public boolean isMovable() {
-        int randomInt = randomGenerator.generateZeroOrPositiveNumber(MAX_POSITION_NUMBER);
+        int randomInt = randomGenerator.generateZeroOrPositiveNumber(RANDOM_BOUND_NUMBER);
         return randomInt >= BASE_POSITION_NUMBER;
     }
 }

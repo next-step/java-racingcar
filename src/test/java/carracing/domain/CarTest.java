@@ -14,7 +14,6 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -25,7 +24,7 @@ class CarTest {
     private static final int FIRST_MOVING_POSITION_NUMBER = INITIATION_POSITION_NUMBER + 1;
     private static final int BASE_POSITION_NUMBER = RandomIntMovementPolicy.BASE_POSITION_NUMBER;
     private static final int MAX_POSITION_NUMBER = RandomIntMovementPolicy.MAX_POSITION_NUMBER;
-    private static final String TEST_CAR_NAME = "pobi";
+    private static final int RANDOM_BOUND_NUMBER = RandomIntMovementPolicy.RANDOM_BOUND_NUMBER;
 
     private RandomGenerator randomGenerator;
     private MovementPolicy movementPolicy;
@@ -40,13 +39,12 @@ class CarTest {
     @Test
     void createCarTest() {
         // When
-        Car car = new Car(new CarName(TEST_CAR_NAME));
+        Car car = new Car();
 
         // Then
         assertAll(
                 () -> assertThat(car).isNotNull(),
-                () -> assertThat(car.getPosition().getNumber()).isEqualTo(INITIATION_POSITION_NUMBER),
-                () -> assertThat(car.getName().getName()).isEqualTo(TEST_CAR_NAME)
+                () -> assertThat(car.getPosition().getNumber()).isEqualTo(INITIATION_POSITION_NUMBER)
         );
     }
 
@@ -55,50 +53,15 @@ class CarTest {
     @MethodSource("provideMovableCases")
     void moveCarTest(int movableNumber) {
         // Given
-        Car car = new Car(new CarName(TEST_CAR_NAME));
+        Car car = new Car();
 
         // When
-        when(randomGenerator.generateZeroOrPositiveNumber(MAX_POSITION_NUMBER))
+        when(randomGenerator.generateZeroOrPositiveNumber(RANDOM_BOUND_NUMBER))
                 .thenReturn(movableNumber);
         car.move(movementPolicy);
 
         // Then
         assertThat(car.getPosition().getNumber()).isEqualTo(FIRST_MOVING_POSITION_NUMBER);
-    }
-
-    @DisplayName("자동차가 움직일 수 없는 경우, 자동자의 위치가 변경되는지 확인")
-    @ParameterizedTest
-    @MethodSource("provideUnmovableCases")
-    void checkUnmovableCarTest(int unmovableNumber) {
-        // Given
-        Car car = new Car(new CarName(TEST_CAR_NAME));
-
-        // When
-        when(randomGenerator.generateZeroOrPositiveNumber(MAX_POSITION_NUMBER))
-                .thenReturn(unmovableNumber);
-        car.move(movementPolicy);
-
-        // Then
-        assertThat(car.getPosition().getNumber()).isEqualTo(INITIATION_POSITION_NUMBER);
-    }
-
-    @DisplayName("자동차가 승리한 자동차인지 확인")
-    @ParameterizedTest
-    @MethodSource("provideMovableCases")
-    void isWonTest(int movableNumber) {
-        // Given
-        Car car = new Car(new CarName(TEST_CAR_NAME));
-        int numberOfTrial = 3;
-
-        // When
-        when(randomGenerator.generateZeroOrPositiveNumber(MAX_POSITION_NUMBER))
-                .thenReturn(movableNumber);
-        for (int i = 0; i < numberOfTrial; i++) {
-            car.move(movementPolicy);
-        }
-
-        // Then
-        assertTrue(car.isWon(numberOfTrial));
     }
 
     private static Stream<Arguments> provideMovableCases() {
@@ -107,6 +70,22 @@ class CarTest {
             arguments.add(Arguments.of(i));
         }
         return arguments.stream();
+    }
+
+    @DisplayName("자동차가 움직일 수 없는 경우, 자동자의 위치가 변경되는지 확인")
+    @ParameterizedTest
+    @MethodSource("provideUnmovableCases")
+    void checkUnmovableCarTest(int unmovableNumber) {
+        // Given
+        Car car = new Car();
+
+        // When
+        when(randomGenerator.generateZeroOrPositiveNumber(RANDOM_BOUND_NUMBER))
+                .thenReturn(unmovableNumber);
+        car.move(movementPolicy);
+
+        // Then
+        assertThat(car.getPosition().getNumber()).isEqualTo(INITIATION_POSITION_NUMBER);
     }
 
     private static Stream<Arguments> provideUnmovableCases() {

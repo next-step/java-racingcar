@@ -5,12 +5,9 @@ package carracing.domain;
  */
 public class Car {
     private static final int INITIATION_POSITION_NUMBER = 0;
-
-    private final CarName name;
     private final CarPosition position;
 
-    Car(CarName name) {
-        this.name = name;
+    Car() {
         this.position = new CarPosition(INITIATION_POSITION_NUMBER);
     }
 
@@ -20,15 +17,7 @@ public class Car {
         }
     }
 
-    public boolean isWon(int winningPositionNumber) {
-        return position.isSameWith(winningPositionNumber);
-    }
-
     public CarPosition getPosition() {
         return position;
-    }
-
-    public CarName getName() {
-        return name;
     }
 }
