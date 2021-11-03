@@ -1,8 +1,9 @@
 package step3;
 
 public class Car {
-    private final MoveStrategy moveStrategy;
     private final static Integer BASE_POSITION = 0;
+
+    private final MoveStrategy moveStrategy;
     private Position position;
 
     private Car(MoveStrategy moveStrategy) {
@@ -24,11 +25,12 @@ public class Car {
         }
     }
 
+    private boolean isGo() {
+        return moveStrategy.test();
+    }
+
     private void move() {
         this.position = this.position.move();
     }
 
-    private boolean isGo() {
-        return moveStrategy.test();
-    }
 }
