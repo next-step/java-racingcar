@@ -62,11 +62,10 @@ public class TextCalculator {
                 this.operator = Operator.getInstance(strings[i]);
             }
 
-            if (shouldAccumulate(this.numbers, this.operator)) {
+            if (shouldAccumulate()) {
                 result = calculation(this.numbers, this.operator);
                 this.clear();
                 this.numbers.add(result);
-                this.operator = null;
             }
         }
         return result;
@@ -100,11 +99,11 @@ public class TextCalculator {
         return result;
     }
 
-    private boolean shouldAccumulate(List<Integer> numbers, Operator operator) {
-        if (numbers == null || numbers.isEmpty() || operator == null) {
+    private boolean shouldAccumulate() {
+        if (this.numbers == null || this.numbers.isEmpty() || this.operator == null) {
             return false;
         }
-        return numbers.size() == 2 && operator != null;
+        return this.numbers.size() == 2 && this.operator != null;
     }
 
     private void clear() {
