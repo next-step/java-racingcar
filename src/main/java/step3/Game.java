@@ -3,7 +3,6 @@ package step3;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 public class Game {
