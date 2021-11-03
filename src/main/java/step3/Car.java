@@ -1,20 +1,25 @@
 package step3;
 
 public class Car {
-    private final static int MOVE_CONDITION = 4;
+    private final MoveStrategy moveStrategy;
     private final static Integer BASE_POSITION = 0;
     private Position position;
 
-    public Car() {
+    private Car(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
         this.position = Position.create(BASE_POSITION);
+    }
+
+    public static Car create(MoveStrategy moveStrategy) {
+        return new Car(moveStrategy);
     }
 
     public Position getPosition() {
         return position;
     }
 
-    public void moveOrStop(int rand) {
-        if (isGo(rand)) {
+    public void moveOrStop() {
+        if (isGo()) {
             move();
         }
     }
@@ -23,7 +28,7 @@ public class Car {
         this.position = this.position.move();
     }
 
-    private boolean isGo(int rand) {
-        return rand >= MOVE_CONDITION;
+    private boolean isGo() {
+        return moveStrategy.test();
     }
 }
