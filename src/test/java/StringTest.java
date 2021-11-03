@@ -10,7 +10,6 @@ public class StringTest {
 
     @ValueSource(strings = "1,2")
     @ParameterizedTest(name = "{arguments}을 ,로 split 했을 때 1과 2가 반환된다.")
-
     void splitTest(String input) {
         String[] arr = input.split(",");
 
@@ -54,6 +53,5 @@ public class StringTest {
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
             .isThrownBy(() -> input.charAt(outOfIndex));
     }
-
 
 }
