@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import racingcar.generator.Generator;
 import racingcar.util.NumberUtils;
 
 public class Cars {
@@ -30,5 +31,19 @@ public class Cars {
 		if (NumberUtils.isNotPositiveNumber(numberOfCars)) {
 			throw new IllegalArgumentException("numberOfCars must be positive number");
 		}
+	}
+
+	public void move(Generator generator) {
+		cars.forEach(car -> car.move(generator));
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		for (Car car : cars) {
+			builder.append(car);
+			builder.append("\n");
+		}
+		return builder.toString();
 	}
 }
