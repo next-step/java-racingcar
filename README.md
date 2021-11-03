@@ -40,3 +40,4 @@
   - Car의 위치를 래핑한 Position 객체를 생성한다.
   - move() 메서드를 받으면 position 값이 증가한다.
   - positionToString()을 호출하면 현재 위치를 "-" 형식으로 리턴한다.
+- NumberGenerator 구현 특정 int 값을 생성해주는 generator 구현   

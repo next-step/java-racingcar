@@ -11,7 +11,7 @@ class RuleTest {
     @DisplayName("getCount 는 RuleDto의 count를 반환한다")
     @ParameterizedTest
     @CsvSource(value = {"4:3:4", "5:3:5"}, delimiter = ':')
-    void getCountTest(Long count, Long time, Long expectCount) {
+    void getCountTest(Integer count, Integer time, Integer expectCount) {
         Rule rule = Rule.from(count, time);
 
         assertThat(rule.getCount()).isEqualTo(expectCount);
@@ -20,7 +20,7 @@ class RuleTest {
     @DisplayName("getTime 는 RuleDto의 time을 반환한다")
     @ParameterizedTest
     @CsvSource(value = {"4:3:3", "5:6:6"}, delimiter = ':')
-    void getTimeTest(Long count, Long time, Long expectTime) {
+    void getTimeTest(Integer count, Integer time, Integer expectTime) {
         Rule rule = Rule.from(count, time);
 
         assertThat(rule.getTime()).isEqualTo(expectTime);
@@ -29,7 +29,7 @@ class RuleTest {
     @DisplayName("from() 메서드는 정상적으로 RuleDto를 반환한다")
     @ParameterizedTest
     @CsvSource(value = {"4:3:4:3", "5:6:5:6"}, delimiter = ':')
-    void getTimeTest(Long count, Long time, Long expectCount, Long expectTime) {
+    void getTimeTest(Integer count, Integer time, Integer expectCount, Integer expectTime) {
         Rule rule = Rule.from(count, time);
 
         assertThat(rule.getCount()).isEqualTo(expectCount);

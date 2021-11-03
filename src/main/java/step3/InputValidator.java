@@ -18,7 +18,7 @@ public class InputValidator {
         }
     }
 
-    public static void isNull(Long input) {
+    public static void isNull(Integer input) {
         if (input == null) {
             throw new IllegalArgumentException(NULL_EXCEPTION_MESSAGE);
         }

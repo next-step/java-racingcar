@@ -3,13 +3,13 @@ package step3;
 import java.util.Objects;
 
 public class Position {
-    private final Long position;
+    private final Integer position;
 
-    private Position(Long position) {
+    private Position(Integer position) {
         this.position = position;
     }
 
-    public static Position create(Long position) {
+    public static Position create(Integer position) {
         return new Position(position);
     }
 
@@ -19,7 +19,7 @@ public class Position {
 
     public String positionToString() {
         StringBuilder builder = new StringBuilder();
-        for (Long i = 0L; i < position; i++) {
+        for (int i = 0; i < position; i++) {
             builder.append("-");
         }
         return builder.toString();

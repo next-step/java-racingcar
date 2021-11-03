@@ -24,7 +24,7 @@ class GameHistoryTest {
     @DisplayName("getHistory(time) 메서드를 통해 history를 가져온다.")
     @ParameterizedTest
     @CsvSource(value = {"1:0,1,0"}, delimiter = ':')
-    void saveAndGetHistoryTest(Long time, String historyStr) {
+    void saveAndGetHistoryTest(Integer time, String historyStr) {
         List<Position> history = stringParser(historyStr);
         gameHistory.save(time, history);
 
@@ -36,7 +36,7 @@ class GameHistoryTest {
     @DisplayName("getHistory(time) 메서드를 통해 history 가져온 history는 입력 된 List<>와는 다른 List<>이다.")
     @ParameterizedTest
     @CsvSource(value = {"1:0,1,0"}, delimiter = ':')
-    void saveAndGetHistoryNotSameTest(Long time, String historyStr) {
+    void saveAndGetHistoryNotSameTest(Integer time, String historyStr) {
         List<Position> history = stringParser(historyStr);
         gameHistory.save(time, history);
 
@@ -47,19 +47,19 @@ class GameHistoryTest {
     @DisplayName("getHistory(time) 없는 time을 가져오려고하면 IllegalException이 발생한다.")
     @ParameterizedTest
     @CsvSource(value = {"1:0,1,0"}, delimiter = ':')
-    void getNoSearchTest(Long time, String historyStr) {
+    void getNoSearchTest(Integer time, String historyStr) {
         List<Position> history = stringParser(historyStr);
         gameHistory.save(time, history);
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            gameHistory.getHistory(2L);
+            gameHistory.getHistory(2);
         });
     }
 
     private List<Position> stringParser(String str) {
         String[] split = str.split(",");
         return Arrays.stream(split)
-                .map(item -> Position.create(Long.parseLong(item)))
+                .map(item -> Position.create(Integer.parseInt(item)))
                 .collect(Collectors.toList());
     }
 

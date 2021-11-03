@@ -9,18 +9,18 @@ public class InputView {
 
         System.out.println("자동차 대수는 몇 대 인가요?");
         String carCountStr = scanner.nextLine();
-        Long carCount = getLongValue(carCountStr);
+        Integer carCount = getIntegerValue(carCountStr);
 
         System.out.println("시도할 회수는 몇 회 인가요?");
         String timeStr = scanner.nextLine();
-        Long time = getLongValue(timeStr);
+        Integer time = getIntegerValue(timeStr);
 
         return Rule.from(carCount, time);
     }
 
-    private Long getLongValue(String input) {
+    private Integer getIntegerValue(String input) {
         isValid(input);
-        return Long.valueOf(input);
+        return Integer.valueOf(input);
     }
 
     public void isValid(String input) {

@@ -2,7 +2,7 @@ package step3;
 
 public class Car {
     private final static int MOVE_CONDITION = 4;
-    private final static Long BASE_POSITION = 0L;
+    private final static Integer BASE_POSITION = 0;
     private Position position;
 
     public Car() {

@@ -11,7 +11,7 @@ class PositionTest {
     @DisplayName("Position은 생성자로 입력된 값을 가지고 있는다.")
     @ParameterizedTest
     @CsvSource(value = {"0:0", "1:1", "2:2"}, delimiter = ':')
-    void createTest(Long input, Long expect) {
+    void createTest(Integer input, Integer expect) {
         Position actual = Position.create(input);
 
         assertThat(actual).isEqualTo(Position.create(expect));
@@ -20,7 +20,7 @@ class PositionTest {
     @DisplayName("move가 호출 되면 position의 값이 1 증가한다.")
     @ParameterizedTest
     @CsvSource(value = {"0:1", "1:2", "2:3"}, delimiter = ':')
-    void moveTest(Long input, Long expect) {
+    void moveTest(Integer input, Integer expect) {
         Position actual = Position.create(input);
 
         assertThat(actual.move()).isEqualTo(Position.create(expect));
@@ -29,12 +29,12 @@ class PositionTest {
     @DisplayName("stringToPosition 을 통해 현재 위치를 -- 와 같이 표현한다 ")
     @ParameterizedTest
     @CsvSource(value = {"1:-", "2:--", "3:---"}, delimiter = ':')
-    void moveTest(Long input, String expect) {
+    void moveTest(Integer input, String expect) {
         Position actual = Position.create(input);
 
         assertThat(actual.positionToString()).isEqualTo(expect);
 
-        actual = Position.create(0L);
+        actual = Position.create(0);
         assertThat(actual.positionToString()).isEqualTo("");
     }
 }

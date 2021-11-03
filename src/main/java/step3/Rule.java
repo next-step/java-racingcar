@@ -2,24 +2,24 @@ package step3;
 
 public class Rule {
 
-    private final Long count;
-    private final Long time;
+    private final Integer count;
+    private final Integer time;
 
-    private Rule(Long count, Long time) {
+    private Rule(Integer count, Integer time) {
         this.count = count;
         this.time = time;
     }
 
-    public static Rule from(Long count, Long time) {
+    public static Rule from(Integer count, Integer time) {
 
         return new Rule(count, time);
     }
 
-    public Long getCount() {
+    public Integer getCount() {
         return count;
     }
 
-    public Long getTime() {
+    public Integer getTime() {
         return time;
     }
 }

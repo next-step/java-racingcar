@@ -9,12 +9,12 @@ import java.util.stream.Collectors;
 public class Game {
 
     private static final Random random = new Random();
-    private final Long time;
-    private final Long count;
+    private final Integer time;
+    private final Integer count;
     private final List<Car> cars = new ArrayList<>();
     private final GameHistory gameHistory = new GameHistory();
 
-    private Game(Long count, Long time) {
+    private Game(Integer count, Integer time) {
         this.time = time;
         this.count = count;
     }
@@ -28,7 +28,7 @@ public class Game {
 
     public void start() {
         addCar();
-        for (Long now = 0L; now < this.time; now++) {
+        for (int now = 0; now < this.time; now++) {
             step();
             addHistory(now);
         }
@@ -38,7 +38,7 @@ public class Game {
         return gameHistory;
     }
 
-    private void addHistory(Long now) {
+    private void addHistory(Integer now) {
         List<Position> log = getLog();
         gameHistory.save(now, log);
     }

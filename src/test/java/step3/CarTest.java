@@ -13,14 +13,14 @@ class CarTest {
     @Test
     void getCountTest() {
         Car car = new Car();
-        Long expectNow = 0L;
+        Integer expectNow = 0;
         assertThat(car.getPosition()).isEqualTo(Position.create(expectNow));
     }
 
     @DisplayName("MoveOrStop(rand) 메서드에 4이상 10 이하 값이 오면 now가 +1 증가한다.")
     @ParameterizedTest
     @CsvSource(value = {"3:0", "4:1", "5:1"}, delimiter = ':')
-    void moveOrStopTest(int input, Long expectNow) {
+    void moveOrStopTest(Integer input, Integer expectNow) {
         Car car = new Car();
         car.moveOrStop(input);
         assertThat(car.getPosition()).isEqualTo(Position.create(expectNow));

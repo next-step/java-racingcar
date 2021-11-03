@@ -11,11 +11,11 @@ class GameTest {
     @Test
     void ofTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Game.of(Rule.from(null, 10L));
+            Game.of(Rule.from(null, 10));
         });
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Game.of(Rule.from(10L, null));
+            Game.of(Rule.from(10, null));
         });
     }
 

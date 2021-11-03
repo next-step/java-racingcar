@@ -17,9 +17,9 @@ public class ResultView {
     }
 
     public void view() {
-        Long time = rule.getTime();
+        Integer time = rule.getTime();
         System.out.println("실행 결과");
-        for (Long now = 0L; now < time; now++) {
+        for (int now = 0; now < time; now++) {
             printHistory(gameHistory.getHistory(now));
         }
     }
@@ -31,6 +31,5 @@ public class ResultView {
 
     private void printPosition(Position item) {
         System.out.println(item.positionToString());
-        System.out.println();
     }
 }

@@ -32,7 +32,7 @@ class InputValidatorTest {
     @DisplayName("Long 값이 null 이면 IllegalException")
     @ParameterizedTest
     @NullSource
-    void nullTest(Long input) {
+    void nullTest(Integer input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             InputValidator.isNull(input);
         });
