@@ -22,9 +22,15 @@ public class ArithmeticExpression {
         return operator != null && operand1 != null && operand2 != null;
     }
 
-    public ArithmeticResult calculate() {
-        int result = operator.getFunction()
-                .apply(operand1.getNumber(), operand2.getNumber());
-        return new ArithmeticResult(result);
+    public ArithmeticOperator getOperator() {
+        return operator;
+    }
+
+    public ArithmeticOperand getOperand1() {
+        return operand1;
+    }
+
+    public ArithmeticOperand getOperand2() {
+        return operand2;
     }
 }

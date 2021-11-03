@@ -3,11 +3,7 @@ package stringcalculator.arithmeticcomponent;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -18,22 +14,20 @@ import static stringcalculator.arithmeticcomponent.ArithmeticOperator.*;
 class ArithmeticOperatorTest {
 
     @DisplayName("문자열로 된 산술연산자 +, -, *, / 가 해당하는 enum으로 변환되는지 확인")
-    @ParameterizedTest
-    @MethodSource("provideOperatorAndExpected")
-    void convertStringToEnumTest(String operator, ArithmeticOperator expected) {
+    @Test
+    void convertStringToEnumTest() {
         // When
-        ArithmeticOperator arithmeticOperator = ArithmeticOperator.findByOperator(operator);
+        ArithmeticOperator plus = ArithmeticOperator.findByOperator("+");
+        ArithmeticOperator minus = ArithmeticOperator.findByOperator("-");
+        ArithmeticOperator multiply = ArithmeticOperator.findByOperator("*");
+        ArithmeticOperator divide = ArithmeticOperator.findByOperator("/");
 
         // Then
-        assertThat(arithmeticOperator).isEqualTo(expected);
-    }
-
-    private static Stream<Arguments> provideOperatorAndExpected() {
-        return Stream.of(
-                Arguments.of("+", PLUS),
-                Arguments.of("-", MINUS),
-                Arguments.of("*", MULTIPLY),
-                Arguments.of("/", DIVIDE)
+        assertAll(
+                () -> assertThat(plus).isEqualTo(PLUS),
+                () -> assertThat(minus).isEqualTo(MINUS),
+                () -> assertThat(multiply).isEqualTo(MULTIPLY),
+                () -> assertThat(divide).isEqualTo(DIVIDE)
         );
     }
 
