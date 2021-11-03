@@ -25,9 +25,9 @@ class ExpressionTest {
     }
 
     @Test
-    @DisplayName("연산자와 피연산자의 순서를 올바르게 하지 않고 Expression을 만들면 실패")
+    @DisplayName("연산자와 피연산자의 순서를 올바르게 하지 않고 Expression을 만들어 계산하면 실패")
     void exception2() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Expression(new String[]{"2", "+", "+"}));
+                .isThrownBy(() -> new Expression(new String[]{"2", "+", "+"}).execute());
     }
 }
