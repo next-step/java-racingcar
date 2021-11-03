@@ -47,8 +47,8 @@ class TextCalculatorTest {
 
     @Test
     void mix() {
-        String input = "2 + 3 * 4 / 2";
-        assertThat(calculator.calculate(input)).isEqualTo(10);
+        String input = "2 + 3 * 4 / 2 + 1 - 6 + 10 - 11 * 191";
+        assertThat(calculator.calculate(input)).isEqualTo(764);
     }
 
     @Test
