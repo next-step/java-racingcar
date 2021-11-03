@@ -1,17 +1,17 @@
 package racingcar.model;
 
-import racingcar.generator.Generator;
+import java.util.Objects;
+
+import racingcar.rule.MoveRule;
 
 public class Car {
-	private static final int MOVING_CONDITION = 4;
-
 	private final Position position;
 
-	private Car() {
+	Car() {
 		this(Position.create());
 	}
 
-	private Car(Position position) {
+	Car(Position position) {
 		this.position = position;
 	}
 
@@ -19,18 +19,31 @@ public class Car {
 		return new Car();
 	}
 
-	public void move(Generator generator) {
-		if (canMove(generator)) {
+	public void move(MoveRule moveRule) {
+		if (moveRule.canMove()) {
 			position.increase();
 		}
 	}
 
-	private boolean canMove(Generator generator) {
-		return generator.generate() > MOVING_CONDITION;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+
+		Car car = (Car)o;
+
+		return Objects.equals(position, car.position);
+	}
+
+	@Override
+	public int hashCode() {
+		return position != null ? position.hashCode() : 0;
 	}
 
 	@Override
 	public String toString() {
-		return position.convertPositionToDash();
+		return position.toString();
 	}
 }

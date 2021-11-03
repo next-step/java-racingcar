@@ -1,17 +1,17 @@
 package racingcar.model;
 
-import racingcar.generator.Generator;
+import racingcar.rule.MoveRule;
 import racingcar.util.NumberUtils;
 
 public class RacingGame {
-	private final Generator generator;
+	private final MoveRule moveRule;
 	private final Round round;
 	private final Cars cars;
 
-	private RacingGame(Generator generator, int numberOfRounds, int numberOfCars) {
+	RacingGame(MoveRule moveRule, int numberOfRounds, int numberOfCars) {
 		validate(numberOfRounds, numberOfCars);
 
-		this.generator = generator;
+		this.moveRule = moveRule;
 		this.round = Round.create(numberOfRounds);
 		this.cars = Cars.create(numberOfCars);
 	}
@@ -25,8 +25,8 @@ public class RacingGame {
 		}
 	}
 
-	public static RacingGame create(Generator generator, int numberOfRounds, int numberOfCars) {
-		return new RacingGame(generator, numberOfRounds, numberOfCars);
+	public static RacingGame create(MoveRule moveRule, int numberOfRounds, int numberOfCars) {
+		return new RacingGame(moveRule, numberOfRounds, numberOfCars);
 	}
 
 	public boolean hasNextRound() {
@@ -35,7 +35,7 @@ public class RacingGame {
 
 	public void moveOnce() {
 		round.increase();
-		cars.move(generator);
+		cars.move(moveRule);
 	}
 
 	@Override

@@ -7,18 +7,18 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import racingcar.generator.Generator;
-import racingcar.generator.RandomGenerator;
+import racingcar.rule.MoveRule;
+import racingcar.rule.RandomMoveRule;
 
 class RacingGameTest {
-	private static final Generator DEFAULT_GENERATOR = new RandomGenerator();
+	private static final MoveRule MOVE_RULE = new RandomMoveRule();
 
 	@DisplayName("유효한 파라미터 객체 생성 검증")
 	@ParameterizedTest(name = "{index}. numberOfRounds : {0}, numberOfCars : {1}")
 	@CsvSource({"1,1", "3,3", "4,4", "5,5"})
 	void create(int numberOfRounds, int numberOfCars) {
 		// when
-		RacingGame racingGame = RacingGame.create(DEFAULT_GENERATOR, numberOfRounds, numberOfCars);
+		RacingGame racingGame = RacingGame.create(MOVE_RULE, numberOfRounds, numberOfCars);
 
 		// then
 		assertThat(racingGame).isNotNull();
@@ -29,7 +29,7 @@ class RacingGameTest {
 	@CsvSource({"-1,1", "-3,3", "-4,-4", "0,5"})
 	void createWithInvalidArguments(int numberOfRounds, int numberOfCars) {
 		assertThatIllegalArgumentException()
-			.isThrownBy(() -> RacingGame.create(DEFAULT_GENERATOR, numberOfRounds, numberOfCars));
+			.isThrownBy(() -> RacingGame.create(MOVE_RULE, numberOfRounds, numberOfCars));
 	}
 
 	@DisplayName("움직이지 않을 경우 다음 라운드가 남아 있는지 검증")
@@ -56,7 +56,7 @@ class RacingGameTest {
 	}
 
 	private RacingGame createDefaultRacingGame() {
-		return RacingGame.create(DEFAULT_GENERATOR, 3, 3);
+		return RacingGame.create(MOVE_RULE, 3, 3);
 	}
 
 }

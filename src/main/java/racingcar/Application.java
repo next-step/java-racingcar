@@ -1,13 +1,12 @@
 package racingcar;
 
 import racingcar.controller.RacingController;
-import racingcar.generator.Generator;
-import racingcar.generator.RandomGenerator;
+import racingcar.rule.RandomMoveRule;
 
 public class Application {
 	public static void main(String[] args) {
-		Generator generator = new RandomGenerator();
-		RacingController racingController = new RacingController(generator);
+		RandomMoveRule moveRule = new RandomMoveRule();
+		RacingController racingController = new RacingController(moveRule);
 
 		racingController.startGame();
 	}
