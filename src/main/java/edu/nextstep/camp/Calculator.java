@@ -5,31 +5,13 @@ import java.util.Iterator;
 import java.util.stream.Stream;
 
 public class Calculator {
-    public int add(int first, int second) {
-        return first + second;
-    }
-
-    public int subtract(int first, int second) {
-        return first - second;
-    }
-
-    public int product(int first, int second) {
-        return first * second;
-    }
-
-    public int divide(int first, int second) {
-        if (second == 0)
-            throw new IllegalArgumentException("cannot calculate dividing by zero");
-        return first / second;
-    }
-
     public int calculate(String command) {
         final Iterator<String> iter = parseCommand(command).iterator();
 
-        return calculateRecursive(Integer.parseInt(iter.next()), iter);
+        return calculateRecursive(Number.of(iter.next()), iter).toInt();
     }
 
-    public int calculateRecursive(int number, Iterator<String> iter) {
+    public Number calculateRecursive(Number number, Iterator<String> iter) {
         if (!iter.hasNext())
             return number;
 
@@ -38,7 +20,7 @@ public class Calculator {
         if (!iter.hasNext()) // 연산자를 뽑았는데 다음항이 없다면 입력이 뭔가 잘못됐겠지..
             throw new IllegalArgumentException("invalid input - last element is operand:" + operand);
 
-        return calculateRecursive(calculate(number, operand, Integer.parseInt(iter.next())), iter);
+        return calculateRecursive(calculate(number, operand, Number.of(iter.next())), iter);
     }
 
     public Stream<String> parseCommand(String command) {
@@ -54,16 +36,16 @@ public class Calculator {
                 .filter(s -> s != null && !s.isEmpty());
     }
 
-    public int calculate(int first, String operand, int second) {
+    public Number calculate(Number first, String operand, Number second) {
         switch (operand) {
             case "+":
-                return add(first, second);
+                return first.add(second);
             case "-":
-                return subtract(first, second);
+                return first.subtract(second);
             case "*":
-                return product(first, second);
+                return first.product(second);
             case "/":
-                return divide(first, second);
+                return first.divide(second);
             default:
                 throw new IllegalArgumentException("invalid operand: " + operand);
         }

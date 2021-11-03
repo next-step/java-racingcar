@@ -2,7 +2,6 @@ package edu.nextstep.camp;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
@@ -15,44 +14,6 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 public class CalculatorTest {
     final Calculator cal = new Calculator();
-    final Random random = new Random();
-
-    @Test
-    public void testAdd() {
-        assertThat(cal.add(3, 5)).isEqualTo(3 + 5);
-        int m = random.nextInt();
-        int n = random.nextInt();
-        assertThat(cal.add(m, n)).isEqualTo(m + n);
-    }
-
-    @Test
-    public void testSubtract() {
-        assertThat(cal.subtract(8, 5)).isEqualTo(8 - 5);
-        int m = random.nextInt();
-        int n = random.nextInt();
-        assertThat(cal.subtract(m, n)).isEqualTo(m - n);
-    }
-
-    @Test
-    public void testProduct() {
-        assertThat(cal.product(3, 5)).isEqualTo(3 * 5);
-        int m = random.nextInt();
-        int n = random.nextInt();
-        assertThat(cal.product(m, n)).isEqualTo(m * n);
-    }
-
-    @Test
-    public void testDivide() {
-        assertThat(cal.divide(8, 5)).isEqualTo(8 / 5);
-        int m = random.nextInt();
-        int n = random.nextInt();
-        assertThat(cal.divide(m, n)).isEqualTo(m / n);
-    }
-
-    @Test
-    public void testDivideBy0() {
-        assertThatIllegalArgumentException().isThrownBy(() -> cal.divide(5, 0));
-    }
 
     @ParameterizedTest(name = "test invalid input: {arguments}")
     @ValueSource(strings = {"", "+", "3", "1 $ 2", "6234 54", "3 + - 3", "4 - 1 /"})
@@ -68,13 +29,13 @@ public class CalculatorTest {
     @ParameterizedTest(name = "test simple calculate: {arguments}")
     @CsvSource(value = {"3,+,5,8", "8,-,3,5", "5,*,3,15"})
     public void testCalculate(int first, String operand, int second, int expected) {
-        assertThat(cal.calculate(first, operand, second)).isEqualTo(expected);
+        assertThat(cal.calculate(Number.of(first), operand, Number.of(second))).isEqualTo(Number.of(expected));
     }
 
     @ParameterizedTest(name = "test invalid operand: {arguments}")
     @CsvSource(value = {"3,#,5", "8,6,3", "5,not-a-operand,3"})
     public void testInvalidOperand(int first, String operand, int second) {
-        assertThatIllegalArgumentException().isThrownBy(() -> cal.calculate(first, operand, second));
+        assertThatIllegalArgumentException().isThrownBy(() -> cal.calculate(Number.of(first), operand, Number.of(second)));
     }
 
     @ParameterizedTest(name = "test simple calculate: {arguments}")
@@ -108,9 +69,9 @@ public class CalculatorTest {
 
     @Test
     public void testCalculateRecursive() {
-        final int n = 2;
+        final Number n = Number.of(2);
         final String[] input = {"+", "4", "+", "8", "/", "2"};
         final Iterator<String> iter = Arrays.stream(input).iterator();
-        assertThat(cal.calculateRecursive(n, iter)).isEqualTo(7);
+        assertThat(cal.calculateRecursive(n, iter)).isEqualTo(Number.of(7));
     }
 }
