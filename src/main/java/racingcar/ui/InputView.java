@@ -9,7 +9,7 @@ public class InputView implements Input {
     private static final String INPUT_RETRY_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
     private final Scanner scanner = new Scanner(System.in);
 
-    public InputValue input() {
+    public InputValue getInputValue() {
         int carCount = input(INPUT_CAR_COUNT_MESSAGE);
         int retryCount = input(INPUT_RETRY_COUNT_MESSAGE);
         return InputValue.of(carCount, retryCount);

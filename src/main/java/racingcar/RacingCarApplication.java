@@ -12,18 +12,18 @@ public class RacingCarApplication {
     private static final int GAME_START_COUNT = 1;
 
     public static void main(String[] args) {
-        Input inputView = new InputView();
-        Output resultView = new ResultView();
-        execute(inputView, resultView);
+        Input input = new InputView();
+        Output output = new ResultView();
+        execute(input, output);
     }
 
-    private static void execute(Input inputView, Output resultView) {
-        InputValue inputValue = inputView.input();
+    private static void execute(Input input, Output output) {
+        InputValue inputValue = input.getInputValue();
         RacingCarService racingCarService = RacingCarService.init(inputValue.getCarCount());
 
         for (int i = GAME_START_COUNT; i <= inputValue.getRetryCount(); i++) {
             Cars result = racingCarService.start();
-            resultView.output(i, result);
+            output.output(i, result);
         }
     }
 }
