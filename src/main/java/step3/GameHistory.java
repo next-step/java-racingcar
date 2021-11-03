@@ -6,19 +6,19 @@ import java.util.List;
 import java.util.Map;
 
 public class GameHistory {
-    private final Map<Long, List<Long>> history = new HashMap<>();
+    private final Map<Long, List<Position>> history = new HashMap<>();
 
-    public void save(Long now, List<Long> tempHistory) {
-        List<Long> saveHistory = new ArrayList<>();
+    public void save(Long now, List<Position> tempHistory) {
+        List<Position> saveHistory = new ArrayList<>();
         tempHistory.stream()
                 .forEach(saveHistory::add);
         history.put(now, saveHistory);
     }
 
-    public List<Long> getHistory(Long time) {
+    public List<Position> getHistory(Long time) {
         isValid(time);
-        List<Long> saveHistory = history.get(time);
-        List<Long> returnHistory = new ArrayList<>();
+        List<Position> saveHistory = history.get(time);
+        List<Position> returnHistory = new ArrayList<>();
         saveHistory.stream()
                 .forEach(returnHistory::add);
         return returnHistory;

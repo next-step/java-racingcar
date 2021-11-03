@@ -24,15 +24,13 @@ public class ResultView {
         }
     }
 
-    private void printHistory(List<Long> history) {
+    private void printHistory(List<Position> history) {
         history.stream().forEach(item -> printPosition(item));
         System.out.println();
     }
 
-    private void printPosition(Long item) {
-        for (Long i = 0L; i < item; i++) {
-            System.out.print("-");
-        }
+    private void printPosition(Position item) {
+        System.out.println(item.positionToString());
         System.out.println();
     }
 }

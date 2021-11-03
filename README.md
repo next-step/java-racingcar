@@ -39,3 +39,4 @@
 - Position 구현
   - Car의 위치를 래핑한 Position 객체를 생성한다.
   - move() 메서드를 받으면 position 값이 증가한다.
+  - positionToString()을 호출하면 현재 위치를 "-" 형식으로 리턴한다.

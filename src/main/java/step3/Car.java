@@ -1,12 +1,15 @@
 package step3;
 
 public class Car {
-    private Long position = 0L;
+    private final static int MOVE_CONDITION = 4;
+    private final static Long BASE_POSITION = 0L;
+    private Position position;
 
     public Car() {
+        this.position = Position.create(BASE_POSITION);
     }
 
-    public Long getPosition() {
+    public Position getPosition() {
         return position;
     }
 
@@ -17,10 +20,10 @@ public class Car {
     }
 
     private void move() {
-        this.position++;
+        this.position = this.position.move();
     }
 
     private boolean isGo(int rand) {
-        return rand >= 4;
+        return rand >= MOVE_CONDITION;
     }
 }

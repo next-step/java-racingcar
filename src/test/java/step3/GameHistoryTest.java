@@ -25,10 +25,10 @@ class GameHistoryTest {
     @ParameterizedTest
     @CsvSource(value = {"1:0,1,0"}, delimiter = ':')
     void saveAndGetHistoryTest(Long time, String historyStr) {
-        List<Long> history = stringParser(historyStr);
+        List<Position> history = stringParser(historyStr);
         gameHistory.save(time, history);
 
-        List<Long> returnHistory = gameHistory.getHistory(time);
+        List<Position> returnHistory = gameHistory.getHistory(time);
         assertThat(history).isNotSameAs(returnHistory);
         assertThat(history).isEqualTo(returnHistory);
     }
@@ -37,10 +37,10 @@ class GameHistoryTest {
     @ParameterizedTest
     @CsvSource(value = {"1:0,1,0"}, delimiter = ':')
     void saveAndGetHistoryNotSameTest(Long time, String historyStr) {
-        List<Long> history = stringParser(historyStr);
+        List<Position> history = stringParser(historyStr);
         gameHistory.save(time, history);
 
-        List<Long> returnHistory = gameHistory.getHistory(time);
+        List<Position> returnHistory = gameHistory.getHistory(time);
         assertThat(history).isNotSameAs(returnHistory);
     }
 
@@ -48,7 +48,7 @@ class GameHistoryTest {
     @ParameterizedTest
     @CsvSource(value = {"1:0,1,0"}, delimiter = ':')
     void getNoSearchTest(Long time, String historyStr) {
-        List<Long> history = stringParser(historyStr);
+        List<Position> history = stringParser(historyStr);
         gameHistory.save(time, history);
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
@@ -56,10 +56,10 @@ class GameHistoryTest {
         });
     }
 
-    private List<Long> stringParser(String str) {
+    private List<Position> stringParser(String str) {
         String[] split = str.split(",");
         return Arrays.stream(split)
-                .map(Long::parseLong)
+                .map(item -> Position.create(Long.parseLong(item)))
                 .collect(Collectors.toList());
     }
 

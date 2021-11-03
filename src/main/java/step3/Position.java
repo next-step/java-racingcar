@@ -3,7 +3,6 @@ package step3;
 import java.util.Objects;
 
 public class Position {
-
     private final Long position;
 
     private Position(Long position) {
@@ -12,6 +11,18 @@ public class Position {
 
     public static Position create(Long position) {
         return new Position(position);
+    }
+
+    public Position move() {
+        return new Position(this.position + 1);
+    }
+
+    public String positionToString() {
+        StringBuilder builder = new StringBuilder();
+        for (Long i = 0L; i < position; i++) {
+            builder.append("-");
+        }
+        return builder.toString();
     }
 
     @Override
@@ -25,9 +36,5 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(position);
-    }
-
-    public Position move() {
-        return new Position(this.position+1);
     }
 }

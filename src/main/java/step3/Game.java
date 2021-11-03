@@ -3,6 +3,7 @@ package step3;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 public class Game {
@@ -38,11 +39,11 @@ public class Game {
     }
 
     private void addHistory(Long now) {
-        List<Long> log = getLog();
+        List<Position> log = getLog();
         gameHistory.save(now, log);
     }
 
-    private List<Long> getLog() {
+    private List<Position> getLog() {
         return this.cars.stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList());
