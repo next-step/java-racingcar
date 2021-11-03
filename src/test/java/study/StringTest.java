@@ -17,25 +17,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
-    private Set<Integer> numbers;
-
-    @BeforeEach
-    void setUp() {
-        numbers = new HashSet<>();
-        numbers.add(1);
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-    }
 
     @Test
+    @DisplayName("문자열 자르기")
     void split() {
         String[] result = "1,2".split(",");
+
         assertThat(result).contains("1");
         assertThat(result).containsExactly("1","2");
     }
 
     @Test
+    @DisplayName("split하여 1만 포함하는 배열을 반환한다.")
+    void splitOnlyOne() {
+        String[] result = "1".split(",");
+
+        assertThat(result).containsExactly("1");
+    }
+
+    @Test
+    @DisplayName("괄호를 제거하고 1,2 반환한다.")
     void substring() {
         String str = "(1,2)";
         String result = str.substring(1, 4);
@@ -44,35 +45,24 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("특정 위치의 문자 가져오기")
-    void charAt() {
+    @DisplayName("문자열의 범위를 벗어나는 값을 찾을 경우 예외를 던진다.")
+    void charAtWithInvalidRange() {
         String str = "abc";
-
-        assertThat(str.charAt(0)).isEqualTo('a');
 
         assertThatThrownBy(() -> {
             str.charAt(4);
         }).isInstanceOf(StringIndexOutOfBoundsException.class)
         .hasMessageContaining("4");
     }
-    
+
     @Test
-    @DisplayName("Set 크기 확인")
-    void size() {
-        assertThat(numbers.size()).isEqualTo(3);
-    }
+    @DisplayName("문자열의 정상 범위 안의 값을 확인한다.")
+    void charAtWithValidRange() {
+        String str = "abc";
 
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    @DisplayName("값이 존재하는지 확인")
-    void contains(int input) {
-        assertThat(numbers.contains(input)).isTrue();
-    }
-
-    @ParameterizedTest
-    @CsvSource(value= {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    @DisplayName("입력 값에 따라 결과 값이 다른 경우")
-    void containsFalse(int input, boolean expected) {
-        Assertions.assertEquals(numbers.contains(input), expected);
+        assertThat(str.charAt(0)).isEqualTo('a');
+        assertThat(str.charAt(2)).isEqualTo('c');
+        assertThat(str.length()).isEqualTo(3);
     }
 }
+
