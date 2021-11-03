@@ -36,3 +36,6 @@
 - Result view 구현
   - view() 를 호출하면 "실행 결과"를 프린트 한다.
   - GameHistory를 받으면 순서대로 프린트 한다.
+- Position 구현
+  - Car의 위치를 래핑한 Position 객체를 생성한다.
+  - move() 메서드를 받으면 position 값이 증가한다.
