@@ -61,6 +61,14 @@ class CalculatorTest {
 
     }
 
+    @ValueSource(strings = "3 * 2 * 2 5")
+    @ParameterizedTest(name = "{arguments} input이 규격에 안맞으면, 예외가 발생한다.")
+    void calculateExceptionTest2(String input) {
+
+        assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculate(input));
+
+    }
+
     @CsvSource(value = {"3 / 2 * 3=3", "4 / 2 + 3=5", "2 - 1 * 5=5"}, delimiter = '=')
     @ParameterizedTest(name = "{arguments} 결과 테스트")
     void calculateTest(String input, int expected) {
