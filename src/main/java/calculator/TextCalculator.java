@@ -62,7 +62,7 @@ public class TextCalculator {
                 this.operator = Operator.getInstance(strings[i]);
             }
 
-            if (this.numbers.size() == 2 && this.operator != null) {
+            if (shouldAccumulate(this.numbers, this.operator)) {
                 result = calculation(this.numbers, this.operator);
                 this.numbers.clear();
                 this.numbers.add(result);
@@ -98,5 +98,12 @@ public class TextCalculator {
         }
 
         return result;
+    }
+
+    private boolean shouldAccumulate(List<Integer> numbers, Operator operator) {
+        if (numbers == null || numbers.isEmpty() || operator == null) {
+            return false;
+        }
+        return numbers.size() == 2 && operator != null;
     }
 }
