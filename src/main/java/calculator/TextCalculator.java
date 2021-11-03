@@ -44,17 +44,17 @@ public class TextCalculator {
             throw new IllegalArgumentException();
         }
 
-        String[] strings = input.split(" ");
+        String[] split = input.split(" ");
 
         int result = 0;
-        for (int i = 0; i < strings.length; i++) {
-            String s = strings[i];
+        for (int i = 0; i < split.length; i++) {
+            String s = split[i];
 
             if (s == null || s.isEmpty()) {
                 throw new IllegalArgumentException();
             }
 
-            setValues(i, strings[i]);
+            setValues(i, split[i]);
 
             if (shouldCalculation()) {
                 result = calculation();
