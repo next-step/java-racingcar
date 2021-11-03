@@ -1,9 +1,8 @@
-package racingcar.domain;
+package racingcar.service.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.service.domain.Car;
 import racingcar.service.strategy.Rule;
 
 import static org.assertj.core.api.Assertions.assertThat;

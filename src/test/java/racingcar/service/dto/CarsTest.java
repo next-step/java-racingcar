@@ -1,9 +1,8 @@
-package racingcar.dto;
+package racingcar.service.dto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.service.domain.Car;
-import racingcar.service.dto.Cars;
 
 import java.util.Arrays;
 import java.util.List;
