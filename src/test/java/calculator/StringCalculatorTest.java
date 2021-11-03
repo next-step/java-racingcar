@@ -2,7 +2,8 @@ package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import validator.EmptyInputValidator;
 import validator.IValidator;
 import validator.OperatorValidator;
@@ -26,10 +27,10 @@ public class StringCalculatorTest {
         stringCalculator = new StringCalculator(validationChecker, calculator);
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"2 + 3 * 4 / 2,10", "2 + 3 * 4 * 2 + -5,35"})
     @DisplayName("StringCalculator 통합 테스트")
-    void integratedTest(){
-        assertThat(stringCalculator.calculate("2 + 3 * 4 / 2")).isEqualTo(10);
-        assertThat(stringCalculator.calculate("2 + 3 * 4 * 2 + -5")).isEqualTo(35);
+    void integratedTest(String input, int expected){
+        assertThat(stringCalculator.calculate(input)).isEqualTo(expected);
     }
 }

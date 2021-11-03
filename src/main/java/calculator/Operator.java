@@ -33,12 +33,12 @@ public enum Operator {
 
     public abstract int operate(int x, int y);
 
-    public static boolean isOperator(String s) {
-        return Arrays.stream(Operator.values()).anyMatch((o) -> o.symbol.equals(s));
+    public static boolean isOperator(String symbol) {
+        return Arrays.stream(Operator.values()).anyMatch((o) -> o.symbol.equals(symbol));
     }
 
-    public static Operator get(String s) {
-        return Arrays.stream(Operator.values()).filter((o) -> o.symbol.equals(s))
+    public static Operator get(String symbol) {
+        return Arrays.stream(Operator.values()).filter((o) -> o.symbol.equals(symbol))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("variable is not operator"));
     }

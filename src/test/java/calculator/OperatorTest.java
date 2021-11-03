@@ -17,35 +17,32 @@ public class OperatorTest {
         assertThat(Operator.isOperator(input)).isEqualTo(expected);
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"2,5,7", "3,8,11", "1,1,2"})
     @DisplayName("덧셈 로직 테스트하기")
-    void plusTest() {
-        assertThat(Operator.PLUS.operate(2,5)).isEqualTo(7);
-        assertThat(Operator.PLUS.operate(3,8)).isEqualTo(11);
-        assertThat(Operator.PLUS.operate(1,1)).isEqualTo(2);
+    void plusTest(int x, int y, int expected) {
+        assertThat(Operator.PLUS.operate(x,y)).isEqualTo(expected);
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"5,5,0", "8,3,5", "8,11,-3"})
     @DisplayName("뺄셈 로직 테스트하기")
-    void minusTest() {
-        assertThat(Operator.MINUS.operate(5,5)).isEqualTo(0);
-        assertThat(Operator.MINUS.operate(8,3)).isEqualTo(5);
-        assertThat(Operator.MINUS.operate(8,11)).isEqualTo(-3);
+    void minusTest(int x, int y, int expected) {
+        assertThat(Operator.MINUS.operate(x,y)).isEqualTo(expected);
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"5,5,25", "8,3,24", "8,11,88"})
     @DisplayName("뺄셈 로직 테스트하기")
-    void timesTest() {
-        assertThat(Operator.TIMES.operate(5,5)).isEqualTo(25);
-        assertThat(Operator.TIMES.operate(8,3)).isEqualTo(24);
-        assertThat(Operator.TIMES.operate(8,11)).isEqualTo(88);
+    void timesTest(int x, int y, int expected) {
+        assertThat(Operator.TIMES.operate(x,y)).isEqualTo(expected);
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"10,5,2", "6,2,3"})
     @DisplayName("나눗셈 로직 테스트하기")
-    void divideTest() {
-        assertThat(Operator.DIVIDE.operate(10,5)).isEqualTo(2);
-        assertThat(Operator.DIVIDE.operate(6,2)).isEqualTo(3);
+    void divideTest(int x, int y, int expected) {
+        assertThat(Operator.DIVIDE.operate(x,y)).isEqualTo(expected);
     }
 
     @Test
