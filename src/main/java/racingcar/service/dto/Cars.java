@@ -26,4 +26,3 @@ public class Cars {
         return carList.stream().map(Car::getPosition).collect(Collectors.toList());
     }
 }
-

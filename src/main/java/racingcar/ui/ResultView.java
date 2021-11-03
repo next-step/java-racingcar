@@ -2,9 +2,6 @@ package racingcar.ui;
 
 import racingcar.service.dto.Cars;
 
-/**
- * Output UI
- */
 public class ResultView implements Output {
     private static final String DASH = "-";
 

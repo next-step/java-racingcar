@@ -1,11 +1,8 @@
 package racingcar.service.domain;
 
-import racingcar.utils.RandomUtils;
+import racingcar.service.strategy.Rule;
 
 public class Car {
-    private static final int MIN_NUMBER = 4;
-    private static final int MAX_NUMBER = 10;
-
     private int id;
     private int position;
 
@@ -13,8 +10,8 @@ public class Car {
         this.id = id;
     }
 
-    public void move() {
-        if (checkCondition())
+    public void move(Rule rule) {
+        if (rule.checkCondition())
             position++;
     }
 
@@ -24,9 +21,5 @@ public class Car {
 
     public String toString() {
         return String.format("id : %d, position : %d", id, position);
-    }
-
-    private boolean checkCondition() {
-        return MIN_NUMBER > RandomUtils.getRandomNumber(MAX_NUMBER);
     }
 }
