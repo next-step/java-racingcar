@@ -22,4 +22,14 @@ public class StringTest {
         String result = str.substring(1, str.length() - 1);
         assertThat(result).isEqualTo("1,2");
     }
+
+    @Test
+    @DisplayName("charAt() 메소드 사용 시 위치 값을 벗어나면 IndexOutOfBoundsException 발생")
+    void charAt() {
+        int input = 6;
+
+        assertThatThrownBy(() -> "abc".charAt(input))
+                .isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessage(String.format("String index out of range: %s", input));
+    }
 }
