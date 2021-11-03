@@ -9,9 +9,9 @@
   - 시도할 횟수를 입력받는다.
 - ResultView
   - 사용자가 입력한 정보에 따라 게임 진행 결과를 출력한다.
-- Generator
-  - RandomGenerator
-    - 전진 조건을 위한 특정 범위의 랜덤한 값을 생성한다.
+- MoveRule
+  - RandomMoveRule
+    - 특정 범위의 랜덤한 값을 생성후 이동 조건인지 판별한다.
 - Model
   - RacingGame
     - 전달 받은 자동차수와 라운드수를 검증한다. 
