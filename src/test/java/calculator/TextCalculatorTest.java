@@ -69,6 +69,7 @@ class TextCalculatorTest {
     @Test
     void throwExceptionIfWrongOperator() {
         assertThatThrownBy(() -> Operator.getInstance("%")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Operator.getInstance("* *")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -79,5 +80,13 @@ class TextCalculatorTest {
     @Test
     void throwExceptionIfInputWrongValue() {
         assertThatThrownBy(() -> calculator.calculate("1" + "+ " + "1")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> calculator.calculate("1" + " + " + " * " + "1")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> calculator.calculate("1" + " 1 " + " 2 " + "*")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> calculator.calculate(null)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void throwExceptionIfDivideByZero() {
+        assertThatThrownBy(() -> calculator.calculate("1 / 0")).isInstanceOf(ArithmeticException.class);
     }
 }
