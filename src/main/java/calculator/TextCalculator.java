@@ -40,7 +40,7 @@ public class TextCalculator {
     private Operator operator;
 
     public int calculate(String input) {
-        if (input == null || input.isEmpty()) {
+        if (isNullOrEmpty(input)) {
             throw new IllegalArgumentException();
         }
 
@@ -50,7 +50,7 @@ public class TextCalculator {
         for (int i = 0; i < split.length; i++) {
             String s = split[i];
 
-            if (s == null || s.isEmpty()) {
+            if (isNullOrEmpty(s)) {
                 throw new IllegalArgumentException();
             }
 
@@ -114,5 +114,9 @@ public class TextCalculator {
             return;
         }
         this.operator = Operator.getInstance(input);
+    }
+
+    private boolean isNullOrEmpty(String input) {
+        return input == null || input.isEmpty();
     }
 }
