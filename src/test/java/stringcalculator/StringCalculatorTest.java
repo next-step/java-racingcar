@@ -61,5 +61,11 @@ class StringCalculatorTest {
         assertThatThrownBy(() -> stringCalculator.calc(s)).isInstanceOf(NotFoundOperatorException.class);
     }
 
+    @ParameterizedTest
+    @DisplayName("NumberException test")
+    @ValueSource(strings = {"k + k", "c - c", "t * t"})
+    void numberExceptionTest(String s) {
+           assertThatThrownBy(() -> stringCalculator.calc(s)).isInstanceOf(IllegalArgumentException.class);
+    }
 
 }
