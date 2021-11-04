@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -18,15 +19,9 @@ public class CalculatorTest {
 
     @ParameterizedTest(name = "test invalid input: {arguments}")
     @NullSource
-    @ValueSource(strings = {"", "+", "3", "1 $ 2", "6234 54", "3 + - 3", "4 - 1 /"})
+    @EmptySource
     public void testInvalidInput(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> cal.calculate(input));
-    }
-
-    @ParameterizedTest(name = "test invalid operator: {arguments}")
-    @CsvSource(value = {"3 # 5", "8 6 3", "5 not-a-operator 3"})
-    public void testInvalidOperator(String command) {
-        assertThatIllegalArgumentException().isThrownBy(() -> cal.calculate(command));
     }
 
     @ParameterizedTest(name = "test simple calculate: {arguments}")
@@ -46,16 +41,32 @@ public class CalculatorTest {
         assertThat(cal.calculate(command)).isEqualTo(expected);
     }
 
-    @Test
-    public void testParseInvalidCommand() {
-        final String invalid = "1 2";
+    @ParameterizedTest(name = "test parse invalid input: {arguments}")
+    @NullSource
+    @EmptySource
+    @ValueSource(strings = {
+            "1 2", // 숫자만 두개
+            "1 2 3", // 숫자만 세개
+            "+", // 연산자만
+            "3", // 숫자만
+            "3-3", // 띄어쓰기 없음
+            "3 + - 3", // 연산자가 연속으로 두개
+            "4 - 1 /", // 마지막에 연산자로 끝남
+            "3 # 5", // 이상한 연산자 #1
+            "5 not-a-operator 3" // 이상한 연산자 #2
+    })
+    public void testParseInvalidCommand(String invalid) {
         assertThatIllegalArgumentException().isThrownBy(() -> cal.parseCommand(invalid));
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"1 2 3 4 5,1;2;3;4;5", "1  2  3,1;2;3"})
+    @ParameterizedTest(name = "test parse input: {arguments}")
+    @CsvSource(value = {
+            "8 - 3,8;-;3", // 간단한 수식
+            "5  * 3,5;*;3",  // 띄어쓰기 두개 허용
+            "5 * 3 + 4 / 2 + 14 - 3 * 2 + 5 / 2,5;*;3;+;4;/;2;+;14;-;3;*;2;+;5;/;2" // 복잡한 수식
+    })
     public void testParseCommand(String command, String expected) {
-        assertThat(cal.parseCommand(command).collect(Collectors.joining(";"))).isEqualTo(expected);
+        assertThat(String.join(";", cal.parseCommand(command))).isEqualTo(expected);
     }
 
     @Test
