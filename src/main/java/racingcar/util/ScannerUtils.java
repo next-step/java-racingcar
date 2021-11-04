@@ -2,8 +2,11 @@ package racingcar.util;
 
 import java.util.Scanner;
 
+import racingcar.exception.UtilCreationException;
+
 public final class ScannerUtils {
 	private ScannerUtils() {
+		throw new UtilCreationException();
 	}
 
 	public static int scanInt() {
