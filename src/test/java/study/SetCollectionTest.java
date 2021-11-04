@@ -27,13 +27,13 @@ public class SetCollectionTest {
     }
 
     @Test
-    @DisplayName("Set 크기 확인")
+    @DisplayName("Set 크기를 확인한다.")
     void size() {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
     @Test
-    @DisplayName("Set 데이터 추가 후 크기 확인")
+    @DisplayName("Set 데이터 추가 후 크기를 확인한다.")
     void sizeAdd() {
         numbers.add(4);
         numbers.add(5);
@@ -43,14 +43,14 @@ public class SetCollectionTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    @DisplayName("값이 존재하는지 확인")
+    @DisplayName("값이 존재하는지 확인한다.")
     void contains(int input) {
         assertThat(numbers.contains(input)).isTrue();
     }
 
     @ParameterizedTest
     @CsvSource(value= {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    @DisplayName("입력 값에 따라 결과 값이 다른 경우")
+    @DisplayName("입력 값에 따라 결과 값이 다른 경우를 확인한다.")
     void containsFalse(int input, boolean expected) {
         Assertions.assertEquals(numbers.contains(input), expected);
     }
