@@ -11,7 +11,7 @@ public class OilTank {
         return new OilTank(oils);
     }
 
-    OilTank(List<Oil> oils) {
+    public OilTank(List<Oil> oils) {
         validateNotNull(oils);
         this.oils.addAll(oils);
     }
@@ -29,8 +29,21 @@ public class OilTank {
     }
 
     private void validateNotEmpty() {
-        if (oils.isEmpty()) {
+        if (isEmpty()) {
             throw new IllegalArgumentException("oilTank is empty.");
         }
     }
+
+    public boolean isEmpty() {
+        return oils.isEmpty();
+    }
+
+    @Override
+    public String toString() {
+        return "OilTank{" +
+                "oils=" + oils +
+                '}';
+
+    }
+
 }
