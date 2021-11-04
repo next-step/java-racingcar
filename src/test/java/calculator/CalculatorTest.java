@@ -1,5 +1,6 @@
 package calculator;
 
+import calculator.exception.NotSupportedOperatorException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,8 +19,8 @@ public class CalculatorTest {
 
     @Test
     @DisplayName("calculate 메소드는 사칙 연산 기호가 아닌 수식인 경우 IllegalArgumentException가 발생한다.")
-    public void 테스트_calculate_IllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> Calculator.calculate("1 & 2"));
+    public void 테스트_calculate_NotSupportedOperatorException() {
+        assertThrows(NotSupportedOperatorException.class, () -> Calculator.calculate("1 & 2"));
     }
 
 }

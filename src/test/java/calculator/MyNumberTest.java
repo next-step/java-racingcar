@@ -1,5 +1,6 @@
 package calculator;
 
+import calculator.exception.DivideByZeroException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -45,8 +46,8 @@ public class MyNumberTest {
 
     @Test
     @DisplayName("divide 메소드는 0으로 나누려고 할 때 IllegalArgumentException 예외가 발생한다")
-    void 테스트_divide_IllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    void 테스트_divide_DivideByZeroException() {
+        assertThrows(DivideByZeroException.class, () -> {
             new MyNumber("4").divide(new MyNumber("0"));
         });
     }
