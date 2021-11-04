@@ -35,5 +35,4 @@ public enum Operator {
             .findAny()
             .orElseThrow(() -> new IllegalArgumentException("operation이 잘못되었습니다."));
     }
-
 }

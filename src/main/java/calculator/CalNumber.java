@@ -23,19 +23,20 @@ public class CalNumber {
         return Operator.of(operation).apply(this, to);
     }
 
+
     public CalNumber plusBy(CalNumber calNumber) {
         return new CalNumber(this.number + calNumber.number);
     }
 
-    private CalNumber minusBy(CalNumber calNumber) {
+    public CalNumber minusBy(CalNumber calNumber) {
         return new CalNumber(this.number - calNumber.number);
     }
 
-    private CalNumber multipleBy(CalNumber calNumber) {
+    public CalNumber multipleBy(CalNumber calNumber) {
         return new CalNumber(this.number * calNumber.number);
     }
 
-    private CalNumber dividedBy(CalNumber calNumber) {
+    public CalNumber dividedBy(CalNumber calNumber) {
         return new CalNumber(this.number / calNumber.number);
     }
 
