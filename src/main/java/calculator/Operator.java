@@ -9,7 +9,7 @@ public enum Operator {
     ADDITION("+", MyNumber::plus),
     SUBSTITUTION("-", MyNumber::minus),
     MULTIPLICATION("*", MyNumber::multiply),
-    DIVISION("/", MyNumber::division);
+    DIVISION("/", MyNumber::divide);
 
     private final String value;
     private final Calculable calculable;

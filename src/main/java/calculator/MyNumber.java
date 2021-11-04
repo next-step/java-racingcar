@@ -28,7 +28,7 @@ public class MyNumber {
         return new MyNumber(this.number * number.number);
     }
 
-    public MyNumber division(MyNumber number) {
+    public MyNumber divide(MyNumber number) {
         if (number.number == 0) {
             throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
         }

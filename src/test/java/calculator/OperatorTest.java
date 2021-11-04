@@ -1,5 +1,6 @@
 package calculator;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -8,7 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class OperatorTest {
 
     @Test
-    public void 생성() {
+    @DisplayName("Operator 클래스의 of 메소드로 객체를 생성한다")
+    public void 테스트_Operator_of() {
         assertThat(Operator.of("+")).isEqualTo(Operator.ADDITION);
         assertThat(Operator.of("-")).isEqualTo(Operator.SUBSTITUTION);
         assertThat(Operator.of("*")).isEqualTo(Operator.MULTIPLICATION);
@@ -16,20 +18,15 @@ class OperatorTest {
     }
 
     @Test
-    public void 계산_연산자_예외() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            Calculator.calculate("1 & 2");
-        });
-    }
-    @Test
-    public void 생성_연산자_예외() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            Operator.of("&");
-        });
+    @DisplayName("Operator 클래스의 of 메소드로 객체를 생성할 때 사칙연산기호가 아닌 경우 " +
+            "IllegalArgumentException 예외가 발생한다.")
+    public void 테스트_Operator_of_IllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> Operator.of("&"));
     }
 
     @Test
-    public void 계산() {
+    @DisplayName("Operator 클래스의 calculate 메소드는 사칙 연산을 수행하여 결과를 반환한다.")
+    public void 테스트_Operator_calculate() {
         MyNumber first = new MyNumber("4");
         MyNumber second = new MyNumber("2");
         assertThat(Operator.ADDITION.calculate(first, second)).isEqualTo(new MyNumber("6"));
