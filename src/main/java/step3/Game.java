@@ -18,11 +18,8 @@ public class Game {
         this.moveStrategy = moveStrategy;
     }
 
-    public static Game of(Rule rule, MoveStrategy moveStrategy) {
-        InputValidator.isNull(rule.getCount());
-        InputValidator.isNull(rule.getTime());
-
-        return new Game(rule.getCount(), rule.getTime(), moveStrategy);
+    public static Game of(GameInformation gameInformation, MoveStrategy moveStrategy) {
+        return new Game(gameInformation.getCount(), gameInformation.getTime(), moveStrategy);
     }
 
     public void start() {

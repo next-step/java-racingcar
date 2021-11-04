@@ -16,11 +16,11 @@ class GameTest {
     @Test
     void ofTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Game.of(Rule.from(null, 10), () -> true);
+            Game.of(GameInformation.create(null, 10), () -> true);
         });
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Game.of(Rule.from(10, null), () -> true);
+            Game.of(GameInformation.create(10, null), () -> true);
         });
     }
 
@@ -29,7 +29,7 @@ class GameTest {
     void moveAlwaysTest() {
         Integer count = 3;
         Integer time = 3;
-        Game game = Game.of(Rule.from(count, time), () -> true);
+        Game game = Game.of(GameInformation.create(count, time), () -> true);
 
         game.start();
 

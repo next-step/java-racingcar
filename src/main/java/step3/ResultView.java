@@ -5,19 +5,19 @@ import java.util.List;
 public class ResultView {
 
     private final GameHistory gameHistory;
-    private final Rule rule;
+    private final GameInformation gameInformation;
 
-    private ResultView(GameHistory gameHistory, Rule rule) {
+    private ResultView(GameHistory gameHistory, GameInformation gameInformation) {
         this.gameHistory = gameHistory;
-        this.rule = rule;
+        this.gameInformation = gameInformation;
     }
 
-    public static ResultView from(GameHistory gameHistory, Rule rule) {
-        return new ResultView(gameHistory, rule);
+    public static ResultView from(GameHistory gameHistory, GameInformation gameInformation) {
+        return new ResultView(gameHistory, gameInformation);
     }
 
     public void view() {
-        Integer time = rule.getTime();
+        Integer time = gameInformation.getTime();
         System.out.println("실행 결과");
         for (int now = 0; now < time; now++) {
             printHistory(gameHistory.getHistory(now));
