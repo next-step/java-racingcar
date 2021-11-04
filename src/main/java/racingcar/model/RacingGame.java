@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import java.util.Objects;
+
 import racingcar.rule.MoveRule;
 import racingcar.util.NumberUtils;
 
@@ -14,6 +16,12 @@ public class RacingGame {
 		this.moveRule = moveRule;
 		this.round = Round.create(numberOfRounds);
 		this.cars = Cars.create(numberOfCars);
+	}
+
+	RacingGame(MoveRule moveRule, Round round, Cars cars) {
+		this.moveRule = moveRule;
+		this.round = round;
+		this.cars = cars;
 	}
 
 	private void validate(int numberOfRounds, int numberOfCars) {
@@ -36,6 +44,30 @@ public class RacingGame {
 	public void moveOnce() {
 		round.increase();
 		cars.move(moveRule);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+
+		RacingGame that = (RacingGame)o;
+
+		if (!Objects.equals(moveRule, that.moveRule))
+			return false;
+		if (!Objects.equals(round, that.round))
+			return false;
+		return Objects.equals(cars, that.cars);
+	}
+
+	@Override
+	public int hashCode() {
+		int result = moveRule != null ? moveRule.hashCode() : 0;
+		result = 31 * result + (round != null ? round.hashCode() : 0);
+		result = 31 * result + (cars != null ? cars.hashCode() : 0);
+		return result;
 	}
 
 	@Override

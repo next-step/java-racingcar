@@ -2,16 +2,21 @@ package racingcar.model;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import racingcar.rule.FixedTrueMoveRule;
 import racingcar.rule.MoveRule;
-import racingcar.rule.RandomMoveRule;
 
 class RacingGameTest {
-	private static final MoveRule MOVE_RULE = new RandomMoveRule();
+	private static final MoveRule MOVE_RULE = new FixedTrueMoveRule();
+	private static final int DEFAULT_NUMBER_OF_ROUNDS = 3;
+	private static final int DEFAULT_NUMBER_OF_CARS = 3;
 
 	@DisplayName("유효한 파라미터 객체 생성 검증")
 	@ParameterizedTest(name = "{index}. numberOfRounds : {0}, numberOfCars : {1}")
@@ -53,10 +58,22 @@ class RacingGameTest {
 
 		// when
 		racingGame.moveOnce();
+
+		// then
+		assertThat(racingGame).isEqualTo(createMovedOnceRacingGame());
 	}
 
 	private RacingGame createDefaultRacingGame() {
-		return RacingGame.create(MOVE_RULE, 3, 3);
+		return RacingGame.create(MOVE_RULE, DEFAULT_NUMBER_OF_ROUNDS, DEFAULT_NUMBER_OF_CARS);
+	}
+
+	private RacingGame createMovedOnceRacingGame() {
+		List<Car> expectedCars = new ArrayList<>();
+		for (int i = 0; i < DEFAULT_NUMBER_OF_ROUNDS; i++) {
+			expectedCars.add(new Car(new Position(Position.DEFAULT_POSITION + 1)));
+		}
+		Round round = new Round(Round.FIRST_ROUND + 1, DEFAULT_NUMBER_OF_ROUNDS);
+		return new RacingGame(MOVE_RULE, round, Cars.create(expectedCars));
 	}
 
 }
