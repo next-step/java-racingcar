@@ -43,5 +43,14 @@ class StringCalculatorTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @DisplayName("divide test")
+    @CsvSource({"2 / 1, 2", "2 / 2, 1", "6 / 3, 2"})
+    void divideTest(String s, int expected) {
+        int actual = stringCalculator.calc(s);
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
 
 }
