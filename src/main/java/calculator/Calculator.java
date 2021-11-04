@@ -31,21 +31,21 @@ public class Calculator {
         }
     }
 
-    private int calculate(int first, String operation, int second) {
+    private CalNumber calculate(CalNumber first, String operation, CalNumber second) {
         if (operation.equals("+")) {
-            return first + second;
+            return first.plusBy(second);
         }
 
         if (operation.equals("-")) {
-            return first - second;
+            return first.minusBy(second);
         }
 
         if (operation.equals("*")) {
-            return first * second;
+            return first.multipleBy(second);
         }
 
         if (operation.equals("/")) {
-            return first / second;
+            return first.dividedBy(second);
         }
 
         throw new IllegalArgumentException("operation이 잘못되었습니다.");

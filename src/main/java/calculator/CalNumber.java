@@ -19,10 +19,30 @@ public class CalNumber {
     }
 
 
+<<<<<<< HEAD
     public CalNumber calculate(CalNumber to, String operation) {
         return Operator.of(operation).apply(this, to);
     }
 
+=======
+    public CalNumber plusBy(CalNumber calNumber) {
+        return new CalNumber(this.number + calNumber.number);
+    }
+
+    public CalNumber minusBy(CalNumber calNumber) {
+        return new CalNumber(this.number - calNumber.number);
+    }
+
+    public CalNumber multipleBy(CalNumber calNumber) {
+        return new CalNumber(this.number * calNumber.number);
+    }
+
+    public CalNumber dividedBy(CalNumber calNumber) {
+        return new CalNumber(this.number / calNumber.number);
+    }
+
+
+>>>>>>> refactor: 규칙 3: 모든 원시값과 문자열 포장 적용
     @Override
     public boolean equals(Object o) {
         if (this == o) {
