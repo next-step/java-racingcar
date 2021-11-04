@@ -32,24 +32,20 @@ public class Formula {
                 .map(Operand::new)
                 .collect(Collectors.toList());
 
-        if (operandList.isEmpty()) {
-            throw new IllegalArgumentException("피연산자가 1개 이상이 필요합니다.");
-        }
-
         this.operatorList = Arrays.stream(splitFormula)
                 .filter(Operator::isValid)
                 .map(Operator::of)
                 .collect(Collectors.toList());
 
+        if (operandList.isEmpty()) {
+            throw new IllegalArgumentException("피연산자가 1개 이상이 필요합니다.");
+        }
         if (operatorList.isEmpty()) {
             throw new IllegalArgumentException("연산자가 1개 이상이 필요합니다.");
         }
         if (operandList.size() - operatorList.size() != 1) {
             throw new IllegalArgumentException("연산자와 피연산자의 개수가 올바르지 않습니다.");
         }
-
-        Collections.reverse(operandList);
-        Collections.reverse(operatorList);
     }
 
     public List<Operand> getOperandList() {

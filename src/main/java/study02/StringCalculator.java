@@ -1,5 +1,6 @@
 package study02;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
@@ -17,6 +18,9 @@ public class StringCalculator {
     }
 
     private StringCalculator(List<Operand> operandList, List<Operator> operatorList) {
+        Collections.reverse(operandList);
+        Collections.reverse(operatorList);
+
         operandStack.addAll(operandList);
         operatorStack.addAll(operatorList);
     }
