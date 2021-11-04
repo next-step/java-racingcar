@@ -3,6 +3,7 @@ package calculation;
 public class Data {
 	private static final String NULL_ERROR_MESSAGE = "error : null 값은 사용할수 없습니다.";
 	private static final String EMPTY_ERROR_MESSAGE = "error : 공백은 사용할수 없습니다.";
+	private static final String EMPTY = " ";
 	private final String[] data;
 
 	public Data(String data) {
@@ -24,7 +25,7 @@ public class Data {
 	}
 
 	private String[] emptyDataSplit(String data) {
-		return data.split(" ");
+		return data.split(EMPTY);
 	}
 
 	public int size() {
