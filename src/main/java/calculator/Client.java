@@ -12,6 +12,6 @@ public class Client {
         Calculator calculator = new Calculator();
 
         Long result = calculator.execute(scanner.nextLine());
-        System.out.println(String.format("결과 : %d", result));
+        System.out.printf("결과 : %d\n", result);
     }
 }
