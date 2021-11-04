@@ -2,22 +2,24 @@ package calculator;
 
 public class Calculator {
 
+    private static final String SEPARATOR = " ";
+
     public int calculate(String input) {
-        String[] split = input.split(" ");
+        String[] split = input.split(SEPARATOR);
 
         CalNumber first = new CalNumber(split[0]);
-        String operation = split[1];
+        String symbol = split[1];
         CalNumber second = new CalNumber(split[2]);
 
-        CalNumber result = first.calculate(second, operation);
+        CalNumber result = first.calculate(second, symbol);
 
         for (int i = 3; i < split.length; i += 2) {
-
             isValidLength(split, i);
-            CalNumber to = new CalNumber(split[i + 1]);
-            operation = split[i];
 
-            result = result.calculate(to, operation);
+            CalNumber to = new CalNumber(split[i + 1]);
+            symbol = split[i];
+
+            result = result.calculate(to, symbol);
         }
 
         return result.getNumber();
