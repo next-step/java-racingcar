@@ -55,6 +55,13 @@ class StringCalculatorTest {
     }
 
     @ParameterizedTest
+    @DisplayName("사칙 연산 테스트")
+    @CsvSource({"2 + 1 - 1, 2", "2 / 2 + 3 * 2, 8", "6 - 3 + 1 * 2 / 2, 4"})
+    void calcTest(String s, int expected) {
+        assertThat(stringCalculator.calc(s)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
     @DisplayName("연산자 예외")
     @ValueSource(strings = {"1 { 1", "2 [ 2", "3 ^ 3", "1 $ 2"})
     void operatorException(String s) {
