@@ -3,6 +3,9 @@ package edu.nextstep.camp;
 import java.util.Random;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -21,12 +24,11 @@ public class NumberTest {
         assertThat(n.equals("5")).isTrue();
     }
 
-    @Test
-    @SuppressWarnings("all")
-    public void createFailed() {
-        assertThatIllegalArgumentException().isThrownBy(() -> Number.of(null));
-        assertThatIllegalArgumentException().isThrownBy(() -> Number.of(""));
-        assertThatIllegalArgumentException().isThrownBy(() -> Number.of("null")); // not-a-number test
+    @ParameterizedTest
+    @NullSource
+    @ValueSource(strings = {"", "not-a-number"})
+    public void createFailed(String number) {
+        assertThatIllegalArgumentException().isThrownBy(() -> Number.of(number));
     }
 
     @Test

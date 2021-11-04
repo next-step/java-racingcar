@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,14 +17,10 @@ public class CalculatorTest {
     final Calculator cal = new Calculator();
 
     @ParameterizedTest(name = "test invalid input: {arguments}")
+    @NullSource
     @ValueSource(strings = {"", "+", "3", "1 $ 2", "6234 54", "3 + - 3", "4 - 1 /"})
     public void testInvalidInput(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> cal.calculate(input));
-    }
-
-    @Test
-    public void testNullInput() {
-        assertThatIllegalArgumentException().isThrownBy(() -> cal.calculate(null));
     }
 
     @ParameterizedTest(name = "test invalid operator: {arguments}")
