@@ -1,5 +1,8 @@
 package calculator;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Calculator {
 
     // calculator version 1
@@ -39,12 +42,21 @@ public class Calculator {
 
     // calculator version 2
     public static MyNumber calculatorByMyNumber(String text) {
-        String[] values = text.split(" ");
-        MyNumber first = new MyNumber(values[0]);
-        String operator = values[1];
-        MyNumber second = new MyNumber(values[2]);
+        List<String> values = Arrays.asList(text.split(" "));
 
-        return calculatorByMyNumber(first, operator, second);
+        MyNumber first = new MyNumber(values.get(0)), second;
+        int index = 1;
+
+        while (values.size() > index) {
+
+            String operator = values.get(index++);
+
+            second = new MyNumber(values.get(index++));
+
+            first = calculatorByMyNumber(first, operator, second);
+        }
+
+        return first;
     }
 
     private static MyNumber calculatorByMyNumber(MyNumber first, String operator, MyNumber second) {

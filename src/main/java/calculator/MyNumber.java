@@ -8,7 +8,7 @@ public class MyNumber {
     }
 
     public MyNumber(String s) {
-        this(Integer.parseInt(s));
+        this(Integer.parseInt(validNull(s)));
     }
 
     public int getNumber() {
@@ -34,6 +34,18 @@ public class MyNumber {
     public MyNumber divide(MyNumber other) {
         valid(other);
         return new MyNumber(number / other.number); // 왜 getNumber(); 는 안되는가?
+    }
+
+    private static String validNull(String text) {
+        if (text == null) {
+            throw new IllegalArgumentException("값이 null 일 수 없습니다.");
+        }
+
+        if (text.isEmpty()) {
+            throw new IllegalArgumentException("값이 공백일 수 없습니다.");
+        }
+
+        return text;
     }
 
     private void valid(MyNumber other) {
