@@ -25,5 +25,14 @@ class StringCalculatorTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @DisplayName("minus test")
+    @CsvSource({"1 - 2, -1", "2 - 2, 0", "3 - 2, 1"})
+    void minusTest(String s, int expected) {
+        int actual = stringCalculator.calc(s);
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
 
 }
