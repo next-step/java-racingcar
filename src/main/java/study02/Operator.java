@@ -1,10 +1,7 @@
 package study02;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.function.BiFunction;
-import java.util.stream.Collectors;
 
 public enum Operator {
     PLUS("+", (first, second) -> new Operand(first.getValue() + second.getValue())),
@@ -36,7 +33,7 @@ public enum Operator {
                 .orElseThrow(() -> new IllegalArgumentException("올바른 연산자가 아닙니다."));
     }
 
-    public static boolean valid(String operator) {
+    public static boolean isValid(String operator) {
         try {
             Operator.of(operator);
         } catch (IllegalArgumentException e) {
@@ -44,18 +41,6 @@ public enum Operator {
         }
         return true;
     }
-
-    public static List<Operator> parse(String[] formula) {
-        List<Operator> operatorList = Arrays.stream(formula)
-                .filter(Operator::valid)
-                .map(Operator::of)
-                .collect(Collectors.toList());
-
-        Collections.reverse(operatorList);
-
-        return operatorList;
-    }
-
 
     @Override
     public String toString() {

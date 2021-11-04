@@ -29,7 +29,7 @@ public class StringCalculatorTest {
     @DisplayName("테스트02_문자열분리실패테스트 - 수식이 분리 과정에서 에러 발생 테스트")
     void Test02_문자열분리실패테스트(String strings) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new StringCalculator(strings));
+                .isThrownBy(() -> new Formula(strings));
     }
 
     @ParameterizedTest
@@ -84,7 +84,7 @@ public class StringCalculatorTest {
     @DisplayName("Test09_비정상입력테스트 - null 테스트")
     void Test09_비정상입력테스트() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new StringCalculator((String) null));
+                .isThrownBy(() -> new Formula(null));
     }
 
     @ParameterizedTest
@@ -92,7 +92,7 @@ public class StringCalculatorTest {
     @DisplayName("Test10_비정상입력테스트 - 빈문자, 갯수 부족 테스트")
     void Test10_비정상입력테스트(String strings) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new StringCalculator(strings));
+                .isThrownBy(() -> new Formula(strings));
     }
 
     @Test
