@@ -1,4 +1,4 @@
-package step3;
+package step3.model.car;
 
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;
@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import step3.domain.car.Location;
+import step3.domain.oil.Power;
 
 import java.util.Collections;
 import java.util.List;
@@ -14,8 +16,8 @@ import java.util.stream.Stream;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static step3.Power.INSUFFICIENT;
-import static step3.Power.SUFFICIENT;
+import static step3.domain.oil.Power.INSUFFICIENT;
+import static step3.domain.oil.Power.SUFFICIENT;
 
 class LocationTest {
 

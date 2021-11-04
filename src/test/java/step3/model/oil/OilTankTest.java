@@ -1,10 +1,13 @@
-package step3;
+package step3.model.oil;
 
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullSource;
+import step3.domain.oil.Oil;
+import step3.domain.oil.OilTank;
+import step3.domain.oil.Power;
 
 import java.util.List;
 

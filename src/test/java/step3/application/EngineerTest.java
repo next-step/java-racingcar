@@ -1,6 +1,7 @@
-package step3;
+package step3.application;
 
 import org.junit.jupiter.api.Test;
+import step3.domain.car.Car;
 
 import java.util.List;
 

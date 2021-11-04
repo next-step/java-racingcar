@@ -1,4 +1,6 @@
-package step3;
+package step3.application;
+
+import step3.domain.car.Car;
 
 import java.util.List;
 

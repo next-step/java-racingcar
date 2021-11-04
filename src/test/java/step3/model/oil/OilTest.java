@@ -1,8 +1,11 @@
-package step3;
+package step3.model.oil;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step3.domain.oil.Material;
+import step3.domain.oil.Oil;
+import step3.domain.oil.Power;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

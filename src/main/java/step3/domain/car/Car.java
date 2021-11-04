@@ -1,4 +1,7 @@
-package step3;
+package step3.domain.car;
+
+import step3.domain.oil.OilTank;
+import step3.domain.oil.Power;
 
 import java.util.List;
 

@@ -1,10 +1,12 @@
-package step3;
+package step3.domain.car;
+
+import step3.domain.oil.Power;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Collections.unmodifiableList;
-import static step3.Power.SUFFICIENT;
+import static step3.domain.oil.Power.SUFFICIENT;
 import static step3.utils.ValidationUtils.checkArgument;
 
 public class Location {

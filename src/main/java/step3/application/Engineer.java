@@ -1,4 +1,10 @@
-package step3;
+package step3.application;
+
+import step3.domain.car.Car;
+import step3.domain.car.Location;
+import step3.domain.oil.Material;
+import step3.domain.oil.OilStation;
+import step3.domain.oil.OilTank;
 
 import java.util.ArrayList;
 import java.util.List;

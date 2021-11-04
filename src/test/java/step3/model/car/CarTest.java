@@ -1,9 +1,12 @@
-package step3;
+package step3.model.car;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import step3.domain.car.Car;
+import step3.domain.car.Location;
+import step3.domain.oil.OilTank;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -11,8 +14,8 @@ import java.util.stream.Stream;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static org.assertj.core.api.Assertions.assertThat;
-import static step3.Oil.BAD;
-import static step3.Oil.GOOD;
+import static step3.domain.oil.Oil.BAD;
+import static step3.domain.oil.Oil.GOOD;
 
 class CarTest {
 
