@@ -1,10 +1,5 @@
 package study02;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Operand {
 
     private final long operand;
@@ -17,19 +12,17 @@ public class Operand {
         this.operand = operand;
     }
 
-    public static List<Operand> parse(String[] formula) {
-        List<Operand> operandList = Arrays.stream(formula)
-                .filter(it -> !Operator.valid(it))
-                .map(Operand::new)
-                .collect(Collectors.toList());
-
-        Collections.reverse(operandList);
-
-        return operandList;
-    }
-
     public long getValue() {
         return this.operand;
+    }
+
+    public static boolean isValid(String operand) {
+        try {
+            Long.parseLong(operand);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
     }
 
     @Override
