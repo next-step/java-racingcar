@@ -3,6 +3,9 @@ package step3;
 import java.util.List;
 import java.util.Stack;
 
+import static step3.utils.ValidationUtils.checkArgument;
+import static step3.utils.ValidationUtils.checkState;
+
 public class OilTank {
 
     private final Stack<Oil> oils = new Stack<>();
@@ -12,30 +15,18 @@ public class OilTank {
     }
 
     public OilTank(List<Oil> oils) {
-        validateNotNull(oils);
+        checkArgument(oils != null, "oils is required");
         this.oils.addAll(oils);
     }
 
-    private void validateNotNull(List<Oil> oils) {
-        if (oils == null) {
-            throw new IllegalArgumentException("oils is required");
-        }
-    }
-
     public Power use() {
-        validateNotEmpty();
+        checkState(isNotEmpty(), "oilTank is empty.");
         Oil oil = oils.pop();
         return oil.burn();
     }
 
-    private void validateNotEmpty() {
-        if (isEmpty()) {
-            throw new IllegalArgumentException("oilTank is empty.");
-        }
-    }
-
-    public boolean isEmpty() {
-        return oils.isEmpty();
+    public boolean isNotEmpty() {
+        return !oils.isEmpty();
     }
 
     @Override

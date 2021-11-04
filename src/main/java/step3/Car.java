@@ -2,22 +2,18 @@ package step3;
 
 import java.util.List;
 
+import static step3.utils.ValidationUtils.checkArgument;
+
 public class Car {
 
     private final OilTank oilTank;
     private final Location location;
 
     public Car(OilTank oilTank, Location location) {
-        validateNotNull(oilTank, "oilTank");
-        validateNotNull(location, "location");
+        checkArgument(oilTank != null, "oilTank is Required");
+        checkArgument(location != null, "location is Required");
         this.oilTank = oilTank;
         this.location = location;
-    }
-
-    private void validateNotNull(Object object, String paramName) {
-        if (object == null) {
-            throw new IllegalArgumentException(paramName + "is required");
-        }
     }
 
     public void fullAccelerate() {
@@ -27,7 +23,7 @@ public class Car {
     }
 
     private boolean canAccelerate() {
-        return !oilTank.isEmpty();
+        return oilTank.isNotEmpty();
     }
 
     private void accelerate() {

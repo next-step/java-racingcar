@@ -10,8 +10,7 @@ import java.util.List;
 
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 class OilTankTest {
     
@@ -32,7 +31,7 @@ class OilTankTest {
         ThrowingCallable useOil = emptyOilTank::use;
 
         //then
-        assertThatIllegalArgumentException()
+        assertThatIllegalStateException()
                 .isThrownBy(useOil)
                 .withMessage("oilTank is empty.");
     }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import static java.util.Collections.unmodifiableList;
 import static step3.Power.SUFFICIENT;
+import static step3.utils.ValidationUtils.checkArgument;
 
 public class Location {
 
@@ -17,14 +18,8 @@ public class Location {
     }
 
     private Location(Integer initialLocation) {
-        validateNotNull(initialLocation);
+        checkArgument(initialLocation != null, "initialLocation is required");
         this.currentLocation = initialLocation;
-    }
-
-    private void validateNotNull(Integer initialLocation) {
-        if (initialLocation == null) {
-            throw new IllegalArgumentException("initialLocation is required");
-        }
     }
 
     public void goForward(Power power) {
