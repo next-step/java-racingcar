@@ -12,8 +12,10 @@
     - Input을 받아와서 RacingCar를 진행함
     - RacingCar의 결과를 받아와서 output으로 전달
 - Input (UI)
+    - 세부 사항이 언제든 변경될 수 있다고 생각되서 인터페이스로 구현
     - InputView는 System.in 을 통해 입력값을 받음
 - Output (UI)
+    - 세부 사항이 언제든 변경될 수 있다고 생각되서 인터페이스로 구현
     - ResultView는 System.out 을 통해 결과값을 출력
 - Service (비즈니스 로직)
     - Car (domain)는 실제 비즈니스 로직의 도메인
