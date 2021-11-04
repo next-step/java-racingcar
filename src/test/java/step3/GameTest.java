@@ -11,17 +11,16 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 class GameTest {
 
-    private final MoveStrategy moveStrategy = new RandomMoveStrategy();
 
     @DisplayName("Game 생성 시에 RuleDto에 count나 time 은 null이면 안된다.")
     @Test
     void ofTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Game.of(Rule.from(null, 10), moveStrategy);
+            Game.of(Rule.from(null, 10), () -> true);
         });
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Game.of(Rule.from(10, null), moveStrategy);
+            Game.of(Rule.from(10, null), () -> true);
         });
     }
 

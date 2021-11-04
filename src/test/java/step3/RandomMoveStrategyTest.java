@@ -2,17 +2,20 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class RandomMoveStrategyTest {
 
-    @DisplayName("랜덤하게 true 와 false가 나온다.")
-    @Test
-    void randomTest() {
-        MoveStrategy moveStrategy = new RandomMoveStrategy();
+    @DisplayName("move condition의 값과 나오는 값에 따라 True / False가 반환 된다.")
+    @ParameterizedTest
+    @CsvSource(value = {"4:4:true", "4:5:true", "4:3:false"}, delimiter = ':')
+    void randomTest(int moveCondition, int returnItem, boolean result) {
+        MoveStrategy moveStrategy = new RandomMoveStrategy(moveCondition, () -> returnItem);
 
-        for (int i = 0; i < 10; i++) {
-            System.out.println("moveStrategy = " + moveStrategy.test());
-        }
+        assertThat(moveStrategy.test()).isEqualTo(result);
     }
 
 }
