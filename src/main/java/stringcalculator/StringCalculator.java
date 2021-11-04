@@ -1,15 +1,20 @@
 package stringcalculator;
 
-public class StringCalculator {
-    public int calc(String input) {
-        String[] split = input.split(" ");
+import static stringcalculator.StringUtils.split;
 
-        Number firstNum = Number.from(split[0]);
+public class StringCalculator {
+    private static final int FIRST_INDEX = 0;
+
+    public int calc(String input) {
+        String[] split = split(input);
+
+        Number firstNum = Number.from(split[FIRST_INDEX]);
 
         for (int i = 1; i < split.length - 1; i += 2) {
             Number secondNum = Number.from(split[i +1]);
-            String operator = split[i];
-            firstNum = Operator.calc(operator, firstNum, secondNum);
+            String symbol = split[i];
+            Operator operator = Operator.of(symbol);
+            firstNum = operator.calculate(firstNum, secondNum);
         }
 
         return firstNum.getNumber();
