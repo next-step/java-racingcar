@@ -28,4 +28,10 @@ public class SetTest {
     void parameterized(int number) {
         assertThat(numbers.contains(number)).isTrue();
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void CsvSource(int number, boolean expected){
+        assertThat(numbers.contains(number)).isEqualTo(expected);
+    }
 }
