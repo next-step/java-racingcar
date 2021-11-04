@@ -21,7 +21,7 @@ public enum Operator {
         Operator findOperator = Arrays.stream(values())
                 .filter(operator -> operator.operator.equals(operation))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(NotFoundOperatorException::new);
 
         return findOperator.calculate.apply(a, b);
     }
