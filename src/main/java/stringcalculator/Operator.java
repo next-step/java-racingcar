@@ -4,16 +4,16 @@ import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Operator {
-    PLUS("+", (a, b) -> Number.from(a.getNumber() + b.getNumber())),
-    MINUS("-", (a, b) -> Number.from(a.getNumber() - b.getNumber())),
-    MUL("*", (a, b) -> Number.from(a.getNumber() * b.getNumber())),
-    DIV("/", (a, b) -> Number.from(a.getNumber() / b.getNumber()));
+    PLUS("+", (first, second) -> Number.from(first.getNumber() + second.getNumber())),
+    MINUS("-", (first, second) -> Number.from(first.getNumber() - second.getNumber())),
+    MUL("*", (first, second) -> Number.from(first.getNumber() * second.getNumber())),
+    DIV("/", (first, second) -> Number.from(first.getNumber() / second.getNumber()));
 
-    private final String operator;
+    private final String symbol;
     private final BiFunction<Number, Number, Number> calculate;
 
-    Operator(String operator, BiFunction<Number, Number, Number> calculate) {
-        this.operator = operator;
+    Operator(String symbol, BiFunction<Number, Number, Number> calculate) {
+        this.symbol = symbol;
         this.calculate = calculate;
     }
 
