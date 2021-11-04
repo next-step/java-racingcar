@@ -1,9 +1,12 @@
 package step2;
 
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class IntegerParser implements Parser<Integer> {
+
+    private static final Pattern numericPattern = Pattern.compile("^[0-9]+$");
 
     @Override
     public List<Integer> parse(List<String> elements) {
@@ -14,6 +17,6 @@ public class IntegerParser implements Parser<Integer> {
     }
 
     private boolean isNumeric(String str) {
-        return str.matches("^[0-9]+$");
+        return numericPattern.matcher(str).matches();
     }
 }
