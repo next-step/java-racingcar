@@ -3,21 +3,21 @@ import java.util.List;
 
 public class Calculator {
 
-    public static int calc(String s) {
-        if (s == null || s.length() == 0) {
-            throw new IllegalArgumentException();
-        }
-
-        List<Integer> numbers = new LinkedList<>();
-        List<String> operators = new LinkedList<>();
-
-        String[] split = s.split(" ");
-        for (int i = 0; i < split.length; i++) {
-            init(numbers, operators, split, i);
-        }
-
-        return calc(numbers, operators);
-    }
+//    public static int calc(String s) {
+//        if (s == null || s.length() == 0) {
+//            throw new IllegalArgumentException();
+//        }
+//
+//        List<Integer> numbers = new LinkedList<>();
+//        List<String> operators = new LinkedList<>();
+//
+//        String[] split = s.split(" ");
+//        for (int i = 0; i < split.length; i++) {
+//            init(numbers, operators, split, i);
+//        }
+//
+//        return calc(numbers, operators);
+//    }
 
     private static void init(List<Integer> numbers, List<String> operators, String[] split, int i) {
         if (i % 2 == 0) {
@@ -54,4 +54,7 @@ public class Calculator {
         throw new IllegalArgumentException();
     }
 
+    public static int calc(Expression expression) {
+        return 0;
+    }
 }
