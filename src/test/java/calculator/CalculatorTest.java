@@ -3,18 +3,18 @@ package calculator;
 import calculator.exception.NotSupportedOperatorException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
-    @Test
+    @ParameterizedTest
+    @CsvSource(value = {"1 + 2:3", "3 - 2:1", "3 * 2:6", "4 / 2:2"}, delimiter = ':')
     @DisplayName("calculate 메소드는 문자열 수식을 계산한 결과를 반환한다")
-    public void 테스트_calculate() {
-        assertThat(Calculator.calculate("1 + 2")).isEqualTo(new MyNumber(3));
-        assertThat(Calculator.calculate("3 - 2")).isEqualTo(new MyNumber(1));
-        assertThat(Calculator.calculate("3 * 2")).isEqualTo(new MyNumber(6));
-        assertThat(Calculator.calculate("4 / 2")).isEqualTo(new MyNumber(2));
+    public void 테스트_calculate(String formula, int result) {
+        assertThat(Calculator.calculate(formula)).isEqualTo(new MyNumber(result));
     }
 
     @Test
