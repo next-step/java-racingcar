@@ -20,8 +20,7 @@
    2. AppClient 
       - 자동차 대수 및 시도 횟수 입력받고 게임 실행
    3. RacingGame
+      - 실제 레이싱 게임을 실행하는 클래스
       - isGameEnd : 게임이 끝인지 확인
-      - startRace : 레이스 시작  
       - moveCars : 자동차들 움직임
       - roundUp : try 업
-      - printCars : cars 출력
