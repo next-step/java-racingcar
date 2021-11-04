@@ -18,11 +18,13 @@ public class StringCalculator {
     }
 
     private StringCalculator(List<Operand> operandList, List<Operator> operatorList) {
-        Collections.reverse(operandList);
-        Collections.reverse(operatorList);
+        List<Operand> copyOperandList = operandList.subList(0, operandList.size());
+        List<Operator> copyOperatorList = operatorList.subList(0, operatorList.size());
+        Collections.reverse(copyOperandList);
+        Collections.reverse(copyOperatorList);
 
-        operandStack.addAll(operandList);
-        operatorStack.addAll(operatorList);
+        operandStack.addAll(copyOperandList);
+        operatorStack.addAll(copyOperatorList);
     }
 
     public Operand calculate() {
