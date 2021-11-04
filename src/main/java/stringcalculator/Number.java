@@ -19,19 +19,8 @@ public class Number {
         return new Number(num);
     }
 
-    public Number plus(Number other) {
-        return new Number(this.number + other.number);
-    }
-    public Number minus(Number other) {
-        return new Number(this.number - other.number);
-    }
-
-    public Number multiply(Number other) {
-        return new Number(this.number * other.number);
-    }
-
-    public Number divide(Number other) {
-        return new Number(this.number / other.number);
+    public static Number from(int num) {
+        return new Number(num);
     }
 
     public int getNumber() {
