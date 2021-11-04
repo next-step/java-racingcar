@@ -11,12 +11,12 @@ class OilTest {
     @DisplayName("좋은기름은 재료품질이 4이상일 때 나온다.")
     @ParameterizedTest(name = "[{index}] 품질이 {0} 인 재료는 {1} 기름을 만든다.")
     @CsvSource(value = {
-            "3, BAD",
-            "4, GOOD",
-            "5, GOOD",
+            "LOW_QUALITY, BAD",
+            "HIGH_QUALITY, GOOD",
+            "HIGH_QUALITY, GOOD",
     })
-    void createOil(int materialQuality, Oil expectedOil) throws Exception {
-        Oil producedOil = Oil.create(materialQuality);
+    void createOil(Material material, Oil expectedOil) throws Exception {
+        Oil producedOil = Oil.create(material);
         assertThat(producedOil).isEqualTo(expectedOil);
     }
 

@@ -4,17 +4,11 @@ public enum Oil {
     GOOD,
     BAD;
 
-    private static final int averageQuality = 4;
-
-    public static Oil create(int materialQuality) {
-        if (isGoodMaterial(materialQuality)) {
+    public static Oil create(Material material) {
+        if (material == Material.HIGH_QUALITY) {
             return GOOD;
         }
         return BAD;
-    }
-
-    private static boolean isGoodMaterial(int materialQuality) {
-        return materialQuality >= averageQuality;
     }
 
     public Power burn() {
