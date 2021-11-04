@@ -26,16 +26,10 @@ public class CalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(() -> cal.calculate(null));
     }
 
-    @ParameterizedTest(name = "test simple calculate: {arguments}")
-    @CsvSource(value = {"3,+,5,8", "8,-,3,5", "5,*,3,15"})
-    public void testCalculate(int first, String operand, int second, int expected) {
-        assertThat(cal.calculate(Number.of(first), operand, Number.of(second))).isEqualTo(Number.of(expected));
-    }
-
-    @ParameterizedTest(name = "test invalid operand: {arguments}")
-    @CsvSource(value = {"3,#,5", "8,6,3", "5,not-a-operand,3"})
-    public void testInvalidOperand(int first, String operand, int second) {
-        assertThatIllegalArgumentException().isThrownBy(() -> cal.calculate(Number.of(first), operand, Number.of(second)));
+    @ParameterizedTest(name = "test invalid operator: {arguments}")
+    @CsvSource(value = {"3 # 5", "8 6 3", "5 not-a-operator 3"})
+    public void testInvalidOperator(String command) {
+        assertThatIllegalArgumentException().isThrownBy(() -> cal.calculate(command));
     }
 
     @ParameterizedTest(name = "test simple calculate: {arguments}")
