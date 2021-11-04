@@ -12,9 +12,6 @@ import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-/**
- * Created by owen.ny on 2021/11/04.
- */
 public class SetTest {
     private Set<Integer> numbers;
 
@@ -28,22 +25,24 @@ public class SetTest {
     }
 
     @Test
-    @DisplayName("Set size 테스트")
-    public void 요구사항1() {
+    @DisplayName("Set 자료구조의 size 메서드는 보유한 요소의 갯수를 반환한다.")
+    public void 테스트_자료구조_Set_size() {
         assertThat(numbers.size()).isEqualTo(3);
+        numbers.add(10);
+        assertThat(numbers.size()).isEqualTo(4);
     }
 
-    @DisplayName("Set contains 테스트")
+    @DisplayName("Set 자료구조의 contains 메서드는 전달된 인자를 보유한 요소의 포함되어 있는지 여부를 반환한다. ")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    public void 요구사항2(int value) {
+    public void 테스트_자료구조_Set_contains(int value) {
         assertThat(numbers.contains(value)).isTrue();
     }
 
-    @DisplayName("Set contains 예외 포함 테스트")
+    @DisplayName("Set 자료구조의 contains 메서드는 전달된 인자를 보유한 요소의 포함되어 있는지 여부를 반환한다.")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    public void 요구사항3(int value, boolean result) {
+    public void 테스트_자료구조_Set_contains(int value, boolean result) {
         assertThat(numbers.contains(value)).isEqualTo(result);
     }
 }
