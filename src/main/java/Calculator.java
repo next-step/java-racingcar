@@ -13,16 +13,19 @@ public class Calculator {
 
         String[] split = s.split(" ");
         for (int i = 0; i < split.length; i++) {
-            if (i % 2 == 0) {
-                numbers.add(Integer.parseInt(split[i]));
-            }
-            if (i % 2 == 1) {
-                operators.add(split[i]);
-            }
+            init(numbers, operators, split, i);
         }
 
-        int ans = calc(numbers, operators);
-        return ans;
+        return calc(numbers, operators);
+    }
+
+    private static void init(List<Integer> numbers, List<String> operators, String[] split, int i) {
+        if (i % 2 == 0) {
+            numbers.add(Integer.parseInt(split[i]));
+        }
+        if (i % 2 == 1) {
+            operators.add(split[i]);
+        }
     }
 
     private static int calc(List<Integer> numbers, List<String> operators) {
