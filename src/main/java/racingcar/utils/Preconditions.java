@@ -10,4 +10,10 @@ public final class Preconditions {
         }
         return reference;
     }
+
+    public static void checkNumber(int request, int limit, Object errorMessage) {
+        if (request <= limit) {
+            throw new IllegalArgumentException(String.valueOf(errorMessage));
+        }
+    }
 }
