@@ -1,9 +1,10 @@
 package calculator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class MyNumberTest {
 
@@ -74,5 +75,14 @@ public class MyNumberTest {
             Calculator.calculatorByMyNumber("4 & 2");
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    void isBlank_ShouldReturnTrueForNullOrBlankStrings(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new MyNumber(input);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 }
