@@ -9,9 +9,19 @@
    **- TODO 리스트** 
    1. 자동차 4이상일 경우 움직이는 로직 구현 
    2. 랜덤값이 주어질 경우 움직이는 로직 구현
+   3. 클라이언트 로직 구현
+   4. RacingCar 클래스 구현
 
-   **기능 목록**
+   **- 기능 목록**
    1. Car 도메인
       - move : 위치 출발,정지
       - getRandomNum : 0~9 랜덤값 생성
       - isMovable : 4~9 값이면 true 반환
+   2. AppClient 
+      - 자동차 대수 및 시도 횟수 입력받고 게임 실행
+   3. RacingGame
+      - isGameEnd : 게임이 끝인지 확인
+      - startRace : 레이스 시작  
+      - moveCars : 자동차들 움직임
+      - roundUp : try 업
+      - printCars : cars 출력
