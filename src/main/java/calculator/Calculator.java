@@ -13,6 +13,7 @@ public class Calculator {
 
         CalNumber result = first.calculate(second, symbol);
 
+
         for (int i = 3; i < split.length; i += 2) {
             isValidLength(split, i);
 
@@ -20,6 +21,7 @@ public class Calculator {
             symbol = split[i];
 
             result = result.calculate(to, symbol);
+
         }
 
         return result.getNumber();
@@ -30,26 +32,5 @@ public class Calculator {
             throw new IllegalArgumentException("input 규격이 맞지 않습니다.");
         }
     }
-
-    private CalNumber calculate(CalNumber first, String operation, CalNumber second) {
-        if (operation.equals("+")) {
-            return first.plusBy(second);
-        }
-
-        if (operation.equals("-")) {
-            return first.minusBy(second);
-        }
-
-        if (operation.equals("*")) {
-            return first.multipleBy(second);
-        }
-
-        if (operation.equals("/")) {
-            return first.dividedBy(second);
-        }
-
-        throw new IllegalArgumentException("operation이 잘못되었습니다.");
-    }
-
 
 }
