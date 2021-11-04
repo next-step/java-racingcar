@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Operator {
-    PLUS("+", Number::plus),
-    MINUS("-", Number::minus),
-    MUL("*", Number::multiply),
-    DIV("/", Number::divide);
+    PLUS("+", (a, b) -> Number.from(a.getNumber() + b.getNumber())),
+    MINUS("-", (a, b) -> Number.from(a.getNumber() - b.getNumber())),
+    MUL("*", (a, b) -> Number.from(a.getNumber() * b.getNumber())),
+    DIV("/", (a, b) -> Number.from(a.getNumber() / b.getNumber()));
 
     private final String operator;
     private final BiFunction<Number, Number, Number> calculate;
