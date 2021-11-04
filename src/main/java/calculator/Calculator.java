@@ -77,5 +77,11 @@ public class Calculator {
         throw new IllegalArgumentException("사칙연산 기호를 확인하세요");
     }
 
+    // 에러 나는 코드
+    private static MyNumber calculatorByMyNumber2(MyNumber first, String operator, MyNumber seconds) {
+        Operation operation = Operation.valueOf(operator);
+        return operation.apply(first, seconds);
+    }
+
 
 }
