@@ -25,6 +25,10 @@ public class Car {
 		}
 	}
 
+	public String getCurrentPosition() {
+		return position.convertPositionToDash();
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
@@ -44,6 +48,8 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return position.convertPositionToDash();
+		return "Car{" +
+			"position=" + position +
+			'}';
 	}
 }

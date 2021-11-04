@@ -46,6 +46,10 @@ public class RacingGame {
 		cars.move(moveRule);
 	}
 
+	public String getCurrentGameStatus() {
+		return cars.getCurrentPosition();
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
@@ -72,6 +76,10 @@ public class RacingGame {
 
 	@Override
 	public String toString() {
-		return cars.toString();
+		return "RacingGame{" +
+			"moveRule=" + moveRule +
+			", round=" + round +
+			", cars=" + cars +
+			'}';
 	}
 }

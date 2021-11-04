@@ -48,4 +48,10 @@ public class Position {
 		return position != null ? position.hashCode() : 0;
 	}
 
+	@Override
+	public String toString() {
+		return "Position{" +
+			"position=" + position +
+			'}';
+	}
 }

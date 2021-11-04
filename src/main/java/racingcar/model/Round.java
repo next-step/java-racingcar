@@ -58,4 +58,12 @@ public class Round {
 		result = 31 * result + (endRound != null ? endRound.hashCode() : 0);
 		return result;
 	}
+
+	@Override
+	public String toString() {
+		return "Round{" +
+			"currentRound=" + currentRound +
+			", endRound=" + endRound +
+			'}';
+	}
 }

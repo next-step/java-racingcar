@@ -43,6 +43,15 @@ public class Cars {
 		cars.forEach(car -> car.move(moveRule));
 	}
 
+	public String getCurrentPosition() {
+		StringBuilder builder = new StringBuilder();
+		for (Car car : cars) {
+			builder.append(car.getCurrentPosition());
+			builder.append("\n");
+		}
+		return builder.toString();
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
@@ -62,11 +71,8 @@ public class Cars {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		for (Car car : cars) {
-			builder.append(car);
-			builder.append("\n");
-		}
-		return builder.toString();
+		return "Cars{" +
+			"cars=" + cars +
+			'}';
 	}
 }
