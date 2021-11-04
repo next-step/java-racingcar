@@ -31,9 +31,9 @@ public class CalculationFormula {
 		}
 	}
 
-	private void checkIndexNumber(String formula){
+	private void checkIndexNumber(String formula) {
 		String[] numbers = separateNumber(emptyDataSplit(formula));
-		for(int i=0; i<numbers.length; i++){
+		for (int i = 0; i < numbers.length; i++) {
 			checkInputType(numbers[i]);
 		}
 	}
@@ -45,8 +45,8 @@ public class CalculationFormula {
 			.toArray(String[]::new);
 	}
 
-	private void checkInputType(String value){
-		if(!Pattern.matches(NUMBER_PATTERN, value)){
+	private void checkInputType(String value) {
+		if (!Pattern.matches(NUMBER_PATTERN, value)) {
 			throw new IllegalArgumentException(INPUT_TYPE_ERROR_MESSAGE);
 		}
 	}
