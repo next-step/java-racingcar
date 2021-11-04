@@ -7,7 +7,7 @@ public class ResultView implements Output {
 
     @Override
     public void output(int number, Cars cars) {
-        System.out.println(String.format("%d 번째 경주", number));
+        System.out.printf("%d 번째 경주%n", number);
         cars.getPositions().forEach(ResultView::print);
     }
 
