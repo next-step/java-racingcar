@@ -4,8 +4,8 @@ import racingcar.utils.Preconditions;
 
 public class InputValue {
     private static final int LIMIT_COUNT = 0;
-    private Integer carCount;
-    private Integer retryCount;
+    private final Integer carCount;
+    private final Integer retryCount;
 
     private InputValue(Integer carCount, Integer retryCount) {
         Preconditions.checkNotNull(carCount, "carCount required not null");
