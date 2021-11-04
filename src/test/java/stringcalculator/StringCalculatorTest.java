@@ -34,5 +34,14 @@ class StringCalculatorTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @DisplayName("multiply test")
+    @CsvSource({"1 * 2, 2", "2 * 2, 4", "3 * -2, -6"})
+    void multiplyTest(String s, int expected) {
+        int actual = stringCalculator.calc(s);
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
 
 }
