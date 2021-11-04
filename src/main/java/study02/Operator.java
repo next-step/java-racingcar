@@ -55,4 +55,10 @@ public enum Operator {
 
         return operatorList;
     }
+
+
+    @Override
+    public String toString() {
+        return this.operator;
+    }
 }
