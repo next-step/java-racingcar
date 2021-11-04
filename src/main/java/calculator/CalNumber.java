@@ -19,20 +19,40 @@ public class CalNumber {
     }
 
 
-    public CalNumber plusBy(CalNumber calNumber) {
+    private CalNumber plusBy(CalNumber calNumber) {
         return new CalNumber(this.number + calNumber.number);
     }
 
-    public CalNumber minusBy(CalNumber calNumber) {
+    private CalNumber minusBy(CalNumber calNumber) {
         return new CalNumber(this.number - calNumber.number);
     }
 
-    public CalNumber multipleBy(CalNumber calNumber) {
+    private CalNumber multipleBy(CalNumber calNumber) {
         return new CalNumber(this.number * calNumber.number);
     }
 
-    public CalNumber dividedBy(CalNumber calNumber) {
+    private CalNumber dividedBy(CalNumber calNumber) {
         return new CalNumber(this.number / calNumber.number);
+    }
+
+    public CalNumber calculate(CalNumber to, String operation) {
+        if (operation.equals("+")) {
+            return plusBy(to);
+        }
+
+        if (operation.equals("-")) {
+            return minusBy(to);
+        }
+
+        if (operation.equals("*")) {
+            return multipleBy(to);
+        }
+
+        if (operation.equals("/")) {
+            return dividedBy(to);
+        }
+
+        throw new IllegalArgumentException("operation이 잘못되었습니다.");
     }
 
 
