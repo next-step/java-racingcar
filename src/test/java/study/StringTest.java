@@ -2,6 +2,8 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,18 +43,14 @@ public class StringTest {
         assertThat(string.charAt(2)).isEqualTo('c');
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("charAt() 메소드 StringIndexOutOfBoundsException 테스트")
-    void charAtTest2() {
+    @ValueSource(ints = {-1, 3})
+    void charAtTest2(int index) {
         String string = "abc";
-        List<Integer> indexes = new ArrayList<>();
-        indexes.add(-1);
-        indexes.add(3);
 
-        for (Integer index : indexes) {
-            assertThatThrownBy(() -> string.charAt(index))
-                    .isInstanceOf(StringIndexOutOfBoundsException.class)
-                    .hasMessage("String index out of range: " + index);
-        }
+        assertThatThrownBy(() -> string.charAt(index))
+                .isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessage("String index out of range: " + index);
     }
 }
