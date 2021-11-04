@@ -3,6 +3,9 @@ package step3;
 import java.util.Objects;
 
 public class Position {
+
+    private final static Integer DEFAULT_POSITION = 0;
+
     private final Integer position;
 
     private Position(Integer position) {
@@ -11,6 +14,10 @@ public class Position {
 
     public static Position create(Integer position) {
         return new Position(position);
+    }
+
+    public static Position withDefaultPosition() {
+        return new Position(DEFAULT_POSITION);
     }
 
     public Position move() {

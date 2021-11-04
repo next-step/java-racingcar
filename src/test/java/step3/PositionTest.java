@@ -1,6 +1,7 @@
 package step3;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -36,5 +37,13 @@ class PositionTest {
 
         actual = Position.create(0);
         assertThat(actual.positionToString()).isEqualTo("");
+    }
+
+    @DisplayName("withDefaultPosition() 은 기본 값인 0 의 포지션을 반환한다.")
+    @Test
+    void withDefaultPositionTest() {
+        Position position = Position.withDefaultPosition();
+
+        assertThat(position).isEqualTo(Position.create(0));
     }
 }
