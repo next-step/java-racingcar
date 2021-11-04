@@ -5,6 +5,9 @@ import java.util.Objects;
 public class MyNumber {
     private final int number;
 
+    public Integer getNumber() {
+        return number;
+    }
     public MyNumber(int number) {
         this.number = number;
     }
