@@ -3,46 +3,50 @@ package calculator;
 public class Calculator {
 
     public int calculate(String input) {
-
         String[] split = input.split(" ");
 
-        int first = Integer.parseInt(split[0]);
+        CalNumber first = new CalNumber(split[0]);
         String operation = split[1];
-        int second = Integer.parseInt(split[2]);
+        CalNumber second = new CalNumber(split[2]);
 
-        int result = calculate(first, operation, second);
+        CalNumber result = calculate(first, operation, second);
 
         for (int i = 3; i < split.length; i += 2) {
 
-            if (split.length <= i + 1) {
-                throw new IllegalArgumentException("input 규격이 맞지 않습니다.");
-            }
+            isValidLength(split, i);
 
             first = result;
             operation = split[i];
-            second = Integer.parseInt(split[i + 1]);
+
+            second = new CalNumber(split[i + 1]);
 
             result = calculate(first, operation, second);
         }
 
-        return result;
+        return result.getNumber();
     }
 
-    private int calculate(int first, String operation, int second) {
+    private void isValidLength(String[] split, int i) {
+        if (split.length <= i + 1) {
+            throw new IllegalArgumentException("input 규격이 맞지 않습니다.");
+        }
+    }
+
+    private CalNumber calculate(CalNumber first, String operation, CalNumber second) {
         if (operation.equals("+")) {
-            return first + second;
+            return first.plusBy(second);
         }
 
         if (operation.equals("-")) {
-            return first - second;
+            return first.minusBy(second);
         }
 
         if (operation.equals("*")) {
-            return first * second;
+            return first.multipleBy(second);
         }
 
         if (operation.equals("/")) {
-            return first / second;
+            return first.dividedBy(second);
         }
 
         throw new IllegalArgumentException("operation이 잘못되었습니다.");
