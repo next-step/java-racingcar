@@ -19,17 +19,9 @@ public class Car {
     }
 
     public void moveOrStop() {
-        if (isGo()) {
-            move();
+        if (moveStrategy.test()) {
+            this.position = this.position.move();
         }
-    }
-
-    private boolean isGo() {
-        return moveStrategy.test();
-    }
-
-    private void move() {
-        this.position = this.position.move();
     }
 
 }
