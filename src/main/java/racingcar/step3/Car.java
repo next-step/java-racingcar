@@ -5,11 +5,12 @@ import java.util.Random;
 /**
  * Car(자동차) 클래스
  * 2021.11.04
- * v.01
+ * 01.v
  */
 
 public class Car {
 
+    private static final String SIGN = "-";
     public static final int MAX_NUM = 9;
     public static final int MIN_NUM = 4;
     private int id;
@@ -49,4 +50,14 @@ public class Car {
         Random random = new Random();
         return random.nextInt(MAX_NUM);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            builder.append(SIGN);
+        }
+        return builder.toString();
+    }
+
 }
