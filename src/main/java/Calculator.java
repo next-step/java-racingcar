@@ -4,6 +4,10 @@ import java.util.List;
 public class Calculator {
 
     public static int calc(String s) {
+        if (s == null || s.length() == 0) {
+            throw new IllegalArgumentException();
+        }
+
         List<Integer> numbers = new LinkedList<>();
         List<String> operators = new LinkedList<>();
 
@@ -33,6 +37,8 @@ public class Calculator {
                 numbers.add(0, first * second);
             } else if (operators.get(i).equals("/")) {
                 numbers.add(0, first / second);
+            } else {
+                throw new IllegalArgumentException();
             }
         }
         return numbers.get(0);
