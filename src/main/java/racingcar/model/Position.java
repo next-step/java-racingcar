@@ -3,7 +3,7 @@ package racingcar.model;
 import java.util.Objects;
 
 public class Position {
-	private static final int DEFAULT_POSITION = 1;
+	public static final int DEFAULT_POSITION = 0;
 
 	private Integer position;
 
@@ -23,6 +23,14 @@ public class Position {
 		position++;
 	}
 
+	public String convertPositionToDash() {
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0; i <= position; i++) {
+			builder.append("-");
+		}
+		return builder.toString();
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
@@ -40,12 +48,4 @@ public class Position {
 		return position != null ? position.hashCode() : 0;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < position; i++) {
-			builder.append("-");
-		}
-		return builder.toString();
-	}
 }

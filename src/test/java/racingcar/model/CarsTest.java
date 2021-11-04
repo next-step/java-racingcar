@@ -16,7 +16,7 @@ import racingcar.rule.MoveRule;
 class CarsTest {
 	@DisplayName("MoveRule 이 true 일 때 move() 호출시 변경된 포지션 검증")
 	@ParameterizedTest(name = "{index}. numberOfCars : {0}, countOfMove : {1}, expectedPosition : {2}")
-	@CsvSource({"3,1,2,", "6,3,4", "11,5,6"})
+	@CsvSource({"3,1,1,", "6,3,3", "11,5,5"})
 	void moveWithFixedFalseMoveRule(int numberOfCars, int countOfMove, int expectedPosition) {
 		// given
 		List<Car> expectedCars = new ArrayList<>();

@@ -44,6 +44,6 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return position.toString();
+		return position.convertPositionToDash();
 	}
 }

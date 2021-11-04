@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 class PositionTest {
 	@DisplayName("increase() 호출시에 포지션 변경 검증")
 	@ParameterizedTest(name = "{index}. countOfIncrease : {0}, expectedPosition : {1}")
-	@CsvSource({"1,2", "5,6", "9,10"})
+	@CsvSource({"1,1", "5,5", "9,9"})
 	void increase(int countOfIncrease, int expectedPosition) {
 		// given
 		Position position = Position.create();

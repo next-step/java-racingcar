@@ -5,7 +5,7 @@ import java.util.Objects;
 import racingcar.util.NumberUtils;
 
 public class Round {
-	private static final Integer FIRST_ROUND = 1;
+	public static final Integer FIRST_ROUND = 1;
 
 	private Integer currentRound;
 	private final Integer endRound;
