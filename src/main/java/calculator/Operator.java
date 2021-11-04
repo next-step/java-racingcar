@@ -1,10 +1,9 @@
 package calculator;
 
+import calculator.exception.NotSupportedOperatorException;
+
 import java.util.Arrays;
 
-/**
- * Created by owen.ny on 2021/11/03.
- */
 public enum Operator {
     ADDITION("+", MyNumber::plus),
     SUBSTITUTION("-", MyNumber::minus),
@@ -21,7 +20,7 @@ public enum Operator {
 
     public static Operator of(String value) {
         return Arrays.stream(values()).filter(it -> it.equals(value))
-                .findFirst().orElseThrow(() -> new IllegalArgumentException("사칙연산 기호가 아닙니다"));
+                .findFirst().orElseThrow(NotSupportedOperatorException::new);
     }
 
     public boolean equals(String value) {

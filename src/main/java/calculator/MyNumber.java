@@ -1,10 +1,9 @@
 package calculator;
 
+import calculator.exception.DivideByZeroException;
+
 import java.util.Objects;
 
-/**
- * Created by owen.ny on 2021/11/03.
- */
 public class MyNumber {
     private final int number;
 
@@ -30,15 +29,20 @@ public class MyNumber {
 
     public MyNumber divide(MyNumber number) {
         if (number.number == 0) {
-            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+            throw new DivideByZeroException();
         }
+
         return new MyNumber(this.number / number.number);
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         MyNumber myNumber = (MyNumber) o;
         return number == myNumber.number;
     }
