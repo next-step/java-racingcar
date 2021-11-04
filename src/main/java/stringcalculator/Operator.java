@@ -17,11 +17,12 @@ public enum Operator {
         this.calculate = calculate;
     }
 
-    public static Number calc(String operation, Number a, Number b) {
-        Operator findOperator = Arrays.stream(values())
-                .filter(operator -> operator.operator.equals(operation))
+    public static Operator of(String symbol) {
+        return Arrays.stream(values())
+                .filter(operator -> operator.symbol.equals(symbol))
                 .findFirst()
-                .orElseThrow(NotFoundOperatorException::new);
+                .orElseThrow(IllegalArgumentException::new);
+    }
 
         return findOperator.calculate.apply(a, b);
     }
