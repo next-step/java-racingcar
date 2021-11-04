@@ -13,13 +13,11 @@ public class Calculator {
 
         CalNumber result = first.calculate(second, symbol);
 
-
         for (int i = 3; i < split.length; i += 2) {
             isValidLength(split, i);
 
             CalNumber to = new CalNumber(split[i + 1]);
             symbol = split[i];
-
             result = result.calculate(to, symbol);
 
         }
