@@ -24,6 +24,7 @@ public enum Operator {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-        return findOperator.calculate.apply(a, b);
+    public Number calculate(Number first, Number second) {
+        return this.calculate.apply(first, second);
     }
 }
