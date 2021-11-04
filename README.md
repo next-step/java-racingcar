@@ -68,19 +68,6 @@ int number = scanner.nextInt();
     * 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
     * else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
 
-## 기능 분리 힌트
-
-* 테스트할 수 있는 단위로 나누어 구현 목록을 만든다.
-    * 덧셈
-    * 뺄셈
-    * 곱셈
-    * 나눗셈
-    * 입력 값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException throw
-    * 사칙연산 기호가 아닌 경우 IllegalArgumentException throw
-    * 사칙 연산을 모두 포함하는 기능 구현
-* 공백 문자열을 빈 공백 문자로 분리 하려면 String 클래스의 split(" ") 메소드를 활용한다.
-* 반복적인 패턴을 찾아 반복문으로 구현한다.
-
 ## 기능 목록 및 commit 로그 요구사항
 
 * 기능을 구현하기 전에 README.md 파일에 구현할 기능 목록을 정리해 추가한다.
