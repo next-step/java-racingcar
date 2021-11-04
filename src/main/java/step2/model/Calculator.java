@@ -3,11 +3,11 @@ package step2.model;
 public class Calculator {
 
     public static MyNumber operator(String str) {
-        String[] value = str.split(" ");
-        MyNumber result = new MyNumber(Integer.parseInt(value[0]));
-        for (int i = 1; i < value.length; i += 2) {
-            String operator = value[i];
-            MyNumber myNumber2 = new MyNumber(Integer.parseInt(value[i+1]));
+        String[] StringArray = str.split(" ");
+        MyNumber result = new MyNumber(StringArray[0]);
+        for (int i = 1; i < StringArray.length; i += 2) {
+            String operator = StringArray[i];
+            MyNumber myNumber2 = new MyNumber(StringArray[i+1]);
             result = calculator(result, myNumber2, operator);
         }
         return result;
@@ -24,16 +24,11 @@ public class Calculator {
             return num1.multiply(num2);
         }
         if (o.equals("/")) {
-            valid(num2);
             return num1.divide(num2);
         }
         throw new IllegalArgumentException();
     }
 
-    public static void valid(MyNumber num2) {
-        if (num2.equals(new MyNumber(0))) {
-            throw new IllegalArgumentException("나눗셈에서 분모는 0이 될 수 없습니다");
-        }
-    }
+
 
 }
