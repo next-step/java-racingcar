@@ -29,19 +29,26 @@ public class Calculator {
         for (int i = 0; i < operators.size(); i++) {
             int first = numbers.remove(0);
             int second = numbers.remove(0);
-            if (operators.get(i).equals("+")) {
-                numbers.add(0, first + second);
-            } else if (operators.get(i).equals("-")) {
-                numbers.add(0, first - second);
-            } else if (operators.get(i).equals("*")) {
-                numbers.add(0, first * second);
-            } else if (operators.get(i).equals("/")) {
-                numbers.add(0, first / second);
-            } else {
-                throw new IllegalArgumentException();
-            }
+            int res = calc(first, second, operators.get(i));
+            numbers.add(0, res);
         }
         return numbers.get(0);
+    }
+
+    private static int calc(int first, int second, String operator) {
+        if (operator.equals("+")) {
+            return first + second;
+        }
+        if (operator.equals("-")) {
+            return first - second;
+        }
+        if (operator.equals("*")) {
+            return first * second;
+        }
+        if (operator.equals("/")) {
+            return first / second;
+        }
+        throw new IllegalArgumentException();
     }
 
 }
