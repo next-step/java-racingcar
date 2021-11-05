@@ -20,7 +20,13 @@ public class Record {
     }
 
     public static Record of(Integer round, List<Car> cars) {
-        return new Record(round, cars);
+        return new Record(round, recordCar(cars));
+    }
+
+    private static List<Car> recordCar(List<Car> originCars) {
+        return originCars.stream()
+                .map(Car::clone)
+                .collect(Collectors.toList());
     }
 
     public String getRoundWinnerName() {

@@ -13,11 +13,8 @@ public class RoundResult {
 
     public static RoundResult of(List<Record> records) {
         Preconditions.checkNotNull(records, "records는 필수값입니다.");
-        return new RoundResult(records);
-    }
 
-    public List<Record> getRecords() {
-        return records;
+        return new RoundResult(records);
     }
 
     public String getFinalWinnerName() {
@@ -26,5 +23,9 @@ public class RoundResult {
 
     private Record getFinalRound() {
         return records.get(records.size() - 1);
+    }
+
+    public List<Record> getRecords() {
+        return records;
     }
 }

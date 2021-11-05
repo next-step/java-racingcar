@@ -9,7 +9,6 @@ import racingcar.service.strategy.RoundRule;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCarService {
     private static final int START_ROUND = 1;
@@ -18,10 +17,10 @@ public class RacingCarService {
     private final List<Car> cars;
     private final Integer totalRoundCount;
 
-    private RacingCarService(RoundReady readyDTO) {
-        roundRule = readyDTO.getRoundRule();
-        cars = CarFactory.createCar(readyDTO.getCarNames());
-        totalRoundCount = readyDTO.getTotalRoundCount();
+    private RacingCarService(RoundReady roundReady) {
+        roundRule = roundReady.getRoundRule();
+        cars = CarFactory.createCar(roundReady.getCarNames());
+        totalRoundCount = roundReady.getTotalRoundCount();
     }
 
     public static RacingCarService ready(RoundReady initValue) {
@@ -42,12 +41,6 @@ public class RacingCarService {
     }
 
     private Record recordRace(int round) {
-        return Record.of(round, recordCar());
-    }
-
-    private List<Car> recordCar() {
-        return cars.stream()
-                .map(Car::clone)
-                .collect(Collectors.toList());
+        return Record.of(round, cars);
     }
 }

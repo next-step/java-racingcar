@@ -13,15 +13,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class RacingCarServiceTest {
-    private static final RoundReady readyDTO = RoundReady.of(new RandomRoundRule(),
-                                                             Arrays.asList("pobi", "crong", "honux"),
-                                                             5);
+    private static final RoundReady roundReady = RoundReady.of(new RandomRoundRule(),
+                                                               Arrays.asList("pobi", "crong", "honux"),
+                                                               5);
 
     private RacingCarService racingCarService;
 
     @BeforeEach
     void setup() {
-        racingCarService = RacingCarService.ready(readyDTO);
+        racingCarService = RacingCarService.ready(roundReady);
     }
 
     @Test
@@ -29,6 +29,6 @@ class RacingCarServiceTest {
     void getCars() {
         RoundResult roundResult = racingCarService.startRound();
         assertNotNull(roundResult);
-        assertThat(roundResult.getRecords().size()).isEqualTo(readyDTO.getTotalRoundCount());
+        assertThat(roundResult.getRecords().size()).isEqualTo(roundReady.getTotalRoundCount());
     }
 }
