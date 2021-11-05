@@ -1,4 +1,4 @@
-package Calculator;
+package calculator;
 
 import java.util.zip.DataFormatException;
 
