@@ -1,67 +1,86 @@
 package step3.model.car;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import step3.domain.car.Car;
 import step3.domain.car.Location;
-import step3.domain.oil.OilTank;
 
-import java.util.List;
 import java.util.stream.Stream;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.emptyList;
 import static org.assertj.core.api.Assertions.assertThat;
-import static step3.domain.oil.Oil.BAD;
-import static step3.domain.oil.Oil.GOOD;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarTest {
 
-    private static final int DEFAULT_LOCATION = 0;
+    private static final int POWER_BOUND = 4;
+    private static final int INITIAL_LOCATION = 0;
+    private static final int INTERVAL = 1;
 
+    @DisplayName("CAR 생성 입력값 null 테스트")
+    @ParameterizedTest(name = "[{index}] powerBound: {0}, location: {1}")
+    @MethodSource(value = "generateCreateCarNullInputs")
+    void createCarTest(Integer powerBound, Location location) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Car(powerBound, location))
+                .withMessageContaining("is Required");
+    }
+
+    @DisplayName("go 메소드 입력 값 null 테스트")
     @Test
-    void accelerateWithEmptyOilTank() throws Exception {
-        //given
-        OilTank emptyOilTank = OilTank.fill(emptyList());
-        Car car = new Car(emptyOilTank, createLocation());
+    void goInputTest() {
+        Car car = createCar();
 
-        //when
-        car.fullAccelerate();
-
-        //then
-        verifyTraceEquals(car, emptyList());
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> car.go(null))
+                .withMessage("power is Required");
     }
 
-    @ParameterizedTest(name = "[{index}] oilTank: {0}, expectedTrace: {1}")
-    @MethodSource("createVariousOilTankAndTrace")
-    void accelerateWithEmptyOilTank(OilTank oilTank, List<Integer> expectedTrace) throws Exception {
-        //given
-        Car car = new Car(oilTank, createLocation());
+    @DisplayName("go 메소드 입력 값 범위 벗어날 떄 테스트")
+    @ParameterizedTest(name = "[{index}] power: {0}")
+    @CsvSource(value = {"-1", "10"})
+    void goInputTest2(Integer power) {
+        Car car = createCar();
 
-        //when
-        car.fullAccelerate();
-
-        //then
-        verifyTraceEquals(car, expectedTrace);
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> car.go(power))
+                .withMessage("power의 범위는 0 - 9 이어야 합니다.");
     }
 
-    private Location createLocation() {
-        return Location.createOn(DEFAULT_LOCATION);
+    @DisplayName("입력 값이 4미만이면 정지 4이상이면 전진한다.")
+    @ParameterizedTest(name = "[{index}] power: {0}, expectedCar: {1}")
+    @MethodSource("generateGoInputs")
+    void goTest(Integer power, Car expectedCar) {
+        Car car = createCar(Location.placeOn(INITIAL_LOCATION, INTERVAL));
+
+        car.go(power);
+
+        assertThat(car).isEqualTo(expectedCar);
     }
 
-    private void verifyTraceEquals(Car car, List<Integer> expectedTrace) {
-        assertThat(car.readTrace()).isEqualTo(expectedTrace);
+    private static Car createCar() {
+        return new Car(POWER_BOUND, Location.placeOn(INITIAL_LOCATION));
     }
 
-    private static Stream<Arguments> createVariousOilTankAndTrace() {
+    private static Car createCar(Location location) {
+        return new Car(POWER_BOUND, location);
+    }
+
+    private static Stream<Arguments> generateCreateCarNullInputs() {
         return Stream.of(
-                Arguments.of(OilTank.fill(asList(GOOD, BAD, GOOD)), asList(1, 1, 2)),
-                Arguments.of(OilTank.fill(asList(GOOD, GOOD, GOOD)), asList(1, 2, 3)),
-                Arguments.of(OilTank.fill(asList(BAD, GOOD, BAD)), asList(0, 1, 1)),
-                Arguments.of(OilTank.fill(asList(BAD, BAD, BAD)), asList(0, 0, 0)),
-                Arguments.of(OilTank.fill(asList(GOOD, BAD, BAD)), asList(0, 0, 1))
+                Arguments.of(null, null),
+                Arguments.of(null, Location.placeOn(INITIAL_LOCATION)),
+                Arguments.of(POWER_BOUND, null)
+        );
+    }
+
+    private static Stream<Arguments> generateGoInputs() {
+        return Stream.of(
+                Arguments.of(3, createCar(Location.placeOn(INITIAL_LOCATION, INTERVAL))),
+                Arguments.of(4, createCar(Location.placeOn(INITIAL_LOCATION + INTERVAL, INTERVAL)))
         );
     }
 

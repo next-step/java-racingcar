@@ -1,37 +1,54 @@
 package step3.domain.car;
 
-import step3.domain.oil.Power;
+import java.util.Objects;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.util.Collections.unmodifiableList;
-import static step3.domain.oil.Power.SUFFICIENT;
 import static step3.utils.ValidationUtils.checkArgument;
+import static step3.utils.ValidationUtils.checkPositive;
 
 public class Location {
 
-    private int currentLocation;
+    private static final int DEFAULT_INTERVAL = 1;
 
-    private final List<Integer> timeBasedLocations = new ArrayList<>();
+    private final int interval;
 
-    public static Location createOn(Integer initialLocation) {
-        return new Location(initialLocation);
+    private int location;
+
+    public static Location placeOn(Integer location) {
+        return new Location(location, DEFAULT_INTERVAL);
     }
 
-    private Location(Integer initialLocation) {
-        checkArgument(initialLocation != null, "initialLocation is required");
-        this.currentLocation = initialLocation;
+    public static Location placeOn(Integer location, Integer interval) {
+        return new Location(location, interval);
     }
 
-    public void goForward(Power power) {
-        if (power == SUFFICIENT) {
-            currentLocation++;
-        }
-        timeBasedLocations.add(currentLocation);
+    private Location(Integer location, Integer interval) {
+        checkArgument(location != null, "location is required");
+        checkPositive(interval, "interval is not Positive");
+        this.location = location;
+        this.interval = interval;
     }
 
-    public List<Integer> readTrace() {
-        return unmodifiableList(timeBasedLocations);
+    public void goForward() {
+        location += interval;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Location location1 = (Location) o;
+        return location == location1.location;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(location);
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "location=" + location +
+                '}';
     }
 }

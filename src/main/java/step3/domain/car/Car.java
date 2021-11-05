@@ -1,41 +1,51 @@
 package step3.domain.car;
 
-import step3.domain.oil.OilTank;
-import step3.domain.oil.Power;
-
-import java.util.List;
+import java.util.Objects;
 
 import static step3.utils.ValidationUtils.checkArgument;
 
 public class Car {
 
-    private final OilTank oilTank;
+    private final int powerBound;
     private final Location location;
 
-    public Car(OilTank oilTank, Location location) {
-        checkArgument(oilTank != null, "oilTank is Required");
+    public Car(Integer powerBound, Location location) {
+        checkArgument(powerBound != null, "powerBound is Required");
         checkArgument(location != null, "location is Required");
-        this.oilTank = oilTank;
+        this.powerBound = powerBound;
         this.location = location;
     }
 
-    public void fullAccelerate() {
-        while (canAccelerate()) {
-            accelerate();
+    public void go(Integer power) {
+        validatePower(power);
+        if (power >= powerBound) {
+            location.goForward();
         }
     }
 
-    private boolean canAccelerate() {
-        return oilTank.isNotEmpty();
+    private void validatePower(Integer power) {
+        checkArgument(power != null, "power is Required");
+        checkArgument(power >= 0 && power <= 9, "power의 범위는 0 - 9 이어야 합니다.");
     }
 
-    private void accelerate() {
-        Power power = oilTank.use();
-        location.goForward(power);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return powerBound == car.powerBound && Objects.equals(location, car.location);
     }
 
-    public List<Integer> readTrace() {
-        return location.readTrace();
+    @Override
+    public int hashCode() {
+        return Objects.hash(powerBound, location);
     }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "powerBound=" + powerBound +
+                ", location=" + location +
+                '}';
+    }
 }

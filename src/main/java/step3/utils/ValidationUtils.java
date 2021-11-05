@@ -13,4 +13,10 @@ public class ValidationUtils {
             throw new IllegalStateException(errorMessage);
         }
     }
+
+    public static void checkPositive(Integer integer, String errorMessage) {
+        if (integer == null || integer <= 0) {
+            throw new IllegalArgumentException(errorMessage);
+        }
+    }
 }

@@ -1,99 +1,61 @@
 package step3.model.car;
 
-import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullSource;
 import step3.domain.car.Location;
-import step3.domain.oil.Power;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Stream;
-
-import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static step3.domain.oil.Power.INSUFFICIENT;
-import static step3.domain.oil.Power.SUFFICIENT;
 
 class LocationTest {
 
-    private static final int DEFAULT_LOCATION = 0;
+    private static final int LOCATION = 0;
+    private static final int INTERVAL = 2;
 
     @Test
-    void createWithNull() throws Exception {
-        //given
-        Integer location = null;
-
-        //when
-        ThrowingCallable createOn = () -> Location.createOn(location);
-
-        //then
+    void createLocation_nullInput_thrownException() {
         assertThatIllegalArgumentException()
-                .isThrownBy(createOn)
-                .withMessage("initialLocation is required");
+                .isThrownBy(() -> Location.placeOn(null))
+                .withMessage("location is required");
     }
 
+
+    @ParameterizedTest(name = "[{index}] interval: {0}")
+    @NullSource
+    @CsvSource(value = {"-1"})
+    void createLocation_NotPositiveInterval_thrownException(Integer interval) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Location.placeOn(LOCATION, interval))
+                .withMessage("interval is not Positive");
+    }
+
+    @DisplayName("전진하면 거리가 interval 만큼 증가한다.")
     @Test
-    @DisplayName("출력이 충분하면 전진한다.")
-    void goForwardTest1() throws Exception {
+    void goForwardTest() {
         //given
-        Location location = createLocation();
+        Location location = Location.placeOn(LOCATION, INTERVAL);
 
         //when
-        location.goForward(Power.SUFFICIENT);
+        location.goForward();
 
         //then
-        List<Integer> expectedTrace = Collections.singletonList(1);
-        verifyTraceEquals(expectedTrace, location);
+        assertThat(location).isEqualTo(Location.placeOn(LOCATION + INTERVAL));
     }
 
+    @DisplayName("default interval은 1이다.")
     @Test
-    @DisplayName("출력이 부족하면 전진하지 못한다.")
-    void goForwardTest2() throws Exception {
+    void goForwardTest1() {
         //given
-        Location location = createLocation();
+        Location location = Location.placeOn(LOCATION);
 
         //when
-        location.goForward(INSUFFICIENT);
+        location.goForward();
 
         //then
-        List<Integer> expectedTrace = Collections.singletonList(0);
-        verifyTraceEquals(expectedTrace, location);
-    }
-
-    @DisplayName("다양한 파라미터 테스트")
-    @ParameterizedTest(name = "[{index}] powers: {0}, expectedTrace: {1}")
-    @MethodSource("createVariousPowers")
-    void goForwardTest3(List<Power> powers, List<Integer> expectedTrace) throws Exception {
-        //given
-        Location location = createLocation();
-
-        //when
-        powers.forEach(location::goForward);
-
-        //then
-        verifyTraceEquals(expectedTrace, location);
-    }
-
-    private static Stream<Arguments> createVariousPowers() {
-        return Stream.of(
-                Arguments.of(asList(INSUFFICIENT, INSUFFICIENT, SUFFICIENT), asList(0, 0, 1)),
-                Arguments.of(asList(SUFFICIENT, SUFFICIENT, SUFFICIENT), asList(1, 2, 3)),
-                Arguments.of(asList(INSUFFICIENT, INSUFFICIENT, INSUFFICIENT), asList(0, 0, 0)),
-                Arguments.of(asList(INSUFFICIENT, SUFFICIENT, INSUFFICIENT), asList(0, 1, 1))
-        );
-    }
-
-    private Location createLocation() {
-        return Location.createOn(DEFAULT_LOCATION);
-    }
-
-    private void verifyTraceEquals(List<Integer> expectedTrace, Location location) {
-        assertThat(location.readTrace()).isEqualTo(expectedTrace);
+        assertThat(location).isEqualTo(Location.placeOn(LOCATION + 1));
     }
 
 }
