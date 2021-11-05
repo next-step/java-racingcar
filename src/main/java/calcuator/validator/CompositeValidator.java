@@ -11,8 +11,8 @@ public class CompositeValidator implements Validator {
 		this(new EmptyValidator(), new InputPatternValidator());
 	}
 
-	public CompositeValidator(Validator... validator) {
-		this.validators = Arrays.asList(validator);
+	public CompositeValidator(Validator... validators) {
+		this.validators = Arrays.asList(validators);
 	}
 
 	@Override
