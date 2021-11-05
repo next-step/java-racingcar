@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Car {
     private static final int MOVE_VALUE = 1;
 
-    private final Position position;
+    private Position position;
 
     private Car(Position position) {
         this.position = position;
@@ -19,11 +19,10 @@ public class Car {
         return new Car(Position.from(position));
     }
 
-    public Car move(MovingStrategy movingStrategy) {
+    public void move(MovingStrategy movingStrategy) {
         if (movingStrategy.move()) {
-            return new Car(position.move(MOVE_VALUE));
+            position = position.move(MOVE_VALUE);
         }
-        return this;
     }
 
     public Position getPosition() {
