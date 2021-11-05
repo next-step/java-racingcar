@@ -61,4 +61,23 @@ class CarsTest {
                 )
         );
     }
+
+    @ParameterizedTest
+    @DisplayName("cars stop test")
+    @MethodSource
+    void carsStopTest(Cars expected) {
+        Cars cars = Cars.from(3);
+        cars.move(() -> false);
+
+        assertThat(cars).isEqualByComparingTo(expected);
+    }
+
+    static Stream<Arguments> carsStopTest() {
+        return Stream.of(
+                Arguments.of(
+                        Cars.from(Arrays.asList(Car.from(), Car.from(1), Car.from(1)))
+                )
+        );
+    }
+
 }
