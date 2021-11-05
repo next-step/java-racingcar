@@ -7,7 +7,14 @@ public class TryCount {
     private int tryCount;
 
     private TryCount(int tryCount) {
+        validateCount(tryCount);
         this.tryCount = tryCount;
+    }
+
+    private void validateCount(int tryCount) {
+        if (tryCount < COUNT_ONE) {
+            throw new TryCountException(tryCount);
+        }
     }
 
     public static TryCount from(int tryCount) {
