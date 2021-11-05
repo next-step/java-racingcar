@@ -10,6 +10,12 @@ public final class Preconditions {
         }
     }
 
+    public static void checkString(String reference, Object errorMessage) {
+        if (reference == null || reference.length() == 0) {
+            throw new IllegalArgumentException(errorMessage.toString());
+        }
+    }
+
     public static void checkNumber(int request, int limit, Object errorMessage) {
         if (request <= limit) {
             throw new IllegalArgumentException(String.valueOf(errorMessage));

@@ -1,18 +1,28 @@
 package racingcar.service.domain;
 
-import racingcar.service.strategy.Rule;
+import racingcar.service.strategy.RoundRule;
+import racingcar.utils.Preconditions;
 
-public class Car {
-    private int id;
-    private int position;
+public class Car implements Cloneable {
+    private static final Integer INIT_POSITION = 0;
 
-    public Car(int id) {
-        this.id = id;
+    private final String name;
+    private Integer position;
+
+    public Car(String name) {
+        Preconditions.checkString(name, "name은 필수값입니다.");
+
+        this.name = name;
+        this.position = INIT_POSITION;
     }
 
-    public void move(Rule rule) {
-        if (rule.checkCondition())
+    public void race(RoundRule roundRule) {
+        if (roundRule.checkCondition())
             position++;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getPosition() {
@@ -20,6 +30,15 @@ public class Car {
     }
 
     public String toString() {
-        return String.format("id : %d, position : %d", id, position);
+        return String.format("id : %s, position : %d", name, position);
+    }
+
+    @Override
+    public Car clone() {
+        try {
+            return (Car) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
