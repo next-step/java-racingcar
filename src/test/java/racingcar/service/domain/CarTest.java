@@ -33,11 +33,4 @@ class CarTest {
             assertThat(testCar.getPosition()).isZero();
         }
     }
-
-    @Test
-    @DisplayName("Car의 정보 복제 시, 원본 객체와 중복되지 않는지 검증")
-    void cloneTest() {
-        Car cloneCar = testCar.clone();
-        assertThat(cloneCar).isNotEqualTo(testCar);
-    }
 }
