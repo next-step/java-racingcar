@@ -16,13 +16,14 @@ public enum Operator {
         this.operator = operator;
         this.operation = operation;
     }
+
     public Num operate(Num first, Num second) {
         return operation.apply(first, second);
     }
 
     public static Operator of(String operator) {
         return Arrays.stream(values())
-                .filter(o -> o.operator.equals(operator))
+                .filter(object -> object.operator.equals(operator))
                 .findFirst()
                 .orElseThrow(IllegalAccessError::new);
     }
