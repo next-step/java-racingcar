@@ -1,4 +1,4 @@
-package racingcar_2step;
+package racingcar.step2;
 
 import java.util.Arrays;
 
@@ -18,7 +18,7 @@ public class CalculatorValidation {
     }
 
     public static void nullOrBlankCheck(String[] input) {
-        Arrays.stream(input).forEach(s->{
+        Arrays.stream(input).forEach(s -> {
             if (s == null || s.equals(" ") || s.equals("")) {
                 throw new IllegalArgumentException("null, 빈칸 불가능");
             }
@@ -26,6 +26,9 @@ public class CalculatorValidation {
     }
 
     public static void divideCheck(int left, int right) {
+        if (right == 0) {
+            throw new IllegalArgumentException("0으로 나눗셈 불가");
+        }
         if(left % right != 0) {
             throw new IllegalArgumentException("정수 나눗셈만 가능");
         }

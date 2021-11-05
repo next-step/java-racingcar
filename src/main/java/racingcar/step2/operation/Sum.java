@@ -1,16 +1,16 @@
-package racingcar_2step.operation;
+package racingcar.step2.operation;
 
-public class Minus extends AbstractOperation implements Operation {
+public class Sum extends AbstractOperation implements Operation {
 
-    public final static String SIGN = "-";
+    public final static String SIGN = "+";
 
-    public Minus(String left, String right) {
+    public Sum(String left, String right) {
         super(left, right);
     }
 
     @Override
     public String operate() {
-        return String.valueOf(left - right);
+        return String.valueOf(left + right);
     }
 
     @Override

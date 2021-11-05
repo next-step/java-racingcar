@@ -1,6 +1,6 @@
-package racingcar_2step.operation;
+package racingcar.step2.operation;
 
-import racingcar_2step.CalculatorValidation;
+import racingcar.step2.CalculatorValidation;
 
 public class Divide extends AbstractOperation implements Operation {
 

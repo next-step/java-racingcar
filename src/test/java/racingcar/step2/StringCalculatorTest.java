@@ -1,27 +1,14 @@
-package racingcar_2step;
+package racingcar.step2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar_2step.operation.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.step2.operation.*;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class StringStringCalculatorTest {
-
-    /**
-     *  1. Calculator 클래스
-     *      - calculate 계산
-     *  2. Operation 인터페이스
-     *      - Sum, Minus, Multiply, Divide 클래스 구현
-     *      - Operations : Operation 을 담고 있는 클래스
-     *  3. Validation 클래스
-     *      - 정수 나누기 체크
-     *      - 빈값 or null 체크
-     *      - 사칙연산 기호 체크
-     *  4. util 클래스
-     *      - 문자열 자른 후 스트링 배열변환
-     *      - stack 만들고 값 넣기
-     */
+public class StringCalculatorTest {
 
     @Test
     @DisplayName("문자열 쪼개서 배열로 반환")
@@ -58,12 +45,14 @@ public class StringStringCalculatorTest {
         assertThat(operation.operate()).isEqualTo("2");
     }
 
-    @DisplayName("정수 나누기 검증")
+    @DisplayName("정수 나누기 검증 - by zero / 정수로 떨어지는 값")
     @Test
     void divideCheck() {
-        String[] strArr =  CalculatorUtil.blankSplit("2 +   1");
         assertThatThrownBy(() -> {
             CalculatorValidation.divideCheck(3, 2);
+        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> {
+            CalculatorValidation.divideCheck(3, 0);
         }).isInstanceOf(IllegalArgumentException.class);
         // 입력값이 정상
         assertThatCode(() -> {
@@ -97,21 +86,16 @@ public class StringStringCalculatorTest {
         }).doesNotThrowAnyException();
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("문자열 사칙연산 계산")
-    void calculate1() {
-        String[] strings = CalculatorUtil.blankSplit("2 + 3");
+    @CsvSource(value = {
+            "2 + 3 : 5",
+            "2 + 3 * 4 / 2 : 10"}, delimiter = ':')
+    void calculate2(String input, String result) {
+        String[] strings = CalculatorUtil.blankSplit(input);
         CalculatorValidation.integratedCheck(strings);
         StringCalculator stringCalculator = new StringCalculator();
-        assertThat(stringCalculator.calculate(strings)).isEqualTo("5");
-    }
-    @Test
-    @DisplayName("문자열 사칙연산 계산")
-    void calculate2() {
-        String[] strings = CalculatorUtil.blankSplit("2 + 3 * 4 / 2");
-        CalculatorValidation.integratedCheck(strings);
-        StringCalculator stringCalculator = new StringCalculator();
-        assertThat(stringCalculator.calculate(strings)).isEqualTo("10");
+        assertThat(stringCalculator.calculate(strings)).isEqualTo(result);
     }
 
 }
