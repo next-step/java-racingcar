@@ -2,6 +2,7 @@ package racingcar;
 
 public class TryCount {
     private static final int COUNT_ONE = 1;
+    private static final int COUNT_ZERO = 0;
 
     private int tryCount;
 
@@ -13,8 +14,8 @@ public class TryCount {
         return new TryCount(tryCount);
     }
 
-    public boolean isDone() {
-        return this.tryCount == 0;
+    public boolean nonOver() {
+        return this.tryCount != COUNT_ZERO;
     }
 
     public void counting() {

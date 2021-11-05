@@ -24,7 +24,7 @@ public class Cars {
     }
 
     public void move(TryCount tryCount, MovingStrategy strategy) {
-        while (tryCount.isDone()) {
+        while (tryCount.nonOver()) {
             tryCount.counting();
             cars.forEach(car -> car.move(strategy));
         }
