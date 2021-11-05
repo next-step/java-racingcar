@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.exception.CreateCarCountException;
+
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -9,12 +12,16 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(int count) {
+    private Cars(int count) {
         validateCreateCount(count);
 
         this.cars = Stream.generate(Car::from)
                 .limit(count)
                 .collect(Collectors.toList());
+    }
+
+    public static Cars from(int count) {
+        return new Cars(count);
     }
 
     private void validateCreateCount(int count) {
@@ -32,5 +39,9 @@ public class Cars {
 
     public int size() {
         return cars.size();
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 }
