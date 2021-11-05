@@ -15,10 +15,10 @@ public class RacingCarInputValue {
     private RacingCarInputValue(List<String> carNames, Integer finalRoundCount) {
         Preconditions.checkNotNull(carNames, "carNames은 필수값입니다.");
         Preconditions.checkNotNull(finalRoundCount, "finalRoundCount는 필수값입니다.");
-        Preconditions.checkNumber(carNames.size(), MINIMUM_SIZE,
-                                  String.format("minimumSize(%d) 값보다 큰 값을 입력해 주세요.", MINIMUM_SIZE));
-        Preconditions.checkNumber(finalRoundCount, MINIMUM_SIZE,
-                                  String.format("minimumSize(%d) 값보다 큰 값을 입력해 주세요.", MINIMUM_SIZE));
+        Preconditions.checkMinimumSize(carNames.size(), MINIMUM_SIZE,
+                                       String.format("minimumSize(%d) 값보다 큰 값을 입력해 주세요.", MINIMUM_SIZE));
+        Preconditions.checkMinimumSize(finalRoundCount, MINIMUM_SIZE,
+                                       String.format("minimumSize(%d) 값보다 큰 값을 입력해 주세요.", MINIMUM_SIZE));
 
         this.carNames = carNames;
         this.finalRoundCount = finalRoundCount;
