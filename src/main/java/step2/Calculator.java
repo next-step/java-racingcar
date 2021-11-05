@@ -1,27 +1,35 @@
 package step2;
 
+import java.util.Objects;
+
 public class Calculator {
 
-    public static int calculate(String input) {
-        String[] result = splitTextByRegex(input, " ");
+    private final static String delimiter = " ";
 
-        MyNumber number1 = isValidText(result[0]);
-        String operator = result[1];
-        MyNumber number2 = isValidText(result[2]);
+    private Calculator() {}
+
+    public static int calculate(String input) {
+        validText(input);
+
+        String[] values = splitTextByDelimiter(input, delimiter);
+
+        MyNumber number1 = new MyNumber(values[0]);
+        String operator = values[1];
+        MyNumber number2 = new MyNumber(values[2]);
 
         return calculate(number1, operator, number2).getNumber();
     }
 
     public static MyNumber calculateMulti(String input) {
-        String[] arr = splitTextByRegex(input, " ");
+        String[] values = splitTextByDelimiter(input, delimiter);
 
-        int cnt = arr.length;
+        int cnt = values.length;
 
-        MyNumber number = isValidText(arr[0]);
+        MyNumber number = new MyNumber(values[0]);
 
-        for(int i = 1 ; i < cnt ; i+=2) {
-            String operator = arr[i];
-            MyNumber number2 = isValidText(arr[i+1]);
+        for(int i = 1 ; i < cnt ; i += 2) {
+            String operator = values[i];
+            MyNumber number2 = new MyNumber(values[i+1]);
 
             number = calculate(number, operator, number2);
         }
@@ -43,18 +51,16 @@ public class Calculator {
             return number1.divide(number2);
         }
 
-        throw new IllegalArgumentException("유효하지 않은 사칙연산입니다.");
+        throw new IllegalArgumentException(MyException.INVALID_OPERATOR.getMessage());
     }
 
-    private static MyNumber isValidText(String text) {
-        if(text.trim().isEmpty() || !text.matches("^[0-9]*$")) {
-            throw new IllegalArgumentException("유효하지 않은 숫자입니다.");
+    public static void validText(String text) {
+        if(Common.textNullOrEmpty(text)) {
+            throw new IllegalArgumentException(MyException.EMPTY_INPUT.getMessage());
         }
-
-        return new MyNumber(text);
     }
 
-    private static String[] splitTextByRegex(String text, String regex) {
-        return text.split(regex);
+    private static String[] splitTextByDelimiter(String text, String delimiter) {
+        return text.split(delimiter);
     }
 }
