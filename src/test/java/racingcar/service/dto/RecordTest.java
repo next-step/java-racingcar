@@ -8,6 +8,7 @@ import racingcar.service.domain.Car;
 import racingcar.service.domain.strategy.RandomResultFalse;
 import racingcar.service.domain.strategy.RandomResultTrue;
 import racingcar.service.strategy.RoundRule;
+import racingcar.value.Round;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -22,7 +23,7 @@ public class RecordTest {
     @ParameterizedTest
     @MethodSource(value = "getRoundWinnerName")
     @DisplayName("각 경기별로 우승자 검증")
-    void getRoundWinnerName(Integer round, List<Car> cars, String winner) {
+    void getRoundWinnerName(Round round, List<Car> cars, String winner) {
         // given
         Record record = Record.of(round, cars);
 
@@ -36,7 +37,7 @@ public class RecordTest {
     @ParameterizedTest
     @MethodSource(value = "createRecordException")
     @DisplayName("Record의 필수값이 null인 경우 예외 발생 검증")
-    void createRecordException(Integer round, List<Car> cars) {
+    void createRecordException(Round round, List<Car> cars) {
         // when & then
         assertThatNullPointerException().isThrownBy(() -> Record.of(round, cars));
     }
@@ -44,23 +45,23 @@ public class RecordTest {
     public static Stream<Arguments> getRoundWinnerName() {
         // given
         return Stream.of(
-                Arguments.of(1,
+                Arguments.of(Round.from(1),
                              Arrays.asList(victory("pobi"), secondPlace("crong"), secondPlace("honux")),
                              "pobi"
                 ),
-                Arguments.of(2,
+                Arguments.of(Round.from(2),
                              Arrays.asList(secondPlace("pobi"), victory("crong"), secondPlace("honux")),
                              "crong"
                 ),
-                Arguments.of(3,
+                Arguments.of(Round.from(3),
                              Arrays.asList(secondPlace("pobi"), secondPlace("crong"), victory("honux")),
                              "honux"
                 ),
-                Arguments.of(4,
+                Arguments.of(Round.from(4),
                              Arrays.asList(victory("pobi"), victory("crong"), secondPlace("honux")),
                              "pobi, crong"
                 ),
-                Arguments.of(5,
+                Arguments.of(Round.from(5),
                              Arrays.asList(victory("pobi"), victory("crong"), victory("honux")),
                              "pobi, crong, honux"
                 )
@@ -71,7 +72,7 @@ public class RecordTest {
         // given
         return Stream.of(
                 Arguments.of(null, null),
-                Arguments.of(10, null),
+                Arguments.of(Round.from(10), null),
                 Arguments.of(null, Collections.singletonList(new Car("aiden")))
         );
     }
