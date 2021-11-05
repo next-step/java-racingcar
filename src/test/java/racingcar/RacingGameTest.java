@@ -8,9 +8,6 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Created by owen.ny on 2021/11/05.
- */
 class RacingGameTest {
 
 

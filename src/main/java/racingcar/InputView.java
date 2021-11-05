@@ -2,9 +2,6 @@ package racingcar;
 
 import java.util.Scanner;
 
-/**
- * Created by owen.ny on 2021/11/05.
- */
 public class InputView {
     private final Scanner scanner = new Scanner(System.in);
     private final static String INPUT_COUNT_OF_CAR_MESSAGE = "자동차 대수는 몇 대 인가요?";

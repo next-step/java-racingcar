@@ -5,9 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-/**
- * Created by owen.ny on 2021/11/05.
- */
 class CarTest {
 
     @Test

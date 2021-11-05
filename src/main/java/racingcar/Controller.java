@@ -2,9 +2,6 @@ package racingcar;
 
 import java.util.List;
 
-/**
- * Created by owen.ny on 2021/11/05.
- */
 public class Controller {
 
     public static void main(String[] args) {

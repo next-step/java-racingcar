@@ -3,9 +3,6 @@ package racingcar;
 
 import java.util.List;
 
-/**
- * Created by owen.ny on 2021/11/05.
- */
 public class OutputView {
     private final static String RACE_PRINT_CHARACTER = "-";
     private final static String EXECUTION_RESULT_MESSAGE = "실행 결과";

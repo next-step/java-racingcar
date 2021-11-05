@@ -2,9 +2,6 @@ package racingcar;
 
 import java.util.Random;
 
-/**
- * Created by owen.ny on 2021/11/04.
- */
 public class Car {
     private static final int MOVABLE_RANDOM_SEED = 10;
     private static final int MOVABLE_DECISION_FACTOR = 4;
