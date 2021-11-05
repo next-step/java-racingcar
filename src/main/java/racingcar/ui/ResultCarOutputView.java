@@ -13,7 +13,7 @@ public class ResultCarOutputView implements OutputView {
             System.out.printf("%d 번째 경주%n", record.getRound());
             print(record);
         });
-        System.out.printf("%s가 최종 우승했습니다.", roundResult.getWinnerName());
+        System.out.printf("%s가 최종 우승했습니다.", roundResult.getFinalWinnerName());
     }
 
     public void print(Record record) {

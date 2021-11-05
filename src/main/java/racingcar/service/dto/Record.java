@@ -23,24 +23,25 @@ public class Record {
         return new Record(round, cars);
     }
 
-    public Integer getRound() {
-        return round;
-    }
-
-    public List<Car> getWinner() {
+    public String getRoundWinnerName() {
         Integer maxPosition = Collections.max(getPositions());
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
-                .collect(Collectors.toList());
-    }
-
-    public List<Car> getCars() {
-        return cars;
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
     }
 
     private List<Integer> getPositions() {
         return cars.stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList());
+    }
+
+    public Integer getRound() {
+        return round;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

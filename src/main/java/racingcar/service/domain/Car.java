@@ -29,10 +29,6 @@ public class Car implements Cloneable {
         return position;
     }
 
-    public String toString() {
-        return String.format("id : %s, position : %d", name, position);
-    }
-
     @Override
     public Car clone() {
         try {

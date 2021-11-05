@@ -1,10 +1,8 @@
 package racingcar.service.dto;
 
-import racingcar.service.domain.Car;
 import racingcar.utils.Preconditions;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RoundResult {
     private List<Record> records;
@@ -22,13 +20,11 @@ public class RoundResult {
         return records;
     }
 
-    public String getWinnerName() {
-        return getLastRound().getWinner().stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
+    public String getFinalWinnerName() {
+        return getFinalRound().getRoundWinnerName();
     }
 
-    private Record getLastRound() {
+    private Record getFinalRound() {
         return records.get(records.size() - 1);
     }
 }
