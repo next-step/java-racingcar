@@ -6,24 +6,26 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarInputValue {
-    private static final int LIMIT = 0;
+    private static final int MINIMUM_SIZE = 0;
     private static final String DELIMITER = ",";
 
     private final List<String> carNames;
-    private final Integer totalRaceCount;
+    private final Integer finalRoundCount;
 
-    private RacingCarInputValue(List<String> carNames, Integer totalRaceCount) {
+    private RacingCarInputValue(List<String> carNames, Integer finalRoundCount) {
         Preconditions.checkNotNull(carNames, "carNames은 필수값입니다.");
-        Preconditions.checkNotNull(totalRaceCount, "totalRaceCount은 필수값입니다.");
-        Preconditions.checkNumber(carNames.size(), LIMIT, String.format("limit(%d) 값보다 큰 값을 입력해 주세요.", LIMIT));
-        Preconditions.checkNumber(totalRaceCount, LIMIT, String.format("limit(%d) 값보다 큰 값을 입력해 주세요.", LIMIT));
+        Preconditions.checkNotNull(finalRoundCount, "finalRoundCount는 필수값입니다.");
+        Preconditions.checkNumber(carNames.size(), MINIMUM_SIZE,
+                                  String.format("minimumSize(%d) 값보다 큰 값을 입력해 주세요.", MINIMUM_SIZE));
+        Preconditions.checkNumber(finalRoundCount, MINIMUM_SIZE,
+                                  String.format("minimumSize(%d) 값보다 큰 값을 입력해 주세요.", MINIMUM_SIZE));
 
         this.carNames = carNames;
-        this.totalRaceCount = totalRaceCount;
+        this.finalRoundCount = finalRoundCount;
     }
 
-    public static RacingCarInputValue of(String carNames, Integer totalRaceCount) {
-        return new RacingCarInputValue(splitNames(carNames), totalRaceCount);
+    public static RacingCarInputValue of(String carNames, Integer finalRoundCount) {
+        return new RacingCarInputValue(splitNames(carNames), finalRoundCount);
     }
 
     private static List<String> splitNames(String carNames) {
@@ -34,7 +36,7 @@ public class RacingCarInputValue {
         return carNames;
     }
 
-    public Integer getTotalRaceCount() {
-        return totalRaceCount;
+    public Integer getFinalRoundCount() {
+        return finalRoundCount;
     }
 }

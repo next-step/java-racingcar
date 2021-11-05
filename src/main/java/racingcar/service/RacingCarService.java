@@ -11,16 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarService {
-    private static final int START_ROUND = 1;
+    private static final int START_ROUND_COUNT = 1;
 
     private final RoundRule roundRule;
     private final List<Car> cars;
-    private final Integer totalRoundCount;
+    private final Integer finalRoundCount;
 
     private RacingCarService(RoundReady roundReady) {
         roundRule = roundReady.getRoundRule();
         cars = CarFactory.createCar(roundReady.getCarNames());
-        totalRoundCount = roundReady.getTotalRoundCount();
+        finalRoundCount = roundReady.getTotalRoundCount();
     }
 
     public static RacingCarService ready(RoundReady initValue) {
@@ -29,7 +29,7 @@ public class RacingCarService {
 
     public RoundResult startRound() {
         List<Record> records = new ArrayList<>();
-        for (int round = START_ROUND; round <= totalRoundCount; round++) {
+        for (int round = START_ROUND_COUNT; round <= finalRoundCount; round++) {
             race();
             records.add(recordRace(round));
         }

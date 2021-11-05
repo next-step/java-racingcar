@@ -16,8 +16,8 @@ public final class Preconditions {
         }
     }
 
-    public static void checkNumber(int request, int limit, Object errorMessage) {
-        if (request <= limit) {
+    public static void checkNumber(int request, int minimumSize, Object errorMessage) {
+        if (request <= minimumSize) {
             throw new IllegalArgumentException(String.valueOf(errorMessage));
         }
     }
