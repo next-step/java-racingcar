@@ -24,3 +24,14 @@
       - isGameEnd : 게임이 끝인지 확인
       - moveCars : 자동차들 움직임
       - roundUp : try 업
+
+   **- 피드백**
+   1. id 는 어떤 용도로 쓰이는 걸까요? -> 삭제
+   2. id나 position에 -1이란 값이 들어오면 어떻게 될까요? -> 검증로직 작성
+   3. 인터페이스 기반 전략으로 테스트 작성 -> Moving 인터페이스 도입하여 테스트 작성 및 로직구현
+   4. RacingGame 테스트 작성 -> 테스트 로직 작성
+   5. Car객체에 멤버변수 totalCal -> 필요없는 멤버변수로 판단하여 삭제    
+   6. 해당 생성자 삭제 -> 삭제
+   7. 출력로직과 핵심로직을 분리 -> InputView, ResultView : 출력로직, CarController : 실행로직
+   8. 그외 Cars : car 를 담는 객체 생성
+
