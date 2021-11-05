@@ -42,5 +42,4 @@ public class CarTest {
                 Arguments.of(new Integer[]{2, 2, 1}, 0)
         );
     }
-
 }

@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class Car {
     private Status status;
-    private static int THRESHOLD = 3;
 
     public Car() {
         this(new Status());
@@ -15,13 +14,9 @@ public class Car {
     }
 
     public void moveOrNot(int randomInt) {
-        if (movable(randomInt)) {
+        if (new MovePredicate().test(randomInt)) {
             this.status = new Status(this.status.value() + 1);
         }
-    }
-
-    private boolean movable(int value) {
-        return value > THRESHOLD;
     }
 
     public int forwardCount() {
