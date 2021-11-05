@@ -33,14 +33,8 @@ public class CalculateTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"1,2,3"})
-    void testCalculatorAdd(int a, int b, int expected) {
-        assertThat(expected).isEqualTo(new Calculator(a).plus(new Calculator(b)).getNumber());
-    }
-
-    @ParameterizedTest
     @CsvSource(value = {"1 + 2 + 3:6", "4 / 2 + 1:3", "3 - 1 * 5:10", "4 / 2:2"}, delimiter = ':')
-    void testCalculatorAdd(String a, int b) {
+    void testCalculator(String a, int b) {
         assertThat(b).isEqualTo(Calculate.calculate(a));
     }
 }
