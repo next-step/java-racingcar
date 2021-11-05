@@ -3,16 +3,11 @@ package racingcar;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CarTest {
     @Test
@@ -41,10 +36,10 @@ public class CarTest {
 
     static Stream<Arguments> 자동차_전진횟수리턴_데이터() {
         return Stream.of(
-                Arguments.of(new Integer[] {7, 6, 5}, 3),
-                Arguments.of(new Integer[] {2, 6, 5}, 2),
-                Arguments.of(new Integer[] {7, 3, 1}, 1),
-                Arguments.of(new Integer[] {2, 2, 1}, 0)
+                Arguments.of(new Integer[]{7, 6, 5}, 3),
+                Arguments.of(new Integer[]{2, 6, 5}, 2),
+                Arguments.of(new Integer[]{7, 3, 1}, 1),
+                Arguments.of(new Integer[]{2, 2, 1}, 0)
         );
     }
 
