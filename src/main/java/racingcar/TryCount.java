@@ -5,10 +5,13 @@ public class TryCount {
 
     private int tryCount;
 
-    public TryCount(int tryCount) {
+    private TryCount(int tryCount) {
         this.tryCount = tryCount;
     }
 
+    public static TryCount from(int tryCount) {
+        return new TryCount(tryCount);
+    }
 
     public boolean isDone() {
         return this.tryCount == 0;
