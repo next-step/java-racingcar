@@ -14,7 +14,7 @@ import static step3.utils.ValidationUtils.checkArgument;
 public class Engineer {
 
     private static final int DEFAULT_LOCATION = 0;
-    private static final int DEFAULT_POWER_BOUND = 0;
+    private static final int DEFAULT_POWER_BOUND = 4;
 
     public Cars createCars(Integer carCount, Power power) {
         checkArgument(carCount != null, "carCount is Required");
@@ -22,7 +22,8 @@ public class Engineer {
 
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(DEFAULT_POWER_BOUND, Location.placeOn(DEFAULT_LOCATION)));
+            Car car = new Car(DEFAULT_POWER_BOUND, Location.placeOn(DEFAULT_LOCATION));
+            cars.add(car);
         }
         return new Cars(unmodifiableList(cars), power);
     }

@@ -32,6 +32,10 @@ public class Location {
         location += interval;
     }
 
+    public void record(RoundBoard roundBoard) {
+        roundBoard.record(location);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

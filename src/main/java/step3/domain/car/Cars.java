@@ -25,4 +25,10 @@ public class Cars {
         });
     }
 
+    public void recordRound(RoundBoard roundBoard) {
+        checkArgument(cars != null, "roundBoard is required");
+        for (Car car : cars) {
+            car.record(roundBoard);
+        }
+    }
 }

@@ -28,6 +28,10 @@ public class Car {
         checkArgument(power >= 0 && power <= 9, "power의 범위는 0 - 9 이어야 합니다.");
     }
 
+    public void record(RoundBoard roundBoard) {
+        location.record(roundBoard);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
