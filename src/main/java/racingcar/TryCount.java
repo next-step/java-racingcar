@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Objects;
+
 public class TryCount {
     private static final int COUNT_ONE = 1;
     private static final int COUNT_ZERO = 0;
@@ -27,5 +29,18 @@ public class TryCount {
 
     public void counting() {
         this.tryCount -= COUNT_ONE;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TryCount tryCount1 = (TryCount) o;
+        return tryCount == tryCount1.tryCount;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tryCount);
     }
 }
