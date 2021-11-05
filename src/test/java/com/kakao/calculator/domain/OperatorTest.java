@@ -2,6 +2,11 @@ package com.kakao.calculator.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -15,21 +20,25 @@ class OperatorTest {
         assertThat(plus).isEqualTo(Operator.PLUS);
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("Operator에 해당하는 연산을 수행한다.")
-    void operatorExecute() {
+    @MethodSource("operatorTestParameters")
+    void operatorExecute(Operator operator, double expected) {
         Operand operand1 = new Operand(6.0);
         Operand operand2 = new Operand(2.0);
 
-        Operand plus = Operator.PLUS.operation(operand1, operand2);
-        Operand minus = Operator.MINUS.operation(operand1, operand2);
-        Operand multiple = Operator.MULTIPLE.operation(operand1, operand2);
-        Operand divide = Operator.DIVIDE.operation(operand1, operand2);
+        Operand result = operator.operation(operand1, operand2);
 
-        assertThat(plus.getValue()).isEqualTo(8.0);
-        assertThat(minus.getValue()).isEqualTo(4.0);
-        assertThat(multiple.getValue()).isEqualTo(12.0);
-        assertThat(divide.getValue()).isEqualTo(3.0);
+        assertThat(result.getValue()).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> operatorTestParameters() {
+        return Stream.of(
+                Arguments.arguments(Operator.PLUS, 8.0),
+                Arguments.arguments(Operator.MINUS, 4.0),
+                Arguments.arguments(Operator.MULTIPLE, 12.0),
+                Arguments.arguments(Operator.DIVIDE, 3.0)
+        );
     }
 
     @Test
