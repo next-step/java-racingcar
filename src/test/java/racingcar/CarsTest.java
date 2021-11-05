@@ -5,9 +5,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.exception.CreateCarCountException;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -42,4 +44,21 @@ class CarsTest {
         assertThatThrownBy(() -> Cars.from(createCount)).isInstanceOf(CreateCarCountException.class);
     }
 
+    @ParameterizedTest
+    @DisplayName("Cars move test")
+    @MethodSource
+    void carsMoveTest(Cars expected) {
+        Cars cars = Cars.from(3);
+        cars.move(() -> true);
+
+        assertThat(cars).isEqualByComparingTo(expected);
+    }
+
+    static Stream<Arguments> carsMoveTest() {
+        return Stream.of(
+                Arguments.of(
+                        Cars.from(Arrays.asList(Car.from(2), Car.from(2), Car.from(2)))
+                )
+        );
+    }
 }
