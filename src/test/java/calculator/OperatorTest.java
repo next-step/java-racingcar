@@ -33,7 +33,7 @@ public class OperatorTest {
 
     @ParameterizedTest
     @CsvSource(value = {"5,5,25", "8,3,24", "8,11,88"})
-    @DisplayName("뺄셈 로직 테스트하기")
+    @DisplayName("곱셈 로직 테스트하기")
     void timesTest(int x, int y, int expected) {
         assertThat(Operator.TIMES.operate(x,y)).isEqualTo(expected);
     }

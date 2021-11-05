@@ -1,12 +1,12 @@
 package utils;
 
+import java.util.regex.Pattern;
+
 public class IntUtils {
+    private IntUtils() {}
     public static boolean isInt(String str) {
-        try {
-            Integer.parseInt(str);
-            return true;
-        } catch(NumberFormatException e) {
-            return false;
-        }
+        String regex = "\\d+";
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(str).matches();
     }
 }
