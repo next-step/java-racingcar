@@ -3,6 +3,7 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -54,6 +55,18 @@ public class CalculatorTest {
         assertThat(result).isEqualTo(2);
     }
 
+    @DisplayName("사칙연산 테스트(나눗셈) - 0으로 나누는 경우")
+    @Test
+    void divideByZeroTest() {
+        String formula = "5 / 0";
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    Calculator calculator = new Calculator();
+                    int result = calculator.calculate(formula);
+                });
+    }
+
     @DisplayName("여러수식 동작 테스트")
     @Test
     void multiNumbersTest() {
@@ -65,24 +78,11 @@ public class CalculatorTest {
         assertThat(result).isEqualTo(16);
     }
 
-    // 해당 테스트 코드가 돌아가지 않음. No test were found.
-    @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우 - 1")
+    @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우")
     @ParameterizedTest
+    @NullAndEmptySource
     @ValueSource(strings = {"", " "})
     void blankOrNullTest(String value) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    Calculator calculator = new Calculator();
-                    int result = calculator.calculate(value);
-                });
-    }
-
-    @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우 - 2")
-    @Test
-    void blankOrNullTest() {
-        String value = " ";
-//        String value = "";
-//        String value = null;
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     Calculator calculator = new Calculator();
