@@ -32,7 +32,7 @@ public class RacingCarService {
         List<Record> records = new ArrayList<>();
         for (int round = START_ROUND_COUNT; round <= finalRound.getRound(); round++) {
             race();
-            records.add(recordRace(round));
+            records.add(recordRace(Round.from(round)));
         }
         return RoundResult.of(records);
     }
@@ -41,7 +41,7 @@ public class RacingCarService {
         cars.forEach(car -> car.race(roundRule));
     }
 
-    private Record recordRace(int round) {
+    private Record recordRace(Round round) {
         return Record.of(round, cars);
     }
 }

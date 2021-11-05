@@ -12,7 +12,7 @@ public class ResultCarOutputView implements OutputView {
     @Override
     public void output(RoundResult roundResult) {
         roundResult.getRecords().forEach(record -> {
-            OutputUtils.println(String.format("%d 번째 경주", record.getRound()));
+            OutputUtils.println(String.format("%d 번째 경주", record.getCurrentRound()));
             print(record);
         });
         OutputUtils.println(String.format("%s가 최종 우승했습니다", roundResult.getFinalWinnerName()));

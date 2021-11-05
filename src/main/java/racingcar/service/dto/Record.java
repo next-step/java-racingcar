@@ -2,16 +2,17 @@ package racingcar.service.dto;
 
 import racingcar.service.domain.Car;
 import racingcar.utils.Preconditions;
+import racingcar.value.Round;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Record {
-    private final Integer round;
+    private final Round round;
     private final List<Car> cars;
 
-    private Record(Integer round, List<Car> cars) {
+    private Record(Round round, List<Car> cars) {
         Preconditions.checkNotNull(round, "round는 필수값입니다.");
         Preconditions.checkNotNull(cars, "cars는 필수값입니다.");
 
@@ -19,7 +20,7 @@ public class Record {
         this.cars = cars;
     }
 
-    public static Record of(Integer round, List<Car> cars) {
+    public static Record of(Round round, List<Car> cars) {
         return new Record(round, recordCar(cars));
     }
 
@@ -43,8 +44,8 @@ public class Record {
                 .collect(Collectors.toList());
     }
 
-    public Integer getRound() {
-        return round;
+    public Integer getCurrentRound() {
+        return round.getRound();
     }
 
     public List<Car> getCars() {
