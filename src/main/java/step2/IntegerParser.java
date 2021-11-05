@@ -17,6 +17,7 @@ public class IntegerParser implements Parser<Integer> {
     }
 
     private boolean isNumeric(String str) {
-        return numericPattern.matcher(str).matches();
+        return numericPattern.matcher(str)
+                .matches();
     }
 }
