@@ -7,10 +7,10 @@ public class Calculator {
         validate(formula);
 
         String[] array = formula.split(" ");
-        int result = 0;
+        int result = Integer.parseInt(array[0]);
 
         for (int i = 0; i < array.length - 1; i += 2) {
-            int first = isFirst(i) ? Integer.parseInt(formula.split(" ")[i]) : result;
+            int first = result;
             String operator = formula.split(" ")[i+1];
             int second = Integer.parseInt(formula.split(" ")[i+2]);
 
@@ -18,10 +18,6 @@ public class Calculator {
         }
 
         return result;
-    }
-
-    private boolean isFirst(int i) {
-        return i == 0;
     }
 
     private void validate(String formula) {
