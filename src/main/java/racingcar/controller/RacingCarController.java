@@ -26,7 +26,7 @@ public class RacingCarController {
     private RoundResult startRound(RacingCarInputValue racingCarInputValue) {
         RacingCarService racingCarService = RacingCarService.ready(RoundReady.of(new RandomRoundRule(),
                                                                                  racingCarInputValue.getCarNames(),
-                                                                                 racingCarInputValue.getFinalRoundCount()));
+                                                                                 racingCarInputValue.getFinalRound()));
         return racingCarService.startRound();
     }
 }

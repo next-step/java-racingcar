@@ -1,5 +1,6 @@
 package racingcar.ui.model;
 
+import racingcar.value.Round;
 import racingcar.utils.Preconditions;
 
 import java.util.Arrays;
@@ -10,22 +11,22 @@ public class RacingCarInputValue {
     private static final String DELIMITER = ",";
 
     private final List<String> carNames;
-    private final Integer finalRoundCount;
+    private final Round finalRound;
 
-    private RacingCarInputValue(List<String> carNames, Integer finalRoundCount) {
+    private RacingCarInputValue(List<String> carNames, Integer finalRound) {
         Preconditions.checkNotNull(carNames, "carNames은 필수값입니다.");
-        Preconditions.checkNotNull(finalRoundCount, "finalRoundCount는 필수값입니다.");
+        Preconditions.checkNotNull(finalRound, "finalRound는 필수값입니다.");
         Preconditions.checkMinimumSize(carNames.size(), MINIMUM_SIZE,
                                        String.format("minimumSize(%d) 값보다 큰 값을 입력해 주세요.", MINIMUM_SIZE));
-        Preconditions.checkMinimumSize(finalRoundCount, MINIMUM_SIZE,
+        Preconditions.checkMinimumSize(finalRound, MINIMUM_SIZE,
                                        String.format("minimumSize(%d) 값보다 큰 값을 입력해 주세요.", MINIMUM_SIZE));
 
         this.carNames = carNames;
-        this.finalRoundCount = finalRoundCount;
+        this.finalRound = Round.from(finalRound);
     }
 
-    public static RacingCarInputValue of(String carNames, Integer finalRoundCount) {
-        return new RacingCarInputValue(splitNames(carNames), finalRoundCount);
+    public static RacingCarInputValue of(String carNames, Integer finalRound) {
+        return new RacingCarInputValue(splitNames(carNames), finalRound);
     }
 
     private static List<String> splitNames(String carNames) {
@@ -36,7 +37,7 @@ public class RacingCarInputValue {
         return carNames;
     }
 
-    public Integer getFinalRoundCount() {
-        return finalRoundCount;
+    public Round getFinalRound() {
+        return finalRound;
     }
 }

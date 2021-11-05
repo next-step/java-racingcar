@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.service.dto.RoundReady;
 import racingcar.service.dto.RoundResult;
 import racingcar.service.strategy.RandomRoundRule;
+import racingcar.value.Round;
 
 import java.util.Arrays;
 
@@ -15,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class RacingCarServiceTest {
     private static final RoundReady roundReady = RoundReady.of(new RandomRoundRule(),
                                                                Arrays.asList("pobi", "crong", "honux"),
-                                                               5);
+                                                               Round.from(5));
 
     private RacingCarService racingCarService;
 
@@ -29,6 +30,6 @@ class RacingCarServiceTest {
     void getCars() {
         RoundResult roundResult = racingCarService.startRound();
         assertNotNull(roundResult);
-        assertThat(roundResult.getRecords().size()).isEqualTo(roundReady.getTotalRoundCount());
+        assertThat(roundResult.getRecords().size()).isEqualTo(roundReady.getFinalRound().getRound());
     }
 }
