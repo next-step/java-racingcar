@@ -1,0 +1,27 @@
+package calculator;
+
+public class Calculator {
+
+    public static int calculate(String text) {
+        validText(text);
+
+        String[] value = text.split(" ");
+        MyInteger result = new MyInteger(value[0]);
+
+        for (int i = 1; i < value.length - 1; i += 2) {
+            Operator operator = Operator.of(value[i]);
+            MyInteger second = new MyInteger(value[i + 1]);
+
+            result = operator.operate(result, second);
+        }
+
+        return result.getValue();
+    }
+
+    private static void validText(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            throw new IllegalArgumentException("입력 값이 null이거나 빈 공백 문자입니다");
+        }
+    }
+
+}
