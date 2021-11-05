@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 class CarTest {
 
     private static final int POWER_BOUND = 4;
-    private static final int INITIAL_LOCATION = 0;
+    private static final int LOCATION = 0;
     private static final int INTERVAL = 1;
 
     @DisplayName("CAR 생성 입력값 null 테스트")
@@ -54,7 +54,7 @@ class CarTest {
     @ParameterizedTest(name = "[{index}] power: {0}, expectedCar: {1}")
     @MethodSource("generateGoInputs")
     void goTest(Integer power, Car expectedCar) {
-        Car car = createCar(Location.placeOn(INITIAL_LOCATION, INTERVAL));
+        Car car = createCar(Location.placeOn(LOCATION, INTERVAL));
 
         car.go(power);
 
@@ -62,7 +62,7 @@ class CarTest {
     }
 
     private static Car createCar() {
-        return new Car(POWER_BOUND, Location.placeOn(INITIAL_LOCATION));
+        return new Car(POWER_BOUND, Location.placeOn(LOCATION));
     }
 
     private static Car createCar(Location location) {
@@ -72,15 +72,15 @@ class CarTest {
     private static Stream<Arguments> generateCreateCarNullInputs() {
         return Stream.of(
                 Arguments.of(null, null),
-                Arguments.of(null, Location.placeOn(INITIAL_LOCATION)),
+                Arguments.of(null, Location.placeOn(LOCATION)),
                 Arguments.of(POWER_BOUND, null)
         );
     }
 
     private static Stream<Arguments> generateGoInputs() {
         return Stream.of(
-                Arguments.of(3, createCar(Location.placeOn(INITIAL_LOCATION, INTERVAL))),
-                Arguments.of(4, createCar(Location.placeOn(INITIAL_LOCATION + INTERVAL, INTERVAL)))
+                Arguments.of(3, createCar(Location.placeOn(LOCATION, INTERVAL))),
+                Arguments.of(4, createCar(Location.placeOn(LOCATION + INTERVAL, INTERVAL)))
         );
     }
 
