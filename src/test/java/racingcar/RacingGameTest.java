@@ -2,11 +2,9 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
+import racingcar.collection.RacingResult;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingGameTest {
 
@@ -17,9 +15,8 @@ class RacingGameTest {
         final int countOfCar = 5;
 
         RacingGame racingGame = new RacingGame(countOfCar);
-        List<Integer> raceResult = racingGame.race();
+        RacingResult raceResult = racingGame.race();
 
-        assertThat(raceResult.size()).isEqualTo(countOfCar);
-        assertTrue(raceResult.stream().allMatch(element -> element >= 0));
+        assertThat(raceResult.getPositions()).isEqualTo(countOfCar);
     }
 }

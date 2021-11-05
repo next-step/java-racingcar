@@ -1,21 +1,18 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import racingcar.collection.RacingCarList;
+import racingcar.collection.RacingResult;
 
 public class RacingGame {
-    private final List<Car> cars = new ArrayList<>();
+    private final RacingCarList carList = new RacingCarList();
 
     public RacingGame(int countOfCar) {
         for(int i=0; i<countOfCar; i++) {
-            cars.add(new Car());
+            carList.participate(new Car());
         }
     }
 
-    public List<Integer> race() {
-        return cars.stream()
-                .map(Car::move)
-                .collect(Collectors.toList());
+    public RacingResult race() {
+        return carList.moveAll();
     }
 }

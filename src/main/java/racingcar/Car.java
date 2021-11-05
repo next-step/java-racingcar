@@ -1,22 +1,29 @@
 package racingcar;
 
+import racingcar.Movable;
+
 import java.util.Random;
 
-public class Car {
+public class Car implements Movable {
     private static final int MOVABLE_RANDOM_SEED = 10;
     private static final int MOVABLE_DECISION_FACTOR = 4;
+    private final Random random = new Random();
 
     private int currentPosition = 0;
 
+    @Override
     public int move() {
         if (isMovable()) {
-            this.currentPosition++;
+            movePosition();
         }
         return currentPosition;
     }
 
-    // 자동차 전진 결정 함수
+    private void movePosition() {
+        this.currentPosition++;
+    }
+
     private boolean isMovable() {
-        return new Random().nextInt(MOVABLE_RANDOM_SEED) >= MOVABLE_DECISION_FACTOR;
+        return random.nextInt(MOVABLE_RANDOM_SEED) >= MOVABLE_DECISION_FACTOR;
     }
 }

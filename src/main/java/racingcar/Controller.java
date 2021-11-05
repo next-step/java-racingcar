@@ -1,22 +1,16 @@
 package racingcar;
 
-import java.util.List;
+import racingcar.model.RacingGameRequest;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Controller {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
+        RacingGameRequest request = inputView.inputRacingGame();
 
-        int countOfCar = inputView.inputCountOfCar();
-        int countOfTry = inputView.inputCountOfTry();
-
-        RacingGame game = new RacingGame(countOfCar);
-
-        outputView.printExecutionResultMessage();
-        for (int i = 0; i < countOfTry; i++) {
-            List<Integer> currentPositions = game.race();
-            outputView.printCurrentPositionOfCars(currentPositions);
-        }
+        OutputView outputView = new OutputView(request);
+        outputView.printPlayRacing();
     }
 }
