@@ -1,55 +1,48 @@
 package racingcar.model;
 
-import java.util.ArrayList;
+import static java.util.stream.Collectors.*;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 import racingcar.rule.MoveRule;
-import racingcar.util.NumberUtils;
 
 public class Cars {
 	private final List<Car> cars;
 
-	Cars(int numberOfCars) {
-		validate(numberOfCars);
-
-		List<Car> cars = new ArrayList<>();
-		for (int i = 0; i < numberOfCars; i++) {
-			cars.add(Car.create());
-		}
-		this.cars = cars;
-	}
-
 	Cars(List<Car> cars) {
 		this.cars = Collections.unmodifiableList(cars);
-	}
-
-	public static Cars create(int numberOfCars) {
-		return new Cars(numberOfCars);
 	}
 
 	public static Cars create(List<Car> cars) {
 		return new Cars(cars);
 	}
 
-	private static void validate(int numberOfCars) {
-		if (NumberUtils.isNotPositiveNumber(numberOfCars)) {
-			throw new IllegalArgumentException("numberOfCars must be positive number");
-		}
-	}
-
 	public void move(MoveRule moveRule) {
 		cars.forEach(car -> car.move(moveRule));
 	}
 
-	public String getCurrentPosition() {
-		StringBuilder builder = new StringBuilder();
-		for (Car car : cars) {
-			builder.append(car.getCurrentPosition());
-			builder.append("\n");
-		}
-		return builder.toString();
+	public List<String> getCarNamesWithHighestPosition() {
+		Car highestPositionCar = findHighestPositionCar();
+		return findHighestPositionCarNames(highestPositionCar);
+	}
+
+	private Car findHighestPositionCar() {
+		return cars.stream()
+			.max(Car::compareTo)
+			.orElseThrow(() -> new IllegalStateException("등록된 차가 없습니다."));
+	}
+
+	private List<String> findHighestPositionCarNames(Car highestPositionCar) {
+		return cars.stream()
+			.filter(highestPositionCar::equalsPosition)
+			.map(Car::getName)
+			.collect(toList());
+	}
+
+	public List<Car> getCars() {
+		return cars;
 	}
 
 	@Override
@@ -75,4 +68,5 @@ public class Cars {
 			"cars=" + cars +
 			'}';
 	}
+
 }

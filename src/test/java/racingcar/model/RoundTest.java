@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 class RoundTest {
 	@DisplayName("마지막 라운드일때 hasNext() 호출시 False 리턴 검증")
 	@ParameterizedTest(name = "{index}. currentRound : {0}, endRound : {1}")
-	@CsvSource({"10,9", "5,4", "3,2"})
+	@CsvSource({"9,9", "4,4", "2,2"})
 	void hasNext(int currentRound, int endRound) {
 		// given
 		Round round = new Round(currentRound, endRound);
@@ -23,7 +23,7 @@ class RoundTest {
 
 	@DisplayName("increase() 호출시에 Round 증가 검증")
 	@ParameterizedTest(name = "{index}. endRound : {0}, countOfIncrease : {1}, currentRound : {2}")
-	@CsvSource({"10,3,4", "10,5,6", "10,7,8"})
+	@CsvSource({"10,3,3", "10,5,5", "10,7,7"})
 	void increase(int endRound, int countOfIncrease, int currentRound) {
 		// given
 		Round round = Round.create(endRound);

@@ -23,12 +23,8 @@ public class Position {
 		position++;
 	}
 
-	public String convertPositionToDash() {
-		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i <= position; i++) {
-			builder.append("-");
-		}
-		return builder.toString();
+	public int getPosition() {
+		return position;
 	}
 
 	@Override
