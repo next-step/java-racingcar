@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Cars {
+public class Cars implements Comparable<Cars> {
     private static final int MIN_CREATE_COUNT = 1;
 
     private final List<Car> cars;
@@ -48,5 +48,20 @@ public class Cars {
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
+    }
+
+    @Override
+    public int compareTo(Cars other) {
+        if (this == other) return 0;
+        if (other == null || getClass() != other.getClass()) return -1;
+        if (cars.size() != other.size()) return -1;
+
+        for (int i = 0; i < cars.size(); i++) {
+            if (!cars.get(i).equals(other.cars.get(i))) {
+                return -1;
+            }
+        }
+
+        return 0;
     }
 }
