@@ -13,11 +13,11 @@ public class RacingCarInputView implements InputView {
         return RacingCarInputValue.of(carNames, finalRoundCount);
     }
 
-    private Integer getFinalRoundCount() {
-        return InputUtils.inputInt(INPUT_FINAL_ROUND_COUNT_MESSAGE);
-    }
-
     private String getCarNames() {
         return InputUtils.inputString(INPUT_CAR_NAMES_MESSAGE);
+    }
+
+    private Integer getFinalRoundCount() {
+        return InputUtils.inputInt(INPUT_FINAL_ROUND_COUNT_MESSAGE);
     }
 }

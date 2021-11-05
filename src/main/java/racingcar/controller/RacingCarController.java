@@ -6,17 +6,15 @@ import racingcar.service.dto.RoundResult;
 import racingcar.service.strategy.RandomRoundRule;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
-import racingcar.ui.RacingCarInputView;
-import racingcar.ui.ResultCarOutputView;
 import racingcar.ui.model.RacingCarInputValue;
 
 public class RacingCarController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public RacingCarController() {
-        inputView = new RacingCarInputView();
-        outputView = new ResultCarOutputView();
+    public RacingCarController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void execute() {

@@ -23,8 +23,8 @@ public class RacingCarService {
         finalRoundCount = roundReady.getTotalRoundCount();
     }
 
-    public static RacingCarService ready(RoundReady initValue) {
-        return new RacingCarService(initValue);
+    public static RacingCarService ready(RoundReady roundReady) {
+        return new RacingCarService(roundReady);
     }
 
     public RoundResult startRound() {
