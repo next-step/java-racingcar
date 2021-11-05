@@ -1,4 +1,4 @@
-package model;
+package car;
 
 public class Car {
 }

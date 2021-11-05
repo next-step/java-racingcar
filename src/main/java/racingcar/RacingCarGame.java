@@ -1,5 +1,7 @@
-package model;
+package racingcar;
 
+import car.Car;
+import car.CarCreator;
 import view.InputView;
 
 import java.util.*;
