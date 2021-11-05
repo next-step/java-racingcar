@@ -1,10 +1,5 @@
 package step3.ui;
 
-import step3.application.Engineer;
-import step3.application.RacingTrack;
-import step3.domain.car.Car;
-
-import java.util.List;
 import java.util.Scanner;
 
 public class Stadium {
@@ -18,7 +13,5 @@ public class Stadium {
         System.out.println("시도할 회수는 몇 회 인가요?");
         Long goCount = Long.parseLong(SCANNER.nextLine());
 
-        List<Car> cars = Engineer.makeCar(carCount, goCount);
-        RacingTrack.showRacing(cars);
     }
 }
