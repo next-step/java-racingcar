@@ -5,6 +5,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.Cars;
+import racingcar.exception.CreateCarCountException;
 
 import java.util.stream.Stream;
 
@@ -17,7 +19,7 @@ class CarsTest {
     @DisplayName("Cars 생성 테스트")
     @MethodSource
     void createCarsTest(int createCount, int expectedSize) {
-        Cars cars = new Cars(createCount);
+        Cars cars = Cars.from(createCount);
 
         assertThat(cars.size()).isEqualTo(expectedSize);
     }
@@ -37,7 +39,7 @@ class CarsTest {
     @DisplayName("Cars 생성 예외 테스트")
     @ValueSource(ints = {-1, 0})
     void carsExceptionTest(int createCount) {
-        assertThatThrownBy(() -> new Cars(createCount)).isInstanceOf(CreateCarCountException.class);
+        assertThatThrownBy(() -> Cars.from(createCount)).isInstanceOf(CreateCarCountException.class);
     }
 
 }

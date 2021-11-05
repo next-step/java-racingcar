@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.exception.TryCountException;
 
 import java.util.Objects;
 
