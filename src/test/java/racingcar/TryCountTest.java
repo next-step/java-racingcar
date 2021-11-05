@@ -34,13 +34,33 @@ class TryCountTest {
     static Stream<Arguments> countingTest() {
         return Stream.of(
                 Arguments.of(
-                        TryCount.from(1), TryCount.from(2)
+                        TryCount.from(3), TryCount.from(2)
                 ),
                 Arguments.of(
-                        TryCount.from(2), TryCount.from(3)
+                        TryCount.from(2), TryCount.from(1)
                 ),
                 Arguments.of(
-                        TryCount.from(10), TryCount.from(11)
+                        TryCount.from(10), TryCount.from(9)
+                )
+        );
+    }
+
+    @ParameterizedTest
+    @DisplayName("TryCount nonOverTest")
+    @MethodSource
+    void tryCountOverTest(TryCount tryCount, boolean expected) {
+        tryCount.counting();
+
+        assertThat(tryCount.nonOver()).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> tryCountOverTest() {
+        return Stream.of(
+                Arguments.of(
+                        TryCount.from(2), Boolean.TRUE
+                ),
+                Arguments.of(
+                        TryCount.from(1), Boolean.FALSE
                 )
         );
     }
