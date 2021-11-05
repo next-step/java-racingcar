@@ -15,6 +15,10 @@ public class Car {
         return new Car(Position.from(MOVE_VALUE));
     }
 
+    public static Car from(int position) {
+        return new Car(Position.from(position));
+    }
+
     public Car move(MovingStrategy movingStrategy) {
         if (movingStrategy.move()) {
             return new Car(position.move(MOVE_VALUE));
