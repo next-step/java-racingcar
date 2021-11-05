@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Car {
     private Status status;
+    private static int THRESHOLD = 3;
 
     public Car() {
         this(new Status());
@@ -20,7 +21,7 @@ public class Car {
     }
 
     private boolean movable(int value) {
-        return value > 3;
+        return value > THRESHOLD;
     }
 
     public int forwardCount() {
