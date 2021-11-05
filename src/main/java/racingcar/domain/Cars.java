@@ -30,11 +30,8 @@ public class Cars {
         }
     }
 
-    public void move(TryCount tryCount, MovingStrategy strategy) {
-        while (tryCount.nonOver()) {
-            tryCount.counting();
-            cars.forEach(car -> car.move(strategy));
-        }
+    public void move(MovingStrategy strategy) {
+        cars.forEach(car -> car.move(strategy));
     }
 
     public int size() {
