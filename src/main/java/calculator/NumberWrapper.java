@@ -5,6 +5,7 @@ import java.util.Objects;
 public class NumberWrapper {
 
   private final int number;
+  private final String IMPOSSIBLE_ZERO_MESSAGE = "0으로 나눌 수 없습니다.";
 
   public NumberWrapper(int number) {
     this.number = number;
@@ -28,7 +29,7 @@ public class NumberWrapper {
 
   public NumberWrapper divide(NumberWrapper second) {
     if (second.number == 0) {
-      throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+      throw new IllegalArgumentException(IMPOSSIBLE_ZERO_MESSAGE);
     }
     return new NumberWrapper(this.number / second.number);
   }
@@ -40,7 +41,11 @@ public class NumberWrapper {
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
     NumberWrapper that = (NumberWrapper) o;
     return number == that.number;
   }
