@@ -1,5 +1,10 @@
 package com.kkambi.racing.util;
 
+/**
+ * 타입 체크를 위한 유틸리티 클래스.
+ *
+ * @author KKambi
+ */
 public class TypeChecker {
 
     private TypeChecker() {

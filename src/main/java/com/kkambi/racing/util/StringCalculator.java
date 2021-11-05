@@ -3,15 +3,11 @@ package com.kkambi.racing.util;
 import java.util.*;
 import java.util.function.BiFunction;
 
-/*
-
-4. 문자열 계산기는 사칙연산의 계산 우선순위가 아닌 입력 값에 따라 계산 순서가 결정된다.
-즉, 수학에서는 곱셈, 나눗셈이 덧셈, 뺄셈 보다 먼저 계산해야 하지만 이를 무시한다.
-예를 들어 2 + 3 * 4 / 2와 같은 문자열을 입력할 경우 2 + 3 * 4 / 2 실행 결과인 10을 출력해야 한다.
-
-
-- 사칙연산 기호가 아닌 경우 IllegalArgumentException throw
-
+/**
+ * 사칙 연산이 들어간 문자열 식을 계산하는 유틸리티 클래스.
+ * 수학적으로 정해진 연산자 우선순위가 아닌, 입력한 순서를 그대로 따라 계산하므로 주의할 것.
+ *
+ * @author  KKambi
  */
 public class StringCalculator {
 
@@ -51,6 +47,12 @@ public class StringCalculator {
         return finalResult;
     }
 
+    /**
+     * 사칙 연산 문자열에서 숫자와 연산자를 분리하고 계산하기 위한 클래스.
+     * 숫자의 타입 체크를 위해 {@link TypeChecker#isInteger(String)} 메소드를 사용한다.
+     *
+     * @see TypeChecker
+     */
     private static class CalculationStack {
 
         private final Stack<Integer> numberStack = new Stack<>();
