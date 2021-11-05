@@ -1,12 +1,33 @@
 package calculate;
 
-public class Calculator {
-    public int calculate(String s) {
-        String[] tokens = s.split(" ");
-        Integer n1 = Integer.parseInt(tokens[0]);
-        String operator = tokens[1];
-        Integer n2 = Integer.parseInt(tokens[2]);
+import java.util.Arrays;
+import java.util.Stack;
 
+public class Calculator {
+
+    public int calculate(String s) {
+        Stack<Integer> numberStack = new Stack<>();
+        Stack<String> operatorStack = new Stack<>();
+        String[] tokens = s.split(" ");
+
+        for (int i = tokens.length - 1; i >= 0 ; i--) {
+            if (i % 2 == 0) {
+                numberStack.push(Integer.parseInt(tokens[i]));
+            }
+            if (i % 2 == 1) {
+                operatorStack.push(tokens[i]);
+            }
+        }
+
+        while (!operatorStack.empty()) {
+            int result = calculate(numberStack.pop(), operatorStack.pop(), numberStack.pop());
+            numberStack.push(result);
+        }
+
+        return numberStack.pop();
+    }
+
+    private int calculate(int n1, String operator, int n2) {
         if(operator.equals("+")) {
             return n1 + n2;
         }
