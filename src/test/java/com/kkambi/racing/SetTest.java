@@ -28,35 +28,20 @@ public class SetTest {
     @DisplayName("요구1: Set의 크기 확인")
     @Test
     void checkSize() {
-        // given
-        // when
-        int size = numbers.size();
-
-        // then
-        assertThat(size).isEqualTo(3);
+        assertThat(numbers.size()).isEqualTo(3);
     }
 
     @DisplayName("요구2: Set에 이미 존재하는 원소의 포함 여부 검사")
     @ValueSource(ints = {1, 2, 3})
     @ParameterizedTest
     void checkIfContainsAddedElements(int element) {
-        // given
-        // when
-        boolean contains = numbers.contains(element);
-
-        // then
-        assertThat(contains).isTrue();
+        assertThat(numbers.contains(element)).isTrue();
     }
 
     @DisplayName("요구3: Set에 특정 원소의 포함 여부 검사")
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     @ParameterizedTest
     void checkIfContainsElements(int element, boolean expectedResult) {
-        // given
-        // when
-        boolean contains = numbers.contains(element);
-
-        // then
-        assertThat(contains).isEqualTo(expectedResult);
+        assertThat(numbers.contains(element)).isEqualTo(expectedResult);
     }
 }
