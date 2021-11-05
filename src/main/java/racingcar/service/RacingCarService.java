@@ -3,8 +3,8 @@ package racingcar.service;
 import racingcar.service.domain.Car;
 import racingcar.service.domain.factory.CarFactory;
 import racingcar.service.dto.Record;
-import racingcar.service.dto.RoundReadyDTO;
-import racingcar.service.dto.RoundResultDTO;
+import racingcar.service.dto.RoundReady;
+import racingcar.service.dto.RoundResult;
 import racingcar.service.strategy.RoundRule;
 
 import java.util.ArrayList;
@@ -18,23 +18,23 @@ public class RacingCarService {
     private final List<Car> cars;
     private final Integer totalRoundCount;
 
-    private RacingCarService(RoundReadyDTO readyDTO) {
+    private RacingCarService(RoundReady readyDTO) {
         roundRule = readyDTO.getRoundRule();
         cars = CarFactory.createCar(readyDTO.getCarNames());
         totalRoundCount = readyDTO.getTotalRoundCount();
     }
 
-    public static RacingCarService ready(RoundReadyDTO initValue) {
+    public static RacingCarService ready(RoundReady initValue) {
         return new RacingCarService(initValue);
     }
 
-    public RoundResultDTO startRound() {
+    public RoundResult startRound() {
         List<Record> records = new ArrayList<>();
         for (int round = START_ROUND; round <= totalRoundCount; round++) {
             race();
             records.add(recordRace(round));
         }
-        return RoundResultDTO.of(records);
+        return RoundResult.of(records);
     }
 
     private void race() {

@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 
 public class Record {
     private final Integer round;
-
     private final List<Car> cars;
 
     private Record(Integer round, List<Car> cars) {

@@ -2,18 +2,18 @@ package racingcar.ui;
 
 import racingcar.service.domain.Car;
 import racingcar.service.dto.Record;
-import racingcar.service.dto.RoundResultDTO;
+import racingcar.service.dto.RoundResult;
 
 public class ResultCarOutputView implements OutputView {
     private static final String DASH = "-";
 
     @Override
-    public void output(RoundResultDTO roundResultDTO) {
-        roundResultDTO.getRecords().forEach(record -> {
+    public void output(RoundResult roundResult) {
+        roundResult.getRecords().forEach(record -> {
             System.out.printf("%d 번째 경주%n", record.getRound());
             print(record);
         });
-        System.out.printf("%s가 최종 우승했습니다.", roundResultDTO.getWinnerName());
+        System.out.printf("%s가 최종 우승했습니다.", roundResult.getWinnerName());
     }
 
     public void print(Record record) {

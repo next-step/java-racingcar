@@ -6,17 +6,16 @@ import racingcar.utils.Preconditions;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RoundResultDTO {
-
+public class RoundResult {
     private List<Record> records;
 
-    private RoundResultDTO(List<Record> records) {
+    private RoundResult(List<Record> records) {
         this.records = records;
     }
 
-    public static RoundResultDTO of(List<Record> records) {
+    public static RoundResult of(List<Record> records) {
         Preconditions.checkNotNull(records, "records는 필수값입니다.");
-        return new RoundResultDTO(records);
+        return new RoundResult(records);
     }
 
     public List<Record> getRecords() {

@@ -1,8 +1,8 @@
 package racingcar.controller;
 
 import racingcar.service.RacingCarService;
-import racingcar.service.dto.RoundReadyDTO;
-import racingcar.service.dto.RoundResultDTO;
+import racingcar.service.dto.RoundReady;
+import racingcar.service.dto.RoundResult;
 import racingcar.service.strategy.RandomRoundRule;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
@@ -21,14 +21,14 @@ public class RacingCarController {
 
     public void execute() {
         RacingCarInputValue racingCarInputValue = inputView.getInputValue();
-        RoundResultDTO roundResult = startRound(racingCarInputValue);
+        RoundResult roundResult = startRound(racingCarInputValue);
         outputView.output(roundResult);
     }
 
-    private RoundResultDTO startRound(RacingCarInputValue racingCarInputValue) {
-        RacingCarService racingCarService = RacingCarService.ready(RoundReadyDTO.of(new RandomRoundRule(),
-                                                                                    racingCarInputValue.getCarNames(),
-                                                                                    racingCarInputValue.getTotalRaceCount()));
+    private RoundResult startRound(RacingCarInputValue racingCarInputValue) {
+        RacingCarService racingCarService = RacingCarService.ready(RoundReady.of(new RandomRoundRule(),
+                                                                                 racingCarInputValue.getCarNames(),
+                                                                                 racingCarInputValue.getTotalRaceCount()));
         return racingCarService.startRound();
     }
 }
