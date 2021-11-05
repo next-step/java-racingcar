@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 public class RecordTest {
 
     @ParameterizedTest
-    @MethodSource(value = "winnerIsPobi")
+    @MethodSource(value = "getRoundWinnerName")
     @DisplayName("각 경기별로 우승자 검증")
     void getRoundWinnerName(Integer round, List<Car> cars, String winner) {
         // given
@@ -41,7 +41,7 @@ public class RecordTest {
         assertThatNullPointerException().isThrownBy(() -> Record.of(round, cars));
     }
 
-    public static Stream<Arguments> winnerIsPobi() {
+    public static Stream<Arguments> getRoundWinnerName() {
         // given
         return Stream.of(
                 Arguments.of(1,
