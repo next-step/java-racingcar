@@ -1,5 +1,6 @@
 package step3.domain.car;
 
+import step3.domain.board.RoundBoard;
 import step3.domain.power.Power;
 
 import java.util.List;

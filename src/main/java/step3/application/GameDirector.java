@@ -1,7 +1,7 @@
 package step3.application;
 
+import step3.domain.board.GameBoard;
 import step3.domain.car.Cars;
-import step3.domain.car.GameBoard;
 import step3.domain.power.RandomPower;
 
 import static step3.utils.ValidationUtils.checkArgument;

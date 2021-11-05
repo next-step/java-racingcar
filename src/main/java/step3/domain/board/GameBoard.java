@@ -1,4 +1,6 @@
-package step3.domain.car;
+package step3.domain.board;
+
+import step3.domain.car.Cars;
 
 import java.util.ArrayList;
 import java.util.List;

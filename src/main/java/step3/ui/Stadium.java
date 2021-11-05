@@ -2,8 +2,7 @@ package step3.ui;
 
 import step3.application.Engineer;
 import step3.application.GameDirector;
-import step3.application.GameResult;
-import step3.domain.car.GameBoard;
+import step3.domain.board.GameBoard;
 
 import java.util.Scanner;
 

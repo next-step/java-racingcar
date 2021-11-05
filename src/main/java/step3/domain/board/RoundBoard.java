@@ -1,4 +1,4 @@
-package step3.domain.car;
+package step3.domain.board;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ public class RoundBoard {
 
     private final List<Integer> records = new ArrayList<>();
 
-    void record(Integer location) {
+    public void record(Integer location) {
         checkState(location != null, "location is required.");
         records.add(location);
     }
