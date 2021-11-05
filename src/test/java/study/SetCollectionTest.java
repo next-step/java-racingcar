@@ -27,7 +27,7 @@ public class SetCollectionTest {
 
     @Test
     @DisplayName("요구사항1 : size()로 크기 확인하기")
-    void sizeTest(){
+    void sizeTest() {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
