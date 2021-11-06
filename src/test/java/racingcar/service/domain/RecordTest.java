@@ -5,9 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.service.domain.factory.RecordFactory;
-import racingcar.service.domain.strategy.RandomResultFalse;
-import racingcar.service.domain.strategy.RandomResultTrue;
-import racingcar.service.strategy.RoundRule;
 import racingcar.service.value.Round;
 
 import java.util.Arrays;
@@ -17,18 +14,20 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
+import static racingcar.service.domain.TestCarMaker.secondPlace;
+import static racingcar.service.domain.TestCarMaker.victory;
 
-public class RecordTest {
+class RecordTest {
 
     @ParameterizedTest
-    @MethodSource(value = "getRoundWinnerName")
+    @MethodSource(value = "getFinalWinnerName")
     @DisplayName("각 경기별로 우승자 검증")
-    void getRoundWinnerName(Round round, List<Car> cars, String winner) {
+    void getFinalWinnerName(Round round, List<Car> cars, String winner) {
         // given
         Record record = RecordFactory.create(round, cars);
 
         // when
-        String result = record.getRoundWinnerName();
+        String result = record.getFinalWinnerName();
 
         // then
         assertThat(result).isEqualTo(winner);
@@ -42,7 +41,7 @@ public class RecordTest {
         assertThatNullPointerException().isThrownBy(() -> RecordFactory.create(round, cars));
     }
 
-    private static Stream<Arguments> getRoundWinnerName() {
+    private static Stream<Arguments> getFinalWinnerName() {
         // given
         return Stream.of(
                 Arguments.of(Round.from(1),
@@ -75,19 +74,5 @@ public class RecordTest {
                 Arguments.of(Round.from(10), null),
                 Arguments.of(null, Collections.singletonList(new Car("aiden")))
         );
-    }
-
-    private static Car victory(String name) {
-        return createTestCar(name, new RandomResultTrue());
-    }
-
-    private static Car secondPlace(String name) {
-        return createTestCar(name, new RandomResultFalse());
-    }
-
-    private static Car createTestCar(String name, RoundRule roundRule) {
-        Car car = new Car(name);
-        car.race(roundRule);
-        return car;
     }
 }

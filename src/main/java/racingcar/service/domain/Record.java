@@ -1,52 +1,45 @@
 package racingcar.service.domain;
 
-import racingcar.service.value.Position;
+import racingcar.service.model.Cars;
 import racingcar.service.value.Round;
 import racingcar.utils.Preconditions;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 public class Record {
     private final Round round;
-    private final List<Car> cars;
+    private final Cars cars;
 
-    public Record(Round round, List<Car> cars) {
+    public Record(Round round, Cars cars) {
         Preconditions.checkNotNull(round, "round는 필수값입니다.");
         Preconditions.checkNotNull(cars, "cars는 필수값입니다.");
 
         this.round = round;
-        this.cars = clone(cars);
-    }
-
-    private static List<Car> clone(List<Car> originCars) {
-        return originCars.stream()
-                .map(Car::clone)
-                .collect(Collectors.toList());
-    }
-
-    public String getRoundWinnerName() {
-        Position maxPosition = getMaxPosition();
-        return cars.stream()
-                .filter(car -> car.currentPosition().equals(maxPosition))
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
-    }
-
-    private Position getMaxPosition() {
-        return cars.stream()
-                .map(Car::currentPosition)
-                .max(Comparator.comparingInt(Position::getPosition))
-                .orElseThrow(NoSuchElementException::new);
+        this.cars = cars;
     }
 
     public Round getCurrentRound() {
         return round;
     }
 
-    public List<Car> getCarList() {
+    public String getFinalWinnerName() {
+        return cars.getFinalWinnerName();
+    }
+
+    public Cars getCars() {
         return cars;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Record record = (Record) o;
+        return round.equals(record.round) && cars.equals(record.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(round, cars);
     }
 }

@@ -19,7 +19,7 @@ public class RoundResult {
     }
 
     public String getFinalWinnerName() {
-        return getFinalRound().getRoundWinnerName();
+        return getFinalRound().getFinalWinnerName();
     }
 
     private Record getFinalRound() {

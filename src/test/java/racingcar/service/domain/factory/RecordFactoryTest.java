@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
-public class RecordFactoryTest {
+class RecordFactoryTest {
 
     @ParameterizedTest
     @MethodSource
@@ -28,7 +28,7 @@ public class RecordFactoryTest {
         // then
         assertThat(record).isNotNull();
         assertThat(record.getCurrentRound()).isEqualTo(round);
-        assertThat(record.getCarList()).isEqualTo(cars);
+        assertThat(record.getCars().getCarList()).isEqualTo(cars);
     }
 
     @ParameterizedTest

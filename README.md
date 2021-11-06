@@ -38,6 +38,8 @@
     - dto
         - RoundReady는 Controller Layer에서 Service Layer에 값을 전달하기 위한 DTO
         - RoundResult는 Service Layer에서 Controller Layer에 레이스 결과값을 전달하기 위한 DTO
+    - model
+        - Cars는 carList의 일급컬렉션으로 상태와 행위를 한곳에서 관리
     - strategy
         - RoundRule (strategy) 현재는 랜덤을 통해 전진하지만 다른 조건에 대해서 확장 대응하기 위한 인터페이스
         - RandomRoundRule 는 10개의 랜덤값 중, 4초과의 값이 나오면 참을 반환 4이하의 값이 나오면 거짓을 반환
