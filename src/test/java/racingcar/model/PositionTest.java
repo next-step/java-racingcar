@@ -22,4 +22,19 @@ class PositionTest {
 		// then
 		assertThat(position).isEqualTo(new Position(expectedPosition));
 	}
+
+	@DisplayName("compareTo() 호출시 포지션 비교 검증")
+	@ParameterizedTest(name = "{index}. position : {0}, otherPosition : {1}, expected : {2}")
+	@CsvSource({"10,1,1", "1,1,0", "1,10,-1"})
+	void compareTo(int position, int otherPosition, int expected) {
+		// given
+		Position givenPosition = new Position(position);
+		Position givenOtherPosition = new Position(otherPosition);
+
+		// when
+		int result = givenPosition.compareTo(givenOtherPosition);
+
+		// then
+		assertThat(result).isEqualTo(expected);
+	}
 }

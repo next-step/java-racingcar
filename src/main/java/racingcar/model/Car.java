@@ -45,12 +45,12 @@ public class Car implements Comparable<Car> {
 	}
 
 	public boolean equalsPosition(Car other) {
-		return this.getCurrentPosition() == other.getCurrentPosition();
+		return position.equals(other.position);
 	}
 
 	@Override
 	public int compareTo(Car other) {
-		return this.getCurrentPosition() - other.getCurrentPosition();
+		return position.compareTo(other.position);
 	}
 
 	@Override

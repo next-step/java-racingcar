@@ -13,6 +13,7 @@ import racingcar.rule.MoveRule;
 
 class CarTest {
 	private static final String FIXED_CAR_NAME = "fixed";
+	private static final String FIXED_OTHER_CAR_NAME = "other";
 
 	@DisplayName("car 이름이 5보다 클 경우 IllegalArgumentException 발생")
 	@ParameterizedTest(name = "{index}. 길이가 5보다 큰 car name : {0}")
@@ -94,5 +95,20 @@ class CarTest {
 
 		// then
 		assertThat(result).isTrue();
+	}
+
+	@DisplayName("car 의 포지션 비교 검증")
+	@ParameterizedTest(name = "{index}. carPosition : {0}, otherCarPosition : {1}, expected : {2}")
+	@CsvSource({"10,1,1", "1,1,0", "1,10,-1"})
+	void compareTo(int carPosition, int otherCarPosition, int expected) {
+		// given
+		Car car = new Car(FIXED_CAR_NAME, new Position(carPosition));
+		Car otherCar = new Car(FIXED_OTHER_CAR_NAME, new Position(otherCarPosition));
+
+		// when
+		int result = car.compareTo(otherCar);
+
+		// then
+		assertThat(result).isEqualTo(expected);
 	}
 }

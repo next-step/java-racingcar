@@ -2,13 +2,17 @@ package racingcar.model;
 
 import static java.util.stream.Collectors.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 import racingcar.rule.MoveRule;
+import racingcar.util.StringUtils;
 
 public class Cars {
+	public static final String NAME_OF_CARS_DELIMITER = ",";
+
 	private final List<Car> cars;
 
 	Cars(List<Car> cars) {
@@ -17,6 +21,28 @@ public class Cars {
 
 	public static Cars create(List<Car> cars) {
 		return new Cars(cars);
+	}
+
+	public static Cars create(String nameOfCars) {
+		validate(nameOfCars);
+		return createCarsFromNames(nameOfCars);
+	}
+
+	private static void validate(String nameOfCars) {
+		if (StringUtils.isEmpty(nameOfCars)) {
+			throw new IllegalArgumentException("nameOfCars must not be empty");
+		}
+	}
+
+	private static Cars createCarsFromNames(String nameOfCars) {
+		List<Car> cars = new ArrayList<>();
+
+		String[] names = nameOfCars.split(NAME_OF_CARS_DELIMITER);
+		for (String name : names) {
+			cars.add(Car.create(name));
+		}
+
+		return Cars.create(cars);
 	}
 
 	public void move(MoveRule moveRule) {

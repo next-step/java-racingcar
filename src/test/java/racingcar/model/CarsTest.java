@@ -55,7 +55,7 @@ class CarsTest {
 	void getCarNamesWithHighestPosition(String nameOfCars, int countOfMove) {
 		// given
 		Cars cars = createCars(nameOfCars, countOfMove);
-		String[] expectedNames = nameOfCars.split(RacingGame.NAME_OF_CARS_DELIMITER);
+		String[] expectedNames = nameOfCars.split(Cars.NAME_OF_CARS_DELIMITER);
 
 		// when
 		List<String> carNames = cars.getCarNamesWithHighestPosition();
@@ -68,7 +68,7 @@ class CarsTest {
 	private Cars createCars(String nameOfCars, int countOfMove) {
 		List<Car> cars = new ArrayList<>();
 
-		String[] names = nameOfCars.split(RacingGame.NAME_OF_CARS_DELIMITER);
+		String[] names = nameOfCars.split(Cars.NAME_OF_CARS_DELIMITER);
 		for (String name : names) {
 			cars.add(new Car(name, new Position(Position.DEFAULT_POSITION + countOfMove)));
 		}

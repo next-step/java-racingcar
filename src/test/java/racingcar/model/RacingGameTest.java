@@ -85,7 +85,7 @@ class RacingGameTest {
 	void getWinnerNames() {
 		// given
 		RacingGame racingGame = createRacingGame(LAST_POSITION, LAST_ROUND);
-		String[] expectedNames = DEFAULT_NAME_OF_CARS.split(RacingGame.NAME_OF_CARS_DELIMITER);
+		String[] expectedNames = DEFAULT_NAME_OF_CARS.split(Cars.NAME_OF_CARS_DELIMITER);
 
 		// when
 		List<String> winnerNames = racingGame.getWinnerNames();
@@ -117,7 +117,7 @@ class RacingGameTest {
 	private RacingGame createRacingGame(int currentPosition, int currentRound) {
 		List<Car> cars = new ArrayList<>();
 
-		String[] names = DEFAULT_NAME_OF_CARS.split(RacingGame.NAME_OF_CARS_DELIMITER);
+		String[] names = DEFAULT_NAME_OF_CARS.split(Cars.NAME_OF_CARS_DELIMITER);
 		for (String name : names) {
 			cars.add(new Car(name, new Position(Position.DEFAULT_POSITION + currentPosition)));
 		}
