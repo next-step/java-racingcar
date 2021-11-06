@@ -8,11 +8,11 @@ public class InputProcessor {
     public int calculate(String request) {
         if (request == null || request.isEmpty())  throw new IllegalArgumentException("문자열이 알맞지 않습니다");
 
-        String[] arr = request.split(DELIMITER);
-        int result = Integer.valueOf(arr[0]);
+        String[] units = request.split(DELIMITER);
+        int result = Integer.valueOf(units[0]);
 
-        for (int idx = 1; idx < arr.length; idx += 2) {
-            result = subCalculate(result, arr[idx], Integer.valueOf(arr[idx + 1]));
+        for (int idx = 1; idx < units.length; idx += 2) {
+            result = subCalculate(result, units[idx], Integer.valueOf(units[idx + 1]));
         }
 
         return result;
