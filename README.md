@@ -57,7 +57,7 @@ Process를 실행하여 결과를 반환하는 객체
 ### InputUtils
 입력한 값을 InputValue로 변경
 - 기능 
-- [ ] 입력한 값을 InputValue로 변경
+- [x] 입력한 값을 InputValue로 변경
 
 ### ErrorUtils
 에러메세지를 생성하는 객체 
