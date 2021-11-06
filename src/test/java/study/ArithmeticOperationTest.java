@@ -27,6 +27,8 @@ public class ArithmeticOperationTest {
 
     @Test
     void divide() {
-
+        ArithmeticOperation oper = new ArithmeticOperation();
+        assertThat(oper.divide(10, 5)).isEqualTo(2);
+        assertThat(oper.divide(10, -5)).isEqualTo(-2);
     }
 }
