@@ -23,22 +23,34 @@ public class Spliterator {
         }
     }
 
-    public Object next() {
-        if (currentIndex >= arguments.length) {
-            return null;
-        }
+    public boolean hasNext() {
+        return currentIndex < arguments.length;
+    }
 
-        String str = arguments[currentIndex++];
-
-        if (isOperator(str)) {
-            return Operator.of(str);
-        }
-
+    public Num nextOperand() {
+        String str = nextString();
         if (isOperand(str)) {
             return new Num(str);
         }
 
-        throw new IllegalArgumentException("Only Number and Arithmetic Operation are allowed.");
+        throw new IllegalArgumentException("Only Number is allowed.");
+    }
+
+    public Operator nextOperator() {
+        String str = nextString();
+        if (isOperator(str)) {
+            return Operator.of(str);
+        }
+
+        throw new IllegalArgumentException("Only Arithmetic Operation is allowed.");
+    }
+
+    public String nextString() {
+        if (currentIndex >= arguments.length) {
+            return null;
+        }
+
+        return arguments[currentIndex++];
     }
 
     private boolean isOperator(String str) {

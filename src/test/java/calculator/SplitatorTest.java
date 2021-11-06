@@ -10,8 +10,8 @@ public class SplitatorTest {
     void splitOperation() {
         Spliterator spliterator = new Spliterator("1 + 3");
 
-        assertThat(spliterator.next()).isEqualTo(new Num(1));
-        assertThat(spliterator.next()).isEqualTo(Operator.of("+"));
-        assertThat(spliterator.next()).isEqualTo(new Num(3));
+        assertThat(spliterator.nextOperand()).isEqualTo(new Num(1));
+        assertThat(spliterator.nextOperator()).isEqualTo(Operator.of("+"));
+        assertThat(spliterator.nextOperand()).isEqualTo(new Num(3));
     }
 }
