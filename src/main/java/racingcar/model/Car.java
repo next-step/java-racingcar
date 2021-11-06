@@ -2,10 +2,11 @@ package racingcar.model;
 
 import java.util.Objects;
 
+import racingcar.exception.InvalidCarNameSizeException;
 import racingcar.rule.MoveRule;
 
 public class Car implements Comparable<Car> {
-	private static final int MAX_OF_CAR_NAME = 5;
+	public static final int MAX_OF_CAR_NAME = 5;
 
 	private final String name;
 	private final Position position;
@@ -26,7 +27,7 @@ public class Car implements Comparable<Car> {
 
 	private void validateSizeOfCarName(String name) {
 		if (name.length() > MAX_OF_CAR_NAME) {
-			throw new IllegalArgumentException("car name must be less than " + MAX_OF_CAR_NAME);
+			throw new InvalidCarNameSizeException();
 		}
 	}
 
