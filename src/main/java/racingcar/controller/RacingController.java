@@ -13,10 +13,10 @@ public class RacingController {
 	}
 
 	public void startGame() {
+		String nameOfCars = InputView.scanNameOfCars();
 		int numberOfRounds = InputView.scanNumberOfRounds();
-		int numberOfCars = InputView.scanNumberOfCars();
 
-		RacingGame racingGame = RacingGame.create(moveRule, numberOfRounds, numberOfCars);
+		RacingGame racingGame = RacingGame.create(moveRule, nameOfCars, numberOfRounds);
 
 		ResultView.printTitleAndWaitingCars(racingGame);
 
@@ -24,5 +24,7 @@ public class RacingController {
 			racingGame.moveOnce();
 			ResultView.print(racingGame);
 		}
+
+		ResultView.printWinners(racingGame);
 	}
 }

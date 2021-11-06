@@ -4,19 +4,30 @@ import java.util.Objects;
 
 import racingcar.rule.MoveRule;
 
-public class Car {
+public class Car implements Comparable<Car> {
+	private static final int MAX_OF_CAR_NAME = 5;
+
+	private final String name;
 	private final Position position;
 
-	Car() {
-		this(Position.create());
+	Car(String name) {
+		this(name, Position.create());
 	}
 
-	Car(Position position) {
+	Car(String name, Position position) {
+		validateSizeOfCarName(name);
+		this.name = name;
 		this.position = position;
 	}
 
-	public static Car create() {
-		return new Car();
+	public static Car create(String name) {
+		return new Car(name);
+	}
+
+	private void validateSizeOfCarName(String name) {
+		if (name.length() > MAX_OF_CAR_NAME) {
+			throw new IllegalArgumentException("car name must be less than " + MAX_OF_CAR_NAME);
+		}
 	}
 
 	public void move(MoveRule moveRule) {
@@ -25,8 +36,21 @@ public class Car {
 		}
 	}
 
-	public String getCurrentPosition() {
-		return position.convertPositionToDash();
+	public String getName() {
+		return this.name;
+	}
+
+	public int getCurrentPosition() {
+		return position.getPosition();
+	}
+
+	public boolean equalsPosition(Car other) {
+		return position.equals(other.position);
+	}
+
+	@Override
+	public int compareTo(Car other) {
+		return position.compareTo(other.position);
 	}
 
 	@Override
@@ -38,18 +62,24 @@ public class Car {
 
 		Car car = (Car)o;
 
+		if (!Objects.equals(name, car.name))
+			return false;
 		return Objects.equals(position, car.position);
 	}
 
 	@Override
 	public int hashCode() {
-		return position != null ? position.hashCode() : 0;
+		int result = name != null ? name.hashCode() : 0;
+		result = 31 * result + (position != null ? position.hashCode() : 0);
+		return result;
 	}
 
 	@Override
 	public String toString() {
 		return "Car{" +
-			"position=" + position +
+			"name='" + name + '\'' +
+			", position=" + position +
 			'}';
 	}
+
 }

@@ -1,40 +1,27 @@
 package racingcar.model;
 
+import java.util.List;
 import java.util.Objects;
 
 import racingcar.rule.MoveRule;
-import racingcar.util.NumberUtils;
 
 public class RacingGame {
 	private final MoveRule moveRule;
-	private final Round round;
 	private final Cars cars;
+	private final Round round;
 
-	RacingGame(MoveRule moveRule, int numberOfRounds, int numberOfCars) {
-		validate(numberOfRounds, numberOfCars);
-
-		this.moveRule = moveRule;
-		this.round = Round.create(numberOfRounds);
-		this.cars = Cars.create(numberOfCars);
+	RacingGame(MoveRule moveRule, String nameOfCars, int numberOfRounds) {
+		this(moveRule, Cars.create(nameOfCars), Round.create(numberOfRounds));
 	}
 
-	RacingGame(MoveRule moveRule, Round round, Cars cars) {
+	RacingGame(MoveRule moveRule, Cars cars, Round round) {
 		this.moveRule = moveRule;
-		this.round = round;
 		this.cars = cars;
+		this.round = round;
 	}
 
-	private void validate(int numberOfRounds, int numberOfCars) {
-		if (NumberUtils.isNotPositiveNumber(numberOfRounds)) {
-			throw new IllegalArgumentException("numberOfRounds must be positive number");
-		}
-		if (NumberUtils.isNotPositiveNumber(numberOfCars)) {
-			throw new IllegalArgumentException("numberOfCars must be positive number");
-		}
-	}
-
-	public static RacingGame create(MoveRule moveRule, int numberOfRounds, int numberOfCars) {
-		return new RacingGame(moveRule, numberOfRounds, numberOfCars);
+	public static RacingGame create(MoveRule moveRule, String nameOfCars, int numberOfRounds) {
+		return new RacingGame(moveRule, nameOfCars, numberOfRounds);
 	}
 
 	public boolean hasNextRound() {
@@ -46,8 +33,15 @@ public class RacingGame {
 		cars.move(moveRule);
 	}
 
-	public String getCurrentGameStatus() {
-		return cars.getCurrentPosition();
+	public List<String> getWinnerNames() {
+		if (hasNextRound()) {
+			throw new IllegalStateException("game is not over");
+		}
+		return cars.getCarNamesWithHighestPosition();
+	}
+
+	public List<Car> getCars() {
+		return cars.getCars();
 	}
 
 	@Override
@@ -61,16 +55,16 @@ public class RacingGame {
 
 		if (!Objects.equals(moveRule, that.moveRule))
 			return false;
-		if (!Objects.equals(round, that.round))
+		if (!Objects.equals(cars, that.cars))
 			return false;
-		return Objects.equals(cars, that.cars);
+		return Objects.equals(round, that.round);
 	}
 
 	@Override
 	public int hashCode() {
 		int result = moveRule != null ? moveRule.hashCode() : 0;
-		result = 31 * result + (round != null ? round.hashCode() : 0);
 		result = 31 * result + (cars != null ? cars.hashCode() : 0);
+		result = 31 * result + (round != null ? round.hashCode() : 0);
 		return result;
 	}
 
@@ -78,8 +72,8 @@ public class RacingGame {
 	public String toString() {
 		return "RacingGame{" +
 			"moveRule=" + moveRule +
-			", round=" + round +
 			", cars=" + cars +
+			", round=" + round +
 			'}';
 	}
 }

@@ -13,4 +13,9 @@ public final class ScannerUtils {
 		Scanner scanner = new Scanner(System.in);
 		return scanner.nextInt();
 	}
+
+	public static String scanString() {
+		Scanner scanner = new Scanner(System.in);
+		return scanner.nextLine();
+	}
 }

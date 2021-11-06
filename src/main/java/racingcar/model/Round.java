@@ -5,13 +5,13 @@ import java.util.Objects;
 import racingcar.util.NumberUtils;
 
 public class Round {
-	public static final Integer FIRST_ROUND = 1;
+	public static final Integer INITIAL_ROUND = 0;
 
 	private Integer currentRound;
 	private final Integer endRound;
 
 	Round(int endRound) {
-		this(FIRST_ROUND, endRound);
+		this(INITIAL_ROUND, endRound);
 	}
 
 	Round(int currentRound, int endRound) {
@@ -31,7 +31,7 @@ public class Round {
 	}
 
 	public boolean hasNext() {
-		return currentRound <= endRound;
+		return currentRound < endRound;
 	}
 
 	public void increase() {
