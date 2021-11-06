@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.service.dto.RoundReady;
 import racingcar.service.dto.RoundResult;
 import racingcar.service.strategy.RandomRoundRule;
-import racingcar.value.Round;
+import racingcar.service.value.Round;
 
 import java.util.Arrays;
 

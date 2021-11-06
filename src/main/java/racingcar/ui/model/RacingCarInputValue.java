@@ -1,6 +1,6 @@
 package racingcar.ui.model;
 
-import racingcar.value.Round;
+import racingcar.service.value.Round;
 import racingcar.utils.Preconditions;
 
 import java.util.Arrays;

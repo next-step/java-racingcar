@@ -1,4 +1,4 @@
-package racingcar.value;
+package racingcar.service.value;
 
 import racingcar.utils.Preconditions;
 

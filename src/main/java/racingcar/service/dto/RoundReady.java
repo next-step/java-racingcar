@@ -1,6 +1,6 @@
 package racingcar.service.dto;
 
-import racingcar.value.Round;
+import racingcar.service.value.Round;
 import racingcar.service.strategy.RoundRule;
 import racingcar.utils.Preconditions;
 

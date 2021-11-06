@@ -2,7 +2,7 @@ package racingcar.service.domain;
 
 import racingcar.service.strategy.RoundRule;
 import racingcar.utils.Preconditions;
-import racingcar.value.Position;
+import racingcar.service.value.Position;
 
 import java.util.Objects;
 

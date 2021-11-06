@@ -2,8 +2,8 @@ package racingcar.service.model;
 
 import racingcar.service.domain.Car;
 import racingcar.utils.Preconditions;
-import racingcar.value.Position;
-import racingcar.value.Round;
+import racingcar.service.value.Position;
+import racingcar.service.value.Round;
 
 import java.util.Comparator;
 import java.util.List;

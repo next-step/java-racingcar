@@ -7,9 +7,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.service.domain.Car;
 import racingcar.service.domain.strategy.RandomResultFalse;
 import racingcar.service.domain.strategy.RandomResultTrue;
-import racingcar.service.model.Record;
 import racingcar.service.strategy.RoundRule;
-import racingcar.value.Round;
+import racingcar.service.value.Round;
 
 import java.util.Arrays;
 import java.util.Collections;

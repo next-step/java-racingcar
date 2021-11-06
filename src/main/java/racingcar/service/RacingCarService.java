@@ -1,6 +1,6 @@
 package racingcar.service;
 
-import racingcar.value.Round;
+import racingcar.service.value.Round;
 import racingcar.service.domain.Car;
 import racingcar.service.domain.factory.CarFactory;
 import racingcar.service.model.Record;
