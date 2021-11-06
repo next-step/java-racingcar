@@ -15,13 +15,13 @@ public class RacingManagerTest {
         CarFactory carFactory = new CarFactory(NUM_OF_CARS);
         List<Car> carList = carFactory.buildCars();
         RacingManager racingManager = new RacingManager(NUM_OF_TRAIALS, carList);
-        racingManager.startRacing();
+        racingManager.startRacing(new ConsoleOutputView());
         checkDistanceOfCars(carList);
     }
 
     private void checkDistanceOfCars(List<Car> carList) {
         carList.forEach( car -> {
-                String progress = car.printProgress();
+                String progress = car.getProgress();
                 assertThat(progress).isLessThanOrEqualTo(MAX_PROGRESS);
         });
     }

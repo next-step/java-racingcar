@@ -24,7 +24,7 @@ public class Car {
         return random.nextInt(10) >= 4;
     }
 
-    public String printProgress() {
+    public String getProgress() {
         StringBuilder sb = new StringBuilder();
         IntStream.range(0, distance)
                 .forEach( i ->
@@ -51,5 +51,10 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(number);
+    }
+
+    @Override
+    public String toString() {
+        return "Car(" + this.number + ") → " + this.getProgress();
     }
 }

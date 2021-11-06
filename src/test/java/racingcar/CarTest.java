@@ -16,7 +16,7 @@ public class CarTest {
     void testProgressRun() {
         Car carOne = new Car(IDENTIFIER_OF_CAR);
         progressFiveTimes(carOne);
-        assertThat(carOne.printProgress()).isLessThanOrEqualTo(MAX_PROGRESS);
+        assertThat(carOne.getProgress()).isLessThanOrEqualTo(MAX_PROGRESS);
     }
 
     private void progressFiveTimes(Car car) {

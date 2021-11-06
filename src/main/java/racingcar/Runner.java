@@ -12,7 +12,8 @@ public class Runner {
         CarFactory carFactory = new CarFactory(numberOfCars);
         List<Car> carList = carFactory.buildCars();
 
+        OutputView outputView = new ConsoleOutputView();
         RacingManager racingManager = new RacingManager(numberOfTrials, carList);
-        racingManager.startRacing();
+        racingManager.startRacing(outputView);
     }
 }
