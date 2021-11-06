@@ -20,7 +20,7 @@ class CarFactoryTest {
     void createCar(String carName) {
         // when
         List<Car> cars = CarFactory.
-                createCar(Collections.singletonList(carName));
+                create(Collections.singletonList(carName));
 
         // then
         cars.forEach(car -> assertThat(car.getName()).isEqualTo(carName));
@@ -30,6 +30,6 @@ class CarFactoryTest {
     @NullAndEmptySource
     @DisplayName("이름에 공백이나 null이 들어가는 경우 예외 처리")
     void createCarExecption(String carName) {
-        assertThatIllegalArgumentException().isThrownBy(() -> CarFactory.createCar(Collections.singletonList(carName)));
+        assertThatIllegalArgumentException().isThrownBy(() -> CarFactory.create(Collections.singletonList(carName)));
     }
 }

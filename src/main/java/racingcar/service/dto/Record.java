@@ -2,10 +2,12 @@ package racingcar.service.dto;
 
 import racingcar.service.domain.Car;
 import racingcar.utils.Preconditions;
+import racingcar.value.Position;
 import racingcar.value.Round;
 
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Record {
@@ -21,27 +23,28 @@ public class Record {
     }
 
     public static Record of(Round round, List<Car> cars) {
-        return new Record(round, recordCar(cars));
+        return new Record(round, clone(cars));
     }
 
-    private static List<Car> recordCar(List<Car> originCars) {
+    private static List<Car> clone(List<Car> originCars) {
         return originCars.stream()
                 .map(Car::clone)
                 .collect(Collectors.toList());
     }
 
     public String getRoundWinnerName() {
-        Integer maxPosition = Collections.max(getPositions());
+        Position maxPosition = getMaxPosition();
         return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.currentPosition().equals(maxPosition))
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
     }
 
-    private List<Integer> getPositions() {
+    private Position getMaxPosition() {
         return cars.stream()
-                .map(Car::getPosition)
-                .collect(Collectors.toList());
+                .map(Car::currentPosition)
+                .max(Comparator.comparingInt(Position::getPosition))
+                .orElseThrow(NoSuchElementException::new);
     }
 
     public Integer getCurrentRound() {

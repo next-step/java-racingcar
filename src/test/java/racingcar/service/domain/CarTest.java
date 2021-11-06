@@ -21,7 +21,7 @@ class CarTest {
     void increasePosition() {
         for (int i = 1; i < 10; i++) {
             testCar.race(new RandomResultTrue());
-            assertThat(testCar.getPosition()).isEqualTo(i);
+            assertThat(testCar.currentPosition().getPosition()).isEqualTo(i);
         }
     }
 
@@ -30,7 +30,7 @@ class CarTest {
     void samePosition() {
         for (int i = 0; i < 10; i++) {
             testCar.race(new RandomResultFalse());
-            assertThat(testCar.getPosition()).isZero();
+            assertThat(testCar.currentPosition().getPosition()).isZero();
         }
     }
 }

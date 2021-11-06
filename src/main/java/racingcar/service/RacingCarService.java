@@ -20,7 +20,7 @@ public class RacingCarService {
 
     private RacingCarService(RoundReady roundReady) {
         roundRule = roundReady.getRoundRule();
-        cars = CarFactory.createCar(roundReady.getCarNames());
+        cars = CarFactory.create(roundReady.getCarNames());
         finalRound = roundReady.getFinalRound();
     }
 

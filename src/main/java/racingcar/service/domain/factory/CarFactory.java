@@ -9,7 +9,7 @@ public final class CarFactory {
     private CarFactory() {
     }
 
-    public static List<Car> createCar(List<String> carNames) {
+    public static List<Car> create(List<String> carNames) {
         return carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());

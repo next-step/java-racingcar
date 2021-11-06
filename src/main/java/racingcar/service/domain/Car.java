@@ -2,6 +2,7 @@ package racingcar.service.domain;
 
 import racingcar.service.strategy.RoundRule;
 import racingcar.utils.Preconditions;
+import racingcar.value.Position;
 
 import java.util.Objects;
 
@@ -10,37 +11,39 @@ public class Car implements Cloneable {
     private static final Integer INIT_POSITION = 0;
 
     private final String name;
-    private Integer position;
+    private final Position position;
 
     public Car(String name) {
+        this(name, Position.from(INIT_POSITION));
+    }
+
+    public Car(String name, Position position) {
         Preconditions.checkString(name, "name은 필수값입니다.");
         Preconditions.checkMaximumSize(name.length(), CAR_NAME_MAXIMUM_SIZE,
                                        String.format("maximumSize(%d) 값보다 작은 값을 입력해 주세요.", name.length()));
+        Preconditions.checkNotNull(position, "position는 필수값입니다.");
 
         this.name = name;
-        this.position = INIT_POSITION;
+        this.position = position;
     }
+
 
     public void race(RoundRule roundRule) {
         if (roundRule.checkCondition())
-            position++;
+            position.incrementPosition();
     }
 
     public String getName() {
         return name;
     }
 
-    public int getPosition() {
+    public Position currentPosition() {
         return position;
     }
 
     @Override
     public Car clone() {
-        try {
-            return (Car) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
+        return new Car(name, Position.from(position.getPosition()));
     }
 
     @Override
