@@ -35,7 +35,14 @@ class CalculatorTest {
         assertThat(Calculator.calculate(input)).isEqualTo(expected);
     }
 
+    @Test
+    void 나누기를_0으로_하는_경우() {
+        String input = "2 / 0";
 
+        assertThatThrownBy(() -> Calculator.calculate(input))
+                .isInstanceOf(ArithmeticException.class)
+                .hasMessageContaining("0으로 나눌 수 없습니다.");
+    }
 
     @ParameterizedTest
     @NullAndEmptySource
