@@ -37,7 +37,7 @@ Process를 실행하여 결과를 반환하는 객체
 - 기능
 - [x] 전진할 값 랜덤생성
 
-### MoveValidator
+### MoveValueValidator
 전진 조건 판단
 - 기능 
 - [ ] 전진조건 판단
