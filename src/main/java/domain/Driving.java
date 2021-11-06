@@ -6,7 +6,7 @@ public class Driving {
 	private static final int RANDOM_NUMBER_MAX = 10;
 	private static final Random random = new Random();
 
-	public Driving() {
+	private Driving() {
 	}
 
 	public static int drive() {
