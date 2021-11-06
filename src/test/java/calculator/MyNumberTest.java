@@ -76,6 +76,12 @@ public class MyNumberTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 연속사칙연산테스트() {
+        MyNumber actual = Calculator.calculatorByMyNumber("2 + 3 * 4 / 2");
+        assertThat(actual.getNumber()).isEqualTo(10);
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
     void isBlank_ShouldReturnTrueForNullOrBlankStrings(String input) {

@@ -53,7 +53,7 @@ public class Calculator {
 
             second = new MyNumber(values.get(index++));
 
-            first = calculatorByMyNumber(first, operator, second);
+            first = calculatorByMyNumber2(first, operator, second);
         }
 
         return first;
@@ -79,7 +79,7 @@ public class Calculator {
 
     // 에러 나는 코드
     private static MyNumber calculatorByMyNumber2(MyNumber first, String operator, MyNumber seconds) {
-        Operation operation = Operation.valueOf(operator);
+        Operation operation = Operation.valueOfString(operator);
         return operation.apply(first, seconds);
     }
 
