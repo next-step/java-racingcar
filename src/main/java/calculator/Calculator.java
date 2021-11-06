@@ -21,26 +21,7 @@ public class Calculator {
     }
 
     private static int calculator(int firstOperand, String operator, int secondOperand) {
-        if (operator.equals("+")) {
-            return firstOperand + secondOperand;
-        }
-        if (operator.equals("-")) {
-            return firstOperand - secondOperand;
-        }
-        if (operator.equals("*")) {
-            return firstOperand * secondOperand;
-        }
-        if (operator.equals("/")) {
-            divideValueZero(secondOperand);
-            return firstOperand / secondOperand;
-        }
-        throw  new IllegalArgumentException("유효하지 않은 연산자 입니다.");
-    }
-
-    private static void divideValueZero(int operand) {
-        if (operand == 0) {
-            throw new ArithmeticException("0으로 나눌 수 없습니다.");
-        }
+        return Operator.of(operator).operate(firstOperand, secondOperand);
     }
 
     private static void inputValidate(String input) {
