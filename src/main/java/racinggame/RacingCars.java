@@ -21,4 +21,8 @@ public class RacingCars {
                 .map(Car::advanceStatus)
                 .collect(Collectors.toList()));
     }
+
+    public int numberOfCars() {
+        return cars.size();
+    }
 }
