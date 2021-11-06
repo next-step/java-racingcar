@@ -1,5 +1,6 @@
-package racingcar.service.model;
+package racingcar.service.dto;
 
+import racingcar.service.model.Record;
 import racingcar.utils.Preconditions;
 
 import java.util.List;

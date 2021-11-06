@@ -2,7 +2,7 @@ package racingcar.ui;
 
 import racingcar.service.domain.Car;
 import racingcar.service.model.Record;
-import racingcar.service.model.RoundResult;
+import racingcar.service.dto.RoundResult;
 import racingcar.utils.OutputUtils;
 
 public class ResultCarOutputView implements OutputView {
