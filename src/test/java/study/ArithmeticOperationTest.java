@@ -7,13 +7,15 @@ import static org.assertj.core.api.Assertions.*;
 public class ArithmeticOperationTest {
     @Test
     void plus() {
-        ArithmeticOperation ao = new ArithmeticOperation();
-        assertThat(ao.plus(3, 5)).isEqualTo(8);
+        ArithmeticOperation oper = new ArithmeticOperation();
+        assertThat(oper.plus(3, 5)).isEqualTo(8);
     }
 
     @Test
     void minus() {
-
+        ArithmeticOperation oper = new ArithmeticOperation();
+        assertThat(oper.minus(8, 5)).isEqualTo(3);
+        assertThat(oper.minus(5, 8)).isEqualTo(-3);
     }
 
     @Test
