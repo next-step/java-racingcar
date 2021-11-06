@@ -6,8 +6,6 @@ import java.util.List;
 
 public class CarRaceGroup {
 	private static final int MOVING_STANDARD_NUMBER = 4;
-	private static final String HYPHEN = "-";
-	private static final String EMPTY = "";
 	private final List<CarRace> carRaceGroup;
 
 	public CarRaceGroup(CarCount carCount, CarRaceCount carRaceCount) {
@@ -15,47 +13,37 @@ public class CarRaceGroup {
 	}
 
 	private List<CarRace> startCarRace(CarCount carCount, CarRaceCount carRaceCount) {
-		List<CarRace> carRacePosition = new ArrayList<>();
-		for (int i = 0; i < carRaceCount.count(); i++) {
-			carRacePosition.add(carDrivingResult(carCount.count(), carRacePosition));
+		List<CarRace> carRace = new ArrayList<>();
+		int loopNumber = carCount.count() * carRaceCount.count();
+		int carCountSize = carCount.count();
+		for (int i = 0; i < loopNumber; i++) {
+			carRace.add(new CarRace(carDriving(i, carCountSize, carRace)));
 		}
 
-		return carRacePosition;
+		return carRace;
 	}
 
-	private CarRace carDrivingResult(int carCount, List<CarRace> carRacePosition) {
-		String[] carRace = new String[carCount];
-		for (int i = 0; i < carCount; i++) {
-			carRace[i] = carDriving(i, carRacePosition);
+	private int carDriving(int index, int carCount, List<CarRace> carRace) {
+		if (index - carCount >= 0) {
+			int beforeIndex = index - carCount;
+			return carRace.get(beforeIndex).getPosition() + driving();
 		}
 
-		return new CarRace(carRace);
+		return driving();
 	}
 
-	private String carDriving(int index, List<CarRace> carRacePosition) {
-		int size = carRacePosition.size();
-		if (size > 0) {
-			return carRacePosition.get(size - 1).position(index) + changeNumberToHyphen();
-		}
-		return changeNumberToHyphen();
-	}
-
-	private String changeNumberToHyphen() {
+	private int driving() {
 		if (Driving.drive() >= MOVING_STANDARD_NUMBER) {
-			return HYPHEN;
+			return 1;
 		}
-		return EMPTY;
+		return 0;
 	}
 
 	public int size() {
 		return carRaceGroup.size();
 	}
 
-	public int carCountByMoving(int index) {
-		return carRaceGroup.get(index).size();
-	}
-
-	public String carLocation(int carRaceCount, int carNumber) {
-		return carRaceGroup.get(carRaceCount).position(carNumber);
+	public int carPosition(int index) {
+		return carRaceGroup.get(index).getPosition();
 	}
 }
