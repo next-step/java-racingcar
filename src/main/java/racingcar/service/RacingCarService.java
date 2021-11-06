@@ -3,9 +3,9 @@ package racingcar.service;
 import racingcar.value.Round;
 import racingcar.service.domain.Car;
 import racingcar.service.domain.factory.CarFactory;
-import racingcar.service.dto.Record;
+import racingcar.service.model.Record;
 import racingcar.service.dto.RoundReady;
-import racingcar.service.dto.RoundResult;
+import racingcar.service.model.RoundResult;
 import racingcar.service.strategy.RoundRule;
 
 import java.util.ArrayList;

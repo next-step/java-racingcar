@@ -1,4 +1,4 @@
-package racingcar.service.dto;
+package racingcar.service.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.service.domain.Car;
 import racingcar.service.domain.strategy.RandomResultFalse;
 import racingcar.service.domain.strategy.RandomResultTrue;
+import racingcar.service.model.Record;
 import racingcar.service.strategy.RoundRule;
 import racingcar.value.Round;
 

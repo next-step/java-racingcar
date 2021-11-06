@@ -1,4 +1,4 @@
-package racingcar.service.dto;
+package racingcar.service.model;
 
 import racingcar.utils.Preconditions;
 

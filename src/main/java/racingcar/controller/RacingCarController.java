@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import racingcar.service.RacingCarService;
 import racingcar.service.dto.RoundReady;
-import racingcar.service.dto.RoundResult;
+import racingcar.service.model.RoundResult;
 import racingcar.service.strategy.RandomRoundRule;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;

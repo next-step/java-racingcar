@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.service.dto.RoundReady;
-import racingcar.service.dto.RoundResult;
+import racingcar.service.model.RoundResult;
 import racingcar.service.strategy.RandomRoundRule;
 import racingcar.value.Round;
 
