@@ -1,4 +1,4 @@
-package step2;
+package racingStep2;
 
 import java.util.Scanner;
 

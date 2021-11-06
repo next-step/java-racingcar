@@ -1,4 +1,4 @@
-package step2;
+package racingStep2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
