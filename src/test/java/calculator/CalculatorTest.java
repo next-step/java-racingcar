@@ -19,7 +19,7 @@ class CalculatorTest {
         String input = "1 + 2";
 
         // expect
-        assertThat(calculator.calculate(input)).isEqualTo(3);
+        assertThat(calculator.execute(input)).isEqualTo(3);
     }
 
     @Test
@@ -28,7 +28,7 @@ class CalculatorTest {
         String input = "1 - 2";
 
         // expect
-        assertThat(calculator.calculate(input)).isEqualTo(-1);
+        assertThat(calculator.execute(input)).isEqualTo(-1);
     }
 
     @Test
@@ -38,7 +38,7 @@ class CalculatorTest {
 
 
         // expect
-        assertThat(calculator.calculate(input)).isEqualTo(2);
+        assertThat(calculator.execute(input)).isEqualTo(2);
     }
 
     @Test
@@ -47,17 +47,17 @@ class CalculatorTest {
         String input = "4 / 2";
 
         // expect
-        assertThat(calculator.calculate(input)).isEqualTo(2);
+        assertThat(calculator.execute(input)).isEqualTo(2);
     }
 
     @Test
     @DisplayName("When divider is 0, throws ArithmeticException")
-    void divide_exception_occurs() {
+    void divide_divider_is_zero() {
         // given
         String input = "4 / 0";
 
         // expect
-        assertThatThrownBy(() -> calculator.calculate(input))
+        assertThatThrownBy(() -> calculator.execute(input))
                 .isInstanceOf(ArithmeticException.class)
                 .hasMessageContaining("0 은 나눗셈을 할 수 없습니다. 다시 입력해주세요.");
     }
@@ -86,14 +86,16 @@ class CalculatorTest {
     })
     void calculate_with_many_numbers(String input, int result) {
         // expect
-        assertThat(calculator.calculate(input)).isEqualTo(result);
+        assertThat(calculator.execute(input)).isEqualTo(result);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"", "  "})
+    @ValueSource(strings = {
+            "", "  ", "     "
+    })
     void input_validation_fail(String input) {
         // expect
-        assertThatThrownBy(() -> calculator.calculate(input))
+        assertThatThrownBy(() -> calculator.execute(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("유효하지 않은 입력값 입니다. 공백을 입력하지 마세요.");
     }
