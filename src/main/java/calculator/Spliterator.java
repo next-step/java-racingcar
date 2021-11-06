@@ -1,19 +1,21 @@
 package calculator;
 
 public class Spliterator {
-    private final String[] arguments;
-    private int currentIndex;
-    private final String BLACK_REGEX = "\\s+";
+    private final String BLANK_REGEX = "\\s+";
     private final String ARITHMETIC_OPERATIONS = "+-*/";
     private final String NUMERIC_REGEX = "[0-9.]+";
     private final int EMPTY_LENGTH = 0;
+    private final int OPERATOR_LENGTH = 1;
+
+    private final String[] arguments;
+    private int currentIndex;
 
     public Spliterator(String operation) {
         if (operation == null) {
             throw new IllegalArgumentException("Operation must not be null");
         }
 
-        this.arguments = operation.split(BLACK_REGEX);
+        this.arguments = operation.split(BLANK_REGEX);
         this.currentIndex = 0;
 
         if (arguments.length == EMPTY_LENGTH) {
@@ -40,7 +42,7 @@ public class Spliterator {
     }
 
     private boolean isOperator(String str) {
-        return str != null && str.length() == 1 && ARITHMETIC_OPERATIONS.contains(str);
+        return str != null && str.length() == OPERATOR_LENGTH && ARITHMETIC_OPERATIONS.contains(str);
     }
 
     private boolean isOperand(String str) {
