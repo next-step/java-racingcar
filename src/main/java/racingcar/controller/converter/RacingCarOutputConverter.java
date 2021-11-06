@@ -1,4 +1,4 @@
-package racingcar.controller.convert;
+package racingcar.controller.converter;
 
 import racingcar.controller.dto.RaceResult;
 import racingcar.controller.dto.RacingCarOutput;
