@@ -1,4 +1,6 @@
-package car;
+package racingcar.car;
+
+import java.util.Collections;
 
 public class Car {
 
@@ -10,5 +12,9 @@ public class Car {
 
     public int getPosition() {
         return this.position;
+    }
+
+    public String printPosition() {
+        return String.join("", Collections.nCopies(this.position, "-"));
     }
 }

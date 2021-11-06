@@ -1,6 +1,6 @@
-package moverule;
+package racingcar.moverule;
 
-import car.Car;
+import racingcar.car.Car;
 
 @FunctionalInterface
 public interface MoveRule {
