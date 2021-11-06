@@ -3,12 +3,10 @@ package racingcar.ui.model;
 import racingcar.service.value.Round;
 import racingcar.utils.Preconditions;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarInputValue {
     private static final int MINIMUM_SIZE = 0;
-    private static final String DELIMITER = ",";
 
     private final List<String> carNames;
     private final Round finalRound;
@@ -25,12 +23,8 @@ public class RacingCarInputValue {
         this.finalRound = Round.from(finalRound);
     }
 
-    public static RacingCarInputValue of(String carNames, Integer finalRound) {
-        return new RacingCarInputValue(splitNames(carNames), finalRound);
-    }
-
-    private static List<String> splitNames(String carNames) {
-        return Arrays.asList(carNames.split(DELIMITER));
+    public static RacingCarInputValue of(List<String> carNames, Integer finalRound) {
+        return new RacingCarInputValue(carNames, finalRound);
     }
 
     public List<String> getCarNames() {
