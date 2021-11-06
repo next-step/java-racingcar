@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.utils;
 
 public class InputValidator {
     public static void validate(String input) {

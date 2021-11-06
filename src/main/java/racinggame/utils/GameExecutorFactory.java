@@ -1,4 +1,7 @@
-package racinggame;
+package racinggame.utils;
+
+import racinggame.GameExecutor;
+import racinggame.SimpleGameExecutor;
 
 public class GameExecutorFactory {
 

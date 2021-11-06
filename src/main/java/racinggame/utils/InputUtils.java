@@ -1,4 +1,6 @@
-package racinggame;
+package racinggame.utils;
+
+import racinggame.InputValue;
 
 public class InputUtils {
 

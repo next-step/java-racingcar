@@ -1,4 +1,7 @@
-package racinggame;
+package racinggame.view;
+
+import racinggame.GameExecutor;
+import racinggame.utils.GameExecutorFactory;
 
 import java.util.Scanner;
 

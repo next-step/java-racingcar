@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.utils;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

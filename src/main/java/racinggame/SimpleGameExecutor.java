@@ -1,5 +1,9 @@
 package racinggame;
 
+import racinggame.utils.CarFactory;
+import racinggame.view.ResultView;
+import racinggame.view.ResultViews;
+
 import java.util.ArrayList;
 import java.util.List;
 

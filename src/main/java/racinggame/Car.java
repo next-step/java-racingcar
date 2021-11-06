@@ -1,5 +1,7 @@
 package racinggame;
 
+import racinggame.utils.MoveValueValidator;
+
 public class Car {
     private StringBuilder moveStatus;
 
