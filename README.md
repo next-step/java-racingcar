@@ -27,20 +27,21 @@
     - Input을 받아와서 RacingCar를 진행함
     - RacingCar의 결과를 받아와서 output으로 전달
     - convert
-        - RacingCarOutputConverter 는 Service에서 받아온 DTO 데이터를 View에 필요한 데이터 형태로 변경해서 View에 대한 종속성을 제거
+        - RacingCarOutputConverter는 비즈니스 로직에서 받아온 DTO 데이터를 View에 필요한 데이터 형태로 변경해서 전달
+        - 비즈니스 모델이 View에 대해 종속적이지 않게 제거
 - Service (비즈니스 로직)
     - domain
-        - Car (domain)는 실제 비즈니스 로직의 도메인
-        - Car를 생성해주는 Factory 클래스
-    - model
-        - Record는 매 Round 별로 결과를 기록하는 객체
+        - Car는 실제 자동차 관련 도메인
+        - Record는 매 Round 별로 결과를 기록하는 도메인 (Car의 history)
+    - factory
+        - 도메인 객체 생성
     - dto
         - RoundReady는 Controller Layer에서 Service Layer에 값을 전달하기 위한 DTO
         - RoundResult는 Service Layer에서 Controller Layer에 레이스 결과값을 전달하기 위한 DTO
     - strategy
         - RoundRule (strategy) 현재는 랜덤을 통해 전진하지만 다른 조건에 대해서 확장 대응하기 위한 인터페이스
         - RandomRoundRule 는 10개의 랜덤값 중, 4초과의 값이 나오면 참을 반환 4이하의 값이 나오면 거짓을 반환
-        - RacingCarService (service) 실제 비즈니스 로직 구현 자동차를 이동시키고 결과값을 반환
+    - RacingCarService (service) 실제 비즈니스 로직 구현 자동차를 이동시키고 결과값을 반환
 - Utils
     - InputUtils는 입력값을 받아서 문자열 또는 숫자로 반환 해주는 유틸
     - OutputUtils는 출력값을 받아서 Console에 출력해 주는 유틸

@@ -1,12 +1,12 @@
 package racingcar.service.dto;
 
-import racingcar.service.model.Record;
+import racingcar.service.domain.Record;
 import racingcar.utils.Preconditions;
 
 import java.util.List;
 
 public class RoundResult {
-    private List<Record> records;
+    private final List<Record> records;
 
     private RoundResult(List<Record> records) {
         this.records = records;

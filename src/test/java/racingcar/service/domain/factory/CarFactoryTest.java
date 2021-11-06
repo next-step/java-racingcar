@@ -29,7 +29,7 @@ class CarFactoryTest {
     @ParameterizedTest
     @NullAndEmptySource
     @DisplayName("이름에 공백이나 null이 들어가는 경우 예외 처리")
-    void createCarExecption(String carName) {
+    void createCarException(String carName) {
         assertThatIllegalArgumentException().isThrownBy(() -> CarFactory.create(Collections.singletonList(carName)));
     }
 }

@@ -4,7 +4,7 @@ import racingcar.controller.dto.RaceResult;
 import racingcar.controller.dto.RacingCarOutput;
 import racingcar.service.domain.Car;
 import racingcar.service.dto.RoundResult;
-import racingcar.service.model.Record;
+import racingcar.service.domain.Record;
 
 import java.util.List;
 import java.util.stream.Collectors;

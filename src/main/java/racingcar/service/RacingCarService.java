@@ -2,9 +2,10 @@ package racingcar.service;
 
 import racingcar.service.domain.Car;
 import racingcar.service.domain.factory.CarFactory;
+import racingcar.service.domain.factory.RecordFactory;
 import racingcar.service.dto.RoundReady;
 import racingcar.service.dto.RoundResult;
-import racingcar.service.model.Record;
+import racingcar.service.domain.Record;
 import racingcar.service.strategy.RoundRule;
 import racingcar.service.value.Round;
 
@@ -42,6 +43,6 @@ public class RacingCarService {
     }
 
     private Record recordRace(Round round) {
-        return Record.of(round, cars);
+        return RecordFactory.create(round, cars);
     }
 }

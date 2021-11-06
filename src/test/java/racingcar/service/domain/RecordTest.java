@@ -1,10 +1,10 @@
-package racingcar.service.model;
+package racingcar.service.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import racingcar.service.domain.Car;
+import racingcar.service.domain.factory.RecordFactory;
 import racingcar.service.domain.strategy.RandomResultFalse;
 import racingcar.service.domain.strategy.RandomResultTrue;
 import racingcar.service.strategy.RoundRule;
@@ -25,7 +25,7 @@ public class RecordTest {
     @DisplayName("각 경기별로 우승자 검증")
     void getRoundWinnerName(Round round, List<Car> cars, String winner) {
         // given
-        Record record = Record.of(round, cars);
+        Record record = RecordFactory.create(round, cars);
 
         // when
         String result = record.getRoundWinnerName();
@@ -39,10 +39,10 @@ public class RecordTest {
     @DisplayName("Record의 필수값이 null인 경우 예외 발생 검증")
     void createRecordException(Round round, List<Car> cars) {
         // when & then
-        assertThatNullPointerException().isThrownBy(() -> Record.of(round, cars));
+        assertThatNullPointerException().isThrownBy(() -> RecordFactory.create(round, cars));
     }
 
-    public static Stream<Arguments> getRoundWinnerName() {
+    private static Stream<Arguments> getRoundWinnerName() {
         // given
         return Stream.of(
                 Arguments.of(Round.from(1),
@@ -68,7 +68,7 @@ public class RecordTest {
         );
     }
 
-    public static Stream<Arguments> createRecordException() {
+    private static Stream<Arguments> createRecordException() {
         // given
         return Stream.of(
                 Arguments.of(null, null),
