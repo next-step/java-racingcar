@@ -14,10 +14,10 @@ public class RacingCarOutputConverter {
     }
 
     public static RacingCarOutput convert(RoundResult roundResult) {
-        return RacingCarOutput.of(roundResult.getFinalWinnerName(), convertRaceResultList(roundResult.getRecords()));
+        return RacingCarOutput.of(roundResult.getFinalWinnerName(), convertToRaceResultList(roundResult.getRecords()));
     }
 
-    private static List<RaceResult> convertRaceResultList(List<Record> records) {
+    private static List<RaceResult> convertToRaceResultList(List<Record> records) {
         return records.stream()
                 .map(RacingCarOutputConverter::convertToRaceResult)
                 .collect(Collectors.toList());
