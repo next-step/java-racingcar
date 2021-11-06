@@ -49,7 +49,8 @@ public class CalculationTest {
 		Operator operator = new Operator(formula.getFormula());
 
 		int result = 0;
-		for (int i = 0; i < operator.size(); i++) {
+		int operatorSize = operator.size();
+		for (int i = 0; i < operatorSize; i++) {
 			result = number.firstNumber(result, i);
 			result = Calculation.calculate(operator.value(i), result, number.value(i + LAST_NUMBER_INDEX_COUNT));
 		}
