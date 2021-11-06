@@ -12,7 +12,7 @@ public class RacingController {
 		this.moveRule = moveRule;
 	}
 
-	public void startGameWithName() {
+	public void startGame() {
 		String nameOfCars = InputView.scanNameOfCars();
 		int numberOfRounds = InputView.scanNumberOfRounds();
 

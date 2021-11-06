@@ -7,6 +7,6 @@ public class Application {
 	public static void main(String[] args) {
 		RandomMoveRule moveRule = new RandomMoveRule();
 		RacingController racingController = new RacingController(moveRule);
-		racingController.startGameWithName();
+		racingController.startGame();
 	}
 }
