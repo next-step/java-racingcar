@@ -2,7 +2,7 @@ package calculator;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class CalculatorTest {
 
@@ -29,6 +29,14 @@ public class CalculatorTest {
     public void dividedBy() {
         int acc = Calculator.calculate("4 / 2");
         assertThat(acc).isEqualTo(2);
+    }
+
+    @Test
+    void dividedByZero() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            int acc = Calculator.calculate("4 / 0");
+        }).withMessageMatching("분모는 0이 될 수 없습니다.");
+
     }
 
 }
