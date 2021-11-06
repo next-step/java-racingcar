@@ -16,7 +16,7 @@ public class Cars {
 	private final List<Car> cars;
 
 	Cars(List<Car> cars) {
-		this.cars = Collections.unmodifiableList(cars);
+		this.cars = new ArrayList<>(cars);
 	}
 
 	public static Cars create(List<Car> cars) {
@@ -68,7 +68,7 @@ public class Cars {
 	}
 
 	public List<Car> getCars() {
-		return cars;
+		return Collections.unmodifiableList(cars);
 	}
 
 	@Override
