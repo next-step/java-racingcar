@@ -1,6 +1,6 @@
 package racingcar.ui;
 
-import racingcar.controller.model.RacingCarInput;
+import racingcar.controller.dto.RacingCarInput;
 
 public interface InputView {
     RacingCarInput getInputValue();

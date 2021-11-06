@@ -1,6 +1,6 @@
 package racingcar.ui;
 
-import racingcar.controller.model.RacingCarOutput;
+import racingcar.controller.dto.RacingCarOutput;
 
 public interface OutputView {
     void output(RacingCarOutput racingCarOutput);

@@ -1,7 +1,7 @@
 package racingcar.controller.convert;
 
-import racingcar.controller.model.RaceResult;
-import racingcar.controller.model.RacingCarOutput;
+import racingcar.controller.dto.RaceResult;
+import racingcar.controller.dto.RacingCarOutput;
 import racingcar.service.domain.Car;
 import racingcar.service.dto.RoundResult;
 import racingcar.service.model.Record;

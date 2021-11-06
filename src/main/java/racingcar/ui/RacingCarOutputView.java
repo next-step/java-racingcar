@@ -1,7 +1,7 @@
 package racingcar.ui;
 
-import racingcar.controller.model.RaceResult;
-import racingcar.controller.model.RacingCarOutput;
+import racingcar.controller.dto.RaceResult;
+import racingcar.controller.dto.RacingCarOutput;
 import racingcar.utils.OutputUtils;
 
 import java.util.List;

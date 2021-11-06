@@ -1,4 +1,4 @@
-package racingcar.controller.model;
+package racingcar.controller.dto;
 
 import racingcar.service.value.Position;
 import racingcar.service.value.Round;
