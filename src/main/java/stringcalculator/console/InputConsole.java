@@ -5,13 +5,13 @@ import java.util.Scanner;
 /**
  * 수식을 입력받기 위한 콘솔
  */
-class InputConsole {
+public class InputConsole {
     private static final String INPUT_MESSAGE = "수식을 입력해주세요:";
 
     private InputConsole() {
     }
 
-    static InputExpression readExpression() {
+    public static InputExpression readExpression() {
         System.out.println(INPUT_MESSAGE);
         return new InputExpression(readString());
     }

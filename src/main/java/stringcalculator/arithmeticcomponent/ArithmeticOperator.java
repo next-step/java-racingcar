@@ -20,7 +20,7 @@ public enum ArithmeticOperator {
         this.function = function;
     }
 
-    static ArithmeticOperator findByOperator(String operator) {
+    public static ArithmeticOperator findByOperator(String operator) {
         ArithmeticOperator[] arithmeticOperators = ArithmeticOperator.values();
         return Arrays.stream(arithmeticOperators)
                 .filter(arithmeticOperator -> arithmeticOperator.hasOperator(operator))

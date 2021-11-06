@@ -6,9 +6,9 @@ import java.util.Objects;
  * 1회 연산의 숫자 결과
  */
 public class ArithmeticResult {
-    private int number;
+    private final int number;
 
-    ArithmeticResult(int number) {
+    public ArithmeticResult(int number) {
         this.number = number;
     }
 

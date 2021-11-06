@@ -4,12 +4,12 @@ package stringcalculator.arithmeticcomponent;
  * 1회 연산에 필요한 수식
  * 구성 ( 연산자, 피연산자1, 피연산자2 )
  */
-class ArithmeticExpression {
+public class ArithmeticExpression {
     private ArithmeticOperator operator;
     private ArithmeticOperand operand1;
     private ArithmeticOperand operand2;
 
-    ArithmeticExpression(ArithmeticOperand operand1, ArithmeticOperator operator, ArithmeticOperand operand2) {
+    public ArithmeticExpression(ArithmeticOperand operand1, ArithmeticOperator operator, ArithmeticOperand operand2) {
         if (!isValid(operand1, operator, operand2)) {
             throw new IllegalArgumentException();
         }
@@ -22,22 +22,20 @@ class ArithmeticExpression {
         return operand1 != null && operator != null && operand2 != null;
     }
 
-    ArithmeticResult result() {
-        return new ArithmeticResult(
-                operator.function()
-                        .apply(operand1.number(), operand2.number())
-        );
+    public int result() {
+        return operator.function()
+                        .apply(operand1.number(), operand2.number());
     }
 
-    ArithmeticOperator operator() {
+    public ArithmeticOperator operator() {
         return operator;
     }
 
-    ArithmeticOperand operand1() {
+    public ArithmeticOperand operand1() {
         return operand1;
     }
 
-    ArithmeticOperand operand2() {
+    public ArithmeticOperand operand2() {
         return operand2;
     }
 }

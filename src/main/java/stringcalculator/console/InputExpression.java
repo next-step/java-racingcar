@@ -3,11 +3,11 @@ package stringcalculator.console;
 /**
  * 계산에 사용할 전체 수식
  */
-class InputExpression {
+public class InputExpression {
 
     private final String expression;
 
-    InputExpression(String expression) {
+    public InputExpression(String expression) {
         validateInfixExpression(expression);
         this.expression = expression;
     }

@@ -3,14 +3,14 @@ package stringcalculator.arithmeticcomponent;
 /**
  * 연산에 필요한 피연산자
  */
-class ArithmeticOperand {
+public class ArithmeticOperand {
     private final int number;
 
-    ArithmeticOperand(int number) {
+    public ArithmeticOperand(int number) {
         this.number = number;
     }
 
-    int number() {
+    public int number() {
         return number;
     }
 }
