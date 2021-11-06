@@ -20,7 +20,9 @@ public class ArithmeticOperationTest {
 
     @Test
     void multiply() {
-
+        ArithmeticOperation oper = new ArithmeticOperation();
+        assertThat(oper.multiply(8, 5)).isEqualTo(40);
+        assertThat(oper.multiply(5, -8)).isEqualTo(-40);
     }
 
     @Test
