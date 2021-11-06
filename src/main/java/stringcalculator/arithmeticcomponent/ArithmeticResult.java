@@ -5,14 +5,14 @@ import java.util.Objects;
 /**
  * 1회 연산의 숫자 결과
  */
-class ArithmeticResult {
+public class ArithmeticResult {
     private int number;
 
     ArithmeticResult(int number) {
         this.number = number;
     }
 
-    int number() {
+    public int number() {
         return number;
     }
 
