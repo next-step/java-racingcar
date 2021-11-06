@@ -78,7 +78,7 @@ class StringCalculatorTest {
 		"9 - 3 * 2 + 7 = 19",
 		"20 + 111 - 33 = 98",
 		"9 - 5 * 3 + 1 = 13",
-		"20 / 5 - 3 * 6 = 6",
+		"20 / 5 - 3 * 6 = 6"
 	}, delimiter = '=')
 	void calculate(String input, int expected) {
 		// when
