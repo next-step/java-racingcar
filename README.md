@@ -16,9 +16,6 @@
 
 - RacingCarApplication
     - RacingCar 애플리케이션을 실행
-- RacingCarController
-    - Input을 받아와서 RacingCar를 진행함
-    - RacingCar의 결과를 받아와서 output으로 전달
 - UI
     - InputView (UI)
         - 세부 사항이 언제든 변경될 수 있다고 생각되서 인터페이스로 구현
@@ -26,6 +23,11 @@
     - OutputView (UI)
         - 세부 사항이 언제든 변경될 수 있다고 생각되서 인터페이스로 구현
         - ResultCarOutputView Racing의 결과를 출력
+- RacingCarController
+    - Input을 받아와서 RacingCar를 진행함
+    - RacingCar의 결과를 받아와서 output으로 전달
+    - convert
+        - RacingCarOutputConverter 는 Service에서 받아온 DTO 데이터를 View에 필요한 데이터 형태로 변경해서 View에 대한 종속성을 제거
 - Service (비즈니스 로직)
     - domain
         - Car (domain)는 실제 비즈니스 로직의 도메인
