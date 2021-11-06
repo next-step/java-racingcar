@@ -3,15 +3,12 @@ package racingcar.view;
 import java.util.List;
 
 import racingcar.model.Car;
-import racingcar.model.RacingGame;
 
 public class ResultView {
 	private static final String WINNER_NAMES_JOIN_DELIMITER = ", ";
 	private static final String POSITION_SYMBOL = "-";
 
-	public static void print(RacingGame racingGame) {
-		List<Car> cars = racingGame.getCars();
-
+	public static void print(List<Car> cars) {
 		StringBuilder builder = new StringBuilder();
 		for (Car car : cars) {
 			builder.append(car.getName());
@@ -31,13 +28,12 @@ public class ResultView {
 		return builder.toString();
 	}
 
-	public static void printTitleAndWaitingCars(RacingGame racingGame) {
+	public static void printTitleAndWaitingCars(List<Car> cars) {
 		System.out.println("\n실행 결과");
-		print(racingGame);
+		print(cars);
 	}
 
-	public static void printWinners(RacingGame racingGame) {
-		List<String> winnerNames = racingGame.getWinnerNames();
+	public static void printWinners(List<String> winnerNames) {
 		String winnerNamesToDelimitedString = String.join(WINNER_NAMES_JOIN_DELIMITER, winnerNames);
 		System.out.println(winnerNamesToDelimitedString + "가 최종 우승했습니다.");
 	}
