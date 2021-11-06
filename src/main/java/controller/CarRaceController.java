@@ -12,6 +12,6 @@ public class CarRaceController {
 		CarRaceCount carRaceCount = new CarRaceCount(InputView.inputCarRaceCount());
 		CarRaceGroup carRaceGroup = new CarRaceGroup(carCount, carRaceCount);
 
-		OutputView.result(carRaceGroup);
+		OutputView.result(carCount, carRaceGroup);
 	}
 }
