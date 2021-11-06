@@ -13,11 +13,13 @@ public class Calculator {
 
         String[] values = splitTextByDelimiter(input, delimiter);
 
-        MyNumber number1 = new MyNumber(values[0]);
-        String operator = values[1];
-        MyNumber number2 = new MyNumber(values[2]);
+        Formula formula = Formula.builder()
+                            .setFirst(new MyNumber(values[0]))
+                            .setOperator(values[1])
+                            .setSecond(new MyNumber(values[2]))
+                            .build();
 
-        return calculate(number1, operator, number2).getNumber();
+        return calculate(formula).getNumber();
     }
 
     public static MyNumber calculateMulti(String input) {
@@ -25,33 +27,25 @@ public class Calculator {
 
         int cnt = values.length;
 
-        MyNumber number = new MyNumber(values[0]);
+        MyNumber first = new MyNumber(values[0]);
+        Formula formula = null;
 
         for(int i = 1 ; i < cnt ; i += 2) {
-            String operator = values[i];
-            MyNumber number2 = new MyNumber(values[i+1]);
+            formula = Formula.builder()
+                        .setFirst(first)
+                        .setOperator(values[i])
+                        .setSecond(new MyNumber(values[i+1]))
+                        .build();
 
-            number = calculate(number, operator, number2);
+            first = calculate(formula);
         }
 
-        return number;
+        return first;
     }
 
-    private static MyNumber calculate(MyNumber number1, String operator, MyNumber number2) {
-        if(operator.equals("+")) {
-            return number1.plus(number2);
-        }
-        if(operator.equals("-")) {
-            return number1.minus(number2);
-        }
-        if(operator.equals("*")) {
-            return number1.multiply(number2);
-        }
-        if(operator.equals("/")) {
-            return number1.divide(number2);
-        }
-
-        throw new IllegalArgumentException(MyException.INVALID_OPERATOR.getMessage());
+    private static MyNumber calculate(Formula formula) {
+        return Operator.of(formula.getOperator())
+                            .apply(formula.getFirst(), formula.getSecond());
     }
 
     public static void validText(String text) {
