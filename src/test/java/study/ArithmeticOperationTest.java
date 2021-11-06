@@ -1,6 +1,7 @@
 package study;
 
-import com.ArithmeticOperation;
+import com.process.InputProcessor;
+import com.util.ArithmeticOperation;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
@@ -30,5 +31,21 @@ public class ArithmeticOperationTest {
         ArithmeticOperation oper = new ArithmeticOperation();
         assertThat(oper.divide(10, 5)).isEqualTo(2);
         assertThat(oper.divide(10, -5)).isEqualTo(-2);
+    }
+
+    @Test
+    void subCalculate() {
+        InputProcessor processor = new InputProcessor();
+        assertThat(processor.subCalculate(2, '-', 3)).isEqualTo(-1);
+        assertThat(processor.subCalculate(2, '+', 3)).isEqualTo(5);
+        assertThat(processor.subCalculate(2, '*', 3)).isEqualTo(6);
+        assertThat(processor.subCalculate(4, '/', 2)).isEqualTo(2);
+    }
+
+    @Test
+    void calculate() {
+        InputProcessor processor = new InputProcessor();
+        char[] arr = "2 + 3 * 4 / 2".toCharArray();
+        assertThat(processor.calculate(arr)).isEqualTo(10);
     }
 }
