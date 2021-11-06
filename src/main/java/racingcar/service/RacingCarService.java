@@ -1,12 +1,12 @@
 package racingcar.service;
 
-import racingcar.service.value.Round;
 import racingcar.service.domain.Car;
 import racingcar.service.domain.factory.CarFactory;
-import racingcar.service.model.Record;
 import racingcar.service.dto.RoundReady;
 import racingcar.service.dto.RoundResult;
+import racingcar.service.model.Record;
 import racingcar.service.strategy.RoundRule;
+import racingcar.service.value.Round;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +15,13 @@ public class RacingCarService {
     private static final int START_ROUND_COUNT = 1;
 
     private final RoundRule roundRule;
-    private final List<Car> cars;
     private final Round finalRound;
+    private final List<Car> cars;
 
     private RacingCarService(RoundReady roundReady) {
         roundRule = roundReady.getRoundRule();
-        cars = CarFactory.create(roundReady.getCarNames());
         finalRound = roundReady.getFinalRound();
+        cars = CarFactory.create(roundReady.getCarNames());
     }
 
     public static RacingCarService ready(RoundReady roundReady) {

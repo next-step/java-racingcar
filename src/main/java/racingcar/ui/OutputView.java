@@ -1,7 +1,7 @@
 package racingcar.ui;
 
-import racingcar.service.dto.RoundResult;
+import racingcar.controller.model.RacingCarOutput;
 
 public interface OutputView {
-    void output(RoundResult roundResult);
+    void output(RacingCarOutput racingCarOutput);
 }

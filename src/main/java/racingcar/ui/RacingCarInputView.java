@@ -1,6 +1,6 @@
 package racingcar.ui;
 
-import racingcar.ui.model.RacingCarInputValue;
+import racingcar.controller.model.RacingCarInput;
 import racingcar.utils.InputUtils;
 
 import java.util.Arrays;
@@ -14,10 +14,10 @@ public class RacingCarInputView implements InputView {
     private static final String WRONG_CAR_NAME = "자동차 이름은 5자를 초과할 수 없습니다.";
     private static final int CAR_NAME_MAXIMUM_SIZE = 5;
 
-    public RacingCarInputValue getInputValue() {
+    public RacingCarInput getInputValue() {
         List<String> carNames = getCarNames();
         Integer finalRound = getFinalRound();
-        return RacingCarInputValue.of(carNames, finalRound);
+        return RacingCarInput.of(carNames, finalRound);
     }
 
     private List<String> getCarNames() {

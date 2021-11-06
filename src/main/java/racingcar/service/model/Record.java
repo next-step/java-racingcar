@@ -47,11 +47,11 @@ public class Record {
                 .orElseThrow(NoSuchElementException::new);
     }
 
-    public Integer getCurrentRound() {
-        return round.getRound();
+    public Round getCurrentRound() {
+        return round;
     }
 
-    public List<Car> getCars() {
+    public List<Car> getCarList() {
         return cars;
     }
 }

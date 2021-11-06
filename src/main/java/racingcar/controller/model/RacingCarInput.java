@@ -1,17 +1,17 @@
-package racingcar.ui.model;
+package racingcar.controller.model;
 
 import racingcar.service.value.Round;
 import racingcar.utils.Preconditions;
 
 import java.util.List;
 
-public class RacingCarInputValue {
+public class RacingCarInput {
     private static final int MINIMUM_SIZE = 0;
 
     private final List<String> carNames;
     private final Round finalRound;
 
-    private RacingCarInputValue(List<String> carNames, Integer finalRound) {
+    private RacingCarInput(List<String> carNames, Integer finalRound) {
         Preconditions.checkNotNull(carNames, "carNames은 필수값입니다.");
         Preconditions.checkNotNull(finalRound, "finalRound는 필수값입니다.");
         Preconditions.checkMinimumSize(carNames.size(), MINIMUM_SIZE,
@@ -23,8 +23,8 @@ public class RacingCarInputValue {
         this.finalRound = Round.from(finalRound);
     }
 
-    public static RacingCarInputValue of(List<String> carNames, Integer finalRound) {
-        return new RacingCarInputValue(carNames, finalRound);
+    public static RacingCarInput of(List<String> carNames, Integer finalRound) {
+        return new RacingCarInput(carNames, finalRound);
     }
 
     public List<String> getCarNames() {
