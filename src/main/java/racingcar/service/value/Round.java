@@ -13,8 +13,8 @@ public class Round {
         this.round = round;
     }
 
-    public static Round from(Integer integer) {
-        return new Round(integer);
+    public static Round from(Integer round) {
+        return new Round(round);
     }
 
     public Integer getRound() {

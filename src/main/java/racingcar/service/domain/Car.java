@@ -1,8 +1,8 @@
 package racingcar.service.domain;
 
 import racingcar.service.strategy.RoundRule;
-import racingcar.utils.Preconditions;
 import racingcar.service.value.Position;
+import racingcar.utils.Preconditions;
 
 import java.util.Objects;
 
@@ -29,8 +29,9 @@ public class Car implements Cloneable {
 
 
     public void race(RoundRule roundRule) {
-        if (roundRule.checkCondition())
+        if (roundRule.checkCondition()) {
             position.incrementPosition();
+        }
     }
 
     public String getName() {

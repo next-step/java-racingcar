@@ -13,8 +13,8 @@ public class Position {
         this.position = position;
     }
 
-    public static Position from(Integer integer) {
-        return new Position(integer);
+    public static Position from(Integer position) {
+        return new Position(position);
     }
 
     public void incrementPosition() {
