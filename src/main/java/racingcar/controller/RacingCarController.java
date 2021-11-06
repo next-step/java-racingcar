@@ -19,7 +19,7 @@ public class RacingCarController {
     }
 
     public void execute() {
-        RacingCarInput racingCarInput = inputView.getInputValue();
+        RacingCarInput racingCarInput = inputView.getRacingCarInput();
         RoundResult roundResult = startRound(racingCarInput);
         outputView.output(RacingCarOutputConverter.convert(roundResult));
     }
