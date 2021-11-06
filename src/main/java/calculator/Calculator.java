@@ -1,7 +1,10 @@
 package calculator;
 
+import java.util.Objects;
+
 public class Calculator {
     private static final String DELIMITER = " ";
+    private static final String EMPTY_STRING = "";
     private static final Integer ZERO = 0;
     private static final Integer INDEX_INTERVAL = 2;
 
@@ -25,7 +28,7 @@ public class Calculator {
     }
 
     private static void inputValidate(String input) {
-        if (input == null || input == "") {
+        if (Objects.isNull(input) || EMPTY_STRING.equals(input)) {
             throw new IllegalArgumentException("입력값이 올바르지 않습니다.");
         }
     }
