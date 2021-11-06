@@ -10,6 +10,7 @@ public class JudgeCarMovement {
     }
 
     public boolean judge() {
-        return false;
+        int randomValue = random.nextInt(10);
+        return randomValue >= 4;
     }
 }

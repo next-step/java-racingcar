@@ -13,6 +13,10 @@ public class Race {
     }
 
     public void moveCars() {
-
+        cars.stream().forEach((car) -> {
+            if(judgeCarMovement.judge()) {
+                car.move();
+            }
+        });
     }
 }
