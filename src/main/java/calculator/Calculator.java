@@ -9,31 +9,36 @@ import java.util.regex.Pattern;
 
 public class Calculator {
     private static final String SPACE = " ";
-    private static final Pattern NUMBER_PATTERN = Pattern.compile("[0-9]+");
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("^[+-]?\\d*(\\.?\\d*)$");
     private static final Pattern BLANK_PATTERN = Pattern.compile("\\s*");
     private static final Map<String, BiFunction<Integer, Integer, Integer>> OPERATE = ImmutableMap.of(
             "+", (number1, number2) -> number1 + number2,
             "-", (number1, number2) -> number1 - number2,
             "*", (number1, number2) -> number1 * number2,
-            "/", (number1, number2) -> number1 / number2
+            "/", (number1, number2) -> {
+                dividerValidator(number2);
+                return number1 / number2;
+            }
     );
 
     public int calculate(String input) {
-        checkArgumentValidation(input);
+        argumentValidation(input);
 
         String[] inputs = input.split(SPACE);
-        return calculate(inputs[0], inputs[2], inputs[1]);
-    }
+        int result = toInteger(inputs[0]);
 
-    public int calculate(String input1, String input2, String operator) {
-        if (!OPERATE.containsKey(operator)) {
-            throw new IllegalArgumentException("유효하지 않은 사칙연산 기호입니다. +, -, *, / 중 한개를 입력하세요.");
+        for(int i = 1; i <= inputs.length - 2; i += 2 ) {
+            int nextNumber = toInteger(inputs[i+1]);
+            result = calculate(result, inputs[i], nextNumber);
         }
 
-        int intInput1 = toInteger(input1);
-        int intInput2 = toInteger(input2);
+        return result;
+    }
 
-        return OPERATE.get(operator).apply(intInput1, intInput2);
+    public int calculate(int input1, String operator, int input2) {
+        operatorValidation(operator);
+
+        return OPERATE.get(operator).apply(input1, input2);
     }
 
     private int toInteger(String input) {
@@ -48,9 +53,21 @@ public class Calculator {
         return NUMBER_PATTERN.matcher(input).matches();
     }
 
-    private void checkArgumentValidation(String input) {
+    private void argumentValidation(String input) {
         if (Objects.isNull(input) || BLANK_PATTERN.matcher(input).matches()) {
             throw new IllegalArgumentException("유효하지 않은 입력값 입니다. 공백을 입력하지 마세요.");
+        }
+    }
+
+    private void operatorValidation(String operator) {
+        if (!OPERATE.containsKey(operator)) {
+            throw new IllegalArgumentException(operator + " 는 유효하지 않은 사칙연산 기호입니다. +, -, *, / 중 한개를 입력하세요.");
+        }
+    }
+
+    private static void dividerValidator(int divider) {
+        if (divider == 0) {
+            throw new ArithmeticException("0 은 나눗셈을 할 수 없습니다. 다시 입력해주세요.");
         }
     }
 }

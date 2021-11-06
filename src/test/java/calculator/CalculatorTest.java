@@ -4,8 +4,8 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.platform.commons.util.StringUtils;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -48,6 +48,45 @@ class CalculatorTest {
 
         // expect
         assertThat(calculator.calculate(input)).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("When divider is 0, throws ArithmeticException")
+    void divide_exception_occurs() {
+        // given
+        String input = "4 / 0";
+
+        // expect
+        assertThatThrownBy(() -> calculator.calculate(input))
+                .isInstanceOf(ArithmeticException.class)
+                .hasMessageContaining("0 은 나눗셈을 할 수 없습니다. 다시 입력해주세요.");
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1 , 1",
+            "1 + 2, 3",
+            "1 + 2 + 3, 6",
+            "1 + 2 + 3 + 4, 10",
+            "-1 , -1",
+            "1 - 2, -1",
+            "1 - 2 - 3, -4",
+            "1 - 2 - 3 - 4, -8",
+            "1 * 1, 1",
+            "1 * 2 * 0, 0",
+            "1 * 2 * 3, 6",
+            "1 / 1, 1",
+            "1 / 2, 0",
+            "1 / 2 / 3, 0",
+            "4 / 2, 2",
+            "4 / 2 / 2, 1",
+            "1 + 2 * 8 / 4, 6",
+            "-1 + -1 + -1 / 3, -1",
+            "2 * 2 + 2 * 2 + 2 * 2 + 2 * 2 / 7, 8"
+    })
+    void calculate_with_many_numbers(String input, int result) {
+        // expect
+        assertThat(calculator.calculate(input)).isEqualTo(result);
     }
 
     @ParameterizedTest
