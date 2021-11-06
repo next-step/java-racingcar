@@ -4,22 +4,28 @@ import com.util.ArithmeticOperation;
 
 public class InputProcessor {
 
-    public int calculate(char[] arr) {
+    public int calculate(String request) {
+        String[] arr = request.split(" ");
+        int first = Integer.valueOf(arr[0]);
 
-        return 10;
+        for (int idx = 1; idx < arr.length; idx += 2) {
+            first = subCalculate(first, arr[idx], Integer.valueOf(arr[idx + 1]));
+        }
+
+        return first;
     }
 
-    public int subCalculate(int target, char operator, int source) {
+    public int subCalculate(int target, String operator, int source) {
         ArithmeticOperation oper = new ArithmeticOperation();
 
         switch (operator) {
-            case '+' :
+            case "+" :
                 return oper.plus(target, source);
-            case '-' :
+            case "-" :
                 return oper.minus(target, source);
-            case '*' :
+            case "*" :
                 return oper.multiply(target, source);
-            case '/' :
+            case "/" :
                 return oper.divide(target, source);
         }
 

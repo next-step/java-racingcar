@@ -36,16 +36,15 @@ public class ArithmeticOperationTest {
     @Test
     void subCalculate() {
         InputProcessor processor = new InputProcessor();
-        assertThat(processor.subCalculate(2, '-', 3)).isEqualTo(-1);
-        assertThat(processor.subCalculate(2, '+', 3)).isEqualTo(5);
-        assertThat(processor.subCalculate(2, '*', 3)).isEqualTo(6);
-        assertThat(processor.subCalculate(4, '/', 2)).isEqualTo(2);
+        assertThat(processor.subCalculate(2, "-", 3)).isEqualTo(-1);
+        assertThat(processor.subCalculate(2, "+", 3)).isEqualTo(5);
+        assertThat(processor.subCalculate(2, "*", 3)).isEqualTo(6);
+        assertThat(processor.subCalculate(4, "/", 2)).isEqualTo(2);
     }
 
     @Test
     void calculate() {
         InputProcessor processor = new InputProcessor();
-        char[] arr = "2 + 3 * 4 / 2".toCharArray();
-        assertThat(processor.calculate(arr)).isEqualTo(10);
+        assertThat(processor.calculate("2 + 3 * 4 / 2")).isEqualTo(10);
     }
 }
