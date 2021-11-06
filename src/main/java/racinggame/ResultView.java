@@ -10,9 +10,9 @@ public class ResultView {
     }
 
     public void showAdvanceStatus() {
-        System.out.println("실행결과");
         for (String status : advanceStatus) {
             System.out.println(status);
         }
+        System.out.println("");
     }
 }
