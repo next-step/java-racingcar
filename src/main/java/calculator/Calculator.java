@@ -1,13 +1,13 @@
 package calculator;
 
 public class Calculator {
-    Num result;
-    Operator operator = null;
+    private Num result;
+    private Operator operator = null;
 
-    public int calculate(String operation) {
+    public Num calculate(String operation) {
         Spliterator spliterator = new Spliterator(operation);
 
-        return calculateAllOperations(spliterator).getNumber();
+        return calculateAllOperations(spliterator);
     }
 
     private Num calculateAllOperations(Spliterator spliterator) {

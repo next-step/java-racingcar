@@ -9,19 +9,22 @@ public class Spliterator {
     private final int EMPTY_LENGTH = 0;
 
     public Spliterator(String operation) {
-        if (operation == null)
+        if (operation == null) {
             throw new IllegalArgumentException("Operation must not be null");
+        }
 
         this.arguments = operation.split(BLACK_REGEX);
         this.currentIndex = 0;
 
-        if (arguments.length == EMPTY_LENGTH)
+        if (arguments.length == EMPTY_LENGTH) {
             throw new IllegalArgumentException("Operation must not be blank");
+        }
     }
 
     public Object next() {
-        if (currentIndex >= arguments.length)
+        if (currentIndex >= arguments.length) {
             return null;
+        }
 
         String str = arguments[currentIndex++];
 

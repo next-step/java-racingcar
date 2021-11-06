@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Num {
     private final int number;
+    private final int DIVISOR_ZERO = 0;
 
     public Num(String number) {
         this(Integer.parseInt(number));
@@ -11,10 +12,6 @@ public class Num {
 
     public Num(int number) {
         this.number = number;
-    }
-
-    public int getNumber() {
-        return number;
     }
 
     public Num plus(Num other) {
@@ -30,8 +27,8 @@ public class Num {
     }
 
     public Num divideBy(Num other) {
-        if (other.number == 0) {
-            throw new IllegalArgumentException("Dividend cannot be zero.");
+        if (other.number == DIVISOR_ZERO) {
+            throw new IllegalArgumentException("Divisor cannot be zero.");
         }
 
         return new Num(this.number / other.number);

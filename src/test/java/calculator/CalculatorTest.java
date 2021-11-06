@@ -20,25 +20,25 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"4 + 2:6", "4532 + 2123:6655"}, delimiter = ':')
     void add(String input, int expected) {
-        assertThat(calculator.calculate(input)).isEqualTo(expected);
+        assertThat(calculator.calculate(input)).isEqualTo(new Num(expected));
     }
 
     @ParameterizedTest
     @CsvSource(value = {"4 - 2:2", "4532 - 2123:2409"}, delimiter = ':')
     void minus(String input, int expected) {
-        assertThat(calculator.calculate(input)).isEqualTo(expected);
+        assertThat(calculator.calculate(input)).isEqualTo(new Num(expected));
     }
 
     @ParameterizedTest
     @CsvSource(value = {"4 * 2:8", "4532 * 2123:9621436"}, delimiter = ':')
     void multiply(String input, int expected) {
-        assertThat(calculator.calculate(input)).isEqualTo(expected);
+        assertThat(calculator.calculate(input)).isEqualTo(new Num(expected));
     }
 
     @ParameterizedTest
     @CsvSource(value = {"4 / 2:2", "4532 / 2123:2"}, delimiter = ':')
     void divide(String input, int expected) {
-        assertThat(calculator.calculate(input)).isEqualTo(expected);
+        assertThat(calculator.calculate(input)).isEqualTo(new Num(expected));
     }
 
     @DisplayName("Test When Input Is Null")
@@ -74,6 +74,6 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2:10", "2 * 3 / 4 + 2:3", "2 / 3 + 4 * 2:8"}, delimiter = ':')
     void complexOperation(String input, int expected) {
-        assertThat(calculator.calculate(input)).isEqualTo(expected);
+        assertThat(calculator.calculate(input)).isEqualTo(new Num(expected));
     }
 }

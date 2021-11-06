@@ -23,7 +23,9 @@ public enum Operator {
 
     public static Operator of(String operator) {
         return Arrays.stream(values())
-                .filter(object -> object.operator.equals(operator))
+                .filter(object -> object
+                                .operator
+                                .equals(operator))
                 .findFirst()
                 .orElseThrow(IllegalAccessError::new);
     }
