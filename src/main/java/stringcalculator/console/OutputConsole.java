@@ -12,6 +12,6 @@ public class OutputConsole {
     }
 
     public static void printExpression(ArithmeticResult arithmeticResult) {
-        System.out.println(String.format("= %d" + arithmeticResult.number()));
+        System.out.println(String.format("= %d", arithmeticResult.number()));
     }
 }
