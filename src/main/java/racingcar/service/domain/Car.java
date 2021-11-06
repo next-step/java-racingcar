@@ -30,7 +30,7 @@ public class Car implements Cloneable {
 
     public void startRace(RoundRule roundRule) {
         if (roundRule.checkCondition()) {
-            position.incrementPosition();
+            position.increasePosition();
         }
     }
 

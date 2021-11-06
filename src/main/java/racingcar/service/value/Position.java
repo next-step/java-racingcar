@@ -17,7 +17,7 @@ public class Position {
         return new Position(position);
     }
 
-    public void incrementPosition() {
+    public void increasePosition() {
         position++;
     }
 
