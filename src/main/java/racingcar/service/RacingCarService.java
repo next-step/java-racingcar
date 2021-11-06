@@ -1,11 +1,11 @@
 package racingcar.service;
 
 import racingcar.service.domain.Car;
+import racingcar.service.domain.Record;
 import racingcar.service.domain.factory.CarFactory;
 import racingcar.service.domain.factory.RecordFactory;
 import racingcar.service.dto.RoundReady;
 import racingcar.service.dto.RoundResult;
-import racingcar.service.domain.Record;
 import racingcar.service.strategy.RoundRule;
 import racingcar.service.value.Round;
 
@@ -32,14 +32,14 @@ public class RacingCarService {
     public RoundResult startRound() {
         List<Record> records = new ArrayList<>();
         for (int round = START_ROUND_COUNT; round <= finalRound.getRound(); round++) {
-            race();
+            startRace();
             records.add(recordRace(Round.from(round)));
         }
         return RoundResult.of(records);
     }
 
-    private void race() {
-        cars.forEach(car -> car.race(roundRule));
+    private void startRace() {
+        cars.forEach(car -> car.startRace(roundRule));
     }
 
     private Record recordRace(Round round) {

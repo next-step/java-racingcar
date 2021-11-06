@@ -28,7 +28,7 @@ public class Car implements Cloneable {
     }
 
 
-    public void race(RoundRule roundRule) {
+    public void startRace(RoundRule roundRule) {
         if (roundRule.checkCondition()) {
             position.incrementPosition();
         }
@@ -38,7 +38,7 @@ public class Car implements Cloneable {
         return name;
     }
 
-    public Position currentPosition() {
+    public Position getCurrentPosition() {
         return position;
     }
 

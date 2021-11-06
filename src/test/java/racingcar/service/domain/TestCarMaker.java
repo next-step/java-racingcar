@@ -16,7 +16,7 @@ public class TestCarMaker {
 
     public static Car createTestCar(String name, RoundRule roundRule) {
         Car car = new Car(name);
-        car.race(roundRule);
+        car.startRace(roundRule);
         return car;
     }
 }

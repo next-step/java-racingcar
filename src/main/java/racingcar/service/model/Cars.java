@@ -31,14 +31,14 @@ public class Cars {
     public String getFinalWinnerName() {
         Position maxPosition = getMaxPosition();
         return carList.stream()
-                .filter(car -> car.currentPosition().equals(maxPosition))
+                .filter(car -> car.getCurrentPosition().equals(maxPosition))
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
     }
 
     private Position getMaxPosition() {
         return carList.stream()
-                .map(Car::currentPosition)
+                .map(Car::getCurrentPosition)
                 .max(Comparator.comparingInt(Position::getPosition))
                 .orElseThrow(NoSuchElementException::new);
     }

@@ -20,8 +20,8 @@ class CarTest {
     @DisplayName("조건이 맞는 경우 position 증가 검증")
     void increasePosition() {
         for (int i = 1; i < 10; i++) {
-            testCar.race(new RandomResultTrue());
-            assertThat(testCar.currentPosition().getPosition()).isEqualTo(i);
+            testCar.startRace(new RandomResultTrue());
+            assertThat(testCar.getCurrentPosition().getPosition()).isEqualTo(i);
         }
     }
 
@@ -29,8 +29,8 @@ class CarTest {
     @DisplayName("조건이 맞지 않는 경우 position 유지 검증")
     void samePosition() {
         for (int i = 0; i < 10; i++) {
-            testCar.race(new RandomResultFalse());
-            assertThat(testCar.currentPosition().getPosition()).isZero();
+            testCar.startRace(new RandomResultFalse());
+            assertThat(testCar.getCurrentPosition().getPosition()).isZero();
         }
     }
 }

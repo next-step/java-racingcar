@@ -29,7 +29,7 @@ public class RacingCarOutputConverter {
 
     private static List<RaceResult.Race> convertToRace(Cars cars) {
         return cars.getCarList().stream()
-                .map(car -> RaceResult.Race.of(car.getName(), car.currentPosition()))
+                .map(car -> RaceResult.Race.of(car.getName(), car.getCurrentPosition()))
                 .collect(Collectors.toList());
     }
 }
