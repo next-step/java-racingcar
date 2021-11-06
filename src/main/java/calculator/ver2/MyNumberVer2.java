@@ -1,13 +1,13 @@
-package calculator;
+package calculator.ver2;
 
-public class MyNumber {
+public class MyNumberVer2 {
     private final int number;
 
-    public MyNumber(int num) {
+    public MyNumberVer2(int num) {
         number = num;
     }
 
-    public MyNumber(String s) {
+    public MyNumberVer2(String s) {
         this(Integer.parseInt(validNull(s)));
     }
 
@@ -19,21 +19,21 @@ public class MyNumber {
         return number == i;
     }
 
-    public MyNumber plus(MyNumber other) {
-        return new MyNumber(number + other.number); // 왜 getNumber(); 는 안되는가?
+    public MyNumberVer2 plus(MyNumberVer2 other) {
+        return new MyNumberVer2(number + other.number); // other.getNumber() 도 가능하다
     }
 
-    public MyNumber minus(MyNumber other) {
-        return new MyNumber(number - other.number); // 왜 getNumber(); 는 안되는가?
+    public MyNumberVer2 minus(MyNumberVer2 other) {
+        return new MyNumberVer2(number - other.number); // other.getNumber() 도 가능하다
     }
 
-    public MyNumber multiple(MyNumber other) {
-        return new MyNumber(number * other.number); // 왜 getNumber(); 는 안되는가?
+    public MyNumberVer2 multiple(MyNumberVer2 other) {
+        return new MyNumberVer2(number * other.number); // other.getNumber() 도 가능하다
     }
 
-    public MyNumber divide(MyNumber other) {
+    public MyNumberVer2 divide(MyNumberVer2 other) {
         valid(other);
-        return new MyNumber(number / other.number); // 왜 getNumber(); 는 안되는가?
+        return new MyNumberVer2(number / other.number); // other.getNumber() 도 가능하다
     }
 
     private static String validNull(String text) {
@@ -48,7 +48,7 @@ public class MyNumber {
         return text;
     }
 
-    private void valid(MyNumber other) {
+    private void valid(MyNumberVer2 other) {
         if (other.getNumber() == 0) {
             throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
         }
