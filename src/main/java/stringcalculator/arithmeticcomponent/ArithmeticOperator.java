@@ -6,7 +6,7 @@ import java.util.function.BinaryOperator;
 /**
  * 연산에 필요한 연산자
  */
-enum ArithmeticOperator {
+public enum ArithmeticOperator {
     PLUS("+", Integer::sum),
     MINUS("-", (num1, num2) -> num1 - num2),
     MULTIPLY("*", (num1, num2) -> num1 * num2),
@@ -28,7 +28,7 @@ enum ArithmeticOperator {
                 .orElseThrow(() -> new IllegalArgumentException(String.format("operator(%s) is invalid.", operator)));
     }
 
-    static boolean isContained(String operator) {
+    public static boolean isContained(String operator) {
         return Arrays.stream(ArithmeticOperator.values())
                 .anyMatch(arithmeticOperator -> arithmeticOperator.hasOperator(operator));
     }
