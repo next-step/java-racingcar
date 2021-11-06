@@ -70,7 +70,7 @@ Process를 실행하여 결과를 반환하는 객체
 ### ResultView
 결과 반환 UI 객체
 - 기능
-- [ ] 결과 반환
+- [x] 결과 반환
 
 ### ErrorView
 에러 메세지 반환 UI 객체
