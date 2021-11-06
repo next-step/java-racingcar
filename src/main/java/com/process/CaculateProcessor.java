@@ -2,7 +2,7 @@ package com.process;
 
 import com.util.ArithmeticOperation;
 
-public class InputProcessor {
+public class CaculateProcessor {
     private final String DELIMITER = " ";
 
     public int calculate(String request) {
