@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCars {
+
     private final List<Car> cars;
 
     public RacingCars(List<Car> cars) {
@@ -16,7 +17,6 @@ public class RacingCars {
     public void advance() {
         cars.forEach(car -> car.advance(MoveValueGenerator.generateMoveValue()));
     }
-
 
     public ResultView advanceStatus() {
         return new ResultView(

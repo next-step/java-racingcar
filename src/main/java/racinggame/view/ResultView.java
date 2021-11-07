@@ -3,7 +3,8 @@ package racinggame.view;
 import java.util.List;
 
 public class ResultView {
-    private List<String> advanceStatus;
+
+    private final List<String> advanceStatus;
 
     public ResultView(List<String> advanceStatus) {
         this.advanceStatus = advanceStatus;

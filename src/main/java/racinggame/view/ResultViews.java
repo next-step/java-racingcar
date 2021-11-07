@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ResultViews {
 
-    List<ResultView> results;
+    private final List<ResultView> results;
 
     public ResultViews(List<ResultView> results) {
         this.results = results;

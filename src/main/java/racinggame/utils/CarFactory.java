@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarFactory {
+
     public static RacingCars createRacingCars(int numberOfCars) {
         return new RacingCars(createCars(numberOfCars));
     }
