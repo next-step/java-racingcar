@@ -12,6 +12,18 @@ public class Car {
         return this;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
+    public String getResult() {
+        StringBuilder sb = new StringBuilder();
+        for (int idx = 0; idx < position; idx++) {
+            sb.append("-");
+        }
+        return sb.toString();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
