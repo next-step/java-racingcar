@@ -29,7 +29,7 @@ public class RaceTest {
     private List<Car> createCarList(int numberOfCars) {
         final List<Car> cars = new ArrayList<>(numberOfCars);
         for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+            cars.add(new Car(() -> true));
         }
         return cars;
     }

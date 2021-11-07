@@ -55,14 +55,14 @@ public class Race {
 
     public void process() {
         if (currentTurn < totalTurns) {
-            cars.forEach(Car::attempToMove);
+            cars.forEach(Car::attemptToMove);
             currentTurn++;
         }
     }
 
     public void processAll() {
         for (; currentTurn < totalTurns; currentTurn++) {
-            cars.forEach(Car::attempToMove);
+            cars.forEach(Car::attemptToMove);
         }
     }
 }
