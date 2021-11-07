@@ -11,7 +11,7 @@ public class JudgeCarMovement {
 
     public Judge judge() {
         int randomValue = random.nextInt(10);
-        if(randomValue >= 4) {
+        if (randomValue >= 4) {
             return Judge.MOVE;
         }
 
