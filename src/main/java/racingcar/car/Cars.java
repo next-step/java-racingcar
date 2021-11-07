@@ -10,10 +10,8 @@ import java.util.stream.Stream;
 public class Cars {
 
     private final List<Car> carList;
-    private final MoveRule moveRule;
 
-    public Cars(MoveRule moveRule, int size) {
-        this.moveRule = moveRule;
+    public Cars(int size) {
         this.carList = createCarList(size);
     }
 
@@ -23,7 +21,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public void playGame(){
+    public void playGame(MoveRule moveRule){
         this.carList
                 .forEach(car -> car.move(moveRule.isMovable(), moveRule.getMoveCount()));
     }

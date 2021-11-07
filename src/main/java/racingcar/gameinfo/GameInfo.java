@@ -28,6 +28,10 @@ public class GameInfo {
     }
 
     public Cars getCars() {
-        return new Cars(this.moveRule, this.countInfo.getCarCount());
+        return new Cars(this.countInfo.getCarCount());
+    }
+
+    public MoveRule getMoveRule() {
+        return this.moveRule;
     }
 }
