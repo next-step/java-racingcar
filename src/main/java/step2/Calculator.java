@@ -1,28 +1,16 @@
 package step2;
 
-import java.util.Objects;
-
 public class Calculator {
 
     private final static String delimiter = " ";
 
-    private Calculator() {}
-
-    public static int calculate(String input) {
-        validText(input);
-
-        String[] values = splitTextByDelimiter(input, delimiter);
-
-        Formula formula = Formula.builder()
-                            .setFirst(new MyNumber(values[0]))
-                            .setOperator(values[1])
-                            .setSecond(new MyNumber(values[2]))
-                            .build();
-
-        return calculate(formula).getNumber();
+    private Calculator() {
+        throw new AssertionError(MyException.FAIL_TO_NEW_CLASS.getMessage());
     }
 
-    public static MyNumber calculateMulti(String input) {
+    public static int calculate(String input) {
+        isValidText(input);
+
         String[] values = splitTextByDelimiter(input, delimiter);
 
         int cnt = values.length;
@@ -40,7 +28,7 @@ public class Calculator {
             first = calculate(formula);
         }
 
-        return first;
+        return first.getNumber();
     }
 
     private static MyNumber calculate(Formula formula) {
@@ -48,7 +36,7 @@ public class Calculator {
                             .apply(formula.getFirst(), formula.getSecond());
     }
 
-    public static void validText(String text) {
+    public static void isValidText(String text) {
         if(Common.textNullOrEmpty(text)) {
             throw new IllegalArgumentException(MyException.EMPTY_INPUT.getMessage());
         }
