@@ -16,7 +16,7 @@ import java.util.Stack;
  */
 public class StringCalculator {
 
-    public static final String DELIMITER = " ";
+    private static final String DELIMITER = " ";
 
     public static ArithmeticResult calculate(InputExpression inputExpression) {
         return calculateInfixExpression(inputExpression.getExpression());
