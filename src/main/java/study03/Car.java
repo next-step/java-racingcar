@@ -16,17 +16,13 @@ import java.util.Random;
 public class Car {
 
     private String position = "";
-
-    public String moveByCondition() {
-        return Optional.of(createConditionNumber()).filter(cnt -> cnt >= 4).map(i -> "-").orElseGet(() -> null);
+    
+    public void moveByCondition() {
+        Optional.of(createConditionNumber()).filter(cnt -> cnt >= 4).ifPresent(y -> this.position += "-");
     }
 
     public int createConditionNumber() {
         return new Random().nextInt(10);
-    }
-
-    public void moveForward(String position) {
-        this.position += position;
     }
 
     public String getPosition() {

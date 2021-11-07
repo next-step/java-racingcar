@@ -3,7 +3,6 @@ package study03;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -18,7 +17,7 @@ class CarTest {
         car = new Car();
     }
 
-    @RepeatedTest(value = 100, name = "{displayName}, {currentRepetition}/{totalRepetitions}")
+    @RepeatedTest(value = 10, name = "{displayName}, {currentRepetition}/{totalRepetitions}")
     @DisplayName("0~9의 임의의 조건값 생성")
     void 조건값생성() {
         assertThat(car.createConditionNumber()).isGreaterThanOrEqualTo(0);
@@ -36,7 +35,6 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     void 멈춤(Integer stopNumber) {
-
         assertThat(Optional.of(stopNumber).filter(cnt -> cnt >= 4).map(i -> "-").orElseGet(() -> null)).isNull();
     }
 
