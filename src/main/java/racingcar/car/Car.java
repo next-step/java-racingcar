@@ -17,4 +17,8 @@ public class Car {
     public String printPosition() {
         return String.join("", Collections.nCopies(this.position, "-"));
     }
+
+    public void move(boolean isMovable, int moveCount) {
+        if(isMovable) this.forward(moveCount);
+    }
 }

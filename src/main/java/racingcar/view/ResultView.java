@@ -1,16 +1,11 @@
 package racingcar.view;
-
-import racingcar.car.Car;
-
-import java.util.List;
+import racingcar.car.Cars;
 
 public class ResultView {
 
     private ResultView() {}
 
-    public static void print(List<Car> carList) {
-        for(Car car : carList) {
-            System.out.println(car.printPosition());
-        }
+    public static void print(Cars cars) {
+        cars.printPosition();
     }
 }
