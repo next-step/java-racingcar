@@ -19,6 +19,6 @@ public class JudgeCarMovement {
     }
 
     enum Judge {
-        STAY, FORWARD;
+        STAY, FORWARD
     }
 }
