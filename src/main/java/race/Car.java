@@ -3,7 +3,7 @@ package race;
 public class Car {
     private int location = 0;
 
-    public synchronized void move() {
+    public void move() {
         location++;
     }
 
