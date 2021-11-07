@@ -45,4 +45,11 @@ public class SetTest {
     void containsOtherCase(int num, boolean bool) {
         assertThat(numbers.contains(num)).isEqualTo(bool);
     }
+
+    @DisplayName("요구사항3-by-delimiter")
+    @ParameterizedTest
+    @CsvSource(value = {"1&true", "2&true", "3&true", "4&false", "5&false"}, delimiter = '&')
+    void containsOtherCaseByDelimiter(int num, boolean bool) {
+        assertThat(numbers.contains(num)).isEqualTo(bool);
+    }
 }
