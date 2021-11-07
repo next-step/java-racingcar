@@ -19,5 +19,6 @@ public class RacingClient {
         String carCount = scanner.nextLine();
         System.out.println("시도할 횟수는 몇 회 인가요?");
         String tryCount = scanner.nextLine();
+        new Racing(carCount, tryCount).start();
     }
 }
