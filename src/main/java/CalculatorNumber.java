@@ -1,4 +1,5 @@
 import java.util.Objects;
+import java.util.function.BiFunction;
 
 public class CalculatorNumber {
 
@@ -14,6 +15,10 @@ public class CalculatorNumber {
 
   public CalculatorNumber(String i) {
     this.value = Double.parseDouble(i);
+  }
+
+  public CalculatorNumber(CalculatorInput i) {
+    this.value = CalculatorInput.parseNumber(i).value;
   }
 
   public String toString() {
@@ -32,12 +37,25 @@ public class CalculatorNumber {
     return Double.compare(that.value, value) == 0;
   }
 
+  public boolean compare(CalculatorNumber i) {
+    return this.value > i.value;
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(value);
   }
 
   public CalculatorNumber operate(CalculatorNumber input, Operator operator) {
-    return new CalculatorNumber(operator.calculate(this.value, input.value));
+    return operator.calculate(this, input);
+  }
+
+  public CalculatorNumber calculate(CalculatorNumber input,
+      BiFunction<Double, Double, Double> expression) {
+    return new CalculatorNumber(expression.apply(this.value, input.value));
+  }
+
+  public static int parseInt(CalculatorNumber i) {
+    return (int) i.value;
   }
 }
