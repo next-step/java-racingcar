@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -113,6 +112,17 @@ public class StringCalculatorTest {
 
         // Then
         assertThat(result).isEqualTo(5);
+    }
+
+    @Test
+    void testDividedByZeroShouldThrowIllegalArgumentException() {
+        // Given
+        String expression = "30 / 0";
+
+        // When & Then
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() ->
+                calculator.calculate(expression)
+        );
     }
 
     @Test

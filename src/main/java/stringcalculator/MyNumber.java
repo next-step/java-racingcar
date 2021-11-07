@@ -24,6 +24,9 @@ public class MyNumber {
     }
 
     public MyNumber dividedBy(MyNumber other) {
+        if (other.number == 0) {
+            throw new IllegalArgumentException("Cannot divide by 0");
+        }
         return new MyNumber(this.number / other.number);
     }
 
