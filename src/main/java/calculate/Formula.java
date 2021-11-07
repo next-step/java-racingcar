@@ -28,13 +28,14 @@ public class Formula {
     private void classify(String raw) {
         if (isNumeric(raw)) {
             numberStack.push(Integer.parseInt(raw));
-        } else {
-            Operate operate = symbolToOperate.get(raw);
-            if (operate == null) {
-                throw new IllegalArgumentException("illegal operator: " + raw);
-            }
-            operatorStack.push(operate);
+            return;
         }
+
+        Operate operate = symbolToOperate.get(raw);
+        if (operate == null) {
+            throw new IllegalArgumentException("illegal operator: " + raw);
+        }
+        operatorStack.push(operate);
     }
 
     private boolean isNumeric(String raw) {
