@@ -28,7 +28,7 @@ public enum Operator {
         return Arrays.stream(Operator.values())
                 .filter(o -> o.getSymbol().equals(symbol))
                 .findFirst()
-                .orElseThrow(() -> new NoSuchElementException("해당 symbol에 대한 Operator가 존재하지 않습니다"));
+                .orElseThrow(() -> new IllegalArgumentException("해당 symbol에 대한 Operator가 존재하지 않습니다"));
     }
 
     public String getSymbol() {
