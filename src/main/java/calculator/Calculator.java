@@ -1,10 +1,12 @@
 package calculator;
 
 public class Calculator {
+
+    private static final int NEXT_CALC_START = 2;
+
     public int calculation(String input) {
         String[] inputArr = input.split(" ");
         int result = Integer.parseInt(inputArr[0]);
-        final int NEXT_CALC_START = 2;
         for(int i = NEXT_CALC_START ; i < inputArr.length ; i += NEXT_CALC_START) {
             result = operate(result,Integer.parseInt(inputArr[i]), inputArr[i-1]);
         }
