@@ -24,6 +24,13 @@ public class StringTest {
     }
 
     @Test
+    void charAt() {
+        String input = "Hello I'm Dodi";
+        char charAtTen = input.charAt(10);
+        assertThat(charAtTen).isEqualTo('D');
+    }
+
+    @Test
     @DisplayName("String.charAt(index) - when index is out of range, throws StringIndexOutOfBoundsException")
     void charAt_StringIndexOutOfBoundsException() {
         assertThatThrownBy(() -> "abc".charAt(-1))
