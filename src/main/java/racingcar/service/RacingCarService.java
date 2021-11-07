@@ -30,12 +30,12 @@ public class RacingCarService {
     }
 
     public RoundResult startRound() {
-        List<Record> records = new ArrayList<>();
+        List<Record> recordList = new ArrayList<>();
         for (int round = START_ROUND_COUNT; round <= finalRound.getRound(); round++) {
             startRace();
-            records.add(recordRace(Round.from(round)));
+            recordList.add(recordRace(Round.from(round)));
         }
-        return RoundResult.of(records);
+        return RoundResult.of(recordList);
     }
 
     private void startRace() {

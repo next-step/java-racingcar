@@ -30,6 +30,6 @@ class RacingCarServiceTest {
     void getCars() {
         RoundResult roundResult = racingCarService.startRound();
         assertNotNull(roundResult);
-        assertThat(roundResult.getRecords().size()).isEqualTo(roundReady.getFinalRound().getRound());
+        assertThat(roundResult.getRecords().getRecordList().size()).isEqualTo(roundReady.getFinalRound().getRound());
     }
 }

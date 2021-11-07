@@ -1,32 +1,29 @@
 package racingcar.service.dto;
 
 import racingcar.service.domain.Record;
+import racingcar.service.model.Records;
 import racingcar.utils.Preconditions;
 
 import java.util.List;
 
 public class RoundResult {
-    private final List<Record> records;
+    private final Records records;
 
-    private RoundResult(List<Record> records) {
-        this.records = records;
+    private RoundResult(List<Record> recordList) {
+        Preconditions.checkNotNull(recordList, "records는 필수값입니다.");
+
+        this.records = Records.from(recordList);
     }
 
-    public static RoundResult of(List<Record> records) {
-        Preconditions.checkNotNull(records, "records는 필수값입니다.");
-
-        return new RoundResult(records);
+    public static RoundResult of(List<Record> recordList) {
+        return new RoundResult(recordList);
     }
 
     public String getFinalWinnerName() {
-        return getFinalRound().getFinalWinnerName();
+        return records.getFinalWinnerName();
     }
 
-    private Record getFinalRound() {
-        return records.get(records.size() - 1);
-    }
-
-    public List<Record> getRecords() {
+    public Records getRecords() {
         return records;
     }
 }
