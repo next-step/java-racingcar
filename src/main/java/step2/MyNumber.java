@@ -7,7 +7,8 @@ public class MyNumber {
     private int number;
 
     public MyNumber(String text) {
-        this(Integer.parseInt(text));
+        Validation.validNullAndEmpty(text);
+        this.number = Integer.parseInt(text);
     }
 
     public MyNumber(int number) {
