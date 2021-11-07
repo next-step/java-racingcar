@@ -2,7 +2,7 @@ package step3.application;
 
 import step3.domain.board.GameBoard;
 import step3.domain.car.Cars;
-import step3.domain.power.RandomPower;
+import step3.domain.power.RandomEngine;
 
 import static step3.utils.ValidationUtils.checkArgument;
 
@@ -20,7 +20,7 @@ public class GameDirector {
         checkArgument(carCount != null, "carCount is required");
         checkArgument(roundSize != null, "roundSize is required");
 
-        Cars cars = Engineer.createCars(carCount, new RandomPower());
+        Cars cars = Engineer.createCars(carCount, new RandomEngine());
         for (int currentRound = 0; currentRound < roundSize; currentRound++) {
             cars.go();
             gameBoard.recordRound(cars);

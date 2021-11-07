@@ -1,7 +1,7 @@
 package step3.domain.car;
 
 import step3.domain.board.RoundBoard;
-import step3.domain.power.Power;
+import step3.domain.power.Engine;
 
 import java.util.List;
 
@@ -10,18 +10,18 @@ import static step3.utils.ValidationUtils.checkArgument;
 public class Cars {
 
     private final List<Car> cars;
-    private final Power power;
+    private final Engine engine;
 
-    public Cars(List<Car> cars, Power power) {
+    public Cars(List<Car> cars, Engine engine) {
         checkArgument(cars != null, "cars is required");
-        checkArgument(power != null, "power is required");
+        checkArgument(engine != null, "engine is required");
         this.cars = cars;
-        this.power = power;
+        this.engine = engine;
     }
 
     public void go() {
         cars.forEach(car -> {
-            int generatedPower = power.generatePower();
+            int generatedPower = engine.generatePower();
             car.go(generatedPower);
         });
     }
