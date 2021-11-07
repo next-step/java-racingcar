@@ -84,4 +84,28 @@ public class StringCalculatorTest {
         // Then
         assertThat(result).isEqualTo(24);
     }
+
+    @Test
+    void testDividedByTwoNumbers() {
+        // Given
+        String expression = "6 / 2";
+
+        // When
+        int result = calculator.calculate(expression);
+
+        // Then
+        assertThat(result).isEqualTo(3);
+    }
+
+    @Test
+    void testDividedByFourNumbers() {
+        // Given
+        String expression = "100 / 5 / 2 / 2";
+
+        // When
+        int result = calculator.calculate(expression);
+
+        // Then
+        assertThat(result).isEqualTo(5);
+    }
 }
