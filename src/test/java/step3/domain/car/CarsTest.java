@@ -24,7 +24,7 @@ class CarsTest {
     void goTest(int inputPower, int moveDistance) {
         //given
         List<Car> inputCars = createCars(LOCATION);
-        Cars cars = new Cars(inputCars, new StaticPower(inputPower));
+        Cars cars = new Cars(inputCars, () -> inputPower);
 
         //when
         for (int i = 0; i < ROUND_COUNT; i++) {
