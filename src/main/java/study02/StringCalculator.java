@@ -12,14 +12,6 @@ public class StringCalculator {
         if (isNotNullOrEmpty(input)) {
             this.inputArr = input.split(DELIMITER);
         }
-
-    }
-
-    public CustomNumber calculate() {
-        if (inputArr.length % 2 != 0) {
-            return compute(inputArr);
-        }
-        throw new IllegalArgumentException("유효하지 않은 계산 식 입니다.");
     }
 
     private boolean isNotNullOrEmpty(String input) {
@@ -29,11 +21,19 @@ public class StringCalculator {
         return true;
     }
 
-    private CustomNumber compute(String[] input) {
-        CustomNumber left = new CustomNumber(input[0]);
+    public MyNumber calculate() {
+        if (inputArr.length % 2 != 0) {
+            return compute(inputArr);
+        }
+        throw new IllegalArgumentException("유효하지 않은 계산 식 입니다.");
+    }
+
+
+    private MyNumber compute(String[] input) {
+        MyNumber left = new MyNumber(input[0]);
         for (int i = 1; i < inputArr.length; i += 2) {
             String operator = inputArr[i];
-            CustomNumber right = new CustomNumber(inputArr[i + 1]);
+            MyNumber right = new MyNumber(inputArr[i + 1]);
             left = Operator.of(operator).operate(left, right);
         }
         return left;
