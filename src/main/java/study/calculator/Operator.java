@@ -1,7 +1,7 @@
 package study.calculator;
 
 import java.util.Arrays;
-import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 
 public enum Operator {
 	PLUS("+", MyNumber::plus),
@@ -11,9 +11,9 @@ public enum Operator {
 	;
 
 	private final String operator;
-	private final BiFunction<MyNumber, MyNumber, MyNumber> expression;
+	private final BinaryOperator<MyNumber> expression;
 
-	Operator(String operator, BiFunction<MyNumber, MyNumber, MyNumber> expression) {
+	Operator(String operator, BinaryOperator<MyNumber> expression) {
 		this.operator = operator;
 		this.expression = expression;
 	}
