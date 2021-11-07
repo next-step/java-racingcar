@@ -60,4 +60,28 @@ public class StringCalculatorTest {
         // Then
         assertThat(result).isEqualTo(1);
     }
+
+    @Test
+    void testMultiplyTwoNumbers() {
+        // Given
+        String expression = "2 * 3";
+
+        // When
+        int result = calculator.calculate(expression);
+
+        // Then
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    void testMultiplyFourNumbers() {
+        // Given
+        String expression = "1 * 2 * 3 * 4";
+
+        // When
+        int result = calculator.calculate(expression);
+
+        // Then
+        assertThat(result).isEqualTo(24);
+    }
 }
