@@ -1,28 +1,31 @@
 package car_racing;
 
 public class Car {
-    private final StringBuilder statusBar;
+    private final StringBuilder position;
     private static final String MOVE_FORWARD = "-";
 
     public Car() {
-        this.statusBar = new StringBuilder();
+        this.position = new StringBuilder();
+    }
+
+    /* test */
+    public Car(String strPosition) {
+        this.position = new StringBuilder(strPosition);
     }
 
     public void move() {
-        if (canGo()) {
-            statusBar.append(MOVE_FORWARD);
+        if (ableToMove()) {
+            position.append(MOVE_FORWARD);
         }
     }
 
     public String getCurrStatus() {
-        return statusBar.toString();
+        return position.toString();
     }
 
-    private boolean canGo() {
+    private boolean ableToMove() {
         int randomValue = (int) (Math.random() * 10);
         return randomValue >= 4;
     }
-
-
 
 }

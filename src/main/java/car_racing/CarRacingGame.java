@@ -2,14 +2,13 @@ package car_racing;
 
 public class CarRacingGame {
 
-    private static final String ONE_ROUND_ENDS = "\n";
-    private final StringBuilder racingResult;
-    private final Car[] cars;
+    private final RacingResult racingResult;
+    private final Cars cars;
     private final int numberOfRound;
 
     public CarRacingGame(int numberOfCar, int numberOfRound) {
-        racingResult = new StringBuilder();
-        this.cars = createCars(numberOfCar);
+        racingResult = new RacingResult();
+        this.cars = new Cars(numberOfCar);
         this.numberOfRound = numberOfRound;
     }
 
@@ -23,30 +22,15 @@ public class CarRacingGame {
     }
 
     private void racingOneRound() {
-        for(int i = 0; i < cars.length; i++) {
-            cars[i].move();
-        }
+        cars.playOneRound();
     }
 
     private void updateRacingResult() {
-        for(int i = 0; i < cars.length; i++) {
-            racingResult.append(cars[i].getCurrStatus());
-            racingResult.append(ONE_ROUND_ENDS);
-        }
-        racingResult.append(ONE_ROUND_ENDS);
+        racingResult.update(cars);
     }
 
     private String getRacingResult() {
-        return racingResult.toString();
+        return racingResult.getResult();
     }
 
-    private Car[] createCars(int numberOfCar) {
-        Car[] cars = new Car[numberOfCar];
-
-        for(int i = 0; i < numberOfCar; i++) {
-            cars[i] = new Car();
-        }
-
-        return cars;
-    }
 }
