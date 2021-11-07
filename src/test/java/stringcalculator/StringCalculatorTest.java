@@ -126,6 +126,18 @@ public class StringCalculatorTest {
     }
 
     @Test
+    void testAllOfKindsOperations() {
+        // Given
+        String expression = "5 + 3 / 4 * 10";
+
+        // When
+        int result = calculator.calculate(expression);
+
+        // Then
+        assertThat(result).isEqualTo(20);
+    }
+
+    @Test
     void invalidOperatorShouldThrowIllegalArgumentException() {
         // Given
         String invalidExpression = "1 + 3 ^ 5";
