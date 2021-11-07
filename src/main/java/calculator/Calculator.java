@@ -8,11 +8,12 @@ public class Calculator {
     }
 
     private Long calculate(String[] texts) {
+        CalculatorValidator.validateNumeric(texts[0]);
         Long result = Long.parseLong(texts[0]);
 
         int indexSize = texts.length;
         for (int i = 1; i < indexSize; i += 2) {
-            CalculatorValidator.validateFormula(texts[i]);
+            CalculatorValidator.validateOperator(texts[i]);
 
             result = CalculatorHelper.calculate(
                     texts[i],

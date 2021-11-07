@@ -41,7 +41,7 @@ class CalculatorHelperTest {
         assertThat(CalculatorHelper.calculate(formula, operand1, operand2)).isEqualTo(expected);
     }
 
-    @DisplayName("곱셈 검증")
+    @DisplayName("나눗셈 검증")
     @ParameterizedTest(name = "{index}번째 => {0} {1} {2} 연산결과 : {3}")
     @CsvSource(value = {
             "7 | / | 5 | 1",
