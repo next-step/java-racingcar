@@ -18,16 +18,8 @@ public class SimpleGameExecutor implements GameExecutor {
     @Override
     public ResultViews execute() {
         RacingCars racingCars = CarFactory.createRacingCars(inputValue.cars());
-        return startGame(inputValue.attempts(), racingCars);
+        return null;
     }
 
-    private ResultViews startGame(int attempts, RacingCars racingCars) {
-        List<ResultView> resultViews = new ArrayList<>();
-        for (int i = 0; i < attempts; i++) {
-            racingCars.advance();
-            resultViews.add(racingCars.advanceStatus());
-        }
 
-        return new ResultViews(resultViews);
-    }
 }

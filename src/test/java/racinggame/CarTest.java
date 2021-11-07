@@ -1,8 +1,8 @@
 package racinggame;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -17,19 +17,19 @@ class CarTest {
         car = new Car();
     }
 
-
-    @DisplayName("자동차 전진후 상태 테스트")
-    @ParameterizedTest(name = "{0}, {1}값이 주어질 경우 움직임결과 {2}")
+    @DisplayName("자동차 전진후 전진상태 확인")
+    @ParameterizedTest
     @CsvSource(value = {
-            "6 | 6 | '--'",
-            "8 | 2 | '-'",
-            "2 | 2 | ''",
-            "4 | 1 | '-'"
+            "true | true | false | 2",
+            "false | true | false | 1",
+            "true | false | false | 1",
+            "true | true | true | 3"
     }, delimiter = '|')
-    void advance(int moveValue1, int moveValue2,  String expected) {
-        car.advance(moveValue1);
-        car.advance(moveValue2);
-        assertThat(car.advanceStatus()).isEqualTo(expected);
-    }
+    void move(boolean movable1, boolean movable2, boolean movable3, int expected) {
+        car.move(movable1);
+        car.move(movable2);
+        car.move(movable3);
 
+        assertThat(car.getPosition()).isEqualTo(expected);
+    }
 }

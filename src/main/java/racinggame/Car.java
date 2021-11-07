@@ -1,22 +1,20 @@
 package racinggame;
 
-import racinggame.utils.MoveValueValidator;
-
 public class Car {
 
-    private StringBuilder moveStatus;
+    private int position;
 
     public Car() {
-        this.moveStatus = new StringBuilder();
+        this.position = 0;
     }
 
-    public void advance(int moveValue) {
-        if(MoveValueValidator.validate(moveValue)) {
-            moveStatus.append("-");
+    public void move(boolean movable) {
+        if(movable) {
+            position++;
         }
     }
 
-    public String advanceStatus() {
-        return moveStatus.toString();
+    public int getPosition() {
+        return this.position;
     }
 }
