@@ -5,6 +5,8 @@ import racingcar.service.value.CarName;
 import racingcar.service.value.Position;
 import racingcar.utils.Preconditions;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,6 +47,6 @@ public class Cars {
     }
 
     public List<Car> getCarList() {
-        return carList;
+        return Collections.unmodifiableList(new ArrayList<>(carList));
     }
 }

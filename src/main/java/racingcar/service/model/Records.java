@@ -3,6 +3,8 @@ package racingcar.service.model;
 import racingcar.service.domain.Record;
 import racingcar.utils.Preconditions;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Records {
@@ -27,6 +29,6 @@ public class Records {
     }
 
     public List<Record> getRecordList() {
-        return recordList;
+        return Collections.unmodifiableList(new ArrayList<>(recordList));
     }
 }
