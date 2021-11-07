@@ -40,7 +40,7 @@ public class CollectionTest {
 
     @DisplayName("Set collection contains() method test")
     @ParameterizedTest
-    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"}, delimiter = ',')
+    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
     void contains2(int number, boolean expected) {
         Set<Integer> set = new HashSet<>();
         set.add(1);
