@@ -57,4 +57,20 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.calculate(expression))
                 .isEqualTo(12L);
     }
+
+    @Test
+    @DisplayName("null 입력 예외")
+    void nullExpression() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            StringCalculator.calculate(null);
+        });
+    }
+
+    @Test
+    @DisplayName("공백 입력 예외")
+    void emptyExpression() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            StringCalculator.calculate("");
+        });
+    }
 }
