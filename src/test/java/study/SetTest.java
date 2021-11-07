@@ -40,7 +40,7 @@ public class SetTest {
      *  - Set의 size() 메소드를 활용해 Set의 크기를 확인하는 학습테스트를 구현한다.
      */
     @Test
-    @DisplayName("SetTest size()")
+    @DisplayName("Set Collection에 크기 조회")
     void size() {
         assertThat(numbers.size()).isEqualTo(3);
     }
@@ -56,9 +56,9 @@ public class SetTest {
      *  - https://www.baeldung.com/parameterized-tests-junit-5
      * @param paramNumber
      */
-    @ParameterizedTest
+    @DisplayName("Set Collection에 값 존재 유무 조회")
+    @ParameterizedTest(name="{displayName} | 요청값: {0}")
     @ValueSource(ints = {1, 2, 3})
-    @DisplayName("SetTest contains()")
     void contains(int paramNumber) {
         assertThat(numbers.contains(paramNumber)).isTrue();
     }
@@ -71,18 +71,13 @@ public class SetTest {
      * 힌트
      *  - Guide to JUnit 5 Parameterized Tests 문서에서 @CsvSource를 활용한다.
      *  - https://www.baeldung.com/parameterized-tests-junit-5
-     * @param paramNumber1
-     * @param paramNumber2
+     * @param paramNumber
+     * @param paramBoolean
      */
-    @ParameterizedTest
-    @CsvSource(value = {"123:45"}, delimiter = ':')
-    @DisplayName("SetTest csvSourceContains()")
-    void csvSourceContains(String paramNumber1, String paramNumber2) {
-        for (int i=0; i<paramNumber1.length(); i++){
-            assertThat(numbers.contains(Character.getNumericValue(paramNumber1.charAt(i)))).isTrue();
-        }
-        for (int j=0; j<paramNumber2.length(); j++){
-            assertThat(numbers.contains(Character.getNumericValue(paramNumber2.charAt(j)))).isFalse();
-        }
+    @DisplayName("Set Collection에 올바른 입력값 조회")
+    @ParameterizedTest(name="{displayName} | 요청값: {0} | 사실여부: {1}")
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void csvSourceContains(Integer paramNumber, boolean paramBoolean) {
+        assertThat(numbers.contains(paramNumber)).isEqualTo(paramBoolean);
     }
 }
