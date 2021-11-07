@@ -1,35 +1,22 @@
 package carracing.service;
 
-import carracing.CarRacing;
-import carracing.RacingUtils;
-import java.security.SecureRandom;
+import carracing.model.Cars;
 
 public class CarRacingService {
 
-    private SecureRandom random = new SecureRandom();
+    private Cars cars;
 
-    private CarRacing carRacing;
+    private final Integer tryCount;
 
-    public CarRacingService(CarRacing carRacing) {
-        this.carRacing = carRacing;
+    public CarRacingService(Cars cars, Integer tryCount) {
+        this.cars = cars;
+        this.tryCount = tryCount;
     }
 
-    public CarRacing gameStart() {
-        final Integer CARS_LENGTH = carRacing.getCarsSize();
-        for (int i = 0; i < CARS_LENGTH; i++) {
-            this.run(carRacing, i);
+    public void gameStart() {
+        for (int i = 0; i < tryCount; i++) {
+            cars.carsRace();
         }
-        return carRacing;
-    }
-
-    private void run(CarRacing carRacing, int i) {
-        if (this.isRun()) {
-            carRacing.run(i);
-        }
-    }
-
-    private Boolean isRun() {
-        return random.nextInt(RacingUtils.MAX_RANDOM) >= 4;
     }
 
 }

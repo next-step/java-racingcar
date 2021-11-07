@@ -1,32 +1,42 @@
 package carracing.view;
 
-import carracing.CarRacing;
-import carracing.RacingUtils;
-import carracing.service.CarRacingService;
-import java.util.Map;
+import carracing.model.Car;
+import carracing.model.Cars;
+import java.util.Collections;
 
 public class ResultView {
 
-    private CarRacing carRacing;
+    public static final long TIMER = 1000;
 
-    public ResultView(CarRacing carRacing) {
-        this.carRacing = carRacing;
+    public static final String DASH = "-";
+
+    public static final String EMPTY = "";
+
+    private final Cars cars;
+
+    public ResultView(Cars cars) {
+        this.cars = cars;
     }
 
-    public void execute() throws InterruptedException {
-        CarRacingService carRacingService = new CarRacingService(carRacing);
+    public void outputGameResults() throws InterruptedException {
+        System.out.println("실행 결과");
 
-        for (int i = 0; i < carRacing.getMovementQuantity(); i++) {
-            Thread.sleep(RacingUtils.TIMER);
-            this.viewRacing(carRacingService.gameStart());
+        for (int i = 1; i <= cars.getTryTotalCount(); i++) {
+            Thread.sleep(TIMER);
+            this.outputCarsHistory(i);
         }
     }
 
-    public void viewRacing(CarRacing carRacing) {
-        Map<Integer, String> cars = carRacing.getCars();
-        for (int key : cars.keySet()) {
-            System.out.println(cars.get(key));
+    private void outputCarsHistory(Integer toIndex) {
+        for (int i = 0; i < cars.getSize(); i++) {
+            Car car = cars.getCar(i);
+            System.out.println(carsHistoryToString(car, toIndex));
         }
         System.out.println();
+    }
+
+    private String carsHistoryToString(Car car, Integer toIndex) {
+        Integer count = car.getSuccessCountByIndex(toIndex).intValue();
+        return String.join(EMPTY, Collections.nCopies(count, this.DASH));
     }
 }
