@@ -1,10 +1,22 @@
 package com;
 
 public class Car {
-    public Car(int i) {
+    private int position;
+
+    public Car(int firstPosition) {
+        this.position = firstPosition;
     }
 
-    public int move(boolean b) {
-        return 1;
+    public Car move(boolean b) {
+        this.position += b == true ? 1 : 0;
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position;
     }
 }

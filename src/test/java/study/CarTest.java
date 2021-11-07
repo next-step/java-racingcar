@@ -9,8 +9,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
     @Test
+    void create() {
+        Car car = new Car(0);
+        assertThat(car).isEqualTo(new Car(0));
+    }
+
+    @Test
     void move() {
         Car car = new Car(0);
-        assertThat(car.move(true)).isEqualTo(1);
+        assertThat(car.move(true)).isEqualTo(new Car(1));
     }
 }
