@@ -11,11 +11,11 @@ public class StringCalculator {
     public int calculate(String input) {
         initExpression(input);
         while (hasNextOperation()) {
-            int first = Integer.parseInt(expression.pollFirst());
+            MyNumber first = new MyNumber(expression.pollFirst());
             String operator = expression.pollFirst();
-            int second = Integer.parseInt(expression.pollFirst());
+            MyNumber second = new MyNumber(expression.pollFirst());
 
-            expression.addFirst(Integer.toString(first + second));
+            expression.addFirst(first.add(second).toString());
         }
 
         return Integer.parseInt(expression.poll());
