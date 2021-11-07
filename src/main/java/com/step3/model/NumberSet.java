@@ -1,4 +1,4 @@
-package com;
+package com.step3.model;
 
 public class NumberSet {
     private int carCount;

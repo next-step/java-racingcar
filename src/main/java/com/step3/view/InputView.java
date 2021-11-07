@@ -1,6 +1,6 @@
-package com.view;
+package com.step3.view;
 
-import com.NumberSet;
+import com.step3.model.NumberSet;
 
 import java.util.Scanner;
 

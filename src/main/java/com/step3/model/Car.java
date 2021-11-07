@@ -1,19 +1,19 @@
-package com;
+package com.step3.model;
 
 public class Car {
+    private static final int MOVE_POSSIBLE_BOUND = 4;
+
+    private int id;
     private int position;
 
-    public Car(int firstPosition) {
+    public Car(int id, int firstPosition) {
+        this.id = id;
         this.position = firstPosition;
     }
 
-    public Car move(boolean b) {
-        this.position += b == true ? 1 : 0;
+    public Car move(int randomValue) {
+        this.position += (isMovePossible(randomValue) == true) ? 1 : 0;
         return this;
-    }
-
-    public int getPosition() {
-        return position;
     }
 
     public String getResult() {
@@ -24,11 +24,16 @@ public class Car {
         return sb.toString();
     }
 
+
+    private static boolean isMovePossible(int randomValue) {
+        return randomValue >= MOVE_POSSIBLE_BOUND ? true : false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position;
+        return id == car.id;
     }
 }
