@@ -12,13 +12,13 @@ public class JudgeCarMovement {
     public Judge judge() {
         int randomValue = random.nextInt(10);
         if(randomValue >= 4) {
-            return Judge.FORWARD;
+            return Judge.MOVE;
         }
 
         return Judge.STAY;
     }
 
     enum Judge {
-        STAY, FORWARD
+        STAY, MOVE
     }
 }

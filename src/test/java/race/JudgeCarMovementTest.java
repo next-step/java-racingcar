@@ -36,6 +36,6 @@ class JudgeCarMovementTest {
     void move() {
         when(random.nextInt(10)).thenReturn(4);
 
-        assertThat(dut.judge()).isEqualTo(JudgeCarMovement.Judge.FORWARD);
+        assertThat(dut.judge()).isEqualTo(JudgeCarMovement.Judge.MOVE);
     }
 }
