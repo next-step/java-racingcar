@@ -9,6 +9,7 @@ public class PositionTest {
     public void create() {
         Position position = Position.of(0);
         assertThat(position.toInt()).isEqualTo(0);
+        assertThat(position).isEqualTo(Position.of(0));
     }
 
     @Test
