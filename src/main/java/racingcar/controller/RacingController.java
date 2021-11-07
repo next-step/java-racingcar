@@ -18,13 +18,13 @@ public class RacingController {
 
 		RacingGame racingGame = RacingGame.create(moveRule, nameOfCars, numberOfRounds);
 
-		ResultView.printTitleAndWaitingCars(racingGame);
+		ResultView.printTitleAndWaitingCars(racingGame.getCars());
 
 		while (racingGame.hasNextRound()) {
 			racingGame.moveOnce();
-			ResultView.print(racingGame);
+			ResultView.print(racingGame.getCars());
 		}
 
-		ResultView.printWinners(racingGame);
+		ResultView.printWinners(racingGame.getWinnerNames());
 	}
 }

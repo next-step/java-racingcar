@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import racingcar.exception.InvalidCarNameSizeException;
 import racingcar.rule.FixedFalseMoveRule;
 import racingcar.rule.FixedTrueMoveRule;
 import racingcar.rule.MoveRule;
@@ -15,11 +16,11 @@ class CarTest {
 	private static final String FIXED_CAR_NAME = "fixed";
 	private static final String FIXED_OTHER_CAR_NAME = "other";
 
-	@DisplayName("car 이름이 5보다 클 경우 IllegalArgumentException 발생")
+	@DisplayName("car 이름이 5보다 클 경우 InvalidCarNameSizeException 발생")
 	@ParameterizedTest(name = "{index}. 길이가 5보다 큰 car name : {0}")
 	@ValueSource(strings = {"car-name", "nameOfCar", "invalidName"})
 	void createWithInvalidCarName(String nameOfCar) {
-		assertThatIllegalArgumentException()
+		assertThatExceptionOfType(InvalidCarNameSizeException.class)
 			.isThrownBy(() -> Car.create(nameOfCar));
 	}
 

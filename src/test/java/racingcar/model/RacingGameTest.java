@@ -91,7 +91,6 @@ class RacingGameTest {
 		List<String> winnerNames = racingGame.getWinnerNames();
 
 		// then
-		assertThat(winnerNames).hasSize(expectedNames.length);
 		assertThat(winnerNames).hasSameElementsAs(Arrays.asList(expectedNames));
 	}
 

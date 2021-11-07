@@ -61,7 +61,6 @@ class CarsTest {
 		List<String> carNames = cars.getCarNamesWithHighestPosition();
 
 		// then
-		assertThat(carNames).hasSize(expectedNames.length);
 		assertThat(carNames).hasSameElementsAs(Arrays.asList(expectedNames));
 	}
 
