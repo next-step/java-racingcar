@@ -2,17 +2,18 @@ package racingcar.game;
 
 import racingcar.car.Cars;
 import racingcar.gameinfo.CountInfo;
+import racingcar.gameinfo.GameInfo;
 import racingcar.moverule.MoveRule;
 import racingcar.view.ResultView;
 
 public class RacingCarGame {
 
-    private final CountInfo info;
+    private final GameInfo info;
     private final Cars cars;
 
-    public RacingCarGame(CountInfo info, MoveRule moveRule) {
+    public RacingCarGame(GameInfo info) {
         this.info = info;
-        this.cars = new Cars(moveRule, info.getCarCount());
+        this.cars = info.getCars();
     }
 
     public void start() {

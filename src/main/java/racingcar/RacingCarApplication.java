@@ -1,16 +1,13 @@
 package racingcar;
 
 import racingcar.game.RacingCarGame;
-import racingcar.gameinfo.CountInfo;
-import racingcar.moverule.RandomMoveRule;
-import racingcar.view.InputView;
+import racingcar.gameinfo.GameInfo;
 
 public class RacingCarApplication {
 
     public static void main(String[] args) {
         try {
-            CountInfo countInfo = InputView.getCountInfo();
-            RacingCarGame game = new RacingCarGame(countInfo, new RandomMoveRule());
+            RacingCarGame game = new RacingCarGame(GameInfo.randomMoveGame());
             game.start();
         } catch (IllegalArgumentException e){
             System.out.println(e.getMessage() + "게임을 종료합니다.");
