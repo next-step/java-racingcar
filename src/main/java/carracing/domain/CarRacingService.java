@@ -13,7 +13,6 @@ public class CarRacingService {
   private Random random = new Random();
 
   private static final int STEP_INIT_COUNT = 1;
-  private static final int TEN = 10;
   private static final int STEP_FORWARD_STANDARD = 4;
 
   public CarRacingService(ResultView resultView) {
@@ -55,8 +54,8 @@ public class CarRacingService {
     }
   }
 
-  private boolean isForward(Car car) {
-    return car.getMoveCount() > 0 && random.nextInt(TEN) >= STEP_FORWARD_STANDARD;
+  public static boolean isForward(Car car) {
+    return car.getMoveCount() > 0 && RandomUtils.greaterThanOrEquals(STEP_FORWARD_STANDARD);
   }
 
 }
