@@ -15,10 +15,21 @@ public class StringCalculator {
             String operator = expression.pollFirst();
             MyNumber second = new MyNumber(expression.pollFirst());
 
-            expression.addFirst(first.add(second).toString());
+            expression.addFirst(calculate(first, operator, second).toString());
         }
 
         return Integer.parseInt(expression.poll());
+    }
+
+    MyNumber calculate(MyNumber first, String operator, MyNumber second) {
+        switch (operator) {
+            case "+":
+                return first.add(second);
+            case "-":
+                return first.minus(second);
+            default:
+                throw new IllegalArgumentException();
+        }
     }
 
     public void initExpression(String input) {
