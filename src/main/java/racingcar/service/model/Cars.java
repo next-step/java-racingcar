@@ -1,6 +1,7 @@
 package racingcar.service.model;
 
 import racingcar.service.domain.Car;
+import racingcar.service.value.CarName;
 import racingcar.service.value.Position;
 import racingcar.utils.Preconditions;
 
@@ -32,7 +33,8 @@ public class Cars {
         Position maxPosition = getMaxPosition();
         return carList.stream()
                 .filter(car -> car.getCurrentPosition().equals(maxPosition))
-                .map(Car::getName)
+                .map(Car::getCarName)
+                .map(CarName::getName)
                 .collect(Collectors.joining(", "));
     }
 
