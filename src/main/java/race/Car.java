@@ -1,15 +1,13 @@
 package race;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class Car {
-    private final AtomicInteger location = new AtomicInteger();
+    private int location = 0;
 
     public synchronized void move() {
-        location.incrementAndGet();
+        location++;
     }
 
     public int location() {
-        return location.get();
+        return location;
     }
 }
