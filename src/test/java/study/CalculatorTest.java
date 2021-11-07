@@ -45,21 +45,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * - https://www.baeldung.com/parameterized-tests-junit-5
  */
 public class CalculatorTest {
-    // 가장 작은 단위부터 연습 (복잡도 낮게)
-    // 처음에는 클래스 매서드로 생각
-    // TDD 사이클에서는 컴파일 에러가 날수밖에 없음
-    // 실패한 테스트 생성 -> 컴파일 에러 잡기
-    // 기능 목록(=to-do list) 만들기 -> 테스트 케이스와 같음
-    // 기능 목록을 잘 만드려면, 요구사항 분석을 잘해야 함
-    // 객체를 단위로 비교할 것 -> 객체 지향적 프로그래밍 방법 
-    // 프리머티브 타입보다는 객체로 들고 다닐 것
-    // eqauls()와 hashcode() 메서드가 가장 마지막에 위치
-    // 극단적인 연습 : 리턴값, 파라미터를 객체로 이동
-    // 각각의 인자가 객체가 될 후보
-    
-    // 1. 들여쓰기는 한단계만 사용
-    // 2. else 예약어는 쓰지 않음
-    // 3. 모든 원시값과 문자열을 포장
     @Test
     public void 덧셈(){
         int result = Calculator.calculate2("1 + 2");
@@ -84,7 +69,7 @@ public class CalculatorTest {
         assertThat(result).isEqualTo(2);
 
         assertThatThrownBy(() -> {
-            Calculator.calculate("4 / 0");
+            Calculator.calculate2("4 / 0");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
