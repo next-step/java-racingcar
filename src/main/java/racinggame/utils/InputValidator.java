@@ -2,6 +2,9 @@ package racinggame.utils;
 
 public class InputValidator {
 
+    private InputValidator() {
+    }
+
     public static void validate(String input) {
         validateZero(input);
         validateNullAndEmptySource(input);

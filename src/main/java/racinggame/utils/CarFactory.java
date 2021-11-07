@@ -8,6 +8,9 @@ import java.util.List;
 
 public class CarFactory {
 
+    private CarFactory() {
+    }
+
     public static RacingCars createRacingCars(int numberOfCars) {
         return new RacingCars(createCars(numberOfCars));
     }

@@ -4,6 +4,9 @@ import racinggame.InputValue;
 
 public class InputUtils {
 
+    private InputUtils() {
+    }
+
     public static InputValue convertInputValue(String numberOfCars, String numberOfAttempts) {
         validate(numberOfCars, numberOfAttempts);
         return InputValue.create(convertInt(numberOfCars), convertInt(numberOfAttempts));
