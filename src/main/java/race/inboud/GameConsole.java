@@ -3,7 +3,7 @@ package race.inboud;
 import race.Car;
 import race.JudgeCarMovement;
 import race.Race;
-import race.outbound.RenderRaceSnapshotViaConsole;
+import race.outbound.RenderCarLocationViaConsole;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,12 +25,10 @@ public class GameConsole {
             cars.add(new Car());
         }
 
-        Race race = new Race(cars, new JudgeCarMovement(new Random()), new RenderRaceSnapshotViaConsole());
+        Race race = new Race(cars, new JudgeCarMovement(new Random()), new RenderCarLocationViaConsole());
 
         for (int i = 0; i < numberOfMovement; i++) {
             race.moveCars();
-            System.out.println("["+i+"]----------");
-            renderRaceSnapshot.render(cars);
         }
     }
 }

@@ -2,6 +2,6 @@ package race;
 
 import java.util.Collection;
 
-public interface RenderRaceSnapshot {
+public interface RenderCarLocation {
     void render(Collection<Car> cars);
 }

@@ -10,7 +10,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -23,7 +22,7 @@ class RaceTest {
     private JudgeCarMovement judgeCarMovement;
 
     @Mock
-    private RenderRaceSnapshot renderRaceSnapshot;
+    private RenderCarLocation renderCarLocation;
 
     @BeforeEach
     void setUp() {
@@ -33,12 +32,19 @@ class RaceTest {
             cars.add(new Car());
         }
 
-        dut = new Race(cars, judgeCarMovement, renderRaceSnapshot);
+        dut = spy(new Race(cars, judgeCarMovement, renderCarLocation));
     }
 
     @AfterEach
     void tearDown() {
-        verifyNoMoreInteractions(judgeCarMovement, renderRaceSnapshot);
+        verifyNoMoreInteractions(judgeCarMovement, renderCarLocation);
+    }
+
+    @Test
+    void race() {
+        int numberOfMovement = (new Random()).nextInt(10) + 1;
+        dut.race(numberOfMovement);
+        verify(dut, times(numberOfMovement)).moveCars();
     }
 
     @Test
@@ -60,6 +66,6 @@ class RaceTest {
     @Test
     void renderRacingSnapshot() {
         dut.renderRacingSnapshot();
-        verify(renderRaceSnapshot, times(1)).render(cars);
+        verify(renderCarLocation, times(1)).render(cars);
     }
 }

@@ -1,7 +1,5 @@
 package race;
 
-import race.outbound.RenderRaceSnapshotViaConsole;
-
 import java.util.Collection;
 
 public class Race {
@@ -9,12 +7,16 @@ public class Race {
 
     private final JudgeCarMovement judgeCarMovement;
 
-    private final RenderRaceSnapshot renderRaceSnapshot;
+    private final RenderCarLocation renderCarLocation;
 
-    public Race(Collection<Car> cars, JudgeCarMovement judgeCarMovement, RenderRaceSnapshot renderRaceSnapshot) {
+    public Race(Collection<Car> cars, JudgeCarMovement judgeCarMovement, RenderCarLocation renderCarLocation) {
         this.cars = cars;
         this.judgeCarMovement = judgeCarMovement;
-        this.renderRaceSnapshot = renderRaceSnapshot;
+        this.renderCarLocation = renderCarLocation;
+    }
+
+    public void race(int numberOfMovement) {
+
     }
 
     public void moveCars() {
@@ -26,6 +28,6 @@ public class Race {
     }
 
     public void renderRacingSnapshot() {
-
+        renderCarLocation.render(cars);
     }
 }
