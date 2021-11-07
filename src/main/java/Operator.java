@@ -2,8 +2,8 @@ import java.util.function.BiFunction;
 
 public enum Operator {
   PLUS(new CalculatorInput("+"), Double::sum),
-  MINUS(new CalculatorInput("-"), (num1, num2) -> num1 - num2),
-  MULTIPLY(new CalculatorInput("*"), (num1, num2) -> num1 * num2),
+  MINUS(new CalculatorInput("-"), Operator::minus),
+  MULTIPLY(new CalculatorInput("*"), Operator::multiply),
   DIVIDE(new CalculatorInput("/"), Operator::divide);
 
   private CalculatorInput symbol;
@@ -30,6 +30,14 @@ public enum Operator {
       throw new IllegalArgumentException("0으로 나눌수 없습니다.");
     }
     return num1 / num2;
+  }
+
+  private static Double multiply(Double num1, Double num2) {
+    return num1 * num2;
+  }
+
+  private static Double minus(Double num1, Double num2) {
+    return num1 - num2;
   }
 
 
