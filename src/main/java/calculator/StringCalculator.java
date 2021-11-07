@@ -2,6 +2,7 @@ package calculator;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.IntBinaryOperator;
 
 public class StringCalculator {
@@ -16,6 +17,9 @@ public class StringCalculator {
     }
 
     public int execute(String formula) {
+        if(Objects.isNull(formula)) {
+            throw new IllegalArgumentException("null 을 계산할 수 없습니다.");
+        }
         String[] keywords = formula.split(SCHEME_SEPARATOR);
         final int first = Integer.parseInt(keywords[0]);
         final String sign = keywords[1];

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("문자열 계산기 테스트")
 class StringCalculatorTest {
@@ -44,4 +45,9 @@ class StringCalculatorTest {
         assertEquals(calculateResult, 2);
     }
 
+    @Test
+    @DisplayName("\"null\"입력 시, IllegalArgumentException 발생")
+    public void failFunctionOfIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> stringCalculator.execute(null));
+    }
 }
