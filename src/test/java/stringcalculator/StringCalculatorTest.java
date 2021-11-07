@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringCalculatorTest {
     private StringCalculator calculator;
@@ -107,5 +108,16 @@ public class StringCalculatorTest {
 
         // Then
         assertThat(result).isEqualTo(5);
+    }
+
+    @Test
+    void invalidOperatorShouldThrowIllegalArgumentException() {
+        // Given
+        String invalidExpression = "1 + 3 ^ 5";
+
+        // When & Then
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() ->
+                calculator.calculate(invalidExpression)
+        );
     }
 }
