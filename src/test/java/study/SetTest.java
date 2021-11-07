@@ -26,22 +26,22 @@ public class SetTest {
     }
 
     @Test
-    @DisplayName("요구사항1 테스트")
+    @DisplayName("원소 개수 카운팅")
     void sizeTest() {
         assertThat(this.numbers.size()).isEqualTo(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    @DisplayName("요구사항2 테스트")
+    @DisplayName("원소 포함 여부 확인")
     void containsTest(int input) {
         assertThat(this.numbers.contains(input)).isTrue();
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1,true", "2,true", "3,true", "4,false"})
-    @DisplayName("요구사항3 테스트")
-    void charAtTest(int input, boolean expected) {
+    @DisplayName("원소 포함 여부 확인(존재/비존재 케이스)")
+    void containsTestWithWholeCases(int input, boolean expected) {
         assertThat(this.numbers.contains(input)).isEqualTo(expected);
     }
 }
