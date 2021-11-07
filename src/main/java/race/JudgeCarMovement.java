@@ -3,8 +3,8 @@ package race;
 import java.util.Random;
 
 public class JudgeCarMovement {
-    private final Random random;
     private final static int MOVE_THRESHOLD = 4;
+    private final Random random;
 
     public JudgeCarMovement(Random random) {
         this.random = random;
