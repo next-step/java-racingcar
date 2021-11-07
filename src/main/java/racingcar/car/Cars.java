@@ -2,6 +2,7 @@ package racingcar.car;
 
 import racingcar.moverule.MoveRule;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -24,15 +25,15 @@ public class Cars {
 
     public void playGame(){
         this.carList
-                .forEach((car) -> car.move(moveRule.isMovable(), moveRule.getMoveCount()));
+                .forEach(car -> car.move(moveRule.isMovable(), moveRule.getMoveCount()));
     }
 
     public void printPosition() {
         this.carList
-                .forEach((car) -> System.out.println(car.printPosition()));
+                .forEach(car -> System.out.println(car.printPosition()));
     }
 
     public List<Car> getCarList(){
-        return this.carList;
+        return Collections.unmodifiableList(this.carList);
     }
 }
