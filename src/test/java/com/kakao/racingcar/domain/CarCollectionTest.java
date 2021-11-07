@@ -1,13 +1,10 @@
 package com.kakao.racingcar.domain;
 
-import com.kakao.racingcar.history.CarHistory;
 import com.kakao.racingcar.history.RacingHistory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,7 +22,7 @@ class CarCollectionTest {
         CarCollection carCollection = new CarCollection(3);
         int tryMove = 10;
         for (int i = 0; i < tryMove; i++) {
-            carCollection.tryMoveCars(0, Arrays.asList(10, 10, 0));
+            carCollection.tryMoveCars(i, Arrays.asList(10, 10, 0));
         }
         RacingHistory racingHistory = carCollection.getRacingHistory();
         assertThat(racingHistory.getResult().size()).isEqualTo(tryMove);
