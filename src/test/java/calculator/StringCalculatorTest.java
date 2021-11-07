@@ -2,6 +2,8 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -50,15 +52,9 @@ class StringCalculatorTest {
         assertThrows(IllegalArgumentException.class, () -> StringCalculator.execute("1 ( 1"));
     }
 
-    @Test
-    @DisplayName("\"null\"입력 시, IllegalArgumentException 발생")
-    public void failFunctionOfIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> StringCalculator.execute(null));
-    }
-
-    @Test
-    @DisplayName("\" \" 입력 시, IllegalArgumentException 발생")
-    public void blankStringOfIllegalArgumentException(){
-        assertThrows(IllegalArgumentException.class, () -> StringCalculator.execute(" "));
+    @ParameterizedTest(name="\"{arguments}\" 입력 시, IllegalArgumentException 발생")
+    @ValueSource(strings={"", " "})
+    public void failFunctionOfIllegalArgumentException(String value) {
+        assertThrows(IllegalArgumentException.class, () -> StringCalculator.execute(value));
     }
 }
