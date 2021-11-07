@@ -8,19 +8,17 @@ import static step3.utils.ValidationUtils.checkArgument;
 
 public class Car {
 
-    private final int powerBound;
+    private static final int POWER_BOUND = 4;
     private final Location location;
 
-    public Car(Integer powerBound, Location location) {
-        checkArgument(powerBound != null, "powerBound is Required");
+    public Car(Location location) {
         checkArgument(location != null, "location is Required");
-        this.powerBound = powerBound;
         this.location = location;
     }
 
     public void go(Integer power) {
         validatePower(power);
-        if (power >= powerBound) {
+        if (power >= POWER_BOUND) {
             location.goForward();
         }
     }
@@ -39,19 +37,18 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return powerBound == car.powerBound && Objects.equals(location, car.location);
+        return Objects.equals(location, car.location);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(powerBound, location);
+        return Objects.hash(location);
     }
 
     @Override
     public String toString() {
         return "Car{" +
-                "powerBound=" + powerBound +
-                ", location=" + location +
+                "location=" + location +
                 '}';
     }
 }

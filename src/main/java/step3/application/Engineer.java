@@ -14,15 +14,14 @@ import static step3.utils.ValidationUtils.checkArgument;
 public class Engineer {
 
     private static final int DEFAULT_LOCATION = 0;
-    private static final int DEFAULT_POWER_BOUND = 4;
 
-    public Cars createCars(Integer carCount, Power power) {
+    public static Cars createCars(Integer carCount, Power power) {
         checkArgument(carCount != null, "carCount is Required");
         checkArgument(power != null, "power is Required");
 
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            Car car = new Car(DEFAULT_POWER_BOUND, Location.placeOn(DEFAULT_LOCATION));
+            Car car = new Car(Location.placeOn(DEFAULT_LOCATION));
             cars.add(car);
         }
         return new Cars(unmodifiableList(cars), power);

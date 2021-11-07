@@ -14,23 +14,21 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 class CarTest {
 
-    private static final int POWER_BOUND = 4;
     private static final int LOCATION = 0;
     private static final int INTERVAL = 1;
 
+    @Test
     @DisplayName("CAR 생성 입력값 null 테스트")
-    @ParameterizedTest(name = "[{index}] powerBound: {0}, location: {1}")
-    @MethodSource(value = "generateCreateCarNullInputs")
-    void createCarTest(Integer powerBound, Location location) {
+    void createCarTest() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Car(powerBound, location))
-                .withMessageContaining("is Required");
+                .isThrownBy(() -> new Car(null))
+                .withMessageContaining("location is Required");
     }
 
     @DisplayName("go 메소드 입력 값 null 테스트")
     @Test
     void goInputTest() {
-        Car car = createCar();
+        Car car = new Car(Location.placeOn(LOCATION));
 
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> car.go(null))
@@ -41,7 +39,7 @@ class CarTest {
     @ParameterizedTest(name = "[{index}] power: {0}")
     @CsvSource(value = {"-1", "10"})
     void goInputTest2(Integer power) {
-        Car car = createCar();
+        Car car = new Car(Location.placeOn(LOCATION));
 
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> car.go(power))
@@ -52,33 +50,17 @@ class CarTest {
     @ParameterizedTest(name = "[{index}] power: {0}, expectedCar: {1}")
     @MethodSource("generateGoInputs")
     void goTest(Integer power, Car expectedCar) {
-        Car car = createCar(Location.placeOn(LOCATION, INTERVAL));
+        Car car = new Car(Location.placeOn(LOCATION, INTERVAL));
 
         car.go(power);
 
         assertThat(car).isEqualTo(expectedCar);
     }
 
-    private static Car createCar() {
-        return new Car(POWER_BOUND, Location.placeOn(LOCATION));
-    }
-
-    private static Car createCar(Location location) {
-        return new Car(POWER_BOUND, location);
-    }
-
-    private static Stream<Arguments> generateCreateCarNullInputs() {
-        return Stream.of(
-                Arguments.of(null, null),
-                Arguments.of(null, Location.placeOn(LOCATION)),
-                Arguments.of(POWER_BOUND, null)
-        );
-    }
-
     private static Stream<Arguments> generateGoInputs() {
         return Stream.of(
-                Arguments.of(3, createCar(Location.placeOn(LOCATION, INTERVAL))),
-                Arguments.of(4, createCar(Location.placeOn(LOCATION + INTERVAL, INTERVAL)))
+                Arguments.of(3, new Car(Location.placeOn(LOCATION, INTERVAL))),
+                Arguments.of(4, new Car(Location.placeOn(LOCATION + INTERVAL, INTERVAL)))
         );
     }
 

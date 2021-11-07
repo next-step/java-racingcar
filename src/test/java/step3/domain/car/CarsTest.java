@@ -14,7 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
 
-    private static final int POWER_BOUND = 4;
     private static final int LOCATION = 0;
     private static final int INTERVAL = 1;
     private static final int CAR_COUNT = 3;
@@ -48,7 +47,7 @@ class CarsTest {
     private List<Car> createCars(int location) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < CAR_COUNT; i++) {
-            cars.add(new Car(POWER_BOUND, Location.placeOn(location, INTERVAL)));
+            cars.add(new Car(Location.placeOn(location, INTERVAL)));
         }
         return cars;
     }

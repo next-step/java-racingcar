@@ -1,6 +1,5 @@
 package step3.ui;
 
-import step3.application.Engineer;
 import step3.application.GameDirector;
 import step3.domain.board.GameBoard;
 
@@ -23,7 +22,7 @@ public class Stadium {
     }
 
     private static void playGame(Integer carCount, Integer roundSize, GameBoard gameBoard) {
-        GameDirector gameDirector = new GameDirector(gameBoard, new Engineer());
+        GameDirector gameDirector = new GameDirector(gameBoard);
         gameDirector.playGame(carCount, roundSize);
     }
 
