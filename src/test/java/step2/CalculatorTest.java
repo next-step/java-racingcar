@@ -14,16 +14,16 @@ class CalculatorTest {
     @Test
     @DisplayName("입력 값이 null이거나 빈 공백 문자열인 경우 IllegalArgumentException 발생")
     void executeWithNullArgument() {
-        assertThatIllegalArgumentException().isThrownBy(() -> Calculator.execute(""));
-        assertThatIllegalArgumentException().isThrownBy(() -> Calculator.execute(null));
+        assertThatIllegalArgumentException().isThrownBy(() -> Calculator.execute(InputString.from("")));
+        assertThatIllegalArgumentException().isThrownBy(() -> Calculator.execute(InputString.from(null)));
 
     }
 
     @DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException 발생")
     @ParameterizedTest
-    @ValueSource(strings = {"+ 2", "2 $ 3", "2 2", "2 +"})
+    @ValueSource(strings = {"+ 2", "2 $ 3", "2 2", "2 + 3 -"})
     void executeWithWrongArgument(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> Calculator.execute(input));
+        assertThatIllegalArgumentException().isThrownBy(() -> Calculator.execute(InputString.from(input)));
 
     }
 
@@ -31,8 +31,8 @@ class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2:10", "2:2"}, delimiter = ':')
     void execute(String input, int result) {
-        System.out.println(Calculator.execute(input));
-        assertThat(Calculator.execute(input)).isEqualTo(result);
+        System.out.println(Calculator.execute(InputString.from(input)));
+        assertThat(Calculator.execute(InputString.from(input))).isEqualTo(result);
     }
 
 
