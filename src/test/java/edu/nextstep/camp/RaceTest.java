@@ -30,4 +30,27 @@ public class RaceTest {
         final Race race = Race.of(numberOfCars, 1);
         assertThat(race.gameResult()).containsExactly(0, 0, 0, 0);
     }
+
+    @Test
+    @DisplayName("process game during given turns")
+    public void process() {
+        final int turns = 1;
+        final Race race = Race.of(1, turns);
+        race.process();
+        assertThat(race.gameResult()).containsExactly(turns);
+        race.process();
+        assertThat(race.gameResult()).containsExactly(turns);
+    }
+
+    @Test
+    @DisplayName("process all turns")
+    public void processAll() {
+        final int turns = 4;
+        final Race race = Race.of(1, turns);
+        race.processAll();
+        assertThat(race.gameResult()).containsExactly(turns);
+        race.process();
+        assertThat(race.gameResult()).containsExactly(turns);
+
+    }
 }

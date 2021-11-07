@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Race {
+    private int currentTurn;
     private final int totalTurns;
     private final List<Car> cars;
 
@@ -22,10 +23,11 @@ public class Race {
 
     private Race(int numberOfCars, int totalTurns) {
         this.cars = new ArrayList<>(numberOfCars);
-        for(int i = 0; i < numberOfCars; i++) {
+        for (int i = 0; i < numberOfCars; i++) {
             this.cars.add(new Car());
         }
 
+        this.currentTurn = 0;
         this.totalTurns = totalTurns;
     }
 
@@ -39,5 +41,18 @@ public class Race {
 
     public List<Integer> gameResult() {
         return cars.stream().map(Car::position).map(Position::toInt).collect(Collectors.toList());
+    }
+
+    public void process() {
+        if (currentTurn < totalTurns) {
+            cars.forEach(Car::move);
+            currentTurn++;
+        }
+    }
+
+    public void processAll() {
+        for (; currentTurn < totalTurns; currentTurn++) {
+            cars.forEach(Car::move);
+        }
     }
 }
