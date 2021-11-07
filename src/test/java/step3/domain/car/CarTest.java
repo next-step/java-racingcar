@@ -43,7 +43,7 @@ class CarTest {
 
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> car.go(power))
-                .withMessage("power의 범위는 0 - 9 이어야 합니다.");
+                .withMessage(Car.POWER_OUT_OF_RANGE_ERROR_MESSAGE);
     }
 
     @DisplayName("입력 값이 4미만이면 정지 4이상이면 전진한다.")

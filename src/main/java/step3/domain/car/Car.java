@@ -4,11 +4,17 @@ import step3.domain.board.RoundBoard;
 
 import java.util.Objects;
 
+import static java.lang.String.format;
 import static step3.utils.ValidationUtils.checkArgument;
 
 public class Car {
 
     private static final int POWER_BOUND = 4;
+    private static final int MIN_POWER = 0;
+    private static final int MAX_POWER = 9;
+
+    static final String POWER_OUT_OF_RANGE_ERROR_MESSAGE = format("power의 범위는 %s - %s 이어야 합니다.", MIN_POWER, MAX_POWER);
+
     private final Location location;
 
     public Car(Location location) {
@@ -25,7 +31,7 @@ public class Car {
 
     private void validatePower(Integer power) {
         checkArgument(power != null, "power is Required");
-        checkArgument(power >= 0 && power <= 9, "power의 범위는 0 - 9 이어야 합니다.");
+        checkArgument(power >= MIN_POWER && power <= MAX_POWER, POWER_OUT_OF_RANGE_ERROR_MESSAGE);
     }
 
     public void record(RoundBoard roundBoard) {

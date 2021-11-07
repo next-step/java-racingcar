@@ -8,15 +8,4 @@ public class ValidationUtils {
         }
     }
 
-    public static void checkState(boolean expression, String errorMessage) {
-        if (!expression) {
-            throw new IllegalStateException(errorMessage);
-        }
-    }
-
-    public static void checkPositive(Integer integer, String errorMessage) {
-        if (integer == null || integer <= 0) {
-            throw new IllegalArgumentException(errorMessage);
-        }
-    }
 }
