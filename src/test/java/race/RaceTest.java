@@ -5,12 +5,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @ExtendWith(MockitoExtension.class)
 class RaceTest {
@@ -29,7 +31,7 @@ class RaceTest {
         int numberOfCars = (new Random()).nextInt(100) + 1;
         cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+            cars.add(mock(Car.class));
         }
 
         dut = spy(new Race(cars, judgeCarMovement, renderCarLocation));
@@ -38,6 +40,7 @@ class RaceTest {
     @AfterEach
     void tearDown() {
         verifyNoMoreInteractions(judgeCarMovement, renderCarLocation);
+        cars.forEach(Mockito::verifyNoMoreInteractions);
     }
 
     @Test
@@ -54,19 +57,32 @@ class RaceTest {
     }
 
     @Test
-    void moveCar() {
-        Boolean[] movement = new Boolean[cars.size()];
-        for (int i = 0; i < cars.size(); i++) {
-            movement[i] = i % 2 == 0;
-        }
-        when(judgeCarMovement.judge()).thenReturn(movement[0], Arrays.copyOfRange(movement, 1, movement.length));
+    void moveCars() {
+        doNothing().when(dut).moveCar(any());
 
         dut.moveCars();
 
-        for (int i = 0; i < cars.size(); i++) {
-            int expected = movement[i] ? 1 : 0;
-            assertThat(cars.get(i).location()).isEqualTo(expected);
-        }
+        cars.forEach((car -> {
+            verify(dut, times(1)).moveCar(car);
+        }));
+    }
+
+    @Test
+    void moveCar_move() {
+        when(judgeCarMovement.judge()).thenReturn(true);
+
+        dut.moveCar(cars.get(0));
+
+        verify(cars.get(0), times(1)).move();
+    }
+
+    @Test
+    void moveCar_stay() {
+        when(judgeCarMovement.judge()).thenReturn(false);
+
+        dut.moveCar(cars.get(0));
+
+        verify(cars.get(0), never()).move();
     }
 
     @Test

@@ -23,11 +23,13 @@ public class Race {
     }
 
     void moveCars() {
-        cars.forEach((car) -> {
-            if(judgeCarMovement.judge()) {
-                car.move();
-            }
-        });
+        cars.forEach(this::moveCar);
+    }
+
+    void moveCar(Car car) {
+        if(judgeCarMovement.judge()) {
+            car.move();
+        }
     }
 
     void renderRacingSnapshot() {
