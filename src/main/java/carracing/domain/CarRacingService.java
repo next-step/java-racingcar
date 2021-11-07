@@ -10,9 +10,7 @@ public class CarRacingService {
 
   private ResultView resultView;
   private List<Car> carList;
-  private Random random = new Random();
 
-  private static final int STEP_INIT_COUNT = 1;
   private static final int STEP_FORWARD_STANDARD = 4;
 
   public CarRacingService(ResultView resultView) {
@@ -28,7 +26,7 @@ public class CarRacingService {
   private void initRacing(int numberOfCar, int tryCount) {
     carList = new ArrayList<>(numberOfCar);
     for (int i = 0; i < numberOfCar; i++) {
-      carList.add(new Car(STEP_INIT_COUNT, tryCount));
+      carList.add(new Car(tryCount));
     }
   }
 
