@@ -23,6 +23,10 @@ public class MyNumber {
         return new MyNumber(this.number * other.number);
     }
 
+    public MyNumber dividedBy(MyNumber other) {
+        return new MyNumber(this.number / other.number);
+    }
+
     @Override
     public String toString() {
         return Integer.toString(this.number);

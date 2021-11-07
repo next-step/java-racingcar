@@ -29,6 +29,8 @@ public class StringCalculator {
                 return first.minus(second);
             case "*":
                 return first.multiply(second);
+            case "/":
+                return first.dividedBy(second);
             default:
                 throw new IllegalArgumentException("Invalid Operator");
         }
