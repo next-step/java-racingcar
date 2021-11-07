@@ -5,9 +5,7 @@ import racingcar.service.value.CarName;
 import racingcar.service.value.Position;
 import racingcar.utils.Preconditions;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -32,17 +30,18 @@ public class Cars {
     public String getFinalWinnerName() {
         Position maxPosition = getMaxPosition();
         return carList.stream()
-                .filter(car -> car.getCurrentPosition().equals(maxPosition))
+                .filter(car -> car.isWinner(maxPosition))
                 .map(Car::getCarName)
                 .map(CarName::getName)
                 .collect(Collectors.joining(", "));
     }
 
     private Position getMaxPosition() {
-        return carList.stream()
-                .map(Car::getCurrentPosition)
-                .max(Comparator.comparingInt(Position::getPosition))
-                .orElseThrow(NoSuchElementException::new);
+        Position maxPosition = Position.init();
+        for (Car car : carList) {
+            maxPosition = car.getMaxPosition(maxPosition);
+        }
+        return maxPosition;
     }
 
     public List<Car> getCarList() {

@@ -8,13 +8,11 @@ import racingcar.utils.Preconditions;
 import java.util.Objects;
 
 public class Car implements Cloneable {
-    private static final Integer INIT_POSITION = 0;
-
     private final CarName carName;
     private Position position;
 
     public Car(String carName) {
-        this(CarName.from(carName), Position.from(INIT_POSITION));
+        this(CarName.from(carName), Position.init());
     }
 
     public Car(CarName carName, Position position) {
@@ -25,19 +23,30 @@ public class Car implements Cloneable {
         this.position = position;
     }
 
-
     public void startRace(RoundRule roundRule) {
         if (roundRule.checkCondition()) {
             position = position.increasePosition();
         }
     }
 
-    public CarName getCarName() {
-        return carName;
+    public boolean isWinner(Position maxPosition) {
+        return position.equals(maxPosition);
+    }
+
+    public Position getMaxPosition(Position maxPosition) {
+        if (position.isGreaterThan(maxPosition)) {
+            return position;
+        }
+
+        return maxPosition;
     }
 
     public Position getCurrentPosition() {
         return position;
+    }
+
+    public CarName getCarName() {
+        return carName;
     }
 
     @Override

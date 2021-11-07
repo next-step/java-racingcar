@@ -3,6 +3,7 @@ package racingcar.service.value;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
@@ -27,5 +28,17 @@ class PositionTest {
     @ValueSource(ints = {-1, -2, -3, -4})
     void createException2(Integer number) {
         assertThatIllegalArgumentException().isThrownBy(() -> Position.from(number));
+    }
+
+    @ParameterizedTest
+    @DisplayName("현재 값이 5인데 maxPosition과 비교 여부")
+    @CsvSource(value = {
+            "4|     true",
+            "5|     true",
+            "6|     false"
+    }, delimiter = '|')
+    void isGreaterThan(Integer maxPosition, boolean expected) {
+        Position position = Position.from(5);
+        assertThat(position.isGreaterThan(Position.from(maxPosition))).isEqualTo(expected);
     }
 }

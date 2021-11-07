@@ -18,12 +18,12 @@ public class Record {
         this.cars = cars;
     }
 
-    public Round getCurrentRound() {
-        return round;
-    }
-
     public String getFinalWinnerName() {
         return cars.getFinalWinnerName();
+    }
+
+    public Round getCurrentRound() {
+        return round;
     }
 
     public Cars getCars() {
