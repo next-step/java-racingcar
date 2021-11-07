@@ -4,25 +4,26 @@ import java.util.function.BiFunction;
 public class CalculatorNumber {
 
   private double value;
+  final static private String DOUBLE_TO_STRING_REGEX = "\\.0$";
 
-  public CalculatorNumber(int i) {
-    this.value = i;
+  public CalculatorNumber(int input) {
+    this.value = input;
   }
 
-  public CalculatorNumber(double i) {
-    this.value = i;
+  public CalculatorNumber(double input) {
+    this.value = input;
   }
 
-  public CalculatorNumber(String i) {
-    this.value = Double.parseDouble(i);
+  public CalculatorNumber(String input) {
+    this.value = Double.parseDouble(input);
   }
 
-  public CalculatorNumber(CalculatorInput i) {
-    this.value = CalculatorInput.parseNumber(i).value;
+  public CalculatorNumber(CalculatorInput input) {
+    this.value = CalculatorInput.parseNumber(input).value;
   }
 
   public String toString() {
-    return Double.toString(this.value).replaceAll("\\.0$", "");
+    return Double.toString(this.value).replaceAll(DOUBLE_TO_STRING_REGEX, "");
   }
 
   @Override
@@ -37,8 +38,8 @@ public class CalculatorNumber {
     return Double.compare(that.value, value) == 0;
   }
 
-  public boolean compare(CalculatorNumber i) {
-    return this.value > i.value;
+  public boolean compare(CalculatorNumber input) {
+    return this.value > input.value;
   }
 
   @Override
@@ -55,7 +56,7 @@ public class CalculatorNumber {
     return new CalculatorNumber(expression.apply(this.value, input.value));
   }
 
-  public static int parseInt(CalculatorNumber i) {
-    return (int) i.value;
+  public static int parseInt(CalculatorNumber input) {
+    return (int) input.value;
   }
 }

@@ -13,7 +13,7 @@ class CalculatorTest {
     // given
     String input = "1 + 2";
     // when
-    String calculate = Calculator.calculate(input);
+    String calculate = new Calculator().calculate(input);
     // then
     assertThat(calculate).isEqualTo("3");
   }
@@ -24,7 +24,7 @@ class CalculatorTest {
     // given
     String input = "2 - 1";
     // when
-    String calculate = Calculator.calculate(input);
+    String calculate = new Calculator().calculate(input);
     // then
     assertThat(calculate).isEqualTo("1");
   }
@@ -35,7 +35,7 @@ class CalculatorTest {
     // given
     String input = "3 * 2";
     // when
-    String calculate = Calculator.calculate(input);
+    String calculate = new Calculator().calculate(input);
     // then
     assertThat(calculate).isEqualTo("6");
   }
@@ -46,7 +46,7 @@ class CalculatorTest {
     // given
     String input = "4 / 2";
     // when
-    String calculate = Calculator.calculate(input);
+    String calculate = new Calculator().calculate(input);
     // then
     assertThat(calculate).isEqualTo("2");
   }
@@ -57,7 +57,7 @@ class CalculatorTest {
     // given
     String input = "1 / 0";
     // when
-    ThrowingCallable lambdaToTest = () -> Calculator.calculate(input);
+    ThrowingCallable lambdaToTest = () -> new Calculator().calculate(input);
     // then
     assertThatThrownBy(lambdaToTest)
         .isInstanceOf(IllegalArgumentException.class);
@@ -69,7 +69,7 @@ class CalculatorTest {
     // given
     String input = "1 / ";
     // when
-    ThrowingCallable lambdaToTest = () -> Calculator.calculate(input);
+    ThrowingCallable lambdaToTest = () -> new Calculator().calculate(input);
     // then
     assertThatThrownBy(lambdaToTest)
         .isInstanceOf(IllegalArgumentException.class);
@@ -81,7 +81,7 @@ class CalculatorTest {
     // given
     String input = "4 & 2";
     // when
-    ThrowingCallable lambdaToTest = () -> Calculator.calculate(input);
+    ThrowingCallable lambdaToTest = () -> new Calculator().calculate(input);
     // then
     assertThatThrownBy(lambdaToTest)
         .isInstanceOf(IllegalArgumentException.class);
@@ -93,7 +93,7 @@ class CalculatorTest {
     // given
     String input = "2 + 3 * 4 / 2";
     // when
-    String calculate = Calculator.calculate(input);
+    String calculate = new Calculator().calculate(input);
     // then
     assertThat(calculate).isEqualTo("10");
   }

@@ -1,14 +1,15 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CalculatorInputList {
 
-  private List<CalculatorInput> values = new ArrayList<>();
+  private List<CalculatorInput> values;
 
-  public CalculatorInputList(String[] s) {
-    this.values = Arrays.stream(s).map(CalculatorInput::new).collect(Collectors.toList());
+  public CalculatorInputList(String[] input) {
+    this.values = Arrays.stream(input)
+        .map(CalculatorInput::new)
+        .collect(Collectors.toList());
   }
 
   public CalculatorNumber getSize() {

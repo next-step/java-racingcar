@@ -1,43 +1,50 @@
 public class Calculator {
 
+  final static private CalculatorNumber ONE = new CalculatorNumber(1);
+  final static private CalculatorNumber TWO = new CalculatorNumber(2);
+  final static private CalculatorNumber THREE = new CalculatorNumber(3);
 
-  public static String calculate(String input) {
-    String[] s = input.split(" ");
-    if (s.length % 2 == 0) {
+  public String calculate(String input) {
+    String[] splitInput = input.split(" ");
+    if (splitInput.length % 2 == 0) {
       throw new IllegalArgumentException("입력 값이 null 일 경우");
     }
-    CalculatorInputList calculatorInputList = new CalculatorInputList(s);
+    CalculatorInputList calculatorInputList = new CalculatorInputList(splitInput);
     CalculatorNumber calculate = calculateRecursive(calculatorInputList);
     return calculate.toString();
   }
 
-  private static CalculatorNumber calculateRecursive(CalculatorInputList s) {
-    return calculateRecursive(s, s.getSize());
+  private CalculatorNumber calculateRecursive(CalculatorInputList calculatorInputList) {
+    return calculateRecursive(calculatorInputList, calculatorInputList.getSize());
   }
 
-  private static CalculatorNumber calculateRecursive(CalculatorInputList s, CalculatorNumber i) {
+  private CalculatorNumber calculateRecursive(CalculatorInputList calculatorInputList,
+      CalculatorNumber cursor) {
     Operator operator = getOperator(
-        s.getElementByIndex(Operator.MINUS.calculate(i, new CalculatorNumber(2))));
-    CalculatorNumber first = getFirstNumber(s, i);
+        calculatorInputList
+            .getElementByIndex(Operator.MINUS.calculate(cursor, TWO)));
+    CalculatorNumber first = getFirstNumber(calculatorInputList, cursor);
     CalculatorNumber second = new CalculatorNumber(
-        s.getElementByIndex(Operator.MINUS.calculate(i, new CalculatorNumber(1))));
+        calculatorInputList
+            .getElementByIndex(Operator.MINUS.calculate(cursor, ONE)));
     return calculate(first, second, operator);
   }
 
-  private static Operator getOperator(CalculatorInput operator) {
+  private Operator getOperator(CalculatorInput operator) {
     return Operator.of(operator);
   }
 
-  private static CalculatorNumber getFirstNumber(CalculatorInputList s, CalculatorNumber i) {
-    if (i.compare(new CalculatorNumber(3))) {
-      return calculateRecursive(s, Operator.MINUS.calculate(i, new CalculatorNumber(2)));
+  private CalculatorNumber getFirstNumber(CalculatorInputList calculatorInputList,
+      CalculatorNumber cursor) {
+    if (cursor.compare(THREE)) {
+      return calculateRecursive(calculatorInputList, Operator.MINUS.calculate(cursor, TWO));
     }
     return new CalculatorNumber(
-        s.getElementByIndex(Operator.MINUS.calculate(i, new CalculatorNumber(3))));
-    
+        calculatorInputList.getElementByIndex(Operator.MINUS.calculate(cursor, THREE)));
+
   }
 
-  private static CalculatorNumber calculate(CalculatorNumber first, CalculatorNumber second,
+  private CalculatorNumber calculate(CalculatorNumber first, CalculatorNumber second,
       Operator operator) {
     return first.operate(second, operator);
   }

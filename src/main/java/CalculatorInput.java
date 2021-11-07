@@ -4,8 +4,8 @@ public class CalculatorInput {
 
   private String value;
 
-  public CalculatorInput(String s) {
-    this.value = s;
+  public CalculatorInput(String input) {
+    this.value = input;
   }
 
   @Override
@@ -31,8 +31,7 @@ public class CalculatorInput {
   }
 
   static public CalculatorNumber parseNumber(CalculatorInput input) {
-    double v = Double.parseDouble(input.value);
-    return new CalculatorNumber(v);
+    return new CalculatorNumber(Double.parseDouble(input.value));
   }
 
 }

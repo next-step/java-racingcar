@@ -10,6 +10,8 @@ public enum Operator {
   private CalculatorInput symbol;
   private BiFunction<Double, Double, Double> expression;
 
+  final static int ZERO = 0;
+
   Operator(CalculatorInput symbol,
       BiFunction<Double, Double, Double> expression) {
     this.symbol = symbol;
@@ -25,7 +27,7 @@ public enum Operator {
 
 
   private static Double divide(Double num1, Double num2) {
-    if (new CalculatorNumber(num2).equals(new CalculatorNumber(0))) {
+    if (new CalculatorNumber(num2).equals(new CalculatorNumber(ZERO))) {
       throw new IllegalArgumentException("0으로 나눌수 없습니다.");
     }
     return num1 / num2;
