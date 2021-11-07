@@ -1,5 +1,8 @@
 package edu.nextstep.camp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -23,11 +26,20 @@ public class RaceTest {
         assertThat(race.totalTurns()).isEqualTo(turn);
     }
 
+    private List<Car> createCarList(int numberOfCars) {
+        final List<Car> cars = new ArrayList<>(numberOfCars);
+        for (int i = 0; i < numberOfCars; i++) {
+            cars.add(new Car());
+        }
+        return cars;
+    }
+
     @Test
     @DisplayName("get game result(initial status)")
     public void gameResult() {
         final int numberOfCars = 4;
-        final Race race = Race.of(numberOfCars, 1);
+        final List<Car> cars = createCarList(numberOfCars);
+        final Race race = Race.of(cars, 1);
         assertThat(race.gameResult()).containsExactly(0, 0, 0, 0);
     }
 
@@ -35,7 +47,7 @@ public class RaceTest {
     @DisplayName("process game during given turns")
     public void process() {
         final int turns = 1;
-        final Race race = Race.of(1, turns);
+        final Race race = Race.of(createCarList(1), turns);
         race.process();
         assertThat(race.gameResult()).containsExactly(turns);
         race.process();
@@ -46,7 +58,7 @@ public class RaceTest {
     @DisplayName("process all turns")
     public void processAll() {
         final int turns = 4;
-        final Race race = Race.of(1, turns);
+        final Race race = Race.of(createCarList(1), turns);
         race.processAll();
         assertThat(race.gameResult()).containsExactly(turns);
         race.process();
