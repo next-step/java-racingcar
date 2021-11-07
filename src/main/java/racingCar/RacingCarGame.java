@@ -31,7 +31,7 @@ public class RacingCarGame {
     private void playRace() {
         ResultView resultView = new ResultView(raceCar);
         for (int i = 0; i < tryTimes; i++) {
-            // 프린트 한다.
+            resultView.printRace();
         }
     }
 
