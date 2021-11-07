@@ -10,9 +10,14 @@ import racingcar.view.InputView;
 public class RacingCarApplication {
 
     public static void main(String[] args) {
-        CountInfo countInfo = InputView.getCountInfo();
-        RacingCarGameInfo info = new RacingCarGameInfo(new RacingCarGameRound(new RandomMoveRule()), countInfo);
-        RacingCarGame game = new RacingCarGame(info);
-        game.start();
+        try {
+            CountInfo countInfo = InputView.getCountInfo();
+            RacingCarGameInfo info = new RacingCarGameInfo(new RacingCarGameRound(new RandomMoveRule()), countInfo);
+            RacingCarGame game = new RacingCarGame(info);
+            game.start();
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage() + "게임을 종료합니다.");
+            System.exit(0);
+        }
     }
 }
