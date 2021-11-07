@@ -22,7 +22,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public void play(){
+    public void playGame(){
         this.carList
                 .forEach((car) -> car.move(moveRule.isMovable(), moveRule.getMoveCount()));
     }

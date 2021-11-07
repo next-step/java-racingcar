@@ -1,24 +1,22 @@
 package racingcar.game;
 
 import racingcar.car.Cars;
-import racingcar.gameinfo.CountInfo;
 import racingcar.gameinfo.GameInfo;
-import racingcar.moverule.MoveRule;
 import racingcar.view.ResultView;
 
 public class RacingCarGame {
 
-    private final GameInfo info;
+    private final int tryCount;
     private final Cars cars;
 
     public RacingCarGame(GameInfo info) {
-        this.info = info;
+        this.tryCount = info.getTryCount();
         this.cars = info.getCars();
     }
 
     public void start() {
-        for(int count = 0; count < this.info.getTryCount() ; count++){
-            cars.play();
+        for(int count = 0; count < this.tryCount ; count++){
+            cars.playGame();
             ResultView.print(this.cars);
         }
     }

@@ -19,6 +19,8 @@ public class Car {
     }
 
     public void move(boolean isMovable, int moveCount) {
-        if(isMovable) this.forward(moveCount);
+        if(isMovable) {
+            this.forward(moveCount);
+        }
     }
 }

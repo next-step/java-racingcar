@@ -14,7 +14,9 @@ public class InputView {
     public static int getIntValue(String msg) {
         System.out.println(msg);
         String input = scanner.next();
-        if(!IntUtils.isInt(input)) throw new IllegalArgumentException("입력 값이 숫자가 아닙니다.");
+        if(!IntUtils.isInt(input)) {
+            throw new IllegalArgumentException("입력 값이 숫자가 아닙니다.");
+        }
         return Integer.parseInt(input);
     }
 
