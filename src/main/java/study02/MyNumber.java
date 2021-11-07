@@ -5,35 +5,35 @@ import java.util.Objects;
 /**
  * .
  */
-public class CustomNumber {
+public class MyNumber {
 
     private final int number;
 
-    public CustomNumber(String text) {
+    public MyNumber(String text) {
         this(Integer.parseInt(text));
     }
 
-    public CustomNumber(int number) {
+    public MyNumber(int number) {
         this.number = number;
     }
 
-    public CustomNumber plus(CustomNumber other) {
-        return new CustomNumber(this.number + other.number);
+    public MyNumber plus(MyNumber other) {
+        return new MyNumber(this.number + other.number);
     }
 
-    public CustomNumber minus(CustomNumber other) {
-        return new CustomNumber(this.number - other.number);
+    public MyNumber minus(MyNumber other) {
+        return new MyNumber(this.number - other.number);
     }
 
-    public CustomNumber times(CustomNumber other) {
-        return new CustomNumber(this.number * other.number);
+    public MyNumber times(MyNumber other) {
+        return new MyNumber(this.number * other.number);
     }
 
-    public CustomNumber dividedBy(CustomNumber other) {
+    public MyNumber dividedBy(MyNumber other) {
         if (other.number == 0) {
             throw new IllegalArgumentException();
         }
-        return new CustomNumber(this.number / other.number);
+        return new MyNumber(this.number / other.number);
     }
 
     public int getNumber() {
@@ -48,7 +48,7 @@ public class CustomNumber {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CustomNumber number1 = (CustomNumber) o;
+        MyNumber number1 = (MyNumber) o;
         return number == number1.number;
     }
 

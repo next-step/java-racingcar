@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class StringCalculatorTest {
 
@@ -43,8 +42,7 @@ class StringCalculatorTest {
     @Test
     void 나눗셈() {
         assertThat(new StringCalculator("4 / 2").calculate().getNumber()).isEqualTo(2);
-        assertThatThrownBy(() -> {
-            new StringCalculator("4 / 0").calculate();
-        }).isInstanceOf(IllegalArgumentException.class);
+
+        assertThatIllegalArgumentException().isThrownBy(() -> new StringCalculator("4 / 0").calculate());
     }
 }

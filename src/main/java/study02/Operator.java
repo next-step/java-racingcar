@@ -13,14 +13,14 @@ public enum Operator {
     DIVISION("/", (left, right) -> left.dividedBy(right));
 
     private String operator;
-    private BiFunction<CustomNumber, CustomNumber, CustomNumber> operation;
+    private BiFunction<MyNumber, MyNumber, MyNumber> operation;
 
-    Operator(String operator, BiFunction<CustomNumber, CustomNumber, CustomNumber> operation) {
+    Operator(String operator, BiFunction<MyNumber, MyNumber, MyNumber> operation) {
         this.operator = operator;
         this.operation = operation;
     }
 
-    public CustomNumber operate(CustomNumber first, CustomNumber second) {
+    public MyNumber operate(MyNumber first, MyNumber second) {
         return operation.apply(first, second);
     }
 
