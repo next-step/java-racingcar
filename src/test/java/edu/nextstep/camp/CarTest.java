@@ -8,20 +8,20 @@ public class CarTest {
     @Test
     public void create() {
         Car car = new Car();
-        assertThat(car.position()).isEqualTo(0);
+        assertThat(car.position().toInt()).isEqualTo(0);
     }
 
     @Test
-    public void move() {
+    public void trip() {
         Car car = new Car();
-        assertThat(car.position()).isEqualTo(0);
+        assertThat(car.trip()).isEqualTo("");
         car.move();
-        assertThat(car.position()).isEqualTo(1);
+        assertThat(car.trip()).isEqualTo("-".repeat(1));
         car.move();
-        assertThat(car.position()).isEqualTo(2);
+        assertThat(car.trip()).isEqualTo("-".repeat(2));
         car.move();
-        assertThat(car.position()).isEqualTo(3);
+        assertThat(car.trip()).isEqualTo("-".repeat(3));
         car.move();
-        assertThat(car.position()).isEqualTo(4);
+        assertThat(car.trip()).isEqualTo("-".repeat(4));
     }
 }

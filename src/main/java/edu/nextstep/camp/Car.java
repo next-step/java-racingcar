@@ -1,17 +1,21 @@
 package edu.nextstep.camp;
 
 public class Car {
-    private int position;
+    private final Position position;
 
     public Car() {
-        position = 0;
+        position = Position.of(0);
     }
 
-    public int position() {
+    public Position position() {
         return position;
     }
 
     public void move() {
-        position++;
+        position.forward();
+    }
+
+    public String trip() {
+        return "-".repeat(position.toInt());
     }
 }

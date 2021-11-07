@@ -9,11 +9,13 @@ public class Race {
     private final List<Car> cars;
 
     public static Race of(int numberOfCars, int turn) {
-        if (numberOfCars <= 0)
+        if (numberOfCars <= 0) {
             throw new IllegalArgumentException("invalid number of cars: " + numberOfCars);
+        }
 
-        if (turn <= 0)
+        if (turn <= 0) {
             throw new IllegalArgumentException("invalid number of turns: " + turn);
+        }
 
         return new Race(numberOfCars, turn);
     }
@@ -36,6 +38,6 @@ public class Race {
     }
 
     public List<Integer> gameResult() {
-        return cars.stream().map(Car::position).collect(Collectors.toList());
+        return cars.stream().map(Car::position).map(Position::toInt).collect(Collectors.toList());
     }
 }
