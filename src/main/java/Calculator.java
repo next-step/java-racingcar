@@ -29,14 +29,12 @@ public class Calculator {
   }
 
   private static CalculatorNumber getFirstNumber(CalculatorInputList s, CalculatorNumber i) {
-    CalculatorNumber first;
     if (i.compare(new CalculatorNumber(3))) {
-      first = calculateRecursive(s, Operator.MINUS.calculate(i, new CalculatorNumber(2)));
-    } else {
-      first = new CalculatorNumber(
-          s.getElementByIndex(Operator.MINUS.calculate(i, new CalculatorNumber(3))));
+      return calculateRecursive(s, Operator.MINUS.calculate(i, new CalculatorNumber(2)));
     }
-    return first;
+    return new CalculatorNumber(
+        s.getElementByIndex(Operator.MINUS.calculate(i, new CalculatorNumber(3))));
+    
   }
 
   private static CalculatorNumber calculate(CalculatorNumber first, CalculatorNumber second,
