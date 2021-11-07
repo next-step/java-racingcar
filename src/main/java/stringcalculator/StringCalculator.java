@@ -27,8 +27,10 @@ public class StringCalculator {
                 return first.add(second);
             case "-":
                 return first.minus(second);
+            case "*":
+                return first.multiply(second);
             default:
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Invalid Operator");
         }
     }
 
