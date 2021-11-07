@@ -3,26 +3,33 @@ package racingcar.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.service.dto.Cars;
+import racingcar.service.dto.RoundReady;
+import racingcar.service.dto.RoundResult;
+import racingcar.service.strategy.RandomRoundRule;
+import racingcar.service.value.Round;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class RacingCarServiceTest {
-    private static final int CAR_COUNT = 3;
+class RacingCarServiceTest {
+    private static final RoundReady roundReady = RoundReady.of(new RandomRoundRule(),
+                                                               Arrays.asList("pobi", "crong", "honux"),
+                                                               Round.from(5));
 
     private RacingCarService racingCarService;
 
     @BeforeEach
     void setup() {
-        racingCarService = RacingCarService.init(CAR_COUNT);
+        racingCarService = RacingCarService.ready(roundReady);
     }
 
     @Test
-    @DisplayName("정상적으로 Cars 정보를 가지고 오는지 확인")
+    @DisplayName("정상적으로 record 정보를 가지고 오는지 확인")
     void getCars() {
-        Cars cars = racingCarService.start();
-        assertNotNull(cars);
-        assertThat(cars.getPositions().size()).isEqualTo(CAR_COUNT);
+        RoundResult roundResult = racingCarService.startRound();
+        assertNotNull(roundResult);
+        assertThat(roundResult.getRecords().size()).isEqualTo(roundReady.getFinalRound().getRound());
     }
 }

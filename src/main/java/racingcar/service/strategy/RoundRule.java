@@ -1,5 +1,5 @@
 package racingcar.service.strategy;
 
-public interface Rule {
+public interface RoundRule {
     boolean checkCondition();
 }

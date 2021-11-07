@@ -1,33 +1,48 @@
 package racingcar.service;
 
 import racingcar.service.domain.Car;
-import racingcar.service.dto.Cars;
-import racingcar.service.strategy.RandomRule;
-import racingcar.service.strategy.Rule;
+import racingcar.service.domain.Record;
+import racingcar.service.domain.factory.CarFactory;
+import racingcar.service.domain.factory.RecordFactory;
+import racingcar.service.dto.RoundReady;
+import racingcar.service.dto.RoundResult;
+import racingcar.service.strategy.RoundRule;
+import racingcar.service.value.Round;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
-
-import static java.util.stream.Collectors.toList;
 
 public class RacingCarService {
-    private final Rule rule;
+    private static final int START_ROUND_COUNT = 1;
+
+    private final RoundRule roundRule;
+    private final Round finalRound;
     private final List<Car> cars;
 
-    private RacingCarService(int carCount) {
-        rule = new RandomRule();
-
-        cars = IntStream.rangeClosed(1, carCount)
-                .mapToObj(Car::new)
-                .collect(toList());
+    private RacingCarService(RoundReady roundReady) {
+        roundRule = roundReady.getRoundRule();
+        finalRound = roundReady.getFinalRound();
+        cars = CarFactory.create(roundReady.getCarNames());
     }
 
-    public static RacingCarService init(int carCount) {
-        return new RacingCarService(carCount);
+    public static RacingCarService ready(RoundReady roundReady) {
+        return new RacingCarService(roundReady);
     }
 
-    public Cars start() {
-        cars.forEach(car -> car.move(rule));
-        return Cars.from(cars);
+    public RoundResult startRound() {
+        List<Record> records = new ArrayList<>();
+        for (int round = START_ROUND_COUNT; round <= finalRound.getRound(); round++) {
+            startRace();
+            records.add(recordRace(Round.from(round)));
+        }
+        return RoundResult.of(records);
+    }
+
+    private void startRace() {
+        cars.forEach(car -> car.startRace(roundRule));
+    }
+
+    private Record recordRace(Round round) {
+        return RecordFactory.create(round, cars);
     }
 }

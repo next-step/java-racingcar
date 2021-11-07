@@ -2,7 +2,7 @@ package racingcar.service.strategy;
 
 import racingcar.utils.RandomUtils;
 
-public class RandomRule implements Rule {
+public class RandomRoundRule implements RoundRule {
     private static final int MIN_NUMBER = 4;
     private static final int MAX_NUMBER = 10;
 
