@@ -10,8 +10,10 @@
 
 ## 기능 목록
 - Input view 구현
-    - Input 받은 값 validation(null check, 숫자 값 체크)
+    - Input 받기
     - Input 받은 값 전달 객체(Rule) 생성 후 return
+- UserInput 구현
+  - 받은 값 validation
 - Rule 구현
   - from(Long count, Long time) 정적 팩토리 메서드 구현
   - getCount() 구현
