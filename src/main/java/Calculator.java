@@ -28,21 +28,6 @@ public class Calculator {
   }
 
   private static String calculate(int first, int second, String operator) {
-    if (operator.equals("+")) {
-      return Integer.toString(first + second);
-    }
-    if (operator.equals("-")) {
-      return Integer.toString(first - second);
-    }
-    if (operator.equals("*")) {
-      return Integer.toString(first * second);
-    }
-    if (operator.equals("/")) {
-      if (second == 0) {
-        throw new IllegalArgumentException("0으로 나눌수 없습니다.");
-      }
-      return Integer.toString(first / second);
-    }
-    throw new IllegalArgumentException("허용되지 않는 연산자입니다.");
+    return Integer.toString(Operator.of(operator).calculate(first, second));
   }
 }
