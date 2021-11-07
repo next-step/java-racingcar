@@ -13,7 +13,7 @@ class CarTest {
 
   private Car car;
 
-  private static final int TRY_INIT_COUNT = 10;
+  private static final int TRY_INIT_COUNT = 20;
 
   @BeforeEach
   void init() {
@@ -31,7 +31,7 @@ class CarTest {
 
   @ParameterizedTest
   @DisplayName("car의 step 증가 요청을 보냈을 떄 현재 step에서 +1이 되는지 확인한다.")
-  @CsvSource(value = {"5:5", "10:10", "16:16"}, delimiter = ':')
+  @CsvSource(value = {"5:6", "10:11", "16:17"}, delimiter = ':')
   void plusNowStep(int input, int result) {
     for (int i = 0; i < input; i++) {
       car.plusNowStep();
@@ -40,8 +40,10 @@ class CarTest {
   }
 
   @ParameterizedTest
-  @CsvSource(value = {"10:0", "5:5", "6:4"}, delimiter = ':')
+  @CsvSource(value = {"10:0", "5:0", "6:0"}, delimiter = ':')
+  @DisplayName("도전 기회를 차감했을 때 차감한 수 만큼 차감 됐는지 확인한다.")
   void minusMoveCount(int input, int result) {
+    car = new Car(input);
     for (int i = 0; i < input; i++) {
       car.minusMoveCount();
     }
