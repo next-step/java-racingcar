@@ -1,9 +1,21 @@
 # 자동차 경주 게임
-## 진행 방법
-* 자동차 경주 게임 요구사항을 파악한다.
-* 요구사항에 대한 구현을 완료한 후 자신의 github 아이디에 해당하는 브랜치에 Pull Request(이하 PR)를 통해 코드 리뷰 요청을 한다.
-* 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
-* 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
+## Step3. 자동차 경주
+#### 기능 구현 목록
+* 사용자로부터 자동차 대수 입력받는 기능
+* 사용자로부터 시도 횟수 입력받는 기능
+* 0-9 사이의 random 값 획득 기능
+* random 값이 4 이상 여부 확인 기능
+* 4 이상인 경우 자동차 이동시키는 기능
+* 자동차 상태 화면 출력 기능
 
-## 온라인 코드 리뷰 과정
-* [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+#### 요구사항
+* 모든 로직에 단위 테스트를 구현 (UI기능 제외)
+* 자바 코드 컨벤션
+* else 예약어 쓰지 않기
+* README.md 작성 
+* commit메시지는 기능 목록 단위로 구분
+
+#### 링크
+* <https://google.github.io/styleguide/javaguide.html> 또는 <https://myeonguni.tistory.com/1596>
+* [AngularJS Commit Message Conventions]( AngularJS Commit Message Conventions)
+***
