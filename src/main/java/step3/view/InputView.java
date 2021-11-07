@@ -13,7 +13,7 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public static int inputGameRapCount() {
+    public static int inputGameRoundCount() {
         System.out.println(GAME_RAP_COUNT_OUTPUT_MESSAGE);
         return scanner.nextInt();
     }

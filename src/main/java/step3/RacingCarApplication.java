@@ -1,6 +1,8 @@
 package step3;
 
 import step3.domain.Car;
+import step3.domain.Cars;
+import step3.domain.Participant;
 import step3.domain.RacingGame;
 import step3.view.InputView;
 
@@ -11,22 +13,23 @@ public class RacingCarApplication {
 
     public static void main(String[] args) {
         int carCount = InputView.inputCarCount();
-        int gameCount = InputView.inputGameRapCount();
+        int gameRoundCount = InputView.inputGameRoundCount();
         System.out.println();
 
-        start(carCount, gameCount);
+        start(carCount, gameRoundCount);
     }
 
-    private static void start(int carCount, int gameCount) {
-        RacingGame racingGame = RacingGame.create(gameCount, createCars(carCount));
+    private static void start(int carCount, int gameRoundCount) {
+        RacingGame racingGame = RacingGame.create(gameRoundCount, createParticipant(carCount));
         racingGame.start();
     }
 
-    private static List<Car> createCars(int carCount) {
-        List<Car> cars = new ArrayList<>();
+    private static Participant createParticipant(int carCount) {
+        List<Car> carList = new ArrayList<>();
         for (int count = 0; count < carCount; count++) {
-            cars.add(Car.create());
+            carList.add(Car.create());
         }
-        return cars;
+        Cars cars = Cars.join(carList);
+        return Participant.join(cars);
     }
 }
