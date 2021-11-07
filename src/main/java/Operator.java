@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Operator {
@@ -16,12 +17,10 @@ public enum Operator {
   }
 
   public static Operator of(CalculatorInput symbol) {
-    for (Operator operator : Operator.values()) {
-      if (operator.symbol.equals(symbol)) {
-        return operator;
-      }
-    }
-    throw new IllegalArgumentException("허용되지 않는 연산자입니다.");
+    return Arrays.stream(Operator.values())
+        .filter((i) -> i.symbol.equals(symbol))
+        .findAny()
+        .orElseThrow(() -> new IllegalArgumentException("허용되지 않는 연산자입니다."));
   }
 
 
