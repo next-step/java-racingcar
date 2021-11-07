@@ -25,8 +25,7 @@ public class SetTest {
         numbers.add(3);
     }
 
-    @Test
-    @DisplayName("원소 개수 카운팅")
+@DisplayName("원소 개수 카운팅")
     void sizeTest() {
         assertThat(this.numbers.size()).isEqualTo(3);
     }
