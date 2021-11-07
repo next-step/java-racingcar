@@ -11,7 +11,7 @@ class CarHistoryTest {
     @Test
     @DisplayName("입력된 차의 현재 위치를 객체안에 기록한다.")
     void of() {
-        Car car = new Car();
+        Car car = new Car(0);
         car.tryMove(10);
         CarHistory carHistory = CarHistory.of(car);
         assertThat(carHistory.getPosition()).isEqualTo(1);

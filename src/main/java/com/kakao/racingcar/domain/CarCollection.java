@@ -12,7 +12,7 @@ public class CarCollection {
     public CarCollection(int totalCars) {
         this.cars = IntStream.range(BEGIN_INDEX, totalCars)
                 .boxed()
-                .map(x -> new Car())
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 

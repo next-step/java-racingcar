@@ -15,7 +15,7 @@ class RacingHistoryTest {
     @Test
     @DisplayName("racingHistory 로깅 기능을 이용하여, 차의 이동 기록을 저장한다.")
     void logging() {
-        Car car = new Car();
+        Car car = new Car(0);
         RacingHistory racingHistory = new RacingHistory();
 
         moveAndRecordCar(car, racingHistory);
