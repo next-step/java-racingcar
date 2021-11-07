@@ -1,24 +1,54 @@
 package racingStep3;
 
+import java.util.Random;
+
 public class RacingCar {
 
-    private Position position;
-
-    public RacingCar() {
-        this(new Position());
-    }
+    private final Position position;
+    private static final Integer MAX_RANDOM = 9;
+    private static final Integer MIN_GO_VALUE = 4;
+    private static final String DASH = "-";
 
     public RacingCar(Position position) {
+
         this.position = position;
     }
 
-    public void moveOrNot(int randomNumber) {
-        if(randomNumber > 3) {
-            this.position = new Position(this.position.value() + 1);
+    public static RacingCar create() {
+
+        return new RacingCar(Position.create(0));
+    }
+
+    public void moveOrNot() {
+        if(getRandomValue() >= MIN_GO_VALUE) {
+            position.increaseLocation();
         }
     }
 
-    public int getPosition() {
-        return this.position.value();
+    public void moveOrNot(int forward) {
+        if(forward >= MIN_GO_VALUE) {
+            position.increaseLocation();
+        }
     }
+
+    public String printCar(RacingCar car) {
+        int value = car.getPosition();
+        String result = "-";
+
+        for(int i = 0; i < value; i++) {
+            result += DASH;
+        }
+
+        return result;
+    }
+
+    public int getPosition() {
+        return this.position.getLocation();
+    }
+
+    public static int getRandomValue() {
+        Random random = new Random();
+        return random.nextInt(MAX_RANDOM);
+    }
+
 }

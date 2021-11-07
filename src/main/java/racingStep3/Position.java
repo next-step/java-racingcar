@@ -4,15 +4,20 @@ public class Position {
 
     private int location;
 
-    public Position() {
-        this(0);
-    }
-
     public Position(int location) {
         this.location = location;
     }
 
-    public int value() {
-        return this.location;
+    public static Position create(int location) {
+        return new Position(location);
     }
+
+    public void increaseLocation() {
+        location++;
+    }
+
+    public int getLocation() {
+        return location;
+    }
+
 }
