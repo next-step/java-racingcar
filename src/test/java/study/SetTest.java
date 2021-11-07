@@ -43,11 +43,8 @@ public class SetTest {
     @ParameterizedTest
     @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
     @DisplayName("요구사항 3 - ParameterizedTest - true, false 경우 동시 확인")
-    void containsTrueFalseCases(String actual, String expected) {
-        int parsedActual = Integer.parseInt(actual);
-        boolean parsedExpected = Boolean.parseBoolean(expected);
-
-        assertThat(numbers.contains(parsedActual))
-                .isEqualTo(parsedExpected);
+    void containsTrueFalseCases(int actual, boolean expected) {
+        assertThat(numbers.contains(actual))
+                .isEqualTo(expected);
     }
 }
