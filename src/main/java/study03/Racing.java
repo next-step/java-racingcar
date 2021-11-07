@@ -25,11 +25,13 @@ public class Racing {
     }
 
     public void start() {
+        System.out.println("실행결과");
         for (int i = 1; i <= tryCount; i++) {
+            System.out.println(i + "회차");
             for (Car car : cars) {
                 Optional.ofNullable(car.moveByCondition()).ifPresent(car::moveForward);
+                System.out.println(car.getPosition());
             }
-            
         }
     }
 }
