@@ -21,20 +21,20 @@ class RecordFactoryTest {
     @ParameterizedTest
     @MethodSource
     @DisplayName("정상적으로 Record가 생성되는 경우")
-    void create(Round round, List<Car> cars) {
+    void create(Integer round, List<Car> cars) {
         // when
         Record record = RecordFactory.create(round, cars);
 
         // then
         assertThat(record).isNotNull();
-        assertThat(record.getCurrentRound()).isEqualTo(round);
+        assertThat(record.getCurrentRound()).isEqualTo(Round.from(round));
         assertThat(record.getCars().getCarList()).isEqualTo(cars);
     }
 
     @ParameterizedTest
     @MethodSource
     @DisplayName("이름에 공백이나 null이 들어가는 경우 예외 처리")
-    void createException(Round round, List<Car> cars) {
+    void createException(Integer round, List<Car> cars) {
         // when & then
         assertThatNullPointerException().isThrownBy(() -> RecordFactory.create(round, cars));
     }
@@ -42,13 +42,13 @@ class RecordFactoryTest {
     private static Stream<Arguments> create() {
         // given
         return Stream.of(
-                Arguments.of(Round.from(1),
+                Arguments.of(1,
                              Arrays.asList(new Car("pobi"), new Car("crong"), new Car("honux"))
                 ),
-                Arguments.of(Round.from(2),
+                Arguments.of(2,
                              Arrays.asList(new Car("pobi"), new Car("crong"), new Car("honux"))
                 ),
-                Arguments.of(Round.from(3),
+                Arguments.of(3,
                              Arrays.asList(new Car("pobi"), new Car("crong"), new Car("honux"))
                 )
         );
@@ -58,7 +58,7 @@ class RecordFactoryTest {
         // given
         return Stream.of(
                 Arguments.of(null, null),
-                Arguments.of(Round.from(10), null),
+                Arguments.of(10, null),
                 Arguments.of(null, Collections.singletonList(new Car("aiden")))
         );
     }
