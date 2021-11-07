@@ -9,8 +9,16 @@ public class JudgeCarMovement {
         this.random = random;
     }
 
-    public boolean judge() {
+    public Judge judge() {
         int randomValue = random.nextInt(10);
-        return randomValue >= 4;
+        if(randomValue >= 4) {
+            return Judge.FORWARD;
+        }
+
+        return Judge.STAY;
+    }
+
+    enum Judge {
+        STAY, FORWARD;
     }
 }

@@ -69,7 +69,7 @@ class RaceTest {
 
     @Test
     void moveCar_move() {
-        when(judgeCarMovement.judge()).thenReturn(true);
+        when(judgeCarMovement.judge()).thenReturn(JudgeCarMovement.Judge.FORWARD);
 
         dut.moveCar(cars.get(0));
 
@@ -78,7 +78,7 @@ class RaceTest {
 
     @Test
     void moveCar_stay() {
-        when(judgeCarMovement.judge()).thenReturn(false);
+        when(judgeCarMovement.judge()).thenReturn(JudgeCarMovement.Judge.STAY);
 
         dut.moveCar(cars.get(0));
 

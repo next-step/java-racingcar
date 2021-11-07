@@ -30,13 +30,13 @@ class JudgeCarMovementTest {
     void stay() {
         when(random.nextInt(10)).thenReturn(3);
 
-        assertThat(dut.judge()).isFalse();
+        assertThat(dut.judge()).isEqualTo(JudgeCarMovement.Judge.STAY);
     }
 
     @Test
     void move() {
         when(random.nextInt(10)).thenReturn(4);
 
-        assertThat(dut.judge()).isTrue();
+        assertThat(dut.judge()).isEqualTo(JudgeCarMovement.Judge.FORWARD);
     }
 }

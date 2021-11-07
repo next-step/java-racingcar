@@ -27,7 +27,7 @@ public class Race {
     }
 
     void moveCar(Car car) {
-        if(judgeCarMovement.judge()) {
+        if(judgeCarMovement.judge().equals(JudgeCarMovement.Judge.FORWARD)) {
             car.move();
         }
     }
