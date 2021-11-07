@@ -2,6 +2,11 @@ package stringcalculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -118,6 +123,21 @@ public class StringCalculatorTest {
         // When & Then
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() ->
                 calculator.calculate(invalidExpression)
+        );
+    }
+
+    @ParameterizedTest(name = "{0} input should throw IllegalArgumentException ")
+    @MethodSource("invalidInputs")
+    void testNullInputOrEmptyInputShouldThrowIllegalArgumentException(String expression) {
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() ->
+                calculator.calculate(expression)
+        );
+    }
+
+    static Stream<String> invalidInputs() {
+        return Stream.of(
+                "",
+                null
         );
     }
 }

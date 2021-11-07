@@ -37,6 +37,9 @@ public class StringCalculator {
     }
 
     public void initExpression(String input) {
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("Invalid input expression");
+        }
         expression = new ArrayDeque<>(Arrays.asList(input.split(DELIMITER)));
     }
 
