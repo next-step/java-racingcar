@@ -11,8 +11,7 @@ import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class RaceTest {
@@ -23,6 +22,9 @@ class RaceTest {
     @Mock
     private JudgeCarMovement judgeCarMovement;
 
+    @Mock
+    private RenderRaceSnapshot renderRaceSnapshot;
+
     @BeforeEach
     void setUp() {
         int numberOfCars = (new Random()).nextInt(100) + 1;
@@ -31,12 +33,12 @@ class RaceTest {
             cars.add(new Car());
         }
 
-        dut = new Race(cars, judgeCarMovement);
+        dut = new Race(cars, judgeCarMovement, renderRaceSnapshot);
     }
 
     @AfterEach
     void tearDown() {
-        verifyNoMoreInteractions(judgeCarMovement);
+        verifyNoMoreInteractions(judgeCarMovement, renderRaceSnapshot);
     }
 
     @Test
@@ -55,4 +57,9 @@ class RaceTest {
         }
     }
 
+    @Test
+    void renderRacingSnapshot() {
+        dut.renderRacingSnapshot();
+        verify(renderRaceSnapshot, times(1)).render(cars);
+    }
 }
