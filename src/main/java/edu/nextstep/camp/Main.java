@@ -1,6 +1,7 @@
 package edu.nextstep.camp;
 
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,8 +11,13 @@ public class Main {
         System.out.println("시도할 회수는 몇 회 인가요?");
         final int turns = scanner.nextInt();
 
+        final String track = "#".repeat(turns);
         final Race race = Race.of(cars, turns);
-        race.processAll();
-        System.out.println(race.gameResult());
+        while (!race.isEnded()) {
+            race.process();
+            System.out.println(track);
+            System.out.println(race.printResult().collect(Collectors.joining("\n")));
+            System.out.println(track);
+        }
     }
 }

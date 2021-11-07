@@ -48,10 +48,13 @@ public class RaceTest {
     public void process() {
         final int turns = 1;
         final Race race = Race.of(createCarList(1), turns);
+        assertThat(race.isEnded()).isEqualTo(false);
         race.process();
         assertThat(race.gameResult()).containsExactly(turns);
+        assertThat(race.isEnded()).isEqualTo(true);
         race.process();
         assertThat(race.gameResult()).containsExactly(turns);
+        assertThat(race.isEnded()).isEqualTo(true);
     }
 
     @Test
@@ -59,10 +62,14 @@ public class RaceTest {
     public void processAll() {
         final int turns = 4;
         final Race race = Race.of(createCarList(1), turns);
+        assertThat(race.isEnded()).isEqualTo(false);
         race.processAll();
         assertThat(race.gameResult()).containsExactly(turns);
+        assertThat(race.isEnded()).isEqualTo(true);
         race.process();
         assertThat(race.gameResult()).containsExactly(turns);
-
+        assertThat(race.isEnded()).isEqualTo(true);
     }
+
+
 }

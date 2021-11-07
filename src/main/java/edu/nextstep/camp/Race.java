@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Race {
     private int currentTurn;
@@ -64,5 +65,13 @@ public class Race {
         for (; currentTurn < totalTurns; currentTurn++) {
             cars.forEach(Car::attemptToMove);
         }
+    }
+
+    public boolean isEnded() {
+        return currentTurn >= totalTurns;
+    }
+
+    public Stream<String> printResult() {
+        return cars.stream().map(Car::trip);
     }
 }
