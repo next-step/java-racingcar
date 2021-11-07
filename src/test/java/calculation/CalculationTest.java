@@ -6,55 +6,55 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CalculationTest {
+
+	private static final int LAST_NUMBER_INDEX_COUNT = 1;
+
 	@Test
 	@DisplayName("더하기 계산")
 	public void plusCalculation() {
-		Data data = new Data("4 + 2");
+		CalculationFormula data = new CalculationFormula("4 + 2");
 		assertThat(calculate(data)).isEqualTo(6);
 	}
 
 	@Test
 	@DisplayName("빼기 계산")
 	public void minusCalculation() {
-		Data data = new Data("4 - 2");
+		CalculationFormula data = new CalculationFormula("4 - 2");
 		assertThat(calculate(data)).isEqualTo(2);
 	}
 
 	@Test
 	@DisplayName("곱하기 계산")
 	public void multiplyCalculation() {
-		Data data = new Data("4 * 2");
+		CalculationFormula data = new CalculationFormula("4 * 2");
 		assertThat(calculate(data)).isEqualTo(8);
 	}
 
 	@Test
 	@DisplayName("나누기 계산")
 	public void divideCalculation() {
-		Data data = new Data("4 / 2");
+		CalculationFormula data = new CalculationFormula("4 / 2");
 		assertThat(calculate(data)).isEqualTo(2);
 	}
 
 	@Test
 	@DisplayName("연산자 여러개 계산")
 	public void allCalculation() {
-		Data data = new Data("4 + 2 + 3 * 10 + 10 / 10");
+		CalculationFormula data = new CalculationFormula("4 + 2 + 3 * 10 + 10 / 10");
 		assertThat(calculate(data)).isEqualTo(10);
 	}
 
-	private int calculate(Data data) {
-		int operatorCount = Operator.operatorCount(data);
+	private int calculate(CalculationFormula formula) {
+		Number number = new Number(formula.getFormula());
+		Operator operator = new Operator(formula.getFormula());
 
-		int operatorIndex;
-		int startIndex = 0;
-		int number = 0;
-		for (int i = 0; i < operatorCount; i++) {
-			operatorIndex = Operator.findTheOperatorIndex(data, startIndex);
-			number = Calculation.calculate(Operator.findTheOperator(data, operatorIndex),
-				Number.findFirstNumber(data, number, operatorIndex), Number.lastNumber(data, operatorIndex));
-
-			startIndex = operatorIndex + 1;
+		int result = 0;
+		int operatorSize = operator.size();
+		for (int i = 0; i < operatorSize; i++) {
+			result = number.firstNumber(result, i);
+			result = Calculation.calculate(operator.value(i), result, number.value(i + LAST_NUMBER_INDEX_COUNT));
 		}
 
-		return number;
+		return result;
 	}
 }

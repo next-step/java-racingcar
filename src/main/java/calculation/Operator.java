@@ -2,29 +2,27 @@ package calculation;
 
 import java.util.Arrays;
 import java.util.regex.Pattern;
-import java.util.stream.IntStream;
 
 public class Operator {
-	private static final String OPERATOR_ERROR_MESSAGE = "error : 입력된 연산자는 없습니다.";
 	private static final String OPERATOR_PATTERN = "[-/*+]";
+	private final String[] operator;
 
-	public Operator() {
+	public Operator(String[] formula) {
+		this.operator = operatorsSeparation(formula);
 	}
 
-	public static int operatorCount(Data data) {
-		return (int)Arrays.stream(data.getData())
-			.filter(i -> Pattern.matches(OPERATOR_PATTERN, i) == true)
-			.count();
+	private String[] operatorsSeparation(String[] formula) {
+		return Arrays.stream(formula)
+			.map(String::valueOf)
+			.filter(i -> Pattern.matches(OPERATOR_PATTERN, i))
+			.toArray(String[]::new);
 	}
 
-	public static String findTheOperator(Data data, int operatorIndex) {
-		return data.value(operatorIndex);
+	public int size() {
+		return operator.length;
 	}
 
-	public static int findTheOperatorIndex(Data data, int startIndex) {
-		return IntStream.range(startIndex, data.size())
-			.filter(i -> Pattern.matches(OPERATOR_PATTERN, data.value(i)) == true)
-			.findFirst()
-			.orElseThrow(() -> new IllegalArgumentException(OPERATOR_ERROR_MESSAGE));
+	public String value(int index) {
+		return operator[index];
 	}
 }
