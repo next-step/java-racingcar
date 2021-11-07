@@ -1,11 +1,10 @@
 package race.outbound;
 
 import race.Car;
-import race.RenderCarLocation;
 
 import java.util.Collection;
 
-public class RenderCarLocationViaConsole implements RenderCarLocation {
+public class OutputView {
     public void render(Collection<Car> cars) {
         cars.forEach((car) -> renderLocation(car.location()));
         System.out.println();
