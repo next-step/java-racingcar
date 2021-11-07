@@ -1,5 +1,6 @@
 package com.kakao.racingcar.domain;
 
+import com.kakao.racingcar.history.RacingHistory;
 import java.util.stream.IntStream;
 
 import static com.kakao.racingcar.domain.CarConfig.BEGIN_INDEX;
@@ -16,7 +17,11 @@ public class RacingGame {
 
     public void runRace() {
         IntStream.range(BEGIN_INDEX, tryCount).boxed()
-                .forEach(x -> carCollection.tryMoveCars(randomNumberGenerator(carCollection.size())));
+                .forEach(x -> carCollection.tryMoveCars(x, randomNumberGenerator(carCollection.size())));
+    }
+
+    public RacingHistory getRacingHistory() {
+        return carCollection.getRacingHistory();
     }
 
 }

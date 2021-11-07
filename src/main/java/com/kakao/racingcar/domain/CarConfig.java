@@ -12,11 +12,12 @@ public class CarConfig {
     private static final Random random = new Random();
 
     public static final int MOVE_PERCENTAGE = 4;
+    public static final int BASE_PERCENTAGE = 10;
     public static final int BEGIN_INDEX = 0;
 
     public static List<Integer> randomNumberGenerator(int number) {
         return IntStream.range(BEGIN_INDEX, number).boxed()
-                .map(x -> random.nextInt(10))
+                .map(x -> random.nextInt(BASE_PERCENTAGE))
                 .collect(Collectors.toList());
     }
 }

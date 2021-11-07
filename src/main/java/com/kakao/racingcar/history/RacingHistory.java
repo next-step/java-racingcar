@@ -3,6 +3,7 @@ package com.kakao.racingcar.history;
 import com.kakao.racingcar.domain.Car;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -16,6 +17,8 @@ public class RacingHistory {
 
     public Map<Integer, List<CarHistory>> getResult() {
         return roundHistories.stream()
-                .collect(Collectors.toMap(RoundHistory::getRound, RoundHistory::getCarHistories));
+                .collect(Collectors.collectingAndThen(
+                        Collectors.toMap(RoundHistory::getRound, RoundHistory::getCarHistories),
+                        Collections::unmodifiableMap));
     }
 }
