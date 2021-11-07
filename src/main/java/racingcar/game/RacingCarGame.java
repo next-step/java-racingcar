@@ -7,7 +7,7 @@ import racingcar.view.ResultView;
 
 import java.util.*;
 
-public class RacingCarGame implements Game {
+public class RacingCarGame {
 
     private final RacingCarGameInfo info;
     private final List<Car> carList;
@@ -17,7 +17,6 @@ public class RacingCarGame implements Game {
         this.carList = CarCreator.create(info.getCarCount());
     }
 
-    @Override
     public void start() {
         for(int count = 0; count < this.info.getTryCount() ; count++){
             info.getRound().play(this.carList);
