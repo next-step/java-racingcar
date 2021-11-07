@@ -1,11 +1,11 @@
 package com.step3.view;
 
-import com.step3.model.NumberSet;
+import com.step3.model.InputNumber;
 
 import java.util.Scanner;
 
 public class InputView {
-    public NumberSet input() {
+    public InputNumber input() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("자동차 대수는 몇 대 인가요?");
@@ -15,6 +15,6 @@ public class InputView {
         int attemptCount = scanner.nextInt();
         System.out.println();
 
-        return new NumberSet(carCount, attemptCount);
+        return new InputNumber(carCount, attemptCount);
     }
 }

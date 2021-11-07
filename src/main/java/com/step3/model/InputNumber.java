@@ -1,10 +1,10 @@
 package com.step3.model;
 
-public class NumberSet {
+public class InputNumber {
     private int carCount;
     private int attemptCount;
 
-    public NumberSet(int carCount, int attemptCount) {
+    public InputNumber(int carCount, int attemptCount) {
         this.carCount = carCount;
         this.attemptCount = attemptCount;
     }

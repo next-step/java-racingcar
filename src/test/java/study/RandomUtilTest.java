@@ -10,6 +10,6 @@ import org.junit.jupiter.api.Test;
 public class RandomUtilTest {
     @Test
     void getRandomValue() {
-        assertThat(RandomUtil.getRandomValue()).isGreaterThanOrEqualTo(0).isLessThan(9);
+        assertThat(RandomUtil.getRandomValue()).isGreaterThanOrEqualTo(0).isLessThan(10);
     }
 }

@@ -11,21 +11,22 @@ public class Car {
         this.position = firstPosition;
     }
 
-    public Car move(int randomValue) {
-        this.position += (isMovePossible(randomValue) == true) ? 1 : 0;
-        return this;
-    }
-
     public String getResult() {
         StringBuilder sb = new StringBuilder();
+
         for (int idx = 0; idx < position; idx++) {
             sb.append("-");
         }
+
         return sb.toString();
     }
 
+    public Car move(int randomValue) {
+        this.position += isMovePossible(randomValue) ? 1 : 0;
+        return this;
+    }
 
-    private static boolean isMovePossible(int randomValue) {
+    private boolean isMovePossible(int randomValue) {
         return randomValue >= MOVE_POSSIBLE_BOUND ? true : false;
     }
 
