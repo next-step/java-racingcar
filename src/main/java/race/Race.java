@@ -16,10 +16,13 @@ public class Race {
     }
 
     public void race(int numberOfMovement) {
-
+        for (int i = 0; i < numberOfMovement; i++) {
+            moveCars();
+            renderRacingSnapshot();
+        }
     }
 
-    public void moveCars() {
+    void moveCars() {
         cars.forEach((car) -> {
             if(judgeCarMovement.judge()) {
                 car.move();
@@ -27,7 +30,7 @@ public class Race {
         });
     }
 
-    public void renderRacingSnapshot() {
+    void renderRacingSnapshot() {
         renderCarLocation.render(cars);
     }
 }

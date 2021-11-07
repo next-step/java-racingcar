@@ -26,9 +26,6 @@ public class GameConsole {
         }
 
         Race race = new Race(cars, new JudgeCarMovement(new Random()), new RenderCarLocationViaConsole());
-
-        for (int i = 0; i < numberOfMovement; i++) {
-            race.moveCars();
-        }
+        race.race(numberOfMovement);
     }
 }

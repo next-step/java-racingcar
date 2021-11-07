@@ -43,8 +43,14 @@ class RaceTest {
     @Test
     void race() {
         int numberOfMovement = (new Random()).nextInt(10) + 1;
+
+        doNothing().when(dut).moveCars();
+        doNothing().when(dut).renderRacingSnapshot();
+
         dut.race(numberOfMovement);
+
         verify(dut, times(numberOfMovement)).moveCars();
+        verify(dut, times(numberOfMovement)).renderRacingSnapshot();
     }
 
     @Test
