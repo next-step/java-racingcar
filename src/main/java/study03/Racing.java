@@ -1,6 +1,7 @@
 package study03;
 
 import java.util.LinkedList;
+import java.util.Optional;
 
 /*
 *
@@ -24,10 +25,11 @@ public class Racing {
     }
 
     public void start() {
-        for (int i = 1; i < tryCount; i++) {
+        for (int i = 1; i <= tryCount; i++) {
             for (Car car : cars) {
-                car.play();
+                Optional.ofNullable(car.moveByCondition()).ifPresent(car::moveForward);
             }
+            
         }
     }
 }
