@@ -23,8 +23,6 @@ public class SetTest {
         numbers.add(3);
     }
 
-    // Test Case 구현
-
     @Test
     void size() {
         assertThat(numbers.size()).isEqualTo(3);
