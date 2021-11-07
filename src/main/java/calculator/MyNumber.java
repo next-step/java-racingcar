@@ -25,11 +25,11 @@ public class MyNumber {
         return new MyNumber(this.number - other.number);
     }
 
-    public MyNumber times(MyNumber other) {
+    public MyNumber multiple(MyNumber other) {
         return new MyNumber(this.number * other.number);
     }
 
-    public MyNumber devideBy(MyNumber other) {
+    public MyNumber divideBy(MyNumber other) {
         checkDenominator(other.number);
         return new MyNumber(this.number / other.number);
     }
