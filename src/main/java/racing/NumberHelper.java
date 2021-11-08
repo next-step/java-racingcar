@@ -11,4 +11,8 @@ public class NumberHelper {
     public static int getRandomValue(int input) {
         return random.nextInt(input);
     }
+
+    public static boolean nullOrNegative(Integer input) {
+        return input == null || input.intValue() < 1;
+    }
 }
