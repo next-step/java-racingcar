@@ -1,27 +1,32 @@
 package step3;
 
+import step4.UserInput;
+
 public class GameInformation {
 
-    private final Integer count;
+    private final Names names;
     private final Integer time;
 
-    private GameInformation(Integer count, Integer time) {
-        this.count = count;
+    private GameInformation(Names names, Integer time) {
+        this.names = names;
         this.time = time;
     }
 
     public static GameInformation create(UserInput userInput) {
-        Integer count = Integer.parseInt(userInput.getCountStr());
+        Names names = new Names();
+        names.addNames(userInput.getNames());
         Integer time = Integer.parseInt(userInput.getTimeStr());
-        return new GameInformation(count, time);
+        return new GameInformation(new Names(), time);
     }
 
-    public static GameInformation create(Integer count, Integer time) {
-        return new GameInformation(count, time);
+    public static GameInformation create(String namesStr, Integer time) {
+        Names names = new Names();
+        names.addNames(namesStr);
+        return new GameInformation(names, time);
     }
 
-    public Integer getCount() {
-        return count;
+    public Names getNames() {
+        return names;
     }
 
     public Integer getTime() {
