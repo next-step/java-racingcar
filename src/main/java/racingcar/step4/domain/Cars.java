@@ -8,14 +8,12 @@ import java.util.List;
 public class Cars {
 
     private static final int COUNT_OF_CAR_MIN_NUM = 1;
+    private static final String NAME_DELIMITER = ",";
     private List<Car> cars = new ArrayList<>();
 
     public Cars(String carName, int countOfCar) {
         countOfCarCheck(countOfCar);
-        String[] split = carName.split(",");
-        for (int i = 0; i < countOfCar; i++) {
-            cars.add(new Car(split[i]));
-        }
+        createCars(countOfCar, carName.split(NAME_DELIMITER));
     }
 
     public void moveCars(Moving moving) {
@@ -31,6 +29,12 @@ public class Cars {
     private static void countOfCarCheck(int countOfCar) {
         if (countOfCar < COUNT_OF_CAR_MIN_NUM) {
             throw new IllegalArgumentException("0이하 값은 불가능 합니다.");
+        }
+    }
+
+    private void createCars(int countOfCar, String[] split) {
+        for (int i = 0; i < countOfCar; i++) {
+            cars.add(new Car(split[i]));
         }
     }
 
