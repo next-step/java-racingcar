@@ -54,4 +54,12 @@ public class CalculatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("입력 값이 null이거나 빈 공백 문자입니다.");
     }
+
+    @Test
+    @DisplayName("사칙 연산 기호가 아닐 경우 IllegalArgumentException을 던진다")
+    void shouldThrowIllegalArgumentException() {
+        assertThatThrownBy(() -> calculator.calculate("2 & 3"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("사칙 연산 기호가 아닙니다.");
+    }
 }

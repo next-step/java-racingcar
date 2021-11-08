@@ -28,14 +28,26 @@ public class Calculator {
     }
 
     private void parse(String input) {
-        if(input == null || input.isEmpty()) {
-            throw new IllegalArgumentException("입력 값이 null이거나 빈 공백 문자입니다.");
-        }
+        isValidInput(input);
 
         String[] splitInput = input.split(" ");
 
         this.operator = splitInput[1];
+        isValidOperator();
+
         this.firstValue = Integer.parseInt(splitInput[0]);
         this.secondValue = Integer.parseInt(splitInput[2]);
+    }
+
+    private void isValidOperator() {
+        if(!"+".equals(this.operator) && !"-".equals(this.operator) && !"*".equals(this.operator) && !"/".equals(this.operator)) {
+            throw new IllegalArgumentException("사칙 연산 기호가 아닙니다.");
+        }
+    }
+
+    private void isValidInput(String input) {
+        if(input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("입력 값이 null이거나 빈 공백 문자입니다.");
+        }
     }
 }
