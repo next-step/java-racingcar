@@ -10,18 +10,4 @@ public class CarTest {
         Car car = new Car();
         assertThat(car.position()).isEqualTo(Position.of(0));
     }
-
-    @Test
-    public void trip() {
-        Car car = new Car(() -> true);
-        assertThat(car.trip()).isEqualTo("");
-        car.attemptToMove();
-        assertThat(car.trip()).isEqualTo("-".repeat(1));
-        car.attemptToMove();
-        assertThat(car.trip()).isEqualTo("-".repeat(2));
-        car.attemptToMove();
-        assertThat(car.trip()).isEqualTo("-".repeat(3));
-        car.attemptToMove();
-        assertThat(car.trip()).isEqualTo("-".repeat(4));
-    }
 }

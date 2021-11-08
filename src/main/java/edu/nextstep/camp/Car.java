@@ -23,8 +23,4 @@ public class Car {
             position.forward();
         }
     }
-
-    public String trip() {
-        return "-".repeat(position.toInt());
-    }
 }
