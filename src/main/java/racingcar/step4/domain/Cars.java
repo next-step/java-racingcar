@@ -12,8 +12,9 @@ public class Cars {
 
     public Cars(String carName, int countOfCar) {
         countOfCarCheck(countOfCar);
+        String[] split = carName.split(",");
         for (int i = 0; i < countOfCar; i++) {
-            cars.add(new Car(carName));
+            cars.add(new Car(split[i]));
         }
     }
 
