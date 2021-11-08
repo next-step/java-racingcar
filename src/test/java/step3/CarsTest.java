@@ -54,6 +54,16 @@ class CarsTest {
         nowCars.print();
     }
 
+    @DisplayName("위치가 가장 높은 자동차가 winner 가 된다.")
+    @ParameterizedTest
+    @CsvSource(value = {"miz,ki,bi:1,2,3:bi", "miz,ki,bi:5,5,3:miz,ki"}, delimiter = ':')
+    void printTest(String nameStr, String positionStr, String winnerStr) {
+        Cars nowCars = createCars(nameStr, positionStr, true);
+        Winners winner = nowCars.getWinner();
+
+        assertThat(winner.toString()).isEqualTo(winnerStr);
+    }
+
     private Cars createCars(String nameStr, String positionStr, boolean move) {
         MoveStrategy moveStrategy = () -> move;
         Names names = new Names();
