@@ -1,4 +1,4 @@
-package racingcar.step3.move;
+package racingcar.step4.move;
 
 public interface Moving {
 

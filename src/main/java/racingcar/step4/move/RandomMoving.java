@@ -1,6 +1,4 @@
-package racingcar.step3.move;
-
-import racingcar.step3.move.Moving;
+package racingcar.step4.move;
 
 import java.util.Random;
 

@@ -1,24 +1,24 @@
-package racingcar.step3.controller;
+package racingcar.step4.controller;
 
-import racingcar.step3.config.MoveConfig;
-import racingcar.step3.view.InputView;
-import racingcar.step3.service.RacingGame;
-import racingcar.step3.view.ResultView;
-import racingcar.step3.move.Moving;
+import racingcar.step4.config.MoveConfig;
+import racingcar.step4.move.Moving;
+import racingcar.step4.service.RacingGame;
+import racingcar.step4.view.InputView;
+import racingcar.step4.view.ResultView;
 
 public class CarController {
 
     public static void main(String[] args) {
         //인풋 출력
         InputView inputView = new InputView();
-        int countOfCar = inputView.countOfCar();
+        String carName =  inputView.getCarName();
         int countOfTry = inputView.countOfTry();
 
         // 랜덤무빙 구현 객체 가져옴
         MoveConfig moveConfig = new MoveConfig();
         Moving moving = moveConfig.move();
 
-        RacingGame racingGame = new RacingGame(countOfTry, countOfCar);
+        RacingGame racingGame = new RacingGame(carName, countOfTry);
 
         //아웃풋 출력
         ResultView resultView = new ResultView();
@@ -29,6 +29,8 @@ public class CarController {
             resultView.resultPrint(racingGame.getCars());
             racingGame.race(moving);
         }
+
+        resultView.winnersPrint(racingGame);
     }
 
 }
