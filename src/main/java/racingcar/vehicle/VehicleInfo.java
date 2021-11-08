@@ -1,5 +1,7 @@
 package racingcar.vehicle;
 
-public interface VehicleStatus {
-    VehiclePosition position();
+public interface VehicleInfo {
+    String name();
+
+    Integer position();
 }

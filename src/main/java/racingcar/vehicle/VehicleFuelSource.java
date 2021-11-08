@@ -1,4 +1,5 @@
 package racingcar.vehicle;
 
-public interface VehicleFuelThreshold {
+public interface VehicleFuelSource<V> {
+    V value();
 }

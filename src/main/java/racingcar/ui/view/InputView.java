@@ -1,9 +1,9 @@
-package racingcar.ui.inputview;
+package racingcar.ui.view;
 
-public interface InputView {
+public interface InputView<V> {
     void take();
 
-    InputInfo vehicleInfo();
+    void valid();
 
-    InputInfo roundInfo();
+    V value();
 }

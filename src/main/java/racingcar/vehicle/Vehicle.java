@@ -1,7 +1,7 @@
-package racingcar.game;
+package racingcar.vehicle;
 
 public interface Vehicle {
-    String name();
+    VehicleInfo info();
 
-    VehicleStatus status();
+    void moveOrNot();
 }
