@@ -2,27 +2,17 @@ package step2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class OperatorTest {
 
-    @Test
-    void plusSuccess() {
-        assertEquals(Operator.getOperator("+").calculate(1, 2), 3);
-    }
+    private final Operand first = new Operand(6);
+    private final Operand second = new Operand(2);
 
-    @Test
-    void minusSuccess() {
-        assertEquals(Operator.getOperator("-").calculate(2, 1), 1);
-    }
-
-    @Test
-    void multiplySuccess() {
-        assertEquals(Operator.getOperator("*").calculate(2, 3), 6);
-    }
-
-    @Test
-    void divideSuccess() {
-        assertEquals(Operator.getOperator("/").calculate(6, 3), 2);
+    @ParameterizedTest
+    @CsvSource(value = {"+:8", "-:4", "*:12", "/:3"}, delimiter = ':')
+    void operationTest(String operator, Operand ans) {
+        assertEquals(ans, Operator.getOperator(operator).calculate(first, second));
     }
 }

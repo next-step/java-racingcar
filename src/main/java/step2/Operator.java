@@ -3,18 +3,18 @@ package step2;
 import java.util.function.BinaryOperator;
 
 public enum Operator {
-    PLUS((n1, n2) -> n1 + n2),
-    MINUS((n1, n2) -> n1 - n2),
-    MULTIPLY((n1, n2) -> n1 * n2),
-    DIVIDE((n1, n2) -> n1 / n2);
+    PLUS(Operand::plus),
+    MINUS(Operand::minus),
+    MULTIPLY(Operand::multiply),
+    DIVIDE(Operand::divide);
 
-    private final BinaryOperator<Integer> operation;
+    private final BinaryOperator<Operand> operation;
 
-    Operator(BinaryOperator<Integer> operation) {
+    Operator(BinaryOperator<Operand> operation) {
         this.operation = operation;
     }
 
-    public int calculate(int first, int second) {
+    public Operand calculate(Operand first, Operand second) {
         return operation.apply(first, second);
     }
 
