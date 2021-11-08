@@ -54,10 +54,10 @@ class GameHistoryTest {
 
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < positions.length; i++) {
-            carList.add(Car.create(moveStrategy, namesList.get(i), Position.create(Integer.parseInt(positions[i]))));
+            carList.add(Car.create(namesList.get(i), Position.create(Integer.parseInt(positions[i]))));
         }
 
-        return Cars.create(moveStrategy, carList);
+        return Cars.create(carList);
     }
 
 }

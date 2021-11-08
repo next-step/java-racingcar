@@ -18,15 +18,4 @@ class UserInputTest {
             userInput.validate();
         });
     }
-
-    @DisplayName("String이 Number가 아니면 IllegalException")
-    @ParameterizedTest
-    @CsvSource(value = {"k:1", "2:한", "한글:english"})
-    void notNumberTest(String count, String time) {
-        UserInput userInput = UserInput.create(count, time);
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            userInput.validate();
-        });
-    }
-
 }

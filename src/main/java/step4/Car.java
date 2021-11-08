@@ -4,23 +4,21 @@ import java.util.Objects;
 
 public class Car implements Comparable<Car> {
 
-    private final MoveStrategy moveStrategy;
     private final Name name;
     private final Position position;
 
-    private Car(MoveStrategy moveStrategy, Name name, Position position) {
-        this.moveStrategy = moveStrategy;
+    private Car(Name name, Position position) {
         this.name = name;
         this.position = position;
     }
 
-    public static Car createWithDefaultPosition(MoveStrategy moveStrategy, Name name) {
+    public static Car createWithDefaultPosition(Name name) {
         Position position = Position.withDefaultPosition();
-        return new Car(moveStrategy, name, position);
+        return new Car(name, position);
     }
 
-    public static Car create(MoveStrategy moveStrategy, Name name, Position position) {
-        return new Car(moveStrategy, name, position);
+    public static Car create(Name name, Position position) {
+        return new Car(name, position);
     }
 
     public boolean equalsPosition(Car target) {
@@ -30,12 +28,12 @@ public class Car implements Comparable<Car> {
         return name;
     }
 
-    public Car moveOrStop() {
+    public Car moveOrStop(MoveStrategy moveStrategy) {
         Position now = this.position;
         if (moveStrategy.test()) {
             now = this.position.move();
         }
-        return create(moveStrategy, name, now);
+        return create(name, now);
     }
 
     @Override

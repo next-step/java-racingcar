@@ -1,6 +1,5 @@
 package step4;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
@@ -9,21 +8,19 @@ import java.util.stream.Collectors;
 public class Cars {
 
     private final List<Car> cars;
-    private final MoveStrategy moveStrategy;
 
-    private Cars(List<Car> cars, MoveStrategy moveStrategy) {
+    private Cars(List<Car> cars) {
         this.cars = cars;
-        this.moveStrategy = moveStrategy;
     }
 
-    public static Cars createWithDefaultPosition(MoveStrategy moveStrategy, Names names) {
-        List<Car> cars = names.getNames().stream().map(name -> Car.createWithDefaultPosition(moveStrategy, name))
+    public static Cars createWithDefaultPosition(Names names) {
+        List<Car> cars = names.getNames().stream().map(name -> Car.createWithDefaultPosition(name))
                 .collect(Collectors.toList());
-        return new Cars(cars, moveStrategy);
+        return new Cars(cars);
     }
 
-    public static Cars create(MoveStrategy moveStrategy, List<Car> cars) {
-        return new Cars(cars, moveStrategy);
+    public static Cars create(List<Car> cars) {
+        return new Cars(cars);
     }
 
     @Override
@@ -39,11 +36,11 @@ public class Cars {
         return Objects.hash(cars);
     }
 
-    public Cars move() {
-        List<Car> moveCars = cars.stream().map(Car::moveOrStop)
+    public Cars move(MoveStrategy moveStrategy) {
+        List<Car> moveCars = cars.stream().map(car -> car.moveOrStop(moveStrategy))
                 .collect(Collectors.toList());
 
-        return create(moveStrategy, moveCars);
+        return create(moveCars);
     }
 
     @Override

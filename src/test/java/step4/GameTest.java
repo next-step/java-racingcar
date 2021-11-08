@@ -11,19 +11,6 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 class GameTest {
 
-
-    @DisplayName("Game 생성 시에 GameInformation에 Names나 time 은 null이면 안된다.")
-    @Test
-    void ofTest() {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            Game.of(GameInformation.create(null, 10), () -> true);
-        });
-
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            Game.of(GameInformation.create("kay,may", null), () -> true);
-        });
-    }
-
     @DisplayName("매번 움직이는 정상 케이스 동작 테스트")
     @Test
     void moveAlwaysTest() {
@@ -57,10 +44,10 @@ class GameTest {
 
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < positions.length; i++) {
-            carList.add(Car.create(moveStrategy, namesList.get(i), Position.create(Integer.parseInt(positions[i]))));
+            carList.add(Car.create(namesList.get(i), Position.create(Integer.parseInt(positions[i]))));
         }
 
-        return Cars.create(moveStrategy, carList);
+        return Cars.create(carList);
     }
 
 

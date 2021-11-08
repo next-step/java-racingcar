@@ -40,10 +40,10 @@ public class Game {
     }
 
     private void makeCars() {
-        cars = Cars.createWithDefaultPosition(moveStrategy, names);
+        cars = Cars.createWithDefaultPosition(names);
     }
 
     private void step() {
-        this.cars = this.cars.move();
+        this.cars = this.cars.move(moveStrategy);
     }
 }

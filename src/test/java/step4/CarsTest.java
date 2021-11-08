@@ -12,6 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
 
+    private MoveStrategy moveStrategy = () -> true;
+
     @DisplayName("cars는 생성할때 Names를 받으면 position이 0인 car를 가진다.")
     @ParameterizedTest
     @CsvSource(value = {"miz,ki,bi"}, delimiter = ':')
@@ -21,13 +23,13 @@ class CarsTest {
 
         MoveStrategy moveStrategy = () -> true;
 
-        Cars carsWithDefaultPosition = Cars.createWithDefaultPosition(moveStrategy, names);
+        Cars carsWithDefaultPosition = Cars.createWithDefaultPosition(names);
 
         List<Car> expectCarList = names.getNames().stream()
-                .map(name -> Car.createWithDefaultPosition(moveStrategy, name))
+                .map(name -> Car.createWithDefaultPosition(name))
                 .collect(Collectors.toList());
 
-        Cars expectCars = Cars.create(moveStrategy, expectCarList);
+        Cars expectCars = Cars.create(expectCarList);
 
         assertThat(carsWithDefaultPosition).isEqualTo(expectCars);
     }
@@ -39,7 +41,7 @@ class CarsTest {
     void moveTest(String nameStr, String positionStr, boolean move, String expectPositionStr) {
         Cars nowCars = createCars(nameStr, positionStr, move);
 
-        Cars actualCars = nowCars.move();
+        Cars actualCars = nowCars.move(moveStrategy);
 
         Cars expect = createCars(nameStr, expectPositionStr, move);
 
@@ -80,7 +82,7 @@ class CarsTest {
 
         List<Car> carList = createCarList(nameStr, positionStr, move);
 
-        return Cars.create(moveStrategy, carList);
+        return Cars.create(carList);
     }
 
     private List<Car> createCarList(String nameStr, String positionStr, boolean move) {
@@ -93,7 +95,7 @@ class CarsTest {
 
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < positions.length; i++) {
-            carList.add(Car.create(moveStrategy, namesList.get(i), Position.create(Integer.parseInt(positions[i]))));
+            carList.add(Car.create(namesList.get(i), Position.create(Integer.parseInt(positions[i]))));
         }
 
         return carList;

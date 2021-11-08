@@ -13,15 +13,12 @@ public class Names {
 
         Arrays.stream(nameList).forEach(nameStr -> {
             Name name = new Name(nameStr);
-            addName(name);
+            names.add(name);
         });
-    }
-
-    private void addName(Name name) {
-        names.add(name);
     }
 
     public List<Name> getNames() {
         return names;
     }
+
 }

@@ -15,8 +15,8 @@ class CarTest {
     @ParameterizedTest
     @CsvSource(value = {"1:1:true", "1:0:false", "0:1:false"}, delimiter = ':')
     void getCountTest(Integer position1, Integer position2, boolean expect) {
-        Car car1 = Car.create(() -> false, name, Position.create(position1));
-        Car car2 = Car.create(() -> false, name, Position.create(position2));
+        Car car1 = Car.create(name, Position.create(position1));
+        Car car2 = Car.create(name, Position.create(position2));
 
         assertThat(car1.equalsPosition(car2)).isEqualTo(expect);
     }
@@ -25,11 +25,12 @@ class CarTest {
     @Test
     void moveTest() {
         Integer expectNow = 1;
+        MoveStrategy moveStrategy = () -> true;
 
-        Car car = Car.createWithDefaultPosition(() -> true, name);
-        car = car.moveOrStop();
+        Car car = Car.createWithDefaultPosition(name);
+        car = car.moveOrStop(moveStrategy);
 
-        Car expectCar = Car.create(() -> false, name, Position.create(expectNow));
+        Car expectCar = Car.create(name, Position.create(expectNow));
         assertThat(car.equalsPosition(expectCar)).isTrue();
     }
 
@@ -37,11 +38,12 @@ class CarTest {
     @Test
     void stopTest() {
         Integer expectNow = 0;
+        MoveStrategy moveStrategy = () -> false;
 
-        Car car = Car.createWithDefaultPosition(() -> false, name);
-        car = car.moveOrStop();
+        Car car = Car.createWithDefaultPosition(name);
+        car = car.moveOrStop(moveStrategy);
 
-        Car expectCar = Car.create(() -> false, name, Position.create(expectNow));
+        Car expectCar = Car.create(name, Position.create(expectNow));
         assertThat(car.equalsPosition(expectCar)).isTrue();
     }
 
