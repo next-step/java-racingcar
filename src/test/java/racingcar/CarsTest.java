@@ -49,7 +49,7 @@ class CarsTest {
     @MethodSource
     void carsMoveTest(Cars expected) {
         Cars cars = Cars.from(3);
-        cars.move(() -> true);
+        cars.move(() -> 5);
 
         assertThat(cars).isEqualByComparingTo(expected);
     }
@@ -67,7 +67,7 @@ class CarsTest {
     @MethodSource
     void carsStopTest(Cars expected) {
         Cars cars = Cars.from(3);
-        cars.move(() -> false);
+        cars.move(() -> 1);
 
         assertThat(cars).isEqualByComparingTo(expected);
     }
