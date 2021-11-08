@@ -39,7 +39,7 @@ public class Car {
     }
 
     private void carNamingCheck(String name) {
-        if (name.length() > 5) {
+        if (name == null || name.length() > 5 || name.trim().isEmpty()) {
             throw new IllegalArgumentException();
         }
     }
