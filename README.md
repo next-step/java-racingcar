@@ -15,7 +15,7 @@
   * 전진할지 멈춰있을지 확인하는 로직
   * 움직이는 로직
   * 자동차의 현재 상태 출력하는 로직
-* RacingGame 클래스 구현
+* RacingCarGame 클래스 구현
   * 위 세가지를 잘 묶기
 * RacingCar 테스트 코드 작성
 * RacingGame 테스트 코드 작성
