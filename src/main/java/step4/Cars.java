@@ -54,18 +54,17 @@ public class Cars {
     }
 
     public Winners getWinner() {
-        Position winPosition = getWinPosition();
+        Car winPosition = getWinPositionCar();
         List<Name> winnerNameList = cars.stream()
-                .filter(car -> car.getPosition().equals(winPosition))
+                .filter(car -> car.equalsPosition(winPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList());
         return Winners.create(winnerNameList);
     }
 
-    private Position getWinPosition() {
+    private Car getWinPositionCar() {
         return cars.stream()
-                .map(car -> car.getPosition())
-                .max(Comparator.comparing(position -> position.getNow()))
+                .max(Car::compareTo)
                 .orElseThrow(NoSuchElementException::new);
     }
 }

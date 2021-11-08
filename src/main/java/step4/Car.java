@@ -2,7 +2,7 @@ package step4;
 
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private final MoveStrategy moveStrategy;
     private final Name name;
@@ -23,10 +23,9 @@ public class Car {
         return new Car(moveStrategy, name, position);
     }
 
-    public Position getPosition() {
-        return position;
+    public boolean equalsPosition(Car target) {
+        return this.position.compareTo(target.position) == 0;
     }
-
     public Name getName() {
         return name;
     }
@@ -55,5 +54,10 @@ public class Car {
     @Override
     public String toString() {
         return name.toString() + " : " + position.toString();
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return this.position.compareTo(o.position);
     }
 }

@@ -2,7 +2,7 @@ package step4;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
     private final static Integer DEFAULT_POSITION = 0;
 
@@ -48,5 +48,10 @@ public class Position {
             builder.append("-");
         }
         return builder.toString();
+    }
+
+    @Override
+    public int compareTo(Position o) {
+        return this.position - o.position;
     }
 }
