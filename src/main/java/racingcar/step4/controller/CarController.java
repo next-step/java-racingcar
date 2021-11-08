@@ -12,14 +12,13 @@ public class CarController {
         //인풋 출력
         InputView inputView = new InputView();
         String carName =  inputView.getCarName();
-        int countOfCar = inputView.countOfCar();
         int countOfTry = inputView.countOfTry();
 
         // 랜덤무빙 구현 객체 가져옴
         MoveConfig moveConfig = new MoveConfig();
         Moving moving = moveConfig.move();
 
-        RacingGame racingGame = new RacingGame(carName, countOfTry, countOfCar);
+        RacingGame racingGame = new RacingGame(carName, countOfTry);
 
         //아웃풋 출력
         ResultView resultView = new ResultView();
@@ -31,7 +30,7 @@ public class CarController {
             racingGame.race(moving);
         }
 
-        resultView.winnerPrint(racingGame);
+        resultView.winnersPrint(racingGame);
     }
 
 }
