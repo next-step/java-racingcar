@@ -35,7 +35,7 @@ public class RacingCarGame {
         }
     }
 
-    private List<Car> setRaceCar() {
+    public List<Car> setRaceCar() {
         raceCar = new ArrayList<Car>();
         for (int i = 0; i < carNumbers; i++) {
             raceCar.add(new Car());

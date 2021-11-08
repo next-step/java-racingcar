@@ -5,25 +5,36 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingCar.utils.NumberUtils;
 
+import java.util.List;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RacingCarTest {
 
     RacingCarGame racingCarGame;
+    private final static int CAR_NUMBERS = 3;
+    private final static int TRY_TIMES = 5;
 
     @BeforeEach
     void beforeTest() {
-        racingCarGame = new RacingCarGame(3, 5);
+        racingCarGame = new RacingCarGame(CAR_NUMBERS, TRY_TIMES);
     }
 
     @Test
-    void playTest() {
-        racingCarGame.play();
+    void 게임_초기화() {
+        List<Car> cars = racingCarGame.setRaceCar();
+        assertThat(cars.size()).isEqualTo(3);
     }
 
-    @DisplayName("0~9까지의 랜덤 숫자 생성 테스트")
     @Test
-    void randomTest() {
+    void 자동차_동작_테스트() {
+        Car car = new Car();
+        car.move();
+        assertThat(car.getMoveCount()).isIn(0, 1);
+    }
+
+    @Test
+    void 랜덤_숫자_생성_테스트() {
         assertThat(NumberUtils.getRandomNumber()).isBetween(0, 9);
     }
 }
