@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.step4.config.MoveConfig;
 import racingcar.step4.domain.Car;
@@ -28,19 +27,19 @@ public class RacingGameTest {
 
     @ParameterizedTest
     @ValueSource(ints = {0, -1})
-    @DisplayName("값은 0 이하 값이 들어오면 안된다")
+    @DisplayName("시도 횟수 값은 0 이하 값이 들어오면 안된다")
     void inputValidation(int value) {
-        assertThatThrownBy(() -> new RacingGame("K3,k5", value, 2))
+        assertThatThrownBy(() -> new RacingGame("K3,k5", value))
                 .isInstanceOf(IllegalArgumentException.class);
         //값 정상
-        assertThatCode(() -> new RacingGame("K3,k5", 1, 2))
+        assertThatCode(() -> new RacingGame("K3,k5", 1))
                 .doesNotThrowAnyException();
     }
 
     @Test
     @DisplayName("랜덤값 - 레이스 테스트")
     void race() {
-        RacingGame racingGame = new RacingGame("K3,k5", 10, 2);
+        RacingGame racingGame = new RacingGame("K3,k5", 10);
         racingGame.race(moving);
         assertThat(racingGame.getCountOfTry()).isEqualTo(9);
         assertThat(racingGame.isEndGame()).isFalse();
@@ -49,7 +48,7 @@ public class RacingGameTest {
     @Test
     @DisplayName("랜덤값 - 종료 테스트")
     void endGame() {
-        RacingGame racingGame = new RacingGame("K3,k5", 10, 2);
+        RacingGame racingGame = new RacingGame("K3,k5", 10);
         for (int i = 0; i < 10; i++) {
             racingGame.race(moving);
         }
@@ -60,12 +59,12 @@ public class RacingGameTest {
     @DisplayName("자동차 이름을 구분자로 쪼개기")
     void nameSplit() {
         String[] arr = {"k3", "k5", "k7"};
-        RacingGame racingGame = new RacingGame("k3,k5,k7", 5, 3);
-        assertThat(racingGame.getCars().equals(new Cars(arr, 3))).isTrue();
+        RacingGame racingGame = new RacingGame("k3,k5,k7", 5);
+        assertThat(racingGame.getCars().equals(new Cars(arr))).isTrue();
     }
 
     @Test
-    @DisplayName("위너 찾기")
+    @DisplayName("레이스 종료 후 위너 찾기")
     void findWinners() {
         Car K3 = new Car("K3", 3);
         Car K5 = new Car("K5", 5);
