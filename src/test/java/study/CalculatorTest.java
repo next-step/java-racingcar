@@ -2,8 +2,12 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
 
@@ -39,5 +43,15 @@ public class CalculatorTest {
         int result = calculator.calculate("4 / 2");
 
         assertThat(result).isEqualTo(2);
+    }
+
+    @ParameterizedTest
+    @NullSource
+    @EmptySource
+    @DisplayName("입력 값이 null이거나 빈 공백 문자라면 IllegalArgumentException을 던진다")
+    void shouldThrowIllegalArgumentException(String input) {
+        assertThatThrownBy(() -> calculator.calculate(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력 값이 null이거나 빈 공백 문자입니다.");
     }
 }

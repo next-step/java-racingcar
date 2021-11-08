@@ -28,6 +28,10 @@ public class Calculator {
     }
 
     private void parse(String input) {
+        if(input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("입력 값이 null이거나 빈 공백 문자입니다.");
+        }
+
         String[] splitInput = input.split(" ");
 
         this.operator = splitInput[1];
