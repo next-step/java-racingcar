@@ -3,6 +3,8 @@ package racingcar.view;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
+import java.util.stream.IntStream;
+
 public class OutputView {
     private static final String CAR_COUNT_EXCEPTIONM_ESSAGE = "자동차 생성 숫자는 0 이상 입력";
     private static final String TRY_COUNT_EXCEPTIONM_ESSAGE = "시도할 회수는 0 이상 입력";
@@ -21,13 +23,17 @@ public class OutputView {
 
     public static void printResult(Cars cars) {
         cars.getCars().forEach(OutputView::printCarPosition);
-        System.out.println();
+
+        newLine();
     }
 
     private static void printCarPosition(Car car) {
-        for (int i = 0; i < car.positionValue(); i++) {
-            System.out.print(MOVE_SYMBOL);
-        }
+        IntStream.rangeClosed(1, car.positionValue()).mapToObj(value -> MOVE_SYMBOL).forEach(System.out::print);
+
+        newLine();
+    }
+
+    private static void newLine() {
         System.out.println();
     }
 }
