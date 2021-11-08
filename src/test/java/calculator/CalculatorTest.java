@@ -2,11 +2,11 @@ package calculator;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.EmptySource;
-import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
 
@@ -48,8 +48,7 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @NullSource
-    @EmptySource
+    @NullAndEmptySource
     @ValueSource(strings = {" "})
     void nullOrEmpty(String text) {
         assertThatThrownBy(() -> Calculator.calculate(text))
@@ -63,5 +62,4 @@ public class CalculatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("%s는 사칙연산 기호가 아닙니다.", "x");
     }
-
 }

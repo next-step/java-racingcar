@@ -1,7 +1,7 @@
 package calculator;
 
 import java.util.Arrays;
-import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 
 public enum Operator {
 
@@ -11,9 +11,9 @@ public enum Operator {
     DIVIDE("/", (first, second) -> first.divide(second));
 
     private String operator;
-    private BiFunction<MyInteger, MyInteger, MyInteger> operation;
+    private BinaryOperator<Operand> operation;
 
-    Operator(String operator, BiFunction<MyInteger, MyInteger, MyInteger> operation) {
+    Operator(String operator, BinaryOperator<Operand> operation) {
         this.operator = operator;
         this.operation = operation;
     }
@@ -25,7 +25,7 @@ public enum Operator {
                 .orElseThrow(() -> new IllegalArgumentException(operator + "는 사칙연산 기호가 아닙니다."));
     }
 
-    public MyInteger operate(MyInteger first, MyInteger second) {
+    public Operand operate(Operand first, Operand second) {
         return operation.apply(first, second);
     }
 
