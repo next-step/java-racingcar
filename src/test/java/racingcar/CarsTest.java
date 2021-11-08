@@ -18,19 +18,19 @@ class CarsTest {
     @ParameterizedTest
     @DisplayName("Cars 생성 테스트")
     @MethodSource
-    void createCarsTest(int createCount, int expectedSize) {
+    void createCarsTest(int createCount, Cars expected) {
         Cars cars = Cars.from(createCount);
 
-        assertThat(cars.size()).isEqualTo(expectedSize);
+        assertThat(cars).isEqualTo(expected);
     }
 
     static Stream<Arguments> createCarsTest() {
         return Stream.of(
                 Arguments.of(
-                        1, 1
+                        1, Cars.from(1)
                 ),
                 Arguments.of(
-                        2, 2
+                        2, Cars.from(2)
                 )
         );
     }

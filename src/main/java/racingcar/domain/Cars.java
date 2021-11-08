@@ -4,10 +4,11 @@ import racingcar.exception.CreateCarCountException;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Cars implements Comparable<Cars> {
+public class Cars {
     private static final int MIN_CREATE_COUNT = 1;
 
     private final List<Car> cars;
@@ -34,26 +35,27 @@ public class Cars implements Comparable<Cars> {
         cars.forEach(car -> car.move(strategy.generateNumber()));
     }
 
-    public int size() {
-        return cars.size();
-    }
-
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
 
     @Override
-    public int compareTo(Cars other) {
-        if (this == other) return 0;
-        if (other == null || getClass() != other.getClass()) return -1;
-        if (cars.size() != other.size()) return -1;
-
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars other = (Cars) o;
+        if (cars.size() != other.cars.size()) return false;
         for (int i = 0; i < cars.size(); i++) {
             if (!cars.get(i).equals(other.cars.get(i))) {
-                return -1;
+                return false;
             }
         }
-
-        return 0;
+        return true;
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
+    }
+
 }
