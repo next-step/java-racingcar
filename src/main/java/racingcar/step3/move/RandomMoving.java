@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class RandomMoving implements Moving {
 
-    public static final int MAX_NUM = 9;
-    public static final int MIN_NUM = 4;
+    private static final int MAX_NUM = 9;
+    private static final int MIN_NUM = 4;
 
     @Override
     public boolean isMovable() {

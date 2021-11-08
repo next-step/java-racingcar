@@ -12,8 +12,8 @@ import java.util.Random;
 
 public class Car {
 
-    public static final int MAX_NUM = 9;
-    public static final int MIN_NUM = 4;
+    private static final int MAX_NUM = 9;
+    private static final int MIN_NUM = 4;
     private int position;
 
     public Car() {
@@ -32,13 +32,6 @@ public class Car {
     public void move(Moving moving) {
         if (moving.isMovable()) {
             this.position++;
-        }
-    }
-
-    public void move() {
-        int randomNum = getRandomNum();
-        if (isMovable(randomNum)) {
-            position++;
         }
     }
 

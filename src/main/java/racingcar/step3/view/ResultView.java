@@ -10,8 +10,6 @@ public class ResultView {
     private static final String SIGN = "-";
     private static final String EXECUTE_MESSAGE = "실행결과";
 
-    private final Scanner sc = new Scanner(System.in);
-
     public void executeMessage() {
         System.out.println(EXECUTE_MESSAGE);
     }

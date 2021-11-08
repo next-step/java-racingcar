@@ -1,15 +1,10 @@
 package racingcar.step3;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.step3.domain.Car;
-import racingcar.step3.domain.Cars;
-import racingcar.step3.move.Moving;
-import racingcar.step3.service.RacingGame;
-import racingcar.step3.validator.CarValidator;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
