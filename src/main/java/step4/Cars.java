@@ -41,10 +41,9 @@ public class Cars {
         return create(moveCars);
     }
 
-    @Override
-    public String toString() {
+    public String toStringCars() {
         return this.cars.stream()
-                .map(Car::toString)
+                .map(Car::toStringNameAndPosition)
                 .collect(Collectors.joining("\n"));
     }
 

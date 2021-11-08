@@ -14,14 +14,11 @@ public class GameHistory {
     }
 
     public Cars getHistory(Integer time) {
-        isValid(time);
-        return history.get(time);
-    }
-
-    private void isValid(Integer time) {
-        if (!history.containsKey(time)) {
+        Cars log = history.get(time);
+        if (log == null) {
             throw new IllegalArgumentException("history가 존재하지 않습니다.");
         }
+        return log;
     }
 
     public void saveWinner(Winners winners) {
@@ -32,9 +29,9 @@ public class GameHistory {
         return winners;
     }
 
-    public String toString(Integer time) {
+    public String toStringGameHistory(Integer time) {
         String result = IntStream.range(0, time)
-                .mapToObj(now -> history.get(now).toString())
+                .mapToObj(now -> history.get(now).toStringCars())
                 .collect(Collectors.joining("\n\n"));
         return result + "\n\n" + winners.toString() + "가 최종 우승 했습니다.";
     }

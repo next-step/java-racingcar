@@ -17,6 +17,6 @@ public class ResultView {
     public void view() {
 
         System.out.println("실행 결과");
-        System.out.println(gameHistory.toString(gameInformation.getTime()));
+        System.out.println(gameHistory.toStringGameHistory(gameInformation.getTime()));
     }
 }

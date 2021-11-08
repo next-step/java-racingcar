@@ -56,9 +56,9 @@ class CarsTest {
 
         List<Car> carList = createCarList(nameStr, positionStr, true);
         String carListString = carList.stream()
-                .map(Car::toString)
+                .map(Car::toStringNameAndPosition)
                 .collect(Collectors.joining("\n"));
-        assertThat(nowCars.toString()).isEqualTo(carListString);
+        assertThat(nowCars.toStringCars()).isEqualTo(carListString);
         System.out.println("carListString = " + carListString);
     }
 
