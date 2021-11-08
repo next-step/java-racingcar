@@ -14,30 +14,30 @@ public class ExpressionTest {
     }
 
     @Test
-    void nullInput() {
+    void inputFailBecauseInputIsNull() {
         assertThatThrownBy(() -> new Expression(null))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    void emptyInput() {
+    void inputFailBecauseStringIsEmpty() {
         assertThatThrownBy(() -> new Expression("   "))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    void hasNext() {
-        assertTrue(new Expression("1 + 2").canCalculate());
+    void hasNextSuccess() {
+        assertTrue(new Expression("1 + 2").hasNext());
     }
 
     @Test
-    void nextInt() {
+    void nextIntSuccess() {
         MyNumber nextInt = new Expression("1 + 2").nextInt();
         assertEquals(new MyNumber("1"), nextInt);
     }
 
     @Test
-    void nextOperator() {
+    void nextOperatorSuccess() {
         String nextOperator = new Expression("1 + 2").nextOperator();
         assertEquals("+", nextOperator);
     }

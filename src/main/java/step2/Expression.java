@@ -11,7 +11,6 @@ public class Expression {
     //생성자
     public Expression(String s) {
         validate(s);
-
         String[] info = s.split(" ");
         for (int i = 0; i < info.length; i++) {
             init(info, i);
@@ -34,7 +33,7 @@ public class Expression {
     }
 
     //비즈니스 메서드
-    public boolean canCalculate() {
+    public boolean hasNext() {
         return !numbers.isEmpty() && !operators.isEmpty();
     }
 

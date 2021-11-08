@@ -5,7 +5,7 @@ public class Calculator {
     public static MyNumber calculate(Expression expression) {
         MyNumber ans = expression.nextInt();
 
-        while (expression.canCalculate()) {
+        while (expression.hasNext()) {
             MyNumber second = expression.nextInt();
             String operator = expression.nextOperator();
 
