@@ -20,5 +20,4 @@ public class Calculator {
     private static MyNumber calculate(MyNumber first, String symbol, MyNumber second) {
         return Operator.of(symbol).calculate(first, second);
     }
-
 }

@@ -23,14 +23,15 @@ public class MyNumberTest {
     }
 
     @Test
-    void times() {
+    void multiple() {
         MyNumber actual = new MyNumber("1").multiple(new MyNumber(2));
         assertThat(actual).isEqualTo(new MyNumber(2));
     }
 
     @Test
-    void devideBy() {
+    void divideBy() {
         MyNumber actual = new MyNumber("4").divideBy(new MyNumber(2));
         assertThat(actual).isEqualTo(new MyNumber(2));
     }
+
 }
