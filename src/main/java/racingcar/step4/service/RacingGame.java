@@ -1,7 +1,11 @@
 package racingcar.step4.service;
 
+import racingcar.step4.domain.Car;
 import racingcar.step4.domain.Cars;
 import racingcar.step4.move.Moving;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame {
 
@@ -14,6 +18,12 @@ public class RacingGame {
         countOfTryCheck(countOfTry);
         this.countOfTry = countOfTry;
         this.cars = new Cars(carName.split(NAME_DELIMITER), countOfCar);
+    }
+
+    public RacingGame(Cars cars, int countOfTry) {
+        countOfTryCheck(countOfTry);
+        this.countOfTry = countOfTry;
+        this.cars = cars;
     }
 
     public boolean isEndGame() {
@@ -39,4 +49,13 @@ public class RacingGame {
         }
     }
 
+    public List<Car> findWinners() {
+        List<Car> winners = new ArrayList<>();
+        for (Car c : cars.getCars()) {
+            if (c.getPosition() == cars.getMaxPosition()) {
+                winners.add(c);
+            }
+        }
+        return winners;
+    }
 }

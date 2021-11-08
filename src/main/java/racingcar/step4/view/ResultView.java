@@ -2,6 +2,9 @@ package racingcar.step4.view;
 
 import racingcar.step4.domain.Car;
 import racingcar.step4.domain.Cars;
+import racingcar.step4.service.RacingGame;
+
+import java.util.List;
 
 public class ResultView {
 
@@ -28,4 +31,14 @@ public class ResultView {
         builder.append('\n');
     }
 
+    public void winnerPrint(RacingGame racingGame) {
+        List<Car> winners = racingGame.findWinners();
+        StringBuilder builder = new StringBuilder();
+        winners.forEach(c ->{
+            builder.append(c.getName());
+            builder.append(" ");
+        });
+        builder.append("(이)가 최종 우승했습니다.");
+        System.out.println(builder);
+    }
 }

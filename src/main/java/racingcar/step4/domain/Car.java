@@ -62,6 +62,10 @@ public class Car {
         return random.nextInt(MAX_NUM);
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -73,9 +77,5 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name);
-    }
-
-    public String getName() {
-        return name;
     }
 }

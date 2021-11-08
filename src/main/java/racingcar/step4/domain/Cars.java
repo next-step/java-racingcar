@@ -3,6 +3,7 @@ package racingcar.step4.domain;
 import racingcar.step4.move.Moving;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,6 +12,10 @@ public class Cars {
     private static final int COUNT_OF_CAR_MIN_NUM = 1;
 
     private List<Car> cars = new ArrayList<>();
+
+    public Cars(Car ...car) {
+        cars = Arrays.asList(car);
+    }
 
     public Cars(String[] carName, int countOfCar) {
         countOfCarNameCheck(carName.length, countOfCar);
@@ -50,5 +55,15 @@ public class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(cars);
+    }
+
+    public int getMaxPosition() {
+        int max = 0;
+        for (Car c : cars) {
+            if (c.getPosition() > max) {
+                max = c.getPosition();
+            }
+        }
+        return max;
     }
 }
