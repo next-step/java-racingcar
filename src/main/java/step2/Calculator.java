@@ -6,8 +6,8 @@ public class Calculator {
         int ans = expression.nextInt();
 
         while (expression.canCalculate()) {
-            String operator = expression.nextOperator();
             int second = expression.nextInt();
+            String operator = expression.nextOperator();
 
             ans = calculate(operator, ans, second);
         }
