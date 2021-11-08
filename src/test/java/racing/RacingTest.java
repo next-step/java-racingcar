@@ -40,5 +40,6 @@ class RacingTest {
     void throwExceptionWhenCreated() {
         assertThatThrownBy(() -> new Racing(-1, 1)).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new Racing(1, -1)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Racing(0,0)).isInstanceOf(IllegalArgumentException.class);
     }
 }
