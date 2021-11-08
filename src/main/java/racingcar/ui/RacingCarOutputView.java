@@ -26,7 +26,7 @@ public class RacingCarOutputView implements OutputView {
     }
 
     private void print(RaceResult.Race race) {
-        OutputUtils.print(String.format("%s : ", race.getCarName()));
+        OutputUtils.print(String.format("%s : ", race.getCarName().getName()));
         for (int i = 0; i < race.getCurrentPosition().getPosition(); i++) {
             OutputUtils.print(DASH);
         }

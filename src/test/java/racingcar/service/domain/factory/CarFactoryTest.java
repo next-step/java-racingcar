@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.service.domain.Car;
+import racingcar.service.value.CarName;
 
 import java.util.Collections;
 import java.util.List;
@@ -23,7 +24,7 @@ class CarFactoryTest {
                 create(Collections.singletonList(carName));
 
         // then
-        cars.forEach(car -> assertThat(car.getName()).isEqualTo(carName));
+        cars.forEach(car -> assertThat(car.getCarName()).isEqualTo(CarName.from(carName)));
     }
 
     @ParameterizedTest

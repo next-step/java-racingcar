@@ -5,7 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.service.domain.factory.RecordFactory;
-import racingcar.service.value.Round;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -22,7 +21,7 @@ class RecordTest {
     @ParameterizedTest
     @MethodSource(value = "getFinalWinnerName")
     @DisplayName("각 경기별로 우승자 검증")
-    void getFinalWinnerName(Round round, List<Car> cars, String winner) {
+    void getFinalWinnerName(Integer round, List<Car> cars, String winner) {
         // given
         Record record = RecordFactory.create(round, cars);
 
@@ -36,7 +35,7 @@ class RecordTest {
     @ParameterizedTest
     @MethodSource(value = "createRecordException")
     @DisplayName("Record의 필수값이 null인 경우 예외 발생 검증")
-    void createRecordException(Round round, List<Car> cars) {
+    void createRecordException(Integer round, List<Car> cars) {
         // when & then
         assertThatNullPointerException().isThrownBy(() -> RecordFactory.create(round, cars));
     }
@@ -44,23 +43,23 @@ class RecordTest {
     private static Stream<Arguments> getFinalWinnerName() {
         // given
         return Stream.of(
-                Arguments.of(Round.from(1),
+                Arguments.of(1,
                              Arrays.asList(victory("pobi"), secondPlace("crong"), secondPlace("honux")),
                              "pobi"
                 ),
-                Arguments.of(Round.from(2),
+                Arguments.of(2,
                              Arrays.asList(secondPlace("pobi"), victory("crong"), secondPlace("honux")),
                              "crong"
                 ),
-                Arguments.of(Round.from(3),
+                Arguments.of(3,
                              Arrays.asList(secondPlace("pobi"), secondPlace("crong"), victory("honux")),
                              "honux"
                 ),
-                Arguments.of(Round.from(4),
+                Arguments.of(4,
                              Arrays.asList(victory("pobi"), victory("crong"), secondPlace("honux")),
                              "pobi, crong"
                 ),
-                Arguments.of(Round.from(5),
+                Arguments.of(5,
                              Arrays.asList(victory("pobi"), victory("crong"), victory("honux")),
                              "pobi, crong, honux"
                 )
@@ -71,7 +70,7 @@ class RecordTest {
         // given
         return Stream.of(
                 Arguments.of(null, null),
-                Arguments.of(Round.from(10), null),
+                Arguments.of(10, null),
                 Arguments.of(null, Collections.singletonList(new Car("aiden")))
         );
     }

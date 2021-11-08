@@ -1,5 +1,6 @@
 package racingcar.controller.dto;
 
+import racingcar.service.value.CarName;
 import racingcar.service.value.Position;
 import racingcar.service.value.Round;
 import racingcar.utils.Preconditions;
@@ -31,10 +32,10 @@ public class RaceResult {
     }
 
     public static class Race {
-        private final String carName;
+        private final CarName carName;
         private final Position position;
 
-        private Race(String carName, Position position) {
+        private Race(CarName carName, Position position) {
             Preconditions.checkNotNull(carName, "carName은 필수값입니다.");
             Preconditions.checkNotNull(position, "position는 필수값입니다.");
 
@@ -42,11 +43,11 @@ public class RaceResult {
             this.position = position;
         }
 
-        public static Race of(String carName, Position position) {
+        public static Race of(CarName carName, Position position) {
             return new Race(carName, position);
         }
 
-        public String getCarName() {
+        public CarName getCarName() {
             return carName;
         }
 

@@ -11,7 +11,7 @@ public final class RecordFactory {
     private RecordFactory() {
     }
 
-    public static Record create(Round round, List<Car> cars) {
-        return new Record(round, Cars.from(cars));
+    public static Record create(Integer round, List<Car> cars) {
+        return new Record(Round.from(round), Cars.from(cars));
     }
 }

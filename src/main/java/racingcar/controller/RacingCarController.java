@@ -20,7 +20,9 @@ public class RacingCarController {
 
     public void execute() {
         RacingCarInput racingCarInput = inputView.getRacingCarInput();
+
         RoundResult roundResult = startRound(racingCarInput);
+
         outputView.output(RacingCarOutputConverter.convert(roundResult));
     }
 
@@ -28,6 +30,7 @@ public class RacingCarController {
         RacingCarService racingCarService = RacingCarService.ready(RoundReady.of(new RandomRoundRule(),
                                                                                  racingCarInput.getCarNames(),
                                                                                  racingCarInput.getFinalRound()));
+
         return racingCarService.startRound();
     }
 }
