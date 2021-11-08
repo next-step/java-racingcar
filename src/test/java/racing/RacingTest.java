@@ -44,7 +44,6 @@ class RacingTest {
         }
     }
 
-
     @Test
     @DisplayName(value = "생성")
     void create() {
