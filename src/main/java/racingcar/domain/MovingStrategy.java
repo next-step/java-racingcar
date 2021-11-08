@@ -1,5 +1,5 @@
 package racingcar.domain;
 
 public interface MovingStrategy {
-    boolean move();
+    int generateNumber();
 }
