@@ -14,14 +14,15 @@ public class StringCalculator {
     int result = Integer.parseInt(values[0]);
 
     for (int i = 1; i < values.length; i += 2) {
-      String operator = values[i];
-      int second = Integer.parseInt(values[i + 1]);
-
-      Number number = new Number(result, second);
-      result = Operator.calculate(operator, number);
+      result = calculate(result, values[i], Integer.parseInt(values[i + 1]));
     }
 
     return result;
+  }
+
+  private static int calculate(int firstOperand, String operator, int secondOperand) {
+    Number number = new Number(firstOperand, secondOperand);
+    return Operator.calculate(operator, number);
   }
 
   private static void validate(String input) {

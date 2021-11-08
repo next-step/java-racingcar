@@ -2,30 +2,20 @@ package calculator;
 
 public class Number {
 
-  private int first;
-  private int second;
+  private int firstOperand;
+  private int secondOperand;
 
-  public Number(int first, int second) {
-    this.first = first;
-    this.second = second;
+  public Number(int firstOperand, int secondOperand) {
+    this.firstOperand = firstOperand;
+    this.secondOperand = secondOperand;
   }
 
-  public int plus() {
-    return this.first + this.second;
+  public int getFirstOperand() {
+    return firstOperand;
   }
 
-  public int minus() {
-    return this.first - this.second;
+  public int getSecondOperand() {
+    return secondOperand;
   }
 
-  public int multiply() {
-    return this.first * this.second;
-  }
-
-  public int divide() {
-    if (this.second == 0) {
-      throw new IllegalArgumentException("cannot divided by zero");
-    }
-    return this.first / this.second;
-  }
 }

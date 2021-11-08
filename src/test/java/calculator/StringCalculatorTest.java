@@ -47,14 +47,6 @@ public class StringCalculatorTest {
   }
 
   @Test
-  @DisplayName("0으로 나눌 경우 IllegalArgumentException 발생")
-  void divideWithIllegalArgumentException() {
-    String input = "3 / 0";
-    assertThatExceptionOfType(IllegalArgumentException.class)
-        .isThrownBy(() -> StringCalculator.calculate(input));
-  }
-
-  @Test
   @DisplayName("사칙 연산 기호가 아닌 경우 IllegalArgumentException 발생")
   void validOperatorWithIllegalArgumentException() {
     String input = "3 & 2";
