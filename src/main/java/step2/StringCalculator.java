@@ -1,5 +1,9 @@
 package step2;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class StringCalculator {
     public static CalculatorNumber calculate(String expression) {
         if (expression == null || expression.trim().length() == 0) {
@@ -8,14 +12,19 @@ public class StringCalculator {
 
         String[] elements = expression.split(" ");
 
-        CalculatorNumber result = new CalculatorNumber(0);
-        Operator operator = Operator.PLUS;
-        for (int i = 0; i < elements.length; i++) {
-            if (i % 2 == 0) {
-                result = operator.operate(result, new CalculatorNumber(elements[i]));
-            } else {
-                operator = Operator.findByValue(elements[i]);
-            }
+        List<CalculatorNumber> operands = IntStream.range(0, elements.length)
+                .filter(n -> n % 2 == 0)
+                .mapToObj(i -> new CalculatorNumber(elements[i]))
+                .collect(Collectors.toList());
+
+        List<Operator> operators = IntStream.range(0, elements.length)
+                .filter(n -> n % 2 != 0)
+                .mapToObj(i -> Operator.findByValue(elements[i]))
+                .collect(Collectors.toList());
+
+        CalculatorNumber result = operands.get(0);
+        for (int i = 0; i < operators.size(); i++) {
+            result = operators.get(i).operate(result, operands.get(i + 1));
         }
 
         return result;
