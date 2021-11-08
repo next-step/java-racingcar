@@ -1,8 +1,8 @@
 package racingcar.model;
 
 public class RacingGameRequest {
-    private int countOfCar;
-    private int countOfTry;
+    private final int countOfCar;
+    private final int countOfTry;
 
     public RacingGameRequest(int countOfCar, int countOfTry) {
         this.countOfCar = countOfCar;
