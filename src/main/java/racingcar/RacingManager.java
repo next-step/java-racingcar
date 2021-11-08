@@ -18,19 +18,20 @@ public class RacingManager {
         outputView.showOutputMessage();
         IntStream.rangeClosed(1, numberOfTrials)
                 .forEach( number -> {
-                    progressEntireRound();
-                    outputView.showRound(number);
-                    outputView.showOutput(cars);
+                    outputView.showStartOfRound(number);
+                    progressEntireRound(outputView);
+                    outputView.showEndOfRound(number);
                 });
     }
 
-    private void progressRound(Car car) {
+    private void progressRound(Car car, OutputView outputView) {
         int randomNumber = RandomGenerator.generateNumberBetweenZeroToNine();
 
-        car.runOrStop(randomNumber);
+        int distance = car.runOrStop(randomNumber);
+        outputView.showDistanceOfCar(distance);
     }
 
-    private void progressEntireRound() {
-        cars.forEach(this::progressRound);
+    private void progressEntireRound(OutputView outputView) {
+        cars.forEach( car -> progressRound(car, outputView));
     }
 }

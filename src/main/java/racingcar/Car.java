@@ -3,10 +3,8 @@ package racingcar;
 import java.util.Objects;
 
 public class Car {
-    public static final int STOP_LOWER_BOUNDARY = 0;
-    public static final int STOP_UPPER_BOUNDARY = 3;
     public static final int RUN_LOWER_BOUNDARY = 4;
-    public static final int RUN_UPPER_BOUNDARY = 10;
+
     public static final int START_POINT = 0;
 
     private final int number;
@@ -17,18 +15,16 @@ public class Car {
         this.distance = START_POINT;
     }
 
-    public int getDistance() {
-        return distance;
+    public void initialize() {
+        this.distance = 0;
     }
 
-    public boolean runOrStop(int randomNumber) {
-        if (randomNumber <= STOP_UPPER_BOUNDARY) {
-            return false;
+    public int runOrStop(int randomNumber) {
+        if (randomNumber >= RUN_LOWER_BOUNDARY) {
+            distance++;
         }
 
-        distance++;
-
-        return true;
+        return distance;
     }
 
     @Override

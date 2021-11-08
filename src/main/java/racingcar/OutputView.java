@@ -3,7 +3,8 @@ package racingcar;
 import java.util.List;
 
 public interface OutputView {
-    void showOutput(List<Car> cars);
     void showOutputMessage();
-    void showRound(int round);
+    void showStartOfRound(int round);
+    void showEndOfRound(int round);
+    void showDistanceOfCar(int distance);
 }

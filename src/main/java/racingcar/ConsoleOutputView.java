@@ -1,15 +1,10 @@
 package racingcar;
 
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class ConsoleOutputView implements OutputView{
-
-    @Override
-    public void showOutput(List<Car> cars) {
-        cars.forEach(this::showDistanceOfCar);
-        System.out.println();
-    }
+    private final int STARTING_POINT = 0;
+    private final char PROGRESS_BAR = '-';
 
     @Override
     public void showOutputMessage() {
@@ -17,15 +12,20 @@ public class ConsoleOutputView implements OutputView{
     }
 
     @Override
-    public void showRound(int round) {
-        System.out.printf("Round %d\n", round);
+    public void showStartOfRound(int round) {
+        System.out.printf("Round %d Starts!\n", round);
     }
 
-    private void showDistanceOfCar(Car car) {
-        int distance = car.getDistance();
+    @Override
+    public void showEndOfRound(int round) {
+        System.out.printf("Round %d Is Finished!\n\n", round);
+    }
+
+    public void showDistanceOfCar(int distance) {
         StringBuilder stringBuilder = new StringBuilder();
 
-        IntStream.range(0, distance).forEach(i -> stringBuilder.append('-'));
+        IntStream.range(STARTING_POINT, distance)
+                .forEach(i -> stringBuilder.append(PROGRESS_BAR));
 
         System.out.println(stringBuilder);
     }
