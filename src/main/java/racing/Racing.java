@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static racing.NumberHelper.isLessThanOne;
+
 /**
  * @author han
  */
@@ -16,14 +18,11 @@ public class Racing {
 
     private Map<Integer, List<Car>> logs = new HashMap<>();
 
-    public Racing(Integer cars, Integer attempts) {
-        if (cars == null || cars.intValue() < 1) {
+    public Racing(int cars, int attempts) {
+        if (isLessThanOne(cars) || isLessThanOne(attempts)) {
             throw new IllegalArgumentException();
         }
 
-        if (attempts == null || attempts.intValue() < 1) {
-            throw new IllegalArgumentException();
-        }
         this.cars = createCars(cars);
         this.attempts = attempts;
     }

@@ -12,7 +12,7 @@ public class NumberHelper {
         return random.nextInt(input);
     }
 
-    public static boolean nullOrNegative(Integer input) {
-        return input == null || input.intValue() < 1;
+    public static boolean isLessThanOne(int input) {
+        return input < 1;
     }
 }

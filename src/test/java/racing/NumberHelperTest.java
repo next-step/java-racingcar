@@ -23,10 +23,9 @@ class NumberHelperTest {
     }
 
     @Test
-    @DisplayName("Null or Negative value will return true")
-    void nullOrNegative() {
-        assertThat(NumberHelper.nullOrNegative(null)).isTrue();
-        assertThat(NumberHelper.nullOrNegative(0)).isTrue();
+    @DisplayName("if value is less than one will return true")
+    void isLessThanOne() {
+        assertThat(NumberHelper.isLessThanOne(0)).isTrue();
     }
 
     static Stream<Integer> randomIntegerListProvider() {

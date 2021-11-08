@@ -9,8 +9,8 @@ public class InputView {
     private String carMessage = "자동차 대수는 몇 대 인가요?";
     private String attemptMessage = "시도할 회수는 몇 회 인가요?";
 
-    private Integer cars;
-    private Integer attempts;
+    private int cars;
+    private int attempts;
 
     public Integer getCars() {
         return cars;
@@ -28,7 +28,11 @@ public class InputView {
         this.attempts = parseInputToInteger(scanner.nextLine());
     }
 
-    private Integer parseInputToInteger(String input) {
-        return Integer.parseInt(input);
+    private int parseInputToInteger(String input) {
+        int parseInt = Integer.parseInt(input);
+        if (NumberHelper.isLessThanOne(parseInt)) {
+            throw new IllegalArgumentException();
+        }
+        return parseInt;
     }
 }
