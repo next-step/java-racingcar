@@ -1,6 +1,9 @@
 package racing;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -10,6 +13,8 @@ import java.util.stream.IntStream;
 public class Racing {
     private List<Car> cars;
     private int attempts;
+
+    private Map<Integer, List<Car>> logs = new HashMap<>();
 
     public Racing(Integer cars, Integer attempts) {
         if (cars == null || cars.intValue() < 1) {
@@ -29,6 +34,10 @@ public class Racing {
 
     public int getAttempts() {
         return attempts;
+    }
+
+    public Map<Integer, List<Car>> getLogs() {
+        return logs;
     }
 
     public void play() {
