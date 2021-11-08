@@ -3,10 +3,11 @@ package edu.nextstep.camp;
 import java.util.Objects;
 
 public class Position {
+    private static final int INITIAL_POSITION = 0;
     private int position;
 
-    public static Position of(int position) {
-        return new Position(position);
+    public static Position ofZero() {
+        return new Position(INITIAL_POSITION);
     }
 
     private Position(int position) {

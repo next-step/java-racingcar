@@ -5,12 +5,12 @@ public class Car {
     private final MovePolicy movePolicy;
 
     public Car() {
-        this.position = Position.of(0);
-        this.movePolicy = new DefaultMovePolicy();
+        this.position = Position.ofZero();
+        this.movePolicy = new RandomMovePolicy();
     }
 
     public Car(MovePolicy movePolicy) {
-        this.position = Position.of(0);
+        this.position = Position.ofZero();
         this.movePolicy = movePolicy;
     }
 

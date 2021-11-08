@@ -8,6 +8,6 @@ public class CarTest {
     @Test
     public void create() {
         Car car = new Car();
-        assertThat(car.position()).isEqualTo(Position.of(0));
+        assertThat(car.position()).isEqualTo(Position.ofZero());
     }
 }
