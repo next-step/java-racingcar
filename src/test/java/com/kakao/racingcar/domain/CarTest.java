@@ -3,15 +3,17 @@ package com.kakao.racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.kakao.racingcar.config.CarConfig.MOVE_PERCENTAGE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
     @Test
-    @DisplayName("차에는 생성시에 고유번호가 있다.")
+    @DisplayName("차에는 생성시에 고유번호가 생기며, 위치는 0에서 시작한다.")
     void carIdentifyNumber() {
         Car car = new Car(0);
         assertThat(car.getIdentify()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
@@ -19,7 +21,7 @@ class CarTest {
     void moveSuccess() {
         Car car = new Car(0);
         assertThat(car.getPosition()).isEqualTo(0);
-        car.tryMove(4);
+        car.tryMove(MOVE_PERCENTAGE);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 

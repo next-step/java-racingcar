@@ -1,5 +1,7 @@
 package com.kakao.racingcar.domain;
 
+import com.kakao.racingcar.config.CarConfig;
+
 public class Car {
     private final int identify;
     private int position = 0;

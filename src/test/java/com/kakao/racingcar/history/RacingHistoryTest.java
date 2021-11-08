@@ -1,9 +1,11 @@
 package com.kakao.racingcar.history;
 
 import com.kakao.racingcar.domain.Car;
+import com.kakao.racingcar.domain.CarCollection;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
