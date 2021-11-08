@@ -29,6 +29,6 @@ class NumberHelperTest {
     }
 
     static Stream<Integer> randomIntegerListProvider() {
-        return IntStream.range(0, 100).mapToObj(j -> NumberHelper.getRandomValue(10));
+        return IntStream.range(0, 20).mapToObj(j -> NumberHelper.getRandomValue(10));
     }
 }
