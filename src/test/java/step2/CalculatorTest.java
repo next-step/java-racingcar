@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -13,58 +12,51 @@ import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
 
-    private Calculator calculator;
-
-    @BeforeEach
-    void init() {
-        calculator = new Calculator();
-    }
-
     @Test
     void plus() {
-        int ans = calculator.calculate(new Expression("2 + 3"));
-        assertThat(ans).isEqualTo(5);
+        MyNumber ans = Calculator.calculate(new Expression("2 + 3"));
+        assertThat(ans).isEqualTo(new MyNumber(5));
     }
 
     @Test
     void minus() {
-        int ans = calculator.calculate(new Expression("3 - 2"));
-        assertEquals(1, ans);
+        MyNumber ans = Calculator.calculate(new Expression("3 - 2"));
+        assertEquals(new MyNumber(1), ans);
     }
 
     @Test
     void multiply() {
-        int ans = calculator.calculate(new Expression("3 * 2"));
-        assertEquals(6, ans);
+        MyNumber ans = Calculator.calculate(new Expression("3 * 2"));
+        assertEquals(new MyNumber(6), ans);
     }
 
     @Test
     void divide() {
-        int ans = calculator.calculate(new Expression("6 / 2"));
-        assertEquals(3, ans);
+        MyNumber ans = Calculator.calculate(new Expression("6 / 2"));
+        assertEquals(new MyNumber(3), ans);
     }
 
     @Test
     void longInput() {
-        int ans = calculator.calculate(new Expression("3 + 3 / 2"));
-        assertEquals(3, ans);
+        MyNumber ans = Calculator.calculate(new Expression("3 + 3 / 2"));
+        assertEquals(new MyNumber(3), ans);
     }
 
     @Test
     void nullInput() {
-        assertThatThrownBy(() -> calculator.calculate(new Expression(null)))
+        assertThatThrownBy(() -> Calculator.calculate(new Expression(null)))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void emptyInput() {
-        assertThatThrownBy(() -> calculator.calculate(new Expression("    ")))
+        assertThatThrownBy(() -> Calculator.calculate(new Expression("    ")))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void invalidOperatorInput() {
-        assertThatThrownBy(() -> calculator.calculate(new Expression("3 ^ 2")))
+        assertThatThrownBy(() -> Calculator.calculate(new Expression("3 ^ 2")))
             .isInstanceOf(IllegalArgumentException.class);
     }
 }

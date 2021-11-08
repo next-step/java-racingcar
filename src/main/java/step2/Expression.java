@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Expression {
 
-    private List<Integer> numbers = new LinkedList<>();
+    private List<MyNumber> numbers = new LinkedList<>();
     private List<String> operators = new LinkedList<>();
 
     //생성자
@@ -26,7 +26,7 @@ public class Expression {
 
     private void init(String[] info, int index) {
         if (index % 2 == 0) {
-            numbers.add(Integer.parseInt(info[index]));
+            numbers.add(new MyNumber(info[index]));
         }
         if (index % 2 == 1) {
             operators.add(info[index]);
@@ -38,7 +38,7 @@ public class Expression {
         return !numbers.isEmpty() && !operators.isEmpty();
     }
 
-    public int nextInt() {
+    public MyNumber nextInt() {
         if (numbers.isEmpty()) {
             throw new IllegalArgumentException();
         }

@@ -2,11 +2,11 @@ package step2;
 
 public class Calculator {
 
-    public int calculate(Expression expression) {
-        int ans = expression.nextInt();
+    public static MyNumber calculate(Expression expression) {
+        MyNumber ans = expression.nextInt();
 
         while (expression.canCalculate()) {
-            int second = expression.nextInt();
+            MyNumber second = expression.nextInt();
             String operator = expression.nextOperator();
 
             ans = calculate(operator, ans, second);
@@ -15,18 +15,18 @@ public class Calculator {
         return ans;
     }
 
-    private int calculate(String operator, int first, int second) {
+    private static MyNumber calculate(String operator, MyNumber first, MyNumber second) {
         if (operator.equals("+")) {
-            return first + second;
+            return first.plus(second);
         }
         if (operator.equals("-")) {
-            return first - second;
+            return first.minus(second);
         }
         if (operator.equals("*")) {
-            return first * second;
+            return first.multiply(second);
         }
         if (operator.equals("/")) {
-            return first / second;
+            return first.divide(second);
         }
         throw new IllegalArgumentException();
     }

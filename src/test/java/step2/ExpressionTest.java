@@ -32,8 +32,8 @@ public class ExpressionTest {
 
     @Test
     void nextInt() {
-        int nextInt = new Expression("1 + 2").nextInt();
-        assertEquals(1, nextInt);
+        MyNumber nextInt = new Expression("1 + 2").nextInt();
+        assertEquals(new MyNumber("1"), nextInt);
     }
 
     @Test
