@@ -1,27 +1,25 @@
 package racingcar.collection;
 
-
-import racingcar.Car;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class RaceResult {
-    private final Map<Car, Integer> racingResults = new HashMap<>();
+    private Winners winners;
+    private final List<Race> histories = new ArrayList<>();
 
-    public List<Car> getCars() {
-        return new ArrayList<>(racingResults.keySet());
+    public void addRaceResult(Race result) {
+        histories.add(result);
     }
 
-    public void addResult(Car car) {
-        racingResults.put(car,
-                car.getCurrentPosition()
-                .getPosition());
+    public List<Race> getHistories() {
+        return histories;
     }
 
-    public Integer getCarPositionResult(Car car) {
-        return racingResults.get(car);
+    public void setWinners(Winners winners) {
+        this.winners = winners;
+    }
+
+    public Winners getWinners() {
+        return winners;
     }
 }

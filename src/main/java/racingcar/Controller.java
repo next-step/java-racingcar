@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.collection.RaceHistories;
+import racingcar.collection.RaceResult;
 import racingcar.model.RacingGameRequest;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -13,8 +13,8 @@ public class Controller {
         RacingGameRequest request = inputView.inputRacingGame();
 
         RacingGame game = new RacingGame(request);
-        RaceHistories raceHistories = game.playRace();
+        RaceResult raceResult = game.playRace();
 
-        outputView.printRaceHistories(raceHistories);
+        outputView.printRaceHistories(raceResult);
     }
 }

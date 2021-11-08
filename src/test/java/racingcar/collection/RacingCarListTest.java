@@ -14,7 +14,7 @@ class RacingCarListTest {
     public void 테스트_RacingCarList_participate() {
 
         RacingCarList carList= new RacingCarList();
-        Car car = new Car(new CarTest.TestMoveStrategy());
+        Car car = new Car("", new CarTest.TestMoveStrategy());
         carList.participate(car);
 
         assertTrue(carList.getCars().contains(car));

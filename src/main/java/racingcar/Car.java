@@ -1,14 +1,20 @@
 package racingcar;
 
 import racingcar.collection.CarPosition;
+import racingcar.exception.TooLongCarNameException;
 import racingcar.strategy.MoveStrategy;
 
 public class Car {
     private final MoveStrategy moveStrategy;
 
-    private CarPosition currentPosition = new CarPosition();
+    private final String name;
+    private final CarPosition currentPosition = new CarPosition();
 
-    public Car(MoveStrategy moveStrategy) {
+    public Car(String name, MoveStrategy moveStrategy) {
+        if (name.length() > 5) {
+            throw new TooLongCarNameException();
+        }
+        this.name = name;
         this.moveStrategy = moveStrategy;
     }
 
@@ -17,6 +23,10 @@ public class Car {
             movePosition();
         }
         return currentPosition;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public CarPosition getCurrentPosition() {
