@@ -2,6 +2,9 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -38,13 +41,23 @@ public class CalculatorTest {
     }
 
     @DisplayName("입력값이 NULL 또는 빈 공백이면 예외 발생")
-    @Test
-    void 입력값_널또는공백() {
+    @ParameterizedTest
+    @NullAndEmptySource
+    void 입력값_널또는공백(String input) {
+        assertThatThrownBy(() -> {
+            MyNumber myNumber = new MyNumber(input);
+        }).isInstanceOf(IllegalArgumentException.class)
+        .hasMessageContaining("입력값이 없습니다");
     }
 
     @DisplayName("사칙연산 기호가 아닌 경우 예외 발생")
-    @Test
-    void 입력값_사칙연산기호() {
+    @ParameterizedTest
+    @ValueSource(strings = {"3 ( 5", "3 + 5 = 1", "5 $ 1"})
+    void 입력값_사칙연산기호(String input) {
+        assertThatThrownBy(() -> {
+            MyNumber myNumber = new MyNumber(input);
+        }).isInstanceOf(IllegalArgumentException.class)
+        .hasMessageContaining("사칙연산자가 아닙니다.");
     }
 
 }
