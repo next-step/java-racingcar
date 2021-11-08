@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class RacingManager {
+    private final int INCREMNET_OF_ROUNDS = 1;
     private final int numberOfTrials;
     private final List<Car> cars;
 
@@ -14,14 +15,21 @@ public class RacingManager {
         this.cars = cars;
     }
 
-    public void startRacing(OutputView outputView) {
+    public int startRacing(OutputView outputView) {
         outputView.showOutputMessage();
-        IntStream.rangeClosed(1, numberOfTrials)
-                .forEach( number -> {
-                    outputView.showStartOfRound(number);
+
+        return IntStream.rangeClosed(1, numberOfTrials)
+                .reduce( 0, (countOfRounds, roundNumber) -> {
+                    outputView.showStartOfRound(roundNumber);
                     progressEntireRound(outputView);
-                    outputView.showEndOfRound(number);
+                    outputView.showEndOfRound(roundNumber);
+
+                    return countOfRounds + INCREMNET_OF_ROUNDS;
                 });
+    }
+
+    private void progressEntireRound(OutputView outputView) {
+        cars.forEach( car -> progressRound(car, outputView));
     }
 
     private void progressRound(Car car, OutputView outputView) {
@@ -29,9 +37,5 @@ public class RacingManager {
 
         int distance = car.runOrStop(randomNumber);
         outputView.showDistanceOfCar(distance);
-    }
-
-    private void progressEntireRound(OutputView outputView) {
-        cars.forEach( car -> progressRound(car, outputView));
     }
 }
