@@ -22,21 +22,13 @@ public class Game {
         makeCars();
         for (int now = 0; now < this.time; now++) {
             step();
-            addHistory(now);
+            gameHistory.save(now, cars);
         }
-        saveWinner();
-    }
-
-    private void saveWinner() {
         gameHistory.saveWinner(cars.getWinner());
     }
 
     public GameHistory getGameHistory() {
         return gameHistory;
-    }
-
-    private void addHistory(Integer now) {
-        gameHistory.save(now, cars);
     }
 
     private void makeCars() {
