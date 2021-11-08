@@ -27,8 +27,4 @@ public class CalculatorTest {
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("나눗셈에서 분모는 0이 될 수 없습니다");
     }
-
-
-
-
 }
