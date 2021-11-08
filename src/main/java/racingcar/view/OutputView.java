@@ -1,8 +1,8 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class OutputView {
@@ -22,18 +22,21 @@ public class OutputView {
     }
 
     public static void printResult(Cars cars) {
-        cars.getCars().forEach(OutputView::printCarPosition);
+        List<Integer> carsPosition = cars.carsPosition();
 
+        for (int position : carsPosition) {
+            printPosition(position);
+            newLine();
+        }
         newLine();
     }
 
-    private static void printCarPosition(Car car) {
-        IntStream.rangeClosed(1, car.currentPosition())
+    private static void printPosition(int positionCount) {
+        IntStream.rangeClosed(1, positionCount)
                 .mapToObj(value -> MOVE_SYMBOL)
                 .forEach(System.out::print);
-
-        newLine();
     }
+
 
     private static void newLine() {
         System.out.println();

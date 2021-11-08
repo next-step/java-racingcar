@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import racingcar.exception.CreateCarCountException;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -35,8 +35,11 @@ public class Cars {
         cars.forEach(car -> car.move(strategy.generateNumber()));
     }
 
-    public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
+    public List<Integer> carsPosition() {
+        List<Integer> carsPosition = new ArrayList<>();
+        cars.forEach(car -> carsPosition.add(car.currentPosition()));
+
+        return carsPosition;
     }
 
     @Override
