@@ -3,10 +3,14 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
+import racingcar.domain.CarMovingNumberException;
 import racingcar.domain.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
     private Car car;
@@ -30,9 +34,10 @@ class CarTest {
         assertThat(car.currentPosition()).isEqualTo(Position.from(1).getPosition());
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("Car move exception test")
-    void moveException() {
-
+    @ValueSource(ints = {-1, -2, -3, 10, 11})
+    void moveException(int number) {
+        assertThatThrownBy(() -> car.move(number)).isInstanceOf(CarMovingNumberException.class);
     }
 }
