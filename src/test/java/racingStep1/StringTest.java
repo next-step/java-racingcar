@@ -1,4 +1,4 @@
-package step1;
+package racingStep1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package step2;
+package racingStep2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -34,7 +34,7 @@ public class StringCalculatorTest {
     @Test
     public void blankExceptionTest() {
         assertThatIllegalArgumentException().isThrownBy(() ->
-                calculator.execute("   "));
+                calculator.execute("null"));
     }
 
     @DisplayName("연산자 표시가 잘못 되어 있을 때 오류 테스트")
