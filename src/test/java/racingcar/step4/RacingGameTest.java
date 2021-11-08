@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.step4.config.MoveConfig;
+import racingcar.step4.domain.Car;
 import racingcar.step4.domain.Cars;
 import racingcar.step4.move.Moving;
 import racingcar.step4.service.RacingGame;
@@ -51,6 +52,14 @@ public class RacingGameTest {
             racingGame.race(moving);
         }
         assertThat(racingGame.isEndGame()).isTrue();
+    }
+
+    @Test
+    @DisplayName("자동차 이름을 구분자로 쪼개기")
+    void nameSplit() {
+        String[] arr = {"k3", "k5", "k7"};
+        RacingGame racingGame = new RacingGame("k3,k5,k7", 5, 3);
+        assertThat(racingGame.getCars().equals(new Cars(arr, 3))).isTrue();
     }
 
 }
