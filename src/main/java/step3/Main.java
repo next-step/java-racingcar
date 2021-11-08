@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Input input = new Input();
+        input.inputView();
         ArrayList<String> inputCarList = new CarList().makeCarList(input.getCountOfCar());
         Output output = new Output(inputCarList, input.getCountOfTry());
         output.outputView();
