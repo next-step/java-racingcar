@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class StringCalculatorTest {
@@ -39,12 +40,10 @@ class StringCalculatorTest {
     @ParameterizedTest
     void throwExceptionWhenEmptyFormula(String formula, String expectedMessage) {
         // when
-        IllegalArgumentException illegalArgumentException = assertThrows(
-                IllegalArgumentException.class, () -> StringCalculator.calculate(formula)
-        );
-
         // then
-        assertThat(illegalArgumentException).hasMessageContaining(expectedMessage);
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> StringCalculator.calculate(formula))
+                .withMessageContaining(expectedMessage);
     }
 
     private static Stream<Arguments> singleOperatorProvider() {
