@@ -14,16 +14,17 @@
     - Input 받은 값 전달 객체(Rule) 생성 후 return
 - UserInput 구현
   - 받은 값 validation
-- Rule 구현
-  - from(Long count, Long time) 정적 팩토리 메서드 구현
-  - getCount() 구현
+- GameInformation 구현
+  - create(String namesStr, Long time) 정적 팩토리 메서드 구현
+  - getNames() 구현
   - getTime() 구현
-- Input Validator Util 구현
-  - null check 구현
-  - string null or empty 구현
-  - isNumber() 구현
+- Name 구현
+  - 글자 길이 valid
+- Names 구현
+  - Name을 포장하는 1급 객체
+  - addNames() 문자열을 ","로 분리해서 Name List에 추가 
 - Game 구현
-  - Rule를 통해 Game 생성
+  - GameInformation를 통해 Game 생성
   - Game 생성 시 RuleDto validation  
   - Game 전체 실행 메서드 구현
   - 1초 메서드 step() 구현
