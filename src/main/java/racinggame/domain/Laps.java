@@ -6,7 +6,7 @@ public class Laps {
 
     public Laps(int count) {
         this.count = count;
-        this.tryCount = 0;
+        this.tryCount = 1;
     }
 
     public boolean isGoal() {
