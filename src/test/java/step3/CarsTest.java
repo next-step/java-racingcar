@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarsTest {
 
@@ -38,7 +37,7 @@ class CarsTest {
     @ParameterizedTest
     @CsvSource(value = {"miz,ki,bi:0,1,2:true:1,2,3"}, delimiter = ':')
     void moveTest(String nameStr, String positionStr, boolean move, String expectPositionStr) {
-        Cars nowCars = createCars(nameStr,positionStr,move);
+        Cars nowCars = createCars(nameStr, positionStr, move);
 
         Cars actualCars = nowCars.move();
 
@@ -51,7 +50,7 @@ class CarsTest {
     @ParameterizedTest
     @CsvSource(value = {"miz,ki,bi:1,2,3"}, delimiter = ':')
     void printTest(String nameStr, String positionStr) {
-        Cars nowCars = createCars(nameStr,positionStr,true);
+        Cars nowCars = createCars(nameStr, positionStr, true);
         nowCars.print();
     }
 
@@ -64,7 +63,7 @@ class CarsTest {
         String[] positions = positionStr.split(",");
 
         List<Car> carList = new ArrayList<>();
-        for(int i = 0; i < positions.length; i++) {
+        for (int i = 0; i < positions.length; i++) {
             carList.add(Car.create(moveStrategy, namesList.get(i), Position.create(Integer.parseInt(positions[i]))));
         }
 

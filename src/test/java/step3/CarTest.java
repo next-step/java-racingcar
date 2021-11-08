@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private Name name = new Name("miz");
+    private final Name name = new Name("miz");
 
     @DisplayName("getPosition 을 통해 현재 위치를 받아 올 수 있다.")
     @Test

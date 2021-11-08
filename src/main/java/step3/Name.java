@@ -9,10 +9,14 @@ public class Name {
     private final String name;
 
     public Name(String name) {
-        if(name.length() < 1 || name.length() > 5) {
+        if (name.length() < 1 || name.length() > 5) {
             throw new IllegalArgumentException(NAME_LENGTH_EXCEPTION_MESSAGE);
         }
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

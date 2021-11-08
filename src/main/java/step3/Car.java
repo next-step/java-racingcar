@@ -32,7 +32,11 @@ public class Car {
         if (moveStrategy.test()) {
             now = this.position.move();
         }
-        return create(moveStrategy,name,now);
+        return create(moveStrategy, name, now);
+    }
+
+    public String carToString() {
+        return name.getName() + " : " + position.positionToString();
     }
 
     @Override

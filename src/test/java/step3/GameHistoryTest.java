@@ -6,9 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -55,7 +53,7 @@ class GameHistoryTest {
         String[] positions = positionStr.split(",");
 
         List<Car> carList = new ArrayList<>();
-        for(int i = 0; i < positions.length; i++) {
+        for (int i = 0; i < positions.length; i++) {
             carList.add(Car.create(moveStrategy, namesList.get(i), Position.create(Integer.parseInt(positions[i]))));
         }
 

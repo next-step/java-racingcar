@@ -17,7 +17,7 @@ public class Names {
         });
     }
 
-    private void addName(Name name){
+    private void addName(Name name) {
         names.add(name);
     }
 

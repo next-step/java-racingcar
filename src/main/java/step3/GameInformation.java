@@ -1,7 +1,5 @@
 package step3;
 
-import step4.UserInput;
-
 public class GameInformation {
 
     private final Names names;
