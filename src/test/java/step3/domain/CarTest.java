@@ -1,6 +1,8 @@
 package step3.domain;
 
 import org.junit.jupiter.api.Test;
+import step3.service.MoveNumberGenerator;
+import step3.service.NonMoveNumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,15 +27,10 @@ public class CarTest {
     @Test
     void 랜덤_값이_4이상이면_한칸_전진한다() {
         //given
-        Car car = new Car() {
-            @Override
-            protected boolean isMove() {
-                return true;
-            }
-        };
+        Car car = Car.create();
         assertThat(car.getPosition()).isEqualTo(0);
         //when
-        car.move();
+        car.move(new MoveNumberGenerator());
         //then
         assertThat(car.getPosition()).isEqualTo(1);
     }
@@ -41,15 +38,10 @@ public class CarTest {
     @Test
     void 랜덤_값이_4미만이면_정지한다() {
         //given
-        Car car = new Car() {
-            @Override
-            protected boolean isMove() {
-                return false;
-            }
-        };
+        Car car = Car.create();
         assertThat(car.getPosition()).isEqualTo(0);
         //when
-        car.move();
+        car.move(new NonMoveNumberGenerator());
         //then
         assertThat(car.getPosition()).isEqualTo(0);
     }

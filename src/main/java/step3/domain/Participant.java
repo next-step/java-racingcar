@@ -1,9 +1,15 @@
 package step3.domain;
 
+import step3.domain.history.RoundHistory;
+import step3.service.IntNumberGenerator;
+
 import java.util.Objects;
 
 public class Participant {
-    private final Cars cars;
+    private Cars cars;
+
+    private Participant() {
+    }
 
     private Participant(Cars cars) {
         validateIsEmpty(cars);
@@ -14,12 +20,8 @@ public class Participant {
         return new Participant(cars);
     }
 
-    public void move() {
-        cars.move();
-    }
-
-    public void showPosition() {
-        cars.showPosition();
+    public RoundHistory move(IntNumberGenerator generator) {
+        return new RoundHistory(cars.move(generator));
     }
 
     private void validateIsEmpty(Cars cars) {

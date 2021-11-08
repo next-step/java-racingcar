@@ -1,5 +1,7 @@
 package step3.domain;
 
+import step3.domain.history.GameHistory;
+import step3.service.RandomIntNumberGenerator;
 import step3.view.ResultView;
 
 public class RacingGame {
@@ -10,7 +12,7 @@ public class RacingGame {
     }
 
     private RacingGame(int round, Participant participant) {
-        this.round = GameRound.create(round);
+        this.round = GameRound.create(round, new RandomIntNumberGenerator());
         this.participant = participant;
     }
 
@@ -20,6 +22,7 @@ public class RacingGame {
 
     public void start() {
         ResultView.start();
-        round.start(participant);
+        GameHistory gameHistory = round.start(participant);
+        ResultView.result(gameHistory);
     }
 }

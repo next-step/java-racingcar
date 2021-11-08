@@ -1,13 +1,13 @@
 package step3.domain;
 
-import step3.utils.RandomUtils;
+import step3.domain.history.CarHistory;
+import step3.service.IntNumberGenerator;
 
 public class Car {
-    private static final String DASH = "-";
     private static final int MOVE_CONDITION = 4;
     private int position;
 
-    protected Car() {
+    private Car() {
         this.position = 0;
     }
 
@@ -15,29 +15,18 @@ public class Car {
         return new Car();
     }
 
-    public void move() {
-        if (isMove()) {
+    public CarHistory move(IntNumberGenerator generator) {
+        if (isMove(generator)) {
             position++;
         }
-    }
-
-    protected boolean isMove() {
-        return RandomUtils.nextInt() >= MOVE_CONDITION;
-    }
-
-    public void showPositionToDash() {
-        System.out.println(repeatDash());
-    }
-
-    private String repeatDash() {
-        StringBuilder sb = new StringBuilder();
-        for (int count = 0; count < position; count++) {
-            sb.append(DASH);
-        }
-        return sb.toString();
+        return new CarHistory(this);
     }
 
     public int getPosition() {
         return this.position;
+    }
+
+    private boolean isMove(IntNumberGenerator generator) {
+        return generator.generate() >= MOVE_CONDITION;
     }
 }

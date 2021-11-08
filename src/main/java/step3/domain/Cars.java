@@ -1,30 +1,32 @@
 package step3.domain;
 
+import step3.domain.history.CarHistory;
+import step3.service.IntNumberGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> cars = new ArrayList<>();
+    private List<Car> carList;
 
-    public Cars(List<Car> cars) {
-        validateIsEmpty(cars);
-        this.cars = cars;
+    private Cars() {
+    }
+
+    private Cars(List<Car> carList) {
+        validateIsEmpty(carList);
+        this.carList = carList;
     }
 
     public static Cars join(List<Car> cars) {
         return new Cars(cars);
     }
 
-    public void move() {
-        for (Car car : cars) {
-            car.move();
+    public List<CarHistory> move(IntNumberGenerator generator) {
+        List<CarHistory> carHistoryList = new ArrayList<>();
+        for (Car car : carList) {
+            carHistoryList.add(car.move(generator));
         }
-    }
-
-    public void showPosition() {
-        for (Car car : cars) {
-            car.showPositionToDash();
-        }
+        return carHistoryList;
     }
 
     private void validateIsEmpty(List<Car> cars) {

@@ -1,28 +1,33 @@
 package step3.domain;
 
-import step3.view.ResultView;
+import step3.domain.history.GameHistory;
+import step3.service.IntNumberGenerator;
 
 public class GameRound {
     private static final int MINIMUM_ROUND = 0;
     private int round;
+    private IntNumberGenerator generator;
+    private GameHistory history;
 
     private GameRound() {
     }
 
-    private GameRound(int round) {
+    private GameRound(int round, IntNumberGenerator generator) {
         validateIsMinimum(round);
         this.round = round;
+        this.generator = generator;
+        this.history = GameHistory.create();
     }
 
-    public static GameRound create(int round) {
-        return new GameRound(round);
+    public static GameRound create(int round, IntNumberGenerator generator) {
+        return new GameRound(round, generator);
     }
 
-    public void start(Participant participant) {
+    public GameHistory start(Participant participant) {
         while (round-- != MINIMUM_ROUND) {
-            participant.move();
-            ResultView.result(participant);
+            history.record(round, participant.move(generator));
         }
+        return history;
     }
 
     private void validateIsMinimum(int round) {
