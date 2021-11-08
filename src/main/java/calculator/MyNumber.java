@@ -34,6 +34,12 @@ public class MyNumber {
         return new MyNumber(this.number / other.number);
     }
 
+    private void checkDenominator(int denominator) {
+        if(denominator == 0) {
+            throw new IllegalArgumentException("분모는 0이 될 수 없습니다.");
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -45,11 +51,5 @@ public class MyNumber {
     @Override
     public int hashCode() {
         return Objects.hash(number);
-    }
-
-    private void checkDenominator(int denominator) {
-        if(denominator == 0) {
-            throw new IllegalArgumentException("분모는 0이 될 수 없습니다.");
-        }
     }
 }
