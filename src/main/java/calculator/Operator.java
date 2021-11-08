@@ -1,7 +1,6 @@
 package calculator;
 
 import java.util.Arrays;
-import java.util.Optional;
 import java.util.function.BiFunction;
 
 public enum Operator {
@@ -26,6 +25,13 @@ public enum Operator {
     }
 
     public int calculate(int a, int b) {
+        checkValidate(b);
         return this.biFunction.apply(a, b);
+    }
+
+    private void checkValidate(int b) {
+        if ("/".equals(name) && b == 0) {
+            throw new IllegalArgumentException("0으로는 숫자를 나눌 수 없습니다.");
+        }
     }
 }
