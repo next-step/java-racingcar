@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public class OutputView {
     private final static String SKID_MARK_CHARACTER = "-";
     private final static String EXECUTION_RESULT_MESSAGE = "실행 결과";
+
     private final static String WINNERS_MESSAGE = "가 최종 우승했습니다.";
 
     public void printRaceHistories(RaceResult result) {
