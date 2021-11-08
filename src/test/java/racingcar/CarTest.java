@@ -19,14 +19,20 @@ class CarTest {
     @Test
     @DisplayName("전진")
     void move() {
-        car.move(() -> 5);
+        car.move(5);
         assertThat(car.currentPosition()).isEqualTo(Position.from(2).getPosition());
     }
 
     @Test
     @DisplayName("정지")
     void stop() {
-        car.move(() -> 3);
+        car.move(3);
         assertThat(car.currentPosition()).isEqualTo(Position.from(1).getPosition());
+    }
+
+    @Test
+    @DisplayName("Car move exception test")
+    void moveException() {
+
     }
 }

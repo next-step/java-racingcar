@@ -20,8 +20,8 @@ public class Car {
         return new Car(Position.from(position));
     }
 
-    public void move(MovingStrategy movingStrategy) {
-        if (movingStrategy.generateNumber() > MOVE_CRITERIA) {
+    public void move(int number) {
+        if (number > MOVE_CRITERIA) {
             position.move(MOVE_VALUE);
         }
     }

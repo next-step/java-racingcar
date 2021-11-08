@@ -39,7 +39,7 @@ public class Cars implements Comparable<Cars> {
     }
 
     public void move(MovingStrategy strategy) {
-        cars.forEach(car -> car.move(strategy));
+        cars.forEach(car -> car.move(strategy.generateNumber()));
     }
 
     public int size() {
