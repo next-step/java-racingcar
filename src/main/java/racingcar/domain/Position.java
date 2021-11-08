@@ -3,6 +3,8 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Position {
+    private static final int INIT_POSITION = 0;
+
     private final int position;
 
     private Position(int position) {
@@ -11,6 +13,10 @@ public class Position {
 
     public static Position from(int position) {
         return new Position(position);
+    }
+
+    public static Position init() {
+        return new Position(INIT_POSITION);
     }
 
     public Position move(int moveValue) {

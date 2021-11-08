@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Car {
+    private static final int MOVE_CRITERIA = 4;
     private static final int MOVE_VALUE = 1;
 
     private Position position;
@@ -12,7 +13,7 @@ public class Car {
     }
 
     public static Car from() {
-        return new Car(Position.from(MOVE_VALUE));
+        return new Car(Position.init());
     }
 
     public static Car from(int position) {
@@ -20,7 +21,7 @@ public class Car {
     }
 
     public void move(MovingStrategy movingStrategy) {
-        if (movingStrategy.move()) {
+        if (movingStrategy.generateNumber() > MOVE_CRITERIA) {
             position = position.move(MOVE_VALUE);
         }
     }
