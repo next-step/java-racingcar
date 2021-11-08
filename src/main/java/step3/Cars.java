@@ -25,6 +25,11 @@ public class Cars {
         return new Cars(cars, moveStrategy);
     }
 
+    public void print() {
+        this.cars.stream()
+                .forEach(car -> System.out.println(car.carToString()));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

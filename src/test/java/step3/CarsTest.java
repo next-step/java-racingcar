@@ -47,6 +47,14 @@ class CarsTest {
         assertThat(actualCars).isEqualTo(expect);
     }
 
+    @DisplayName("print() name : -- 형식으로 프린트 한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"miz,ki,bi:1,2,3"}, delimiter = ':')
+    void printTest(String nameStr, String positionStr) {
+        Cars nowCars = createCars(nameStr,positionStr,true);
+        nowCars.print();
+    }
+
     private Cars createCars(String nameStr, String positionStr, boolean move) {
         MoveStrategy moveStrategy = () -> move;
         Names names = new Names();

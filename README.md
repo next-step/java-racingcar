@@ -29,7 +29,7 @@
   - Game 전체 실행 메서드 구현
   - 1초 메서드 step() 구현
 - GameHistory 구현
-   - save(time, List<Long>) 게임 진행 내역 저장
+   - save(time, Cars) 게임 진행 내역 저장
    - getHistory(time) 을 통해 내역을 제공한다.
    - isValid(time) 히스토리가 없으면 illegegalArgument Expception 발생
 - Car 구현
@@ -37,6 +37,7 @@
   - moveOrStop() 함수 구현 - 불변으로 관리하기 위해 변경 후 Car 반환.
 - Cars 구현
   - move() 함수 호출 시 내부에 car의 moveOrStop() 함수 호출 후 Cars 반환
+  - print() 함수 호출 시 각 자동차의 위치 프린트
 - Result view 구현
   - view() 를 호출하면 "실행 결과"를 프린트 한다.
   - GameHistory를 받으면 순서대로 프린트 한다.
