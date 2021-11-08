@@ -16,7 +16,7 @@ public class Input {
 
     public Integer getCountOfCar() { return countOfCar;}
 
-    public void Input() {
+    public void inputView() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("자동차 대수는 몇 대 인가요?");
