@@ -1,11 +1,15 @@
 package step2;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringCalculatorTest {
     @Test
+    @DisplayName("덧셈 테스트")
     void plus() {
-
+        assertThat(Calculator.caulate("1 + 2")).isEqualTo(3);
     }
 
     @Test
