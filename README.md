@@ -49,12 +49,17 @@ ResultView : 게임의 상태를 알려주는 객체
 
 * void show()
 * void winner()
-* void write()
+* void append(List\<Vehicle\> vehicles)
 
 Vehicle : 차량에 대한 객체
 
-* void moveOrNot()
 * VehicleInfo info()
+* void moveOrNot()
+
+VehicleInfo : 차량의 상태에 대한 객체
+
+* String name()
+* Integer position()
 
 VehicleFuel : 차량이 움직일 수 있는지 판단하는 객체
 
