@@ -11,7 +11,7 @@ public class OperatorTest {
         //given
         Operator operator = Operator.of("+");
         //when
-        int result = operator.calculate(Number.of("1"), Number.of("2"));
+        int result = operator.calculate(1, 2);
         //then
         assertThat(result).isEqualTo(3);
     }
@@ -21,7 +21,7 @@ public class OperatorTest {
         //given
         Operator operator = Operator.of("-");
         //when
-        int result = operator.calculate(Number.of("1"), Number.of("2"));
+        int result = operator.calculate(1, 2);
         //then
         assertThat(result).isEqualTo(-1);
     }
@@ -31,7 +31,7 @@ public class OperatorTest {
         //given
         Operator operator = Operator.of("*");
         //when
-        int result = operator.calculate(Number.of("1"), Number.of("2"));
+        int result = operator.calculate(1, 2);
         //then
         assertThat(result).isEqualTo(2);
     }
@@ -41,7 +41,7 @@ public class OperatorTest {
         //given
         Operator operator = Operator.of("/");
         //when
-        int result = operator.calculate(Number.of("1"), Number.of("2"));
+        int result = operator.calculate(1, 2);
         //then
         assertThat(result).isEqualTo(0);
     }

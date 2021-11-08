@@ -29,8 +29,8 @@ public class Formula {
         return currentResult;
     }
 
-    private int calculate(int operand1, Operator operator, int operand2) {
-        return operator.calculate(Number.of(operand1), Number.of(operand2));
+    private int calculate(int firstNumber, Operator operator, int secondNumber) {
+        return operator.calculate(firstNumber, secondNumber);
     }
 
     private String[] splitElements(String value) {
