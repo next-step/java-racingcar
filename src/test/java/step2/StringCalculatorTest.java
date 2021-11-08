@@ -9,7 +9,7 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("덧셈 테스트")
     void plus() {
-        assertThat(Calculator.caulate("1 + 2")).isEqualTo(3);
+        assertThat(Calculator.calculate("1 + 2")).isEqualTo(3);
     }
 
     @Test
