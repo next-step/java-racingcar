@@ -4,12 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingStep3.domain.RacingCar;
+import racingStep3.service.Validation;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class carMethodTest {
+public class CarMethodTest {
 
     private RacingCar racingCar;
 
@@ -23,7 +24,7 @@ public class carMethodTest {
     public void forwardTest() {
         racingCar.moveOrNot(5);
 
-        assertThat(racingCar.getPosition()).isEqualTo(1);
+        assertThat(racingCar.getLocation()).isEqualTo(1);
     }
 
     @Test
@@ -31,7 +32,7 @@ public class carMethodTest {
     public void stopTest() {
         racingCar.moveOrNot(2);
 
-        assertThat(racingCar.getPosition()).isEqualTo(0);
+        assertThat(racingCar.getLocation()).isEqualTo(0);
     }
 
     @Test
