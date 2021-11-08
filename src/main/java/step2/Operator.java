@@ -7,10 +7,10 @@ import static java.lang.String.format;
 import static java.util.Arrays.stream;
 
 public enum Operator {
-    PLUS("+", (a, b) -> a + b),
-    MINUS("-", (a, b) -> a - b),
-    MULTIPLY("*", (a, b) -> a * b),
-    DIVIDE("/", (a, b) -> a / b);
+    PLUS("+", (leftNum, rightNum) -> leftNum + rightNum),
+    MINUS("-", (leftNum, rightNum) -> leftNum - rightNum),
+    MULTIPLY("*", (leftNum, rightNum) -> leftNum * rightNum),
+    DIVIDE("/", (leftNum, rightNum) -> leftNum / rightNum);
 
     private final String strOperator;
     private final BiFunction<Integer, Integer, Integer> operate;
@@ -33,7 +33,7 @@ public enum Operator {
                 .anyMatch(operator -> operator.equals(source));
     }
 
-    public int operate(int a, int b) {
-        return operate.apply(a, b);
+    public int operate(int leftNum, int rightNum) {
+        return operate.apply(leftNum, rightNum);
     }
 }
