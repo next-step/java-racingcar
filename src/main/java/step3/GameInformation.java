@@ -14,7 +14,7 @@ public class GameInformation {
         Names names = new Names();
         names.addNames(userInput.getNames());
         Integer time = Integer.parseInt(userInput.getTimeStr());
-        return new GameInformation(new Names(), time);
+        return new GameInformation(names, time);
     }
 
     public static GameInformation create(String namesStr, Integer time) {

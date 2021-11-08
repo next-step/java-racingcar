@@ -27,6 +27,10 @@ public class Car {
         return position;
     }
 
+    public Name getName() {
+        return name;
+    }
+
     public Car moveOrStop() {
         Position now = this.position;
         if (moveStrategy.test()) {
@@ -36,7 +40,7 @@ public class Car {
     }
 
     public String carToString() {
-        return name.getName() + " : " + position.positionToString();
+        return name.toString() + " : " + position.positionToString();
     }
 
     @Override

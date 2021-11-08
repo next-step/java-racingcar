@@ -24,6 +24,10 @@ public class Position {
         return new Position(this.position + 1);
     }
 
+    public Integer getNow() {
+        return position;
+    }
+
     public String positionToString() {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < position; i++) {

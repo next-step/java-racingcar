@@ -28,6 +28,8 @@
   - Game 생성 시 RuleDto validation  
   - Game 전체 실행 메서드 구현
   - 1초 메서드 step() 구현
+- Winner 구현
+  - toString() 호출 시 List<Name> 을 "," 로 join해서 반환 
 - GameHistory 구현
    - save(time, Cars) 게임 진행 내역 저장
    - getHistory(time) 을 통해 내역을 제공한다.

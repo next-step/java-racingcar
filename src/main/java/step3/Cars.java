@@ -1,6 +1,8 @@
 package step3;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -54,5 +56,21 @@ public class Cars {
         return "Cars{" +
                 "cars=" + cars +
                 '}';
+    }
+
+    public Winners getWinner() {
+        Position winPosition = getWinPosition();
+        List<Name> winnerNameList = cars.stream()
+                .filter(car -> car.getPosition().equals(winPosition))
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        return Winners.create(winnerNameList);
+    }
+
+    private Position getWinPosition() {
+        return cars.stream()
+                .map(car -> car.getPosition())
+                .max(Comparator.comparing(position -> position.getNow()))
+                .orElseThrow(NoSuchElementException::new);
     }
 }

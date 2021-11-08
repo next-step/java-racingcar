@@ -18,11 +18,15 @@ class GameInformationTest {
         assertThat(gameInformation.getTime()).isEqualTo(expectTime);
     }
 
-    @DisplayName("from() 메서드는 정상적으로 RuleDto를 반환한다")
+    @DisplayName("create() 메서드는 정상적으로 GameInformation를 반환한다")
     @ParameterizedTest
     @CsvSource(value = {"kay,may:3:4:3", "kay,may:6:5:6"}, delimiter = ':')
-    void getTimeTest(String namesStr, Integer time, Integer expectCount, Integer expectTime) {
-        GameInformation gameInformation = GameInformation.create(namesStr, time);
+    void getTimeTest(String namesStr, String time, Integer expectCount, Integer expectTime) {
+        GameInformation gameInformation = GameInformation.create(namesStr, Integer.parseInt(time));
+
+        assertThat(gameInformation.getTime()).isEqualTo(expectTime);
+
+        gameInformation = GameInformation.create(UserInput.create(namesStr, time));
 
         assertThat(gameInformation.getTime()).isEqualTo(expectTime);
     }
