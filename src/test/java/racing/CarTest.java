@@ -17,8 +17,14 @@ class CarTest {
         private int step = 0;
 
         public int forward(int step) {
-            this.step += step;
+            if (isForward(step)) {
+                this.step += 1;
+            }
             return this.step;
+        }
+
+        private boolean isForward(int step) {
+            return step > 4;
         }
     }
 
@@ -33,7 +39,7 @@ class CarTest {
     @DisplayName(value = "전진 테스트")
     void forwards() {
         assertThat(car.forward(0)).isEqualTo(0);
-        assertThat(car.forward(1)).isEqualTo(1);
-        assertThat(car.forward(10)).isEqualTo(11);
+        assertThat(car.forward(1)).isEqualTo(0);
+        assertThat(car.forward(10)).isEqualTo(1);
     }
 }
