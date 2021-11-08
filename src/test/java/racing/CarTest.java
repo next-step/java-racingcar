@@ -23,15 +23,15 @@ class CarTest {
     @Test
     @DisplayName(value = "전진 테스트")
     void forwards() {
-        assertThat(car.forward(0)).isEqualTo(0);
-        assertThat(car.forward(1)).isEqualTo(0);
-        assertThat(car.forward(10)).isEqualTo(1);
+        assertThat(car.getInstanceByForward(0).getStep()).isEqualTo(0);
+        assertThat(car.getInstanceByForward(1).getStep()).isEqualTo(0);
+        assertThat(car.getInstanceByForward(10).getStep()).isEqualTo(1);
     }
 
     @ParameterizedTest(name = "Random value 를 통한 전진 테스트")
     @MethodSource("racing.NumberHelperTest#randomIntegerListProvider")
     void forwardsWithRandom(int random) {
         boolean isForward = random > 4;
-        assertThat(car.forward(random) == 1).isEqualTo(isForward);
+        assertThat(car.getInstanceByForward(random).getStep() == 1).isEqualTo(isForward);
     }
 }
