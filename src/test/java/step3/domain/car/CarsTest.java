@@ -24,11 +24,11 @@ class CarsTest {
     void goTest(int inputPower, int moveDistance) {
         //given
         List<Car> inputCars = createCars(LOCATION);
-        Cars cars = new Cars(inputCars, () -> inputPower);
+        Cars cars = new Cars(inputCars);
 
         //when
         for (int i = 0; i < ROUND_COUNT; i++) {
-            cars.go();
+            cars.go(() -> inputPower);
         }
 
         //when

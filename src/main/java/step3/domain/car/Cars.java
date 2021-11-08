@@ -4,25 +4,38 @@ import step3.domain.board.RoundBoard;
 import step3.domain.power.Engine;
 
 import java.util.List;
+import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.toList;
 import static step3.utils.ValidationUtils.checkArgument;
 
 public class Cars {
 
-    private final List<Car> cars;
-    private final Engine engine;
+    private static final int DEFAULT_LOCATION = 0;
 
-    public Cars(List<Car> cars, Engine engine) {
-        checkArgument(cars != null, "cars is required");
-        checkArgument(engine != null, "engine is required");
+    private final List<Car> cars;
+
+    public Cars(List<Car> cars) {
+        checkArguments(cars);
         this.cars = cars;
-        this.engine = engine;
     }
 
-    public void go() {
+    private void checkArguments(List<Car> cars) {
+        checkArgument(cars != null, "cars is required");
+    }
+
+    public static Cars of(Integer carCount) {
+        checkArgument(carCount != null, "carCount is required");
+        List<Car> cars = Stream.generate(() -> new Car(Location.placeOn(DEFAULT_LOCATION)))
+                .limit(carCount)
+                .collect(toList());
+        return new Cars(cars);
+    }
+
+    public void go(Engine engine) {
         cars.forEach(car -> {
-            int generatedPower = engine.generatePower();
-            car.go(generatedPower);
+            int power = engine.generatePower();
+            car.go(power);
         });
     }
 

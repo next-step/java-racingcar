@@ -5,6 +5,7 @@ import step3.domain.board.RoundBoard;
 import java.util.Objects;
 
 import static step3.utils.ValidationUtils.checkArgument;
+import static step3.utils.ValidationUtils.checkPositive;
 
 public class Location {
 
@@ -24,16 +25,14 @@ public class Location {
     }
 
     private Location(Integer location, Integer interval) {
-        checkArgument(location != null, "location is required");
-        checkPositive(interval);
+        checkArguments(location, interval);
         this.location = location;
         this.interval = interval;
     }
 
-    private void checkPositive(Integer interval) {
-        if (interval == null || interval < MIN_POSITIVE_VALUE) {
-            throw new IllegalArgumentException("interval is not Positive");
-        }
+    private void checkArguments(Integer location, Integer interval) {
+        checkArgument(location != null, "location is required");
+        checkPositive(interval, "interval is not Positive");
     }
 
     public void goForward() {

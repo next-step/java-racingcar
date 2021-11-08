@@ -1,6 +1,7 @@
 package step3.ui;
 
 import step3.application.GameDirector;
+import step3.application.Round;
 import step3.domain.board.GameBoard;
 
 import java.util.Scanner;
@@ -16,14 +17,13 @@ public class Stadium {
         System.out.println("시도할 회수는 몇 회 인가요?");
         Integer roundSize = Integer.parseInt(SCANNER.nextLine());
 
-        GameBoard gameBoard = new GameBoard();
-        playGame(carCount, roundSize, gameBoard);
+        GameBoard gameBoard = playGame(carCount, roundSize);
         showGame(gameBoard);
     }
 
-    private static void playGame(Integer carCount, Integer roundSize, GameBoard gameBoard) {
-        GameDirector gameDirector = new GameDirector(gameBoard);
-        gameDirector.playGame(carCount, roundSize);
+    private static GameBoard playGame(Integer carCount, Integer roundSize) {
+        GameDirector gameDirector = new GameDirector(carCount, new Round(roundSize));
+        return gameDirector.playGame();
     }
 
     private static void showGame(GameBoard gameBoard) {
