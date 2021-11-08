@@ -13,6 +13,10 @@ public class Laps {
         return tryCount >= count;
     }
 
+    public int getCount() {
+        return count;
+    }
+
     public void passStartLine() {
         tryCount++;
     }
