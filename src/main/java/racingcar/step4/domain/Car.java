@@ -14,16 +14,18 @@ public class Car {
 
     private static final int MAX_NUM = 9;
     private static final int MIN_NUM = 4;
+    private String name;
     private int position;
 
-    public Car() {
-        this(1);
+    public Car(String name) {
+        this(name, 1);
     }
 
-    public Car(int position) {
+    public Car(String name, int position) {
+        carNamingCheck(name);
+        this.name = name;
         this.position = position;
     }
-
     public int getPosition() {
         return position;
     }
@@ -32,6 +34,12 @@ public class Car {
     public void move(Moving moving) {
         if (moving.isMovable()) {
             this.position++;
+        }
+    }
+
+    private void carNamingCheck(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException();
         }
     }
 
