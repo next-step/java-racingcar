@@ -1,7 +1,5 @@
 package racing;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -23,6 +21,6 @@ class NumberHelperTest {
     }
 
     static Stream<Integer> randomIntegerListProvider() {
-        return IntStream.range(0, 100).mapToObj(j -> NumberHelper.getRandomValue());
+        return IntStream.range(0, 100).mapToObj(j -> NumberHelper.getRandomValue(10));
     }
 }
