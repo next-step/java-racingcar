@@ -5,6 +5,8 @@ import java.util.Objects;
 public class Car {
     private static final int MOVE_CRITERIA = 4;
     private static final int MOVE_VALUE = 1;
+    private static final int MIN_MOVEMENT_VALUE = 0;
+    private static final int MAX_MOVEMENT_VALUE = 9;
 
     private Position position;
 
@@ -16,10 +18,6 @@ public class Car {
         return new Car(Position.init());
     }
 
-    public static Car from(int position) {
-        return new Car(Position.from(position));
-    }
-
     public void move(int number) {
         validateMoveNum(number);
         if (number > MOVE_CRITERIA) {
@@ -28,7 +26,7 @@ public class Car {
     }
 
     private void validateMoveNum(int number) {
-        if (number < 0 || number > 9) {
+        if (number < MIN_MOVEMENT_VALUE || number > MAX_MOVEMENT_VALUE) {
             throw new CarMovingNumberException(number);
         }
     }
