@@ -1,53 +1,25 @@
 package study;
 
 public class Calculator {
-    private String operator;
-    private int firstValue;
-    private int secondValue;
+    public static int calculate(String s) {
+        String[] values = s.split(" ");
+        int first = Integer.parseInt(values[0]);
+        int second = Integer.parseInt(values[2]);
+        String operator = values[1];
 
-    public int calculate(String input) {
-        this.parse(input);
-
-        if("+".equals(this.operator)) {
-            return this.firstValue + this.secondValue;
+        if("+".equals(operator)) {
+            return first + second;
         }
-
-        if("-".equals(this.operator)) {
-            return this.firstValue - this.secondValue;
+        if("-".equals(operator)) {
+            return first - second;
         }
-
-        if("*".equals(this.operator)) {
-            return this.firstValue * this.secondValue;
+        if("*".equals(operator)) {
+            return first * second;
         }
-
-        if("/".equals(this.operator)) {
-            return this.firstValue / this.secondValue;
+        if("/".equals(operator)) {
+            return first / second;
         }
 
         return 0;
-    }
-
-    private void parse(String input) {
-        isValidInput(input);
-
-        String[] splitInput = input.split(" ");
-
-        this.operator = splitInput[1];
-        isValidOperator();
-
-        this.firstValue = Integer.parseInt(splitInput[0]);
-        this.secondValue = Integer.parseInt(splitInput[2]);
-    }
-
-    private void isValidOperator() {
-        if(!"+-/*".contains(this.operator)) {
-            throw new IllegalArgumentException("사칙 연산 기호가 아닙니다.");
-        }
-    }
-
-    private void isValidInput(String input) {
-        if(input == null || input.isEmpty()) {
-            throw new IllegalArgumentException("입력 값이 null이거나 빈 공백 문자입니다.");
-        }
     }
 }
