@@ -6,6 +6,13 @@ package racing;
 public class Car {
     private int step = 0;
 
+    public Car() {
+    }
+
+    public Car(int step) {
+        this.step = step;
+    }
+
     public int getStep() {
         return step;
     }
