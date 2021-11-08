@@ -1,15 +1,12 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
 public class ConsoleInputView implements InputView {
     private static String QUESTION_NUMBER_OF_CARS = "How many cars are?";
     private static String QUESTION_NUMBER_OF_TRY = "How many trials?";
 
-    Scanner scanner;
+    private final Scanner scanner;
 
     ConsoleInputView() {
         scanner = new Scanner(System.in);

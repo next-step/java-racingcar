@@ -1,37 +1,34 @@
 package racingcar;
 
 import java.util.Objects;
-import java.util.Random;
-import java.util.stream.IntStream;
 
 public class Car {
-    private int number;
+    public static final int STOP_LOWER_BOUNDARY = 0;
+    public static final int STOP_UPPER_BOUNDARY = 3;
+    public static final int RUN_LOWER_BOUNDARY = 4;
+    public static final int RUN_UPPER_BOUNDARY = 10;
+    public static final int START_POINT = 0;
+
+    private final int number;
     private int distance;
-    private Random random;
 
     Car(int number) {
         this.number = number;
-        this.distance = 0;
-        this.random = new Random();
+        this.distance = START_POINT;
     }
 
-    public void progressRace() {
-        if (runOrStop())
-            distance++;
+    public int getDistance() {
+        return distance;
     }
 
-    private boolean runOrStop() {
-        return random.nextInt(10) >= 4;
-    }
+    public boolean runOrStop(int randomNumber) {
+        if (randomNumber <= STOP_UPPER_BOUNDARY) {
+            return false;
+        }
 
-    public String getProgress() {
-        StringBuilder sb = new StringBuilder();
-        IntStream.range(0, distance)
-                .forEach( i ->
-                        sb.append('-')
-                );
+        distance++;
 
-        return sb.toString();
+        return true;
     }
 
     @Override
@@ -55,6 +52,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car(" + this.number + ") → " + this.getProgress();
+        return "Car(" + this.number + ") → ";
     }
 }

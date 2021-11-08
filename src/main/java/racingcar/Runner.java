@@ -10,10 +10,10 @@ public class Runner {
         int numberOfTrials = inputView.getNumberOfTrials();
 
         CarFactory carFactory = new CarFactory(numberOfCars);
-        List<Car> carList = carFactory.buildCars();
+        List<Car> cars = carFactory.buildCars();
 
         OutputView outputView = new ConsoleOutputView();
-        RacingManager racingManager = new RacingManager(numberOfTrials, carList);
+        RacingManager racingManager = new RacingManager(numberOfTrials, cars);
         racingManager.startRacing(outputView);
     }
 }

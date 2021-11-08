@@ -13,17 +13,17 @@ public class CarFactoryTest {
     @Test
     void testBuildCars() {
         CarFactory carFactory = new CarFactory(NUMBER_OF_CARS);
-        List<Car> carList = carFactory.buildCars();
-        int lengthOfCarList = carList.size();
+        List<Car> cars = carFactory.buildCars();
+        int lengthOfcars = cars.size();
 
-        assertThat(lengthOfCarList).isEqualTo(NUMBER_OF_CARS);
-        checkNumberOfCars(carList);
+        assertThat(lengthOfcars).isEqualTo(NUMBER_OF_CARS);
+        checkNumberOfCars(cars);
     }
 
-    private void checkNumberOfCars(List<Car> carList) {
-        IntStream.range(0, carList.size())
+    private void checkNumberOfCars(List<Car> cars) {
+        IntStream.range(0, cars.size())
                 .forEach( i -> {
-                        Car car = carList.get(i);
+                        Car car = cars.get(i);
                         assertThat(car).isEqualTo(new Car(i+1));
                 });
     }
