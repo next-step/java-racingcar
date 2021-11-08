@@ -13,25 +13,25 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("덧셈")
     void plus() {
-        assertThat(Calculator.calculate("1 + 2")).isEqualTo(new CalculatorNumber(3));
+        assertThat(StringCalculator.calculate("1 + 2")).isEqualTo(new CalculatorNumber(3));
     }
 
     @Test
     @DisplayName("뺄셈")
     void minus() {
-        assertThat(Calculator.calculate("2 - 1")).isEqualTo(new CalculatorNumber(1));
+        assertThat(StringCalculator.calculate("2 - 1")).isEqualTo(new CalculatorNumber(1));
     }
 
     @Test
     @DisplayName("곱셈")
     void times() {
-        assertThat(Calculator.calculate("3 * 4")).isEqualTo(new CalculatorNumber(12));
+        assertThat(StringCalculator.calculate("3 * 4")).isEqualTo(new CalculatorNumber(12));
     }
 
     @Test
     @DisplayName("나눗셈")
     void divideBy() {
-        assertThat(Calculator.calculate("4 / 2")).isEqualTo(new CalculatorNumber(2));
+        assertThat(StringCalculator.calculate("4 / 2")).isEqualTo(new CalculatorNumber(2));
     }
 
     @ParameterizedTest(name = "빈 문자열 혹은 null:{index}")
@@ -39,7 +39,7 @@ public class StringCalculatorTest {
     @ValueSource(strings = {" ", "  ", "\t", "\n"})
     void nullOrBlankInput(String input) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> Calculator.calculate(input))
+                .isThrownBy(() -> StringCalculator.calculate(input))
                 .withMessage("빈 문자열 혹은 null은 입력할 수 없습니다.");
     }
 
@@ -47,13 +47,14 @@ public class StringCalculatorTest {
     @DisplayName("사칙연산 기호가 아닌 경우")
     void illegalOperationChar() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> Calculator.calculate("4 = 1"))
+                .isThrownBy(() -> StringCalculator.calculate("4 = 1"))
                 .withMessage("사칙연산 기호가 아닙니다.");
     }
 
     @Test
     @DisplayName("사칙 연산을 모두 포함하는 기능")
     void multipleOperation() {
-        assertThat(Calculator.calculate("1 + 2 * 4 / 3")).isEqualTo(4);
+        assertThat(StringCalculator.calculate("1 + 2 * 4 / 3")).isEqualTo(new CalculatorNumber(4));
+        assertThat(StringCalculator.calculate("1 * 2 + 2 / 2 * 5")).isEqualTo(new CalculatorNumber(10));
     }
 }
