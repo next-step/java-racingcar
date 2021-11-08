@@ -40,7 +40,7 @@ public class Calculator {
     }
 
     private void isValidOperator() {
-        if(!"+".equals(this.operator) && !"-".equals(this.operator) && !"*".equals(this.operator) && !"/".equals(this.operator)) {
+        if(!"+-/*".contains(this.operator)) {
             throw new IllegalArgumentException("사칙 연산 기호가 아닙니다.");
         }
     }
