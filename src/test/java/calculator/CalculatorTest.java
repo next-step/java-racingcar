@@ -3,25 +3,28 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 public class CalculatorTest {
+
     @Test
     void 덧셈() {
-
+        assertThat(Calculator.plus(3, 5)).isEqualTo(8);
     }
 
     @Test
     void 뺄셈() {
-
+        assertThat(Calculator.minus(5, 3)).isEqualTo(2);
     }
 
     @Test
     void 곱셈() {
-
+        assertThat(Calculator.times(5,3)).isEqualTo(15);
     }
 
     @Test
     void 나눗셈() {
-
+        assertThat(Calculator.divide(10,2)).isEqualTo(5);
     }
 
     @DisplayName("입력값이 NULL 또는 빈 공백이면 예외 발생")
