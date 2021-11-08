@@ -21,7 +21,7 @@ public class RacingCarGameTest {
 
     // then
     List<List<Integer>> resultList = racingCarGame.getResults().getResultList();
-    assertThat(resultList.size()).isEqualTo(5);
+    assertThat(resultList).hasSize(5);
   }
 
 }
