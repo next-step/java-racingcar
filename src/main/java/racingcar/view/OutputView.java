@@ -28,7 +28,7 @@ public class OutputView {
     }
 
     private static void printCarPosition(Car car) {
-        IntStream.rangeClosed(1, car.positionValue()).mapToObj(value -> MOVE_SYMBOL).forEach(System.out::print);
+        IntStream.rangeClosed(1, car.currentPosition()).mapToObj(value -> MOVE_SYMBOL).forEach(System.out::print);
 
         newLine();
     }
