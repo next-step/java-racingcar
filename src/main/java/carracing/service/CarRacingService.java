@@ -13,10 +13,12 @@ public class CarRacingService {
         this.tryCount = tryCount;
     }
 
-    public void gameStart() {
+    public Cars gameStart() {
         for (int i = 0; i < tryCount; i++) {
             cars.carsRace();
         }
+
+        return cars;
     }
 
 }

@@ -13,9 +13,8 @@ public class CarRacingMain {
         Integer carCount = inputView.inputCarCount();
         Integer tryCount = inputView.inputTryCount();
 
-        Cars cars = new Cars(carCount);
-        CarRacingService carRacingService = new CarRacingService(cars, tryCount);
-        carRacingService.gameStart();
+        CarRacingService carRacingService = new CarRacingService(new Cars(carCount), tryCount);
+        Cars cars = carRacingService.gameStart();
 
         try {
             ResultView resultView = new ResultView(cars);
