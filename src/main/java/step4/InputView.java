@@ -1,7 +1,7 @@
 package step4;
 
-import step3.GameInformation;
-import step3.UserInput;
+import step4.GameInformation;
+import step4.UserInput;
 
 import java.util.Scanner;
 

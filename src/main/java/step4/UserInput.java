@@ -21,12 +21,15 @@ public class UserInput {
 
     public void validate() {
         isNullOrEmptyForString(names);
-        isComma(names);
+        isExistComma(names);
 
         isNullOrEmptyForString(timeStr);
         isNumberForString(timeStr);
     }
 
+    public String getNames() {
+        return names;
+    }
 
     public String getTimeStr() {
         return timeStr;
@@ -44,7 +47,7 @@ public class UserInput {
         }
     }
 
-    private void isComma(String input) {
+    private void isExistComma(String input) {
         if (!input.contains(",")) {
             throw new IllegalArgumentException(NAMES_NOT_HAVE_COMMA_MESSAGE);
         }
