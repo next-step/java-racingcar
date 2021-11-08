@@ -4,7 +4,7 @@ public class StringCalculator {
 
     private final String DEFAULT_DELIMITER = " ";
 
-    public String delimiter = DEFAULT_DELIMITER;
+    private String delimiter = DEFAULT_DELIMITER;
 
     public StringCalculator(String delimiter) {
         this.delimiter = delimiter;

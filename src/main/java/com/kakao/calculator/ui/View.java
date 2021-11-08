@@ -10,8 +10,7 @@ public class View {
 
     public static String inputExpression(InputStream input) {
         System.out.print("계산식을 입력해주세요 : ");
-        String s = new Scanner(input).nextLine();
-        return s;
+        return new Scanner(input).nextLine();
     }
 
 }

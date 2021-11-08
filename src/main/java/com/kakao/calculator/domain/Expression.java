@@ -5,8 +5,9 @@ public class Expression {
     private final String[] tokens;
 
     public Expression(String[] tokens) {
-        if (tokens.length % 2 == 0)
+        if (tokens.length % 2 == 0){
             throw new IllegalArgumentException("올바르지 않은 식 입니다.");
+        }
         this.tokens = tokens;
     }
 
