@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.dto.GameConfig;
 import racingcar.dto.GameResult;
 
+
 public class GameStageTest {
 
 
@@ -23,6 +24,7 @@ public class GameStageTest {
 
         assertThat(cars).hasSize(numberOfCars);
     }
+
 
     @ValueSource(ints = {0, -1})
     @ParameterizedTest(name = "자동차 생성 대수가 {arguments}인 경우, IllegalArgumentException이 발생한다.")
