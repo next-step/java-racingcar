@@ -3,8 +3,7 @@ package step2;
 public class Calculator {
 
     public static int calculate(String text) {
-        Validation.validNullAndEmpty(text);
-        final String[] values = text.split(" ");
+        final String[] values = validInputData(text);
 
         MyNumber first = new MyNumber(values[0]);
         for (int i = 1; i < values.length - 1; i += 2) {
@@ -15,20 +14,15 @@ public class Calculator {
         return first.getNumber();
     }
 
+    private static String[] validInputData(String text) {
+        Validation.validNullAndEmpty(text);
+        final String[] values = text.split(" ");
+        Validation.validSize(values);
+        return values;
+    }
+
     private static MyNumber calculate(MyNumber first, String operator, MyNumber second) {
-        if (operator.equals("+")) {
-            return first.plus(second);
-        }
-        if (operator.equals("-")) {
-            return first.minus(second);
-        }
-        if (operator.equals("*")) {
-            return first.multiple(second);
-        }
-        if (operator.equals("/")) {
-            return first.divide(second);
-        }
-        throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
+        return Operator.of(operator).operate(first, second);
     }
 
 }

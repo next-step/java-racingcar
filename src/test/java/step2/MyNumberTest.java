@@ -23,7 +23,7 @@ public class MyNumberTest {
 
     @Test
     void multiple() {
-        assertThat(new MyNumber(2).multiple(new MyNumber(7))).isEqualTo(new MyNumber(14));
+        assertThat(new MyNumber(2).multiply(new MyNumber(7))).isEqualTo(new MyNumber(14));
     }
 
     @Test

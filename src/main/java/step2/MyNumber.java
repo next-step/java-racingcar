@@ -27,7 +27,7 @@ public class MyNumber {
         return new MyNumber(this.number - second.number);
     }
 
-    public MyNumber multiple(MyNumber second) {
+    public MyNumber multiply(MyNumber second) {
         return new MyNumber(this.number * second.number);
     }
 
