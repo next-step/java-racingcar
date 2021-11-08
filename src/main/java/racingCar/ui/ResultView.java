@@ -5,17 +5,23 @@ import racingCar.Car;
 import java.util.List;
 
 public class ResultView {
-    List<Car> raceCar;
-
-    public ResultView(List<Car> raceCar) {
-        this.raceCar = raceCar;
-    }
-
-    public void printRace() {
+    public void printCarRace(List<Car> raceCar) {
         for (Car car : raceCar) {
             car.move();
-            System.out.println(car.printRace());
+            System.out.println(printRace(car));
         }
         System.out.println();
     }
+
+    private String printRace(Car car) {
+        StringBuilder sb = new StringBuilder();
+        int moveCount = car.getMoveCount();
+
+        for (int i = 0; i < moveCount; i++) {
+            sb.append("-");
+        }
+
+        return sb.toString();
+    }
 }
+

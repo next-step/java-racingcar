@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGame {
-    int carNumbers;
-    int tryTimes;
-    List<Car> raceCar = new ArrayList<Car>();
+    private int carNumbers;
+    private int tryTimes;
+    private List<Car> raceCar = new ArrayList<Car>();
 
     RacingCarGame() {
         InputView inputView = new InputView();
@@ -29,9 +29,9 @@ public class RacingCarGame {
     }
 
     private void playRace() {
-        ResultView resultView = new ResultView(raceCar);
+        ResultView resultView = new ResultView();
         for (int i = 0; i < tryTimes; i++) {
-            resultView.printRace();
+            resultView.printCarRace(raceCar);
         }
     }
 
