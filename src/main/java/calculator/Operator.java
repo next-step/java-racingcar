@@ -3,6 +3,9 @@ package calculator;
 import java.util.Arrays;
 import java.util.function.BiFunction;
 
+/**
+ * 연산자에 알맞은 계산 수행
+ */
 public enum Operator {
     PLUS("+", (num1, num2) -> num1 + num2),
     MINUS("-", (num1, num2) -> num1 - num2),
@@ -20,8 +23,8 @@ public enum Operator {
         this.expression = expression;
     }
 
-    public static int calculate(String operator, int num1, int num2) {
-        return getOperator(operator).expression.apply(num1, num2);
+    public static Number calculate(String operator, Number num1, Number num2) {
+        return Number.of(getOperator(operator).expression.apply(num1.toInt(), num2.toInt()));
     }
 
     private static Operator getOperator(String operator) {

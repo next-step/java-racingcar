@@ -13,24 +13,29 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 public class CalculatorTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"1: 1", "3 + 5: 8", "3 + 5 + 6: 14"}, delimiter = ':')
+    @CsvSource(value = {"3 + 5: 8", "3 + 5 + 6: 14"}, delimiter = ':')
     void 덧셈(String input, int expected) {
-        assertThat(new Calculator(input).calculate()).isEqualTo(expected);
+        assertThat(new Calculator(input).calculate()).isEqualTo(Number.of(expected));
     }
 
     @Test
     void 뺄셈() {
-        assertThat(new Calculator("10 - 5 - 2").calculate()).isEqualTo(3);
+        assertThat(new Calculator("10 - 5 - 2").calculate()).isEqualTo(Number.of(3));
     }
 
     @Test
     void 곱셈() {
-        assertThat(new Calculator("10 * 5 * 2 * 1").calculate()).isEqualTo(100);
+        assertThat(new Calculator("10 * 5 * 2 * 1").calculate()).isEqualTo(Number.of(100));
     }
 
     @Test
     void 나눗셈() {
-        assertThat(new Calculator("10 / 5").calculate()).isEqualTo(2);
+        assertThat(new Calculator("10 / 5").calculate()).isEqualTo(Number.of(2));
+    }
+
+    @Test
+    void 혼합() {
+        assertThat(new Calculator("2 + 3 * 4 / 2").calculate()).isEqualTo(Number.of(10));
     }
 
     @DisplayName("나눗셈 결과가 정수가 아니면 예외 발생")
@@ -69,6 +74,16 @@ public class CalculatorTest {
             new Calculator(input).calculate();
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("사칙연산자가 아닙니다.");
+    }
+
+    @DisplayName("입력값이 두 개면 계산 불가능")
+    @ParameterizedTest
+    @ValueSource(strings = {"3 5", "+ -", "3 +"})
+    void 입력값_계산불가능(String input) {
+        assertThatThrownBy(() -> {
+            new Calculator(input).calculate();
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("계산할 수 없습니다.");
     }
 
 }

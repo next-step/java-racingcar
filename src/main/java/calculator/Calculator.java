@@ -1,11 +1,15 @@
 package calculator;
 
 import java.util.LinkedList;
+import java.util.Optional;
 import java.util.Queue;
 
+/**
+ * 문자열 계산기
+ */
 public class Calculator {
-    private String[] inputs;
-    private Queue<String> expressions = new LinkedList<>();
+    private final String[] inputs;
+    private final Queue<String> expressions = new LinkedList<>();
 
     public Calculator(String input) {
         validate(input);
@@ -22,31 +26,49 @@ public class Calculator {
         return input == null || input.length() == 0;
     }
 
-    public int calculate() {
-        int result = 0;
-        // 값을 큐에 넣으면서 계산
-        for (int i = 0; i < inputs.length; i++) {
-            expressions.offer(inputs[i]);
-            if (expressions.size() == 3) {
-                String num1 = expressions.poll();
-                String op = expressions.poll();
-                String num2 = expressions.poll();
-                expressions.offer(calculate(op, num1, num2));
-            }
+    /**
+     * 순서대로 계산한다.
+     */
+    public Number calculate() {
+        for (String input : inputs) {
+            expressions.offer(input);
+            preCalculate();
         }
 
-        // 마지막 계산
-        while (!expressions.isEmpty() && expressions.size() == 3) {
-            String num1 = expressions.poll();
-            String op = expressions.poll();
-            String num2 = expressions.poll();
-            result = Integer.parseInt(calculate(op, num1, num2));
+        // todo 연산자(ex)"+")만 들어올 경우 처리해야 함
+        if (expressions.size() == 1) {
+            return Number.of(expressions.poll());
         }
-        return (result == 0) ? Integer.parseInt(expressions.poll()) : result;
+
+        return makeExpression().orElseThrow(() -> new IllegalArgumentException("계산할 수 없습니다.")).calculate();
     }
 
-    private String calculate(String operator, String operand1, String operand2) {
-        return String.valueOf(Operator.calculate(operator, Integer.parseInt(operand1), Integer.parseInt(operand2)));
+    /**
+     * 계산이 가능하면 먼저 계산해서 결과값을 반환한다.
+     */
+    private void preCalculate() {
+        Optional<Expression> expression = makeExpression();
+        if (!expression.isPresent()) {
+            return;
+        }
+        expressions.offer(expression.get().calculate().toString());
+    }
+
+    /**
+     * 수식을 만든다.
+     */
+    private Optional<Expression> makeExpression() {
+        if (!isCalculate()) {
+            return Optional.empty();
+        }
+        String num1 = expressions.poll();
+        String op = expressions.poll();
+        String num2 = expressions.poll();
+        return Optional.of(Expression.create(Number.of(num1), op, Number.of(num2)));
+    }
+
+    private boolean isCalculate() {
+        return expressions.size() == 3;
     }
 
 }
