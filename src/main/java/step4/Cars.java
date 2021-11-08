@@ -14,9 +14,7 @@ public class Cars {
     }
 
     public static Cars createWithDefaultPosition(Names names) {
-        List<Car> cars = names.getNames().stream().map(name -> Car.createWithDefaultPosition(name))
-                .collect(Collectors.toList());
-        return new Cars(cars);
+        return new Cars(names.makeCarListWithDefaultPosition());
     }
 
     public static Cars create(List<Car> cars) {
