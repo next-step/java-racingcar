@@ -5,8 +5,8 @@ public class Game {
     private final Integer time;
     private final Names names;
     private final MoveStrategy moveStrategy;
-    private Cars cars;
     private final GameHistory gameHistory = new GameHistory();
+    private Cars cars;
 
     private Game(Names names, Integer time, MoveStrategy moveStrategy) {
         this.time = time;
