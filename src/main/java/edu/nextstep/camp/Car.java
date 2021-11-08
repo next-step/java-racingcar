@@ -10,6 +10,10 @@ public class Car {
     }
 
     public Car(MovePolicy movePolicy) {
+        if (movePolicy == null) {
+            throw new IllegalArgumentException("move policy cannot be null.");
+        }
+
         this.position = Position.ofZero();
         this.movePolicy = movePolicy;
     }

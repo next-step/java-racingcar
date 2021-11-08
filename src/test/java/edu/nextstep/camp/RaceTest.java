@@ -7,7 +7,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
+import static edu.nextstep.camp.TestMovePolicy.ALWAYS_MOVE_POLICY;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
@@ -16,6 +18,12 @@ public class RaceTest {
     @CsvSource(value = {"0, 0", "-1, 5", "7, -1"})
     public void createFail(int cars, int turn) {
         assertThatIllegalArgumentException().isThrownBy(() -> Race.of(cars, turn));
+    }
+
+    @ParameterizedTest(name = "create with invalid values: {arguments}")
+    @NullAndEmptySource
+    public void createFail(List<Car> cars) {
+        assertThatIllegalArgumentException().isThrownBy(() -> Race.of(cars, 1));
     }
 
     @ParameterizedTest(name = "create race test: {arguments}")
@@ -29,7 +37,7 @@ public class RaceTest {
     private List<Car> createCarList(int numberOfCars) {
         final List<Car> cars = new ArrayList<>(numberOfCars);
         for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car(() -> true));
+            cars.add(new Car(ALWAYS_MOVE_POLICY));
         }
         return cars;
     }
@@ -48,12 +56,12 @@ public class RaceTest {
     public void process() {
         final int turns = 1;
         final Race race = Race.of(createCarList(1), turns);
-        assertThat(race.isEnded()).isEqualTo(false);
+        assertThat(race.isEnded()).isFalse();
         race.process();
         assertThat(race.gameResult()).containsExactly(turns);
-        assertThat(race.isEnded()).isEqualTo(true);
+        assertThat(race.isEnded()).isTrue();
         race.process();
         assertThat(race.gameResult()).containsExactly(turns);
-        assertThat(race.isEnded()).isEqualTo(true);
+        assertThat(race.isEnded()).isTrue();
     }
 }
