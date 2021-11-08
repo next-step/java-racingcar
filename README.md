@@ -5,5 +5,21 @@
 * 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
 * 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
 
+## 기능 목록
+* UI InputView 구현
+  * 몇 대의 자동차, 몇 번의 이동 입력받는 로직
+* UI ResultView 구현
+  * 결과창 보여주는 로직
+  * 자동차의 현재 상태 보여주는 로직
+* RacingCar 클래스 구현
+  * 전진할지 멈춰있을지 확인하는 로직
+  * 움직이는 로직
+  * 자동차의 현재 상태 출력하는 로직
+* RacingGame 클래스 구현
+  * 위 세가지를 잘 묶기
+* RacingCar 테스트 코드 작성
+* RacingGame 테스트 코드 작성
+
+
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
