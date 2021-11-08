@@ -4,7 +4,7 @@ public class Main {
     int chanceAmount = RacingCarGameInputView.getChanceAmount();
 
     RacingCarGame racingCarGame = new RacingCarGame(carAmount, chanceAmount);
-    racingCarGame.play();
+    racingCarGame.play(new RandomMoveStrategy());
 
     RacingCarGameResultView resultView = new RacingCarGameResultView(racingCarGame);
     resultView.showResult();

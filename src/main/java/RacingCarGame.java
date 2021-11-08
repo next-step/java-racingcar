@@ -1,8 +1,8 @@
 public class RacingCarGame {
 
-  private int chanceAmount;
-  private RacingCars racingCars;
-  private RacingCarGameResults racingCarGameResults;
+  private final int chanceAmount;
+  private final RacingCars racingCars;
+  private final RacingCarGameResults racingCarGameResults;
 
   public RacingCarGame(int carAmount, int chanceAmount) {
     this.chanceAmount = chanceAmount;
@@ -10,9 +10,9 @@ public class RacingCarGame {
     this.racingCarGameResults = new RacingCarGameResults(carAmount);
   }
 
-  public void play() {
+  public void play(MoveStrategy moveStrategy) {
     for (int i = 0; i < this.chanceAmount; i++) {
-      racingCars.moveEachCars(new RandomMoveStrategy());
+      racingCars.moveEachCars(moveStrategy);
       racingCarGameResults.addResult(racingCars);
     }
   }
