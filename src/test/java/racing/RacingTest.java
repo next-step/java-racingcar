@@ -42,4 +42,17 @@ class RacingTest {
         assertThatThrownBy(() -> new Racing(1, -1)).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new Racing(0,0)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    class DeterministicRandom extends Random {
+        int sequentialNum = 0;
+
+        public DeterministicRandom() {
+            super();
+        }
+
+        @Override
+        public int nextInt(int input) {
+            return sequentialNum++;
+        }
+    }
 }
