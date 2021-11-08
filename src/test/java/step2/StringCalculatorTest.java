@@ -3,11 +3,8 @@ package step2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -16,25 +13,25 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("덧셈")
     void plus() {
-        assertThat(Calculator.calculate("1 + 2")).isEqualTo(3);
+        assertThat(Calculator.calculate("1 + 2")).isEqualTo(new CalculatorNumber(3));
     }
 
     @Test
     @DisplayName("뺄셈")
     void minus() {
-        assertThat(Calculator.calculate("2 - 1")).isEqualTo(1);
+        assertThat(Calculator.calculate("2 - 1")).isEqualTo(new CalculatorNumber(1));
     }
 
     @Test
     @DisplayName("곱셈")
     void times() {
-        assertThat(Calculator.calculate("3 * 4")).isEqualTo(12);
+        assertThat(Calculator.calculate("3 * 4")).isEqualTo(new CalculatorNumber(12));
     }
 
     @Test
     @DisplayName("나눗셈")
     void divideBy() {
-        assertThat(Calculator.calculate("4 / 2")).isEqualTo(2);
+        assertThat(Calculator.calculate("4 / 2")).isEqualTo(new CalculatorNumber(2));
     }
 
     @ParameterizedTest(name = "빈 문자열 혹은 null:{index}")
