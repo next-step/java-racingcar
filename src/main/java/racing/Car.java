@@ -6,6 +6,10 @@ package racing;
 public class Car {
     private int step = 0;
 
+    public int getStep() {
+        return step;
+    }
+
     public int forward(int step) {
         if (isForward(step)) {
             this.step += 1;
