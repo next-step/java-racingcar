@@ -20,16 +20,8 @@ public class Cars implements Comparable<Cars> {
                 .collect(Collectors.toList());
     }
 
-    private Cars(List<Car> cars) {
-        this.cars = cars;
-    }
-
     public static Cars from(int count) {
         return new Cars(count);
-    }
-
-    public static Cars from(List<Car> cars) {
-        return new Cars(cars);
     }
 
     private void validateCreateCount(int count) {

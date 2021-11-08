@@ -5,11 +5,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.exception.CreateCarCountException;
 
-import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -42,42 +40,6 @@ class CarsTest {
     @ValueSource(ints = {-1, 0})
     void carsExceptionTest(int createCount) {
         assertThatThrownBy(() -> Cars.from(createCount)).isInstanceOf(CreateCarCountException.class);
-    }
-
-    @ParameterizedTest
-    @DisplayName("Cars move test")
-    @MethodSource
-    void carsMoveTest(Cars expected) {
-        Cars cars = Cars.from(3);
-        cars.move(() -> 5);
-
-        assertThat(cars).isEqualByComparingTo(expected);
-    }
-
-    static Stream<Arguments> carsMoveTest() {
-        return Stream.of(
-                Arguments.of(
-                        Cars.from(Arrays.asList(Car.from(2), Car.from(2), Car.from(2)))
-                )
-        );
-    }
-
-    @ParameterizedTest
-    @DisplayName("cars stop test")
-    @MethodSource
-    void carsStopTest(Cars expected) {
-        Cars cars = Cars.from(3);
-        cars.move(() -> 1);
-
-        assertThat(cars).isEqualByComparingTo(expected);
-    }
-
-    static Stream<Arguments> carsStopTest() {
-        return Stream.of(
-                Arguments.of(
-                        Cars.from(Arrays.asList(Car.from(), Car.from(1), Car.from(1)))
-                )
-        );
     }
 
 }
