@@ -4,8 +4,8 @@ import racingcar.step4.domain.Car;
 import racingcar.step4.domain.Cars;
 import racingcar.step4.move.Moving;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -14,12 +14,13 @@ public class RacingGame {
     private int countOfTry;
     private Cars cars;
 
-    public RacingGame(String carName, int countOfTry, int countOfCar) {
+    public RacingGame(String carName, int countOfTry) {
         countOfTryCheck(countOfTry);
         this.countOfTry = countOfTry;
-        this.cars = new Cars(carName.split(NAME_DELIMITER), countOfCar);
+        this.cars = new Cars(carName.split(NAME_DELIMITER));
     }
 
+    //테스트 코드를 위한 메서드
     public RacingGame(Cars cars, int countOfTry) {
         countOfTryCheck(countOfTry);
         this.countOfTry = countOfTry;
@@ -43,19 +44,20 @@ public class RacingGame {
         return cars;
     }
 
+    public List<Car> findWinners() {
+        return cars.getCars().stream().
+                filter(this::isMaxPosition).
+                collect(Collectors.toList());
+    }
+
     private static void countOfTryCheck(int countOfTry) {
         if (countOfTry < COUNT_OF_TRY_MIN_NUM) {
             throw new IllegalArgumentException("0 이하 값은 불가능 합니다.");
         }
     }
 
-    public List<Car> findWinners() {
-        List<Car> winners = new ArrayList<>();
-        for (Car c : cars.getCars()) {
-            if (c.getPosition() == cars.getMaxPosition()) {
-                winners.add(c);
-            }
-        }
-        return winners;
+    private boolean isMaxPosition(Car c) {
+        return c.getPosition() == cars.getMaxPosition();
     }
+
 }

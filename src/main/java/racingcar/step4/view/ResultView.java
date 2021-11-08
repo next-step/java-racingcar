@@ -31,13 +31,13 @@ public class ResultView {
         builder.append('\n');
     }
 
-    public void winnerPrint(RacingGame racingGame) {
-        List<Car> winners = racingGame.findWinners();
+    public void winnersPrint(RacingGame racingGame) {
         StringBuilder builder = new StringBuilder();
-        winners.forEach(c ->{
-            builder.append(c.getName());
-            builder.append(" ");
-        });
+        racingGame.findWinners()
+                .forEach(c ->{
+                    builder.append(c.getName());
+                    builder.append(" ");
+                });
         builder.append("(이)가 최종 우승했습니다.");
         System.out.println(builder);
     }

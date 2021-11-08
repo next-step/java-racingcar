@@ -27,10 +27,14 @@ public class Car {
         this.name = name;
         this.position = position;
     }
+
     public int getPosition() {
         return position;
     }
 
+    public String getName() {
+        return name;
+    }
 
     public void move(Moving moving) {
         if (moving.isMovable()) {
@@ -62,10 +66,6 @@ public class Car {
         return random.nextInt(MAX_NUM);
     }
 
-    public String getName() {
-        return name;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,4 +78,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name);
     }
+
 }
