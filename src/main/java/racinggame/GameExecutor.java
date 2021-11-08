@@ -1,8 +1,8 @@
 package racinggame;
 
-import racinggame.view.ResultViews;
+import java.util.List;
 
 public interface GameExecutor {
 
-    ResultViews execute();
+    List<MoveResult> execute();
 }

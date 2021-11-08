@@ -1,10 +1,7 @@
 package racinggame;
 
 import racinggame.utils.CarFactory;
-import racinggame.view.ResultView;
-import racinggame.view.ResultViews;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleGameExecutor implements GameExecutor {
@@ -16,9 +13,11 @@ public class SimpleGameExecutor implements GameExecutor {
     }
 
     @Override
-    public ResultViews execute() {
+    public List<MoveResult> execute() {
         RacingCars racingCars = CarFactory.createRacingCars(inputValue.cars());
-        return null;
+        return racingCars.move(inputValue.attempts())
+                .getRacingResult();
+
     }
 
 
