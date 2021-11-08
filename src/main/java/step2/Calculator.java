@@ -2,28 +2,32 @@ package step2;
 
 public class Calculator {
 
-    public int calculate(String s) {
-        if (s == null || s.trim().length() == 0) {
-            throw new IllegalArgumentException();
-        }
+    public int calculate(Expression expression) {
+        int ans = expression.nextInt();
 
-        String[] info = s.split(" ");
+        while (expression.canCalculate()) {
+            String operator = expression.nextOperator();
+            int second = expression.nextInt();
 
-        int ans = Integer.parseInt(info[0]);
-        for (int i = 1; i < info.length; i += 2) {
-            int next = Integer.parseInt(info[i + 1]);
-
-            if (info[i].equals("+")) {
-                ans = ans + next;
-            } else if (info[i].equals("-")) {
-                ans = ans - next;
-            } else if (info[i].equals("*")) {
-                ans = ans * next;
-            } else if (info[i].equals("/")) {
-                ans = ans / next;
-            }
+            ans = calculate(operator, ans, second);
         }
 
         return ans;
+    }
+
+    private int calculate(String operator, int first, int second) {
+        if (operator.equals("+")) {
+            return first + second;
+        }
+        if (operator.equals("-")) {
+            return first - second;
+        }
+        if (operator.equals("*")) {
+            return first * second;
+        }
+        if (operator.equals("/")) {
+            return first / second;
+        }
+        throw new IllegalArgumentException();
     }
 }
