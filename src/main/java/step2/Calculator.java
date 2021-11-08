@@ -2,32 +2,16 @@ package step2;
 
 public class Calculator {
 
-    public static MyNumber calculate(Expression expression) {
-        MyNumber ans = expression.nextInt();
-
-        while (expression.hasNext()) {
-            MyNumber second = expression.nextInt();
-            String operator = expression.nextOperator();
-
-            ans = calculate(operator, ans, second);
+    public static int calculate(String s) {
+        if (s == null || s.trim().length() == 0) {
+            throw new IllegalArgumentException();
         }
 
+        String[] split = s.split(" ");
+        int ans = Integer.parseInt(split[0]);
+        for (int i = 1; i < split.length; i += 2) {
+            ans = Operator.getOperator(split[i]).calculate(ans, Integer.parseInt(split[i + 1]));
+        }
         return ans;
-    }
-
-    private static MyNumber calculate(String operator, MyNumber first, MyNumber second) {
-        if (operator.equals("+")) {
-            return first.plus(second);
-        }
-        if (operator.equals("-")) {
-            return first.minus(second);
-        }
-        if (operator.equals("*")) {
-            return first.multiply(second);
-        }
-        if (operator.equals("/")) {
-            return first.divide(second);
-        }
-        throw new IllegalArgumentException();
     }
 }
