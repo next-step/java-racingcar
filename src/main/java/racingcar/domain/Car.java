@@ -21,8 +21,15 @@ public class Car {
     }
 
     public void move(int number) {
+        validateMoveNum(number);
         if (number > MOVE_CRITERIA) {
             position.move(MOVE_VALUE);
+        }
+    }
+
+    private void validateMoveNum(int number) {
+        if (number < 0 || number > 9) {
+            throw new CarMovingNumberException(number);
         }
     }
 
