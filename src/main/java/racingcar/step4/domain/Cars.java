@@ -11,6 +11,7 @@ public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
+    //테스트 코드를 위한 메서드
     public Cars(Car ...car) {
         cars = Arrays.asList(car);
     }

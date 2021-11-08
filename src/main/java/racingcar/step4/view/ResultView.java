@@ -4,8 +4,6 @@ import racingcar.step4.domain.Car;
 import racingcar.step4.domain.Cars;
 import racingcar.step4.service.RacingGame;
 
-import java.util.List;
-
 public class ResultView {
 
     private static final String RESULT_SIGN = "-";
