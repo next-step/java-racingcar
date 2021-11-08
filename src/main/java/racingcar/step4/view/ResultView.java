@@ -5,7 +5,8 @@ import racingcar.step4.domain.Cars;
 
 public class ResultView {
 
-    private static final String SIGN = "-";
+    private static final String RESULT_SIGN = "-";
+    private static final String NAME_DELIMITER = " : ";
     private static final String EXECUTE_MESSAGE = "실행결과";
 
     public void executeMessage() {
@@ -19,8 +20,10 @@ public class ResultView {
     }
 
     private void builderAppendSign(StringBuilder builder, Car car) {
+        builder.append(car.getName());
+        builder.append(NAME_DELIMITER);
         for (int i = 0; i < car.getPosition(); i++) {
-            builder.append(SIGN);
+            builder.append(RESULT_SIGN);
         }
         builder.append('\n');
     }
