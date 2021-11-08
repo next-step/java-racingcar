@@ -4,7 +4,8 @@ import step3.domain.car.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.Collections.unmodifiableList;
 
 public class GameBoard {
 
@@ -16,9 +17,7 @@ public class GameBoard {
         roundBoards.add(roundBoard);
     }
 
-    public List<List<Integer>> readAllRecords() {
-        return roundBoards.stream()
-                .map(RoundBoard::getRecords)
-                .collect(Collectors.toList());
+    public List<RoundBoard> getRoundBoards() {
+        return unmodifiableList(roundBoards);
     }
 }

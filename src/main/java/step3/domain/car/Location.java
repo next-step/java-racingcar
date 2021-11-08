@@ -10,7 +10,6 @@ import static step3.utils.ValidationUtils.checkPositive;
 public class Location {
 
     private static final int DEFAULT_INTERVAL = 1;
-    private static final int MIN_POSITIVE_VALUE = 1;
 
     private final int interval;
 
@@ -40,7 +39,13 @@ public class Location {
     }
 
     public void record(RoundBoard roundBoard) {
-        roundBoard.record(location);
+        checkArgument(roundBoard != null, "roundBoard is required");
+        Location copiedLocation = new Location(location, DEFAULT_INTERVAL);
+        roundBoard.record(copiedLocation);
+    }
+
+    public int getLocation() {
+        return location;
     }
 
     @Override

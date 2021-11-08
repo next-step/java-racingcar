@@ -1,5 +1,7 @@
 package step3.domain.board;
 
+import step3.domain.car.Location;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,14 +10,14 @@ import static step3.utils.ValidationUtils.checkArgument;
 
 public class RoundBoard {
 
-    private final List<Integer> records = new ArrayList<>();
+    private final List<Location> records = new ArrayList<>();
 
-    public void record(Integer location) {
+    public void record(Location location) {
         checkArgument(location != null, "location is required.");
         records.add(location);
     }
 
-    public List<Integer> getRecords() {
+    public List<Location> getRecords() {
         return unmodifiableList(records);
     }
 }
