@@ -3,25 +3,34 @@ package step3;
 public class Car {
 
     private final MoveStrategy moveStrategy;
-    private Position position;
+    private final Name name;
+    private final Position position;
 
-    private Car(MoveStrategy moveStrategy) {
+    private Car(MoveStrategy moveStrategy, Name name, Position position) {
         this.moveStrategy = moveStrategy;
-        this.position = Position.withDefaultPosition();
+        this.name = name;
+        this.position = position;
     }
 
-    public static Car create(MoveStrategy moveStrategy) {
-        return new Car(moveStrategy);
+    public static Car createWithDefaultPosition(MoveStrategy moveStrategy, Name name) {
+        Position position = Position.withDefaultPosition();
+        return new Car(moveStrategy, name, position);
+    }
+
+    public static Car create(MoveStrategy moveStrategy, Name name, Position position) {
+        return new Car(moveStrategy, name, position);
     }
 
     public Position getPosition() {
         return position;
     }
 
-    public void moveOrStop() {
+    public Car moveOrStop() {
+        Position now = this.position;
         if (moveStrategy.test()) {
-            this.position = this.position.move();
+            now = this.position.move();
         }
+        return create(moveStrategy,name,now);
     }
 
 }

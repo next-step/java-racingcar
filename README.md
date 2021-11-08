@@ -34,8 +34,7 @@
    - isValid(time) 히스토리가 없으면 illegegalArgument Expception 발생
 - Car 구현
   - 랜덤 값을 통해 갈 수 있는지 없는지 판별하는 메서드 isGo 구현
-  - moveOrStop() 함수 구현
-  - move() 함수 구현
+  - moveOrStop() 함수 구현 - 불변으로 관리하기 위해 변경 후 Car 반환.
 - Result view 구현
   - view() 를 호출하면 "실행 결과"를 프린트 한다.
   - GameHistory를 받으면 순서대로 프린트 한다.
