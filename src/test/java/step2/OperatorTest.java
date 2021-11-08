@@ -13,6 +13,6 @@ public class OperatorTest {
     @ParameterizedTest
     @CsvSource(value = {"+:8", "-:4", "*:12", "/:3"}, delimiter = ':')
     void operationTest(String operator, Operand ans) {
-        assertEquals(ans, Operator.getOperator(operator).calculate(first, second));
+        assertEquals(ans, Operator.getOperator(operator).operate(first, second));
     }
 }

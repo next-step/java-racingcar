@@ -14,7 +14,7 @@ public enum Operator {
         this.operation = operation;
     }
 
-    public Operand calculate(Operand first, Operand second) {
+    public Operand operate(Operand first, Operand second) {
         return operation.apply(first, second);
     }
 
