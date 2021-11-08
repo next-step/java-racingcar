@@ -28,13 +28,7 @@ public class Car {
         return location;
     }
 
-    public int getRecord(int round) {
-        int cnt = 0;
-        for (boolean b : record.subList(0, round)) {
-            if (b) {
-                cnt++;
-            }
-        }
-        return cnt;
+    public long getRecord(int round) {
+        return record.subList(0, round + 1).stream().filter(b -> b).count();
     }
 }

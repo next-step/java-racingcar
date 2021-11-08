@@ -23,12 +23,12 @@ public class ResultView {
     }
 
     private void roundHistory(int round) {
-        for (Integer record : cars.getRacingHistory(round)) {
+        for (Long record : cars.getRacingHistory(round)) {
             printRecord(record);
         }
     }
 
-    private void printRecord(int record) {
+    private void printRecord(Long record) {
         StringBuilder racingRecord = new StringBuilder();
         for (int j = 0; j < record; j++) {
             racingRecord.append(DASH);

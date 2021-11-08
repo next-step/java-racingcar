@@ -27,8 +27,8 @@ public class Cars {
         }
     }
 
-    public List<Integer> getRacingHistory(int round) {
-        List<Integer> records = new ArrayList<>();
+    public List<Long> getRacingHistory(int round) {
+        List<Long> records = new ArrayList<>();
         for (Car car : cars) {
             records.add(car.getRecord(round));
         }
