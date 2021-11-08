@@ -1,4 +1,4 @@
-package step3;
+package step4;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,10 +33,10 @@ class PositionTest {
     void moveTest(Integer input, String expect) {
         Position actual = Position.create(input);
 
-        assertThat(actual.positionToString()).isEqualTo(expect);
+        assertThat(actual.toString()).isEqualTo(expect);
 
         actual = Position.create(0);
-        assertThat(actual.positionToString()).isEqualTo("");
+        assertThat(actual.toString()).isEqualTo("");
     }
 
     @DisplayName("withDefaultPosition() 은 기본 값인 0 의 포지션을 반환한다.")

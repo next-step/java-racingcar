@@ -1,4 +1,4 @@
-package step3;
+package step4;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -51,7 +51,13 @@ class CarsTest {
     @CsvSource(value = {"miz,ki,bi:1,2,3"}, delimiter = ':')
     void printTest(String nameStr, String positionStr) {
         Cars nowCars = createCars(nameStr, positionStr, true);
-        nowCars.print();
+
+        List<Car> carList = createCarList(nameStr, positionStr, true);
+        String carListString = carList.stream()
+                .map(Car::toString)
+                .collect(Collectors.joining("\n"));
+        assertThat(nowCars.toString()).isEqualTo(carListString);
+        System.out.println("carListString = " + carListString);
     }
 
     @DisplayName("위치가 가장 높은 자동차가 winner 가 된다.")
@@ -72,11 +78,24 @@ class CarsTest {
         List<Name> namesList = names.getNames();
         String[] positions = positionStr.split(",");
 
+        List<Car> carList = createCarList(nameStr, positionStr, move);
+
+        return Cars.create(moveStrategy, carList);
+    }
+
+    private List<Car> createCarList(String nameStr, String positionStr, boolean move) {
+        MoveStrategy moveStrategy = () -> move;
+        Names names = new Names();
+        names.addNames(nameStr);
+
+        List<Name> namesList = names.getNames();
+        String[] positions = positionStr.split(",");
+
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < positions.length; i++) {
             carList.add(Car.create(moveStrategy, namesList.get(i), Position.create(Integer.parseInt(positions[i]))));
         }
 
-        return Cars.create(moveStrategy, carList);
+        return carList;
     }
 }

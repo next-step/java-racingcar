@@ -1,4 +1,4 @@
-package step3;
+package step4;
 
 public class Game {
 

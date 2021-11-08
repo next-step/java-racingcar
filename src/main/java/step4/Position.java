@@ -1,4 +1,4 @@
-package step3;
+package step4;
 
 import java.util.Objects;
 
@@ -28,14 +28,6 @@ public class Position {
         return position;
     }
 
-    public String positionToString() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            builder.append("-");
-        }
-        return builder.toString();
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,8 +43,10 @@ public class Position {
 
     @Override
     public String toString() {
-        return "Position{" +
-                "position=" + position +
-                '}';
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            builder.append("-");
+        }
+        return builder.toString();
     }
 }

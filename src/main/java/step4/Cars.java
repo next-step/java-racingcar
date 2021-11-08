@@ -1,4 +1,4 @@
-package step3;
+package step4;
 
 import java.util.Comparator;
 import java.util.List;
@@ -26,11 +26,6 @@ public class Cars {
         return new Cars(cars, moveStrategy);
     }
 
-    public void print() {
-        this.cars.stream()
-                .forEach(car -> System.out.println(car.carToString()));
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -53,9 +48,9 @@ public class Cars {
 
     @Override
     public String toString() {
-        return "Cars{" +
-                "cars=" + cars +
-                '}';
+        return this.cars.stream()
+                .map(Car::toString)
+                .collect(Collectors.joining("\n"));
     }
 
     public Winners getWinner() {

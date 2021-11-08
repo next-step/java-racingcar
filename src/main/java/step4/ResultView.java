@@ -1,4 +1,4 @@
-package step3;
+package step4;
 
 public class ResultView {
 
@@ -15,12 +15,8 @@ public class ResultView {
     }
 
     public void view() {
-        Integer time = gameInformation.getTime();
+
         System.out.println("실행 결과");
-        for (int now = 0; now < time; now++) {
-            gameHistory.getHistory(now).print();
-            System.out.println();
-        }
-        System.out.println(gameHistory.getWinners().toString() + "가 최종 우승 했습니다.");
+        System.out.println(gameHistory.toString(gameInformation.getTime()));
     }
 }
