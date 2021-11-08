@@ -6,13 +6,14 @@ import racingcar.step4.move.Moving;
 public class RacingGame {
 
     private static final int COUNT_OF_TRY_MIN_NUM = 1;
+    private static final String NAME_DELIMITER = ",";
     private int countOfTry;
     private Cars cars;
 
     public RacingGame(String carName, int countOfTry, int countOfCar) {
         countOfTryCheck(countOfTry);
         this.countOfTry = countOfTry;
-        this.cars = new Cars(carName, countOfCar);
+        this.cars = new Cars(carName.split(NAME_DELIMITER), countOfCar);
     }
 
     public boolean isEndGame() {
