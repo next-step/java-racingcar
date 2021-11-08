@@ -16,7 +16,7 @@ public class Car {
     }
 
     public void moveCar(int moveValue) {
-        Boolean move = MIN_MOVE_VALUE >= moveValue;
+        Boolean move = MIN_MOVE_VALUE <= moveValue;
 
         if (move) {
             location.moveLocation();
