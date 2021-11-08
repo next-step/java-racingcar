@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,44 +24,42 @@ class GameHistoryTest {
 
     @DisplayName("getHistory(time) 메서드를 통해 history를 가져온다.")
     @ParameterizedTest
-    @CsvSource(value = {"1:0,1,0"}, delimiter = ':')
-    void saveAndGetHistoryTest(Integer time, String historyStr) {
-        List<Position> history = stringParser(historyStr);
-        gameHistory.save(time, history);
+    @CsvSource(value = {"1:0,1,0:miz,ki,bi"}, delimiter = ':')
+    void saveAndGetHistoryTest(Integer time, String positionStr, String nameStr) {
+        Cars expect = createCars(nameStr, positionStr);
+        gameHistory.save(time, expect);
 
-        List<Position> returnHistory = gameHistory.getHistory(time);
-        assertThat(history).isNotSameAs(returnHistory);
-        assertThat(history).isEqualTo(returnHistory);
-    }
-
-    @DisplayName("getHistory(time) 메서드를 통해 history 가져온 history는 입력 된 List<>와는 다른 List<>이다.")
-    @ParameterizedTest
-    @CsvSource(value = {"1:0,1,0"}, delimiter = ':')
-    void saveAndGetHistoryNotSameTest(Integer time, String historyStr) {
-        List<Position> history = stringParser(historyStr);
-        gameHistory.save(time, history);
-
-        List<Position> returnHistory = gameHistory.getHistory(time);
-        assertThat(history).isNotSameAs(returnHistory);
+        Cars actual = gameHistory.getHistory(time);
+        assertThat(actual).isEqualTo(expect);
     }
 
     @DisplayName("getHistory(time) 없는 time을 가져오려고하면 IllegalException이 발생한다.")
     @ParameterizedTest
-    @CsvSource(value = {"1:0,1,0"}, delimiter = ':')
-    void getNoSearchTest(Integer time, String historyStr) {
-        List<Position> history = stringParser(historyStr);
-        gameHistory.save(time, history);
+    @CsvSource(value = {"1:0,1,0:miz,ki,bi"}, delimiter = ':')
+    void getNoSearchTest(Integer time, String positionStr, String nameStr) {
+        Cars expect = createCars(nameStr, positionStr);
+        gameHistory.save(time, expect);
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
             gameHistory.getHistory(2);
         });
     }
 
-    private List<Position> stringParser(String str) {
-        String[] split = str.split(",");
-        return Arrays.stream(split)
-                .map(item -> Position.create(Integer.parseInt(item)))
-                .collect(Collectors.toList());
+
+    private Cars createCars(String nameStr, String positionStr) {
+        MoveStrategy moveStrategy = () -> true;
+        Names names = new Names();
+        names.addNames(nameStr);
+
+        List<Name> namesList = names.getNames();
+        String[] positions = positionStr.split(",");
+
+        List<Car> carList = new ArrayList<>();
+        for(int i = 0; i < positions.length; i++) {
+            carList.add(Car.create(moveStrategy, namesList.get(i), Position.create(Integer.parseInt(positions[i]))));
+        }
+
+        return Cars.create(moveStrategy, carList);
     }
 
 }

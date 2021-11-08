@@ -6,22 +6,15 @@ import java.util.List;
 import java.util.Map;
 
 public class GameHistory {
-    private final Map<Integer, List<Position>> history = new HashMap<>();
+    private final Map<Integer, Cars> history = new HashMap<>();
 
-    public void save(Integer now, List<Position> tempHistory) {
-        List<Position> saveHistory = new ArrayList<>();
-        tempHistory.stream()
-                .forEach(saveHistory::add);
-        history.put(now, saveHistory);
+    public void save(Integer now, Cars tempHistory) {
+        history.put(now, tempHistory);
     }
 
-    public List<Position> getHistory(Integer time) {
+    public Cars getHistory(Integer time) {
         isValid(time);
-        List<Position> saveHistory = history.get(time);
-        List<Position> returnHistory = new ArrayList<>();
-        saveHistory.stream()
-                .forEach(returnHistory::add);
-        return returnHistory;
+        return history.get(time);
     }
 
     private void isValid(Integer time) {
