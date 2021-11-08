@@ -42,10 +42,12 @@ public class Racing {
 
     public void play() {
         for (int i = 0; i < this.attempts; i++) {
+            List<Car> temp = new ArrayList<>();
             for (Car car : this.cars) {
                 int random = NumberHelper.getRandomValue(10);
-                car.forward(random);
+                temp.add(car.getInstanceByForward(random));
             }
+            this.logs.put(i, temp);
         }
     }
 
