@@ -6,6 +6,11 @@ public class InputView {
 
     private final Scanner sc = new Scanner(System.in);
 
+    public String getCarName() {
+        System.out.println("경주할 자동차 이름을 입력하세요");
+        return sc.nextLine();
+    }
+
     public int countOfCar() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         return sc.nextInt();

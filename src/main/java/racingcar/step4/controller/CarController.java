@@ -11,6 +11,7 @@ public class CarController {
     public static void main(String[] args) {
         //인풋 출력
         InputView inputView = new InputView();
+        String carName =  inputView.getCarName();
         int countOfCar = inputView.countOfCar();
         int countOfTry = inputView.countOfTry();
 
@@ -18,7 +19,7 @@ public class CarController {
         MoveConfig moveConfig = new MoveConfig();
         Moving moving = moveConfig.move();
 
-        RacingGame racingGame = new RacingGame(countOfTry, countOfCar);
+        RacingGame racingGame = new RacingGame(carName, countOfTry, countOfCar);
 
         //아웃풋 출력
         ResultView resultView = new ResultView();

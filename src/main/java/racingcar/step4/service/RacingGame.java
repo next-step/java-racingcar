@@ -9,10 +9,10 @@ public class RacingGame {
     private int countOfTry;
     private Cars cars;
 
-    public RacingGame(int countOfTry, int countOfCar) {
+    public RacingGame(String carName, int countOfTry, int countOfCar) {
         countOfTryCheck(countOfTry);
         this.countOfTry = countOfTry;
-        this.cars = new Cars(countOfCar);
+        this.cars = new Cars(carName, countOfCar);
     }
 
     public boolean isEndGame() {
