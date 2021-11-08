@@ -2,8 +2,8 @@ package racinggame;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import racinggame.view.ResultView;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +23,18 @@ class RacingCarsTest {
         racingCars = new RacingCars(cars);
     }
 
-    @DisplayName("경주용자동차 전진후 View 반환")
-    @Test
-    void advanceStatus() {
-        racingCars.advance();
-        racingCars.advance();
-        racingCars.advance();
-        assertThat(racingCars.advanceStatus()).isInstanceOf(ResultView.class);
+    @DisplayName("자동차 전진 결과 반환")
+    @ParameterizedTest
+    @CsvSource(value = {
+            "4 | 4",
+            "6 | 6",
+            "5 | 5"
+    }, delimiter = '|')
+    void move(int attempts, int expectSize) {
+        RacingCars resultCars = racingCars.move(attempts);
+
+        assertThat(resultCars.getRacingResult()
+                .size())
+                .isEqualTo(expectSize);
     }
 }
