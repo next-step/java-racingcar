@@ -16,7 +16,7 @@ public class RacingHistoryTest {
     @ValueSource(ints = 1)
     @DisplayName("레이싱이력 Index 로 가져오기 성공 확인")
     void getIsTrySuccess(Integer size) {
-        RacingHitory history = new RacingHitory();
+        RacingHistory history = new RacingHistory();
         history.addHistory(TRUE);
         assertThat(history.getIsTrySuccess(size).size()).isEqualTo(size);
     }
@@ -25,7 +25,7 @@ public class RacingHistoryTest {
     @ValueSource(ints = 2)
     @DisplayName("레이싱이력 Index 로 가져오기 실패 확인")
     void getIsTrySuccessException(Integer size) {
-        RacingHitory history = new RacingHitory();
+        RacingHistory history = new RacingHistory();
         history.addHistory(TRUE);
 
         assertThatExceptionOfType(IndexOutOfBoundsException.class)

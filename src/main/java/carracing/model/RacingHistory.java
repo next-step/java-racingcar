@@ -4,13 +4,13 @@ import carracing.util.ExceptionUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingHitory {
+public class RacingHistory {
 
     private static final Integer FROM_INDEX = 0;
 
     private List<Boolean> isTrySuccess;
 
-    public RacingHitory() {
+    public RacingHistory() {
         this.isTrySuccess = new ArrayList<>();
     }
 

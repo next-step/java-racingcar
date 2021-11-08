@@ -8,15 +8,15 @@ public class Car {
 
     private String name;
 
-    private RacingHitory racingHitory;
+    private RacingHistory racingHistory;
 
     public Car(Integer idx) {
         this.name = String.valueOf(idx);
-        this.racingHitory = new RacingHitory();
+        this.racingHistory = new RacingHistory();
     }
 
     public void runRace() {
-        racingHitory.addHistory(isRun());
+        racingHistory.addHistory(isRun());
     }
 
     private Boolean isRun() {
@@ -24,7 +24,7 @@ public class Car {
     }
 
     public Long getSuccessCountByIndex(Integer toIndex) {
-        return this.racingHitory.getSuccessCountByIndex(toIndex);
+        return this.racingHistory.getSuccessCountByIndex(toIndex);
     }
 
 }
