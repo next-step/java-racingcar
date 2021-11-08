@@ -14,14 +14,14 @@ public class Car {
     }
 
     public int getStep() {
-        return step;
+        return this.step;
     }
 
-    public int forward(int step) {
+    public Car getInstanceByForward(int step) {
         if (isForward(step)) {
-            this.step += 1;
+            this.step = Math.addExact(this.step, 1);
         }
-        return this.step;
+        return new Car(this.step);
     }
 
     private boolean isForward(int step) {
