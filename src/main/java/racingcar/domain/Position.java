@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Position {
     private static final int INIT_POSITION = 0;
 
-    private final int position;
+    private int position;
 
     private Position(int position) {
         this.position = position;
@@ -19,8 +19,12 @@ public class Position {
         return new Position(INIT_POSITION);
     }
 
-    public Position move(int moveValue) {
-        return new Position(this.position + moveValue);
+    public void move(int moveValue) {
+        this.position += moveValue;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     @Override
@@ -36,7 +40,4 @@ public class Position {
         return Objects.hash(position);
     }
 
-    public int getPosition() {
-        return position;
-    }
 }

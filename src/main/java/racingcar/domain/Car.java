@@ -22,11 +22,11 @@ public class Car {
 
     public void move(MovingStrategy movingStrategy) {
         if (movingStrategy.generateNumber() > MOVE_CRITERIA) {
-            position = position.move(MOVE_VALUE);
+            position.move(MOVE_VALUE);
         }
     }
 
-    public int getPosition() {
+    public int positionValue() {
         return position.getPosition();
     }
 
