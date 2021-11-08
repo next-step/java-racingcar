@@ -6,11 +6,11 @@ public class Laps {
 
     public Laps(int count) {
         this.count = count;
-        this.tryCount = 1;
+        this.tryCount = 0;
     }
 
     public boolean isGoal() {
-        return tryCount > count;
+        return tryCount >= count;
     }
 
     public void passStartLine() {
