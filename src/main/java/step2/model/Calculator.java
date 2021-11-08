@@ -2,6 +2,7 @@ package step2.model;
 
 public class Calculator {
 
+
     public static Integer operator(String str) {
         String[] StringArray = str.split(" ");
         Integer result = new Integer(StringArray[0]);
