@@ -1,9 +1,6 @@
 package racing;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -39,12 +36,12 @@ public class Racing {
         return logs;
     }
 
-    public void play() {
+    public void play(Random random) {
         for (int i = 0; i < this.attempts; i++) {
             List<Car> temp = new ArrayList<>();
             for (Car car : this.cars) {
-                int random = NumberHelper.getRandomValue(10);
-                temp.add(car.getInstanceByForward(random));
+                int value = NumberHelper.getRandomValue(random, 10);
+                temp.add(car.getInstanceByForward(value));
             }
             this.logs.put(i, temp);
         }

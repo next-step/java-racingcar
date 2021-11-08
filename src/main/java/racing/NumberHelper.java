@@ -6,9 +6,13 @@ import java.util.Random;
  * @author han
  */
 public class NumberHelper {
-    private static Random random = new Random();
+    private static Random r = new Random();
 
     public static int getRandomValue(int input) {
+        return r.nextInt(input);
+    }
+
+    public static int getRandomValue(Random random, int input) {
         return random.nextInt(input);
     }
 
