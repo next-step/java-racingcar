@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -8,11 +9,55 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SimpleCalculatorTest {
 
-  @ParameterizedTest
-  @CsvSource(value = {"1 + 2, 3", "3 - 1, 2", "4 / 2, 2", "5 / 2, 2", "10 * 2, 20"})
-  @DisplayName("피연산자가 2개인 수식의 사칙연산기능 테스트")
-  void calculateFormulasHasTwoOperands(String formula, int expected) {
+  @Test
+  @DisplayName("덧셈 테스트")
+  void addition() {
     // given
+    String formula = "1 + 2";
+    int expected = 3;
+    SimpleCalculator calculator = new SimpleCalculator(formula);
+
+    // when
+    int result = calculator.calculate();
+
+    // then
+    assertEquals(expected, result);
+  }
+
+  @Test
+  @DisplayName("뺄셈 테스트")
+  void subtraction() {
+    // given
+    String formula = "3 - 1";
+    int expected = 2;
+    SimpleCalculator calculator = new SimpleCalculator(formula);
+
+    // when
+    int result = calculator.calculate();
+
+    // then
+    assertEquals(expected, result);
+  }
+
+  @Test
+  @DisplayName("곱셈 테스트")
+  void multiplication() {
+    // given
+    String formula = "10 * 2";
+    int expected = 20;
+    SimpleCalculator calculator = new SimpleCalculator(formula);
+
+    // when
+    int result = calculator.calculate();
+
+    // then
+    assertEquals(expected, result);
+  }
+
+  @ParameterizedTest
+  @CsvSource(value = {"4 / 2, 2", "5 / 2, 2"})
+  @DisplayName("나눗셈 테스트")
+  void division(String formula, int expected) {
     SimpleCalculator calculator = new SimpleCalculator(formula);
 
     // when
