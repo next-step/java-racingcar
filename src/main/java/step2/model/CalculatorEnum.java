@@ -16,7 +16,7 @@ public enum CalculatorEnum {
         return Arrays.stream(CalculatorEnum.values())
                 .filter(calculatorEnum -> calculatorEnum.operator.equals(operator))
         .findAny()
-        .orElse(ADD).expression.apply(num1,num2);
+        .orElse(checkOperator(operator)).expression.apply(num1,num2);
     }
 
     CalculatorEnum(String operator, BiFunction<Integer, Integer, Integer> expression){
@@ -25,4 +25,12 @@ public enum CalculatorEnum {
 
     public Integer calculate(Integer num1,Integer num2){
         return expression.apply(num1,num2); }
+
+    private static CalculatorEnum checkOperator(String operator) {
+        try {
+            throw new RuntimeException("invalid operator");
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 }
