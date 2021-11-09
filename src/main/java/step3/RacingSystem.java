@@ -1,44 +1,27 @@
 package step3;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class RacingSystem {
 
-    private int carCount;
-    private int racingCount;
-    private List<Car> cars = new ArrayList<>();
+    private CarCount carCount;
+    private RacingCount racingCount;
+    private CarGroup carGroup;
 
-    public void init() {
+    public RacingSystem() {
         InputView inputView = new InputView(new Scanner(System.in));
-        this.carCount = inputView.askCarCount();
-        this.racingCount = inputView.askRacingCount();
-        makeCars();
-        racingStart();
+        this.carCount = new CarCount(inputView.askCarCount());
+        this.racingCount = new RacingCount(inputView.askRacingCount());
+        this.carGroup = new CarGroup(carCount.count);
     }
 
-    private void racingStart() {
-        for (int i = 0; i < racingCount; i++) {
-            racing();
-        }
-    }
-
-    private void racing() {
-        for (Car car : cars) {
-            car.move(new Random().nextInt(10));
-        }
-        ResultView.result(cars);
-    }
-
-    private void makeCars() {
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+    public void racingStart() {
+        for (int i = 0; i < racingCount.count; i++) {
+            carGroup.racing();
         }
     }
 
     public static void main(String[] args) {
-        new RacingSystem().init();
+        new RacingSystem().racingStart();
     }
 }

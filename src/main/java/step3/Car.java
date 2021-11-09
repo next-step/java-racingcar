@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Car {
 
+    private final int MOVABLE_COUNT = 4;
     private int location;
 
     public Car(int location) {
@@ -18,7 +19,7 @@ public class Car {
     }
 
     public Car move(int count) {
-        if (count >= 4) {
+        if (count >= MOVABLE_COUNT) {
             location++;
         }
         return this;
