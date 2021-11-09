@@ -7,7 +7,10 @@ import java.util.stream.Collectors;
 
 
 public class CarCollection {
+
     private final List<Car> cars;
+
+    private static final int OUT_OF_INDEX = -1;
 
     public CarCollection(List<String> userNames) {
         this.cars = userNames.stream()
@@ -27,5 +30,16 @@ public class CarCollection {
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
+    }
+
+    public List<Car> getWinner() {
+        int maxPosition = cars.stream()
+                .map(Car::getPosition)
+                .max(Integer::compareTo)
+                .orElse(OUT_OF_INDEX);
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
     }
 }

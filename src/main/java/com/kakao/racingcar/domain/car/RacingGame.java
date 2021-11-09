@@ -4,7 +4,9 @@ import com.kakao.racingcar.history.RacingHistory;
 import com.kakao.racingcar.util.RandomNumberGenerator;
 
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static com.kakao.racingcar.config.CarConfig.BEGIN_INDEX;
@@ -30,6 +32,12 @@ public class RacingGame {
 
     public RacingHistory getRacingHistory() {
         return racingHistory;
+    }
+
+    public List<String> getWinnerNames() {
+        return carCollection.getWinner().stream()
+                .map(Car::getUserName)
+                .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
     }
 
 }

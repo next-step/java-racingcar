@@ -1,5 +1,6 @@
 package com.kakao.racingcar.ui;
 
+import com.kakao.racingcar.domain.car.Car;
 import com.kakao.racingcar.history.CarHistory;
 import com.kakao.racingcar.history.RacingHistory;
 
@@ -26,5 +27,10 @@ public class OutputView {
 
     protected static String joinLine(int count) {
         return String.join("", Collections.nCopies(count, DASH_LINE));
+    }
+
+    public static void printWinner(List<String> winner) {
+        String userName = String.join(", ", winner);
+        System.out.println(userName + "가 최종우승했습니다.");
     }
 }
