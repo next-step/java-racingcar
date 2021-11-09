@@ -15,7 +15,7 @@ public class Application {
 
         while (tryCount.nonOver()) {
             tryCount.counting();
-            cars.move(RandomMovingStrategy.getInstance());
+            cars.move();
             OutputView.printResult(cars);
         }
 
@@ -25,7 +25,7 @@ public class Application {
         int count = InputView.askCreateCarCount();
 
         try {
-            return Cars.from(count);
+            return Cars.from(count, RandomMovingStrategy.getInstance());
         } catch (CreateCarCountException e) {
             OutputView.printCarCountExceptionMessage();
             return getCars();

@@ -12,8 +12,10 @@ public class Cars {
     private static final int MIN_CREATE_COUNT = 1;
 
     private final List<Car> cars;
+    private final MovingStrategy movingStrategy;
 
-    private Cars(int count) {
+    private Cars(int count, MovingStrategy movingStrategy) {
+        this.movingStrategy = movingStrategy;
         validateCreateCount(count);
 
         this.cars = Stream.generate(Car::from)
@@ -21,8 +23,8 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public static Cars from(int count) {
-        return new Cars(count);
+    public static Cars from(int count, MovingStrategy movingStrategy) {
+        return new Cars(count, movingStrategy);
     }
 
     private void validateCreateCount(int count) {
@@ -31,8 +33,8 @@ public class Cars {
         }
     }
 
-    public void move(MovingStrategy strategy) {
-        cars.forEach(car -> car.move(strategy.generateNumber()));
+    public void move() {
+        cars.forEach(car -> car.move(movingStrategy.generateNumber()));
     }
 
     public List<Integer> carsPosition() {
