@@ -36,15 +36,4 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(2);
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"avante", "", " "})
-    @DisplayName("자동차 이름이 5자를 초과 or 빈값 검증")
-    void naming1(String value) {
-        assertThatThrownBy(() -> new Car(value))
-                .isInstanceOf(IllegalArgumentException.class);
-        //값 정상
-        assertThatCode(() -> new Car("k3"))
-                .doesNotThrowAnyException();
-    }
-
 }

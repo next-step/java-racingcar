@@ -12,7 +12,7 @@ public class Car {
 
     private static final int MAX_NUM = 9;
     private static final int MIN_NUM = 4;
-    private String name;
+    private Name name;
     private int position;
 
     public Car(String name) {
@@ -20,8 +20,7 @@ public class Car {
     }
 
     public Car(String name, int position) {
-        checkCarNaming(name);
-        this.name = name;
+        this.name = new Name(name);
         this.position = position;
     }
 
@@ -29,19 +28,13 @@ public class Car {
         return position;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
     public void move(MovingStrategy movingStrategy) {
         if (movingStrategy.isMovable()) {
             this.position++;
-        }
-    }
-
-    private void checkCarNaming(String name) {
-        if (name == null || name.length() > 5 || name.trim().isEmpty()) {
-            throw new IllegalArgumentException();
         }
     }
 
