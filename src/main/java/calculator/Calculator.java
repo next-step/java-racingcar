@@ -2,6 +2,9 @@ package calculator;
 
 public class Calculator {
 
+	private Calculator() {
+	}
+
 	public static double calculate(InputNumber input) {
 		String [] numbers = input.getInputNumbers();
 
