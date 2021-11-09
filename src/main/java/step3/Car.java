@@ -15,4 +15,8 @@ public class Car {
             status.append('-');
         }
     }
+
+    public String getStatus() {
+        return status.toString();
+    }
 }

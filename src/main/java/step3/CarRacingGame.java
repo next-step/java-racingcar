@@ -1,28 +1,25 @@
 package step3;
 
-import java.io.IOException;
-
 public class CarRacingGame {
 
     private Car[] cars;
-    private int numberOfTry;
+    private int numberOfRound;
 
-    public CarRacingGame(int numberOfCar, int numberOfTry) {
+    public CarRacingGame(int numberOfCar, int numberOfRound) {
         this.cars = new Car[numberOfCar];
-        this.numberOfTry = numberOfTry;
+        for (int i = 0; i < cars.length; i++) {
+            cars[i] = new Car();
+        }
+        this.numberOfRound = numberOfRound;
     }
 
-    public void start() throws IOException {
-
-    }
-
-    public static void main(String[] args) throws IOException {
-        GameOutput.println("자동차는 몇 대인가요?\n");
-        int numberOfCar = GameInput.readInt();
-        GameOutput.println("몇 번 시도할 것인가요?\n");
-        int numberOfTry = GameInput.readInt();
-
-        CarRacingGame carRacingGame = new CarRacingGame(numberOfCar, numberOfTry);
-        carRacingGame.start();
+    public void start() throws Exception {
+        for (int round = 0; round < numberOfRound; round++) {
+            for (int i = 0; i < cars.length; i++) {
+                cars[i].move();
+            }
+            GameOutput.println(cars);
+            GameOutput.println("");
+        }
     }
 }
