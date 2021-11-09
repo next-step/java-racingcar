@@ -3,10 +3,10 @@ package calculator;
 import java.util.Objects;
 
 public class InputNumber {
-	private double number;
+	private int number;
 	private String [] numbers;
 
-	public InputNumber(double number) {
+	public InputNumber(int number) {
 		this.number = number;
 	}
 
@@ -32,7 +32,7 @@ public class InputNumber {
 		if (o == null || getClass() != o.getClass())
 			return false;
 		InputNumber that = (InputNumber)o;
-		return Double.compare(that.number, number) == 0;
+		return number == that.number;
 	}
 
 	@Override

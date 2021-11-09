@@ -7,25 +7,25 @@ public enum Operator {
 
 	PLUS("+") {
 		@Override
-		double operate(double first, double second) {
+		int operate(int first, int second) {
 			return first + second;
 		}
 	},
 	MINUS("-") {
 		@Override
-		double operate(double first, double second) {
+		int operate(int first, int second) {
 			return first - second;
 		}
 	},
 	TIMES("*") {
 		@Override
-		double operate(double first, double second) {
+		int operate(int first, int second) {
 			return first * second;
 		}
 	},
 	DIVIDE("/") {
 		@Override
-		double operate(double first, double second) {
+		int operate(int first, int second) {
 			validDivide(second);
 			return first / second;
 		}
@@ -49,7 +49,7 @@ public enum Operator {
 		return operand;
 	}
 
-	abstract double operate(double first, double second);
+	abstract int operate(int first, int second);
 
 	public static Operator operation(String inputOperand) {
 		if (!operation.containsKey(inputOperand)) {
