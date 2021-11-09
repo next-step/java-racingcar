@@ -3,9 +3,9 @@ package step3;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class Race {
+    private final int TEN = 10;
     private List<Car> carList;
     private Count carCount;
     private Count trialCount;
@@ -15,42 +15,50 @@ public class Race {
         gameBoard = new GameBoard();
     }
 
+    public void start() {
+        ready();
+
+        inGame();
+    }
+
     private void ready() {
         this.carCount = gameBoard.registerCar();
         this.trialCount = gameBoard.registerTrialCount();
 
+        this.carList = new ArrayList<>();
+        this.carList.addAll(createCarList());
+    }
+
+    private List<Car> createCarList() {
         Car[] car = new Car[this.carCount.getCount()];
 
         for(int i = 0 ; i < car.length ; ++i) {
             car[i] = new Car();
         }
-
-        this.carList = new ArrayList<>();
-        this.carList.addAll(Arrays.asList(car));
+        return Arrays.asList(car);
     }
 
     private void inGame() {
-        gameBoard.resultMessage();
+        gameBoard.renderResultMessage();
 
-        for(int t = 0; t < this.trialCount.getCount(); ++t) {
-            for(Car c : carList) {
-                int random = (int)(Math.random() * 10);
-                if(random >= 4) {
-                    c.move();
-                    gameBoard.drawRaceProgress(c.currentPos());
-                    continue;
-                }
-                gameBoard.drawRaceProgress(c.currentPos());
-            }
+        int trialCount = this.trialCount.getCount();
 
-            System.out.println();
+        for(int t = 0; t < trialCount; ++t) {
+            racing();
         }
     }
 
-    //진짜 메서드
-    public void start() {
-        ready();
+    private void racing() {
+        carList.stream()
+                .forEach(c -> {
+                    c.run(randomCount());
+                    gameBoard.renderRaceProgress(c.currentPosition());
+                });
 
-        inGame();
+        System.out.println();
+    }
+
+    private int randomCount() {
+        return (int)(Math.random() * TEN);
     }
 }
