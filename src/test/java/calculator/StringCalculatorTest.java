@@ -42,7 +42,7 @@ public class StringCalculatorTest {
     }
 
     @Test
-    @DisplayName("나누기 - 0으로 나누기")
+    @DisplayName("나누기 - 0으로 나누기 - IllegalArgumentException 발생")
     void dividedByZero() {
         String expression = "6 / 0";
         assertThatIllegalArgumentException()
