@@ -12,7 +12,7 @@ class ParticipantTest {
     @Test
     void 참가자를_생성한다() {
         //given
-        Cars cars = Cars.join(Arrays.asList(Car.create()));
+        Cars cars = Cars.join(Arrays.asList(Car.create("java")));
         //when
         Participant participant = Participant.join(cars);
         //then

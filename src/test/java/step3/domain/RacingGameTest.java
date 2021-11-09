@@ -12,7 +12,7 @@ public class RacingGameTest {
     @Test
     void 경주_게임을_생성한다() {
         //given
-        List<Car> carList = Arrays.asList(Car.create(), Car.create(), Car.create());
+        List<Car> carList = Arrays.asList(Car.create("java"), Car.create("c++"), Car.create("go"));
         Cars cars = Cars.join(carList);
         RacingGame racingGame = RacingGame.create(3, Participant.join(cars));
         //when & then
@@ -22,7 +22,7 @@ public class RacingGameTest {
     @Test
     void 경주를_시작한다() {
         //given
-        List<Car> carList = Arrays.asList(Car.create(), Car.create(), Car.create());
+        List<Car> carList = Arrays.asList(Car.create("java"), Car.create("c++"), Car.create("go"));
         Cars cars = Cars.join(carList);
         //when
         RacingGame racingGame = RacingGame.create(3, Participant.join(cars));

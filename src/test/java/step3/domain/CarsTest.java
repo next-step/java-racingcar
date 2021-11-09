@@ -17,7 +17,7 @@ class CarsTest {
         //given
         List<Car> carList = new ArrayList<>();
         for (int count = 0; count < 3; count++) {
-            carList.add(Car.create());
+            carList.add(Car.create("java"));
         }
         //when
         Cars cars = Cars.join(carList);
