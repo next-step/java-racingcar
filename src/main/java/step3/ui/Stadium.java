@@ -18,17 +18,17 @@ public class Stadium {
 //        System.out.println("시도할 회수는 몇 회 인가요?");
 //        Integer roundSize = Integer.parseInt(SCANNER.nextLine());
 
-        GameBoard gameBoard = playGame("나,우리,사람", 5);
-        showGame(gameBoard);
+        GameDirector gameDirector = createGameDirector();
+        GameBoard gameBoard = gameDirector.playGame();
+        showGame(gameBoard, gameDirector);
     }
 
-    private static GameBoard playGame(String carNames, Integer roundSize) {
-        GameDirector gameDirector = new GameDirector(Name.listOf(carNames), new Round(roundSize));
-        return gameDirector.playGame();
+    private static GameDirector createGameDirector() {
+        return new GameDirector(Name.listOf("나,우리,사람"), new Round(5));
     }
 
-    private static void showGame(GameBoard gameBoard) {
-        GameResult gameResult = new GameResult(gameBoard);
+    private static void showGame(GameBoard gameBoard, GameDirector gameDirector) {
+        GameResult gameResult = new GameResult(gameBoard, gameDirector.findWinnerNames());
         gameResult.showGame();
     }
 

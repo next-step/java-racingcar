@@ -42,4 +42,8 @@ public class GameDirector {
             gameBoard.recordRound(cars);
         }
     }
+
+    public List<Name> findWinnerNames() {
+        return cars.findWinnerNames();
+    }
 }

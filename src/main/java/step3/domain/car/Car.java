@@ -7,7 +7,7 @@ import java.util.Objects;
 import static java.lang.String.format;
 import static step3.utils.ValidationUtils.checkArgument;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private static final int POWER_BOUND = 4;
     private static final int MIN_POWER = 0;
@@ -50,6 +50,26 @@ public class Car {
 
     public void record(RoundBoard roundBoard) {
         location.record(roundBoard, name);
+    }
+
+    public boolean locationEquals(Location winnerLocation) {
+        return location.equals(winnerLocation);
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    @Override
+    public int compareTo(Car other) {
+        if (other == null) {
+            return 0;
+        }
+        return location.compareTo(other.location);
     }
 
     @Override

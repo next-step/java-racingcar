@@ -7,7 +7,7 @@ import java.util.Objects;
 import static step3.utils.ValidationUtils.checkArgument;
 import static step3.utils.ValidationUtils.checkPositive;
 
-public class Location {
+public class Location implements Comparable<Location> {
 
     private static final int DEFAULT_INTERVAL = 1;
 
@@ -48,6 +48,14 @@ public class Location {
 
     public int getLocation() {
         return location;
+    }
+
+    @Override
+    public int compareTo(Location other) {
+        if (other == null) {
+            return 0;
+        }
+        return Integer.compare(location, other.location);
     }
 
     @Override
