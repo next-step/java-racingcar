@@ -8,23 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGame {
-    private int carNumbers;
     private int tryTimes;
-    private List<Car> raceCar = new ArrayList<Car>();
+    private List<Car> raceCar = new ArrayList<>();
 
     RacingCarGame() {
         InputView inputView = new InputView();
-        carNumbers = inputView.inputCarNumbers();
+        setRaceCar(inputView.inputCarNames());
         tryTimes = inputView.inputTryTimes();
     }
 
-    RacingCarGame(int carNumbers, int tryTimes) {
-        this.carNumbers = carNumbers;
+    RacingCarGame(int tryTimes) {
         this.tryTimes = tryTimes;
     }
 
     public void play() {
-        setRaceCar();
         playRace();
     }
 
@@ -35,10 +32,9 @@ public class RacingCarGame {
         }
     }
 
-    public List<Car> setRaceCar() {
-        raceCar = new ArrayList<Car>();
-        for (int i = 0; i < carNumbers; i++) {
-            raceCar.add(new Car());
+    public List<Car> setRaceCar(String[] carNames) {
+        for (String name : carNames) {
+            raceCar.add(new Car(name));
         }
 
         return raceCar;
