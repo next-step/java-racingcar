@@ -7,12 +7,6 @@ import org.junit.jupiter.api.Test;
 public class CarRacingFeatureTest {
 
     @Test
-    @DisplayName("자동차 랜덤 행동 이동 기능")
-    void moveRandom() {
-
-    }
-
-    @Test
     @DisplayName("자동차 상태 출력 기능")
     void printCarStatus() {
 

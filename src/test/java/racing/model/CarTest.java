@@ -3,6 +3,7 @@ package racing.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.model.mock.MockRandom;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,6 +15,19 @@ class CarTest {
     @BeforeEach
     void setUp() {
         car = new Car();
+    }
+
+    @Test
+    @DisplayName("자동차 랜덤 행동 이동 기능")
+    void moveRandom() {
+        car = new Car(new MockRandom()); // 10번 nextInt 수행시 7번 go 될 수 있는 Mock
+
+        for (int i = 0; i < 10; i++) {
+            car.moveRandom();
+        }
+
+        assertThat(car.getMovingDistance())
+                .isEqualTo(7);
     }
 
     @Test
@@ -30,8 +44,6 @@ class CarTest {
     @Test
     @DisplayName("자동차 정지 기능")
     void stopCar() {
-        Car car = new Car();
-
         // 아무것도 하지않으면 정지
 
         assertThat(car.getMovingDistance())
