@@ -24,19 +24,19 @@ class CarTest {
     @DisplayName("전진")
     void move() {
         car.move(5);
-        assertThat(car.currentPosition()).isEqualTo(Position.from(2).getPosition());
+        assertThat(car.currentPosition()).isEqualTo(Position.from(1).getPosition());
     }
 
     @Test
     @DisplayName("정지")
     void stop() {
         car.move(3);
-        assertThat(car.currentPosition()).isEqualTo(Position.from(1).getPosition());
+        assertThat(car.currentPosition()).isEqualTo(Position.from(0).getPosition());
     }
 
     @ParameterizedTest
     @DisplayName("Car move exception test")
-    @ValueSource(ints = {-1, -2, -3, 10, 11})
+    @ValueSource(ints = {-1})
     void moveException(int number) {
         assertThatThrownBy(() -> car.move(number)).isInstanceOf(CarMovingNumberException.class);
     }
