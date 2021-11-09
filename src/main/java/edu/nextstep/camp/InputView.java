@@ -1,28 +1,35 @@
 package edu.nextstep.camp;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class InputView {
-    private static final int VALIDATE_NUMBER = 0;
+    private static final int VALIDATE_NUMBER = 1;
 
     private final Scanner scanner = new Scanner(System.in);
 
     public int inputPositiveNumber(String message) {
         System.out.println(message);
-        int number;
-        do {
-            number = getAndValidate();
-        } while (number <= VALIDATE_NUMBER);
+        final int number = scanner.nextInt();
+        if (number < VALIDATE_NUMBER) {
+            throw new IllegalArgumentException("1 이상의 숫자가 필요");
+        }
 
         return number;
     }
 
-    private int getAndValidate() {
-        final int number = scanner.nextInt();
-        if (number <= VALIDATE_NUMBER) {
-            System.out.println("1 이상의 정수값을 입력해주세요");
+    public String[] inputCSV(String message, int limit, String delimiter) {
+        System.out.println(message);
+        final String value = scanner.nextLine();
+        if (value.isEmpty()) {
+            throw new IllegalArgumentException("input must not be empty.");
         }
 
-        return number;
+        final String[] split = value.split(delimiter);
+        if (Arrays.stream(split)
+                .anyMatch(s -> s.length() > limit))
+            throw new IllegalArgumentException("value is too long:" + Arrays.toString(split));
+
+        return split;
     }
 }
