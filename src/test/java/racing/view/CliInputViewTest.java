@@ -8,6 +8,7 @@ import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayName("3단계 - 자동차 경주 - CliInputView 단위 테스트")
 class CliInputViewTest {
 
     @Test
