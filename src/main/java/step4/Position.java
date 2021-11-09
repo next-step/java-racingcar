@@ -1,8 +1,8 @@
-package step3;
+package step4;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
     private final static Integer DEFAULT_POSITION = 0;
 
@@ -24,12 +24,8 @@ public class Position {
         return new Position(this.position + 1);
     }
 
-    public String positionToString() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            builder.append("-");
-        }
-        return builder.toString();
+    public Integer getNow() {
+        return position;
     }
 
     @Override
@@ -47,8 +43,15 @@ public class Position {
 
     @Override
     public String toString() {
-        return "Position{" +
-                "position=" + position +
-                '}';
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            builder.append("-");
+        }
+        return builder.toString();
+    }
+
+    @Override
+    public int compareTo(Position o) {
+        return this.position - o.position;
     }
 }

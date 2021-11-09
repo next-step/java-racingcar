@@ -10,29 +10,36 @@
 
 ## 기능 목록
 - Input view 구현
-    - Input 받은 값 validation(null check, 숫자 값 체크)
+    - Input 받기
     - Input 받은 값 전달 객체(Rule) 생성 후 return
-- Rule 구현
-  - from(Long count, Long time) 정적 팩토리 메서드 구현
-  - getCount() 구현
+- UserInput 구현
+  - 받은 값 validation
+- GameInformation 구현
+  - create(String namesStr, Long time) 정적 팩토리 메서드 구현
+  - getNames() 구현
   - getTime() 구현
-- Input Validator Util 구현
-  - null check 구현
-  - string null or empty 구현
-  - isNumber() 구현
+- Name 구현
+  - 글자 길이 valid
+- Names 구현
+  - Name을 포장하는 1급 객체
+  - addNames() 문자열을 ","로 분리해서 Name List에 추가 
 - Game 구현
-  - Rule를 통해 Game 생성
+  - GameInformation를 통해 Game 생성
   - Game 생성 시 RuleDto validation  
   - Game 전체 실행 메서드 구현
   - 1초 메서드 step() 구현
+- Winner 구현
+  - toString() 호출 시 List<Name> 을 "," 로 join해서 반환 
 - GameHistory 구현
-   - save(time, List<Long>) 게임 진행 내역 저장
+   - save(time, Cars) 게임 진행 내역 저장
    - getHistory(time) 을 통해 내역을 제공한다.
    - isValid(time) 히스토리가 없으면 illegegalArgument Expception 발생
 - Car 구현
   - 랜덤 값을 통해 갈 수 있는지 없는지 판별하는 메서드 isGo 구현
-  - moveOrStop() 함수 구현
-  - move() 함수 구현
+  - moveOrStop() 함수 구현 - 불변으로 관리하기 위해 변경 후 Car 반환.
+- Cars 구현
+  - move() 함수 호출 시 내부에 car의 moveOrStop() 함수 호출 후 Cars 반환
+  - print() 함수 호출 시 각 자동차의 위치 프린트
 - Result view 구현
   - view() 를 호출하면 "실행 결과"를 프린트 한다.
   - GameHistory를 받으면 순서대로 프린트 한다.
