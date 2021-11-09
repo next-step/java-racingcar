@@ -10,9 +10,14 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Input input = new Input();
-        input.inputView();
-        ArrayList<String> inputCarList = new CarList().makeCarList(input.getCountOfCar());
-        Output output = new Output(inputCarList, input.getCountOfTry());
-        output.outputView();
+        Output output = new Output();
+
+        ArrayList<Integer> inputList = input.inputView();
+
+        Integer countOfCar = inputList.get(0);
+        Integer countOfTry = inputList.get(1);
+
+        ArrayList<String> inputCarList = CarList.makeCarList(countOfCar);
+        output.outputView(countOfTry,inputCarList);
     }
 }
