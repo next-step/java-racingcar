@@ -11,7 +11,7 @@ class CarRaceGroupTest {
 
 	@BeforeEach
 	public void setUp() {
-		carRaceGroup = new CarRaceGroup(new CarCount(3), new CarRaceCount(5));
+		carRaceGroup = new CarRaceGroup(new CarGroup("BMW,KIA,HONDA"), new CarRaceCount(5));
 	}
 
 	@Test
@@ -25,6 +25,12 @@ class CarRaceGroupTest {
 	public void checkRandomMoveCount(){
 		int indexMax = carRaceGroup.size() -1;
 		assertThat(carRaceGroup.carPosition(indexMax)).isBetween(0, 5);
+	}
+
+	@Test
+	@DisplayName("우승자 생성 확인")
+	public void checkWinner(){
+		assertThat(carRaceGroup.winner()).isNotNull();
 	}
 
 }
