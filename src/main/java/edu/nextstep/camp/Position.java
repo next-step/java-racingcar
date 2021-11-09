@@ -2,7 +2,7 @@ package edu.nextstep.camp;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
     private static final int INITIAL_POSITION = 0;
     private int position;
 
@@ -33,5 +33,10 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(position);
+    }
+
+    @Override
+    public int compareTo(Position o) {
+        return position - o.position;
     }
 }

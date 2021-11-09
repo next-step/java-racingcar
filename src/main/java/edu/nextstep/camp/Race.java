@@ -1,6 +1,7 @@
 package edu.nextstep.camp;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,5 +55,21 @@ public class Race {
 
     public boolean isEnded() {
         return currentTurn >= totalTurns;
+    }
+
+    public List<String> winners() {
+        if (!isEnded()) {
+            throw new IllegalStateException("the race is not over.");
+        }
+
+        final Position maxPosition = cars.stream()
+                .map(Car::position)
+                .max(Comparator.naturalOrder())
+                .orElseGet(Position::ofZero);
+
+        return cars.stream()
+                .filter(car -> car.position().equals(maxPosition))
+                .map(Car::name)
+                .collect(Collectors.toList());
     }
 }

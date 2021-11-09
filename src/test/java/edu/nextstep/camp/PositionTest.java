@@ -25,4 +25,14 @@ public class PositionTest {
         position.forward();
         assertThat(position.toInt()).isEqualTo(4);
     }
+
+    @Test
+    public void compare() {
+        Position position1 = Position.ofZero();
+        position1.forward();
+        Position position2 = Position.ofZero();
+        assertThat(position1).isInstanceOf(Comparable.class);
+        assertThat(position1.compareTo(position2)).isGreaterThan(0);
+        assertThat(position2.compareTo(Position.ofZero())).isEqualTo(0);
+    }
 }
