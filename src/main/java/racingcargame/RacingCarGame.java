@@ -14,7 +14,7 @@ public class RacingCarGame {
     private int carCount;
     private int tryCount;
 
-    private List<RacingCar> racingCars;
+    private List<RacingCar> racingCars = new ArrayList<>();;
 
     public RacingCarGame(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
@@ -32,14 +32,14 @@ public class RacingCarGame {
         tryCount = inputView.readTryCount();
     }
 
-    private void prepareRacingCars() {
-        racingCars = new ArrayList<>();
+    protected void prepareRacingCars() {
+        racingCars.clear();
         while (carCount-- > 0) {
             racingCars.add(new RacingCar());
         }
     }
 
-    private void moveAndPrintResult() {
+    protected void moveAndPrintResult() {
         resultView.printResultMessage();
         while (tryCount-- > 0) {
             moveAndPrintState();
@@ -52,5 +52,29 @@ public class RacingCarGame {
             resultView.printCurrentStateOfRacingCar(r);
         });
         resultView.print("");
+    }
+
+    public int getCarCount() {
+        return carCount;
+    }
+
+    public void setCarCount(int carCount) {
+        this.carCount = carCount;
+    }
+
+    public int getTryCount() {
+        return tryCount;
+    }
+
+    public void setTryCount(int tryCount) {
+        this.tryCount = tryCount;
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
+    }
+
+    public void setRacingCars(List<RacingCar> racingCars) {
+        this.racingCars = racingCars;
     }
 }
