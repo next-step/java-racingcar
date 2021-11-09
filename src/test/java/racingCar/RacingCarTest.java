@@ -1,8 +1,8 @@
 package racingCar;
 
-import calculator.Calculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingCar.ui.ResultView;
 import racingCar.utils.NumberUtils;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public class RacingCarTest {
 
     RacingCarGame racingCarGame;
     private final static int TRY_TIMES = 5;
-    private final static String CAR_NAMES = "pobi,crong,honux,minchoi";
+    private final static String CAR_NAMES = "pobi,crong,honux,min";
 
     @BeforeEach
     void beforeTest() {
@@ -33,6 +33,13 @@ public class RacingCarTest {
                 .isThrownBy(() -> {
                     Car car = new Car("minchoi");
                 });
+    }
+
+    @Test
+    void 자동차_경주_이름_출력_테스트() {
+        List<Car> cars = racingCarGame.setRaceCar(CAR_NAMES.split(","));
+        ResultView resultView = new ResultView();
+        resultView.printCarRace(cars);
     }
 
     @Test
