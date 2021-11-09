@@ -33,7 +33,7 @@ public class RacingCarGameTest {
     // given
     int carAmount = 3;
     int chanceAmount = 1;
-    int expectedMovedDistanceAmount = carAmount * chanceAmount;
+    int expectedMovedDistance = chanceAmount;
     MoveStrategy alwaysMoveStrategy = () -> true;
     RacingCarGame racingCarGame = new RacingCarGame(carAmount, chanceAmount);
 
@@ -42,11 +42,10 @@ public class RacingCarGameTest {
 
     // then
     List<List<Integer>> resultList = racingCarGame.getResults().getResultList();
-
-    Integer movedDistanceAmount = resultList.stream()
-            .flatMap(result -> result.stream())
-            .reduce(0, Integer::sum);
-    assertThat(movedDistanceAmount).isEqualTo(expectedMovedDistanceAmount);
+    assertThat(resultList.size()).isEqualTo(chanceAmount);
+    resultList.get(0).forEach(movedDistance ->
+      assertThat(movedDistance).isEqualTo(expectedMovedDistance)
+    );
   }
 
 }
