@@ -15,11 +15,15 @@ public class CarRacingGame {
 
     public void start() throws Exception {
         for (int round = 0; round < numberOfRound; round++) {
-            for (int i = 0; i < cars.length; i++) {
-                cars[i].move();
-            }
+            progressOneRound();
             GameOutput.println(cars);
             GameOutput.println("");
+        }
+    }
+
+    private void progressOneRound() {
+        for (Car car : cars) {
+            car.move();
         }
     }
 }

@@ -10,13 +10,14 @@ public class Car {
 
     private StringBuilder status = new StringBuilder();
 
+    public String getStatus() {
+        return status.toString();
+    }
+
     public void move() {
         if (random.nextInt(MAX) >= MOVE_CONDITION) {
             status.append('-');
         }
     }
 
-    public String getStatus() {
-        return status.toString();
-    }
 }
