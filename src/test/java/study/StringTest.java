@@ -17,6 +17,8 @@ public class StringTest {
     void splitSingle() {
         String[] result = "1".split(",");
         assertThat(result).containsExactly("1");
+        assertThat(result).contains("1");
+        assertThat(result).containsExactly("1","2");
     }
 
     @Test
@@ -27,6 +29,7 @@ public class StringTest {
     @Test
     @DisplayName("charAt()에서의 index가 배열의 범위에서 벗어났을 때, IndexOutOfBoundException 테스트")
     void charAtOutOfIndex() {
+    void charAt() {
         assertThatThrownBy(() -> {
             "abc".charAt(3);
         }).isInstanceOf(IndexOutOfBoundsException.class)
@@ -38,4 +41,4 @@ public class StringTest {
         assertThat("abc".charAt(0)).isEqualTo('a');
     }
 }
-
+}
