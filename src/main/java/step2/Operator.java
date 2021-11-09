@@ -19,6 +19,7 @@ public enum Operator {
 
     private final String op;
     private final BinaryOperator<Operand> bo;
+
     private static final Map<String, Operator> map;
 
     static {
@@ -37,6 +38,7 @@ public enum Operator {
         if (!map.containsKey(op)) {
             throw new IllegalArgumentException();
         }
+
         return map.get(op);
     }
 

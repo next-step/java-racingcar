@@ -10,5 +10,6 @@ public class Calculator {
             leftOperand = operator.operate(leftOperand, rightOperand);
         }
         return leftOperand.getValue();
+
     }
 }
