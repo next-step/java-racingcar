@@ -19,8 +19,6 @@ public class Cars {
         validateCreateCount(count);
 
         this.movingStrategy = movingStrategy;
-        validateCreateCount(count);
-
         this.cars = Stream.generate(Car::from)
                 .limit(count)
                 .collect(Collectors.toList());
