@@ -7,22 +7,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Input {
-    private Integer countOfCar;
-    private Integer countOfTry;
 
-    public Integer getCountOfTry() {
-        return countOfTry;
-    }
-
-    public Integer getCountOfCar() { return countOfCar;}
-
-    public void inputView() {
+    public ArrayList<Integer> inputView() {
+        ArrayList<Integer> inputList = new ArrayList<Integer>();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("자동차 대수는 몇 대 인가요?");
-        this.countOfCar = scanner.nextInt();
+        inputList.add(scanner.nextInt());
 
         System.out.println("시도할 회수는 몇 회 인가요?");
-        this.countOfTry = scanner.nextInt();
+        inputList.add(scanner.nextInt());
+
+        return inputList;
     }
 }
