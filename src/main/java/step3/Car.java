@@ -8,9 +8,11 @@ public class Car {
     private static final int MAX = 10;
     private static final int MOVE_CONDITION = 4;
 
+    private StringBuilder status = new StringBuilder();
+
     public void move() {
         if (random.nextInt(MAX) >= MOVE_CONDITION) {
-
+            status.append('-');
         }
     }
 }
