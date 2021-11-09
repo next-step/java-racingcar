@@ -1,5 +1,6 @@
 package racingCar;
 
+import calculator.Calculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingCar.utils.NumberUtils;
@@ -7,11 +8,13 @@ import racingCar.utils.NumberUtils;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 public class RacingCarTest {
 
     RacingCarGame racingCarGame;
     private final static int TRY_TIMES = 5;
+    private final static String CAR_NAMES = "pobi,crong,honux,minchoi";
 
     @BeforeEach
     void beforeTest() {
@@ -20,9 +23,16 @@ public class RacingCarTest {
 
     @Test
     void 자동차_리스트_생성_테스트() {
-        String[] names = "pobi,crong,honux,minchoi".split(",");
-        List<Car> cars = racingCarGame.setRaceCar(names);
+        List<Car> cars = racingCarGame.setRaceCar(CAR_NAMES.split(","));
         assertThat(cars.size()).isEqualTo(4);
+    }
+
+    @Test
+    void 자동차_이름_5글자_초과_테스트() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    Car car = new Car("minchoi");
+                });
     }
 
     @Test
