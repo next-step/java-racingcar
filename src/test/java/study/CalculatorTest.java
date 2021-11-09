@@ -56,4 +56,13 @@ public class CalculatorTest {
                 .isThrownBy(() -> Calculator.calculate("5 % 3"))
                 .withMessage("사칙 연산 기호가 아닙니다.");
     }
+
+    @Test
+    @DisplayName("사칙 연산을 모두 순서대로 수행한다")
+    void shouldCalculateCorrectly() {
+        String input = "2 + 3 * 4 / 2";
+        int result = Calculator.calculate(input);
+
+        assertThat(result).isEqualTo(10);
+    }
 }

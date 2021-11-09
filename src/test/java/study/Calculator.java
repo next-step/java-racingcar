@@ -8,11 +8,18 @@ public class Calculator {
         validate(input);
 
         String[] values = input.split(DELIMITER);
-        InputNumber first = new InputNumber(values[0]);
-        InputNumber second = new InputNumber(values[2]);
-        String operator = values[1];
 
-        return calculate(first, second, operator).getInputNumber();
+        InputNumber first = new InputNumber(values[0]);
+
+        for (int i = 1; i < values.length; i+=2) {
+            String operator = values[i];
+            InputNumber second = new InputNumber(values[i+1]);
+
+
+            first = calculate(first, second, operator);
+        }
+
+        return first.getInputNumber();
     }
 
     private static void validate(String input) {
