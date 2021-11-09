@@ -10,7 +10,6 @@ public class StringCalculator {
             operators.put(value.operator, value);
     }
 
-    //null체크 및 공백기준으로 리스트 생성 피연산자 연산자 정확한지 체크
     public void validate(String input) {
         if (input.equals("") || input.equals(" ") || input == null) throw new IllegalArgumentException();
         List<String> inputList = Arrays.asList(input.split(" "));
@@ -19,7 +18,6 @@ public class StringCalculator {
         }
     }
 
-    //연산자, 피연산자 이외의 다른 문자가 오는지 체크
     public void isValid(String opCheck) {
         if (!(opCheck.matches("\\d+") || opCheck.matches("[\\+*\\/-]"))) throw new IllegalArgumentException();
     }
@@ -33,7 +31,6 @@ public class StringCalculator {
         return result;
     }
 
-    //피연산자와 연산자를 따로 리스트에 담는다.
     public int calculateDetail(char[] inputValue){
         LinkedList<Integer> numList = new LinkedList<Integer>();
         LinkedList<Character> opList = new LinkedList<Character>();
@@ -44,7 +41,6 @@ public class StringCalculator {
         return value;
     }
 
-    //계산 프로세스
     private void calculateExecute(LinkedList<Character> opList, LinkedList<Integer> numList) {
         while(!opList.isEmpty()){
             int prevNum = numList.poll();
@@ -66,11 +62,9 @@ public class StringCalculator {
     }
 
     private void processValues(char ch, LinkedList<Integer> numList, LinkedList<Character> opList) {
-        //피연산자 저장
         if (ch != '+' && ch != '-' && ch != '/' && ch != '*') {
             numList.add(Integer.parseInt(Character.toString(ch)));
         }
-        //연산자 저장
         if(ch == '+' || ch == '-' || ch == '/' || ch == '*') {
             opList.add(ch);
         }

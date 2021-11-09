@@ -3,6 +3,7 @@ package step2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -12,41 +13,46 @@ public class CalculatorTest {
     StringCalculator calculator = new StringCalculator();
 
 
-    @Test
     @DisplayName("덧셈 테스트")
-    void Add() {
-        int result = calculator.calculateInfo("2 + 3");
+    @ParameterizedTest
+    @ValueSource(strings = {"2 + 3", "4 + 1"})
+    void Add(String input) {
+        int result = calculator.calculateInfo(input);
         assertThat(result).isEqualTo(5);
     }
 
 
-    @Test
     @DisplayName("뺄셈 테스트")
-    void Minus() {
-        int result = calculator.calculateInfo("3 - 2");
+    @ParameterizedTest
+    @ValueSource(strings = {"6 - 5", "4 - 3"})
+    void Minus(String input) {
+        int result = calculator.calculateInfo(input);
         assertThat(result).isEqualTo(1);
     }
 
 
-    @Test
     @DisplayName("나눗셈 테스트")
-    void Division() {
-        int result = calculator.calculateInfo("6 / 3");
+    @ParameterizedTest
+    @ValueSource(strings = {"6 / 3", "4 / 2"})
+    void Division(String input) {
+        int result = calculator.calculateInfo(input);
         assertThat(result).isEqualTo(2);
     }
 
 
-    @Test
     @DisplayName("곱셈 테스트")
-    void Multiplication() {
-        int result = calculator.calculateInfo("2 * 3");
+    @ParameterizedTest
+    @ValueSource(strings = {"2 * 3", "6 * 1"})
+    void Multiplication(String input) {
+        int result = calculator.calculateInfo(input);
         assertThat(result).isEqualTo(6);
     }
 
-    @Test
     @DisplayName("사칙연산 테스트")
-    void Arithmetic() {
-        int result = calculator.calculateInfo("2 + 3 * 4 / 2");
+    @ParameterizedTest
+    @ValueSource(strings = {"2 + 3 * 4 / 2"})
+    void Arithmetic(String input) {
+        int result = calculator.calculateInfo(input);
         assertThat(result).isEqualTo(10);
     }
 
