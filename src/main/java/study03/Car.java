@@ -1,7 +1,7 @@
 package study03;
 
 import java.util.Optional;
-import java.util.Random;
+import java.util.function.Predicate;
 
 /*
  *
@@ -9,23 +9,23 @@ import java.util.Random;
  *
  * @version 1.0.0
  *
- * 2021-11-07
+ * 2021-11-10
  *
  * Copyright tnals1422
  */
 public class Car {
 
-    private String position = "";
-    
-    public void moveByCondition() {
-        Optional.of(createConditionNumber()).filter(cnt -> cnt >= 4).ifPresent(y -> this.position += "-");
+    private static final int CRITERIA = 4;
+    private int position = 0;
+
+    public void moveOnSatisfiedCondition(int condition) {
+        Optional.of(condition)
+                .filter(isForward())
+                .ifPresent(x -> this.position++);
+        CarStatusPrinter.print(position);
     }
 
-    public int createConditionNumber() {
-        return new Random().nextInt(10);
-    }
-
-    public String getPosition() {
-        return position;
+    private Predicate<Integer> isForward() {
+        return number -> number >= CRITERIA;
     }
 }
