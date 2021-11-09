@@ -6,15 +6,8 @@ import step3.service.MoveOrStop;
 import java.util.ArrayList;
 
 public class Output {
-    private ArrayList<String> inputCarList;
-    private Integer countOfTry;
 
-    public Output(ArrayList<String> inputCarList, Integer countOfTry) {
-        this.inputCarList = inputCarList;
-        this.countOfTry = countOfTry;
-    }
-
-    public void outputView() {
+    public void outputView(Integer countOfTry, ArrayList<String> inputCarList) {
         System.out.println("실행 결과");
         for (int i = 0; i < countOfTry; i++) {
             MoveOrStop moveOrStop = new MoveOrStop();
@@ -25,7 +18,6 @@ public class Output {
 
             movedCarList.stream().forEach(System.out::println);
             System.out.println("");
-            this.inputCarList = movedCarList;
         }
     }
 }
