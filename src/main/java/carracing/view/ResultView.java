@@ -7,12 +7,10 @@ import java.util.Collections;
 public class ResultView {
 
     private static final long TIMER = 1000;
-
     private static final String DASH = "-";
-
     private static final String EMPTY = "";
-
     private static final String DELIMITER = " : ";
+    private static final String WINNER_MESSAGE = "%s가 최종 우승했습니다.";
 
     private final Cars cars;
 
@@ -27,6 +25,8 @@ public class ResultView {
             Thread.sleep(TIMER);
             this.outputCarsHistory(i);
         }
+
+        System.out.println(String.format(WINNER_MESSAGE, cars.getWinners()));
     }
 
     private void outputCarsHistory(Integer toIndex) {

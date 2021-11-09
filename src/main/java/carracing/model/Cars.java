@@ -1,5 +1,6 @@
 package carracing.model;
 
+import carracing.exception.HistoryNullPointerException;
 import carracing.util.ExceptionUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,6 +58,24 @@ public class Cars {
 
     public Integer getTryTotalCount() {
         return this.tryTotalCount;
+    }
+
+    public List<String> getWinners() {
+        Long max = this.getSuccessMaxCount();
+
+        return cars.stream()
+            .filter(car -> car.getSuccessCount().equals(max))
+            .map(Car::getName)
+            .collect(Collectors
+                .toCollection(ArrayList::new)
+            );
+    }
+
+    private Long getSuccessMaxCount() {
+        return cars.stream()
+            .mapToLong(Car::getSuccessCount)
+            .max()
+            .orElseThrow(HistoryNullPointerException::new);
     }
 
 }

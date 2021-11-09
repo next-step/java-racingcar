@@ -30,6 +30,9 @@ public class Car {
     public void runRace() {
         racingHistory.addHistory(isRun());
     }
+    public Long getSuccessCount() {
+        return this.racingHistory.getSuccessCount();
+    }
 
     public Long getSuccessCountByIndex(Integer toIndex) {
         return this.racingHistory.getSuccessCountByIndex(toIndex);
