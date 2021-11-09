@@ -27,7 +27,8 @@ public class RacingHistory {
     }
 
     public long getSuccessCount() {
-        return this.getSuccessCountByIndex(isTrySuccess.size() - 1);
+        Integer size = isTrySuccess.size() > FROM_INDEX ? isTrySuccess.size() : FROM_INDEX;
+        return this.getSuccessCountByIndex(size);
     }
 
     public long getSuccessCountByIndex(Integer toIndex) {

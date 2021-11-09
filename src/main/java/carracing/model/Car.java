@@ -13,7 +13,7 @@ public class Car {
 
     private RacingHistory racingHistory;
 
-    public Car(String name) {
+    private Car(String name) {
         this.name = name;
         this.racingHistory = new RacingHistory();
     }
@@ -26,10 +26,11 @@ public class Car {
     public String getName() {
         return this.name;
     }
-    
+
     public void runRace() {
         racingHistory.addHistory(isRun());
     }
+
     public Long getSuccessCount() {
         return this.racingHistory.getSuccessCount();
     }
@@ -39,7 +40,7 @@ public class Car {
     }
 
     private static void validName(String carName) {
-        if(carName.length() > NAME_RANGE_MAXIMUM) {
+        if (carName.length() > NAME_RANGE_MAXIMUM) {
             throw new ArgumentOutOfRangeException(NAME_RANGE_MAXIMUM);
         }
     }
