@@ -12,7 +12,7 @@ public class CarRacingMain {
     public static void main(String[] args) {
         InputDto inputDto = InputView.getNewCars();
 
-        CarRacingService carRacingService = new CarRacingService(Cars.from(inputDto.getName()), inputDto.getTryCount());
+        CarRacingService carRacingService = new CarRacingService(inputDto);
         Cars cars = carRacingService.gameStart();
 
         try {

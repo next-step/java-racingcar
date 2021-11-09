@@ -23,22 +23,26 @@ public class Car {
         return new Car(carName);
     }
 
+    public String getName() {
+        return this.name;
+    }
+    
+    public void runRace() {
+        racingHistory.addHistory(isRun());
+    }
+
+    public Long getSuccessCountByIndex(Integer toIndex) {
+        return this.racingHistory.getSuccessCountByIndex(toIndex);
+    }
+
     private static void validName(String carName) {
         if(carName.length() > NAME_RANGE_MAXIMUM) {
             throw new ArgumentOutOfRangeException(NAME_RANGE_MAXIMUM);
         }
     }
 
-    public void runRace() {
-        racingHistory.addHistory(isRun());
-    }
-
     private Boolean isRun() {
         return RandomUtils.nextInt() >= MIN_FORWARD_NUMBER;
-    }
-
-    public Long getSuccessCountByIndex(Integer toIndex) {
-        return this.racingHistory.getSuccessCountByIndex(toIndex);
     }
 
 }

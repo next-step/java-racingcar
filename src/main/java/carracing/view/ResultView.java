@@ -6,11 +6,13 @@ import java.util.Collections;
 
 public class ResultView {
 
-    public static final long TIMER = 1000;
+    private static final long TIMER = 1000;
 
-    public static final String DASH = "-";
+    private static final String DASH = "-";
 
-    public static final String EMPTY = "";
+    private static final String EMPTY = "";
+
+    private static final String DELIMITER = " : ";
 
     private final Cars cars;
 
@@ -37,6 +39,6 @@ public class ResultView {
 
     private String carsHistoryToString(Car car, Integer toIndex) {
         Integer count = car.getSuccessCountByIndex(toIndex).intValue();
-        return String.join(EMPTY, Collections.nCopies(count, this.DASH));
+        return car.getName() + DELIMITER + String.join(EMPTY, Collections.nCopies(count, this.DASH));
     }
 }

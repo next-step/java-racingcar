@@ -26,6 +26,10 @@ public class RacingHistory {
         }
     }
 
+    public long getSuccessCount() {
+        return this.getSuccessCountByIndex(isTrySuccess.size() - 1);
+    }
+
     public long getSuccessCountByIndex(Integer toIndex) {
         return this.getIsTrySuccess(toIndex)
             .stream()

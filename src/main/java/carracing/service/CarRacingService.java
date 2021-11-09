@@ -1,6 +1,7 @@
 package carracing.service;
 
 import carracing.model.Cars;
+import carracing.model.ui.InputDto;
 
 public class CarRacingService {
 
@@ -8,9 +9,9 @@ public class CarRacingService {
 
     private final Integer tryCount;
 
-    public CarRacingService(Cars cars, Integer tryCount) {
-        this.cars = cars;
-        this.tryCount = tryCount;
+    public CarRacingService(InputDto dto) {
+        this.cars = Cars.from(dto.getName());
+        this.tryCount = dto.getTryCount();
     }
 
     public Cars gameStart() {
