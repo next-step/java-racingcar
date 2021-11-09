@@ -18,7 +18,7 @@ public class Cars {
         random = new Random();
         cars = IntStream.range(START_INDEX, carCount)
                 .mapToObj((idx) -> new Car())
-                .collect(Collectors.toCollection(ArrayList::new));
+                .collect(Collectors.toList());;
     }
 
     public void roundRacing() {
