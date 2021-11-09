@@ -12,14 +12,28 @@ public class Car {
     private static final int POWER_BOUND = 4;
     private static final int MIN_POWER = 0;
     private static final int MAX_POWER = 9;
+    private static final String DEFAULT_NAME = "기본이름";
 
     static final String POWER_OUT_OF_RANGE_ERROR_MESSAGE = format("power의 범위는 %s - %s 이어야 합니다.", MIN_POWER, MAX_POWER);
 
     private final Location location;
+    private final Name name;
 
     public Car(Location location) {
         checkArgument(location != null, "location is Required");
         this.location = location;
+        this.name = new Name(DEFAULT_NAME);
+    }
+
+    public Car(Location location, Name name) {
+        checkArguments(location, name);
+        this.location = location;
+        this.name = name;
+    }
+
+    private void checkArguments(Location location, Name name) {
+        checkArgument(location != null, "location is Required");
+        checkArgument(name != null, "name is Required");
     }
 
     public void go(Integer power) {

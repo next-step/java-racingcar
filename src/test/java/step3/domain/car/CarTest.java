@@ -16,13 +16,23 @@ class CarTest {
 
     private static final int LOCATION = 0;
     private static final int INTERVAL = 1;
+    private static final String name = "홍길동";
 
     @Test
-    @DisplayName("CAR 생성 입력값 null 테스트")
+    @DisplayName("CAR 생성 입력값 null 테스트 - 파라미터 한개일 때")
     void createCarTest() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Car(null))
                 .withMessageContaining("location is Required");
+    }
+
+    @DisplayName("CAR 생성 입력값 null 테스트 - 파라미터 두개일 때")
+    @ParameterizedTest(name = "[{index}] name: {0}, location: {1}")
+    @MethodSource("generateCreateCarInputs")
+    void createCarTest(Name name, Location location) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Car(location, name))
+                .withMessageContaining("is Required");
     }
 
     @DisplayName("go 메소드 입력 값 null 테스트")
@@ -61,6 +71,14 @@ class CarTest {
         return Stream.of(
                 Arguments.of(3, new Car(Location.placeOn(LOCATION, INTERVAL))),
                 Arguments.of(4, new Car(Location.placeOn(LOCATION + INTERVAL, INTERVAL)))
+        );
+    }
+
+    private static Stream<Arguments> generateCreateCarInputs() {
+        return Stream.of(
+                Arguments.of(null, null),
+                Arguments.of(null, Location.placeOn(LOCATION)),
+                Arguments.of(new Name(name), null)
         );
     }
 
