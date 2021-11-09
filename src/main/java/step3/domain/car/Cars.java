@@ -16,6 +16,14 @@ public class Cars {
 
     private final List<Car> cars;
 
+    public static Cars of(List<Name> names) {
+        checkArgument(names != null, "names is required");
+        List<Car> cars = names.stream()
+                .map(name -> new Car(Location.placeOn(DEFAULT_LOCATION), name))
+                .collect(toList());
+        return new Cars(cars);
+    }
+
     public Cars(List<Car> cars) {
         checkArguments(cars);
         this.cars = cars;
@@ -23,14 +31,6 @@ public class Cars {
 
     private void checkArguments(List<Car> cars) {
         checkArgument(cars != null, "cars is required");
-    }
-
-    public static Cars of(List<Name> names) {
-        checkArgument(names != null, "names is required");
-        List<Car> cars = names.stream()
-                .map(name -> new Car(Location.placeOn(DEFAULT_LOCATION), name))
-                .collect(toList());
-        return new Cars(cars);
     }
 
     public void go(Engine engine) {
