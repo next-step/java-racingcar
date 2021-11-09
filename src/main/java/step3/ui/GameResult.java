@@ -1,8 +1,8 @@
 package step3.ui;
 
+import step3.domain.board.CarSnapshot;
 import step3.domain.board.GameBoard;
 import step3.domain.board.RoundBoard;
-import step3.domain.car.Location;
 
 import java.util.List;
 
@@ -29,8 +29,9 @@ public class GameResult {
     }
 
     public void showRound(RoundBoard roundBoard) {
-        for (Location location : roundBoard.getRecords()) {
-            print(location.getLocation());
+        for (CarSnapshot snapshot : roundBoard.getRecords()) {
+            System.out.print(snapshot.getName() + " : ");
+            print(snapshot.getLocation());
         }
     }
 

@@ -49,7 +49,7 @@ public class Car {
     }
 
     public void record(RoundBoard roundBoard) {
-        location.record(roundBoard);
+        location.record(roundBoard, name);
     }
 
     @Override

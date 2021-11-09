@@ -12,13 +12,13 @@ public class Stadium {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        String carNames = SCANNER.nextLine();
+//        System.out.println("자동차 대수는 몇 대 인가요?");
+//        String carNames = SCANNER.nextLine();
+//
+//        System.out.println("시도할 회수는 몇 회 인가요?");
+//        Integer roundSize = Integer.parseInt(SCANNER.nextLine());
 
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        Integer roundSize = Integer.parseInt(SCANNER.nextLine());
-
-        GameBoard gameBoard = playGame(carNames, roundSize);
+        GameBoard gameBoard = playGame("나,우리,사람", 5);
         showGame(gameBoard);
     }
 

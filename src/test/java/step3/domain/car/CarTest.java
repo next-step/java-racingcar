@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import step3.domain.board.RoundBoard;
 
 import java.util.stream.Stream;
 
@@ -16,7 +17,7 @@ class CarTest {
 
     private static final int LOCATION = 0;
     private static final int INTERVAL = 1;
-    private static final String name = "홍길동";
+    private static final String NAME = "홍길동";
 
     @Test
     @DisplayName("CAR 생성 입력값 null 테스트 - 파라미터 한개일 때")
@@ -67,6 +68,23 @@ class CarTest {
         assertThat(car).isEqualTo(expectedCar);
     }
 
+    @DisplayName("Record보드에 값이 잘 저장되는지 테스트")
+    @Test
+    void recordTest() {
+        //given
+        Car car = new Car(Location.placeOn(LOCATION), new Name(NAME));
+        RoundBoard roundBoard = new RoundBoard();
+
+        //when
+        car.record(roundBoard);
+
+        //then
+        RoundBoard expectedRoundBoard = new RoundBoard();
+        expectedRoundBoard.record(Location.placeOn(LOCATION), new Name(NAME));
+
+        assertThat(roundBoard).isEqualTo(expectedRoundBoard);
+    }
+
     private static Stream<Arguments> generateGoInputs() {
         return Stream.of(
                 Arguments.of(3, new Car(Location.placeOn(LOCATION, INTERVAL))),
@@ -78,7 +96,7 @@ class CarTest {
         return Stream.of(
                 Arguments.of(null, null),
                 Arguments.of(null, Location.placeOn(LOCATION)),
-                Arguments.of(new Name(name), null)
+                Arguments.of(new Name(NAME), null)
         );
     }
 

@@ -38,10 +38,12 @@ public class Location {
         location += interval;
     }
 
-    public void record(RoundBoard roundBoard) {
+    public void record(RoundBoard roundBoard, Name name) {
         checkArgument(roundBoard != null, "roundBoard is required");
+        checkArgument(name != null, "name is required");
+
         Location copiedLocation = new Location(location, DEFAULT_INTERVAL);
-        roundBoard.record(copiedLocation);
+        roundBoard.record(copiedLocation, name);
     }
 
     public int getLocation() {
