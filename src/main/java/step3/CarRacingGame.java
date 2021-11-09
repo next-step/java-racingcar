@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class CarRacingGame {
 
-    private final Car[] cars;
+    private Car[] cars;
     private int numberOfTry;
 
     public CarRacingGame(int numberOfCar, int numberOfTry) {
