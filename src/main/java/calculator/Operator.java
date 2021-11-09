@@ -2,36 +2,20 @@ package calculator;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.IntBinaryOperator;
 
 public enum Operator {
 
-	PLUS("+") {
-		@Override
-		int operate(int first, int second) {
-			return first + second;
-		}
-	},
-	MINUS("-") {
-		@Override
-		int operate(int first, int second) {
-			return first - second;
-		}
-	},
-	TIMES("*") {
-		@Override
-		int operate(int first, int second) {
-			return first * second;
-		}
-	},
-	DIVIDE("/") {
-		@Override
-		int operate(int first, int second) {
-			validDivide(second);
-			return first / second;
-		}
-	};
+	PLUS("+", (first, second) -> first + second),
+	MINUS("-", (first, second) -> first - second),
+	TIMES("*", (first, second) -> first * second),
+	DIVIDE("/", (first, second) -> {
+		validDivide(second);
+		return first / second;
+	});
 
 	private final String operand;
+	private final IntBinaryOperator result;
 	private static final Map<String, Operator> operation;
 
 	static {
@@ -41,15 +25,18 @@ public enum Operator {
 		}
 	}
 
-	Operator(String operand) {
+	Operator(String operand, IntBinaryOperator result) {
 		this.operand = operand;
+		this.result = result;
 	}
 
 	public String value() {
 		return operand;
 	}
 
-	abstract int operate(int first, int second);
+	public int operate(int first, int second) {
+		return result.applyAsInt(first, second);
+	}
 
 	public static Operator operation(String inputOperand) {
 		if (!operation.containsKey(inputOperand)) {
