@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.exception.TryCountException;
+import racingcar.exception.TryCountMinusException;
 
 import java.util.Objects;
 
@@ -30,7 +31,14 @@ public class TryCount {
     }
 
     public void counting() {
+        validateMinusCount(COUNT_ONE);
         this.tryCount -= COUNT_ONE;
+    }
+
+    private void validateMinusCount(int minusValue) {
+        if (this.tryCount - minusValue < 0) {
+            throw new TryCountMinusException(minusValue);
+        }
     }
 
     @Override
