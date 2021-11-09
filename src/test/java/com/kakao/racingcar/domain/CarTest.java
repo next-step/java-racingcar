@@ -4,7 +4,6 @@ import com.kakao.racingcar.domain.car.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.kakao.racingcar.config.CarConfig.MOVE_PERCENTAGE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
@@ -22,7 +21,7 @@ class CarTest {
     void moveSuccess() {
         Car car = new Car("jyami");
         assertThat(car.getPosition()).isEqualTo(0);
-        car.tryMove(MOVE_PERCENTAGE);
+        car.tryMove(4);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 

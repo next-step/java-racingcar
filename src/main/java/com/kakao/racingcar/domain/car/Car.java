@@ -1,10 +1,10 @@
 package com.kakao.racingcar.domain.car;
 
-import com.kakao.racingcar.config.CarConfig;
-
-public class Car {
+public class Car implements CarMovement{
     private final String userName;
     private int position = 0;
+
+    private static final int MOVE_PERCENTAGE = 4;
 
     public Car(String userName) {
         this.userName = userName;
@@ -14,8 +14,9 @@ public class Car {
         return position;
     }
 
+    @Override
     public void tryMove(int conditionNumber) {
-        if (CarConfig.MOVE_PERCENTAGE <= conditionNumber) {
+        if (MOVE_PERCENTAGE <= conditionNumber) {
             position++;
         }
     }
