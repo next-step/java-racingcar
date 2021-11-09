@@ -21,11 +21,13 @@ public enum Operator {
         return operation.apply(first, second);
     }
 
+    public boolean compare(String operator) {
+        return this.operator.equals(operator);
+    }
+
     public static Operator of(String operator) {
         return Arrays.stream(values())
-                .filter(object -> object
-                                .operator
-                                .equals(operator))
+                .filter(object -> object.compare(operator))
                 .findFirst()
                 .orElseThrow(IllegalAccessError::new);
     }
