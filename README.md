@@ -11,13 +11,19 @@
 ## Step3
 * Input
   * 유저는 countOfCar, countOfTry를 입력한다.
+  * countOfCar, countOfTry를 List에 담아서 반환
 * MoveOrStop
-  * countOfCar만큼의 자동차가 countOfTry만큼 moveOrStop한다.
-  * randomList의 원소가 4보다 크면 해당 인덱스의 carList 원소 값이 move
-  * 아니라면 Stop한다
+  * inputCarList와 countOfTry를 입력 받는다   
+  * inputCarList의 Car들이 moveOrStop한다.
+    * randomList의 원소가 4보다 크면 해당 인덱스의 carList 원소 값이 move
+      * 원소에 "-"를 더해준다
+    * 아니라면 stop한다
+      * 그대로 반환한다
 * MakeRandomList
+  * countOfCar를 입력으로 받는다. 
   * countOfCar만큼 randomNum이 들어간 randomList를 만든다.
 * CarList
+  * countofCar를 입력으로 받는다. 
   * countOfCar만큼의 size의 "-"를 원소로 가지는 List 생성. 
 * OutPut
   * Input, MoveOrStop, MakeRandomList, CarList를 통해서 바뀌는 자동차 상태를 출력
