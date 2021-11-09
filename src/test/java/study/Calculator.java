@@ -15,7 +15,6 @@ public class Calculator {
             String operator = values[i];
             InputNumber second = new InputNumber(values[i+1]);
 
-
             first = calculate(first, second, operator);
         }
 
