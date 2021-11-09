@@ -27,10 +27,6 @@ public class Calculator {
     }
 
     public int calculate(int first, String operation, int second) {
-        if ("/".equals(operation) && second == 0) {
-            throw new IllegalArgumentException("0으로는 숫자를 나눌 수 없습니다.");
-        }
-
         return Operator.getOperator(operation).calculate(first, second);
     }
 
