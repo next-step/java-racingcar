@@ -23,7 +23,7 @@ public class Car {
     }
 
     public String getName() {
-        return name + " : ";
+        return name;
     }
 
     public int getMoveCount() {

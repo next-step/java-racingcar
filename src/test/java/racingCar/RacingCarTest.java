@@ -43,6 +43,14 @@ public class RacingCarTest {
     }
 
     @Test
+    void 게임_초기화_음수_파라미터_테스트() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    RacingCarGame testRacingCarGame = new RacingCarGame(-1);
+                });
+    }
+
+    @Test
     void 자동차_동작_테스트() {
         Car car = new Car("pobi");
         car.move();
