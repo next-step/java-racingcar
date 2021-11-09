@@ -1,7 +1,8 @@
 package step2.model;
 
 public class Calculator {
-
+    private Calculator() {
+    }
 
     public static Integer operator(String str) {
         String[] stringArray = str.split(" ");
