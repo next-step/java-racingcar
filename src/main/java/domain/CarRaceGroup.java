@@ -1,49 +1,106 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarRaceGroup {
-	private static final int MOVING_STANDARD_NUMBER = 4;
-	private final List<CarRace> carRaceGroup;
+    private static final int MOVING_STANDARD_NUMBER = 4;
+    private static final int STOP_NUMBER = 0;
+    private static final int MOVING_NUMBER = 1;
+    private static final int POSITION_START_NUMBER = 0;
+    private static final int BEFORE_INDEX_ZERO = 0;
+    private static final String MAX_NUMBER_ERROR_MESSAGE = "error : MAX 값을 찾을수 없습니다.";
+    private static final String COMMA = ", ";
+    private final List<CarRace> carRaceGroup;
 
-	public CarRaceGroup(CarCount carCount, CarRaceCount carRaceCount) {
-		this.carRaceGroup = Collections.unmodifiableList(startCarRace(carCount, carRaceCount));
-	}
+    public CarRaceGroup(CarGroup carGroup, CarRaceCount carRaceCount) {
+        this.carRaceGroup = Collections.unmodifiableList(startCarRace(carGroup, carRaceCount));
+    }
 
-	private List<CarRace> startCarRace(CarCount carCount, CarRaceCount carRaceCount) {
-		List<CarRace> carRace = new ArrayList<>();
-		int loopNumber = carCount.count() * carRaceCount.count();
-		int carCountSize = carCount.count();
-		for (int i = 0; i < loopNumber; i++) {
-			carRace.add(new CarRace(carDriving(i, carCountSize, carRace)));
-		}
+    private List<CarRace> startCarRace(CarGroup carGroup, CarRaceCount carRaceCount) {
+        List<CarRace> carRaceGroup = new ArrayList<>();
+        int loopNumber = carGroup.size() * carRaceCount.count();
+        for (int i = 0; i < loopNumber; i++) {
+            carRaceGroup.add(CarRaceResult(i, carGroup, carRaceGroup));
+        }
 
-		return carRace;
-	}
+        return carRaceGroup;
+    }
 
-	private int carDriving(int index, int carCount, List<CarRace> carRace) {
-		if (index - carCount >= 0) {
-			int beforeIndex = index - carCount;
-			return carRace.get(beforeIndex).getPosition() + driving();
-		}
+    private CarRace CarRaceResult(int index, CarGroup carGroup, List<CarRace> carRaceGroup) {
+        int carIndex = carGroupIndex(index, carGroup.size());
+        int beforeIndex = index - carGroup.size();
+        int beforePosition = beforePosition(beforeIndex, carRaceGroup);
+        int afterPosition = afterPosition(beforeIndex, carRaceGroup);
+        if (beforePosition == afterPosition && beforeIndex >= BEFORE_INDEX_ZERO) {
+            return carRaceGroup.get(beforeIndex);
+        }
 
-		return driving();
-	}
+        return new CarRace(carGroup.findCarName(carIndex), afterPosition);
+    }
 
-	private int driving() {
-		if (Driving.drive() >= MOVING_STANDARD_NUMBER) {
-			return 1;
-		}
-		return 0;
-	}
+    private int carGroupIndex(int index, int carGroupSize) {
+        if (index < carGroupSize) {
+            return index;
+        }
+        return index % carGroupSize;
+    }
 
-	public int size() {
-		return carRaceGroup.size();
-	}
+    private int beforePosition(int beforeIndex, List<CarRace> carRaceGroup) {
+        if (beforeIndex >= 0) {
+            return carRaceGroup.get(beforeIndex).getPosition();
+        }
+        return POSITION_START_NUMBER;
+    }
 
-	public int carPosition(int index) {
-		return carRaceGroup.get(index).getPosition();
-	}
+    private int afterPosition(int beforeIndex, List<CarRace> carRaceGroup) {
+        if (beforeIndex >= 0) {
+            return carRaceGroup.get(beforeIndex).getPosition() + driving();
+        }
+
+        return driving();
+    }
+
+    private int driving() {
+        if (Driving.drive() >= MOVING_STANDARD_NUMBER) {
+            return MOVING_NUMBER;
+        }
+        return STOP_NUMBER;
+    }
+
+    public int size() {
+        return carRaceGroup.size();
+    }
+
+    public String carName(int index) {
+        return carRaceGroup.get(index).getCar();
+    }
+
+    public int carPosition(int index) {
+        return carRaceGroup.get(index).getPosition();
+    }
+
+    public String winner() {
+        int max = positionMax();
+
+        return this.carRaceGroup
+                .stream()
+                .filter(i -> i.getPosition() == max)
+                .map(i -> i.getCar())
+                .distinct()
+                .sorted()
+                .collect(Collectors.joining(COMMA));
+    }
+
+    private int positionMax() {
+        return this.carRaceGroup
+                .stream()
+                .mapToInt(i -> i.getPosition())
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException(MAX_NUMBER_ERROR_MESSAGE));
+    }
+
 }
