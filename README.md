@@ -7,3 +7,18 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능 요구사항
+* 사용자는 몇 대의 자동차로 몇 번의 이동을 할 것인지 입력할 수 있다
+* M번의 횟수 동안 N대의 자동차는 전진 또는 멈출 수 있다.
+  * 0에서 9 사이의 random 값을 구할 수 있다
+  * random 값이 4 이상인 경우만 전진할 수 있다
+* 자동차의 현재 위치를 화면에 출력한다
+
+## 프로그래밍 요구사항
+* 기능 요구사항 단위로 commit 한다
+  * AngularJS commit convention을 지킨다
+* UI를 제외한 모든 로직에 단위 테스트를 구현한다
+  * 핵심 로직과 UI 담당 부분 분리한다
+* else 예약어 사용하지 않는다
+  * switch-case 도 금지
