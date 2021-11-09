@@ -1,39 +1,46 @@
 package view;
 
-import domain.CarCount;
 import domain.CarRaceGroup;
 
 public class OutputView {
 
-	private static final String RESULT_MESSAGE = "실행 결과";
-	private static final String NEXT_LINE = "\n";
-	private static final String POSITION_MARK = "-";
-	private static final String EMPTY = "";
+    private static final String RESULT_MESSAGE = "실행 결과";
+    private static final String NEXT_LINE = "\n";
+    private static final String POSITION_MARK = "-";
+    private static final String EMPTY = "";
+    private static final String CAR_RACE_RESULT_MESSAGE = "%s : %s \n";
+    private static final String WINNER_MESSAGE = "%s가 최종 우승했습니다.";
+    private static final int CRITERIA_CAR_NAME_INDEX = 0;
 
-	public static void result(CarCount carCount, CarRaceGroup carRaceGroup) {
-		System.out.println(RESULT_MESSAGE);
+    public static void result(CarRaceGroup carRaceGroup) {
+        System.out.println(RESULT_MESSAGE);
 
-		int carRaceGroupSize = carRaceGroup.size();
-		int carCountSize = carCount.count();
-		for (int i = 0; i < carRaceGroupSize; i++) {
-			System.out.println(changeNumberToHyphen(carRaceGroup.carPosition(i)));
-			printNextLine(i + 1, carCountSize);
-		}
-	}
+        int carRaceGroupSize = carRaceGroup.size();
+        String criteriaCarName = carRaceGroup.carName(CRITERIA_CAR_NAME_INDEX);
+        for (int i = 0; i < carRaceGroupSize; i++) {
+            printNextLine(i, criteriaCarName, carRaceGroup.carName(i));
+            System.out.printf(CAR_RACE_RESULT_MESSAGE, carRaceGroup.carName(i), changeNumberToHyphen(carRaceGroup.carPosition(i)));
+        }
+        System.out.println(NEXT_LINE);
+    }
 
-	private static String changeNumberToHyphen(int loopNumber) {
-		String carLocation = EMPTY;
-		for (int i = 0; i < loopNumber; i++) {
-			carLocation += POSITION_MARK;
-		}
+    public static void winner(CarRaceGroup carRaceGroup) {
+        System.out.printf(WINNER_MESSAGE, carRaceGroup.winner());
+    }
 
-		return carLocation;
-	}
+    private static String changeNumberToHyphen(int loopNumber) {
+        String carLocation = EMPTY;
+        for (int i = 0; i < loopNumber; i++) {
+            carLocation += POSITION_MARK;
+        }
 
-	private static void printNextLine(int loopCount, int carCount) {
-		if (loopCount % carCount == 0) {
-			System.out.print(NEXT_LINE);
-		}
-	}
+        return carLocation;
+    }
+
+    private static void printNextLine(int index, String criteriaCarName, String carName) {
+        if (index != 0 && criteriaCarName == carName) {
+            System.out.print(NEXT_LINE);
+        }
+    }
 
 }
