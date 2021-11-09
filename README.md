@@ -7,3 +7,10 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능 목록
+* 자동차는 전진 또는 멈출 수 있다.
+* 몇 대의 자동차로 몇 번의 이동을 할 것인지를 입력
+* 전진하는 조건은 0에서 9 사이 random 값
+* random 값이 4이상일 경우 전진
+* 자동차의 상태를 화면에 출력
