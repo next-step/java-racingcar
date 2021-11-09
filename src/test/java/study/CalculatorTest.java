@@ -2,8 +2,12 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CalculatorTest {
 
@@ -33,5 +37,23 @@ public class CalculatorTest {
     void divide() {
         int result = Calculator.calculate("20 / 2");
         assertThat(result).isEqualTo(10);
+    }
+
+    @ParameterizedTest
+    @NullSource
+    @EmptySource
+    @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException을 던진다")
+    void blankOrNullShouldReturnIllegalArgumentException(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Calculator.calculate(input))
+                .withMessage("입력 값이 null이나 빈 공백 문자입니다.");
+    }
+
+    @Test
+    @DisplayName("사칙 연산 기호가 아닌 경우 IllegalArgumentException을 던진다")
+    void invalidOperatorShouldReturnIllegalArgumentException() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Calculator.calculate("5 % 3"))
+                .withMessage("사칙 연산 기호가 아닙니다.");
     }
 }
