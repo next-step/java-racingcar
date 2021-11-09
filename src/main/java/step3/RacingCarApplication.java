@@ -10,26 +10,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarApplication {
+    private static final String COMMA = ",";
 
     public static void main(String[] args) {
-        int carCount = InputView.inputCarCount();
+        String names = InputView.inputCarNames();
         int gameRoundCount = InputView.inputGameRoundCount();
         System.out.println();
 
-        start(carCount, gameRoundCount);
+        start(names, gameRoundCount);
     }
 
-    private static void start(int carCount, int gameRoundCount) {
-        RacingGame racingGame = RacingGame.create(gameRoundCount, createParticipant(carCount));
+    private static void start(String names, int gameRoundCount) {
+        RacingGame racingGame = RacingGame.create(gameRoundCount, createParticipant(names));
         racingGame.start();
     }
 
-    private static Participant createParticipant(int carCount) {
+    private static Participant createParticipant(String names) {
         List<Car> carList = new ArrayList<>();
-        for (int count = 0; count < carCount; count++) {
-            carList.add(Car.create());
+        for (String name : splitCarNames(names)) {
+            carList.add(Car.create(name));
         }
         Cars cars = Cars.join(carList);
         return Participant.join(cars);
+    }
+
+    private static String[] splitCarNames(String names) {
+        return names.split(COMMA);
     }
 }
