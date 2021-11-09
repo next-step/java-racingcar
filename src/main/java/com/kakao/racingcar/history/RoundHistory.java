@@ -1,6 +1,6 @@
 package com.kakao.racingcar.history;
 
-import com.kakao.racingcar.domain.Car;
+import com.kakao.racingcar.domain.car.Car;
 
 import java.util.Collections;
 import java.util.List;

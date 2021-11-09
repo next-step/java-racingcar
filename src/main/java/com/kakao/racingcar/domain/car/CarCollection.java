@@ -1,18 +1,16 @@
-package com.kakao.racingcar.domain;
+package com.kakao.racingcar.domain.car;
+
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-import static com.kakao.racingcar.config.CarConfig.BEGIN_INDEX;
 
 public class CarCollection {
     private final List<Car> cars;
 
-    public CarCollection(int totalCars) {
-        this.cars = IntStream.range(BEGIN_INDEX, totalCars)
-                .boxed()
+    public CarCollection(List<String> userNames) {
+        this.cars = userNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
@@ -30,5 +28,4 @@ public class CarCollection {
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
-
 }

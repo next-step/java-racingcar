@@ -1,8 +1,10 @@
-package com.kakao.racingcar.domain;
+package com.kakao.racingcar.domain.car;
 
 import com.kakao.racingcar.history.RacingHistory;
 import com.kakao.racingcar.util.RandomNumberGenerator;
 
+
+import java.util.List;
 import java.util.stream.IntStream;
 
 import static com.kakao.racingcar.config.CarConfig.BEGIN_INDEX;
@@ -12,9 +14,9 @@ public class RacingGame {
     private final CarCollection carCollection;
     private final RacingHistory racingHistory;
 
-    public RacingGame(int tryCount, int totalCars) {
+    public RacingGame(int tryCount, List<String> userNames) {
         this.tryCount = tryCount;
-        this.carCollection = new CarCollection(totalCars);
+        this.carCollection = new CarCollection(userNames);
         this.racingHistory = new RacingHistory();
     }
 

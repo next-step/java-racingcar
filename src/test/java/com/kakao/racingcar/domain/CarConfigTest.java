@@ -1,6 +1,5 @@
 package com.kakao.racingcar.domain;
 
-import com.kakao.racingcar.config.CarConfig;
 import com.kakao.racingcar.util.RandomNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

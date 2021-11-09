@@ -1,13 +1,13 @@
-package com.kakao.racingcar.domain;
+package com.kakao.racingcar.domain.car;
 
 import com.kakao.racingcar.config.CarConfig;
 
 public class Car {
-    private final int identify;
+    private final String userName;
     private int position = 0;
 
-    public Car(int identify) {
-        this.identify = identify;
+    public Car(String userName) {
+        this.userName = userName;
     }
 
     public int getPosition() {
@@ -20,7 +20,7 @@ public class Car {
         }
     }
 
-    public int getIdentify() {
-        return identify;
+    public String getUserName() {
+        return userName;
     }
 }

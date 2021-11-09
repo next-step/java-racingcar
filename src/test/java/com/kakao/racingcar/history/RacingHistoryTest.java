@@ -1,11 +1,9 @@
 package com.kakao.racingcar.history;
 
-import com.kakao.racingcar.domain.Car;
-import com.kakao.racingcar.domain.CarCollection;
+import com.kakao.racingcar.domain.car.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +15,7 @@ class RacingHistoryTest {
     @Test
     @DisplayName("racingHistory 로깅 기능을 이용하여, 차의 이동 기록을 저장한다.")
     void logging() {
-        Car car = new Car(0);
+        Car car = new Car("jyami");
         RacingHistory racingHistory = new RacingHistory();
 
         moveAndRecordCar(car, racingHistory);

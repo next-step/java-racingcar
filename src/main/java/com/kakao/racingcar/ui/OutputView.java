@@ -19,7 +19,7 @@ public class OutputView {
 
     private static void printCarLine(List<CarHistory> carHistories) {
         for (CarHistory carHistory : carHistories) {
-            System.out.println(joinLine(carHistory.getPosition()));
+            System.out.println(carHistory.getUserName() + " : " + joinLine(carHistory.getPosition()));
         }
         System.out.println();
     }
