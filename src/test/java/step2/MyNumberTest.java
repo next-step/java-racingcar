@@ -1,8 +1,12 @@
 package step2;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static step2.Validation.VALID_NULL_EMPTY_CHECK_MSG;
 
 public class MyNumberTest {
 
@@ -11,23 +15,12 @@ public class MyNumberTest {
         assertThat(new MyNumber(1)).isEqualTo(new MyNumber(1));
     }
 
-    @Test
-    void plus() {
-        assertThat(new MyNumber(1).plus(new MyNumber(7))).isEqualTo(new MyNumber(8));
+    @ParameterizedTest
+    @ValueSource(strings = {"", "  "})
+    void 숫자_입력값이_Null_또는_빈공백(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new MyNumber(input);
+        }).withMessageMatching(VALID_NULL_EMPTY_CHECK_MSG);
     }
 
-    @Test
-    void minus() {
-        assertThat(new MyNumber(1).minus(new MyNumber(7))).isEqualTo(new MyNumber(-6));
-    }
-
-    @Test
-    void multiple() {
-        assertThat(new MyNumber(2).multiply(new MyNumber(7))).isEqualTo(new MyNumber(14));
-    }
-
-    @Test
-    void divide() {
-        assertThat(new MyNumber(20).divide(new MyNumber(7))).isEqualTo(new MyNumber(2));
-    }
 }
