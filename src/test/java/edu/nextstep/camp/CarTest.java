@@ -1,41 +1,45 @@
 package edu.nextstep.camp;
 
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.NullSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static edu.nextstep.camp.TestMovePolicy.ALWAYS_MOVE_POLICY;
 import static edu.nextstep.camp.TestMovePolicy.NEVER_MOVE_POLICY;
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
-    final String testName = "test0";
+    private static final String TEST_NAME = "test0";
 
     @Test
     public void create() {
-        Car car = new Car(testName, RandomMovePolicy.getInstance());
-        assertThat(car.name()).isEqualTo(testName);
+        Car car = new Car(TEST_NAME, RandomMovePolicy.getInstance());
+        assertThat(car.name()).isEqualTo(TEST_NAME);
         assertThat(car.position()).isEqualTo(Position.ofZero());
     }
 
-    @ParameterizedTest(name = "creation failed due to invalid name: {arguments}")
-    @NullAndEmptySource
-    @ValueSource(strings = {"123456", "too-long"})
-    public void createFailByName(String name) {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Car(name, ALWAYS_MOVE_POLICY));
+    static Stream<Arguments> parseIllegalArguments() {
+        return Stream.of(
+                Arguments.of(null, ALWAYS_MOVE_POLICY),
+                Arguments.of("", ALWAYS_MOVE_POLICY),
+                Arguments.of("test11", ALWAYS_MOVE_POLICY),
+                Arguments.of("too-long", ALWAYS_MOVE_POLICY),
+                Arguments.of(TEST_NAME, null)
+        );
     }
 
-    @ParameterizedTest(name = "creation failed due to invalid move policy: {arguments}")
-    @NullSource
-    public void createFailByMovePolicy(MovePolicy movePolicy) {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Car(testName, movePolicy));
+    @ParameterizedTest(name = "creation failed by invalid input: {arguments}")
+    @MethodSource("parseIllegalArguments")
+    public void createFailByName(String name, MovePolicy movePolicy) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car(name, movePolicy));
     }
 
     @Test
     public void move() {
-        Car car = new Car(testName, ALWAYS_MOVE_POLICY);
+        Car car = new Car(TEST_NAME, ALWAYS_MOVE_POLICY);
         assertThat(car.position().toInt()).isEqualTo(0);
         car.attemptToMove();
         assertThat(car.position().toInt()).isEqualTo(1);
@@ -43,7 +47,7 @@ public class CarTest {
 
     @Test
     public void notMoveByPolicy() {
-        Car car = new Car(testName, NEVER_MOVE_POLICY);
+        Car car = new Car(TEST_NAME, NEVER_MOVE_POLICY);
         assertThat(car.position().toInt()).isEqualTo(0);
         car.attemptToMove();
         assertThat(car.position().toInt()).isEqualTo(0);
