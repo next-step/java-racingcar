@@ -26,11 +26,11 @@ public class CarController {
 
         // 레이싱 스타트
         while (!racingGame.isEndGame()) {
-            resultView.resultPrint(racingGame.getCars());
             racingGame.race(moving);
+            resultView.printResult(racingGame.getCars());
         }
 
-        resultView.winnersPrint(racingGame);
+        resultView.printWinners(racingGame);
     }
 
 }

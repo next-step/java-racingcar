@@ -19,11 +19,11 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        this(name, 1);
+        this(name, 0);
     }
 
     public Car(String name, int position) {
-        carNamingCheck(name);
+        checkCarNaming(name);
         this.name = name;
         this.position = position;
     }
@@ -42,7 +42,7 @@ public class Car {
         }
     }
 
-    private void carNamingCheck(String name) {
+    private void checkCarNaming(String name) {
         if (name == null || name.length() > 5 || name.trim().isEmpty()) {
             throw new IllegalArgumentException();
         }

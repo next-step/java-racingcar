@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.IntPredicate;
 
 public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
     //테스트 코드를 위한 메서드
-    public Cars(Car ...car) {
+    public Cars(Car ... car) {
         cars = Arrays.asList(car);
     }
 
@@ -31,15 +32,20 @@ public class Cars {
     }
 
     public int getMaxPosition() {
-        return cars.stream().
-                mapToInt(Car::getPosition).
-                filter(c -> c >= 0).
-                max().orElse(0);
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .filter(this::moreThanZero)
+                .max()
+                .orElse(0);
+    }
+
+    private boolean moreThanZero(int num) {
+        return num > 0;
     }
 
     private void createCars(String[] split) {
-        Arrays.stream(split).
-                forEach(name -> cars.add(new Car(name.trim())));
+        Arrays.stream(split)
+                .forEach(name -> cars.add(new Car(name.trim())));
     }
 
     @Override

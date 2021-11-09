@@ -15,14 +15,14 @@ public class RacingGame {
     private Cars cars;
 
     public RacingGame(String carName, int countOfTry) {
-        countOfTryCheck(countOfTry);
+        checkCountOfTry(countOfTry);
         this.countOfTry = countOfTry;
         this.cars = new Cars(carName.split(NAME_DELIMITER));
     }
 
     //테스트 코드를 위한 메서드
     public RacingGame(Cars cars, int countOfTry) {
-        countOfTryCheck(countOfTry);
+        checkCountOfTry(countOfTry);
         this.countOfTry = countOfTry;
         this.cars = cars;
     }
@@ -45,19 +45,19 @@ public class RacingGame {
     }
 
     public List<Car> findWinners() {
-        return cars.getCars().stream().
-                filter(this::isMaxPosition).
-                collect(Collectors.toList());
+        return cars.getCars().stream()
+                .filter(this::isMaxPosition)
+                .collect(Collectors.toList());
     }
 
-    private static void countOfTryCheck(int countOfTry) {
+    private static void checkCountOfTry(int countOfTry) {
         if (countOfTry < COUNT_OF_TRY_MIN_NUM) {
             throw new IllegalArgumentException("0 이하 값은 불가능 합니다.");
         }
     }
 
-    private boolean isMaxPosition(Car c) {
-        return c.getPosition() == cars.getMaxPosition();
+    private boolean isMaxPosition(Car car) {
+        return car.getPosition() == cars.getMaxPosition();
     }
 
 }

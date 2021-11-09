@@ -16,6 +16,8 @@ public class CarsTest {
         Cars cars = new Cars(arr);
         assertThat(cars.getCars().contains(new Car("K3"))).isTrue();
         assertThat(cars.getCars().contains(new Car("QM6"))).isFalse();
+        assertThat(cars.getCars()).contains(new Car("K5"));
+        assertThat(cars.getCars()).doesNotContain(new Car("K2"));
     }
 
     @Test
