@@ -6,15 +6,19 @@ import org.junit.jupiter.api.Test;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static racingcar.Car.RUN_LOWER_BOUNDARY;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static racingcar.Car.*;
 
 public class CarTest {
     private final int IDENTIFIER_OF_CAR = 1;
     private final int INDICATOR_OF_STOP = 0;
     private final int INDICATOR_OF_PROGRESS = 1;
-    public static final int STOP_LOWER_BOUNDARY = 0;
-    public static final int STOP_UPPER_BOUNDARY = 3;
-    public static final int RUN_UPPER_BOUNDARY = 10;
+    private static final int STOP_UPPER_BOUNDARY = 3;
+    private static final int STOP_LOWER_BOUNDARY_MINUS_ONE = -1;
+    private static final int STOP_LOWER_BOUNDARY_PLUS_ONE = 1;
+    private static final int RUN_LOWER_BOUNDARY_PLUS_ONE = 5;
+    private static final int RUN_UPPER_BOUNDARY_MINUS_ONE = 8;
+    private static final int RUN_UPPER_BOUNDARY_PLUS_ONE = 11;
 
     private Car car;
 
@@ -43,9 +47,31 @@ public class CarTest {
 
     @Test
     void testBorder() {
-        int distance = IntStream.rangeClosed(STOP_UPPER_BOUNDARY, RUN_LOWER_BOUNDARY)
-                .map(i -> car.runOrStop(i))
-                .sum();
-        assertThat(distance).isEqualTo(INDICATOR_OF_PROGRESS);
+        car.initialize();
+        assertThat(car.runOrStop(STOP_UPPER_BOUNDARY)).isEqualTo(INDICATOR_OF_STOP);
+        car.initialize();
+        assertThat(car.runOrStop(RUN_LOWER_BOUNDARY)).isEqualTo(INDICATOR_OF_PROGRESS);
+        car.initialize();
+        assertThat(car.runOrStop(RUN_LOWER_BOUNDARY_PLUS_ONE)).isEqualTo(INDICATOR_OF_PROGRESS);
+    }
+
+    @Test
+    void testLowerRange() {
+        car.initialize();
+        assertThatThrownBy(() -> car.runOrStop(STOP_LOWER_BOUNDARY_MINUS_ONE)).isInstanceOf(IllegalArgumentException.class);
+        car.initialize();
+        assertThat(car.runOrStop(STOP_LOWER_BOUNDARY)).isEqualTo(INDICATOR_OF_STOP);
+        car.initialize();
+        assertThat(car.runOrStop(STOP_LOWER_BOUNDARY_PLUS_ONE)).isEqualTo(INDICATOR_OF_STOP);
+    }
+
+    @Test
+    void testUpperRange() {
+        car.initialize();
+        assertThat(car.runOrStop(RUN_UPPER_BOUNDARY_MINUS_ONE)).isEqualTo(INDICATOR_OF_PROGRESS);
+        car.initialize();
+        assertThat(car.runOrStop(RUN_UPPER_BOUNDARY)).isEqualTo(INDICATOR_OF_PROGRESS);
+        car.initialize();
+        assertThatThrownBy(() -> car.runOrStop(RUN_UPPER_BOUNDARY_PLUS_ONE)).isInstanceOf(IllegalArgumentException.class);
     }
 }

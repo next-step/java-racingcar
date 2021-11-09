@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class ConsoleOutputView implements OutputView{
@@ -19,6 +20,11 @@ public class ConsoleOutputView implements OutputView{
     @Override
     public void showEndOfRound(int round) {
         System.out.printf("Round %d Is Finished!\n\n", round);
+    }
+
+    @Override
+    public void showRacing(List<Integer> progressOfCars) {
+        progressOfCars.forEach(this::showDistanceOfCar);
     }
 
     public void showDistanceOfCar(int distance) {

@@ -6,5 +6,5 @@ public interface OutputView {
     void showOutputMessage();
     void showStartOfRound(int round);
     void showEndOfRound(int round);
-    void showDistanceOfCar(int distance);
+    void showRacing(List<Integer> progressOfCars);
 }

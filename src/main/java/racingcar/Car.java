@@ -3,7 +3,9 @@ package racingcar;
 import java.util.Objects;
 
 public class Car {
+    public static final int STOP_LOWER_BOUNDARY = 0;
     public static final int RUN_LOWER_BOUNDARY = 4;
+    public static final int RUN_UPPER_BOUNDARY = 10;
 
     public static final int START_POINT = 0;
 
@@ -20,6 +22,10 @@ public class Car {
     }
 
     public int runOrStop(int randomNumber) {
+        if (randomNumber < STOP_LOWER_BOUNDARY || randomNumber > RUN_UPPER_BOUNDARY) {
+            throw new IllegalArgumentException("Random Number should be between 0 to 10.");
+        }
+
         if (randomNumber >= RUN_LOWER_BOUNDARY) {
             distance++;
         }

@@ -10,7 +10,6 @@ import java.util.stream.IntStream;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RacingManagerTest {
-    private final int NUMBER_OF_TRIALS = 10;
     private final int NUMBER_OF_CARS = 5;
     private final int STARTING_NUMBER_OF_CAR = 1;
 
@@ -25,8 +24,8 @@ public class RacingManagerTest {
 
     @Test
     void testRacingManager() {
-        RacingManager racingManager = new RacingManager(NUMBER_OF_TRIALS, cars);
-        int racingRound = racingManager.startRacing(new ConsoleOutputView());
-        assertThat(racingRound).isEqualTo(NUMBER_OF_TRIALS);
+        RacingManager racingManager = new RacingManager(cars);
+        List<Integer> progressOfCars = racingManager.progressRound();
+        assertThat(progressOfCars.size()).isEqualTo(NUMBER_OF_CARS);
     }
 }
