@@ -13,6 +13,10 @@ public class Car {
     public Car() {
     }
 
+    public int getLocation() {
+        return location;
+    }
+
     public Car move(int count) {
         if (count >= 4) {
             location++;
@@ -32,4 +36,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(location);
     }
+
 }
