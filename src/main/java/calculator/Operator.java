@@ -34,7 +34,6 @@ public enum Operator {
 	private final String operand;
 	private static final Map<String, Operator> operation;
 
-	// Operator에서 가능한 연산 기호를 put 한다
 	static {
 		operation = new HashMap<>();
 		for (Operator op : Operator.values()) {
@@ -53,12 +52,9 @@ public enum Operator {
 	abstract double operate(double first, double second);
 
 	public static Operator operation(String inputOperand) {
-		// input으로 들어온 연산이없으면 Exception이 발생한다
 		if (!operation.containsKey(inputOperand)) {
 			throw new IllegalArgumentException("존재하지 않은 연산입니다.");
 		}
-
-		// input으로 들어온 연산을 return
 		return operation.get(inputOperand);
 	}
 
