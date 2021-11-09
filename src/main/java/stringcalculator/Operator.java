@@ -21,7 +21,7 @@ public enum Operator {
         return Arrays.stream(values())
                 .filter(operator -> operator.symbol.equals(symbol))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(NotFoundOperatorException::new);
     }
 
     public Number calculate(Number first, Number second) {
