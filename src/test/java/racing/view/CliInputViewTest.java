@@ -24,4 +24,20 @@ class CliInputViewTest {
 
         System.setIn(stdin);
     }
+
+    @Test
+    @DisplayName("이동 횟수 입력 기능")
+    void inputNumberOfMove() {
+        String data = "5";
+        InputStream stdin = System.in;
+        System.setIn(
+                new ByteArrayInputStream(data.getBytes()));
+
+        int numberOfMove = CliInputView.getNumberOfMoveFromCliInput();
+
+        assertThat(numberOfMove).isEqualTo(5);
+
+        System.setIn(stdin);
+    }
+
 }
