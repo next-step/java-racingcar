@@ -1,3 +1,13 @@
+/*
+ * Main
+ *
+ * version 1.0
+ *
+ * 2021-11-09
+ *
+ * 저작권 nextstep
+ */
+
 package racingcargame;
 
 import racingcargame.ui.InputView;

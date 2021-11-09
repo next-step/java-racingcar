@@ -1,9 +1,18 @@
+/*
+ * RacingCar
+ *
+ * version 1.0
+ *
+ * 2021-11-09
+ *
+ * 저작권 nextstep
+ */
+
 package racingcargame.domain;
 
 import racingcargame.utils.RandomUtil;
 
 import java.util.function.Predicate;
-
 public class RacingCar {
     private int position;
 
