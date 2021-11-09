@@ -1,7 +1,5 @@
 package step3;
 
-import java.io.StringReader;
-
 public class GameBoard {
     private final static InputView INPUT_VIEW = InputView.getInstance();
     private final String QUESTION_CAR_MESSAGE = "자동차 대수는 몇 대 인가요?";
@@ -9,31 +7,39 @@ public class GameBoard {
     private final String RESULT_MESSAGE = "\n실행 결과";
     private final String UNIT_OF_MOVE = "-";
 
+    private void render(String text) {
+        System.out.println(text);
+    }
+
     public Count registerCar() {
-        System.out.println(QUESTION_CAR_MESSAGE);
+        render(QUESTION_CAR_MESSAGE);
 
         return INPUT_VIEW.inputValue();
     }
 
     public Count registerTrialCount() {
-        System.out.println(QUESTION_TRIAL_COUNT_MESSAGE);
+        render(QUESTION_TRIAL_COUNT_MESSAGE);
 
         return INPUT_VIEW.inputValue();
     }
 
-    public void drawRaceProgress(Count moveCount) {
-        int count = moveCount.getCount();
+    public void renderRaceProgress(Count position) {
+        int count = position.getCount();
 
+        render(appendText(count));
+    }
+
+    public void renderResultMessage() {
+        render(RESULT_MESSAGE);
+    }
+
+    private String appendText(int count) {
         StringBuilder sb = new StringBuilder();
 
-        for(int i = 0 ; i < count ; ++i) {
+        for(int i = 0; i < count; ++i) {
             sb.append(UNIT_OF_MOVE);
         }
 
-        System.out.println(sb.toString());
-    }
-
-    public void resultMessage() {
-        System.out.println(RESULT_MESSAGE);
+        return sb.toString();
     }
 }
