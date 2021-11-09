@@ -1,9 +1,10 @@
 package study;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 
 public class CalculatorTest {
     Calculator calculator = new Calculator("2 + 3 * 4 / 2");
@@ -39,5 +40,13 @@ public class CalculatorTest {
         Calculator calculator = new Calculator("2 + 3 * 4 ^ 2");
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(calculator::calculation);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    void validation() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+                    Calculator calculator = new Calculator("");
+        });
     }
 }

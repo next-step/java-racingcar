@@ -5,6 +5,7 @@ public class Calculator {
     String[] input;
 
     public Calculator(String input) {
+        validation(input);
         this.input = input.split(" ");
     }
 
@@ -46,5 +47,11 @@ public class Calculator {
 
     public int divide(int a, int b) {
         return a / b;
+    }
+
+    private void validation(String input) {
+        if(input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException();
+        }
     }
 }
