@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.Car;
 import racingcar.CarTest;
+import racingcar.strategy.TestMoveStrategy;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static racingcar.CarTest.TEST_CAR_NAME;
@@ -15,7 +16,7 @@ class RacingCarListTest {
     public void 테스트_RacingCarList_participate() {
 
         RacingCarList carList= new RacingCarList();
-        Car car = new Car(new CarName(TEST_CAR_NAME), new CarTest.TestMoveStrategy());
+        Car car = new Car(new CarName(TEST_CAR_NAME), new TestMoveStrategy());
         carList.participate(car);
     }
 }

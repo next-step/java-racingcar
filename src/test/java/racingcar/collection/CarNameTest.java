@@ -2,8 +2,6 @@ package racingcar.collection;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.Car;
-import racingcar.CarTest;
 import racingcar.exception.NotEmptyCarNameException;
 import racingcar.exception.TooLongCarNameException;
 

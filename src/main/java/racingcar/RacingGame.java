@@ -9,15 +9,13 @@ import java.util.List;
 public class RacingGame {
     private final int countOfTry;
     private final RacingCarList carList = new RacingCarList();
-    private final MoveStrategy moveStrategy;
 
     public RacingGame(RacingGameRequest request, MoveStrategy moveStrategy) {
         this.countOfTry = request.getCountOfTry();
-        this.moveStrategy = moveStrategy;
 
-        request.getCarNames()
-                .forEach(carName ->
-                        carList.participate(new Car(new CarName(carName), this.moveStrategy)));
+        for (String carName: request.getCarNames()) {
+            carList.participate(new Car(new CarName(carName), moveStrategy));
+        }
     }
 
     public RaceResult playRace() {
@@ -27,7 +25,9 @@ public class RacingGame {
             raceResult.addRaceResult(result);
         }
 
-        getWinnerList().forEach(raceResult::addWinner);
+        for (Winner winner: getWinnerList()) {
+            raceResult.addWinner(winner);
+        }
         return raceResult;
     }
 

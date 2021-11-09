@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.collection.RaceResult;
 import racingcar.model.RacingGameRequest;
+import racingcar.strategy.TestMoveStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +21,7 @@ class RacingGameTest {
         final int countOfTry = 3;
 
         RacingGame racingGame = new RacingGame(new RacingGameRequest(carNames, countOfTry),
-                new CarTest.TestMoveStrategy());
+                new TestMoveStrategy());
         RaceResult raceResult = racingGame.playRace();
 
         assertThat(raceResult.getLabResults().size()).isEqualTo(countOfTry);

@@ -17,7 +17,9 @@ public class RacingCarList {
     public List<MoveResultDto> moveAllAndGetMoveResultList() {
         cars.forEach(Car::move);
 
-        return cars.stream().map(Car::getMoveResultDto).collect(Collectors.toList());
+        return cars.stream()
+                .map(Car::getMoveResultDto)
+                .collect(Collectors.toList());
     }
 
     public int getMaxPosition() {
