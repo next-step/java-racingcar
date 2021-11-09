@@ -25,6 +25,6 @@ public class CalculatorTest {
         assertThatThrownBy(() -> {
             Calculator.operator(str);
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("나눗셈에서 분모는 0이 될 수 없습니다");
+                .hasMessageContaining("can't divide by zero");
     }
 }
