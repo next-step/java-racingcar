@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(int carCount) {
         List<Car> cars = new LinkedList<>();
