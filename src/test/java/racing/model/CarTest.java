@@ -17,6 +17,7 @@ class CarTest {
     }
 
     @Test
+    @DisplayName("자동차 전진 기능")
     void go() {
         car.go();
         car.go();
@@ -24,5 +25,16 @@ class CarTest {
 
         assertThat(car.getMovingDistance())
                 .isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("자동차 정지 기능")
+    void stopCar() {
+        Car car = new Car();
+
+        // 아무것도 하지않으면 정지
+
+        assertThat(car.getMovingDistance())
+                .isEqualTo(0);
     }
 }
