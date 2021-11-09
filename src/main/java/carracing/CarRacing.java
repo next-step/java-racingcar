@@ -27,7 +27,6 @@ public class CarRacing {
         System.out.println(QUESTION_TRY_COUNT);
         String tryCount = scanner.nextLine();
 
-
         inputView = new InputView();
         inputView.valid(carCount, tryCount);
         resultView = new ResultView(inputView.getCarCount());
@@ -37,8 +36,8 @@ public class CarRacing {
     public static void process() {
 
         for (int i = 0; i < inputView.getTryCount(); i++) {
-            resultView.racing();
-            resultView.printRacing();
+            resultView.racing();        /* 자동차 주행 */
+            resultView.printRacing();   /* 주행 이력 출력 */
         }
     }
 
