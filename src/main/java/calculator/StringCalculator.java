@@ -16,8 +16,8 @@ public class StringCalculator {
         }
 
         List<String> items = Arrays.asList(expression.split(" "));
-        List<Long> operands = getOperands(items);
-        List<String> operatorSymbols = getOperatorSymbols(items);
+        List<Long> operands = extractOperandsFrom(items);
+        List<String> operatorSymbols = extractOperatorSymbolsFrom(items);
 
         Long result = operands.get(0);
         for (int i = 1; i < operands.size(); i++) {
@@ -28,7 +28,7 @@ public class StringCalculator {
         return result;
     }
 
-    private static List<Long> getOperands(List<String> items) {
+    private static List<Long> extractOperandsFrom(List<String> items) {
         return IntStream.range(0, items.size())
                 .filter(i -> i % 2 == 0)
                 .mapToObj(items::get)
@@ -36,7 +36,7 @@ public class StringCalculator {
                 .collect(Collectors.toList());
     }
 
-    private static List<String> getOperatorSymbols(List<String> items) {
+    private static List<String> extractOperatorSymbolsFrom(List<String> items) {
         return IntStream.range(0, items.size())
                 .filter(i -> i % 2 == 1)
                 .mapToObj(items::get)
