@@ -22,6 +22,11 @@ public class SetTest {
         numbers.add(2);
         numbers.add(3);
     }
+  
+    @Test
+    void size() {
+        assertThat(numbers.size()).isEqualTo(3);
+    }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
