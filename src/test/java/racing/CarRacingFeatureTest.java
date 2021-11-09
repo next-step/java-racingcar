@@ -7,12 +7,6 @@ import org.junit.jupiter.api.Test;
 public class CarRacingFeatureTest {
 
     @Test
-    @DisplayName("차 수 입력 기능")
-    void inputNumberOfCar() {
-
-    }
-
-    @Test
     @DisplayName("이동 횟수 입력 기능")
     void inputNumberOfMove() {
 
