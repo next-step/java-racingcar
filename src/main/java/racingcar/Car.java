@@ -1,36 +1,42 @@
 package racingcar;
 
-import racingcar.collection.CarPosition;
-import racingcar.exception.TooLongCarNameException;
+import racingcar.collection.CarName;
+import racingcar.collection.Position;
+import racingcar.model.MoveResultDto;
 import racingcar.strategy.MoveStrategy;
 
 public class Car {
     private final MoveStrategy moveStrategy;
 
-    private final String name;
-    private final CarPosition currentPosition = new CarPosition();
+    private final CarName name;
+    private final Position currentPosition = new Position();
 
-    public Car(String name, MoveStrategy moveStrategy) {
-        if (name.length() > 5) {
-            throw new TooLongCarNameException();
-        }
+    public Car(CarName name, MoveStrategy moveStrategy) {
         this.name = name;
         this.moveStrategy = moveStrategy;
     }
 
-    public CarPosition move() {
+    public Position move() {
         if (isMovable()) {
             movePosition();
         }
         return currentPosition;
     }
 
-    public String getName() {
+    public CarName getName() {
         return name;
     }
 
-    public CarPosition getCurrentPosition() {
-        return currentPosition;
+    public MoveResultDto getMoveResultDto() {
+        return new MoveResultDto(this.name, this.currentPosition);
+    }
+
+    public int getCurrentPositionValue() {
+        return currentPosition.getPosition();
+    }
+
+    public boolean currentPositionEqualsTo(int position) {
+        return this.currentPosition.getPosition() == position;
     }
 
     private void movePosition() {

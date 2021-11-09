@@ -2,24 +2,27 @@ package racingcar.collection;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RaceResult {
-    private Winners winners;
-    private final List<Race> histories = new ArrayList<>();
+    private final List<Winner> winners = new ArrayList<>();
+    private final List<LapResult> labResults = new ArrayList<>();
 
-    public void addRaceResult(Race result) {
-        histories.add(result);
+    public void addRaceResult(LapResult result) {
+        labResults.add(result);
     }
 
-    public List<Race> getHistories() {
-        return histories;
+    public List<LapResult> getLabResults() {
+        return labResults;
     }
 
-    public void setWinners(Winners winners) {
-        this.winners = winners;
+    public void addWinner(Winner winner) {
+        this.winners.add(winner);
     }
 
-    public Winners getWinners() {
-        return winners;
+    public List<String> getWinnerNames() {
+        return winners.stream()
+                .map(Winner::getName)
+                .collect(Collectors.toList());
     }
 }

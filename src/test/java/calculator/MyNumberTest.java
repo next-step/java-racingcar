@@ -45,7 +45,7 @@ public class MyNumberTest {
     }
 
     @Test
-    @DisplayName("divide 메소드는 0으로 나누려고 할 때 IllegalArgumentException 예외가 발생한다")
+    @DisplayName("divide 메소드는 0으로 나누려고 할 때 예외를 던진다.")
     void 테스트_divide_DivideByZeroException() {
         assertThrows(DivideByZeroException.class, () -> {
             new MyNumber("4").divide(new MyNumber("0"));

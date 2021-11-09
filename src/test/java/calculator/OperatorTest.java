@@ -18,7 +18,7 @@ class OperatorTest {
     }
 
     @Test
-    @DisplayName("of 메소드로 객체를 생성할 때 사칙연산기호가 아닌 경우 IllegalArgumentException 예외가 발생한다.")
+    @DisplayName("of 메소드로 객체를 생성할 때 사칙연산기호가 아닌 경우 예외를 던진다.")
     public void 테스트_Operator_of_IllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> Operator.of("&"));
     }

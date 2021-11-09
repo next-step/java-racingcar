@@ -1,9 +1,9 @@
 package racingcar.collection;
 
-public class CarPosition {
+public class Position {
     private Integer position;
 
-    public CarPosition() {
+    public Position() {
         this.position = 0;
     }
 
@@ -13,5 +13,9 @@ public class CarPosition {
 
     public void increasePosition() {
         position++;
+    }
+
+    public boolean equalsTo(int position) {
+        return this.position == position;
     }
 }
