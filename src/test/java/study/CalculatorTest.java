@@ -7,26 +7,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CalculatorTest {
 
     @Test
-    void addition() {
-        int result = Calculator.calculate("1 + 2");
+    void add() {
+        int result = Calculator.calculate2("1 + 2");
         assertThat(result).isEqualTo(3);
     }
 
     @Test
-    void subtraction() {
-        int result = Calculator.calculate("4 - 2");
+    void subtract() {
+        int result = Calculator.calculate2("4 - 2");
         assertThat(result).isEqualTo(2);
     }
 
     @Test
-    void multiplication() {
-        int result = Calculator.calculate("5 * 4");
+    void multiply() {
+        int result = Calculator.calculate2("5 * 4");
         assertThat(result).isEqualTo(20);
     }
 
     @Test
-    void division() {
-        int result = Calculator.calculate("20 / 2");
+    void divide() {
+        int result = Calculator.calculate2("20 / 2");
         assertThat(result).isEqualTo(10);
     }
 }
