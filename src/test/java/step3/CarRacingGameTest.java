@@ -7,7 +7,7 @@ public class CarRacingGameTest {
 
     @Test
     void carRacingGame() throws IOException {
-        CarRacingGame carRacingGame = new CarRacingGame();
+        CarRacingGame carRacingGame = new CarRacingGame(1, 1);
         carRacingGame.start();
     }
 }
