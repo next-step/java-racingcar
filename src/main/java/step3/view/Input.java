@@ -4,12 +4,13 @@ import step3.model.CarList;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Input {
 
-    public ArrayList<Integer> inputView() {
-        ArrayList<Integer> inputList = new ArrayList<Integer>();
+    public List<Integer> inputView() {
+        List<Integer> inputList = new ArrayList<Integer>();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("자동차 대수는 몇 대 인가요?");
