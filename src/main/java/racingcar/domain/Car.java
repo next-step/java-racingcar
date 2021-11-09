@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.exception.CarMovingNumberException;
+
 import java.util.Objects;
 
 public class Car {

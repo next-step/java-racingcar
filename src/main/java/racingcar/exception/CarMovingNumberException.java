@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.exception;
 
 public class CarMovingNumberException extends RuntimeException {
     private static final String MESSAGE = "0 ~ 9 사이의 숫자를 입력하세요. (입력값 : %d)";
