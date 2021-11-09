@@ -15,7 +15,7 @@ public class Car {
         this.record = new ArrayList<>();
     }
 
-    public void moveCar(int moveValue) {
+    public void move(int moveValue) {
         Boolean move = MIN_MOVE_VALUE <= moveValue;
 
         if (move) {

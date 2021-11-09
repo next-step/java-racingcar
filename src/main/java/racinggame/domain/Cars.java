@@ -23,7 +23,7 @@ public class Cars {
 
     public void roundRacing() {
         for (Car car : cars) {
-            car.moveCar(random.nextInt(MAX_MOVE_VALUE));
+            car.move(random.nextInt(MAX_MOVE_VALUE));
         }
     }
 
