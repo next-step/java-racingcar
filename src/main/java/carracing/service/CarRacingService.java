@@ -4,7 +4,7 @@ import carracing.model.Cars;
 
 public class CarRacingService {
 
-    private Cars cars;
+    private final Cars cars;
 
     private final Integer tryCount;
 

@@ -1,6 +1,7 @@
 package carracing;
 
 import carracing.model.Cars;
+import carracing.model.ui.InputDto;
 import carracing.service.CarRacingService;
 import carracing.util.ExceptionUtils;
 import carracing.view.InputView;
@@ -9,11 +10,9 @@ import carracing.view.ResultView;
 public class CarRacingMain {
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        Integer carCount = inputView.inputCarCount();
-        Integer tryCount = inputView.inputTryCount();
+        InputDto inputDto = InputView.getNewCars();
 
-        CarRacingService carRacingService = new CarRacingService(new Cars(carCount), tryCount);
+        CarRacingService carRacingService = new CarRacingService(Cars.from(inputDto.getName()), inputDto.getTryCount());
         Cars cars = carRacingService.gameStart();
 
         try {

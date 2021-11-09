@@ -2,23 +2,38 @@ package carracing.model;
 
 import carracing.util.ExceptionUtils;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
 
-    private static final Integer START_INDEX = 0;
+    private static final String DELIMITER = ",";
 
     private static Integer tryTotalCount = 0;
 
     private List<Car> cars;
 
-    public Cars(Integer carCount) {
-        cars = IntStream.range(START_INDEX, carCount)
-            .mapToObj((idx) -> new Car(idx))
+    private Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public static Cars from(String name) {
+        List<String> names = getSplitName(name);
+        return new Cars(getCarList(names));
+    }
+
+    private static List<String> getSplitName(String name) {
+        List<String> names = Arrays.asList(name.split(DELIMITER));
+        return names;
+    }
+
+    private static List<Car> getCarList(List<String> names) {
+        return names.stream()
+            .map(carName -> Car.from(carName))
             .collect(Collectors
-                .toCollection(ArrayList::new));
+                .toCollection(ArrayList::new)
+            );
     }
 
     public Integer getSize() {

@@ -1,18 +1,32 @@
 package carracing.model;
 
+import carracing.exception.ArgumentOutOfRangeException;
 import carracing.util.RandomUtils;
 
 public class Car {
 
-    public static final Integer MIN_FORWARD_NUMBER = 4;
+    private static final Integer MIN_FORWARD_NUMBER = 4;
+
+    private static final Integer NAME_RANGE_MAXIMUM = 5;
 
     private String name;
 
     private RacingHistory racingHistory;
 
-    public Car(Integer idx) {
-        this.name = String.valueOf(idx);
+    public Car(String name) {
+        this.name = name;
         this.racingHistory = new RacingHistory();
+    }
+
+    public static Car from(String carName) {
+        validName(carName);
+        return new Car(carName);
+    }
+
+    private static void validName(String carName) {
+        if(carName.length() > NAME_RANGE_MAXIMUM) {
+            throw new ArgumentOutOfRangeException(NAME_RANGE_MAXIMUM);
+        }
     }
 
     public void runRace() {
