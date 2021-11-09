@@ -30,7 +30,7 @@ public enum Operator {
                 .orElseThrow(() -> new IllegalArgumentException("해당 symbol에 대한 Operator가 존재하지 않습니다"));
     }
 
-    public Long calculate(Long operand1, Long operand2) {
+    public long calculate(long operand1, long operand2) {
         return calculationFunction.apply(operand1, operand2);
     }
 

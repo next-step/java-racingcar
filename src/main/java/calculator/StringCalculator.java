@@ -19,7 +19,7 @@ public class StringCalculator {
         List<Long> operands = extractOperandsFrom(items);
         List<String> operatorSymbols = extractOperatorSymbolsFrom(items);
 
-        Long result = operands.get(0);
+        long result = operands.get(0);
         for (int i = 1; i < operands.size(); i++) {
             BinomialExpression binomialExpression =
                     new BinomialExpression(result, operands.get(i), operatorSymbols.get(i - 1));
