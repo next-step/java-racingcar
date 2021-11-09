@@ -3,6 +3,7 @@ package study;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CalculatorTest {
     Calculator calculator = new Calculator("2 + 3 * 4 / 2");
@@ -28,7 +29,15 @@ public class CalculatorTest {
     }
 
     @Test
-    void operator() {
+    void calculation() {
+        Calculator calculator = new Calculator("2 + 3 * 4 / 2");
         assertThat(calculator.calculation()).isEqualTo(10);
+    }
+
+    @Test
+    void operatorIllegalArgumentException() {
+        Calculator calculator = new Calculator("2 + 3 * 4 ^ 2");
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(calculator::calculation);
     }
 }
