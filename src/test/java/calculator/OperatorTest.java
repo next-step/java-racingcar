@@ -25,8 +25,7 @@ class OperatorTest {
     @Test
     @DisplayName("연산자 예외 기호 테스트")
     void ofIllegalArgumentException() {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-           Operator.of("^");
-        });
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Operator.of("^"));
     }
 }
