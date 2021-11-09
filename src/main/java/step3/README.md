@@ -9,6 +9,7 @@
 #### 설계
 
     작은 기능단위로 분리해보기
-    1. 입력
-    2. 출력
-    3. 자동차 (random수 구해서 전진)
+    1. 입력 - GameInput
+    2. 출력 - GameOutput
+    3. 자동차 (random수 구해서 전진) - Car
+    4. 게임을 총괄 - CarRacingGame
