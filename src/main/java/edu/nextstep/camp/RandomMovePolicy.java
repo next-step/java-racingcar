@@ -6,6 +6,11 @@ public class RandomMovePolicy implements MovePolicy {
     private static final int MAXIMUM = 10;
     private static final int MOVE_THRESHOLD = 4;
 
+    private static final RandomMovePolicy instance = new RandomMovePolicy();
+    public static RandomMovePolicy getInstance() {
+        return instance;
+    }
+
     private final Random random = new Random();
 
     @Override

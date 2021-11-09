@@ -14,14 +14,18 @@ public class Race {
     private final int totalTurns;
     private final List<Car> cars;
 
-    public static Race of(int numberOfCars, int turn) {
-        if (numberOfCars < MINIMUM_NUMBER_OF_CAR) {
-            throw new IllegalArgumentException("invalid number of cars: " + numberOfCars);
+    public static Race of(String[] names, int turn, MovePolicy movePolicy) {
+        if (names == null) {
+            throw new IllegalArgumentException("Name of cars cannot be null.");
         }
 
-        List<Car> cars = new ArrayList<>(numberOfCars);
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+        if (names.length < MINIMUM_NUMBER_OF_CAR) {
+            throw new IllegalArgumentException("invalid number of cars: " + names.length);
+        }
+
+        List<Car> cars = new ArrayList<>(names.length);
+        for (String name: names) {
+            cars.add(new Car(name, movePolicy));
         }
 
         return of(cars, turn);
