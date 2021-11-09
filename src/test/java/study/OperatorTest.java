@@ -14,32 +14,32 @@ public class OperatorTest {
 
     @Test
     void add() {
-        InputNumber result = Operator.getOperator(ADDITION).calculate(new InputNumber("3"), new InputNumber("5"));
+        InputNumber result = Operator.calculate(new InputNumber(3), new InputNumber(5), ADDITION);
         assertThat(result).isEqualTo(new InputNumber(8));
     }
 
     @Test
     void subtract() {
-        InputNumber result = Operator.getOperator(SUBTRACTION).calculate(new InputNumber("5"), new InputNumber("3"));
+        InputNumber result = Operator.calculate(new InputNumber(5), new InputNumber(3), SUBTRACTION);
         assertThat(result).isEqualTo(new InputNumber(2));
     }
 
     @Test
     void multiply() {
-        InputNumber result = Operator.getOperator(MULTIPLICATION).calculate(new InputNumber("10"), new InputNumber("2"));
+        InputNumber result = Operator.calculate(new InputNumber("10"), new InputNumber("2"), MULTIPLICATION);
         assertThat(result).isEqualTo(new InputNumber(20));
     }
 
     @Test
     void divide() {
-        InputNumber result = Operator.getOperator(DIVISION).calculate(new InputNumber("21"), new InputNumber("7"));
+        InputNumber result = Operator.calculate(new InputNumber("21"), new InputNumber("7"), DIVISION);
         assertThat(result).isEqualTo(new InputNumber(3));
     }
 
     @Test
     void invalidOperatorShouldReturnIllegalArgumentException() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Operator.getOperator("&").calculate(new InputNumber("1"), new InputNumber("7")))
+                .isThrownBy(() -> Operator.calculate(new InputNumber("1"), new InputNumber("7"), "&"))
                 .withMessage("사칙 연산 기호가 아닙니다.");
     }
 }

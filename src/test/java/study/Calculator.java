@@ -22,6 +22,6 @@ public class Calculator {
     }
 
     private static InputNumber calculate(InputNumber first, InputNumber second, String operator) {
-        return Operator.getOperator(operator).calculate(first, second);
+        return Operator.calculate(first, second, operator);
     }
 }
