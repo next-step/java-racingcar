@@ -2,7 +2,6 @@ package study;
 
 import static org.assertj.core.api.Assertions.*;
 
-import com.step3.model.Car;
 import com.step3.util.RandomUtil;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
