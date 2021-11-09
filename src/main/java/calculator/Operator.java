@@ -30,11 +30,11 @@ public enum Operator {
                 .orElseThrow(() -> new IllegalArgumentException("해당 symbol에 대한 Operator가 존재하지 않습니다"));
     }
 
-    public String getSymbol() {
-        return symbol;
-    }
-
     public Long calculate(Long operand1, Long operand2) {
         return calculationFunction.apply(operand1, operand2);
+    }
+
+    public String getSymbol() {
+        return symbol;
     }
 }
