@@ -1,35 +1,16 @@
 package edu.nextstep.camp;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Race {
-    private static final int MINIMUM_NUMBER_OF_CAR = 1;
     private static final int MINIMUM_TOTAL_TURN = 1;
     private static final int INITIAL_TURN = 0;
 
     private int currentTurn;
     private final int totalTurns;
     private final List<Car> cars;
-
-    public static Race of(String[] names, int turn, MovePolicy movePolicy) {
-        if (names == null) {
-            throw new IllegalArgumentException("Name of cars cannot be null.");
-        }
-
-        if (names.length < MINIMUM_NUMBER_OF_CAR) {
-            throw new IllegalArgumentException("invalid number of cars: " + names.length);
-        }
-
-        List<Car> cars = new ArrayList<>(names.length);
-        for (String name: names) {
-            cars.add(new Car(name, movePolicy));
-        }
-
-        return of(cars, turn);
-    }
 
     public static Race of(List<Car> cars, int turn) {
         if (cars == null || cars.isEmpty()) {
