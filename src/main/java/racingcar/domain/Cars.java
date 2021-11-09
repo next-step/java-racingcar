@@ -15,12 +15,21 @@ public class Cars {
     private final MovingStrategy movingStrategy;
 
     private Cars(int count, MovingStrategy movingStrategy) {
+        validateMovingStrategy(movingStrategy);
+        validateCreateCount(count);
+
         this.movingStrategy = movingStrategy;
         validateCreateCount(count);
 
         this.cars = Stream.generate(Car::from)
                 .limit(count)
                 .collect(Collectors.toList());
+    }
+
+    private void validateMovingStrategy(MovingStrategy movingStrategy) {
+        if (Objects.isNull(movingStrategy)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static Cars from(int count, MovingStrategy movingStrategy) {
