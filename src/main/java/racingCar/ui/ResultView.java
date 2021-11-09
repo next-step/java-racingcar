@@ -15,6 +15,7 @@ public class ResultView {
 
     private String printRace(Car car) {
         StringBuilder sb = new StringBuilder();
+        sb.append(car.getName());
         int moveCount = car.getMoveCount();
 
         for (int i = 0; i < moveCount; i++) {
