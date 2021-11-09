@@ -44,9 +44,9 @@ public class CalculatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
-    void validation() {
+    void validation(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-                    Calculator calculator = new Calculator("");
+                    Calculator calculator = new Calculator(input);
         });
     }
 }
