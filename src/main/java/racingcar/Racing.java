@@ -1,5 +1,6 @@
 package racingcar;
 
+import common.InputView;
 import common.ListView;
 
 import java.util.ArrayList;
@@ -16,6 +17,14 @@ public class Racing {
         this.carListView = new ListView<>(makeCar(carCount));
         this.tryCount = tryCount;
         this.random = new Random(System.currentTimeMillis());
+    }
+
+    public static void main(String[] args) {
+        int carCount = InputView.nextInt("자동차 대수는 몇 대 인가요?");
+        int tryCount = InputView.nextInt("시도할 회수는 몇 회 인가요?");
+
+        Racing racing = new Racing(carCount, tryCount);
+        racing.start();
     }
 
     public List<Car> makeCar(int carCount) {
