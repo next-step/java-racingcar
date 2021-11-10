@@ -1,6 +1,6 @@
 package carracing.model;
 
-import carracing.util.ExceptionUtils;
+import carracing.exception.RacingHistoryOutBoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class RacingHistory {
         try {
             return isTrySuccess.subList(FROM_INDEX, toIndex);
         } catch (IndexOutOfBoundsException e) {
-            throw new IndexOutOfBoundsException(ExceptionUtils.RACING_HISTORY_INDEX_OUT_BOUND_EXCEPTION);
+            throw new RacingHistoryOutBoundException();
         }
     }
 

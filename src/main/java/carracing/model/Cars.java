@@ -1,7 +1,6 @@
 package carracing.model;
 
 import carracing.exception.HistoryNullPointerException;
-import carracing.util.ExceptionUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,6 +9,7 @@ import java.util.stream.Collectors;
 public class Cars {
 
     private static final String DELIMITER = ",";
+    private static final String CAR_INDEX_OUT_BOUND_EXCEPTION = "존재하지 않는 자동차 입니다.";
 
     private static Integer tryTotalCount = 0;
 
@@ -52,7 +52,7 @@ public class Cars {
         try {
             return cars.get(idx);
         } catch (IndexOutOfBoundsException e) {
-            throw new IndexOutOfBoundsException(ExceptionUtils.CARS_INDEX_OUT_BOUND_EXCEPTION);
+            throw new IndexOutOfBoundsException(CAR_INDEX_OUT_BOUND_EXCEPTION);
         }
     }
 

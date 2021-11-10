@@ -3,7 +3,7 @@ package carracing.model;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import carracing.util.ExceptionUtils;
+import carracing.exception.RacingHistoryOutBoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -28,9 +28,8 @@ public class RacingHistoryTest {
         RacingHistory history = new RacingHistory();
         history.addHistory(TRUE);
 
-        assertThatExceptionOfType(IndexOutOfBoundsException.class)
-            .isThrownBy(() -> history.getIsTrySuccess(size))
-            .withMessage(ExceptionUtils.RACING_HISTORY_INDEX_OUT_BOUND_EXCEPTION);
+        assertThatExceptionOfType(RacingHistoryOutBoundException.class)
+            .isThrownBy(() -> history.getIsTrySuccess(size));
     }
 
 }
