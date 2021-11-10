@@ -24,6 +24,9 @@ class RacingGameTest {
     @Mock
     private OutputView outputView;
 
+    @Mock
+    private FilterWinners filterWinners;
+
     @AfterEach
     void tearDown() {
         verifyNoMoreInteractions(moveCars, outputView);
@@ -31,29 +34,39 @@ class RacingGameTest {
 
     @Test
     void whenNumberOfCarsIsNotPositive() {
-        assertThatThrownBy(() -> new RacingGame(Collections.EMPTY_LIST, 10, outputView, moveCars))
+        assertThatThrownBy(() -> new RacingGame(Collections.EMPTY_LIST, 10, outputView, moveCars, filterWinners))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void whenNumberOfMovementIsNotPositive() {
-        assertThatThrownBy(() -> new RacingGame(dummyCarNames(1), 0, outputView, moveCars))
+        assertThatThrownBy(() -> new RacingGame(dummyCarNames(1), 0, outputView, moveCars, filterWinners))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
     @MethodSource("carNamesAndNumberOfMovement")
     void start(Collection<CarName> carNames, int numberOfMovement) {
-        RacingGame racingGame = new RacingGame(carNames, numberOfMovement, outputView, moveCars);
+        RacingGame racingGame = new RacingGame(carNames, numberOfMovement, outputView, moveCars, filterWinners);
+
+        Collection<Car> winners = Collections.singleton(dummyCar());
+
+        when(filterWinners.filter(argThat((cars) -> cars.size() == carNames.size())))
+                .thenReturn(winners);
 
         racingGame.start();
 
         verify(moveCars, times(numberOfMovement)).moveCars(
                 argThat((argument) -> argument.size() == carNames.size())
         );
-        verify(outputView, times(numberOfMovement)).render(
+        verify(outputView, times(numberOfMovement)).renderLocation(
                 argThat((argument) -> argument.size() == carNames.size())
         );
+        verify(outputView, times(1)).renderWinners(winners);
+    }
+
+    private Car dummyCar() {
+        return new Car(new CarName(UUID.randomUUID().toString().substring(0, 4)));
     }
 
     private static Stream<Arguments> carNamesAndNumberOfMovement() {
