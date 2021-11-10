@@ -1,9 +1,7 @@
-package study.operator;
+package study.calculate;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
-
-import study.IntNumber;
 
 public enum Operator {
     PLUS("+", IntNumber::plus),

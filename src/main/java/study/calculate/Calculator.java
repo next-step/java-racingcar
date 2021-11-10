@@ -1,6 +1,4 @@
-package study;
-
-import study.operator.Operator;
+package study.calculate;
 
 public class Calculator {
 
