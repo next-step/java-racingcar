@@ -9,7 +9,7 @@ public class Calculator {
     }
 
     public static int calculate(String expression) {
-        validate(expression);
+        validateOrElseThrow(expression);
         String[] splittedExpression = expression.split(" ");
         int firstOperand = Integer.parseInt(splittedExpression[0]);
         String operator = splittedExpression[1];
@@ -18,7 +18,7 @@ public class Calculator {
         return calculate(firstOperand, operator, secondOperand);
     }
 
-    private static void validate(String expression) {
+    private static void validateOrElseThrow(String expression) {
         if (expression == null || expression.isEmpty()) {
             throw new IllegalArgumentException("expression must not null or empty. expression: " + expression);
         }
