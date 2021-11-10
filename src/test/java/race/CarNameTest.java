@@ -12,14 +12,14 @@ class CarNameTest {
     @ValueSource(strings = {"a", "ab", "abc", "abcd", "abcde"})
     void create_successful(String rawName) {
         CarName carName = new CarName(rawName);
-        assertThat(carName.getName()).isEqualTo(rawName);
+        assertThat(carName.toString()).isEqualTo(rawName);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"a ", "ab ", "abc ", "abcd ", "abcde "})
     void trim(String rawName) {
         CarName carName = new CarName(rawName);
-        assertThat(carName.getName()).isEqualTo(rawName.trim());
+        assertThat(carName.toString()).isEqualTo(rawName.trim());
     }
 
     @ParameterizedTest
