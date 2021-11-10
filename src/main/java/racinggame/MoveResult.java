@@ -1,5 +1,6 @@
 package racinggame;
 
+import java.util.Collections;
 import java.util.List;
 
 public class MoveResult {
@@ -10,6 +11,6 @@ public class MoveResult {
     }
 
     public List<Integer> getResults() {
-        return moveResults;
+        return Collections.unmodifiableList(moveResults);
     }
 }

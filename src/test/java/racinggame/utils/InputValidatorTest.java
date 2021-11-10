@@ -17,8 +17,7 @@ class InputValidatorTest {
     @NullAndEmptySource
     void validateNullAndEmpty(String input) {
         assertThatThrownBy(() -> InputValidator.validate(input))
-                .isInstanceOf(EmptyAndNullSourceException.class)
-                .hasMessage(InputValidator.INVALID_SOURCE_MESSAGE);
+                .isInstanceOf(EmptyAndNullSourceException.class);
     }
 
     @DisplayName("입력값이 0일 경우 예외 발생")
@@ -26,8 +25,7 @@ class InputValidatorTest {
     @ValueSource(strings = "0")
     void validateZero(String input) {
         assertThatThrownBy(() -> InputValidator.validate(input))
-                .isInstanceOf(ZeroStringException.class)
-                .hasMessage(InputValidator.ZERO_INPUT_MESSAGE);
+                .isInstanceOf(ZeroStringException.class);
     }
 
     @DisplayName("입력값이 일반 문자열일 경우")
@@ -35,7 +33,6 @@ class InputValidatorTest {
     @ValueSource(strings = {"문자열1", "입력값입니다.", "잘못 입력했어요.", "숫자가 아닙니다."})
     void validateString(String input) {
         assertThatThrownBy(() -> InputValidator.validate(input))
-                .isInstanceOf(InvalidInputException.class)
-                .hasMessage(InputValidator.INVALID_INPUT_MESSAGE);
+                .isInstanceOf(InvalidInputException.class);
     }
 }

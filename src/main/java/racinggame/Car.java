@@ -1,15 +1,15 @@
 package racinggame;
 
 public class Car {
-
+    private static final int INIT_POSITION = 0;
     private int position;
 
     public Car() {
-        this.position = 0;
+        this.position = INIT_POSITION;
     }
 
     public void move(boolean movable) {
-        if(movable) {
+        if (movable) {
             position++;
         }
     }

@@ -2,10 +2,9 @@ package racinggame.exception;
 
 public class InvalidInputException extends RuntimeException {
 
-    public InvalidInputException() {
-    }
+    private static final String INVALID_INPUT_MESSAGE = "회수를 입력해주세요.";
 
-    public InvalidInputException(String message) {
-        super(message);
+    public InvalidInputException() {
+        super(INVALID_INPUT_MESSAGE);
     }
 }

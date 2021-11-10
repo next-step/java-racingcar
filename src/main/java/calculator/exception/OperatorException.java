@@ -2,10 +2,9 @@ package calculator.exception;
 
 public class OperatorException extends RuntimeException {
 
-    public OperatorException() {
-    }
+    private static final String INVALID_OPERATOR_MESSAGE = "잘못된 연산자가 입력되었습니다.";
 
-    public OperatorException(String message) {
-        super(message);
+    public OperatorException() {
+        super(INVALID_OPERATOR_MESSAGE);
     }
 }

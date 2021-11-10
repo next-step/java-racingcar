@@ -4,9 +4,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racinggame.InputValue;
+import racinggame.exception.EmptyAndNullSourceException;
+import racinggame.exception.InvalidInputException;
+import racinggame.exception.ZeroStringException;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 class InputUtilsTest {
 
@@ -29,9 +31,8 @@ class InputUtilsTest {
             "'' | ''"
     }, delimiter = '|')
     void validateEmptySource(String numberOfCars, String numberOfAttempts) {
-        assertThatIllegalArgumentException().isThrownBy(
-                () -> InputUtils.convertInputValue(numberOfCars, numberOfAttempts))
-                .withMessage("공백은 입력할 수 없습니다.");
+        assertThatThrownBy(() -> InputUtils.convertInputValue(numberOfCars, numberOfAttempts))
+                .isInstanceOf(EmptyAndNullSourceException.class);
     }
 
     @DisplayName("입력한 값이 문자열이 있을경우 예외 발생")
@@ -42,9 +43,8 @@ class InputUtilsTest {
             "'잘못 작성' | '문자열입니다2'"
     }, delimiter = '|')
     void validateString(String numberOfCars, String numberOfAttempts) {
-        assertThatIllegalArgumentException().isThrownBy(
-                        () -> InputUtils.convertInputValue(numberOfCars, numberOfAttempts))
-                .withMessage("회수를 입력해주세요.");
+        assertThatThrownBy(() -> InputUtils.convertInputValue(numberOfCars, numberOfAttempts))
+                .isInstanceOf(InvalidInputException.class);
     }
 
     @DisplayName("입력한 값이 0이 있을경우 예외 발생")
@@ -55,9 +55,9 @@ class InputUtilsTest {
             "0 | 0"
     }, delimiter = '|')
     void validateZero(String numberOfCars, String numberOfAttempts) {
-        assertThatIllegalArgumentException().isThrownBy(
-                        () -> InputUtils.convertInputValue(numberOfCars, numberOfAttempts))
-                .withMessage("입력값은 1이상으로 입력해주세요.");
+        assertThatThrownBy(() -> InputUtils.convertInputValue(numberOfCars, numberOfAttempts))
+                .isInstanceOf(ZeroStringException.class);
+
     }
 
 }

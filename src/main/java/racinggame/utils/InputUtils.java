@@ -1,10 +1,12 @@
 package racinggame.utils;
 
 import racinggame.InputValue;
+import racinggame.exception.NotInstanceException;
 
 public class InputUtils {
 
     private InputUtils() {
+        throw new NotInstanceException();
     }
 
     public static InputValue convertInputValue(String numberOfCars, String numberOfAttempts) {

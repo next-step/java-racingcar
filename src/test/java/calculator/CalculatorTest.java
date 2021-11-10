@@ -39,8 +39,7 @@ class CalculatorTest {
     @NullAndEmptySource
     void inputNullAndEmptyTest(String input) {
         assertThatThrownBy(() -> calculator.execute(input))
-                .isInstanceOf(InvalidInputException.class)
-                .hasMessage(CalculatorValidator.INVALID_INPUT_MESSAGE);
+                .isInstanceOf(InvalidInputException.class);
     }
 
     @DisplayName("잘못된 연산자 예외발생")
@@ -53,8 +52,7 @@ class CalculatorTest {
     })
     void calculateExceptionTest1(String input) {
         assertThatThrownBy(() -> calculator.execute(input))
-                .isInstanceOf(OperatorException.class)
-                .hasMessage(CalculatorValidator.INVALID_OPERATOR_MESSAGE);
+                .isInstanceOf(OperatorException.class);
     }
 
     @DisplayName("나눗셈 중 분모가 0일 경우 예외발생")
@@ -65,8 +63,7 @@ class CalculatorTest {
     })
     void calculateExceptionTest2(String input) {
         assertThatThrownBy(() -> calculator.execute(input))
-                .isInstanceOf(InvalidDenominatorException.class)
-                .hasMessage(CalculatorValidator.INVALID_DENOMINATOR_MESSAGE);
+                .isInstanceOf(InvalidDenominatorException.class);
     }
 
     @DisplayName("입력된 첫번째값이 숫자가 아닐경우 예외발생")
@@ -78,7 +75,6 @@ class CalculatorTest {
     })
     void calculateExceptionTest3(String input) {
         assertThatThrownBy(() -> calculator.execute(input))
-                .isInstanceOf(NumericException.class)
-                .hasMessage(CalculatorValidator.INVALID_INPUT_MESSAGE);
+                .isInstanceOf(NumericException.class);
     }
 }
