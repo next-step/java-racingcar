@@ -1,24 +1,23 @@
-package racingcar.step4;
+package racingcar.step5;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.step4.config.MoveConfig;
-import racingcar.step4.domain.Car;
-import racingcar.step4.domain.Cars;
-import racingcar.step4.move.Moving;
-import racingcar.step4.service.RacingGame;
+import racingcar.step5.config.MoveConfig;
+import racingcar.step5.domain.Car;
+import racingcar.step5.domain.Cars;
+import racingcar.step5.domain.MovingStrategy;
+import racingcar.step5.domain.RacingGame;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingGameTest {
 
-    Moving moving;
+    MovingStrategy moving;
 
     @BeforeEach
     void init() {
@@ -57,14 +56,6 @@ public class RacingGameTest {
     }
 
     @Test
-    @DisplayName("자동차 이름을 구분자로 쪼개기")
-    void nameSplit() {
-        String[] arr = {"k3", "k5", "k7"};
-        RacingGame racingGame = new RacingGame("k3,k5,k7", 5);
-        assertThat(racingGame.getCars().equals(new Cars(arr))).isTrue();
-    }
-
-    @Test
     @DisplayName("레이스 종료 후 위너 찾기")
     void findWinners() {
         Car K3 = new Car("K3", 12);
@@ -74,9 +65,9 @@ public class RacingGameTest {
         Cars cars = new Cars(K3, K5, K7, K9);
         RacingGame racingGame = new RacingGame(cars, 5);
         List<Car> winners = racingGame.findWinners();
-        assertThat(winners.contains(new Car("K3"))).isTrue();
-        assertThat(winners).contains(new Car("K9"));
-        assertThat(winners).doesNotContain(new Car("K5"));
+        assertThat(winners.contains(K7)).isFalse();
+        assertThat(winners).contains(K9);
+        assertThat(winners).doesNotContain(K5);
         assertThat(winners.size()).isEqualTo(2);
     }
 

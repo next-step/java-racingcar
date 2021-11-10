@@ -1,23 +1,19 @@
-package racingcar.step4.service;
-
-import racingcar.step4.domain.Car;
-import racingcar.step4.domain.Cars;
-import racingcar.step4.move.Moving;
+package racingcar.step5.domain;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static racingcar.step5.message.ErrorMessage.*;
 
 public class RacingGame {
 
     private static final int COUNT_OF_TRY_MIN_NUM = 1;
-    private static final String NAME_DELIMITER = ",";
     private int countOfTry;
     private Cars cars;
 
     public RacingGame(String carName, int countOfTry) {
         checkCountOfTry(countOfTry);
         this.countOfTry = countOfTry;
-        this.cars = new Cars(carName.split(NAME_DELIMITER));
+        this.cars = new Cars(carName);
     }
 
     //테스트 코드를 위한 메서드
@@ -31,8 +27,8 @@ public class RacingGame {
         return countOfTry == 0;
     }
 
-    public void race(Moving moving) {
-        cars.moveCars(moving);
+    public void race(MovingStrategy movingStrategy) {
+        cars.moveCars(movingStrategy);
         countOfTry--;
     }
 
@@ -45,19 +41,13 @@ public class RacingGame {
     }
 
     public List<Car> findWinners() {
-        return cars.getCars().stream()
-                .filter(this::isMaxPosition)
-                .collect(Collectors.toList());
+        return cars.findWinners();
     }
 
     private static void checkCountOfTry(int countOfTry) {
         if (countOfTry < COUNT_OF_TRY_MIN_NUM) {
-            throw new IllegalArgumentException("0 이하 값은 불가능 합니다.");
+            throw new IllegalArgumentException(NO_ZERO_LESS_MESSAGE);
         }
-    }
-
-    private boolean isMaxPosition(Car car) {
-        return car.getPosition() == cars.getMaxPosition();
     }
 
 }
