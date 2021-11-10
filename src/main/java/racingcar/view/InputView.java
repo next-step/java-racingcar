@@ -5,6 +5,7 @@ import static racingcar.utils.PrintUtils.print;
 import java.util.Scanner;
 import racingcar.dto.GameConfig;
 
+
 public class InputView {
 
     private final Scanner sc = new Scanner(System.in);
