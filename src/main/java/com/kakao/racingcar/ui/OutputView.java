@@ -14,7 +14,7 @@ public class OutputView {
     public static void printRacingGame(RacingHistory racingHistory) {
         Map<Integer, List<CarHistory>> result = racingHistory.getResult();
         result.values().forEach(OutputView::printCarLine);
-
+        printWinner(racingHistory.getWinner());
     }
 
     private static void printCarLine(List<CarHistory> carHistories) {
@@ -28,7 +28,7 @@ public class OutputView {
         return String.join("", Collections.nCopies(count, DASH_LINE));
     }
 
-    public static void printWinner(List<String> winner) {
+    private static void printWinner(List<String> winner) {
         String userName = String.join(", ", winner);
         System.out.println(userName + "가 최종우승했습니다.");
     }

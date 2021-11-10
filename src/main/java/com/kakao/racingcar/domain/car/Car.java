@@ -1,6 +1,8 @@
 package com.kakao.racingcar.domain.car;
 
-public class Car{
+import com.kakao.racingcar.history.CarHistory;
+
+public class Car {
     private final String userName;
     private int position = 0;
     private final MovableStrategy movableStrategy;
@@ -10,18 +12,11 @@ public class Car{
         this.movableStrategy = movableStrategy;
     }
 
-    public int getPosition() {
-        return position;
-    }
-
-    public void tryMove(int conditionNumber) {
+    public CarHistory tryMove(int conditionNumber) {
         if (movableStrategy.move(conditionNumber)) {
             position++;
         }
-    }
-
-    public String getUserName() {
-        return userName;
+        return new CarHistory(position, userName);
     }
 
 }

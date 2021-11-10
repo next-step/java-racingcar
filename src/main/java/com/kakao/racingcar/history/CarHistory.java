@@ -1,18 +1,15 @@
 package com.kakao.racingcar.history;
 
-import com.kakao.racingcar.domain.car.Car;
+
+import java.util.Objects;
 
 public class CarHistory {
     private final int position;
     private final String userName;
 
-    private CarHistory(int position, String userName) {
+    public CarHistory(int position, String userName) {
         this.position = position;
         this.userName = userName;
-    }
-
-    public static CarHistory of(Car car) {
-        return new CarHistory(car.getPosition(), car.getUserName());
     }
 
     public int getPosition() {
@@ -21,5 +18,18 @@ public class CarHistory {
 
     public String getUserName() {
         return userName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarHistory that = (CarHistory) o;
+        return position == that.position && Objects.equals(userName, that.userName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, userName);
     }
 }

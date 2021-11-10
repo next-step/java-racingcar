@@ -15,6 +15,5 @@ public class Runner {
         RacingGame racingGame = new RacingGame(tryCount, userNames);
         racingGame.runRace();
         OutputView.printRacingGame(racingGame.getRacingHistory());
-        OutputView.printWinner(racingGame.getWinnerNames());
     }
 }

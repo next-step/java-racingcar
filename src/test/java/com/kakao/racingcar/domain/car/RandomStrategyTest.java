@@ -13,7 +13,7 @@ class RandomStrategyTest {
     void move() {
         RandomStrategy randomStrategy = new RandomStrategy();
         boolean move = randomStrategy.move(4);
-        assertThat(move).isFalse();
+        assertThat(move).isTrue();
     }
 
     @Test

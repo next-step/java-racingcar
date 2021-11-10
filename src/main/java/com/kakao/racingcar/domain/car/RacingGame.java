@@ -1,12 +1,13 @@
 package com.kakao.racingcar.domain.car;
 
+import com.kakao.racingcar.history.CarHistory;
 import com.kakao.racingcar.history.RacingHistory;
+import com.kakao.racingcar.history.RoundHistory;
 import com.kakao.racingcar.util.RandomNumberGenerator;
 
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static com.kakao.racingcar.config.CarConstant.BEGIN_INDEX;
@@ -25,19 +26,13 @@ public class RacingGame {
     public void runRace() {
         IntStream.range(BEGIN_INDEX, tryCount).boxed()
                 .forEach(round -> {
-                    carCollection.tryMoveCars(RandomNumberGenerator.generate(carCollection.size()));
-                    racingHistory.logging(round, carCollection.getCars());
+                    List<CarHistory> carHistories = carCollection.tryMoveCars(RandomNumberGenerator.generate(carCollection.size()));
+                    racingHistory.logging(new RoundHistory(round, carHistories));
                 });
     }
 
     public RacingHistory getRacingHistory() {
         return racingHistory;
-    }
-
-    public List<String> getWinnerNames() {
-        return carCollection.getWinner().stream()
-                .map(Car::getUserName)
-                .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
     }
 
 }
