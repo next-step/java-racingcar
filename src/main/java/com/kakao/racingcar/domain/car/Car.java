@@ -1,22 +1,21 @@
 package com.kakao.racingcar.domain.car;
 
-public class Car implements CarMovement{
+public class Car{
     private final String userName;
     private int position = 0;
+    private final MovableStrategy movableStrategy;
 
-    private static final int MOVE_PERCENTAGE = 4;
-
-    public Car(String userName) {
+    public Car(String userName, MovableStrategy movableStrategy) {
         this.userName = userName;
+        this.movableStrategy = movableStrategy;
     }
 
     public int getPosition() {
         return position;
     }
 
-    @Override
     public void tryMove(int conditionNumber) {
-        if (MOVE_PERCENTAGE <= conditionNumber) {
+        if (movableStrategy.move(conditionNumber)) {
             position++;
         }
     }
@@ -24,4 +23,5 @@ public class Car implements CarMovement{
     public String getUserName() {
         return userName;
     }
+
 }

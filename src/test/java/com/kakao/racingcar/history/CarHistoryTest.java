@@ -11,7 +11,7 @@ class CarHistoryTest {
     @Test
     @DisplayName("입력된 차의 현재 위치를 객체안에 기록한다.")
     void getPosition() {
-        Car car = new Car("jyami");
+        Car car = new Car("jyami", movableStrategy);
         car.tryMove(10);
         CarHistory carHistory = CarHistory.of(car);
         assertThat(carHistory.getPosition()).isEqualTo(1);
@@ -20,7 +20,7 @@ class CarHistoryTest {
     @Test
     @DisplayName("입력된 차의 유저 이름을 객체안에 기록한다.")
     void getName() {
-        Car car = new Car("jyami");
+        Car car = new Car("jyami", movableStrategy);
         car.tryMove(10);
         CarHistory carHistory = CarHistory.of(car);
         assertThat(carHistory.getPosition()).isEqualTo(1);

@@ -14,7 +14,7 @@ public class CarCollection {
 
     public CarCollection(List<String> userNames) {
         this.cars = userNames.stream()
-                .map(Car::new)
+                .map(userName -> new Car(userName, new RandomStrategy()))
                 .collect(Collectors.toList());
     }
 

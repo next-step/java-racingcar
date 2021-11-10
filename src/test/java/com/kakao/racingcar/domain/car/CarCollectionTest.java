@@ -1,5 +1,6 @@
-package com.kakao.racingcar.domain;
+package com.kakao.racingcar.domain.car;
 
+import com.kakao.racingcar.domain.car.Car;
 import com.kakao.racingcar.domain.car.CarCollection;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,8 +23,7 @@ class CarCollectionTest {
     void carCollectionWinner() {
         CarCollection carCollection = new CarCollection(Arrays.asList("jyami","mj","kim","minjeong"));
         carCollection.tryMoveCars(Arrays.asList(10,0,0,10));
-        assertThat(carCollection.getWinner().get(0).getUserName()).isEqualTo("jyami");
-        assertThat(carCollection.getWinner().get(1).getUserName()).isEqualTo("minjeong");
+        assertThat(carCollection.getWinner()).extracting(Car::getUserName).containsExactly("jyami", "minjeong");
     }
 
 }
