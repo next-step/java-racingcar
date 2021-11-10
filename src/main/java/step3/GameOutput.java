@@ -17,14 +17,10 @@ public class GameOutput {
     }
 
     private static void println(Car car) {
-        println(getCarPath(car));
+        for (int i = 0; i < car.getPosition(); i++) {
+            System.out.print('-');
+        }
+        System.out.println();
     }
 
-    private static String getCarPath(Car car) {
-        StringBuilder carPath = new StringBuilder();
-        for (int i = 0; i < car.getPosition(); i++) {
-            carPath.append('-');
-        }
-        return carPath.toString();
-    }
 }

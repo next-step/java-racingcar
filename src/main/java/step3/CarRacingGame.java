@@ -8,6 +8,7 @@ public class CarRacingGame {
         this.cars = new Car[numberOfCar];
         for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car();
+            cars[i].setMoveStrategy(new RandomMoveStrategy());
         }
     }
 
