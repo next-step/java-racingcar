@@ -32,13 +32,10 @@ public class GameStage {
     }
 
     public GameResult start() {
-        range(0, maxOfRound).forEach(this::startRound);
-        return result;
-    }
+        range(0, maxOfRound).forEach(round ->
+            range(0, cars.size()).forEach(carPosition -> eachCarAction(round, carPosition)));
 
-    private void startRound(int round) {
-        range(0, cars.size())
-            .forEach(carPosition -> eachCarAction(round, carPosition));
+        return result;
     }
 
     private void eachCarAction(int round, int carPosition) {
