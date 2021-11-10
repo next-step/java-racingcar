@@ -1,6 +1,5 @@
 package racingCar;
 
-import racingCar.ui.InputView;
 import racingCar.ui.ResultView;
 
 import java.util.*;
@@ -11,16 +10,11 @@ public class RacingCarGame {
     private List<Car> raceCar = new ArrayList<>();
     private ResultView resultView = new ResultView();
 
-    RacingCarGame() {
-        InputView inputView = new InputView();
-        setRaceCar(inputView.inputCarNames());
-        tryTimes = inputView.inputTryTimes();
-    }
-
-    RacingCarGame(int tryTimes) {
+    RacingCarGame(String[] carNames, int tryTimes) {
         if (tryTimes < 0) {
             throw new IllegalArgumentException("올바른 수를 입력하세요.");
         }
+        setRaceCar(carNames);
         this.tryTimes = tryTimes;
     }
 
@@ -31,12 +25,14 @@ public class RacingCarGame {
         printWinners();
     }
 
-    public List<Car> setRaceCar(String[] carNames) {
+    private void setRaceCar(String[] carNames) {
         for (String name : carNames) {
             raceCar.add(new Car(name));
         }
+    }
 
-        return raceCar;
+    public List<Car> getRaceCar() {
+        return this.raceCar;
     }
 
     public void printWinners() {
