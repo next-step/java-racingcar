@@ -1,4 +1,4 @@
-package step4;
+package step4.vo;
 
 import java.util.Objects;
 
@@ -42,16 +42,14 @@ public class Position implements Comparable<Position> {
     }
 
     @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            builder.append("-");
-        }
-        return builder.toString();
+    public int compareTo(Position o) {
+        return this.position - o.position;
     }
 
     @Override
-    public int compareTo(Position o) {
-        return this.position - o.position;
+    public String toString() {
+        return "Position{" +
+                "position=" + position +
+                '}';
     }
 }

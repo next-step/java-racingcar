@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step4.vo.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,18 +26,6 @@ class PositionTest {
         Position actual = Position.create(input);
 
         assertThat(actual.move()).isEqualTo(Position.create(expect));
-    }
-
-    @DisplayName("stringToPosition 을 통해 현재 위치를 -- 와 같이 표현한다 ")
-    @ParameterizedTest
-    @CsvSource(value = {"1:-", "2:--", "3:---"}, delimiter = ':')
-    void moveTest(Integer input, String expect) {
-        Position actual = Position.create(input);
-
-        assertThat(actual.toString()).isEqualTo(expect);
-
-        actual = Position.create(0);
-        assertThat(actual.toString()).isEqualTo("");
     }
 
     @DisplayName("withDefaultPosition() 은 기본 값인 0 의 포지션을 반환한다.")

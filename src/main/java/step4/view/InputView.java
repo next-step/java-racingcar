@@ -1,4 +1,6 @@
-package step4;
+package step4.view;
+
+import step4.service.dto.GameInformation;
 
 import java.util.Scanner;
 

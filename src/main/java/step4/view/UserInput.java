@@ -1,4 +1,4 @@
-package step4;
+package step4.view;
 
 
 public class UserInput {

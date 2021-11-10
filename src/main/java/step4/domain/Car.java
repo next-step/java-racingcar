@@ -1,4 +1,8 @@
-package step4;
+package step4.domain;
+
+import step4.strategy.MoveStrategy;
+import step4.vo.Name;
+import step4.vo.Position;
 
 import java.util.Objects;
 
@@ -21,11 +25,16 @@ public class Car implements Comparable<Car> {
         return new Car(name, position);
     }
 
-    public boolean equalsPosition(Car target) {
-        return this.position.compareTo(target.position) == 0;
-    }
     public Name getName() {
         return name;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public boolean equalsPosition(Car target) {
+        return this.position.equals(target.position);
     }
 
     public Car moveOrStop(MoveStrategy moveStrategy) {

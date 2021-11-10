@@ -1,5 +1,15 @@
 package step4;
 
+import step4.domain.dto.GameHistoryDto;
+import step4.service.Game;
+import step4.service.dto.GameInformation;
+import step4.strategy.MoveStrategy;
+import step4.strategy.NumberGenerator;
+import step4.strategy.RandomMoveStrategy;
+import step4.strategy.RandomNumberGenerator;
+import step4.view.InputView;
+import step4.view.ResultView;
+
 public class main {
     public static void main(String[] args) {
         InputView inputView = new InputView();
@@ -11,9 +21,9 @@ public class main {
         MoveStrategy moveStrategy = new RandomMoveStrategy(move_condition, numberGenerator);
 
         Game game = Game.of(gameInformation, moveStrategy);
-        game.start();
+        GameHistoryDto gameHistoryDto = game.start();
 
-        ResultView resultView = ResultView.from(game.getGameHistory(), gameInformation);
+        ResultView resultView = ResultView.from(gameHistoryDto, gameInformation);
         resultView.view();
     }
 }

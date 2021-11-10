@@ -1,4 +1,4 @@
-package step4;
+package step4.strategy;
 
 @FunctionalInterface
 public interface NumberGenerator {
