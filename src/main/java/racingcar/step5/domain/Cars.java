@@ -19,23 +19,19 @@ public class Cars {
         createCars(carName);
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public void moveCars(MovingStrategy movingStrategy) {
         for (Car car : cars) {
             car.move(movingStrategy);
         }
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
     public List<Car> findWinners() {
         List<Car> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.isEqualPosition(getMaxPosition())) {
-                winners.add(car);
-            }
-        }
+        cars.forEach(car -> addWinners(winners, car));
         return winners;
     }
 
@@ -50,6 +46,12 @@ public class Cars {
     private void createCars(String carName) {
         Arrays.stream(carName.split(NAME_DELIMITER))
                 .forEach(name -> cars.add(new Car(name.trim())));
+    }
+
+    private void addWinners(List<Car> winners, Car car) {
+        if (car.isEqualPosition(getMaxPosition())) {
+            winners.add(car);
+        }
     }
 
     @Override

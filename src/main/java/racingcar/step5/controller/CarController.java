@@ -9,7 +9,7 @@ import racingcar.step5.view.ResultView;
 public class CarController {
 
     public static void main(String[] args) {
-        //인풋 출력
+        // 인풋 출력
         InputView inputView = new InputView();
         String carName =  inputView.getCarName();
         int countOfTry = inputView.countOfTry();
@@ -20,16 +20,15 @@ public class CarController {
 
         RacingGame racingGame = new RacingGame(carName, countOfTry);
 
-        //아웃풋 출력
+        // 레이싱 스타트
         ResultView resultView = new ResultView();
         resultView.executeMessage();
-
-        // 레이싱 스타트
         while (!racingGame.isEndGame()) {
             racingGame.race(moving);
             resultView.printResult(racingGame.getCars());
         }
 
+        // 우승자 출력
         resultView.printWinners(racingGame);
     }
 
