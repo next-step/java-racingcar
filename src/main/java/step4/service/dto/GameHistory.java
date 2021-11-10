@@ -1,4 +1,6 @@
-package step4;
+package step4.service.dto;
+
+import step4.domain.Cars;
 
 import java.util.HashMap;
 import java.util.Map;

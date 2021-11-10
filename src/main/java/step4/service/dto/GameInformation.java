@@ -1,4 +1,7 @@
-package step4;
+package step4.service.dto;
+
+import step4.domain.Names;
+import step4.view.UserInput;
 
 public class GameInformation {
 

@@ -3,6 +3,9 @@ package step4;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step4.domain.*;
+import step4.service.dto.Winners;
+import step4.strategy.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,6 +3,8 @@ package step4;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import step4.domain.Name;
+import step4.service.dto.Winners;
 
 import java.util.Arrays;
 import java.util.List;

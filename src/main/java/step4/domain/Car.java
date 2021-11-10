@@ -1,4 +1,6 @@
-package step4;
+package step4.domain;
+
+import step4.strategy.MoveStrategy;
 
 import java.util.Objects;
 

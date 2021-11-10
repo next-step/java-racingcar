@@ -1,11 +1,16 @@
-package step4;
+package step4.service;
+
+import step4.service.dto.GameHistory;
+import step4.service.dto.GameInformation;
+import step4.strategy.MoveStrategy;
+import step4.domain.Names;
+import step4.domain.Cars;
 
 public class Game {
 
     private final Integer time;
     private final Names names;
     private final MoveStrategy moveStrategy;
-    private final GameHistory gameHistory = new GameHistory();
     private Cars cars;
 
     private Game(Names names, Integer time, MoveStrategy moveStrategy) {
@@ -18,16 +23,15 @@ public class Game {
         return new Game(gameInformation.getNames(), gameInformation.getTime(), moveStrategy);
     }
 
-    public void start() {
+    public GameHistory start() {
+        GameHistory gameHistory = new GameHistory();
         makeCars();
         for (int now = 0; now < this.time; now++) {
             step();
             gameHistory.save(now, cars);
         }
         gameHistory.saveWinner(cars.getWinner());
-    }
 
-    public GameHistory getGameHistory() {
         return gameHistory;
     }
 

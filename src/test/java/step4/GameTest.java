@@ -2,12 +2,16 @@ package step4;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step4.domain.*;
+import step4.service.Game;
+import step4.service.dto.GameHistory;
+import step4.service.dto.GameInformation;
+import step4.strategy.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class GameTest {
 

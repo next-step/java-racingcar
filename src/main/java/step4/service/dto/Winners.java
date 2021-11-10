@@ -1,4 +1,6 @@
-package step4;
+package step4.service.dto;
+
+import step4.domain.Name;
 
 import java.util.List;
 import java.util.stream.Collectors;
