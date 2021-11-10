@@ -39,6 +39,7 @@ public class TextCalculator {
     private List<String> split;
     private List<Integer> numbers = new ArrayList<>();
     private Operator operator;
+    private Integer result = 0;
 
     public int calculate(String input) {
         throwExceptionIfNullOrEmpty(input);
@@ -47,32 +48,32 @@ public class TextCalculator {
         return calculation();
     }
 
-    private Integer calculationWithOperator() {
-        if (this.numbers == null || this.numbers.size() != 2 || this.operator == null) {
-            throw new IllegalArgumentException();
+    private void calculationWithOperator() {
+        if (!shouldCalculation()) {
+            return;
         }
 
-        Integer result = null;
         Integer a = this.numbers.get(0);
         Integer b = this.numbers.get(1);
 
         switch (this.operator) {
 
             case PLUS:
-                result = Math.addExact(a, b);
+                this.result = Math.addExact(a, b);
                 break;
             case MINUS:
-                result = Math.subtractExact(a ,b);
+                this.result = Math.subtractExact(a ,b);
                 break;
             case MULTIPLICATION:
-                result = Math.multiplyExact(a, b);
+                this.result = Math.multiplyExact(a, b);
                 break;
             case DIVISION:
-                result = Math.floorDiv(a, b);
+                this.result = Math.floorDiv(a, b);
                 break;
         }
 
-        return result;
+        clear();
+        this.numbers.add(this.result);
     }
 
     private boolean shouldCalculation() {
@@ -103,18 +104,13 @@ public class TextCalculator {
             throw new IllegalArgumentException();
         }
 
-        int result = 0;
+        this.result = 0;
+
         for (String s : this.split) {
             throwExceptionIfNullOrEmpty(s);
-
             setValues(this.split.indexOf(s), s);
-
-            if (shouldCalculation()) {
-                result = calculationWithOperator();
-                clear();
-                this.numbers.add(result);
-            }
+            calculationWithOperator();
         }
-        return result;
+        return this.result;
     }
 }
