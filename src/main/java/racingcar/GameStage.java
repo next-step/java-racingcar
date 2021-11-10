@@ -42,5 +42,4 @@ public class GameStage {
         car.action(new Random());
         result.record(round, car.getLocation());
     }
-
 }
