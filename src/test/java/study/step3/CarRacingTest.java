@@ -1,4 +1,7 @@
-package study;
+package study.step3;
+
+import org.junit.jupiter.api.Test;
+import study.step3.CarRacing;
 
 /**
  * 기능 요구사항
@@ -48,4 +51,42 @@ package study;
  *  - chore (maintain)
  */
 public class CarRacingTest {
+
+    // 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
+    // 사용자는 몇 대의 자동차로 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
+    // 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4이상일 경우이다.
+    // 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.
+
+//    위 요구사항에 따라 3대의 자동차가 5번 움직였을 경우 프로그램을 실행한 결과는 다음과 같다.
+//        자동차 대수는 몇 대 인가요?
+//        3
+//        시도할 회수는 몇 회 인가요?
+//        5
+
+    /**
+     * [기능 구현 목록]
+     * "자동차 대수는 몇 대 인가요?" 출력
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     * @param carCount
+     */
+
+    // 값을 입력 받는 API는 Scanner를 이용
+    @Test
+    public void SettingCarRacing(String carCount){
+        carCount = "5";
+//        CarRacing.SettingCarRacing(carCount);
+    }
 }
