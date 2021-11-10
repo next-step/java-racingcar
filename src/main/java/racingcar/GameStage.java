@@ -14,8 +14,7 @@ public class GameStage {
         this.cars = new Car[numberOfCars];
     }
 
-    public static GameStage start(GameConfigDto config) {
-
+    public static GameStage init(GameConfigDto config) {
         return new GameStage(config.getMaxOfRound(), config.getNumberOfCars());
     }
 }
