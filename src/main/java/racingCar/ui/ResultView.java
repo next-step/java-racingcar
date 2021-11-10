@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 public class ResultView {
     private static final String CAR_PATH =  "-";
     private static final String SEPARATOR =  ",";
+    private static final String BLANK = " ";
+    private static final String COLON = ":";
 
     public void printCarRace(List<Car> raceCar) {
         for (Car car : raceCar) {
@@ -20,8 +22,8 @@ public class ResultView {
     private String printRace(Car car) {
         StringBuilder sb = new StringBuilder();
         sb.append(car.getName());
-        sb.append(" ");
-        sb.append(":");
+        sb.append(BLANK);
+        sb.append(COLON);
         int moveCount = car.getMoveCount();
 
         for (int i = 0; i < moveCount; i++) {
