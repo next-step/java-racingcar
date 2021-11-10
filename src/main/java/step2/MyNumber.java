@@ -39,7 +39,7 @@ public class MyNumber {
     }
 
     public static void validNumber(String text) {
-        if(Common.textNullOrEmpty(text)) {
+        if(Common.isTextNullOrEmpty(text)) {
             throw new IllegalArgumentException(MyException.INVALID_NUMBER.getMessage());
         }
 

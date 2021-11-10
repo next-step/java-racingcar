@@ -9,7 +9,9 @@ public class Calculator {
     }
 
     public static int calculate(String input) {
-        isValidText(input);
+        if(Common.isTextNullOrEmpty(input)) {
+            throw new IllegalArgumentException(MyException.EMPTY_INPUT.getMessage());
+        }
 
         String[] values = splitTextByDelimiter(input, delimiter);
 
@@ -34,12 +36,6 @@ public class Calculator {
     private static MyNumber calculate(Formula formula) {
         return Operator.of(formula.getOperator())
                             .apply(formula.getFirst(), formula.getSecond());
-    }
-
-    public static void isValidText(String text) {
-        if(Common.textNullOrEmpty(text)) {
-            throw new IllegalArgumentException(MyException.EMPTY_INPUT.getMessage());
-        }
     }
 
     private static String[] splitTextByDelimiter(String text, String delimiter) {
