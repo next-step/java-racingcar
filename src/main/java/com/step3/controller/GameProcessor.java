@@ -1,14 +1,10 @@
 package com.step3.controller;
 
 import com.step3.model.car.Car;
-import com.step3.model.car.CarPosition;
 import com.step3.model.InputNumber;
 import com.step3.model.car.Cars;
 import com.step3.util.RandomUtil;
 import com.step3.view.ResultView;
-
-import java.util.LinkedList;
-import java.util.List;
 
 public class GameProcessor {
     private static final int MOVE_POSSIBLE_BOUND = 4;
@@ -19,6 +15,8 @@ public class GameProcessor {
         for (int attempt = 0; attempt < myNumber.getAttemptCount(); attempt++) {
             ResultView.showResults(moveCars(cars), attempt);
         }
+
+        ResultView.printWinnerResult(cars);
     }
 
     private Cars moveCars(Cars cars) {
