@@ -38,7 +38,6 @@ class CarTest {
     void forwardTest(int command) throws Exception {
         car.action(mockRandomValue(command));
         int afterPosition = getCarPositionByReflection(car);
-
         assertThat(afterPosition).isEqualTo(beforePosition + 1);
     }
 
@@ -50,7 +49,7 @@ class CarTest {
 
         assertThat(afterPosition).isEqualTo(beforePosition + 1);
     }
-    
+
     @ValueSource(ints = {10, 5, 3, 1})
     @ParameterizedTest(name = "[{arguments}] 자동차의 position에 따라, 알맞는 거리를 반환한다.")
     void getDistanceByPositionTest(int position) {
