@@ -3,6 +3,7 @@ package study;
 import study.operator.Operator;
 
 public class Calculator {
+    private static final String DELIMITER = " ";
 
     private Calculator() {
         new AssertionError();
@@ -10,7 +11,7 @@ public class Calculator {
 
     public static int calculate(String expression) {
         validateOrElseThrow(expression);
-        String[] splittedExpression = expression.split(" ");
+        String[] splittedExpression = expression.split(DELIMITER);
         int firstOperand = Integer.parseInt(splittedExpression[0]);
         String operator = splittedExpression[1];
         int secondOperand = Integer.parseInt(splittedExpression[2]);
