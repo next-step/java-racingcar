@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 public class CalculatorTest {
 	@Test
 	@DisplayName("덧셈")
-	void plus(){
+	void plus() {
 
 		MyNumber actual = Calculator.calculate("1 + 2");
 		Assertions.assertThat(actual).isEqualTo(new MyNumber(3));
@@ -21,19 +21,21 @@ public class CalculatorTest {
 
 	@Test
 	@DisplayName("뺄셈")
-	void minus(){
+	void minus() {
 		MyNumber actual = Calculator.calculate("3 - 2");
 		Assertions.assertThat(actual).isEqualTo(new MyNumber(1));
 	}
+
 	@Test
 	@DisplayName("곱하기")
-	void multiply(){
+	void multiply() {
 		MyNumber actual = Calculator.calculate("3 * 2");
 		Assertions.assertThat(actual).isEqualTo(new MyNumber(6));
 	}
+
 	@Test
 	@DisplayName("나누기")
-	void dividedBy(){
+	void dividedBy() {
 		MyNumber actual = Calculator.calculate("4 / 2");
 		Assertions.assertThat(actual).isEqualTo(new MyNumber(2));
 	}
@@ -41,16 +43,17 @@ public class CalculatorTest {
 	@ParameterizedTest
 	@MethodSource("study.calculator.CalculatorTest#dividedByZeroOrNull")
 	@DisplayName("분모가 0이거나 숫자가 아닐 경우")
-	void dividedByZeroOrNull(String input){
+	void dividedByZeroOrNull(String input) {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
 				Calculator.calculate("4 / " + input);
 			})
 		;
 	}
+
 	@Test
 	@DisplayName("사칙연산기호가_아닌경우")
-	void checkOperator(){
+	void checkOperator() {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
 				Calculator.calculate("4 x 7");
@@ -58,8 +61,14 @@ public class CalculatorTest {
 		;
 	}
 
-
 	static Stream<String> dividedByZeroOrNull() {
 		return Stream.of(null, "", "  ", "0", "one");
+	}
+
+	@Test
+	@DisplayName("다항 계산식 테스트")
+	void multiCalc() {
+		MyNumber actual = Calculator.calculate("1 + 2 * 3 - 1 / 2");
+		Assertions.assertThat(actual).isEqualTo(new MyNumber(4));
 	}
 }

@@ -11,10 +11,9 @@ public class Formula {
 		this.second = second;
 	}
 
-	public MyNumber calc(){
+	public MyNumber calculate() {
 		return Operator.of(operator)
-					   .operate(first, second);
+			.operate(first, second);
 	}
-
 
 }
