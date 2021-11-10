@@ -4,15 +4,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.Random;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
-    Car car = new Car();
+    private Car car;
+
+    @BeforeEach
+    void init() {
+        car = new Car();
+    }
 
     @Test
-    void move() {
+    void moveSuccess() {
         car.move();
+        assertThat(car.getPosition()).isIn(Arrays.asList(0, 1));
     }
 
     @Test

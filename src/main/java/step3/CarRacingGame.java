@@ -4,8 +4,8 @@ public class CarRacingGame {
 
     private Car[] cars;
 
-    public CarRacingGame(int numberOfCar) {
-        this.cars = new Car[numberOfCar];
+    public CarRacingGame(int carCount) {
+        this.cars = new Car[carCount];
         for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car();
             cars[i].setMoveStrategy(new RandomMoveStrategy());
