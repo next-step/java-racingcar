@@ -5,16 +5,16 @@ import java.util.List;
 
 public class CalculatorVer3 {
 
-    private final static String EMPTY_STRING = " ";
-    private final static int ZERO = 0;
-    private final static int ONE = 1;
+    private final static String DELIMITER = " ";
+    private final static int FIRST_INDEX = 0;
+    private final static int START_INDEX = 1;
 
 
     public static MyNumberVer3 calculatorByMyNumber(String text) {
-        List<String> values = Arrays.asList(text.split(EMPTY_STRING));
+        List<String> values = Arrays.asList(text.split(DELIMITER));
 
-        MyNumberVer3 first = new MyNumberVer3(values.get(ZERO)), second;
-        int index = ONE;
+        MyNumberVer3 first = new MyNumberVer3(values.get(FIRST_INDEX)), second;
+        int index = START_INDEX;
 
         while (values.size() > index) {
 
