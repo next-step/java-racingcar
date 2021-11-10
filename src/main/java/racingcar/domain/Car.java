@@ -1,10 +1,18 @@
-package racingcar.car;
+package racingcar.domain;
 
 import java.util.Collections;
 
 public class Car {
 
     private int position;
+
+    private String name;
+
+    public Car() {}
+
+    public Car(String name) {
+        this.name = name;
+    }
 
     public void forward(int add) {
         this.position += add;
@@ -22,5 +30,9 @@ public class Car {
         if(isMovable) {
             this.forward(moveCount);
         }
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

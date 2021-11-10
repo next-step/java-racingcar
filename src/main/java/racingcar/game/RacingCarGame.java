@@ -1,8 +1,7 @@
 package racingcar.game;
 
-import racingcar.car.Cars;
+import racingcar.domain.Cars;
 import racingcar.gameinfo.GameInfo;
-import racingcar.view.ResultView;
 
 public class RacingCarGame {
 
@@ -17,7 +16,8 @@ public class RacingCarGame {
     public void start() {
         for(int count = 0; count < this.info.getTryCount() ; count++){
             cars.playGame(this.info.getMoveRule());
-            ResultView.print(this.cars);
+            cars.printRoundResult(info.getResultView());
         }
+        cars.printWinner(info.getResultView());
     }
 }
