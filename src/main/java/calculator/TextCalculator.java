@@ -1,7 +1,5 @@
 package calculator;
 
-import racing.StringHelper;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -46,23 +44,10 @@ public class TextCalculator {
         throwExceptionIfNullOrEmpty(input);
 
         this.split = Arrays.asList(input.split(" "));
-        int result = 0;
-
-        for (String s : this.split) {
-            throwExceptionIfNullOrEmpty(s);
-
-            setValues(this.split.indexOf(s), s);
-
-            if (shouldCalculation()) {
-                result = calculation();
-                clear();
-                this.numbers.add(result);
-            }
-        }
-        return result;
+        return calculation();
     }
 
-    private Integer calculation() {
+    private Integer calculationWithOperator() {
         if (this.numbers == null || this.numbers.size() != 2 || this.operator == null) {
             throw new IllegalArgumentException();
         }
@@ -111,5 +96,25 @@ public class TextCalculator {
             return;
         }
         this.operator = Operator.getInstance(input);
+    }
+
+    private int calculation() {
+        if (this.split == null || this.split.size() < 1) {
+            throw new IllegalArgumentException();
+        }
+
+        int result = 0;
+        for (String s : this.split) {
+            throwExceptionIfNullOrEmpty(s);
+
+            setValues(this.split.indexOf(s), s);
+
+            if (shouldCalculation()) {
+                result = calculationWithOperator();
+                clear();
+                this.numbers.add(result);
+            }
+        }
+        return result;
     }
 }
