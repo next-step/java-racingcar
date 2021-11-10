@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import step3.domain.board.RoundBoard;
+import step3.domain.board.CarSnapshot;
 
 import java.util.stream.Stream;
 
@@ -61,28 +61,17 @@ class CarTest {
     @ParameterizedTest(name = "[{index}] power: {0}, expectedCar: {1}")
     @MethodSource("generateGoInputs")
     void goTest(Integer power, Car expectedCar) {
-        Car car = new Car(Location.placeOn(LOCATION, INTERVAL));
-
-        car.go(power);
-
-        assertThat(car).isEqualTo(expectedCar);
-    }
-
-    @DisplayName("Record보드에 값이 잘 저장되는지 테스트")
-    @Test
-    void recordTest() {
         //given
-        Car car = new Car(Location.placeOn(LOCATION), new Name(NAME));
-        RoundBoard roundBoard = new RoundBoard();
+        Name name = new Name(NAME);
+        Location location = Location.placeOn(LOCATION, INTERVAL);
+        Car car = new Car(location, name);
 
         //when
-        car.record(roundBoard);
+        CarSnapshot carSnapshot = car.go(power);
 
         //then
-        RoundBoard expectedRoundBoard = new RoundBoard();
-        expectedRoundBoard.record(Location.placeOn(LOCATION), new Name(NAME));
-
-        assertThat(roundBoard).isEqualTo(expectedRoundBoard);
+        assertThat(car).isEqualTo(expectedCar);
+        assertThat(carSnapshot).isEqualTo(new CarSnapshot(location, name));
     }
 
     private static Stream<Arguments> generateGoInputs() {

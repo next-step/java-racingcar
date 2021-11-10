@@ -1,9 +1,5 @@
 package step3.domain.board;
 
-import step3.domain.car.Location;
-import step3.domain.car.Name;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,10 +7,10 @@ import static java.util.Collections.unmodifiableList;
 
 public class RoundBoard {
 
-    private final List<CarSnapshot> records = new ArrayList<>();
+    private final List<CarSnapshot> records;
 
-    public void record(Location location, Name name) {
-        records.add(new CarSnapshot(location, name));
+    public RoundBoard(List<CarSnapshot> carSnapshots) {
+        this.records = carSnapshots;
     }
 
     public List<CarSnapshot> getRecords() {

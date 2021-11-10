@@ -1,6 +1,6 @@
 package step3.domain.car;
 
-import step3.domain.board.RoundBoard;
+import step3.domain.board.CarSnapshot;
 
 import java.util.Objects;
 
@@ -36,20 +36,17 @@ public class Car implements Comparable<Car> {
         checkArgument(name != null, "name is Required");
     }
 
-    public void go(Integer power) {
+    public CarSnapshot go(Integer power) {
         validatePower(power);
         if (power >= POWER_BOUND) {
             location.goForward();
         }
+        return new CarSnapshot(location, name);
     }
 
     private void validatePower(Integer power) {
         checkArgument(power != null, "power is Required");
         checkArgument(power >= MIN_POWER && power <= MAX_POWER, POWER_OUT_OF_RANGE_ERROR_MESSAGE);
-    }
-
-    public void record(RoundBoard roundBoard) {
-        location.record(roundBoard, name);
     }
 
     public boolean locationEquals(Location winnerLocation) {

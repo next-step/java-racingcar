@@ -1,5 +1,6 @@
 package step3.application;
 
+import step3.domain.board.CarSnapshot;
 import step3.domain.board.GameBoard;
 import step3.domain.car.Cars;
 import step3.domain.car.Name;
@@ -37,9 +38,9 @@ public class GameDirector {
 
     private void playGame(GameBoard gameBoard) {
         while (round.hasNext()) {
-            cars.go(engine);
             round.decrease();
-            gameBoard.recordRound(cars);
+            List<CarSnapshot> carSnapshots = cars.go(engine);
+            gameBoard.recordRound(carSnapshots);
         }
     }
 

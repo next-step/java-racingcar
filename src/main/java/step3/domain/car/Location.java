@@ -1,7 +1,5 @@
 package step3.domain.car;
 
-import step3.domain.board.RoundBoard;
-
 import java.util.Objects;
 
 import static step3.utils.ValidationUtils.checkArgument;
@@ -36,14 +34,6 @@ public class Location implements Comparable<Location> {
 
     public void goForward() {
         location += interval;
-    }
-
-    public void record(RoundBoard roundBoard, Name name) {
-        checkArgument(roundBoard != null, "roundBoard is required");
-        checkArgument(name != null, "name is required");
-
-        Location copiedLocation = new Location(location, DEFAULT_INTERVAL);
-        roundBoard.record(copiedLocation, name);
     }
 
     public int getLocation() {

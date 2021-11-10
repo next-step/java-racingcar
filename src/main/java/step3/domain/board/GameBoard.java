@@ -1,7 +1,5 @@
 package step3.domain.board;
 
-import step3.domain.car.Cars;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +9,8 @@ public class GameBoard {
 
     private final List<RoundBoard> roundBoards = new ArrayList<>();
 
-    public void recordRound(Cars cars) {
-        RoundBoard roundBoard = new RoundBoard();
-        cars.recordRound(roundBoard);
-        roundBoards.add(roundBoard);
+    public void recordRound(List<CarSnapshot> carSnapshots) {
+        roundBoards.add(new RoundBoard(carSnapshots));
     }
 
     public List<RoundBoard> getRoundBoards() {

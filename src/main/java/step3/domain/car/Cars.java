@@ -1,6 +1,6 @@
 package step3.domain.car;
 
-import step3.domain.board.RoundBoard;
+import step3.domain.board.CarSnapshot;
 import step3.domain.power.Engine;
 
 import java.util.List;
@@ -34,18 +34,14 @@ public class Cars {
         checkArgument(cars != null, "cars is required");
     }
 
-    public void go(Engine engine) {
-        cars.forEach(car -> {
-            int power = engine.generatePower();
-            car.go(power);
-        });
-    }
-
-    public void recordRound(RoundBoard roundBoard) {
-        checkArgument(cars != null, "roundBoard is required");
-        for (Car car : cars) {
-            car.record(roundBoard);
-        }
+    public List<CarSnapshot> go(Engine engine) {
+        List<CarSnapshot> carSnapshots = cars.stream()
+                .map(car -> {
+                    int power = engine.generatePower();
+                    return car.go(power);
+                })
+                .collect(toList());
+        return unmodifiableList(carSnapshots);
     }
 
     public List<Name> findWinnerNames() {
