@@ -9,6 +9,8 @@ public enum Operator {
     TIMES("*", (first, second) -> first * second),
     DIVIDE("/", (first, second) -> first / second);
 
+    private static final String INVALID_OPERATOR_EXCEPTION_MESSAGE = "not supported operator.";
+
     private final String symbol;
     private BiFunction<Integer, Integer, Integer> operate;
 
@@ -25,6 +27,6 @@ public enum Operator {
         return Arrays.stream(values())
                      .filter(operator -> symbol.equals(operator.symbol))
                      .findAny()
-                     .orElseThrow(() -> new IllegalArgumentException("not supported operator."));
+                     .orElseThrow(() -> new IllegalArgumentException(INVALID_OPERATOR_EXCEPTION_MESSAGE));
     }
 }
