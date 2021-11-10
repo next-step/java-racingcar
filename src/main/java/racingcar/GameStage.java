@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.dto.GameConfigDto;
+
 public class GameStage {
 
     private final int maxOfRound;
@@ -12,8 +14,9 @@ public class GameStage {
         this.cars = new Car[numberOfCars];
     }
 
-    public static GameStage start(int maxOfRound, int numberOfCars) {
-        return new GameStage(maxOfRound, numberOfCars);
+    public static GameStage start(GameConfigDto config) {
+
+        return new GameStage(config.getMaxOfRound(), config.getNumberOfCars());
     }
 
     private void inputValueValid(int maxOfRound, int numberOfCars) {
