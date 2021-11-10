@@ -14,7 +14,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp(){
-        car = new Car("test");;
+        car = new Car();;
     }
 
     @ParameterizedTest
