@@ -5,10 +5,10 @@ import java.util.Objects;
 import java.util.function.BiFunction;
 
 public enum Operator {
-    PLUS("+", CalNumber::plusBy),
-    MINUS("-", CalNumber::minusBy),
-    MULTIPLE("*", CalNumber::multipleBy),
-    DIVIDED("/", CalNumber::dividedBy);
+    PLUS("+", (cal1, cal2) -> new CalNumber(cal1.getNumber() + cal2.getNumber())),
+    MINUS("-", (cal1, cal2) -> new CalNumber(cal1.getNumber() - cal2.getNumber())),
+    MULTIPLE("*", (cal1, cal2) -> new CalNumber(cal1.getNumber() * cal2.getNumber())),
+    DIVIDED("/", (cal1, cal2) -> new CalNumber(cal1.getNumber() / cal2.getNumber()));
 
     private final String symbol;
     private final BiFunction<CalNumber, CalNumber, CalNumber> calculate;

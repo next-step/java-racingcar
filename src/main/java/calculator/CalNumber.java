@@ -18,27 +18,9 @@ public class CalNumber {
         return number;
     }
 
-
-    public CalNumber plusBy(CalNumber calNumber) {
-        return new CalNumber(this.number + calNumber.number);
-    }
-
-    public CalNumber minusBy(CalNumber calNumber) {
-        return new CalNumber(this.number - calNumber.number);
-    }
-
-    public CalNumber multipleBy(CalNumber calNumber) {
-        return new CalNumber(this.number * calNumber.number);
-    }
-
-    public CalNumber dividedBy(CalNumber calNumber) {
-        return new CalNumber(this.number / calNumber.number);
-    }
-
     public CalNumber calculate(CalNumber to, String operation) {
         return Operator.of(operation).apply(this, to);
     }
-
 
     @Override
     public boolean equals(Object o) {
