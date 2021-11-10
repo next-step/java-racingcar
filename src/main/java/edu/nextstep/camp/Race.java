@@ -1,6 +1,5 @@
 package edu.nextstep.camp;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,18 +9,18 @@ public class Race {
     private static final int INITIAL_TURN = 0;
 
     private final int totalTurns;
-    private final List<Car> cars;
+    private final Cars cars;
     private int currentTurn;
 
-    private Race(List<Car> cars, int totalTurns) {
-        this.cars = Collections.unmodifiableList(cars);
+    private Race(Cars cars, int totalTurns) {
+        this.cars = cars;
         this.currentTurn = INITIAL_TURN;
         this.totalTurns = totalTurns;
     }
 
-    public static Race of(List<Car> cars, int turn) {
-        if (cars == null || cars.isEmpty()) {
-            throw new IllegalArgumentException("cars must not be empty: " + cars);
+    public static Race of(Cars cars, int turn) {
+        if (cars == null) {
+            throw new IllegalArgumentException("cars must not be null: " + cars);
         }
 
         if (turn < MINIMUM_TOTAL_TURN) {

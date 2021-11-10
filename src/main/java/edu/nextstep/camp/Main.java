@@ -1,7 +1,5 @@
 package edu.nextstep.camp;
 
-import java.util.List;
-
 import edu.nextstep.camp.view.InputView;
 import edu.nextstep.camp.view.ResultView;
 
@@ -15,8 +13,8 @@ public class Main {
         final int turns = input.inputPositiveNumber("시도할 회수는 몇 회 인가요?");
 
         final ResultView result = new ResultView(turns);
-        final List<Car> cars = Car.of(names, RandomMovePolicy.getInstance());
-      
+
+        final Cars cars = Cars.of(names, RandomMovePolicy.getInstance());
         final Race race = Race.of(cars, turns);
         while (!race.isEnded()) {
             race.process();

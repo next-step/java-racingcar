@@ -1,7 +1,6 @@
 package edu.nextstep.camp;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -19,18 +18,18 @@ import static org.assertj.core.api.Assertions.*;
 public class RaceTest {
     private static final int TEST_TURN = 1;
 
-    static List<Car> getTestCars() {
-        return Car.of(new String[]{"test0", "test1", "test2", "test3"}, ALWAYS_MOVE_POLICY);
+    static Cars getTestCars() {
+        return Cars.of(new String[]{"test0", "test1", "test2", "test3"}, ALWAYS_MOVE_POLICY);
     }
 
-    static List<Car> getTestCarAsList() {
-        return List.of(Car.of("test0", ALWAYS_MOVE_POLICY));
+    static Cars getTestCarAsList() {
+        return Cars.of(Car.of("test0", ALWAYS_MOVE_POLICY));
     }
 
     @ParameterizedTest(name = "create race test: {arguments}")
     @ValueSource(ints = {1, 15, 12000})
     public void create(int turn) {
-        final List<Car> testCars = getTestCars();
+        final Cars testCars = getTestCars();
         final Race race = Race.of(testCars, turn);
         assertThat(race.numberOfCars()).isEqualTo(testCars.size());
         assertThat(race.totalTurns()).isEqualTo(turn);
@@ -39,7 +38,6 @@ public class RaceTest {
     static Stream<Arguments> parseIllegalArgumentsOfRace() {
         return Stream.of(
                 Arguments.of(null, TEST_TURN),
-                Arguments.of(Collections.emptyList(), TEST_TURN),
                 Arguments.of(getTestCars(), 0),
                 Arguments.of(getTestCars(), -1000)
         );
@@ -47,14 +45,14 @@ public class RaceTest {
 
     @ParameterizedTest(name = "failed to create race: {arguments}")
     @MethodSource("parseIllegalArgumentsOfRace")
-    public void createFailed(List<Car> cars, int turn) {
+    public void createFailed(Cars cars, int turn) {
         assertThatIllegalArgumentException().isThrownBy(() -> Race.of(cars, turn));
     }
 
     @Test
     @DisplayName("get game result(initial status)")
     public void gameResult() {
-        final List<Car> testCars = getTestCars();
+        final Cars testCars = getTestCars();
         final Integer[] expected = new Integer[testCars.size()];
         Arrays.fill(expected, 0);
         final Race race = Race.of(testCars, 1);
@@ -81,14 +79,14 @@ public class RaceTest {
         final Car TEST_CAR_3 = Car.of("test3", NEVER_MOVE_POLICY);
         final Car TEST_CAR_4 = Car.of("test4", ALWAYS_MOVE_POLICY);
         return Stream.of(
-            Arguments.of(List.of(TEST_CAR_0, TEST_CAR_1), TEST_TURN, List.of(TEST_CAR_0.name())),
-            Arguments.of(List.of(TEST_CAR_2, TEST_CAR_3, TEST_CAR_4), TEST_TURN, List.of(TEST_CAR_2.name(), TEST_CAR_4.name()))
+            Arguments.of(Cars.of(TEST_CAR_0, TEST_CAR_1), TEST_TURN, List.of(TEST_CAR_0.name())),
+            Arguments.of(Cars.of(TEST_CAR_2, TEST_CAR_3, TEST_CAR_4), TEST_TURN, List.of(TEST_CAR_2.name(), TEST_CAR_4.name()))
         );
     }
 
     @ParameterizedTest(name = "get winner after race is over with: {arguments}")
     @MethodSource("parseCheckWinnerArguments")
-    public void checkWinner(List<Car> cars, int turn, List<String> expectedWinner) {
+    public void checkWinner(Cars cars, int turn, List<String> expectedWinner) {
         final Race race = Race.of(cars, turn);
         assertThat(race.isEnded()).isFalse();
         race.process();
