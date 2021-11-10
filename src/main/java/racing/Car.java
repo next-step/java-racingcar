@@ -1,5 +1,7 @@
 package racing;
 
+import static racing.RacingConstant.*;
+
 /**
  * @author han
  */
@@ -23,6 +25,6 @@ public class Car {
     }
 
     private boolean isForward(int random) {
-        return random > 4;
+        return random >= FORWARD_STANDARD;
     }
 }
