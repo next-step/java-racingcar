@@ -36,8 +36,8 @@ class RacingTest {
     @DisplayName(value = "생성")
     void create() {
         Racing racing = new Racing(1, 2);
-        assertThat(racing.getCars().size()).isEqualTo(1);
-        assertThat(racing.getAttempts()).isEqualTo(2);
+        assertAll(() -> assertThat(racing.getCars().size()).isEqualTo(1),
+            () -> assertThat(racing.getAttempts()).isEqualTo(2));
     }
 
     @Test
