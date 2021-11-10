@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,6 +33,17 @@ public class RacingCarTest {
 
     // then
     assertThat(racingCar.getProgress()).isEqualTo(expectedProgress);
+  }
+
+  @ParameterizedTest
+  @CsvSource(value = {"c, 1", "car, 3", "carname, 5", "carnameis, 5"})
+  @DisplayName("RacingCar의 이름의 길이가 항상 최대값 이하인지 검증하기 위한 테스트")
+  void lengthOfRacingCarNameAlwaysLowerThanLimit(String carName, int expectedLength) {
+    // when
+    RacingCar racingCar = new RacingCar(carName);
+
+    // then
+    assertThat(racingCar.getName().length()).isEqualTo(expectedLength);
   }
 
 }

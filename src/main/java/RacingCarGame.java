@@ -1,20 +1,27 @@
 public class RacingCarGame {
 
-  private final int chanceAmount;
+  private final int roundAmount;
   private final RacingCars racingCars;
   private final RacingCarGameResults racingCarGameResults;
 
-  public RacingCarGame(int carAmount, int chanceAmount) {
-    this.chanceAmount = chanceAmount;
+  public RacingCarGame(int carAmount, int roundAmount) {
+    this.roundAmount = roundAmount;
     this.racingCars = new RacingCars(carAmount);
     this.racingCarGameResults = new RacingCarGameResults(carAmount);
   }
 
+  public RacingCarGame(String[] carNames, int roundAmount) {
+    this.roundAmount = roundAmount;
+    this.racingCars = new RacingCars(carNames);
+    this.racingCarGameResults = new RacingCarGameResults(carNames.length);
+  }
+
   public void play(MoveStrategy moveStrategy) {
-    for (int i = 0; i < this.chanceAmount; i++) {
+    for (int round = 0; round < this.roundAmount; round++) {
       racingCars.moveEachCars(moveStrategy);
-      racingCarGameResults.addResult(racingCars);
+      racingCarGameResults.addResult(round, racingCars);
     }
+    racingCarGameResults.setWinnerNames(racingCars);
   }
 
   public RacingCarGameResults getResults() {
