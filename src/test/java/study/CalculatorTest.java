@@ -55,4 +55,12 @@ public class CalculatorTest {
     void invalidOperator(String expression) {
         assertThatThrownBy(() -> Calculator.calculate(expression)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("이항 이상의 다항식 계산 테스트")
+    @ParameterizedTest
+    @CsvSource(value = { "2 + 3 / 5 * 2:2", "3 * 3 + 1 / 2 - 1:4" }, delimiter = ':')
+    void calculatePolynomial(String expression, int expected) {
+        int result = Calculator.calculate(expression);
+        assertThat(result).isEqualTo(expected);
+    }
 }
