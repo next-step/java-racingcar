@@ -6,6 +6,7 @@ import race.outbound.OutputView;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Random;
+import java.util.UUID;
 
 public class RacingGame {
     private final int numberOfCars;
@@ -40,7 +41,8 @@ public class RacingGame {
     private Collection<Car> setUpCars(int numberOfCars) {
         Collection<Car> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+            // TODO: 이름 입력받도록하기
+            cars.add(new Car(UUID.randomUUID().toString()));
         }
         return cars;
     }
