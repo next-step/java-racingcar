@@ -9,9 +9,15 @@ public class Race {
     private static final int MINIMUM_TOTAL_TURN = 1;
     private static final int INITIAL_TURN = 0;
 
-    private int currentTurn;
     private final int totalTurns;
     private final List<Car> cars;
+    private int currentTurn;
+
+    private Race(List<Car> cars, int totalTurns) {
+        this.cars = Collections.unmodifiableList(cars);
+        this.currentTurn = INITIAL_TURN;
+        this.totalTurns = totalTurns;
+    }
 
     public static Race of(List<Car> cars, int turn) {
         if (cars == null || cars.isEmpty()) {
@@ -23,12 +29,6 @@ public class Race {
         }
 
         return new Race(cars, turn);
-    }
-
-    private Race(List<Car> cars, int totalTurns) {
-        this.cars = Collections.unmodifiableList(cars);
-        this.currentTurn = INITIAL_TURN;
-        this.totalTurns = totalTurns;
     }
 
     public int totalTurns() {

@@ -4,14 +4,15 @@ import java.util.Objects;
 
 public class Position implements Comparable<Position> {
     private static final int INITIAL_POSITION = 0;
-    private int position;
 
-    public static Position ofZero() {
-        return new Position(INITIAL_POSITION);
-    }
+    private int position;
 
     private Position(int position) {
         this.position = position;
+    }
+
+    public static Position ofZero() {
+        return new Position(INITIAL_POSITION);
     }
 
     public void forward() {

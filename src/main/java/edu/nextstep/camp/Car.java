@@ -11,6 +11,12 @@ public class Car {
     private final Position position;
     private final MovePolicy movePolicy;
 
+    private Car(String name, MovePolicy movePolicy) {
+        this.name = name;
+        this.position = Position.ofZero();
+        this.movePolicy = movePolicy;
+    }
+
     public static List<Car> of(String[] names, MovePolicy movePolicy) {
         if (names == null) {
             throw new IllegalArgumentException("Name of cars cannot be null.");
@@ -21,7 +27,7 @@ public class Car {
         }
 
         List<Car> cars = new ArrayList<>(names.length);
-        for (String name: names) {
+        for (String name : names) {
             cars.add(Car.of(name, movePolicy));
         }
 
@@ -38,12 +44,6 @@ public class Car {
         }
 
         return new Car(name, movePolicy);
-    }
-
-    private Car(String name, MovePolicy movePolicy) {
-        this.name = name;
-        this.position = Position.ofZero();
-        this.movePolicy = movePolicy;
     }
 
     public Position position() {
