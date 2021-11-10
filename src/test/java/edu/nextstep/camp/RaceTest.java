@@ -1,17 +1,20 @@
 package edu.nextstep.camp;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static edu.nextstep.camp.TestMovePolicy.ALWAYS_MOVE_POLICY;
 import static edu.nextstep.camp.TestMovePolicy.NEVER_MOVE_POLICY;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
+import static org.assertj.core.api.Assertions.*;
 
 public class RaceTest {
     private static final List<Car> TEST_CARS = Car.of(new String[]{"test0", "test1", "test2", "test3"}, ALWAYS_MOVE_POLICY);
@@ -25,6 +28,21 @@ public class RaceTest {
         final Race race = Race.of(TEST_CARS, turn);
         assertThat(race.numberOfCars()).isEqualTo(TEST_CARS.size());
         assertThat(race.totalTurns()).isEqualTo(turn);
+    }
+
+    static Stream<Arguments> parseIllegalArgumentsOfRace() {
+        return Stream.of(
+                Arguments.of(null, TEST_TURN),
+                Arguments.of(Collections.emptyList(), TEST_TURN),
+                Arguments.of(TEST_CARS, 0),
+                Arguments.of(TEST_CARS, -1000)
+        );
+    }
+
+    @ParameterizedTest(name = "failed to create race: {arguments}")
+    @MethodSource("parseIllegalArgumentsOfRace")
+    public void createFailed(List<Car> cars, int turn) {
+        assertThatIllegalArgumentException().isThrownBy(() -> Race.of(cars, turn));
     }
 
     @Test
