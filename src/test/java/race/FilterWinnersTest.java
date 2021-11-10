@@ -1,13 +1,16 @@
 package race;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class FilterWinnersTest {
     @ParameterizedTest
@@ -24,11 +27,23 @@ class FilterWinnersTest {
         }
 
         assertThat(new FilterWinners().filter(cars))
-                .containsExactly(expectedWinners(winnnerIndexes, cars));
+                .containsExactlyElementsOf(expectedWinners(winnnerIndexes, cars));
     }
 
-    private Car[] expectedWinners(List<Integer> winnnerIndexes, List<Car> cars) {
-        return (Car[]) winnnerIndexes.stream().map((index) -> cars.get(index)).toArray();
+    @Test
+    void whenCarCollectionIsNull() {
+        assertThatThrownBy(() -> new FilterWinners().filter(null))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void whenCarCollectionIsEmpty() {
+        assertThatThrownBy(() -> new FilterWinners().filter(Collections.EMPTY_LIST))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    private List<Car> expectedWinners(List<Integer> winnnerIndexes, List<Car> cars) {
+        return winnnerIndexes.stream().map(cars::get).collect(Collectors.toList());
     }
 
     private void move(Car car, int numberOfMovement) {
