@@ -3,25 +3,27 @@ package step3;
 public class CarRacingGame {
 
     private Car[] cars;
-    private int numberOfRound;
+    private int roundCount;
 
-    public CarRacingGame(int numberOfCar, int numberOfRound) {
+    public CarRacingGame(int numberOfCar, int roundCount) {
         this.cars = new Car[numberOfCar];
         for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car();
         }
-        this.numberOfRound = numberOfRound;
+        this.roundCount = roundCount;
     }
 
-    public void start() throws Exception {
-        for (int round = 0; round < numberOfRound; round++) {
-            progressOneRound();
-            GameOutput.println(cars);
-            GameOutput.println("");
+    public Car[] getCars() {
+        return cars;
+    }
+
+    public void start() {
+        for (int round = 0; round < roundCount; round++) {
+            moveCars();
         }
     }
 
-    private void progressOneRound() {
+    private void moveCars() {
         for (Car car : cars) {
             car.move();
         }

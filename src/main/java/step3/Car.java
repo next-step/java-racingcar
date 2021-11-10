@@ -8,15 +8,15 @@ public class Car {
     private static final int MAX = 10;
     private static final int MOVE_CONDITION = 4;
 
-    private StringBuilder status = new StringBuilder();
+    private int position = 0;
 
-    public String getStatus() {
-        return status.toString();
+    public int getPosition() {
+        return position;
     }
 
     public void move() {
         if (random.nextInt(MAX) >= MOVE_CONDITION) {
-            status.append('-');
+            position++;
         }
     }
 
