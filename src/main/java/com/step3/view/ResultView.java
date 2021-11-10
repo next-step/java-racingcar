@@ -21,7 +21,7 @@ public class ResultView {
     private static String getResult(Car car) {
         StringBuilder sb = new StringBuilder();
 
-        for (int idx = 0; idx < car.getPosition().getCarPosition(); idx++) {
+        for (int idx = 0; idx < car.getPosition().getPosition(); idx++) {
             sb.append("-");
         }
 

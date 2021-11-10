@@ -2,8 +2,8 @@ package study;
 
 import com.step3.model.car.Car;
 import com.step3.model.car.Cars;
-import com.step3.model.car.CarId;
-import com.step3.model.car.CarPosition;
+import com.step3.model.car.Name;
+import com.step3.model.car.Position;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,18 +17,18 @@ public class CarTest {
     @Test
     @DisplayName("Car class 생성자 test")
     void create() {
-        Car car = new Car(new CarId("pobi"), new CarPosition(0));
-        assertThat(car).isEqualTo(new Car(new CarId("pobi"), new CarPosition(0)));
+        Car car = new Car(new Name("pobi"), new Position(0));
+        assertThat(car).isEqualTo(new Car(new Name("pobi"), new Position(0)));
     }
 
     @Test
     @DisplayName("Car move 후 Car class로 return test")
     void move() {
-        Car car = new Car(new CarId("pobi"), new CarPosition(0));
-        Car movedCar = new Car(new CarId("pobi"), new CarPosition(1));
+        Car car = new Car(new Name("pobi"), new Position(0));
+        Car movedCar = new Car(new Name("pobi"), new Position(1));
 
-        assertThat(car.move(true).getPosition().getCarPosition())
-                .isEqualTo(movedCar.getPosition().getCarPosition());
+        assertThat(car.move(true).getPosition().getPosition())
+                .isEqualTo(movedCar.getPosition().getPosition());
     }
 
     @Test

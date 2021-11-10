@@ -11,7 +11,7 @@ public class Cars {
         List<Car> cars = new LinkedList<>();
 
         for (int idx = 0; idx < carCount; idx++) {
-            cars.add(new Car(new CarId("idx"), new CarPosition(0)));
+            cars.add(new Car(new Name("idx"), new Position(0)));
         }
 
         this.cars = cars;
@@ -21,16 +21,16 @@ public class Cars {
         List<Car> cars = new LinkedList<>();
 
         for (String carName : carsName) {
-            cars.add(new Car(new CarId(carName), new CarPosition(0)));
+            cars.add(new Car(new Name(carName), new Position(0)));
         }
 
         this.cars = cars;
     }
 
     public List<Car> getWinnerCars() {
-        int maxPosition = cars.stream().mapToInt(c -> c.getPosition().getCarPosition()).max().getAsInt();
+        int maxPosition = cars.stream().mapToInt(c -> c.getPosition().getPosition()).max().getAsInt();
         return cars.stream()
-                .filter(c -> c.getPosition().getCarPosition() == maxPosition)
+                .filter(c -> c.getPosition().getPosition() == maxPosition)
                 .collect(Collectors.toList());
     }
 

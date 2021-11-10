@@ -1,9 +1,9 @@
 package com.step3.model.car;
 
-public class CarId {
+public class Name {
     private String name;
 
-    public CarId(String name) {
+    public Name(String name) {
         validateCarName(name);
         this.name = name;
     }

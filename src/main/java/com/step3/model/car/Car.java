@@ -1,10 +1,10 @@
 package com.step3.model.car;
 
 public class Car {
-    private CarId id;
-    private CarPosition position;
+    private Name id;
+    private Position position;
 
-    public Car(CarId id, CarPosition position) {
+    public Car(Name id, Position position) {
         this.id = id;
         this.position = position;
     }
@@ -14,11 +14,11 @@ public class Car {
         return this;
     }
 
-    public CarPosition getPosition() {
+    public Position getPosition() {
         return this.position;
     }
 
-    public CarId getId() {
+    public Name getId() {
         return this.id;
     }
 
