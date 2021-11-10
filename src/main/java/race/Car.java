@@ -1,6 +1,6 @@
 package race;
 
-public class Car implements Comparable<Car>{
+public class Car implements Comparable<Car> {
     private int location = 0;
 
     private final CarName name;

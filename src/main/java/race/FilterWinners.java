@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class FilterWinners {
     public Collection<Car> filter(Collection<Car> cars) {
-        if(cars == null || cars.isEmpty()) {
+        if (cars == null || cars.isEmpty()) {
             throw new IllegalArgumentException("cars must not be empty");
         }
 
