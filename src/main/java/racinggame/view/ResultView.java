@@ -1,36 +1,26 @@
 package racinggame.view;
 
+import racinggame.domain.Car;
 import racinggame.domain.Cars;
+import racinggame.domain.Location;
 
 public class ResultView {
 
     private static final String DASH = "-";
 
-    private Cars cars;
-    private int count;
-
-    public ResultView(Cars cars, int count) {
-        this.cars = cars;
-        this.count = count;
+    private ResultView() {
     }
 
-    public void resultRacing() {
-        System.out.print("실행 결과");
-        for (int i = 0; i < count; i++) {
-            roundHistory(i);
-            System.out.println("");
+    public static void currentRecord(Cars cars) {
+        for (Car car : cars.getCars()) {
+            locationResult(car.getLocation());
         }
+        System.out.println();
     }
 
-    private void roundHistory(int round) {
-        for (Long record : cars.getRacingHistory(round)) {
-            printRecord(record);
-        }
-    }
-
-    private void printRecord(Long record) {
+    public static void locationResult(Location location) {
         StringBuilder racingRecord = new StringBuilder();
-        for (int j = 0; j < record; j++) {
+        for (int i = 0; i < location.getLocation(); i++) {
             racingRecord.append(DASH);
         }
         System.out.print("\n" + racingRecord);
