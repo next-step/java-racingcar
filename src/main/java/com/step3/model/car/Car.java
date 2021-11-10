@@ -18,6 +18,10 @@ public class Car {
         return this.position;
     }
 
+    public CarId getId() {
+        return this.id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -28,6 +32,6 @@ public class Car {
         }
 
         Car car = (Car) o;
-        return id.getId() == car.id.getId();
+        return id.getValue() == car.id.getValue();
     }
 }

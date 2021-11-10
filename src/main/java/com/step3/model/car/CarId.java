@@ -1,13 +1,20 @@
 package com.step3.model.car;
 
 public class CarId {
-    private int id;
+    private String name;
 
-    public CarId(int id) {
-        this.id = id;
+    public CarId(String name) {
+        validateCarName(name);
+        this.name = name;
     }
 
-    public int getId() {
-        return id;
+    public String getValue() {
+        return name;
+    }
+
+    private void validateCarName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름 5자 이하 필수");
+        }
     }
 }
