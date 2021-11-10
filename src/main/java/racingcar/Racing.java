@@ -38,7 +38,6 @@ public class Racing {
         for (int i = 0; i < tryCount; i++) {
             this.goingTry();
         }
-        carListView.print();
     }
 
     public List<Car> getCarList() {
