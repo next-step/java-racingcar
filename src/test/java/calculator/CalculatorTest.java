@@ -1,8 +1,10 @@
 package calculator;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -36,24 +38,19 @@ public class CalculatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    public void 값_null() {
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("값이 null인지 빈공간인지 테스트")
+    public void 값_null_빈공간(String input) {
         assertThatThrownBy(() ->
-                Calculator.calculate(null)
-        ).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력 값이 null이거나 빈 공백 문자입니다.");
-    }
-
-    @Test
-    public void 값_빈공간() {
-        assertThatThrownBy(() ->
-                Calculator.calculate("")
+                Calculator.calculate(input)
         ).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력 값이 null이거나 빈 공백 문자입니다.");
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1 + 2,3", "3 - 1,2", "2 * 3,6", "6 / 2,3"})
+    @DisplayName("calculate() 전체 연산 테스트")
     public void calculate(String value, int expected) {
         int result = Calculator.calculate(value);
         assertThat(result).isEqualTo(expected);
