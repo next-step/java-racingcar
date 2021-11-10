@@ -6,6 +6,9 @@ public class Car {
     private final String name;
 
     public Car(String name) {
+        if(name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("invalid name");
+        }
         this.name = name;
     }
 
