@@ -21,17 +21,14 @@ public class Calculator {
      * @return
      */
     private static String[] validateParameter(String param) {
-        validationExceptionCheck(Objects.isNull(param), param.isEmpty());
-
-        String[] values = param.split(" ");
-        validationExceptionCheck(values.length < MIN_EXPRESS_LENGTH, values.length % 2 == 0);
-        return values;
-    }
-
-    private static void validationExceptionCheck(boolean b, boolean b2) {
-        if (b || b2) {
+        if(Objects.isNull(param)  || param.isEmpty()){
             throw new IllegalArgumentException("입력 문자열이 정상적이지 않습니다.");
         }
+        String[] values = param.split(" ");
+        if(values.length < MIN_EXPRESS_LENGTH || values.length % 2 == 0){
+            throw new IllegalArgumentException("입력 문자열이 정상적이지 않습니다.");
+        }
+        return values;
     }
 
     /**
