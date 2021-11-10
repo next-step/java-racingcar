@@ -2,6 +2,9 @@ package edu.nextstep.camp;
 
 import java.util.List;
 
+import edu.nextstep.camp.view.InputView;
+import edu.nextstep.camp.view.ResultView;
+
 public class Main {
     private static final String DELIMITER = ",";
 

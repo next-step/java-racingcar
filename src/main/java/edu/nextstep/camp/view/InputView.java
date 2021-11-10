@@ -1,4 +1,4 @@
-package edu.nextstep.camp;
+package edu.nextstep.camp.view;
 
 import java.util.Arrays;
 import java.util.Scanner;

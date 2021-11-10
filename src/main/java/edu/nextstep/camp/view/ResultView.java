@@ -1,4 +1,4 @@
-package edu.nextstep.camp;
+package edu.nextstep.camp.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
