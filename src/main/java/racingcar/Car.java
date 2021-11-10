@@ -3,6 +3,7 @@ package racingcar;
 import static java.util.stream.IntStream.range;
 
 import java.util.Random;
+
 import java.util.stream.Collectors;
 
 public class Car {
