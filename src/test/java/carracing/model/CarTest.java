@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import carracing.exception.ArgumentOutOfRangeException;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -11,20 +12,23 @@ public class CarTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"donghyo", "dongki"})
-    void 자동차이름_초과_예외처리(String carName) {
+    @DisplayName("자동차 이름 길이 초과 예외처리")
+    void carNameOutOfRangeException(String carName) {
         assertThatExceptionOfType(ArgumentOutOfRangeException.class)
             .isThrownBy(() -> Car.from(carName));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"dong", "hyo"})
-    void 자동차_정상_생성_및_이름확인(String carName) {
+    @DisplayName("자동차 정상 생성 및 이름 확인")
+    void createCarAndNameCheck(String carName) {
         assertThat(Car.from(carName).getName()).isEqualTo(carName);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"dong", "hyo"})
-    void 자동차_전진시_이력_증가(String carName) {
+    @DisplayName("자동차 전진 시 이력 증가")
+    void runRace(String carName) {
         Car car = Car.from(carName);
         Long before = car.getSuccessCount();
 
