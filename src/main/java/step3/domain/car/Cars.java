@@ -4,6 +4,7 @@ import step3.domain.board.RoundBoard;
 import step3.domain.power.Engine;
 
 import java.util.List;
+import java.util.Objects;
 
 import static java.util.Collections.unmodifiableList;
 import static java.util.Comparator.reverseOrder;
@@ -12,7 +13,7 @@ import static step3.utils.ValidationUtils.checkArgument;
 
 public class Cars {
 
-    private static final int DEFAULT_LOCATION = 0;
+    public static final int DEFAULT_LOCATION = 0;
 
     private final List<Car> cars;
 
@@ -65,4 +66,16 @@ public class Cars {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars1 = (Cars) o;
+        return Objects.equals(cars, cars1.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
+    }
 }

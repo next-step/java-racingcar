@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static java.util.Arrays.stream;
+import static java.util.Collections.unmodifiableList;
 import static java.util.stream.Collectors.toList;
 import static step3.utils.ValidationUtils.checkArgument;
 
@@ -30,6 +31,10 @@ public class Names {
 
     private void checkNotEmpty(List<Name> names) {
         checkArgument(names != null && names.size() > MIN_NAMES_SIZE, "names is required");
+    }
+
+    public Cars convertToCar() {
+        return Cars.of(unmodifiableList(names));
     }
 
     @Override
