@@ -4,6 +4,7 @@ import study.operator.Operator;
 
 public class Calculator {
     private static final String DELIMITER = " ";
+    private static final int FIRST_OPERAND_INDEX = 0;
 
     private Calculator() {
         new AssertionError();
@@ -12,20 +13,21 @@ public class Calculator {
     public static int calculate(String expression) {
         validateOrElseThrow(expression);
         String[] splittedExpression = expression.split(DELIMITER);
-        int firstOperand = Integer.parseInt(splittedExpression[0]);
-        String operator = splittedExpression[1];
-        int secondOperand = Integer.parseInt(splittedExpression[2]);
 
-        return calculate(firstOperand, operator, secondOperand);
+        int result = Integer.parseInt(splittedExpression[FIRST_OPERAND_INDEX]);
+
+        for (int i = 1; i < splittedExpression.length - 1; i += 2) {
+            Operator operator = Operator.findBy(splittedExpression[i]);
+            int operand = Integer.parseInt(splittedExpression[i + 1]);
+
+            result = operator.operate(result, operand);
+        }
+        return result;
     }
 
     private static void validateOrElseThrow(String expression) {
         if (expression == null || expression.isEmpty()) {
             throw new IllegalArgumentException("expression must not null or empty. expression: " + expression);
         }
-    }
-
-    private static int calculate(int firstOperand, String operator, int secondOperand) {
-        return Operator.findBy(operator).operate(firstOperand, secondOperand);
     }
 }
