@@ -2,6 +2,7 @@ package step3;
 
 import org.junit.jupiter.api.Test;
 import step3.model.CarList;
+import step3.service.ConvertOutputView;
 import step3.view.Output;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class OutputViewTest {
         carList.getCarList().get(2).movable(() -> true);
 
         for (int i = 0; i < 3; i++) {
-            assertEquals(output.convertOutputView(carList.getCarList().get(i).getPosition()), expectedList.get(i));
+            assertEquals(ConvertOutputView.convertOutputView(carList.getCarList().get(i).getPosition()), expectedList.get(i));
         }
     }
 }
