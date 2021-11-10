@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
-import racingcar.dto.GameConfigDto;
+import racingcar.dto.GameConfig;
 import racingcar.dto.GameResult;
 
 public class GameStage {
@@ -27,7 +27,7 @@ public class GameStage {
         this.result = new GameResult();
     }
 
-    public static GameStage init(GameConfigDto config) {
+    public static GameStage init(GameConfig config) {
         return new GameStage(config.getMaxOfRound(), config.getNumberOfCars());
     }
 

@@ -3,7 +3,7 @@ package racingcar.view;
 import static racingcar.utils.PrintUtils.print;
 
 import java.util.Scanner;
-import racingcar.dto.GameConfigDto;
+import racingcar.dto.GameConfig;
 
 public class InputView {
 
@@ -13,12 +13,12 @@ public class InputView {
     private static final String NUMBER_OF_GAME_ROUND_INPUT_MESSAGE = "시도할 회수는 몇 회 인가요?";
 
 
-    public GameConfigDto initConfig() {
+    public GameConfig initConfig() {
 
         int numberOfCar = inputFromClient(NUMBER_OF_CAR_INPUT_MESSAGE);
         int numberOfGameRound = inputFromClient(NUMBER_OF_GAME_ROUND_INPUT_MESSAGE);
 
-        return new GameConfigDto(numberOfCar, numberOfGameRound);
+        return new GameConfig(numberOfCar, numberOfGameRound);
     }
 
     private int inputFromClient(String message) {

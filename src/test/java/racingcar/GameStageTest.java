@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.dto.GameConfigDto;
+import racingcar.dto.GameConfig;
 import racingcar.dto.GameResult;
 
 public class GameStageTest {
@@ -18,7 +18,7 @@ public class GameStageTest {
     @ValueSource(ints = {3, 5, 10})
     @ParameterizedTest(name = "{arguments}개의 참가 자동차가 생성되어야 한다.")
     void initCarTest(int numberOfCars) throws NoSuchFieldException, IllegalAccessException {
-        GameStage gameStage = GameStage.init(new GameConfigDto(numberOfCars, 10));
+        GameStage gameStage = GameStage.init(new GameConfig(numberOfCars, 10));
         List<Car> cars = getCarsByReflection(gameStage);
 
         assertThat(cars).hasSize(numberOfCars);
@@ -28,14 +28,14 @@ public class GameStageTest {
     @ParameterizedTest(name = "자동차 생성 대수가 {arguments}인 경우, IllegalArgumentException이 발생한다.")
     void initCarIllegalArgumentExceptionTest(int numberOfCars) {
         assertThatIllegalArgumentException()
-            .isThrownBy(() -> GameStage.init(new GameConfigDto(numberOfCars, 10)));
+            .isThrownBy(() -> GameStage.init(new GameConfig(numberOfCars, 10)));
     }
 
     @ValueSource(ints = -5)
     @ParameterizedTest(name = "시도할 횟수가 {arguments}인 경우, IllegalArgumentException이 발생한다.")
     void initRoundIllegalArgumentExceptionTest(int numberOfRound) {
         assertThatIllegalArgumentException()
-            .isThrownBy(() -> GameStage.init(new GameConfigDto(1, numberOfRound)));
+            .isThrownBy(() -> GameStage.init(new GameConfig(1, numberOfRound)));
     }
 
     @ValueSource(ints = {3, 5, 8})
