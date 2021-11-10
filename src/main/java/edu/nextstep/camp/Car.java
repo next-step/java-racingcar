@@ -44,6 +44,7 @@ public class Car {
         }
 
         return new Car(name, movePolicy);
+
     }
 
     public Position position() {
