@@ -3,26 +3,42 @@ package racingcar;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static util.StringUtils.separateStringWithComma;
+
 public class RacingGame {
+    private final static int FIRST_ROUND = 1;
+    private final static int ROUND_INCREMENT = 1;
+
     public static void run() {
         InputView inputView = new ConsoleInputView();
 
-        int numberOfCars = inputView.getNumberOfCars();
+        String identifierOfCars = inputView.getIdentifierOfCars();
         int numberOfTrials = inputView.getNumberOfTrials();
 
-        CarFactory carFactory = new CarFactory(numberOfCars);
-        List<Car> cars = carFactory.buildCars();
+        String[] namesOfCars = separateStringWithComma(identifierOfCars);
+        CarFactory carFactory = new CarFactory(namesOfCars);
+        Cars cars = carFactory.buildCars();
 
         OutputView outputView = new ConsoleOutputView();
 
         RacingManager racingManager = new RacingManager(cars);
 
-        IntStream.rangeClosed(1, numberOfTrials)
-                .forEach(roundNumber -> {
-                    outputView.showStartOfRound(roundNumber);
-                    List<Integer> progressOfCars = racingManager.progressRound();
-                    outputView.showRacing(progressOfCars);
-                    outputView.showEndOfRound(roundNumber);
-                });
+        outputView.showOutputMessage();
+        IntStream.rangeClosed(FIRST_ROUND, numberOfTrials - ROUND_INCREMENT)
+                .forEach(roundNumber -> eachRound(outputView, roundNumber, racingManager));
+        eachRound(outputView, numberOfTrials, racingManager);
+        List<CarState> resultOfLastRound = racingManager.progressRound();
+
+        WinnerChooser winnerChooser = new WinnerChooser(resultOfLastRound);
+        outputView.showWinners(winnerChooser.chooseWinner());
+    }
+
+    private static List<CarState> eachRound (OutputView outputView, int roundNumber, RacingManager racingManager) {
+        outputView.showStartOfRound(roundNumber);
+        List<CarState> progressOfCars = racingManager.progressRound();
+        outputView.showRacing(progressOfCars);
+        outputView.showEndOfRound(roundNumber);
+
+        return progressOfCars;
     }
 }

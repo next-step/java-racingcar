@@ -2,29 +2,25 @@ package racingcar;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Arrays;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static racingcar.RacingCarTestUtil.*;
 
 public class CarFactoryTest {
-    private final int NUMBER_OF_CARS = 5;
 
     @Test
     void testBuildCars() {
-        CarFactory carFactory = new CarFactory(NUMBER_OF_CARS);
-        List<Car> cars = carFactory.buildCars();
-        int lengthOfcars = cars.size();
+        CarFactory carFactory = new CarFactory(NAMES_OF_CARS);
+        Cars cars = carFactory.buildCars();
+        int lengthOfCars = cars.size();
 
-        assertThat(lengthOfcars).isEqualTo(NUMBER_OF_CARS);
-        checkNumberOfCars(cars);
+        assertThat(lengthOfCars).isEqualTo(NUMBER_OF_CARS);
+        checkExistenceOfCars(cars);
     }
 
-    private void checkNumberOfCars(List<Car> cars) {
-        IntStream.range(0, cars.size())
-                .forEach( i -> {
-                        Car car = cars.get(i);
-                        assertThat(car).isEqualTo(new Car(i+1));
-                });
+    private void checkExistenceOfCars(Cars cars) {
+        Arrays.stream(NAMES_OF_CARS)
+                .forEach( name -> assertThat(cars.contains(new Car(name))).isEqualTo(true));
     }
 }

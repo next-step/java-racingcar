@@ -9,28 +9,28 @@ public class Car {
 
     public static final int START_POINT = 0;
 
-    private final int number;
+    private final String name;
     private int distance;
 
-    Car(int number) {
-        this.number = number;
+    public Car(String name) {
+        this.name = name;
         this.distance = START_POINT;
     }
 
     public void initialize() {
-        this.distance = 0;
+        this.distance = START_POINT;
     }
 
-    public int runOrStop(int randomNumber) {
-        if (randomNumber < STOP_LOWER_BOUNDARY || randomNumber > RUN_UPPER_BOUNDARY) {
+    public CarState runOrStop(int number) {
+        if (number < STOP_LOWER_BOUNDARY || number > RUN_UPPER_BOUNDARY) {
             throw new IllegalArgumentException("Random Number should be between 0 to 10.");
         }
 
-        if (randomNumber >= RUN_LOWER_BOUNDARY) {
+        if (number >= RUN_LOWER_BOUNDARY) {
             distance++;
         }
 
-        return distance;
+        return new CarState(name, distance);
     }
 
     @Override
@@ -44,16 +44,16 @@ public class Car {
         }
 
         Car car = (Car) obj;
-        return number == car.number;
+        return name.equals(car.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number);
+        return Objects.hash(name);
     }
 
     @Override
     public String toString() {
-        return "Car(" + this.number + ") → ";
+        return "Car(" + this.name + ") → ";
     }
 }
