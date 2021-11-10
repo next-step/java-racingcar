@@ -11,7 +11,8 @@ public class Calculator {
         for (int i = 1; i < stringArray.length; i += 2) {
             String operator = stringArray[i];
             Integer num1 = new Integer(stringArray[i+1]);
-            result = CalculatorEnum.findOperator(result, num1, operator);
+            CalculatorEnum operatorValue = CalculatorEnum.findOperator(operator);
+            result = CalculatorEnum.calculator(result, num1, operatorValue);
         }
         return result;
     }
