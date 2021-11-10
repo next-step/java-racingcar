@@ -30,6 +30,13 @@ public class CarTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"abcdef", "abcdefff"})
+    void invalidName_tooLong(String name) {
+        assertThatThrownBy(() -> new Car(name))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Test
     void invalidName_null() {
         assertThatThrownBy(() -> new Car(null))
