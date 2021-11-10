@@ -1,12 +1,12 @@
 package step4.service;
 
 import step4.domain.Car;
+import step4.domain.Cars;
 import step4.domain.GameHistory;
 import step4.domain.dto.GameHistoryDto;
 import step4.service.dto.GameInformation;
 import step4.strategy.MoveStrategy;
 import step4.vo.Names;
-import step4.domain.Cars;
 
 import java.util.List;
 import java.util.stream.Collectors;

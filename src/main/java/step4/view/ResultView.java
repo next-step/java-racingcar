@@ -1,11 +1,11 @@
 package step4.view;
 
-import step4.vo.Name;
 import step4.domain.dto.CarDto;
 import step4.domain.dto.CarsDto;
 import step4.domain.dto.GameHistoryDto;
 import step4.domain.dto.Winners;
-import step4.service.dto.*;
+import step4.service.dto.GameInformation;
+import step4.vo.Name;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,7 +50,7 @@ public class ResultView {
     }
 
     private void printCars(CarsDto carsDto) {
-        for(CarDto car : carsDto.getCarDtos()) {
+        for (CarDto car : carsDto.getCarDtos()) {
             String positionView = getPositionView(car);
             System.out.println(car.getName().getValue() + " : " + positionView);
         }
@@ -60,7 +60,7 @@ public class ResultView {
     private String getPositionView(CarDto car) {
         Integer now = car.getPosition().getNow();
         StringBuilder builder = new StringBuilder();
-        for(int i = 0; i < now; i++) {
+        for (int i = 0; i < now; i++) {
             builder.append("-");
         }
         return builder.toString();

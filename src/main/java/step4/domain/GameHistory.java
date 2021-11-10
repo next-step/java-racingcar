@@ -30,7 +30,7 @@ public class GameHistory {
         List<Name> winnerNameList = lastHistory.getCars().stream()
                 .filter(car -> car.equalsPosition(winPosition))
                 .map(Car::getName)
-               .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         Names names = new Names();
         names.addNames(winnerNameList);
