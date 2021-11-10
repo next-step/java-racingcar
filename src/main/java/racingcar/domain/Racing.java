@@ -1,11 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Racing {
@@ -52,7 +49,7 @@ public class Racing {
     public void start(MovePredicate movePredicate) {
         for (int i = 0; i < this.round; i++) {
             race(movePredicate);
-            writeHistory(i);
+            writeHistory();
         }
     }
 
@@ -62,7 +59,7 @@ public class Racing {
         }
     }
 
-    private void writeHistory(int currRound) {
+    private void writeHistory() {
         this.history.add(
                 this.cars.stream()
                         .map(car -> car.of())

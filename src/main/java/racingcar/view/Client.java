@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.Racing;
-import racingcar.RandomMovePredicate;
+import racingcar.domain.Racing;
+import racingcar.domain.RandomMovePredicate;
 
 public class Client {
     public static void main(String[] args) {
