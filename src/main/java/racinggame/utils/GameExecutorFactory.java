@@ -10,7 +10,7 @@ public class GameExecutorFactory {
         throw new NotInstanceException();
     }
 
-    public static GameExecutor createGameExecutor(String numberOfCars, String numberOfAttempts) {
-        return new SimpleGameExecutor(InputUtils.convertInputValue(numberOfCars, numberOfAttempts));
+    public static GameExecutor createGameExecutor(String carNames, String numberOfAttempts) {
+        return new SimpleGameExecutor(InputUtils.convertInputValue(carNames, numberOfAttempts));
     }
 }

@@ -10,10 +10,10 @@ public class Client {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        String numberOfCars = inputView.numberOfCars();
+        String carNames = inputView.carNames();
         String numberOfAttempts = inputView.numberOfAttempts();
 
-        GameExecutor gameExecutor = GameExecutorFactory.createGameExecutor(numberOfCars, numberOfAttempts);
+        GameExecutor gameExecutor = GameExecutorFactory.createGameExecutor(carNames, numberOfAttempts);
 
         List<MoveResult> results = gameExecutor.execute();
 
