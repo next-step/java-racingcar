@@ -12,8 +12,12 @@
 2. ~~Name 클래스 분리 및 테스트 작성~~
 3. ~~Position 클래스 분리 및 테스트 작성~~ 
 4. ~~code convention, format, naming~~
+5. ~~Message를 클래스로 분리 -> 메시지 중복제거~~
+6. ~~toString 오버라이딩 -> 출력 뷰 수정~~
 
 **- 기능 목록**
 1. Position 클래스
 2. Name 클래스
 3. Message 클래스
+    - ErrorMessage : 에로관련 메시지 작성
+    - ViewMessage : 출력관련 메시지 작성
