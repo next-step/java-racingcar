@@ -2,11 +2,13 @@ package racingcar.dto;
 
 public class GameConfigDto {
 
-    private final int maxOfRound;
     private final int maxOfCars;
+    private final int maxOfRound;
 
-    public GameConfigDto(int maxOfRound, int maxOfCars) {
-        this.maxOfRound = maxOfRound;
+    public GameConfigDto(int maxOfCars, int maxOfRound) {
         this.maxOfCars = maxOfCars;
+        this.maxOfRound = maxOfRound;
     }
+
+
 }

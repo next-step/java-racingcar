@@ -27,6 +27,7 @@ class InputViewTest {
 
         assertThat(inputView.initConfig())
             .isInstanceOf(GameConfig.class);
+
     }
 
 
