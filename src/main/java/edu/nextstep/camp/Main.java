@@ -19,5 +19,7 @@ public class Main {
             race.process();
             result.printResult(race.gameResult());
         }
+
+        result.printWinners(race.winners());
     }
 }
