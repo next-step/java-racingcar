@@ -1,7 +1,8 @@
 package racingcar;
 
+import static racingcar.utils.IntegerUtils.*;
+
 import racingcar.dto.GameConfigDto;
-import racingcar.utils.IntegerUtils;
 
 public class GameStage {
 
@@ -9,7 +10,7 @@ public class GameStage {
     private final Car[] cars;
 
     private GameStage(int maxOfRound, int numberOfCars) {
-        this.maxOfRound = IntegerUtils.isPositiveNumber(maxOfRound);
+        this.maxOfRound = isPositiveNumber(maxOfRound);
         this.cars = new Car[numberOfCars];
     }
 

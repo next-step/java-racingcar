@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import static racingcar.utils.PrintUtils.print;
+
 import java.util.Scanner;
 import racingcar.dto.GameConfigDto;
 
@@ -22,10 +24,6 @@ public class InputView {
     private int inputFromClient(String message) {
         print(message);
         return sc.nextInt();
-    }
-
-    private void print(String message) {
-        System.out.println(message);
     }
 
 }
