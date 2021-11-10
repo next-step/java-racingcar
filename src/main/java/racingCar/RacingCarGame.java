@@ -6,12 +6,31 @@ import java.util.Random;
 
 public class RacingCarGame {
 
-  private final List<RacingCar> racingCarList = new ArrayList<>();
-  private final int TRY_COUNT;
+  private static final String QUESTION_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
+  private static final String QUESTION_TRY_COUNT = "시도할 회수는 몇 회 인가요?";
 
-  public RacingCarGame(int carCount, int tryCount) {
+  private List<RacingCar> racingCarList;
+
+  private InputView inputView;
+  private ResultView resultView;
+
+  private int tryCount;
+
+  public RacingCarGame() {
+    racingCarList = new ArrayList<>();
+    inputView = new InputView();
+    resultView = new ResultView();
+  }
+
+  public void startWithUserInput() {
+    start(inputView.inputByUser(QUESTION_CAR_COUNT), inputView.inputByUser(QUESTION_TRY_COUNT));
+  }
+
+  public void start(int carCount, int tryCount) {
     createCars(carCount);
-    this.TRY_COUNT = tryCount;
+    this.tryCount = tryCount;
+
+    race();
   }
 
   private void createCars(int carCount) {
@@ -20,20 +39,14 @@ public class RacingCarGame {
     }
   }
 
-  public void start() {
-    for (int currentMoveCount = 0; currentMoveCount < TRY_COUNT; currentMoveCount++) {
-      tryMove();
+  public void race() {
+    for (int currentMoveCount = 0; currentMoveCount < tryCount; currentMoveCount++) {
+      moveAllCars();
+      resultView.printAllCarsStatus(racingCarList);
     }
   }
 
-  private void tryMove() {
-    if (!canMove()) {
-      return;
-    }
-    racingCarList.forEach(RacingCar::move);
-  }
-
-  private boolean canMove() {
-    return new Random().nextInt(10) >= 4;
+  public void moveAllCars() {
+    racingCarList.forEach(e -> e.tryMove(new Random().nextInt(10)));
   }
 }
