@@ -26,6 +26,20 @@ public class NameTest {
                 .withMessage(Name.NAME_LENGTH_ERROR_MESSAGE);
     }
 
+    @DisplayName("Name 생성 정상일 때")
+    @Test
+    void createName2() {
+        //given
+        String stringName = "정상이름";
+
+        //when
+        Name name1 = new Name(stringName);
+        Name name2 = new Name(stringName);
+
+        //then
+        assertThat(name1).isEqualTo(name2);
+    }
+
     @DisplayName("문자열로 NAME 리스트 만들기")
     @Test
     void listOfEqualsTest() {
