@@ -1,16 +1,21 @@
 package racingcar;
 
+import racingcar.collection.RaceResult;
 import racingcar.model.RacingGameRequest;
+import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class Controller {
 
-    public static void main(String[] args) {
+    public void play() {
         InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
         RacingGameRequest request = inputView.inputRacingGame();
 
-        OutputView outputView = new OutputView(request);
-        outputView.printPlayRacing();
+        RacingGame game = new RacingGame(request, new RandomMoveStrategy());
+        RaceResult raceResult = game.playRace();
+
+        outputView.printRaceHistories(raceResult);
     }
 }

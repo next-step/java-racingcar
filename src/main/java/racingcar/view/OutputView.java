@@ -1,43 +1,44 @@
 package racingcar.view;
 
-import racingcar.RacingGame;
-import racingcar.model.RacingGameRequest;
-import racingcar.collection.RacingResult;
+import racingcar.collection.RaceResult;
+import racingcar.collection.LapResult;
 
 public class OutputView {
     private final static String SKID_MARK_CHARACTER = "-";
     private final static String EXECUTION_RESULT_MESSAGE = "실행 결과";
-    private final RacingGame racingGame;
-    private final int countOfTry;
 
-    public OutputView(RacingGameRequest request) {
-        this.racingGame = new RacingGame(request.getCountOfCar());
-        this.countOfTry = request.getCountOfTry();
-    }
+    private final static String WINNERS_MESSAGE = "가 최종 우승했습니다.";
+    private final static String WINNER_JOINING_DELIMITER = ",";
+    private final static String CAR_NAME_DELIMITER = ": ";
 
-    public void printPlayRacing() {
-        this.printExecutionResultMessage();
-        for (int i = 0; i < countOfTry; i++) {
-            RacingResult racingResult = racingGame.race();
-            this.printCurrentPositionOfCars(racingResult);
-        }
-    }
+    private final StringBuilder stringBuilder = new StringBuilder();
 
-    public void printExecutionResultMessage() {
+    public void printRaceHistories(RaceResult result) {
         System.out.println(EXECUTION_RESULT_MESSAGE);
+        result.getLabResults().forEach(this::printRaceResult);
+
+
+        System.out.println(getWinnersNameString(result) + WINNERS_MESSAGE);
     }
 
-    public void printCurrentPositionOfCars(RacingResult racingResult) {
-        racingResult.getPositions()
-                .forEach(this::printCurrentPositionOfCar);
+    private String getWinnersNameString(RaceResult result) {
+        return String.join(WINNER_JOINING_DELIMITER, result.getWinnerNames());
+    }
+
+    private void printRaceResult(LapResult lapResult) {
+        lapResult.getCarNames().forEach(carName -> {
+            stringBuilder.setLength(0);
+            stringBuilder.append(carName).append(CAR_NAME_DELIMITER);
+            appendSkidMark(stringBuilder, lapResult.getCarPositionResult(carName));
+            System.out.println(stringBuilder);
+        });
+
         System.out.println();
     }
 
-    private void printCurrentPositionOfCar(int currentPosition) {
-        StringBuilder stringBuilder = new StringBuilder();
+    private void appendSkidMark(StringBuilder stringBuilder, Integer currentPosition) {
         for (int i = 0; i <= currentPosition; i++) {
             stringBuilder.append(SKID_MARK_CHARACTER);
         }
-        System.out.println(stringBuilder);
     }
 }

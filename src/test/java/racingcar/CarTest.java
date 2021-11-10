@@ -2,25 +2,22 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.strategy.MoveStrategy;
+import racingcar.collection.CarName;
+import racingcar.strategy.TestMoveStrategy;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class CarTest {
-
-    static class TestMoveStrategy implements MoveStrategy {
-
-        @Override
-        public boolean strategicMove() {
-            return true;
-        }
-    }
+public class CarTest {
+    public final static String TEST_CAR_NAME = "test";
 
     @Test
-    @DisplayName("move 메소드는 자동차를 확률적으로 이동시키고 현재 위치를 반환한다")
+    @DisplayName("move 메소드는 자동차를 이동시키고 현재 위치를 반환한다")
     public void 테스트_Car_move() {
+        Car car = new Car(new CarName(TEST_CAR_NAME), new TestMoveStrategy());
+        int iterationCount = 5;
 
-        Car car = new Car(new TestMoveStrategy());
-        assertThat(car.move()).isEqualTo(1);
+        for (int i = 1; i < iterationCount; i++) {
+            assertThat(car.move().getPosition()).isEqualTo(i);
+        }
     }
 }

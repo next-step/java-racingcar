@@ -29,8 +29,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("String 클래스의 charAt 메소드는 전달된 인덱스가 문자열의 길이를 " +
-            "초과하면 IndexOutOfBoundsException 예외가 발생한다")
+    @DisplayName("String 클래스의 charAt 메소드는 전달된 인덱스가 문자열의 길이를 예외를 던진다.")
     public void 테스트_String_charAt_IndexOutOfBoundsException() {
         assertThatThrownBy(() -> "abc".charAt(4))
                 .isInstanceOf(IndexOutOfBoundsException.class)
