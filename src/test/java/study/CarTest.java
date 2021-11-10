@@ -27,8 +27,8 @@ public class CarTest {
         Car car = new Car(new Name("pobi"), new Position(0));
         Car movedCar = new Car(new Name("pobi"), new Position(1));
 
-        assertThat(car.move(true).getPosition().getPosition())
-                .isEqualTo(movedCar.getPosition().getPosition());
+        assertThat(car.move(true).getPosition().getValue())
+                .isEqualTo(movedCar.getPosition().getValue());
     }
 
     @Test

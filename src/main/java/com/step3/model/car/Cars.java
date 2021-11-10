@@ -7,16 +7,6 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(int carCount) {
-        List<Car> cars = new LinkedList<>();
-
-        for (int idx = 0; idx < carCount; idx++) {
-            cars.add(new Car(new Name("idx"), new Position(0)));
-        }
-
-        this.cars = cars;
-    }
-
     public Cars(String[] carsName) {
         List<Car> cars = new LinkedList<>();
 
@@ -28,9 +18,9 @@ public class Cars {
     }
 
     public List<Car> getWinnerCars() {
-        int maxPosition = cars.stream().mapToInt(c -> c.getPosition().getPosition()).max().getAsInt();
+        int maxPosition = cars.stream().mapToInt(c -> c.getPosition().getValue()).max().getAsInt();
         return cars.stream()
-                .filter(c -> c.getPosition().getPosition() == maxPosition)
+                .filter(c -> c.getPosition().getValue() == maxPosition)
                 .collect(Collectors.toList());
     }
 
