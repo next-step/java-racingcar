@@ -1,8 +1,8 @@
 package step3.ui;
 
+import step3.domain.board.CarSnapShots;
 import step3.domain.board.CarSnapshot;
 import step3.domain.board.GameBoard;
-import step3.domain.board.RoundBoard;
 import step3.domain.car.Name;
 
 import java.util.List;
@@ -15,27 +15,27 @@ public class GameResult {
     private static final int STRING_BUILDER_CLEAR_VALUE = 0;
     private static final StringBuilder stringBuilder = new StringBuilder();
 
-    private final List<RoundBoard> roundBoards;
+    private final List<CarSnapShots> carSnapShots;
     private final List<Name> winnerNames;
 
     public GameResult(GameBoard gameBoard, List<Name> winnerNames) {
         checkArgument(gameBoard != null, "gameBoard is required");
         checkArgument(winnerNames != null, "winnerNames is required");
-        this.roundBoards = gameBoard.getRoundBoards();
+        this.carSnapShots = gameBoard.getCarSnapShots();
         this.winnerNames = winnerNames;
     }
 
     public void showGame() {
         System.out.println("\n실행결과");
-        for (RoundBoard roundBoard : roundBoards) {
-            showRound(roundBoard);
+        for (CarSnapShots carSnapShots : this.carSnapShots) {
+            showRound(carSnapShots);
             System.out.println();
         }
         showWinners();
     }
 
-    private void showRound(RoundBoard roundBoard) {
-        for (CarSnapshot snapshot : roundBoard.getRecords()) {
+    private void showRound(CarSnapShots carSnapShots) {
+        for (CarSnapshot snapshot : carSnapShots.getCarSnapshots()) {
             System.out.print(snapshot.getName() + " : ");
             print(snapshot.getLocation());
         }

@@ -7,13 +7,13 @@ import static java.util.Collections.unmodifiableList;
 
 public class GameBoard {
 
-    private final List<RoundBoard> roundBoards = new ArrayList<>();
+    private final List<CarSnapShots> carSnapShots = new ArrayList<>();
 
     public void recordRound(List<CarSnapshot> carSnapshots) {
-        roundBoards.add(new RoundBoard(carSnapshots));
+        carSnapShots.add(new CarSnapShots(carSnapshots));
     }
 
-    public List<RoundBoard> getRoundBoards() {
-        return unmodifiableList(roundBoards);
+    public List<CarSnapShots> getCarSnapShots() {
+        return unmodifiableList(carSnapShots);
     }
 }
