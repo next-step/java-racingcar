@@ -1,4 +1,4 @@
-package study;
+package study.step2;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
