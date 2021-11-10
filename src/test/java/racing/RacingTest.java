@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 /**
  * @author han
@@ -78,10 +79,10 @@ class RacingTest {
             Arguments.arguments(0,1,0),
             Arguments.arguments(0,2,0),
             Arguments.arguments(1,0,0),
-            Arguments.arguments(1,1,0),
+            Arguments.arguments(1,1,1),
             Arguments.arguments(1,2,1),
             Arguments.arguments(2,0,1),
-            Arguments.arguments(2,1,1),
+            Arguments.arguments(2,1,2),
             Arguments.arguments(2,2,2)
         );
     }
