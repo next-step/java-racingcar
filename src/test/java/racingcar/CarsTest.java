@@ -23,18 +23,18 @@ public class CarsTest {
         cars = new Cars();
         cars.add(new Car(NAME_OF_CAR));
         assertThat(cars.size()).isEqualTo(INDICATOR_OF_ONE_CAR);
-        assertThat(cars.contains(new Car(NAME_OF_CAR))).isEqualTo(true);
+        assertThat(cars.contains(new Car(NAME_OF_CAR))).isTrue();
     }
 
     @Test
     void contains() {
         cars = carFactory.buildCars();
-        assertThat(cars.contains(new Car("pobi"))).isEqualTo(true);
-        assertThat(cars.contains(new Car("tomo"))).isEqualTo(true);
-        assertThat(cars.contains(new Car("crong"))).isEqualTo(true);
-        assertThat(cars.contains(new Car("honux"))).isEqualTo(true);
-        assertThat(cars.contains(new Car("yong"))).isEqualTo(true);
-        assertThat(cars.contains(new Car("dane"))).isEqualTo(false);
+        assertThat(cars.contains(new Car("pobi"))).isTrue();
+        assertThat(cars.contains(new Car("tomo"))).isTrue();
+        assertThat(cars.contains(new Car("crong"))).isTrue();
+        assertThat(cars.contains(new Car("honux"))).isTrue();
+        assertThat(cars.contains(new Car("yong"))).isTrue();
+        assertThat(cars.contains(new Car("dane"))).isFalse();
     }
 
     @Test

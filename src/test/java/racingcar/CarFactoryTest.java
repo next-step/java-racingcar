@@ -21,6 +21,6 @@ public class CarFactoryTest {
 
     private void checkExistenceOfCars(Cars cars) {
         Arrays.stream(NAMES_OF_CARS)
-                .forEach( name -> assertThat(cars.contains(new Car(name))).isEqualTo(true));
+                .forEach( name -> assertThat(cars.contains(new Car(name))).isTrue());
     }
 }
