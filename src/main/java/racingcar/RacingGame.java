@@ -26,8 +26,7 @@ public class RacingGame {
         outputView.showOutputMessage();
         IntStream.rangeClosed(FIRST_ROUND, numberOfTrials - ROUND_INCREMENT)
                 .forEach(roundNumber -> eachRound(outputView, roundNumber, racingManager));
-        eachRound(outputView, numberOfTrials, racingManager);
-        List<CarState> resultOfLastRound = racingManager.progressRound();
+        List<CarState> resultOfLastRound = eachRound(outputView, numberOfTrials, racingManager);
 
         WinnerChooser winnerChooser = new WinnerChooser(resultOfLastRound);
         outputView.showWinners(winnerChooser.chooseWinner());
