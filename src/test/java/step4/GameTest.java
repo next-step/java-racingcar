@@ -4,12 +4,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step4.domain.*;
 import step4.service.Game;
-import step4.domain.GameHistory;
-import step4.service.dto.CarsDto;
-import step4.service.dto.GameHistoryDto;
+import step4.domain.dto.CarsDto;
+import step4.domain.dto.GameHistoryDto;
 import step4.service.dto.GameInformation;
-import step4.service.dto.Winners;
+import step4.domain.dto.Winners;
 import step4.strategy.MoveStrategy;
+import step4.vo.Name;
+import step4.vo.Names;
+import step4.vo.Position;
 
 import java.util.ArrayList;
 import java.util.List;

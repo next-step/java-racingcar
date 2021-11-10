@@ -6,6 +6,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import step4.domain.*;
 import step4.domain.GameHistory;
+import step4.vo.Name;
+import step4.vo.Names;
+import step4.vo.Position;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package step4.service.dto;
+package step4.domain.dto;
 
-import step4.domain.Names;
+import step4.vo.Names;
 
 import java.util.Objects;
 

@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import step4.domain.Car;
-import step4.domain.Name;
-import step4.domain.Position;
+import step4.vo.Name;
+import step4.vo.Position;
 import step4.strategy.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;

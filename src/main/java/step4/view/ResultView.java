@@ -1,8 +1,10 @@
 package step4.view;
 
-import step4.domain.GameHistory;
-import step4.domain.Name;
-import step4.domain.Names;
+import step4.vo.Name;
+import step4.domain.dto.CarDto;
+import step4.domain.dto.CarsDto;
+import step4.domain.dto.GameHistoryDto;
+import step4.domain.dto.Winners;
 import step4.service.dto.*;
 
 import java.util.List;

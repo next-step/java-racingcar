@@ -1,10 +1,8 @@
 package step4.domain;
 
 import step4.strategy.MoveStrategy;
-import step4.service.dto.Winners;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.stream.Collectors;
 

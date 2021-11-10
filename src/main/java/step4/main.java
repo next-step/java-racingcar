@@ -1,8 +1,7 @@
 package step4;
 
 import step4.service.Game;
-import step4.domain.GameHistory;
-import step4.service.dto.GameHistoryDto;
+import step4.domain.dto.GameHistoryDto;
 import step4.service.dto.GameInformation;
 import step4.strategy.MoveStrategy;
 import step4.strategy.NumberGenerator;

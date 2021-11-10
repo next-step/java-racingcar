@@ -1,4 +1,4 @@
-package step4.service.dto;
+package step4.domain.dto;
 
 import step4.domain.GameHistory;
 

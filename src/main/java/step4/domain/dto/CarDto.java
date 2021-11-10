@@ -1,8 +1,8 @@
-package step4.service.dto;
+package step4.domain.dto;
 
 import step4.domain.Car;
-import step4.domain.Name;
-import step4.domain.Position;
+import step4.vo.Name;
+import step4.vo.Position;
 
 import java.util.Objects;
 

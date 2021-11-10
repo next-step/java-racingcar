@@ -1,5 +1,8 @@
 package step4.domain;
 
+import step4.vo.Name;
+import step4.vo.Names;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;

@@ -1,8 +1,7 @@
-package step4.service.dto;
+package step4.domain.dto;
 
 import step4.domain.Cars;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;

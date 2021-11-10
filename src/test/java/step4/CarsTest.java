@@ -4,12 +4,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import step4.domain.*;
-import step4.service.dto.Winners;
 import step4.strategy.MoveStrategy;
+import step4.vo.Name;
+import step4.vo.Names;
+import step4.vo.Position;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
