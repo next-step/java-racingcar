@@ -3,7 +3,6 @@ package racingcar.gameinfo;
 import racingcar.domain.Cars;
 import racingcar.domain.CarNameInfo;
 import racingcar.domain.CountInfo;
-import racingcar.gameinfo.GameInfo;
 import racingcar.moverule.MoveRule;
 import racingcar.view.result.ResultView;
 
