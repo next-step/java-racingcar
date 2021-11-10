@@ -1,7 +1,5 @@
 package com.kakao.racingcar.history;
 
-import com.kakao.racingcar.domain.Car;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,8 +9,8 @@ import java.util.stream.Collectors;
 public class RacingHistory {
     private final List<RoundHistory> roundHistories = new ArrayList<>();
 
-    public void logging(int round, List<Car> cars) {
-        roundHistories.add(RoundHistory.of(round, cars));
+    public void logging(RoundHistory roundHistory) {
+        roundHistories.add(roundHistory);
     }
 
     public Map<Integer, List<CarHistory>> getResult() {
@@ -20,5 +18,13 @@ public class RacingHistory {
                 .collect(Collectors.collectingAndThen(
                         Collectors.toMap(RoundHistory::getRound, RoundHistory::getCarHistories),
                         Collections::unmodifiableMap));
+    }
+
+    public List<String> getWinner() {
+        RoundHistory lastRound = roundHistories.get(roundHistories.size() - 1);
+
+        return lastRound.roundWinner().stream()
+                .map(CarHistory::getUserName)
+                .collect(Collectors.toList());
     }
 }

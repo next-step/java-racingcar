@@ -5,8 +5,8 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static com.kakao.racingcar.config.CarConfig.BASE_PERCENTAGE;
-import static com.kakao.racingcar.config.CarConfig.BEGIN_INDEX;
+import static com.kakao.racingcar.config.CarConstant.BASE_PERCENTAGE;
+import static com.kakao.racingcar.config.CarConstant.BEGIN_INDEX;
 
 public class RandomNumberGenerator {
 

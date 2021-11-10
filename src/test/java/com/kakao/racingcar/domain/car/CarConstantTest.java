@@ -1,6 +1,5 @@
-package com.kakao.racingcar.domain;
+package com.kakao.racingcar.domain.car;
 
-import com.kakao.racingcar.config.CarConfig;
 import com.kakao.racingcar.util.RandomNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CarConfigTest {
+class CarConstantTest {
 
     @Test
     @DisplayName("입력한 숫자 크기만큼의 랜덤 숫자를 생성한다.")

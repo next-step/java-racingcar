@@ -1,43 +1,56 @@
 package com.kakao.racingcar.history;
 
-import com.kakao.racingcar.domain.Car;
-import com.kakao.racingcar.domain.CarCollection;
+import com.kakao.racingcar.domain.car.CarCollection;
+import com.kakao.racingcar.domain.car.RacingGame;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingHistoryTest {
 
     @Test
-    @DisplayName("racingHistory 로깅 기능을 이용하여, 차의 이동 기록을 저장한다.")
-    void logging() {
-        Car car = new Car(0);
+    @DisplayName("레이싱 게임의 모든 라운드의 기록을 저장한다")
+    void racingHistory() {
+        RacingGame racingGame = new RacingGame(3, Arrays.asList("jyami", "mj"));
+        racingGame.runRace();
+        RacingHistory racingHistory = racingGame.getRacingHistory();
+        assertThat(racingHistory.getResult().size()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("레이싱 게임의 모든 라운드의 위치를 저장한다")
+    void racingHistoryAll() {
+
+        RacingHistory racingHistory = makeRacingHistory();
+
+        int position = 0;
+        for (List<CarHistory> carHistories : racingHistory.getResult().values()) {
+            assertThat(carHistories)
+                    .containsExactly(new CarHistory(++position, "jyami"), new CarHistory(0, "mj"));
+        }
+    }
+
+    private RacingHistory makeRacingHistory() {
+        CarCollection carCollection = new CarCollection(Arrays.asList("jyami", "mj"));
         RacingHistory racingHistory = new RacingHistory();
 
-        moveAndRecordCar(car, racingHistory);
-
-        Map<Integer, List<CarHistory>> result = racingHistory.getResult();
-        List<CarHistory> round1 = result.get(1);
-        assertThat(round1.get(0).getPosition()).isEqualTo(1);
-        List<CarHistory> round2 = result.get(2);
-        assertThat(round2.get(0).getPosition()).isEqualTo(2);
-        List<CarHistory> round3 = result.get(3);
-        assertThat(round3.get(0).getPosition()).isEqualTo(2);
+        racingHistory.logging(new RoundHistory(1, carCollection.tryMoveCars(Arrays.asList(10, 0))));
+        racingHistory.logging(new RoundHistory(2, carCollection.tryMoveCars(Arrays.asList(10, 0))));
+        racingHistory.logging(new RoundHistory(3, carCollection.tryMoveCars(Arrays.asList(10, 0))));
+        return racingHistory;
     }
 
-    private void moveAndRecordCar(Car car, RacingHistory racingHistory) {
-        car.tryMove(10);
-        racingHistory.logging(1, Collections.singletonList(car));
-        car.tryMove(10);
-        racingHistory.logging(2, Collections.singletonList(car));
-        car.tryMove(0);
-        racingHistory.logging(3, Collections.singletonList(car));
+    @Test
+    @DisplayName("레이싱 게임의 마지막 라운드를 보고 승자 이름을 알려준다.")
+    void getRacingWinner() {
+        RacingHistory racingHistory = makeRacingHistory();
+        List<String> winner = racingHistory.getWinner();
+        assertThat(winner).containsExactly("jyami");
     }
+
 
 }

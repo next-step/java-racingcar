@@ -1,15 +1,18 @@
 package com.kakao.racingcar;
 
-import com.kakao.racingcar.domain.RacingGame;
+import com.kakao.racingcar.domain.car.RacingGame;
 import com.kakao.racingcar.ui.InputView;
 import com.kakao.racingcar.ui.OutputView;
+import com.kakao.racingcar.util.Splitter;
+
+import java.util.List;
 
 public class Runner {
     public static void main(String args[]) {
         InputView inputView = new InputView(System.in);
-        int carTotal = inputView.inputCarTotal();
+        List<String> userNames = Splitter.splitWithComma(inputView.inputUserNames());
         int tryCount = inputView.inputTryCount();
-        RacingGame racingGame = new RacingGame(tryCount, carTotal);
+        RacingGame racingGame = new RacingGame(tryCount, userNames);
         racingGame.runRace();
         OutputView.printRacingGame(racingGame.getRacingHistory());
     }
