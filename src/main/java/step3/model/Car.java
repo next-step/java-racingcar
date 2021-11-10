@@ -5,12 +5,12 @@ import step3.strategy.MoveStrategy;
 public class Car {
     private Integer position;
 
-    public Integer getPosition() {
-        return position;
-    }
-
     public Car() {
         this.position = 0;
+    }
+
+    public Integer getPosition() {
+        return position;
     }
 
     public void movable(MoveStrategy moveStrategy) {
