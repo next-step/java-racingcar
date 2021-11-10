@@ -5,6 +5,9 @@ public class Car {
 
     private Location location;
 
+    public Car(int location) {
+        this.location = new Location(location);
+    }
     public Car() {
         this.location = new Location();
     }

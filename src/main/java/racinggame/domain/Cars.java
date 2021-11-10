@@ -11,8 +11,11 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(Integer carCount) {
+        this(carCount, Location.START_LOCATION);
+    }
+    public Cars(Integer carCount, Integer location) {
         cars = IntStream.range(START_INDEX, carCount)
-                .mapToObj((idx) -> new Car())
+                .mapToObj((idx) -> new Car(location))
                 .collect(Collectors.toList());;
     }
 
