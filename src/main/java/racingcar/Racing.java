@@ -30,6 +30,15 @@ public class Racing {
         for (Car car : carListView.getList()) {
             car.increaseState(random.nextInt(10));
         }
+        carListView.print();
+    }
+
+    public void start() {
+        System.out.println("실행 결과");
+        for (int i = 0; i < tryCount; i++) {
+            this.goingTry();
+        }
+        carListView.print();
     }
 
     public List<Car> getCarList() {

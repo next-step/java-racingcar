@@ -32,5 +32,11 @@ public class RacingTest {
         }
     }
 
+    @Test
+    @DisplayName("자동차 경주 통합 테스트")
+    void racingStart(){
+        racing.start();
+    }
+
 }
 
