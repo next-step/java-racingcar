@@ -1,6 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.Test;
+import racingcar.domain.MovePredicate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
