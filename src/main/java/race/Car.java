@@ -6,7 +6,7 @@ public class Car {
     private final String name;
 
     public Car(String name) {
-        if(name == null || name.trim().isEmpty()) {
+        if(name == null || name.trim().isEmpty() || name.trim().length() > 5) {
             throw new IllegalArgumentException("invalid name");
         }
         this.name = name;
