@@ -14,17 +14,23 @@ public enum CalculatorEnum {
         return num1 / num2;
     });
 
-    private final BiFunction<Integer,Integer,Integer> expression;
     private final String operator;
+    public final BiFunction<Integer,Integer,Integer> expression;
 
     CalculatorEnum(String operator, BiFunction<Integer, Integer, Integer> expression){
         this.operator = operator;
-        this.expression = expression;}
+        this.expression = expression;
+    }
 
-    public static Integer findOperator(Integer num1, Integer num2, String operator) {
+    public static CalculatorEnum findOperator(String operator) {
         return Arrays.stream(values())
                 .filter(calculatorEnum -> calculatorEnum.operator.equals(operator))
-        .findAny()
-        .orElseThrow(() -> new IllegalArgumentException("invalid operator")).expression.apply(num1,num2);
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("invalid operator"));
     }
+
+    public static Integer calculator(Integer num1, Integer num2, CalculatorEnum operatorValue) {
+        return operatorValue.expression.apply(num1, num2);
+    }
+
 }
