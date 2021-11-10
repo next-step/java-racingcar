@@ -11,8 +11,9 @@
 1. ~~MovingStrategy domain 패키지로 변경, 인터페이스 이름 변경~~
 2. ~~Name 클래스 분리 및 테스트 작성~~
 3. ~~Position 클래스 분리 및 테스트 작성~~ 
-4. code convention, format, naming
+4. ~~code convention, format, naming~~
 
 **- 기능 목록**
 1. Position 클래스
 2. Name 클래스
+3. Message 클래스

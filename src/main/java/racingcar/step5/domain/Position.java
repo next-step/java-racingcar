@@ -2,6 +2,9 @@ package racingcar.step5.domain;
 
 import java.util.Objects;
 
+import static racingcar.step5.message.ErrorMessage.*;
+import static racingcar.step5.message.ViewMessage.*;
+
 public class Position {
 
     private int position;
@@ -12,7 +15,7 @@ public class Position {
 
     public Position(int position) {
         if (position < 0) {
-            throw new IllegalArgumentException("위치 값은 음수를 가질 수 없습니다.");
+            throw new IllegalArgumentException(NO_ZERO_LESS_MESSAGE);
         }
         this.position = position;
     }
@@ -40,6 +43,15 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(position);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            builder.append(POSITION_SIGN);
+        }
+        return builder.toString();
     }
 
 }

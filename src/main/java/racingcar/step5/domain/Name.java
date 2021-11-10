@@ -2,6 +2,8 @@ package racingcar.step5.domain;
 
 import java.util.Objects;
 
+import static racingcar.step5.message.ErrorMessage.*;
+
 public class Name {
 
     private final String name;
@@ -17,10 +19,10 @@ public class Name {
 
     private void checkCarNaming(String name) {
         if (name == null || name.trim().isEmpty())
-            throw new IllegalArgumentException("빈 값일 수 없습니다.");
+            throw new IllegalArgumentException(NO_EMPTY_MESSAGE);
 
         if (name.length() > 5) {
-            throw new IllegalArgumentException("5자를 초과 할 수 없습니다");
+            throw new IllegalArgumentException(NO_OVER_FIVE_MESSAGE);
         }
     }
 
@@ -35,6 +37,11 @@ public class Name {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 
 }

@@ -2,6 +2,8 @@ package racingcar.step5.domain;
 
 import java.util.Objects;
 
+import static racingcar.step5.message.ViewMessage.*;
+
 /**
  * Car(자동차) 클래스
  * 2021.11.04
@@ -12,6 +14,7 @@ public class Car {
 
     private static final int MAX_NUM = 9;
     private static final int MIN_NUM = 4;
+
     private Name name;
     private Position position;
 
@@ -72,6 +75,11 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return name.toString() + NAME_DELIMITER + position.toString();
     }
 
 }

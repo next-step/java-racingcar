@@ -7,23 +7,18 @@ import racingcar.step5.domain.RacingGame;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class ResultView {
+import static racingcar.step5.message.ViewMessage.*;
 
-    private static final String RESULT_SIGN = "-";
-    private static final String PRINT_NAME_DELIMITER = " : ";
-    private static final String COMMA = ", ";
-    private static final String EXECUTE_RESULT_MESSAGE = "실행결과";
-    private static final String WINNERS_RESULT_MESSAGE = "(이)가 최종 우승했습니다.";
+public class ResultView {
 
     public void executeMessage() {
         System.out.println(EXECUTE_RESULT_MESSAGE);
     }
 
     public void printResult(Cars cars) {
-        StringBuilder builder = new StringBuilder();
         cars.getCars()
-                .forEach(car -> appendSign(builder, car));
-        System.out.println(builder);
+                .forEach(car -> System.out.println(car.toString()));
+        System.out.println();
     }
 
     public void printWinners(RacingGame racingGame) {
@@ -32,25 +27,16 @@ public class ResultView {
         int size = winners.size();
         IntStream.range(0, size)
                 .forEach(i -> {
-                    builder.append(winners.get(i).getName().getName());
+                    builder.append(winners.get(i).getName().toString());
                     appendComma(builder, size, i);
-        });
+                });
         builder.append(WINNERS_RESULT_MESSAGE);
         System.out.println(builder);
     }
 
-    private void appendSign(StringBuilder builder, Car car) {
-        builder.append(car.getName().getName());
-        builder.append(PRINT_NAME_DELIMITER);
-        for (int i = 0; i < car.getPosition().getPosition(); i++) {
-            builder.append(RESULT_SIGN);
-        }
-        builder.append('\n');
-    }
-
     private void appendComma(StringBuilder builder, int size, int index) {
         if (index != size - 1) {
-            builder.append(COMMA);
+            builder.append(WINNER_DELIMITER);
         }
     }
 

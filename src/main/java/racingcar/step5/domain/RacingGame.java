@@ -2,6 +2,8 @@ package racingcar.step5.domain;
 
 import java.util.List;
 
+import static racingcar.step5.message.ErrorMessage.*;
+
 public class RacingGame {
 
     private static final int COUNT_OF_TRY_MIN_NUM = 1;
@@ -44,7 +46,7 @@ public class RacingGame {
 
     private static void checkCountOfTry(int countOfTry) {
         if (countOfTry < COUNT_OF_TRY_MIN_NUM) {
-            throw new IllegalArgumentException("0 이하 값은 불가능 합니다.");
+            throw new IllegalArgumentException(NO_ZERO_LESS_MESSAGE);
         }
     }
 

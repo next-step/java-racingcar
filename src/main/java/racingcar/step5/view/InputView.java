@@ -2,17 +2,20 @@ package racingcar.step5.view;
 
 import java.util.Scanner;
 
+import static racingcar.step5.message.ViewMessage.NAME_INPUT_MESSAGE;
+import static racingcar.step5.message.ViewMessage.TRY_INPUT_MESSAGE;
+
 public class InputView {
 
     private final Scanner sc = new Scanner(System.in);
 
     public String getCarName() {
-        System.out.println("경주할 자동차 이름을 입력하세요");
+        System.out.println(NAME_INPUT_MESSAGE);
         return sc.nextLine();
     }
 
     public int countOfTry() {
-        System.out.println("시도할 회수는 몇 회 인가요?");
+        System.out.println(TRY_INPUT_MESSAGE);
         return sc.nextInt();
     }
 
