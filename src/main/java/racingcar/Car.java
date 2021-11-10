@@ -1,6 +1,8 @@
 package racingcar;
 
-public class Car {
+import common.View;
+
+public class Car extends View {
 
     private int state;
 
@@ -14,6 +16,7 @@ public class Car {
         }
     }
 
+    @Override
     public void print() {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < this.state; i++) {
