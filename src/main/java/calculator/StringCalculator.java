@@ -13,13 +13,13 @@ public class StringCalculator {
         String[] keywords = formula.split(SCHEME_SEPARATOR);
         int answer = parseInt(keywords[0]);
         for (int index = 2; index < keywords.length; index+=2) {
-            Shape shape = Shape.findOf(keywords[index - 1]);
+            Operation shape = Operation.findOf(keywords[index - 1]);
             answer = shape.execute(answer, parseInt(keywords[index]));
         }
         return answer;
     }
 
-    public static void validFormula(String value) {
+    private static void validFormula(String value) {
         if(Objects.isNull(value)) {
             throw new IllegalArgumentException("null 을 계산할 수 없습니다.");
         }
