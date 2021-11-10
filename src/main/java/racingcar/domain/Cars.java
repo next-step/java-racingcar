@@ -51,14 +51,14 @@ public class Cars {
     }
 
     public List<Car> getWinnerCars(){
-        int maxPosition = GetMaxPosition();
+        int maxPosition = getMaxPosition();
         return Collections.unmodifiableList(
                 this.carList.stream()
                         .filter(car -> car.getPosition() == maxPosition)
                         .collect(Collectors.toList()));
     }
 
-    private int GetMaxPosition(){
+    private int getMaxPosition(){
         return Collections.max(
                 this.carList.stream()
                         .map(car -> car.getPosition())
