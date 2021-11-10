@@ -2,21 +2,17 @@ package step3;
 
 public class GameOutput {
 
-    public static void println(String output) {
-        System.out.println(output);
-    }
-
     public static void printCarPaths(CarRacingGame carRacingGame) {
-        println(carRacingGame.getCars());
+        printCars(carRacingGame.getCars());
     }
 
-    public static void println(Car[] cars) {
+    private static void printCars(Car[] cars) {
         for (Car car : cars) {
-            println(car);
+            printCar(car);
         }
     }
 
-    private static void println(Car car) {
+    private static void printCar(Car car) {
         for (int i = 0; i < car.getPosition(); i++) {
             System.out.print('-');
         }
