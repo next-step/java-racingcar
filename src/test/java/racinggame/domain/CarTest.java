@@ -20,7 +20,7 @@ class CarTest {
     void moveCar() {
         Location expected = new Location(1);
 
-        car.move(5);
+        car.move(State.MOVE);
 
         assertThat(car.getLocation()).isEqualTo(expected);
     }
@@ -30,7 +30,7 @@ class CarTest {
     void stopCar() {
         Location expected = new Location();
 
-        car.move(3);
+        car.move(State.STOP);
 
         assertThat(car.getLocation()).isEqualTo(expected);
     }
