@@ -22,7 +22,15 @@ public enum Operator {
     DIVIDE("/") {
         @Override
         public int calc(int leftOperand, int rightOperand) {
+            validateRightOperand(rightOperand);
+
             return leftOperand / rightOperand;
+        }
+
+        private void validateRightOperand(int rightOperand) {
+            if (rightOperand == 0) {
+                throw new ArithmeticException("Divide By Zero");
+            }
         }
     };
 
