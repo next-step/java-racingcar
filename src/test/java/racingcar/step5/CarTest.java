@@ -2,11 +2,10 @@ package racingcar.step5;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.step5.domain.Car;
+import racingcar.step5.domain.Position;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
@@ -16,7 +15,7 @@ public class CarTest {
         Car car = new Car("k3", 1);
         car.move(4);
         car.move(9);
-        assertThat(car.getPosition()).isEqualTo(3);
+        assertThat(car.getPosition()).isEqualTo(new Position(3));
     }
 
     @Test
@@ -25,7 +24,7 @@ public class CarTest {
         Car car = new Car("k3", 1);
         car.move(3);
         car.move(10);
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
 
     @Test
@@ -33,7 +32,7 @@ public class CarTest {
     void carMoveRandom() {
         Car car = new Car("k3", 1);
         car.move(() -> true);
-        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(car.getPosition()).isEqualTo(new Position(2));
     }
 
 }

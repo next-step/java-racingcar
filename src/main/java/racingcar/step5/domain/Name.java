@@ -4,11 +4,15 @@ import java.util.Objects;
 
 public class Name {
 
-    private String name;
+    private final String name;
 
     public Name(String name) {
         checkCarNaming(name);
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     private void checkCarNaming(String name) {
@@ -32,4 +36,5 @@ public class Name {
     public int hashCode() {
         return Objects.hash(name);
     }
+
 }

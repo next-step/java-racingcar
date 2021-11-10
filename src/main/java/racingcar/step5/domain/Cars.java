@@ -7,6 +7,7 @@ import java.util.Objects;
 
 public class Cars {
 
+    private static final String NAME_DELIMITER = ",";
     private List<Car> cars = new ArrayList<>();
 
     //테스트 코드를 위한 메서드
@@ -14,7 +15,7 @@ public class Cars {
         cars = Arrays.asList(car);
     }
 
-    public Cars(String[] carName) {
+    public Cars(String carName) {
         createCars(carName);
     }
 
@@ -28,20 +29,26 @@ public class Cars {
         return cars;
     }
 
-    public int getMaxPosition() {
-        return cars.stream()
-                .mapToInt(Car::getPosition)
-                .filter(this::moreThanZero)
-                .max()
-                .orElse(0);
+    public List<Car> findWinners() {
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.isEqualPosition(getMaxPosition())) {
+                winners.add(car);
+            }
+        }
+        return winners;
     }
 
-    private boolean moreThanZero(int num) {
-        return num > 0;
+    public Position getMaxPosition() {
+        Position maxPosition = new Position();
+        for (Car car : cars) {
+            maxPosition = car.getMaxPosition(maxPosition);
+        }
+        return maxPosition;
     }
 
-    private void createCars(String[] split) {
-        Arrays.stream(split)
+    private void createCars(String carName) {
+        Arrays.stream(carName.split(NAME_DELIMITER))
                 .forEach(name -> cars.add(new Car(name.trim())));
     }
 
