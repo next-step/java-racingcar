@@ -5,14 +5,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import step4.domain.*;
-import step4.service.dto.GameHistory;
-import step4.strategy.MoveStrategy;
+import step4.domain.GameHistory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class GameHistoryTest {
 
@@ -25,30 +23,29 @@ class GameHistoryTest {
 
     @DisplayName("getHistory(time) 메서드를 통해 history를 가져온다.")
     @ParameterizedTest
-    @CsvSource(value = {"1:0,1,0:miz,ki,bi"}, delimiter = ':')
+    @CsvSource(value = {"0:0,1,0:miz,ki,bi"}, delimiter = ':')
     void saveAndGetHistoryTest(Integer time, String positionStr, String nameStr) {
         Cars expect = createCars(nameStr, positionStr);
-        gameHistory.save(time, expect);
+        gameHistory.save(expect);
 
-        Cars actual = gameHistory.getHistory(time);
+        Cars actual = gameHistory.getHistory().get(0);
         assertThat(actual).isEqualTo(expect);
     }
 
-    @DisplayName("getHistory(time) 없는 time을 가져오려고하면 IllegalException이 발생한다.")
+    @DisplayName("위치가 가장 높은 자동차가 winner 가 된다.")
     @ParameterizedTest
-    @CsvSource(value = {"1:0,1,0:miz,ki,bi"}, delimiter = ':')
-    void getNoSearchTest(Integer time, String positionStr, String nameStr) {
-        Cars expect = createCars(nameStr, positionStr);
-        gameHistory.save(time, expect);
+    @CsvSource(value = {"miz,ki,bi:1,2,3:bi", "miz,ki,bi:5,5,3:miz,ki"}, delimiter = ':')
+    void printTest(String nameStr, String positionStr, String winnerStr) {
+        Cars nowCars = createCars(nameStr, positionStr);
+        gameHistory.save(nowCars);
+        gameHistory.makeWinner(0);
 
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            gameHistory.getHistory(2);
-        });
+        Names expect = new Names();
+        expect.addNames(winnerStr);
+        assertThat(gameHistory.getWinnerNames()).isEqualTo(expect);
     }
 
-
     private Cars createCars(String nameStr, String positionStr) {
-        MoveStrategy moveStrategy = () -> true;
         Names names = new Names();
         names.addNames(nameStr);
 

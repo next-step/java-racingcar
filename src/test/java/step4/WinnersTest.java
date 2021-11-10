@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import step4.domain.Name;
+import step4.domain.Names;
 import step4.service.dto.Winners;
 
 import java.util.Arrays;
@@ -14,18 +15,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class WinnersTest {
 
-    @DisplayName("Names 배열을 ,로 이어진 스트링으로 반환한다.")
+    @DisplayName("Names 배열을 가진다.")
     @ParameterizedTest
     @ValueSource(strings = {"miz,ki,bi"})
-    void toStringTest(String input) {
-        List<Name> nameList = createNameList(input);
-        Winners winners = Winners.create(nameList);
+    void createWinnerTest(String input) {
+        Names names = createNames(input);
+        Winners winners = Winners.create(names);
 
-        assertThat(winners.toString()).isEqualTo(input);
+        assertThat(winners.getWinners()).isEqualTo(names);
     }
 
-    private List<Name> createNameList(String input) {
-        return Arrays.stream(input.split(",")).map(Name::new)
+    private Names createNames(String input) {
+        List<Name> nameList = Arrays.stream(input.split(",")).map(Name::new)
                 .collect(Collectors.toList());
+        Names names = new Names();
+        names.addNames(nameList);
+        return names;
     }
 }

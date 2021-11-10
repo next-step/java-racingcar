@@ -1,17 +1,21 @@
 package step4.service;
 
-import step4.service.dto.GameHistory;
+import step4.domain.Car;
+import step4.domain.GameHistory;
+import step4.service.dto.GameHistoryDto;
 import step4.service.dto.GameInformation;
 import step4.strategy.MoveStrategy;
 import step4.domain.Names;
 import step4.domain.Cars;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game {
 
     private final Integer time;
     private final Names names;
     private final MoveStrategy moveStrategy;
-    private Cars cars;
 
     private Game(Names names, Integer time, MoveStrategy moveStrategy) {
         this.time = time;
@@ -23,23 +27,28 @@ public class Game {
         return new Game(gameInformation.getNames(), gameInformation.getTime(), moveStrategy);
     }
 
-    public GameHistory start() {
+    public GameHistoryDto start() {
         GameHistory gameHistory = new GameHistory();
-        makeCars();
+        Cars cars = makeCars(names);
+
+        //시작하기 전 상태 저장
+        gameHistory.save(cars);
+
         for (int now = 0; now < this.time; now++) {
-            step();
-            gameHistory.save(now, cars);
+            cars = step(cars);
+            gameHistory.save(cars);
         }
-        gameHistory.saveWinner(cars.getWinner());
 
-        return gameHistory;
+        gameHistory.makeWinner(time);
+        return GameHistoryDto.of(gameHistory);
     }
 
-    private void makeCars() {
-        cars = Cars.createWithDefaultPosition(names);
+    private Cars makeCars(Names names) {
+        List<Car> carList = names.getNames().stream().map(Car::createWithDefaultPosition).collect(Collectors.toList());
+        return Cars.create(carList);
     }
 
-    private void step() {
-        this.cars = this.cars.move(moveStrategy);
+    private Cars step(Cars cars) {
+        return cars.move(moveStrategy);
     }
 }

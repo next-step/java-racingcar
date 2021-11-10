@@ -3,7 +3,7 @@ package step4.domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 public class Names {
 
@@ -18,13 +18,28 @@ public class Names {
         });
     }
 
+    public void addNames(List<Name> nameList) {
+        names.addAll(nameList);
+    }
+
     public List<Name> getNames() {
         return names;
     }
 
-    public List<Car> makeCarListWithDefaultPosition() {
-        return names.stream().map(name -> Car.createWithDefaultPosition(name))
-                .collect(Collectors.toList());
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Names names1 = (Names) o;
+        return Objects.equals(names, names1.names);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(names);
+    }
 }

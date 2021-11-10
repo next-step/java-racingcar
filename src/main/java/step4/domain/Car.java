@@ -23,11 +23,16 @@ public class Car implements Comparable<Car> {
         return new Car(name, position);
     }
 
-    public boolean equalsPosition(Car target) {
-        return this.position.compareTo(target.position) == 0;
-    }
     public Name getName() {
         return name;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public boolean equalsPosition(Car target) {
+        return this.position.equals(target.position);
     }
 
     public Car moveOrStop(MoveStrategy moveStrategy) {

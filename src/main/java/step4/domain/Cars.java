@@ -16,12 +16,19 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars createWithDefaultPosition(Names names) {
-        return new Cars(names.makeCarListWithDefaultPosition());
-    }
-
     public static Cars create(List<Car> cars) {
         return new Cars(cars);
+    }
+
+    public Cars move(MoveStrategy moveStrategy) {
+        List<Car> moveCars = cars.stream().map(car -> car.moveOrStop(moveStrategy))
+                .collect(Collectors.toList());
+
+        return create(moveCars);
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     @Override
@@ -35,33 +42,5 @@ public class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(cars);
-    }
-
-    public Cars move(MoveStrategy moveStrategy) {
-        List<Car> moveCars = cars.stream().map(car -> car.moveOrStop(moveStrategy))
-                .collect(Collectors.toList());
-
-        return create(moveCars);
-    }
-
-    public String toStringCars() {
-        return this.cars.stream()
-                .map(Car::toStringNameAndPosition)
-                .collect(Collectors.joining("\n"));
-    }
-
-    public Winners getWinner() {
-        Car winPosition = getWinPositionCar();
-        List<Name> winnerNameList = cars.stream()
-                .filter(car -> car.equalsPosition(winPosition))
-                .map(Car::getName)
-                .collect(Collectors.toList());
-        return Winners.create(winnerNameList);
-    }
-
-    private Car getWinPositionCar() {
-        return cars.stream()
-                .max(Car::compareTo)
-                .orElseThrow(NoSuchElementException::new);
     }
 }

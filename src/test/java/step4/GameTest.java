@@ -4,8 +4,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step4.domain.*;
 import step4.service.Game;
-import step4.service.dto.GameHistory;
+import step4.domain.GameHistory;
+import step4.service.dto.CarsDto;
+import step4.service.dto.GameHistoryDto;
 import step4.service.dto.GameInformation;
+import step4.service.dto.Winners;
 import step4.strategy.MoveStrategy;
 
 import java.util.ArrayList;
@@ -19,10 +22,14 @@ class GameTest {
     @Test
     void moveAlwaysTest() {
         String namesStr = "miz,ki,bi";
+        Names names = new Names();
+        names.addNames(namesStr);
+        Winners winners = Winners.create(names);
+
         Integer time = 3;
         Game game = Game.of(GameInformation.create(namesStr, time), () -> true);
 
-        game.start();
+        GameHistoryDto gameHistoryDto = game.start();
 
         String positionOne = "1,1,1";
         String positionTwo = "2,2,2";
@@ -31,11 +38,10 @@ class GameTest {
         Cars twoStep = createCars(namesStr, positionTwo);
         Cars threeStep = createCars(namesStr, positionThree);
 
-        GameHistory gameHistory = game.getGameHistory();
-        assertThat(gameHistory.getHistory(0)).isEqualTo(oneStep);
-        assertThat(gameHistory.getHistory(1)).isEqualTo(twoStep);
-        assertThat(gameHistory.getHistory(2)).isEqualTo(threeStep);
-        assertThat(gameHistory.getWinners().toString()).isEqualTo(namesStr);
+        assertThat(gameHistoryDto.getHistory().get(1)).isEqualTo(CarsDto.of(oneStep));
+        assertThat(gameHistoryDto.getHistory().get(2)).isEqualTo(CarsDto.of(twoStep));
+        assertThat(gameHistoryDto.getHistory().get(3)).isEqualTo(CarsDto.of(threeStep));
+        assertThat(gameHistoryDto.getWinners()).isEqualTo(winners);
     }
 
     private Cars createCars(String nameStr, String positionStr) {
