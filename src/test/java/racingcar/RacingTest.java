@@ -22,6 +22,15 @@ public class RacingTest {
         List<Car> carList = racing.makeCar(5);
         Assertions.assertThat(carList.size()).isEqualTo(5);
     }
-    
+
+    @Test
+    @DisplayName("random 값이 10일 경우, 자동차들이 1번 움직였을 경우 테스트.")
+    void goingTryTest(){
+        racing.goingTry();
+        for (Car car : racing.getCarList()) {
+            Assertions.assertThat(car.getState()).isEqualTo(1);
+        }
+    }
+
 }
 

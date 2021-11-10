@@ -22,5 +22,15 @@ public class Racing {
         }
         return carList;
     }
-    
+
+    public void goingTry() {
+        for (Car car : carListView.getViewList()) {
+            car.increaseState(10);
+        }
+    }
+
+
+    public List<Car> getCarList() {
+        return carListView.getViewList();
+    }
 }
