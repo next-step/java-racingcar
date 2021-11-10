@@ -1,7 +1,7 @@
 package study.operator;
 
 import java.util.Arrays;
-import java.util.function.BiFunction;
+import java.util.function.IntBinaryOperator;
 
 public enum Operator {
     PLUS("+", (first, second) -> first + second),
@@ -12,15 +12,15 @@ public enum Operator {
     private static final String INVALID_OPERATOR_EXCEPTION_MESSAGE = "not supported operator.";
 
     private final String symbol;
-    private BiFunction<Integer, Integer, Integer> operate;
+    private IntBinaryOperator operate;
 
-    Operator(String symbol, BiFunction<Integer, Integer, Integer> operate) {
+    Operator(String symbol, IntBinaryOperator operate) {
         this.symbol = symbol;
         this.operate = operate;
     }
 
     public int operate(int first, int second) {
-        return operate.apply(first, second);
+        return operate.applyAsInt(first, second);
     }
 
     public static Operator findBy(String symbol) {
