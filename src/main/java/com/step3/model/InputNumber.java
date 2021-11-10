@@ -1,18 +1,18 @@
 package com.step3.model;
 
-import java.util.Objects;
+import java.util.Arrays;
 
 public class InputNumber {
-    private int carCount;
+    private String[] carsName;
     private int attemptCount;
 
-    public InputNumber(int carCount, int attemptCount) {
-        this.carCount = carCount;
+    public InputNumber(String[] carsName, int attemptCount) {
+        this.carsName = carsName;
         this.attemptCount = attemptCount;
     }
 
-    public int getCarCount() {
-        return carCount;
+    public String[] getCarsName() {
+        return carsName;
     }
 
     public int getAttemptCount() {
@@ -22,9 +22,11 @@ public class InputNumber {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         InputNumber that = (InputNumber) o;
-        return carCount == that.carCount &&
+        return Arrays.deepEquals(carsName, this.carsName) &&
                 attemptCount == that.attemptCount;
     }
 }
