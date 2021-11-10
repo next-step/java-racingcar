@@ -21,8 +21,8 @@ public class ResultView {
     }
 
     private String convertToPrintValue(GameResult result) {
-        return Arrays.stream(result.getProgress())
-            .map(roundProgress -> String.join(CAR_DELIMITER, roundProgress))
+        return result.getProgress().stream()
+            .map(roundProgress -> String.join(CAR_DELIMITER, roundProgress.getResults()))
             .collect(Collectors.joining(ROUND_DELIMITER));
     }
 }

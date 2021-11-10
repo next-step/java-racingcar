@@ -1,22 +1,29 @@
 package racingcar.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameResult {
 
-    private final String[][] progress;
+    private final List<RoundResult> progress;
 
-    private GameResult(String[][] progress) {
-        this.progress = progress;
+    public GameResult() {
+        progress = new ArrayList<>();
     }
 
-    public GameResult(int numberOfRound, int numberOfCars) {
-        this(new String[numberOfRound][numberOfCars]);
+    public void record(int round, String result) {
+        if (isInitRound(round)) {
+            progress.add(new RoundResult());
+        }
+
+        progress.get(round).record(result);
     }
 
-    public void record(int round, int pos, String result) {
-        progress[round][pos] = result;
+    private boolean isInitRound(int round) {
+        return progress.size() <= round;
     }
 
-    public String[][] getProgress() {
+    public List<RoundResult> getProgress() {
         return progress;
     }
 }

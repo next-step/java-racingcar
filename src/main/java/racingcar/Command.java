@@ -31,8 +31,7 @@ public enum Command {
     public static Consumer<Car> of(int commandNumber) {
         return Arrays.stream(values())
             .filter(cmd -> cmd.options.parallelStream()
-                .allMatch(flag -> flag.test(commandNumber))
-            )
+                .allMatch(flag -> flag.test(commandNumber)))
             .findFirst()
             .map(Command::getParser)
             .orElseThrow(() -> new IllegalArgumentException("입력 값은 0~9가 와야합니다."));
