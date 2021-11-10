@@ -19,7 +19,7 @@ public class Location implements Comparable<Location> {
         return location;
     }
 
-    public void moveLocation() {
+    public void move() {
         location++;
     }
 
