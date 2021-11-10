@@ -1,11 +1,12 @@
 package step3.view;
 
-import step3.domain.history.CarHistory;
+import step3.domain.Car;
+import step3.domain.GameWinner;
 import step3.domain.history.GameHistory;
 import step3.domain.history.RoundHistory;
 
-import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ResultView {
     private static final String WHITE_SPACE = " ";
@@ -26,8 +27,9 @@ public class ResultView {
     }
 
     private static void showGameWinner(GameHistory history) {
-        List<String> gameWinner = history.getGameWinner();
-        System.out.println(String.join(COMMA + WHITE_SPACE, gameWinner) + GAME_WINNER_OUTPUT_MESSAGE);
+        System.out.println(history.getGameWinners().stream()
+                .map(GameWinner::getCarName)
+                .collect(Collectors.joining(COMMA + WHITE_SPACE)) + GAME_WINNER_OUTPUT_MESSAGE);
     }
 
     private static void showGameHistory(Map<Integer, RoundHistory> history) {
@@ -38,13 +40,12 @@ public class ResultView {
     }
 
     private static void showRoundHistory(RoundHistory history) {
-        for (CarHistory carHistory : history.getCarHistories()) {
-            showCarPosition(carHistory);
-        }
+        history.getCarList()
+                .forEach(ResultView::showCarPosition);
     }
 
-    private static void showCarPosition(CarHistory carHistory) {
-        System.out.println(carHistory.getName() + WHITE_SPACE + COLON + WHITE_SPACE + repeatDash(carHistory.getPosition()));
+    private static void showCarPosition(Car car) {
+        System.out.println(car.getName() + WHITE_SPACE + COLON + WHITE_SPACE + repeatDash(car.getPosition()));
     }
 
     private static String repeatDash(int position) {

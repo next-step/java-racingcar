@@ -1,8 +1,7 @@
 package step3.domain;
 
 import org.junit.jupiter.api.Test;
-import step3.service.MoveNumberGenerator;
-import step3.service.NonMoveNumberGenerator;
+import step3.service.IntNumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -43,7 +42,12 @@ public class CarTest {
         Car car = Car.create("java");
         assertThat(car.getPosition()).isEqualTo(0);
         //when
-        car.move(new MoveNumberGenerator());
+        car.move(new IntNumberGenerator() {
+            @Override
+            public int generate() {
+                return 5;
+            }
+        });
         //then
         assertThat(car.getPosition()).isEqualTo(1);
     }
@@ -54,7 +58,12 @@ public class CarTest {
         Car car = Car.create("java");
         assertThat(car.getPosition()).isEqualTo(0);
         //when
-        car.move(new NonMoveNumberGenerator());
+        car.move(new IntNumberGenerator() {
+            @Override
+            public int generate() {
+                return 3;
+            }
+        });
         //then
         assertThat(car.getPosition()).isEqualTo(0);
     }

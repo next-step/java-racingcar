@@ -2,9 +2,6 @@ package step3.domain;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
@@ -12,20 +9,19 @@ public class RacingGameTest {
     @Test
     void 경주_게임을_생성한다() {
         //given
-        List<Car> carList = Arrays.asList(Car.create("java"), Car.create("c++"), Car.create("go"));
-        Cars cars = Cars.join(carList);
-        RacingGame racingGame = RacingGame.create(3, Participant.join(cars));
-        //when & then
+        String names = "java,c++,go";
+        //when
+        RacingGame racingGame = RacingGame.create(3, names);
+        //then
         assertThat(racingGame).isNotNull();
     }
 
     @Test
     void 경주를_시작한다() {
         //given
-        List<Car> carList = Arrays.asList(Car.create("java"), Car.create("c++"), Car.create("go"));
-        Cars cars = Cars.join(carList);
+        String names = "java,c++,go";
         //when
-        RacingGame racingGame = RacingGame.create(3, Participant.join(cars));
+        RacingGame racingGame = RacingGame.create(3, names);
         //then
         racingGame.start();
     }

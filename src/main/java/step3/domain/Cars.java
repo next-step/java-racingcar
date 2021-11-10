@@ -1,6 +1,5 @@
 package step3.domain;
 
-import step3.domain.history.CarHistory;
 import step3.service.IntNumberGenerator;
 
 import java.util.ArrayList;
@@ -17,16 +16,20 @@ public class Cars {
         this.carList = carList;
     }
 
-    public static Cars join(List<Car> cars) {
-        return new Cars(cars);
+    public static Cars join(List<Car> carList) {
+        return new Cars(carList);
     }
 
-    public List<CarHistory> move(IntNumberGenerator generator) {
-        List<CarHistory> carHistoryList = new ArrayList<>();
+    public Cars move(IntNumberGenerator generator) {
+        List<Car> copyList = new ArrayList<>();
         for (Car car : carList) {
-            carHistoryList.add(car.move(generator));
+            copyList.add(car.move(generator));
         }
-        return carHistoryList;
+        return Cars.join(copyList);
+    }
+
+    public List<Car> getCarList() {
+        return carList;
     }
 
     private void validateIsEmpty(List<Car> cars) {

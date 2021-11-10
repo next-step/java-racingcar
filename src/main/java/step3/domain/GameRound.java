@@ -5,6 +5,7 @@ import step3.service.IntNumberGenerator;
 
 public class GameRound {
     private static final int MINIMUM_ROUND = 0;
+
     private int round;
     private IntNumberGenerator generator;
     private GameHistory history;

@@ -1,11 +1,11 @@
 package step3.domain;
 
-import step3.domain.history.CarHistory;
 import step3.service.IntNumberGenerator;
 
 public class Car {
     private static final int NAME_MAX_LENGTH = 5;
     private static final int MOVE_CONDITION = 4;
+
     private String name;
     private int position;
 
@@ -15,15 +15,20 @@ public class Car {
         this.position = 0;
     }
 
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
+    }
+
     public static Car create(String name) {
         return new Car(name);
     }
 
-    public CarHistory move(IntNumberGenerator generator) {
+    public Car move(IntNumberGenerator generator) {
         if (isMove(generator)) {
             position++;
         }
-        return new CarHistory(this);
+        return copy(this);
     }
 
     public String getName() {
@@ -31,7 +36,11 @@ public class Car {
     }
 
     public int getPosition() {
-        return this.position;
+        return position;
+    }
+
+    private Car copy(Car car) {
+        return new Car(car.getName(), car.getPosition());
     }
 
     private boolean isMove(IntNumberGenerator generator) {
