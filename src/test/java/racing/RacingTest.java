@@ -45,10 +45,6 @@ class RacingTest {
     void play() {
         Racing racing = new Racing(NumberHelper.getRandomValue(3) + 1, NumberHelper.getRandomValue(5) + 1);
         List<Car> cars = racing.getCars();
-        int attempts = racing.getAttempts();
-
-        assertThat(cars.size()).isGreaterThanOrEqualTo(1);
-        assertThat(attempts).isGreaterThanOrEqualTo(1);
 
         racing.play(new Random());
         cars.forEach(car -> assertThat(car.getStep()).isGreaterThanOrEqualTo(0));
@@ -65,12 +61,10 @@ class RacingTest {
         assertThat(list.get(j).getStep()).isEqualTo(k);
     }
 
-    @Test
-    @DisplayName(value = "잘못 생성 시, 에러를 던진다.")
-    void throwExceptionWhenCreated() {
-        assertThatThrownBy(() -> new Racing(-1, 1)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Racing(1, -1)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Racing(0, 0)).isInstanceOf(IllegalArgumentException.class);
+    @ParameterizedTest(name = "잘못 생성 시, 에러를 던진다")
+    @MethodSource("carSAndAttemptsProvider")
+    void throwExceptionWhenCreated(int cars, int attempts) {
+        assertThatThrownBy(() -> new Racing(cars ,attempts)).isInstanceOf(IllegalArgumentException.class);
     }
 
     static Stream<Arguments> indexCarsAndResultProvider() {
@@ -84,6 +78,14 @@ class RacingTest {
             Arguments.arguments(2,0,1),
             Arguments.arguments(2,1,2),
             Arguments.arguments(2,2,2)
+        );
+    }
+
+    static Stream<Arguments> carSAndAttemptsProvider() {
+        return Stream.of(
+            Arguments.arguments(-1, 1),
+            Arguments.arguments(1, -1),
+            Arguments.arguments(0, 0)
         );
     }
 }
