@@ -15,4 +15,20 @@ public class IntNumber {
     public int value() {
         return this.value;
     }
+
+    public IntNumber plus(IntNumber number) {
+        return new IntNumber(this.value + number.value());
+    }
+
+    public IntNumber minus(IntNumber number) {
+        return new IntNumber(this.value - number.value());
+    }
+
+    public IntNumber times(IntNumber number) {
+        return new IntNumber(this.value * number.value());
+    }
+
+    public IntNumber divide(IntNumber number) {
+        return new IntNumber(this.value / number.value());
+    }
 }

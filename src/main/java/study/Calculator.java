@@ -9,13 +9,13 @@ public class Calculator {
     }
 
     public static int calculate(Expression expression) {
-        int result = Integer.parseInt(expression.next());
+        IntNumber result = new IntNumber(expression.next());
         while (!expression.isEmpty()) {
             Operator operator = Operator.findBy(expression.next());
-            int operand = Integer.parseInt(expression.next());
+            IntNumber operand = new IntNumber(expression.next());
 
             result = operator.operate(result, operand);
         }
-        return result;
+        return result.value();
     }
 }

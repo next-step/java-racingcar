@@ -1,26 +1,28 @@
 package study.operator;
 
 import java.util.Arrays;
-import java.util.function.IntBinaryOperator;
+import java.util.function.BiFunction;
+
+import study.IntNumber;
 
 public enum Operator {
-    PLUS("+", (first, second) -> first + second),
-    MINUS("-", (first, second) -> first - second),
-    TIMES("*", (first, second) -> first * second),
-    DIVIDE("/", (first, second) -> first / second);
+    PLUS("+", IntNumber::plus),
+    MINUS("-", IntNumber::minus),
+    TIMES("*", IntNumber::times),
+    DIVIDE("/", IntNumber::divide);
 
     private static final String INVALID_OPERATOR_EXCEPTION_MESSAGE = "not supported operator.";
 
     private final String symbol;
-    private IntBinaryOperator operate;
+    private BiFunction<IntNumber, IntNumber, IntNumber> operate;
 
-    Operator(String symbol, IntBinaryOperator operate) {
+    Operator(String symbol, BiFunction<IntNumber, IntNumber, IntNumber> operate) {
         this.symbol = symbol;
         this.operate = operate;
     }
 
-    public int operate(int first, int second) {
-        return operate.applyAsInt(first, second);
+    public IntNumber operate(IntNumber first, IntNumber second) {
+        return operate.apply(first, second);
     }
 
     public static Operator findBy(String symbol) {
