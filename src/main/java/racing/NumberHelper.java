@@ -8,6 +8,9 @@ import java.util.Random;
 public class NumberHelper {
     private static Random r = new Random();
 
+    private NumberHelper() {
+    }
+
     public static int getRandomValue(int input) {
         return r.nextInt(input);
     }
