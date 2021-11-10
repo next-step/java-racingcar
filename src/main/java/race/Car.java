@@ -3,12 +3,9 @@ package race;
 public class Car {
     private int location = 0;
 
-    private final String name;
+    private final CarName name;
 
-    public Car(String name) {
-        if(name == null || name.trim().isEmpty() || name.trim().length() > 5) {
-            throw new IllegalArgumentException("invalid name");
-        }
+    public Car(CarName name) {
         this.name = name;
     }
 
@@ -20,7 +17,7 @@ public class Car {
         return location;
     }
 
-    public String name() {
+    public CarName name() {
         return name;
     }
 }

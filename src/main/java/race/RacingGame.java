@@ -42,7 +42,7 @@ public class RacingGame {
         Collection<Car> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
             // TODO: 이름 입력받도록하기
-            cars.add(new Car(UUID.randomUUID().toString().substring(0, 3)));
+            cars.add(new Car(new CarName(UUID.randomUUID().toString().substring(0, 3))));
         }
         return cars;
     }

@@ -35,7 +35,7 @@ class MoveCarsTest {
     void moveCars(int numberOfCars) {
         Collection<Car> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car(UUID.randomUUID().toString().substring(0, 3)));
+            cars.add(dummyCar());
         }
 
         doNothing().when(dut).moveCar(any());
@@ -47,7 +47,7 @@ class MoveCarsTest {
 
     @Test
     void moveCar_move() {
-        Car car = new Car(UUID.randomUUID().toString().substring(0, 3));
+        Car car = dummyCar();
 
         when(judgeCarMovement.judge()).thenReturn(JudgeCarMovement.Judge.MOVE);
 
@@ -58,12 +58,18 @@ class MoveCarsTest {
 
     @Test
     void moveCar_stay() {
-        Car car = new Car(UUID.randomUUID().toString().substring(0, 3));
+        Car car = dummyCar();
 
         when(judgeCarMovement.judge()).thenReturn(JudgeCarMovement.Judge.STAY);
 
         dut.moveCar(car);
 
         assertThat(car.location()).isEqualTo(0);
+    }
+
+    private Car dummyCar() {
+        return new Car(
+                new CarName(UUID.randomUUID().toString().substring(1, 4))
+        );
     }
 }
