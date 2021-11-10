@@ -45,13 +45,4 @@ public class Position {
         return Objects.hash(position);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            builder.append(POSITION_SIGN);
-        }
-        return builder.toString();
-    }
-
 }

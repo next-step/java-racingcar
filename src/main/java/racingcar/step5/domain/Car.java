@@ -77,9 +77,4 @@ public class Car {
         return Objects.hash(name);
     }
 
-    @Override
-    public String toString() {
-        return name.toString() + NAME_DELIMITER + position.toString();
-    }
-
 }

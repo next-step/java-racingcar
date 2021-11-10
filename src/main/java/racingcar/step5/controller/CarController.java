@@ -25,7 +25,7 @@ public class CarController {
         resultView.executeMessage();
         while (!racingGame.isEndGame()) {
             racingGame.race(moving);
-            resultView.printResult(racingGame.getCars());
+            resultView.printRacing(racingGame.getCars());
         }
 
         // 우승자 출력

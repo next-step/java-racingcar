@@ -21,3 +21,9 @@
 3. Message 클래스
     - ErrorMessage : 에로관련 메시지 작성
     - ViewMessage : 출력관련 메시지 작성
+
+**- 피드백 반영**
+1. toString()은 보통 로깅을 위한 용도로 사용됩니다:)
+   -> toString() 삭제 후 ResultView에 반영
+2. 람다식 이렇게 표현하면 어떨까요?
+   -> 람다식 변경 joining!!!!
