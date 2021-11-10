@@ -1,14 +1,12 @@
 package step3;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class GameInput {
 
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static Scanner scanner = new Scanner(System.in);
 
-    public static int readInt() throws IOException {
-        return Integer.parseInt(br.readLine());
+    public static int readInt() {
+        return scanner.nextInt();
     }
 }

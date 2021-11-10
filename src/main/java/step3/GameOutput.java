@@ -1,29 +1,22 @@
 package step3;
 
-import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
-
 public class GameOutput {
 
-    private static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-    public static void println(String output) throws Exception {
-        bw.write(output);
-        bw.write('\n');
-        bw.flush();
+    public static void println(String output) {
+        System.out.println(output);
     }
 
-    public static void printCarPaths(CarRacingGame carRacingGame) throws Exception {
+    public static void printCarPaths(CarRacingGame carRacingGame) {
         println(carRacingGame.getCars());
     }
 
-    public static void println(Car[] cars) throws Exception {
+    public static void println(Car[] cars) {
         for (Car car : cars) {
             println(car);
         }
     }
 
-    private static void println(Car car) throws Exception {
+    private static void println(Car car) {
         println(getCarPath(car));
     }
 
