@@ -1,11 +1,14 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
 
-  private final String DELIMITER = ",";
+  private final String DELIMITER = Constants.STRING_DELIMITER;
   private final String ABC = "abc";
 
   @Test
@@ -79,6 +82,21 @@ public class StringTest {
             // then
             .isInstanceOf(StringIndexOutOfBoundsException.class)
             .hasMessageContaining(String.format("%d",index));
+  }
+
+  @Test
+  @DisplayName("List<String> 객체에 담긴 문자열 들을 구분자를 포함한 하나의 문자열로 합치는 기능을 확인하기 위한 테스트")
+  void joinStringList() {
+    // given
+    List<String> stringList = Arrays.asList("a", "b", "c");
+    final String expectedString = "a,b,c";
+    final String delimiter = Constants.STRING_DELIMITER;
+
+    // when
+    String result = Strings.join(stringList, delimiter);
+
+    // then
+    assertThat(result).isEqualTo(expectedString);
   }
 
 }

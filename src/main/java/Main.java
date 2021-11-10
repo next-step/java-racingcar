@@ -1,9 +1,9 @@
 public class Main {
   public static void main(String[] args) {
-    int carAmount = RacingCarGameInputView.getCarAmount();
-    int chanceAmount = RacingCarGameInputView.getChanceAmount();
+    String[] carNames = RacingCarGameInputView.getCarNames();
+    int roundAmount = RacingCarGameInputView.getRoundAmount();
 
-    RacingCarGame racingCarGame = new RacingCarGame(carAmount, chanceAmount);
+    RacingCarGame racingCarGame = new RacingCarGame(carNames, roundAmount);
     racingCarGame.play(new RandomMoveStrategy());
 
     RacingCarGameResultView resultView = new RacingCarGameResultView(racingCarGame);
