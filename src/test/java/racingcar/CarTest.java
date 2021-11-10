@@ -4,7 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.lang.reflect.Field;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -22,20 +26,37 @@ class CarTest {
     @ValueSource(ints = {0, 1, 2, 3})
     @ParameterizedTest(name = "{arguments} 가 입력시, 자동차는 이동하지 않는다.")
     void nonForwardTest(int command) throws Exception {
-
         car.action(command);
-        int afterCommand = getCarPositionByReflection(car);
+        int afterPosition = getCarPositionByReflection(car);
 
-        assertThat(afterCommand).isEqualTo(beforePosition);
+        assertThat(afterPosition).isEqualTo(beforePosition);
     }
 
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     @ParameterizedTest(name = "{arguments} 가 입력시, 자동차는 한칸 전진한다.")
     void forwardTest(int command) throws Exception {
         car.action(command);
-        int afterCommand = getCarPositionByReflection(car);
+        int afterPosition = getCarPositionByReflection(car);
 
-        assertThat(afterCommand).isEqualTo(beforePosition + 1);
+        assertThat(afterPosition).isEqualTo(beforePosition + 1);
+    }
+
+    @Test
+    @DisplayName("forward()를 호출하면, 차가 한칸 전진한다.")
+    void forwardMethodTest() throws NoSuchFieldException, IllegalAccessException {
+        car.forward();
+        int afterPosition = getCarPositionByReflection(car);
+
+        assertThat(afterPosition).isEqualTo(beforePosition + 1);
+    }
+
+    @Test
+    @DisplayName("nonForward()를 호출하면, 자동차는 이동하지 않는다.")
+    void nonForwardMethodTest() throws NoSuchFieldException, IllegalAccessException {
+        car.nonForward();
+        int afterPosition = getCarPositionByReflection(car);
+
+        assertThat(afterPosition).isEqualTo(beforePosition);
     }
 
 
@@ -45,6 +66,19 @@ class CarTest {
         assertThatIllegalArgumentException().isThrownBy(() -> car.action(command));
     }
 
+    @ValueSource(ints = {10, 5, 3, 1})
+    @ParameterizedTest(name = "[{arguments}] 자동차의 position에 따라, 알맞는 거리를 반환한다.")
+    void getDistanceByPositionTest(int position) {
+        IntStream.range(0, position)
+            .forEach(i -> car.forward());
+
+        String expected = IntStream.range(0, position)
+            .boxed()
+            .map(i -> "-")
+            .collect(Collectors.joining());
+
+        assertThat(car.getLocation()).isEqualTo(expected);
+    }
 
     private int getCarPositionByReflection(Car car)
         throws NoSuchFieldException, IllegalAccessException {
