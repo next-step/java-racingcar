@@ -51,15 +51,17 @@ public class Cars {
     }
 
     public List<Car> getWinnerCars(){
-        int maxPosition = Collections.max(
-                this.carList.stream()
-                        .map(car -> car.getPosition())
-                        .collect(Collectors.toList())
-        );
+        int maxPosition = GetMaxPosition();
         return Collections.unmodifiableList(
                 this.carList.stream()
                         .filter(car -> car.getPosition() == maxPosition)
-                        .collect(Collectors.toList())
-        );
+                        .collect(Collectors.toList()));
+    }
+
+    private int GetMaxPosition(){
+        return Collections.max(
+                this.carList.stream()
+                        .map(car -> car.getPosition())
+                        .collect(Collectors.toList()));
     }
 }
