@@ -27,12 +27,12 @@ public class Racing {
     }
 
     public void goingTry() {
-        for (Car car : carListView.getViewList()) {
+        for (Car car : carListView.getList()) {
             car.increaseState(random.nextInt(10));
         }
     }
 
     public List<Car> getCarList() {
-        return carListView.getViewList();
+        return carListView.getList();
     }
 }
