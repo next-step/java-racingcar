@@ -1,8 +1,12 @@
 package calculator;
 
+import racing.StringHelper;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static racing.StringHelper.*;
 
 /**
  * @author han
@@ -22,10 +26,7 @@ public class TextCalculator {
         }
 
         public static Operator getInstance(String input) {
-            if (input == null || input.isEmpty()) {
-                throw new IllegalArgumentException();
-            }
-
+            throwExceptionIfNullOrEmpty(input);
             Operator[] values = Operator.values();
 
             for (Operator o : values) {
@@ -42,17 +43,13 @@ public class TextCalculator {
     private Operator operator;
 
     public int calculate(String input) {
-        if (isNullOrEmpty(input)) {
-            throw new IllegalArgumentException();
-        }
+        throwExceptionIfNullOrEmpty(input);
 
         this.split = Arrays.asList(input.split(" "));
         int result = 0;
 
         for (String s : this.split) {
-            if (isNullOrEmpty(s)) {
-                throw new IllegalArgumentException();
-            }
+            throwExceptionIfNullOrEmpty(s);
 
             setValues(this.split.indexOf(s), s);
 
@@ -114,9 +111,5 @@ public class TextCalculator {
             return;
         }
         this.operator = Operator.getInstance(input);
-    }
-
-    private boolean isNullOrEmpty(String input) {
-        return input == null || input.isEmpty();
     }
 }
