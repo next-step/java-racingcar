@@ -1,10 +1,13 @@
 package racingStep3;
 
-import racingStep3.service.RacingGame;
+import racingStep3.controller.RacingCarController;
+import racingStep3.view.InputView;
 
 public class RacingApplication {
     public static void main(String[] args) {
-        RacingGame start = new RacingGame();
-        start.execute();
+
+        RacingCarController racingCarController = new RacingCarController(new InputView());
+        racingCarController.execute();
+
     }
 }

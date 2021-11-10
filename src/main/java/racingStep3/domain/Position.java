@@ -1,6 +1,6 @@
 package racingStep3.domain;
 
-import racingStep3.service.Validation;
+import racingStep3.service.util.Validation;
 
 import java.util.Objects;
 

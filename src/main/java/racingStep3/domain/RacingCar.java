@@ -1,13 +1,12 @@
 package racingStep3.domain;
 
-import racingStep3.service.Validation;
+import racingStep3.service.util.Validation;
 
 import java.util.Objects;
 
 public class RacingCar {
 
     private final Position position;
-    private static final Integer MIN_GO_VALUE = 4;
 
     public RacingCar(Position position) {
 
@@ -17,16 +16,18 @@ public class RacingCar {
     }
 
     public static RacingCar create() {
+
         return new RacingCar(Position.create(0));
     }
 
-    public void moveOrNot(int forward) {
-        if(forward >= MIN_GO_VALUE) {
+    public void decisionMove(boolean decision) {
+        if(decision) {
             position.increaseLocation();
         }
     }
 
     public int getLocation() {
+
         return this.position.getLocation();
     }
 
@@ -40,6 +41,7 @@ public class RacingCar {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(position);
     }
 

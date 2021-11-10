@@ -1,7 +1,7 @@
 package racingStep3.view;
 
 import racingStep3.domain.GameInputData;
-import racingStep3.service.Validation;
+import racingStep3.service.util.Validation;
 
 import java.util.Scanner;
 

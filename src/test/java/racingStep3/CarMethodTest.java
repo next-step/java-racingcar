@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingStep3.domain.RacingCar;
-import racingStep3.service.Validation;
+import racingStep3.service.util.Validation;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -16,13 +16,14 @@ public class CarMethodTest {
 
     @BeforeEach
     void setUp() {
+
         racingCar = RacingCar.create();
     }
 
     @Test
     @DisplayName("랜덤 값이 4이상 일경우 앞으로 한칸 이동!!!")
     public void forwardTest() {
-        racingCar.moveOrNot(5);
+        racingCar.decisionMove(true);
 
         assertThat(racingCar.getLocation()).isEqualTo(1);
     }
@@ -30,7 +31,7 @@ public class CarMethodTest {
     @Test
     @DisplayName("랜덤 값이 4미만 일경우 자동차 이동 하지 않음!!")
     public void stopTest() {
-        racingCar.moveOrNot(2);
+        racingCar.decisionMove(false);
 
         assertThat(racingCar.getLocation()).isEqualTo(0);
     }
