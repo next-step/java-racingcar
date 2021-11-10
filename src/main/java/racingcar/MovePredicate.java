@@ -1,2 +1,6 @@
-package racingcar;public interface MovePredicate {
+package racingcar;
+
+@FunctionalInterface
+public interface MovePredicate {
+    boolean test();
 }
