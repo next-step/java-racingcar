@@ -3,6 +3,11 @@ package study;
 import study.operator.Operator;
 
 public class Calculator {
+
+    private Calculator() {
+        new AssertionError();
+    }
+
     public static int calculate(String expression) {
         validate(expression);
         String[] splittedExpression = expression.split(" ");
