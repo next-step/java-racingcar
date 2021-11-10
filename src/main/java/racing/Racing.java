@@ -43,11 +43,12 @@ public class Racing {
                 int value = NumberHelper.getRandomValue(random, 10);
                 temp.add(car.getInstanceByForward(value));
             }
+            this.cars = temp;
             this.logs.put(i, temp);
         }
     }
 
     private List<Car> createCars(int count) {
-        return IntStream.range(0, count).mapToObj(i -> new Car()).collect(Collectors.toList());
+        return IntStream.range(0, count).mapToObj(i -> new Car(0)).collect(Collectors.toList());
     }
 }

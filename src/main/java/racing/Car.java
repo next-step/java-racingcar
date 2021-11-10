@@ -4,10 +4,7 @@ package racing;
  * @author han
  */
 public class Car {
-    private int step = 0;
-
-    public Car() {
-    }
+    private final int step;
 
     public Car(int step) {
         this.step = step;
@@ -17,14 +14,15 @@ public class Car {
         return this.step;
     }
 
-    public Car getInstanceByForward(int step) {
-        if (isForward(step)) {
-            this.step = Math.addExact(this.step, 1);
+    public Car getInstanceByForward(int random) {
+        if (isForward(random)) {
+            int newStep = this.step + 1;
+            return new Car(newStep);
         }
         return new Car(this.step);
     }
 
-    private boolean isForward(int step) {
-        return step > 4;
+    private boolean isForward(int random) {
+        return random > 4;
     }
 }
