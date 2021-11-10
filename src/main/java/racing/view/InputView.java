@@ -4,13 +4,13 @@ import racing.NumberHelper;
 
 import java.util.Scanner;
 
+import static racing.MessageConstant.ATTEMPT_MESSAGE;
+import static racing.MessageConstant.CAR_MESSAGE;
+
 /**
  * @author han
  */
 public class InputView {
-    private String carMessage = "자동차 대수는 몇 대 인가요?";
-    private String attemptMessage = "시도할 회수는 몇 회 인가요?";
-
     private int cars;
     private int attempts;
 
@@ -23,10 +23,10 @@ public class InputView {
     }
 
     public void printAndInput(Scanner scanner) {
-        System.out.println(this.carMessage);
+        System.out.println(CAR_MESSAGE);
         this.cars = parseInputToInteger(scanner.nextLine());
 
-        System.out.println(this.attemptMessage);
+        System.out.println(ATTEMPT_MESSAGE);
         this.attempts = parseInputToInteger(scanner.nextLine());
     }
 
