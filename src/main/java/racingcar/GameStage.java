@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
 import racingcar.dto.GameConfig;
 import racingcar.dto.GameResult;
 
+
 public class GameStage {
 
     private final int maxOfRound;

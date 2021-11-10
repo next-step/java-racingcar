@@ -12,7 +12,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.dto.GameConfig;
 import racingcar.dto.GameResult;
 
-
 public class GameStageTest {
 
 
