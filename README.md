@@ -35,36 +35,20 @@
 
 ## 기능목록
 
-Game : 레이싱 게임을 실행시킬 수 있는 객체
+Car
 
-* void start()
+* 자동차는 움직일 수 있다.
+* 자동차는 움직이지 않을 수 있다.
 
-InputView<V> : 사용자로부터 자동차 게임에 관한 정보를 받는 객체
+Name
 
-* void take()
-* void valid()
-* V value()
+* 이름이 5글자를 초과하지 않아야 한다.
 
-ResultView : 게임의 상태를 알려주는 객체
+Position
 
-* void show()
-* void winner()
-* void append(List\<Vehicle\> vehicles)
+* 위치가 음수가 될 수 없다.
 
-Vehicle : 차량에 대한 객체
+ Racing
 
-* VehicleInfo info()
-* void moveOrNot()
+* 승자를 계산할 수 있다.
 
-VehicleInfo : 차량의 상태에 대한 객체
-
-* String name()
-* Integer position()
-
-VehicleFuel : 차량이 움직일 수 있는지 판단하는 객체
-
-* boolean enough()
-
-VehicleFuelSource<V> : VehicleFuel 에서 근거가 되는 데이터를 담고있는 객체
-
-* V value()
