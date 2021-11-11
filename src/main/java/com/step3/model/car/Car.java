@@ -1,21 +1,35 @@
 package com.step3.model.car;
 
-public class Car {
-    private CarId id;
-    private CarPosition position;
+import com.step3.model.car.strategy.MoveStrategy;
 
-    public Car(CarId id, CarPosition position) {
+public class Car {
+    private Name id;
+    private Position position;
+    private MoveStrategy moveStrategy;
+
+    public Car(Name id, Position position, MoveStrategy moveStrategy) {
         this.id = id;
         this.position = position;
+        this.moveStrategy = moveStrategy;
     }
 
     public Car move(boolean isMoved) {
-        this.position = position.add(isMoved);
+        if (isMoved) {
+            this.position = new Position(this.position.getValue() + 1);
+        }
         return this;
     }
 
-    public CarPosition getPosition() {
+    public Position getPosition() {
         return this.position;
+    }
+
+    public Name getId() {
+        return this.id;
+    }
+
+    public MoveStrategy getMoveStrategy() {
+        return moveStrategy;
     }
 
     @Override
@@ -28,6 +42,6 @@ public class Car {
         }
 
         Car car = (Car) o;
-        return id.getId() == car.id.getId();
+        return id.getValue() == car.id.getValue();
     }
 }
