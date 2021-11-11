@@ -20,23 +20,22 @@ public class NameTest {
     @ParameterizedTest(name = "[{index}] name: {0}")
     @NullAndEmptySource
     @ValueSource(strings = {NameTooLong})
-    void createName(String inputName) {
+    void create_illegalLength_thrownException(String inputName) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Name(inputName))
                 .withMessage(Name.NAME_LENGTH_ERROR_MESSAGE);
     }
 
     @DisplayName("Name 생성 정상일 때")
-    @Test
-    void create() {
-        //given
-        String stringName = "정상이름";
-
-        //when
+    @ParameterizedTest(name = "[{index}] inputName: {0}")
+    @ValueSource(strings = {
+            "정상이름",
+            "정"
+    })
+    void create(String stringName) {
         Name name1 = new Name(stringName);
         Name name2 = new Name(stringName);
 
-        //then
         assertThat(name1).isEqualTo(name2);
     }
 
