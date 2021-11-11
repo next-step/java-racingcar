@@ -21,7 +21,7 @@ public class Car {
             int newStep = this.step + 1;
             return new Car(newStep);
         }
-        return new Car(this.step);
+        return this;
     }
 
     private boolean isForward(int random) {
