@@ -22,9 +22,8 @@ public class Calculator {
 														.findFirst()
 														.orElseThrow(IllegalArgumentException::new)
 									);
-		String operator = "";
 		for (int i = 1; i < numbersAndOperators.size(); i+=2) {
-			operator = numbersAndOperators.get(i);
+			String operator = numbersAndOperators.get(i);
 			MyNumber second = new MyNumber(numbersAndOperators.get(i+1));
 			Formula formula = new Formula(first, operator, second);
 			first = formula.calculate();
