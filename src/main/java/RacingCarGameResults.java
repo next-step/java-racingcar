@@ -35,8 +35,8 @@ public class RacingCarGameResults {
   }
 
   private List<String> getWinnerNames(RacingCars racingCars, Integer maxProgress) {
-    return racingCars.getRacingCars().stream()
-            .filter(racingCar -> racingCar.getProgress() == maxProgress)
+        return racingCars.getRacingCars().stream()
+            .filter(racingCar -> racingCar.equalsProgress(maxProgress))
             .map(RacingCar::getName)
             .collect(Collectors.toList());
   }
