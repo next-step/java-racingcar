@@ -6,11 +6,11 @@ public class Calculator {
         validText(text);
 
         String[] value = text.split(" ");
-        MyInteger result = new MyInteger(value[0]);
+        Operand result = new Operand(value[0]);
 
         for (int i = 1; i < value.length - 1; i += 2) {
             Operator operator = Operator.of(value[i]);
-            MyInteger second = new MyInteger(value[i + 1]);
+            Operand second = new Operand(value[i + 1]);
 
             result = operator.operate(result, second);
         }
