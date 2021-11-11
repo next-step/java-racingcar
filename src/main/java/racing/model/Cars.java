@@ -3,29 +3,25 @@ package racing.model;
 import racing.strategy.MoveStrategy;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Cars {
 
     private final List<Car> carList;
 
-    public Cars(List<String> nameList) {
-        this.carList = makeCarList(nameList);
-    }
-
     public List<Car> getCarList() {
-        return Collections.unmodifiableList(carList);
+        return carList;
     }
 
-    public List<Car> makeCarList(List<String> nameList) {
+    public Cars(List<String> nameList) {
         List<Car> carList = new ArrayList<Car>();
         for (String name : nameList) {
             carList.add(new Car(name));
         }
-        return carList;
+        this.carList =  carList;
     }
-    public void playRacing(MoveStrategy moveStrategy) {
+
+    public void movableCarList(MoveStrategy moveStrategy) {
         for (Car car : carList) {
             car.movable(moveStrategy);
         }
