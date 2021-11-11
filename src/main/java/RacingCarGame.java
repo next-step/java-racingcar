@@ -4,12 +4,6 @@ public class RacingCarGame {
   private final RacingCars racingCars;
   private final RacingCarGameResults racingCarGameResults;
 
-  public RacingCarGame(int carAmount, int roundAmount) {
-    this.roundAmount = roundAmount;
-    this.racingCars = new RacingCars(carAmount);
-    this.racingCarGameResults = new RacingCarGameResults(carAmount);
-  }
-
   public RacingCarGame(String[] carNames, int roundAmount) {
     this.roundAmount = roundAmount;
     this.racingCars = new RacingCars(carNames);
@@ -23,6 +17,7 @@ public class RacingCarGame {
     }
     racingCarGameResults.setWinnerNames(racingCars);
   }
+
 
   public RacingCarGameResults getResults() {
     return this.racingCarGameResults;
