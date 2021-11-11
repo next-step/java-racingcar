@@ -26,6 +26,13 @@ public class Racing {
         return carList;
     }
 
+    public void goingTry(int number) {
+        for (Car car : carList) {
+            car.increaseState(number);
+        }
+        OutputView.print(this.result());
+    }
+
     public void goingTry() {
         for (Car car : carList) {
             car.increaseState(random.nextInt(10));
