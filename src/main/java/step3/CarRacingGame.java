@@ -18,6 +18,10 @@ public class CarRacingGame {
         }
     }
 
+    public Car[] getCars() {
+        return this.cars;
+    }
+
     public void moveCars() {
         for (Car car : cars) {
             car.move();

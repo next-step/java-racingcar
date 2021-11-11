@@ -9,6 +9,10 @@ public class Car {
         this.moveStrategy = moveStrategy;
     }
 
+    public int getPosition() {
+        return this.position;
+    }
+
     public void move() {
         position = moveStrategy.move(position);
     }
