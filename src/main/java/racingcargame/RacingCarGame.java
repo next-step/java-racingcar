@@ -11,10 +11,10 @@
 package racingcargame;
 
 import racingcargame.domain.RacingCar;
+import racingcargame.repository.RacingCarRepository;
 import racingcargame.ui.InputView;
 import racingcargame.ui.ResultView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGame {
@@ -29,20 +29,11 @@ public class RacingCarGame {
     public void start() {
         int carCount = inputView.readCarCount();
         int tryCount = inputView.readTryCount();
-        List<RacingCar> racingCars = prepareRacingCars(carCount);
-        prepareRacingCars(carCount);
-        moveAndPrintResult(tryCount, racingCars);
+        RacingCarRepository racingCarRepository = new RacingCarRepository(carCount);
+        moveAndPrintResult(tryCount, racingCarRepository.getRacingCars());
     }
 
-    protected List<RacingCar> prepareRacingCars(int carCount) {
-        List<RacingCar> racingCars = new ArrayList<>();
-        while (carCount-- > 0) {
-            racingCars.add(new RacingCar());
-        }
-        return racingCars;
-    }
-
-    protected void moveAndPrintResult(int tryCount, List<RacingCar> racingCars) {
+    private void moveAndPrintResult(int tryCount, List<RacingCar> racingCars) {
         resultView.printResultMessage();
         while (tryCount-- > 0) {
             moveAndPrintState(racingCars);
@@ -52,9 +43,9 @@ public class RacingCarGame {
     private void moveAndPrintState(List<RacingCar> racingCars) {
         racingCars.stream().forEach(r -> {
             r.move();
-            resultView.printCurrentStateOfRacingCar(r);
+            resultView.printCurrentStateOfRacingCar(r.getCurrentState());
         });
-        resultView.print("");
+        System.out.println("");
     }
 
 }

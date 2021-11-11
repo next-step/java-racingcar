@@ -10,16 +10,15 @@
 
 package racingcargame.ui;
 
-import racingcargame.domain.RacingCar;
-
-public class ResultView extends AbstractView {
-    private final String resultMessage = "실행 결과";
+public class ResultView {
+    private static final String RESULT_MESSAGE = "실행 결과";
 
     public void printResultMessage() {
-        print(resultMessage);
+        System.out.println(RESULT_MESSAGE);
     }
 
-    public void printCurrentStateOfRacingCar(RacingCar racingCar) {
-        print(racingCar.getCurrentState());
+    public void printCurrentStateOfRacingCar(String state) {
+        System.out.println(state);
     }
+
 }
