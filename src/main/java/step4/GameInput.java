@@ -6,11 +6,27 @@ public class GameInput {
 
     static Scanner scanner = new Scanner(System.in);
 
-    public static int readInt() {
-        return scanner.nextInt();
+    public static int readRoundCount() {
+        int roundCount = scanner.nextInt();
+        validateRoundCount(roundCount);
+        return roundCount;
+    }
+
+    private static void validateRoundCount(int roundCount) {
+        if (roundCount <= 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static String[] readCarNames() {
-        return scanner.nextLine().split(",");
+        String names = scanner.nextLine();
+        validateNames(names);
+        return names.split(",");
+    }
+
+    private static void validateNames(String names) {
+        if (names.length() == 0) {
+            throw new IllegalArgumentException();
+        }
     }
 }
