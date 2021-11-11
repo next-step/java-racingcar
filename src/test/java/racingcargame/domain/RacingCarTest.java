@@ -2,6 +2,7 @@ package racingcargame.domain;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcargame.TestUtil;
 
 import java.util.Arrays;
 
@@ -14,7 +15,9 @@ class RacingCarTest {
     @CsvSource(value = {"3:0", "4:1"}, delimiter = ':')
     void moveTest(int moveArgument, int position) {
         racingCar.move(moveArgument);
-        assertThat(racingCar.getPosition()).isEqualTo(position);
+        int currentPosition = TestUtil.getPrivateField(racingCar, "position");
+
+        assertThat(currentPosition).isEqualTo(position);
     }
 
     @ParameterizedTest

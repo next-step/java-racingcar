@@ -11,6 +11,7 @@
 package racingcargame.domain;
 
 import java.util.function.Predicate;
+
 public class RacingCar {
 
     private int position;
@@ -29,10 +30,6 @@ public class RacingCar {
             sb.append('-');
         }
         return sb.toString();
-    }
-
-    public int getPosition() {
-        return position;
     }
 
 }

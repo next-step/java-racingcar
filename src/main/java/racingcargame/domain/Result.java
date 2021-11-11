@@ -10,13 +10,9 @@ public class Result {
     public static Result of(List<RacingCar> racingCars) {
         Result result = new Result();
         racingCars.forEach(racingCar -> {
-            result.add(racingCar.getCurrentState());
+            result.currentStates.add(racingCar.getCurrentState());
         });
         return result;
-    }
-
-    public void add(String currentState) {
-        currentStates.add(currentState);
     }
 
     @Override
