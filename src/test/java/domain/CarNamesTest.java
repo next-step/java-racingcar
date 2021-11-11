@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-class CarNameTest {
+class CarNamesTest {
     private CarNames names;
 
     @BeforeEach
