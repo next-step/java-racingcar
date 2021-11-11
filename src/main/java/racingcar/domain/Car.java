@@ -1,9 +1,7 @@
 package racingcar.domain;
 
 
-import racingcar.view.View;
-
-public class Car extends View {
+public class Car {
 
     private static final int UPPER_LIMIT = 4;
     private int state;
@@ -18,13 +16,12 @@ public class Car extends View {
         }
     }
 
-    @Override
-    public void print() {
+    public String print() {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < this.state; i++) {
             result.append("-");
         }
-        System.out.println(result);
+        return result.toString();
     }
 
     public int getState() {

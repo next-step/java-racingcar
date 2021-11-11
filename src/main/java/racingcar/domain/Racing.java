@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.view.ListView;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,12 +8,12 @@ import java.util.Random;
 
 public class Racing {
 
-    private final ListView<Car> carListView;
+    private final List<Car> carList;
     private final int tryCount;
     private final Random random;
 
     public Racing(int carCount, int tryCount) {
-        this.carListView = new ListView<>(makeCar(carCount));
+        this.carList = new ArrayList<>(makeCar(carCount));
         this.tryCount = tryCount;
         this.random = new Random(System.currentTimeMillis());
     }
@@ -27,20 +27,28 @@ public class Racing {
     }
 
     public void goingTry() {
-        for (Car car : carListView.getList()) {
+        for (Car car : carList) {
             car.increaseState(random.nextInt(10));
         }
-        carListView.print();
+        OutputView.print(this.result());
     }
 
     public void start() {
-        System.out.println("실행 결과");
+        OutputView.print("실행 결과");
         for (int i = 0; i < tryCount; i++) {
             this.goingTry();
         }
     }
 
+    public String result() {
+        StringBuilder result = new StringBuilder();
+        for (Car car : carList) {
+            result.append(car.print()).append("\n");
+        }
+        return result.toString();
+    }
+
     public List<Car> getCarList() {
-        return carListView.getList();
+        return carList;
     }
 }
