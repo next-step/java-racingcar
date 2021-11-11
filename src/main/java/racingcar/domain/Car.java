@@ -24,6 +24,9 @@ public class Car {
 
     public String print() {
         StringBuilder result = new StringBuilder();
+        if (this.name != null) {
+            result.append(this.name).append(" : ");
+        }
         for (int i = 0; i < this.state; i++) {
             result.append("-");
         }
