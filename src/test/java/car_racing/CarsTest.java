@@ -1,5 +1,6 @@
 package car_racing;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -7,30 +8,36 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarsTest {
 
     @Test
-    void createCars() {
+    @DisplayName("When create cars, the id will start from 0")
+    void createCars_check_ids() {
         // given
         int numberOfCount = 3;
 
         // when
         Cars cars = new Cars(numberOfCount);
+        Car car0 = new Car(0);
+        Car car1 = new Car(1);
+        Car car2 = new Car(2);
 
         // then
-        assertThat(cars.getCarCount()).isEqualTo(3);
+        assertThat(cars.getCars().size()).isEqualTo(3);
+        assertThat(cars.getCars().get(0)).isEqualTo(car0);
+        assertThat(cars.getCars().get(1)).isEqualTo(car1);
+        assertThat(cars.getCars().get(2)).isEqualTo(car2);
     }
 
     @Test
-    void getCarsCurrStatuses() {
+    @DisplayName("When 0 cars, returns empty list")
+    void createCars_with_zero_car() {
         // given
-        Car[] arrCars = new Car[3];
-        arrCars[0] = new Car("-");
-        arrCars[1]= new Car("--");
-        arrCars[2] = new Car("---");
-        Cars cars = new Cars(arrCars);
-
-        // when
-        String carsCurrStatuses = cars.getCarsCurrStatuses();
+        int numberOfCount = 0;
 
         // then
-        assertThat(carsCurrStatuses).isEqualTo("-\n--\n---\n\n");
+        Cars cars = new Cars(0);
+
+        // when
+        assertThat(cars.getCars()).isEmpty();
+        assertThat(cars.getCars().size()).isEqualTo(0);
     }
+
 }

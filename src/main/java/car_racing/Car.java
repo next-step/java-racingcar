@@ -1,31 +1,53 @@
 package car_racing;
 
-public class Car {
-    private final StringBuilder position;
-    private static final String MOVE_FORWARD = "-";
+import java.util.Objects;
 
-    public Car() {
-        this.position = new StringBuilder();
+public class Car {
+
+    private static final MoveStrategy moveStrategy = new RandomMoveStrategy();
+
+    private final int id;
+    private Status currStatus;
+
+    public Car(int carId) {
+        currStatus = Status.STOP;
+        id = carId;
     }
 
-    /* test */
-    public Car(String strPosition) {
-        this.position = new StringBuilder(strPosition);
+    /** test **/
+    public Car(int carId, Status status) {
+        currStatus = status;
+        id = carId;
     }
 
     public void move() {
         if (ableToMove()) {
-            position.append(MOVE_FORWARD);
+            currStatus = Status.MOVE;
         }
     }
 
-    public String getCurrStatus() {
-        return position.toString();
+    public Status getCurrStatus() {
+        return currStatus;
+    }
+
+    public int getId() {
+        return id;
     }
 
     private boolean ableToMove() {
-        int randomValue = (int) (Math.random() * 10);
-        return randomValue >= 4;
+        return moveStrategy.decideToMove();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return id == car.id && currStatus == car.currStatus;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, currStatus);
+    }
 }

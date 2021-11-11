@@ -1,6 +1,5 @@
 package car_racing;
 
-import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,11 +7,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
 
     @Test
-    void showCurrStatus() {
-        Car car = new Car();
-        car.move();
+    void createCar() {
+        // given
+        int id = 1;
 
-        String currStatus = car.getCurrStatus();
-        assertThat(currStatus).isIn(Lists.list("", "-"));
+        // when
+        Car car = new Car(id);
+
+        // then
+        assertThat(car.getCurrStatus()).isEqualTo(Status.STOP);
+        assertThat(car).isEqualTo(new Car(1, Status.STOP));
     }
 }

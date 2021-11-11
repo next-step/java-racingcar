@@ -1,22 +1,19 @@
 package car_racing;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cars {
-    private final Car[] carsForGame;
-    private static final String ONE_ROUND_ENDS = "\n";
 
-    /* test */
-    public Cars(Car[] cars) {
-        this.carsForGame = cars;
-    }
+    private final List<Car> carsForGame;
 
     public Cars(int numberOfCars) {
-        carsForGame = new Car[numberOfCars];
+        carsForGame = createCars(numberOfCars);
+    }
 
-        for(int i = 0; i < numberOfCars; i++) {
-            carsForGame[i] = new Car();
-        }
+    /** Test **/
+    public Cars(List<Car> carsForGame) {
+        this.carsForGame = carsForGame;
     }
 
     public void playOneRound() {
@@ -25,22 +22,20 @@ public class Cars {
         }
     }
 
-    public String getCarsCurrStatuses() {
-        StringBuilder carsCurrStatuses = new StringBuilder();
-        for(Car car: carsForGame) {
-            carsCurrStatuses.append(car.getCurrStatus());
-            carsCurrStatuses.append(ONE_ROUND_ENDS);
-        }
-        carsCurrStatuses.append(ONE_ROUND_ENDS);
-
-        return carsCurrStatuses.toString();
+    public List<Car> getCars() {
+        return carsForGame;
     }
 
-    /* test */
-    public int getCarCount() {
-        if (Objects.nonNull(carsForGame)) {
-            return carsForGame.length;
-        }
-        return 0;
+    public int numberOfCars() {
+        return carsForGame.size();
     }
+
+    private List<Car> createCars(int numberOfCars) {
+        List<Car> cars = new ArrayList<>();
+        for(int carId = 0; carId < numberOfCars; carId++) {
+            cars.add(new Car(carId));
+        }
+        return cars;
+    }
+
 }

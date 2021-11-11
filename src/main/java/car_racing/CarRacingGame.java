@@ -2,17 +2,17 @@ package car_racing;
 
 public class CarRacingGame {
 
-    private final RacingResult racingResult;
+    private final CarRacingResult carRacingResult;
     private final Cars cars;
     private final int numberOfRound;
 
     public CarRacingGame(int numberOfCar, int numberOfRound) {
-        racingResult = new RacingResult();
+        carRacingResult = new CarRacingResult();
         this.cars = new Cars(numberOfCar);
         this.numberOfRound = numberOfRound;
     }
 
-    public String play() {
+    public CarRacingResult play() {
         for(int i = 0; i < numberOfRound; i++) {
             racingOneRound();
             updateRacingResult();
@@ -26,11 +26,11 @@ public class CarRacingGame {
     }
 
     private void updateRacingResult() {
-        racingResult.update(cars);
+        carRacingResult.update(cars);
     }
 
-    private String getRacingResult() {
-        return racingResult.getResult();
+    private CarRacingResult getRacingResult() {
+        return carRacingResult;
     }
 
 }
