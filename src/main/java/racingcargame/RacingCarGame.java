@@ -41,9 +41,9 @@ public class RacingCarGame {
     }
 
     private void moveAndPrintState(List<RacingCar> racingCars) {
-        racingCars.stream().forEach(r -> {
-            r.move();
-            resultView.printCurrentStateOfRacingCar(r.getCurrentState());
+        racingCars.forEach(racingCar -> {
+            racingCar.move();
+            resultView.printCurrentStateOfRacingCar(racingCar.getCurrentState());
         });
         System.out.println("");
     }
