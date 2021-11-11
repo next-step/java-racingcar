@@ -69,7 +69,7 @@ class MoveCarsTest {
 
     private Car dummyCar() {
         return new Car(
-                new CarName(UUID.randomUUID().toString().substring(1, 4))
+                new CarName(UUID.randomUUID().toString().substring(0, 4))
         );
     }
 }

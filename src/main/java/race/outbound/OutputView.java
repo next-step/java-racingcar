@@ -19,8 +19,8 @@ public class OutputView {
         System.out.println();
     }
 
-    public void renderWinners(Collection<Car> cars) {
-        String winnerNames = cars.stream().map(car -> car.name().toString()).collect(Collectors.joining(", "));
+    public void renderWinners(Collection<Car> winners) {
+        String winnerNames = winners.stream().map(car -> car.name().toString()).collect(Collectors.joining(", "));
         System.out.println(winnerNames + "가 최종 우승 했습니다.");
     }
 }
