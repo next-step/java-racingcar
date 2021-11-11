@@ -2,7 +2,6 @@ package racing;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static racing.NumberHelper.isLessThanOne;
 
@@ -15,12 +14,12 @@ public class Racing {
 
     private Map<Integer, List<Car>> logs = new HashMap<>();
 
-    public Racing(int cars, int attempts) {
-        if (isLessThanOne(cars) || isLessThanOne(attempts)) {
+    public Racing(List<String> users, int attempts) {
+        if (users == null || isLessThanOne(users.size()) || isLessThanOne(attempts)) {
             throw new IllegalArgumentException();
         }
 
-        this.cars = createCars(cars);
+        this.cars = createCars(users);
         this.attempts = attempts;
     }
 
@@ -44,8 +43,14 @@ public class Racing {
         }
     }
 
-    private List<Car> createCars(int count) {
-        return IntStream.range(0, count).mapToObj(i -> Car.create()).collect(Collectors.toList());
+    private List<Car> createCars(List<String> users) {
+        if (users == null || users.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        return users.stream()
+            .map(user -> Car.create(user))
+            .collect(Collectors.toList());
     }
 
     private List<Car> movingCars(Random random) {
