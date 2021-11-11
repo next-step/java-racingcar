@@ -15,7 +15,7 @@ public class CarName {
     }
 
     private void validateCarName(String carName) {
-        if (carName == null) {
+        if (carName == null || carName.isEmpty()) {
             throw new CarNameException();
         }
         if (carName.length() > MAX_NAME_LENGTH) {

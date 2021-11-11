@@ -4,10 +4,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import racingcar.exception.CarNameException;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.assertj.core.api.Java6Assertions.assertThatThrownBy;
 
 class CarNameTest {
 
@@ -34,4 +37,10 @@ class CarNameTest {
         );
     }
 
+    @ParameterizedTest
+    @DisplayName("CarName 인자가 null, empty일 때 생성 예외 테스트")
+    @NullAndEmptySource
+    void createExcetionTest(String name) {
+        assertThatThrownBy(() -> CarName.from(name)).isInstanceOf(CarNameException.class);
+    }
 }
