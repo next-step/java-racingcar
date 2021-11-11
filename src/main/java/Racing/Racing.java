@@ -9,9 +9,9 @@ public class Racing {
   static final private String TOKEN = "-";
   static final private String SPLIT_TOKEN = "\n";
 
-  public String run(int countOfCar, int countOfTry) {
+  public String run(int countOfCar, int countOfBoard) {
 
-    return getLongStream(countOfTry)
+    return getLongStream(countOfBoard)
         .mapToObj(i -> getCollect(countOfCar))
         .map(result -> result + SPLIT_TOKEN)
         .collect(Collectors.joining());
@@ -23,8 +23,8 @@ public class Racing {
         .collect(Collectors.joining());
   }
 
-  private LongStream getLongStream(int countOfCar) {
-    return LongStream.rangeClosed(1, countOfCar);
+  private LongStream getLongStream(int endInclusive) {
+    return LongStream.rangeClosed(1, endInclusive);
   }
 
   private int getRandomToken() {
