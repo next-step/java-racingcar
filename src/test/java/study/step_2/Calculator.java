@@ -1,4 +1,4 @@
-package study;
+package study.step_2;
 
 public class Calculator {
 
