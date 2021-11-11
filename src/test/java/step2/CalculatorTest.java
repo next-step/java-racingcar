@@ -6,9 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import step2.model.Calculator;
-import step2.model.CalculatorEnum;
-
-import java.util.Arrays;
+import step2.model.Operator;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,7 +17,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"1 + 1 - 5 + 10 / 7 * 100:100", "100 * 100:10000", " 100 / 100:1"}, delimiter = ':')
     void calculator(String str, int expect) {
-        assertEquals(Calculator.operator(str), expect);
+        assertEquals(Calculator.calculateAll(str), expect);
     }
 
     @DisplayName("divide by zero exception test")
@@ -27,37 +25,37 @@ public class CalculatorTest {
     @CsvSource(value = {"100 / 0:1"}, delimiter = ':')
     void divideByZeroException(String str, int expect) {
         assertThatThrownBy(() -> {
-            Calculator.operator(str);
+            Calculator.calculateAll(str);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("can't divide by zero");
     }
 
     @Test
     void findOperatorTest() {
-        CalculatorEnum ADD = CalculatorEnum.findOperator("+");
-        assertEquals(ADD,CalculatorEnum.ADD);
+        Operator ADD = Operator.findOperator("+");
+        assertEquals(ADD, Operator.ADD);
 
-        CalculatorEnum MINUS = CalculatorEnum.findOperator("-");
-        assertEquals(MINUS,CalculatorEnum.MINUS);
+        Operator MINUS = Operator.findOperator("-");
+        assertEquals(MINUS, Operator.MINUS);
 
-        CalculatorEnum DIVIDE = CalculatorEnum.findOperator("/");
-        assertEquals(DIVIDE,CalculatorEnum.DIVIDE);
+        Operator DIVIDE = Operator.findOperator("/");
+        assertEquals(DIVIDE, Operator.DIVIDE);
 
-        CalculatorEnum MULTIPLY = CalculatorEnum.findOperator("*");
-        assertEquals(MULTIPLY,CalculatorEnum.MULTIPLY);
+        Operator MULTIPLY = Operator.findOperator("*");
+        assertEquals(MULTIPLY, Operator.MULTIPLY);
     }
     @Test
     void calculatorTwoNumberTest() {
-        Integer addNum = CalculatorEnum.calculator(1, 3, CalculatorEnum.ADD);
+        Integer addNum = Operator.calculator(1, 3, Operator.ADD);
         assertEquals(addNum,4);
 
-        Integer multiplyNum = CalculatorEnum.calculator(1, 3, CalculatorEnum.MULTIPLY);
+        Integer multiplyNum = Operator.calculator(1, 3, Operator.MULTIPLY);
         assertEquals(multiplyNum,3);
 
-        Integer minusNum = CalculatorEnum.calculator(6, 3, CalculatorEnum.MINUS);
+        Integer minusNum = Operator.calculator(6, 3, Operator.MINUS);
         assertEquals(minusNum,3);
 
-        Integer divideNum = CalculatorEnum.calculator(30, 3, CalculatorEnum.DIVIDE);
+        Integer divideNum = Operator.calculator(30, 3, Operator.DIVIDE);
         assertEquals(divideNum,10);
     }
 
