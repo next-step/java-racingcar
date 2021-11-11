@@ -1,16 +1,20 @@
 package domain;
 
 public class CarRace {
-    private final String car;
-    private final int position;
+    private final String carName;
+    private int position;
 
-    public CarRace(String car, int position) {
-        this.car = car;
-        this.position = position;
+    public CarRace(String carName, int carPositing){
+        this.carName = carName;
+        this.position = carPositing;
     }
 
-    public String getCar() {
-        return car;
+    public void positionAdd(int move) {
+        position += move;
+    }
+
+    public String getCarName() {
+        return carName;
     }
 
     public int getPosition() {
