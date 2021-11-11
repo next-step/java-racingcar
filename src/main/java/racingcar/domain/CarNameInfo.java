@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class CarNameInfo {
 
+    private static final int NAME_LENGTH_MAX = 5;
     private final String name;
 
     public CarNameInfo(String name){
@@ -15,7 +16,7 @@ public class CarNameInfo {
 
     private void invalidNameCheck(String name) {
         if(name.isEmpty()) throw new IllegalArgumentException("차의 이름은 공백이 아니여야 합니다.");
-        if(name.length() > 5) throw new IllegalArgumentException("차의 이름의 최대 길이는 5입니다.");
+        if(name.length() > NAME_LENGTH_MAX) throw new IllegalArgumentException("차의 이름의 최대 길이는 5입니다.");
     }
 
     public static List<CarNameInfo> createListFromInput(String[] carNames) {
