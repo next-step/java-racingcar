@@ -80,20 +80,20 @@ class RacingTest {
     @ParameterizedTest(name = "잘못 생성 시, 에러를 던진다")
     @MethodSource("carSAndAttemptsProvider")
     void throwExceptionWhenCreated(int cars, int attempts) {
-        assertThatThrownBy(() -> new Racing(getUsers(cars) ,attempts)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Racing(getUsers(cars), attempts)).isInstanceOf(IllegalArgumentException.class);
     }
 
     static Stream<Arguments> indexCarsAndResultProvider() {
         return Stream.of(
-            Arguments.arguments(0,0,0),
-            Arguments.arguments(0,1,0),
-            Arguments.arguments(0,2,0),
-            Arguments.arguments(1,0,0),
-            Arguments.arguments(1,1,1),
-            Arguments.arguments(1,2,1),
-            Arguments.arguments(2,0,1),
-            Arguments.arguments(2,1,2),
-            Arguments.arguments(2,2,2)
+            Arguments.arguments(0, 0, 0),
+            Arguments.arguments(0, 1, 0),
+            Arguments.arguments(0, 2, 0),
+            Arguments.arguments(1, 0, 0),
+            Arguments.arguments(1, 1, 1),
+            Arguments.arguments(1, 2, 1),
+            Arguments.arguments(2, 0, 1),
+            Arguments.arguments(2, 1, 2),
+            Arguments.arguments(2, 2, 2)
         );
     }
 
