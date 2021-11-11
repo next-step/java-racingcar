@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -30,5 +31,13 @@ class PositionTest {
                         2, Position.from(2)
                 )
         );
+    }
+
+    @Test
+    @DisplayName("초기 Position 생성 테스트")
+    void positionInit() {
+        Position init = Position.init();
+
+        assertThat(init).isEqualTo(Position.from(0));
     }
 }
