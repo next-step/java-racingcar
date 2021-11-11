@@ -2,19 +2,24 @@ package racinggame;
 
 public class Car {
     private static final int INIT_POSITION = 0;
-    private int position;
 
-    public Car() {
-        this.position = INIT_POSITION;
+    private final CarState carState;
+
+    public Car(String name) {
+        carState = new CarState(name, INIT_POSITION);
     }
 
     public void move(boolean movable) {
         if (movable) {
-            position++;
+            carState.move();
         }
     }
 
-    public int getPosition() {
-        return this.position;
+    public int currentPosition() {
+        return carState.currentPosition();
+    }
+
+    public CarState currentState() {
+        return carState;
     }
 }

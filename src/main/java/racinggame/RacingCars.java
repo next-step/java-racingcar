@@ -4,6 +4,7 @@ import racinggame.utils.MoveValueGenerator;
 import racinggame.utils.MoveValueValidator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,12 +39,12 @@ public class RacingCars {
     }
 
     public List<MoveResult> getRacingResult() {
-        return this.moveResults;
+        return Collections.unmodifiableList(moveResults);
     }
 
     private MoveResult getMoveResults() {
         return new MoveResult(cars.stream()
-                .map(Car::getPosition)
+                .map(Car::currentState)
                 .collect(Collectors.toList()));
     }
 }

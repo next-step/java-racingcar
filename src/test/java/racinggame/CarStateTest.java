@@ -5,25 +5,24 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racinggame.fixture.CarFixture.CAR1;
+import static racinggame.fixture.CarFixture.CAR_NAME1;
 
-class CarTest {
+class CarStateTest {
     private static final int INIT_POSITION = 0;
 
-    private Car car;
+    private CarState carState;
 
     @BeforeEach
     void setUp() {
-        car = CAR1;
+        carState = new CarState(CAR_NAME1, INIT_POSITION);
     }
 
     @DisplayName("자동차 이동시 변화")
     @Test
     void move() {
-        car.move(true);
+        carState.move();
 
-        assertThat(car.currentState()
-                .currentPosition())
-                .isGreaterThan(INIT_POSITION);
+        assertThat(carState.currentPosition()).isGreaterThan(INIT_POSITION);
     }
+
 }

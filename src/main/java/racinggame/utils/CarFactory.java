@@ -1,11 +1,12 @@
 package racinggame.utils;
 
 import racinggame.Car;
+import racinggame.InputValue;
 import racinggame.RacingCars;
 import racinggame.exception.NotInstanceException;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarFactory {
 
@@ -13,16 +14,15 @@ public class CarFactory {
         throw new NotInstanceException();
     }
 
-    public static RacingCars createRacingCars(int numberOfCars) {
-        return new RacingCars(createCars(numberOfCars));
+    public static RacingCars createRacingCars(InputValue inputValue) {
+        return new RacingCars(createCars(inputValue));
     }
 
-    private static List<Car> createCars(int numberOfCars) {
-        List<Car> cars = new ArrayList<>(numberOfCars);
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
-        }
-        return cars;
+    private static List<Car> createCars(InputValue inputValue) {
+        return inputValue.carNames()
+                .stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
 

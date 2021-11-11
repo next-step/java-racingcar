@@ -4,13 +4,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class MoveResult {
-    private final List<Integer> moveResults;
+    private final List<CarState> moveResults;
 
-    public MoveResult(List<Integer> moveResults) {
+    public MoveResult(List<CarState> moveResults) {
         this.moveResults = moveResults;
     }
 
-    public List<Integer> getResults() {
+    public List<CarState> getResults() {
         return Collections.unmodifiableList(moveResults);
     }
 }

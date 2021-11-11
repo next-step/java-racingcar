@@ -21,7 +21,7 @@ public class ResultView {
 
         moveResults.forEach(moveResult -> {
             moveResult.getResults()
-                    .forEach(result -> System.out.println(printResult(result)));
+                    .forEach(result -> System.out.println(printResult(result.currentPosition())));
             System.out.println(ROUND_DIVISION);
         });
     }
