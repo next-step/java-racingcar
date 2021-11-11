@@ -7,6 +7,10 @@ public class GameBoard {
     private final String RESULT_MESSAGE = "\n실행 결과";
     private final String UNIT_OF_MOVE = "-";
 
+    private final int ZERO = 0;
+
+    private final static StringBuilder STRING_BUILDER = new StringBuilder();
+
     private void render(String text) {
         System.out.println(text);
     }
@@ -23,10 +27,14 @@ public class GameBoard {
         return INPUT_VIEW.inputValue();
     }
 
-    public void renderRaceProgress(Count position) {
-        int count = position.getCount();
+    public void renderRaceProgress(RacingCarGroup carGroup) {
 
-        render(appendText(count));
+        carGroup.carsCurrentPosition().stream()
+                .forEach(pos -> {
+                    render(appendText(pos.getCount()));
+                });
+
+        System.out.println();
     }
 
     public void renderResultMessage() {
@@ -34,12 +42,12 @@ public class GameBoard {
     }
 
     private String appendText(int count) {
-        StringBuilder sb = new StringBuilder();
+        STRING_BUILDER.setLength(ZERO);
 
         for(int i = 0; i < count; ++i) {
-            sb.append(UNIT_OF_MOVE);
+            STRING_BUILDER.append(UNIT_OF_MOVE);
         }
 
-        return sb.toString();
+        return STRING_BUILDER.toString();
     }
 }
