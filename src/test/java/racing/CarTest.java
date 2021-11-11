@@ -20,13 +20,13 @@ class CarTest {
     }
 
     @ParameterizedTest(name = "전진")
-    @CsvSource(value = {"5,1", "6,1", "7,1", "8,1", "9,1"})
+    @CsvSource(value = {"4,1", "5,1", "6,1"})
     void forward(int input, int expected) {
         assertThat(car.getInstanceByForward(input).getStep()).isEqualTo(expected);
     }
 
     @ParameterizedTest(name = "멈춤")
-    @CsvSource(value = {"1,0", "2,0", "3,0", "4,0"})
+    @CsvSource(value = {"1,0", "2,0", "3,0"})
     void stop(int input, int expected) {
         assertThat(car.getInstanceByForward(input).getStep()).isEqualTo(expected);
     }
