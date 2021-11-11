@@ -2,11 +2,20 @@ package step4;
 
 public class Car {
 
+    private String name;
     private int position;
     private MoveStrategy moveStrategy;
 
-    public Car(MoveStrategy moveStrategy) {
+    public Car(String name, MoveStrategy moveStrategy) {
+        validateName(name);
+        this.name = name;
         this.moveStrategy = moveStrategy;
+    }
+
+    private void validateName(String name) {
+        if (name == null || name.length() > 5) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getPosition() {
