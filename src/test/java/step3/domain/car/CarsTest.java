@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
@@ -25,44 +26,34 @@ class CarsTest {
     @Test
     void findWinnerNames() {
         //given
-        Name winnerName = new Name("짱구");
-        Name otherWinnerName = new Name("길동");
-        Name looserName = new Name("패자");
+        Car winner = new Car(WINNER_LOCATION, new Name("짱구"));
+        Car otherWinner = new Car(WINNER_LOCATION, new Name("길동"));
+        Car looser = new Car(LOOSER_LOCATION, new Name("패자"));
 
-        Cars cars = new Cars(asList(
-                new Car(WINNER_LOCATION, winnerName),
-                new Car(WINNER_LOCATION, otherWinnerName),
-                new Car(LOOSER_LOCATION, looserName)
-        ));
+        Cars cars = new Cars(asList(winner, otherWinner, looser));
 
         //when
-        List<Name> winnerNames = cars.findWinnerNames();
+        Winners winners = cars.findWinners();
 
         //then
-        assertThat(winnerNames).contains(otherWinnerName, winnerName);
-        assertThat(winnerNames).doesNotContain(looserName);
+        assertThat(winners).isEqualTo(new Winners(asList(winner, otherWinner)));
     }
 
     @DisplayName("단일 우승자 잘 구하는지 테스트")
     @Test
     void findWinnerNames2() {
         //given
-        Name winnerName = new Name("짱구");
-        Name looserName = new Name("패자");
-        Name otherLooserName = new Name("길동");
+        Car winner = new Car(WINNER_LOCATION, new Name("짱구"));
+        Car looser = new Car(LOOSER_LOCATION, new Name("패자"));
+        Car otherLooser = new Car(LOOSER_LOCATION, new Name("길동"));
 
-        Cars cars = new Cars(asList(
-                new Car(WINNER_LOCATION, winnerName),
-                new Car(LOOSER_LOCATION, looserName),
-                new Car(LOOSER_LOCATION, otherLooserName)
-        ));
+        Cars cars = new Cars(asList(winner, otherLooser, looser));
 
         //when
-        List<Name> winnerNames = cars.findWinnerNames();
+        Winners winners = cars.findWinners();
 
         //then
-        assertThat(winnerNames).contains(winnerName);
-        assertThat(winnerNames).doesNotContain(looserName, otherLooserName);
+        assertThat(winners).isEqualTo(new Winners(singletonList(winner)));
     }
 
     @DisplayName("전진, 정지 잘하는지 테스트")
