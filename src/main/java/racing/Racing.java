@@ -49,6 +49,6 @@ public class Racing {
     }
 
     private List<Car> createCars(int count) {
-        return IntStream.range(0, count).mapToObj(i -> new Car(0)).collect(Collectors.toList());
+        return IntStream.range(0, count).mapToObj(i -> Car.create()).collect(Collectors.toList());
     }
 }
