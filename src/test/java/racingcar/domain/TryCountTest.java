@@ -63,4 +63,24 @@ class TryCountTest {
                 )
         );
     }
+
+    @ParameterizedTest
+    @DisplayName("TryCount counting test")
+    @MethodSource
+    void tryCountCounting(TryCount tryCount, TryCount expected) {
+        tryCount.counting();
+
+        assertThat(tryCount).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> tryCountCounting() {
+        return Stream.of(
+                Arguments.of(
+                        TryCount.from(2), TryCount.from(1)
+                ),
+                Arguments.of(
+                        TryCount.from(3), TryCount.from(2)
+                )
+        );
+    }
 }
