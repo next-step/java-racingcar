@@ -11,13 +11,17 @@
 package racingcargame;
 
 import racingcargame.domain.RacingCar;
-import racingcargame.repository.RacingCarRepository;
+import racingcargame.domain.Result;
+import racingcargame.repository.RacingCarFactory;
 import racingcargame.ui.InputView;
 import racingcargame.ui.ResultView;
+import racingcargame.utils.RandomUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGame {
+
     private final InputView inputView;
     private final ResultView resultView;
 
@@ -29,23 +33,35 @@ public class RacingCarGame {
     public void start() {
         int carCount = inputView.readCarCount();
         int tryCount = inputView.readTryCount();
-        RacingCarRepository racingCarRepository = new RacingCarRepository(carCount);
-        moveAndPrintResult(tryCount, racingCarRepository.getRacingCars());
+        
+        List<RacingCar> racingCars = RacingCarFactory.makeCars(carCount);
+
+        List<Result> results = moveTryCountTimes(tryCount, racingCars);
+        printResult(results);
     }
 
-    private void moveAndPrintResult(int tryCount, List<RacingCar> racingCars) {
-        resultView.printResultMessage();
+    private List<Result> moveTryCountTimes(int tryCount, List<RacingCar> racingCars) {
+        List<Result> results = new ArrayList<>();
         while (tryCount-- > 0) {
-            moveAndPrintState(racingCars);
+            results.add(move(racingCars));
         }
+        return results;
     }
 
-    private void moveAndPrintState(List<RacingCar> racingCars) {
+    private Result move(List<RacingCar> racingCars) {
+        Result result = new Result();
         racingCars.forEach(racingCar -> {
-            racingCar.move();
-            resultView.printCurrentStateOfRacingCar(racingCar.getCurrentState());
+            racingCar.move(RandomUtil.nextInt(10));
+            result.add(racingCar.getCurrentState());
         });
-        System.out.println("");
+        return result;
+    }
+
+    private void printResult(List<Result> results) {
+        resultView.printResultMessage();
+        results.forEach(result -> {
+            resultView.printCurrentStateOfRacingCar(result.toString());
+        });
     }
 
 }
