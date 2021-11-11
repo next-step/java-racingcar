@@ -19,7 +19,7 @@ public class NumberTest {
     @DisplayName("Number.equals 테스트")
     void NumberEquals() {
         Number num = new Number("3");
-        assertThat(num.equals(new Number(3))).isTrue();
+        assertThat(num.isSameValue(new Number(3))).isTrue();
     }
 
     @Test
@@ -29,7 +29,7 @@ public class NumberTest {
         Number second = new Number(2);
         Number result = new Number(3);
 
-        assertThat(first.plus(second).equals(result)).isTrue();
+        assertThat(first.plus(second).isSameValue(result)).isTrue();
     }
 
     @Test
@@ -39,7 +39,7 @@ public class NumberTest {
         Number second = new Number(20);
         Number result = new Number(80);
 
-        assertThat(first.minus(second).equals(result)).isTrue();
+        assertThat(first.minus(second).isSameValue(result)).isTrue();
     }
 
     @Test
@@ -49,7 +49,7 @@ public class NumberTest {
         Number second = new Number(2);
         Number result = new Number(10);
 
-        assertThat(first.times(second).equals(result)).isTrue();
+        assertThat(first.times(second).isSameValue(result)).isTrue();
     }
 
     @Test
@@ -59,7 +59,7 @@ public class NumberTest {
         Number second = new Number(2);
         Number result = new Number(5);
 
-        assertThat(first.dividedBy(second).equals(result)).isTrue();
+        assertThat(first.dividedBy(second).isSameValue(result)).isTrue();
     }
 
 

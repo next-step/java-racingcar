@@ -33,7 +33,7 @@ public class Number {
         return number;
     }
 
-    public boolean equals(Number other) {
+    public boolean isSameValue(Number other) {
         return this.number == other.number;
     }
 
