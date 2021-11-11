@@ -26,6 +26,15 @@ public class Racing {
         return carList;
     }
 
+    public List<Car> makeCar(String[] carNames) {
+        List<Car> carList = new ArrayList<>();
+        for(String carName: carNames){
+            carList.add(new Car(carName));
+        }
+        return carList;
+    }
+
+
     public void goingTry(int number) {
         for (Car car : carList) {
             car.increaseState(number);

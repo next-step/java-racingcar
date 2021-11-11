@@ -42,5 +42,16 @@ public class RacingTest {
         racing.start();
     }
 
+    @Test
+    @DisplayName("이름이 주어진 자동차들 생성 테스트")
+    void makeCarWithNameTest() {
+        String[] carNames = "pobi,crong,honux".split(",");
+        List<Car> carList = racing.makeCar(carNames);
+
+        assertThat(carList.size()).isEqualTo(3);
+        for (int i = 0; i < carNames.length; i++) {
+            assertThat(carNames[i]).isEqualTo(carList.get(i).getName());
+        }
+    }
 }
 
