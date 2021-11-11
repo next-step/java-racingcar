@@ -6,13 +6,11 @@ import racing.service.FindWinner;
 import racing.strategy.MoveStrategy;
 
 public class Output {
-    private Output() {
-    }
 
-    public static void  outputView(Cars cars, MoveStrategy moveStrategy, Integer countOfTry) {
+    public static void  outputView(Cars cars, MoveStrategy moveStrategy, Integer countOfTry, Integer criteriaNumber) {
         System.out.println("실행 결과");
         for (int i = 0; i < countOfTry; i++) {
-            cars.playRacing(moveStrategy);
+            cars.movableCarList(moveStrategy);
             cars.getCarList().stream().map(car -> car.getName() + ": " + ConvertOutputView.convertOutputView(car.getPosition())).forEach(System.out :: println);
             System.out.println("");
         }
