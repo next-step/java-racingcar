@@ -24,7 +24,7 @@ public class RacingCarGameResultView {
   private void showWinnerNames(RacingCarGameResults racingCarGameResults) {
     List<String> winnerNames = racingCarGameResults.getWinnerNames();
     String joinedWinnerNames = Strings.join(winnerNames, DELIMITER);
-    System.out.println(String.format("%s가 최종 우승했습니다.", joinedWinnerNames));
+    System.out.printf("%s가 최종 우승했습니다.%n", joinedWinnerNames);
   }
 
   private void showProgress(List<RacingCarResult> roundResults) {
