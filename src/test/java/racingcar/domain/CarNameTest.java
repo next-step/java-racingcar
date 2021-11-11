@@ -27,13 +27,10 @@ class CarNameTest {
     static Stream<Arguments> createTest() {
         return Stream.of(
                 Arguments.of(
-                        "AA", CarName.from("AA")
+                        "A", CarName.from("A")
                 ),
                 Arguments.of(
-                        "BB", CarName.from("BB")
-                ),
-                Arguments.of(
-                        "CC", CarName.from("CC")
+                        "BBBBB", CarName.from("BBBBB")
                 )
         );
     }
