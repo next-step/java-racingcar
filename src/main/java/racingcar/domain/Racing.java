@@ -61,11 +61,7 @@ public class Racing {
     }
 
     public String result() {
-        StringBuilder result = new StringBuilder();
-        for (Car car : cars) {
-            result.append(car.print()).append("\n");
-        }
-        return result.toString();
+        return OutputView.print(cars);
     }
 
     public List<Car> getCars() {
