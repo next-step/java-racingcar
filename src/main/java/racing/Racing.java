@@ -75,6 +75,6 @@ public class Racing {
         return this.cars.stream()
             .mapToInt(Car::getStep)
             .max()
-            .orElseThrow(IllegalArgumentException::new);
+            .orElseThrow(NoSuchElementException::new);
     }
 }
