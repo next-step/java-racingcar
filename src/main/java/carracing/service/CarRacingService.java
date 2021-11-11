@@ -6,7 +6,6 @@ import carracing.model.ui.InputDto;
 public class CarRacingService {
 
     private final Cars cars;
-
     private final Integer tryCount;
 
     public CarRacingService(InputDto dto) {

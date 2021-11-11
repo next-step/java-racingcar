@@ -9,7 +9,6 @@ public class InputDto {
     private static final Integer MINIMUM_TRY_COUNT = 1;
 
     private final String name;
-
     private final Integer tryCount;
 
     private InputDto(String name, Integer tryCount) {
