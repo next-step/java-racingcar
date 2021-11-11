@@ -6,15 +6,15 @@ import racing.Racing;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static racing.view.ViewConstant.*;
+
 /**
  * @author han
  */
 public class ResultView {
-    private String message = "실행 결과";
-    private String subFix = "가 최종 우승했습니다.";
 
     public void print(Racing racing) {
-        System.out.println(this.message);
+        System.out.println(RESULT_MESSAGE);
 
         for (int i = 0; i < racing.getAttempts(); i++) {
             List<Car> cars = racing.getLogs().get(i);
@@ -52,7 +52,7 @@ public class ResultView {
     private String createWinner(List<Car> cars) {
         StringBuilder sb = new StringBuilder();
         String winnerNames = getWinnerNames(cars);
-        sb.append(winnerNames + subFix);
+        sb.append(winnerNames + WINNER_MESSAGE_SUB_FIX);
         return sb.toString();
     }
 
