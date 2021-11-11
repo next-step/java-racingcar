@@ -17,8 +17,8 @@ public class InputView implements Closeable {
 
     public Count inputValue() {
         try {
-            Integer input = SCANNER.nextInt();
-            isValueGreaterThanOne(input);
+            int input = SCANNER.nextInt();
+            lessThanOneException(input);
 
             return new Count(input);
 
@@ -27,7 +27,7 @@ public class InputView implements Closeable {
         }
     }
 
-    private static void isValueGreaterThanOne(Integer input) {
+    private static void lessThanOneException(int input) {
         if(input < 1) {
             throw new IllegalArgumentException(MyException.VALUE_GREATER_THAN_ONE.getMessage());
         }
