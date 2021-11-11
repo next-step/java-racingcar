@@ -1,6 +1,8 @@
 package view;
 
+import domain.CarRaceCount;
 import domain.CarRaceGroup;
+import domain.Winner;
 
 public class OutputView {
 
@@ -10,22 +12,24 @@ public class OutputView {
     private static final String EMPTY = "";
     private static final String CAR_RACE_RESULT_MESSAGE = "%s : %s \n";
     private static final String WINNER_MESSAGE = "%s가 최종 우승했습니다.";
-    private static final int CRITERIA_CAR_NAME_INDEX = 0;
 
-    public static void result(CarRaceGroup carRaceGroup) {
+    public static void resultCarRace(CarRaceGroup carRaceGroup, CarRaceCount carRaceCount) {
         System.out.println(RESULT_MESSAGE);
 
-        int carRaceGroupSize = carRaceGroup.size();
-        String criteriaCarName = carRaceGroup.carName(CRITERIA_CAR_NAME_INDEX);
-        for (int i = 0; i < carRaceGroupSize; i++) {
-            printNextLine(i, criteriaCarName, carRaceGroup.carName(i));
-            System.out.printf(CAR_RACE_RESULT_MESSAGE, carRaceGroup.carName(i), changeNumberToHyphen(carRaceGroup.carPosition(i)));
+        int loopCount = carRaceCount.count();
+        for (int i = 0; i < loopCount; i++) {
+            printCarPosition(carRaceGroup);
+            System.out.print(NEXT_LINE);
         }
-        System.out.println(NEXT_LINE);
     }
 
-    public static void winner(CarRaceGroup carRaceGroup) {
-        System.out.printf(WINNER_MESSAGE, carRaceGroup.winner());
+    private static void printCarPosition(CarRaceGroup carRaceGroup) {
+        int carRaceGroupSize = carRaceGroup.size();
+        for (int i = 0; i < carRaceGroupSize; i++) {
+            carRaceGroup.positionPlus(i);
+
+            System.out.printf(CAR_RACE_RESULT_MESSAGE, carRaceGroup.name(i), changeNumberToHyphen(carRaceGroup.position(i)));
+        }
     }
 
     private static String changeNumberToHyphen(int loopNumber) {
@@ -37,10 +41,9 @@ public class OutputView {
         return carLocation;
     }
 
-    private static void printNextLine(int index, String criteriaCarName, String carName) {
-        if (index != 0 && criteriaCarName == carName) {
-            System.out.print(NEXT_LINE);
-        }
+    public static void winner(CarRaceGroup carRaceGroup) {
+        System.out.printf(WINNER_MESSAGE, Winner.winnerName(carRaceGroup));
+        System.out.printf(NEXT_LINE);
     }
 
 }
