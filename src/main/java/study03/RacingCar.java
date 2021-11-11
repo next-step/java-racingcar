@@ -2,17 +2,17 @@ package study03;
 
 public class RacingCar {
 
-    private Engine engine = new Engine();
-    private int moveCount = 1;
+    private final Engine engine = new Engine();
+    private int moveDistance = 1;
 
     public void move() {
         if (engine.isRun()) {
-            moveCount++;
+            moveDistance++;
         }
     }
 
-    public String tracking(Track track) {
-        return track.getTotalTrack().substring(0, moveCount);
+    public int getMoveDistance() {
+        return moveDistance;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class RacingCar {
     //Test Code Only
     public void fixedMove(int fixedValue) {
         if (engine.isFixedRun(fixedValue)) {
-            moveCount++;
+            moveDistance++;
         }
     }
 

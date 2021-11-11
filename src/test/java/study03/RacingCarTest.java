@@ -1,21 +1,14 @@
 package study03;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @TestMethodOrder(MethodOrderer.Alphanumeric.class)
 public class RacingCarTest {
-
-    private Track track;
-
-    @BeforeEach
-    void trackSetting() {
-        track = new Track(5);
-    }
 
     @Test
     void Test01_자동차생성테스트() {
@@ -45,19 +38,39 @@ public class RacingCarTest {
 
     @Test
     void Test04_자동차이동구현() {
+        Track track = new Track(5);
         RacingCar racingCar = new RacingCar();
+        track.addRacingCar(racingCar);
 
         racingCar.fixedMove(3);
-        assertThat(racingCar.tracking(track)).isEqualTo("-");
+        assertThat(track.tracking(0)).isEqualTo("-");
         racingCar.fixedMove(5);
-        assertThat(racingCar.tracking(track)).isEqualTo("--");
+        assertThat(track.tracking(0)).isEqualTo("--");
         racingCar.fixedMove(9);
-        assertThat(racingCar.tracking(track)).isEqualTo("---");
+        assertThat(track.tracking(0)).isEqualTo("---");
         racingCar.fixedMove(2);
-        assertThat(racingCar.tracking(track)).isEqualTo("---");
+        assertThat(track.tracking(0)).isEqualTo("---");
         racingCar.fixedMove(0);
-        assertThat(racingCar.tracking(track)).isEqualTo("---");
+        assertThat(track.tracking(0)).isEqualTo("---");
         racingCar.fixedMove(4);
-        assertThat(racingCar.tracking(track)).isEqualTo("----");
+        assertThat(track.tracking(0)).isEqualTo("----");
+    }
+
+    @Test
+    void Test05_n대의자동차구현() {
+        Track track = new Track(5);
+        RacingCar racingCar1 = new RacingCar();
+        RacingCar racingCar2 = new RacingCar();
+        RacingCar racingCar3 = new RacingCar();
+
+        track.addRacingCar(racingCar1);
+        track.addRacingCar(racingCar2);
+        track.addRacingCar(racingCar3);
+
+        assertThat(track.tracking(0)).isEqualTo("-");
+        assertThat(track.tracking(1)).isEqualTo("-");
+        assertThat(track.tracking(2)).isEqualTo("-");
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> track.tracking(3));
     }
 }
