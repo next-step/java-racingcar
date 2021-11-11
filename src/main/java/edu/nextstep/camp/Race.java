@@ -56,7 +56,7 @@ public class Race {
         return currentTurn >= totalTurns;
     }
 
-    public List<Name> winners() {
+    public Winners winners() {
         if (!isEnded()) {
             throw new IllegalStateException("the race is not over.");
         }
@@ -66,9 +66,8 @@ public class Race {
                 .max(Comparator.naturalOrder())
                 .orElseGet(Position::ofZero);
 
-        return cars.stream()
+        return Winners.of(cars.stream()
                 .filter(car -> car.position().equals(maxPosition))
-                .map(Car::name)
-                .collect(Collectors.toList());
+                .map(Car::name));
     }
 }

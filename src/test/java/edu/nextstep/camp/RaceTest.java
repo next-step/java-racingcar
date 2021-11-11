@@ -95,7 +95,7 @@ public class RaceTest {
         assertThat(race.isEnded()).isFalse();
         race.process();
         assertThat(race.isEnded()).isTrue();
-        assertThat(race.winners()).hasSameElementsAs(expectedWinner);
+        assertThat(race.winners().stream()).hasSameElementsAs(expectedWinner);
     }
 
     @Test
