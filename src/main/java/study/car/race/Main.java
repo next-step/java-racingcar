@@ -10,6 +10,7 @@ public class Main {
 
         for (int i = 0; i < tryCount; i++) {
             game.race();
+            ResultView.printResult(game.result());
         }
     }
 }

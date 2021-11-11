@@ -26,4 +26,8 @@ public class CarRace {
             car.move();
         }
     }
+
+    public List<Car> result() {
+        return cars;
+    }
 }
