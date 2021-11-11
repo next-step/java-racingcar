@@ -9,6 +9,8 @@ import racingcar.exception.TryCountException;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import static racingcar.utils.StringUtils.split;
+
 public class Application {
     public static void main(String[] args) {
         Cars cars = getCars();
@@ -24,7 +26,7 @@ public class Application {
 
     private static Cars getCars() {
         String input = InputView.askCreateCarNames();
-        String[] carNames = input.split(",");
+        String[] carNames = split(input);
         try {
             return Cars.from(carNames, RandomMovingStrategy.getInstance());
         } catch (CreateCarCountException e) {
