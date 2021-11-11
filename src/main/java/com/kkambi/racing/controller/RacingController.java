@@ -1,6 +1,7 @@
 package com.kkambi.racing.controller;
 
 import com.kkambi.racing.domain.Car;
+import com.kkambi.racing.domain.CarFactory;
 import com.kkambi.racing.view.InputView;
 import com.kkambi.racing.view.TotalView;
 
@@ -25,7 +26,7 @@ public class RacingController {
 
     private void composeCars(int numberOfCars) {
         for (int i = 0; i < numberOfCars; i++) {
-            carList.add(new Car());
+            carList.add(CarFactory.getCar());
         }
     }
 

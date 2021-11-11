@@ -13,7 +13,6 @@ public class TotalView {
         return inputView.getInput();
     }
 
-
     public void printLocation(List<Car> carList) {
         resultView.printLocation(carList);
     }
