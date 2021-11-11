@@ -1,4 +1,4 @@
-package step3.strategy;
+package racing.strategy;
 
 public interface MoveStrategy {
     boolean movable();
