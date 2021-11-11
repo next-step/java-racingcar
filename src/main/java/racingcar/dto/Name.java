@@ -2,11 +2,21 @@ package racingcar.dto;
 
 import java.util.Objects;
 
-public class CarName {
-    String name;
+public class Name {
+    private final int LIMIT_OF_NAME = 5;
 
-    public CarName(String name) {
+    private final String name;
+
+    public Name(String name) {
+        checkNameLength(name);
+
         this.name = name;
+    }
+
+    private void checkNameLength(String name) {
+        if (name.length() > LIMIT_OF_NAME) {
+            throw new IllegalArgumentException("Name length must be below five");
+        }
     }
 
     public String getName() {
@@ -23,7 +33,7 @@ public class CarName {
             return false;
         }
 
-        CarName carName = (CarName) object;
+        Name carName = (Name) object;
         return Objects.equals(name, carName.name);
     }
 

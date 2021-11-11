@@ -2,10 +2,10 @@ package racingcar.dto;
 
 import java.util.Objects;
 
-public class CarDistance implements Comparable<CarDistance> {
-    int distance;
+public class Distance implements Comparable<Distance> {
+    private int distance;
 
-    public CarDistance(int distance) {
+    public Distance(int distance) {
         this.distance = distance;
     }
 
@@ -27,7 +27,7 @@ public class CarDistance implements Comparable<CarDistance> {
             return false;
         }
 
-        CarDistance that = (CarDistance) object;
+        Distance that = (Distance) object;
 
         return distance == that.distance;
     }
@@ -38,7 +38,7 @@ public class CarDistance implements Comparable<CarDistance> {
     }
 
     @Override
-    public int compareTo(CarDistance carDistance) {
-        return Integer.compare(this.distance, carDistance.distance);
+    public int compareTo(Distance distance) {
+        return Integer.compare(this.distance, distance.distance);
     }
 }

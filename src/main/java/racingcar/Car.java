@@ -1,7 +1,7 @@
 package racingcar;
 
-import racingcar.dto.CarDistance;
-import racingcar.dto.CarName;
+import racingcar.dto.Distance;
+import racingcar.dto.Name;
 
 import java.util.Objects;
 
@@ -12,22 +12,22 @@ public class Car implements Comparable<Car> {
 
     public static final int START_POINT = 0;
 
-    private final CarName name;
-    private CarDistance distance;
+    private final Name name;
+    private Distance distance;
 
     public Car() {
-        this.name = new CarName("");
-        this.distance = new CarDistance(START_POINT);
+        this.name = new Name("");
+        this.distance = new Distance(START_POINT);
     }
 
     public Car(String name) {
-        this.name = new CarName(name);
-        this.distance = new CarDistance(START_POINT);
+        this.name = new Name(name);
+        this.distance = new Distance(START_POINT);
     }
 
     public Car(String name, int distance) {
-        this.name = new CarName(name);
-        this.distance = new CarDistance(distance);
+        this.name = new Name(name);
+        this.distance = new Distance(distance);
     }
 
     public String getName() {
@@ -39,7 +39,7 @@ public class Car implements Comparable<Car> {
     }
 
     public void initialize() {
-        this.distance = new CarDistance(START_POINT);
+        this.distance = new Distance(START_POINT);
     }
 
     public int runOrStop(int number) {

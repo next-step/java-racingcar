@@ -1,12 +1,15 @@
 package racingcar;
 
-import java.util.stream.IntStream;
+import racingcar.dto.Winners;
 
-import static util.StringUtils.separateStringWithComma;
+import java.util.stream.IntStream;
 
 public class RacingGame {
     private final static int FIRST_ROUND = 1;
-    private static final int LIMIT_OF_CAR_NAME = 5;
+
+    private static final String COMMA = ",";
+    private static final String REGEX_WHITESPACE = "\\s+";
+    private static final String EMPTY_STRING = "";
 
     public static void run() {
         InputView inputView = new ConsoleInputView();
@@ -15,7 +18,6 @@ public class RacingGame {
         int numberOfTrials = inputView.getNumberOfTrials();
 
         String[] namesOfCars = separateStringWithComma(identifierOfCars);
-        checkCarNames(namesOfCars);
         CarFactory carFactory = new CarFactory(namesOfCars);
         Cars cars = carFactory.buildCars();
 
@@ -25,7 +27,7 @@ public class RacingGame {
         IntStream.rangeClosed(FIRST_ROUND, numberOfTrials)
                 .forEach(roundNumber -> eachRound(outputView, roundNumber, cars));
 
-        Cars winners = cars.chooseWinner();
+        Winners winners = cars.chooseWinner();
         outputView.showWinners(winners);
     }
 
@@ -36,8 +38,7 @@ public class RacingGame {
         outputView.showEndOfRound(roundNumber);
     }
 
-    private static void checkCarNames(String[] carNames) {
-        if (carNames.length > LIMIT_OF_CAR_NAME)
-            throw new IllegalArgumentException("The Length of Car Name must be below five");
+    private static String[] separateStringWithComma(String string) {
+        return string.replaceAll(REGEX_WHITESPACE, EMPTY_STRING).split(COMMA);
     }
 }

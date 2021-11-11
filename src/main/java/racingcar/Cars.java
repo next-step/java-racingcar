@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.dto.Winners;
+
 import java.rmi.NoSuchObjectException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -45,16 +47,17 @@ public class Cars {
         carSet.forEach(racingManager::progressCar);
     }
 
-    public Cars chooseWinner()  {
+    public Winners chooseWinner()  {
         Car carWithMaxDistance = getCarWithMaxDistance();
 
         if (carWithMaxDistance.compareTo(CAR_AT_THE_START_POINT) == EQUAL) {
-            return new Cars();
+            return new Winners();
         }
 
-        return new Cars(carSet.stream()
+        return new Winners(carSet.stream()
                 .filter(car -> car.compareTo(carWithMaxDistance) == EQUAL)
-                .collect(Collectors.toSet()));
+                .map(Car::getName)
+                .collect(Collectors.toList()));
     }
 
     private Car getCarWithMaxDistance() {

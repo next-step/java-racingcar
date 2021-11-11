@@ -2,6 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.dto.Winners;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static racingcar.RacingCarTestUtil.*;
@@ -20,7 +21,7 @@ public class CarsTest {
     private int WINNER_COUNT_ONE = 1;
     private int WINNER_COUNT_TWO = 2;
 
-    private Cars cars = cars = new Cars();;
+    private Cars cars = new Cars();;
     private CarFactory carFactory;
     private Car racerOne = new Car(RACER_ONE, DISTANCE_OF_RACER_ONE);
     private Car racerTwo = new Car(RACER_TWO, DISTANCE_OF_RACER_TWO);
@@ -67,10 +68,10 @@ public class CarsTest {
     void decideSingleWinner() {
         addThreeRacersWithDifferentDistances();
 
-        Cars winners = cars.chooseWinner();
+        Winners winners = cars.chooseWinner();
 
         assertThat(winners.sizeEqualTo(WINNER_COUNT_ONE)).isTrue();
-        assertThat(winners.contains(racerTwo)).isTrue();
+        assertThat(winners.contains(RACER_TWO)).isTrue();
     }
 
     @Test
@@ -78,11 +79,11 @@ public class CarsTest {
         addThreeRacersWithDifferentDistances();
         cars.add(racerFour);
 
-        Cars winners = cars.chooseWinner();
+        Winners winners = cars.chooseWinner();
 
         assertThat(winners.sizeEqualTo(WINNER_COUNT_TWO)).isTrue();
-        assertThat(winners.contains(racerTwo)).isTrue();
-        assertThat(winners.contains(racerFour)).isTrue();
+        assertThat(winners.contains(RACER_TWO)).isTrue();
+        assertThat(winners.contains(RACER_FOUR)).isTrue();
     }
 
     private void addThreeRacersWithDifferentDistances() {

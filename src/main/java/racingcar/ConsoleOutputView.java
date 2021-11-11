@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.dto.Winners;
+
 import java.util.stream.IntStream;
 
 public class ConsoleOutputView implements OutputView{
@@ -41,11 +43,11 @@ public class ConsoleOutputView implements OutputView{
     }
 
     @Override
-    public void showWinners(Cars cars) {
+    public void showWinners(Winners winners) {
         StringBuilder stringBuilder = new StringBuilder();
 
-        cars.stream().forEach(winner -> {
-            stringBuilder.append(winner.getName());
+        winners.stream().forEach(winner -> {
+            stringBuilder.append(winner);
             stringBuilder.append(SEPARATOR_OF_WINNERS);
         });
 
