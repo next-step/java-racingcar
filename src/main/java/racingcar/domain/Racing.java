@@ -44,8 +44,9 @@ public class Racing {
     public void goingTry() {
         for (Car car : cars) {
             car.increaseState(movingStrategy);
+            OutputView.print(car);
         }
-        OutputView.print(this.result());
+        OutputView.print();
     }
 
     public void start() {
@@ -53,10 +54,12 @@ public class Racing {
         for (int i = 0; i < tryCount; i++) {
             this.goingTry();
         }
+        this.result();
     }
 
-    public String result() {
-        return OutputView.print(cars);
+    public void result() {
+
+
     }
 
     public List<Car> getCars() {
