@@ -10,19 +10,14 @@
 
 package racingcargame.domain;
 
-import racingcargame.utils.RandomUtil;
-
 import java.util.function.Predicate;
 public class RacingCar {
+
     private int position;
 
     private Predicate<Integer> moveCondition = (randomInt) -> randomInt >= 4;
 
-    public void move() {
-        move(RandomUtil.nextInt(10));
-    }
-
-    void move(int moveArgument) {
+    public void move(int moveArgument) {
         if (moveCondition.test(moveArgument)) {
             position++;
         }
@@ -39,4 +34,5 @@ public class RacingCar {
     public int getPosition() {
         return position;
     }
+
 }
