@@ -15,4 +15,13 @@ public class RacingCarTest {
 
         assertThat(racingCar.toString()).isEqualTo("자동차");
     }
+
+    @Test
+    void Test02_트랙생성테스트() {
+        Track track1 = new Track(5);
+        Track track2 = new Track(10);
+
+        assertThat(track1.getTotalTrack()).isEqualTo("-----");
+        assertThat(track2.getTotalTrack()).isEqualTo("----------");
+    }
 }
