@@ -6,6 +6,10 @@ public class Main {
         int carCount = InputView.acceptCarCount();
         int tryCount = InputView.acceptTryCount();
 
-        CarRace.race(carCount, tryCount);
+        CarRace game = new CarRace(carCount);
+
+        for (int i = 0; i < tryCount; i++) {
+            game.race();
+        }
     }
 }
