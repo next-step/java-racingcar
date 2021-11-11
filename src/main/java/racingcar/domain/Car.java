@@ -11,7 +11,7 @@ public class Car {
     private static final int MAX_MOVEMENT_VALUE = 9;
 
     private final CarName carName;
-    private Position position;
+    private final Position position;
 
     private Car(CarName carName, Position position) {
         this.carName = carName;
@@ -37,6 +37,10 @@ public class Car {
 
     public Position currentPosition() {
         return position;
+    }
+
+    public String carName() {
+        return carName.getName();
     }
 
     @Override

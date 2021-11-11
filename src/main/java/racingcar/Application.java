@@ -22,6 +22,7 @@ public class Application {
         GameLog gameLog = racingGame.play();
 
         OutputView.printGameLog(gameLog);
+        OutputView.printWinners(cars);
     }
 
     private static Cars getCars() {

@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import racingcar.exception.CreateCarCountException;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -49,14 +48,27 @@ public class Cars {
     }
 
     public void recode(int round, GameLog gameLog) {
-        cars.forEach(car -> gameLog.add(RoundLog.of(round, car, car.currentPosition())));
+        cars.forEach(car -> gameLog.add(RoundLog.of(round, car, Position.from(car.currentPosition()))));
     }
 
-    public List<Integer> carsPosition() {
-        List<Integer> carsPosition = new ArrayList<>();
-        cars.forEach(car -> carsPosition.add(car.currentPosition().getPosition()));
+    public List<Car> findWinners() {
+        Position winnerPosition = findWinnerPosition();
 
-        return carsPosition;
+        return cars.stream().filter(car -> car.currentPosition().compareTo(winnerPosition) == 0)
+                .collect(Collectors.toList());
+    }
+
+    private Position findWinnerPosition() {
+        Position winnerPosition = Position.init();
+
+        for (Car car : cars) {
+            Position position = car.currentPosition();
+            if (position.compareTo(winnerPosition) > 0) {
+                winnerPosition = position;
+            }
+        }
+
+        return winnerPosition;
     }
 
     @Override

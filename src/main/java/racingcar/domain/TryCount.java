@@ -45,7 +45,7 @@ public class TryCount {
     }
 
     public int currentRound() {
-        return finishRound - tryCount + 1;
+        return finishRound - tryCount;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GameLog {
@@ -16,5 +17,9 @@ public class GameLog {
 
     public void add(RoundLog roundLog) {
         roundLogs.add(roundLog);
+    }
+
+    public List<RoundLog> getRoundLogs() {
+        return Collections.unmodifiableList(roundLogs);
     }
 }

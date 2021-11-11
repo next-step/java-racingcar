@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
     private static final int INIT_POSITION = 0;
 
     private int position;
@@ -13,6 +13,10 @@ public class Position {
 
     public static Position from(int position) {
         return new Position(position);
+    }
+
+    public static Position from(Position position) {
+        return new Position(position.position);
     }
 
     public static Position init() {
@@ -40,4 +44,8 @@ public class Position {
         return Objects.hash(position);
     }
 
+    @Override
+    public int compareTo(Position o) {
+        return Integer.compare(this.position, o.position);
+    }
 }
