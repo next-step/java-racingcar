@@ -31,10 +31,6 @@ public class InputView {
     }
 
     private int parseInputToInteger(String input) {
-        int parseInt = Integer.parseInt(input);
-        if (NumberHelper.isLessThanOne(parseInt)) {
-            throw new IllegalArgumentException();
-        }
-        return parseInt;
+        return Integer.parseInt(input);
     }
 }
