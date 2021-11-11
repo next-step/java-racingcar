@@ -26,7 +26,7 @@ public class ResultView {
             this.outputCarsHistory(i);
         }
 
-        System.out.println(String.format(WINNER_MESSAGE, cars.getWinners()));
+        System.out.println(String.format(WINNER_MESSAGE, cars.getWinners().getCarsName()));
     }
 
     private void outputCarsHistory(Integer toIndex) {
@@ -41,4 +41,5 @@ public class ResultView {
         Integer count = car.getSuccessCountByIndex(toIndex).intValue();
         return car.getName() + DELIMITER + String.join(EMPTY, Collections.nCopies(count, this.DASH));
     }
+
 }

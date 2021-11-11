@@ -57,19 +57,24 @@ public class Cars {
         }
     }
 
+    public List<String> getCarsName() {
+        return cars.stream()
+            .map(Car::getName)
+            .collect(Collectors
+                .toCollection(ArrayList::new));
+    }
+
     public Integer getTryTotalCount() {
         return this.tryTotalCount;
     }
 
-    public List<String> getWinners() {
+    public Cars getWinners() {
         Long max = this.getSuccessMaxCount();
 
-        return cars.stream()
+        return new Cars(cars.stream()
             .filter(car -> car.getSuccessCount().equals(max))
-            .map(Car::getName)
             .collect(Collectors
-                .toCollection(ArrayList::new)
-            );
+                .toCollection(ArrayList::new)));
     }
 
     private Long getSuccessMaxCount() {
