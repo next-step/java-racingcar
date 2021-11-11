@@ -10,6 +10,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRacingResultTest {
 
+    private static final String MOVE = "-";
+    private static final String ONE_ROUND_ENDS = "\n";
+
     @Test
     void createCarRacingResult() {
         // given
@@ -42,7 +45,18 @@ class CarRacingResultTest {
         String result = carRacingResult.show();
 
         // then
-        assertThat(result).isEqualTo("-\n-\n\n-\n\n-\n\n");
+        assertThat(result).isEqualTo(
+                MOVE +
+                ONE_ROUND_ENDS +
+                MOVE +
+                ONE_ROUND_ENDS +
+                ONE_ROUND_ENDS +
+                MOVE +
+                ONE_ROUND_ENDS +
+                ONE_ROUND_ENDS +
+                MOVE +
+                ONE_ROUND_ENDS +
+                ONE_ROUND_ENDS);
     }
 
     @Test
