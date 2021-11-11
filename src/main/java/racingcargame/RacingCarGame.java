@@ -49,12 +49,10 @@ public class RacingCarGame {
     }
 
     private Result move(List<RacingCar> racingCars) {
-        Result result = new Result();
         racingCars.forEach(racingCar -> {
             racingCar.move(RandomUtil.nextInt(10));
-            result.add(racingCar.getCurrentState());
         });
-        return result;
+        return Result.of(racingCars);
     }
 
     private void printResult(List<Result> results) {

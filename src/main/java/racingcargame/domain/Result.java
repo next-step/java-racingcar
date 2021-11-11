@@ -7,6 +7,14 @@ public class Result {
 
     private final List<String> currentStates = new ArrayList<>();
 
+    public static Result of(List<RacingCar> racingCars) {
+        Result result = new Result();
+        racingCars.forEach(racingCar -> {
+            result.add(racingCar.getCurrentState());
+        });
+        return result;
+    }
+
     public void add(String currentState) {
         currentStates.add(currentState);
     }
