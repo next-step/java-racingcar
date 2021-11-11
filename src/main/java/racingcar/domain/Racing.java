@@ -10,12 +10,16 @@ public class Racing {
 
     private final List<Car> carList;
     private final int tryCount;
-    private final Random random;
+    private final Random random = new Random(System.currentTimeMillis());
 
     public Racing(int carCount, int tryCount) {
         this.carList = new ArrayList<>(makeCar(carCount));
         this.tryCount = tryCount;
-        this.random = new Random(System.currentTimeMillis());
+    }
+
+    public Racing(String[] carNames, int tryCount){
+        this.carList = new ArrayList<>(makeCar(carNames));
+        this.tryCount = tryCount;
     }
 
     public List<Car> makeCar(int carCount) {

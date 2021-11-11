@@ -17,7 +17,9 @@ public class RacingTest {
 
     @BeforeEach
     void setup() {
-        racing = new Racing(3, 5);
+//        racing = new Racing(3, 5);
+        String[] carNames = "pobi,crong,honux".split(",");
+        racing = new Racing(carNames, 5);
     }
 
     @Test
