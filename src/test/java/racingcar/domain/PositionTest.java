@@ -50,4 +50,27 @@ class PositionTest {
     void positionException(int value) {
         assertThatThrownBy(() -> Position.from(value)).isInstanceOf(PositionException.class);
     }
+
+    @ParameterizedTest
+    @DisplayName("Position move 테스트")
+    @MethodSource
+    void positionMove(Position position, int moveValue, Position expected) {
+        position.move(moveValue);
+
+        assertThat(position).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> positionMove() {
+        return Stream.of(
+                Arguments.of(
+                        Position.from(0), 1, Position.from(1)
+                ),
+                Arguments.of(
+                        Position.from(1), 2, Position.from(3)
+                ),
+                Arguments.of(
+                        Position.from(2), 3, Position.from(5)
+                )
+        );
+    }
 }
