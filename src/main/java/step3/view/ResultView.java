@@ -22,12 +22,11 @@ public class ResultView {
 
     public static void result(GameHistory history) {
         showGameHistory(history.getAll());
-        System.out.println();
         showGameWinner(history);
     }
 
     private static void showGameWinner(GameHistory history) {
-        System.out.println(history.getGameWinners().stream()
+        System.out.println(GameWinner.getGameWinners(history).stream()
                 .map(GameWinner::getCarName)
                 .collect(Collectors.joining(COMMA + WHITE_SPACE)) + GAME_WINNER_OUTPUT_MESSAGE);
     }
