@@ -16,17 +16,25 @@ public class ResultView {
 
         for (int i = 0; i < racing.getAttempts(); i++) {
             List<Car> cars = racing.getLogs().get(i);
-
-            for (Car car : cars) {
-                String step = createSteps(car.getStep());
-                System.out.println(step);
-            }
-            System.out.println();
+            printStep(cars);
         }
     }
 
-    private String createSteps(int count) {
+    private void printStep(List<Car> cars) {
+        for (Car car : cars) {
+            String step = createResult(car);
+            System.out.println(step);
+        }
+        System.out.println();
+    }
+
+    private String createResult(Car car) {
+        int count = car.getStep();
+        String name = car.getName();
+
         StringBuilder sb = new StringBuilder();
+        sb.append(name + " : ");
+
         for (int i = 0; i < count; i++) {
             sb.append('-');
         }
