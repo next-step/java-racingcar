@@ -2,6 +2,8 @@ package racingcar.view;
 
 import racingcar.domain.Car;
 
+import java.util.List;
+
 public class OutputView {
 
     public static void print() {
@@ -21,5 +23,9 @@ public class OutputView {
             result.append("-");
         }
         print(result.toString());
+    }
+
+    public static void print(List<String> names, String message) {
+        print(String.join(", ", names) + message);
     }
 }
