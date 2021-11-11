@@ -3,7 +3,6 @@ package step3;
 import org.junit.jupiter.api.Test;
 import racing.model.Cars;
 import racing.service.ConvertOutputView;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

@@ -10,6 +10,6 @@ public class CarTest {
     @DisplayName("initial car position 이 0으로 잘 들어가는지 테스트")
     void carInitialPositionTest() {
         Car car = new Car("minjoon");
-        assertEquals(car.getPosition(), 0);
+        Car car = new Car();
     }
 }
