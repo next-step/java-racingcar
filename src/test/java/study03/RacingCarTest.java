@@ -73,4 +73,33 @@ public class RacingCarTest {
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> track.tracking(3));
     }
+
+    @Test
+    void Test06_n대의자동차이동() {
+        Track track = new Track(5);
+        RacingCar racingCar1 = new RacingCar();
+        RacingCar racingCar2 = new RacingCar();
+        RacingCar racingCar3 = new RacingCar();
+
+        track.addRacingCar(racingCar1);
+        track.addRacingCar(racingCar2);
+        track.addRacingCar(racingCar3);
+
+        track.fixedMoveAll(new int[]{3, 5, 1});
+        assertThat(track.trackingAll()).isEqualTo("-\n" +
+                "--\n" +
+                "-");
+        track.fixedMoveAll(new int[]{9, 0, 6});
+        assertThat(track.trackingAll()).isEqualTo("--\n" +
+                "--\n" +
+                "--");
+        track.fixedMoveAll(new int[]{4, 4, 2});
+        assertThat(track.trackingAll()).isEqualTo("---\n" +
+                "---\n" +
+                "--");
+        track.fixedMoveAll(new int[]{7, 3, 3});
+        assertThat(track.trackingAll()).isEqualTo("----\n" +
+                "---\n" +
+                "--");
+    }
 }
