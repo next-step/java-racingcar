@@ -38,8 +38,7 @@ public class Racing {
 
     public void play(Random random) {
         for (int i = 0; i < this.attempts; i++) {
-            List<Car> group = new ArrayList<>();
-            play(group, random);
+            List<Car> group = movingCars(random);
             this.cars = group;
             this.logs.put(i, group);
         }
@@ -49,12 +48,13 @@ public class Racing {
         return IntStream.range(0, count).mapToObj(i -> Car.create()).collect(Collectors.toList());
     }
 
-    private void play(List<Car> group, Random random) {
+    private List<Car> movingCars(Random random) {
+        List<Car> group = new ArrayList<>();
 
         for (Car car : this.cars) {
             int value = NumberHelper.getRandomValue(random, 10);
             group.add(car.getInstanceByForward(value));
         }
-
+        return group;
     }
 }
