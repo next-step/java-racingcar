@@ -1,6 +1,6 @@
 package racinggame.utils;
 
-import racinggame.InputValue;
+import racinggame.vo.InputValue;
 import racinggame.exception.NotInstanceException;
 
 import java.util.Arrays;

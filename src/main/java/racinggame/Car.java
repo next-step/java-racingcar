@@ -1,9 +1,11 @@
 package racinggame;
 
+import racinggame.vo.CarState;
+
 public class Car {
     private static final int INIT_POSITION = 0;
 
-    private final CarState carState;
+    private CarState carState;
 
     public Car(String name) {
         carState = new CarState(name, INIT_POSITION);
@@ -11,12 +13,8 @@ public class Car {
 
     public void move(boolean movable) {
         if (movable) {
-            carState.move();
+            carState = carState.move();
         }
-    }
-
-    public int currentPosition() {
-        return carState.currentPosition();
     }
 
     public CarState currentState() {

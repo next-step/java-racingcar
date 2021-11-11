@@ -1,8 +1,9 @@
-package racinggame;
+package racinggame.vo;
 
 import java.util.Objects;
 
 public class CarState {
+
     private final String name;
     private int position;
 
@@ -19,8 +20,8 @@ public class CarState {
         return position;
     }
 
-    public void move() {
-        position++;
+    public CarState move() {
+        return new CarState(name, ++position);
     }
 
     @Override

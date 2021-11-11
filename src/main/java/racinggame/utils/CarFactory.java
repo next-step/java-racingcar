@@ -1,7 +1,7 @@
 package racinggame.utils;
 
 import racinggame.Car;
-import racinggame.InputValue;
+import racinggame.vo.InputValue;
 import racinggame.RacingCars;
 import racinggame.exception.NotInstanceException;
 

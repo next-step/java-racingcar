@@ -2,6 +2,7 @@ package racinggame;
 
 import racinggame.utils.MoveValueGenerator;
 import racinggame.utils.MoveValueValidator;
+import racinggame.vo.MoveResult;
 
 import java.util.ArrayList;
 import java.util.Collections;

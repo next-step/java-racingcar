@@ -1,4 +1,6 @@
-package racinggame;
+package racinggame.vo;
+
+import racinggame.vo.CarState;
 
 import java.util.Collections;
 import java.util.List;

@@ -1,6 +1,8 @@
 package racinggame;
 
 import racinggame.utils.CarFactory;
+import racinggame.vo.InputValue;
+import racinggame.vo.MoveResult;
 
 import java.util.List;
 

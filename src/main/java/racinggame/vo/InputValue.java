@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.vo;
 
 import java.util.Collections;
 import java.util.List;
