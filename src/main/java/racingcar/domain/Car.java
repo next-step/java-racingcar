@@ -9,24 +9,16 @@ public class Car {
     private static final int MOVE_VALUE = 1;
     private static final int MIN_MOVEMENT_VALUE = 0;
     private static final int MAX_MOVEMENT_VALUE = 9;
-    private static final int MAX_NAME_LENGTH = 5;
 
-    private final String carName;
+    private final CarName carName;
     private Position position;
 
-    private Car(String carName, Position position) {
-        validateCarName(carName);
+    private Car(CarName carName, Position position) {
         this.carName = carName;
         this.position = position;
     }
 
-    private void validateCarName(String carName) {
-        if (carName.isEmpty() || carName.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public static Car from(String carName) {
+    public static Car from(CarName carName) {
         return new Car(carName, Position.init());
     }
 
