@@ -1,4 +1,4 @@
-package common;
+package racingcar.view;
 
 public abstract class View {
 

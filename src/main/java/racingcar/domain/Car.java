@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
-import common.View;
+
+import racingcar.view.View;
 
 public class Car extends View {
 

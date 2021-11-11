@@ -1,7 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
-import common.InputView;
-import common.ListView;
+import racingcar.view.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
