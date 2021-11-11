@@ -20,4 +20,10 @@ public class GameOutput {
         System.out.println();
     }
 
+    public static void printWinners(Car[] winners) {
+        for (Car winner : winners) {
+            System.out.print(winner.getName() + " ");
+        }
+        System.out.println("가 최종 우승했습니다.");
+    }
 }
