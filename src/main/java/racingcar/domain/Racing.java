@@ -1,10 +1,13 @@
 package racingcar.domain;
 
+import common.StringValidation;
 import racingcar.strategy.MovingStrategy;
 import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static racingcar.application.CarConstant.*;
 
 public class Racing {
 
@@ -21,7 +24,7 @@ public class Racing {
         this.movingStrategy = movingStrategy;
     }
 
-    public Racing(String[] carNames, int tryCount, MovingStrategy movingStrategy) {
+    public Racing(String[] carNames, int tryCount, MovingStrategy movingStrategy) throws IllegalArgumentException {
         this.cars = new ArrayList<>(makeCar(carNames));
         this.tryCount = tryCount;
         this.movingStrategy = movingStrategy;
@@ -35,7 +38,10 @@ public class Racing {
         return cars;
     }
 
-    public List<Car> makeCar(String[] carNames) {
+    public List<Car> makeCar(String[] carNames) throws IllegalArgumentException {
+        StringValidation.isEmptyOrNull(carNames, EXCEPTION_CAR_NAME_IS_EMPTY_OR_NULL);
+        StringValidation.isLimitOver(carNames, CAR_NAME_MAX_LENGTH, EXCEPTION_CAR_NAME_LIMIT_MESSAGE);
+
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             cars.add(new Car(carName));

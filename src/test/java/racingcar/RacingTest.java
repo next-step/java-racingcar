@@ -9,6 +9,7 @@ import racingcar.domain.Racing;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 
 public class RacingTest {
@@ -97,6 +98,20 @@ public class RacingTest {
         Racing racing = new Racing(carNames, 5, () -> false);
         racing.start();
         assertThat(racing.getWinners()).contains(carNames);
+    }
+
+    @Test
+    @DisplayName("빈 이름의 자동차 생성시 IllegalArgumentException 발생 테스트")
+    void emptyName() {
+        String[] carNames = "pobi,,honux".split(",");
+        assertThatIllegalArgumentException().isThrownBy(() -> racing.makeCar(carNames));
+    }
+
+    @Test
+    @DisplayName("자동차 이름의 길이가 5자를 초과했을 때 IllegalArgumentException 발생 테스트")
+    void limitOverName() {
+        String[] carNames = "pobi,cronghonux".split(",");
+        assertThatIllegalArgumentException().isThrownBy(() -> racing.makeCar(carNames));
     }
 }
 

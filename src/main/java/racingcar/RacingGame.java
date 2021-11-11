@@ -4,24 +4,27 @@ import racingcar.domain.Racing;
 import racingcar.strategy.MovingStrategy;
 import racingcar.strategy.RandomMovingStrategy;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.Random;
+
+import static racingcar.application.CarConstant.INPUT_CAR_NAME_MESSAGE;
+import static racingcar.application.CarConstant.INPUT_CAR_TRY_COUNT_MESSAGE;
 
 public class RacingGame {
 
     public static void main(String[] args) {
 
-        String[] carNames = InputView
-                .nextLine("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).")
-                .split(",");
-
+        String[] carNames = InputView.nextLineWithSplit(INPUT_CAR_NAME_MESSAGE, ",");
+        int tryCount = InputView.nextInt(INPUT_CAR_TRY_COUNT_MESSAGE);
         MovingStrategy movingStrategy = new RandomMovingStrategy(new Random(System.currentTimeMillis()));
 
-//        int carCount = InputView.nextInt("자동차 대수는 몇 대 인가요?");
-        int tryCount = InputView.nextInt("시도할 회수는 몇 회 인가요?");
+        try {
+            Racing racing = new Racing(carNames, tryCount, movingStrategy);
+            racing.start();
+        } catch (IllegalArgumentException exception) {
+            OutputView.print(exception.getMessage());
+        }
 
-//        Racing racing = new Racing(carCount, tryCount, movingStrategy);
-        Racing racing = new Racing(carNames, tryCount, movingStrategy);
-        racing.start();
     }
 }
