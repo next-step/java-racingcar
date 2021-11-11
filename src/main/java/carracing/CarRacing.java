@@ -19,7 +19,7 @@ public class CarRacing {
     private static final String QUESTION_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
     private static final String QUESTION_TRY_COUNT = "시도할 회수는 몇 회 인가요?";
 
-    private static final int RANDOM_RANGE = 10;     /* 랜덤 숫자 범위 */
+    private static final int RANDOM_RANGE = 10;     /* 랜덤 주행 조건 범위 0 ~ 9 */
 
 
     public static void main(String[] args) {
@@ -30,32 +30,26 @@ public class CarRacing {
         System.out.println(QUESTION_TRY_COUNT);
         String tryCount = scanner.nextLine();
 
-        process(carCount, tryCount);
+        racingStart(carCount, tryCount);
     }
 
-    /**
-     * 메인 기능 수행하는 메소드
-     */
-    public static void process(String carCount, String tryCount) {
+    public static void racingStart(String carCount, String tryCount) {
 
-        List<Car> carList = new ArrayList<>();          /* 주행할 자동차 목록 */
-        InputView inputView = new InputView();          /* 주행 입력 */
-        inputView.valid(carCount, tryCount);            /* 입력 검증 */
-        ResultView resultView = new ResultView();       /* 출력 클래스 생성 */
+        List<Car> carList = new ArrayList<>();
+        InputView inputView = new InputView();
+        inputView.valid(carCount, tryCount);            /* 입력 값 우선 검증 */
+        ResultView resultView = new ResultView();
 
         for (int i = 0; i < inputView.getCarCount(); i++) {
-            carList.add(new Car());                     /* 자동차 초기화 */
+            carList.add(new Car());
         }
 
         for (int i = 0; i < inputView.getTryCount(); i++) {
-            racing(carList, inputView);                 /* 자동차 주행 */
-            resultView.printRacing(carList);            /* 주행 이력 출력 */
+            racing(carList, inputView);                 /* 시도 횟수 만큼 주행 */
+            resultView.printRacing(carList);            /* 시도 횟수 만큼 출력 */
         }
     }
 
-    /**
-     * 차량 주행 기능 메소드
-     */
     public static void racing(List<Car> RACING_CAR, InputView inputView) {
         for (int i = 0; i < inputView.getCarCount(); i++) {
             int randomNum = new Random().nextInt(RANDOM_RANGE);

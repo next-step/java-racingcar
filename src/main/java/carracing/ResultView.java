@@ -14,14 +14,20 @@ import java.util.List;
  */
 public class ResultView {
 
-    /**
-     * 차량 주행 출력 메소드
-     */
+    private static final String MOVED = "-";        /* 차량 움직임 */
+
     public void printRacing(List<Car> carList) {
         System.out.println();
         for (Car car : carList) {
-            System.out.println(car.getDrivingHistory());
+            print(car);
         }
+    }
+
+    public void print(Car car) {
+        for (int i = 0; i < car.getDrivingHistory(); i++) {
+            System.out.print(MOVED);
+        }
+        System.out.println();
     }
 
 }
