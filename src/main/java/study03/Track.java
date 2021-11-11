@@ -4,10 +4,10 @@ public class Track {
 
     private final StringBuffer totalTrack;
 
-    public Track(int length) {
+    public Track(int trackLength) {
         totalTrack = new StringBuffer();
 
-        for (int i = 0 ; i < length ; i ++) {
+        for (int i = 0 ; i < trackLength ; i ++) {
             totalTrack.append('-');
         }
     }
