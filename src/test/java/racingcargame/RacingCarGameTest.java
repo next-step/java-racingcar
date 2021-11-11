@@ -2,8 +2,11 @@ package racingcargame;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcargame.domain.RacingCar;
 import racingcargame.ui.InputView;
 import racingcargame.ui.ResultView;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,21 +16,9 @@ class RacingCarGameTest {
     @ParameterizedTest
     @ValueSource(ints = {3, 5})
     void prepareRacingCarsTest(int carCount) {
-        racingCarGame.setCarCount(carCount);
+        List<RacingCar> racingCars = racingCarGame.prepareRacingCars(carCount);
 
-        racingCarGame.prepareRacingCars();
-
-        assertThat(racingCarGame.getRacingCars().size()).isEqualTo(carCount);
-        assertThat(racingCarGame.getCarCount()).isEqualTo(-1);
+        assertThat(racingCars.size()).isEqualTo(carCount);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {3, 5})
-    void moveAndPrintResultTest(int tryCount) {
-        racingCarGame.setTryCount(tryCount);
-
-        racingCarGame.moveAndPrintResult();
-
-        assertThat(racingCarGame.getTryCount()).isEqualTo(-1);
-    }
 }

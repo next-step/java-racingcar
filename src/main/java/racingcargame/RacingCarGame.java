@@ -21,42 +21,35 @@ public class RacingCarGame {
     private final InputView inputView;
     private final ResultView resultView;
 
-    private int carCount;
-    private int tryCount;
-
-    private List<RacingCar> racingCars = new ArrayList<>();;
-
     public RacingCarGame(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
         this.resultView = resultView;
     }
 
     public void start() {
-        readInput();
-        prepareRacingCars();
-        moveAndPrintResult();
+        int carCount = inputView.readCarCount();
+        int tryCount = inputView.readTryCount();
+        List<RacingCar> racingCars = prepareRacingCars(carCount);
+        prepareRacingCars(carCount);
+        moveAndPrintResult(tryCount, racingCars);
     }
 
-    private void readInput() {
-        carCount = inputView.readCarCount();
-        tryCount = inputView.readTryCount();
-    }
-
-    protected void prepareRacingCars() {
-        racingCars.clear();
+    protected List<RacingCar> prepareRacingCars(int carCount) {
+        List<RacingCar> racingCars = new ArrayList<>();
         while (carCount-- > 0) {
             racingCars.add(new RacingCar());
         }
+        return racingCars;
     }
 
-    protected void moveAndPrintResult() {
+    protected void moveAndPrintResult(int tryCount, List<RacingCar> racingCars) {
         resultView.printResultMessage();
         while (tryCount-- > 0) {
-            moveAndPrintState();
+            moveAndPrintState(racingCars);
         }
     }
 
-    private void moveAndPrintState() {
+    private void moveAndPrintState(List<RacingCar> racingCars) {
         racingCars.stream().forEach(r -> {
             r.move();
             resultView.printCurrentStateOfRacingCar(r);
@@ -64,27 +57,4 @@ public class RacingCarGame {
         resultView.print("");
     }
 
-    public int getCarCount() {
-        return carCount;
-    }
-
-    public void setCarCount(int carCount) {
-        this.carCount = carCount;
-    }
-
-    public int getTryCount() {
-        return tryCount;
-    }
-
-    public void setTryCount(int tryCount) {
-        this.tryCount = tryCount;
-    }
-
-    public List<RacingCar> getRacingCars() {
-        return racingCars;
-    }
-
-    public void setRacingCars(List<RacingCar> racingCars) {
-        this.racingCars = racingCars;
-    }
 }
