@@ -13,4 +13,8 @@ public class Car {
             location.append(LOCATION_UNIT);
         }
     }
+
+    public String getLocation() {
+        return location.toString();
+    }
 }
