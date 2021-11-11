@@ -29,6 +29,10 @@ public class RacingCar {
     progress++;
   }
 
+  public boolean equalsProgress(int progress) {
+    return this.progress == progress;
+  }
+
 
   public int getProgress() {
     return this.progress;

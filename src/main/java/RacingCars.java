@@ -30,15 +30,14 @@ public class RacingCars {
 
   private Integer findMaxProgress() {
     return this.racingCars.stream()
-            .map(RacingCar::getProgress)
-            .sorted(Comparator.reverseOrder())
-            .findFirst()
-            .get();
+            .mapToInt(RacingCar::getProgress)
+            .max()
+            .orElse(0);
   }
 
   private List<String> findWinnerNames(Integer maxProgress) {
     return this.racingCars.stream()
-            .filter(racingCar -> racingCar.getProgress() == maxProgress)
+            .filter(racingCar -> racingCar.equalsProgress(maxProgress))
             .map(RacingCar::getName)
             .collect(Collectors.toList());
   }
