@@ -56,7 +56,7 @@ public class Race {
         return currentTurn >= totalTurns;
     }
 
-    public List<String> winners() {
+    public List<Name> winners() {
         if (!isEnded()) {
             throw new IllegalStateException("the race is not over.");
         }

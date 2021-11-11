@@ -2,6 +2,7 @@ package edu.nextstep.camp;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
@@ -19,11 +20,14 @@ public class RaceTest {
     private static final int TEST_TURN = 1;
 
     static Cars getTestCars() {
-        return Cars.of(new String[]{"test0", "test1", "test2", "test3"}, ALWAYS_MOVE_POLICY);
+        return Cars.of(Stream.of("test0", "test1", "test2", "test3")
+                        .map(Name::of)
+                        .collect(Collectors.toList()),
+                ALWAYS_MOVE_POLICY);
     }
 
     static Cars getTestCarAsList() {
-        return Cars.of(Car.of("test0", ALWAYS_MOVE_POLICY));
+        return Cars.of(Car.of(Name.of("test0"), ALWAYS_MOVE_POLICY));
     }
 
     @ParameterizedTest(name = "create race test: {arguments}")
@@ -73,11 +77,11 @@ public class RaceTest {
     }
 
     static Stream<Arguments> parseCheckWinnerArguments() {
-        final Car TEST_CAR_0 = Car.of("test0", ALWAYS_MOVE_POLICY);
-        final Car TEST_CAR_1 = Car.of("test1", NEVER_MOVE_POLICY);
-        final Car TEST_CAR_2 = Car.of("test2", ALWAYS_MOVE_POLICY);
-        final Car TEST_CAR_3 = Car.of("test3", NEVER_MOVE_POLICY);
-        final Car TEST_CAR_4 = Car.of("test4", ALWAYS_MOVE_POLICY);
+        final Car TEST_CAR_0 = Car.of(Name.of("test0"), ALWAYS_MOVE_POLICY);
+        final Car TEST_CAR_1 = Car.of(Name.of("test1"), NEVER_MOVE_POLICY);
+        final Car TEST_CAR_2 = Car.of(Name.of("test2"), ALWAYS_MOVE_POLICY);
+        final Car TEST_CAR_3 = Car.of(Name.of("test3"), NEVER_MOVE_POLICY);
+        final Car TEST_CAR_4 = Car.of(Name.of("test4"), ALWAYS_MOVE_POLICY);
         return Stream.of(
             Arguments.of(Cars.of(TEST_CAR_0, TEST_CAR_1), TEST_TURN, List.of(TEST_CAR_0.name())),
             Arguments.of(Cars.of(TEST_CAR_2, TEST_CAR_3, TEST_CAR_4), TEST_TURN, List.of(TEST_CAR_2.name(), TEST_CAR_4.name()))
@@ -86,7 +90,7 @@ public class RaceTest {
 
     @ParameterizedTest(name = "get winner after race is over with: {arguments}")
     @MethodSource("parseCheckWinnerArguments")
-    public void checkWinner(Cars cars, int turn, List<String> expectedWinner) {
+    public void checkWinner(Cars cars, int turn, List<Name> expectedWinner) {
         final Race race = Race.of(cars, turn);
         assertThat(race.isEnded()).isFalse();
         race.process();

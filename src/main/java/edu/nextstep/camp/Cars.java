@@ -1,10 +1,11 @@
 package edu.nextstep.camp;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Cars implements Iterable<Car> {
@@ -16,21 +17,18 @@ public class Cars implements Iterable<Car> {
         this.cars = Collections.unmodifiableList(cars);
     }
 
-    public static Cars of(String[] names, MovePolicy movePolicy) {
+    public static Cars of(Collection<Name> names, MovePolicy movePolicy) {
         if (names == null) {
             throw new IllegalArgumentException("Name of cars cannot be null.");
         }
 
-        if (names.length < MINIMUM_NUMBER_OF_CAR) {
-            throw new IllegalArgumentException("invalid number of cars: " + names.length);
+        if (names.size() < MINIMUM_NUMBER_OF_CAR) {
+            throw new IllegalArgumentException("invalid number of cars must be larger than 1 but 0");
         }
 
-        List<Car> cars = new ArrayList<>(names.length);
-        for (String name : names) {
-            cars.add(Car.of(name, movePolicy));
-        }
-
-        return new Cars(cars);
+        return new Cars(names.stream()
+                .map(name -> Car.of(name, movePolicy))
+                .collect(Collectors.toList()));
     }
 
     public static Cars of(Car... cars) {

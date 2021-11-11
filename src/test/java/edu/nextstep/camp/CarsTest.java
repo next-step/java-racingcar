@@ -1,7 +1,8 @@
 package edu.nextstep.camp;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
@@ -15,13 +16,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarsTest {
-    private static final String[] TEST_NAME_LIST = {"test0", "test1", "test2", "test3"};
+    private static final List<Name> TEST_NAME_LIST = Stream.of("test0", "test1", "test2", "test3")
+            .map(Name::of)
+            .collect(Collectors.toList());
 
     static List<Car> getTestCars() {
-        final Car TEST_CAR_0 = Car.of(TEST_NAME_LIST[0], ALWAYS_MOVE_POLICY);
-        final Car TEST_CAR_1 = Car.of(TEST_NAME_LIST[1], NEVER_MOVE_POLICY);
-        final Car TEST_CAR_2 = Car.of(TEST_NAME_LIST[2], ALWAYS_MOVE_POLICY);
-        final Car TEST_CAR_3 = Car.of(TEST_NAME_LIST[3], NEVER_MOVE_POLICY);
+        final Car TEST_CAR_0 = Car.of(TEST_NAME_LIST.get(0), ALWAYS_MOVE_POLICY);
+        final Car TEST_CAR_1 = Car.of(TEST_NAME_LIST.get(1), NEVER_MOVE_POLICY);
+        final Car TEST_CAR_2 = Car.of(TEST_NAME_LIST.get(2), ALWAYS_MOVE_POLICY);
+        final Car TEST_CAR_3 = Car.of(TEST_NAME_LIST.get(3), NEVER_MOVE_POLICY);
 
         return List.of(TEST_CAR_0, TEST_CAR_1, TEST_CAR_2, TEST_CAR_3);
     }
@@ -41,25 +44,23 @@ public class CarsTest {
 
     @Test
     public void createFromCar() {
-        final Car TEST_CAR_0 = Car.of(TEST_NAME_LIST[0], ALWAYS_MOVE_POLICY);
-        final Car TEST_CAR_1 = Car.of(TEST_NAME_LIST[1], NEVER_MOVE_POLICY);
+        final Car TEST_CAR_0 = Car.of(TEST_NAME_LIST.get(0), ALWAYS_MOVE_POLICY);
+        final Car TEST_CAR_1 = Car.of(TEST_NAME_LIST.get(1), NEVER_MOVE_POLICY);
         Cars cars = Cars.of(TEST_CAR_0, TEST_CAR_1);
         assertThat(cars.list()).hasSameElementsAs(List.of(TEST_CAR_0, TEST_CAR_1));
     }
-
 
     static Stream<Arguments> parseIllegalArgumentsOfCarList() {
         return Stream.of(
                 Arguments.of(TEST_NAME_LIST, null),
                 Arguments.of(null, ALWAYS_MOVE_POLICY),
-                Arguments.of(new String[] {}, ALWAYS_MOVE_POLICY),
-                Arguments.of(new String[] {"test0", "test11"}, ALWAYS_MOVE_POLICY)
+                Arguments.of(Collections.emptyList(), ALWAYS_MOVE_POLICY)
         );
     }
 
     @ParameterizedTest(name = "creation failed by invalid input: {arguments}")
     @MethodSource("parseIllegalArgumentsOfCarList")
-    public void createFailByName(String[] names, MovePolicy movePolicy) {
+    public void createFailByName(List<Name> names, MovePolicy movePolicy) {
         assertThatIllegalArgumentException().isThrownBy(() -> Cars.of(names, movePolicy));
     }
 
@@ -73,6 +74,6 @@ public class CarsTest {
     @Test
     public void stream() {
         Cars cars = Cars.of(TEST_NAME_LIST, ALWAYS_MOVE_POLICY);
-        assertThat(cars.stream().map(Car::name)).hasSameElementsAs(Arrays.asList(TEST_NAME_LIST));
+        assertThat(cars.stream().map(Car::name)).hasSameElementsAs(TEST_NAME_LIST);
     }
 }

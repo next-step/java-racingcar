@@ -1,18 +1,15 @@
 package edu.nextstep.camp;
 
-import java.util.stream.Stream;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullSource;
 
 import static edu.nextstep.camp.TestMovePolicy.ALWAYS_MOVE_POLICY;
 import static edu.nextstep.camp.TestMovePolicy.NEVER_MOVE_POLICY;
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
-    private static final String TEST_NAME = "test0";
+    private static final Name TEST_NAME = Name.of("test0");
 
     @Test
     public void create() {
@@ -21,20 +18,10 @@ public class CarTest {
         assertThat(car.position()).isEqualTo(Position.ofZero());
     }
 
-    static Stream<Arguments> parseIllegalArgumentsOfCar() {
-        return Stream.of(
-                Arguments.of(null, ALWAYS_MOVE_POLICY),
-                Arguments.of("", ALWAYS_MOVE_POLICY),
-                Arguments.of("test11", ALWAYS_MOVE_POLICY),
-                Arguments.of("too-long", ALWAYS_MOVE_POLICY),
-                Arguments.of(TEST_NAME, null)
-        );
-    }
-
     @ParameterizedTest(name = "creation failed by invalid input: {arguments}")
-    @MethodSource("parseIllegalArgumentsOfCar")
-    public void createFailByName(String name, MovePolicy movePolicy) {
-        assertThatIllegalArgumentException().isThrownBy(() -> Car.of(name, movePolicy));
+    @NullSource
+    public void createFailByName(MovePolicy movePolicy) {
+        assertThatIllegalArgumentException().isThrownBy(() -> Car.of(TEST_NAME, movePolicy));
     }
 
     @Test

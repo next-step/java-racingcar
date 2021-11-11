@@ -1,23 +1,17 @@
 package edu.nextstep.camp;
 
 public class Car {
-    public static final int NAME_LIMIT = 5;
-
-    private final String name;
+    private final Name name;
     private final Position position;
     private final MovePolicy movePolicy;
 
-    private Car(String name, MovePolicy movePolicy) {
+    private Car(Name name, MovePolicy movePolicy) {
         this.name = name;
         this.position = Position.ofZero();
         this.movePolicy = movePolicy;
     }
 
-    public static Car of(String name, MovePolicy movePolicy) {
-        if (name == null || name.isEmpty() || name.length() > NAME_LIMIT) {
-            throw new IllegalArgumentException("invalid name: " + name);
-        }
-
+    public static Car of(Name name, MovePolicy movePolicy) {
         if (movePolicy == null) {
             throw new IllegalArgumentException("move policy cannot be null.");
         }
@@ -36,7 +30,7 @@ public class Car {
         }
     }
 
-    public String name() {
+    public Name name() {
         return name;
     }
 }
