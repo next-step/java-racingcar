@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 public class Cars {
     private static final int MIN_CREATE_COUNT = 1;
 
-    private final List<Car> cars;
     private final MovingStrategy movingStrategy;
+    private final List<Car> cars;
 
     private Cars(String[] carNames, MovingStrategy movingStrategy) {
         validateMovingStrategy(movingStrategy);
@@ -24,14 +24,19 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    private void validateMovingStrategy(MovingStrategy movingStrategy) {
-        if (Objects.isNull(movingStrategy)) {
-            throw new IllegalArgumentException();
-        }
+    protected Cars (List<Car> cars, MovingStrategy movingStrategy) {
+        this.cars = cars;
+        this.movingStrategy = movingStrategy;
     }
 
     public static Cars from(String[] carNames, MovingStrategy movingStrategy) {
         return new Cars(carNames, movingStrategy);
+    }
+
+    private void validateMovingStrategy(MovingStrategy movingStrategy) {
+        if (Objects.isNull(movingStrategy)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validateCreateCount(String[] carsName) {
