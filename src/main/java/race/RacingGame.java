@@ -3,54 +3,55 @@ package race;
 import race.inboud.InputView;
 import race.outbound.OutputView;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RacingGame {
-    private final int numberOfCars;
+    private final Collection<CarName> carNames;
     private final int numberOfMovement;
     private final OutputView outputView;
     private final MoveCars moveCars;
+    private final FilterWinners filterWinners;
 
-    public RacingGame(InputView inputView, OutputView outputView, MoveCars moveCars) {
-        this(inputView.numberOfCars(), inputView.numberOfMovement(), outputView, moveCars);
+    public RacingGame(InputView inputView, OutputView outputView, MoveCars moveCars, FilterWinners filterWinners) {
+        this(inputView.carNames(), inputView.numberOfMovement(), outputView, moveCars, filterWinners);
     }
 
-    public RacingGame(int numberOfCars, int numberOfMovement, OutputView outputView, MoveCars moveCars) {
-        if (numberOfCars <= 0 || numberOfMovement <= 0) {
-            throw new IllegalArgumentException("numberOfCars and numberOfMovement must be positive");
+    public RacingGame(Collection<CarName> carNames, int numberOfMovement, OutputView outputView, MoveCars moveCars, FilterWinners filterWinners) {
+        if (carNames.size() <= 0 || numberOfMovement <= 0) {
+            throw new IllegalArgumentException("numberOfCarNames and numberOfMovement must be positive");
         }
 
-        this.numberOfCars = numberOfCars;
+        this.carNames = carNames;
         this.numberOfMovement = numberOfMovement;
         this.outputView = outputView;
         this.moveCars = moveCars;
+        this.filterWinners = filterWinners;
     }
 
     public void start() {
-        Collection<Car> cars = setUpCars(numberOfCars);
+        Collection<Car> cars = setUpCars(carNames);
 
         for (int i = 0; i < numberOfMovement; i++) {
             moveCars.moveCars(cars);
-            outputView.render(cars);
+            outputView.renderLocation(cars);
         }
+        outputView.renderWinners(filterWinners.filter(cars));
     }
 
-    private Collection<Car> setUpCars(int numberOfCars) {
-        Collection<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
-        }
-        return cars;
+    private Collection<Car> setUpCars(Collection<CarName> carNames) {
+        return Collections.unmodifiableCollection(
+                carNames.stream().map(Car::new).collect(Collectors.toList())
+        );
     }
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
         MoveCars moveCars = new MoveCars(new JudgeCarMovement(new Random()));
+        FilterWinners filterWinners = new FilterWinners();
 
-        new RacingGame(inputView, outputView, moveCars).start();
+        new RacingGame(inputView, outputView, moveCars, filterWinners).start();
 
         inputView.close();
     }
