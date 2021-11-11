@@ -1,11 +1,9 @@
 package racing.view;
 
-import racing.NumberHelper;
-
 import java.util.Scanner;
 
-import static racing.ViewConstant.ATTEMPT_MESSAGE;
-import static racing.ViewConstant.CAR_MESSAGE;
+import static racing.view.ViewConstant.ATTEMPT_MESSAGE;
+import static racing.view.ViewConstant.CAR_MESSAGE;
 
 /**
  * @author han
