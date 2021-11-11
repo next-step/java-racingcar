@@ -27,15 +27,26 @@ public class CarTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"dong", "hyo"})
-    @DisplayName("자동차 전진 시 이력 증가")
-    void runRace(String carName) {
+    @DisplayName("자동차 전진 성공에 따른 successCount 확인")
+    void runRaceTrue(String carName) {
         Car car = Car.from(carName);
-        Long before = car.getSuccessCount();
 
-        car.runRace();
-        Long after = car.getSuccessCount();
+        car.runRace(() -> true);
+        Long runSuccessCount = car.getSuccessCount();
 
-        assertThat(before).isLessThan(after);
+        assertThat(runSuccessCount).isEqualTo(1);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"dong", "hyo"})
+    @DisplayName("자동차 전진 실패에 따른 successCount 확인")
+    void runRaceFalse(String carName) {
+        Car car = Car.from(carName);
+
+        car.runRace(() -> false);
+        Long runSuccessCount = car.getSuccessCount();
+
+        assertThat(runSuccessCount).isEqualTo(0);
     }
 
 }

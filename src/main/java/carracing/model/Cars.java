@@ -1,6 +1,7 @@
 package carracing.model;
 
 import carracing.exception.HistoryNullPointerException;
+import carracing.model.run.RandomRunStrategy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -43,7 +44,7 @@ public class Cars {
 
     public void carsRace() {
         for (Car car : cars) {
-            car.runRace();
+            car.runRace(new RandomRunStrategy());
         }
         tryTotalCount++;
     }
