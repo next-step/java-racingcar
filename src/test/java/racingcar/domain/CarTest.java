@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.CarMovingNumberException;
@@ -18,23 +17,25 @@ class CarTest {
         car = Car.from(CarName.from("AA"));
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("전진")
-    void move() {
-        car.move(5);
+    @ValueSource(ints = {5, 6, 7, 8, 9})
+    void move(int value) {
+        car.move(value);
         assertThat(car.currentPosition()).isEqualTo(Position.from(1));
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("정지")
-    void stop() {
-        car.move(3);
+    @ValueSource(ints = {0, 1, 2, 3, 4})
+    void stop(int value) {
+        car.move(value);
         assertThat(car.currentPosition()).isEqualTo(Position.from(0));
     }
 
     @ParameterizedTest
     @DisplayName("Car move exception test")
-    @ValueSource(ints = {-1})
+    @ValueSource(ints = {-1, 10})
     void moveException(int number) {
         assertThatThrownBy(() -> car.move(number)).isInstanceOf(CarMovingNumberException.class);
     }
