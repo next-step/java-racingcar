@@ -12,7 +12,7 @@ package racingcargame;
 
 import racingcargame.domain.RacingCar;
 import racingcargame.domain.Result;
-import racingcargame.repository.RacingCarFactory;
+import racingcargame.domain.RacingCarFactory;
 import racingcargame.ui.InputView;
 import racingcargame.ui.ResultView;
 import racingcargame.utils.RandomUtil;

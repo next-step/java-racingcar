@@ -1,6 +1,4 @@
-package racingcargame.repository;
-
-import racingcargame.domain.RacingCar;
+package racingcargame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
