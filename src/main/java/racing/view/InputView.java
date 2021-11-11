@@ -4,8 +4,8 @@ import racing.NumberHelper;
 
 import java.util.Scanner;
 
-import static racing.RacingConstant.ATTEMPT_MESSAGE;
-import static racing.RacingConstant.CAR_MESSAGE;
+import static racing.ViewConstant.ATTEMPT_MESSAGE;
+import static racing.ViewConstant.CAR_MESSAGE;
 
 /**
  * @author han
