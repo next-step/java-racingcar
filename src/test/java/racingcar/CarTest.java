@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
+import racingcar.domain.CarName;
 import racingcar.exception.CarMovingNumberException;
 import racingcar.domain.Position;
 
@@ -17,7 +18,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = Car.from("aa");
+        car = Car.from(CarName.from("AA"));
     }
 
     @Test

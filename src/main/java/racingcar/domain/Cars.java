@@ -20,6 +20,7 @@ public class Cars {
 
         this.movingStrategy = movingStrategy;
         this.cars = Arrays.stream(carNames)
+                .map(CarName::from)
                 .map(Car::from)
                 .collect(Collectors.toList());
     }
