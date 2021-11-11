@@ -1,25 +1,28 @@
 package racingcar.domain;
 
+import racingcar.strategy.MovingStrategy;
 import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Racing {
 
     private final List<Car> cars;
     private final int tryCount;
-    private final Random random = new Random(System.currentTimeMillis());
+    private final MovingStrategy movingStrategy;
 
-    public Racing(int carCount, int tryCount) {
+
+    public Racing(int carCount, int tryCount, MovingStrategy movingStrategy) {
         this.cars = new ArrayList<>(makeCar(carCount));
         this.tryCount = tryCount;
+        this.movingStrategy = movingStrategy;
     }
 
-    public Racing(String[] carNames, int tryCount){
+    public Racing(String[] carNames, int tryCount, MovingStrategy movingStrategy) {
         this.cars = new ArrayList<>(makeCar(carNames));
         this.tryCount = tryCount;
+        this.movingStrategy = movingStrategy;
     }
 
     public List<Car> makeCar(int carCount) {
@@ -32,23 +35,15 @@ public class Racing {
 
     public List<Car> makeCar(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for(String carName: carNames){
+        for (String carName : carNames) {
             cars.add(new Car(carName));
         }
         return cars;
     }
 
-
-    public void goingTry(int number) {
-        for (Car car : cars) {
-            car.increaseState(number);
-        }
-        OutputView.print(this.result());
-    }
-
     public void goingTry() {
         for (Car car : cars) {
-            car.increaseState(random.nextInt(10));
+            car.increaseState(movingStrategy);
         }
         OutputView.print(this.result());
     }

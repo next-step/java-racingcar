@@ -14,12 +14,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingTest {
 
     private Racing racing;
+    private String[] carNames;
 
     @BeforeEach
     void setup() {
-//        racing = new Racing(3, 5);
-        String[] carNames = "pobi,crong,honux".split(",");
-        racing = new Racing(carNames, 5);
+        carNames = "pobi,crong,honux".split(",");
+        racing = new Racing(carNames, 5, () -> true);
     }
 
     @Test
@@ -30,11 +30,22 @@ public class RacingTest {
     }
 
     @Test
-    @DisplayName("random 값이 10일 경우, 자동차들이 1번 움직였을 경우 테스트.")
-    void goingTryTest() {
-        racing.goingTry(10);
+    @DisplayName("전진 조건이 만족했을 경우, 자동차들이 전진했는지 테스트.")
+    void allMove() {
+        Racing racing = new Racing(carNames, 5, () -> true);
+        racing.goingTry();
         for (Car car : racing.getCars()) {
             assertThat(car.getState()).isEqualTo(1);
+        }
+    }
+
+    @Test
+    @DisplayName("전진 조건이 만족하지 못했을 경우, 자동차들이 멈춰있는지 테스트.")
+    void allStop() {
+        Racing racing = new Racing(carNames, 5, () -> false);
+        racing.goingTry();
+        for (Car car : racing.getCars()) {
+            assertThat(car.getState()).isEqualTo(0);
         }
     }
 

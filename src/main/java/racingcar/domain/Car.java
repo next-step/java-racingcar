@@ -1,9 +1,10 @@
 package racingcar.domain;
 
 
+import racingcar.strategy.MovingStrategy;
+
 public class Car {
 
-    private static final int UPPER_LIMIT = 4;
     private int state;
     private String name;
 
@@ -16,8 +17,8 @@ public class Car {
         this.name = name;
     }
 
-    public void increaseState(int random) {
-        if (random >= UPPER_LIMIT) {
+    public void increaseState(MovingStrategy randomMovingStrategy) {
+        if (randomMovingStrategy.isMove()) {
             this.state++;
         }
     }
