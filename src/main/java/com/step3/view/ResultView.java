@@ -11,7 +11,7 @@ public class ResultView {
             System.out.println("실행 결과");
         }
 
-        for (Car car : cars.getCars()) {
+        for (Car car : cars.getList()) {
             System.out.println(String.format("%s%s%s", car.getId().getValue(), ":", getResult(car)));
         }
 
@@ -33,7 +33,7 @@ public class ResultView {
     }
 
     private static String getWinnerResult(Cars cars) {
-        return cars.getWinnerCars().stream()
+        return cars.getWinnerCars().getList().stream()
                 .map(c -> c.getId().getValue())
                 .collect(Collectors.joining(","));
     }

@@ -1,6 +1,8 @@
 package com.step3.model.car;
 
 public class Car {
+    private static final int MOVE_POSSIBLE_BOUND = 4;
+
     private Name id;
     private Position position;
 
@@ -10,7 +12,9 @@ public class Car {
     }
 
     public Car move(boolean isMoved) {
-        this.position = position.add(isMoved);
+        if (isMoved) {
+            this.position = new Position(this.position.getValue() + 1);
+        }
         return this;
     }
 
@@ -20,6 +24,10 @@ public class Car {
 
     public Name getId() {
         return this.id;
+    }
+
+    public static boolean isMovePossible(int randomValue) {
+        return randomValue >= MOVE_POSSIBLE_BOUND;
     }
 
     @Override

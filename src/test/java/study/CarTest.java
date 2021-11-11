@@ -35,9 +35,12 @@ public class CarTest {
     @DisplayName("cars의 이동거리 비교 후 우승자 결과 test")
     void getBestCars() {
         Cars cars = new Cars("pobi,crong,honux".split(","));
-        cars.getCars().get(0).move(true);   // pobi 이동
-        cars.getCars().get(1).move(true);   // crong 이동
-        assertThat(cars.getWinnerCars().stream().map(c -> c.getId().getValue()).collect(Collectors.joining(","))).isEqualTo("pobi,crong");
+        cars.getList().get(0).move(true);   // pobi 이동
+        cars.getList().get(1).move(true);   // crong 이동
+        assertThat(cars.getWinnerCars().getList()
+                .stream()
+                .map(c -> c.getId().getValue())
+                .collect(Collectors.joining(","))).isEqualTo("pobi,crong");
     }
 
     @Test
