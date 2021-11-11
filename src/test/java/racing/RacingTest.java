@@ -53,6 +53,19 @@ class RacingTest {
         cars.forEach(car -> assertThat(car.getStep()).isGreaterThanOrEqualTo(0));
     }
 
+    @ParameterizedTest(name = "우승자")
+    @MethodSource("indexCarsAndResultProvider")
+    void winner() {
+        Racing racing = new Racing(getUsers(3), 3);
+        racing.play(new DeterministicRandom());
+        List<Car> winners = racing.getWinners();
+        assertAll(
+            () -> assertThat(winners.size()).isEqualTo(2),
+            () -> assertThat(winners.get(0).getName()).isEqualTo("2"),
+            () -> assertThat(winners.get(1).getName()).isEqualTo("3"),
+            () -> assertThat(winners.get(0).getStep()).isEqualTo(2),
+            () -> assertThat(winners.get(1).getStep()).isEqualTo(2));
+    }
 
     @ParameterizedTest(name = "예상된 랜덤값을 통한 플레이")
     @MethodSource("indexCarsAndResultProvider")
