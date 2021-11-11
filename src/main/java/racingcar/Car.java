@@ -4,6 +4,7 @@ import common.View;
 
 public class Car extends View {
 
+    private static final int UPPER_LIMIT = 4;
     private int state;
 
     public Car() {
@@ -11,7 +12,7 @@ public class Car extends View {
     }
 
     public void increaseState(int random) {
-        if (random >= 4) {
+        if (random >= UPPER_LIMIT) {
             this.state++;
         }
     }
