@@ -45,7 +45,7 @@ public class Racing {
 
     public List<Car> getWinners() {
         int max = getMaxStep();
-        
+
         return this.cars.stream()
             .filter(c -> c.getStep() == max)
             .collect(Collectors.toList());
@@ -72,6 +72,9 @@ public class Racing {
     }
 
     private int getMaxStep() {
-        return this.cars.stream().mapToInt(Car::getStep).max().orElseThrow(IllegalArgumentException::new);
+        return this.cars.stream()
+            .mapToInt(Car::getStep)
+            .max()
+            .orElseThrow(IllegalArgumentException::new);
     }
 }
