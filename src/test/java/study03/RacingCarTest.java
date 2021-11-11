@@ -24,4 +24,14 @@ public class RacingCarTest {
         assertThat(track1.getTotalTrack()).isEqualTo("-----");
         assertThat(track2.getTotalTrack()).isEqualTo("----------");
     }
+
+    @Test
+    void Test03_엔진생성테스트() {
+        Engine engine = new Engine();
+
+        assertThat(engine.isFixedRun(3)).isFalse();
+        assertThat(engine.isFixedRun(5)).isTrue();
+        assertThat(engine.isFixedRun(7)).isTrue();
+        assertThat(engine.isFixedRun(0)).isFalse();
+    }
 }
