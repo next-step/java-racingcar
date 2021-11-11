@@ -16,7 +16,7 @@ public class Cars {
 
     private Cars(String[] carNames, MovingStrategy movingStrategy) {
         validateMovingStrategy(movingStrategy);
-        validateCreateCount(carNames.length);
+        validateCreateCount(carNames);
 
         this.movingStrategy = movingStrategy;
         this.cars = Arrays.stream(carNames)
@@ -34,9 +34,12 @@ public class Cars {
         return new Cars(carNames, movingStrategy);
     }
 
-    private void validateCreateCount(int count) {
-        if (count < MIN_CREATE_COUNT) {
-            throw new CreateCarCountException(count);
+    private void validateCreateCount(String[] carsName) {
+        if (carsName == null) {
+            throw new CreateCarCountException();
+        }
+        if (carsName.length < MIN_CREATE_COUNT) {
+            throw new CreateCarCountException();
         }
     }
 

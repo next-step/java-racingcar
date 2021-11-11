@@ -1,11 +1,10 @@
 package racingcar;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.MovingStrategy.RandomMovingStrategy;
 import racingcar.domain.Cars;
 import racingcar.exception.CreateCarCountException;
@@ -34,12 +33,10 @@ class CarsTest {
         );
     }
 
-    @Disabled
-    @ParameterizedTest
+    @Test
     @DisplayName("Cars 생성 예외 테스트")
-    @ValueSource(ints = {-1, 0})
-    void carsExceptionTest(int createCount) {
-        assertThatThrownBy(() -> Cars.from(new String[] {"aa", "bb"}, RandomMovingStrategy.getInstance())).isInstanceOf(CreateCarCountException.class);
+    void carsExceptionTest() {
+        assertThatThrownBy(() -> Cars.from(null, RandomMovingStrategy.getInstance())).isInstanceOf(CreateCarCountException.class);
     }
 
 }
