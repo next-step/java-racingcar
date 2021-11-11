@@ -9,4 +9,8 @@ public class GameInput {
     public static int readInt() {
         return scanner.nextInt();
     }
+
+    public static String[] readCarNames() {
+        return scanner.nextLine().split(",");
+    }
 }
