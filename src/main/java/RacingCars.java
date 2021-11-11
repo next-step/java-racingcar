@@ -14,8 +14,8 @@ public class RacingCars {
   }
 
   private void createRacingCars(String[] racingCars) {
-    for (int i = 0; i < racingCars.length; i++) {
-      this.racingCars.add(new RacingCar(racingCars[i]));
+    for (String racingCar : racingCars) {
+      this.racingCars.add(new RacingCar(racingCar));
     }
   }
 
