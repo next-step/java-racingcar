@@ -23,10 +23,10 @@ public class Application {
     }
 
     private static Cars getCars() {
-        int count = InputView.askCreateCarCount();
-
+        String input = InputView.askCreateCarNames();
+        String[] carNames = input.split(",");
         try {
-            return Cars.from(count, RandomMovingStrategy.getInstance());
+            return Cars.from(carNames, RandomMovingStrategy.getInstance());
         } catch (CreateCarCountException e) {
             OutputView.printCarCountExceptionMessage();
             return getCars();

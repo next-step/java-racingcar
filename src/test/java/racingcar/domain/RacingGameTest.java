@@ -31,10 +31,10 @@ class RacingGameTest {
     static Stream<Arguments> moveTryCount() {
         return Stream.of(
                 Arguments.of(
-                        Cars.from(2, RandomMovingStrategy.getInstance()), TryCount.from(3), 2, Boolean.TRUE
+                        Cars.from(new String[] {"aa", "bb", "cc"}, RandomMovingStrategy.getInstance()), TryCount.from(3), 2, Boolean.TRUE
                 ),
                 Arguments.of(
-                        Cars.from(2, RandomMovingStrategy.getInstance()), TryCount.from(3), 4, Boolean.FALSE
+                        Cars.from(new String[] {"aa", "bb", "cc"}, RandomMovingStrategy.getInstance()), TryCount.from(3), 4, Boolean.FALSE
                 )
         );
     }
@@ -51,7 +51,7 @@ class RacingGameTest {
     static Stream<Arguments> tryCountUnderZeroexception() {
         return Stream.of(
                 Arguments.of(
-                        Cars.from(2, RandomMovingStrategy.getInstance()), TryCount.from(3), 4
+                        Cars.from(new String[] {"aa", "bb", "cc"}, RandomMovingStrategy.getInstance()), TryCount.from(3), 4
                 )
         );
     }

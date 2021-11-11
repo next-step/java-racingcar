@@ -3,10 +3,10 @@ package racingcar.domain;
 import racingcar.exception.CreateCarCountException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Cars {
     private static final int MIN_CREATE_COUNT = 1;
@@ -14,13 +14,13 @@ public class Cars {
     private final List<Car> cars;
     private final MovingStrategy movingStrategy;
 
-    private Cars(int count, MovingStrategy movingStrategy) {
+    private Cars(String[] carNames, MovingStrategy movingStrategy) {
         validateMovingStrategy(movingStrategy);
-        validateCreateCount(count);
+        validateCreateCount(carNames.length);
 
         this.movingStrategy = movingStrategy;
-        this.cars = Stream.generate(Car::from)
-                .limit(count)
+        this.cars = Arrays.stream(carNames)
+                .map(Car::from)
                 .collect(Collectors.toList());
     }
 
@@ -30,8 +30,8 @@ public class Cars {
         }
     }
 
-    public static Cars from(int count, MovingStrategy movingStrategy) {
-        return new Cars(count, movingStrategy);
+    public static Cars from(String[] carNames, MovingStrategy movingStrategy) {
+        return new Cars(carNames, movingStrategy);
     }
 
     private void validateCreateCount(int count) {

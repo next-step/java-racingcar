@@ -17,7 +17,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = Car.from();
+        car = Car.from("aa");
     }
 
     @Test
