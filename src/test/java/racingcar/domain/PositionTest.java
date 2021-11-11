@@ -5,10 +5,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.exception.PositionException;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class PositionTest {
 
@@ -39,5 +42,12 @@ class PositionTest {
         Position init = Position.init();
 
         assertThat(init).isEqualTo(Position.from(0));
+    }
+
+    @ParameterizedTest
+    @DisplayName("Position 생성 실패 테스트")
+    @ValueSource(ints = {-1, -2, -3})
+    void positionException(int value) {
+        assertThatThrownBy(() -> Position.from(value)).isInstanceOf(PositionException.class);
     }
 }

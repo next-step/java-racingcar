@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.exception.PositionException;
+
 import java.util.Objects;
 
 public class Position implements Comparable<Position> {
@@ -8,7 +10,14 @@ public class Position implements Comparable<Position> {
     private int position;
 
     private Position(int position) {
+        validatePositionValue(position);
         this.position = position;
+    }
+
+    private void validatePositionValue(int position) {
+        if (position < 0) {
+            throw new PositionException(position);
+        }
     }
 
     public static Position from(int position) {
