@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.MovingStrategy.RandomMovingStrategy;
 import racingcar.domain.Cars;
+import racingcar.domain.GameLog;
 import racingcar.domain.RacingGame;
 import racingcar.domain.TryCount;
 import racingcar.exception.CreateCarCountException;
@@ -18,10 +19,9 @@ public class Application {
 
         RacingGame racingGame = RacingGame.of(cars, tryCount);
 
-        while (racingGame.nonOver()) {
-            racingGame.play();
-            OutputView.printResult(cars);
-        }
+        GameLog gameLog = racingGame.play();
+
+        OutputView.printGameLog(gameLog);
     }
 
     private static Cars getCars() {

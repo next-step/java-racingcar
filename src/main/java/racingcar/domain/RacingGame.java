@@ -15,12 +15,13 @@ public class RacingGame {
         return new RacingGame(cars, tryCount);
     }
 
-    public void play() {
+    public GameLog play() {
         while (tryCount.nonOver()) {
             tryCount.counting();
             cars.move();
             cars.recode(tryCount.currentRound(), gameLog);
         }
+        return gameLog;
     }
 
     public boolean nonOver() {

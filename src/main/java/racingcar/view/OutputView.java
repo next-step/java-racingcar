@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.Cars;
+import racingcar.domain.GameLog;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -31,12 +32,17 @@ public class OutputView {
         newLine();
     }
 
+    //DELETE
     private static void printPosition(int positionCount) {
         IntStream.rangeClosed(1, positionCount)
                 .mapToObj(value -> MOVE_SYMBOL)
                 .forEach(System.out::print);
     }
 
+
+    public static void printGameLog(GameLog gameLog) {
+
+    }
 
     private static void newLine() {
         System.out.println();
