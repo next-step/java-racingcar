@@ -1,14 +1,16 @@
 package step3;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import step3.manager.RacingManager;
+import step3.manager.RandomManager;
+
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Race {
-    private final int TEN = 10;
-    private List<Car> carList;
+    private RacingCarGroup racingCarGroup;
+    private LapsManager lapsManager;
     private Count carCount;
-    private Count trialCount;
     private GameBoard gameBoard;
 
     public Race() {
@@ -23,42 +25,26 @@ public class Race {
 
     private void ready() {
         this.carCount = gameBoard.registerCar();
-        this.trialCount = gameBoard.registerTrialCount();
-
-        this.carList = new ArrayList<>();
-        this.carList.addAll(createCarList());
+        this.lapsManager = new LapsManager(gameBoard.registerTrialCount());
+        this.racingCarGroup = new RacingCarGroup(createCarList());
     }
 
     private List<Car> createCarList() {
-        Car[] car = new Car[this.carCount.getCount()];
+        RacingManager racingManager = new RandomManager();
 
-        for(int i = 0 ; i < car.length ; ++i) {
-            car[i] = new Car();
-        }
-        return Arrays.asList(car);
+        return IntStream.range(0, carCount.getCount())
+                .mapToObj(i -> new Car(racingManager))
+                .collect(Collectors.toList());
     }
 
     private void inGame() {
         gameBoard.renderResultMessage();
 
-        int trialCount = this.trialCount.getCount();
+        while(!lapsManager.isLastLap()) {
+            racingCarGroup.carsRun();
 
-        for(int t = 0; t < trialCount; ++t) {
-            racing();
+            gameBoard.renderRaceProgress(racingCarGroup);
+            lapsManager.finishLap();
         }
-    }
-
-    private void racing() {
-        carList.stream()
-                .forEach(c -> {
-                    c.run(randomCount());
-                    gameBoard.renderRaceProgress(c.currentPosition());
-                });
-
-        System.out.println();
-    }
-
-    private int randomCount() {
-        return (int)(Math.random() * TEN);
     }
 }
