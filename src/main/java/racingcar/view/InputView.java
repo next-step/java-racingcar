@@ -5,9 +5,8 @@ import java.util.Scanner;
 public class InputView {
     private int count;
 
-    public InputView(String msg) {
+    public InputView(String msg, Scanner scanner) {
         System.out.println(msg);
-        Scanner scanner = new Scanner(System.in);
         this.count = scanner.nextInt();
     }
 

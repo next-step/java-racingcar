@@ -7,6 +7,7 @@ import racingcar.view.ResultView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class RacingGame {
     private static final int RANDOM_BOUND = 10;
@@ -14,8 +15,10 @@ public class RacingGame {
     private static final String NUMBER_OF_TRY_MSG = "시도할 회수는 몇 회 인가요?";
 
     public static void main(String[] args) {
-        InputView carInputView = new InputView(NUMBER_OF_CAR_MSG);
-        InputView tryInputView = new InputView(NUMBER_OF_TRY_MSG);
+        Scanner scanner = new Scanner(System.in);
+        InputView carInputView = new InputView(NUMBER_OF_CAR_MSG, scanner);
+        InputView tryInputView = new InputView(NUMBER_OF_TRY_MSG, scanner);
+
         ResultView resultView = new ResultView();
         System.out.println();
         System.out.println("실행 결과");
@@ -26,13 +29,16 @@ public class RacingGame {
         }
 
         for (int i = 0; i < tryInputView.getCount(); i++) {
-            for (RacingCar racingCar : racingCarList) {
-                racingCar.goOrStopRacing(new Random().nextInt(RANDOM_BOUND));
-            }
-
+            goOrStopRacing(racingCarList);
             resultView.racingShow(racingCarList);
         }
-
-
     }
+
+    private static void goOrStopRacing(List<RacingCar> racingCarList) {
+        Random random = new Random();
+        for (RacingCar racingCar : racingCarList) {
+            racingCar.goOrStopRacing(random.nextInt(RANDOM_BOUND));
+        }
+    }
+
 }
