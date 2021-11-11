@@ -3,15 +3,15 @@ package util;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static racingcar.RacingCarTestUtil.IDENTIFIER_OF_CARS;
+import static racingcar.RacingCarTestUtil.NAMES_OF_CARS;
 import static util.StringUtils.separateStringWithComma;
 
 public class StringUtilsTest {
-    private final String NAMES = "pobi, tomo, crong, honux, yong";
-    private final String[] SEPARATED_NAMES = new String[]{"pobi", "tomo", "crong", "honux", "yong"};
 
     @Test
     void testSeparateStringWithComma() {
-        String[] separatedNames = separateStringWithComma(NAMES);
-        assertThat(separatedNames).isEqualTo(SEPARATED_NAMES);
+        String[] separatedNames = separateStringWithComma(IDENTIFIER_OF_CARS);
+        assertThat(separatedNames).isEqualTo(NAMES_OF_CARS);
     }
 }

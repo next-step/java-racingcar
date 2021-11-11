@@ -1,36 +1,57 @@
 package racingcar;
 
+import racingcar.dto.CarDistance;
+import racingcar.dto.CarName;
+
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car> {
     public static final int STOP_LOWER_BOUNDARY = 0;
     public static final int RUN_LOWER_BOUNDARY = 4;
     public static final int RUN_UPPER_BOUNDARY = 10;
 
     public static final int START_POINT = 0;
 
-    private final String name;
-    private int distance;
+    private final CarName name;
+    private CarDistance distance;
+
+    public Car() {
+        this.name = new CarName("");
+        this.distance = new CarDistance(START_POINT);
+    }
 
     public Car(String name) {
-        this.name = name;
-        this.distance = START_POINT;
+        this.name = new CarName(name);
+        this.distance = new CarDistance(START_POINT);
+    }
+
+    public Car(String name, int distance) {
+        this.name = new CarName(name);
+        this.distance = new CarDistance(distance);
+    }
+
+    public String getName() {
+        return name.getName();
+    }
+
+    public int getDistance() {
+        return distance.getDistance();
     }
 
     public void initialize() {
-        this.distance = START_POINT;
+        this.distance = new CarDistance(START_POINT);
     }
 
-    public CarState runOrStop(int number) {
+    public int runOrStop(int number) {
         if (number < STOP_LOWER_BOUNDARY || number > RUN_UPPER_BOUNDARY) {
             throw new IllegalArgumentException("Random Number should be between 0 to 10.");
         }
 
         if (number >= RUN_LOWER_BOUNDARY) {
-            distance++;
+            distance.increment();
         }
 
-        return new CarState(name, distance);
+        return distance.getDistance();
     }
 
     @Override
@@ -54,6 +75,11 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car(" + this.name + ") → ";
+        return this.name.toString();
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return this.distance.compareTo(car.distance);
     }
 }

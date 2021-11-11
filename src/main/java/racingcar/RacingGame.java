@@ -1,13 +1,12 @@
 package racingcar;
 
-import java.util.List;
 import java.util.stream.IntStream;
 
 import static util.StringUtils.separateStringWithComma;
 
 public class RacingGame {
     private final static int FIRST_ROUND = 1;
-    private final static int ROUND_INCREMENT = 1;
+    private static final int LIMIT_OF_CAR_NAME = 5;
 
     public static void run() {
         InputView inputView = new ConsoleInputView();
@@ -16,28 +15,29 @@ public class RacingGame {
         int numberOfTrials = inputView.getNumberOfTrials();
 
         String[] namesOfCars = separateStringWithComma(identifierOfCars);
+        checkCarNames(namesOfCars);
         CarFactory carFactory = new CarFactory(namesOfCars);
         Cars cars = carFactory.buildCars();
 
         OutputView outputView = new ConsoleOutputView();
 
-        RacingManager racingManager = new RacingManager(cars);
-
         outputView.showOutputMessage();
-        IntStream.rangeClosed(FIRST_ROUND, numberOfTrials - ROUND_INCREMENT)
-                .forEach(roundNumber -> eachRound(outputView, roundNumber, racingManager));
-        List<CarState> resultOfLastRound = eachRound(outputView, numberOfTrials, racingManager);
+        IntStream.rangeClosed(FIRST_ROUND, numberOfTrials)
+                .forEach(roundNumber -> eachRound(outputView, roundNumber, cars));
 
-        WinnerChooser winnerChooser = new WinnerChooser(resultOfLastRound);
-        outputView.showWinners(winnerChooser.chooseWinner());
+        Cars winners = cars.chooseWinner();
+        outputView.showWinners(winners);
     }
 
-    private static List<CarState> eachRound (OutputView outputView, int roundNumber, RacingManager racingManager) {
+    private static void eachRound (OutputView outputView, int roundNumber, Cars cars) {
         outputView.showStartOfRound(roundNumber);
-        List<CarState> progressOfCars = racingManager.progressRound();
-        outputView.showRacing(progressOfCars);
+        cars.progressRound();
+        outputView.showRacing(cars);
         outputView.showEndOfRound(roundNumber);
+    }
 
-        return progressOfCars;
+    private static void checkCarNames(String[] carNames) {
+        if (carNames.length > LIMIT_OF_CAR_NAME)
+            throw new IllegalArgumentException("The Length of Car Name must be below five");
     }
 }

@@ -13,9 +13,8 @@ public class CarFactoryTest {
     void testBuildCars() {
         CarFactory carFactory = new CarFactory(NAMES_OF_CARS);
         Cars cars = carFactory.buildCars();
-        int lengthOfCars = cars.size();
 
-        assertThat(lengthOfCars).isEqualTo(NUMBER_OF_CARS);
+        assertThat(cars.sizeEqualTo(NUMBER_OF_CARS)).isTrue();
         checkExistenceOfCars(cars);
     }
 

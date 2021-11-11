@@ -3,15 +3,29 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static racingcar.RacingCarTestUtil.*;
 
 public class CarsTest {
+    private final String RACER_ONE = "tomo";
+    private final String RACER_TWO = "poby";
+    private final String RACER_THREE = "yong";
+    private final String RACER_FOUR = "crong";
 
-    private Cars cars;
+    private int DISTANCE_OF_RACER_ONE = 3;
+    private int DISTANCE_OF_RACER_TWO = 5;
+    private int DISTANCE_OF_RACER_THREE = 4;
+    private int DISTANCE_OF_RACER_FOUR = 5;
+
+    private int WINNER_COUNT_ONE = 1;
+    private int WINNER_COUNT_TWO = 2;
+
+    private Cars cars = cars = new Cars();;
     private CarFactory carFactory;
+    private Car racerOne = new Car(RACER_ONE, DISTANCE_OF_RACER_ONE);
+    private Car racerTwo = new Car(RACER_TWO, DISTANCE_OF_RACER_TWO);
+    private Car racerThree = new Car(RACER_THREE, DISTANCE_OF_RACER_THREE);
+    private Car racerFour = new Car(RACER_FOUR, DISTANCE_OF_RACER_FOUR);
 
     @BeforeEach
     void setUp() {
@@ -20,9 +34,8 @@ public class CarsTest {
 
     @Test
     void add() {
-        cars = new Cars();
         cars.add(new Car(NAME_OF_CAR));
-        assertThat(cars.size()).isEqualTo(INDICATOR_OF_ONE_CAR);
+        assertThat(cars.sizeEqualTo(INDICATOR_OF_ONE_CAR)).isTrue();
         assertThat(cars.contains(new Car(NAME_OF_CAR))).isTrue();
     }
 
@@ -38,23 +51,44 @@ public class CarsTest {
     }
 
     @Test
-    void stream() {
+    void sizeEqualTo() {
         cars = carFactory.buildCars();
-        AtomicInteger runCount = new AtomicInteger(INITIAL_COUNT);
-        cars.stream().forEach(car -> runCount.incrementAndGet());
-        assertThat(runCount.get()).isEqualTo(NUMBER_OF_CARS);
-    }
-
-    @Test
-    void size() {
-        cars = carFactory.buildCars();
-        assertThat(cars.size()).isEqualTo(NUMBER_OF_CARS);
+        assertThat(cars.sizeEqualTo(NUMBER_OF_CARS)).isTrue();
     }
 
     @Test
     void clear() {
         cars = carFactory.buildCars();
         cars.clear();
-        assertThat(cars.size()).isEqualTo(INDICATOR_OF_ZERO_CAR);
+        assertThat(cars.sizeEqualTo(INDICATOR_OF_ZERO_CAR)).isTrue();
+    }
+
+    @Test
+    void decideSingleWinner() {
+        addThreeRacersWithDifferentDistances();
+
+        Cars winners = cars.chooseWinner();
+
+        assertThat(winners.sizeEqualTo(WINNER_COUNT_ONE)).isTrue();
+        assertThat(winners.contains(racerTwo)).isTrue();
+    }
+
+    @Test
+    void decideMultipleWinners() {
+        addThreeRacersWithDifferentDistances();
+        cars.add(racerFour);
+
+        Cars winners = cars.chooseWinner();
+
+        assertThat(winners.sizeEqualTo(WINNER_COUNT_TWO)).isTrue();
+        assertThat(winners.contains(racerTwo)).isTrue();
+        assertThat(winners.contains(racerFour)).isTrue();
+    }
+
+    private void addThreeRacersWithDifferentDistances() {
+        cars.clear();
+        cars.add(racerOne);
+        cars.add(racerTwo);
+        cars.add(racerThree);
     }
 }

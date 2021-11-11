@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class ConsoleOutputView implements OutputView{
@@ -26,26 +25,26 @@ public class ConsoleOutputView implements OutputView{
     }
 
     @Override
-    public void showRacing(List<CarState> progressOfCars) {
-        progressOfCars.forEach(this::showDistanceOfCar);
+    public void showRacing(Cars cars) {
+        cars.stream().forEach(this::showDistanceOfCar);
     }
 
-    private void showDistanceOfCar(CarState carState) {
+    private void showDistanceOfCar(Car car) {
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.append(carState.getName());
+        stringBuilder.append(car.getName());
         stringBuilder.append(SEPARATOR_OF_CAR_STATE);
-        IntStream.range(STARTING_POINT, carState.getDistance())
+        IntStream.range(STARTING_POINT, car.getDistance())
                 .forEach(i -> stringBuilder.append(PROGRESS_BAR));
 
         System.out.println(stringBuilder);
     }
 
     @Override
-    public void showWinners(List<CarState> winners) {
+    public void showWinners(Cars cars) {
         StringBuilder stringBuilder = new StringBuilder();
 
-        winners.forEach(winner -> {
+        cars.stream().forEach(winner -> {
             stringBuilder.append(winner.getName());
             stringBuilder.append(SEPARATOR_OF_WINNERS);
         });
