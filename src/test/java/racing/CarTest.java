@@ -16,7 +16,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car(0);
+        car = Car.create();
     }
 
     @ParameterizedTest(name = "전진")
@@ -34,7 +34,7 @@ class CarTest {
     @ParameterizedTest(name = "Random value 를 통한 전진 테스트")
     @MethodSource("racing.NumberHelperTest#randomIntegerListProvider")
     void forwardsWithRandom(int random) {
-        boolean isForward = random > 4;
+        boolean isForward = random >= RacingConstant.FORWARD_STANDARD;
         assertThat(car.getInstanceByForward(random).getStep() == 1).isEqualTo(isForward);
     }
 }
