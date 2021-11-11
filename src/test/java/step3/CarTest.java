@@ -13,7 +13,7 @@ public class CarTest {
 
     @BeforeEach
     void init() {
-        car = new Car();
+        car = new Car(new RandomMoveStrategy());
     }
 
     @Test

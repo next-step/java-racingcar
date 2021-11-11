@@ -2,14 +2,10 @@ package step3;
 
 public class Car {
 
-    private int position = 0;
+    private int position;
     private MoveStrategy moveStrategy;
 
-    public int getPosition() {
-        return position;
-    }
-
-    public void setMoveStrategy(MoveStrategy moveStrategy) {
+    public Car(MoveStrategy moveStrategy) {
         this.moveStrategy = moveStrategy;
     }
 

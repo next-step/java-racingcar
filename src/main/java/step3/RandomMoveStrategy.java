@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class RandomMoveStrategy implements MoveStrategy {
 
-    private Random randomGenerator = new Random();
-    private final int RAND_MAX = 10;
-    private final int MOVE_STANDARD = 4;
+    private static Random randomGenerator = new Random();
+    private static final int RAND_MAX = 10;
+    private static final int MOVE_STANDARD = 4;
 
     @Override
     public int move(int position) {
