@@ -20,7 +20,7 @@ public class RacingHistory {
 
     public List<Boolean> getIsTrySuccess(int toIndex) {
         try {
-            return isTrySuccess.subList(FROM_INDEX, toIndex);
+            return new ArrayList<>(isTrySuccess.subList(FROM_INDEX, toIndex));
         } catch (IndexOutOfBoundsException e) {
             throw new RacingHistoryOutBoundException();
         }
