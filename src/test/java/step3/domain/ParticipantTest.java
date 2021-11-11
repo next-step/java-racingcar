@@ -12,9 +12,9 @@ class ParticipantTest {
     @Test
     void 참가자를_생성한다() {
         //given
-        Cars cars = Cars.join(Arrays.asList(Car.create()));
+        String names = "java";
         //when
-        Participant participant = Participant.join(cars);
+        Participant participant = Participant.join(names);
         //then
         assertThat(participant).isNotNull();
     }

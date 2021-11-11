@@ -11,13 +11,13 @@ public class RacingGame {
     private RacingGame() {
     }
 
-    private RacingGame(int round, Participant participant) {
+    private RacingGame(int round, String names) {
         this.round = GameRound.create(round, new RandomIntNumberGenerator());
-        this.participant = participant;
+        this.participant = Participant.join(names);
     }
 
-    public static RacingGame create(int round, Participant participant) {
-        return new RacingGame(round, participant);
+    public static RacingGame create(int round, String names) {
+        return new RacingGame(round, names);
     }
 
     public void start() {
