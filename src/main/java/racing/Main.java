@@ -20,7 +20,7 @@ public class Main {
 
         inputView.printAndInput(scanner);
 
-        Racing racing = new Racing(inputView.getCars(), inputView.getAttempts());
+        Racing racing = new Racing(inputView.getUsers(), inputView.getAttempts());
         racing.play(random);
 
         resultView.print(racing);
