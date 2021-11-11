@@ -1,9 +1,7 @@
 package study;
 
-import com.step3.model.car.Car;
-import com.step3.model.car.Cars;
-import com.step3.model.car.Name;
-import com.step3.model.car.Position;
+import com.step3.model.car.*;
+import com.step3.model.car.strategy.CarMoveStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,15 +15,15 @@ public class CarTest {
     @Test
     @DisplayName("Car class 생성자 test")
     void create() {
-        Car car = new Car(new Name("pobi"), new Position(0));
-        assertThat(car).isEqualTo(new Car(new Name("pobi"), new Position(0)));
+        Car car = new Car(new Name("pobi"), new Position(0), new CarMoveStrategy());
+        assertThat(car).isEqualTo(new Car(new Name("pobi"), new Position(0), new CarMoveStrategy()));
     }
 
     @Test
     @DisplayName("Car move 후 Car class로 return test")
     void move() {
-        Car car = new Car(new Name("pobi"), new Position(0));
-        Car movedCar = new Car(new Name("pobi"), new Position(1));
+        Car car = new Car(new Name("pobi"), new Position(0), new CarMoveStrategy());
+        Car movedCar = new Car(new Name("pobi"), new Position(1), new CarMoveStrategy());
 
         assertThat(car.move(true).getPosition().getValue())
                 .isEqualTo(movedCar.getPosition().getValue());
@@ -44,6 +42,7 @@ public class CarTest {
     }
 
     @Test
+    @DisplayName("자동차 이름 5자 이상 예외처리 test")
     void validateCarName() {
         assertThatThrownBy(() -> new Cars("pobipobi,crong,honux".split(",")))
                 .isInstanceOf(IllegalArgumentException.class)

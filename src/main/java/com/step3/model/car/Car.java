@@ -1,14 +1,16 @@
 package com.step3.model.car;
 
-public class Car {
-    private static final int MOVE_POSSIBLE_BOUND = 4;
+import com.step3.model.car.strategy.MoveStrategy;
 
+public class Car {
     private Name id;
     private Position position;
+    private MoveStrategy moveStrategy;
 
-    public Car(Name id, Position position) {
+    public Car(Name id, Position position, MoveStrategy moveStrategy) {
         this.id = id;
         this.position = position;
+        this.moveStrategy = moveStrategy;
     }
 
     public Car move(boolean isMoved) {
@@ -26,8 +28,8 @@ public class Car {
         return this.id;
     }
 
-    public static boolean isMovePossible(int randomValue) {
-        return randomValue >= MOVE_POSSIBLE_BOUND;
+    public MoveStrategy getMoveStrategy() {
+        return moveStrategy;
     }
 
     @Override
