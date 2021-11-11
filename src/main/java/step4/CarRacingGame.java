@@ -4,16 +4,16 @@ public class CarRacingGame {
 
     private Car[] cars;
 
-    public CarRacingGame(int carCount, String[] carNames) {
-        validate(carCount, carNames);
-        this.cars = new Car[carCount];
+    public CarRacingGame(String[] carNames) {
+        validate(carNames);
+        this.cars = new Car[carNames.length];
         for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car(carNames[i], new RandomMoveStrategy());
         }
     }
 
-    private void validate(int carCount, String[] carNames) {
-        if (carCount <= 0 || carCount != carNames.length) {
+    private void validate(String[] carNames) {
+        if ((carNames == null) || (carNames.length == 0)) {
             throw new IllegalArgumentException();
         }
     }
