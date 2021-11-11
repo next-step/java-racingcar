@@ -8,46 +8,46 @@ import java.util.Random;
 
 public class Racing {
 
-    private final List<Car> carList;
+    private final List<Car> cars;
     private final int tryCount;
     private final Random random = new Random(System.currentTimeMillis());
 
     public Racing(int carCount, int tryCount) {
-        this.carList = new ArrayList<>(makeCar(carCount));
+        this.cars = new ArrayList<>(makeCar(carCount));
         this.tryCount = tryCount;
     }
 
     public Racing(String[] carNames, int tryCount){
-        this.carList = new ArrayList<>(makeCar(carNames));
+        this.cars = new ArrayList<>(makeCar(carNames));
         this.tryCount = tryCount;
     }
 
     public List<Car> makeCar(int carCount) {
-        List<Car> carList = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+            cars.add(new Car());
         }
-        return carList;
+        return cars;
     }
 
     public List<Car> makeCar(String[] carNames) {
-        List<Car> carList = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
         for(String carName: carNames){
-            carList.add(new Car(carName));
+            cars.add(new Car(carName));
         }
-        return carList;
+        return cars;
     }
 
 
     public void goingTry(int number) {
-        for (Car car : carList) {
+        for (Car car : cars) {
             car.increaseState(number);
         }
         OutputView.print(this.result());
     }
 
     public void goingTry() {
-        for (Car car : carList) {
+        for (Car car : cars) {
             car.increaseState(random.nextInt(10));
         }
         OutputView.print(this.result());
@@ -62,13 +62,13 @@ public class Racing {
 
     public String result() {
         StringBuilder result = new StringBuilder();
-        for (Car car : carList) {
+        for (Car car : cars) {
             result.append(car.print()).append("\n");
         }
         return result.toString();
     }
 
-    public List<Car> getCarList() {
-        return carList;
+    public List<Car> getCars() {
+        return cars;
     }
 }

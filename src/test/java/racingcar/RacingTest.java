@@ -25,15 +25,15 @@ public class RacingTest {
     @Test
     @DisplayName("List<Car> 생성 테스트")
     void makeCarTest() {
-        List<Car> carList = racing.makeCar(5);
-        assertThat(carList.size()).isEqualTo(5);
+        List<Car> cars = racing.makeCar(5);
+        assertThat(cars.size()).isEqualTo(5);
     }
 
     @Test
     @DisplayName("random 값이 10일 경우, 자동차들이 1번 움직였을 경우 테스트.")
     void goingTryTest() {
         racing.goingTry(10);
-        for (Car car : racing.getCarList()) {
+        for (Car car : racing.getCars()) {
             assertThat(car.getState()).isEqualTo(1);
         }
     }
@@ -48,11 +48,11 @@ public class RacingTest {
     @DisplayName("이름이 주어진 자동차들 생성 테스트")
     void makeCarWithNameTest() {
         String[] carNames = "pobi,crong,honux".split(",");
-        List<Car> carList = racing.makeCar(carNames);
+        List<Car> cars = racing.makeCar(carNames);
 
-        assertThat(carList.size()).isEqualTo(3);
+        assertThat(cars.size()).isEqualTo(3);
         for (int i = 0; i < carNames.length; i++) {
-            assertThat(carNames[i]).isEqualTo(carList.get(i).getName());
+            assertThat(carNames[i]).isEqualTo(cars.get(i).getName());
         }
     }
 }
