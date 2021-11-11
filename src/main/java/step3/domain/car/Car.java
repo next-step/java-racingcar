@@ -41,7 +41,7 @@ public class Car implements Comparable<Car> {
         if (power >= POWER_BOUND) {
             location.goForward();
         }
-        return new CarSnapshot(location, name);
+        return new CarSnapshot(location.copy(), name);
     }
 
     private void validatePower(Integer power) {

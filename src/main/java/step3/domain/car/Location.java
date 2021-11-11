@@ -40,6 +40,10 @@ public class Location implements Comparable<Location> {
         return location;
     }
 
+    public Location copy() {
+        return new Location(location, DEFAULT_INTERVAL);
+    }
+
     @Override
     public int compareTo(Location other) {
         if (other == null) {

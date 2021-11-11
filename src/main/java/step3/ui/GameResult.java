@@ -4,6 +4,7 @@ import step3.domain.board.CarSnapShots;
 import step3.domain.board.CarSnapshot;
 import step3.domain.board.GameBoard;
 import step3.domain.car.Name;
+import step3.domain.car.Winners;
 
 import java.util.List;
 
@@ -16,13 +17,13 @@ public class GameResult {
     private static final StringBuilder stringBuilder = new StringBuilder();
 
     private final List<CarSnapShots> carSnapShots;
-    private final List<Name> winnerNames;
+    private final Winners winners;
 
-    public GameResult(GameBoard gameBoard, List<Name> winnerNames) {
+    public GameResult(GameBoard gameBoard, Winners winners) {
         checkArgument(gameBoard != null, "gameBoard is required");
-        checkArgument(winnerNames != null, "winnerNames is required");
+        checkArgument(winners != null, "winners is required");
         this.carSnapShots = gameBoard.getCarSnapShots();
-        this.winnerNames = winnerNames;
+        this.winners = winners;
     }
 
     public void showGame() {
@@ -50,7 +51,7 @@ public class GameResult {
     }
 
     private void showWinners() {
-        for (Name name : winnerNames) {
+        for (Name name : winners.getWinnersName()) {
             String stringName = name.getName();
             stringBuilder.append(stringName).append(",");
         }

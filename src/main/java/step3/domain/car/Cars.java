@@ -44,13 +44,12 @@ public class Cars {
         return unmodifiableList(carSnapshots);
     }
 
-    public List<Name> findWinnerNames() {
+    public Winners findWinners() {
         Location winnerLocation = findWinnerLocation();
-        List<Name> names = cars.stream()
+        List<Car> winners = cars.stream()
                 .filter(car -> car.locationEquals(winnerLocation))
-                .map(Car::getName)
                 .collect(toList());
-        return unmodifiableList(names);
+        return new Winners(winners);
     }
 
     private Location findWinnerLocation() {

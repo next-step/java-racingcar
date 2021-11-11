@@ -4,7 +4,7 @@ import step3.domain.board.CarSnapshot;
 import step3.domain.board.GameBoard;
 import step3.domain.car.Cars;
 import step3.domain.car.Name;
-import step3.domain.car.Names;
+import step3.domain.car.Winners;
 import step3.domain.power.Engine;
 import step3.domain.power.RandomEngine;
 
@@ -15,18 +15,19 @@ import static step3.utils.ValidationUtils.checkArgument;
 public class GameDirector {
 
     private static final Engine engine = new RandomEngine();
+    private static final int NAMES_MIN_SIZE = 0;
 
     private final Cars cars;
     private final Round round;
 
-    public GameDirector(Names names, Round round) {
+    public GameDirector(List<Name> names, Round round) {
         checkArguments(names, round);
-        this.cars = names.convertToCar();
+        this.cars = Cars.of(names);
         this.round = round;
     }
 
-    private void checkArguments(Names names, Round round) {
-        checkArgument(names != null, "names is required");
+    private void checkArguments(List<Name> names, Round round) {
+        checkArgument(names != null && names.size() > NAMES_MIN_SIZE, "names is required");
         checkArgument(round != null, "round is required");
     }
 
@@ -44,7 +45,7 @@ public class GameDirector {
         }
     }
 
-    public List<Name> findWinnerNames() {
-        return cars.findWinnerNames();
+    public Winners findWinners() {
+        return cars.findWinners();
     }
 }

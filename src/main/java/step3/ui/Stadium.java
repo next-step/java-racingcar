@@ -3,7 +3,7 @@ package step3.ui;
 import step3.application.GameDirector;
 import step3.application.Round;
 import step3.domain.board.GameBoard;
-import step3.domain.car.Names;
+import step3.domain.car.Name;
 
 import static step3.ui.InputView.getCarNames;
 import static step3.ui.InputView.getRoundCount;
@@ -20,11 +20,11 @@ public class Stadium {
     }
 
     private static GameDirector createGameDirector(String carNames, Integer roundSize) {
-        return new GameDirector(Names.from(carNames), new Round(roundSize));
+        return new GameDirector(Name.listOf(carNames), new Round(roundSize));
     }
 
     private static void showGame(GameBoard gameBoard, GameDirector gameDirector) {
-        GameResult gameResult = new GameResult(gameBoard, gameDirector.findWinnerNames());
+        GameResult gameResult = new GameResult(gameBoard, gameDirector.findWinners());
         gameResult.showGame();
     }
 

@@ -2,7 +2,9 @@ package step3.application;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.car.Names;
+import step3.domain.car.Name;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,7 +22,7 @@ class GameDirectorTest {
         int roundSize = 10;
         String stringNames = createStringNames(carCount);
 
-        Names names = Names.from(stringNames);
+        List<Name> names = Name.listOf(stringNames);
         Round round = new Round(roundSize);
         GameDirector gameDirector = new GameDirector(names, round);
 
