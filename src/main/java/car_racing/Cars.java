@@ -11,13 +11,15 @@ public class Cars {
         carsForGame = createCars(numberOfCars);
     }
 
-    /** Test **/
+    /**
+     * Test
+     **/
     public Cars(List<Car> carsForGame) {
         this.carsForGame = carsForGame;
     }
 
     public void playOneRound() {
-        for(Car car: carsForGame) {
+        for (Car car : carsForGame) {
             car.move();
         }
     }
@@ -32,7 +34,7 @@ public class Cars {
 
     private List<Car> createCars(int numberOfCars) {
         List<Car> cars = new ArrayList<>();
-        for(int carId = 0; carId < numberOfCars; carId++) {
+        for (int carId = 0; carId < numberOfCars; carId++) {
             cars.add(new Car(carId));
         }
         return cars;

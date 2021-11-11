@@ -24,7 +24,7 @@ public class CarRacingResult {
             initCurrResult(cars.numberOfCars());
         }
 
-        for(Car car: cars.getCars()) {
+        for (Car car : cars.getCars()) {
             updateToCurrResult(car);
         }
 
@@ -41,7 +41,7 @@ public class CarRacingResult {
     }
 
     private void updateToFinalResult() {
-        for(StringBuilder result: currResult) {
+        for (StringBuilder result : currResult) {
             finalResult.append(result).append(ONE_ROUND_END_SIGNAL);
         }
         finalResult.append(ONE_ROUND_END_SIGNAL);
@@ -49,7 +49,7 @@ public class CarRacingResult {
 
 
     private void initCurrResult(int numberOfCars) {
-        while (numberOfCars --> 0) {
+        while (numberOfCars-- > 0) {
             currResult.add(new StringBuilder());
         }
     }

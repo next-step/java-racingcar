@@ -13,7 +13,7 @@ public class CarRacingGame {
     }
 
     public CarRacingResult play() {
-        for(int i = 0; i < numberOfRound; i++) {
+        for (int i = 0; i < numberOfRound; i++) {
             racingOneRound();
             updateRacingResult();
         }

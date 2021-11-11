@@ -12,7 +12,9 @@ public class RandomMoveStrategy implements MoveStrategy {
         randomRangeTo = 10;
     }
 
-    /** Test **/
+    /**
+     * Test
+     **/
     public RandomMoveStrategy(int randomRangeFrom, int randomRangeTo) {
         this.randomRangeFrom = randomRangeFrom;
         this.randomRangeTo = randomRangeTo;

@@ -2,8 +2,7 @@ package car_racing;
 
 public enum Status {
     MOVE("-"),
-    STOP("")
-    ;
+    STOP("");
 
     public String signal;
 
