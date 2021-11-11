@@ -26,12 +26,11 @@ public class RacingCarGameResults {
     this.winnerNames = getWinnerNames(racingCars, maxProgress);
   }
 
-  private Integer getMaxProgress(RacingCars racingCars) {
+  private int getMaxProgress(RacingCars racingCars) {
     return racingCars.getRacingCars().stream()
-            .map(RacingCar::getProgress)
-            .sorted(Comparator.reverseOrder())
-            .findFirst()
-            .get();
+            .mapToInt(RacingCar::getProgress)
+            .max()
+            .orElse(0);
   }
 
   private List<String> getWinnerNames(RacingCars racingCars, Integer maxProgress) {
