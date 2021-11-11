@@ -2,6 +2,8 @@ package step2;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,7 +18,7 @@ public class MyNumberTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"", "  "})
+    @NullAndEmptySource
     void 숫자_입력값이_Null_또는_빈공백(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new MyNumber(input);

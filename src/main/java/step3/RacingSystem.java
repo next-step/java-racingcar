@@ -9,10 +9,12 @@ public class RacingSystem {
     private CarGroup carGroup;
 
     public RacingSystem() {
-        InputView inputView = new InputView(new Scanner(System.in));
-        this.carCount = new CarCount(inputView.askCarCount());
-        this.racingCount = new RacingCount(inputView.askRacingCount());
-        this.carGroup = new CarGroup(carCount.count);
+        try (Scanner scanner = new Scanner(System.in)) {
+            InputView inputView = new InputView(scanner);
+            this.carCount = new CarCount(inputView.askCarCount());
+            this.racingCount = new RacingCount(inputView.askRacingCount());
+            this.carGroup = new CarGroup(carCount.count);
+        }
     }
 
     public void racingStart() {

@@ -20,8 +20,9 @@ public class CarGroup {
     }
 
     public void racing() {
+        Random random = new Random();
         for (Car car : cars) {
-            car.move(new Random().nextInt(RANDOM_MAX_INT_VALUE));
+            car.move(random.nextInt(RANDOM_MAX_INT_VALUE));
         }
         ResultView.result(cars);
     }
