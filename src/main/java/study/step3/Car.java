@@ -1,17 +1,22 @@
 package study.step3;
 
-public enum Car {
-    MIN_INPUT_NUMBER(1),
-    MIN_RANDOM_NUMBER(0),
-    MAX_RANDOM_NUMBER(9),
-    MIN_FORWARD_NUMBER(4),
-    MOVE_NUMBER(1);
+public class Car {
+    private int carCount;
+    private int tryCount;
 
-    private int paramNumber;
-
-    Car(int paramNumber) {
-        this.paramNumber = paramNumber;
+    public Car(String carParam, String tryParam){
+        this(Integer.parseInt(carParam), Integer.parseInt(tryParam));
     }
+
+    Car(int carCount, int tryCount) {
+        this.carCount = carCount;
+        this.tryCount = tryCount;
+    }
+
+//    private int parseStringToInt(String param){
+////        param.
+//        return Integer.parseInt(param);
+//    }
 
 //    public String minus;
 //
