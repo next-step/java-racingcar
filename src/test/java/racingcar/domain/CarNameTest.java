@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.CarNameException;
 
 import java.util.stream.Stream;
@@ -43,4 +44,13 @@ class CarNameTest {
     void createExcetionTest(String name) {
         assertThatThrownBy(() -> CarName.from(name)).isInstanceOf(CarNameException.class);
     }
+
+    @ParameterizedTest
+    @DisplayName("CarName 인자 길이가 6 이상 일 때 생성 예외 테스트")
+    @ValueSource(strings = "aaaaaa")
+    void createExcetionByLengthTest(String name) {
+        assertThatThrownBy(() -> CarName.from(name)).isInstanceOf(CarNameException.class);
+    }
+
+
 }
