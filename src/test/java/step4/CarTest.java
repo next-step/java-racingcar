@@ -1,25 +1,24 @@
 package step4;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import step3.Car;
-import step3.RandomMoveStrategy;
 
 public class CarTest {
 
-    private step3.Car car;
+    private Car car;
 
     @BeforeEach
     void init() {
-        car = new Car(new RandomMoveStrategy());
+        car = new Car("kim", new RandomMoveStrategy());
     }
 
     @Test
-    void moveSuccess() {
+    void move() {
         car.move();
         assertThat(car.getPosition()).isIn(Arrays.asList(0, 1));
     }
@@ -31,5 +30,11 @@ public class CarTest {
             int randomNumber = random.nextInt(10);
             assertThat(randomNumber).isIn(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
         }
+    }
+
+    @Test
+    void illegalArgumentBecauseCarNameLengthIsGreaterThan5() {
+        assertThatThrownBy(() -> new Car("abcdef", new RandomMoveStrategy()))
+            .isInstanceOf(IllegalArgumentException.class);
     }
 }

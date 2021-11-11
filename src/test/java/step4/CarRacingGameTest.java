@@ -7,25 +7,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import step3.Car;
-import step3.CarRacingGame;
 
 public class CarRacingGameTest {
 
-    private step3.CarRacingGame carRacingGame;
+    private CarRacingGame carRacingGame;
 
     @BeforeEach
     void init() {
-        carRacingGame = new step3.CarRacingGame(3);
+        carRacingGame = new CarRacingGame(new String[]{"kim", "lee", "park"});
     }
 
     @Test
-    void carCountTest() {
+    void carCount() {
         assertEquals(3, carRacingGame.getCars().length);
     }
 
     @Test
-    void isGameResultValidTest() {
+    void isGameResultValid() {
         final int roundCount = 100;
         for (int i = 1; i <= roundCount; i++) {
             carRacingGame.moveCars();
@@ -39,8 +37,19 @@ public class CarRacingGameTest {
     }
 
     @Test
-    void carRacingGameFailBecauseCarCountIsLessOrEqualsThan0() {
-        assertThatThrownBy(() -> new CarRacingGame(0))
+    void illegalArgumentBecauseCarNamesSizeIsLessOrEqualThan0() {
+        assertThatThrownBy(() -> new CarRacingGame(new String[0]))
             .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void illegalArgumentBecauseCarNamesIsNull() {
+        assertThatThrownBy(() -> new CarRacingGame(null))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void getWinners() {
+        assertEquals(3, carRacingGame.getWinners().length);
     }
 }
