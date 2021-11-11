@@ -55,9 +55,8 @@ public class OutputView {
                 .map(Car::carName)
                 .collect(Collectors.toList());
 
-        System.out.print(String.join(", ", winners));
-
-        System.out.print(WINNERS);
+        newLine();
+        System.out.print(String.join(", ", winners) + WINNERS);
     }
 
     private static void newLine() {
