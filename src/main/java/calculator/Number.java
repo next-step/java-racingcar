@@ -32,4 +32,9 @@ public class Number {
     public int getNumber() {
         return number;
     }
+
+    public boolean isSameValue(Number other) {
+        return this.number == other.number;
+    }
+
 }
