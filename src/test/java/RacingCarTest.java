@@ -11,7 +11,7 @@ public class RacingCarTest {
   @DisplayName("move 전략 리턴값이 true일 때 RacingCar의 progress값에 1이 더해지는지 검증하기 위한 테스트")
   void move() {
     // given
-    RacingCar racingCar = new RacingCar();
+    RacingCar racingCar = createRacingCarForTest();
     int expectedProgress = 1;
 
     // when
@@ -21,11 +21,16 @@ public class RacingCarTest {
     assertThat(racingCar.getProgress()).isEqualTo(expectedProgress);
   }
 
+  private RacingCar createRacingCarForTest() {
+    String name = "car";
+    return new RacingCar(name);
+  }
+
   @Test
   @DisplayName("move 전략 리턴값이 false일 때 RacingCar의 progress값에 1이 더해지지 않고 초기값 0을 가지는지 검증하기 위한 테스트")
   void dontMove() {
     // given
-    RacingCar racingCar = new RacingCar();
+    RacingCar racingCar = createRacingCarForTest();
     int expectedProgress = 0;
 
     // when

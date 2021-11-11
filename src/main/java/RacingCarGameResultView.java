@@ -6,19 +6,19 @@ public class RacingCarGameResultView {
   public static final String PROGRESS_SYMBOL = "-";
   public static final String DELIMITER = Constants.STRING_DELIMITER + " ";
 
-  private RacingCarGame racingCarGame;
+  private RacingCarGameResults racingCarGameResults;
 
-  public RacingCarGameResultView(RacingCarGame racingCarGame) {
-    this.racingCarGame = racingCarGame;
+  public RacingCarGameResultView(RacingCarGameResults racingCarGameResults) {
+    this.racingCarGameResults = racingCarGameResults;
   }
 
   public void showResult() {
-    Map<Integer, List<RacingCarResult>> results = racingCarGame.getResults().getResults();
+    Map<Integer, List<RacingCarResult>> results = racingCarGameResults.getResults();
     results.forEach((round, result) -> {
       showProgress(result);
       System.out.println();
     });
-    showWinnerNames(racingCarGame.getResults());
+    showWinnerNames(racingCarGameResults);
   }
 
   private void showWinnerNames(RacingCarGameResults racingCarGameResults) {
@@ -30,12 +30,12 @@ public class RacingCarGameResultView {
   private void showProgress(List<RacingCarResult> roundResults) {
     roundResults.forEach(result -> {
       System.out.print(String.format("%s : ", result.getName()));
-      String progressExpression = getProgressExpression(result.getProgress());
+      String progressExpression = makeProgressExpression(result.getProgress());
       System.out.println(progressExpression);
     });
   }
 
-  private String getProgressExpression(int progress) {
+  private String makeProgressExpression(int progress) {
     String progressExpression = "";
     for (int i = 0; i < progress; i++) {
       progressExpression += PROGRESS_SYMBOL;
