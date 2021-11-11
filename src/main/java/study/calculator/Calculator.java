@@ -18,21 +18,16 @@ public class Calculator {
 	}
 
 	private static MyNumber calculateFormula(List<String> numbersAndOperators) {
-		MyNumber first = null;
+		MyNumber first = new MyNumber(numbersAndOperators.stream()
+														.findFirst()
+														.orElseThrow(IllegalArgumentException::new)
+									);
 		String operator = "";
-		for (int i = 0; i < numbersAndOperators.size(); i++) {
-
-			if (i == 0) {
-				first = new MyNumber(numbersAndOperators.get(i));
-			}
-			if (i % 2 != 0) {
-				operator = numbersAndOperators.get(i);
-			}
-			if (i != 0 && i % 2 == 0) {
-				MyNumber second = new MyNumber(numbersAndOperators.get(i));
-				Formula formula = new Formula(first, operator, second);
-				first = formula.calculate();
-			}
+		for (int i = 1; i < numbersAndOperators.size(); i+=2) {
+			operator = numbersAndOperators.get(i);
+			MyNumber second = new MyNumber(numbersAndOperators.get(i+1));
+			Formula formula = new Formula(first, operator, second);
+			first = formula.calculate();
 		}
 		return first;
 	}
