@@ -42,12 +42,11 @@ public class StringCalculatorTest {
     }
 
     @Test
-    @DisplayName("나누기 - 0으로 나누기")
+    @DisplayName("나누기 - 0으로 나누기 - IllegalArgumentException 발생")
     void dividedByZero() {
         String expression = "6 / 0";
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            StringCalculator.calculate(expression);
-        });
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> StringCalculator.calculate(expression));
     }
 
     @Test
@@ -61,16 +60,14 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("null 입력 예외")
     void nullExpression() {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            StringCalculator.calculate(null);
-        });
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> StringCalculator.calculate(null));
     }
 
     @Test
     @DisplayName("공백 입력 예외")
     void emptyExpression() {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            StringCalculator.calculate("");
-        });
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> StringCalculator.calculate(""));
     }
 }
