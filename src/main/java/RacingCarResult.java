@@ -8,6 +8,7 @@ public class RacingCarResult {
     this.progress = racingCar.getProgress();
   }
 
+
   public String getName() {
     return name;
   }

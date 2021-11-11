@@ -5,9 +5,7 @@ public class RacingCar {
   private String name;
   private int progress;
 
-  public RacingCar() {
-    this.progress = 0;
-  }
+  private RacingCar() { }
 
   public RacingCar(String name) {
     this.name = substringIfExceedMaxLength(name);
@@ -30,6 +28,7 @@ public class RacingCar {
   private void moveForward() {
     progress++;
   }
+
 
   public int getProgress() {
     return this.progress;
