@@ -1,4 +1,4 @@
-package study.step_2;
+package step_2;
 
 import java.util.function.BiFunction;
 import java.util.stream.Stream;

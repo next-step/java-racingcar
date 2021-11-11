@@ -1,6 +1,8 @@
 package study.step_2;
 
 import org.junit.jupiter.api.Test;
+import step_2.InputNumber;
+import step_2.Operator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
