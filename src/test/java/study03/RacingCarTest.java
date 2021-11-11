@@ -53,7 +53,7 @@ public class RacingCarTest {
         racingCar.fixedMove(0);
         assertThat(track.tracking(0)).isEqualTo("---");
         racingCar.fixedMove(4);
-        assertThat(track.tracking(0)).isEqualTo("----");
+        assertThat(track.trackingAll()).isEqualTo("----");
     }
 
     @Test
