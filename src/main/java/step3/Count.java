@@ -18,6 +18,10 @@ public class Count {
         this.count++;
     }
 
+    public void minusCount() {
+        this.count--;
+    }
+
     public int getCount() {
         return count;
     }
