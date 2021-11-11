@@ -27,4 +27,8 @@ public class CarRacingGame {
             car.move();
         }
     }
+
+    public Car[] getWinners() {
+        return Referee.getWinners(this.cars);
+    }
 }
