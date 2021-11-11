@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static calculator.StringHelper.*;
+
 /**
  * @author han
  */
@@ -22,10 +24,7 @@ public class TextCalculator {
         }
 
         public static Operator getInstance(String input) {
-            if (input == null || input.isEmpty()) {
-                throw new IllegalArgumentException();
-            }
-
+            throwExceptionIfNullOrEmpty(input);
             Operator[] values = Operator.values();
 
             for (Operator o : values) {
@@ -40,57 +39,41 @@ public class TextCalculator {
     private List<String> split;
     private List<Integer> numbers = new ArrayList<>();
     private Operator operator;
+    private Integer result = 0;
 
     public int calculate(String input) {
-        if (isNullOrEmpty(input)) {
-            throw new IllegalArgumentException();
-        }
+        throwExceptionIfNullOrEmpty(input);
 
         this.split = Arrays.asList(input.split(" "));
-        int result = 0;
-
-        for (String s : this.split) {
-            if (isNullOrEmpty(s)) {
-                throw new IllegalArgumentException();
-            }
-
-            setValues(this.split.indexOf(s), s);
-
-            if (shouldCalculation()) {
-                result = calculation();
-                clear();
-                this.numbers.add(result);
-            }
-        }
-        return result;
+        return calculation();
     }
 
-    private Integer calculation() {
-        if (this.numbers == null || this.numbers.size() != 2 || this.operator == null) {
-            throw new IllegalArgumentException();
+    private void calculationWithOperator() {
+        if (!shouldCalculation()) {
+            return;
         }
 
-        Integer result = null;
         Integer a = this.numbers.get(0);
         Integer b = this.numbers.get(1);
 
         switch (this.operator) {
 
             case PLUS:
-                result = Math.addExact(a, b);
+                this.result = Math.addExact(a, b);
                 break;
             case MINUS:
-                result = Math.subtractExact(a ,b);
+                this.result = Math.subtractExact(a ,b);
                 break;
             case MULTIPLICATION:
-                result = Math.multiplyExact(a, b);
+                this.result = Math.multiplyExact(a, b);
                 break;
             case DIVISION:
-                result = Math.floorDiv(a, b);
+                this.result = Math.floorDiv(a, b);
                 break;
         }
 
-        return result;
+        clear();
+        this.numbers.add(this.result);
     }
 
     private boolean shouldCalculation() {
@@ -116,7 +99,18 @@ public class TextCalculator {
         this.operator = Operator.getInstance(input);
     }
 
-    private boolean isNullOrEmpty(String input) {
-        return input == null || input.isEmpty();
+    private int calculation() {
+        if (this.split == null || this.split.size() < 1) {
+            throw new IllegalArgumentException();
+        }
+
+        this.result = 0;
+
+        for (String s : this.split) {
+            throwExceptionIfNullOrEmpty(s);
+            setValues(this.split.indexOf(s), s);
+            calculationWithOperator();
+        }
+        return this.result;
     }
 }
