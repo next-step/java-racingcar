@@ -9,11 +9,14 @@ public class TryCount {
     private static final int COUNT_ONE = 1;
     private static final int COUNT_ZERO = 0;
 
+    private final int finishRound;
+
     private int tryCount;
 
     private TryCount(int tryCount) {
         validateCount(tryCount);
         this.tryCount = tryCount;
+        this.finishRound = tryCount;
     }
 
     private void validateCount(int tryCount) {
@@ -41,6 +44,10 @@ public class TryCount {
         }
     }
 
+    public int currentRound() {
+        return finishRound - tryCount + 1;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -53,4 +60,5 @@ public class TryCount {
     public int hashCode() {
         return Objects.hash(tryCount);
     }
+
 }

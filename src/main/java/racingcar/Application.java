@@ -35,7 +35,6 @@ public class Application {
         }
     }
 
-
     private static TryCount getTryCount() {
         int tryCount = InputView.askTryCount();
 

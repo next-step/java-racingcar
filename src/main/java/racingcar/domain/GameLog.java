@@ -13,4 +13,8 @@ public class GameLog {
     public static GameLog init() {
         return new GameLog();
     }
+
+    public void add(RoundLog roundLog) {
+        roundLogs.add(roundLog);
+    }
 }

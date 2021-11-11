@@ -48,9 +48,13 @@ public class Cars {
         cars.forEach(car -> car.move(movingStrategy.generateNumber()));
     }
 
+    public void recode(int round, GameLog gameLog) {
+        cars.forEach(car -> gameLog.add(RoundLog.of(round, car, car.currentPosition())));
+    }
+
     public List<Integer> carsPosition() {
         List<Integer> carsPosition = new ArrayList<>();
-        cars.forEach(car -> carsPosition.add(car.currentPosition()));
+        cars.forEach(car -> carsPosition.add(car.currentPosition().getPosition()));
 
         return carsPosition;
     }

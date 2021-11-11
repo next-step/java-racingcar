@@ -35,8 +35,8 @@ public class Car {
         }
     }
 
-    public int currentPosition() {
-        return position.getPosition();
+    public Position currentPosition() {
+        return position;
     }
 
     @Override
