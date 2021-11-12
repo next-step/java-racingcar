@@ -1,11 +1,14 @@
 package racing;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * @author han
@@ -36,5 +39,11 @@ class CarTest {
     void forwardsWithRandom(int random) {
         boolean isForward = random >= RacingConstant.FORWARD_STANDARD;
         assertThat(car.getInstanceByForward(random).getStep() == 1).isEqualTo(isForward);
+    }
+
+    @Test
+    @DisplayName("자동차 이름은 5자를 초과할 수 없다")
+    void throwExceptionHasWrongName() {
+        assertThatThrownBy(() -> Car.create("This name Greater than 5")).isInstanceOf(IllegalArgumentException.class);
     }
 }
