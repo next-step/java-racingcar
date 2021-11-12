@@ -6,11 +6,11 @@ import java.util.Collections;
 
 public class ResultView {
 
-    public static final long TIMER = 1000;
-
-    public static final String DASH = "-";
-
-    public static final String EMPTY = "";
+    private static final long TIMER = 1000;
+    private static final String DASH = "-";
+    private static final String EMPTY = "";
+    private static final String DELIMITER = " : ";
+    private static final String WINNER_MESSAGE = "%s가 최종 우승했습니다.";
 
     private final Cars cars;
 
@@ -25,6 +25,8 @@ public class ResultView {
             Thread.sleep(TIMER);
             this.outputCarsHistory(i);
         }
+
+        System.out.println(String.format(WINNER_MESSAGE, cars.getWinners().getCarsName()));
     }
 
     private void outputCarsHistory(Integer toIndex) {
@@ -37,6 +39,7 @@ public class ResultView {
 
     private String carsHistoryToString(Car car, Integer toIndex) {
         Integer count = car.getSuccessCountByIndex(toIndex).intValue();
-        return String.join(EMPTY, Collections.nCopies(count, this.DASH));
+        return car.getName() + DELIMITER + String.join(EMPTY, Collections.nCopies(count, this.DASH));
     }
+
 }

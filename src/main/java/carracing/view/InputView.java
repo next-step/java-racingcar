@@ -1,23 +1,22 @@
 package carracing.view;
 
-import java.util.Scanner;
+import carracing.model.ui.InputDto;
+import carracing.util.InputUtils;
 
 public class InputView {
 
-    private final Scanner scanner;
+    private static final String INPUT_CARS_NAME = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String INPUT_TRY_COUNT = "시도할 회수는 몇회인가요?";
 
-    public InputView() {
-        scanner = new Scanner(System.in);
+    private InputView() {
+
     }
 
-    public Integer inputCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return scanner.nextInt();
-    }
+    public static InputDto getNewCars() {
+        String carsName = InputUtils.getInputString(INPUT_CARS_NAME);
+        Integer tryCount = InputUtils.getInputInteger(INPUT_TRY_COUNT);
 
-    public Integer inputTryCount() {
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        return scanner.nextInt();
+        return InputDto.of(carsName, tryCount);
     }
 
 }

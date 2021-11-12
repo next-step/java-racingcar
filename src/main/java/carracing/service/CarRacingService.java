@@ -1,22 +1,24 @@
 package carracing.service;
 
 import carracing.model.Cars;
+import carracing.model.ui.InputDto;
 
 public class CarRacingService {
 
-    private Cars cars;
-
+    private final Cars cars;
     private final Integer tryCount;
 
-    public CarRacingService(Cars cars, Integer tryCount) {
-        this.cars = cars;
-        this.tryCount = tryCount;
+    public CarRacingService(InputDto dto) {
+        this.cars = Cars.from(dto.getName());
+        this.tryCount = dto.getTryCount();
     }
 
-    public void gameStart() {
+    public Cars gameStart() {
         for (int i = 0; i < tryCount; i++) {
             cars.carsRace();
         }
+
+        return cars;
     }
 
 }
