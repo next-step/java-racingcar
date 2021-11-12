@@ -51,18 +51,21 @@ public class Race {
         return !turn.hasNext();
     }
 
+    public Position maxPosition() {
+        return cars.stream()
+                .map(Car::position)
+                .max(Comparator.naturalOrder())
+                .orElseGet(Position::ofZero);
+    }
+
     public Winners winners() {
         if (!isEnded()) {
             throw new IllegalStateException("the race is not over.");
         }
 
-        final Position maxPosition = cars.stream()
-                .map(Car::position)
-                .max(Comparator.naturalOrder())
-                .orElseGet(Position::ofZero);
-
+        final Position maxPosition = maxPosition();
         return Winners.of(cars.stream()
-                .filter(car -> car.position().equals(maxPosition))
+                .filter(car -> car.isPositionOf(maxPosition))
                 .map(Car::name));
     }
 }

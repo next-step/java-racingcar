@@ -15,6 +15,14 @@ public class Position implements Comparable<Position> {
         return new Position(INITIAL_POSITION);
     }
 
+    public static Position of(int position) {
+        if (position < INITIAL_POSITION) {
+            throw new IllegalArgumentException("invalid position: " + position);
+        }
+
+        return new Position(position);
+    }
+
     public void forward() {
         this.position++;
     }

@@ -24,6 +24,10 @@ public class Car {
         return position;
     }
 
+    public boolean isPositionOf(Position position) {
+        return this.position.equals(position);
+    }
+
     public void attemptToMove() {
         if (movePolicy.needToMove()) {
             position.forward();

@@ -93,6 +93,17 @@ public class RaceTest {
         assertThat(race.isEnded()).isTrue();
     }
 
+    @ParameterizedTest(name = "check max position: {arguments}")
+    @MethodSource("parseValidRaceArguments")
+    public void maxPosition(Cars cars, Turn turn) {
+        final Race race = Race.of(cars, turn);
+        for (int i = 0; !race.isEnded(); i++) {
+            assertThat(race.maxPosition().toInt()).isEqualTo(i);
+            race.process();
+            assertThat(race.maxPosition().toInt()).isEqualTo(i + 1);
+        }
+    }
+
     static Stream<Arguments> parseCheckWinnerArguments() {
         final Car TEST_CAR_0 = Car.of(Name.of("test0"), ALWAYS_MOVE_POLICY);
         final Car TEST_CAR_1 = Car.of(Name.of("test1"), NEVER_MOVE_POLICY);
