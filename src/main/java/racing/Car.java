@@ -36,6 +36,10 @@ public class Car {
         return this;
     }
 
+    public boolean isWinner(int max) {
+        return this.step == max;
+    }
+
     private boolean isForward(int random) {
         return random >= FORWARD_STANDARD;
     }

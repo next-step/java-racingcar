@@ -46,7 +46,7 @@ public class Racing {
         int max = getMaxStep();
 
         return this.cars.stream()
-            .filter(c -> c.getStep() == max)
+            .filter(c -> c.isWinner(max))
             .collect(Collectors.toList());
     }
 
