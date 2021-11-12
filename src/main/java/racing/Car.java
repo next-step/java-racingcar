@@ -1,5 +1,6 @@
 package racing;
 
+import static helper.StringHelper.throwExceptionNullOrLengthGreaterThan;
 import static racing.RacingConstant.*;
 
 /**
@@ -11,6 +12,7 @@ public class Car {
     private final String name;
 
     private Car(int step, String name) {
+        throwExceptionNullOrLengthGreaterThan(name, 5);
         this.step = step;
         this.name = name;
     }
