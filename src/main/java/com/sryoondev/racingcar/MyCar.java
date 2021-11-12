@@ -19,4 +19,8 @@ public class MyCar {
     public void stop() {
         // do nothing
     }
+
+    public void race(int randomNumber) {
+
+    }
 }
