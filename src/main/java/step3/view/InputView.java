@@ -14,4 +14,5 @@ public class InputView {
         int attemptNumber = scanner.nextInt();
         return InputDto.of(carNumber, attemptNumber);
     }
+
 }
