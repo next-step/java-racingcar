@@ -4,9 +4,11 @@ import java.util.Objects;
 
 public class RacingCar {
     private static final int RANDOM_REFERENCE_VALUE = 4;
+    private String carName;
     private int moveCount;
 
-    public RacingCar() {
+    public RacingCar(String carName) {
+        this.carName = carName;
         this.moveCount = 0;
     }
 
@@ -18,6 +20,8 @@ public class RacingCar {
         return moveCount;
     }
 
+    public String getCarName() { return carName; }
+
     public void goOrStopRacing(int randomValue) {
         if (randomValue >= RANDOM_REFERENCE_VALUE)
             this.moveCount++;
@@ -28,11 +32,12 @@ public class RacingCar {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingCar racingCar = (RacingCar) o;
-        return moveCount == racingCar.moveCount;
+        return moveCount == racingCar.moveCount &&
+                Objects.equals(carName, racingCar.carName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(moveCount);
+        return Objects.hash(carName, moveCount);
     }
 }

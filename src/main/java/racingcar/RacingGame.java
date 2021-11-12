@@ -12,32 +12,31 @@ public class RacingGame {
     private static final int RANDOM_BOUND = 10;
 
     public static void main(String[] args)  {
-        InputView innputView;
+        InputView inputView = null;
         try {
-            innputView = new InputView();
+            inputView = new InputView();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
-//        List<RacingCar> racingCarList = makeRacingCars(carInputView);
-
-//        showRacingCars(tryInputView, racingCarList);
+        List<RacingCar> racingCarList = makeRacingCars(inputView);
+        showRacingCars(inputView, racingCarList);
     }
 
-    private static void showRacingCars(InputView tryInputView, List<RacingCar> racingCarList) {
+    private static void showRacingCars(InputView inputView, List<RacingCar> racingCarList) {
         ResultView resultView = new ResultView();
         Random random = new Random();
 
-        for (int i = 0; i < tryInputView.getTryCount(); i++) {
+        for (int i = 0; i < inputView.getTryCount(); i++) {
             goOrStopRacing(racingCarList, random);
             resultView.racingShow(racingCarList);
         }
     }
 
-    private static List<RacingCar> makeRacingCars(InputView carInputView) {
+    private static List<RacingCar> makeRacingCars(InputView inputView) {
         List<RacingCar> racingCarList = new ArrayList<>();
-        for (int i = 0; i < carInputView.getTryCount(); i++) {
-            racingCarList.add(new RacingCar());
+        for (String carName : inputView.getCarNames()) {
+            racingCarList.add(new RacingCar(carName));
         }
         return racingCarList;
     }

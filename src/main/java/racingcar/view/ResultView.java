@@ -22,6 +22,8 @@ public class ResultView {
 
     public String draw(RacingCar racingCar) {
         StringBuilder sb = new StringBuilder();
+        sb.append(racingCar.getCarName());
+        sb.append(" : ");
         for (int i = 0; i < racingCar.getMoveCount(); i ++) {
             sb.append(HYPHEN_SIGN);
         }

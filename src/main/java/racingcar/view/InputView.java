@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
-    private static final String NAME_OF_CAR_MSG = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
-    private static final String NUMBER_OF_TRY_MSG = "시도할 회수는 몇 회 인가요?";
+    private static final String CAR_NAME_INPUT_MSG = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String TRY_NUMBER_INPUT_MSG = "시도할 회수는 몇 회 인가요?";
     private static final String COMMA = ",";
     private static final int CAR_NAME_REFERENCE_VALUE = 5;
     private static final String CAR_NAME_LIMIT_MSG = "자동차 이름은 5자를 초과할 수 없습니다.";
@@ -18,10 +18,10 @@ public class InputView {
     public InputView() throws Exception {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println(NAME_OF_CAR_MSG);
+        System.out.println(CAR_NAME_INPUT_MSG);
         this.carNames = splitAndMakeCarNames(scanner);
 
-        System.out.println(NUMBER_OF_TRY_MSG);
+        System.out.println(TRY_NUMBER_INPUT_MSG);
         this.tryCount = scanner.nextInt();
     }
 
