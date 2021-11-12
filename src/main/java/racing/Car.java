@@ -25,10 +25,6 @@ public class Car {
         return this.name;
     }
 
-    public static Car create() {
-        return new Car(0, "temp");
-    }
-
     public static Car create(String name) {
         return new Car(0, name);
     }
