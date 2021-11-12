@@ -11,12 +11,8 @@ public class Main {
     private static final String DELIMITER = ",";
 
     public static void main(String[] args) {
-        final InputView input = new InputView();
-
-        final String[] names = input.inputCSV("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).", Name.NAME_LIMIT, DELIMITER);
-        final int turns = input.inputPositiveNumber("시도할 회수는 몇 회 인가요?");
-
-        final ResultView result = new ResultView(turns);
+        final String[] names = InputView.inputCSV("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).", Name.NAME_LIMIT, DELIMITER);
+        final int turns = InputView.inputPositiveNumber("시도할 회수는 몇 회 인가요?");
 
         final Collection<Name> nameCollection = Arrays.stream(names)
                 .map(Name::of)
@@ -25,10 +21,10 @@ public class Main {
         final Race race = Race.of(cars, turns);
         while (!race.isEnded()) {
             race.process();
-            result.printResult(race.gameResult());
+            ResultView.printResult(turns, race.gameResult());
         }
 
-        result.printWinners(race.winners()
+        ResultView.printWinners(race.winners()
                 .stream()
                 .map(Name::toString)
                 .collect(Collectors.toList())

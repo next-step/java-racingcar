@@ -6,11 +6,11 @@ import java.util.Scanner;
 public class InputView {
     private static final int VALIDATE_NUMBER = 1;
 
-    private final Scanner scanner = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
 
-    public int inputPositiveNumber(String message) {
+    public static int inputPositiveNumber(String message) {
         System.out.println(message);
-        final int number = scanner.nextInt();
+        final int number = SCANNER.nextInt();
         if (number < VALIDATE_NUMBER) {
             throw new IllegalArgumentException("1 이상의 숫자가 필요");
         }
@@ -18,9 +18,9 @@ public class InputView {
         return number;
     }
 
-    public String[] inputCSV(String message, int limit, String delimiter) {
+    public static String[] inputCSV(String message, int limit, String delimiter) {
         System.out.println(message);
-        final String value = scanner.nextLine();
+        final String value = SCANNER.nextLine();
         if (value.isEmpty()) {
             throw new IllegalArgumentException("input must not be empty.");
         }
