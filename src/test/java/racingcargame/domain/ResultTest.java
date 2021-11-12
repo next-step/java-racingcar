@@ -3,7 +3,6 @@ package racingcargame.domain;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import racingcargame.TestUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +16,8 @@ class ResultTest {
     @MethodSource("provideRacingCars")
     void ofTest(List<RacingCar> racingCars) {
         Result result = Result.of(racingCars);
-        List<String> currentStates = TestUtil.getPrivateField(result, "currentStates");
 
-        assertThat(currentStates.size()).isEqualTo(racingCars.size());
+        assertThat(result.getCurrentStates().size()).isEqualTo(racingCars.size());
     }
 
     private static Stream<Arguments> provideRacingCars() {
