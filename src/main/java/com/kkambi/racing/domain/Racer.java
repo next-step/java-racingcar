@@ -16,7 +16,7 @@ public class Racer {
         }
     }
 
-    public String  getLocation() {
+    public String getLocation() {
         return myCar.getLocation();
     }
 }
