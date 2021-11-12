@@ -21,6 +21,8 @@ public class MyCar {
     }
 
     public void race(int randomNumber) {
-
+        if (randomNumber >= 4) {
+            move();
+        }
     }
 }
