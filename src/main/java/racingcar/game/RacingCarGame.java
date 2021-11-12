@@ -16,8 +16,8 @@ public class RacingCarGame {
     public void start() {
         for(int count = 0; count < this.info.getTryCount() ; count++){
             cars.playGame(this.info.getMoveRule());
-            cars.printRoundResult(info.getResultView());
+            info.getResultView().printRoundResult(cars.getCarList());
         }
-        cars.printWinner(info.getResultView());
+        info.getResultView().printWinner(cars.getCarList());
     }
 }

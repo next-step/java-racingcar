@@ -20,7 +20,7 @@ public class GameInfoGetter {
         String carNamesInput = InputView.getInput("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         List<CarNameInfo> carNames = CarNameInfo.createListFromInput(carNamesInput.split(","));
         CountInfo tryCount = new CountInfo(InputView.getIntValue("시도할 회수는 몇 회 인가요?"));
-        return new CarNamesInputGame(new RandomMoveRule(), new CarNameResultView(), tryCount, carNames);
+        return new CarNamesInputGame(new RandomMoveRule(), new CarNameResultView(new WinnerGetter()), tryCount, carNames);
     }
 
     public static GameInfo carCountGame(){

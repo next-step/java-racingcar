@@ -8,7 +8,7 @@ public class RacingCarApplication {
 
     public static void main(String[] args) {
         try {
-            GameInfo carCountGame = GameInfoGetter.carCountGame(); // 이걸로 기존 게임도 실행 가능
+            //GameInfo carCountGame = GameInfoGetter.carCountGame(); // 이걸로 기존 게임도 실행 가능
             GameInfo carNamesGame = GameInfoGetter.carNamesGame();
             RacingCarGame game = new RacingCarGame(carNamesGame);
             game.start();

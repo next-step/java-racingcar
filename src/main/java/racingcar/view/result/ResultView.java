@@ -5,6 +5,6 @@ import racingcar.domain.Car;
 import java.util.List;
 
 public interface ResultView {
-    void printRoundResult(Car car);
-    void printWinner(List<Car> winners);
+    void printRoundResult(List<Car> carList);
+    void printWinner(List<Car> carList);
 }

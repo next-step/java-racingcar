@@ -42,22 +42,4 @@ public class CarsTest {
         countCars = new Cars(2);
         assertThat(countCars.getCarList().get(0)).isNotSameAs(countCars.getCarList().get(1));
     }
-
-    @Test
-    @DisplayName("우승자 하나 있을 때 정확한 우승자를 가져오는지 테스트")
-    void winnerTest(){
-        nameCars.getCarList().get(0).forward(1);
-        assertThat(nameCars.getWinnerCars().size()).isEqualTo(1);
-        assertThat(nameCars.getWinnerCars().get(0).getPosition()).isEqualTo(1);
-    }
-
-    @Test
-    @DisplayName("우승자 여러명 있을 때 우승자 리스트 가져오는지 테스트")
-    void multipleWinnerTest(){
-        nameCars.getCarList().get(0).forward(1);
-        nameCars.getCarList().get(1).forward(1);
-        assertThat(nameCars.getWinnerCars().size()).isEqualTo(2);
-        assertThat(nameCars.getWinnerCars().get(0).getPosition()).isEqualTo(1);
-        assertThat(nameCars.getWinnerCars().get(1).getPosition()).isEqualTo(1);
-    }
 }

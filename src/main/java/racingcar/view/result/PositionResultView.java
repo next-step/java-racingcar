@@ -7,8 +7,10 @@ import java.util.*;
 public class PositionResultView implements ResultView {
 
     @Override
-    public void printRoundResult(Car car) {
-        System.out.println(car.printPosition());
+    public void printRoundResult(List<Car> carList) {
+        carList.forEach(
+                car -> System.out.println(car.printPosition())
+        );
     }
 
     @Override
