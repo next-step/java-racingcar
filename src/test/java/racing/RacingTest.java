@@ -26,19 +26,6 @@ import static org.junit.jupiter.api.Assertions.assertAll;
  */
 class RacingTest {
 
-    class DeterministicRandom extends Random {
-        int sequentialNum = 0;
-
-        public DeterministicRandom() {
-            super();
-        }
-
-        @Override
-        public int nextInt(int input) {
-            return sequentialNum++;
-        }
-    }
-
     @Test
     @DisplayName(value = "생성")
     void create() {
@@ -55,16 +42,6 @@ class RacingTest {
 
         racing.play(new Random(), new Winner());
         cars.forEach(car -> assertThat(car.getStep()).isGreaterThanOrEqualTo(0));
-    }
-
-    @ParameterizedTest(name = "우승자")
-    @MethodSource("indexCarsAndResultProvider")
-    void winner() {
-        Racing racing = new Racing(getUsers(3), 3);
-        Winner winner = new Winner();
-        racing.play(new DeterministicRandom(), winner);
-        List<Car> winners = winner.getWinners();
-        assertThat(winners).extracting("name").contains("2", "3");
     }
 
     @ParameterizedTest(name = "예상된 랜덤값을 통한 플레이")

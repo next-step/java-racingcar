@@ -1,7 +1,5 @@
 package racing.domain;
 
-import racing.domain.Car;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
