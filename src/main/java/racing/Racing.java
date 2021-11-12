@@ -1,9 +1,11 @@
 package racing;
 
+import helper.NumberHelper;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static racing.NumberHelper.isLessThanOne;
+import static helper.NumberHelper.isLessThanOne;
 
 /**
  * @author han
@@ -15,10 +17,7 @@ public class Racing {
     private Map<Integer, List<Car>> logs = new HashMap<>();
 
     public Racing(List<String> users, int attempts) {
-        if (users == null || isLessThanOne(users.size()) || isLessThanOne(attempts)) {
-            throw new IllegalArgumentException();
-        }
-
+        checkHasProperValues(users, attempts);
         this.cars = createCars(users);
         this.attempts = attempts;
     }
@@ -76,5 +75,11 @@ public class Racing {
             .mapToInt(Car::getStep)
             .max()
             .orElseThrow(NoSuchElementException::new);
+    }
+
+    private void checkHasProperValues(List<String> users, int attempts) {
+        if (users == null || isLessThanOne(users.size()) || isLessThanOne(attempts)) {
+            throw new IllegalArgumentException();
+        }
     }
 }
