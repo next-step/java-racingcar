@@ -5,8 +5,6 @@ import java.util.List;
 
 public class CarRace {
 
-    private static final int CRITERIA = 4;
-
     private final List<Car> cars = new ArrayList<Car>();
 
     public CarRace(int carCount) {
@@ -17,13 +15,7 @@ public class CarRace {
 
     public void race() {
         cars.stream()
-            .forEach(car -> decideToMove(car, RandomUtils.nextInt()));
-    }
-
-    private void decideToMove(Car car, int moveCondition) {
-        if (moveCondition >= CRITERIA) {
-            car.move();
-        }
+            .forEach(car -> car.moveOrStop(RandomUtils.nextInt()));
     }
 
     public List<Car> result() {
