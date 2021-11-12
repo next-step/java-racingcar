@@ -1,3 +1,5 @@
+package com.sryoondev.racingcar;
+
 public class MyOperator {
     String operator;
 

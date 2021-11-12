@@ -1,7 +1,9 @@
+package com.sryoondev.racingcar;
+
 import java.util.Objects;
 
 public class MyNumber {
-    int number;
+    private int number;
 
     public MyNumber(int number) {
         this.number = number;
@@ -12,23 +14,19 @@ public class MyNumber {
     }
 
     public MyNumber plus(MyNumber second) {
-        this.number = this.number + second.number;
-        return this;
+        return new MyNumber(this.number + second.number);
     }
 
     public MyNumber minus(MyNumber second) {
-        this.number = this.number - second.number;
-        return this;
+        return new MyNumber(this.number - second.number);
     }
 
     public MyNumber multiply(MyNumber second) {
-        this.number = this.number * second.number;
-        return this;
+        return new MyNumber(this.number * second.number);
     }
 
     public MyNumber divide(MyNumber second) {
-        this.number = this.number / second.number;
-        return this;
+        return new MyNumber(this.number / second.number);
     }
 
     @Override
