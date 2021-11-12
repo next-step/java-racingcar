@@ -5,33 +5,28 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Race {
-    private static final int MINIMUM_TOTAL_TURN = 1;
-    private static final int INITIAL_TURN = 0;
-
-    private final int totalTurns;
+    private final Turn turn;
     private final Cars cars;
-    private int currentTurn;
 
-    private Race(Cars cars, int totalTurns) {
+    private Race(Cars cars, Turn turns) {
         this.cars = cars;
-        this.currentTurn = INITIAL_TURN;
-        this.totalTurns = totalTurns;
+        this.turn = turns;
     }
 
-    public static Race of(Cars cars, int turn) {
+    public static Race of(Cars cars, Turn turn) {
         if (cars == null) {
-            throw new IllegalArgumentException("cars must not be null: " + cars);
+            throw new IllegalArgumentException("cars cannot be null.");
         }
 
-        if (turn < MINIMUM_TOTAL_TURN) {
-            throw new IllegalArgumentException("invalid number of turns: " + turn);
+        if (turn == null) {
+            throw new IllegalArgumentException("turns cannot be null.");
         }
 
         return new Race(cars, turn);
     }
 
     public int totalTurns() {
-        return totalTurns;
+        return turn.total();
     }
 
     public int numberOfCars() {
@@ -46,14 +41,14 @@ public class Race {
     }
 
     public void process() {
-        if (currentTurn < totalTurns) {
+        if (turn.hasNext()) {
             cars.forEach(Car::attemptToMove);
-            currentTurn++;
+            turn.next();
         }
     }
 
     public boolean isEnded() {
-        return currentTurn >= totalTurns;
+        return !turn.hasNext();
     }
 
     public Winners winners() {
