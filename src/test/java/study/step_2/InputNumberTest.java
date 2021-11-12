@@ -1,7 +1,6 @@
 package study.step_2;
 
 import org.junit.jupiter.api.Test;
-import step_2.InputNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

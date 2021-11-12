@@ -17,4 +17,14 @@ public class RacingCarTest {
 
         assertThat(result).isLessThan(10);
     }
+
+    @Test
+    void test() {
+        Car car = new Car();
+        int numberOfTrial = 5;
+
+        for (int i = 0; i < 5; i++) {
+            car.proceed();
+        }
+    }
 }
