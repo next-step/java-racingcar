@@ -51,15 +51,6 @@ class CarTest {
         assertThat(afterPosition).isEqualTo(beforePosition + 1);
     }
 
-    @Test
-    @DisplayName("nonForward()를 호출하면, 자동차는 이동하지 않는다.")
-    void nonForwardMethodTest() throws NoSuchFieldException, IllegalAccessException {
-        car.nonForward();
-        int afterPosition = getCarPositionByReflection(car);
-
-        assertThat(afterPosition).isEqualTo(beforePosition);
-    }
-
 
     @ValueSource(ints = {-1, -5, 100, 50})
     @ParameterizedTest(name = "[{arguments}] 0 ~ 9 가 아니면, IllegalArgumentException 이 발생한다.")
