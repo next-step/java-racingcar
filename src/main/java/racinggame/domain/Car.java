@@ -2,14 +2,14 @@ package racinggame.domain;
 
 public class Car {
 
-
     private Location location;
+
+    public Car() {
+        this(Location.START_LOCATION);
+    }
 
     public Car(int location) {
         this.location = new Location(location);
-    }
-    public Car() {
-        this.location = new Location();
     }
 
     public void move(State state) {
