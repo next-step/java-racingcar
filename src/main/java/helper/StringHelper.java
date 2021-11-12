@@ -1,7 +1,5 @@
 package helper;
 
-import java.util.Random;
-
 /**
  * @author han
  */
