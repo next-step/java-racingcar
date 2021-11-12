@@ -21,8 +21,9 @@ public class Main {
         inputView.printAndInput(scanner);
 
         Racing racing = new Racing(inputView.getUsers(), inputView.getAttempts());
-        racing.play(random);
+        Winner winner = new Winner();
+        racing.play(random, winner);
 
-        resultView.print(racing);
+        resultView.print(winner);
     }
 }

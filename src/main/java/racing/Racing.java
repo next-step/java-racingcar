@@ -34,12 +34,13 @@ public class Racing {
         return logs;
     }
 
-    public void play(Random random) {
+    public void play(Random random, Winner winner) {
         for (int i = 0; i < this.attempts; i++) {
             List<Car> group = movingCars(random);
             this.cars = group;
-            this.logs.put(i, group);
+            winner.addHistory(i, group);
         }
+        winner.addWinner(getWinners());
     }
 
     public List<Car> getWinners() {

@@ -1,26 +1,32 @@
 package racing.view;
 
 import racing.Car;
-import racing.Racing;
+import racing.Winner;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-import static racing.view.ViewConstant.*;
+import static racing.view.ViewConstant.RESULT_MESSAGE;
+import static racing.view.ViewConstant.WINNER_MESSAGE_SUB_FIX;
 
 /**
  * @author han
  */
 public class ResultView {
 
-    public void print(Racing racing) {
+    public void print(Winner winner) {
         System.out.println(RESULT_MESSAGE);
 
-        for (int i = 0; i < racing.getAttempts(); i++) {
-            List<Car> cars = racing.getLogs().get(i);
+        Set<Integer> keySet = winner.getHistory().keySet();
+        Map<Integer, List<Car>> history = winner.getHistory();
+
+        for (Integer i : keySet) {
+            List<Car> cars = history.get(i);
             printStep(cars);
         }
-        printWinner(racing);
+        printWinner(winner);
     }
 
     private void printStep(List<Car> cars) {
@@ -45,15 +51,16 @@ public class ResultView {
         return sb.toString();
     }
 
-    private void printWinner(Racing racing) {
-        List<Car> winners = racing.getWinners();
+    private void printWinner(Winner winner) {
+        List<Car> winners = winner.getWinners();
         System.out.println(createWinner(winners));
     }
 
     private String createWinner(List<Car> cars) {
         StringBuilder sb = new StringBuilder();
         String winnerNames = getWinnerNames(cars);
-        sb.append(winnerNames + WINNER_MESSAGE_SUB_FIX);
+        sb.append(winnerNames);
+        sb.append(WINNER_MESSAGE_SUB_FIX);
         return sb.toString();
     }
 
