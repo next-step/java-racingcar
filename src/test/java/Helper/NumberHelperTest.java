@@ -1,4 +1,4 @@
-package racing;
+package Helper;
 
 import helper.NumberHelper;
 import org.junit.jupiter.api.DisplayName;
