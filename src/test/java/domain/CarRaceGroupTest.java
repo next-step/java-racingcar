@@ -11,20 +11,21 @@ class CarRaceGroupTest {
 
 	@BeforeEach
 	public void setUp() {
-		carRaceGroup = new CarRaceGroup(new CarCount(3), new CarRaceCount(5));
+		carRaceGroup = new CarRaceGroup(new CarNames("BMW,KIA,HONDA"), new CarPosition("0,1,2"));
 	}
 
 	@Test
-	@DisplayName("자동차 수 * 이동 횟수 만큼 데이터 생성 확인")
+	@DisplayName("자동차 수 만큼 데이터 생성 확인")
 	public void checkCarRaceMoveCount() {
-		assertThat(carRaceGroup.size()).isEqualTo(15);
+		assertThat(carRaceGroup.size()).isEqualTo(3);
 	}
 
 	@Test
-	@DisplayName("랜덤이동 횟수가 입력된 이동 횟수보다 작거나 같아야 한다.")
+	@DisplayName("이동 횟수가 입력된 이동 횟수보다 작거나 같아야 한다.")
 	public void checkRandomMoveCount(){
 		int indexMax = carRaceGroup.size() -1;
-		assertThat(carRaceGroup.carPosition(indexMax)).isBetween(0, 5);
+		assertThat(carRaceGroup.carPosition(indexMax)).isBetween(0, 3);
 	}
+
 
 }

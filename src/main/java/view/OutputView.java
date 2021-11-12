@@ -1,39 +1,49 @@
 package view;
 
-import domain.CarCount;
+import domain.CarRaceCount;
 import domain.CarRaceGroup;
+import domain.Winner;
 
 public class OutputView {
 
-	private static final String RESULT_MESSAGE = "실행 결과";
-	private static final String NEXT_LINE = "\n";
-	private static final String POSITION_MARK = "-";
-	private static final String EMPTY = "";
+    private static final String RESULT_MESSAGE = "실행 결과";
+    private static final String NEXT_LINE = "\n";
+    private static final String POSITION_MARK = "-";
+    private static final String EMPTY = "";
+    private static final String CAR_RACE_RESULT_MESSAGE = "%s : %s \n";
+    private static final String WINNER_MESSAGE = "%s가 최종 우승했습니다.";
 
-	public static void result(CarCount carCount, CarRaceGroup carRaceGroup) {
-		System.out.println(RESULT_MESSAGE);
+    public static void resultCarRace(CarRaceGroup carRaceGroup, CarRaceCount carRaceCount) {
+        System.out.println(RESULT_MESSAGE);
 
-		int carRaceGroupSize = carRaceGroup.size();
-		int carCountSize = carCount.count();
-		for (int i = 0; i < carRaceGroupSize; i++) {
-			System.out.println(changeNumberToHyphen(carRaceGroup.carPosition(i)));
-			printNextLine(i + 1, carCountSize);
-		}
-	}
+        int loopCount = carRaceCount.count();
+        for (int i = 0; i < loopCount; i++) {
+            printCarPosition(carRaceGroup);
+            System.out.print(NEXT_LINE);
+        }
+    }
 
-	private static String changeNumberToHyphen(int loopNumber) {
-		String carLocation = EMPTY;
-		for (int i = 0; i < loopNumber; i++) {
-			carLocation += POSITION_MARK;
-		}
+    private static void printCarPosition(CarRaceGroup carRaceGroup) {
+        int carRaceGroupSize = carRaceGroup.size();
+        for (int i = 0; i < carRaceGroupSize; i++) {
+            carRaceGroup.positionPlus(i);
 
-		return carLocation;
-	}
+            System.out.printf(CAR_RACE_RESULT_MESSAGE, carRaceGroup.name(i), changeNumberToHyphen(carRaceGroup.position(i)));
+        }
+    }
 
-	private static void printNextLine(int loopCount, int carCount) {
-		if (loopCount % carCount == 0) {
-			System.out.print(NEXT_LINE);
-		}
-	}
+    private static String changeNumberToHyphen(int loopNumber) {
+        String carLocation = EMPTY;
+        for (int i = 0; i < loopNumber; i++) {
+            carLocation += POSITION_MARK;
+        }
+
+        return carLocation;
+    }
+
+    public static void winner(CarRaceGroup carRaceGroup) {
+        System.out.printf(WINNER_MESSAGE, Winner.winnerName(carRaceGroup));
+        System.out.printf(NEXT_LINE);
+    }
 
 }
