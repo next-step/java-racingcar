@@ -1,19 +1,29 @@
 package step3.domain.car;
 
-import step3.domain.board.RoundBoard;
+import step3.domain.board.CarSnapshot;
 import step3.domain.power.Engine;
 
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Objects;
 
+import static java.util.Collections.unmodifiableList;
+import static java.util.Comparator.reverseOrder;
 import static java.util.stream.Collectors.toList;
 import static step3.utils.ValidationUtils.checkArgument;
 
 public class Cars {
 
-    private static final int DEFAULT_LOCATION = 0;
+    public static final int DEFAULT_LOCATION = 0;
 
     private final List<Car> cars;
+
+    public static Cars of(List<Name> names) {
+        checkArgument(names != null, "names is required");
+        List<Car> cars = names.stream()
+                .map(name -> new Car(Location.placeOn(DEFAULT_LOCATION), name))
+                .collect(toList());
+        return new Cars(cars);
+    }
 
     public Cars(List<Car> cars) {
         checkArguments(cars);
@@ -24,25 +34,43 @@ public class Cars {
         checkArgument(cars != null, "cars is required");
     }
 
-    public static Cars of(Integer carCount) {
-        checkArgument(carCount != null, "carCount is required");
-        List<Car> cars = Stream.generate(() -> new Car(Location.placeOn(DEFAULT_LOCATION)))
-                .limit(carCount)
+    public List<CarSnapshot> go(Engine engine) {
+        List<CarSnapshot> carSnapshots = cars.stream()
+                .map(car -> {
+                    int power = engine.generatePower();
+                    return car.go(power);
+                })
                 .collect(toList());
-        return new Cars(cars);
+        return unmodifiableList(carSnapshots);
     }
 
-    public void go(Engine engine) {
-        cars.forEach(car -> {
-            int power = engine.generatePower();
-            car.go(power);
-        });
+    public Winners findWinners() {
+        Location winnerLocation = findWinnerLocation();
+        List<Car> winners = cars.stream()
+                .filter(car -> car.locationEquals(winnerLocation))
+                .collect(toList());
+        return new Winners(winners);
     }
 
-    public void recordRound(RoundBoard roundBoard) {
-        checkArgument(cars != null, "roundBoard is required");
-        for (Car car : cars) {
-            car.record(roundBoard);
-        }
+    private Location findWinnerLocation() {
+        return cars.stream()
+                .sorted(reverseOrder())
+                .map(Car::getLocation)
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("승자가 없습니다."));
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars1 = (Cars) o;
+        return Objects.equals(cars, cars1.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
     }
 }

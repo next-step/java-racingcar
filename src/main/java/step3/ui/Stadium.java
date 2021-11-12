@@ -3,31 +3,28 @@ package step3.ui;
 import step3.application.GameDirector;
 import step3.application.Round;
 import step3.domain.board.GameBoard;
+import step3.domain.car.Name;
 
-import java.util.Scanner;
+import static step3.ui.InputView.getCarNames;
+import static step3.ui.InputView.getRoundCount;
 
 public class Stadium {
 
-    private static final Scanner SCANNER = new Scanner(System.in);
-
     public static void main(String[] args) {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        Integer carCount = Integer.parseInt(SCANNER.nextLine());
+        String carNames = getCarNames();
+        Integer roundSize = getRoundCount();
 
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        Integer roundSize = Integer.parseInt(SCANNER.nextLine());
-
-        GameBoard gameBoard = playGame(carCount, roundSize);
-        showGame(gameBoard);
+        GameDirector gameDirector = createGameDirector(carNames, roundSize);
+        GameBoard gameBoard = gameDirector.playGame();
+        showGame(gameBoard, gameDirector);
     }
 
-    private static GameBoard playGame(Integer carCount, Integer roundSize) {
-        GameDirector gameDirector = new GameDirector(carCount, new Round(roundSize));
-        return gameDirector.playGame();
+    private static GameDirector createGameDirector(String carNames, Integer roundSize) {
+        return new GameDirector(Name.listOf(carNames), new Round(roundSize));
     }
 
-    private static void showGame(GameBoard gameBoard) {
-        GameResult gameResult = new GameResult(gameBoard);
+    private static void showGame(GameBoard gameBoard, GameDirector gameDirector) {
+        GameResult gameResult = new GameResult(gameBoard, gameDirector.findWinners());
         gameResult.showGame();
     }
 
