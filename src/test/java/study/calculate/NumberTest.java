@@ -59,7 +59,7 @@ public class NumberTest {
         assertThat(result.value()).isEqualTo(expected);
     }
 
-    @DisplayName("0으로 나눴을 때 exception을 발생시킨다")
+    @DisplayName("0으로 나눴을 때 예외를 던진다")
     @ParameterizedTest
     @CsvSource(value = { "4:0", "-2:0", "-9:0" }, delimiter = ':')
     void divideByZero(int firstOperand, int secondOperand) {
