@@ -1,6 +1,7 @@
 package racing.view;
 
 import racing.domain.Car;
+import racing.domain.Winner;
 
 import java.util.List;
 import java.util.Map;

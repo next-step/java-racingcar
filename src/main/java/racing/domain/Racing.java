@@ -1,6 +1,5 @@
 package racing.domain;
 
-import racing.view.Winner;
 import utility.NumberHelper;
 
 import java.util.*;
