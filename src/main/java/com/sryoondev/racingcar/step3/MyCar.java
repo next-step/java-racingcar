@@ -21,8 +21,8 @@ public class MyCar {
         }
     }
 
-    public String printRoute() {
-        return route.printLines();
+    public String getMovement() {
+        return route.getLines();
     }
 
     public int getMoveDistance() {

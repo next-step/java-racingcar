@@ -1,5 +1,7 @@
 package com.sryoondev.racingcar.step3;
 
+import com.sryoondev.racingcar.step3.view.ResultView;
+
 import java.util.ArrayList;
 
 public class MyRacing {
@@ -21,6 +23,7 @@ public class MyRacing {
     public void race() {
         for(MyCar car : myCars) {
             car.race(movableChecker.isMovable());
+            ResultView.draw(car);
         }
     }
 }

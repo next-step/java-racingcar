@@ -17,7 +17,7 @@ public class Route {
         return lines.size();
     }
 
-    public String printLines() {
+    public String getLines() {
         return String.join("", lines);
     }
 }
