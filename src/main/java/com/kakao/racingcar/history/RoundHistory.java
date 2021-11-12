@@ -9,8 +9,6 @@ public class RoundHistory {
     private final int round;
     private final List<CarHistory> carHistories;
 
-    private static final Integer OUT_OF_INDEX = -1;
-
     public RoundHistory(int round, List<CarHistory> carHistories) {
         this.round = round;
         this.carHistories = carHistories;
@@ -25,14 +23,15 @@ public class RoundHistory {
     }
 
     public List<CarHistory> roundWinner() {
-        int maxPosition = carHistories.stream()
-                .map(CarHistory::getPosition)
-                .max(Integer::compareTo)
-                .orElse(OUT_OF_INDEX);
-
         return carHistories.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.isEqualPosition(getMaxPosition()))
                 .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
+    }
+
+    private CarHistory getMaxPosition(){
+        return carHistories.stream()
+                .max(CarHistory::compareTo)
+                .orElse(CarHistory.nonMoveHistory());
     }
 
 }

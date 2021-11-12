@@ -3,13 +3,19 @@ package com.kakao.racingcar.history;
 
 import java.util.Objects;
 
-public class CarHistory {
+public class CarHistory implements Comparable<CarHistory> {
     private final int position;
     private final String userName;
+
+    private static final Integer NON_MOVE_POSITION = -1;
 
     public CarHistory(int position, String userName) {
         this.position = position;
         this.userName = userName;
+    }
+
+    public static CarHistory nonMoveHistory() {
+        return new CarHistory(NON_MOVE_POSITION, "");
     }
 
     public int getPosition() {
@@ -18,6 +24,10 @@ public class CarHistory {
 
     public String getUserName() {
         return userName;
+    }
+
+    public boolean isEqualPosition(CarHistory carHistory) {
+        return this.position == carHistory.position;
     }
 
     @Override
@@ -31,5 +41,10 @@ public class CarHistory {
     @Override
     public int hashCode() {
         return Objects.hash(position, userName);
+    }
+
+    @Override
+    public int compareTo(CarHistory carHistory) {
+        return Integer.compare(this.position, carHistory.position);
     }
 }
