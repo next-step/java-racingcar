@@ -1,6 +1,6 @@
 package racing;
 
-import static helper.StringHelper.throwExceptionNullOrLengthGreaterThan;
+import static utility.StringHelper.throwExceptionNullOrLengthGreaterThan;
 import static racing.RacingConstant.*;
 
 /**

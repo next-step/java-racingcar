@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static helper.StringHelper.*;
+import static utility.StringHelper.*;
 
 /**
  * @author han

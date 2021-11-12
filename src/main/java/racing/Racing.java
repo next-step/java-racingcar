@@ -1,11 +1,11 @@
 package racing;
 
-import helper.NumberHelper;
+import utility.NumberHelper;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static helper.NumberHelper.isLessThanOne;
+import static utility.NumberHelper.isLessThanOne;
 
 /**
  * @author han
