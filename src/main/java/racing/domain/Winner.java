@@ -22,10 +22,6 @@ public class Winner {
        return new Winner(cars, history);
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
     public Map<Integer, List<Car>> getHistory() {
         return history;
     }
