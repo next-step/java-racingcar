@@ -35,15 +35,7 @@ public class Racing {
             this.cars = group;
             winner.addHistory(i, group);
         }
-        winner.addWinner(getWinners());
-    }
-
-    public List<Car> getWinners() {
-        int max = getMaxStep();
-
-        return this.cars.stream()
-            .filter(c -> c.hasEqualTo(max))
-            .collect(Collectors.toList());
+        winner.addCars(this.cars);
     }
 
     private List<Car> createCars(List<String> users) {
@@ -64,13 +56,6 @@ public class Racing {
             group.add(car.getInstanceByForward(value));
         }
         return group;
-    }
-
-    private int getMaxStep() {
-        return this.cars.stream()
-            .mapToInt(Car::getStep)
-            .max()
-            .orElseThrow(NoSuchElementException::new);
     }
 
     private void checkHasProperValues(List<String> users, int attempts) {

@@ -2,22 +2,16 @@ package racing.view;
 
 import racing.domain.Car;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author han
  */
 public class Winner {
 
-    private List<Car> winners = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
     private Map<Integer, List<Car>> history = new HashMap<>();
-
-    public List<Car> getWinners() {
-        return winners;
-    }
 
     public Map<Integer, List<Car>> getHistory() {
         return history;
@@ -27,7 +21,22 @@ public class Winner {
         this.history.put(i, car);
     }
 
-    public void addWinner(List<Car> winners) {
-        this.winners = winners;
+    public void addCars(List<Car> winners) {
+        this.cars = winners;
+    }
+
+    public List<Car> getWinners() {
+        int max = getMaxStep();
+
+        return this.cars.stream()
+            .filter(c -> c.hasEqualTo(max))
+            .collect(Collectors.toList());
+    }
+
+    private int getMaxStep() {
+        return this.cars.stream()
+            .mapToInt(Car::getStep)
+            .max()
+            .orElseThrow(NoSuchElementException::new);
     }
 }

@@ -61,8 +61,9 @@ class RacingTest {
     @MethodSource("indexCarsAndResultProvider")
     void winner() {
         Racing racing = new Racing(getUsers(3), 3);
-        racing.play(new DeterministicRandom(), new Winner());
-        List<Car> winners = racing.getWinners();
+        Winner winner = new Winner();
+        racing.play(new DeterministicRandom(), winner);
+        List<Car> winners = winner.getWinners();
         assertThat(winners).extracting("name").contains("2", "3");
     }
 
