@@ -1,30 +1,33 @@
 package racingcar.domain;
 
 
+import racingcar.strategy.MovingStrategy;
+
 public class Car {
 
-    private static final int UPPER_LIMIT = 4;
     private int state;
+    private String name;
 
     public Car() {
         this.state = 0;
     }
 
-    public void increaseState(int random) {
-        if (random >= UPPER_LIMIT) {
+    public Car(String name) {
+        this.state = 0;
+        this.name = name;
+    }
+
+    public void increaseState(MovingStrategy randomMovingStrategy) {
+        if (randomMovingStrategy.isMove()) {
             this.state++;
         }
     }
 
-    public String print() {
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < this.state; i++) {
-            result.append("-");
-        }
-        return result.toString();
-    }
-
     public int getState() {
         return state;
+    }
+
+    public String getName() {
+        return name;
     }
 }

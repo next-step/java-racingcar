@@ -1,43 +1,61 @@
 package racingcar.domain;
 
+import common.StringValidation;
+import racingcar.strategy.MovingStrategy;
 import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
+import static racingcar.application.CarConstant.*;
 
 public class Racing {
 
-    private final List<Car> carList;
+    private final List<Car> cars;
     private final int tryCount;
-    private final Random random;
+    private final MovingStrategy movingStrategy;
+    private final List<String> winners = new ArrayList<>();
+    private int max = 0;
 
-    public Racing(int carCount, int tryCount) {
-        this.carList = new ArrayList<>(makeCar(carCount));
+
+    public Racing(int carCount, int tryCount, MovingStrategy movingStrategy) {
+        this.cars = new ArrayList<>(makeCar(carCount));
         this.tryCount = tryCount;
-        this.random = new Random(System.currentTimeMillis());
+        this.movingStrategy = movingStrategy;
+    }
+
+    public Racing(String[] carNames, int tryCount, MovingStrategy movingStrategy) throws IllegalArgumentException {
+        this.cars = new ArrayList<>(makeCar(carNames));
+        this.tryCount = tryCount;
+        this.movingStrategy = movingStrategy;
     }
 
     public List<Car> makeCar(int carCount) {
-        List<Car> carList = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+            cars.add(new Car());
         }
-        return carList;
+        return cars;
     }
 
-    public void goingTry(int number) {
-        for (Car car : carList) {
-            car.increaseState(number);
+    public List<Car> makeCar(String[] carNames) throws IllegalArgumentException {
+        StringValidation.isEmptyOrNull(carNames, EXCEPTION_CAR_NAME_IS_EMPTY_OR_NULL);
+        StringValidation.isLimitOver(carNames, CAR_NAME_MAX_LENGTH, EXCEPTION_CAR_NAME_LIMIT_MESSAGE);
+
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
-        OutputView.print(this.result());
+        return cars;
     }
 
     public void goingTry() {
-        for (Car car : carList) {
-            car.increaseState(random.nextInt(10));
+        for (Car car : cars) {
+            car.increaseState(movingStrategy);
+            max = Math.max(car.getState(), max);
+            OutputView.print(car);
         }
-        OutputView.print(this.result());
+        OutputView.print();
     }
 
     public void start() {
@@ -45,17 +63,31 @@ public class Racing {
         for (int i = 0; i < tryCount; i++) {
             this.goingTry();
         }
+        this.result();
     }
 
-    public String result() {
-        StringBuilder result = new StringBuilder();
-        for (Car car : carList) {
-            result.append(car.print()).append("\n");
+    public void result() {
+        for (Car car : cars) {
+            this.findWinner(car, max);
         }
-        return result.toString();
+        OutputView.print(winners, "가 최종 우승헀습니다.");
     }
 
-    public List<Car> getCarList() {
-        return carList;
+    private void findWinner(Car car, int max) {
+        if (car.getState() == max) {
+            this.winners.add(car.getName());
+        }
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    public List<String> getWinners() {
+        return winners;
     }
 }
