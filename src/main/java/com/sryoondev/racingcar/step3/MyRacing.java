@@ -1,4 +1,4 @@
-package com.sryoondev.racingcar;
+package com.sryoondev.racingcar.step3;
 
 import java.util.ArrayList;
 

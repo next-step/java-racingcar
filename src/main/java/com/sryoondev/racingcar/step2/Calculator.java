@@ -1,4 +1,4 @@
-package com.sryoondev.racingcar;
+package com.sryoondev.racingcar.step2;
 
 public class Calculator {
     public static MyNumber calculate(String text) {

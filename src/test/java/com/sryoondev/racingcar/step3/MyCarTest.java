@@ -1,4 +1,4 @@
-package com.sryoondev.racingcar;
+package com.sryoondev.racingcar.step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ public class MyCarTest {
     public void testMove() {
         MyCar myCar = new MyCar();
         myCar.move();
-        assertThat(myCar.printRoute()).isEqualTo("-");
+        assertThat(myCar.getMoveDistance()).isEqualTo(1);
     }
 
     @Test
@@ -22,16 +22,16 @@ public class MyCarTest {
     void testStop() {
         MyCar myCar = new MyCar();
         myCar.stop();
-        assertThat(myCar.printRoute()).isEqualTo("");
+        assertThat(myCar.getMoveDistance()).isEqualTo(0);
     }
 
     @ParameterizedTest
     @DisplayName("입력 값에 따라 전진하거나 멈추는지 테스트")
-    @CsvSource(value = {"true,'-'", "false,''"})
-    void testRace(boolean movable, String route) {
+    @CsvSource(value = {"true,1", "false,0"})
+    void testRace(boolean movable, int moveDistance) {
         MyCar myCar = new MyCar();
         myCar.race(movable);
-        assertThat(myCar.printRoute()).isEqualTo(route);
+        assertThat(myCar.getMoveDistance()).isEqualTo(moveDistance);
     }
 
     @ParameterizedTest
