@@ -1,15 +1,17 @@
 package carracing;
 
-import carracing.domain.CarRacingService;
+import carracing.domain.service.FourStandardCarRacingService;
 import carracing.ui.InputView;
 import carracing.ui.ResultView;
 
 public class CarRacingApplication {
 
   public static void main(String[] args) {
-    InputView inputView = new InputView();
-    CarRacingService carRacingService = new CarRacingService(new ResultView());
-    carRacingService.doRacing(inputView.inputNumberOfCar(), inputView.inputTryCount());
-  }
+    InputView inputView = InputView.getInstance();
+    ResultView resultView = ResultView.getInstance();
 
+    FourStandardCarRacingService carRacingService
+            = new FourStandardCarRacingService(inputView.inputNumberOfCar(), inputView.inputTryCount());
+    resultView.printMessage(carRacingService.gameStart());
+  }
 }
