@@ -1,10 +1,11 @@
-package edu.nextstep.camp;
+package edu.nextstep.camp.model.car;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import edu.nextstep.camp.model.car.policy.MovePolicy;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

@@ -1,4 +1,4 @@
-package edu.nextstep.camp;
+package edu.nextstep.camp.model.car;
 
 import org.junit.jupiter.api.Test;
 

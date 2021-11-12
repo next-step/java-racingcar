@@ -1,5 +1,7 @@
-package edu.nextstep.camp;
+package edu.nextstep.camp.model.car;
 
+import edu.nextstep.camp.model.car.policy.MovePolicy;
+import edu.nextstep.camp.model.car.policy.RandomMovePolicy;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;

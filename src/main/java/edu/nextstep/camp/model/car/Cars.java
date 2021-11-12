@@ -1,4 +1,4 @@
-package edu.nextstep.camp;
+package edu.nextstep.camp.model.car;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -7,6 +7,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import edu.nextstep.camp.model.car.policy.MovePolicy;
 
 public class Cars implements Iterable<Car> {
     private static final int MINIMUM_NUMBER_OF_CAR = 1;

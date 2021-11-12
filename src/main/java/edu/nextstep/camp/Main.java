@@ -4,6 +4,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import edu.nextstep.camp.model.car.Cars;
+import edu.nextstep.camp.model.car.Name;
+import edu.nextstep.camp.model.car.policy.RandomMovePolicy;
+import edu.nextstep.camp.model.race.Race;
+import edu.nextstep.camp.model.race.Turn;
 import edu.nextstep.camp.view.InputView;
 import edu.nextstep.camp.view.ResultView;
 

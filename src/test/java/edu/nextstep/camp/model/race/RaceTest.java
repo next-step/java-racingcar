@@ -1,10 +1,13 @@
-package edu.nextstep.camp;
+package edu.nextstep.camp.model.race;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import edu.nextstep.camp.model.car.Car;
+import edu.nextstep.camp.model.car.Cars;
+import edu.nextstep.camp.model.car.Name;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

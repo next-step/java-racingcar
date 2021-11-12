@@ -1,8 +1,12 @@
-package edu.nextstep.camp;
+package edu.nextstep.camp.model.race;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import edu.nextstep.camp.model.car.Car;
+import edu.nextstep.camp.model.car.Cars;
+import edu.nextstep.camp.model.car.Position;
 
 public class Race {
     private final Turn turn;

@@ -1,9 +1,11 @@
-package edu.nextstep.camp;
+package edu.nextstep.camp.model.race;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import edu.nextstep.camp.model.car.Name;
 
 public class Winners {
     private final Collection<Name> winners;

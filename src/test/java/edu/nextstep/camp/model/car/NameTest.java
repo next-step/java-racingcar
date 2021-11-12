@@ -1,4 +1,4 @@
-package edu.nextstep.camp;
+package edu.nextstep.camp.model.car;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;

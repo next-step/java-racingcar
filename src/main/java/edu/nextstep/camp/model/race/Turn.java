@@ -1,4 +1,4 @@
-package edu.nextstep.camp;
+package edu.nextstep.camp.model.race;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

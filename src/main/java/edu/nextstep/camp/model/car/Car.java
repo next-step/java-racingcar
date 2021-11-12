@@ -1,4 +1,6 @@
-package edu.nextstep.camp;
+package edu.nextstep.camp.model.car;
+
+import edu.nextstep.camp.model.car.policy.MovePolicy;
 
 public class Car {
     private final Name name;

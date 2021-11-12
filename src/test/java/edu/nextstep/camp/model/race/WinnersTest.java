@@ -1,9 +1,10 @@
-package edu.nextstep.camp;
+package edu.nextstep.camp.model.race;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import edu.nextstep.camp.model.car.Name;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -1,4 +1,4 @@
-package edu.nextstep.camp;
+package edu.nextstep.camp.model.car;
 
 public class Name {
     public static final int NAME_LIMIT = 5;
