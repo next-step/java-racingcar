@@ -20,8 +20,7 @@ class WinnerTest {
     @MethodSource("racing.RacingTest#indexCarsAndResultProvider")
     void winner() {
         Racing racing = new Racing(Arrays.asList("1", "2", "3"), 3);
-        Winner winner = new Winner();
-        racing.play(new DeterministicRandom(), winner);
+        Winner winner = racing.play(new DeterministicRandom());
         List<Car> winners = winner.getWinners();
         assertThat(winners).extracting("name").contains("2", "3");
     }

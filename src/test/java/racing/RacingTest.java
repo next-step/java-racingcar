@@ -40,7 +40,7 @@ class RacingTest {
         Racing racing = new Racing(getUsers(NumberHelper.getRandomValue(3) + 1), NumberHelper.getRandomValue(5) + 1);
         List<Car> cars = racing.getCars();
 
-        racing.play(new Random(), new Winner());
+        racing.play(new Random());
         cars.forEach(car -> assertThat(car.getStep()).isGreaterThanOrEqualTo(0));
     }
 
@@ -48,8 +48,7 @@ class RacingTest {
     @MethodSource("indexCarsAndResultProvider")
     void playWithExpectedRandomValue(int i, int j, int k) {
         Racing racing = new Racing(getUsers(3), 3);
-        Winner winner = new Winner();
-        racing.play(new DeterministicRandom(), winner);
+        Winner winner = racing.play(new DeterministicRandom());
 
         List<Car> list = winner.getHistory().get(i);
         assertThat(list.get(j).getStep()).isEqualTo(k);
