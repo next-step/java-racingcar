@@ -1,21 +1,15 @@
 package com.sryoondev.racingcar;
 
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 public class MyCar {
     private static final int MOVABLE_THRESHOLD = 4;
+    private Route route;
 
-    private int moveCount = 0;
-
-    public void move() {
-        this.moveCount++;
+    public MyCar() {
+        this.route = new Route();
     }
 
-    public String printRoute() {
-        return IntStream.range(0, moveCount)
-                .mapToObj(i -> "-")
-                .collect(Collectors.joining());
+    public void move() {
+        this.route.moveForward();
     }
 
     public void stop() {
@@ -26,5 +20,13 @@ public class MyCar {
         if (randomNumber >= MOVABLE_THRESHOLD) {
             move();
         }
+    }
+
+    public String printRoute() {
+        return route.printLines();
+    }
+
+    public int getMoveDistance() {
+        return route.getMoveCount();
     }
 }

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -31,5 +32,16 @@ public class MyCarTest {
         MyCar myCar = new MyCar();
         myCar.race(randomNumber);
         assertThat(myCar.printRoute()).isEqualTo(route);
+    }
+
+    @ParameterizedTest
+    @DisplayName("이동거리 테스트")
+    @ValueSource(ints = {3, 10})
+    void testGetMoveDistance(int count) {
+        MyCar myCar = new MyCar();
+        for (int i = 0; i < count; i++) {
+            myCar.move();
+        }
+        assertThat(myCar.getMoveDistance()).isEqualTo(count);
     }
 }
