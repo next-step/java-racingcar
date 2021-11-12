@@ -6,6 +6,12 @@ import java.util.List;
 
 public class ResultView {
     private static final String HYPHEN_SIGN = "-";
+    private static final String RESULT_MSG = "실행 결과";
+
+    public ResultView() {
+        System.out.println();
+        System.out.println(RESULT_MSG);
+    }
 
     public void racingShow(List<RacingCar> racingCarList) {
         for (RacingCar racingCar : racingCarList) {

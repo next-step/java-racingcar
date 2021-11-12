@@ -19,26 +19,32 @@ public class RacingGame {
         InputView carInputView = new InputView(NUMBER_OF_CAR_MSG, scanner);
         InputView tryInputView = new InputView(NUMBER_OF_TRY_MSG, scanner);
 
-        ResultView resultView = new ResultView();
-        System.out.println();
-        System.out.println("실행 결과");
+        List<RacingCar> racingCarList = makeRacingCars(carInputView);
 
-        List<RacingCar> racingCarList = new ArrayList<>();
-        for (int i = 0; i < carInputView.getCount(); i++) {
-            racingCarList.add(new RacingCar());
-        }
+        showRacingCars(tryInputView, racingCarList);
+    }
+
+    private static void showRacingCars(InputView tryInputView, List<RacingCar> racingCarList) {
+        ResultView resultView = new ResultView();
+        Random random = new Random();
 
         for (int i = 0; i < tryInputView.getCount(); i++) {
-            goOrStopRacing(racingCarList);
+            goOrStopRacing(racingCarList, random);
             resultView.racingShow(racingCarList);
         }
     }
 
-    private static void goOrStopRacing(List<RacingCar> racingCarList) {
-        Random random = new Random();
+    private static List<RacingCar> makeRacingCars(InputView carInputView) {
+        List<RacingCar> racingCarList = new ArrayList<>();
+        for (int i = 0; i < carInputView.getCount(); i++) {
+            racingCarList.add(new RacingCar());
+        }
+        return racingCarList;
+    }
+
+    private static void goOrStopRacing(List<RacingCar> racingCarList, Random random) {
         for (RacingCar racingCar : racingCarList) {
             racingCar.goOrStopRacing(random.nextInt(RANDOM_BOUND));
         }
     }
-
 }
