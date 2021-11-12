@@ -1,28 +1,47 @@
 package study.step3;
 
+import java.util.Random;
+
 public class Car {
-    private int carCount;
-    private int tryCount;
+    private int number;
+    private String position;
+    private static String MOVE_CHARACTER = "-";
+    private static int MAX_RANDOM_NUMBER = 10;
+    private static int MIN_FORWARD_NUMBER = 4;
 
-    public Car(String carParam, String tryParam){
-        this(Integer.parseInt(carParam), Integer.parseInt(tryParam));
-    }
 
-    Car(int carCount, int tryCount) {
-        this.carCount = carCount;
-        this.tryCount = tryCount;
-    }
-
-//    private int parseStringToInt(String param){
-////        param.
-//        return Integer.parseInt(param);
+//    static {
+//        ++number;
 //    }
 
-//    public String minus;
-//
-//    Car(int moveSpace, String minus) {
-//        this.moveSpace = moveSpace;
-//        this.minus = minus;
+//    Car() {
+//        ++number;
 //    }
 
+    public Car(int number, String position) {
+        this.number = number;
+        this.position = position;
+    }
+
+    void move(){
+        Random random = new Random();
+        int num = random.nextInt(MAX_RANDOM_NUMBER);
+        if(num >= MIN_FORWARD_NUMBER){
+            this.position = this.position + MOVE_CHARACTER;
+        }
+        System.out.println("Car number : " + this.number
+                + " | random number : "  + num + " | position : "  + position);
+    }
+
+    public String getPosition(){
+        return this.position;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "number=" + number +
+                ", position='" + position + '\'' +
+                '}';
+    }
 }

@@ -1,7 +1,6 @@
 package study.step3;
 
 import org.junit.jupiter.api.Test;
-import study.step3.CarRacing;
 
 /**
  * 기능 요구사항
@@ -50,7 +49,7 @@ import study.step3.CarRacing;
  *  - test (when adding missing tests)
  *  - chore (maintain)
  */
-public class CarRacingTest {
+public class RacingRequestParamTest {
 
     // 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
     // 사용자는 몇 대의 자동차로 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
