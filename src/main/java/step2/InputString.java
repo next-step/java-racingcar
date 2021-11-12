@@ -1,16 +1,14 @@
 package step2;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 class InputString {
     private String[] arr;
+    private static final String delimiter = " ";
 
     static InputString from(String input) {
         checkValidation(input);
         InputString inputString = new InputString();
-        inputString.arr = input.split(" ");
+        inputString.arr = input.split(delimiter);
         return inputString;
     }
 
@@ -23,6 +21,8 @@ class InputString {
         return arr.length;
     }
 
+    private InputString() {
+    }
 
     private static void checkValidation(String str) {
         if (str == null || str.equals("") || str.split(" ").length % 2 == 0) {
