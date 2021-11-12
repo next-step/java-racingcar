@@ -4,6 +4,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class MyCar {
+    private static final int MOVABLE_THRESHOLD = 4;
+
     private int moveCount = 0;
 
     public void move() {
@@ -21,7 +23,7 @@ public class MyCar {
     }
 
     public void race(int randomNumber) {
-        if (randomNumber >= 4) {
+        if (randomNumber >= MOVABLE_THRESHOLD) {
             move();
         }
     }
