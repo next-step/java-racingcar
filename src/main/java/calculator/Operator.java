@@ -10,6 +10,7 @@ public enum Operator {
     MULTIPLE("*", (cal1, cal2) -> new CalNumber(cal1.getNumber() * cal2.getNumber())),
     DIVIDED("/", (cal1, cal2) -> new CalNumber(cal1.getNumber() / cal2.getNumber()));
 
+
     private final String symbol;
     private final BiFunction<CalNumber, CalNumber, CalNumber> calculate;
 

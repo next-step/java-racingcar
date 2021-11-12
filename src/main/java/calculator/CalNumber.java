@@ -18,6 +18,7 @@ public class CalNumber {
         return number;
     }
 
+
     public CalNumber calculate(CalNumber to, String operation) {
         return Operator.of(operation).apply(this, to);
     }
