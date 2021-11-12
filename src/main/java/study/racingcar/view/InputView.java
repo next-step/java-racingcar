@@ -1,4 +1,4 @@
-package study.racingcar;
+package study.racingcar.view;
 
 import java.util.Scanner;
 
@@ -13,12 +13,12 @@ public class InputView {
 	}
 
 	public static int inputCarCountByUser() {
-		System.out.println(CAR_COUNT_MESSAGE) ;
+		System.out.println(CAR_COUNT_MESSAGE);
 		return inputUserCount();
 	}
 
 	public static int inputGameCountByUser() {
-		System.out.println(GAME_COUNT_MESSAGE) ;
+		System.out.println(GAME_COUNT_MESSAGE);
 		return inputUserCount();
 	}
 
@@ -43,6 +43,5 @@ public class InputView {
 			throw new IllegalArgumentException(ONLY_INPUT_NUMBER_MESSAGE);
 		}
 	}
-
 
 }

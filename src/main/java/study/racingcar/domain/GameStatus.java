@@ -1,4 +1,6 @@
-package study.racingcar;
+package study.racingcar.domain;
+
+import study.racingcar.view.ResultView;
 
 public class GameStatus {
 	private final Cars cars;

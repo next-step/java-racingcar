@@ -5,6 +5,10 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import study.racingcar.domain.Car;
+import study.racingcar.domain.Cars;
+import study.racingcar.domain.Game;
+
 public class CarTest {
 
 	//자동차 갯수

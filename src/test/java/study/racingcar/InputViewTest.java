@@ -8,6 +8,8 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import study.racingcar.view.InputView;
+
 public class InputViewTest {
 
 	ByteArrayInputStream bindData;

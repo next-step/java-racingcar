@@ -1,4 +1,10 @@
-package study.racingcar;
+package study.racingcar.controller;
+
+import study.racingcar.domain.Cars;
+import study.racingcar.domain.Game;
+import study.racingcar.domain.GameStatus;
+import study.racingcar.view.InputView;
+import study.racingcar.view.ResultView;
 
 public class GameController {
 

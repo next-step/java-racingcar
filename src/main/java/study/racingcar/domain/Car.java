@@ -1,6 +1,8 @@
-package study.racingcar;
+package study.racingcar.domain;
 
 import java.util.Random;
+
+import study.racingcar.view.ResultView;
 
 public class Car {
 
@@ -16,12 +18,13 @@ public class Car {
 		}
 	}
 
+	public void printRace() {
+		ResultView.printRace(position);
+	}
+
 	private int getRandomNumber() {
 		Random random = new Random();
 		return random.nextInt(10);
 	}
 
-	public void printRace() {
-		ResultView.printRace(position);
-	}
 }
