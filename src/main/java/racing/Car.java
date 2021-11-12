@@ -12,7 +12,7 @@ public class Car {
     private final String name;
 
     private Car(int step, String name) {
-        throwExceptionNullOrLengthGreaterThan(name, 5);
+        throwExceptionNullOrLengthGreaterThan(name, LIMIT_LENGTH_OF_NAME);
         this.step = step;
         this.name = name;
     }
