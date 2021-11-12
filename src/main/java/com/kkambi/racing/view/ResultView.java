@@ -1,14 +1,14 @@
 package com.kkambi.racing.view;
 
-import com.kkambi.racing.domain.Car;
+import com.kkambi.racing.domain.Racer;
 
 import java.util.List;
 
 public class ResultView {
 
-    public void printLocation(List<Car> carList) {
-        for (Car car : carList) {
-            System.out.println(car.getLocation());
+    public void printLocation(List<Racer> racerList) {
+        for (Racer racer : racerList) {
+            System.out.println(racer.getLocation());
         }
         System.out.println();
     }
