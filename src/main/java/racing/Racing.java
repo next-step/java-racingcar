@@ -14,8 +14,6 @@ public class Racing {
     private List<Car> cars;
     private int attempts;
 
-    private Map<Integer, List<Car>> logs = new HashMap<>();
-
     public Racing(List<String> users, int attempts) {
         checkHasProperValues(users, attempts);
         this.cars = createCars(users);
@@ -28,10 +26,6 @@ public class Racing {
 
     public int getAttempts() {
         return attempts;
-    }
-
-    public Map<Integer, List<Car>> getLogs() {
-        return logs;
     }
 
     public void play(Random random, Winner winner) {
