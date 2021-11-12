@@ -4,11 +4,11 @@ import com.sryoondev.racingcar.step3.view.ResultView;
 
 import java.util.ArrayList;
 
-public class MyRacing {
+public class Circuit {
     private MovableChecker movableChecker;
     private ArrayList<MyCar> myCars;
 
-    public MyRacing(int carCount) {
+    public Circuit(int carCount) {
         this.movableChecker = new MovableChecker();
         this.myCars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {

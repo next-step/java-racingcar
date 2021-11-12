@@ -6,12 +6,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class MyRacingTest {
+public class CircuitTest {
     @ParameterizedTest
-    @DisplayName("사용자가 입력한 자동차 수와 시도 횟수 테스트")
+    @DisplayName("사용자가 입력한 자동차 수와 일치한지 테스트")
     @ValueSource(ints = {3, 5})
     public void testGetCarCount(int carCount) {
-        MyRacing myRacing = new MyRacing(carCount);
-        assertThat(myRacing.getCarCount()).isEqualTo(carCount);
+        Circuit circuit = new Circuit(carCount);
+        assertThat(circuit.getCarCount()).isEqualTo(carCount);
     }
 }
