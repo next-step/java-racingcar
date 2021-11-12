@@ -1,6 +1,8 @@
-package racingcar;
+package racingcar.view;
 
-import racingcar.dto.Winners;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.Winners;
 
 import java.util.stream.IntStream;
 

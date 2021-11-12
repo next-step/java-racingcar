@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,8 +7,8 @@ import java.util.stream.IntStream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static racingcar.Car.*;
-import static racingcar.RacingCarTestUtil.NAME_OF_CAR;
+import static racingcar.domain.Car.*;
+import static racingcar.domain.RacingCarTestUtil.NAME_OF_CAR;
 
 public class CarTest {
     private final int INDICATOR_OF_STOP = 0;

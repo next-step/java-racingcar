@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class RacingCarTestUtil {
     public static final String IDENTIFIER_OF_CARS = "pobi, tomo, crong, honux, yong";

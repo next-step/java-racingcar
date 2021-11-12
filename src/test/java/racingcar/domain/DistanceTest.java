@@ -1,9 +1,10 @@
-package racingcar.dto;
+package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Distance;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static racingcar.dto.ComparableConstants.*;
+import static racingcar.domain.ComparableConstants.*;
 
 public class DistanceTest {
     private final int DISTANCE_ONE = 1;

@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.view;
 
-import racingcar.dto.Winners;
+import racingcar.domain.Cars;
+import racingcar.domain.Winners;
 
 public interface OutputView {
     void showOutputMessage();

@@ -1,13 +1,11 @@
-package racingcar;
-
-import racingcar.dto.Winners;
+package racingcar.domain;
 
 import java.rmi.NoSuchObjectException;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static racingcar.dto.ComparableConstants.EQUAL;
+import static racingcar.domain.ComparableConstants.EQUAL;
 
 public class Cars {
     private final Car CAR_AT_THE_START_POINT = new Car();

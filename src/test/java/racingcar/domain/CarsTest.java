@@ -1,11 +1,10 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.dto.Winners;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static racingcar.RacingCarTestUtil.*;
+import static racingcar.domain.RacingCarTestUtil.*;
 
 public class CarsTest {
     private final String RACER_ONE = "tomo";

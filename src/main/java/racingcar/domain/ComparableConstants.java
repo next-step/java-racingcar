@@ -1,4 +1,4 @@
-package racingcar.dto;
+package racingcar.domain;
 
 public class ComparableConstants {
     public static final int GREATER_THAN = 1;

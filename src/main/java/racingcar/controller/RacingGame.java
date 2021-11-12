@@ -1,6 +1,12 @@
-package racingcar;
+package racingcar.controller;
 
-import racingcar.dto.Winners;
+import racingcar.domain.CarFactory;
+import racingcar.domain.Cars;
+import racingcar.domain.Winners;
+import racingcar.view.ConsoleInputView;
+import racingcar.view.ConsoleOutputView;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.stream.IntStream;
 
