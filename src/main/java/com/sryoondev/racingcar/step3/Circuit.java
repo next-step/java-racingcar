@@ -6,22 +6,22 @@ import java.util.ArrayList;
 
 public class Circuit {
     private MovableChecker movableChecker;
-    private ArrayList<MyCar> myCars;
+    private ArrayList<Car> cars;
 
     public Circuit(int carCount) {
         this.movableChecker = new MovableChecker();
-        this.myCars = new ArrayList<>();
+        this.cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            myCars.add(new MyCar());
+            cars.add(new Car());
         }
     }
 
     public int getCarCount() {
-        return myCars.size();
+        return cars.size();
     }
 
     public void race() {
-        for(MyCar car : myCars) {
+        for(Car car : cars) {
             car.race(movableChecker.isMovable());
             ResultView.draw(car);
         }

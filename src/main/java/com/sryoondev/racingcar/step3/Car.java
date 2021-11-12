@@ -1,9 +1,9 @@
 package com.sryoondev.racingcar.step3;
 
-public class MyCar {
+public class Car {
     private final Route route;
 
-    public MyCar() {
+    public Car() {
         this.route = new Route();
     }
 

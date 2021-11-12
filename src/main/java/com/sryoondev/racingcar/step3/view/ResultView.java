@@ -1,7 +1,7 @@
 package com.sryoondev.racingcar.step3.view;
 
+import com.sryoondev.racingcar.step3.Car;
 import com.sryoondev.racingcar.step3.Circuit;
-import com.sryoondev.racingcar.step3.MyCar;
 
 public class ResultView {
     public static void initialize() {
@@ -11,7 +11,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void draw(MyCar car) {
+    public static void draw(Car car) {
         System.out.println(car.getMovement());
     }
 }
