@@ -1,4 +1,4 @@
-package racing;
+package helper;
 
 import java.util.Random;
 
