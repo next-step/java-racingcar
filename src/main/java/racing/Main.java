@@ -1,7 +1,9 @@
 package racing;
 
+import racing.domain.Racing;
 import racing.view.InputView;
 import racing.view.ResultView;
+import racing.view.Winner;
 
 import java.util.Random;
 import java.util.Scanner;
