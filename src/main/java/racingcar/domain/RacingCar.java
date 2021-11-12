@@ -16,6 +16,11 @@ public class RacingCar {
         this.moveCount = moveCount;
     }
 
+    public RacingCar(String carName, int moveCount) {
+        this.carName = carName;
+        this.moveCount = moveCount;
+    }
+
     public int getMoveCount() {
         return moveCount;
     }
