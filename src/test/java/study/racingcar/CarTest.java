@@ -28,4 +28,12 @@ public class CarTest {
 		assertThat(game.countGame()).isEqualTo(gameCount);
 	}
 
+	@Test
+	@DisplayName("자동차 전진")
+	void goCar(){
+		Car car = new Car();
+		car.go();
+		car.printRace();
+	}
+
 }
