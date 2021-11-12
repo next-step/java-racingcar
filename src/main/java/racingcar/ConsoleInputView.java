@@ -3,7 +3,7 @@ package racingcar;
 import java.util.Scanner;
 
 public class ConsoleInputView implements InputView {
-    private static String QUESTION_NUMBER_OF_CARS = "How many cars are?";
+    private static String QUESTION_IDENTIFIER_OF_CARS = "Enter the list of cars (Names are separated with ','): ";
     private static String QUESTION_NUMBER_OF_TRY = "How many trials?";
 
     private final Scanner scanner;
@@ -12,18 +12,18 @@ public class ConsoleInputView implements InputView {
         scanner = new Scanner(System.in);
     }
 
-    public int getNumberOfCars() {
+    public String getIdentifierOfCars() {
         showQuestionOfTheNumberOfCars();
-        return readNumberOfCarsFromInput();
+        return readIdentifierOfCarsFromInput();
     }
 
     private void showQuestionOfTheNumberOfCars() {
-        System.out.println(QUESTION_NUMBER_OF_CARS);
+        System.out.println(QUESTION_IDENTIFIER_OF_CARS);
     }
 
-    private int readNumberOfCarsFromInput() {
+    private String readIdentifierOfCarsFromInput() {
         try {
-            return scanner.nextInt();
+            return scanner.nextLine();
         } catch (Exception e) {
             throw new IllegalArgumentException("Number of Cars must be integer!");
         }

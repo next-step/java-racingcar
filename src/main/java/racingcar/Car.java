@@ -1,36 +1,57 @@
 package racingcar;
 
+import racingcar.dto.Distance;
+import racingcar.dto.Name;
+
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car> {
     public static final int STOP_LOWER_BOUNDARY = 0;
     public static final int RUN_LOWER_BOUNDARY = 4;
     public static final int RUN_UPPER_BOUNDARY = 10;
 
     public static final int START_POINT = 0;
 
-    private final int number;
-    private int distance;
+    private final Name name;
+    private Distance distance;
 
-    Car(int number) {
-        this.number = number;
-        this.distance = START_POINT;
+    public Car() {
+        this.name = new Name("");
+        this.distance = new Distance(START_POINT);
+    }
+
+    public Car(String name) {
+        this.name = new Name(name);
+        this.distance = new Distance(START_POINT);
+    }
+
+    public Car(String name, int distance) {
+        this.name = new Name(name);
+        this.distance = new Distance(distance);
+    }
+
+    public String getName() {
+        return name.getName();
+    }
+
+    public int getDistance() {
+        return distance.getDistance();
     }
 
     public void initialize() {
-        this.distance = 0;
+        this.distance = new Distance(START_POINT);
     }
 
-    public int runOrStop(int randomNumber) {
-        if (randomNumber < STOP_LOWER_BOUNDARY || randomNumber > RUN_UPPER_BOUNDARY) {
+    public int runOrStop(int number) {
+        if (number < STOP_LOWER_BOUNDARY || number > RUN_UPPER_BOUNDARY) {
             throw new IllegalArgumentException("Random Number should be between 0 to 10.");
         }
 
-        if (randomNumber >= RUN_LOWER_BOUNDARY) {
-            distance++;
+        if (number >= RUN_LOWER_BOUNDARY) {
+            distance.increment();
         }
 
-        return distance;
+        return distance.getDistance();
     }
 
     @Override
@@ -44,16 +65,21 @@ public class Car {
         }
 
         Car car = (Car) obj;
-        return number == car.number;
+        return name.equals(car.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number);
+        return Objects.hash(name);
     }
 
     @Override
     public String toString() {
-        return "Car(" + this.number + ") → ";
+        return this.name.toString();
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return this.distance.compareTo(car.distance);
     }
 }

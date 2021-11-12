@@ -1,28 +1,44 @@
 package racingcar;
 
-import java.util.List;
+import racingcar.dto.Winners;
+
 import java.util.stream.IntStream;
 
 public class RacingGame {
+    private final static int FIRST_ROUND = 1;
+
+    private static final String COMMA = ",";
+    private static final String REGEX_WHITESPACE = "\\s+";
+    private static final String EMPTY_STRING = "";
+
     public static void run() {
         InputView inputView = new ConsoleInputView();
 
-        int numberOfCars = inputView.getNumberOfCars();
+        String identifierOfCars = inputView.getIdentifierOfCars();
         int numberOfTrials = inputView.getNumberOfTrials();
 
-        CarFactory carFactory = new CarFactory(numberOfCars);
-        List<Car> cars = carFactory.buildCars();
+        String[] namesOfCars = separateStringWithComma(identifierOfCars);
+        CarFactory carFactory = new CarFactory(namesOfCars);
+        Cars cars = carFactory.buildCars();
 
         OutputView outputView = new ConsoleOutputView();
 
-        RacingManager racingManager = new RacingManager(cars);
+        outputView.showOutputMessage();
+        IntStream.rangeClosed(FIRST_ROUND, numberOfTrials)
+                .forEach(roundNumber -> eachRound(outputView, roundNumber, cars));
 
-        IntStream.rangeClosed(1, numberOfTrials)
-                .forEach(roundNumber -> {
-                    outputView.showStartOfRound(roundNumber);
-                    List<Integer> progressOfCars = racingManager.progressRound();
-                    outputView.showRacing(progressOfCars);
-                    outputView.showEndOfRound(roundNumber);
-                });
+        Winners winners = cars.chooseWinner();
+        outputView.showWinners(winners);
+    }
+
+    private static void eachRound (OutputView outputView, int roundNumber, Cars cars) {
+        outputView.showStartOfRound(roundNumber);
+        cars.progressRound();
+        outputView.showRacing(cars);
+        outputView.showEndOfRound(roundNumber);
+    }
+
+    private static String[] separateStringWithComma(String string) {
+        return string.replaceAll(REGEX_WHITESPACE, EMPTY_STRING).split(COMMA);
     }
 }

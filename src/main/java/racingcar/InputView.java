@@ -1,6 +1,6 @@
 package racingcar;
 
 public interface InputView {
-    int getNumberOfCars();
+    String getIdentifierOfCars();
     int getNumberOfTrials();
 }
