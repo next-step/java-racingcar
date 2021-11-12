@@ -13,4 +13,7 @@ public class CarRacingGame {
 
     }
 
+    public void printFinalResult() {
+    }
+
 }
