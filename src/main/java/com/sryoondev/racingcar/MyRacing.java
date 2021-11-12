@@ -1,16 +1,16 @@
 package com.sryoondev.racingcar;
 
 public class MyRacing {
-    private final int carCount;
+    private MyCar[] myCars;
     private final int racingCount;
 
     public MyRacing(int carCount, int racingCount) {
-        this.carCount = carCount;
+        myCars = new MyCar[carCount];
         this.racingCount = racingCount;
     }
 
     public int getCarCount() {
-        return this.carCount;
+        return myCars.length;
     }
 
     public int getRacingCount() {
