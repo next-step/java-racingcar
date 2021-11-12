@@ -18,14 +18,7 @@ public class ResultView {
 
     public void print(Winner winner) {
         System.out.println(RESULT_MESSAGE);
-
-        Set<Integer> keySet = winner.getHistory().keySet();
-        Map<Integer, List<Car>> history = winner.getHistory();
-
-        for (Integer i : keySet) {
-            List<Car> cars = history.get(i);
-            printStep(cars);
-        }
+        printHistory(winner);
         printWinner(winner);
     }
 
@@ -68,5 +61,14 @@ public class ResultView {
         return cars.stream()
             .map(Car::getName)
             .collect(Collectors.joining(","));
+    }
+
+    private void printHistory(Winner winner) {
+        Set<Integer> keySet = winner.getHistory().keySet();
+        Map<Integer, List<Car>> history = winner.getHistory();
+
+        keySet.stream()
+            .map(history::get)
+            .forEachOrdered(this::printStep);
     }
 }
