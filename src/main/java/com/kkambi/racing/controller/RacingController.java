@@ -2,6 +2,7 @@ package com.kkambi.racing.controller;
 
 import com.kkambi.racing.domain.Car;
 import com.kkambi.racing.domain.CarFactory;
+import com.kkambi.racing.domain.Racer;
 import com.kkambi.racing.view.InputView;
 import com.kkambi.racing.view.TotalView;
 
@@ -11,28 +12,29 @@ import java.util.List;
 public class RacingController {
 
     private final TotalView totalView = new TotalView();
-    private final List<Car> carList = new ArrayList<>();
+    private final List<Racer> racerList = new ArrayList<>();
 
     public void start() {
         InputView.InputCommand inputCommand = totalView.getInput();
 
-        composeCars(inputCommand.getNumberOfCars());
+        composeRacers(inputCommand.getNumberOfCars());
 
-        for (int times = 0; times < inputCommand.getNumberOfAttempts(); times++) {
+        for (int times = 1; times <= inputCommand.getNumberOfAttempts(); times++) {
             moveCars();
-            totalView.printLocation(carList);
+            totalView.printLocation(times, racerList);
         }
     }
 
-    private void composeCars(int numberOfCars) {
+    private void composeRacers(int numberOfCars) {
         for (int i = 0; i < numberOfCars; i++) {
-            carList.add(CarFactory.getCar());
+            Car car = CarFactory.getCar();
+            racerList.add(new Racer(car));
         }
     }
 
     private void moveCars() {
-        for (Car car : carList) {
-            car.attemptToMove();
+        for (Racer racer : racerList) {
+            racer.attemptToMove();
         }
     }
 }
