@@ -4,7 +4,7 @@ import com.kakao.racingcar.history.CarHistory;
 
 public class Car {
     private final UserName userName;
-    private int position = 0;
+    private final Position position = new Position();
     private final MovableStrategy movableStrategy;
 
     public Car(String userName, MovableStrategy movableStrategy) {
@@ -14,9 +14,9 @@ public class Car {
 
     public CarHistory tryMove(int conditionNumber) {
         if (movableStrategy.move(conditionNumber)) {
-            position++;
+            position.moveOne();
         }
-        return new CarHistory(position, userName.toString());
+        return new CarHistory(position.getValue(), userName.getValue());
     }
 
 }

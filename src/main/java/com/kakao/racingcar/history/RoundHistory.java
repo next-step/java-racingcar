@@ -31,7 +31,7 @@ public class RoundHistory {
     private CarHistory getMaxPosition(){
         return carHistories.stream()
                 .max(CarHistory::compareTo)
-                .orElse(CarHistory.nonMoveHistory());
+                .orElse(CarHistory.createNonMoveHistory());
     }
 
 }

@@ -1,20 +1,20 @@
 package com.kakao.racingcar.history;
 
-
 import java.util.Objects;
 
 public class CarHistory implements Comparable<CarHistory> {
-    private final int position;
-    private final String userName;
 
     private static final Integer NON_MOVE_POSITION = -1;
+
+    private final int position;
+    private final String userName;
 
     public CarHistory(int position, String userName) {
         this.position = position;
         this.userName = userName;
     }
 
-    public static CarHistory nonMoveHistory() {
+    public static CarHistory createNonMoveHistory() {
         return new CarHistory(NON_MOVE_POSITION, "");
     }
 

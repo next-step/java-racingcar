@@ -3,6 +3,9 @@ package com.kakao.racingcar.domain.car;
 import java.util.Objects;
 
 public class UserName {
+
+    private final static int USER_NAME_LENGTH_LIMIT = 5;
+
     private final String value;
 
     public UserName(String value) {
@@ -11,13 +14,12 @@ public class UserName {
     }
 
     private void validate(String userName) {
-        if (userName.length() > 5) {
+        if (userName.length() > USER_NAME_LENGTH_LIMIT) {
             throw new IllegalArgumentException("유저 이름은 5자를 넘을 수 없습니다.");
         }
     }
 
-    @Override
-    public String toString() {
+    public String getValue() {
         return value;
     }
 
