@@ -3,12 +3,12 @@ package com.kakao.racingcar.domain.car;
 import com.kakao.racingcar.history.CarHistory;
 
 public class Car {
-    private final String userName;
+    private final UserName userName;
     private int position = 0;
     private final MovableStrategy movableStrategy;
 
     public Car(String userName, MovableStrategy movableStrategy) {
-        this.userName = userName;
+        this.userName = new UserName(userName);
         this.movableStrategy = movableStrategy;
     }
 
@@ -16,7 +16,7 @@ public class Car {
         if (movableStrategy.move(conditionNumber)) {
             position++;
         }
-        return new CarHistory(position, userName);
+        return new CarHistory(position, userName.toString());
     }
 
 }
