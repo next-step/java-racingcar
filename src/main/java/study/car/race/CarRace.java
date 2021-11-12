@@ -2,7 +2,6 @@ package study.car.race;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class CarRace {
 
@@ -18,7 +17,7 @@ public class CarRace {
 
     public void race() {
         cars.stream()
-            .forEach(car -> decideToMove(car, new Random().nextInt()));
+            .forEach(car -> decideToMove(car, RandomUtils.nextInt()));
     }
 
     private void decideToMove(Car car, int moveCondition) {
