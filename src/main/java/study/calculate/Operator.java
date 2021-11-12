@@ -4,22 +4,22 @@ import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Operator {
-    PLUS("+", IntNumber::plus),
-    MINUS("-", IntNumber::minus),
-    TIMES("*", IntNumber::times),
-    DIVIDE("/", IntNumber::divide);
+    PLUS("+", Number::plus),
+    MINUS("-", Number::minus),
+    TIMES("*", Number::times),
+    DIVIDE("/", Number::divide);
 
     private static final String INVALID_OPERATOR_EXCEPTION_MESSAGE = "not supported operator.";
 
     private final String symbol;
-    private BiFunction<IntNumber, IntNumber, IntNumber> operate;
+    private BiFunction<Number, Number, Number> operate;
 
-    Operator(String symbol, BiFunction<IntNumber, IntNumber, IntNumber> operate) {
+    Operator(String symbol, BiFunction<Number, Number, Number> operate) {
         this.symbol = symbol;
         this.operate = operate;
     }
 
-    public IntNumber operate(IntNumber first, IntNumber second) {
+    public Number operate(Number first, Number second) {
         return operate.apply(first, second);
     }
 

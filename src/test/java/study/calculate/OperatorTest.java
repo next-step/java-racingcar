@@ -12,7 +12,7 @@ class OperatorTest {
     @ParameterizedTest
     @CsvSource(value = { "1:2:3", "-1:2:1", "-1:-2:-3" }, delimiter = ':')
     void plus(int firstOperand, int secondOperand, int expected) {
-        IntNumber result = Operator.PLUS.operate(new IntNumber(firstOperand), new IntNumber(secondOperand));
+        Number result = Operator.PLUS.operate(new Number(firstOperand), new Number(secondOperand));
         assertThat(result.value()).isEqualTo(expected);
     }
 
@@ -20,7 +20,7 @@ class OperatorTest {
     @ParameterizedTest
     @CsvSource(value = { "1:2:-1", "-1:2:-3", "-3:-3:0" }, delimiter = ':')
     void minus(int firstOperand, int secondOperand, int expected) {
-        IntNumber result = Operator.MINUS.operate(new IntNumber(firstOperand), new IntNumber(secondOperand));
+        Number result = Operator.MINUS.operate(new Number(firstOperand), new Number(secondOperand));
         assertThat(result.value()).isEqualTo(expected);
     }
 
@@ -28,7 +28,7 @@ class OperatorTest {
     @ParameterizedTest
     @CsvSource(value = { "1:2:2", "-1:2:-2", "-3:-2:6" }, delimiter = ':')
     void times(int firstOperand, int secondOperand, int expected) {
-        IntNumber result = Operator.TIMES.operate(new IntNumber(firstOperand), new IntNumber(secondOperand));
+        Number result = Operator.TIMES.operate(new Number(firstOperand), new Number(secondOperand));
         assertThat(result.value()).isEqualTo(expected);
     }
 
@@ -36,7 +36,7 @@ class OperatorTest {
     @ParameterizedTest
     @CsvSource(value = { "4:2:2", "-2:2:-1", "-9:-3:3" }, delimiter = ':')
     void devidedBy(int firstOperand, int secondOperand, int expected) {
-        IntNumber result = Operator.DIVIDE.operate(new IntNumber(firstOperand), new IntNumber(secondOperand));
+        Number result = Operator.DIVIDE.operate(new Number(firstOperand), new Number(secondOperand));
         assertThat(result.value()).isEqualTo(expected);
     }
 }

@@ -7,10 +7,10 @@ public class Calculator {
     }
 
     public static int calculate(Expression expression) {
-        IntNumber result = new IntNumber(expression.next());
+        Number result = new Number(expression.next());
         while (!expression.isEmpty()) {
             Operator operator = Operator.findBy(expression.next());
-            IntNumber operand = new IntNumber(expression.next());
+            Number operand = new Number(expression.next());
 
             result = operator.operate(result, operand);
         }
