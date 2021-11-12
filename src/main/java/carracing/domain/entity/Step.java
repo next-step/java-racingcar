@@ -11,7 +11,7 @@ public class Step {
   }
 
   public void plus() {
-    step = step.plus();
+    step.plus();
   }
 
   public int getValue() {

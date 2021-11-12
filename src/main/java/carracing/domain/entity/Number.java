@@ -10,12 +10,12 @@ public class Number {
     this.number = number;
   }
 
-  public Number plus() {
-    return new Number(++this.number);
+  public void plus() {
+    ++this.number;
   }
 
-  public Number minus() {
-    return new Number(--this.number);
+  public void minus() {
+    --this.number;
   }
 
   public boolean isGreaterThanZero() {

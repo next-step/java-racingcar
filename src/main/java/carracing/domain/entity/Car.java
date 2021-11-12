@@ -1,46 +1,26 @@
 package carracing.domain.entity;
 
-import carracing.domain.utils.RandomUtils;
+import carracing.domain.dto.RacingData;
+
+import java.util.function.Supplier;
 
 public class Car {
 
-  private static final String bar = "-";
-  private static final String CONSTRUCT_ERROR_MESSAGE = "round가 null입니다.";
-
   private Step nowStep;
-  private Round round;
 
-  public Car(Round round) {
-    if (round == null) {
-      throw new IllegalArgumentException(CONSTRUCT_ERROR_MESSAGE);
-    }
+  public Car() {
     this.nowStep = new Step();
-    this.round = round;
   }
 
-  public void move(int standard) {
-    if (isValidToMove(standard)) {
+  public RacingData move(Supplier<Boolean> isMoved) {
+    if(isMoved.get()) {
       nowStep.plus();
     }
-  }
-
-  private boolean isValidToMove(int standard) {
-    return round.hasMoreChance() && RandomUtils.isGreaterThanOrEquals(standard);
+    return new RacingData(getNowStep());
   }
 
   public int getNowStep() {
     return this.nowStep.getValue();
   }
 
-  public int getRemainRound() {
-    return this.round.getRound();
-  }
-
-  public String toStringOfStep() {
-    StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < nowStep.getValue(); i++) {
-      sb.append(bar);
-    }
-    return sb.toString();
-  }
 }

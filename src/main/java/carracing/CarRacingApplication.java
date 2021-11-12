@@ -1,6 +1,6 @@
 package carracing;
 
-import carracing.domain.service.FourStandardCarRacingService;
+import carracing.domain.service.RandomFourStepRacingService;
 import carracing.ui.InputView;
 import carracing.ui.ResultView;
 
@@ -10,8 +10,8 @@ public class CarRacingApplication {
     InputView inputView = InputView.getInstance();
     ResultView resultView = ResultView.getInstance();
 
-    FourStandardCarRacingService carRacingService
-            = new FourStandardCarRacingService(inputView.inputNumberOfCar(), inputView.inputTryCount());
-    resultView.printMessage(carRacingService.gameStart());
+    RandomFourStepRacingService carRacingService
+            = new RandomFourStepRacingService(inputView.inputNumberOfCar(), inputView.inputTryCount());
+    resultView.printResult(carRacingService.gameStart());
   }
 }

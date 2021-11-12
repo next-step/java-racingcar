@@ -1,7 +1,11 @@
 package carracing.domain.entity;
 
+import carracing.domain.dto.RacingData;
+import carracing.domain.dto.RoundResult;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class Challengers {
 
@@ -18,22 +22,15 @@ public class Challengers {
     challengers.add(car);
   }
 
-  public String toStringOfStep() {
-    StringBuilder sb = new StringBuilder();
-    for (Car car : challengers) {
-      sb.append(car.toStringOfStep()).append(System.lineSeparator());
+  public RoundResult startRound(Supplier<Boolean> isMoved) {
+    List<RacingData> racingDataList = new ArrayList<>();
+    for (Car car : getChallengers()) {
+      racingDataList.add(car.move(isMoved));
     }
-    return sb.toString();
+    return new RoundResult(racingDataList);
   }
 
-  public String startRound(int standard) {
-    for (Car car : challengers) {
-      car.move(standard);
-    }
-    return toStringOfStep();
-  }
-
-  public int getSize() {
-   return this.challengers.size();
+  public List<Car> getChallengers() {
+    return challengers;
   }
 }

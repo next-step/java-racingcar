@@ -9,11 +9,6 @@ import java.util.Scanner;
 public class InputView {
 
   private static InputView instance;
-  private static ResultView resultView;
-
-
-  private Scanner scanner = new Scanner(System.in);
-
 
   private static final String CAR_QUESTION = "자동차 대수는 몇대 인가요?";
   private static final String TRY_QUESTION = "시도할 횟수는 몇 회 인가요?";
@@ -21,9 +16,7 @@ public class InputView {
 
   private static final int ZERO = 0;
 
-  private InputView() {
-    resultView = ResultView.getInstance();
-  }
+  private InputView() {}
 
   public static InputView getInstance() {
     if (instance == null) {
@@ -43,7 +36,7 @@ public class InputView {
   private int inputOperation(String question) {
     int count = ZERO;
     while (!isGreaterThanZero(count)) {
-      resultView.printMessage(question);
+      System.out.println(question);
       count = inputKeyboard();
     }
     return count;
@@ -54,6 +47,7 @@ public class InputView {
   }
 
   private int inputKeyboard() {
+    Scanner scanner = new Scanner(System.in);
     int count = 0;
     try {
       count = scanner.nextInt();
