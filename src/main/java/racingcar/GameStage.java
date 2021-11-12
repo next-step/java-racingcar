@@ -16,8 +16,6 @@ public class GameStage {
     private final List<Car> cars = new ArrayList<>();
     private final GameResult result;
 
-    private final Random random = new Random();
-
     private GameStage(int maxOfRound, int numberOfCars) {
         this.maxOfRound = isPositiveNumber(maxOfRound);
 
@@ -40,11 +38,8 @@ public class GameStage {
 
     private void eachCarAction(int round, int carPosition) {
         Car car = cars.get(carPosition);
-        car.action(getRandomValueInRange());
+        car.action(new Random());
         result.record(round, car.getLocation());
     }
 
-    private int getRandomValueInRange() {
-        return random.nextInt(10);
-    }
 }

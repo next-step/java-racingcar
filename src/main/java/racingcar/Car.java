@@ -2,14 +2,17 @@ package racingcar;
 
 import static java.util.stream.IntStream.range;
 
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Car {
 
     private int position = 0;
 
-    public void action(int num) {
-        Command.of(num).accept(this);
+    public static final int MAX_RANDOM_BOUND = 10;
+
+    public void action(Random random) {
+        Command.of(random.nextInt(MAX_RANDOM_BOUND)).accept(this);
     }
 
     public void forward() {

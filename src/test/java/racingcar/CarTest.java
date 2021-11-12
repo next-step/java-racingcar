@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.lang.reflect.Field;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,18 +25,18 @@ class CarTest {
     }
 
     @ValueSource(ints = {0, 1, 2, 3})
-    @ParameterizedTest(name = "{arguments} 가 입력시, 자동차는 이동하지 않는다.")
+    @ParameterizedTest(name = "{arguments} 입력시, 자동차는 이동하지 않는다.")
     void nonForwardTest(int command) throws Exception {
-        car.action(command);
+        car.action(mockRandomValue(command));
         int afterPosition = getCarPositionByReflection(car);
 
         assertThat(afterPosition).isEqualTo(beforePosition);
     }
 
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    @ParameterizedTest(name = "{arguments} 가 입력시, 자동차는 한칸 전진한다.")
+    @ParameterizedTest(name = "{arguments} 입력시, 자동차는 한칸 전진한다.")
     void forwardTest(int command) throws Exception {
-        car.action(command);
+        car.action(mockRandomValue(command));
         int afterPosition = getCarPositionByReflection(car);
 
         assertThat(afterPosition).isEqualTo(beforePosition + 1);
@@ -63,7 +64,7 @@ class CarTest {
     @ValueSource(ints = {-1, -5, 100, 50})
     @ParameterizedTest(name = "[{arguments}] 0 ~ 9 가 아니면, IllegalArgumentException 이 발생한다.")
     void invalidInputValueIllegalArgumentExceptionTest(int command) {
-        assertThatIllegalArgumentException().isThrownBy(() -> car.action(command));
+        assertThatIllegalArgumentException().isThrownBy(() -> car.action(mockRandomValue(command)));
     }
 
     @ValueSource(ints = {10, 5, 3, 1})
@@ -78,6 +79,15 @@ class CarTest {
             .collect(Collectors.joining());
 
         assertThat(car.getLocation()).isEqualTo(expected);
+    }
+
+    private Random mockRandomValue(int testValue) {
+        return new Random() {
+            @Override
+            public int nextInt(int bound) {
+                return testValue;
+            }
+        };
     }
 
     private int getCarPositionByReflection(Car car)
