@@ -1,43 +1,39 @@
 package com.sryoondev.racingcar;
 
-import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.ArrayList;
 
 public class MyRacing {
     private final int racingCount;
-    private Random movableNumberGenerator;
-    private MyCar[] myCars;
+    private MovableChecker movableChecker;
+    private ArrayList<MyCar> myCars;
 
     public MyRacing(int carCount, int racingCount) {
-        this.myCars = new MyCar[carCount];
-        for (int i = 0; i < carCount; i++) {
-            this.myCars[i] = new MyCar();
-        }
         this.racingCount = racingCount;
-        this.movableNumberGenerator = new Random();
+        this.movableChecker = new MovableChecker();
+        this.myCars = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            myCars.add(new MyCar());
+        }
     }
 
     public int getCarCount() {
-        return myCars.length;
+        return myCars.size();
     }
 
     public int getRacingCount() {
         return this.racingCount;
     }
 
-    public String race() {
-        return Stream.of(myCars)
-                .map(c -> {
-                    c.race(movableNumberGenerator.nextInt(10));
-                    return c.printRoute();
-                }).collect(Collectors.joining("\n"));
+    public ArrayList<MyCar> race() {
+        for(MyCar car : myCars) {
+            car.race(movableChecker.isMovable());
+        }
+        return myCars;
     }
 
-    public String start() {
-        return IntStream.range(0, racingCount)
-                .mapToObj(i -> race())
-                .collect(Collectors.joining("\n\n"));
+    public void start() {
+        for (int i = 0; i < racingCount; i++) {
+            race();
+        }
     }
 }

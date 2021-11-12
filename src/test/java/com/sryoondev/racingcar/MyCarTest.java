@@ -27,10 +27,10 @@ public class MyCarTest {
 
     @ParameterizedTest
     @DisplayName("입력 값에 따라 전진하거나 멈추는지 테스트")
-    @CsvSource(value = {"8,'-'", "2,''", "4,'-'"})
-    void testRace(int randomNumber, String route) {
+    @CsvSource(value = {"true,'-'", "false,''"})
+    void testRace(boolean movable, String route) {
         MyCar myCar = new MyCar();
-        myCar.race(randomNumber);
+        myCar.race(movable);
         assertThat(myCar.printRoute()).isEqualTo(route);
     }
 

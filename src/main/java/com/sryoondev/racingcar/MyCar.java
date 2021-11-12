@@ -1,8 +1,7 @@
 package com.sryoondev.racingcar;
 
 public class MyCar {
-    private static final int MOVABLE_THRESHOLD = 4;
-    private Route route;
+    private final Route route;
 
     public MyCar() {
         this.route = new Route();
@@ -16,8 +15,8 @@ public class MyCar {
         // do nothing
     }
 
-    public void race(int randomNumber) {
-        if (randomNumber >= MOVABLE_THRESHOLD) {
+    public void race(boolean movable) {
+        if (movable) {
             move();
         }
     }
