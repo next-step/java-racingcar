@@ -6,25 +6,28 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class NameTest {
+    private final String TOMO = "tomo";
+    private final String POBI = "pobi";
+    private final String NAME_WHOSE_LENGTH_IS_GREATER_THAN_FIVE = "tomotomo";
 
     @Test
     void testTheSameCarNames() {
-        Name carTomoFirst = new Name("tomo");
-        Name carTomoSecond = new Name("tomo");
+        Name carTomoFirst = new Name(TOMO);
+        Name carTomoSecond = new Name(TOMO);
 
         assertThat(carTomoFirst.equals(carTomoSecond)).isTrue();
     }
 
     @Test
     void testDifferentCarNames() {
-        Name carTomo = new Name("tomo");
-        Name carPobi = new Name("pobi");
+        Name carTomo = new Name(TOMO);
+        Name carPobi = new Name(POBI);
 
         assertThat(carTomo.equals(carPobi)).isFalse();
     }
 
     @Test
     void testNameLengthGreaterThanFive() {
-        assertThatThrownBy(() -> new Name("tomotomo")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Name(NAME_WHOSE_LENGTH_IS_GREATER_THAN_FIVE)).isInstanceOf(IllegalArgumentException.class);
     }
 }

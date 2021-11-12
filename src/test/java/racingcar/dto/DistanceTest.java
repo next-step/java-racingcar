@@ -33,4 +33,13 @@ public class DistanceTest {
 
         assertThat(two.compareTo(twoTheSame)).isEqualTo(EQUAL);
     }
+
+    @Test
+    void testIncrement() {
+        Distance one = new Distance(DISTANCE_ONE);
+        Distance two = new Distance(DISTANCE_TWO);
+        one.increment();
+
+        assertThat(one.compareTo(two)).isEqualTo(EQUAL);
+    }
 }

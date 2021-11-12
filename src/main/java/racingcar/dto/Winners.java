@@ -2,7 +2,6 @@ package racingcar.dto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Winners {
     private final List<String> names;
@@ -15,8 +14,8 @@ public class Winners {
         this.names = winners;
     }
 
-    public Stream<String> stream() {
-        return names.stream();
+    public List<String> provideWinnerNames() {
+        return names;
     }
 
     public boolean sizeEqualTo(int size) {

@@ -46,8 +46,8 @@ public class ConsoleOutputView implements OutputView{
     public void showWinners(Winners winners) {
         StringBuilder stringBuilder = new StringBuilder();
 
-        winners.stream().forEach(winner -> {
-            stringBuilder.append(winner);
+        winners.provideWinnerNames().forEach( name -> {
+            stringBuilder.append(name);
             stringBuilder.append(SEPARATOR_OF_WINNERS);
         });
 
