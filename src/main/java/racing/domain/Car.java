@@ -36,7 +36,7 @@ public class Car {
         return this;
     }
 
-    public boolean isWinner(int max) {
+    public boolean hasEqualTo(int max) {
         return this.step == max;
     }
 

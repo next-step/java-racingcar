@@ -42,7 +42,7 @@ public class Racing {
         int max = getMaxStep();
 
         return this.cars.stream()
-            .filter(c -> c.isWinner(max))
+            .filter(c -> c.hasEqualTo(max))
             .collect(Collectors.toList());
     }
 
