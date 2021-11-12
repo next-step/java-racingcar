@@ -1,7 +1,7 @@
 package study.calculate;
 
 import java.util.Arrays;
-import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 
 public enum Operator {
     PLUS("+", Number::plus),
@@ -12,9 +12,9 @@ public enum Operator {
     private static final String INVALID_OPERATOR_EXCEPTION_MESSAGE = "not supported operator.";
 
     private final String symbol;
-    private BiFunction<Number, Number, Number> operate;
+    private BinaryOperator<Number> operate;
 
-    Operator(String symbol, BiFunction<Number, Number, Number> operate) {
+    Operator(String symbol, BinaryOperator<Number> operate) {
         this.symbol = symbol;
         this.operate = operate;
     }
