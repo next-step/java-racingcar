@@ -33,14 +33,14 @@ public class CarsTest {
     @Test
     public void createFromNames() {
         Cars cars = Cars.of(TEST_NAME_LIST, ALWAYS_MOVE_POLICY);
-        assertThat(cars.list()).hasSameSizeAs(TEST_NAME_LIST);
+        assertThat(cars.collect()).hasSameSizeAs(TEST_NAME_LIST);
     }
 
     @Test
     public void createFromList() {
         List<Car> carList = getTestCars();
         Cars cars = Cars.of(carList);
-        assertThat(cars.list()).hasSameElementsAs(carList);
+        assertThat(cars.collect()).hasSameElementsAs(carList);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class CarsTest {
         final Car TEST_CAR_0 = Car.of(TEST_NAME_LIST.get(0), ALWAYS_MOVE_POLICY);
         final Car TEST_CAR_1 = Car.of(TEST_NAME_LIST.get(1), NEVER_MOVE_POLICY);
         Cars cars = Cars.of(TEST_CAR_0, TEST_CAR_1);
-        assertThat(cars.list()).hasSameElementsAs(List.of(TEST_CAR_0, TEST_CAR_1));
+        assertThat(cars.collect()).hasSameElementsAs(List.of(TEST_CAR_0, TEST_CAR_1));
     }
 
     static Stream<Arguments> parseIllegalArgumentsOfCarList() {

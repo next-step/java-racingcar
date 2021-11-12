@@ -1,6 +1,7 @@
 package edu.nextstep.camp.model.race;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -8,6 +9,7 @@ import java.util.stream.Stream;
 import edu.nextstep.camp.model.car.Car;
 import edu.nextstep.camp.model.car.Cars;
 import edu.nextstep.camp.model.car.Name;
+import edu.nextstep.camp.model.car.Position;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -67,32 +69,35 @@ public class RaceTest {
         assertThatIllegalArgumentException().isThrownBy(() -> Race.of(cars, turn));
     }
 
+    static Collection<Position> expectedPositions(int size, int position) {
+        final Position[] expected = new Position[size];
+        Arrays.fill(expected, Position.of(position));
+        return Arrays.asList(expected);
+    }
+
     @ParameterizedTest(name = "get game result(initial status): {arguments}")
     @MethodSource("parseValidRaceArguments")
     public void gameResult(Cars cars, Turn turn) {
-        final Integer[] expected = new Integer[cars.size()];
-        Arrays.fill(expected, 0);
         final Race race = Race.of(cars, turn);
-        assertThat(race.gameResult()).isEqualTo(Arrays.asList(expected));
+        assertThat(race.gameResult()).hasSameElementsAs(expectedPositions(cars.size(), 0));
     }
 
     @ParameterizedTest(name = "process game during given turns: {arguments}")
     @MethodSource("parseValidRaceArguments")
     public void process(Cars cars, Turn turn) {
         final Race race = Race.of(cars, turn);
-        final Integer[] expected = new Integer[cars.size()];
-        Arrays.fill(expected, turn.total());
+        final Collection<Position> expected = expectedPositions(cars.size(), turn.total());
         assertThat(race.isEnded()).isFalse();
 
         while (!race.isEnded()) {
             race.process();
         }
 
-        assertThat(race.gameResult()).isEqualTo(Arrays.asList(expected));
+        assertThat(race.gameResult()).hasSameElementsAs(expected);
         assertThat(race.isEnded()).isTrue();
 
         race.process();
-        assertThat(race.gameResult()).isEqualTo(Arrays.asList(expected));
+        assertThat(race.gameResult()).hasSameElementsAs(expected);
         assertThat(race.isEnded()).isTrue();
     }
 

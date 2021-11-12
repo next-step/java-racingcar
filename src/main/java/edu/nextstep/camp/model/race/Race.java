@@ -1,7 +1,7 @@
 package edu.nextstep.camp.model.race;
 
+import java.util.Collection;
 import java.util.Comparator;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import edu.nextstep.camp.model.car.Car;
@@ -37,10 +37,9 @@ public class Race {
         return cars.size();
     }
 
-    public List<Integer> gameResult() {
+    public Collection<Position> gameResult() {
         return cars.stream()
                 .map(Car::position)
-                .map(Position::toInt)
                 .collect(Collectors.toList());
     }
 

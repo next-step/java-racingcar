@@ -1,6 +1,7 @@
 package edu.nextstep.camp.view;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Scanner;
 
 public class InputView {
@@ -18,7 +19,7 @@ public class InputView {
         return number;
     }
 
-    public static String[] inputCSV(String message, int limit, String delimiter) {
+    public static Collection<String> inputCSV(String message, int limit, String delimiter) {
         System.out.println(message);
         final String value = SCANNER.nextLine();
         if (value.isEmpty()) {
@@ -30,6 +31,6 @@ public class InputView {
                 .anyMatch(s -> s.length() > limit))
             throw new IllegalArgumentException("value is too long:" + Arrays.toString(split));
 
-        return split;
+        return Arrays.asList(split);
     }
 }
