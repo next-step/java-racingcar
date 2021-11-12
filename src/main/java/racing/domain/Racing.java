@@ -15,7 +15,8 @@ public class Racing {
     private int attempts;
 
     public Racing(List<String> users, int attempts) {
-        checkHasProperValues(users, attempts);
+        throwIfHasInProperUsers(users);
+        throwIfHasInProperAttempts(attempts);
         this.cars = createCars(users);
         this.attempts = attempts;
     }
@@ -57,8 +58,14 @@ public class Racing {
         return group;
     }
 
-    private void checkHasProperValues(List<String> users, int attempts) {
-        if (users == null || isLessThanOne(users.size()) || isLessThanOne(attempts)) {
+    private void throwIfHasInProperUsers(List<String> users) {
+        if (users == null || isLessThanOne(users.size())) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void throwIfHasInProperAttempts(int attempts) {
+        if (isLessThanOne(attempts)) {
             throw new IllegalArgumentException();
         }
     }
