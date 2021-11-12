@@ -11,10 +11,6 @@ public class Car {
         this.route.moveForward();
     }
 
-    public void stop() {
-        // do nothing
-    }
-
     public void race(boolean movable) {
         if (movable) {
             move();

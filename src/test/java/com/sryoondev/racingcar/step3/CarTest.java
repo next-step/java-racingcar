@@ -13,16 +13,9 @@ public class CarTest {
     @DisplayName("자동차의 전진 테스트")
     public void testMove() {
         Car car = new Car();
+        assertThat(car.getMoveDistance()).isEqualTo(0);
         car.move();
         assertThat(car.getMoveDistance()).isEqualTo(1);
-    }
-
-    @Test
-    @DisplayName("자동차의 멈춤 테스트")
-    void testStop() {
-        Car car = new Car();
-        car.stop();
-        assertThat(car.getMoveDistance()).isEqualTo(0);
     }
 
     @ParameterizedTest
