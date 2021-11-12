@@ -14,8 +14,7 @@ public class RacingCars {
     }
 
     public void race() {
-        cars.stream()
-            .forEach(car -> car.moveOrStop(RandomUtils.nextInt()));
+        cars.forEach(car -> car.moveOrStop(RandomUtils.nextInt()));
     }
 
     public List<Car> result() {

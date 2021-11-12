@@ -10,15 +10,15 @@ public class ResultView {
     }
 
     public static void printResult(List<Car> result) {
-        result.stream()
-              .forEach(car -> doPrint(car));
+        result.forEach(car -> doPrint(car));
         System.out.println();
     }
 
     private static void doPrint(Car car) {
+        StringBuilder builder = new StringBuilder();
         for (int i = 0; i < car.getDistance(); i++) {
-            System.out.print(DISTANCE_SYMBOL);
+            builder.append(DISTANCE_SYMBOL);
         }
-        System.out.println();
+        System.out.println(builder);
     }
 }
