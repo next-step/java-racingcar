@@ -57,7 +57,7 @@ public class Racing {
         }
 
         return users.stream()
-            .map(user -> Car.create(user))
+            .map(Car::create)
             .collect(Collectors.toList());
     }
 

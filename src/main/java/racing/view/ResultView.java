@@ -36,7 +36,8 @@ public class ResultView {
         String name = car.getName();
 
         StringBuilder sb = new StringBuilder();
-        sb.append(name + " : ");
+        sb.append(name);
+        sb.append(" : ");
 
         for (int i = 0; i < count; i++) {
             sb.append('-');
