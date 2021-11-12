@@ -4,8 +4,6 @@ import java.util.Random;
 
 public class Car {
 
-	public static final String DASH = "-";
-
 	private int position;
 
 	public Car() {
@@ -24,9 +22,6 @@ public class Car {
 	}
 
 	public void printRace() {
-		for (int i = 0; i < position; i++) {
-			System.out.print(DASH);
-		}
-		System.out.println();
+		ResultView.printRace(position);
 	}
 }

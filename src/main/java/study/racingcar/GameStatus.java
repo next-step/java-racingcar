@@ -12,7 +12,7 @@ public class GameStatus {
 	public void startRacing() {
 		for (int i = 0; i < game.countGame(); i++) {
 			cars.goRace();
-			System.out.println();
+			ResultView.newLine();
 		}
 	}
 }

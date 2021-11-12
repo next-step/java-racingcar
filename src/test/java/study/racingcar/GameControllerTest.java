@@ -8,6 +8,6 @@ public class GameControllerTest {
 	@Test
 	@DisplayName("Game 전체 시작")
 	void startGame(){
-		GameController.start();
+		//GameController.start();
 	}
 }

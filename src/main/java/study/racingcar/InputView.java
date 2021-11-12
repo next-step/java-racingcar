@@ -8,6 +8,10 @@ public class InputView {
 	private static final String GAME_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
 	private static final String ONLY_INPUT_NUMBER_MESSAGE = "숫자만 입력해주세요.";
 
+	private InputView() {
+		throw new AssertionError();
+	}
+
 	public static int inputCarCountByUser() {
 		System.out.println(CAR_COUNT_MESSAGE) ;
 		return inputUserCount();
