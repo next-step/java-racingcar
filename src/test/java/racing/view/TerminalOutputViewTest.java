@@ -9,6 +9,7 @@ import racing.model.Car;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
 
@@ -46,14 +47,6 @@ class TerminalOutputViewTest {
                 .isEqualTo((cars.size() + 1) * numberOfMove);
     }
 
-    private List<Car> createMockCars() {
-        Car car1 = new Car();
-        car1.setName("pobi");
-        Car car2 = new Car();
-        car2.setName("crong");
-        return Arrays.asList(car1, car2);
-    }
-
     private void printTerminalOutput(List<Car> cars, int numberOfMove) {
         TerminalOutputView.printStartSentence();
         for (int i = 0; i < numberOfMove; i++) {
@@ -61,4 +54,25 @@ class TerminalOutputViewTest {
             TerminalOutputView.printCars(cars);
         }
     }
+
+    @Test
+    @DisplayName("4단계 - 자동차 우승자 출력")
+    void printWinnerCars() {
+        List<Car> cars = createMockCars();
+
+        TerminalOutputView.printWinnersCars(cars);
+
+        assertThat(outputStream.toString())
+                .contains("pobi")
+                .contains("crong");
+    }
+
+    private List<Car> createMockCars() {
+        Car car1 = new Car();
+        car1.setName("pobi");
+        Car car2 = new Car();
+        car2.setName("crong");
+        return Arrays.asList(car1, car2);
+    }
 }
+
