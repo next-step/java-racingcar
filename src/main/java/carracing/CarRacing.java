@@ -30,10 +30,11 @@ public class CarRacing {
         System.out.println(QUESTION_TRY_COUNT);
         String tryCount = scanner.nextLine();
 
-        racingStart(carCount, tryCount);
+        CarRacing carRacing = new CarRacing();
+        carRacing.racingStart(carCount, tryCount);
     }
 
-    public static RaceResult racingStart(String carCount, String tryCount) {
+    public RaceResult racingStart(String carCount, String tryCount) {
 
         RaceResult raceResult = new RaceResult();
 
@@ -55,7 +56,7 @@ public class CarRacing {
         return raceResult;
     }
 
-    public static void racing(List<Car> carList, InputView inputView, RaceResult raceResult) {
+    public void racing(List<Car> carList, InputView inputView, RaceResult raceResult) {
         for (int i = 0; i < inputView.getCarCount(); i++) {
             int randomNum = new Random().nextInt(RANDOM_RANGE);
             carList.get(i).driving(randomNum);

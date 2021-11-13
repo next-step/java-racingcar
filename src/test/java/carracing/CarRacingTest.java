@@ -4,8 +4,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static carracing.CarRacing.racingStart;
-
 public class CarRacingTest {
 
     @Test
@@ -18,7 +16,8 @@ public class CarRacingTest {
         String tryCount = "5";
         System.out.println("시도할 회수는 몇 회 인가요? : " + tryCount);
 
-        racingStart(carCount, tryCount);
+        CarRacing carRacing = new CarRacing();
+        carRacing.racingStart(carCount, tryCount);
     }
 
     @Test
@@ -27,7 +26,8 @@ public class CarRacingTest {
         String carCount = "3";
         String tryCount = "5";
 
-        RaceResult result = racingStart(carCount, tryCount);
+        CarRacing carRacing = new CarRacing();
+        RaceResult result = carRacing.racingStart(carCount, tryCount);
 
         int roundCount = Integer.parseInt(tryCount);
         Assertions.assertThat(result.roundCount).isEqualTo(roundCount);
@@ -39,7 +39,8 @@ public class CarRacingTest {
         String carCount = "12";
         String tryCount = "13";
 
-        RaceResult result = racingStart(carCount, tryCount);
+        CarRacing carRacing = new CarRacing();
+        RaceResult result = carRacing.racingStart(carCount, tryCount);
 
         int totalCount = Integer.parseInt(carCount) * Integer.parseInt(tryCount);
         Assertions.assertThat(result.totalRaceCount).isEqualTo(totalCount);
