@@ -3,7 +3,7 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.model.Cars;
-import racing.service.ConvertInput;
+import racing.service.InputBuilder;
 import racing.service.ConvertOutputView;
 
 import java.util.ArrayList;
@@ -18,11 +18,12 @@ public class CarsTest {
     @DisplayName("이름이 잘 들어가는지 테스트")
     void carNameTest() {
         String name = "a,b,c,d,e";
-        ConvertInput convertInput = new ConvertInput();
-        List<String> nameList = convertInput.convertInput(name);
-        Cars cars = new Cars(nameList);
+        String[] nameList = name.split(",");
+        InputBuilder inputBuilder = new InputBuilder(name);
+        Cars cars = new Cars(inputBuilder.getNameList());
         for (int i =0;i<5;i++) {
-            assertEquals(cars.getCarList().get(i).getName(),nameList.get(i));
+            System.out.println(cars.getCarList().get(i).getName());
+            assertEquals(cars.getCarList().get(i).getName(),nameList[i]);
         }
     }
 
