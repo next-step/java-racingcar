@@ -1,14 +1,14 @@
 package com.sryoondev.racingcar.step3;
 
 public class Car {
-    private final Route route;
+    private int moveCount;
 
     public Car() {
-        this.route = new Route();
+        this.moveCount = 0;
     }
 
     public void move() {
-        this.route.moveForward();
+        this.moveCount++;
     }
 
     public void race(boolean movable) {
@@ -18,6 +18,6 @@ public class Car {
     }
 
     public int getMoveDistance() {
-        return route.getMoveCount();
+        return this.moveCount;
     }
 }
