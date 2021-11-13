@@ -1,7 +1,9 @@
-package racinggame;
+package racinggame.service;
 
+import racinggame.domain.Car;
 import racinggame.utils.MoveValueGenerator;
-import racinggame.utils.MoveValueValidator;
+import racinggame.domain.value.MoveResult;
+import racinggame.domain.value.RacingResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class RacingCars {
 
-    private final List<Car> cars;
+    private List<Car> cars;
     private final List<MoveResult> moveResults;
 
     public RacingCars(List<Car> cars) {
@@ -27,23 +29,20 @@ public class RacingCars {
         }
 
         for (int i = 0; i < attempts; i++) {
-            cars.forEach(car -> car.move(
-                    MoveValueValidator.validate(
-                            MoveValueGenerator.generateMoveValue())));
-
+            cars = cars.stream()
+                    .map(car -> car.move(MoveValueGenerator.generateMoveValue()))
+                    .collect(Collectors.toList());
             moveResults.add(getMoveResults());
         }
 
         return new RacingCars(cars, moveResults);
     }
 
-    public List<MoveResult> getRacingResult() {
-        return this.moveResults;
+    public RacingResult getRacingResult() {
+        return new RacingResult(moveResults);
     }
 
     private MoveResult getMoveResults() {
-        return new MoveResult(cars.stream()
-                .map(Car::getPosition)
-                .collect(Collectors.toList()));
+        return new MoveResult(cars);
     }
 }

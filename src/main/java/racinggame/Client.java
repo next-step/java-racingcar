@@ -1,23 +1,23 @@
 package racinggame;
 
+import racinggame.service.SimpleGameExecutor;
 import racinggame.utils.GameExecutorFactory;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
-
-import java.util.List;
+import racinggame.domain.value.RacingResult;
 
 public class Client {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        String numberOfCars = inputView.numberOfCars();
+        String carNames = inputView.carNames();
         String numberOfAttempts = inputView.numberOfAttempts();
 
-        GameExecutor gameExecutor = GameExecutorFactory.createGameExecutor(numberOfCars, numberOfAttempts);
+        SimpleGameExecutor gameExecutor = GameExecutorFactory.createGameExecutor(carNames, numberOfAttempts);
 
-        List<MoveResult> results = gameExecutor.execute();
+        RacingResult result = gameExecutor.execute();
 
-        ResultView resultView = new ResultView(results);
+        ResultView resultView = new ResultView(result);
         resultView.showResult();
     }
 }

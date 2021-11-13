@@ -1,14 +1,17 @@
-package racinggame;
+package racinggame.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racinggame.domain.Car;
+import racinggame.service.RacingCars;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racinggame.fixture.CarFixture.*;
 
 class RacingCarsTest {
     private RacingCars racingCars;
@@ -16,10 +19,10 @@ class RacingCarsTest {
     @BeforeEach
     void setUp() {
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
+        cars.add(CAR1);
+        cars.add(CAR2);
+        cars.add(CAR3);
+        cars.add(CAR4);
         racingCars = new RacingCars(cars);
     }
 
@@ -34,6 +37,7 @@ class RacingCarsTest {
         RacingCars resultCars = racingCars.move(attempts);
 
         assertThat(resultCars.getRacingResult()
+                .results()
                 .size())
                 .isEqualTo(expectSize);
     }

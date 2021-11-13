@@ -16,26 +16,23 @@ class InputValidatorTest {
     @ParameterizedTest
     @NullAndEmptySource
     void validateNullAndEmpty(String input) {
-        assertThatThrownBy(() -> InputValidator.validate(input))
-                .isInstanceOf(EmptyAndNullSourceException.class)
-                .hasMessage(InputValidator.INVALID_SOURCE_MESSAGE);
+        assertThatThrownBy(() -> InputValidator.validateAttempts(input))
+                .isInstanceOf(EmptyAndNullSourceException.class);
     }
 
-    @DisplayName("입력값이 0일 경우 예외 발생")
+    @DisplayName("시도회수에 입력값이 0일 경우 예외 발생")
     @ParameterizedTest
     @ValueSource(strings = "0")
-    void validateZero(String input) {
-        assertThatThrownBy(() -> InputValidator.validate(input))
-                .isInstanceOf(ZeroStringException.class)
-                .hasMessage(InputValidator.ZERO_INPUT_MESSAGE);
+    void validateZeroFromAttempts(String input) {
+        assertThatThrownBy(() -> InputValidator.validateAttempts(input))
+                .isInstanceOf(ZeroStringException.class);
     }
 
-    @DisplayName("입력값이 일반 문자열일 경우")
+    @DisplayName("시도회수에 입력값이 일반 문자열일 경우")
     @ParameterizedTest
     @ValueSource(strings = {"문자열1", "입력값입니다.", "잘못 입력했어요.", "숫자가 아닙니다."})
-    void validateString(String input) {
-        assertThatThrownBy(() -> InputValidator.validate(input))
-                .isInstanceOf(InvalidInputException.class)
-                .hasMessage(InputValidator.INVALID_INPUT_MESSAGE);
+    void validateStringFromAttempts(String input) {
+        assertThatThrownBy(() -> InputValidator.validateAttempts(input))
+                .isInstanceOf(InvalidInputException.class);
     }
 }

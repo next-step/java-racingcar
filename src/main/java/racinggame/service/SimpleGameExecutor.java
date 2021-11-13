@@ -1,10 +1,10 @@
-package racinggame;
+package racinggame.service;
 
 import racinggame.utils.CarFactory;
+import racinggame.vo.InputValue;
+import racinggame.domain.value.RacingResult;
 
-import java.util.List;
-
-public class SimpleGameExecutor implements GameExecutor {
+public class SimpleGameExecutor {
 
     private final InputValue inputValue;
 
@@ -12,9 +12,8 @@ public class SimpleGameExecutor implements GameExecutor {
         this.inputValue = inputValue;
     }
 
-    @Override
-    public List<MoveResult> execute() {
-        RacingCars racingCars = CarFactory.createRacingCars(inputValue.cars());
+    public RacingResult execute() {
+        RacingCars racingCars = CarFactory.createRacingCars(inputValue);
         return racingCars.move(inputValue.attempts())
                 .getRacingResult();
 
