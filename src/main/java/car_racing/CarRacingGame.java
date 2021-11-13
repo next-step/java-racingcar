@@ -14,14 +14,6 @@ public class CarRacingGame {
         this.carRacingResult = new CarRacingResult();
     }
 
-    private void initGame() {
-        int numberOfCar = inputView.showMessageAndGetNumberOfCars();
-        int numberOfRound = inputView.showMessageAndGetNumberOfRound();
-
-        this.cars = new Cars(numberOfCar);
-        this.numberOfRound = numberOfRound;
-    }
-
     public void play() {
         initGame();
 
@@ -32,6 +24,13 @@ public class CarRacingGame {
         }
 
         closeGame();
+    }
+
+    private void initGame() {
+        int numberOfCarInput = inputView.showMessageAndGetNumberOfCars();
+        int numberOfRoundInput = inputView.showMessageAndGetNumberOfRound();
+        cars = new Cars(numberOfCarInput);
+        numberOfRound = numberOfRoundInput;
     }
 
     private void racingOneRound() {
