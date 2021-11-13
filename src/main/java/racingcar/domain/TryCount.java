@@ -39,7 +39,7 @@ public class TryCount {
     }
 
     private void validateMinusCount(int minusValue) {
-        if (this.tryCount - minusValue < 0) {
+        if (this.tryCount - minusValue < COUNT_ZERO) {
             throw new TryCountMinusException(minusValue);
         }
     }

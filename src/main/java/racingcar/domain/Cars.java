@@ -52,9 +52,8 @@ public class Cars {
         cars.forEach(car -> car.move(movingStrategy.generateNumber()));
     }
 
-    public void recode(int round, GameLog gameLog) {
+    public void recode(Round round, GameLog gameLog) {
         cars.forEach(car -> gameLog.add(RoundLog.of(round, car.from(car))));
-//        cars.forEach(car -> gameLog.add(RoundLog.of(round, car, Position.from(car.currentPosition()))));
     }
 
     public List<Car> findWinners() {

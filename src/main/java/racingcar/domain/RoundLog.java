@@ -1,20 +1,20 @@
 package racingcar.domain;
 
 public class RoundLog {
-    private final int round;
+    private final Round round;
     private final Car car;
 
-    private RoundLog(int round, Car car) {
+    private RoundLog(Round round, Car car) {
         this.round = round;
         this.car = car;
     }
 
-    public static RoundLog of(int round, Car car) {
+    public static RoundLog of(Round round, Car car) {
         return new RoundLog(round, car);
     }
 
     public int round() {
-        return round;
+        return round.currentRound();
     }
 
     public String carName() {

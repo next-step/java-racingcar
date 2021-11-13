@@ -13,11 +13,13 @@ public class RacingGame {
         return new RacingGame(cars);
     }
 
-    public GameLog play(TryCount tryCount) {
-        while (tryCount.nonOver()) {
+    public GameLog play(TryCount tryCount, Round round) {
+        Round current = round;
+         while (tryCount.nonOver()) {
             tryCount.counting();
             cars.move();
-            cars.recode(tryCount.currentRound(), gameLog);
+            cars.recode(current.nextRound(), gameLog);
+            current = current.nextRound();
         }
         return gameLog;
     }

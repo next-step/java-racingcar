@@ -28,12 +28,13 @@ public class OutputView {
 
     public static void printGameLog(GameLog gameLog) {
         List<RoundLog> roundLogs = gameLog.getRoundLogs();
-        int currentRound = roundLogs.get(0).round();
+        int beforeRound = roundLogs.get(0).round();
 
         for (RoundLog roundLog : roundLogs) {
-            if (currentRound != roundLog.round()) {
+            int currentRound = roundLog.round();
+            if (beforeRound != currentRound) {
                 newLine();
-                currentRound = roundLog.round();
+                beforeRound = roundLog.round();
                 printRound(roundLog);
                 continue;
             }
