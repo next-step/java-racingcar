@@ -12,7 +12,11 @@ public class MovableChecker {
         this.random = new Random();
     }
 
+    public boolean isMovable(int number) {
+        return number >= MOVABLE_THRESHOLD;
+    }
+
     public boolean isMovable() {
-        return random.nextInt(UPPER_BOUND) > MOVABLE_THRESHOLD;
+        return isMovable(random.nextInt(UPPER_BOUND));
     }
 }
