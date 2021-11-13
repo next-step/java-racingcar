@@ -4,7 +4,7 @@ public class CarRacingGame {
 
     private static final MoveStrategy moveStrategy = new RandomMoveStrategy();
     private static final InputView inputView = new InputView();
-    private static final OutputView outputview = new OutputView();
+    private static final OutputView outputView = new OutputView();
 
     private final CarRacingResult carRacingResult;
     private Cars cars;
@@ -43,7 +43,7 @@ public class CarRacingGame {
     }
 
     private void closeGame() {
-        outputview.showCarRacingGameOutput(carRacingResult);
+        outputView.showCarRacingGameOutput(carRacingResult);
     }
 
 }
