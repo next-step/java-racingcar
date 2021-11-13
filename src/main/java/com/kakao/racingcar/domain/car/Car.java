@@ -3,20 +3,20 @@ package com.kakao.racingcar.domain.car;
 import com.kakao.racingcar.history.CarHistory;
 
 public class Car {
-    private final String userName;
-    private int position = 0;
+    private final UserName userName;
+    private final Position position = new Position();
     private final MovableStrategy movableStrategy;
 
     public Car(String userName, MovableStrategy movableStrategy) {
-        this.userName = userName;
+        this.userName = new UserName(userName);
         this.movableStrategy = movableStrategy;
     }
 
     public CarHistory tryMove(int conditionNumber) {
         if (movableStrategy.move(conditionNumber)) {
-            position++;
+            position.moveOne();
         }
-        return new CarHistory(position, userName);
+        return new CarHistory(position.getValue(), userName.getValue());
     }
 
 }
