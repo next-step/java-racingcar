@@ -1,10 +1,10 @@
 package step3;
 
 import org.junit.jupiter.api.Test;
-import step3.domain.Car;
-import step3.domain.Contest;
+import step3.domain.entity.Car;
+import step3.domain.entity.Contest;
 import step3.movingstrategy.InputMovingStrategy;
-import step3.view.LocationReporter;
+import step3.view.LocationView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,7 +21,7 @@ public class ContestTest {
         Car secondCar = new Car();
 
         List<Car> participants = Stream.of(firstCar, secondCar).collect(Collectors.toList());
-        Contest contest = new Contest(round, participants, new InputMovingStrategy(4), new LocationReporter());
+        Contest contest = new Contest(round, participants, new InputMovingStrategy(4), new LocationView());
         contest.play();
         
     }

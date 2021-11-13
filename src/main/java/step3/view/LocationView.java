@@ -1,21 +1,21 @@
 package step3.view;
 
-import step3.domain.Contest;
-import step3.domain.Location;
+import step3.domain.entity.Contest;
+import step3.domain.value.Location;
 
 import java.util.List;
 
-public class LocationReporter implements Contest.ReportingLocation {
+public class LocationView implements Contest.ReportingLocation {
     private static final String empty = "\0";
     private static final String marker = "-";
     private static final int START_LINE = 1;
 
     @Override
     public void report(List<Location> locations) {
-        locations.forEach(this::print);
+        locations.forEach(this::render);
     }
 
-    private void print(Location location) {
+    private void render(Location location) {
         System.out.println(new String(new char[location.getValue() + START_LINE]).replace(empty, marker));
     }
 }

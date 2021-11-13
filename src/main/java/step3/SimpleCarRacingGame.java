@@ -1,11 +1,11 @@
 package step3;
 
-import step3.controller.Input;
-import step3.controller.InputController;
-import step3.domain.Car;
-import step3.domain.Contest;
+import step3.domain.value.Input;
+import step3.domain.entity.Car;
+import step3.domain.entity.Contest;
 import step3.movingstrategy.RandomMovingStrategy;
-import step3.view.LocationReporter;
+import step3.view.InputView;
+import step3.view.LocationView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,11 +13,13 @@ import java.util.stream.Stream;
 
 public class SimpleCarRacingGame {
     public static void main(String[] args) {
-        Input input = new InputController().handleInput();
+        InputView view = new InputView();
+        view.render();
+        Input input = view.readInput();
 
-        LocationReporter reporter = new LocationReporter();
+        LocationView reporter = new LocationView();
 
-        List<Car> participants = Stream.generate(() -> new Car())
+        List<Car> participants = Stream.generate(Car::new)
                 .limit(input.getParticipantsNumber())
                 .collect(Collectors.toList());
         int numOfRounds = input.numOfRounds();

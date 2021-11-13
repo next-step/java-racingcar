@@ -1,5 +1,6 @@
-package step3.domain;
+package step3.domain.entity;
 
+import step3.domain.value.Location;
 import step3.movingstrategy.MovingStrategy;
 
 import java.util.List;

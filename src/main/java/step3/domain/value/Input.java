@@ -1,4 +1,4 @@
-package step3.controller;
+package step3.domain.value;
 
 public class Input {
     private final int numOfParticipants;
@@ -7,8 +7,8 @@ public class Input {
     public Input(int numOfParticipants, int numOfRounds) {
         this.numOfParticipants = numOfParticipants;
         this.numOfRounds = numOfRounds;
-    }
 
+    }
 
     public int getParticipantsNumber() {
         return numOfParticipants;

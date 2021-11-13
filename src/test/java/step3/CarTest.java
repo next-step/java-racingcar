@@ -1,8 +1,8 @@
 package step3;
 
 import org.junit.jupiter.api.Test;
-import step3.domain.Car;
-import step3.domain.Location;
+import step3.domain.entity.Car;
+import step3.domain.value.Location;
 import step3.movingstrategy.InputMovingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
