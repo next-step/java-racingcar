@@ -22,7 +22,7 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean decideToMove() {
-        return getRandomNumber() > MOVE_THRESH_HOLD;
+        return getRandomNumber() >= MOVE_THRESH_HOLD;
     }
 
     private int getRandomNumber() {

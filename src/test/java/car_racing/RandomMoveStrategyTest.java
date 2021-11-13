@@ -24,7 +24,7 @@ class RandomMoveStrategyTest {
     @DisplayName("When the Random number is equal to or over 4, car can move")
     void decideToMove_ableToMove() {
         // given
-        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy(5, 9);
+        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy(4, 9);
 
         // when
         boolean ableToMove = randomMoveStrategy.decideToMove();
