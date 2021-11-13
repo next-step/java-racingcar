@@ -31,16 +31,14 @@ public class CarRacing {
         String tryCount = scanner.nextLine();
 
         CarRacing carRacing = new CarRacing();
-        carRacing.racingStart(carCount, tryCount);
+        carRacing.racingStart(new InputView(carCount, tryCount));
     }
 
-    public RaceResult racingStart(String carCount, String tryCount) {
+    public RaceResult racingStart(InputView inputView) {
 
         RaceResult raceResult = new RaceResult();
 
         List<Car> carList = new ArrayList<>();
-        InputView inputView = new InputView();
-        inputView.valid(carCount, tryCount);            /* 입력 값 우선 검증 */
         ResultView resultView = new ResultView();
 
         for (int i = 0; i < inputView.getCarCount(); i++) {

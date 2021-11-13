@@ -16,6 +16,29 @@ public class InputView {
     private int carCount = 0;   /* 차량 대수 */
     private int tryCount = 0;   /* 주행 횟수 */
 
+    private int totalDrivingCount = 0;
+
+    public InputView() {
+    }
+
+    public InputView(int carCount, int tryCount) {
+        this.carCount = carCount;
+        this.tryCount = tryCount;
+    }
+
+    /**
+     * 입력값 검증 기능 생성자
+     */
+    public InputView(String carCount, String tryCount) {
+        try {
+            this.carCount = Integer.parseInt(carCount);
+            this.tryCount = Integer.parseInt(tryCount);
+            this.totalDrivingCount = this.carCount * this.tryCount;
+        } catch (NumberFormatException exception) {
+            throw new NumberFormatException(ERR_MSG_FORMAT_NUM);
+        }
+    }
+
     public int getCarCount() {
         return carCount;
     }
@@ -24,16 +47,7 @@ public class InputView {
         return tryCount;
     }
 
-    /**
-     * 입력값 검증 메소드
-     */
-    public void valid(String carCount, String tryCount) {
-        try {
-            this.carCount = Integer.parseInt(carCount);
-            this.tryCount = Integer.parseInt(tryCount);
-        } catch (NumberFormatException exception) {
-            throw new NumberFormatException(ERR_MSG_FORMAT_NUM);
-        }
+    public int getTotalDrivingCount() {
+        return totalDrivingCount;
     }
-
 }
