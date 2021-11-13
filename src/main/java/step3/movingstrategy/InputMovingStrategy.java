@@ -1,4 +1,4 @@
-package step3;
+package step3.movingstrategy;
 
 public class InputMovingStrategy implements MovingStrategy{
     private static final int MOVING_THRESHOLD = 4;

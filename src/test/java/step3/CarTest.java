@@ -1,6 +1,7 @@
 package step3;
 
 import org.junit.jupiter.api.Test;
+import step3.movingstrategy.InputMovingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

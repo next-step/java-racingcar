@@ -1,6 +1,7 @@
 package step3;
 
 import org.junit.jupiter.api.Test;
+import step3.movingstrategy.InputMovingStrategy;
 
 import java.util.List;
 import java.util.stream.Collectors;

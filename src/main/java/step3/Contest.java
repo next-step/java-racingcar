@@ -1,5 +1,7 @@
 package step3;
 
+import step3.movingstrategy.MovingStrategy;
+
 import java.util.List;
 
 public class Contest {

@@ -1,5 +1,7 @@
 package step3;
 
+import step3.movingstrategy.MovingStrategy;
+
 public class Car {
     public int location = 0;
 
