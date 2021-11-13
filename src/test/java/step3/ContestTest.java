@@ -18,7 +18,7 @@ public class ContestTest {
         Car secondCar = new Car();
 
         List<Car> participants = Stream.of(firstCar, secondCar).collect(Collectors.toList());
-        Contest contest = new Contest(round, participants, new InputMovingStrategy(4));
+        Contest contest = new Contest(round, participants, new InputMovingStrategy(4), new LocationReporter());
         contest.play();
 
         assertThat(firstCar.location).isEqualTo(3);

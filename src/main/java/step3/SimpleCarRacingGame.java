@@ -19,8 +19,10 @@ public class SimpleCarRacingGame {
         System.out.println("시도할 회수는 몇 회인가요?");
         int roundNumbers = scanner.nextInt();
 
+        LocationReporter reporter = new LocationReporter();
         List<Car> participants = Stream.generate(Car::new).limit(participantsNumber).collect(Collectors.toList());
-        Contest contest = new Contest(roundNumbers, participants, new RandomMovingStrategy());
+
+        Contest contest = new Contest(roundNumbers, participants, new RandomMovingStrategy(), reporter);
         contest.play();
     }
 }
