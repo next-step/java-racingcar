@@ -11,17 +11,4 @@ public class Validation {
             throw new IllegalArgumentException(VALID_NULL_EMPTY_CHECK_MSG);
         }
     }
-
-    public static void validSize(String[] values) {
-        for (String value : values) {
-            validNullAndEmpty(value);
-        }
-        if (isEven(values)) {
-            throw new IllegalArgumentException(VALID_ARITHMETHIC_INPUT_SIZE);
-        }
-    }
-
-    private static boolean isEven(String[] values) {
-        return (values.length % 2) == 0;
-    }
 }

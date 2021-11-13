@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class MyNumber {
 
-    private int number;
+    public final int number;
 
     public MyNumber(String text) {
         Validation.validNullAndEmpty(text);
@@ -13,26 +13,6 @@ public class MyNumber {
 
     public MyNumber(int number) {
         this.number = number;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public MyNumber plus(MyNumber second) {
-        return new MyNumber(this.number + second.number);
-    }
-
-    public MyNumber minus(MyNumber second) {
-        return new MyNumber(this.number - second.number);
-    }
-
-    public MyNumber multiply(MyNumber second) {
-        return new MyNumber(this.number * second.number);
-    }
-
-    public MyNumber divide(MyNumber second) {
-        return new MyNumber(this.number / second.number);
     }
 
     @Override

@@ -5,10 +5,10 @@ import java.util.function.BiFunction;
 
 public enum Operator {
 
-    ADDITION("+", MyNumber::plus),
-    SUBTRACTION("-", MyNumber::minus),
-    MULTIPLICATION("*", MyNumber::multiply),
-    DIVISION("/", MyNumber::divide);
+    ADDITION("+", Operator::plus),
+    SUBTRACTION("-", Operator::minus),
+    MULTIPLICATION("*", Operator::multiply),
+    DIVISION("/", Operator::divide);
 
     public static final String VALID_REQUIRED_ARITHMETIC_MSG = "사칙연산 기호가 아닙니다.";
     private String operator;
@@ -29,4 +29,19 @@ public enum Operator {
                 .orElseThrow(() -> new IllegalArgumentException(VALID_REQUIRED_ARITHMETIC_MSG));
     }
 
+    public static MyNumber plus(MyNumber first, MyNumber second) {
+        return new MyNumber(first.number + second.number);
+    }
+
+    public static MyNumber minus(MyNumber first, MyNumber second) {
+        return new MyNumber(first.number - second.number);
+    }
+
+    public static MyNumber multiply(MyNumber first, MyNumber second) {
+        return new MyNumber(first.number * second.number);
+    }
+
+    public static MyNumber divide(MyNumber first, MyNumber second) {
+        return new MyNumber(first.number / second.number);
+    }
 }

@@ -1,6 +1,5 @@
 package step2;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -25,5 +24,25 @@ public class OperatorTest {
             Operator.of(input).operate(new MyNumber(3), new MyNumber(2));
         }).withMessageMatching(Operator.VALID_REQUIRED_ARITHMETIC_MSG);
 
+    }
+
+    @Test
+    void 연산자_덧셈() {
+        assertThat(Operator.plus(new MyNumber(7), new MyNumber(2))).isEqualTo(new MyNumber(9));
+    }
+
+    @Test
+    void 연산자_뺼셈() {
+        assertThat(Operator.minus(new MyNumber(7), new MyNumber(6))).isEqualTo(new MyNumber(1));
+    }
+
+    @Test
+    void 연산자_곱셈() {
+        assertThat(Operator.multiply(new MyNumber(2), new MyNumber(7))).isEqualTo(new MyNumber(14));
+    }
+
+    @Test
+    void 연산자_나눗셈() {
+        assertThat(Operator.divide(new MyNumber(20), new MyNumber(7))).isEqualTo(new MyNumber(2));
     }
 }
