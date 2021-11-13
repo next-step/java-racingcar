@@ -1,10 +1,10 @@
-package racingcar.gameinfo;
+package racingcar.domain.gameinfo;
 
-import racingcar.domain.Cars;
-import racingcar.domain.CarNameInfo;
-import racingcar.domain.CountInfo;
-import racingcar.moverule.MoveRule;
-import racingcar.view.result.ResultView;
+import racingcar.domain.model.Cars;
+import racingcar.domain.gameround.GameRound;
+import racingcar.domain.model.CarNameInfo;
+import racingcar.domain.model.CountInfo;
+import racingcar.domain.moverule.MoveRule;
 
 import java.util.*;
 
@@ -13,13 +13,13 @@ public class CarNamesInputGame implements GameInfo {
     private final List<CarNameInfo> carNames;
     private final MoveRule moveRule;
     private final CountInfo tryCount;
-    private final ResultView resultView;
+    private final GameRound gameRound;
 
-    public CarNamesInputGame(MoveRule moveRule, ResultView resultView, CountInfo tryCount, List<CarNameInfo> carNames){
+    public CarNamesInputGame(MoveRule moveRule, GameRound gameRound, CountInfo tryCount, List<CarNameInfo> carNames){
         this.moveRule = moveRule;
         this.carNames = carNames;
         this.tryCount = tryCount;
-        this.resultView = resultView;
+        this.gameRound = gameRound;
     }
 
     @Override
@@ -38,7 +38,12 @@ public class CarNamesInputGame implements GameInfo {
     }
 
     @Override
-    public ResultView getResultView() {
-        return this.resultView;
+    public GameRound getGameRound() {
+        return gameRound;
+    }
+
+    @Override
+    public boolean printWinners() {
+        return true;
     }
 }

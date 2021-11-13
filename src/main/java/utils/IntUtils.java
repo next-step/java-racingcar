@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class IntUtils {
 
-    private static final Pattern pattern = Pattern.compile("\\d+");
+    private static final Pattern pattern = Pattern.compile("-?\\d+");
     private static final Random random = new Random();
 
     private IntUtils() {}

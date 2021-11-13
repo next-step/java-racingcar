@@ -1,6 +1,6 @@
-package racingcar.domain;
+package racingcar.domain.model;
 
-import racingcar.moverule.MoveRule;
+import racingcar.domain.moverule.MoveRule;
 
 import java.util.Collections;
 import java.util.List;

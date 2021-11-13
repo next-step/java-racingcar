@@ -28,7 +28,7 @@ public class StringCalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"2 + 3 * 4 / 2,10", "2 + 3 * 4 * 2 + -5,35"})
+    @CsvSource(value = {"2 + 3 * 4 / 2 , 10", "2 + 3 * 4 * 2 + -5,35"})
     @DisplayName("StringCalculator 통합 테스트")
     void integratedTest(String input, int expected){
         assertThat(stringCalculator.calculate(input)).isEqualTo(expected);

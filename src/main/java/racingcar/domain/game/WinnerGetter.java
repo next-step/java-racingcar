@@ -1,6 +1,7 @@
-package racingcar.game;
+package racingcar.domain.game;
 
-import racingcar.domain.Car;
+import racingcar.domain.model.Car;
+import racingcar.domain.model.Cars;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -14,10 +15,10 @@ public class WinnerGetter {
                         .collect(Collectors.toList()));
     }
 
-    public List<Car> getWinnerCars(List<Car> carList){
-        int maxPosition = getMaxPosition(carList);
+    public List<Car> getWinnerCars(Cars cars){
+        int maxPosition = getMaxPosition(cars.getCarList());
         return Collections.unmodifiableList(
-                carList.stream()
+                cars.getCarList().stream()
                         .filter(car -> car.getPosition() == maxPosition)
                         .collect(Collectors.toList()));
     }

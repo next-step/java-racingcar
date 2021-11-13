@@ -1,4 +1,4 @@
-package racingcar.moverule;
+package racingcar.domain.moverule;
 
 import utils.IntUtils;
 

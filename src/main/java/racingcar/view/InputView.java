@@ -1,4 +1,4 @@
-package racingcar.view.input;
+package racingcar.view;
 
 import utils.IntUtils;
 

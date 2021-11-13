@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.model;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,9 +20,16 @@ public class CarNameInfo {
     }
 
     public static List<CarNameInfo> createListFromInput(String[] carNames) {
+        checkDuplicateName(carNames);
         return Arrays.stream(carNames)
                 .map(carName -> new CarNameInfo(carName))
                 .collect(Collectors.toList());
+    }
+
+    private static void checkDuplicateName(String[] carNames) {
+        if(Arrays.stream(carNames).distinct().count() != carNames.length) {
+            throw new IllegalArgumentException("이름이 중복된 차가 있습니다.");
+        }
     }
 
     public String get() {
