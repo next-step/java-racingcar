@@ -1,7 +1,7 @@
 package racinggame.fixture;
 
-import racinggame.Car;
-import racinggame.Position;
+import racinggame.domain.Car;
+import racinggame.domain.value.Position;
 
 import java.util.Arrays;
 import java.util.List;

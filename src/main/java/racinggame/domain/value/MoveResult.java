@@ -1,6 +1,6 @@
-package racinggame.vo;
+package racinggame.domain.value;
 
-import racinggame.Car;
+import racinggame.domain.Car;
 
 import java.util.*;
 import java.util.stream.Collectors;

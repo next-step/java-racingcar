@@ -1,4 +1,6 @@
-package racinggame;
+package racinggame.domain;
+
+import racinggame.domain.value.Position;
 
 import java.util.Objects;
 

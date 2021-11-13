@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain.value;
 
 import racinggame.utils.MoveValueValidator;
 

@@ -1,7 +1,9 @@
-package racinggame;
+package racinggame.service;
 
+import racinggame.domain.Car;
 import racinggame.utils.MoveValueGenerator;
-import racinggame.vo.MoveResult;
+import racinggame.domain.value.MoveResult;
+import racinggame.domain.value.RacingResult;
 
 import java.util.ArrayList;
 import java.util.List;

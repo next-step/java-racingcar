@@ -1,6 +1,6 @@
-package racinggame;
+package racinggame.domain.value;
 
-import racinggame.vo.MoveResult;
+import racinggame.domain.Car;
 
 import java.util.Collections;
 import java.util.List;

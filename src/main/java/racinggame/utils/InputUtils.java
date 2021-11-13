@@ -1,6 +1,6 @@
 package racinggame.utils;
 
-import racinggame.Names;
+import racinggame.domain.value.Names;
 import racinggame.exception.NotInstanceException;
 import racinggame.vo.InputValue;
 

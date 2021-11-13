@@ -1,9 +1,9 @@
 package racinggame.utils;
 
-import racinggame.Car;
-import racinggame.Position;
+import racinggame.domain.Car;
+import racinggame.domain.value.Position;
 import racinggame.vo.InputValue;
-import racinggame.RacingCars;
+import racinggame.service.RacingCars;
 import racinggame.exception.NotInstanceException;
 
 import java.util.List;

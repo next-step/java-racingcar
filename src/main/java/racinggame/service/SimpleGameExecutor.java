@@ -1,7 +1,8 @@
-package racinggame;
+package racinggame.service;
 
 import racinggame.utils.CarFactory;
 import racinggame.vo.InputValue;
+import racinggame.domain.value.RacingResult;
 
 public class SimpleGameExecutor {
 

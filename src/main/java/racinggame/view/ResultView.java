@@ -1,7 +1,7 @@
 package racinggame.view;
 
-import racinggame.Names;
-import racinggame.RacingResult;
+import racinggame.domain.value.Names;
+import racinggame.domain.value.RacingResult;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package racinggame.vo;
 
-import racinggame.Names;
+import racinggame.domain.value.Names;
 
 import java.util.List;
 import java.util.Objects;

@@ -1,6 +1,6 @@
 package racinggame.utils;
 
-import racinggame.SimpleGameExecutor;
+import racinggame.service.SimpleGameExecutor;
 import racinggame.exception.NotInstanceException;
 
 public class GameExecutorFactory {

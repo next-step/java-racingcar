@@ -1,9 +1,10 @@
-package racinggame;
+package racinggame.domain.value;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racinggame.domain.value.Names;
 import racinggame.exception.EmptyAndNullSourceException;
 import racinggame.exception.NumericException;
 import racinggame.exception.OverNameLengthException;
