@@ -38,13 +38,15 @@ public class RacingGame {
     }
 
     private static List<RacingCar> getWinner(List<RacingCar> racingCars) {
-        int maxCount = racingCars.stream()
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.isMoveCountEqualMaxCount(getMaxCount(racingCars)))
+                .collect(Collectors.toList());
+    }
+
+    private static int getMaxCount(List<RacingCar> racingCars) {
+        return racingCars.stream()
                 .max(Comparator.comparingInt(RacingCar::getMoveCount))
                 .get().getMoveCount();
-
-        return racingCars.stream()
-                .filter(racingCar -> racingCar.isMoveCountEqualMaxCount(maxCount))
-                .collect(Collectors.toList());
     }
 
     private static List<RacingCar> makeRacingCars(InputView inputView) {
