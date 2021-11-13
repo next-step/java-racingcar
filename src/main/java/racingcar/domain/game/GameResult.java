@@ -7,8 +7,8 @@ import java.util.*;
 
 public class GameResult {
 
-    private List<Car> winners = new ArrayList();;
-    private List<String> roundResults = new ArrayList();
+    private final List<Car> winners = new ArrayList();;
+    private final List<String> roundResults = new ArrayList();
     private final WinnerGetter winnerGetter = new WinnerGetter();
 
     public void addRoundResult(List<String> result) {
@@ -16,7 +16,7 @@ public class GameResult {
     }
 
     public void addWinnersResult(Cars cars) {
-        winners = winnerGetter.getWinnerCars(cars);
+        winners.addAll(winnerGetter.getWinnerCars(cars));
     }
 
     public List<String> getRoundResults() {
