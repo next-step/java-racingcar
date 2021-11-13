@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-@DisplayName("3단계 - 자동차 경주 - Car 단위 테스트")
+@DisplayName("자동차 경주 - Car 단위 테스트")
 class CarTest {
 
     Car car;
@@ -23,7 +23,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 랜덤 행동 이동 기능")
+    @DisplayName("3단계 - 자동차 랜덤 행동 이동 기능")
     void moveRandom() throws NoSuchFieldException, IllegalAccessException {
         Field fieldRandom = Car.class
                 .getDeclaredField("random");
@@ -39,7 +39,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 전진 기능")
+    @DisplayName("3단계 - 자동차 전진 기능")
     void go() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method methodGo = Car.class
                 .getDeclaredMethod("go");
@@ -54,7 +54,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 정지 기능")
+    @DisplayName("3단계 - 자동차 정지 기능")
     void stopCar() {
         // 아무것도 하지않으면 정지
 
@@ -63,7 +63,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 이름 부여 테스트")
+    @DisplayName("4단계 - 자동차 이름 부여 테스트")
     void setName() {
         String name = "정상";
         car.setName(name);
@@ -73,7 +73,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 이름 부여 실패 테스트")
+    @DisplayName("4단계 - 자동차 이름 부여 실패 테스트")
     void setLongName() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> car.setName("긴이름입니다")); // Korean
