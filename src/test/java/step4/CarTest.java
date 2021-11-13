@@ -31,10 +31,4 @@ public class CarTest {
             assertThat(randomNumber).isIn(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
         }
     }
-
-    @Test
-    void illegalArgumentBecauseCarNameLengthIsGreaterThan5() {
-        assertThatThrownBy(() -> new Car("abcdef", new RandomMoveStrategy()))
-            .isInstanceOf(IllegalArgumentException.class);
-    }
 }
