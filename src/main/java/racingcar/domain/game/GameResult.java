@@ -7,7 +7,7 @@ import java.util.*;
 
 public class GameResult {
 
-    private List<Car> winners;
+    private List<Car> winners = new ArrayList();;
     private List<String> roundResults = new ArrayList();
     private final WinnerGetter winnerGetter = new WinnerGetter();
 
