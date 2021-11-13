@@ -48,7 +48,7 @@ public class SetUpCar {
     private static List<Car> generateCars(int carCount) {
         List<Car> carList = new ArrayList<>();
         for (int i = START_CAR_NUMBER; i < carCount; i++) {
-            Car car = new Car(i, BLANK_STRING_VALUE);
+            Car car = new Car(i, 0);
             carList.add(car);
         }
         return carList;
@@ -62,7 +62,7 @@ public class SetUpCar {
         for (int i = START_CAR_NUMBER; i < this.tryRound; i++){
             for (Car car : carList) {
                 car.moveCar(car.tryMoveNumber());
-                System.out.println(car.getPosition());
+                System.out.println(car.getLocation());
             }
             System.out.println(BLANK_STRING_VALUE);
         }

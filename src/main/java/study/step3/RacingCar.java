@@ -5,7 +5,6 @@ import java.util.*;
 public class RacingCar {
 
     public static void main(String[] args){
-
         try {
             Scanner scanner = new Scanner(System.in);
 

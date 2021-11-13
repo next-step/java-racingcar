@@ -1,29 +1,30 @@
 package study.step3;
 
-import java.util.Objects;
 import java.util.Random;
 
 /**
  * 차량 클래스
  */
 public class Car {
+    private static String BLANK_STRING_VALUE = "";
     private static String MOVE_CHARACTER = "-";
     private static int MAX_RANDOM_NUMBER = 10;
     private static int MIN_FORWARD_NUMBER = 4;
+    private static int START_LOCATION = 0;
 
     // 차량 번호
     private int number;
     // 차량 위치
-    private String position;
+    private int location;
 
     /**
      * 생성자
      * @param number 차량 번호
-     * @param position 차량 위치
+     * @param location 차량 위치
      */
-    public Car(int number, String position) {
+    public Car(int number, int location) {
         this.number = number;
-        this.position = position;
+        this.location = location;
     }
 
     /**
@@ -42,7 +43,7 @@ public class Car {
      */
     public void moveCar(int tryMoveNumber){
         if(tryMoveNumber >= MIN_FORWARD_NUMBER){
-            this.position = this.position + MOVE_CHARACTER;
+            this.location += MOVE_CHARACTER.length();
         }
     }
 
@@ -50,16 +51,11 @@ public class Car {
      * 차량 위치 조회
      * @return
      */
-    public String getPosition(){
-        return this.position;
-    }
-
-    /**
-     * 차량 정보 문자열 조회
-     * @return
-     */
-    @Override
-    public String toString() {
-        return "Car{" + "number=" + number + ", position='" + position + '\'' + '}';
+    public String getLocation(){
+        String position = BLANK_STRING_VALUE;
+        for(int i = START_LOCATION; i < this.location; i++){
+            position += MOVE_CHARACTER;
+        }
+        return position;
     }
 }
