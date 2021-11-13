@@ -24,7 +24,7 @@ public class Car {
         }
     }
 
-    public void go() {
+    private void go() {
         movingDistance++;
     }
 
