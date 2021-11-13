@@ -1,18 +1,21 @@
 package carracing.domain.entity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.BooleanSupplier;
 
+import static java.util.stream.Collectors.toList;
+
 public class Challengers {
 
-  private List<Car> challengers;
+  private final List<Car> challengers;
 
-  public Challengers(Number number) {
-    if (number == null) {
+  public Challengers(Participant participant) {
+    if (participant == null || participant.getParticipant().size() == 0) {
       throw new IllegalArgumentException();
     }
-    this.challengers = new ArrayList<>(number.getValue());
+    this.challengers = new ArrayList<>(participant.getParticipant().size());
   }
 
   public void register(Car car) {

@@ -5,8 +5,9 @@ import carracing.domain.dto.RacingResult;
 import carracing.domain.dto.RoundResult;
 import carracing.domain.entity.Car;
 import carracing.domain.entity.Challengers;
-import carracing.domain.entity.Number;
+import carracing.domain.entity.Participant;
 import carracing.domain.entity.Round;
+import carracing.domain.entity.Winner;
 import carracing.domain.utils.RandomUtils;
 
 import java.util.ArrayList;
@@ -20,23 +21,23 @@ public class RandomFourStepRacingService implements CarRacingService{
   private Challengers challengers;
   private Round round;
 
-  public RandomFourStepRacingService(Number number, Round round) {
-    if (!isValidInput(number, round)) {
+  public RandomFourStepRacingService(Participant participant, Round round) {
+    if (!isValidInput(participant, round)) {
       throw new IllegalArgumentException();
     }
-    this.challengers = new Challengers(number);
+    this.challengers = new Challengers(participant);
     this.round = round;
-    initRacing(number, round);
+    initRacing(participant);
   }
 
-  private boolean isValidInput(Number number, Round round) {
-    return number != null && round != null;
+  private boolean isValidInput(Participant member, Round round) {
+    return member != null && member.getParticipant().size() > 0 && round != null;
   }
 
   @Override
-  public void initRacing(Number number, Round round) {
-    for (int i = 0; i < number.getValue(); i++) {
-      challengers.register(new Car());
+  public void initRacing(Participant participant) {
+    for (int id = 0; id < participant.getParticipant().size(); id++) {
+      challengers.register(new Car(participant.getParticipant().get(id)));
     }
   }
 
@@ -47,9 +48,8 @@ public class RandomFourStepRacingService implements CarRacingService{
       roundResultList.add(RoundResult.of(RacingData.of(challengers.startRound(isMovable()))));
       round.minus();
     }
-    return new RacingResult(roundResultList);
+    return new RacingResult(roundResultList, Winner.pickWinner(challengers.getChallengers()));
   }
-
 
   public BooleanSupplier isMovable() {
     return () -> RandomUtils.isGreaterThanOrEquals(STEP_FORWARD_STANDARD);

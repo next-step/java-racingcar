@@ -8,9 +8,11 @@ import static java.util.stream.Collectors.toList;
 
 public class RacingData {
 
+  private final String name;
   private final int step;
 
-  public RacingData(int step) {
+  public RacingData(String name, int step) {
+    this.name = name;
     this.step = step;
   }
 
@@ -18,8 +20,12 @@ public class RacingData {
     return step;
   }
 
+  public String getName() {
+    return name;
+  }
+
   public static RacingData of(Car car) {
-    return new RacingData(car.getNowStep());
+    return new RacingData(car.getName(), car.getNowStep());
   }
 
   public static List<RacingData> of(List<Car> carList) {

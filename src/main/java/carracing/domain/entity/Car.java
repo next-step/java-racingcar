@@ -2,11 +2,16 @@ package carracing.domain.entity;
 
 import java.util.function.BooleanSupplier;
 
-public class Car {
+public class Car implements Comparable<Car>{
 
+  private final int ONE = 1;
+  private final int MINUS_ONE = -1;
+
+  private final String name;
   private final Step nowStep;
 
-  public Car() {
+  public Car(String name) {
+    this.name = name;
     this.nowStep = new Step();
   }
 
@@ -16,8 +21,16 @@ public class Car {
     }
   }
 
+  public String getName() {
+    return name;
+  }
+
   public int getNowStep() {
     return this.nowStep.getValue();
   }
 
+  @Override
+  public int compareTo(Car o) {
+    return this.nowStep.getValue() > o.getNowStep() ? MINUS_ONE : ONE;
+  }
 }
