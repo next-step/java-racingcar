@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.model.mock.MockRandom;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -22,8 +23,11 @@ class CarTest {
 
     @Test
     @DisplayName("자동차 랜덤 행동 이동 기능")
-    void moveRandom() {
-        car = new Car(new MockRandom()); // 10번 nextInt 수행시 7번 go 될 수 있는 Mock
+    void moveRandom() throws NoSuchFieldException, IllegalAccessException {
+        Field fieldRandom = Car.class
+                .getDeclaredField("random");
+        fieldRandom.setAccessible(true);
+        fieldRandom.set(car, new MockRandom()); // 10번 nextInt 수행시 7번 go 될 수 있는 Mock
 
         for (int i = 0; i < 10; i++) {
             car.moveRandom();
