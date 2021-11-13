@@ -28,6 +28,10 @@ public class Position {
         return new Position(position.position);
     }
 
+    public Position of() {
+        return new Position(this.position);
+    }
+
     public static Position init() {
         return new Position(INIT_POSITION);
     }
@@ -59,4 +63,5 @@ public class Position {
     public int hashCode() {
         return Objects.hash(position);
     }
+
 }

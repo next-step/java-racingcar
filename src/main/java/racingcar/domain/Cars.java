@@ -53,7 +53,8 @@ public class Cars {
     }
 
     public void recode(int round, GameLog gameLog) {
-        cars.forEach(car -> gameLog.add(RoundLog.of(round, car, Position.from(car.currentPosition()))));
+        cars.forEach(car -> gameLog.add(RoundLog.of(round, car.from(car))));
+//        cars.forEach(car -> gameLog.add(RoundLog.of(round, car, Position.from(car.currentPosition()))));
     }
 
     public List<Car> findWinners() {

@@ -3,16 +3,14 @@ package racingcar.domain;
 public class RoundLog {
     private final int round;
     private final Car car;
-    private final Position position;
 
-    private RoundLog(int round, Car car, Position position) {
+    private RoundLog(int round, Car car) {
         this.round = round;
         this.car = car;
-        this.position = position;
     }
 
-    public static RoundLog of(int round, Car car, Position position) {
-        return new RoundLog(round, car, position);
+    public static RoundLog of(int round, Car car) {
+        return new RoundLog(round, car);
     }
 
     public int round() {
@@ -24,6 +22,6 @@ public class RoundLog {
     }
 
     public int position() {
-        return position.getPosition();
+        return car.currentPosition().getPosition();
     }
 }

@@ -22,6 +22,10 @@ public class Car {
         return new Car(name, Position.init());
     }
 
+    public Car from(Car car) {
+        return new Car(car.name, position.of());
+    }
+
     public void move(int number) {
         validateMoveNum(number);
         if (number > MOVE_CRITERIA) {
@@ -55,4 +59,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(position);
     }
+
 }
