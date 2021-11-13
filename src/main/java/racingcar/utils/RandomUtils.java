@@ -7,7 +7,7 @@ public class RandomUtils {
 
     private static final int DEFAULT_BOUND = 10;
 
-    private static Random RANDOM = new SecureRandom();
+    private static final Random RANDOM = new SecureRandom();
 
     private RandomUtils() {
 
