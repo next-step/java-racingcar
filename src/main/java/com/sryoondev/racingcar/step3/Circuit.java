@@ -3,10 +3,11 @@ package com.sryoondev.racingcar.step3;
 import com.sryoondev.racingcar.step3.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Circuit {
     private MovableChecker movableChecker;
-    private ArrayList<Car> cars;
+    private final List<Car> cars;
 
     public Circuit(int carCount) {
         this.movableChecker = new MovableChecker();
