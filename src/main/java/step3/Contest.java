@@ -3,6 +3,9 @@ package step3;
 import step3.movingstrategy.MovingStrategy;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Contest {
     private final int round;
