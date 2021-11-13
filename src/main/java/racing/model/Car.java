@@ -5,7 +5,7 @@ import racing.strategy.MoveStrategy;
 public class Car {
     private Integer position;
 
-    private String name;
+    private final String name;
 
     public Car(String name) {
         this.position = 0;
