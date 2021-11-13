@@ -35,6 +35,7 @@ class RacingCarsTest {
         RacingCars resultCars = racingCars.move(attempts);
 
         assertThat(resultCars.getRacingResult()
+                .results()
                 .size())
                 .isEqualTo(expectSize);
     }

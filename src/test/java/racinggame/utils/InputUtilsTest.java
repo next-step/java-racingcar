@@ -12,29 +12,27 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InputUtilsTest {
 
-    @DisplayName("입력한 값이 공백이 있을경우 예외 발생")
+    @DisplayName("입력값이 공백이 있을경우 예외 발생")
     @ParameterizedTest
     @CsvSource(value = {
-            "3 | ''",
-            "'' | 5",
-            "'' | ''"
+            "이름1,이름2 | ''",
+            "'' | 3"
     }, delimiter = '|')
-    void validateEmptySource(String numberOfCars, String numberOfAttempts) {
+    void validateEmptySource(String carNames, String numberOfAttempts) {
         assertThatThrownBy(
-                () -> InputUtils.convertInputValue(numberOfCars, numberOfAttempts))
+                () -> InputUtils.convertInputValue(carNames, numberOfAttempts))
                 .isInstanceOf(EmptyAndNullSourceException.class);
     }
 
-    @DisplayName("입력한 값이 문자열이 있을경우 예외 발생")
+    @DisplayName("시도값이 문자열이 있을경우 예외 발생")
     @ParameterizedTest
     @CsvSource(value = {
-            "3 | '문자열입니다.'",
-            "'다시 작성할게요' | 5",
-            "'잘못 작성' | '문자열입니다2'"
+            "이름1,이름2 | '문자열입니다.'",
+            "이름1, | 문자열입니다2"
     }, delimiter = '|')
-    void validateString(String numberOfCars, String numberOfAttempts) {
+    void validateString(String carNames, String numberOfAttempts) {
         assertThatThrownBy(
-                () -> InputUtils.convertInputValue(numberOfCars, numberOfAttempts))
+                () -> InputUtils.convertInputValue(carNames, numberOfAttempts))
                 .isInstanceOf(InvalidInputException.class);
     }
 
@@ -48,5 +46,4 @@ class InputUtilsTest {
                 () -> InputUtils.convertInputValue(carNames, attempts))
                 .isInstanceOf(ZeroStringException.class);
     }
-
 }

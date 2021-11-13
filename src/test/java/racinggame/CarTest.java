@@ -1,34 +1,31 @@
 package racinggame;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static racinggame.fixture.CarFixture.CAR1;
 
 class CarTest {
 
-    private Car car;
+    @DisplayName("moveValue에 따른 자동차 전진상태 확인")
+    @ParameterizedTest
+    @MethodSource("provideMoveValue")
+    void move(int moveValue1, int moveValue2, int moveValue3, int expected) {
+        CAR1.move(moveValue1);
+        CAR1.move(moveValue2);
+        CAR1.move(moveValue3);
 
-    @BeforeEach
-    void setUp() {
-        car = CAR1;
+        Position position = Position.of(expected);
+        assertThat(CAR1.position()).isEqualTo(position.current());
     }
 
-    @DisplayName("자동차 전진후 전진상태 확인")
-    @ParameterizedTest
-    @CsvSource(value = {
-            "true | true | false | 2"
-    }, delimiter = '|')
-    void move(boolean movable1, boolean movable2, boolean movable3, int expected) {
-        car.move(movable1);
-        car.move(movable2);
-        car.move(movable3);
-
-        assertThat(car.currentState()
-                .currentPosition())
-                .isEqualTo(expected);
+    private static Stream<Arguments> provideMoveValue() {
+        return Stream.of(
+                Arguments.of(2, 5, 7, 2));
     }
 }

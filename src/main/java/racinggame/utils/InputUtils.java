@@ -1,7 +1,8 @@
 package racinggame.utils;
 
-import racinggame.vo.InputValue;
+import racinggame.Names;
 import racinggame.exception.NotInstanceException;
+import racinggame.vo.InputValue;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,20 +15,19 @@ public class InputUtils {
 
     public static InputValue convertInputValue(String carNames, String numberOfAttempts) {
         validate(carNames, numberOfAttempts);
-        return InputValue.create(extractToList(carNames), convertInt(numberOfAttempts));
+        return InputValue.create(Names.createNames(extractNames(carNames)), convertInt(numberOfAttempts));
+    }
+
+    private static List<String> extractNames(String input) {
+        return Arrays.asList(input.split(","));
     }
 
     private static int convertInt(String value) {
         return Integer.parseInt(value);
     }
 
-    private static List<String> extractToList(String carNames) {
-        String[] names = carNames.split(",");
-        return Arrays.asList(names);
-    }
-
     private static void validate(String carNames, String numberOfAttempts) {
-        InputValidator.validateCarNames(carNames);
+        InputValidator.validateNullAndEmptySource(carNames);
         InputValidator.validateAttempts(numberOfAttempts);
     }
 

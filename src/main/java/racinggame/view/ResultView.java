@@ -1,7 +1,7 @@
 package racinggame.view;
 
-import racinggame.vo.MoveResult;
-import racinggame.vo.Winners;
+import racinggame.Names;
+import racinggame.RacingResult;
 
 import java.util.List;
 
@@ -15,23 +15,22 @@ public class ResultView {
     private static final String WINNER_MESSAGE = "가 최종 우승했습니다.";
     private static final int SOLO_WINNER = 1;
 
-    private final List<MoveResult> moveResults;
-    private final Winners winners;
+    private final RacingResult racingResult;
 
-    public ResultView(List<MoveResult> moveResults, Winners winners) {
-        this.moveResults = moveResults;
-        this.winners = winners;
+    public ResultView(RacingResult racingResult) {
+        this.racingResult = racingResult;
     }
 
     public void showResult() {
         System.out.println(EXECUTE_RESULT_MESSAGE);
 
-        moveResults.forEach(moveResult -> {
-            moveResult.getResults()
-                    .forEach(result -> {
-                        System.out.print(result.assignName());
-                        System.out.print(NAME_SYMBOL_DIVISION);
-                        System.out.println(printResult(result.currentPosition()));
+        racingResult.results()
+                .forEach(moveResult -> {
+                        moveResult.results()
+                                .forEach(car -> {
+                                    System.out.print(car.name());
+                                    System.out.print(NAME_SYMBOL_DIVISION);
+                                    System.out.println(printResult(car.position()));
                     });
             System.out.println(DIVISION);
         });
@@ -52,7 +51,9 @@ public class ResultView {
     }
 
     private String joinedWinnerNames() {
+        Names winners = racingResult.findWinners();
         List<String> names = winners.names();
+
         if (names.size() == SOLO_WINNER) {
             return names.get(0);
         }

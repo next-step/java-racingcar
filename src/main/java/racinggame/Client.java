@@ -1,12 +1,8 @@
 package racinggame;
 
 import racinggame.utils.GameExecutorFactory;
-import racinggame.utils.WinnerChooser;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
-import racinggame.vo.MoveResult;
-
-import java.util.List;
 
 public class Client {
 
@@ -15,11 +11,11 @@ public class Client {
         String carNames = inputView.carNames();
         String numberOfAttempts = inputView.numberOfAttempts();
 
-        GameExecutor gameExecutor = GameExecutorFactory.createGameExecutor(carNames, numberOfAttempts);
+        SimpleGameExecutor gameExecutor = GameExecutorFactory.createGameExecutor(carNames, numberOfAttempts);
 
-        List<MoveResult> results = gameExecutor.execute();
+        RacingResult result = gameExecutor.execute();
 
-        ResultView resultView = new ResultView(results, WinnerChooser.chooseWinner(results));
+        ResultView resultView = new ResultView(result);
         resultView.showResult();
     }
 }

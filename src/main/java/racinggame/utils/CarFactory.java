@@ -1,6 +1,7 @@
 package racinggame.utils;
 
 import racinggame.Car;
+import racinggame.Position;
 import racinggame.vo.InputValue;
 import racinggame.RacingCars;
 import racinggame.exception.NotInstanceException;
@@ -21,9 +22,7 @@ public class CarFactory {
     private static List<Car> createCars(InputValue inputValue) {
         return inputValue.carNames()
                 .stream()
-                .map(Car::new)
+                .map(name -> new Car(name, Position.createInitPosition()))
                 .collect(Collectors.toList());
     }
-
-
 }

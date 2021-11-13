@@ -1,6 +1,7 @@
 package racinggame.vo;
 
-import java.util.Collections;
+import racinggame.Names;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -8,20 +9,16 @@ public class InputValue {
 
     private final int numberOfCars;
     private final int numberOfAttempts;
-    private final List<String> carNames;
+    private final Names carNames;
 
-    private InputValue(List<String> carNames, int numberOfAttempts) {
-        this.numberOfCars = carNames.size();
+    private InputValue(Names carNames, int numberOfAttempts) {
+        this.numberOfCars = carNames.count();
         this.numberOfAttempts = numberOfAttempts;
         this.carNames = carNames;
     }
 
-    public static InputValue create(List<String> carNames, int numberOfAttempts) {
+    public static InputValue create(Names carNames, int numberOfAttempts) {
         return new InputValue(carNames, numberOfAttempts);
-    }
-
-    public int cars() {
-        return numberOfCars;
     }
 
     public int attempts() {
@@ -29,7 +26,7 @@ public class InputValue {
     }
 
     public List<String> carNames() {
-        return Collections.unmodifiableList(carNames);
+        return carNames.names();
     }
 
     @Override

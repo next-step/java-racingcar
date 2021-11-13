@@ -1,23 +1,46 @@
 package racinggame;
 
-import racinggame.vo.CarState;
+import java.util.Objects;
 
 public class Car {
-    private static final int INIT_POSITION = 0;
 
-    private CarState carState;
+    private final String name;
+    private final Position position;
 
-    public Car(String name) {
-        carState = new CarState(name, INIT_POSITION);
+    public Car(String name, Position position) {
+        this.position = position;
+        this.name = name;
+
     }
 
-    public void move(boolean movable) {
-        if (movable) {
-            carState = carState.move();
-        }
+    public Car move(int moveValue) {
+        position.increase(moveValue);
+        return new Car(name, Position.of(position.current()));
     }
 
-    public CarState currentState() {
-        return carState;
+    public boolean compareSamePosition(int position) {
+        return this.position
+                .same(position);
+    }
+
+    public int position() {
+        return position.current();
+    }
+
+    public String name() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 }
