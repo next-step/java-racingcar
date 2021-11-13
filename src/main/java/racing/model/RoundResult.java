@@ -10,23 +10,22 @@ import java.util.List;
  *
  * @version 1.0.0
  *
- * 2021-11-11
+ * 2021-11-12
  *
  * Copyright tnals1422
  */
 public class RoundResult {
 
-    private final List<Integer> resultPerCars = new LinkedList<>();
+    private final List<Car> resultPerCars = new LinkedList<>();
 
     public RoundResult(Cars cars) {
         cars.getCars()
                 .forEach(car -> {
-                    int position = car.getPosition();
-                    this.resultPerCars.add(position);
+                    this.resultPerCars.add(new Car(car.getName(), car.getPosition()));
                 });
     }
 
-    public List<Integer> getResult() {
+    public List<Car> getRecords() {
         return Collections.unmodifiableList(resultPerCars);
     }
 }

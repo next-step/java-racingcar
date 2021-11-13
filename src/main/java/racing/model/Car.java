@@ -9,14 +9,25 @@ import java.util.function.Predicate;
  *
  * @version 1.0.0
  *
- * 2021-11-10
+ * 2021-11-12
  *
  * Copyright tnals1422
  */
 public class Car {
 
     private static final int CRITERIA = 4;
-    private int position = 0;
+    private final String name;
+    private int position;
+
+    public Car(String carName) {
+        this.name = carName;
+        this.position = 0;
+    }
+
+    public Car(String carName, int position) {
+        this.name = carName;
+        this.position = position;
+    }
 
     public void moveOnSatisfiedCondition(int condition) {
         Optional.of(condition)
@@ -30,5 +41,9 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 }

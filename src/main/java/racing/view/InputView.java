@@ -8,7 +8,7 @@ import java.util.Scanner;
  *
  * @version 1.0.0
  *
- * 2021-11-11
+ * 2021-11-12
  *
  * Copyright tnals1422
  */
@@ -20,9 +20,9 @@ public class InputView {
         this.scanner = scanner;
     }
 
-    public Integer inputCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return scanner.nextInt();
+    public String inputCarName() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return scanner.nextLine();
     }
 
     public Integer inputRoundCount() {

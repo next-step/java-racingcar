@@ -13,18 +13,18 @@ import java.util.Scanner;
  *
  * @version 1.0.0
  *
- * 2021-11-10
+ * 2021-11-12
  *
  * Copyright tnals1422
  */
 public class RacingController {
     public static void main(String[] args) {
         InputView inputView = new InputView(new Scanner(System.in));
-        Integer carCount = inputView.inputCarCount();
+        String carName = inputView.inputCarName();
         Integer roundCount = inputView.inputRoundCount();
 
-        RacingResult result = new Racing(carCount, roundCount).start();
+        RacingResult result = new Racing(carName, roundCount).start();
 
-        new OutputView(result).printGameResult();
+        new OutputView(result).printRacingResult();
     }
 }
