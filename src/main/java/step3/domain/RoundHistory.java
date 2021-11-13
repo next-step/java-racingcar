@@ -1,7 +1,4 @@
-package step3.domain.history;
-
-import step3.domain.Car;
-import step3.domain.Cars;
+package step3.domain;
 
 import java.util.List;
 

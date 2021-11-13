@@ -1,17 +1,19 @@
-package step3.domain.history;
+package step3.service;
+
+import step3.domain.RoundHistory;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class GameHistory {
-    private Map<Integer, RoundHistory> gameHistory;
+public class HistoryService {
+    private final Map<Integer, RoundHistory> gameHistory;
 
-    private GameHistory() {
+    private HistoryService() {
         this.gameHistory = new LinkedHashMap<>();
     }
 
-    public static GameHistory create() {
-        return new GameHistory();
+    public static HistoryService create() {
+        return new HistoryService();
     }
 
     public void record(Integer round, RoundHistory roundHistory) {

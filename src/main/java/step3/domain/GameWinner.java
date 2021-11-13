@@ -1,7 +1,6 @@
 package step3.domain;
 
-import step3.domain.history.GameHistory;
-import step3.domain.history.RoundHistory;
+import step3.service.HistoryService;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,24 +8,24 @@ import java.util.stream.Collectors;
 public class GameWinner {
     private static final int LAST_ROUND = 0;
 
-    private Car car;
+    private HistoryService historyService;
 
     private GameWinner() {
     }
 
-    public GameWinner(Car car) {
-        this.car = car;
+    private GameWinner(HistoryService historyService) {
+        this.historyService = historyService;
     }
 
-    public String getCarName() {
-        return car.getName();
+    public static GameWinner of(HistoryService historyService) {
+        return new GameWinner(historyService);
     }
 
-    public static List<GameWinner> getGameWinners(GameHistory gameHistory) {
-        RoundHistory lastRound = gameHistory.getBy(LAST_ROUND);
+    public List<String> getGameWinnersName() {
+        RoundHistory lastRound = historyService.getBy(LAST_ROUND);
         return lastRound.getCarList().stream()
                 .filter(car -> car.getPosition() == lastRound.getMaxPosition())
-                .map(GameWinner::new)
+                .map(Car::getName)
                 .collect(Collectors.toList());
     }
 }

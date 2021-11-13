@@ -1,6 +1,6 @@
 package step3.domain;
 
-import step3.domain.history.GameHistory;
+import step3.service.HistoryService;
 import step3.service.IntNumberGenerator;
 
 public class GameRound {
@@ -8,7 +8,7 @@ public class GameRound {
 
     private int round;
     private IntNumberGenerator generator;
-    private GameHistory history;
+    private HistoryService history;
 
     private GameRound() {
     }
@@ -17,14 +17,14 @@ public class GameRound {
         validateIsMinimum(round);
         this.round = round;
         this.generator = generator;
-        this.history = GameHistory.create();
+        this.history = HistoryService.create();
     }
 
     public static GameRound create(int round, IntNumberGenerator generator) {
         return new GameRound(round, generator);
     }
 
-    public GameHistory start(Participant participant) {
+    public HistoryService start(Participant participant) {
         while (round-- != MINIMUM_ROUND) {
             history.record(round, participant.move(generator));
         }

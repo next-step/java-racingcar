@@ -1,6 +1,6 @@
 package step3;
 
-import step3.domain.RacingGame;
+import step3.controller.RacingGameController;
 import step3.view.InputView;
 
 public class RacingCarApplication {
@@ -14,7 +14,7 @@ public class RacingCarApplication {
     }
 
     private static void start(String names, int gameRoundCount) {
-        RacingGame racingGame = RacingGame.create(gameRoundCount, names);
-        racingGame.start();
+        RacingGameController racingGameController = RacingGameController.create(gameRoundCount, names);
+        racingGameController.start();
     }
 }

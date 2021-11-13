@@ -1,19 +1,20 @@
 package step3.domain;
 
 import org.junit.jupiter.api.Test;
+import step3.controller.RacingGameController;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingGameTest {
+public class RacingGameControllerTest {
 
     @Test
     void 경주_게임을_생성한다() {
         //given
         String names = "java,c++,go";
         //when
-        RacingGame racingGame = RacingGame.create(3, names);
+        RacingGameController racingGameController = RacingGameController.create(3, names);
         //then
-        assertThat(racingGame).isNotNull();
+        assertThat(racingGameController).isNotNull();
     }
 
     @Test
@@ -21,8 +22,8 @@ public class RacingGameTest {
         //given
         String names = "java,c++,go";
         //when
-        RacingGame racingGame = RacingGame.create(3, names);
+        RacingGameController racingGameController = RacingGameController.create(3, names);
         //then
-        racingGame.start();
+        racingGameController.start();
     }
 }

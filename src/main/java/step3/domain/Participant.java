@@ -1,6 +1,5 @@
 package step3.domain;
 
-import step3.domain.history.RoundHistory;
 import step3.service.IntNumberGenerator;
 
 public class Participant {

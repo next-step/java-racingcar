@@ -2,11 +2,10 @@ package step3.view;
 
 import step3.domain.Car;
 import step3.domain.GameWinner;
-import step3.domain.history.GameHistory;
-import step3.domain.history.RoundHistory;
+import step3.service.HistoryService;
+import step3.domain.RoundHistory;
 
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class ResultView {
     private static final String WHITE_SPACE = " ";
@@ -20,15 +19,14 @@ public class ResultView {
         System.out.println(GAME_START_OUTPUT_MESSAGE);
     }
 
-    public static void result(GameHistory history) {
+    public static void result(HistoryService history) {
         showGameHistory(history.getAll());
-        showGameWinner(history);
+        showGameWinner(GameWinner.of(history));
     }
 
-    private static void showGameWinner(GameHistory history) {
-        System.out.println(GameWinner.getGameWinners(history).stream()
-                .map(GameWinner::getCarName)
-                .collect(Collectors.joining(COMMA + WHITE_SPACE)) + GAME_WINNER_OUTPUT_MESSAGE);
+    private static void showGameWinner(GameWinner gameWinner) {
+        System.out.println(String.join(COMMA + WHITE_SPACE,
+                gameWinner.getGameWinnersName()) + GAME_WINNER_OUTPUT_MESSAGE);
     }
 
     private static void showGameHistory(Map<Integer, RoundHistory> history) {
