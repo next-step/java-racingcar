@@ -8,18 +8,22 @@ public class RacingGame {
     private final Laps laps;
     private final CarStateGenerator carStateGenerator;
 
-    public RacingGame(Integer carCount, Laps laps, CarStateGenerator carStateGenerator) {
-        this.cars = Cars.from(carCount);
+    public RacingGame(Names names, Laps laps, CarStateGenerator carStateGenerator) {
+        this.cars = Cars.from(names);
         this.laps = laps;
         this.carStateGenerator = carStateGenerator;
     }
 
     public void startRacing() {
-        System.out.print("실행 결과");
+        System.out.print("\n실행 결과");
         while (!laps.isGoal()) {
             cars.roundRacing(carStateGenerator);
             ResultView.currentRecord(cars);
             laps.passStartLine();
         }
+    }
+
+    public Cars getCars() {
+        return cars;
     }
 }
