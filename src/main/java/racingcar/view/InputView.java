@@ -14,7 +14,7 @@ public class InputView {
     private List<String> carNames;
     private int tryCount;
 
-    public InputView() throws Exception {
+    public void startRacingGame() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(CAR_NAME_INPUT_MSG);
@@ -24,7 +24,7 @@ public class InputView {
         this.tryCount = scanner.nextInt();
     }
 
-    private List<String> splitAndMakeCarNames(Scanner scanner) throws Exception {
+    private List<String> splitAndMakeCarNames(Scanner scanner) {
         String[] carNameArray = scanner.next().split(COMMA);
         List<String> carNames = Arrays.asList(carNameArray);
         for (String carName : carNames) {
@@ -33,9 +33,9 @@ public class InputView {
         return carNames;
     }
 
-    private void limitCarNameLength(String carName) throws Exception {
+    private void limitCarNameLength(String carName) {
         if (carName.length() > CAR_NAME_REFERENCE_VALUE) {
-            throw new Exception(CAR_NAME_LIMIT_MSG);
+            throw new IndexOutOfBoundsException(CAR_NAME_LIMIT_MSG);
         }
     }
 
@@ -46,6 +46,4 @@ public class InputView {
     public int getTryCount() {
        return tryCount;
     }
-
-
 }

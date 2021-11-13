@@ -14,11 +14,12 @@ public class RacingGame {
     private static final int RANDOM_BOUND = 10;
 
     public static void main(String[] args)  {
-        InputView inputView = null;
+        InputView inputView = new InputView();
         try {
-            inputView = new InputView();
-        } catch (Exception e) {
+            inputView.startRacingGame();
+        } catch (IndexOutOfBoundsException e) {
             System.out.println(e.getMessage());
+            System.exit(0);
         }
 
         List<RacingCar> racingCarList = makeRacingCars(inputView);

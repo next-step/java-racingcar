@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import calculator.Calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -34,7 +33,7 @@ public class InputViewTest {
     public void limitFiveLengthException(String name) {
         assertThatThrownBy(() -> {
             if (name.length() > 5)
-                throw new Exception("자동차 이름은 5자를 초과할 수 없습니다.");
+                throw new IndexOutOfBoundsException("자동차 이름은 5자를 초과할 수 없습니다.");
         }).isInstanceOf(Exception.class)
                 .hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");
     }
