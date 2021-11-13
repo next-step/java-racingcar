@@ -9,6 +9,8 @@ public class ResultView {
     private static final String HYPHEN_SIGN = "-";
     private static final String RESULT_MSG = "실행 결과";
     private static final String WINNER_MSG = "가 최종 우승했습니다.";
+    private static final String COMMA_SPACE = ", ";
+    private static final String SPACE_COLON_SPACE = " : ";
 
     public ResultView() {
         System.out.println();
@@ -25,7 +27,7 @@ public class ResultView {
     public String draw(RacingCar racingCar) {
         StringBuilder sb = new StringBuilder();
         sb.append(racingCar.getCarName());
-        sb.append(" : ");
+        sb.append(SPACE_COLON_SPACE);
         for (int i = 0; i < racingCar.getMoveCount(); i ++) {
             sb.append(HYPHEN_SIGN);
         }
@@ -37,7 +39,7 @@ public class ResultView {
         System.out.println();
         String winnerNames = winnerRacingCars.stream()
                 .map(RacingCar::getCarName)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(COMMA_SPACE));
         StringBuilder sb = new StringBuilder();
         sb.append(winnerNames).append(WINNER_MSG);
         System.out.println(sb.toString());
