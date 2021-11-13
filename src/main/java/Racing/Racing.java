@@ -1,39 +1,40 @@
 package Racing;
 
-import java.util.Random;
+import Racing.car.Car;
+import Racing.car.CarList;
+import Racing.stage.Stage;
+import Racing.stage.StageStatus;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.LongStream;
+import java.util.stream.IntStream;
 
 public class Racing {
 
-  static final private String TOKEN = "-";
-  static final private String SPLIT_TOKEN = "\n";
+  private final CarList cars;
 
-  public String run(int countOfCar, int countOfBoard) {
+  public Racing(int countOfCar) {
+    List<Car> cars = IntStream.range(0, countOfCar).mapToObj(i -> new Car()).collect(Collectors.toList());
 
-    return getLongStream(countOfBoard)
-        .mapToObj(i -> getCollect(countOfCar))
-        .map(result -> result + SPLIT_TOKEN)
-        .collect(Collectors.joining());
+    this.cars = new CarList(cars);
   }
 
-  private String getCollect(int countOfCar) {
-    return getLongStream(countOfCar)
-        .mapToObj(innerElement -> TOKEN.repeat(getRandomToken()) + SPLIT_TOKEN)
-        .collect(Collectors.joining());
-  }
+  public String run(int countOfStage) {
+    List<Stage> stages = new ArrayList<>();
 
-  private LongStream getLongStream(int endInclusive) {
-    return LongStream.rangeClosed(1, endInclusive);
-  }
-
-  private int getRandomToken() {
-    int i = 0;
-    while (i == 0) {
-      i = new Random().nextInt(10);
+    for(int i = 0; i < countOfStage; i ++){
+      stages.add(new Stage());
     }
-    return i;
+
+    return stages.stream()
+            .filter(targetStage -> targetStage.status.equals(StageStatus.READY))
+            .map((this::getCarsDisplay))
+            .collect(Collectors.joining());
   }
 
-
+  private String getCarsDisplay(Stage stage) {
+    stage.moveCars(cars);
+    return cars.displayCarDistance()+"\n\n";
+  }
 }
