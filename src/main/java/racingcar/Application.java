@@ -17,9 +17,9 @@ public class Application {
         Cars cars = getCars();
         TryCount tryCount = getTryCount();
 
-        RacingGame racingGame = RacingGame.of(cars, tryCount);
+        RacingGame racingGame = RacingGame.of(cars);
 
-        GameLog gameLog = racingGame.play();
+        GameLog gameLog = racingGame.play(tryCount);
 
         OutputView.printGameLog(gameLog);
         OutputView.printWinners(cars);
