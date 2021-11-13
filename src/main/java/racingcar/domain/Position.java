@@ -4,7 +4,7 @@ import racingcar.exception.PositionException;
 
 import java.util.Objects;
 
-public class Position implements Comparable<Position> {
+public class Position {
     private static final int INIT_POSITION = 0;
 
     private int position;
@@ -40,6 +40,13 @@ public class Position implements Comparable<Position> {
         return position;
     }
 
+    public Position biggerPosition(Position position) {
+        if (this.position > position.position) {
+            return this;
+        }
+        return position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,10 +58,5 @@ public class Position implements Comparable<Position> {
     @Override
     public int hashCode() {
         return Objects.hash(position);
-    }
-
-    @Override
-    public int compareTo(Position o) {
-        return Integer.compare(this.position, o.position);
     }
 }
