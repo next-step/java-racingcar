@@ -20,10 +20,6 @@ public class CarRacingResult {
         racingResult.add(currCarPositions);
     }
 
-    public List<List<Integer>> getRacingResult() {
-        return racingResult;
-    }
-
     private List<Integer> getCurrCarPositions(Cars cars) {
         List<Integer> currCarPositions = new ArrayList<>();
 
@@ -33,4 +29,9 @@ public class CarRacingResult {
 
         return currCarPositions;
     }
+
+    public List<List<Integer>> getRacingResult() {
+        return racingResult;
+    }
+
 }

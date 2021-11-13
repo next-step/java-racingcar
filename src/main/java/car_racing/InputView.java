@@ -11,17 +11,15 @@ public class InputView {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(INPUT_MESSAGE_NUMBER_OF_CARS);
-        int numberOfCars = scanner.nextInt();
 
-        return numberOfCars;
+        return scanner.nextInt();
     }
 
     public int showMessageAndGetNumberOfRound() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(INPUT_MESSAGE_NUMBER_OF_ROUND);
-        int numberOfRound = scanner.nextInt();
 
-        return numberOfRound;
+        return scanner.nextInt();
     }
 }

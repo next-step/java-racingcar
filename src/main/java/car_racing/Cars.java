@@ -18,6 +18,14 @@ public class Cars {
         this.carsForGame = carsForGame;
     }
 
+    private List<Car> createCars(int numberOfCars) {
+        List<Car> cars = new ArrayList<>();
+        for (int carCount = 0; carCount < numberOfCars; carCount++) {
+            cars.add(new Car());
+        }
+        return cars;
+    }
+
     public void playOneRound(MoveStrategy moveStrategy) {
         for (Car car : carsForGame) {
             car.move(moveStrategy);
@@ -26,14 +34,6 @@ public class Cars {
 
     public List<Car> getCars() {
         return carsForGame;
-    }
-
-    private List<Car> createCars(int numberOfCars) {
-        List<Car> cars = new ArrayList<>();
-        for (int carCount = 0; carCount < numberOfCars; carCount++) {
-            cars.add(new Car());
-        }
-        return cars;
     }
 
 }
