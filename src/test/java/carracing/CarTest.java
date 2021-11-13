@@ -20,18 +20,15 @@ public class CarTest {
     @DisplayName("전진 테스트")
     void advance() {
         Car racingCar = new Car();
-        racingCar.driving(4);
-
-        Assertions.assertThat(racingCar.getDrivingHistory()).isEqualTo(2);
+        Assertions.assertThat(racingCar.driving(4)).isTrue();
     }
 
     @Test
     @DisplayName("멈춤 테스트")
     void stoppage() {
         Car notRacingCar = new Car();
-        notRacingCar.driving(3);
-
-        Assertions.assertThat(notRacingCar.getDrivingHistory()).isEqualTo(0);
+        notRacingCar.driving(4);
+        Assertions.assertThat(notRacingCar.driving(3)).isFalse();
     }
 
 }
