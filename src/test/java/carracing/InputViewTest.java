@@ -11,8 +11,7 @@ public class InputViewTest {
     @DisplayName("숫자포멧에러")
     void valid() {
         assertThatThrownBy(() -> {
-            InputView inputView = new InputView();
-            inputView.valid("오", "육");
+            new InputView("오", "육");
         }).isInstanceOf(NumberFormatException.class);
     }
 }

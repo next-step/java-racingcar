@@ -17,7 +17,7 @@ public class CarRacingTest {
         System.out.println("시도할 회수는 몇 회 인가요? : " + tryCount);
 
         CarRacing carRacing = new CarRacing();
-        carRacing.racingStart(carCount, tryCount);
+        carRacing.racingStart(new InputView(carCount, tryCount));
     }
 
     @Test
@@ -27,7 +27,7 @@ public class CarRacingTest {
         String tryCount = "5";
 
         CarRacing carRacing = new CarRacing();
-        RaceResult result = carRacing.racingStart(carCount, tryCount);
+        RaceResult result = carRacing.racingStart(new InputView(carCount, tryCount));
 
         int roundCount = Integer.parseInt(tryCount);
         Assertions.assertThat(result.roundCount).isEqualTo(roundCount);
@@ -40,10 +40,10 @@ public class CarRacingTest {
         String tryCount = "13";
 
         CarRacing carRacing = new CarRacing();
-        RaceResult result = carRacing.racingStart(carCount, tryCount);
+        InputView inputView = new InputView(carCount, tryCount);
+        RaceResult result = carRacing.racingStart(inputView);
 
-        int totalCount = Integer.parseInt(carCount) * Integer.parseInt(tryCount);
-        Assertions.assertThat(result.totalRaceCount).isEqualTo(totalCount);
+        Assertions.assertThat(result.totalRaceCount).isEqualTo(inputView.getTotalDrivingCount());
     }
 
 }
