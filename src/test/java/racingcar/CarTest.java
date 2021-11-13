@@ -50,14 +50,7 @@ class CarTest {
 
         assertThat(afterPosition).isEqualTo(beforePosition + 1);
     }
-
-
-    @ValueSource(ints = {-1, -5, 100, 50})
-    @ParameterizedTest(name = "[{arguments}] 0 ~ 9 가 아니면, IllegalArgumentException 이 발생한다.")
-    void invalidInputValueIllegalArgumentExceptionTest(int command) {
-        assertThatIllegalArgumentException().isThrownBy(() -> car.action(mockRandomValue(command)));
-    }
-
+    
     @ValueSource(ints = {10, 5, 3, 1})
     @ParameterizedTest(name = "[{arguments}] 자동차의 position에 따라, 알맞는 거리를 반환한다.")
     void getDistanceByPositionTest(int position) {
