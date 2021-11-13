@@ -27,15 +27,23 @@ public class Car {
     }
 
     /**
-     * 차량 이동
+     * 차량 이동을 위한 시도 숫자 조회
+     * @return
      */
-    public void move(){
+    public int tryMoveNumber() {
         Random random = new Random();
         int num = random.nextInt(MAX_RANDOM_NUMBER);
-        if(num >= MIN_FORWARD_NUMBER){
+        return num;
+    }
+
+    /**
+     * 차량 이동
+     * @return
+     */
+    public void moveCar(int tryMoveNumber){
+        if(tryMoveNumber >= MIN_FORWARD_NUMBER){
             this.position = this.position + MOVE_CHARACTER;
         }
-//        System.out.println("Car number : " + this.number + " | random number : "  + num + " | position : "  + position);
     }
 
     /**

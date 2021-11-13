@@ -26,15 +26,14 @@ public class SetUpCar {
 
         this.carCount = Integer.parseInt(carCount);
         this.tryCount = Integer.parseInt(tryCount);
-
-        generateCarList();
+        this.carList = generateCarList(this.carCount);
     }
 
     /**
      * 입력 문자열 Validation 체크
-     * @param param
+     * @param param 입력 문자열
      */
-    private void validateParameter(String param) {
+    public static void validateParameter(String param) {
         if (Objects.isNull(param) || param.isEmpty()) {
             throw new IllegalArgumentException("입력 문자열이 정상적이지 않습니다.");
         }
@@ -47,26 +46,28 @@ public class SetUpCar {
      * 자동차 수에 따라 Car List 생성
      * @return
      */
-    private void generateCarList() {
-        carList = new ArrayList<>();
-        for (int i = START_CAR_NUMBER; i < this.carCount; i++) {
+    public static List<Car> generateCarList(int carCount) {
+        List<Car> carList = new ArrayList<>();
+        for (int i = START_CAR_NUMBER; i < carCount; i++) {
             Car car = new Car(i, BLANK_STRING_VALUE);
             carList.add(car);
         }
+        return carList;
     }
 
     /**
      * 시도 횟수에 따라 차량 이동
      * @return
      */
-    public void tryRacing() {
+    public boolean tryRacing() {
         for (int i = START_CAR_NUMBER; i < this.tryCount; i++){
             for (Car car : carList) {
-                car.move();
+                car.moveCar(car.tryMoveNumber());
                 System.out.println(car.getPosition());
             }
             System.out.println(BLANK_STRING_VALUE);
         }
+        return true;
     }
 
     @Override

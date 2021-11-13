@@ -18,8 +18,8 @@ public class RacingCar {
         executeRacingCar(carCount, tryCount);
     }
 
-    private static void executeRacingCar(String carCount, String tryCount) {
+    public static boolean executeRacingCar(String carCount, String tryCount) {
         SetUpCar setUpCar = new SetUpCar(carCount, tryCount);
-        setUpCar.tryRacing();
+        return setUpCar.tryRacing();
     }
 }
