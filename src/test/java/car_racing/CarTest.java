@@ -1,5 +1,6 @@
 package car_racing;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -7,15 +8,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
 
     @Test
+    @DisplayName("when create car, default status are set - position equals to 0")
     void createCar() {
         // given
-        int id = 1;
-
         // when
-        Car car = new Car(id);
+        Car car = new Car();
 
         // then
-        assertThat(car.getCurrStatus()).isEqualTo(Status.STOP);
-        assertThat(car).isEqualTo(new Car(1, Status.STOP));
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("Move car with test strategy - position becomes plus 1")
+    void moveCar() {
+        // given
+        Car car = new Car();
+        MoveStrategy moveStrategy = new TestMoveStrategy();
+
+        // when
+        car.move(moveStrategy);
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }

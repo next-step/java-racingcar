@@ -4,15 +4,10 @@ import java.util.*;
 
 public class CarRacingResult {
 
-    private static final String ONE_ROUND_END_SIGNAL = "\n";
-    private static final int MIN_CURR_RESULT_SIZE = 1;
-
-    private final List<StringBuilder> currResult;
-    private final StringBuilder finalResult;
+    private final List<List<Integer>> racingResult;
 
     public CarRacingResult() {
-        currResult = new ArrayList<>();
-        finalResult = new StringBuilder();
+        this.racingResult = new ArrayList<>();
     }
 
     public void update(Cars cars) {
@@ -20,41 +15,22 @@ public class CarRacingResult {
             return;
         }
 
-        if (uninitialized()) {
-            initCurrResult(cars.numberOfCars());
-        }
+        List<Integer> currCarPositions = getCurrCarPositions(cars);
+
+        racingResult.add(currCarPositions);
+    }
+
+    public List<List<Integer>> getRacingResult() {
+        return racingResult;
+    }
+
+    private List<Integer> getCurrCarPositions(Cars cars) {
+        List<Integer> currCarPositions = new ArrayList<>();
 
         for (Car car : cars.getCars()) {
-            updateToCurrResult(car);
+            currCarPositions.add(car.getPosition());
         }
 
-        updateToFinalResult();
-    }
-
-    public String show() {
-        return finalResult.toString();
-    }
-
-    private void updateToCurrResult(Car car) {
-        Status status = car.getCurrStatus();
-        currResult.get(car.getId()).append(status.signal);
-    }
-
-    private void updateToFinalResult() {
-        for (StringBuilder result : currResult) {
-            finalResult.append(result).append(ONE_ROUND_END_SIGNAL);
-        }
-        finalResult.append(ONE_ROUND_END_SIGNAL);
-    }
-
-
-    private void initCurrResult(int numberOfCars) {
-        while (numberOfCars-- > 0) {
-            currResult.add(new StringBuilder());
-        }
-    }
-
-    private boolean uninitialized() {
-        return currResult.size() < MIN_CURR_RESULT_SIZE;
+        return currCarPositions;
     }
 }

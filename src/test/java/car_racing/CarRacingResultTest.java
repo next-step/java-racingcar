@@ -1,6 +1,6 @@
 package car_racing;
 
-import org.junit.jupiter.api.DisplayName;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -10,16 +10,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRacingResultTest {
 
-    private static final String MOVE = "-";
-    private static final String ONE_ROUND_ENDS = "\n";
-
     @Test
-    void createCarRacingResult() {
+    void createCarRacingResult_default() {
         // given
         CarRacingResult carRacingResult = new CarRacingResult();
 
         // when
-        String result = carRacingResult.show();
+        List<List<Integer>> result = carRacingResult.getRacingResult();
 
         // then
         assertThat(result).isEmpty();
@@ -28,13 +25,13 @@ class CarRacingResultTest {
     @Test
     void update() {
         // given
-        List<Car> carList = new ArrayList<Car>(){{
-            add(new Car(0, Status.MOVE));
-            add(new Car(1, Status.MOVE));
-            add(new Car(2, Status.STOP));
-            add(new Car(3, Status.MOVE));
-            add(new Car(4, Status.STOP));
-            add(new Car(5, Status.MOVE));
+        List<Car> carList = new ArrayList<Car>() {{
+            add(new Car(1));
+            add(new Car(2));
+            add(new Car(3));
+            add(new Car(4));
+            add(new Car(5));
+            add(new Car(6));
         }};
 
         Cars cars = new Cars(carList);
@@ -42,34 +39,10 @@ class CarRacingResultTest {
 
         // when
         carRacingResult.update(cars);
-        String result = carRacingResult.show();
+        List<List<Integer>> result = carRacingResult.getRacingResult();
 
         // then
-        assertThat(result).isEqualTo(
-                MOVE +
-                ONE_ROUND_ENDS +
-                MOVE +
-                ONE_ROUND_ENDS +
-                ONE_ROUND_ENDS +
-                MOVE +
-                ONE_ROUND_ENDS +
-                ONE_ROUND_ENDS +
-                MOVE +
-                ONE_ROUND_ENDS +
-                ONE_ROUND_ENDS);
+        assertThat(result.get(0)).isEqualTo(Lists.newArrayList(1, 2, 3, 4, 5, 6));
     }
 
-    @Test
-    @DisplayName("There is null passed, returns empty result")
-    void update_with_null_cars() {
-        // given
-        CarRacingResult carRacingResult = new CarRacingResult();
-        carRacingResult.update(null);
-
-        // when
-        String result = carRacingResult.show();
-
-        // then
-        assertThat(result).isEmpty();
-    }
 }

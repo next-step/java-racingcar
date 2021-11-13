@@ -4,40 +4,27 @@ import java.util.Objects;
 
 public class Car {
 
-    private static final MoveStrategy moveStrategy = new RandomMoveStrategy();
+    private int position;
 
-    private final int id;
-    private Status currStatus;
-
-    public Car(int carId) {
-        currStatus = Status.STOP;
-        id = carId;
+    public Car() {
+        this.position = 0;
     }
 
     /**
      * Test
      **/
-    public Car(int carId, Status status) {
-        currStatus = status;
-        id = carId;
+    public Car(int position) {
+        this.position = position;
     }
 
-    public void move() {
-        if (ableToMove()) {
-            currStatus = Status.MOVE;
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.decideToMove()) {
+            position++;
         }
     }
 
-    public Status getCurrStatus() {
-        return currStatus;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    private boolean ableToMove() {
-        return moveStrategy.decideToMove();
+    public int getPosition() {
+        return position;
     }
 
     @Override
@@ -45,18 +32,15 @@ public class Car {
         if (this == o) {
             return true;
         }
-
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Car car = (Car) o;
-
-        return id == car.id && currStatus == car.currStatus;
+        return position == car.position;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, currStatus);
+        return Objects.hash(position);
     }
 }

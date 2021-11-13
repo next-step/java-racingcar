@@ -8,8 +8,8 @@ public class RandomMoveStrategy implements MoveStrategy {
     private final int randomRangeTo;
 
     public RandomMoveStrategy() {
-        randomRangeFrom = 0;
-        randomRangeTo = 10;
+        this.randomRangeFrom = 0;
+        this.randomRangeTo = 10;
     }
 
     /**
