@@ -15,8 +15,9 @@ import java.util.Random;
 public class Condition {
 
     private static final int LIMIT = 10;
+    private static final Random RANDOM = new Random();
 
     public static int generate() {
-        return new Random().nextInt(LIMIT);
+        return RANDOM.nextInt(LIMIT);
     }
 }

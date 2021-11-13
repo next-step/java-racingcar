@@ -12,29 +12,21 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     @DisplayName("전진")
-    void forward(int condition) throws NoSuchFieldException, IllegalAccessException {
+    void forward(int condition) {
         Car car = new Car();
         car.moveOnSatisfiedCondition(condition);
 
-        Field position = Car.class.getDeclaredField("position");
-        position.setAccessible(true);
-        Integer actualPosition = (Integer) position.get(car);
-
-        assertThat(actualPosition).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("움직이지 않음")
-    void hold(int condition) throws NoSuchFieldException, IllegalAccessException {
+    void hold(int condition) {
         Car car = new Car();
         car.moveOnSatisfiedCondition(condition);
 
-        Field position = Car.class.getDeclaredField("position");
-        position.setAccessible(true);
-        Integer actualPosition = (Integer) position.get(car);
-
-        assertThat(actualPosition).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
 }

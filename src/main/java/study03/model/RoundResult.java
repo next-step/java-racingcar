@@ -1,5 +1,6 @@
 package study03.model;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,6 +27,6 @@ public class RoundResult {
     }
 
     public List<Integer> getResult() {
-        return resultPerCars;
+        return Collections.unmodifiableList(resultPerCars);
     }
 }

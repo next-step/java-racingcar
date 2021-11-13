@@ -1,5 +1,6 @@
 package study03.model;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,6 +27,6 @@ public class RacingResult {
     }
 
     public List<RoundResult> getResult() {
-        return roundResults;
+        return Collections.unmodifiableList(roundResults);
     }
 }
