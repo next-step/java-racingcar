@@ -24,7 +24,7 @@ public class ContestTest {
         Contest contest = new Contest(round, participants, new InputMovingStrategy(4), new LocationReporter());
         contest.play();
 
-        assertThat(firstCar.location).isEqualTo(3);
-        assertThat(secondCar.location).isEqualTo(3);
+        assertThat(firstCar.getLocation()).isEqualTo(3);
+        assertThat(secondCar.getLocation()).isEqualTo(3);
     }
 }

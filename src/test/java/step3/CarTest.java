@@ -11,13 +11,13 @@ public class CarTest {
     void move() {
         final Car car = new Car();
         car.play(new InputMovingStrategy(4));
-        assertThat(car.location).isEqualTo(1);
+        assertThat(car.getLocation()).isEqualTo(1);
     }
 
     @Test
     void stay() {
         final Car car = new Car();
         car.play(new InputMovingStrategy(3));
-        assertThat(car.location).isEqualTo(0);
+        assertThat(car.getLocation()).isEqualTo(0);
     }
 }
