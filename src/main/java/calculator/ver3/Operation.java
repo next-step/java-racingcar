@@ -41,14 +41,18 @@ public enum Operation {
     }
 
     public static Operation valueOfString(String text) {
-        if (PLUS.symbol.equals(text))
+        if (PLUS.symbol.equals(text)) {
             return PLUS;
-        if (MINUS.symbol.equals(text))
+        }
+        if (MINUS.symbol.equals(text)) {
             return MINUS;
-        if (MULTIPLE.symbol.equals(text))
+        }
+        if (MULTIPLE.symbol.equals(text)) {
             return MULTIPLE;
-        if (DIVIDE.symbol.equals(text))
+        }
+        if (DIVIDE.symbol.equals(text)) {
             return DIVIDE;
+        }
 
         throw new IllegalArgumentException(ERR_MSG_OPERATION);
     }
