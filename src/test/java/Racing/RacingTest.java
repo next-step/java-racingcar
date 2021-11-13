@@ -11,15 +11,15 @@ class RacingTest {
   @ParameterizedTest
   @DisplayName("레이싱 시작시 입력값에 맞게 출력합니다.")
   @CsvSource(value = {"3|5", "4|6", "6|7"}, delimiter = '|')
-  void testRace(int countOfCar, int countOfBoard) {
+  void testRace(int countOfCar, int countOfStage) {
     // given
     // when
-    String result = new Racing().run(countOfCar, countOfBoard);
+    String board = new Racing(countOfCar).run(countOfStage);
     // then
-    String[] boards = result.split("\n\n");
-    assertThat(boards.length).isEqualTo(countOfBoard);
-    for (String board : boards) {
-      String[] track = board.split("\n");
+    String[] stages = board.split("\n\n");
+    assertThat(stages.length).isEqualTo(countOfStage);
+    for (String stage : stages) {
+      String[] track = stage.split("\n");
       assertThat(track.length).isEqualTo(countOfCar);
     }
   }
