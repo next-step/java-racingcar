@@ -3,8 +3,8 @@ package step3;
 public class Car {
     public int location = 0;
 
-    public void play(MovingStrategy movingStrategy) {
-        Boolean moved = movingStrategy.run();
+    public void play(InputMovingStrategy inputMovingStrategy) {
+        Boolean moved = inputMovingStrategy.run();
         if (moved) {
             location++;
         }
