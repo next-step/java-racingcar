@@ -1,5 +1,9 @@
 package racingcar.view;
 
+import racingcar.Car;
+
+import java.util.List;
+
 public class ResultView {
     private static final String MOVEMENT = "-";
 
@@ -7,12 +11,15 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public void draw(int[] result) {
-        for (int i = 0; i < result.length; i++) {
-            for (int j = 0; j < result[i]; j++)
-                System.out.print(MOVEMENT);
+    public void printAllCarsMovement(List<Car> result) {
+        for (int i = 0; i < result.size(); i++) {
+            printACarMovement(result.get(i).getMovement());
             System.out.println();
         }
         System.out.println();
+    }
+
+    private void printACarMovement(int movement) {
+        for (int i = 0; i < movement; i++) System.out.print(MOVEMENT);
     }
 }

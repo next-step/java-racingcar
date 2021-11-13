@@ -1,11 +1,8 @@
 package calculator;
 
 public class Calculator {
-    private static final String SEPARATOR = " ";
-
     public static int calculate(String text) {
-        InputCheckor.checkInput(text);
-        String[] values = text.split(SEPARATOR);
+        String[] values = InputCheckor.inputSplit(text);
         MyNumber result = new MyNumber(values[0]);
         MyNumber second;
         String symbol;

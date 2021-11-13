@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 
 public class GameTest {
-    private static Game game = new Game();
-
     @BeforeEach
     void init() {
         String input = "3 10";
@@ -21,6 +19,7 @@ public class GameTest {
     @DisplayName("자동차 3대, 움직임 10번일때 게임 실행")
     @Test
     public void oneGame() {
+        Game game = new Game();
         game.racingCar();
     }
 }

@@ -3,19 +3,38 @@ package racingcar;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Game {
-    private int carsCount;
-    private int movementsCount;
+    private final static Random random = new Random();
+
+    private final static int RANDOM_RANGE = 10;
+    private final static int CUTLINE = 4;
+    private final static int STEP = 1;
+
+    private List<Car> cars = new ArrayList<>();
+
+    private InputView input = new InputView();
+    private ResultView resultView = new ResultView();
 
     public void racingCar() {
-        InputView input = new InputView();
-        carsCount = input.getCarCount();
-        movementsCount = input.getTryCount();
-        CarList cars = new CarList(carsCount);
+        int carsSize = input.getCarCount();
+        int rounds = input.getTryCount();
+        for (int i = 0; i < carsSize; i++) {
+            cars.add(new Car(random, 0));
+        }
 
-        ResultView resultView = new ResultView();
-        for(int i = 0; i < movementsCount; i++) {
-            resultView.draw(cars.move());
+        for(int i = 0; i < rounds; i++) {
+            roundOne();
+            resultView.printAllCarsMovement(cars);
+        }
+    }
+
+    private void roundOne() {
+        for (Car car: cars) {
+            car.increaseMovementRandomly(RANDOM_RANGE, CUTLINE, STEP);
         }
     }
 }
