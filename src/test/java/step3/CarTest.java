@@ -3,7 +3,7 @@ package step3;
 import org.junit.jupiter.api.Test;
 import step3.domain.entity.Car;
 import step3.domain.value.Location;
-import step3.movingstrategy.InputMovingStrategy;
+import step3.domain.movingstrategy.InputMovingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

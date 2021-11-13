@@ -3,7 +3,7 @@ package step3;
 import org.junit.jupiter.api.Test;
 import step3.domain.entity.Car;
 import step3.domain.entity.Contest;
-import step3.movingstrategy.InputMovingStrategy;
+import step3.domain.movingstrategy.InputMovingStrategy;
 import step3.view.LocationView;
 
 import java.util.List;

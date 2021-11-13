@@ -2,7 +2,7 @@ package step3;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step3.movingstrategy.InputMovingStrategy;
+import step3.domain.movingstrategy.InputMovingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

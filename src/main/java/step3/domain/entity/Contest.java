@@ -1,7 +1,7 @@
 package step3.domain.entity;
 
 import step3.domain.value.Location;
-import step3.movingstrategy.MovingStrategy;
+import step3.domain.movingstrategy.MovingStrategy;
 
 import java.util.List;
 import java.util.stream.Collectors;

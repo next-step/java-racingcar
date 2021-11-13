@@ -3,7 +3,7 @@ package step3;
 import step3.domain.value.Input;
 import step3.domain.entity.Car;
 import step3.domain.entity.Contest;
-import step3.movingstrategy.RandomMovingStrategy;
+import step3.domain.movingstrategy.RandomMovingStrategy;
 import step3.view.InputView;
 import step3.view.LocationView;
 
