@@ -20,6 +20,9 @@ public class Car {
         moveHistory.addHistory(moveStrategy.isMove());
     }
 
+    public long getHistorySuccessCount() {
+        return moveHistory.getSuccessCount();
+    }
     public long getHistorySuccessCount(int toIndex) {
         return moveHistory.getSuccessCount(toIndex);
     }
