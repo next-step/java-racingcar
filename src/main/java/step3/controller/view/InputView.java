@@ -1,4 +1,4 @@
-package step3.ui;
+package step3.controller.view;
 
 import java.util.Scanner;
 
