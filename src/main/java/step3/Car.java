@@ -5,6 +5,8 @@ public class Car {
 
     public void play(MovingStrategy movingStrategy) {
         Boolean moved = movingStrategy.run();
-        location++;
+        if (moved) {
+            location++;
+        }
     }
 }

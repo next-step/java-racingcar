@@ -8,14 +8,14 @@ public class CarTest {
     @Test
     void move() {
         final Car car = new Car();
-        car.play(new MovingStrategy());
+        car.play(new MovingStrategy(4));
         assertThat(car.location).isEqualTo(1);
     }
 
     @Test
     void stay() {
-        final Car card = new Car();
-        card.play(new MovingStrategy());
-        assertThat(card.location).isEqualTo(0);
+        final Car car = new Car();
+        car.play(new MovingStrategy(3));
+        assertThat(car.location).isEqualTo(0);
     }
 }
