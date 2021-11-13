@@ -2,7 +2,9 @@ package racingCar.ui;
 
 import racingCar.Car;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class ResultView {
@@ -40,5 +42,6 @@ public class ResultView {
 
         System.out.println(winner + "가 최종 우승했습니다.");
     }
+
 }
 

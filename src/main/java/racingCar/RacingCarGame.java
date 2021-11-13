@@ -3,7 +3,6 @@ package racingCar;
 import racingCar.ui.ResultView;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class RacingCarGame {
     private int tryTimes;
@@ -22,7 +21,9 @@ public class RacingCarGame {
         for (int i = 0; i < tryTimes; i++) {
             resultView.printCarRace(raceCar);
         }
-        printWinners();
+
+        RacingCarGameRule racingCarGameRule = new RacingCarGameRule(raceCar);
+        racingCarGameRule.printWinners();
     }
 
     private void setRaceCar(String[] carNames) {
@@ -35,17 +36,4 @@ public class RacingCarGame {
         return this.raceCar;
     }
 
-    public void printWinners() {
-        List<Car> winnerCars = raceCar.stream()
-                .filter(car -> car.getMoveCount() == maxMoveCar().getMoveCount())
-                .collect(Collectors.toList());
-
-        resultView.printWinners(winnerCars);
-    }
-
-    private Car maxMoveCar() {
-        return raceCar.stream()
-                .max(Comparator.comparingInt(Car::getMoveCount))
-                .orElseThrow(NoSuchElementException::new);
-    }
 }
