@@ -5,28 +5,33 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Factor {
-    List<Number> numbers;
-    List<Operator> operators;
-    List<String> test;
+    private List<Number> numbers;
+    private List<Operator> operators;
 
     public Factor(String input) {
+        if(input == null || input.isBlank()) throw new IllegalArgumentException();
+
         String[] inputs = input.split(" ");
 
-        test = Arrays.stream(inputs)
-                    .filter(i -> i.matches("-?\\d+?"))
-                    .collect(Collectors.toList());
-
         numbers = Arrays.stream(inputs)
-                        .filter(i -> i.chars().allMatch(Character::isDigit))
-                        .map(i ->new Number((String)i))
+                        .filter(i -> i.matches("-?\\d+?"))
+                        .map(i -> new Number(i))
                         .collect(Collectors.toList());
-        //operator 도 동일하게 넣는다
-        Number number1 = new Number(inputs[0]);
-        Number number2 = new Number(inputs[2]);
 
-        Operator operator = Arrays.stream(Operator.values())
-                .filter(o ->o.isEqualTo(inputs[1]))
-                .findAny().orElseThrow(() -> new IllegalArgumentException());
+        operators = Arrays.stream(inputs)
+                          .flatMap(i -> Arrays.stream(Operator.values()).filter(o -> o.isEqualTo(i)))
+                          .collect(Collectors.toList());
     }
 
+    public Number getNumbers(int index) {
+        return numbers.get(index);
+    }
+
+    public Operator getOperator(int index) {
+        return operators.get(index);
+    }
+
+    public boolean isComplete(int expect) {
+        return expect == numbers.size() + operators.size();
+    }
 }
