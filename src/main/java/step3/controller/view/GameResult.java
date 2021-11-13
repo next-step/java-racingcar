@@ -1,4 +1,4 @@
-package step3.ui;
+package step3.controller.view;
 
 import step3.domain.board.CarSnapShots;
 import step3.domain.board.CarSnapshot;

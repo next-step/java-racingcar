@@ -1,14 +1,15 @@
-package step3.ui;
+package step3.controller;
 
 import step3.application.GameDirector;
 import step3.application.Round;
+import step3.controller.view.GameResult;
 import step3.domain.board.GameBoard;
 import step3.domain.car.Name;
 
-import static step3.ui.InputView.getCarNames;
-import static step3.ui.InputView.getRoundCount;
+import static step3.controller.view.InputView.getCarNames;
+import static step3.controller.view.InputView.getRoundCount;
 
-public class Stadium {
+public class CarController {
 
     public static void main(String[] args) {
         String carNames = getCarNames();
