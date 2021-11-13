@@ -10,16 +10,16 @@ public class Car {
     private static final int MIN_MOVEMENT_VALUE = 0;
     private static final int MAX_MOVEMENT_VALUE = 9;
 
-    private final CarName carName;
+    private final Name name;
     private final Position position;
 
-    private Car(CarName carName, Position position) {
-        this.carName = carName;
+    private Car(Name name, Position position) {
+        this.name = name;
         this.position = position;
     }
 
-    public static Car from(CarName carName) {
-        return new Car(carName, Position.init());
+    public static Car from(Name name) {
+        return new Car(name, Position.init());
     }
 
     public void move(int number) {
@@ -40,7 +40,7 @@ public class Car {
     }
 
     public String carName() {
-        return carName.getName();
+        return name.getName();
     }
 
     @Override

@@ -4,12 +4,12 @@ import racingcar.exception.CarNameException;
 
 import java.util.Objects;
 
-public class CarName {
+public class Name {
     private static final int MAX_NAME_LENGTH = 5;
 
     private final String carName;
 
-    private CarName(String carName) {
+    private Name(String carName) {
         validateCarName(carName);
         this.carName = carName;
     }
@@ -23,8 +23,8 @@ public class CarName {
         }
     }
 
-    public static CarName from(String name) {
-        return new CarName(name);
+    public static Name from(String name) {
+        return new Name(name);
     }
 
     public String getName() {
@@ -35,8 +35,8 @@ public class CarName {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CarName carName1 = (CarName) o;
-        return Objects.equals(carName, carName1.carName);
+        Name name1 = (Name) o;
+        return Objects.equals(carName, name1.carName);
     }
 
     @Override

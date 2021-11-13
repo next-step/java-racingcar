@@ -13,13 +13,13 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.assertj.core.api.Java6Assertions.assertThatThrownBy;
 
-class CarNameTest {
+class NameTest {
 
     @ParameterizedTest
     @DisplayName("CarName 생성 테스트")
     @MethodSource
-    void createTest(String name, CarName expected) {
-        CarName carName = CarName.from(name);
+    void createTest(String name, Name expected) {
+        Name carName = Name.from(name);
 
         assertThat(carName).isEqualTo(expected);
     }
@@ -27,10 +27,10 @@ class CarNameTest {
     static Stream<Arguments> createTest() {
         return Stream.of(
                 Arguments.of(
-                        "A", CarName.from("A")
+                        "A", Name.from("A")
                 ),
                 Arguments.of(
-                        "BBBBB", CarName.from("BBBBB")
+                        "BBBBB", Name.from("BBBBB")
                 )
         );
     }
@@ -39,14 +39,14 @@ class CarNameTest {
     @DisplayName("CarName 인자가 null, empty일 때 생성 예외 테스트")
     @NullAndEmptySource
     void createExcetionTest(String name) {
-        assertThatThrownBy(() -> CarName.from(name)).isInstanceOf(CarNameException.class);
+        assertThatThrownBy(() -> Name.from(name)).isInstanceOf(CarNameException.class);
     }
 
     @ParameterizedTest
     @DisplayName("CarName 인자 길이가 5 이상 일 때 생성 예외 테스트")
     @ValueSource(strings = "aaaaaa")
     void createExcetionByLengthTest(String name) {
-        assertThatThrownBy(() -> CarName.from(name)).isInstanceOf(CarNameException.class);
+        assertThatThrownBy(() -> Name.from(name)).isInstanceOf(CarNameException.class);
     }
 
 

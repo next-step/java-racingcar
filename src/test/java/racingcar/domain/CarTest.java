@@ -14,7 +14,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = Car.from(CarName.from("AA"));
+        car = Car.from(Name.from("AA"));
     }
 
     @ParameterizedTest

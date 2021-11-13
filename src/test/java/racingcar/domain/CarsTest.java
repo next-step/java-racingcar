@@ -51,13 +51,13 @@ class CarsTest {
     }
 
     static Stream<Arguments> findWinnerTest() {
-        Car aa = Car.from(CarName.from("AA"));
+        Car aa = Car.from(Name.from("AA"));
         aa.move(5);
 
-        Car bb = Car.from(CarName.from("BB"));
+        Car bb = Car.from(Name.from("BB"));
         bb.move(3);
 
-        Car cc = Car.from(CarName.from("CC"));
+        Car cc = Car.from(Name.from("CC"));
         cc.move(3);
 
         return Stream.of(
@@ -80,13 +80,13 @@ class CarsTest {
     }
 
     static Stream<Arguments> findWinnersTest() {
-        Car aa = Car.from(CarName.from("AA"));
+        Car aa = Car.from(Name.from("AA"));
         aa.move(5);
 
-        Car bb = Car.from(CarName.from("BB"));
+        Car bb = Car.from(Name.from("BB"));
         bb.move(5);
 
-        Car cc = Car.from(CarName.from("CC"));
+        Car cc = Car.from(Name.from("CC"));
         cc.move(3);
 
         return Stream.of(
