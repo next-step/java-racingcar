@@ -3,6 +3,7 @@ package study.calculate;
 public class Number {
 
     private static final String ZERO_DIVIDE_EXCEPTION_MESSAGE = "denominator can't be a zero";
+    public static final String IS_NOT_A_NUMERIC_STRING = " is not a numeric string.";
 
     private final int value;
 
@@ -14,7 +15,7 @@ public class Number {
         try {
             this.value = Integer.parseInt(value);
         } catch (Exception e) {
-            throw new RuntimeException(value + " is not a numeric string.");
+            throw new RuntimeException(value + IS_NOT_A_NUMERIC_STRING);
         }
     }
 
