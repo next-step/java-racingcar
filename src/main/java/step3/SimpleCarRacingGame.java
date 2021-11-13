@@ -15,12 +15,12 @@ public class SimpleCarRacingGame {
     public static void main(String[] args) {
         Input input = new InputController().handleInput();
 
-        List<Car> participants = Stream.generate(Car::new)
+        LocationReporter reporter = new LocationReporter();
+
+        List<Car> participants = Stream.generate(() -> new Car())
                 .limit(input.getParticipantsNumber())
                 .collect(Collectors.toList());
         int numOfRounds = input.numOfRounds();
-
-        LocationReporter reporter = new LocationReporter();
 
         Contest contest = new Contest(numOfRounds, participants, new RandomMovingStrategy(), reporter);
         contest.play();

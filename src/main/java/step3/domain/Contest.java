@@ -3,6 +3,7 @@ package step3.domain;
 import step3.movingstrategy.MovingStrategy;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Contest {
     private final int round;
@@ -26,18 +27,18 @@ public class Contest {
 
     public void play() {
         for (int i = 0; round > i; i++) {
-            playEachRound();
-            reporter.report(participants);
+            List<Integer> locations = playEachRound();
+            reporter.report(locations);
         }
     }
 
-    private void playEachRound() {
-        for (Car participant : participants) {
-            participant.play(movingStrategy);
-        }
+    private List<Integer> playEachRound() {
+        return participants.stream()
+                .map(p -> p.play(movingStrategy))
+                .collect(Collectors.toList());
     }
 
     public interface ReportingLocation {
-        void report(List<Car> participants);
+        void report(List<Integer> locations);
     }
 }
