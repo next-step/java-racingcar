@@ -27,18 +27,18 @@ public class Contest {
 
     public void play() {
         for (int i = 0; round > i; i++) {
-            List<Integer> locations = playEachRound();
+            List<Location> locations = playEachRound();
             reporter.report(locations);
         }
     }
 
-    private List<Integer> playEachRound() {
+    private List<Location> playEachRound() {
         return participants.stream()
                 .map(p -> p.play(movingStrategy))
                 .collect(Collectors.toList());
     }
 
     public interface ReportingLocation {
-        void report(List<Integer> locations);
+        void report(List<Location> locations);
     }
 }
