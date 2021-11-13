@@ -2,13 +2,15 @@ package racinggame.domain;
 
 public class Car {
 
+    private Name name;
     private Location location;
 
-    public Car() {
-        this(Location.START_LOCATION);
+    public Car(Name name) {
+        this(name, Location.START_LOCATION);
     }
 
-    public Car(int location) {
+    public Car(Name name, int location) {
+        this.name = name;
         this.location = new Location(location);
     }
 
@@ -16,6 +18,10 @@ public class Car {
         if (state.getState() == State.MOVE) {
             location.move();
         }
+    }
+
+    public Name getName() {
+        return name;
     }
 
     public Location getLocation() {
