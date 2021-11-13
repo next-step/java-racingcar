@@ -1,4 +1,4 @@
-package study03.model;
+package racing.model;
 
 import java.util.Optional;
 import java.util.function.Predicate;

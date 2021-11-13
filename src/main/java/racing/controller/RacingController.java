@@ -1,9 +1,9 @@
-package study03.controller;
+package racing.controller;
 
-import study03.model.RacingResult;
-import study03.model.Racing;
-import study03.view.InputView;
-import study03.view.OutputView;
+import racing.model.RacingResult;
+import racing.model.Racing;
+import racing.view.InputView;
+import racing.view.OutputView;
 
 import java.util.Scanner;
 

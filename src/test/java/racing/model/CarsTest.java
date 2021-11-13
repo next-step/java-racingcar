@@ -1,4 +1,4 @@
-package study03.model;
+package racing.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

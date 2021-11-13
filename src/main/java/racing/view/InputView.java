@@ -1,4 +1,4 @@
-package study03.view;
+package racing.view;
 
 import java.util.Scanner;
 

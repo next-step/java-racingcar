@@ -1,7 +1,7 @@
-package study03.view;
+package racing.view;
 
-import study03.model.RacingResult;
-import study03.model.RoundResult;
+import racing.model.RacingResult;
+import racing.model.RoundResult;
 
 import java.util.stream.IntStream;
 
