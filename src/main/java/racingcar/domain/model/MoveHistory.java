@@ -28,14 +28,14 @@ public class MoveHistory {
         moveHistory.add(isMove);
     }
 
-    public long size() {
-        return moveHistory.size();
-    }
-
     public long size(boolean bool) {
         return moveHistory.stream()
             .filter(f -> f.equals(bool))
             .count();
+    }
+
+    public long getSuccessCount() {
+        return this.size(SUCCESS);
     }
 
     public long getSuccessCount(int toIndex) {

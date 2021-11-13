@@ -26,4 +26,8 @@ public class Car {
     public long getHistorySuccessCount(int toIndex) {
         return moveHistory.getSuccessCount(toIndex);
     }
+
+    public String getName() {
+        return name.getName();
+    }
 }
