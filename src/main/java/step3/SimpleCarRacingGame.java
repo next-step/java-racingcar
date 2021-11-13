@@ -22,9 +22,5 @@ public class SimpleCarRacingGame {
         List<Car> participants = Stream.generate(Car::new).limit(participantsNumber).collect(Collectors.toList());
         Contest contest = new Contest(roundNumbers, participants, new RandomMovingStrategy());
         contest.play();
-
-        participants.forEach((car) ->
-                System.out.println(new String(new char[car.location + 1]).replace("\0", "-"))
-        );
     }
 }
