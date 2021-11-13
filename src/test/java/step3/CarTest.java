@@ -8,7 +8,7 @@ public class CarTest {
     @Test
     void move() {
         final Car car = new Car();
-        car.play(new Condition());
+        car.play(new MovingStrategy());
         assertThat(car.location).isEqualTo(1);
     }
 }
