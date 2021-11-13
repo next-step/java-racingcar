@@ -10,6 +10,6 @@ public class InputMovingStrategy implements MovingStrategy{
 
     @Override
     public Boolean run() {
-        return this.input >= 4;
+        return this.input >= MOVING_THRESHOLD;
     }
 }
