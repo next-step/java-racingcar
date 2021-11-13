@@ -9,7 +9,7 @@ public class RacingGame {
     private final CarStateGenerator carStateGenerator;
 
     public RacingGame(Integer carCount, Laps laps, CarStateGenerator carStateGenerator) {
-        this.cars = new Cars(carCount);
+        this.cars = Cars.from(carCount);
         this.laps = laps;
         this.carStateGenerator = carStateGenerator;
     }

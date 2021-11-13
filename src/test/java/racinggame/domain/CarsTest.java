@@ -1,6 +1,5 @@
 package racinggame.domain;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +15,7 @@ class CarsTest {
         StateGenerator stateGenerator = () -> State.MOVE;
         int actual = 2;
         int excepted = 3;
-        Cars cars = new Cars(ENTRY_CAR_COUNT, actual);
+        Cars cars = Cars.of(ENTRY_CAR_COUNT, actual);
         cars.roundRacing(stateGenerator);
 
         for (Car car : cars.getCars()) {
@@ -29,7 +28,7 @@ class CarsTest {
     void carsStopTest() {
         StateGenerator stateGenerator = () -> State.STOP;
         int location = 2;
-        Cars cars = new Cars(ENTRY_CAR_COUNT, location);
+        Cars cars = Cars.of(ENTRY_CAR_COUNT, location);
         cars.roundRacing(stateGenerator);
 
         for (Car car : cars.getCars()) {
