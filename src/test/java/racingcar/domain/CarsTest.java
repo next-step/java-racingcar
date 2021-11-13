@@ -30,7 +30,7 @@ class CarsTest {
     static Stream<Arguments> createCarsTest() {
         return Stream.of(
                 Arguments.of(
-                        new String[] {"aa", "bb", "cc"}, Cars.from(new String[] {"aa", "bb", "cc"}, RandomMovingStrategy.getInstance())
+                        new String[]{"aa", "bb", "cc"}, Cars.from(new String[]{"aa", "bb", "cc"}, RandomMovingStrategy.getInstance())
                 )
         );
     }
@@ -70,4 +70,32 @@ class CarsTest {
         );
     }
 
+    @ParameterizedTest
+    @DisplayName("우승자가 여러명 일 경우 테스트")
+    @MethodSource
+    void findWinnersTest(Cars cars, List<Car> expectedWinners) {
+        List<Car> findWinners = cars.findWinners();
+
+        assertThat(findWinners).isEqualTo(expectedWinners);
+    }
+
+    static Stream<Arguments> findWinnersTest() {
+        Car aa = Car.from(CarName.from("AA"));
+        aa.move(5);
+
+        Car bb = Car.from(CarName.from("BB"));
+        bb.move(5);
+
+        Car cc = Car.from(CarName.from("CC"));
+        cc.move(3);
+
+        return Stream.of(
+                Arguments.of(
+                        new Cars(Arrays.asList(
+                                aa, bb, cc
+                        ), RandomMovingStrategy.getInstance())
+                        , Arrays.asList(aa, bb)
+                )
+        );
+    }
 }
