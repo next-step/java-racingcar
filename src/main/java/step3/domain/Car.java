@@ -8,7 +8,7 @@ public class Car {
     public void play(MovingStrategy movingStrategy) {
         Boolean moved = movingStrategy.run();
         if (moved) {
-            location = getLocation() + 1;
+            location += 1;
         }
     }
 
