@@ -4,7 +4,7 @@ import java.util.List;
 
 public class RoundResult {
 
-  private List<RacingData> racingDataList;
+  private final List<RacingData> racingDataList;
 
   public RoundResult(List<RacingData> racingDataList) {
     this.racingDataList = racingDataList;
@@ -12,5 +12,9 @@ public class RoundResult {
 
   public List<RacingData> getRacingDataList() {
     return racingDataList;
+  }
+
+  public static RoundResult of (List<RacingData> racingDataList) {
+    return new RoundResult(racingDataList);
   }
 }

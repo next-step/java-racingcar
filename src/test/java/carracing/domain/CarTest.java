@@ -7,7 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,10 +30,11 @@ class CarTest {
   @ParameterizedTest
   @CsvSource(value = {"1:1", "4:1", "15:2", "20:2"}, delimiter = ':')
   void moveTest(int number, int result) {
-    assertThat(car.move(isMoved(number)).getStep()).isEqualTo(result);
+    car.move(isMoved(number));
+    assertThat(car.getNowStep()).isEqualTo(result);
   }
 
-  Supplier<Boolean> isMoved(int number) {
+  BooleanSupplier isMoved(int number) {
     return () -> number > 10;
   }
 

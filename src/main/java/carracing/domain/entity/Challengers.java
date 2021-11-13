@@ -1,11 +1,8 @@
 package carracing.domain.entity;
 
-import carracing.domain.dto.RacingData;
-import carracing.domain.dto.RoundResult;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
 
 public class Challengers {
 
@@ -22,12 +19,11 @@ public class Challengers {
     challengers.add(car);
   }
 
-  public RoundResult startRound(Supplier<Boolean> isMoved) {
-    List<RacingData> racingDataList = new ArrayList<>();
+  public List<Car> startRound(BooleanSupplier isMovable) {
     for (Car car : getChallengers()) {
-      racingDataList.add(car.move(isMoved));
+      car.move(isMovable);
     }
-    return new RoundResult(racingDataList);
+    return this.challengers;
   }
 
   public List<Car> getChallengers() {

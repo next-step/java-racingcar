@@ -1,22 +1,19 @@
 package carracing.domain.entity;
 
-import carracing.domain.dto.RacingData;
-
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
 
 public class Car {
 
-  private Step nowStep;
+  private final Step nowStep;
 
   public Car() {
     this.nowStep = new Step();
   }
 
-  public RacingData move(Supplier<Boolean> isMoved) {
-    if(isMoved.get()) {
+  public void move(BooleanSupplier isMovable) {
+    if(isMovable.getAsBoolean()) {
       nowStep.plus();
     }
-    return new RacingData(getNowStep());
   }
 
   public int getNowStep() {

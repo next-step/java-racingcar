@@ -1,5 +1,6 @@
 package carracing.domain.service;
 
+import carracing.domain.dto.RacingData;
 import carracing.domain.dto.RacingResult;
 import carracing.domain.dto.RoundResult;
 import carracing.domain.entity.Car;
@@ -10,7 +11,7 @@ import carracing.domain.utils.RandomUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
 
 public class RandomFourStepRacingService implements CarRacingService{
 
@@ -43,14 +44,14 @@ public class RandomFourStepRacingService implements CarRacingService{
   public RacingResult gameStart() {
     List<RoundResult> roundResultList = new ArrayList<>();
     while (round.hasMoreChance()) {
-      roundResultList.add(challengers.startRound(isMoved()));
+      roundResultList.add(RoundResult.of(RacingData.of(challengers.startRound(isMovable()))));
       round.minus();
     }
     return new RacingResult(roundResultList);
   }
 
-  @Override
-  public Supplier<Boolean> isMoved() {
+
+  public BooleanSupplier isMovable() {
     return () -> RandomUtils.isGreaterThanOrEquals(STEP_FORWARD_STANDARD);
   }
 

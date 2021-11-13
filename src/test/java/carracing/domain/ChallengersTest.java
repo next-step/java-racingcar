@@ -1,6 +1,5 @@
 package carracing.domain;
 
-import carracing.domain.dto.RacingData;
 import carracing.domain.entity.Car;
 import carracing.domain.entity.Challengers;
 import carracing.domain.entity.Number;
@@ -10,7 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullSource;
 
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -39,12 +38,12 @@ class ChallengersTest {
   @ParameterizedTest
   @CsvSource(value = {"1:1", "4:2", "10:2"}, delimiter = ':')
   void startRoundTest(int input, int result) {
-    for (RacingData racingData : challengers.startRound(isMoved(input)).getRacingDataList()) {
-        assertThat(racingData.getStep()).isEqualTo(result);
+    for (Car car: challengers.startRound(isMoved(input))) {
+        assertThat(car.getNowStep()).isEqualTo(result);
     }
   }
 
-  Supplier<Boolean> isMoved(int a) {
+  BooleanSupplier isMoved(int a) {
     return () -> a > 3;
   }
 
