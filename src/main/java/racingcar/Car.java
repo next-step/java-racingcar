@@ -7,10 +7,18 @@ import java.util.stream.Collectors;
 
 public class Car {
 
-    private int position = 0;
+    private int position;
 
     public static final int CRITERION_NUMBER = 4;
     public static final int MAX_RANDOM_BOUND = 10;
+
+    public Car(int position) {
+        this.position = position;
+    }
+
+    public static Car create(int position) {
+        return new Car(position);
+    }
 
     public void action(Random random) {
         int commandNumber = random.nextInt(MAX_RANDOM_BOUND);

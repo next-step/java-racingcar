@@ -20,7 +20,7 @@ public class GameStage {
         this.maxOfRound = isPositiveNumber(maxOfRound);
 
         IntStream.range(0, numberOfCars)
-            .forEach(i -> cars.add(new Car()));
+            .forEach(i -> cars.add(Car.create(0)));
 
         this.result = new GameResult();
     }

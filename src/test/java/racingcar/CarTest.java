@@ -20,7 +20,7 @@ class CarTest {
 
     @BeforeEach
     void init() throws NoSuchFieldException, IllegalAccessException {
-        car = new Car();
+        car = Car.create(0);
         beforePosition = getCarPositionByReflection(car);
     }
 
