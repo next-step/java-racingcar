@@ -17,7 +17,7 @@ class CarTest {
 
   @BeforeEach
   void init() {
-    car = new Car();
+    car = new Car("sup");
   }
 
   @ParameterizedTest
@@ -36,6 +36,14 @@ class CarTest {
 
   BooleanSupplier isMoved(int number) {
     return () -> number > 10;
+  }
+
+  @ParameterizedTest
+  @ValueSource(strings = {"sup, kevin, duke"})
+  @DisplayName("생성자를 통해 입력된 이름을 확인한다.")
+  void constructWithNameTest(String input) {
+    car = new Car(input);
+    assertThat(car.getName()).isEqualTo(input);
   }
 
 }
