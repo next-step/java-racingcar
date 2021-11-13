@@ -2,7 +2,7 @@ package racing;
 
 import org.junit.jupiter.api.Test;
 import racing.model.Cars;
-import racing.service.ConvertInput;
+import racing.service.InputBuilder;
 import racing.service.FindWinner;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,8 +18,7 @@ public class FindWinnerTest {
         expectedList.add("mj");
         expectedList.add("mj1");
         String nameString = "mj,mj1,mj2,mj3,mj4,mj5";
-        ConvertInput convertInput = new ConvertInput();
-        Cars cars = new Cars(convertInput.convertInput(nameString));
+        Cars cars = new Cars(new InputBuilder(nameString).getNameList());
         cars.getCarList().get(0).movable(() -> true);
         cars.getCarList().get(0).movable(() -> true);
         cars.getCarList().get(0).movable(() -> true);
