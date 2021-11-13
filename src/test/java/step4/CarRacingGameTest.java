@@ -1,7 +1,6 @@
 package step4;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -34,18 +33,6 @@ public class CarRacingGameTest {
                 );
             }
         }
-    }
-
-    @Test
-    void illegalArgumentBecauseCarNamesSizeIsLessOrEqualThan0() {
-        assertThatThrownBy(() -> new CarRacingGame(new String[0]))
-            .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void illegalArgumentBecauseCarNamesIsNull() {
-        assertThatThrownBy(() -> new CarRacingGame(null))
-            .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
