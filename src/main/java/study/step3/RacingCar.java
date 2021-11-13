@@ -4,8 +4,6 @@ import java.util.*;
 
 public class RacingCar {
 
-    private static String BLANK_STRING_VALUE = "";
-
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
 

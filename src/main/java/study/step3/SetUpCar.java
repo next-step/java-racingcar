@@ -69,17 +69,4 @@ public class SetUpCar {
         }
         return true;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SetUpCar setUpCar = (SetUpCar) o;
-        return carCount == setUpCar.carCount && tryCount == setUpCar.tryCount && Objects.equals(carList, setUpCar.carList);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(carCount, tryCount, carList);
-    }
 }

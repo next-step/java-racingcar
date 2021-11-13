@@ -62,17 +62,4 @@ public class Car {
     public String toString() {
         return "Car{" + "number=" + number + ", position='" + position + '\'' + '}';
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return number == car.number && Objects.equals(position, car.position);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(number, position);
-    }
 }
