@@ -1,6 +1,4 @@
-package calculator;
-
-import java.util.Random;
+package utility;
 
 /**
  * @author han
@@ -13,6 +11,12 @@ public class StringHelper {
 
     public static void throwExceptionIfNullOrEmpty(String input) {
         if (isNullOrEmpty(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void throwExceptionNullOrLengthGreaterThan(String input, int length) {
+        if (input == null || input.length() > length) {
             throw new IllegalArgumentException();
         }
     }

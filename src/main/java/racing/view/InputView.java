@@ -1,21 +1,21 @@
 package racing.view;
 
-import racing.NumberHelper;
-
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
-import static racing.ViewConstant.ATTEMPT_MESSAGE;
-import static racing.ViewConstant.CAR_MESSAGE;
+import static racing.view.ViewConstant.ATTEMPT_MESSAGE;
+import static racing.view.ViewConstant.CAR_MESSAGE;
 
 /**
  * @author han
  */
 public class InputView {
-    private int cars;
+    private List<String> users;
     private int attempts;
 
-    public Integer getCars() {
-        return cars;
+    public List<String> getUsers() {
+        return users;
     }
 
     public Integer getAttempts() {
@@ -24,7 +24,7 @@ public class InputView {
 
     public void printAndInput(Scanner scanner) {
         System.out.println(CAR_MESSAGE);
-        this.cars = parseInputToInteger(scanner.nextLine());
+        this.users = Arrays.asList(scanner.nextLine().split(","));
 
         System.out.println(ATTEMPT_MESSAGE);
         this.attempts = parseInputToInteger(scanner.nextLine());

@@ -1,7 +1,9 @@
 package racing;
 
+import racing.domain.Racing;
 import racing.view.InputView;
 import racing.view.ResultView;
+import racing.domain.Winner;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -20,9 +22,9 @@ public class Main {
 
         inputView.printAndInput(scanner);
 
-        Racing racing = new Racing(inputView.getCars(), inputView.getAttempts());
-        racing.play(random);
+        Racing racing = new Racing(inputView.getUsers(), inputView.getAttempts());
+        Winner winner = racing.play(random);
 
-        resultView.print(racing);
+        resultView.print(winner);
     }
 }

@@ -1,11 +1,15 @@
 package racing;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import racing.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * @author han
@@ -16,7 +20,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = Car.create();
+        car = Car.create("test");
     }
 
     @ParameterizedTest(name = "전진")
@@ -32,9 +36,15 @@ class CarTest {
     }
 
     @ParameterizedTest(name = "Random value 를 통한 전진 테스트")
-    @MethodSource("racing.NumberHelperTest#randomIntegerListProvider")
+    @MethodSource("utility.NumberHelperTest#randomIntegerListProvider")
     void forwardsWithRandom(int random) {
         boolean isForward = random >= RacingConstant.FORWARD_STANDARD;
         assertThat(car.getInstanceByForward(random).getStep() == 1).isEqualTo(isForward);
+    }
+
+    @Test
+    @DisplayName("자동차 이름은 5자를 초과할 수 없다")
+    void throwExceptionHasWrongName() {
+        assertThatThrownBy(() -> Car.create("This name Greater than 5")).isInstanceOf(IllegalArgumentException.class);
     }
 }

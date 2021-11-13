@@ -1,4 +1,4 @@
-package racing;
+package utility;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
