@@ -27,14 +27,14 @@ class CarTest {
         Field fieldRandom = Car.class
                 .getDeclaredField("random");
         fieldRandom.setAccessible(true);
-        fieldRandom.set(car, new MockRandom()); // 10번 nextInt 수행시 7번 go 될 수 있는 Mock
+        fieldRandom.set(car, new MockRandom()); // 0~9를 순차적으로 추출하는 MockRandom
 
         for (int i = 0; i < 10; i++) {
             car.moveRandom();
         }
 
         assertThat(car.getMovingDistance())
-                .isEqualTo(7);
+                .isEqualTo(6);
     }
 
     @Test
