@@ -18,11 +18,11 @@ public class CarRacingController {
     }
 
     private void setInput() {
-        int numberOfCar = TerminalInputView.getNumberOfCarFromTerminalInput();
+        int numberOfCar = TerminalInputView.inputNumberOfCar();
         for (int i = 0; i < numberOfCar; i++) {
             cars.add(new Car());
         }
-        numberOfMove = TerminalInputView.getNumberOfMoveFromTerminalInput();
+        numberOfMove = TerminalInputView.inputNumberOfMove();
         System.out.println();
     }
 

@@ -13,13 +13,13 @@ class TerminalInputViewTest {
 
     @Test
     @DisplayName("차 수 입력 기능")
-    void getNumberOfCarFromTerminalInput() {
+    void inputNumberOfCar() {
         String data = "3";
         InputStream stdin = System.in;
         System.setIn(
                 new ByteArrayInputStream(data.getBytes()));
 
-        int numberOfCar = TerminalInputView.getNumberOfCarFromTerminalInput();
+        int numberOfCar = TerminalInputView.inputNumberOfCar();
 
         assertThat(numberOfCar).isEqualTo(3);
 
@@ -34,7 +34,7 @@ class TerminalInputViewTest {
         System.setIn(
                 new ByteArrayInputStream(data.getBytes()));
 
-        int numberOfMove = TerminalInputView.getNumberOfMoveFromTerminalInput();
+        int numberOfMove = TerminalInputView.inputNumberOfMove();
 
         assertThat(numberOfMove).isEqualTo(5);
 

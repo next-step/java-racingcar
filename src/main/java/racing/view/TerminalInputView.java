@@ -6,17 +6,17 @@ public class TerminalInputView {
 
     private TerminalInputView() {}
 
-    public static int getNumberOfCarFromTerminalInput() {
+    public static int inputNumberOfCar() {
         System.out.println("자동차 대수는 몇 대인가요?");
-        return getNextIntFromSystemInScanner();
+        return inputNextIntToSystemInScanner();
     }
 
-    public static int getNumberOfMoveFromTerminalInput() {
+    public static int inputNumberOfMove() {
         System.out.println("시도할 회수는 몇 회인가요?");
-        return getNextIntFromSystemInScanner();
+        return inputNextIntToSystemInScanner();
     }
 
-    private static int getNextIntFromSystemInScanner() {
+    private static int inputNextIntToSystemInScanner() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
