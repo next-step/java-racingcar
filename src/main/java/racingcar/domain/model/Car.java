@@ -23,6 +23,7 @@ public class Car {
     public long getHistorySuccessCount() {
         return moveHistory.getSuccessCount();
     }
+
     public long getHistorySuccessCount(int toIndex) {
         return moveHistory.getSuccessCount(toIndex);
     }

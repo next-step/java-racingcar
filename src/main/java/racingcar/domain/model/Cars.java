@@ -62,8 +62,7 @@ public class Cars {
         return cars.stream()
             .filter(car -> car.getHistorySuccessCount() == max)
             .collect(Collectors
-                .toCollection(ArrayList::new)
-            );
+                .toCollection(ArrayList::new));
     }
 
 }

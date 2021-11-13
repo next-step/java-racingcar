@@ -11,7 +11,6 @@ public class RacingCarController {
     private static final RacingCarController RACING_CAR_CONTROLLER = new RacingCarController();
 
     private RacingCarController() {
-
     }
 
     public static RacingCarController getInstance() {

@@ -8,7 +8,6 @@ public class InputView {
     private static final String TRY_COUNT_MESSAGE = "시도할 회수는 몇회인가요?";
 
     private InputView() {
-
     }
 
     public static String getCarName() {

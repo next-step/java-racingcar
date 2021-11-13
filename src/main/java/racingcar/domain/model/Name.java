@@ -29,13 +29,13 @@ public class Name {
     }
 
     private static void validNullOrEmpty(String name) {
-        if(name == null || name.isEmpty()) {
+        if (name == null || name.isEmpty()) {
             throw new NameNullPointerException();
         }
     }
 
     private static void validSize(String name) {
-        if(name.length() > MINIMUM_SIZE) {
+        if (name.length() > MINIMUM_SIZE) {
             throw new NameOutOfRangeException(MINIMUM_SIZE);
         }
     }
