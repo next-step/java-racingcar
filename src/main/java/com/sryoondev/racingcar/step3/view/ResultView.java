@@ -12,6 +12,9 @@ public class ResultView {
     }
 
     public static void draw(Car car) {
-        System.out.println(car.getMovement());
+        for (int i = 0; i < car.getMoveDistance(); i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }

@@ -1,23 +1,17 @@
 package com.sryoondev.racingcar.step3;
 
-import java.util.ArrayList;
-
 public class Route {
-    private final ArrayList<String> lines;
+    private int moveCount;
 
     public Route() {
-        this.lines = new ArrayList<>();
+        this.moveCount = 0;
     }
 
     public void moveForward() {
-        lines.add("-");
+        this.moveCount++;
     }
 
     public int getMoveCount() {
-        return lines.size();
-    }
-
-    public String getLines() {
-        return String.join("", lines);
+        return this.moveCount;
     }
 }

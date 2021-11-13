@@ -17,10 +17,6 @@ public class Car {
         }
     }
 
-    public String getMovement() {
-        return route.getLines();
-    }
-
     public int getMoveDistance() {
         return route.getMoveCount();
     }
