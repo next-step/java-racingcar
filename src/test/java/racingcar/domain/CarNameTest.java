@@ -43,7 +43,7 @@ class CarNameTest {
     }
 
     @ParameterizedTest
-    @DisplayName("CarName 인자 길이가 6 이상 일 때 생성 예외 테스트")
+    @DisplayName("CarName 인자 길이가 5 이상 일 때 생성 예외 테스트")
     @ValueSource(strings = "aaaaaa")
     void createExcetionByLengthTest(String name) {
         assertThatThrownBy(() -> CarName.from(name)).isInstanceOf(CarNameException.class);
