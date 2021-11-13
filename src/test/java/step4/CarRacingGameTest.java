@@ -19,7 +19,7 @@ public class CarRacingGameTest {
 
     @Test
     void carCount() {
-        assertEquals(3, carRacingGame.getCars().length);
+        assertEquals(3, carRacingGame.getCars().size());
     }
 
     @Test

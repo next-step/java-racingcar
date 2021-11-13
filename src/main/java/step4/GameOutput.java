@@ -1,12 +1,14 @@
 package step4;
 
+import java.util.List;
+
 public class GameOutput {
 
     public static void printCarPaths(CarRacingGame carRacingGame) {
         printCars(carRacingGame.getCars());
     }
 
-    private static void printCars(Car[] cars) {
+    private static void printCars(List<Car> cars) {
         for (Car car : cars) {
             printCar(car);
         }

@@ -27,4 +27,10 @@ public class CarNameTest {
         assertThatThrownBy(() -> new CarName(carName))
             .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void illegalArgumentBecauseCarNameLengthIsLongerThan5() {
+        assertThatThrownBy(() -> new CarName("123456"))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
 }

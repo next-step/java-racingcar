@@ -1,14 +1,17 @@
 package step4;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CarRacingGame {
 
-    private Car[] cars;
+    private List<Car> cars;
 
     public CarRacingGame(String[] carNames) {
         validate(carNames);
-        this.cars = new Car[carNames.length];
-        for (int i = 0; i < cars.length; i++) {
-            cars[i] = new Car(carNames[i], new RandomMoveStrategy());
+        cars = new ArrayList<>();
+        for (int i = 0; i < carNames.length; i++) {
+            cars.add(new Car(carNames[i], new RandomMoveStrategy()));
         }
     }
 
@@ -18,8 +21,8 @@ public class CarRacingGame {
         }
     }
 
-    public Car[] getCars() {
-        return this.cars;
+    public List<Car> getCars() {
+        return cars;
     }
 
     public void moveCars() {
@@ -29,6 +32,6 @@ public class CarRacingGame {
     }
 
     public Car[] getWinners() {
-        return Referee.getWinners(this.cars);
+        return Referee.getWinners(cars);
     }
 }

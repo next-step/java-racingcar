@@ -1,18 +1,18 @@
 package step4;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class Referee {
 
-    public static Car[] getWinners(Car[] cars) {
+    public static Car[] getWinners(List<Car> cars) {
         int winnerPos = getWinnerPos(cars);
-        return Arrays.stream(cars)
+        return cars.stream()
             .filter(car -> car.getPosition() == winnerPos)
             .toArray(Car[]::new);
     }
 
-    private static int getWinnerPos(Car[] cars) {
-        return Arrays.stream(cars)
+    private static int getWinnerPos(List<Car> cars) {
+        return cars.stream()
             .mapToInt(Car::getPosition)
             .max()
             .getAsInt();
