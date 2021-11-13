@@ -12,10 +12,6 @@ public class RacingCar {
         this.moveCount = 0;
     }
 
-    public RacingCar(int moveCount) {
-        this.moveCount = moveCount;
-    }
-
     public RacingCar(String carName, int moveCount) {
         this.carName = carName;
         this.moveCount = moveCount;

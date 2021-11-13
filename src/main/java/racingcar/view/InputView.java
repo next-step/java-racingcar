@@ -10,7 +10,6 @@ public class InputView {
     private static final String COMMA = ",";
     private static final int CAR_NAME_REFERENCE_VALUE = 5;
     private static final String CAR_NAME_LIMIT_MSG = "자동차 이름은 5자를 초과할 수 없습니다.";
-    private static final String CAR_NAME_NULL_OR_BLANK_MSG = "자동차 이름이  null 또는 공백 일 수 없습니다.";
 
     private List<String> carNames;
     private int tryCount;
