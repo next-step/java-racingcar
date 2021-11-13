@@ -1,4 +1,7 @@
-package step3;
+package step3.view;
+
+import step3.domain.Car;
+import step3.domain.Contest;
 
 import java.util.List;
 

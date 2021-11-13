@@ -1,28 +1,28 @@
 package step3;
 
+import step3.controller.Input;
+import step3.controller.InputController;
+import step3.domain.Car;
+import step3.domain.Contest;
 import step3.movingstrategy.RandomMovingStrategy;
+import step3.view.LocationReporter;
 
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class SimpleCarRacingGame {
     public static void main(String[] args) {
-        System.out.println("초간단 자동차 게임을 시작합니다!");
+        Input input = new InputController().handleInput();
 
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("자동차 대수는 몇 대인가요?");
-        int participantsNumber = scanner.nextInt();
-
-        System.out.println("시도할 회수는 몇 회인가요?");
-        int roundNumbers = scanner.nextInt();
+        List<Car> participants = Stream.generate(Car::new)
+                .limit(input.getParticipantsNumber())
+                .collect(Collectors.toList());
+        int numOfRounds = input.numOfRounds();
 
         LocationReporter reporter = new LocationReporter();
-        List<Car> participants = Stream.generate(Car::new).limit(participantsNumber).collect(Collectors.toList());
 
-        Contest contest = new Contest(roundNumbers, participants, new RandomMovingStrategy(), reporter);
+        Contest contest = new Contest(numOfRounds, participants, new RandomMovingStrategy(), reporter);
         contest.play();
     }
 }

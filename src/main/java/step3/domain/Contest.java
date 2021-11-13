@@ -1,5 +1,6 @@
-package step3;
+package step3.domain;
 
+import step3.domain.Car;
 import step3.movingstrategy.MovingStrategy;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class Contest {
         }
     }
 
-    interface ReportingLocation {
+    public interface ReportingLocation {
         void report(List<Car> participants);
     }
 }

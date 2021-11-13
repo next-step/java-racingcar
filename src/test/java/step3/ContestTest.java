@@ -1,7 +1,10 @@
 package step3;
 
 import org.junit.jupiter.api.Test;
+import step3.domain.Car;
+import step3.domain.Contest;
 import step3.movingstrategy.InputMovingStrategy;
+import step3.view.LocationReporter;
 
 import java.util.List;
 import java.util.stream.Collectors;
