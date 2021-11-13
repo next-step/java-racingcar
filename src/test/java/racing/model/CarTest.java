@@ -10,6 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 @DisplayName("3단계 - 자동차 경주 - Car 단위 테스트")
 class CarTest {
@@ -59,5 +60,24 @@ class CarTest {
 
         assertThat(car.getMovingDistance())
                 .isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("자동차 이름 부여 테스트")
+    void setName() {
+        String name = "정상";
+        car.setName(name);
+
+        assertThat(car.getName())
+                .isEqualTo(name);
+    }
+
+    @Test
+    @DisplayName("자동차 이름 부여 실패 테스트")
+    void setLongName() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> car.setName("긴이름입니다")); // Korean
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> car.setName("long__")); // English
     }
 }
