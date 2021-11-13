@@ -12,10 +12,15 @@ public class ContestTest {
     @Test
     void play() {
         int round = 3;
-        Car car = new Car();
-        List<Car> participants = Stream.of(car).collect(Collectors.toList());
+
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+
+        List<Car> participants = Stream.of(firstCar, secondCar).collect(Collectors.toList());
         Contest contest = new Contest(round, participants);
         contest.play();
-        assertThat(car.location).isEqualTo(3);
+
+        assertThat(firstCar.location).isEqualTo(3);
+        assertThat(secondCar.location).isEqualTo(3);
     }
 }
