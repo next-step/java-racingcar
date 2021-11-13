@@ -4,17 +4,25 @@ import com.sryoondev.racingcar.step3.Car;
 import com.sryoondev.racingcar.step3.Circuit;
 
 public class ResultView {
-    public static void drawTitle() {
-        System.out.println("실행 결과");
-    }
-    public static void draw(Circuit circuit) {
-        System.out.println();
+    private final StringBuilder resultBuilder;
+
+    public ResultView() {
+        this.resultBuilder = new StringBuilder();
     }
 
-    public static void draw(Car car) {
+    public void capture(Circuit circuit) {
+        resultBuilder.append("\n");
+    }
+
+    public void capture(Car car) {
         for (int i = 0; i < car.getMoveDistance(); i++) {
-            System.out.print("-");
+            resultBuilder.append("-");
         }
-        System.out.println();
+        resultBuilder.append("\n");
+    }
+
+    public void draw() {
+        System.out.println("실행 결과");
+        System.out.print(resultBuilder);
     }
 }
