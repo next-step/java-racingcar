@@ -12,11 +12,10 @@ public class TerminalOutputView {
     private TerminalOutputView() {}
 
     public static void printCars(List<Car> cars) {
-        cars.forEach(car -> {
-            String movingBar = String.join("",
-                    Collections.nCopies(car.getMovingDistance(), CAR_MOVING_BAR));
-            System.out.println(movingBar);
-        });
+        cars.stream()
+                .map(car -> Collections.nCopies(car.getMovingDistance(), CAR_MOVING_BAR))
+                .map(bars -> String.join("", bars))
+                .forEach(System.out::println);
         System.out.println();
     }
 
