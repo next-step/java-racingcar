@@ -18,9 +18,10 @@ class CarTest {
     @DisplayName("자동차가 전진 하는지 테스트")
     @Test
     void moveCar() {
+        StateGenerator stateGenerator = () -> State.MOVE;
         Location expected = new Location(1);
 
-        car.move(State.MOVE);
+        car.move(stateGenerator);
 
         assertThat(car.getLocation()).isEqualTo(expected);
     }
@@ -28,9 +29,10 @@ class CarTest {
     @DisplayName("자동차가 정지해 있는지 테스트")
     @Test
     void stopCar() {
+        StateGenerator stateGenerator = () -> State.STOP;
         Location expected = new Location();
 
-        car.move(State.STOP);
+        car.move(stateGenerator);
 
         assertThat(car.getLocation()).isEqualTo(expected);
     }

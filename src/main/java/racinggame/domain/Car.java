@@ -12,8 +12,8 @@ public class Car {
         this.location = new Location(location);
     }
 
-    public void move(State state) {
-        if (state == State.MOVE) {
+    public void move(StateGenerator state) {
+        if (state.getState() == State.MOVE) {
             location.move();
         }
     }
