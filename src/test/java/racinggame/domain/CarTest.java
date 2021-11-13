@@ -8,11 +8,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
+    private static final String ENTRY_CAR_NAME = "jae";
+
     private Car car;
 
     @BeforeEach
-    void setUp() {
-        car = new Car();
+    void setUp() throws Exception {
+        Name name = new Name(ENTRY_CAR_NAME);
+        car = new Car(name);
     }
 
     @DisplayName("자동차가 전진 하는지 테스트")
