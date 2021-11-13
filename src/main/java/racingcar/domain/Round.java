@@ -22,6 +22,9 @@ public class Round {
     }
 
     private void validateRound(int finalRound, int currentRound) {
+        if (finalRound <= FIRST_ROUND) {
+            throw new RoundException();
+        }
         if (finalRound < currentRound) {
             throw new RoundException();
         }
