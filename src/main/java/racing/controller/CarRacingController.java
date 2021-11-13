@@ -1,8 +1,8 @@
 package racing.controller;
 
 import racing.model.Car;
-import racing.view.CliInputView;
-import racing.view.CliOutputView;
+import racing.view.TerminalInputView;
+import racing.view.TerminalOutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,19 +18,19 @@ public class CarRacingController {
     }
 
     private void setInput() {
-        int numberOfCar = CliInputView.getNumberOfCarFromCliInput();
+        int numberOfCar = TerminalInputView.getNumberOfCarFromTerminalInput();
         for (int i = 0; i < numberOfCar; i++) {
             cars.add(new Car());
         }
-        numberOfMove = CliInputView.getNumberOfMoveFromCliInput();
+        numberOfMove = TerminalInputView.getNumberOfMoveFromTerminalInput();
         System.out.println();
     }
 
     private void play() {
-        CliOutputView.printStartSentence();
+        TerminalOutputView.printStartSentence();
         for (int i = 0; i < numberOfMove; i++) {
             cars.forEach(Car::moveRandom);
-            CliOutputView.printCars(cars);
+            TerminalOutputView.printCars(cars);
         }
     }
 }

@@ -5,11 +5,11 @@ import racing.model.Car;
 import java.util.Collections;
 import java.util.List;
 
-public class CliOutputView {
+public class TerminalOutputView {
 
     private static final String CAR_MOVING_BAR = "-";
 
-    private CliOutputView() {}
+    private TerminalOutputView() {}
 
     public static void printCars(List<Car> cars) {
         cars.forEach(car -> {

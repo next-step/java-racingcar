@@ -8,18 +8,18 @@ import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("3단계 - 자동차 경주 - CliInputView 단위 테스트")
-class CliInputViewTest {
+@DisplayName("3단계 - 자동차 경주 - TerminalInputView 단위 테스트")
+class TerminalInputViewTest {
 
     @Test
     @DisplayName("차 수 입력 기능")
-    void getNumberOfCarFromCliInput() {
+    void getNumberOfCarFromTerminalInput() {
         String data = "3";
         InputStream stdin = System.in;
         System.setIn(
                 new ByteArrayInputStream(data.getBytes()));
 
-        int numberOfCar = CliInputView.getNumberOfCarFromCliInput();
+        int numberOfCar = TerminalInputView.getNumberOfCarFromTerminalInput();
 
         assertThat(numberOfCar).isEqualTo(3);
 
@@ -34,7 +34,7 @@ class CliInputViewTest {
         System.setIn(
                 new ByteArrayInputStream(data.getBytes()));
 
-        int numberOfMove = CliInputView.getNumberOfMoveFromCliInput();
+        int numberOfMove = TerminalInputView.getNumberOfMoveFromTerminalInput();
 
         assertThat(numberOfMove).isEqualTo(5);
 
