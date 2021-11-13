@@ -12,7 +12,6 @@ public class Main {
         List<String> nameList = Input.getNameList();
         Integer countOfTry = Input.getCuntOfTry();
         Cars cars = new Cars(nameList);
-        Integer criteriaNumber = 4;
         Output.outputView(cars,new RandomMoveStrategyImpl(),countOfTry);
     }
 }
