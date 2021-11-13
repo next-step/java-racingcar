@@ -28,4 +28,11 @@ public class RacingCarTest {
         racingCar.goOrStopRacing(3);
         assertThat(racingCar.getMoveCount()).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("moveCount가 maxCount와 같은지 체크한다.")
+    public void isMoveCountEqualMaxCount() {
+        RacingCar racingCar = new RacingCar("aaa", 5);
+        assertThat(racingCar.isMoveCountEqualMaxCount(5)).isTrue();
+    }
 }

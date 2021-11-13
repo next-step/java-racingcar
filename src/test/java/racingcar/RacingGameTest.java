@@ -36,7 +36,7 @@ public class RacingGameTest {
     @DisplayName("moveCount가 maxCount와 같은 RacingCar를 추출한다.")
     public void winnerOfRacingCars() {
         List<RacingCar> winners = racingCars.stream()
-                .filter(racingCar -> racingCar.getMoveCount() == 5)
+                .filter(racingCar -> racingCar.isMoveCountEqualMaxCount(5))
                 .collect(Collectors.toList());
         assertThat(winners.size()).isEqualTo(2);
     }

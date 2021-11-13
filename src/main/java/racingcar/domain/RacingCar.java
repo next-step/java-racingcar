@@ -32,6 +32,10 @@ public class RacingCar {
             this.moveCount++;
     }
 
+    public boolean isMoveCountEqualMaxCount(int maxCount) {
+        return this.moveCount == maxCount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

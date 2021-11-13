@@ -43,7 +43,7 @@ public class RacingGame {
                 .get().getMoveCount();
 
         return racingCars.stream()
-                .filter(racingCar -> racingCar.getMoveCount() == maxCount)
+                .filter(racingCar -> racingCar.isMoveCountEqualMaxCount(maxCount))
                 .collect(Collectors.toList());
     }
 
