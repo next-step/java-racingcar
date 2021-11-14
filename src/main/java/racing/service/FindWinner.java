@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FindWinner {
+
+    private FindWinner() {
+
+    }
     private static Integer findMaxPosition(Cars cars) {
         return cars.getCarList().stream().map(i -> i.getPosition().getPosition()).max(Comparator.comparing(x -> x)).get();
 
