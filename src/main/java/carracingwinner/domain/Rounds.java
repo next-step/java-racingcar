@@ -1,6 +1,7 @@
 package carracingwinner.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Rounds {
@@ -25,7 +26,7 @@ public class Rounds {
     }
 
     public List<Result> getResults() {
-        return results;
+        return Collections.unmodifiableList(results);
     }
 
 }

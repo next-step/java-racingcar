@@ -3,6 +3,7 @@ package carracingwinner.domain;
 import carracingwinner.utils.RandomUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,7 +23,7 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public List<String> getLastWinners() {
