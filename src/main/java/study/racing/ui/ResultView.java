@@ -1,5 +1,7 @@
 package study.racing.ui;
 
+import java.util.List;
+
 import study.racing.model.Result;
 import study.racing.model.car.Car;
 
@@ -11,8 +13,12 @@ public final class ResultView {
     private ResultView() {
     }
 
-    public static void printResult(Result result) {
-        result.getResult().forEach(car -> doPrint(car));
+    public static void printResult(List<Result> results) {
+        results.forEach(ResultView::doPrint);
+    }
+
+    private static void doPrint(Result result) {
+        result.getResult().forEach(ResultView::doPrint);
         System.out.println();
     }
 

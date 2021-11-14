@@ -21,10 +21,6 @@ public class RacingGameController {
 
         List<Result> results = racingGameService.race(carCount, tryCount);
 
-        printResult(results);
-    }
-
-    private void printResult(List<Result> results) {
-        results.forEach(ResultView::printResult);
+        ResultView.printResult(results);
     }
 }
