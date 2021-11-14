@@ -1,6 +1,4 @@
-package study;
-
-import study.operator.Operator;
+package study.calculate;
 
 public class Calculator {
 
@@ -9,13 +7,13 @@ public class Calculator {
     }
 
     public static int calculate(Expression expression) {
-        int result = Integer.parseInt(expression.next());
+        Number result = new Number(expression.next());
         while (!expression.isEmpty()) {
             Operator operator = Operator.findBy(expression.next());
-            int operand = Integer.parseInt(expression.next());
+            Number operand = new Number(expression.next());
 
             result = operator.operate(result, operand);
         }
-        return result;
+        return result.value();
     }
 }

@@ -1,25 +1,25 @@
-package study.operator;
+package study.calculate;
 
 import java.util.Arrays;
-import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 
 public enum Operator {
-    PLUS("+", (first, second) -> first + second),
-    MINUS("-", (first, second) -> first - second),
-    TIMES("*", (first, second) -> first * second),
-    DIVIDE("/", (first, second) -> first / second);
+    PLUS("+", Number::plus),
+    MINUS("-", Number::minus),
+    TIMES("*", Number::times),
+    DIVIDE("/", Number::divide);
 
     private static final String INVALID_OPERATOR_EXCEPTION_MESSAGE = "not supported operator.";
 
     private final String symbol;
-    private BiFunction<Integer, Integer, Integer> operate;
+    private BinaryOperator<Number> operate;
 
-    Operator(String symbol, BiFunction<Integer, Integer, Integer> operate) {
+    Operator(String symbol, BinaryOperator<Number> operate) {
         this.symbol = symbol;
         this.operate = operate;
     }
 
-    public int operate(int first, int second) {
+    public Number operate(Number first, Number second) {
         return operate.apply(first, second);
     }
 
