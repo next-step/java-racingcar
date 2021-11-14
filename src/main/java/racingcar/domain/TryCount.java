@@ -44,10 +44,6 @@ public class TryCount {
         }
     }
 
-    public int currentRound() {
-        return finishRound - tryCount;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
