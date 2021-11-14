@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 public class RacingCarGame {
     private int tryTimes;
     private List<Car> raceCar = new ArrayList<>();
-    private ResultView resultView = new ResultView();
 
     public RacingCarGame(String[] carNames, int tryTimes) {
         if (tryTimes < 0) {
@@ -21,12 +20,22 @@ public class RacingCarGame {
 
     private void setRaceCar(String[] carNames) {
         for (String name : carNames) {
-            raceCar.add(new Car(name));
+            raceCar.add(new Car(name, new RandomMoveStrategy()));
         }
     }
 
     public List<Car> getRaceCar() {
         return this.raceCar;
+    }
+
+    public int getTryTimes() {
+        return this.tryTimes;
+    }
+
+    public void moveCars() {
+        for (Car car : raceCar) {
+            car.move();
+        }
     }
 
     public List<Car> winnersCars() {

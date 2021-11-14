@@ -34,4 +34,10 @@ public class RacingCarGameTest {
                     RacingCarGame testRacingCarGame = new RacingCarGame(CAR_NAMES,-1);
                 });
     }
+
+    @Test
+    void 우승자_구하기_테스트() {
+        List<Car> winnersCar = racingCarGame.winnersCars();
+        // 어떤 식으로 테스트를 해야 할지 모르겠음.
+    }
 }

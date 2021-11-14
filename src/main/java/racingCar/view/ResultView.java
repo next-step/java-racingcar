@@ -13,7 +13,6 @@ public class ResultView {
 
     public void printCarRace(List<Car> raceCar) {
         for (Car car : raceCar) {
-            car.move();
             System.out.println(printRace(car));
         }
         System.out.println();
