@@ -15,8 +15,9 @@ public class GameConfig {
         this.maxOfRound = isPositiveNumber(maxOfRound);
     }
 
-    public int getNumberOfCars() {
-        return joinCarNames.size();
+
+    public List<String> getJoinCarNames() {
+        return joinCarNames;
     }
 
     public int getMaxOfRound() {

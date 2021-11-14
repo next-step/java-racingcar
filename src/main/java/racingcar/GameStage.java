@@ -6,7 +6,6 @@ import static racingcar.utils.IntegerUtils.isPositiveNumber;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.IntStream;
 import racingcar.dto.GameConfig;
 import racingcar.dto.GameResult;
 
@@ -17,17 +16,17 @@ public class GameStage {
     private final List<Car> cars = new ArrayList<>();
     private final GameResult result;
 
-    private GameStage(int maxOfRound, int numberOfCars) {
+    private GameStage(int maxOfRound, List<String> joinOfCarNames) {
         this.maxOfRound = isPositiveNumber(maxOfRound);
 
-        IntStream.range(0, numberOfCars)
-            .forEach(i -> cars.add(Car.create(0)));
+        joinOfCarNames
+            .forEach(name -> cars.add(Car.create(name)));
 
         this.result = new GameResult();
     }
 
     public static GameStage init(GameConfig config) {
-        return new GameStage(config.getMaxOfRound(), config.getNumberOfCars());
+        return new GameStage(config.getMaxOfRound(), config.getJoinCarNames());
     }
 
     public GameResult start() {
