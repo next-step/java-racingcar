@@ -13,10 +13,8 @@ public class RacingGame {
         int racingCarCount = inputView.inputRacingCar();
         int tryCount = inputView.inputTryCount();
 
-        Track track = new Track(100);
-        IntStream.range(0, racingCarCount)
-                .mapToObj(i -> new RacingCar())
-                .forEach(track::addRacingCar);
+        Track track = new Track();
+        track.addRacingCar(racingCarCount);
 
         racingView.racingStart();
 

@@ -3,28 +3,23 @@ package study03;
 public class RacingCar {
 
     private final Engine engine = new Engine();
-    private int moveDistance = 1;
+    private final Distance moveDistance = new Distance(1);
 
-    public void move() {
+    public boolean move() {
         if (engine.isRun()) {
-            moveDistance++;
+            this.moveDistance.addDistance();
+            return true;
         }
+        return false;
     }
 
-    public int getMoveDistance() {
-        return moveDistance;
+    public String currentMoveDistance() {
+        return moveDistance.totalMoved();
     }
 
     @Override
     public String toString() {
-        return "자동차";
-    }
-
-    //Test Code Only
-    public void fixedMove(int fixedValue) {
-        if (engine.isFixedRun(fixedValue)) {
-            moveDistance++;
-        }
+        return String.format("자동차 (주행상태:%s)", currentMoveDistance());
     }
 
 }

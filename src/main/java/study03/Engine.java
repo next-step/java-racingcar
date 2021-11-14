@@ -12,8 +12,4 @@ public class Engine {
         return random.nextInt(RANDOM_BOUND) >= ENGINE_RUN_COUNT;
     }
 
-    // Test Code Only
-    public boolean isFixedRun(int fixedValue) {
-        return fixedValue >= ENGINE_RUN_COUNT;
-    }
 }

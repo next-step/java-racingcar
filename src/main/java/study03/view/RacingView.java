@@ -2,6 +2,8 @@ package study03.view;
 
 import study03.Track;
 
+import java.util.List;
+
 public class RacingView {
 
     public void racingStart() {
@@ -10,7 +12,8 @@ public class RacingView {
     }
 
     public void printRacingResult(Track track) {
-        System.out.println(track.trackingAll());
+        List<String> tracking = track.trackingAll();
+        tracking.forEach(System.out::println);
         System.out.println();
     }
 }
