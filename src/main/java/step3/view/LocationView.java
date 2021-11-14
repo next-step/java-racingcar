@@ -16,6 +16,7 @@ public class LocationView implements Contest.ReportingLocation {
     }
 
     private void render(Location location) {
-        System.out.println(new String(new char[location.getValue() + START_LINE]).replace(empty, marker));
+        String expression = new String(new char[location.getValue() + START_LINE]).replace(empty, marker);
+        System.out.println(expression);
     }
 }
