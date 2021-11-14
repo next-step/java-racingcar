@@ -2,6 +2,7 @@ package com.rick.racing;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.rick.racing.core.CarRacingCore;
 import com.rick.racing.model.CarRecordHistory;
 import com.rick.racing.model.RacingPlayData;
 import com.rick.racing.model.RacingResult;
@@ -12,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 public class CarRacingTest {
 
-    private final CarRacing carRacing = new CarRacing();
+    private final CarRacingCore carRacing = new CarRacingCore();
 
     private List<Boolean> goOrStopList;
     private int goOrStopIndex;
