@@ -4,9 +4,10 @@ import java.util.List;
 
 import study.racing.model.car.Car;
 
-public class ResultView {
+public final class ResultView {
 
     private static final String DISTANCE_SYMBOL = "-";
+    private static final StringBuilder builder = new StringBuilder();
 
     private ResultView() {
     }
@@ -17,7 +18,7 @@ public class ResultView {
     }
 
     private static void doPrint(Car car) {
-        StringBuilder builder = new StringBuilder();
+        builder.setLength(0);
         for (int i = 0; i < car.getDistance(); i++) {
             builder.append(DISTANCE_SYMBOL);
         }

@@ -2,7 +2,7 @@ package study.racing.utils;
 
 import java.util.Scanner;
 
-public class ScannerUtils {
+public final class ScannerUtils {
 
     private static final Scanner scanner = new Scanner(System.in);
 

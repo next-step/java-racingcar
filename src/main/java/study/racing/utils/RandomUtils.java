@@ -2,7 +2,7 @@ package study.racing.utils;
 
 import java.util.Random;
 
-public class RandomUtils {
+public final class RandomUtils {
 
     private static final Random random = new Random();
 
