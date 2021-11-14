@@ -17,7 +17,7 @@ public class Names {
         return new Names(names);
     }
 
-    Names(List<Name> names) {
+    private Names(List<Name> names) {
         this.names = names;
     }
 
