@@ -1,14 +1,13 @@
 package racinggame.domain;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.domain.fixture.CarsFixture;
+import racinggame.domain.fixture.NamesFixture;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
-
-    private static final String ENTRY_CAR_NAMES = "jae,han";
 
     @DisplayName("경주에 참가한 자동차들이 이동한지 확인")
     @Test
@@ -16,9 +15,8 @@ class CarsTest {
         StateGenerator stateGenerator = () -> State.MOVE;
         int actual = 2;
         Location excepted = new Location(3);
-        Names names = Names.from(ENTRY_CAR_NAMES);
 
-        Cars cars = Cars.of(names, actual);
+        Cars cars = CarsFixture.createCars(actual);
         cars.roundRacing(stateGenerator);
 
         for (Car car : cars.getCars()) {
@@ -31,9 +29,8 @@ class CarsTest {
     void carsStopTest() throws Exception {
         StateGenerator stateGenerator = () -> State.STOP;
         int location = 2;
-        Names names = Names.from(ENTRY_CAR_NAMES);
 
-        Cars cars = Cars.of(names, location);
+        Cars cars = CarsFixture.createCars(location);
         cars.roundRacing(stateGenerator);
 
         for (Car car : cars.getCars()) {
@@ -41,34 +38,17 @@ class CarsTest {
         }
     }
 
-    @DisplayName("경주에 참가한 자동차들이 전진 했을 때 최고기록의 위치를 테스트 ")
-    @Test
-    void carsFirstRecordTest() throws Exception {
-        StateGenerator stateGenerator = () -> State.MOVE;
-        int location = 2;
-        Names names = Names.from(ENTRY_CAR_NAMES);
-        Location excepted = new Location(3);
-
-        Cars cars = Cars.of(names, location);
-        cars.roundRacing(stateGenerator);
-
-        assertThat(cars.inFormFirstRecord()).isEqualTo(excepted);
-    }
-
     @DisplayName("경주에 참가한 자동차들의 우승자를 확인")
     @Test
     void carsWinnerTest() throws Exception {
         StateGenerator stateGenerator = () -> State.MOVE;
         int actual = 2;
-        Location excepted = new Location(3);
-        Names names = Names.from(ENTRY_CAR_NAMES);
 
-        Cars cars = Cars.of(names, actual);
+        Cars cars = CarsFixture.createCars(actual);
         cars.roundRacing(stateGenerator);
 
-        Location firstRecord = cars.inFormFirstRecord();
-        Names winner = cars.inFormWinners(firstRecord);
+        Names winner = cars.inFormWinners();
 
-        assertThat(winner.printNames()).isEqualTo(ENTRY_CAR_NAMES);
+        assertThat(winner.printNames()).isEqualTo(NamesFixture.ENTRY_CAR_NAMES);
     }
 }
