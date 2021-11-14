@@ -25,7 +25,7 @@ public class Track {
 
     public void addRacingCar(int addedCount) {
         IntStream.range(0, addedCount)
-                .forEach(i -> addRacingCar());
+                .forEach(this::addRacingCar);
     }
 
     public List<Boolean> moveAll() {

@@ -4,6 +4,8 @@ import java.util.Collections;
 
 public class Distance {
 
+    private static final String MOVE_VIEW_CHARACTER = "-";
+
     private int distance;
 
     public Distance(int initDistance) {
@@ -15,7 +17,7 @@ public class Distance {
     }
 
     public String totalMoved() {
-        return String.join("", Collections.nCopies(this.distance, "-"));
+        return String.join("", Collections.nCopies(this.distance, MOVE_VIEW_CHARACTER));
     }
 
 }
