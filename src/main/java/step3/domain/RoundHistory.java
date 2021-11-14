@@ -7,8 +7,12 @@ public class RoundHistory {
 
     private RoundHistory() {}
 
-    public RoundHistory(Cars cars) {
+    private RoundHistory(Cars cars) {
         this.cars = cars;
+    }
+
+    public static RoundHistory of(Cars cars) {
+        return new RoundHistory(cars);
     }
 
     public List<Car> getCarList() {

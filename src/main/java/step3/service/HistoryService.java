@@ -1,15 +1,13 @@
 package step3.service;
 
+import step3.domain.GameHistory;
 import step3.domain.RoundHistory;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 public class HistoryService {
-    private final Map<Integer, RoundHistory> gameHistory;
+    private GameHistory gameHistory;
 
     private HistoryService() {
-        this.gameHistory = new LinkedHashMap<>();
+        gameHistory = GameHistory.create();
     }
 
     public static HistoryService create() {
@@ -17,14 +15,10 @@ public class HistoryService {
     }
 
     public void record(Integer round, RoundHistory roundHistory) {
-        gameHistory.put(round, roundHistory);
+        gameHistory.record(round, roundHistory);
     }
 
-    public Map<Integer, RoundHistory> getAll() {
+    public GameHistory get() {
         return gameHistory;
-    }
-
-    public RoundHistory getBy(int round) {
-        return gameHistory.get(round);
     }
 }
