@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racinggame.domain.value.Names;
 import racinggame.exception.EmptyAndNullSourceException;
 import racinggame.exception.NumericException;
 import racinggame.exception.OverNameLengthException;
@@ -27,15 +26,6 @@ class NamesTest {
         }
         assertThatThrownBy(() -> Names.createNames(convertList(input)))
                 .isInstanceOf(EmptyAndNullSourceException.class);
-    }
-
-    @DisplayName("자동차 이름에 입력된 이름길이가 5자를 초과할 경우 예외발생")
-    @Test
-    void validateLengthFromCarNames() {
-        String input = "pobi,crong,honux,hystrix";
-
-        assertThatThrownBy(() -> Names.createNames(convertList(input)))
-                .isInstanceOf(OverNameLengthException.class);
     }
 
     @DisplayName("자동차 이름에 입력된 값이 숫자일 경우 예외발생")

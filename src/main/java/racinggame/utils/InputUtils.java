@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class InputUtils {
+    private static final String NAME_SEPARATOR = ",";
 
     private InputUtils() {
         throw new NotInstanceException();
@@ -19,7 +20,7 @@ public class InputUtils {
     }
 
     private static List<String> extractNames(String input) {
-        return Arrays.asList(input.split(","));
+        return Arrays.asList(input.split(NAME_SEPARATOR));
     }
 
     private static int convertInt(String value) {

@@ -4,7 +4,6 @@ package racinggame.domain.value;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Car;
-import racinggame.domain.value.MoveResult;
 
 import java.util.List;
 

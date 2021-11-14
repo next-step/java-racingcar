@@ -1,35 +1,27 @@
 package racinggame.domain.value;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import racinggame.domain.value.Position;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racinggame.fixture.PositionFixture.INIT_POSITION;
 
 class PositionTest {
 
-    private Position initPosition;
+    private Position initPosition = INIT_POSITION;
 
-    @BeforeEach
-    void setUp() {
-        initPosition = Position.createInitPosition();
-    }
+    @DisplayName("4번 증가시 현재 위치값이 4이어야 한다.")
+    @ParameterizedTest
+    @CsvSource(value = {
+            "4 | 4"
+    }, delimiter = '|')
+    void increase(int attempts, int expected) {
+        for (int i = 0; i < attempts; i++) {
+            initPosition.increase();
+        }
 
-    @DisplayName("moveValue값이 4이상일 경우 증가")
-    @Test
-    void increase() {
-        initPosition.increase(4);
-
-        assertThat(initPosition).isEqualTo(Position.of(1));
-    }
-
-    @DisplayName("moveValue값이 4미만일 경우 증가하지않음")
-    @Test
-    void notIncrease() {
-        initPosition.increase(3);
-
-        assertThat(initPosition).isNotEqualTo(Position.createInitPosition());
+        assertThat(initPosition.current()).isEqualTo(expected);
     }
 
 

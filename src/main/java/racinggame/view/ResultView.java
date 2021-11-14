@@ -1,5 +1,6 @@
 package racinggame.view;
 
+import racinggame.domain.value.MoveResult;
 import racinggame.domain.value.Names;
 import racinggame.domain.value.RacingResult;
 
@@ -11,9 +12,8 @@ public class ResultView {
     private static final String DIVISION = "";
     private static final String OUTPUT_SYMBOL = "-";
     private static final String NAME_SYMBOL_DIVISION = " : ";
-    private static final String WINNER_JOIN_DIVISION =", ";
+    private static final String WINNER_JOIN_DIVISION = ", ";
     private static final String WINNER_MESSAGE = "가 최종 우승했습니다.";
-    private static final int SOLO_WINNER = 1;
 
     private final RacingResult racingResult;
 
@@ -26,19 +26,24 @@ public class ResultView {
 
         racingResult.results()
                 .forEach(moveResult -> {
-                        moveResult.results()
-                                .forEach(car -> {
-                                    System.out.print(car.name());
-                                    System.out.print(NAME_SYMBOL_DIVISION);
-                                    System.out.println(printResult(car.position()));
-                    });
-            System.out.println(DIVISION);
-        });
+                    printMoveResult(moveResult);
+                    System.out.println(DIVISION);
+                });
 
         printWinners();
     }
 
-    private String printResult(int result) {
+    private void printMoveResult(MoveResult moveResult) {
+        moveResult.results()
+                .forEach(car -> {
+                    System.out.print(car.name());
+                    System.out.print(NAME_SYMBOL_DIVISION);
+                    System.out.println(printLocation(car.position()));
+                });
+    }
+
+
+    private String printLocation(int result) {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < result; i++) {
             builder.append(OUTPUT_SYMBOL);
@@ -52,9 +57,9 @@ public class ResultView {
 
     private String joinedWinnerNames() {
         Names winners = racingResult.findWinners();
-        List<String> names = winners.names();
+        List<String> names = winners.list();
 
-        if (names.size() == SOLO_WINNER) {
+        if (winners.isSolo()) {
             return names.get(0);
         }
 

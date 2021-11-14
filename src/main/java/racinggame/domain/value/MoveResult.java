@@ -22,7 +22,7 @@ public class MoveResult {
         int maxPosition = getMaxPosition();
 
         return Collections.unmodifiableList(cars.stream()
-                .filter(car -> car.compareSamePosition(maxPosition))
+                .filter(car -> car.isSamePosition(maxPosition))
                 .collect(Collectors.toList()));
     }
 
