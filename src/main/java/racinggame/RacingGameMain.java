@@ -12,16 +12,12 @@ public class RacingGameMain {
     public static void main(String[] args) {
         CarStateGenerator carStateGenerator = new CarStateGenerator();
         InputView inputView = new InputView();
+        Names names = inputView.inputEntryCarNames();
+        Laps laps = inputView.inputLaps();
 
-        try {
-            Names names = inputView.inputEntryCarNames();
-            Laps laps = inputView.inputLaps();
+        RacingGame racingGame = new RacingGame(names, laps, carStateGenerator);
+        racingGame.startRacing();
 
-            RacingGame racingGame = new RacingGame(names, laps, carStateGenerator);
-            racingGame.startRacing();
-            ResultView.awardRacing(racingGame.getCars());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        ResultView.awardRacing(racingGame.getCars());
     }
 }
