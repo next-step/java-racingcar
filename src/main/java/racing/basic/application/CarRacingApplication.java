@@ -28,6 +28,7 @@ public class CarRacingApplication {
 
         carRacingGame = new CarRacingGame(new Random(), carCount);
 
+        outputViewResolver.sendMessage("실행 결과");
         for (int i = 0; i < loopCount; i++) {
             sleep(1000);
             int[] displayTrack = carRacingGame.nextRound();
@@ -40,7 +41,9 @@ public class CarRacingApplication {
         for (int i = 0; i < questions.length; i++) {
             outputViewResolver.sendMessage(questions[i]);
             answer[i] = inputViewResolver.takeInput();
+            outputViewResolver.sendMessage(answer[i] + "");
         }
+        outputViewResolver.sendMessage("");
         return answer;
     }
 

@@ -7,7 +7,7 @@ public class OutputViewResolver {
     private static final PrintStream PRINT_STREAM = System.out;
 
     private static final String LINE_SYMBOL = "-";
-    private static final String CONTOUR = "================";
+    private static final String CONTOUR = "";
 
     public void sendMessage(String message) {
         PRINT_STREAM.println(message);
