@@ -15,12 +15,11 @@ public class CarRecordHistoryTest {
     @Test
     @DisplayName("Go, Stop 에 따른 이동 기록 확인")
     void goAndStopHistory() {
-        final List<Boolean> goOrStopList = Lists.list(true, true, false, false, true);
-        final List<Integer> outputValueList = Lists.list(1, 2, 2, 2, 3);
+        final List<Boolean> inputValues = Lists.list(true, true, false, false, true);
+        final List<Integer> expectedValues = Lists.list(1, 2, 2, 2, 3);
 
-        goOrStopList.forEach(carRecordHistory::addHistory);
-        IntStream.of(carRecordHistory.size() - 1)
-            .forEach(index -> assertThat(carRecordHistory.getPosition(index)).isEqualTo(
-                outputValueList.get(index)));
+        inputValues.forEach(carRecordHistory::addHistory);
+        IntStream.of(carRecordHistory.getSize() - 1)
+            .forEach(index -> assertThat(carRecordHistory.isEqual(index, expectedValues.get(index))).isEqualTo(true));
     }
 }

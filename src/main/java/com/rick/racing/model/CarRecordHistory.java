@@ -28,4 +28,12 @@ public class CarRecordHistory {
     public int getPosition(int index) {
         return positions.get(index);
     }
+
+    public int getSize() {
+        return positions.size();
+    }
+
+    public boolean isEqual(int index, int value) {
+        return positions.get(index).equals(value);
+    }
 }
