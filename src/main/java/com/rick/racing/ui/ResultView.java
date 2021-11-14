@@ -14,20 +14,24 @@ public class ResultView {
         System.out.println(MESSAGE_RUN_RESULT);
 
         for (int tryIndex = 0; tryIndex < racingPlayData.getTryCount(); tryIndex++) {
-            showRoundRecord(racingPlayData, racingResult, tryIndex);
+            drawRoundRecord(racingPlayData, racingResult, tryIndex);
             System.out.println();
         }
     }
 
-    private void showRoundRecord(RacingPlayData racingPlayData, RacingResult racingResult, int tryIndex) {
+    private void drawRoundRecord(RacingPlayData racingPlayData, RacingResult racingResult, int tryIndex) {
         for (int carIndex = 0; carIndex < racingPlayData.getCarCount(); carIndex++) {
             CarRecordHistory record = racingResult.getRecord(carIndex);
             int carPosition = record.getPosition(tryIndex);
 
-            for (int i = 0; i < carPosition; i++) {
-                System.out.print(MESSAGE_PROGRESS_MARK);
-            }
+            drawCarRecord(carPosition);
             System.out.println();
+        }
+    }
+
+    private void drawCarRecord(int carPosition) {
+        for (int i = 0; i < carPosition; i++) {
+            System.out.print(MESSAGE_PROGRESS_MARK);
         }
     }
 }
