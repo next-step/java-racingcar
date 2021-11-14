@@ -8,10 +8,6 @@ public class Position {
         this.position = 0;
     }
 
-    public Position(Integer position) {
-        this.position = position;
-    }
-
     public void move() {
         this.position ++;
     }
