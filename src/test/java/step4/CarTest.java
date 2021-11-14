@@ -1,6 +1,7 @@
-package step3;
+package step4;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -13,11 +14,11 @@ public class CarTest {
 
     @BeforeEach
     void init() {
-        car = new Car(new RandomMoveStrategy());
+        car = new Car("kim", new RandomMoveStrategy());
     }
 
     @Test
-    void moveSuccess() {
+    void move() {
         car.move();
         assertThat(car.getPosition()).isIn(Arrays.asList(0, 1));
     }
