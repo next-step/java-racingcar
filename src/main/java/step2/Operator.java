@@ -2,36 +2,22 @@ package step2;
 
 import java.util.Arrays;
 
-public enum Operator implements Operate {
-    PLUS("+") {
-        @Override
-        public CalculatorNumber operate(CalculatorNumber firstOperand, CalculatorNumber secondOperand) {
-            return firstOperand.plus(secondOperand);
-        }
-    },
-    MINUS("-") {
-        @Override
-        public CalculatorNumber operate(CalculatorNumber firstOperand, CalculatorNumber secondOperand) {
-            return firstOperand.minus(secondOperand);
-        }
-    },
-    TIMES("*") {
-        @Override
-        public CalculatorNumber operate(CalculatorNumber firstOperand, CalculatorNumber secondOperand) {
-            return firstOperand.times(secondOperand);
-        }
-    },
-    DIVIDE_BY("/") {
-        @Override
-        public CalculatorNumber operate(CalculatorNumber firstOperand, CalculatorNumber secondOperand) {
-            return firstOperand.divideBy(secondOperand);
-        }
-    };
+public enum Operator {
+    PLUS("+", CalculatorNumber::plus),
+    MINUS("-", CalculatorNumber::minus),
+    TIMES("*", CalculatorNumber::times),
+    DIVIDE_BY("/", CalculatorNumber::divideBy);
 
     private final String value;
+    private final Operate operator;
 
-    Operator(String value) {
+    Operator(String value, Operate operator) {
         this.value = value;
+        this.operator = operator;
+    }
+
+    public CalculatorNumber operate(CalculatorNumber first, CalculatorNumber second) {
+        return operator.operate(first, second);
     }
 
     public static Operator findByValue(String value) {
@@ -44,6 +30,7 @@ public enum Operator implements Operate {
     }
 }
 
+@FunctionalInterface
 interface Operate {
     CalculatorNumber operate(CalculatorNumber firstOperand, CalculatorNumber secondOperand);
 }
