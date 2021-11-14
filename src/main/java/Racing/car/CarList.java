@@ -7,22 +7,22 @@ import java.util.stream.Collectors;
 
 public class CarList {
 
-  private final List<Car> cars;
+    private final List<Car> cars;
 
-  public CarList(List<Car> cars) {
-    this.cars = cars;
-  }
+    public CarList(List<Car> cars) {
+        this.cars = cars;
+    }
 
-  public CarList moveAllCar(Stage stage) {
-    this.cars.
-            forEach(car -> car.move(stage));
-    return this;
-  }
+    public CarList moveAllCar(Stage stage) {
+        this.cars.
+                forEach(car -> car.move(stage));
+        return this;
+    }
 
-  public String displayCarDistance() {
-    return this.cars.stream()
-        .map(Car::presentDistance)
-        .collect(Collectors.joining("\n"));
-  }
+    public String displayCarDistance() {
+        return this.cars.stream()
+                .map(Car::presentDistance)
+                .collect(Collectors.joining("\n"));
+    }
 
 }
