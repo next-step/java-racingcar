@@ -8,7 +8,7 @@ public class Names {
 
     private final List<Name> names;
 
-    public static Names from(String text) throws Exception {
+    public static Names from(String text) {
         String[] nameArr = text.split(CAR_NAME_SEPARATORS);
         List<Name> names = new ArrayList<>();
         for (String name : nameArr) {
