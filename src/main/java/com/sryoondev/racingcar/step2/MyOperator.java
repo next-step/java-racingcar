@@ -1,5 +1,7 @@
+package com.sryoondev.racingcar.step2;
+
 public class MyOperator {
-    String operator;
+    private String operator;
 
     public MyOperator(String text) {
         this.operator = text;

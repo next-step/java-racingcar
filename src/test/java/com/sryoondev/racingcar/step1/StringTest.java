@@ -1,3 +1,5 @@
+package com.sryoondev.racingcar.step1;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
