@@ -1,6 +1,7 @@
 package study.racing.model.car;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import study.racing.model.rule.Rule;
@@ -20,6 +21,6 @@ public class RacingCars {
     }
 
     public List<Car> result() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 }
