@@ -1,6 +1,7 @@
 package racinggame.utils;
 
 import racinggame.domain.Car;
+import racinggame.domain.value.Name;
 import racinggame.domain.value.Position;
 import racinggame.vo.InputValue;
 import racinggame.service.RacingCars;
@@ -22,7 +23,7 @@ public class CarFactory {
     private static List<Car> createCars(InputValue inputValue) {
         return inputValue.carNames()
                 .stream()
-                .map(name -> new Car(name, Position.createInitPosition()))
+                .map(name -> new Car(Name.of(name), Position.createInitPosition()))
                 .collect(Collectors.toList());
     }
 }

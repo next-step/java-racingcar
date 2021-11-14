@@ -1,28 +1,32 @@
 package racinggame.domain;
 
+import racinggame.domain.value.Name;
 import racinggame.domain.value.Position;
 
 import java.util.Objects;
 
 public class Car {
+    private static final int ADVANCED_CONDITION = 4;
 
-    private final String name;
+    private final Name name;
     private final Position position;
 
-    public Car(String name, Position position) {
+    public Car(Name name, Position position) {
         this.position = position;
         this.name = name;
-
     }
 
     public Car move(int moveValue) {
-        position.increase(moveValue);
+        if(validateMoveValue(moveValue)) {
+            position.increase();
+        }
+
         return new Car(name, Position.of(position.current()));
     }
 
-    public boolean compareSamePosition(int position) {
+    public boolean isSamePosition(int position) {
         return this.position
-                .same(position);
+                .isSame(position);
     }
 
     public int position() {
@@ -30,7 +34,7 @@ public class Car {
     }
 
     public String name() {
-        return name;
+        return name.value();
     }
 
     @Override
@@ -44,5 +48,9 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name, position);
+    }
+
+    private boolean validateMoveValue(int moveValue) {
+        return moveValue >= ADVANCED_CONDITION;
     }
 }

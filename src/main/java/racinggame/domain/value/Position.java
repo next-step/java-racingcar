@@ -1,7 +1,5 @@
 package racinggame.domain.value;
 
-import racinggame.utils.MoveValueValidator;
-
 import java.util.Objects;
 
 public class Position {
@@ -21,13 +19,11 @@ public class Position {
         return new Position(position);
     }
 
-    public void increase(int moveValue) {
-        if (MoveValueValidator.validate(moveValue)) {
-            position++;
-        }
+    public void increase() {
+        position++;
     }
 
-    public boolean same(int position) {
+    public boolean isSame(int position) {
         return this.position == position;
     }
 

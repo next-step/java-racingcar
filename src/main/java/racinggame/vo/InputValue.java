@@ -26,7 +26,7 @@ public class InputValue {
     }
 
     public List<String> carNames() {
-        return carNames.names();
+        return carNames.list();
     }
 
     @Override
