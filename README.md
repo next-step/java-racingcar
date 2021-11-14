@@ -7,3 +7,8 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 구현 기능
+* 레이싱에 참가할 자동차 수와, 레이싱 횟수를 입력 받는다.
+* 각 기능에 맞춰 역할을 분리한다
+* 최종 스코어를 프린트 한다.

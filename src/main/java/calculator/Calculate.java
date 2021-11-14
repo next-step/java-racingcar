@@ -5,28 +5,28 @@ import java.util.List;
 
 public class Calculate {
 
-    public static String SPLITTER = " ";
+    public final static String SPLITTER = " ";
 
-    public static int calculate(String str) {
+    public int calculate(String str) {
 
-        List<String> a = Arrays.asList(str.split(SPLITTER));
-        return splitString(a).getNumber();
+        List<String> list = Arrays.asList(str.split(SPLITTER));
+        return splitString(list).getNumber();
     }
 
-    public static Calculator splitString(List<String> items) {
+    public Calculator splitString(List<String> items) {
 
         if (items.size() == 1) {
-            return new Calculator(items.get(0));
+            return new Calculator(Integer.parseInt(items.get(0)));
         }
 
         List<String> firstList = items.subList(0, items.size() - 2);
         String operator = items.get(items.size() - 2);
-        Calculator second = new Calculator(items.get(items.size() - 1));
+        Calculator second = new Calculator(Integer.parseInt(items.get(items.size() - 1)));
 
         return calculate(splitString(firstList), operator, second);
     }
 
-    public static Calculator calculate(Calculator a, String operator, Calculator b) {
+    public Calculator calculate(Calculator a, String operator, Calculator b) {
 
         if (operator.equals("+")) {
             return a.plus(b);

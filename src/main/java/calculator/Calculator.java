@@ -4,10 +4,6 @@ public class Calculator {
 
     private final int number;
 
-    public Calculator(String st) {
-        this(Integer.parseInt(st));
-    }
-
     public Calculator(int number) {
         this.number = number;
     }
@@ -29,7 +25,7 @@ public class Calculator {
     }
 
     public Calculator divide(Calculator number2) {
-        if(number2.number == 0) {
+        if (number2.number == 0) {
             throw new IllegalArgumentException("number should not be 0");
         }
         return new Calculator(this.number / number2.number);
