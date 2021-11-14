@@ -31,11 +31,15 @@ public class InputView {
         String[] joinCarNames = input.split(",");
 
         for (String carName : joinCarNames) {
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-            }
+            validCarName(carName);
         }
 
         return Arrays.asList(joinCarNames);
+    }
+
+    private void validCarName(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
     }
 }
