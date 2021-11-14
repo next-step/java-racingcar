@@ -41,7 +41,7 @@ class CarTest {
     @ParameterizedTest
     @CsvSource(value = {"pobi,0,''", "kim,1,-", "lee,2,--"})
     void showCurrentStateTest(String name, int position, String state) {
-        Car car = new Car(name, new Position(position));
+        Car car = new Car(name, position);
 
         assertThat(car.showCurrentState()).isEqualTo(name + " : " + state);
     }

@@ -22,9 +22,9 @@ public class ResultTest {
 
     private static Stream<Arguments> provideCars() {
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car("pobi", new Position(0)));
-        cars.add(new Car("pobi1", new Position(1)));
-        cars.add(new Car("pobi2", new Position(2)));
+        cars.add(new Car("pobi", 0));
+        cars.add(new Car("pobi1", 1));
+        cars.add(new Car("pobi2", 2));
 
         return Stream.of(
                 Arguments.of(cars, "pobi : \npobi1 : -\npobi2 : --\n", "pobi2")

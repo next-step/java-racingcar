@@ -12,7 +12,7 @@ public class Cars {
 
     public Cars(String[] carNames) {
         for (String carName : carNames) {
-            cars.add(new Car(carName, new Position(0)));
+            cars.add(new Car(carName, 0));
         }
     }
 
@@ -36,4 +36,5 @@ public class Cars {
                 .map(car -> car.getName())
                 .collect(Collectors.toList());
     }
+
 }

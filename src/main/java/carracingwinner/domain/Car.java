@@ -8,12 +8,12 @@ public class Car {
     private Position position;
 
     public Car(String name) {
-        this(name, new Position());
+        this(name, 0);
     }
 
-    public Car(String name, Position position) {
+    public Car(String name, int position) {
         this.name = new Name(name);
-        this.position = position;
+        this.position = new Position(position);
     }
 
     public void move(int moveValue) {
