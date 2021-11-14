@@ -29,12 +29,4 @@ public final class Position {
         return intValue;
     }
 
-    public String getStringValue() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < intValue; i++) {
-            sb.append('-');
-        }
-        return sb.toString();
-    }
-
 }

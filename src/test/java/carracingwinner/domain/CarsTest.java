@@ -21,10 +21,6 @@ class CarsTest {
         String names = "pobi,kim,lee";
         Cars cars = new Cars(names.split(","));
 
-        Result result = cars.move();
-
-        assertThat(result.getResult()).isNotEmpty();
-        assertThat(cars.getLastWinners().size()).isGreaterThan(0);
     }
 
 }

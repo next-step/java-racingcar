@@ -35,15 +35,7 @@ class CarTest {
 
         car.move(moveValue);
 
-        assertThat(car.getPosition().getIntValue()).isEqualTo(position);
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = {"pobi,0,''", "kim,1,-", "lee,2,--"})
-    void showCurrentStateTest(String name, int position, String state) {
-        Car car = new Car(name, position);
-
-        assertThat(car.showCurrentState()).isEqualTo(name + " : " + state);
+        assertThat(car.getPosition()).isEqualTo(position);
     }
 
 }

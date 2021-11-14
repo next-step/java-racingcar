@@ -7,16 +7,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RoundsTest {
 
     @Test
-    void playRoundsTest() {
+    void playOneRoundTest() {
         int roundCount = 5;
         String carNames = "pobi,kim";
         Cars cars = new Cars(carNames.split(","));
         Rounds rounds = new Rounds(roundCount);
 
-        rounds.playRounds(cars);
-
-        assertThat(rounds.getResults().size()).isEqualTo(roundCount);
-        assertThat(cars.getLastWinners().size()).isGreaterThan(0);
     }
 
 }

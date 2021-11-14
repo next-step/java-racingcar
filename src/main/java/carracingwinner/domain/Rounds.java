@@ -1,12 +1,6 @@
 package carracingwinner.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class Rounds {
-
-    private final List<Result> results = new ArrayList<>();
 
     private int roundCount;
 
@@ -14,19 +8,13 @@ public class Rounds {
         this.roundCount = tryCount;
     }
 
-    public void playRounds(Cars cars) {
-        while (roundCount-- > 0) {
-            playOneRound(cars);
-        }
+    public void playOneRound(Cars cars) {
+        roundCount--;
+        cars.move();
     }
 
-    private void playOneRound(Cars cars) {
-        Result result = cars.move();
-        results.add(result);
-    }
-
-    public List<Result> getResults() {
-        return Collections.unmodifiableList(results);
+    public boolean isEnd() {
+        return roundCount > 0;
     }
 
 }

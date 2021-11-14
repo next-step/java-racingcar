@@ -22,16 +22,12 @@ public class Car {
         }
     }
 
-    public String showCurrentState() {
-        return name.getName() + " : " + position.getStringValue();
-    }
-
     public String getName() {
         return name.getName();
     }
 
-    public Position getPosition() {
-        return position;
+    public int getPosition() {
+        return position.getIntValue();
     }
 
 }

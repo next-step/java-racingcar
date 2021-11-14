@@ -36,12 +36,4 @@ class PositionTest {
         assertThat(position.getIntValue()).isEqualTo(value + 1);
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"0,''", "1,-", "2,--"})
-    void getStringValue(int positionValue, String stringValue) {
-        Position position = new Position(positionValue);
-
-        assertThat(position.getStringValue()).isEqualTo(stringValue);
-    }
-
 }

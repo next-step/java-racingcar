@@ -29,7 +29,7 @@
 * Position 객체를 불변객체로 바꿔보기 - 어떤 이점이 있을까? 이유는?
 * Result의 findWinners메서드 Cars에 넣어보기 - getter는 뷰에서만 사용하도록
 * Cars의 getCars Collections.unmodifiableList사용 - 어떤 장점이 있을까?
-* 뷰를 위한 로직은 도메인에 존재하지 않도록. (Car의 showCurrentState(), Position의 getStringValue())
+* getter 사용 지양. 뷰를 위한 로직은 도메인에 존재하지 않도록. (Car의 showCurrentState(), Position의 getStringValue())
 * Car객체의 name을 객체로
 * Car의 move메서드 파라미터명 random에서 변경
 

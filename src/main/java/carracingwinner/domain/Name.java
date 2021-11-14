@@ -1,6 +1,6 @@
 package carracingwinner.domain;
 
-public class Name {
+public final class Name {
 
     private static final int MAX_NAME_LENGTH = 5;
 

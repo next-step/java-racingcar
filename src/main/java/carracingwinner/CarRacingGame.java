@@ -19,9 +19,12 @@ public class CarRacingGame {
         Cars cars = new Cars(inputView.readCarNames());
         Rounds rounds = new Rounds(inputView.readTryCount());
 
-        rounds.playRounds(cars);
+        resultView.printResultsMessage();
+        while (rounds.isEnd()) {
+            rounds.playOneRound(cars);
+            resultView.printOneRoundResult(cars);
+        }
 
-        resultView.printResults(rounds.getResults());
         resultView.printWinners(cars.getLastWinners());
     }
 
