@@ -9,12 +9,17 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
 
     public Cars(String[] carNames) {
+        this(new ArrayList<>());
         for (String carName : carNames) {
             cars.add(new Car(carName, 0));
         }
+    }
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public void move() {
