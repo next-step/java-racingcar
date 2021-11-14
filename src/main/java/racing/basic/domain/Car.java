@@ -10,7 +10,7 @@ public class Car {
         }
     }
 
-    public int toInteger() {
+    protected int toInteger() {
         return roadLength;
     }
 }

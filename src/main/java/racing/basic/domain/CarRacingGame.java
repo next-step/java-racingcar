@@ -21,6 +21,10 @@ public class CarRacingGame {
             int randomInteger = random.nextInt();
             car.moveOrStop(randomInteger);
         }
+        return displayTrack();
+    }
+
+    private int[] displayTrack() {
         return Arrays.stream(track)
                      .mapToInt(Car::toInteger)
                      .toArray();
