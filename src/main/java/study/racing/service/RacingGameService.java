@@ -10,6 +10,8 @@ import study.racing.model.rule.Rule;
 
 public class RacingGameService {
 
+    public static final String CAR_COUNT_AND_TRY_COUNT_MUST_BE_POSITIVE = "carCount and tryCount must be positive";
+
     private final Rule rule;
 
     public RacingGameService(Rule rule) {
@@ -17,6 +19,8 @@ public class RacingGameService {
     }
 
     public List<Result> race(int carCount, int tryCount) {
+        validateOrThrow(carCount, tryCount);
+
         List<Result> results = new ArrayList<>();
         RacingCars racingCars = new RacingCars(carCount);
         for (int i = 0; i < tryCount; i++) {
@@ -24,5 +28,11 @@ public class RacingGameService {
             results.add(new Result(racingCars.result()));
         }
         return Collections.unmodifiableList(results);
+    }
+
+    private void validateOrThrow(int carCount, int tryCount) {
+        if (carCount <= 0 || tryCount <= 0) {
+            throw new RuntimeException(CAR_COUNT_AND_TRY_COUNT_MUST_BE_POSITIVE);
+        }
     }
 }
