@@ -18,8 +18,17 @@ public class CarRecordHistoryTest {
         final List<Boolean> inputValues = Lists.list(true, true, false, false, true);
         final List<Integer> expectedValues = Lists.list(1, 2, 2, 2, 3);
 
-        inputValues.forEach(carRecordHistory::addHistory);
-        IntStream.of(carRecordHistory.getSize() - 1)
+        inputValues.forEach(this::move);
+        IntStream.range(0, carRecordHistory.getSize())
             .forEach(index -> assertThat(carRecordHistory.isEqual(index, expectedValues.get(index))).isEqualTo(true));
+    }
+
+    private void move(Boolean goOrStop) {
+        if (goOrStop) {
+            carRecordHistory.go();
+            return;
+        }
+
+        carRecordHistory.stop();
     }
 }

@@ -10,19 +10,23 @@ public class CarRecordHistory {
 
     final private List<Integer> positions = new ArrayList<>();
 
-    public void addHistory(boolean isGo) {
+    public void go() {
+        int lastTryRecord = getLastTryRecord();
+        positions.add(lastTryRecord + GO_VALUE);
+    }
+
+    public void stop() {
+        int lastTryRecord = getLastTryRecord();
+        positions.add(lastTryRecord + STOP_VALUE);
+    }
+
+    private int getLastTryRecord() {
         int lastTryRecord = 0;
 
-        if(!positions.isEmpty()) {
+        if (!positions.isEmpty()) {
             lastTryRecord = positions.get(positions.size() - 1);
         }
-
-        if(isGo) {
-            positions.add(lastTryRecord + GO_VALUE);
-            return;
-        }
-
-        positions.add(lastTryRecord + STOP_VALUE);
+        return lastTryRecord;
     }
 
     public int getPosition(int index) {
