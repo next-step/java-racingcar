@@ -58,7 +58,8 @@ public class Cars {
 
     public List<Car> findWinners() {
         Position winnerPosition = findWinnerPosition();
-        return cars.stream().filter(car -> car.currentPosition().equals(winnerPosition))
+
+        return cars.stream().filter(car -> car.isWinner(winnerPosition))
                 .collect(Collectors.toList());
     }
 
