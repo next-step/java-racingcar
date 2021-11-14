@@ -38,7 +38,8 @@ public class CarRacingGame {
     private void playOneRound() {
         for (Car car : cars) {
             int randomNumber = random(MAX_RANDOM_VALUE);
-            car.operate(randomNumber);
+            CarOperation operatoin = CarOperation.from(randomNumber);
+            car.move(operatoin);
         }
     }
 

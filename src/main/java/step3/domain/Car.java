@@ -1,18 +1,25 @@
 package step3.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
 
-    private CarHistoryList history = new CarHistoryList();
+    private List<Integer> positionList = new ArrayList<>();
 
-    public void operate(int number) {
-        CarOperation carOperation = CarOperation.from(number);
-        int movedPosition = history.getLastPosition() + carOperation.getValue();
-        history.add(carOperation, movedPosition);
+    public void move(CarOperation carOperation) {
+        int movedPosition = getCurrentPosition() + carOperation.getValue();
+        positionList.add(movedPosition);
     }
 
-    public int getPosition(int round) {
-        return history.getPosition(round);
-
+    private int getCurrentPosition() {
+        if(positionList.size()==0){
+            return 0;
+        }
+        return positionList.get(positionList.size() - 1);
     }
+
+    public int getPosition(int idx) {
+        return positionList.get(idx);}
 
 }

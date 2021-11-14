@@ -11,14 +11,14 @@ class CarTest {
     @Test
     void operate() {
         Car car = new Car();
-        car.operate(4);
+        car.move(CarOperation.from(4));
         assertThat( car.getPosition(0)).isEqualTo(1);
 
-        car.operate(4);
+        car.move(CarOperation.from(4));
         assertThat( car.getPosition(1)).isEqualTo(2);
 
 
-        car.operate(1);
+        car.move(CarOperation.from(1));
         assertThat( car.getPosition(1)).isEqualTo(2);
 
     }
