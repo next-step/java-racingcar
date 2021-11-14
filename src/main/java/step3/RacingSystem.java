@@ -11,9 +11,8 @@ public class RacingSystem {
     public RacingSystem() {
         try (Scanner scanner = new Scanner(System.in)) {
             InputView inputView = new InputView(scanner);
-            this.carCount = new CarCount(inputView.askCarCount());
+            this.carGroup = new CarGroup(inputView.askCarName());
             this.racingCount = new RacingCount(inputView.askRacingCount());
-            this.carGroup = new CarGroup(carCount.count);
         }
     }
 

@@ -29,6 +29,13 @@ public class CarTest {
     }
 
     @Test
+    void 자동차_이름_공백_생성() {
+        assertThat(new Car(" test ")).isEqualTo(new Car("test"));
+        assertThat(new Car("test ")).isEqualTo(new Car("test"));
+        assertThat(new Car(" test")).isEqualTo(new Car("test"));
+    }
+
+    @Test
     void 자동차_이름_5자_초과() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new Car("nelldklee");

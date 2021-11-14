@@ -26,6 +26,7 @@ public class Car {
     }
 
     public Car(String name, int location) {
+        name = name.trim();
         if (name.length() > VALID_CAR_SIZE_VALUE) {
             throw new IllegalArgumentException(VALID_MSG_CAR_NAME_SIZE);
         }
