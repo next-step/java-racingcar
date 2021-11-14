@@ -13,10 +13,10 @@ public class RacingGame {
         return new RacingGame(cars);
     }
 
-    public GameLog play(TryCount tryCount, Round round) {
-        Round current = round;
-         while (tryCount.nonOver()) {
-            tryCount.counting();
+    public GameLog play(Round finalRound) {
+        Round current = Round.init();
+
+        while (!current.equals(finalRound)) {
             cars.move();
             cars.recode(current.nextRound(), gameLog);
             current = current.nextRound();

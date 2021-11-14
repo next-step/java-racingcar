@@ -1,9 +1,12 @@
 package racingcar;
 
 import racingcar.MovingStrategy.RandomMovingStrategy;
-import racingcar.domain.*;
+import racingcar.domain.Cars;
+import racingcar.domain.GameLog;
+import racingcar.domain.RacingGame;
+import racingcar.domain.Round;
 import racingcar.exception.CreateCarCountException;
-import racingcar.exception.TryCountException;
+import racingcar.exception.RoundException;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -13,14 +16,11 @@ public class Application {
     public static void main(String[] args) {
         Cars cars = getCars();
 
-        int tryCountInput = InputView.askTryCount();
-
-        TryCount tryCount = getTryCount(tryCountInput);
-        Round round = Round.from(tryCountInput);
+        Round finalRound = getFinalRound();
 
         RacingGame racingGame = RacingGame.of(cars);
 
-        GameLog gameLog = racingGame.play(tryCount, round);
+        GameLog gameLog = racingGame.play(finalRound);
 
         OutputView.printGameLog(gameLog);
         OutputView.printWinners(cars);
@@ -37,13 +37,13 @@ public class Application {
         }
     }
 
-    private static TryCount getTryCount(int tryCount) {
+    private static Round getFinalRound() {
         try {
-            return TryCount.from(tryCount);
-        } catch (TryCountException e) {
-            OutputView.printTryCountExceptionMessage();
-            int askTryCount = InputView.askTryCount();
-            return getTryCount(askTryCount);
+            int tryCount = InputView.askTryCount();
+            return Round.from(tryCount);
+        } catch (RoundException e) {
+            return getFinalRound();
         }
     }
+
 }
