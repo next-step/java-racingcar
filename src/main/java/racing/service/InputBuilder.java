@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class InputBuilder {
-    private static Integer  criteria = 5;
+    private static int  criteria = 5;
 
     private List<String> nameList ;
 
