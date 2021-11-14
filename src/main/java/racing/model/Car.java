@@ -8,7 +8,7 @@ public class Car {
     private final Name name;
 
     public Car(String name) {
-        this.position = new Position(0);
+        this.position = new Position();
         this.name = new Name(name);
     }
     public Name getName() {
