@@ -10,7 +10,6 @@ public class CarRacingApplication {
 
     private static final int CAR_COUNT_LOCATION  = 0;
     private static final int LOOP_COUNT_LOCATION = 1;
-    private int[] track;
 
     private InputViewResolver  inputViewResolver;
     private OutputViewResolver outputViewResolver;
@@ -20,8 +19,6 @@ public class CarRacingApplication {
     public CarRacingApplication(InputViewResolver inputViewResolver) {
         this.inputViewResolver  = inputViewResolver;
         this.outputViewResolver = new OutputViewResolver();
-        Random random = new Random();
-        this.carRacingGame = new CarRacingGame(random);
     }
 
     public void startGame() {
@@ -29,12 +26,12 @@ public class CarRacingApplication {
         int carCount  = answers[CAR_COUNT_LOCATION];
         int loopCount = answers[LOOP_COUNT_LOCATION];
 
-        initializeTrack(carCount);
+        carRacingGame = new CarRacingGame(new Random(), carCount);
 
         for (int i = 0; i < loopCount; i++) {
-            carRacingGame.nextRound(track);
-            sleep(500);
-            outputViewResolver.sendMessage(track);
+            sleep(1000);
+            int[] displayTrack = carRacingGame.nextRound();
+            outputViewResolver.sendMessage(displayTrack);
         }
     }
 
@@ -53,9 +50,5 @@ public class CarRacingApplication {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    private void initializeTrack(int carCount) {
-        this.track = new int[carCount];
     }
 }
