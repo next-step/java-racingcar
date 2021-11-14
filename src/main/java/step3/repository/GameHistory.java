@@ -1,4 +1,7 @@
-package step3.domain;
+package step3.repository;
+
+import step3.domain.GameWinner;
+import step3.domain.RoundHistory;
 
 import java.util.LinkedHashMap;
 import java.util.List;

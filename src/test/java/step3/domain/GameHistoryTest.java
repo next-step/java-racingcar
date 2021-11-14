@@ -2,6 +2,7 @@ package step3.domain;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import step3.repository.GameHistory;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 

@@ -1,7 +1,7 @@
 package step3.view;
 
 import step3.domain.Car;
-import step3.domain.GameHistory;
+import step3.repository.GameHistory;
 import step3.domain.GameWinner;
 import step3.domain.RoundHistory;
 

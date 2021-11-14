@@ -1,6 +1,6 @@
 package step3.service;
 
-import step3.domain.GameHistory;
+import step3.repository.GameHistory;
 import step3.domain.GameRound;
 import step3.domain.Participant;
 import step3.domain.RoundHistory;

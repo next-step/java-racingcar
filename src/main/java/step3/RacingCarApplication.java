@@ -1,7 +1,7 @@
 package step3;
 
 import step3.controller.RacingGameController;
-import step3.domain.GameHistory;
+import step3.repository.GameHistory;
 import step3.view.InputView;
 import step3.view.ResultView;
 
