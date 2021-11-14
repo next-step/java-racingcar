@@ -68,10 +68,8 @@ class TerminalOutputViewTest {
     }
 
     private List<Car> createMockCars() {
-        Car car1 = new Car();
-        car1.setName("pobi");
-        Car car2 = new Car();
-        car2.setName("crong");
+        Car car1 = new Car("pobi");
+        Car car2 = new Car("crong");
         return Arrays.asList(car1, car2);
     }
 }

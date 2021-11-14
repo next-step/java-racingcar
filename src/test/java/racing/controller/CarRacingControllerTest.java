@@ -38,13 +38,9 @@ class CarRacingControllerTest {
 
     private List<Car> createMockCarsContainingOneWinner()
             throws NoSuchFieldException, IllegalAccessException {
-        Car car1 = new Car();
-        Car car2 = new Car();
-        Car car3 = new Car();
-
-        car1.setName("1");
-        car2.setName("2");
-        car3.setName("3");
+        Car car1 = new Car("1");
+        Car car2 = new Car("2");
+        Car car3 = new Car("3");
 
         Field movingDistanceField = Car.class
                 .getDeclaredField("movingDistance");
@@ -71,13 +67,9 @@ class CarRacingControllerTest {
 
     private List<Car> createMockCarsContainingTwoWinners()
             throws NoSuchFieldException, IllegalAccessException {
-        Car car1 = new Car();
-        Car car2 = new Car();
-        Car car3 = new Car();
-
-        car1.setName("1");
-        car2.setName("2");
-        car3.setName("3");
+        Car car1 = new Car("1");
+        Car car2 = new Car("2");
+        Car car3 = new Car("3");
 
         Field movingDistanceField = Car.class
                 .getDeclaredField("movingDistance");

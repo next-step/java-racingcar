@@ -22,8 +22,7 @@ public class CarRacingController {
     private void setInput() {
         List<String> names = TerminalInputView.inputNamesOfCar();
         for (String name : names) {
-            Car car = new Car();
-            car.setName(name);
+            Car car = new Car(name);
             cars.add(car);
         }
         numberOfMove = TerminalInputView.inputNumberOfMove();

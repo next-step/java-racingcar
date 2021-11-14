@@ -15,16 +15,10 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 @DisplayName("자동차 경주 - Car 단위 테스트")
 class CarTest {
 
-    Car car;
-
-    @BeforeEach
-    void setUp() {
-        car = new Car();
-    }
-
     @Test
     @DisplayName("3단계 - 자동차 랜덤 행동 이동 기능")
     void moveRandom() throws NoSuchFieldException, IllegalAccessException {
+        Car car = new Car("");
         Field fieldRandom = Car.class
                 .getDeclaredField("random");
         fieldRandom.setAccessible(true);
@@ -41,6 +35,7 @@ class CarTest {
     @Test
     @DisplayName("3단계 - 자동차 전진 기능")
     void go() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Car car = new Car("");
         Method methodGo = Car.class
                 .getDeclaredMethod("go");
         methodGo.setAccessible(true);
@@ -56,28 +51,24 @@ class CarTest {
     @Test
     @DisplayName("3단계 - 자동차 정지 기능")
     void stopCar() {
+        Car car = new Car("");
         // 아무것도 하지않으면 정지
-
-        assertThat(car.getMovingDistance())
-                .isEqualTo(0);
     }
 
     @Test
-    @DisplayName("4단계 - 자동차 이름 부여 테스트")
+    @DisplayName("4단계 - 자동차 이름 부여")
     void setName() {
         String name = "정상";
-        car.setName(name);
-
-        assertThat(car.getName())
-                .isEqualTo(name);
+        Car car = new Car(name);
+        // car 생성 시 예외 없이 생성되면 정상
     }
 
     @Test
-    @DisplayName("4단계 - 자동차 이름 부여 실패 테스트")
+    @DisplayName("4단계 - 자동차 이름 부여 실패")
     void setLongName() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> car.setName("긴이름입니다")); // Korean
+                .isThrownBy(() -> new Car("긴이름입니다")); // Korean
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> car.setName("long__")); // English
+                .isThrownBy(() -> new Car("long__")); // English
     }
 }
