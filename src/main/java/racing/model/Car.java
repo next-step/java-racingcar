@@ -20,8 +20,7 @@ public class Car {
     private int position;
 
     public Car(String carName) {
-        this.name = carName;
-        this.position = 0;
+        this(carName, 0);
     }
 
     public Car(String carName, int position) {
