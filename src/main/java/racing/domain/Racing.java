@@ -30,7 +30,7 @@ public class Racing {
     }
 
     public Winner play(Random random) {
-        RacingHistory racingHistory = new RacingHistory();
+        RacingHistory racingHistory = RacingHistory.getInstance();
 
         for (int i = 0; i < this.attempts; i++) {
             List<Car> group = movingCars(random);

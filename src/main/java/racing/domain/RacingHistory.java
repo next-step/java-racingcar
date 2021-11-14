@@ -9,8 +9,12 @@ public class RacingHistory {
 
     private Queue<List<Car>> data;
 
-    public RacingHistory() {
+    private RacingHistory() {
         this.data = new LinkedList<>();
+    }
+
+    public static RacingHistory getInstance() {
+        return new RacingHistory();
     }
 
     public Queue<List<Car>> getData() {
