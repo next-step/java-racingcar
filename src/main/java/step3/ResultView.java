@@ -4,11 +4,13 @@ import java.util.List;
 
 public class ResultView {
 
-    private static final String DASH = "-";
+    public static final String DASH = "-";
+    public static final String COLON = " : ";
 
     public static void result(List<Car> cars) {
         for (Car car : cars) {
             StringBuilder builder = new StringBuilder();
+            builder.append(car.getName() + COLON);
             makeDash(car, builder);
             System.out.println(builder.toString());
         }
