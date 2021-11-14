@@ -12,9 +12,9 @@ public class Executor {
         int numOfCar = InputView.getInput("자동차 대수는 몇 대 인가요?");
         int numOfTries = InputView.getInput("시도할 회수는 몇 회 인가요?");
 
-        Racing racing = new Racing(numOfCar, numOfTries);
+        RacingGame racing = new RacingGame(numOfCar, numOfTries);
 
-        List<MidScore> score = racing.startAndGetScoreList();
+        List<MidScore> score = racing.racingGame();
 
         ResultView.printResultView(score);
     }

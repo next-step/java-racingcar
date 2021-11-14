@@ -2,7 +2,6 @@ package racingcar.view;
 
 import racingcar.MidScore;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,8 +17,9 @@ public class ResultView {
 
     private static void printScore(MidScore roadMap) {
 
-        Arrays.stream(roadMap.getScores())
-                .mapToObj(cnt -> String.join("", Collections.nCopies(cnt, CAR_RACING_FIGURE)))
+        roadMap.getScores()
+                .stream()
+                .map(cnt -> String.join("", Collections.nCopies(cnt, CAR_RACING_FIGURE)))
                 .forEach(System.out::println);
 
         System.out.println("\n");

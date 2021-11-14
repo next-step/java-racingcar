@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Calculate {
 
-    public final static String SPLITTER = " ";
+    public static final String SPLITTER = " ";
 
     public int calculate(String str) {
 
