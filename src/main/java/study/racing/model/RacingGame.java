@@ -1,4 +1,8 @@
-package study.car.race;
+package study.racing.model;
+
+import study.racing.model.car.RacingCars;
+import study.racing.ui.InputView;
+import study.racing.ui.ResultView;
 
 public class RacingGame {
 

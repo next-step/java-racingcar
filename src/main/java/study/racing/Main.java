@@ -1,4 +1,6 @@
-package study.car.race;
+package study.racing;
+
+import study.racing.model.RacingGame;
 
 public class Main {
 

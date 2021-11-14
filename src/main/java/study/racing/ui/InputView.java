@@ -1,4 +1,6 @@
-package study.car.race;
+package study.racing.ui;
+
+import study.racing.utils.ScannerUtils;
 
 public class InputView {
 

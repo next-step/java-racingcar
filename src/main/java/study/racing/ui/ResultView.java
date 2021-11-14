@@ -1,6 +1,8 @@
-package study.car.race;
+package study.racing.ui;
 
 import java.util.List;
+
+import study.racing.model.car.Car;
 
 public class ResultView {
 

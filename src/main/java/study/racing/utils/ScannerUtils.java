@@ -1,4 +1,4 @@
-package study.car.race;
+package study.racing.utils;
 
 import java.util.Scanner;
 

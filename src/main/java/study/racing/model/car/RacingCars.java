@@ -1,7 +1,9 @@
-package study.car.race;
+package study.racing.model.car;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import study.racing.utils.RandomUtils;
 
 public class RacingCars {
 
