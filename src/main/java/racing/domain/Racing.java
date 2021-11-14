@@ -30,14 +30,14 @@ public class Racing {
     }
 
     public Winner play(Random random) {
-        Map<Integer, List<Car>> history = new HashMap<>();
+        RacingHistory racingHistory = new RacingHistory();
 
         for (int i = 0; i < this.attempts; i++) {
             List<Car> group = movingCars(random);
             this.cars = group;
-            history.put(i, group);
+            racingHistory.add(group);
         }
-        return Winner.from(this.cars, history);
+        return Winner.from(this.cars, racingHistory);
     }
 
     private List<Car> createCars(List<String> users) {

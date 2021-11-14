@@ -2,6 +2,7 @@ package racing;
 
 import racing.domain.Car;
 import racing.domain.Racing;
+import racing.domain.RacingHistory;
 import racing.domain.Winner;
 import utility.NumberHelper;
 import org.junit.jupiter.api.DisplayName;
@@ -10,6 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -50,7 +52,9 @@ class RacingTest {
         Racing racing = new Racing(getUsers(3), 3);
         Winner winner = racing.play(new DeterministicRandom());
 
-        List<Car> list = winner.getHistory().get(i);
+        RacingHistory racingHistory = winner.getRacingHistory();
+
+        List<Car> list = new ArrayList<>(racingHistory.getData()).get(i);
         assertThat(list.get(j).getStep()).isEqualTo(k);
     }
 
