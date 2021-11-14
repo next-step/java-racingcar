@@ -24,7 +24,7 @@ public class InputView {
 
     private int totalDrivingCount = 0;
 
-    private List<String> carList;
+    private List<String> carStringList;
 
     public InputView() {
     }
@@ -48,8 +48,8 @@ public class InputView {
     }
 
     public void splitCars(String carStringList) {
-        carList = Arrays.asList(carStringList.replace(CAR_NAME_BLANK, CAR_NAME_EMPTY).split(SPLIT_REGEX));
-        this.carCount = carList.size();
+        this.carStringList = Arrays.asList(carStringList.replace(CAR_NAME_BLANK, CAR_NAME_EMPTY).split(SPLIT_REGEX));
+        this.carCount = this.carStringList.size();
     }
 
     public int getCarCount() {
@@ -64,7 +64,7 @@ public class InputView {
         return totalDrivingCount;
     }
 
-    public List<String> getCarList() {
-        return carList;
+    public List<String> getCarStringList() {
+        return carStringList;
     }
 }
