@@ -36,8 +36,8 @@ public class Car {
         return this;
     }
 
-    public boolean hasEqualTo(int max) {
-        return this.step == max;
+    public boolean hasEqualTo(int step) {
+        return this.step == step;
     }
 
     private boolean isForward(int random) {
