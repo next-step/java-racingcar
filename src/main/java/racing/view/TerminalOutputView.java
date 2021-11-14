@@ -44,4 +44,8 @@ public class TerminalOutputView {
         String namesFullString = String.join(NAME_SEPARATOR, names);
         System.out.println(namesFullString + "가 최종 우승했습니다.");
     }
+
+    public static void printEmptyLine() {
+        System.out.println();
+    }
 }
