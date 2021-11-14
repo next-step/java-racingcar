@@ -7,52 +7,34 @@ import java.util.stream.IntStream;
 
 public class Track {
 
-    private final StringBuffer totalTrack;
-    private final List<RacingCar> racingCarList = new ArrayList<>();
+    private final List<RacingCar> racingCarList;
 
-    public Track(int trackLength) {
-        totalTrack = new StringBuffer();
-        for (int i = 0 ; i < trackLength ; i++) {
-            totalTrack.append('-');
-        }
+    public Track() {
+        this.racingCarList = new ArrayList<>();
     }
 
-    public void addRacingCar(RacingCar racingCar) {
-        racingCarList.add(racingCar);
+    public Track(List<RacingCar> racingCarList) {
+        this.racingCarList = racingCarList;
     }
 
-    public void move(int carIndex) {
-        racingCarList.get(carIndex).move();
+    public void addRacingCar() {
+        racingCarList.add(new RacingCar());
     }
 
-    public void moveAll() {
-        IntStream.range(0, racingCarList.size())
-                .forEach(this::move);
+    public void addRacingCar(int addedCount) {
+        IntStream.range(0, addedCount)
+                .forEach(i -> addRacingCar());
     }
 
-    public String tracking(int carIndex) {
-        return this.getTotalTrack().substring(0, racingCarList.get(carIndex).getMoveDistance());
+    public List<Boolean> moveAll() {
+        return racingCarList.stream()
+                .map(RacingCar::move)
+                .collect(Collectors.toList());
     }
 
-    public String trackingAll() {
-        return IntStream.range(0, racingCarList.size())
-                .mapToObj(this::tracking)
-                .collect(Collectors.joining("\n"));
-    }
-
-    public String getTotalTrack() {
-        return totalTrack.toString();
-    }
-
-    //Test Code Only
-    public void fixedMove(int fixedValue, int carIndex) {
-        racingCarList.get(carIndex).fixedMove(fixedValue);
-    }
-
-    //Test Code Only
-    public void fixedMoveAll(int[] fixedValues) {
-        for (int i = 0 ; i < racingCarList.size() ; i++) {
-            this.fixedMove(fixedValues[i], i);
-        }
+    public List<String> trackingAll() {
+        return racingCarList.stream()
+                .map(RacingCar::currentMoveDistance)
+                .collect(Collectors.toList());
     }
 }
