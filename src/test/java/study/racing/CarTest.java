@@ -17,8 +17,8 @@ public class CarTest {
     @DisplayName("Rule에 따라 움직이는지 멈추는지 동작을 검증")
     @ParameterizedTest
     @MethodSource("rules")
-    void move(Rule rule, int distance) {
-        Car car = new Car();
+    void move(Rule rule, int distance, String name) {
+        Car car = new Car(name);
         car.moveOrStop(rule);
         assertThat(car.getDistance()).isEqualTo(distance);
     }
@@ -38,6 +38,6 @@ public class CarTest {
                 return false;
             }
         };
-        return Stream.of(Arguments.of(trueRule, moveCount), Arguments.of(falseRule, stopCount));
+        return Stream.of(Arguments.of(trueRule, moveCount, "name"), Arguments.of(falseRule, stopCount, "name"));
     }
 }

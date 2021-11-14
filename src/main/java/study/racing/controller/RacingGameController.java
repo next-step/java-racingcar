@@ -16,10 +16,10 @@ public class RacingGameController {
     }
 
     public void start() {
-        int carCount = InputView.acceptCarCount();
+        List<String> carNames = InputView.acceptCarNames();
         int tryCount = InputView.acceptTryCount();
 
-        List<Result> results = racingGameService.race(carCount, tryCount);
+        List<Result> results = racingGameService.race(carNames, tryCount);
 
         ResultView.printResult(results);
     }

@@ -11,13 +11,17 @@ public final class ScannerUtils {
     }
 
     public static int nextInt() {
-        validateOrThrow();
+        validateNextIntOrThrow();
         return scanner.nextInt();
     }
 
-    private static void validateOrThrow() {
+    private static void validateNextIntOrThrow() {
         if (!scanner.hasNextInt()) {
             throw new RuntimeException(IS_NOT_A_NUMERIC_STRING);
         }
+    }
+
+    public static String nextLine() {
+        return scanner.nextLine();
     }
 }

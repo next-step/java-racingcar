@@ -18,11 +18,11 @@ public class RacingGameService {
         this.rule = rule;
     }
 
-    public List<Result> race(int carCount, int tryCount) {
-        validateOrThrow(carCount, tryCount);
+    public List<Result> race(List<String> carNames, int tryCount) {
+        validateOrThrow(carNames.size(), tryCount);
 
         List<Result> results = new ArrayList<>();
-        RacingCars racingCars = new RacingCars(carCount);
+        RacingCars racingCars = new RacingCars(carNames);
         for (int i = 0; i < tryCount; i++) {
             racingCars.raceAll(rule);
             results.add(new Result(racingCars.result()));

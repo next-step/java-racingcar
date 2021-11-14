@@ -1,19 +1,17 @@
 package study.racing.model.car;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import study.racing.model.rule.Rule;
 
 public class RacingCars {
 
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
 
-    public RacingCars(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
+    public RacingCars(List<String> carNames) {
+        cars = carNames.stream().map(Car::new).collect(Collectors.toList());
     }
 
     public void raceAll(Rule rule) {

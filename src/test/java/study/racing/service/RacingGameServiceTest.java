@@ -3,6 +3,8 @@ package study.racing.service;
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,10 +22,17 @@ class RacingGameServiceTest {
     void tryCountTest(int carCount, int tryCount) {
         Rule rule = new RandcomNumberRule();
         RacingGameService racingGameService = new RacingGameService(rule);
+        List<String> carNames = getNames(carCount);
 
-        List<Result> results = racingGameService.race(carCount, tryCount);
+        List<Result> results = racingGameService.race(carNames, tryCount);
 
         assertThat(results.size()).isEqualTo(tryCount);
+    }
+
+    private List<String> getNames(int carCount) {
+        return IntStream.range(0, carCount)
+                        .mapToObj(Integer::toString)
+                        .collect(Collectors.toList());
     }
 
     @DisplayName("carCount와 tryCount를 전달했을 때, carCount 만큼 자동차가 생성되었는지 검증")
@@ -32,8 +41,9 @@ class RacingGameServiceTest {
     void carCountTest(int carCount, int tryCount) {
         Rule rule = new RandcomNumberRule();
         RacingGameService racingGameService = new RacingGameService(rule);
+        List<String> carNames = getNames(carCount);
 
-        List<Result> results = racingGameService.race(carCount, tryCount);
+        List<Result> results = racingGameService.race(carNames, tryCount);
 
         assertThat(results.get(0).getResult().size()).isEqualTo(carCount);
     }
@@ -44,7 +54,8 @@ class RacingGameServiceTest {
     void invalidCountTest(int carCount, int tryCount) {
         Rule rule = new RandcomNumberRule();
         RacingGameService racingGameService = new RacingGameService(rule);
+        List<String> carNames = getNames(carCount);
 
-        assertThatThrownBy(() -> racingGameService.race(carCount, tryCount)).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> racingGameService.race(carNames, tryCount)).isInstanceOf(RuntimeException.class);
     }
 }

@@ -2,6 +2,10 @@ package study.racing.model.car;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -12,8 +16,15 @@ class RacingCarsTest {
     @ParameterizedTest
     @CsvSource({ "1, 1", "100, 100" })
     void createRacingCarsTest(int carCount, int expected) {
-        RacingCars racingCars = new RacingCars(carCount);
+        List<String> carNames = getNames(carCount);
+        RacingCars racingCars = new RacingCars(carNames);
 
         assertThat(racingCars.result().size()).isEqualTo(expected);
+    }
+
+    private List<String> getNames(int carCount) {
+        return IntStream.range(0, carCount)
+                        .mapToObj(Integer::toString)
+                        .collect(Collectors.toList());
     }
 }
