@@ -2,15 +2,17 @@ package com.kkambi.racing.domain;
 
 public class Car {
 
-    private static final String LOCATION_UNIT = "-";
+    private static final int criteriaToMove = 4;
 
-    private final StringBuilder location = new StringBuilder();
+    private int location = 0;
 
-    public void move() {
-        location.append(LOCATION_UNIT);
+    public void tryToMove(int randomValue) {
+        if (randomValue >= criteriaToMove) {
+            this.location++;
+        }
     }
 
-    public String getLocation() {
-        return location.toString();
+    public int getLocation() {
+        return location;
     }
 }
