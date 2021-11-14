@@ -1,11 +1,11 @@
 package step3;
 
 import org.junit.jupiter.api.Test;
-import step3.model.CarList;
-import step3.service.ConvertOutputView;
-import step3.view.Output;
+import racing.model.Cars;
+import racing.service.ConvertOutputView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,13 +17,14 @@ public class OutputViewTest {
         expectedList.add("-");
         expectedList.add("--");
         expectedList.add("--");
-        Output output = new Output();
-        CarList carList = new CarList(3);
-        carList.getCarList().get(1).movable(()->true);
-        carList.getCarList().get(2).movable(() -> true);
+        String[] nameArray = {"1", "2", "3"};
+        List<String> nameList = Arrays.asList(nameArray);
+        Cars cars = new Cars(nameList);
+        cars.getCarList().get(1).movable(()->true);
+        cars.getCarList().get(2).movable(() -> true);
 
         for (int i = 0; i < 3; i++) {
-            assertEquals(ConvertOutputView.convertOutputView(carList.getCarList().get(i).getPosition()), expectedList.get(i));
+            assertEquals(ConvertOutputView.convertOutputView(cars.getCarList().get(i).getPosition()), expectedList.get(i));
         }
     }
 }

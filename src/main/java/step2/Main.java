@@ -9,6 +9,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
-        System.out.println(Calculator.operator(s));
+        System.out.println(Calculator.calculateAll(s));
     }
 }
