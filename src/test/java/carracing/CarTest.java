@@ -32,4 +32,12 @@ public class CarTest {
         Assertions.assertThat(notRacingCar.driving(3)).isFalse();
     }
 
+    @Test
+    @DisplayName("자동차 이름 5자 초과시 에러")
+    void carNameValid() {
+        assertThatThrownBy(() -> {
+            new Car("abcdef");
+        }).isInstanceOf(CarNameFormatException.class);
+    }
+
 }
