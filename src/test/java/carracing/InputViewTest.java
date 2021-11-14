@@ -17,7 +17,7 @@ public class InputViewTest {
     }
 
     @Test
-    @DisplayName("자동차 split 에러")
+    @DisplayName("자동차 split 테스트")
     void split() {
         InputView inputView = new InputView("car1,car2", "1");
         Assertions.assertThat(inputView.getCarStringList().size()).isEqualTo(2);
