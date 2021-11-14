@@ -6,24 +6,27 @@ import java.util.Random;
  * 차량 클래스
  */
 public class Car {
-    private static String BLANK_STRING_VALUE = "";
-    private static String MOVE_CHARACTER = "-";
-    private static int MAX_RANDOM_NUMBER = 10;
-    private static int MIN_FORWARD_NUMBER = 4;
-    private static int START_LOCATION = 0;
+    private static final String BLANK_STRING_VALUE = "";
+    private static final String MOVE_CHARACTER = "-";
+    private static final int MAX_RANDOM_NUMBER = 10;
+    private static final int MIN_FORWARD_NUMBER = 4;
+    private static final int START_LOCATION = 0;
 
-    // 차량 번호
-    private int number;
     // 차량 위치
     private int location;
 
     /**
      * 생성자
-     * @param number 차량 번호
+     */
+    public Car() {
+        this(START_LOCATION);
+    }
+
+    /**
+     * 생성자
      * @param location 차량 위치
      */
-    public Car(int number, int location) {
-        this.number = number;
+    public Car(int location) {
         this.location = location;
     }
 

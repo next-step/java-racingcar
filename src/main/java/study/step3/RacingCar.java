@@ -22,6 +22,6 @@ public class RacingCar {
 
     private static void executeRacingCar(int carCount, int tryRound) {
         SetUpCar setUpCar = new SetUpCar(carCount, tryRound);
-        setUpCar.tryRacing();
+//        setUpCar.tryRacing();
     }
 }
