@@ -8,14 +8,14 @@ public class Name {
 
     private final String name;
 
-    public Name(String name) throws Exception {
-        validate(name);
+    public Name(String name) {
+        this.validate(name);
         this.name = name;
     }
 
-    private void validate(String name) throws Exception {
+    private void validate(String name) {
         if (name.length() > CAR_NAME_MAX_LENGTH) {
-            throw new Exception(ERROR_CAR_NAME_MAX_LENGTH);
+            throw new IllegalArgumentException(ERROR_CAR_NAME_MAX_LENGTH);
         }
     }
 
