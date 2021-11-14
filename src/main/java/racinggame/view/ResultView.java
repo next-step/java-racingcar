@@ -2,7 +2,6 @@ package racinggame.view;
 
 import racinggame.domain.Car;
 import racinggame.domain.Cars;
-import racinggame.domain.Location;
 import racinggame.domain.Names;
 
 public class ResultView {
@@ -30,8 +29,7 @@ public class ResultView {
     }
 
     public static void awardRacing(Cars cars) {
-        Location firstRecord = cars.inFormFirstRecord();
-        Names winners = cars.inFormWinners(firstRecord);
+        Names winners = cars.inFormWinners();
         System.out.print(String.format(MESSAGE_RACE_WINNER, winners.printNames()));
     }
 }
