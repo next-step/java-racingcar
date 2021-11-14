@@ -16,7 +16,7 @@ class RoundsTest {
         rounds.playRounds(cars);
 
         assertThat(rounds.getResults().size()).isEqualTo(roundCount);
-        assertThat(rounds.getLastWinners().size()).isGreaterThan(0);
+        assertThat(cars.getLastWinners().size()).isGreaterThan(0);
     }
 
 }

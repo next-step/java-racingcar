@@ -28,8 +28,4 @@ public class Rounds {
         return results;
     }
 
-    public List<String> getLastWinners() {
-        return results.get(results.size() - 1).getWinners();
-    }
-
 }

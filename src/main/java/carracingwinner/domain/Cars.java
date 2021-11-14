@@ -4,6 +4,7 @@ import carracingwinner.utils.RandomUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -24,4 +25,15 @@ public class Cars {
         return cars;
     }
 
+    public List<String> getLastWinners() {
+        int max = cars.stream()
+                .mapToInt(car -> car.getPosition().getIntValue())
+                .max()
+                .getAsInt();
+
+        return cars.stream()
+                .filter(car -> car.getPosition().getIntValue() == max)
+                .map(car -> car.getName())
+                .collect(Collectors.toList());
+    }
 }

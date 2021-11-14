@@ -24,7 +24,7 @@ class CarsTest {
         Result result = cars.move();
 
         assertThat(result.getResult()).isNotEmpty();
-        assertThat(result.getWinners().size()).isGreaterThan(0);
+        assertThat(cars.getLastWinners().size()).isGreaterThan(0);
     }
 
 }

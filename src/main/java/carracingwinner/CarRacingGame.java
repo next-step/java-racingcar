@@ -22,7 +22,7 @@ public class CarRacingGame {
         rounds.playRounds(cars);
 
         resultView.printResults(rounds.getResults());
-        resultView.printWinners(rounds.getLastWinners());
+        resultView.printWinners(cars.getLastWinners());
     }
 
 }

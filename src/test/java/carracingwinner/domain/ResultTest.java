@@ -18,8 +18,6 @@ public class ResultTest {
         Result result = new Result(cars);
 
         assertThat(result.getResult()).isEqualTo(resultValue);
-        assertThat(result.getWinners().size()).isEqualTo(1);
-        assertThat(result.getWinners()).containsExactly(winner);
     }
 
     private static Stream<Arguments> provideCars() {
