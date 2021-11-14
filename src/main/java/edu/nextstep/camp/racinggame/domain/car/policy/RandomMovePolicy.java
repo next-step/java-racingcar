@@ -15,6 +15,10 @@ public class RandomMovePolicy implements MovePolicy {
 
     @Override
     public boolean needToMove() {
-        return random.nextInt(MAXIMUM) > MOVE_THRESHOLD;
+        return checkMovable(random.nextInt(MAXIMUM));
+    }
+
+    public boolean checkMovable(int number) {
+        return number >= MOVE_THRESHOLD;
     }
 }
