@@ -57,7 +57,6 @@ class CarTest {
 
         assertThat(car.getPosition()).isEqualTo(position);
     }
-<<<<<<< HEAD
 
     @Test
     @DisplayName("자동차별로 이름이 존재해야 한다.")
