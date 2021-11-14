@@ -27,4 +27,12 @@ public class GameResult {
     public List<RoundResult> getProgress() {
         return progress;
     }
+
+    public List<String> getWinnerNames() {
+        return progress.get(getMaxRound()).getFirstPlaceCarNames();
+    }
+
+    private int getMaxRound() {
+        return progress.size() - 1;
+    }
 }
