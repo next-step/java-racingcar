@@ -2,7 +2,6 @@ package racingcar.view;
 
 import static racingcar.utils.PrintUtils.print;
 
-import java.util.Arrays;
 import java.util.stream.Collectors;
 import racingcar.dto.GameResult;
 
@@ -22,7 +21,7 @@ public class ResultView {
 
     private String convertToPrintValue(GameResult result) {
         return result.getProgress().stream()
-            .map(roundProgress -> String.join(CAR_DELIMITER, roundProgress.getResults()))
+            .map(roundProgress -> String.join(CAR_DELIMITER, roundProgress.results()))
             .collect(Collectors.joining(ROUND_DELIMITER));
     }
 }
