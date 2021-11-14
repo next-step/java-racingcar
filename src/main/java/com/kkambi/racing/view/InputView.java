@@ -4,36 +4,18 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public InputCommand getInput() {
+    private static final String QUESTION_NUMBER_OF_CARS = "자동차 대수는 몇 대인가요?";
+    private static final String QUESTION_NUMBER_OF_TRIES = "시도할 회수는 몇 회인가요?";
+
+    public int getNumberOfCars() {
         Scanner scanner = new Scanner(System.in);
-        return new InputCommand(getNumberOfCars(scanner), getNumberOfAttempts(scanner));
-    }
-
-    private int getNumberOfCars(Scanner scanner) {
-        System.out.println("자동차 대수는 몇 대인가요?");
+        System.out.println(QUESTION_NUMBER_OF_CARS);
         return scanner.nextInt();
     }
 
-    private int getNumberOfAttempts(Scanner scanner) {
-        System.out.println("시도할 회수는 몇 회인가요?");
+    public int getNumberOfTries() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(QUESTION_NUMBER_OF_TRIES);
         return scanner.nextInt();
-    }
-
-    public static class InputCommand {
-        private final int numberOfCars;
-        private final int numberOfAttempts;
-
-        public InputCommand(int numberOfCars, int numberOfAttempts) {
-            this.numberOfCars = numberOfCars;
-            this.numberOfAttempts = numberOfAttempts;
-        }
-
-        public int getNumberOfCars() {
-            return numberOfCars;
-        }
-
-        public int getNumberOfAttempts() {
-            return numberOfAttempts;
-        }
     }
 }
