@@ -4,8 +4,9 @@ import edu.nextstep.camp.racinggame.domain.car.policy.MovePolicy;
 
 public class Car {
     private final Name name;
-    private final Position position;
-    private final MovePolicy movePolicy;
+    private final
+    MovePolicy movePolicy;
+    private Position position;
 
     private Car(Name name, MovePolicy movePolicy) {
         this.name = name;
@@ -32,7 +33,7 @@ public class Car {
 
     public void attemptToMove() {
         if (movePolicy.needToMove()) {
-            position.forward();
+            position = position.forward();
         }
     }
 
