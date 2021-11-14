@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import java.lang.reflect.Field;
 import java.util.Random;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -58,6 +57,7 @@ class CarTest {
 
         assertThat(car.getPosition()).isEqualTo(position);
     }
+<<<<<<< HEAD
 
     @Test
     @DisplayName("자동차별로 이름이 존재해야 한다.")
@@ -74,7 +74,6 @@ class CarTest {
             .isThrownBy(() -> Car.create(outBoundCarName));
 
     }
-
 
     private Random mockRandomValue(int testValue) {
         return new Random() {
