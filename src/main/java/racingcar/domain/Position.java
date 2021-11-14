@@ -44,11 +44,11 @@ public class Position {
         return position;
     }
 
-    public Position biggerPosition(Position position) {
-        if (this.position > position.position) {
-            return this;
+    public Position biggerPosition(Position other) {
+        if (this.position > other.position) {
+            return new Position(this.position);
         }
-        return position;
+        return other;
     }
 
     @Override
