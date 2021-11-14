@@ -10,15 +10,26 @@ public class RacingCars {
 
     private final List<Car> cars;
 
-    public RacingCars(List<String> carNames) {
-        cars = carNames.stream().map(Car::new).collect(Collectors.toList());
+    public RacingCars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public void raceAll(Rule rule) {
         cars.forEach(car -> car.moveOrStop(rule));
     }
 
-    public List<Car> result() {
+    public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
+    }
+
+    public List<Car> mostMovedCars() {
+        int max = cars.stream()
+                      .mapToInt(Car::getDistance)
+                      .max()
+                      .getAsInt();
+
+        return cars.stream()
+                   .filter(car -> car.getDistance() == max)
+                   .collect(Collectors.toList());
     }
 }

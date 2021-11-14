@@ -10,7 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import study.racing.model.Result;
+import study.racing.model.GameResults;
 import study.racing.model.rule.RandcomNumberRule;
 import study.racing.model.rule.Rule;
 
@@ -24,28 +24,15 @@ class RacingGameServiceTest {
         RacingGameService racingGameService = new RacingGameService(rule);
         List<String> carNames = getNames(carCount);
 
-        List<Result> results = racingGameService.race(carNames, tryCount);
+        GameResults gameResults = racingGameService.race(carNames, tryCount);
 
-        assertThat(results.size()).isEqualTo(tryCount);
+        assertThat(gameResults.round()).isEqualTo(tryCount);
     }
 
     private List<String> getNames(int carCount) {
         return IntStream.range(0, carCount)
                         .mapToObj(Integer::toString)
                         .collect(Collectors.toList());
-    }
-
-    @DisplayName("carCount와 tryCount를 전달했을 때, carCount 만큼 자동차가 생성되었는지 검증")
-    @ParameterizedTest(name = "carCount: {0}, tryCount: {1}")
-    @CsvSource({ "1, 1", "100, 100" })
-    void carCountTest(int carCount, int tryCount) {
-        Rule rule = new RandcomNumberRule();
-        RacingGameService racingGameService = new RacingGameService(rule);
-        List<String> carNames = getNames(carCount);
-
-        List<Result> results = racingGameService.race(carNames, tryCount);
-
-        assertThat(results.get(0).getResult().size()).isEqualTo(carCount);
     }
 
     @DisplayName("carCount와 tryCount를 전달했을 때, 두 값 중 하나라도 양수가 아니면 예외를 던진다")

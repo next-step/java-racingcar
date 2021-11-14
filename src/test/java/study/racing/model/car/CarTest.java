@@ -1,4 +1,4 @@
-package study.racing;
+package study.racing.model.car;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -9,7 +9,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import study.racing.model.car.Car;
 import study.racing.model.rule.Rule;
 
 public class CarTest {
