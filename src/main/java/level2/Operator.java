@@ -30,7 +30,9 @@ public enum Operator {
     }
 
     public boolean isEqualTo(String value) {
-        if(this.value.equals(value)) return true;
+        if(this.value.equals(value)) {
+            return true;
+        }
         return false;
     }
 

@@ -11,13 +11,15 @@ public class Factor {
     private Queue<Operator> operators;
 
     public Factor(String input) {
-        if(input == null || input.isBlank()) throw new IllegalArgumentException();
+        if(input == null || input.isBlank()) {
+            throw new IllegalArgumentException();
+        }
 
         String[] inputs = input.split(" ");
 
         numbers = Arrays.stream(inputs)
-                        .filter(i -> i.matches("-?\\d+?"))
-                        .map(i -> new Number(i))
+                        .filter(i -> i.matches(FactorValidator.NUMBER_REGEX))
+                        .map(Number::new)
                         .collect(Collectors.toCollection(LinkedList::new));
 
         operators = Arrays.stream(inputs)
@@ -26,7 +28,9 @@ public class Factor {
     }
 
     public Number getNumbers(boolean isFirst, int result) {
-        if(isFirst && result != 0) return new Number(Integer.toString(result));
+        if(isFirst && result != 0) {
+            return new Number(Integer.toString(result));
+        }
         return numbers.poll();
     }
 

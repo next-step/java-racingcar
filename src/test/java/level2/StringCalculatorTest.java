@@ -2,6 +2,8 @@ package level2;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.assertj.core.api.Assertions.*;
 
 class StringCalculatorTest {
@@ -36,11 +38,21 @@ class StringCalculatorTest {
 
     //나눗셈
     @ParameterizedTest()
-    @CsvSource({"1230 / 10, 123, 1000 /10 / 10 ,10"})
+    @CsvSource({"1230 / 10, 123","1000 / 10 / 10 ,10"})
     void divide(String input, int expect) {
         Factor factor = new Factor(input);
         int result = stringCalculator.calculate(factor, 0);
         assertThat(result).isEqualTo(expect);
+    }
+
+    @ParameterizedTest()
+    @ValueSource(strings = {"100 / 0"})
+    void divideByZero(String input) {
+        Factor factor = new Factor(input);
+        assertThatThrownBy(() -> {
+                    stringCalculator.calculate(factor, 0);
+                }
+        ).isInstanceOf(ArithmeticException.class);
     }
 
     @ParameterizedTest
