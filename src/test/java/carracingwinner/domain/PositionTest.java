@@ -31,7 +31,7 @@ class PositionTest {
     @ValueSource(ints = {0, 1})
     void increaseTest(int value) {
         Position position = new Position(value);
-        position.increase();
+        position = position.move();
 
         assertThat(position.getIntValue()).isEqualTo(value + 1);
     }

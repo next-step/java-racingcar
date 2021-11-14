@@ -26,7 +26,7 @@ public class Car {
 
     public void move(int random) {
         if (random >= MOVE_BOUND) {
-            position.increase();
+            position = position.move();
         }
     }
 

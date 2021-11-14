@@ -1,10 +1,10 @@
 package carracingwinner.domain;
 
-public class Position {
+public final class Position {
 
     private static final int MIN_POSITION_VALUE = 0;
 
-    private int intValue;
+    private final int intValue;
 
     public Position() {
         this(0);
@@ -21,8 +21,8 @@ public class Position {
         }
     }
 
-    public void increase() {
-        intValue++;
+    public Position move() {
+        return new Position(intValue + 1);
     }
 
     public int getIntValue() {
