@@ -2,6 +2,7 @@ package racingcar.view;
 
 import static racingcar.utils.PrintUtils.print;
 
+import java.text.MessageFormat;
 import java.util.stream.Collectors;
 import racingcar.dto.GameResult;
 
@@ -17,6 +18,9 @@ public class ResultView {
 
     public void show(GameResult result) {
         print(convertToPrintValue(result));
+
+        print(MessageFormat.format("{0}가 최종 우승했습니다.",
+            String.join(", ", result.getWinnerNames())));
     }
 
     private String convertToPrintValue(GameResult result) {
