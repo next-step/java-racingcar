@@ -1,4 +1,6 @@
-package carracing;
+package carracing.util;
+
+import carracing.exception.CarNameFormatException;
 
 /*
  * Car

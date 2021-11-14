@@ -1,4 +1,4 @@
-package carracing;
+package carracing.util;
 
 /*
  * CarRacing
@@ -13,8 +13,8 @@ package carracing;
  *
  */
 public class RaceResult {
-    int roundCount;
-    int totalRaceCount;
+    public int roundCount;
+    public int totalRaceCount;
 
     public RaceResult() {
     }

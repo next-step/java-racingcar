@@ -1,9 +1,14 @@
 package carracing;
 
+import carracing.exception.CarNameFormatException;
+import carracing.util.Car;
+import carracing.util.RaceResult;
+import carracing.view.InputView;
+import carracing.view.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 /*
  * CarRacing
@@ -16,23 +21,10 @@ import java.util.Scanner;
  */
 public class CarRacing {
 
-    private static final String QUESTION_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
-    private static final String QUESTION_TRY_COUNT = "시도할 회수는 몇 회 인가요?";
+    static final String QUESTION_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    static final String QUESTION_TRY_COUNT = "시도할 회수는 몇 회 인가요?";
 
     private static final int RANDOM_RANGE = 10;     /* 랜덤 주행 조건 범위 0 ~ 9 */
-
-
-    public static void main(String[] args) throws CarNameFormatException {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(QUESTION_CAR_NAMES);
-        String carNames = scanner.nextLine();
-
-        System.out.println(QUESTION_TRY_COUNT);
-        String tryCount = scanner.nextLine();
-
-        CarRacing carRacing = new CarRacing();
-        carRacing.racingStart(new InputView(carNames, tryCount));
-    }
 
     public RaceResult racingStart(InputView inputView) throws CarNameFormatException {
 

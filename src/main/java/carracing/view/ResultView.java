@@ -1,4 +1,6 @@
-package carracing;
+package carracing.view;
+
+import carracing.util.Car;
 
 import java.util.List;
 

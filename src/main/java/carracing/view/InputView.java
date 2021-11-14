@@ -1,4 +1,4 @@
-package carracing;
+package carracing.view;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,19 +20,11 @@ public class InputView {
     private static final String CAR_NAME_EMPTY = "";
 
     private int carCount = 0;   /* 차량 대수 */
-    private int tryCount = 0;   /* 주행 횟수 */
+    private final int tryCount;   /* 주행 횟수 */
 
     private int totalDrivingCount = 0;
 
     private List<String> carStringList;
-
-    public InputView() {
-    }
-
-    public InputView(int carCount, int tryCount) {
-        this.carCount = carCount;
-        this.tryCount = tryCount;
-    }
 
     /**
      * 입력값 검증 기능 생성자
