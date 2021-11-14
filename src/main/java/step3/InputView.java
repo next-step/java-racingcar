@@ -18,18 +18,11 @@ public class InputView implements Closeable {
     public Count inputValue() {
         try {
             int input = SCANNER.nextInt();
-            lessThanOneException(input);
 
             return new Count(input);
 
         } catch(InputMismatchException e) {
             throw new InputMismatchException(MyException.IS_NOT_NUMBER.getMessage());
-        }
-    }
-
-    private static void lessThanOneException(int input) {
-        if(input < 1) {
-            throw new IllegalArgumentException(MyException.VALUE_GREATER_THAN_ONE.getMessage());
         }
     }
 

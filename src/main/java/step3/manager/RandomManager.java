@@ -1,10 +1,11 @@
 package step3.manager;
 
-import step3.MyException;
+import java.util.Random;
 
 public class RandomManager implements RacingManager {
     private final int TEN = 10;
-    private final int RUN_CONDITION_VALUE = 4;
+    private int RUN_CONDITION_VALUE = 4;
+    private final static Random random = new Random();
 
     @Override
     public boolean checkRunCondition() {
@@ -12,6 +13,6 @@ public class RandomManager implements RacingManager {
     }
 
     private int randomCount() {
-        return (int)(Math.random() * TEN);
+        return random.nextInt() * TEN;
     }
 }

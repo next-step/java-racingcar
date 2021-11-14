@@ -3,22 +3,22 @@ package step3;
 import step3.manager.RacingManager;
 
 public class Car {
-    private Count runPosition;
+    private Position runPosition;
     private RacingManager racingManager;
 
     public Car(RacingManager racingManager) {
         this.racingManager = racingManager;
 
-        runPosition = new Count();
+        runPosition = new Position();
     }
 
-    public Count currentPosition() {
+    public Position currentPosition() {
         return runPosition;
     }
 
     public void run() {
         if(racingManager.checkRunCondition()) {
-            runPosition.plusCount();
+            runPosition.plusPosition();
         }
     }
 }

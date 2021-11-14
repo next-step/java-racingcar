@@ -3,27 +3,31 @@ package step3;
 import java.util.Objects;
 
 public class Count {
-    private int ZERO = 0;
+    private final static int MIN = 1;
     private int count;
 
-    public Count() {
-        this.count = ZERO;
-    }
+    public Count(int count) {
+        lessThanOneOrElseThrow(count);
 
-    public Count(Integer input) {
-        this.count = input;
+        this.count = count;
     }
 
     public void plusCount() {
         this.count++;
     }
 
-    public void minusCount() {
-        this.count--;
-    }
-
     public int getCount() {
         return count;
+    }
+
+    public boolean lessOrEqualsThanOther(Count other) {
+        return this.count <= other.count;
+    }
+
+    private static void lessThanOneOrElseThrow(int input) {
+        if(input < MIN) {
+            throw new IllegalArgumentException(MyException.VALUE_GREATER_THAN_ONE.getMessage());
+        }
     }
 
     @Override

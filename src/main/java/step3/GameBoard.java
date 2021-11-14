@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.List;
+
 public class GameBoard {
     private final static InputView INPUT_VIEW = InputView.getInstance();
     private final String QUESTION_CAR_MESSAGE = "자동차 대수는 몇 대 인가요?";
@@ -27,11 +29,16 @@ public class GameBoard {
         return INPUT_VIEW.inputValue();
     }
 
-    public void renderRaceProgress(RacingCarGroup carGroup) {
+    public void renderRaceResult(List<Record> recordList) {
+        recordList.forEach(r -> {
+            renderPosition(r);
+        });
+    }
 
-        carGroup.carsCurrentPosition().stream()
-                .forEach(pos -> {
-                    render(appendText(pos.getCount()));
+    private void renderPosition(Record record) {
+        record.recordList().stream()
+                .forEach(p -> {
+                    System.out.println(appendText(p.getPosition()));
                 });
 
         System.out.println();

@@ -1,50 +1,33 @@
 package step3;
 
-import step3.manager.RacingManager;
-import step3.manager.RandomManager;
-
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Race {
+    private final int ONE = 1;
     private RacingCarGroup racingCarGroup;
-    private LapsManager lapsManager;
-    private Count carCount;
-    private GameBoard gameBoard;
+    private List<Record> records;
+    private Count finalLap;
+    private Count currentLap;
 
     public Race() {
-        gameBoard = new GameBoard();
+        currentLap = new Count(ONE);
     }
 
-    public void start() {
-        ready();
-
-        inGame();
+    public void ready(Count carCount, Count trialCount) {
+        records = new ArrayList<>();
+        this.racingCarGroup = new RacingCarGroup(carCount);
+        this.finalLap = trialCount;
     }
 
-    private void ready() {
-        this.carCount = gameBoard.registerCar();
-        this.lapsManager = new LapsManager(gameBoard.registerTrialCount());
-        this.racingCarGroup = new RacingCarGroup(createCarList());
-    }
-
-    private List<Car> createCarList() {
-        RacingManager racingManager = new RandomManager();
-
-        return IntStream.range(0, carCount.getCount())
-                .mapToObj(i -> new Car(racingManager))
-                .collect(Collectors.toList());
-    }
-
-    private void inGame() {
-        gameBoard.renderResultMessage();
-
-        while(!lapsManager.isLastLap()) {
+    public List<Record> start() {
+        while(currentLap.lessOrEqualsThanOther(finalLap)) {
             racingCarGroup.carsRun();
 
-            gameBoard.renderRaceProgress(racingCarGroup);
-            lapsManager.finishLap();
+            records.add(new Record(racingCarGroup.carsCurrentPosition()));
+            currentLap.plusCount();
         }
+
+        return records;
     }
 }
