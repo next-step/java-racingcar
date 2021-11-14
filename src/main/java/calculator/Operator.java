@@ -7,7 +7,10 @@ public enum Operator {
     PLUS("+", (x,y) -> x + y),
     MINUS("-", (x,y) -> x - y),
     TIMES("*", (x,y) -> x * y),
-    DIVIDE("/", (x,y) -> x / y);
+    DIVIDE("/", (x,y) -> {
+        if(y == 0) throw new IllegalArgumentException("can't divide with 0");
+        return x / y;
+    });
 
     private final String symbol;
     private BiFunction<Integer, Integer, Integer> expression;

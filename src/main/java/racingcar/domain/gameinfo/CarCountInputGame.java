@@ -1,22 +1,22 @@
-package racingcar.gameinfo;
+package racingcar.domain.gameinfo;
 
-import racingcar.domain.Cars;
-import racingcar.domain.CountInfo;
-import racingcar.moverule.MoveRule;
-import racingcar.view.result.ResultView;
+import racingcar.domain.model.Cars;
+import racingcar.domain.gameround.GameRound;
+import racingcar.domain.model.CountInfo;
+import racingcar.domain.moverule.MoveRule;
 
 public class CarCountInputGame implements GameInfo {
 
     private final CountInfo carCount;
     private final CountInfo tryCount;
     private final MoveRule moveRule;
-    private final ResultView resultView;
+    private final GameRound gameRound;
 
-    public CarCountInputGame(MoveRule moveRule, ResultView resultView, CountInfo carCount, CountInfo tryCount){
+    public CarCountInputGame(MoveRule moveRule, GameRound gameRound, CountInfo carCount, CountInfo tryCount){
         this.moveRule = moveRule;
-        this.resultView = resultView;
         this.carCount = carCount;
         this.tryCount = tryCount;
+        this.gameRound = gameRound;
     }
 
     @Override
@@ -25,8 +25,13 @@ public class CarCountInputGame implements GameInfo {
     }
 
     @Override
-    public ResultView getResultView() {
-        return this.resultView;
+    public GameRound getGameRound() {
+        return this.gameRound;
+    }
+
+    @Override
+    public boolean printWinners() {
+        return false;
     }
 
     @Override

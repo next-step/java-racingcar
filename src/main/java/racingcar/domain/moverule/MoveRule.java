@@ -1,4 +1,4 @@
-package racingcar.moverule;
+package racingcar.domain.moverule;
 
 public interface MoveRule {
     boolean isMovable();

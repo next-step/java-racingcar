@@ -1,7 +1,6 @@
-package racingcar.domain;
+package racingcar.domain.model;
 
-import racingcar.moverule.MoveRule;
-import racingcar.view.result.ResultView;
+import racingcar.domain.moverule.MoveRule;
 
 import java.util.Collections;
 import java.util.List;
@@ -37,31 +36,7 @@ public class Cars {
                 .forEach(car -> car.move(moveRule.isMovable(), moveRule.getMoveCount()));
     }
 
-    public void printRoundResult(ResultView resultView){
-        this.carList
-                .forEach(car -> resultView.printRoundResult(car));
-    }
-
-    public void printWinner(ResultView resultView){
-        resultView.printWinner(this.getWinnerCars());
-    }
-
     public List<Car> getCarList(){
         return Collections.unmodifiableList(this.carList);
-    }
-
-    public List<Car> getWinnerCars(){
-        int maxPosition = getMaxPosition();
-        return Collections.unmodifiableList(
-                this.carList.stream()
-                        .filter(car -> car.getPosition() == maxPosition)
-                        .collect(Collectors.toList()));
-    }
-
-    private int getMaxPosition(){
-        return Collections.max(
-                this.carList.stream()
-                        .map(car -> car.getPosition())
-                        .collect(Collectors.toList()));
     }
 }

@@ -1,16 +1,15 @@
-package racingcar.gameinfo;
+package racingcar.domain.model;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.CarNameInfo;
 
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-class CarNameInfoTest {
+public class CarNameInfoTest {
 
     CarNameInfo carNameInfo;
 
@@ -42,5 +41,14 @@ class CarNameInfoTest {
         String[] carNames = input.split(",");
         List<CarNameInfo> carNameInfoList = CarNameInfo.createListFromInput(carNames);
         assertThat(carNameInfoList.size()).isEqualTo(carNames.length);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"car1,car1", "car1,car2,car1", "car2,car1,car1"})
+    void createListFromInputDuplicateTest(String input){
+        String[] carNames = input.split(",");
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> CarNameInfo.createListFromInput(carNames))
+                .withMessage("이름이 중복된 차가 있습니다.");
     }
 }
