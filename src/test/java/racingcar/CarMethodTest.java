@@ -5,8 +5,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.GameInputData;
 import racingcar.domain.RacingCar;
 import racingcar.service.util.Validation;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -16,8 +19,7 @@ public class CarMethodTest {
 
     @BeforeEach
     void setUp() {
-
-        racingCar = RacingCar.create();
+        racingCar = RacingCar.create("test");
     }
 
     @Test

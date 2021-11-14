@@ -1,31 +1,29 @@
 package racingcar.domain;
 
-import racingcar.service.util.Validation;
+import java.util.List;
 
 public class GameInputData {
 
-    private final int carCount;
+    private final List<String> carNames;
     private final int tryCount;
 
-    private GameInputData(int carCount, int tryCount) {
+    private GameInputData(List<String> carNames, int tryCount) {
 
-        Validation.validCarsCount(carCount);
-
-        this.carCount = carCount;
+        this.carNames = carNames;
         this.tryCount = tryCount;
     }
 
-    public static GameInputData of(int carCount, int tryCount) {
+    public static GameInputData of(List<String> carNames, int tryCount) {
 
-        return new GameInputData(carCount, tryCount);
-    }
-
-    public int getCarCount() {
-
-        return carCount;
+        return new GameInputData(carNames, tryCount);
     }
 
     public int getTryCount() {
+
         return tryCount;
+    }
+
+    public List<String> getCarNames() {
+        return carNames;
     }
 }

@@ -1,13 +1,15 @@
 package racingcar.service.util;
 
-import racingcar.domain.Position;
+import racingcar.domain.value.Position;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Validation {
 
     private static final String PATTERN = "^[0-9]*$";
-    private static final int TRY_MIN_COUNT = 1;
+    private static final int CAR_NAME_LENGTH = 0;
+    private static final int TRY_MIN_COUNT = 0;
     private static final int LOCATION_MIN = 0;
 
 
@@ -28,8 +30,8 @@ public class Validation {
         }
     }
 
-    public static void validCarsCount(int count) {
-        if(count < TRY_MIN_COUNT) {
+    public static void validCarsCount(String carNames) {
+        if(carNames.length() < CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("적어도 1대 이상의 자동차가 필요합니다!!!!");
         }
     }

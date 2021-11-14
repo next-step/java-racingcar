@@ -4,17 +4,17 @@ import racingcar.domain.RacingCar;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class CarCollection {
+public final class CarCollection {
     private CarCollection() {
 
     }
 
-    public static List<RacingCar> racingGameReady(int count) {
+    public static List<RacingCar> racingGameReady(List<String> carName) {
 
-        return Stream.generate(RacingCar::create)
-                .limit(count).collect(Collectors.toList());
+        return carName.stream()
+                .map(RacingCar::new)
+                .collect(Collectors.toList());
     }
 
 }

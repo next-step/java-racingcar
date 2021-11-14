@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.value;
 
 import racingcar.service.util.Validation;
 
@@ -8,22 +8,29 @@ public class Position {
 
     private int location;
 
-    public Position(int location) {
+    private Position(int location) {
         Validation.checkMinSize(location);
 
         this.location = location;
     }
 
     public static Position create(int location) {
+
         return new Position(location);
     }
 
     public void increaseLocation() {
+
         location++;
     }
 
     public int getLocation() {
+
         return location;
+    }
+
+    public boolean isGreaterThan(Position maxPosition) {
+        return this.location >= maxPosition.location;
     }
 
     @Override
@@ -36,7 +43,9 @@ public class Position {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(location);
     }
+
 
 }

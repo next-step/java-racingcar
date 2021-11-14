@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.Position;
+import racingcar.domain.value.Position;
 import racingcar.domain.RacingCar;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,7 +17,7 @@ public class RacingCarTest {
 
     @BeforeEach
     void setUp() {
-        testCar = RacingCar.create();
+        testCar = RacingCar.create("test");
     }
 
     @ParameterizedTest
@@ -32,7 +32,7 @@ public class RacingCarTest {
     @DisplayName("Null check")
     void nullcheck() {
 
-        assertThatNullPointerException().isThrownBy(() -> new RacingCar(null));
+        assertThatNullPointerException().isThrownBy(() -> new RacingCar(null, null));
     }
 
     @Test
@@ -53,5 +53,11 @@ public class RacingCarTest {
             testCar.decisionMove(false);
             assertThat(testCar.getLocation()).isEqualTo(0);
         }
+    }
+
+    @Test
+    @DisplayName("이름을 입력했을 경우 자동차에 잘 입력되는지 확인")
+    void setCarNameTest() {
+        assertThat(testCar.getCarName().getName()).isEqualTo("test");
     }
 }

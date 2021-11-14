@@ -9,6 +9,7 @@ public class MoveRuleUtil implements MoveRule {
 
     @Override
     public boolean moveOrNot() {
+
         return MIN_RANDOM <= RacingUtil.getRandomValue(MAX_RANDOM);
     }
 }
