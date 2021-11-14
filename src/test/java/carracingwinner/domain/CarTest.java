@@ -30,10 +30,10 @@ class CarTest {
 
     @ParameterizedTest
     @CsvSource(value = {"3,0", "4,1"})
-    void moveTest(int random, int position) {
+    void moveTest(int moveValue, int position) {
         Car car = new Car("pobi");
 
-        car.move(random);
+        car.move(moveValue);
 
         assertThat(car.getPosition().getIntValue()).isEqualTo(position);
     }

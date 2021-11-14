@@ -24,8 +24,8 @@ public class Car {
         }
     }
 
-    public void move(int random) {
-        if (random >= MOVE_BOUND) {
+    public void move(int moveValue) {
+        if (moveValue >= MOVE_BOUND) {
             position = position.move();
         }
     }
