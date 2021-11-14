@@ -1,14 +1,15 @@
 package step4;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Referee {
 
-    public static Car[] getWinners(List<Car> cars) {
+    public static List<Car> getWinners(List<Car> cars) {
         int winnerPos = getWinnerPos(cars);
         return cars.stream()
             .filter(car -> car.getPosition() == winnerPos)
-            .toArray(Car[]::new);
+            .collect(Collectors.toList());
     }
 
     private static int getWinnerPos(List<Car> cars) {

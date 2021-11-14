@@ -2,6 +2,7 @@ package step4;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarRacingGame {
 
@@ -14,8 +15,10 @@ public class CarRacingGame {
         }
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<CarDTO> getCars() {
+        return cars.stream()
+            .map(CarDTO::new)
+            .collect(Collectors.toList());
     }
 
     public void moveCars() {
@@ -24,7 +27,9 @@ public class CarRacingGame {
         }
     }
 
-    public Car[] getWinners() {
-        return Referee.getWinners(cars);
+    public List<CarDTO> getWinners() {
+        return Referee.getWinners(cars)
+            .stream().map(CarDTO::new)
+            .collect(Collectors.toList());
     }
 }

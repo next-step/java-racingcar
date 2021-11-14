@@ -26,7 +26,7 @@ public class CarRacingGameTest {
         final int roundCount = 100;
         for (int i = 1; i <= roundCount; i++) {
             carRacingGame.moveCars();
-            for (Car car : carRacingGame.getCars()) {
+            for (CarDTO car : carRacingGame.getCars()) {
                 assertAll(
                     () -> assertThat(car.getPosition()).isLessThanOrEqualTo(roundCount),
                     () -> assertThat(car.getPosition()).isGreaterThanOrEqualTo(0)
@@ -37,6 +37,6 @@ public class CarRacingGameTest {
 
     @Test
     void getWinners() {
-        assertEquals(3, carRacingGame.getWinners().length);
+        assertEquals(3, carRacingGame.getWinners().size());
     }
 }

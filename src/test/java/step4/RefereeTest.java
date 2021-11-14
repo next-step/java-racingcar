@@ -26,11 +26,11 @@ public class RefereeTest {
 
     @Test
     void getWinners() {
-        Car[] winners = Referee.getWinners(testCars);
+        List<Car> winners = Referee.getWinners(testCars);
         assertAll(
-            () -> assertEquals(1, winners.length),
-            () -> assertThat(winners[0].getName()).isEqualTo(new CarName("test0")),
-            () -> assertThat(winners[0].getPosition()).isEqualTo(1)
+            () -> assertEquals(1, winners.size()),
+            () -> assertThat(winners.get(0).getCarName()).isEqualTo(new CarName("test0")),
+            () -> assertThat(winners.get(0).getPosition()).isEqualTo(1)
         );
     }
 

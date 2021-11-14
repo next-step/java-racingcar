@@ -8,23 +8,23 @@ public class GameOutput {
         printCars(carRacingGame.getCars());
     }
 
-    private static void printCars(List<Car> cars) {
-        for (Car car : cars) {
+    private static void printCars(List<CarDTO> cars) {
+        for (CarDTO car : cars) {
             printCar(car);
         }
     }
 
-    private static void printCar(Car car) {
-        System.out.print(car.getName() + " : ");
+    private static void printCar(CarDTO car) {
+        System.out.print(car.getCarName() + " : ");
         for (int i = 0; i < car.getPosition(); i++) {
             System.out.print('-');
         }
         System.out.println();
     }
 
-    public static void printWinners(Car[] winners) {
-        for (Car winner : winners) {
-            System.out.print(winner.getName() + " ");
+    public static void printWinners(List<CarDTO> winners) {
+        for (CarDTO winner : winners) {
+            System.out.print(winner.getCarName() + " ");
         }
         System.out.println("가 최종 우승했습니다.");
     }

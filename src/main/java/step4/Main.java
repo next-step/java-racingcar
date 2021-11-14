@@ -3,8 +3,8 @@ package step4;
 public class Main {
 
     public static void main(String[] args) {
-        int roundCount = GameInput.readRoundCount();
         String[] carNames = GameInput.readCarNames();
+        int roundCount = GameInput.readRoundCount();
         CarRacingGame carRacingGame = new CarRacingGame(carNames);
 
         System.out.println("실행 결과");

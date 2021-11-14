@@ -33,6 +33,10 @@ public class CarName {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || o.getClass() != CarName.class) {
