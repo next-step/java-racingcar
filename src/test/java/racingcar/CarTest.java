@@ -1,5 +1,6 @@
 package racingcar;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
@@ -7,6 +8,8 @@ import java.lang.reflect.Field;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import jdk.jfr.Name;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,7 +23,7 @@ class CarTest {
 
     @BeforeEach
     void init() throws NoSuchFieldException, IllegalAccessException {
-        car = Car.create(0);
+        car = Car.create("name", 0);
         beforePosition = getCarPositionByReflection(car);
     }
 
@@ -50,7 +53,7 @@ class CarTest {
 
         assertThat(afterPosition).isEqualTo(beforePosition + 1);
     }
-    
+
     @ValueSource(ints = {10, 5, 3, 1})
     @ParameterizedTest(name = "[{arguments}] 자동차의 position에 따라, 알맞는 거리를 반환한다.")
     void getDistanceByPositionTest(int position) {
@@ -64,6 +67,23 @@ class CarTest {
 
         assertThat(car.getLocation()).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("자동차별로 이름이 존재해야 한다.")
+    void carNameTest() {
+        assertThat(car.getName()).isEqualTo("name");
+    }
+
+    @ValueSource(strings = "kiyeon")
+    @ParameterizedTest(name = "자동차 이름은 5자를 초과할수 없다.")
+    void carNameLengthLimitTest(String outBoundCarName)
+        throws NoSuchFieldException, IllegalAccessException {
+
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> Car.create(outBoundCarName));
+
+    }
+
 
     private Random mockRandomValue(int testValue) {
         return new Random() {
