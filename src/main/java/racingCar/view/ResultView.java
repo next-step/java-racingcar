@@ -1,10 +1,8 @@
-package racingCar.ui;
+package racingCar.view;
 
-import racingCar.Car;
+import racingCar.model.Car;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class ResultView {
@@ -35,13 +33,12 @@ public class ResultView {
         return sb.toString();
     }
 
-    public void printWinners(List<Car> winnerCars) {
-        String winner = winnerCars.stream()
+    public void printWinners(List<Car> winnersCars) {
+        String winner = winnersCars.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(SEPARATOR));
 
         System.out.println(winner + "가 최종 우승했습니다.");
     }
-
 }
 

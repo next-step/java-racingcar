@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.model;
 
 import racingCar.utils.NumberUtils;
 
@@ -9,7 +9,7 @@ public class Car {
     private String name;
     private int moveCount = 0;
 
-    Car(String name) {
+    public Car(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("차 이름은 5글자 이하로 정해주세요.");
         }
