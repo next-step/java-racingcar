@@ -5,13 +5,13 @@ import java.util.List;
 
 public class RacingResult {
 
-    private final List<CarRecordHistory> recordList = new ArrayList<>();
+    private final List<CarRecordHistory> carRecordHistories = new ArrayList<>();
 
-    public void addRecord(CarRecordHistory record) {
-        recordList.add(record);
+    public void addRecord(CarRecordHistory carRecordHistory) {
+        carRecordHistories.add(carRecordHistory);
     }
 
-    public CarRecordHistory getRecord(int index) {
-        return recordList.get(index);
+    public int recordPosition(int carIndex, int tryIndex) {
+        return carRecordHistories.get(carIndex).getPosition(tryIndex);
     }
 }
