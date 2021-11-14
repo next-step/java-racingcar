@@ -23,6 +23,7 @@ public class RaceController {
     public void gameStart() {
         List<Record> records = race.start();
 
+        gameBoard.renderResultMessage();
         gameBoard.renderRaceResult(records);
     }
 }
