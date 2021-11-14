@@ -1,10 +1,7 @@
 package racinggame;
 
-import racinggame.service.SimpleGameExecutor;
-import racinggame.utils.GameExecutorFactory;
+import racinggame.controller.RacingGameController;
 import racinggame.view.InputView;
-import racinggame.view.ResultView;
-import racinggame.domain.value.RacingResult;
 
 public class Client {
 
@@ -13,11 +10,7 @@ public class Client {
         String carNames = inputView.carNames();
         String numberOfAttempts = inputView.numberOfAttempts();
 
-        SimpleGameExecutor gameExecutor = GameExecutorFactory.createGameExecutor(carNames, numberOfAttempts);
-
-        RacingResult result = gameExecutor.execute();
-
-        ResultView resultView = new ResultView(result);
-        resultView.showResult();
+        RacingGameController racingGameController = new RacingGameController();
+        racingGameController.startGame(carNames, numberOfAttempts);
     }
 }
