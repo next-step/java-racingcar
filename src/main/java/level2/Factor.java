@@ -1,12 +1,14 @@
 package level2;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.stream.Collectors;
 
 public class Factor {
-    private List<Number> numbers;
-    private List<Operator> operators;
+    private Queue<Number> numbers;
+    private Queue<Operator> operators;
 
     public Factor(String input) {
         if(input == null || input.isBlank()) throw new IllegalArgumentException();
@@ -16,22 +18,23 @@ public class Factor {
         numbers = Arrays.stream(inputs)
                         .filter(i -> i.matches("-?\\d+?"))
                         .map(i -> new Number(i))
-                        .collect(Collectors.toList());
+                        .collect(Collectors.toCollection(LinkedList::new));
 
         operators = Arrays.stream(inputs)
                           .flatMap(i -> Arrays.stream(Operator.values()).filter(o -> o.isEqualTo(i)))
-                          .collect(Collectors.toList());
+                          .collect(Collectors.toCollection(LinkedList::new));
     }
 
-    public Number getNumbers(int index) {
-        return numbers.get(index);
+    public Number getNumbers(boolean isFirst, int result) {
+        if(isFirst && result != 0) return new Number(Integer.toString(result));
+        return numbers.poll();
     }
 
-    public Operator getOperator(int index) {
-        return operators.get(index);
+    public Operator getOperator() {
+        return operators.poll();
     }
 
-    public boolean isComplete(int expect) {
-        return expect == numbers.size() + operators.size();
+    public boolean isComplete() {
+        return numbers.isEmpty() && operators.isEmpty();
     }
 }
