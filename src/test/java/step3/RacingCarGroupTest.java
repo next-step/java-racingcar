@@ -1,38 +1,23 @@
 package step3;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import step3.manager.RacingManager;
 import step3.manager.RandomManager;
 
-import java.util.ArrayList;
-import java.util.List;
-
 class RacingCarGroupTest {
 
-    private List<Car> cars;
+    private static RacingCarGroup CAR_GROUP;
+    private final static RacingManager MANAGER = new RandomManager();
 
-    @BeforeEach
-    private void createCars() {
-        RacingManager racingManager = new RandomManager();
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 5, 7})
+    @DisplayName("갯수를 인자로 전달하면 갯수만큼 자동차가 생성된다.")
+    public void carRunOrStop(int input) {
+        CAR_GROUP = new RacingCarGroup(new Count(input));
 
-        cars = new ArrayList<>();
-        cars.add(new Car(racingManager));
-        cars.add(new Car(racingManager));
-        cars.add(new Car(racingManager));
+        Assertions.assertThat(CAR_GROUP.carsCount()).isEqualTo(new Count(input));
     }
-
-    @Test
-    @DisplayName("생성한 자동차 댓수만큼 위치 갯수를 반환한다.")
-    public void carRunOrStop() {
-
-        RacingCarGroup racingCarGroup = new RacingCarGroup(cars);
-
-        List<Count> count = racingCarGroup.carsCurrentPosition();
-
-        Assertions.assertThat(count.size()).isEqualTo(3);
-    }
-
 }
