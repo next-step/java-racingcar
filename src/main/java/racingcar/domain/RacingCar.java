@@ -4,13 +4,16 @@ import java.util.Objects;
 
 public class RacingCar {
     private static final int RANDOM_REFERENCE_VALUE = 4;
+    private String carName;
     private int moveCount;
 
-    public RacingCar() {
+    public RacingCar(String carName) {
+        this.carName = carName;
         this.moveCount = 0;
     }
 
-    public RacingCar(int moveCount) {
+    public RacingCar(String carName, int moveCount) {
+        this.carName = carName;
         this.moveCount = moveCount;
     }
 
@@ -18,9 +21,15 @@ public class RacingCar {
         return moveCount;
     }
 
+    public String getCarName() { return carName; }
+
     public void goOrStopRacing(int randomValue) {
         if (randomValue >= RANDOM_REFERENCE_VALUE)
             this.moveCount++;
+    }
+
+    public boolean isMoveCountEqualMaxCount(int maxCount) {
+        return this.moveCount == maxCount;
     }
 
     @Override
@@ -28,11 +37,12 @@ public class RacingCar {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingCar racingCar = (RacingCar) o;
-        return moveCount == racingCar.moveCount;
+        return moveCount == racingCar.moveCount &&
+                Objects.equals(carName, racingCar.carName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(moveCount);
+        return Objects.hash(carName, moveCount);
     }
 }

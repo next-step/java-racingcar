@@ -5,40 +5,62 @@ import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private static final int RANDOM_BOUND = 10;
-    private static final String NUMBER_OF_CAR_MSG = "자동차 대수는 몇 대 인가요?";
-    private static final String NUMBER_OF_TRY_MSG = "시도할 회수는 몇 회 인가요?";
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        InputView carInputView = new InputView(NUMBER_OF_CAR_MSG, scanner);
-        InputView tryInputView = new InputView(NUMBER_OF_TRY_MSG, scanner);
-
-        ResultView resultView = new ResultView();
-        System.out.println();
-        System.out.println("실행 결과");
-
-        List<RacingCar> racingCarList = new ArrayList<>();
-        for (int i = 0; i < carInputView.getCount(); i++) {
-            racingCarList.add(new RacingCar());
+    public static void main(String[] args)  {
+        InputView inputView = new InputView();
+        try {
+            inputView.startRacingGame();
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+            System.exit(0);
         }
 
-        for (int i = 0; i < tryInputView.getCount(); i++) {
-            goOrStopRacing(racingCarList);
-            resultView.racingShow(racingCarList);
-        }
+        List<RacingCar> racingCarList = makeRacingCars(inputView);
+        showRacingCars(inputView, racingCarList);
     }
 
-    private static void goOrStopRacing(List<RacingCar> racingCarList) {
+    private static void showRacingCars(InputView inputView, List<RacingCar> racingCars) {
+        ResultView resultView = new ResultView();
         Random random = new Random();
+
+        for (int i = 0; i < inputView.getTryCount(); i++) {
+            goOrStopRacing(racingCars, random);
+            resultView.racingShow(racingCars);
+        }
+
+        resultView.drawWinner(getWinner(racingCars));
+    }
+
+    private static List<RacingCar> getWinner(List<RacingCar> racingCars) {
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.isMoveCountEqualMaxCount(getMaxCount(racingCars)))
+                .collect(Collectors.toList());
+    }
+
+    private static int getMaxCount(List<RacingCar> racingCars) {
+        return racingCars.stream()
+                .max(Comparator.comparingInt(RacingCar::getMoveCount))
+                .get().getMoveCount();
+    }
+
+    private static List<RacingCar> makeRacingCars(InputView inputView) {
+        List<RacingCar> racingCarList = new ArrayList<>();
+        for (String carName : inputView.getCarNames()) {
+            racingCarList.add(new RacingCar(carName));
+        }
+        return racingCarList;
+    }
+
+    private static void goOrStopRacing(List<RacingCar> racingCarList, Random random) {
         for (RacingCar racingCar : racingCarList) {
             racingCar.goOrStopRacing(random.nextInt(RANDOM_BOUND));
         }
     }
-
 }

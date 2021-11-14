@@ -16,7 +16,7 @@ public class SetTest {
     private Set<Integer> numbers;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         numbers = new HashSet<>();
         numbers.add(1);
         numbers.add(1);
