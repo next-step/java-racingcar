@@ -3,7 +3,7 @@ package study.racing.model.car;
 import java.util.ArrayList;
 import java.util.List;
 
-import study.racing.utils.RandomUtils;
+import study.racing.model.rule.Rule;
 
 public class RacingCars {
 
@@ -15,8 +15,8 @@ public class RacingCars {
         }
     }
 
-    public void race() {
-        cars.forEach(car -> car.moveOrStop(RandomUtils.nextInt()));
+    public void race(Rule rule) {
+        cars.forEach(car -> car.moveOrStop(rule));
     }
 
     public List<Car> result() {

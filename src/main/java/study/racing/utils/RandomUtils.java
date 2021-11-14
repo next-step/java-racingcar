@@ -9,7 +9,7 @@ public class RandomUtils {
     private RandomUtils() {
     }
 
-    public static int nextInt() {
-        return random.nextInt();
+    public static int nextInt(int limitRange) {
+        return random.nextInt(limitRange);
     }
 }

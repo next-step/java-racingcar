@@ -1,15 +1,19 @@
 package study.racing.model.car;
 
-public class Car {
+import study.racing.model.rule.Rule;
 
-    private static final int CRITERIA = 4;
+public class Car {
 
     private int distance;
 
-    public void moveOrStop(int number) {
-        if (number >= CRITERIA) {
-            this.distance++;
+    public void moveOrStop(Rule rule) {
+        if (rule.isFollowRule()) {
+            move();
         }
+    }
+
+    private void move() {
+        this.distance++;
     }
 
     public int getDistance() {
