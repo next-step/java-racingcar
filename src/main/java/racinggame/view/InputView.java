@@ -16,9 +16,8 @@ public class InputView {
         scanner = new Scanner(System.in);
     }
 
-    public Names inputEntryCarNames() throws Exception {
+    public Names inputEntryCarNames() {
         System.out.println(MESSAGE_ENTRY_CARS_NAME);
-
         return Names.from(scanner.nextLine());
     }
 
