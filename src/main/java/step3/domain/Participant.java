@@ -16,7 +16,7 @@ public class Participant {
         return new Participant(Cars.create(names));
     }
 
-    public RoundHistory move(IntNumberGenerator generator) {
-        return RoundHistory.of(cars.move(generator));
+    public Cars move(IntNumberGenerator generator) {
+        return cars.move(generator);
     }
 }

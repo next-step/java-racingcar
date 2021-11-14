@@ -30,6 +30,6 @@ public class GameService {
     }
 
     private RoundHistory startRound(Participant participant) {
-        return participant.move(generator);
+        return RoundHistory.of(participant.move(generator));
     }
 }
