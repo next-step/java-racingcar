@@ -1,13 +1,9 @@
 package racinggame.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
-
-    private static final Integer START_INDEX = 0;
 
     private List<Car> cars;
 
@@ -38,7 +34,7 @@ public class Cars {
         }
     }
 
-    public Location inFormFirstRecord() {
+    private Location inFormFirstRecord() {
         Car car = cars.get(0);
         Location location = car.getLocation();
         for (int i = 1; i < cars.size(); i++) {
@@ -47,17 +43,19 @@ public class Cars {
         return location;
     }
 
-    public Names inFormWinners(Location firstRecord) {
-        List<Name> names = new ArrayList<>();
+    public Names inFormWinners() {
+        StringBuilder names = new StringBuilder();
+        Location firstRecord = this.inFormFirstRecord();
         for (Car car : cars) {
             compareToRecord(names, car, firstRecord);
         }
-        return new Names(names);
+        return Names.from(names.toString());
     }
 
-    private void compareToRecord(List names, Car car, Location firstRecord) {
+    private void compareToRecord(StringBuilder names, Car car, Location firstRecord) {
         if (firstRecord.equals(car.getLocation())) {
-            names.add(car.getName());
+            names.append(car.getName().getName());
+            names.append(",");
         }
     }
 }
