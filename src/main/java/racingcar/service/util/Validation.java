@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 public class Validation {
 
     private static final String PATTERN = "^[0-9]*$";
-    private static final int CAR_NAME_LENGTH = 0;
     private static final int TRY_MIN_COUNT = 0;
     private static final int LOCATION_MIN = 0;
 
@@ -30,20 +29,14 @@ public class Validation {
         }
     }
 
-    public static void validCarsCount(String carNames) {
-        if(carNames.length() < CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("적어도 1대 이상의 자동차가 필요합니다!!!!");
-        }
-    }
-
     public static void checkMinSize(int location) {
         if(location < LOCATION_MIN) {
             throw new IllegalArgumentException("음의 정수인 위치는 없습니다!!!");
         }
     }
 
-    public static void nullCheck(Position position) {
-        if(position == null) {
+    public static <T> void nullValueCheck(T reference) {
+        if (reference == null) {
             throw new NullPointerException("Null 값은 생성 할 수 없습니다.");
         }
     }

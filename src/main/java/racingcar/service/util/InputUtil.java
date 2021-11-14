@@ -8,7 +8,6 @@ public class InputUtil {
 
     public static String inputString(String msg) {
         System.out.println(msg);
-        Validation.validCarsCount(scanner.nextLine());
 
         return scanner.nextLine();
     }

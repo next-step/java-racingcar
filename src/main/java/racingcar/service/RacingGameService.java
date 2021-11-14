@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import racingcar.domain.GameInputData;
+import racingcar.domain.GameResultData;
 import racingcar.domain.RacingCar;
 import racingcar.domain.Record;
 import racingcar.domain.collection.CarCollection;
@@ -25,7 +26,7 @@ public class RacingGameService {
         return new RacingGameService(carName);
     }
 
-    public void execute(GameInputData racingCarInput) {
+    public GameResultData execute(GameInputData racingCarInput) {
 
         int tryCount = racingCarInput.getTryCount();
         List<Record> recordList = new ArrayList();
@@ -39,9 +40,12 @@ public class RacingGameService {
 
             System.out.println();
         }
+
+        return GameResultData.of(recordList);
     }
 
     private Record recordRace(int ROUND) {
+
         return RecordCollection.create(ROUND, cars);
     }
 }

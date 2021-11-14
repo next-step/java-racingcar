@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import racingcar.domain.value.CarName;
 import racingcar.domain.value.Position;
-import racingcar.service.util.Validation;
 
 import java.util.Objects;
 
@@ -16,8 +15,6 @@ public class RacingCar {
     }
 
     public RacingCar(Position position, CarName carName) {
-
-        Validation.nullCheck(position);
 
         this.position = position;
         this.carName = carName;
@@ -61,12 +58,6 @@ public class RacingCar {
         if (o == null || getClass() != o.getClass()) return false;
         RacingCar racingCar1 = (RacingCar) o;
         return Objects.equals(position, racingCar1.position);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(position);
     }
 
 }

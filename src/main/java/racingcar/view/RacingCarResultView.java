@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.domain.GameResultData;
 import racingcar.domain.RacingCar;
 
 import java.util.List;
@@ -17,12 +18,16 @@ public class RacingCarResultView {
 
     public static String printCar(RacingCar car) {
         int value = car.getLocation();
-        String result = "-";
+        String result = car.getCarName().getName() + ": -";
 
         for(int i = 0; i < value; i++) {
             result += DASH;
         }
 
         return result;
+    }
+
+    public void printVictoryUser(GameResultData result) {
+        System.out.println(result.getVictoryUsers() + "가 최종 우승했습니다!!");
     }
 }
