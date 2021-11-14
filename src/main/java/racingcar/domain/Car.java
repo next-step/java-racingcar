@@ -10,14 +10,20 @@ public class Car {
     private static final int MIN_MOVEMENT_VALUE = 0;
     private static final int MAX_MOVEMENT_VALUE = 9;
 
-    private Position position;
+    private final Name name;
+    private final Position position;
 
-    private Car(Position position) {
+    private Car(Name name, Position position) {
+        this.name = name;
         this.position = position;
     }
 
-    public static Car from() {
-        return new Car(Position.init());
+    public static Car from(Name name) {
+        return new Car(name, Position.init());
+    }
+
+    public Car from(Car car) {
+        return new Car(car.name, position.of());
     }
 
     public void move(int number) {
@@ -33,8 +39,12 @@ public class Car {
         }
     }
 
-    public int currentPosition() {
-        return position.getPosition();
+    public Position currentPosition() {
+        return position;
+    }
+
+    public String carName() {
+        return name.getName();
     }
 
     @Override
@@ -49,4 +59,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(position);
     }
+
 }

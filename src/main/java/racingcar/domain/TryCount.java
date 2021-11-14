@@ -9,11 +9,14 @@ public class TryCount {
     private static final int COUNT_ONE = 1;
     private static final int COUNT_ZERO = 0;
 
+    private final int finishRound;
+
     private int tryCount;
 
     private TryCount(int tryCount) {
         validateCount(tryCount);
         this.tryCount = tryCount;
+        this.finishRound = tryCount;
     }
 
     private void validateCount(int tryCount) {
@@ -36,9 +39,13 @@ public class TryCount {
     }
 
     private void validateMinusCount(int minusValue) {
-        if (this.tryCount - minusValue < 0) {
+        if (this.tryCount - minusValue < COUNT_ZERO) {
             throw new TryCountMinusException(minusValue);
         }
+    }
+
+    public int currentRound() {
+        return finishRound - tryCount;
     }
 
     @Override
@@ -53,4 +60,5 @@ public class TryCount {
     public int hashCode() {
         return Objects.hash(tryCount);
     }
+
 }

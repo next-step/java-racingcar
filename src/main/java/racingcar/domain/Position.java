@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.exception.PositionException;
+
 import java.util.Objects;
 
 public class Position {
@@ -8,11 +10,26 @@ public class Position {
     private int position;
 
     private Position(int position) {
+        validatePositionValue(position);
         this.position = position;
+    }
+
+    private void validatePositionValue(int position) {
+        if (position < 0) {
+            throw new PositionException(position);
+        }
     }
 
     public static Position from(int position) {
         return new Position(position);
+    }
+
+    public static Position from(Position position) {
+        return new Position(position.position);
+    }
+
+    public Position of() {
+        return new Position(this.position);
     }
 
     public static Position init() {
@@ -24,6 +41,13 @@ public class Position {
     }
 
     public int getPosition() {
+        return position;
+    }
+
+    public Position biggerPosition(Position position) {
+        if (this.position > position.position) {
+            return this;
+        }
         return position;
     }
 

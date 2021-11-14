@@ -1,57 +1,44 @@
 package racingcar.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.MovingStrategy.RandomMovingStrategy;
-import racingcar.exception.TryCountMinusException;
 
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class RacingGameTest {
 
+    private RacingGame racingGame;
 
-    @ParameterizedTest
-    @DisplayName("주어진 횟수 만큼 Car는 이동, 정지 한다")
-    @MethodSource
-    void moveTryCount(Cars cars, TryCount count, int playCount, boolean expected) {
-        RacingGame game = RacingGame.of(cars, count);
-
-        IntStream.rangeClosed(1, playCount)
-                .forEach(i -> game.play());
-
-        assertThat(game.nonOver()).isEqualTo(expected);
+    @BeforeEach
+    void setUp() {
+        racingGame = RacingGame.of(Cars.from(new String[] {"a", "b", "c"}, RandomMovingStrategy.getInstance()));
     }
 
-    static Stream<Arguments> moveTryCount() {
+    @ParameterizedTest
+    @DisplayName("게임이 n번 진행될 동안 자동차는 전진, 정지 할 수 있다.")
+    @MethodSource
+    void racingGameProgressTest(int tryCount, int round, int expected) {
+        GameLog gameLog = racingGame.play(TryCount.from(tryCount), Round.from(round));
+
+        assertThat(gameLog.getRoundLogs().size()).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> racingGameProgressTest() {
         return Stream.of(
                 Arguments.of(
-                        Cars.from(2, RandomMovingStrategy.getInstance()), TryCount.from(3), 2, Boolean.TRUE
+                        1, 1, 3
                 ),
                 Arguments.of(
-                        Cars.from(2, RandomMovingStrategy.getInstance()), TryCount.from(3), 4, Boolean.FALSE
-                )
-        );
-    }
-    @ParameterizedTest
-    @DisplayName("시도 횟수 0 이하 일때 play할 경우 exception")
-    @MethodSource
-    void tryCountUnderZeroexception(Cars cars, TryCount count, int playCount) {
-        RacingGame game = RacingGame.of(cars, count);
-
-        assertThatThrownBy(() -> IntStream.rangeClosed(1, playCount)
-                .forEach(i -> game.play())).isInstanceOf(TryCountMinusException.class);
-    }
-
-    static Stream<Arguments> tryCountUnderZeroexception() {
-        return Stream.of(
+                        2, 2, 6
+                ),
                 Arguments.of(
-                        Cars.from(2, RandomMovingStrategy.getInstance()), TryCount.from(3), 4
+                        3, 3, 9
                 )
         );
     }

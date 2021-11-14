@@ -2,26 +2,35 @@ package racingcar.domain;
 
 import racingcar.exception.CreateCarCountException;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Cars {
     private static final int MIN_CREATE_COUNT = 1;
 
-    private final List<Car> cars;
     private final MovingStrategy movingStrategy;
+    private final List<Car> cars;
 
-    private Cars(int count, MovingStrategy movingStrategy) {
+    private Cars(String[] carNames, MovingStrategy movingStrategy) {
         validateMovingStrategy(movingStrategy);
-        validateCreateCount(count);
+        validateCreateCount(carNames);
 
         this.movingStrategy = movingStrategy;
-        this.cars = Stream.generate(Car::from)
-                .limit(count)
+        this.cars = Arrays.stream(carNames)
+                .map(Name::from)
+                .map(Car::from)
                 .collect(Collectors.toList());
+    }
+
+    protected Cars (List<Car> cars, MovingStrategy movingStrategy) {
+        this.cars = cars;
+        this.movingStrategy = movingStrategy;
+    }
+
+    public static Cars from(String[] carNames, MovingStrategy movingStrategy) {
+        return new Cars(carNames, movingStrategy);
     }
 
     private void validateMovingStrategy(MovingStrategy movingStrategy) {
@@ -30,13 +39,12 @@ public class Cars {
         }
     }
 
-    public static Cars from(int count, MovingStrategy movingStrategy) {
-        return new Cars(count, movingStrategy);
-    }
-
-    private void validateCreateCount(int count) {
-        if (count < MIN_CREATE_COUNT) {
-            throw new CreateCarCountException(count);
+    private void validateCreateCount(String[] carsName) {
+        if (carsName == null) {
+            throw new CreateCarCountException();
+        }
+        if (carsName.length < MIN_CREATE_COUNT) {
+            throw new CreateCarCountException();
         }
     }
 
@@ -44,11 +52,25 @@ public class Cars {
         cars.forEach(car -> car.move(movingStrategy.generateNumber()));
     }
 
-    public List<Integer> carsPosition() {
-        List<Integer> carsPosition = new ArrayList<>();
-        cars.forEach(car -> carsPosition.add(car.currentPosition()));
+    public void recode(Round round, GameLog gameLog) {
+        cars.forEach(car -> gameLog.add(RoundLog.of(round, car.from(car))));
+    }
 
-        return carsPosition;
+    public List<Car> findWinners() {
+        Position winnerPosition = findWinnerPosition();
+        return cars.stream().filter(car -> car.currentPosition().equals(winnerPosition))
+                .collect(Collectors.toList());
+    }
+
+    private Position findWinnerPosition() {
+        Position winnerPosition = Position.init();
+
+        for (Car car : cars) {
+            Position position = car.currentPosition();
+            winnerPosition = winnerPosition.biggerPosition(position);
+        }
+
+        return winnerPosition;
     }
 
     @Override

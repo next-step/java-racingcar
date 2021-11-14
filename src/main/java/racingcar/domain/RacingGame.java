@@ -2,23 +2,26 @@ package racingcar.domain;
 
 public class RacingGame {
     private final Cars cars;
-    private final TryCount tryCount;
+    private final GameLog gameLog;
 
-    private RacingGame(Cars cars, TryCount tryCount) {
+    private RacingGame(Cars cars) {
         this.cars = cars;
-        this.tryCount = tryCount;
+        this.gameLog = GameLog.init();
     }
 
-    public static RacingGame of(Cars cars, TryCount tryCount) {
-        return new RacingGame(cars, tryCount);
+    public static RacingGame of(Cars cars) {
+        return new RacingGame(cars);
     }
 
-    public void play() {
-        tryCount.counting();
-        cars.move();
+    public GameLog play(TryCount tryCount, Round round) {
+        Round current = round;
+         while (tryCount.nonOver()) {
+            tryCount.counting();
+            cars.move();
+            cars.recode(current.nextRound(), gameLog);
+            current = current.nextRound();
+        }
+        return gameLog;
     }
 
-    public boolean nonOver() {
-        return tryCount.nonOver();
-    }
 }

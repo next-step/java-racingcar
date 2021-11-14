@@ -1,11 +1,10 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.TryCount;
 import racingcar.exception.TryCountException;
 
 import java.util.stream.Stream;
@@ -61,6 +60,26 @@ class TryCountTest {
                 ),
                 Arguments.of(
                         TryCount.from(1), Boolean.FALSE
+                )
+        );
+    }
+
+    @ParameterizedTest
+    @DisplayName("TryCount counting test")
+    @MethodSource
+    void tryCountCounting(TryCount tryCount, TryCount expected) {
+        tryCount.counting();
+
+        assertThat(tryCount).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> tryCountCounting() {
+        return Stream.of(
+                Arguments.of(
+                        TryCount.from(2), TryCount.from(1)
+                ),
+                Arguments.of(
+                        TryCount.from(3), TryCount.from(2)
                 )
         );
     }
