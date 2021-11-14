@@ -21,13 +21,17 @@ public class CarRacingGame {
     }
 
     public List<Car> extractWinners() {
-        int maxDistance = cars.stream()
-                .mapToInt(Car::getMovingDistance)
-                .max()
-                .orElseThrow(() -> new NoSuchElementException("cars 중 maxDistance 를 찾는데 실패하였습니다."));
+        int maxDistance = findMaxDistance();
         return cars.stream()
                 .filter(car -> car.getMovingDistance() == maxDistance)
                 .collect(Collectors.toList());
+    }
+
+    private int findMaxDistance() {
+        return cars.stream()
+                .mapToInt(Car::getMovingDistance)
+                .max()
+                .orElseThrow(() -> new NoSuchElementException("cars 중 maxDistance 를 찾는데 실패하였습니다."));
     }
 
     public void moveCars() {
