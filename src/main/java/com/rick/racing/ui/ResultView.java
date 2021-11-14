@@ -11,14 +11,18 @@ public class ResultView {
         System.out.println("실행 결과");
 
         for (int tryIndex = 0; tryIndex < racingPlayData.getTryCount(); tryIndex++) {
-            for (int carIndex = 0; carIndex < racingPlayData.getCarCount(); carIndex++) {
-                CarRecordHistory record = racingResult.getRecord(carIndex);
-                int carPosition = record.getPosition(tryIndex);
+            showRoundRecord(racingPlayData, racingResult, tryIndex);
+            System.out.println();
+        }
+    }
 
-                for (int i = 0; i < carPosition; i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
+    private void showRoundRecord(RacingPlayData racingPlayData, RacingResult racingResult, int tryIndex) {
+        for (int carIndex = 0; carIndex < racingPlayData.getCarCount(); carIndex++) {
+            CarRecordHistory record = racingResult.getRecord(carIndex);
+            int carPosition = record.getPosition(tryIndex);
+
+            for (int i = 0; i < carPosition; i++) {
+                System.out.print("-");
             }
             System.out.println();
         }

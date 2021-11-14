@@ -31,14 +31,21 @@ public class CarRacingCore {
         RacingResult racingResult = new RacingResult();
 
         for (int carIndex = 0; carIndex < racingPlayData.getCarCount(); carIndex++) {
-            CarRecordHistory carRecordHistory = new CarRecordHistory();
-            for (int tryIndex = 0; tryIndex < racingPlayData.getTryCount(); tryIndex++) {
-                carRecordHistory.addHistory(goOrStopSupplier.get());
-            }
+            CarRecordHistory carRecordHistory = playRacing(racingPlayData, goOrStopSupplier);
             racingResult.addRecord(carRecordHistory);
-
         }
+
         return racingResult;
+    }
+
+    private CarRecordHistory playRacing(RacingPlayData racingPlayData,  Supplier<Boolean> goOrStopSupplier) {
+        CarRecordHistory carRecordHistory = new CarRecordHistory();
+
+        for (int tryIndex = 0; tryIndex < racingPlayData.getTryCount(); tryIndex++) {
+            carRecordHistory.addHistory(goOrStopSupplier.get());
+        }
+
+        return carRecordHistory;
     }
 
     private boolean isGo() {
