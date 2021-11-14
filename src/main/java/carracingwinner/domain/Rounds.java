@@ -14,7 +14,7 @@ public class Rounds {
     }
 
     public boolean isEnd() {
-        return roundCount > 0;
+        return roundCount <= 0;
     }
 
 }

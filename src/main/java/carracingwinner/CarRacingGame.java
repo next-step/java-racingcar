@@ -20,7 +20,7 @@ public class CarRacingGame {
         Rounds rounds = new Rounds(inputView.readTryCount());
 
         resultView.printResultsMessage();
-        while (rounds.isEnd()) {
+        while (!rounds.isEnd()) {
             rounds.playOneRound(cars);
             resultView.printOneRoundResult(cars);
         }
