@@ -7,22 +7,20 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class RacingCarTest {
 
-    @DisplayName("사칙연산 테스트")
+    @DisplayName("자동차 경주 테스트")
     @ParameterizedTest
     @ValueSource(strings = {"10 50"})
-    public void racing(String input) {
+    public void racingTest(String input) {
 
         InputView.inputMethod(input);
 
         RacingCar.CarCount();
     }
 
-    @DisplayName("사칙연산 테스트")
+    @DisplayName("자동차 경주 테스트2")
     @ParameterizedTest
-    @ValueSource(strings = {"2 6"})
-    public void stett(String input){
-        String [] inputs = input.split(" ");
-        System.out.println(inputs[0]);
-        System.out.println(inputs[1]);
+    @ValueSource(strings = {"10 50"})
+    public void racingTest2(String input){
+
     }
 }
