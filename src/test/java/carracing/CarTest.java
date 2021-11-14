@@ -40,4 +40,12 @@ public class CarTest {
         }).isInstanceOf(CarNameFormatException.class);
     }
 
+    @Test
+    @DisplayName("자동차 이름 공백 에러")
+    void carNameEmptyErr() {
+        assertThatThrownBy(() -> {
+            new Car("");
+        }).isInstanceOf(CarNameFormatException.class);
+    }
+
 }

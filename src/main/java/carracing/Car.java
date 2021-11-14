@@ -17,10 +17,11 @@ public class Car {
     private static final int MOVE_CONDITION = 4;         /* 주행 조건 */
     private static final int MOVE_CONDITION_MIN = 0;     /* 최소 주행 범위 */
     private static final int MOVE_CONDITION_MAX = 9;     /* 최대 주행 범위 */
-    private static final int CAR_NAME_CONDITION = 5;     /* 최대 주행 범위 */
+    private static final int CAR_NAME_CONDITION_MIN = 1;     /* 최소 자동차 이름 길이 */
+    private static final int CAR_NAME_CONDITION_MAX = 5;     /* 최대 자동차 이름 길이 */
 
     String ERR_MSG_CONDITION_RANGE = "주행 조건은 0 ~ 9 사이 값 입니다.";
-    String ERR_MSG_CONDITION_CAR_NAME = "차 이름 길이는 5 이하의 값 입니다.";
+    String ERR_MSG_CONDITION_CAR_NAME = "차 이름 길이는 1이상 5 이하의 값 입니다. err name = {}";
 
     public Car() {
     }
@@ -48,8 +49,9 @@ public class Car {
     }
 
     public void carNameValid(String carName) throws CarNameFormatException {
-        if (CAR_NAME_CONDITION < carName.length()) {
-            throw new CarNameFormatException(ERR_MSG_CONDITION_CAR_NAME);
+        int nameSize = carName.length();
+        if (CAR_NAME_CONDITION_MAX < nameSize || CAR_NAME_CONDITION_MIN > nameSize) {
+            throw new CarNameFormatException(String.format(ERR_MSG_CONDITION_CAR_NAME, carName));
         }
     }
 
