@@ -1,4 +1,6 @@
-package study03;
+package study03.racing;
+
+import study03.racing.car.RacingCar;
 
 import java.util.ArrayList;
 import java.util.List;

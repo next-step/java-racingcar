@@ -1,6 +1,6 @@
 package study03.view;
 
-import study03.Track;
+import study03.racing.Track;
 
 import java.util.List;
 

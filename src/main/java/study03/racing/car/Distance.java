@@ -1,4 +1,4 @@
-package study03;
+package study03.racing.car;
 
 import java.util.Collections;
 

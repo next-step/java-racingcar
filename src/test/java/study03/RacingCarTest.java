@@ -4,6 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import study03.racing.car.Distance;
+import study03.racing.car.Engine;
+import study03.racing.car.RacingCar;
 
 import java.util.stream.IntStream;
 

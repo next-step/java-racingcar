@@ -1,9 +1,8 @@
 package study03;
 
+import study03.racing.Track;
 import study03.view.InputView;
 import study03.view.RacingView;
-
-import java.util.stream.IntStream;
 
 public class RacingGame {
 

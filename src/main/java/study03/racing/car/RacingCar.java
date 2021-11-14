@@ -1,4 +1,4 @@
-package study03;
+package study03.racing.car;
 
 public class RacingCar {
 
