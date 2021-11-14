@@ -1,5 +1,6 @@
-package com.kkambi.racing.util;
+package com.kkambi.calculator.util;
 
+import com.kkambi.calculator.util.StringCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

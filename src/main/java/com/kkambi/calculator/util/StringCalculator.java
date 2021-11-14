@@ -1,7 +1,6 @@
-package com.kkambi.racing.util;
+package com.kkambi.calculator.util;
 
 import java.util.*;
-import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 
 /**

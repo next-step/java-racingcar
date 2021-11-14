@@ -1,4 +1,4 @@
-package com.kkambi.racing.util;
+package com.kkambi.calculator.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
