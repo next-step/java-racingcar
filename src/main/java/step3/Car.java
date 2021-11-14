@@ -49,6 +49,10 @@ public class Car {
         return name;
     }
 
+    public boolean isFarthestLocation(int farthestLocation) {
+        return location >= farthestLocation;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

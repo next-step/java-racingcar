@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class RacingSystem {
 
-    private CarCount carCount;
     private RacingCount racingCount;
     private CarGroup carGroup;
 
@@ -20,6 +19,7 @@ public class RacingSystem {
         for (int i = 0; i < racingCount.count; i++) {
             carGroup.racing();
         }
+        carGroup.racingResult();
     }
 
     public static void main(String[] args) {
