@@ -16,7 +16,7 @@ public class RacingCars {
         }
     }
 
-    public void race(Rule rule) {
+    public void raceAll(Rule rule) {
         cars.forEach(car -> car.moveOrStop(rule));
     }
 
