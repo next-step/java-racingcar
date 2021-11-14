@@ -7,9 +7,8 @@ public class GamePlay {
     public static void main(String[] args) {
         int carCount = InputView.getCarCount();
         int tryCount = InputView.getTryCount();
-        ResultView resultView = new ResultView();
-        RacingGame racingGame = new RacingGame(carCount, tryCount, resultView);
-        racingGame.start();
-        resultView.draw();
+        RacingGame racingGame = new RacingGame(carCount, tryCount);
+        GameRecord records = racingGame.start();
+        ResultView.printGameRecord(records);
     }
 }

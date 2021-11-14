@@ -1,6 +1,5 @@
 package com.sryoondev.racingcar.step3;
 
-import com.sryoondev.racingcar.step3.view.ResultView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -12,7 +11,7 @@ public class CircuitTest {
     @DisplayName("사용자가 입력한 자동차 수와 일치한지 테스트")
     @ValueSource(ints = {3, 5})
     public void testGetCarCount(int carCount) {
-        Circuit circuit = new Circuit(carCount, new ResultView());
+        Circuit circuit = new Circuit(carCount);
         assertThat(circuit.getCarCount()).isEqualTo(carCount);
     }
 }

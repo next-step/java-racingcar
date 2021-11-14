@@ -1,28 +1,22 @@
 package com.sryoondev.racingcar.step3.view;
 
-import com.sryoondev.racingcar.step3.Car;
-import com.sryoondev.racingcar.step3.Circuit;
+import com.sryoondev.racingcar.step3.GameRecord;
+
+import java.util.Collections;
+import java.util.List;
 
 public class ResultView {
-    private final StringBuilder resultBuilder;
-
-    public ResultView() {
-        this.resultBuilder = new StringBuilder();
+    private static void printMovement(int movementCount) {
+        System.out.println(String.join("", Collections.nCopies(movementCount, "-")));
     }
 
-    public void capture(Circuit circuit) {
-        resultBuilder.append("\n");
+    private static void printCircuitRecord(List<Integer> records) {
+        records.forEach(ResultView::printMovement);
+        System.out.println();
     }
 
-    public void capture(Car car) {
-        for (int i = 0; i < car.getMoveDistance(); i++) {
-            resultBuilder.append("-");
-        }
-        resultBuilder.append("\n");
-    }
-
-    public void draw() {
+    public static void printGameRecord(GameRecord records) {
         System.out.println("실행 결과");
-        System.out.print(resultBuilder);
+        records.getRecords().forEach(ResultView::printCircuitRecord);
     }
 }

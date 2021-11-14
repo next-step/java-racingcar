@@ -1,22 +1,21 @@
 package com.sryoondev.racingcar.step3;
 
-import com.sryoondev.racingcar.step3.view.ResultView;
-
 public class RacingGame {
     private final int racingCount;
     private final Circuit circuit;
-    private final ResultView resultView;
+    private final GameRecord gameRecord;
 
-    public RacingGame(int carCount, int racingCount, ResultView resultView) {
-        this.circuit = new Circuit(carCount, resultView);
+    public RacingGame(int carCount, int racingCount) {
+        this.circuit = new Circuit(carCount);
         this.racingCount = racingCount;
-        this.resultView = resultView;
+        this.gameRecord = new GameRecord();
     }
 
-    public void start() {
+    public GameRecord start() {
         for (int i = 0; i < racingCount; i++) {
             circuit.race();
-            resultView.capture(circuit);
+            gameRecord.add(circuit);
         }
+        return gameRecord;
     }
 }
