@@ -21,4 +21,11 @@ public class ResultViewTest {
 
         resultView.printRacing(carList);
     }
+
+    @Test
+    @DisplayName("자동차 이름 출력 확인")
+    void printCarName() throws CarNameFormatException {
+        ResultView resultView = new ResultView();
+        resultView.print(new Car("name"));
+    }
 }
