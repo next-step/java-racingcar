@@ -51,6 +51,8 @@ public class CarRacing {
             raceResult.roundCount++;
         }
 
+        getWinner(carList, inputView, resultView);
+
         return raceResult;
     }
 
@@ -62,4 +64,17 @@ public class CarRacing {
         }
     }
 
+    public void getWinner(List<Car> carList, InputView inputView, ResultView resultView) {
+        List<String> winnerCarNames = new ArrayList<>();
+        for (Car car : carList) {
+            findWinner(winnerCarNames, car, inputView);
+        }
+        resultView.printWinner(winnerCarNames);
+    }
+
+    public void findWinner(List<String> winnerCarNames, Car car, InputView inputView) {
+        if (car.getDrivingHistory() == inputView.getTryCount()) {
+            winnerCarNames.add(car.getName());
+        }
+    }
 }
