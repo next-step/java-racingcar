@@ -3,14 +3,20 @@ package step3.domain.value;
 import java.util.Objects;
 
 public class Location {
+    private final String carName;
     private final int value;
 
-    public Location(int value) {
+    public Location(String carName, int value) {
+        this.carName = carName;
         this.value = value;
     }
 
     public Location forward() {
-        return new Location(value + 1);
+        return new Location(carName, value + 1);
+    }
+
+    public String getCarName() {
+        return carName;
     }
 
     public int getValue() {

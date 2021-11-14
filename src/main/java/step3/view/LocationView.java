@@ -13,10 +13,13 @@ public class LocationView implements Contest.ReportingLocation {
     @Override
     public void report(List<Location> locations) {
         locations.forEach(this::render);
+        System.out.println();
     }
 
     private void render(Location location) {
-        String expression = new String(new char[location.getValue() + START_LINE]).replace(empty, marker);
+        String carName = location.getCarName();
+        String locationExpression = new String(new char[location.getValue() + START_LINE]).replace(empty, marker);
+        String expression = carName + " : " + locationExpression;
         System.out.println(expression);
     }
 }

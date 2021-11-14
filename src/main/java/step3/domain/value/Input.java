@@ -1,20 +1,28 @@
 package step3.domain.value;
 
+import step3.domain.entity.Car;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Input {
-    private final int numOfParticipants;
+    private static final String PARTICIPANT_NAME_DELIMETER = ",";
+
+    private final String participants;
     private final int numOfRounds;
 
-    public Input(int numOfParticipants, int numOfRounds) {
-        this.numOfParticipants = numOfParticipants;
+    public Input(String participants, int numOfRounds) {
+        this.participants = participants;
         this.numOfRounds = numOfRounds;
 
     }
 
-    public int getParticipantsNumber() {
-        return numOfParticipants;
+    public int getNumOfRounds() {
+        return numOfRounds;
     }
 
-    public int numOfRounds() {
-        return numOfRounds;
+    public List<Car> getParticipantsAsCar() {
+        return Arrays.stream(participants.split(PARTICIPANT_NAME_DELIMETER)).map(Car::new).collect(Collectors.toList());
     }
 }

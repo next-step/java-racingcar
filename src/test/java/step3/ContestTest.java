@@ -16,8 +16,8 @@ public class ContestTest {
     void play() {
         int round = 3;
 
-        Car firstCar = new Car();
-        Car secondCar = new Car();
+        Car firstCar = new Car("car1");
+        Car secondCar = new Car("car2");
 
         List<Car> participants = Stream.of(firstCar, secondCar).collect(Collectors.toList());
         Contest contest = new Contest(round, new Participants(participants), () -> true, new LocationView());

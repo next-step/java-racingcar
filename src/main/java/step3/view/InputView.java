@@ -5,7 +5,7 @@ import step3.domain.value.Input;
 import java.util.Scanner;
 
 public class InputView {
-    private Integer numOfParticipants;
+    private String participantsInString;
     private Integer numOfRounds;
 
     public void render() {
@@ -13,9 +13,9 @@ public class InputView {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("자동차 대수는 몇 대인가요?");
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
 
-        numOfParticipants = scanner.nextInt();
+        participantsInString = scanner.nextLine();
 
         System.out.println("시도할 회수는 몇 회인가요?");
         numOfRounds = scanner.nextInt();
@@ -23,7 +23,7 @@ public class InputView {
 
     public Input readInput() {
         assert numOfRounds != null;
-        assert numOfParticipants != null;
-        return new Input(numOfParticipants, numOfRounds);
+        assert participantsInString != null;
+        return new Input(participantsInString, numOfRounds);
     }
 }
