@@ -42,7 +42,7 @@ public class GameStageTest {
         GameResult gameResult = new GameResult();
 
         IntStream.range(0, numberOfRound)
-            .forEach(round -> gameResult.record(round, "-"));
+            .forEach(round -> gameResult.record(round, Car.create("init")));
 
         assertThat(gameResult.getProgress()).hasSize(numberOfRound);
     }

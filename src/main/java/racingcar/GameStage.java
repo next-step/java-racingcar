@@ -38,7 +38,7 @@ public class GameStage {
     private void eachCarAction(int round, int carPosition) {
         Car car = cars.get(carPosition);
         car.action(new Random());
-        result.record(round, car.getLocation());
+        result.record(round, car);
     }
 
 }

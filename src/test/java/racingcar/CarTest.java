@@ -60,12 +60,7 @@ class CarTest {
         IntStream.range(0, position)
             .forEach(i -> car.forward());
 
-        String expected = IntStream.range(0, position)
-            .boxed()
-            .map(i -> "-")
-            .collect(Collectors.joining());
-
-        assertThat(car.getLocation()).isEqualTo(expected);
+        assertThat(car.getPosition()).isEqualTo(position);
     }
 
     @Test

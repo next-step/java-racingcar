@@ -1,10 +1,8 @@
 package racingcar;
 
-import static java.util.stream.IntStream.range;
-import static racingcar.utils.StringLengthValidator.*;
+import static racingcar.utils.StringLengthValidator.validUnderMaxLength;
 
 import java.util.Random;
-import java.util.stream.Collectors;
 
 public class Car {
 
@@ -40,14 +38,11 @@ public class Car {
         this.position++;
     }
 
-    public String getLocation() {
-        return range(0, position)
-            .mapToObj(i -> "-")
-            .collect(Collectors.joining(""));
-
-    }
-
     public String getName() {
         return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
