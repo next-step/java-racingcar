@@ -17,6 +17,7 @@ public class RacingHistory {
         return new RacingHistory();
     }
 
+    // for test
     public Queue<List<Car>> getData() {
         return data;
     }
