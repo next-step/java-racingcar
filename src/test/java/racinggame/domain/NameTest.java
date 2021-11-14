@@ -25,7 +25,7 @@ class NameTest {
         String name = "jaehan";
 
         assertThatThrownBy(() -> new Name(name))
-                .isInstanceOf(Exception.class)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 자동차의 이름은 5글자 이하여야 합니다.");
     }
 }
