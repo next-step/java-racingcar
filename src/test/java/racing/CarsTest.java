@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.model.Cars;
 import racing.service.InputBuilder;
-import racing.service.ConvertOutputView;
+import racing.util.ConvertOutputView;
 
 import java.util.ArrayList;
 import java.util.Arrays;

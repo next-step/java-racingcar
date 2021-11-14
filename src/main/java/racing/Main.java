@@ -10,8 +10,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         List<String> nameList = Input.getNameList();
-        Integer countOfTry = Input.getCuntOfTry();
         Cars cars = new Cars(nameList);
+        Integer countOfTry = Input.getCuntOfTry();
         Output.outputView(cars,new RandomMoveStrategyImpl(),countOfTry);
     }
 }

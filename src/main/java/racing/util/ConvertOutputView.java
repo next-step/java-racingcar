@@ -1,11 +1,13 @@
-package racing.service;
+package racing.util;
+
+import racing.model.Position;
 
 public class ConvertOutputView {
 
-    public static String convertOutputView(Integer position) {
+    public static String convertOutputView(Position position) {
         StringBuilder convertResult = new StringBuilder();
         convertResult.append("-");
-        for (int i = 0; i < position; i++) {
+        for (int i = 0; i < position.getPosition(); i++) {
             convertResult.append("-");
         }
         return convertResult.toString();

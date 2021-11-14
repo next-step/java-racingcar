@@ -25,6 +25,6 @@ public class FindWinnerTest {
         cars.getCarList().get(1).movable(() -> true);
         cars.getCarList().get(1).movable(() -> true);
         cars.getCarList().get(1).movable(() -> true);
-        assertEquals(FindWinner.findWinner(cars).stream().map(i->i.getName()).collect(Collectors.toList()),expectedList);
+        assertEquals(FindWinner.findWinnerList(cars).stream().map(i->i.getName().getName()).collect(Collectors.toList()),expectedList);
     }
 }
