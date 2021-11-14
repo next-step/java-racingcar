@@ -7,19 +7,20 @@ public class Car {
 
     private List<Integer> positionList = new ArrayList<>();
 
-    public void move(CarOperation carOperation) {
-        int movedPosition = getCurrentPosition() + carOperation.getValue();
+    public void move(int distance) {
+        int movedPosition = getCurrentPosition() + distance;
         positionList.add(movedPosition);
     }
 
     private int getCurrentPosition() {
-        if(positionList.size()==0){
+        if (positionList.size() == 0) {
             return 0;
         }
         return positionList.get(positionList.size() - 1);
     }
 
     public int getPosition(int idx) {
-        return positionList.get(idx);}
+        return positionList.get(idx);
+    }
 
 }
