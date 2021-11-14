@@ -7,8 +7,8 @@ import racing.domain.Winner;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static racing.view.ViewConstant.RESULT_MESSAGE;
-import static racing.view.ViewConstant.WINNER_MESSAGE_SUB_FIX;
+import static racing.constant.ViewConstant.RESULT_MESSAGE;
+import static racing.constant.ViewConstant.WINNER_MESSAGE_SUB_FIX;
 
 /**
  * @author han

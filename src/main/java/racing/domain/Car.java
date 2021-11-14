@@ -1,7 +1,7 @@
 package racing.domain;
 
 import static utility.StringHelper.throwExceptionNullOrLengthGreaterThan;
-import static racing.RacingConstant.*;
+import static racing.constant.RacingConstant.*;
 
 /**
  * @author han

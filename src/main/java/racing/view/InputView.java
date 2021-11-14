@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import static racing.view.ViewConstant.ATTEMPT_MESSAGE;
-import static racing.view.ViewConstant.CAR_MESSAGE;
+import static racing.constant.ViewConstant.ATTEMPT_MESSAGE;
+import static racing.constant.ViewConstant.CAR_MESSAGE;
 
 /**
  * @author han
