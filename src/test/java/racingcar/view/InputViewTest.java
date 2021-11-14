@@ -14,7 +14,7 @@ class InputViewTest {
     @BeforeEach
     void init() {
         // MOCK System.in
-        String data = "3\r\n3";
+        String data = "pobi,crong,honux\r\n3";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
 
     }
