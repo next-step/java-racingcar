@@ -25,7 +25,6 @@ public class StringTest {
         String result = "abc";
         assertThatThrownBy(() -> {
             result.charAt(1);
-        }).isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("에러");
+        }).isInstanceOf(IndexOutOfBoundsException.class);
     }
 }
