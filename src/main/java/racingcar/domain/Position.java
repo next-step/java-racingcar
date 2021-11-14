@@ -15,7 +15,7 @@ public class Position {
     }
 
     private void validatePositionValue(int position) {
-        if (position < 0) {
+        if (position < INIT_POSITION) {
             throw new PositionException(position);
         }
     }
