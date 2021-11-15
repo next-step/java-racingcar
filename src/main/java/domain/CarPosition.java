@@ -1,22 +1,17 @@
 package domain;
 
-import java.util.Arrays;
-
 public class CarPosition {
-    private static final String COMMA = ",";
-    private final int[] position;
+    private int position;
 
-    public CarPosition(String position) {
-        this.position = intArray(position);
+    public CarPosition(int position) {
+        this.position = position;
     }
 
-    private int[] intArray(String position) {
-        return Arrays.stream(position.split(COMMA))
-                .mapToInt(Integer::parseInt)
-                .toArray();
+    public void positionPlus(int plusNumber) {
+        position += plusNumber;
     }
 
-    public int size() {
-        return position.length;
+    public int value() {
+        return position;
     }
 }
