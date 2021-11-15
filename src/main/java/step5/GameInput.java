@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class GameInput {
 
-    static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static int readRoundCount() {
         System.out.println("몇 번 시도할 것인가요?");

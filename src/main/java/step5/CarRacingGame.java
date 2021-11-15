@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class CarRacingGame {
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public CarRacingGame(String[] carNames) {
         cars = new ArrayList<>();

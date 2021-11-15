@@ -2,7 +2,7 @@ package step5;
 
 public class Car {
 
-    private CarName carName;
+    private final CarName carName;
     private Position position;
     private MoveStrategy moveStrategy;
 
@@ -12,16 +12,16 @@ public class Car {
         this.moveStrategy = moveStrategy;
     }
 
-    public boolean isWinner(Position winnerPos) {
-        return this.position.equals(winnerPos);
-    }
-
     public Position getPosition() {
         return position;
     }
 
     public CarName getCarName() {
         return carName;
+    }
+
+    public boolean isWinner(Position winnerPos) {
+        return this.position.equals(winnerPos);
     }
 
     public void move() {
