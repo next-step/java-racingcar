@@ -1,7 +1,7 @@
 package racing;
 
 import org.junit.jupiter.api.Test;
-import racing.model.Position;
+import racing.domain.Position;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.assertj.core.api.Assertions.*;
 

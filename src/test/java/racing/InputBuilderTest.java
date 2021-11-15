@@ -1,10 +1,9 @@
 package racing;
 
 import org.junit.jupiter.api.Test;
-import racing.service.InputBuilder;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.ArrayList;
+import racing.domain.InputBuilder;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 public class InputBuilderTest {
@@ -14,8 +13,6 @@ public class InputBuilderTest {
         String[] expect = name.split(",");
         InputBuilder inputBuilder = new InputBuilder(name);
         List<String> nameList = inputBuilder.getNameList();
-        for (int i = 0; i < 3; i++) {
-            assertEquals(nameList.get(i), expect[i]);
-        }
+        assertThat(inputBuilder.getNameList()).contains("ab","abc","abcd");
     }
 }
