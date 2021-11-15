@@ -26,7 +26,7 @@ public class CarTest {
     @Test
     @DisplayName("전진 조건이 만족하지 않으면 멈춤 테스트")
     void stop() {
-        car.increaseState(() -> true);
+        car.increaseState(() -> false);
         assertThat(car.getState()).isEqualTo(0);
     }
 
