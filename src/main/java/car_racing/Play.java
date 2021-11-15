@@ -3,7 +3,7 @@ package car_racing;
 public class Play {
 
     public static void main(String[] args) {
-        CarRacingGame carRacingGame = new CarRacingGame();
+        CarRacingGameController carRacingGame = new CarRacingGameController();
         carRacingGame.play();
     }
 }

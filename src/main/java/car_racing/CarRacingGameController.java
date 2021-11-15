@@ -1,16 +1,16 @@
 package car_racing;
 
-public class CarRacingGame {
+public class CarRacingGameController {
 
-    private static final MoveStrategy moveStrategy = new RandomMoveStrategy();
-    private static final InputView inputView = new InputView();
-    private static final OutputView outputView = new OutputView();
+    private static final MoveStrategy MOVE_STRATEGY = new RandomMoveStrategy();
+    private static final InputView INPUT_VIEW = new InputView();
+    private static final OutputView OUTPUT_VIEW = new OutputView();
 
     private final CarRacingResult carRacingResult;
     private Cars cars;
     private int numberOfRound;
 
-    public CarRacingGame() {
+    public CarRacingGameController() {
         this.carRacingResult = new CarRacingResult();
     }
 
@@ -27,14 +27,14 @@ public class CarRacingGame {
     }
 
     private void initGame() {
-        int numberOfCarInput = inputView.showMessageAndGetNumberOfCars();
-        int numberOfRoundInput = inputView.showMessageAndGetNumberOfRound();
+        int numberOfCarInput = INPUT_VIEW.showMessageAndGetNumberOfCars();
+        int numberOfRoundInput = INPUT_VIEW.showMessageAndGetNumberOfRound();
         cars = new Cars(numberOfCarInput);
         numberOfRound = numberOfRoundInput;
     }
 
     private void racingOneRound() {
-        cars.playOneRound(moveStrategy);
+        cars.playOneRound(MOVE_STRATEGY);
     }
 
     private void updateRacingResult() {
@@ -42,7 +42,7 @@ public class CarRacingGame {
     }
 
     private void closeGame() {
-        outputView.showCarRacingGameOutput(carRacingResult);
+        OUTPUT_VIEW.showCarRacingGameOutput(carRacingResult);
     }
 
 }

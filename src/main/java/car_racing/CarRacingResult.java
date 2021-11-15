@@ -15,12 +15,12 @@ public class CarRacingResult {
             return;
         }
 
-        List<Integer> currCarPositions = getCurrCarPositions(cars);
+        List<Integer> currCarPositions = makeListOfCurrPositions(cars);
 
         racingResult.add(currCarPositions);
     }
 
-    private List<Integer> getCurrCarPositions(Cars cars) {
+    private List<Integer> makeListOfCurrPositions(Cars cars) {
         List<Integer> currCarPositions = new ArrayList<>();
 
         for (Car car : cars.getCars()) {

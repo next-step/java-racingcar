@@ -56,7 +56,7 @@ class CarsTest {
             add(car1);
         }};
         Cars cars = new Cars(carObjects);
-        MoveStrategy moveStrategy = new TestMoveStrategy();
+        MoveStrategy moveStrategy = new AbleToTestMoveStrategy();
 
         // when
         cars.playOneRound(moveStrategy);

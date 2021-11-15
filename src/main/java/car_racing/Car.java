@@ -4,22 +4,22 @@ import java.util.Objects;
 
 public class Car {
 
+    private static final int START_POSITION = 0;
     private int position;
 
     public Car() {
-        this.position = 0;
+        // 부 생성자
+        this(START_POSITION);
     }
 
-    /**
-     * Test
-     **/
     public Car(int position) {
+        // 주 생성자
         this.position = position;
     }
 
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.decideToMove()) {
-            position++;
+            position ++;
         }
     }
 
