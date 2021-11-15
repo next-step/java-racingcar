@@ -3,12 +3,12 @@
     1. NotNull & NotEmpty는 성격이 비슷하니 묶어도 된다. ㅇ
     2. 에러 메시지는 의미있게. 커스텀 Exception을 활용해도 된다. ㅇ
     3. 5글자 validation check method 이름을 단순하게. ㅇ
-    4. random interface를 직접 구현(DI)하여 테스팅 해보기
+    4. random interface를 직접 구현(DI)하여 테스팅 해보기 ㅇ
     5. 심판보다 직관적 클래스로 바꿔보자. ㅇ
 
 ## 동영상 강의 본 후 리팩토링 목표
 
-    1. random값은 테스트하기 어렵다 -> 외부에서 주입되도록 변경해보자
+    1. random값은 테스트하기 어렵다 -> 외부에서 주입되도록 변경해보자 ㅇ
     2. 특정 상태를 만들기위한 bad smell의 테스트코드 -> 새로운 생성자를 활용해보자 ㅇ
     3. 일단 immutable 객체로 해보자. ㅇ
     4. final 키워드를 적극 활용 ㅇ

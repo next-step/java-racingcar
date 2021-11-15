@@ -1,4 +1,4 @@
-package step5;
+package step5.model;
 
 public class InvalidPositionException extends RuntimeException {
 

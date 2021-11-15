@@ -1,4 +1,4 @@
-package step5;
+package step5.model;
 
 import java.util.ArrayList;
 import java.util.List;

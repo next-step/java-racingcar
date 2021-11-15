@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
+import step5.model.Car;
+import step5.model.Cars;
+import step5.model.RandomMoveStrategy;
 
 public class CarsTest {
 

@@ -6,6 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+import step5.model.Car;
+import step5.model.MoveStrategy;
+import step5.model.Position;
+import step5.model.RandomMoveStrategy;
 
 public class CarTest {
 

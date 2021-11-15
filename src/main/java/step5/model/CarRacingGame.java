@@ -1,7 +1,8 @@
-package step5;
+package step5.model;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import step5.view.CarDTO;
 
 public class CarRacingGame {
 

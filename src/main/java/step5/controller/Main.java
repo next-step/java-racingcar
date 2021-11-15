@@ -1,4 +1,8 @@
-package step5;
+package step5.controller;
+
+import step5.model.CarRacingGame;
+import step5.view.GameInput;
+import step5.view.GameOutput;
 
 public class Main {
 

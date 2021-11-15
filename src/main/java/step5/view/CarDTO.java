@@ -1,4 +1,6 @@
-package step5;
+package step5.view;
+
+import step5.model.Car;
 
 public class CarDTO {
 
