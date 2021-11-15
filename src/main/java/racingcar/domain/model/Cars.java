@@ -2,6 +2,7 @@ package racingcar.domain.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.exception.HistoryOutOfBoundsException;
@@ -40,7 +41,7 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return this.cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public int getTryCountTotal() {
