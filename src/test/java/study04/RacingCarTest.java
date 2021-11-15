@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.stream.IntStream;
+import study04.racing.car.Distance;
+import study04.racing.car.Engine;
+import study04.racing.car.RacingCar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

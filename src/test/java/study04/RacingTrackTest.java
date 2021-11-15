@@ -4,6 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import study04.racing.car.Distance;
+import study04.racing.car.Engine;
+import study04.racing.car.RacingCar;
+import study04.racing.RacingTrack;
 
 import java.util.Arrays;
 import java.util.List;
