@@ -1,6 +1,7 @@
 package racing.view;
 
 import racing.domain.Car;
+import racing.domain.RacingCar;
 import racing.domain.RacingHistory;
 import racing.domain.Winner;
 
@@ -21,8 +22,8 @@ public class ResultView {
         printWinner(winner);
     }
 
-    private void printStep(List<Car> cars) {
-        for (Car car : cars) {
+    private void printStep(RacingCar cars) {
+        for (Car car : cars.getCars()) {
             String step = createResult(car);
             System.out.println(step);
         }

@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class RacingHistory {
 
-    private Queue<List<Car>> data;
+    private Queue<RacingCar> data;
 
     private RacingHistory() {
         this.data = new LinkedList<>();
@@ -18,7 +18,7 @@ public class RacingHistory {
     }
 
     // for test
-    public Queue<List<Car>> getData() {
+    public Queue<RacingCar> getData() {
         return data;
     }
 
@@ -26,11 +26,11 @@ public class RacingHistory {
         return !this.data.isEmpty();
     }
 
-    public List<Car> poll() {
+    public RacingCar poll() {
         return this.data.poll();
     }
 
-    public void add(List<Car> cars) {
+    public void add(RacingCar cars) {
         this.data.add(cars);
     }
 }

@@ -9,15 +9,15 @@ import java.util.stream.Collectors;
  */
 public class Winner {
 
-    private List<Car> cars;
+    private RacingCar cars;
     private RacingHistory history;
 
-    private Winner(List<Car> cars, RacingHistory history) {
+    private Winner(RacingCar cars, RacingHistory history) {
         this.cars = cars;
         this.history = history;
     }
 
-    public static Winner from(List<Car> cars, RacingHistory history) {
+    public static Winner from(RacingCar cars, RacingHistory history) {
         return new Winner(cars, history);
     }
 
@@ -28,13 +28,15 @@ public class Winner {
     public List<Car> getWinners() {
         int max = getMaxStep();
 
-        return this.cars.stream()
+        return this.cars.getCars()
+            .stream()
             .filter(c -> c.hasEqualTo(max))
             .collect(Collectors.toList());
     }
 
     private int getMaxStep() {
-        return this.cars.stream()
+        return this.cars.getCars()
+            .stream()
             .mapToInt(Car::getStep)
             .max()
             .orElseThrow(NoSuchElementException::new);
