@@ -20,31 +20,27 @@ public class ResultView {
     }
 
     public void renderRaceResult(List<Record> recordList) {
-        recordList.forEach(r -> {
-            renderPosition(r);
-        });
+        recordList.forEach(record -> renderPosition(record));
     }
 
     private void renderPosition(Record record) {
-        record.recordList().stream()
-                .forEach(p -> {
-                    System.out.println(appendText(p.getPosition()));
-                });
+        STRING_BUILDER.setLength(ZERO);
 
-        System.out.println();
+        record.recordList().stream()
+                .forEach(pos -> appendSkid(pos));
+
+        System.out.println(STRING_BUILDER);
     }
 
     public void renderResultMessage() {
         println(RESULT_MESSAGE);
     }
 
-    private String appendText(int count) {
-        STRING_BUILDER.setLength(ZERO);
-
-        for(int i = 0; i < count; ++i) {
+    private void appendSkid(Position position) {
+        for(int i = 0 ; i < position.getPosition(); ++i) {
             STRING_BUILDER.append(UNIT_OF_MOVE);
         }
 
-        return STRING_BUILDER.toString();
+        STRING_BUILDER.append(System.lineSeparator());
     }
 }

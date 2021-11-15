@@ -30,8 +30,7 @@ public class RacingCarGroup {
 
     public List<Position> carsCurrentPosition() {
         return cars.stream()
-                .map(Car::currentPosition)
-                .map(pos -> new Position(pos))
+                .map(car -> new Position(car.currentPosition()))
                 .collect(Collectors.toList());
     }
 }
