@@ -7,7 +7,7 @@ public class Car {
 
     public Car(int id) {
         this.id = id;
-        this.distance = 0;
+        this.distance = 1;
     }
 
     public int getId() {

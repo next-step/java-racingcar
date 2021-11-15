@@ -4,7 +4,6 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class RacingCar {
     private static final int RANDOM_BOUND = 10;
@@ -35,16 +34,18 @@ public class RacingCar {
     }
 
     public void start() {
+        ResultView.println("실행결과");
         for (int i = 0; i < racingCount; i++) {
             race();
+            ResultView.println("");
         }
     }
 
     private void race() {
         for (int i = 0; i < cars.size(); i++) {
-            int r = random.nextInt(RANDOM_BOUND);
-            cars.get(i).move(r);
-            System.out.println("[" + cars.get(i).getId() + "] : " + r + "=> " + cars.get(i).getDistance());
+            Car current = cars.get(i);
+            current.move(random.nextInt(RANDOM_BOUND));
+            ResultView.printCarDistance(current.getDistance());
         }
     }
 
@@ -54,16 +55,5 @@ public class RacingCar {
 
     public int getRacingCount() {
         return racingCount;
-    }
-
-    public static void main(String[] args) {
-        InputView inputView = new InputView(new Scanner(System.in));
-        int carNum = inputView.input("자동차 대수는 몇 대 인가요?");
-        int racingNum = inputView.input("시도할 횟수는 몇 회 인가요?");
-
-        RacingCar racingCar = RacingCar.create(carNum, racingNum);
-        racingCar.start();
-
-        inputView.close();
     }
 }
