@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import race.outbound.OutputView;
+import race.view.outbound.OutputView;
 
 import java.util.*;
 import java.util.stream.Stream;

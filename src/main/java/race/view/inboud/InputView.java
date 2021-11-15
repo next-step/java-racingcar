@@ -1,4 +1,4 @@
-package race.inboud;
+package race.view.inboud;
 
 import race.CarName;
 

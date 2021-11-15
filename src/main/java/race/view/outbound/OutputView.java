@@ -1,4 +1,4 @@
-package race.outbound;
+package race.view.outbound;
 
 import race.Car;
 

@@ -1,7 +1,7 @@
 package race;
 
-import race.inboud.InputView;
-import race.outbound.OutputView;
+import race.view.inboud.InputView;
+import race.view.outbound.OutputView;
 
 import java.util.*;
 import java.util.stream.Collectors;
