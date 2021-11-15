@@ -37,6 +37,10 @@ public class Round {
         return round;
     }
 
+    public boolean isOver() {
+        return round == FIRST_ROUND;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

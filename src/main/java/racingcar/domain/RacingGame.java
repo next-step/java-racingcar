@@ -13,13 +13,15 @@ public class RacingGame {
         return new RacingGame(cars);
     }
 
-    public GameLog play(Round finalRound) {
-        Round current = Round.init();
+    public GameLog play(Round round) {
+        Round finalRound = round;
+        Round currentRound = Round.init();
 
-        while (!current.equals(finalRound)) {
+        while (!finalRound.isOver()) {
             cars.move();
-            cars.recode(current.nextRound(), gameLog);
-            current = current.nextRound();
+            cars.recode(currentRound.nextRound(), gameLog);
+            finalRound = finalRound.play();
+            currentRound = currentRound.nextRound();
         }
         return gameLog;
     }
