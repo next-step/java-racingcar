@@ -8,15 +8,14 @@ import java.util.stream.Collectors;
 
 public class CarRacingGame {
 
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
     private final int numberOfMove;
     private int movingCount = 0;
 
     public CarRacingGame(List<String> carNames, int numberOfMove) {
-        for (String name : carNames) {
-            Car car = new Car(name);
-            cars.add(car);
-        }
+        this.cars = carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
         this.numberOfMove = numberOfMove;
     }
 
