@@ -36,4 +36,11 @@ public class CarTest {
         Car car = new Car("jeje");
         assertThat(car.getName()).isEqualTo("jeje");
     }
+
+    @Test
+    @DisplayName("자동차 이름이 같다면 동일 객체 테스트")
+    void sameNameIsEquals() {
+        Car car = new Car("jeje");
+        assertThat(car.equals(new Car("jeje"))).isTrue();
+    }
 }
