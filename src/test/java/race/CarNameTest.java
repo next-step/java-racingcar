@@ -2,6 +2,7 @@ package race;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,22 +24,22 @@ class CarNameTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"", " "})
-    void invalidName_blank(String name) {
-        assertThatThrownBy(() -> new CarName(name))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @ParameterizedTest
     @ValueSource(strings = {"abcdef", "abcdefff"})
     void invalidName_tooLong(String name) {
         assertThatThrownBy(() -> new CarName(name))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @ParameterizedTest
+    @NullAndEmptySource
+    void invalidName_nullAndEmpty(String name) {
+        assertThatThrownBy(() -> new CarName(name))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Test
-    void invalidName_null() {
-        assertThatThrownBy(() -> new CarName(null))
+    void invalidName_notEmptyButBlank() {
+        assertThatThrownBy(() -> new CarName(" "))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

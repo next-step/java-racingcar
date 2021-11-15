@@ -9,7 +9,11 @@ public class FilterWinners {
             throw new IllegalArgumentException("cars must not be empty");
         }
 
-        int maxLocation = cars.stream().mapToInt(Car::location).max().getAsInt();
-        return cars.stream().filter((car -> car.location() == maxLocation)).collect(Collectors.toList());
+        int maxLocation = getMaxLocation(cars);
+        return cars.stream().filter((car -> car.sameLocation(maxLocation))).collect(Collectors.toList());
+    }
+
+    private int getMaxLocation(Collection<Car> cars) {
+        return cars.stream().mapToInt(Car::location).max().getAsInt();
     }
 }

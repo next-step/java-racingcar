@@ -17,6 +17,10 @@ public class Car {
         return location;
     }
 
+    public boolean sameLocation(int location) {
+        return this.location == location;
+    }
+
     public CarName name() {
         return name;
     }
