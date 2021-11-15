@@ -1,35 +1,32 @@
 package step5;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarRacingGame {
 
-    private final List<Car> cars;
+    private final Cars cars;
 
     public CarRacingGame(String[] carNames) {
-        cars = new ArrayList<>();
-        for (int i = 0; i < carNames.length; i++) {
-            cars.add(new Car(carNames[i], new RandomMoveStrategy()));
-        }
+        cars = new Cars(carNames);
     }
 
     public List<CarDTO> getCars() {
-        return cars.stream()
+        return cars.getCars()
+            .stream()
             .map(CarDTO::new)
             .collect(Collectors.toList());
     }
 
     public void moveCars() {
-        for (Car car : cars) {
-            car.move();
-        }
+        cars.move();
     }
 
     public List<CarDTO> getWinners() {
-        return Winners.getWinners(cars)
-            .stream().map(CarDTO::new)
+        return cars.getWinners()
+            .getCars()
+            .stream()
+            .map(CarDTO::new)
             .collect(Collectors.toList());
     }
 }

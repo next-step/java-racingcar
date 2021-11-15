@@ -2,6 +2,7 @@ package step5;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -14,9 +15,32 @@ public class Cars {
         }
     }
 
+    public Cars(final List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public void move() {
-        for (Car car : cars) {
-            car.move();
-        }
+        cars.forEach(Car::move);
+    }
+
+    public Cars getWinners() {
+        return new Cars(getWinners(getWinnerPos()));
+    }
+
+    private Position getWinnerPos() {
+        return cars.stream()
+            .map(Car::getPosition)
+            .max(Position::compareTo)
+            .get();
+    }
+
+    private List<Car> getWinners(Position winnerPos) {
+        return cars.stream()
+            .filter(car -> car.isWinner(winnerPos))
+            .collect(Collectors.toList());
     }
 }
