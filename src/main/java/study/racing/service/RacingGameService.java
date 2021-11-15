@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import study.racing.exception.InvalidInputCountException;
-import study.racing.model.GameResults;
-import study.racing.model.RoundResult;
 import study.racing.model.car.RacingCars;
+import study.racing.model.result.GameResults;
+import study.racing.model.result.RoundResult;
 import study.racing.model.rule.Rule;
 
 public class RacingGameService {

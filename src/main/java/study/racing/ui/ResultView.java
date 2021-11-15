@@ -3,9 +3,9 @@ package study.racing.ui;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import study.racing.model.GameResults;
-import study.racing.model.RoundResult;
 import study.racing.model.car.Car;
+import study.racing.model.result.GameResults;
+import study.racing.model.result.RoundResult;
 
 public final class ResultView {
 

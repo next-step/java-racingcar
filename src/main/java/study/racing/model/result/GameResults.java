@@ -1,4 +1,4 @@
-package study.racing.model;
+package study.racing.model.result;
 
 import java.util.Collections;
 import java.util.List;

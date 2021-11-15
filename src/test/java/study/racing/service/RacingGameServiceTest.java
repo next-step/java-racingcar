@@ -10,7 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import study.racing.model.GameResults;
+import study.racing.model.result.GameResults;
 import study.racing.model.rule.RandcomNumberRule;
 import study.racing.model.rule.Rule;
 

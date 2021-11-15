@@ -13,6 +13,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import study.racing.model.car.Car;
 import study.racing.model.car.RacingCars;
+import study.racing.model.result.GameResults;
+import study.racing.model.result.RoundResult;
 import study.racing.model.rule.Rule;
 
 class GameResultsTest {

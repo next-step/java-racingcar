@@ -1,4 +1,4 @@
-package study.racing.model;
+package study.racing.model.result;
 
 import study.racing.model.car.RacingCars;
 

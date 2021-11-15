@@ -2,7 +2,7 @@ package study.racing.controller;
 
 import java.util.List;
 
-import study.racing.model.GameResults;
+import study.racing.model.result.GameResults;
 import study.racing.service.RacingGameService;
 import study.racing.ui.InputView;
 import study.racing.ui.ResultView;
