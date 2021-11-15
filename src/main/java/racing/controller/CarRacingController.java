@@ -1,36 +1,36 @@
 package racing.controller;
 
-import racing.model.Car;
-import racing.view.CliInputView;
-import racing.view.CliOutputView;
+import racing.model.CarRacingGame;
+import racing.view.TerminalInputView;
+import racing.view.TerminalOutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacingController {
 
-    private List<Car> cars = new ArrayList<>();
-    private int numberOfMove = 0;
-
     public void start() {
-        setInput();
-        play();
+        CarRacingGame carRacingGame = createCarRacingGameFromInput();
+        play(carRacingGame);
     }
 
-    private void setInput() {
-        int numberOfCar = CliInputView.getNumberOfCarFromCliInput();
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
-        }
-        numberOfMove = CliInputView.getNumberOfMoveFromCliInput();
-        System.out.println();
+    private CarRacingGame createCarRacingGameFromInput() {
+        List<String> names = TerminalInputView.inputNamesOfCar();
+        int numberOfMove = TerminalInputView.inputNumberOfMove();
+
+        return new CarRacingGame(names, numberOfMove);
     }
 
-    private void play() {
-        CliOutputView.printStartSentence();
-        for (int i = 0; i < numberOfMove; i++) {
-            cars.forEach(Car::moveRandom);
-            CliOutputView.printCars(cars);
+    private void play(CarRacingGame carRacingGame) {
+        TerminalOutputView.printEmptyLine();
+        TerminalOutputView.printStartSentence();
+
+        while (carRacingGame.isPossibleToMove()) {
+            carRacingGame.moveCars();
+            TerminalOutputView.printCars(
+                    carRacingGame.getCars());
         }
+
+        TerminalOutputView.printWinnersCars(
+                carRacingGame.extractWinners());
     }
 }
