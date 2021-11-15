@@ -1,31 +1,25 @@
 package Racing.score;
 
 import Racing.stage.Stage;
-
-import java.util.Random;
+import Racing.type.RacingNumber;
+import Racing.type.RacingString;
 
 public class Score {
 
-    static final private String DISPLAY_TOKEN = "-";
-    static final private int RANDOM_BOUND = 10;
 
     private final Stage stage;
-    private final int value;
+    private final RacingNumber value;
 
     public Score(Stage stage) {
-        this(stage, Score.getRandomToken());
+        this(stage, RacingNumber.getRandomNumber());
     }
 
-    public Score(Stage stage, int value) {
+    public Score(Stage stage, RacingNumber value) {
         this.stage = stage;
         this.value = value;
     }
 
-    public static int getRandomToken() {
-        return new Random().nextInt(RANDOM_BOUND) + 1;
-    }
-
-    public String showDisplay() {
-        return DISPLAY_TOKEN.repeat(value);
+    public RacingString showDisplay() {
+        return RacingString.DISPLAY_TOKEN_STRING.repeat(value);
     }
 }

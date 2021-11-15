@@ -15,6 +15,7 @@ class RacingTest {
         String board = new Racing(countOfCar).run(countOfStage);
         // then
         String[] stages = board.split("\n\n");
+        System.out.println(board);
         assertThat(stages.length).isEqualTo(countOfStage);
         for (String stage : stages) {
             String[] track = stage.split("\n");

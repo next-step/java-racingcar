@@ -2,6 +2,7 @@ package Racing.car;
 
 import Racing.score.ScoreList;
 import Racing.stage.Stage;
+import Racing.type.RacingString;
 
 public class Car {
 
@@ -17,7 +18,7 @@ public class Car {
         return this;
     }
 
-    public String presentDistance() {
+    public RacingString presentDistance() {
         return score.showDisplay();
     }
 }

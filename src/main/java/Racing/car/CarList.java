@@ -1,9 +1,9 @@
 package Racing.car;
 
 import Racing.stage.Stage;
+import Racing.type.RacingString;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CarList {
 
@@ -19,10 +19,10 @@ public class CarList {
         return this;
     }
 
-    public String displayCarDistance() {
+    public RacingString displayCarDistance() {
         return this.cars.stream()
                 .map(Car::presentDistance)
-                .collect(Collectors.joining("\n"));
+                .collect(RacingString.joining(RacingString.DELIMITER));
     }
 
 }

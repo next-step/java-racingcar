@@ -1,10 +1,10 @@
 package Racing.score;
 
 import Racing.stage.Stage;
+import Racing.type.RacingString;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ScoreList {
 
@@ -16,9 +16,9 @@ public class ScoreList {
         return score;
     }
 
-    public String showDisplay() {
+    public RacingString showDisplay() {
         return scores.stream()
                 .map(Score::showDisplay)
-                .collect(Collectors.joining());
+                .collect(RacingString.joining());
     }
 }
