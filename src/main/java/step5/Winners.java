@@ -6,16 +6,16 @@ import java.util.stream.Collectors;
 public class Winners {
 
     public static List<Car> getWinners(List<Car> cars) {
-        int winnerPos = getWinnerPos(cars);
+        Position winnerPos = getWinnerPos(cars);
         return cars.stream()
-            .filter(car -> car.getPosition() == winnerPos)
+            .filter(car -> car.isWinner(winnerPos))
             .collect(Collectors.toList());
     }
 
-    private static int getWinnerPos(List<Car> cars) {
+    private static Position getWinnerPos(List<Car> cars) {
         return cars.stream()
-            .mapToInt(Car::getPosition)
-            .max()
-            .getAsInt();
+            .map(Car::getPosition)
+            .max(Position::compareTo)
+            .get();
     }
 }

@@ -19,7 +19,7 @@ public class CarTest {
     @Test
     void move() {
         car.move();
-        assertThat(car.getPosition()).isIn(Arrays.asList(0, 1));
+        assertThat(car.getPosition()).isIn(Arrays.asList(new Position(0), new Position(1)));
     }
 
     @Test

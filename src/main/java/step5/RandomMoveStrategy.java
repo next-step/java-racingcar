@@ -9,9 +9,9 @@ public class RandomMoveStrategy implements MoveStrategy {
     private static final int MOVE_STANDARD = 4;
 
     @Override
-    public int move(int position) {
+    public Position move(Position position) {
         if (randomGenerator.nextInt(RAND_MAX) > MOVE_STANDARD) {
-            return position + 1;
+            return position.increase();
         }
         return position;
     }

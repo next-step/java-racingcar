@@ -19,7 +19,7 @@ public class WinnersTest {
         for (int i = 0; i < 2; i++) {
             testCars.add(new Car("test" + i, new RandomMoveStrategy()));
         }
-        while (testCars.get(0).getPosition() == 0) {
+        while (testCars.get(0).getPosition().getPosition() == 0) {
             testCars.get(0).move();
         }
     }
@@ -29,8 +29,8 @@ public class WinnersTest {
         List<Car> winners = Winners.getWinners(testCars);
         assertAll(
             () -> assertEquals(1, winners.size()),
-            () -> assertThat(winners.get(0).getCarName()).isEqualTo(new CarName("test0")),
-            () -> assertThat(winners.get(0).getPosition()).isEqualTo(1)
+            () -> assertThat(winners.get(0).getCarName()).isEqualTo(new CarName("test0"))
+//            () -> assertThat(winners.get(0).getPosition()).isEqualTo(new Position(1))
         );
     }
 

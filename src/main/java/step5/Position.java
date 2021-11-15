@@ -1,6 +1,6 @@
 package step5;
 
-public class Position {
+public class Position implements Comparable<Position>{
 
     private final int position;
 
@@ -15,6 +15,10 @@ public class Position {
         }
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     public Position increase() {
         return new Position(position + 1);
     }
@@ -26,5 +30,10 @@ public class Position {
         }
         Position other = (Position) o;
         return this.position == other.position;
+    }
+
+    @Override
+    public int compareTo(Position other) {
+        return this.position - other.position;
     }
 }

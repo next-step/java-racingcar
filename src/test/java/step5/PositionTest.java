@@ -24,4 +24,14 @@ public class PositionTest {
         assertThatThrownBy(() -> new Position(-1))
             .isInstanceOf(InvalidPositionException.class);
     }
+
+    @Test
+    void equals() {
+        assertThat(new Position(0)).isEqualTo(new Position(0));
+    }
+
+    @Test
+    void compareTo() {
+        assertThat(new Position(1).compareTo(new Position(0))).isGreaterThan(0);
+    }
 }

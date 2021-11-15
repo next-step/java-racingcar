@@ -3,15 +3,20 @@ package step5;
 public class Car {
 
     private CarName carName;
-    private int position;
+    private Position position;
     private MoveStrategy moveStrategy;
 
     public Car(String carName, MoveStrategy moveStrategy) {
         this.carName = new CarName(carName);
+        this.position = new Position(0);
         this.moveStrategy = moveStrategy;
     }
 
-    public int getPosition() {
+    public boolean isWinner(Position winnerPos) {
+        return this.position.equals(winnerPos);
+    }
+
+    public Position getPosition() {
         return position;
     }
 
