@@ -1,8 +1,7 @@
 package racing.view;
 
-import racing.model.Cars;
-import racing.util.ConvertOutputView;
-import racing.service.FindWinner;
+import racing.domain.Cars;
+import racing.domain.ConvertOutputView;
 import racing.strategy.MoveStrategy;
 
 public class Output {
@@ -16,7 +15,7 @@ public class Output {
             cars.getCarList().stream().map(car -> car.getName().getName() + ": " + ConvertOutputView.convertOutputView(car.getPosition())).forEach(System.out :: println);
             System.out.println("");
         }
-        FindWinner.findWinnerList(cars).stream().map(i->i.getName().getName()+" ").forEach(System.out::printf);
+        cars.findWinnerList(cars).stream().map(i->i.getName().getName()+" ").forEach(System.out::printf);
         System.out.printf("우승하셨습니다");
     }
 }

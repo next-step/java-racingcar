@@ -1,6 +1,6 @@
 package racing;
 
-import racing.model.Cars;
+import racing.domain.Cars;
 import racing.strategy.RandomMoveStrategyImpl;
 import racing.view.Input;
 import racing.view.Output;

@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.service.InputBuilder;
+import racing.domain.InputBuilder;
 
 import java.util.List;
 import java.util.Scanner;
