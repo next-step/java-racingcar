@@ -13,30 +13,32 @@ import study.racing.model.rule.Rule;
 
 public class CarTest {
 
+    public static final int MOVE_COUNT = 1;
+    public static final int STOP_COUNT = 0;
+
     @DisplayName("Rule에 따라 움직이는지 멈추는지 동작을 검증")
     @ParameterizedTest
     @MethodSource("rules")
     void move(Rule rule, int distance, String name) {
         Car car = new Car(name);
         car.moveOrStop(rule);
+
         assertThat(car.getDistance()).isEqualTo(distance);
     }
 
     private static Stream<Arguments> rules() {
-        int moveCount = 1;
-        int stopCount = 0;
-        Rule trueRule = new Rule() {
-            @Override
-            public boolean isFollowRule() {
-                return true;
-            }
-        };
-        Rule falseRule = new Rule() {
-            @Override
-            public boolean isFollowRule() {
-                return false;
-            }
-        };
-        return Stream.of(Arguments.of(trueRule, moveCount, "name"), Arguments.of(falseRule, stopCount, "name"));
+        Rule trueRule = () -> true;
+        Rule falseRule = () -> false;
+        return Stream.of(Arguments.of(trueRule, MOVE_COUNT, "name"), Arguments.of(falseRule, STOP_COUNT, "name"));
+    }
+
+    @DisplayName("인자로 distance가 주어졌을 때 같은 거리를 움직였는지 검증")
+    @ParameterizedTest
+    @MethodSource("rules")
+    void equalTest(Rule rule, int distance, String name) {
+        Car car = new Car(name);
+        car.moveOrStop(rule);
+
+        assertThat(car.isEqualDistance(distance)).isTrue();
     }
 }

@@ -23,13 +23,20 @@ public class RacingCars {
     }
 
     public List<Car> mostMovedCars() {
-        int max = cars.stream()
-                      .mapToInt(Car::getDistance)
-                      .max()
-                      .getAsInt();
+        int max = getGreatestDistance();
+        return findMostMovedCars(max);
+    }
 
+    private int getGreatestDistance() {
         return cars.stream()
-                   .filter(car -> car.getDistance() == max)
+                   .mapToInt(Car::getDistance)
+                   .max()
+                   .getAsInt();
+    }
+
+    private List<Car> findMostMovedCars(int max) {
+        return cars.stream()
+                   .filter(car -> car.isEqualDistance(max))
                    .collect(Collectors.toList());
     }
 }
