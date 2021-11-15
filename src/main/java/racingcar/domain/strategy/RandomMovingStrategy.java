@@ -1,6 +1,6 @@
 package racingcar.domain.strategy;
 
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 public class RandomMovingStrategy implements MovingStrategy {
 
@@ -17,6 +17,6 @@ public class RandomMovingStrategy implements MovingStrategy {
 
     @Override
     public boolean movable() {
-        return ThreadLocalRandom.current().nextInt(MAX_RANDOM_RANGE) >= MOVE_CONSTRAINTS;
+        return new Random().nextInt(MAX_RANDOM_RANGE) >= MOVE_CONSTRAINTS;
     }
 }
