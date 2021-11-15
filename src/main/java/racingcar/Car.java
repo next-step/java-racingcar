@@ -1,17 +1,20 @@
 package racingcar;
 
+import racingcar.util.NumberGenerator;
+
 public class Car {
 
     private final String name;
-    private final int location;
+    private int location;
 
     public Car(String name, int location) {
         this.name = name;
         this.location = location;
     }
 
-    public Car move(int move) {
-        return new Car(this.name, this.location + move);
+    public void move(NumberGenerator numberGenerator) {
+        final int moveNumber = numberGenerator.generate();
+        this.location = this.location + moveNumber;
     }
 
     public int getLocation() {

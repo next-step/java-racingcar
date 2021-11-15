@@ -5,7 +5,7 @@ import racingcar.view.ResultView;
 public class RacingGame {
 
     private final int numOfTries;
-    private Cars cars;
+    private final Cars cars;
 
     public RacingGame(String carNames, int numOfTries) {
         this.cars = Cars.makeRacingCarsFromName(carNames);
@@ -17,19 +17,16 @@ public class RacingGame {
         ResultView.printStartResultView();
 
         for (int value = 1; value <= numOfTries; value++) {
-            cars = racingOnce(cars);
+            racingOnce();
         }
 
         ResultView.printWinnerView(cars.getWinnerCar());
 
     }
 
-    private Cars racingOnce(Cars service) {
-        Cars cars = service.doRacing();
-
+    private void racingOnce() {
+        cars.doRacing();
         ResultView.printResultView(cars.getCars());
-
-        return cars;
     }
 
 }
