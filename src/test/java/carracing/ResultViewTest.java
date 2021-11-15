@@ -2,6 +2,7 @@ package carracing;
 
 import carracing.exception.CarNameFormatException;
 import carracing.util.Car;
+import carracing.util.Cars;
 import carracing.util.Name;
 import carracing.view.ResultView;
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +18,7 @@ public class ResultViewTest {
     void printRacing() throws CarNameFormatException {
         ResultView resultView = new ResultView();
 
-        List<Car> carList = new ArrayList<>();
+        Cars carList = new Cars();
 
         for (int i = 0; i < 10; i++) {
             carList.add(new Car(new Name(String.valueOf(i))));
