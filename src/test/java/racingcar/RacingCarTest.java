@@ -1,5 +1,6 @@
 package racingcar;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -30,9 +31,18 @@ public class RacingCarTest {
         assertThat(inputView.input("시도할 횟수는 몇 회 인가요?")).isEqualTo(5);
     }
 
+    @DisplayName("처음 자동차를 생성하면, 거리는 0이다.")
+    @Test
+    void 자동차_생성() {
+        Car car = new Car(1);
+        assertThat(car.getDistance()).isEqualTo(0);
+    }
+
     @Test
     void 전진또는멈춤() {
-
+        Car car = new Car(1);
+        assertThat(car.move(4)).isTrue();
+        assertThat(car.move(1)).isFalse();
     }
 
     @Test
