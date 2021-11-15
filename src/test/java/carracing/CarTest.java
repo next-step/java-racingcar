@@ -1,6 +1,5 @@
 package carracing;
 
-import carracing.exception.CarNameFormatException;
 import carracing.util.Car;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -32,22 +31,6 @@ public class CarTest {
         Car notRacingCar = new Car();
         notRacingCar.driving(4);
         Assertions.assertThat(notRacingCar.driving(3)).isFalse();
-    }
-
-    @Test
-    @DisplayName("자동차 이름 5자 초과시 에러")
-    void carNameValid() {
-        assertThatThrownBy(() -> {
-            new Car("abcdef");
-        }).isInstanceOf(CarNameFormatException.class);
-    }
-
-    @Test
-    @DisplayName("자동차 이름 공백 에러")
-    void carNameEmptyErr() {
-        assertThatThrownBy(() -> {
-            new Car("");
-        }).isInstanceOf(CarNameFormatException.class);
     }
 
 }
