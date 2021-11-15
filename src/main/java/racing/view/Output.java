@@ -2,7 +2,7 @@ package racing.view;
 
 import racing.domain.Cars;
 import racing.domain.ConvertOutputView;
-import racing.strategy.MoveStrategy;
+import racing.domain.strategy.MoveStrategy;
 
 public class Output {
     private Output() {

@@ -3,7 +3,7 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.domain.Cars;
-import racing.domain.InputBuilder;
+import racing.domain.GetNameList;
 import racing.domain.ConvertOutputView;
 
 import java.util.ArrayList;
@@ -20,10 +20,9 @@ public class CarsTest {
     void carNameTest() {
         String name = "a,b,c,d,e";
         String[] nameList = name.split(",");
-        InputBuilder inputBuilder = new InputBuilder(name);
-        Cars cars = new Cars(inputBuilder.getNameList());
+        GetNameList getNameList = new GetNameList(name);
+        Cars cars = new Cars(getNameList.getNameList());
         for (int i =0;i<5;i++) {
-            System.out.println(cars.getCarList().get(i).getName());
             assertEquals(cars.getCarList().get(i).getName().getName(),nameList[i]);
         }
     }
@@ -74,7 +73,7 @@ public class CarsTest {
         expectedList.add("mj");
         expectedList.add("mj1");
         String nameString = "mj,mj1,mj2,mj3,mj4,mj5";
-        Cars cars = new Cars(new InputBuilder(nameString).getNameList());
+        Cars cars = new Cars(new GetNameList(nameString).getNameList());
         cars.getCarList().get(0).movable(() -> true);
         cars.getCarList().get(0).movable(() -> true);
         cars.getCarList().get(0).movable(() -> true);

@@ -1,6 +1,6 @@
 package racing.domain;
 
-import racing.strategy.MoveStrategy;
+import racing.domain.strategy.MoveStrategy;
 
 public class Car {
     private final Position position;
@@ -11,6 +11,7 @@ public class Car {
         this.position = new Position();
         this.name = new Name(name);
     }
+
     public Name getName() {
         return name;
     }

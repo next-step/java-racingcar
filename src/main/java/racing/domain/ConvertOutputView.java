@@ -5,8 +5,8 @@ import racing.domain.Position;
 public class ConvertOutputView {
 
     private ConvertOutputView() {
-
     }
+
     public static String convertOutputView(Position position) {
         StringBuilder convertResult = new StringBuilder();
         convertResult.append("-");

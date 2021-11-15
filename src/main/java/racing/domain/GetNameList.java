@@ -3,7 +3,7 @@ package racing.domain;
 import java.util.Arrays;
 import java.util.List;
 
-public class InputBuilder {
+public class GetNameList {
     private static int  criteria = 5;
 
     private List<String> nameList ;
@@ -12,7 +12,7 @@ public class InputBuilder {
         return nameList;
     }
 
-    public InputBuilder(String input) {
+    public GetNameList(String input) {
         List<String> nameList = convertInput(input);
         this.nameList = nameList;
     }

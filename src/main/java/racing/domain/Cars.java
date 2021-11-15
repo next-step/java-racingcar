@@ -1,6 +1,6 @@
 package racing.domain;
 
-import racing.strategy.MoveStrategy;
+import racing.domain.strategy.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,6 +27,7 @@ public class Cars {
         }
         return carList;
     }
+
     public void playRacing(MoveStrategy moveStrategy) {
         for (Car car : carList) {
             car.movable(moveStrategy);
