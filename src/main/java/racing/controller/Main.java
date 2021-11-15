@@ -1,4 +1,4 @@
-package racing;
+package racing.controller;
 
 import racing.domain.Cars;
 import racing.domain.strategy.RandomMoveStrategyImpl;
