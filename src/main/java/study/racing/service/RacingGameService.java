@@ -3,6 +3,7 @@ package study.racing.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import study.racing.exception.InvalidInputCountException;
 import study.racing.model.GameResults;
 import study.racing.model.RoundResult;
 import study.racing.model.car.RacingCars;
@@ -33,7 +34,7 @@ public class RacingGameService {
 
     private void validateOrThrow(int carCount, int tryCount) {
         if (carCount <= MIN_COUNT || tryCount <= MIN_COUNT) {
-            throw new RuntimeException(CAR_COUNT_AND_TRY_COUNT_MUST_BE_POSITIVE);
+            throw new InvalidInputCountException(CAR_COUNT_AND_TRY_COUNT_MUST_BE_POSITIVE);
         }
     }
 }
