@@ -10,8 +10,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("자동차 경주 - Car 단위 테스트")
 class CarTest {
@@ -52,16 +51,17 @@ class CarTest {
     @Test
     @DisplayName("3단계 - 자동차 정지 기능")
     void stopCar() {
-        Car car = new Car("");
-        // 아무것도 하지않으면 정지
+        // 아무것도 하지 않으면 정지
+        assertThatCode(() -> new Car(""))
+                .doesNotThrowAnyException();
     }
 
     @Test
     @DisplayName("4단계 - 자동차 이름 부여")
     void setName() {
         String name = "정상";
-        Car car = new Car(name);
-        // car 생성 시 예외 없이 생성되면 정상
+        assertThatCode(() -> new Car(name))
+                .doesNotThrowAnyException();
     }
 
     @Test

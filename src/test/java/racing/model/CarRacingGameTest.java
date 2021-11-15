@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
+import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("CarRacingGame 단위 테스트")
 class CarRacingGameTest {
@@ -80,8 +79,8 @@ class CarRacingGameTest {
     void moveCars() {
         carRacingGame = new CarRacingGame(carNames, 1);
 
-        carRacingGame.moveCars();
-        // 예외 발생 안하면 성공
+        assertThatCode(() -> carRacingGame.moveCars())
+                .doesNotThrowAnyException();
     }
 
     @Test
