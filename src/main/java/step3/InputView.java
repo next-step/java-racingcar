@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class InputView implements Closeable {
 
-    private final static InputView INSTANCE = new InputView();
-    private final static Scanner SCANNER = new Scanner(System.in);
+    private static final InputView INSTANCE = new InputView();
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     private InputView() { }
 

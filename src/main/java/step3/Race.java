@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
-    private final int ONE = 1;
+    private static final int ONE = 1;
     private RacingCarGroup racingCarGroup;
     private List<Record> records;
     private Count finalLap;
