@@ -23,6 +23,9 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class RacingGameTest {
     @Mock
+    private SetUpCars setUpCars;
+
+    @Mock
     private MoveCars moveCars;
 
     @Mock
@@ -37,59 +40,52 @@ class RacingGameTest {
     }
 
     @Test
-    void whenNumberOfCarsIsNotPositive() {
-        assertThatThrownBy(() -> new RacingGame(Collections.EMPTY_LIST, 10, outputView, moveCars, filterWinners))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
     void whenNumberOfMovementIsNotPositive() {
-        assertThatThrownBy(() -> new RacingGame(dummyCarNames(1), 0, outputView, moveCars, filterWinners))
+        assertThatThrownBy(() -> new RacingGame(setUpCars, 0, outputView, moveCars, filterWinners))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
-    @MethodSource("carNamesAndNumberOfMovement")
-    void start(Collection<CarName> carNames, int numberOfMovement) {
-        RacingGame racingGame = new RacingGame(carNames, numberOfMovement, outputView, moveCars, filterWinners);
+    @MethodSource("carsAndNumberOfMovement")
+    void start(Collection<Car> carsSetUp, int numberOfMovement) {
+        RacingGame racingGame = new RacingGame(setUpCars, numberOfMovement, outputView, moveCars, filterWinners);
 
-        Collection<Car> winners = Collections.singleton(dummyCar());
+        Collection<Car> winners = dummyCars(1);
 
-        when(filterWinners.filter(argThat((cars) -> cars.size() == carNames.size())))
+        when(filterWinners.filter(argThat((cars) -> cars.size() == carsSetUp.size())))
                 .thenReturn(winners);
+
+        when(setUpCars.setUp())
+                .thenReturn(carsSetUp);
 
         racingGame.start();
 
         verify(moveCars, times(numberOfMovement)).moveCars(
-                argThat((argument) -> argument.size() == carNames.size())
+                argThat((argument) -> argument.size() == carsSetUp.size())
         );
         verify(outputView, times(numberOfMovement)).renderLocation(
-                argThat((argument) -> argument.size() == carNames.size())
+                argThat((argument) -> argument.size() == carsSetUp.size())
         );
         verify(outputView, times(1)).renderWinners(winners);
     }
 
-    private Car dummyCar() {
-        return new Car(new CarName(UUID.randomUUID().toString().substring(0, 4)));
-    }
-
-    private static Stream<Arguments> carNamesAndNumberOfMovement() {
+    private static Stream<Arguments> carsAndNumberOfMovement() {
         return Stream.of(
-                Arguments.of(dummyCarNames(1), 2),
-                Arguments.of(dummyCarNames(5), 6),
-                Arguments.of(dummyCarNames(10), 10)
+                Arguments.of(dummyCars(1), 2),
+                Arguments.of(dummyCars(5), 6),
+                Arguments.of(dummyCars(10), 10)
         );
     }
 
-    private static Collection<CarName> dummyCarNames(int numberOfCars) {
-        ArrayList<CarName> carNames = new ArrayList<>();
+    private static Collection<Car> dummyCars(int numberOfCars) {
+        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            carNames.add(dummyCarName());
+            cars.add(dummyCar());
         }
-        return Collections.unmodifiableCollection(carNames);
+        return Collections.unmodifiableCollection(cars);
     }
 
-    private static CarName dummyCarName() {
-        return new CarName(UUID.randomUUID().toString().substring(0, 4));
+    private static Car dummyCar() {
+        return new Car(new CarName(UUID.randomUUID().toString().substring(0, 4)));
     }
 }
