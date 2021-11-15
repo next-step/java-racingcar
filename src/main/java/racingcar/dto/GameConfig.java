@@ -3,21 +3,22 @@ package racingcar.dto;
 import static racingcar.utils.IntegerUtils.*;
 
 import java.util.List;
+import racingcar.Participants;
 
 
 public class GameConfig {
 
-    private final List<String> joinCarNames;
+    private final Participants participants;
     private final int maxOfRound;
 
-    public GameConfig(List<String> joinCarNames, int maxOfRound) {
-        this.joinCarNames = joinCarNames;
+    public GameConfig(Participants participants, int maxOfRound) {
+        this.participants = participants;
         this.maxOfRound = isPositiveNumber(maxOfRound);
     }
 
 
-    public List<String> getJoinCarNames() {
-        return joinCarNames;
+    public Participants getParticipants() {
+        return participants;
     }
 
     public int getMaxOfRound() {

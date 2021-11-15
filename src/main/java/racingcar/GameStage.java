@@ -3,7 +3,6 @@ package racingcar;
 import static java.util.stream.IntStream.range;
 import static racingcar.utils.IntegerUtils.isPositiveNumber;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import racingcar.dto.GameConfig;
@@ -13,20 +12,17 @@ import racingcar.dto.GameResult;
 public class GameStage {
 
     private final int maxOfRound;
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
     private final GameResult result;
 
-    private GameStage(int maxOfRound, List<String> joinOfCarNames) {
+    private GameStage(int maxOfRound, Participants participants) {
         this.maxOfRound = isPositiveNumber(maxOfRound);
-
-        joinOfCarNames
-            .forEach(name -> cars.add(Car.create(name)));
-
+        this.cars = participants.ready();
         this.result = new GameResult();
     }
 
     public static GameStage init(GameConfig config) {
-        return new GameStage(config.getMaxOfRound(), config.getJoinCarNames());
+        return new GameStage(config.getMaxOfRound(), config.getParticipants());
     }
 
     public GameResult start() {

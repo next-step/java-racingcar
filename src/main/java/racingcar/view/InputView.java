@@ -5,6 +5,7 @@ import static racingcar.utils.PrintUtils.print;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import racingcar.Participants;
 import racingcar.dto.GameConfig;
 
 
@@ -19,27 +20,11 @@ public class InputView {
     public GameConfig initConfig() {
 
         print(JOIN_CAR_NAMES_INPUT_MESSAGE);
-        List<String> joinCarNames = inputCarNames(sc.next());
+        Participants participants = Participants.join(sc.next());
 
         print(NUMBER_OF_GAME_ROUND_INPUT_MESSAGE);
         int numberOfGameRound = sc.nextInt();
 
-        return new GameConfig(joinCarNames, numberOfGameRound);
-    }
-
-    public List<String> inputCarNames(String input) {
-        String[] joinCarNames = input.split(",");
-
-        for (String carName : joinCarNames) {
-            validCarName(carName);
-        }
-
-        return Arrays.asList(joinCarNames);
-    }
-
-    private void validCarName(String carName) {
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
+        return new GameConfig(participants, numberOfGameRound);
     }
 }
