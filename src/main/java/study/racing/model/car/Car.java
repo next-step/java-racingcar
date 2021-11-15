@@ -13,7 +13,7 @@ public class Car {
 
     public Car(Name name) {
         this.name = name;
-        this.distance = Distance.init();
+        distance = Distance.init();
     }
 
     public void moveOrStop(Rule rule) {
