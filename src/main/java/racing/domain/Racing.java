@@ -21,14 +21,6 @@ public class Racing {
         this.attempts = attempts;
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public int getAttempts() {
-        return attempts;
-    }
-
     public Winner play(Random random) {
         RacingHistory racingHistory = RacingHistory.getInstance();
 

@@ -1,18 +1,17 @@
 package racing;
 
-import racing.domain.Car;
-import racing.domain.Racing;
-import racing.domain.RacingHistory;
-import racing.domain.Winner;
-import utility.NumberHelper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racing.domain.Car;
+import racing.domain.Racing;
+import racing.domain.RacingHistory;
+import racing.domain.Winner;
+import utility.NumberHelper;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -21,7 +20,6 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertAll;
 
 /**
  * @author han
@@ -29,21 +27,12 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 class RacingTest {
 
     @Test
-    @DisplayName(value = "생성")
-    void create() {
-        Racing racing = new Racing(Arrays.asList("1"), 2);
-        assertAll(() -> assertThat(racing.getCars().size()).isEqualTo(1),
-            () -> assertThat(racing.getAttempts()).isEqualTo(2));
-    }
-
-    @Test
     @DisplayName(value = "플레이")
     void play() {
         Racing racing = new Racing(getUsers(NumberHelper.getRandomValue(3) + 1), NumberHelper.getRandomValue(5) + 1);
-        List<Car> cars = racing.getCars();
 
-        racing.play(new Random());
-        cars.forEach(car -> assertThat(car.getStep()).isGreaterThanOrEqualTo(0));
+        Winner play = racing.play(new Random());
+        play.getWinners().forEach(car -> assertThat(car.getStep()).isGreaterThanOrEqualTo(0));
     }
 
     @ParameterizedTest(name = "예상된 랜덤값을 통한 플레이")
