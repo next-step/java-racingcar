@@ -42,6 +42,6 @@ public class ResultView {
                 .collect(Collectors.joining(COMMA_SPACE));
         StringBuilder sb = new StringBuilder();
         sb.append(winnerNames).append(WINNER_MSG);
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 }

@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -27,10 +26,10 @@ public class InputViewTest {
         assertThat(name.length() < 6).isEqualTo(expected);
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"cccccc"})
+    @Test
     @DisplayName("자동차 이름은 5자를 초과할 수 없다.")
-    public void limitFiveLengthException(String name) {
+    public void limitFiveLengthException() {
+        String name = "cccccc";
         assertThatThrownBy(() -> {
             if (name.length() > 5)
                 throw new IndexOutOfBoundsException("자동차 이름은 5자를 초과할 수 없습니다.");
