@@ -5,12 +5,19 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.exception.HistoryOutOfBoundsException;
 
 public class MoveHistoryTest {
+
+    @Test
+    @DisplayName("이력 객체 생성")
+    void createMoveHistory() {
+        assertThat(MoveHistory.create()).isEqualTo(MoveHistory.create());
+    }
 
     @ParameterizedTest
     @DisplayName("값 저장 확인")

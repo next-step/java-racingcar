@@ -26,4 +26,18 @@ public class CarsTest {
             .isThrownBy(() -> Cars.from(name));
     }
 
+    @ParameterizedTest
+    @DisplayName("moveCars 성공 테스트")
+    @ValueSource(strings = "kim,dong,hyo")
+    void moveCarsSuccess(String name) {
+        // given
+        Cars cars = Cars.from(name);
+
+        // when
+        cars.moveCars(() -> true);
+
+        // then
+        assertThat(cars.getWinners().getCars()).isEqualTo(cars.getCars());
+    }
+
 }

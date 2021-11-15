@@ -1,5 +1,6 @@
 package racingcar.domain.model;
 
+import java.util.Objects;
 import racingcar.domain.exception.HistoryOutOfBoundsException;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,5 +49,22 @@ public class MoveHistory {
         } catch (IndexOutOfBoundsException e) {
             throw new HistoryOutOfBoundsException();
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        MoveHistory that = (MoveHistory) o;
+        return Objects.equals(moveHistory, that.moveHistory);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(moveHistory);
     }
 }
