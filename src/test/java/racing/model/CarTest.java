@@ -2,6 +2,8 @@ package racing.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import racing.model.mock.MockRandom;
 
 import java.lang.reflect.Field;
@@ -69,5 +71,13 @@ class CarTest {
                 .isThrownBy(() -> new Car("긴이름입니다")); // Korean
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Car("long__")); // English
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"0,true", "4,false"})
+    void isEqualMovingDistance(int movingDistance, boolean expectedIsEqual) {
+        Car car = new Car("");
+        assertThat(car.isEqualMovingDistance(movingDistance))
+                .isEqualTo(expectedIsEqual);
     }
 }

@@ -23,7 +23,7 @@ public class CarRacingGame {
     public List<Car> extractWinners() {
         int maxDistance = findMaxDistance();
         return cars.stream()
-                .filter(car -> car.getMovingDistance() == maxDistance)
+                .filter(car -> car.isEqualMovingDistance(maxDistance))
                 .collect(Collectors.toList());
     }
 

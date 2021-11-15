@@ -25,6 +25,10 @@ public class Car {
         }
     }
 
+    public boolean isEqualMovingDistance(int movingDistance) {
+        return this.movingDistance == movingDistance;
+    }
+
     private void go() {
         movingDistance++;
     }
