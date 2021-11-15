@@ -1,6 +1,6 @@
 package race.view.outbound;
 
-import race.Car;
+import race.domain.Car;
 
 import java.util.Collection;
 import java.util.stream.Collectors;

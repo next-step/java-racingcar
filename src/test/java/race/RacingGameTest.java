@@ -8,6 +8,10 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import race.domain.Car;
+import race.domain.CarName;
+import race.domain.FilterWinners;
+import race.domain.MoveCars;
 import race.view.outbound.OutputView;
 
 import java.util.*;

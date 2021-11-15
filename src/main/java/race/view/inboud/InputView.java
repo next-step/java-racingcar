@@ -1,6 +1,6 @@
 package race.view.inboud;
 
-import race.CarName;
+import race.domain.CarName;
 
 import java.io.Closeable;
 import java.util.Arrays;

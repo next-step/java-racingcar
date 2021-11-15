@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 import java.util.Collection;
 import java.util.stream.Collectors;

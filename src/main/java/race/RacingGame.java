@@ -1,5 +1,6 @@
 package race;
 
+import race.domain.*;
 import race.view.inboud.InputView;
 import race.view.outbound.OutputView;
 
