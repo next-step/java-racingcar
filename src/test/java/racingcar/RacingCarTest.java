@@ -38,11 +38,19 @@ public class RacingCarTest {
         assertThat(car.getDistance()).isEqualTo(0);
     }
 
+    @DisplayName("4이상이면 전진, 미만이면 멈춤")
     @Test
     void 전진또는멈춤() {
         Car car = new Car(1);
         assertThat(car.move(4)).isTrue();
         assertThat(car.move(1)).isFalse();
+    }
+
+    @Test
+    void 자동차경주_생성() {
+        RacingCar racingCar = RacingCar.create(3, 5);
+        assertThat(racingCar.getCarCount()).isEqualTo(3);
+        assertThat(racingCar.getRacingCount()).isEqualTo(5);
     }
 
     @Test
