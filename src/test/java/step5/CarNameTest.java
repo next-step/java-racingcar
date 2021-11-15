@@ -16,20 +16,20 @@ public class CarNameTest {
 
     @ParameterizedTest
     @NullSource
-    void illegalArgumentBecauseCarNameIsNull(String carName) {
+    void invalidCarNameExceptionBecauseCarNameIsNull(String carName) {
         assertThatThrownBy(() -> new CarName(carName))
             .isInstanceOf(InvalidCarNameException.class);
     }
 
     @ParameterizedTest
     @EmptySource
-    void illegalArgumentBecauseCarNameIsEmpty(String carName) {
+    void invalidCarNameExceptionBecauseCarNameIsEmpty(String carName) {
         assertThatThrownBy(() -> new CarName(carName))
             .isInstanceOf(InvalidCarNameException.class);
     }
 
     @Test
-    void illegalArgumentBecauseCarNameLengthIsLongerThan5() {
+    void invalidCarNameExceptionBecauseCarNameLengthIsLongerThan5() {
         assertThatThrownBy(() -> new CarName("123456"))
             .isInstanceOf(InvalidCarNameException.class);
     }
