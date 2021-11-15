@@ -5,10 +5,10 @@ public class Main {
     public static void main(String[] args) {
         String[] carNames = GameInput.readCarNames();
         int roundCount = GameInput.readRoundCount();
-        CarRacingGame carRacingGame = new CarRacingGame(carNames);
+        CarRacingGame carRacingGame = new CarRacingGame(roundCount, carNames);
 
         System.out.println("실행 결과");
-        for (int i = 0; i < roundCount; i++) {
+        while (carRacingGame.hasMoreRounds()) {
             carRacingGame.moveCars();
             GameOutput.printCarPaths(carRacingGame);
             System.out.println();
