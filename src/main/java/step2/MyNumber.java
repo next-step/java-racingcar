@@ -39,7 +39,7 @@ public class MyNumber {
     }
 
     public static void validNumber(String text) {
-        if(Common.textNullOrEmpty(text)) {
+        if(Common.isTextNullOrEmpty(text)) {
             throw new IllegalArgumentException(MyException.INVALID_NUMBER.getMessage());
         }
 
@@ -50,11 +50,11 @@ public class MyNumber {
 
     public void divideValidation(MyNumber other) {
         if(this.number == 0) {
-            throw new IllegalArgumentException(MyException.ZERO_NOT_DIVIDE.getMessage());
+            throw new ArithmeticException(MyException.ZERO_NOT_DIVIDE.getMessage());
         }
 
         if(other.number == 0) {
-            throw new IllegalArgumentException(MyException.NOT_DIVIDE_BY_ZERO.getMessage());
+            throw new ArithmeticException(MyException.NOT_DIVIDE_BY_ZERO.getMessage());
         }
 
         if((this.number % other.number) != 0) {
