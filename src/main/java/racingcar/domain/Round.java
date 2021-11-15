@@ -33,6 +33,10 @@ public class Round {
         return new Round(round + ADD_VALUE);
     }
 
+    public Round play() {
+        return new Round(round - ADD_VALUE);
+    }
+
     public int currentRound() {
         return round;
     }
