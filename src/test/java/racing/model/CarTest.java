@@ -4,11 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing.model.mock.MockRandom;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -17,15 +12,11 @@ class CarTest {
 
     @Test
     @DisplayName("3단계 - 자동차 랜덤 행동 이동 기능")
-    void moveRandom() throws NoSuchFieldException, IllegalAccessException {
+    void moveRandom() {
         Car car = new Car("");
-        Field fieldRandom = Car.class
-                .getDeclaredField("random");
-        fieldRandom.setAccessible(true);
-        fieldRandom.set(car, new MockRandom()); // 0~9를 순차적으로 추출하는 MockRandom
 
         for (int i = 0; i < 10; i++) {
-            car.moveRandom();
+            car.move(i);
         }
 
         assertThat(car.getMovingDistance())
@@ -34,15 +25,13 @@ class CarTest {
 
     @Test
     @DisplayName("3단계 - 자동차 전진 기능")
-    void go() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    void go() {
         Car car = new Car("");
-        Method methodGo = Car.class
-                .getDeclaredMethod("go");
-        methodGo.setAccessible(true);
+        int goValue = 4;
 
-        methodGo.invoke(car);
-        methodGo.invoke(car);
-        methodGo.invoke(car);
+        car.move(goValue);
+        car.move(goValue);
+        car.move(goValue);
 
         assertThat(car.getMovingDistance())
                 .isEqualTo(3);

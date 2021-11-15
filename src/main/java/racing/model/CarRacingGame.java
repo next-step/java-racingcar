@@ -1,6 +1,7 @@
 package racing.model;
 
-import java.util.ArrayList;
+import racing.utils.RandomGenerator;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -8,6 +9,9 @@ import java.util.stream.Collectors;
 
 public class CarRacingGame {
 
+    private static final int MAX_BOUND = 10;
+
+    private final RandomGenerator randomGenerator = new RandomGenerator(MAX_BOUND);
     private final List<Car> cars;
     private final int numberOfMove;
     private int movingCount = 0;
@@ -37,7 +41,10 @@ public class CarRacingGame {
         if (!isPossibleToMove()) {
             throw new IllegalStateException("더 이상 이동할 수 없습니다");
         }
-        cars.forEach(Car::moveRandom);
+        for (Car car : cars) {
+            int randomValue = randomGenerator.nextInt();
+            car.move(randomValue);
+        }
         movingCount++;
     }
 
