@@ -5,14 +5,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import racing.domain.Car;
-import racing.domain.Racing;
-import racing.domain.RacingHistory;
-import racing.domain.Winner;
+import racing.domain.*;
 import utility.NumberHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -43,8 +41,9 @@ class RacingTest {
 
         RacingHistory racingHistory = winner.getRacingHistory();
 
-        List<Car> list = new ArrayList<>(racingHistory.getData()).get(i);
-        assertThat(list.get(j).getStep()).isEqualTo(k);
+        Queue<RacingCar> data = racingHistory.getData();
+        RacingCar racingCar = new ArrayList<>(data).get(i);
+        assertThat(racingCar.getCars().get(j).getStep()).isEqualTo(k);
     }
 
     @ParameterizedTest(name = "잘못 생성 시, 에러를 던진다")
