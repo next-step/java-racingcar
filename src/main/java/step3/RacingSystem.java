@@ -1,5 +1,6 @@
 package step3;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingSystem {
@@ -17,9 +18,13 @@ public class RacingSystem {
 
     public void racingStart() {
         for (int i = 0; i < racingCount.count; i++) {
-            carGroup.racing();
+            ResultView.result(carGroup.racing());
         }
-        carGroup.racingResult();
+        racingResult();
+    }
+
+    private void racingResult() {
+        ResultView.finalResult(carGroup.getFarthestCarNames());
     }
 
     public static void main(String[] args) {

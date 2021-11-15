@@ -12,7 +12,7 @@ public class ResultView {
     public static void result(List<Car> cars) {
         for (Car car : cars) {
             StringBuilder builder = new StringBuilder();
-            builder.append(car.getName() + COLON);
+            builder.append(car + COLON);
             makeDash(car, builder);
             System.out.println(builder.toString());
         }
@@ -25,7 +25,7 @@ public class ResultView {
             makeComma(builder);
             builder.append(carName);
         }
-        System.out.println(String.format(FINAL_RESULT_MESSAGE, builder.toString()));
+        System.out.printf(FINAL_RESULT_MESSAGE + "%n", builder.toString());
     }
 
     private static void makeComma(StringBuilder builder) {

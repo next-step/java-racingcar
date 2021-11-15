@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static step3.Car.VALID_MSG_CAR_NAME_SIZE;
 
 public class CarTest {
 
@@ -22,23 +21,24 @@ public class CarTest {
     }
 
     @Test
-    void 자동차_이름_생성() {
+    void 자동차_생성() {
         assertThat(new Car("abcd")).isEqualTo(new Car("abcd"));
         assertThat(new Car("nell")).isEqualTo(new Car("nell"));
         assertThat(new Car("dasom")).isEqualTo(new Car("dasom"));
     }
 
     @Test
-    void 자동차_이름_공백_생성() {
+    void 자동차_공백포함_생성() {
         assertThat(new Car(" test ")).isEqualTo(new Car("test"));
         assertThat(new Car("test ")).isEqualTo(new Car("test"));
         assertThat(new Car(" test")).isEqualTo(new Car("test"));
     }
 
     @Test
-    void 자동차_이름_5자_초과() {
+    void 자동차_5자_초과_생성() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new Car("nelldklee");
-        }).withMessageMatching(VALID_MSG_CAR_NAME_SIZE);
+        }).withMessageMatching(CarName.VALID_MSG_CAR_NAME_EXCESS_SIZE);
     }
+
 }

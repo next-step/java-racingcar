@@ -14,11 +14,9 @@ public class CarGroup {
         this.cars = cars;
     }
 
-    public CarGroup(String message) {
-        String[] carNames = message.split(",");
-        if (carNames.length < 1) {
-            throw new IllegalArgumentException("자동차 대수는 1이상이여야 합니다.");
-        }
+    public CarGroup(String carNameData) {
+        String[] carNames = carNameData.split(",");
+        new CarCount(carNames.length);
         makeCars(carNames);
     }
 
@@ -28,16 +26,12 @@ public class CarGroup {
         }
     }
 
-    public void racing() {
+    public List<Car> racing() {
         Random random = new Random();
         for (Car car : cars) {
             car.move(random.nextInt(RANDOM_MAX_INT_VALUE));
         }
-        ResultView.result(cars);
-    }
-
-    public void racingResult() {
-        ResultView.finalResult(getFarthestCarNames());
+        return cars;
     }
 
     public List<String> getFarthestCarNames() {
@@ -50,7 +44,7 @@ public class CarGroup {
     }
 
     private void makeFarthestCarNames(int farthestLocation, List<String> farthestCarNames, Car car) {
-        if (car.isFarthestLocation(farthestLocation)) farthestCarNames.add(car.getName());
+        if (car.isFarthestLocation(farthestLocation)) farthestCarNames.add(car.toString());
     }
 
     private int getFarthestLocation() {

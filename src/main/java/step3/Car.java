@@ -5,13 +5,11 @@ import java.util.Objects;
 public class Car {
 
     public static final int MOVABLE_COUNT = 4;
-    public static final int VALID_CAR_SIZE_VALUE = 5;
     public static final int DEFAULT_CAR_LOCATION_VALUE = 0;
     public static final String DEFAULT_CAR_NAME = "이름없음";
-    public static final String VALID_MSG_CAR_NAME_SIZE = "자동차 이름은 5자를 초과할 수 없습니다.";
 
     private int location;
-    private String name;
+    private final CarName name;
 
     public Car() {
         this(DEFAULT_CAR_NAME, DEFAULT_CAR_LOCATION_VALUE);
@@ -26,11 +24,7 @@ public class Car {
     }
 
     public Car(String name, int location) {
-        name = name.trim();
-        if (name.length() > VALID_CAR_SIZE_VALUE) {
-            throw new IllegalArgumentException(VALID_MSG_CAR_NAME_SIZE);
-        }
-        this.name = name;
+        this.name = new CarName(name);
         this.location = location;
     }
 
@@ -43,10 +37,6 @@ public class Car {
             location++;
         }
         return this;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public boolean isFarthestLocation(int farthestLocation) {
@@ -64,5 +54,10 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(location, name);
+    }
+
+    @Override
+    public String toString() {
+        return name.toString();
     }
 }
