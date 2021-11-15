@@ -3,6 +3,7 @@ package step5.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import step5.view.CarDTO;
 
 public class Cars {
 
@@ -19,8 +20,10 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<CarDTO> getCars() {
+        return cars.stream()
+            .map(CarDTO::new)
+            .collect(Collectors.toList());
     }
 
     public void move() {

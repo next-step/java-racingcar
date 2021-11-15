@@ -1,7 +1,6 @@
 package step5.model;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import step5.view.CarDTO;
 
 public class CarRacingGame {
@@ -14,19 +13,12 @@ public class CarRacingGame {
         this.cars = new Cars(carNames);
     }
 
-    public static List<CarDTO> getCars(Cars cars) {
-        return cars.getCars()
-            .stream()
-            .map(CarDTO::new)
-            .collect(Collectors.toList());
-    }
-
     public List<CarDTO> getCars() {
-        return getCars(cars);
+        return cars.getCars();
     }
 
     public List<CarDTO> getWinners() {
-        return getCars(cars.getWinners());
+        return cars.getWinners().getCars();
     }
 
     public boolean hasMoreRounds() {
@@ -36,6 +28,11 @@ public class CarRacingGame {
     public void moveCars() {
         roundCount--;
         cars.move();
+    }
+
+    //for test
+    protected int getRoundCount() {
+        return roundCount;
     }
 
 }

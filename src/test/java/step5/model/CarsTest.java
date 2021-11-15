@@ -1,14 +1,12 @@
-package step5;
+package step5.model;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
-import step5.model.Car;
-import step5.model.Cars;
-import step5.model.RandomMoveStrategy;
+import step5.view.CarDTO;
 
 public class CarsTest {
 
@@ -23,11 +21,13 @@ public class CarsTest {
         Car lee = new Car("lee", 2, new RandomMoveStrategy());
         Car park = new Car("park", 2, new RandomMoveStrategy());
         Cars cars = new Cars(Arrays.asList(kim, lee, park));
-        Cars winners = cars.getWinners();
+        List<CarDTO> winners = cars.getWinners().getCars();
         assertAll(
-            () -> assertEquals(2, winners.getCars().size()),
-            () -> assertThat(winners.getCars().get(0)).isEqualTo(new Car("lee", 2, new RandomMoveStrategy())),
-            () -> assertThat(winners.getCars().get(1)).isEqualTo(new Car("park", 2, new RandomMoveStrategy()))
+            () -> assertEquals(2, winners.size()),
+            () -> assertEquals("lee", winners.get(0).getCarName()),
+            () -> assertEquals(2, winners.get(0).getPosition()),
+            () -> assertEquals("park", winners.get(1).getCarName()),
+            () -> assertEquals(2, winners.get(1).getPosition())
         );
     }
 }

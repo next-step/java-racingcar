@@ -1,6 +1,6 @@
 package step5.model;
 
-public class Position implements Comparable<Position>{
+public class Position implements Comparable<Position> {
 
     private final int position;
 

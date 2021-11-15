@@ -1,11 +1,9 @@
-package step5;
+package step5.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
-import step5.model.InvalidPositionException;
-import step5.model.Position;
 
 public class PositionTest {
 
