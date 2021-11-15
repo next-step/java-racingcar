@@ -2,16 +2,18 @@ package study.racing.model.car;
 
 import java.util.Objects;
 
+import study.racing.model.Distance;
 import study.racing.model.Name;
 import study.racing.model.rule.Rule;
 
 public class Car {
 
     private final Name name;
-    private int distance;
+    private Distance distance;
 
     public Car(Name name) {
         this.name = name;
+        this.distance = Distance.init();
     }
 
     public void moveOrStop(Rule rule) {
@@ -21,10 +23,10 @@ public class Car {
     }
 
     private void move() {
-        this.distance++;
+        distance.increase();
     }
 
-    public int getDistance() {
+    public Distance getDistance() {
         return distance;
     }
 
@@ -32,8 +34,8 @@ public class Car {
         return name;
     }
 
-    public boolean isEqualDistance(int distance) {
-        return this.distance == distance;
+    public boolean isEqualDistance(Distance distance) {
+        return this.distance.equals(distance);
     }
 
     @Override

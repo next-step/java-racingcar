@@ -1,9 +1,11 @@
 package study.racing.model.car;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import study.racing.model.Distance;
 import study.racing.model.Name;
 import study.racing.model.rule.Rule;
 
@@ -31,18 +33,18 @@ public class RacingCars {
     }
 
     public List<Car> mostMovedCars() {
-        int max = getGreatestDistance();
+        Distance max = getGreatestDistance();
         return findMostMovedCars(max);
     }
 
-    private int getGreatestDistance() {
+    private Distance getGreatestDistance() {
         return cars.stream()
-                   .mapToInt(Car::getDistance)
-                   .max()
-                   .getAsInt();
+                   .map(Car::getDistance)
+                   .max(Comparator.comparing(Distance::getDistance))
+                   .get();
     }
 
-    private List<Car> findMostMovedCars(int max) {
+    private List<Car> findMostMovedCars(Distance max) {
         return cars.stream()
                    .filter(car -> car.isEqualDistance(max))
                    .collect(Collectors.toList());

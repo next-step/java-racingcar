@@ -9,10 +9,15 @@ public class Name {
     }
 
     public boolean longerThan(int length) {
-        return this.name.length() > length;
+        return name.length() > length;
     }
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }
