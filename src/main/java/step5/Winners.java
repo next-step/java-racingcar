@@ -3,7 +3,7 @@ package step5;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Referee {
+public class Winners {
 
     public static List<Car> getWinners(List<Car> cars) {
         int winnerPos = getWinnerPos(cars);

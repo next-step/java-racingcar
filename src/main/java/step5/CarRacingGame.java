@@ -28,7 +28,7 @@ public class CarRacingGame {
     }
 
     public List<CarDTO> getWinners() {
-        return Referee.getWinners(cars)
+        return Winners.getWinners(cars)
             .stream().map(CarDTO::new)
             .collect(Collectors.toList());
     }

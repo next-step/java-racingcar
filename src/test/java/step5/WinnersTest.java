@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class RefereeTest {
+public class WinnersTest {
 
     private List<Car> testCars;
 
@@ -26,7 +26,7 @@ public class RefereeTest {
 
     @Test
     void getWinners() {
-        List<Car> winners = Referee.getWinners(testCars);
+        List<Car> winners = Winners.getWinners(testCars);
         assertAll(
             () -> assertEquals(1, winners.size()),
             () -> assertThat(winners.get(0).getCarName()).isEqualTo(new CarName("test0")),
