@@ -10,9 +10,9 @@
 
 ## 기능 구현 목록
 * "자동차 대수는 몇 대 인가요?" 출력
-* 자동차 대수 입력 -> (입력값이 1`MIN_INPUT_NUMBER`보다 크거나 같은 정수인지 Validation Check)
+* 자동차 대수 입력
 * "시도할 회수는 몇 회 인가요?" 출력
-* 시도할 회수 입력 -> (입력값이 1`MIN_INPUT_NUMBER`보다 크거나 같은 정수인지 Validation Check)
+* 시도할 회수 입력
 * 시도 회수 반복문 START
     * 자동차 대수 반복문 START
         * 전진 조건 생성, 0`MIN_RANDOM_VALUE`에서 9`MAX_RANDOM_VALUE` 사이에서 random 값
