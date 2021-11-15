@@ -7,7 +7,7 @@ import static java.util.stream.Collectors.toList;
 
 public class Winner {
 
-  private static final int FIRST = 0;
+  private static final int FIRST_INDEX = 0;
 
   private final List<Car> winnerList;
 
@@ -25,7 +25,7 @@ public class Winner {
   }
 
   private static List<Car> findWinner(List<Car> carList) {
-    Car firstCar = carList.get(FIRST);
+    Car firstCar = carList.get(FIRST_INDEX);
     return carList.stream()
                   .filter(car -> car.getNowStep() == firstCar.getNowStep())
                   .collect(toList());

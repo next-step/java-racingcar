@@ -1,5 +1,6 @@
 package carracing;
 
+import carracing.domain.entity.Challengers;
 import carracing.domain.service.RandomFourStepRacingService;
 import carracing.ui.InputView;
 import carracing.ui.ResultView;
@@ -10,8 +11,8 @@ public class CarRacingApplication {
     InputView inputView = InputView.getInstance();
     ResultView resultView = ResultView.getInstance();
 
-    RandomFourStepRacingService carRacingService
-            = new RandomFourStepRacingService(inputView.inputNumberOfCar(), inputView.inputTryCount());
-    resultView.printResult(carRacingService.gameStart());
+    RandomFourStepRacingService carRacingService = new RandomFourStepRacingService();
+    Challengers challengers = carRacingService.registerRacer(inputView.inputNumberOfCar());
+    resultView.printResult(carRacingService.gameStart(inputView.inputTryCount(), challengers));
   }
 }

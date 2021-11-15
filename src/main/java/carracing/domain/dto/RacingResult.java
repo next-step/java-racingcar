@@ -2,20 +2,18 @@ package carracing.domain.dto;
 
 import carracing.domain.entity.Winner;
 
-import java.util.List;
-
 public class RacingResult {
 
-  public final List<RoundResult> results;
+  public final RoundResult result;
   public final Winner winner;
 
-  public RacingResult(List<RoundResult> results, Winner winner) {
-    this.results = results;
+  public RacingResult(RoundResult result, Winner winner) {
+    this.result = result;
     this.winner = winner;
   }
 
-  public List<RoundResult> getResults() {
-    return results;
+  public RoundResult getResult() {
+    return new RoundResult(result.getRoundDataList());
   }
 
   public Winner getWinner() {

@@ -18,7 +18,7 @@ class ParticipantTest {
   @MethodSource("generateArray")
   @DisplayName("문자열로 이름 목록을 받아 파싱한뒤 List형태로 이름을 각각 반환한다.")
   void ofTest(String names, List<String> nameList) {
-    List<String> participant = Participant.of(names).getParticipant();
+    List<String> participant = Participant.parse(names).getParticipant();
     for(String name : participant) {
       assertThat(nameList.contains(name)).isTrue();
     }

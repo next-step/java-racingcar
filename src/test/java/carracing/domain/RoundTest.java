@@ -32,8 +32,15 @@ class RoundTest {
   @ParameterizedTest
   @NullSource
   @DisplayName("Round 생성 시 null이 입력되면 Exception을 던진다.")
-  void constructTestWithException(Number input) {
+  void constructInputNullTestWithException(Number input) {
     assertThatIllegalArgumentException().isThrownBy(() -> new Round(input));
+  }
+
+  @ParameterizedTest
+  @ValueSource(ints = 0)
+  @DisplayName("Round 생성 시 null이 입력되면 Exception을 던진다.")
+  void constructInputZeroTestWithException(int input) {
+    assertThatIllegalArgumentException().isThrownBy(() -> new Round(new Number(input)));
   }
 
   @ParameterizedTest

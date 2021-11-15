@@ -7,7 +7,7 @@ import static java.util.stream.Collectors.toList;
 
 public class Participant {
 
-  private static final String comma = ",";
+  private static final String COMMA = ",";
 
   private final List<String> participant;
 
@@ -15,12 +15,16 @@ public class Participant {
     this.participant = participant;
   }
 
-  public static Participant of(String names) {
-    return new Participant(Arrays.stream(names.split(comma))
+  public static Participant parse(String names) {
+    return new Participant(Arrays.stream(names.split(COMMA))
                                  .collect(toList()));
   }
 
   public List<String> getParticipant() {
     return participant;
+  }
+
+  public int size() {
+    return participant.size();
   }
 }

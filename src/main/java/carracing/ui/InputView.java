@@ -30,7 +30,7 @@ public class InputView {
   }
 
   public Participant inputNumberOfCar() {
-    return Participant.of(inputName(CAR_QUESTION));
+    return Participant.parse(inputName(CAR_QUESTION));
   }
 
   public Round inputTryCount() {
