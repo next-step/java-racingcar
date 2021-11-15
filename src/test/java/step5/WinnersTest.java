@@ -4,33 +4,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class WinnersTest {
 
-    private List<Car> testCars;
-
-    @BeforeEach
-    void init() {
-        testCars = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
-            testCars.add(new Car("test" + i, new RandomMoveStrategy()));
-        }
-        while (testCars.get(0).getPosition().getPosition() == 0) {
-            testCars.get(0).move();
-        }
-    }
-
     @Test
     void getWinners() {
-        List<Car> winners = Winners.getWinners(testCars);
+        Car kim = new Car("kim", 0, new RandomMoveStrategy());
+        Car lee = new Car("lee", 2, new RandomMoveStrategy());
+        Car park = new Car("park", 2, new RandomMoveStrategy());
+        List<Car> winners = Winners.getWinners(Arrays.asList(kim, lee, park));
         assertAll(
-            () -> assertEquals(1, winners.size()),
-            () -> assertThat(winners.get(0).getCarName()).isEqualTo(new CarName("test0"))
-//            () -> assertThat(winners.get(0).getPosition()).isEqualTo(new Position(1))
+            () -> assertEquals(2, winners.size()),
+            () -> assertThat(winners.get(0)).isEqualTo(new Car("lee", 2, new RandomMoveStrategy())),
+            () -> assertThat(winners.get(1)).isEqualTo(new Car("park", 2, new RandomMoveStrategy()))
         );
     }
 
