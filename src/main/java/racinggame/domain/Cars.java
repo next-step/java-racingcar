@@ -2,21 +2,26 @@ package racinggame.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
 
-    private static final Integer START_INDEX = 0;
+    private List<Car> cars;
 
-    private final List<Car> cars;
-
-    public Cars(Integer carCount) {
-        this(carCount, Location.START_LOCATION);
+    public static Cars from(Names names) {
+        return Cars.of(names, Location.START_LOCATION);
     }
-    public Cars(Integer carCount, Integer location) {
-        cars = IntStream.range(START_INDEX, carCount)
-                .mapToObj((idx) -> new Car(location))
-                .collect(Collectors.toList());;
+
+    public static Cars of(Names names, Integer location) {
+
+        List<Car> entryCars = names.getNames()
+                                    .stream()
+                                    .map(name -> new Car(name, location))
+                                    .collect(Collectors.toList());
+        return new Cars(entryCars);
+    }
+
+    private Cars (List<Car> entryCars) {
+       this.cars = entryCars;
     }
 
     public List<Car> getCars() {
@@ -25,7 +30,32 @@ public class Cars {
 
     public void roundRacing(StateGenerator stateGenerator) {
         for (Car car : cars) {
-            car.move(stateGenerator.getState());
+            car.move(stateGenerator);
+        }
+    }
+
+    private Location inFormFirstRecord() {
+        Car car = cars.get(0);
+        Location location = car.getLocation();
+        for (int i = 1; i < cars.size(); i++) {
+            location = location.compareToLocation(cars.get(i).getLocation());
+        }
+        return location;
+    }
+
+    public Names inFormWinners() {
+        StringBuilder names = new StringBuilder();
+        Location firstRecord = this.inFormFirstRecord();
+        for (Car car : cars) {
+            compareToRecord(names, car, firstRecord);
+        }
+        return Names.from(names.toString());
+    }
+
+    private void compareToRecord(StringBuilder names, Car car, Location firstRecord) {
+        if (firstRecord.equals(car.getLocation())) {
+            names.append(car.getName().getName());
+            names.append(",");
         }
     }
 }

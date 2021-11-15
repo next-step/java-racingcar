@@ -46,4 +46,11 @@ public class Location implements Comparable<Location> {
         }
         return -1;
     }
+
+    public Location compareToLocation(Location o) {
+        if (o.compareTo(this) == 1) {
+            return o;
+        }
+        return this;
+    }
 }
