@@ -10,4 +10,5 @@ public class RandomMoveStrategy implements MoveStrategy {
     public boolean isMove() {
         return RandomUtils.nextInt() >= MINIMUM_MOVE_SIZE;
     }
+
 }
