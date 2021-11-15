@@ -9,28 +9,28 @@ import edu.nextstep.camp.racinggame.domain.car.Cars;
 import edu.nextstep.camp.racinggame.domain.car.Position;
 
 public class Race {
-    private final Turn turn;
+    private final Turns turns;
     private final Cars cars;
 
-    private Race(Cars cars, Turn turns) {
+    private Race(Cars cars, Turns turns) {
         this.cars = cars;
-        this.turn = turns;
+        this.turns = turns;
     }
 
-    public static Race of(Cars cars, Turn turn) {
+    public static Race of(Cars cars, Turns turns) {
         if (cars == null) {
             throw new IllegalArgumentException("cars cannot be null.");
         }
 
-        if (turn == null) {
+        if (turns == null) {
             throw new IllegalArgumentException("turns cannot be null.");
         }
 
-        return new Race(cars, turn);
+        return new Race(cars, turns);
     }
 
-    public int totalTurns() {
-        return turn.total();
+    public Turn totalTurns() {
+        return turns.total();
     }
 
     public int numberOfCars() {
@@ -44,14 +44,14 @@ public class Race {
     }
 
     public void process() {
-        if (turn.hasNext()) {
+        if (turns.hasNext()) {
             cars.forEach(Car::attemptToMove);
-            turn.next();
+            turns.next();
         }
     }
 
     public boolean isEnded() {
-        return !turn.hasNext();
+        return !turns.hasNext();
     }
 
     public Position maxPosition() {

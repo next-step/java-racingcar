@@ -21,10 +21,6 @@ import static edu.nextstep.camp.racinggame.TestMovePolicy.NEVER_MOVE_POLICY;
 import static org.assertj.core.api.Assertions.*;
 
 public class RaceTest {
-    static Turn testTurn() {
-        return Turn.of(1);
-    }
-
     static Cars testCars() {
         return Cars.of(Stream.of("test0", "test1", "test2", "test3")
                         .map(Name::of)
@@ -39,34 +35,32 @@ public class RaceTest {
 
     static Stream<Arguments> parseValidRaceArguments() {
         return Stream.of(
-                Arguments.of(testCarAsList(), Turn.of(1)),
-                Arguments.of(testCarAsList(), Turn.of(15)),
-                Arguments.of(testCarAsList(), Turn.of(1000)),
-                Arguments.of(testCars(), Turn.of(1)),
-                Arguments.of(testCars(), Turn.of(15)),
-                Arguments.of(testCars(), Turn.of(1000))
+                Arguments.of(testCarAsList(), Turns.of(1)),
+                Arguments.of(testCarAsList(), Turns.of(1000)),
+                Arguments.of(testCars(), Turns.of(1)),
+                Arguments.of(testCars(), Turns.of(1000))
         );
     }
 
     @ParameterizedTest(name = "create race test: {arguments}")
     @MethodSource("parseValidRaceArguments")
-    public void create(Cars cars, Turn turn) {
-        final Race race = Race.of(cars, turn);
+    public void create(Cars cars, Turns turns) {
+        final Race race = Race.of(cars, turns);
         assertThat(race.numberOfCars()).isEqualTo(cars.size());
-        assertThat(race.totalTurns()).isEqualTo(turn.total());
+        assertThat(race.totalTurns()).isEqualTo(turns.total());
     }
 
     static Stream<Arguments> parseIllegalArgumentsOfRace() {
         return Stream.of(
-                Arguments.of(null, testTurn()),
+                Arguments.of(null, Turns.of(1)),
                 Arguments.of(testCars(), null)
         );
     }
 
     @ParameterizedTest(name = "failed to create race: {arguments}")
     @MethodSource("parseIllegalArgumentsOfRace")
-    public void createFailed(Cars cars, Turn turn) {
-        assertThatIllegalArgumentException().isThrownBy(() -> Race.of(cars, turn));
+    public void createFailed(Cars cars, Turns turns) {
+        assertThatIllegalArgumentException().isThrownBy(() -> Race.of(cars, turns));
     }
 
     static Collection<Position> expectedPositions(int size, int position) {
@@ -77,16 +71,16 @@ public class RaceTest {
 
     @ParameterizedTest(name = "get game result(initial status): {arguments}")
     @MethodSource("parseValidRaceArguments")
-    public void gameResult(Cars cars, Turn turn) {
-        final Race race = Race.of(cars, turn);
+    public void gameResult(Cars cars, Turns turns) {
+        final Race race = Race.of(cars, turns);
         assertThat(race.gameResult()).hasSameElementsAs(expectedPositions(cars.size(), 0));
     }
 
     @ParameterizedTest(name = "process game during given turns: {arguments}")
     @MethodSource("parseValidRaceArguments")
-    public void process(Cars cars, Turn turn) {
-        final Race race = Race.of(cars, turn);
-        final Collection<Position> expected = expectedPositions(cars.size(), turn.total());
+    public void process(Cars cars, Turns turns) {
+        final Race race = Race.of(cars, turns);
+        final Collection<Position> expected = expectedPositions(cars.size(), turns.total().toInt());
         assertThat(race.isEnded()).isFalse();
 
         while (!race.isEnded()) {
@@ -103,8 +97,8 @@ public class RaceTest {
 
     @ParameterizedTest(name = "check max position: {arguments}")
     @MethodSource("parseValidRaceArguments")
-    public void maxPosition(Cars cars, Turn turn) {
-        final Race race = Race.of(cars, turn);
+    public void maxPosition(Cars cars, Turns turns) {
+        final Race race = Race.of(cars, turns);
         for (int i = 0; !race.isEnded(); i++) {
             assertThat(race.maxPosition().toInt()).isEqualTo(i);
             race.process();
@@ -119,15 +113,15 @@ public class RaceTest {
         final Car TEST_CAR_3 = Car.of(Name.of("test3"), NEVER_MOVE_POLICY);
         final Car TEST_CAR_4 = Car.of(Name.of("test4"), ALWAYS_MOVE_POLICY);
         return Stream.of(
-            Arguments.of(Cars.of(TEST_CAR_0, TEST_CAR_1), testTurn(), List.of(TEST_CAR_0.name())),
-            Arguments.of(Cars.of(TEST_CAR_2, TEST_CAR_3, TEST_CAR_4), testTurn(), List.of(TEST_CAR_2.name(), TEST_CAR_4.name()))
+            Arguments.of(Cars.of(TEST_CAR_0, TEST_CAR_1), Turns.of(1), List.of(TEST_CAR_0.name())),
+            Arguments.of(Cars.of(TEST_CAR_2, TEST_CAR_3, TEST_CAR_4), Turns.of(1), List.of(TEST_CAR_2.name(), TEST_CAR_4.name()))
         );
     }
 
     @ParameterizedTest(name = "get winner after race is over with: {arguments}")
     @MethodSource("parseCheckWinnerArguments")
-    public void checkWinner(Cars cars, Turn turn, List<Name> expectedWinner) {
-        final Race race = Race.of(cars, turn);
+    public void checkWinner(Cars cars, Turns turns, List<Name> expectedWinner) {
+        final Race race = Race.of(cars, turns);
         assertThat(race.isEnded()).isFalse();
         race.process();
         assertThat(race.isEnded()).isTrue();
@@ -137,7 +131,7 @@ public class RaceTest {
     @Test
     @DisplayName("failed to get winner caused the race is not over")
     public void attemptToCheckWinnerDuringTheRace() {
-        final Race race = Race.of(testCarAsList(), testTurn());
+        final Race race = Race.of(testCarAsList(), Turns.of(1));
         assertThat(race.isEnded()).isFalse();
         assertThatIllegalStateException().isThrownBy(race::winners);
     }

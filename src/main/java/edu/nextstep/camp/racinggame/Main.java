@@ -7,7 +7,7 @@ import edu.nextstep.camp.racinggame.domain.car.Cars;
 import edu.nextstep.camp.racinggame.domain.car.Name;
 import edu.nextstep.camp.racinggame.domain.car.policy.RandomMovePolicy;
 import edu.nextstep.camp.racinggame.domain.race.Race;
-import edu.nextstep.camp.racinggame.domain.race.Turn;
+import edu.nextstep.camp.racinggame.domain.race.Turns;
 import edu.nextstep.camp.racinggame.view.InputView;
 import edu.nextstep.camp.racinggame.view.ResultView;
 
@@ -21,13 +21,13 @@ public class Main {
                 .stream()
                 .map(Name::of)
                 .collect(Collectors.toList());
-        final Turn turns = Turn.of(InputView.inputPositiveNumber(TURN_INPUT_MESSAGE));
+        final Turns turns = Turns.of(InputView.inputPositiveNumber(TURN_INPUT_MESSAGE));
 
         final Cars cars = Cars.of(names, RandomMovePolicy.getInstance());
         final Race race = Race.of(cars, turns);
         while (!race.isEnded()) {
             race.process();
-            ResultView.printResult(race.totalTurns(), race.gameResult());
+            ResultView.printResult(race.totalTurns().toInt(), race.gameResult());
         }
 
         ResultView.printWinners(race.winners());
