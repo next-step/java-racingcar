@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import study.racing.exception.InvalidCarNameException;
+import study.racing.model.Name;
 import study.racing.utils.ScannerUtils;
 
 public final class InputView {
@@ -18,18 +19,20 @@ public final class InputView {
     private InputView() {
     }
 
-    public static List<String> acceptCarNames() {
+    public static List<Name> acceptCarNames() {
         System.out.println(QUETION_ABOUT_CAR_NAMES);
         String inputCarNames = ScannerUtils.nextLine();
-        List<String> carNames = Arrays.stream(inputCarNames.split(DELIMITER)).collect(Collectors.toList());
+        List<Name> carNames = Arrays.stream(inputCarNames.split(DELIMITER))
+                                    .map(Name::new)
+                                    .collect(Collectors.toList());
 
         validateCarNamesOrThrow(carNames);
         return carNames;
     }
 
-    private static void validateCarNamesOrThrow(List<String> carNames) {
+    private static void validateCarNamesOrThrow(List<Name> carNames) {
         boolean isExistExeedName = carNames.stream()
-                                           .anyMatch(name -> name.length() > NAME_LENGTH_LIMIT);
+                                           .anyMatch(name -> name.longerThan(NAME_LENGTH_LIMIT));
         if (isExistExeedName) {
             throw new InvalidCarNameException(INVALID_NAME_MESSAGE + NAME_LENGTH_LIMIT);
         }

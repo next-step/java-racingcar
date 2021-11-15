@@ -3,6 +3,7 @@ package study.racing.ui;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import study.racing.model.Name;
 import study.racing.model.car.Car;
 import study.racing.model.result.GameResults;
 import study.racing.model.result.RoundResult;
@@ -46,6 +47,7 @@ public final class ResultView {
     private static List<String> convertToName(GameResults gameResults) {
         return gameResults.winners().stream()
                           .map(Car::getName)
+                          .map(Name::getName)
                           .collect(Collectors.toList());
     }
 }

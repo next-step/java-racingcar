@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import study.racing.exception.InvalidInputCountException;
+import study.racing.model.Name;
 import study.racing.model.car.RacingCars;
 import study.racing.model.result.GameResults;
 import study.racing.model.result.RoundResult;
@@ -20,7 +21,7 @@ public class RacingGameService {
         this.rule = rule;
     }
 
-    public GameResults race(List<String> carNames, int tryCount) {
+    public GameResults race(List<Name> carNames, int tryCount) {
         validateOrThrow(carNames.size(), tryCount);
 
         RacingCars racingCars = RacingCars.from(carNames);

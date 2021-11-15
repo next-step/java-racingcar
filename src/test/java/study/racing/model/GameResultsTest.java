@@ -29,13 +29,13 @@ class GameResultsTest {
     private static Stream<Arguments> racingCars() {
         Rule trueRule = () -> true;
 
-        Car movedCar1 = new Car("test1");
+        Car movedCar1 = new Car(new Name("test1"));
         movedCar1.moveOrStop(trueRule);
-        Car stoppedCar = new Car("test2");
+        Car stoppedCar = new Car(new Name("test2"));
 
         List<Car> carsWithOnlyWinner = Arrays.asList(movedCar1, stoppedCar);
 
-        Car movedCar2 = new Car("test3");
+        Car movedCar2 = new Car(new Name("test3"));
         movedCar2.moveOrStop(trueRule);
         List<Car> carsWithNultiWinner = Arrays.asList(movedCar1, movedCar2);
 

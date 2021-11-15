@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import study.racing.model.Name;
 import study.racing.model.rule.Rule;
 
 public class RacingCars {
@@ -14,7 +15,7 @@ public class RacingCars {
         this.cars = cars;
     }
 
-    public static RacingCars from(List<String> carNames) {
+    public static RacingCars from(List<Name> carNames) {
         List<Car> cars = carNames.stream()
                                  .map(Car::new)
                                  .collect(Collectors.toList());

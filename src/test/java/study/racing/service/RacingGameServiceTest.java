@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import study.racing.model.Name;
 import study.racing.model.result.GameResults;
 import study.racing.model.rule.RandcomNumberRule;
 import study.racing.model.rule.Rule;
@@ -22,16 +23,17 @@ class RacingGameServiceTest {
     void tryCountTest(int carCount, int tryCount) {
         Rule rule = new RandcomNumberRule();
         RacingGameService racingGameService = new RacingGameService(rule);
-        List<String> carNames = getNames(carCount);
+        List<Name> carNames = getNames(carCount);
 
         GameResults gameResults = racingGameService.race(carNames, tryCount);
 
         assertThat(gameResults.round()).isEqualTo(tryCount);
     }
 
-    private List<String> getNames(int carCount) {
+    private List<Name> getNames(int carCount) {
         return IntStream.range(0, carCount)
                         .mapToObj(Integer::toString)
+                        .map(Name::new)
                         .collect(Collectors.toList());
     }
 
@@ -41,7 +43,7 @@ class RacingGameServiceTest {
     void invalidCountTest(int carCount, int tryCount) {
         Rule rule = new RandcomNumberRule();
         RacingGameService racingGameService = new RacingGameService(rule);
-        List<String> carNames = getNames(carCount);
+        List<Name> carNames = getNames(carCount);
 
         assertThatThrownBy(() -> racingGameService.race(carNames, tryCount)).isInstanceOf(RuntimeException.class);
     }

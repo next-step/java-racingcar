@@ -2,14 +2,15 @@ package study.racing.model.car;
 
 import java.util.Objects;
 
+import study.racing.model.Name;
 import study.racing.model.rule.Rule;
 
 public class Car {
 
-    private final String name;
+    private final Name name;
     private int distance;
 
-    public Car(String name) {
+    public Car(Name name) {
         this.name = name;
     }
 
@@ -27,7 +28,7 @@ public class Car {
         return distance;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
