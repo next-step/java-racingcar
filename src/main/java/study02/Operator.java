@@ -46,10 +46,4 @@ public enum Operator {
     public String toString() {
         return this.operator;
     }
-
-
-    @Override
-    public String toString() {
-        return this.operator;
-    }
 }
