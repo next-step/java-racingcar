@@ -2,6 +2,7 @@ package carracing;
 
 import carracing.exception.CarNameFormatException;
 import carracing.util.Car;
+import carracing.util.Name;
 import carracing.util.RaceResult;
 import carracing.view.InputView;
 import carracing.view.ResultView;
@@ -34,7 +35,7 @@ public class CarRacing {
         ResultView resultView = new ResultView();
 
         for (int i = 0; i < inputView.getCarCount(); i++) {
-            carList.add(new Car(inputView.getCarStringList().get(i)));
+            carList.add(new Car(new Name(inputView.getCarStringList().get(i))));
         }
 
         for (int i = 0; i < inputView.getTryCount(); i++) {
@@ -66,7 +67,7 @@ public class CarRacing {
 
     public void findWinner(List<String> winnerCarNames, Car car, InputView inputView) {
         if (car.getDrivingHistory() == inputView.getTryCount()) {
-            winnerCarNames.add(car.getName());
+            winnerCarNames.add(car.getName().getAlias());
         }
     }
 }
