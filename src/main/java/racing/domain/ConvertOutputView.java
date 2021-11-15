@@ -1,6 +1,6 @@
-package racing.util;
+package racing.domain;
 
-import racing.model.Position;
+import racing.domain.Position;
 
 public class ConvertOutputView {
 
