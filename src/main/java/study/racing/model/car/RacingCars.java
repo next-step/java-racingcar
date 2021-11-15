@@ -14,6 +14,13 @@ public class RacingCars {
         this.cars = cars;
     }
 
+    public static RacingCars from(List<String> carNames) {
+        List<Car> cars = carNames.stream()
+                                 .map(Car::new)
+                                 .collect(Collectors.toList());
+        return new RacingCars(cars);
+    }
+
     public void raceAll(Rule rule) {
         cars.forEach(car -> car.moveOrStop(rule));
     }
