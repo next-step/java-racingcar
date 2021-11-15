@@ -8,19 +8,21 @@ import java.util.List;
 
 public class CarRacingController {
 
-    public void start() {
+    private CarRacingController() {}
+
+    public static void start() {
         CarRacingGame carRacingGame = createCarRacingGameFromInput();
         play(carRacingGame);
     }
 
-    private CarRacingGame createCarRacingGameFromInput() {
+    private static CarRacingGame createCarRacingGameFromInput() {
         List<String> names = TerminalInputView.inputNamesOfCar();
         int numberOfMove = TerminalInputView.inputNumberOfMove();
 
         return new CarRacingGame(names, numberOfMove);
     }
 
-    private void play(CarRacingGame carRacingGame) {
+    private static void play(CarRacingGame carRacingGame) {
         TerminalOutputView.printEmptyLine();
         TerminalOutputView.printStartSentence();
 
