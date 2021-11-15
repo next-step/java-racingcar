@@ -6,12 +6,14 @@ import java.util.stream.IntStream;
 
 public class RacingGame {
     private final InputView inputView;
+    private final ResultView resultView;
     private List<Car> cars;
     private int currentRound;
     private int lastRound;
 
-    public RacingGame(InputView inputView) {
+    public RacingGame(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
+        this.resultView = resultView;
         this.currentRound = 0;
     }
 
@@ -24,6 +26,7 @@ public class RacingGame {
     void play(int numberOfTries) {
         while (currentRound < lastRound) {
             cars.forEach(Car::run);
+            resultView.printResult(cars);
             currentRound += 1;
         }
     }

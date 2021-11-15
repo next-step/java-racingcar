@@ -23,4 +23,13 @@ public class Car {
         int randomNumber = RandomNumberGenerator.randomNumber();
         return randomNumber >= STANDARD_TO_GO;
     }
+
+    public void printCurrentPosition() {
+        StringBuilder currentPosition = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            currentPosition.append('-');
+        }
+
+        System.out.println(currentPosition.toString());
+    }
 }
