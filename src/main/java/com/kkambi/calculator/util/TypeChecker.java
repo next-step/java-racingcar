@@ -1,4 +1,4 @@
-package com.kkambi.racing.util;
+package com.kkambi.calculator.util;
 
 /**
  * 타입 체크를 위한 유틸리티 클래스.

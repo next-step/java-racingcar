@@ -1,7 +1,7 @@
-package com.kkambi.racing.util;
+package com.kkambi.calculator.util;
 
 import java.util.*;
-import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 
 /**
  * 사칙 연산이 들어간 문자열 식을 계산하는 유틸리티 클래스.
@@ -84,14 +84,14 @@ public class StringCalculator {
     }
 
     private enum Operator {
-        PLUS("+", (x, y) -> x + y),
+        PLUS("+", Integer::sum),
         MINUS("-", (x, y) -> x - y),
         MULTIPLY("*", (x, y) -> x * y),
         DIVIDE("/", (x, y) -> x / y);
 
         private static final Map<String, Operator> SYMBOL_TO_OPERATOR = new HashMap<>();
         private final String symbol;
-        private final BiFunction<Integer, Integer, Integer> calculation;
+        private final BinaryOperator<Integer> calculation;
 
         static {
             for (Operator operator : Operator.values()) {
@@ -99,7 +99,7 @@ public class StringCalculator {
             }
         }
 
-        Operator(String symbol, BiFunction<Integer, Integer, Integer> calculation) {
+        Operator(String symbol, BinaryOperator<Integer> calculation) {
             this.symbol = symbol;
             this.calculation = calculation;
         }

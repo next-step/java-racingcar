@@ -1,5 +1,6 @@
-package com.kkambi.racing.util;
+package com.kkambi.calculator.util;
 
+import com.kkambi.calculator.util.StringCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -8,6 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class StringCalculatorTest {
@@ -39,12 +41,10 @@ class StringCalculatorTest {
     @ParameterizedTest
     void throwExceptionWhenEmptyFormula(String formula, String expectedMessage) {
         // when
-        IllegalArgumentException illegalArgumentException = assertThrows(
-                IllegalArgumentException.class, () -> StringCalculator.calculate(formula)
-        );
-
         // then
-        assertThat(illegalArgumentException).hasMessageContaining(expectedMessage);
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> StringCalculator.calculate(formula))
+                .withMessageContaining(expectedMessage);
     }
 
     private static Stream<Arguments> singleOperatorProvider() {
