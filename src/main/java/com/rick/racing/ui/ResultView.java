@@ -8,15 +8,7 @@ public class ResultView {
     private static final String MESSAGE_RUN_RESULT = "실행 결과";
     private static final String MESSAGE_PROGRESS_MARK = "-";
 
-    private final RacingPlayData racingPlayData;
-    private final RacingResult racingResult;
-
-    public ResultView(RacingPlayData racingPlayData, RacingResult racingResult) {
-        this.racingPlayData = racingPlayData;
-        this.racingResult = racingResult;
-    }
-
-    public void showResult() {
+    public static void showResult(RacingPlayData racingPlayData, RacingResult racingResult) {
         System.out.println(MESSAGE_RUN_RESULT);
 
         for (int tryIndex = 0; tryIndex < racingPlayData.tryCount(); tryIndex++) {
@@ -25,7 +17,7 @@ public class ResultView {
         }
     }
 
-    private void drawRoundRecord(RacingPlayData racingPlayData, RacingResult racingResult, int tryIndex) {
+    private static void drawRoundRecord(RacingPlayData racingPlayData, RacingResult racingResult, int tryIndex) {
         for (int carIndex = 0; carIndex < racingPlayData.carCount(); carIndex++) {
             int carPosition = racingResult.recordPosition(carIndex, tryIndex);
             drawCarRecord(carPosition);
@@ -33,7 +25,7 @@ public class ResultView {
         }
     }
 
-    private void drawCarRecord(int carPosition) {
+    private static void drawCarRecord(int carPosition) {
         for (int i = 0; i < carPosition; i++) {
             System.out.print(MESSAGE_PROGRESS_MARK);
         }

@@ -13,18 +13,12 @@ public class CarRacingCore {
     private static final int RANDOM_BOUND = 10;
     private static final int GO_THRESHOLD = 4;
 
-    private final InputView inputView;
-    private final Random random;
-
-    public CarRacingCore() {
-        inputView = new InputView();
-        random = new Random();
-    }
+    private final Random random = new Random();
 
     public void start() {
-        RacingPlayData racingPlayData = inputView.getGameDataFromUser();
+        RacingPlayData racingPlayData = InputView.getGameDataFromUser();
         RacingResult racingResult = doGame(racingPlayData, this::isGo);
-        new ResultView(racingPlayData, racingResult).showResult();
+        ResultView.showResult(racingPlayData, racingResult);
     }
 
     public RacingResult doGame(RacingPlayData racingPlayData, Supplier<Boolean> goOrStopSupplier) {
