@@ -1,6 +1,7 @@
 package carracing.view;
 
 import carracing.util.Car;
+import carracing.util.Cars;
 
 import java.util.List;
 
@@ -22,8 +23,8 @@ public class ResultView {
     private static final String LINE_BREAK = "%n";
     private static final String WINNER_PRINT_FORMAT = "%s가 최종 우승했습니다.";
 
-    public void printRacing(List<Car> carList) {
-        for (Car car : carList) {
+    public void printRacing(Cars carList) {
+        for (Car car : carList.getCars()) {
             System.out.println();
             print(car);
         }

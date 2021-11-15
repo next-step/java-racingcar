@@ -1,7 +1,5 @@
 package carracing.util;
 
-import carracing.exception.CarNameFormatException;
-
 /*
  * Car
  *
@@ -26,7 +24,7 @@ public class Car {
     public Car() {
     }
 
-    public Car(Name name) throws CarNameFormatException {
+    public Car(Name name) {
         this.name = name;
     }
 
