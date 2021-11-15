@@ -14,35 +14,35 @@ import org.junit.jupiter.params.provider.MethodSource;
 import study.racing.model.car.Car;
 import study.racing.model.car.RacingCars;
 import study.racing.model.result.GameResults;
-import study.racing.model.result.RoundResult;
+import study.racing.model.result.Round;
 import study.racing.model.rule.Rule;
 
 class GameResultsTest {
 
-    @DisplayName("라운드")
+    @DisplayName("gameResults와 마지막 round가 주어졌을 때, winner가 같은지를 검증")
     @ParameterizedTest
-    @MethodSource("racingCars")
-    void roundTest(GameResults gameResults, List<Car> winners) {
-        assertThat(gameResults.winners()).isEqualTo(winners);
+    @MethodSource("gameResults")
+    void roundTest(GameResults gameResults, Round round) {
+        assertThat(gameResults.winners()).isEqualTo(round.winners());
     }
 
-    private static Stream<Arguments> racingCars() {
+    private static Stream<Arguments> gameResults() {
         Rule trueRule = () -> true;
 
-        Car movedCar1 = new Car(new Name("test1"));
-        movedCar1.moveOrStop(trueRule);
-        Car stoppedCar = new Car(new Name("test2"));
+        Car firstMovedCar = new Car(new Name("test1"));
+        Car secondMovedCar = new Car(new Name("test2"));
+        Car stoppedCar = new Car(new Name("test3"));
 
-        List<Car> carsWithOnlyWinner = Arrays.asList(movedCar1, stoppedCar);
+        firstMovedCar.moveOrStop(trueRule);
+        secondMovedCar.moveOrStop(trueRule);
 
-        Car movedCar2 = new Car(new Name("test3"));
-        movedCar2.moveOrStop(trueRule);
-        List<Car> carsWithNultiWinner = Arrays.asList(movedCar1, movedCar2);
+        List<Car> carsWithOnlyWinner = Arrays.asList(firstMovedCar, stoppedCar);
+        List<Car> carsWithNultiWinner = Arrays.asList(firstMovedCar, secondMovedCar);
 
-        RoundResult resultWithOnlyWinner = new RoundResult(new RacingCars(carsWithOnlyWinner));
-        RoundResult resultWithMultiWinner = new RoundResult(new RacingCars(carsWithNultiWinner));
-        return Stream.of(
-                Arguments.of(new GameResults(Arrays.asList(resultWithOnlyWinner)), Arrays.asList(movedCar1)),
-                Arguments.of(new GameResults(Arrays.asList(resultWithMultiWinner)), Arrays.asList(movedCar1, movedCar2)));
+        Round roundWithOnlyWinner = new Round(new RacingCars(carsWithOnlyWinner));
+        Round roundWithMultiWinner = new Round(new RacingCars(carsWithNultiWinner));
+
+        return Stream.of(Arguments.of(new GameResults(Arrays.asList(roundWithOnlyWinner)), roundWithOnlyWinner),
+                         Arguments.of(new GameResults(Arrays.asList(roundWithMultiWinner)), roundWithMultiWinner));
     }
 }

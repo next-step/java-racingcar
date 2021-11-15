@@ -9,10 +9,12 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.ArgumentsProvider;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
 
 import study.racing.model.Name;
 import study.racing.model.rule.Rule;
@@ -39,25 +41,28 @@ class RacingCarsTest {
 
     @DisplayName("몇 차례 이동한 차들이 주어졌을 때, 현 시점에서 가장 많이 움직인 차를 리턴하는지 검증")
     @ParameterizedTest
-    @MethodSource("racingCars")
-    void testMostMovedCars(RacingCars racingCars, List<Car> mostMovedCars) {
+    @ArgumentsSource(RacingCarsProvider.class)
+    void mostMovedCarsTest(RacingCars racingCars, List<Car> mostMovedCars) {
         assertThat(mostMovedCars).isEqualTo(racingCars.mostMovedCars());
     }
 
-    private static Stream<Arguments> racingCars() {
-        Rule trueRule = () -> true;
+    static class RacingCarsProvider implements ArgumentsProvider {
 
-        Car movedCar1 = new Car(new Name("test1"));
-        movedCar1.moveOrStop(trueRule);
-        Car stoppedCar = new Car(new Name("test2"));
+        @Override
+        public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) {
+            Rule trueRule = () -> true;
 
-        List<Car> carsWithOnlyWinner = Arrays.asList(movedCar1, stoppedCar);
+            Car firstMovedCar = new Car(new Name("test1"));
+            Car secondMovedCar = new Car(new Name("test2"));
+            Car stoppedCar = new Car(new Name("test3"));
 
-        Car movedCar2 = new Car(new Name("test3"));
-        movedCar2.moveOrStop(trueRule);
-        List<Car> carsWithNultiWinner = Arrays.asList(movedCar1, movedCar2);
+            firstMovedCar.moveOrStop(trueRule);
+            secondMovedCar.moveOrStop(trueRule);
 
-        return Stream.of(Arguments.of(new RacingCars(carsWithOnlyWinner), Arrays.asList(movedCar1)),
-                         Arguments.of(new RacingCars(carsWithNultiWinner), Arrays.asList(movedCar1, movedCar2)));
+            List<Car> carsWithOnlyWinner = Arrays.asList(firstMovedCar, stoppedCar);
+            List<Car> carsWithMultiWinner = Arrays.asList(firstMovedCar, secondMovedCar);
+            return Stream.of(Arguments.of(new RacingCars(carsWithOnlyWinner), Arrays.asList(firstMovedCar)),
+                             Arguments.of(new RacingCars(carsWithMultiWinner), carsWithMultiWinner));
+        }
     }
 }

@@ -27,7 +27,7 @@ class RacingGameServiceTest {
 
         GameResults gameResults = racingGameService.race(carNames, tryCount);
 
-        assertThat(gameResults.round()).isEqualTo(tryCount);
+        assertThat(gameResults.allRoundResults().size()).isEqualTo(tryCount);
     }
 
     private List<Name> getNames(int carCount) {

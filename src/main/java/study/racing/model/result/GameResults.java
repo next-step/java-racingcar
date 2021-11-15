@@ -7,26 +7,23 @@ import study.racing.model.car.Car;
 
 public class GameResults {
 
-    private final List<RoundResult> gameResults;
+    public static final int LAST_INDEX_MAKER = 1;
 
-    public GameResults(List<RoundResult> gameResults) {
+    private final List<Round> gameResults;
+
+    public GameResults(List<Round> gameResults) {
         this.gameResults = gameResults;
     }
 
-    public int round() {
-        return gameResults.size();
-    }
-
-    public List<RoundResult> allRoundResults() {
+    public List<Round> allRoundResults() {
         return Collections.unmodifiableList(gameResults);
     }
 
     public List<Car> winners() {
-        return lastRound().result().mostMovedCars();
+        return lastRound().winners();
     }
 
-    private RoundResult lastRound() {
-        int lastRoundIndex = gameResults.size() - 1;
-        return gameResults.get(lastRoundIndex);
+    private Round lastRound() {
+        return gameResults.get(gameResults.size() - LAST_INDEX_MAKER);
     }
 }

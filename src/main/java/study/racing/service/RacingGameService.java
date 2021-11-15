@@ -8,7 +8,7 @@ import study.racing.exception.InvalidInputCountException;
 import study.racing.model.Name;
 import study.racing.model.car.RacingCars;
 import study.racing.model.result.GameResults;
-import study.racing.model.result.RoundResult;
+import study.racing.model.result.Round;
 import study.racing.model.rule.Rule;
 
 public class RacingGameService {
@@ -29,13 +29,13 @@ public class RacingGameService {
         validateOrThrow(carNames.size(), tryCount);
 
         RacingCars racingCars = RacingCars.from(carNames);
-        List<RoundResult> roundResults = new ArrayList<>();
+        List<Round> rounds = new ArrayList<>();
         for (int i = 0; i < tryCount; i++) {
             racingCars.raceAll(rule);
-            RoundResult roundResult = new RoundResult(racingCars);
-            roundResults.add(roundResult);
+            Round round = new Round(racingCars);
+            rounds.add(round);
         }
-        return new GameResults(roundResults);
+        return new GameResults(rounds);
     }
 
     private static void validateCarNamesOrThrow(List<Name> carNames) {

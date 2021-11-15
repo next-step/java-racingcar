@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import study.racing.model.Name;
 import study.racing.model.car.Car;
 import study.racing.model.result.GameResults;
-import study.racing.model.result.RoundResult;
+import study.racing.model.result.Round;
 
 public final class ResultView {
 
@@ -25,8 +25,10 @@ public final class ResultView {
         printWinner(gameResults);
     }
 
-    private static void doPrint(RoundResult roundResult) {
-        roundResult.result().getCars().forEach(ResultView::doPrint);
+    private static void doPrint(Round round) {
+        round.result()
+             .getCars()
+             .forEach(ResultView::doPrint);
         System.out.println();
     }
 
