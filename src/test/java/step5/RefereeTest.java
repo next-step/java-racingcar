@@ -8,20 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import step4.Car;
-import step4.CarName;
-import step4.RandomMoveStrategy;
-import step4.Referee;
 
 public class RefereeTest {
 
-    private List<step4.Car> testCars;
+    private List<Car> testCars;
 
     @BeforeEach
     void init() {
         testCars = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
-            testCars.add(new step4.Car("test" + i, new RandomMoveStrategy()));
+            testCars.add(new Car("test" + i, new RandomMoveStrategy()));
         }
         while (testCars.get(0).getPosition() == 0) {
             testCars.get(0).move();

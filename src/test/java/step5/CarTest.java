@@ -6,12 +6,10 @@ import java.util.Arrays;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import step4.Car;
-import step4.RandomMoveStrategy;
 
 public class CarTest {
 
-    private step4.Car car;
+    private Car car;
 
     @BeforeEach
     void init() {

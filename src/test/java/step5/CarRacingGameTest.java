@@ -6,12 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import step4.CarDTO;
-import step4.CarRacingGame;
 
 public class CarRacingGameTest {
 
-    private step4.CarRacingGame carRacingGame;
+    private CarRacingGame carRacingGame;
 
     @BeforeEach
     void init() {

@@ -11,25 +11,18 @@ public class CarName {
 
     private void validate(String name) {
         validateNotNull(name);
-        validateNotEmpty(name);
-        validateLengthShorterOrEqualThan5(name);
+        validateMaxLength(name);
     }
 
     private void validateNotNull(String name) {
-        if (name == null) {
-            throw new IllegalArgumentException();
+        if (name == null || name.trim().length() == 0) {
+            throw new InvalidCarNameException("자동차의 이름은 비어있을 수 없습니다");
         }
     }
 
-    private void validateNotEmpty(String name) {
-        if (name.trim().length() == 0) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void validateLengthShorterOrEqualThan5(String name) {
+    private void validateMaxLength(String name) {
         if (name.length() > 5) {
-            throw new IllegalArgumentException();
+            throw new InvalidCarNameException("자동차의 이름은 5자를 초과할 수 없습니다.");
         }
     }
 
