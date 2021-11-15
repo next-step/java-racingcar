@@ -32,4 +32,8 @@ public class RacingCar {
         return sb.toString();
     }
 
+    public int getPosition() {
+        return position;
+    }
+
 }

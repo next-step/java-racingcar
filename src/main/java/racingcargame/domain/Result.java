@@ -15,13 +15,8 @@ public class Result {
         return result;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        currentStates.forEach(currentStates -> {
-            sb.append(currentStates).append('\n');
-        });
-        return sb.toString();
+    public List<String> getCurrentStates() {
+        return currentStates;
     }
 
 }
