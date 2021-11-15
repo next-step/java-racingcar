@@ -13,9 +13,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("자동차 경주 - TerminalInputView 단위 테스트")
 class TerminalInputViewTest {
 
-    InputStream stdin = System.in;
-    PrintStream stdout = System.out;
-    OutputStream outputStream;
+    private final InputStream stdin = System.in;
+    private final PrintStream stdout = System.out;
+    private OutputStream outputStream;
 
     @BeforeEach
     void setUp() {

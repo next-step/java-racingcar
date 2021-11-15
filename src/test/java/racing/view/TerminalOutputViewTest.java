@@ -9,7 +9,6 @@ import racing.model.Car;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,8 +18,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("자동차 경주 - TerminalOutputView 단위 테스트")
 class TerminalOutputViewTest {
 
-    PrintStream stdout = System.out;
-    OutputStream outputStream;
+    private final PrintStream stdout = System.out;
+    private OutputStream outputStream;
 
     @BeforeEach
     void setUp() {

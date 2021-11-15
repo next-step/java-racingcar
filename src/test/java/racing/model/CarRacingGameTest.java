@@ -14,8 +14,8 @@ import static org.assertj.core.api.Assertions.*;
 @DisplayName("CarRacingGame 단위 테스트")
 class CarRacingGameTest {
 
-    List<String> carNames;
-    CarRacingGame carRacingGame;
+    private List<String> carNames;
+    private CarRacingGame carRacingGame;
 
     @BeforeEach
     void setUp() {
