@@ -15,7 +15,7 @@ public class GameInput {
 
     private static void validateBiggerThan0(int roundCount) {
         if (roundCount <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("라운드 수는 0보다 작을 수 없습니다.");
         }
     }
 
@@ -28,19 +28,12 @@ public class GameInput {
 
     private static void validateNames(String names) {
         validateNotNull(names);
-        validateNotEmpty(names);
         validateNamesSizeNot0(names);
     }
 
     private static void validateNotNull(String names) {
-        if (names == null) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static void validateNotEmpty(String names) {
-        if (names.trim().length() == 0) {
-            throw new IllegalArgumentException();
+        if (names == null || names.trim().length() == 0) {
+            throw new IllegalArgumentException("입력이 비어있을 수 없습니다.");
         }
     }
 
