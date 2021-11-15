@@ -10,8 +10,8 @@ public class Car {
         this.location = location;
     }
 
-    public Car move() {
-        return new Car(this.name, this.location + Random.randomMove());
+    public Car move(int move) {
+        return new Car(this.name, this.location + move);
     }
 
     public int getLocation() {

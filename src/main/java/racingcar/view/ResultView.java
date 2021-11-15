@@ -11,12 +11,14 @@ public class ResultView {
     private static final String CAR_RACING_FIGURE = "-";
     private static final String DELIMITER = ",";
 
+    private ResultView() {
+    }
 
-    public void printStartResultView() {
+    public static void printStartResultView() {
         System.out.println("실행 결과");
     }
 
-    public void printResultView(List<Car> racingCar) {
+    public static void printResultView(List<Car> racingCar) {
 
         racingCar.stream()
                 .map(car -> car.getName() + " : " + String.join("", Collections.nCopies(car.getLocation(), CAR_RACING_FIGURE)))
@@ -26,7 +28,7 @@ public class ResultView {
 
     }
 
-    public void printWinnerView(List<Car> winner) {
+    public static void printWinnerView(List<Car> winner) {
         String winnerString = winner.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(DELIMITER));

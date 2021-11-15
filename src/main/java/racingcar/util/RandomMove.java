@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.util;
 
-public class Random {
+public class RandomMove {
 
     private static final int BOUND = 10;
     private static final int MIDDLE_NUMBER = 4;

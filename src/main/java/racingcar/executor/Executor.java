@@ -1,5 +1,6 @@
-package racingcar;
+package racingcar.executor;
 
+import racingcar.RacingGame;
 import racingcar.view.InputView;
 
 public class Executor {
