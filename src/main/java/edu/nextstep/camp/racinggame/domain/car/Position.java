@@ -1,15 +1,14 @@
 package edu.nextstep.camp.racinggame.domain.car;
 
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Position implements Comparable<Position> {
     private static final int INITIAL_POSITION = 0;
 
-    private final AtomicInteger position;
+    private final int position;
 
     private Position(int position) {
-        this.position = new AtomicInteger(position);
+        this.position = position;
     }
 
     public static Position ofZero() {
@@ -24,12 +23,12 @@ public class Position implements Comparable<Position> {
         return new Position(position);
     }
 
-    public void forward() {
-        this.position.incrementAndGet();
+    public Position forward() {
+        return new Position(position + 1);
     }
 
     public int toInt() {
-        return position.get();
+        return position;
     }
 
     @Override
@@ -37,7 +36,7 @@ public class Position implements Comparable<Position> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Position position1 = (Position) o;
-        return position.get() == position1.position.get();
+        return position == position1.position;
     }
 
     @Override
@@ -47,6 +46,6 @@ public class Position implements Comparable<Position> {
 
     @Override
     public int compareTo(Position o) {
-        return position.get() - o.position.get();
+        return position - o.position;
     }
 }
