@@ -11,7 +11,7 @@ class GameRoundTest {
     @Test
     void 게임_라운드를_생성한다() {
         //given
-        GameRound gameRound = GameRound.create(1, new RandomIntNumberGenerator());
+        GameRound gameRound = GameRound.create(1);
         //when & then
         assertThat(gameRound).isNotNull();
     }
@@ -20,7 +20,7 @@ class GameRoundTest {
     void 게임_라운드가_0이하면_IllegalArgumentException이_발생한다() {
         //given
         //when & then
-        assertThatThrownBy(() -> GameRound.create(0, new RandomIntNumberGenerator()))
+        assertThatThrownBy(() -> GameRound.create(0))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

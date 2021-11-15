@@ -1,16 +1,20 @@
 package step3.domain;
 
 public class GameWinner {
-    private Car car;
+    private String name;
 
     private GameWinner() {
     }
 
-    public GameWinner(Car car) {
-        this.car = car;
+    public GameWinner(String name) {
+        this.name = name;
     }
 
-    public String getCarName() {
-        return car.getName();
+    public static GameWinner of(String name) {
+        return new GameWinner(name);
+    }
+
+    public String getName() {
+        return name;
     }
 }
