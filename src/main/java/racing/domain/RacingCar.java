@@ -32,5 +32,4 @@ public class RacingCar {
             .collect(Collectors.toList());
         return new RacingCar(cars);
     }
-
 }
