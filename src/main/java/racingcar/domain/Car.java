@@ -39,7 +39,7 @@ public class Car {
         }
     }
 
-    public boolean isWinner(Position winnerPosition) {
+    public boolean isSamePosition(Position winnerPosition) {
         return this.position.equals(winnerPosition);
     }
 

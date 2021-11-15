@@ -59,7 +59,7 @@ public class Cars {
     public List<Car> findWinners() {
         Position winnerPosition = findWinnerPosition();
 
-        return cars.stream().filter(car -> car.isWinner(winnerPosition))
+        return cars.stream().filter(car -> car.isSamePosition(winnerPosition))
                 .collect(Collectors.toList());
     }
 
