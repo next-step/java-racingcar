@@ -11,12 +11,8 @@ public class RacingCarGroup {
     private final int ZERO = 0;
     private final List<Car> cars;
 
-    public RacingCarGroup(Count count) {
-        RacingManager racingManager = new RandomManager();
-
-        this.cars = IntStream.range(ZERO, count.getCount())
-                        .mapToObj(i -> new Car(racingManager))
-                        .collect(Collectors.toList());
+    public RacingCarGroup(List<Car> cars) {
+        this.cars = cars;
     }
 
     public Count carsCount() {

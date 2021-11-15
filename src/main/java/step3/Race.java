@@ -6,7 +6,6 @@ import java.util.List;
 public class Race {
     private static final int ONE = 1;
     private RacingCarGroup racingCarGroup;
-    private List<Record> records;
     private Count finalLap;
     private Count currentLap;
 
@@ -14,13 +13,14 @@ public class Race {
         currentLap = new Count(ONE);
     }
 
-    public void ready(Count carCount, Count trialCount) {
-        records = new ArrayList<>();
-        this.racingCarGroup = new RacingCarGroup(carCount);
+    public void ready(RacingCarGroup racingCarGroup, Count trialCount) {
+        this.racingCarGroup = racingCarGroup;
         this.finalLap = trialCount;
     }
 
     public List<Record> start() {
+        List<Record> records = new ArrayList<>();
+
         while(currentLap.lessOrEqualsThanOther(finalLap)) {
             racingCarGroup.carsRun();
 
