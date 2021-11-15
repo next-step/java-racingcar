@@ -7,6 +7,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -63,5 +64,24 @@ public class RacingTrackTest {
         for (int j = 0 ; j < 3 ; j++) {
             assertThat(resultMoveDistance[j]).isEqualTo(racingTrack.getRacingCar(racingCarNames.get(j)).currentMoveDistance());
         }
+    }
+
+    @Test
+    @DisplayName("테스트04 - 우승자 판별 테스트")
+    void test04() {
+        List<String> racingCarNames = Arrays.asList("Uzu", "Bada", "Taeyang", "Hosu", "San");
+        // 2번째랑 5번째가 항상 우승함
+        List<Engine> engines = Arrays.asList(
+                Engine.createEngine(10, 10),
+                Engine.createEngine(10, 0),
+                Engine.createEngine(10, 10),
+                Engine.createEngine(10, 10),
+                Engine.createEngine(10, 0));
+        List<Distance> distances = Arrays.asList(Distance.createDistance(), Distance.createDistance(), Distance.createDistance(), Distance.createDistance(), Distance.createDistance());
+        RacingTrack racingTrack = RacingTrack.createRacingTrack(racingCarNames, engines, distances);
+
+        List<RacingCar> winnerOfRace = racingTrack.findWinnerOfRace();
+        List<String> winnerCarNames = winnerOfRace.stream().map(RacingCar::getName).collect(Collectors.toList());
+        assertThat(winnerCarNames).contains("Bada", "San");
     }
 }

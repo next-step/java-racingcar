@@ -1,9 +1,6 @@
 package study04;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -40,6 +37,14 @@ public class RacingTrack {
 
     public RacingCar getRacingCar(String racingCarName) {
         return this.racingCars.get(racingCarName);
+    }
+
+    public List<RacingCar> findWinnerOfRace() {
+        return racingCars.values().stream()
+                .collect(Collectors.groupingBy(RacingCar::currentMoveDistance))
+                .entrySet().stream()
+                .max(Map.Entry.comparingByKey())
+                .get().getValue();
     }
 
     @Override
