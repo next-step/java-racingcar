@@ -5,8 +5,8 @@ import com.rick.racing.model.RacingResult;
 
 public class ResultView {
 
-    public static final String MESSAGE_RUN_RESULT = "실행 결과";
-    public static final String MESSAGE_PROGRESS_MARK = "-";
+    private static final String MESSAGE_RUN_RESULT = "실행 결과";
+    private static final String MESSAGE_PROGRESS_MARK = "-";
 
     private final RacingPlayData racingPlayData;
     private final RacingResult racingResult;

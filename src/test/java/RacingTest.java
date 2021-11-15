@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class RacingTest {
+
     @Test
     @DisplayName("요구사항 1-1 : \"1,2\"를 \",\"로 split")
     void req1_sub1() {
@@ -37,6 +38,7 @@ public class RacingTest {
         final int invalidIndex = 3;
 
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
-                .isThrownBy(()-> input.charAt(invalidIndex)).withMessageMatching("String index out of range: " + invalidIndex);
+            .isThrownBy(() -> input.charAt(invalidIndex))
+            .withMessageMatching("String index out of range: " + invalidIndex);
     }
 }

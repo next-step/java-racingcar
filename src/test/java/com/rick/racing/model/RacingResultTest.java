@@ -42,6 +42,7 @@ public class RacingResultTest {
         RacingResult racingResult = new RacingResult();
         racingResult.addRecord(carRecordHistory0);
 
-        assertThatThrownBy(()->racingResult.recordPosition(carIndex, tryIndex)).isInstanceOf(IndexOutOfBoundsException.class);
+        assertThatThrownBy(() -> racingResult.recordPosition(carIndex, tryIndex))
+            .isInstanceOf(IndexOutOfBoundsException.class);
     }
 }

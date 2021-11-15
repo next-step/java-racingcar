@@ -13,7 +13,7 @@ public class RacingPlayDataTest {
     @DisplayName("잘못된 차 대수 입력 테스트")
     void invalidCarCount(int value) {
         final int validTryCount = 10;
-        assertThatIllegalArgumentException().isThrownBy(()->new RacingPlayData(value, validTryCount));
+        assertThatIllegalArgumentException().isThrownBy(() -> new RacingPlayData(value, validTryCount));
     }
 
     @ParameterizedTest
@@ -21,6 +21,6 @@ public class RacingPlayDataTest {
     @DisplayName("잘못된 시도 횟수 입력 테스트")
     void invalidCTryCount(int value) {
         final int validCarCount = 3;
-        assertThatIllegalArgumentException().isThrownBy(()->new RacingPlayData(validCarCount, value));
+        assertThatIllegalArgumentException().isThrownBy(() -> new RacingPlayData(validCarCount, value));
     }
 }

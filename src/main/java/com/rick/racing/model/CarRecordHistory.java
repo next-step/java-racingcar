@@ -5,10 +5,10 @@ import java.util.List;
 
 public class CarRecordHistory {
 
-    public static final int GO_VALUE = 1;
-    public static final int STOP_VALUE = 0;
+    private static final int GO_VALUE = 1;
+    private static final int STOP_VALUE = 0;
 
-    final private List<Integer> positions = new ArrayList<>();
+    private final List<Integer> positions = new ArrayList<>();
 
     public void go() {
         int lastTryRecord = getLastTryRecord();

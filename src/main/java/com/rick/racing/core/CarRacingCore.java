@@ -10,8 +10,9 @@ import java.util.function.Supplier;
 
 public class CarRacingCore {
 
-    public static final int RANDOM_BOUND = 10;
-    public static final int GO_THRESHOLD = 4;
+    private static final int RANDOM_BOUND = 10;
+    private static final int GO_THRESHOLD = 4;
+
     private final InputView inputView;
     private final Random random;
 
@@ -48,7 +49,7 @@ public class CarRacingCore {
     }
 
     private void move(CarRecordHistory carRecordHistory, Supplier<Boolean> goOrStopSupplier) {
-        if(goOrStopSupplier.get()) {
+        if (goOrStopSupplier.get()) {
             carRecordHistory.go();
             return;
         }
