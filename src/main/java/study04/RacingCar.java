@@ -20,7 +20,11 @@ public class RacingCar {
         return new RacingCar(name, engine, moveDistance);
     }
 
-    public void move() {
+    public String getName() {
+        return this.name;
+    }
+
+    public void run() {
         if (engine.isRun()) {
             this.moveDistance.addDistance();
         }

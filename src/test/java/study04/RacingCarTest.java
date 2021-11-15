@@ -42,7 +42,7 @@ public class RacingCarTest {
         int resultMoveDistance = 1;
 
         for (int i = 0; i < 100; i++) {
-            racingCar.move();
+            racingCar.run();
             if (engine.isLastedRun()) {
                 resultMoveDistance++;
             }

@@ -34,14 +34,12 @@ public class RacingTrack {
         return new RacingTrack(newRacingTrack);
     }
 
-    public void moveAllRacingCar() {
-        racingCars.forEach((name, racingCar) -> racingCar.move());
+    public void run() {
+        racingCars.forEach((name, racingCar) -> racingCar.run());
     }
 
-    public List<Integer> trackingAllRacingCar() {
-        return racingCars.values().stream()
-                .map(RacingCar::currentMoveDistance)
-                .collect(Collectors.toList());
+    public RacingCar getRacingCar(String racingCarName) {
+        return this.racingCars.get(racingCarName);
     }
 
     @Override

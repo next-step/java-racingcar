@@ -50,19 +50,18 @@ public class RacingTrackTest {
         int[] resultMoveDistance = new int[]{1,1,1};
 
         for (int i = 0; i < 100; i++) {
-            racingTrack.moveAllRacingCar();
+            racingTrack.run();
 
             for (int j = 0 ; j < 3 ; j++) {
                 if (engines.get(j).isLastedRun()) {
                     resultMoveDistance[j]++;
                 }
-                assertThat(resultMoveDistance[j]).isEqualTo(racingTrack.trackingAllRacingCar().get(j));
+                assertThat(resultMoveDistance[j]).isEqualTo(racingTrack.getRacingCar(racingCarNames.get(j)).currentMoveDistance());
             }
         }
 
-        List<Integer> trackingAllRacingCar = racingTrack.trackingAllRacingCar();
         for (int j = 0 ; j < 3 ; j++) {
-            assertThat(resultMoveDistance[j]).isEqualTo(trackingAllRacingCar.get(j));
+            assertThat(resultMoveDistance[j]).isEqualTo(racingTrack.getRacingCar(racingCarNames.get(j)).currentMoveDistance());
         }
     }
 }
