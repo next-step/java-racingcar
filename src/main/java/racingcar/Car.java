@@ -1,7 +1,7 @@
 package racingcar;
 
 public class Car {
-    private static int STANDARD_TO_GO = 4;
+    private static final int STANDARD_TO_GO = 4;
     private int position;
 
     public Car() {
