@@ -1,31 +1,39 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import racingcar.view.ResultView;
+
 import java.util.List;
 
 public class RacingGame {
 
-    private final int numOfCar;
+    private List<Car> racingCars;
     private final int numOfTries;
-    private final List<MidScore> midScoreList;
+    private final CarService carService;
+    private final ResultView resultView;
 
-    public RacingGame(int numOfCar, int numOfTries) {
-        this.numOfCar = numOfCar;
+    public RacingGame(String carNames, int numOfTries) {
+        this.racingCars = CarService.makeRacingCarsFromName(carNames);
         this.numOfTries = numOfTries;
-        this.midScoreList = new ArrayList<>();
+        this.carService = new CarService();
+        this.resultView = new ResultView();
     }
 
-    public List<MidScore> racingGame() {
+    public void racingGame() {
 
-        List<Car> racingCars = new ArrayList<>(Collections.nCopies(numOfCar, new Car(0)));
+        resultView.printStartResultView();
 
         for (int value = 1; value <= numOfTries; value++) {
-            racingCars = new Racing(racingCars).doRacing();
-            midScoreList.add(new MidScore(racingCars));
+            racingOnce();
         }
 
-        return midScoreList;
+        List<Car> winner = carService.getWinnerCar(racingCars);
+        resultView.printWinnerView(winner);
+
+    }
+
+    private void racingOnce() {
+        racingCars = new Racing(racingCars).doRacing();
+        resultView.printResultView(racingCars);
     }
 
 }
