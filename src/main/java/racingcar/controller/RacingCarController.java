@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.dto.InputDto;
+import racingcar.domain.dto.ResultDto;
 import racingcar.domain.model.Cars;
 import racingcar.domain.service.RacingGameService;
 import racingcar.view.ResultView;
@@ -20,7 +21,6 @@ public class RacingCarController {
         RacingGameService racingGameService = new RacingGameService(Cars.from(inputDto.getName()));
         Cars cars = racingGameService.gameStart(inputDto.getTryCount());
 
-        ResultView resultView = new ResultView(cars);
-        resultView.outputGameResult();
+        ResultView.outputGameResult(ResultDto.from(cars));
     }
 }

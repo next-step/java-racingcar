@@ -28,8 +28,8 @@ public class CarsTest {
 
     @ParameterizedTest
     @DisplayName("moveCars 성공 테스트")
-    @ValueSource(strings = "kim,dong,hyo")
-    void moveCarsSuccess(String name) {
+    @CsvSource(value = {"kim,dong,hyo:1"}, delimiter = ':')
+    void moveCarsSuccess(String name, int tryCount) {
         // given
         Cars cars = Cars.from(name);
 
@@ -37,7 +37,7 @@ public class CarsTest {
         cars.moveCars(() -> true);
 
         // then
-        assertThat(cars.getWinners().getCars()).isEqualTo(cars.getCars());
+        assertThat(cars.getTryCountTotal()).isEqualTo(tryCount);
     }
 
 }

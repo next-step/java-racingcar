@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import racingcar.domain.exception.HistoryOutOfBoundsException;
 import racingcar.domain.strategy.MoveStrategy;
 
 public class Cars {
@@ -47,24 +46,6 @@ public class Cars {
 
     public int getTryCountTotal() {
         return tryCountTotal;
-    }
-
-    public Cars getWinners() {
-        return new Cars(getWinners(getSuccessMax()));
-    }
-
-    private long getSuccessMax() {
-        return cars.stream()
-            .mapToLong(Car::getHistorySuccessCount)
-            .max()
-            .orElseThrow(HistoryOutOfBoundsException::new);
-    }
-
-    private List<Car> getWinners(long max) {
-        return cars.stream()
-            .filter(car -> car.getHistorySuccessCount() == max)
-            .collect(Collectors
-                .toCollection(ArrayList::new));
     }
 
     @Override
