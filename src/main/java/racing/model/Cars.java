@@ -1,9 +1,7 @@
 package racing.model;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /*
@@ -18,11 +16,18 @@ import java.util.stream.IntStream;
  */
 public class Cars {
 
-    private final List<Car> cars = new LinkedList<>();
+    private final List<Car> cars;
 
     public Cars(String carNames) {
-        Arrays.stream(carNames.split(","))
-                .forEach(carName -> this.cars.add(new Car(carName)));
+        this(
+                Arrays.stream(carNames.split(","))
+                        .map(Car::new)
+                        .collect(Collectors.toList())
+        );
+    }
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public void tryMovingCarsPerRound() {
@@ -31,6 +36,21 @@ public class Cars {
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
+    }
+
+    public String getWinner() {
+        StringJoiner result = new StringJoiner(", ");
+        cars.stream()
+                .filter(x -> x.getPosition() == getTopPosition(cars))
+                .forEach(y -> result.add(y.getName()));
+        return result.toString();
+    }
+
+    private int getTopPosition(List<Car> roundRecord) {
+        return roundRecord.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(NoSuchElementException::new);
     }
 }
 

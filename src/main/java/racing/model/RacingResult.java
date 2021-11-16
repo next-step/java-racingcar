@@ -29,18 +29,6 @@ public class RacingResult {
     }
 
     public String getWinner() {
-        List<Car> lastRoundRecord = roundResults.get((roundResults.size() - 1)).getRecords();
-        StringJoiner result = new StringJoiner(", ");
-        lastRoundRecord.stream()
-                .filter(x -> x.getPosition() == getTopPosition(lastRoundRecord))
-                .forEach(y -> result.add(y.getName()));
-        return result.toString();
-    }
-
-    private int getTopPosition(List<Car> roundRecord) {
-        return roundRecord.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElseThrow(NoSuchElementException::new);
+        return new Cars(roundResults.get((roundResults.size() - 1)).getRecords()).getWinner();
     }
 }

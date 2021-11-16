@@ -1,5 +1,6 @@
 package racing.model;
 
+import javax.naming.Name;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -16,22 +17,22 @@ import java.util.function.Predicate;
 public class Car {
 
     private static final int CRITERIA = 4;
-    private final String name;
-    private int position;
+    private final CarName name;
+    private final CarPosition position;
 
     public Car(String carName) {
         this(carName, 0);
     }
 
     public Car(String carName, int position) {
-        this.name = carName;
-        this.position = position;
+        this.name = new CarName(carName);
+        this.position = new CarPosition(position);
     }
 
     public void moveOnSatisfiedCondition(int condition) {
         Optional.of(condition)
                 .filter(isForward())
-                .ifPresent(x -> position++);
+                .ifPresent(x -> position.forward());
     }
 
     private Predicate<Integer> isForward() {
@@ -39,10 +40,10 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     public String getName() {
-        return name;
+        return name.getCarName();
     }
 }

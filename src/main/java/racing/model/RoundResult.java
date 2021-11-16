@@ -24,7 +24,6 @@ public class RoundResult {
                     this.resultPerCars.add(new Car(car.getName(), car.getPosition()));
                 });
     }
-
     public List<Car> getRecords() {
         return Collections.unmodifiableList(resultPerCars);
     }
