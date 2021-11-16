@@ -20,4 +20,11 @@ public class ScoreList {
         .map(Score::showDisplay)
         .collect(RacingString.joining());
   }
+
+  public Score getScore(Stage stage) {
+    return scores.stream()
+        .filter((score -> score.isSameStage(stage)))
+        .findAny()
+        .orElseThrow();
+  }
 }

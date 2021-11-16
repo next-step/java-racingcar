@@ -21,4 +21,8 @@ public class Score {
   public RacingString showDisplay() {
     return RacingString.DISPLAY_TOKEN_STRING.repeat(value);
   }
+
+  public boolean isSameStage(Stage stage) {
+    return this.stage.equals(stage);
+  }
 }

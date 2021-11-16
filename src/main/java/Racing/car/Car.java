@@ -6,18 +6,23 @@ import Racing.type.RacingString;
 
 public class Car {
 
-  private ScoreList score;
+  private ScoreList scoreList;
 
   public Car() {
-    score = new ScoreList();
+    scoreList = new ScoreList();
   }
 
   public Car move(Stage stage) {
-    score.addScore(stage);
+    scoreList.addScore(stage);
     return this;
   }
 
   public RacingString presentDistance() {
-    return score.showDisplay();
+    return scoreList.showDisplay();
   }
+
+  public RacingString presentDistance(Stage stage) {
+    return scoreList.getScore(stage).showDisplay();
+  }
+
 }
