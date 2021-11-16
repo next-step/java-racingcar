@@ -17,18 +17,18 @@ public class RacingNumber {
   }
 
   public static RacingNumber getRandomNumber() {
-    int number = new Random().nextInt((int) RacingNumber.RANDOM_BOUND);
+    int number = new Random().nextInt((int) RacingNumber.RANDOM_BOUND) + 1;
     return new RacingNumber(number);
   }
 
   @Override
   public boolean equals(Object o) {
-      if (this == o) {
-          return true;
-      }
-      if (o == null || getClass() != o.getClass()) {
-          return false;
-      }
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     RacingNumber that = (RacingNumber) o;
     return Double.compare(that.value, value) == 0;
   }
