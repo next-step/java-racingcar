@@ -11,21 +11,19 @@ import static racingcar.application.CarConstant.*;
 
 public class Racing {
 
-    private final List<Car> cars;
+    private final Cars cars;
     private final int tryCount;
     private final MovingStrategy movingStrategy;
-    private final List<String> winners = new ArrayList<>();
-    private int max = 0;
 
 
     public Racing(int carCount, int tryCount, MovingStrategy movingStrategy) {
-        this.cars = new ArrayList<>(makeCar(carCount));
+        this.cars = new Cars(makeCar(carCount));
         this.tryCount = tryCount;
         this.movingStrategy = movingStrategy;
     }
 
     public Racing(String[] carNames, int tryCount, MovingStrategy movingStrategy) throws IllegalArgumentException {
-        this.cars = new ArrayList<>(makeCar(carNames));
+        this.cars = new Cars(makeCar(carNames));
         this.tryCount = tryCount;
         this.movingStrategy = movingStrategy;
     }
@@ -50,11 +48,7 @@ public class Racing {
     }
 
     public void goingTry() {
-        for (Car car : cars) {
-            car.increaseState(movingStrategy);
-            max = Math.max(car.getState(), max);
-            OutputView.print(car);
-        }
+        cars.goingTry(movingStrategy);
         OutputView.print();
     }
 
@@ -67,27 +61,12 @@ public class Racing {
     }
 
     public void result() {
-        for (Car car : cars) {
-            this.findWinner(car, max);
-        }
-        OutputView.print(winners, "가 최종 우승헀습니다.");
+        OutputView.print(cars.findWinners());
     }
 
-    private void findWinner(Car car, int max) {
-        if (car.getState() == max) {
-            this.winners.add(car.getName());
-        }
-    }
-
-    public List<Car> getCars() {
+    public Cars getCars() {
         return cars;
     }
 
-    public int getMax() {
-        return max;
-    }
 
-    public List<String> getWinners() {
-        return winners;
-    }
 }
