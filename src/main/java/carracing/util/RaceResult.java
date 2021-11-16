@@ -14,7 +14,6 @@ package carracing.util;
  */
 public class RaceResult {
     public int roundCount;
-    public int totalRaceCount;
     public int maximumDistance;
 
     public RaceResult() {

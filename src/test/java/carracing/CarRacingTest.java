@@ -46,7 +46,7 @@ public class CarRacingTest {
         InputView inputView = new InputView(carNames, tryCount);
         RaceResult result = carRacing.racingStart(inputView);
 
-        Assertions.assertThat(result.totalRaceCount).isEqualTo(inputView.getTotalDrivingCount());
+        Assertions.assertThat(result.roundCount * inputView.getCarCount()).isEqualTo(inputView.getTotalDrivingCount());
     }
 
 }

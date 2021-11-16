@@ -41,7 +41,7 @@ public class CarRacing {
 
         Cars cars = new Cars(carList);
         for (int i = 0; i < inputView.getTryCount(); i++) {
-            racing(cars, inputView, raceResult);     /* 시도 횟수 만큼 주행 */
+            racing(cars, inputView);                 /* 시도 횟수 만큼 주행 */
             resultView.printRacing(cars);            /* 시도 횟수 만큼 출력 */
             raceResult.roundCount++;
         }
@@ -55,11 +55,10 @@ public class CarRacing {
         return raceResult;
     }
 
-    public void racing(Cars carList, InputView inputView, RaceResult raceResult) {
+    public void racing(Cars carList, InputView inputView) {
         for (int i = 0; i < inputView.getCarCount(); i++) {
             int randomNum = new Random().nextInt(RANDOM_RANGE);
             carList.get(i).driving(randomNum);
-            raceResult.totalRaceCount++;
         }
     }
 
