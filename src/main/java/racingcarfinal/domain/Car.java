@@ -2,25 +2,22 @@ package racingcarfinal.domain;
 
 public class Car {
 
-    private final String name;
-    private int position;
+    private final Name name;
+    private Position position;
 
     public Car(String name) {
-        this.name = name;
+        this.name = new Name(name);
+        this.position = new Position();
     }
 
     public void move(int moveValue) {
         if (moveValue >= 4) {
-            position++;
+            position = position.increase();
         }
     }
 
-    public String getName() {
-        return this.name;
-    }
-
-    public int getPosition() {
-        return position;
+    public boolean isSamePosition(Position position) {
+        return this.position.equals(position);
     }
 
 }

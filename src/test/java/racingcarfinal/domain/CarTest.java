@@ -13,15 +13,15 @@ public class CarTest {
 
     @Test
     void create() {
-        assertThat(car.getName()).isEqualTo(name);
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car).isInstanceOf(Car.class);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"4,1", "4,1"})
+    @CsvSource(value = {"3,0", "4,1"})
     void move(int moveValue, int position) {
         car.move(moveValue);
-        assertThat(car.getPosition()).isEqualTo(position);
+        assertThat(car.isSamePosition(new Position(position)))
+                .isTrue();
     }
 
 }
