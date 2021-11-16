@@ -7,3 +7,16 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능 구현 목록
+* "자동차 대수는 몇 대 인가요?" 출력
+* 자동차 대수 입력
+* "시도할 회수는 몇 회 인가요?" 출력
+* 시도할 회수 입력
+* 시도 회수 반복문 START
+    * 자동차 대수 반복문 START
+        * 전진 조건 생성, 0`MIN_RANDOM_VALUE`에서 9`MAX_RANDOM_VALUE` 사이에서 random 값
+        * 전진 조건 체크, 4`MIN_FORWARD_VALUE` 이상인 경우 1칸("-", `MOVE_FORWARD`) 이동
+  * 자동차 대수 반복문 END
+* 시도 회수 반복문 END
+* 시도 회수별로 자동차 이동시, 라인별 `-`을 추가하는 형식으로 출력

@@ -1,35 +1,35 @@
-package study;
+package study.step2;
 
 import java.util.Objects;
 
-public class MyNumber {
+public class Number {
     private final int number;
 
-    public MyNumber(String s) {
+    public Number(String s) {
         this(Integer.parseInt(s));
     }
 
-    public MyNumber(int number) {
+    public Number(int number) {
         this.number = number;
     }
 
-    public MyNumber plus(MyNumber other) {
-        return new MyNumber(this.number + other.number);
+    public Number plus(Number other) {
+        return new Number(this.number + other.number);
     }
 
-    public MyNumber minus(MyNumber other) {
-        return new MyNumber(this.number - other.number);
+    public Number minus(Number other) {
+        return new Number(this.number - other.number);
     }
 
-    public MyNumber times(MyNumber other) {
-        return new MyNumber(this.number * other.number);
+    public Number times(Number other) {
+        return new Number(this.number * other.number);
     }
 
-    public MyNumber dividedBy(MyNumber other) {
+    public Number dividedBy(Number other) {
         if(other.number == 0) {
             throw new IllegalArgumentException("분모가 0일 될 수 없습니다.");
         }
-        return new MyNumber(this.number / other.number);
+        return new Number(this.number / other.number);
     }
 
     public int getNumber() {
@@ -40,8 +40,8 @@ public class MyNumber {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MyNumber myNumber = (MyNumber) o;
-        return number == myNumber.number;
+        Number number = (Number) o;
+        return this.number == number.number;
     }
 
     @Override

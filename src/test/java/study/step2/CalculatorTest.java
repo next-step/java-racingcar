@@ -1,10 +1,11 @@
-package study;
+package study.step2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import study.step2.Calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -51,7 +52,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  */
 public class CalculatorTest {
 
-    @DisplayName("입력값이 null")
+    @DisplayName("입력값이 null인 경우 IllegalArgumentException 처리")
     @Test
     public void 입력값이_null(){
         assertThatThrownBy(() -> {
@@ -59,7 +60,7 @@ public class CalculatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("입력값이 빈 공백 문자")
+    @DisplayName("입력값이 빈 공백 문자인 경우 IllegalArgumentException 처리")
     @Test
     public void 입력값이_빈_공백_문자(){
         assertThatThrownBy(() -> {
@@ -67,7 +68,7 @@ public class CalculatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("비정상적인 입력값")
+    @DisplayName("비정상적인 입력값인 경우 IllegalArgumentException 처리")
     @ParameterizedTest(name="{displayName} | 요청식: {0}")
     @ValueSource(strings = {"1 + ",  "1 + 3 +"})
     public void 비정상적인_입력값(String expression){
@@ -76,7 +77,7 @@ public class CalculatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("사칙연산 기호 아닌 입력값")
+    @DisplayName("사칙연산 기호 아닌 입력값인 경우 IllegalStateException 처리")
     @Test
     public void 사칙연산_기호_아닌_입력값(){
         assertThatThrownBy(() -> {
@@ -90,7 +91,7 @@ public class CalculatorTest {
         assertThat(Calculator.calculate("0 / 10")).isEqualTo(0);
     }
 
-    @DisplayName("분모가 0인 나눗셈")
+    @DisplayName("분모가 0인 나눗셈인 경우 IllegalArgumentException 처리")
     @Test
     public void 분모가_0인_나눗셈(){
         assertThatThrownBy(() -> {

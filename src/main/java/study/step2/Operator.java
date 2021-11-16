@@ -1,27 +1,27 @@
-package study;
+package study.step2;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
 
-public enum MyOperator {
+public enum Operator {
     ADDITION("+", (first, second) -> first.plus(second)),
     SUBTRACTION("-", (first, second) -> first.minus(second)),
     MULTIPLICATION("*", (first, second) -> first.times(second)),
     DIVISION("/", (first, second) -> first.dividedBy(second));
 
     public String operator;
-    public BiFunction<MyNumber, MyNumber, MyNumber> operation;
+    public BiFunction<Number, Number, Number> operation;
 
-    MyOperator(String operator, BiFunction<MyNumber, MyNumber, MyNumber> operation){
+    Operator(String operator, BiFunction<Number, Number, Number> operation){
         this.operator = operator;
         this.operation = operation;
     }
 
-    public MyNumber operate(MyNumber first, MyNumber second){
+    public Number operate(Number first, Number second){
         return operation.apply(first, second);
     }
 
-    public static MyOperator operator(String Operator) {
+    public static Operator operator(String Operator) {
         return Arrays.stream(values())
             .filter(o -> o.operator.equals(Operator))
             .findFirst()

@@ -1,12 +1,16 @@
-package study;
+package study.step2;
+
+import java.util.Objects;
 
 public class Calculator {
-    public static int calculate(String param) {
-        String[] values = validation(param);
+    private static int MIN_EXPRESS_LENGTH = 3;
 
-        MyNumber result = new MyNumber(values[0]);
+    public static int calculate(String param) {
+        String[] values = validateParameter(param);
+
+        Number result = new Number(values[0]);
         for(int i = 1; i < values.length; i = i + 2){
-            result = calculate(result, values[i], new MyNumber(values[i+1]));
+            result = calculate(result, values[i], new Number(values[i+1]));
         }
         return result.getNumber();
     }
@@ -16,12 +20,12 @@ public class Calculator {
      * @param param
      * @return
      */
-    private static String[] validation(String param) {
-        if(param == null || param.isEmpty()){
+    private static String[] validateParameter(String param) {
+        if(Objects.isNull(param)  || param.isEmpty()){
             throw new IllegalArgumentException("입력 문자열이 정상적이지 않습니다.");
         }
         String[] values = param.split(" ");
-        if(values.length < 3 || values.length % 2 == 0){
+        if(values.length < MIN_EXPRESS_LENGTH || values.length % 2 == 0){
             throw new IllegalArgumentException("입력 문자열이 정상적이지 않습니다.");
         }
         return values;
@@ -34,8 +38,8 @@ public class Calculator {
      * @param second
      * @return
      */
-    private static MyNumber calculate(MyNumber first, String operator, MyNumber second) {
-        return MyOperator.operator(operator).operate(first, second);
+    private static Number calculate(Number first, String operator, Number second) {
+        return Operator.operator(operator).operate(first, second);
     }
 
 }
