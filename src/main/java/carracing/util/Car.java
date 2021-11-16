@@ -1,5 +1,7 @@
 package carracing.util;
 
+import carracing.exception.CarNameFormatException;
+
 /*
  * Car
  *
@@ -24,8 +26,8 @@ public class Car {
     public Car() {
     }
 
-    public Car(Name name) {
-        this.name = name;
+    public Car(String name) throws CarNameFormatException {
+        this.name = new Name(name);
     }
 
     public boolean driving(int driveCondition) {

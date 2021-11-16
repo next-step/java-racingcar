@@ -3,7 +3,6 @@ package carracing;
 import carracing.exception.CarNameFormatException;
 import carracing.util.Car;
 import carracing.util.Cars;
-import carracing.util.Name;
 import carracing.util.RaceResult;
 import carracing.view.InputView;
 import carracing.view.ResultView;
@@ -36,7 +35,7 @@ public class CarRacing {
         List<Car> carList = new ArrayList<>();
 
         for (int i = 0; i < inputView.getCarCount(); i++) {
-            carList.add(new Car(new Name(inputView.getCarStringList().get(i))));
+            carList.add(new Car(inputView.getCarStringList().get(i)));
         }
 
         Cars cars = new Cars(carList);
