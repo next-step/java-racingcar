@@ -1,9 +1,9 @@
-package study.racing.model.result;
+package study.racing.domain.result;
 
 import java.util.Collections;
 import java.util.List;
 
-import study.racing.model.car.Car;
+import study.racing.domain.car.Car;
 
 public class GameResults {
 

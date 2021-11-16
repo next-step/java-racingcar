@@ -1,12 +1,12 @@
-package study.racing.ui;
+package study.racing.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import study.racing.model.Name;
-import study.racing.model.car.Car;
-import study.racing.model.result.GameResults;
-import study.racing.model.result.Round;
+import study.racing.domain.Name;
+import study.racing.domain.car.Car;
+import study.racing.domain.result.GameResults;
+import study.racing.domain.result.Round;
 
 public final class ResultView {
 

@@ -1,13 +1,13 @@
-package study.racing.model.car;
+package study.racing.domain.car;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import study.racing.model.Distance;
-import study.racing.model.Name;
-import study.racing.model.rule.Rule;
+import study.racing.domain.Distance;
+import study.racing.domain.Name;
+import study.racing.domain.rule.Rule;
 
 public class RacingCars {
 

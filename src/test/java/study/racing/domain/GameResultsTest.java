@@ -1,4 +1,4 @@
-package study.racing.model;
+package study.racing.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
@@ -11,11 +11,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import study.racing.model.car.Car;
-import study.racing.model.car.RacingCars;
-import study.racing.model.result.GameResults;
-import study.racing.model.result.Round;
-import study.racing.model.rule.Rule;
+import study.racing.domain.car.Car;
+import study.racing.domain.car.RacingCars;
+import study.racing.domain.result.GameResults;
+import study.racing.domain.result.Round;
+import study.racing.domain.rule.Rule;
 
 class GameResultsTest {
 

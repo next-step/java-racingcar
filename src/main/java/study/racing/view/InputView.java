@@ -1,10 +1,10 @@
-package study.racing.ui;
+package study.racing.view;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import study.racing.model.Name;
+import study.racing.domain.Name;
 import study.racing.utils.ScannerUtils;
 
 public final class InputView {

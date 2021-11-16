@@ -2,11 +2,11 @@ package study.racing.controller;
 
 import java.util.List;
 
-import study.racing.model.Name;
-import study.racing.model.result.GameResults;
+import study.racing.domain.Name;
+import study.racing.domain.result.GameResults;
 import study.racing.service.RacingGameService;
-import study.racing.ui.InputView;
-import study.racing.ui.ResultView;
+import study.racing.view.InputView;
+import study.racing.view.ResultView;
 
 public class RacingGameController {
 

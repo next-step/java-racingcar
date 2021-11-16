@@ -10,10 +10,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import study.racing.model.Name;
-import study.racing.model.result.GameResults;
-import study.racing.model.rule.RandcomNumberRule;
-import study.racing.model.rule.Rule;
+import study.racing.domain.Name;
+import study.racing.domain.result.GameResults;
+import study.racing.domain.rule.RandcomNumberRule;
+import study.racing.domain.rule.Rule;
 
 class RacingGameServiceTest {
 

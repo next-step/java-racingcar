@@ -1,4 +1,4 @@
-package study.racing.model.car;
+package study.racing.domain.car;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
@@ -16,8 +16,8 @@ import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import study.racing.model.Name;
-import study.racing.model.rule.Rule;
+import study.racing.domain.Name;
+import study.racing.domain.rule.Rule;
 
 class RacingCarsTest {
 

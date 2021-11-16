@@ -1,4 +1,4 @@
-package study.racing.model;
+package study.racing.domain;
 
 public class Name {
 

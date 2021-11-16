@@ -1,9 +1,9 @@
-package study.racing.model.result;
+package study.racing.domain.result;
 
 import java.util.List;
 
-import study.racing.model.car.Car;
-import study.racing.model.car.RacingCars;
+import study.racing.domain.car.Car;
+import study.racing.domain.car.RacingCars;
 
 public class Round {
 

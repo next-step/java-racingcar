@@ -1,4 +1,4 @@
-package study.racing.model.rule;
+package study.racing.domain.rule;
 
 import study.racing.utils.RandomUtils;
 

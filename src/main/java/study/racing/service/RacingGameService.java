@@ -3,13 +3,13 @@ package study.racing.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import study.racing.domain.Name;
+import study.racing.domain.car.RacingCars;
+import study.racing.domain.result.GameResults;
+import study.racing.domain.result.Round;
+import study.racing.domain.rule.Rule;
 import study.racing.exception.InvalidCarNameException;
 import study.racing.exception.InvalidInputCountException;
-import study.racing.model.Name;
-import study.racing.model.car.RacingCars;
-import study.racing.model.result.GameResults;
-import study.racing.model.result.Round;
-import study.racing.model.rule.Rule;
 
 public class RacingGameService {
 
