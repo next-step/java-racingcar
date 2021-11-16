@@ -29,7 +29,7 @@ public class ResultView {
     }
 
     public static void awardRacing(Cars cars) {
-        Names winners = cars.inFormWinners();
+        Names winners = cars.findWinners();
         System.out.print(String.format(MESSAGE_RACE_WINNER, winners.printNames()));
     }
 }
