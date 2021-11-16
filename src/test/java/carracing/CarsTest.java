@@ -9,22 +9,56 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CarsTest {
 
     @Test
     @DisplayName("자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.")
     void getWinner() throws CarNameFormatException {
-        Cars cars = new Cars();
-
+        List<Car> carList = new ArrayList<>();
         for (int i = 1; i < 4; i++) {
             Car car = new Car(new Name("car" + i));
             car.driving(2 + i);
-            cars.add(car);
+            carList.add(car);
         }
+        Cars cars = new Cars(carList);
 
         RaceResult raceResult = new RaceResult();
         raceResult.maximumDistance = 1;
 
-        Assertions.assertThat(cars.getWinner(raceResult)).contains("car2", "car3");
+        List<Car> winners = cars.getWinner(raceResult);
+        List<String> winnerNames = new ArrayList<>();
+
+        for (Car car : winners) {
+            winnerNames.add(car.getName().getAlias());
+        }
+
+        Assertions.assertThat(winnerNames).contains("car2", "car3");
+    }
+
+    @Test
+    @DisplayName("자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이다.")
+    void getWinnerOnlyOne() throws CarNameFormatException {
+        List<Car> carList = new ArrayList<>();
+        for (int i = 1; i < 4; i++) {
+            Car car = new Car(new Name("car" + i));
+            car.driving(1 + i);
+            carList.add(car);
+        }
+        Cars cars = new Cars(carList);
+
+        RaceResult raceResult = new RaceResult();
+        raceResult.maximumDistance = 1;
+
+        List<Car> winners = cars.getWinner(raceResult);
+        List<String> winnerNames = new ArrayList<>();
+
+        for (Car car : winners) {
+            winnerNames.add(car.getName().getAlias());
+        }
+
+        Assertions.assertThat(winnerNames).contains("car3");
     }
 }

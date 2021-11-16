@@ -17,14 +17,14 @@ public class ResultViewTest {
     @DisplayName("정상 출력 확인")
     void printRacing() throws CarNameFormatException {
         ResultView resultView = new ResultView();
-
-        Cars carList = new Cars();
+        List<Car> carList = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
             carList.add(new Car(new Name(String.valueOf(i))));
         }
 
-        resultView.printRacing(carList);
+        Cars cars = new Cars(carList);
+        resultView.printRacing(cars);
     }
 
     @Test
@@ -36,11 +36,11 @@ public class ResultViewTest {
 
     @Test
     @DisplayName("우승 자동차 출력 확인")
-    void printWinner() {
+    void printWinner() throws CarNameFormatException {
         ResultView resultView = new ResultView();
-        List<String> winnerCars = new ArrayList<>();
-        winnerCars.add("car1");
-        winnerCars.add("car2");
+        List<Car> winnerCars = new ArrayList<>();
+        winnerCars.add(new Car(new Name("car1")));
+        winnerCars.add(new Car(new Name("car2")));
         resultView.printWinner(winnerCars);
     }
 }
