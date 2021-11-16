@@ -28,8 +28,7 @@ public class ResultView {
         System.out.print("\n" + String.format(MESSAGE_PLAYER_LOCATION, player.getName().getName(), racingRecord));
     }
 
-    public static void awardRacing(Cars cars) {
-        Names winners = cars.findWinners();
+    public static void awardRacing(Names winners) {
         System.out.print(String.format(MESSAGE_RACE_WINNER, winners.printNames()));
     }
 }

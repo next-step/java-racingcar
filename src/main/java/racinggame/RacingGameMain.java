@@ -18,6 +18,6 @@ public class RacingGameMain {
         RacingGame racingGame = new RacingGame(names, laps, carStateGenerator);
         racingGame.startRacing();
 
-        ResultView.awardRacing(racingGame.getCars());
+        ResultView.awardRacing(racingGame.findWinner());
     }
 }
