@@ -26,7 +26,7 @@ class RoundTest {
     static Stream<Arguments> createRoundTest() {
         return Stream.of(
                 Arguments.of(
-                        0, Round.init()
+                        0, Round.from(0)
                 ),
                 Arguments.of(
                         1, Round.from(1)
@@ -44,24 +44,4 @@ class RoundTest {
         assertThatThrownBy(() -> Round.from(value)).isInstanceOf(RoundException.class);
     }
 
-    @ParameterizedTest
-    @DisplayName("Round#nextRound()는 다음 라운드가 리턴된다.")
-    @MethodSource
-    void nextRoundTest(Round currentRound, Round nextRound) {
-        assertThat(currentRound.nextRound()).isEqualTo(nextRound);
-    }
-
-    static Stream<Arguments> nextRoundTest() {
-        return Stream.of(
-                Arguments.of(
-                        Round.init(), Round.from(1)
-                ),
-                Arguments.of(
-                        Round.from(1), Round.from(2)
-                ),
-                Arguments.of(
-                        Round.from(2), Round.from(3)
-                )
-        );
-    }
 }

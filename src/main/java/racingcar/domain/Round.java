@@ -15,10 +15,6 @@ public class Round {
         this.round = round;
     }
 
-    public static Round init() {
-        return new Round(FIRST_ROUND);
-    }
-
     public static Round from(int tryCount) {
         return new Round(tryCount);
     }
@@ -31,14 +27,6 @@ public class Round {
         if (round < FIRST_ROUND) {
             throw new RoundException();
         }
-    }
-
-    public Round nextRound() {
-        return new Round(round + ADD_VALUE);
-    }
-
-    public Round play() {
-        return new Round(round - ADD_VALUE);
     }
 
     public int currentRound() {
