@@ -20,6 +20,10 @@ public class State {
         this.state++;
     }
 
+    public int max(int other) {
+        return Math.max(this.state, other);
+    }
+
     public int getState() {
         return state;
     }
