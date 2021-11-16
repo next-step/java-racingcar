@@ -18,7 +18,7 @@ public class Car {
     private static final int MOVE_CONDITION_MIN = 0;     /* 최소 주행 범위 */
     private static final int MOVE_CONDITION_MAX = 9;     /* 최대 주행 범위 */
 
-    String ERR_MSG_CONDITION_RANGE = "주행 조건은 0 ~ 9 사이 값 입니다.";
+    private static final String ERR_MSG_CONDITION_RANGE = "주행 조건은 0 ~ 9 사이 값 입니다.";
 
 
     public Car() {
