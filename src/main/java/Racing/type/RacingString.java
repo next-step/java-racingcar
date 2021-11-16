@@ -23,23 +23,39 @@ public class RacingString {
   }
 
   public static Collector<RacingString, RacingString, RacingString> joining() {
+    final RacingString[] accumulationRacingString = {new RacingString()};
     return Collector.of(
-        () -> new RacingString(),
-        (racingString, input) -> racingString.concat(input),
-        (racingString1, input1) -> racingString1.concat(input1),
-        racingString2 -> new RacingString(racingString2)
+        () -> accumulationRacingString[0],
+        (control, comparison) -> accumulationRacingString[0] = accumulationRacingString[0]
+            .concat(control)
+            .concat(comparison),
+        (control, comparison) -> accumulationRacingString[0].concat(comparison),
+        control -> new RacingString(accumulationRacingString[0])
 
     );
   }
 
-  public static Collector<RacingString, RacingString, RacingString> joining(
+  public static Collector<RacingString, ?, RacingString> joining(
       RacingString delimiter) {
+    final RacingString[] accumulationRacingString = {new RacingString()};
     return Collector.of(
-        () -> new RacingString(),
-        (a, b) -> a.concat(delimiter).concat(b),
-        (a, b) -> a.concat(delimiter).concat(b),
-        racingString -> new RacingString(racingString)
+        () -> accumulationRacingString[0],
+        (control, comparison) -> accumulationRacingString[0] = getAccmulationRacingString(
+            accumulationRacingString[0], control, comparison),
+        (control, comparison) -> accumulationRacingString[0].concat(control).concat(delimiter)
+            .concat(comparison),
+        racingString -> new RacingString(accumulationRacingString[0])
+
     );
+  }
+
+  private static RacingString getAccmulationRacingString(RacingString accumulationRacingString,
+      RacingString control,
+      RacingString comparison) {
+    if (accumulationRacingString.equals(new RacingString())) {
+      return accumulationRacingString.concat(comparison);
+    }
+    return accumulationRacingString.concat(control).concat(DELIMITER).concat(comparison);
   }
 
   @Override
