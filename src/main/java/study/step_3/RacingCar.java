@@ -2,11 +2,20 @@ package study.step_3;
 
 public class RacingCar {
 
-    private final int condition = 4;
+    private final static int condition = 4;
     private int distance;
 
     public void move() {
-        distance++;
+        int randomNumber = getRandomNumber();
+
+        if (this.canMove(randomNumber)) {
+            distance++;
+        }
+    }
+
+    private int getRandomNumber() {
+        RandomNumber randomNumber = new RandomNumber();
+        return randomNumber.generate();
     }
 
     public boolean canMove(int randomNumber) {

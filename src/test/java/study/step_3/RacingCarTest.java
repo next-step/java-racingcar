@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,10 +16,7 @@ public class RacingCarTest {
     @DisplayName("랜덤 값이 4 이상인 경우 이동 거리를 추가한다")
     void shouldCountIfGreaterThanFour(int randomNumber) {
         RacingCar racingCar = new RacingCar();
-
-        if (racingCar.canMove(randomNumber)) {
-            racingCar.move();
-        }
+        racingCar.move();
 
         assertThat(racingCar.getDistance()).isEqualTo(1);
     }
@@ -30,10 +26,7 @@ public class RacingCarTest {
     @DisplayName("랜덤 값이 4 미만인 경우 이동 거리를 추가하지 않는다")
     void shouldNotCountIfLessThanFour(int randomNumber) {
         RacingCar racingCar = new RacingCar();
-
-        if (racingCar.canMove(randomNumber)) {
-            racingCar.move();
-        }
+        racingCar.move();
 
         assertThat(racingCar.getDistance()).isEqualTo(0);
     }
