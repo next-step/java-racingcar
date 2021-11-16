@@ -45,4 +45,12 @@ public class RacingCarTest {
 
         assertThat(car.getNumberOfMoves()).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("0에서 9 사이의 랜덤 값을 생성한다")
+    void shouldGenerateRandomNumberBetweenZeroAndNine() {
+        RandomNumber randomNumber = new RandomNumber();
+
+        assertThat(randomNumber.generate()).isBetween(0, 9);
+    }
 }
