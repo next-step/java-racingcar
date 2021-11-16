@@ -1,5 +1,9 @@
 package Racing.type;
 
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
@@ -40,5 +44,29 @@ public class RacingNumber {
 
   public int parseInt() {
     return (int) value;
+  }
+
+  public <T> List<T> generateInstanceList(Class<T> targetClass) {
+    List<T> result = new ArrayList<>();
+    for (int counter = 0; counter < this.value; counter++) {
+      result.add(generateInstance(targetClass));
+    }
+    return result;
+  }
+
+  private <T> T generateInstance(Class<T> targetClass) {
+    Constructor<T>[] declaredConstructors = (Constructor<T>[]) targetClass
+        .getDeclaredConstructors();
+    IllegalArgumentException illegalArgumentException = new IllegalArgumentException(
+        "해당 클래스는 Arguments 가 없는 생성자가 없습니다.");
+    try {
+      return Arrays.stream(declaredConstructors)
+          .filter((constructor) -> constructor.getParameterCount() == 0)
+          .findAny()
+          .orElseThrow(() -> illegalArgumentException)
+          .newInstance();
+    } catch (Exception e) {
+      throw illegalArgumentException;
+    }
   }
 }
