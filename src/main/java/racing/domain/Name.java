@@ -2,7 +2,9 @@ package racing.domain;
 
 public class Name {
     private final String name;
-    private static Integer criteria = 5;
+
+    private final static Integer criteria = 5;
+
     public Name(String name) {
         validationCheck(name);
         this.name = name;
@@ -12,7 +14,7 @@ public class Name {
         return name;
     }
 
-    public void validationCheck(String name) {
+    private void validationCheck(String name) {
 
         if (name.length() > criteria) {
             throw new IllegalArgumentException("이름의 길이가 5가 넘습니다.");
