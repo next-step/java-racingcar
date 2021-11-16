@@ -34,11 +34,17 @@ public class Cars {
         }
     }
 
-    public Integer findMaxPosition(Cars cars) {
-        return cars.getCarList().stream().map(i -> i.getPosition().getPosition()).max(Comparator.comparing(x -> x)).get();
+    private Integer findMaxPosition() {
+        return carList.stream()
+                .mapToInt(car -> car.getPosition()
+                .getPosition())
+                .max()
+                .orElse(0);
     }
 
-    public List<Car> findWinnerList(Cars cars) {
-        return cars.getCarList().stream().filter(i -> i.getPosition().getPosition() >= findMaxPosition(cars)).collect(Collectors.toList());
+    public List<Car> findWinnerList() {
+        return carList.stream()
+                .filter(car -> car.getPosition().getPosition() >= findMaxPosition())
+                .collect(Collectors.toList());
     }
 }
