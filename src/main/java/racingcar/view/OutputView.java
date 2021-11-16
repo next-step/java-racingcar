@@ -1,9 +1,6 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.GameLog;
-import racingcar.domain.RoundLog;
+import racingcar.domain.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,14 +47,14 @@ public class OutputView {
         newLine();
     }
 
-    public static void printWinners(Cars cars) {
-        List<String> winners = cars.findWinners()
+    public static void printWinners(Winners winners) {
+        List<String> winnerList = winners.getWinners()
                 .stream()
                 .map(Car::carName)
                 .collect(Collectors.toList());
 
         newLine();
-        System.out.print(String.join(", ", winners) + WINNERS);
+        System.out.print(String.join(", ", winnerList) + WINNERS);
     }
 
     private static void newLine() {

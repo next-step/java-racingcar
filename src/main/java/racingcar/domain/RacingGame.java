@@ -14,14 +14,10 @@ public class RacingGame {
     }
 
     public GameLog play(Round round) {
-        Round finalRound = round;
-        Round currentRound = Round.init();
-
-        while (!finalRound.isOver()) {
+        while (!round.isOver()) {
+            round.counting();
             cars.move();
-            cars.recode(currentRound.nextRound(), gameLog);
-            finalRound = finalRound.play();
-            currentRound = currentRound.nextRound();
+            cars.recode(Round.from(round), gameLog);
         }
         return gameLog;
     }

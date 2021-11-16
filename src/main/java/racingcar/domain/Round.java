@@ -8,7 +8,7 @@ public class Round {
     private static final int ADD_VALUE = 1;
     private static final int FIRST_ROUND = 0;
 
-    private final int round;
+    private int round;
 
     private Round(int round) {
         validateRound(round);
@@ -21,6 +21,10 @@ public class Round {
 
     public static Round from(int tryCount) {
         return new Round(tryCount);
+    }
+
+    public static Round from(Round round) {
+        return new Round(round.round);
     }
 
     private void validateRound(int round) {
@@ -45,6 +49,10 @@ public class Round {
         return round == FIRST_ROUND;
     }
 
+    public void counting() {
+        this.round -= ADD_VALUE;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -57,4 +65,5 @@ public class Round {
     public int hashCode() {
         return Objects.hash(round);
     }
+
 }

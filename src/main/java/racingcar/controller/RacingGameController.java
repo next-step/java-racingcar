@@ -1,10 +1,7 @@
 package racingcar.controller;
 
 import racingcar.MovingStrategy.RandomMovingStrategy;
-import racingcar.domain.Cars;
-import racingcar.domain.GameLog;
-import racingcar.domain.RacingGame;
-import racingcar.domain.Round;
+import racingcar.domain.*;
 import racingcar.exception.CreateCarCountException;
 import racingcar.exception.RoundException;
 import racingcar.view.InputView;
@@ -28,7 +25,8 @@ public class RacingGameController {
         GameLog gameLog = racingGame.play(finalRound);
 
         OutputView.printGameLog(gameLog);
-        OutputView.printWinners(cars);
+        Winners winners = cars.findWinners();
+        OutputView.printWinners(winners);
     }
 
     private Cars getCars() {

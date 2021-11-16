@@ -56,11 +56,13 @@ public class Cars {
         cars.forEach(car -> gameLog.add(RoundLog.of(round, car.from(car))));
     }
 
-    public List<Car> findWinners() {
+    public Winners findWinners() {
         Position winnerPosition = findWinnerPosition();
 
-        return cars.stream().filter(car -> car.isSamePosition(winnerPosition))
+        List<Car> winners = cars.stream().filter(car -> car.isSamePosition(winnerPosition))
                 .collect(Collectors.toList());
+
+        return Winners.from(winners);
     }
 
     private Position findWinnerPosition() {
@@ -92,5 +94,4 @@ public class Cars {
     public int hashCode() {
         return Objects.hash(cars);
     }
-
 }
