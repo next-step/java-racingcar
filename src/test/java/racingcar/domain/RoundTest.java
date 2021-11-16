@@ -44,4 +44,25 @@ class RoundTest {
         assertThatThrownBy(() -> Round.from(value)).isInstanceOf(RoundException.class);
     }
 
+    @ParameterizedTest
+    @DisplayName("라운드가 0이 되면 Round#isOver true 그렇지 않으면 false를 리턴한다.")
+    @MethodSource
+    void isOverTest(Round round, boolean expected) {
+        assertThat(round.isOver()).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> isOverTest() {
+        return Stream.of(
+                Arguments.of(
+                        Round.from(0), Boolean.TRUE
+                ),
+                Arguments.of(
+                        Round.from(1), Boolean.FALSE
+                ),
+                Arguments.of(
+                        Round.from(2), Boolean.FALSE
+                )
+        );
+    }
+
 }
