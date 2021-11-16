@@ -14,7 +14,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import study.racing.domain.Name;
 import study.racing.domain.rule.Rule;
@@ -23,15 +23,23 @@ class RacingCarsTest {
 
     @DisplayName("생성자에 정수가 주어졌을 때 해당 숫자만큼 car가 생성되는지 검증")
     @ParameterizedTest
-    @CsvSource({ "1, 1", "100, 100" })
-    void createRacingCarsTest(int carCount, int expected) {
-        List<Car> cars = createCars(carCount);
+    @MethodSource("cars")
+    void createRacingCarsTest(List<Car> cars, int expected) {
         RacingCars racingCars = new RacingCars(cars);
-
         assertThat(racingCars.getCars().size()).isEqualTo(expected);
     }
 
-    private List<Car> createCars(int carCount) {
+    private static Stream<Arguments> cars() {
+        int firstCarCount = 1;
+        List<Car> firstCars = makeCars(firstCarCount);
+
+        int secondCarCount = 100;
+        List<Car> secondCars = makeCars(secondCarCount);
+
+        return Stream.of(Arguments.of(firstCars, firstCarCount), Arguments.of(secondCars, secondCarCount));
+    }
+
+    private static List<Car> makeCars(int carCount) {
         return IntStream.range(0, carCount)
                         .mapToObj(Integer::toString)
                         .map(Name::new)
