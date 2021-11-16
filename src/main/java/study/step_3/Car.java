@@ -3,17 +3,17 @@ package study.step_3;
 public class Car {
 
     private final int condition = 4;
-    private int numberOfMoves;
+    private int distance;
 
     public void move() {
-        numberOfMoves++;
+        distance++;
     }
 
     public boolean canMove(int randomNumber) {
         return randomNumber >= condition;
     }
 
-    public int getNumberOfMoves() {
-        return numberOfMoves;
+    public int getDistance() {
+        return distance;
     }
 }
