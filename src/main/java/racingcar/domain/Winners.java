@@ -15,6 +15,9 @@ public class Winners {
     }
 
     private void validateWiners(List<Car> winners) {
+        if (winners == null) {
+            throw new WinnersException();
+        }
         if (winners.isEmpty()) {
             throw new WinnersException();
         }
