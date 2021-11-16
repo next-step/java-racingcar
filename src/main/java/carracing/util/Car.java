@@ -29,14 +29,12 @@ public class Car {
     }
 
     public boolean driving(int driveCondition) {
-        boolean isDrive = false;
-
         driveValid(driveCondition);
         if (driveCondition >= MOVE_CONDITION) {
             this.drivingHistory++;
-            isDrive = true;
+            return true;
         }
-        return isDrive;                              /* 주행 여부 반환 */
+        return false;                              /* 주행 여부 반환 */
     }
 
     public void driveValid(int driveCondition) {
