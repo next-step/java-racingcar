@@ -35,4 +35,8 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
 }
