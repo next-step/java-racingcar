@@ -1,5 +1,9 @@
-package racinggame.domain;
+package racinggame.controller;
 
+import racinggame.domain.CarStateGenerator;
+import racinggame.domain.Cars;
+import racinggame.domain.Laps;
+import racinggame.domain.Names;
 import racinggame.view.ResultView;
 
 public class RacingGame {

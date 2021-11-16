@@ -3,7 +3,7 @@ package racinggame;
 import racinggame.domain.CarStateGenerator;
 import racinggame.domain.Laps;
 import racinggame.domain.Names;
-import racinggame.domain.RacingGame;
+import racinggame.controller.RacingGame;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 
