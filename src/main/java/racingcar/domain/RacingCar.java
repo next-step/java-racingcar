@@ -1,48 +1,35 @@
 package racingcar.domain;
 
-import java.util.Objects;
-
 public class RacingCar {
     private static final int RANDOM_REFERENCE_VALUE = 4;
     private String carName;
-    private int moveCount;
+    private MoveCounter moveCounter;
 
     public RacingCar(String carName) {
         this.carName = carName;
-        this.moveCount = 0;
+        this.moveCounter = new MoveCounter();
     }
 
     public RacingCar(String carName, int moveCount) {
         this.carName = carName;
-        this.moveCount = moveCount;
+        this.moveCounter = new MoveCounter(moveCount);
     }
 
     public int getMoveCount() {
-        return moveCount;
+        return moveCounter.getMoveCount();
     }
 
     public String getCarName() { return carName; }
 
     public void goOrStopRacing(int randomValue) {
-        if (randomValue >= RANDOM_REFERENCE_VALUE)
-            this.moveCount++;
+        if (randomValue >= RANDOM_REFERENCE_VALUE) {
+            moveCounter.move();
+        }
     }
 
     public boolean isMoveCountEqualMaxCount(int maxCount) {
-        return this.moveCount == maxCount;
+        return moveCounter.isMoveCountEqualMaxCount(maxCount);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RacingCar racingCar = (RacingCar) o;
-        return moveCount == racingCar.moveCount &&
-                Objects.equals(carName, racingCar.carName);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(carName, moveCount);
-    }
 }
