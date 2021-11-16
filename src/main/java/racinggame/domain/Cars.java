@@ -34,28 +34,21 @@ public class Cars {
         }
     }
 
-    private Location inFormFirstRecord() {
-        Car car = cars.get(0);
-        Location location = car.getLocation();
-        for (int i = 1; i < cars.size(); i++) {
-            location = location.compareToLocation(cars.get(i).getLocation());
-        }
-        return location;
+    public Names findWinners() {
+        Location bestRecord = findBestRecord();
+
+        String text = cars.stream()
+                .filter(car -> car.getLocation().equals(bestRecord))
+                .map(n -> String.valueOf(n.getName().getName()))
+                .collect(Collectors.joining(","));
+
+        return Names.from(text);
     }
 
-    public Names inFormWinners() {
-        StringBuilder names = new StringBuilder();
-        Location firstRecord = this.inFormFirstRecord();
-        for (Car car : cars) {
-            compareToRecord(names, car, firstRecord);
-        }
-        return Names.from(names.toString());
-    }
-
-    private void compareToRecord(StringBuilder names, Car car, Location firstRecord) {
-        if (firstRecord.equals(car.getLocation())) {
-            names.append(car.getName().getName());
-            names.append(",");
-        }
+    private Location findBestRecord() {
+        int bestRecord = cars.stream()
+                .mapToInt(car -> car.getLocation().getLocation())
+                .max().getAsInt();
+        return new Location(bestRecord);
     }
 }
