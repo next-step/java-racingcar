@@ -4,6 +4,8 @@ import racingcar.domain.Car;
 
 import java.util.List;
 
+import static racingcar.application.CarConstant.OUTPUT_CAR_WINNER_MESSAGE;
+
 public class OutputView {
 
     public static void print() {
@@ -14,18 +16,18 @@ public class OutputView {
         System.out.println(message);
     }
 
-    public static void print(Car car) {
+    public static void carState(Car car) {
         StringBuilder result = new StringBuilder();
         if (car.getName() != null) {
             result.append(car.getName()).append(" : ");
         }
-        for (int i = 0; i < car.getState(); i++) {
+        for (int i = 0; i < car.getState().getState(); i++) {
             result.append("-");
         }
         print(result.toString());
     }
 
-    public static void print(List<String> names, String message) {
-        print(String.join(", ", names) + message);
+    public static void raceWinner(List<String> carNames) {
+        print(String.join(", ", carNames) + OUTPUT_CAR_WINNER_MESSAGE);
     }
 }

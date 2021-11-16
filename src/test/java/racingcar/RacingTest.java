@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Racing;
+import racingcar.domain.State;
 
 import java.util.List;
 
@@ -35,8 +36,11 @@ public class RacingTest {
     void allMove() {
         Racing racing = new Racing(carNames, 5, () -> true);
         racing.goingTry();
-        for (Car car : racing.getCars()) {
-            assertThat(car.getState()).isEqualTo(1);
+        State other = new State(1);
+
+        for (Car car : racing.getCars().getCars()) {
+            assertThat(car.getState().equals(other)).isTrue();
+
         }
     }
 
@@ -45,8 +49,9 @@ public class RacingTest {
     void allStop() {
         Racing racing = new Racing(carNames, 5, () -> false);
         racing.goingTry();
-        for (Car car : racing.getCars()) {
-            assertThat(car.getState()).isEqualTo(0);
+        State other = new State(0);
+        for (Car car : racing.getCars().getCars()) {
+            assertThat(car.getState().equals(other)).isTrue();
         }
     }
 
@@ -73,7 +78,7 @@ public class RacingTest {
     void maxPlus() {
         Racing racing = new Racing(carNames, 5, () -> true);
         racing.goingTry();
-        assertThat(racing.getMax()).isEqualTo(1);
+        assertThat(racing.getCars().getMax().equals(new State(1))).isTrue();
     }
 
     @Test
@@ -81,23 +86,7 @@ public class RacingTest {
     void maxNotChange() {
         Racing racing = new Racing(carNames, 5, () -> false);
         racing.goingTry();
-        assertThat(racing.getMax()).isEqualTo(0);
-    }
-
-    @Test
-    @DisplayName("모두 전진했을 때, 공동 1등일 경우 테스트")
-    void jointFirstPlace() {
-        Racing racing = new Racing(carNames, 5, () -> true);
-        racing.start();
-        assertThat(racing.getWinners()).contains(carNames);
-    }
-
-    @Test
-    @DisplayName("모두 멈춰있을 때, 공동 1등일 경우 테스트")
-    void jointFirstPlaceAllStop() {
-        Racing racing = new Racing(carNames, 5, () -> false);
-        racing.start();
-        assertThat(racing.getWinners()).contains(carNames);
+        assertThat(racing.getCars().getMax().equals(new State(0))).isTrue();
     }
 
     @Test
