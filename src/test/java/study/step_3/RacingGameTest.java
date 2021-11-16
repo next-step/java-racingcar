@@ -17,4 +17,14 @@ class RacingGameTest {
 
         assertThat(racingGame.numberOfCars()).isEqualTo(numberOfCars);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 5, 9})
+    @DisplayName("시도할 횟수 입력 값만큼 게임을 수행한다")
+    void shouldMoveAsMuchAsInput(int numberOfTrial) {
+        Input input = new Input(3, numberOfTrial);
+        RacingGame racingGame = new RacingGame(input);
+
+        assertThat(racingGame.numberOfTrial()).isEqualTo(numberOfTrial);
+    }
 }

@@ -17,7 +17,19 @@ public class RacingGame {
         }
     }
 
+    public void start() {
+        for (int i = 0; i < this.numberOfTrial; i++) {
+            for (RacingCar racingCar : this.racingCars) {
+                racingCar.move();
+            }
+        }
+    }
+
     public int numberOfCars() {
         return this.racingCars.size();
+    }
+
+    public int numberOfTrial() {
+        return this.numberOfTrial;
     }
 }
