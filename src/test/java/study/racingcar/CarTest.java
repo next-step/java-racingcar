@@ -6,38 +6,38 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import study.racingcar.domain.Car;
-import study.racingcar.domain.Cars;
-import study.racingcar.domain.Game;
+import study.racingcar.domain.Position;
 
 public class CarTest {
-
-	//자동차 갯수
-	//게임 실행 횟수
-
-	@Test
-	@DisplayName("자동차 갯수 테스트")
-	void getCarCount() {
-		int carCount = 5;
-		Cars cars = new Cars();
-		cars.createCar(carCount);
-		assertThat(cars.carCount()).isEqualTo(carCount);
-	}
-
-	@Test
-	@DisplayName("게임 실행 횟수")
-	void getGameCount() {
-		int gameCount = 10;
-		Game game = new Game();
-		game.createGameCount(gameCount);
-		assertThat(game.countGame()).isEqualTo(gameCount);
-	}
 
 	@Test
 	@DisplayName("자동차 전진")
 	void goCar(){
+		//given
+		boolean isMoveCar = true;
+
+		//when
 		Car car = new Car();
-		car.go();
-		car.printRace();
+		car.go(isMoveCar);
+		Position position = car.carPosition();
+
+		//then
+		assertThat(position.numOfPosition()).isEqualTo(1);
+	}
+
+	@Test
+	@DisplayName("자동차 정지")
+	void stopCar(){
+		//given
+		boolean isMoveCar = false;
+
+		//when
+		Car car = new Car();
+		car.go(isMoveCar);
+		Position position = car.carPosition();
+
+		//then
+		assertThat(position.numOfPosition()).isEqualTo(0);
 	}
 
 }

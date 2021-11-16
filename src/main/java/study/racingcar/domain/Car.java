@@ -1,30 +1,21 @@
 package study.racingcar.domain;
 
-import java.util.Random;
-
-import study.racingcar.view.ResultView;
-
 public class Car {
 
-	private int position;
+	private final Position position;
 
 	public Car() {
-		this.position = 0;
+		this.position = new Position();
 	}
 
-	public void go() {
-		if (getRandomNumber() >= 4) {
-			this.position++;
+	public Position carPosition() {
+		return this.position;
+	}
+
+	public void go(boolean isMoveCar) {
+		if (isMoveCar) {
+			this.position.add();
 		}
-	}
-
-	public void printRace() {
-		ResultView.printRace(position);
-	}
-
-	private int getRandomNumber() {
-		Random random = new Random();
-		return random.nextInt(10);
 	}
 
 }
