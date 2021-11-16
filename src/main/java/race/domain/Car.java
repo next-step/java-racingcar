@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 public class Car {
     private int location = 0;
@@ -15,6 +15,10 @@ public class Car {
 
     public int location() {
         return location;
+    }
+
+    public boolean sameLocation(int location) {
+        return this.location == location;
     }
 
     public CarName name() {

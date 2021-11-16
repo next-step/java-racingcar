@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 import org.junit.jupiter.api.Test;
 
@@ -18,5 +18,17 @@ public class CarTest {
         }
 
         assertThat(car.location()).isEqualTo(moveCount);
+    }
+
+    @Test
+    void sameLocation() {
+        Car car = new Car(new CarName(UUID.randomUUID().toString().substring(0, 3)));
+        int moveCount = (new Random()).nextInt(100);
+
+        for (int i = 0; i < moveCount; i++) {
+            car.move();
+        }
+
+        assertThat(car.sameLocation(moveCount)).isTrue();
     }
 }

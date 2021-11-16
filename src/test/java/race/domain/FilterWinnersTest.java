@@ -1,9 +1,9 @@
-package race;
+package race.domain;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -30,15 +30,10 @@ class FilterWinnersTest {
                 .containsExactlyElementsOf(expectedWinners(winnnerIndexes, cars));
     }
 
-    @Test
-    void whenCarCollectionIsNull() {
-        assertThatThrownBy(() -> new FilterWinners().filter(null))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void whenCarCollectionIsEmpty() {
-        assertThatThrownBy(() -> new FilterWinners().filter(Collections.EMPTY_LIST))
+    @ParameterizedTest
+    @NullAndEmptySource
+    void whenCarCollectionIsNull(List<Car> cars) {
+        assertThatThrownBy(() -> new FilterWinners().filter(cars))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
