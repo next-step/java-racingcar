@@ -21,26 +21,6 @@ public class RacingCarGameResults {
     results.put(round, roundResult);
   }
 
-  public void setWinnerNames(RacingCars racingCars) {
-    Integer maxProgress = getMaxProgress(racingCars);
-    this.winnerNames = getWinnerNames(racingCars, maxProgress);
-  }
-
-  private Integer getMaxProgress(RacingCars racingCars) {
-    return racingCars.getRacingCars().stream()
-            .map(RacingCar::getProgress)
-            .sorted(Comparator.reverseOrder())
-            .findFirst()
-            .get();
-  }
-
-  private List<String> getWinnerNames(RacingCars racingCars, Integer maxProgress) {
-        return racingCars.getRacingCars().stream()
-            .filter(racingCar -> racingCar.equalsProgress(maxProgress))
-            .map(RacingCar::getName)
-            .collect(Collectors.toList());
-  }
-
 
   public Map<Integer, List<RacingCarResult>> getResults() {
     return this.results;
