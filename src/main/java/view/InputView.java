@@ -20,5 +20,4 @@ public class InputView {
   private void printQuestion(String question) {
     System.out.println(question);
   }
-
 }
