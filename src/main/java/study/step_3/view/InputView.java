@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public Input start() {
+    public Input generateInput() {
         String numberOfCars = getNumberOfCars();
         String numberOfTrial = getNumberOfTrial();
 

@@ -1,5 +1,7 @@
 package study.step_3;
 
+import study.step_3.view.OutputView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +22,16 @@ public class RacingGame {
     public void start() {
         for (int i = 0; i < this.numberOfTrial; i++) {
             for (RacingCar racingCar : this.racingCars) {
-                racingCar.move();
+                int randomNumber = generateRandomNumber();
+                racingCar.move(randomNumber);
             }
+            print();
         }
+    }
+
+    private void print() {
+        OutputView outputView = new OutputView();
+        outputView.printDivider();
     }
 
     public int numberOfCars() {
@@ -31,5 +40,10 @@ public class RacingGame {
 
     public int numberOfTrial() {
         return this.numberOfTrial;
+    }
+
+    private int generateRandomNumber() {
+        RandomNumber randomNumber = new RandomNumber();
+        return randomNumber.generate();
     }
 }

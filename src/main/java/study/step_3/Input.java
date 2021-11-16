@@ -12,4 +12,12 @@ public class Input {
         this.numberOfCars = numberOfCars;
         this.numberOfTrial = numberOfTrial;
     }
+
+    public int getNumberOfCars() {
+        return numberOfCars;
+    }
+
+    public int getNumberOfTrial() {
+        return numberOfTrial;
+    }
 }

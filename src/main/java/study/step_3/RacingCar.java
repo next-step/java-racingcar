@@ -1,21 +1,23 @@
 package study.step_3;
 
+import study.step_3.view.OutputView;
+
 public class RacingCar {
 
     private final static int condition = 4;
     private int distance;
 
-    public void move() {
-        int randomNumber = getRandomNumber();
-
+    public void move(int randomNumber) {
         if (this.canMove(randomNumber)) {
-            distance++;
+            this.distance++;
         }
+
+        printResult();
     }
 
-    private int getRandomNumber() {
-        RandomNumber randomNumber = new RandomNumber();
-        return randomNumber.generate();
+    private void printResult() {
+        OutputView outputView = new OutputView();
+        outputView.printResult(this.distance);
     }
 
     public boolean canMove(int randomNumber) {
@@ -23,6 +25,7 @@ public class RacingCar {
     }
 
     public int getDistance() {
-        return distance;
+        return this.distance;
     }
+
 }
