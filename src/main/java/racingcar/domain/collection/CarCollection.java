@@ -1,6 +1,7 @@
 package racingcar.domain.collection;
 
 import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCars;
 import racingcar.service.util.Validation;
 
 import java.util.List;
@@ -11,13 +12,14 @@ public final class CarCollection {
 
     }
 
-    public static List<RacingCar> racingGameReady(List<String> carName) {
+    public static RacingCars racingGameReady(List<String> carName) {
 
         Validation.nullValueCheck(carName);
 
-        return carName.stream()
-                .map(RacingCar::new)
-                .collect(Collectors.toList());
-    }
+        List<RacingCar> racingCars = carName.stream()
+                                    .map(RacingCar::create)
+                                    .collect(Collectors.toList());
 
+        return new RacingCars(racingCars);
+    }
 }

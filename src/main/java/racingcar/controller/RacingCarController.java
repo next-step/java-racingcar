@@ -23,6 +23,6 @@ public class RacingCarController {
         GameResultData result = start.execute(racingCarInput);
 
         RacingCarResultView resultView = new RacingCarResultView();
-        resultView.printVictoryUser(result);
+        resultView.output(result);
     }
 }

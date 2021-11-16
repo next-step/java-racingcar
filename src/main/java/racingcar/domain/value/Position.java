@@ -15,22 +15,19 @@ public class Position {
     }
 
     public static Position create(int location) {
-
         return new Position(location);
     }
 
     public void increaseLocation() {
-
         location++;
-    }
-
-    public int getLocation() {
-
-        return location;
     }
 
     public boolean isGreaterThan(Position maxPosition) {
         return this.location >= maxPosition.location;
+    }
+
+    public int getLocation() {
+        return location;
     }
 
     @Override

@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import racingcar.domain.value.CarName;
 import racingcar.domain.value.Position;
+import racingcar.service.util.Validation;
 
 import java.util.Objects;
 
@@ -15,6 +16,9 @@ public class RacingCar {
     }
 
     public RacingCar(Position position, CarName carName) {
+
+        Validation.nullValueCheck(position);
+        Validation.nullValueCheck(carName);
 
         this.position = position;
         this.carName = carName;

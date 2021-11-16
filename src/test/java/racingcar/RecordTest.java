@@ -5,12 +5,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
 import racingcar.domain.Record;
+import racingcar.domain.Records;
 import racingcar.domain.collection.CarCollection;
 import racingcar.domain.collection.RecordCollection;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,14 +21,13 @@ import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 public class RecordTest {
 
     private RacingCars racingCars;
-    private  List<RacingCar> car;
+
 
     @BeforeEach
     void setUp() {
-        List<String> carName = Arrays.asList("lee","kim","tt");
-        car = CarCollection.racingGameReady(carName);
+        List<String> carName = Arrays.asList("lee","kim","joo");
 
-        racingCars = RacingCars.create(car);
+        racingCars = CarCollection.racingGameReady(carName);
     }
 
     @Test
@@ -41,8 +41,9 @@ public class RecordTest {
     @DisplayName("Record 객체 생성 테스트")
     @ValueSource(ints = {3,5,7})
     void createTest(int tryCount) {
-        Record record = RecordCollection.create(tryCount, car);
+        Record record = RecordCollection.create(tryCount, racingCars);
 
-        assertThat(record.getCars().getCars()).isEqualTo(RacingCars.create(car).getCars());
+        assertThat(record.getCars()).isEqualTo(racingCars);
     }
+
 }

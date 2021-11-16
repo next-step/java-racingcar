@@ -2,19 +2,17 @@ package racingcar.service;
 
 import racingcar.domain.GameInputData;
 import racingcar.domain.GameResultData;
-import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCars;
 import racingcar.domain.Record;
 import racingcar.domain.collection.CarCollection;
 import racingcar.domain.collection.RecordCollection;
-import racingcar.service.util.RacingUtil;
-import racingcar.view.RacingCarResultView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameService {
 
-    private List<RacingCar> cars;
+    private RacingCars cars;
 
     private RacingGameService(List<String> carName) {
 
@@ -32,13 +30,8 @@ public class RacingGameService {
         List<Record> recordList = new ArrayList();
 
         for(int ROUND = 0; ROUND < tryCount; ROUND++) {
-            RacingUtil.playTheGame(cars);
-
+            RacingCars.playTheGame(cars);
             recordList.add(recordRace(ROUND));
-
-            RacingCarResultView.print(cars);
-
-            System.out.println();
         }
 
         return GameResultData.of(recordList);

@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import racingcar.domain.value.CarName;
 import racingcar.domain.value.Position;
+import racingcar.service.util.MoveRuleUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,14 +11,18 @@ public class RacingCars {
 
     private final List<RacingCar> carList;
 
-    private RacingCars(List<RacingCar> carList) {
+    public RacingCars(List<RacingCar> carList) {
 
         this.carList = carList;
     }
 
-    public static RacingCars create(List<RacingCar> carList) {
+    public static void playTheGame(RacingCars cars) {
+        MoveRuleUtil moveRuleUtil = new MoveRuleUtil();
 
-        return new RacingCars(carList);
+        List<RacingCar> carList = cars.getCars();
+        for(int i = 0; i < carList.size(); i++) {
+            carList.get(i).decisionMove(moveRuleUtil.moveOrNot());
+        }
     }
 
     public List<RacingCar> getCars() {

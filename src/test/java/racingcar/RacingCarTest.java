@@ -23,21 +23,21 @@ public class RacingCarTest {
     @ParameterizedTest
     @DisplayName("값이 정상적인 경우")
     @ValueSource(ints = {3,5,7})
-    void create(int location) {
+    void createTest(int location) {
         Position position = Position.create(location);
         assertThat(position).isEqualTo(Position.create(location));
     }
 
     @Test
     @DisplayName("Null check")
-    void nullcheck() {
+    void nullcheckTest() {
 
         assertThatNullPointerException().isThrownBy(() -> new RacingCar(null, null));
     }
 
     @Test
     @DisplayName("조건이 맞는 경우 위치 증가 검증")
-    void increaseLocation() {
+    void increaseLocationTest() {
 
         for(int i = 1; i< 10; i++) {
             testCar.decisionMove(true);
@@ -47,7 +47,7 @@ public class RacingCarTest {
 
     @Test
     @DisplayName("조건이 아닌 경우 위치 정지 검증")
-    void stopLocation() {
+    void stopLocationTest() {
 
         for(int i = 0; i < 10; i++) {
             testCar.decisionMove(false);

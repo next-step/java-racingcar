@@ -6,15 +6,15 @@ import java.util.Objects;
 
 public class Record {
 
-    private final int tryCount;
+    private final int round;
     private final RacingCars cars;
 
-    public Record(int tryCount, RacingCars cars) {
+    public Record(int round, RacingCars cars) {
 
-        Validation.nullValueCheck(tryCount);
+        Validation.nullValueCheck(round);
         Validation.nullValueCheck(cars);
 
-        this.tryCount = tryCount;
+        this.round = round;
         this.cars = cars;
     }
 
@@ -23,7 +23,7 @@ public class Record {
         return cars;
     }
 
-    public String getVitoryUsers() {
+    public String getVictoryUsers() {
 
         return cars.getVictoryUsers();
     }

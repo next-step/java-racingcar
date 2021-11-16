@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
 import racingcar.domain.collection.CarCollection;
-import racingcar.domain.value.CarName;
-import racingcar.domain.value.Position;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,9 +19,7 @@ public class RacingCarsTest {
     @BeforeEach
     void setUp() {
         List<String> carName = Arrays.asList("lee","kim","tt");
-        List<RacingCar> car = CarCollection.racingGameReady(carName);
-
-        racingCars = RacingCars.create(car);
+        racingCars = CarCollection.racingGameReady(carName);
     }
 
     @Test
@@ -36,15 +32,18 @@ public class RacingCarsTest {
 
     @Test
     @DisplayName(("우승자를 찾아보기"))
-    void getVitoryName() {
-
-        RacingCar car1 = new RacingCar(Position.create(3), CarName.create("lee"));
-        RacingCar car2 = new RacingCar(Position.create(3), CarName.create("kim"));
-        RacingCar car3 = new RacingCar(Position.create(1), CarName.create("joo"));
-
+    void getVictoryNameTest() {
+        List<String> carNames = Arrays.asList("lee", "kim", "joo");
         String winner = "lee,kim";
 
-        RacingCars cars = RacingCars.create(Arrays.asList(car1,car2,car3));
+        RacingCars cars = CarCollection.racingGameReady(carNames);
+
+        cars.getCars().get(0).decisionMove(true);
+        cars.getCars().get(0).decisionMove(true);
+        cars.getCars().get(1).decisionMove(true);
+        cars.getCars().get(1).decisionMove(true);
+        cars.getCars().get(2).decisionMove(true);
+
         String result = cars.getVictoryUsers();
 
         assertThat(result).isEqualTo(winner);

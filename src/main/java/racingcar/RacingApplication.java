@@ -8,6 +8,5 @@ public class RacingApplication {
 
         RacingCarController racingCarController = new RacingCarController(new RacingCarInputView());
         racingCarController.execute();
-
     }
 }

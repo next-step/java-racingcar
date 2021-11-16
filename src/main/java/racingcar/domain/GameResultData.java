@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.domain.collection.RecordCollection;
 import racingcar.service.util.Validation;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public class GameResultData {
     private GameResultData(List<Record> recordList) {
         Validation.nullValueCheck(recordList);
 
-        this.records = Records.create(recordList);
+        this.records = RecordCollection.create(recordList);
     }
 
     public static GameResultData of(List<Record> recordList) {
@@ -20,6 +21,9 @@ public class GameResultData {
 
     public String getVictoryUsers() {
         return records.getWinner();
+    }
+    public Records getRecords() {
+        return records;
     }
 
 }

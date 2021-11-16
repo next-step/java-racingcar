@@ -1,15 +1,13 @@
 package racingcar.service.util;
 
-import racingcar.domain.value.Position;
-
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class Validation {
 
     private static final String PATTERN = "^[0-9]*$";
-    private static final int TRY_MIN_COUNT = 0;
+    private static final int TRY_MIN_COUNT = 1;
     private static final int LOCATION_MIN = 0;
+    private static final int CAR_NAME_MAXIMUM_SIZE = 5;
 
 
     public static void numberCheck(String inputData) {
@@ -39,5 +37,13 @@ public class Validation {
         if (reference == null) {
             throw new NullPointerException("Null 값은 생성 할 수 없습니다.");
         }
+    }
+
+    public static boolean nameSizeCheck(String carName) {
+        if(carName.length() > CAR_NAME_MAXIMUM_SIZE) {
+            throw new IllegalArgumentException("자동차 이름은 5글자를 초과 할 수 없습니다!!!");
+        }
+
+        return true;
     }
 }
