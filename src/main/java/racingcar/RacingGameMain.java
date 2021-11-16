@@ -29,7 +29,7 @@ public class RacingGameMain {
         resultView.drawRacing(racingCars);
 
         // 우승자 선정
-        List<RacingCar> winnerCars = racingGameService.getWinner(racingCars);
+        List<RacingCar> winnerCars = racingGameService.getWinners(racingCars);
         resultView.drawWinner(winnerCars);
     }
 }

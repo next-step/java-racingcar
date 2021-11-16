@@ -15,20 +15,6 @@ public class RacingGameService {
         this.tryCount = tryCount;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RacingGameService that = (RacingGameService) o;
-        return tryCount == that.tryCount &&
-                Objects.equals(carNames, that.carNames);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(carNames, tryCount);
-    }
-
     public List<RacingCar> makeRacingCars() {
         List<RacingCar> racingCarList = new ArrayList<>();
         for (String carName : carNames) {
@@ -50,7 +36,7 @@ public class RacingGameService {
         }
     }
 
-    public List<RacingCar> getWinner(List<RacingCar> racingCars) {
+    public List<RacingCar> getWinners(List<RacingCar> racingCars) {
         return racingCars.stream()
                 .filter(racingCar -> racingCar.isMoveCountEqualMaxCount(getMaxCount(racingCars)))
                 .collect(Collectors.toList());
@@ -60,5 +46,19 @@ public class RacingGameService {
         return racingCars.stream()
                 .max(Comparator.comparingInt(RacingCar::getMoveCount))
                 .get().getMoveCount();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingGameService that = (RacingGameService) o;
+        return tryCount == that.tryCount &&
+                Objects.equals(carNames, that.carNames);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carNames, tryCount);
     }
 }
