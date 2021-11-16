@@ -47,7 +47,7 @@ class CarsTest {
         Cars cars = CarsFixture.createCars(actual);
         cars.roundRacing(stateGenerator);
 
-        Names winner = cars.inFormWinners();
+        Names winner = cars.findWinners();
 
         assertThat(winner.printNames()).isEqualTo(NamesFixture.ENTRY_CAR_NAMES);
     }
