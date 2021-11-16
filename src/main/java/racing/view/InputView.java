@@ -4,30 +4,22 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import static racing.view.ViewConstant.ATTEMPT_MESSAGE;
-import static racing.view.ViewConstant.CAR_MESSAGE;
+import static racing.constant.ViewConstant.ATTEMPT_MESSAGE;
+import static racing.constant.ViewConstant.CAR_MESSAGE;
 
 /**
  * @author han
  */
 public class InputView {
-    private List<String> users;
-    private int attempts;
 
-    public List<String> getUsers() {
-        return users;
-    }
-
-    public Integer getAttempts() {
-        return attempts;
-    }
-
-    public void printAndInput(Scanner scanner) {
+    public List<String> getUsers(Scanner scanner) {
         System.out.println(CAR_MESSAGE);
-        this.users = Arrays.asList(scanner.nextLine().split(","));
+        return Arrays.asList(scanner.nextLine().split(","));
+    }
 
+    public Integer getAttempts(Scanner scanner) {
         System.out.println(ATTEMPT_MESSAGE);
-        this.attempts = parseInputToInteger(scanner.nextLine());
+        return parseInputToInteger(scanner.nextLine());
     }
 
     private int parseInputToInteger(String input) {

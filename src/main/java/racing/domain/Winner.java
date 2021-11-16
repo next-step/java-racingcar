@@ -1,7 +1,6 @@
 package racing.domain;
 
 import java.util.List;
-import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
@@ -10,32 +9,34 @@ import java.util.stream.Collectors;
  */
 public class Winner {
 
-    private List<Car> cars;
-    private Map<Integer, List<Car>> history;
+    private RacingCar cars;
+    private RacingHistory history;
 
-    private Winner(List<Car> cars, Map<Integer, List<Car>> history) {
+    private Winner(RacingCar cars, RacingHistory history) {
         this.cars = cars;
         this.history = history;
     }
 
-    public static Winner from(List<Car> cars, Map<Integer, List<Car>> history) {
-       return new Winner(cars, history);
+    public static Winner from(RacingCar cars, RacingHistory history) {
+        return new Winner(cars, history);
     }
 
-    public Map<Integer, List<Car>> getHistory() {
+    public RacingHistory getRacingHistory() {
         return history;
     }
 
     public List<Car> getWinners() {
         int max = getMaxStep();
 
-        return this.cars.stream()
+        return this.cars.getCars()
+            .stream()
             .filter(c -> c.hasEqualTo(max))
             .collect(Collectors.toList());
     }
 
     private int getMaxStep() {
-        return this.cars.stream()
+        return this.cars.getCars()
+            .stream()
             .mapToInt(Car::getStep)
             .max()
             .orElseThrow(NoSuchElementException::new);

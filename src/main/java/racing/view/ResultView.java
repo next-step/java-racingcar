@@ -1,15 +1,15 @@
 package racing.view;
 
 import racing.domain.Car;
+import racing.domain.RacingCar;
+import racing.domain.RacingHistory;
 import racing.domain.Winner;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
-import static racing.view.ViewConstant.RESULT_MESSAGE;
-import static racing.view.ViewConstant.WINNER_MESSAGE_SUB_FIX;
+import static racing.constant.ViewConstant.RESULT_MESSAGE;
+import static racing.constant.ViewConstant.WINNER_MESSAGE_SUB_FIX;
 
 /**
  * @author han
@@ -22,8 +22,8 @@ public class ResultView {
         printWinner(winner);
     }
 
-    private void printStep(List<Car> cars) {
-        for (Car car : cars) {
+    private void printStep(RacingCar cars) {
+        for (Car car : cars.getCars()) {
             String step = createResult(car);
             System.out.println(step);
         }
@@ -64,11 +64,10 @@ public class ResultView {
     }
 
     private void printHistory(Winner winner) {
-        Set<Integer> keySet = winner.getHistory().keySet();
-        Map<Integer, List<Car>> history = winner.getHistory();
+        RacingHistory racingHistory = winner.getRacingHistory();
 
-        keySet.stream()
-            .map(history::get)
-            .forEachOrdered(this::printStep);
+        while (racingHistory.hasData()) {
+            printStep(racingHistory.poll());
+        }
     }
 }

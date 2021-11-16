@@ -1,7 +1,7 @@
 package racing.domain;
 
 import static utility.StringHelper.throwExceptionNullOrLengthGreaterThan;
-import static racing.RacingConstant.*;
+import static racing.constant.RacingConstant.*;
 
 /**
  * @author han
@@ -36,8 +36,8 @@ public class Car {
         return this;
     }
 
-    public boolean hasEqualTo(int max) {
-        return this.step == max;
+    public boolean hasEqualTo(int step) {
+        return this.step == step;
     }
 
     private boolean isForward(int random) {

@@ -5,6 +5,7 @@ import racing.view.InputView;
 import racing.view.ResultView;
 import racing.domain.Winner;
 
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -20,9 +21,10 @@ public class Main {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
-        inputView.printAndInput(scanner);
+        List<String> users = inputView.getUsers(scanner);
+        Integer attempts = inputView.getAttempts(scanner);
 
-        Racing racing = new Racing(inputView.getUsers(), inputView.getAttempts());
+        Racing racing = new Racing(users, attempts);
         Winner winner = racing.play(random);
 
         resultView.print(winner);

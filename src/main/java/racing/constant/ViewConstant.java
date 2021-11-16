@@ -1,4 +1,4 @@
-package racing.view;
+package racing.constant;
 
 /**
  * @author han
