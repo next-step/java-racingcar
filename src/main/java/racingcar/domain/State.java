@@ -1,14 +1,15 @@
 package racingcar.domain;
 
+import racingcar.application.CarConstant;
+
 import java.util.Objects;
 
 public class State {
 
-    private static final int DEFAULT_STATE = 0;
     private int state;
 
     public State() {
-        this(DEFAULT_STATE);
+        this(CarConstant.CAR_DEFAULT_STATE);
     }
 
     public State(int state) {
