@@ -23,9 +23,4 @@ public class RacingCar {
     public boolean canMove(int randomNumber) {
         return randomNumber >= condition;
     }
-
-    public int getDistance() {
-        return this.distance;
-    }
-
 }

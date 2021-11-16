@@ -29,17 +29,17 @@ public class RacingGame {
         }
     }
 
+    public boolean isEqualToNumberOfCars(int numberOfCars) {
+        return this.racingCars.size() == numberOfCars;
+    }
+
+    public boolean isEqualToNumberOfTrial(int numberOfTrial) {
+        return this.numberOfTrial == numberOfTrial;
+    }
+
     private void print() {
         OutputView outputView = new OutputView();
         outputView.printDivider();
-    }
-
-    public int numberOfCars() {
-        return this.racingCars.size();
-    }
-
-    public int numberOfTrial() {
-        return this.numberOfTrial;
     }
 
     private int generateRandomNumber() {

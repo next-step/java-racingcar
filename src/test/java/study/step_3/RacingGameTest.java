@@ -15,7 +15,7 @@ class RacingGameTest {
         Input input = new Input(numberOfCars, 5);
         RacingGame racingGame = new RacingGame(input);
 
-        assertThat(racingGame.numberOfCars()).isEqualTo(numberOfCars);
+        assertThat(racingGame.isEqualToNumberOfCars(numberOfCars)).isTrue();
     }
 
     @ParameterizedTest
@@ -25,6 +25,6 @@ class RacingGameTest {
         Input input = new Input(3, numberOfTrial);
         RacingGame racingGame = new RacingGame(input);
 
-        assertThat(racingGame.numberOfTrial()).isEqualTo(numberOfTrial);
+        assertThat(racingGame.isEqualToNumberOfTrial(numberOfTrial)).isTrue();
     }
 }
