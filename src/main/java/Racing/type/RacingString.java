@@ -41,7 +41,7 @@ public class RacingString {
     return Collector.of(
         () -> accumulationRacingString[0],
         (control, comparison) -> accumulationRacingString[0] = getAccmulationRacingString(
-            accumulationRacingString[0], control, comparison),
+            accumulationRacingString[0], control, comparison, delimiter),
         (control, comparison) -> accumulationRacingString[0].concat(control).concat(delimiter)
             .concat(comparison),
         racingString -> new RacingString(accumulationRacingString[0])
@@ -49,13 +49,16 @@ public class RacingString {
     );
   }
 
-  private static RacingString getAccmulationRacingString(RacingString accumulationRacingString,
+  private static RacingString getAccmulationRacingString(
+      RacingString accumulationRacingString,
       RacingString control,
-      RacingString comparison) {
+      RacingString comparison,
+      RacingString delimiter
+  ) {
     if (accumulationRacingString.equals(new RacingString())) {
       return accumulationRacingString.concat(comparison);
     }
-    return accumulationRacingString.concat(control).concat(DELIMITER).concat(comparison);
+    return accumulationRacingString.concat(control).concat(delimiter).concat(comparison);
   }
 
   @Override
