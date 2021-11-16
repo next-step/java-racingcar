@@ -61,7 +61,7 @@ public class Racing {
     }
 
     public void result() {
-        OutputView.print(cars.findWinners());
+        OutputView.raceWinner(cars.findWinners());
     }
 
     public Cars getCars() {

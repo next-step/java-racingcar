@@ -26,7 +26,7 @@ public class Cars {
         for (Car car : cars) {
             car.increaseState(movingStrategy);
             max = car.getState().max(max);
-            OutputView.print(car);
+            OutputView.carState(car);
         }
     }
 
