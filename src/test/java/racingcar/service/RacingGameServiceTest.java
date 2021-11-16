@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingGameTest {
+public class RacingGameServiceTest {
     private List<RacingCar> racingCars;
 
     @BeforeEach
@@ -21,6 +21,12 @@ public class RacingGameTest {
                 new RacingCar("aaa", 5),
                 new RacingCar("bbb", 2),
                 new RacingCar("ccc", 5));
+    }
+
+    @Test
+    @DisplayName("RacingGameService 생성자 테스트")
+    public void constructor() {
+        assertThat(new RacingGameService(Arrays.asList("aaa", "bbb"), 1)).isEqualTo((new RacingGameService(Arrays.asList("aaa", "bbb"), 1)));
     }
 
     @Test
@@ -49,4 +55,5 @@ public class RacingGameTest {
                 .collect(Collectors.joining(", "));
         System.out.println(winnerNames);
     }
+
 }

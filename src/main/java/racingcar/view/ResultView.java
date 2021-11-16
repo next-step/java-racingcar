@@ -17,7 +17,7 @@ public class ResultView {
         System.out.println(RESULT_MSG);
     }
 
-    public void racingShow(List<RacingCar> racingCarList) {
+    public void drawRacing(List<RacingCar> racingCarList) {
         for (RacingCar racingCar : racingCarList) {
             System.out.println(draw(racingCar));
         }
