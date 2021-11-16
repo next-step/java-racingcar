@@ -17,7 +17,7 @@ public class ResultView {
 
     public static void printOneRoundResult(Cars cars) {
         cars.getCars().forEach(car -> {
-            System.out.println(car.getName().getValue() + " : " + changeToCharacter(car.getPosition().getIntValue(), '-'));
+            System.out.println(car.getName() + " : " + changeToCharacter(car.getPosition().getValue(), '-'));
         });
         System.out.println();
     }
@@ -32,7 +32,7 @@ public class ResultView {
 
     public static void printWinners(List<Car> winners) {
         String winnerNames = winners.stream()
-                .map(winner -> winner.getName().getValue())
+                .map(winner -> winner.getName().toString())
                 .collect(Collectors.joining(","));
         System.out.printf(WINNER_MESSAGE, winnerNames);
     }

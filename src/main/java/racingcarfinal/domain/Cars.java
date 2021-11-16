@@ -26,12 +26,12 @@ public class Cars {
 
     public static List<Car> findWinners(List<Car> cars) {
         int max = cars.stream()
-                .mapToInt(car -> car.getPosition().getIntValue())
+                .mapToInt(car -> car.getPosition().getValue())
                 .max()
                 .getAsInt();
 
         return cars.stream()
-                .filter(car -> car.getPosition().getIntValue() == max)
+                .filter(car -> car.getPosition().getValue() == max)
                 .collect(Collectors.toList());
     }
 

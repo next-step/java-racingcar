@@ -26,7 +26,7 @@ public class RacingGame {
     }
 
     public Cars getCars() {
-        return this.cars;
+        return cars;
     }
 
 }

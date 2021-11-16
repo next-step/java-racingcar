@@ -1,30 +1,32 @@
 package racingcarfinal.domain;
 
-public class Position {
+public final class Position {
 
-    private final int position;
+    private static final int MIN_POSITION_VALUE = 0;
+
+    private final int value;
 
     public Position() {
         this(0);
     }
 
-    public Position(int position) {
-        validate(position);
-        this.position = position;
+    public Position(int value) {
+        validate(value);
+        this.value = value;
     }
 
     private void validate(int position) {
-        if (position < 0) {
+        if (position < MIN_POSITION_VALUE) {
             throw new IllegalArgumentException("위치는 0 미만일 수 없습니다.");
         }
     }
 
-    public Position increase() {
-        return new Position(position + 1);
+    public Position move() {
+        return new Position(value + 1);
     }
 
-    public int getIntValue() {
-        return this.position;
+    public int getValue() {
+        return value;
     }
 
     @Override
@@ -34,12 +36,12 @@ public class Position {
 
         Position position1 = (Position) o;
 
-        return position == position1.position;
+        return value == position1.value;
     }
 
     @Override
     public int hashCode() {
-        return position;
+        return value;
     }
 
 }

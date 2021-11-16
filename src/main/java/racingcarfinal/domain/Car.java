@@ -2,6 +2,8 @@ package racingcarfinal.domain;
 
 public class Car {
 
+    private static final int MOVE_BOUND = 4;
+
     private final Name name;
     private Position position;
 
@@ -15,8 +17,8 @@ public class Car {
     }
 
     public void move(int moveValue) {
-        if (moveValue >= 4) {
-            position = position.increase();
+        if (moveValue >= MOVE_BOUND) {
+            position = position.move();
         }
     }
 
@@ -25,7 +27,7 @@ public class Car {
     }
 
     public Position getPosition() {
-        return this.position;
+        return position;
     }
 
     public Name getName() {
