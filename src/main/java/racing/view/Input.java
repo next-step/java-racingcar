@@ -1,22 +1,22 @@
 package racing.view;
 
-import racing.service.InputBuilder;
+import racing.domain.GetNameList;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class Input {
 
+    private static Scanner scanner = new Scanner(System.in);
+
     private Input() {
     }
-
-    private static Scanner scanner = new Scanner(System.in);
 
     public static List<String> getNameList() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String nameString = scanner.nextLine();
-        InputBuilder inputBuilder = new InputBuilder(nameString);
-        List<String> nameList = inputBuilder.getNameList();
+        GetNameList getNameList = new GetNameList(nameString);
+        List<String> nameList = getNameList.getNameList();
         return nameList;
     }
 

@@ -26,7 +26,7 @@
   * move 할 수 있는 로직을 담고있다.
 * ConvertOutputView
   * car 의 정수형의 position 을 String 의 "-"로 매핑해준다
-* ConvertInput
+* InputBuilder
   * nameString 받아 nameList로 변환 
 * MoveStrategy Interface
   * boolean 을 리턴하는 method 추상화
@@ -36,3 +36,9 @@
   * Cars 를 입력받아 우승자가 담긴 List<Car>를 반환한다.
 * OutPut
   * 바뀌는 자동차 상태를 출력
+* Position
+  * Car의 position을 담고 있음
+  * position validation check
+* Name
+  * Car의 name을 담고 있음 
+  * name validation check

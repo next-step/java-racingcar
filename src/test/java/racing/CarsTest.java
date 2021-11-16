@@ -2,13 +2,14 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.model.Cars;
-import racing.service.InputBuilder;
-import racing.service.ConvertOutputView;
+import racing.domain.Cars;
+import racing.domain.GetNameList;
+import racing.domain.ConvertOutputView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -19,11 +20,10 @@ public class CarsTest {
     void carNameTest() {
         String name = "a,b,c,d,e";
         String[] nameList = name.split(",");
-        InputBuilder inputBuilder = new InputBuilder(name);
-        Cars cars = new Cars(inputBuilder.getNameList());
+        GetNameList getNameList = new GetNameList(name);
+        Cars cars = new Cars(getNameList.getNameList());
         for (int i =0;i<5;i++) {
-            System.out.println(cars.getCarList().get(i).getName());
-            assertEquals(cars.getCarList().get(i).getName(),nameList[i]);
+            assertEquals(cars.getCarList().get(i).getName().getName(),nameList[i]);
         }
     }
 
@@ -67,4 +67,19 @@ public class CarsTest {
         }
     }
 
+    @Test
+    void FindWinnerTest() {
+        List<String> expectedList = new ArrayList<>();
+        expectedList.add("mj");
+        expectedList.add("mj1");
+        String nameString = "mj,mj1,mj2,mj3,mj4,mj5";
+        Cars cars = new Cars(new GetNameList(nameString).getNameList());
+        cars.getCarList().get(0).movable(() -> true);
+        cars.getCarList().get(0).movable(() -> true);
+        cars.getCarList().get(0).movable(() -> true);
+        cars.getCarList().get(1).movable(() -> true);
+        cars.getCarList().get(1).movable(() -> true);
+        cars.getCarList().get(1).movable(() -> true);
+        assertEquals(cars.findWinnerList().stream().map(i->i.getName().getName()).collect(Collectors.toList()),expectedList);
+    }
 }
