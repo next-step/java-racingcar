@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingCarTest {
 
   @Test
-  @DisplayName("move 전략 리턴값이 true일 때 RacingCar의 progress값에 1이 더해지는지 검증하기 위한 테스트")
+  @DisplayName("move 전략 리턴값이 true일 때 RacingCar가 항상 전진하는지 검증하기 위한 테스트")
   void move() {
     // given
     RacingCar racingCar = createRacingCarForTest();
@@ -49,6 +49,14 @@ public class RacingCarTest {
 
     // then
     assertThat(racingCar.getName().length()).isEqualTo(expectedLength);
+  }
+
+  @Test
+  @DisplayName("RacingCar의 이름에 null이 들어오는 경우 DEFAULT_NAME으로 설정되는지 검증하기 위한 테스트")
+  void useDefaultNameWhenRacingCarNameIsNull() {
+    RacingCar racingCar = new RacingCar(null);
+    assertThat(racingCar.getName().length()).isEqualTo(0);
+    assertThat(racingCar.getName()).isEqualTo(RacingCar.DEFAULT_NAME);
   }
 
 }
