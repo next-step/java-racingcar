@@ -5,11 +5,13 @@ public class RacingCar {
   private String name;
   private int progress;
 
-  private RacingCar() { }
-
   public RacingCar(String name) {
+    this(name, 0);
+  }
+
+  private RacingCar(String name, int progress) {
     this.name = substringIfExceedMaxLength(name);
-    this.progress = 0;
+    this.progress = progress;
   }
 
   private String substringIfExceedMaxLength(String name) {
