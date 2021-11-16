@@ -2,10 +2,10 @@ package racing.domain;
 
 public class ConvertOutputView {
 
+    private final static StringBuilder stringBuilder = new StringBuilder();
+
     private ConvertOutputView() {
     }
-
-    private final static StringBuilder stringBuilder = new StringBuilder();
 
     public static String convertOutputView(Position position) {
         stringBuilder.setLength(0);

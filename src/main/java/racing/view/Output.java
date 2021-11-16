@@ -5,6 +5,7 @@ import racing.domain.ConvertOutputView;
 import racing.domain.strategy.MoveStrategy;
 
 public class Output {
+
     private Output() {
     }
 
