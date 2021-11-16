@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 class RacingTest {
 
   @ParameterizedTest
-  @DisplayName("")
+  @DisplayName("Race를 할때 정해진 갯수 만큼 화면에 출력 됩니다")
   @CsvSource(value = {"1|1", "1|2", "2|1", "3|5", "4|6", "6|7"}, delimiter = '|')
   void testRace(int countOfCar, int countOfStage) {
     // given

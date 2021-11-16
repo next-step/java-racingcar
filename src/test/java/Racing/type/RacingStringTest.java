@@ -3,11 +3,13 @@ package Racing.type;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.stream.Stream;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class RacingStringTest {
 
   @Test
+  @DisplayName("RacingString을 Join할수 있습니다.")
   void testJoining() {
     // given
     Stream<RacingString> racingStringStream = Stream
@@ -24,6 +26,7 @@ class RacingStringTest {
   }
 
   @Test
+  @DisplayName("RacingString을 Join할때 Delimiter를 추가할수 있습니다.")
   void testJoiningWithDelimiter() {
     // given
     Stream<RacingString> racingStringStream = Stream
@@ -39,6 +42,7 @@ class RacingStringTest {
   }
 
   @Test
+  @DisplayName("RacingString 은 반복할수 있습니다.")
   void repeat() {
     // given
     RacingString racingString = RacingString.DISPLAY_TOKEN_STRING;
@@ -49,6 +53,7 @@ class RacingStringTest {
   }
 
   @Test
+  @DisplayName("RacingString 은 concat할수 있습니다.")
   void concat() {
     // given
     RacingString racingString = RacingString.DISPLAY_TOKEN_STRING;
