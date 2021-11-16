@@ -17,9 +17,11 @@ public class RacingGameController {
     }
 
     public static void run() {
-        Cars cars = getCars();
+        RacingGameController controller = new RacingGameController();
 
-        Round finalRound = getFinalRound();
+        Cars cars = controller.getCars();
+
+        Round finalRound = controller.getFinalRound();
 
         RacingGame racingGame = RacingGame.of(cars);
 
@@ -29,7 +31,7 @@ public class RacingGameController {
         OutputView.printWinners(cars);
     }
 
-    private static Cars getCars() {
+    private Cars getCars() {
         String input = InputView.askCreateCarNames();
         String[] carNames = split(input);
         try {
@@ -40,7 +42,7 @@ public class RacingGameController {
         }
     }
 
-    private static Round getFinalRound() {
+    private Round getFinalRound() {
         try {
             int tryCount = InputView.askTryCount();
             return Round.from(tryCount);
