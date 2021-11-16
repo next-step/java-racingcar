@@ -21,7 +21,7 @@ public class RacingCarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 9})
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     @DisplayName("랜덤 값이 4 이상인 경우 횟수를 센다")
     void shouldCountIfGreaterThanFour(int randomNumber) {
         Car car = new Car();
@@ -34,7 +34,7 @@ public class RacingCarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
+    @ValueSource(ints = {0, 1, 2, 3})
     @DisplayName("랜덤 값이 4 미만인 경우 횟수를 세지 않는다")
     void shouldNotCountIfLessThanFour(int randomNumber) {
         Car car = new Car();
