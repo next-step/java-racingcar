@@ -1,11 +1,10 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.dto.Winners;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static racingcar.RacingCarTestUtil.*;
+import static racingcar.domain.RacingCarTestUtil.*;
 
 public class CarsTest {
     private final String RACER_ONE = "tomo";
@@ -13,13 +12,16 @@ public class CarsTest {
     private final String RACER_THREE = "yong";
     private final String RACER_FOUR = "crong";
 
-    private int DISTANCE_OF_RACER_ONE = 3;
-    private int DISTANCE_OF_RACER_TWO = 5;
-    private int DISTANCE_OF_RACER_THREE = 4;
-    private int DISTANCE_OF_RACER_FOUR = 5;
+    private final int DISTANCE_OF_RACER_ONE = 3;
+    private final int DISTANCE_OF_RACER_TWO = 5;
+    private final int DISTANCE_OF_RACER_THREE = 4;
+    private final int DISTANCE_OF_RACER_FOUR = 5;
 
-    private int WINNER_COUNT_ONE = 1;
-    private int WINNER_COUNT_TWO = 2;
+    private final int WINNER_COUNT_ONE = 1;
+    private final int WINNER_COUNT_TWO = 2;
+
+    private final int INDICATOR_OF_ONE_CAR = 1;
+    private final int INDICATOR_OF_ZERO_CAR = 0;
 
     private Cars cars = new Cars();;
     private CarFactory carFactory;

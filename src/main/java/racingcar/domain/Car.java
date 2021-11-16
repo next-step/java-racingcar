@@ -1,7 +1,4 @@
-package racingcar;
-
-import racingcar.dto.Distance;
-import racingcar.dto.Name;
+package racingcar.domain;
 
 import java.util.Objects;
 

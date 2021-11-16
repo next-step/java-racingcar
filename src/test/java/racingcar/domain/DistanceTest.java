@@ -1,9 +1,9 @@
-package racingcar.dto;
+package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static racingcar.dto.ComparableConstants.*;
+import static racingcar.constants.ComparableConstants.*;
 
 public class DistanceTest {
     private final int DISTANCE_ONE = 1;
@@ -32,5 +32,13 @@ public class DistanceTest {
         Distance twoTheSame = new Distance(DISTANCE_TWO);
 
         assertThat(two.compareTo(twoTheSame)).isEqualTo(EQUAL);
+    }
+
+    @Test
+    void testIncrement() {
+        Distance one = new Distance(DISTANCE_ONE);
+        one.increment();
+
+        assertThat(one).isEqualTo(new Distance(DISTANCE_ONE + 1));
     }
 }

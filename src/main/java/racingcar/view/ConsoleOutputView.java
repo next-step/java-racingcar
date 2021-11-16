@@ -1,6 +1,8 @@
-package racingcar;
+package racingcar.view;
 
-import racingcar.dto.Winners;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.Winners;
 
 import java.util.stream.IntStream;
 
@@ -46,14 +48,8 @@ public class ConsoleOutputView implements OutputView{
     public void showWinners(Winners winners) {
         StringBuilder stringBuilder = new StringBuilder();
 
-        winners.stream().forEach(winner -> {
-            stringBuilder.append(winner);
-            stringBuilder.append(SEPARATOR_OF_WINNERS);
-        });
-
-        int lengthOfMessage = stringBuilder.length();
-        stringBuilder.delete(lengthOfMessage-SEPARATOR_OF_WINNERS.length(), lengthOfMessage);
-
+        String winnerNames = winners.provideWinnerNames();
+        stringBuilder.append(winnerNames);
         stringBuilder.append(MESSAGE_OF_WINNERS);
 
         System.out.println(stringBuilder);

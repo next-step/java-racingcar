@@ -1,50 +1,44 @@
-package racingcar;
-
-import racingcar.dto.Winners;
+package racingcar.domain;
 
 import java.rmi.NoSuchObjectException;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static racingcar.dto.ComparableConstants.EQUAL;
+import static racingcar.constants.ComparableConstants.EQUAL;
 
 public class Cars {
     private final Car CAR_AT_THE_START_POINT = new Car();
 
-    private final Set<Car> carSet;
+    private final List<Car> carList;
     private final RacingManager racingManager = new RacingManager();
 
     public Cars() {
-        carSet = new HashSet<>();
-    }
-
-    private Cars(Set<Car> carSet) {
-        this.carSet = carSet;
+        carList = new ArrayList<>();
     }
 
     public void add(Car car) {
-        carSet.add(car);
+        carList.add(car);
     }
 
     public boolean contains(Car car) {
-        return carSet.contains(car);
+        return carList.contains(car);
     }
 
     public Stream<Car> stream() {
-        return carSet.stream();
+        return carList.stream();
     }
 
     public void clear() {
-        carSet.clear();
+        carList.clear();
     }
 
     public boolean sizeEqualTo(int size) {
-        return carSet.size() == size;
+        return carList.size() == size;
     }
 
     public void progressRound() {
-        carSet.forEach(racingManager::progressCar);
+        carList.forEach(racingManager::progressCar);
     }
 
     public Winners chooseWinner()  {
@@ -54,7 +48,7 @@ public class Cars {
             return new Winners();
         }
 
-        return new Winners(carSet.stream()
+        return new Winners(carList.stream()
                 .filter(car -> car.compareTo(carWithMaxDistance) == EQUAL)
                 .map(Car::getName)
                 .collect(Collectors.toList()));
@@ -73,7 +67,7 @@ public class Cars {
     }
 
     private Car tryGetCarWithMaxDistance() throws NoSuchObjectException {
-        return carSet.stream()
+        return carList.stream()
                 .max(Car::compareTo)
                 .orElseThrow(() -> new NoSuchObjectException("There is no max distance"));
     }
