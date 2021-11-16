@@ -16,10 +16,6 @@ public class CalculatorTest {
 	void plus() {
 
 		MyNumber actual = Calculator.calculate("1 + 2");
-
-		System.out.println(actual.toString());
-		MyNumber myNumber = new MyNumber(3);
-		System.out.println(myNumber.toString());
 		Assertions.assertThat(actual).isEqualTo(new MyNumber(3));
 	}
 
