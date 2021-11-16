@@ -1,5 +1,6 @@
 package racingCar;
 
+import java.util.ArrayList;
 import view.InputView;
 import view.ResultView;
 
@@ -10,7 +11,7 @@ public class RacingCarGame {
   private RacingCars racingCars;
 
   public RacingCarGame() {
-    racingCars = new RacingCars();
+    racingCars = new RacingCars(new ArrayList<>());
     inputView = new InputView();
     resultView = new ResultView();
   }

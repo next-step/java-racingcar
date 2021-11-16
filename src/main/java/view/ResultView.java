@@ -1,8 +1,10 @@
 package view;
 
+import java.util.List;
+
 public class ResultView {
 
-  public void printAllCars(int[] moveCounts) {
+  public void printAllCars(List<Integer> moveCounts) {
     for (int moveCount : moveCounts) {
       System.out.println(presentStatus(moveCount));
     }

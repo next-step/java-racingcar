@@ -1,29 +1,28 @@
 package racingCar;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RacingCars {
 
-  private final List<RacingCar> racingCarList;
-  int tryCount;
+  private final List<RacingCar> racingCars;
 
-  public RacingCars() {
-    this.racingCarList = new ArrayList<>();
-    this.tryCount = 0;
+  public RacingCars(List<RacingCar> racingCars) {
+    this.racingCars = racingCars;
   }
 
   public void add(RacingCar racingCar) {
-    racingCarList.add(racingCar);
+    racingCars.add(racingCar);
   }
 
   public void moveAllCars() {
-    racingCarList.forEach(e -> e.tryMove(new Random().nextInt(10)));
-    this.tryCount++;
+    racingCars.forEach(e -> e.tryMove(new Random().nextInt(10)));
   }
 
-  public int[] getAllCarsMoveCount() {
-    return racingCarList.stream().mapToInt(RacingCar::getMoveCount).toArray();
+  public List<Integer> getAllCarsMoveCount() {
+    return racingCars.stream()
+        .map(RacingCar::getMoveCount)
+        .collect(Collectors.toList());
   }
 }
