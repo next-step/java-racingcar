@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.exception.WinnersException;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -8,7 +10,14 @@ public class Winners {
     private final List<Car> winners;
 
     private Winners(List<Car> winners) {
+        validateWiners(winners);
         this.winners = winners;
+    }
+
+    private void validateWiners(List<Car> winners) {
+        if (winners.isEmpty()) {
+            throw new WinnersException();
+        }
     }
 
     public static Winners from(List<Car> winners) {
