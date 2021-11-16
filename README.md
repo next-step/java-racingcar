@@ -26,6 +26,7 @@
 * Result View 구현
   * 결과를 보여줌
   * 우승자를 알려줌
+* Main controller 구현
 
 
 ## 자동차 경주(우승자) 기능 목록
