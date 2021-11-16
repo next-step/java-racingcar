@@ -1,6 +1,0 @@
-package Racing;
-
-class BoardTest {
-  
-
-}
