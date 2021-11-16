@@ -1,6 +1,11 @@
 package racingCar;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -20,9 +25,15 @@ public class RacingCars {
     racingCars.forEach(e -> e.tryMove(new Random().nextInt(10)));
   }
 
-  public List<Integer> getAllCarsMoveCount() {
+  public List<String> getWinnerNames() {
+    RacingCar maxMovedCar = Collections.max(racingCars);
     return racingCars.stream()
-        .map(RacingCar::getMoveCount)
+        .filter(winner -> maxMovedCar.getMoveCount() == winner.getMoveCount())
+        .map(RacingCar::getName)
         .collect(Collectors.toList());
+  }
+
+  public List<RacingCar> getAllCars() {
+    return racingCars;
   }
 }

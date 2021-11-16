@@ -17,20 +17,21 @@ public class RacingCarGame {
   }
 
   public void startWithUserInput() {
-    createCars(inputView.inputCarCount());
+    createCars(inputView.inputCarNames());
     race(inputView.inputTryCount());
   }
 
-  private void createCars(int carCount) {
-    for (int i = 0; i < carCount; i++) {
-      racingCars.add(new RacingCar(0));
+  private void createCars(String[] carNames) {
+    for (String carName : carNames) {
+      racingCars.add(new RacingCar(0, carName));
     }
   }
 
-  public void race(int tryCount) {
-    for (int currentMoveCount = 0; currentMoveCount < tryCount; currentMoveCount++) {
+  public void race(int totalTryCount) {
+    for (int tryCount = 0; tryCount < totalTryCount; tryCount++) {
       racingCars.moveAllCars();
-      resultView.printAllCars(racingCars.getAllCarsMoveCount());
+      resultView.printAllCars(racingCars.getAllCars());
     }
+    resultView.printWinner(racingCars.getWinnerNames());
   }
 }
