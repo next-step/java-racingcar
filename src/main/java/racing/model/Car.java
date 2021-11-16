@@ -1,14 +1,10 @@
 package racing.model;
 
-import java.util.Random;
-
 public class Car {
 
-    private static final int MAX_BOUND = 10;
     private static final int GO_BEHAVIOR_PIVOT = 4;
     private static final int MAX_NAME_LENGTH = 5;
 
-    private final Random random = new Random();
     private final String name;
     private int movingDistance = 0;
 
@@ -19,14 +15,14 @@ public class Car {
         this.name = name;
     }
 
-    public void moveRandom() {
-        if (random.nextInt(MAX_BOUND) >= GO_BEHAVIOR_PIVOT) {
-            go();
+    public void move(int randomValue) {
+        if (randomValue >= GO_BEHAVIOR_PIVOT) {
+            movingDistance++;
         }
     }
 
-    private void go() {
-        movingDistance++;
+    public boolean isEqualMovingDistance(int movingDistance) {
+        return this.movingDistance == movingDistance;
     }
 
     public int getMovingDistance() {
