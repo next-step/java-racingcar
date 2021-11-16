@@ -1,5 +1,7 @@
 package racingcarfinal.domain;
 
+import racingcarfinal.utils.RandomUtils;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,6 +14,10 @@ public class Cars {
         this.cars = Arrays.stream(name.split(","))
                 .map(Car::new)
                 .collect(Collectors.toList());
+    }
+
+    public void move() {
+        cars.forEach(car -> car.move(RandomUtils.randomInt()));
     }
 
     public List<Car> findWinners() {
