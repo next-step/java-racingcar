@@ -65,4 +65,28 @@ class RoundTest {
         );
     }
 
+    @ParameterizedTest
+    @DisplayName("Round#counting 호출시 Round.round값이 1 감소한다.")
+    @MethodSource
+    void countingTest(Round round, Round expected) {
+        round.counting();
+
+        assertThat(round).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> countingTest() {
+        return Stream.of(
+                Arguments.of(
+                        Round.from(1), Round.from(0)
+                ),
+                Arguments.of(
+                        Round.from(2), Round.from(1)
+                ),
+                Arguments.of(
+                        Round.from(3), Round.from(2)
+                )
+        );
+    }
+
+
 }
