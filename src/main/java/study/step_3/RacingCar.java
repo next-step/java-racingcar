@@ -1,6 +1,6 @@
 package study.step_3;
 
-public class Car {
+public class RacingCar {
 
     private final int condition = 4;
     private int distance;
