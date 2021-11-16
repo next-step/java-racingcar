@@ -1,14 +1,14 @@
 public class RacingCar {
 
   public static final int MAX_NAME_LENGTH = 5;
+  public static final String DEFAULT_NAME = "";
 
-  private String name;
+  private final String name;
   private int progress;
 
   public RacingCar(String name) {
     this(name, 0);
   }
-
   private RacingCar(String name, int progress) {
     this.name = substringIfExceedMaxLength(name);
     this.progress = progress;
@@ -17,6 +17,9 @@ public class RacingCar {
   private String substringIfExceedMaxLength(String name) {
     if (!Strings.isBlank(name) && name.length() > MAX_NAME_LENGTH) {
       return name.substring(0, MAX_NAME_LENGTH);
+    }
+    if (Strings.isBlank(name)) {
+      return DEFAULT_NAME;
     }
     return name;
   }

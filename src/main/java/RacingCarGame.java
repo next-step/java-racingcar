@@ -18,7 +18,6 @@ public class RacingCarGame {
     racingCarGameResults.setWinnerNames(racingCars);
   }
 
-
   public RacingCarGameResults getResults() {
     return this.racingCarGameResults;
   }
