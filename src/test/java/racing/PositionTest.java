@@ -27,6 +27,4 @@ public class PositionTest {
         position.move();
         assertThat(position.getPosition()).isEqualTo(2);
     }
-
-
 }
