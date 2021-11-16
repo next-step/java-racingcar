@@ -12,12 +12,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingCarTest {
 
     @Test
-    @DisplayName("0과 9 사이의 랜덤 값을 구한다")
-    void shouldReturnRandomNumber() {
-        Random random = new Random();
-        int result = random.nextInt(10);
+    @DisplayName("0에서 9 사이의 랜덤 값을 생성한다")
+    void shouldGenerateRandomNumberBetweenZeroAndNine() {
+        RandomNumber randomNumber = new RandomNumber();
 
-        assertThat(result).isLessThan(10);
+        assertThat(randomNumber.generate()).isBetween(0, 9);
     }
 
     @ParameterizedTest
@@ -44,13 +43,5 @@ public class RacingCarTest {
         }
 
         assertThat(car.getNumberOfMoves()).isEqualTo(0);
-    }
-
-    @Test
-    @DisplayName("0에서 9 사이의 랜덤 값을 생성한다")
-    void shouldGenerateRandomNumberBetweenZeroAndNine() {
-        RandomNumber randomNumber = new RandomNumber();
-
-        assertThat(randomNumber.generate()).isBetween(0, 9);
     }
 }
