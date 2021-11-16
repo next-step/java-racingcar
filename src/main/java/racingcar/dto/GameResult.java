@@ -2,6 +2,7 @@ package racingcar.dto;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.Car;
 
 public class GameResult {
 
@@ -11,12 +12,12 @@ public class GameResult {
         progress = new ArrayList<>();
     }
 
-    public void record(int round, String result) {
+    public void record(int round, Car car) {
         if (isInitRound(round)) {
             progress.add(new RoundResult());
         }
 
-        progress.get(round).record(result);
+        progress.get(round).record(car);
     }
 
     private boolean isInitRound(int round) {
@@ -25,5 +26,13 @@ public class GameResult {
 
     public List<RoundResult> getProgress() {
         return progress;
+    }
+
+    public List<String> getWinnerNames() {
+        return progress.get(getMaxRound()).getFirstPlaceCarNames();
+    }
+
+    private int getMaxRound() {
+        return progress.size() - 1;
     }
 }

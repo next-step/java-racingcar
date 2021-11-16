@@ -2,19 +2,23 @@ package racingcar.dto;
 
 import static racingcar.utils.IntegerUtils.*;
 
+import java.util.List;
+import racingcar.Participants;
+
 
 public class GameConfig {
 
-    private final int numberOfCars;
+    private final Participants participants;
     private final int maxOfRound;
 
-    public GameConfig(int maxOfCars, int maxOfRound) {
-        this.numberOfCars = isPositiveNumber(maxOfCars);
+    public GameConfig(Participants participants, int maxOfRound) {
+        this.participants = participants;
         this.maxOfRound = isPositiveNumber(maxOfRound);
     }
 
-    public int getNumberOfCars() {
-        return numberOfCars;
+
+    public Participants getParticipants() {
+        return participants;
     }
 
     public int getMaxOfRound() {

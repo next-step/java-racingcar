@@ -10,7 +10,6 @@ public enum Operator {
     MULTIPLE("*", (cal1, cal2) -> new CalNumber(cal1.getNumber() * cal2.getNumber())),
     DIVIDED("/", (cal1, cal2) -> new CalNumber(cal1.getNumber() / cal2.getNumber()));
 
-
     private final String symbol;
     private final BiFunction<CalNumber, CalNumber, CalNumber> calculate;
 
@@ -35,5 +34,4 @@ public enum Operator {
             .findAny()
             .orElseThrow(() -> new IllegalArgumentException("operation이 잘못되었습니다."));
     }
-
 }

@@ -22,7 +22,6 @@ public class CalNumber {
     public CalNumber calculate(CalNumber to, String operation) {
         return Operator.of(operation).apply(this, to);
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {

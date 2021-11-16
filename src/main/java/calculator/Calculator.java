@@ -18,8 +18,8 @@ public class Calculator {
 
             CalNumber to = new CalNumber(split[i + 1]);
             symbol = split[i];
-
             result = result.calculate(to, symbol);
+
         }
 
         return result.getNumber();

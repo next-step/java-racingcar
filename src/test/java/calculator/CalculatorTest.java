@@ -61,6 +61,7 @@ class CalculatorTest {
 
     }
 
+
     @CsvSource(value = {"3 / 2 * 3=3", "4 / 2 + 3=5", "2 - 1 * 5=5"}, delimiter = '=')
     @ParameterizedTest(name = "{arguments} 결과 테스트")
     void calculateTest(String input, int expected) {
