@@ -3,7 +3,6 @@ package carracing;
 import carracing.exception.CarNameFormatException;
 import carracing.util.Car;
 import carracing.util.Cars;
-import carracing.util.Name;
 import carracing.util.RaceResult;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -19,7 +18,7 @@ public class CarsTest {
     void getWinner() throws CarNameFormatException {
         List<Car> carList = new ArrayList<>();
         for (int i = 1; i < 4; i++) {
-            Car car = new Car(new Name("car" + i));
+            Car car = new Car("car" + i);
             car.driving(2 + i);
             carList.add(car);
         }
@@ -43,7 +42,7 @@ public class CarsTest {
     void getWinnerOnlyOne() throws CarNameFormatException {
         List<Car> carList = new ArrayList<>();
         for (int i = 1; i < 4; i++) {
-            Car car = new Car(new Name("car" + i));
+            Car car = new Car("car" + i);
             car.driving(1 + i);
             carList.add(car);
         }
