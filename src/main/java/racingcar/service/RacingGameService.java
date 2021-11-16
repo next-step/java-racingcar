@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 public class RacingGameService {
     private static final int RANDOM_BOUND = 10;
+
     private List<String> carNames;
     private int tryCount;
 
@@ -37,14 +38,16 @@ public class RacingGameService {
     }
 
     public List<RacingCar> getWinners(List<RacingCar> racingCars) {
+        int maxCount = getMaxCount(racingCars);
+
         return racingCars.stream()
-                .filter(racingCar -> racingCar.isMoveCountEqualMaxCount(getMaxCount(racingCars)))
+                .filter(racingCar -> racingCar.isMoveCountEqualMaxCount(maxCount))
                 .collect(Collectors.toList());
     }
 
     private int getMaxCount(List<RacingCar> racingCars) {
         return racingCars.stream()
-                .max(Comparator.comparingInt(RacingCar::getMoveCount))
+                .collect(Collectors.maxBy(Comparator.comparingInt(RacingCar::getMoveCount)))
                 .get().getMoveCount();
     }
 

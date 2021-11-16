@@ -33,7 +33,7 @@ public class RacingGameServiceTest {
     @DisplayName("racingCars에서 moveCount가 제일 큰 값을 추출한다.")
     public void maxCountOfMoveCount() {
         int maxCount = racingCars.stream()
-                .max(Comparator.comparingInt(RacingCar::getMoveCount))
+                .collect(Collectors.maxBy(Comparator.comparingInt(RacingCar::getMoveCount)))
                 .get().getMoveCount();
         assertThat(maxCount).isEqualTo(5);
     }

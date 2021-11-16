@@ -19,16 +19,13 @@ public class RacingGameMain {
             System.exit(NUMBER_ZERO);
         }
 
-        // 레이싱 게임에 참가할 레이싱카 생성
         RacingGameService racingGameService = new RacingGameService(inputView.getCarNames(), inputView.getTryCount());
         List<RacingCar> racingCars = racingGameService.makeRacingCars();
 
-        // 레이스 시작
         racingGameService.racing(racingCars);
         ResultView resultView = new ResultView();
         resultView.drawRacing(racingCars);
 
-        // 우승자 선정
         List<RacingCar> winnerCars = racingGameService.getWinners(racingCars);
         resultView.drawWinner(winnerCars);
     }

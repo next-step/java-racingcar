@@ -1,9 +1,11 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class RacingCar {
     private static final int RANDOM_REFERENCE_VALUE = 4;
-    private Car car;
-    private MoveCounter moveCounter;
+    private final Car car;
+    private final MoveCounter moveCounter;
 
     public RacingCar(String carName) {
         this.car = new Car(carName);
@@ -31,5 +33,17 @@ public class RacingCar {
         return moveCounter.isMoveCountEqualMaxCount(maxCount);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return Objects.equals(car, racingCar.car) &&
+                Objects.equals(moveCounter, racingCar.moveCounter);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(car, moveCounter);
+    }
 }
