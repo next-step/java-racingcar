@@ -8,6 +8,10 @@ public class InputView {
     private static final String READ_TRY_COUNT_MESSAGE = "시도할 회수는 몇회인가요?";
     private static final Scanner scanner = new Scanner(System.in);
 
+    private InputView() {
+
+    }
+
     public static String readCarNames() {
         System.out.println(READ_CARS_NAME_MESSAGE);
         return scanner.nextLine();

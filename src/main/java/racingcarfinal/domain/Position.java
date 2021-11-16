@@ -23,6 +23,10 @@ public class Position {
         return new Position(position + 1);
     }
 
+    public int getIntValue() {
+        return this.position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

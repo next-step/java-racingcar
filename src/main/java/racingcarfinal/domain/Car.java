@@ -6,8 +6,12 @@ public class Car {
     private Position position;
 
     public Car(String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
         this.name = new Name(name);
-        this.position = new Position();
+        this.position = new Position(position);
     }
 
     public void move(int moveValue) {
@@ -18,6 +22,10 @@ public class Car {
 
     public boolean isSamePosition(Position position) {
         return this.position.equals(position);
+    }
+
+    public Position getPosition() {
+        return this.position;
     }
 
 }
