@@ -10,7 +10,7 @@ public class CalculateTest {
 
     @Test
     void plus() {
-        Calculator cal = new Calculator("3").plus(new Calculator(2));
+        Calculator cal = new Calculator(3).plus(new Calculator(2));
         assertThat(cal).isEqualTo(new Calculator(5));
     }
 
@@ -22,7 +22,7 @@ public class CalculateTest {
 
     @Test
     void multiple() {
-        Calculator cal = new Calculator("3").multiple(new Calculator("2"));
+        Calculator cal = new Calculator(3).multiple(new Calculator(2));
         assertThat(cal).isEqualTo(new Calculator(6));
     }
 
@@ -35,6 +35,7 @@ public class CalculateTest {
     @ParameterizedTest
     @CsvSource(value = {"1 + 2 + 3:6", "4 / 2 + 1:3", "3 - 1 * 5:10", "4 / 2:2"}, delimiter = ':')
     void testCalculator(String a, int b) {
-        assertThat(b).isEqualTo(Calculate.calculate(a));
+        Calculate cal = new Calculate();
+        assertThat(b).isEqualTo(cal.calculate(a));
     }
 }
