@@ -1,18 +1,18 @@
 package racing.domain;
 
-import racing.domain.Position;
-
 public class ConvertOutputView {
 
     private ConvertOutputView() {
     }
 
+    private final static StringBuilder stringBuilder = new StringBuilder();
+
     public static String convertOutputView(Position position) {
-        StringBuilder convertResult = new StringBuilder();
-        convertResult.append("-");
+        stringBuilder.setLength(0);
+        stringBuilder.append("-");
         for (int i = 0; i < position.getPosition(); i++) {
-            convertResult.append("-");
+            stringBuilder.append("-");
         }
-        return convertResult.toString();
+        return stringBuilder.toString();
     }
 }
