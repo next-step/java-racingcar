@@ -15,7 +15,7 @@ public class Output {
             cars.getCarList().stream().map(car -> car.getName().getName() + ": " + ConvertOutputView.convertOutputView(car.getPosition())).forEach(System.out :: println);
             System.out.println("");
         }
-        cars.findWinnerList(cars).stream().map(i->i.getName().getName()+" ").forEach(System.out::printf);
+        cars.findWinnerList().stream().map(i->i.getName().getName()+" ").forEach(System.out::printf);
         System.out.printf("우승하셨습니다");
     }
 }

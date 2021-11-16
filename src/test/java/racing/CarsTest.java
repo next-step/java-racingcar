@@ -80,6 +80,6 @@ public class CarsTest {
         cars.getCarList().get(1).movable(() -> true);
         cars.getCarList().get(1).movable(() -> true);
         cars.getCarList().get(1).movable(() -> true);
-        assertEquals(cars.findWinnerList(cars).stream().map(i->i.getName().getName()).collect(Collectors.toList()),expectedList);
+        assertEquals(cars.findWinnerList().stream().map(i->i.getName().getName()).collect(Collectors.toList()),expectedList);
     }
 }
