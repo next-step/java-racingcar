@@ -55,14 +55,17 @@ public class ResultView {
   }
 
   private void convertCarStatusToString(RacingData racingData) {
-    stringBuilder.append(racingData.getName()).append(BLANK_STRING).append(COLON).append(BLANK_STRING);
+    stringBuilder.append(racingData.getName())
+                 .append(BLANK_STRING)
+                 .append(COLON)
+                 .append(BLANK_STRING);
     for (int i = 0; i < racingData.getStep(); i++) {
       stringBuilder.append(STEP_STRING);
     }
   }
 
   private void appendRacingWinner(RacingResult racingResult) {
-    stringBuilder.append(racingResult.getWinner().getWinnerList()
+    stringBuilder.append(racingResult.getWinner().getChallengers()
                                       .stream()
                                       .map(Car::getName)
                                       .collect(joining(COMMA)));

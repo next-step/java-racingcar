@@ -17,4 +17,8 @@ public class Step {
   public int getValue() {
     return this.step.getValue();
   }
+
+  public boolean isEqualTo(Step step) {
+    return this.step.getValue() == step.getValue();
+  }
 }

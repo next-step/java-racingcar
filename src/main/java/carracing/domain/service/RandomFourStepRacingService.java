@@ -8,7 +8,6 @@ import carracing.domain.entity.Car;
 import carracing.domain.entity.Challengers;
 import carracing.domain.entity.Participant;
 import carracing.domain.entity.Round;
-import carracing.domain.entity.Winner;
 import carracing.domain.utils.RandomUtils;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class RandomFourStepRacingService implements CarRacingService{
 
   @Override
   public Challengers registerRacer(Participant participant) {
-    Challengers challengers = new Challengers(participant);
+    Challengers challengers = new Challengers();
     for (int id = 0; id < participant.size(); id++) {
       challengers.register(new Car(participant.getParticipant().get(id)));
     }
@@ -34,12 +33,14 @@ public class RandomFourStepRacingService implements CarRacingService{
   @Override
   public RacingResult gameStart(Round round, Challengers challengers) {
     validateInputValue(round, challengers);
+
     List<RoundData> roundDataList = new ArrayList<>();
+
     while (round.hasMoreChance()) {
       roundDataList.add(startRound(challengers));
       round.minus();
     }
-    return new RacingResult(new RoundResult(roundDataList), Winner.pickWinner(challengers.getChallengers()));
+    return new RacingResult(new RoundResult(roundDataList), challengers.getWinner());
   }
 
   private void validateInputValue(Round round, Challengers challengers) {
@@ -54,10 +55,15 @@ public class RandomFourStepRacingService implements CarRacingService{
 
   private RoundData startRound(Challengers challengers) {
     challengers.notifyCarOfStart(isMovable());
-    List<RacingData> racingDataList = challengers.getChallengers().stream()
-                                                                  .map(car -> new RacingData(car.getName(), car.getNowStep()))
-                                                                  .collect(toList());
+    List<RacingData> racingDataList = getRacingData(challengers);
     return new RoundData(racingDataList);
+  }
+
+  private List<RacingData> getRacingData(Challengers challengers) {
+    List<RacingData> racingDataList = challengers.getChallengers().stream()
+                                      .map(car -> new RacingData(car.getName(), car.getNowStep()))
+                                      .collect(toList());
+    return racingDataList;
   }
 
 }

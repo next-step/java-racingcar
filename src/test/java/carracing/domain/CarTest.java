@@ -1,6 +1,7 @@
 package carracing.domain;
 
 import carracing.domain.entity.Car;
+import carracing.domain.entity.Name;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,7 +18,11 @@ class CarTest {
 
   @BeforeEach
   void init() {
-    car = new Car("sup");
+    car = new Car(new Name("sup"));
+  }
+
+  BooleanSupplier isMoved(int number) {
+    return () -> number > 10;
   }
 
   @ParameterizedTest
@@ -34,15 +39,11 @@ class CarTest {
     assertThat(car.getNowStep()).isEqualTo(result);
   }
 
-  BooleanSupplier isMoved(int number) {
-    return () -> number > 10;
-  }
-
   @ParameterizedTest
-  @ValueSource(strings = {"sup, kevin, duke"})
+  @CsvSource(value = {"sup,kevin,duke"}, delimiter = ',')
   @DisplayName("생성자를 통해 입력된 이름을 확인한다.")
   void constructWithNameTest(String input) {
-    car = new Car(input);
+    car = new Car(new Name(input));
     assertThat(car.getName()).isEqualTo(input);
   }
 

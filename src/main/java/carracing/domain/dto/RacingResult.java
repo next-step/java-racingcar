@@ -1,13 +1,13 @@
 package carracing.domain.dto;
 
-import carracing.domain.entity.Winner;
+import carracing.domain.entity.Challengers;
 
 public class RacingResult {
 
   public final RoundResult result;
-  public final Winner winner;
+  public final Challengers winner;
 
-  public RacingResult(RoundResult result, Winner winner) {
+  public RacingResult(RoundResult result, Challengers winner) {
     this.result = result;
     this.winner = winner;
   }
@@ -16,7 +16,7 @@ public class RacingResult {
     return new RoundResult(result.getRoundDataList());
   }
 
-  public Winner getWinner() {
+  public Challengers getWinner() {
     return winner;
   }
 }

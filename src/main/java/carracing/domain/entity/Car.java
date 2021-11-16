@@ -4,10 +4,10 @@ import java.util.function.BooleanSupplier;
 
 public class Car implements Comparable<Car>{
 
-  private final String name;
+  private final Name name;
   private final Step nowStep;
 
-  public Car(String name) {
+  public Car(Name name) {
     this.name = name;
     this.nowStep = new Step();
   }
@@ -19,7 +19,7 @@ public class Car implements Comparable<Car>{
   }
 
   public String getName() {
-    return name;
+    return name.getName();
   }
 
   public int getNowStep() {
@@ -29,5 +29,9 @@ public class Car implements Comparable<Car>{
   @Override
   public int compareTo(Car o) {
     return Integer.compare(o.getNowStep(), this.nowStep.getValue());
+  }
+
+  public boolean equalStep(Car o) {
+    return this.nowStep.isEqualTo(o.nowStep);
   }
 }

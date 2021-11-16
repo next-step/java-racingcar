@@ -16,6 +16,7 @@ public class InputView {
   private static final String INPUT_MESSAGE = "잘못 입력 하셨습니다. 0 이상의 자연수를 입력해주세요";
 
   private static final int ZERO = 0;
+  private static final int MAX_LENGTH = 5;
   private static final String COMMA =",";
   private static final String EMPTY_STRING = "";
   private static final String BLANK_STRING = " ";
@@ -30,7 +31,7 @@ public class InputView {
   }
 
   public Participant inputNumberOfCar() {
-    return Participant.parse(inputName(CAR_QUESTION));
+    return inputName(CAR_QUESTION);
   }
 
   public Round inputTryCount() {
@@ -46,26 +47,33 @@ public class InputView {
     return count;
   }
 
-  private String inputName(String question) {
+  private Participant inputName(String question) {
     String names = EMPTY_STRING;
-    while (!isValidNames(names)) {
+    while (!isValidInput(names)) {
       System.out.println(question);
       names = inputKeyboard().trim();
     }
-    return names;
+    return Participant.parse(names);
   }
 
   private boolean isGreaterThanZero(int count) {
     return count > ZERO;
   }
 
-  private boolean isValidNames(String names) {
-    return names != null && !names.isEmpty() && !hasBlink(names);
+  private boolean isValidInput(String names) {
+    String[] namesArray = names.split(COMMA);
+    return names != null && !names.isEmpty()
+            && !hasBlink(namesArray) && !isExceedLength(namesArray);
   }
 
-  private boolean hasBlink(String names) {
-    return Arrays.stream(names.split(COMMA))
+  private boolean hasBlink(String[] names) {
+    return Arrays.stream(names)
                  .anyMatch(name -> name.equals(BLANK_STRING));
+  }
+
+  private boolean isExceedLength(String[] names) {
+    return Arrays.stream(names)
+            .anyMatch(s -> s.length() > MAX_LENGTH);
   }
 
   private String inputKeyboard() {
