@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class RacingNumber {
 
-  private final static double RANDOM_BOUND = 10.0;
+  private final static double RANDOM_BOUND = 5.0;
   private final double value;
 
   public RacingNumber(int number) {
@@ -17,7 +17,7 @@ public class RacingNumber {
   }
 
   public static RacingNumber getRandomNumber() {
-    int number = new Random().nextInt((int) RacingNumber.RANDOM_BOUND) + 1;
+    int number = new Random().nextInt((int) RacingNumber.RANDOM_BOUND) + 4;
     return new RacingNumber(number);
   }
 
