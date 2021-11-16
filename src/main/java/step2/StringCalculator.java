@@ -26,15 +26,29 @@ public class StringCalculator {
         validate(input);
         String inputValue = input.replaceAll(" ", "");//공백을 삭제처리
         char[] arrCh = inputValue.toCharArray();
+
         return calculateDetail(arrCh);
+
+        int result = 0;
+        result = calculateDetail(arrCh);
+        return result;
+
     }
 
     public int calculateDetail(char[] inputValue){
         LinkedList<Integer> numList = new LinkedList<Integer>();
         LinkedList<Character> opList = new LinkedList<Character>();
+
         distinguishValue(inputValue, numList, opList);
         calculateExecute(opList, numList);
         return numList.poll();
+
+        int value = 0;
+        distinguishValue(inputValue, numList, opList);
+        calculateExecute(opList, numList);
+        value = numList.poll();
+        return value;
+
     }
 
     private void calculateExecute(LinkedList<Character> opList, LinkedList<Integer> numList) {
@@ -51,8 +65,13 @@ public class StringCalculator {
     }
 
     private void distinguishValue(char[] inputValue, LinkedList<Integer> numList, LinkedList<Character> opList) {
+
         for (char Ivalue : inputValue) {
             char ch = Ivalue;
+
+        for (int i = 0; i < inputValue.length; i++) {
+            char ch = inputValue[i];
+
             processValues(ch, numList, opList);
         }
     }
