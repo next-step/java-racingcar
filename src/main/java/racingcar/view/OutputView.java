@@ -19,7 +19,7 @@ public class OutputView {
         if (car.getName() != null) {
             result.append(car.getName()).append(" : ");
         }
-        for (int i = 0; i < car.getState(); i++) {
+        for (int i = 0; i < car.getState().getState(); i++) {
             result.append("-");
         }
         print(result.toString());
