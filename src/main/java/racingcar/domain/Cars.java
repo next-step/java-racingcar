@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static racingcar.domain.ComparableConstants.EQUAL;
+import static racingcar.constants.ComparableConstants.EQUAL;
 
 public class Cars {
     private final Car CAR_AT_THE_START_POINT = new Car();

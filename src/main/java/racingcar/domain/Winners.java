@@ -1,7 +1,6 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Winners {
     private final List<String> names;
@@ -14,15 +13,19 @@ public class Winners {
         this.names = winners;
     }
 
-    public List<String> provideWinnerNames() {
-        return names;
-    }
-
     public boolean sizeEqualTo(int size) {
         return names.size() == size;
     }
 
     public boolean contains(String name) {
         return names.contains(name);
+    }
+
+    public String provideWinnerNames() {
+        return names.stream().reduce((accumulator, winner) ->
+                accumulator + ", " + winner
+        ).orElseThrow(() ->
+                new NoSuchElementException("There is no Winner!")
+        );
     }
 }

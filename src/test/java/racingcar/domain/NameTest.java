@@ -1,34 +1,33 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.Test;
-import racingcar.domain.Name;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class NameTest {
-    private final String TOMO = "tomo";
-    private final String POBI = "pobi";
-    private final String NAME_WHOSE_LENGTH_IS_GREATER_THAN_FIVE = "tomotomo";
+    @ParameterizedTest
+    @CsvSource(value = {"tomo:tomo"}, delimiter = ':')
+    void testTheSameCarNames(String input, String expected) {
+        Name inputName = new Name(input);
+        Name expectedName = new Name(expected);
 
-    @Test
-    void testTheSameCarNames() {
-        Name carTomoFirst = new Name(TOMO);
-        Name carTomoSecond = new Name(TOMO);
-
-        assertThat(carTomoFirst.equals(carTomoSecond)).isTrue();
+        assertThat(inputName.equals(expectedName)).isTrue();
     }
 
-    @Test
-    void testDifferentCarNames() {
-        Name carTomo = new Name(TOMO);
-        Name carPobi = new Name(POBI);
+    @ParameterizedTest
+    @CsvSource(value = {"tomo:pobi", "tomo:mike"}, delimiter = ':')
+    void testDifferentCarNames(String input, String expected) {
+        Name inputName = new Name(input);
+        Name expectedName = new Name(expected);
 
-        assertThat(carTomo.equals(carPobi)).isFalse();
+        assertThat(inputName.equals(expectedName)).isFalse();
     }
 
-    @Test
-    void testNameLengthGreaterThanFive() {
-        assertThatThrownBy(() -> new Name(NAME_WHOSE_LENGTH_IS_GREATER_THAN_FIVE)).isInstanceOf(IllegalArgumentException.class);
+    @ParameterizedTest
+    @CsvSource(value = {"tomotomo", "michael", "lastzedai"})
+    void testNameLengthGreaterThanFive(String input) {
+        assertThatThrownBy(() -> new Name(input)).isInstanceOf(IllegalArgumentException.class);
     }
 }
