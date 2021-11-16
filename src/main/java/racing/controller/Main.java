@@ -1,6 +1,7 @@
 package racing.controller;
 
 import racing.domain.Cars;
+import racing.domain.Racing;
 import racing.domain.strategy.RandomMoveStrategyImpl;
 import racing.view.Input;
 import racing.view.Output;
@@ -12,6 +13,7 @@ public class Main {
         List<String> nameList = Input.getNameList();
         Cars cars = new Cars(nameList);
         Integer countOfTry = Input.getCuntOfTry();
-        Output.outputView(cars,new RandomMoveStrategyImpl(),countOfTry);
+        Racing racing = new Racing();
+        racing.racing(cars, countOfTry, new RandomMoveStrategyImpl());
     }
 }
