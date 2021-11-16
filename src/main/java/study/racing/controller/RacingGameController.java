@@ -2,7 +2,8 @@ package study.racing.controller;
 
 import java.util.List;
 
-import study.racing.model.Result;
+import study.racing.model.Name;
+import study.racing.model.result.GameResults;
 import study.racing.service.RacingGameService;
 import study.racing.ui.InputView;
 import study.racing.ui.ResultView;
@@ -16,15 +17,11 @@ public class RacingGameController {
     }
 
     public void start() {
-        int carCount = InputView.acceptCarCount();
+        List<Name> carNames = InputView.acceptCarNames();
         int tryCount = InputView.acceptTryCount();
 
-        List<Result> results = racingGameService.race(carCount, tryCount);
+        GameResults gameResults = racingGameService.race(carNames, tryCount);
 
-        printResult(results);
-    }
-
-    private void printResult(List<Result> results) {
-        results.forEach(ResultView::printResult);
+        ResultView.printResult(gameResults);
     }
 }
