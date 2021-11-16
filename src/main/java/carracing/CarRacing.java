@@ -8,6 +8,7 @@ import carracing.util.RaceResult;
 import carracing.view.InputView;
 import carracing.view.ResultView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -31,13 +32,14 @@ public class CarRacing {
 
         RaceResult raceResult = new RaceResult();
 
-        Cars cars = new Cars();
         ResultView resultView = new ResultView();
+        List<Car> carList = new ArrayList<>();
 
         for (int i = 0; i < inputView.getCarCount(); i++) {
-            cars.add(new Car(new Name(inputView.getCarStringList().get(i))));
+            carList.add(new Car(new Name(inputView.getCarStringList().get(i))));
         }
 
+        Cars cars = new Cars(carList);
         for (int i = 0; i < inputView.getTryCount(); i++) {
             racing(cars, inputView, raceResult);     /* 시도 횟수 만큼 주행 */
             resultView.printRacing(cars);            /* 시도 횟수 만큼 출력 */
@@ -46,7 +48,7 @@ public class CarRacing {
 
         raceResult.findMaximumDistance(cars);
 
-        List<String> winners = cars.getWinner(raceResult);
+        List<Car> winners = cars.getWinner(raceResult);
 
         resultView.printWinner(winners);
 

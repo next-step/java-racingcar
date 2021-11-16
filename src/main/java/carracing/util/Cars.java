@@ -1,18 +1,14 @@
 package carracing.util;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
     private final List<Car> carList;
 
-    public Cars() {
-        carList = new ArrayList<>();
-    }
-
-    public void add(Car car) {
-        this.carList.add(car);
+    public Cars(List<Car> carList) {
+        this.carList = carList;
     }
 
     public Car get(int index) {
@@ -23,17 +19,10 @@ public class Cars {
         return this.carList;
     }
 
-    public List<String> getWinner(RaceResult raceResult) {
-        List<String> winnerCarNames = new ArrayList<>();
-        for (Car car : this.carList) {
-            findWinner(winnerCarNames, car, raceResult);
-        }
-        return winnerCarNames;
+    public List<Car> getWinner(RaceResult raceResult) {
+        return this.carList.stream()
+                .filter(car -> car.getDrivingHistory() == raceResult.maximumDistance)
+                .collect(Collectors.toList());
     }
 
-    private void findWinner(List<String> winnerCarNames, Car car, RaceResult raceResult) {
-        if (car.getDrivingHistory() == raceResult.maximumDistance) {
-            winnerCarNames.add(car.getName().getAlias());
-        }
-    }
 }

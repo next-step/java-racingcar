@@ -38,16 +38,16 @@ public class ResultView {
         }
     }
 
-    public void printWinner(List<String> winnerCars) {
+    public void printWinner(List<Car> winnerCars) {
         System.out.println();
         if (winnerCars.size() == 0) {
             return;
         }
         StringBuilder winners = new StringBuilder();
-        for (int i = 0; i < winnerCars.size() - 1; i++) {
-            winners.append(String.format(WINNER_CAR_FORMAT, winnerCars.get(i)));
+        for (Car car : winnerCars) {
+            winners.append(String.format(WINNER_CAR_FORMAT, car.getName().getAlias()));
         }
-        winners.append(winnerCars.get(winnerCars.size() - 1));
+        winners.deleteCharAt(winners.length() - 2);
         System.out.printf(WINNER_PRINT_FORMAT + LINE_BREAK, winners);
     }
 
