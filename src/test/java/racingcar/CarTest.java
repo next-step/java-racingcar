@@ -1,33 +1,38 @@
 package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.Random;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    @DisplayName("Random 객체와 movement 초기값으로 Car 객체를 생성한다.")
-    @Test
-    public void create() {
-        Random random = new Random();
-        int movement = 0;
-        Car car = new Car(random, movement);
+    @DisplayName("movement 초기값으로 Car 객체를 생성한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"0, 0", "1, 1", "2, 2", "3, 3"})
+    public void create(int movement, int expectedMovement) {
+        // when
+        Car car = new Car(movement);
+
+        // then
         assertThat(car).isInstanceOf(Car.class);
-        assertThat(car.getMovement()).isEqualTo(movement);
+        assertThat(car.getMovement()).isEqualTo(expectedMovement);
     }
 
-    @DisplayName("Car의 increaseMovementRandomly 함수는 movement가 증가하지 않거나 range 중 랜덤으로 나온 숫자가 cutline보다 높으면 step만큼 증가한다.")
-    @Test
-    public void increaseMovementRandomly() {
-        Random random = new Random();
-        int movement = 0;
-        int range = 10;
-        int cutline = 4;
-        int step = 3;
-        Car car = new Car(random, movement);
-        car.increaseMovementRandomly(range, cutline, step);
-        assertThat(car.getMovement()).isIn(movement,step);
+    @DisplayName("Car의 move 함수는 round마다 MovingStrategy.canMove이면 movement가 증가한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"4, 3", "10, 6", "20, 12", "100, 60"})
+    public void increaseMovementRandomly(int rounds, int expectedMovement) {
+        // given
+        MovingStrategy strategy = new RandomMovingStrategy(0); // 테스트 결과 고정하기 위해 seed 지정
+
+        // when
+        Car car = new Car();
+        IntStream.range(0, rounds).forEach(i -> car.move(strategy));
+
+        // then
+        assertThat(car.getMovement()).isEqualTo(expectedMovement);
     }
 }

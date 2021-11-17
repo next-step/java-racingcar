@@ -1,13 +1,15 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
-    private Random random;
+    private final static int STEP = 1;
+
     private int movement;
 
-    public Car(Random random, int movement) {
-        this.random = random;
+    public Car() {
+        this.movement = 0;
+    }
+
+    public Car(int movement) {
         this.movement = movement;
     }
 
@@ -15,10 +17,13 @@ public class Car {
         return this.movement;
     }
 
-    public void increaseMovementRandomly(int range, int cutline, int step) {
-        if(this.random.nextInt(range) > cutline) {
-            this.movement = this.movement + step;
+    public void move(MovingStrategy strategy) {
+        if(strategy.canMove()) {
+            increaseMovement();
         }
     }
 
+    private void increaseMovement() {
+        this.movement = this.movement + STEP;
+    }
 }

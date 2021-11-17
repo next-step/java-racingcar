@@ -1,8 +1,9 @@
 package racingcar.view;
 
 import racingcar.Car;
+import racingcar.Cars;
 
-import java.util.List;
+import java.util.stream.IntStream;
 
 public class ResultView {
     private static final String MOVEMENT = "-";
@@ -11,15 +12,15 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public void printAllCarsMovement(List<Car> result) {
-        for (int i = 0; i < result.size(); i++) {
-            printACarMovement(result.get(i).getMovement());
-            System.out.println();
-        }
+    public void printAllCarsMovement(Cars cars) {
+        IntStream.range(0, cars.getSize())
+                .forEach(i -> printACarMovement(cars.getCar(i)));
         System.out.println();
     }
 
-    private void printACarMovement(int movement) {
-        for (int i = 0; i < movement; i++) System.out.print(MOVEMENT);
+    private void printACarMovement(Car car) {
+        IntStream.range(0, car.getMovement())
+                .forEach(i -> System.out.print(MOVEMENT));
+        System.out.println();
     }
 }
