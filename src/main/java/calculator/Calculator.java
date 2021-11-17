@@ -1,7 +1,7 @@
 package calculator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Calculator {
@@ -10,32 +10,35 @@ public class Calculator {
             throw new IllegalArgumentException("Input must not null or blank");
         }
 
-        List<String> elements = new ArrayList<>(Arrays.asList(input.split(" ")));
+        List<String> elements = new LinkedList<>(Arrays.asList(input.split(" ")));
 
-        while (elements.size() != 1) {
-            int left = Integer.parseInt(elements.remove(0));
-            String operator = elements.remove(0);
-            int right = Integer.parseInt(elements.remove(0));
+        Number left = new Number(popFirst(elements));
+        while (elements.size() != 0) {
+            String operator = popFirst(elements);
+            Number right = new Number(popFirst(elements));
 
-            int result = operate(left, operator, right);
-            elements.add(0, Integer.toString(result));
+            left = operate(left, operator, right);
         }
 
-        return Integer.parseInt(elements.get(0));
+        return left.number;
     }
 
-    private static int operate(int left, String operator, int right) {
+    private static Number operate(Number left, String operator, Number right) {
         switch (operator) {
             case "+":
-                return left + right;
+                return left.add(right);
             case "-":
-                return left - right;
+                return left.subtract(right);
             case "*":
-                return left * right;
+                return left.multiply(right);
             case "/":
-                return left / right;
+                return left.divide(right);
             default:
                 throw new IllegalArgumentException("Invalid operator");
         }
+    }
+
+    private static String popFirst(List<String> list) {
+        return list.remove(0);
     }
 }
