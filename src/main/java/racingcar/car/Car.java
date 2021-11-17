@@ -1,7 +1,7 @@
 package racingcar.car;
 
 public class Car {
-    private final int MOVABLE_CONDITION = 4;
+    private static final int MOVABLE_CONDITION = 4;
     private int position;
 
     public Car() {
