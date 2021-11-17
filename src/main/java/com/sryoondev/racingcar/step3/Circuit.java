@@ -26,9 +26,9 @@ public class Circuit {
         }
     }
 
-    public List<Integer> getRecords() {
-        return cars.stream()
+    public Records getRecords() {
+        return new Records(cars.stream()
                 .map(Car::getMoveDistance)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 }
