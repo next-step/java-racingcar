@@ -3,6 +3,7 @@ package racingcar.domain;
 import racingcar.exception.CreateCarCountException;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -52,10 +53,6 @@ public class Cars {
         cars.forEach(car -> car.move(movingStrategy.generateNumber()));
     }
 
-    public void recode(Round round, GameLog gameLog) {
-        cars.forEach(car -> gameLog.add(RoundLog.of(round, car.from(car))));
-    }
-
     public Winners findWinners() {
         Position winnerPosition = findWinnerPosition();
 
@@ -76,6 +73,10 @@ public class Cars {
         return winnerPosition;
     }
 
+    public List<Car> getHistory() {
+        return Collections.unmodifiableList(cars);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -94,4 +95,5 @@ public class Cars {
     public int hashCode() {
         return Objects.hash(cars);
     }
+
 }

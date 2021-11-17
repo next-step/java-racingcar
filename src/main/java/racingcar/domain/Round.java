@@ -29,10 +29,6 @@ public class Round {
         }
     }
 
-    public int currentRound() {
-        return round;
-    }
-
     public boolean isOver() {
         return round == FIRST_ROUND;
     }

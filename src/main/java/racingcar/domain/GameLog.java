@@ -15,7 +15,7 @@ public class GameLog {
         return new GameLog();
     }
 
-    public void add(RoundLog roundLog) {
+    public void recode(RoundLog roundLog) {
         roundLogs.add(roundLog);
     }
 

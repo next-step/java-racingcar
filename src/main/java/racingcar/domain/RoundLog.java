@@ -1,27 +1,20 @@
 package racingcar.domain;
 
+import java.util.Collections;
+import java.util.List;
+
 public class RoundLog {
-    private final Round round;
-    private final Car car;
+    private final List<Car> carsHistory;
 
-    private RoundLog(Round round, Car car) {
-        this.round = round;
-        this.car = car;
+    private RoundLog(List<Car> carsHistory) {
+        this.carsHistory = carsHistory;
     }
 
-    public static RoundLog of(Round round, Car car) {
-        return new RoundLog(round, car);
+    public static RoundLog from(List<Car> cars) {
+        return new RoundLog(cars);
     }
 
-    public int round() {
-        return round.currentRound();
-    }
-
-    public String carName() {
-        return car.carName();
-    }
-
-    public int position() {
-        return car.currentPosition().getPosition();
+    public List<Car> getHistory() {
+        return Collections.unmodifiableList(carsHistory);
     }
 }

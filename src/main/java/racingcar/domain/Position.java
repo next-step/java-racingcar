@@ -20,6 +20,10 @@ public class Position {
         }
     }
 
+    public static Position init() {
+        return new Position(INIT_POSITION);
+    }
+
     public static Position from(int position) {
         return new Position(position);
     }
@@ -32,16 +36,8 @@ public class Position {
         return new Position(this.position);
     }
 
-    public static Position init() {
-        return new Position(INIT_POSITION);
-    }
-
     public void move(int moveValue) {
         this.position += moveValue;
-    }
-
-    public int getPosition() {
-        return position;
     }
 
     public Position biggerPosition(Position other) {
@@ -49,6 +45,10 @@ public class Position {
             return new Position(this.position);
         }
         return other;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     @Override

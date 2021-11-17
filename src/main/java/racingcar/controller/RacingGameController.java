@@ -45,6 +45,7 @@ public class RacingGameController {
             int tryCount = InputView.askTryCount();
             return Round.from(tryCount);
         } catch (RoundException e) {
+            OutputView.printTryCountExceptionMessage();
             return getFinalRound();
         }
     }
