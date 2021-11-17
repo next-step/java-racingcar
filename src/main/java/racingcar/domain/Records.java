@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.service.util.Validation;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,15 +12,13 @@ public class Records {
 
     public Records(List<Record> records) {
 
+        Validation.nullValueCheck(records);
+
         this.recordList = records;
     }
 
     public String getWinner() {
         return getFinalRound().getVictoryUsers();
-    }
-
-    public String getRoundWinner(int round) {
-        return recordList.get(round-1).getVictoryUsers();
     }
 
     private Record getFinalRound() {

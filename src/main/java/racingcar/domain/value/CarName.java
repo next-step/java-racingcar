@@ -1,14 +1,14 @@
 package racingcar.domain.value;
 
-import racingcar.service.util.Validation;
-
 public class CarName {
 
     private final String name;
 
     private CarName(String name) {
 
-        Validation.nameSizeCheck(name);
+        if(name.length() > 5 ) {
+            throw new IllegalArgumentException("자동차 이름은 5글자를 초과 할 수 없습니다!!!");
+        }
 
         this.name = name;
     }
