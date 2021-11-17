@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OperatorTest {
+
     @Test
     @DisplayName("덧셈 테스트")
     void add() {

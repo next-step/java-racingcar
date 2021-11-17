@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CalculatorTest {
+
     @Test
     @DisplayName("복합 공식 테스트")
     void testFormula() {
@@ -22,17 +23,13 @@ public class CalculatorTest {
     @NullAndEmptySource
     @DisplayName("잘못된 입력 값(null, empty) 테스트")
     void invalidInput(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            Calculator.calculate(input);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> Calculator.calculate(input));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"123", "%", "@", "#"})
     @DisplayName("지원하지 않는 연산자 사용")
     void unsupportedOperators(String operator) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            Calculator.validateOperator(operator);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> Calculator.validateOperator(operator));
     }
 }
