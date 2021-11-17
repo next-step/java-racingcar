@@ -36,17 +36,13 @@ public class Cars {
   public Cars getWinner() {
     List<Car> carList = new ArrayList<>(this.carList);
     Collections.sort(carList);
-    return findWinner(carList);
-  }
-
-  private Cars findWinner(List<Car> carList) {
     Car firstCar = carList.get(FIRST_INDEX);
-
-    return new Cars(getSameStepCars(carList, firstCar));
+    return findWinner(firstCar, carList);
   }
 
-  private List<Car> getSameStepCars(List<Car> carList, Car firstCar) {
+  private Cars findWinner(Car firstCar, List<Car> carList) {
     List<Car> winners = new ArrayList<>();
+    winners.add(firstCar);
     int nextIndex = 1;
 
     while (firstCar.equalStep(carList.get(nextIndex))) {
@@ -54,6 +50,7 @@ public class Cars {
       nextIndex++;
     }
 
-    return winners;
+    return new Cars(winners);
   }
+
 }

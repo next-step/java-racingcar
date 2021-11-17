@@ -52,10 +52,10 @@ class CarsTest {
   @ParameterizedTest
   @MethodSource("makeWinner")
   @DisplayName("차의 목록을 받아 그 중 가장 많이 전진한 차들을 반환한다.")
-  void getWinnerTest(List<Car> carList, String name) {
+  void getWinnerTest(List<Car> carList, List<String> winnerNames) {
     Cars cars = new Cars(carList);
     for (Car car : cars.getWinner().getCarList()) {
-      assertThat(car.getName()).isEqualTo(name);
+      winnerNames.contains(car.getName());
     }
   }
 
@@ -63,7 +63,7 @@ class CarsTest {
     List<Car> cars = Arrays.asList(
             new Car(new Name("kevin"), new Step(new Number(2))),
             new Car(new Name("poo")),
-            new Car(new Name("bar")));
+            new Car(new Name("bar"), new Step(new Number(2))));
 
     List<Car> carList = Arrays.asList(
             new Car(new Name("duke")),
@@ -71,8 +71,8 @@ class CarsTest {
             new Car(new Name("tune"), new Step(new Number(2))));
 
     return Stream.of(
-            Arguments.of(cars, cars.get(0).getName()),
-            Arguments.of(carList, carList.get(2).getName()));
+            Arguments.of(cars, Arrays.asList(cars.get(0).getName(), cars.get(2).getName())),
+            Arguments.of(carList, Arrays.asList(carList.get(2).getName())));
   }
 
 
