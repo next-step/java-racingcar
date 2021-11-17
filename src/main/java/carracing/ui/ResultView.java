@@ -23,7 +23,7 @@ public class ResultView {
 
   public static ResultView getInstance() {
     if (instance == null) {
-      return new ResultView();
+      return instance = new ResultView();
     }
     return instance;
   }

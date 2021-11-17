@@ -4,7 +4,7 @@ import carracing.domain.dto.RacingResult;
 import carracing.domain.entity.Participant;
 import carracing.domain.entity.Round;
 
-public class RacingViewImpl implements RacingView{
+public class RacingViewImpl implements RacingView {
 
   private InputView inputView;
   private ResultView resultView;

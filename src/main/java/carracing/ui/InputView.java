@@ -1,11 +1,15 @@
 package carracing.ui;
 
+import carracing.domain.entity.Name;
 import carracing.domain.entity.Number;
 import carracing.domain.entity.Participant;
 import carracing.domain.entity.Round;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+
+import static java.util.stream.Collectors.toList;
 
 public class InputView {
 
@@ -16,16 +20,14 @@ public class InputView {
   private static final String INPUT_MESSAGE = "잘못 입력 하셨습니다. 0 이상의 자연수를 입력해주세요";
 
   private static final int ZERO = 0;
-  private static final int MAX_LENGTH = 5;
   private static final String COMMA =",";
   private static final String EMPTY_STRING = "";
-  private static final String BLANK_STRING = " ";
 
   private InputView() {}
 
   public static InputView getInstance() {
     if (instance == null) {
-      return new InputView();
+      return instance = new InputView();
     }
     return instance;
   }
@@ -48,32 +50,35 @@ public class InputView {
   }
 
   private Participant inputName(String question) {
-    String names = EMPTY_STRING;
-    while (!isValidInput(names)) {
+    List<Name> nameList = getNames(question);
+    return new Participant(nameList);
+  }
+
+  private List<Name> getNames(String question) {
+    List<Name> nameList = null;
+    while (nameList == null) {
       System.out.println(question);
-      names = inputKeyboard().trim();
+      nameList = parseNameToList(inputKeyboard().trim());
     }
-    return Participant.parse(names);
+    return nameList;
   }
 
   private boolean isGreaterThanZero(int count) {
     return count > ZERO;
   }
 
-  private boolean isValidInput(String names) {
-    String[] namesArray = names.split(COMMA);
-    return names != null && !names.isEmpty()
-            && !hasBlink(namesArray) && !isExceedLength(namesArray);
+  private List<Name> parseNameToList(String name) {
+    List<Name> names = null;
+    try {
+      names = getSplitNameByDelimiter(name);
+    } catch (Exception e) {}
+    return names;
   }
 
-  private boolean hasBlink(String[] names) {
-    return Arrays.stream(names)
-                 .anyMatch(name -> name.equals(BLANK_STRING));
-  }
-
-  private boolean isExceedLength(String[] names) {
-    return Arrays.stream(names)
-            .anyMatch(s -> s.length() > MAX_LENGTH);
+  private List<Name> getSplitNameByDelimiter(String name) {
+    return Arrays.stream(name.split(COMMA))
+                 .map(Name::new)
+                 .collect(toList());
   }
 
   private String inputKeyboard() {
