@@ -4,18 +4,18 @@ import java.util.List;
 
 public class Participant {
 
-  private final List<Name> participant;
+  private final List<Name> nameList;
 
   public Participant(List<Name> participant) {
-    this.participant = participant;
+    this.nameList = participant;
   }
 
   public List<Name> getParticipant() {
-    return participant;
+    return nameList;
   }
 
   public int size() {
-    return participant.size();
+    return nameList.size();
   }
 
 }
