@@ -1,22 +1,18 @@
 package calculator;
 
-import com.sun.tools.javac.util.Pair;
-
 import java.util.Arrays;
-import java.util.function.Function;
-
-import static calculator.Calculator.*;
+import java.util.function.BiFunction;
 
 public enum Operator {
-    PLUS(PLUS_SYMBOL, pair -> pair.fst.plus(pair.snd)),
-    MINUS(MINUS_SYMBOL, pair -> pair.fst.minus(pair.snd)),
-    MULTIPLE(MULTIPLE_SYMBOL, pair -> pair.fst.multiple(pair.snd)),
-    DIVIDE(DIVIDE_SYMBOL, pair -> pair.fst.divideBy(pair.snd));
+    PLUS("+", (first, second) -> first.plus(second)),
+    MINUS("-", (first, second) -> first.minus(second)),
+    MULTIPLE("*", (first, second) -> first.multiple(second)),
+    DIVIDE("/", (first, second) -> first.divideBy(second));
 
     private String operation;
-    private Function<Pair<MyNumber, MyNumber>, MyNumber> expression;
+    private BiFunction<MyNumber, MyNumber, MyNumber> expression;
 
-    Operator(String operation, Function<Pair<MyNumber, MyNumber>, MyNumber> expression) {
+    Operator(String operation, BiFunction<MyNumber, MyNumber, MyNumber> expression) {
         this.operation = operation;
         this.expression = expression;
     }
@@ -33,6 +29,6 @@ public enum Operator {
     }
 
     public MyNumber calculate(MyNumber first, MyNumber second) {
-        return expression.apply(new Pair(first, second));
+        return expression.apply(first, second);
     }
 }
