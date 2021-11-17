@@ -46,8 +46,19 @@ public class Challengers {
 
   private Challengers findWinner(List<Car> carList) {
     Car firstCar = carList.get(FIRST_INDEX);
-    return carList.stream()
-                  .filter(firstCar::equalStep)
-                  .collect(collectingAndThen(toList(), Challengers::from));
+
+    return Challengers.from(getSameStepCars(carList, firstCar));
+  }
+
+  private List<Car> getSameStepCars(List<Car> carList, Car firstCar) {
+    List<Car> winners = new ArrayList<>();
+    int nextIndex = 1;
+
+    while (firstCar.equalStep(carList.get(nextIndex))) {
+      winners.add(carList.get(nextIndex));
+      nextIndex++;
+    }
+
+    return winners;
   }
 }
