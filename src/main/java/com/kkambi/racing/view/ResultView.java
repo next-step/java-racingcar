@@ -33,7 +33,9 @@ public class ResultView {
     }
 
     public void printWinners(List<Car> winners) {
-        List<String> winnerNames = winners.stream().map(car -> car.getName().getValue()).collect(Collectors.toList());
+        List<String> winnerNames = winners.stream()
+                .map(car -> car.getName().getValue())
+                .collect(Collectors.toList());
         System.out.printf("최종 우승은 %s !!!%n", String.join(", ", winnerNames));
     }
 }
