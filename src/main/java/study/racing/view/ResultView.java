@@ -9,10 +9,11 @@ import study.racing.domain.result.Round;
 public final class ResultView {
 
     private static final StringBuilder builder = new StringBuilder();
+
     private static final String DISTANCE_SYMBOL = "-";
-    public static final String NAME_DISTANCE_DELIMITER = " : ";
-    public static final String WINNERS_DELIMITER = ", ";
-    public static final String WINNER_MESSAGE = "가 최종 우승했습니다.";
+    private static final String NAME_DISTANCE_DELIMITER = " : ";
+    private static final String WINNERS_DELIMITER = ", ";
+    private static final String WINNER_MESSAGE = "가 최종 우승했습니다.";
 
     private ResultView() {
     }
@@ -32,7 +33,8 @@ public final class ResultView {
 
     private static void doPrint(Car car) {
         builder.setLength(0);
-        builder.append(car.getName() + NAME_DISTANCE_DELIMITER);
+        builder.append(car.getName())
+               .append(NAME_DISTANCE_DELIMITER);
         for (int i = 0; i < car.getDistance().getDistance(); i++) {
             builder.append(DISTANCE_SYMBOL);
         }
