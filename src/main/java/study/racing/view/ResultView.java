@@ -1,9 +1,7 @@
 package study.racing.view;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-import study.racing.domain.Name;
 import study.racing.domain.car.Car;
 import study.racing.domain.result.GameResults;
 import study.racing.domain.result.Round;
@@ -42,14 +40,7 @@ public final class ResultView {
     }
 
     private static void printWinner(GameResults gameResults) {
-        List<String> winners = convertToName(gameResults);
+        List<String> winners = gameResults.winners().carNames();
         System.out.println(String.join(WINNERS_DELIMITER, winners) + WINNER_MESSAGE);
-    }
-
-    private static List<String> convertToName(GameResults gameResults) {
-        return gameResults.winners().stream()
-                          .map(Car::getName)
-                          .map(Name::getName)
-                          .collect(Collectors.toList());
     }
 }

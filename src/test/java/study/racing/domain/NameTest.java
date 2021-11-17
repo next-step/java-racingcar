@@ -15,9 +15,10 @@ class NameTest {
     @CsvSource({ "abc, true", "a, true", "aefmakfad, false" })
     void longerThanTest(String name, boolean availableLength) {
         if (availableLength) {
-            assertThat(new Name(name).getName()).isEqualTo(name);
+            assertThat(new Name(name).toString()).isEqualTo(name);
         } else {
             assertThatThrownBy(() -> new Name(name)).isInstanceOf(InvalidCarNameException.class);
         }
     }
+
 }

@@ -3,7 +3,7 @@ package study.racing.domain.result;
 import java.util.Collections;
 import java.util.List;
 
-import study.racing.domain.car.Car;
+import study.racing.domain.car.RacingCars;
 
 public class GameResults {
 
@@ -19,7 +19,7 @@ public class GameResults {
         return Collections.unmodifiableList(gameResults);
     }
 
-    public List<Car> winners() {
+    public RacingCars winners() {
         return lastRound().winners();
     }
 

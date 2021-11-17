@@ -1,5 +1,7 @@
 package study.racing.domain;
 
+import java.util.Objects;
+
 import study.racing.exception.InvalidCarNameException;
 
 public class Name {
@@ -16,12 +18,25 @@ public class Name {
         this.name = name;
     }
 
-    public String getName() {
+    @Override
+    public String toString() {
         return name;
     }
 
     @Override
-    public String toString() {
-        return getName();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Name name1 = (Name) o;
+        return Objects.equals(name, name1.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

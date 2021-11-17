@@ -3,14 +3,17 @@ package study.racing.domain.car;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import study.racing.domain.Distance;
 import study.racing.domain.Name;
 import study.racing.domain.rule.Rule;
+import study.racing.exception.InvalidMostMovedException;
 
 public class RacingCars {
 
+    public static final String NEED_TO_EXIST_MOST_MOVED_CAR_AT_LEAST_ONE = "need to exist most moved car at least one";
     private final List<Car> cars;
 
     public RacingCars(List<Car> cars) {
@@ -18,10 +21,9 @@ public class RacingCars {
     }
 
     public static RacingCars from(List<Name> carNames) {
-        List<Car> cars = carNames.stream()
-                                 .map(Car::new)
-                                 .collect(Collectors.toList());
-        return new RacingCars(cars);
+        return carNames.stream()
+                       .map(Car::new)
+                       .collect(Collectors.collectingAndThen(Collectors.toList(), RacingCars::new));
     }
 
     public void raceAll(Rule rule) {
@@ -32,7 +34,7 @@ public class RacingCars {
         return Collections.unmodifiableList(cars);
     }
 
-    public List<Car> mostMovedCars() {
+    public RacingCars mostMovedCars() {
         Distance max = getGreatestDistance();
         return findMostMovedCars(max);
     }
@@ -41,12 +43,39 @@ public class RacingCars {
         return cars.stream()
                    .map(Car::getDistance)
                    .max(Comparator.comparing(Distance::getDistance))
-                   .get();
+                   .orElseThrow(() -> new InvalidMostMovedException(NEED_TO_EXIST_MOST_MOVED_CAR_AT_LEAST_ONE));
     }
 
-    private List<Car> findMostMovedCars(Distance max) {
+    private RacingCars findMostMovedCars(Distance max) {
         return cars.stream()
                    .filter(car -> car.isEqualDistance(max))
+                   .collect(Collectors.collectingAndThen(Collectors.toList(), RacingCars::new));
+    }
+
+    public List<String> carNames() {
+        return cars.stream()
+                   .map(this::convertToName)
                    .collect(Collectors.toList());
+    }
+
+    private String convertToName(Car car) {
+        return car.getName().toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RacingCars that = (RacingCars) o;
+        return Objects.equals(cars, that.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
     }
 }

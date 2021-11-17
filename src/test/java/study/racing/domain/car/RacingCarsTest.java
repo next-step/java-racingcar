@@ -23,13 +23,13 @@ class RacingCarsTest {
 
     @DisplayName("생성자에 정수가 주어졌을 때 해당 숫자만큼 car가 생성되는지 검증")
     @ParameterizedTest
-    @MethodSource("cars")
+    @MethodSource("racingCars")
     void createRacingCarsTest(List<Car> cars, int expected) {
         RacingCars racingCars = new RacingCars(cars);
         assertThat(racingCars.getCars().size()).isEqualTo(expected);
     }
 
-    private static Stream<Arguments> cars() {
+    private static Stream<Arguments> racingCars() {
         int firstCarCount = 1;
         List<Car> firstCars = makeCars(firstCarCount);
 
@@ -50,7 +50,7 @@ class RacingCarsTest {
     @DisplayName("몇 차례 이동한 차들이 주어졌을 때, 현 시점에서 가장 많이 움직인 차를 리턴하는지 검증")
     @ParameterizedTest
     @ArgumentsSource(RacingCarsProvider.class)
-    void mostMovedCarsTest(RacingCars racingCars, List<Car> mostMovedCars) {
+    void mostMovedCarsTest(RacingCars racingCars, RacingCars mostMovedCars) {
         assertThat(mostMovedCars).isEqualTo(racingCars.mostMovedCars());
     }
 
@@ -69,8 +69,38 @@ class RacingCarsTest {
 
             List<Car> carsWithOnlyWinner = Arrays.asList(firstMovedCar, stoppedCar);
             List<Car> carsWithMultiWinner = Arrays.asList(firstMovedCar, secondMovedCar);
-            return Stream.of(Arguments.of(new RacingCars(carsWithOnlyWinner), Arrays.asList(firstMovedCar)),
-                             Arguments.of(new RacingCars(carsWithMultiWinner), carsWithMultiWinner));
+            return Stream.of(Arguments.of(new RacingCars(carsWithOnlyWinner), new RacingCars(Arrays.asList(firstMovedCar))),
+                             Arguments.of(new RacingCars(carsWithMultiWinner), new RacingCars(carsWithMultiWinner)));
         }
+    }
+
+    @DisplayName("racingCars가 가지고 있는 car들의 name을 제대로 반환하는지 검증")
+    @ParameterizedTest
+    @MethodSource("racingCarsAndNames")
+    void carNamesTest(RacingCars racingCars, List<Name> carNames) {
+        List<String> expected = carNames.stream()
+                                        .map(Name::toString)
+                                        .collect(Collectors.toList());
+        assertThat(racingCars.carNames()).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> racingCarsAndNames() {
+        int firstCarCount = 1;
+        List<Car> firstCars = makeCars(firstCarCount);
+        List<Name> firstCarNames = makeNames(firstCarCount);
+
+        int secondCarCount = 100;
+        List<Car> secondCars = makeCars(secondCarCount);
+        List<Name> secondCarNames = makeNames(secondCarCount);
+
+        return Stream.of(Arguments.of(new RacingCars(firstCars), firstCarNames),
+                         Arguments.of(new RacingCars(secondCars), secondCarNames));
+    }
+
+    private static List<Name> makeNames(int carCount) {
+        return IntStream.range(0, carCount)
+                        .mapToObj(Integer::toString)
+                        .map(Name::new)
+                        .collect(Collectors.toList());
     }
 }

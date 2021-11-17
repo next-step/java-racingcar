@@ -1,8 +1,5 @@
 package study.racing.domain.result;
 
-import java.util.List;
-
-import study.racing.domain.car.Car;
 import study.racing.domain.car.RacingCars;
 
 public class Round {
@@ -17,7 +14,7 @@ public class Round {
         return racingCars;
     }
 
-    public List<Car> winners() {
+    public RacingCars winners() {
         return racingCars.mostMovedCars();
     }
 }
