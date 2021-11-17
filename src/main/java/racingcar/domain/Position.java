@@ -15,9 +15,13 @@ public class Position {
     }
 
     private void validatePositionValue(int position) {
-        if (position < 0) {
+        if (position < INIT_POSITION) {
             throw new PositionException(position);
         }
+    }
+
+    public static Position init() {
+        return new Position(INIT_POSITION);
     }
 
     public static Position from(int position) {
@@ -32,22 +36,18 @@ public class Position {
         return new Position(this.position);
     }
 
-    public static Position init() {
-        return new Position(INIT_POSITION);
-    }
-
     public void move(int moveValue) {
         this.position += moveValue;
     }
 
-    public int getPosition() {
-        return position;
+    public Position biggerPosition(Position other) {
+        if (this.position > other.position) {
+            return new Position(this.position);
+        }
+        return other;
     }
 
-    public Position biggerPosition(Position position) {
-        if (this.position > position.position) {
-            return this;
-        }
+    public int getPosition() {
         return position;
     }
 

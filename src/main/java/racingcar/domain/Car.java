@@ -22,8 +22,8 @@ public class Car {
         return new Car(name, Position.init());
     }
 
-    public Car from(Car car) {
-        return new Car(car.name, position.of());
+    public Car from() {
+        return new Car(name, position.of());
     }
 
     public void move(int number) {
@@ -37,6 +37,10 @@ public class Car {
         if (number < MIN_MOVEMENT_VALUE || number > MAX_MOVEMENT_VALUE) {
             throw new CarMovingNumberException(number);
         }
+    }
+
+    public boolean isSamePosition(Position position) {
+        return this.position.equals(position);
     }
 
     public Position currentPosition() {

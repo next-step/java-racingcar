@@ -1,9 +1,6 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.GameLog;
-import racingcar.domain.RoundLog;
+import racingcar.domain.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,36 +25,39 @@ public class OutputView {
 
     public static void printGameLog(GameLog gameLog) {
         List<RoundLog> roundLogs = gameLog.getRoundLogs();
-        int beforeRound = roundLogs.get(0).round();
 
         for (RoundLog roundLog : roundLogs) {
-            int currentRound = roundLog.round();
-            if (beforeRound != currentRound) {
-                newLine();
-                beforeRound = roundLog.round();
-                printRound(roundLog);
-                continue;
-            }
             printRound(roundLog);
+            newLine();
         }
     }
 
     private static void printRound(RoundLog roundLog) {
-        System.out.print(roundLog.carName() + " : ");
-        IntStream.rangeClosed(1, roundLog.position())
-                .mapToObj(value -> MOVE_SYMBOL)
-                .forEach(System.out::print);
-        newLine();
+        List<Car> history = roundLog.getHistory();
+
+        for (Car car : history) {
+            printCarName(car);
+
+            IntStream.rangeClosed(1, car.currentPosition().getPosition())
+                    .mapToObj(value -> MOVE_SYMBOL)
+                    .forEach(System.out::print);
+
+            newLine();
+        }
     }
 
-    public static void printWinners(Cars cars) {
-        List<String> winners = cars.findWinners()
+    private static void printCarName(Car car) {
+        System.out.print(car.carName() + " : ");
+    }
+
+    public static void printWinners(Winners winners) {
+        List<String> winnerList = winners.getWinners()
                 .stream()
                 .map(Car::carName)
                 .collect(Collectors.toList());
 
         newLine();
-        System.out.print(String.join(", ", winners) + WINNERS);
+        System.out.print(String.join(", ", winnerList) + WINNERS);
     }
 
     private static void newLine() {

@@ -7,7 +7,7 @@ import java.util.List;
 public class GameLog {
     private final List<RoundLog> roundLogs;
 
-    public GameLog() {
+    private GameLog() {
         this.roundLogs = new ArrayList<>();
     }
 
@@ -15,7 +15,7 @@ public class GameLog {
         return new GameLog();
     }
 
-    public void add(RoundLog roundLog) {
+    public void recode(RoundLog roundLog) {
         roundLogs.add(roundLog);
     }
 

@@ -23,8 +23,8 @@ class RacingGameTest {
     @ParameterizedTest
     @DisplayName("게임이 n번 진행될 동안 자동차는 전진, 정지 할 수 있다.")
     @MethodSource
-    void racingGameProgressTest(int tryCount, int round, int expected) {
-        GameLog gameLog = racingGame.play(TryCount.from(tryCount), Round.from(round));
+    void racingGameProgressTest(int finalRound, int expected) {
+        GameLog gameLog = racingGame.play(Round.from(finalRound));
 
         assertThat(gameLog.getRoundLogs().size()).isEqualTo(expected);
     }
@@ -32,13 +32,16 @@ class RacingGameTest {
     static Stream<Arguments> racingGameProgressTest() {
         return Stream.of(
                 Arguments.of(
-                        1, 1, 3
+                        0, 0
                 ),
                 Arguments.of(
-                        2, 2, 6
+                        1, 1
                 ),
                 Arguments.of(
-                        3, 3, 9
+                        2, 2
+                ),
+                Arguments.of(
+                        3, 3
                 )
         );
     }

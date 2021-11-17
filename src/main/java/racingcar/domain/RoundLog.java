@@ -1,27 +1,27 @@
 package racingcar.domain;
 
+import java.util.Collections;
+import java.util.List;
+
 public class RoundLog {
-    private final Round round;
-    private final Car car;
+    private final List<Car> carsHistory;
 
-    private RoundLog(Round round, Car car) {
-        this.round = round;
-        this.car = car;
+    private RoundLog(List<Car> carsHistory) {
+        validateCarsHistory(carsHistory);
+        this.carsHistory = carsHistory;
     }
 
-    public static RoundLog of(Round round, Car car) {
-        return new RoundLog(round, car);
+    private void validateCarsHistory(List<Car> carsHistory) {
+        if (carsHistory.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    public int round() {
-        return round.currentRound();
+    public static RoundLog from(List<Car> cars) {
+        return new RoundLog(cars);
     }
 
-    public String carName() {
-        return car.carName();
-    }
-
-    public int position() {
-        return car.currentPosition().getPosition();
+    public List<Car> getHistory() {
+        return Collections.unmodifiableList(carsHistory);
     }
 }

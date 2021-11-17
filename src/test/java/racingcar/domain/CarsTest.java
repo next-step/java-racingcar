@@ -10,7 +10,6 @@ import racingcar.exception.CreateCarCountException;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,8 +43,8 @@ class CarsTest {
     @ParameterizedTest
     @DisplayName("이동 거리가 가장 긴 자동차가 우승한다")
     @MethodSource
-    void findWinnerTest(Cars cars, List<Car> expectedWinners) {
-        List<Car> findWinners = cars.findWinners();
+    void findWinnerTest(Cars cars, Winners expectedWinners) {
+        Winners findWinners = cars.findWinners();
 
         assertThat(findWinners).isEqualTo(expectedWinners);
     }
@@ -65,7 +64,7 @@ class CarsTest {
                         new Cars(Arrays.asList(
                                 aa, bb, cc
                         ), RandomMovingStrategy.getInstance())
-                        , Collections.singletonList(aa)
+                        , Winners.from(Collections.singletonList(aa))
                 )
         );
     }
@@ -73,8 +72,8 @@ class CarsTest {
     @ParameterizedTest
     @DisplayName("우승자가 여러명 일 경우 테스트")
     @MethodSource
-    void findWinnersTest(Cars cars, List<Car> expectedWinners) {
-        List<Car> findWinners = cars.findWinners();
+    void findWinnersTest(Cars cars, Winners expectedWinners) {
+        Winners findWinners = cars.findWinners();
 
         assertThat(findWinners).isEqualTo(expectedWinners);
     }
@@ -94,7 +93,7 @@ class CarsTest {
                         new Cars(Arrays.asList(
                                 aa, bb, cc
                         ), RandomMovingStrategy.getInstance())
-                        , Arrays.asList(aa, bb)
+                        , Winners.from(Arrays.asList(aa, bb))
                 )
         );
     }

@@ -5,49 +5,49 @@ import racingcar.exception.RoundException;
 import java.util.Objects;
 
 public class Round {
-    private static final int NEXT_ROUND = 1;
+    private static final int ADD_VALUE = 1;
     private static final int FIRST_ROUND = 0;
 
-    private final int finalRound;
-    private final int currentRound;
+    private int round;
 
-    private Round(int finalRound, int currentRound) {
-        validateRound(finalRound, currentRound);
-        this.finalRound = finalRound;
-        this.currentRound = currentRound;
+    private Round(int round) {
+        validateRound(round);
+        this.round = round;
     }
 
-    public static Round from(int finalRound) {
-        return new Round(finalRound, FIRST_ROUND);
+    public static Round from(int tryCount) {
+        return new Round(tryCount);
     }
 
-    private void validateRound(int finalRound, int currentRound) {
-        if (finalRound <= FIRST_ROUND) {
+    public static Round from(Round round) {
+        return new Round(round.round);
+    }
+
+    private void validateRound(int round) {
+        if (round < FIRST_ROUND) {
             throw new RoundException();
         }
-        if (finalRound < currentRound) {
-            throw new RoundException();
-        }
     }
 
-    public Round nextRound() {
-        return new Round(finalRound, currentRound + NEXT_ROUND);
+    public boolean isOver() {
+        return round == FIRST_ROUND;
     }
 
-    public int currentRound() {
-        return currentRound;
+    public void counting() {
+        this.round -= ADD_VALUE;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Round round = (Round) o;
-        return finalRound == round.finalRound && currentRound == round.currentRound;
+        Round round1 = (Round) o;
+        return round == round1.round;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(finalRound, currentRound);
+        return Objects.hash(round);
     }
+
 }
