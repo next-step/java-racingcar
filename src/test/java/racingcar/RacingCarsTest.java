@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
-import racingcar.domain.collection.CarCollection;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +18,7 @@ public class RacingCarsTest {
     @BeforeEach
     void setUp() {
         List<String> carName = Arrays.asList("lee","kim","tt");
-        racingCars = CarCollection.racingGameReady(carName);
+        racingCars = RacingCars.racingGameReady(carName);
     }
 
     @Test
@@ -36,7 +35,7 @@ public class RacingCarsTest {
         List<String> carNames = Arrays.asList("lee", "kim", "joo");
         String winner = "lee,kim";
 
-        RacingCars cars = CarCollection.racingGameReady(carNames);
+        RacingCars cars = RacingCars.racingGameReady(carNames);
 
         cars.getCars().get(0).decisionMove(true);
         cars.getCars().get(0).decisionMove(true);

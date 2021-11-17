@@ -4,7 +4,6 @@ import racingcar.domain.GameInputData;
 import racingcar.domain.GameResultData;
 import racingcar.domain.RacingCars;
 import racingcar.domain.Record;
-import racingcar.domain.collection.CarCollection;
 import racingcar.domain.collection.RecordCollection;
 
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ public class RacingGameService {
 
     private RacingGameService(List<String> carName) {
 
-        cars = CarCollection.racingGameReady(carName);
+        cars = RacingCars.racingGameReady(carName);
     }
 
     public static RacingGameService ready(List<String> carName) {

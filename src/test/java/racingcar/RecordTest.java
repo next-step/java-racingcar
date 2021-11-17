@@ -7,11 +7,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.RacingCars;
 import racingcar.domain.Record;
-import racingcar.domain.Records;
-import racingcar.domain.collection.CarCollection;
 import racingcar.domain.collection.RecordCollection;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,7 +24,7 @@ public class RecordTest {
     void setUp() {
         List<String> carName = Arrays.asList("lee","kim","joo");
 
-        racingCars = CarCollection.racingGameReady(carName);
+        racingCars = RacingCars.racingGameReady(carName);
     }
 
     @Test

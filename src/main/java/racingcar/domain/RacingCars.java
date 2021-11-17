@@ -3,6 +3,7 @@ package racingcar.domain;
 import racingcar.domain.value.CarName;
 import racingcar.domain.value.Position;
 import racingcar.service.util.MoveRuleUtil;
+import racingcar.service.util.Validation;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +15,17 @@ public class RacingCars {
     public RacingCars(List<RacingCar> carList) {
 
         this.carList = carList;
+    }
+
+    public static RacingCars racingGameReady(List<String> carName) {
+
+        Validation.nullValueCheck(carName);
+
+        List<RacingCar> racingCars = carName.stream()
+                .map(RacingCar::create)
+                .collect(Collectors.toList());
+
+        return new RacingCars(racingCars);
     }
 
     public static void playTheGame(RacingCars cars) {
