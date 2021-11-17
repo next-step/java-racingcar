@@ -29,7 +29,7 @@ public class RacingGame {
 
     private void recode(Cars cars) {
         List<Car> history = cars.getHistory().stream()
-                .map(car -> car.from(car))
+                .map(Car::from)
                 .collect(Collectors.toList());
 
         gameLog.recode(RoundLog.from(history));
