@@ -6,8 +6,9 @@ import com.sryoondev.racingcar.step3.Records;
 import java.util.Collections;
 
 public class ResultView {
-    private static void printMovement(int movementCount) {
-        System.out.println(String.join("", Collections.nCopies(movementCount, "-")));
+    public static void printGameRecord(GameRecord records) {
+        System.out.println("실행 결과");
+        records.getRecords().forEach(ResultView::printCircuitRecord);
     }
 
     private static void printCircuitRecord(Records records) {
@@ -15,8 +16,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void printGameRecord(GameRecord records) {
-        System.out.println("실행 결과");
-        records.getRecords().forEach(ResultView::printCircuitRecord);
+    private static void printMovement(int movementCount) {
+        System.out.println(String.join("", Collections.nCopies(movementCount, "-")));
     }
 }
