@@ -9,15 +9,16 @@ public class CarTest {
 
     @Test
     void 자동차_이동_4이상() {
-        assertThat(new Car(0).move(5)).isEqualTo(new Car(1));
-        assertThat(new Car(0).move(4)).isEqualTo(new Car(1));
-        assertThat(new Car(6).move(4)).isEqualTo(new Car(7));
+        assertThat(new Car("test", 0).move(5)).isEqualTo(new Car("test", 1));
+        assertThat(new Car("test", 0).move(4)).isEqualTo(new Car("test", 1));
+        assertThat(new Car("test", 6).move(4)).isEqualTo(new Car("test", 7));
     }
+
     @Test
     void 자동차_이동_4미만() {
-        assertThat(new Car(3).move(3)).isEqualTo(new Car(3));
-        assertThat(new Car(0).move(2)).isEqualTo(new Car());
-        assertThat(new Car(5).move(1)).isEqualTo(new Car(5));
+        assertThat(new Car("test", 3).move(3)).isEqualTo(new Car("test", 3));
+        assertThat(new Car("test", 0).move(2)).isEqualTo(new Car("test"));
+        assertThat(new Car("test", 5).move(1)).isEqualTo(new Car("test", 5));
     }
 
     @Test

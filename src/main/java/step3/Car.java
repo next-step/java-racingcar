@@ -6,21 +6,12 @@ public class Car {
 
     public static final int MOVABLE_COUNT = 4;
     public static final int DEFAULT_CAR_LOCATION_VALUE = 0;
-    public static final String DEFAULT_CAR_NAME = "이름없음";
 
     private int location;
     private final CarName name;
 
-    public Car() {
-        this(DEFAULT_CAR_NAME, DEFAULT_CAR_LOCATION_VALUE);
-    }
-
     public Car(String name) {
         this(name, DEFAULT_CAR_LOCATION_VALUE);
-    }
-
-    public Car(int location) {
-        this(DEFAULT_CAR_NAME, location);
     }
 
     public Car(String name, int location) {

@@ -8,13 +8,17 @@ public class CarName {
     public static final String VALID_MSG_CAR_NAME_UNDER_SIZE = "자동차 이름은 공백이 올 수 없습니다.";
     public static final int VALID_CAR_SIZE_VALUE = 5;
 
-    public final String name;
+    public final String value;
 
     public CarName(String name) {
+        boolean isEmptyName = name.length() == 0;
+        boolean isCarNameOverLength = name.length() > VALID_CAR_SIZE_VALUE;
+
         name = name.trim();
-        validCarName(name.length() == 0, VALID_MSG_CAR_NAME_UNDER_SIZE);
-        validCarName(name.length() > VALID_CAR_SIZE_VALUE, VALID_MSG_CAR_NAME_EXCESS_SIZE);
-        this.name = name;
+        validCarName(isEmptyName, VALID_MSG_CAR_NAME_UNDER_SIZE);
+        validCarName(isCarNameOverLength, VALID_MSG_CAR_NAME_EXCESS_SIZE);
+
+        this.value = name;
     }
 
     private void validCarName(boolean expression, String expressionMessage) {
@@ -28,16 +32,16 @@ public class CarName {
         if (this == o) return true;
         if (!(o instanceof CarName)) return false;
         CarName carName = (CarName) o;
-        return Objects.equals(name, carName.name);
+        return Objects.equals(value, carName.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(value);
     }
 
     @Override
     public String toString() {
-        return name;
+        return value;
     }
 }
