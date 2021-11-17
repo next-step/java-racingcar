@@ -22,7 +22,7 @@ public class CarTest {
 		Position position = car.carPosition();
 
 		//then
-		assertThat(position.numOfPosition()).isEqualTo(1);
+		assertThat(position.valueOfPosition()).isEqualTo(1);
 	}
 
 	@Test
@@ -37,7 +37,7 @@ public class CarTest {
 		Position position = car.carPosition();
 
 		//then
-		assertThat(position.numOfPosition()).isEqualTo(0);
+		assertThat(position.valueOfPosition()).isEqualTo(0);
 	}
 
 }

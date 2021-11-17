@@ -2,7 +2,7 @@ package study.racingcar.domain;
 
 public class Position {
 
-	public static final int INIT_POSITION = 0;
+	private static final int INIT_POSITION = 0;
 
 	private int position;
 
@@ -14,7 +14,7 @@ public class Position {
 		this.position++;
 	}
 
-	public int numOfPosition() {
+	public int valueOfPosition() {
 		return position;
 	}
 

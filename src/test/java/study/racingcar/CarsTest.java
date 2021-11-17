@@ -30,22 +30,7 @@ public class CarsTest {
 
 		//then
 		for (Position position : positions) {
-			assertThat(position.numOfPosition()).isEqualTo(0);
+			assertThat(position.valueOfPosition()).isEqualTo(0);
 		}
 	}
-
-	@Test
-	@DisplayName("자동차들 움직이기")
-	void moveGars(){
-		//when
-		cars.goRace();
-		List<Position> positions = cars.positionOfCars();
-
-		//then
-		for (Position position : positions) {
-			System.out.println(position.numOfPosition());
-		}
-	}
-
-
 }

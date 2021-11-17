@@ -6,16 +6,15 @@ import study.racingcar.view.ResultView;
 
 public class RacingGame {
 	private final Cars cars;
-	private final Rounds rounds;
+	private final int rounds;
 
-	public RacingGame(UserChoice userChoice) {
-		this.cars = new Cars(userChoice.userCarCount());
-		this.rounds = new Rounds(userChoice.userGameRounds());
+	public RacingGame(int userInputCar, int userInputRound) {
+		this.cars = new Cars(userInputCar);
+		this.rounds = userInputRound;
 	}
 
 	public void playGame() {
-		int gameRounds = rounds.numOfRounds();
-		for (int i = 0; i < gameRounds; i++) {
+		for (int i = 0; i < rounds; i++) {
 			moveCars();
 			currentScore();
 		}
@@ -26,7 +25,8 @@ public class RacingGame {
 	}
 
 	private void moveCars() {
-		cars.goRace();
+		MoveStrategy strategy = new RandomNumberStrategy();
+		cars.goRace(strategy);
 	}
 
 	private void currentScore() {
