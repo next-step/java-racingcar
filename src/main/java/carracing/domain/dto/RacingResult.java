@@ -1,16 +1,22 @@
 package carracing.domain.dto;
 
-import java.util.List;
+import carracing.domain.entity.Challengers;
 
 public class RacingResult {
 
-  public final List<RoundResult> results;
+  public final RoundResult result;
+  public final Challengers winner;
 
-  public RacingResult(List<RoundResult> results) {
-    this.results = results;
+  public RacingResult(RoundResult result, Challengers winner) {
+    this.result = result;
+    this.winner = winner;
   }
 
-  public List<RoundResult> getResults() {
-    return results;
+  public RoundResult getResult() {
+    return new RoundResult(result.getRoundDataList());
+  }
+
+  public Challengers getWinner() {
+    return winner;
   }
 }

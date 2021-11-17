@@ -1,16 +1,13 @@
 package carracing.domain.service;
 
 import carracing.domain.dto.RacingResult;
-import carracing.domain.entity.Number;
+import carracing.domain.entity.Challengers;
+import carracing.domain.entity.Participant;
 import carracing.domain.entity.Round;
-
-import java.util.function.Supplier;
 
 public interface CarRacingService {
 
-  void initRacing(Number number, Round round);
+  Challengers registerRacer(Participant participant);
 
-  RacingResult gameStart();
-
-  Supplier<Boolean> isMoved();
+  RacingResult gameStart(Round round, Challengers challengers);
 }

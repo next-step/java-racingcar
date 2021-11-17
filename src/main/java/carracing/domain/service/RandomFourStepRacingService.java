@@ -1,60 +1,69 @@
 package carracing.domain.service;
 
+import carracing.domain.dto.RacingData;
 import carracing.domain.dto.RacingResult;
+import carracing.domain.dto.RoundData;
 import carracing.domain.dto.RoundResult;
 import carracing.domain.entity.Car;
 import carracing.domain.entity.Challengers;
-import carracing.domain.entity.Number;
+import carracing.domain.entity.Participant;
 import carracing.domain.entity.Round;
 import carracing.domain.utils.RandomUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
+
+import static java.util.stream.Collectors.toList;
 
 public class RandomFourStepRacingService implements CarRacingService{
 
   private static final int STEP_FORWARD_STANDARD = 4;
+  private static final String GAME_START_ERROR_MESSAGE = "게임을 시작할 수 없습니다.";
 
-  private Challengers challengers;
-  private Round round;
-
-  public RandomFourStepRacingService(Number number, Round round) {
-    if (!isValidInput(number, round)) {
-      throw new IllegalArgumentException();
+  @Override
+  public Challengers registerRacer(Participant participant) {
+    Challengers challengers = new Challengers();
+    for (int id = 0; id < participant.size(); id++) {
+      challengers.register(new Car(participant.getParticipant().get(id)));
     }
-    this.challengers = new Challengers(number);
-    this.round = round;
-    initRacing(number, round);
-  }
-
-  private boolean isValidInput(Number number, Round round) {
-    return number != null && round != null;
+    return challengers;
   }
 
   @Override
-  public void initRacing(Number number, Round round) {
-    for (int i = 0; i < number.getValue(); i++) {
-      challengers.register(new Car());
-    }
-  }
+  public RacingResult gameStart(Round round, Challengers challengers) {
+    validateInputValue(round, challengers);
 
-  @Override
-  public RacingResult gameStart() {
-    List<RoundResult> roundResultList = new ArrayList<>();
+    List<RoundData> roundDataList = new ArrayList<>();
+
     while (round.hasMoreChance()) {
-      roundResultList.add(challengers.startRound(isMoved()));
+      roundDataList.add(startRound(challengers));
       round.minus();
     }
-    return new RacingResult(roundResultList);
+    return new RacingResult(new RoundResult(roundDataList), challengers.getWinner());
   }
 
-  @Override
-  public Supplier<Boolean> isMoved() {
+  private void validateInputValue(Round round, Challengers challengers) {
+    if (round == null || challengers == null) {
+      throw new IllegalArgumentException(GAME_START_ERROR_MESSAGE);
+    }
+  }
+
+  public BooleanSupplier isMovable() {
     return () -> RandomUtils.isGreaterThanOrEquals(STEP_FORWARD_STANDARD);
   }
 
-  public Challengers getChallengers() {
-    return challengers;
+  private RoundData startRound(Challengers challengers) {
+    challengers.notifyCarOfStart(isMovable());
+    List<RacingData> racingDataList = getRacingData(challengers);
+    return new RoundData(racingDataList);
   }
+
+  private List<RacingData> getRacingData(Challengers challengers) {
+    List<RacingData> racingDataList = challengers.getChallengers().stream()
+                                      .map(car -> new RacingData(car.getName(), car.getNowStep()))
+                                      .collect(toList());
+    return racingDataList;
+  }
+
 }

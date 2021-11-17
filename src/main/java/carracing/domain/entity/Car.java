@@ -1,26 +1,37 @@
 package carracing.domain.entity;
 
-import carracing.domain.dto.RacingData;
+import java.util.function.BooleanSupplier;
 
-import java.util.function.Supplier;
+public class Car implements Comparable<Car>{
 
-public class Car {
+  private final Name name;
+  private final Step nowStep;
 
-  private Step nowStep;
-
-  public Car() {
+  public Car(Name name) {
+    this.name = name;
     this.nowStep = new Step();
   }
 
-  public RacingData move(Supplier<Boolean> isMoved) {
-    if(isMoved.get()) {
+  public void move(BooleanSupplier isMovable) {
+    if(isMovable.getAsBoolean()) {
       nowStep.plus();
     }
-    return new RacingData(getNowStep());
+  }
+
+  public String getName() {
+    return name.getName();
   }
 
   public int getNowStep() {
     return this.nowStep.getValue();
   }
 
+  @Override
+  public int compareTo(Car o) {
+    return Integer.compare(o.getNowStep(), this.nowStep.getValue());
+  }
+
+  public boolean equalStep(Car o) {
+    return this.nowStep.isEqualTo(o.nowStep);
+  }
 }

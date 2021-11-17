@@ -1,36 +1,52 @@
 package carracing.domain.entity;
 
-import carracing.domain.dto.RacingData;
-import carracing.domain.dto.RoundResult;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
+
+import static java.util.stream.Collectors.toList;
 
 public class Challengers {
 
-  private List<Car> challengers;
+  private static final int FIRST_INDEX = 0;
 
-  public Challengers(Number number) {
-    if (number == null) {
-      throw new IllegalArgumentException();
-    }
-    this.challengers = new ArrayList<>(number.getValue());
+  private final List<Car> challengers;
+
+  public Challengers() {
+    this.challengers = new ArrayList<>();
+  }
+
+  public static Challengers from(List<Car> carList) {
+    final Challengers challengers = new Challengers();
+    challengers.challengers.addAll(carList);
+    return challengers;
   }
 
   public void register(Car car) {
     challengers.add(car);
   }
 
-  public RoundResult startRound(Supplier<Boolean> isMoved) {
-    List<RacingData> racingDataList = new ArrayList<>();
+  public void notifyCarOfStart(BooleanSupplier isMovable) {
     for (Car car : getChallengers()) {
-      racingDataList.add(car.move(isMoved));
+      car.move(isMovable);
     }
-    return new RoundResult(racingDataList);
   }
 
   public List<Car> getChallengers() {
     return challengers;
+  }
+
+  public Challengers getWinner() {
+    List<Car> carList = new ArrayList<>(this.challengers);
+    Collections.sort(carList);
+    return from(findWinner(carList));
+  }
+
+  private List<Car> findWinner(List<Car> carList) {
+    Car firstCar = carList.get(FIRST_INDEX);
+    return carList.stream()
+                  .filter(firstCar::equalStep)
+                  .collect(toList());
   }
 }

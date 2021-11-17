@@ -1,16 +1,17 @@
 package carracing.domain.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RoundResult {
 
-  private List<RacingData> racingDataList;
+  private final List<RoundData> roundDataList;
 
-  public RoundResult(List<RacingData> racingDataList) {
-    this.racingDataList = racingDataList;
+  public RoundResult(List<RoundData> roundDataList) {
+    this.roundDataList = roundDataList;
   }
 
-  public List<RacingData> getRacingDataList() {
-    return racingDataList;
+  public List<RoundData> getRoundDataList() {
+    return new ArrayList<>(roundDataList);
   }
 }
