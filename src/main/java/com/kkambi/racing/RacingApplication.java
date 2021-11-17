@@ -15,38 +15,38 @@ public class RacingApplication {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        String[] carNameList = inputView.getCarNameList();
+        String[] carNames = inputView.getCarNames();
         int numberOfAttempts = inputView.getNumberOfTries();
 
-        List<Car> carList = composeCarList(carNameList);
+        List<Car> cars = composeCars(carNames);
 
         ResultView resultView = new ResultView();
         resultView.printPhrase();
 
         for (int times = 1; times <= numberOfAttempts; times++) {
-            tryToMoveCarList(carList);
-            resultView.printInformation(carList);
+            tryToMoveCars(cars);
+            resultView.printInformation(cars);
         }
-        resultView.printWinners(chooseWinners(carList));
+        resultView.printWinners(chooseWinners(cars));
     }
 
-    private static List<Car> composeCarList(String[] carNameList) {
-        List<Car> carList = new ArrayList<>();
-        for (String carName : carNameList) {
-            carList.add(new Car(0, carName));
+    private static List<Car> composeCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(new Car(0, carName));
         }
-        return carList;
+        return cars;
     }
 
-    private static void tryToMoveCarList(List<Car> carList) {
-        for (Car car : carList) {
+    private static void tryToMoveCars(List<Car> cars) {
+        for (Car car : cars) {
             car.tryToMove(Dice.roll(10));
         }
     }
 
-    private static List<Car> chooseWinners(List<Car> carList) {
-        Car maxLocationCar = Collections.max(carList, Comparator.comparing(Car::getLocation));
-        return carList.stream()
+    private static List<Car> chooseWinners(List<Car> cars) {
+        Car maxLocationCar = Collections.max(cars, Comparator.comparing(Car::getLocation));
+        return cars.stream()
                 .filter(car -> car.getLocation().equals(maxLocationCar.getLocation()))
                 .collect(Collectors.toList());
     }

@@ -15,8 +15,8 @@ public class ResultView {
         System.out.println("실행 결과");
     }
     
-    public void printInformation(List<Car> carList) {
-        for (Car car : carList) {
+    public void printInformation(List<Car> cars) {
+        for (Car car : cars) {
             printNameAndLocation(car);
         }
         System.out.println();
