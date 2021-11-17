@@ -1,6 +1,7 @@
 package com.kkambi.racing.view;
 
 import com.kkambi.racing.domain.Car;
+import com.kkambi.racing.domain.Location;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,7 +24,7 @@ public class ResultView {
 
     private void printNameAndLocation(Car car) {
         StringBuilder locationStringBuilder = new StringBuilder();
-        Car.Location location = car.getLocation();
+        Location location = car.getLocation();
         for (int i = 0; i < location.getValue(); i++) {
             locationStringBuilder.append(LOCATION_UNIT);
         }

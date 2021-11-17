@@ -17,7 +17,7 @@ class CarTest {
     @DisplayName("자동차 전진 시도")
     @MethodSource("getRandomValueWhenTryToMove")
     @ParameterizedTest
-    void tryToCarMove(int randomValue, Car.Location expectedLocation) {
+    void tryToCarMove(int randomValue, Location expectedLocation) {
         // given
         Car car = new Car(0, "pobi");
 
@@ -30,9 +30,9 @@ class CarTest {
 
     static Stream<Arguments> getRandomValueWhenTryToMove() {
         return Stream.of(
-                Arguments.of(1, new Car.Location(0)),
-                Arguments.of(4, new Car.Location(1)),
-                Arguments.of(9, new Car.Location(1))
+                Arguments.of(1, new Location(0)),
+                Arguments.of(4, new Location(1)),
+                Arguments.of(9, new Location(1))
         );
     }
 
@@ -42,17 +42,17 @@ class CarTest {
     void locationMustNotBeMinus(int locationValue) {
         // when
         // then
-        assertThatIllegalArgumentException().isThrownBy(() -> new Car.Location(locationValue));
+        assertThatIllegalArgumentException().isThrownBy(() -> new Location(locationValue));
     }
 
     @DisplayName("자동차 위치 증가")
     @Test
     void locationMove() {
         // given
-        Car.Location location = new Car.Location(0);
+        Location location = new Location(0);
 
         // when
-        Car.Location locationAfterMove = location.move();
+        Location locationAfterMove = location.move();
 
         // then
         assertThat(locationAfterMove.getValue()).isEqualTo(location.getValue() + 1);
@@ -64,6 +64,6 @@ class CarTest {
     void nameMustNotOver5(String name) {
         // when
         // then
-        assertThatIllegalArgumentException().isThrownBy(() -> new Car.Name(name));
+        assertThatIllegalArgumentException().isThrownBy(() -> new Name(name));
     }
 }
