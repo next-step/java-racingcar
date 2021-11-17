@@ -1,6 +1,7 @@
 package com.sryoondev.racingcar.step3.view;
 
 import com.sryoondev.racingcar.step3.GameRecord;
+import com.sryoondev.racingcar.step3.Record;
 import com.sryoondev.racingcar.step3.Records;
 
 import java.util.Collections;
@@ -16,7 +17,8 @@ public class ResultView {
         System.out.println();
     }
 
-    private static void printMovement(int movementCount) {
-        System.out.println(String.join("", Collections.nCopies(movementCount, "-")));
+    private static void printMovement(Record record) {
+        System.out.println(record.getName() + " : " +
+                String.join("", Collections.nCopies(record.getDistance(), "-")));
     }
 }

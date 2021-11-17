@@ -28,7 +28,7 @@ public class Circuit {
 
     public Records getRecords() {
         return new Records(cars.stream()
-                .map(Car::getMoveDistance)
+                .map(Record::new)
                 .collect(Collectors.toList()));
     }
 }
