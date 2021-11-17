@@ -7,7 +7,7 @@ import java.util.List;
 public class GameLog {
     private final List<RoundLog> roundLogs;
 
-    public GameLog() {
+    private GameLog() {
         this.roundLogs = new ArrayList<>();
     }
 
