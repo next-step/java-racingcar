@@ -19,9 +19,7 @@ public class InputView {
   private static final String TRY_QUESTION = "시도할 횟수는 몇 회 인가요?";
   private static final String INPUT_MESSAGE = "잘못 입력 하셨습니다. 0 이상의 자연수를 입력해주세요";
 
-  private static final int ZERO = 0;
   private static final String COMMA =",";
-  private static final String EMPTY_STRING = "";
 
   private InputView() {}
 
@@ -37,16 +35,16 @@ public class InputView {
   }
 
   public Round inputTryCount() {
-    return new Round(new Number(inputRound(TRY_QUESTION)));
+    return inputRound(TRY_QUESTION);
   }
 
-  private int inputRound(String question) {
-    int count = ZERO;
-    while (!isGreaterThanZero(count)) {
+  private Round inputRound(String question) {
+    Round round = null;
+    while (round == null) {
       System.out.println(question);
-      count = inputInteger();
+      round = inputRound();
     }
-    return count;
+    return round;
   }
 
   private Participant inputName(String question) {
@@ -61,10 +59,6 @@ public class InputView {
       nameList = parseNameToList(inputKeyboard().trim());
     }
     return nameList;
-  }
-
-  private boolean isGreaterThanZero(int count) {
-    return count > ZERO;
   }
 
   private List<Name> parseNameToList(String name) {
@@ -86,14 +80,15 @@ public class InputView {
     return scanner.nextLine();
   }
 
-  private int inputInteger() {
-    int count = ZERO;
+  private Round inputRound() {
+    Round round = null;
     try {
-      count = Integer.parseInt(inputKeyboard());
-    } catch (NumberFormatException e) {
+      Number number = new Number(Integer.parseInt(inputKeyboard()));
+      round = new Round(number);
+    } catch (Exception e) {
       System.out.println(INPUT_MESSAGE);
     }
-    return count;
+    return round;
   }
 
 
