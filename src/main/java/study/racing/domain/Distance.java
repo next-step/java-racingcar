@@ -2,14 +2,20 @@ package study.racing.domain;
 
 import java.util.Objects;
 
+import study.racing.exception.InvalidDistanceException;
+
 public class Distance {
 
-    public static final int INITIAL_DISTANCE = 0;
+    private static final String DISTANCE_S_POSITION_MUST_GREATER_THAN_0 = "distance's position must greater than 0";
+    private static final int INITIAL_DISTANCE = 0;
 
-    private int distance;
+    private int position;
 
-    public Distance(int distance) {
-        this.distance = distance;
+    public Distance(int position) {
+        if (position < INITIAL_DISTANCE) {
+            throw new InvalidDistanceException(DISTANCE_S_POSITION_MUST_GREATER_THAN_0);
+        }
+        this.position = position;
     }
 
     public static Distance init() {
@@ -17,11 +23,11 @@ public class Distance {
     }
 
     public void increase() {
-        distance++;
+        position++;
     }
 
-    public int getDistance() {
-        return distance;
+    public int getPosition() {
+        return position;
     }
 
     @Override
@@ -33,11 +39,11 @@ public class Distance {
             return false;
         }
         Distance distance1 = (Distance) o;
-        return distance == distance1.distance;
+        return position == distance1.position;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(distance);
+        return Objects.hash(position);
     }
 }

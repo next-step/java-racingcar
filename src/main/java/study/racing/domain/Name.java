@@ -6,8 +6,8 @@ import study.racing.exception.InvalidCarNameException;
 
 public class Name {
 
-    public static final String INVALID_NAME_MESSAGE = "car name length must not greater than ";
-    public static final int NAME_LENGTH_LIMIT = 5;
+    private static final String INVALID_NAME_MESSAGE = "car name length must not greater than ";
+    private static final int NAME_LENGTH_LIMIT = 5;
 
     private final String name;
 

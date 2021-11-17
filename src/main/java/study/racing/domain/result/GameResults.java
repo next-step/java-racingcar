@@ -7,16 +7,16 @@ import study.racing.domain.car.RacingCars;
 
 public class GameResults {
 
-    public static final int LAST_INDEX_MAKER = 1;
+    private static final int LAST_INDEX_MAKER = 1;
 
-    private final List<Round> gameResults;
+    private final List<Round> results;
 
-    public GameResults(List<Round> gameResults) {
-        this.gameResults = gameResults;
+    public GameResults(List<Round> results) {
+        this.results = results;
     }
 
     public List<Round> allRoundResults() {
-        return Collections.unmodifiableList(gameResults);
+        return Collections.unmodifiableList(results);
     }
 
     public RacingCars winners() {
@@ -24,6 +24,6 @@ public class GameResults {
     }
 
     private Round lastRound() {
-        return gameResults.get(gameResults.size() - LAST_INDEX_MAKER);
+        return results.get(results.size() - LAST_INDEX_MAKER);
     }
 }

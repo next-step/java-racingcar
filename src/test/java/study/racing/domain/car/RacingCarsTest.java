@@ -26,7 +26,7 @@ class RacingCarsTest {
     @MethodSource("racingCars")
     void createRacingCarsTest(List<Car> cars, int expected) {
         RacingCars racingCars = new RacingCars(cars);
-        assertThat(racingCars.getCars().size()).isEqualTo(expected);
+        assertThat(racingCars.getParticipants().size()).isEqualTo(expected);
     }
 
     private static Stream<Arguments> racingCars() {

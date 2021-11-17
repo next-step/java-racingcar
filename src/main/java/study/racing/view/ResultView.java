@@ -26,7 +26,7 @@ public final class ResultView {
 
     private static void doPrint(Round round) {
         round.result()
-             .getCars()
+             .getParticipants()
              .forEach(ResultView::doPrint);
         System.out.println();
     }
@@ -35,7 +35,7 @@ public final class ResultView {
         builder.setLength(0);
         builder.append(car.getName())
                .append(NAME_DISTANCE_DELIMITER);
-        for (int i = 0; i < car.getDistance().getDistance(); i++) {
+        for (int i = 0; i < car.getDistance().getPosition(); i++) {
             builder.append(DISTANCE_SYMBOL);
         }
         System.out.println(builder);

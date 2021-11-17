@@ -12,8 +12,8 @@ import study.racing.exception.InvalidInputCountException;
 
 public class RacingGameService {
 
-    public static final String CAR_COUNT_AND_TRY_COUNT_MUST_BE_POSITIVE = "carCount and tryCount must be positive";
-    public static final int MIN_COUNT = 0;
+    private static final String CAR_COUNT_AND_TRY_COUNT_MUST_BE_POSITIVE = "carCount and tryCount must be positive";
+    private static final int MIN_COUNT = 0;
 
     private final Rule rule;
 
