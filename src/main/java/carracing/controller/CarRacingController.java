@@ -1,6 +1,6 @@
 package carracing.controller;
 
-import carracing.domain.entity.Challengers;
+import carracing.domain.entity.Cars;
 import carracing.domain.service.CarRacingService;
 import carracing.ui.RacingView;
 
@@ -15,9 +15,9 @@ public class CarRacingController {
   }
 
   public void gameStart() {
-    Challengers challengers = carRacingService.registerRacer(racingView.getNumberOfCar());
+    Cars cars = carRacingService.registerRacer(racingView.getNumberOfCar());
 
-    racingView.printResult(carRacingService.gameStart(racingView.getRound(), challengers));
+    racingView.printResult(carRacingService.gameStart(racingView.getRound(), cars));
   }
 
 }

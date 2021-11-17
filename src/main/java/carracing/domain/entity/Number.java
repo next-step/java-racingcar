@@ -22,6 +22,10 @@ public class Number {
     return this.number > ZERO;
   }
 
+  public boolean isLessThanZero() {
+    return this.number < ZERO;
+  }
+
   public int getValue() {
     return this.number;
   }

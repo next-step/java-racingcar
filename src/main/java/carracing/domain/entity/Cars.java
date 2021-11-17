@@ -5,49 +5,44 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.BooleanSupplier;
 
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.toList;
-
-public class Challengers {
+public class Cars {
 
   private static final int FIRST_INDEX = 0;
 
-  private final List<Car> challengers;
+  private final List<Car> carList;
 
-  public Challengers() {
-    this.challengers = new ArrayList<>();
+  public Cars() {
+    this.carList = new ArrayList<>();
   }
 
-  public static Challengers from(List<Car> carList) {
-    final Challengers challengers = new Challengers();
-    challengers.challengers.addAll(carList);
-    return challengers;
+  public Cars(List<Car> carList) {
+    this.carList = carList;
   }
 
   public void register(Car car) {
-    challengers.add(car);
+    carList.add(car);
   }
 
   public void notifyCarOfStart(BooleanSupplier isMovable) {
-    for (Car car : getChallengers()) {
+    for (Car car : getCarList()) {
       car.move(isMovable);
     }
   }
 
-  public List<Car> getChallengers() {
-    return challengers;
+  public List<Car> getCarList() {
+    return carList;
   }
 
-  public Challengers getWinner() {
-    List<Car> carList = new ArrayList<>(this.challengers);
+  public Cars getWinner() {
+    List<Car> carList = new ArrayList<>(this.carList);
     Collections.sort(carList);
     return findWinner(carList);
   }
 
-  private Challengers findWinner(List<Car> carList) {
+  private Cars findWinner(List<Car> carList) {
     Car firstCar = carList.get(FIRST_INDEX);
 
-    return Challengers.from(getSameStepCars(carList, firstCar));
+    return new Cars(getSameStepCars(carList, firstCar));
   }
 
   private List<Car> getSameStepCars(List<Car> carList, Car firstCar) {

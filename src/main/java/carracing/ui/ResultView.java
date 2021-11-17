@@ -65,7 +65,7 @@ public class ResultView {
   }
 
   private void appendRacingWinner(RacingResult racingResult) {
-    stringBuilder.append(racingResult.getWinner().getChallengers()
+    stringBuilder.append(racingResult.getWinner().getCarList()
                                       .stream()
                                       .map(Car::getName)
                                       .collect(joining(COMMA)));
