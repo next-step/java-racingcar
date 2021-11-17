@@ -26,13 +26,13 @@ public class Cars {
     }
 
     public static List<Car> findWinners(List<Car> cars) {
-        int max = cars.stream()
-                .mapToInt(car -> car.getPosition().getValue())
-                .max()
-                .getAsInt();
+        Position maxPosition = cars.stream()
+                .map(car -> car.getPosition())
+                .max(Position::compareTo)
+                .get();
 
         return cars.stream()
-                .filter(car -> car.getPosition().getValue() == max)
+                .filter(car -> car.isSamePosition(maxPosition))
                 .collect(Collectors.toList());
     }
 

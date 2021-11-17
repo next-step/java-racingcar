@@ -1,6 +1,6 @@
 package racingcarfinal.domain;
 
-public final class Position {
+public final class Position implements Comparable<Position> {
 
     private static final int MIN_POSITION_VALUE = 0;
 
@@ -27,6 +27,15 @@ public final class Position {
 
     public int getValue() {
         return value;
+    }
+
+    @Override
+    public int compareTo(Position o) {
+        return compare(this.value, o.value);
+    }
+
+    private int compare(int position, int other) {
+        return (position < other) ? -1 : ((position == other) ? 0 : 1);
     }
 
     @Override
