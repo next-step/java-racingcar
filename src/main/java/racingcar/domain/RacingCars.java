@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 
 public class RacingCars {
 
-    private final List<RacingCar> carList;
+    private final List<RacingCar> racingCars;
 
     public RacingCars(List<RacingCar> carList) {
 
-        this.carList = carList;
+        this.racingCars = carList;
     }
 
     public static RacingCars racingGameReady(List<String> carName) {
@@ -39,12 +39,12 @@ public class RacingCars {
 
     public List<RacingCar> getCars() {
 
-        return carList;
+        return racingCars;
     }
 
     public String getVictoryUsers() {
         Position maxPosition = getMaxPosition();
-        return carList.stream()
+        return racingCars.stream()
                 .filter(car -> car.isWinner(maxPosition))
                 .map(RacingCar::getCarName)
                 .map(CarName::getName)
@@ -53,7 +53,7 @@ public class RacingCars {
 
     private Position getMaxPosition() {
         Position maxPosition = Position.create(0);
-        for (RacingCar car : carList) {
+        for (RacingCar car : racingCars) {
             maxPosition = car.getMaxPosition(maxPosition);
         }
         return maxPosition;

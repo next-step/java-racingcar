@@ -15,7 +15,7 @@ public class RacingCarResultView {
 
     public void printRace(GameResultData result) {
         Records records = result.getRecords();
-        List<Record> recordList = records.getRecordList();
+        List<Record> recordList = records.getRecords();
         for(int i = 0; i < recordList.size(); i++) {
             RacingCars racingCars = recordList.get(i).getCars();
             RacingCarResultView.print(racingCars);

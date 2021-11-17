@@ -8,13 +8,13 @@ import java.util.List;
 
 public class Records {
 
-    private final List<Record> recordList;
+    private final List<Record> records;
 
     public Records(List<Record> records) {
 
         Validation.nullValueCheck(records);
 
-        this.recordList = records;
+        this.records = records;
     }
 
     public String getWinner() {
@@ -22,11 +22,11 @@ public class Records {
     }
 
     private Record getFinalRound() {
-        return recordList.get(recordList.size() - 1);
+        return records.get(records.size() - 1);
     }
 
-    public List<Record> getRecordList() {
-        return Collections.unmodifiableList(new ArrayList<>(recordList));
+    public List<Record> getRecords() {
+        return Collections.unmodifiableList(new ArrayList<>(records));
     }
 
 }
