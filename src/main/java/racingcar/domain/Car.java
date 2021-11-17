@@ -23,7 +23,7 @@ public class Car {
     }
 
     public Car from() {
-        return new Car(this.name, position.of());
+        return new Car(name, position.of());
     }
 
     public void move(int number) {
