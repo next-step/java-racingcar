@@ -27,9 +27,8 @@ public class RacingGameService {
         RacingCars racingCars = RacingCars.from(carNames);
         List<Round> rounds = new ArrayList<>();
         for (int i = 0; i < tryCount; i++) {
-            racingCars.raceAll(rule);
-            Round round = new Round(racingCars);
-            rounds.add(round);
+            RacingCars racedCars = racingCars.raceAll(rule);
+            rounds.add(new Round(racedCars));
         }
         return new GameResults(rounds);
     }

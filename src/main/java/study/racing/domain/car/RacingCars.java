@@ -26,8 +26,9 @@ public class RacingCars {
                        .collect(Collectors.collectingAndThen(Collectors.toList(), RacingCars::new));
     }
 
-    public void raceAll(Rule rule) {
+    public RacingCars raceAll(Rule rule) {
         cars.forEach(car -> car.moveOrStop(rule));
+        return new RacingCars(cars);
     }
 
     public List<Car> getCars() {
