@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BooleanSupplier;
 
+import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
 public class RandomFourStepRacingService implements CarRacingService{
@@ -55,15 +56,13 @@ public class RandomFourStepRacingService implements CarRacingService{
 
   private RoundData startRound(Challengers challengers) {
     challengers.notifyCarOfStart(isMovable());
-    List<RacingData> racingDataList = getRacingData(challengers);
-    return new RoundData(racingDataList);
+    return getRacingData(challengers);
   }
 
-  private List<RacingData> getRacingData(Challengers challengers) {
-    List<RacingData> racingDataList = challengers.getChallengers().stream()
-                                      .map(car -> new RacingData(car.getName(), car.getNowStep()))
-                                      .collect(toList());
-    return racingDataList;
+  private RoundData getRacingData(Challengers challengers) {
+    return challengers.getChallengers().stream()
+                      .map(car -> new RacingData(car.getName(), car.getNowStep()))
+                      .collect(collectingAndThen(toList(), RoundData::new));
   }
 
 }

@@ -3,6 +3,7 @@ package carracing.domain.entity;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
 public class Participant {
@@ -23,15 +24,13 @@ public class Participant {
     return participant.size();
   }
 
-  public boolean isEmpty() { return  participant.isEmpty();}
-
   public static Participant parse(String name) {
-    return new Participant(getSplitNameByDelimiter(name));
+    return getSplitNameByDelimiter(name);
   }
 
-  private static List<Name> getSplitNameByDelimiter(String name) {
+  private static Participant getSplitNameByDelimiter(String name) {
     return Arrays.stream(name.split(COMMA))
                  .map(Name::new)
-                 .collect(toList());
+                 .collect(collectingAndThen(toList(), Participant::new));
   }
 }

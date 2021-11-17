@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.BooleanSupplier;
 
+import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
 public class Challengers {
@@ -40,13 +41,13 @@ public class Challengers {
   public Challengers getWinner() {
     List<Car> carList = new ArrayList<>(this.challengers);
     Collections.sort(carList);
-    return from(findWinner(carList));
+    return findWinner(carList);
   }
 
-  private List<Car> findWinner(List<Car> carList) {
+  private Challengers findWinner(List<Car> carList) {
     Car firstCar = carList.get(FIRST_INDEX);
     return carList.stream()
                   .filter(firstCar::equalStep)
-                  .collect(toList());
+                  .collect(collectingAndThen(toList(), Challengers::from));
   }
 }
