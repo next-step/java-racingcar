@@ -21,8 +21,8 @@
 - view
     - InputView Class
     - ResultView Class
-- controller
-    - RaceController Class
+- controller (X)
+    - main 함수로 대체
 - service
     - Race Class
 - strategy
@@ -38,7 +38,6 @@
     - Record Class 
     - RecordGroup Class
     - NameGroup Class
-- main method
     
 
 ### 구현할 기능 목록
@@ -60,7 +59,6 @@
     - validation (5자 초과)
     - 생성자는 List를 인자로 받음
 - [ ] Race 클래스
-- [ ] Race Controller 클래스
 - [ ] RandomStrategy 클래스
     - 기준값을 인자로 받음 (디폴트는 4)
 - [ ] 리팩토링
@@ -84,3 +82,15 @@
     - [ ] 공백을 인자로 받으면 예외를 던진다.
 - RandomStrategy Class
     - [ ] 기준값을 0 미만 값을 받으면 전진 가능여부는 false만 반환한다.
+
+
+### 리뷰전 점검할 부분
+- 구현을 우선 진행한 후 리팩토링. 처음부터 잘 짜려고 하지 말아라
+- 직관적인 메서드명, 변수명
+- getter, setter이 아닌 메세지를 보내야한다
+- 모든 원시값과 문자열을 포장한다
+- 테스트 설명은 상황, 행위, 결과를 포함하여 간략하게 작성한다
+- 불변한 객체를 생성한다
+- getter은 ui 출력할 때만 사용한다
+- domain에 너무 많은 일을 주지 말자.
+- MVC 패턴으로 구현하기 - main 함수를 Controller 라고 생각하자
