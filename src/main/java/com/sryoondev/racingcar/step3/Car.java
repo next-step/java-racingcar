@@ -7,7 +7,7 @@ public class Car {
         this.moveCount = 0;
     }
 
-    public void move() {
+    private void move() {
         this.moveCount++;
     }
 
