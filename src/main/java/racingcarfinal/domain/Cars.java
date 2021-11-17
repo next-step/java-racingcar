@@ -29,7 +29,7 @@ public class Cars {
         Position maxPosition = cars.stream()
                 .map(car -> car.getPosition())
                 .max(Position::compareTo)
-                .get();
+                .orElse(Position.ZERO);
 
         return cars.stream()
                 .filter(car -> car.isSamePosition(maxPosition))

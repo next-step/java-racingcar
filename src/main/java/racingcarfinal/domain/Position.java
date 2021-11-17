@@ -2,6 +2,7 @@ package racingcarfinal.domain;
 
 public final class Position implements Comparable<Position> {
 
+    public static final Position ZERO = new Position(0);
     private static final int MIN_POSITION_VALUE = 0;
 
     private final int value;
