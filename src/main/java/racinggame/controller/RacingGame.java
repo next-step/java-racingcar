@@ -4,6 +4,7 @@ import racinggame.domain.CarStateGenerator;
 import racinggame.domain.Cars;
 import racinggame.domain.Laps;
 import racinggame.domain.Names;
+import racinggame.dto.RoundLogs;
 import racinggame.view.ResultView;
 
 public class RacingGame {
@@ -21,8 +22,8 @@ public class RacingGame {
     public void startRacing() {
         System.out.print("\n실행 결과");
         while (!laps.isGoal()) {
-            cars.roundRacing(carStateGenerator);
-            ResultView.currentRecord(cars);
+            RoundLogs roundLogs = cars.roundRacing(carStateGenerator);
+            ResultView.currentRecord(roundLogs);
             laps.passStartLine();
         }
     }
