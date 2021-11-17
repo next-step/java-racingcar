@@ -3,12 +3,15 @@ package racingcar;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Scanner;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class RacingCarTest {
 
@@ -55,5 +58,25 @@ public class RacingCarTest {
         assertThat(racingCar.getCarCount()).isEqualTo(3);
         assertThat(racingCar.getRacingCount()).isEqualTo(5);
     }
+
+    @DisplayName("자동차 대수가 0 이하일 경우 예외")
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, -5})
+    void 자동차경주_자동차대수_0이하_예외(int input) {
+        assertThatThrownBy(() -> {
+            RacingCar.create(input, 5);
+        }).hasMessageContaining("1 이상 입력해야 합니다.");
+    }
+
+    @DisplayName("시도횟수가 0 이하일 경우 예외")
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, -5})
+    void 자동차경주_시도회수_0이하_예외(int input) {
+        assertThatThrownBy(() -> {
+            RacingCar.create(3, input);
+        }).hasMessageContaining("1 이상 입력해야 합니다.");
+    }
+
+
 
 }

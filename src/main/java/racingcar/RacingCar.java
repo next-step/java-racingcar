@@ -24,6 +24,9 @@ public class RacingCar {
     }
 
     public static RacingCar create(int carCount, int racingCount) {
+        if (carCount < 1 || racingCount < 1) {
+            throw new IllegalArgumentException("1 이상 입력해야 합니다.");
+        }
         return new RacingCar(carCount, racingCount, new Random());
     }
 
