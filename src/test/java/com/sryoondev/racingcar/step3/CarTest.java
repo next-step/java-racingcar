@@ -13,7 +13,7 @@ public class CarTest {
     @DisplayName("입력 값에 따라 전진하거나 멈추는지 테스트")
     @CsvSource(value = {"true,1", "false,0"})
     void testRace(boolean movable, int moveDistance) {
-        Car car = new Car();
+        Car car = new Car("pobi");
         car.race(movable);
         assertThat(car.getMoveDistance()).isEqualTo(moveDistance);
     }
