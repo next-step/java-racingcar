@@ -10,10 +10,6 @@ public class Car {
         this.distance = 1;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public int getDistance() {
         return distance;
     }

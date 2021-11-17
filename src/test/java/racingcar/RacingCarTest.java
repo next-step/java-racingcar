@@ -52,11 +52,10 @@ public class RacingCarTest {
         assertThat(car.move(1)).isFalse();
     }
 
+    @DisplayName("RacingCar는 자동차 대수와 시도할 횟수가 같으면 같은 객체")
     @Test
     void 자동차경주_생성() {
-        RacingCar racingCar = RacingCar.create(3, 5);
-        assertThat(racingCar.getCarCount()).isEqualTo(3);
-        assertThat(racingCar.getRacingCount()).isEqualTo(5);
+        assertThat(RacingCar.create(3, 5)).isEqualTo(RacingCar.create(3, 5));
     }
 
     @DisplayName("자동차 대수가 0 이하일 경우 예외")

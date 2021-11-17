@@ -3,6 +3,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class RacingCar {
@@ -52,11 +53,16 @@ public class RacingCar {
         }
     }
 
-    public int getCarCount() {
-        return carCount;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return carCount == racingCar.carCount && racingCount == racingCar.racingCount;
     }
 
-    public int getRacingCount() {
-        return racingCount;
+    @Override
+    public int hashCode() {
+        return Objects.hash(carCount, racingCount);
     }
 }
