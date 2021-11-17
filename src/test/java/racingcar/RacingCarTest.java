@@ -40,16 +40,26 @@ public class RacingCarTest {
     @DisplayName("처음 자동차를 생성하면, 거리는 1이다.")
     @Test
     void 자동차_생성() {
-        Car car = new Car(1);
+        Car car = new Car(1, new LoadMovable());
         assertThat(car.getDistance()).isEqualTo(1);
     }
 
-    @DisplayName("4이상이면 전진, 미만이면 멈춤")
-    @Test
-    void 전진또는멈춤() {
-        Car car = new Car(1);
-        assertThat(car.move(4)).isTrue();
-        assertThat(car.move(1)).isFalse();
+    @DisplayName("4이상이면 전진")
+    @ParameterizedTest
+    @ValueSource(ints = {4,5,8})
+    void 전진(int input) {
+        Car car = new Car(1, new LoadMovable());
+        car.move(input);
+        assertThat(car.getDistance()).isEqualTo(2);
+    }
+
+    @DisplayName("4 미만이면 멈춤")
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,3})
+    void 멈춤(int input) {
+        Car car = new Car(1, new LoadMovable());
+        car.move(input);
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 
     @DisplayName("RacingCar는 자동차 대수와 시도할 횟수가 같으면 같은 객체")

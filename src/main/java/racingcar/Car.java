@@ -1,24 +1,23 @@
 package racingcar;
 
 public class Car {
-    private static final int MOVE_CONDITION = 4;
     private int id;
     private int distance;
+    private Movable movable;
 
-    public Car(int id) {
+    public Car(int id, Movable movable) {
         this.id = id;
         this.distance = 1;
+        this.movable = movable;
     }
 
     public int getDistance() {
         return distance;
     }
 
-    public boolean move(int num) {
-        if (num >= MOVE_CONDITION) {
+    public void move(int num) {
+        if (movable.move(num)) {
             distance++;
-            return true;
         }
-        return false;
     }
 }

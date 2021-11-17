@@ -28,7 +28,7 @@ public class RacingCar {
 
     private void addCar(int num) {
         for (int i = 0; i < num; i++) {
-            cars.add(new Car(cars.size() + 1));
+            cars.add(new Car(cars.size() + 1, new LoadMovable()));
         }
     }
 
