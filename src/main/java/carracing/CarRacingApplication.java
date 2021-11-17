@@ -1,6 +1,6 @@
 package carracing;
 
-import carracing.domain.CarRacingController;
+import carracing.controller.CarRacingController;
 import carracing.domain.service.RandomFourStepRacingService;
 import carracing.ui.InputView;
 import carracing.ui.RacingView;

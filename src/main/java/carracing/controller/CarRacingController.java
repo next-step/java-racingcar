@@ -1,4 +1,4 @@
-package carracing.domain;
+package carracing.controller;
 
 import carracing.domain.entity.Challengers;
 import carracing.domain.service.CarRacingService;
