@@ -32,13 +32,16 @@ class RacingGameTest {
     static Stream<Arguments> racingGameProgressTest() {
         return Stream.of(
                 Arguments.of(
-                        1, 3
+                        0, 0
                 ),
                 Arguments.of(
-                        2, 6
+                        1, 1
                 ),
                 Arguments.of(
-                        3, 9
+                        2, 2
+                ),
+                Arguments.of(
+                        3, 3
                 )
         );
     }
