@@ -13,7 +13,7 @@ class CarTest {
     public void workCar() {
         Car car = new Car();
         car.moveOrStop(4);
-        int result = car.toInteger();
+        int result = car.getDrivingDistance();
         assertEquals(1, result);
     }
 
@@ -22,7 +22,7 @@ class CarTest {
     public void stopCar() {
         Car car = new Car();
         car.moveOrStop(3);
-        int result = car.toInteger();
+        int result = car.getDrivingDistance();
         assertEquals(0, result);
     }
 
@@ -32,7 +32,7 @@ class CarTest {
         Car car = new Car();
         car.moveOrStop(4);
         car.moveOrStop(4);
-        int result = car.toInteger();
+        int result = car.getDrivingDistance();
         assertEquals(2, result);
     }
 }

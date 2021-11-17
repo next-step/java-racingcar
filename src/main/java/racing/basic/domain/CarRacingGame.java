@@ -1,32 +1,31 @@
 package racing.basic.domain;
 
 import java.util.Arrays;
-import java.util.Random;
+import java.util.List;
 
 public class CarRacingGame {
 
-    private Random  random;
-    private Car[] track;
+    private final List<Car> cars;
 
-    public CarRacingGame(Random random, int lineCount) {
-        this.random = random;
-        track = new Car[lineCount];
+    public CarRacingGame(int lineCount) {
+        Car[] carBuffer = new Car[lineCount];
         for (int i = 0; i < lineCount; i++) {
-            track[i] = new Car();
+            carBuffer[i] = new Car();
         }
+        cars = Arrays.asList(carBuffer);
     }
 
-    public int[] nextRound() {
-        for (Car car : track) {
-            int randomInteger = random.nextInt();
-            car.moveOrStop(randomInteger);
+    public int[] nextRound(int[] diceNumbers) {
+        for (int i = 0; i < cars.size(); i++) {
+            Car car = cars.get(i);
+            car.moveOrStop(diceNumbers[i]);
         }
         return displayTrack();
     }
 
     private int[] displayTrack() {
-        return Arrays.stream(track)
-                     .mapToInt(Car::toInteger)
-                     .toArray();
+        return cars.stream()
+                .mapToInt(Car::getDrivingDistance)
+                .toArray();
     }
 }

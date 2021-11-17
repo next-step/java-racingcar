@@ -10,14 +10,15 @@ public class CarRacingApplication {
 
     private static final int CAR_COUNT_LOCATION  = 0;
     private static final int LOOP_COUNT_LOCATION = 1;
+    private static final int SLEEP_TIME_MILLISECOND = 100;
 
     private InputViewResolver  inputViewResolver;
     private OutputViewResolver outputViewResolver;
 
     private CarRacingGame carRacingGame;
 
-    public CarRacingApplication(InputViewResolver inputViewResolver) {
-        this.inputViewResolver  = inputViewResolver;
+    public CarRacingApplication() {
+        this.inputViewResolver  = new InputViewResolver();
         this.outputViewResolver = new OutputViewResolver();
     }
 
@@ -26,12 +27,13 @@ public class CarRacingApplication {
         int carCount  = answers[CAR_COUNT_LOCATION];
         int loopCount = answers[LOOP_COUNT_LOCATION];
 
-        carRacingGame = new CarRacingGame(new Random(), carCount);
+        carRacingGame = new CarRacingGame(carCount);
 
         outputViewResolver.sendMessage("실행 결과");
         for (int i = 0; i < loopCount; i++) {
-            sleep(1000);
-            int[] displayTrack = carRacingGame.nextRound();
+            int[] randomNumbers = randomNumbersByCarCount(carCount);
+            int[] displayTrack = carRacingGame.nextRound(randomNumbers);
+            sleep(SLEEP_TIME_MILLISECOND);
             outputViewResolver.sendMessage(displayTrack);
         }
     }
@@ -41,10 +43,18 @@ public class CarRacingApplication {
         for (int i = 0; i < questions.length; i++) {
             outputViewResolver.sendMessage(questions[i]);
             answer[i] = inputViewResolver.takeInput();
-            outputViewResolver.sendMessage(answer[i] + "");
         }
         outputViewResolver.sendMessage("");
         return answer;
+    }
+
+    private int[] randomNumbersByCarCount(int carCount) {
+        int[] randomNumbers = new int[carCount];
+        Random random = new Random();
+        for (int i = 0; i < carCount; i++) {
+            randomNumbers[i] = random.nextInt(10);
+        }
+        return randomNumbers;
     }
 
     private void sleep(int time) {

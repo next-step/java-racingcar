@@ -2,15 +2,18 @@ package racing.basic.domain;
 
 public class Car {
 
-    private int roadLength;
+    private final static int BIFURCATION = 4;
+    private final static int OIL = 1;
+
+    private int fuel;
 
     protected void moveOrStop(int percentage) {
-        if(4 <= percentage) {
-            roadLength += 1;
+        if(BIFURCATION <= percentage) {
+            fuel += OIL;
         }
     }
 
-    protected int toInteger() {
-        return roadLength;
+    protected int getDrivingDistance() {
+        return fuel;
     }
 }
