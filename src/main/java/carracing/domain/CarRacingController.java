@@ -16,6 +16,7 @@ public class CarRacingController {
 
   public void gameStart() {
     Challengers challengers = carRacingService.registerRacer(racingView.getNumberOfCar());
+
     racingView.printResult(carRacingService.gameStart(racingView.getRound(), challengers));
   }
 

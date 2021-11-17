@@ -11,6 +11,7 @@ public class CarRacingApplication {
   public static void main(String[] args) {
     RacingView racingView = new RacingView(InputView.getInstance(), ResultView.getInstance());
     RandomFourStepRacingService carRacingService = new RandomFourStepRacingService();
+
     CarRacingController carRacingController = new CarRacingController(carRacingService, racingView);
     carRacingController.gameStart();
   }
