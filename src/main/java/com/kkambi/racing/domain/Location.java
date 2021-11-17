@@ -36,6 +36,6 @@ public class Location implements Comparable<Location> {
 
     @Override
     public int compareTo(Location o) {
-        return value - o.getValue();
+        return Integer.compare(value, o.getValue());
     }
 }
