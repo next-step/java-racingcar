@@ -1,7 +1,7 @@
 package study.racing;
 
 import study.racing.controller.RacingGameController;
-import study.racing.model.rule.RandcomNumberRule;
+import study.racing.domain.rule.RandcomNumberRule;
 import study.racing.service.RacingGameService;
 
 public class Main {
