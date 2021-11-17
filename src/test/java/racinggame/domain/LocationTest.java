@@ -30,4 +30,26 @@ class LocationTest {
         location.move();
         assertThat(location.getLocation()).isEqualTo(excepted);
     }
+
+    @DisplayName("위치가 같은 값인지를 테스트")
+    @Test
+    void isSameLocation() {
+        int actual = 2;
+        int excepted = 2;
+
+        Location location = new Location(actual);
+
+        assertThat(location.isSameLocation(excepted)).isTrue();
+    }
+
+    @DisplayName("위치가 다른 값인지를 테스트")
+    @Test
+    void isDifferentLocation() {
+        int actual = 2;
+        int excepted = 3;
+
+        Location location = new Location(actual);
+
+        assertThat(location.isSameLocation(excepted)).isFalse();
+    }
 }
