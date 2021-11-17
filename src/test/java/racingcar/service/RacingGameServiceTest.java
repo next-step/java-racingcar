@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingGameTest {
+public class RacingGameServiceTest {
     private List<RacingCar> racingCars;
 
     @BeforeEach
@@ -24,10 +24,16 @@ public class RacingGameTest {
     }
 
     @Test
+    @DisplayName("RacingGameService 생성자 테스트")
+    public void constructor() {
+        assertThat(new RacingGameService(Arrays.asList("aaa", "bbb"), 1)).isEqualTo((new RacingGameService(Arrays.asList("aaa", "bbb"), 1)));
+    }
+
+    @Test
     @DisplayName("racingCars에서 moveCount가 제일 큰 값을 추출한다.")
     public void maxCountOfMoveCount() {
         int maxCount = racingCars.stream()
-                .max(Comparator.comparingInt(RacingCar::getMoveCount))
+                .collect(Collectors.maxBy(Comparator.comparingInt(RacingCar::getMoveCount)))
                 .get().getMoveCount();
         assertThat(maxCount).isEqualTo(5);
     }
@@ -49,4 +55,5 @@ public class RacingGameTest {
                 .collect(Collectors.joining(", "));
         System.out.println(winnerNames);
     }
+
 }
