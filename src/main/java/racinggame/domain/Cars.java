@@ -1,5 +1,8 @@
 package racinggame.domain;
 
+import racinggame.dto.RoundLog;
+import racinggame.dto.RoundLogs;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,18 +31,21 @@ public class Cars {
         return cars;
     }
 
-    public void roundRacing(StateGenerator stateGenerator) {
+    public RoundLogs roundRacing(StateGenerator stateGenerator) {
+        RoundLogs roundLogs = new RoundLogs();
         for (Car car : cars) {
             car.move(stateGenerator);
+            roundLogs.addRoundLog(RoundLog.from(car));
         }
+        return roundLogs;
     }
 
     public Names findWinners() {
         Location bestRecord = findBestRecord();
 
         String text = cars.stream()
-                .filter(car -> car.getLocation().equals(bestRecord))
-                .map(n -> String.valueOf(n.getName().getName()))
+                .filter(car -> bestRecord.isSameLocation(car.getLocation()))
+                .map(car -> String.valueOf(car.getName()))
                 .collect(Collectors.joining(","));
 
         return Names.from(text);
@@ -47,7 +53,7 @@ public class Cars {
 
     private Location findBestRecord() {
         int bestRecord = cars.stream()
-                .mapToInt(car -> car.getLocation().getLocation())
+                .mapToInt(car -> car.getLocation())
                 .max().getAsInt();
         return new Location(bestRecord);
     }
