@@ -1,7 +1,7 @@
-package study03.view;
+package racing.view;
 
-import study03.model.RacingResult;
-import study03.model.RoundResult;
+import racing.model.RacingResult;
+import racing.model.RoundResult;
 
 import java.util.stream.IntStream;
 
@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
  *
  * @version 1.0.0
  *
- * 2021-11-11
+ * 2021-11-12
  *
  * Copyright tnals1422
  */
@@ -24,13 +24,16 @@ public class OutputView {
         this.racingResult = racingResult;
     }
 
-    public void printGameResult() {
+    public void printRacingResult() {
         System.out.println("실행 결과");
-        racingResult.getResult().forEach(this::printRoundResult);
+        racingResult.getRecords().forEach(this::printRoundResult);
+        System.out.println(racingResult.getWinner() + "가 최종 우승했습니다.");
     }
 
     private void printRoundResult(RoundResult roundResult) {
-        roundResult.getResult().forEach(carResult -> System.out.println(convertPositionToSymbol(carResult)));
+        roundResult.getRecords().forEach(carResult ->
+                System.out.println(carResult.getName() + " : " + convertPositionToSymbol(carResult.getPosition()))
+        );
         System.out.println();
     }
 

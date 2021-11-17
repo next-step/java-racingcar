@@ -1,7 +1,6 @@
-package study03.model;
+package racing.model;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /*
  *
@@ -9,7 +8,7 @@ import java.util.List;
  *
  * @version 1.0.0
  *
- * 2021-11-11
+ * 2021-11-12
  *
  * Copyright tnals1422
  */
@@ -25,7 +24,11 @@ public class RacingResult {
         roundResults.add(roundResult);
     }
 
-    public List<RoundResult> getResult() {
-        return roundResults;
+    public List<RoundResult> getRecords() {
+        return Collections.unmodifiableList(roundResults);
+    }
+
+    public String getWinner() {
+        return new Cars(roundResults.get((roundResults.size() - 1)).getRecords()).getWinner();
     }
 }

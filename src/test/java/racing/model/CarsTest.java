@@ -1,4 +1,4 @@
-package study03.model;
+package racing.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,8 +9,8 @@ class CarsTest {
     @Test
     @DisplayName("객체 생성 시 car 객체 수 확인")
     void car갯수() {
-        int carCount = 3;
-        Cars cars = new Cars(carCount);
-        assertThat(cars.getCars().size()).isEqualTo(carCount);
+        String drivers = "pobi,crong,honux";
+        Cars cars = new Cars(drivers);
+        assertThat(cars.getCars().size()).isEqualTo(drivers.split(",").length);
     }
 }
