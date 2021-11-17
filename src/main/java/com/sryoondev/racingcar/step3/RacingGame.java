@@ -5,8 +5,8 @@ public class RacingGame {
     private final Circuit circuit;
     private final GameRecord gameRecord;
 
-    public RacingGame(int carCount, int racingCount) {
-        this.circuit = new Circuit(carCount);
+    public RacingGame(String[] names, int racingCount) {
+        this.circuit = new Circuit(names);
         this.racingCount = racingCount;
         this.gameRecord = new GameRecord();
     }

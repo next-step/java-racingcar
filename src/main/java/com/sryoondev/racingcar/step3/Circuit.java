@@ -8,11 +8,11 @@ public class Circuit {
     private final MovableChecker movableChecker;
     private final List<Car> cars;
 
-    public Circuit(int carCount) {
+    public Circuit(String[] names) {
         this.movableChecker = new MovableChecker();
         this.cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for (String name : names) {
+            cars.add(new Car(name));
         }
     }
 

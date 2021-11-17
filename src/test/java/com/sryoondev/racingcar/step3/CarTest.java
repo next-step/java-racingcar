@@ -19,12 +19,14 @@ public class CarTest {
     }
 
     @Test
+    @DisplayName("이름을 부여하는 차 객체 생성 테스트")
     void testCarName() {
         Car car = new Car("pobi");
         assertThat(car);
     }
 
     @Test
+    @DisplayName("이름을 5자 이상 초과했을 때 테스트")
     void testValidCarName() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new Car("hailey"))
