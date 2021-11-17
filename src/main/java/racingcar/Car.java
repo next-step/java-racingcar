@@ -19,7 +19,7 @@ public class Car {
         }
     }
 
-    public boolean canGo() {
+    private boolean canGo() {
         int randomNumber = RandomNumberGenerator.randomNumber();
         return randomNumber >= STANDARD_TO_GO;
     }
