@@ -13,29 +13,14 @@ public class Calculator {
         List<String> elements = new LinkedList<>(Arrays.asList(input.split(" ")));
 
         Number left = new Number(popFirst(elements));
-        while (elements.size() != 0) {
-            String operator = popFirst(elements);
+        while (elements.size() > 0) {
+            Operator operator = Operator.of(popFirst(elements));
             Number right = new Number(popFirst(elements));
 
-            left = operate(left, operator, right);
+            left = operator.operate(left, right);
         }
 
         return left.number;
-    }
-
-    private static Number operate(Number left, String operator, Number right) {
-        switch (operator) {
-            case "+":
-                return left.add(right);
-            case "-":
-                return left.subtract(right);
-            case "*":
-                return left.multiply(right);
-            case "/":
-                return left.divide(right);
-            default:
-                throw new IllegalArgumentException("Invalid operator");
-        }
     }
 
     private static String popFirst(List<String> list) {
