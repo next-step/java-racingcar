@@ -5,8 +5,6 @@ public class LoadMovable implements Movable {
 
     @Override
     public boolean move(int num) {
-        if (num >= MOVE_CONDITION)
-            return true;
-        return false;
+        return num >= MOVE_CONDITION;
     }
 }
