@@ -21,11 +21,4 @@ public class CarRaceResult {
         return result;
     }
 
-    public String winnerName() {
-        return carRaceGroup.findWinner();
-    }
-
-    public int positionMax() {
-        return carRaceGroup.positionMax();
-    }
 }
