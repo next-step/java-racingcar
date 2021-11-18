@@ -22,15 +22,4 @@ class CarRaceResultTest {
         carRaceResult = new CarRaceResult(new CarRaceGroup(carRaceGroup));
     }
 
-    @Test
-    @DisplayName("가장 높은 위치값 확인")
-    public void checkPositionMax() {
-        assertThat(carRaceResult.positionMax()).isEqualTo(2);
-    }
-
-    @Test
-    @DisplayName("우승자 이름 확인")
-    public void checkWinnerNames() {
-        assertThat(carRaceResult.winnerName()).isEqualTo("HONDA");
-    }
 }
