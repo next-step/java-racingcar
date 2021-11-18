@@ -29,7 +29,7 @@ public class RacingCarGameResultView {
 
   private void showProgress(List<RacingCarResult> roundResults) {
     roundResults.forEach(result -> {
-      System.out.print(String.format("%s : ", result.getName()));
+      System.out.printf("%s : ", result.getName());
       String progressExpression = makeProgressExpression(result.getProgress());
       System.out.println(progressExpression);
     });
