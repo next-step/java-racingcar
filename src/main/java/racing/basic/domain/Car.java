@@ -7,8 +7,8 @@ public class Car {
 
     private int fuel;
 
-    protected void moveOrStop(int percentage) {
-        if(BIFURCATION <= percentage) {
+    protected void moveOrStop(int diceNumber) {
+        if(BIFURCATION <= diceNumber) {
             fuel += OIL;
         }
     }
