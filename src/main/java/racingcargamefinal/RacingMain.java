@@ -1,5 +1,6 @@
-package racingcargamefinal.domain;
+package racingcargamefinal;
 
+import racingcargamefinal.domain.RacingGame;
 import racingcargamefinal.ui.InputView;
 import racingcargamefinal.ui.ResultView;
 
