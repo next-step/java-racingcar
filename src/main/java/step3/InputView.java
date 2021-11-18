@@ -8,9 +8,9 @@ public class InputView {
         System.out.println("자동차 대수는 몇 대인가요?");
     }
 
-    public static void viewCountCarInput(){
-        Game.setCars(Integer.parseInt(new Scanner(System.in).nextLine()));
-    }
+/*    public static void viewCountCarInput(){
+        Cars.createCars(Integer.parseInt(new Scanner(System.in).nextLine()));
+    }*/
 
     public static void viewCountCar(){
         System.out.println(Game.cars.getSize());
@@ -21,7 +21,7 @@ public class InputView {
     }
 
     public static void viewCountRoundInput(){
-        Game.setRoundCount(Integer.parseInt(new Scanner(System.in).nextLine()));
+        Game.roundCount = Integer.parseInt(new Scanner(System.in).nextLine());
     }
 
     public static void viewCountRound(){

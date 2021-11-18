@@ -3,7 +3,7 @@ package step3;
 import java.util.Random;
 
 public class Game {
-    private static int roundCount;
+    public static int roundCount;
     private static Random random = new Random();
 
     public static Cars cars = new Cars();
@@ -12,32 +12,32 @@ public class Game {
         return Game.roundCount;
     }
 
-    public static void setRoundCount(int roundCount){
+/*    public static void setRoundCount(int roundCount){
         Game.roundCount = roundCount;
     }
 
     public static void setCars(int count){
         cars.createCars(count);
-    }
+    }*/
 
     public static void playRound(){
         for (int i = 0; i < cars.getSize(); i++) {
-            randomFoward(cars.getCar(i));
-            drawResult(cars.getCar(i));
+            cars.carList.get(i).move(RandomGenerator.getRandomNumber());
+            ResultView.drawTravelDistance(cars.carList.get(i));
             ResultView.drawLineBreak();
         }
         ResultView.drawLineBreak();
     }
 
-    public static void randomFoward(Car car){
+/*    public static void randomFoward(Car car){
         car.move(RandomGenerator.getRandomNumber());
-    }
+    }*/
 
-    public static void drawResult(Car car){
+/*    public static void drawResult(Car car){
         ResultView.drawTravelDistance(car);
-    }
+    }*/
 
-    public void playGame(){
+/*    public void playGame(){
 
         InputView.viewCountCarInputMessage();
         InputView.viewCountCarInput();
@@ -52,5 +52,5 @@ public class Game {
         for (int i = 0; i < Game.roundCount; i++) {
             playRound();
         }
-    }
+    }*/
 }
