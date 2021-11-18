@@ -2,7 +2,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -43,14 +42,22 @@ class RacingCarGameResultsTest {
   }
 
   @Test
-  @DisplayName("RacingCarGameResults 승자결정 로직을 검증하기 위한 테스트")
-  void setWinnerNames() {
+  @DisplayName("RacingCarGameResults에 특정 결과를 더했을 때 잘 더해지는지 확인하기 위한 테스트")
+  void addResultWithDifferentDistance() {
+    // given
+    int round = 1;
+    int expectedMovedDistance = 1;
+
     // when
-    racingCarGameResults.setWinnerNames(racingCars);
+    racingCarGameResults.addResult(round, racingCars);
 
     // then
-    List<String> winnerNames = racingCarGameResults.getWinnerNames();
-    boolean containsAll = winnerNames.containsAll(Arrays.asList(this.playerNames));
-    assertThat(containsAll).isTrue();
+    Map<Integer, List<RacingCarResult>> results = racingCarGameResults.getResults();
+    List<RacingCarResult> roundResult = results.get(round);
+    assertThat(roundResult.size()).isEqualTo(racingCars.getRacingCars().size());
+    roundResult.forEach(result ->
+            assertThat(result.getProgress()).isEqualTo(expectedMovedDistance)
+    );
   }
+
 }

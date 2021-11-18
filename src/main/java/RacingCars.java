@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,8 +12,8 @@ public class RacingCars {
     createRacingCars(racingCars);
   }
 
-  private void createRacingCars(String[] racingCars) {
-    for (String racingCar : racingCars) {
+  private void createRacingCars(String[] racingCarNames) {
+    for (String racingCar : racingCarNames) {
       this.racingCars.add(new RacingCar(racingCar));
     }
   }
@@ -23,9 +22,9 @@ public class RacingCars {
     racingCars.forEach(racingCar -> racingCar.move(strategy));
   }
 
-  public List<String> findWinnerNames() {
+  public List<RacingCar> findWinners() {
     Integer maxProgress = findMaxProgress();
-    return findWinnerNames(maxProgress);
+    return findWinners(maxProgress);
   }
 
   private Integer findMaxProgress() {
@@ -35,10 +34,9 @@ public class RacingCars {
             .orElse(0);
   }
 
-  private List<String> findWinnerNames(Integer maxProgress) {
+  private List<RacingCar> findWinners(Integer maxProgress) {
     return this.racingCars.stream()
             .filter(racingCar -> racingCar.equalsProgress(maxProgress))
-            .map(RacingCar::getName)
             .collect(Collectors.toList());
   }
 

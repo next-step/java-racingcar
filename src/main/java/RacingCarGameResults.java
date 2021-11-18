@@ -30,7 +30,9 @@ public class RacingCarGameResults {
   }
 
   public void setWinnerNames(RacingCars racingCars) {
-    this.winnerNames = racingCars.findWinnerNames();
+    this.winnerNames = racingCars.findWinners().stream()
+            .map(RacingCar::getName)
+            .collect(Collectors.toList());
   }
 
 }
