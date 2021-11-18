@@ -5,11 +5,11 @@ public class Name {
   private static final int MAX_SIZE = 5;
   private static final String NAME_CREATE_ERROR_MESSAGE = "잘못된 이름 입력입니다.";
 
-  private final String name;
+  private final String value;
 
   public Name(String name) {
     validNameCondition(name);
-    this.name = name;
+    this.value = name;
   }
 
   private void validNameCondition(String name) {
@@ -19,6 +19,6 @@ public class Name {
   }
 
   public String getName() {
-    return name;
+    return value;
   }
 }

@@ -4,25 +4,29 @@ public class Number {
 
   private static final int ZERO = 0;
 
-  private int number;
+  private int value;
 
   public Number(int number) {
-    this.number = number;
+    this.value = number;
   }
 
   public void plus() {
-    ++this.number;
+    ++this.value;
   }
 
   public void minus() {
-    --this.number;
+    --this.value;
   }
 
   public boolean isGreaterThanZero() {
-    return this.number > ZERO;
+    return this.value > ZERO;
+  }
+
+  public boolean isLessThanZero() {
+    return this.value < ZERO;
   }
 
   public int getValue() {
-    return this.number;
+    return this.value;
   }
 }

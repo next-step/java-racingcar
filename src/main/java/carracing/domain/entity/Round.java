@@ -4,13 +4,13 @@ public class Round {
 
   private static final String ERROR_MESSAGE = "입력값이 null입니다.";
 
-  private Number round;
+  private Number number;
 
-  public Round(Number round) {
-    if (!isValidInput(round)) {
+  public Round(Number number) {
+    if (!isValidInput(number)) {
       throw new IllegalArgumentException(ERROR_MESSAGE);
     }
-    this.round = round;
+    this.number = number;
   }
 
   private boolean isValidInput(Number round) {
@@ -18,16 +18,16 @@ public class Round {
   }
 
   public boolean hasMoreChance() {
-    return this.round.isGreaterThanZero();
+    return this.number.isGreaterThanZero();
   }
 
   public int getRound() {
-    return this.round.getValue();
+    return this.number.getValue();
   }
 
   public Round minus() {
-    if (round.isGreaterThanZero()) {
-      round.minus();
+    if (number.isGreaterThanZero()) {
+      number.minus();
     }
     return this;
   }
