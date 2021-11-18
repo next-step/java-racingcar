@@ -1,4 +1,4 @@
-package level2;
+package step2;
 
 public class StringCalculator {
 

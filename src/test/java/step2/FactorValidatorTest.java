@@ -1,4 +1,4 @@
-package level2;
+package step2;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
