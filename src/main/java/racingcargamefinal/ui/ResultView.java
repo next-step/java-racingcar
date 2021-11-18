@@ -29,7 +29,7 @@ public class ResultView {
     }
 
     public static void printWinners(Winners winners) {
-        System.out.printf(WINNER_MESSAGE, winners.toString());
+        System.out.printf(WINNER_MESSAGE, winners.getWinnersString());
     }
 
 }

@@ -6,14 +6,16 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class MoveValueTest {
 
     @ParameterizedTest
     @ValueSource(ints = {4, 9})
     void create(int value) {
-        MoveValue moveValue = new MoveValue(value);
-        assertThat(moveValue).isInstanceOf(MoveValue.class);
+        assertDoesNotThrow(() -> {
+            new MoveValue(value);
+        });
     }
 
     @ParameterizedTest

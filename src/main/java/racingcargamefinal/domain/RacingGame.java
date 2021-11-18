@@ -22,7 +22,7 @@ public class RacingGame {
     }
 
     public Winners findWinners() {
-        return new Winners(cars.findWinners());
+        return cars.findWinners();
     }
 
     public Cars getCars() {

@@ -21,11 +21,6 @@ public class CarTest {
     }
 
     @Test
-    void findMaxPosition() {
-        assertThat(car.findMaxPosition(new Position(3))).isEqualTo(new Position(3));
-    }
-
-    @Test
     void isWinner() {
         assertThat(car.isWinner(new Position(0))).isTrue();
         assertThat(car.isWinner(new Position(1))).isFalse();

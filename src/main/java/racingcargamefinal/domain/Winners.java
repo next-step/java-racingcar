@@ -16,8 +16,7 @@ public class Winners {
         return Collections.unmodifiableList(winners);
     }
 
-    @Override
-    public String toString() {
+    public String getWinnersString() {
         return getWinners().stream()
                 .map(winner -> winner.getName().getValue())
                 .collect(Collectors.joining(","));

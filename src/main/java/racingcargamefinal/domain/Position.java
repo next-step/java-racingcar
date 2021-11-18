@@ -1,6 +1,6 @@
 package racingcargamefinal.domain;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
     public static final Position ZERO = new Position(0);
     private static final int MIN_VALUE = 0;
@@ -26,20 +26,21 @@ public class Position {
         return new Position(value + 1);
     }
 
-    public Position findBigger(Position other) {
-        return this.value > other.value ? this : other;
-    }
-
     public int getValue() {
         return value;
     }
 
     @Override
-    public boolean equals(Object ohter) {
-        if (this == ohter) return true;
-        if (ohter == null || getClass() != ohter.getClass()) return false;
+    public int compareTo(Position other) {
+        return Integer.compare(this.value, other.value);
+    }
 
-        Position position = (Position) ohter;
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null || getClass() != other.getClass()) return false;
+
+        Position position = (Position) other;
 
         return value == position.value;
     }

@@ -28,15 +28,15 @@ public class Cars {
                 ).collect(Collectors.toList()));
     }
 
-    public List<Car> findWinners() {
-        return findWinners(findMaxPosition());
+    public Winners findWinners() {
+        return new Winners(findWinners(findMaxPosition()));
     }
 
     private Position findMaxPosition() {
-        Position maxPosition = Position.ZERO;
-        for (Car car : cars) {
-            maxPosition = car.findMaxPosition(maxPosition);
-        }
+        Position maxPosition = cars.stream()
+                .map(car -> car.getPosition())
+                .max(Position::compareTo)
+                .orElse(Position.ZERO);
         return maxPosition;
     }
 

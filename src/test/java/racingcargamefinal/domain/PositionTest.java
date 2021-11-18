@@ -1,6 +1,11 @@
 package racingcargamefinal.domain;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -28,11 +33,18 @@ public class PositionTest {
         assertThat(position.move()).isEqualTo(new Position(4));
     }
 
-    @Test
-    void findBigger() {
-        assertThat(position.findBigger(new Position(2))).isEqualTo(new Position(3));
-        assertThat(position.findBigger(new Position(3))).isEqualTo(new Position(3));
-        assertThat(position.findBigger(new Position(4))).isEqualTo(new Position(4));
+    @ParameterizedTest
+    @MethodSource(value = "providePosition")
+    void compareTo(Position other, int expected) {
+        assertThat(position.compareTo(other)).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> providePosition() {
+        return Stream.of(
+                Arguments.of(new Position(2), 1),
+                Arguments.of(new Position(3), 0),
+                Arguments.of(new Position(4), -1)
+        );
     }
 
 }

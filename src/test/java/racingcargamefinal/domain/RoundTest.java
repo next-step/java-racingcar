@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class RoundTest {
 
@@ -12,7 +13,9 @@ public class RoundTest {
 
     @Test
     void create() {
-        assertThat(oneRound).isInstanceOf(Round.class);
+        assertDoesNotThrow(() -> {
+            new Round(1);
+        });
     }
 
     @Test

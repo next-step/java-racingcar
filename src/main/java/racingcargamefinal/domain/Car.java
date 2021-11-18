@@ -25,10 +25,6 @@ public class Car {
         return this;
     }
 
-    public Position findMaxPosition(Position ohter) {
-        return position.findBigger(ohter);
-    }
-
     public boolean isWinner(Position maxPosition) {
         return position.equals(maxPosition);
     }
