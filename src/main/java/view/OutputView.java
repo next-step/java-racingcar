@@ -1,7 +1,9 @@
 package view;
 
+import domain.CarRaceCount;
 import domain.CarRaceGroup;
 import domain.CarRaceResult;
+import domain.Winner;
 
 import java.util.List;
 
@@ -14,10 +16,11 @@ public class OutputView {
     private static final String CAR_RACE_RESULT_MESSAGE = "%s : %s \n";
     private static final String WINNER_MESSAGE = "%s가 최종 우승했습니다.";
 
-    public static void resultCarRace(List<CarRaceGroup> result) {
+    public static void resultCarRace(CarRaceResult carRaceResult, CarRaceCount count) {
         System.out.println(RESULT_MESSAGE);
 
-        int loopNumber = result.size();
+        List<CarRaceGroup> result = carRaceResult.raceResult(count);
+        int loopNumber = carRaceResult.raceResult(count).size();
         for (int i = 0; i < loopNumber; i++) {
             printCarPosition(result.get(i));
         }
@@ -40,8 +43,8 @@ public class OutputView {
         return carLocation;
     }
 
-    public static void winner(CarRaceResult carRaceResult) {
-        System.out.printf(WINNER_MESSAGE, carRaceResult.winnerName());
+    public static void winner(Winner winner) {
+        System.out.printf(WINNER_MESSAGE, winner.findWinner());
         System.out.printf(NEXT_LINE);
     }
 
