@@ -1,16 +1,15 @@
 package step3;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.domain.entity.Car;
 import step3.domain.entity.Contest;
-import step3.domain.movingstrategy.InputMovingStrategy;
+import step3.domain.entity.Participants;
 import step3.view.LocationView;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class ContestTest {
     @Test
@@ -21,8 +20,7 @@ public class ContestTest {
         Car secondCar = new Car();
 
         List<Car> participants = Stream.of(firstCar, secondCar).collect(Collectors.toList());
-        Contest contest = new Contest(round, participants, new InputMovingStrategy(4), new LocationView());
+        Contest contest = new Contest(round, new Participants(participants), () -> true, new LocationView());
         contest.play();
-        
     }
 }

@@ -8,19 +8,18 @@ import java.util.stream.Collectors;
 
 public class Contest {
     private final int round;
-    private final List<Car> participants;
+    private final Participants participants;
     private final MovingStrategy movingStrategy;
     private final ReportingLocation reporter;
 
     public Contest(
             int round,
-            List<Car> participants,
+            Participants participants,
             MovingStrategy movingStrategy,
             ReportingLocation reporter
     ) {
         this.reporter = reporter;
-        assert participants != null;
-        assert movingStrategy != null;
+        assertNull(participants, movingStrategy);
         this.round = round;
         this.participants = participants;
         this.movingStrategy = movingStrategy;
@@ -34,9 +33,16 @@ public class Contest {
     }
 
     private List<Location> playEachRound() {
-        return participants.stream()
-                .map(p -> p.play(movingStrategy))
-                .collect(Collectors.toList());
+        return participants.play(movingStrategy);
+    }
+
+    private void assertNull(Participants participants, MovingStrategy movingStrategy) {
+        if (participants == null) {
+            throw new IllegalArgumentException("참가자는 null일 수 없습니다.");
+        }
+        if (movingStrategy == null) {
+            throw new IllegalArgumentException("MovingStrategy는 null일 수 없습니다.");
+        }
     }
 
     public interface ReportingLocation {

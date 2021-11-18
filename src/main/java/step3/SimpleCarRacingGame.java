@@ -2,6 +2,7 @@ package step3;
 
 import step3.domain.entity.Car;
 import step3.domain.entity.Contest;
+import step3.domain.entity.Participants;
 import step3.domain.movingstrategy.RandomMovingStrategy;
 import step3.domain.value.Input;
 import step3.view.InputView;
@@ -24,7 +25,7 @@ public class SimpleCarRacingGame {
                 .collect(Collectors.toList());
         int numOfRounds = input.numOfRounds();
 
-        Contest contest = new Contest(numOfRounds, participants, new RandomMovingStrategy(), reporter);
+        Contest contest = new Contest(numOfRounds, new Participants(participants), new RandomMovingStrategy(), reporter);
         contest.play();
     }
 }
