@@ -1,43 +1,38 @@
 package racingcar.service;
 
-import racingcar.domain.GameInputData;
-import racingcar.domain.GameResultData;
 import racingcar.domain.RacingCars;
-import racingcar.domain.Record;
-import racingcar.domain.collection.RecordCollection;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameService {
 
     private RacingCars cars;
+    private int tryCount;
 
-    private RacingGameService(List<String> carName) {
+    private RacingGameService(List<String> carName, int tryCount) {
 
         cars = RacingCars.racingGameReady(carName);
+        this.tryCount = tryCount;
     }
 
-    public static RacingGameService ready(List<String> carName) {
+    public static RacingGameService ready(List<String> carName, int tryCount) {
 
-        return new RacingGameService(carName);
+        return new RacingGameService(carName,tryCount);
     }
 
-    public GameResultData execute(GameInputData racingCarInput) {
-
-        int tryCount = racingCarInput.getTryCount();
-        List<Record> records = new ArrayList();
-
-        for(int ROUND = 0; ROUND < tryCount; ROUND++) {
-            RacingCars.playTheGame(cars);
-            records.add(recordRace(ROUND));
+    public void race() {
+        if(tryCount < 1) {
+            throw new IllegalArgumentException("0 이하 값은 불가능 합니다.");
         }
-
-        return GameResultData.of(records);
+        RacingCars.playTheGame(cars);
+        tryCount--;
     }
 
-    private Record recordRace(int ROUND) {
+    public boolean isEndGame() {
+        return tryCount == 0;
+    }
 
-        return RecordCollection.create(ROUND,cars);
+    public RacingCars getCars() {
+        return cars;
     }
 }

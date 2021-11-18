@@ -28,13 +28,15 @@ public class RacingCars {
         return new RacingCars(racingCars);
     }
 
-    public static void playTheGame(RacingCars cars) {
+    public static RacingCars playTheGame(RacingCars cars) {
         MoveRuleUtil moveRuleUtil = new MoveRuleUtil();
 
         List<RacingCar> carList = cars.getCars();
         for(int i = 0; i < carList.size(); i++) {
             carList.get(i).decisionMove(moveRuleUtil.moveOrNot());
         }
+
+        return new RacingCars(carList);
     }
 
     public List<RacingCar> getCars() {
@@ -58,4 +60,5 @@ public class RacingCars {
         }
         return maxPosition;
     }
+
 }

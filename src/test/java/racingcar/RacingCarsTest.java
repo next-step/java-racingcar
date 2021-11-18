@@ -47,4 +47,5 @@ public class RacingCarsTest {
 
         assertThat(result).isEqualTo(winner);
     }
+
 }
