@@ -1,18 +1,30 @@
 package domain;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
 class CarNameTest {
+    private CarName carName;
+
+    @BeforeEach
+    public void setup(){
+        carName = new CarName("abc");
+    }
 
     @Test
-    @DisplayName("자동차 이름 생성")
+    @DisplayName("자동차 이름 생성(값 비교)")
+    public void checkCarName(){
+        assertThat(carName.value()).isEqualTo("abc");
+    }
+
+    @Test
+    @DisplayName("자동차 이름 생성(객체의 동등성 비교)")
     public void createCarName() {
-        CarName name = new CarName("abc");
-        assertThat(name).isEqualTo(new CarName("abc"));
+        assertThat(carName).isEqualTo(new CarName("abc"));
     }
 
     @Test
