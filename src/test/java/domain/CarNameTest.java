@@ -11,7 +11,8 @@ class CarNameTest {
     @Test
     @DisplayName("자동차 이름 생성")
     public void createCarName() {
-        assertThat(new CarName("abc").value()).isEqualTo("abc");
+        CarName name = new CarName("abc");
+        assertThat(name).isEqualTo(new CarName("abc"));
     }
 
     @Test
