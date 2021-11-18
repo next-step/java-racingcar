@@ -1,8 +1,8 @@
 package racingcar.racing;
 
 import racingcar.car.Car;
-import racingcar.common.util.OutputUtils;
 import racingcar.common.util.RandomUtils;
+import racingcar.result.ResultInfo;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,30 +10,32 @@ import java.util.stream.IntStream;
 
 public class RacingManager {
     private final List<Car> cars;
-    private final int laps;
+    private final int lapCount;
+    private final List<ResultInfo> resultInfos;
 
     public RacingManager(RacingInfo racingInfo) {
-        this.cars = IntStream.range(0, racingInfo.getCars())
+        this.cars = IntStream.range(0, racingInfo.getCarCount())
                 .boxed()
                 .map(i -> new Car())
                 .collect(Collectors.toList());
-        this.laps = racingInfo.getLaps();
+        this.lapCount = racingInfo.getLapCount();
+        this.resultInfos = IntStream.range(0, this.lapCount)
+                .boxed()
+                .map(i -> new ResultInfo())
+                .collect(Collectors.toList());
+    }
+
+    public List<ResultInfo> getResultInfos() {
+        return this.resultInfos;
     }
 
     public void startRace() {
-        System.out.println("실행 결과");
-        IntStream.range(0, laps)
+        IntStream.range(0, lapCount)
                 .boxed()
-                .peek(this::moveCars)
-                .forEach(this::drawingCars);
+                .forEach(this::moveCars);
     }
 
-    protected void moveCars(int index) {
-        cars.forEach(car -> car.move(RandomUtils.getNextInt()));
-    }
-
-    protected void drawingCars(int index) {
-        cars.forEach(car -> System.out.println(OutputUtils.convertLiteral(car.getPosition())));
-        System.out.println();
+    protected void moveCars(int lapIndex) {
+        cars.forEach(car -> this.resultInfos.get(lapIndex).addResult(car.move(RandomUtils.getNextInt())));
     }
 }

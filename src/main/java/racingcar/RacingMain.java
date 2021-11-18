@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.common.util.InputUtils;
 import racingcar.racing.RacingInfo;
 import racingcar.racing.RacingManager;
+import racingcar.result.ResultViewManager;
 
 public class RacingMain {
     public static void main(String[] args) {
@@ -12,5 +13,8 @@ public class RacingMain {
         );
         RacingManager racingManager = new RacingManager(racingInfo);
         racingManager.startRace();
+
+        ResultViewManager resultViewManager = new ResultViewManager(racingManager);
+        resultViewManager.drawingCars();
     }
 }

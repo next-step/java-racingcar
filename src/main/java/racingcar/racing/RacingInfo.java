@@ -1,19 +1,19 @@
 package racingcar.racing;
 
 public class RacingInfo {
-    private final int cars;
-    private final int laps;
+    private final int carCount;
+    private final int lapCount;
 
-    public RacingInfo(int cars, int laps) {
-        this.cars = cars;
-        this.laps =laps;
+    public RacingInfo(int carCount, int lapCount) {
+        this.carCount = carCount;
+        this.lapCount = lapCount;
     }
 
-    public int getCars() {
-        return this.cars;
+    public int getCarCount() {
+        return this.carCount;
     }
 
-    public int getLaps() {
-        return this.laps;
+    public int getLapCount() {
+        return this.lapCount;
     }
 }
