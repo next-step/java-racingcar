@@ -8,11 +8,15 @@ public enum Operator {
     MULTIPLY("*", (num1, num2) -> num1 * num2),
     DIVIDE("/", (num1, num2) -> num1 / num2);
 
+
     public final String operator;
 
     public String getOperator() {
         return operator;
     }
+
+
+    public String operator;
 
     private BiFunction<Integer, Integer, Integer> expression;
 
