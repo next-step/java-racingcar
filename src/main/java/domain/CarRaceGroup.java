@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarRaceGroup {
-    private static final String MAX_NUMBER_ERROR_MESSAGE = "error : MAX 값을 찾을수 없습니다.";
-    private static final String COMMA = ", ";
     private final List<CarRace> carRaceGroup;
 
     public CarRaceGroup(CarNames names) {
@@ -49,21 +47,4 @@ public class CarRaceGroup {
         return carRaceGroup.get(index).position();
     }
 
-    public String findWinner() {
-        int max = positionMax();
-
-        return carRaceGroup
-                .stream()
-                .filter(i -> i.position() == max)
-                .map(i -> i.name())
-                .sorted()
-                .collect(Collectors.joining(COMMA));
-    }
-
-    public int positionMax() {
-        return carRaceGroup.stream()
-                .mapToInt(i -> i.position())
-                .max()
-                .orElseThrow(() -> new IllegalArgumentException(MAX_NUMBER_ERROR_MESSAGE));
-    }
 }
