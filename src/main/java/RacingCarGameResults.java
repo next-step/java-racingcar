@@ -1,24 +1,38 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class RacingCarGameResults {
 
-  private List<List<Integer>> resultList;
+  private Map<Integer, List<RacingCarResult>> results;
+  private List<String> winnerNames;
 
-  public RacingCarGameResults(int chanceAmount) {
-    this.resultList = new ArrayList(chanceAmount);
+  public RacingCarGameResults(int roundAmount) {
+    this.results = new HashMap(roundAmount);
   }
 
-  public void addResult(RacingCars racingCars) {
-    List<RacingCar> racingCarList = racingCars.getRacingCarList();
-    List<Integer> result = racingCarList.stream()
-            .map(RacingCar::getProgress)
+  public void addResult(int round, RacingCars racingCars) {
+    List<RacingCar> racingCarList = racingCars.getRacingCars();
+    List<RacingCarResult> roundResult = racingCarList.stream()
+            .map(RacingCarResult::new)
             .collect(Collectors.toList());
-    resultList.add(result);
+    results.put(round, roundResult);
   }
 
-  public List<List<Integer>> getResultList() {
-    return this.resultList;
+
+  public Map<Integer, List<RacingCarResult>> getResults() {
+    return this.results;
   }
+
+  public List<String> getWinnerNames() {
+    return this.winnerNames;
+  }
+
+  public void setWinnerNames(RacingCars racingCars) {
+    this.winnerNames = racingCars.findWinners().stream()
+            .map(RacingCar::getName)
+            .collect(Collectors.toList());
+  }
+
 }
