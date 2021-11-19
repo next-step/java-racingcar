@@ -39,20 +39,16 @@ public class RacingCarTest {
     @DisplayName("조건이 맞는 경우 위치 증가 검증")
     void increaseLocationTest() {
 
-        for(int i = 1; i< 10; i++) {
-            testCar.decisionMove(true);
-            assertThat(testCar.getLocation()).isEqualTo(i);
-        }
+        testCar.decisionMove(true);
+        assertThat(testCar.getLocation()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("조건이 아닌 경우 위치 정지 검증")
     void stopLocationTest() {
 
-        for(int i = 0; i < 10; i++) {
-            testCar.decisionMove(false);
-            assertThat(testCar.getLocation()).isEqualTo(0);
-        }
+        testCar.decisionMove(false);
+        assertThat(testCar.getLocation()).isEqualTo(0);
     }
 
     @Test

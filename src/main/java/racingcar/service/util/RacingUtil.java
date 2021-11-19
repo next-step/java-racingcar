@@ -1,8 +1,5 @@
 package racingcar.service.util;
 
-import racingcar.domain.RacingCar;
-
-import java.util.List;
 import java.util.Random;
 
 public class RacingUtil {

@@ -8,21 +8,6 @@ public class RacingCarResultView {
 
     private static final String DASH = "-";
 
-    public void output(GameResultData result) {
-        this.printRace(result);
-        this.printVictoryUser(result);
-    }
-
-    public void printRace(GameResultData result) {
-        Records records = result.getRecords();
-        List<Record> recordList = records.getRecordList();
-        for(int i = 0; i < recordList.size(); i++) {
-            RacingCars racingCars = recordList.get(i).getCars();
-            RacingCarResultView.print(racingCars);
-            System.out.println();
-        }
-    }
-
     public static void print(RacingCars cars) {
 
         List<RacingCar> carList = cars.getCars();
@@ -30,6 +15,7 @@ public class RacingCarResultView {
             String carPosition = printCar(carList.get(i));
             System.out.println(carPosition);
         }
+        System.out.println();
     }
 
     public static String printCar(RacingCar car) {
@@ -43,8 +29,8 @@ public class RacingCarResultView {
         return result;
     }
 
-    public void printVictoryUser(GameResultData result) {
-        System.out.println(result.getVictoryUsers() + "가 최종 우승했습니다!!");
+    public void printVictoryUser(String winners) {
+        System.out.println(winners + "가 최종 우승했습니다!!");
     }
 
 }
