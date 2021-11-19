@@ -1,14 +1,23 @@
 package study.racingcar.model;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
+
+    @DisplayName("우승자 인원 확인")
     @Test
-    void create() {
-        // given
+    void 우승자_인원() {
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("유재석", new Position(5)));
+        cars.add(new Car("강호동", new Position(5)));
+        cars.add(new Car("박성광", new Position(3)));
+        Cars carSample = new Cars(cars);
 
-        // when
-
-        // then
+        assertThat(carSample.getWinner().size()).isEqualTo(2);
     }
 }

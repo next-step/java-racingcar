@@ -1,9 +1,8 @@
 package study.racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import study.racingcar.model.RacingGame;
+import study.racingcar.view.InputView;
+import study.racingcar.view.ResultView;
 
 /**
  * 기능 요구사항
@@ -12,10 +11,15 @@ import java.util.Scanner;
  *  - 자동차 이름은 쉼표(,)를 기준으로 구분한다.
  *  - 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
  */
-public class Application {
-    private static final Scanner scanner = new Scanner(System.in);
+public class RacingMain {
 
     public static void main(String[] args) {
+        String carNames = InputView.requestCarNames();
+        int tryCount = InputView.requestTryCount();
+        RacingGame racingGame = new RacingGame(carNames, tryCount);
 
+        ResultView.printInitResult();
+        ResultView.printResult(racingGame.getResult());
+        ResultView.printWinners(racingGame.getWinners());
     }
 }
