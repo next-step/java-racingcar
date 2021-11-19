@@ -1,4 +1,4 @@
-package racingcar.dto;
+package racingcar.domain;
 
 import java.text.MessageFormat;
 import java.util.Collections;

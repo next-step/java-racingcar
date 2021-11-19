@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.stream.IntStream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.dto.GameConfig;
-import racingcar.dto.GameResult;
+import racingcar.domain.GameConfig;
+import racingcar.domain.GameResult;
 
 public class GameStageTest {
 
@@ -47,6 +47,7 @@ public class GameStageTest {
         assertThat(gameResult.getProgress()).hasSize(numberOfRound);
     }
 
+    @SuppressWarnings("unchecked")
     private List<String> getNamesByReflection(Participants participants)
         throws NoSuchFieldException, IllegalAccessException {
         Field namesField = Participants.class.getDeclaredField("names");
@@ -55,6 +56,7 @@ public class GameStageTest {
         return (List<String>) namesField.get(participants);
     }
 
+    @SuppressWarnings("unchecked")
     private List<Car> getCarsByReflection(GameStage gameStage)
         throws NoSuchFieldException, IllegalAccessException {
         Field carsField = GameStage.class.getDeclaredField("cars");
