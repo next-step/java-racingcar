@@ -3,7 +3,7 @@ package racingcar.view;
 import static racingcar.utils.PrintUtils.print;
 
 import java.util.Scanner;
-import racingcar.Participants;
+import racingcar.domain.Participants;
 import racingcar.domain.GameConfig;
 
 

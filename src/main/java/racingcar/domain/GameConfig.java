@@ -2,8 +2,6 @@ package racingcar.domain;
 
 import static racingcar.utils.IntegerUtils.*;
 
-import racingcar.Participants;
-
 
 public class GameConfig {
 
