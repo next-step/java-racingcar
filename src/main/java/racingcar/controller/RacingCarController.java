@@ -1,6 +1,8 @@
 package racingcar.controller;
 
 import racingcar.domain.GameInputData;
+import racingcar.domain.RacingCars;
+import racingcar.domain.value.Round;
 import racingcar.service.RacingGameService;
 import racingcar.view.RacingCarInputView;
 import racingcar.view.RacingCarResultView;
@@ -17,8 +19,10 @@ public class RacingCarController {
     public void execute() {
 
         GameInputData racingCarInput = inputView.getRacingCarInput();
+
+        Round round = Round.from(racingCarInput.getTryCount());
         RacingGameService gameStart =
-                RacingGameService.ready(racingCarInput.getCarNames(), racingCarInput.getTryCount());
+                RacingGameService.ready(racingCarInput.getCarNames(), round);
 
         RacingCarResultView resultView = new RacingCarResultView();
 

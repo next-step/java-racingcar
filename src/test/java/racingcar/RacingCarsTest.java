@@ -18,7 +18,7 @@ public class RacingCarsTest {
     @BeforeEach
     void setUp() {
         List<String> carName = Arrays.asList("lee","kim","tt");
-        racingCars = RacingCars.racingGameReady(carName);
+        racingCars = RacingCars.from(carName);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class RacingCarsTest {
         List<String> carNames = Arrays.asList("lee", "kim", "joo");
         String winner = "lee,kim";
 
-        RacingCars cars = RacingCars.racingGameReady(carNames);
+        RacingCars cars = RacingCars.from(carNames);
 
         cars.getCars().get(0).decisionMove(true);
         cars.getCars().get(0).decisionMove(true);

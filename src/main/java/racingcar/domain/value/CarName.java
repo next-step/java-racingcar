@@ -5,10 +5,11 @@ import java.util.Objects;
 public class CarName {
 
     private final String name;
+    private static final int MAX_CAR_NAME = 5;
 
     private CarName(String name) {
 
-        if(name.length() > 5 ) {
+        if(name.length() > MAX_CAR_NAME) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 초과 할 수 없습니다!!!");
         }
 

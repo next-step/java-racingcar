@@ -1,35 +1,36 @@
 package racingcar.service;
 
 import racingcar.domain.RacingCars;
+import racingcar.domain.value.Round;
 
 import java.util.List;
 
 public class RacingGameService {
 
     private RacingCars cars;
-    private int tryCount;
+    private Round round;
 
-    private RacingGameService(List<String> carName, int tryCount) {
+    private RacingGameService(List<String> carName, Round tryCount) {
 
-        cars = RacingCars.racingGameReady(carName);
-        this.tryCount = tryCount;
+        cars = RacingCars.from(carName);
+        this.round = tryCount;
     }
 
-    public static RacingGameService ready(List<String> carName, int tryCount) {
+    public static RacingGameService ready(List<String> carName, Round tryCount) {
 
         return new RacingGameService(carName,tryCount);
     }
 
     public void race() {
-        if(tryCount < 1) {
+        if(round.getRound() < 1) {
             throw new IllegalArgumentException("0 이하 값은 불가능 합니다.");
         }
-        RacingCars.playTheGame(cars);
-        tryCount--;
+        cars.playTheGame();
+        round.minus();
     }
 
     public boolean isEndGame() {
-        return tryCount == 0;
+        return round.getRound() == 0;
     }
 
     public RacingCars getCars() {

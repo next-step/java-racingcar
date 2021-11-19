@@ -17,7 +17,7 @@ public class RacingCars {
         this.racingCars = carList;
     }
 
-    public static RacingCars racingGameReady(List<String> carName) {
+    public static RacingCars from(List<String> carName) {
 
         Validation.nullValueCheck(carName);
 
@@ -28,10 +28,10 @@ public class RacingCars {
         return new RacingCars(racingCars);
     }
 
-    public static RacingCars playTheGame(RacingCars cars) {
+    public RacingCars playTheGame() {
         MoveRuleUtil moveRuleUtil = new MoveRuleUtil();
 
-        List<RacingCar> carList = cars.getCars();
+        List<RacingCar> carList = this.getCars();
         for(int i = 0; i < carList.size(); i++) {
             carList.get(i).decisionMove(moveRuleUtil.moveOrNot());
         }
