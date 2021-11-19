@@ -1,20 +1,18 @@
 package step3;
 
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class AttemptTest {
-    Attempt attempt = new Attempt(5);
-
-    @Test
-    void testIsEnd() {
-        Attempt attempt = new Attempt(1);
+    @ParameterizedTest
+    @CsvSource({"1, true", "4, false"})
+    void testIsEnd(int number, boolean expect) {
+        Attempt attempt = new Attempt(number);
         attempt.make();
         boolean isEnd = attempt.isEnd();
-        assertThat(isEnd).isTrue();
+        assertThat(isEnd).isEqualTo(expect);
     }
 
 }
