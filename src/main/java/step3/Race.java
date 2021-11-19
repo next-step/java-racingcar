@@ -21,7 +21,7 @@ public class Race {
     public List<Record> start() {
         List<Record> records = new ArrayList<>();
 
-        while(currentLap.lessOrEqualsThanOther(finalLap)) {
+        while(currentLap.lessThanOther(finalLap)) {
             racingCarGroup.carsRun();
 
             records.add(new Record(racingCarGroup.carsCurrentPosition()));

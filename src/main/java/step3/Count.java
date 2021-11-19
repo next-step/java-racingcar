@@ -20,7 +20,7 @@ public class Count {
         return count;
     }
 
-    public boolean lessOrEqualsThanOther(Count other) {
+    public boolean lessThanOther(Count other) {
         return this.count <= other.count;
     }
 
