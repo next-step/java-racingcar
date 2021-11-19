@@ -7,6 +7,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class RacingGame {
+    private static final String SEPARATOR = ",";
+    private static final String WHITE_SPACE = " ";
     private static final String END_RESULT_MESSAGE = "\n";
 
     private final Cars cars;
@@ -20,7 +22,7 @@ public class RacingGame {
     private Cars initCars(String carNames) {
         List<Car> cars = new ArrayList<>();
         validateCarNames(carNames);
-        String[] names = carNames.split(",");
+        String[] names = carNames.split(SEPARATOR);
         for (String name : names) {
             cars.add(new Car(name));
         }
@@ -45,7 +47,7 @@ public class RacingGame {
     public String getWinners() {
         return cars.getWinner().stream()
                 .map(Car::getName)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(SEPARATOR + WHITE_SPACE));
     }
 
 

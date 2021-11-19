@@ -3,12 +3,14 @@ package study.racingcar.model;
 import java.util.Objects;
 
 public class RandomValue {
+    private static final int MIN_RANDOM_NUMBER = 1;
+    private static final int MAX_RANDOM_NUMBER = 9;
     private static final int FORWARD_NUMBER = 4;
 
     private final int randomValue;
 
     public RandomValue(int randomValue) {
-        if (randomValue < 1 || randomValue > 9) {
+        if (randomValue < MIN_RANDOM_NUMBER || randomValue > MAX_RANDOM_NUMBER) {
             throw new IllegalArgumentException("1이상, 9이하의 입력값이여야 합니다.");
         }
         this.randomValue = randomValue;

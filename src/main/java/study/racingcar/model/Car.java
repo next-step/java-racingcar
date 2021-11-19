@@ -6,15 +6,17 @@ import study.racingcar.strategy.RandomMoveStrategy;
 import java.util.Objects;
 
 public class Car {
+    private static final int START_POSITION = 0;
+
     private final Name name;
     private final Position position;
 
     public Car(String name) {
-        this(new Name(name), new Position(0));
+        this(new Name(name), new Position(START_POSITION));
     }
 
     public Car(Name name) {
-        this(name, new Position(0));
+        this(name, new Position(START_POSITION));
     }
 
     public Car(String name, Position position) {

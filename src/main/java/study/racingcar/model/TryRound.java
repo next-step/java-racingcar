@@ -13,10 +13,6 @@ public class TryRound {
         this.tryRound = tryRound;
     }
 
-    /**
-     * 시도 횟수 조회
-     * @return 시도 횟수
-     */
     public int getTryRound() {
         return tryRound;
     };

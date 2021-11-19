@@ -11,19 +11,11 @@ public class InputView {
     private static final String EXCEPTION_MESSAGE_ILLEGAL_ARGUMENT = "입력 문자열이 정상적이지 않습니다.";
     private static final Scanner scanner = new Scanner(System.in);
 
-    /**
-     * 차량 대수 요청
-     * @return int type 차량 대수
-     */
     public static String requestCarNames() {
         System.out.println(REQUEST_MESSAGE_CAR_NAMES);
         return scanner.next();
     }
 
-    /**
-     * 시도 횟수 요청
-     * @return int type 시도 횟수
-     */
     public static int requestTryCount() {
         System.out.println(REQUEST_MESSAGE_TRY_ROUND);
         try {
