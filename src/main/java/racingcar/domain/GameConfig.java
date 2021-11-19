@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import static racingcar.utils.IntegerUtils.*;
+import static racingcar.utils.IntegerUtils.isPositiveNumber;
 
 
 public class GameConfig {
