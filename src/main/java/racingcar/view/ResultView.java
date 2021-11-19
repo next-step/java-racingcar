@@ -4,7 +4,7 @@ import static racingcar.utils.PrintUtils.print;
 
 import java.text.MessageFormat;
 import java.util.stream.Collectors;
-import racingcar.dto.GameResult;
+import racingcar.domain.GameResult;
 
 public class ResultView {
 

@@ -1,8 +1,7 @@
-package racingcar.dto;
+package racingcar.domain;
 
 import static racingcar.utils.IntegerUtils.*;
 
-import java.util.List;
 import racingcar.Participants;
 
 

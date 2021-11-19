@@ -1,7 +1,7 @@
 package racingcar;
 
-import racingcar.dto.GameConfig;
-import racingcar.dto.GameResult;
+import racingcar.domain.GameConfig;
+import racingcar.domain.GameResult;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 

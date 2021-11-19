@@ -5,8 +5,8 @@ import static racingcar.utils.IntegerUtils.isPositiveNumber;
 
 import java.util.List;
 import java.util.Random;
-import racingcar.dto.GameConfig;
-import racingcar.dto.GameResult;
+import racingcar.domain.GameConfig;
+import racingcar.domain.GameResult;
 
 
 public class GameStage {
