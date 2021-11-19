@@ -1,12 +1,10 @@
-package racingcar;
+package racingcar.domain;
 
 import static java.util.stream.IntStream.range;
 import static racingcar.utils.IntegerUtils.isPositiveNumber;
 
 import java.util.List;
 import java.util.Random;
-import racingcar.domain.GameConfig;
-import racingcar.domain.GameResult;
 
 
 public class GameStage {

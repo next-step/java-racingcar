@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.domain.GameConfig;
 import racingcar.domain.GameResult;
+import racingcar.domain.GameStage;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 

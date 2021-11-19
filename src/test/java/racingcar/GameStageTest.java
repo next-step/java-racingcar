@@ -8,8 +8,11 @@ import java.util.List;
 import java.util.stream.IntStream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.Car;
 import racingcar.domain.GameConfig;
 import racingcar.domain.GameResult;
+import racingcar.domain.GameStage;
+import racingcar.domain.Participants;
 
 public class GameStageTest {
 
