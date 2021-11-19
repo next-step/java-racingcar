@@ -13,6 +13,6 @@ public class RandomManager implements RacingManager {
     }
 
     private int randomCount() {
-        return random.nextInt() * TEN;
+        return random.nextInt(TEN);
     }
 }
