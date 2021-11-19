@@ -1,4 +1,4 @@
-package step4.dto;
+package step4.dto.count;
 
 import step4.common.MyException;
 import step4.common.Number;
@@ -23,8 +23,8 @@ public class TrialCount {
     }
 
     private void notValidThrow(int input) {
-        if(input <= Number.ONE.getValue()) {
-            throw new IllegalArgumentException(MyException.VALUE_GREATER_THAN_ONE.getMessage());
+        if(input < Number.ONE.getValue()) {
+            throw new IllegalArgumentException(MyException.VALUE_GREATER_THAN_ZERO.getMessage());
         }
     }
 
