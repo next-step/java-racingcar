@@ -29,7 +29,7 @@ public class OutputView {
     }
 
     private static void printCarPosition(GameRound.ResultOfCar resultOfCar) {
-        System.out.println(resultOfCar.getCarName());
+        System.out.print(resultOfCar.getCarName()+" ");
         for(int i = 0; i< resultOfCar.getPositoin(); i++){
             System.out.print("-");
         }
@@ -39,9 +39,9 @@ public class OutputView {
     private static void printWinner(CarRacingGame carRacingGame) {
         List<String> winningNames = carRacingGame.getWinner();
         for (String winningName : winningNames) {
-            System.out.print(winningName + ",");
+            System.out.print(winningName + " ");
         }
-        System.out.println("가 최종 우승했습니다.");
+        System.out.println("(이)가 최종 우승했습니다.");
     }
 
 }

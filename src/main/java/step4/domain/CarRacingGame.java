@@ -14,13 +14,13 @@ public class CarRacingGame {
     private List<Car> carList;
     private final int totalRound;
 
-    CarRacingGame(CarRacingGameStrategy carRacingGameStrategy, List<Car> carList, int totalRound) {
+    public CarRacingGame(CarRacingGameStrategy carRacingGameStrategy, List<Car> carList, int totalRound) {
         this.carList = carList;
         this.carRacingGameStrategy = carRacingGameStrategy;
         this.totalRound = totalRound;
     }
 
-    void play() {
+    public void play() {
         gameResult = new ArrayList<>();
         for (int i = 0; i < totalRound; i++) {
             GameRound gameRound = new GameRound();
