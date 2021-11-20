@@ -27,4 +27,8 @@ public class Records {
     public Map<Lap, Record> getValues() {
         return values;
     }
+
+    public Record getFinalRecord() {
+        return values.get(Lap.from(values.size()));
+    }
 }
