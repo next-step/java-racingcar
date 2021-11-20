@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 public class OutputViewResolver {
 
+    private static final int ZERO = 0;
     private static final PrintStream PRINT_STREAM = System.out;
 
     private static final String LINE_SYMBOL = "-";
@@ -36,7 +37,7 @@ public class OutputViewResolver {
 
     private String displayLine(int lineLength) {
         StringBuilder line = new StringBuilder();
-        for (int i = 0; i < lineLength; i++) {
+        for (int i = ZERO; i < lineLength; i++) {
             line.append(LINE_SYMBOL);
         }
         return line.toString();

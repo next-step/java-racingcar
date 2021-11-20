@@ -16,6 +16,9 @@ import static racing.winner.domain.CarBuilder.toCarInformation;
 
 public class CarRacingApplication {
 
+    private static final int ZERO = 0;
+    private static final int TEN = 10;
+
     private InputViewResolver  inputViewResolver;
     private OutputViewResolver outputViewResolver;
 
@@ -35,7 +38,7 @@ public class CarRacingApplication {
 
         carRacingGame = new CarRacingGame(toCar(gameCreationRequest));
 
-        for (int i = 0; i < gameCreationRequest.getLoopCount(); i++) {
+        for (int i = ZERO; i < gameCreationRequest.getLoopCount(); i++) {
             List<Integer> randomNumbers = randomNumbersByCarCount(gameCreationRequest.getCarCount());
             List<Response.CarInformation> displayTrack = toCarInformation(carRacingGame.nextRound(randomNumbers));
             outputViewResolver.displayTracks(displayTrack);
@@ -47,8 +50,8 @@ public class CarRacingApplication {
     private List<Integer> randomNumbersByCarCount(int carCount) {
         List<Integer> randomNumbers = new ArrayList<>();
         Random random = new Random();
-        for (int i = 0; i < carCount; i++) {
-            int randomNumber = random.nextInt(10);
+        for (int i = ZERO; i < carCount; i++) {
+            int randomNumber = random.nextInt(TEN);
             randomNumbers.add(randomNumber);
         }
         return randomNumbers;
