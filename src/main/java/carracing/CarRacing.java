@@ -1,7 +1,5 @@
 package carracing;
 
-import java.util.List;
-
 public class CarRacing {
     public static void main(String[] args) {
         int cars = InputView.inputCarNumber();
@@ -9,10 +7,10 @@ public class CarRacing {
 
         System.out.println("실행 결과");
         Track track = new Track(cars);
+        ResultView resultView = new ResultView();
         for (int i = 0; i < round; i++) {
             track.forward();
-            List<Integer> steps = track.getSteps();
-            ResultView.printSteps(steps);
+            track.printSteps(resultView);
         }
     }
 }

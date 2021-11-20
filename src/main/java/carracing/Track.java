@@ -34,4 +34,9 @@ public class Track {
             car.stepForwardByRandomNumber(random);
         });
     }
+
+    public void printSteps(StepPrint stepPrint) {
+        cars.forEach(car -> stepPrint.print(car.getStep()));
+        stepPrint.delimiter();
+    }
 }
