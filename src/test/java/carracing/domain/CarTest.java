@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 @DisplayName("자동차 테스트")
 class CarTest {
@@ -50,9 +50,9 @@ class CarTest {
     void moveCarTest(int movableNumber) {
         // given
         Car car = new Car();
+        given(randomGenerator.generateZeroOrPositiveNumber(RANDOM_BOUND_NUMBER))
+                .willReturn(movableNumber);
         // when
-        when(randomGenerator.generateZeroOrPositiveNumber(RANDOM_BOUND_NUMBER))
-                .thenReturn(movableNumber);
         car.move(movementPolicy);
         // then
         assertThat(car.getPosition()).isEqualTo(new CarPosition(FIRST_MOVING_POSITION_NUMBER));
@@ -64,9 +64,9 @@ class CarTest {
     void checkUnmovableCarTest(int unmovableNumber) {
         // given
         Car car = new Car();
+        given(randomGenerator.generateZeroOrPositiveNumber(RANDOM_BOUND_NUMBER))
+                .willReturn(unmovableNumber);
         // when
-        when(randomGenerator.generateZeroOrPositiveNumber(RANDOM_BOUND_NUMBER))
-                .thenReturn(unmovableNumber);
         car.move(movementPolicy);
         // then
         assertThat(car.getPosition()).isEqualTo(new CarPosition(INITIATION_POSITION_NUMBER));
