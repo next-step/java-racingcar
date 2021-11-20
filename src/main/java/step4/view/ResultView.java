@@ -1,6 +1,6 @@
 package step4.view;
 
-import step4.common.Number;
+import step4.common.MyNumber;
 import step4.dto.name.CarNameGroup;
 import step4.dto.record.Record;
 import step4.dto.record.RecordGroup;
@@ -31,7 +31,7 @@ public class ResultView {
     }
 
     public void renderRaceRecord(List<RecordGroup> recordGroups) {
-        STRING_BUILDER.setLength(Number.ZERO.getValue());
+        STRING_BUILDER.setLength(MyNumber.ZERO.getValue());
 
         println(RACING_RESULT);
 
@@ -42,7 +42,7 @@ public class ResultView {
     }
 
     public void renderWinner(CarNameGroup winner, String delimiter) {
-        STRING_BUILDER.setLength(Number.ZERO.getValue());
+        STRING_BUILDER.setLength(MyNumber.ZERO.getValue());
 
         String names = winner.getCarNameGroup().stream()
                 .collect(Collectors.joining(delimiter));

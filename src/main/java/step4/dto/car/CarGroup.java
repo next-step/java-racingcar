@@ -7,7 +7,6 @@ import step4.dto.count.RandomNumber;
 import step4.dto.record.RecordGroup;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
@@ -41,9 +40,15 @@ public class CarGroup {
         Position maxPosition = new Position();
 
         for(Car car : cars) {
-            if(car.isMaxPosition(maxPosition)) {
-                maxPosition = car.maxPosition();
-            }
+            maxPosition = compareCarMaxPosition(maxPosition, car);
+        }
+
+        return maxPosition;
+    }
+
+    private Position compareCarMaxPosition(Position maxPosition, Car car) {
+        if(car.isMaxPosition(maxPosition)) {
+            maxPosition = car.maxPosition();
         }
 
         return maxPosition;
