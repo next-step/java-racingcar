@@ -2,6 +2,7 @@ package car_racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Cars {
 
@@ -36,4 +37,20 @@ public class Cars {
         return carsForGame;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Cars cars = (Cars) o;
+        return Objects.equals(carsForGame, cars.carsForGame);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carsForGame);
+    }
 }

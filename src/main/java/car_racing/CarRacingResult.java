@@ -4,7 +4,7 @@ import java.util.*;
 
 public class CarRacingResult {
 
-    private final List<List<Integer>> racingResult;
+    private final List<Cars> racingResult;
 
     public CarRacingResult() {
         this.racingResult = new ArrayList<>();
@@ -15,9 +15,7 @@ public class CarRacingResult {
             return;
         }
 
-        List<Integer> currCarPositions = makeListOfCurrPositions(cars);
-
-        racingResult.add(currCarPositions);
+        racingResult.add(cars);
     }
 
     private List<Integer> makeListOfCurrPositions(Cars cars) {
@@ -30,7 +28,7 @@ public class CarRacingResult {
         return currCarPositions;
     }
 
-    public List<List<Integer>> getRacingResult() {
+    public List<Cars> getRacingResult() {
         return racingResult;
     }
 

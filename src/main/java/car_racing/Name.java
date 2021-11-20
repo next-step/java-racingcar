@@ -11,7 +11,11 @@ public class Name {
     }
 
     private void validateName(String name) {
-        if (Objects.isNull(name) || name.length() > 5) {
+        if (Objects.isNull(name)) {
+            return;
+        }
+
+        if (name.length() > 5) {
             throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다. ");
         }
     }
