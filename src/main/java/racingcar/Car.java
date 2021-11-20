@@ -1,7 +1,7 @@
 package racingcar;
 
 public class Car {
-    private static final int STANDARD_TO_GO = 4;
+
     private int position;
 
     public Car() {
@@ -12,14 +12,10 @@ public class Car {
         return this.position;
     }
 
-    public void run(int number) {
-        if (canGo(number)) {
+    public void run(RandomNumber randomNumber) {
+        if (randomNumber.isMovable()) {
             this.position += 1;
         }
-    }
-
-    private boolean canGo(int randomNumber) {
-        return randomNumber >= STANDARD_TO_GO;
     }
 
     public void printCurrentPosition() {

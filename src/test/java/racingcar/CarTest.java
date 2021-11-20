@@ -14,7 +14,7 @@ public class CarTest {
         Car car = new Car();
 
         // When
-        car.run(randomNumber);
+        car.run(new RandomNumber(randomNumber));
 
         // Then
         assertThat(car.getPosition()).isEqualTo(1);
@@ -27,7 +27,7 @@ public class CarTest {
         Car car = new Car();
 
         // When
-        car.run(randomNumber);
+        car.run(new RandomNumber(randomNumber));
 
         // Then
         assertThat(car.getPosition()).isEqualTo(0);
