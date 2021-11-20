@@ -26,17 +26,13 @@ public class CarRacing {
     public static final String QUESTION_TRY_COUNT = "시도할 회수는 몇 회 인가요?";
 
 
-
     public RaceResult racingStart(InputView inputView) throws CarNameFormatException {
 
         RaceResult raceResult = new RaceResult();
-
         ResultView resultView = new ResultView();
         List<Car> carList = new ArrayList<>();
 
-        for (int i = 0; i < inputView.getCarCount(); i++) {
-            carList.add(new Car(inputView.getCarStringList().get(i)));
-        }
+        createCarNameList(inputView, carList);
 
         Cars cars = new Cars(carList);
         for (int i = 0; i < inputView.getTryCount(); i++) {
@@ -46,12 +42,16 @@ public class CarRacing {
         }
 
         raceResult.findMaximumDistance(cars);
-
         Winners winners = cars.getWinner(raceResult);
-
         resultView.printWinner(winners);
 
         return raceResult;
+    }
+
+    private void createCarNameList(InputView inputView, List<Car> carList) throws CarNameFormatException {
+        for (int i = 0; i < inputView.getCarCount(); i++) {
+            carList.add(new Car(inputView.getCarStringList().get(i)));
+        }
     }
 
     public void racing(Cars carList, InputView inputView) {
