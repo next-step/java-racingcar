@@ -26,18 +26,18 @@ public class Record {
         return scores;
     }
 
-    private Position getMaxPosition() {
-        return scores.stream()
-                .map(Score::getPosition)
-                .max(Comparator.comparing(Position::getValue))
-                .orElse(Position.ZERO_POSITION);
-    }
-
     public List<Name> getWinner() {
         Position maxPosition = getMaxPosition();
         return scores.stream()
                 .filter(value -> value.isWinner(maxPosition))
                 .map(Score::getName)
                 .collect(toList());
+    }
+
+    private Position getMaxPosition() {
+        return scores.stream()
+                .map(Score::getPosition)
+                .max(Comparator.comparing(Position::getValue))
+                .orElse(Position.ZERO_POSITION);
     }
 }
