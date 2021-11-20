@@ -9,7 +9,7 @@ public class RandomCarRacingGameStrategy implements CarRacingGameStrategy {
 
     @Override
     public int playGetDistanceToMove() {
-        int random = random(MAX_RANDOM_VALUE);
+        int random = random();
         return getDistanceToMove(random);
     }
 
@@ -20,7 +20,7 @@ public class RandomCarRacingGameStrategy implements CarRacingGameStrategy {
         return 0;
     }
 
-    private static int random(int bound) {
-        return random.nextInt(bound);
+    private static int random() {
+        return random.nextInt(MAX_RANDOM_VALUE);
     }
 }
