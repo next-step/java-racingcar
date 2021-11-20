@@ -1,8 +1,7 @@
-package racingcar.dto;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.Car;
 
 public class GameResult {
 

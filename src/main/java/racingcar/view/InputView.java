@@ -2,11 +2,9 @@ package racingcar.view;
 
 import static racingcar.utils.PrintUtils.print;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import racingcar.Participants;
-import racingcar.dto.GameConfig;
+import racingcar.domain.Participants;
+import racingcar.domain.GameConfig;
 
 
 public class InputView {

@@ -1,9 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -40,6 +39,7 @@ class ParticipantsTest {
     }
 
 
+    @SuppressWarnings("unchecked")
     private List<String> getNamesByReflection(Participants participants)
         throws NoSuchFieldException, IllegalAccessException {
         Field namesField = Participants.class.getDeclaredField("names");

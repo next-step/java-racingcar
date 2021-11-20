@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import static racingcar.utils.StringLengthValidator.validUnderMaxLength;
 

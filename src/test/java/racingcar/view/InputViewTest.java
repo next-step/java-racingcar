@@ -6,7 +6,7 @@ import java.io.ByteArrayInputStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.dto.GameConfig;
+import racingcar.domain.GameConfig;
 
 class InputViewTest {
 

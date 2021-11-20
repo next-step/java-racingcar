@@ -1,4 +1,4 @@
-package racingcar.dto;
+package racingcar.domain;
 
 import java.text.MessageFormat;
 import java.util.Collections;
@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import racingcar.Car;
 
 public class RoundResult {
 
