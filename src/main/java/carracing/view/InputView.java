@@ -22,8 +22,6 @@ public class InputView {
     private int carCount = 0;   /* 차량 대수 */
     private final int tryCount;   /* 주행 횟수 */
 
-    private int totalDrivingCount = 0;
-
     private List<String> carStringList;
 
     /**
@@ -33,7 +31,6 @@ public class InputView {
         splitCars(carStringList);
         try {
             this.tryCount = Integer.parseInt(tryCount);
-            this.totalDrivingCount = this.carCount * this.tryCount;
         } catch (NumberFormatException exception) {
             throw new NumberFormatException(ERR_MSG_FORMAT_NUM);
         }
@@ -50,10 +47,6 @@ public class InputView {
 
     public int getTryCount() {
         return tryCount;
-    }
-
-    public int getTotalDrivingCount() {
-        return totalDrivingCount;
     }
 
     public List<String> getCarStringList() {
