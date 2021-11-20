@@ -1,5 +1,6 @@
 package carracing;
 
+import carracing.exception.CarNameFormatException;
 import carracing.util.Car;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -13,22 +14,22 @@ public class CarTest {
     @DisplayName("전진하는 조건은 0에서 9사이")
     void drivingCondition() {
         assertThatThrownBy(() -> {
-            Car car = new Car();
+            Car car = new Car("car");
             car.driving(10);
         }).isInstanceOf(NumberFormatException.class);
     }
 
     @Test
     @DisplayName("전진 테스트")
-    void advance() {
-        Car racingCar = new Car();
+    void advance() throws CarNameFormatException {
+        Car racingCar = new Car("car");
         Assertions.assertThat(racingCar.driving(4)).isTrue();
     }
 
     @Test
     @DisplayName("멈춤 테스트")
-    void stoppage() {
-        Car notRacingCar = new Car();
+    void stoppage() throws CarNameFormatException {
+        Car notRacingCar = new Car("car");
         notRacingCar.driving(4);
         Assertions.assertThat(notRacingCar.driving(3)).isFalse();
     }
