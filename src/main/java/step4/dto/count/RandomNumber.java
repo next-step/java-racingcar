@@ -1,6 +1,6 @@
 package step4.dto.count;
 
-import step4.common.Number;
+import step4.common.MyNumber;
 
 import java.util.Random;
 
@@ -8,8 +8,6 @@ public class RandomNumber {
     private static final Random RANDOM = new Random();
 
     public static Count newRandom() {
-        Count count = new Count(RANDOM.nextInt(Number.TEN.getValue()));
-
-        return count;
+        return new Count(RANDOM.nextInt(MyNumber.TEN.getValue()));
     }
 }

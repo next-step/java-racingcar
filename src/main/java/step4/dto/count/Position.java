@@ -1,6 +1,6 @@
 package step4.dto.count;
 
-import step4.common.Number;
+import step4.common.MyNumber;
 
 import java.util.Objects;
 
@@ -8,7 +8,7 @@ public class Position {
     private int position;
 
     public Position() {
-        this.position = Number.ZERO.getValue();
+        this.position = MyNumber.ZERO.getValue();
     }
 
     public Position(int input) {

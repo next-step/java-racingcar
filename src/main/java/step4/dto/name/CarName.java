@@ -1,7 +1,7 @@
 package step4.dto.name;
 
 import step4.common.MyException;
-import step4.common.Number;
+import step4.common.MyNumber;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -40,7 +40,7 @@ public class CarName {
     private void notValidNameThrow(String name) {
         textNullOrEmptyThrow(name);
 
-        if(name.length() < Number.ZERO.getValue() || name.length() > Number.FIVE.getValue()) {
+        if(name.length() < MyNumber.ZERO.getValue() || name.length() > MyNumber.FIVE.getValue()) {
             throw new IllegalArgumentException(MyException.INVALID_NAME_LENGTH.getMessage());
         }
     }

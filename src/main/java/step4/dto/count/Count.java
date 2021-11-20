@@ -1,7 +1,7 @@
 package step4.dto.count;
 
 import step4.common.MyException;
-import step4.common.Number;
+import step4.common.MyNumber;
 
 import java.util.Objects;
 
@@ -31,7 +31,7 @@ public class Count {
     }
 
     private static void lessThanOneOrElseThrow(int input) {
-        if(input < Number.ZERO.getValue()) {
+        if(input < MyNumber.ZERO.getValue()) {
             throw new IllegalArgumentException(MyException.VALUE_GREATER_THAN_ZERO.getMessage());
         }
     }

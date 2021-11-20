@@ -1,6 +1,6 @@
 package step4.common;
 
-public enum Number {
+public enum MyNumber {
     ZERO(0),
     ONE(1),
     TWO(2),
@@ -12,7 +12,7 @@ public enum Number {
 
     private final int value;
 
-    Number(int value) {
+    MyNumber(int value) {
         this.value = value;
     }
 
