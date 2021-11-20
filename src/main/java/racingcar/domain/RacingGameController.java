@@ -13,8 +13,8 @@ public class RacingGameController {
         return GAME_CONTROLLER;
     }
 
-    public Records execute(int counts, int laps) {
-        RacingCars racingCars = RacingCars.from(counts, RandomMovingStrategy.getInstance());
+    public Records execute(String[] names, int laps) {
+        RacingCars racingCars = RacingCars.from(names, RandomMovingStrategy.getInstance());
         Records records = Records.EMPTY_RECORDS;
 
         for (int i = 1; i <= laps; i++) {
