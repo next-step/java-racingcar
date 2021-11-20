@@ -2,6 +2,8 @@ package racingcar;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.model.Car;
+import racingcar.model.RandomNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
