@@ -14,10 +14,6 @@ public class RoundLogs {
         }
     }
 
-    private void addRoundLog(RoundLog roundLog){
-        this.roundLogs.add(roundLog);
-    }
-
     public List<RoundLog> getRoundLogs() {
         return roundLogs;
     }
