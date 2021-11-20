@@ -30,7 +30,7 @@ public class CarTest {
     void createCarWithName() {
         // given
         // when
-        Car car = new Car("Dodi");
+        Car car = new Car(new Name("Dodi"));
         Name expectedName = new Name("Dodi");
         // then
         assertThat(car.getPosition()).isEqualTo(0);

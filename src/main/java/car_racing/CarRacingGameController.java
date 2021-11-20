@@ -6,12 +6,12 @@ public class CarRacingGameController {
     private static final InputView INPUT_VIEW = new InputView();
     private static final OutputView OUTPUT_VIEW = new OutputView();
 
-    private final CarRacingResult carRacingResult;
+    private final CarRacingResultHistory carRacingResultHistory;
     private Cars cars;
     private int numberOfRound;
 
     public CarRacingGameController() {
-        this.carRacingResult = new CarRacingResult();
+        this.carRacingResultHistory = new CarRacingResultHistory();
     }
 
     public void play() {
@@ -27,9 +27,10 @@ public class CarRacingGameController {
     }
 
     private void initGame() {
-        int numberOfCarInput = INPUT_VIEW.showMessageAndGetNumberOfCars();
+        String carNames = INPUT_VIEW.showMessageAndGetCarNames();
         int numberOfRoundInput = INPUT_VIEW.showMessageAndGetNumberOfRound();
-        cars = new Cars(numberOfCarInput);
+
+        cars = new Cars(carNames);
         numberOfRound = numberOfRoundInput;
     }
 
@@ -38,11 +39,11 @@ public class CarRacingGameController {
     }
 
     private void updateRacingResult() {
-        carRacingResult.update(cars);
+        carRacingResultHistory.update(cars);
     }
 
     private void closeGame() {
-        OUTPUT_VIEW.showCarRacingGameOutput(carRacingResult);
+        OUTPUT_VIEW.showCarRacingGameOutput(carRacingResultHistory);
     }
 
 }

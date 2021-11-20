@@ -20,7 +20,7 @@ public class Name {
         }
     }
 
-    public String getName() {
+    public String getString() {
         return name;
     }
 

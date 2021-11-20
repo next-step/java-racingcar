@@ -10,56 +10,55 @@ public class OutputView {
     private static final String NAME_SEPARATOR = " : ";
     private static final String ONE_ROUND_ENDS_SIGNAL = "\n";
 
-    public void showCarRacingGameOutput(CarRacingResult carRacingResult) {
+    public void showCarRacingGameOutput(CarRacingResultHistory carRacingResultHistory) {
         System.out.println(OUT_MESSAGE_GAME_ENDS);
         System.out.println(OUT_MESSAGE_CAR_RACING_RESULT);
 
-        List<Cars> racingResult = carRacingResult.getRacingResult();
+        List<List<CarRacingResult>> racingResults = carRacingResultHistory.getRacingResults();
+
         // TODO: 3중 for 문 개선
-        StringBuilder result = buildResult(racingResult);
+        StringBuilder result = buildResult(racingResults);
         System.out.println(result.toString());
     }
 
-    public StringBuilder buildResult(List<Cars> roundResult) {
+    public StringBuilder buildResult(List<List<CarRacingResult>> roundResults) {
         StringBuilder result = new StringBuilder();
 
-        for (Cars cars : roundResult) {
-            result.append(buildEachRoundResult(cars));
+        for (List<CarRacingResult> roundResult: roundResults) {
+            result.append(buildEachRoundResult(roundResult));
+            result.append(ONE_ROUND_ENDS_SIGNAL);
+        }
+        return result;
+    }
+
+    public StringBuilder buildEachRoundResult(List<CarRacingResult> roundResult) {
+        StringBuilder result = new StringBuilder();
+
+        for(CarRacingResult carResult: roundResult) {
+            result.append(buildEachCarResult(carResult));
             result.append(ONE_ROUND_ENDS_SIGNAL);
         }
 
         return result;
     }
 
-    public StringBuilder buildEachRoundResult(Cars roundResult) {
+    public StringBuilder buildEachCarResult(CarRacingResult carResult) {
         StringBuilder result = new StringBuilder();
-
-        for(Car car: roundResult.getCars()) {
-            result.append(buildEachCarResult(car));
-            result.append(ONE_ROUND_ENDS_SIGNAL);
-        }
-
-        return result;
-    }
-
-    public StringBuilder buildEachCarResult(Car car) {
-        StringBuilder result = new StringBuilder();
-        result.append(car.getName());
+        result.append(carResult.getName());
         result.append(NAME_SEPARATOR);
-        result.append(buildCarPositionStatus(car));
+        result.append(buildCarPositionStatus(carResult));
 
-        return null;
+        return result;
     }
 
-    public StringBuilder buildCarPositionStatus(Car car) {
+    public StringBuilder buildCarPositionStatus(CarRacingResult racingResult) {
         StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < car.getPosition(); i++) {
+        for (int i = 0; i < racingResult.getPosition(); i++) {
             result.append(CAR_MOVE_SIGNAL);
         }
 
         return result;
     }
-
 
 }

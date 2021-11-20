@@ -8,6 +8,7 @@ public class Car {
     private final Name name;
     private int position;
 
+    // TODO: change to builder
     public Car() {
         // 부 생성자
         this(START_POSITION);
@@ -18,13 +19,13 @@ public class Car {
         this(position, null);
     }
 
-    public Car(String name) {
+    public Car(Name name) {
         this(START_POSITION, name);
     }
 
-    public Car(int position, String name) {
+    public Car(int position, Name name) {
         this.position = position;
-        this.name = new Name(name);
+        this.name = name;
     }
 
     public void move(MoveStrategy moveStrategy) {
@@ -39,6 +40,10 @@ public class Car {
 
     public Name getName() {
         return name;
+    }
+
+    public String getStringName() {
+        return name.getString();
     }
 
     @Override
