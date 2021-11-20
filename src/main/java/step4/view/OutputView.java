@@ -3,6 +3,7 @@ package step4.view;
 
 import step4.domain.CarRacingGame;
 import step4.domain.GameRound;
+import step4.domain.dto.ResultOfCar;
 
 import java.util.List;
 
@@ -21,16 +22,16 @@ public class OutputView {
     }
 
     private static void printOneRoundCarsPositions(GameRound gameRound) {
-        List<GameRound.ResultOfCar> result = gameRound.getGameRoundResult();
-        for (GameRound.ResultOfCar resultOfCar : result) {
+        List<ResultOfCar> result = gameRound.getGameRoundResult();
+        for (ResultOfCar resultOfCar : result) {
             printCarPosition(resultOfCar);
         }
         System.out.println();
     }
 
-    private static void printCarPosition(GameRound.ResultOfCar resultOfCar) {
-        System.out.print(resultOfCar.getCarName()+" ");
-        for(int i = 0; i< resultOfCar.getPositoin(); i++){
+    private static void printCarPosition(ResultOfCar resultOfCar) {
+        System.out.print(resultOfCar.getCarName() + " ");
+        for (int i = 0; i < resultOfCar.getPosition(); i++) {
             System.out.print("-");
         }
         System.out.println();

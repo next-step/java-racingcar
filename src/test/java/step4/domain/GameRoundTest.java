@@ -2,6 +2,7 @@ package step4.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step4.domain.dto.ResultOfCar;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -33,10 +34,10 @@ class GameRoundTest {
     private void setGameResult() throws NoSuchFieldException, IllegalAccessException {
         Field gameRoundResult = gameRound.getClass().getDeclaredField("gameRoundResult");
         gameRoundResult.setAccessible(true);
-        GameRound.ResultOfCar pobi = new GameRound.ResultOfCar("pobi", 5);
-        GameRound.ResultOfCar crong = new GameRound.ResultOfCar("crong", 5);
-        GameRound.ResultOfCar honux = new GameRound.ResultOfCar("honux", 3);
-        List<GameRound.ResultOfCar> resultList = Arrays.asList(pobi, crong, honux);
+        ResultOfCar pobi = new ResultOfCar("pobi", 5);
+        ResultOfCar crong = new ResultOfCar("crong", 5);
+        ResultOfCar honux = new ResultOfCar("honux", 3);
+        List<ResultOfCar> resultList = Arrays.asList(pobi, crong, honux);
         gameRoundResult.set(gameRound, resultList);
     }
 
