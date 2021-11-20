@@ -1,7 +1,6 @@
 package carracing.util;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -19,10 +18,8 @@ public class Cars {
         return this.carList;
     }
 
-    public List<Car> getWinner(RaceResult raceResult) {
-        return this.carList.stream()
-                .filter(car -> car.getDrivingHistory() == raceResult.maximumDistance)
-                .collect(Collectors.toList());
+    public Winners getWinner(RaceResult raceResult) {
+        return new Winners(this.carList, raceResult);
     }
 
 }

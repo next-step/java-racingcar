@@ -4,6 +4,7 @@ import carracing.exception.CarNameFormatException;
 import carracing.util.Car;
 import carracing.util.Cars;
 import carracing.util.RaceResult;
+import carracing.util.Winners;
 import carracing.view.InputView;
 import carracing.view.ResultView;
 
@@ -47,7 +48,7 @@ public class CarRacing {
 
         raceResult.findMaximumDistance(cars);
 
-        List<Car> winners = cars.getWinner(raceResult);
+        Winners winners = cars.getWinner(raceResult);
 
         resultView.printWinner(winners);
 

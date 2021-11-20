@@ -2,8 +2,7 @@ package carracing.view;
 
 import carracing.util.Car;
 import carracing.util.Cars;
-
-import java.util.List;
+import carracing.util.Winners;
 
 
 /*
@@ -38,13 +37,10 @@ public class ResultView {
         }
     }
 
-    public void printWinner(List<Car> winnerCars) {
+    public void printWinner(Winners winnerCars) {
         System.out.println();
-        if (winnerCars.size() == 0) {
-            return;
-        }
         StringBuilder winners = new StringBuilder();
-        for (Car car : winnerCars) {
+        for (Car car : winnerCars.getWinners()) {
             winners.append(String.format(WINNER_CAR_FORMAT, car.getName().getAlias()));
         }
         winners.deleteCharAt(winners.length() - 2);
