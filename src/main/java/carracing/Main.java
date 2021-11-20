@@ -1,12 +1,13 @@
 package carracing;
 
+import carracing.domain.CarRacing;
 import carracing.exception.CarNameFormatException;
 import carracing.view.InputView;
 
 import java.util.Scanner;
 
-import static carracing.CarRacing.QUESTION_CAR_NAMES;
-import static carracing.CarRacing.QUESTION_TRY_COUNT;
+import static carracing.domain.CarRacing.QUESTION_CAR_NAMES;
+import static carracing.domain.CarRacing.QUESTION_TRY_COUNT;
 
 public class Main {
 

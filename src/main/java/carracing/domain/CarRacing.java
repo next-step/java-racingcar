@@ -1,10 +1,6 @@
-package carracing;
+package carracing.domain;
 
 import carracing.exception.CarNameFormatException;
-import carracing.util.Car;
-import carracing.util.Cars;
-import carracing.util.RaceResult;
-import carracing.util.Winners;
 import carracing.view.InputView;
 import carracing.view.ResultView;
 

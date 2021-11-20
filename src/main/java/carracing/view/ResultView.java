@@ -1,8 +1,8 @@
 package carracing.view;
 
-import carracing.util.Car;
-import carracing.util.Cars;
-import carracing.util.Winners;
+import carracing.domain.Car;
+import carracing.domain.Cars;
+import carracing.domain.Winners;
 
 
 /*

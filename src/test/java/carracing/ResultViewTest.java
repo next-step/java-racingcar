@@ -1,10 +1,10 @@
 package carracing;
 
+import carracing.domain.Car;
+import carracing.domain.Cars;
+import carracing.domain.RaceResult;
+import carracing.domain.Winners;
 import carracing.exception.CarNameFormatException;
-import carracing.util.Car;
-import carracing.util.Cars;
-import carracing.util.RaceResult;
-import carracing.util.Winners;
 import carracing.view.ResultView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

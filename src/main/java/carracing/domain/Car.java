@@ -1,6 +1,9 @@
-package carracing.util;
+package carracing.domain;
 
 import carracing.exception.CarNameFormatException;
+import carracing.util.Name;
+import carracing.util.Position;
+import carracing.util.RandomCondition;
 
 /*
  * Car
