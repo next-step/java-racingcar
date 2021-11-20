@@ -12,15 +12,13 @@ public class Car {
         return this.position;
     }
 
-    public void run() {
-        if (canGo()) {
+    public void run(int number) {
+        if (canGo(number)) {
             this.position += 1;
-            return;
         }
     }
 
-    private boolean canGo() {
-        int randomNumber = RandomNumberGenerator.randomNumber();
+    private boolean canGo(int randomNumber) {
         return randomNumber >= STANDARD_TO_GO;
     }
 
