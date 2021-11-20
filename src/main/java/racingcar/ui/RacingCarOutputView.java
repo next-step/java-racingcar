@@ -1,7 +1,6 @@
 package racingcar.ui;
 
-import racingcar.domain.Record;
-import racingcar.domain.Records;
+import racingcar.domain.*;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -26,16 +25,25 @@ public class RacingCarOutputView {
             System.out.println("Lap " + key.getValue());
             System.out.println(calculate(value) + LINE_FEED);
         });
+        System.out.println(winner(records) + "가 최종 우승했습니다.");
     }
 
     public String calculate(Record record) {
-        return record.getPositions()
+        return record.getScores()
                 .stream()
-                .map(position -> repeat(RACING_CAR_EMOJI, position.getValue()))
+                .map(score -> String.format("%s: %s", score.getName().getValue(), repeat(RACING_CAR_EMOJI, score.getPosition().getValue())))
                 .collect(Collectors.joining(LINE_FEED));
     }
 
     private String repeat(String str, int times) {
         return Stream.generate(() -> str).limit(times).collect(Collectors.joining());
+    }
+
+    public String winner(Records records) {
+        Record record = records.getFinalRecord();
+
+        return record.getWinner().stream()
+                .map(Name::getValue)
+                .collect(Collectors.joining(","));
     }
 }

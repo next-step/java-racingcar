@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.strategy.MockRandomMovingStrategy;
+import racingcar.fixture.RacingCarFixture;
 
 class RacingCarTest {
 
@@ -14,7 +15,7 @@ class RacingCarTest {
     void moveFalse(int value) {
         // given
         MockRandomMovingStrategy strategy = new MockRandomMovingStrategy(value);
-        RacingCar car = new RacingCar(Position.ZERO_POSITION, strategy);
+        RacingCar car = new RacingCar(RacingCarFixture.PARTICIPANT_NAME, Position.ZERO_POSITION, strategy);
 
         // when
         RacingCar moved = car.move();
@@ -29,8 +30,8 @@ class RacingCarTest {
     void move(int value) {
         // given
         MockRandomMovingStrategy strategy = new MockRandomMovingStrategy(value);
-        RacingCar car = new RacingCar(Position.ZERO_POSITION, strategy);
-        RacingCar expect = new RacingCar(Position.ZERO_POSITION.move(), strategy);
+        RacingCar car = new RacingCar(RacingCarFixture.PARTICIPANT_NAME, Position.ZERO_POSITION, strategy);
+        RacingCar expect = new RacingCar(RacingCarFixture.PARTICIPANT_NAME, Position.ZERO_POSITION.move(), strategy);
 
         // when
         RacingCar moved = car.move();

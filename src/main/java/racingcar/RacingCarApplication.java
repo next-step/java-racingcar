@@ -13,12 +13,12 @@ public class RacingCarApplication {
         RacingCarOutputView outputView = RacingCarOutputView.getInstance();
 
         inputView.carInputPrompt();
-        int counts = inputView.input();
+        String[] names = inputView.inputName();
 
         inputView.lapInputPrompt();
         int laps = inputView.input();
 
-        Records result = controller.execute(counts, laps);
+        Records result = controller.execute(names, laps);
 
         outputView.outputPrompt(result);
     }

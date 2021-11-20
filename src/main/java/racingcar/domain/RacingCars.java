@@ -2,11 +2,11 @@ package racingcar.domain;
 
 import racingcar.domain.strategy.MovingStrategy;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingCars {
 
@@ -26,9 +26,9 @@ public class RacingCars {
         return Objects.isNull(values) || values.isEmpty();
     }
 
-    public static RacingCars from(int counts, MovingStrategy strategy) {
-        List<RacingCar> values = IntStream.range(0, counts)
-                .mapToObj((item) -> new RacingCar(strategy))
+    public static RacingCars from(String[] names, MovingStrategy strategy) {
+        List<RacingCar> values = Arrays.stream(names)
+                .map(value -> new RacingCar(new Name(value), strategy))
                 .collect(Collectors.toList());
         return from(values);
     }
