@@ -1,8 +1,6 @@
 package racinggame.domain;
 
-import racinggame.dto.RoundLog;
-import racinggame.dto.RoundLogs;
-
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,13 +29,11 @@ public class Cars {
         return cars;
     }
 
-    public RoundLogs roundRacing(StateGenerator stateGenerator) {
-        RoundLogs roundLogs = new RoundLogs();
+    public List<Car> roundRacing(StateGenerator stateGenerator) {
         for (Car car : cars) {
             car.move(stateGenerator);
-            roundLogs.addRoundLog(RoundLog.from(car));
         }
-        return roundLogs;
+        return Collections.unmodifiableList(cars);
     }
 
     public Names findWinners() {
