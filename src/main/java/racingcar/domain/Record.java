@@ -3,7 +3,9 @@ package racingcar.domain;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
 
 public class Record {
 
@@ -14,12 +16,10 @@ public class Record {
     }
 
     public static Record from(RacingCars racingCars) {
-        List<Score> scores = racingCars.getValues()
+        return new Record(racingCars.getValues()
                 .stream()
                 .map(Score::of)
-                .collect(Collectors.toList());
-
-        return new Record(Collections.unmodifiableList(scores));
+                .collect(collectingAndThen(toList(), Collections::unmodifiableList)));
     }
 
     public List<Score> getScores() {
@@ -38,6 +38,6 @@ public class Record {
         return scores.stream()
                 .filter(value -> value.isWinner(maxPosition))
                 .map(Score::getName)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 }
