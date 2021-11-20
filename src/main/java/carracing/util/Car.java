@@ -19,20 +19,18 @@ public class Car {
 
     private static final String ERR_MSG_CONDITION_RANGE = "주행 조건은 0 ~ 9 사이 값 입니다.";
 
-    private int drivingHistory;
+    private Position position;
     private Name name;
 
-    public Car() {
-    }
-
     public Car(String name) throws CarNameFormatException {
+        this.position = new Position();
         this.name = new Name(name);
     }
 
     public boolean driving(int driveCondition) {
         driveValid(driveCondition);
         if (driveCondition >= MOVE_CONDITION) {
-            this.drivingHistory++;
+            this.position.move();
             return true;
         }
         return false;                              /* 주행 여부 반환 */
@@ -44,8 +42,8 @@ public class Car {
         }
     }
 
-    public int getDrivingHistory() {
-        return drivingHistory;
+    public int getPosition() {
+        return position.getPosition();
     }
 
     public Name getName() {

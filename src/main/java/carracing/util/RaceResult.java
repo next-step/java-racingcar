@@ -21,7 +21,7 @@ public class RaceResult {
 
     public void findMaximumDistance(Cars cars) {
         for (Car car : cars.getCars()) {
-            this.maximumDistance = Math.max(this.maximumDistance, car.getDrivingHistory());
+            this.maximumDistance = Math.max(this.maximumDistance, car.getPosition());
         }
     }
 }

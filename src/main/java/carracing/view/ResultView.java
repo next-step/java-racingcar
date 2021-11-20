@@ -32,7 +32,7 @@ public class ResultView {
 
     public void print(Car car) {
         System.out.printf(CAR_NAME, car.getName().getAlias());
-        for (int i = 0; i < car.getDrivingHistory(); i++) {
+        for (int i = 0; i < car.getPosition(); i++) {
             System.out.print(MOVED);
         }
     }

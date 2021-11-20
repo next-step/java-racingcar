@@ -9,7 +9,7 @@ public class Winners {
 
     public Winners(List<Car> cars, RaceResult raceResult) {
         this.winners = cars.stream()
-                .filter(car -> car.getDrivingHistory() == raceResult.maximumDistance)
+                .filter(car -> car.getPosition() == raceResult.maximumDistance)
                 .collect(Collectors.toList());
     }
 
