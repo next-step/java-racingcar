@@ -41,27 +41,27 @@
     
 
 ### 구현할 기능 목록
-- [ ] InputView 입력 클래스 작성
+- [x] InputView 입력 클래스 작성
     - 싱글톤으로 구현
-- [ ] ResultView 출력 클래스 작성 
+- [x] ResultView 출력 클래스 작성 
     - 싱글톤으로 구현
-- [ ] 예외메세지 Enum 추가
-- [ ] Count 횟수, Position 위치 클래스 작성
+- [x] 예외메세지 Enum 추가
+- [x] Count 횟수, Position 위치 클래스 작성
     - plus 메서드
     - get 메서드
-- [ ] Car 클래스 작성
+- [x] Car 클래스 작성
     - name, position 멤버변수
     - move 메서드
-- [ ] CarGroup 클래스 작성
+- [x] CarGroup 클래스 작성
     - move 메서드
     - winner 이름 반환하는 메서드
-- [ ] NameGroup 클래스 작성
+- [x] NameGroup 클래스 작성
     - validation (5자 초과)
     - 생성자는 List를 인자로 받음
-- [ ] Race 클래스
-- [ ] RandomStrategy 클래스
+- [x] Race 클래스
+- [x] RandomStrategy 클래스
     - 기준값을 인자로 받음 (디폴트는 4)
-- [ ] 리팩토링
+- [x] 리팩토링
 
 
 ### 테스트 항목
@@ -72,14 +72,14 @@
     - [ ] plus 메서드는 값을 1 증가시킨다.
     - [ ] 0 이하를 인자로 받으면 예외를 던진다.
 - Car Class
-    - [ ] Run 메서드는 전진 혹은 멈춤이다.
+    - [x] Run 메서드는 전진 혹은 멈춤이다.
     - [ ] 객체 생성시 디폴트 위치는 0이다.
     - [ ] 기준값이 0 미만인 RandomStrategy 를 run 메서드 인자로 받을 시 자동차는 움직이지 않는다.
 - CarGroup Class
-    - [ ] 생성시 전달한 항목만큼 Car의 대수가 들어있다.
+    - [x] 생성시 전달한 항목만큼 Car의 대수가 들어있다.
 - Name Class
-    - [ ] 5자 초과를 하면 예외를 던진다.
-    - [ ] 공백을 인자로 받으면 예외를 던진다.
+    - [x] 5자 초과를 하면 예외를 던진다.
+    - [x] 공백을 인자로 받으면 예외를 던진다.
 - RandomStrategy Class
     - [ ] 기준값을 0 미만 값을 받으면 전진 가능여부는 false만 반환한다.
 
