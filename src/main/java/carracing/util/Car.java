@@ -29,6 +29,16 @@ public class Car {
 
     public boolean driving(int driveCondition) {
         driveValid(driveCondition);
+        return drive(driveCondition);
+    }
+
+    public boolean driving() {
+        int driveCondition = RandomCondition.getCondition();
+        driveValid(driveCondition);
+        return drive(driveCondition);
+    }
+
+    private boolean drive(int driveCondition) {
         if (driveCondition >= MOVE_CONDITION) {
             this.position.move();
             return true;
