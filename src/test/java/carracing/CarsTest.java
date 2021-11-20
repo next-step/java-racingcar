@@ -4,6 +4,7 @@ import carracing.exception.CarNameFormatException;
 import carracing.util.Car;
 import carracing.util.Cars;
 import carracing.util.RaceResult;
+import carracing.util.Winners;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,10 +28,10 @@ public class CarsTest {
         RaceResult raceResult = new RaceResult();
         raceResult.maximumDistance = 1;
 
-        List<Car> winners = cars.getWinner(raceResult);
+        Winners winners = cars.getWinner(raceResult);
         List<String> winnerNames = new ArrayList<>();
 
-        for (Car car : winners) {
+        for (Car car : winners.getWinners()) {
             winnerNames.add(car.getName().getAlias());
         }
 
@@ -51,10 +52,10 @@ public class CarsTest {
         RaceResult raceResult = new RaceResult();
         raceResult.maximumDistance = 1;
 
-        List<Car> winners = cars.getWinner(raceResult);
+        Winners winners = cars.getWinner(raceResult);
         List<String> winnerNames = new ArrayList<>();
 
-        for (Car car : winners) {
+        for (Car car : winners.getWinners()) {
             winnerNames.add(car.getName().getAlias());
         }
 
