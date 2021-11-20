@@ -1,9 +1,9 @@
 package carracing;
 
 import carracing.domain.CarRacing;
+import carracing.domain.InputInfo;
 import carracing.domain.RaceResult;
 import carracing.exception.CarNameFormatException;
-import carracing.view.InputView;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ public class CarRacingTest {
         System.out.println("시도할 회수는 몇 회 인가요? : " + tryCount);
 
         CarRacing carRacing = new CarRacing();
-        carRacing.racingStart(new InputView(carNames, tryCount));
+        carRacing.racingStart(new InputInfo(carNames, tryCount));
     }
 
     @Test
@@ -31,7 +31,7 @@ public class CarRacingTest {
         String tryCount = "5";
 
         CarRacing carRacing = new CarRacing();
-        RaceResult result = carRacing.racingStart(new InputView(carNames, tryCount));
+        RaceResult result = carRacing.racingStart(new InputInfo(carNames, tryCount));
 
         int roundCount = Integer.parseInt(tryCount);
         Assertions.assertThat(result.roundCount).isEqualTo(roundCount);
@@ -44,10 +44,10 @@ public class CarRacingTest {
         String tryCount = "13";
 
         CarRacing carRacing = new CarRacing();
-        InputView inputView = new InputView(carNames, tryCount);
-        RaceResult result = carRacing.racingStart(inputView);
+        InputInfo inputInfo = new InputInfo(carNames, tryCount);
+        RaceResult result = carRacing.racingStart(inputInfo);
 
-        Assertions.assertThat(result.roundCount * inputView.getCarCount()).isEqualTo(inputView.getTotalDrivingCount());
+        Assertions.assertThat(result.roundCount * inputInfo.getCarCount()).isEqualTo(inputInfo.getTotalDrivingCount());
     }
 
 }
