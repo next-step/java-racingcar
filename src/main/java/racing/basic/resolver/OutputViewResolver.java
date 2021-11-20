@@ -1,6 +1,7 @@
 package racing.basic.resolver;
 
 import java.io.PrintStream;
+import java.util.List;
 
 public class OutputViewResolver {
 
@@ -9,16 +10,12 @@ public class OutputViewResolver {
     private static final String LINE_SYMBOL = "-";
     private static final String CONTOUR = "";
 
-    public void sendMessage(String message) {
-        PRINT_STREAM.println(message);
-    }
-
-    public void sendMessage(int[] array) {
-        for (int oneLine : array) {
-            String line = displayLine(oneLine);
-            PRINT_STREAM.println(line);
+    public void sendMessage(List<Integer> messages) {
+        for (int oneLine : messages) {
+            String message = displayLine(oneLine);
+            sendMessage(message);
         }
-        PRINT_STREAM.println(CONTOUR);
+        sendMessage(CONTOUR);
     }
 
     private String displayLine(int lineLength) {
@@ -27,5 +24,9 @@ public class OutputViewResolver {
             line.append(LINE_SYMBOL);
         }
         return line.toString();
+    }
+
+    private void sendMessage(String message) {
+        PRINT_STREAM.println(message);
     }
 }

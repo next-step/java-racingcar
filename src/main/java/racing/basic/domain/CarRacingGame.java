@@ -2,6 +2,7 @@ package racing.basic.domain;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarRacingGame {
 
@@ -15,17 +16,20 @@ public class CarRacingGame {
         cars = Arrays.asList(carBuffer);
     }
 
-    public int[] nextRound(int[] diceNumbers) {
+    public List<Integer> nextRound(List<Integer> diceNumbers) {
         for (int i = 0; i < cars.size(); i++) {
             Car car = cars.get(i);
-            car.moveOrStop(diceNumbers[i]);
+            int diceNumber = diceNumbers.get(i);
+            car.moveOrStop(diceNumber);
         }
         return displayTrack();
     }
 
-    private int[] displayTrack() {
+    private List<Integer> displayTrack() {
         return cars.stream()
-                .mapToInt(Car::getDrivingDistance)
-                .toArray();
+                .map(Car::getDrivingDistance)
+                .collect(
+                        Collectors.toList()
+                );
     }
 }
