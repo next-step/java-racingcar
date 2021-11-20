@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Car {
 
     private static final int START_POSITION = 0;
+    private final Name name;
     private int position;
 
     public Car() {
@@ -14,7 +15,16 @@ public class Car {
 
     public Car(int position) {
         // 주 생성자
+        this(position, null);
+    }
+
+    public Car(String name) {
+        this(START_POSITION, name);
+    }
+
+    public Car(int position, String name) {
         this.position = position;
+        this.name = new Name(name);
     }
 
     public void move(MoveStrategy moveStrategy) {
@@ -25,6 +35,10 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public Name getName() {
+        return name;
     }
 
     @Override

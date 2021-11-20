@@ -1,6 +1,5 @@
 package car_racing;
 
-import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,6 +23,19 @@ public class CarTest {
 
         // then
         assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("when create car with name, default position and name is set")
+    void createCarWithName() {
+        // given
+        // when
+        Car car = new Car("Dodi");
+        Name expectedName = new Name("Dodi");
+        // then
+        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getName()).isEqualTo(expectedName);
+
     }
 
     @Test
