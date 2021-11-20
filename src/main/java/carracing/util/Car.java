@@ -13,15 +13,14 @@ import carracing.exception.CarNameFormatException;
  */
 public class Car {
 
-    private int drivingHistory;
-    private Name name;
-
     private static final int MOVE_CONDITION = 4;         /* 주행 조건 */
     private static final int MOVE_CONDITION_MIN = 0;     /* 최소 주행 범위 */
     private static final int MOVE_CONDITION_MAX = 9;     /* 최대 주행 범위 */
 
     private static final String ERR_MSG_CONDITION_RANGE = "주행 조건은 0 ~ 9 사이 값 입니다.";
 
+    private int drivingHistory;
+    private Name name;
 
     public Car() {
     }
