@@ -49,6 +49,10 @@ public class InputView {
         return tryCount;
     }
 
+    public int getTotalDrivingCount() {
+        return this.carCount * this.tryCount;
+    }
+
     public List<String> getCarStringList() {
         return carStringList;
     }
