@@ -1,59 +1,31 @@
 package carracing.view;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Scanner;
 
-/*
- * InputView
- *
- * Version 1.0.0
- *
- * 2021-11-08
- *
- * author jiseok-choi
- */
 public class InputView {
+    private static final String QUESTION_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String QUESTION_TRY_COUNT = "시도할 회수는 몇 회 인가요?";
 
-    private static final String ERR_MSG_FORMAT_NUM = "입력값의 숫자 형식을 확인해주세요";
-    private static final String SPLIT_REGEX = ",";
-    private static final String CAR_NAME_BLANK = " ";
-    private static final String CAR_NAME_EMPTY = "";
+    private final Scanner scanner = new Scanner(System.in);
 
-    private int carCount = 0;   /* 차량 대수 */
-    private final int tryCount;   /* 주행 횟수 */
+    private String carNames;
+    private String tryCount;
 
-    private List<String> carStringList;
-
-    /**
-     * 입력값 검증 기능 생성자
-     */
-    public InputView(String carStringList, String tryCount) {
-        splitCars(carStringList);
-        try {
-            this.tryCount = Integer.parseInt(tryCount);
-        } catch (NumberFormatException exception) {
-            throw new NumberFormatException(ERR_MSG_FORMAT_NUM);
-        }
+    public void carNameQuestion() {
+        System.out.println(QUESTION_CAR_NAMES);
+        this.carNames = scanner.nextLine();
     }
 
-    public void splitCars(String carStringList) {
-        this.carStringList = Arrays.asList(carStringList.replace(CAR_NAME_BLANK, CAR_NAME_EMPTY).split(SPLIT_REGEX));
-        this.carCount = this.carStringList.size();
+    public void tryCountQuestion() {
+        System.out.println(QUESTION_TRY_COUNT);
+        this.tryCount = scanner.nextLine();
     }
 
-    public int getCarCount() {
-        return carCount;
+    public String getCarNames() {
+        return carNames;
     }
 
-    public int getTryCount() {
+    public String getTryCount() {
         return tryCount;
-    }
-
-    public int getTotalDrivingCount() {
-        return this.carCount * this.tryCount;
-    }
-
-    public List<String> getCarStringList() {
-        return carStringList;
     }
 }
