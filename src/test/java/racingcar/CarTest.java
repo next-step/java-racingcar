@@ -1,34 +1,20 @@
 package racingcar;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    private static MockedStatic<RandomNumberGenerator> randomNumberGenerator;
-
-    @BeforeAll
-    static void beforeAll() {
-        randomNumberGenerator = mockStatic(RandomNumberGenerator.class);
-    }
-
-    @AfterAll
-    static void afterAll() {
-        randomNumberGenerator.close();
-    }
 
     @ParameterizedTest(name = "4 이상이 나오면 1칸 전진해야 한다. {0}")
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void testCarShouldGoWhenRandomNumberIsGreaterOrEqualTo3(int randomNumber) {
         // Given
         Car car = new Car();
-        when(RandomNumberGenerator.randomNumber()).thenReturn(randomNumber);
 
         // When
-        car.run();
+        car.run(randomNumber);
 
         // Then
         assertThat(car.getPosition()).isEqualTo(1);
@@ -39,10 +25,9 @@ public class CarTest {
     void testCarShouldGoWhenRandomNumberIsLessThan4(int randomNumber) {
         // Given
         Car car = new Car();
-        when(RandomNumberGenerator.randomNumber()).thenReturn(randomNumber);
 
         // When
-        car.run();
+        car.run(randomNumber);
 
         // Then
         assertThat(car.getPosition()).isEqualTo(0);
