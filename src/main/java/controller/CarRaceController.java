@@ -1,8 +1,6 @@
 package controller;
 
-import domain.CarNames;
-import domain.CarRaceCount;
-import domain.CarRaceGroup;
+import domain.*;
 import view.InputView;
 import view.OutputView;
 
@@ -11,8 +9,9 @@ public class CarRaceController {
         CarNames carNames = new CarNames(InputView.inputRaceCarName());
         CarRaceCount carRaceCount = new CarRaceCount(InputView.inputCarRaceCount());
         CarRaceGroup carRaceGroup = new CarRaceGroup(carNames);
+        CarRaceResult carRaceResult = new CarRaceResult(carRaceGroup);
 
-        OutputView.resultCarRace(carRaceGroup, carRaceCount);
-        OutputView.winner(carRaceGroup);
+        OutputView.resultCarRace(carRaceResult, carRaceCount);
+        OutputView.winner(new Winner(carRaceGroup));
     }
 }

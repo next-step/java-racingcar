@@ -1,72 +1,50 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarRaceGroup {
-    private static final String POSITION_COUNT_ERROR_MESSAGE = "error : 입력된 자동차 위지 개수는 1개(시작위치) 이거나 자동차 개수와 동일해야 합니다.";
-    private static final int START_POSITION = 0;
-    private static final String DEFAULT_NUMBER = "0";
-    private static final int DEFAULT_POSITION_COUNT = 1;
     private final List<CarRace> carRaceGroup;
 
     public CarRaceGroup(CarNames names) {
-        this(names, new CarPosition(DEFAULT_NUMBER));
+        this(createCarRaceGroup(names));
     }
 
-    public CarRaceGroup(CarNames names, CarPosition carPosition) {
-        checkPosition(names, carPosition);
-        this.carRaceGroup = createCarRaceGroup(names, carPosition);
+    public CarRaceGroup(List<CarRace> carRaceGroup) {
+        this.carRaceGroup = Collections.unmodifiableList(carRaceGroup);
     }
 
-    private void checkPosition(CarNames names, CarPosition carPositionCount) {
-        int positionSize = carPositionCount.size();
-        if (positionSize != DEFAULT_POSITION_COUNT && positionSize < names.count()) {
-            throw new IllegalArgumentException(POSITION_COUNT_ERROR_MESSAGE);
-        }
-    }
-
-    private List<CarRace> createCarRaceGroup(CarNames names, CarPosition carPosition) {
+    private static List<CarRace> createCarRaceGroup(CarNames names) {
         List<CarRace> carRaceGroup = new ArrayList<>();
 
-        int carNameSize = names.count();
-        int carPositionSize = carPosition.size();
-        for (int i = 0; i < carNameSize; i++) {
-            carRaceGroup.add(new CarRace(names.name(i), position(i, carPositionSize)));
+        int nameCount = names.count();
+        for (int i = 0; i < nameCount; i++) {
+            carRaceGroup.add(new CarRace(new CarName(names.name(i)), new CarPosition(0)));
         }
 
         return carRaceGroup;
     }
 
-    private int position(int index, int count) {
-        if (count == DEFAULT_POSITION_COUNT) {
-            return START_POSITION;
+    public CarRaceGroup racing() {
+        List<CarRace> carRaceArray = new ArrayList<>();
+        for (CarRace carRace : carRaceGroup) {
+            carRaceArray.add(carRace.positionPlus(Driving.driving()));
         }
-        return index;
-    }
-
-    public void positionPlus(int index) {
-        carRaceGroup.get(index).positionAdd(Driving.driving());
+        return new CarRaceGroup(carRaceArray);
     }
 
     public int size() {
         return carRaceGroup.size();
     }
 
-    public int carPosition(int index) {
-        return carRaceGroup.get(index).getPosition();
-    }
-
-    public List<CarRace> getCarRaceGroup() {
-        return carRaceGroup;
-    }
-
     public String name(int index) {
-        return carRaceGroup.get(index).getCarName();
+        return carRaceGroup.get(index).name();
     }
 
     public int position(int index) {
-        return carRaceGroup.get(index).getPosition();
+        return carRaceGroup.get(index).position();
     }
 
 }

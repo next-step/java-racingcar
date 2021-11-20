@@ -2,7 +2,7 @@ package domain;
 
 import java.util.Random;
 
-public class Driving {
+public class Driving{
     private static final int RANDOM_NUMBER_MAX = 10;
     private static final int MOVING_STANDARD_NUMBER = 4;
     private static final int STOP_NUMBER = 0;
@@ -14,6 +14,13 @@ public class Driving {
 
     public static int driving() {
         if (Driving.createRandomNumber() >= MOVING_STANDARD_NUMBER) {
+            return MOVING_NUMBER;
+        }
+        return STOP_NUMBER;
+    }
+
+    public static int driving(int number) {
+        if (number >= MOVING_STANDARD_NUMBER) {
             return MOVING_NUMBER;
         }
         return STOP_NUMBER;

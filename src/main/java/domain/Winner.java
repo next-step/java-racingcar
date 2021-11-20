@@ -1,30 +1,52 @@
 package domain;
 
-import java.util.stream.Collectors;
-
 public class Winner {
-    private static final String MAX_NUMBER_ERROR_MESSAGE = "error : MAX 값을 찾을수 없습니다.";
-    private static final String COMMA = ", ";
+    private static final String COMMA_AND_SPACE = ", ";
+    private static final String EMPTY = "";
+    private static final int LAST_COMMA_LENGTH = 2;
+    private static final int POSITION_MAX_START_NUMBER = 0;
+    private final CarRaceGroup carRaceGroup;
 
-    private Winner() {
+    public Winner(CarRaceGroup carRaceGroup) {
+        this.carRaceGroup = carRaceGroup;
     }
 
-    public static String winnerName(CarRaceGroup carRaceGroup) {
-        int max = positionMax(carRaceGroup);
+    public String findWinner() {
+        int max = positionMax();
 
-        return carRaceGroup.getCarRaceGroup()
-                .stream()
-                .filter(i -> i.getPosition() == max)
-                .map(i -> i.getCarName())
-                .sorted()
-                .collect(Collectors.joining(COMMA));
+        String name = EMPTY;
+        for (int i = 0; i < carRaceGroup.size(); i++) {
+            name += winnerName(max, carRaceGroup.name(i), carRaceGroup.position(i));
+        }
+
+        return lastCommaRemove(name);
     }
 
-    public static int positionMax(CarRaceGroup carRaceGroup) {
-        return carRaceGroup.getCarRaceGroup()
-                .stream()
-                .mapToInt(i -> i.getPosition())
-                .max()
-                .orElseThrow(() -> new IllegalArgumentException(MAX_NUMBER_ERROR_MESSAGE));
+    private String winnerName(int max, String name, int position) {
+        if (max == position) {
+            return name + COMMA_AND_SPACE;
+        }
+        return EMPTY;
+    }
+
+    private String lastCommaRemove(String name) {
+        return name.substring(0, name.length() - LAST_COMMA_LENGTH);
+    }
+
+    public int positionMax() {
+        int max = POSITION_MAX_START_NUMBER;
+
+        int loopNumber = carRaceGroup.size();
+        for (int i = 0; i < loopNumber; i++) {
+            max = checkPositionMax(max, carRaceGroup.position(i));
+        }
+        return max;
+    }
+
+    private int checkPositionMax(int max, int position) {
+        if (max < position) {
+            return position;
+        }
+        return max;
     }
 }

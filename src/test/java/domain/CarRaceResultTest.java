@@ -9,8 +9,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class WinnerTest {
-    private Winner winner;
+class CarRaceResultTest {
+    private CarRaceResult carRaceResult;
 
     @BeforeEach
     public void setUp() {
@@ -19,18 +19,7 @@ public class WinnerTest {
         carRaceGroup.add(new CarRace(new CarName("KIA"), new CarPosition(1)));
         carRaceGroup.add(new CarRace(new CarName("HONDA"), new CarPosition(2)));
 
-        winner = new Winner(new CarRaceGroup(carRaceGroup));
+        carRaceResult = new CarRaceResult(new CarRaceGroup(carRaceGroup));
     }
 
-    @Test
-    @DisplayName("가장 높은 위치값 확인")
-    public void checkPositionMax() {
-        assertThat(winner.positionMax()).isEqualTo(2);
-    }
-
-    @Test
-    @DisplayName("우승자 이름 확인")
-    public void checkWinnerNames() {
-        assertThat(winner.findWinner()).isEqualTo("HONDA");
-    }
 }
