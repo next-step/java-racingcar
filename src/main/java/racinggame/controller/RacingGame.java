@@ -1,11 +1,10 @@
 package racinggame.controller;
 
-import racinggame.domain.CarStateGenerator;
-import racinggame.domain.Cars;
-import racinggame.domain.Laps;
-import racinggame.domain.Names;
+import racinggame.domain.*;
 import racinggame.dto.RoundLogs;
 import racinggame.view.ResultView;
+
+import java.util.List;
 
 public class RacingGame {
 
@@ -22,7 +21,8 @@ public class RacingGame {
     public void startRacing() {
         System.out.print("\n실행 결과");
         while (!laps.isGoal()) {
-            RoundLogs roundLogs = cars.roundRacing(carStateGenerator);
+            List<Car> currentRecord = cars.roundRacing(carStateGenerator);
+            RoundLogs roundLogs = new RoundLogs(currentRecord);
             ResultView.currentRecord(roundLogs);
             laps.passStartLine();
         }
