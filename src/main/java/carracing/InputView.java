@@ -3,6 +3,8 @@ package carracing;
 import java.util.Scanner;
 
 public class InputView {
+    private static final Scanner scanner = new Scanner(System.in);
+
     private InputView() {}
 
     public static int inputCarNumber() {
@@ -15,7 +17,6 @@ public class InputView {
 
     private static int input(String message) {
         System.out.println(message);
-        Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
 }

@@ -1,17 +1,15 @@
 package carracing;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.List;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-import static org.assertj.core.api.Assertions.*;
 
-
-public class CarRacingTest {
+public class CarTest {
     @ParameterizedTest
     @CsvSource(value = {"0,0", "1,0", "2,0", "3,0", "4,1", "5,1", "6,1", "7,1", "8,1", "9,1"})
     @DisplayName("stepForwardByRandomNunber에서 4 이상이면 한칸 전진 하고, 4미만은 멈춰 있다.")
@@ -29,33 +27,5 @@ public class CarRacingTest {
             Car car = new Car();
             car.stepForwardByRandomNumber(random);
         });
-    }
-
-    @Test
-    @DisplayName("Track getSteps() 테스트")
-    void trackGetSteps() {
-        Track track = new Track(5);
-        List<Integer> steps = track.getSteps();
-
-        assertThat(steps.size()).isEqualTo(5);
-        for (int step : steps) {
-            assertThat(step).isEqualTo(0);
-        }
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 5, 10, 100, 999})
-    @DisplayName("Track forward() 테스트")
-    void trackForward(int round) {
-        Track track = new Track(100);
-        for (int i = 0; i < round; i++) {
-            track.forward();
-        }
-
-        List<Integer> steps = track.getSteps();
-        for (int step : steps) {
-            assertThat(step).isGreaterThanOrEqualTo(0);
-            assertThat(step).isLessThanOrEqualTo(round);
-        }
     }
 }

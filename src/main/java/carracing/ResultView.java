@@ -3,6 +3,8 @@ package carracing;
 import java.util.List;
 
 public class ResultView {
+    private static final StringBuilder builder = new StringBuilder();
+
     private ResultView() {}
 
     public static void printSteps(List<Integer> steps) {
@@ -13,10 +15,10 @@ public class ResultView {
     }
 
     private static String stepLine(int step) {
-        StringBuilder line = new StringBuilder();
+        builder.delete(0, builder.length());
         for (int i = 0; i < step; i++) {
-            line.append("-");
+            builder.append("-");
         }
-        return line.toString();
+        return builder.toString();
     }
 }
