@@ -1,30 +1,25 @@
 package study.racingcar.model;
 
+import study.racingcar.strategy.MoveStrategy;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private static final String SPLIT_RESULT_MESSAGE = " : ";
-    private static final String END_RESULT_MESSAGE = "\n";
-
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public void startRound(){
+    public void startRound(MoveStrategy moveStrategy){
         for (Car car : cars) {
-            car.move();
+            car.move(moveStrategy);
         }
     }
 
-    public String getResult(){
-        String result = "";
-        for (Car car : cars) {
-            result += car.getName() + SPLIT_RESULT_MESSAGE + car.getLocation() + END_RESULT_MESSAGE;
-        }
-        return result;
+    public List<Car> getResult(){
+        return cars;
     }
 
     public List<Car> getWinner() {

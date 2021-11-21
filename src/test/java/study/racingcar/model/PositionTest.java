@@ -24,4 +24,19 @@ public class PositionTest {
         position.move();
         assertThat(position).isEqualTo(new Position(param + 1));
     }
+
+    @DisplayName("선두 위치 확인")
+    @ParameterizedTest(name="{displayName} | 요청값: {0}")
+    @ValueSource(ints = {5, 7, 20})
+    void 선두_위치(int param) {
+        Position position = new Position(3);
+        assertThat(position.getMaxPosition(param)).isEqualTo(param);
+    }
+
+    @DisplayName("선두 위치 확인")
+    @Test
+    void 우승_위치() {
+        Position position = new Position(3);
+        assertThat(position.isWinnerPosition(3)).isTrue();
+    }
 }

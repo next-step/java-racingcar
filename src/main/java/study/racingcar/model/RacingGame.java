@@ -1,6 +1,8 @@
 package study.racingcar.model;
 
 
+import study.racingcar.strategy.MoveStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -8,8 +10,6 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
     private static final String SEPARATOR = ",";
-    private static final String WHITE_SPACE = " ";
-    private static final String END_RESULT_MESSAGE = "\n";
 
     private final Cars cars;
     private final TryRound tryRound;
@@ -35,20 +35,20 @@ public class RacingGame {
         }
     }
 
-    public String getResult() {
-        String roundResult = "";
-        for(int i =0; i < tryRound.getTryRound(); i++){
-            cars.startRound();
-            roundResult += cars.getResult() + END_RESULT_MESSAGE;
-        }
-        return roundResult;
+    public List<Car> getResult() {
+        return cars.getResult();
     }
 
-    public String getWinners() {
-        return cars.getWinner().stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(SEPARATOR + WHITE_SPACE));
+    public void playRound(MoveStrategy moveStrategy) {
+        cars.startRound(moveStrategy);
+        tryRound.nextRound();
     }
 
+    public List<Car> getWinners() {
+        return cars.getWinner();
+    }
 
+    public boolean moreRound(){
+        return tryRound.moreRound();
+    }
 }

@@ -3,8 +3,6 @@ package study.racingcar.model;
 import java.util.Objects;
 
 public class Position {
-    private static final String MOVE_CHARACTER = "-";
-    private static final int START_LOCATION = 0;
     private static final int MOVE_NUMBER = 1;
 
     private int position;
@@ -17,12 +15,22 @@ public class Position {
         this.position += MOVE_NUMBER;
     }
 
-    public String getLocation(){
-        String location = "";
-        for(int i = START_LOCATION; i < position; i++){
-            location += MOVE_CHARACTER;
+    public int getLocation(){
+        return position;
+    }
+
+    public int getMaxPosition(int maxPosition) {
+        if (maxPosition < position){
+            return position;
         }
-        return location;
+        return maxPosition;
+    }
+
+    public boolean isWinnerPosition(int maxPosition) {
+        if (maxPosition == position){
+            return true;
+        }
+        return  false;
     }
 
     @Override

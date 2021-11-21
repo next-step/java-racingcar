@@ -1,6 +1,8 @@
 package study.racingcar;
 
 import study.racingcar.model.RacingGame;
+import study.racingcar.strategy.MoveStrategy;
+import study.racingcar.strategy.RandomMoveStrategy;
 import study.racingcar.view.InputView;
 import study.racingcar.view.ResultView;
 
@@ -16,10 +18,16 @@ public class RacingMain {
     public static void main(String[] args) {
         String carNames = InputView.requestCarNames();
         int tryCount = InputView.requestTryCount();
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
         RacingGame racingGame = new RacingGame(carNames, tryCount);
 
         ResultView.printInitResult();
-        ResultView.printResult(racingGame.getResult());
+
+        while(racingGame.moreRound()){
+            racingGame.playRound(moveStrategy);
+            ResultView.printResult(racingGame.getResult());
+        }
+
         ResultView.printWinners(racingGame.getWinners());
     }
 }

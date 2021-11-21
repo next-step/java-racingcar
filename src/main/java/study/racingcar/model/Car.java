@@ -1,6 +1,7 @@
 package study.racingcar.model;
 
 
+import study.racingcar.strategy.MoveStrategy;
 import study.racingcar.strategy.RandomMoveStrategy;
 
 import java.util.Objects;
@@ -15,21 +16,13 @@ public class Car {
         this(new Name(name), new Position(START_POSITION));
     }
 
-    public Car(Name name) {
-        this(name, new Position(START_POSITION));
-    }
-
-    public Car(String name, Position position) {
-        this(new Name(name), position);
-    }
-
     public Car(Name name, Position position) {
         this.name = name;
         this.position = position;
     }
 
-    public void move(){
-        if(new RandomMoveStrategy().movable()){
+    public void move(MoveStrategy moveStrategy){
+        if(moveStrategy.movable()){
             position.move();
         }
     }
@@ -38,23 +31,16 @@ public class Car {
         return name.getName();
     }
 
-    public String getLocation(){
+    public int getLocation(){
         return position.getLocation();
     }
 
     public int getMaxPosition(int maxPosition) {
-        int carPosition = position.getLocation().length();
-        if (maxPosition < carPosition){
-            return carPosition;
-        }
-        return maxPosition;
+        return position.getMaxPosition(maxPosition);
     }
 
     public boolean isWinnerPosition(int maxPosition) {
-        if(getLocation().length() == maxPosition){
-            return true;
-        }
-        return false;
+        return position.isWinnerPosition(maxPosition);
     }
 
     @Override
