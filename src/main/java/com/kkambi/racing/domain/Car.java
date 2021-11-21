@@ -1,23 +1,22 @@
 package com.kkambi.racing.domain;
 
+import com.kkambi.racing.strategy.MovingStrategy;
+
 import java.util.Objects;
 
 public class Car implements Comparable<Car> {
 
-    private static final int criteriaToMove = 4;
-
-    private Location location;
-    private final Name name;
+    protected Location location;
+    protected final Name name;
+    private MovingStrategy movingStrategy;
 
     public Car(final int location, final String name) {
         this.location = new Location(location);
         this.name = new Name(name);
     }
 
-    public void tryToMove(int randomValue) {
-        if (randomValue >= criteriaToMove) {
-            this.location = location.move();
-        }
+    public void move() {
+        this.location = movingStrategy.move(location);
     }
 
     public Location getLocation() {
@@ -26,6 +25,10 @@ public class Car implements Comparable<Car> {
 
     public Name getName() {
         return name;
+    }
+
+    public void setMovingStrategy(MovingStrategy movingStrategy) {
+        this.movingStrategy = movingStrategy;
     }
 
     @Override
