@@ -1,7 +1,5 @@
 package com.step3.model.car;
 
-import java.util.Comparator;
-
 public class Position implements Comparable<Position> {
     private int position;
 
@@ -9,7 +7,7 @@ public class Position implements Comparable<Position> {
         this.position = position;
     }
 
-    public int getValue() {
+    public int get() {
         return position;
     }
 
@@ -32,10 +30,6 @@ public class Position implements Comparable<Position> {
             return 0;
         }
 
-        if (p.position < this.position) {
-            return 1;
-        }
-
-        return -1;
+        return (p.position < this.position) ? 1 : -1;
     }
 }

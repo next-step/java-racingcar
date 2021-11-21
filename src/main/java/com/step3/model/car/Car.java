@@ -35,10 +35,6 @@ public class Car {
         return this.name;
     }
 
-    public MoveStrategy getMoveStrategy() {
-        return moveStrategy;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -49,6 +45,6 @@ public class Car {
         }
 
         Car car = (Car) o;
-        return name.equals(car.name);
+        return name.equals(car.name) && position.equals(car.position);
     }
 }
