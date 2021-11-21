@@ -20,7 +20,7 @@ public class Cars {
     }
 
     public Cars moveAll(MovingStrategy strategy) {
-        for (Car car: this.cars) {
+        for (Car car : this.cars) {
             car.move(strategy);
         }
         return this;
@@ -29,8 +29,8 @@ public class Cars {
     public String getWinners() {
         StringBuffer result = new StringBuffer();
         int maxMovement = getMaxPosition();
-        for (Car car: this.cars) {
-            if(car.isWinner(maxMovement)) {
+        for (Car car : this.cars) {
+            if (car.isWinner(maxMovement)) {
                 result.append(car.getCarName().getName() + ", ");
             }
         }
@@ -39,7 +39,7 @@ public class Cars {
 
     private int getMaxPosition() {
         int maxPosition = 0;
-        for (Car car: this.cars) {
+        for (Car car : this.cars) {
             maxPosition = car.maxPosition(maxPosition);
         }
         return maxPosition;

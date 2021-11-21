@@ -4,7 +4,7 @@ import racingcar.strategy.MovingStrategy;
 
 public class Car {
     private final CarName carName;
-    private CarPosition position;
+    private final CarPosition position;
 
     public Car(final String name) {
         this(new CarName(name), new CarPosition(0));
@@ -19,13 +19,16 @@ public class Car {
         this.position = position;
     }
 
-    public CarName getCarName() { return this.carName; }
+    public CarName getCarName() {
+        return this.carName;
+    }
+
     public CarPosition getCarPosition() {
         return this.position;
     }
 
     public void move(MovingStrategy strategy) {
-        if(strategy.canMove()) {
+        if (strategy.canMove()) {
             this.position.increasePosition();
         }
     }

@@ -20,7 +20,7 @@ public class CarPosition {
     }
 
     public int maxPosition(int maxPositioin) {
-        if(this.position > maxPositioin) {
+        if (this.position > maxPositioin) {
             return this.position;
         }
         return maxPositioin;

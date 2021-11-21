@@ -3,9 +3,8 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.Game;
-import racingcar.strategy.RandomMovingStrategyFixture;
 import racingcar.strategy.MovingStrategy;
+import racingcar.strategy.RandomMovingStrategyFixture;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
