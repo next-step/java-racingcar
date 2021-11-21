@@ -16,5 +16,4 @@ class RandomStrategyTest {
 
         Assertions.assertThat(randomStrategy.runnable(new Count(input))).isTrue();
     }
-
 }

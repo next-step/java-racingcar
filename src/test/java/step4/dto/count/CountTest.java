@@ -25,5 +25,4 @@ class CountTest {
             new Count(input);
         }).isInstanceOf(IllegalArgumentException.class);
     }
-
 }

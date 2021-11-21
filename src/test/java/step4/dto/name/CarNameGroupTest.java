@@ -19,6 +19,4 @@ class CarNameGroupTest {
 
         Assertions.assertThat(new CarNameGroup(carNames).carNameLength()).isEqualTo(new Count(expected));
     }
-
-
 }

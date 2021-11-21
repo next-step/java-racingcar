@@ -28,5 +28,4 @@ class CarGroupTest {
         cars.get(0).run(new Count(5));
         cars.get(0).run(new Count(6));
     }
-
 }

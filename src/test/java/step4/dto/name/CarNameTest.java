@@ -37,5 +37,4 @@ class CarNameTest {
             new CarName(names);
         }).isInstanceOf(IllegalArgumentException.class);
     }
-
 }
