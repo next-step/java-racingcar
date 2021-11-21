@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class InputConsole {
     private static final String NUMBER_OF_CARS_INPUT_MESSAGE = "자동차 대수는 몇 대 인가요?";
     private static final String NUMBER_OF_TRIALS_INPUT_MESSAGE = "시도할 회수는 몇 회 인가요?";
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     private InputConsole() {
     }
@@ -23,7 +24,6 @@ public class InputConsole {
     }
 
     private static String readString() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        return SCANNER.nextLine();
     }
 }
