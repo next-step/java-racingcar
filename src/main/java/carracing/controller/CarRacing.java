@@ -5,6 +5,7 @@ import carracing.domain.Cars;
 import carracing.domain.RaceResult;
 import carracing.domain.Winners;
 import carracing.exception.CarNameFormatException;
+import carracing.util.RandomCondition;
 import carracing.view.InputInfo;
 import carracing.view.ResultView;
 
@@ -52,7 +53,7 @@ public class CarRacing {
 
     public void racing(Cars carList, InputInfo inputInfo) {
         for (int i = 0; i < inputInfo.getCarCount(); i++) {
-            carList.get(i).driving();
+            carList.get(i).driving(RandomCondition.getCondition());
         }
     }
 

@@ -3,7 +3,6 @@ package carracing.domain;
 import carracing.exception.CarNameFormatException;
 import carracing.util.Name;
 import carracing.util.Position;
-import carracing.util.RandomCondition;
 
 /*
  * Car
@@ -31,12 +30,6 @@ public class Car {
     }
 
     public boolean driving(int driveCondition) {
-        driveValid(driveCondition);
-        return drive(driveCondition);
-    }
-
-    public boolean driving() {
-        int driveCondition = RandomCondition.getCondition();
         driveValid(driveCondition);
         return drive(driveCondition);
     }
