@@ -14,16 +14,8 @@ public class Count {
         this.count = count;
     }
 
-    public void plusCount() {
-        this.count++;
-    }
-
     public int getCount() {
         return count;
-    }
-
-    public boolean lessThanOther(Count other) {
-        return this.count <= other.count;
     }
 
     public boolean moreThanOther(Count other) {
