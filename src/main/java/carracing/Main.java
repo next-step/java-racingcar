@@ -1,8 +1,8 @@
 package carracing;
 
-import carracing.domain.CarRacing;
-import carracing.domain.InputInfo;
+import carracing.controller.CarRacing;
 import carracing.exception.CarNameFormatException;
+import carracing.view.InputInfo;
 import carracing.view.InputView;
 
 public class Main {

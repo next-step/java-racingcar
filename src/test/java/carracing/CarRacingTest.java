@@ -1,9 +1,9 @@
 package carracing;
 
-import carracing.domain.CarRacing;
-import carracing.domain.InputInfo;
+import carracing.controller.CarRacing;
 import carracing.domain.RaceResult;
 import carracing.exception.CarNameFormatException;
+import carracing.view.InputInfo;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

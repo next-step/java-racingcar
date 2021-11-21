@@ -1,4 +1,4 @@
-package carracing.domain;
+package carracing.view;
 
 import java.util.Arrays;
 import java.util.List;

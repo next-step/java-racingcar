@@ -1,6 +1,11 @@
-package carracing.domain;
+package carracing.controller;
 
+import carracing.domain.Car;
+import carracing.domain.Cars;
+import carracing.domain.RaceResult;
+import carracing.domain.Winners;
 import carracing.exception.CarNameFormatException;
+import carracing.view.InputInfo;
 import carracing.view.ResultView;
 
 import java.util.ArrayList;
