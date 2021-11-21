@@ -3,6 +3,8 @@ package racinggame.view;
 import racinggame.domain.Car;
 import racinggame.domain.Cars;
 import racinggame.domain.Names;
+import racinggame.dto.RoundLog;
+import racinggame.dto.RoundLogs;
 
 public class ResultView {
 
@@ -13,23 +15,22 @@ public class ResultView {
     private ResultView() {
     }
 
-    public static void currentRecord(Cars cars) {
-        for (Car car : cars.getCars()) {
-            locationResult(car);
+    public static void currentRecord(RoundLogs roundLogs) {
+        for (RoundLog roundLog : roundLogs.getRoundLogs()) {
+            locationResult(roundLog);
         }
         System.out.println();
     }
 
-    public static void locationResult(Car player) {
+    public static void locationResult(RoundLog roundLog) {
         StringBuilder racingRecord = new StringBuilder();
-        for (int i = 0; i < player.getLocation().getLocation(); i++) {
+        for (int i = 0; i < roundLog.getLocation(); i++) {
             racingRecord.append(DASH);
         }
-        System.out.print("\n" + String.format(MESSAGE_PLAYER_LOCATION, player.getName().getName(), racingRecord));
+        System.out.print("\n" + String.format(MESSAGE_PLAYER_LOCATION, roundLog.getName(), racingRecord));
     }
 
-    public static void awardRacing(Cars cars) {
-        Names winners = cars.inFormWinners();
+    public static void awardRacing(Names winners) {
         System.out.print(String.format(MESSAGE_RACE_WINNER, winners.printNames()));
     }
 }

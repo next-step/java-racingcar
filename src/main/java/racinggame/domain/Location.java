@@ -23,6 +23,10 @@ public class Location implements Comparable<Location> {
         location++;
     }
 
+    public boolean isSameLocation(int location) {
+        return this.location == location;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

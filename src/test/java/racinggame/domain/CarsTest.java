@@ -20,7 +20,7 @@ class CarsTest {
         cars.roundRacing(stateGenerator);
 
         for (Car car : cars.getCars()) {
-            assertThat(car.getLocation()).isEqualTo(excepted);
+            assertThat(excepted.isSameLocation(car.getLocation())).isTrue();
         }
     }
 
@@ -34,7 +34,7 @@ class CarsTest {
         cars.roundRacing(stateGenerator);
 
         for (Car car : cars.getCars()) {
-            assertThat(car.getLocation().getLocation()).isEqualTo(location);
+            assertThat(car.getLocation()).isEqualTo(location);
         }
     }
 
@@ -47,7 +47,7 @@ class CarsTest {
         Cars cars = CarsFixture.createCars(actual);
         cars.roundRacing(stateGenerator);
 
-        Names winner = cars.inFormWinners();
+        Names winner = cars.findWinners();
 
         assertThat(winner.printNames()).isEqualTo(NamesFixture.ENTRY_CAR_NAMES);
     }
