@@ -21,7 +21,7 @@ public class CarRacingGame {
         OutputConsole.printResultMessage();
         Cars cars = new Cars(numberOfCars);
         for (int i = 0; i < numberOfTrials; i++) {
-            cars.moveCars(movementPolicy);
+            cars = cars.moveCars(movementPolicy);
             OutputConsole.printStatusOfRacing(cars);
         }
     }

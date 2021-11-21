@@ -6,7 +6,7 @@ import java.util.Objects;
  * 자동차의 위치를 저장하는 클래스
  */
 public class CarPosition {
-    private int number;
+    private final int number;
 
     CarPosition(int number) {
         validateNumber(number);
@@ -23,8 +23,8 @@ public class CarPosition {
         return position < 0;
     }
 
-    public void move() {
-        this.number++;
+    public CarPosition move() {
+        return new CarPosition(this.number + 1);
     }
 
     public int getNumber() {
