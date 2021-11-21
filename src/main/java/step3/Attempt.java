@@ -1,9 +1,10 @@
 package step3;
 
 public class Attempt {
-    int number;
+    private int number;
 
     public Attempt(int number) {
+        if(number < 0) throw new IllegalArgumentException();
         this.number = number;
     }
 
@@ -17,4 +18,12 @@ public class Attempt {
         }
         return false;
     }
+
+    boolean isEqualNumber(int attemptCount) {
+        if(number == attemptCount) {
+            return true;
+        }
+        return false;
+    }
+
 }

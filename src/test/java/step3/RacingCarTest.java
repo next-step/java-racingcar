@@ -20,16 +20,17 @@ class RacingCarTest {
     @ParameterizedTest()
     @CsvSource({"1, false", "4, false", "7, true"})
     void isMove(int number, boolean expect) {
-        //랜덤값인데 어떻게 테스트가 될지?
         boolean result = racingCar.isMove(number);
         assertThat(result).isEqualTo(expect);
     }
 
     @Test
     void move() {
-        int before = racingCar.distance;
+        int before = racingCar.getDistance();
         racingCar.move();
-        int after = racingCar.distance;
+        int after = racingCar.getDistance();
         assertThat(before+1).isEqualTo(after);
     }
+
+
 }

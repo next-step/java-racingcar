@@ -3,7 +3,7 @@ package step3;
 import java.util.Random;
 
 public class RacingCar {
-    int distance = 0;
+    private int distance = 0;
 
     public int getRandomNumber() {
         Random random = new Random();
@@ -11,8 +11,6 @@ public class RacingCar {
     }
 
     public boolean isMove(int randomNumber) {
-        // randomNumber가 primitive type 인데
-        // 클래스로 바꾸어 reference type 으로 변경이 필요할지?
         if(randomNumber > 4) {
             return true;
         }
@@ -20,7 +18,13 @@ public class RacingCar {
     }
 
     public void move() {
-        distance++;
+        if(isMove(getRandomNumber())) {
+            distance++;
+        }
+    }
+
+    public int getDistance() {
+        return distance;
     }
 
 
