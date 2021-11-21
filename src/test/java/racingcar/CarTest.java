@@ -14,12 +14,13 @@ public class CarTest {
     void testCarShouldGoWhenRandomNumberIsGreaterOrEqualTo3(int randomNumber) {
         // Given
         Car car = new Car();
+        int firstPosition = car.getPosition();
 
         // When
         car.run(new RandomNumber(randomNumber));
 
         // Then
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(firstPosition + 1);
     }
 
     @ParameterizedTest(name = "4 미만이 나오면 전진할 수 없다. {0}")
@@ -27,11 +28,12 @@ public class CarTest {
     void testCarShouldGoWhenRandomNumberIsLessThan4(int randomNumber) {
         // Given
         Car car = new Car();
+        int firstPosition = car.getPosition();
 
         // When
         car.run(new RandomNumber(randomNumber));
 
         // Then
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(firstPosition);
     }
 }
