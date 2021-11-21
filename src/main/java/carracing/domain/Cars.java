@@ -18,8 +18,8 @@ public class Cars {
         return this.carList;
     }
 
-    public Winners getWinner(RaceResult raceResult) {
-        return new Winners(this.carList, raceResult);
+    public Winners getWinner() {
+        return new Winners(this.carList);
     }
 
 }

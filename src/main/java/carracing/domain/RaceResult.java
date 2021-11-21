@@ -1,7 +1,7 @@
 package carracing.domain;
 
 /*
- * CarRacing
+ * RaceResult
  *
  * Version 1.0.0
  *
@@ -14,14 +14,7 @@ package carracing.domain;
  */
 public class RaceResult {
     public int roundCount;
-    public int maximumDistance;
 
     public RaceResult() {
-    }
-
-    public void findMaximumDistance(Cars cars) {
-        for (Car car : cars.getCars()) {
-            this.maximumDistance = Math.max(this.maximumDistance, car.getPosition());
-        }
     }
 }

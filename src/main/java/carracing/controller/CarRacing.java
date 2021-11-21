@@ -38,8 +38,7 @@ public class CarRacing {
             raceResult.roundCount++;
         }
 
-        raceResult.findMaximumDistance(cars);
-        Winners winners = cars.getWinner(raceResult);
+        Winners winners = cars.getWinner();
         resultView.printWinner(winners);
 
         return raceResult;

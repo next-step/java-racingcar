@@ -2,7 +2,6 @@ package carracing;
 
 import carracing.domain.Car;
 import carracing.domain.Cars;
-import carracing.domain.RaceResult;
 import carracing.domain.Winners;
 import carracing.exception.CarNameFormatException;
 import carracing.view.ResultView;
@@ -42,7 +41,7 @@ public class ResultViewTest {
         List<Car> winnerCars = new ArrayList<>();
         winnerCars.add(new Car("car1"));
         winnerCars.add(new Car("car2"));
-        Winners winners = new Winners(winnerCars, new RaceResult());
+        Winners winners = new Winners(winnerCars);
         resultView.printWinner(winners);
     }
 }
