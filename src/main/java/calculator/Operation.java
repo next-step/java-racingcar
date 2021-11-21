@@ -3,7 +3,7 @@ package calculator;
 import java.util.Arrays;
 import java.util.function.IntBinaryOperator;
 
-public enum Shape {
+public enum Operation {
 
      ADDITION       ("+", (first, second) -> first + second)
     ,SUBTRACTION    ("-", (first, second) -> first - second)
@@ -13,7 +13,7 @@ public enum Shape {
     private String symbol;
     private IntBinaryOperator operator;
 
-    Shape(String symbol, IntBinaryOperator operator) {
+    Operation(String symbol, IntBinaryOperator operator) {
         this.symbol = symbol;
         this.operator = operator;
     }
@@ -22,8 +22,8 @@ public enum Shape {
         return operator.applyAsInt(first, second);
     }
 
-    public static Shape findOf(String symbol) {
-        return Arrays.stream(Shape.values())
+    public static Operation findOf(String symbol) {
+        return Arrays.stream(Operation.values())
                 .filter(shape -> shape.symbol.equals(symbol))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
