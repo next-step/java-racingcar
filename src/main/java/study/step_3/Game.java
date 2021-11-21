@@ -1,27 +1,44 @@
 package study.step_3;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
-    public static void main(String[] args) {
-        int numberOfCars = InputView.numberOfCars();
-        int numberOfTrial = InputView.numberOfTrial();
+    private final List<Car> cars = new ArrayList<>();
 
-        ArrayList<Car> cars = new ArrayList<>();
+    public void run() {
+        setup();
+        start();
+        finish();
+    }
+
+    private void setup() {
+        int numberOfCars = InputView.numberOfCars();
 
         for (int i = 0; i < numberOfCars; i++) {
             cars.add(new Car());
         }
+    }
+
+    private void start() {
+        int numberOfTrial = InputView.numberOfTrial();
 
         for (int i = 0; i < numberOfTrial; i++) {
-            for (Car car : cars) {
-                RandomNumber randomNumber = new RandomNumber();
-                car.move(randomNumber.movable());
-            }
+            move(cars);
         }
+    }
 
+    private void move(List<Car> cars) {
+        cars.forEach(car -> {
+                    RandomNumber randomNumber = new RandomNumber();
+                    car.move(randomNumber.valid());
+                }
+        );
+    }
+
+    private void finish() {
         for (Car car : cars) {
-            OutputView.result(car.count());
+            OutputView.print(car.count());
         }
     }
 }

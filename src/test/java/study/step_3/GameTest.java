@@ -15,7 +15,7 @@ class GameTest {
     @DisplayName("자동차 수 입력 값만큼 자동차를 생성한다")
     void shouldCreateCars() {
         int numberOfCars = 3;
-        ArrayList<Car> cars = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < numberOfCars; i++) {
             cars.add(new Car());
@@ -27,12 +27,12 @@ class GameTest {
     @Test
     @DisplayName("시도할 횟수 입력 값만큼 게임을 수행한다")
     void shouldTryAsMuchAsInput() {
-        int numberOfTrial = 5;
-        List<Boolean> randomNumbers = Arrays.asList(true, false, false, true, true);
         Car car = new Car();
+        List<Boolean> movable = Arrays.asList(true, false, false, true, true);
+        int numberOfTrial = 5;
 
         for (int i = 0; i < numberOfTrial; i++) {
-            car.move(randomNumbers.get(i));
+            car.move(movable.get(i));
         }
 
         assertThat(car.count()).isEqualTo(3);
