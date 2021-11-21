@@ -2,15 +2,15 @@ package carracing;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Track {
-    private static final int RANDOM_BOUND = 10;
 
+    private final RandomFactory randomFactory;
     private final List<Car> cars;
-    private final Random random;
+    private final List<Round> rounds;
 
     public Track(int cars) {
         this.cars = new ArrayList<>(cars);
@@ -18,25 +18,34 @@ public class Track {
             this.cars.add(new Car());
         }
 
-        this.random = new Random();
-    }
-
-    public List<Integer> getSteps() {
-        List<Integer> steps = cars.stream()
-                .map(Car::getStep)
-                .collect(Collectors.toList());
-        return Collections.unmodifiableList(steps);
+        this.rounds = new LinkedList<>();
+        this.randomFactory = new RandomFactory();
     }
 
     public void forward() {
         cars.forEach(car -> {
-            int random = this.random.nextInt(RANDOM_BOUND);
+            int random = this.randomFactory.generate(Car.RANDOM_BOUND);
             car.stepForwardByRandomNumber(random);
         });
+        List<Integer> steps = cars.stream()
+                .map(Car::getStep)
+                .collect(Collectors.toList());
+        rounds.add(new Round(steps));
     }
 
-    public void printSteps(StepPrint stepPrint) {
-        cars.forEach(car -> stepPrint.print(car.getStep()));
-        stepPrint.delimiter();
+    public List<Round> getRounds() {
+        return Collections.unmodifiableList(rounds);
+    }
+
+    public static class Round {
+        private List<Integer> steps;
+
+        public Round(List<Integer> steps) {
+            this.steps = steps;
+        }
+
+        public List<Integer> getSteps() {
+            return Collections.unmodifiableList(steps);
+        }
     }
 }

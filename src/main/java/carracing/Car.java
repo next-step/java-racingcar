@@ -2,7 +2,8 @@ package carracing;
 
 public class Car {
 
-    private static final int MAX_RANDOM = 9;
+    public static final int RANDOM_BOUND = 10;
+    private static final int MAX_RANDOM = RANDOM_BOUND - 1;
     private static final int MIN_RANDOM = 0;
     private static final int MIN_FORWARD = 4;
 

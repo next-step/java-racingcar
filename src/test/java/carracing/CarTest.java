@@ -20,6 +20,26 @@ public class CarTest {
     }
 
     @ParameterizedTest
+    @ValueSource(ints = {1, 3, 5, 10})
+    void severalStepForwardAlwaysGo(int round) {
+        Car car = new Car();
+        for (int i = 0; i < round; i++) {
+            car.stepForwardByRandomNumber(9);
+        }
+        assertThat(car.getStep()).isEqualTo(round);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 5, 10})
+    void severalStepForwardNeverGo(int round) {
+        Car car = new Car();
+        for (int i = 0; i < round; i++) {
+            car.stepForwardByRandomNumber(1);
+        }
+        assertThat(car.getStep()).isEqualTo(0);
+    }
+
+    @ParameterizedTest
     @ValueSource(ints = {-1, 10, 11, 100})
     @DisplayName("stepForwardByRandomNumber의 randomNumber는 0이상 9이하이다.")
     void invalidRandom(int random) {

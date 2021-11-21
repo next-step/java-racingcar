@@ -1,7 +1,22 @@
 package carracing;
 
-public class ResultView implements StepPrint {
+import java.util.List;
+
+public class ResultView {
     private static final StringBuilder builder = new StringBuilder();
+
+    public static void printRounds(List<Track.Round> rounds) {
+        rounds.forEach(round -> {
+            printRound(round);
+            System.out.println();
+        });
+    }
+
+    private static void printRound(Track.Round round) {
+        round.getSteps().forEach(step -> {
+            System.out.println(stepLine(step));
+        });
+    }
 
     private static String stepLine(int step) {
         builder.delete(0, builder.length());
@@ -9,15 +24,5 @@ public class ResultView implements StepPrint {
             builder.append("-");
         }
         return builder.toString();
-    }
-
-    @Override
-    public void print(int step) {
-        System.out.println(stepLine(step));
-    }
-
-    @Override
-    public void delimiter() {
-        System.out.println();
     }
 }
