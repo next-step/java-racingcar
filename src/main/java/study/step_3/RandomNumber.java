@@ -23,4 +23,11 @@ public class RandomNumber {
     public int getValue() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return "RandomNumber{" +
+                "value=" + value +
+                '}';
+    }
 }
