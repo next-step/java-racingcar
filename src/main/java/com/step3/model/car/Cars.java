@@ -10,18 +10,22 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(String[] carsName) {
+    private Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public static Cars createFromName(String[] carsName) {
         List<Car> cars = new LinkedList<>();
 
         for (String carName : carsName) {
             cars.add(new Car(new Name(carName), new Position(0), new CarMoveStrategy()));
         }
 
-        this.cars = cars;
+        return Cars.createFromList(cars);
     }
 
-    private Cars(List<Car> cars) {
-        this.cars = cars;
+    public static Cars createFromList(List<Car> cars) {
+        return new Cars(cars);
     }
 
     public Cars moveCars() {
@@ -29,16 +33,20 @@ public class Cars {
             car.move(car.getMoveStrategy().isMove());
         }
 
-        return new Cars(cars);
+        return Cars.createFromList(cars);
     }
 
     public Cars getWinnerCars() {
-        int maxPosition = cars.stream().mapToInt(c -> c.getPosition().getValue()).max().getAsInt();
+        Position maxPosition = cars.stream()
+                .map(c -> c.getPosition())
+                .max(Position::compareTo)
+                .get();
+
         List<Car> winnerCars = cars.stream()
-                .filter(c -> c.getPosition().getValue() == maxPosition)
+                .filter(c -> c.getPosition().equals(maxPosition))
                 .collect(Collectors.toList());
 
-        return new Cars(winnerCars);
+        return Cars.createFromList(winnerCars);
     }
 
     public List<Car> getList() {

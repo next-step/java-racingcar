@@ -6,7 +6,7 @@ import com.step3.view.ResultView;
 
 public class GameProcessor {
     public void startGame(InputNumber myNumber) {
-        Cars cars = new Cars(myNumber.getCarsName());
+        Cars cars = Cars.createFromName(myNumber.getCarsName());
 
         for (int attempt = 0; attempt < myNumber.getAttemptCount(); attempt++) {
             ResultView.showResults(cars.moveCars(), attempt);

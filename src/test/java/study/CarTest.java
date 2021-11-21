@@ -25,26 +25,26 @@ public class CarTest {
         Car car = new Car(new Name("pobi"), new Position(0), new CarMoveStrategy());
         Car movedCar = new Car(new Name("pobi"), new Position(1), new CarMoveStrategy());
 
-        assertThat(car.move(true).getPosition().getValue())
-                .isEqualTo(movedCar.getPosition().getValue());
+        assertThat(car.move(true).getPosition())
+                .isEqualTo(movedCar.getPosition());
     }
 
     @Test
     @DisplayName("cars의 이동거리 비교 후 우승자 결과 test")
     void getBestCars() {
-        Cars cars = new Cars("pobi,crong,honux".split(","));
+        Cars cars = Cars.createFromName("pobi,crong,honux".split(","));
         cars.getList().get(0).move(true);   // pobi 이동
         cars.getList().get(1).move(true);   // crong 이동
         assertThat(cars.getWinnerCars().getList()
                 .stream()
-                .map(c -> c.getId().getValue())
+                .map(c -> c.getName().getValue())
                 .collect(Collectors.joining(","))).isEqualTo("pobi,crong");
     }
 
     @Test
     @DisplayName("자동차 이름 5자 이상 예외처리 test")
     void validateCarName() {
-        assertThatThrownBy(() -> new Cars("pobipobi,crong,honux".split(",")))
+        assertThatThrownBy(() -> Cars.createFromName("pobipobi,crong,honux".split(",")))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름 5자 이하 필수");
     }
