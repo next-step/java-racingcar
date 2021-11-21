@@ -23,5 +23,4 @@ class PositionTest {
 
         assertThat(position.maxPosition()).isEqualTo(new Position(expected));
     }
-
 }

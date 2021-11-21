@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step4.dto.count.Count;
 import step4.dto.count.TrialCount;
 import step4.dto.name.CarNameGroup;
 import step4.dto.record.RecordGroup;
