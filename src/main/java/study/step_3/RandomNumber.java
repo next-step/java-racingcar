@@ -16,7 +16,7 @@ public class RandomNumber {
         this.value = value;
     }
 
-    public boolean movable() {
+    public boolean valid() {
         return this.value >= CONDITION;
     }
 
