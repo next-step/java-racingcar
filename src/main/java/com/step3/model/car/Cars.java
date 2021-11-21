@@ -3,9 +3,7 @@ package com.step3.model.car;
 import com.step3.model.car.strategy.CarMoveStrategy;
 import com.step3.util.RandomUtil;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -52,5 +50,13 @@ public class Cars {
 
     public List<Car> getList() {
         return Collections.unmodifiableList(cars);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars1 = (Cars) o;
+        return cars1.cars.containsAll(cars) && cars.containsAll(cars1.cars);
     }
 }
