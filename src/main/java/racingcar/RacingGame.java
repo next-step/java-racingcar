@@ -1,10 +1,12 @@
 package racingcar;
 
 import racingcar.model.Car;
+import racingcar.model.RandomNumber;
 import racingcar.view.InputResult;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingGame {
@@ -24,5 +26,15 @@ public class RacingGame {
 
     public int getLastRound() {
         return this.lastRound;
+    }
+
+    public void play() {
+        cars.forEach((Car car) -> car.run(new RandomNumber()));
+    }
+
+    public List<Integer> getCurrentStatus() {
+        return cars.stream()
+                .map(Car::getPosition)
+                .collect(Collectors.toList());
     }
 }

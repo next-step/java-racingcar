@@ -1,13 +1,20 @@
 package racingcar.view;
 
-import racingcar.model.Car;
-
 import java.util.List;
 
 public class ResultView {
 
-    public void printResult(final List<Car> cars) {
-        cars.forEach(Car::printCurrentPosition);
+    public void showResult(final List<Integer> currentPositions) {
+        currentPositions.forEach(this::printPosition);
         System.out.println();
+    }
+
+    private void printPosition(Integer position) {
+        StringBuilder currentPosition = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            currentPosition.append('-');
+        }
+
+        System.out.println(currentPosition);
     }
 }
