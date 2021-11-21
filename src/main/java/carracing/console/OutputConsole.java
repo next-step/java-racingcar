@@ -4,6 +4,8 @@ import carracing.domain.Car;
 import carracing.domain.CarPosition;
 import carracing.domain.Cars;
 
+import java.util.List;
+
 /**
  * 자동차 경주 현황을 출력하기위한 콘솔
  */
@@ -14,7 +16,11 @@ public class OutputConsole {
     private OutputConsole() {
     }
 
-    public static void printStatusOfRacing(Cars cars) {
+    public static void printResultOfRacingGame(List<Cars> carsGroup) {
+        carsGroup.forEach(OutputConsole::printStatusOfRacing);
+    }
+
+    private static void printStatusOfRacing(Cars cars) {
         cars.getCars()
                 .stream()
                 .map(Car::getPosition)
