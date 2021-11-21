@@ -32,9 +32,9 @@ class GameTest {
         Car car = new Car();
 
         for (int i = 0; i < numberOfTrial; i++) {
-            car.position(randomNumbers.get(i));
+            car.move(randomNumbers.get(i));
         }
 
-        assertThat(car.getPosition()).isEqualTo(3);
+        assertThat(car.count()).isEqualTo(3);
     }
 }

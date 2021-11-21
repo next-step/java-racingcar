@@ -12,9 +12,9 @@ class CarTest {
     void shouldIncreasePosition() {
         Car car = new Car();
         RandomNumber randomNumber = new RandomNumber(4);
-        car.position(randomNumber.movable());
+        car.move(randomNumber.movable());
 
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.count()).isEqualTo(1);
     }
 
     @Test
@@ -22,8 +22,8 @@ class CarTest {
     void shouldHaveSamePosition() {
         Car car = new Car();
         RandomNumber randomNumber = new RandomNumber(3);
-        car.position(randomNumber.movable());
+        car.move(randomNumber.movable());
 
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.count()).isEqualTo(0);
     }
 }
