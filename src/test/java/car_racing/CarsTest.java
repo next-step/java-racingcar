@@ -42,10 +42,9 @@ class CarsTest {
             add(car1);
         }};
         Cars cars = new Cars(carObjects);
-        MoveStrategy moveStrategy = new AbleToTestMoveStrategy();
 
         // when
-        cars.playOneRound(moveStrategy);
+        cars.playOneRound(() -> true);
 
         // then
         assertThat(cars.getCars().get(0).getPosition()).isEqualTo(2);

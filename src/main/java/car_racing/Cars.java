@@ -77,10 +77,4 @@ public class Cars {
         return Objects.hash(carsForGame);
     }
 
-    @Override
-    public String toString() {
-        return "Cars{" +
-                "carsForGame=" + carsForGame +
-                '}';
-    }
 }
