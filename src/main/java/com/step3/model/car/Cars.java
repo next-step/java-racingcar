@@ -1,6 +1,7 @@
 package com.step3.model.car;
 
 import com.step3.model.car.strategy.CarMoveStrategy;
+import com.step3.util.RandomUtil;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -30,7 +31,7 @@ public class Cars {
 
     public Cars moveCars() {
         for (Car car : this.cars) {
-            car.move(car.getMoveStrategy().isMove());
+            car.move(RandomUtil.getRandomValue());
         }
 
         return Cars.createFromList(cars);
