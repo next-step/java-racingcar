@@ -66,4 +66,29 @@ class CarTest {
         // then
         assertThatIllegalArgumentException().isThrownBy(() -> new Name(name));
     }
+
+    @DisplayName("자동차끼리 위치값으로 대소 비교할 수 있다")
+    @Test
+    void compareByLocationValue() {
+        // given
+        Car car1 = new Car(0, "a");
+        Car car2 = new Car(1, "b");
+
+        // when
+        // then
+        assertThat(car1).isLessThan(car2);
+        assertThat(car2).isGreaterThan(car1);
+    }
+
+    @DisplayName("자동차끼리 위치값으로 동등 비교할 수 있다")
+    @Test
+    void equalsByLocationValue() {
+        // given
+        Car car1 = new Car(1, "a");
+        Car car2 = new Car(1, "b");
+
+        // when
+        // then
+        assertThat(car1).isEqualTo(car2);
+    }
 }

@@ -1,6 +1,8 @@
 package com.kkambi.racing.domain;
 
-public class Car {
+import java.util.Objects;
+
+public class Car implements Comparable<Car> {
 
     private static final int criteriaToMove = 4;
 
@@ -24,5 +26,23 @@ public class Car {
 
     public Name getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(location, car.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(location);
+    }
+
+    @Override
+    public int compareTo(Car otherCar) {
+        return location.compareTo(otherCar.getLocation());
     }
 }

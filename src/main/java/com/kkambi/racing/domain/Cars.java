@@ -4,7 +4,6 @@ import com.kkambi.racing.util.Dice;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,9 +26,9 @@ public class Cars {
     }
 
     public List<Car> chooseWinners() {
-        Car maxLocationCar = Collections.max(cars, Comparator.comparing(Car::getLocation));
+        Car maxLocationCar = Collections.max(cars);
         return cars.stream()
-                .filter(car -> car.getLocation().equals(maxLocationCar.getLocation()))
+                .filter(car -> car.equals(maxLocationCar))
                 .collect(Collectors.toList());
     }
 
