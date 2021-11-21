@@ -3,8 +3,8 @@ package com.step3.model;
 import java.util.Arrays;
 
 public class InputNumber {
-    private String[] carsName;
-    private int attemptCount;
+    private final String[] carsName;
+    private final int attemptCount;
 
     public InputNumber(String[] carsName, int attemptCount) {
         this.carsName = carsName;

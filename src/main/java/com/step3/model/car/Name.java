@@ -5,14 +5,14 @@ import java.util.Objects;
 public class Name {
     private static final int CAR_NAME_LENGTH_BOUND = 5;
 
-    private String name;
+    private final String name;
 
     public Name(String name) {
         validateCarName(name);
         this.name = name;
     }
 
-    public String getValue() {
+    public String get() {
         return name;
     }
 

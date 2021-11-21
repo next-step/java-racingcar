@@ -1,6 +1,5 @@
 package com.step3.model.car;
 
-import com.step3.model.car.strategy.CarMoveStrategy;
 import com.step3.model.car.strategy.MoveStrategy;
 import com.step3.util.RandomUtil;
 
