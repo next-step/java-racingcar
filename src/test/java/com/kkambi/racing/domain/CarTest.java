@@ -58,15 +58,6 @@ class CarTest {
         assertThat(locationAfterMove.getValue()).isEqualTo(location.getValue() + 1);
     }
 
-    @DisplayName("자동차 이름은 5글자를 초과할 수 없다")
-    @ValueSource(strings = {"123456", "coding"})
-    @ParameterizedTest
-    void nameMustNotOver5(String name) {
-        // when
-        // then
-        assertThatIllegalArgumentException().isThrownBy(() -> new Name(name));
-    }
-
     @DisplayName("자동차끼리 위치값으로 대소 비교할 수 있다")
     @Test
     void compareByLocationValue() {
