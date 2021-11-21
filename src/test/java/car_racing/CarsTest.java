@@ -32,20 +32,6 @@ class CarsTest {
     }
 
     @Test
-    @DisplayName("When 0 cars, returns empty list")
-    void createCars_with_zero_car() {
-        // given
-        int numberOfCount = 0;
-
-        // when
-        Cars cars = new Cars(numberOfCount);
-
-        // then
-        assertThat(cars.getCars()).isEmpty();
-        assertThat(cars.getCars().size()).isEqualTo(0);
-    }
-
-    @Test
     @DisplayName("when playOneRound with TestMoveStrategy, cars position moves to 1")
     void playOneRound() {
         // given

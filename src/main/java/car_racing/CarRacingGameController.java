@@ -22,7 +22,6 @@ public class CarRacingGameController {
             updateRacingResult();
 
         }
-
         closeGame();
     }
 
@@ -42,7 +41,12 @@ public class CarRacingGameController {
         carRacingResultHistory.update(cars);
     }
 
+    private void updateRacingWinners() {
+        carRacingResultHistory.updateWinners(cars);
+    }
+
     private void closeGame() {
+        updateRacingWinners();
         OUTPUT_VIEW.showCarRacingGameOutput(carRacingResultHistory);
     }
 

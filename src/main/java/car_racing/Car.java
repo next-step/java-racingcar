@@ -5,17 +5,15 @@ import java.util.Objects;
 public class Car {
 
     private static final int START_POSITION = 0;
+
     private final Name name;
     private int position;
 
-    // TODO: change to builder
     public Car() {
-        // 부 생성자
-        this(START_POSITION);
+        this(START_POSITION, null);
     }
 
     public Car(int position) {
-        // 주 생성자
         this(position, null);
     }
 

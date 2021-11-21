@@ -10,12 +10,12 @@ public class Cars {
 
     private final List<Car> carsForGame;
 
-    public Cars(int numberOfCars) {
-        this.carsForGame = createCars(numberOfCars);
-    }
-
     public Cars(String names) {
         this.carsForGame = createCars(names);
+    }
+
+    public Cars() {
+        this.carsForGame = new ArrayList<>();
     }
 
     /**
@@ -23,14 +23,6 @@ public class Cars {
      **/
     public Cars(List<Car> carsForGame) {
         this.carsForGame = carsForGame;
-    }
-
-    private List<Car> createCars(int numberOfCars) {
-        List<Car> cars = new ArrayList<>();
-        for (int carCount = 0; carCount < numberOfCars; carCount++) {
-            cars.add(new Car());
-        }
-        return cars;
     }
 
     private List<Car> createCars(String carNames) {
@@ -55,6 +47,19 @@ public class Cars {
         return carsForGame;
     }
 
+    public List<String> getNames() {
+        List<String> names = new ArrayList<>();
+
+        for(Car car : carsForGame) {
+            names.add(car.getStringName());
+        }
+        return names;
+    }
+
+    public void add(Car car) {
+        carsForGame.add(car);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -70,5 +75,12 @@ public class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(carsForGame);
+    }
+
+    @Override
+    public String toString() {
+        return "Cars{" +
+                "carsForGame=" + carsForGame +
+                '}';
     }
 }

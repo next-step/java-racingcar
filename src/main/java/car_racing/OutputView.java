@@ -6,8 +6,10 @@ public class OutputView {
 
     private static final String OUT_MESSAGE_GAME_ENDS = "\n--게임이 끝났습니다.--\n";
     private static final String OUT_MESSAGE_CAR_RACING_RESULT = "실행 결과";
+    private static final String OUT_MESSAGE_WINNER_ANNOUNCE_PHRASE = "가 우승했습니다.";
     private static final String CAR_MOVE_SIGNAL = "-";
     private static final String NAME_SEPARATOR = " : ";
+    private static final String NAME_SEPARATOR_FOR_WINNERS = ", ";
     private static final String ONE_ROUND_ENDS_SIGNAL = "\n";
 
     public void showCarRacingGameOutput(CarRacingResultHistory carRacingResultHistory) {
@@ -19,6 +21,9 @@ public class OutputView {
         // TODO: 3중 for 문 개선
         StringBuilder result = buildResult(racingResults);
         System.out.println(result.toString());
+
+        String winnersStr = buildWinners(carRacingResultHistory);
+        System.out.println(winnersStr + OUT_MESSAGE_WINNER_ANNOUNCE_PHRASE);
     }
 
     public StringBuilder buildResult(List<List<CarRacingResult>> roundResults) {
@@ -59,6 +64,12 @@ public class OutputView {
         }
 
         return result;
+    }
+
+    public String buildWinners(CarRacingResultHistory racingResult) {
+        Cars cars = racingResult.getWinners();
+        List<String> winnersName = cars.getNames();
+        return String.join(NAME_SEPARATOR_FOR_WINNERS, winnersName);
     }
 
 }
