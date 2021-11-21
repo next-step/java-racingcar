@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,5 +22,19 @@ class GameTest {
         }
 
         assertThat(cars.size()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("시도할 횟수 입력 값만큼 게임을 수행한다")
+    void shouldTryAsMuchAsInput() {
+        int numberOfTrial = 5;
+        List<Integer> randomNumbers = Arrays.asList(2, 4, 1, 6, 8);
+        Car car = new Car();
+
+        for (int i = 0; i < numberOfTrial; i++) {
+            car.position(randomNumbers.get(i));
+        }
+
+        assertThat(car.getPosition()).isEqualTo(3);
     }
 }
