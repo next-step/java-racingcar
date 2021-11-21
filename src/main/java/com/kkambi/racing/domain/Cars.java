@@ -5,7 +5,6 @@ import com.kkambi.racing.util.Dice;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -23,13 +22,6 @@ public class Cars {
         for (Car car : cars) {
             car.tryToMove(Dice.roll(10));
         }
-    }
-
-    public List<Car> chooseWinners() {
-        Car maxLocationCar = Collections.max(cars);
-        return cars.stream()
-                .filter(car -> car.equals(maxLocationCar))
-                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {

@@ -1,6 +1,7 @@
 package com.kkambi.racing;
 
 import com.kkambi.racing.domain.Cars;
+import com.kkambi.racing.domain.Winners;
 import com.kkambi.racing.view.InputView;
 import com.kkambi.racing.view.ResultView;
 
@@ -20,6 +21,8 @@ public class RacingApplication {
             cars.tryToMoveCars();
             resultView.printInformation(cars.getCars());
         }
-        resultView.printWinners(cars.chooseWinners());
+        Winners winners = new Winners();
+        winners.chooseWinners(cars.getCars());
+        resultView.printWinners(winners);
     }
 }
