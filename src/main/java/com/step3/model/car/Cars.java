@@ -1,6 +1,7 @@
 package com.step3.model.car;
 
 import com.step3.model.car.strategy.CarMoveStrategy;
+import com.step3.model.car.strategy.MoveStrategy;
 import com.step3.util.RandomUtil;
 
 import java.util.*;
@@ -13,11 +14,11 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars createFromName(String[] carsName) {
+    public static Cars createFromName(String[] carsName, MoveStrategy moveStrategy) {
         List<Car> cars = new LinkedList<>();
 
         for (String carName : carsName) {
-            cars.add(new Car(new Name(carName), new Position(0), new CarMoveStrategy()));
+            cars.add(new Car(new Name(carName), new Position(0), moveStrategy));
         }
 
         return Cars.createFromList(cars);
