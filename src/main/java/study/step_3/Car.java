@@ -1,11 +1,10 @@
 package study.step_3;
 
 public class Car {
-    private static final int CONDITION = 4;
     private int position;
 
-    public void position(int randomNumber) {
-        if (randomNumber >= CONDITION) {
+    public void position(boolean movable) {
+        if (movable) {
             this.position++;
         }
     }

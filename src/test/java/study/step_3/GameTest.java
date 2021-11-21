@@ -28,7 +28,7 @@ class GameTest {
     @DisplayName("시도할 횟수 입력 값만큼 게임을 수행한다")
     void shouldTryAsMuchAsInput() {
         int numberOfTrial = 5;
-        List<Integer> randomNumbers = Arrays.asList(2, 4, 1, 6, 8);
+        List<Boolean> randomNumbers = Arrays.asList(true, false, false, true, true);
         Car car = new Car();
 
         for (int i = 0; i < numberOfTrial; i++) {
