@@ -1,49 +1,59 @@
 package racing.model;
 
-import javax.naming.Name;
-import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.Objects;
 
-/*
- *
- * Car
- *
- * @version 1.0.0
- *
- * 2021-11-12
- *
- * Copyright tnals1422
+/**
+ * .
  */
 public class Car {
 
-    private static final int CRITERIA = 4;
-    private final CarName name;
-    private final CarPosition position;
+    private final Name name;
+    private Position position;
 
-    public Car(String carName) {
-        this(carName, 0);
+    public Car(String name) {
+            this.name = new Name(name);
+            this.position = new Position();
     }
 
-    public Car(String carName, int position) {
-        this.name = new CarName(carName);
-        this.position = new CarPosition(position);
+    public Car(Car car) {
+        this.name = new Name(car.name.getName());
+        this.position = new Position(car.position.getPosition());
     }
 
-    public void moveOnSatisfiedCondition(int condition) {
-        Optional.of(condition)
-                .filter(isForward())
-                .ifPresent(x -> position.forward());
+    public String stringName() {
+        return name.getName();
     }
 
-    private Predicate<Integer> isForward() {
-        return number -> number >= CRITERIA;
-    }
-
-    public int getPosition() {
+    public int intPosition() {
         return position.getPosition();
     }
 
-    public String getName() {
-        return name.getCarName();
+    public void move(int condition) {
+        position = position.moveOnSatisfiedCondition(condition);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "name=" + name +
+                ", position=" + position +
+                '}';
     }
 }

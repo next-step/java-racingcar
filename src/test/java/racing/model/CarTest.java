@@ -1,27 +1,19 @@
 package racing.model;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
-    @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    @DisplayName("전진")
-    void forward(int condition) {
-        Car car = new Car("pobi");
-        car.moveOnSatisfiedCondition(condition);
-        assertThat(car.getPosition()).isEqualTo(1);
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    @DisplayName("움직이지 않음")
-    void hold(int condition) {
-        Car car = new Car("pobi");
-        car.moveOnSatisfiedCondition(condition);
-        assertThat(car.getPosition()).isEqualTo(0);
+    @Test
+    void 포지션비교() {
+        Car car1 = new Car("car");
+        car1.move(5);
+        Car car2 = new Car("car");
+        car2.move(6);
+        assertThat(car1).isEqualTo(car2);
+        Car car3 = new Car("car");
+        car2.move(4);
+        assertThat(car1).isNotEqualTo(car3);
     }
 }

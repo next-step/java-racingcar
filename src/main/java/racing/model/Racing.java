@@ -1,35 +1,27 @@
 package racing.model;
 
-import java.util.stream.IntStream;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 
-/*
- *
- * Racing
- *
- * @version 1.0.0
- *
- * 2021-11-12
- *
- * Copyright tnals1422
+/**
+ * .
  */
 public class Racing {
-
-    private final int roundCount;
+    private final Integer roundCount;
     private final Cars cars;
-    private final RacingResult racingResult;
+    private final RacingResult racingResult = new RacingResult();
 
-    public Racing(String carName, int roundCount) {
-        cars = new Cars(carName);
+    public Racing(String carName, Integer roundCount) {
         this.roundCount = roundCount;
-        this.racingResult = new RacingResult();
+        this.cars = new Cars(carName);
     }
 
     public RacingResult start() {
-        IntStream.range(0, roundCount)
-                .forEach(i -> {
-                    cars.tryMovingCarsPerRound();
-                    racingResult.add(new RoundResult(cars));
-                });
+        for (int i = 1; i <= roundCount; i++) {
+            List<Car> cars = this.cars.moveCars();
+            racingResult.add(new RoundResult(cars));
+        }
         return racingResult;
     }
 }

@@ -26,18 +26,18 @@ public class OutputView {
 
     public void printRacingResult() {
         System.out.println("실행 결과");
-        racingResult.getRecords().forEach(this::printRoundResult);
-        System.out.println(racingResult.getWinner() + "가 최종 우승했습니다.");
+        racingResult.records().forEach(this::printRoundResult);
+        System.out.println(racingResult.winner() + "가 최종 우승했습니다.");
     }
 
     private void printRoundResult(RoundResult roundResult) {
-        roundResult.getRecords().forEach(carResult ->
-                System.out.println(carResult.getName() + " : " + convertPositionToSymbol(carResult.getPosition()))
-        );
+        roundResult.records().forEach(car ->{
+            System.out.println(car.stringName() + " : " + convertPositionToSymbol(car.intPosition()));
+        });
         System.out.println();
     }
 
-    private String convertPositionToSymbol(Integer carResult) {
+    private String convertPositionToSymbol(int carResult) {
         String result = "";
         if (carResult > 0) {
             StringBuilder stringBuilder = new StringBuilder();

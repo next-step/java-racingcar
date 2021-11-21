@@ -1,10 +1,12 @@
 package racing.controller;
 
-import racing.model.RacingResult;
+import racing.model.Cars;
 import racing.model.Racing;
+import racing.model.RacingResult;
 import racing.view.InputView;
 import racing.view.OutputView;
 
+import java.util.List;
 import java.util.Scanner;
 
 /*

@@ -1,16 +1,10 @@
 package racing.model;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 
-/*
- *
- * RacingResult
- *
- * @version 1.0.0
- *
- * 2021-11-12
- *
- * Copyright tnals1422
+/**
+ * .
  */
 public class RacingResult {
 
@@ -24,11 +18,20 @@ public class RacingResult {
         roundResults.add(roundResult);
     }
 
-    public List<RoundResult> getRecords() {
-        return Collections.unmodifiableList(roundResults);
+    public List<RoundResult> records() {
+        return roundResults;
     }
 
-    public String getWinner() {
-        return new Cars(roundResults.get((roundResults.size() - 1)).getRecords()).getWinner();
+    public String winner() {
+        Cars cars = new Cars(roundResults.get(roundResults.size() - 1).records());
+        return cars.winners();
     }
+
+    @Override
+    public String toString() {
+        return "RacingResult{" +
+                "roundResults=" + roundResults +
+                '}';
+    }
+
 }
