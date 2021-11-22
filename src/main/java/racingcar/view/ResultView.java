@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.Car;
-import racingcar.Cars;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 import java.util.stream.IntStream;
 
@@ -19,8 +19,13 @@ public class ResultView {
     }
 
     private void printACarMovement(Car car) {
-        IntStream.range(0, car.getMovement())
+        System.out.print(car.getCarName().getName() + " : ");
+        IntStream.range(0, car.getCarPosition().getPosition())
                 .forEach(i -> System.out.print(MOVEMENT));
         System.out.println();
+    }
+
+    public void printWinners(Cars cars) {
+        System.out.println(cars.getWinners() +"가 최종 우승했습니다.");
     }
 }

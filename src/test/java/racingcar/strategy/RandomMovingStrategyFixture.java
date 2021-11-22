@@ -1,17 +1,14 @@
-package racingcar;
+package racingcar.strategy;
 
 import java.util.Random;
 
-public class RandomMovingStrategy implements MovingStrategy {
+public class RandomMovingStrategyFixture implements MovingStrategy {
     private final static int RANDOM_RANGE = 10;
     private final static int CUTLINE = 4;
     private final Random random;
 
-    public RandomMovingStrategy() {
-        this.random = new Random();
-    }
 
-    public RandomMovingStrategy(long randomSeed) {
+    public RandomMovingStrategyFixture(long randomSeed) {
         this.random = new Random(randomSeed);
     }
 
