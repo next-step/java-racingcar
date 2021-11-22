@@ -1,7 +1,7 @@
-package step3.view;
+package racinggame.view;
 
-import step3.domain.entity.Contest;
-import step3.domain.value.Location;
+import racinggame.domain.entity.Contest;
+import racinggame.domain.value.Location;
 
 import java.util.List;
 

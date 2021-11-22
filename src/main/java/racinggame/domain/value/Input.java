@@ -1,6 +1,6 @@
-package step3.domain.value;
+package racinggame.domain.value;
 
-import step3.domain.entity.Car;
+import racinggame.domain.entity.Car;
 
 import java.util.Arrays;
 import java.util.List;

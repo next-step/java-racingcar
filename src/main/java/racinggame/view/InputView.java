@@ -1,6 +1,6 @@
-package step3.view;
+package racinggame.view;
 
-import step3.domain.value.Input;
+import racinggame.domain.value.Input;
 
 import java.util.Scanner;
 

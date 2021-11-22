@@ -1,7 +1,7 @@
-package step3.domain.entity;
+package racinggame.domain.entity;
 
-import step3.domain.movingstrategy.MovingStrategy;
-import step3.domain.value.Location;
+import racinggame.domain.movingstrategy.MovingStrategy;
+import racinggame.domain.value.Location;
 
 public class Car {
     private Location location;

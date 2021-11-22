@@ -1,11 +1,11 @@
-package step3.controller;
+package racinggame.controller;
 
-import step3.domain.entity.Car;
-import step3.domain.entity.Contest;
-import step3.domain.entity.Participants;
-import step3.domain.movingstrategy.MovingStrategy;
-import step3.domain.value.Input;
-import step3.view.LocationView;
+import racinggame.domain.entity.Car;
+import racinggame.domain.entity.Contest;
+import racinggame.domain.entity.Participants;
+import racinggame.domain.movingstrategy.MovingStrategy;
+import racinggame.domain.value.Input;
+import racinggame.view.LocationView;
 
 import java.util.List;
 

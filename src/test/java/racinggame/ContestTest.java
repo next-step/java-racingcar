@@ -1,11 +1,10 @@
-package step3;
+package racinggame;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.entity.Car;
-import step3.domain.entity.Contest;
-import step3.domain.entity.Participants;
-import step3.view.LocationView;
+import racinggame.domain.entity.Car;
+import racinggame.domain.entity.Contest;
+import racinggame.domain.entity.Participants;
+import racinggame.view.LocationView;
 
 import java.util.List;
 import java.util.stream.Collectors;

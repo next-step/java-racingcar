@@ -1,10 +1,10 @@
-package step3;
+package racinggame;
 
-import step3.controller.GameController;
-import step3.domain.movingstrategy.RandomMovingStrategy;
-import step3.domain.value.Input;
-import step3.view.InputView;
-import step3.view.LocationView;
+import racinggame.controller.GameController;
+import racinggame.domain.movingstrategy.RandomMovingStrategy;
+import racinggame.domain.value.Input;
+import racinggame.view.InputView;
+import racinggame.view.LocationView;
 
 public class SimpleCarRacingGame {
     public static void main(String[] args) {

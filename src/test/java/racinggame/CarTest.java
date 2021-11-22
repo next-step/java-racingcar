@@ -1,9 +1,9 @@
-package step3;
+package racinggame;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.entity.Car;
-import step3.domain.value.Location;
+import racinggame.domain.entity.Car;
+import racinggame.domain.value.Location;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

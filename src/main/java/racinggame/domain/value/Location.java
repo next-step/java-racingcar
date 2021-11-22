@@ -1,4 +1,4 @@
-package step3.domain.value;
+package racinggame.domain.value;
 
 import java.util.Objects;
 
