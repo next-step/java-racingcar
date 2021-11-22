@@ -11,8 +11,12 @@ public class Car {
     }
 
     public Car(int id, Movable movable, CarName name) {
+        this(id, movable, name, 1);
+    }
+
+    public Car(int id, Movable movable, CarName name, int distance) {
         this.id = id;
-        this.distance = 1;
+        this.distance = distance;
         this.movable = movable;
         this.name = name;
     }
@@ -21,9 +25,17 @@ public class Car {
         return distance;
     }
 
+    public String getCarName() {
+        return name.get();
+    }
+
     public void move(int num) {
         if (movable.move(num)) {
             distance++;
         }
+    }
+
+    public boolean isWinner(int maxDistance) {
+        return distance == maxDistance;
     }
 }

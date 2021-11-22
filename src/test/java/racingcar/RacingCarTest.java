@@ -68,6 +68,14 @@ public class RacingCarTest {
         assertThat(RacingCar.create(3, 5)).isEqualTo(RacingCar.create(3, 5));
     }
 
+    @DisplayName("RacingCar 생성 이름")
+    @Test
+    void 자동차경주_생성_이름() {
+        assertThat(RacingCar.create("poby,crong,honux", 5)).isEqualTo(RacingCar.create("poby,crong,honux", 5));
+    }
+
+
+
     @DisplayName("자동차 대수가 0 이하일 경우 예외")
     @ParameterizedTest
     @ValueSource(ints = {0, -1, -5})

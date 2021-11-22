@@ -8,15 +8,18 @@ import java.util.Objects;
 public class RacingCar {
     private int carCount;
     private int racingCount;
-    private List<Car> cars = new ArrayList<>();
+    private Cars cars;
 
     private RacingCar(int carCount, int racingCount) {
         this.carCount = carCount;
         this.racingCount = racingCount;
+        this.cars = initCars(carCount);
+    }
 
-        if (carCount > 0) {
-            addCar(carCount);
-        }
+    private RacingCar(String[] carNames, int racingCount) {
+        this.carCount = carNames.length;
+        this.racingCount = racingCount;
+        this.cars = initCars(carNames);
     }
 
     public static RacingCar create(int carCount, int racingCount) {
@@ -26,25 +29,35 @@ public class RacingCar {
         return new RacingCar(carCount, racingCount);
     }
 
-    private void addCar(int num) {
-        for (int i = 0; i < num; i++) {
+    public static RacingCar create(String carNames, int racingCount) {
+        if (carNames == null || carNames.length() == 0) {
+            throw new IllegalArgumentException("자동차 이름을 입력해야 합니다.");
+        }
+        String[] names = carNames.split(",");
+        return new RacingCar(names, racingCount);
+    }
+
+    private static Cars initCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(new Car(cars.size() + 1, new LoadMovable(), new CarName(carName)));
+        }
+        return new Cars(cars);
+    }
+
+    private static Cars initCars(int carCount) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
             cars.add(new Car(cars.size() + 1, new LoadMovable()));
         }
+        return new Cars(cars);
     }
 
     public void start() {
         ResultView.println("실행결과");
         for (int i = 0; i < racingCount; i++) {
-            race();
+            cars.race();
             ResultView.println("");
-        }
-    }
-
-    private void race() {
-        for (int i = 0; i < cars.size(); i++) {
-            Car current = cars.get(i);
-            current.move(RandomGenerator.generate());
-            ResultView.printCarDistance(current.getDistance());
         }
     }
 
