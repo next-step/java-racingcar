@@ -15,7 +15,7 @@ public class ResultView {
         }
 
         for (Car car : cars.getList()) {
-            System.out.println(String.format("%s%s%s", car.getId().getValue(), ":", getResult(car)));
+            System.out.println(String.format("%s:%s", car.getName().get(), getResult(car)));
         }
 
         System.out.println();
@@ -28,7 +28,7 @@ public class ResultView {
     private static String getResult(Car car) {
         StringBuilder sb = new StringBuilder();
 
-        for (int idx = 0; idx < car.getPosition().getValue(); idx++) {
+        for (int idx = 0; idx < car.getPosition().get(); idx++) {
             sb.append(MOVE_MARK);
         }
 
@@ -36,8 +36,10 @@ public class ResultView {
     }
 
     private static String getWinnerResult(Cars cars) {
-        return cars.getWinnerCars().getList().stream()
-                .map(c -> c.getId().getValue())
+        return cars.getWinnerCars()
+                .getList()
+                .stream()
+                .map(c -> c.getName().get())
                 .collect(Collectors.joining(CAR_NAMES_SPLIT_MARK));
     }
 }

@@ -1,47 +1,63 @@
 package com.step3.model.car;
 
-import com.step3.model.car.strategy.CarMoveStrategy;
+import com.step3.model.car.strategy.MoveStrategy;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(String[] carsName) {
-        List<Car> cars = new LinkedList<>();
-
-        for (String carName : carsName) {
-            cars.add(new Car(new Name(carName), new Position(0), new CarMoveStrategy()));
-        }
-
-        this.cars = cars;
-    }
-
     private Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public Cars moveCars() {
-        for (Car car : this.cars) {
-            car.move(car.getMoveStrategy().isMove());
+    public static Cars createFromName(String[] carsName) {
+        List<Car> cars = new LinkedList<>();
+
+        for (String carName : carsName) {
+            cars.add(new Car(new Name(carName), new Position(0)));
         }
 
+        return Cars.createFromList(cars);
+    }
+
+    public static Cars createFromList(List<Car> cars) {
         return new Cars(cars);
     }
 
+    public Cars moveCars(MoveStrategy moveStrategy) {
+        for (Car car : this.cars) {
+            car.move(moveStrategy);
+        }
+
+        return Cars.createFromList(cars);
+    }
+
     public Cars getWinnerCars() {
-        int maxPosition = cars.stream().mapToInt(c -> c.getPosition().getValue()).max().getAsInt();
         List<Car> winnerCars = cars.stream()
-                .filter(c -> c.getPosition().getValue() == maxPosition)
+                .filter(c -> c.getPosition().equals(getWinnerCarPosition()))
                 .collect(Collectors.toList());
 
-        return new Cars(winnerCars);
+        return Cars.createFromList(winnerCars);
+    }
+
+    private Position getWinnerCarPosition() {
+        return cars.stream()
+                .map(c -> c.getPosition())
+                .max(Position::compareTo)
+                .get();
     }
 
     public List<Car> getList() {
         return Collections.unmodifiableList(cars);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars1 = (Cars) o;
+        return cars1.cars.containsAll(cars) && cars.containsAll(cars1.cars);
     }
 }
