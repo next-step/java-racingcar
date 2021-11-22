@@ -1,24 +1,35 @@
 package racing.winner.domain;
 
-import racing.winner.domain.Car;
-
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.Comparator.naturalOrder;
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
 
 public class CarRacingGame {
 
     private final List<Car> cars;
 
-    public CarRacingGame(int lineCount) {
-        Car[] carBuffer = new Car[lineCount];
-        for (int i = 0; i < lineCount; i++) {
-            carBuffer[i] = new Car();
-        }
-        cars = Arrays.asList(carBuffer);
+    public CarRacingGame(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public List<Integer> nextRound(List<Integer> diceNumbers) {
+    public List<Car> getWinners() {
+        int topTravelDistance = topScore();
+        return cars.stream()
+                .filter(car -> topTravelDistance <= car.getDrivingDistance())
+                .collect(collectingAndThen(toList(), Collections::unmodifiableList));
+    }
+
+    private int topScore() {
+        return displayTrack().stream()
+                .map(Car::getDrivingDistance)
+                .max(naturalOrder())
+                .orElse(0);
+    }
+
+    public List<Car> nextRound(List<Integer> diceNumbers) {
         for (int i = 0; i < cars.size(); i++) {
             Car car = cars.get(i);
             int diceNumber = diceNumbers.get(i);
@@ -27,11 +38,7 @@ public class CarRacingGame {
         return displayTrack();
     }
 
-    private List<Integer> displayTrack() {
-        return cars.stream()
-                .map(Car::getDrivingDistance)
-                .collect(
-                        Collectors.toList()
-                );
+    private List<Car> displayTrack() {
+        return cars;
     }
 }

@@ -1,18 +1,20 @@
 package racing.winner.application;
 
-import racing.basic.domain.CarRacingGame;
-import racing.basic.resolver.InputViewResolver;
-import racing.basic.resolver.OutputViewResolver;
+import racing.winner.domain.CarRacingGame;
+import racing.winner.resolver.CarDto.Request;
+import racing.winner.resolver.CarDto.Response;
+import racing.winner.resolver.InputViewResolver;
+import racing.winner.resolver.OutputViewResolver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class CarRacingApplication {
+import static racing.winner.domain.CarBuilder.toCar;
+import static racing.winner.domain.CarBuilder.toCarInformation;
 
-    private static final int CAR_COUNT_LOCATION  = 0;
-    private static final int LOOP_COUNT_LOCATION = 1;
+public class CarRacingApplication {
 
     private InputViewResolver  inputViewResolver;
     private OutputViewResolver outputViewResolver;
@@ -26,21 +28,20 @@ public class CarRacingApplication {
 
     public void startGame() {
         List<String> questions = Arrays.asList(
-                 "자동차 대수는 몇 대 인가요?"
+                 "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)."
                 ,"시도할 회수는 몇 회 인가요?"
         );
-        List<Integer> answers = inputViewResolver.askQuestions(questions);
+        Request.GameCreation gameCreationRequest = inputViewResolver.askQuestions(questions);
 
-        int carCount  = answers.get(CAR_COUNT_LOCATION);
-        int loopCount = answers.get(LOOP_COUNT_LOCATION);
+        carRacingGame = new CarRacingGame(toCar(gameCreationRequest));
 
-        carRacingGame = new CarRacingGame(carCount);
-
-        for (int i = 0; i < loopCount; i++) {
-            List<Integer> randomNumbers = randomNumbersByCarCount(carCount);
-            List<Integer> displayTrack = carRacingGame.nextRound(randomNumbers);
-            outputViewResolver.sendMessage(displayTrack);
+        for (int i = 0; i < gameCreationRequest.getLoopCount(); i++) {
+            List<Integer> randomNumbers = randomNumbersByCarCount(gameCreationRequest.getCarCount());
+            List<Response.CarInformation> displayTrack = toCarInformation(carRacingGame.nextRound(randomNumbers));
+            outputViewResolver.displayTracks(displayTrack);
         }
+        List<Response.CarInformation> winners = toCarInformation(carRacingGame.getWinners());
+        outputViewResolver.displayWinners(winners);
     }
 
     private List<Integer> randomNumbersByCarCount(int carCount) {
