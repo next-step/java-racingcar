@@ -2,7 +2,7 @@ package com.step3.controller;
 
 import com.step3.model.InputNumber;
 import com.step3.model.car.Cars;
-import com.step3.model.car.strategy.CarMoveStrategy;
+import com.step3.model.car.strategy.RandomMoveStrategy;
 import com.step3.view.ResultView;
 
 public class GameProcessor {
@@ -10,7 +10,7 @@ public class GameProcessor {
         Cars cars = Cars.createFromName(myNumber.getCarsName());
 
         for (int attempt = 0; attempt < myNumber.getAttemptCount(); attempt++) {
-            ResultView.showResults(cars.moveCars(new CarMoveStrategy()), attempt);
+            ResultView.showResults(cars.moveCars(new RandomMoveStrategy()), attempt);
         }
 
         ResultView.printWinnerResult(cars);

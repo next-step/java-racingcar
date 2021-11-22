@@ -1,9 +1,6 @@
 package study;
 
-import com.step3.model.car.Car;
-import com.step3.model.car.Name;
 import com.step3.model.car.Position;
-import com.step3.model.car.strategy.CarMoveStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
