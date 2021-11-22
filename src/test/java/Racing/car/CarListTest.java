@@ -22,7 +22,7 @@ class CarListTest {
     carList.moveAllCar(stage);
     //then
     RacingString display = carList.displayCarDistance();
-    assertThat(display.toString().split("\n").length).isEqualTo(3);
+    assertThat(display.toString()).isNotEmpty();
   }
 
 }

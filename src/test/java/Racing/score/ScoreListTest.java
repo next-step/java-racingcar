@@ -3,6 +3,7 @@ package Racing.score;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import Racing.stage.Stage;
+import Racing.type.RacingNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +14,7 @@ class ScoreListTest {
   void addScore() {
     // given
     Stage stage = new Stage();
-    Score score = new Score(stage);
+    Score score = new Score(stage, new RacingNumber(5));
     ScoreList scoreList = new ScoreList();
     // when
     scoreList.addScore(score);

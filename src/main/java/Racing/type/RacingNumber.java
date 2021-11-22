@@ -9,7 +9,8 @@ import java.util.Random;
 
 public class RacingNumber {
 
-  private final static double RANDOM_BOUND = 5.0;
+  public final static RacingNumber ZERO = new RacingNumber(0);
+  private final static double RANDOM_BOUND = 9.0;
   private final double value;
 
   public RacingNumber(int number) {
@@ -21,7 +22,7 @@ public class RacingNumber {
   }
 
   public static RacingNumber getRandomNumber() {
-    int number = new Random().nextInt((int) RacingNumber.RANDOM_BOUND) + 4;
+    int number = new Random().nextInt((int) RacingNumber.RANDOM_BOUND) + 0;
     return new RacingNumber(number);
   }
 
@@ -44,6 +45,10 @@ public class RacingNumber {
 
   public int parseInt() {
     return (int) value;
+  }
+
+  public boolean isBiggerThan(RacingNumber compare) {
+    return this.value < compare.value;
   }
 
   public <T> List<T> generateInstanceList(Class<T> targetClass) {

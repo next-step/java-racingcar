@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import Racing.score.Score;
 import Racing.stage.Stage;
+import Racing.type.RacingNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,11 +16,23 @@ class CarTest {
     // given
     Car car = new Car();
     Stage stage = new Stage();
-    Score score = new Score(stage);
+    Score score = new Score(stage, new RacingNumber(4));
     // when
     car.move(score);
     // then
-    assertThat(car.presentDistance().toString().length()).isGreaterThanOrEqualTo(4);
-    assertThat(car.presentDistance().toString().length()).isLessThanOrEqualTo(9);
+    assertThat(car.presentDistance().toString().length()).isEqualTo(4);
+  }
+
+  @Test
+  @DisplayName("Car 는 Score 가 4이하이면 move의 거리가 0 입니다")
+  void testMove_stop() {
+    // given
+    Car car = new Car();
+    Stage stage = new Stage();
+    Score score = new Score(stage, new RacingNumber(3));
+    // when
+    car.move(score);
+    // then
+    assertThat(car.presentDistance().toString().length()).isLessThanOrEqualTo(0);
   }
 }
