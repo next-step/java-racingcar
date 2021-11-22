@@ -15,9 +15,9 @@ public class CarTest {
 	void goCar(){
 		//given
 		boolean isMoveCar = true;
-
+		String name = "juu";
 		//when
-		Car car = new Car();
+		Car car = new Car(name);
 		car.go(isMoveCar);
 		Position position = car.carPosition();
 
@@ -30,14 +30,22 @@ public class CarTest {
 	void stopCar(){
 		//given
 		boolean isMoveCar = false;
+		String name = "juu";
 
 		//when
-		Car car = new Car();
+		Car car = new Car(name);
 		car.go(isMoveCar);
 		Position position = car.carPosition();
 
 		//then
 		assertThat(position.valueOfPosition()).isEqualTo(0);
+	}
+
+	@Test
+	@DisplayName("자동차 생성시 이름 지정")
+	void createCarAndName(){
+		String name = "pobi";
+		Car car = new Car(name);
 	}
 
 }

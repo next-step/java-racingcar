@@ -3,9 +3,11 @@ package study.racingcar.domain;
 public class Car {
 
 	private final Position position;
+	private final Name name;
 
-	public Car() {
+	public Car(String name) {
 		this.position = new Position();
+		this.name = new Name(name);
 	}
 
 	public Position carPosition() {

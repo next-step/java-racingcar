@@ -9,8 +9,8 @@ public class RacingGame {
 	private final int rounds;
 	private final MoveStrategy strategy;
 
-	public RacingGame(int userInputCar, int userInputRound, MoveStrategy strategy) {
-		this.cars = new Cars(userInputCar);
+	public RacingGame(List<String> userInputCarNames, int userInputRound, MoveStrategy strategy) {
+		this.cars = new Cars(userInputCarNames);
 		this.rounds = userInputRound;
 		this.strategy = strategy;
 	}

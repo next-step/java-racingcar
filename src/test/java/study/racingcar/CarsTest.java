@@ -2,6 +2,7 @@ package study.racingcar;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -18,8 +19,10 @@ public class CarsTest {
 	@BeforeEach
 	void init(){
 		//given
-		int carCount = 5;
-		cars = new Cars(carCount);
+		// int carCount = 5;
+		// cars = new Cars(carCount);
+		List<String> names = Arrays.asList("pobi", "juu", "alex");
+		cars = new Cars(names);
 	}
 
 	@Test
@@ -32,5 +35,11 @@ public class CarsTest {
 		for (Position position : positions) {
 			assertThat(position.valueOfPosition()).isEqualTo(0);
 		}
+	}
+
+	@Test
+	@DisplayName("Car count 대신 이름 arrayList로 변경")
+	void ddd(){
+
 	}
 }

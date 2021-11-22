@@ -5,15 +5,12 @@ import java.util.List;
 
 public class Cars {
 
-
-
 	private final List<Car> cars;
 
-	public Cars(int carCount) {
+	public Cars(List<String> names) {
 		this.cars = new ArrayList<>();
-
-		for (int i = 0; i < carCount; i++) {
-			this.cars.add(new Car());
+		for (String name : names) {
+			this.cars.add(new Car(name));
 		}
 	}
 

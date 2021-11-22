@@ -1,5 +1,7 @@
 package study.racingcar.controller;
 
+import java.util.List;
+
 import study.racingcar.domain.MoveStrategy;
 import study.racingcar.domain.RacingGame;
 import study.racingcar.view.InputView;
@@ -20,9 +22,9 @@ public class GameController {
 	}
 
 	private static RacingGame readyToGame(MoveStrategy strategy) {
-		int carCount = InputView.inputCarCountByUser();
+		List<String> names = InputView.inputCarNamesByUser();
 		int gameRounds = InputView.inputGameRoundByUser();
-		return new RacingGame(carCount, gameRounds, strategy);
+		return new RacingGame(names, gameRounds, strategy);
 	}
 
 

@@ -37,7 +37,17 @@ public class InputViewTest {
 		provideInput(expected);
 
 		assertThatExceptionOfType(IllegalArgumentException.class)
-			.isThrownBy(() -> InputView.inputCarCountByUser());
+			.isThrownBy(InputView::inputCarCountByUser);
+	}
+
+	@Test
+	@DisplayName("쉼표가 아닌 구분자로 입력할 경우")
+	void inputCarNames(){
+		String expected = "pobi:crong:honux";
+		provideInput(expected);
+
+		assertThatExceptionOfType(IllegalArgumentException.class)
+			.isThrownBy(InputView::inputCarNamesByUser);
 	}
 
 }
