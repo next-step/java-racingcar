@@ -1,4 +1,4 @@
-package study;
+package study.step_2;
 
 import java.util.Objects;
 
