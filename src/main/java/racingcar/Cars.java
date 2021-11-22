@@ -18,6 +18,15 @@ public class Cars {
         }
     }
 
+    public String findWinnersString() {
+        List<Car> winners = findWinners();
+        String[] winnersStr = new String[winners.size()];
+        for (int i = 0; i < winners.size(); i++) {
+            winnersStr[i] = winners.get(i).getCarName();
+        }
+        return String.join(", ", winnersStr);
+    }
+
     public List<Car> findWinners() {
         List<Car> winners = new ArrayList<>();
         int maxDistance = getMaxDistance();

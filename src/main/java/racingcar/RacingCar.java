@@ -59,6 +59,7 @@ public class RacingCar {
             cars.race();
             ResultView.println("");
         }
+        ResultView.printWinners(cars.findWinnersString());
     }
 
     @Override
