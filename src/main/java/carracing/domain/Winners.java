@@ -1,28 +1,30 @@
 package carracing.domain;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Winners {
 
     private final List<Car> winners;
-    private int maximumDistance;
 
     public Winners(List<Car> cars) {
-        maximumDistanced(cars);
+        getMaximumDistance(cars);
 
-        this.winners = cars.stream()
+        this.winners = cars;
+    }
+
+    public List<Car> getWinners() {
+        int maximumDistance = getMaximumDistance(this.winners);
+        return this.winners.stream()
                 .filter(car -> car.getPosition() == maximumDistance)
                 .collect(Collectors.toList());
     }
 
-    public List<Car> getWinners() {
-        return this.winners;
-    }
-
-    public void maximumDistanced(List<Car> cars) {
-        for (Car car : cars) {
-            this.maximumDistance = Math.max(this.maximumDistance, car.getPosition());
-        }
+    private int getMaximumDistance(List<Car> cars) {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(NoSuchElementException::new);
     }
 }
