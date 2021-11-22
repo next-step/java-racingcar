@@ -1,7 +1,10 @@
 package com.kkambi.racing.domain;
 
+import com.kkambi.racing.strategy.MovingStrategy;
+
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -11,9 +14,9 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void tryToMoveCars() {
+    public void tryToMoveCars(MovingStrategy movingStrategy) {
         for (Car car : cars) {
-            car.move();
+            car.move(movingStrategy);
         }
     }
 

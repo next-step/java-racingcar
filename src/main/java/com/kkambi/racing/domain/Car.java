@@ -8,15 +8,16 @@ public class Car implements Comparable<Car> {
 
     protected Location location;
     protected final Name name;
-    private MovingStrategy movingStrategy;
 
     public Car(final int location, final String name) {
         this.location = new Location(location);
         this.name = new Name(name);
     }
 
-    public void move() {
-        this.location = movingStrategy.move(location);
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) {
+            this.location = this.location.move();
+        }
     }
 
     public Location getLocation() {
@@ -25,10 +26,6 @@ public class Car implements Comparable<Car> {
 
     public Name getName() {
         return name;
-    }
-
-    public void setMovingStrategy(MovingStrategy movingStrategy) {
-        this.movingStrategy = movingStrategy;
     }
 
     @Override
