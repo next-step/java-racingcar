@@ -6,7 +6,7 @@ public class CarMoveStrategy implements MoveStrategy {
     private static final int MOVE_POSSIBLE_BOUND = 4;
 
     @Override
-    public boolean isMove(int randomValue) {
-        return randomValue > MOVE_POSSIBLE_BOUND;
+    public boolean isMove() {
+        return RandomUtil.getRandomValue() > MOVE_POSSIBLE_BOUND;
     }
 }

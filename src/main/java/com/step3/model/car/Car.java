@@ -5,23 +5,14 @@ import com.step3.model.car.strategy.MoveStrategy;
 public class Car {
     private Name name;
     private Position position;
-    private MoveStrategy moveStrategy;
 
-    public Car(Name id, Position position, MoveStrategy moveStrategy) {
+    public Car(Name id, Position position) {
         this.name = id;
         this.position = position;
-        this.moveStrategy = moveStrategy;
     }
 
-    public Car move(boolean isMoved) {
-        if (isMoved) {
-            this.position = this.position.add();
-        }
-        return this;
-    }
-
-    public Car move(int randomValue) {
-        if (moveStrategy.isMove(randomValue)) {
+    public Car move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMove()) {
             this.position = this.position.add();
         }
         return this;

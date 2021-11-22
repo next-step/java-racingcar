@@ -1,7 +1,6 @@
 package com.step3.model.car;
 
 import com.step3.model.car.strategy.MoveStrategy;
-import com.step3.util.RandomUtil;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -13,11 +12,11 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars createFromName(String[] carsName, MoveStrategy moveStrategy) {
+    public static Cars createFromName(String[] carsName) {
         List<Car> cars = new LinkedList<>();
 
         for (String carName : carsName) {
-            cars.add(new Car(new Name(carName), new Position(0), moveStrategy));
+            cars.add(new Car(new Name(carName), new Position(0)));
         }
 
         return Cars.createFromList(cars);
@@ -27,25 +26,27 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public Cars moveCars() {
+    public Cars moveCars(MoveStrategy moveStrategy) {
         for (Car car : this.cars) {
-            car.move(RandomUtil.getRandomValue());
+            car.move(moveStrategy);
         }
 
         return Cars.createFromList(cars);
     }
 
     public Cars getWinnerCars() {
-        Position maxPosition = cars.stream()
-                .map(c -> c.getPosition())
-                .max(Position::compareTo)
-                .get();
-
         List<Car> winnerCars = cars.stream()
-                .filter(c -> c.getPosition().equals(maxPosition))
+                .filter(c -> c.getPosition().equals(getMaxPosition()))
                 .collect(Collectors.toList());
 
         return Cars.createFromList(winnerCars);
+    }
+
+    private Position getMaxPosition() {
+        return cars.stream()
+                .map(c -> c.getPosition())
+                .max(Position::compareTo)
+                .get();
     }
 
     public List<Car> getList() {
