@@ -1,27 +1,30 @@
 package study;
 
 import com.step3.model.car.Position;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class PositionTest {
-    @Test
+    @ParameterizedTest
     @DisplayName("Position class 생성자 test")
-    void create() {
+    @CsvSource(value = {"1,true", "0,false"})
+    void create(int value, boolean expected) {
         Position position = new Position(1);
-        assertThat(position.equals(new Position(1))).isTrue();
-        assertThat(position.equals(new Position(0))).isFalse();
+        Assertions.assertEquals(position.equals(new Position(value)), expected);
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("Position 이동 메서드 test")
-    void add() {
-        Position position = new Position(1);
-        assertThat(position.add().equals(new Position(2))).isTrue();
-        assertThat(position.add().equals(new Position(1))).isFalse();
+    @CsvSource(value = {"1,true", "0,false"})
+    void add(int value, boolean expected) {
+        Position position = new Position(0).add();
+        Assertions.assertEquals(position.equals(new Position(value)), expected);
     }
 
     @Test

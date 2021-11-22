@@ -8,7 +8,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,11 +15,9 @@ public class CarsTest {
     @Test
     @DisplayName("차 List를 이용한 생성자 Test")
     void createFromList() {
-        List<Car> cars = new ArrayList() {{
+        Cars fromList = Cars.createFromList(new ArrayList() {{
             add(new Car(new Name("test1"), new Position(0)));
-        }};
-
-        Cars fromList = Cars.createFromList(cars);
+        }});
 
         assertThat(fromList.getList()).containsExactly(new Car(new Name("test1"), new Position(0)));
     }
@@ -37,19 +34,20 @@ public class CarsTest {
     }
 
     @Test
+    @DisplayName("Cars 이동 Test")
     void moveCars() {
         Cars cars = Cars.createFromName("pobi,crong,honux".split(","));
 
         assertThat(cars.moveCars(() -> true).getList())
-                .isEqualTo(new ArrayList() {{
-                    new Car(new Name("pobi"), new Position(1));
-                    new Car(new Name("crong"), new Position(1));
-                    new Car(new Name("honux"), new Position(1));
-                }});
+                .containsExactly(
+                        new Car(new Name("pobi"), new Position(1)),
+                        new Car(new Name("crong"), new Position(1)),
+                        new Car(new Name("honux"), new Position(1))
+                );
     }
 
     @Test
-    @DisplayName("cars의 이동거리 비교 후 우승자 결과 test")
+    @DisplayName("Cars의 이동거리 비교 후 우승자 결과 test")
     void getWinnerCars() {
         Cars cars = Cars.createFromName("pobi,crong,honux".split(","));
         cars.getList().get(0).move(() -> true);   // pobi 이동

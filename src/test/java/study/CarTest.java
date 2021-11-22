@@ -19,11 +19,11 @@ public class CarTest {
     @DisplayName("Car move 후 Car class로 return test")
     void move() {
         Car car = new Car(new Name("pobi"), new Position(0));
-        Car movedCar = new Car(new Name("pobi"), new Position(1));
+
+        assertThat(car.move(() -> false).getPosition())
+                .isEqualTo(new Position(0));
 
         assertThat(car.move(() -> true).getPosition())
-                .isEqualTo(movedCar.getPosition());
+                .isEqualTo(new Position(1));
     }
-
-
 }
