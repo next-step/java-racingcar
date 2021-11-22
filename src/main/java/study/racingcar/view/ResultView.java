@@ -36,7 +36,7 @@ public class ResultView {
 	}
 
 	private static void printRace(Position position) {
-		for (int i = 0; i < position.numOfPosition(); i++) {
+		for (int i = 0; i < position.valueOfPosition(); i++) {
 			System.out.print(DASH);
 		}
 		newLine();

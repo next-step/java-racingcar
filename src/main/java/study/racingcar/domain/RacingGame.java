@@ -7,10 +7,12 @@ import study.racingcar.view.ResultView;
 public class RacingGame {
 	private final Cars cars;
 	private final int rounds;
+	private final MoveStrategy strategy;
 
-	public RacingGame(int userInputCar, int userInputRound) {
+	public RacingGame(int userInputCar, int userInputRound, MoveStrategy strategy) {
 		this.cars = new Cars(userInputCar);
 		this.rounds = userInputRound;
+		this.strategy = strategy;
 	}
 
 	public void playGame() {
@@ -25,7 +27,6 @@ public class RacingGame {
 	}
 
 	private void moveCars() {
-		MoveStrategy strategy = new RandomNumberStrategy();
 		cars.goRace(strategy);
 	}
 
