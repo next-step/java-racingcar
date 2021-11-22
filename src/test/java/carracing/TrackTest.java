@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,8 +25,8 @@ class TrackTest {
         List<Track.Round> rounds = track.getRounds();
         Track.Round lastRound = rounds.get(rounds.size() - 1);
 
-        List<Integer> steps = lastRound.getSteps();
-        steps.forEach(step -> {
+        Map<CarName, Integer> steps = lastRound.getSteps();
+        steps.forEach((carName, step) -> {
             assertThat(step).isGreaterThanOrEqualTo(0);
             assertThat(step).isLessThanOrEqualTo(round);
         });

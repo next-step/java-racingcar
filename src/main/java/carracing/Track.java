@@ -1,9 +1,6 @@
 package carracing;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class Track {
 
@@ -22,10 +19,7 @@ public class Track {
             int random = this.randomFactory.generate(Car.RANDOM_BOUND);
             car.stepForwardByRandomNumber(random);
         });
-        List<Integer> steps = cars.stream()
-                .map(Car::getStep)
-                .collect(Collectors.toList());
-        rounds.add(new Round(steps));
+        rounds.add(new Round(cars));
     }
 
     public List<Round> getRounds() {
@@ -33,14 +27,17 @@ public class Track {
     }
 
     public static class Round {
-        private List<Integer> steps;
+        private final Map<CarName, Integer> nameToStep;
 
-        public Round(List<Integer> steps) {
-            this.steps = steps;
+        public Round(List<Car> cars) {
+            nameToStep = new HashMap<>();
+            cars.forEach(car -> {
+                nameToStep.put(car.getCarName(), car.getStep());
+            });
         }
 
-        public List<Integer> getSteps() {
-            return Collections.unmodifiableList(steps);
+        public Map<CarName, Integer> getSteps() {
+            return Collections.unmodifiableMap(nameToStep);
         }
     }
 }

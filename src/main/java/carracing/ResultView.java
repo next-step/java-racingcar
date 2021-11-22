@@ -13,8 +13,8 @@ public class ResultView {
     }
 
     private static void printRound(Track.Round round) {
-        round.getSteps().forEach(step -> {
-            System.out.println(stepLine(step));
+        round.getSteps().forEach((carName, step) -> {
+            System.out.printf("%s : %s%n", carName.getName(), stepLine(step));
         });
     }
 
