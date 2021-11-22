@@ -79,8 +79,11 @@ public class RacingString {
   }
 
   public RacingString repeat(RacingNumber times) {
-    String repeat = value.repeat(times.parseInt());
-    return new RacingString(repeat);
+    String accumlulate = "";
+    for (int i = 0; i < times.parseInt(); i++) {
+      accumlulate += this.value;
+    }
+    return new RacingString(accumlulate);
   }
 
   public RacingString concat(RacingString input) {

@@ -25,6 +25,6 @@ public class ScoreList {
     return scores.stream()
         .filter((score -> score.isSameStage(stage)))
         .findAny()
-        .orElseThrow();
+        .orElseThrow(() -> new IllegalArgumentException());
   }
 }
