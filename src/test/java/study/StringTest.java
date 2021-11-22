@@ -12,4 +12,11 @@ public class StringTest {
         assertThat(result).containsExactly("1", "2");
     }
 
+    @Test
+    void removeRoundBrackets() {
+        String result = "(1,2)";
+        result = result.substring(1, result.length()-1);
+        assertThat(result).isEqualTo("1,2");
+    }
+
 }
