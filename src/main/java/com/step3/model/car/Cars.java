@@ -36,13 +36,13 @@ public class Cars {
 
     public Cars getWinnerCars() {
         List<Car> winnerCars = cars.stream()
-                .filter(c -> c.getPosition().equals(getMaxPosition()))
+                .filter(c -> c.getPosition().equals(getWinnerCarPosition()))
                 .collect(Collectors.toList());
 
         return Cars.createFromList(winnerCars);
     }
 
-    private Position getMaxPosition() {
+    private Position getWinnerCarPosition() {
         return cars.stream()
                 .map(c -> c.getPosition())
                 .max(Position::compareTo)
