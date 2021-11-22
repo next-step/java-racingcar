@@ -1,5 +1,6 @@
 package Racing.car;
 
+import Racing.score.Score;
 import Racing.stage.Stage;
 import Racing.type.RacingNumber;
 import Racing.type.RacingString;
@@ -15,7 +16,7 @@ public class CarList {
 
   public CarList moveAllCar(Stage stage) {
     this.cars.
-        forEach(car -> car.move(stage));
+        forEach(car -> moveCar(stage, car));
     return this;
   }
 
@@ -33,6 +34,12 @@ public class CarList {
 
   public RacingNumber size() {
     return new RacingNumber(cars.size());
+  }
+
+
+  private Car moveCar(Stage stage, Car car) {
+    Score score = new Score(stage);
+    return car.move(score);
   }
 
 }

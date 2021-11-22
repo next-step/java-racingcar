@@ -9,8 +9,7 @@ public class ScoreList {
 
   private List<Score> scores = new ArrayList<>();
 
-  public Score addScore(Stage stage) {
-    Score score = new Score(stage);
+  public Score addScore(Score score) {
     scores.add(score);
     return score;
   }

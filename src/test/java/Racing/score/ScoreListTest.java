@@ -13,9 +13,10 @@ class ScoreListTest {
   void addScore() {
     // given
     Stage stage = new Stage();
+    Score score = new Score(stage);
     ScoreList scoreList = new ScoreList();
     // when
-    scoreList.addScore(stage);
+    scoreList.addScore(score);
     // then
     assertThat(scoreList.showDisplay().toString()).isNotEmpty();
   }
@@ -25,9 +26,10 @@ class ScoreListTest {
   void getScore() {
     // given
     Stage stage = new Stage();
+    Score score = new Score(stage);
     ScoreList scoreList = new ScoreList();
     // when
-    scoreList.addScore(stage);
+    scoreList.addScore(score);
     // then
     assertThat(scoreList.getScore(stage).showDisplay()).isNotNull();
   }

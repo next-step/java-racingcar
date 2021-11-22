@@ -1,5 +1,6 @@
 package Racing.car;
 
+import Racing.score.Score;
 import Racing.score.ScoreList;
 import Racing.stage.Stage;
 import Racing.type.RacingString;
@@ -12,8 +13,8 @@ public class Car {
     scoreList = new ScoreList();
   }
 
-  public Car move(Stage stage) {
-    scoreList.addScore(stage);
+  public Car move(Score score) {
+    scoreList.addScore(score);
     return this;
   }
 

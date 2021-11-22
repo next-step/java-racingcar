@@ -2,6 +2,7 @@ package Racing.car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import Racing.score.Score;
 import Racing.stage.Stage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,8 +15,9 @@ class CarTest {
     // given
     Car car = new Car();
     Stage stage = new Stage();
+    Score score = new Score(stage);
     // when
-    car.move(stage);
+    car.move(score);
     // then
     assertThat(car.presentDistance().toString().length()).isGreaterThanOrEqualTo(4);
     assertThat(car.presentDistance().toString().length()).isLessThanOrEqualTo(9);
