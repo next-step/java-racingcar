@@ -10,7 +10,9 @@ public class StringCalculator {
 
         result = calculate(first, operator, second);
 
-        if(factor.isComplete()) return result;
+        if(factor.isComplete()) {
+            return result;
+        }
 
         return calculate(factor, result);
     }

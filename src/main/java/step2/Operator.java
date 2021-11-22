@@ -30,10 +30,7 @@ public enum Operator {
     }
 
     public boolean isEqualTo(String value) {
-        if(this.value.equals(value)) {
-            return true;
-        }
-        return false;
+        return this.value.equals(value);
     }
 
     abstract int calculate(Number number1, Number number2);

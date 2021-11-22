@@ -18,21 +18,24 @@ public class RacingCarGameUi {
     }
 
     public int askAttemptNumber() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+        System.out.println("시도할 회수는 몇 회 인가요?");
         return scanner.nextInt();
     }
 
-    public void printResult(List<RacingCar> racingCarList) {
+    public void printExecuteResult() {
         System.out.println("실행 결과");
+    }
+
+    public void printRacingCar(List<RacingCar> racingCarList) {
         Iterator iterator = racingCarList.iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             RacingCar racingCar = (RacingCar) iterator.next();
             printRacingCarDistance(racingCar.getDistance());
         }
     }
 
     public void printRacingCarDistance(int distance) {
-        while(distance > 0) {
+        while (distance > 0) {
             System.out.print(BAR);
             distance--;
         }

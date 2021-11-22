@@ -10,19 +10,19 @@ public class RacingCarGame {
 
     public boolean ready(int carCount, int attemptCount) {
         racingCarList = new ArrayList<>(carCount);
-        while(racingCarList.size() != carCount) {
+        while (racingCarList.size() != carCount) {
             racingCarList.add(new RacingCar());
         }
 
         attempt = new Attempt(attemptCount);
-        if(isRacingCarReady(carCount) && isAttemptReady(attemptCount)) {
+        if (isRacingCarReady(carCount) && isAttemptReady(attemptCount)) {
             return true;
         }
         return false;
     }
 
     public boolean isRacingCarReady(int carCount) {
-        if(racingCarList.size() == carCount) {
+        if (racingCarList.size() == carCount) {
             return true;
         }
         return false;
@@ -41,9 +41,7 @@ public class RacingCarGame {
     }
 
     public void play() {
-        Iterator iterator = racingCarList.iterator();
-        while(iterator.hasNext()) {
-            RacingCar racingCar = (RacingCar) iterator.next();
+        for(RacingCar racingCar : racingCarList) {
             racingCar.move();
         }
         attempt.make();

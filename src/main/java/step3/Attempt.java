@@ -1,10 +1,13 @@
 package step3;
 
 public class Attempt {
+    private static final int END = 0;
     private int number;
 
     public Attempt(int number) {
-        if(number < 0) throw new IllegalArgumentException();
+        if(number < END) {
+            throw new IllegalArgumentException();
+        }
         this.number = number;
     }
 
@@ -13,7 +16,7 @@ public class Attempt {
     }
 
     boolean isEnd() {
-        if(number == 0) {
+        if(number == END) {
             return true;
         }
         return false;

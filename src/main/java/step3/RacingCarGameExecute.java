@@ -13,11 +13,12 @@ public class RacingCarGameExecute {
         racingCarGame.ready(carCount, attemptCount);
 
         Attempt attempt = racingCarGame.getAttempt();
+        racingCarGameUi.printExecuteResult();
 
         while (attempt.isEnd() == false) {
             racingCarGame.play();
             List<RacingCar> racingCarList = racingCarGame.getRacingCarList();
-            racingCarGameUi.printResult(racingCarList);
+            racingCarGameUi.printRacingCar(racingCarList);
         }
     }
 }

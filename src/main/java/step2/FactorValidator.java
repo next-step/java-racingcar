@@ -14,7 +14,7 @@ public class FactorValidator {
     public boolean isValidParameter(String input) {
         String[] inputs = input.split(" ");
 
-        long count = Arrays.stream(inputs).filter(i -> i.matches(NUMBER_REGEX) == false)
+        long count = Arrays.stream(inputs).filter(i -> !i.matches(NUMBER_REGEX))
                 .filter(i ->Arrays.stream(Operator.values()).noneMatch(o-> o.isEqualTo(i))).count();
 
         if(count > 0) {
