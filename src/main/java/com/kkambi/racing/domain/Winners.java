@@ -2,20 +2,16 @@ package com.kkambi.racing.domain;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Winners {
 
-    private List<Car> winners;
+    private final List<Car> winners;
 
-    public void chooseWinners(List<Car> cars) {
-        Car maxLocationCar = Collections.max(cars);
-        this.winners = cars.stream()
-                .filter(car -> car.equals(maxLocationCar))
-                .collect(Collectors.toList());
+    public Winners(List<Car> winners) {
+        this.winners = winners;
     }
 
     public List<Car> getWinners() {
-        return winners;
+        return Collections.unmodifiableList(winners);
     }
 }

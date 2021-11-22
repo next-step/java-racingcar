@@ -27,4 +27,32 @@ class CarsTest {
         assertThatThrownBy(() -> carList.remove(0))
                 .isInstanceOf(UnsupportedOperationException.class);
     }
+
+    @DisplayName("자동차 경주의 우승자를 결정한다")
+    @MethodSource("getCars")
+    @ParameterizedTest
+    void chooseWinners(List<Car> allCars, List<Car> winningCars) {
+        // given
+        Cars cars = new Cars(allCars);
+        Winners expectedWinners = new Winners(winningCars);
+
+        // when
+        Winners winners = cars.chooseWinners();
+
+        // then
+        assertThat(winners).isEqualToComparingFieldByFieldRecursively(expectedWinners);
+    }
+
+    static Stream<Arguments> getCars() {
+        Car car1 = new Car(0, "a");
+        Car car2 = new Car(1, "b");
+        Car car3 = new Car(2, "c");
+        Car car4 = new Car(2, "d");
+
+        return Stream.of(
+                Arguments.of(Arrays.asList(car1, car2, car3), Collections.singletonList(car3)),
+                Arguments.of(Arrays.asList(car1, car2, car3, car4), Arrays.asList(car3, car4)),
+                Arguments.of(Arrays.asList(car1, car2), Collections.singletonList(car2))
+        );
+    }
 }

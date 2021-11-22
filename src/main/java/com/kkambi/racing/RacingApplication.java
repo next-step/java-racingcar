@@ -26,18 +26,15 @@ public class RacingApplication {
             cars.tryToMoveCars();
             resultView.printInformation(cars.getCars());
         }
-        Winners winners = new Winners();
-        winners.chooseWinners(cars.getCars());
-        resultView.printWinners(winners);
+
+        resultView.printWinners(cars.chooseWinners());
     }
 
     private static Cars composeRacingCars(String[] carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            Car car = new Car(0, carName);
-            car.setMovingStrategy(new RandomMovingStrategy());
-            cars.add(car);
-        }
-        return new Cars(cars);
+        return new Cars(
+                Arrays.stream(carNames)
+                        .map(carName -> new Car(0, carName))
+                        .collect(Collectors.toList())
+        );
     }
 }

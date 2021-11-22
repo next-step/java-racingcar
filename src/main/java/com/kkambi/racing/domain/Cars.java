@@ -20,4 +20,11 @@ public class Cars {
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
+
+    public Winners chooseWinners() {
+        Car maxLocationCar = Collections.max(cars);
+        return new Winners(cars.stream()
+                .filter(car -> car.equals(maxLocationCar))
+                .collect(Collectors.toList()));
+    }
 }
