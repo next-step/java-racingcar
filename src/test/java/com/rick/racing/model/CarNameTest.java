@@ -1,8 +1,10 @@
 package com.rick.racing.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -15,6 +17,14 @@ public class CarNameTest {
         final CarName carNameA = CarName.create(name);
         final CarName carNameB = CarName.create(name);
 
-        assertThat(carNameA.equals(carNameB)).isTrue();
+        assertThat(carNameA).isEqualTo(carNameB);
+    }
+
+    @Test
+    @DisplayName("자동차 이름 5자 초과 불가")
+    public void nameLenghtCanNotBeGreaterThan5() {
+        final String carNameMoreThan5Chars = "abcdef";
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> CarName.create(carNameMoreThan5Chars));
     }
 }

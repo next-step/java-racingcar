@@ -14,16 +14,19 @@ public class ResultView {
     public static final String FORMAT_CAR_NAME = "%s : ";
     public static final String FORMAT_WINNER_CONGRATS_MESSAGE = "%s가 최종 우승했습니다.";
 
+    private ResultView() {
+    }
 
-    public static void drawRoundResult(CarRacingInfo racingPlayData) {
-        racingPlayData.cars()
+    public static void drawRoundResult(final CarRacingInfo racingPlayData) {
+        racingPlayData.getCarGroup()
+            .getCars()
             .forEach(ResultView::drawCurrentCarStatus);
         System.out.println();
     }
 
-    private static void drawCurrentCarStatus(Car car) {
-        System.out.printf(FORMAT_CAR_NAME, car.name());
-        CarPosition carPosition = car.position();
+    private static void drawCurrentCarStatus(final Car car) {
+        System.out.printf(FORMAT_CAR_NAME, car.getName());
+        CarPosition carPosition = car.getPosition();
 
         for (int i = 0; i < carPosition.asInt(); i++) {
             System.out.print(PROGRESS_MARK);
@@ -32,10 +35,11 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void drawWinner(CarRacingInfo racingPlayData) {
-        String csvWinners = racingPlayData.winners()
+    public static void drawWinner(final CarRacingInfo racingPlayData) {
+        String csvWinners = racingPlayData.getCarGroup()
+            .getWinners()
             .stream()
-            .map(Car::name)
+            .map(Car::getName)
             .map(CarName::toString)
             .collect(Collectors.joining(WINNER_DELIMITER));
 

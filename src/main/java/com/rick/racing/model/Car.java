@@ -1,43 +1,63 @@
 package com.rick.racing.model;
 
-public class Car implements Comparable<Car> {
+import com.rick.racing.controller.CarMovingStrategy;
+import java.util.Objects;
 
-    private static final int INITIAL_VALUE = 0;
+public class Car {
 
     private final CarName name;
     private final CarPosition position;
 
-    private Car(String name) {
+    private Car(final String name) {
         this.name = CarName.create(name);
-        this.position = CarPosition.create(INITIAL_VALUE);
+        this.position = CarPosition.create();
     }
 
-    public static Car create(String name) {
+    private Car(final String name, final int position) {
+        this.name = CarName.create(name);
+        this.position = CarPosition.create(position);
+    }
+
+    public static Car create(final String name) {
         return new Car(name);
     }
 
-    public void moveForward() {
-        position.increase();
+    public static Car create(final String name, int position) {
+        return new Car(name, position);
     }
 
-    public CarName name() {
+    public void move(final CarMovingStrategy carMovingStrategy) {
+        if (carMovingStrategy.isGo()) {
+            position.increase();
+        }
+    }
+
+    public CarName getName() {
         return name;
     }
 
-    public CarPosition position() {
+    public CarPosition getPosition() {
         return position;
     }
 
-    public boolean isPositionAt(Car car) {
+    public boolean isPositionAt(final Car car) {
         return this.position.equals(car.position);
     }
 
-    public boolean hasSameName(Car car) {
-        return this.name.equals(car.name);
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return Objects.equals(name, car.name);
     }
 
     @Override
-    public int compareTo(Car o) {
-        return this.position.compareTo(o.position);
+    public int hashCode() {
+        return name.hashCode();
     }
 }

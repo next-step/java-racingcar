@@ -22,7 +22,7 @@ public class CarPositionTest {
 
     @Test
     @DisplayName("increase 메소드 동작 테스트")
-    public void equalsTest() {
+    public void increaseTest() {
         final int position = 23;
 
         CarPosition carPositionA = CarPosition.create(position);

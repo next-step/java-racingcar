@@ -13,6 +13,9 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
+    private InputView() {
+    }
+
     public static CarRacingInfo getCarRacingInfo() {
         return CarRacingInfo.create(getCarNamesFromUser(), getTryCountFromUser());
     }

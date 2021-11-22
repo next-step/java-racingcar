@@ -4,14 +4,20 @@ import java.util.Objects;
 
 public class CarPosition implements Comparable<CarPosition> {
 
+    private static final int INITIAL_VALUE = 0;
+
     private int value;
 
-    public CarPosition(int initialValue) {
+    public CarPosition(final int initialValue) {
         value = initialValue;
     }
 
-    public static CarPosition create(int initialValue) {
-        return new CarPosition(initialValue);
+    public static CarPosition create() {
+        return new CarPosition(INITIAL_VALUE);
+    }
+
+    public static CarPosition create(final int value) {
+        return new CarPosition(value);
     }
 
     public void increase() {
@@ -23,7 +29,7 @@ public class CarPosition implements Comparable<CarPosition> {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
@@ -40,7 +46,7 @@ public class CarPosition implements Comparable<CarPosition> {
     }
 
     @Override
-    public int compareTo(CarPosition o) {
+    public int compareTo(final CarPosition o) {
         return this.value - o.value;
     }
 }
