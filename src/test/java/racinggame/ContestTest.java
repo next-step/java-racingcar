@@ -1,5 +1,6 @@
 package racinggame;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.entity.Car;
 import racinggame.domain.entity.Contest;
@@ -12,6 +13,7 @@ import java.util.stream.Stream;
 
 public class ContestTest {
     @Test
+    @DisplayName("Contest를 통해 레이싱 게임의 정상 동작을 테스트 한다.")
     void play() {
         int round = 3;
 
