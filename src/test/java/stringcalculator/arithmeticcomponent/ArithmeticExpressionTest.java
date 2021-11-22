@@ -27,8 +27,8 @@ class ArithmeticExpressionTest {
         );
         // then
         assertThat(arithmeticExpression.operator()).isEqualTo(ArithmeticOperator.findByOperator(op));
-        assertThat(arithmeticExpression.operand1().number()).isEqualTo(num1);
-        assertThat(arithmeticExpression.operand2().number()).isEqualTo(num2);
+        assertThat(arithmeticExpression.firstOperand().number()).isEqualTo(num1);
+        assertThat(arithmeticExpression.secondOperand().number()).isEqualTo(num2);
     }
 
     @DisplayName("수식에 대한 결과 확인")
@@ -42,7 +42,7 @@ class ArithmeticExpressionTest {
                 new ArithmeticOperand(num2)
         );
         // then
-        assertThat(arithmeticExpression.result()).isEqualTo(new ArithmeticResult(result));
+        assertThat(arithmeticExpression.result()).isEqualTo(result);
     }
 
     @DisplayName("1회 연산에 필요한 수식에서 연산자가 없는 경우, 예외를 발생시키는지 확인")

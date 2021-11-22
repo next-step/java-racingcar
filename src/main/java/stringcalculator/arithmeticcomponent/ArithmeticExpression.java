@@ -5,37 +5,37 @@ package stringcalculator.arithmeticcomponent;
  * 구성 ( 연산자, 피연산자1, 피연산자2 )
  */
 public class ArithmeticExpression {
-    private ArithmeticOperator operator;
-    private ArithmeticOperand operand1;
-    private ArithmeticOperand operand2;
+    private final ArithmeticOperand firstOperand;
+    private final ArithmeticOperator operator;
+    private final ArithmeticOperand secondOperand;
 
-    public ArithmeticExpression(ArithmeticOperand operand1, ArithmeticOperator operator, ArithmeticOperand operand2) {
-        if (!isValid(operand1, operator, operand2)) {
+    public ArithmeticExpression(ArithmeticOperand firstOperand, ArithmeticOperator operator, ArithmeticOperand secondOperand) {
+        if (!isValid(firstOperand, operator, secondOperand)) {
             throw new IllegalArgumentException();
         }
-        this.operand1 = operand1;
+        this.firstOperand = firstOperand;
         this.operator = operator;
-        this.operand2 = operand2;
+        this.secondOperand = secondOperand;
     }
 
-    private boolean isValid(ArithmeticOperand operand1, ArithmeticOperator operator, ArithmeticOperand operand2) {
-        return operand1 != null && operator != null && operand2 != null;
+    private boolean isValid(ArithmeticOperand firstOperand, ArithmeticOperator operator, ArithmeticOperand secondOperand) {
+        return firstOperand != null && operator != null && secondOperand != null;
     }
 
     public int result() {
         return operator.function()
-                        .apply(operand1.number(), operand2.number());
+                        .apply(firstOperand.number(), secondOperand.number());
     }
 
     public ArithmeticOperator operator() {
         return operator;
     }
 
-    public ArithmeticOperand operand1() {
-        return operand1;
+    public ArithmeticOperand firstOperand() {
+        return firstOperand;
     }
 
-    public ArithmeticOperand operand2() {
-        return operand2;
+    public ArithmeticOperand secondOperand() {
+        return secondOperand;
     }
 }
