@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class WinnersTest {
 
@@ -44,5 +45,14 @@ public class WinnersTest {
 
         Assertions.assertThat(winners.getWinners()).contains(car1, car2);
         Assertions.assertThat(winners.getWinners()).doesNotContain(car3);
+    }
+
+    @Test
+    @DisplayName("우승자가 존재하지 않으면 에러가 난다")
+    void emptyWinners() {
+        Assertions.assertThatThrownBy(() -> {
+            List<Car> winnerCars = new ArrayList<>();
+            new Winners(winnerCars);
+        }).isInstanceOf(NoSuchElementException.class);
     }
 }
