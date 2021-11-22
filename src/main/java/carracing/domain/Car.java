@@ -1,8 +1,6 @@
 package carracing.domain;
 
 import carracing.exception.CarNameFormatException;
-import carracing.util.Name;
-import carracing.util.Position;
 
 /*
  * Car

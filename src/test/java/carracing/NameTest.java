@@ -1,7 +1,7 @@
 package carracing;
 
+import carracing.domain.Name;
 import carracing.exception.CarNameFormatException;
-import carracing.util.Name;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

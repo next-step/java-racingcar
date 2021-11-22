@@ -1,4 +1,4 @@
-package carracing.util;
+package carracing.domain;
 
 public class Position {
 
