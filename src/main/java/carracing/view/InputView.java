@@ -8,24 +8,13 @@ public class InputView {
 
     private final Scanner scanner = new Scanner(System.in);
 
-    private String carNames;
-    private String tryCount;
-
-    public void carNameQuestion() {
+    public String carNameQuestion() {
         System.out.println(QUESTION_CAR_NAMES);
-        this.carNames = scanner.nextLine();
+        return scanner.nextLine();
     }
 
-    public void tryCountQuestion() {
+    public String tryCountQuestion() {
         System.out.println(QUESTION_TRY_COUNT);
-        this.tryCount = scanner.nextLine();
-    }
-
-    public String getCarNames() {
-        return carNames;
-    }
-
-    public String getTryCount() {
-        return tryCount;
+        return scanner.nextLine();
     }
 }

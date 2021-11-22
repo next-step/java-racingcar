@@ -25,9 +25,9 @@ public class CarRacing {
 
     public InputInfo racingQuestion() {
         InputView inputView = new InputView();
-        inputView.carNameQuestion();
-        inputView.tryCountQuestion();
-        return new InputInfo(inputView.getCarNames(), inputView.getTryCount());
+        String carNameList = inputView.carNameQuestion();
+        String tryCount = inputView.tryCountQuestion();
+        return new InputInfo(carNameList, tryCount);
     }
 
     public void racingStart(InputInfo inputInfo) throws CarNameFormatException {
@@ -48,14 +48,18 @@ public class CarRacing {
     }
 
     private void createCarNameList(InputInfo inputInfo, List<Car> carList) throws CarNameFormatException {
+        List<String> carStringList = inputInfo.getCarStringList();
         for (int i = 0; i < inputInfo.getCarCount(); i++) {
-            carList.add(new Car(inputInfo.getCarStringList().get(i)));
+            String carName = carStringList.get(i);
+            carList.add(new Car(carName));
         }
     }
 
     public void racing(Cars carList, InputInfo inputInfo) {
         for (int i = 0; i < inputInfo.getCarCount(); i++) {
-            carList.get(i).driving(RandomCondition.getCondition());
+            Car car = carList.get(i);
+            int condition = RandomCondition.getCondition();
+            car.driving(condition);
         }
     }
 

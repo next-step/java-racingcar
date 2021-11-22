@@ -17,10 +17,10 @@ public class InputViewTest {
         InputStream stream = System.in;
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         InputView inputView = new InputView();
-        inputView.carNameQuestion();
+        String carName = inputView.carNameQuestion();
         System.setIn(stream);
 
-        Assertions.assertThat(inputView.getCarNames()).isEqualTo("car");
+        Assertions.assertThat(carName).isEqualTo("car");
 
     }
 
@@ -31,9 +31,9 @@ public class InputViewTest {
         InputStream stream = System.in;
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         InputView inputView = new InputView();
-        inputView.tryCountQuestion();
+        String tryCount = inputView.tryCountQuestion();
         System.setIn(stream);
 
-        Assertions.assertThat(inputView.getTryCount()).isEqualTo("5");
+        Assertions.assertThat(tryCount).isEqualTo("5");
     }
 }

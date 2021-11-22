@@ -37,7 +37,9 @@ public class InputInfo {
     }
 
     public void splitCars(String carStringList) {
-        this.carStringList = Arrays.asList(carStringList.replace(CAR_NAME_BLANK, CAR_NAME_EMPTY).split(SPLIT_REGEX));
+        String carNameLump = carStringList.replace(CAR_NAME_BLANK, CAR_NAME_EMPTY);
+        String[] carNames = carNameLump.split(SPLIT_REGEX);
+        this.carStringList = Arrays.asList(carNames);
         this.carCount = this.carStringList.size();
     }
 
@@ -47,10 +49,6 @@ public class InputInfo {
 
     public int getTryCount() {
         return tryCount;
-    }
-
-    public int getTotalDrivingCount() {
-        return this.carCount * this.tryCount;
     }
 
     public List<String> getCarStringList() {

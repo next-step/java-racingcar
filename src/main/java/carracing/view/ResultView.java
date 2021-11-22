@@ -2,6 +2,7 @@ package carracing.view;
 
 import carracing.domain.Car;
 import carracing.domain.Cars;
+import carracing.domain.Name;
 import carracing.domain.Winners;
 
 
@@ -41,7 +42,8 @@ public class ResultView {
         System.out.println();
         StringBuilder winners = new StringBuilder();
         for (Car car : winnerCars.getWinners()) {
-            winners.append(String.format(WINNER_CAR_FORMAT, car.getName().getAlias()));
+            Name carName = car.getName();
+            winners.append(String.format(WINNER_CAR_FORMAT, carName.getAlias()));
         }
         winners.deleteCharAt(winners.length() - 2);
         System.out.printf(WINNER_PRINT_FORMAT + LINE_BREAK, winners);
