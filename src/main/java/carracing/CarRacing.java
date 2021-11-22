@@ -19,6 +19,8 @@ public class CarRacing {
             track.forward();
         }
 
-        ResultView.printRounds(track.getRounds());
+        List<Track.Round> rounds = track.getRounds();
+        ResultView.printRounds(rounds);
+        ResultView.printWinner(rounds.get(rounds.size() - 1));
     }
 }
