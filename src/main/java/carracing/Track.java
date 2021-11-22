@@ -4,19 +4,17 @@ import java.util.*;
 
 public class Track {
 
-    private final RandomFactory randomFactory;
     private final List<Car> cars;
     private final List<Round> rounds;
 
     public Track(List<Car> cars) {
         this.cars = cars;
         this.rounds = new LinkedList<>();
-        this.randomFactory = new RandomFactory();
     }
 
     public void forward() {
         cars.forEach(car -> {
-            int random = this.randomFactory.generate(Car.RANDOM_BOUND);
+            int random = RandomFactory.generate(Car.RANDOM_BOUND);
             car.stepForwardByRandomNumber(random);
         });
         rounds.add(new Round(cars));
