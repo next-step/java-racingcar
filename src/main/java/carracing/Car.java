@@ -7,7 +7,17 @@ public class Car {
     private static final int MIN_RANDOM = 0;
     private static final int MIN_FORWARD = 4;
 
+    private final CarName carName;
+
     private int step = 0;
+
+    public Car(String name) {
+        this.carName = new CarName(name);
+    }
+
+    public Car(CarName carName) {
+        this.carName = carName;
+    }
 
     public void stepForwardByRandomNumber(int random) {
         if (validateRandom(random)) {
@@ -22,6 +32,10 @@ public class Car {
 
     private boolean validateRandom(int random) {
         return random < MIN_RANDOM || MAX_RANDOM < random;
+    }
+
+    public CarName getCarName() {
+        return this.carName;
     }
 
     public int getStep() {

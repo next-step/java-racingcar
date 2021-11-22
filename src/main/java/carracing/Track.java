@@ -1,6 +1,5 @@
 package carracing;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,12 +11,8 @@ public class Track {
     private final List<Car> cars;
     private final List<Round> rounds;
 
-    public Track(int cars) {
-        this.cars = new ArrayList<>(cars);
-        for (int i = 0; i < cars; i++) {
-            this.cars.add(new Car());
-        }
-
+    public Track(List<Car> cars) {
+        this.cars = cars;
         this.rounds = new LinkedList<>();
         this.randomFactory = new RandomFactory();
     }

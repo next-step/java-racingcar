@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,7 +15,8 @@ class TrackTest {
     @ValueSource(ints = {1, 2, 5, 10, 100, 999})
     @DisplayName("Track forward() 테스트")
     void trackForward(int round) {
-        Track track = new Track(100);
+        List<Car> cars = generateCars(100);
+        Track track = new Track(cars);
         for (int i = 0; i < round; i++) {
             track.forward();
         }
@@ -27,5 +29,13 @@ class TrackTest {
             assertThat(step).isGreaterThanOrEqualTo(0);
             assertThat(step).isLessThanOrEqualTo(round);
         });
+    }
+
+    private List<Car> generateCars(int number) {
+        List<Car> cars = new ArrayList<>(number);
+        for (int i = 0; i < 100; i++) {
+            cars.add(new Car(String.format("car%d", i)));
+        }
+        return cars;
     }
 }
