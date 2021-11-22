@@ -1,9 +1,10 @@
 package racingcar.domain;
 
-public class CarPosition {
-    private int position;
+public final class CarPosition {
+    private final int position;
+    private static final int STEP = 1;
 
-    public CarPosition(int position) {
+    public CarPosition(final int position) {
         this.position = position;
     }
 
@@ -11,8 +12,8 @@ public class CarPosition {
         return this.position;
     }
 
-    public void increasePosition() {
-        this.position++;
+    public CarPosition increasePosition() {
+        return new CarPosition(this.position + STEP);
     }
 
     public boolean isEqaul(int position) {

@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-public class CarName {
+public final class CarName {
     private final String name;
     private static final int MIN_LENGTH = 1;
     private static final int MAX_LENGTH = 5;
@@ -12,7 +12,7 @@ public class CarName {
 
     private void checkValidation(final String name) {
         if (name == null || name.isEmpty() || name.length() < MIN_LENGTH || name.length() > MAX_LENGTH) {
-            throw new IllegalArgumentException("name length must be between" + MIN_LENGTH + "  and " + MAX_LENGTH);
+            throw new IllegalArgumentException("name length must be between " + MIN_LENGTH + " and " + MAX_LENGTH);
         }
     }
 
