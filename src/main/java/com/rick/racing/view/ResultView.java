@@ -1,9 +1,9 @@
-package com.rick.racing.ui;
+package com.rick.racing.view;
 
-import com.rick.racing.model.Car;
-import com.rick.racing.model.CarName;
-import com.rick.racing.model.CarPosition;
-import com.rick.racing.model.CarRacingInfo;
+import com.rick.racing.domain.Car;
+import com.rick.racing.domain.CarName;
+import com.rick.racing.domain.CarPosition;
+import com.rick.racing.domain.CarRacingInfo;
 import java.util.stream.Collectors;
 
 public class ResultView {

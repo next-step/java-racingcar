@@ -1,6 +1,6 @@
-package com.rick.racing.ui;
+package com.rick.racing.view;
 
-import com.rick.racing.model.CarRacingInfo;
+import com.rick.racing.domain.CarRacingInfo;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;

@@ -1,7 +1,7 @@
 package com.rick.racing.controller;
 
-import com.rick.racing.model.CarRacingInfo;
-import com.rick.racing.ui.ResultView;
+import com.rick.racing.domain.CarRacingInfo;
+import com.rick.racing.view.ResultView;
 
 public class CarRacingController {
 

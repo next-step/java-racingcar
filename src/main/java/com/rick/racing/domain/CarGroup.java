@@ -1,4 +1,4 @@
-package com.rick.racing.model;
+package com.rick.racing.domain;
 
 import com.rick.racing.controller.CarMovingStrategy;
 import java.util.Collections;

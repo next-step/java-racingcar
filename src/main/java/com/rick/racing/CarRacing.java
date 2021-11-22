@@ -3,8 +3,8 @@ package com.rick.racing;
 import com.rick.racing.controller.CarMovingStrategy;
 import com.rick.racing.controller.CarRacingController;
 import com.rick.racing.controller.RandomCarMovingStrategy;
-import com.rick.racing.model.CarRacingInfo;
-import com.rick.racing.ui.InputView;
+import com.rick.racing.domain.CarRacingInfo;
+import com.rick.racing.view.InputView;
 
 public class CarRacing {
 
