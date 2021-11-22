@@ -3,10 +3,11 @@ public class Calculator {
   final static private CalculatorNumber ONE = new CalculatorNumber(1);
   final static private CalculatorNumber TWO = new CalculatorNumber(2);
   final static private CalculatorNumber THREE = new CalculatorNumber(3);
+  final static private String SPLIT_CHARACTER = " ";
 
   public String calculate(String input) {
-    String[] splitInput = input.split(" ");
-    if (splitInput.length % 2 == 0) {
+    String[] splitInput = input.split(SPLIT_CHARACTER);
+    if (new CalculatorNumber(splitInput.length).isEven()) {
       throw new IllegalArgumentException("입력 값이 null 일 경우");
     }
     CalculatorInputList calculatorInputList = new CalculatorInputList(splitInput);

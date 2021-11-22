@@ -4,7 +4,7 @@ import java.util.function.BiFunction;
 public class CalculatorNumber {
 
   private double value;
-  final static private String DOUBLE_TO_STRING_REGEX = "\\.0$";
+  private static final String DOUBLE_TO_STRING_REGEX = "\\.0$";
 
   public CalculatorNumber(int input) {
     this.value = input;
@@ -12,10 +12,6 @@ public class CalculatorNumber {
 
   public CalculatorNumber(double input) {
     this.value = input;
-  }
-
-  public CalculatorNumber(String input) {
-    this.value = Double.parseDouble(input);
   }
 
   public CalculatorNumber(CalculatorInput input) {
@@ -58,5 +54,9 @@ public class CalculatorNumber {
 
   public static int parseInt(CalculatorNumber input) {
     return (int) input.value;
+  }
+
+  public boolean isEven() {
+    return (this.value % 2) == 0;
   }
 }

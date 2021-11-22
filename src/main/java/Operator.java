@@ -10,7 +10,7 @@ public enum Operator {
   private CalculatorInput symbol;
   private BiFunction<Double, Double, Double> expression;
 
-  final static int ZERO = 0;
+  private static final int ZERO = 0;
 
   Operator(CalculatorInput symbol,
       BiFunction<Double, Double, Double> expression) {
@@ -20,9 +20,14 @@ public enum Operator {
 
   public static Operator of(CalculatorInput symbol) {
     return Arrays.stream(Operator.values())
-        .filter((i) -> i.symbol.equals(symbol))
+        .filter((operator) -> isEquals(symbol, operator))
         .findAny()
         .orElseThrow(() -> new IllegalArgumentException("허용되지 않는 연산자입니다."));
+  }
+
+  private static boolean isEquals(CalculatorInput symbol, Operator operator) {
+    CalculatorInput targetSymbol = operator.symbol;
+    return targetSymbol.equals(symbol);
   }
 
 
