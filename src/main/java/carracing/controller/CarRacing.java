@@ -7,6 +7,7 @@ import carracing.domain.Winners;
 import carracing.exception.CarNameFormatException;
 import carracing.util.RandomCondition;
 import carracing.view.InputInfo;
+import carracing.view.InputView;
 import carracing.view.ResultView;
 
 import java.util.ArrayList;
@@ -22,6 +23,13 @@ import java.util.List;
  * author jiseok-choi
  */
 public class CarRacing {
+
+    public InputInfo racingQuestion() {
+        InputView inputView = new InputView();
+        inputView.carNameQuestion();
+        inputView.tryCountQuestion();
+        return new InputInfo(inputView.getCarNames(), inputView.getTryCount());
+    }
 
     public RaceResult racingStart(InputInfo inputInfo) throws CarNameFormatException {
 
