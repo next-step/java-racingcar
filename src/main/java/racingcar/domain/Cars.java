@@ -28,7 +28,7 @@ public class Cars {
 
     public String getWinners() {
         StringBuffer result = new StringBuffer();
-        int maxMovement = getMaxPosition();
+        CarPosition maxMovement = getMaxPosition();
         for (Car car : this.cars) {
             if (car.isWinner(maxMovement)) {
                 result.append(car.getCarName().getName() + ", ");
@@ -37,8 +37,8 @@ public class Cars {
         return result.substring(0, result.length() - 2);
     }
 
-    private int getMaxPosition() {
-        int maxPosition = 0;
+    private CarPosition getMaxPosition() {
+        CarPosition maxPosition = new CarPosition(0);
         for (Car car : this.cars) {
             maxPosition = car.maxPosition(maxPosition);
         }
