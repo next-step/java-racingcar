@@ -1,4 +1,4 @@
-package study.racingcar.model;
+package study.racingcar.domain;
 
 
 import study.racingcar.strategy.MoveStrategy;
@@ -6,7 +6,6 @@ import study.racingcar.strategy.MoveStrategy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class RacingGame {
     private static final String SEPARATOR = ",";
@@ -50,5 +49,18 @@ public class RacingGame {
 
     public boolean moreRound(){
         return tryRound.moreRound();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingGame that = (RacingGame) o;
+        return Objects.equals(cars, that.cars) && Objects.equals(tryRound, that.tryRound);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars, tryRound);
     }
 }

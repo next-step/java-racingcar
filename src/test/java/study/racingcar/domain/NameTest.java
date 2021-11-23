@@ -1,4 +1,4 @@
-package study.racingcar.model;
+package study.racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,7 +13,7 @@ public class NameTest {
     @ParameterizedTest(name="{displayName} | 요청값: {0}")
     @ValueSource(strings = {"유재석",  "강호동", "나얼"})
     void 이름_정상(String param) {
-        assertThat(new Name(param)).isEqualTo(new Name(param));
+        assertThat(new Name(param).getName()).isEqualTo(param);
     }
 
     @DisplayName("이름 1글자 이하 5글자 이상인 경우 IllegalArgumentException 처리")

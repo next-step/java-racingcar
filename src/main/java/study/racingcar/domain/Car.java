@@ -1,8 +1,6 @@
-package study.racingcar.model;
-
+package study.racingcar.domain;
 
 import study.racingcar.strategy.MoveStrategy;
-import study.racingcar.strategy.RandomMoveStrategy;
 
 import java.util.Objects;
 
@@ -40,7 +38,7 @@ public class Car {
     }
 
     public boolean isWinnerPosition(int maxPosition) {
-        return position.isWinnerPosition(maxPosition);
+        return position.equals(new Position(maxPosition));
     }
 
     @Override

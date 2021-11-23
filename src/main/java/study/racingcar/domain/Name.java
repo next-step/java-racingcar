@@ -1,4 +1,4 @@
-package study.racingcar.model;
+package study.racingcar.domain;
 
 import java.util.Objects;
 

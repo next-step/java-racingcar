@@ -1,7 +1,6 @@
-package study.racingcar.model;
+package study.racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -14,6 +13,13 @@ public class PositionTest {
     @ValueSource(ints = {1, 5, 99})
     void 위치_정상(int param) {
         assertThat(new Position(param)).isEqualTo(new Position(param));
+    }
+
+    @DisplayName("위치 확인")
+    @ParameterizedTest(name="{displayName} | 요청값: {0}")
+    @ValueSource(ints = {1, 3, 5})
+    void 위치(int param) {
+        assertThat(new Position(param).getLocation()).isEqualTo(param);
     }
 
     @DisplayName("위치 이동 확인")
@@ -33,10 +39,4 @@ public class PositionTest {
         assertThat(position.getMaxPosition(param)).isEqualTo(param);
     }
 
-    @DisplayName("선두 위치 확인")
-    @Test
-    void 우승_위치() {
-        Position position = new Position(3);
-        assertThat(position.isWinnerPosition(3)).isTrue();
-    }
 }

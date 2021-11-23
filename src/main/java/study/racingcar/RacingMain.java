@@ -1,6 +1,6 @@
 package study.racingcar;
 
-import study.racingcar.model.RacingGame;
+import study.racingcar.domain.RacingGame;
 import study.racingcar.strategy.MoveStrategy;
 import study.racingcar.strategy.RandomMoveStrategy;
 import study.racingcar.view.InputView;
