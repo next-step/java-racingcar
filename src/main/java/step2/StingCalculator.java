@@ -2,7 +2,7 @@ package step2;
 
 public class StingCalculator {
 
-    private final String IAE_MESSAGE = "사칙연산 기호를 확인해주세요 :(";
+    private static final String IAE_MESSAGE = "사칙연산 기호를 확인해주세요 :(";
     private int result = 0;
 
     public void setResult(int result) {
