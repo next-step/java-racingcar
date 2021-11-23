@@ -20,4 +20,11 @@ public class Record {
     public int getDistance() {
         return distance;
     }
+
+    public Record getWinner(Record anotherRecord) {
+        if (distance > anotherRecord.getDistance()) {
+            return this;
+        }
+        return anotherRecord;
+    }
 }

@@ -1,7 +1,7 @@
 package com.sryoondev.racingcar.step3;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Records {
     private final List<Record> records;
@@ -15,19 +15,13 @@ public class Records {
     }
 
     public List<Record> findWinners() {
-        int maxDistance = 0;
+        Record winnerRecord = records.get(0);
         for (Record record : records) {
-            if (record.getDistance() > maxDistance) {
-                maxDistance = record.getDistance();
-            }
+            winnerRecord = record.getWinner(winnerRecord);
         }
-
-        List<Record> winners = new ArrayList<>();
-        for (Record record : records) {
-            if (record.getDistance() == maxDistance) {
-                winners.add(record);
-            }
-        }
-        return winners;
+        int maxDistance = winnerRecord.getDistance();
+        return records.stream()
+                .filter(r -> maxDistance == r.getDistance())
+                .collect(Collectors.toList());
     }
 }

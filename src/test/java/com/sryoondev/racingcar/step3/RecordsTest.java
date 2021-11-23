@@ -19,4 +19,12 @@ class RecordsTest {
         Records records = new Records(Arrays.asList(pobi, hailey, tony));
         assertThat(records.findWinners()).contains(hailey, tony);
     }
+
+    @Test
+    @DisplayName("더 좋은 기록을 가져오는 메소드 테스트")
+    public void testGetWinner() {
+        Record pobi = new Record("pobi", 3);
+        Record hailey = new Record("hailey", 5);
+        assertThat(pobi.getWinner(hailey)).isEqualTo(hailey);
+    }
 }
