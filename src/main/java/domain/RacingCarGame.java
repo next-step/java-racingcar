@@ -1,3 +1,5 @@
+package domain;
+
 public class RacingCarGame {
 
   private final int roundAmount;

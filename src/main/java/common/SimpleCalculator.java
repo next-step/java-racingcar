@@ -1,3 +1,5 @@
+package common;
+
 public class SimpleCalculator {
 
   private static final String DELIMITER = " ";
