@@ -94,3 +94,11 @@
 - getter은 ui 출력할 때만 사용한다
 - domain에 너무 많은 일을 주지 말자.
 - MVC 패턴으로 구현하기 - main 함수를 Controller 라고 생각하자
+
+
+### 1차 리뷰내용 정리
+- 생각이 너무 많아 오히려 난잡하다
+- 싱글톤 패턴의 지연 로딩
+- 사용하지 않는 임포트 삭제
+- 비교는 Comparable
+- Service Layer는 Stateless해야한다
