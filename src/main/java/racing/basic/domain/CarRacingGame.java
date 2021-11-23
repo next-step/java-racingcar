@@ -1,19 +1,21 @@
 package racing.basic.domain;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
 
 public class CarRacingGame {
 
     private final List<Car> cars;
 
     public CarRacingGame(int lineCount) {
-        Car[] carBuffer = new Car[lineCount];
-        for (int i = 0; i < lineCount; i++) {
-            carBuffer[i] = new Car();
-        }
-        cars = Arrays.asList(carBuffer);
+        cars = Stream.generate(Car::new)
+                .limit(lineCount)
+                .collect(collectingAndThen(toList(), Collections::unmodifiableList));
     }
 
     public List<Integer> nextRound(List<Integer> diceNumbers) {
@@ -28,8 +30,6 @@ public class CarRacingGame {
     private List<Integer> displayTrack() {
         return cars.stream()
                 .map(Car::getDrivingDistance)
-                .collect(
-                        Collectors.toList()
-                );
+                .collect(Collectors.toList());
     }
 }
