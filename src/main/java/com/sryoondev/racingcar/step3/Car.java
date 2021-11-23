@@ -1,13 +1,17 @@
 package com.sryoondev.racingcar.step3;
 
 public class Car {
-    private int moveCount;
+    private final String name;
+    private int moveCount = 0;
 
-    public Car() {
-        this.moveCount = 0;
+    public Car(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다.");
+        }
+        this.name = name;
     }
 
-    public void move() {
+    private void move() {
         this.moveCount++;
     }
 
@@ -19,5 +23,9 @@ public class Car {
 
     public int getMoveDistance() {
         return this.moveCount;
+    }
+
+    public String getName() {
+        return name;
     }
 }

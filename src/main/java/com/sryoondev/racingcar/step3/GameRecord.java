@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameRecord {
-    private final List<List<Integer>> records;
+    private final List<Records> records;
 
     public GameRecord() {
         this.records = new ArrayList<>();
@@ -14,7 +14,11 @@ public class GameRecord {
         records.add(circuit.getRecords());
     }
 
-    public List<List<Integer>> getRecords() {
+    public List<Records> getRecords() {
         return records;
+    }
+
+    public List<Record> findFinalWinners() {
+        return records.get(records.size() - 1).findWinners();
     }
 }
