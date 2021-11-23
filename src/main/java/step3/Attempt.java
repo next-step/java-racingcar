@@ -16,17 +16,11 @@ public class Attempt {
     }
 
     boolean isEnd() {
-        if(number == END) {
-            return true;
-        }
-        return false;
+        return number == END;
     }
 
     boolean isEqualNumber(int attemptCount) {
-        if(number == attemptCount) {
-            return true;
-        }
-        return false;
+        return number == attemptCount;
     }
 
 }

@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingCarTest {
     RacingCar racingCar = new RacingCar();
 
-    @Test
+    /*@Test
     @DisplayName("0 ~ 9 범위의 랜덤한 숫자가 정상적으로 생성되었는지 확인합니다.")
     void getRandomNumber() {
         int expect = racingCar.getRandomNumber();
@@ -25,7 +25,7 @@ class RacingCarTest {
     void isMove(int number, boolean expect) {
         boolean result = racingCar.isMove(number);
         assertThat(result).isEqualTo(expect);
-    }
+    }*/
 
     @Test
     @DisplayName("자동차가 전진하였을때 이동한 거리가 증가하였는지 확인합니다")

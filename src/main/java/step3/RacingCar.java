@@ -3,25 +3,22 @@ package step3;
 import java.util.Random;
 
 public class RacingCar {
-    private static final int RANDOM_NUMBER_BOUND = 10;
     private static final int ADVANCE_CONDITION = 4;
+
+    private RamdomCondition ramdomCondition;
 
     private int distance = 0;
 
-    public int getRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(RANDOM_NUMBER_BOUND);
+    public RacingCar() {
+        ramdomCondition = new RamdomCondition();
     }
 
-    public boolean isMove(int randomNumber) {
-        if (randomNumber > ADVANCE_CONDITION) {
-            return true;
-        }
-        return false;
+    public boolean isMove() {
+        return ramdomCondition.meet(ADVANCE_CONDITION);
     }
 
     public void move() {
-        if (isMove(getRandomNumber())) {
+        if (isMove()) {
             distance++;
         }
     }

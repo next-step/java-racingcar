@@ -15,17 +15,12 @@ public class RacingCarGame {
         }
 
         attempt = new Attempt(attemptCount);
-        if (isRacingCarReady(carCount) && isAttemptReady(attemptCount)) {
-            return true;
-        }
-        return false;
+
+        return isRacingCarReady(carCount) && isAttemptReady(attemptCount);
     }
 
     public boolean isRacingCarReady(int carCount) {
-        if (racingCarList.size() == carCount) {
-            return true;
-        }
-        return false;
+        return racingCarList.size() == carCount;
     }
 
     public boolean isAttemptReady(int attemptCount) {
