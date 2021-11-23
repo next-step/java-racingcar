@@ -1,4 +1,4 @@
-package study.step_3;
+package study;
 
 public class Car {
     private int position;

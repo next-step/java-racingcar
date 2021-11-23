@@ -1,4 +1,4 @@
-package study.step_3;
+package study;
 
 public class OutputView {
     public static void print(int position) {

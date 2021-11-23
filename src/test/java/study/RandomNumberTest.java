@@ -1,7 +1,8 @@
-package study.step_3;
+package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.RandomNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

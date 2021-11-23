@@ -1,7 +1,8 @@
-package study.step_3;
+package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.Car;
 
 import java.util.ArrayList;
 import java.util.Arrays;
