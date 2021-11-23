@@ -11,11 +11,11 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 public class StringCalculatorTest {
 
-    private StingCalculator stringCalculator;
+    private StringCalculator stringCalculator;
 
     @BeforeEach
     void setUp() {
-        stringCalculator = new StingCalculator();
+        stringCalculator = new StringCalculator();
     }
 
     @ParameterizedTest

@@ -2,7 +2,7 @@ package step2;
 
 import java.util.Objects;
 
-public class StingCalculator {
+public class StringCalculator {
 
     private static final String IAE_MESSAGE = "사칙연산 기호를 확인해주세요 :(";
     private int result = 0;
