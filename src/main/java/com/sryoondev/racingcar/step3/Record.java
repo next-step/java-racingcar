@@ -4,9 +4,13 @@ public class Record {
     private final String name;
     private final int distance;
 
+    public Record(String name, int distance) {
+        this.name = name;
+        this.distance = distance;
+    }
+
     public Record(Car car) {
-        this.name = car.getName();
-        this.distance = car.getMoveDistance();
+        this(car.getName(), car.getMoveDistance());
     }
 
     public String getName() {

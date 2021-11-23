@@ -17,4 +17,8 @@ public class GameRecord {
     public List<Records> getRecords() {
         return records;
     }
+
+    public List<Record> findFinalWinners() {
+        return records.get(records.size() - 1).findWinners();
+    }
 }
