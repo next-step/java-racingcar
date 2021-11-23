@@ -2,8 +2,15 @@ package racing.model;
 
 import java.util.Random;
 
-/**
- * .
+/*
+ *
+ * ConditionGenerator
+ *
+ * @version 1.0.0
+ *
+ * 2021-11-23
+ *
+ * Copyright tnals1422
  */
 public class ConditionGenerator {
     private static final int LIMIT = 10;

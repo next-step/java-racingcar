@@ -31,20 +31,9 @@ public class OutputView {
     }
 
     private void printRoundResult(RoundResult roundResult) {
-        roundResult.records().forEach(car ->{
-            System.out.println(car.stringName() + " : " + convertPositionToSymbol(car.intPosition()));
+        roundResult.records().forEach(car -> {
+            System.out.println(car.stringName() + " : " + car.positionWithSymbol(POSITION_SYMBOL));
         });
         System.out.println();
-    }
-
-    private String convertPositionToSymbol(int carResult) {
-        String result = "";
-        if (carResult > 0) {
-            StringBuilder stringBuilder = new StringBuilder();
-            IntStream.range(0, carResult)
-                    .forEach(j -> stringBuilder.append(POSITION_SYMBOL));
-            result = stringBuilder.toString();
-        }
-        return result;
     }
 }

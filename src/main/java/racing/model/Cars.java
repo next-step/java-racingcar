@@ -3,8 +3,15 @@ package racing.model;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * .
+/*
+ *
+ * Cars
+ *
+ * @version 1.0.0
+ *
+ * 2021-11-23
+ *
+ * Copyright tnals1422
  */
 public class Cars {
 
@@ -33,19 +40,11 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public String winners() {
-        StringJoiner result = new StringJoiner(", ");
-        cars.stream()
-                .filter(car -> car.intPosition() == getTopPosition(cars))
-                .forEach(car -> result.add(car.stringName()));
-        return result.toString();
-    }
-
-    public int getTopPosition(List<Car> roundRecord) {
-        return roundRecord.stream()
-                .mapToInt(Car::intPosition)
-                .max()
-                .orElseThrow(NoSuchElementException::new);
+    public List<Car> winners() {
+        List<Car> result = cars.stream()
+                .filter(car -> car.isWinner(cars))
+                .collect(Collectors.toList());
+        return Collections.unmodifiableList(result);
     }
 
     @Override

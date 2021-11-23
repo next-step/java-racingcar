@@ -1,9 +1,18 @@
 package racing.model;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
-/**
- * .
+/*
+ *
+ * Car
+ *
+ * @version 1.0.0
+ *
+ * 2021-11-23
+ *
+ * Copyright tnals1422
  */
 public class Car {
 
@@ -11,25 +20,34 @@ public class Car {
     private Position position;
 
     public Car(String name) {
-            this.name = new Name(name);
-            this.position = new Position();
+        this.name = new Name(name);
+        this.position = new Position();
     }
 
     public Car(Car car) {
         this.name = new Name(car.name.getName());
-        this.position = new Position(car.position.getPosition());
+        this.position = new Position(car.position.getValue());
     }
 
-    public String stringName() {
-        return name.getName();
-    }
-
-    public int intPosition() {
-        return position.getPosition();
+    public Car(Name name, Position position) {
+        this.name = name;
+        this.position = position;
     }
 
     public void move(int condition) {
         position = position.moveOnSatisfiedCondition(condition);
+    }
+
+    public boolean isWinner(List<Car> cars) {
+        List<Position> positions
+                = cars.stream()
+                .map(car -> car.position)
+                .collect(Collectors.toList());
+        return this.position.isTopPosition(positions);
+    }
+
+    public String stringName() {
+        return name.getName();
     }
 
     @Override
@@ -55,5 +73,9 @@ public class Car {
                 "name=" + name +
                 ", position=" + position +
                 '}';
+    }
+
+    public String positionWithSymbol(String symbol) {
+        return this.position.convertToSymbol(symbol);
     }
 }

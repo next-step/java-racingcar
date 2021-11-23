@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
+
     @Test
     void 포지션비교() {
         Car car1 = new Car("car");

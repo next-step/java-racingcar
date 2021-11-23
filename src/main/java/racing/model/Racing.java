@@ -4,8 +4,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * .
+/*
+ *
+ * Racing
+ *
+ * @version 1.0.0
+ *
+ * 2021-11-23
+ *
+ * Copyright tnals1422
  */
 public class Racing {
     private final Integer roundCount;

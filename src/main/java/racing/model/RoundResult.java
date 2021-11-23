@@ -2,8 +2,15 @@ package racing.model;
 
 import java.util.List;
 
-/**
- * .
+/*
+ *
+ * RoundResult
+ *
+ * @version 1.0.0
+ *
+ * 2021-11-23
+ *
+ * Copyright tnals1422
  */
 public class RoundResult {
 
