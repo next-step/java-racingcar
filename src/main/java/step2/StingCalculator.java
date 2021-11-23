@@ -1,5 +1,7 @@
 package step2;
 
+import java.util.Objects;
+
 public class StingCalculator {
 
     private static final String IAE_MESSAGE = "사칙연산 기호를 확인해주세요 :(";
@@ -24,7 +26,7 @@ public class StingCalculator {
     }
 
     public StringCalculatorOperation getOperation(String operationString) {
-        if (operationString == null) {
+        if (Objects.isNull(operationString)) {
             throw new IllegalArgumentException(IAE_MESSAGE);
         }
 
