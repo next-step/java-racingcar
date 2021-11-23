@@ -31,14 +31,14 @@ public class Game {
     private void move(List<Car> cars) {
         cars.forEach(car -> {
                     RandomNumber randomNumber = new RandomNumber();
-                    car.move(randomNumber.valid());
+                    car.move(randomNumber.equalsOrBiggerThanCondition());
                 }
         );
     }
 
     private void finish() {
         for (Car car : cars) {
-            OutputView.print(car.count());
+            OutputView.print(car.getPosition());
         }
     }
 }
