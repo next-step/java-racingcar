@@ -19,7 +19,7 @@ public final class CarPosition {
     }
 
     public CarPosition maxPosition(CarPosition maxPositioin) {
-        if (this.position > maxPositioin.getPosition()) {
+        if (this.position > maxPositioin.position) {
             return this;
         }
         return maxPositioin;
