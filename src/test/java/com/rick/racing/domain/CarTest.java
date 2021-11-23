@@ -18,8 +18,7 @@ public class CarTest {
         final Car carA = Car.create(CAR_NAME);
         final Car carB = Car.create(CAR_NAME);
 
-        assertThat(carA.equals(carB))
-            .isTrue();
+        assertThat(carA).isEqualTo(carB);
         assertThat(carA.isPositionAt(carB))
             .isTrue();
     }
@@ -29,8 +28,7 @@ public class CarTest {
     @DisplayName("자동차 정상 이동 테스트")
     public void moveForward(int tryCount) {
         Car car = Car.create(CAR_NAME);
-        SettableCarMovingStrategy carMovingDecider = SettableCarMovingStrategy.create();
-        carMovingDecider.setGo(true);
+        SettableCarMovingStrategy carMovingDecider = SettableCarMovingStrategy.create(true);
 
         for (int i = 0; i < tryCount; i++) {
             car.move(carMovingDecider);
@@ -46,8 +44,7 @@ public class CarTest {
     public void doNotMove() {
         final int expected = 0;
         Car car = Car.create(CAR_NAME);
-        SettableCarMovingStrategy carMovingDecider = SettableCarMovingStrategy.create();
-        carMovingDecider.setGo(false);
+        SettableCarMovingStrategy carMovingDecider = SettableCarMovingStrategy.create(false);
 
         car.move(carMovingDecider);
 

@@ -2,22 +2,18 @@ package com.rick.racing.controller;
 
 public class SettableCarMovingStrategy implements CarMovingStrategy {
 
-    private boolean go;
+    private final boolean go;
 
-    private SettableCarMovingStrategy() {
+    private SettableCarMovingStrategy(boolean go) {
+        this.go = go;
     }
 
-    public static SettableCarMovingStrategy create() {
-        return new SettableCarMovingStrategy();
+    public static SettableCarMovingStrategy create(boolean go) {
+        return new SettableCarMovingStrategy(go);
     }
 
     @Override
     public boolean isGo() {
         return go;
     }
-
-    public void setGo(boolean go) {
-        this.go = go;
-    }
-
 }

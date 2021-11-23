@@ -10,9 +10,9 @@ public class ResultView {
 
     private static final String MESSAGE_RUN_RESULT = "실행 결과";
     private static final String PROGRESS_MARK = "-";
-    public static final String WINNER_DELIMITER = ", ";
-    public static final String FORMAT_CAR_NAME = "%s : ";
-    public static final String FORMAT_WINNER_CONGRATS_MESSAGE = "%s가 최종 우승했습니다.";
+    private static final String WINNER_DELIMITER = ", ";
+    private static final String FORMAT_CAR_NAME = "%s : ";
+    private static final String FORMAT_WINNER_CONGRATS_MESSAGE = "%s가 최종 우승했습니다.";
 
     private ResultView() {
     }
@@ -36,14 +36,14 @@ public class ResultView {
     }
 
     public static void drawWinner(final CarRacingInfo racingPlayData) {
-        String csvWinners = racingPlayData.getCarGroup()
+        String winnerNames = racingPlayData.getCarGroup()
             .getWinners()
             .stream()
             .map(Car::getName)
             .map(CarName::toString)
             .collect(Collectors.joining(WINNER_DELIMITER));
 
-        System.out.printf(FORMAT_WINNER_CONGRATS_MESSAGE, csvWinners);
+        System.out.printf(FORMAT_WINNER_CONGRATS_MESSAGE, winnerNames);
     }
 
     public static void drawRunResultMessage() {

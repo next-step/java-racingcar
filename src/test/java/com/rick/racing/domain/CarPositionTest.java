@@ -16,8 +16,7 @@ public class CarPositionTest {
         final CarPosition carPositionA = CarPosition.create(value);
         final CarPosition carPositionB = CarPosition.create(value);
 
-        assertThat(carPositionA.equals(carPositionB))
-            .isTrue();
+        assertThat(carPositionA).isEqualTo(carPositionB);
     }
 
     @Test
@@ -29,7 +28,6 @@ public class CarPositionTest {
         carPositionA.increase();
         CarPosition carPositionB = CarPosition.create(position + 1);
 
-        assertThat(carPositionA.equals(carPositionB))
-            .isTrue();
+        assertThat(carPositionA).isEqualTo(carPositionB);
     }
 }
