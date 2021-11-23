@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import study.racingcar.domain.Car;
-import study.racingcar.domain.Position;
 
 public class CarTest {
 
@@ -19,10 +18,10 @@ public class CarTest {
 		//when
 		Car car = new Car(name);
 		car.go(isMoveCar);
-		Position position = car.carPosition();
+		int position = car.carPosition();
 
 		//then
-		assertThat(position.valueOfPosition()).isEqualTo(1);
+		assertThat(position).isEqualTo(1);
 	}
 
 	@Test
@@ -35,10 +34,10 @@ public class CarTest {
 		//when
 		Car car = new Car(name);
 		car.go(isMoveCar);
-		Position position = car.carPosition();
+		int position = car.carPosition();
 
 		//then
-		assertThat(position.valueOfPosition()).isEqualTo(0);
+		assertThat(position).isEqualTo(0);
 	}
 
 	@Test

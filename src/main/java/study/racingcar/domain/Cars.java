@@ -20,13 +20,8 @@ public class Cars {
 		}
 	}
 
-	public List<Position> positionOfCars() {
-		List<Position> positions = new ArrayList<>();
-		for (Car car : this.cars) {
-			Position position = car.carPosition();
-			positions.add(position);
-		}
-		return positions;
+	public List<Car> statusOfCars() {
+		return new ArrayList<>(this.cars);
 	}
 
 }

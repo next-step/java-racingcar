@@ -1,8 +1,9 @@
 package study.racingcar.view;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class InputView {
 
@@ -32,7 +33,9 @@ public class InputView {
 	private static List<String> inputListByUser() {
 		String value = inputStringByUser();
 		checkStringSplitSeparator(value);
-		return Arrays.asList(value.split(SEPARATOR));
+		return Stream.of(value.split(","))
+					.map(String::trim)
+					.collect(Collectors.toList());
 	}
 
 	private static void checkStringSplitSeparator(String value) {

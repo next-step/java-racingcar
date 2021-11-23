@@ -20,10 +20,24 @@ public class RacingGame {
 			moveCars();
 			currentScore();
 		}
+
+		winner();
 	}
 
-	public List<Position> carsCurrentPosition() {
-		return cars.positionOfCars();
+	private void winner() {
+		List<Car> cars = this.cars.statusOfCars();
+		List<String> winners = getWinner(cars);
+		ResultView.printWinner(winners);
+	}
+
+	private List<String> getWinner(List<Car> cars) {
+		Winner winner = new Winner(cars);
+		int maxPosition = winner.maxPosition();
+		return winner.whoIsWinner(maxPosition);
+	}
+
+	public List<Car> carsCurrentStatus() {
+		return cars.statusOfCars();
 	}
 
 	private void moveCars() {

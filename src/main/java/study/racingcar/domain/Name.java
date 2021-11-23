@@ -9,11 +9,16 @@ public class Name {
 
 	public Name(String name) {
 		this.name = name;
+		checkLength();
 	}
 
 	public void checkLength() {
 		if(this.name.length() > NAME_MAX_LENGTH){
 			throw new IllegalArgumentException(CAR_NAME_LENGTH_MESSAGE_FRONT + NAME_MAX_LENGTH + CAR_NAME_LENGTH_MESSAGE_BACK);
 		}
+	}
+
+	public String value(){
+		return name;
 	}
 }

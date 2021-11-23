@@ -10,14 +10,23 @@ public class Car {
 		this.name = new Name(name);
 	}
 
-	public Position carPosition() {
-		return this.position;
+	public int carPosition() {
+		return this.position.valueOfPosition();
 	}
 
 	public void go(boolean isMoveCar) {
 		if (isMoveCar) {
 			this.position.add();
 		}
+	}
+
+	public String carName(){
+		return name.value();
+	}
+
+	public boolean isMaxPosition(int position){
+		Position maxPosition = new Position(position);
+		return this.position.equals(maxPosition);
 	}
 
 }
