@@ -1,8 +1,9 @@
 package carracing;
 
+import carracing.domain.Car;
+import carracing.domain.Cars;
+import carracing.domain.Winners;
 import carracing.exception.CarNameFormatException;
-import carracing.util.Car;
-import carracing.util.Cars;
 import carracing.view.ResultView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -40,6 +41,7 @@ public class ResultViewTest {
         List<Car> winnerCars = new ArrayList<>();
         winnerCars.add(new Car("car1"));
         winnerCars.add(new Car("car2"));
-        resultView.printWinner(winnerCars);
+        Winners winners = new Winners(winnerCars);
+        resultView.printWinner(winners);
     }
 }

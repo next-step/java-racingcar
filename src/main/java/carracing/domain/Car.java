@@ -1,4 +1,4 @@
-package carracing.util;
+package carracing.domain;
 
 import carracing.exception.CarNameFormatException;
 
@@ -13,27 +13,28 @@ import carracing.exception.CarNameFormatException;
  */
 public class Car {
 
-    private int drivingHistory;
-    private Name name;
-
     private static final int MOVE_CONDITION = 4;         /* 주행 조건 */
     private static final int MOVE_CONDITION_MIN = 0;     /* 최소 주행 범위 */
     private static final int MOVE_CONDITION_MAX = 9;     /* 최대 주행 범위 */
 
     private static final String ERR_MSG_CONDITION_RANGE = "주행 조건은 0 ~ 9 사이 값 입니다.";
 
-
-    public Car() {
-    }
+    private Position position;
+    private Name name;
 
     public Car(String name) throws CarNameFormatException {
+        this.position = new Position();
         this.name = new Name(name);
     }
 
     public boolean driving(int driveCondition) {
         driveValid(driveCondition);
+        return drive(driveCondition);
+    }
+
+    private boolean drive(int driveCondition) {
         if (driveCondition >= MOVE_CONDITION) {
-            this.drivingHistory++;
+            this.position.move();
             return true;
         }
         return false;                              /* 주행 여부 반환 */
@@ -45,8 +46,8 @@ public class Car {
         }
     }
 
-    public int getDrivingHistory() {
-        return drivingHistory;
+    public int getPosition() {
+        return position.getPosition();
     }
 
     public Name getName() {

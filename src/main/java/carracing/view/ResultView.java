@@ -1,9 +1,9 @@
 package carracing.view;
 
-import carracing.util.Car;
-import carracing.util.Cars;
-
-import java.util.List;
+import carracing.domain.Car;
+import carracing.domain.Cars;
+import carracing.domain.Name;
+import carracing.domain.Winners;
 
 
 /*
@@ -33,19 +33,17 @@ public class ResultView {
 
     public void print(Car car) {
         System.out.printf(CAR_NAME, car.getName().getAlias());
-        for (int i = 0; i < car.getDrivingHistory(); i++) {
+        for (int i = 0; i < car.getPosition(); i++) {
             System.out.print(MOVED);
         }
     }
 
-    public void printWinner(List<Car> winnerCars) {
+    public void printWinner(Winners winnerCars) {
         System.out.println();
-        if (winnerCars.size() == 0) {
-            return;
-        }
         StringBuilder winners = new StringBuilder();
-        for (Car car : winnerCars) {
-            winners.append(String.format(WINNER_CAR_FORMAT, car.getName().getAlias()));
+        for (Car car : winnerCars.getWinners()) {
+            Name carName = car.getName();
+            winners.append(String.format(WINNER_CAR_FORMAT, carName.getAlias()));
         }
         winners.deleteCharAt(winners.length() - 2);
         System.out.printf(WINNER_PRINT_FORMAT + LINE_BREAK, winners);
