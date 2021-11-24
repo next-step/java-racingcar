@@ -2,7 +2,7 @@ package racing.model;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,14 +20,10 @@ class CarsTest {
 
     @Test
     void createWithCarList() {
-        List<Car> carList = new LinkedList<>();
         Car car1 = new Car("su1");
-        carList.add(car1);
         Car car2 = new Car("su2");
-        carList.add(car2);
         Car car3 = new Car("su3");
-        carList.add(car3);
-
+        List<Car> carList = Arrays.asList(car1, car2, car3);
         Cars cars2 = new Cars(carList);
         List<Car> result = cars2.getCars();
         assertThat(result.size()).isEqualTo(3);
@@ -38,13 +34,10 @@ class CarsTest {
 
     @Test
     void 우승자() {
-        List<Car> carList = new LinkedList<>();
         Car car1 = new Car(new Name("su1"), new Position(5));
-        carList.add(car1);
         Car car2 = new Car(new Name("su2"), new Position(5));
-        carList.add(car2);
         Car car3 = new Car(new Name("su3"), new Position());
-        carList.add(car3);
+        List<Car> carList = Arrays.asList(car1, car2, car3);
         Cars cars = new Cars(carList);
 
         assertThat(cars.winners()).contains(car1, car2);

@@ -1,5 +1,6 @@
 package racing.view;
 
+import racing.model.Position;
 import racing.model.RacingResult;
 import racing.model.RoundResult;
 
@@ -32,8 +33,19 @@ public class OutputView {
 
     private void printRoundResult(RoundResult roundResult) {
         roundResult.records().forEach(car -> {
-            System.out.println(car.stringName() + " : " + car.positionWithSymbol(POSITION_SYMBOL));
+            System.out.println(car.stringName() + " : " + convertToSymbol(car.getPosition()));
         });
         System.out.println();
+    }
+
+    private String convertToSymbol(Position position) {
+        String result = "";
+        if (position.getValue() > 0) {
+            StringBuilder stringBuilder = new StringBuilder();
+            IntStream.range(0, position.getValue())
+                    .forEach(j -> stringBuilder.append(POSITION_SYMBOL));
+            result = stringBuilder.toString();
+        }
+        return result;
     }
 }

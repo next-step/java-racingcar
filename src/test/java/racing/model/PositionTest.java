@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class PositionTest {
     @Test
     void create() {
-        assertThat(new Position().getValue()).isEqualTo(0);
+        assertThat(new Position()).isEqualTo(new Position());
     }
 
     @Test
@@ -38,12 +38,5 @@ class PositionTest {
         assertThat(equal.isTopPosition(positionList)).isTrue();
         Position less = new Position(2);
         assertThat(less.isTopPosition(positionList)).isFalse();
-    }
-
-    @Test
-    void positionConverting() {
-        Position position = new Position(3);
-        String actual = position.convertToSymbol("*");
-        assertThat(actual).isEqualTo("***");
     }
 }

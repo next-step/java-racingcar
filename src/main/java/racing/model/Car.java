@@ -43,11 +43,16 @@ public class Car {
                 = cars.stream()
                 .map(car -> car.position)
                 .collect(Collectors.toList());
+
         return this.position.isTopPosition(positions);
     }
 
     public String stringName() {
         return name.getName();
+    }
+
+    public Position getPosition() {
+        return position;
     }
 
     @Override
@@ -73,9 +78,5 @@ public class Car {
                 "name=" + name +
                 ", position=" + position +
                 '}';
-    }
-
-    public String positionWithSymbol(String symbol) {
-        return this.position.convertToSymbol(symbol);
     }
 }

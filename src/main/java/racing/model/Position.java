@@ -3,7 +3,6 @@ package racing.model;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-import java.util.stream.IntStream;
 
 /*
  *
@@ -73,16 +72,5 @@ public class Position {
         return "Position{" +
                 "position=" + position +
                 '}';
-    }
-
-    public String convertToSymbol(String symbol) {
-        String result = "";
-        if (this.position > 0) {
-            StringBuilder stringBuilder = new StringBuilder();
-            IntStream.range(0, this.position)
-                    .forEach(j -> stringBuilder.append(symbol));
-            result = stringBuilder.toString();
-        }
-        return result;
     }
 }
