@@ -1,5 +1,7 @@
 package racingcar;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.model.Car;
@@ -35,5 +37,17 @@ public class CarTest {
 
         // Then
         assertThat(car.getPosition()).isEqualTo(firstPosition);
+    }
+
+    @Test
+    @DisplayName("자동차는 이름을 가질 수 있다")
+    void testCarCanHaveName() {
+        // Given
+        Car car1 = new Car("same-name");
+        Car car2 = new Car("different-name");
+
+        // When & Then
+        assertThat(car1).isEqualTo(new Car("same-name"));
+        assertThat(car2).isNotEqualTo(new Car("same-name"));
     }
 }
