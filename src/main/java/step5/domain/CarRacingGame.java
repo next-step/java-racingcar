@@ -30,7 +30,7 @@ public class CarRacingGame {
         return gameResult.totalResult();
     }
 
-    public List<String> getWinner() {
+    public List<String> winners() {
         List<ResultOfCar> finalRoundResult = gameResult.finalResult();
         return Winners.decideWinner(finalRoundResult);
     }

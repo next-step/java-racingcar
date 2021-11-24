@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class GameResult {
-    private List<GameRound> gameResult;
+    private final List<GameRound> gameResult;
 
     public GameResult() {
         gameResult = new ArrayList<>();
@@ -32,7 +32,7 @@ public class GameResult {
     }
 
     private void checkGameStarted() {
-        if (gameResult == null || gameResult.isEmpty()) {
+        if (gameResult.isEmpty()) {
             throw new RacingGameException("아직 게임을 진행하지 않았습니다");
         }
     }

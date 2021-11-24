@@ -3,7 +3,6 @@ package step5.domain;
 import step5.domain.dto.ResultOfCar;
 import step5.exception.RacingGameException;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -33,7 +33,7 @@ class CarRacingGameTest {
         final int totalRound = 3;
 
         carRacingGame.play();
-        List<String> carRacingGameWinners = carRacingGame.getWinner();
+        List<String> carRacingGameWinners = carRacingGame.winners();
 
         assertThat(carRacingGameWinners).isEqualTo(finalRoundWinners(totalRound));
         assertThat(carRacingGameWinners.size()).isGreaterThan(0);

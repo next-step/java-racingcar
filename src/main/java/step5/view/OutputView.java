@@ -38,7 +38,7 @@ public class OutputView {
     }
 
     private static void printWinner(CarRacingGame carRacingGame) {
-        List<String> winningNames = carRacingGame.getWinner();
+        List<String> winningNames = carRacingGame.winners();
         for (String winningName : winningNames) {
             System.out.print(winningName + " ");
         }

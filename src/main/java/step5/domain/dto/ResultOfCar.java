@@ -1,8 +1,8 @@
 package step5.domain.dto;
 
 public class ResultOfCar {
-    private String carName;
-    private int position;
+    private final String carName;
+    private final int position;
 
     public ResultOfCar(String carName, int position) {
         this.carName = carName;

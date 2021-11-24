@@ -10,11 +10,13 @@ import java.util.List;
 
 public class GameRound {
 
-    private List<ResultOfCar> gameRoundResult;
+    private final List<ResultOfCar> gameRoundResult;
+
+    public GameRound() {
+        gameRoundResult = new ArrayList<>();
+    }
 
     void play(List<Car> carList, CarRacingGameStrategy carRacingGameStrategy) {
-        gameRoundResult = new ArrayList<>();
-
         for (Car car : carList) {
             int distance = carRacingGameStrategy.playGetDistanceToMove();
             car.move(distance);
@@ -23,13 +25,10 @@ public class GameRound {
             gameRoundResult.add(new ResultOfCar(name, position));
 
         }
-
     }
 
-
-
     public List<ResultOfCar> getGameRoundResult() {
-        if (gameRoundResult == null) {
+        if (gameRoundResult.isEmpty()) {
             throw new RacingGameException("아직 게임을 진행하지 않았습니다.");
         }
         return Collections.unmodifiableList(gameRoundResult);
