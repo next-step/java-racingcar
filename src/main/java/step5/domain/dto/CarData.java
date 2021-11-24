@@ -1,10 +1,10 @@
 package step5.domain.dto;
 
-public class ResultOfCar {
+public class CarData {
     private final String carName;
     private final int position;
 
-    public ResultOfCar(String carName, int position) {
+    public CarData(String carName, int position) {
         this.carName = carName;
         this.position = position;
     }

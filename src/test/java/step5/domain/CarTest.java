@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
+
     @DisplayName("distance만큼 움직인 위치를 position 리스트에 저장한다.")
     @Test
     void move() {
@@ -18,7 +19,6 @@ class CarTest {
 
         car.move(0);
         assertThat(car.getCurrentPosition()).isEqualTo(2);
-
     }
 
 }

@@ -1,16 +1,15 @@
 package step5.domain;
 
-import step5.domain.dto.ResultOfCar;
 import step5.exception.RacingGameException;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GameResult {
+public class GameHistory {
     private final List<GameRound> gameResult;
 
-    public GameResult() {
+    public GameHistory() {
         gameResult = new ArrayList<>();
     }
 
@@ -18,23 +17,21 @@ public class GameResult {
         gameResult.add(gameRound);
     }
 
-    public List<ResultOfCar> finalResult() {
+    public GameRound finalRound() {
         checkGameStarted();
         int totalRound = gameResult.size();
-        GameRound finalRound = gameResult.get(totalRound - 1);
-        List<ResultOfCar> finalResults = finalRound.getGameRoundResult();
-        return Collections.unmodifiableList(finalResults);
-    }
-
-    public List<GameRound> totalResult() {
-        checkGameStarted();
-        return Collections.unmodifiableList(gameResult);
+        return gameResult.get(totalRound - 1);
     }
 
     private void checkGameStarted() {
         if (gameResult.isEmpty()) {
             throw new RacingGameException("아직 게임을 진행하지 않았습니다");
         }
+    }
+
+    public List<GameRound> totalResult() {
+        checkGameStarted();
+        return Collections.unmodifiableList(gameResult);
     }
 
 }

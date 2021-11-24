@@ -14,7 +14,13 @@ public class InputView {
 
     public static int inputAttemptNumber() {
         System.out.println("시도할 회수는 몇 회 인가요?");
-        return scanner.nextInt();
+        String inputStr = scanner.nextLine();
+        try {
+            return Integer.parseInt(inputStr);
+
+        } catch (NumberFormatException e) {
+            throw new RacingGameInputException("숫자를 입력하세요");
+        }
     }
 
     public static int inputCarNumber() {
@@ -22,27 +28,9 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public static String[] inputCarNames() {
+    public static String inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String input = scanner.nextLine();
-        String[] carNamesList= carNamesToList(input);
-        validateCarName(carNamesList);
-        return carNamesList;
+        return scanner.nextLine();
     }
 
-    private static String[] carNamesToList(String input) {
-        return input.split(",");
-    }
-
-    private static void validateCarName(String[] carNamesList) {
-        for (String carName : carNamesList) {
-            exceptionExceeds5Letters(carName);
-        }
-    }
-
-    private static void exceptionExceeds5Letters(String carName) {
-        if (carName.length() > 5) {
-            throw new RacingGameInputException("5자 이하의 자동차 이름을 입력하세요");
-        }
-    }
 }

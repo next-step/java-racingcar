@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step5.domain.cargameStrategy.CarRacingGameStrategy;
 import step5.domain.cargameStrategy.RandomCarRacingGameStrategy;
-import step5.domain.dto.ResultOfCar;
+import step5.domain.dto.CarData;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,33 +18,28 @@ class CarRacingGameTest {
 
     @BeforeEach
     void beforeEach() {
-        Car pobiCar = new Car("pobi");
-        Car crongCar = new Car("crong");
-        Car honuxCar = new Car("honux");
-        carList = Arrays.asList(pobiCar, crongCar, honuxCar);
+        Cars cars = Cars.from("pobi,crong,honux");
 
         CarRacingGameStrategy randomGameStrategy = new RandomCarRacingGameStrategy();
-        carRacingGame = new CarRacingGame(randomGameStrategy, carList, 3);
+        carRacingGame = new CarRacingGame(randomGameStrategy, cars, 3);
     }
 
     @Test
     @DisplayName("게임 마지막 라운드까지 진행했을 때, 가장 멀리 이동한 자동차가 우승한다.")
     void getWinner() {
-        final int totalRound = 3;
-
         carRacingGame.play();
         List<String> carRacingGameWinners = carRacingGame.winners();
 
-        assertThat(carRacingGameWinners).isEqualTo(finalRoundWinners(totalRound));
+        assertThat(carRacingGameWinners).isEqualTo(finalRoundWinners());
         assertThat(carRacingGameWinners.size()).isGreaterThan(0);
         assertThat(carRacingGameWinners.size()).isLessThan(carList.size());
 
     }
 
-    private List<String> finalRoundWinners(int totalRound) {
-        List<GameRound> gameResult = carRacingGame.getGameResult();
-        GameRound finalRound = gameResult.get(totalRound - 1);
-        List<ResultOfCar> result = finalRound.getGameRoundResult();
+    private List<String> finalRoundWinners() {
+        GameHistory gameHistory = carRacingGame.getGameHistory();
+        GameRound finalRound = gameHistory.finalRound();
+        List<CarData> result = finalRound.getRoundResult();
         return Winners.decideWinner(result);
     }
 

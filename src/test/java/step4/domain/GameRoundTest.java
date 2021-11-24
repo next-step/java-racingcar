@@ -2,43 +2,19 @@ package step4.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step4.domain.dto.ResultOfCar;
+import step4.exception.RacingGameException;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class GameRoundTest {
 
     GameRound gameRound = new GameRound();
 
     @Test
-    @DisplayName("가장 멀리 이동한 자동차가 우승한다.")
-    void decideWinner() throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
-        setGameResult();
-        invokeDecideWinner();
-        assertThat(gameRound.getWinners().size()).isEqualTo(2);
-    }
-
-    private void invokeDecideWinner() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        Method method = GameRound.class
-                .getDeclaredMethod("decideWinner");
-        method.setAccessible(true);
-        method.invoke(gameRound);
-    }
-
-    private void setGameResult() throws NoSuchFieldException, IllegalAccessException {
-        Field gameRoundResult = gameRound.getClass().getDeclaredField("gameRoundResult");
-        gameRoundResult.setAccessible(true);
-        ResultOfCar pobi = new ResultOfCar("pobi", 5);
-        ResultOfCar crong = new ResultOfCar("crong", 5);
-        ResultOfCar honux = new ResultOfCar("honux", 3);
-        List<ResultOfCar> resultList = Arrays.asList(pobi, crong, honux);
-        gameRoundResult.set(gameRound, resultList);
+    @DisplayName("getRoundResult()실행 시, 게임 결과가 없는 경우 예외를 발생시킨다.")
+    void getRoundResultException() {
+        assertThatExceptionOfType(RacingGameException.class)
+                .isThrownBy(() -> gameRound.getGameRoundResult());
     }
 
 }

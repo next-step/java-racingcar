@@ -1,38 +1,38 @@
 package step5.domain;
 
 import step5.domain.cargameStrategy.CarRacingGameStrategy;
-import step5.domain.dto.ResultOfCar;
+import step5.domain.dto.CarData;
 
 import java.util.List;
 
 public class CarRacingGame {
 
     private final CarRacingGameStrategy carRacingGameStrategy;
-    private final List<Car> carList;
+    private final Cars cars;
     private final int totalRound;
-    private GameResult gameResult = new GameResult();
+    private final GameHistory gameHistory;
 
-    public CarRacingGame(CarRacingGameStrategy carRacingGameStrategy, List<Car> carList, int totalRound) {
-        this.carList = carList;
+    public CarRacingGame(CarRacingGameStrategy carRacingGameStrategy, Cars cars, int totalRound) {
+        this.cars = cars;
         this.carRacingGameStrategy = carRacingGameStrategy;
         this.totalRound = totalRound;
+        this.gameHistory = new GameHistory();
     }
 
     public void play() {
         for (int i = 0; i < totalRound; i++) {
             GameRound gameRound = new GameRound();
-            gameRound.play(carList, carRacingGameStrategy);
-            gameResult.add(gameRound);
+            gameRound.play(cars, carRacingGameStrategy);
+            gameHistory.add(gameRound);
         }
     }
 
-    public List<GameRound> getGameResult() {
-        return gameResult.totalResult();
-    }
-
     public List<String> winners() {
-        List<ResultOfCar> finalRoundResult = gameResult.finalResult();
-        return Winners.decideWinner(finalRoundResult);
+        GameRound finalRound = gameHistory.finalRound();
+        return finalRound.winners();
     }
 
+    public GameHistory getGameHistory() {
+        return gameHistory;
+    }
 }
