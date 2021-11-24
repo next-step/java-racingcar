@@ -8,11 +8,10 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class StringCalculatorTest {
 
@@ -27,74 +26,74 @@ public class StringCalculatorTest {
 
     static Stream<Arguments> addTestData() {
         return Stream.of(
-                Arguments.of("+", Arrays.asList(10, 10), 20),
-                Arguments.of("+", Arrays.asList(0, -5), -5),
-                Arguments.of("+", Arrays.asList(0, 0), 0),
-                Arguments.of("+", Arrays.asList(-10, -10), -20),
-                Arguments.of("+", Arrays.asList(-10, 100), 90)
+                Arguments.of("+", 10, 10, 20),
+                Arguments.of("+", 0, -5, -5),
+                Arguments.of("+", 0, 0, 0),
+                Arguments.of("+", -10, -10, -20),
+                Arguments.of("+", -10, 100, 90)
         );
     }
 
     @ParameterizedTest
     @MethodSource(value = "addTestData")
     @DisplayName("덧셈 테스트")
-    void add(String operation, List<Integer> list, int expected) {
-        int result = Operator.getOperatorByCode(operation).calculate(list);
-        assertThat(result).isEqualTo(expected);
+    void add(String operation, int result, int value, int expected) {
+        int calculateResult = Operator.getOperatorByCode(operation).calculate(result, value);
+        assertThat(calculateResult).isEqualTo(expected);
     }
 
     static Stream<Arguments> subTestData() {
         return Stream.of(
-                Arguments.of("-", Arrays.asList(10, 10), 0),
-                Arguments.of("-", Arrays.asList(0, -5), 5),
-                Arguments.of("-", Arrays.asList(0, 0), 0),
-                Arguments.of("-", Arrays.asList(-10, -10), 0),
-                Arguments.of("-", Arrays.asList(-10, 100), -110)
+                Arguments.of("-", 10, 10, 0),
+                Arguments.of("-", 0, -5, 5),
+                Arguments.of("-", 0, 0, 0),
+                Arguments.of("-", -10, -10, 0),
+                Arguments.of("-", -10, 100, -110)
         );
     }
 
     @ParameterizedTest
     @MethodSource(value = "subTestData")
     @DisplayName("뺄셈 테스트")
-    void sub(String operation, List<Integer> list, int expected) {
-        int result = Operator.getOperatorByCode(operation).calculate(list);
-        assertThat(result).isEqualTo(expected);
+    void sub(String operation, int result, int value, int expected) {
+        int calculateResult = Operator.getOperatorByCode(operation).calculate(result, value);
+        assertThat(calculateResult).isEqualTo(expected);
     }
 
     static Stream<Arguments> mulTestData() {
         return Stream.of(
-                Arguments.of("*", Arrays.asList(10, 10), 100),
-                Arguments.of("*", Arrays.asList(0, -5), 0),
-                Arguments.of("*", Arrays.asList(0, 0), 0),
-                Arguments.of("*", Arrays.asList(-10, -10), 100),
-                Arguments.of("*", Arrays.asList(-10, 100), -1000)
+                Arguments.of("*", 10, 10, 100),
+                Arguments.of("*", 0, -5, 0),
+                Arguments.of("*", 0, 0, 0),
+                Arguments.of("*", -10, -10, 100),
+                Arguments.of("*", -10, 100, -1000)
         );
     }
 
     @ParameterizedTest
     @MethodSource(value = "mulTestData")
     @DisplayName("곱셈 테스트")
-    void mul(String operation, List<Integer> list, int expected) {
-        int result = Operator.getOperatorByCode(operation).calculate(list);
-        assertThat(result).isEqualTo(expected);
+    void mul(String operation, int result, int value, int expected) {
+        int calculateResult = Operator.getOperatorByCode(operation).calculate(result, value);
+        assertThat(calculateResult).isEqualTo(expected);
     }
 
     static Stream<Arguments> divTestData() {
         return Stream.of(
-                Arguments.of("/", Arrays.asList(10, 10), 1),
-                Arguments.of("/", Arrays.asList(0, -5), 0),
-                Arguments.of("/", Arrays.asList(-10, -10), 1),
-                Arguments.of("/", Arrays.asList(-10, 5), -2),
-                Arguments.of("/", Arrays.asList(10, -5), -2)
+                Arguments.of("/", 10, 10, 1),
+                Arguments.of("/", 0, -5, 0),
+                Arguments.of("/", -10, -10, 1),
+                Arguments.of("/", -10, 5, -2),
+                Arguments.of("/", 10, -5, -2)
         );
     }
 
     @ParameterizedTest
     @MethodSource(value = "divTestData")
     @DisplayName("나눗셈 테스트")
-    void div(String operation, List<Integer> list, int expected) {
-        int result = Operator.getOperatorByCode(operation).calculate(list);
-        assertThat(result).isEqualTo(expected);
+    void div(String operation, int result, int value, int expected) {
+        int calculateResult = Operator.getOperatorByCode(operation).calculate(result, value);
+        assertThat(calculateResult).isEqualTo(expected);
     }
 
     @Test

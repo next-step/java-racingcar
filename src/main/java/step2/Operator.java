@@ -9,8 +9,6 @@ public enum Operator {
     MUL("*", (result, value) -> result * value),
     DIV("/", (result, value) -> result / value);
 
-    private static final int INDEX_OF_VALUE = 1;
-    private static final int INDEX_OF_RESULT = 0;
     private static final String IAE_MESSAGE = "사칙연산 기호를 확인해주세요 :(";
 
     private String operation;
