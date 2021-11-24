@@ -1,7 +1,5 @@
 package step2;
 
-import java.util.Arrays;
-
 public class StringCalculator {
 
     private static final int INDEX_TO_GET_FIRST_VALUE = 0;
@@ -14,17 +12,13 @@ public class StringCalculator {
         int result = Integer.parseInt(splitData[INDEX_TO_GET_FIRST_VALUE]);
 
         for (int i = INDEX_TO_START_CALCULATE; i < splitData.length; i += NUMBER_OF_UNITS_TO_CALCULATE) {
-            result = getResult(splitData, result, i);
+            String operation = splitData[i];
+            int value = Integer.parseInt(splitData[i + ADDITIONAL_INDEX_TO_GET_VALUE]);
+
+            result = Operator.getOperatorByCode(operation).calculate(result, value);
         }
 
         return result;
-    }
-
-    private int getResult(String[] splitData, int result, int i) {
-        String operation = splitData[i];
-        int value = Integer.parseInt(splitData[i + ADDITIONAL_INDEX_TO_GET_VALUE]);
-
-        return Operator.getOperatorByCode(operation).calculate(Arrays.asList(result, value));
     }
 
 }

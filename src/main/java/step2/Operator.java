@@ -1,23 +1,22 @@
 package step2;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.function.Function;
+import java.util.function.BiFunction;
 
 public enum Operator {
-    ADD("+", list -> sum(list)),
-    SUB("-", list -> sub(list)),
-    MUL("*", list -> mul(list)),
-    DIV("/", list -> div(list));
+    ADD("+", (result, value) -> result + value),
+    SUB("-", (result, value) -> result - value),
+    MUL("*", (result, value) -> result * value),
+    DIV("/", (result, value) -> result / value);
 
     private static final int INDEX_OF_VALUE = 1;
     private static final int INDEX_OF_RESULT = 0;
     private static final String IAE_MESSAGE = "사칙연산 기호를 확인해주세요 :(";
 
     private String operation;
-    private Function<List<Integer>, Integer> expression;
+    private BiFunction<Integer, Integer, Integer> expression;
 
-    Operator(String operation, Function<List<Integer>, Integer> expression) {
+    Operator(String operation, BiFunction<Integer, Integer, Integer> expression) {
         this.operation = operation;
         this.expression = expression;
     }
@@ -29,24 +28,8 @@ public enum Operator {
                 .orElseThrow(() -> new IllegalArgumentException(IAE_MESSAGE));
     }
 
-    public int calculate(List<Integer> list) {
-        return expression.apply(list);
-    }
-
-    private static int sum(List<Integer> list) {
-        return list.get(INDEX_OF_RESULT) + list.get(INDEX_OF_VALUE);
-    }
-
-    private static int sub(List<Integer> list) {
-        return list.get(INDEX_OF_RESULT) - list.get(INDEX_OF_VALUE);
-    }
-
-    private static int mul(List<Integer> list) {
-        return list.get(INDEX_OF_RESULT) * list.get(INDEX_OF_VALUE);
-    }
-
-    private static int div(List<Integer> list) {
-        return list.get(INDEX_OF_RESULT) / list.get(INDEX_OF_VALUE);
+    public int calculate(Integer result, Integer value) {
+        return expression.apply(result, value);
     }
 
 }
