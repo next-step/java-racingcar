@@ -29,7 +29,6 @@ public class CarTest {
         // then
         assertThat(car.getPosition()).isEqualTo(0);
         assertThat(car.getName()).isEqualTo(expectedName);
-
     }
 
     @Test
@@ -55,6 +54,7 @@ public class CarTest {
 
         // when
         car.move(() -> false);
+
 
         // then
         assertThat(car.getPosition()).isEqualTo(0);

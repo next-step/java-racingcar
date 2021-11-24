@@ -22,6 +22,7 @@ public class CarRacingGameController {
             updateRacingResult();
 
         }
+      
         closeGame();
     }
 

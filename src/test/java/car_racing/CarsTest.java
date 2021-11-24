@@ -18,6 +18,7 @@ class CarsTest {
         Car car0 = new Car(name);
         Car car1 = new Car(name);
         Car car2 = new Car(name);
+
         List<Car> carObjects = new ArrayList<Car>() {{
             add(car0);
             add(car1);
@@ -39,6 +40,7 @@ class CarsTest {
         Name name = new Name("");
         Car car0 = new Car(1, name);
         Car car1 = new Car(2, name);
+
         List<Car> carObjects = new ArrayList<Car>() {{
             add(car0);
             add(car1);

@@ -71,5 +71,4 @@ public class OutputView {
         List<String> winnersName = cars.getNames();
         return String.join(NAME_SEPARATOR_FOR_WINNERS, winnersName);
     }
-
 }
