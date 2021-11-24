@@ -42,19 +42,6 @@ public class CarRacingResultHistory {
         this.winners = winners;
     }
 
-    private int calMaxPosition(Car car, int maxPosition) {
-        if (car.getPosition() > maxPosition) {
-            maxPosition = car.getPosition();
-        }
-        return maxPosition;
-    }
-
-    private void updateWinners(Car car, int maxPosition) {
-        if (car.getPosition() == maxPosition) {
-            winners.add(car);
-        }
-    }
-
     public List<Car> getWinners() {
         return winners;
     }
