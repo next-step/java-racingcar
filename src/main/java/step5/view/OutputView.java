@@ -11,7 +11,6 @@ public class OutputView {
 
     private static final String POSITION_MARK = "-";
 
-
     public static void printResult() {
         System.out.println("실행 결과");
     }

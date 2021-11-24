@@ -5,9 +5,9 @@ import step5.utils.StringUtil;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class Cars {
+
     private final List<Car> carList;
 
     private Cars() {

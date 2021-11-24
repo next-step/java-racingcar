@@ -3,6 +3,7 @@ package step5.domain.cargameStrategy;
 import java.util.Random;
 
 public class RandomCarRacingGameStrategy implements CarRacingGameStrategy {
+
     private static final int MAX_RANDOM_VALUE = 10;
     private static final int BOUND = 4;
     private static final Random random = new Random();
@@ -23,4 +24,5 @@ public class RandomCarRacingGameStrategy implements CarRacingGameStrategy {
     private static int random() {
         return random.nextInt(MAX_RANDOM_VALUE);
     }
+
 }

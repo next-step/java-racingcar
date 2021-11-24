@@ -11,4 +11,5 @@ public class Application {
         carRacingController.play(carRacingGame);
         carRacingController.drawResult(carRacingGame);
     }
+
 }

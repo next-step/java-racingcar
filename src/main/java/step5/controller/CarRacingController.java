@@ -8,6 +8,7 @@ import step5.view.InputView;
 import step5.view.OutputView;
 
 public class CarRacingController {
+
     private static final CarRacingGameStrategy carRacingGameStrategy = new RandomCarRacingGameStrategy();
 
     public CarRacingGame createGame() {
@@ -16,7 +17,6 @@ public class CarRacingController {
         Cars cars = Cars.from(inputCarNames);
         return new CarRacingGame(carRacingGameStrategy, cars, numberOfAttempts);
     }
-
 
     public void play(CarRacingGame carRacingGame){
         carRacingGame.play();

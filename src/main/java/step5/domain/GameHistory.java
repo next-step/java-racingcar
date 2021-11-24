@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class GameHistory {
+
     private final List<GameRound> gameResult;
 
     public GameHistory() {
