@@ -5,11 +5,11 @@ import com.rick.racing.view.ResultView;
 
 public class CarRacingController {
 
-    private final CarRacingInfo racingPlayData;
+    private final CarRacingInfo racingPlayInfo;
     private final CarMovingStrategy carMovingStrategy;
 
     private CarRacingController(final CarRacingInfo racingPlayData, final CarMovingStrategy carMovingStrategy) {
-        this.racingPlayData = racingPlayData;
+        this.racingPlayInfo = racingPlayData;
         this.carMovingStrategy = carMovingStrategy;
     }
 
@@ -20,15 +20,12 @@ public class CarRacingController {
     public void start() {
         ResultView.drawRunResultMessage();
 
-        int tryCount = racingPlayData.getTryCount()
-            .asInt();
+        while (racingPlayInfo.doRound()) {
+            racingPlayInfo.getCarGroup()
+                .move(carMovingStrategy);
 
-        for (int i = 0; i < tryCount; i++) {
-            racingPlayData.getCarGroup()
-                .doRound(carMovingStrategy);
-
-            ResultView.drawRoundResult(racingPlayData);
+            ResultView.drawRoundResult(racingPlayInfo);
         }
-        ResultView.drawWinner(racingPlayData);
+        ResultView.drawWinner(racingPlayInfo);
     }
 }

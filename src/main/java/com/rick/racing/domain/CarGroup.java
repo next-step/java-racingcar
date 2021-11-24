@@ -19,7 +19,7 @@ public class CarGroup {
         return new CarGroup(cars);
     }
 
-    public void doRound(final CarMovingStrategy carMovingStrategy) {
+    public void move(final CarMovingStrategy carMovingStrategy) {
         for (Car car : cars) {
             car.move(carMovingStrategy);
         }
@@ -41,6 +41,6 @@ public class CarGroup {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 }

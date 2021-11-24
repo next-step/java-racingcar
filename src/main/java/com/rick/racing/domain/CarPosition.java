@@ -29,14 +29,14 @@ public class CarPosition implements Comparable<CarPosition> {
     }
 
     @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
+    public boolean equals(final Object target) {
+        if (this == target) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (target == null || getClass() != target.getClass()) {
             return false;
         }
-        CarPosition that = (CarPosition) o;
+        CarPosition that = (CarPosition) target;
         return value == that.value;
     }
 
@@ -46,7 +46,7 @@ public class CarPosition implements Comparable<CarPosition> {
     }
 
     @Override
-    public int compareTo(final CarPosition o) {
-        return this.value - o.value;
+    public int compareTo(final CarPosition target) {
+        return this.value - target.value;
     }
 }

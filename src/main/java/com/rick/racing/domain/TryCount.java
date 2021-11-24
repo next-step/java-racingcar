@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class TryCount {
 
-    private static final int MIN_TRY_COUNT = 1;
+    private static final int MIN_TRY_COUNT = 0;
     private static final String EXCEPTION_MESSAGE_MINIMUM_TRY_COUNT = "시도 수는 0보다 커야 합니다.";
 
     private final int value;
@@ -20,24 +20,24 @@ public class TryCount {
         return new TryCount(value);
     }
 
-    public int asInt() {
-        return value;
-    }
-
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object target) {
+        if (this == target) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (target == null || getClass() != target.getClass()) {
             return false;
         }
-        TryCount tryCount = (TryCount) o;
+        TryCount tryCount = (TryCount) target;
         return value == tryCount.value;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    public TryCount increase() {
+        return TryCount.create(this.value + 1);
     }
 }
