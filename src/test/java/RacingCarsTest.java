@@ -1,6 +1,3 @@
-import domain.MoveStrategy;
-import domain.RacingCar;
-import domain.RacingCars;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
