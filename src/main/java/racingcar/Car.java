@@ -6,10 +6,6 @@ public class Car {
     private Movable movable;
     private CarName name;
 
-    public Car(int id, Movable movable) {
-        this(id, movable, new CarName(""));
-    }
-
     public Car(int id, Movable movable, CarName name) {
         this(id, movable, name, 1);
     }

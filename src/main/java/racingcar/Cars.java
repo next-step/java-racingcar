@@ -11,8 +11,7 @@ public class Cars {
     }
 
     public void race() {
-        for (int i = 0; i < cars.size(); i++) {
-            Car current = cars.get(i);
+        for (Car current : cars) {
             current.move(RandomGenerator.generate());
             ResultView.printCarDistanceWithName(current.getDistance(), current.getCarName());
         }
@@ -21,8 +20,8 @@ public class Cars {
     public String findWinnersString() {
         List<Car> winners = findWinners();
         String[] winnersStr = new String[winners.size()];
-        for (int i = 0; i < winners.size(); i++) {
-            winnersStr[i] = winners.get(i).getCarName();
+        for (Car winner : winners) {
+            winnersStr[winners.indexOf(winner)] = winner.getCarName();
         }
         return String.join(", ", winnersStr);
     }
@@ -30,20 +29,23 @@ public class Cars {
     public List<Car> findWinners() {
         List<Car> winners = new ArrayList<>();
         int maxDistance = getMaxDistance();
-        cars.forEach((car) -> {
-            if (car.isWinner(maxDistance)) {
-                winners.add(car);
-            }
-        });
+        for (Car current : cars) {
+            addWinners(winners, maxDistance, current);
+        }
         return winners;
     }
 
     private int getMaxDistance() {
         int maxDistance = 0;
-        for (int i = 0; i < cars.size(); i++) {
-            Car current = cars.get(i);
-            maxDistance = Math.max(maxDistance, current.getDistance());
+        for (Car car : cars) {
+            maxDistance = Math.max(maxDistance, car.getDistance());
         }
         return maxDistance;
+    }
+
+    private void addWinners(List<Car> winners, int maxDistance, Car car) {
+        if (car.isWinner(maxDistance)) {
+            winners.add(car);
+        }
     }
 }

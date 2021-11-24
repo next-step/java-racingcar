@@ -48,7 +48,8 @@ public class RacingCar {
     private static Cars initCars(int carCount) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(cars.size() + 1, new LoadMovable()));
+            int id = cars.size() + 1;
+            cars.add(new Car(id, new LoadMovable(), new CarName(String.valueOf(id))));
         }
         return new Cars(cars);
     }

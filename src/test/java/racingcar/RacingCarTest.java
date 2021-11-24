@@ -6,61 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.Scanner;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class RacingCarTest {
-
-    private static InputStream generateUserInput(String input) {
-        return new ByteArrayInputStream(input.getBytes());
-    }
-
-    @Disabled
-    @Test
-    void 입력_자동차대수() {
-        InputStream in = generateUserInput("3");
-        System.setIn(in);
-        InputView inputView = new InputView(new Scanner(System.in));
-        assertThat(inputView.next("자동차 대수는 몇 대 인가요?")).isEqualTo(3);
-    }
-
-    @Disabled
-    @Test
-    void 입력_시도횟수() {
-        InputStream in = generateUserInput("5");
-        System.setIn(in);
-        InputView inputView = new InputView(new Scanner(System.in));
-        assertThat(inputView.next("시도할 횟수는 몇 회 인가요?")).isEqualTo(5);
-    }
-
-    @DisplayName("처음 자동차를 생성하면, 거리는 1이다.")
-    @Test
-    void 자동차_생성() {
-        Car car = new Car(1, new LoadMovable());
-        assertThat(car.getDistance()).isEqualTo(1);
-    }
-
-    @DisplayName("4이상이면 전진")
-    @ParameterizedTest
-    @ValueSource(ints = {4,5,8})
-    void 전진(int input) {
-        Car car = new Car(1, new LoadMovable());
-        car.move(input);
-        assertThat(car.getDistance()).isEqualTo(2);
-    }
-
-    @DisplayName("4 미만이면 멈춤")
-    @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
-    void 멈춤(int input) {
-        Car car = new Car(1, new LoadMovable());
-        car.move(input);
-        assertThat(car.getDistance()).isEqualTo(1);
-    }
 
     @DisplayName("RacingCar는 자동차 대수와 시도할 횟수가 같으면 같은 객체")
     @Test
@@ -73,8 +22,6 @@ public class RacingCarTest {
     void 자동차경주_생성_이름() {
         assertThat(RacingCar.create("poby,crong,honux", 5)).isEqualTo(RacingCar.create("poby,crong,honux", 5));
     }
-
-
 
     @DisplayName("자동차 대수가 0 이하일 경우 예외")
     @ParameterizedTest
@@ -94,6 +41,13 @@ public class RacingCarTest {
         }).hasMessageContaining("1 이상 입력해야 합니다.");
     }
 
-
-
+    @Disabled
+    @DisplayName("자동차 이름이 없을 때 예외")
+    @ParameterizedTest
+    @ValueSource(strings = {",,,"})
+    void 자동차경주_자동차이름_없으면_예외(String input) {
+        assertThatThrownBy(() -> {
+            RacingCar.create(input, 5);
+        }).hasMessageContaining("자동차 이름이 없습니다.");
+    }
 }
