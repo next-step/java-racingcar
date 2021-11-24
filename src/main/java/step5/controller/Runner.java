@@ -1,4 +1,4 @@
-package step5;
+package step5.controller;
 
 import step5.domain.Car;
 import step5.domain.CarRacingGame;

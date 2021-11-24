@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step5.domain.cargameStrategy.CarRacingGameStrategy;
 import step5.domain.cargameStrategy.RandomCarRacingGameStrategy;
+import step5.domain.dto.ResultOfCar;
 
 import java.util.Arrays;
 import java.util.List;
@@ -43,7 +44,8 @@ class CarRacingGameTest {
     private List<String> finalRoundWinners(int totalRound) {
         List<GameRound> gameResult = carRacingGame.getGameResult();
         GameRound finalRound = gameResult.get(totalRound - 1);
-        return finalRound.getWinners();
+        List<ResultOfCar> result = finalRound.getGameRoundResult();
+        return Winners.decideWinner(result);
     }
 
 }

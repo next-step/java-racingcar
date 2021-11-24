@@ -1,6 +1,7 @@
 package step5.domain;
 
 import step5.domain.cargameStrategy.CarRacingGameStrategy;
+import step5.domain.dto.ResultOfCar;
 import step5.exception.RacingGameException;
 
 import java.util.ArrayList;
@@ -42,8 +43,8 @@ public class CarRacingGame {
             throw new RacingGameException("아직 게임을 진행하지 않았습니다");
         }
         GameRound finalRound = gameResult.get(totalRound - 1);
-        List<String> winningCarNames = finalRound.getWinners();
-        return Collections.unmodifiableList(winningCarNames);
-
+        List<ResultOfCar> finalRoundResult = finalRound.getGameRoundResult();
+        return Winners.decideWinner(finalRoundResult);
     }
+
 }
