@@ -9,14 +9,6 @@ public class Car {
     private final Name name;
     private int position;
 
-    public Car() {
-        this(START_POSITION, null);
-    }
-
-    public Car(int position) {
-        this(position, null);
-    }
-
     public Car(Name name) {
         this(START_POSITION, name);
     }

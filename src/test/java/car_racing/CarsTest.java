@@ -14,9 +14,10 @@ class CarsTest {
     @DisplayName("When create Cars with numberOfCar, default status is set")
     void createCars() {
         // given
-        Car car0 = new Car();
-        Car car1 = new Car();
-        Car car2 = new Car();
+        Name name = new Name("");
+        Car car0 = new Car(name);
+        Car car1 = new Car(name);
+        Car car2 = new Car(name);
         List<Car> carObjects = new ArrayList<Car>() {{
             add(car0);
             add(car1);
@@ -35,8 +36,9 @@ class CarsTest {
     @DisplayName("when playOneRound with TestMoveStrategy, cars position moves to 1")
     void playOneRound() {
         // given
-        Car car0 = new Car(1);
-        Car car1 = new Car(2);
+        Name name = new Name("");
+        Car car0 = new Car(1, name);
+        Car car1 = new Car(2, name);
         List<Car> carObjects = new ArrayList<Car>() {{
             add(car0);
             add(car1);

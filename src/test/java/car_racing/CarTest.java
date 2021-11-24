@@ -11,8 +11,9 @@ public class CarTest {
     @DisplayName("when create car, default status are set - position equals to 0")
     void createCar() {
         // given
+        Name name = new Name("");
         // when
-        Car car = new Car();
+        Car car = new Car(name);
 
         // then
         assertThat(car.getPosition()).isEqualTo(0);
@@ -35,7 +36,8 @@ public class CarTest {
     @DisplayName("Move car with test strategy - position becomes plus 1")
     void moveCar() {
         // given
-        Car car = new Car();
+        Name name = new Name("");
+        Car car = new Car(name);
 
         // when
         car.move(() -> true);
@@ -48,7 +50,8 @@ public class CarTest {
     @DisplayName("No move car with test strategy - position becomes the same as before")
     void stopCar() {
         // given
-        Car car = new Car();
+        Name name = new Name("");
+        Car car = new Car(name);
 
         // when
         car.move(() -> false);

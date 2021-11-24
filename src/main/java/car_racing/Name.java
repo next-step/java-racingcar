@@ -3,7 +3,10 @@ package car_racing;
 import java.util.Objects;
 
 public class Name {
+
     private static final String MESSAGE_NAME_LENGTH_EXCEPTION = "이름은 5자를 초과할 수 없습니다. ";
+    private static final int MAX_NAME_LENGTH = 5;
+
     private final String name;
 
     public Name(String name) {
@@ -16,7 +19,7 @@ public class Name {
             return;
         }
 
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(MESSAGE_NAME_LENGTH_EXCEPTION);
         }
     }
