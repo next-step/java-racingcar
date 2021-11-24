@@ -10,11 +10,12 @@ public enum Operator {
     MUL("*", list -> mul(list)),
     DIV("/", list -> div(list));
 
+    private static final int INDEX_OF_VALUE = 1;
+    private static final int INDEX_OF_RESULT = 0;
+    private static final String IAE_MESSAGE = "사칙연산 기호를 확인해주세요 :(";
+
     private String operation;
     private Function<List<Integer>, Integer> expression;
-    private static final int INDEX_OF_RESULT = 0;
-    private static final int INDEX_OF_VALUE = 1;
-    private static final String IAE_MESSAGE = "사칙연산 기호를 확인해주세요 :(";
 
     Operator(String operation, Function<List<Integer>, Integer> expression) {
         this.operation = operation;
