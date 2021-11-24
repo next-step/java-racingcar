@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.view;
 
 public class ResultView {
     private static final String DISTANCE_PATTERN = "-";

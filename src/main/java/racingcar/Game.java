@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.domain.RacingCar;
+import racingcar.view.InputView;
+
 import java.util.Scanner;
 
 public class Game {

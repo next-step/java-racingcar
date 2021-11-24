@@ -2,6 +2,10 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.CarName;
+import racingcar.domain.Cars;
+import racingcar.domain.LoadMovable;
 
 import java.util.Arrays;
 
