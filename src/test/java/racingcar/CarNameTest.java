@@ -17,4 +17,13 @@ public class CarNameTest {
         }).hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");
     }
 
+    @DisplayName("자동차 이름이 없으면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {" ", "   ", "     "})
+    void 자동차이름_없으면_예외(String input) {
+        assertThatThrownBy(() -> {
+            new CarName(input);
+        }).hasMessageContaining("자동차 이름이 없습니다.");
+    }
+
 }
