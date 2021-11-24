@@ -1,7 +1,5 @@
 package racingcar.model;
 
-import racingcar.model.Car;
-import racingcar.model.RandomNumber;
 import racingcar.view.InputResult;
 
 import java.util.ArrayList;
@@ -18,6 +16,11 @@ public class RacingGame {
         IntStream.range(0, inputResult.getNumberOfCars())
                 .forEach((int i) -> cars.add(new Car()));
         this.lastRound = inputResult.getNumberOfTries();
+    }
+
+    public RacingGame(List<Car> cars, int lastRound) {
+        this.cars = cars;
+        this.lastRound = lastRound;
     }
 
     public int getNumberOfCars() {
