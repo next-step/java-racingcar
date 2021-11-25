@@ -37,7 +37,7 @@ public class Car {
         return this.position.equals(maxPosition);
     }
 
-    public CarPosition maxPosition(CarPosition maxPositioin) {
-        return this.position.maxPosition(maxPositioin);
+    public CarPosition maxPosition(CarPosition maxPosition) {
+        return this.position.maxPosition(maxPosition);
     }
 }
