@@ -20,7 +20,7 @@ public class CarRacingController {
     public void start() {
         ResultView.drawRunResultMessage();
 
-        while (racingPlayInfo.isEnd()) {
+        while (!racingPlayInfo.isEnd()) {
             racingPlayInfo.doRound(carMovingStrategy);
             ResultView.drawRoundResult(racingPlayInfo.getCarGroup());
         }
