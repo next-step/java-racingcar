@@ -32,7 +32,7 @@ public class RacingGame {
     }
 
     public void play() {
-        cars.forEach((Car car) -> car.run(new RandomNumber()));
+        cars.forEach((Car car) -> car.run(new RandomMoveStrategy()));
     }
 
     public List<Integer> getCurrentStatus() {

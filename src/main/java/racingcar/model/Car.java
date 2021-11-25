@@ -31,8 +31,8 @@ public class Car {
         return this.position;
     }
 
-    public void run(RandomNumber randomNumber) {
-        if (randomNumber.isMovable()) {
+    public void run(MoveStrategy randomMoveStrategy) {
+        if (randomMoveStrategy.isMovable()) {
             this.position += 1;
         }
     }
