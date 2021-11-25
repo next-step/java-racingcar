@@ -1,35 +1,30 @@
 package racing.model;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.NoSuchElementException;
-import java.util.StringJoiner;
+import java.util.LinkedList;
+import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class RoundResultTest {
 
     @Test
-    @DisplayName("최종 우승자 선정")
-    void 우승자() {
-        RacingResult result = new Racing("pobi,crong", 3).start();
+    void roundRecords() {
+        List<Car> cars = new LinkedList<>();
+        Car car1 = new Car("car1");
+        car1.move(5);
+        car1.move(5);
+        cars.add(car1);
+        Car car2 = new Car("car2");
+        car2.move(5);
+        cars.add(car2);
+        Car car3 = new Car("car3");
+        cars.add(car3);
 
-        RoundResult lastRoundResult = result.getRecords().get((result.getRecords().size() - 1));
+        RoundResult roundResult = new RoundResult(cars);
+        assertThat(roundResult.records()).contains(car1, car2, car3);
 
-        int topPosition = lastRoundResult.getRecords()
-                .stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElseThrow(NoSuchElementException::new);
-
-        StringJoiner expected = new StringJoiner(", ");
-        lastRoundResult.getRecords()
-                .stream()
-                .filter(x -> x.getPosition() == topPosition)
-                .map(Car::getName)
-                .forEach(expected::add);
-
-        assertThat(result.getWinner()).isEqualTo(expected.toString());
     }
+
 }

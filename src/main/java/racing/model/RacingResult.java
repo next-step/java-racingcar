@@ -1,6 +1,8 @@
 package racing.model;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.StringJoiner;
 
 /*
  *
@@ -8,7 +10,7 @@ import java.util.*;
  *
  * @version 1.0.0
  *
- * 2021-11-12
+ * 2021-11-23
  *
  * Copyright tnals1422
  */
@@ -24,11 +26,22 @@ public class RacingResult {
         roundResults.add(roundResult);
     }
 
-    public List<RoundResult> getRecords() {
-        return Collections.unmodifiableList(roundResults);
+    public List<RoundResult> records() {
+        return roundResults;
     }
 
-    public String getWinner() {
-        return new Cars(roundResults.get((roundResults.size() - 1)).getRecords()).getWinner();
+    public String winner() {
+        Cars cars = new Cars(roundResults.get(roundResults.size() - 1).records());
+        StringJoiner result = new StringJoiner(", ");
+        cars.winners().forEach(car -> result.add(car.stringName()));
+        return result.toString();
     }
+
+    @Override
+    public String toString() {
+        return "RacingResult{" +
+                "roundResults=" + roundResults +
+                '}';
+    }
+
 }

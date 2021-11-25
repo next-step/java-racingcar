@@ -1,18 +1,17 @@
 package racing.model;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-class CarNameTest {
+class NameTest {
 
     @Test
-    @DisplayName("자동차 이름 유효성 체크")
     void 유효성() {
+        assertDoesNotThrow(() -> new Name("12345"));
         assertThatThrownBy(() -> {
-            new CarName("123456");
+            new Name("123456");
         }).isInstanceOf(IllegalArgumentException.class);
     }
-
 }

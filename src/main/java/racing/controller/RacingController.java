@@ -1,7 +1,7 @@
 package racing.controller;
 
-import racing.model.RacingResult;
 import racing.model.Racing;
+import racing.model.RacingResult;
 import racing.view.InputView;
 import racing.view.OutputView;
 

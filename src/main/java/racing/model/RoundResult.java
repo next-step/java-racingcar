@@ -1,7 +1,5 @@
 package racing.model;
 
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 /*
@@ -10,21 +8,26 @@ import java.util.List;
  *
  * @version 1.0.0
  *
- * 2021-11-12
+ * 2021-11-23
  *
  * Copyright tnals1422
  */
 public class RoundResult {
 
-    private final List<Car> resultPerCars = new LinkedList<>();
+    private final Cars cars;
 
-    public RoundResult(Cars cars) {
-        cars.getCars()
-                .forEach(car -> {
-                    this.resultPerCars.add(new Car(car.getName(), car.getPosition()));
-                });
+    public RoundResult(List<Car> cars) {
+        this.cars = new Cars(cars);
     }
-    public List<Car> getRecords() {
-        return Collections.unmodifiableList(resultPerCars);
+
+    public List<Car> records() {
+        return cars.getCars();
+    }
+
+    @Override
+    public String toString() {
+        return "RoundResult{" +
+                "cars=" + cars +
+                '}';
     }
 }
