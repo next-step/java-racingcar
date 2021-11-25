@@ -1,11 +1,13 @@
 package com.rick.racing.domain;
 
+import com.rick.racing.controller.CarMovingStrategy;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarRacingInfo {
 
-    public static final int START_TRY_COUNT = 1;
+    private static final int START_TRY_COUNT = 0;
+
     private final CarGroup carGroup;
     private final TryCount tryCount;
     private TryCount currentTryCount;
@@ -24,17 +26,20 @@ public class CarRacingInfo {
         return new CarRacingInfo(cars, tryCount);
     }
 
+    public void doRound(CarMovingStrategy carMovingStrategy) {
+        carGroup.move(carMovingStrategy);
+        this.currentTryCount = currentTryCount.increase();
+    }
+
+    public boolean isEnd() {
+        return tryCount.equals(currentTryCount);
+    }
+
     public CarGroup getCarGroup() {
         return carGroup;
     }
 
     public TryCount getTryCount() {
         return tryCount;
-    }
-
-    public boolean doRound() {
-        boolean isDone = tryCount.equals(currentTryCount);
-        this.currentTryCount = currentTryCount.increase();
-        return !isDone;
     }
 }
