@@ -20,11 +20,9 @@ public class CarRacingController {
     public void start() {
         ResultView.drawRunResultMessage();
 
-        while (racingPlayInfo.doRound()) {
-            racingPlayInfo.getCarGroup()
-                .move(carMovingStrategy);
-
-            ResultView.drawRoundResult(racingPlayInfo);
+        while (!racingPlayInfo.isEnd()) {
+            racingPlayInfo.doRound(carMovingStrategy);
+            ResultView.drawRoundResult(racingPlayInfo.getCarGroup());
         }
         ResultView.drawWinner(racingPlayInfo);
     }
