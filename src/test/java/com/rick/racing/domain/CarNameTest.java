@@ -27,4 +27,13 @@ public class CarNameTest {
         assertThatIllegalArgumentException()
             .isThrownBy(() -> CarName.create(carNameMoreThan5Chars));
     }
+
+    @Test
+    @DisplayName("자동차 이름 공백 불가")
+    public void emptyName() {
+        final String emptyName = "";
+
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> CarName.create(emptyName));
+    }
 }

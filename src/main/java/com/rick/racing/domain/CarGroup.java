@@ -1,6 +1,7 @@
 package com.rick.racing.domain;
 
 import com.rick.racing.controller.CarMovingStrategy;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -25,7 +26,7 @@ public class CarGroup {
         }
     }
 
-    public List<Car> getWinners() {
+    public Collection<Car> getWinners() {
         Optional<Car> optionalWinnerCar = cars.stream()
             .max(Comparator.comparing(Car::getPosition));
 
@@ -37,7 +38,7 @@ public class CarGroup {
 
         return cars.stream()
             .filter(car -> car.isPositionAt(winner))
-            .collect(Collectors.toList());
+            .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
     }
 
     public List<Car> getCars() {

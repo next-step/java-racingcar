@@ -1,6 +1,7 @@
 package com.rick.racing.view;
 
 import com.rick.racing.domain.Car;
+import com.rick.racing.domain.CarGroup;
 import com.rick.racing.domain.CarName;
 import com.rick.racing.domain.CarPosition;
 import com.rick.racing.domain.CarRacingInfo;
@@ -17,9 +18,8 @@ public class ResultView {
     private ResultView() {
     }
 
-    public static void drawRoundResult(final CarRacingInfo racingPlayData) {
-        racingPlayData.getCarGroup()
-            .getCars()
+    public static void drawRoundResult(final CarGroup carGroup) {
+        carGroup.getCars()
             .forEach(ResultView::drawCurrentCarStatus);
         System.out.println();
     }
