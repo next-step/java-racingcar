@@ -18,4 +18,9 @@ class CarNameTest {
             new CarName("longname");
         });
     }
+
+    @Test
+    void equals() {
+        assertThat(new CarName("name")).isEqualTo(new CarName("name"));
+    }
 }

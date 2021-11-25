@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -16,14 +17,16 @@ class TrackTest {
     @ValueSource(ints = {1, 2, 5, 10, 100, 999})
     @DisplayName("Track forward() 테스트")
     void trackForward(int round) {
-        List<Car> cars = generateCars(100);
-        Track track = new Track(cars);
+        List<CarName> carNames = generateCarNames(100);
+        Track track = new Track(carNames);
+
+        List<Round> rounds = new LinkedList<>();
         for (int i = 0; i < round; i++) {
-            track.forward();
+            Round currentRound = track.forward();
+            rounds.add(currentRound);
         }
 
-        List<Track.Round> rounds = track.getRounds();
-        Track.Round lastRound = rounds.get(rounds.size() - 1);
+        Round lastRound = rounds.get(rounds.size() - 1);
 
         Map<CarName, Integer> steps = lastRound.getSteps();
         steps.forEach((carName, step) -> {
@@ -32,11 +35,11 @@ class TrackTest {
         });
     }
 
-    private List<Car> generateCars(int number) {
-        List<Car> cars = new ArrayList<>(number);
+    private List<CarName> generateCarNames(int number) {
+        List<CarName> carNames = new ArrayList<>(number);
         for (int i = 0; i < 100; i++) {
-            cars.add(new Car(String.format("car%d", i)));
+            carNames.add(new CarName(String.format("car%d", i)));
         }
-        return cars;
+        return carNames;
     }
 }

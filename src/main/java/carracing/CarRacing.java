@@ -1,7 +1,6 @@
 package carracing;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CarRacing {
     public static void main(String[] args) {
@@ -10,17 +9,18 @@ public class CarRacing {
 
         InputView.print("실행 결과");
 
-        List<Car> cars = carNames.stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
-        Track track = new Track(cars);
+        Track track = new Track(carNames);
 
+        ResultBoard resultBoard = new ResultBoard();
         for (int i = 0; i < round; i++) {
-            track.forward();
+            Round currentRound = track.forward();
+            resultBoard.add(currentRound);
         }
 
-        List<Track.Round> rounds = track.getRounds();
+        List<Round> rounds = resultBoard.getRounds();
         ResultView.printRounds(rounds);
-        ResultView.printWinner(rounds.get(rounds.size() - 1));
+
+        List<CarName> winnerCarNames = resultBoard.getWinners();
+        ResultView.printWinner(winnerCarNames);
     }
 }
