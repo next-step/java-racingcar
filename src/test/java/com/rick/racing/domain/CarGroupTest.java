@@ -26,7 +26,7 @@ public class CarGroupTest {
         String winners = carGroup.getWinners()
             .stream()
             .map(Car::getName)
-            .map(CarName::toString)
+            .map(CarName::getValue)
             .collect(Collectors.joining(","));
 
         assertThat(winners).isEqualTo(expectedWinners);

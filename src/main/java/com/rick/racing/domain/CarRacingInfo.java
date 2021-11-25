@@ -10,12 +10,10 @@ public class CarRacingInfo {
 
     private final CarGroup carGroup;
     private final TryCount tryCount;
-    private TryCount currentTryCount;
 
     private CarRacingInfo(final List<Car> carGroup, final int tryCount) {
         this.carGroup = CarGroup.create(carGroup);
         this.tryCount = TryCount.create(tryCount);
-        this.currentTryCount = TryCount.create(START_TRY_COUNT);
     }
 
     public static CarRacingInfo create(final List<String> carNames, final int tryCount) {
@@ -28,11 +26,11 @@ public class CarRacingInfo {
 
     public void doRound(CarMovingStrategy carMovingStrategy) {
         carGroup.move(carMovingStrategy);
-        this.currentTryCount = currentTryCount.increase();
+        tryCount.decrease();
     }
 
     public boolean isEnd() {
-        return tryCount.equals(currentTryCount);
+        return tryCount.isZero();
     }
 
     public CarGroup getCarGroup() {
