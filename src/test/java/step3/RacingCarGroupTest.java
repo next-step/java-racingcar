@@ -7,6 +7,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 import step3.manager.RacingManager;
 import step3.manager.RandomManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class RacingCarGroupTest {
 
     private static RacingCarGroup CAR_GROUP;
@@ -14,9 +17,15 @@ class RacingCarGroupTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 5, 7})
-    @DisplayName("갯수를 인자로 전달하면 갯수만큼 자동차가 생성된다.")
+    @DisplayName("자동차 리스트를 전달하면 해당 자동차 리스트만큼 그룹이 지어진다")
     public void carRunOrStop(int input) {
-        CAR_GROUP = new RacingCarGroup(new Count(input));
+        RacingManager racingManager = new RandomManager();
+        List<Car> cars = new ArrayList<>();
+        for(int i = 0 ; i < input ; ++i) {
+            cars.add(new Car(racingManager));
+        }
+
+        CAR_GROUP = new RacingCarGroup(cars);
 
         Assertions.assertThat(CAR_GROUP.carsCount()).isEqualTo(new Count(input));
     }

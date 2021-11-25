@@ -5,7 +5,7 @@ import java.util.Random;
 public class RandomManager implements RacingManager {
     private final int TEN = 10;
     private int RUN_CONDITION_VALUE = 4;
-    private final static Random random = new Random();
+    private static final Random random = new Random();
 
     @Override
     public boolean checkRunCondition() {
@@ -13,6 +13,6 @@ public class RandomManager implements RacingManager {
     }
 
     private int randomCount() {
-        return random.nextInt() * TEN;
+        return random.nextInt(TEN);
     }
 }

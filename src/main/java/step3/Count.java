@@ -3,7 +3,7 @@ package step3;
 import java.util.Objects;
 
 public class Count {
-    private final static int MIN = 1;
+    private static final int MIN = 1;
     private int count;
 
     public Count(int count) {
@@ -20,7 +20,7 @@ public class Count {
         return count;
     }
 
-    public boolean lessOrEqualsThanOther(Count other) {
+    public boolean lessThanOther(Count other) {
         return this.count <= other.count;
     }
 
