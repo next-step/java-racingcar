@@ -1,5 +1,7 @@
 package domain;
 
+import common.Strings;
+
 public class RacingCar {
 
   public static final int MAX_NAME_LENGTH = 5;
