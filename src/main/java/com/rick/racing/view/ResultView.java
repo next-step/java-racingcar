@@ -40,7 +40,7 @@ public class ResultView {
             .getWinners()
             .stream()
             .map(Car::getName)
-            .map(CarName::toString)
+            .map(CarName::getValue)
             .collect(Collectors.joining(WINNER_DELIMITER));
 
         System.out.printf(FORMAT_WINNER_CONGRATS_MESSAGE, winnerNames);

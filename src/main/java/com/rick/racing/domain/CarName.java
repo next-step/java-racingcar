@@ -43,8 +43,7 @@ public class CarName {
         return Objects.hash(value);
     }
 
-    @Override
-    public String toString() {
+    public String getValue() {
         return value;
     }
 }

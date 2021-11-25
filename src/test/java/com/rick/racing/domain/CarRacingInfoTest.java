@@ -22,7 +22,7 @@ class CarRacingInfoTest {
             .getWinners()
             .stream()
             .map(Car::getName)
-            .map(CarName::toString)
+            .map(CarName::getValue)
             .collect(Collectors.toList());
 
         assertThat(createdCarNames).containsExactlyElementsOf(carNames);
