@@ -22,7 +22,7 @@ public class RacingGameController {
         IntStream.range(0, lastRound)
                 .forEach(i -> {
                     racingGame.play();
-                    resultView.showResult(racingGame.getCurrentStatus());
+                    resultView.showResult(racingGame.getCars());
                 });
     }
 

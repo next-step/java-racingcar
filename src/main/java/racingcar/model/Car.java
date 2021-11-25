@@ -12,6 +12,7 @@ public class Car {
 
     public Car(String name) {
         this.name = name;
+        this.position = 1;
     }
 
     @Override
@@ -35,5 +36,9 @@ public class Car {
         if (moveStrategy.isMovable()) {
             this.position += 1;
         }
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
