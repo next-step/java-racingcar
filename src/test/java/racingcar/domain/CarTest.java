@@ -4,10 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.strategy.MovingStrategy;
-import racingcar.strategy.RandomMovingStrategyFixture;
-
-import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -49,20 +45,5 @@ public class CarTest {
             new Car(name);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("name length must be between 1 and 5");
-    }
-
-    @DisplayName("Car의 move 함수는 round마다 MovingStrategy.canMove이면 position이 증가한다.")
-    @ParameterizedTest
-    @CsvSource(value = {"joy, 4, 3", "happy, 10, 6", "love, 20, 12", "test, 100, 60"})
-    public void increaseMovementRandomly(String name, int rounds, int expectedMovement) {
-        // given
-        MovingStrategy strategy = new RandomMovingStrategyFixture(0);
-
-        // when
-        Car car = new Car(name);
-        IntStream.range(0, rounds).forEach(i -> car.move(strategy));
-
-        // then
-        assertThat(car.getCarPosition().getPosition()).isEqualTo(expectedMovement);
     }
 }

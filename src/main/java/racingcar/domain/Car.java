@@ -1,10 +1,8 @@
 package racingcar.domain;
 
-import racingcar.strategy.MovingStrategy;
-
 public class Car {
     private final CarName carName;
-    private CarPosition position;
+    private final CarPosition position;
 
     public Car(final String name) {
         this(new CarName(name), new CarPosition(0));
@@ -27,17 +25,11 @@ public class Car {
         return this.position;
     }
 
-    public void move(MovingStrategy strategy) {
-        if (strategy.canMove()) {
-            this.position = this.position.increasePosition();
-        }
-    }
-
     public boolean isWinner(CarPosition maxPosition) {
         return this.position.equals(maxPosition);
     }
 
-    public CarPosition maxPosition(CarPosition maxPositioin) {
-        return this.position.maxPosition(maxPositioin);
+    public CarPosition maxPosition(CarPosition maxPosition) {
+        return this.position.maxPosition(maxPosition);
     }
 }

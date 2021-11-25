@@ -26,7 +26,7 @@ public class InputView {
     }
 
     public Cars initCars() {
-        return new Cars(Arrays.stream(names).map(name -> new Car(name)).collect(Collectors.toList()));
+        return new Cars(Arrays.stream(names).map(Car::new).collect(Collectors.toList()));
     }
 
     public int getRounds() {

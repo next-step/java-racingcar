@@ -13,7 +13,7 @@ public final class CarName {
     }
 
     private void checkValidation(final String name) {
-        if (Objects.isNull(name) || name.isEmpty() || name.length() < MIN_LENGTH || name.length() > MAX_LENGTH) {
+        if (Objects.isNull(name) || name.length() < MIN_LENGTH || name.length() > MAX_LENGTH) {
             throw new IllegalArgumentException("name length must be between " + MIN_LENGTH + " and " + MAX_LENGTH);
         }
     }

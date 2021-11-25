@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.strategy.MovingStrategy;
-
 import java.util.List;
 
 public class Cars {
@@ -15,15 +13,12 @@ public class Cars {
         return this.cars.size();
     }
 
-    public Car getCar(int index) {
-        return this.cars.get(index);
+    public List<Car> getCars() {
+        return this.cars;
     }
 
-    public Cars moveAll(MovingStrategy strategy) {
-        for (Car car : this.cars) {
-            car.move(strategy);
-        }
-        return this;
+    public Car getCar(int index) {
+        return this.cars.get(index);
     }
 
     public String getWinners() {
@@ -31,7 +26,7 @@ public class Cars {
         CarPosition maxMovement = getMaxPosition();
         for (Car car : this.cars) {
             if (car.isWinner(maxMovement)) {
-                result.append(car.getCarName().getName() + ", ");
+                result.append(car.getCarName().getName()).append(", ");
             }
         }
         return result.substring(0, result.length() - 2);

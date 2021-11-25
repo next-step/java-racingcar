@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.strategy.RandomMovingStrategyFixture;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,29 +43,6 @@ public class CarsTest {
         // then
         assertThat(actual.getCar(0)).isInstanceOf(Car.class);
         assertThat(actual.getCar(0)).isEqualTo(car1);
-    }
-
-    @DisplayName("cars moveAll 함수는 리스트의 모든 car 객체 movement를 RandomMovingStrategy 따라 변경한다.")
-    @Test
-    void moveAll() {
-        // given
-        List<Car> carList = new ArrayList<>();
-        Car car1 = new Car("happy", 0);
-        Car car2 = new Car("joy", 1);
-        Car car3 = new Car("name", 2);
-        carList.add(car1);
-        carList.add(car2);
-        carList.add(car3);
-        Cars cars = new Cars(carList);
-
-        // when
-        cars = cars.moveAll(new RandomMovingStrategyFixture(0));
-
-        // then
-        assertThat(cars).isInstanceOf(Cars.class);
-        assertThat(cars.getCar(0).getCarPosition().getPosition()).isEqualTo(0);
-        assertThat(cars.getCar(1).getCarPosition().getPosition()).isEqualTo(2);
-        assertThat(cars.getCar(2).getCarPosition().getPosition()).isEqualTo(3);
     }
 
     @DisplayName("cars getWinners 함수는 모든 car 객체중에서 movement가 가장 큰 우승자를 찾고 이름을 출력한다. 우승자는 한 명 이상일 수 있다.")
