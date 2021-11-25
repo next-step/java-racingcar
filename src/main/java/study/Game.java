@@ -25,9 +25,11 @@ public class Game {
         String carNames = InputView.getCarNames();
         String[] splitCarNames = carNames.split(DELIMITER);
 
-        for (String name : splitCarNames) {
-            cars.forEach(car -> car.name(name));
+        if (splitCarNames.length != 3) {
+            throw new IllegalArgumentException("자동차는 3대만 입력 가능합니다.");
         }
+
+        return splitCarNames;
     }
 
     private void start() {
@@ -39,16 +41,29 @@ public class Game {
     }
 
     private void move(List<Car> cars) {
+        OutputView.printSeparator();
+
         cars.forEach(car -> {
                     RandomNumber randomNumber = new RandomNumber();
                     car.move(randomNumber.equalsOrBiggerThanCondition());
+
+                    OutputView.printPosition(car);
                 }
         );
     }
 
     private void finish() {
-        for (Car car : cars) {
-            OutputView.print(car.getPosition());
-        }
+        List<Car> winners = cars.stream()
+                .filter(car -> car.getPosition() == maximum())
+                .collect(Collectors.toList());
+
+        OutputView.printWinners(winners);
+    }
+
+    private int maximum() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(-1);
     }
 }
