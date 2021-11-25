@@ -1,11 +1,13 @@
 package study;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game {
     public static final String DELIMITER = ",";
-    private final List<Car> cars = new ArrayList<>();
+
+    private List<Car> cars;
 
     public void run() {
         setup();
@@ -14,6 +16,12 @@ public class Game {
     }
 
     private void setup() {
+        cars = Arrays.stream(splitCarNames())
+                .map(Car::new)
+                .collect(Collectors.toList());
+    }
+
+    private String[] splitCarNames() {
         String carNames = InputView.getCarNames();
         String[] splitCarNames = carNames.split(DELIMITER);
 
