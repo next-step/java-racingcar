@@ -1,6 +1,8 @@
 package study.racingcar.view;
 
 import study.racingcar.domain.Car;
+import study.racingcar.domain.Cars;
+import study.racingcar.dto.ResponseDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,23 +16,22 @@ public class ResultView {
     private static final String SEPARATOR = ",";
     private static final String WHITE_SPACE = " ";
 
-    public static void printInitResult(){
+    private static void printInitResult(){
         System.out.println();
         System.out.println(RESPONSE_MESSAGE_RESULT);
     }
 
-    public static void printResult(List<Car> cars){
-        for (Car car : cars) {
+    private static void printRoundResult(List<Cars> resultCars) {
+        for (Cars resultCar : resultCars) {
+            printCarResult(resultCar);
+        }
+    }
+
+    private static void printCarResult(Cars resultCar) {
+        for (Car car : resultCar.getResult()) {
             System.out.println(car.getName() + SPLIT_RESULT_MESSAGE + printLocation(car.getLocation()));
         }
         System.out.println();
-    }
-
-    public static void printWinners(List<Car> cars) {
-        String winners = cars.stream()
-                                .map(Car::getName)
-                                .collect(Collectors.joining(SEPARATOR + WHITE_SPACE));
-        System.out.println(winners + RESPONSE_MESSAGE_SUFFIX_WINNERS);
     }
 
     private static String printLocation(int position){
@@ -39,5 +40,18 @@ public class ResultView {
             location += MOVE_CHARACTER;
         }
         return location;
+    }
+
+    private static void printWinners(List<Car> cars) {
+        String winners = cars.stream()
+                                .map(Car::getName)
+                                .collect(Collectors.joining(SEPARATOR + WHITE_SPACE));
+        System.out.println(winners + RESPONSE_MESSAGE_SUFFIX_WINNERS);
+    }
+
+    public static void printResult(ResponseDto responseDto){
+        printInitResult();
+        printRoundResult(responseDto.getResultCars());
+        printWinners(responseDto.getResultWinner());
     }
 }

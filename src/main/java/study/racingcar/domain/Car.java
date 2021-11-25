@@ -10,6 +10,11 @@ public class Car {
     private final Name name;
     private final Position position;
 
+    public Car(Car car) {
+        this.name = new Name(car.getName());
+        this.position = new Position(car.getLocation());
+    }
+
     public Car(String name) {
         this(new Name(name), new Position(START_POSITION));
     }

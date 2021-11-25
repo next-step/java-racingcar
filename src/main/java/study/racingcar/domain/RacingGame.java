@@ -1,6 +1,8 @@
 package study.racingcar.domain;
 
 
+import study.racingcar.dto.RequestDto;
+import study.racingcar.dto.ResponseDto;
 import study.racingcar.strategy.MoveStrategy;
 
 import java.util.ArrayList;
@@ -12,6 +14,10 @@ public class RacingGame {
 
     private final Cars cars;
     private final TryRound tryRound;
+
+    public RacingGame(RequestDto requestDto){
+        this(requestDto.getCarNames(), requestDto.getTryRound());
+    }
 
     public RacingGame(String carNames, int tryRound) {
         this.cars = initCars(carNames);
@@ -34,13 +40,13 @@ public class RacingGame {
         }
     }
 
-    public List<Car> getResult() {
-        return cars.getResult();
+    public Cars getResult() {
+        return cars.getResultCars();
     }
 
-    public void playRound(MoveStrategy moveStrategy) {
-        cars.startRound(moveStrategy);
+    public Cars playRound(MoveStrategy moveStrategy) {
         tryRound.nextRound();
+        return new Cars(cars.endRound(moveStrategy));
     }
 
     public List<Car> getWinners() {
@@ -49,6 +55,14 @@ public class RacingGame {
 
     public boolean moreRound(){
         return tryRound.moreRound();
+    }
+
+    public ResponseDto playGames(MoveStrategy moveStrategy){
+        List<Cars> resultGames = new ArrayList<>();
+        while(moreRound()){
+            resultGames.add(playRound(moveStrategy));
+        }
+        return new ResponseDto(resultGames, getWinners());
     }
 
     @Override

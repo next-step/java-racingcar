@@ -25,7 +25,7 @@ public class CarsTest {
     @DisplayName("라운드 이동 조회")
     @Test
     void 라운드_이동() {
-        cars.startRound(() -> true);
+        cars.endRound(() -> true);
         Car firstCar = cars.getResult()
                                     .stream()
                                     .findFirst()
