@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 public class ResultView {
     private static final StringBuilder builder = new StringBuilder();
 
+    private ResultView() {}
+
     public static void printRounds(List<Round> rounds) {
         rounds.forEach(round -> {
             printRound(round);
