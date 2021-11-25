@@ -1,11 +1,12 @@
-package study.step_3;
+package study;
 
 import java.util.Random;
 
 public class RandomNumber {
     private static final int CONDITION = 4;
     private static final int BOUND = 10;
-    private int value;
+
+    private final int value;
 
     public RandomNumber() {
         Random random = new Random();
@@ -16,7 +17,7 @@ public class RandomNumber {
         this.value = value;
     }
 
-    public boolean valid() {
+    public boolean equalsOrBiggerThanCondition() {
         return this.value >= CONDITION;
     }
 

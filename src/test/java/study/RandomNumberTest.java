@@ -1,4 +1,4 @@
-package study.step_3;
+package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,7 @@ class RandomNumberTest {
     @DisplayName("랜덤 값이 4 미만이면 false를 반환한다")
     void shouldReturnFalse() {
         RandomNumber randomNumber = new RandomNumber(3);
-        boolean movable = randomNumber.valid();
+        boolean movable = randomNumber.equalsOrBiggerThanCondition();
 
         assertThat(movable).isFalse();
     }
@@ -27,7 +27,7 @@ class RandomNumberTest {
     @DisplayName("랜덤 값이 4 이상이면 true를 반환한다")
     void shouldReturnTrue() {
         RandomNumber randomNumber = new RandomNumber(4);
-        boolean movable = randomNumber.valid();
+        boolean movable = randomNumber.equalsOrBiggerThanCondition();
 
         assertThat(movable).isTrue();
     }
