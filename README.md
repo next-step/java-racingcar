@@ -6,22 +6,4 @@
 * 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
 
 ## 온라인 코드 리뷰 과정
-
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
-
-# 자동차 경주 구현 목록
-
-- [X] 사용자 입력을 받는 InputView 구현 - 차 대수와 시도 수를 입력 받는다
-- [X] 사용자 입력을 저장하는 데이터 클래스 RacingPlayData를 만든다
-- [X] 차량의 시도 횟수에 따른 이동 거리를 저장하는 CarRecordHistory 객체를 만든다
-- [X] 게임의 전체 결과를 저장하는 RacingResult를 만든다
-- [X] 입력한 차 대수와 시도 수 만큼 게임을 실행하는 코어 로직 CarRacingCore를 구현한다
-
-# 4단계 자동차 경주(우승자) 구현 목록
-
-- [X] 모든 기록을 저장했다가 출력해주는 구조에서 매 시도 마다 출력하도록 리팩토링
-- [X] 매 시도마다 자동차의 위치를 저장하는 CarRecordHistory 제거
-- [X] 자동차 이름과 위치 정보를 가지는 Car 개체를 구현한다.
-- [X] InputView가 CSV String을 입력 받을 수 있는 구조로 변경한다.
-- [X] ResultView에서 차량 이름을 포함하는 차량 위치를 출력하도록 변경한다.
-- [X] ResultView에서 최종 우승자를 출력하는 로직을 추가한다.
