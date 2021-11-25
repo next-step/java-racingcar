@@ -1,12 +1,8 @@
 package step2;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
 
 import java.util.stream.Stream;
 
@@ -96,12 +92,11 @@ public class StringCalculatorTest {
         assertThat(calculateResult).isEqualTo(expected);
     }
 
-    @Test
+    @ParameterizedTest
+    @NullAndEmptySource
     @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우 IAE")
-    void nullOrEmptyCheck() {
-        assertThatIllegalArgumentException().isThrownBy(() -> Operator.getOperatorByCode(""));
-        assertThatIllegalArgumentException().isThrownBy(() -> Operator.getOperatorByCode(" "));
-        assertThatIllegalArgumentException().isThrownBy(() -> Operator.getOperatorByCode(null));
+    void nullOrEmptyCheck(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> Operator.getOperatorByCode(input));
     }
 
     @ParameterizedTest
