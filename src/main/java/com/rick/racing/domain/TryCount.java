@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class TryCount {
 
-    private static final int MIN_TRY_COUNT = 0;
-    private static final String EXCEPTION_MESSAGE_MINIMUM_TRY_COUNT = "시도 수는 0보다 큰거나 같아야 합니다.";
+    private static final int MIN_TRY_COUNT = 1;
+    private static final String EXCEPTION_MESSAGE_MINIMUM_TRY_COUNT = "시도 수는 1보다 큰거나 같아야 합니다.";
 
     private int value;
 

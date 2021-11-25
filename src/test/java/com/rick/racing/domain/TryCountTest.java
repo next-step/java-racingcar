@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class TryCountTest {
 
     @ParameterizedTest
-    @ValueSource(ints = {-1, -10})
+    @ValueSource(ints = {0, -10})
     @DisplayName("사용할 수 없는 시도 수")
     public void invalidTryCount(final int tryCount) {
         assertThatIllegalArgumentException()
