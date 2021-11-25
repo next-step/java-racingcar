@@ -3,7 +3,10 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.IllegalFormatException;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
@@ -23,5 +26,27 @@ class CarTest {
         car.move(false);
 
         assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("5자 이하의 자동차 이름을 자동차에 부여한다")
+    void shouldEqualInputName() {
+        String name = "hazel";
+        Car car = new Car();
+        car.name(name);
+
+        assertThat(car.getName()).isEqualTo(name);
+        assertThat(car.getName().length()).isLessThanOrEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 5자를 초과하면 예외를 던진다")
+    void shouldThrowExceptionWhenNameIsOverFiveCharacters() {
+        String name = "monica";
+        Car car = new Car();
+
+        assertThatThrownBy(() -> car.name(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
     }
 }

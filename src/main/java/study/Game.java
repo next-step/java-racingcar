@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    public static final String DELIMITER = ",";
     private final List<Car> cars = new ArrayList<>();
 
     public void run() {
@@ -13,15 +14,16 @@ public class Game {
     }
 
     private void setup() {
-        int numberOfCars = InputView.numberOfCars();
+        String carNames = InputView.getCarNames();
+        String[] splitCarNames = carNames.split(DELIMITER);
 
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+        for (String name : splitCarNames) {
+            cars.forEach(car -> car.name(name));
         }
     }
 
     private void start() {
-        int numberOfTrial = InputView.numberOfTrial();
+        int numberOfTrial = InputView.getNumberOfTrial();
 
         for (int i = 0; i < numberOfTrial; i++) {
             move(cars);
