@@ -1,6 +1,6 @@
-package com.rick.racing.ui;
+package com.rick.racing.view;
 
-import com.rick.racing.model.CarRacingInfo;
+import com.rick.racing.domain.CarRacingInfo;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -12,6 +12,9 @@ public class InputView {
     private static final String MESSAGE_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
 
     private static final Scanner scanner = new Scanner(System.in);
+
+    private InputView() {
+    }
 
     public static CarRacingInfo getCarRacingInfo() {
         return CarRacingInfo.create(getCarNamesFromUser(), getTryCountFromUser());

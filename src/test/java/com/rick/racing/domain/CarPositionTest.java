@@ -1,4 +1,4 @@
-package com.rick.racing.model;
+package com.rick.racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,20 +16,18 @@ public class CarPositionTest {
         final CarPosition carPositionA = CarPosition.create(value);
         final CarPosition carPositionB = CarPosition.create(value);
 
-        assertThat(carPositionA.equals(carPositionB))
-            .isTrue();
+        assertThat(carPositionA).isEqualTo(carPositionB);
     }
 
     @Test
     @DisplayName("increase 메소드 동작 테스트")
-    public void equalsTest() {
+    public void increaseTest() {
         final int position = 23;
 
         CarPosition carPositionA = CarPosition.create(position);
         carPositionA.increase();
         CarPosition carPositionB = CarPosition.create(position + 1);
 
-        assertThat(carPositionA.equals(carPositionB))
-            .isTrue();
+        assertThat(carPositionA).isEqualTo(carPositionB);
     }
 }

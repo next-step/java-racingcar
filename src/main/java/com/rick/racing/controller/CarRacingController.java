@@ -1,30 +1,31 @@
 package com.rick.racing.controller;
 
-import com.rick.racing.model.CarRacingInfo;
-import com.rick.racing.ui.ResultView;
+import com.rick.racing.domain.CarRacingInfo;
+import com.rick.racing.view.ResultView;
 
 public class CarRacingController {
 
-    private final CarRacingInfo racingPlayData;
-    private final CarMovingDecider carMovingDecider;
+    private final CarRacingInfo racingPlayInfo;
+    private final CarMovingStrategy carMovingStrategy;
 
-    private CarRacingController(CarRacingInfo racingPlayData, CarMovingDecider carMovingDecider) {
-        this.racingPlayData = racingPlayData;
-        this.carMovingDecider = carMovingDecider;
+    private CarRacingController(final CarRacingInfo racingPlayData, final CarMovingStrategy carMovingStrategy) {
+        this.racingPlayInfo = racingPlayData;
+        this.carMovingStrategy = carMovingStrategy;
     }
 
-    public static CarRacingController create(CarRacingInfo racingPlayData, CarMovingDecider carMovingDecider) {
-        return new CarRacingController(racingPlayData, carMovingDecider);
+    public static CarRacingController create(final CarRacingInfo racingPlayData, final CarMovingStrategy carMovingStrategy) {
+        return new CarRacingController(racingPlayData, carMovingStrategy);
     }
 
     public void start() {
         ResultView.drawRunResultMessage();
-        for (int i = 0; i < racingPlayData.tryCount(); i++) {
-            racingPlayData.cars()
-                .forEach(carMovingDecider::move);
 
-            ResultView.drawRoundResult(racingPlayData);
+        while (racingPlayInfo.doRound()) {
+            racingPlayInfo.getCarGroup()
+                .move(carMovingStrategy);
+
+            ResultView.drawRoundResult(racingPlayInfo);
         }
-        ResultView.drawWinner(racingPlayData);
+        ResultView.drawWinner(racingPlayInfo);
     }
 }
