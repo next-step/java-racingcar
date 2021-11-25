@@ -13,7 +13,7 @@ class RoundTest {
     @Test
     void roundWithForwardedCar() {
         Car car = new Car("car");
-        car.stepForwardByRandomNumber(Car.MIN_FORWARD);
+        car.stepForward(() -> true);
 
         List<Car> cars = new ArrayList<>();
         cars.add(car);
@@ -25,7 +25,7 @@ class RoundTest {
     @Test
     void roundWithNonForwardedCar() {
         Car car = new Car("car");
-        car.stepForwardByRandomNumber(Car.MIN_FORWARD - 1);
+        car.stepForward(() -> false);
 
         List<Car> cars = new ArrayList<>();
         cars.add(car);
@@ -37,7 +37,7 @@ class RoundTest {
     @Test
     void getSteps() {
         Car car = new Car("car");
-        car.stepForwardByRandomNumber(Car.MIN_FORWARD);
+        car.stepForward(() -> true);
 
         List<Car> cars = new ArrayList<>();
         cars.add(car);

@@ -22,7 +22,7 @@ class TrackTest {
 
         List<Round> rounds = new LinkedList<>();
         for (int i = 0; i < round; i++) {
-            Round currentRound = track.forward();
+            Round currentRound = track.forward(() -> true);
             rounds.add(currentRound);
         }
 
@@ -30,8 +30,7 @@ class TrackTest {
 
         Map<CarName, Integer> steps = lastRound.getSteps();
         steps.forEach((carName, step) -> {
-            assertThat(step).isGreaterThanOrEqualTo(0);
-            assertThat(step).isLessThanOrEqualTo(round);
+            assertThat(step).isEqualTo(round);
         });
     }
 

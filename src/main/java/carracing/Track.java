@@ -13,10 +13,9 @@ public class Track {
                 .collect(Collectors.toList());
     }
 
-    public Round forward() {
+    public Round forward(StepForwardStrategy stepForwardStrategy) {
         cars.forEach(car -> {
-            int random = RandomFactory.generate(Car.RANDOM_BOUND);
-            car.stepForwardByRandomNumber(random);
+            car.stepForward(stepForwardStrategy);
         });
         return new Round(cars);
     }

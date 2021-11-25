@@ -6,13 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ResultBoardTest {
     @Test
     void resultBoard() {
         Car car = new Car("car");
-        car.stepForwardByRandomNumber(Car.MIN_FORWARD);
+        car.stepForward(() -> true);
 
         List<Car> cars = new ArrayList<>();
         cars.add(car);
@@ -29,10 +28,10 @@ class ResultBoardTest {
     @Test
     void getWinnersWithOneWinner() {
         Car car = new Car("car");
-        car.stepForwardByRandomNumber(Car.MIN_FORWARD);
+        car.stepForward(() -> true);
 
         Car car1 = new Car("car1");
-        car.stepForwardByRandomNumber(Car.MIN_FORWARD - 1);
+        car.stepForward(() -> false);
 
         List<Car> cars = new ArrayList<>();
         cars.add(car);

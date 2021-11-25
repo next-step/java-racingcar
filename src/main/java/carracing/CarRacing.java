@@ -10,10 +10,11 @@ public class CarRacing {
         InputView.print("실행 결과");
 
         Track track = new Track(carNames);
+        RandomStepForwardStrategy randomStepForwardStrategy = new RandomStepForwardStrategy();
 
         ResultBoard resultBoard = new ResultBoard();
         for (int i = 0; i < round; i++) {
-            Round currentRound = track.forward();
+            Round currentRound = track.forward(randomStepForwardStrategy);
             resultBoard.add(currentRound);
         }
 
