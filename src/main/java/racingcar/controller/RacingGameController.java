@@ -24,6 +24,7 @@ public class RacingGameController {
                     racingGame.play();
                     resultView.showResult(racingGame.getCars());
                 });
+        resultView.showWinners(racingGame.getWinners());
     }
 
     static List<Car> createCars(List<String> carNames) {
