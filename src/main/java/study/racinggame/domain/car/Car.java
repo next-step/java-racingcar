@@ -1,4 +1,4 @@
-package study;
+package study.racinggame.domain.car;
 
 public class Car {
     public static final int LENGTH_LIMIT = 5;

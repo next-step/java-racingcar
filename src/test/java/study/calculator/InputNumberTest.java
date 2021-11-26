@@ -1,7 +1,7 @@
-package study;
+package study.calculator;
 
 import org.junit.jupiter.api.Test;
-import study.InputNumber;
+import study.calculator.InputNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

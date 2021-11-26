@@ -1,8 +1,8 @@
-package study;
+package study.calculator;
 
 import org.junit.jupiter.api.Test;
-import study.InputNumber;
-import study.Operator;
+import study.calculator.InputNumber;
+import study.calculator.Operator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;

@@ -1,4 +1,6 @@
-package study;
+package study.racinggame.domain.car;
+
+import study.racinggame.domain.RandomNumber;
 
 import java.util.Arrays;
 import java.util.List;

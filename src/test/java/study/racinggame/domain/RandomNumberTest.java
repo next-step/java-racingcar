@@ -1,7 +1,8 @@
-package study;
+package study.racinggame.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racinggame.domain.RandomNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

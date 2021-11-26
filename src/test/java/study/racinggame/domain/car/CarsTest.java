@@ -1,7 +1,9 @@
-package study;
+package study.racinggame.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racinggame.domain.car.Car;
+import study.racinggame.domain.car.Cars;
 
 import java.util.Arrays;
 

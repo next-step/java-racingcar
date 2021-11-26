@@ -1,7 +1,9 @@
-package study;
+package study.racinggame.controller;
 
-import study.view.InputView;
-import study.view.OutputView;
+import study.racinggame.domain.car.Car;
+import study.racinggame.domain.car.Cars;
+import study.racinggame.view.InputView;
+import study.racinggame.view.OutputView;
 
 import java.util.List;
 

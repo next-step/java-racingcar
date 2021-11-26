@@ -1,7 +1,7 @@
-package study.view;
+package study.racinggame.view;
 
-import study.Car;
-import study.Cars;
+import study.racinggame.domain.car.Car;
+import study.racinggame.domain.car.Cars;
 
 import java.util.List;
 
