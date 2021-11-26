@@ -1,3 +1,7 @@
+package view;
+
+import common.Constants;
+
 import java.util.Scanner;
 
 public class RacingCarGameInputView {
