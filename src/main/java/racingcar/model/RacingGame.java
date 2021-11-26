@@ -13,22 +13,12 @@ public class RacingGame {
         this.lastRound = lastRound;
     }
 
-    public int getNumberOfCars() {
-        return this.cars.size();
-    }
-
     public int getLastRound() {
         return this.lastRound;
     }
 
     public void play() {
         cars.forEach((Car car) -> car.run(new RandomMoveStrategy()));
-    }
-
-    public List<Integer> getCurrentStatus() {
-        return cars.stream()
-                .map(Car::getPosition)
-                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
