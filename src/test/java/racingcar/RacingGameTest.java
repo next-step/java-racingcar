@@ -40,9 +40,31 @@ class RacingGameTest {
         test1.run(() -> true);
 
         // When
-        Car winner = racingGame.findWinner();
+        List<Car> winners = racingGame.findWinner();
 
         // Then
-        assertThat(winner).isEqualTo(test1);
+        assertThat(winners.size()).isEqualTo(1);
+        assertThat(winners).containsOnly(test1);
+    }
+
+    @Test
+    @DisplayName("가장 멀리간 자동차가 여러대일 수 있다")
+    void testFindWinners() {
+        // Given
+        Car test1 = new Car("test1");
+        Car test2 = new Car("test2");
+        Car test3 = new Car("test3");
+        List<Car> cars = Arrays.asList(test1, test2, test3);
+        int lastRound = 5;
+        RacingGame racingGame = new RacingGame(cars, lastRound);
+        test1.run(() -> true);
+        test2.run(() -> true);
+
+        // When
+        List<Car> winners = racingGame.findWinner();
+
+        // Then
+        assertThat(winners.size()).isEqualTo(2);
+        assertThat(winners).containsOnly(test1, test2);
     }
 }

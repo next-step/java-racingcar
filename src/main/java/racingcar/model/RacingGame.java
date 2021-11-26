@@ -35,9 +35,12 @@ public class RacingGame {
         return Collections.unmodifiableList(cars);
     }
 
-    public Car findWinner() {
+    public List<Car> findWinner() {
         Collections.sort(cars);
+        int winnerPosition = cars.get(0).getPosition();
 
-        return cars.get(0);
+        return cars.stream()
+                .filter((Car car) -> car.getPosition() == winnerPosition)
+                .collect(Collectors.toList());
     }
 }
