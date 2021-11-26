@@ -34,4 +34,10 @@ public class RacingGame {
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
+
+    public Car findWinner() {
+        Collections.sort(cars);
+
+        return cars.get(0);
+    }
 }

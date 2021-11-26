@@ -26,4 +26,23 @@ class RacingGameTest {
         assertThat(racingGame.getCars().size()).isEqualTo(cars.size());
         assertThat(racingGame.getLastRound()).isEqualTo(lastRound);
     }
+
+    @Test
+    @DisplayName("가장 멀리간 자동차가 우승한다")
+    void testFindWinnerOne() {
+        // Given
+        Car test1 = new Car("test1");
+        Car test2 = new Car("test2");
+        Car test3 = new Car("test3");
+        List<Car> cars = Arrays.asList(test1, test2, test3);
+        int lastRound = 5;
+        RacingGame racingGame = new RacingGame(cars, lastRound);
+        test1.run(() -> true);
+
+        // When
+        Car winner = racingGame.findWinner();
+
+        // Then
+        assertThat(winner).isEqualTo(test1);
+    }
 }
