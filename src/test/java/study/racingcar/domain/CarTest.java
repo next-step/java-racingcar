@@ -1,21 +1,20 @@
-package study.racingcar.model;
+package study.racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import study.racingcar.strategy.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    @DisplayName("생성자 정상 확인")
+    @DisplayName("자동차 정상 확인")
     @ParameterizedTest(name="{displayName} | 요청값: {0}")
     @ValueSource(strings = {"유재석",  "강호동", "나얼"})
-    void 생성자_확인(String param) {
-        assertThat(new Name(param)).isEqualTo(new Name(param));
+    void 자동차_확인(String param) {
+        assertThat(new Car(param).getName()).isEqualTo(param);
     }
 
     @DisplayName("위치 정상 확인")

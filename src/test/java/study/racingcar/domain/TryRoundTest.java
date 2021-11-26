@@ -1,4 +1,4 @@
-package study.racingcar.model;
+package study.racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,34 +8,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class TryRoundTest {
-    @DisplayName("시도횟수 정상 확인")
+    @DisplayName("총 시도 횟수 정상 확인")
     @ParameterizedTest(name="{displayName} | 요청값: {0}")
     @ValueSource(ints = {1, 9, 4})
     void 시도횟수_정상(int param) {
-        assertThat(new TryRound(param).getTryRound()).isEqualTo(param);
+        assertThat(new TryRound(param).equals(new TryRound(param))).isTrue();
     }
 
-    @DisplayName("시도횟수 비정상 확인")
+    @DisplayName("총 시도 횟수 비정상 확인")
     @ParameterizedTest(name="{displayName} | 요청값: {0}")
     @ValueSource(ints = {0, -1})
     void 시도횟수_비정상(int param) {
         assertThatThrownBy(() -> {
             assertThat(new TryRound(param));
         }).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("총 시도 횟수 확인")
-    @ParameterizedTest(name="{displayName} | 요청값: {0}")
-    @ValueSource(ints = {1, 3, 5})
-    void 총_시도_횟수(int param) {
-        assertThat(new TryRound(param).getTryRound()).isEqualTo(param);
-    }
-
-    @DisplayName("차기 시도 횟수 확인")
-    @ParameterizedTest(name="{displayName} | 요청값: {0}")
-    @ValueSource(ints = {1, 3, 5})
-    void 차기_시도_횟수(int param) {
-
     }
 
     @DisplayName("차기 시도 횟수 가능 여부 확인")

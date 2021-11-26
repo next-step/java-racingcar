@@ -1,4 +1,6 @@
-package study.racingcar.model;
+package study.racingcar.domain;
+
+import java.util.Objects;
 
 public class TryRound {
     private static final String EXCEPTION_MESSAGE_MIN_TRY_ROUND = "시도 횟수가 1보다 작은 수 입니다.";
@@ -20,15 +22,24 @@ public class TryRound {
         this.nowRound = nowRound;
     }
 
-    public int getTryRound() {
-        return tryRound;
-    }
-
     public void nextRound(){
         nowRound++;
     }
 
     public boolean moreRound() {
         return tryRound >= nowRound;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TryRound tryRound1 = (TryRound) o;
+        return tryRound == tryRound1.tryRound && nowRound == tryRound1.nowRound;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tryRound, nowRound);
     }
 }

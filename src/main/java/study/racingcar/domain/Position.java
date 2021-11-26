@@ -1,4 +1,4 @@
-package study.racingcar.model;
+package study.racingcar.domain;
 
 import java.util.Objects;
 
@@ -20,17 +20,7 @@ public class Position {
     }
 
     public int getMaxPosition(int maxPosition) {
-        if (maxPosition < position){
-            return position;
-        }
-        return maxPosition;
-    }
-
-    public boolean isWinnerPosition(int maxPosition) {
-        if (maxPosition == position){
-            return true;
-        }
-        return  false;
+        return Math.max(maxPosition, position);
     }
 
     @Override
