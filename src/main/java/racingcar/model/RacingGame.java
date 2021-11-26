@@ -25,7 +25,7 @@ public class RacingGame {
         return Collections.unmodifiableList(cars);
     }
 
-    public List<Car> findWinner() {
+    public List<Car> getWinners() {
         Collections.sort(cars);
         int winnerPosition = cars.get(0).getPosition();
 

@@ -40,7 +40,7 @@ class RacingGameTest {
         test1.run(() -> true);
 
         // When
-        List<Car> winners = racingGame.findWinner();
+        List<Car> winners = racingGame.getWinners();
 
         // Then
         assertThat(winners.size()).isEqualTo(1);
@@ -61,7 +61,7 @@ class RacingGameTest {
         test2.run(() -> true);
 
         // When
-        List<Car> winners = racingGame.findWinner();
+        List<Car> winners = racingGame.getWinners();
 
         // Then
         assertThat(winners.size()).isEqualTo(2);
