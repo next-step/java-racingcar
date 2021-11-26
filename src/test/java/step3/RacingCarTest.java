@@ -4,10 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 class RacingCarTest {
     RacingCar racingCar = new RacingCar();
@@ -26,6 +25,16 @@ class RacingCarTest {
         boolean result = racingCar.isMove(number);
         assertThat(result).isEqualTo(expect);
     }*/
+
+    @ParameterizedTest
+    @ValueSource(strings = {"여섯글자이름", "abcdef"})
+    @DisplayName("5자를 초과하는 이름으로 자동차 객체 생성시 IllegalArgumentException가 발생하는지 확인한다.")
+    void illegalRarameter(String name) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() ->
+                    {RacingCar racingCar = new RacingCar(name);}
+                );
+    }
 
     @Test
     @DisplayName("자동차가 전진하였을때 이동한 거리가 증가하였는지 확인합니다")

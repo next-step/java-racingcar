@@ -1,8 +1,10 @@
 package step3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarGame {
     private List<RacingCar> racingCarList;
@@ -10,6 +12,7 @@ public class RacingCarGame {
 
     public boolean ready(int carCount, int attemptCount) {
         racingCarList = new ArrayList<>(carCount);
+
         while (racingCarList.size() != carCount) {
             racingCarList.add(new RacingCar());
         }
@@ -17,6 +20,19 @@ public class RacingCarGame {
         attempt = new Attempt(attemptCount);
 
         return isRacingCarReady(carCount) && isAttemptReady(attemptCount);
+    }
+
+
+    public boolean ready(String allRacingCarName, int attemptCount) {
+        String[] raicingCarNames = allRacingCarName.split(",");
+
+        racingCarList = Arrays.stream(raicingCarNames)
+                .map(n -> new RacingCar(n))
+                .collect(Collectors.toList());
+
+        attempt = new Attempt(attemptCount);
+
+        return isRacingCarReady(raicingCarNames.length) && isAttemptReady(attemptCount);
     }
 
     public boolean isRacingCarReady(int carCount) {

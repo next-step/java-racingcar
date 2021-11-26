@@ -4,27 +4,37 @@ import java.util.Random;
 
 public class RacingCar {
     private static final int ADVANCE_CONDITION = 4;
+    private static final int NAME_LENGTH = 5;
 
     private RamdomCondition ramdomCondition;
 
     private int distance = 0;
+    private String name;
 
     public RacingCar() {
-        ramdomCondition = new RamdomCondition();
+        this.ramdomCondition = new RamdomCondition();
+    }
+
+    public RacingCar(String name) {
+        if(name.length() > NAME_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+
+        this.name = name;
     }
 
     public boolean isMove() {
-        return ramdomCondition.meet(ADVANCE_CONDITION);
+        return this.ramdomCondition.meet(ADVANCE_CONDITION);
     }
 
     public void move() {
         if (isMove()) {
-            distance++;
+            this.distance++;
         }
     }
 
     public int getDistance() {
-        return distance;
+        return this.distance;
     }
 
 

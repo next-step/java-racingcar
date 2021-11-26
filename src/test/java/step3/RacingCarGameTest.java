@@ -17,4 +17,13 @@ class RacingCarGameTest {
         assertThat(result).isTrue();
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"pobi,crong,honux : 2"}, delimiter = ':')
+    @DisplayName("자동차 게임에 참여하는 이름을 가진 자동차와 시도가 정상적으로 객체 생성 되었는지 확인합니다")
+    void ready(String allRacingCarName, int attemptCount) {
+        RacingCarGame racingCarGame = new RacingCarGame();
+        boolean result = racingCarGame.ready(allRacingCarName, attemptCount);
+        assertThat(result).isTrue();
+    }
+
 }
