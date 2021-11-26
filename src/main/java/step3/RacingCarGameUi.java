@@ -27,9 +27,7 @@ public class RacingCarGameUi {
     }
 
     public void printRacingCar(List<RacingCar> racingCarList) {
-        Iterator iterator = racingCarList.iterator();
-        while (iterator.hasNext()) {
-            RacingCar racingCar = (RacingCar) iterator.next();
+        for (RacingCar racingCar : racingCarList) {
             printRacingCarDistance(racingCar.getDistance());
         }
     }
