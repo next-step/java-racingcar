@@ -1,8 +1,6 @@
 package racingcar.domain;
 
 
-import racingcar.view.ResultView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -56,13 +54,16 @@ public class RacingCar {
         return new Cars(cars);
     }
 
-    public void start() {
-        ResultView.println("실행결과");
-        for (int i = 0; i < racingCount; i++) {
-            cars.race();
-            ResultView.println("");
-        }
-        ResultView.printWinners(cars.findWinnersString());
+    public List<Car> race() {
+        return cars.race();
+    }
+
+    public String findWinners() {
+        return cars.findWinnersString();
+    }
+
+    public boolean isRacingCount(int currentCount) {
+        return racingCount == currentCount;
     }
 
     @Override

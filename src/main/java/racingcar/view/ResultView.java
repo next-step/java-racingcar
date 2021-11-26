@@ -1,11 +1,13 @@
 package racingcar.view;
 
+import racingcar.domain.Car;
+
 public class ResultView {
     private static final String DISTANCE_PATTERN = "-";
 
-    public static void printCarDistanceWithName(int distance, String name) {
-        System.out.printf("%s : ", name);
-        for(int i = 0; i < distance; i++) {
+    public static void printCarDistanceWithName(Car car) {
+        System.out.printf("%s : ", car.getCarName());
+        for (int i = 0; i < car.getDistance(); i++) {
             System.out.print(DISTANCE_PATTERN);
         }
         System.out.println();
