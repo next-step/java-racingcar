@@ -1,13 +1,15 @@
 package study;
 
-import java.util.Arrays;
+import study.view.InputView;
+import study.view.OutputView;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Game {
     public static final String DELIMITER = ",";
+    public static final int NUMBER_OF_CARS = 3;
 
-    private List<Car> cars;
+    private Cars cars;
 
     public void run() {
         setup();
@@ -16,16 +18,16 @@ public class Game {
     }
 
     private void setup() {
-        cars = Arrays.stream(splitCarNames())
-                .map(Car::new)
-                .collect(Collectors.toList());
+        String carNames = InputView.getCarNames();
+        String[] splitCarNames = split(carNames);
+
+        cars = new Cars(splitCarNames);
     }
 
-    private String[] splitCarNames() {
-        String carNames = InputView.getCarNames();
+    private String[] split(String carNames) {
         String[] splitCarNames = carNames.split(DELIMITER);
 
-        if (splitCarNames.length != 3) {
+        if (splitCarNames.length != NUMBER_OF_CARS) {
             throw new IllegalArgumentException("자동차는 3대만 입력 가능합니다.");
         }
 
@@ -36,34 +38,14 @@ public class Game {
         int numberOfTrial = InputView.getNumberOfTrial();
 
         for (int i = 0; i < numberOfTrial; i++) {
-            move(cars);
+            OutputView.printSeparator();
+            cars.move();
+            OutputView.printPosition(cars);
         }
     }
 
-    private void move(List<Car> cars) {
-        OutputView.printSeparator();
-
-        cars.forEach(car -> {
-                    RandomNumber randomNumber = new RandomNumber();
-                    car.move(randomNumber.equalsOrBiggerThanCondition());
-
-                    OutputView.printPosition(car);
-                }
-        );
-    }
-
     private void finish() {
-        List<Car> winners = cars.stream()
-                .filter(car -> car.getPosition() == maximum())
-                .collect(Collectors.toList());
-
+        List<Car> winners = cars.winners();
         OutputView.printWinners(winners);
-    }
-
-    private int maximum() {
-        return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(-1);
     }
 }
