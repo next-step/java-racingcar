@@ -26,11 +26,9 @@ public class RacingGame {
     }
 
     public List<Car> getWinners() {
-        Collections.sort(cars);
-        int winnerPosition = cars.get(0).getPosition();
-
+        Car winner = Collections.max(cars);
         return cars.stream()
-                .filter((Car car) -> car.getPosition() == winnerPosition)
+                .filter((Car car) -> car.isSamePosition(winner))
                 .collect(Collectors.toList());
     }
 }
