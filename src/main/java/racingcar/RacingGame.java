@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.domain.Cars;
 import racingcar.view.ResultView;
 
 public class RacingGame {
@@ -17,16 +18,12 @@ public class RacingGame {
         ResultView.printStartResultView();
 
         for (int value = 1; value <= numOfTries; value++) {
-            racingOnce();
+            cars.doRacing();
+            ResultView.printResultView(cars.getCars());
         }
 
         ResultView.printWinnerView(cars.getWinnerCar());
 
-    }
-
-    private void racingOnce() {
-        cars.doRacing();
-        ResultView.printResultView(cars.getCars());
     }
 
 }

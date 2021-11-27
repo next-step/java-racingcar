@@ -1,20 +1,20 @@
-package racingcar;
-
-import racingcar.util.NumberGenerator;
+package racingcar.domain;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
 
     private final List<Car> cars;
     private static final String SPLITTER = ",";
-    private final NumberGenerator numberGenerator;
+    private static final int BOUND = 10;
+
+    private static final int MAX_CAR_NAME = 5;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
-        numberGenerator = new NumberGenerator();
     }
 
     public List<Car> getCars() {
@@ -34,14 +34,19 @@ public class Cars {
     private static void validateNames(String[] names) {
 
         Arrays.stream(names).forEach(name -> {
-            if (name.length() > 5) {
+            if (name.length() > MAX_CAR_NAME) {
                 throw new IllegalArgumentException("Car name should be less than 5 characters");
             }
         });
     }
 
     public void doRacing() {
-        cars.forEach(car -> car.move(numberGenerator));
+        cars.forEach(car -> car.move(getRandomValue()));
+    }
+
+    private RandomValue getRandomValue() {
+        Random random = new Random();
+        return new RandomValue(random.nextInt(BOUND));
     }
 
     public List<Car> getWinnerCar() {

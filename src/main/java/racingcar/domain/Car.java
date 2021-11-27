@@ -1,6 +1,4 @@
-package racingcar;
-
-import racingcar.util.NumberGenerator;
+package racingcar.domain;
 
 public class Car {
 
@@ -12,9 +10,8 @@ public class Car {
         this.location = location;
     }
 
-    public void move(NumberGenerator numberGenerator) {
-        final int moveNumber = numberGenerator.generate();
-        this.location = this.location + moveNumber;
+    public void move(RandomValue randomValue) {
+        this.location = this.location + randomValue.resultValue();
     }
 
     public int getLocation() {
