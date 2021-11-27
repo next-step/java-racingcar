@@ -2,23 +2,23 @@ package study.racinggame.domain;
 
 import java.util.Random;
 
-public class RandomNumber {
-    private static final int CONDITION = 4;
+public class Engine {
+    private static final int THRESHOLD = 4;
     private static final int BOUND = 10;
 
     private final int value;
 
-    public RandomNumber() {
+    public Engine() {
         Random random = new Random();
         this.value = random.nextInt(BOUND);
     }
 
-    public RandomNumber(int value) {
+    public Engine(int value) {
         this.value = value;
     }
 
-    public boolean equalsOrBiggerThanCondition() {
-        return this.value >= CONDITION;
+    public boolean canWork() {
+        return this.value >= THRESHOLD;
     }
 
     public int getValue() {

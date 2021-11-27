@@ -1,6 +1,6 @@
 package study.racinggame.domain.car;
 
-import study.racinggame.domain.RandomNumber;
+import study.racinggame.domain.Engine;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,8 +22,8 @@ public class Cars {
 
     public void move() {
         this.cars.forEach(car -> {
-                    RandomNumber randomNumber = new RandomNumber();
-                    car.move(randomNumber.equalsOrBiggerThanCondition());
+                    Engine engine = new Engine();
+                    car.move(engine.canWork());
                 }
         );
     }
