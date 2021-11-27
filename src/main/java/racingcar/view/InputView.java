@@ -1,13 +1,8 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.vo.CarsDto;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class InputView {
     private Scanner scanner;
@@ -25,8 +20,8 @@ public class InputView {
         rounds = scanner.nextInt();
     }
 
-    public Cars initCars() {
-        return new Cars(Arrays.stream(names).map(name -> new Car(name)).collect(Collectors.toList()));
+    public CarsDto initCars() {
+        return new CarsDto(names);
     }
 
     public int getRounds() {

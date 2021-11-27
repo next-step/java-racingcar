@@ -15,6 +15,10 @@ public class Cars {
         return this.cars.size();
     }
 
+    public List<Car> getList() {
+        return this.cars;
+    }
+
     public Car getCar(int index) {
         return this.cars.get(index);
     }
@@ -31,7 +35,7 @@ public class Cars {
         CarPosition maxMovement = getMaxPosition();
         for (Car car : this.cars) {
             if (car.isWinner(maxMovement)) {
-                result.append(car.getCarName().getName() + ", ");
+                result.append(car.getCarName().getName()).append(", ");
             }
         }
         return result.substring(0, result.length() - 2);

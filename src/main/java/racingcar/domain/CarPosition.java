@@ -18,11 +18,11 @@ public final class CarPosition {
         return new CarPosition(this.position + STEP);
     }
 
-    public CarPosition maxPosition(CarPosition maxPositioin) {
-        if (this.position > maxPositioin.position) {
+    public CarPosition maxPosition(CarPosition maxPosition) {
+        if (this.position > maxPosition.position) {
             return this;
         }
-        return maxPositioin;
+        return maxPosition;
     }
 
     @Override
