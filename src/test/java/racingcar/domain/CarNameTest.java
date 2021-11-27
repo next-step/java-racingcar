@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,10 +22,11 @@ public class CarNameTest {
 
     @DisplayName("자동차 이름이 blank 이거나 5자를 초과한 경우 exception을 발생한다.")
     @ParameterizedTest
-    @ValueSource(strings = {"", "happyNow", "loveYourself"})
+    @NullAndEmptySource
+    @ValueSource(strings = {"happyNow", "loveYourself"})
     public void nameArgumentException(String name) {
         assertThatThrownBy(() ->
-            new CarName(name)
+                new CarName(name)
         ).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("name length must be between 1 and 5");
     }

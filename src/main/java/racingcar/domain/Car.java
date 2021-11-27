@@ -33,11 +33,11 @@ public class Car {
         }
     }
 
-    public boolean isWinner(int maxPosition) {
-        return this.position.isEqaul(maxPosition);
+    public boolean isWinner(CarPosition maxPosition) {
+        return this.position.equals(maxPosition);
     }
 
-    public int maxPosition(int maxPositioin) {
-        return this.position.maxPosition(maxPositioin);
+    public CarPosition maxPosition(CarPosition maxPosition) {
+        return this.position.maxPosition(maxPosition);
     }
 }

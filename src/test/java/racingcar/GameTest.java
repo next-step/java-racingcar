@@ -20,8 +20,8 @@ public class GameTest {
     @DisplayName("자동차 3대, 움직임 4번일때 게임 실행")
     @Test
     public void playGame() {
-        MovingStrategy strategy = new RandomMovingStrategyFixture(0);
-        Game game = new Game(strategy); // 테스트 결과 고정하기 위해 seed 지정
+        MovingStrategy strategy = new RandomMovingStrategyFixture(0); // 테스트 결과 고정하기 위해 seed 지정
+        Game game = new Game(strategy);
         game.racingCars();
     }
 }
