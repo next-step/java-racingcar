@@ -34,8 +34,7 @@ public class ResultView {
         winnerMessage.append(
                 winners.stream()
                         .map(Car::getName)
-                        .collect(Collectors.joining(",")
-                        )
+                        .collect(Collectors.joining(","))
         ).append("가 최종 우승했습니다.");
 
         System.out.println(winnerMessage);
