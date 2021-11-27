@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import racingcar.generator.RandomGenerator;
-import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +12,11 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void race() {
+    public List<Car> race() {
         for (Car current : cars) {
             current.move(RandomGenerator.generate());
-            ResultView.printCarDistanceWithName(current.getDistance(), current.getCarName());
         }
+        return cars;
     }
 
     public String findWinnersString() {
