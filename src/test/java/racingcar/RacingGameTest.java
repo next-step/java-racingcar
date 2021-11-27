@@ -31,12 +31,11 @@ class RacingGameTest {
     @DisplayName("가장 멀리간 자동차가 우승한다")
     void testFindWinnerOne() {
         // Given
-        Car test1 = new Car("test1");
-        Car test2 = new Car("test2");
-        Car test3 = new Car("test3");
+        Car test1 = new Car("test1", 2);
+        Car test2 = new Car("test2", 1);
+        Car test3 = new Car("test3", 1);
         Cars cars = new Cars(Arrays.asList(test1, test2, test3));
         RacingGame racingGame = new RacingGame(cars);
-        test1.run(() -> true);
 
         // When
         List<Car> winners = racingGame.getWinners();
@@ -50,13 +49,11 @@ class RacingGameTest {
     @DisplayName("가장 멀리간 자동차가 여러대일 수 있다")
     void testFindWinners() {
         // Given
-        Car test1 = new Car("test1");
-        Car test2 = new Car("test2");
-        Car test3 = new Car("test3");
+        Car test1 = new Car("test1", 2);
+        Car test2 = new Car("test2", 2);
+        Car test3 = new Car("test3", 1);
         Cars cars = new Cars(Arrays.asList(test1, test2, test3));
         RacingGame racingGame = new RacingGame(cars);
-        test1.run(() -> true);
-        test2.run(() -> true);
 
         // When
         List<Car> winners = racingGame.getWinners();
