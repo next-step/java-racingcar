@@ -21,7 +21,7 @@ public class Cars {
     public void move() {
         this.cars.forEach(car -> {
                     Engine engine = new Engine();
-                    car.move(engine.canWork());
+                    car.move(engine);
                 }
         );
     }
