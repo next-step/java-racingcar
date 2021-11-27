@@ -6,15 +6,9 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
     private final List<Car> cars;
-    private final int lastRound;
 
-    public RacingGame(List<Car> cars, int lastRound) {
+    public RacingGame(List<Car> cars) {
         this.cars = cars;
-        this.lastRound = lastRound;
-    }
-
-    public int getLastRound() {
-        return this.lastRound;
     }
 
     public void play() {

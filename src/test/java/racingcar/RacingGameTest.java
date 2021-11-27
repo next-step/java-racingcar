@@ -13,18 +13,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingGameTest {
 
     @Test
-    @DisplayName("3대의 차, 5번 시도 횟수를 입력으로 받으면, 3대의 차, last round가 5인 게임이 만들어진다")
+    @DisplayName("3대의 차를 입력으로 받으면, 3대의 차를 가진 게임이 만들어진다")
     void testRacingGame_given_3_cars_5_rounds() {
         // Given
         List<Car> cars = Arrays.asList(new Car("test1"), new Car("test2"), new Car("test3"));
-        int lastRound = 5;
 
         // When
-        RacingGame racingGame = new RacingGame(cars, lastRound);
+        RacingGame racingGame = new RacingGame(cars);
 
         // Then
         assertThat(racingGame.getCars().size()).isEqualTo(cars.size());
-        assertThat(racingGame.getLastRound()).isEqualTo(lastRound);
     }
 
     @Test
@@ -35,8 +33,7 @@ class RacingGameTest {
         Car test2 = new Car("test2");
         Car test3 = new Car("test3");
         List<Car> cars = Arrays.asList(test1, test2, test3);
-        int lastRound = 5;
-        RacingGame racingGame = new RacingGame(cars, lastRound);
+        RacingGame racingGame = new RacingGame(cars);
         test1.run(() -> true);
 
         // When
@@ -55,8 +52,7 @@ class RacingGameTest {
         Car test2 = new Car("test2");
         Car test3 = new Car("test3");
         List<Car> cars = Arrays.asList(test1, test2, test3);
-        int lastRound = 5;
-        RacingGame racingGame = new RacingGame(cars, lastRound);
+        RacingGame racingGame = new RacingGame(cars);
         test1.run(() -> true);
         test2.run(() -> true);
 

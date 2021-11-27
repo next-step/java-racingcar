@@ -19,7 +19,7 @@ public class RacingGameController {
                 .map(Car::new)
                 .collect(Collectors.toList());
         int lastRound = inputView.inputLastRound();
-        RacingGame racingGame = new RacingGame(cars, lastRound);
+        RacingGame racingGame = new RacingGame(cars);
 
         IntStream.range(0, lastRound)
                 .forEach(i -> {
