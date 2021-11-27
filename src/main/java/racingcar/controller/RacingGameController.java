@@ -5,8 +5,8 @@ import racingcar.model.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingGameController {
@@ -15,7 +15,9 @@ public class RacingGameController {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
-        List<Car> cars = createCars(inputView.inputCarNames());
+        List<Car> cars = inputView.inputCarNames().stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
         int lastRound = inputView.inputLastRound();
         RacingGame racingGame = new RacingGame(cars, lastRound);
 
@@ -25,11 +27,5 @@ public class RacingGameController {
                     resultView.showResult(racingGame.getCars());
                 });
         resultView.showWinners(racingGame.getWinners());
-    }
-
-    static List<Car> createCars(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-        carNames.forEach((String name) -> cars.add(new Car(name)));
-        return cars;
     }
 }
