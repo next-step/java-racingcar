@@ -11,8 +11,12 @@ public class Car implements Comparable<Car> {
     }
 
     public Car(String name) {
+        this(name, 1);
+    }
+
+    public Car(String name, int position) {
         this.name = name;
-        this.position = 1;
+        this.position = position;
     }
 
     @Override
@@ -45,5 +49,9 @@ public class Car implements Comparable<Car> {
     @Override
     public int compareTo(Car o) {
         return Integer.compare(o.position, this.position);
+    }
+
+    public boolean isSamePosition(Car other) {
+        return this.position == other.position;
     }
 }
