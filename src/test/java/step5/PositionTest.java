@@ -1,11 +1,12 @@
-package step4;
+package step5;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step4.dto.Position;
+import org.junit.jupiter.params.provider.ValueSource;
+import step5.dto.Position;
 
 class PositionTest {
 
@@ -14,7 +15,7 @@ class PositionTest {
     public void defaultPosition() {
         Position position = new Position();
 
-        Assertions.assertThat(position.getPosition()).isEqualTo(0);
+        Assertions.assertThat(position.getCurrentPosition()).isEqualTo(0);
     }
 
     @ParameterizedTest
@@ -24,4 +25,12 @@ class PositionTest {
         Assertions.assertThat(new Position(input).plusPosition()).isEqualTo(new Position(expected));
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {-1, -2, -5})
+    @DisplayName("0 미만의 값을 받을 시 예외를 던진다")
+    public void zeroException(int input) {
+        Assertions.assertThatThrownBy(() -> {
+            new Position(input);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }

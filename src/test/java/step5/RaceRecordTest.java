@@ -1,12 +1,12 @@
-package step4;
+package step5;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step4.dto.Car;
-import step4.dto.CarName;
-import step4.dto.RaceRecord;
+import step5.dto.Car;
+import step5.dto.CarName;
+import step5.domain.RaceRecord;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ class RaceRecordTest {
 
     @Test
     @DisplayName("우승자를 찾는 메서드는 우승자 수만큼 반환한다")
-    public void test() {
+    public void winnderCount() {
         Assertions.assertThat(raceRecord.findWinners()).hasSize(3);
     }
 }
