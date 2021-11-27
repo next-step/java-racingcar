@@ -1,10 +1,11 @@
-package step4.dto;
+package step5.dto;
 
 import java.util.Random;
 
 public class RandomStrategy implements RunStrategy {
     private static final int BASE = 10;
     private static final int CONDITION = 4;
+    private static final Random RANDOM = new Random();
 
     @Override
     public boolean runnable() {
@@ -12,6 +13,6 @@ public class RandomStrategy implements RunStrategy {
     }
 
     private boolean isValueMoreThanCondition() {
-        return new Random().nextInt(BASE) >= CONDITION;
+        return RANDOM.nextInt(BASE) >= CONDITION;
     }
 }

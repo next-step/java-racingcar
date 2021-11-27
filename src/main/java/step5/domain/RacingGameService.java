@@ -1,16 +1,17 @@
-package step4.service;
+package step5.service;
 
-import step4.dto.*;
-
-import java.util.List;
+import step5.dto.*;
 
 public class RacingGameService {
-    public RacingGameService() {}
 
-    public RaceRecordGroup raceStart(List<String> carsName, TrialCount trialCount) {
+    public static RacingGameService getInstance() {
+        return RacingGameServiceHolder.INSTANCE;
+    }
+
+    public RaceRecordGroup raceStart(CarNames carNames, TrialCount trialCount) {
         RaceRecordGroup raceRecordGroup = new RaceRecordGroup();
 
-        RacingCars racingCars = new RacingCars(carsName);
+        RacingCars racingCars = new RacingCars(carNames);
         RunStrategy runStrategy = new RandomStrategy();
 
         while(!trialCount.isFinalTrial()) {
@@ -22,5 +23,9 @@ public class RacingGameService {
         }
 
         return raceRecordGroup;
+    }
+
+    private static class RacingGameServiceHolder {
+        static RacingGameService INSTANCE = new RacingGameService();
     }
 }

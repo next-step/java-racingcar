@@ -1,11 +1,13 @@
-package step4.dto;
+package step5.service;
+
+import step5.dto.CarName;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class RaceRecordGroup {
-    private final int BEFORE_LAST_INDEX = 1;
+    private static final int BEFORE_LAST_INDEX = 1;
     private final List<RaceRecord> raceRecords;
 
     public RaceRecordGroup() {
