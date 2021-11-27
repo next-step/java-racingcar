@@ -2,7 +2,7 @@ package study.racinggame.domain.car;
 
 import java.util.Random;
 
-public class Engine {
+public class Engine implements MovingStrategy {
     private static final int THRESHOLD = 4;
     private static final int BOUND = 10;
 
@@ -17,7 +17,8 @@ public class Engine {
         this.value = value;
     }
 
-    public boolean canWork() {
+    @Override
+    public boolean movable() {
         return this.value >= THRESHOLD;
     }
 

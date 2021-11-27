@@ -19,13 +19,13 @@ class EngineTest {
     @DisplayName("엔진 수치가 4 미만이면 작동할 수 없다")
     void shouldReturnFalse() {
         Engine engine = new Engine(3);
-        assertThat(engine.canWork()).isFalse();
+        assertThat(engine.movable()).isFalse();
     }
 
     @Test
     @DisplayName("엔진 수치가 4 이상이면 작동할 수 있다")
     void shouldReturnTrue() {
         Engine engine = new Engine(4);
-        assertThat(engine.canWork()).isTrue();
+        assertThat(engine.movable()).isTrue();
     }
 }

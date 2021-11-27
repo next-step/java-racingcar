@@ -20,8 +20,8 @@ public class Cars {
 
     public void move() {
         this.cars.forEach(car -> {
-                    Engine engine = new Engine();
-                    car.move(engine);
+                    MovingStrategy movingStrategy = new Engine();
+                    car.move(movingStrategy);
                 }
         );
     }

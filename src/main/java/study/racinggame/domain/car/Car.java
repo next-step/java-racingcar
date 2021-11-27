@@ -13,8 +13,8 @@ public class Car {
         this(name, 0);
     }
 
-    public void move(Engine engine) {
-        if (engine.canWork()) {
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) {
             this.position++;
         }
     }
