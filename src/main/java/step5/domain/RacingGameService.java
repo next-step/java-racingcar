@@ -1,6 +1,8 @@
-package step5.service;
+package step5.domain;
 
 import step5.dto.*;
+import step5.dto.strategy.RandomStrategy;
+import step5.dto.strategy.RunStrategy;
 
 public class RacingGameService {
 

@@ -1,4 +1,6 @@
-package step4.dto;
+package step5.dto;
+
+import step5.dto.strategy.RunStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +10,11 @@ public class RacingCars {
 
     private List<Car> racingCars;
 
-    public RacingCars(List<String> carsName) {
+    public RacingCars(CarNames carNames) {
         racingCars = new ArrayList<>();
 
-        carsName.forEach(name -> {
-            racingCars.add(new Car(new CarName(name)));
+        carNames.getCarNameGroup().forEach(name -> {
+            racingCars.add(new Car(name));
         });
     }
 
@@ -24,7 +26,7 @@ public class RacingCars {
 
     public List<Car> currentCars() {
         return racingCars.stream()
-                .map(car -> new Car(car))
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 }

@@ -1,24 +1,23 @@
-package step4;
+package step5;
 
-import step4.dto.RaceRecordGroup;
-import step4.dto.TrialCount;
-import step4.service.RacingGameService;
-import step4.view.InputView;
-import step4.view.ResultView;
-
-import java.util.List;
+import step5.dto.CarNames;
+import step5.domain.RaceRecordGroup;
+import step5.dto.TrialCount;
+import step5.domain.RacingGameService;
+import step5.view.InputView;
+import step5.view.ResultView;
 
 public class RacingGameMain {
+    private static final RacingGameService RACING_GAME_SERVICE = RacingGameService.getInstance();
     private static final InputView INPUT_VIEW = InputView.getInstance();
     private static final ResultView RESULT_VIEW = ResultView.getInstance();
     private static final String WINNER_DELIMITER = ",";
 
     public static void main(String[] args) {
-        List<String> carsName = INPUT_VIEW.readCarsName();
+        CarNames carNames = INPUT_VIEW.readCarNames();
         TrialCount trialCount = new TrialCount(INPUT_VIEW.readTrialCount());
 
-        RacingGameService racingGameService = new RacingGameService();
-        RaceRecordGroup raceRecordGroup = racingGameService.raceStart(carsName, trialCount);
+        RaceRecordGroup raceRecordGroup = RACING_GAME_SERVICE.raceStart(carNames, trialCount);
 
         RESULT_VIEW.renderRaceRecords(raceRecordGroup);
         RESULT_VIEW.renderRaceWinners(raceRecordGroup, WINNER_DELIMITER);

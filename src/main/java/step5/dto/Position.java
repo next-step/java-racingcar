@@ -1,26 +1,36 @@
-package step4.dto;
+package step5.dto;
+
+import step5.common.MyException;
 
 import java.util.Objects;
 
 public class Position {
     private static final int ZERO = 0;
     private static final int CALCULATE_UNIT = 1;
-    private int position;
+    private final int currentPosition;
 
     public Position() {
-        this.position = ZERO;
+        this.currentPosition = ZERO;
     }
 
     public Position(int position) {
-        this.position = position;
+        validPosition(position);
+
+        this.currentPosition = position;
     }
 
-    public int getPosition() {
-        return position;
+    public int getCurrentPosition() {
+        return currentPosition;
     }
 
     public Position plusPosition() {
-        return new Position(this.position + CALCULATE_UNIT);
+        return new Position(this.currentPosition + CALCULATE_UNIT);
+    }
+
+    private void validPosition(int position) {
+        if(ZERO > position) {
+            throw new IllegalArgumentException(MyException.VALUE_GREATER_THAN_ZERO.getMessage());
+        }
     }
 
     @Override
@@ -32,11 +42,11 @@ public class Position {
             return false;
         }
         Position position1 = (Position) o;
-        return position == position1.position;
+        return currentPosition == position1.currentPosition;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return Objects.hash(currentPosition);
     }
 }

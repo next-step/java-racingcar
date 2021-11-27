@@ -1,6 +1,6 @@
-package step5.service;
+package step5.domain;
 
-import step5.dto.CarName;
+import step5.dto.Car;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,7 +22,7 @@ public class RaceRecordGroup {
         return Collections.unmodifiableList(raceRecords);
     }
 
-    public List<CarName> findWinners() {
+    public List<Car> findWinners() {
         return raceRecords.get(raceRecords.size() - BEFORE_LAST_INDEX).findWinners();
     }
 }

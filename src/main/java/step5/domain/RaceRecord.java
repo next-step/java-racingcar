@@ -1,7 +1,8 @@
-package step5.service;
+package step5.domain;
 
 import step5.dto.Car;
 import step5.dto.CarName;
+import step5.dto.CarNames;
 import step5.dto.Position;
 
 import java.util.ArrayList;
@@ -22,12 +23,12 @@ public class RaceRecord {
         return Collections.unmodifiableList(carGroup);
     }
 
-    public List<CarName> findWinners() {
+    public List<Car> findWinners() {
         Position maxPosition = findMaxPosition();
 
         return carGroup.stream()
                 .filter(car -> car.getPosition().equals(maxPosition))
-                .map(Car::getName)
+                //.map((car) -> new CarName(car.getName()))
                 .collect(Collectors.toList());
     }
 

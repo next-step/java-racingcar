@@ -1,6 +1,7 @@
-package step4.view;
+package step5.view;
 
-import step4.common.MyException;
+import step5.common.MyException;
+import step5.dto.CarNames;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -22,14 +23,14 @@ public class InputView {
         return InputViewHolder.INSTANCE;
     }
 
-    public List<String> readCarsName() {
+    public CarNames readCarNames() {
         System.out.println(ASK_CARS_NAME);
 
         String inputNames = SCANNER.nextLine();
 
         validNamesOrThrow(inputNames);
 
-        return Stream.of(inputNames.split(DELIMITER)).collect(Collectors.toList());
+        return Stream.of(inputNames.split(DELIMITER)).collect(Collectors.collectingAndThen(Collectors.toList(), CarNames::new));
     }
 
     public int readTrialCount() {

@@ -1,4 +1,4 @@
-package step5.dto;
+package step5.dto.strategy;
 
 import java.util.Random;
 
