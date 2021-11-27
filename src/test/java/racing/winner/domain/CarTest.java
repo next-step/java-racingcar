@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("단일 자동차 움직임 테스트")
 class CarTest {
@@ -34,5 +35,15 @@ class CarTest {
         car.moveOrStop(4);
         int result = car.getDrivingDistance();
         assertEquals(2, result);
+    }
+
+    @Test
+    @DisplayName("2 입력 시, 두번 전진한 자동차의 위치와 같으면 true")
+    public void equalsPosition() {
+        Car car = new Car("pollra");
+        car.moveOrStop(4);
+        car.moveOrStop(4);
+        boolean equalsDistance = car.equalsDistance(2);
+        assertTrue(equalsDistance);
     }
 }
