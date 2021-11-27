@@ -1,7 +1,5 @@
 package study.racinggame.domain.car;
 
-import study.racinggame.domain.Engine;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;

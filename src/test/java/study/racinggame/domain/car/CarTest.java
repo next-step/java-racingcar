@@ -2,12 +2,8 @@ package study.racinggame.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import study.racinggame.domain.car.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
@@ -27,24 +23,5 @@ class CarTest {
         car.move(false);
 
         assertThat(car.getPosition()).isEqualTo(0);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"harry", "jake", "sam", "sj", "w"})
-    @DisplayName("5자 이하의 자동차 이름을 자동차에 부여한다")
-    void shouldEqualInputName(String name) {
-        Car car = new Car(name);
-
-        assertThat(car.getName()).isEqualTo(name);
-        assertThat(car.getName().length()).isLessThanOrEqualTo(5);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"dodeon", "bogeom", "gangjoon"})
-    @DisplayName("자동차 이름이 5자를 초과하면 예외를 던진다")
-    void shouldThrowExceptionWhenNameIsOverFiveCharacters(String name) {
-        assertThatThrownBy(() -> new Car(name))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 5자를 초과할 수 없습니다.");
     }
 }

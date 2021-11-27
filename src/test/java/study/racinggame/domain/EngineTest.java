@@ -2,6 +2,7 @@ package study.racinggame.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racinggame.domain.car.Engine;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
