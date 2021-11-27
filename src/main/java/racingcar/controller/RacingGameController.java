@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.Car;
+import racingcar.model.Cars;
 import racingcar.model.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -19,7 +20,7 @@ public class RacingGameController {
                 .map(Car::new)
                 .collect(Collectors.toList());
         int lastRound = inputView.inputLastRound();
-        RacingGame racingGame = new RacingGame(cars);
+        RacingGame racingGame = new RacingGame(new Cars(cars));
 
         IntStream.range(0, lastRound)
                 .forEach(i -> {

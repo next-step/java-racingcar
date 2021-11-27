@@ -1,14 +1,15 @@
 package racingcar.view;
 
 import racingcar.model.Car;
+import racingcar.model.Cars;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
 
-    public void showResult(final List<Car> cars) {
-        cars.forEach(this::printCurrentStatus);
+    public void showResult(final Cars cars) {
+        cars.getList().forEach(this::printCurrentStatus);
         System.out.println();
     }
 
