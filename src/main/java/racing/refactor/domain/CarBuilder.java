@@ -5,7 +5,6 @@ import racing.refactor.view.CarDto.Response;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
@@ -20,12 +19,16 @@ public class CarBuilder {
                 .collect(collectingAndThen(toList(), Collections::unmodifiableList));
     }
 
-    public static List<Response.CarInformation> toCarInformation(List<Car> cars) {
-        return cars.stream()
+    public static List<Response.CarInformation> toCarInformation(Cars cars) {
+        return cars.toList()
+                .stream()
                 .map(car -> new Response.CarInformation(
                          car.getName()
-                        ,car.getDrivingDistance())
+                                .getValue()
+                        ,car.getPosition()
+                                .getValue()
+                        )
                 )
-                .collect(Collectors.toList());
+                .collect(collectingAndThen(toList(), Collections::unmodifiableList));
     }
 }

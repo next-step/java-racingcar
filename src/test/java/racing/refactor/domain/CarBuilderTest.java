@@ -16,14 +16,14 @@ class CarBuilderTest {
     @Test
     @DisplayName("Dto 를 Entity 로 변환 결과, 예상 데이터와 같을 때 성공")
     public void requestDtoToEntityWithOk() {
-        List<String> requestNames = Arrays.asList("pollra", "henry", "tony");
+        List<String> requestNames = Arrays.asList("van", "kan", "tony");
         int requestLoopCount = 5;
         Request.GameCreation dto = new Request.GameCreation(requestNames, requestLoopCount);
 
         List<Car> desiredResult = Arrays.asList(
-                 new Car("pollra")
-                ,new Car("henry")
-                ,new Car("tony")
+                 new Car("van", 0)
+                ,new Car("kan", 0)
+                ,new Car("tony", 0)
         );
 
         List<Car> resultCars = CarBuilder.toCar(dto);
@@ -37,13 +37,13 @@ class CarBuilderTest {
     @Test
     @DisplayName("Dto 를 Entity 로 변환 결과, 예상 데이터와 다를 때 실패")
     public void requestDtoToEntityWithFail() {
-        List<String> requestNames = Arrays.asList("pollra", "henry", "tony");
+        List<String> requestNames = Arrays.asList("van", "kan", "tony");
         int requestLoopCount = 5;
         Request.GameCreation dto = new Request.GameCreation(requestNames, requestLoopCount);
 
         List<Car> desiredResult = Arrays.asList(
-                 new Car("pollra1")
-                ,new Car("henry1")
+                 new Car("van1")
+                ,new Car("kan1")
                 ,new Car("tony1")
         );
 
@@ -56,15 +56,16 @@ class CarBuilderTest {
     @Test
     @DisplayName("Entity 를 Dto 로 변환 결과, 예상 데이터와 같을 때 성공")
     public void entityToRequestDtoWithOk() {
-        List<Car> cars = Arrays.asList(
-                 new Car("pollra")
-                ,new Car("henry")
+        List<Car> tempCars = Arrays.asList(
+                 new Car("van")
+                ,new Car("kan")
                 ,new Car("tony")
         );
+        Cars cars = new Cars(tempCars);
 
         List<Response.CarInformation> desiredResult = Arrays.asList(
-                 new Response.CarInformation("pollra", 0)
-                ,new Response.CarInformation("henry", 0)
+                 new Response.CarInformation("van", 0)
+                ,new Response.CarInformation("kan", 0)
                 ,new Response.CarInformation("tony", 0)
         );
 
@@ -77,15 +78,16 @@ class CarBuilderTest {
     @Test
     @DisplayName("Entity 를 Dto 로 변환 결과, 예상 데이터와 다를 때 실패")
     public void entityToRequestDtoWithFail() {
-        List<Car> cars = Arrays.asList(
-                new Car("pollra")
-                ,new Car("henry")
+        List<Car> tempCars = Arrays.asList(
+                 new Car("van")
+                ,new Car("kan")
                 ,new Car("tony")
         );
+        Cars cars = new Cars(tempCars);
 
         List<Response.CarInformation> desiredResult = Arrays.asList(
-                 new Response.CarInformation("pollra", 1)
-                ,new Response.CarInformation("henry", 2)
+                 new Response.CarInformation("van", 1)
+                ,new Response.CarInformation("kan", 2)
                 ,new Response.CarInformation("tony", 3)
         );
 

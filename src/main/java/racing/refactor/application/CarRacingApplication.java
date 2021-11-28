@@ -1,17 +1,17 @@
 package racing.refactor.application;
 
 import racing.refactor.domain.CarRacingGame;
+import racing.refactor.domain.Cars;
+import racing.refactor.domain.MovingStrategy;
+import racing.refactor.domain.RandomMovingStrategy;
 import racing.refactor.view.InputViewResolver;
 import racing.refactor.view.OutputViewResolver;
 import racing.refactor.view.CarDto.Request;
 import racing.refactor.view.CarDto.Response;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
-import static racing.refactor.domain.CarBuilder.toCar;
 import static racing.refactor.domain.CarBuilder.toCarInformation;
 
 public class CarRacingApplication {
@@ -36,24 +36,16 @@ public class CarRacingApplication {
         );
         Request.GameCreation gameCreationRequest = inputViewResolver.askQuestions(questions);
 
-        carRacingGame = new CarRacingGame(toCar(gameCreationRequest));
+        List<String> carNames = gameCreationRequest.getCarNames();
+        carRacingGame = new CarRacingGame(Cars.newInstance(carNames));
+        MovingStrategy randomMovingStrategy = new RandomMovingStrategy();
 
-        for (int i = ZERO; i < gameCreationRequest.getLoopCount(); i++) {
-            List<Integer> randomNumbers = randomNumbersByCarCount(gameCreationRequest.getCarCount());
-            List<Response.CarInformation> displayTrack = toCarInformation(carRacingGame.nextRound(randomNumbers));
+        for (int i=ZERO; i < gameCreationRequest.getLoopCount(); i++) {
+            List<Response.CarInformation> displayTrack = toCarInformation(carRacingGame.nextRound(randomMovingStrategy));
             outputViewResolver.displayTracks(displayTrack);
         }
+
         List<Response.CarInformation> winners = toCarInformation(carRacingGame.getWinners());
         outputViewResolver.displayWinners(winners);
-    }
-
-    private List<Integer> randomNumbersByCarCount(int carCount) {
-        List<Integer> randomNumbers = new ArrayList<>();
-        Random random = new Random();
-        for (int i = ZERO; i < carCount; i++) {
-            int randomNumber = random.nextInt(TEN);
-            randomNumbers.add(randomNumber);
-        }
-        return randomNumbers;
     }
 }

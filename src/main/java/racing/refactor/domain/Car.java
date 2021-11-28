@@ -4,44 +4,60 @@ import java.util.Objects;
 
 public class Car {
 
-    private final static int FORWARD_CONDITION = 4;
-    private final static int ONE = 1;
+    private static final int ZERO = 0;
 
-    private final String name;
-    private int position;
+    private Name name;
+    private Position position;
 
     public Car(String name) {
-        this.name = name;
+        this(name, ZERO);
     }
 
-    protected void moveOrStop(int diceNumber) {
-        if(FORWARD_CONDITION <= diceNumber) {
-            position += ONE;
+    public Car(String name, int position) {
+        this.name = new Name(name);
+        this.position = new Position(position);
+    }
+
+    public void move(MovingStrategy strategy) {
+        if(strategy.movable()) {
+            position.move();
         }
     }
 
-    protected int getDrivingDistance() {
-        return this.position;
+    protected Position getPosition() {
+        return position;
     }
 
-    public boolean equalsDistance(int distance) {
-        return this.position == distance;
+    public boolean equalsPosition(int distance) {
+        return this.position.equals(new Position(distance));
     }
 
-    protected String getName() {
-        return this.name;
+    public boolean equalsPosition(Position position) {
+        return this.position.equals(position);
+    }
+
+    protected Name getName() {
+        return name;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return position == car.position && name.equals(car.name);
+        if (! (o instanceof Car)) return false;
+        Car car=(Car) o;
+        return name.equals(car.name) && position.equals(car.position);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(name, position);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "name=" + name +
+                ", position=" + position +
+                '}';
     }
 }
