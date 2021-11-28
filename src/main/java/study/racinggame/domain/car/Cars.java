@@ -34,7 +34,7 @@ public class Cars {
 
     private int maxPosition() {
         return cars.stream()
-                .mapToInt(Car::getPosition)
+                .mapToInt(Car::position)
                 .max()
                 .orElseThrow(() -> new NoSuchElementException("최대값을 구할 수 없습니다."));
     }

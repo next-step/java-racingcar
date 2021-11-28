@@ -14,7 +14,7 @@ public class OutputView {
         cars.getCars().forEach(car -> {
             System.out.print(car.name() + ": ");
 
-            for (int i = 0; i < car.getPosition(); i++) {
+            for (int i = 0; i < car.position(); i++) {
                 System.out.print("-");
             }
 

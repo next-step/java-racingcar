@@ -2,11 +2,11 @@ package study.racinggame.domain.car;
 
 public class Car {
     private final Name name;
-    private int position;
+    private Position position;
 
     public Car(String name, int position) {
         this.name = new Name(name);
-        this.position = position;
+        this.position = new Position(position);
     }
 
     public Car(String name) {
@@ -15,7 +15,7 @@ public class Car {
 
     public void move(MovingStrategy movingStrategy) {
         if (movingStrategy.movable()) {
-            this.position++;
+            position = position.increase();
         }
     }
 
@@ -24,10 +24,10 @@ public class Car {
     }
 
     public boolean isWinner(int max) {
-        return this.position == max;
+        return position.maximum(max);
     }
 
-    public int getPosition() {
-        return position;
+    public int position() {
+        return position.getValue();
     }
 }
