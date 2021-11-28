@@ -1,15 +1,15 @@
 package racingcar.domain;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
 
     private final List<Car> cars;
     private static final String SPLITTER = ",";
-    private static final int BOUND = 10;
+
 
     private static final int MAX_CAR_NAME = 5;
 
@@ -18,7 +18,7 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public static Cars makeRacingCarsFromName(String carNames) {
@@ -45,8 +45,7 @@ public class Cars {
     }
 
     private RandomValue getRandomValue() {
-        Random random = new Random();
-        return new RandomValue(random.nextInt(BOUND));
+        return new RandomValue(NumberGenerator.generate());
     }
 
     public List<Car> getWinnerCar() {
