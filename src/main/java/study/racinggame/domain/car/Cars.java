@@ -1,5 +1,8 @@
 package study.racinggame.domain.car;
 
+import study.racinggame.domain.engine.Engine;
+import study.racinggame.domain.engine.MovingStrategy;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
