@@ -2,8 +2,9 @@ package racingCar.controller;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
-import racingCar.model.RacingCar;
-import racingCar.model.RacingCars;
+import racingCar.domain.RacingCar;
+import racingCar.domain.RacingCars;
+import racingCar.domain.Winners;
 import racingCar.view.InputView;
 import racingCar.view.ResultView;
 
@@ -20,6 +21,18 @@ public class RacingCarGame {
   public void startWithUserInput() {
     race(inputView.inputTryCount());
   }
+  
+  public void race(int totalTryCount) {
+    RacingCars racingCars = createCars();
+
+    for (int tryCount = 0; tryCount < totalTryCount; tryCount++) {
+      racingCars.moveAllCars();
+      resultView.printAllCars(racingCars.getAllCars());
+    }
+
+    Winners winners = racingCars.findWinners();
+    resultView.printWinner(winners.findWinnersName());
+  }
 
   private RacingCars createCars() {
     String[] carNames = inputView.inputCarNames();
@@ -29,16 +42,5 @@ public class RacingCarGame {
             .map(RacingCar::new)
             .collect(Collectors.toList())
     );
-  }
-
-  public void race(int totalTryCount) {
-    RacingCars racingCars = createCars();
-
-    for (int tryCount = 0; tryCount < totalTryCount; tryCount++) {
-      racingCars.moveAllCars();
-      resultView.printAllCars(racingCars.getAllCars());
-    }
-
-    resultView.printWinner(racingCars.determineWinners());
   }
 }
