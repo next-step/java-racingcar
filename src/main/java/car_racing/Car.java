@@ -5,16 +5,17 @@ import java.util.Objects;
 public class Car {
 
     private static final int START_POSITION = 0;
+
+    private final Name name;
     private int position;
 
-    public Car() {
-        // 부 생성자
-        this(START_POSITION);
+    public Car(String name) {
+        this(START_POSITION, name);
     }
 
-    public Car(int position) {
-        // 주 생성자
+    public Car(int position, String name) {
         this.position = position;
+        this.name = new Name(name);
     }
 
     public void move(MoveStrategy moveStrategy) {
@@ -25,6 +26,18 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public String getStringName() {
+        return name.getString();
+    }
+
+    public boolean isAtPosition(int position) {
+        return this.position == position;
     }
 
     @Override

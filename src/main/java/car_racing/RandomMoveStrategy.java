@@ -3,21 +3,10 @@ package car_racing;
 public class RandomMoveStrategy implements MoveStrategy {
 
     private static final int MOVE_THRESH_HOLD = 4;
-
-    private final int randomRangeFrom;
-    private final int randomRangeTo;
+    private static final int RANDOM_RANGE_FROM_INCLUDE = 0;
+    private static final int RANDOM_RANGE_TO_EXCLUDE = 10;
 
     public RandomMoveStrategy() {
-        this.randomRangeFrom = 0;
-        this.randomRangeTo = 10;
-    }
-
-    /**
-     * Test
-     **/
-    public RandomMoveStrategy(int randomRangeFrom, int randomRangeTo) {
-        this.randomRangeFrom = randomRangeFrom;
-        this.randomRangeTo = randomRangeTo;
     }
 
     @Override
@@ -26,6 +15,6 @@ public class RandomMoveStrategy implements MoveStrategy {
     }
 
     private int getRandomNumber() {
-        return RandomUtil.getRandomNumber(randomRangeFrom, randomRangeTo);
+        return RandomUtil.getRandomNumber(RANDOM_RANGE_FROM_INCLUDE, RANDOM_RANGE_TO_EXCLUDE);
     }
 }

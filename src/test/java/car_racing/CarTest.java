@@ -1,15 +1,7 @@
 package car_racing;
 
-import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,22 +11,38 @@ public class CarTest {
     @DisplayName("when create car, default status are set - position equals to 0")
     void createCar() {
         // given
+        String name = "";
+
         // when
-        Car car = new Car();
+        Car car = new Car(name);
 
         // then
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
+    @DisplayName("when create car with name, default position and name is set")
+    void createCarWithName() {
+        // given
+        String name = "Dodi";
+        // when
+        Car car = new Car(name);
+        Name expectedName = new Name("Dodi");
+        // then
+        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getName()).isEqualTo(expectedName);
+
+    }
+
+    @Test
     @DisplayName("Move car with test strategy - position becomes plus 1")
     void moveCar() {
         // given
-        Car car = new Car();
-        MoveStrategy moveStrategy = new AbleToTestMoveStrategy();
+        String name = "";
+        Car car = new Car(name);
 
         // when
-        car.move(moveStrategy);
+        car.move(() -> true);
 
         // then
         assertThat(car.getPosition()).isEqualTo(1);
@@ -44,37 +52,14 @@ public class CarTest {
     @DisplayName("No move car with test strategy - position becomes the same as before")
     void stopCar() {
         // given
-        Car car = new Car();
-        MoveStrategy moveStrategy = new NotAbleToMoveStrategy();
+        String name = "";
+        Car car = new Car(name);
 
         // when
-        car.move(moveStrategy);
+        car.move(() -> false);
 
         // then
         assertThat(car.getPosition()).isEqualTo(0);
     }
-    @ParameterizedTest
-    @DisplayName("when use RandomMoveStrategy to move car, position can be plus one or same as before")
-    @MethodSource("randomMoveResult")
-    void randomlyMoveCar(int defaultPosition, List<Integer> afterMovePosition) {
-        // given
-        Car car = new Car(defaultPosition);
-        MoveStrategy moveStrategy = new RandomMoveStrategy();
 
-        // when
-        car.move(moveStrategy);
-
-        // then
-        assertThat(car.getPosition()).isIn(afterMovePosition);
-    }
-
-    static Stream<Arguments> randomMoveResult() {
-        return Stream.of(
-                Arguments.of(0, Arrays.asList(0, 1)),
-                Arguments.of(1, Arrays.asList(1, 2)),
-                Arguments.of(2, Arrays.asList(2, 3)),
-                Arguments.of(3, Arrays.asList(3, 4)),
-                Arguments.of(4, Arrays.asList(4, 5))
-        );
-    }
 }

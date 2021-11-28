@@ -1,37 +1,38 @@
 package car_racing;
 
-import java.util.*;
+import java.util.Objects;
 
 public class CarRacingResult {
+    private final String name;
+    private final int position;
 
-    private final List<List<Integer>> racingResult;
-
-    public CarRacingResult() {
-        this.racingResult = new ArrayList<>();
+    public CarRacingResult(String name, int position) {
+        this.name = name;
+        this.position = position;
     }
 
-    public void update(Cars cars) {
-        if (Objects.isNull(cars)) {
-            return;
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
         }
-
-        List<Integer> currCarPositions = makeListOfCurrPositions(cars);
-
-        racingResult.add(currCarPositions);
-    }
-
-    private List<Integer> makeListOfCurrPositions(Cars cars) {
-        List<Integer> currCarPositions = new ArrayList<>();
-
-        for (Car car : cars.getCars()) {
-            currCarPositions.add(car.getPosition());
+        if (o == null || getClass() != o.getClass()) {
+            return false;
         }
-
-        return currCarPositions;
+        CarRacingResult that = (CarRacingResult) o;
+        return position == that.position && Objects.equals(name, that.name);
     }
 
-    public List<List<Integer>> getRacingResult() {
-        return racingResult;
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
-
 }
