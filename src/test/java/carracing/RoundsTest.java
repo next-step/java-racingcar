@@ -7,20 +7,19 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ResultBoardTest {
+class RoundsTest {
     @Test
-    void resultBoard() {
+    void rounds() {
         Car car = new Car("car");
         car.stepForward(() -> true);
 
         List<Car> cars = new ArrayList<>();
         cars.add(car);
 
-        ResultBoard resultBoard = new ResultBoard();
-        resultBoard.add(new Round(cars));
+        Rounds rounds = new Rounds();
+        rounds.add(new Round(cars));
 
-        List<Round> rounds = resultBoard.getRounds();
-        Round round = rounds.get(0);
+        Round round = rounds.getRounds().get(0);
 
         assertThat(round.getStep("car")).isEqualTo(1);
     }
@@ -37,10 +36,10 @@ class ResultBoardTest {
         cars.add(car);
         cars.add(car1);
 
-        ResultBoard resultBoard = new ResultBoard();
-        resultBoard.add(new Round(cars));
+        Rounds rounds = new Rounds();
+        rounds.add(new Round(cars));
 
-        List<CarName> winners = resultBoard.getWinners();
+        List<CarName> winners = rounds.getWinners();
         assertThat(winners.get(0).getName()).isEqualTo("car");
     }
 
@@ -56,10 +55,10 @@ class ResultBoardTest {
         cars.add(car);
         cars.add(car1);
 
-        ResultBoard resultBoard = new ResultBoard();
-        resultBoard.add(new Round(cars));
+        Rounds rounds = new Rounds();
+        rounds.add(new Round(cars));
 
-        int longestStep = resultBoard.getLongestStep();
+        int longestStep = rounds.getLongestStep();
         assertThat(longestStep).isEqualTo(1);
     }
 }

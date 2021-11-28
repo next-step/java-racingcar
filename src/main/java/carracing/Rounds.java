@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class ResultBoard {
+public class Rounds {
     private final List<Round> rounds = new LinkedList<>();
 
     public void add(Round round) {

@@ -12,16 +12,13 @@ public class CarRacing {
         Track track = new Track(carNames);
         RandomStepForwardStrategy randomStepForwardStrategy = new RandomStepForwardStrategy();
 
-        ResultBoard resultBoard = new ResultBoard();
+        Rounds rounds = new Rounds();
         for (int i = 0; i < round; i++) {
             Round currentRound = track.forward(randomStepForwardStrategy);
-            resultBoard.add(currentRound);
+            rounds.add(currentRound);
         }
 
-        List<Round> rounds = resultBoard.getRounds();
-        ResultView.printRounds(rounds);
-
-        List<CarName> winnerCarNames = resultBoard.getWinners();
-        ResultView.printWinner(winnerCarNames);
+        ResultView.printRounds(rounds.getRounds());
+        ResultView.printWinner(rounds.getWinners());
     }
 }
