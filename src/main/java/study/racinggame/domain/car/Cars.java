@@ -10,13 +10,13 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(Names names) {
+    public Cars(final Names names) {
         cars = names.getNames()
                 .stream().map(Car::new)
                 .collect(Collectors.toList());
     }
 
-    public Cars(List<Car> cars) {
+    public Cars(final List<Car> cars) {
         this.cars = cars;
     }
 

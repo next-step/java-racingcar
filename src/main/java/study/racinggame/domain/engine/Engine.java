@@ -13,7 +13,7 @@ public class Engine implements MovingStrategy {
         this.value = random.nextInt(BOUND);
     }
 
-    public Engine(int value) {
+    public Engine(final int value) {
         this.value = value;
     }
 

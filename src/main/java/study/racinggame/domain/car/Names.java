@@ -10,7 +10,7 @@ public class Names {
 
     private final List<Name> names;
 
-    public Names(String carNames) {
+    public Names(final String carNames) {
         this.names = split(carNames);
     }
 
@@ -18,7 +18,7 @@ public class Names {
         return names;
     }
 
-    private List<Name> split(String carNames) {
+    private List<Name> split(final String carNames) {
         String[] splitCarNames = carNames.split(DELIMITER);
 
         if (splitCarNames.length != NUMBER_OF_CARS) {

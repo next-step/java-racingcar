@@ -10,7 +10,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printPosition(Cars cars) {
+    public static void printPosition(final Cars cars) {
         cars.getCars().forEach(car -> {
             System.out.print(car.name() + ": ");
 
@@ -22,7 +22,7 @@ public class OutputView {
         });
     }
 
-    public static void printWinners(List<Car> cars) {
+    public static void printWinners(final List<Car> cars) {
         System.out.print("\n우승자: ");
         cars.forEach(car -> System.out.print(car.name() + " "));
     }

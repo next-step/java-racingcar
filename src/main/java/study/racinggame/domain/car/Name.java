@@ -7,7 +7,7 @@ public class Name {
 
     private final String value;
 
-    public Name(String name) {
+    public Name(final String name) {
         if (name.length() < 1 || name.length() > LENGTH_LIMIT) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }

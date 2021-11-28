@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Position {
     private final int value;
 
-    public Position(int value) {
+    public Position(final int value) {
         this.value = value;
     }
 
@@ -13,7 +13,7 @@ public class Position {
         return new Position(value + 1);
     }
 
-    public boolean maximum(int max) {
+    public boolean maximum(final int max) {
         return value == max;
     }
 

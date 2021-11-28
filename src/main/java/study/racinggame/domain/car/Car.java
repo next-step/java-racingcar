@@ -8,16 +8,16 @@ public class Car {
     private final Name name;
     private Position position;
 
-    public Car(Name name, int position) {
+    public Car(final Name name, final int position) {
         this.name = name;
         this.position = new Position(position);
     }
 
-    public Car(Name name) {
+    public Car(final Name name) {
         this(name, 0);
     }
 
-    public Car(String name) {
+    public Car(final String name) {
         this(new Name(name));
     }
 
@@ -31,7 +31,7 @@ public class Car {
         return name.getValue();
     }
 
-    public boolean isWinner(int max) {
+    public boolean isWinner(final int max) {
         return position.maximum(max);
     }
 
