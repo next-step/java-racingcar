@@ -43,4 +43,23 @@ class ResultBoardTest {
         List<CarName> winners = resultBoard.getWinners();
         assertThat(winners.get(0).getName()).isEqualTo("car");
     }
+
+    @Test
+    void getLongestStep() {
+        Car car = new Car("car");
+        car.stepForward(() -> true);
+
+        Car car1 = new Car("car1");
+        car.stepForward(() -> false);
+
+        List<Car> cars = new ArrayList<>();
+        cars.add(car);
+        cars.add(car1);
+
+        ResultBoard resultBoard = new ResultBoard();
+        resultBoard.add(new Round(cars));
+
+        int longestStep = resultBoard.getLongestStep();
+        assertThat(longestStep).isEqualTo(1);
+    }
 }

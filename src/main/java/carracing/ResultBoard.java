@@ -17,12 +17,18 @@ public class ResultBoard {
         return Collections.unmodifiableList(rounds);
     }
 
-    public List<CarName> getWinners() {
+    public int getLongestStep() {
         Map<CarName, Integer> nameToStep = getLastRound().getSteps();
         int longestStep = nameToStep.values().stream()
                 .mapToInt(i -> i)
                 .max()
                 .orElseThrow(() -> new IllegalStateException("Can't find winner."));
+        return longestStep;
+    }
+
+    public List<CarName> getWinners() {
+        Map<CarName, Integer> nameToStep = getLastRound().getSteps();
+        int longestStep = getLongestStep();
 
         List<CarName> winnerNames = nameToStep.entrySet().stream()
                 .filter(entry -> entry.getValue() == longestStep)
