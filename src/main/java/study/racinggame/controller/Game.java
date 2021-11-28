@@ -9,15 +9,14 @@ import study.racinggame.view.OutputView;
 import java.util.List;
 
 public class Game {
-    private Cars cars;
+    private final Cars cars;
 
     public void run() {
-        setup();
         start();
         finish();
     }
 
-    private void setup() {
+    public Game() {
         String carNames = InputView.getCarNames();
         cars = new Cars(new Names(carNames));
     }
