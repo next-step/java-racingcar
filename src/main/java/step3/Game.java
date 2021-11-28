@@ -4,8 +4,6 @@ import java.util.Random;
 
 public class Game {
     public static int roundCount;
-    private static Random random = new Random();
-
     public static Cars cars = new Cars();
 
     public static int getRoundCount(){

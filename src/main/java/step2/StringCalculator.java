@@ -27,7 +27,7 @@ public class StringCalculator {
         String inputValue = input.replaceAll(" ", "");//공백을 삭제처리
         char[] arrCh = inputValue.toCharArray();
 
-        return calculateDetail(arrCh);
+        calculateDetail(arrCh);
 
         int result = 0;
         result = calculateDetail(arrCh);
@@ -41,7 +41,7 @@ public class StringCalculator {
 
         distinguishValue(inputValue, numList, opList);
         calculateExecute(opList, numList);
-        return numList.poll();
+        numList.poll();
 
         int value = 0;
         distinguishValue(inputValue, numList, opList);
@@ -69,14 +69,15 @@ public class StringCalculator {
         for (char Ivalue : inputValue) {
             char ch = Ivalue;
 
-        for (int i = 0; i < inputValue.length; i++) {
-            char ch = inputValue[i];
+            for (int i = 0; i < inputValue.length; i++) {
+                ch = inputValue[i];
 
-            processValues(ch, numList, opList);
+                processValues(ch, numList, opList);
+            }
         }
     }
 
-    private void processValues(char ch, LinkedList<Integer> numList, LinkedList<Character> opList) {
+     public void processValues(char ch, LinkedList<Integer> numList, LinkedList<Character> opList) {
         if (ch != '+' && ch != '-' && ch != '/' && ch != '*') {
             numList.add(Integer.parseInt(Character.toString(ch)));
         }

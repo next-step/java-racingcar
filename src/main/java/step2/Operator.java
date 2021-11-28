@@ -15,9 +15,6 @@ public enum Operator {
         return operator;
     }
 
-
-    public String operator;
-
     private BiFunction<Integer, Integer, Integer> expression;
 
     Operator(String operator, BiFunction<Integer, Integer, Integer> expression) {
