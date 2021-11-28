@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class PositionTest {
 
     @Test
+    @DisplayName("주어진 int 값으로 Position 객체를 만든다")
     void shouldCreateWithSameValue() {
         Position position = new Position(3);
         assertThat(position).isEqualTo(new Position(3));
