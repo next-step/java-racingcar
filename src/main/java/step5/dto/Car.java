@@ -1,17 +1,23 @@
-package step4.dto;
+package step5.dto;
+
+import step5.dto.strategy.RunStrategy;
 
 public class Car {
     private Position position;
-    private CarName name;
+    private final CarName name;
 
     public Car(CarName name) {
         this.name = name;
         this.position = new Position();
     }
 
+    public Car(CarName name, Position position) {
+        this.name = name;
+        this.position = position;
+    }
+
     public Car(Car car) {
-        this.name = car.name;
-        this.position = car.position;
+        this(car.name, car.position);
     }
 
     public void run(RunStrategy runStrategy) {

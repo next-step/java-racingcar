@@ -1,10 +1,10 @@
-package step4;
+package step5;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step4.dto.TrialCount;
+import step5.dto.TrialCount;
 
 class TrialCountTest {
 

@@ -1,12 +1,13 @@
-package step4;
+package step5;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step4.dto.RaceRecordGroup;
-import step4.dto.TrialCount;
-import step4.service.RacingGameService;
+import step5.dto.CarNames;
+import step5.domain.RaceRecordGroup;
+import step5.dto.TrialCount;
+import step5.domain.RacingGameService;
 
 import java.util.Arrays;
 
@@ -18,7 +19,7 @@ class RacingGameServiceTest {
     public void recordCountTest(String name, int expected) {
         RacingGameService racingGameService = new RacingGameService();
 
-        RaceRecordGroup recordGroup = racingGameService.raceStart(Arrays.asList(name.split(",")), new TrialCount(expected));
+        RaceRecordGroup recordGroup = racingGameService.raceStart(new CarNames(Arrays.asList(name.split(","))), new TrialCount(expected));
 
         Assertions.assertThat(recordGroup.getRaceRecordGroup()).hasSize(expected);
     }

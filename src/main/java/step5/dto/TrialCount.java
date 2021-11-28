@@ -1,26 +1,26 @@
-package step4.dto;
+package step5.dto;
 
-import step4.common.MyException;
+import step5.common.MyException;
 
 import java.util.Objects;
 
 public class TrialCount {
     private static final int MIN_TRIAL = 0;
     private static final int CALCULATE_UNIT = 1;
-    private int trialCount;
+    private int tryCount;
 
     public TrialCount(int trialCount) {
         validTrialCount(trialCount);
 
-        this.trialCount = trialCount;
+        this.tryCount = trialCount;
     }
 
     public void minusTrial() {
-        this.trialCount -= CALCULATE_UNIT;
+        this.tryCount -= CALCULATE_UNIT;
     }
 
     public boolean isFinalTrial() {
-        return this.trialCount == MIN_TRIAL;
+        return this.tryCount == MIN_TRIAL;
     }
 
     private void validTrialCount(int trialCount) {
@@ -38,11 +38,11 @@ public class TrialCount {
             return false;
         }
         TrialCount that = (TrialCount) o;
-        return trialCount == that.trialCount;
+        return tryCount == that.tryCount;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(trialCount);
+        return Objects.hash(tryCount);
     }
 }

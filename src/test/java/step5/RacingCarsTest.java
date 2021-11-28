@@ -1,10 +1,11 @@
-package step4;
+package step5;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step4.dto.RacingCars;
+import step5.dto.CarNames;
+import step5.dto.RacingCars;
 
 import java.util.Arrays;
 
@@ -15,7 +16,7 @@ class RacingCarsTest {
     @DisplayName("생성자 인자로 전달받은 이름 갯수만큼 자동차 객체를 생성한다")
     public void createTest(String name, int expected) {
 
-        RacingCars racingCars = new RacingCars(Arrays.asList(name.split(",")));
+        RacingCars racingCars = new RacingCars(new CarNames(Arrays.asList(name.split(","))));
 
         Assertions.assertThat(racingCars.currentCars()).hasSize(expected);
     }

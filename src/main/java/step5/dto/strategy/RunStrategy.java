@@ -1,4 +1,4 @@
-package step4.dto;
+package step5.dto.strategy;
 
 public interface RunStrategy {
 

@@ -1,7 +1,9 @@
-package step4.view;
+package step5.view;
 
-import step4.dto.RaceRecordGroup;
-import step4.dto.RaceRecord;
+import step5.domain.RaceRecordGroup;
+import step5.domain.RaceRecord;
+import step5.dto.Car;
+import step5.dto.CarName;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,16 +40,24 @@ public class ResultView {
     public void renderRaceWinners(RaceRecordGroup raceRecordGroup, String delimiter) {
         STRING_BUILDER.setLength(ZERO);
 
-        String winnerNames = raceRecordGroup.findWinners().stream().map(name -> name.getName()).collect(Collectors.joining(delimiter));
+        String winnerNames = findWinners(raceRecordGroup).stream()
+                .collect(Collectors.joining(delimiter));
 
         System.out.printf(WINNER_RESULT_MESSAGE, winnerNames);
+    }
+
+    private List<String> findWinners(RaceRecordGroup raceRecordGroup) {
+        return raceRecordGroup.findWinners().stream()
+                .map(Car::getName)
+                .map(CarName::getName)
+                .collect(Collectors.toList());
     }
 
     private void processRaceRecord(RaceRecord raceRecord) {
 
         raceRecord.getRaceRecord().forEach((car) -> {
                     STRING_BUILDER.append(car.getName().getName()).append(COLON);
-                    createSkidMark(car.getPosition().getPosition());
+                    createSkidMark(car.getPosition().getCurrentPosition());
                 });
 
         STRING_BUILDER.append(System.lineSeparator());
