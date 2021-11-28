@@ -14,7 +14,7 @@ class CarsForGameTest {
     @DisplayName("When create Cars with numberOfCar, default status is set")
     void createCars() {
         // given
-        Name name = new Name("");
+        String name = "";
         Car car0 = new Car(name);
         Car car1 = new Car(name);
         Car car2 = new Car(name);
@@ -36,7 +36,7 @@ class CarsForGameTest {
     @DisplayName("when playOneRound with TestMoveStrategy, cars position moves to 1")
     void playOneRound() {
         // given
-        Name name = new Name("");
+        String name = "";
         Car car0 = new Car(1, name);
         Car car1 = new Car(2, name);
         List<Car> carObjects = new ArrayList<Car>() {{

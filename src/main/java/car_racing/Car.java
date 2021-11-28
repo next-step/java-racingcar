@@ -9,13 +9,13 @@ public class Car {
     private final Name name;
     private int position;
 
-    public Car(Name name) {
+    public Car(String name) {
         this(START_POSITION, name);
     }
 
-    public Car(int position, Name name) {
+    public Car(int position, String name) {
         this.position = position;
-        this.name = name;
+        this.name = new Name(name);
     }
 
     public void move(MoveStrategy moveStrategy) {
@@ -34,6 +34,10 @@ public class Car {
 
     public String getStringName() {
         return name.getString();
+    }
+
+    public boolean isAtPosition(int position) {
+        return this.position == position;
     }
 
     @Override

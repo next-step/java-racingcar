@@ -14,14 +14,8 @@ public class CarsForGame {
         this.carsForGame = createCars(names);
     }
 
-    public CarsForGame() {
-        this.carsForGame = new ArrayList<>();
-    }
-
-    /**
-     * Test
-     **/
     public CarsForGame(List<Car> carsForGame) {
+        /* Test */
         this.carsForGame = carsForGame;
     }
 
@@ -30,8 +24,7 @@ public class CarsForGame {
         String[] names = carNames.split(NAME_DELIMITER);
 
         for (String name : names) {
-            Name carName = new Name(name);
-            Car car = new Car(carName);
+            Car car = new Car(name);
             cars.add(car);
         }
         return cars;
@@ -47,34 +40,26 @@ public class CarsForGame {
         return carsForGame;
     }
 
-    public List<String> getNames() {
-        List<String> names = new ArrayList<>();
-
-        for(Car car : carsForGame) {
-            names.add(car.getStringName());
-        }
-        return names;
-    }
-
-    public void add(Car car) {
-        carsForGame.add(car);
-    }
-
     public List<Car> findWinners() {
         int winnersPosition = findWinnersPosition();
         return findWinners(winnersPosition);
     }
 
-    // TODO: 들여쓰기 줄이기
     private List<Car> findWinners (int winnersPosition) {
         List<Car> winners = new ArrayList<>();
         for(Car car: carsForGame) {
-            if (car.getPosition() == winnersPosition) {
-                winners.add(car);
-            }
+            addWinners(winners, winnersPosition, car);
         }
         return winners;
     }
+
+    // TODO: Argument 개수 줄이기
+    private void addWinners(List<Car> winners, int winnerPosition, Car currCar) {
+        if (currCar.isAtPosition(winnerPosition)) {
+            winners.add(currCar);
+        }
+    }
+
 
     private int findWinnersPosition() {
         int maxPosition = -1;
@@ -92,6 +77,8 @@ public class CarsForGame {
         }
         return currMaxPosition;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
