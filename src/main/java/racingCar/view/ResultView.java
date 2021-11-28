@@ -1,9 +1,9 @@
 package racingCar.view;
 
 import java.util.List;
-import racingCar.model.Position;
-import racingCar.model.RacingCar;
-import racingCar.model.RacingCars;
+import racingCar.domain.Name;
+import racingCar.domain.Position;
+import racingCar.domain.RacingCar;
 
 public class ResultView {
 
@@ -28,16 +28,16 @@ public class ResultView {
     return sb.toString();
   }
 
-  public void printWinner(RacingCars winners) {
-    String combinedWinnerNames = appendWinnerName(winners);
+  public void printWinner(List<Name> winnerNames) {
+    String combinedWinnerNames = appendWinnerName(winnerNames);
     System.out.printf(FINALLY_WINNER_PATTERN, combinedWinnerNames);
   }
 
-  public String appendWinnerName(RacingCars winners) {
+  public String appendWinnerName(List<Name> winnerNames) {
     StringBuilder sb = new StringBuilder();
 
-    for (RacingCar winner : winners.getAllCars()) {
-      sb.append(winner.getName().getValue()).append(SPLIT_CHARACTER);
+    for (Name winnerName : winnerNames) {
+      sb.append(winnerName.getValue()).append(SPLIT_CHARACTER);
     }
 
     return sb.substring(0, sb.length() - 1);

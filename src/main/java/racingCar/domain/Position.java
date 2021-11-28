@@ -1,4 +1,4 @@
-package racingCar.model;
+package racingCar.domain;
 
 import java.util.Objects;
 
@@ -7,19 +7,19 @@ public class Position implements Comparable<Position> {
 
   private final int value;
 
-  public Position(int inputNumber) {
-    this.value = inputNumber;
+  public Position(int startPosition) {
+    this.value = startPosition;
   }
 
-  public Position move(int inputNumber) {
-    if (canMove(inputNumber)) {
+  public Position move(MyNumber number) {
+    if (canMove(number)) {
       return new Position(value + 1);
     }
     return this;
   }
 
-  private boolean canMove(int position) {
-    return position >= MIN_MOVE_NUMBER;
+  private boolean canMove(MyNumber number) {
+    return number.getNumber() >= MIN_MOVE_NUMBER;
   }
 
   public int getValue() {
@@ -28,7 +28,7 @@ public class Position implements Comparable<Position> {
 
   @Override
   public int compareTo(Position other) {
-    return value - other.value;
+    return Integer.compare(value, other.value);
   }
 
   @Override

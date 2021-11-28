@@ -1,4 +1,4 @@
-package racingCar.model;
+package racingCar.domain;
 
 public class RacingCar implements Comparable<RacingCar> {
 
@@ -14,7 +14,7 @@ public class RacingCar implements Comparable<RacingCar> {
     this.name = new Name(name);
   }
 
-  public void tryMove(int number) {
+  public void tryMove(MyNumber number) {
     position = position.move(number);
   }
 

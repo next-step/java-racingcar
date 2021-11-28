@@ -1,8 +1,7 @@
-package racingCar.model;
+package racingCar.domain;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RacingCars {
@@ -13,19 +12,20 @@ public class RacingCars {
     this.racingCars = racingCars;
   }
 
-  public void add(RacingCar racingCar) {
-    racingCars.add(racingCar);
-  }
-
   public void moveAllCars() {
-    racingCars.forEach(e -> e.tryMove(new Random().nextInt(10)));
+    racingCars.forEach(e -> e.tryMove(MyNumber.generateRandomNumber()));
   }
 
-  public RacingCars determineWinners() {
+  public Winners findWinners() {
     List<RacingCar> winners = racingCars.stream()
-        .filter(racingCar -> racingCar.getPosition().equals(Collections.max(racingCars).getPosition()))
-        .collect(Collectors.toList());
-    return new RacingCars(winners);
+            .filter(racingCar -> racingCar.getPosition().equals(findWinnerPosition()))
+            .collect(Collectors.toList());
+
+    return new Winners(new RacingCars(winners));
+  }
+
+  private Position findWinnerPosition() {
+    return Collections.max(racingCars).getPosition();
   }
 
   public List<RacingCar> getAllCars() {

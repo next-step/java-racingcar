@@ -2,8 +2,9 @@ package racingCar.controller;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
-import racingCar.model.RacingCar;
-import racingCar.model.RacingCars;
+import racingCar.domain.RacingCar;
+import racingCar.domain.RacingCars;
+import racingCar.domain.Winners;
 import racingCar.view.InputView;
 import racingCar.view.ResultView;
 
@@ -21,16 +22,6 @@ public class RacingCarGame {
     race(inputView.inputTryCount());
   }
 
-  private RacingCars createCars() {
-    String[] carNames = inputView.inputCarNames();
-
-    return new RacingCars(
-        Arrays.stream(carNames)
-            .map(RacingCar::new)
-            .collect(Collectors.toList())
-    );
-  }
-
   public void race(int totalTryCount) {
     RacingCars racingCars = createCars();
 
@@ -39,6 +30,17 @@ public class RacingCarGame {
       resultView.printAllCars(racingCars.getAllCars());
     }
 
-    resultView.printWinner(racingCars.determineWinners());
+    Winners winners = racingCars.findWinners();
+    resultView.printWinner(winners.findWinnersName());
+  }
+
+  private RacingCars createCars() {
+    String[] carNames = inputView.inputCarNames();
+
+    return new RacingCars(
+        Arrays.stream(carNames)
+            .map(RacingCar::new)
+            .collect(Collectors.toList())
+    );
   }
 }
