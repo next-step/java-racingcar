@@ -1,5 +1,6 @@
 package carracing;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RoundsTest {
     @Test
+    @DisplayName("Rounds 객체가 Car 객체의 리스트를 담는지 테스트한다.")
     void rounds() {
         Car car = new Car("car");
         car.stepForward(() -> true);
