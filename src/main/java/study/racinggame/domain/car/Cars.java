@@ -1,6 +1,5 @@
 package study.racinggame.domain.car;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -8,9 +7,9 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(String[] splitCarNames) {
-        this.cars = Arrays.stream(splitCarNames)
-                .map(Car::new)
+    public Cars(Names names) {
+        cars = names.getNames()
+                .stream().map(Car::new)
                 .collect(Collectors.toList());
     }
 

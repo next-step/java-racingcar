@@ -2,15 +2,13 @@ package study.racinggame.controller;
 
 import study.racinggame.domain.car.Car;
 import study.racinggame.domain.car.Cars;
+import study.racinggame.domain.car.Names;
 import study.racinggame.view.InputView;
 import study.racinggame.view.OutputView;
 
 import java.util.List;
 
 public class Game {
-    public static final String DELIMITER = ",";
-    public static final int NUMBER_OF_CARS = 3;
-
     private Cars cars;
 
     public void run() {
@@ -21,19 +19,7 @@ public class Game {
 
     private void setup() {
         String carNames = InputView.getCarNames();
-        String[] splitCarNames = split(carNames);
-
-        cars = new Cars(splitCarNames);
-    }
-
-    private String[] split(String carNames) {
-        String[] splitCarNames = carNames.split(DELIMITER);
-
-        if (splitCarNames.length != NUMBER_OF_CARS) {
-            throw new IllegalArgumentException("자동차는 3대만 입력 가능합니다.");
-        }
-
-        return splitCarNames;
+        cars = new Cars(new Names(carNames));
     }
 
     private void start() {
