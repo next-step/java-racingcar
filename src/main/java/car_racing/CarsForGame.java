@@ -19,6 +19,10 @@ public class CarsForGame {
         this.carsForGame = carsForGame;
     }
 
+    public CarsForGame() {
+        this.carsForGame = new ArrayList<>();
+    }
+
     private List<Car> createCars(String carNames) {
         List<Car> cars = new ArrayList<>();
         String[] names = carNames.split(NAME_DELIMITER);

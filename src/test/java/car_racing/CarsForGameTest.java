@@ -1,5 +1,6 @@
 package car_racing;
 
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -51,6 +52,38 @@ class CarsForGameTest {
         // then
         assertThat(carsForGame.getCars().get(0).getPosition()).isEqualTo(2);
         assertThat(carsForGame.getCars().get(1).getPosition()).isEqualTo(3);
+    }
+
+    @Test
+    void findWinners() {
+        // given
+        Car car1 = new Car(1, "a");
+        Car car2 = new Car(2, "b");
+        Car car3 = new Car(3, "c");
+        Car car4 = new Car(3, "d");
+        Car car5 = new Car(0, "e");
+        CarsForGame cars = new CarsForGame(Lists.list(
+                car1, car2, car3, car4, car5
+        ));
+
+        // when
+        List<Car> winners = cars.findWinners();
+
+        // then
+        assertThat(winners.get(0)).isEqualTo(car3);
+        assertThat(winners.get(1)).isEqualTo(car4);
+    }
+
+    @Test
+    void findWinners_when_no_cars() {
+        // given
+        CarsForGame cars = new CarsForGame();
+
+        // when
+        List<Car> winners = cars.findWinners();
+
+        // then
+        assertThat(winners).isEmpty();
     }
 
 }

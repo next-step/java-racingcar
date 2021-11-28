@@ -1,7 +1,6 @@
 package car_racing;
 
 import org.assertj.core.util.Lists;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -61,56 +60,4 @@ class CarRacingResultHistoryTest {
         ));
     }
 
-//    @Test
-//    @DisplayName("update winners when number Of winners is 1")
-//    void updateWinners() {
-//        // given
-//        CarsForGame carsForGame = new CarsForGame(Lists.newArrayList(
-//                new Car(0, new Name("aa")),
-//                new Car(1, new Name("bb")),
-//                new Car(2, new Name("cc")),
-//                new Car(3, new Name("dd")),
-//                new Car(4, new Name("ee"))
-//                )
-//        );
-//        CarRacingResultHistory resultHistory = new CarRacingResultHistory();
-//
-//        List<Car> expectedWinnerList = Lists.newArrayList(new Car(4, new Name("ee")));
-//        CarsForGame expectedWinners = new CarsForGame(expectedWinnerList);
-//
-//        // when
-//        resultHistory.updateWinners(carsForGame);
-//        CarsForGame winners = resultHistory.getWinners();
-//
-//        // then
-//        assertThat(winners).isEqualTo(expectedWinners);
-//    }
-
-//    @Test
-//    @DisplayName("update winners when number Of winners is over 1")
-//    void updateWinners_manyWinners() {
-//        // given
-//        CarsForGame carsForGame = new CarsForGame(Lists.newArrayList(
-//                new Car(4, new Name("aa")),
-//                new Car(4, new Name("bb")),
-//                new Car(2, new Name("cc")),
-//                new Car(3, new Name("dd")),
-//                new Car(4, new Name("ee"))
-//        )
-//        );
-//        CarRacingResultHistory resultHistory = new CarRacingResultHistory();
-//        List<Car> expectedWinnerList = Lists.newArrayList(
-//                new Car(4, new Name("aa")),
-//                new Car(4, new Name("bb")),
-//                new Car(4, new Name("ee"))
-//        );
-//        CarsForGame expectWinners = new CarsForGame(expectedWinnerList);
-//
-//        // when
-//        resultHistory.updateWinners(carsForGame);
-//        CarsForGame winners = resultHistory.getWinners();
-//
-//        // then
-//        assertThat(winners).isEqualTo(expectWinners);
-//    }
 }
