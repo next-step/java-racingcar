@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarsTest {
 
     @Test
-    @DisplayName("position 값으로 우승자를 구한다")
+    @DisplayName("position 값이 가장 높은 사람을 우승자로 한다")
     void shouldReturnWinner() {
         Car pobi = new Car(new Name("pobi"), 3);
         Car jake = new Car(new Name("jake"), 5);
