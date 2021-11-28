@@ -21,7 +21,7 @@ public class RacingCarGame {
   public void startWithUserInput() {
     race(inputView.inputTryCount());
   }
-
+  
   public void race(int totalTryCount) {
     RacingCars racingCars = createCars();
 
