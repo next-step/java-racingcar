@@ -1,4 +1,6 @@
-package carracing;
+package carracing.cars;
+
+import carracing.utils.RandomFactory;
 
 public class RandomStepForwardStrategy implements StepForwardStrategy {
 

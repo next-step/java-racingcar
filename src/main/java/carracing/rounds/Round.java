@@ -1,4 +1,7 @@
-package carracing;
+package carracing.rounds;
+
+import carracing.cars.Car;
+import carracing.cars.CarName;
 
 import java.util.Collections;
 import java.util.HashMap;

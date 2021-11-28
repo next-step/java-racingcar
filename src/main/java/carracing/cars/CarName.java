@@ -1,4 +1,4 @@
-package carracing;
+package carracing.cars;
 
 import java.util.Objects;
 

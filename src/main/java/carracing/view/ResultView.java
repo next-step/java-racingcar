@@ -1,4 +1,7 @@
-package carracing;
+package carracing.view;
+
+import carracing.cars.CarName;
+import carracing.rounds.Round;
 
 import java.util.List;
 import java.util.stream.Collectors;
