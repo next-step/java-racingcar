@@ -1,8 +1,7 @@
-package racingcar;
-
-import racingcar.util.NumberGenerator;
+package racingcar.domain;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,15 +9,16 @@ public class Cars {
 
     private final List<Car> cars;
     private static final String SPLITTER = ",";
-    private final NumberGenerator numberGenerator;
+
+
+    private static final int MAX_CAR_NAME = 5;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
-        numberGenerator = new NumberGenerator();
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public static Cars makeRacingCarsFromName(String carNames) {
@@ -34,14 +34,14 @@ public class Cars {
     private static void validateNames(String[] names) {
 
         Arrays.stream(names).forEach(name -> {
-            if (name.length() > 5) {
+            if (name.length() > MAX_CAR_NAME) {
                 throw new IllegalArgumentException("Car name should be less than 5 characters");
             }
         });
     }
 
-    public void doRacing() {
-        cars.forEach(car -> car.move(numberGenerator));
+    public void doRacing(MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.move(moveStrategy));
     }
 
     public List<Car> getWinnerCar() {

@@ -2,6 +2,9 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.RandomMoveStrategy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +21,7 @@ public class RacingTest {
     @DisplayName("Racing 후 car 컬렉션 상태 체크")
     void carNumberTest() {
 
-        cars1.doRacing();
+        cars1.doRacing(new RandomMoveStrategy());
         cars1.getCars().forEach(car -> assertThat(car.getLocation()).isBetween(0, 1));
     }
 }

@@ -1,7 +1,10 @@
 package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.view.InputView;
 
 import java.io.ByteArrayInputStream;
@@ -26,15 +29,12 @@ public class CarsTest {
 
         String carName = "car1,car2,car3";
 
-        InputStream in = new ByteArrayInputStream(carName.getBytes());
-        System.setIn(in);
-        String res = InputView.getInput("자동차 이름 입력");
-
-        Cars cars = Cars.makeRacingCarsFromName(res);
+        Cars cars = Cars.makeRacingCarsFromName(carName);
 
         assertThat(cars.getCars().size()).isEqualTo(3);
         assertThat(cars.getCars()).extracting("name").contains("car1", "car2", "car3");
     }
+
 
     @Test
     @DisplayName("입력한 자동차 이름 5글자 넘을 때 exception 발생 테스트")

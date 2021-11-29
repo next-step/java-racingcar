@@ -1,6 +1,7 @@
 package racingcar.executor;
 
 import racingcar.RacingGame;
+import racingcar.domain.RandomMoveStrategy;
 import racingcar.view.InputView;
 
 public class Executor {
@@ -11,6 +12,6 @@ public class Executor {
         int numOfTries = InputView.getNumberInput("시도할 회수는 몇 회 인가요?");
 
         RacingGame racing = new RacingGame(carNameString, numOfTries);
-        racing.racingGame();
+        racing.racingGame(new RandomMoveStrategy());
     }
 }
