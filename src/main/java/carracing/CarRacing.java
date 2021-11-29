@@ -1,17 +1,24 @@
 package carracing;
 
+import carracing.cars.CarName;
+import carracing.cars.RandomStepForwardStrategy;
+import carracing.rounds.Rounds;
+import carracing.view.InputView;
+import carracing.view.ResultView;
+
+import java.util.List;
+
 public class CarRacing {
     public static void main(String[] args) {
-        int cars = InputView.inputCarNumber();
+        List<CarName> carNames = InputView.inputCarNames();
         int round = InputView.inputRound();
+        RandomStepForwardStrategy randomStepForwardStrategy = new RandomStepForwardStrategy();
 
-        System.out.println("실행 결과");
+        CarRace carRace = new CarRace(carNames, round, randomStepForwardStrategy);
+        Rounds rounds = carRace.race();
 
-        Track track = new Track(cars);
-        for (int i = 0; i < round; i++) {
-            track.forward();
-        }
-
-        ResultView.printRounds(track.getRounds());
+        InputView.print("실행 결과");
+        ResultView.printRounds(rounds.getRounds());
+        ResultView.printWinner(rounds.getWinners());
     }
 }
