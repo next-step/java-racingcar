@@ -5,8 +5,8 @@ import racinggame.utils.StringUtils;
 import java.util.Random;
 
 public class Car {
-    private final CarName name;
-    private Position position = 0;
+    private final String name;
+    private int position = 0;
 
     public Car(final String name) {
         this(name, 0);
@@ -29,11 +29,7 @@ public class Car {
     }
 
     public boolean isWinner(int maxPosition) {
-        return this.position.isSame(maxPosition);
-    }
-
-    public boolean isWinner(Position maxPosition) {
-        return position.equals(maxPosition);
+        return this.position == maxPosition;
     }
 
     public void move(RandomValue randomValue) {

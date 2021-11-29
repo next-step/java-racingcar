@@ -15,7 +15,7 @@ public class Cars {
     }
 
     private int getMaxPosition() {
-        Position maxPosition = new Position(0);
+        int maxPosition = 0;
         for (Car car : cars) {
             maxPosition = car.maxPosition(maxPosition);
         }
