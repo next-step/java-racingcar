@@ -1,6 +1,6 @@
 package racing.refactor.view;
 
-import racing.refactor.view.CarDto.Request;
+import racing.refactor.dto.RequestGameCreation;
 
 import java.io.PrintStream;
 import java.util.*;
@@ -17,7 +17,7 @@ public class InputViewResolver {
     private static final Scanner SCANNER = new Scanner(System.in);
     private static final PrintStream PRINT_STREAM = System.out;
 
-    public Request.GameCreation askQuestions(List<String> questions) {
+    public RequestGameCreation askQuestions(List<String> questions) {
         List<String> answers = new ArrayList<>();
         for (String question : questions) {
             PRINT_STREAM.println(question);
@@ -27,7 +27,7 @@ public class InputViewResolver {
         return bindingToDto(answers);
     }
 
-    public Request.GameCreation bindingToDto(List<String> answers) {
+    public RequestGameCreation bindingToDto(List<String> answers) {
         String answerNames = answers.get(CAR_NAMES_LOCATION);
         List<String> carNames = Arrays.stream(answerNames.split(COMMA))
                 .collect(collectingAndThen(toList(), Collections::unmodifiableList));
@@ -35,7 +35,7 @@ public class InputViewResolver {
         String loopCountToString = answers.get(LOOP_COUNT_LOCATION);
         int loopCount = Integer.parseInt(loopCountToString);
 
-        return new Request.GameCreation(carNames, loopCount);
+        return new RequestGameCreation(carNames, loopCount);
     }
 
     private String takeInput() {

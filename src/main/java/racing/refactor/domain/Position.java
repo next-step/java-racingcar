@@ -22,6 +22,7 @@ public class Position {
         return this.value < otherPosition.value;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

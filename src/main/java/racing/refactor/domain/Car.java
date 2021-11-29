@@ -4,13 +4,13 @@ import java.util.Objects;
 
 public class Car {
 
-    private static final int ZERO = 0;
+    private static final int DEFAULT_POSITION = 0;
 
-    private Name name;
-    private Position position;
+    private final Name name;
+    private final Position position;
 
     public Car(String name) {
-        this(name, ZERO);
+        this(name, DEFAULT_POSITION);
     }
 
     public Car(String name, int position) {

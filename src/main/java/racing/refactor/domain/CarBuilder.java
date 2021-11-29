@@ -1,7 +1,7 @@
 package racing.refactor.domain;
 
-import racing.refactor.view.CarDto.Request;
-import racing.refactor.view.CarDto.Response;
+import racing.refactor.dto.RequestGameCreation;
+import racing.refactor.dto.ResponseCar;
 
 import java.util.Collections;
 import java.util.List;
@@ -11,7 +11,7 @@ import static java.util.stream.Collectors.toList;
 
 public class CarBuilder {
 
-    public static List<Car> toCar(Request.GameCreation creation) {
+    public static List<Car> toCar(RequestGameCreation creation) {
         List<String> names = creation.getCarNames();
         return names.stream()
                 .map(Car::new)
@@ -19,10 +19,9 @@ public class CarBuilder {
                 .collect(collectingAndThen(toList(), Collections::unmodifiableList));
     }
 
-    public static List<Response.CarInformation> toCarInformation(Cars cars) {
-        return cars.toList()
-                .stream()
-                .map(car -> new Response.CarInformation(
+    public static List<ResponseCar> toCarInformation(List<Car> cars) {
+        return cars.stream()
+                .map(car -> new ResponseCar(
                          car.getName()
                                 .getValue()
                         ,car.getPosition()
