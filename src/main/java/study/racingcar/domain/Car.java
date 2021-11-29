@@ -6,21 +6,18 @@ import study.racingcar.domain.strategy.MoveStrategy;
 
 public class Car {
 
+	public static final int INIT_POSITION = 0;
+
 	private final Name name;
 	private Position position;
 
-	public Car(String name) {
-		this(name, 0);
-	}
-
-	public Car(String name, int position) {
-		this.name = new Name(name);
+	public Car(Name name, int position) {
+		this.name = name;
 		this.position = new Position(position);
 	}
 
 	public Car(Name name) {
-		this.name = name;
-		this.position = new Position(0);
+		this(name, INIT_POSITION);
 	}
 
 	public Car go(MoveStrategy strategy) {

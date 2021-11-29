@@ -14,17 +14,17 @@ class CarTest {
 		String name = "juu";
 
 		//when
-		Car car = new Car(name);
+		Car car = new Car(new Name(name));
 
 		//then
-		assertThat(car).isEqualTo(new Car("juu"));
+		assertThat(car).isEqualTo(new Car(new Name("juu")));
 	}
 
 	@Test
 	@DisplayName("자동차 전진")
 	void go() {
 		//given
-		Car car = new Car("pobi");
+		Car car = new Car(new Name("pobi"));
 
 		//when
 		Car result = car.go(() -> true);
@@ -38,7 +38,7 @@ class CarTest {
 	@DisplayName("자동차 정지")
 	void stop() {
 		//given
-		Car car = new Car("pobi");
+		Car car = new Car(new Name("pobi"));
 
 		//when
 		Car result = car.go(() -> false);

@@ -16,9 +16,9 @@ class CarsTest {
 	@BeforeEach
 	void setUp(){
 		//given
-		Car pobi = new Car("pobi", 10);
-		Car juuu = new Car("juuu", 10);
-		Car alex = new Car("alex", 8);
+		Car pobi = new Car(new Name("pobi"), 10);
+		Car juuu = new Car(new Name("juuu"), 10);
+		Car alex = new Car(new Name("alex"), 8);
 
 		cars = new Cars(Arrays.asList(pobi, juuu, alex));
 	}

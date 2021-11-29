@@ -4,12 +4,13 @@ import java.util.Objects;
 
 public class Position {
 
+	public static final int INIT_POSITION = 0;
 	private static final int ONE_STEP = 1;
 
 	private final int position;
 
 	public Position() {
-		this.position = 0;
+		this.position = INIT_POSITION;
 	}
 
 	public Position(int position) {
