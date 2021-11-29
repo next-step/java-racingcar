@@ -3,49 +3,27 @@ package study.racingcar.domain;
 import java.util.List;
 
 import study.racingcar.view.ResultView;
+import study.racingcar.domain.strategy.MoveStrategy;
 
 public class RacingGame {
 	private final Cars cars;
-	private final int rounds;
-	private final MoveStrategy strategy;
+	private final int tryNo;
 
-	public RacingGame(List<String> userInputCarNames, int userInputRound, MoveStrategy strategy) {
-		this.cars = new Cars(userInputCarNames);
-		this.rounds = userInputRound;
-		this.strategy = strategy;
+	public RacingGame(List<Name> carNames, int rounds) {
+		this.cars = new Cars(carNames);
+		this.tryNo = rounds;
 	}
 
-	public void playGame() {
-		for (int i = 0; i < rounds; i++) {
-			moveCars();
-			currentScore();
+	public Cars racing(MoveStrategy strategy) {
+		for (int i = 0; i < tryNo; i++) {
+			Cars cars = this.cars.goRace(strategy);
+			currentScore(cars);
 		}
-
-		winner();
+		return cars;
 	}
 
-	private void winner() {
-		List<Car> cars = this.cars.statusOfCars();
-		List<String> winners = getWinner(cars);
-		ResultView.printWinner(winners);
-	}
-
-	private List<String> getWinner(List<Car> cars) {
-		Winner winner = new Winner(cars);
-		int maxPosition = winner.maxPosition();
-		return winner.whoIsWinner(maxPosition);
-	}
-
-	public List<Car> carsCurrentStatus() {
-		return cars.statusOfCars();
-	}
-
-	private void moveCars() {
-		cars.goRace(strategy);
-	}
-
-	private void currentScore() {
-		ResultView.printCurrentRacingResult(this);
+	private void currentScore(Cars cars) {
+		ResultView.printCurrentRacingResult(cars);
 	}
 
 }

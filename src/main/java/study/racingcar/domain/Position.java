@@ -4,23 +4,23 @@ import java.util.Objects;
 
 public class Position {
 
-	private static final int INIT_POSITION = 0;
+	private static final int ONE_STEP = 1;
 
-	private int position;
+	private final int position;
 
 	public Position() {
-		this.position = INIT_POSITION;
+		this.position = 0;
 	}
 
 	public Position(int position) {
 		this.position = position;
 	}
 
-	public void add() {
-		this.position++;
+	public Position move() {
+		return new Position(position + ONE_STEP);
 	}
 
-	public int valueOfPosition() {
+	public int value() {
 		return position;
 	}
 
@@ -38,4 +38,5 @@ public class Position {
 	public int hashCode() {
 		return Objects.hash(position);
 	}
+
 }

@@ -1,32 +1,63 @@
 package study.racingcar.domain;
 
+import java.util.Objects;
+
+import study.racingcar.domain.strategy.MoveStrategy;
+
 public class Car {
 
-	private final Position position;
 	private final Name name;
+	private Position position;
 
 	public Car(String name) {
-		this.position = new Position();
+		this(name, 0);
+	}
+
+	public Car(String name, int position) {
 		this.name = new Name(name);
+		this.position = new Position(position);
+	}
+
+	public Car(Name name) {
+		this.name = name;
+		this.position = new Position(0);
+	}
+
+	public Car go(MoveStrategy strategy) {
+		if (strategy.isMovable()) {
+			this.position = position.move();
+		}
+		return this;
 	}
 
 	public int carPosition() {
-		return this.position.valueOfPosition();
+		return this.position.value();
 	}
 
-	public void go(boolean isMoveCar) {
-		if (isMoveCar) {
-			this.position.add();
-		}
+	public boolean isMaxPosition(int position) {
+		return this.position.equals(new Position(position));
 	}
 
-	public String carName(){
+	public Name carName() {
+		return name;
+	}
+
+	public String valueOfCarName() {
 		return name.value();
 	}
 
-	public boolean isMaxPosition(int position){
-		Position maxPosition = new Position(position);
-		return this.position.equals(maxPosition);
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Car car = (Car)o;
+		return Objects.equals(name, car.name);
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(name);
+	}
 }
