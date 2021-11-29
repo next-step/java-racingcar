@@ -3,7 +3,6 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.domain.RandomValue;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,8 +13,7 @@ public class CarTest {
     void carMoveLocationTest() {
         int firstLocation = 2;
         Car car = new Car("이름1", firstLocation);
-        RandomValue randomValue = new RandomValue(5);
-        car.move(randomValue);
+        car.move(() -> 1);
         assertThat(car.getLocation()).isEqualTo(firstLocation + 1);
     }
 }

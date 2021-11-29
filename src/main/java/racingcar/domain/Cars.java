@@ -40,12 +40,8 @@ public class Cars {
         });
     }
 
-    public void doRacing() {
-        cars.forEach(car -> car.move(getRandomValue()));
-    }
-
-    private RandomValue getRandomValue() {
-        return new RandomValue(NumberGenerator.generate());
+    public void doRacing(MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.move(moveStrategy));
     }
 
     public List<Car> getWinnerCar() {
