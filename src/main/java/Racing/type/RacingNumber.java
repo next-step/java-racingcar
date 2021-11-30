@@ -13,6 +13,7 @@ public class RacingNumber {
   public final static RacingNumber ZERO = new RacingNumber(0);
   private final static double RANDOM_BOUND = 9.0;
   private final double value;
+  private final static Random RANDOM = new Random();
 
   public RacingNumber(int number) {
     value = number;
@@ -27,7 +28,6 @@ public class RacingNumber {
   }
 
   public static RacingNumber getRandomNumber() {
-    Random RANDOM = new Random();
     int number = RANDOM.nextInt((int) RacingNumber.RANDOM_BOUND);
     return new RacingNumber(number);
   }
