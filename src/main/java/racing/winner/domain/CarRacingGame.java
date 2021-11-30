@@ -10,6 +10,7 @@ import static java.util.stream.Collectors.toList;
 public class CarRacingGame {
 
     private final List<Car> cars;
+    private static final int ZERO = 0;
 
     public CarRacingGame(List<Car> cars) {
         this.cars = cars;
@@ -18,7 +19,7 @@ public class CarRacingGame {
     public List<Car> getWinners() {
         int topTravelDistance = topScore();
         return cars.stream()
-                .filter(car -> topTravelDistance <= car.getDrivingDistance())
+                .filter(car -> car.equalsDistance(topTravelDistance))
                 .collect(collectingAndThen(toList(), Collections::unmodifiableList));
     }
 
@@ -26,11 +27,11 @@ public class CarRacingGame {
         return displayTrack().stream()
                 .map(Car::getDrivingDistance)
                 .max(naturalOrder())
-                .orElse(0);
+                .orElse(ZERO);
     }
 
     public List<Car> nextRound(List<Integer> diceNumbers) {
-        for (int i = 0; i < cars.size(); i++) {
+        for (int i = ZERO; i < cars.size(); i++) {
             Car car = cars.get(i);
             int diceNumber = diceNumbers.get(i);
             car.moveOrStop(diceNumber);

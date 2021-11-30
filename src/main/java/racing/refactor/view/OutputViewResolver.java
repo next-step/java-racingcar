@@ -1,6 +1,6 @@
-package racing.winner.resolver;
+package racing.refactor.view;
 
-import racing.winner.resolver.CarDto.Response;
+import racing.refactor.dto.ResponseCar;
 
 import java.io.PrintStream;
 import java.util.List;
@@ -13,22 +13,22 @@ public class OutputViewResolver {
 
     private static final String LINE_SYMBOL = "-";
 
-    public void displayWinners(List<Response.CarInformation> winners) {
+    public void displayWinners(List<ResponseCar> winners) {
         List<String> winnerNames = winners.stream()
-                .map(Response.CarInformation::getName)
+                .map(ResponseCar::getName)
                 .collect(Collectors.toList());
         String winnersToPlainText = String.join(",", winnerNames);
         PRINT_STREAM.println(winnersToPlainText + " 가 최종 우승했습니다.");
     }
 
-    public void displayTracks(List<Response.CarInformation> carInformations) {
-        for (Response.CarInformation carInformation : carInformations) {
+    public void displayTracks(List<ResponseCar> carInformations) {
+        for (ResponseCar carInformation : carInformations) {
             PRINT_STREAM.println(displayOneTrack(carInformation));
         }
         PRINT_STREAM.println();
     }
 
-    private String displayOneTrack(Response.CarInformation carInformation) {
+    private String displayOneTrack(ResponseCar carInformation) {
         String name = carInformation.getName();
         int count = carInformation.getDistanceDriven();
 

@@ -24,6 +24,10 @@ public class Car {
         return this.position;
     }
 
+    public boolean equalsDistance(int distance) {
+        return this.position == distance;
+    }
+
     protected String getName() {
         return this.name;
     }
