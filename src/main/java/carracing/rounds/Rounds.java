@@ -2,10 +2,7 @@ package carracing.rounds;
 
 import carracing.cars.CarName;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Rounds {
@@ -21,25 +18,27 @@ public class Rounds {
 
     public int getLongestStep() {
         Map<CarName, Integer> nameToStep = getLastRound().getSteps();
-        int longestStep = nameToStep.values().stream()
-                .mapToInt(i -> i)
-                .max()
-                .orElseThrow(() -> new IllegalStateException("Can't find winner."));
-        return longestStep;
+        return max(nameToStep.values());
     }
 
     public List<CarName> getWinners() {
         Map<CarName, Integer> nameToStep = getLastRound().getSteps();
         int longestStep = getLongestStep();
 
-        List<CarName> winnerNames = nameToStep.entrySet().stream()
+        return nameToStep.entrySet().stream()
                 .filter(entry -> entry.getValue() == longestStep)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
-        return winnerNames;
     }
 
     private Round getLastRound() {
         return rounds.get(rounds.size() - 1);
+    }
+
+    private int max(Collection<Integer> collection) {
+        return collection.stream()
+                .mapToInt(i -> i)
+                .max()
+                .orElseThrow(() -> new IllegalStateException("Can't find max."));
     }
 }

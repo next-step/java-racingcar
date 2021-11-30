@@ -12,7 +12,6 @@ public class CarRace {
     private final Track track;
     private final int numberOfRounds;
     private final StepForwardStrategy stepForwardStrategy;
-    private final Rounds rounds;
     private boolean finish;
 
     public CarRace(List<CarName> participantCarNames, int numberOfRounds, StepForwardStrategy stepForwardStrategy) {
@@ -20,7 +19,6 @@ public class CarRace {
         this.numberOfRounds = numberOfRounds;
         this.stepForwardStrategy = stepForwardStrategy;
 
-        this.rounds = new Rounds();
         this.finish = false;
     }
 
@@ -29,6 +27,7 @@ public class CarRace {
             throw new IllegalStateException("Race already done");
         }
 
+        Rounds rounds = new Rounds();
         for (int i = 0; i < numberOfRounds; i++) {
             Round currentRound = track.forward(stepForwardStrategy);
             rounds.add(currentRound);
