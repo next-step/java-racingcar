@@ -26,4 +26,6 @@ class RacingCarGameTest {
         assertThat(result).isTrue();
     }
 
+    // winner 테스트시 어떤 참여자가 우승자인지 테스트가 가능하게 하려면 random 숫자 부터 내가 주입할 수 있어야 하나?
+
 }

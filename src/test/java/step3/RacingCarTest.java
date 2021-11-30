@@ -1,5 +1,6 @@
 package step3;
 
+import org.assertj.core.util.Strings;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -25,6 +26,14 @@ class RacingCarTest {
         boolean result = racingCar.isMove(number);
         assertThat(result).isEqualTo(expect);
     }*/
+
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi","crong","honux"})
+    @DisplayName("생성자를 통한 이름 필드 초기화가 정상적으로 되었는지 확인합니다.")
+    void initialName(String name) {
+        RacingCar racingCar = new RacingCar(name);
+        assertThat(racingCar.getName()).isEqualTo(name);
+    }
 
     @ParameterizedTest
     @ValueSource(strings = {"여섯글자이름", "abcdef"})

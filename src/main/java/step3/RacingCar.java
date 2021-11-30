@@ -1,7 +1,5 @@
 package step3;
 
-import java.util.Random;
-
 public class RacingCar {
     private static final int ADVANCE_CONDITION = 4;
     private static final int NAME_LENGTH = 5;
@@ -16,10 +14,10 @@ public class RacingCar {
     }
 
     public RacingCar(String name) {
+        this();
         if(name.length() > NAME_LENGTH) {
             throw new IllegalArgumentException();
         }
-
         this.name = name;
     }
 
@@ -35,6 +33,10 @@ public class RacingCar {
 
     public int getDistance() {
         return this.distance;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
 

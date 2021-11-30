@@ -3,6 +3,7 @@ package step3;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 public class RacingCarGameUi {
     String BAR = "-";
@@ -31,17 +32,37 @@ public class RacingCarGameUi {
         System.out.println("실행 결과");
     }
 
-    public void printRacingCar(List<RacingCar> racingCarList) {
+    public void printRacingCarNameAndGameResult(List<RacingCar> racingCarList) {
         for (RacingCar racingCar : racingCarList) {
-            printRacingCarDistance(racingCar.getDistance());
+            System.out.println(racingCar.getName() + ":" + printRacingCarDistance(racingCar.getDistance()));
         }
+        System.out.println();
     }
 
-    public void printRacingCarDistance(int distance) {
+    public void printRacingCarWinnerResult(List<RacingCar> winnerRacingCarList) {
+        System.out.println(printRacingCarWinnerName(winnerRacingCarList) + "가 최종 우승했습니다.");
+    }
+
+    public String printRacingCarWinnerName(List<RacingCar> winnerRacingCarList) {
+        return winnerRacingCarList.stream()
+                .map(RacingCar::getName)
+                .collect(Collectors.joining(","));
+    }
+
+    public void printRacingCarGameResult(List<RacingCar> racingCarList) {
+        for (RacingCar racingCar : racingCarList) {
+            System.out.println(printRacingCarDistance(racingCar.getDistance()));
+        }
+        System.out.println();
+    }
+
+    public String printRacingCarDistance(int distance) {
+        StringBuilder stringBuilder = new StringBuilder();
         while (distance > 0) {
-            System.out.print(BAR);
+            stringBuilder.append(BAR);
             distance--;
         }
-        System.out.println("");
+        return stringBuilder.toString();
     }
+
 }

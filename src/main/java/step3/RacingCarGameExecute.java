@@ -1,46 +1,42 @@
 package step3;
 
-import java.util.List;
 
 public class RacingCarGameExecute {
+    private static RacingCarGameUi racingCarGameUi;
+    private static RacingCarGame racingCarGame;
 
     public static void main(String[] args) {
-
+        initGameExecute();
+        execFindWinnerRacingGame();
     }
 
-    private static void execFindWinnerRacingGame() {
-        RacingCarGameUi racingCarGameUi = new RacingCarGameUi();
-        String carCount = racingCarGameUi.askRacingCarName();
-        int attemptCount = racingCarGameUi.askAttemptNumber();
+    public static void initGameExecute() {
+        racingCarGameUi = new RacingCarGameUi();
+        racingCarGame = new RacingCarGame();
+    }
 
-        RacingCarGame racingCarGame = new RacingCarGame();
-        //racingCarGame.ready(carCount, attemptCount);
-
+    public static void execFindWinnerRacingGame() {
+        racingCarGame.ready(racingCarGameUi.askRacingCarName(), racingCarGameUi.askAttemptNumber());
         Attempt attempt = racingCarGame.getAttempt();
+
         racingCarGameUi.printExecuteResult();
 
         while (attempt.isEnd() == false) {
             racingCarGame.play();
-            List<RacingCar> racingCarList = racingCarGame.getRacingCarList();
-            racingCarGameUi.printRacingCar(racingCarList);
+            racingCarGameUi.printRacingCarNameAndGameResult(racingCarGame.getRacingCarList());
         }
+        racingCarGameUi.printRacingCarWinnerResult(racingCarGame.findWinner());
     }
 
-    private static void execBasicRacingGame() {
-        RacingCarGameUi racingCarGameUi = new RacingCarGameUi();
-        int carCount = racingCarGameUi.askRacingCarNumber();
-        int attemptCount = racingCarGameUi.askAttemptNumber();
-
-        RacingCarGame racingCarGame = new RacingCarGame();
-        racingCarGame.ready(carCount, attemptCount);
-
+    public static void execBasicRacingGame() {
+        racingCarGame.ready(racingCarGameUi.askRacingCarNumber(), racingCarGameUi.askAttemptNumber());
         Attempt attempt = racingCarGame.getAttempt();
+
         racingCarGameUi.printExecuteResult();
 
         while (attempt.isEnd() == false) {
             racingCarGame.play();
-            List<RacingCar> racingCarList = racingCarGame.getRacingCarList();
-            racingCarGameUi.printRacingCar(racingCarList);
+            racingCarGameUi.printRacingCarGameResult(racingCarGame.getRacingCarList());
         }
     }
 }

@@ -2,8 +2,8 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class RacingCarGame {
@@ -57,4 +57,15 @@ public class RacingCarGame {
         }
         attempt.make();
     }
+
+    public List<RacingCar> findWinner() {
+        Optional<Integer> topDistance = racingCarList.stream()
+                                        .map(RacingCar::getDistance)
+                                        .reduce(Integer::max);
+
+        return racingCarList.stream()
+                .filter(r -> topDistance.get() == r.getDistance())
+                .collect(Collectors.toList());
+    }
+
 }
