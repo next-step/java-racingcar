@@ -1,7 +1,7 @@
 package Racing.score;
 
 import Racing.stage.Stage;
-import Racing.type.RacingString;
+import Racing.type.RacingNumber;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +14,10 @@ public class ScoreList {
     return score;
   }
 
-  public RacingString showDisplay() {
+  public RacingNumber showDisplay() {
     return scores.stream()
-        .map(Score::showDisplay)
-        .collect(RacingString.joining());
+        .map(Score::getDistance)
+        .collect(RacingNumber.summing());
   }
 
   public Score getScore(Stage stage) {

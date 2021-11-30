@@ -20,7 +20,7 @@ class CarTest {
     // when
     car.move(score);
     // then
-    assertThat(car.presentDistance().toString().length()).isEqualTo(4);
+    assertThat(car.presentDistance()).isEqualTo(new RacingNumber(4));
   }
 
   @Test
@@ -33,6 +33,6 @@ class CarTest {
     // when
     car.move(score);
     // then
-    assertThat(car.presentDistance().toString().length()).isLessThanOrEqualTo(0);
+    assertThat(car.presentDistance()).isEqualTo(new RacingNumber(0));
   }
 }

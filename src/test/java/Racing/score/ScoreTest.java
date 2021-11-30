@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import Racing.stage.Stage;
 import Racing.type.RacingNumber;
-import Racing.type.RacingString;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,9 +17,9 @@ class ScoreTest {
     RacingNumber racingNumber = new RacingNumber(5);
     Score score = new Score(stage, racingNumber);
     // when
-    RacingString racingString = score.showDisplay();
+    RacingNumber distance = score.getDistance();
     // then
-    assertThat(racingString.toString()).isEqualTo("-----");
+    assertThat(distance.parseInt()).isEqualTo(5);
   }
 
   @Test

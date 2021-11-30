@@ -3,7 +3,7 @@ package Racing.car;
 import Racing.score.Score;
 import Racing.score.ScoreList;
 import Racing.stage.Stage;
-import Racing.type.RacingString;
+import Racing.type.RacingNumber;
 
 public class Car {
 
@@ -18,12 +18,12 @@ public class Car {
     return this;
   }
 
-  public RacingString presentDistance() {
+  public RacingNumber presentDistance() {
     return scoreList.showDisplay();
   }
 
-  public RacingString presentDistance(Stage stage) {
-    return scoreList.getScore(stage).showDisplay();
+  public RacingNumber presentDistance(Stage stage) {
+    return scoreList.getScore(stage).getDistance();
   }
 
 }

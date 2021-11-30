@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import Racing.stage.Stage;
 import Racing.type.RacingNumber;
-import Racing.type.RacingString;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,9 +20,9 @@ class CarListTest {
     Stage stage = new Stage();
     //when
     carList.moveAllCar(stage);
+    List<RacingNumber> racingNumbers = carList.displayCarDistance();
     //then
-    RacingString display = carList.displayCarDistance();
-    assertThat(display.toString()).isNotEmpty();
+    assertThat(racingNumbers.size()).isEqualTo(3);
   }
 
 }

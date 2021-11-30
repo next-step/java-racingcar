@@ -32,6 +32,6 @@ class ScoreListTest {
     // when
     scoreList.addScore(score);
     // then
-    assertThat(scoreList.getScore(stage).showDisplay()).isNotNull();
+    assertThat(scoreList.getScore(stage).getDistance()).isNotNull();
   }
 }

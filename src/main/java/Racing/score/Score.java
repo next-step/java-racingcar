@@ -2,7 +2,6 @@ package Racing.score;
 
 import Racing.stage.Stage;
 import Racing.type.RacingNumber;
-import Racing.type.RacingString;
 
 public class Score {
 
@@ -21,13 +20,14 @@ public class Score {
 
   private RacingNumber getValue(RacingNumber value) {
     if (value.isBiggerThan(MIN_VALUE)) {
-      return RacingNumber.ZERO;
+//      return RacingNumber.ZERO;
+      return new RacingNumber(1);
     }
     return value;
   }
 
-  public RacingString showDisplay() {
-    return RacingString.DISPLAY_TOKEN_STRING.repeat(value);
+  public RacingNumber getDistance() {
+    return value;
   }
 
   public boolean isSameStage(Stage stage) {

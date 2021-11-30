@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+import java.util.stream.Collector;
 
 public class RacingNumber {
 
@@ -19,6 +20,10 @@ public class RacingNumber {
 
   public RacingNumber(double number) {
     value = number;
+  }
+
+  public RacingNumber(RacingNumber number) {
+    value = number.value;
   }
 
   public static RacingNumber getRandomNumber() {
@@ -36,6 +41,13 @@ public class RacingNumber {
     }
     RacingNumber that = (RacingNumber) o;
     return Double.compare(that.value, value) == 0;
+  }
+
+  @Override
+  public String toString() {
+    return "RacingNumber{" +
+        "value=" + value +
+        '}';
   }
 
   @Override
@@ -73,5 +85,22 @@ public class RacingNumber {
     } catch (Exception e) {
       throw illegalArgumentException;
     }
+  }
+
+  public RacingString convertString(RacingString token) {
+    return token.repeat(this);
+  }
+
+  public static Collector<RacingNumber, RacingNumber, RacingNumber> summing() {
+    final RacingNumber[] accumulationRacingNumber = {new RacingNumber(0)};
+    return Collector.of(
+        () -> accumulationRacingNumber[0],
+        (control, comparison) -> accumulationRacingNumber[0] =
+            new RacingNumber(accumulationRacingNumber[0].value + control.value + comparison.value),
+        (control, comparison) -> new RacingNumber(
+            accumulationRacingNumber[0].value + control.value + comparison.value),
+        control -> new RacingNumber(accumulationRacingNumber[0])
+
+    );
   }
 }

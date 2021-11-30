@@ -4,7 +4,6 @@ import Racing.car.Car;
 import Racing.car.CarList;
 import Racing.stage.Stage;
 import Racing.type.RacingNumber;
-import Racing.type.RacingString;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -20,7 +19,7 @@ public class Race {
     this.cars = new CarList(cars);
   }
 
-  public Map<Stage, RacingString> getHistory() {
+  public Map<Stage, List<RacingNumber>> getHistory() {
     return stages.stream()
         .collect(
             Collectors.toMap(

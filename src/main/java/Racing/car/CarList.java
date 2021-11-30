@@ -3,8 +3,8 @@ package Racing.car;
 import Racing.score.Score;
 import Racing.stage.Stage;
 import Racing.type.RacingNumber;
-import Racing.type.RacingString;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarList {
 
@@ -20,16 +20,16 @@ public class CarList {
     return this;
   }
 
-  public RacingString displayCarDistance() {
+  public List<RacingNumber> displayCarDistance() {
     return this.cars.stream()
         .map(Car::presentDistance)
-        .collect(RacingString.joining(RacingString.DELIMITER));
+        .collect(Collectors.toList());
   }
 
-  public RacingString displayCarDistance(Stage stage) {
+  public List<RacingNumber> displayCarDistance(Stage stage) {
     return this.cars.stream()
         .map(car -> car.presentDistance(stage))
-        .collect(RacingString.joining(RacingString.DELIMITER));
+        .collect(Collectors.toList());
   }
 
   public RacingNumber size() {
