@@ -16,7 +16,7 @@ public class ResultView {
     RacingString delimiter = DELIMITER.concat(DELIMITER);
     RacingString result = history
         .stream()
-        .map((carListNumber) -> convertCarListToString(carListNumber))
+        .map(this::convertCarListToString)
         .collect(joining(delimiter));
     System.out.println("\n실행결과");
     return result.toString();
@@ -24,7 +24,7 @@ public class ResultView {
 
   private RacingString convertCarListToString(List<RacingNumber> carListNumber) {
     return carListNumber.stream()
-        .map(carNumber -> convertCarNumberToString(carNumber))
+        .map(this::convertCarNumberToString)
         .collect(joining(DELIMITER));
   }
 

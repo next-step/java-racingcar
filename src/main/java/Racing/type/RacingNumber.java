@@ -27,7 +27,8 @@ public class RacingNumber {
   }
 
   public static RacingNumber getRandomNumber() {
-    int number = new Random().nextInt((int) RacingNumber.RANDOM_BOUND) + 0;
+    Random RANDOM = new Random();
+    int number = RANDOM.nextInt((int) RacingNumber.RANDOM_BOUND);
     return new RacingNumber(number);
   }
 

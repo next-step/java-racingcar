@@ -20,7 +20,7 @@ public class Race {
 
   public List<List<RacingNumber>> getHistory() {
     return stages.stream()
-        .map(stage -> cars.displayCarDistance(stage))
+        .map(cars::displayCarDistance)
         .collect(Collectors.toList());
   }
 

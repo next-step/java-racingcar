@@ -79,11 +79,11 @@ public class RacingString {
   }
 
   public RacingString repeat(RacingNumber times) {
-    String accumlulate = "";
+    StringBuilder accumlulate = new StringBuilder();
     for (int i = 0; i < times.parseInt(); i++) {
-      accumlulate += this.value;
+      accumlulate.append(this.value);
     }
-    return new RacingString(accumlulate);
+    return new RacingString(accumlulate.toString());
   }
 
   public RacingString concat(RacingString input) {

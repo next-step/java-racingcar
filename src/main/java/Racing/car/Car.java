@@ -7,7 +7,7 @@ import Racing.type.RacingNumber;
 
 public class Car {
 
-  private ScoreList scoreList;
+  private final ScoreList scoreList;
 
   public Car() {
     scoreList = new ScoreList();

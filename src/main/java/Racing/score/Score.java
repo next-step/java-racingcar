@@ -20,8 +20,7 @@ public class Score {
 
   private RacingNumber getValue(RacingNumber value) {
     if (value.isBiggerThan(MIN_VALUE)) {
-//      return RacingNumber.ZERO;
-      return new RacingNumber(1);
+      return RacingNumber.ZERO;
     }
     return value;
   }
