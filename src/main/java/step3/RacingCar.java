@@ -15,7 +15,7 @@ public class RacingCar {
 
     public RacingCar(String name) {
         this();
-        if(name.length() > NAME_LENGTH) {
+        if (name.length() > NAME_LENGTH) {
             throw new IllegalArgumentException();
         }
         this.name = name;

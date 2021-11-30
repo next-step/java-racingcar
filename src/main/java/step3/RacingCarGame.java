@@ -52,7 +52,7 @@ public class RacingCarGame {
     }
 
     public void play() {
-        for(RacingCar racingCar : racingCarList) {
+        for (RacingCar racingCar : racingCarList) {
             racingCar.move();
         }
         attempt.make();
@@ -60,8 +60,8 @@ public class RacingCarGame {
 
     public List<RacingCar> findWinner() {
         Optional<Integer> topDistance = racingCarList.stream()
-                                        .map(RacingCar::getDistance)
-                                        .reduce(Integer::max);
+                .map(RacingCar::getDistance)
+                .reduce(Integer::max);
 
         return racingCarList.stream()
                 .filter(r -> topDistance.get() == r.getDistance())

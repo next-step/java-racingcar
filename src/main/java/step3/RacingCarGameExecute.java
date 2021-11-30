@@ -21,7 +21,7 @@ public class RacingCarGameExecute {
 
         racingCarGameUi.printExecuteResult();
 
-        while (attempt.isEnd() == false) {
+        while (!attempt.isEnd()) {
             racingCarGame.play();
             racingCarGameUi.printRacingCarNameAndGameResult(racingCarGame.getRacingCarList());
         }
@@ -34,7 +34,7 @@ public class RacingCarGameExecute {
 
         racingCarGameUi.printExecuteResult();
 
-        while (attempt.isEnd() == false) {
+        while (!attempt.isEnd()) {
             racingCarGame.play();
             racingCarGameUi.printRacingCarGameResult(racingCarGame.getRacingCarList());
         }

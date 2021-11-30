@@ -28,7 +28,7 @@ class RacingCarTest {
     }*/
 
     @ParameterizedTest
-    @ValueSource(strings = {"pobi","crong","honux"})
+    @ValueSource(strings = {"pobi", "crong", "honux"})
     @DisplayName("생성자를 통한 이름 필드 초기화가 정상적으로 되었는지 확인합니다.")
     void initialName(String name) {
         RacingCar racingCar = new RacingCar(name);
@@ -41,7 +41,9 @@ class RacingCarTest {
     void illegalRarameter(String name) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() ->
-                    {RacingCar racingCar = new RacingCar(name);}
+                        {
+                            RacingCar racingCar = new RacingCar(name);
+                        }
                 );
     }
 

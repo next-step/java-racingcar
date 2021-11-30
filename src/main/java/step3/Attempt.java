@@ -5,7 +5,7 @@ public class Attempt {
     private int number;
 
     public Attempt(int number) {
-        if(number < END) {
+        if (number < END) {
             throw new IllegalArgumentException();
         }
         this.number = number;
