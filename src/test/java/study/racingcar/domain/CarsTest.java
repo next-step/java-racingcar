@@ -20,7 +20,7 @@ class CarsTest {
 		Car juuu = new Car(new Name("juuu"), 10);
 		Car alex = new Car(new Name("alex"), 8);
 
-		cars = new Cars(Arrays.asList(pobi, juuu, alex));
+		cars = Cars.fromCars(Arrays.asList(pobi, juuu, alex));
 	}
 
 	@Test

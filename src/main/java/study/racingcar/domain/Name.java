@@ -2,8 +2,6 @@ package study.racingcar.domain;
 
 import java.util.Objects;
 
-import org.apache.commons.lang3.StringUtils;
-
 public class Name {
 
 	private static final String INPUT_NAME = "이름을 입력해주세요.";
@@ -27,7 +25,7 @@ public class Name {
 	}
 
 	private void checkNameBlank(String name) {
-		if (StringUtils.isBlank(name)) {
+		if(" ".equals(name)){
 			throw new IllegalArgumentException(INPUT_NAME);
 		}
 	}

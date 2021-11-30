@@ -22,6 +22,10 @@ public class GamePlay {
 		findWinner(racingResult);
 	}
 
+	public static void printCurrentScore(Cars cars){
+		ResultView.printCurrentRacingResult(cars);
+	}
+
 	private static void findWinner(Cars racingResult) {
 		List<Name> winner = racingResult.findWinner();
 		ResultView.printWinner(winner);

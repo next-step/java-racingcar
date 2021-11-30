@@ -13,7 +13,7 @@ class InputViewTest {
 	@Test
 	@DisplayName("String 을 List<Name>으로 변경")
 	void convertNameList() {
-		List<Name> names = InputView.stringIntoNameList("a,b,c");
+		List<Name> names = InputView.stringIntoNames("a,b,c");
 		assertThat(names).contains(new Name("a"), new Name("b"), new Name("c"));
 	}
 }

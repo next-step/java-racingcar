@@ -28,16 +28,16 @@ public class InputView {
 
 	public static List<Name> inputCarNames() {
 		System.out.println(CAR_NAMES_MESSAGE);
-		return inputCarNameList();
+		return inputCarNamesByUser();
 	}
 
-	private static List<Name> inputCarNameList() {
+	private static List<Name> inputCarNamesByUser() {
 		String value = inputByUser();
 		checkStringSplitSeparator(value);
-		return stringIntoNameList(value);
+		return stringIntoNames(value);
 	}
 
-	public static List<Name> stringIntoNameList(String value) {
+	public static List<Name> stringIntoNames(String value) {
 		return Stream.of(value.split(SEPARATOR))
 			.map(v -> new Name(v.trim()))
 			.collect(Collectors.toList());
