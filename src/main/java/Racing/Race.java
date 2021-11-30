@@ -5,7 +5,6 @@ import Racing.car.CarList;
 import Racing.stage.Stage;
 import Racing.type.RacingNumber;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Race {
@@ -19,14 +18,10 @@ public class Race {
     this.cars = new CarList(cars);
   }
 
-  public Map<Stage, List<RacingNumber>> getHistory() {
+  public List<List<RacingNumber>> getHistory() {
     return stages.stream()
-        .collect(
-            Collectors.toMap(
-                stage -> stage,
-                stage -> cars.displayCarDistance(stage)
-            )
-        );
+        .map(stage -> cars.displayCarDistance(stage))
+        .collect(Collectors.toList());
   }
 
   public CarList run() {

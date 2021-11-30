@@ -23,7 +23,7 @@ public class Car {
   }
 
   public RacingNumber presentDistance(Stage stage) {
-    return scoreList.getScore(stage).getDistance();
+    return scoreList.getScore(stage);
   }
 
 }

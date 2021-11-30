@@ -91,6 +91,10 @@ public class RacingNumber {
     return token.repeat(this);
   }
 
+  public RacingNumber plus(RacingNumber input) {
+    return new RacingNumber(this.value + input.value);
+  }
+
   public static Collector<RacingNumber, RacingNumber, RacingNumber> summing() {
     final RacingNumber[] accumulationRacingNumber = {new RacingNumber(0)};
     return Collector.of(
