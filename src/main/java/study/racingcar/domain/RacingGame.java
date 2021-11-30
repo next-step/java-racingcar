@@ -3,34 +3,27 @@ package study.racingcar.domain;
 import java.util.List;
 
 import study.racingcar.view.ResultView;
+import study.racingcar.domain.strategy.MoveStrategy;
 
 public class RacingGame {
 	private final Cars cars;
-	private final Rounds rounds;
+	private final int tryNo;
 
-	public RacingGame(UserChoice userChoice) {
-		this.cars = new Cars(userChoice.userCarCount());
-		this.rounds = new Rounds(userChoice.userGameRounds());
+	public RacingGame(List<Name> carNames, int rounds) {
+		this.cars = new Cars(carNames);
+		this.tryNo = rounds;
 	}
 
-	public void playGame() {
-		int gameRounds = rounds.numOfRounds();
-		for (int i = 0; i < gameRounds; i++) {
-			moveCars();
-			currentScore();
+	public Cars racing(MoveStrategy strategy) {
+		for (int i = 0; i < tryNo; i++) {
+			Cars cars = this.cars.goRace(strategy);
+			currentScore(cars);
 		}
+		return cars;
 	}
 
-	public List<Position> carsCurrentPosition() {
-		return cars.positionOfCars();
-	}
-
-	private void moveCars() {
-		cars.goRace();
-	}
-
-	private void currentScore() {
-		ResultView.printCurrentRacingResult(this);
+	private void currentScore(Cars cars) {
+		ResultView.printCurrentRacingResult(cars);
 	}
 
 }
