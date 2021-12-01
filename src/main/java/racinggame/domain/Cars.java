@@ -14,15 +14,15 @@ public class Cars {
         return getWinners(getMaxPosition());
     }
 
-    private int getMaxPosition() {
-        int maxPosition = 0;
+    private Position getMaxPosition() {
+        Position maxPosition = new Position(0);
         for (Car car : cars) {
             maxPosition = car.maxPosition(maxPosition);
         }
         return maxPosition;
     }
 
-    private List<Car> getWinners(int maxPosition) {
+    private List<Car> getWinners(Position maxPosition) {
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
             if (car.isWinner(maxPosition)) {

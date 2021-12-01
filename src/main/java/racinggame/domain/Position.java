@@ -1,25 +1,32 @@
 package racinggame.domain;
 
+import java.util.Objects;
+
 public class Position {
-    private final int position;
+    private int position;
 
     public Position(int position) {
         this.position = position;
     }
 
-    public Position move() {
-        return new Position(position + 1);
+    public void move() {
+        this.position++;
     }
 
-    public int getPosition() {
-        return position;
+    public boolean isBiggerThan(Position maxPosition) {
+        return this.position > maxPosition.position;
     }
 
-    public boolean isSame(int maxPosition) {
-        return this.position == maxPosition;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position1 = (Position) o;
+        return position == position1.position;
     }
 
-    public boolean isBiggerThan(int maxPosition) {
-        return this.position > maxPosition;
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
     }
 }
