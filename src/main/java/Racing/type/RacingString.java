@@ -1,12 +1,14 @@
 package Racing.type;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collector;
 
 public class RacingString {
 
-  static private final String DISPLAY_TOKEN = "-";
   static public final RacingString DELIMITER = new RacingString("\n");
+  static private final String DISPLAY_TOKEN = "-";
   static public final RacingString DISPLAY_TOKEN_STRING = new RacingString(DISPLAY_TOKEN);
   private final String value;
 
@@ -23,14 +25,17 @@ public class RacingString {
   }
 
   public static Collector<RacingString, RacingString, RacingString> joining() {
-    final RacingString[] accumulationRacingString = {new RacingString()};
+    final List<RacingString> accumulationRacingString = Arrays.asList(new RacingString());
     return Collector.of(
-        () -> accumulationRacingString[0],
-        (control, comparison) -> accumulationRacingString[0] = accumulationRacingString[0]
-            .concat(control)
-            .concat(comparison),
-        (control, comparison) -> accumulationRacingString[0].concat(comparison),
-        control -> new RacingString(accumulationRacingString[0])
+        () -> accumulationRacingString.get(0),
+        (control, comparison) -> accumulationRacingString.set(
+            0,
+            accumulationRacingString.get(0)
+                .concat(control)
+                .concat(comparison)
+        ),
+        (control, comparison) -> accumulationRacingString.get(0).concat(comparison),
+        control -> new RacingString(accumulationRacingString.get(0))
 
     );
   }
