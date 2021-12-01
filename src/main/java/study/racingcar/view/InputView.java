@@ -14,8 +14,10 @@ public class InputView {
 	private static final String CAR_NAMES_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
 	private static final String SEPARATOR = ",";
 	private static final String INPUT_CAR_NAMES_SEPARATOR_ERROR_MESSAGE = "구분자는 쉼표(,)를 사용해주세요.";
+	private static final String INPUT_ZERO_OVER_NUMBER_MESSAGE = "0보다 큰 정수를 입력해주세요.";
 
 	private static final Scanner scanner = new Scanner(System.in);
+
 
 	private InputView() {
 		throw new AssertionError();
@@ -23,7 +25,15 @@ public class InputView {
 
 	public static int inputTryNo() {
 		System.out.println(GAME_COUNT_MESSAGE);
-		return inputIntTryNo();
+		return getTryNo();
+	}
+
+	private static int getTryNo() {
+		int tryNo = inputIntTryNo();
+		if (tryNo == 0) {
+			throw new IllegalArgumentException(INPUT_ZERO_OVER_NUMBER_MESSAGE);
+		}
+		return tryNo;
 	}
 
 	public static List<Name> inputCarNames() {
