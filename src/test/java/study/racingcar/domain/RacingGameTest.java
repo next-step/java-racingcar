@@ -5,23 +5,40 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racingcar.view.ResultView;
 
 class RacingGameTest {
 
-	@Test
-	@DisplayName("레이싱게임 생성 테스트")
-	void create() {
-		//given
+	private RacingGame game;
+	private int tryNo;
+
+	@BeforeEach
+	void setUp(){
 		List<Name> names = Arrays.asList(new Name("a"), new Name("b"), new Name("c"));
-		RacingGame racingGame = new RacingGame(names, 5);
-		//when
-		Cars racing = racingGame.racing(() -> true);
-		List<Name> winner = racing.findWinner();
-		int maxPosition = racing.maxPosition();
-		//then
-		assertThat(winner).containsOnly(new Name("a"), new Name("b"), new Name("c"));
-		assertThat(maxPosition).isEqualTo(5);
+		tryNo = 5;
+		game = new RacingGame(names, tryNo);
 	}
+
+	@Test
+	@DisplayName("처음 세팅시 isEnd false")
+	void tryNoTest() {
+
+		assertThat(game.isEnd()).isFalse();
+	}
+
+	@Test
+	@DisplayName("tryNo 만큼 레이스 실행 시, isEnd TRUE")
+	void tryNoTest2() {
+
+		for (int i = 0; i < tryNo ; i++) {
+			game.race(() -> true);
+		}
+
+		assertThat(game.isEnd()).isTrue();
+	}
+
+
 }
