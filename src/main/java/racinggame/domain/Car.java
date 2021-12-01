@@ -2,6 +2,7 @@ package racinggame.domain;
 
 import racinggame.utils.StringUtils;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Car {
@@ -32,9 +33,10 @@ public class Car {
         return this.position == maxPosition;
     }
 
-    public void move(RandomValue randomValue) {
+    public Car movedCar(RandomValue randomValue) {
         if (randomValue.isMovable())
-            this.position++;
+            return new Car(this.name, position + 1);
+        return this;
     }
 
     public int maxPosition(int maxPosition) {
@@ -42,5 +44,18 @@ public class Car {
             return this.position;
         }
         return maxPosition;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 }

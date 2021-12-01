@@ -6,14 +6,14 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CarsTest {
+public class NsCarsTest {
     @Test
     void findWinners() {
         // test fixture
         Car pobi = new Car("pobi", 9);
         Car brown = new Car("brown", 3);
         Car jason = new Car("jason", 9);
-        Cars cars = new Cars(Arrays.asList(
+        NsCars cars = new NsCars(Arrays.asList(
                 pobi, brown, jason
         ));
         assertThat(cars.findWinners()).containsExactly(pobi, jason);
