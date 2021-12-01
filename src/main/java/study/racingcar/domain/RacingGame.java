@@ -6,29 +6,21 @@ import study.racingcar.GamePlay;
 import study.racingcar.domain.strategy.MoveStrategy;
 
 public class RacingGame {
+	private final Cars cars;
+	private final int tryNo;
 
-    private final Cars cars;
-    private final int tryNo;
+	public RacingGame(List<Name> carNames, int rounds) {
+		this.cars = Cars.fromNames(carNames);
+		this.tryNo = rounds;
+	}
 
-    private int currentTryNo;
-
-    public RacingGame(List<Name> carNames, int tryNo) {
-        this.cars = Cars.fromNames(carNames);
-        this.tryNo = tryNo;
-        this.currentTryNo = 0;
-    }
-
-    public Cars race(MoveStrategy strategy) {
-        this.currentTryNo++;
-        return this.cars.goRace(strategy);
-    }
-
-    public boolean isEnd() {
-        return this.tryNo == this.currentTryNo;
-    }
+	public Cars racing(MoveStrategy strategy) {
+		for (int i = 0; i < tryNo; i++) {
+			Cars cars = this.cars.goRace(strategy);
+			GamePlay.printCurrentScore(cars);
+		}
+		return cars;
+	}
 
 
-    public List<Name> findWinners() {
-        return cars.findWinner();
-    }
 }

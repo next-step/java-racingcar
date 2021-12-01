@@ -11,40 +11,34 @@ import study.racingcar.view.InputView;
 import study.racingcar.view.ResultView;
 
 public class GamePlay {
-    public static void main(String[] args) {
-        playGame(new RandomNumberStrategy());
-    }
+	public static void main(String[] args) {
+		playGame(new RandomNumberStrategy());
+	}
 
-    public static void playGame(MoveStrategy moveStrategy) {
+	public static void playGame(MoveStrategy strategy) {
+		RacingGame game = readyToGame();
+		printStart();
+		Cars racingResult = game.racing(strategy);
+		findWinner(racingResult);
+	}
 
-        RacingGame game = initGame();
+	public static void printCurrentScore(Cars cars){
+		ResultView.printCurrentRacingResult(cars);
+	}
 
-        printStart();
+	private static void findWinner(Cars racingResult) {
+		List<Name> winner = racingResult.findWinner();
+		ResultView.printWinner(winner);
+	}
 
-        while (!game.isEnd()) {
-            Cars cars = game.race(moveStrategy);
-            ResultView.printCurrentRacingResult(cars);
-        }
+	private static RacingGame readyToGame() {
+		List<Name> names = InputView.inputCarNames();
+		int tryNo = InputView.inputTryNo();
 
-        findGameWinners(game);
+		return new RacingGame(names, tryNo);
+	}
 
-    }
-
-    private static RacingGame initGame() {
-        List<Name> names = InputView.inputCarNames();
-        int tryNo = InputView.inputTryNo();
-
-        return new RacingGame(names, tryNo);
-    }
-
-    private static void findGameWinners(RacingGame game) {
-        List<Name> winners = game.findWinners();
-        ResultView.printWinner(winners);
-    }
-
-    private static void printStart() {
-        ResultView.printStart();
-    }
-
-
+	private static void printStart() {
+		ResultView.printStart();
+	}
 }
