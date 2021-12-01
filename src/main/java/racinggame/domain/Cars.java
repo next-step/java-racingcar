@@ -8,16 +8,18 @@ import java.util.Random;
 public class Cars {
     private static final int MAX_BOUND = 10;
 
-    private final List<Car> cars;
+    private List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
     public void move() {
+        List<Car> movedCars = new ArrayList<>();
         for (Car car : cars) {
-            car.move(getRandomNo());
+            movedCars.add(car.movedCar(getRandomNo()));
         }
+        this.cars = movedCars;
     }
 
     private RandomValue getRandomNo() {
@@ -30,7 +32,7 @@ public class Cars {
     }
 
     private Position getMaxPosition() {
-        Position maxPosition = new Position(0);
+        Position maxPosition = Position.of(0);
         for (Car car : cars) {
             maxPosition = car.maxPosition(maxPosition);
         }

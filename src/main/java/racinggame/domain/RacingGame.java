@@ -8,7 +8,7 @@ import java.util.List;
 public class RacingGame {
     private static final int MAX_BOUND = 10;
 
-    private final Cars cars;
+    private NamesAsCars namesAsCars;
     private final TryNo tryNo;
 
     public RacingGame(String carNames, int tryNo) {
@@ -16,24 +16,22 @@ public class RacingGame {
     }
 
     public RacingGame(String carNames, TryNo tryNo) {
-        this.cars = new Cars(initCars(carNames));
+        this(new NamesAsCars(carNames), tryNo);
+    }
+
+    public RacingGame(NamesAsCars namesAsCars, TryNo tryNo) {
+        this.namesAsCars = namesAsCars;
         this.tryNo = tryNo;
     }
 
-    private static List<Car> initCars(String carNames) {
-        if (StringUtils.isBlank(carNames)) {
-            throw new IllegalArgumentException("자동차 이름은 값이 존재해야 합니다.");
-        }
-        String[] names = carNames.split(",");
-        List<Car> cars = new ArrayList<>();
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
-        return cars;
+    public RacingGame(String carNames, TryNo tryNo) {
+        this.cars = CarsFactory.cars(carNames);
+        this.tryNo = tryNo;
     }
 
     public void race() {
         tryNo.race();
+        this.cars = namesAsCars.cars();
         moveCars();
     }
 

@@ -23,14 +23,12 @@ public class CarTest {
     @Test
     public void 이동() {
         Car car = new Car("pobi");
-        car.move(new RandomValue(4));
-        assertThat(car.getPosition()).isEqualTo(p(1));
+        assertThat(car.movedCar(new RandomValue(4))).isEqualTo(new Car("pobi", p(1)));
     }
 
     @Test
     public void 정지() {
         Car car = new Car("pobi");
-        car.move(new RandomValue(3));
-        assertThat(car.getPosition()).isEqualTo(p(0));
+        assertThat(car.movedCar(new RandomValue(3))).isEqualTo(new Car("pobi", p(0)));
     }
 }

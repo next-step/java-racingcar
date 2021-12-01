@@ -1,20 +1,42 @@
 package racinggame.domain;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Position {
-    private int position;
+    private static final Map<Integer, Position> positions = new HashMap<>();
 
-    public Position(int position) {
+    static {
+        for (int i = 0; i < 100; i++) {
+            positions.put(i, new Position(i));
+        }
+    }
+
+    private final int position;
+
+    private Position(int position) {
         this.position = position;
     }
 
-    public void move() {
-        this.position++;
+    public static Position of(int number) {
+        Position position = positions.get(number);
+        if (position == null) {
+            return new Position(number);
+        }
+        return position;
+    }
+
+    public Position movedPosition() {
+        return new Position(this.position + 1);
     }
 
     public boolean isBiggerThan(Position maxPosition) {
         return this.position > maxPosition.position;
+    }
+
+    public int position() {
+        return position;
     }
 
     @Override
