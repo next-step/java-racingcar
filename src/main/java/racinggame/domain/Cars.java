@@ -1,13 +1,28 @@
 package racinggame.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Cars {
+    private static final int MAX_BOUND = 10;
+
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public void move() {
+        for (Car car : cars) {
+            car.move(getRandomNo());
+        }
+    }
+
+    private RandomValue getRandomNo() {
+        Random random = new Random();
+        return new RandomValue(random.nextInt(MAX_BOUND));
     }
 
     public List<Car> findWinners() {
@@ -30,5 +45,9 @@ public class Cars {
             }
         }
         return winners;
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 }

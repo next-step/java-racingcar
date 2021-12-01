@@ -11,7 +11,7 @@ public class RandomValueTest {
         assertThat(new RandomValue(3)).isEqualTo(new RandomValue(3));
 
         assertThatThrownBy(() -> {
-            new RandomValue(0);
+            new RandomValue(-1);
         }).isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(() -> {

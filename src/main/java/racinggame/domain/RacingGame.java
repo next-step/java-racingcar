@@ -3,18 +3,20 @@ package racinggame.domain;
 import racinggame.utils.StringUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
     private static final int MAX_BOUND = 10;
 
-    private final List<Car> cars;
-    private int tryNo;
+    private final Cars cars;
+    private final TryNo tryNo;
 
     public RacingGame(String carNames, int tryNo) {
-        this.cars = initCars(carNames);
+        this(carNames, new TryNo(tryNo));
+    }
+
+    public RacingGame(String carNames, TryNo tryNo) {
+        this.cars = new Cars(initCars(carNames));
         this.tryNo = tryNo;
     }
 
@@ -31,30 +33,23 @@ public class RacingGame {
     }
 
     public void race() {
-        this.tryNo--;
+        tryNo.race();
         moveCars();
     }
 
     private void moveCars() {
-        for (Car car : cars) {
-            car.move(getRandomNo());
-        }
-    }
-
-    private RandomValue getRandomNo() {
-        Random random = new Random();
-        return new RandomValue(random.nextInt(MAX_BOUND));
+        cars.move();
     }
 
     public boolean racing() {
-        return this.tryNo > 0;
+        return tryNo.racing();
     }
 
     public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
+        return cars.getCars();
     }
 
     public List<Car> getWinners() {
-        return null;
+        return cars.findWinners();
     }
 }

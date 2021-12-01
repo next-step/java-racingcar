@@ -8,7 +8,7 @@ public class RandomValue {
     private final int randomValue;
 
     public RandomValue(int randomValue) {
-        if (randomValue < 1 || randomValue > 9) {
+        if (randomValue < 0 || randomValue > 9) {
             throw new IllegalArgumentException("1이상의 값이어야 합니다.");
         }
 
