@@ -1,9 +1,9 @@
 public class Calculator {
 
-  final static private CalculatorNumber ONE = new CalculatorNumber(1);
-  final static private CalculatorNumber TWO = new CalculatorNumber(2);
-  final static private CalculatorNumber THREE = new CalculatorNumber(3);
-  final static private String SPLIT_CHARACTER = " ";
+  private static final CalculatorNumber ONE = new CalculatorNumber(1);
+  private static final CalculatorNumber TWO = new CalculatorNumber(2);
+  private static final CalculatorNumber THREE = new CalculatorNumber(3);
+  private static final String SPLIT_CHARACTER = " ";
 
   public String calculate(String input) {
     String[] splitInput = input.split(SPLIT_CHARACTER);
