@@ -51,6 +51,13 @@ public class RacingCarGame {
         return attempt;
     }
 
+    public void play(RamdomCondition ramdomCondition) {
+        for (RacingCar racingCar : racingCarList) {
+            racingCar.move(ramdomCondition);
+        }
+        attempt.make();
+    }
+
     public void play() {
         for (RacingCar racingCar : racingCarList) {
             racingCar.move();

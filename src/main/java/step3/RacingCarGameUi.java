@@ -6,8 +6,8 @@ import java.util.Iterator;
 import java.util.stream.Collectors;
 
 public class RacingCarGameUi {
-    String BAR = "-";
-    Scanner scanner;
+    private static final String BAR = "-";
+    private Scanner scanner;
 
     public RacingCarGameUi() {
         scanner = new Scanner(System.in);
@@ -40,14 +40,14 @@ public class RacingCarGameUi {
     }
 
     public void printRacingCarWinnerResult(List<RacingCar> winnerRacingCarList) {
-        System.out.println(printRacingCarWinnerName(winnerRacingCarList) + "가 최종 우승했습니다.");
+        //System.out.println(printRacingCarWinnerName(winnerRacingCarList) + "가 최종 우승했습니다.");
     }
 
-    public String printRacingCarWinnerName(List<RacingCar> winnerRacingCarList) {
+    /*public String printRacingCarWinnerName(List<RacingCar> winnerRacingCarList) {
         return winnerRacingCarList.stream()
                 .map(RacingCar::getName)
                 .collect(Collectors.joining(","));
-    }
+    }*/
 
     public void printRacingCarGameResult(List<RacingCar> racingCarList) {
         for (RacingCar racingCar : racingCarList) {
