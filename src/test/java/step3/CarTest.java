@@ -20,7 +20,7 @@ public class CarTest {
     @DisplayName("랜덤 값이 4 이면 이동을 하지 않는지 테스트")
     public void stopTest4(){
         car.move(4);
-        assertThat(car.getTravelDistance()).isEqualTo(0);
+        assertThat(car.getTravelDistance()).isEqualTo(1);
     }
 
     @Test

@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Cars {
 
-    public static List<Car> carList = new ArrayList<>();
+    private List<Car> carList = new ArrayList<>();
 
-    public static void createCars(int count){
+    public void createCars(int count){
         for (int i = 0; i < count; i++) {
             carList.add(new Car());
         }

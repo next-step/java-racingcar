@@ -1,54 +1,25 @@
 package step3;
 
-import java.util.Random;
-
 public class Game {
-    public static int roundCount;
+    private int roundCount;
     public static Cars cars = new Cars();
+    RandomGenerator randomGenerator = new RandomGenerator();
 
-    public static int getRoundCount(){
-        return Game.roundCount;
+
+    public int getRoundCount(){
+        return this.roundCount;
     }
 
-/*    public static void setRoundCount(int roundCount){
-        Game.roundCount = roundCount;
+    public void setRoundCount(int roundCount) {
+        this.roundCount = roundCount;
     }
 
-    public static void setCars(int count){
-        cars.createCars(count);
-    }*/
-
-    public static void playRound(){
+/*    public void playRound(){
         for (int i = 0; i < cars.getSize(); i++) {
-            cars.carList.get(i).move(RandomGenerator.getRandomNumber());
+            cars.carList.get(i).move(randomGenerator.getRandomNumber());
             ResultView.drawTravelDistance(cars.carList.get(i));
             ResultView.drawLineBreak();
         }
         ResultView.drawLineBreak();
-    }
-
-/*    public static void randomFoward(Car car){
-        car.move(RandomGenerator.getRandomNumber());
-    }*/
-
-/*    public static void drawResult(Car car){
-        ResultView.drawTravelDistance(car);
-    }*/
-
-/*    public void playGame(){
-
-        InputView.viewCountCarInputMessage();
-        InputView.viewCountCarInput();
-        InputView.viewCountCar();
-
-        InputView.viewCountRoundInputMessage();
-        InputView.viewCountRoundInput();
-        InputView.viewCountRound();
-
-        ResultView.viewResultMessage();
-
-        for (int i = 0; i < Game.roundCount; i++) {
-            playRound();
-        }
     }*/
 }
