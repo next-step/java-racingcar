@@ -16,11 +16,11 @@ class CarsTest {
 	@BeforeEach
 	void setUp(){
 		//given
-		Car pobi = new Car(new Name("pobi"), 10);
-		Car juuu = new Car(new Name("juuu"), 10);
-		Car alex = new Car(new Name("alex"), 8);
+		Car pobi = new Car("pobi", 10);
+		Car juuu = new Car("juuu", 10);
+		Car alex = new Car("alex", 8);
 
-		cars = new Cars(Arrays.asList(pobi, juuu, alex));
+		cars = Cars.fromCars(Arrays.asList(pobi, juuu, alex));
 	}
 
 	@Test
@@ -47,7 +47,7 @@ class CarsTest {
 	@DisplayName("경주 시작")
 	void goRace() {
 		//when
-		cars.goRace(() -> true);
+		cars.racingCars(() -> true);
 
 		//then
 		assertThat(cars.maxPosition()).isEqualTo(11);

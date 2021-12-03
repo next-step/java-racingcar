@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Position {
 
-	public static final int INIT_POSITION = 0;
+	private static final int INIT_POSITION = 0;
 	private static final int ONE_STEP = 1;
 
 	private final int position;
@@ -17,7 +17,7 @@ public class Position {
 		this.position = position;
 	}
 
-	public Position move() {
+	public Position movedPosition() {
 		return new Position(position + ONE_STEP);
 	}
 

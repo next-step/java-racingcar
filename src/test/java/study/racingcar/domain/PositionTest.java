@@ -22,6 +22,6 @@ class PositionTest {
 	@DisplayName("위치 전진 값 비교")
 	void comparePosition() {
 		Position position = new Position();
-		assertThat(position.move()).isEqualTo(new Position(1));
+		assertThat(position.movedPosition()).isEqualTo(new Position(1));
 	}
 }

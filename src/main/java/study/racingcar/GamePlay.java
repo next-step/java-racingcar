@@ -11,30 +11,35 @@ import study.racingcar.view.InputView;
 import study.racingcar.view.ResultView;
 
 public class GamePlay {
-	public static void main(String[] args) {
-		playGame(new RandomNumberStrategy());
-	}
+    public static void main(String[] args) {
+        playGame(new RandomNumberStrategy());
+    }
 
-	public static void playGame(MoveStrategy strategy) {
-		RacingGame game = readyToGame();
-		printStart();
-		Cars racingResult = game.racing(strategy);
-		findWinner(racingResult);
-	}
+    public static void playGame(MoveStrategy moveStrategy) {
 
-	private static void findWinner(Cars racingResult) {
-		List<Name> winner = racingResult.findWinner();
-		ResultView.printWinner(winner);
-	}
+        RacingGame game = initGame();
 
-	private static RacingGame readyToGame() {
-		List<Name> names = InputView.inputCarNames();
-		int tryNo = InputView.inputTryNo();
+        ResultView.printStart();
 
-		return new RacingGame(names, tryNo);
-	}
+        while (!game.closed()) {
+            Cars cars = game.playGame(moveStrategy);
+            ResultView.printCurrentRacingResult(cars);
+        }
 
-	private static void printStart() {
-		ResultView.printStart();
-	}
+        findGameWinners(game);
+
+    }
+
+    private static RacingGame initGame() {
+        List<Name> names = InputView.inputCarNames();
+        int tryNo = InputView.inputTryNo();
+
+        return new RacingGame(names, tryNo);
+    }
+
+    private static void findGameWinners(RacingGame game) {
+        List<Name> winners = game.winners();
+        ResultView.printWinner(winners);
+    }
+
 }

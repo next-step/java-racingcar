@@ -17,17 +17,17 @@ class CarTest {
 		Car car = new Car(new Name(name));
 
 		//then
-		assertThat(car).isEqualTo(new Car(new Name("juu")));
+		assertThat(car).isEqualTo(new Car("juu"));
 	}
 
 	@Test
 	@DisplayName("자동차 전진")
 	void go() {
 		//given
-		Car car = new Car(new Name("pobi"));
+		Car car = new Car("pobi");
 
 		//when
-		Car result = car.go(() -> true);
+		Car result = car.movedCar(() -> true);
 
 		//then
 		assertThat(result.carPosition()).isEqualTo(1);
@@ -38,10 +38,10 @@ class CarTest {
 	@DisplayName("자동차 정지")
 	void stop() {
 		//given
-		Car car = new Car(new Name("pobi"));
+		Car car = new Car("pobi");
 
 		//when
-		Car result = car.go(() -> false);
+		Car result = car.movedCar(() -> false);
 
 		//then
 		assertThat(result.carPosition()).isEqualTo(0);

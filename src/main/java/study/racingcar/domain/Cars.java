@@ -9,26 +9,26 @@ import study.racingcar.domain.strategy.MoveStrategy;
 public class Cars {
 	private final List<Car> cars;
 
-	public <T> Cars(List<T> carNames) {
-		this.cars = new ArrayList<>();
-		for (T carName : carNames) {
-			createCars(carName);
-		}
+	public Cars(List<Car> cars) {
+		this.cars = cars;
 	}
 
-	private <T> void createCars(T carName) {
-		if (carName instanceof Car) {
-			this.cars.add((Car)carName);
+	public static Cars fromNames(List<Name> names) {
+		List<Car> createCars = new ArrayList<>();
+		for (Name name : names) {
+			createCars.add(new Car(name));
 		}
-
-		if (carName instanceof Name) {
-			this.cars.add(new Car((Name)carName));
-		}
+		return new Cars(createCars);
 	}
 
-	public Cars goRace(MoveStrategy strategy) {
+	public static Cars fromCars(List<Car> cars) {
+		List<Car> createCars = new ArrayList<>(cars);
+		return new Cars(createCars);
+	}
+
+	public Cars racingCars(MoveStrategy strategy) {
 		for (Car car : this.cars) {
-			car.go(strategy);
+			car.movedCar(strategy);
 		}
 		return this;
 	}
