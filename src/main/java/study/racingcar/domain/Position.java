@@ -17,7 +17,7 @@ public class Position {
 		this.position = position;
 	}
 
-	public Position move() {
+	public Position movedPosition() {
 		return new Position(position + ONE_STEP);
 	}
 

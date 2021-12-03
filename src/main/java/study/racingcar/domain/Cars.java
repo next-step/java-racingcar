@@ -26,9 +26,9 @@ public class Cars {
 		return new Cars(createCars);
 	}
 
-	public Cars goRace(MoveStrategy strategy) {
+	public Cars racingCars(MoveStrategy strategy) {
 		for (Car car : this.cars) {
-			car.go(strategy);
+			car.movedCar(strategy);
 		}
 		return this;
 	}

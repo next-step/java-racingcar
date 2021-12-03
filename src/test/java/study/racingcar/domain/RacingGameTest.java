@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.racingcar.view.ResultView;
 
 class RacingGameTest {
 
@@ -25,19 +24,17 @@ class RacingGameTest {
 	@Test
 	@DisplayName("처음 세팅시 isEnd false")
 	void tryNoTest() {
-
-		assertThat(game.isEnd()).isFalse();
+		assertThat(game.closed()).isFalse();
 	}
 
 	@Test
 	@DisplayName("tryNo 만큼 레이스 실행 시, isEnd TRUE")
 	void tryNoTest2() {
-
 		for (int i = 0; i < tryNo ; i++) {
-			game.race(() -> true);
+			game.playGame(() -> true);
 		}
 
-		assertThat(game.isEnd()).isTrue();
+		assertThat(game.closed()).isTrue();
 	}
 
 

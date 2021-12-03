@@ -19,10 +19,10 @@ public class GamePlay {
 
         RacingGame game = initGame();
 
-        printStart();
+        ResultView.printStart();
 
-        while (!game.isEnd()) {
-            Cars cars = game.race(moveStrategy);
+        while (!game.closed()) {
+            Cars cars = game.playGame(moveStrategy);
             ResultView.printCurrentRacingResult(cars);
         }
 
@@ -38,13 +38,8 @@ public class GamePlay {
     }
 
     private static void findGameWinners(RacingGame game) {
-        List<Name> winners = game.findWinners();
+        List<Name> winners = game.winners();
         ResultView.printWinner(winners);
     }
-
-    private static void printStart() {
-        ResultView.printStart();
-    }
-
 
 }

@@ -9,19 +9,33 @@ public class Car {
 	private final Name name;
 	private Position position;
 
-	public Car(Name name, int position) {
-		this.name = name;
+	public Car(String name, int position) {
+		this.name = new Name(name);
 		this.position = new Position(position);
 	}
 
-	public Car(Name name) {
+	public Car(Name name, Position position) {
 		this.name = name;
-		this.position = new Position();
+		this.position = position;
 	}
 
-	public Car go(MoveStrategy strategy) {
+	public Car(String name, Position position) {
+		this.name = new Name(name);
+		this.position = position;
+	}
+
+	public Car(Name name) {
+		this(name, new Position());
+	}
+
+	public Car(String name) {
+		this(name, new Position());
+	}
+
+
+	public Car movedCar(MoveStrategy strategy) {
 		if (strategy.isMovable()) {
-			this.position = position.move();
+			this.position = position.movedPosition();
 		}
 		return this;
 	}
