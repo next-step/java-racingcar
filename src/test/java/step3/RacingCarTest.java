@@ -1,10 +1,8 @@
 package step3;
 
-import org.assertj.core.util.Strings;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
@@ -47,11 +45,12 @@ class RacingCarTest {
                 );
     }
 
+    //증가하는 메소드를 호출할 때 증가 여부를 테스트해야하지 조건 확인 -> 증가를 테스트 하긴 불가능
     @Test
     @DisplayName("자동차가 전진하였을때 이동한 거리가 증가하였는지 확인합니다")
     void move() {
         int before = racingCar.getDistance();
-        racingCar.move();
+        racingCar.move(new RamdomCondition());
         int after = racingCar.getDistance();
         assertThat(before + 1).isEqualTo(after);
     }

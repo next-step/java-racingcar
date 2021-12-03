@@ -9,6 +9,11 @@ import java.util.stream.Collectors;
 public class RacingCarGame {
     private List<RacingCar> racingCarList;
     private Attempt attempt;
+    private RamdomCondition ramdomCondition;
+
+    RacingCarGame() {
+        this.ramdomCondition = new RamdomCondition();
+    }
 
     public boolean ready(int carCount, int attemptCount) {
         racingCarList = new ArrayList<>(carCount);
@@ -51,19 +56,19 @@ public class RacingCarGame {
         return attempt;
     }
 
-    public void play(RamdomCondition ramdomCondition) {
+    public void play() {
         for (RacingCar racingCar : racingCarList) {
-            racingCar.move(ramdomCondition);
+           racingCar.move(this.ramdomCondition);
         }
         attempt.make();
     }
 
-    public void play() {
+    /*public void play() {
         for (RacingCar racingCar : racingCarList) {
             racingCar.move();
         }
         attempt.make();
-    }
+    }*/
 
     public List<RacingCar> findWinner() {
         Optional<Integer> topDistance = racingCarList.stream()
