@@ -6,6 +6,9 @@ public class Position {
     private int position;
 
     Position(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("차는 0 이상 움직여야 합니다.");
+        }
         this.position = position;
     }
 
