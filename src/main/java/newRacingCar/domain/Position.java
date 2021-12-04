@@ -17,6 +17,14 @@ public class Position {
         return position;
     }
 
+    public boolean isMaxPosition(Position maxPosition) {
+        return this.position < maxPosition.getPosition();
+    }
+
+    public boolean isSamePosition(Position position) {
+        return this.equals(position);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

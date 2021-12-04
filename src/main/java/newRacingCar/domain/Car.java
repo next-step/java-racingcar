@@ -9,6 +9,10 @@ public class Car {
     Car(Name name) {
         this.name = name;
     }
+    Car(Name name, Position position) {
+        this.name = name;
+        this.position = position;
+    }
 
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.move()) {
