@@ -1,5 +1,6 @@
 package car_racing;
 
+import car_racing.util.RandomUtil;
 import org.junit.jupiter.api.Test;
 import java.util.HashSet;
 import java.util.Set;

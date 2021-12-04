@@ -1,5 +1,8 @@
 package car_racing;
 
+import car_racing.model.Car;
+import car_racing.model.CarsForGame;
+import car_racing.model.Position;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -50,8 +53,8 @@ class CarsForGameTest {
         carsForGame.playOneRound(() -> true);
 
         // then
-        assertThat(carsForGame.getCars().get(0).getPosition()).isEqualTo(2);
-        assertThat(carsForGame.getCars().get(1).getPosition()).isEqualTo(3);
+        assertThat(carsForGame.getCars().get(0).getPosition()).isEqualTo(new Position(2));
+        assertThat(carsForGame.getCars().get(1).getPosition()).isEqualTo(new Position(3));
     }
 
     @Test

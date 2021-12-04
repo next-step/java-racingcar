@@ -1,8 +1,9 @@
-package car_racing;
+package car_racing.model;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class CarsForGame {
 
@@ -36,7 +37,8 @@ public class CarsForGame {
 
     public void playOneRound(MoveStrategy moveStrategy) {
         for (Car car : carsForGame) {
-            car.move(moveStrategy);
+            boolean ableToMove = moveStrategy.decideToMove();
+            car.move(ableToMove);
         }
     }
 
@@ -45,44 +47,25 @@ public class CarsForGame {
     }
 
     public List<Car> findWinners() {
-        int winnersPosition = findWinnersPosition();
+        Position winnersPosition = findWinnersPosition();
         return findWinners(winnersPosition);
     }
 
-    private List<Car> findWinners (int winnersPosition) {
-        List<Car> winners = new ArrayList<>();
-        for(Car car: carsForGame) {
-            addWinners(winners, winnersPosition, car);
-        }
-        return winners;
+    private List<Car> findWinners (Position winnerPosition) {
+        return carsForGame.stream()
+                .filter(car -> car.isWinner(winnerPosition))
+                .collect(Collectors.toList());
     }
 
-    // TODO: Argument 개수 줄이기
-    private void addWinners(List<Car> winners, int winnerPosition, Car currCar) {
-        if (currCar.isAtPosition(winnerPosition)) {
-            winners.add(currCar);
-        }
-    }
-
-
-    private int findWinnersPosition() {
-        int maxPosition = -1;
+    private Position findWinnersPosition() {
+        Position maxPosition = new Position(-1);
 
         for(Car car : carsForGame) {
-            maxPosition = findMaxPosition(car, maxPosition);
+            maxPosition = car.findMaxPosition(maxPosition);
         }
 
         return maxPosition;
     }
-
-    private int findMaxPosition(Car car, int currMaxPosition) {
-        if (car.getPosition() > currMaxPosition) {
-            currMaxPosition = car.getPosition();
-        }
-        return currMaxPosition;
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
