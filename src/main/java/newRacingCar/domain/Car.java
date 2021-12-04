@@ -24,6 +24,10 @@ public class Car {
         return position;
     }
 
+    public String getName() {
+        return this.name.getName();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -32,10 +32,11 @@ public class Cars {
         return position;
     }
 
-    public void move() {
+    public List<Car> move(MoveStrategy moveStrategy) {
         for (Car car : cars) {
-            car.move(new RandomMoveStrategy());
+            car.move(moveStrategy);
         }
+        return cars;
     }
 
     @Override

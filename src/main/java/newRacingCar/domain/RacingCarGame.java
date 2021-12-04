@@ -9,12 +9,16 @@ public class RacingCarGame {
     private Cars cars;
     private int tryTimes;
 
-    RacingCarGame(String[] carNames, int tryTimes) {
+    public RacingCarGame(String[] carNames, int tryTimes) {
         if (tryTimes < 0) {
             throw new IllegalArgumentException("올바른 수를 입력하세요.");
         }
         this.cars = setPlayCars(carNames);
         this.tryTimes = tryTimes;
+    }
+
+    public int getTryTimes() {
+        return this.tryTimes;
     }
 
     private Cars setPlayCars(String[] carNames) {
@@ -25,8 +29,12 @@ public class RacingCarGame {
         return new Cars(carList);
     }
 
-    public void move() {
-        cars.move();
+    public List<Car> move(MoveStrategy moveStrategy) {
+        return cars.move(moveStrategy);
+    }
+
+    public List<Car> findWinners() {
+        return cars.findWinners();
     }
 
     @Override
