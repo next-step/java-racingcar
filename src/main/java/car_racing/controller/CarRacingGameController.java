@@ -1,4 +1,10 @@
-package car_racing;
+package car_racing.controller;
+
+import car_racing.view.InputView;
+import car_racing.model.MoveStrategy;
+import car_racing.view.OutputView;
+import car_racing.model.RandomMoveStrategy;
+import car_racing.model.CarsForGame;
 
 public class CarRacingGameController {
 
@@ -6,24 +12,18 @@ public class CarRacingGameController {
     private static final InputView INPUT_VIEW = new InputView();
     private static final OutputView OUTPUT_VIEW = new OutputView();
 
-    private final CarRacingResultHistory carRacingResultHistory;
     private CarsForGame carsForGame;
     private int numberOfRound;
-
-    public CarRacingGameController() {
-        this.carRacingResultHistory = new CarRacingResultHistory();
-    }
 
     public void play() {
         initGame();
 
         for (int round = 0; round < numberOfRound; round++) {
             racingOneRound();
-            updateRacingResult();
-
+            showRacingResult(round);
         }
-        
-        closeGame();
+
+        showRacingWinners();
     }
 
     private void initGame() {
@@ -38,17 +38,11 @@ public class CarRacingGameController {
         carsForGame.playOneRound(MOVE_STRATEGY);
     }
 
-    private void updateRacingResult() {
-        carRacingResultHistory.update(carsForGame);
+    private void showRacingResult(int round) {
+        OUTPUT_VIEW.showCarRacingGameResult(carsForGame ,round);
     }
 
-    private void updateRacingWinners() {
-        carRacingResultHistory.updateWinners(carsForGame.findWinners());
+    private void showRacingWinners() {
+        OUTPUT_VIEW.showWinners(carsForGame.findWinners());
     }
-
-    private void closeGame() {
-        updateRacingWinners();
-        OUTPUT_VIEW.showCarRacingGameOutput(carRacingResultHistory);
-    }
-
 }

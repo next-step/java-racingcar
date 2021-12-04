@@ -1,4 +1,6 @@
-package car_racing;
+package car_racing.model;
+
+import car_racing.util.RandomUtil;
 
 public class RandomMoveStrategy implements MoveStrategy {
 

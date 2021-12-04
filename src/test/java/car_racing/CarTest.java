@@ -1,5 +1,8 @@
 package car_racing;
 
+import car_racing.model.Car;
+import car_racing.model.Name;
+import car_racing.model.Position;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +20,7 @@ public class CarTest {
         Car car = new Car(name);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(new Position(0));
     }
 
     @Test
@@ -29,7 +32,7 @@ public class CarTest {
         Car car = new Car(name);
         Name expectedName = new Name("Dodi");
         // then
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(new Position(0));
         assertThat(car.getName()).isEqualTo(expectedName);
 
     }
@@ -42,10 +45,10 @@ public class CarTest {
         Car car = new Car(name);
 
         // when
-        car.move(() -> true);
+        car.move(true);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
 
     @Test
@@ -56,10 +59,10 @@ public class CarTest {
         Car car = new Car(name);
 
         // when
-        car.move(() -> false);
+        car.move(false);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(new Position(0));
     }
 
 }

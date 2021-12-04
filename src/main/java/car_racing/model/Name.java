@@ -1,4 +1,4 @@
-package car_racing;
+package car_racing.model;
 
 import java.util.Objects;
 

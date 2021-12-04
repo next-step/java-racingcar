@@ -1,4 +1,4 @@
-package car_racing;
+package car_racing.model;
 
 import java.util.Objects;
 
@@ -7,25 +7,29 @@ public class Car {
     private static final int START_POSITION = 0;
 
     private final Name name;
-    private int position;
+    private final Position position;
 
     public Car(String name) {
         this(START_POSITION, name);
     }
 
     public Car(int position, String name) {
-        this.position = position;
+        this.position = new Position(position);
         this.name = new Name(name);
     }
 
-    public void move(MoveStrategy moveStrategy) {
-        if (moveStrategy.decideToMove()) {
-            position ++;
+    public void move(boolean ableToMove) {
+        if (ableToMove) {
+            position.move();
         }
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
+    }
+
+    public int getIntPosition() {
+        return position.getPosition();
     }
 
     public Name getName() {
@@ -36,8 +40,12 @@ public class Car {
         return name.getString();
     }
 
-    public boolean isAtPosition(int position) {
-        return this.position == position;
+    public Position findMaxPosition(Position other) {
+        return position.getMaxPosition(other);
+    }
+
+    public boolean isWinner(Position maxPosition) {
+        return position.equals(maxPosition);
     }
 
     @Override
