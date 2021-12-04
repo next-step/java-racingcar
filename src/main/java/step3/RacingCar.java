@@ -1,52 +1,36 @@
 package step3;
 
-import java.util.Objects;
-import java.util.Random;
 
 public class RacingCar {
-    private static final int RANDOM_NUMBER_BOUND = 10;
-
-    private RandomValue randomValue;
-
-    private int distance = 0;
+    private Distance distance;
     private Name name;
 
-    // 삭제예정
-    public RacingCar() {
-        this.randomValue = new RandomValue(new Random().nextInt(RANDOM_NUMBER_BOUND));
+    public RacingCar(Distance distance) {
+        this(distance, new Name(""));
     }
 
-    public RacingCar(Random random) {
-        this.randomValue = new RandomValue(random.nextInt(RANDOM_NUMBER_BOUND));
+    public RacingCar(Distance distance, Name name) {
+        this.distance = distance;
+        this.name = name;
     }
 
-    public RacingCar(Random random, String name) {
-        this(random);
-        this.name = new Name(name);
-    }
-
-    // 삭제 예정
-    public RacingCar(String name) {
-        this();
-        this.name = new Name(name);
-    }
 
     public boolean isMove(RamdomCondition ramdomCondition) {
-        return ramdomCondition.meet(this.randomValue);
+        return ramdomCondition.meet();
     }
 
     public void move(RamdomCondition ramdomCondition) {
         if (isMove(ramdomCondition)) {
-            this.distance++;
+            this.distance = this.distance.move();
         }
     }
 
     public int getDistance() {
-        return this.distance;
+        return this.distance.getDistance();
     }
 
-    public Name getName() {
-        return this.name;
+    public String getName() {
+        return this.name.getName();
     }
 
     @Override
@@ -61,18 +45,16 @@ public class RacingCar {
 
         RacingCar racingCar = (RacingCar) obj;
 
-        return Objects.equals(this.randomValue, racingCar.randomValue)
-                && this.name.equals(racingCar.name)
-                && this.distance == racingCar.distance;
+        return this.name.equals(racingCar.name)
+                && this.distance.equals(racingCar.distance);
     }
 
     @Override
     public int hashCode() {
-        int hashCode = randomValue.hashCode();
+        int hashCode = 1;
         hashCode = 31 * hashCode + name.hashCode();
-        hashCode = 31 * hashCode + Integer.hashCode(distance);
+        hashCode = 31 * hashCode + Integer.hashCode(distance.hashCode());
 
         return hashCode;
     }
-
 }

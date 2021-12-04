@@ -5,32 +5,15 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Random;
-
 import static org.assertj.core.api.Assertions.*;
 
 class RacingCarTest {
-    /*@Test
-    @DisplayName("0 ~ 9 범위의 랜덤한 숫자가 정상적으로 생성되었는지 확인합니다.")
-    void getRandomNumber() {
-        int expect = racingCar.getRandomNumber();
-        assertThat(expect).isBetween(0, 9);
-    }
-
-    @ParameterizedTest()
-    @CsvSource({"1, false", "4, false", "7, true"})
-    @DisplayName("random 값이 4이상일 경우 전진하는지 확인합니다.")
-    void isMove(int number, boolean expect) {
-        boolean result = racingCar.isMove(number);
-        assertThat(result).isEqualTo(expect);
-    }*/
-
     @ParameterizedTest
     @ValueSource(strings = {"pobi", "crong", "honux"})
     @DisplayName("생성자를 통한 이름 필드 초기화가 정상적으로 되었는지 확인합니다.")
     void initialName(String name) {
-        RacingCar racingCar = new RacingCar(name);
-        assertThat(racingCar.equals(new RacingCar(name))).isTrue();
+        RacingCar racingCar = new RacingCar(new Distance(0), new Name(name));
+        assertThat(racingCar.equals(new RacingCar(new Distance(0), new Name(name)))).isTrue();
     }
 
     @ParameterizedTest
@@ -40,7 +23,7 @@ class RacingCarTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() ->
                         {
-                            RacingCar racingCar = new RacingCar(name);
+                            new RacingCar(new Distance(0), new Name(name));
                         }
                 );
     }
@@ -49,10 +32,18 @@ class RacingCarTest {
     @Test
     @DisplayName("자동차가 전진하였을때 이동한 거리가 증가하였는지 확인합니다")
     void move() {
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar(new Distance(0));
         int before = racingCar.getDistance();
-        racingCar.move(new RamdomCondition());
+        RandomValue randomValue = new RandomValue(5);
+        racingCar.move(new RamdomCondition(randomValue));
         int after = racingCar.getDistance();
         assertThat(before + 1).isEqualTo(after);
+    }
+
+    @Test
+    @DisplayName("random 값이 4이상일 경우 조건 만족, 4 미만일 경우 실패인지 확인한다")
+    void isMove() {
+        assertThat(new RacingCar(new Distance(0)).isMove(new RamdomCondition(new RandomValue(8)))).isTrue();
+        assertThat(new RacingCar(new Distance(0)).isMove(new RamdomCondition(new RandomValue(2)))).isFalse();
     }
 }

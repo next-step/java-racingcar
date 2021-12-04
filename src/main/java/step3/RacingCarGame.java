@@ -4,13 +4,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingCarGame {
+    private static final String COMMA = ",";
+    private static final int RANDOM_NUMBER_BOUND = 10;
+
     private List<RacingCar> racingCarList;
     private Attempt attempt;
-    private RamdomCondition ramdomCondition;
     private Random random;
 
     RacingCarGame() {
-        this.ramdomCondition = new RamdomCondition();
         this.random = new Random();
     }
 
@@ -18,7 +19,7 @@ public class RacingCarGame {
         racingCarList = new ArrayList<>(carCount);
 
         while (racingCarList.size() != carCount) {
-            racingCarList.add(new RacingCar());
+            racingCarList.add(new RacingCar(new Distance(0)));
         }
 
         attempt = new Attempt(attemptCount);
@@ -28,10 +29,10 @@ public class RacingCarGame {
 
 
     public boolean ready(String allRacingCarName, int attemptCount) {
-        String[] raicingCarNames = allRacingCarName.split(",");
+        String[] raicingCarNames = allRacingCarName.split(COMMA);
 
         racingCarList = Arrays.stream(raicingCarNames)
-                .map(n -> new RacingCar(n))
+                .map(n -> new RacingCar(new Distance(0), new Name(n)))
                 .collect(Collectors.toList());
 
         attempt = new Attempt(attemptCount);
@@ -59,17 +60,10 @@ public class RacingCarGame {
 
     public void play() {
         for (RacingCar racingCar : racingCarList) {
-           racingCar.move(this.ramdomCondition);
+           racingCar.move(new RamdomCondition(new RandomValue(this.random.nextInt(RANDOM_NUMBER_BOUND))));
         }
         attempt.make();
     }
-
-    /*public void play() {
-        for (RacingCar racingCar : racingCarList) {
-            racingCar.move();
-        }
-        attempt.make();
-    }*/
 
     public List<RacingCar> findWinner() {
         Optional<Integer> topDistance = racingCarList.stream()

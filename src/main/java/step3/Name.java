@@ -33,4 +33,8 @@ public class Name {
     public int hashCode() {
         return Objects.hash(this.value);
     }
+
+    public String getName() {
+        return value;
+    }
 }
