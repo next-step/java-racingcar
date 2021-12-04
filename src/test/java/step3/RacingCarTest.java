@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Random;
+
 import static org.assertj.core.api.Assertions.*;
 
 class RacingCarTest {
-    RacingCar racingCar = new RacingCar();
-
     /*@Test
     @DisplayName("0 ~ 9 범위의 랜덤한 숫자가 정상적으로 생성되었는지 확인합니다.")
     void getRandomNumber() {
@@ -30,7 +30,7 @@ class RacingCarTest {
     @DisplayName("생성자를 통한 이름 필드 초기화가 정상적으로 되었는지 확인합니다.")
     void initialName(String name) {
         RacingCar racingCar = new RacingCar(name);
-        assertThat(racingCar.getName()).isEqualTo(name);
+        assertThat(racingCar.equals(new RacingCar(name))).isTrue();
     }
 
     @ParameterizedTest
@@ -49,11 +49,10 @@ class RacingCarTest {
     @Test
     @DisplayName("자동차가 전진하였을때 이동한 거리가 증가하였는지 확인합니다")
     void move() {
+        RacingCar racingCar = new RacingCar();
         int before = racingCar.getDistance();
         racingCar.move(new RamdomCondition());
         int after = racingCar.getDistance();
         assertThat(before + 1).isEqualTo(after);
     }
-
-
 }

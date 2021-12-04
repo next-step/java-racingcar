@@ -11,11 +11,6 @@ public class RandomValue {
     }
 
     @Override
-    public int hashCode() {
-        return Integer.hashCode(value);
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if(this == obj) {
             return true;
@@ -28,6 +23,11 @@ public class RandomValue {
         RandomValue randomValue = (RandomValue) obj;
 
         return randomValue.value == randomValue.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(value);
     }
 
     public boolean meet(int advanceCondition) {

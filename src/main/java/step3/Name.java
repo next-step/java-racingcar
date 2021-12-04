@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.Objects;
+
 public class Name {
     private static final int NAME_LENGTH = 5;
 
@@ -12,7 +14,23 @@ public class Name {
         this.value = value;
     }
 
-    public String getValue() {
-        return value;
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj) {
+            return true;
+        }
+
+        if(!(obj instanceof Name)) {
+            return false;
+        }
+
+        Name name = (Name) obj;
+
+        return name.value == name.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.value);
     }
 }

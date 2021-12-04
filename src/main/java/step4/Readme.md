@@ -10,10 +10,30 @@
 
 [리펙토링 로그]
 1. RacingCar에 의존성이 있는 RandomCondition을 제거하고 Object Graph를 상위로 이동시켰다.
+
 이후 RandomCondition을 랜덤값에 따라 테스트 하도록 수정하였는데, int가 아닌 객체로 변경하고자 하였다.
+
 이때, 랜덤 숫자의 범위(10)과 전진 조건(4)를 어느 객체에서 가지고 있어야 할지 고민하였는데 
+
 RandomValue가 Random에 의존성이 있고 10 이하의 랜덤한 수를 생성하고 RamdomCondition이 이 값에 따른 전진 조건 비교를 통해 
 RacingCar가 전진한다고 판단하는 경우 테스트하기 어렵다고 판단하였다. 
+
 매 회차 마다 자동자 들이 생성이 되고 이때 랜덤 수에 따라 전진 여부가 결정되는데 자동차가 범위를 이에 따른 RandomValue를 생성하고 
 조건을 가지고 있는 RancomCondition이 조건 만족 여부를 판단하도록 변경하였다. 
+
 그렇게 되면 RandomValue > getValue 와 조건을 비교해야 하는데 메세지를 보낼 수 있는 방법이 없을까?
+
+2.
+RacingCarGame : RamdomCondition 속성으로 가지며 게임 룰을 제어, racingCar들이 하나의 Random 객체를 사용할 수 있도록 함
+
+
+RacingCar :  RandomValue를 생성 
+
+-> 이럴 경우 전진하는 것을 테스트 불가, 리펙토링 필요 
+
+RandomCondition : 전진 조건을 결정
+
+RandomValue : 조건에 따른 적합 여부를 결정 
+
+
+

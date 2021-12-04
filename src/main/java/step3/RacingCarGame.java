@@ -1,18 +1,17 @@
 package step3;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingCarGame {
     private List<RacingCar> racingCarList;
     private Attempt attempt;
     private RamdomCondition ramdomCondition;
+    private Random random;
 
     RacingCarGame() {
         this.ramdomCondition = new RamdomCondition();
+        this.random = new Random();
     }
 
     public boolean ready(int carCount, int attemptCount) {
@@ -40,10 +39,12 @@ public class RacingCarGame {
         return isRacingCarReady(raicingCarNames.length) && isAttemptReady(attemptCount);
     }
 
+    //racingCars로 비교 가능
     public boolean isRacingCarReady(int carCount) {
         return racingCarList.size() == carCount;
     }
 
+    //equals로 비교 가능
     public boolean isAttemptReady(int attemptCount) {
         return attempt.isEqualNumber(attemptCount);
     }

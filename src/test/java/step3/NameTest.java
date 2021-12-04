@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 public class NameTest {
     @ParameterizedTest
@@ -17,5 +17,13 @@ public class NameTest {
                             Name racingCarName = new Name(name);
                         }
                 );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi", "crong", "honux"})
+    @DisplayName("생성자를 통한 이름 필드 초기화가 정상적으로 되었는지 확인합니다.")
+    void legalRarameter(String value) {
+        Name name = new Name(value);
+        assertThat(name.equals(new Name(value))).isTrue();
     }
 }

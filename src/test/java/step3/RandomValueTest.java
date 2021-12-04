@@ -32,10 +32,6 @@ class RandomValueTest {
     @DisplayName("RandomValue의 속성인 value가 4이상의 숫자이면 성공, 아니면 실패인지 확인한다 ")
     void meet() {
         assertThat(new RandomValue(5).meet(4)).isTrue();
-
-        RandomValue randomValue = new RandomValue(5);
         assertThat(new RandomValue(1).meet(4)).isFalse();
     }
-
-
 }
