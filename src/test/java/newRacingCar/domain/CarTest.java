@@ -26,23 +26,13 @@ public class CarTest {
 
     @Test
     void 자동차_이동_테스트() {
-        car.move(new MoveStrategy() {
-            @Override
-            public boolean move() {
-                return true;
-            }
-        });
+        car.move(() -> true);
         assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
 
     @Test
     void 자동차_멈춤_테스트() {
-        car.move(new MoveStrategy() {
-            @Override
-            public boolean move() {
-                return false;
-            }
-        });
+        car.move(() -> false);
         assertThat(car.getPosition()).isEqualTo(new Position(0));
     }
 
