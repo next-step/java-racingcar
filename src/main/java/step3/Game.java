@@ -14,12 +14,12 @@ public class Game {
         this.roundCount = roundCount;
     }
 
-/*    public void playRound(){
+    public void playRound(){
         for (int i = 0; i < cars.getSize(); i++) {
-            cars.carList.get(i).move(randomGenerator.getRandomNumber());
-            ResultView.drawTravelDistance(cars.carList.get(i));
+            cars.getCarList(i).move(randomGenerator.getRandomNumber());
+            ResultView.drawTravelDistance(cars.getCarList(i));
             ResultView.drawLineBreak();
         }
         ResultView.drawLineBreak();
-    }*/
+    }
 }

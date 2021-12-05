@@ -1,6 +1,7 @@
 package step3;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -13,7 +14,13 @@ public class Cars {
         }
     }
 
-    public int getSize(){
-        return this.carList.size();
+    public Car getCarList(int index){
+        return carList.get(index);
     }
+
+    public int getSize(){
+        return Collections.unmodifiableList(carList).size();
+    }
+
+
 }
