@@ -2,6 +2,8 @@ package step3;
 
 
 public class RacingCarGameExecute {
+    private static final String COMMA = ",";
+
     private static RacingCarGameUi racingCarGameUi;
     private static RacingCarGame racingCarGame;
 
@@ -12,31 +14,33 @@ public class RacingCarGameExecute {
 
     public static void initGameExecute() {
         racingCarGameUi = new RacingCarGameUi();
-        racingCarGame = new RacingCarGame();
     }
 
     public static void execFindWinnerRacingGame() {
-        racingCarGame.ready(racingCarGameUi.askRacingCarName(), racingCarGameUi.askAttemptNumber());
+        String allRacingCarName = racingCarGameUi.askRacingCarName();
+        String[] raicingCarNames = allRacingCarName.split(COMMA);
+        racingCarGame = new RacingCarGame(new RacingCars(raicingCarNames), new Attempt(racingCarGameUi.askAttemptNumber()));
         Attempt attempt = racingCarGame.getAttempt();
 
         racingCarGameUi.printExecuteResult();
 
         while (!attempt.isEnd()) {
             racingCarGame.play();
-            racingCarGameUi.printRacingCarNameAndGameResult(racingCarGame.getRacingCarList());
+            racingCarGameUi.printRacingCarNameAndGameResult(racingCarGame.getRacingCars());
         }
-        racingCarGameUi.printRacingCarWinnerResult(racingCarGame.findWinner());
+      //  racingCarGameUi.printRacingCarWinnerResult(racingCarGame.findWinner());
     }
 
     public static void execBasicRacingGame() {
-        racingCarGame.ready(racingCarGameUi.askRacingCarNumber(), racingCarGameUi.askAttemptNumber());
+        int carNumber = racingCarGameUi.askRacingCarNumber();
+        racingCarGame = new RacingCarGame(new RacingCars(carNumber), new Attempt(racingCarGameUi.askAttemptNumber()));
         Attempt attempt = racingCarGame.getAttempt();
 
         racingCarGameUi.printExecuteResult();
 
         while (!attempt.isEnd()) {
             racingCarGame.play();
-            racingCarGameUi.printRacingCarGameResult(racingCarGame.getRacingCarList());
+            racingCarGameUi.printRacingCarGameResult(racingCarGame.getRacingCars());
         }
     }
 }

@@ -3,6 +3,7 @@ package step3;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
@@ -17,6 +18,14 @@ class RacingCarTest {
     }
 
     @ParameterizedTest
+    @CsvSource(value = {"pobi : pobi", "crong : crong", "honux : choco"}, delimiter = ':')
+    @DisplayName("생성자를 통한 이름 필드 초기화가 비정상적으로 되었는지 확인합니다.")
+    void uninitialName(String initialCarNames, String compareName) {
+        RacingCar racingCar = new RacingCar(new Distance(0), new Name(initialCarNames));
+        assertThat(racingCar.equals(new RacingCar(new Distance(0), new Name(compareName)))).isFalse();
+    }
+
+    @ParameterizedTest
     @ValueSource(strings = {"여섯글자이름", "abcdef"})
     @DisplayName("5자를 초과하는 이름으로 자동차 객체 생성시 IllegalArgumentException가 발생하는지 확인한다.")
     void illegalRarameter(String name) {
@@ -28,16 +37,12 @@ class RacingCarTest {
                 );
     }
 
-    //증가하는 메소드를 호출할 때 증가 여부를 테스트해야하지 조건 확인 -> 증가를 테스트 하긴 불가능
-    @Test
+    @ParameterizedTest
+    @CsvSource({"1, 2", "3, 4"})
     @DisplayName("자동차가 전진하였을때 이동한 거리가 증가하였는지 확인합니다")
-    void move() {
-        RacingCar racingCar = new RacingCar(new Distance(0));
-        int before = racingCar.getDistance();
-        RandomValue randomValue = new RandomValue(5);
-        racingCar.move(new RamdomCondition(randomValue));
-        int after = racingCar.getDistance();
-        assertThat(before + 1).isEqualTo(after);
+    void move(int initialValue,  int movedValue) {
+        RacingCar racingCar = new RacingCar(new Distance(initialValue)).move(new RamdomCondition(new RandomValue(5)));
+        assertThat(racingCar.equals(new RacingCar(new Distance(movedValue)))).isTrue();
     }
 
     @Test

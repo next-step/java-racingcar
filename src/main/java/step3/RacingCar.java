@@ -2,27 +2,27 @@ package step3;
 
 
 public class RacingCar {
-    private Distance distance;
-    private Name name;
+    private final Distance distance;
+    private final Name name;
 
-    public RacingCar(Distance distance) {
+    public RacingCar(final Distance distance) {
         this(distance, new Name(""));
     }
 
-    public RacingCar(Distance distance, Name name) {
+    public RacingCar(final Distance distance, Name name) {
         this.distance = distance;
         this.name = name;
     }
-
 
     public boolean isMove(RamdomCondition ramdomCondition) {
         return ramdomCondition.meet();
     }
 
-    public void move(RamdomCondition ramdomCondition) {
+    public RacingCar move(RamdomCondition ramdomCondition) {
         if (isMove(ramdomCondition)) {
-            this.distance = this.distance.move();
+            return new RacingCar(this.distance.move(), this.name);
         }
+        return this;
     }
 
     public int getDistance() {
@@ -45,7 +45,7 @@ public class RacingCar {
 
         RacingCar racingCar = (RacingCar) obj;
 
-        return this.name.equals(racingCar.name)
+        return this.name == racingCar.name
                 && this.distance.equals(racingCar.distance);
     }
 
@@ -53,7 +53,7 @@ public class RacingCar {
     public int hashCode() {
         int hashCode = 1;
         hashCode = 31 * hashCode + name.hashCode();
-        hashCode = 31 * hashCode + Integer.hashCode(distance.hashCode());
+        hashCode = 31 * hashCode + distance.hashCode();
 
         return hashCode;
     }

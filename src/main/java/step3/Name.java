@@ -5,9 +5,9 @@ import java.util.Objects;
 public class Name {
     private static final int NAME_LENGTH = 5;
 
-    private String value;
+    private final String value;
 
-    public Name(String value) {
+    public Name(final String value) {
         if (value.length() > NAME_LENGTH) {
             throw new IllegalArgumentException();
         }

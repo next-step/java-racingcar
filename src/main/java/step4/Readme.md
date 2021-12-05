@@ -31,9 +31,27 @@ RacingCar :  RandomValue를 생성
 
 -> 이럴 경우 전진하는 것을 테스트 불가, 리펙토링 필요 
 
+=> RamdomCondition을 파라미터로 받도록 수정
+
 RandomCondition : 전진 조건을 결정
 
 RandomValue : 조건에 따른 적합 여부를 결정 
+
+3. RacingCar의 속성인 참조 변수들을 다 불변 객체로 변경하고 속성 변경시 새로운 객체를 반환하도록 수정하였다.
+
+그리고 List<RacingCar>를 RacingCars로 포장하였는데 RacingGame에서 RandomCondition을 가지는 경우
+
+다수의 RacingCar 이동을 위한 RandomCondition을 생성하여 RacingCars에게 주는건 올바르지 않다고 판단하였다.
+
+이에, RandomCondition을 RacingCars로 이동한다. 
+
+4. RacingCarGame > equals를 테스트시 RacingCars에서 다른 이름을 가진 RacingCar로 객체 생성시 true로 결과가 나옴
+
+RacingCars내 list 비교가 잘못되었다고 생각했지만 결과로 RacingCar의 equals가 올바르지 않았다.
+
+테스트 코드를 모두 작성해 보자.
+
+
 
 
 

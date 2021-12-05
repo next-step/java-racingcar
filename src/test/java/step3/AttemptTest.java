@@ -20,23 +20,26 @@ class AttemptTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"1, true", "4, false"})
+    @CsvSource({"2, 1", "4, 3"})
     @DisplayName("시도 횟수를 차감하는 메소드가 정상적으로 작동하는지 확인합니다")
+    void testIsEnd(int initialValue, int makedValue) {
+        Attempt attempt = new Attempt(initialValue).make();
+        assertThat(attempt.equals(new Attempt(makedValue))).isTrue();
+    }
+
+    @ParameterizedTest
+    @CsvSource({"1, true", "4, false"})
+    @DisplayName("시도 횟차가 끝났는지 확인합니다.")
     void testIsEnd(int number, boolean expect) {
-        Attempt attempt = new Attempt(number);
-        attempt.make();
+        Attempt attempt = new Attempt(number).make();
         boolean isEnd = attempt.isEnd();
         assertThat(isEnd).isEqualTo(expect);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    @DisplayName("Attempt 객체 생성시 number가 정상인지 확인합니다")
+    @DisplayName("Attempt 객체 생성시 값에 따른 equals 메소드 실행시 정상인지 확인합니다")
     void isEqualNumber(int number) {
-        Attempt attempt = new Attempt(number);
-        boolean result = attempt.isEqualNumber(number);
-        assertThat(result).isTrue();
+        assertThat(new Attempt(number).equals(new Attempt(number))).isTrue();
     }
-
-
 }
