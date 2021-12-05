@@ -12,16 +12,21 @@ public class Position {
         this.position = position;
     }
 
-    public void move() {
+    public Position move() {
         this.position += 1;
+        return this;
     }
 
     public int getPosition() {
         return position;
     }
 
-    public boolean isMaxPosition(Position maxPosition) {
-        return this.position < maxPosition.getPosition();
+    public Position findMaxPosition(Position position) {
+        Position maxPosition = this;
+        if (this.position < position.getPosition()) {
+            maxPosition = position;
+        }
+        return maxPosition;
     }
 
     public boolean isSamePosition(Position position) {
