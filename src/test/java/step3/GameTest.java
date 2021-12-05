@@ -30,10 +30,8 @@ public class GameTest {
     }
 
     @ParameterizedTest
-    public void 게임플레이(){
-        int carCount = inputView.inputScanner();
-        int roundCount = inputView.inputScanner();
-
+    @CsvSource(value = {"3,5"})
+    public void 게임플레이(int carCount, int roundCount){
         inputView.viewCountCarInputMessage();
         cars.createCars(carCount);
         inputView.viewCountCar();

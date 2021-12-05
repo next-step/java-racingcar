@@ -27,10 +27,4 @@ public class InputView {
         System.out.println(game.getRoundCount());
     }
 
-    public int inputScanner(){
-        Scanner scanner = new Scanner(System.in);
-        String value = scanner.nextLine();
-        return scanner.nextInt();
-    }
-
 }
