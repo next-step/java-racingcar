@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Car {
     private Name name;
-    private Position position = new Position(0);
+    private Position position;
 
     Car(Name name) {
-        this.name = name;
+        this(name, new Position(0));
     }
     Car(Name name, Position position) {
         this.name = name;
