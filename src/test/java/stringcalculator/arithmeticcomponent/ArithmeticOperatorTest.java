@@ -48,7 +48,7 @@ class ArithmeticOperatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"!", "=", "%", "&", " "})
     void checkInvalidOperatorTest(String invalidOperator) {
-        // when & Then
+        // when & then
         assertThatIllegalArgumentException().isThrownBy(() -> {
             ArithmeticOperator.findByOperator(invalidOperator);
         });
