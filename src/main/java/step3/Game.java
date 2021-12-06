@@ -21,4 +21,10 @@ public class Game {
         }
         ResultView.drawLineBreak();
     }
+
+    public void execround(int roundCount) {
+        for (int i = 0; i < roundCount; i++) {
+            playRound();
+        }
+    }
 }

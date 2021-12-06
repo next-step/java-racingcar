@@ -18,16 +18,15 @@ public class InputScanner {
         Game game = new Game(roundCount);
         inputView.viewCountCarInputMessage();
         cars.createCars(carCount);
+
+
         inputView.viewCountCar();
-
-
         inputView.viewCountRoundInputMessage();
         inputView.viewCountRound();
 
         ResultView.viewResultMessage();
 
-        for (int i = 0; i < roundCount; i++) {
-            game.playRound();
-        }
+
+        game.execround(roundCount);
     }
 }
