@@ -35,4 +35,8 @@ public class Distance {
     public int hashCode() {
         return Objects.hash(value);
     }
+
+    public boolean isFarAWay(Distance distance) {
+        return this.value > distance.value;
+    }
 }

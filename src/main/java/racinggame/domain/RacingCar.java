@@ -41,6 +41,13 @@ public class RacingCar {
         return this.name.getName();
     }
 
+    public Distance findTopDistance(Distance distance) {
+        if(this.distance.isFarAWay(distance)) {
+            return this.distance;
+        }
+        return distance;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

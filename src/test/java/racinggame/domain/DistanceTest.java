@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -22,4 +23,12 @@ public class DistanceTest {
     void equals(int number) {
         assertThat(new Distance(number).equals(new Distance(number))).isTrue();
     }
+
+    @ParameterizedTest
+    @CsvSource({"1, 0", "2, 1", "4, 3"})
+    @DisplayName("더 긴 거리의 Distance 객체를 반환하는지 확인합니다")
+    void isFarAway(int farDistance, int compareDistance) {
+        assertThat(new Distance(farDistance).isFarAWay(new Distance(compareDistance))).isTrue();
+    }
+
 }

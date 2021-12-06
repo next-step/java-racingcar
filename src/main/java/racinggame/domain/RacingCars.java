@@ -53,13 +53,18 @@ public class RacingCars {
     }
 
     public List<RacingCar> getWinner() {
-        Integer topDistance = racingCarList.stream()
-                .map(RacingCar::getDistance)
-                .reduce(Integer::max).orElse(0);
-
         return racingCarList.stream()
-                .filter(r -> r.isEqualDistance(new Distance(topDistance)))
+                .filter(r -> r.isEqualDistance(getTopDistance()))
                 .collect(Collectors.toList());
+    }
+
+    public Distance getTopDistance() {
+        Distance topDistance = new Distance(START_POINT);
+        for (RacingCar racingCar:
+             this.racingCarList) {
+            topDistance = racingCar.findTopDistance(topDistance);
+        }
+        return topDistance;
     }
 
     @Override

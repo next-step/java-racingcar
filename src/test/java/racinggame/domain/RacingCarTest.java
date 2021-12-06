@@ -59,4 +59,11 @@ class RacingCarTest {
         assertThat(new RacingCar(new Distance(distanceValue)).isDistanceEquals(new Distance(distanceValue))).isTrue();
     }
 
+    @ParameterizedTest
+    @CsvSource({"1, 2", "3, 4"})
+    @DisplayName("자동차")
+    void findTopDistance(int initialValue, int movedValue) {
+        RacingCar racingCar = new RacingCar(new Distance(initialValue)).move(new RamdomCondition(new RandomValue(5)));
+        assertThat(racingCar.equals(new RacingCar(new Distance(movedValue)))).isTrue();
+    }
 }

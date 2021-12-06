@@ -50,4 +50,15 @@ public class RacingCarsTest {
         RacingCars racingCars = new RacingCars(Arrays.asList(pobi, crong, honux, choco, titi));
         assertThat(racingCars.getWinner()).contains(honux, choco, titi);
     }
+
+    @Test
+    @DisplayName("자동차들 중 가장 긴 거리를 이동한 자동차를 반환하는지 확인합니다.")
+    void getTopDistance() {
+        RacingCar pobi = new RacingCar(new Distance(0), new Name("pobi"));
+        RacingCar crong = new RacingCar(new Distance(1), new Name("crong"));
+        RacingCar honux = new RacingCar(new Distance(2), new Name("honux"));
+
+        RacingCars racingCars = new RacingCars(Arrays.asList(pobi, crong, honux));
+        assertThat(racingCars.getTopDistance().equals(new Distance(2))).isTrue();
+    }
 }
