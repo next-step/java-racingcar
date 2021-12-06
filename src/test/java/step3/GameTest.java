@@ -13,12 +13,11 @@ import static step3.Game.cars;
 public class GameTest {
 
     InputView inputView = new InputView();
-    Game game = new Game();
+    Game game = new Game(5);
 
     @Test
     @DisplayName("경기 수 세팅 메소드 테스트")
     public void setRoundTest(){
-        game.setRoundCount(5);
         assertThat(game.getRoundCount()).isEqualTo(5);
     }
 
@@ -38,7 +37,6 @@ public class GameTest {
 
 
         inputView.viewCountRoundInputMessage();
-        game.setRoundCount(roundCount);
         inputView.viewCountRound();
 
         ResultView.viewResultMessage();

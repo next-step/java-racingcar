@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Cars {
 
-    private List<Car> carList = new ArrayList<>();
+    private final List<Car> carList = new ArrayList<>();
 
     public void createCars(int count){
         for (int i = 0; i < count; i++) {
@@ -14,12 +14,12 @@ public class Cars {
         }
     }
 
-    public Car getCarList(int index){
+    public Car getCarListOne(int index){
         return carList.get(index);
     }
 
     public int getSize(){
-        return Collections.unmodifiableList(carList).size();
+        return carList.size();
     }
 
 
