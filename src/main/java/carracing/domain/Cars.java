@@ -11,10 +11,12 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(int numberOfCars) {
-        cars = new ArrayList<>(numberOfCars);
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+    public Cars(CarNames carNames) {
+        validateCars(carNames);
+        List<CarName> names = carNames.getNames();
+        this.cars = new ArrayList<>(names.size());
+        for (CarName name : names) {
+            cars.add(new Car(name));
         }
     }
 
@@ -30,9 +32,30 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
+    public List<Car> retrieveWinningCars() {
+        return cars.stream()
+                .filter(car -> car.isWon(winningPositionNumber()))
+                .collect(Collectors.toList());
+    }
+
+    private void validateCars(CarNames carNames) {
+        if (carNames == null) {
+            throw new IllegalArgumentException("자동차들을 초기화 하기 위해서는 자동차 이름들이 필요합니다.");
+        }
+    }
+
     private List<Car> movedCars(MovementPolicy movementPolicy) {
         return cars.stream()
                 .map(car -> car.move(movementPolicy))
                 .collect(Collectors.toList());
+    }
+
+    private int winningPositionNumber() {
+        return cars.stream()
+                .map(Car::getPosition)
+                .map(CarPosition::getNumber)
+                .mapToInt(Integer::intValue)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException("우승한 자동차가 없습니다."));
     }
 }
