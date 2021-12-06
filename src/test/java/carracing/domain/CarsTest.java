@@ -90,7 +90,6 @@ class CarsTest {
         return cars.retrieveWinningCars()
                 .stream()
                 .map(Car::getName)
-                .map(CarName::getName)
                 .collect(Collectors.joining(CarNames.DELIMITER));
     }
 
