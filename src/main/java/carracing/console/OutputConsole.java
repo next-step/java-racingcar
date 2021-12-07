@@ -3,9 +3,8 @@ package carracing.console;
 import carracing.domain.Car;
 import carracing.domain.CarPosition;
 import carracing.domain.Cars;
+import carracing.domain.CarsGroup;
 
-import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 /**
@@ -16,9 +15,10 @@ public class OutputConsole {
     private static final String POSITION_NOTATION = "-";
     private static final String WINNER_RESULT_MESSAGE = "가 최종 우승했습니다.";
 
-    public static void printResultOfRacingGame(List<Cars> carsGroup) {
-        carsGroup.forEach(OutputConsole::printStatusOfRacing);
-        printWinningCarsOfRacing(lastCars(carsGroup));
+    public static void printResultOfRacingGame(CarsGroup carsGroup) {
+        carsGroup.getCarsGroup()
+                .forEach(OutputConsole::printStatusOfRacing);
+        printWinningCarsOfRacing(carsGroup.lastCars());
     }
 
     public static void printStatusOfRacing(Cars cars) {
@@ -37,13 +37,6 @@ public class OutputConsole {
 
     public static void printResultMessage() {
         System.out.println(RESULT_MESSAGE);
-    }
-
-    private static Cars lastCars(List<Cars> carsGroup) {
-        return carsGroup.stream()
-                .skip(Math.min(carsGroup.size(), 1))
-                .findFirst()
-                .orElseThrow(() -> new NoSuchElementException("last Cars is not found."));
     }
 
     private static String statusOfCar(Car car) {

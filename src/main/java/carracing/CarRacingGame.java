@@ -2,14 +2,8 @@ package carracing;
 
 import carracing.console.InputConsole;
 import carracing.console.OutputConsole;
-import carracing.domain.CarNames;
-import carracing.domain.Cars;
-import carracing.domain.MovementPolicy;
-import carracing.domain.RandomIntMovementPolicy;
+import carracing.domain.*;
 import carracing.util.RandomGenerator;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 자동차 경주 게임을 구현한 클래스
@@ -24,11 +18,7 @@ public class CarRacingGame {
 
         OutputConsole.printResultMessage();
         Cars cars = new Cars(new CarNames(carNames));
-        List<Cars> carsGroup = new ArrayList<>(numberOfTrials);
-        for (int i = 0; i < numberOfTrials; i++) {
-            cars = cars.moveCars(movementPolicy);
-            carsGroup.add(cars);
-        }
+        CarsGroup carsGroup = new CarsGroup(cars, numberOfTrials, movementPolicy);
         OutputConsole.printResultOfRacingGame(carsGroup);
     }
 }
