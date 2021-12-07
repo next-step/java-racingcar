@@ -1,6 +1,7 @@
 package carracing.domain;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,11 +11,15 @@ import java.util.stream.Collectors;
 public class CarNames {
     public static final String DELIMITER = ",";
 
-    private List<CarName> carNames;
+    private final List<CarName> carNames;
 
     public CarNames(String carNames) {
         validateCarNames(carNames);
-        initiateCarNames(carNames);
+        this.carNames = carNames(carNames);
+    }
+
+    public List<CarName> getNames() {
+        return Collections.unmodifiableList(carNames);
     }
 
     private void validateCarNames(String carNames) {
@@ -27,17 +32,9 @@ public class CarNames {
         return carNames == null || carNames.isEmpty();
     }
 
-    private void initiateCarNames(String carNames) {
-        this.carNames = convertCarNames(carNames);
-    }
-
-    private List<CarName> convertCarNames(String carNames) {
+    private List<CarName> carNames(String carNames) {
         return Arrays.stream(carNames.split(DELIMITER))
                 .map(CarName::new)
                 .collect(Collectors.toList());
-    }
-
-    public List<CarName> getNames() {
-        return carNames;
     }
 }
