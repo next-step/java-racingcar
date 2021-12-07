@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static step3.Game.cars;
 
 public class GameTest {
 
@@ -21,7 +22,7 @@ public class GameTest {
     @Test
     @DisplayName("차 대수 세팅 메소드 테스트")
     public void setCarsTest(){
-        cars.createCars(3);
+        cars.createCars();
         assertThat(cars.getSize()).isEqualTo(3);
     }
 
@@ -29,7 +30,7 @@ public class GameTest {
     @CsvSource(value = {"3,5"})
     public void 게임플레이(int carCount, int roundCount){
         inputView.viewCountCarInputMessage();
-        cars.createCars(carCount);
+        cars.createCars();
         inputView.viewCountCar();
 
 

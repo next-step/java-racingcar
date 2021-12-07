@@ -8,14 +8,10 @@ public class Cars {
 
     private final List<Car> carList = new ArrayList<>();
 
-    public void createCars(int count){
-        for (int i = 0; i < count; i++) {
+    public void createCars(){
+        for (int i = 0; i < InputView.carCount; i++) {
             carList.add(new Car());
         }
-    }
-
-    public Car getCarListOne(int index){
-        return carList.get(index);
     }
 
     public int getSize(){

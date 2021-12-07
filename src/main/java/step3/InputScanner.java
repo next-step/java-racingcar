@@ -12,9 +12,9 @@ public class InputScanner {
 
 
         inputView.inputScanUn();
-        Game game = new Game(InputView.roundCount);
+        Game game = new Game(InputView.roundCount,InputView.carCount);
         inputView.viewCountCarInputMessage();
-        cars.createCars(InputView.carCount);
+        cars.createCars();
 
 
         inputView.viewCountCar();

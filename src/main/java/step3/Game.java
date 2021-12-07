@@ -2,10 +2,16 @@ package step3;
 
 public class Game {
     private int roundCount;
-    public static Cars cars = new Cars();
+    private int carCount;
+    public static Cars cars = new Car();
 
     public Game(int roundCount) {
         this.roundCount = roundCount;
+    }
+
+    public Game(int roundCount, int carCount) {
+        this.roundCount = roundCount;
+        this.carCount = carCount;
     }
 
     public int getRoundCount(){
@@ -15,8 +21,8 @@ public class Game {
 
     public void playRound(){
         for (int i = 0; i < cars.getSize(); i++) {
-            cars.getCarListOne(i).move(RandomGenerator.getRandomNumber());
-            ResultView.drawTravelDistance(cars.getCarListOne(i));
+            cars.move(RandomGenerator.getRandomNumber());
+            ResultView.drawTravelDistance(cars);
             ResultView.drawLineBreak();
         }
         ResultView.drawLineBreak();
