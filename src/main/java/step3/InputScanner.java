@@ -11,13 +11,10 @@ public class InputScanner {
         InputView inputView = new InputView();
 
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int carCount = Integer.parseInt(new Scanner(System.in).nextLine());
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int roundCount = Integer.parseInt(new Scanner(System.in).nextLine());
-        Game game = new Game(roundCount);
+        inputView.inputScanUn();
+        Game game = new Game(InputView.roundCount);
         inputView.viewCountCarInputMessage();
-        cars.createCars(carCount);
+        cars.createCars(InputView.carCount);
 
 
         inputView.viewCountCar();
@@ -27,6 +24,6 @@ public class InputScanner {
         ResultView.viewResultMessage();
 
 
-        game.execround(roundCount);
+        game.execround(InputView.roundCount);
     }
 }
