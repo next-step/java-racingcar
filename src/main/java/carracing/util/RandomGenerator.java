@@ -3,9 +3,9 @@ package carracing.util;
 import java.util.Random;
 
 public class RandomGenerator {
-    private final Random random = new Random();
+    private static final Random RANDOM = new Random();
 
     public int generateZeroOrPositiveNumber(int maxNumber) {
-        return random.nextInt(maxNumber + 1);
+        return RANDOM.nextInt(maxNumber + 1);
     }
 }
