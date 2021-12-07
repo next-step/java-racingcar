@@ -11,9 +11,19 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DisplayName("수식을 위한 테스트")
 class ArithmeticExpressionTest {
+
+    static Stream provideMultipleExpressionAndResult() {
+        return Stream.of(
+                Arguments.of(1, "+", 2, 3),
+                Arguments.of(3, "-", 2, 1),
+                Arguments.of(4, "*", 2, 8),
+                Arguments.of(4, "/", 2, 2)
+        );
+    }
 
     @DisplayName("1회 연산에 필요한 수식이 정상적으로 생성이 되는지 확인")
     @ParameterizedTest
@@ -26,9 +36,11 @@ class ArithmeticExpressionTest {
                 new ArithmeticOperand(num2)
         );
         // then
-        assertThat(arithmeticExpression.operator()).isEqualTo(ArithmeticOperator.findByOperator(op));
-        assertThat(arithmeticExpression.firstOperand().number()).isEqualTo(num1);
-        assertThat(arithmeticExpression.secondOperand().number()).isEqualTo(num2);
+        assertAll(
+                () -> assertThat(arithmeticExpression.operator()).isEqualTo(ArithmeticOperator.findByOperator(op)),
+                () -> assertThat(arithmeticExpression.firstOperand().number()).isEqualTo(num1),
+                () -> assertThat(arithmeticExpression.secondOperand().number()).isEqualTo(num2)
+        );
     }
 
     @DisplayName("수식에 대한 결과 확인")
@@ -65,15 +77,6 @@ class ArithmeticExpressionTest {
         // then
         assertThatIllegalArgumentException().isThrownBy(
                 () -> new ArithmeticExpression(null, operator, null)
-        );
-    }
-
-    static Stream provideMultipleExpressionAndResult() {
-        return Stream.of(
-                Arguments.of(1, "+", 2, 3),
-                Arguments.of(3, "-", 2, 1),
-                Arguments.of(4, "*", 2, 8),
-                Arguments.of(4, "/", 2, 2)
         );
     }
 }

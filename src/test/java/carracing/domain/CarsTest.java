@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DisplayName("자동차 경주에 필요한 자동차들 테스트")
 class CarsTest {
@@ -34,8 +35,10 @@ class CarsTest {
         // when
         Cars cars = new Cars(carNames);
         // then
-        assertThat(cars).isNotNull();
-        assertThat(cars.getCars()).hasSize(TEST_CAR_NAMES.split(CarNames.DELIMITER).length);
+        assertAll(
+                () -> assertThat(cars).isNotNull(),
+                () -> assertThat(cars.getCars()).hasSize(TEST_CAR_NAMES.split(CarNames.DELIMITER).length)
+        );
     }
 
     @DisplayName("비어있는 자동차들의 이름을 전달했을 때, 자동차 생성 예외 발생 여부 확인")

@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DisplayName("자동차들의 이름을 위한 테스트")
 class CarNamesTest {
@@ -22,9 +23,11 @@ class CarNamesTest {
         // when
         CarNames actual = new CarNames(validCarNames);
         // then
-        assertThat(actual).isNotNull();
-        assertThat(actual.getNames()).hasSize(3)
-                .containsExactly(new CarName(POBI), new CarName(CRONG), new CarName(HONUX));
+        assertAll(
+                () -> assertThat(actual).isNotNull(),
+                () -> assertThat(actual.getNames()).hasSize(3)
+                        .containsExactly(new CarName(POBI), new CarName(CRONG), new CarName(HONUX))
+        );
     }
 
     @DisplayName("유효하지 않은 자동차들의 이름이 예외를 발생하는지 확인")

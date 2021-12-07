@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("자동차 테스트")
@@ -25,9 +26,11 @@ class CarTest {
     @Test
     void createCarTest() {
         // then
-        assertThat(car).isNotNull();
-        assertThat(car.getPosition()).isEqualTo(new CarPosition(INITIATION_POSITION_NUMBER));
-        assertThat(car.getName()).isEqualTo(new CarName(TEST_CAR_NAME));
+        assertAll(
+                () -> assertThat(car).isNotNull(),
+                () -> assertThat(car.getPosition()).isEqualTo(new CarPosition(INITIATION_POSITION_NUMBER)),
+                () -> assertThat(car.getName()).isEqualTo(TEST_CAR_NAME)
+        );
     }
 
     @DisplayName("자동차가 움직일 수 있는 경우, 자동자의 위치가 변경되는지 확인")

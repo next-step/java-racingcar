@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DisplayName("수식의 피연산자를 위한 테스트")
 class ArithmeticOperandTest {
@@ -16,7 +17,9 @@ class ArithmeticOperandTest {
         // when
         ArithmeticOperand arithmeticOperand = new ArithmeticOperand(number);
         // then
-        assertThat(arithmeticOperand).isNotNull();
-        assertThat(arithmeticOperand.number()).isEqualTo(number);
+        assertAll(
+                () -> assertThat(arithmeticOperand).isNotNull(),
+                () -> assertThat(arithmeticOperand.number()).isEqualTo(number)
+        );
     }
 }

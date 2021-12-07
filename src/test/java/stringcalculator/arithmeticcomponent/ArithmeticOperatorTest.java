@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static stringcalculator.arithmeticcomponent.ArithmeticOperator.*;
 
 @DisplayName("수식의 연산자를 위한 테스트")
@@ -38,10 +39,12 @@ class ArithmeticOperatorTest {
         ArithmeticOperator multiply = ArithmeticOperator.findByOperator("*");
         ArithmeticOperator divide = ArithmeticOperator.findByOperator("/");
         // then
-        assertThat(plus).isEqualTo(PLUS);
-        assertThat(minus).isEqualTo(MINUS);
-        assertThat(multiply).isEqualTo(MULTIPLY);
-        assertThat(divide).isEqualTo(DIVIDE);
+        assertAll(
+                () -> assertThat(plus).isEqualTo(PLUS),
+                () -> assertThat(minus).isEqualTo(MINUS),
+                () -> assertThat(multiply).isEqualTo(MULTIPLY),
+                () -> assertThat(divide).isEqualTo(DIVIDE)
+        );
     }
 
     @DisplayName("잘못된 연산자 문자열을 enum으로 변환할때 예외를 발생시키는지 확인")

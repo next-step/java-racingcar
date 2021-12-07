@@ -27,7 +27,7 @@ class InputExpressionTest {
     void checkNullAndEmptyInputExpressionTest(String expression) {
         // When & Then
         assertThatIllegalArgumentException().isThrownBy(() ->
-            new InputExpression(expression)
+                new InputExpression(expression)
         );
     }
 }
