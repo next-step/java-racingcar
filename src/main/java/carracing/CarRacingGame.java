@@ -1,7 +1,7 @@
 package carracing;
 
-import carracing.console.InputConsole;
-import carracing.console.OutputConsole;
+import carracing.view.InputView;
+import carracing.view.OutputView;
 import carracing.domain.*;
 import carracing.util.RandomGenerator;
 
@@ -16,13 +16,13 @@ public class CarRacingGame {
     private final MovementPolicy movementPolicy = new RandomIntMovementPolicy(randomGenerator);
 
     public void run() {
-        String carNames = InputConsole.readCarNames();
-        int numberOfTrials = InputConsole.readNumberOfTrials();
+        String carNames = InputView.readCarNames();
+        int numberOfTrials = InputView.readNumberOfTrials();
 
-        OutputConsole.printResultMessage();
+        OutputView.printResultMessage();
         Cars cars = new Cars(new CarNames(carNames));
         CarsGroup carsGroup = new CarsGroup(carsGroup(cars, numberOfTrials, movementPolicy));
-        OutputConsole.printResultOfRacingGame(carsGroup);
+        OutputView.printResultOfRacingGame(carsGroup);
     }
 
     private List<Cars> carsGroup(Cars cars, int numberOfTrials, MovementPolicy movementPolicy) {

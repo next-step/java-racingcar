@@ -1,4 +1,4 @@
-package carracing.console;
+package carracing.view;
 
 import carracing.domain.Car;
 import carracing.domain.CarPosition;
@@ -10,14 +10,14 @@ import java.util.stream.Collectors;
 /**
  * 자동차 경주 현황을 출력하기 위한 콘솔
  */
-public class OutputConsole {
+public class OutputView {
     private static final String RESULT_MESSAGE = "실행결과";
     private static final String POSITION_NOTATION = "-";
     private static final String WINNER_RESULT_MESSAGE = "가 최종 우승했습니다.";
 
     public static void printResultOfRacingGame(CarsGroup carsGroup) {
         carsGroup.getCarsGroup()
-                .forEach(OutputConsole::printStatusOfRacing);
+                .forEach(OutputView::printStatusOfRacing);
         printWinningCarsOfRacing(carsGroup.lastCars());
     }
 
