@@ -8,11 +8,11 @@ public class Car {
     private final CarPosition position;
 
     Car(CarName name) {
-        this.name = name;
-        this.position = new CarPosition();
+        this(name, new CarPosition());
     }
 
     private Car(CarName name, CarPosition position) {
+        validate(name, position);
         this.name = name;
         this.position = position;
     }
@@ -34,5 +34,14 @@ public class Car {
 
     public String getName() {
         return name.getName();
+    }
+
+    private void validate(CarName name, CarPosition position) {
+        if (name == null) {
+            throw new IllegalArgumentException("자동차의 이름이 비어있습니다.");
+        }
+        if (position == null) {
+            throw new IllegalArgumentException("자동차의 위치가 비어있습니다.");
+        }
     }
 }
