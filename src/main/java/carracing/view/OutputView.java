@@ -15,6 +15,10 @@ public class OutputView {
     private static final String POSITION_NOTATION = "-";
     private static final String WINNER_RESULT_MESSAGE = "가 최종 우승했습니다.";
 
+    private OutputView() {
+        throw new AssertionError();
+    }
+
     public static void printResultOfRacingGame(CarsGroup carsGroup) {
         carsGroup.getCarsGroup()
                 .forEach(OutputView::printStatusOfRacing);
