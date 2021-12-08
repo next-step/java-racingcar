@@ -40,10 +40,10 @@ public class OutputView {
     }
 
     private static String statusOfCar(Car car) {
-        return String.format("%s : %s", car.getName(), notationOfpositionOfCar(car.getPosition()));
+        return String.format("%s : %s", car.getName(), notationOfPositionOfCar(car.getPosition()));
     }
 
-    private static String notationOfpositionOfCar(CarPosition carPosition) {
+    private static String notationOfPositionOfCar(CarPosition carPosition) {
         int positionNumber = carPosition.getNumber();
         StringBuilder positionNotation = new StringBuilder(positionNumber);
         for (int i = 0; i < positionNumber; i++) {
