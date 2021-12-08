@@ -16,17 +16,6 @@ public class CarName {
         this.name = name;
     }
 
-    private void validateName(String name) {
-        if (isInvalidName(name)) {
-            throw new IllegalArgumentException("자동차의 이름은 " + MIN_NAME_SIZE + "이상 " + MAX_NAME_SIZE + "이하 글자가 입력되어야합니다.");
-        }
-    }
-
-    private boolean isInvalidName(String name) {
-        int nameLength = name.length();
-        return nameLength < MIN_NAME_SIZE || nameLength > MAX_NAME_SIZE;
-    }
-
     public String getName() {
         return name;
     }
@@ -42,5 +31,19 @@ public class CarName {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    private void validateName(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("자동차의 이름이 입력되어야합니다.");
+        }
+        if (isInvalidName(name)) {
+            throw new IllegalArgumentException("자동차의 이름은 " + MIN_NAME_SIZE + "이상 " + MAX_NAME_SIZE + "이하 글자가 입력되어야합니다.");
+        }
+    }
+
+    private boolean isInvalidName(String name) {
+        int nameLength = name.length();
+        return nameLength < MIN_NAME_SIZE || nameLength > MAX_NAME_SIZE;
     }
 }
