@@ -6,6 +6,7 @@ import racinggame.domain.entity.Car;
 import racinggame.domain.entity.Contest;
 import racinggame.domain.entity.Participants;
 import racinggame.view.LocationView;
+import racinggame.view.WinnerView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,7 +22,7 @@ public class ContestTest {
         Car secondCar = new Car("car2");
 
         List<Car> participants = Stream.of(firstCar, secondCar).collect(Collectors.toList());
-        Contest contest = new Contest(round, new Participants(participants), () -> true, new LocationView(), winnerReporter);
+        Contest contest = new Contest(round, new Participants(participants), () -> true, new LocationView(), new WinnerView());
         contest.play();
     }
 }
