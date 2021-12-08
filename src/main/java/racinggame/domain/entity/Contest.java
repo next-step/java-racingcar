@@ -3,21 +3,24 @@ package racinggame.domain.entity;
 import racinggame.domain.movingstrategy.MovingStrategy;
 import racinggame.domain.value.Location;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Contest {
     private final int round;
     private final Participants participants;
     private final MovingStrategy movingStrategy;
-    private final ReportingLocation reporter;
+    private final ReportingLocation locationReporter;
+    private final ReportingWinner winnerReporter;
 
     public Contest(
             int round,
             Participants participants,
             MovingStrategy movingStrategy,
-            ReportingLocation reporter
-    ) {
-        this.reporter = reporter;
+            ReportingLocation locationReporter,
+            ReportingWinner winnerReporter) {
+        this.locationReporter = locationReporter;
+        this.winnerReporter = winnerReporter;
         assertNull(participants, movingStrategy);
         this.round = round;
         this.participants = participants;
@@ -25,10 +28,12 @@ public class Contest {
     }
 
     public void play() {
+        List<Location> lastLocations = Collections.emptyList();
         for (int i = 0; round > i; i++) {
-            List<Location> locations = playEachRound();
-            reporter.report(locations);
+            lastLocations = playEachRound();
+            locationReporter.report(lastLocations);
         }
+        winnerReporter.report(lastLocations);
     }
 
     private List<Location> playEachRound() {
@@ -45,6 +50,10 @@ public class Contest {
     }
 
     public interface ReportingLocation {
+        void report(List<Location> locations);
+    }
+
+    public interface ReportingWinner {
         void report(List<Location> locations);
     }
 }
