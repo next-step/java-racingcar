@@ -1,4 +1,4 @@
-package util;
+package stringcalculator.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
