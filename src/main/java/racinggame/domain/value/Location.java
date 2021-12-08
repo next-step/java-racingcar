@@ -2,21 +2,15 @@ package racinggame.domain.value;
 
 import java.util.Objects;
 
-public class Location {
-    private final String carName;
+public class Location implements Comparable<Location> {
     private final int value;
 
-    public Location(String carName, int value) {
-        this.carName = carName;
+    public Location(int value) {
         this.value = value;
     }
 
     public Location forward() {
-        return new Location(carName, value + 1);
-    }
-
-    public String getCarName() {
-        return carName;
+        return new Location(value + 1);
     }
 
     public int getValue() {
@@ -34,5 +28,10 @@ public class Location {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    @Override
+    public int compareTo(Location o) {
+        return this.value - o.value;
     }
 }

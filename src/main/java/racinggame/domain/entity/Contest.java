@@ -10,16 +10,16 @@ public class Contest {
     private final int round;
     private final Participants participants;
     private final MovingStrategy movingStrategy;
-    private final ReportingLocation locationReporter;
+    private final Car.ReportingCar carReporter;
     private final ReportingWinner winnerReporter;
 
     public Contest(
             int round,
             Participants participants,
             MovingStrategy movingStrategy,
-            ReportingLocation locationReporter,
+            Car.ReportingCar carReporter,
             ReportingWinner winnerReporter) {
-        this.locationReporter = locationReporter;
+        this.carReporter = carReporter;
         this.winnerReporter = winnerReporter;
         assertNull(participants, movingStrategy);
         this.round = round;
@@ -31,13 +31,14 @@ public class Contest {
         List<Location> lastLocations = Collections.emptyList();
         for (int i = 0; round > i; i++) {
             lastLocations = playEachRound();
-            locationReporter.report(lastLocations);
         }
-        winnerReporter.report(lastLocations);
+        winnerReporter.report(participants);
     }
 
     private List<Location> playEachRound() {
-        return participants.play(movingStrategy);
+        List<Location> results = participants.play(movingStrategy);
+        participants.reportCurrentStatus(carReporter);
+        return results;
     }
 
     private void assertNull(Participants participants, MovingStrategy movingStrategy) {
@@ -49,11 +50,7 @@ public class Contest {
         }
     }
 
-    public interface ReportingLocation {
-        void report(List<Location> locations);
-    }
-
     public interface ReportingWinner {
-        void report(List<Location> locations);
+        void report(Participants participants);
     }
 }

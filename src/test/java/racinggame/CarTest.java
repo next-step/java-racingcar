@@ -6,6 +6,7 @@ import racinggame.domain.entity.Car;
 import racinggame.domain.value.Location;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
     @Test
@@ -14,7 +15,7 @@ public class CarTest {
         String carName = "car";
         final Car car = new Car(carName);
         assertThat(car.play(() -> true))
-                .isEqualTo(new Location(carName, 1));
+                .isEqualTo(new Location(1));
     }
 
     @Test
@@ -23,6 +24,14 @@ public class CarTest {
         String carName = "car";
         final Car car = new Car(carName);
         assertThat(car.play(() -> false))
-                .isEqualTo(new Location(carName, 0));
+                .isEqualTo(new Location(0));
+    }
+
+    @Test
+    @DisplayName("자동차 이름은 다섯 글자를 넘을 수 없다.")
+    void nameLengthUnder5() {
+        assertThatThrownBy(() -> {
+            new Car("123456");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }

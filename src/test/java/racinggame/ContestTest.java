@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import racinggame.domain.entity.Car;
 import racinggame.domain.entity.Contest;
 import racinggame.domain.entity.Participants;
-import racinggame.view.LocationView;
+import racinggame.view.CarLocationView;
 import racinggame.view.WinnerView;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class ContestTest {
         Car secondCar = new Car("car2");
 
         List<Car> participants = Stream.of(firstCar, secondCar).collect(Collectors.toList());
-        Contest contest = new Contest(round, new Participants(participants), () -> true, new LocationView(), new WinnerView());
+        Contest contest = new Contest(round, new Participants(participants), () -> true, new CarLocationView(), new WinnerView());
         contest.play();
     }
 }

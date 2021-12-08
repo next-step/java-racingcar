@@ -27,7 +27,7 @@ public class CalculatorNumber {
     }
 
     CalculatorNumber divideBy(CalculatorNumber other) {
-        if (CalculatorNumber.ZERO == other) {
+        if (CalculatorNumber.ZERO.equals(other)) {
             throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
         }
         return new CalculatorNumber(value / other.value);

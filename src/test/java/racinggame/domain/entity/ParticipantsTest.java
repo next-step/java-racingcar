@@ -20,6 +20,6 @@ class ParticipantsTest {
         Participants participants = new Participants(cars);
         List<Location> locations = participants.play(() -> true);
 
-        assertEquals(Arrays.asList(new Location(car1, 1), new Location(car2, 1)), locations);
+        assertEquals(Arrays.asList(new Location(1), new Location(1)), locations);
     }
 }
