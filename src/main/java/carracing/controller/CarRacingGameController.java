@@ -1,4 +1,4 @@
-package carracing;
+package carracing.controller;
 
 import carracing.view.InputView;
 import carracing.view.OutputView;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 자동차 경주 게임을 구현한 클래스
  */
-public class CarRacingGame {
+public class CarRacingGameController {
     private final RandomGenerator randomGenerator = new RandomGenerator();
     private final MovementPolicy movementPolicy = new RandomIntMovementPolicy(randomGenerator);
 

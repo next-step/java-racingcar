@@ -1,8 +1,10 @@
 package carracing;
 
+import carracing.controller.CarRacingGameController;
+
 public class Application {
     public static void main(String[] args) {
-        CarRacingGame carRacingGame = new CarRacingGame();
-        carRacingGame.run();
+        CarRacingGameController carRacingGameController = new CarRacingGameController();
+        carRacingGameController.run();
     }
 }
