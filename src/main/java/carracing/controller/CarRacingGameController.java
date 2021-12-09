@@ -1,7 +1,5 @@
 package carracing.controller;
 
-import carracing.view.InputView;
-import carracing.view.OutputView;
 import carracing.domain.*;
 import carracing.util.RandomGenerator;
 
@@ -15,14 +13,18 @@ public class CarRacingGameController {
     private final RandomGenerator randomGenerator = new RandomGenerator();
     private final MovementPolicy movementPolicy = new RandomIntMovementPolicy(randomGenerator);
 
-    public void run() {
-        String carNames = InputView.readCarNames();
-        int numberOfTrials = InputView.readNumberOfTrials();
+    public CarsGroup run(String carNames, int numberOfTrials) {
+        validate(carNames, numberOfTrials);
+        return new CarsGroup(carsGroup(new Cars(new CarNames(carNames)), numberOfTrials, movementPolicy));
+    }
 
-        OutputView.printResultMessage();
-        Cars cars = new Cars(new CarNames(carNames));
-        CarsGroup carsGroup = new CarsGroup(carsGroup(cars, numberOfTrials, movementPolicy));
-        OutputView.printResultOfRacingGame(carsGroup);
+    private void validate(String carNames, int numberOfTrials) {
+        if (carNames == null || "".equals(carNames)) {
+            throw new IllegalArgumentException(String.format("carNames(%s)는 문자열이 전달되어야합니다.", carNames));
+        }
+        if (numberOfTrials <= 0) {
+            throw new IllegalArgumentException(String.format("numberOfTrials(%d)는 0보다 큰 값이 전달되어야합니다.", numberOfTrials));
+        }
     }
 
     private List<Cars> carsGroup(Cars cars, int numberOfTrials, MovementPolicy movementPolicy) {
