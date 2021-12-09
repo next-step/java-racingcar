@@ -3,7 +3,8 @@ package step3;
 public class Game {
     private int roundCount;
     private int carCount;
-    public static Cars cars = new Car();
+    public static Cars cars = new Cars();
+    public static Car car = new Car();
 
     public Game(int roundCount) {
         this.roundCount = roundCount;
@@ -21,8 +22,9 @@ public class Game {
 
     public void playRound(){
         for (int i = 0; i < cars.getSize(); i++) {
-            cars.move(RandomGenerator.getRandomNumber());
-            ResultView.drawTravelDistance(cars);
+            car = cars.getCarList(i);
+            car.move(RandomGenerator.getRandomNumber());
+            ResultView.drawTravelDistance(car);
             ResultView.drawLineBreak();
         }
         ResultView.drawLineBreak();
