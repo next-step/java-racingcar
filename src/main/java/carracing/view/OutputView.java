@@ -20,27 +20,36 @@ public class OutputView {
     }
 
     public static void printResultOfRacingGame(CarsGroup carsGroup) {
-        carsGroup.getCarsGroup()
-                .forEach(OutputView::printStatusOfRacing);
-        printWinningCarsOfRacing(carsGroup.lastCars());
+        System.out.println(resultAllStatusOfCars(carsGroup));
     }
 
-    public static void printStatusOfRacing(Cars cars) {
-        cars.getCars()
-                .forEach(car -> System.out.println(statusOfCar(car)));
-        System.out.println();
+    private static String resultAllStatusOfCars(CarsGroup carsGroup) {
+        return String.format("%n%s%n%s %n%n%s", RESULT_MESSAGE, allStatusOfCars(carsGroup), resultOfWinningCars(carsGroup.lastCars()));
     }
 
-    public static void printWinningCarsOfRacing(Cars cars) {
-        String winningCars = cars.retrieveWinningCars()
+    private static String allStatusOfCars(CarsGroup carsGroup) {
+        return carsGroup.getCarsGroup()
+                .stream()
+                .map(OutputView::statusOfCars)
+                .collect(Collectors.joining("\n\n"));
+    }
+
+    private static String resultOfWinningCars(Cars cars) {
+        return String.format("%s%s", winningCars(cars), WINNER_RESULT_MESSAGE);
+    }
+
+    private static String statusOfCars(Cars cars) {
+        return cars.getCars()
+                .stream()
+                .map(OutputView::statusOfCar)
+                .collect(Collectors.joining("\n"));
+    }
+
+    private static String winningCars(Cars cars) {
+        return cars.retrieveWinningCars()
                 .stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
-        System.out.println(winningCars + WINNER_RESULT_MESSAGE);
-    }
-
-    public static void printResultMessage() {
-        System.out.println(RESULT_MESSAGE);
     }
 
     private static String statusOfCar(Car car) {
