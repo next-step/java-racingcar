@@ -5,7 +5,7 @@ import stringcalculator.arithmeticcomponent.ArithmeticOperand;
 import stringcalculator.arithmeticcomponent.ArithmeticOperator;
 import stringcalculator.arithmeticcomponent.ArithmeticResult;
 import stringcalculator.console.InputExpression;
-import util.NotationUtils;
+import stringcalculator.util.NotationUtils;
 
 import java.util.Stack;
 

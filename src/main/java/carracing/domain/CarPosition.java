@@ -6,7 +6,13 @@ import java.util.Objects;
  * 자동차 위치 클래스
  */
 public class CarPosition {
+    private static final int INITIATION_POSITION_NUMBER = 0;
+
     private final int number;
+
+    CarPosition() {
+        this.number = INITIATION_POSITION_NUMBER;
+    }
 
     CarPosition(int number) {
         validateNumber(number);
