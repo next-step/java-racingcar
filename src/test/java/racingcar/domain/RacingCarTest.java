@@ -11,12 +11,14 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class RacingCarTest {
 
+    private RacingCarName aName = new RacingCarName("aName");
+
     @Test
     @DisplayName("move 테스트: movingStrategy.movable이 false면 움직이지 않는다.")
     void move1() {
         MovingStrategy movingStrategy = new AlwayStopStrategy();
 
-        RacingCar racingCar = new RacingCar(movingStrategy);
+        RacingCar racingCar = new RacingCar(aName, movingStrategy);
 
         racingCar.move();
         Position expectedResult = new Position(0);
@@ -29,7 +31,7 @@ public class RacingCarTest {
     void move2() {
         MovingStrategy movingStrategy = new AlwaysGoStrategy();
 
-        RacingCar racingCar = new RacingCar(movingStrategy);
+        RacingCar racingCar = new RacingCar(aName, movingStrategy);
 
         racingCar.move();
         racingCar.move();
@@ -45,7 +47,7 @@ public class RacingCarTest {
     @DisplayName("clone 테스트: 내부의 position도 카피되어야 한다")
     void clone1() throws CloneNotSupportedException {
         MovingStrategy movingStrategy = new AlwaysGoStrategy();
-        RacingCar racingCar = new RacingCar(movingStrategy);
+        RacingCar racingCar = new RacingCar(aName, movingStrategy);
 
         RacingCar copy = racingCar.clone();
         copy.move();

@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-public class Position implements Cloneable {
+public class Position implements Cloneable, Comparable<Position> {
 
     private int position;
 
@@ -43,5 +43,13 @@ public class Position implements Cloneable {
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
+    }
+
+    @Override
+    public int compareTo(Position o) {
+        if (this.position > o.position) {
+            return 1;
+        }
+        return -1;
     }
 }

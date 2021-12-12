@@ -6,10 +6,12 @@ import java.util.Objects;
 
 public class RacingCar implements Cloneable {
 
+    private RacingCarName name;
     private Position position;
     private final MovingStrategy movingStrategy;
 
-    public RacingCar(MovingStrategy movingStrategy) {
+    public RacingCar(RacingCarName name, MovingStrategy movingStrategy) {
+        this.name = name;
         this.movingStrategy = movingStrategy;
         this.position = new Position();
     }
@@ -18,14 +20,6 @@ public class RacingCar implements Cloneable {
         if (movingStrategy.movable()) {
             position.forward();
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RacingCar racingCar = (RacingCar) o;
-        return Objects.equals(position, racingCar.position);
     }
 
     @Override
@@ -43,4 +37,9 @@ public class RacingCar implements Cloneable {
     public Position getPosition() {
         return position;
     }
+
+    public RacingCarName getName() {
+        return name;
+    }
+
 }

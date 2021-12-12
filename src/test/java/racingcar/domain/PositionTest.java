@@ -27,4 +27,14 @@ public class PositionTest {
         assertEquals(expectedResult, position);
     }
 
+    @Test
+    @DisplayName("compareTo 테스트: 피연산자의 값이 작으면 1을 리턴하고 나머지 경우에는 -1을 리턴한다.")
+    void compareTo() {
+        Position position1 = new Position(1);
+        Position position2 = new Position(2);
+
+        assertEquals(-1, position1.compareTo(position2));
+        assertEquals(1, position2.compareTo(position1));
+    }
+
 }

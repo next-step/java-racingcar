@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 public final class Record {
 
     private final int lab;
-    private final List<RacingCar> racingCars;
+    private final RacingCars racingCars;
 
     private Record(int lab, List<RacingCar> racingCars) {
         this.lab = lab;
-        this.racingCars = racingCars;
+        this.racingCars = new RacingCars(racingCars);
     }
 
     public static Record record(int lab, List<RacingCar> racingCars) {
@@ -35,11 +35,7 @@ public final class Record {
         return snapshot;
     }
 
-    public int getLab() {
-        return lab;
-    }
-
-    public List<RacingCar> getRacingCars() {
+    public RacingCars getRacingCars() {
         return racingCars;
     }
 }
