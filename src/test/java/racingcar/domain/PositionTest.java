@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Position;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -25,7 +24,7 @@ public class PositionTest {
 
         position.forward();
 
-        assertEquals(position, expectedResult);
+        assertEquals(expectedResult, position);
     }
 
 }

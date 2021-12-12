@@ -7,6 +7,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Position;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingResult;
+import racingcar.domain.movingstrategy.AlwayStopStrategy;
+import racingcar.domain.movingstrategy.AlwaysGoStrategy;
 import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.domain.movingstrategy.RandomMovingStrategy;
 import racingcar.exception.RacingGameException;
@@ -39,22 +41,19 @@ public class RacingGameTest {
 
 
     @Test
-    @DisplayName("start 테스트: 레이싱 결과를 담은 RacingResul가 리턴된다.")
+    @DisplayName("start 테스트: 레이싱 결과를 담은 RacingResult가 리턴된다.")
     void start3() {
         int labCount = 3;
 
-        MovingStrategy mockMovingStrategy1 = mock(MovingStrategy.class);
-        MovingStrategy mockMovingStrategy2 = mock(MovingStrategy.class);
+        MovingStrategy alwaysGoStrategy = new AlwaysGoStrategy();
+        MovingStrategy alwaysStopStrategy = new AlwayStopStrategy();
 
-        RacingCar car1 = new RacingCar(mockMovingStrategy1);
-        RacingCar car2 = new RacingCar(mockMovingStrategy2);
+        RacingCar car1 = new RacingCar(alwaysGoStrategy);
+        RacingCar car2 = new RacingCar(alwaysStopStrategy);
 
         RacingGame racingGame = new RacingGame(labCount);
         racingGame.registerCar(car1);
         racingGame.registerCar(car2);
-
-        when(mockMovingStrategy1.movable()).thenReturn(true);
-        when(mockMovingStrategy2.movable()).thenReturn(false);
 
         RacingResult racingResult = racingGame.start();
 
@@ -76,28 +75,20 @@ public class RacingGameTest {
 
         racingGame.start();
 
-        assertThrows(RacingGameException.class, () -> racingGame.registerCar(mock(RacingCar.class)));
+        assertThrows(RacingGameException.class, () -> racingGame.registerCar(new RacingCar(RandomMovingStrategy.getInatance())));
     }
 
     @ParameterizedTest
     @DisplayName("registerCar 테스트: 설정 된 lab만큼 각 차량의 move가 호출되어야 한다.")
     @ValueSource(ints = {1, 3, 5, 2, 8})
     void registerCar(int labCount) {
-        RacingCar car1 = mock(RacingCar.class);
-        RacingCar car2 = mock(RacingCar.class);
-        RacingCar car3 = mock(RacingCar.class);
+        RacingCar car1 = new RacingCar(new AlwaysGoStrategy());
 
         RacingGame racingGame = new RacingGame(labCount);
         racingGame.registerCar(car1);
-        racingGame.registerCar(car2);
-        racingGame.registerCar(car3);
-
         racingGame.start();
 
-        verify(car1, times(labCount)).move();
-        verify(car2, times(labCount)).move();
-        verify(car3, times(labCount)).move();
+        assertEquals(new Position(labCount), car1.getPosition());
     }
-
 
 }

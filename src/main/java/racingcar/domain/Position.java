@@ -4,18 +4,18 @@ import java.util.Objects;
 
 public class Position implements Cloneable {
 
-    private int value;
+    private int position;
 
     public Position() {
-        this.value = 0;
+        this(0);
     }
 
     public Position(int value) {
-        this.value = value;
+        this.position = value;
     }
 
     public void forward() {
-        this.value += 1;
+        this.position += 1;
     }
 
     @Override
@@ -23,18 +23,18 @@ public class Position implements Cloneable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Position position1 = (Position) o;
-        return value == position1.value;
+        return position == position1.position;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value);
+        return Objects.hash(position);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i=0 ; i<value ; i++) {
+        for (int i=0 ; i<position ; i++) {
             sb.append("-");
         }
         return sb.toString();
