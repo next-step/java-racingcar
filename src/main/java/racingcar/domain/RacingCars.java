@@ -20,7 +20,7 @@ public class RacingCars implements Iterable<RacingCar> {
         Position maxPosition = Collections.max(positions);
 
         List<RacingCar> farthestRacingCars = cars.stream()
-                .filter((car) -> car.getPosition().equals(maxPosition))
+                .filter((car) -> car.isInPosition(maxPosition))
                 .collect(Collectors.toList());
 
         return new RacingCars(farthestRacingCars);

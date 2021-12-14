@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import racingcar.exception.RacingGameException;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,6 +34,10 @@ public final class Record {
         }
 
         return snapshot;
+    }
+
+    public RacingCars calculateLeader() {
+        return racingCars.getFarthestRacingCars();
     }
 
     public RacingCars getRacingCars() {

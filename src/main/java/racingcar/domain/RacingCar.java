@@ -26,6 +26,10 @@ public class RacingCar implements Cloneable {
         }
     }
 
+    public boolean isInPosition(Position position) {
+        return this.position.equals(position);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

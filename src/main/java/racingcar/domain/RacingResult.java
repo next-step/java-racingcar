@@ -21,8 +21,7 @@ public class RacingResult {
     public RacingCars getWinners() {
         Record record = records.getLast();
 
-        return record.getRacingCars()
-                .getFarthestRacingCars();
+        return record.calculateLeader();
     }
 
 }
