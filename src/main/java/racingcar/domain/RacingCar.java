@@ -11,9 +11,13 @@ public class RacingCar implements Cloneable {
     private Position position;
 
     public RacingCar(RacingCarName name, MovingStrategy movingStrategy) {
+        this(name, new Position(), movingStrategy);
+    }
+
+    public RacingCar(RacingCarName name, Position position, MovingStrategy movingStrategy) {
         this.name = name;
+        this.position = position;
         this.movingStrategy = movingStrategy;
-        this.position = new Position();
     }
 
     public void move() {
