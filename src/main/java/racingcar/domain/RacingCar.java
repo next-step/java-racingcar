@@ -6,9 +6,9 @@ import java.util.Objects;
 
 public class RacingCar implements Cloneable {
 
-    private RacingCarName name;
-    private Position position;
+    private final RacingCarName name;
     private final MovingStrategy movingStrategy;
+    private Position position;
 
     public RacingCar(RacingCarName name, MovingStrategy movingStrategy) {
         this.name = name;
@@ -18,7 +18,7 @@ public class RacingCar implements Cloneable {
 
     public void move() {
         if (movingStrategy.movable()) {
-            position.forward();
+            this.position = position.forward();
         }
     }
 

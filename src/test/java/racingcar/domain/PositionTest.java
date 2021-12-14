@@ -22,7 +22,7 @@ public class PositionTest {
         Position position = new Position(2);
         Position expectedResult = new Position(3);
 
-        position.forward();
+        position = position.forward();
 
         assertEquals(expectedResult, position);
     }

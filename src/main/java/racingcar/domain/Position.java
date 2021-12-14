@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Position implements Cloneable, Comparable<Position> {
 
-    private int position;
+    private final int position;
 
     public Position() {
         this(0);
@@ -14,8 +14,8 @@ public class Position implements Cloneable, Comparable<Position> {
         this.position = value;
     }
 
-    public void forward() {
-        this.position += 1;
+    public Position forward() {
+        return new Position(this.position + 1);
     }
 
     @Override
