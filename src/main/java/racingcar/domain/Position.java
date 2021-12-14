@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-public class Position implements Cloneable, Comparable<Position> {
+public final class Position implements Cloneable, Comparable<Position> {
 
     private final int position;
 

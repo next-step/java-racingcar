@@ -18,7 +18,7 @@ public class RacingCar implements Cloneable {
 
     public void move() {
         if (movingStrategy.movable()) {
-            this.position = position.forward();
+            position = position.forward();
         }
     }
 
