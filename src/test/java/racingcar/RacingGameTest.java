@@ -9,9 +9,8 @@ import racingcar.domain.Position;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCarName;
 import racingcar.domain.RacingResult;
-import racingcar.domain.movingstrategy.AlwaysStopStrategy;
 import racingcar.domain.movingstrategy.AlwaysGoStrategy;
-import racingcar.domain.movingstrategy.MovingStrategy;
+import racingcar.domain.movingstrategy.AlwaysStopStrategy;
 import racingcar.domain.movingstrategy.RandomMovingStrategy;
 import racingcar.exception.RacingGameException;
 
