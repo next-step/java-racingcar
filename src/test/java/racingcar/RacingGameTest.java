@@ -1,5 +1,6 @@
 package racingcar;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -19,7 +20,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RacingGameTest {
 
-    private RacingCarName aName = new RacingCarName("aName");
+    private RacingCar alwaysGoingRacingCar;
+    private RacingCar alwayStoppingRacingCar;
+    private RacingCar randomMovingRacingCar;
+
+    @BeforeEach
+    public void setUp() {
+        alwaysGoingRacingCar = new RacingCar(new RacingCarName("go"), new AlwaysGoStrategy());
+        alwayStoppingRacingCar = new RacingCar(new RacingCarName("stop"), new AlwaysStopStrategy());
+        randomMovingRacingCar = new RacingCar(new RacingCarName("rand"), RandomMovingStrategy.getInatance());
+    }
 
     @Test
     @DisplayName("start 테스트: 등록된 차량이 없으면 시작할 수 없다.")
@@ -33,8 +43,8 @@ public class RacingGameTest {
     @DisplayName("start 테스트: 종료된 레이스는 다시 시작할 수 없다.")
     void start2() {
         RacingGame racingGame = new RacingGame(2);
-        racingGame.registerCar(new RacingCar(aName, RandomMovingStrategy.getInatance()));
-        racingGame.registerCar(new RacingCar(aName, RandomMovingStrategy.getInatance()));
+        racingGame.registerCar(alwaysGoingRacingCar);
+        racingGame.registerCar(alwayStoppingRacingCar);
 
         racingGame.start();
 
@@ -47,11 +57,8 @@ public class RacingGameTest {
     void start3() {
         int labCount = 3;
 
-        MovingStrategy alwaysGoStrategy = new AlwaysGoStrategy();
-        MovingStrategy alwaysStopStrategy = new AlwaysStopStrategy();
-
-        RacingCar car1 = new RacingCar(aName, alwaysGoStrategy);
-        RacingCar car2 = new RacingCar(aName, alwaysStopStrategy);
+        RacingCar car1 = alwaysGoingRacingCar;
+        RacingCar car2 = alwayStoppingRacingCar;
 
         RacingGame racingGame = new RacingGame(labCount);
         racingGame.registerCar(car1);
@@ -72,19 +79,19 @@ public class RacingGameTest {
     @DisplayName("registerCar 테스트: 종료된 레이스에는 차량을 추가할 수 없다.")
     void registerCar() {
         RacingGame racingGame = new RacingGame(2);
-        racingGame.registerCar(new RacingCar(aName, RandomMovingStrategy.getInatance()));
-        racingGame.registerCar(new RacingCar(aName, RandomMovingStrategy.getInatance()));
+        racingGame.registerCar(alwaysGoingRacingCar);
+        racingGame.registerCar(alwayStoppingRacingCar);
 
         racingGame.start();
 
-        assertThrows(RacingGameException.class, () -> racingGame.registerCar(new RacingCar(aName, RandomMovingStrategy.getInatance())));
+        assertThrows(RacingGameException.class, () -> racingGame.registerCar(randomMovingRacingCar));
     }
 
     @ParameterizedTest
     @DisplayName("registerCar 테스트: 설정 된 lab만큼 각 차량의 move가 호출되어야 한다.")
     @ValueSource(ints = {1, 3, 5, 2, 8})
     void registerCar(int labCount) {
-        RacingCar car1 = new RacingCar(aName, new AlwaysGoStrategy());
+        RacingCar car1 = alwaysGoingRacingCar;
 
         RacingGame racingGame = new RacingGame(labCount);
         racingGame.registerCar(car1);
