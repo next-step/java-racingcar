@@ -1,9 +1,6 @@
 package racingcar.domain;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Spliterator;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -57,7 +54,15 @@ public class RacingCars implements Iterable<RacingCar> {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return cars.equals(((RacingCars)obj).cars);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCars that = (RacingCars) o;
+        return Objects.equals(cars, that.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
     }
 }

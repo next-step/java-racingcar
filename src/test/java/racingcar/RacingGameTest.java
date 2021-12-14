@@ -8,7 +8,7 @@ import racingcar.domain.Position;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCarName;
 import racingcar.domain.RacingResult;
-import racingcar.domain.movingstrategy.AlwayStopStrategy;
+import racingcar.domain.movingstrategy.AlwaysStopStrategy;
 import racingcar.domain.movingstrategy.AlwaysGoStrategy;
 import racingcar.domain.movingstrategy.MovingStrategy;
 import racingcar.domain.movingstrategy.RandomMovingStrategy;
@@ -16,7 +16,6 @@ import racingcar.exception.RacingGameException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
 
 public class RacingGameTest {
 
@@ -49,7 +48,7 @@ public class RacingGameTest {
         int labCount = 3;
 
         MovingStrategy alwaysGoStrategy = new AlwaysGoStrategy();
-        MovingStrategy alwaysStopStrategy = new AlwayStopStrategy();
+        MovingStrategy alwaysStopStrategy = new AlwaysStopStrategy();
 
         RacingCar car1 = new RacingCar(aName, alwaysGoStrategy);
         RacingCar car2 = new RacingCar(aName, alwaysStopStrategy);

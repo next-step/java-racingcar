@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.movingstrategy.AlwayStopStrategy;
+import racingcar.domain.movingstrategy.AlwaysStopStrategy;
 import racingcar.domain.movingstrategy.AlwaysGoStrategy;
 import racingcar.domain.movingstrategy.MovingStrategy;
 
@@ -16,7 +16,7 @@ public class RacingCarTest {
     @Test
     @DisplayName("move 테스트: movingStrategy.movable이 false면 움직이지 않는다.")
     void move1() {
-        MovingStrategy movingStrategy = new AlwayStopStrategy();
+        MovingStrategy movingStrategy = new AlwaysStopStrategy();
 
         RacingCar racingCar = new RacingCar(aName, movingStrategy);
 

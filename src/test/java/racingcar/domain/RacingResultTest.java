@@ -3,6 +3,7 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.RacingGame;
+import racingcar.domain.movingstrategy.AlwaysStopStrategy;
 import racingcar.domain.movingstrategy.AlwaysGoStrategy;
 
 import java.util.Arrays;
@@ -16,7 +17,7 @@ public class RacingResultTest {
     void getWinners() {
         RacingCar racingCarA = new RacingCar(new RacingCarName("a"), new AlwaysGoStrategy());
         RacingCar racingCarB = new RacingCar(new RacingCarName("b"), new AlwaysGoStrategy());
-        RacingCar racingCarC = new RacingCar(new RacingCarName("c"), new AlwaysGoStrategy());
+        RacingCar racingCarC = new RacingCar(new RacingCarName("c"), new AlwaysStopStrategy());
 
         RacingGame racingGame = new RacingGame(3);
         racingGame.registerCar(racingCarA);

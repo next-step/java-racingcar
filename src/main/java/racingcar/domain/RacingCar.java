@@ -23,8 +23,17 @@ public class RacingCar implements Cloneable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return Objects.equals(name, racingCar.name) &&
+                Objects.equals(position, racingCar.position);
+    }
+
+    @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return Objects.hash(name, position);
     }
 
     @Override
