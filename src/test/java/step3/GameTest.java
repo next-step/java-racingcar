@@ -32,7 +32,7 @@ public class GameTest {
         inputView.viewCountCarInputMessage();
         cars.createCars();
         inputView.viewCountCar();
-
+//
 
         inputView.viewCountRoundInputMessage();
         inputView.viewCountRound();
