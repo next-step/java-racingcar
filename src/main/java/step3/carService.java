@@ -3,9 +3,7 @@ package step3;
 import java.util.Scanner;
 
 
-public class InputScanner {
-
-
+public class carService {
     public static void main(String[] args){
         InputView inputView = new InputView();
         //TODO : 사용자가 입력한값을 리턴하도록해서 static 변수 직접 접근 안하기

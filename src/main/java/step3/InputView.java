@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class InputView {
 
+    private static String sc = new Scanner(System.in).nextLine();
     /*TODO : 각각의 메소드에서 스캐너로 사용자의 값을 입력받고 리턴하면 불필요한 변수임.
-    Game game = new Game(5);
+        Game game = new Game(5);
 
-    public static int carCount;
-    public static int roundCount;*/
+        public static int carCount;
+        public static int roundCount;*/
 
     public void viewCountCarInputMessage(){
         System.out.println("자동차 대수는 몇 대인가요?");
@@ -27,7 +28,7 @@ public class InputView {
     }
 
     public static int inputScanner(){
-        return Integer.parseInt(new Scanner(System.in).nextLine());
+        return Integer.parseInt(sc);
     }
 
     public static void inputScanUn(){
