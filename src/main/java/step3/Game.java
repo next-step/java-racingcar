@@ -4,7 +4,7 @@ public class Game {
     public int roundCount;
 
     public Cars cars = new Cars();
-    public static Car car = new Car();
+    public Car car = new Car();
 
     public Game() {}
 
