@@ -2,18 +2,12 @@ package step3;
 
 public class Game {
     public int roundCount;
-    public int carCount;
 
-    public Cars cars = new Cars();
+    public Cars cars = new Cars(3);
     public static Car car = new Car();
 
     public Game(int roundCount) {
         this.roundCount = roundCount;
-    }
-
-    public Game(int roundCount, int carCount) {
-        this.roundCount = roundCount;
-        this.carCount = carCount;
     }
 
     public int getRoundCount(){

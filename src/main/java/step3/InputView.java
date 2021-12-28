@@ -4,38 +4,35 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private static String sc = new Scanner(System.in).nextLine();
+    private String sc = new Scanner(System.in).nextLine();
     /*TODO : 각각의 메소드에서 스캐너로 사용자의 값을 입력받고 리턴하면 불필요한 변수임.
-        Game game = new Game(5);
-
-        public static int carCount;
-        public static int roundCount;*/
+    */
 
     public void viewCountCarInputMessage(){
         System.out.println("자동차 대수는 몇 대인가요?");
     }
 
-    public void viewCountCar(){
-        System.out.println(Game.cars.getSize());
+    public void viewCountCar(int carsSize){
+        System.out.println(carsSize);
     }
 
     public void viewCountRoundInputMessage(){
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public void viewCountRound(){
-        System.out.println(game.getRoundCount());
+    public void viewCountRound(int roundCount){
+        System.out.println(roundCount);
     }
 
-    public static int inputScanner(){
+    public int inputScanner(){
         return Integer.parseInt(sc);
     }
 
-    public static void inputScanUn(){
+    public void inputScanUn(){
         System.out.println("자동차 대수는 몇 대 인가요?");
-        carCount = inputScanner();
+        Cars cars = new Cars(inputScanner());
         System.out.println("시도할 회수는 몇 회 인가요?");
-        roundCount = inputScanner();
+        Game game = new Game(inputScanner());
     }
 
 }
