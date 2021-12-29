@@ -1,7 +1,11 @@
 package racing.domain;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import racing.utils.MovingStrategy;
 import racing.utils.RandomValueMovingStrategy;
@@ -17,12 +21,12 @@ public class Racing {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(this.cars);
     }
 
     public List<Car> roundStart() {
         this.cars.forEach(car -> car.move(MOVING_STRATEGY));
-        return cars;
+        return getCars();
     }
 
     public List<String> winners() {

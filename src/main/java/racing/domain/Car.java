@@ -10,10 +10,7 @@ public class Car {
     private int distance;
 
     public Car(final String name) {
-        if (StringUtils.isBlank(name)) {
-            throw new IllegalStateException("자동차 이름 값은 존재해야 합니다.");
-        }
-
+        checkName(name);
         this.name = name;
         this.distance = 0;
     }
@@ -37,20 +34,17 @@ public class Car {
         }
     }
 
-    public String roundResult() {
-        return this.name + " : " + displayDistance();
-    }
-
     public boolean isWinner(int maxMove) {
         return this.distance == maxMove;
     }
 
-    private String displayDistance() {
-        String distance = "";
-        for (int i = 0; i < this.distance; i++) {
-            distance += "-";
+    private void checkName(String name) {
+        if (StringUtils.isBlank(name)) {
+            throw new IllegalStateException("자동차 이름 값은 존재해야 합니다.");
         }
-        return distance;
+        if (name.length() > 5) {
+            throw new IllegalStateException("자동차 이름은 5자 이하여야 합니다.");
+        }
     }
 
 }

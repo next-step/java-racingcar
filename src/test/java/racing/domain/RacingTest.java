@@ -2,7 +2,6 @@ package racing.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,15 +11,15 @@ import racing.utils.MovingStrategy;
 
 class RacingTest {
 
-    private List<String> names = new ArrayList<>();
+    private List<String> names;
 
-    private static final String winner = "winner";
-    private static final String loser = "loser";
+    private static final String WINNER = "winner";
+    private static final String LOSER = "loser";
 
     @BeforeEach
     public void setUp() {
-        names.add(winner);
-        names.add(loser);
+        names.add(WINNER);
+        names.add(LOSER);
     }
 
     @Test
@@ -35,9 +34,9 @@ class RacingTest {
 
         //then
         assertEquals(racing.getCars().size(), 2);
-        assertEquals(appleCar.getName(), winner);
+        assertEquals(appleCar.getName(), WINNER);
         assertEquals(appleCar.getDistance(), 0);
-        assertEquals(peachCar.getName(), loser);
+        assertEquals(peachCar.getName(), LOSER);
         assertEquals(peachCar.getDistance(), 0);
     }
 
@@ -53,7 +52,7 @@ class RacingTest {
         List<String> winners = racing.winners();
 
         //then
-        assertTrue(winners.contains(winner));
+        assertTrue(winners.contains(WINNER));
     }
 
     @Test
@@ -70,7 +69,7 @@ class RacingTest {
 
         //then
         assertEquals(winners.size(), 2);
-        assertTrue(winners.contains(winner));
-        assertTrue(winners.contains(loser));
+        assertTrue(winners.contains(WINNER));
+        assertTrue(winners.contains(LOSER));
     }
 }
