@@ -36,7 +36,7 @@ public class Game {
         view.printTurnResult(cars.getCars());
     }
 
-    public int makeRandomNumber(){
+    public int makeRandomNumber() {
         Random random = new Random();
         return random.nextInt(RANDOM_NUMBER_BOUND);
     }
