@@ -29,12 +29,16 @@ public class Game {
     }
 
     public void carRacing() {
-        Random random = new Random();
         for (int i = 0; i < cars.getCars().size(); i++) {
-            int randomNumber = random.nextInt(RANDOM_NUMBER_BOUND);
+            int randomNumber = makeRandomNumber();
             carService.carsMove(i, randomNumber);
         }
         view.printTurnResult(cars.getCars());
+    }
+
+    public int makeRandomNumber(){
+        Random random = new Random();
+        return random.nextInt(RANDOM_NUMBER_BOUND);
     }
 
     public void findWinner() {

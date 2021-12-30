@@ -9,9 +9,9 @@ import java.util.List;
 public class CarService {
 
     Cars cars;
-    static final int CAR_MOVE = 4;
-    static final String ONE_MOVING = "-";
+    static final int CAR_MOVE_CONDITION = 4;
     static final int ONE_MOVING_DISTANCE = 1;
+    static final String ONE_MOVING = "-";
 
     public Cars readyCars(String carsName) {
         cars = new Cars(carsName);
@@ -19,7 +19,7 @@ public class CarService {
     }
 
     public void carsMove(int carIndex, int randomNumber) {
-        if (randomNumber >= CAR_MOVE) {
+        if (randomNumber >= CAR_MOVE_CONDITION) {
             Car targetCar = cars.getCar(carIndex);
             String newMove = targetCar.getMoving() + ONE_MOVING;
             targetCar.setMoving(newMove);
