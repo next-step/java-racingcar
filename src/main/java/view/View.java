@@ -1,38 +1,38 @@
+package view;
+
+import domain.Car;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class View {
-    Car car = new Car();
     Scanner scanner = new Scanner(System.in);
 
-    public void enterCarsName() {
+    public String enterCarsName() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String carsName = scanner.next();
-        car.splitCarsName(carsName);
+        return scanner.next();
     }
 
     public int enterGameTurn() {
         System.out.println("시도할 회수는 몇회인가요?");
-        int gameTurn = scanner.nextInt();
-        System.out.println();
-        return gameTurn;
+        return scanner.nextInt();
     }
 
-    //여기가 출력이 안됨.
-    public void printTurnResult() {
-        for (int i = 0; i < Car.cars.size(); i++) {
-            String carName = Car.cars.get(i);
-            String carMoving = Car.carsMoving.get(i);
+    public void printTurnResult(List<Car> cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            String carName = cars.get(i).getName();
+            String carMoving = cars.get(i).getMoving();
             System.out.println(carName + " : " + carMoving);
         }
         System.out.println();
     }
 
-    public void printWinnerResult() {
-        for (int i = 0; i < Car.winner.size(); i++) {
+    public void printWinnerResult(List<Car> winner) {
+        for (int i = 0; i < winner.size(); i++) {
             if (i != 0) {
                 System.out.print(", ");
             }
-            System.out.print(Car.winner.get(i));
+            System.out.print(winner.get(i).getName());
         }
         System.out.println("가 최종 우승했습니다");
     }
