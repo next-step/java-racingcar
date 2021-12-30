@@ -28,11 +28,9 @@ public class View {
     }
 
     public void printWinnerResult(List<String> winner) {
-        for (int i = 0; i < winner.size(); i++) {
-            if (i != 0) {
-                System.out.print(", ");
-            }
-            System.out.print(winner.get(i));
+        System.out.print(winner.get(0));
+        for (int i = 1; i < winner.size(); i++) {
+            System.out.print(", " + winner.get(i));
         }
         System.out.println("가 최종 우승했습니다");
     }
