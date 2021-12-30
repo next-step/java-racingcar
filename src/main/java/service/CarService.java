@@ -12,7 +12,6 @@ public class CarService {
     static final int CAR_MOVE = 4;
     static final String ONE_MOVING = "-";
     static final int ONE_MOVING_DISTANCE = 1;
-    static final String WINNER = "win";
 
     public Cars readyCars(String carsName) {
         cars = new Cars(carsName);

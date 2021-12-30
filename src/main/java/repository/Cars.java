@@ -9,6 +9,7 @@ public class Cars {
     private List<Car> cars = new ArrayList<>();
     static final int CAR_NAME_LENGTH_BOUND = 5;
     static final int START_DISTANCE = 0;
+    static final String COMMA = ",";
     static final String STARTING_LINE = "";
     static final String START = "start";
     static final String WINNER = "win";
@@ -41,11 +42,11 @@ public class Cars {
         cars.add(car);
     }
 
-    public void splitCarsName(String carsName) {
-        String[] carsList = carsName.split(",");
-        for (int i = 0; i < carsList.length; i++) {
-            validateNameLengthCheck(carsList[i]);
-            addCars(carsList[i]);
+    public void splitCarsName(String carsNames) {
+        String[] carName = carsNames.split(COMMA);
+        for (int i = 0; i < carName.length; i++) {
+            validateNameLengthCheck(carName[i]);
+            addCars(carName[i]);
         }
     }
 
