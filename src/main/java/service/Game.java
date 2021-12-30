@@ -3,6 +3,7 @@ package service;
 import repository.Cars;
 import view.View;
 
+import java.util.List;
 import java.util.Random;
 
 public class Game {
@@ -37,8 +38,8 @@ public class Game {
 
     public void findWinner() {
         int maxDistance = carService.findMaxDistance();
-        carService.findMaxDistanceCar(maxDistance);
-        view.printWinnerResult(cars.getWinner());
+        List<String> winner = carService.findMaxDistanceCar(maxDistance);
+        view.printWinnerResult(winner);
     }
 
 }

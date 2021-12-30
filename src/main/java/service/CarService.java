@@ -3,12 +3,16 @@ package service;
 import domain.Car;
 import repository.Cars;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CarService {
 
     Cars cars;
     static final int CAR_MOVE = 4;
     static final String ONE_MOVING = "-";
     static final int ONE_MOVING_DISTANCE = 1;
+    static final String WINNER = "win";
 
     public Cars readyCars(String carsName) {
         cars = new Cars(carsName);
@@ -41,11 +45,12 @@ public class CarService {
         return maxDistance;
     }
 
-    public void findMaxDistanceCar(int maxDistance) {
+    public List<String> findMaxDistanceCar(int maxDistance) {
+        List<String> winner = new ArrayList<>();
         for (int i = 0; i < cars.getCars().size(); i++) {
             int distance = cars.getCar(i).getDistance();
-            cars.addWinnerCar(maxDistance, distance, i);
+            cars.updateWinnerCar(winner, maxDistance, distance, i);
         }
+        return winner;
     }
-
 }

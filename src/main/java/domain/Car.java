@@ -4,14 +4,16 @@ public class Car {
     private String name;
     private String moving;
     private int distance;
+    private String status;
 
     public Car() {
     }
 
-    public Car(String name, String moving, int distance) {
+    public Car(String name, String moving, int distance, String status) {
         this.name = name;
         this.moving = moving;
         this.distance = 0;
+        this.status = status;
     }
 
     public String getName() {
@@ -32,5 +34,9 @@ public class Car {
 
     public void setDistance(int distance) {
         this.distance = distance;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -7,9 +7,11 @@ import java.util.List;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();
-    private List<Car> winner = new ArrayList<>();
     static final int CAR_NAME_LENGTH_BOUND = 5;
     static final int START_DISTANCE = 0;
+    static final String STARTING_LINE = "";
+    static final String START = "start";
+    static final String WINNER = "win";
 
     public Cars(String carsName) {
         splitCarsName(carsName);
@@ -27,18 +29,15 @@ public class Cars {
         cars.set(carIndex, targetCar);
     }
 
-    public void addWinnerCar(int maxDistance, int distance, int carIndex) {
+    public void updateWinnerCar(List<String> winner, int maxDistance, int distance, int carIndex) {
         if (distance == maxDistance) {
-            winner.add(cars.get(carIndex));
+            cars.get(carIndex).setStatus(WINNER);
+            winner.add(cars.get(carIndex).getName());
         }
     }
 
-    public List<Car> getWinner() {
-        return winner;
-    }
-
     public void addCars(String carName) {
-        Car car = new Car(carName, "", START_DISTANCE);
+        Car car = new Car(carName, STARTING_LINE, START_DISTANCE, START);
         cars.add(car);
     }
 
