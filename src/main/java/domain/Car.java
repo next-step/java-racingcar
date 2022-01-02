@@ -1,42 +1,37 @@
 package domain;
 
 public class Car {
-    private String name;
-    private String moving;
+    private final String name;
     private int distance;
-    private String status;
+    private boolean winner;
+    static final int CAR_NAME_LENGTH_BOUND = 5;
 
-    public Car() {
-    }
-
-    public Car(String name, String moving, int distance, String status) {
+    public Car(String name, int distance, boolean winner) {
+        validateNameLengthCheck(name);
         this.name = name;
-        this.moving = moving;
         this.distance = 0;
-        this.status = status;
+        this.winner = winner;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getMoving() {
-        return moving;
-    }
-
     public int getDistance() {
         return distance;
     }
 
-    public void setMoving(String moving) {
-        this.moving = moving;
+    public void updateWinner() {
+        this.winner = true;
     }
 
-    public void setDistance(int distance) {
-        this.distance = distance;
+    public void updateDistance() {
+        this.distance += 1;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void validateNameLengthCheck(final String name) {
+        if (name.length() > CAR_NAME_LENGTH_BOUND) {
+            throw new IllegalArgumentException("car name is too long");
+        }
     }
 }

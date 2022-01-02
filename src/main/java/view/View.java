@@ -9,6 +9,7 @@ public class View {
     Scanner scanner = new Scanner(System.in);
     static final String IS = " : ";
     static final String COMMA = ", ";
+    static final String ONE_MOVING = "-";
 
     public String enterCarsName() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
@@ -22,9 +23,15 @@ public class View {
 
     public void printTurnResult(List<Car> cars) {
         for (int i = 0; i < cars.size(); i++) {
-            String carName = cars.get(i).getName();
-            String carMoving = cars.get(i).getMoving();
-            System.out.println(carName + IS + carMoving);
+            System.out.print(cars.get(i).getName() + IS);
+            printCarMoving(cars.get(i).getDistance());
+        }
+        System.out.println();
+    }
+
+    public void printCarMoving(int distance) {
+        for (int i = 0; i < distance; i++) {
+            System.out.print(ONE_MOVING);
         }
         System.out.println();
     }

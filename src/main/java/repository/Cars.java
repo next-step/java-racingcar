@@ -7,12 +7,9 @@ import java.util.List;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();
-    static final int CAR_NAME_LENGTH_BOUND = 5;
     static final int START_DISTANCE = 0;
     static final String COMMA = ",";
-    static final String STARTING_LINE = "";
-    static final String START = "start";
-    static final String WINNER = "win";
+    static final boolean WINNER = false;
 
     public Cars(String carsName) {
         splitCarsName(carsName);
@@ -26,33 +23,22 @@ public class Cars {
         return cars.get(index);
     }
 
-    public void updateCar(int carIndex, Car targetCar) {
-        cars.set(carIndex, targetCar);
-    }
-
-    public void updateWinnerCar(List<String> winner, int maxDistance, int distance, int carIndex) {
+    public void checkWinnerCar(List<String> winner, int maxDistance, int distance, int carIndex) {
         if (distance == maxDistance) {
-            cars.get(carIndex).setStatus(WINNER);
+            cars.get(carIndex).updateWinner();
             winner.add(cars.get(carIndex).getName());
         }
     }
 
     public void addCars(String carName) {
-        Car car = new Car(carName, STARTING_LINE, START_DISTANCE, START);
+        Car car = new Car(carName, START_DISTANCE, WINNER);
         cars.add(car);
     }
 
     public void splitCarsName(String carsNames) {
         String[] carName = carsNames.split(COMMA);
         for (int i = 0; i < carName.length; i++) {
-            validateNameLengthCheck(carName[i]);
             addCars(carName[i]);
-        }
-    }
-
-    public void validateNameLengthCheck(final String carName) {
-        if (carName.length() > CAR_NAME_LENGTH_BOUND) {
-            throw new IllegalArgumentException("car name is too long");
         }
     }
 
