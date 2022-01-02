@@ -11,9 +11,12 @@ public class CarService {
     Cars cars;
     static final int CAR_MOVE_CONDITION = 4;
 
-    public Cars readyCars(String carsName) {
-        cars = new Cars(carsName);
-        return cars;
+    public CarService(String carsName) {
+        this.cars = new Cars(carsName);
+    }
+
+    public List<Car> getCars() {
+        return cars.getCars();
     }
 
     public void carsMove(int carIndex, int randomNumber) {

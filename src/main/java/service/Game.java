@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Game {
-    Cars cars;
-    CarService carService = new CarService();
+    CarService carService;
     View view = new View();
     int gameTurn;
     static final int RANDOM_NUMBER_BOUND = 10;
@@ -19,7 +18,7 @@ public class Game {
 
     private void gameStart() {
         String carsName = view.enterCarsName();
-        cars = carService.readyCars(carsName);
+        carService = new CarService(carsName);
         gameTurn = view.enterGameTurn();
         System.out.println("실행결과");
         for (int i = 0; i < gameTurn; i++) {
@@ -29,11 +28,11 @@ public class Game {
     }
 
     public void carRacing() {
-        for (int i = 0; i < cars.getCars().size(); i++) {
+        for (int i = 0; i < carService.getCars().size(); i++) {
             int randomNumber = makeRandomNumber();
             carService.carsMove(i, randomNumber);
         }
-        view.printTurnResult(cars.getCars());
+        view.printTurnResult(carService.getCars());
     }
 
     public int makeRandomNumber() {
