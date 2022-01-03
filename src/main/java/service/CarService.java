@@ -2,6 +2,7 @@ package service;
 
 import domain.Car;
 import repository.Cars;
+import repository.Winner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +10,12 @@ import java.util.List;
 public class CarService {
 
     Cars cars;
+    Winner winner;
     static final int CAR_MOVE_CONDITION = 4;
 
     public CarService(String carsName) {
         this.cars = new Cars(carsName);
+        this.winner = new Winner();
     }
 
     public List<Car> getCars() {
@@ -42,11 +45,9 @@ public class CarService {
     }
 
     public List<String> findMaxDistanceCar(int maxDistance) {
-        List<String> winner = new ArrayList<>();
         for (int i = 0; i < cars.getCars().size(); i++) {
-            int distance = cars.getCar(i).getDistance();
-            cars.checkWinnerCar(winner, maxDistance, distance, i);
+            winner.findWinnerCar(cars.getCar(i), maxDistance);
         }
-        return winner;
+        return winner.getWinnerCar();
     }
 }

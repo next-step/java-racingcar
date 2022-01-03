@@ -9,7 +9,6 @@ public class Cars {
     private List<Car> cars = new ArrayList<>();
     static final int START_DISTANCE = 0;
     static final String COMMA = ",";
-    static final boolean WINNER = false;
 
     public Cars(String carsName) {
         splitCarsName(carsName);
@@ -23,15 +22,8 @@ public class Cars {
         return cars.get(index);
     }
 
-    public void checkWinnerCar(List<String> winner, int maxDistance, int distance, int carIndex) {
-        if (distance == maxDistance) {
-            cars.get(carIndex).updateWinner();
-            winner.add(cars.get(carIndex).getName());
-        }
-    }
-
     public void addCars(String carName) {
-        Car car = new Car(carName, START_DISTANCE, WINNER);
+        Car car = new Car(carName, START_DISTANCE);
         cars.add(car);
     }
 

@@ -1,6 +1,5 @@
 package service;
 
-import repository.Cars;
 import view.View;
 
 import java.util.List;
