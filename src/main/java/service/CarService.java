@@ -4,7 +4,6 @@ import domain.Car;
 import repository.Cars;
 import repository.Winner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarService {

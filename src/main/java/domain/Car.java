@@ -19,7 +19,6 @@ public class Car {
         return distance;
     }
 
-
     public void updateDistance() {
         this.distance += 1;
     }
