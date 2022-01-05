@@ -1,14 +1,15 @@
 package repository;
 
 import domain.Car;
+import service.RandomNumber;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();
-    static final int START_DISTANCE = 0;
-    static final String COMMA = ",";
+    private static final int START_DISTANCE = 0;
+    private static final String COMMA = ",";
 
     public Cars(String carsName) {
         splitCarsName(carsName);
@@ -16,10 +17,6 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
-    }
-
-    public Car getCar(int index) {
-        return cars.get(index);
     }
 
     public void addCars(String carName) {
@@ -32,6 +29,38 @@ public class Cars {
         for (int i = 0; i < carName.length; i++) {
             addCars(carName[i]);
         }
+    }
+
+    public List<Car> carsMove() {
+        for (int i = 0; i < cars.size(); i++) {
+            int randomNumber = RandomNumber.makeRandomNumber();
+            cars.get(i).updateDistance(randomNumber);
+        }
+        return cars;
+    }
+
+    public int findMaxDistance() {
+        int maxDistance = 0;
+        for (int i = 0; i < cars.size(); i++) {
+            int distance = cars.get(i).getDistance();
+            maxDistance = checkMaxDistance(maxDistance, distance);
+        }
+        return maxDistance;
+    }
+
+    public int checkMaxDistance(int maxDistance, int distance) {
+        if (distance > maxDistance) {
+            return distance;
+        }
+        return maxDistance;
+    }
+
+    public List<String> findMaxDistanceCar(int maxDistance) {
+        Winner winner = new Winner();
+        for (int i = 0; i < cars.size(); i++) {
+            winner.findWinnerCar(cars.get(i), maxDistance);
+        }
+        return winner.getWinnerCar();
     }
 
 }

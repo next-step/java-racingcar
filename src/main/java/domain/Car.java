@@ -3,7 +3,8 @@ package domain;
 public class Car {
     private final String name;
     private int distance;
-    static final int CAR_NAME_LENGTH_BOUND = 5;
+    private static final int CAR_NAME_LENGTH_BOUND = 5;
+    private static final int CAR_MOVE_CONDITION = 4;
 
     public Car(String name, int distance) {
         validateNameLengthCheck(name);
@@ -19,8 +20,10 @@ public class Car {
         return distance;
     }
 
-    public void updateDistance() {
-        this.distance += 1;
+    public void updateDistance(int randomNumber) {
+        if (randomNumber >= CAR_MOVE_CONDITION) {
+            this.distance += 1;
+        }
     }
 
     public void validateNameLengthCheck(final String name) {
