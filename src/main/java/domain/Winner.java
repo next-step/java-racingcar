@@ -1,15 +1,16 @@
-package repository;
+package domain;
 
 import domain.Car;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Winner {
-    private List<String> winner = new ArrayList<>();
+    private final List<String> winner = new ArrayList<>();
 
     public List<String> getWinnerCar() {
-        return winner;
+        return Collections.unmodifiableList(winner);
     }
 
     public void addWinnerCar(String winnerName) {

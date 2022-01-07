@@ -4,9 +4,8 @@ public class Car {
     private final String name;
     private int distance;
     private static final int CAR_NAME_LENGTH_BOUND = 5;
-    private static final int CAR_MOVE_CONDITION = 4;
 
-    public Car(String name, int distance) {
+    public Car(String name) {
         validateNameLengthCheck(name);
         this.name = name;
         this.distance = 0;
@@ -20,8 +19,8 @@ public class Car {
         return distance;
     }
 
-    public void updateDistance(int randomNumber) {
-        if (randomNumber >= CAR_MOVE_CONDITION) {
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.isMovable()) { //구현체가 아닌 인터페이스와 의존 관계
             this.distance += 1;
         }
     }

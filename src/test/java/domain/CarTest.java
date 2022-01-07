@@ -7,18 +7,16 @@ import org.assertj.core.api.Assertions;
 
 class CarTest {
     String carName;
-    int startDistance;
 
     @BeforeEach
     void setUp() {
         carName = "AAA";
-        startDistance = 0;
     }
 
     @Test
     void getName() {
         //given
-        Car car = new Car(carName, startDistance);
+        Car car = new Car(carName);
 
         //when
         String getName = car.getName();
@@ -30,48 +28,58 @@ class CarTest {
     @Test
     void getDistance() {
         //given
-        Car car = new Car(carName, startDistance);
+        Car car = new Car(carName);
 
         //when
         int getDistance = car.getDistance();
 
         //then
-        Assertions.assertThat(getDistance).isEqualTo(startDistance);
+        Assertions.assertThat(getDistance).isEqualTo(0);
     }
 
     @Test
-    void updateDistance() {
+    @DisplayName("랜덤 값이 4이상이라면 자동차 move 성공")
+    void moveSuccess() {
         //given
-        Car car = new Car(carName, startDistance);
+        Car car = new Car(carName);
 
         //when
-        car.updateDistance();
+        car.move(() -> true);
 
         //then
-        Assertions.assertThat(car.getDistance()).isNotEqualTo(startDistance);
+        Assertions.assertThat(car.getDistance()).isNotEqualTo(0);
+    }
+
+
+    @Test
+    @DisplayName("랜덤 값이 3이하라면 자동차 move 실패")
+    void moveFail() {
+        //given
+        Car car = new Car(carName);
+
+        //when
+        car.move(() -> false);
+
+        //then
+        Assertions.assertThat(car.getDistance()).isEqualTo(0);
     }
 
     @Test
     @DisplayName("이름이 5글자 이하 정상")
     void validateNameLengthCheckSuccess() {
-        //Given
-        Car car = new Car(carName, startDistance);
-
-        //when
-        car.validateNameLengthCheck(carName);
+        Assertions.assertThatCode(() -> new Car(carName))
+                .doesNotThrowAnyException();
     }
 
     @Test
     @DisplayName("이름이 5글자 초과시에 오류 발생")
-    void validateNameLengthCheckFail() throws Exception {
+    void validateNameLengthCheckFail() {
         //given
-        String newName = "ABCDEFG";
-        Car car = new Car("ABCDEFG", startDistance);
+        String longName = "ABCDEFG";
 
-        //when
-        IllegalArgumentException e = org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class,
-                () -> car.validateNameLengthCheck(newName));
-
-        Assertions.assertThat(e.getMessage()).isEqualTo("car name is too long");
+        //when, then
+        Assertions.assertThatThrownBy(() -> new Car(longName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("car name is too long");
     }
 }

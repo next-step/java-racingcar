@@ -1,6 +1,5 @@
-package service;
+package domain;
 
-import repository.Cars;
 import view.View;
 
 
@@ -33,7 +32,7 @@ public class Game {
     }
 
     public void findWinner() {
-        int maxDistance = cars.findMaxDistance();
+        final int maxDistance = cars.findMaxDistance();
         view.printWinnerResult(cars.findMaxDistanceCar(maxDistance));
     }
 
