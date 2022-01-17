@@ -23,8 +23,9 @@
     - [ ] 뺄셈(.sub())
     - [ ] 곱셈(.mul())
     - [ ] 나눗셈(.div())
-- [ ] 입력 검증 (Validator)
-- [ ] 입력 형식 (number op number op number ...) 검증 ->IllegalArgumentException throw
+- [x] 입력 검증 (Validator)
+- [x] 입력 형식 (number op number op number ...) 검증 ->IllegalArgumentException throw
+    - [x] 공백인지 ("", " ") 
     - [x] split 후 짝수번째 -> 숫자.
     - [x] split 후 홀수 번쨰 -> 연산자(+, - , *, /)
 
