@@ -14,7 +14,7 @@ class ValidatorTest {
 
 
         // then
-        assertDoesNotThrow(()->Validator.isNumber(split));
+        assertDoesNotThrow(()->Validator.oddIndexIsNumber(split));
     }
 
     @Test
@@ -24,7 +24,7 @@ class ValidatorTest {
         String[] split = userInput.split(" ");
 
         // then
-        assertThrows(IllegalArgumentException.class, ()->Validator.isNumber(split));
+        assertThrows(IllegalArgumentException.class, ()->Validator.oddIndexIsNumber(split));
     }
 
     @Test
@@ -35,6 +35,25 @@ class ValidatorTest {
         System.out.println(split);
 
         // then
-        assertThrows(IllegalArgumentException.class, ()->Validator.isNumber(split));
+        assertThrows(IllegalArgumentException.class, ()->Validator.oddIndexIsNumber(split));
+    }
+
+    @Test
+    void 짝수번째는_연산자이다_성공() {
+        // given
+        String userInput = "1 + 3";
+        String[] split = userInput.split(" ");
+
+        assertDoesNotThrow((()->Validator.evenIndexIsOperator(split)));
+    }
+
+    @Test
+    void 짝수번째는_연산자이다_실패_연산자가_아님() {
+        // given
+        String userInput = "1 2 3";
+        String[] split = userInput.split(" ");
+
+        // then
+        assertThrows(IllegalArgumentException.class, ()->Validator.evenIndexIsOperator(split));
     }
 }

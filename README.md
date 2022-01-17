@@ -26,7 +26,7 @@
 - [ ] 입력 검증 (Validator)
 - [ ] 입력 형식 (number op number op number ...) 검증 ->IllegalArgumentException throw
     - [x] split 후 짝수번째 -> 숫자.
-    - [ ] split 후 홀수 번쨰 -> 연산자(+, - , *, /)
+    - [x] split 후 홀수 번쨰 -> 연산자(+, - , *, /)
 
 입력값이 null이거나 빈 공백 문자일 경우 ç throw 사칙연산 기 호가 아닌 경우 IllegalArgumentException
 throw 사칙 연산을 모두 포함하는 기능 구현 공백 문자열을 빈 공백 문자로 분리하려면 String 클래스의 split(" ") 메소드를 활용한다. 반복적인 패턴을 찾아
