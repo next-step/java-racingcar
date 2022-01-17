@@ -20,4 +20,12 @@ public class UserInput {
         line = br.readLine();
         return line;
     }
+
+    public void split(String userInput) {
+        String[] splits = userInput.split(" ");
+
+        for (int i = 0; i < splits.length; i++) {
+            list.add(splits[i]);
+        }
+    }
 }
