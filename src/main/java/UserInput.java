@@ -28,4 +28,10 @@ public class UserInput {
             list.add(splits[i]);
         }
     }
+
+    public void validateUserInput(String userInput) {
+        if (userInput.trim().equals("")) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+    }
 }
