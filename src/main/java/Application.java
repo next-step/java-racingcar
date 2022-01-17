@@ -1,3 +1,4 @@
+import calculatorFunction.Calculator;
 import calculatorFunction.GetInput;
 
 public class Application {
@@ -5,9 +6,8 @@ public class Application {
         System.out.println("수식을 입력하시오: ");
         String str = GetInput.inputString();
         String[] stringArray = str.split(" ");
-        for(int i=0; i< stringArray.length; i++){
-            System.out.println(stringArray[i]);
-        }
-        //int result = calculate(stringArray);
+        Calculator calculator = new Calculator();
+        int answer = calculator.calculate(stringArray);
+        System.out.println("정답: "+answer);
     }
 }

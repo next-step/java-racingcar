@@ -5,8 +5,10 @@
 * 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
 * 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
 
-문자열 입력 받기 - inputString
-문자열 파싱(숫자, 연산자) - parsing
+문자열 입력 받기 - GetInput#inputString
+문자열 파싱(숫자, 연산자) - split(내장함수)
+문자열 계산(전체 수식 받아서 정답 반환) - Calculator#calculate
+문자배열을 세개씩 나눔 - Calculator#parseOperation(String[] stringArray, int start)
 덧셈 - add
 뺄셈 - sub
 곱셈 - mul
