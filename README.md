@@ -13,8 +13,8 @@
 # 문자열 계산기
 ## 기능 요구 사항
 - [ ] 입력받은 문자열에 따라 사칙 연산(-, +, /, *)을 수행할 수 있다. - `Calculator`
-  - 입력값을 숫자와 부호로 나누는 함수 - `Calculator`.splitInput
-- [ ] 사용자의 입력을 받는다.
+  - [x] 입력값을 숫자와 부호로 나누는 함수 - `Calculator`.splitInput
+- [x] 사용자의 입력을 받는다.
   - [ ] 오류 검증
     - [ ] 입력값이 `null`, 공백일 경우 `IllegalArgumentException`
     - [ ] 사칙 연산 기호가 아닌 경우 `IllegalArgumentException`
