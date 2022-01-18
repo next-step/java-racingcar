@@ -12,4 +12,8 @@ public class Calculator {
     public static int sub(int prev, int next) {
         return prev - next;
     }
+
+    public static int multiply(int prev, int next) {
+        return prev * next;
+    }
 }
