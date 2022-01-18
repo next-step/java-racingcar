@@ -23,7 +23,7 @@ public class Expression {
     }
 
     private static String[] splitUserInputByWhitespace(String userInput) {
-        return userInput.split("\\s+");
+        return userInput.trim().split("\\s+");
     }
 
     public static long evaluate(String[] userInput) {
