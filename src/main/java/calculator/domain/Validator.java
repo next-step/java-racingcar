@@ -12,12 +12,12 @@ public class Validator {
         if(!expression.matches(pattern))
             return false;
 
-        Pattern patternDivideZero = Pattern.compile("[/]\\s*[0]\\s*[-+*/]*");
-        Matcher matcher = patternDivideZero.matcher(expression);
-
-        if(matcher.find()) {
-            return false;
-        }
+//        Pattern patternDivideZero = Pattern.compile("[/]\\s*[0]\\s*[-+*/]*");
+//        Matcher matcher = patternDivideZero.matcher(expression);
+//
+//        if(matcher.find()) {
+//            return false;
+//        }
 
         return true;
 
