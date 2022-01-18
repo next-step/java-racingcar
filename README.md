@@ -2,8 +2,8 @@
 ## 기능 목록
 - [ ] 문자열의 사칙연산을 수행한다. calculator.domain.Calculator#calculate()
   - [X] 문자열은 공백을 기준으로 분리한다. StringUtils#splitExpression()
-  - [ ] 문자열에는 숫자와 사칙연산 기호만 들어올 수 있다. calculator.domain.Calculator#validateOperandAndOperation()
-  - [ ] 빈 문자열 혹 올바른 사칙연산 문자열만 들어올 수 있다. calculator.domain.Calculator#validateIdleExpression()
+  - [X] 빈 문자열 혹 올바른 사칙연산 문자열만 들어올 수 있다. calculator.domain.Calculator#validateIdleExpression()
+  - [ ] 문자열에는 숫자와 사칙연산 기호만 들어올 수 있다. calculator.domain.Calculator#validateOperand()
 - [ ] 사칙연산은 덧셈, 뺄셈, 나눗셈, 곱셈이 가능하다 calculator.domain.Calculator#validateQuery()
     - [ ] 사칙연산의 우선순위는 무시된다.
 - [ ] 사칙연산의 결과를 출력한다. ResultView#result()
