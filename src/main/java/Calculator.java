@@ -19,7 +19,7 @@ public class Calculator {
         return num1 / num2;
     }
 
-    public float doBinaryOperation(int num1, int num2, String ope) {
+    public float doBinaryOperation(float num1, float num2, String ope) {
         switch (ope) {
             case "+":
                 return add(num1, num2);
