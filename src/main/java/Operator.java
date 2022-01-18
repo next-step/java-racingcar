@@ -4,23 +4,22 @@ import java.util.List;
 
 public class Operator {
 
-    private String[] arr = {"+", "-", "*", "/"};
-    private List<String> symbols = new ArrayList<>(Arrays.asList(arr));
-    private List<String> operators;
+    private final static List<String> SYMBOLS = new ArrayList<>(Arrays.asList("+", "-", "*", "/"));
+    private final List<String> operators;
 
     public Operator() {
         operators = new ArrayList<>();
     }
 
     public void addOperator(String ope) {
-        if (!symbols.contains(ope)) {
+        if (!SYMBOLS.contains(ope)) {
             throw new IllegalArgumentException("연산기호가 아닙니다.");
         }
         operators.add(ope);
     }
 
     public void print() {
-        System.out.println("Opeartor Class========");
+        System.out.println("Operator Class========");
         for (String s : operators) {
             System.out.println(s);
         }
