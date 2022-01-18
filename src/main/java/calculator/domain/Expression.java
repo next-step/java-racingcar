@@ -5,8 +5,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Expression {
+    public static final String OPERATORS = "+-*/" ;
+
     public static String getUserInput() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        return br.readLine();
+        String userInput = br.readLine();
+
+        Validator.validateUserInput(userInput);
+
+        return userInput;
     }
+
 }

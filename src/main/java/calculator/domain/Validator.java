@@ -1,10 +1,9 @@
 package calculator.domain;
 
 public class Validator {
-    private static String operators = "+-*/";
 
     public static void validateUserInput(String userInput){
-        validateIsBlack(userInput);
+        checkIsBlack(userInput);
 
         String[] split = userInput.split(" ");
 
@@ -12,7 +11,7 @@ public class Validator {
         validateEvenIndexIsOperator(split);
     }
 
-    private static void validateIsBlack(String userInput) {
+    private static void checkIsBlack(String userInput) {
         if(userInput.equals("") || userInput.equals(" ")){
             throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다.");
         }
@@ -41,9 +40,8 @@ public class Validator {
     }
 
     private static void validateIsOperator(String target) {
-        if(!operators.contains(target)){
+        if(!Expression.OPERATORS.contains(target)){
             throw new IllegalArgumentException("[ERROR] 입력 형식이 맞지 않습니다.");
-
         }
     }
 }
