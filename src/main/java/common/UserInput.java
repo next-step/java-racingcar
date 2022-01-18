@@ -1,5 +1,7 @@
 package common;
 
+import static common.ErrorMessage.*;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,15 +12,13 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class UserInput {
-    private static final String ERROR_MESSAGE_NULL = "[ERROR] 입력값은 NULL일 수 없습니다.";
-    private static final String ERROR_MESSAGE_BLANK = "[ERROR] 입력값은 공백일 수 없습니다.";
-    private static final String ERROR_MESSAGE_SIGN = "[ERROR] 입력값이 사칙 연산 기호가 아닙니다.";
+
+    private static final String DELIMITER = " ";
     private static final List<String> SIGNS = new ArrayList<>(Arrays.asList("+", "-", "/", "*"));
 
 
-
     private List<String> splitUserInput = new ArrayList<>();
-    private final String userInput ;
+    private final String userInput;
 
     public UserInput() throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -34,9 +34,8 @@ public class UserInput {
     }
 
     private List<String> splitStr(final String userInput) {
-        return Arrays.stream(userInput.split(" ")).collect(Collectors.toList());
+        return Arrays.stream(userInput.split(DELIMITER)).collect(Collectors.toList());
     }
-
 
 
     private void validateNull(final String userInput) {

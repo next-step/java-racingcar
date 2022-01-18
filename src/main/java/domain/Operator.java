@@ -1,15 +1,17 @@
 package domain;
 
+import static common.ErrorMessage.*;
+
+import common.ErrorMessage;
 import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Operator {
-    PLUS("+", (number, operand) ->  Operator.add(number, operand)),
+    PLUS("+", (number, operand) -> Operator.add(number, operand)),
     MINUS("-", (number, operand) -> Operator.sub(number, operand)),
     DIVIDE("/", (number, operand) -> Operator.divide(number, operand)),
     MULTIPLE("*", (number, operand) -> Operator.multiple(number, operand));
 
-    private static final String ERROR_MESSAGE_SIGN = "[ERROR] 입력값이 사칙 연산 기호가 아닙니다.";
 
     private String sign;
     private BiFunction<Integer, Integer, Integer> operate;
