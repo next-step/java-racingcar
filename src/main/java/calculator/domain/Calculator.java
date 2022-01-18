@@ -9,17 +9,18 @@ public class Calculator {
     }
 
     public void StartCalculate() {
+        System.out.println("식을 입력하세요");
         input = GetUserInput();
     }
 
     private String GetUserInput() {
         Scanner scanner = new Scanner(System.in);
-        String str;
+        String str = scanner.nextLine();
 
-        do {
-            System.out.println("식을 입력하세요");
+        while (!Validator.checkValidate(str)) {
+            System.out.println("다시 입력하세요.");
             str = scanner.nextLine();
-        } while (!Validator.checkValidate(str));
+        }
 
         return str;
     }
