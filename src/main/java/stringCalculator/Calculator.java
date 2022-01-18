@@ -8,9 +8,6 @@ public class Calculator {
         int result=Integer.parseInt(userInput.get(0));
 
         for (int i=1; i<userInput.size()-1; i+=2){
-            if (userInput.get(i+1).equals("")){
-                throw new IllegalArgumentException("공백이 존재합니다");
-            }
             if (userInput.get(i).equals("+")){
                 result = sum(result,Integer.parseInt(userInput.get(i+1)));
                 continue;
