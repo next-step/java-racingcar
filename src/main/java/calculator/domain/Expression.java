@@ -7,6 +7,11 @@ import java.io.InputStreamReader;
 public class Expression {
     public static final String OPERATORS = "+-*/" ;
 
+    public static final String ADD = "+";
+    public static final String SUB = "-";
+    public static final String MUL = "*";
+    public static final String DIV = "/";
+
     public static String[] getUserInput() throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -17,19 +22,29 @@ public class Expression {
         return splitUserInput;
     }
 
-    public static void evaluate(String[] userInput) {
-        long acc = Integer.parseInt(userInput[0]);
+    public static long evaluate(String[] userInput) {
+        long acc = Long.parseLong(userInput[0]);
 
         for(int i = 1; i< userInput.length-1 ; i+=2){
             String op = userInput[i];
-            int term = Integer.parseInt(userInput[i + 1]);
+            long term = Long.parseLong(userInput[i + 1]);
 
             acc = interpreter(acc, term, op);
         }
+        return acc;
     }
 
-    private static long interpreter(long acc, int term, String op) {
-
+    private static long interpreter(long acc, long term, String op) {
+        switch (op) {
+            case ADD:
+                return Calculator.add(acc, term);
+            case SUB:
+                return Calculator.sub(acc, term);
+            case MUL:
+                return Calculator.mul(acc, term);
+            case DIV:
+                return Calculator.div(acc, term);
+        }
         return 0;
     }
 }

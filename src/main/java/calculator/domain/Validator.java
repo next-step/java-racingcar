@@ -22,7 +22,7 @@ public class Validator {
 
     private static void validateIsNumber(String target) {
         try {
-            Integer.parseInt(target);
+            Long.parseLong(target);
         }
         catch (NumberFormatException e){
             throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다.");
