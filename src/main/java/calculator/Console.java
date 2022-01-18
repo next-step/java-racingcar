@@ -29,7 +29,7 @@ public class Console {
     }
 
     private void validateUserInput() {
-        if (!validateNumber()) {
+        if (!validateNumber() || !validateArithmetic()) {
             throw new IllegalArgumentException();
         }
     }
@@ -43,6 +43,18 @@ public class Console {
             boolean isNumber = Character.isDigit(splitedInput.get(i).charAt(0));
 
             if (i % 2 == 0 && !isNumber) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private Boolean validateArithmetic() {
+        for (int i = 0; i < splitedInput.size(); ++i) {
+            boolean isArithmetic = splitedInput.get(i).matches("[-*/+]");
+
+            if (i % 2 == 1 && !isArithmetic) {
                 return false;
             }
         }
