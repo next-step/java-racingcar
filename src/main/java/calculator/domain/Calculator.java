@@ -19,7 +19,19 @@ public class Calculator {
         validateIdleExpression(splitExpression);
         validateOperand(splitExpression);
         validateOperation(splitExpression);
-        return 0;
+        calculateExpression();
+        return operandList.get(operandList.size() - 1)
+            .getNumber();
+    }
+
+    private void calculateExpression() {
+        Operand left = operandList.get(0);
+        for (int index = 0; index < operationList.size(); index++) {
+            Operation operation = operationList.get(index);
+            Operand right = operandList.get(index + 1);
+            left = new Operand(operation.operate(left, right));
+        }
+        operandList.add(left);
     }
 
     private void validateOperation(String[] splitExpression) {
