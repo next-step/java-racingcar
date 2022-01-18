@@ -23,7 +23,7 @@ public class Seperator {
         for (int i = 0; i < lineArr.length; i++) {
             if (i % 2 == 0) {
                 // 숫자
-                number.addNumber(Integer.valueOf(lineArr[i]));
+                number.addNumber(lineArr[i]);
                 continue;
             }
             operator.addOperator(lineArr[i]);
