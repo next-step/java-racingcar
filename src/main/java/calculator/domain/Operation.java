@@ -23,4 +23,21 @@ public class Operation {
             throw new IllegalArgumentException("[ERROR] " + operation + "은 사칙연산 기호가 아닙니다.");
         }
     }
+
+    public String operate(Operand left, Operand right) {
+        switch (operation) {
+            case "+":
+                return String.valueOf(left.getNumber() + right.getNumber());
+            case "-":
+                return String.valueOf(left.getNumber() - right.getNumber());
+            case "*":
+                return String.valueOf(left.getNumber() * right.getNumber());
+            case "/":
+                if (right.getNumber() == 0) {
+                    throw new ArithmeticException("0으로 나눌 수 없습니다");
+                }
+                return String.valueOf(left.getNumber() / right.getNumber());
+        }
+        return String.valueOf(0);
+    }
 }
