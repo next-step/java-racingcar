@@ -16,8 +16,8 @@ public class UserInput {
     private static final List<String> SIGNS = new ArrayList<>(Arrays.asList("+", "-", "/", "*"));
 
 
-    private List<Integer> numbers = new ArrayList<>();
-    private List<String> signs = new ArrayList<>();
+
+    private List<String> splitUserInput = new ArrayList<>();
     private final String userInput ;
 
     public UserInput() throws IOException {
@@ -25,27 +25,18 @@ public class UserInput {
         this.userInput = bufferedReader.readLine();
         validateNull(userInput);
         validateBlank(userInput);
-        splitStr(userInput);
+        splitUserInput = splitStr(userInput);
+
     }
 
-    public String getUserInput() {
-        return userInput;
+    public List<String> getSplitUserInput() {
+        return splitUserInput;
     }
 
     private List<String> splitStr(final String userInput) {
         return Arrays.stream(userInput.split(" ")).collect(Collectors.toList());
     }
 
-
-    private void segregateSignAndNumber(final List<String> splits) {
-        for (String split : splits) {
-            if (SIGNS.contains(split)) {
-                signs.add(split);
-                continue;
-            }
-            numbers.add(Integer.valueOf(split));
-        }
-    }
 
 
     private void validateNull(final String userInput) {
