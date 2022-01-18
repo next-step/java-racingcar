@@ -17,7 +17,19 @@ public class Expression {
         return splitUserInput;
     }
 
-    public static void evaluate(String userInput) {
-        String[] splitUserInput = userInput.split("\\s+");
+    public static void evaluate(String[] userInput) {
+        long acc = Integer.parseInt(userInput[0]);
+
+        for(int i = 1; i< userInput.length-1 ; i+=2){
+            String op = userInput[i];
+            int term = Integer.parseInt(userInput[i + 1]);
+
+            acc = interpreter(acc, term, op);
+        }
+    }
+
+    private static long interpreter(long acc, int term, String op) {
+
+        return 0;
     }
 }
