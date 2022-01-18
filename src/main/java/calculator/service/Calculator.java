@@ -55,4 +55,9 @@ public class Calculator {
     public static int multiply(int prev, int next) {
         return prev * next;
     }
+
+    // TODO: 실수형 고려
+    public static int divide(int prev, int next) {
+        return prev / next;
+    }
 }

@@ -26,14 +26,20 @@ class CalculatorTest {
     }
 
     @Test
-    void 뺴기(){
+    void 뺴기() {
         int result = Calculator.sub(7, 3);
         assertThat(result).isEqualTo(4);
     }
 
     @Test
-    void 곱하기(){
+    void 곱하기() {
         int result = Calculator.multiply(7, 3);
         assertThat(result).isEqualTo(21);
+    }
+
+    @Test
+    void 나누기() {
+        int result = Calculator.divide(6, 3);
+        assertThat(result).isEqualTo(2);
     }
 }
