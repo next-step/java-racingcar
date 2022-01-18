@@ -13,14 +13,17 @@ public class Console {
         Scanner scanner = new Scanner(System.in);
 
         setUserInput(scanner.nextLine());
+
         splitUserInput(userInput);
 
-        validateUserInput();
+        validateSplitedInput();
 
         return null;
     }
 
     private void setUserInput(String userInput) {
+        validateUserInputEmpty(userInput);
+
         this.userInput = userInput;
     }
 
@@ -28,7 +31,7 @@ public class Console {
         this.splitedInput = Arrays.asList(userInput.split(" "));
     }
 
-    private void validateUserInput() {
+    private void validateSplitedInput() {
         if (!validateNumber() || !validateArithmetic()) {
             throw new IllegalArgumentException();
         }
@@ -48,6 +51,12 @@ public class Console {
         }
 
         return true;
+    }
+
+    private void validateUserInputEmpty(String userInput) {
+        if (userInput.length() == 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private Boolean validateArithmetic() {
