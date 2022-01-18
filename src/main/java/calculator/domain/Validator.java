@@ -1,52 +1,49 @@
 package calculator.domain;
 
 public class Validator {
+    private static String operators = "+-*/";
 
     public static void validateUserInput(String userInput){
-        checkIsBlack(userInput);
+        validateIsBlack(userInput);
 
         String[] split = userInput.split(" ");
 
-        oddIndexIsNumber(split);
-        evenIndexIsOperator(split);
+        validateOddIndexIsNumber(split);
+        validateEvenIndexIsOperator(split);
     }
 
-    private static void checkIsBlack(String userInput) {
+    private static void validateIsBlack(String userInput) {
         if(userInput.equals("") || userInput.equals(" ")){
             throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다.");
         }
     }
 
-    private static void oddIndexIsNumber(String[] split) {
+    private static void validateOddIndexIsNumber(String[] split) {
         for (int i = 0; i < split.length; i+=2) {
-            isNumber(split[i]);
+            validateIsNumber(split[i]);
         }
     }
 
-    private static void isNumber(String target) {
-        if(target.length() == 0 || !Character.isDigit(target.charAt(0))){
-            throw new IllegalArgumentException("[ERROR] 입력 형식이 맞지 않습니다.");
+    private static void validateIsNumber(String target) {
+        try {
+            Integer.parseInt(target);
+        }
+        catch (NumberFormatException e){
+            throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다.");
         }
     }
 
 
-    private static void evenIndexIsOperator(String[] split) {
+    private static void validateEvenIndexIsOperator(String[] split) {
         for(int i=1; i< split.length; i+=2){
-            if(!isOperator(split[i])){
-                throw new IllegalArgumentException("[ERROR] 입력 형식이 맞지 않습니다.");
-            }
+            validateIsOperator(split[i]);
         }
     }
 
-    private static boolean isOperator(String target) {
-        switch (target){
-            case "+":
-            case "-":
-            case "*":
-            case "/":
-                return true;
-        }
+    private static void validateIsOperator(String target) {
+        if(!operators.contains(target)){
+            throw new IllegalArgumentException("[ERROR] 입력 형식이 맞지 않습니다.");
 
-        return false;
+        }
     }
 }
