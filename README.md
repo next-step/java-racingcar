@@ -9,13 +9,13 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 ## 기능 요구 사항
-  - [ ] 사용자 입력 값을 받는다. class console / readLine()
-    - [ ] 입력 값은 숫자, +, -, *, / 만 가능하다. validateNumber()
-      - [ ] 입력 값이 숫자가 아니면 IllegalArgumentException throw를 발생시킨다.
-    - [ ] 입력 값은 공백이 아닌 값만 가능하다. validateEmpty()
-      - [ ] 입력 값은 null, 빈 공백은 IllegalArgumentException throw를 발생시킨다.
-    - [ ] 기호는 사칙연산 기호만 가능하다. validateArithmetic()
-      - [ ] 사칙연산 기호가 아닌 경우 IllegalArgumentException throw를 발생시킨다.
+  - [X] 사용자 입력 값을 받는다. class console / readLine()
+    - [X] 입력 값은 숫자, +, -, *, / 만 가능하다. validateNumber()
+      - [X] 입력 값이 숫자가 아니면 IllegalArgumentException throw를 발생시킨다.
+    - [X] 입력 값은 공백이 아닌 값만 가능하다. validateUserInputEmpty()
+      - [X] 입력 값은 null, 빈 공백은 IllegalArgumentException throw를 발생시킨다.
+    - [X] 기호는 사칙연산 기호만 가능하다. validateArithmetic()
+      - [X] 사칙연산 기호가 아닌 경우 IllegalArgumentException throw를 발생시킨다.
     - [ ] 0으로 나눌 수 없다. validateDivideZero()
       - [ ] 0으로 나누는 경우, IllegalArgumentException throw를 발생시킨다.
     - [ ] (추가 기능) 숫자 범위 판별
