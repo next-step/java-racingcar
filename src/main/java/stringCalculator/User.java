@@ -18,6 +18,11 @@ public class User {
         if (userInputTokens.length<3){
             throw new IllegalArgumentException("공백은 허용되지 않습니다");
         }
+        for (int i=0; i<userInputTokens.length;i++){
+            if (userInputTokens[i].equals("")){
+                throw new IllegalArgumentException("공백이 존재합니다");
+            }
+        }
         return Arrays.asList(userInputTokens);
     }
 
