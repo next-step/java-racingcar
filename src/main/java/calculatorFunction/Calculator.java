@@ -15,16 +15,16 @@ public class Calculator {
         secondOperand=Integer.parseInt(stringArray[start+2]);
         int result=0;
         System.out.println("operator:"+ operator);
-        if(operator=="+"){
+        if(operator.equals("+")){
             result=add(firstOperand,secondOperand);
         }
-        else if(operator=="-"){
+        else if(operator.equals("-")){
             result=sub(firstOperand,secondOperand);
         }
-        else if(operator=="*"){
+        else if(operator.equals("*")){
             result=mul(firstOperand,secondOperand);
         }
-        else if(operator=="/"){
+        else if(operator.equals("/")){
             result=div(firstOperand,secondOperand);
         }
         else{
