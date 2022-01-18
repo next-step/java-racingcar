@@ -3,9 +3,12 @@ package calculatorFunction;
 public class Calculator {
     public int calculate(String[] stringArray){
         for(int i=0; i< (stringArray.length-1)/2; i++){
+            if (stringArray[i*2+1]==null)
+                return Integer.parseInt(stringArray[i*2]);    //정수로 바꿔서 리턴
             parseOperation(stringArray,i*2);
         }
-        return Integer.parseInt(stringArray[stringArray.length-1]);    //정수로 바꿔서 리턴
+
+        return 1;
     }
 
     public void parseOperation(String[] stringArray, int start){
@@ -14,7 +17,6 @@ public class Calculator {
         firstOperand=Integer.parseInt(stringArray[start]);
         secondOperand=Integer.parseInt(stringArray[start+2]);
         int result=0;
-        System.out.println("operator:"+ operator);
         if(operator.equals("+")){
             result=add(firstOperand,secondOperand);
         }
@@ -34,16 +36,20 @@ public class Calculator {
         return;
     }
 
-    public int add(int firstOperand, int secondOperand){
-        return 1;
+    public int add(int firstOperand, int secondOperand) {
+
+        return firstOperand + secondOperand;
     }
     public int sub(int firstOperand, int secondOperand){
-        return 1;
+
+        return firstOperand - secondOperand;
     }
-    public int mul(int firstOperand, int secondOperand){
-        return 1;
+    public int mul(int firstOperand, int secondOperand) {
+
+        return firstOperand * secondOperand;
     }
-    public int div(int firstOperand, int secondOperand){
-        return 1;
+    public int div(int firstOperand, int secondOperand) {
+
+        return firstOperand / secondOperand;
     }
 }
