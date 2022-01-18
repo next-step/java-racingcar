@@ -30,4 +30,10 @@ class CalculatorTest {
         int result = Calculator.sub(7, 3);
         assertThat(result).isEqualTo(4);
     }
+
+    @Test
+    void 곱하기(){
+        int result = Calculator.multiply(7, 3);
+        assertThat(result).isEqualTo(21);
+    }
 }
