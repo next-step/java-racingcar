@@ -17,8 +17,11 @@ public class Expression {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] splitUserInput = splitUserInputByWhitespace(br.readLine());
 
-        Validator.validateUserInput(splitUserInput);
+        if (splitUserInput[0].equals("q")) {
+            return splitUserInput;
+        }
 
+        Validator.validateUserInput(splitUserInput);
         return splitUserInput;
     }
 
