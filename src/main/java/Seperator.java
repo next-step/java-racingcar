@@ -11,7 +11,12 @@ public class Seperator {
         number = new Number();
     }
 
-    public static void grouping(String[] lineArr, Operator operator, Number number) {
+    public void print() {
+        operator.print();;
+        number.print();
+    }
+
+    public void seperate(String[] lineArr) {
         /*
             ex. 3 + 2 * 5 - 1 + 10
          */

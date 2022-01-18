@@ -12,4 +12,11 @@ public class Operator {
     public void addOperator(String ope) {
         operators.add(ope);
     }
+
+    public void print() {
+        System.out.println("Opeartor Class========");
+        for (String s : operators) {
+            System.out.println(s);
+        }
+    }
 }

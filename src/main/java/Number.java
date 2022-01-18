@@ -12,4 +12,11 @@ public class Number {
     public void addNumber(int num) {
         numbers.add(num);
     }
+
+    public void print() {
+        System.out.println("Number Class========");
+        for (Integer i : numbers) {
+            System.out.println(i);
+        }
+    }
 }
