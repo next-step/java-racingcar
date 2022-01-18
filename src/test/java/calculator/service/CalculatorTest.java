@@ -24,4 +24,10 @@ class CalculatorTest {
         // then
         assertThat(result).isEqualTo(expected);
     }
+
+    @Test
+    void 뺴기(){
+        int result = Calculator.sub(7, 3);
+        assertThat(result).isEqualTo(4);
+    }
 }

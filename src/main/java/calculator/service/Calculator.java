@@ -47,4 +47,8 @@ public class Calculator {
         }
         return operationCalculator;
     }
+
+    public static int sub(int prev, int next) {
+        return prev - next;
+    }
 }
