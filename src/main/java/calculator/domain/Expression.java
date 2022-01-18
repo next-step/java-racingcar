@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Expression {
-    public static final String OPERATORS = "+-*/" ;
 
+    public static final String OPERATORS = "+-*/";
     public static final String ADD = "+";
     public static final String SUB = "-";
     public static final String MUL = "*";
@@ -15,17 +15,21 @@ public class Expression {
     public static String[] getUserInput() throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] splitUserInput = br.readLine().split("\\s+");
+        String[] splitUserInput = splitUserInputByWhitespace(br.readLine());
 
         Validator.validateUserInput(splitUserInput);
 
         return splitUserInput;
     }
 
+    private static String[] splitUserInputByWhitespace(String userInput) {
+        return userInput.split("\\s+");
+    }
+
     public static long evaluate(String[] userInput) {
         long acc = Long.parseLong(userInput[0]);
 
-        for(int i = 1; i< userInput.length-1 ; i+=2){
+        for (int i = 1; i < userInput.length - 1; i += 2) {
             String op = userInput[i];
             long term = Long.parseLong(userInput[i + 1]);
 

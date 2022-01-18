@@ -2,7 +2,6 @@ package calculator.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -10,13 +9,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 class ValidatorTest {
 
     @Test
-    void 입력으로_공백이_들어옴_실패(){
+    void 입력으로_공백이_들어옴_실패() {
 
         //given
         String[] userInput = " ".split("\\s++");
 
         // then
-        assertThrows(IllegalArgumentException.class, ()->Validator.validateUserInput(userInput));
+        assertThrows(IllegalArgumentException.class, () -> Validator.validateUserInput(userInput));
     }
 
     @Test
@@ -26,17 +25,18 @@ class ValidatorTest {
         String[] userInput = "1 + 3".split("\\s++");
 
         // then
-        assertDoesNotThrow(()->Validator.validateUserInput(userInput));
+        assertDoesNotThrow(() -> Validator.validateUserInput(userInput));
     }
 
     @Test
     void 홀수번째는_숫자이다_실패_숫자가아님() {
 
         // given
-        String[] userInput = "/ + 3".split("\\s++");;
+        String[] userInput = "/ + 3".split("\\s++");
+        ;
 
         // then
-        assertThrows(IllegalArgumentException.class, ()->Validator.validateUserInput(userInput));
+        assertThrows(IllegalArgumentException.class, () -> Validator.validateUserInput(userInput));
     }
 
     @Test
@@ -46,7 +46,7 @@ class ValidatorTest {
         String[] userInput = "1 +  3".split("\\s++");
 
         // then
-        assertDoesNotThrow(()->Validator.validateUserInput(userInput));
+        assertDoesNotThrow(() -> Validator.validateUserInput(userInput));
     }
 
     @ValueSource(strings = {"+", "-", "*", "/"})
@@ -57,7 +57,8 @@ class ValidatorTest {
         String str = "1 " + op + " 3";
         String[] userInput = str.split("\\s++");
 
-        assertDoesNotThrow((()->Validator.validateUserInput(userInput)));
+        // then
+        assertDoesNotThrow((() -> Validator.validateUserInput(userInput)));
     }
 
 
@@ -68,7 +69,7 @@ class ValidatorTest {
         String[] userInput = "1 2 3".split("\\s++");
 
         // then
-        assertThrows(IllegalArgumentException.class, ()->Validator.validateUserInput(userInput));
+        assertThrows(IllegalArgumentException.class, () -> Validator.validateUserInput(userInput));
     }
 
 }
