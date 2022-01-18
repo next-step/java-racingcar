@@ -11,4 +11,10 @@ class CalculatorTest {
         int result = Calculator.add(3, 7);
         assertThat(result).isEqualTo(10);
     }
+
+    @Test
+    void 뺴기(){
+        int result = Calculator.sub(7, 3);
+        assertThat(result).isEqualTo(4);
+    }
 }
