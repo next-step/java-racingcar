@@ -1,3 +1,5 @@
+package stringCalculator;
+
 import java.io.ObjectStreamException;
 import java.util.ArrayList;
 import java.util.Arrays;
