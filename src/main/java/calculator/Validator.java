@@ -1,6 +1,5 @@
 package calculator;
 
-import calculator.domain.Operator;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -43,5 +42,31 @@ public class Validator {
     }
 
     public void validateOrder(List<String> parsed) {
+        int index;
+        for (index = 0; index < parsed.size(); index += 2) {
+            // Number
+            validateNumber(parsed.get(index));
+
+            // Operator
+            validateOperator(parsed.get(index + 1));
+
+        }
+        validateNumber(parsed.get(index));
     }
+
+
+    private void validateNumber(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void validateOperator(String s) {
+        if (!s.contains("+-/*")) {
+            throw new IllegalArgumentException("유효하지 않은 연산기호입니다.");
+        }
+    }
+
 }
