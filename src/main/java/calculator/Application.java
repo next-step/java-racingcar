@@ -6,7 +6,7 @@ import java.io.IOException;
 public class Application {
 
     public static void main(String[] args) throws IOException {
-        String userInput = Expression.getUserInput();
+        String[] splitUserInput = Expression.getUserInput();
 
         //TODO Expression.evaluate, 반복문과 interpreter
         // Expression.interpreter(val1, val2, op) switch?

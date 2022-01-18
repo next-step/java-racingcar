@@ -7,13 +7,17 @@ import java.io.InputStreamReader;
 public class Expression {
     public static final String OPERATORS = "+-*/" ;
 
-    public static String getUserInput() throws IOException {
+    public static String[] getUserInput() throws IOException {
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String userInput = br.readLine();
+        String[] splitUserInput = br.readLine().split("\\s+");
 
-        Validator.validateUserInput(userInput);
+        Validator.validateUserInput(splitUserInput);
 
-        return userInput;
+        return splitUserInput;
     }
 
+    public static void evaluate(String userInput) {
+        String[] splitUserInput = userInput.split("\\s+");
+    }
 }

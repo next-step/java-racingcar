@@ -2,17 +2,14 @@ package calculator.domain;
 
 public class Validator {
 
-    public static void validateUserInput(String userInput){
+    public static void validateUserInput(String[] userInput){
         checkIsBlack(userInput);
-
-        String[] split = userInput.split(" ");
-
-        validateOddIndexIsNumber(split);
-        validateEvenIndexIsOperator(split);
+        validateOddIndexIsNumber(userInput);
+        validateEvenIndexIsOperator(userInput);
     }
 
-    private static void checkIsBlack(String userInput) {
-        if(userInput.equals("") || userInput.equals(" ")){
+    private static void checkIsBlack(String[] splitUserInput) {
+        if(splitUserInput.length == 0){
             throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다.");
         }
     }
