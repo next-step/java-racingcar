@@ -13,7 +13,8 @@ public class UserInput {
     private static final String ERROR_MESSAGE_NULL = "[ERROR] 입력값은 NULL일 수 없습니다.";
     private static final String ERROR_MESSAGE_BLANK = "[ERROR] 입력값은 공백일 수 없습니다.";
     private static final String ERROR_MESSAGE_SIGN = "[ERROR] 입력값이 사칙 연산 기호가 아닙니다.";
-    private static final List<String> SINGS = new ArrayList<>(Arrays.asList("+", "-", "/", "*"));
+    private static final List<String> SIGNS = new ArrayList<>(Arrays.asList("+", "-", "/", "*"));
+
 
     private List<Integer> numbers = new ArrayList<>();
     private List<String> signs = new ArrayList<>();
@@ -21,6 +22,8 @@ public class UserInput {
     public UserInput() throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String userInput = bufferedReader.readLine();
+        validateNull(userInput);
+        validateBlank(userInput);
         splitStr(userInput);
     }
 
@@ -30,7 +33,7 @@ public class UserInput {
 
     private void segregateSignAndNumber(final List<String> splits) {
         for (String split : splits) {
-            if (SINGS.contains(split)) {
+            if (SIGNS.contains(split)) {
                 signs.add(split);
                 continue;
             }
@@ -51,7 +54,5 @@ public class UserInput {
         }
     }
 
-    private void validateSign(final String userInput) {
 
-    }
 }
