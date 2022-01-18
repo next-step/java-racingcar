@@ -1,18 +1,42 @@
 package domain;
 
+import java.util.List;
+
 public class Calculator {
-    private static final String PLUS = "+";
-    private static final String MINUS = "-";
-    private static final String DIVIDE = "/";
-    private static final String MULTIPLE = "*";
 
-    private long result;
+    private int result;
+    private final List<String> userInput;
 
-    private Calculator() {
+    private Calculator(final List<String> userInput) {
+        this.userInput = userInput;
         this.result = 0;
+        //
+        process();
     }
 
-    public static Calculator of() {
-        return new Calculator();
+    public static Calculator of(final List<String> userInput) {
+        return new Calculator(userInput);
+    }
+
+    private void process() {
+
+        this.result = Integer.parseInt(userInput.get(0));
+
+        //"1 + 2 - 3 "
+        for (int index = 1; index <userInput.size()-1; index+=2) {
+            this.result = Operator.of(userInput.get(index))
+                .operate(this.result, Integer.parseInt(userInput.get(index+1)));
+        }
+
+
+    }
+
+    public int getResult() {
+        return this.result;
+    }
+
+    private void calculate(final String sign, final int number, final int operand) {
+
+
     }
 }
