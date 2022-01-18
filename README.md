@@ -18,7 +18,7 @@
   - [X] 각 문자사이 공백은 한칸이다. 한칸이 넘으면 에러 처리한다.
   - [X] 입력인 `null`이거나 공백문자이면 `IllegalArgumentException throw`
   - [X] 사칙연산 기호가 아닌 경우 `IllegalArgumentException throw`
-  - [ ] 숫자 / 연산기호 순서가 올바르지 않을 경우 Parse 전용 `Exception throw` 출력 
+  - [X] 숫자 / 연산기호 순서가 올바르지 않을 경우 Parse 전용 `Exception throw` 출력 
 - [X] 파싱
   - [X] 공식 파싱 검증 부분은 파싱 클라스가 담당
   - [X] 파싱해서 숫자, 사칙연산 기호 getter로 반환.
