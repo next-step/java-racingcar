@@ -18,12 +18,6 @@ public class Operation {
         return operation;
     }
 
-    private void validateOperation(String operation) {
-        if (!operations.contains(operation)) {
-            throw new IllegalArgumentException("[ERROR] " + operation + "은 사칙연산 기호가 아닙니다.");
-        }
-    }
-
     public String operate(Operand left, Operand right) {
         switch (operation) {
             case "+":
@@ -39,5 +33,11 @@ public class Operation {
                 return String.valueOf(left.getNumber() / right.getNumber());
         }
         return String.valueOf(0);
+    }
+
+    private void validateOperation(String operation) {
+        if (!operations.contains(operation)) {
+            throw new IllegalArgumentException("[ERROR] " + operation + "은 사칙연산 기호가 아닙니다.");
+        }
     }
 }
