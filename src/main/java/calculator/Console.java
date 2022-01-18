@@ -14,6 +14,9 @@ public class Console {
 
         setUserInput(scanner.nextLine());
         splitUserInput(userInput);
+
+        validateUserInput();
+
         return null;
     }
 
@@ -23,6 +26,28 @@ public class Console {
 
     private void splitUserInput(String userInput) {
         this.splitedInput = Arrays.asList(userInput.split(" "));
+    }
+
+    private void validateUserInput() {
+        if (!validateNumber()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private Boolean validateNumber() {
+        if (splitedInput.size() % 2 == 0) {
+            return false;
+        }
+
+        for (int i = 0; i < splitedInput.size(); ++i) {
+            boolean isNumber = Character.isDigit(splitedInput.get(i).charAt(0));
+
+            if (i % 2 == 0 && !isNumber) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }
