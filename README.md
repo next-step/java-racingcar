@@ -18,16 +18,16 @@
 ## 기능 구현 사항
 
 - [x] 입력 받기 (Expression.getUserInput())
-- [ ] 연산 (Calculator)
-    - [ ] 덧셈(.add())
-    - [ ] 뺄셈(.sub())
-    - [ ] 곱셈(.mul())
-    - [ ] 나눗셈(.div())
+- [x] 연산 (Calculator)
+    - [x] 덧셈(.add())
+    - [x] 뺄셈(.sub())
+    - [x] 곱셈(.mul())
+    - [x] 나눗셈(.div())
 - [x] 입력 검증 (Validator)
 - [x] 입력 형식 (number op number op number ...) 검증 ->IllegalArgumentException throw
     - [x] 공백인지 ("", " ") 
     - [x] split 후 짝수번째 -> 숫자.
     - [x] split 후 홀수 번쨰 -> 연산자(+, - , *, /)
-- [ ] 식 계산 (Expression.evaluate)
-  -  앞에서부터 하나씩 연산(Expression.interpreter)
+- [x] 식 계산 (Expression.evaluate)
+  - [x] 앞에서부터 하나씩 연산(Expression.interpreter)
 
