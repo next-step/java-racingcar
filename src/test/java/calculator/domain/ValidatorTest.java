@@ -2,6 +2,10 @@ package calculator.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.ginsberg.junit.exit.ExpectSystemExit;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -70,6 +74,18 @@ class ValidatorTest {
 
         // then
         assertThrows(IllegalArgumentException.class, () -> Validator.validateUserInput(userInput));
+    }
+
+    @ExpectSystemExit
+    @Test
+    void q를_입력하면_종료된다() throws IOException {
+
+        // given
+        InputStream inputStream = new ByteArrayInputStream("q".getBytes());
+        System.setIn(inputStream);
+
+        // then
+        Expression.getUserInput();
     }
 
 }

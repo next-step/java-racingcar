@@ -11,6 +11,8 @@ repositories {
 dependencies {
     testCompile('org.junit.jupiter:junit-jupiter:5.4.2')
     testCompile('org.assertj:assertj-core:3.11.1')
+    testImplementation 'com.ginsberg:junit5-system-exit:1.1.2'
+
 }
 
 test {
