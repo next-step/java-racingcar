@@ -1,41 +1,37 @@
 package calculator;
 
-import java.util.Arrays;
+import calculator.domain.Operator;
 import java.util.List;
 import java.util.Scanner;
 
 public class Calculator {
 
-    private String formula;
-    private List<String> parsedElements;
+    private Parser parser;
+
+    private List<Integer> numbers;
+    private List<Operator> operators;
 
     public Calculator() {
         setFormula();
-        validateFormula();
-        parseFormula();
+
+        this.numbers = parser.getNumbers();
+        this.operators = parser.getOperators();
+
+        calculate();
     }
 
     // Test
     public Calculator(String formula) {
-        this.formula = formula;
-        validateFormula();
-    }
-
-    private void validateFormula () {
-        Validator validator = Validator.getInstance(formula);
-
-        validator.validateFormulaIsNull();
-        validator.validateFormulaOperator();
-        validator.validateFormulaHasOneBlank();
+        parser = new Parser(formula);
     }
 
     private void setFormula() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("수식을 입력해주세요: ");
-        formula = scanner.nextLine();
+        parser = new Parser(scanner.nextLine());
     }
 
-    private void parseFormula() {
-        parsedElements = Arrays.asList(formula.split(" "));
+    private void calculate() {
+
     }
 }
