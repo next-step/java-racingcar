@@ -10,7 +10,6 @@ public class Calculator {
     private Calculator(final List<String> userInput) {
         this.userInput = userInput;
         this.result = 0;
-        //
         process();
     }
 
@@ -22,10 +21,9 @@ public class Calculator {
 
         this.result = Integer.parseInt(userInput.get(0));
 
-        //"1 + 2 - 3 "
-        for (int index = 1; index <userInput.size()-1; index+=2) {
+        for (int index = 1; index < userInput.size() - 1; index += 2) {
             this.result = Operator.of(userInput.get(index))
-                .operate(this.result, Integer.parseInt(userInput.get(index+1)));
+                .operate(this.result, Integer.parseInt(userInput.get(index + 1)));
         }
 
 
@@ -36,7 +34,6 @@ public class Calculator {
     }
 
     private void calculate(final String sign, final int number, final int operand) {
-
 
     }
 }
