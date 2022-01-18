@@ -27,7 +27,7 @@
   - [x] 곱셈 - multiply()     
   - [x] 나눗셈 - divide()     
 - [x] 공백 문자열을 빈 공백 문자로 분리하려면 String 클래스의 split(" ") 메소드를 활용한다. 반복적인 패턴을 찾아 반복문으로 구현한다. - FormulaUtil    
-- [ ] 사용자에게 문자열 입력을 받아 유효성을 검증하는 기능 구현 - FormulaInput#getFormula()    
+- [x] 사용자에게 문자열 입력을 받아 유효성을 검증하는 기능 구현 - FormulaInput#getFormula()    
   - [ ] 입력값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw     
   - [ ] 사칙연산 기호가 아닌 경우 IllegalArgumentException throw    
 
