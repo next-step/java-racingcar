@@ -8,7 +8,6 @@ public class Application {
         str = str.replace(" ", "");
         String[] stringArray = GetInput.parsing(str);
         Calculator calculator = new Calculator();
-        int answer = calculator.calculate(stringArray);
-        System.out.println("정답: "+answer);
+        calculator.calculate(stringArray);
     }
 }
