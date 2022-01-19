@@ -19,6 +19,7 @@ public class Application {
         if(flag==2){
             String[] carNames = IOclass.getName();
             int[] cars = new int[carNames.length];
+            int times = IOclass.getTimes();
 
         }
     }
