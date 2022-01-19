@@ -13,4 +13,10 @@ class ValidatorTest {
     void 입력값_null_or_빈칸(String input) {
         assertThat(Validator.checkValidate(input)).isFalse();
     }
+    
+    @ValueSource(strings = {"1+3a", "1.2+3", "1@"})
+    @ParameterizedTest
+    void 정수_사칙연산_기호_아닌_문자(String input) {
+        assertThat(Validator.checkValidate(input)).isFalse();
+    }
 }
