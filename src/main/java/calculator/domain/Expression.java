@@ -13,20 +13,25 @@ public class Expression {
     public static final String DIV = "/";
 
     public static String[] getUserInput() throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] splitUserInput = splitUserInputByWhitespace(br.readLine());
 
-        if (splitUserInput[0].equals("q")) {
-            return splitUserInput;
+        String userInput = br.readLine().trim();
+        if (isQuit(userInput)) {
+            System.exit(0);
         }
 
+        String[] splitUserInput = splitUserInputByWhitespace(userInput);
         Validator.validateUserInput(splitUserInput);
+
         return splitUserInput;
     }
 
+    private static boolean isQuit(String userInput) {
+        return userInput.equals("q");
+    }
+
     private static String[] splitUserInputByWhitespace(String userInput) {
-        return userInput.trim().split("\\s+");
+        return userInput.split("\\s+");
     }
 
     public static long evaluate(String[] userInput) {
