@@ -14,7 +14,7 @@ public class Car {
         return new Car(name);
     }
 
-    public void MoveForward() {
+    public void moveForward() {
         this.step++;
     }
 
