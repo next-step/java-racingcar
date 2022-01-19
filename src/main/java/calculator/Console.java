@@ -76,7 +76,7 @@ public class Console {
     }
 
     private Boolean validateDivideZero() {
-        for (int i = 1; i < splitedInput.size(); ++i) {
+        for (int i = Constant.INIT_ARITHMETIC; i < splitedInput.size(); ++i) {
             boolean isZero = splitedInput.get(i).matches("0");
             boolean isDivideBeforeZero = splitedInput.get(i - 1).matches("/");
 

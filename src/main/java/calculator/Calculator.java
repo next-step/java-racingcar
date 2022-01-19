@@ -19,7 +19,7 @@ public class Calculator {
     }
 
     private void calculateNumbers() {
-        for (int i = 1; i < splitedInput.size(); i += 2) {
+        for (int i = Constant.INIT_ARITHMETIC; i < splitedInput.size(); i += Constant.NEXT_ARITHMETIC) {
             char arithmetic = splitedInput.get(i).charAt(0);
             int number = Integer.parseInt(splitedInput.get(i + 1));
 
