@@ -12,6 +12,27 @@ public class Calculator {
         result = Integer.parseInt(splitedInput.get(0));
     }
 
+    private void calculateNumbers() {
+        for (int i = 1; i < splitedInput.size(); i += 2) {
+            char arithmetic = splitedInput.get(i).charAt(0);
+            int number = Integer.parseInt(splitedInput.get(i + 1));
+
+            switch (arithmetic) {
+                case Constant.ADD:
+                    addNumbers(number);
+                    break;
+                case Constant.SUB:
+                    subtractNumbers(number);
+                    break;
+                case Constant.MULTIPLY:
+                    multiplyNumbers(number);
+                    break;
+                case Constant.DIVIDE:
+                    divideNumbers(number);
+            }
+        }
+    }
+
     private void addNumbers(int number) {
         result += number;
     }
