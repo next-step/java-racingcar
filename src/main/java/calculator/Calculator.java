@@ -15,4 +15,8 @@ public class Calculator {
     private void addNumbers(int number) {
         result += number;
     }
+
+    private void subtractNumbers(int number) {
+        result -= number;
+    }
 }
