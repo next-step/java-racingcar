@@ -20,6 +20,12 @@ public class Validator {
         return instance;
     }
 
+    public void validateFormulaIsEmpty() {
+        if ("".equals(formula.trim())) {
+            throw new IllegalArgumentException("입력은 비어있을 수 없습니다.");
+        }
+    }
+
     public void validateFormulaIsNull() {
         if (formula == null) {
             throw new IllegalArgumentException("입력은 비어있을 수 없습니다.");

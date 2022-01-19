@@ -10,7 +10,11 @@ public class Calculator {
     private List<Operator> operators;
     private Parser parser;
 
+    private int total;
+
     public Calculator() {
+        this.total = 0;
+
         setFormula();
 
         this.numbers = parser.getNumbers();
@@ -30,6 +34,7 @@ public class Calculator {
 
     private void setFormula() {
         Scanner scanner = new Scanner(System.in);
+
         System.out.print("수식을 입력해주세요: ");
         parser = new Parser(scanner.nextLine());
     }

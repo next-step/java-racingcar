@@ -10,8 +10,6 @@ public class Parser {
     private final Validator validator;
     private final String formula;
 
-    private List<String> parsedElements;
-
     private final List<Integer> numbers;
     private final List<Operator> operators;
 
