@@ -17,4 +17,8 @@ public class Participants {
     public List<Car> getParticipants() {
         return this.cars;
     }
+
+    public int getParticipantCount() {
+        return cars.size();
+    }
 }
