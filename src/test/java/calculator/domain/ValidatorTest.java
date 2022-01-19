@@ -85,7 +85,7 @@ class ValidatorTest {
         System.setIn(inputStream);
 
         // then
-        Expression.getUserInput();
+        Input.getUserInput();
     }
 
 }

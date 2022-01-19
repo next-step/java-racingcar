@@ -1,6 +1,7 @@
 package calculator;
 
 import calculator.domain.Expression;
+import calculator.domain.Input;
 import java.io.IOException;
 
 public class Application {
@@ -11,7 +12,7 @@ public class Application {
 
             try {
                 System.out.print("식을 입력해 주세요(그만하려면 q): ");
-                splitUserInput = Expression.getUserInput();
+                splitUserInput = Input.getUserInput();
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 continue;
