@@ -22,4 +22,9 @@ public class RacingCar {
     public void forward() {
         this.carPosition += 1;
     }
+
+    public void printCurrPosition() {
+        String dash = Utils.repeat("-", carPosition);
+        System.out.print(String.format("%-5s: %s", carName, dash));
+    }
 }
