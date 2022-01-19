@@ -12,6 +12,10 @@ public class Car {
         return new Car(name);
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public int getStatus() {
         return this.status;
     }
