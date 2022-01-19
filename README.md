@@ -19,10 +19,10 @@
     - [X] 0으로 나눌 수 없다. validateDivideZero()
       - [X] 0으로 나누는 경우, IllegalArgumentException throw를 발생시킨다.
     - [ ] 숫자 결과를 출력한다. class console / printResult()
-  - [ ] 사칙 연산의 계산 우선순위가 아닌 입력 값에 따라 계산 순서가 결정된다. class calculator
-    - [ ] 덧셈 기호가 있는 경우 addNumbers()
-    - [ ] 뺄셈 기호가 있는 경우 subtractNumbers()
-    - [ ] 곱셈 기호가 있는 경우 multiplyNumbers()
-    - [ ] 나눗셈 기호가 있는 경우 divideNumbers()
-    - [ ] 연산의 결과를 저장하는 메소드가 존재한다. setResult()
-    - [ ] 연산의 결과를 반환하는 메소드가 존재한다. getResult()
+  - [X] 사칙 연산의 계산 우선순위가 아닌 입력 값에 따라 계산 순서가 결정된다. class calculator
+    - [X] 덧셈 기호가 있는 경우 addNumbers()
+    - [X] 뺄셈 기호가 있는 경우 subtractNumbers()
+    - [X] 곱셈 기호가 있는 경우 multiplyNumbers()
+    - [X] 나눗셈 기호가 있는 경우 divideNumbers()
+    - [X] 연산의 결과를 업데이트 하는 메소드가 존재한다. calculateNumbers()
+    - [X] 연산의 결과를 반환하는 메소드가 존재한다. getResult()
