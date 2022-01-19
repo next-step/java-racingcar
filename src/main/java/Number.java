@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Number {
 
-    private final List<Integer> numbers;
+    public final List<Integer> numbers;
 
     public Number() {
         numbers = new ArrayList<>();

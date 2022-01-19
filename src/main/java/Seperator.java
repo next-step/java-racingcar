@@ -3,8 +3,8 @@ import java.util.List;
 
 public class Seperator {
 
-    private Operator operator;
-    private Number number;
+    public Operator operator;
+    public Number number;
 
     public Seperator() {
         operator = new Operator();

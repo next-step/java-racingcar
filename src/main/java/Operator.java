@@ -5,7 +5,7 @@ import java.util.List;
 public class Operator {
 
     private final static List<String> SYMBOLS = new ArrayList<>(Arrays.asList("+", "-", "*", "/"));
-    private final List<String> operators;
+    public final List<String> operators;
 
     public Operator() {
         operators = new ArrayList<>();

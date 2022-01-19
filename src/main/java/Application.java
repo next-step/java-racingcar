@@ -9,14 +9,9 @@ public class Application {
         UserInput userInput = new UserInput();
         Seperator seperator = new Seperator();
         seperator.seperate(userInput.inputList);
-        seperator.print();
         Calculator calculator = new Calculator();
 
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
-
-        List<String> operators = new ArrayList<>(Arrays.asList("+", "+", "/"));
-
-        System.out.println(calculator.doMultipleOperation(numbers, operators));
-        //userInput.printList();
+        float result = calculator.doMultipleOperation(seperator.number.numbers, seperator.operator.operators);
+        System.out.println(result);
     }
 }
