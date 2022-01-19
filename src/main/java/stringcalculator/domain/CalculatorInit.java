@@ -27,21 +27,21 @@ public class CalculatorInit {
         }
     }
 
-    private boolean repeatCalculator(){
+    private boolean repeatCalculator() {
 
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
-        try{
-            log.write(repeatPhrase+'\n');
+        try {
+            log.write(repeatPhrase + '\n');
             log.flush();
             judgeContinue = Integer.parseInt(bufferedReader.readLine());
 
-        }catch(IOException exception){
+        } catch (IOException exception) {
             exception.printStackTrace();
         }
 
-        if(judgeContinue == NUMBER_ONE) {
+        if (judgeContinue == NUMBER_ONE) {
             return true;
         }
         return false;
@@ -49,6 +49,6 @@ public class CalculatorInit {
 
     public void start() {
         continueCalculator();
-        while(repeatCalculator()) continueCalculator();
+        while (repeatCalculator()) continueCalculator();
     }
 }
