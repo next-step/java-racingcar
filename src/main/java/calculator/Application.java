@@ -13,6 +13,7 @@ public class Application {
                 System.out.print("식을 입력해 주세요(그만하려면 q): ");
                 splitUserInput = Expression.getUserInput();
             } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
                 continue;
             }
 
