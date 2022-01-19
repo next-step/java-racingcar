@@ -18,10 +18,9 @@ public class Application {
                 continue;
             }
 
-            long result = Expression.evaluate(splitUserInput);
+            Expression expression = new Expression(splitUserInput);
+            long result = expression.evaluate();
             System.out.println(result);
         }
     }
 }
-
-// 이상하네

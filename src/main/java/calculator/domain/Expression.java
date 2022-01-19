@@ -2,20 +2,24 @@ package calculator.domain;
 
 public class Expression {
 
-    private Expression() {}
-
     protected static final String OPERATORS = "+-*/";
     private static final String ADD = "+";
     private static final String SUB = "-";
     private static final String MUL = "*";
     private static final String DIV = "/";
 
-    public static long evaluate(String[] userInput) {
-        long acc = Long.parseLong(userInput[0]);
+    private String[] userInput;
 
-        for (int i = 1; i < userInput.length - 1; i += 2) {
-            String op = userInput[i];
-            long term = Long.parseLong(userInput[i + 1]);
+    public Expression(String[] userInput) {
+        this.userInput = userInput;
+    }
+
+    public long evaluate() {
+        long acc = Long.parseLong(this.userInput[0]);
+
+        for (int i = 1; i < this.userInput.length - 1; i += 2) {
+            String op = this.userInput[i];
+            long term = Long.parseLong(this.userInput[i + 1]);
 
             acc = interpreter(acc, term, op);
         }

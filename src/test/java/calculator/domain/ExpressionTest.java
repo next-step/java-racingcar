@@ -10,7 +10,8 @@ class ExpressionTest {
     void 계산값이_올바른가() {
         String[] splitUserInput = "1 + 2 + 3 * 5".split("\\s++");
 
-        long result = Expression.evaluate(splitUserInput);
+        Expression expression = new Expression(splitUserInput);
+        long result = expression.evaluate();
         assertThat(result).isEqualTo(30);
     }
 }
