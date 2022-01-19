@@ -18,7 +18,7 @@ public class UserInput {
     private static final List<String> SIGNS = new ArrayList<>(Arrays.asList("+", "-", "/", "*"));
 
 
-    private List<String> splitUserInput = new ArrayList<>();
+    private List<String> splitUserInput;
     private final String userInput;
 
     public UserInput() throws IOException {
