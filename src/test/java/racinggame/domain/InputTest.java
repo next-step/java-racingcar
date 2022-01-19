@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class InputTest {
 
     @Test
-    void 정상_입력() throws IOException {
+    void carNames_정상_입력() throws IOException {
         InputStream inputStream = new ByteArrayInputStream("car1,car2".getBytes());
         System.setIn(inputStream);
 
