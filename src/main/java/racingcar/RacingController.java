@@ -9,6 +9,7 @@ import racingcar.domain.car.Car;
 public class RacingController {
 
     private static final int BOUND = 4;
+    private static String HEAD_MESSAGE = "실행 결과";
     private Participants participants;
     private final int turn;
     private final int totalCount;
@@ -24,17 +25,20 @@ public class RacingController {
     }
 
     public void start() {
+        System.out.println(HEAD_MESSAGE);
+        RacingResult racingResult = RacingResult.getInstance(participants.getParticipants());
         for (int i = 0; i < turn; i++) {
-            race();
+            racingResult = race(racingResult);
+            racingResult.getResultView();
         }
     }
 
-    public void race() {
+    public RacingResult race(RacingResult result) {
         for (int i = 0; i < totalCount; i++) {
             if (RandomManager.get() >= BOUND) {
                 participants.getParticipants().get(i).go();
             }
         }
-        participants.print();
+        return RacingResult.getInstance(participants.getParticipants());
     }
 }
