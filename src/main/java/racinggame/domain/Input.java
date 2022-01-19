@@ -6,11 +6,11 @@ import java.io.InputStreamReader;
 
 public class Input {
 
-    private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
     private Input() {}
 
     public static String[] getCarNames() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
         System.out.println("경주할 자동차 이름을 ','로 구분해서 입력하세요.(2대 이상)");
         String inputCarNames = removeBlank(br.readLine());
         String[] carNames = splitNameByComma(inputCarNames);
@@ -32,6 +32,7 @@ public class Input {
     }
 
     public static int getTrial() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String trial = removeBlank(br.readLine());
 
         Validator.isNumber(trial);
