@@ -18,7 +18,6 @@ public class StringProcessor {
     }
 
     public void checkInput() {
-//        System.out.println("userInput: " + userInput);
         if (userInput == null || userInput.trim().length() == 0) {
             throw new IllegalArgumentException("연산 가능한 수식을 입력해주세요.");
         }
@@ -43,5 +42,9 @@ public class StringProcessor {
         if (temp.length() > 0) {
             result.add(temp);
         }
+    }
+
+    public List<String> getResult() {
+        return result;
     }
 }
