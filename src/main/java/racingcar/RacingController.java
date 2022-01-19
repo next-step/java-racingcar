@@ -9,7 +9,7 @@ import racingcar.domain.car.Car;
 public class RacingController {
 
     private static final int BOUND = 4;
-    private static String HEAD_MESSAGE = "실행 결과";
+    private static String HEAD_MESSAGE = "\n실행 결과";
     private Participants participants;
     private final int turn;
     private final int totalCount;
@@ -31,6 +31,7 @@ public class RacingController {
             racingResult = race(racingResult);
             racingResult.getResultView();
         }
+        racingResult.getWinner();
     }
 
     public RacingResult race(RacingResult result) {
