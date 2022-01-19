@@ -18,4 +18,8 @@ public class RacingCar {
     public int getPosition() {
         return this.carPosition;
     }
+
+    public void forward() {
+        this.carPosition += 1;
+    }
 }
