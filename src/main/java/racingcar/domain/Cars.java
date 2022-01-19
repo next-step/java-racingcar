@@ -26,4 +26,8 @@ public class Cars {
     public void registerCar(final Car car) {
         cars.add(car);
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
