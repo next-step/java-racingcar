@@ -17,7 +17,9 @@ public class Application {
             calculator.calculate(stringArray);
         }
         if(flag==2){
-            IOclass.getName();
+            String[] carNames = IOclass.getName();
+            int[] cars = new int[carNames.length];
+
         }
     }
 }
