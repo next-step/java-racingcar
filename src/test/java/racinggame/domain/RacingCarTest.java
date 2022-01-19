@@ -14,4 +14,13 @@ class RacingCarTest {
         assertThat(car1.getCarName()).isEqualTo("car1");
         assertThat(car1.getPosition()).isEqualTo(0);
     }
+
+    @Test
+    void 한_칸_전진() {
+        RacingCar car1 = new RacingCar("car1");
+
+        car1.forward();
+
+        assertThat(car1.getPosition()).isEqualTo(1);
+    }
 }
