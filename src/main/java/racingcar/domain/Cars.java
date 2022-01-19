@@ -22,4 +22,8 @@ public class Cars {
                         cars.get(idx).moveForward();
                 });
     }
+
+    public void registerCar(final Car car) {
+        cars.add(car);
+    }
 }
