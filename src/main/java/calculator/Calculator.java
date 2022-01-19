@@ -23,4 +23,8 @@ public class Calculator {
     private void multiplyNumbers(int number) {
         result *= number;
     }
+
+    private void divideNumbers(int number) {
+        result /= number;
+    }
 }
