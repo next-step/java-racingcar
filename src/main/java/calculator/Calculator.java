@@ -21,6 +21,11 @@ public class Calculator {
 
     public Calculator(String formula) {
         parser = new Parser(formula);
+
+        this.numbers = parser.getNumbers();
+        this.operators = parser.getOperators();
+
+        calculate();
     }
 
     private void setFormula() {

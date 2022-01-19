@@ -53,7 +53,7 @@ public class Validator {
         try {
             Integer.parseInt(s);
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException("올바르지 않은 연산식입니다.");
         }
     }
 

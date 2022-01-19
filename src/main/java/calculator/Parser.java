@@ -42,6 +42,7 @@ public class Parser {
 
     private void validateFormula() {
         validator.validateFormulaIsNull();
+        validator.validateFormulaIsEmpty();
         validator.validateFormulaOperator();
         validator.validateFormulaHasOneBlank();
     }
