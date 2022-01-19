@@ -39,8 +39,8 @@
 - [ ] 사용자 입력   UserInput
   - [ ] 각 자동차에 이름을 부여하기 위한 사용자 입력   #getCarNames()
     - [ ] 각 자동차의 이름은 쉼표를 기준으로 구분 (문자와 쉼표 사이의 공백 있어도 상관X)   #splitStringByComma()
-    - [ ] 각 자동차 이름의 길이는 1 ~ 5자 까지 가능   #isNameValidLength()
-    - [ ] 자동차는 최소 2대, 최대 n대 까지 입력 가능   #isCarCountValid()
+    - [ ] 각 자동차 이름의 길이는 1 ~ 5자 까지 가능   #checkNameLength()
+    - [ ] 자동차는 최소 1대, 최대 n대 까지 입력 가능   #checkCarCount()
     - 잘못 입력한 경우에는 [ERROR] 메세지와 함께 다시 입력 받음
   - [ ] 시도 횟수를 정하기 위한 사용자 입력   #getTryNumber()
     - [ ] 1 이상의 정수만 입력 가능   #isNumber(), #isTryNumberValidLength()
