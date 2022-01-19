@@ -1,6 +1,7 @@
 package calculator;
 
 import calculator.domain.Operator;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,13 +12,15 @@ public class Parser {
 
     private List<String> parsedElements;
 
-    private List<Integer> numbers;
-    private List<Operator> operators;
-
+    private final List<Integer> numbers;
+    private final List<Operator> operators;
 
     public Parser(String formula) {
         this.validator = Validator.getInstance(formula);
         this.formula = formula;
+
+        this.numbers = new ArrayList<>();
+        this.operators = new ArrayList<>();
 
         // First validate
         validateFormula();
@@ -33,7 +36,8 @@ public class Parser {
 
     private void distribution() {
         int index;
-        for (index = 0; index < parsedElements.size(); index += 2) {
+
+        for (index = 0; index < parsedElements.size() - 2; index += 2) {
             numbers.add(new Integer(parsedElements.get(index)));
             operators.add(new Operator(parsedElements.get(index + 1)));
         }

@@ -5,8 +5,9 @@ import java.util.regex.Pattern;
 
 public class Validator {
 
+    private final String formula;
+
     private static Validator instance;
-    private String formula;
 
     private Validator(String formula) {
         this.formula = formula;
@@ -43,7 +44,7 @@ public class Validator {
 
     public void validateOrder(List<String> parsed) {
         int index;
-        for (index = 0; index < parsed.size(); index += 2) {
+        for (index = 0; index < parsed.size() - 2; index += 2) {
             // Number
             validateNumber(parsed.get(index));
 
@@ -64,7 +65,7 @@ public class Validator {
     }
 
     private void validateOperator(String s) {
-        if (!s.contains("+-/*")) {
+        if (!Pattern.matches(".*[+\\-*/].*", s)) {
             throw new IllegalArgumentException("유효하지 않은 연산기호입니다.");
         }
     }
