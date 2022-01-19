@@ -48,7 +48,7 @@ public class CalculatorInit {
     }
 
     public void start() {
-
-
+        continueCalculator();
+        while(repeatCalculator()) continueCalculator();
     }
 }
