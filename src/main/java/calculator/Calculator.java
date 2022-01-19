@@ -19,4 +19,8 @@ public class Calculator {
     private void subtractNumbers(int number) {
         result -= number;
     }
+
+    private void multiplyNumbers(int number) {
+        result *= number;
+    }
 }
