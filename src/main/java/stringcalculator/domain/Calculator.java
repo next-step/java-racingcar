@@ -33,7 +33,4 @@ public class Calculator {
         return this.result;
     }
 
-    private void calculate(final String sign, final int number, final int operand) {
-
-    }
 }
