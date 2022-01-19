@@ -1,4 +1,4 @@
-package common;
+package stringcalculator.common;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,9 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
-import static common.ErrorMessage.ERROR_MESSAGE_BLANK;
-import static common.ErrorMessage.ERROR_MESSAGE_NULL;
 
 public class UserInput {
 
@@ -41,13 +38,13 @@ public class UserInput {
 
     private void validateNull(final String userInput) {
         if (Objects.isNull(userInput)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_NULL);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE_NULL);
         }
     }
 
     private void validateBlank(final String userInput) {
         if (userInput.isEmpty()) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_BLANK);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE_BLANK);
         }
     }
 

@@ -1,5 +1,6 @@
-package domain;
+package stringcalculator.domain;
 
+import stringcalculator.domain.Operator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;

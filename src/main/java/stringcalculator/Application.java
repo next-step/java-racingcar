@@ -1,5 +1,7 @@
-import common.UserInput;
-import domain.Calculator;
+package stringcalculator;
+
+import stringcalculator.common.UserInput;
+import stringcalculator.domain.Calculator;
 
 import java.io.IOException;
 

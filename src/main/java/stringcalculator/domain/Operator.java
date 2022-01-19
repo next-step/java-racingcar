@@ -1,9 +1,9 @@
-package domain;
+package stringcalculator.domain;
+
+import stringcalculator.common.ErrorMessage;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
-
-import static common.ErrorMessage.ERROR_MESSAGE_SIGN;
 
 public enum Operator {
     PLUS("+", (number, operand) -> Operator.add(number, operand)),
@@ -24,7 +24,7 @@ public enum Operator {
         return Arrays.stream(Operator.values())
                 .filter(operator -> operator.sign.equals(inputSign))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(ERROR_MESSAGE_SIGN));
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE_SIGN));
     }
 
     private static int add(final int number, final int operand) {

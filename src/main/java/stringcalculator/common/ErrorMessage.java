@@ -1,4 +1,4 @@
-package common;
+package stringcalculator.common;
 
 public class ErrorMessage {
 
