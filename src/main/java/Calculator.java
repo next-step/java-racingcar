@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Calculator {
     public Calculator(){
 
@@ -31,5 +33,13 @@ public class Calculator {
                 return div(num1, num2);
         }
         return 0;
+    }
+
+    public float doMultipleOperation(List<Integer> numbers, List<String> operator){
+        float result = numbers.remove(0);
+        for (int i=0; i < numbers.size(); i++){
+            result = doBinaryOperation(result, (float) numbers.get(i), operator.get(i));
+        }
+        return result;
     }
 }
