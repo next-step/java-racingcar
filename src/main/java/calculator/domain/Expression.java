@@ -6,11 +6,11 @@ import java.io.InputStreamReader;
 
 public class Expression {
 
-    public static final String OPERATORS = "+-*/";
-    public static final String ADD = "+";
-    public static final String SUB = "-";
-    public static final String MUL = "*";
-    public static final String DIV = "/";
+    protected static final String OPERATORS = "+-*/";
+    private static final String ADD = "+";
+    private static final String SUB = "-";
+    private static final String MUL = "*";
+    private static final String DIV = "/";
 
     public static String[] getUserInput() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
