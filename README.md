@@ -2,7 +2,7 @@
 
 ## 기능 목록
 - [X] 각 자동차의 이름을 입력받는다. InputView#getCarNames()
-  - [ ] 자동차의 이름은 쉼표(,)를 기준으로 구분한다. StringUtils#splitCarNames()
+  - [X] 자동차의 이름은 쉼표(,)를 기준으로 구분한다. StringUtils#splitCarNames()
   - [ ] 각 자동차의 이름은 5자 이하여야 한다. Name#validateLength()
 - [ ] 경주를 진행할 횟수(라운드)를 입력받는다. InputView#getRound()
   - [ ] 경주를 진행할 횟수는 1 이상의 정수여야 한다. Round#validateRound()
