@@ -12,4 +12,10 @@ class UserInputTest {
     void 이름_쉼표로_나누기(String input) {
         assertThat(UserInput.splitStringByComma(input)).containsExactly("tom", "boss", "test", "abcde", "ok", "blank", "a to b");
     }
+
+    @ValueSource(strings = {"", ","})
+    @ParameterizedTest
+    void 빈문자_입력(String input) {
+        assertThat(UserInput.splitStringByComma(input)).containsExactly();
+    }
 }
