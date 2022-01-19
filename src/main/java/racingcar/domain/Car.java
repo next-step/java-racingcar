@@ -13,4 +13,8 @@ public class Car {
     public static Car of(final String name, final int step) {
         return new Car(name, step);
     }
+
+    public void MoveForward() {
+        this.step++;
+    }
 }
