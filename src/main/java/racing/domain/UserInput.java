@@ -1,6 +1,7 @@
 package racing.domain;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -46,5 +47,28 @@ public class UserInput {
             throw new IllegalArgumentException("[ERROR] 최소 1대 이상의 자동차가 필요합니다.");
         }
     }
+
+    public static void getTryNumber() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            int tryNumber = sc.nextInt();
+            checkTryNumber(tryNumber);
+        } catch (InputMismatchException e) {
+            System.out.println("[ERROR] 숫자만 입력 해주세요.");
+            getTryNumber();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.toString());
+            getTryNumber();
+        }
+    }
+
+    public static void checkTryNumber(int tryNumber) {
+        if (tryNumber <= 0) {
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 최소 1회 이상이어야 합니다.");
+        }
+    }
+
 
 }

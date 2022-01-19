@@ -37,13 +37,13 @@
   - [ ] 경주가 끝나고 결과 출력   #printRacingResult()
 
 - [ ] 사용자 입력   UserInput
-  - [ ] 각 자동차에 이름을 부여하기 위한 사용자 입력   #getCarNames()
-    - [ ] 각 자동차의 이름은 쉼표를 기준으로 구분 (문자와 쉼표 사이의 공백 있어도 상관X)   #splitStringByComma()
-    - [ ] 각 자동차 이름의 길이는 1 ~ 5자 까지 가능   #checkNameLength()
-    - [ ] 자동차는 최소 1대, 최대 n대 까지 입력 가능   #checkCarCount()
+  - [X] 각 자동차에 이름을 부여하기 위한 사용자 입력   #getCarNames()
+    - [X] 각 자동차의 이름은 쉼표를 기준으로 구분 (문자와 쉼표 사이의 공백 있어도 상관X)   #splitStringByComma()
+    - [X] 각 자동차 이름의 길이는 1 ~ 5자 까지 가능   #checkNameLength()
+    - [X] 자동차는 최소 1대, 최대 n대 까지 입력 가능   #checkCarCount()
     - 잘못 입력한 경우에는 [ERROR] 메세지와 함께 다시 입력 받음
-  - [ ] 시도 횟수를 정하기 위한 사용자 입력   #getTryNumber()
-    - [ ] 1 이상의 정수만 입력 가능   #isNumber(), #isTryNumberValidLength()
+  - [X] 시도 횟수를 정하기 위한 사용자 입력   #getTryNumber()
+    - [X] 1 이상의 정수만 입력 가능   #isNumber(), #isTryNumberValidLength()
     - 잘못 입력한 경우에는 [ERROR] 메세지와 함께 다시 입력받음
 
 - [ ] 각 자동차의 상태를 관리   Car
