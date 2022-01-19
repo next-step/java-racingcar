@@ -12,4 +12,17 @@ public class Operator {
         return operator;
     }
 
+    public int calculate (int total, int operand) {
+        switch (operator) {
+            case "+":
+                return total + operand;
+            case "-":
+                return total - operand;
+            case "/":
+                return total / operand;
+            case "*":
+                return total * operand;
+        }
+        return -1;
+    }
 }

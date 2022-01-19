@@ -6,21 +6,19 @@ import java.util.Scanner;
 
 public class Calculator {
 
-    private Parser parser;
-
     private List<Integer> numbers;
     private List<Operator> operators;
+    private Parser parser;
 
     public Calculator() {
         setFormula();
 
         this.numbers = parser.getNumbers();
         this.operators = parser.getOperators();
-
+        
         calculate();
     }
 
-    // Test
     public Calculator(String formula) {
         parser = new Parser(formula);
     }
@@ -32,6 +30,17 @@ public class Calculator {
     }
 
     private void calculate() {
+        int index = 0;
 
+        total = numbers.get(index);
+        for (Operator operator: operators) {
+            total = operator.calculate(total, numbers.get(index + 1));
+            index++;
+        }
+
+    }
+
+    public int value() {
+        return this.total;
     }
 }

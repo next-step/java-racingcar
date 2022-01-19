@@ -15,6 +15,8 @@ public class Parser {
     private final List<Integer> numbers;
     private final List<Operator> operators;
 
+    private List<String> parsedElements;
+
     public Parser(String formula) {
         this.validator = Validator.getInstance(formula);
         this.formula = formula;
@@ -22,15 +24,9 @@ public class Parser {
         this.numbers = new ArrayList<>();
         this.operators = new ArrayList<>();
 
-        // First validate
         validateFormula();
-
-        // Parse
         parseFormula();
-
-        // Last validate
         validateOrder();
-
         distribution();
     }
 

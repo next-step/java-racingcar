@@ -21,14 +21,12 @@ public class Validator {
     }
 
     public void validateFormulaIsNull() {
-        // 입력 null X
         if (formula == null) {
             throw new IllegalArgumentException("입력은 비어있을 수 없습니다.");
         }
     }
 
     public void validateFormulaOperator() {
-        // 사칙연산 기호 이외의 것 X
         boolean matches = Pattern.matches("^[0-9+\\-*/ ]*$", formula);
         if (!matches) {
             throw new IllegalArgumentException("숫자 및 사칙연산자, 공백 기호 이외에는 입력할 수 없습니다.");
@@ -36,7 +34,6 @@ public class Validator {
     }
 
     public void validateFormulaHasOneBlank() {
-        // 공백 2자 이상 X
         if (formula.contains("  ")) {
             throw new IllegalArgumentException("공백이 두 자 이상일 수 없습니다.");
         }
@@ -45,12 +42,8 @@ public class Validator {
     public void validateOrder(List<String> parsed) {
         int index;
         for (index = 0; index < parsed.size() - 2; index += 2) {
-            // Number
             validateNumber(parsed.get(index));
-
-            // Operator
             validateOperator(parsed.get(index + 1));
-
         }
         validateNumber(parsed.get(index));
     }
