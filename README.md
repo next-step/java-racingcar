@@ -48,14 +48,14 @@
 - 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다. 
 
 ## 기능 구현 사항
-- [ ] 자동차 이름 입력받기(Input.getCarName)
+- [x] 자동차 이름 입력받기(Input.getCarName)
   - [ ] 자동차 이름별로 객체 생성(이름, 위치) (RacingCar)
     - [ ] 자동차 한칸 전진.(RacingCar.forward)
   - [x] 참가 자동차는 2대 이상. (Validator.validatePossibleToStart)
   - [x] 자동차의 이름 글자수 5자 이하인가. (Validator.validateNameLength)
-  - [ ] 문자열에 들어온 공백 제거. (Input.removeBlank)
-  - [ ] 자동차 이름은 `,`로 구분. (Input.splitNameByComma)
-- [ ] 시도 횟수 입력(Input.getTrial)
+  - [x] 문자열에 들어온 공백 제거. (Input.removeBlank)
+  - [x] 자동차 이름은 `,`로 구분. (Input.splitNameByComma)
+- [x] 시도 횟수 입력(Input.getTrial)
   - [x] 숫자가 아닌 입력 예외처리. (Validator.isNumber) 
 - [ ] 전진 여부 구하는 로직. (RacingGame.canForward)
 - [ ] 게임 진행 현황 출력. (RacingGame.printProgress)
