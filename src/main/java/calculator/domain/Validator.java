@@ -2,6 +2,8 @@ package calculator.domain;
 
 public class Validator {
 
+    private Validator() {};
+
     public static void validateUserInput(String[] userInput) {
         checkIsBlack(userInput);
         validateOddIndexIsNumber(userInput);

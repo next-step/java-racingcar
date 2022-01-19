@@ -1,10 +1,8 @@
 package calculator.domain;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 public class Expression {
+
+    private Expression() {}
 
     protected static final String OPERATORS = "+-*/";
     private static final String ADD = "+";

@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 
 public class Input {
 
+    private Input() {}
+
     public static String[] getUserInput() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
