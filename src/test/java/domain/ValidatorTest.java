@@ -9,17 +9,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ValidatorTest {
-/*
-* private Judgement judgement;
-    private Balls computer;
-
-    @BeforeEach
-    void setUp() {
-        judgement = new Judgement();
-        computer = new Balls(Arrays.asList(1,2,3));
-    }
-*
-* */
 
     private Validator validator;
 
