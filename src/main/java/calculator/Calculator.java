@@ -12,6 +12,12 @@ public class Calculator {
         result = Integer.parseInt(splitedInput.get(0));
     }
 
+    public int getResult() {
+        calculateNumbers();
+
+        return result;
+    }
+
     private void calculateNumbers() {
         for (int i = 1; i < splitedInput.size(); i += 2) {
             char arithmetic = splitedInput.get(i).charAt(0);
