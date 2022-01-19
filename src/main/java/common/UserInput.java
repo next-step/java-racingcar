@@ -1,7 +1,5 @@
 package common;
 
-import static common.ErrorMessage.*;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,6 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import static common.ErrorMessage.ERROR_MESSAGE_BLANK;
+import static common.ErrorMessage.ERROR_MESSAGE_NULL;
 
 public class UserInput {
 

@@ -23,7 +23,7 @@ public class Calculator {
 
         for (int index = 1; index < userInput.size() - 1; index += 2) {
             this.result = Operator.of(userInput.get(index))
-                .operate(this.result, Integer.parseInt(userInput.get(index + 1)));
+                    .operate(this.result, Integer.parseInt(userInput.get(index + 1)));
         }
 
 
