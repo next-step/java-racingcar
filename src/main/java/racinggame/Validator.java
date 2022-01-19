@@ -1,2 +1,5 @@
-package racinggame;public class Validator {
+package racinggame;
+
+public class Validator {
+
 }

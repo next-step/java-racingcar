@@ -1,5 +1,5 @@
 package racinggame;
 
-public class Car {
+public class RacingCar {
 
 }

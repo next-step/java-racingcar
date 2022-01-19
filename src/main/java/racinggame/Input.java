@@ -1,2 +1,5 @@
-package racinggame;public class Input {
+package racinggame;
+
+public class Input {
+
 }

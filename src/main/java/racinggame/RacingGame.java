@@ -1,2 +1,5 @@
-package racinggame;public class RacingGame {
+package racinggame;
+
+public class RacingGame {
+
 }
