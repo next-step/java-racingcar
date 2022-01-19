@@ -11,4 +11,8 @@ public class Calculator {
         this.splitedInput = splitedInput;
         result = Integer.parseInt(splitedInput.get(0));
     }
+
+    private void addNumbers(int number) {
+        result += number;
+    }
 }
