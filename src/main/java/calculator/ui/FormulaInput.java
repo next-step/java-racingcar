@@ -21,6 +21,7 @@ public class FormulaInput {
 
             formular = FormulaUtil.split(input);
             isNotOperator(formular);
+            isNotNumber(formular);
         } catch (IllegalArgumentException | IOException e) {
             System.out.println("[ERROR] " + e.getMessage());
         }
@@ -43,6 +44,12 @@ public class FormulaInput {
     }
 
     private static void isNotNumber(List<String> formular) {
-
+        for (int i = 0; i < formular.size(); i += 2) {
+            try{
+                Integer.parseInt(formular.get(i));
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("피연산자가 숫자가 아닙니다.");
+            }
+        }
     }
 }
