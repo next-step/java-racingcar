@@ -27,7 +27,10 @@ public class Application {
                     int randomNumber=race.getRandomNumber();
                     race.compareWithFour(cars,i,randomNumber);
                 }
+                IOclass.printCurrent(carNames, cars);
+                System.out.println();
             }
+            IOclass.printWinners(carNames, cars);
         }
     }
 }
