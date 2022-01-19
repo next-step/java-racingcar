@@ -32,7 +32,7 @@ public class Console {
     }
 
     private void validateSplitedInput() {
-        if (!validateNumber() || !validateArithmetic()) {
+        if (!validateNumber() || !validateArithmetic() || !validateDivideZero()) {
             throw new IllegalArgumentException();
         }
     }
@@ -71,4 +71,16 @@ public class Console {
         return true;
     }
 
+    private Boolean validateDivideZero() {
+        for (int i = 1; i < splitedInput.size(); ++i) {
+            boolean isZero = splitedInput.get(i).matches("0");
+            boolean isDivideBeforeZero = splitedInput.get(i - 1).matches("/");
+
+            if (i % 2 == 0 && isZero && isDivideBeforeZero) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
