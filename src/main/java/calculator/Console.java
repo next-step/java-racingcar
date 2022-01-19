@@ -9,7 +9,7 @@ public class Console {
     private String userInput;
     private List<String> splitedInput;
 
-    public String readLine() {
+    public List<String> readLine() {
         Scanner scanner = new Scanner(System.in);
 
         setUserInput(scanner.nextLine());
@@ -18,7 +18,7 @@ public class Console {
 
         validateSplitedInput();
 
-        return null;
+        return splitedInput;
     }
 
     private void setUserInput(String userInput) {
