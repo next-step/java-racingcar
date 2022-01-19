@@ -2,6 +2,7 @@ import calculatorFunction.Calculator;
 import calculatorFunction.GetInput;
 import racingcar.IOclass;
 import java.util.Scanner;
+import racingcar.Race;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,9 +19,15 @@ public class Application {
         }
         if(flag==2){
             String[] carNames = IOclass.getName();
+            Race race = new Race();
             int[] cars = new int[carNames.length];
             int times = IOclass.getTimes();
+            while((times--)>0){
+                for(int i=0; i< cars.length; i++){
+                    int randomNumber=race.getRandomNumber();
+                    race.compareWithFour(cars,i,randomNumber);
+                }
+            }
         }
-
     }
 }

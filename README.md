@@ -21,7 +21,7 @@
 5. [x] 입력 받음  
 6. while문을 사용해서 함수 돌림  
     6-1. [x] 차별로 랜덤값 받아서 0~9 사이 난수 생성  
-    6-2. 난수가 4 이상인지 확인. 4 이상이면 run  
+    6-2. [x] 난수가 4 이상인지 확인. 4 이상이면 run  
     6-3. 출력  
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
