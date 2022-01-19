@@ -11,6 +11,6 @@ public class ApplicationCalculatorMain {
 
         Calculator calculator = new Calculator(splitedInput);
 
-        System.out.println(calculator.getResult());
+        console.printResult(calculator.getResult());
     }
 }

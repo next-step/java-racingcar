@@ -21,6 +21,10 @@ public class Console {
         return splitedInput;
     }
 
+    public void printResult(int result) {
+        System.out.println(Constant.RESULT_TEXT + result);
+    }
+
     private void setUserInput(String userInput) {
         validateUserInputEmpty(userInput);
 
