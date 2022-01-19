@@ -20,7 +20,7 @@ public class Application {
             String[] carNames = IOclass.getName();
             int[] cars = new int[carNames.length];
             int times = IOclass.getTimes();
-
         }
+
     }
 }
