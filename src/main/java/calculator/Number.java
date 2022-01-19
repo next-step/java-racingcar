@@ -1,3 +1,5 @@
+package calculator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class Number {
     }
 
     public void print() {
-        System.out.println("Number Class========");
+        System.out.println("calculator.Number Class========");
         for (Integer i : numbers) {
             System.out.println(i);
         }

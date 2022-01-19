@@ -1,3 +1,5 @@
+package calculator;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +21,7 @@ public class Operator {
     }
 
     public void print() {
-        System.out.println("Operator Class========");
+        System.out.println("calculator.Operator Class========");
         for (String s : operators) {
             System.out.println(s);
         }
