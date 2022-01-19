@@ -12,8 +12,7 @@ public class Input {
 
     public static String[] getCarNames() throws IOException {
         System.out.println("경주할 자동차 이름을 ','로 구분해서 입력하세요.(2대 이상)");
-
-        String inputCarNames = br.readLine().trim();
+        String inputCarNames = removeBlank(br.readLine());
         String[] carNames = splitNameByComma(inputCarNames);
 
         Validator.validatePossibleToStart(carNames);
@@ -33,9 +32,15 @@ public class Input {
     }
 
     public static int getTrial() throws IOException {
-        String trial =  br.readLine();
+        String trial = removeBlank(br.readLine());
+
         Validator.isNumber(trial);
 
         return Integer.parseInt(trial);
     }
+
+    private static String removeBlank(String trial) {
+        return trial.replaceAll("\\s+", "");
+    }
+
 }
