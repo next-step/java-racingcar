@@ -1,6 +1,6 @@
 package racingcar.domain.car;
 
-public class Car {
+public class Car implements Comparable<Car>{
     private String name;
     private int status;
     public Car(String name) {
@@ -12,11 +12,23 @@ public class Car {
         return new Car(name);
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public int getStatus() {
         return this.status;
     }
 
     public void go() {
         this.status += 1;
+    }
+
+    public int compareTo(Car o) {
+        return o.status - status;
+    }
+
+    public boolean compareStatus(Car o) {
+        return status == o.status;
     }
 }
