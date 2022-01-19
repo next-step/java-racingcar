@@ -34,7 +34,7 @@ public class FormulaInput {
         }
     }
 
-    private static void isNotOperator(List<String> formular) {
+    private static void isNotOperator(List<String> formular){
         for (int i = 1; i < formular.size(); i += 2) {
             Operation.fromString(formular.get(i))
                 .orElseThrow(() ->
