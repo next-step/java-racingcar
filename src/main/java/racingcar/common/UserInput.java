@@ -1,9 +1,13 @@
 package racingcar.common;
 
+import racingcar.common.exception.InputValidationException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserInput {
 
@@ -21,6 +25,14 @@ public class UserInput {
         } catch (IOException exception) {
             exception.printStackTrace();
         }
+    }
+
+    private List<String> splitStr(final String userInput) {
+        return Arrays.stream(userInput.split(DELIMITER)).collect(Collectors.toList());
+    }
+
+    public List<String> getSplitUserInput() {
+        return splitUserInput;
     }
 
 }
