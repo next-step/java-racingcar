@@ -27,6 +27,24 @@ public class UserInput {
         }
     }
 
+    private void validateLengthLimit(final List<String> splitUserInput) {
+        boolean match = splitUserInput.stream()
+                .allMatch(input -> input.length() <= 5 && input.length() >= 1);
+
+        if (!match) {
+            throw new InputValidationException("자동차 이름은 5글자를 넘을 수 없습니다.");
+        }
+
+    }
+
+    private void validateDuplicateCar(final List<String> splitUserInput) {
+        int size = splitUserInput.stream().distinct().collect(Collectors.toList()).size();
+
+        if (size != splitUserInput.size()) {
+            throw new InputValidationException("중복된 자동차 이름이 존재합니다.");
+        }
+    }
+
     private List<String> splitStr(final String userInput) {
         return Arrays.stream(userInput.split(DELIMITER)).collect(Collectors.toList());
     }
