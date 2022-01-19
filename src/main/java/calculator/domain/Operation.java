@@ -2,10 +2,20 @@ package calculator.domain;
 
 public class Operation {
 
-    private double result = 0;
+    public static double addition(double result, int operand) {
+        return result + (double) operand;
+    }
 
-    public void setInitiateNumber(int first) {
-        result = (double) first;
+    public static double subtraction(double result, int operand) {
+        return result - (double) operand;
+    }
+
+    public static double multiplication(double result, int operand) {
+        return result * (double) operand;
+    }
+
+    public static double division(double result, int operand) {
+        return result / (double) operand;
     }
 
 }
