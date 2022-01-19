@@ -49,8 +49,9 @@
 
 ## 기능 구현 사항
 - [x] 자동차 이름 입력받기(Input.getCarName)
-  - [ ] 자동차 이름별로 객체 생성(이름, 위치) (RacingCar)
-    - [ ] 자동차 한칸 전진.(RacingCar.forward)
+  - [x] 자동차 이름별로 객체 생성(이름) (RacingCar)
+    - [x] 자동차 한칸 전진.(RacingCar.forward)
+    - [x] 자동차의 이름과 현재 위치 출력.(RacingCar.printCurrPosition)
   - [x] 참가 자동차는 2대 이상. (Validator.validatePossibleToStart)
   - [x] 자동차의 이름 글자수 5자 이하인가. (Validator.validateNameLength)
   - [x] 문자열에 들어온 공백 제거. (Input.removeBlank)
