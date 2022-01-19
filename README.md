@@ -28,6 +28,18 @@
   - [X] 예를 들어 `2 + 3 * 4 / 2`와 같은 문자열을 입력할 경우 `2 + 3 * 4 / 2` 실행 결과인 10을 출력해야 한다.
 - [X] 결과 반환
 - [ ] 유닛테스트
+  - 잘못된 formula
+    - 공백 2칸 이상일때, IllegalArgumentException 발생한다.
+      - [ ] `2   + 3 * 4 / 2`
+    - 숫자 연속 2개 올 때, IllegalArgumentException 발생한다.
+      - [ ] `2 3 * 4 / 2` 
+    - 문자 연속 2개 올 때, IllegalArgumentException 발생한다.
+      - [ ] `+ + 3 * 4 / 2` 
+    - 사칙 연산기호 아닌것일때 IllegalArgumentException 발생한다.
+      - [ ] `2 & 3 * 4 / 2`
+    - null일때 IllegalArgumentException 발생한다.
+      - [ ] `null`
+  - [ ] 정상 formula: `2 + 3 * 4 / 2` 일 때 의도한 값 `10`을 반환한다.
 
 ## 마감 기한
 
