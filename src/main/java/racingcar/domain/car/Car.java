@@ -3,13 +3,22 @@ package racingcar.domain.car;
 public class Car implements Comparable<Car>{
     private String name;
     private int status;
-    public Car(String name) {
+    private Car(String name) {
         this.name = name;
         this.status = 0;
     }
 
+    private Car(String name, int status) {
+        this.name = name;
+        this.status = status;
+    }
+
     public static Car from(String name) {
         return new Car(name);
+    }
+
+    public static Car of(String name, int status) {
+        return new Car(name, status);
     }
 
     public String getName() {
@@ -20,8 +29,8 @@ public class Car implements Comparable<Car>{
         return this.status;
     }
 
-    public void go() {
-        this.status += 1;
+    public Car go() {
+        return Car.of(this.name, this.status + 1);
     }
 
     public int compareTo(Car o) {

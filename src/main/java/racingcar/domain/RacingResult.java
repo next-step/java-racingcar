@@ -48,4 +48,8 @@ public class RacingResult {
 
         System.out.println(stringBuilder.append(winners).toString());
     }
+
+    public List<Car> getCars() {
+        return this.cars;
+    }
 }
