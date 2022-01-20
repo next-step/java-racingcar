@@ -10,18 +10,21 @@ public class UserInput {
     final private static int MIN_LENGTH = 1;
     final private static int MAX_LENGTH = 5;
 
-    public static void getCarNames() {
+    public static List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
+        List<String> nameList;
 
         try {
-            List<String> nameList = splitStringByComma(input);
+            nameList = splitStringByComma(input);
             checkCarCount(nameList);
         } catch (IllegalArgumentException e) {
             System.out.println(e.toString());
-            getCarNames();
+            return getCarNames();
         }
+        return nameList;
     }
 
     public static List<String> splitStringByComma(String input) {
@@ -31,6 +34,7 @@ public class UserInput {
         while (st.hasMoreTokens()) {
             String name = st.nextToken().trim();
             checkNameLength(name);
+            nameList.add(name);
         }
         return nameList;
     }
@@ -48,20 +52,23 @@ public class UserInput {
         }
     }
 
-    public static void getTryNumber() {
+    public static int getTryNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
+
         Scanner sc = new Scanner(System.in);
+        int tryNumber;
 
         try {
-            int tryNumber = sc.nextInt();
+            tryNumber = sc.nextInt();
             checkTryNumber(tryNumber);
         } catch (InputMismatchException e) {
             System.out.println("[ERROR] 숫자만 입력 해주세요.");
-            getTryNumber();
+            return getTryNumber();
         } catch (IllegalArgumentException e) {
             System.out.println(e.toString());
-            getTryNumber();
+            return getTryNumber();
         }
+        return tryNumber;
     }
 
     public static void checkTryNumber(int tryNumber) {
@@ -69,6 +76,4 @@ public class UserInput {
             throw new IllegalArgumentException("[ERROR] 시도 횟수는 최소 1회 이상이어야 합니다.");
         }
     }
-
-
 }
