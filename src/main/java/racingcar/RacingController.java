@@ -10,10 +10,12 @@ public class RacingController {
     private Participants participants;
     private final int turnCount;
     private final int participantCount;
+    private Move move;
 
     public RacingController(Participants participants, int turn) {
         this.participants = participants;
         this.turnCount = turn;
+        this.move = new Move();
         participantCount = participants.getParticipantCount();
     }
 
@@ -33,7 +35,7 @@ public class RacingController {
 
     public RacingResult race(RacingResult result) {
         for (int i = 0; i < participantCount; i++) {
-            result.moveCarIfPositionChanged(i, Move.isSatisfiedMoveCondition());
+            result.moveCarIfPositionChanged(i, move.isSatisfiedMoveCondition());
         }
         return result;
     }
