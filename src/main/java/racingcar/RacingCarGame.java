@@ -24,11 +24,7 @@ public class RacingCarGame {
     }
 
     private int getRandomMove() {
-        int move = MIN_MOVE + RANDOM.nextInt(MAX_MOVE - MIN_MOVE + 1);
-
-        checkMovable(move);
-
-        return move;
+        return MIN_MOVE + RANDOM.nextInt(MAX_MOVE - MIN_MOVE + 1);
     }
 
     private boolean checkMovable(int move) {
