@@ -9,6 +9,8 @@ public class ApplicationRacingCar {
 
         RacingCarGame racingCarGame = new RacingCarGame(console.getTryCount(),
             console.getCarNames());
+
+        racingCarGame.playRacingCarGame();
     }
 
 }
