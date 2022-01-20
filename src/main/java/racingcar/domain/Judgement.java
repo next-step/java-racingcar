@@ -35,10 +35,10 @@ public class Judgement {
     }
 
     private int maxDriveLength(List<Car> cars) {
-        return cars.stream().map(car -> car.getStep())
-                .mapToInt(length -> Integer.valueOf(length))
-                .max()
-                .getAsInt();
+        return cars.stream()
+                .mapToInt(Car::getStep)
+                .max().
+                getAsInt();
     }
 
     private String carPosition(final Car car) {
@@ -52,6 +52,7 @@ public class Judgement {
     public void carsStatement(final List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + carPosition(car));
+            stringBuilder.setLength(ZERO);
         }
     }
 }
