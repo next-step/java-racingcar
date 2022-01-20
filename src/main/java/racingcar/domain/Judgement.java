@@ -45,7 +45,6 @@ public class Judgement {
         for (int step = ZERO; step < car.getStep(); step++) {
             stringBuilder.append(STEP);
         }
-
         return stringBuilder.toString();
     }
 
@@ -55,4 +54,5 @@ public class Judgement {
             stringBuilder.setLength(ZERO);
         }
     }
+
 }
