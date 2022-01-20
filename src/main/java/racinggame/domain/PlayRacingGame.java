@@ -35,12 +35,26 @@ public class PlayRacingGame {
         System.out.println();
     }
 
+
+
     public int findMaxLocation(List<Car>cars){
         int maxLocation=0;
         for (Car car:cars) {
             maxLocation=Math.max(car.getLocation(),maxLocation);
         }
         return maxLocation;
+    }
+
+    public List<String> findWinner(List<Car>cars){
+        List<String> winnerUsers=new ArrayList<>();
+        int maxLocation=findMaxLocation(cars);
+        System.out.print("최종 우승자: ");
+        for (Car car:cars) {
+            if(car.getLocation()==maxLocation){
+                winnerUsers.add(car.getCarName());
+            }
+        }
+        return winnerUsers;
     }
 
 
