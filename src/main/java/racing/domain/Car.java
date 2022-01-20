@@ -18,6 +18,14 @@ public class Car {
         return name;
     }
 
+    public void drive() {
+        int randomNumber = generateRandomNumber();
+        if (isMove(randomNumber)) {
+            position++;
+        }
+        printStatus();
+    }
+
     private boolean isMove(int randomNumber) {
         return randomNumber >= MIN_MOVE_NUM;
     }
