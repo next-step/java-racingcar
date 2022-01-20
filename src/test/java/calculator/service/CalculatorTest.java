@@ -2,6 +2,7 @@ package calculator.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import calculator.domain.Formula;
 import calculator.util.Operation;
 import java.util.Arrays;
 import java.util.List;
@@ -11,8 +12,8 @@ class CalculatorTest {
 
     @Test
     void run(){
-        List<String> formula = Arrays.asList("1", "+", "3", "-", "5");
-        double result = Calculator.run(formula);
+        String formula = "1 + 3 - 5";
+        double result = Calculator.run(new Formula(formula));
         assertThat(result).isEqualTo(-1);
     }
 
