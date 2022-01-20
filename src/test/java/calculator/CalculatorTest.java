@@ -1,4 +1,4 @@
-package domain;
+package calculator;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
