@@ -8,13 +8,15 @@ import racingcar.ui.RacingCarInput;
 public class Application {
 
     public static void main(String[] args) {
-        List<String> carNameList = RacingCarInput.getCarName();
-        int raceCount = RacingCarInput.getRaceCount();
+        RacingCarInput racingCarInput = new RacingCarInput();
+        List<String> carNameList = racingCarInput.getCarName();
+        int raceCount = racingCarInput.getRaceCount();
         GameLauncher gameLauncher = new GameLauncher(carNameList);
         while (0 < raceCount) {
             gameLauncher.moveForwardAll();
             gameLauncher.printRacing();
             raceCount--;
+            System.out.println("------------------------------");
         }
         gameLauncher.printWinner();
     }
