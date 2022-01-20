@@ -11,6 +11,9 @@ import java.util.List;
 
 public class FormulaInput {
 
+    private FormulaInput() {
+    }
+
     public static Formula getFormula() {
         String input = "";
         Formula formular = null;
