@@ -1,5 +1,8 @@
 package racinggame.domain;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 
 public class RacingGame {
@@ -14,12 +17,14 @@ public class RacingGame {
         this.trial = trial;
     }
 
-    public void start() {
+    public void start() throws IOException {
         for (int i = 0; i < trial; i++) {
             progress();
 
-            //TODO 계속 진행 묻기
-            System.out.println("그만 하시려면 q, 계속하시려면 아무키나 입력해 주세요.");
+            String input = getCommand();
+            if(isEnd(input)){
+                System.exit(0);
+            }
         }
     }
 
@@ -33,13 +38,24 @@ public class RacingGame {
         });
     }
 
+    private boolean canForward(int randomValue) {
+        return randomValue >= 4;
+    }
+
+    private String getCommand() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("그만 하시려면 q, 계속하시려면 아무키나 입력해 주세요.");
+        return br.readLine();
+    }
+
+    private boolean isEnd(String input) {
+        return input.equals("q");
+    }
+
     public int getRandomValue() {
         int random = (int) Math.floor(Math.random() * (9 - 0 + 1));
         return random;
-    }
-
-    private boolean canForward(int randomValue) {
-        return randomValue >= 4;
     }
 
     public List<RacingCar> getRacingCars() {
