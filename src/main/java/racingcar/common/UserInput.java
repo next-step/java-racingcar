@@ -82,4 +82,8 @@ public class UserInput {
         return splitUserInput;
     }
 
+    public int getRacingTryCounter() {
+        return racingTryCounter;
+    }
+
 }
