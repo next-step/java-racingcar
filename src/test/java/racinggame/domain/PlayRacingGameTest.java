@@ -12,14 +12,14 @@ class PlayRacingGameTest {
 
     @DisplayName("우승자 확인")
     @Test
-    public void winnerCheck(){
+    public void winnerCheck() {
 
         Car car1 = new Car("a");
         Car car2 = new Car("b");
 
         car1.setLocation(5);
         car2.setLocation(8);
-        List<Car> carList=new ArrayList<>();
+        List<Car> carList = new ArrayList<>();
         carList.add(car1);
         carList.add(car2);
 

@@ -10,9 +10,9 @@ class GameInitTest {
 
     @DisplayName("각 자동차 이름은 5글자를 초과할 수 없다.")
     @Test
-    public void validationPlayerNameLength(){
+    public void validationPlayerNameLength() {
         GameInit gameInit = new GameInit();
-        String[] strings ={"abcdef"};
+        String[] strings = {"abcdef"};
         boolean isCorrect = gameInit.validationStringLength(strings);
         Assertions.assertThat(isCorrect).isFalse();
     }
