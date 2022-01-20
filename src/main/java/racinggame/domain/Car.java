@@ -9,12 +9,6 @@ public class Car {
         this.carName = carName;
     }
 
-    public void goForward(int value) {
-        if (value >= 4) {
-            location++;
-        }
-    }
-
     public int getLocation() {
         return location;
     }
