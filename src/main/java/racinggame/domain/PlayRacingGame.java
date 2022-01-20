@@ -48,7 +48,6 @@ public class PlayRacingGame {
     public List<String> findWinner(List<Car>cars){
         List<String> winnerUsers=new ArrayList<>();
         int maxLocation=findMaxLocation(cars);
-        System.out.print("최종 우승자: ");
         for (Car car:cars) {
             if(car.getLocation()==maxLocation){
                 winnerUsers.add(car.getCarName());
@@ -57,5 +56,10 @@ public class PlayRacingGame {
         return winnerUsers;
     }
 
+    public void printWinner(List<String>winnerUsers){
+        System.out.print("최종 우승자: ");
+        String winnerList = String.join(", ", winnerUsers);
+        System.out.println(winnerList);
+    }
 
 }
