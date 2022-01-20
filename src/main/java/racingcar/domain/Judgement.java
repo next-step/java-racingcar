@@ -34,7 +34,7 @@ public class Judgement {
         System.out.println(stringBuilder);
     }
 
-    private int maxDriveLength(List<Car> cars) {
+    private int maxDriveLength(final List<Car> cars) {
         return cars.stream()
                 .mapToInt(Car::getStep)
                 .max().
