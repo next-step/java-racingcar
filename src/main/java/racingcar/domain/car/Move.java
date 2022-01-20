@@ -6,10 +6,10 @@ public class Move {
 
     private static final int BOUND = 4;
 
-    public static Car isSatisfiedMoveCondition(Car car, int random) {
-        if (random >= BOUND) {
-            return car.go();
+    public static boolean isSatisfiedMoveCondition() {
+        if (RandomManager.get() >= BOUND) {
+            return true;
         }
-        return car;
+        return false;
     }
 }
