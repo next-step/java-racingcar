@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 class RacingGameTest {
@@ -48,5 +49,20 @@ class RacingGameTest {
         boolean result = (boolean) canForward.invoke(racingGame, randomValue);
 
         assertTrue(result);
+    }
+
+    @Test
+    @RepeatedTest(value = 1000)
+    void getRandomValue_랜덤값을_생성()
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+
+        RacingGame racingGame = new RacingGame();
+        Method getRandomValue = RacingGame.class.getDeclaredMethod("getRandomValue");
+        getRandomValue.setAccessible(true);
+
+        int result = (int) getRandomValue.invoke(racingGame);
+
+        assertTrue(result <= 9);
+        assertTrue(result >= 0);
     }
 }
