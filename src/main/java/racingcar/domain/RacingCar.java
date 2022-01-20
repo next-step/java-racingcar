@@ -18,7 +18,11 @@ public class RacingCar {
 
 
     public RacingCar(String name) {
-        isCorrectNameSize(name);
+        try {
+            isCorrectNameSize(name);
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] " + e.getMessage());
+        }
         this.name = name;
     }
 
@@ -41,5 +45,10 @@ public class RacingCar {
         if (NAME_SIZE < name.length()) {
             throw new IllegalArgumentException("자동차 이름의 길이가 5를 초과했습니다!");
         }
+    }
+
+    @Override
+    public String toString() {
+        return name + " : " + position;
     }
 }
