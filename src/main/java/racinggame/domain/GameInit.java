@@ -29,7 +29,7 @@ public class GameInit {
         return tryNumber;
     }
 
-    private boolean validationStringLength(String[] playerNameList) {
+    public boolean validationStringLength(String[] playerNameList) {
         boolean isValidate = true;
         for (String playerName : playerNameList) {
             if (playerName.length() > 5) {
