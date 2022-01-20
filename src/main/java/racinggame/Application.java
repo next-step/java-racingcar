@@ -19,7 +19,7 @@ public class Application {
         //게임 시작
         PlayRacingGame playRacingGame = new PlayRacingGame();
         System.out.println("실행 결과");
-        for(;playGameNumber>0;playGameNumber--){
+        for (; playGameNumber > 0; playGameNumber--) {
             playRacingGame.move(carList);
             playRacingGame.printCarsLocation(carList);
 
@@ -27,7 +27,6 @@ public class Application {
         List<String> winner = playRacingGame.findWinner(carList);
         playRacingGame.printWinner(winner);
     }
-
 
 
 }

@@ -5,16 +5,16 @@ import java.util.Scanner;
 public class GameInit {
 
 
-    public String[] inputPlayerName(){
+    public String[] inputPlayerName() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String playerNames="";
+        String playerNames = "";
         String[] playerNameList;
-        while (true){
+        while (true) {
             Scanner scanner = new Scanner(System.in);
             playerNames = scanner.nextLine();
             playerNameList = playerNames.split(",");
             boolean isValidate = validationStringLength(playerNameList);
-            if(isValidate==true){
+            if (isValidate == true) {
                 break;
             }
         }
@@ -22,19 +22,19 @@ public class GameInit {
         return playerNameList;
     }
 
-    public int inputTryNumber(){
+    public int inputTryNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         Scanner scanner = new Scanner(System.in);
         int tryNumber = scanner.nextInt();
         return tryNumber;
     }
 
-    private boolean validationStringLength(String[] playerNameList ){
-        boolean isValidate=true;
-        for (String playerName: playerNameList) {
-            if(playerName.length()>5){
+    private boolean validationStringLength(String[] playerNameList) {
+        boolean isValidate = true;
+        for (String playerName : playerNameList) {
+            if (playerName.length() > 5) {
                 System.out.println("자동차의 이름은 5자를 초과할 수 없습니다.");
-                isValidate=false;
+                isValidate = false;
             }
         }
         return isValidate;
