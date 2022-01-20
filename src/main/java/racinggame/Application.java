@@ -18,6 +18,7 @@ public class Application {
         List<Car> carList = cars.createCarList(carNames);
         //게임 시작
         PlayRacingGame playRacingGame = new PlayRacingGame();
+        System.out.println("실행 결과");
         for(;playGameNumber>0;playGameNumber--){
             playRacingGame.move(carList);
             playRacingGame.printCarsLocation(carList);

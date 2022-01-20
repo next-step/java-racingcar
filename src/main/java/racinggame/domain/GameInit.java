@@ -6,6 +6,7 @@ public class GameInit {
 
 
     public String[] inputPlayerName(){
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String playerNames="";
         String[] playerNameList;
         while (true){
@@ -22,6 +23,7 @@ public class GameInit {
     }
 
     public int inputTryNumber(){
+        System.out.println("시도할 횟수는 몇 회인가요?");
         Scanner scanner = new Scanner(System.in);
         int tryNumber = scanner.nextInt();
         return tryNumber;
