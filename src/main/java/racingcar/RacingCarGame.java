@@ -48,7 +48,19 @@ public class RacingCarGame {
 
         for (int i = 0; i < racingCarList.size(); ++i) {
             int move = getRandomMove();
+
+            setRacingResults(i, move);
         }
+    }
+
+    private void setRacingResults(int carNumber, int move) {
+        if (!checkMovable(move)) {
+            printMoveState(carNumber);
+            return;
+        }
+
+        racingResults[carNumber] += "-";
+        printMoveState(carNumber);
     }
 
     private void printMoveState(int carNumber) {
