@@ -6,7 +6,7 @@ import racingcar.domain.car.Car;
 public class Participants {
     private final List<Car> cars;
 
-    public Participants(List<Car> cars) {
+    private Participants(List<Car> cars) {
         this.cars = cars;
     }
 

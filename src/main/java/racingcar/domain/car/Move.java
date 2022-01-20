@@ -9,8 +9,12 @@ public class Move {
     private static final int BOUND = 4;
     private RandomFactory randomFactory;
 
-    public Move() {
+    private Move() {
         randomFactory = new RandomFactory();
+    }
+
+    public static Move get() {
+        return new Move();
     }
 
     public boolean isSatisfiedMoveCondition() {

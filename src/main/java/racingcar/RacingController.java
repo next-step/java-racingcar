@@ -12,10 +12,10 @@ public class RacingController {
     private final int participantCount;
     private Move move;
 
-    public RacingController(Participants participants, int turn) {
+    private RacingController(Participants participants, int turn) {
         this.participants = participants;
         this.turnCount = turn;
-        this.move = new Move();
+        this.move = Move.get();
         participantCount = participants.getParticipantCount();
     }
 

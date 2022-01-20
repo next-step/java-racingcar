@@ -13,7 +13,7 @@ public class RacingResult {
     private static StringBuilder stringBuilder;
     private List<Car> cars;
 
-    public RacingResult(List<Car> cars) {
+    private RacingResult(List<Car> cars) {
         this.cars = cars;
     }
 
