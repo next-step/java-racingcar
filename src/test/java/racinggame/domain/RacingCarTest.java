@@ -36,7 +36,7 @@ class RacingCarTest {
 
         car.printCurrPosition();
 
-        assertEquals("car  : ", out.toString());
+        assertEquals("car  : \n", out.toString());
     }
 
     @Test
@@ -48,7 +48,7 @@ class RacingCarTest {
 
         car.forward();
         car.printCurrPosition();
-        assertEquals("car  : -", out.toString());
+        assertEquals("car  : -\n", out.toString());
     }
 
     @Test
