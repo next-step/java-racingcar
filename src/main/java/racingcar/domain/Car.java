@@ -10,6 +10,11 @@ public class Car {
         this.step = 0;
     }
 
+    public Car(final String name, final int step) {
+        this.name = name;
+        this.step = step;
+    }
+
     public static Car of(final String name) {
         return new Car(name);
     }
