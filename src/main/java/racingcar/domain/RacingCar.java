@@ -18,11 +18,7 @@ public class RacingCar {
 
 
     public RacingCar(String name) {
-        try {
-            isCorrectNameSize(name);
-        } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] " + e.getMessage());
-        }
+        isCorrectNameSize(name);
         this.name = name;
     }
 

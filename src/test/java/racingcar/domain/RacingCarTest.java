@@ -12,7 +12,7 @@ import org.mockito.MockedStatic;
 import racingcar.Application;
 import racingcar.util.RandomUtil;
 
-class RacingCarTest extends RandomConfigTest{
+class RacingCarTest extends RandomConfigTest {
 
     @BeforeEach
     void beforeEach() {
