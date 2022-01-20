@@ -18,25 +18,29 @@ public class Car {
     }
 
     public int getDistance() {
-        return this.distance;
+        return distance;
     }
 
-    private void printDistance() {
+    public String getName() {
+        return name;
+    }
+
+    public void printDistance() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < this.distance; i++) {
+        for (int i = 0; i < distance; i++) {
             sb.append('-');
         }
-        System.out.println(this.name + " : " + sb);
+        System.out.println(name + " : " + sb);
     }
 
     public void move() {
-        if(this.moveCheck()){
-            this.distance++;
+        if (moveCheck()) {
+            distance++;
         }
     }
 
     private boolean moveCheck() {
-        int random = (int)((Math.random() * (10)));
+        int random = (int) ((Math.random() * (10)));
         return random >= 4;
     }
 }
