@@ -4,11 +4,11 @@
 초간단 자동차 경주 게임을 구현한다.
 
 ### Console class 
-- [ ] 각 자동차에 이름을 부여할 수 있다.  - class Console
-- setRacingCarList(): 자동차 이름을 받아 5자 초과하는지 여부를 판별한 후 쉼표로 split 해서 racingCarList에 저장 
-- [ ] 시도할 횟수를 입력 받는다. - setTryCount()
-  - [ ] 자동차 이름은 5자를 초과할 수 없다. - validateNameLength()
-  - [ ] 자동차 이름은 쉼표(,)를 기준으로 구분한다. 
+- [X] 각 자동차에 이름을 부여할 수 있다.  - class Console
+- setRacingCarNames(): 자동차 이름을 받아 5자 초과하는지 여부를 판별한 후 쉼표로 split 해서 racingCarNames에 저장 
+- [X] 시도할 횟수를 입력 받는다. - setTryCount()
+  - [X] 자동차 이름은 5자를 초과할 수 없다. - validateNameLength()
+  - [X] 자동차 이름은 쉼표(,)를 기준으로 구분한다. 
 
 
 ### RacingCarGame class
