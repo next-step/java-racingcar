@@ -34,23 +34,23 @@ public class IOclass {
         }
     }
 
+    public static int getMaxScore(int[] cars){
+        int maximum=0;
+        for (int i = 0; i < cars.length; i++)
+            maximum=Math.max(maximum, cars[i]);
+        return maximum;
+    }
     public static void printWinners(String carNames[], int[] cars) {
-        int maximum = 0;
         int count=0;
-        for (int i = 0; i < cars.length; i++) {
-            if (cars[i] >= maximum) {
-                maximum = cars[i];
-            }
-        }
+        int maximum = getMaxScore(cars);
         System.out.print("최종 우승자: ");
         for(int i=0; i < cars.length; i++){
-            if(cars[i]==maximum){
-                if (count != 0) {
-                    System.out.print(", ");
-                }
-                System.out.print(carNames[i]);
-                count++;
-            }
+            if (cars[i] != maximum)
+                continue;
+            if (count != 0)
+                System.out.print(", ");
+            System.out.print(carNames[i]);
+            count++;
         }
     }
 }

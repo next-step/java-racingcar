@@ -1,12 +1,23 @@
 package calculatorFunction;
 
 public class Calculator {
+    public static void execute(){
+        System.out.println("수식을 입력하시오: ");
+        String str = GetInput.inputString();
+        str = str.replace(" ", "");
+        if(str.length()==0)
+            throw new IllegalArgumentException("Error: need right expression");
+        String[] stringArray = GetInput.parsing(str);
+        Calculator calculator = new Calculator();
+        calculator.calculate(stringArray);
+        return;
+    }
     public void calculate(String[] stringArray){
+
         for(int i=0; i< (stringArray.length-1)/2; i++){
             if (stringArray[0].equals("ERROR")) {
                 System.out.println("ERROR");
                 System.out.println("종료합니다.");
-
                 return;
             }
             if (stringArray[i*2+1]==null) {
@@ -41,12 +52,15 @@ public class Calculator {
             result=mul(firstOperand,secondOperand);
         }
         else if(operator.equals("/")){
-            result=div(firstOperand,secondOperand);
+            if(secondOperand==0) {
+                stringArray[0] = "ERROR";
+            }
+            else
+                result=div(firstOperand,secondOperand);
         }
-        else{
-            stringArray[0] = "ERROR";
-            System.out.println("ERROR");
-        }
+        else
+            throw new IllegalArgumentException("Error: need right operator");
+
         stringArray[start+2]=String.valueOf(result);
 
         return;
