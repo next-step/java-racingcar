@@ -6,10 +6,28 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public enum Operation {
-    PLUS("+") ,
-    MINUS("-"),
-    TIMES("*") ,
-    DIVDE("/") ;
+    PLUS("+") {
+        public double apply(double x, double y) {
+            return x + y;
+        }
+    },
+    MINUS("-") {
+        public double apply(double x, double y) {
+            return x - y;
+        }
+    },
+    TIMES("*") {
+        public double apply(double x, double y) {
+            return x * y;
+        }
+    },
+    DIVDE("/") {
+        public double apply(double x, double y) {
+            return x / y;
+        }
+    };
+
+    public abstract double apply(double x, double y);
 
     private final String symbol;
 

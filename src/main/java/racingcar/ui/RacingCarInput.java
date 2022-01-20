@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class RacingCarInput {
 
@@ -23,11 +24,13 @@ public class RacingCarInput {
     public static int getRaceCount() {
         int input = 0;
         System.out.println("시도할 횟수는 몇 회인가요?");
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
-            input = Integer.parseInt(bufferedReader.readLine());
-        } catch (IllegalArgumentException | IOException e) {
-            System.out.println("[ERROR] " + e.getMessage());
-        }
+//        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
+//            input = Integer.parseInt(bufferedReader.readLine());
+//        } catch (IllegalArgumentException | IOException e) {
+//            System.out.println("[ERROR] " + e.getMessage());
+//        }
+        Scanner scanner = new Scanner(System.in);
+        input = scanner.nextInt();
         return input;
     }
 }
