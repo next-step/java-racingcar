@@ -32,4 +32,16 @@ class JudgementTest {
         assertThat(judgement.judge(cars)).isEqualTo("최종 우승자: java,jUnit");
     }
 
+    @Test
+    void noWinnerTest() {
+        Judgement judgement = Judgement.of();
+        cars = new ArrayList<>();
+
+        cars.add(new Car("c", 0));
+        cars.add(new Car("java", 0));
+        cars.add(new Car("jpa", 0));
+
+        assertThat(judgement.judge(cars)).isEqualTo("우승자는 없습니다.");
+    }
+
 }
