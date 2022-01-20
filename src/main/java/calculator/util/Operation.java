@@ -2,37 +2,26 @@ package calculator.util;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.DoubleBinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public enum Operation {
-    PLUS("+") {
-        public double apply(double x, double y) {
-            return x + y;
-        }
-    },
-    MINUS("-") {
-        public double apply(double x, double y) {
-            return x - y;
-        }
-    },
-    TIMES("*") {
-        public double apply(double x, double y) {
-            return x * y;
-        }
-    },
-    DIVDE("/") {
-        public double apply(double x, double y) {
-            return x / y;
-        }
-    };
-
-    public abstract double apply(double x, double y);
+    PLUS  ("+", (x, y) -> x + y),
+    MINUS ("-", (x, y) -> x - y),
+    TIMES ("*", (x, y) -> x * y),
+    DIVIDE("/", (x, y) -> x / y);
 
     private final String symbol;
+    private final DoubleBinaryOperator op;
 
-    Operation(String symbol) {
+    Operation(String symbol, DoubleBinaryOperator op) {
         this.symbol = symbol;
+        this.op = op;
+    }
+
+    public double apply(double x, double y) {
+        return op.applyAsDouble(x, y);
     }
 
     @Override
