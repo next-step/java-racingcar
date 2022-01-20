@@ -12,6 +12,7 @@ public class Application {
 //        System.out.println("결과값은 " + calc.value() + "입니다.");
 
         List<String> carNames = Console.getCarNames();
+        Console.validateCarNames(carNames);
         int turn = Console.getTurn();
 
         // Initialize Car Objects and Run Game

@@ -2,6 +2,7 @@ package racingcar.utils;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -27,6 +28,16 @@ public class Console {
                 Console.readString().split(",")
             )
             .collect(Collectors.toList());
+    }
+
+    public static void validateCarNames(List<String> carNames) {
+        long carNamesLengthOver5 = carNames.stream()
+            .filter(carName -> carName.length() > 5)
+            .count();
+
+        if (carNamesLengthOver5 > 0) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 넘길 수 없습니다.");
+        }
     }
 
     private static int readInt() {
