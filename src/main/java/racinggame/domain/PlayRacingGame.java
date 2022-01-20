@@ -1,5 +1,6 @@
 package racinggame.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -22,5 +23,25 @@ public class PlayRacingGame {
         }
 
     }
+
+    public void printCarsLocation(List<Car>cars){
+        for (Car car:cars) {
+            System.out.print(car.getCarName()+": "+"");
+            for(int i=0;i<car.getLocation();i++){
+                System.out.print('-');
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public int findMaxLocation(List<Car>cars){
+        int maxLocation=0;
+        for (Car car:cars) {
+            maxLocation=Math.max(car.getLocation(),maxLocation);
+        }
+        return maxLocation;
+    }
+
 
 }
