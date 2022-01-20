@@ -9,10 +9,8 @@ public class Input {
     private Input() {}
 
     public static String[] getCarNames() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
         System.out.println("경주할 자동차 이름을 ','로 구분해서 입력하세요.(2대 이상)");
-        String inputCarNames = removeBlank(br.readLine());
+        String inputCarNames = removeBlank(Utils.getInput());
         String[] carNames = splitNameByComma(inputCarNames);
 
         Validator.validatePossibleToStart(carNames);
