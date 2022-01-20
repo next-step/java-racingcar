@@ -7,7 +7,8 @@ public class RacingCarGame {
 
     private int tryCount;
     private List<String> racingCarList;
-    private String[] printResult;
+    private String[] racingResults;
+    private List<String> winners;
 
     private static final Random RANDOM = new Random();
     private final int MIN_MOVE = 0;
