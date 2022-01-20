@@ -1,9 +1,9 @@
 package racinggame.domain;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -19,13 +19,43 @@ public class RacingGame {
 
     public void start() throws IOException {
         for (int i = 0; i < trial; i++) {
-            progress();
+            System.out.println("그만 하시려면 q, 계속하시려면 아무키나 입력해 주세요.");
+            String input = Utils.getInput();
 
-            String input = getCommand();
-            if(isEnd(input)){
+            if (isEnd(input)) {
                 System.exit(0);
             }
+
+            progress();
         }
+
+        List<Integer> carPositions = getCarPositions();
+        int max = Collections.max(carPositions);
+
+        List<String> winners = getWinners(max);
+        printWinners(winners);
+    }
+
+    private List<Integer> getCarPositions() {
+        List<Integer> carPositions = racingCars.stream()
+                .map(car -> car.getPosition())
+                .collect(Collectors.toList());
+
+        return carPositions;
+    }
+
+    private List<String> getWinners(int max) {
+        List<String> winners = racingCars.stream()
+                .filter(car -> car.getPosition() == max)
+                .map(car -> car.getCarName())
+                .collect(Collectors.toList());
+
+        return winners;
+    }
+
+    private void printWinners(List<String> winners) {
+        String result = winners.stream().collect(Collectors.joining(", "));
+        System.out.println("최종 우승자: " + result);
     }
 
     private void progress() {
@@ -34,19 +64,13 @@ public class RacingGame {
             if (canForward(randomValue)) {
                 car.forward();
             }
+
             car.printCurrPosition();
         });
     }
 
     private boolean canForward(int randomValue) {
         return randomValue >= 4;
-    }
-
-    private String getCommand() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        System.out.println("그만 하시려면 q, 계속하시려면 아무키나 입력해 주세요.");
-        return br.readLine();
     }
 
     private boolean isEnd(String input) {
