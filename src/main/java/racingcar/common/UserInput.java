@@ -1,5 +1,7 @@
 package racingcar.common;
 
+import static racingcar.common.info.RacingGameInfo.*;
+
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 import racingcar.common.exception.InputValidationException;
@@ -10,6 +12,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.common.info.RacingGameInfo;
 
 public class UserInput {
 
@@ -30,7 +33,7 @@ public class UserInput {
 
     private boolean parsingCarName() {
         try {
-            log.write("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+            log.write(RACING_CAR_INPUT);
             log.flush();
             this.carNameInput = bufferedReader.readLine();
             splitUserInput = splitStr(carNameInput);
@@ -45,7 +48,7 @@ public class UserInput {
 
     private boolean parsingRacingTry() {
         try {
-            log.write("시도할 횟수는 몇 회인가요?");
+            log.write(RACING_TRY_INPUT);
             log.flush();
             this.racingTryCounter = Integer.parseInt(bufferedReader.readLine());
 

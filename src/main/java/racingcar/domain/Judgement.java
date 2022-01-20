@@ -1,9 +1,12 @@
 package racingcar.domain;
 
+import static racingcar.common.info.RacingGameInfo.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
+import racingcar.common.info.RacingGameInfo;
 
 public class Judgement {
 
@@ -12,7 +15,7 @@ public class Judgement {
 
         for (Car car : cars) {
             if (max == car.getStep()) {
-                System.out.println("최종 우승자: " + car.getName());
+                System.out.println(WINNER_IS + car.getName());
             }
         }
     }
