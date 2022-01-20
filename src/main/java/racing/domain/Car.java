@@ -25,4 +25,12 @@ public class Car {
     private int generateRandomNumber() {
         return (int) (Math.random() * 9);
     }
+
+    private void printStatus() {
+        System.out.print(name + " : ");
+        for (int i = 0; i < position; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
 }
