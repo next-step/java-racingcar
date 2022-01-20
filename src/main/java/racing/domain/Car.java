@@ -17,4 +17,12 @@ public class Car {
     public String getName() {
         return name;
     }
+
+    private boolean isMove(int randomNumber) {
+        return randomNumber >= MIN_MOVE_NUM;
+    }
+
+    private int generateRandomNumber() {
+        return (int) (Math.random() * 9);
+    }
 }
