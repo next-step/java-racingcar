@@ -39,4 +39,12 @@ public class Console {
             throw new IllegalArgumentException();
         }
     }
+
+    public int getTryCount() {
+        return tryCount;
+    }
+
+    public List<String> getCarNames() {
+        return carNames;
+    }
 }
