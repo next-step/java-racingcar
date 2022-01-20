@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import racingcar.Application;
+import racingcar.domain.Car;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RandomConfigTest;
 import racingcar.util.RandomUtil;
@@ -25,13 +26,13 @@ class GameLauncherTest extends RandomConfigTest {
     @Test
     void 모든차앞으로전진() {
         GameLauncher gameLauncher = new GameLauncher(Arrays.asList("qwe", "asdf", "zx"));
-        List<RacingCar> racingCars = gameLauncher.getRacingCarList();
+        List<Car> racingCars = gameLauncher.getRacingCarList();
         try (final MockedStatic<RandomUtil> mockRandoms = mockStatic(RandomUtil.class)) {
             mockRandoms
                 .when(() -> RandomUtil.pickNumberInRange(anyInt(), anyInt()))
                 .thenReturn(5, 3, 6);
 
-            for (RacingCar car : racingCars) {
+            for (Car car : racingCars) {
                 car.moveForward();
             }
 

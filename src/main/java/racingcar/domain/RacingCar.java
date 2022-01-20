@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import racingcar.util.RandomUtil;
 
-public class RacingCar {
+public class RacingCar implements Car{
 
     private final String name;
 
@@ -18,11 +18,7 @@ public class RacingCar {
 
 
     public RacingCar(String name) {
-        try {
-            isCorrectNameSize(name);
-        } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] " + e.getMessage());
-        }
+        isCorrectNameSize(name);
         this.name = name;
     }
 
