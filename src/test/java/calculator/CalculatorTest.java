@@ -19,7 +19,11 @@ public class CalculatorTest {
     @ParameterizedTest
     @MethodSource("blankStrings")
     void errorWhenFormulaIsNullOrBlank(String testValue) {
-        assertThatThrownBy(() -> new Calculator(testValue).value())
+        assertThatThrownBy(
+            () ->
+                new Calculator(testValue)
+                    .value()
+        )
             .isInstanceOf(IllegalArgumentException.class);
     }
 

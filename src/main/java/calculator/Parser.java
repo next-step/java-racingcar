@@ -16,11 +16,13 @@ public class Parser {
     private List<String> parsedElements;
 
     public Parser(String formula) {
-        this.validator = Validator.getInstance(formula);
+        this.validator = Validator.getInstance();
         this.formula = formula;
 
         this.numbers = new ArrayList<>();
         this.operators = new ArrayList<>();
+
+        validator.setFormula(formula);
 
         validateFormula();
         parseFormula();

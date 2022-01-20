@@ -5,19 +5,21 @@ import java.util.regex.Pattern;
 
 public class Validator {
 
-    private final String formula;
-
     private static Validator instance;
 
-    private Validator(String formula) {
-        this.formula = formula;
-    }
+    private String formula;
 
-    public static Validator getInstance(String formula) {
+    private Validator() {}
+
+    public static Validator getInstance() {
         if (instance == null) {
-           instance = new Validator(formula);
+           instance = new Validator();
         }
         return instance;
+    }
+
+    public void setFormula(String formula) {
+        this.formula = formula;
     }
 
     public void validateFormulaIsEmpty() {
