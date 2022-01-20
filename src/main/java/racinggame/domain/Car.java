@@ -13,6 +13,8 @@ public class Car {
         }
     }
 
-
+    public int getLocation(){
+        return location;
+    }
 
 }
