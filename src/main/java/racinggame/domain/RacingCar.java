@@ -1,5 +1,9 @@
 package racinggame.domain;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class RacingCar {
 
     private String carName;
@@ -9,6 +13,11 @@ public class RacingCar {
 
     public RacingCar(String carName) {
         this.carName = carName;
+    }
+
+    public static List<RacingCar> createRacingCarFromCarNames(String[] carNames) {
+        return Arrays.stream(carNames).map(carName -> new RacingCar(carName))
+                .collect(Collectors.toList());
     }
 
     public String getCarName() {
