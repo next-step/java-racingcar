@@ -1,32 +1,33 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
+
+import static racingcar.common.SystemMessage.FINAL_WINNERS_INFO;
 
 public class Judgement {
+
+    private static final int ZERO = 0;
 
     public void judge(final List<Car> cars) {
         int max = maxDriveLength(cars);
 
         for (Car car : cars) {
             if (max == car.getStep()) {
-                System.out.println("최종 우승자: " + car.getName());
+                System.out.println(FINAL_WINNERS_INFO + car.getName());
             }
         }
     }
 
     private int maxDriveLength(List<Car> cars) {
         return cars.stream().map(car -> car.getStep())
-            .mapToInt(length -> Integer.valueOf(length))
-            .max()
-            .getAsInt();
+                .mapToInt(length -> Integer.valueOf(length))
+                .max()
+                .getAsInt();
     }
 
     private String carPosition(final Car car) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < car.getStep(); i++) {
+        for (int step = ZERO; step < car.getStep(); step++) {
             stringBuilder.append("-");
         }
 
