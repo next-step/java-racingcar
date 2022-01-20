@@ -1,23 +1,24 @@
 package racingcar.common;
 
-import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
 import racingcar.common.exception.InputValidationException;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static racingcar.common.SystemMessage.*;
+
 public class UserInput {
 
-
     private static final String DELIMITER = ",";
+    private static final int LENGTH_LIMIT_MAX = 5;
+    private static final int LENGTH_LIMIT_MIN = 1;
+
     private List<String> splitUserInput;
     private String carNameInput;
     private int racingTryCounter;
+
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
 
@@ -30,7 +31,7 @@ public class UserInput {
 
     private boolean parsingCarName() {
         try {
-            log.write("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+            log.write(CAR_NAME_INPUT_INFO.toString());
             log.flush();
             this.carNameInput = bufferedReader.readLine();
             splitUserInput = splitStr(carNameInput);
@@ -45,7 +46,7 @@ public class UserInput {
 
     private boolean parsingRacingTry() {
         try {
-            log.write("시도할 횟수는 몇 회인가요?");
+            log.write(RACING_TIME_INPUT_INFO.toString());
             log.flush();
             this.racingTryCounter = Integer.parseInt(bufferedReader.readLine());
 
@@ -58,10 +59,10 @@ public class UserInput {
 
     private void validateLengthLimit(final List<String> splitUserInput) {
         boolean match = splitUserInput.stream()
-            .allMatch(input -> input.length() <= 5 && input.length() >= 1);
+                .allMatch(input -> input.length() <= LENGTH_LIMIT_MAX && input.length() >= LENGTH_LIMIT_MIN);
 
         if (!match) {
-            throw new InputValidationException("자동차 이름은 5글자를 넘을 수 없습니다.");
+            throw new InputValidationException(CAR_NAME_LENGTH_LIMIT_ERROR.toString());
         }
 
     }
@@ -70,7 +71,7 @@ public class UserInput {
         int size = splitUserInput.stream().distinct().collect(Collectors.toList()).size();
 
         if (size != splitUserInput.size()) {
-            throw new InputValidationException("중복된 자동차 이름이 존재합니다.");
+            throw new InputValidationException(CAR_NAME_DUPLICATE_ERROR.toString());
         }
     }
 
