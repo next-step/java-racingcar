@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class RacingCarTest {
@@ -48,5 +49,15 @@ class RacingCarTest {
         car.forward();
         car.printCurrPosition();
         assertEquals("car  : -", out.toString());
+    }
+
+    @Test
+    void 자동차이름_배열을_받아_자동차객체_리스트_생성() {
+        String[] carNames = {"car1", "car2"};
+
+        List<RacingCar> racingCars = RacingCar.createRacingCarFromCarNames(carNames);
+
+        assertEquals(racingCars.get(0).getCarName(), carNames[0]);
+        assertEquals(racingCars.get(1).getCarName(), carNames[1]);
     }
 }
