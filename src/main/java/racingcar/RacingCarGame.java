@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -29,6 +31,24 @@ public class RacingCarGame {
 
     private boolean checkMovable(int move) {
         return MOVABLE <= move;
+    }
+
+    public void playRacingCarGame() {
+        System.out.println("실행 결과");
+
+        do {
+            controlRacingCar();
+
+            tryCount--;
+
+        } while (tryCount > 0);
+    }
+
+    private void controlRacingCar() {
+
+        for (int i = 0; i < racingCarList.size(); ++i) {
+            int move = getRandomMove();
+        }
     }
 
     private void printMoveState(int carNumber) {
