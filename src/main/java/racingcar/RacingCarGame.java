@@ -18,6 +18,9 @@ public class RacingCarGame {
     public RacingCarGame(int tryCount, List<String> racingCarList) {
         this.tryCount = tryCount;
         this.racingCarList = racingCarList;
+        racingResults = new String[racingCarList.size()];
+        Arrays.fill(racingResults, "");
+        winners = new ArrayList<>();
     }
 
     private int getRandomMove() {
