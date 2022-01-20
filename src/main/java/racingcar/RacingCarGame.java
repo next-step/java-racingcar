@@ -30,4 +30,11 @@ public class RacingCarGame {
     private boolean checkMovable(int move) {
         return MOVABLE <= move;
     }
-}
+
+    private void printMoveState(int carNumber) {
+        System.out.println(racingCarList.get(carNumber) + " : " + racingResults[carNumber]);
+
+        if (carNumber == racingCarList.size() - 1) {
+            System.out.println();
+        }
+    }
