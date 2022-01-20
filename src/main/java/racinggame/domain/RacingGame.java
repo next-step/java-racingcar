@@ -14,6 +14,15 @@ public class RacingGame {
         this.trial = trial;
     }
 
+    private int getRandomValue() {
+
+        return 0;
+    }
+
+    private boolean canForward(int randomValue){
+        return randomValue >=4;
+    }
+
     public List<RacingCar> getRacingCars() {
         return this.racingCars;
     }
@@ -21,4 +30,6 @@ public class RacingGame {
     public int getTrial(){
         return this.trial;
     }
+
+
 }
