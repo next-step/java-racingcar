@@ -7,7 +7,7 @@
 - [X] 경주를 진행할 횟수(라운드)를 입력받는다. InputView#getRound()
   - [X] 경주를 진행할 횟수는 1 이상의 정수여야 한다. Round#validateRound()
 - [X] 각 자동차별로 전진 혹은 멈춤을 한다. Engine#isMovable()
-  - [ ] 각 자동차 별로 0~9 사이 무작위 정수를 생성하고, 값이 4 이상일 경우 전진한다. Car#move() 
+  - [X] 각 자동차 별로 0~9 사이 무작위 정수를 생성하고, 값이 4 이상일 경우 전진한다. Car#move() 
   - [ ] 매 라운드가 끝나면 자동차의 이름과 위치를 "-" 기호를 통해 출력한다. OutputView#printResult()
 - [ ] 경주가 끝나면 우승자를 출력한다. OutputView#printWinner()
   - [ ] 경주가 끝났을 때 위치값이 가장 큰 자동차의 이름을 출력한다. RacingGame#findWinner()
