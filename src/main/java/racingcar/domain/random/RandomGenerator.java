@@ -1,12 +1,12 @@
-package racingcar.domain;
+package racingcar.domain.random;
 
 import java.util.Random;
 
-public class RandomManager {
+public class RandomGenerator implements RandomStrategy {
 
     private static final int LIMIT = 10;
 
-    public static int get() {
+    public int get() {
         return new Random().nextInt(LIMIT);
     }
 }

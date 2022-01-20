@@ -3,7 +3,7 @@ package racingcar.domain.car;
 public class Car implements Comparable<Car>{
     private String name;
     private int status;
-    public Car(String name) {
+    private Car(String name) {
         this.name = name;
         this.status = 0;
     }

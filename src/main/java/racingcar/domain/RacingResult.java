@@ -48,4 +48,10 @@ public class RacingResult {
 
         System.out.println(stringBuilder.append(winners).toString());
     }
+
+    public void moveCarIfPositionChanged(int index, boolean bool) {
+        if (bool) {
+            this.cars.get(index).go();
+        }
+    }
 }
