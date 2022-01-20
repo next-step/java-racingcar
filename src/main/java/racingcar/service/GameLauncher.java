@@ -3,11 +3,12 @@ package racingcar.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.domain.Car;
 import racingcar.domain.RacingCar;
 
 public class GameLauncher {
 
-    private final List<RacingCar> racingCarList;
+    private final List<Car> racingCarList;
 
     public GameLauncher(List<String> nameList) {
         racingCarList = new ArrayList<>();
@@ -18,7 +19,7 @@ public class GameLauncher {
     }
 
     public void moveForwardAll() {
-        for (RacingCar car : racingCarList) {
+        for (Car car : racingCarList) {
             car.moveForward();
         }
     }
@@ -29,18 +30,18 @@ public class GameLauncher {
 
     public void printWinner() {
         int maxPosition = racingCarList.stream()
-            .mapToInt(RacingCar::getPosition)
+            .mapToInt(Car::getPosition)
             .max().getAsInt();
 
         List<String> winnerList = racingCarList.stream()
             .filter(car -> car.getPosition() == maxPosition)
-            .map(RacingCar::getName)
+            .map(Car::getName)
             .collect(Collectors.toList());
 
         System.out.print("최종 우승자: " + String.join(", ", winnerList));
     }
 
-    public List<RacingCar> getRacingCarList() {
+    public List<Car> getRacingCarList() {
         return racingCarList;
     }
 }
