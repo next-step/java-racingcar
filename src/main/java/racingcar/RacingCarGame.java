@@ -47,7 +47,6 @@ public class RacingCarGame {
     }
 
     private void controlRacingCar() {
-
         for (int i = 0; i < racingCarList.size(); ++i) {
             int move = getRandomMove();
 
