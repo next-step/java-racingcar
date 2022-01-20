@@ -32,6 +32,7 @@ public class Input {
     }
 
     public static int getTrial() throws IOException {
+        System.out.print("시도 횟수를 입력해 주세요: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String trial = removeBlank(br.readLine());
 
