@@ -57,8 +57,8 @@
   - [x] 전진 하는 메서드 - moveForward()
 - [ ] 자동차게임 실행하는 클래스 - GameLauncher
   - [ ] 필드로 자동차 리스트 관리
-  - [ ] 여러 자동차 한번에 전진 - start()
+  - [ ] 여러 자동차 한번에 전진 - stargit t()
   - [ ] 시도마다 결과를 출력 - printRacing()
   - [ ] 우승자를 선정해서 출력 - printWinner()
-- [ ] 랜덤값 생성 클래스 - RandomUtil
+- [x] 랜덤값 생성 클래스 - RandomUtil
   - 랜덤값 생성기능 구현 - createRandomNumber()
