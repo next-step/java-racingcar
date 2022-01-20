@@ -29,13 +29,12 @@
 
 # 자동차 경주 게임
 ## 기능 구현 목록 
-- [ ] 게임 진행    RacingGame
+- [X] 게임 진행    RacingGame
   - [X] 사용자의 입력을 받으면서 게임을 진행하는 로직   #startGame()
   - [X] 입력 다 마치고 자동차 경기 시작   #startRacing()
     - [X] 각 자동차들을 움직임   #driveCars()
-  - [ ] 경기 종료   #endRacing()
-    - [ ] 경주가 끝나고 우승자 확인   #getRacingWinner()
-    - [ ] 경주가 끝나고 결과 출력   #printRacingResult()
+    - [X] 자동차 위치의 최대값을 갱신   #setMaxPosition()
+  - [X] 경주가 끝나고 우승자 출력    #showGameResult()
 
 - [X] 사용자 입력   UserInput
   - [X] 각 자동차에 이름을 부여하기 위한 사용자 입력   #getCarNames()

@@ -10,20 +10,21 @@ public class Car {
         this.position = 0;
     }
 
-    public int getPosition() {
-        return position;
+    public String checkWinner(int maxPosition) {
+        if(position == maxPosition) {
+            return name + ", ";
+        }
+        return "";
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void drive() {
+    public int drive() {
         int randomNumber = generateRandomNumber();
         if (isMove(randomNumber)) {
             position++;
         }
         printStatus();
+
+        return position;
     }
 
     private boolean isMove(int randomNumber) {

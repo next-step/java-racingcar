@@ -5,9 +5,11 @@ import java.util.List;
 
 public class RacingGame {
     private final List<Car> carList;
+    private int maxPosition;
 
     public RacingGame() {
-        carList = new ArrayList<>();
+        this.carList = new ArrayList<>();
+        this.maxPosition = 0;
     }
 
     public void startGame() {
@@ -18,6 +20,7 @@ public class RacingGame {
         }
 
         startRacing(tryNumber);
+        showGameResult();
     }
 
     private void startRacing(int tryNumber) {
@@ -30,7 +33,24 @@ public class RacingGame {
 
     private void driveCars() {
         for (Car car : carList) {
-            car.drive();
+            int position = car.drive();
+            setMaxPosition(position);
         }
+    }
+
+    private void setMaxPosition(int position) {
+        if (position > maxPosition) {
+            maxPosition = position;
+        }
+    }
+
+    private void showGameResult() {
+        StringBuilder sb = new StringBuilder();
+        for (Car car : carList) {
+            sb.append(car.checkWinner(maxPosition));
+        }
+        sb.setLength(sb.length() - 2);
+
+        System.out.println("최종 우승자 : " + sb);
     }
 }
