@@ -42,6 +42,8 @@ public class RacingCarGame {
             tryCount--;
 
         } while (tryCount > 0);
+
+        printGameResult();
     }
 
     private void controlRacingCar() {
@@ -70,3 +72,20 @@ public class RacingCarGame {
             System.out.println();
         }
     }
+
+    private void printGameResult() {
+        int maxMove = Arrays.stream(racingResults).mapToInt(String::length).max().getAsInt();
+
+        for (int i = 0; i < racingResults.length; ++i) {
+            setRacingWinners(i, maxMove);
+        }
+
+        System.out.println("최종 우승자: " + String.join(", ", winners));
+    }
+
+    private void setRacingWinners(int i, int maxMove) {
+        if (racingResults[i].length() == maxMove) {
+            winners.add(racingCarList.get(i));
+        }
+    }
+}
