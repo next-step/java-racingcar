@@ -17,7 +17,7 @@ public class UserInput {
 
     private List<String> splitUserInput;
     private String carNameInput;
-    private int racingTryCounter;
+    private int racingTime;
 
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -25,7 +25,7 @@ public class UserInput {
     public UserInput() {
         while (parsingCarName())
             ;
-        while (parsingRacingTry())
+        while (parsingRacingTime())
             ;
     }
 
@@ -44,11 +44,11 @@ public class UserInput {
         return false;
     }
 
-    private boolean parsingRacingTry() {
+    private boolean parsingRacingTime() {
         try {
             log.write(RACING_TIME_INPUT_INFO);
             log.flush();
-            this.racingTryCounter = Integer.parseInt(bufferedReader.readLine());
+            this.racingTime = Integer.parseInt(bufferedReader.readLine());
 
         } catch (IOException | InputValidationException exception) {
             exception.printStackTrace();
@@ -64,7 +64,6 @@ public class UserInput {
         if (!match) {
             throw new InputValidationException(CAR_NAME_LENGTH_LIMIT_ERROR);
         }
-
     }
 
     private void validateDuplicateCar(final List<String> splitUserInput) {
@@ -83,8 +82,8 @@ public class UserInput {
         return splitUserInput;
     }
 
-    public int getRacingTryCounter() {
-        return racingTryCounter;
+    public int getRacingTime() {
+        return racingTime;
     }
 
 }
