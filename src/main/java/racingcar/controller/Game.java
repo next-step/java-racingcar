@@ -30,7 +30,7 @@ public class Game {
             moveForwardByCount(carList);
         }
 
-
+        checkWinner(carList);
     }
 
     public void moveForwardByCount(ArrayList<Car> carList){
@@ -41,5 +41,21 @@ public class Game {
         }
         System.out.println();
     }
+    public void checkWinner(ArrayList<Car> carList){
+        ArrayList<String> winnerList= new ArrayList<>();
+        OutputView outputView= new OutputView();
+        int maxPosition=0;
+        for (Car car :carList){
+            if(car.getPosition().length()>maxPosition){
+                maxPosition=car.getPosition().length();
 
+            }
+        }
+        for (Car car: carList){
+            if(car.getPosition().length()==maxPosition){
+                winnerList.add(car.getCarName());
+            }
+        }
+        outputView.printWinner(winnerList);
+    }
 }
