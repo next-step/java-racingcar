@@ -1,10 +1,10 @@
 package racing;
 
-import racing.domain.GameTest;
+import racing.domain.RacingGame;
 
 public class Application {
     public static void main(String[] args) {
-        GameTest game = new GameTest();
+        RacingGame game = new RacingGame();
         game.startGame();
     }
 }
