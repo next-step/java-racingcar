@@ -3,6 +3,7 @@ package racingcar;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import racingcar.domain.Car;
 import racingcar.domain.View;
 import racingcar.utils.Randoms;
@@ -10,12 +11,29 @@ import racingcar.utils.Randoms;
 public class Game {
 
     private final List<Car> cars;
-    private final int turn;
+
     private final int CONDITION_MOVE_AVAILABLE = 4;
+    private final int turn;
 
     public Game(List<Car> cars, int turn) {
         this.cars = cars;
         this.turn = turn;
+    }
+
+    public void play() {
+        View.printTurnResult();
+        IntStream.range(0, turn)
+            .forEach(
+                index -> {
+                    cars.stream()
+                        .forEach(car -> {
+                            increaseIfAvailable(car);
+                            View.printDistance(car);
+                        });
+                    System.out.println();
+                }
+            );
+        View.printWhoIsWinner(calculateMaxWinners());
     }
 
     private void increaseIfAvailable(Car car) {
@@ -26,31 +44,13 @@ public class Game {
     }
 
     private String calculateMaxWinners() {
-        StringBuilder sb = new StringBuilder();
         List<Integer> distances = cars.stream()
             .map(car -> car.distance())
             .collect(Collectors.toList());
 
-        List<Car> winners = cars.stream()
+        return cars.stream()
             .filter(car -> car.distance() == Collections.max(distances))
-            .collect(Collectors.toList());
-
-        for (Car car: winners) {
-            sb.append(car.name() + ", ");
-        }
-
-        return sb.delete(sb.length() - 2, sb.length()).toString();
-    }
-
-    public void play() {
-        View.printTurnResult();
-        for (int index = 0; index < turn; index++) {
-            for (Car car: cars) {
-                increaseIfAvailable(car);
-                View.printDistance(car);
-            }
-            System.out.println();
-        }
-        View.printWhoIsWinner(calculateMaxWinners());
+            .map(Car::name)
+            .collect(Collectors.joining(", "));
     }
 }
