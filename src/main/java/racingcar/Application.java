@@ -19,7 +19,7 @@ public class Application {
             racing.drive();
             judgement.carsStatement(racing.getCars());
         }
-        judgement.judge(racing.getCars());
+        System.out.println(judgement.judge(racing.getCars()));
     }
 
 }

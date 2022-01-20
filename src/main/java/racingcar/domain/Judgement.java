@@ -20,13 +20,13 @@ public class Judgement {
         return new Judgement();
     }
 
-    public void judge(final List<Car> cars) {
+    public String judge(final List<Car> cars) {
         stringBuilder.setLength(ZERO);
         int max = maxDriveLength(cars);
 
-        if (max == 0) {
-            System.out.println(NO_WINNER_INFO);
-            return;
+        if (max == ZERO) {
+            stringBuilder.append(NO_WINNER_INFO);
+            return stringBuilder.toString();
         }
 
         stringBuilder.append(FINAL_WINNERS_INFO);
@@ -38,7 +38,8 @@ public class Judgement {
             }
         }
         stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(COMMA));
-        System.out.println(stringBuilder);
+
+        return stringBuilder.toString();
     }
 
     private int maxDriveLength(final List<Car> cars) {
