@@ -19,6 +19,10 @@ public class Application {
         }
         if(flag==2){
             String[] carNames = IOclass.getName();
+            if(!IOclass.checkCarName(carNames)){
+                System.out.println("자동차 이름은 5자를 초과할 수 없습니다.");
+                return ;
+            }
             Race race = new Race();
             int[] cars = new int[carNames.length];
             int times = IOclass.getTimes();

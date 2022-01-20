@@ -9,7 +9,14 @@ public class IOclass {
         String[] cars = str.split(",");
         return cars;
     }
-
+    
+    public static boolean checkCarName(String[] carName){
+        for(int i=0; i< carName.length; i++){
+            if(carName[i].length()>5)
+                return false;
+        }
+        return true;
+    } 
     public static int getTimes(){
         System.out.println("시도할 횟수는 몇 회인가요?");
         Scanner sc = new Scanner(System.in);
