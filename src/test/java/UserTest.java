@@ -14,9 +14,9 @@ import stringCalculator.User;
 public class UserTest {
 
     @Test
-    void 공백존재(){
+    void 공백존재() {
 
-        User user= new User();
+        User user = new User();
         String userInput = "1 + 2 *  4 - 1";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -30,8 +30,8 @@ public class UserTest {
 
     }
 
-    void 공백입력(){
-        User user= new User();
+    void 공백입력() {
+        User user = new User();
         String userInput = "";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
