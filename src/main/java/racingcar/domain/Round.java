@@ -14,6 +14,10 @@ public class Round {
         this.round = parseRound;
     }
 
+    public boolean untilEnd() {
+        return --round >= 0;
+    }
+
     public int getRound() {
         return round;
     }

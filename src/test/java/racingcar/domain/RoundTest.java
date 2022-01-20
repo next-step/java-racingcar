@@ -21,4 +21,13 @@ class RoundTest {
             .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 라운드_진행_테스트() {
+        //given
+        Round round = new Round("1");
+        //when
+        round.untilEnd();
+        //then
+        assertThat(round.untilEnd()).isFalse();
+    }
 }
