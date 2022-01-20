@@ -31,7 +31,7 @@ public class UserInput {
 
     private boolean parsingCarName() {
         try {
-            log.write(CAR_NAME_INPUT_INFO.toString());
+            log.write(CAR_NAME_INPUT_INFO);
             log.flush();
             this.carNameInput = bufferedReader.readLine();
             splitUserInput = splitStr(carNameInput);
@@ -46,7 +46,7 @@ public class UserInput {
 
     private boolean parsingRacingTry() {
         try {
-            log.write(RACING_TIME_INPUT_INFO.toString());
+            log.write(RACING_TIME_INPUT_INFO);
             log.flush();
             this.racingTryCounter = Integer.parseInt(bufferedReader.readLine());
 
@@ -62,7 +62,7 @@ public class UserInput {
                 .allMatch(input -> input.length() <= LENGTH_LIMIT_MAX && input.length() >= LENGTH_LIMIT_MIN);
 
         if (!match) {
-            throw new InputValidationException(CAR_NAME_LENGTH_LIMIT_ERROR.toString());
+            throw new InputValidationException(CAR_NAME_LENGTH_LIMIT_ERROR);
         }
 
     }
@@ -71,7 +71,7 @@ public class UserInput {
         int size = splitUserInput.stream().distinct().collect(Collectors.toList()).size();
 
         if (size != splitUserInput.size()) {
-            throw new InputValidationException(CAR_NAME_DUPLICATE_ERROR.toString());
+            throw new InputValidationException(CAR_NAME_DUPLICATE_ERROR);
         }
     }
 
