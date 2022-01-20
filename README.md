@@ -30,13 +30,14 @@
 # 자동차 경주 게임
 ## 기능 구현 목록 
 - [ ] 게임 진행    RacingGame
-  - [ ] 사용자의 입력을 받으면서 게임을 진행하는 로직   #start()
+  - [ ] 사용자의 입력을 받으면서 게임을 진행하는 로직   #startGame()
   - [ ] 입력 다 마치고 자동차 경기 시작   #startRacing()
-  - [ ] 자동차의 상태 출력   #printRacingStatus()
-  - [ ] 경주가 끝나고 우승자 확인   #getRacingWinner()
-  - [ ] 경주가 끝나고 결과 출력   #printRacingResult()
+    - [ ] 각 자동차들을 움직임   #driveCars()
+  - [ ] 경기 종료   #endRacing()
+    - [ ] 경주가 끝나고 우승자 확인   #getRacingWinner()
+    - [ ] 경주가 끝나고 결과 출력   #printRacingResult()
 
-- [ ] 사용자 입력   UserInput
+- [X] 사용자 입력   UserInput
   - [X] 각 자동차에 이름을 부여하기 위한 사용자 입력   #getCarNames()
     - [X] 각 자동차의 이름은 쉼표를 기준으로 구분 (문자와 쉼표 사이의 공백 있어도 상관X)   #splitStringByComma()
     - [X] 각 자동차 이름의 길이는 1 ~ 5자 까지 가능   #checkNameLength()
@@ -47,10 +48,11 @@
     - 잘못 입력한 경우에는 [ERROR] 메세지와 함께 다시 입력받음
 
 - [ ] 각 자동차의 상태를 관리   Car
-  - [ ] 자동차의 이름, 전진 상태(List<Boolean>), 총 전진값(int) 
+  - [ ] 자동차의 이름, 전진 상태 
   - [ ] 자동차를 전진할지 정지할지 결정   #drive()
     - [ ] 자동차를 전진/정지 상태 업데이트
     - [ ] 자동차의 전진조건 확인   #isMove()
       - 생성한 랜덤 정수가 4 이상인 경우 true 를 반환
     - [ ] 랜덤한 정수 생성   #generateRandomNumber()
       - 0 ~ 9 의 랜덤한 정수를 반환
+    - [ ] 자동차의 상태 출력   #printStatus()
