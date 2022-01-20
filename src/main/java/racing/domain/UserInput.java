@@ -21,7 +21,7 @@ public class UserInput {
             nameList = splitStringByComma(input);
             checkCarCount(nameList);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.toString());
+            System.out.println(e.getMessage());
             return getCarNames();
         }
         return nameList;
@@ -65,7 +65,7 @@ public class UserInput {
             System.out.println("[ERROR] 숫자만 입력 해주세요.");
             return getTryNumber();
         } catch (IllegalArgumentException e) {
-            System.out.println(e.toString());
+            System.out.println(e.getMessage());
             return getTryNumber();
         }
         return tryNumber;
