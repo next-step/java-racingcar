@@ -1,11 +1,13 @@
 package racingcar.model;
 
+import racingcar.util.Message;
 import racingcar.util.RandomGenerator;
 
 public class Car {
     private String carName;
     private String position;
     public Car(String carName){
+        validateCarNameLength(carName);
         this.carName= carName;
         this.position="";
     }
@@ -18,6 +20,11 @@ public class Car {
             this.position+="-";
         }
 
+    }
+    private void validateCarNameLength(String carName) {
+        if(carName.length()>5){
+            throw new IllegalArgumentException(Message.CAR_NAME_ERROR);
+        }
     }
 
     public String getCarName() {
