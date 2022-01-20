@@ -21,7 +21,7 @@ class CarTest {
     }
 
     @Test
-    void 자동차_움직임_테스트(){
+    void 자동차_움직임_테스트() {
         //given
         Engine justGoEngine = new FixedEngine(true);
         Engine justStopEngine = new FixedEngine(false);

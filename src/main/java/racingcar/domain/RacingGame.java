@@ -9,7 +9,8 @@ public class RacingGame {
     private Cars cars;
     private Round round;
 
-    public RacingGame() {}
+    public RacingGame() {
+    }
 
     public void run() {
         setUpGame();

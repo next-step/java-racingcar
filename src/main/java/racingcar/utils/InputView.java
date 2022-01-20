@@ -8,14 +8,15 @@ public class InputView {
     private static final String GET_ROUND_MESSAGE = "시도할 횟수는 몇 회인가요?";
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    private InputView() {}
+    private InputView() {
+    }
 
     public static String getCarNames() {
         System.out.println(GET_NAME_MESSAGE);
         return SCANNER.nextLine();
     }
 
-    public static String getRound(){
+    public static String getRound() {
         System.out.println(GET_ROUND_MESSAGE);
         return SCANNER.nextLine();
     }
