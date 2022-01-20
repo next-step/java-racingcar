@@ -18,9 +18,15 @@ public class UserInput {
     public static Participants createCars() {
         String[] names = getInputValueWithMessage(NAME_MESSAGE).split(",");
         List<Car> cars = new ArrayList<>();
-        for (String name : names) {
-            Car car = Car.from(name.trim());
-            cars.add(car);
+        try {
+            for (String name : names) {
+                name = name.trim();
+                validateCarName(name);
+                Car car = Car.from(name);
+                cars.add(car);
+            }
+        } catch (IllegalArgumentException e) {
+            return createCars();
         }
         return Participants.getInstance(cars);
     }
@@ -36,6 +42,12 @@ public class UserInput {
             return line;
         } catch (IOException e) {
             return getInputValueWithMessage(message);
+        }
+    }
+
+    private static void validateCarName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름이 5자를 초과합니다.");
         }
     }
 }
