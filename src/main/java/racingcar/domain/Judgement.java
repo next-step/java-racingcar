@@ -13,6 +13,13 @@ public class Judgement {
 
     private StringBuilder stringBuilder = new StringBuilder();
 
+    private Judgement() {
+    }
+
+    public static Judgement of() {
+        return new Judgement();
+    }
+
     public void judge(final List<Car> cars) {
         stringBuilder.setLength(ZERO);
         int max = maxDriveLength(cars);

@@ -22,11 +22,15 @@ public class UserInput {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    public UserInput() {
+    private UserInput() {
         while (parsingCarName())
             ;
         while (parsingRacingTime())
             ;
+    }
+
+    public static UserInput of() {
+        return new UserInput();
     }
 
     private boolean parsingCarName() {
