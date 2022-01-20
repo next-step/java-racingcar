@@ -7,13 +7,14 @@ import static racingcar.common.SystemMessage.FINAL_WINNERS_INFO;
 public class Judgement {
 
     private static final int ZERO = 0;
+    private static final String STEP = "-";
 
     public void judge(final List<Car> cars) {
         int max = maxDriveLength(cars);
 
         for (Car car : cars) {
             if (max == car.getStep()) {
-                System.out.println(FINAL_WINNERS_INFO + car.getName());
+                System.out.print(FINAL_WINNERS_INFO + car.getName());
             }
         }
     }
@@ -28,7 +29,7 @@ public class Judgement {
     private String carPosition(final Car car) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int step = ZERO; step < car.getStep(); step++) {
-            stringBuilder.append("-");
+            stringBuilder.append(STEP);
         }
 
         return stringBuilder.toString();
