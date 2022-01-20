@@ -1,11 +1,14 @@
 package racingcar.utils;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.Car;
+import racingcar.domain.Name;
 
 public class OutputView {
 
     private static final String MARK = "-";
+    private static final String DELIMITER = ", ";
 
     private OutputView() {
     }
@@ -26,5 +29,17 @@ public class OutputView {
             positionBar.append(MARK);
         }
         return positionBar.toString();
+    }
+
+    public static void showWinners(List<Car> winners) {
+        String winnerNames = createWinnerNames(winners);
+        System.out.println("최종 우승자: " + winnerNames);
+    }
+
+    private static String createWinnerNames(List<Car> winners) {
+        return winners.stream()
+            .map(Car::name)
+            .map(Name::getName)
+            .collect(Collectors.joining(DELIMITER));
     }
 }
