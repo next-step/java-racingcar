@@ -7,7 +7,8 @@ public class RacingGame {
     private List<RacingCar> racingCars;
     private int trial;
 
-    public RacingGame() {}
+    public RacingGame() {
+    }
 
     public RacingGame(List<RacingCar> racingCars, int trial) {
         this.racingCars = racingCars;
@@ -15,21 +16,19 @@ public class RacingGame {
     }
 
     private int getRandomValue() {
-
-        return 0;
+        int random = (int) Math.floor(Math.random() * (9 - 0 + 1));
+        return random;
     }
 
-    private boolean canForward(int randomValue){
-        return randomValue >=4;
+    private boolean canForward(int randomValue) {
+        return randomValue >= 4;
     }
 
     public List<RacingCar> getRacingCars() {
         return this.racingCars;
     }
 
-    public int getTrial(){
+    public int getTrial() {
         return this.trial;
     }
-
-
 }
