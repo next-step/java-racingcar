@@ -27,7 +27,7 @@ public class CalculatorInit {
             log.write(String.valueOf(calculator.getResult()) + '\n');
             log.flush();
         } catch (IOException exception) {
-            exception.printStackTrace();
+            exception.getMessage();
         }
     }
 
@@ -41,7 +41,7 @@ public class CalculatorInit {
             judgeContinue = Integer.parseInt(bufferedReader.readLine());
 
         } catch (IOException exception) {
-            exception.printStackTrace();
+            exception.getMessage();
         }
 
         return judgeContinue == NUMBER_ONE;

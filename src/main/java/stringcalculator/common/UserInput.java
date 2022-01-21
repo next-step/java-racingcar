@@ -54,24 +54,10 @@ public class UserInput {
             splitUserInput = splitStr(userInput);
             validateFormat(splitUserInput);
         }catch(IllegalArgumentException exception){
-            exception.printStackTrace();
+            exception.getMessage();
             return true;
         }
         return false;
-    }
-
-    private void userInput(){
-        try {
-            log.write(INPUT_OPERATION_PHRASE);
-            log.flush();
-            this.userInput = bufferedReader.readLine();
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        }
-    }
-
-    private List<String> splitStr(String userInput) {
-        return Arrays.stream(userInput.replace(DELIMITER_BLANK, DELIMITER_NO_BLANK).split(DELIMITER_NO_BLANK)).collect(Collectors.toList());
     }
 
     public void validateFormat(final List<String> userInput){
@@ -97,5 +83,17 @@ public class UserInput {
         }
     }
 
+    private void userInput(){
+        try {
+            log.write(INPUT_OPERATION_PHRASE);
+            log.flush();
+            this.userInput = bufferedReader.readLine();
+        } catch (IOException exception) {
+            exception.getMessage();
+        }
+    }
 
+    private List<String> splitStr(String userInput) {
+        return Arrays.stream(userInput.replace(DELIMITER_BLANK, DELIMITER_NO_BLANK).split(DELIMITER_NO_BLANK)).collect(Collectors.toList());
+    }
 }
