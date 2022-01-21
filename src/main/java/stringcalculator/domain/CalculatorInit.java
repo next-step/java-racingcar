@@ -10,6 +10,13 @@ public class CalculatorInit {
     private static final int NUMBER_ONE = 1;
     private static int judgeContinue = 0;
 
+    public void start() {
+        continueCalculator();
+        while (repeatCalculator()) {
+            continueCalculator();
+        }
+    }
+
     private void continueCalculator() {
 
         UserInput input = new UserInput();
@@ -44,10 +51,4 @@ public class CalculatorInit {
         return false;
     }
 
-    public void start() {
-        continueCalculator();
-        while (repeatCalculator()) {
-            continueCalculator();
-        }
-    }
 }
