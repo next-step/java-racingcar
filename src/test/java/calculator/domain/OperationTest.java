@@ -9,14 +9,19 @@ class OperationTest {
 
     @Test
     void operation_생성_테스트() {
-        Operation operation = new Operation("+");
-        assertThat(operation.getOperation()).isEqualTo("+");
+        Operation operation = Operation.of("+");
+        assertThat(operation.isEqual("+")).isTrue();
     }
 
     @Test
     void operation_예외_테스트() {
-        assertThatThrownBy(() -> new Operation(";"))
+        assertThatThrownBy(() -> Operation.of(";"))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void operate_연산_테스트() {
+        Operation operation = Operation.of("+");
+        assertThat(operation.operate(new Operand(1), new Operand(2))).isEqualTo(3);
+    }
 }
