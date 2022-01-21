@@ -3,7 +3,7 @@ package stringcalculator.domain;
 import stringcalculator.common.ErrorMessage;
 
 import java.util.Arrays;
-import java.util.function.BiFunction;
+import java.util.function.ToIntBiFunction;
 
 public enum Operator {
     PLUS("+", Operator::add),
@@ -13,9 +13,9 @@ public enum Operator {
 
 
     private String sign;
-    private BiFunction<Integer, Integer, Integer> operate;
+    private ToIntBiFunction<Integer, Integer> operate;
 
-    Operator(final String sign, final BiFunction<Integer, Integer, Integer> operate) {
+    Operator(final String sign, final ToIntBiFunction<Integer, Integer> operate) {
         this.sign = sign;
         this.operate = operate;
     }
@@ -44,6 +44,6 @@ public enum Operator {
     }
 
     public int operate(final int number, final int operand) {
-        return this.operate.apply(number, operand);
+        return this.operate.applyAsInt(number, operand);
     }
 }
