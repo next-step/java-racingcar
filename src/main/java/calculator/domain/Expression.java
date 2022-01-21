@@ -1,5 +1,7 @@
 package calculator.domain;
 
+import java.util.List;
+
 public class Expression {
 
     protected static final String OPERATORS = "+-*/";
@@ -10,9 +12,12 @@ public class Expression {
     private static final String DIVIDE = "/";
 
     private String[] userInput;
+    private List<Long> terms;
+    private List<String> operators;
 
-    public Expression(String[] userInput) {
-        this.userInput = userInput;
+    public Expression(List<Long> terms, List<String> operators) {
+        this.terms = terms;
+        this.operators = operators;
     }
 
     public long evaluate() {
@@ -39,5 +44,13 @@ public class Expression {
                 return Calculator.divide(acc, term);
         }
         return 0;
+    }
+
+    public List<Long> getTerms() {
+        return this.terms;
+    }
+
+    public List<String> getOperators() {
+        return this.operators;
     }
 }
