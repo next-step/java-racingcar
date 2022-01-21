@@ -1,21 +1,20 @@
 package racinggame.domain;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
-    private static final String DELIMITER = " ,";
     private static final String QUIT = "q";
     private static final int MINIMUM_FORWARD_VALUE = 4;
 
+    private View gameView;
     private List<RacingCar> racingCars;
     private int trial;
 
     public RacingGame() {}
 
     public RacingGame(List<RacingCar> racingCars, int trial) {
+        this.gameView = new View(racingCars);
         this.racingCars = racingCars;
         this.trial = trial;
     }
@@ -30,35 +29,13 @@ public class RacingGame {
             }
 
             progress();
+            gameView.printProgress();
         }
 
-        List<Integer> carPositions = getCarPositions();
-        int max = Collections.max(carPositions);
-
-        List<String> winners = getWinners(max);
-        printWinners(winners);
+        gameView.printWinners();
     }
-
-    private List<Integer> getCarPositions() {
-        List<Integer> carPositions = racingCars.stream()
-                .map(car -> car.getPosition())
-                .collect(Collectors.toList());
-
-        return carPositions;
-    }
-
-    private List<String> getWinners(int max) {
-        List<String> winners = racingCars.stream()
-                .filter(car -> car.getPosition() == max)
-                .map(car -> car.getCarName())
-                .collect(Collectors.toList());
-
-        return winners;
-    }
-
-    private void printWinners(List<String> winners) {
-        String result = winners.stream().collect(Collectors.joining(DELIMITER));
-        System.out.println("최종 우승자: " + result);
+    private boolean isEnd(String input) {
+        return input.equals(QUIT);
     }
 
     private void progress() {
@@ -67,22 +44,16 @@ public class RacingGame {
             if (canForward(randomValue)) {
                 car.forward();
             }
-
-            car.printCurrPosition();
         });
-    }
-
-    private boolean canForward(int randomValue) {
-        return randomValue >= MINIMUM_FORWARD_VALUE;
-    }
-
-    private boolean isEnd(String input) {
-        return input.equals(QUIT);
     }
 
     public int getRandomValue() {
         int random = (int) Math.floor(Math.random() * (9 - 0 + 1));
         return random;
+    }
+
+    private boolean canForward(int randomValue) {
+        return randomValue >= MINIMUM_FORWARD_VALUE;
     }
 
     public List<RacingCar> getRacingCars() {
