@@ -42,4 +42,22 @@ class ViewTest {
         assertTrue(out.toString().contains("car1"));
         assertTrue(out.toString().contains("car2"));
     }
+
+    @Test
+    void 우승자를_출력() {
+
+        // given
+        String[] cars = {"car1", "car2"};
+        List<RacingCar> racingCars = RacingCar.createRacingCarFromCarNames(cars);
+        View view = new View(racingCars);
+
+        // when
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        view.printWinners();
+
+        // then
+        assertTrue(out.toString().contains("car1, car2"));
+    }
 }
