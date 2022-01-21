@@ -6,6 +6,8 @@ import com.ginsberg.junit.exit.ExpectSystemExit;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.InputMismatchException;
+import java.util.MissingFormatArgumentException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -73,7 +75,7 @@ class ValidatorTest {
         String[] userInput = "1 2 3".split("\\s++");
 
         // then
-        assertThrows(IllegalArgumentException.class, () -> Validator.validateUserInput(userInput));
+        assertThrows(InputMismatchException.class, () -> Validator.validateUserInput(userInput));
     }
 
     @ExpectSystemExit
