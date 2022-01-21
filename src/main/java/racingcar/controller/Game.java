@@ -27,7 +27,6 @@ public class Game {
         }
         System.out.println(Message.GAME_RESULT_MESSAGE);
         for (int i = 0; i < tryCount; i++) {
-            System.out.println(tryCount + 1 + "회");
             moveForwardByCount(carList);
         }
 
