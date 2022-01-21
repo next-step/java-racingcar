@@ -6,7 +6,6 @@ public class Expression {
 
     protected static final String OPERATORS = "+-*/";
 
-    private String[] userInput;
     private List<Long> terms;
     private List<String> operators;
 
