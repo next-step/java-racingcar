@@ -53,13 +53,21 @@ public class UserInput {
             log.write(RACING_TRY_INPUT);
             log.flush();
             this.racingTryCounter = Integer.parseInt(bufferedReader.readLine());
-
+            validateNumberRange(this.racingTryCounter);
         } catch (IOException | InputValidationException exception) {
             exception.printStackTrace();
             return true;
         }
         return false;
     }
+
+    private void validateNumberRange(final int number){
+        if(number<1 || number>9){
+            throw new InputValidationException(TRY_NUMBER_COUNT_ERROR);
+        }
+
+    }
+
 
     private void validateLengthLimit(final List<String> splitUserInput) {
         boolean match = splitUserInput.stream()
