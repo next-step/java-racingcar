@@ -13,6 +13,11 @@ public class Calculator {
         process();
     }
 
+    public int getResult() {
+        return this.result;
+    }
+
+
     public static Calculator of(final List<String> userInput) {
         return new Calculator(userInput);
     }
@@ -28,9 +33,4 @@ public class Calculator {
 
 
     }
-
-    public int getResult() {
-        return this.result;
-    }
-
 }
