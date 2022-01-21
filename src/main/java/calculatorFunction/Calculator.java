@@ -3,13 +3,13 @@ package calculatorFunction;
 public class Calculator {
     public static void execute(){
         System.out.println("수식을 입력하시오: ");
-        String str = GetInput.inputString();
-        str = str.replace(" ", "");
-        if(str.length()==0)
+        String expression = GetInput.inputString();
+        expression = expression.replace(" ", "");
+        if(expression.length()==0)
             throw new IllegalArgumentException("Error: need right expression");
-        String[] stringArray = GetInput.parsing(str);
+        String[] expressionArray = GetInput.parsing(expression);
         Calculator calculator = new Calculator();
-        calculator.calculate(stringArray);
+        calculator.calculate(expressionArray);
         return;
     }
     public void calculate(String[] stringArray){
@@ -26,7 +26,6 @@ public class Calculator {
             }
             parseOperation(stringArray,i*2);
         }
-        return ;
     }
 
     public void parseOperation(String[] stringArray, int start){
@@ -62,8 +61,6 @@ public class Calculator {
             throw new IllegalArgumentException("Error: need right operator");
 
         stringArray[start+2]=String.valueOf(result);
-
-        return;
     }
 
     public int add(int firstOperand, int secondOperand) {

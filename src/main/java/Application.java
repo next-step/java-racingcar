@@ -1,6 +1,4 @@
 import calculatorFunction.Calculator;
-import calculatorFunction.GetInput;
-import racingcar.IOclass;
 import java.util.Scanner;
 import racingcar.Race;
 

@@ -1,18 +1,24 @@
 package racingcar;
 import java.util.Scanner;
 
-public class IOclass {
-    public static String[] getName(){
+public class IOClass {
+    public static Car[] getName(){
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         Scanner sc = new Scanner(System.in);
         String str=sc.nextLine();
-        String[] cars = str.split(",");
+        String[] carNames = str.split(",");
+        Car[] cars= new Car[carNames.length];
+        for(int i=0; i<cars.length; i++) {
+            cars[i]= new Car();
+            cars[i].setName(carNames[i]);
+        }
+
         return cars;
     }
     
-    public static boolean checkCarName(String[] carName){
-        for(int i=0; i< carName.length; i++){
-            if(carName[i].length()>5)
+    public static boolean checkCarName(Car[] cars){
+        for(int i=0; i< cars.length; i++){
+            if(cars[i].getName().length()>5)
                 return false;
         }
         return true;
@@ -24,32 +30,33 @@ public class IOclass {
         return times;
     }
 
-    public static void printCurrent(String carNames[], int[] cars) {
+    public static void printCurrent(Car[] cars) {
         for(int i = 0; i < cars.length; i++) {
-            System.out.print(carNames[i] + " : ");
-            for (int j = 0; j < cars[i]; j++) {
+            System.out.print(cars[i].getName() + " : ");
+            for (int j = 0; j < cars[i].getPosition(); j++) {
                 System.out.print("-");
             }
             System.out.println();
         }
     }
 
-    public static int getMaxScore(int[] cars){
+    public static int getMaxScore(Car[] cars){
         int maximum=0;
         for (int i = 0; i < cars.length; i++)
-            maximum=Math.max(maximum, cars[i]);
+            maximum=Math.max(maximum, cars[i].getPosition());
         return maximum;
     }
-    public static void printWinners(String carNames[], int[] cars) {
+
+    public static void printWinners(Car[] cars) {
         int count=0;
         int maximum = getMaxScore(cars);
         System.out.print("최종 우승자: ");
         for(int i=0; i < cars.length; i++){
-            if (cars[i] != maximum)
+            if (cars[i].getPosition() != maximum)
                 continue;
             if (count != 0)
                 System.out.print(", ");
-            System.out.print(carNames[i]);
+            System.out.print(cars[i].getName());
             count++;
         }
     }

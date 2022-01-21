@@ -2,26 +2,26 @@ package racingcar;
 
 public class Race {
     public static void execute() {
-        String[] carNames = IOclass.getName();
-        if(!IOclass.checkCarName(carNames)){
+        Car[] cars = IOClass.getName();
+        if(!IOClass.checkCarName(cars)){
             System.out.println("자동차 이름은 5자를 초과할 수 없습니다.");
             return ;
         }
+
         Race race = new Race();
-        int[] cars = new int[carNames.length];
-        int times = IOclass.getTimes();
-        repeatGame(cars,carNames,times);
-        IOclass.printWinners(carNames, cars);
+        int times = IOClass.getTimes();
+        repeatGame(cars,times);
+        IOClass.printWinners(cars);
         return;
     }
 
-    public static void repeatGame(int[] cars, String[] carNames, int times) {
+    public static void repeatGame(Car[] cars, int times) {
         while((times--)>0){
             for(int i=0; i< cars.length; i++){
                 int randomNumber=Race.getRandomNumber();
                 Race.compareWithFour(cars,i,randomNumber);
             }
-            IOclass.printCurrent(carNames, cars);
+            IOClass.printCurrent(cars);
             System.out.println();
         }
     }
@@ -30,9 +30,9 @@ public class Race {
         int randomNumber = (int) Math.floor(Math.random()*10);
         return randomNumber;
     }
-    public static void compareWithFour(int[] cars, int idx, int randomNumber){
+    public static void compareWithFour(Car[] cars, int idx, int randomNumber){
         if(randomNumber>=4)
-            cars[idx]++;
+            cars[idx].go();
         return;
     }
 }

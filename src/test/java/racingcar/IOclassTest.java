@@ -1,7 +1,6 @@
 package racingcar;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,22 +9,22 @@ class IOclassTest {
     @DisplayName("자동차 이름이 5자를 초과하는 경우")
     @Test
     public void exceedFiveCharacter(){
-        String[] carNames = new String[3];
-        carNames[0]="one";
-        carNames[1]="two";
-        carNames[2]="threee";
-        boolean flag=IOclass.checkCarName(carNames);
+        Car[] cars = new Car[3];
+        cars[0].setName("one");
+        cars[1].setName("two");
+        cars[2].setName("threee");
+        boolean flag= IOClass.checkCarName(cars);
         assertThat(flag).isEqualTo(false);
     }
 
     @DisplayName("자동차 이름은 5자를 초과하지 않는 경우")
     @Test
     public void belowFiveCharacter(){
-        String[] carNames = new String[3];
-        carNames[0]="one";
-        carNames[1]="two";
-        carNames[2]="three";
-        boolean flag=IOclass.checkCarName(carNames);
+        Car[] cars = new Car[3];
+        cars[0].setName("one");
+        cars[1].setName("two");
+        cars[2].setName("three");
+        boolean flag= IOClass.checkCarName(cars);
         assertThat(flag).isEqualTo(true);
     }
 }

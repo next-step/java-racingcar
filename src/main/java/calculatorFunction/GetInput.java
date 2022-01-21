@@ -10,19 +10,20 @@ public class GetInput {
         return str;
     }
 
-    public static String[] parsing(String str) {
+    public static String[] parsing(String expression) {
         // 1 + 3 - 5
         String[] array = new String[100];
         int it = 0;
         int strIt = 0;
-        array[it] = getInteger(str, strIt);
+        array[it] = getInteger(expression, strIt);
         strIt = array[it].length() + strIt;
         it++;
 
-        while (strIt != str.length()) {
-            array[it++] = getString(str, strIt);
+        while (strIt != expression.length()) {
+            array[it++] = getString(expression, strIt);
+            array[it++] = String.valueOf(expression.charAt(strIt));
             strIt++;
-            array[it] = getInteger(str, strIt);
+            array[it] = getInteger(expression, strIt);
             strIt = array[it].length() + strIt;
             it++;
         }
@@ -50,7 +51,7 @@ public class GetInput {
     }
 
     public static String getString(String str, int idx) {
-        return Character.toString(str.charAt(idx));
+        return String.valueOf(str.charAt(idx));
     }
 
 }
