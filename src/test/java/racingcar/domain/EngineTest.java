@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class EngineTest {
 
     @Test
-    void engineTest() {
+    void 단일_동작_엔진_테스트() {
         Engine justGoEngine = new FixedEngine(true);
         Engine justStopEngine = new FixedEngine(false);
         assertThat(justGoEngine.movable()).isTrue();
