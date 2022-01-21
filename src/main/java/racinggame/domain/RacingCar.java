@@ -16,7 +16,7 @@ public class RacingCar {
     }
 
     public static List<RacingCar> createRacingCarFromCarNames(String[] carNames) {
-        return Arrays.stream(carNames).map(carName -> new RacingCar(carName))
+        return Arrays.stream(carNames).map(RacingCar::new)
                 .collect(Collectors.toList());
     }
 
