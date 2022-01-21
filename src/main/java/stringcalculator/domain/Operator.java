@@ -6,10 +6,10 @@ import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Operator {
-    PLUS("+", (number, operand) -> Operator.add(number, operand)),
-    MINUS("-", (number, operand) -> Operator.sub(number, operand)),
-    DIVIDE("/", (number, operand) -> Operator.divide(number, operand)),
-    MULTIPLE("*", (number, operand) -> Operator.multiple(number, operand));
+    PLUS("+", Operator::add),
+    MINUS("-", Operator::sub),
+    DIVIDE("/", Operator::divide),
+    MULTIPLE("*", Operator::multiple);
 
 
     private String sign;
