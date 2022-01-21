@@ -14,19 +14,19 @@ class CalculatorTest {
 
     @Test
     void sub() {
-        long result = Calculator.sub(3, 1);
+        long result = Calculator.subtract(3, 1);
         assertThat(result).isEqualTo(2);
     }
 
     @Test
     void mul() {
-        long result = Calculator.mul(2, 3);
+        long result = Calculator.multiply(2, 3);
         assertThat(result).isEqualTo(6);
     }
 
     @Test
     void div() {
-        long result = Calculator.div(6, 3);
+        long result = Calculator.divide(6, 3);
         assertThat(result).isEqualTo(2);
     }
 
