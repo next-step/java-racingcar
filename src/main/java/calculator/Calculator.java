@@ -1,13 +1,15 @@
 package calculator;
 
-import calculator.domain.Operator;
-import java.util.List;
+import calculator.domain.Numbers;
+import calculator.domain.Parser;
+import calculator.domain.operator.Operator;
+import calculator.domain.operator.Operators;
 import java.util.Scanner;
 
 public class Calculator {
 
-    private List<Integer> numbers;
-    private List<Operator> operators;
+    private final Numbers numbers;
+    private final Operators operators;
     private Parser parser;
 
     private int total;
@@ -19,7 +21,7 @@ public class Calculator {
 
         this.numbers = parser.getNumbers();
         this.operators = parser.getOperators();
-        
+
         calculate();
     }
 
@@ -42,9 +44,9 @@ public class Calculator {
     private void calculate() {
         int index = 0;
 
-        total = numbers.get(index);
-        for (Operator operator: operators) {
-            total = operator.calculate(total, numbers.get(index + 1));
+        total = numbers.get(index).value();
+        for (Operator operator : operators.get()) {
+            total = operator.calculate(total, numbers.get(index + 1).value());
             index++;
         }
 

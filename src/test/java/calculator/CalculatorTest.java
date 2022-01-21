@@ -19,11 +19,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @MethodSource("blankStrings")
     void errorWhenFormulaIsNullOrBlank(String testValue) {
-        assertThatThrownBy(
-            () ->
-                new Calculator(testValue)
-                    .value()
-        )
+        assertThatThrownBy(() -> new Calculator(testValue).value())
             .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -52,6 +48,13 @@ public class CalculatorTest {
     @Test
     void errorWhenFormulaInvalidExpByNotAllowedChar() {
         assertThatThrownBy(() -> new Calculator("2 & 3 * 4 / 2").value())
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("0으로 나누었을 때 에러 검증")
+    @Test
+    void errorWhenDivideByZero() {
+        assertThatThrownBy(() -> new Calculator("2 / 0 + 5 * 3").value())
             .isInstanceOf(IllegalArgumentException.class);
     }
 
