@@ -12,10 +12,7 @@ public class CalculatorInit {
 
     private void continueCalculator() {
 
-
         UserInput input = new UserInput();
-
-
         Calculator calculator = Calculator.of(input.getSplitUserInput());
         BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
 
@@ -28,8 +25,6 @@ public class CalculatorInit {
     }
 
     private boolean repeatCalculator() {
-
-
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
         try {
@@ -51,4 +46,5 @@ public class CalculatorInit {
         continueCalculator();
         while (repeatCalculator()) continueCalculator();
     }
+
 }
