@@ -25,12 +25,15 @@
     - [x] 곱셈(.mul())
     - [x] 나눗셈(.div())
 - [x] 입력 검증 (Validator)
-- [x] 입력 형식 (number op number op number ...) 검증 ->IllegalArgumentException throw
-    - [x] 공백인지 ("", " ") 
-    - [x] split 후 짝수번째 -> 숫자.
-    - [x] split 후 홀수 번쨰 -> 연산자(+, - , *, /)
-- [x] 식 계산 (Expression.evaluate)
-  - [x] 앞에서부터 하나씩 연산(Expression.interpreter)
+- [x] 입력 형식 (number op number op number ...) 검증
+    - [x] 공백인지 ("", " ") -> IllegalArgumentException 
+    - [x] split 후 짝수번째 -> 숫자. -> NumberFormatException
+    - [x] split 후 홀수 번쨰 -> 연산자(+, - , *, /) -> InputMismatchException
+- [x] 입력받은 식 파싱(ExpressionParser.parseExpression)
+- [x] 파싱된 식 계산 (Calculator.evaluate)
+  - [x] 앞에서부터 하나씩 연산(Calculator.calculate)
+    - [x] 지원하지 않는 연산자 예외 처리 -> IllegalArgumentException
+    - [x] 0으로 나눌 때 예외 처리 -> ArithmeticException
 
 
 # 📌 Racing Car
@@ -60,6 +63,7 @@
   - [x] 숫자가 아닌 입력 예외처리. (Validator.isNumber)
 - [x] 게임 진행(RacingGame.start.progress)
   - [x] 전진 여부 구하는 로직. (RacingGame.canForward)
+- [x] 게임 View 출력.
   - [x] 게임 진행 현황 출력. (RacingGame.printProgress)
     - [x] RacingCar 위치 출력. (RacingCar.printCurrPosition)
-- [x] 우승자 출력. (RacingGame.printWinner)
+  - [x] 우승자 출력. (RacingGame.printWinner)
