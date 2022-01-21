@@ -6,7 +6,8 @@ import java.util.Objects;
 import java.util.Scanner;
 
 /**
- * @author Jung YoonSung <ybook2012@gmail.com>, Kim HyeonSik <hsik0225@gmail.com>, Kim JuWon <kjw11077naver@gmail.com>
+ * @author Jung YoonSung <ybook2012@gmail.com>, Kim HyeonSik <hsik0225@gmail.com>, Kim JuWon
+ * <kjw11077naver@gmail.com>
  * @version 1.0
  * @since 1.0
  */
