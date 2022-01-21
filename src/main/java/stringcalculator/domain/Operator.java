@@ -27,6 +27,10 @@ public enum Operator {
             .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE_SIGN));
     }
 
+    public int operate(final int number, final int operand) {
+        return this.operate.apply(number, operand);
+    }
+
     private static int add(final int number, final int operand) {
         return number + operand;
     }
@@ -43,7 +47,5 @@ public enum Operator {
         return number * operand;
     }
 
-    public int operate(final int number, final int operand) {
-        return this.operate.apply(number, operand);
-    }
+
 }
