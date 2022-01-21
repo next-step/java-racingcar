@@ -10,25 +10,25 @@ public class Calculator {
     private Calculator() {
     }
 
-    public static double run(Formula formula) {
-        List<String> formulalist = formula.getFormula();
-        Stack<String> formulaStack = new Stack<>();
+    public static double run(Formula formulaInput) {
+        List<String> formulaList = formulaInput.getFormula();
+        Stack<String> formula = new Stack<>();
 
-        for (int i = formulalist.size() - 1; i >= 0; i--) {
-            formulaStack.push(formulalist.get(i));
+        for (int i = formulaList.size() - 1; i >= 0; i--) {
+            formula.push(formulaList.get(i));
         }
 
-        while (formulaStack.size() > 1) {
-            double prev = Double.parseDouble(formulaStack.pop());
-            Operation operator = Operation.fromString(formulaStack.pop())
+        while (formula.size() > 1) {
+            double prev = Double.parseDouble(formula.pop());
+            Operation operator = Operation.from(formula.pop())
                 .orElseThrow(() -> new IllegalArgumentException("연산자 형식 오류"));
-            double next = Double.parseDouble(formulaStack.pop());
+            double next = Double.parseDouble(formula.pop());
 
             double result = operator.apply(prev, next);
 
-            formulaStack.push(String.valueOf(result));
+            formula.push(String.valueOf(result));
         }
 
-        return Double.parseDouble(formulaStack.pop());
+        return Double.parseDouble(formula.pop());
     }
 }

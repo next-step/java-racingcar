@@ -33,10 +33,7 @@ public enum Operation {
         Stream.of(values()).collect(Collectors.
             toMap(Object::toString, e -> e));
 
-    /**
-     * fromString은 toString이 반환하는 문자열을 해당 열거 타입 상수로 변환해주는 기능
-     */
-    public static Optional<Operation> fromString(String symbol) {
+    public static Optional<Operation> from(String symbol) {
         return Optional.ofNullable(stringToEnum.get(symbol));
     }
 }

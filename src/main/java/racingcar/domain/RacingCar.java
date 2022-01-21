@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import racingcar.util.RandomUtil;
 
-public class RacingCar implements Car{
+public class RacingCar implements Car {
 
     private final String name;
 

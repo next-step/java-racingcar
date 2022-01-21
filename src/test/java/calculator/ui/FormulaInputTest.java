@@ -16,7 +16,6 @@ import org.mockito.Mockito;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class FormulaInputTest {
-    FormulaInput formulaInput = new FormulaInput();
 
     @Test
     void 사용자입력() throws IllegalArgumentException{
@@ -27,14 +26,5 @@ class FormulaInputTest {
             e.printStackTrace();
         }
         List<String> expected = Arrays.asList("1", "+", "3","-", "5");
-        // assertThat("", expected, formulaInput.getFormula(bufferedReader));
-
-        // formulaInput.getFormula(bufferedReader);
-        // assertThat().isEqualTo(expected.get(0));
-    }
-
-    @Test
-    void 사칙연산자_확인() {
-        // formulaInput.getFormula();
     }
 }

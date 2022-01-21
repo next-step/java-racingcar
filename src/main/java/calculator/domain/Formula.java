@@ -16,7 +16,7 @@ public class Formula {
 
     private static void isNotOperator(List<String> formular) {
         for (int i = 1; i < formular.size(); i += 2) {
-            Operation.fromString(formular.get(i))
+            Operation.from(formular.get(i))
                 .orElseThrow(() ->
                     new IllegalArgumentException("사칙연산 기호가 아닙니다.")
                 );

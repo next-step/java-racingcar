@@ -6,7 +6,8 @@ import java.util.List;
 
 public class FormulaUtil {
 
-    private FormulaUtil(){}
+    private FormulaUtil() {
+    }
 
     public static List<String> split(String formular) {
         return new ArrayList<>(Arrays.asList(formular.split(" ")));
