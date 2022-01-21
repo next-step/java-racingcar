@@ -57,7 +57,7 @@ public class UserInput {
             validateLengthLimit(splitUserInput);
             validateDuplicateCar(splitUserInput);
         } catch (InputValidationException exception) {
-            exception.printStackTrace();
+            exception.getMessage();
             return true;
         }
         return false;
@@ -67,7 +67,7 @@ public class UserInput {
         try {
             validateNumberRange(racingTryCounter);
         } catch (InputValidationException exception) {
-            exception.printStackTrace();
+            exception.getMessage();
             return true;
         }
         return false;
@@ -79,7 +79,7 @@ public class UserInput {
             log.flush();
             this.carNameInput = bufferedReader.readLine();
         } catch (IOException exception) {
-            exception.printStackTrace();
+            exception.getMessage();
             return true;
         }
         return false;
@@ -91,7 +91,7 @@ public class UserInput {
             log.flush();
             this.racingTryCounter = Integer.parseInt(bufferedReader.readLine());
         } catch (IOException exception) {
-            exception.printStackTrace();
+            exception.getMessage();
             return true;
         }
         return false;
