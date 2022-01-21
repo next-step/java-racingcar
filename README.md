@@ -1,4 +1,4 @@
-# 문자열 계산기
+# 문자열 계산기  
 1. [x] 문자열 입력 받기 - GetInput#inputString  
 2. [x] 문자열 파싱(숫자, 연산자) - split(내장함수)  
 3. [x] 문자열 계산(전체 수식 받아서 정답 반환) - Calculator#calculate  
