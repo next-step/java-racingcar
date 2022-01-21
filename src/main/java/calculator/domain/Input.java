@@ -1,26 +1,18 @@
-package strcalculator.domain;
+package calculator.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class StringProcessor {
+public class Input {
 
     private String userInput;
     private List<String> result = new ArrayList<String>();
 
-    public StringProcessor() {
-    }
-
     public void getInput() {
         Scanner sc = new Scanner(System.in);
         userInput = sc.nextLine();
-    }
-
-    public void checkInput() {
-        if (userInput == null || userInput.trim().length() == 0) {
-            throw new IllegalArgumentException("연산 가능한 수식을 입력해주세요.");
-        }
+        Validator.isEmpty(userInput);
     }
 
     public void parseInput() throws IllegalArgumentException {
