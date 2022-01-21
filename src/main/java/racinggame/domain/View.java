@@ -14,4 +14,8 @@ public class View {
     public List<RacingCar> getRacingCars() {
         return racingCars;
     }
+
+    public void printProgress() {
+        racingCars.forEach(RacingCar::printCurrPosition);
+    }
 }
