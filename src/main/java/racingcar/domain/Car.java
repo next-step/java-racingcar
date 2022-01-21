@@ -2,6 +2,8 @@ package racingcar.domain;
 
 public class Car {
 
+    private static final int FORWARD_INTERVAL = 1;
+
     private Name name;
     private int position;
     private Engine engine;
@@ -14,7 +16,7 @@ public class Car {
 
     public void move() {
         if (engine.movable()) {
-            position += 1;
+            position += FORWARD_INTERVAL;
         }
     }
 
