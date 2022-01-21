@@ -11,11 +11,11 @@ public class Calculator {
 
     private Calculator() {}
 
-    public static long evaluate(Expression expression) {
-        List<Long> terms = expression.getTerms();
+    public static double evaluate(Expression expression) {
+        List<Double> terms = expression.getTerms();
         List<String> operators = expression.getOperators();
 
-        long acc = getFirstTerm(terms);
+        double acc = getFirstTerm(terms);
         for (int i = 0; i < operators.size(); i++) {
             acc = calculate(acc, terms.get(i + 1), operators.get(i));
         }
@@ -23,11 +23,11 @@ public class Calculator {
         return acc;
     }
 
-    private static Long getFirstTerm(List<Long> terms) {
+    private static double getFirstTerm(List<Double> terms) {
         return terms.get(0);
     }
 
-    private static long calculate(long acc, long term, String op) {
+    private static double calculate(double acc, double term, String op) {
         switch (op) {
             case ADD:
                 return add(acc, term);
@@ -42,19 +42,19 @@ public class Calculator {
         }
     }
 
-    private static long add(long num1, long num2) {
+    private static double add(double num1, double num2) {
         return num1 + num2;
     }
 
-    private static long subtract(long num1, long num2) {
+    private static double subtract(double num1, double num2) {
         return num1 - num2;
     }
 
-    private static long multiply(long num1, long num2) {
+    private static double multiply(double num1, double num2) {
         return num1 * num2;
     }
 
-    private static long divide(long num1, long num2) {
+    private static double divide(double num1, double num2) {
         return num1 / num2;
     }
 }

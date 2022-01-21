@@ -14,9 +14,9 @@ class CalculatorTest {
     @Test
     void add() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
-        Method add = Calculator.class.getDeclaredMethod("add", long.class, long.class);
+        Method add = Calculator.class.getDeclaredMethod("add", double.class, double.class);
         add.setAccessible(true);
-        long result = (long) add.invoke(null, 1, 3);
+        double result = (double) add.invoke(null, 1, 3);
 
         assertThat(result).isEqualTo(4);
     }
@@ -25,9 +25,9 @@ class CalculatorTest {
     void subtract()
             throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
-        Method subtract = Calculator.class.getDeclaredMethod("subtract", long.class, long.class);
+        Method subtract = Calculator.class.getDeclaredMethod("subtract", double.class, double.class);
         subtract.setAccessible(true);
-        long result = (long) subtract.invoke(null, 3, 1);
+        double result = (double) subtract.invoke(null, 3, 1);
         assertThat(result).isEqualTo(2);
     }
 
@@ -35,9 +35,9 @@ class CalculatorTest {
     void multiply()
             throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
 
-        Method multiply = Calculator.class.getDeclaredMethod("multiply", long.class, long.class);
+        Method multiply = Calculator.class.getDeclaredMethod("multiply", double.class, double.class);
         multiply.setAccessible(true);
-        long result = (long) multiply.invoke(null, 2, 3);
+        double result = (double) multiply.invoke(null, 2, 3);
 
         assertThat(result).isEqualTo(6);
     }
@@ -45,9 +45,9 @@ class CalculatorTest {
     @Test
     void divide() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
-        Method divide = Calculator.class.getDeclaredMethod("divide", long.class, long.class);
+        Method divide = Calculator.class.getDeclaredMethod("divide", double.class, double.class);
         divide.setAccessible(true);
-        long result = (long) divide.invoke(null, 4, 2);
+        double result = (double) divide.invoke(null, 4, 2);
 
         assertThat(result).isEqualTo(2);
     }
@@ -56,12 +56,12 @@ class CalculatorTest {
     void evaluate() {
 
         // given
-        List<Long> terms = new ArrayList<>(Arrays.asList(1L, 2L, 3L, 10L, 2L, 2L));
+        List<Double> terms = new ArrayList<>(Arrays.asList(1D, 2D, 3D, 10D, 2D, 2D));
         List<String> operators = new ArrayList<>(Arrays.asList("+", "+", "*", "-", "/"));
         Expression expression = new Expression(terms, operators);
 
         // when
-        long result = Calculator.evaluate(expression);
+        double result = Calculator.evaluate(expression);
 
         // then
         assertThat(result).isEqualTo(29L);

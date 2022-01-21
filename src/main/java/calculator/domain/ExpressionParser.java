@@ -8,12 +8,12 @@ public class ExpressionParser {
     public ExpressionParser() {}
 
     public Expression parseExpression(String[] splitUserInput) {
-        List<Long> terms = new ArrayList<>();
+        List<Double> terms = new ArrayList<>();
         List<String> operators = new ArrayList<>();
 
         for (int pos = 0; pos < splitUserInput.length; pos++) {
             if (isTerm(pos)) {
-                terms.add(Long.parseLong(splitUserInput[pos]));
+                terms.add(Double.parseDouble(splitUserInput[pos]));
                 continue;
             }
             operators.add(splitUserInput[pos]);

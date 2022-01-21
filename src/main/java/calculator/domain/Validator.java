@@ -31,7 +31,7 @@ public class Validator {
     }
 
     private static void validateIsNumber(String target) {
-            Long.parseLong(target);
+            Double.parseDouble(target);
     }
 
     private static void validateEvenIndexIsOperator(String[] split) {

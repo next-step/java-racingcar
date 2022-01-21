@@ -4,15 +4,15 @@ import java.util.List;
 
 public class Expression {
 
-    private List<Long> terms;
+    private List<Double> terms;
     private List<String> operators;
 
-    public Expression(List<Long> terms, List<String> operators) {
+    public Expression(List<Double> terms, List<String> operators) {
         this.terms = terms;
         this.operators = operators;
     }
 
-    public List<Long> getTerms() {
+    public List<Double> getTerms() {
         return this.terms;
     }
 

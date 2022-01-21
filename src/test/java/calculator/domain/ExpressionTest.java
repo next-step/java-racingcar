@@ -14,7 +14,7 @@ class ExpressionTest {
     void Terms와_Operators를_받아_생성() {
 
         // given
-        ArrayList<Long> terms = new ArrayList<>(Arrays.asList(1L, 2L));
+        ArrayList<Double> terms = new ArrayList<>(Arrays.asList(1D, 2D));
         ArrayList<String> operators = new ArrayList<>(Arrays.asList("+"));
 
         // when
