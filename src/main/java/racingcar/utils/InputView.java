@@ -2,21 +2,21 @@ package racingcar.utils;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class Console {
+public class InputView {
 
+    private static final String NAME_SPLITTER = ",";
     private static final Scanner scanner = new Scanner(System.in);
 
-    private Console() {}
+    private InputView() {}
 
     public static int getTurn() {
         int turn;
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        turn = Console.readInt();
+        turn = readInt();
         System.out.println();
 
         return turn;
@@ -24,20 +24,14 @@ public class Console {
 
     public static List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        return Arrays.stream(
-                Console.readString().split(",")
-            )
-            .collect(Collectors.toList());
-    }
+        String carNames = readString();
 
-    public static void validateCarNames(List<String> carNames) {
-        long carNamesLengthOver5 = carNames.stream()
-            .filter(carName -> carName.length() > 5)
-            .count();
-
-        if (carNamesLengthOver5 > 0) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 넘길 수 없습니다.");
+        if (!carNames.contains(NAME_SPLITTER)) {
+            throw new IllegalArgumentException("이름 구분자가 없거나 잘못되었습니다.");
         }
+
+        return Arrays.stream(carNames.split(NAME_SPLITTER))
+            .collect(Collectors.toList());
     }
 
     private static int readInt() {

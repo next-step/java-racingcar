@@ -4,30 +4,18 @@ public class Car {
 
     private final String name;
 
-    private int distance = 0;
+    private int distance;
 
     public Car(String name) {
         this.name = name;
-    }
-
-    public void increaseDistance() {
-        this.distance++;
-    }
-
-    public int distance() {
-        return distance;
+        this.distance = 0;
     }
 
     public String name() { return name; }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
+    public int distance() { return distance; }
 
-        sb.append(name + " : ");
-        for (int i = 0; i < distance; i++) {
-            sb.append("-");
-        }
-        return sb.toString();
+    public void run() {
+        this.distance++;
     }
 }

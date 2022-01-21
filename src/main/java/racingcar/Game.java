@@ -1,55 +1,32 @@
 package racingcar;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import racingcar.domain.Car;
-import racingcar.domain.View;
+import racingcar.domain.Cars;
+import racingcar.utils.OutputView;
 import racingcar.utils.Randoms;
 
 public class Game {
 
-    private final List<Car> cars;
+    private final Cars cars;
+    private final int RANDOM_BOUND = 10;
 
-    private final int CONDITION_MOVE_AVAILABLE = 4;
-    private final int turn;
-
-    public Game(List<Car> cars, int turn) {
+    public Game(Cars cars) {
         this.cars = cars;
-        this.turn = turn;
     }
 
     public void play() {
-        View.printTurnResult();
-        IntStream.range(0, turn)
-            .forEach(
-                index -> {
-                    cars.stream()
-                        .forEach(car -> {
-                            increaseIfAvailable(car);
-                            View.printDistance(car);
-                        });
-                    System.out.println();
-                }
-            );
-        View.printWhoIsWinner(calculateMaxWinners());
-    }
-
-    private void increaseIfAvailable(Car car) {
-        int random = Randoms.getRandomIntWithinRange(0, 9);
-        if (random >= CONDITION_MOVE_AVAILABLE) {
-            car.increaseDistance();
+        for (Car car: cars.get()) {
+            int random = Randoms.getRandomIntWithinRange(RANDOM_BOUND);
+            if (Randoms.moveAvailable(random))
+                car.run();
+            OutputView.printDistance(car);
         }
+        System.out.println();
     }
 
-    private String calculateMaxWinners() {
-        List<Integer> distances = cars.stream()
-            .map(car -> car.distance())
-            .collect(Collectors.toList());
-
-        return cars.stream()
-            .filter(car -> car.distance() == Collections.max(distances))
+    public String winners() {
+        return cars.filterWinners().stream()
             .map(Car::name)
             .collect(Collectors.joining(", "));
     }
