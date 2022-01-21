@@ -11,16 +11,15 @@ public class CalculatorInit {
     private static int judgeContinue = 0;
 
     public void start() {
-        continueCalculator();
-        while (repeatCalculator()) {
+        do{
             continueCalculator();
-        }
+        }while((repeatCalculator()));
     }
 
     private void continueCalculator() {
 
         UserInput input = new UserInput();
-
+        while(input.userInputRun());
         Calculator calculator = Calculator.of(input.getSplitUserInput());
         BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
 
