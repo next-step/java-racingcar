@@ -23,7 +23,7 @@ class CalculatorTest {
 
         Method subtract = Calculator.class.getDeclaredMethod("subtract", long.class, long.class);
         subtract.setAccessible(true);
-        long result = (long)subtract.invoke(new Calculator(), 3,1);
+        long result = (long)subtract.invoke(null, 3,1);
         assertThat(result).isEqualTo(2);
     }
 
@@ -32,7 +32,7 @@ class CalculatorTest {
 
         Method multiply = Calculator.class.getDeclaredMethod("multiply", long.class, long.class);
         multiply.setAccessible(true);
-        long result = (long)multiply.invoke(new Calculator(), 2,3);
+        long result = (long)multiply.invoke(null, 2,3);
 
         assertThat(result).isEqualTo(6);
     }
@@ -42,7 +42,7 @@ class CalculatorTest {
 
         Method divide = Calculator.class.getDeclaredMethod("divide", long.class, long.class);
         divide.setAccessible(true);
-        long result = (long)divide.invoke(new Calculator(), 4,2);
+        long result = (long)divide.invoke(null, 4,2);
 
         assertThat(result).isEqualTo(2);
     }
