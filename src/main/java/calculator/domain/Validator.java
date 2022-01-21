@@ -3,6 +3,7 @@ package calculator.domain;
 import java.util.InputMismatchException;
 
 public class Validator {
+    protected static final String OPERATORS = "+-*/";
 
     private Validator() {
     }
@@ -40,7 +41,7 @@ public class Validator {
     }
 
     private static void validateIsOperator(String target) {
-        if (!Expression.OPERATORS.contains(target)) {
+        if (!OPERATORS.contains(target)) {
             throw new InputMismatchException("[ERROR] 해당 자리에는 연산자가 위치해야 합니다.(v op v op v ..)");
         }
     }

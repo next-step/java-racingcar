@@ -4,8 +4,6 @@ import java.util.List;
 
 public class Expression {
 
-    protected static final String OPERATORS = "+-*/";
-
     private List<Long> terms;
     private List<String> operators;
 
