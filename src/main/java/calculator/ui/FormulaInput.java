@@ -11,14 +11,11 @@ import java.util.List;
 public class FormulaInput {
 
     public static List<String> getFormula() {
-        String input = "";
         List<String> formular = new ArrayList<>();
-
         System.out.println("계산할 연산식을 입력해주세요.");
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
-            input = bufferedReader.readLine();
+            String input = bufferedReader.readLine();
             isBlankOrNot(input);
-
             formular = FormulaUtil.split(input);
             isNotOperator(formular);
             isNotNumber(formular);
