@@ -2,7 +2,6 @@ package racingcar.domain.car;
 
 import racingcar.domain.random.RandomFactory;
 import racingcar.domain.random.RandomStrategy;
-import racingcar.domain.random.RandomGenerator;
 
 public class Move {
 
@@ -17,10 +16,7 @@ public class Move {
         return new Move();
     }
 
-    public boolean isSatisfiedMoveCondition() {
-        if (randomFactory.getRandom(new RandomGenerator()) >= BOUND) {
-            return true;
-        }
-        return false;
+    public boolean isSatisfiedMoveCondition(RandomStrategy randomStrategy) {
+        return randomFactory.getRandom(randomStrategy) >= BOUND;
     }
 }

@@ -3,37 +3,33 @@ package racingcar.domain.car;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.random.NoMoveGen;
-import racingcar.domain.random.RandomFactory;
 import racingcar.domain.random.MoveGen;
+import racingcar.domain.random.NoMoveGen;
 
-@DisplayName("자동차는 난수 값에 의해 정확하게 제어된다.")
 class MoveTest {
-    @DisplayName("랜덤 값 4 이상은 앞으로 전진한다")
+    @DisplayName("전진 조건을 만족한다면 true를 반환한다.")
     @Test
-    void move() {
+    void trueIfStatisfiedMoveCondition() {
         //given
-        final int BOUND = 4;
-        RandomFactory randomFactory = new RandomFactory();
+        Move move = Move.get();
 
         //when
-        int random = randomFactory.getRandom(new MoveGen());
+        boolean goAheadIfMoveCondition = move.isSatisfiedMoveCondition(new MoveGen());
 
         //then
-        Assertions.assertThat(random >= BOUND).isTrue();
+        Assertions.assertThat(goAheadIfMoveCondition).isTrue();
     }
 
-    @DisplayName("랜덤 값 4 미만은 전지하지 않는다.")
+    @DisplayName("전진 조건을 만족한다면 false를 반환한다.")
     @Test
-    void notMove() {
+    void falseIfStatisfiedMoveCondition() {
         //given
-        final int BOUND = 4;
-        RandomFactory randomFactory = new RandomFactory();
+        Move move = Move.get();
 
         //when
-        int random = randomFactory.getRandom(new NoMoveGen());
+        boolean goAheadIfMoveCondition = move.isSatisfiedMoveCondition(new NoMoveGen());
 
         //then
-        Assertions.assertThat(random >= BOUND).isFalse();
+        Assertions.assertThat(goAheadIfMoveCondition).isFalse();
     }
 }

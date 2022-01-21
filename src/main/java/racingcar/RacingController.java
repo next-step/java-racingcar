@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.domain.car.Move;
 import racingcar.domain.Participants;
 import racingcar.domain.RacingResult;
+import racingcar.domain.random.RandomGenerator;
 
 public class RacingController {
 
@@ -35,7 +36,7 @@ public class RacingController {
 
     public RacingResult race(RacingResult result) {
         for (int i = 0; i < participantCount; i++) {
-            result.moveCarIfPositionChanged(i, move.isSatisfiedMoveCondition());
+            result.moveCarIfPositionChanged(i, move.isSatisfiedMoveCondition(new RandomGenerator()));
         }
         return result;
     }
