@@ -1,5 +1,6 @@
 package racingcar.common;
 
+import static racingcar.common.info.RacingGameErrorInfo.*;
 import static racingcar.common.info.RacingGameInfo.*;
 
 import java.io.BufferedWriter;
@@ -12,6 +13,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.common.info.RacingGameErrorInfo;
 import racingcar.common.info.RacingGameInfo;
 
 public class UserInput {
@@ -64,7 +66,7 @@ public class UserInput {
             .allMatch(input -> input.length() <= 5 && input.length() >= 1);
 
         if (!match) {
-            throw new InputValidationException("자동차 이름은 5글자를 넘을 수 없습니다.");
+            throw new InputValidationException(CAR_NAME_LIMIT_ERROR);
         }
 
     }
@@ -73,7 +75,7 @@ public class UserInput {
         int size = splitUserInput.stream().distinct().collect(Collectors.toList()).size();
 
         if (size != splitUserInput.size()) {
-            throw new InputValidationException("중복된 자동차 이름이 존재합니다.");
+            throw new InputValidationException(CAR_NAME_DUPLICATED_ERROR);
         }
     }
 
