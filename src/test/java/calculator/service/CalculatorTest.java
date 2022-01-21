@@ -12,7 +12,7 @@ class CalculatorTest {
     @Test
     void run(){
         List<String> formula = Arrays.asList("1", "+", "3", "-", "5");
-        double result = Calculator.run(formula);
+        double result = Calculator.doCalculate(formula);
         assertThat(result).isEqualTo(-1);
     }
 
@@ -36,7 +36,7 @@ class CalculatorTest {
 
     @Test
     void 나누기() {
-        double result = Operation.DIVDE.apply(6.0, 3.0);
+        double result = Operation.DIVIDE.apply(6.0, 3.0);
         assertThat(result).isEqualTo(2.0);
     }
 }

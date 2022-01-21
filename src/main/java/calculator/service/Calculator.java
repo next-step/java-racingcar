@@ -9,14 +9,12 @@ public class Calculator {
     private Calculator() {
     }
 
-    public static double doCalculate(List<String> formula){
+    public static double doCalculate(List<String> formula) {
         Stack<String> formulaStack = new Stack<>();
-
-        for(int i = formula.size()-1; i >= 0; i--){
+        for (int i = formula.size() - 1; i >= 0; i--) {
             formulaStack.push(formula.get(i));
         }
-
-        while(formulaStack.size() > 1){
+        while (formulaStack.size() > 1) {
             double prev = Double.parseDouble(formulaStack.pop());
             Operation operator = Operation.fromString(formulaStack.pop()).get();
             double next = Double.parseDouble(formulaStack.pop());
