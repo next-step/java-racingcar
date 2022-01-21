@@ -1,9 +1,10 @@
 package stringcalculator.domain;
 
-import stringcalculator.common.ErrorMessage;
-
 import java.util.Arrays;
 import java.util.function.ToIntBiFunction;
+
+import static stringcalculator.common.ErrorMessage.ERROR_MESSAGE_DIVIDED_BY_ZERO;
+import static stringcalculator.common.ErrorMessage.ERROR_MESSAGE_SIGN;
 
 public enum Operator {
     PLUS("+", Operator::add),
@@ -24,7 +25,7 @@ public enum Operator {
         return Arrays.stream(Operator.values())
                 .filter(operator -> operator.sign.equals(inputSign))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE_SIGN));
+                .orElseThrow(() -> new IllegalArgumentException(ERROR_MESSAGE_SIGN));
     }
 
     private static int add(final int number, final int operand) {
@@ -36,6 +37,9 @@ public enum Operator {
     }
 
     private static int divide(final int number, final int operand) {
+        if (operand == 0) {
+            throw new ArithmeticException(ERROR_MESSAGE_DIVIDED_BY_ZERO);
+        }
         return number / operand;
     }
 
@@ -46,4 +50,5 @@ public enum Operator {
     public int operate(final int number, final int operand) {
         return this.operate.applyAsInt(number, operand);
     }
+
 }
