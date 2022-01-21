@@ -21,7 +21,7 @@ public class ApplicationTest {
 
     @DisplayName("객체 초기화")
     @BeforeEach
-    void init(){
+    void init() {
         userInput = new UserInput();
     }
 
@@ -34,7 +34,7 @@ public class ApplicationTest {
 
     @DisplayName("유저_입력_중복_테스트")
     @Test
-    void userInputDuplicationTest(){
+    void userInputDuplicationTest() {
         userInput.setCarNameInput("Benz,Kia,Kia");
         assertThat(userInput.parsingCarName() == true);
     }

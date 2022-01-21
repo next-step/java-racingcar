@@ -34,7 +34,7 @@ class OperatorTest {
     @Test
     void exception() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Operator.of("=").operate(1, 3));
+            .isThrownBy(() -> Operator.of("=").operate(1, 3));
     }
 
 }

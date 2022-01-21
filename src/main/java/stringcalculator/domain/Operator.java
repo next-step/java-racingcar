@@ -22,9 +22,9 @@ public enum Operator {
 
     public static Operator of(final String inputSign) {
         return Arrays.stream(Operator.values())
-                .filter(operator -> operator.sign.equals(inputSign))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE_SIGN));
+            .filter(operator -> operator.sign.equals(inputSign))
+            .findFirst()
+            .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.ERROR_MESSAGE_SIGN));
     }
 
     private static int add(final int number, final int operand) {
