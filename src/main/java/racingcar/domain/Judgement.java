@@ -2,6 +2,9 @@ package racingcar.domain;
 
 import static racingcar.common.info.RacingGameInfo.*;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,12 +13,31 @@ import racingcar.common.info.RacingGameInfo;
 
 public class Judgement {
 
+    private static final String DELIMITER = " : ";
+    private BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
+
     public void judge(final List<Car> cars) {
         int max = maxDriveLength(cars);
 
         for (Car car : cars) {
             if (max == car.getStep()) {
-                System.out.println(WINNER_IS + car.getName());
+                try{
+                    log.write(WINNER_IS + car.getName());
+                    log.flush();
+                }catch(IOException exception) {
+                    exception.getMessage();
+                }
+            }
+        }
+    }
+
+    public void carsStatement(final List<Car> cars) {
+        for (Car car : cars) {
+            try{
+                log.write(car.getName() + DELIMITER + carPosition(car));
+                log.flush();
+            }catch(IOException exception) {
+                exception.getMessage();
             }
         }
     }
@@ -34,11 +56,5 @@ public class Judgement {
         }
 
         return stringBuilder.toString();
-    }
-
-    public void carsStatement(final List<Car> cars) {
-        for (Car car : cars) {
-            System.out.println(car.getName() + " : " + carPosition(car));
-        }
     }
 }
