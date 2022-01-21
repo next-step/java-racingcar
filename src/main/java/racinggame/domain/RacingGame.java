@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
+    private static final String DELIMITER = " ,";
+    private static final String QUIT = "q";
+    private static final int MINIMUM_FORWARD_VALUE = 4;
 
     private List<RacingCar> racingCars;
     private int trial;
@@ -54,7 +57,7 @@ public class RacingGame {
     }
 
     private void printWinners(List<String> winners) {
-        String result = winners.stream().collect(Collectors.joining(", "));
+        String result = winners.stream().collect(Collectors.joining(DELIMITER));
         System.out.println("최종 우승자: " + result);
     }
 
@@ -70,11 +73,11 @@ public class RacingGame {
     }
 
     private boolean canForward(int randomValue) {
-        return randomValue >= 4;
+        return randomValue >= MINIMUM_FORWARD_VALUE;
     }
 
     private boolean isEnd(String input) {
-        return input.equals("q");
+        return input.equals(QUIT);
     }
 
     public int getRandomValue() {

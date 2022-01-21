@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Input {
+    private static final String SEPARATOR = ",";
 
     private Input() {}
 
@@ -20,7 +21,7 @@ public class Input {
     }
 
     private static String[] splitNameByComma(String inputCarNames) {
-        return inputCarNames.split(",");
+        return inputCarNames.split(SEPARATOR);
     }
 
     private static void validateNameLengthFromCarNames(String[] carNames) {

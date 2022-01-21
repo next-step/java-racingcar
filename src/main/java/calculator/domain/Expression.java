@@ -3,6 +3,7 @@ package calculator.domain;
 public class Expression {
 
     protected static final String OPERATORS = "+-*/";
+    private static final int FIRST_TARGET_VALUE = 0;
     private static final String ADD = "+";
     private static final String SUBTRACT = "-";
     private static final String MULTIPLY = "*";
@@ -15,7 +16,7 @@ public class Expression {
     }
 
     public long evaluate() {
-        long acc = Long.parseLong(this.userInput[0]);
+        long acc = Long.parseLong(this.userInput[FIRST_TARGET_VALUE]);
 
         for (int i = 1; i < this.userInput.length - 1; i += 2) {
             String op = this.userInput[i];

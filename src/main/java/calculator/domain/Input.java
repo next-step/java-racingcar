@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Input {
+    private static final String QUIT = "q";
 
     private Input() {}
 
@@ -23,7 +24,7 @@ public class Input {
     }
 
     private static boolean isQuit(String userInput) {
-        return userInput.equals("q");
+        return userInput.equals(QUIT);
     }
 
     private static String[] splitUserInputByWhitespace(String userInput) {
