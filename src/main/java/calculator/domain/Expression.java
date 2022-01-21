@@ -4,9 +4,9 @@ public class Expression {
 
     protected static final String OPERATORS = "+-*/";
     private static final String ADD = "+";
-    private static final String SUB = "-";
-    private static final String MUL = "*";
-    private static final String DIV = "/";
+    private static final String SUBTRACT = "-";
+    private static final String MULTIPLY = "*";
+    private static final String DIVIDE = "/";
 
     private String[] userInput;
 
@@ -30,12 +30,12 @@ public class Expression {
         switch (op) {
             case ADD:
                 return Calculator.add(acc, term);
-            case SUB:
-                return Calculator.sub(acc, term);
-            case MUL:
-                return Calculator.mul(acc, term);
-            case DIV:
-                return Calculator.div(acc, term);
+            case SUBTRACT:
+                return Calculator.subtract(acc, term);
+            case MULTIPLY:
+                return Calculator.multiply(acc, term);
+            case DIVIDE:
+                return Calculator.divide(acc, term);
         }
         return 0;
     }
