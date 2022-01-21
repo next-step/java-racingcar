@@ -1,8 +1,11 @@
 package calculator.domain;
 
+import java.util.InputMismatchException;
+
 public class Validator {
 
-    private Validator() {};
+    private Validator() {
+    }
 
     public static void validateUserInput(String[] userInput) {
         checkIsBlack(userInput);
@@ -12,7 +15,7 @@ public class Validator {
 
     private static void checkIsBlack(String[] splitUserInput) {
         if (isBlank(splitUserInput)) {
-            throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다.");
+            throw new IllegalArgumentException("[ERROR] 식을 입력해 주세요.");
         }
     }
 
@@ -27,13 +30,8 @@ public class Validator {
     }
 
     private static void validateIsNumber(String target) {
-        try {
             Long.parseLong(target);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다.");
-        }
     }
-
 
     private static void validateEvenIndexIsOperator(String[] split) {
         for (int i = 1; i < split.length; i += 2) {
@@ -43,7 +41,7 @@ public class Validator {
 
     private static void validateIsOperator(String target) {
         if (!Expression.OPERATORS.contains(target)) {
-            throw new IllegalArgumentException("[ERROR] 입력 형식이 맞지 않습니다.");
+            throw new InputMismatchException("[ERROR] 해당 자리에는 연산자가 위치해야 합니다.(v op v op v ..)");
         }
     }
 }
