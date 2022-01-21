@@ -26,7 +26,7 @@ public class Race {
         }
     }
 
-    public static int getRandomNumber(){
+    static int getRandomNumber(){
         int randomNumber = (int) Math.floor(Math.random()*10);
         return randomNumber;
     }
