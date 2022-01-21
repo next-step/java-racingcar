@@ -3,41 +3,33 @@ package calculator.domain;
 import java.util.Arrays;
 import java.util.List;
 
-public class Operation {
+public enum Operation {
 
-    private static final List<String> operations = Arrays.asList("+", "-", "*", "/");
+    PLUS("+", (leftNumber, rightNumber) -> leftNumber + rightNumber),
+    MINUS("-", (leftNumber, rightNumber) -> leftNumber - rightNumber),
+    MULTIPLY("*", (leftNumber, rightNumber) -> leftNumber * rightNumber),
+    DIVIDE("/", (leftNumber, rightNumber) -> leftNumber / rightNumber);
 
     private String operation;
+    private OperationInterface operationInterface;
 
-    public Operation(String operation) {
-        validateOperation(operation);
+    Operation(String operation, OperationInterface operationInterface) {
         this.operation = operation;
+        this.operationInterface = operationInterface;
     }
 
-    public String getOperation() {
-        return operation;
+    public static Operation of(String operation) {
+        return Arrays.stream(values())
+            .filter(op -> op.isEqual(operation))
+            .findFirst()
+            .orElseThrow(() -> new IllegalArgumentException(operation + "은 연산자가 아닙니다"));
     }
 
-    public String operate(Operand left, Operand right) {
-        switch (operation) {
-            case "+":
-                return String.valueOf(left.getNumber() + right.getNumber());
-            case "-":
-                return String.valueOf(left.getNumber() - right.getNumber());
-            case "*":
-                return String.valueOf(left.getNumber() * right.getNumber());
-            case "/":
-                if (right.getNumber() == 0) {
-                    throw new ArithmeticException("0으로 나눌 수 없습니다");
-                }
-                return String.valueOf(left.getNumber() / right.getNumber());
-        }
-        return String.valueOf(0);
+    public boolean isEqual(String operation) {
+        return this.operation.equals(operation);
     }
 
-    private void validateOperation(String operation) {
-        if (!operations.contains(operation)) {
-            throw new IllegalArgumentException("[ERROR] " + operation + "은 사칙연산 기호가 아닙니다.");
-        }
+    public int operate(Operand left, Operand right) {
+        return operationInterface.operate(left.getNumber(), right.getNumber());
     }
 }
