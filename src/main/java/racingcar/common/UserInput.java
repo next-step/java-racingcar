@@ -18,65 +18,97 @@ import racingcar.common.info.RacingGameInfo;
 
 public class UserInput {
 
-
     private static final String DELIMITER = ",";
     private List<String> splitUserInput;
     private String carNameInput;
     private int racingTryCounter;
-    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
+    BufferedReader bufferedReader;
+    BufferedWriter log;
 
     public UserInput() {
-        while (parsingCarName())
-            ;
-        while (parsingRacingTry())
-            ;
+        bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        log = new BufferedWriter(new OutputStreamWriter(System.out));
     }
 
-    private boolean parsingCarName() {
+    public void userInputRun(){
+        while (inputCarName() | parsingCarName());
+        while (inputRacingTry() | parsingRacingTry());
+    }
+
+    public void setCarNameInput(String carNameInput) {
+        this.carNameInput = carNameInput;
+    }
+
+    public void setRacingTryCounter(int racingTryCounter) {
+        this.racingTryCounter = racingTryCounter;
+    }
+
+    public List<String> getSplitUserInput() {
+        return splitUserInput;
+    }
+
+    public int getRacingTryCounter() {
+        return racingTryCounter;
+    }
+
+    public boolean parsingCarName() {
+        try {
+            splitUserInput = splitStr(carNameInput);
+            validateLengthLimit(splitUserInput);
+            validateDuplicateCar(splitUserInput);
+        } catch (InputValidationException exception) {
+            exception.printStackTrace();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean parsingRacingTry() {
+        try {
+            validateNumberRange(racingTryCounter);
+        } catch (InputValidationException exception) {
+            exception.printStackTrace();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean inputCarName() {
         try {
             log.write(RACING_CAR_INPUT);
             log.flush();
             this.carNameInput = bufferedReader.readLine();
-            splitUserInput = splitStr(carNameInput);
-            validateLengthLimit(splitUserInput);
-            validateDuplicateCar(splitUserInput);
-        } catch (IOException | InputValidationException exception) {
+        } catch (IOException exception) {
             exception.printStackTrace();
             return true;
         }
         return false;
     }
 
-    private boolean parsingRacingTry() {
+    private boolean inputRacingTry() {
         try {
             log.write(RACING_TRY_INPUT);
             log.flush();
             this.racingTryCounter = Integer.parseInt(bufferedReader.readLine());
-            validateNumberRange(this.racingTryCounter);
-        } catch (IOException | InputValidationException exception) {
+        } catch (IOException exception) {
             exception.printStackTrace();
             return true;
         }
         return false;
     }
 
-    private void validateNumberRange(final int number){
-        if(number<1 || number>9){
+    private void validateNumberRange(final int number) {
+        if (number < 1 || number > 9) {
             throw new InputValidationException(TRY_NUMBER_COUNT_ERROR);
         }
-
     }
-
 
     private void validateLengthLimit(final List<String> splitUserInput) {
         boolean match = splitUserInput.stream()
             .allMatch(input -> input.length() <= 5 && input.length() >= 1);
-
         if (!match) {
             throw new InputValidationException(CAR_NAME_LIMIT_ERROR);
         }
-
     }
 
     private void validateDuplicateCar(final List<String> splitUserInput) {
@@ -90,13 +122,4 @@ public class UserInput {
     private List<String> splitStr(final String userInput) {
         return Arrays.stream(userInput.split(DELIMITER)).collect(Collectors.toList());
     }
-
-    public List<String> getSplitUserInput() {
-        return splitUserInput;
-    }
-
-    public int getRacingTryCounter() {
-        return racingTryCounter;
-    }
-
 }

@@ -12,6 +12,7 @@ public class Application {
         Racing racing = Racing.of();
         UserInput userInput = new UserInput();
         Judgement judgement = new Judgement();
+        userInput.userInputRun();
         new Helper().runner(userInput.getSplitUserInput(), racing);
         for (int time = 0; time < userInput.getRacingTryCounter(); time++) {
             racing.drive();
