@@ -21,7 +21,7 @@ public enum Operation {
             return x * y;
         }
     },
-    DIVDE("/") {
+    DIVIDE("/") {
         public double apply(double x, double y) {
             return x / y;
         }
@@ -44,10 +44,9 @@ public enum Operation {
         Stream.of(values()).collect(Collectors.
             toMap(Object::toString, e -> e));
 
-    /**
-     fromString은 toString이 반환하는 문자열을 해당 열거 타입 상수로 변환해주는 기능
-     */
     public static Optional<Operation> fromString(String symbol) {
-        return Optional.ofNullable(stringToEnum.get(symbol));
+        return Optional.ofNullable(Optional.ofNullable(stringToEnum.get(symbol)).orElseThrow(() ->
+            new IllegalArgumentException("입력값에 널값이 들어갔습니다.")
+        ));
     }
 }
