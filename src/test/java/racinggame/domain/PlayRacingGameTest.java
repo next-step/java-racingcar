@@ -17,8 +17,8 @@ class PlayRacingGameTest {
         Car car1 = new Car("a");
         Car car2 = new Car("b");
 
-        car1.setLocation(5);
-        car2.setLocation(8);
+        car1.updateLocation(5);
+        car2.updateLocation(8);
         List<Car> carList = new ArrayList<>();
         carList.add(car1);
         carList.add(car2);
