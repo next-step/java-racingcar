@@ -6,8 +6,7 @@ import java.util.Random;
 
 public class PlayRacingGame {
 
-    public List<Integer> makeRandomNumbers(int carNum) {
-        Random random = new Random();
+    public List<Integer> makeRandomNumbers(int carNum,Random random) {
         List<Integer>randomNumberList=new ArrayList<>();
         for(int count=0;count<carNum;count++){
             int randomValue = random.nextInt(9);
