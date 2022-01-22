@@ -9,11 +9,16 @@ public class Application {
     public static void main(String[] args) throws IOException {
         System.out.print(INPUT_MESSAGE);
         UserInput userInput = new UserInput();
-        Seperator seperator = new Seperator();
-        seperator.seperate(userInput.inputArr);
+
+        Separator separator = new Separator();
+        separator.separate(userInput.inputArr);
+
+        Number number = separator.getNumberInstance();
+        Operator operator = separator.getOperatorInstance();
+
         Calculator calculator = new Calculator();
 
-        double result = calculator.doMultipleOperation(seperator.number.getNumbers(), seperator.operator.getOperators());
+        double result = calculator.doMultipleOperation(number, operator);
         System.out.println(OUTPUT_MESSAGE + result);
     }
 }
