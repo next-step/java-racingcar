@@ -18,4 +18,13 @@ class TermsTest {
 
         assertThat(terms.getTerms().size()).isEqualTo(2);
     }
+
+    @Test
+    void nextTerm() {
+        List<Double> values = new ArrayList<>(Arrays.asList(1D,2D));
+        Terms terms = new Terms(values);
+
+        assertThat(terms.nextTerm()).isEqualTo(1);
+        assertThat(terms.nextTerm()).isEqualTo(2);
+    }
 }
