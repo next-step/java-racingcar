@@ -5,7 +5,6 @@ import java.util.List;
 
 public class RacingGame {
     private static final String QUIT = "q";
-    private static final int MINIMUM_FORWARD_VALUE = 4;
 
     private View gameView;
     private List<RacingCar> racingCars;
@@ -41,7 +40,7 @@ public class RacingGame {
     private void progress() {
         racingCars.forEach(car -> {
             int randomValue = getRandomValue();
-            if (canForward(randomValue)) {
+            if (car.canForward(randomValue)) {
                 car.forward();
             }
         });
@@ -50,10 +49,6 @@ public class RacingGame {
     public int getRandomValue() {
         int random = (int) Math.floor(Math.random() * (9 - 0 + 1));
         return random;
-    }
-
-    private boolean canForward(int randomValue) {
-        return randomValue >= MINIMUM_FORWARD_VALUE;
     }
 
     public List<RacingCar> getRacingCars() {

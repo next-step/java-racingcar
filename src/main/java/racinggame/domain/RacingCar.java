@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 public class RacingCar {
 
+    private static final int MINIMUM_FORWARD_VALUE = 4;
+
     private String carName;
     private int carPosition = 0;
 
@@ -20,12 +22,8 @@ public class RacingCar {
                 .collect(Collectors.toList());
     }
 
-    public String getCarName() {
-        return this.carName;
-    }
-
-    public int getPosition() {
-        return this.carPosition;
+    public boolean canForward(int randomValue) {
+        return randomValue >= MINIMUM_FORWARD_VALUE;
     }
 
     public void forward() {
@@ -35,5 +33,13 @@ public class RacingCar {
     public void printCurrPosition() {
         String dash = Utils.repeat("-", carPosition);
         System.out.println(String.format("%-5s: %s", carName, dash));
+    }
+
+    public String getCarName() {
+        return this.carName;
+    }
+
+    public int getPosition() {
+        return this.carPosition;
     }
 }
