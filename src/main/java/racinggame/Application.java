@@ -15,6 +15,7 @@ public class Application {
         String[] carNames = gameInit.inputPlayerName();
         int playGameNumber = gameInit.inputTryNumber();
         Random random=new Random();
+        int maxLocation=0;
 
         Cars cars = new Cars(carNames);
         List<Car> carList = cars.getCars();
@@ -27,7 +28,8 @@ public class Application {
             playRacingGame.printCarsLocation(carList);
 
         }
-        List<Winner> winnerList = playRacingGame.findWinner(carList);
+        maxLocation=cars.findMaxLocation();
+        List<Winner> winnerList = playRacingGame.findWinner(carList,maxLocation);
         playRacingGame.printWinner(winnerList);
     }
 
