@@ -33,7 +33,7 @@ public class UserInput {
     }
 
     public String isEmptyString(String userInput) {
-        if (userInput.trim().equals("")) {
+        if (userInput.trim().isEmpty()) {
             throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
         return userInput;
