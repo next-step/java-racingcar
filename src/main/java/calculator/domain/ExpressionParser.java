@@ -30,7 +30,7 @@ public class ExpressionParser {
         return pos % 2 == 0;
     }
 
-    public Operators getOperator() {
+    public Operators getOperators() {
         return this.operators;
     }
 
