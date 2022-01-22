@@ -10,7 +10,7 @@ class ExpressionParserTest {
     void parseExpression_사용자_입력을_받아_Operators_Terms_생성() {
 
         //given
-        String[] userInput = "1 + 2 * 3".split("\\s+");
+        String userInput = "1 + 2 * 3";
 
         // when
         ExpressionParser parser = new ExpressionParser(userInput);

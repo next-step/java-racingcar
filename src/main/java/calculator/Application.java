@@ -12,14 +12,14 @@ public class Application {
 
     public static void main(String[] args) throws IOException {
         while (true) {
-            String[] splitUserInput;
+            String userInput;
             double result;
 
             try {
                 System.out.print("식을 입력해 주세요(그만하려면 q): ");
-                splitUserInput = Input.getUserInput();
+                userInput = Input.getUserInput();
 
-                ExpressionParser parser = new ExpressionParser(splitUserInput);
+                ExpressionParser parser = new ExpressionParser(userInput);
                 Operators operators = parser.getOperators();
                 Terms terms = parser.getTerms();
                 result = Calculator.evaluate(terms, operators);

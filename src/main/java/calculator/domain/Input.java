@@ -9,7 +9,7 @@ public class Input {
 
     private Input() {}
 
-    public static String[] getUserInput() throws IOException {
+    public static String getUserInput() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         String userInput = br.readLine().trim();
@@ -19,17 +19,10 @@ public class Input {
             System.exit(0);
         }
 
-        String[] splitUserInput = splitUserInputByWhitespace(userInput);
-
-        return splitUserInput;
+        return userInput;
     }
 
     private static boolean isQuit(String userInput) {
         return userInput.equals(QUIT);
     }
-
-    private static String[] splitUserInputByWhitespace(String userInput) {
-        return userInput.split("\\s+");
-    }
-
 }

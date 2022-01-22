@@ -8,9 +8,12 @@ public class ExpressionParser {
     private Operators operators;
     private Terms terms;
 
-    private ExpressionParser() {}
+    private ExpressionParser() {
+    }
 
-    public ExpressionParser(String[] splitUserInput) {
+    public ExpressionParser(String userInput) {
+        String[] splitUserInput = splitUserInputByWhitespace(userInput);
+
         List<Double> expressionTerms = new ArrayList<>();
         List<String> expressionOperators = new ArrayList<>();
 
@@ -27,6 +30,10 @@ public class ExpressionParser {
 
         terms = new Terms(expressionTerms);
         operators = new Operators(expressionOperators);
+    }
+
+    private String[] splitUserInputByWhitespace(String userInput) {
+        return userInput.split("\\s+");
     }
 
     private boolean isTerm(int pos) {
