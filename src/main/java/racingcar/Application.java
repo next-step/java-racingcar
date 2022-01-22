@@ -11,9 +11,9 @@ public class Application {
     private static final int START_FROM_ZERO = 0;
 
     public static void main(String[] args) {
-        Racing racing = Racing.of();
+        Racing racing = Racing.instance();
         UserInput userInput = UserInput.of();
-        Judgement judgement = Judgement.of();
+        Judgement judgement = Judgement.instance();
         new Helper().runner(userInput.getSplitUserInput(), racing);
         for (int time = START_FROM_ZERO; time < userInput.getRacingTime(); time++) {
             racing.drive();
