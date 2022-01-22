@@ -40,6 +40,22 @@ class RacingCarTest {
     }
 
     @Test
+    void canForward_전진실패() {
+        int randomValue = 1;
+        RacingCar racingCar = new RacingCar("car1");
+
+        assertFalse(racingCar.canForward(randomValue));
+    }
+
+    @Test
+    void canForward_전진가능() {
+        int randomValue = 5;
+        RacingCar racingCar = new RacingCar("car1");
+
+        assertTrue(racingCar.canForward(randomValue));
+    }
+
+    @Test
     void 자동차_이름과_위치출력_한칸_전진() {
         RacingCar car = new RacingCar("car");
 
