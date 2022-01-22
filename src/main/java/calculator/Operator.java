@@ -19,11 +19,4 @@ public class Operator {
         }
         operators.add(ope);
     }
-
-    public void print() {
-        System.out.println("calculator.Operator Class========");
-        for (String s : operators) {
-            System.out.println(s);
-        }
-    }
 }
