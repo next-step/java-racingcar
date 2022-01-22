@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.io.IOException;
 
 public class UserInput {
+
+    Printer printer = new Printer();
     Scanner scan = new Scanner(System.in);
     String[] inputArr;
 
@@ -13,12 +15,13 @@ public class UserInput {
             userInput = console();
             validateUserInput(userInput);
         } catch (IllegalArgumentException e) {
-            System.out.println("\n[ERROR] " + e);
+            printer.printErrorMessage(e.getMessage());
         }
         inputArr = split(userInput);
     }
 
     private String console() throws IOException {
+        printer.printInputMessage();
         return scan.nextLine();
     }
 
