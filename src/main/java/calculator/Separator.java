@@ -11,11 +11,15 @@ public class Separator {
 
     public void separate(String[] lineArr) {
         for (int i = 0; i < lineArr.length; i++) {
-            if (i % 2 == 0) {
-                number.addNumber(lineArr[i]);
-            } else {
-                operator.addOperator(lineArr[i]);
-            }
+            addValue(lineArr, i);
+        }
+    }
+
+    public void addValue(String[] lineArr, int index) {
+        if (index % 2 == 0) {
+            number.addNumber(lineArr[index]);
+        } else {
+            operator.addOperator(lineArr[index]);
         }
     }
 
