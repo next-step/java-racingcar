@@ -20,12 +20,13 @@ public class RacingResult {
     }
 
     public void getResultView() {
-        for (int i = 0; i < cars.size(); i++) {
+        int carSize = cars.size();
+        for (int i = 0; i < carSize; i++) {
             StringBuilder stringBuilder = new StringBuilder();
 
-            int status = cars.get(i).getPosition();
+            int position = cars.get(i).getPosition();
             System.out.printf(RESULT_LINE, cars.get(i).getName());
-            while (status-- > 0) {
+            for (int pos = 0; pos < position; pos++) {
                 stringBuilder.append(DASH);
             }
             System.out.println(stringBuilder.toString());
