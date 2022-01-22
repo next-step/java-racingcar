@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.domain.Participants;
+import racingcar.view.UserInput;
 
 public class Application {
 
