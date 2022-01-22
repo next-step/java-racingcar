@@ -14,10 +14,10 @@ public class Calculator {
 
     CalculatorFactory calculatorFactory;
     Map<String, Object> map = new HashMap<>();
-    String ADD = "+";
-    String SUB = "-";
-    String MUL = "*";
-    String DIV = "/";
+    static String ADD = "+";
+    static String SUB = "-";
+    static String MUL = "*";
+    static String DIV = "/";
 
     public Calculator() {
         calculatorFactory = new CalculatorFactory();

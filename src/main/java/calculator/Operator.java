@@ -6,7 +6,8 @@ import java.util.List;
 
 public class Operator {
 
-    private final static List<String> SYMBOLS = new ArrayList<>(Arrays.asList("+", "-", "*", "/"));
+    private final static List<String> SYMBOLS = new ArrayList<>(
+        Arrays.asList(Calculator.ADD, Calculator.SUB, Calculator.SUB, Calculator.SUB));
     private List<String> operators;
 
     public Operator() {
