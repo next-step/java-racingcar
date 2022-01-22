@@ -49,17 +49,4 @@ class ValidatorTest {
         // then
         assertThrows(InputMismatchException.class, () -> Validator.validateIsOperator("1"));
     }
-
-    @ExpectSystemExit
-    @Test
-    void q를_입력하면_종료된다() throws IOException {
-
-        // given
-        InputStream inputStream = new ByteArrayInputStream("q".getBytes());
-        System.setIn(inputStream);
-
-        // then
-        Input.getUserInput();
-    }
-
 }
