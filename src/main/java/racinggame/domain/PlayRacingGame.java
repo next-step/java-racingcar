@@ -44,12 +44,12 @@ public class PlayRacingGame {
         return maxLocation;
     }
 
-    public List<String> findWinner(List<Car> cars) {
-        List<String> winnerUsers = new ArrayList<>();
+    public List<Winner> findWinner(List<Car> cars) {
+        List<Winner> winnerUsers = new ArrayList<>();
         int maxLocation = findMaxLocation(cars);
         for (Car car : cars) {
             if (car.getLocation() == maxLocation) {
-                winnerUsers.add(car.getCarName());
+                winnerUsers.add(new Winner(car.getCarName()));
             }
         }
         return winnerUsers;
