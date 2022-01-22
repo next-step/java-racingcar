@@ -5,24 +5,36 @@ import java.util.List;
 
 public class ExpressionParser {
 
-    public ExpressionParser() {}
+    private Operators operators;
+    private Terms terms;
 
-    public Expression parseExpression(String[] splitUserInput) {
-        List<Double> terms = new ArrayList<>();
-        List<String> operators = new ArrayList<>();
+    private ExpressionParser() {}
+
+    public ExpressionParser(String[] splitUserInput) {
+        List<Double> expressionTerms = new ArrayList<>();
+        List<String> expressionOperators = new ArrayList<>();
 
         for (int pos = 0; pos < splitUserInput.length; pos++) {
             if (isTerm(pos)) {
-                terms.add(Double.parseDouble(splitUserInput[pos]));
+                expressionTerms.add(Double.parseDouble(splitUserInput[pos]));
                 continue;
             }
-            operators.add(splitUserInput[pos]);
+            expressionOperators.add(splitUserInput[pos]);
         }
 
-        return new Expression(terms, operators);
+        terms = new Terms(expressionTerms);
+        operators = new Operators(expressionOperators);
     }
 
     private boolean isTerm(int pos) {
         return pos % 2 == 0;
+    }
+
+    public Operators getOperator() {
+        return this.operators;
+    }
+
+    public Terms getTerms() {
+        return this.terms;
     }
 }
