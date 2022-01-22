@@ -16,7 +16,7 @@ class ExpressionParserTest {
         ExpressionParser parser = new ExpressionParser(userInput);
 
         // then
-        assertThat(parser.getOperator()).isNotNull();
+        assertThat(parser.getOperators()).isNotNull();
         assertThat(parser.getTerms()).isNotNull();
     }
 }
