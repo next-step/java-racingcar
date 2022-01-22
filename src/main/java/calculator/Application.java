@@ -1,16 +1,15 @@
 package calculator;
 
-import java.io.IOException;
+import calculator.domain.Calculator;
+import calculator.domain.PivotContainer;
+import calculator.view.UserInput;
 
 public class Application {
 
-    public static void main(String[] args) throws IOException {
-        UserInput userInput = new UserInput();
-        Seperator seperator = new Seperator();
-        seperator.seperate(userInput.inputList);
-        Calculator calculator = new Calculator();
+    public static void main(String[] args)  {
+        PivotContainer pivotContainer = PivotContainer.get(UserInput.console().getLine());
 
-        float result = calculator.doMultipleOperation(seperator.number.numbers, seperator.operator.operators);
-        System.out.println(result);
+        double result = Calculator.get().doMultipleOperation(pivotContainer.getNumbers(), pivotContainer.getOperators());
+        System.out.println("계산결과: "+ result);
     }
 }

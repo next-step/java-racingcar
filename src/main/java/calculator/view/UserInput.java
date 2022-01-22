@@ -7,20 +7,24 @@ public class UserInput {
     private static final String INPUT_ERROR_MESSAGE = "잘못된 입력입니다.";
     private Scanner scanner;
 
-    public UserInput() {
+    private UserInput() {
         scanner = new Scanner(System.in);
     }
 
-    public String get() {
+    public static UserInput console() {
+        return new UserInput();
+    }
+
+    public String getLine() {
         try {
-            return validateUserInput(Console());
+            return validateUserInput(TextConsole());
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return get();
+            return getLine();
         }
     }
 
-    public String Console() {
+    public String TextConsole() {
         return scanner.nextLine();
     }
 
