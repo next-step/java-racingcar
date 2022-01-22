@@ -13,7 +13,7 @@ class CalculatorTest {
     @Test
     void operatorTest() {
         final List<String> userInput = new ArrayList<>(Arrays.asList("1","+","2","-","1"));
-        Calculator calculator = Calculator.of(userInput);
+        Calculator calculator = Calculator.from(userInput);
         int result = calculator.getResult();
         Assertions.assertThat(result).isEqualTo(2);
     }
@@ -21,6 +21,6 @@ class CalculatorTest {
     @Test
     void DIVIDE_BY_ZERO_IS_IMPOSSIBLE() {
         final List<String> userInput = new ArrayList<>(Arrays.asList("1","/","0"));
-        Assertions.assertThatThrownBy(() -> Calculator.of(userInput)).isInstanceOf(ArithmeticException.class);
+        Assertions.assertThatThrownBy(() -> Calculator.from(userInput)).isInstanceOf(ArithmeticException.class);
     }
 }

@@ -13,7 +13,7 @@ public class CalculatorInit {
     private void continueCalculator() {
 
         UserInput input = new UserInput();
-        Calculator calculator = Calculator.of(input.getSplitUserInput());
+        Calculator calculator = Calculator.from(input.getSplitUserInput());
         BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
 
         try {
