@@ -20,14 +20,7 @@ public class Judgement {
         int max = maxDriveLength(cars);
 
         for (Car car : cars) {
-            if (max == car.getStep()) {
-                try{
-                    log.write(WINNER_IS + car.getName());
-                    log.flush();
-                }catch(IOException exception) {
-                    exception.getMessage();
-                }
-            }
+            printWinner(max, car);
         }
     }
 
@@ -35,6 +28,17 @@ public class Judgement {
         for (Car car : cars) {
             try{
                 log.write(car.getName() + DELIMITER + carPosition(car));
+                log.flush();
+            }catch(IOException exception) {
+                exception.getMessage();
+            }
+        }
+    }
+
+    private void printWinner(final int max, final Car car){
+        if (max == car.getStep()) {
+            try{
+                log.write(WINNER_IS + car.getName());
                 log.flush();
             }catch(IOException exception) {
                 exception.getMessage();
