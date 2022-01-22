@@ -20,13 +20,12 @@ public class CalculatorInit {
 
         UserInput input = new UserInput();
         while(input.userInputRun());
-        Calculator calculator = Calculator.of(input.getSplitUserInput());
         BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
-
         try {
+            Calculator calculator = Calculator.of(input.getSplitUserInput());
             log.write(String.valueOf(calculator.getResult()) + '\n');
             log.flush();
-        } catch (IOException exception) {
+        } catch (IllegalArgumentException | IOException exception) {
             exception.getMessage();
         }
     }
