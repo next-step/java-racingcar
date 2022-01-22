@@ -25,7 +25,8 @@ class CalculatorTest {
     void subtract()
             throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
-        Method subtract = Calculator.class.getDeclaredMethod("subtract", double.class, double.class);
+        Method subtract = Calculator.class.getDeclaredMethod("subtract", double.class,
+                double.class);
         subtract.setAccessible(true);
         double result = (double) subtract.invoke(null, 3, 1);
         assertThat(result).isEqualTo(2);
@@ -35,7 +36,8 @@ class CalculatorTest {
     void multiply()
             throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
 
-        Method multiply = Calculator.class.getDeclaredMethod("multiply", double.class, double.class);
+        Method multiply = Calculator.class.getDeclaredMethod("multiply", double.class,
+                double.class);
         multiply.setAccessible(true);
         double result = (double) multiply.invoke(null, 2, 3);
 
@@ -56,11 +58,16 @@ class CalculatorTest {
     void evaluate() {
 
         // given
-        List<Double> terms = new ArrayList<>(Arrays.asList(1D, 2D, 3D, 10D, 2D, 2D));
-        List<String> operators = new ArrayList<>(Arrays.asList("+", "+", "*", "-", "/"));
+        ArrayList<Double> values = new ArrayList<>(Arrays.asList(1D, 2D, 3D, 10D, 2D, 2D));
+        Terms terms = new Terms();
+        terms.addTermAll(values);
+
+        List<String> ops = new ArrayList<>(Arrays.asList("+", "+", "*", "-", "/"));
+        Operators operators = new Operators();
+        operators.addOperatorAll(ops);
 
         // when
-        double result = Calculator.evaluate(new Terms(terms), new Operators(operators));
+        double result = Calculator.evaluate(terms, operators);
 
         // then
         assertThat(result).isEqualTo(29L);

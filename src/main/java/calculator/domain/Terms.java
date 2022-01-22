@@ -21,4 +21,8 @@ public class Terms {
     public void addTerm(double term) {
         terms.add(term);
     }
+
+    protected void addTermAll(List<Double> terms) {
+        this.terms.addAll(terms);
+    }
 }

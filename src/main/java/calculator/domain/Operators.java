@@ -25,4 +25,8 @@ public class Operators {
     public void addOperator(String operator) {
         operators.add(operator);
     }
+
+    protected void addOperatorAll(List<String> operators) {
+        this.operators.addAll(operators);
+    }
 }
