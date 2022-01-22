@@ -38,4 +38,12 @@ public class Cars {
 
     }
 
+    public int findMaxLocation() {
+        int maxLocation = 0;
+        for (Car car : cars) {
+            maxLocation = Math.max(car.getLocation(), maxLocation);
+        }
+        return maxLocation;
+    }
+
 }
