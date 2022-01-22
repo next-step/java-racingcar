@@ -52,17 +52,17 @@ public class UserInput {
         return turn;
     }
 
-    public static String getInputValue() {
+    public String getInputValue() {
         return scan.nextLine().trim();
     }
 
-    private static void validateCarName(String name) {
+    private void validateCarName(String name) {
         if (name.length() > NAME_LENGTH) {
             throw new IllegalArgumentException(String.format("자동차 이름이 %d자를 초과합니다.", NAME_LENGTH));
         }
     }
 
-    private static void validateTurn(String turn) {
+    private void validateTurn(String turn) {
         if (turn.trim().equals("")) {
             throw new IllegalArgumentException("횟수를 입력해주세요.");
         } else if (!turn.matches("[+-]?\\d*(\\.\\d+)?")) {
