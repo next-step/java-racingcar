@@ -11,20 +11,15 @@ public class Calculator {
 
     private Calculator() {}
 
-    public static double evaluate(Expression expression) {
-        List<Double> terms = expression.getTerms();
-        List<String> operators = expression.getOperators();
+    public static double evaluate(Terms terms, Operators operators) {
 
-        double acc = getFirstTerm(terms);
-        for (int i = 0; i < operators.size(); i++) {
-            acc = calculate(acc, terms.get(i + 1), operators.get(i));
+        double acc = terms.nextTerm();
+
+        while (operators.hasNext()){
+            acc = calculate(acc, terms.nextTerm(), operators.nextOperator());
         }
 
         return acc;
-    }
-
-    private static double getFirstTerm(List<Double> terms) {
-        return terms.get(0);
     }
 
     private static double calculate(double acc, double term, String op) {

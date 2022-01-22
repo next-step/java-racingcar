@@ -58,10 +58,9 @@ class CalculatorTest {
         // given
         List<Double> terms = new ArrayList<>(Arrays.asList(1D, 2D, 3D, 10D, 2D, 2D));
         List<String> operators = new ArrayList<>(Arrays.asList("+", "+", "*", "-", "/"));
-        Expression expression = new Expression(terms, operators);
 
         // when
-        double result = Calculator.evaluate(expression);
+        double result = Calculator.evaluate(new Terms(terms), new Operators(operators));
 
         // then
         assertThat(result).isEqualTo(29L);
