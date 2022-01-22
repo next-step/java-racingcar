@@ -24,9 +24,9 @@ class PlayRacingGameTest {
         carList.add(car2);
 
         PlayRacingGame playRacingGame = new PlayRacingGame();
-        List<String> winner = playRacingGame.findWinner(carList);
+        List<Winner> winner = playRacingGame.findWinner(carList);
 
-        Assertions.assertThat(winner.get(0)).isEqualTo("b");
+        Assertions.assertThat(winner.get(0).getWinnerName()).isEqualTo("b");
 
 
     }
