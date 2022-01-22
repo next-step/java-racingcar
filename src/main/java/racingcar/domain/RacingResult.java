@@ -9,7 +9,6 @@ public class RacingResult {
 
     private static String RESULT_LINE = "%s : ";
     private static String DASH = "-";
-    private static StringBuilder stringBuilder;
     private List<Car> cars;
 
     private RacingResult(List<Car> cars) {
@@ -22,7 +21,7 @@ public class RacingResult {
 
     public void getResultView() {
         for (int i = 0; i < cars.size(); i++) {
-            stringBuilder = new StringBuilder();
+            StringBuilder stringBuilder = new StringBuilder();
 
             int status = cars.get(i).getPosition();
             System.out.printf(RESULT_LINE, cars.get(i).getName());
@@ -35,7 +34,7 @@ public class RacingResult {
     }
 
     public void getWinner() {
-        stringBuilder = new StringBuilder("최종 우승자: ");
+        StringBuilder stringBuilder = new StringBuilder("최종 우승자: ");
 
         Collections.sort(cars);
         Car firstWinner = cars.get(0);
