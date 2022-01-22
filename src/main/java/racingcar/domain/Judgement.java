@@ -16,7 +16,7 @@ public class Judgement {
     private Judgement() {
     }
 
-    public static Judgement of() {
+    public static Judgement instance() {
         return new Judgement();
     }
 
