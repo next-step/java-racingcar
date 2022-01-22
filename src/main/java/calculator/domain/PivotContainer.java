@@ -4,15 +4,15 @@ import java.util.List;
 
 public class PivotContainer {
 
-    private Operator operator;
-    private Number number;
+    private final Operator operator;
+    private final Number number;
 
     private PivotContainer(String userInput) {
         operator = Operator.get();
         number = Number.get();
 
         try {
-            seperateLineAndPushToList(split(userInput));
+            separateByNumbersAndOperators(split(userInput));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -26,20 +26,29 @@ public class PivotContainer {
         return userInput.trim().split("\\s+");
     }
 
-    public void seperateLineAndPushToList(String[] lineArr) {
+    public void separateByNumbersAndOperators(String[] spaceSeperatedListOfUserInput) {
         try {
-            for (int i = 0; i < lineArr.length; i++) {
-                if (i % 2 == 0) {
-                    number.addNumber(lineArr[i]);
-                    continue;
-                }
-                operator.addOperator(lineArr[i]);
+            int length = spaceSeperatedListOfUserInput.length;
+            for (int pos = 0; pos < length; pos++) {
+                addToList(isNumberLocated(pos), spaceSeperatedListOfUserInput[pos]);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
             number.clear();
             operator.clear();
         }
+    }
+
+    private void addToList(boolean isNumber, String numberOrOperator) {
+        if (isNumber) {
+            number.addNumber(numberOrOperator);
+            return;
+        }
+        operator.addOperator(numberOrOperator);
+    }
+
+    private boolean isNumberLocated(int position) {
+        return position % 2 == 0;
     }
 
     public List<Integer> getNumbers() {

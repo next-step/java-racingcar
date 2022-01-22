@@ -17,14 +17,14 @@ public class UserInput {
 
     public String getLine() {
         try {
-            return validateUserInput(TextConsole());
+            return validateUserInput(textConsole());
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return getLine();
         }
     }
 
-    public String TextConsole() {
+    public String textConsole() {
         return scanner.nextLine();
     }
 
@@ -33,7 +33,7 @@ public class UserInput {
     }
 
     public String isEmptyString(String userInput) {
-        if (userInput.trim().equals("")) {
+        if (userInput.trim().isEmpty()) {
             throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
         return userInput;
