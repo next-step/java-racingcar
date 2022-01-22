@@ -1,5 +1,7 @@
 package calculator.domain;
 
+import java.util.InputMismatchException;
+
 public class ExpressionParser {
 
     private Operators operators = new Operators();
@@ -11,15 +13,35 @@ public class ExpressionParser {
         String[] splitUserInput = splitUserInputByWhitespace(userInput);
 
         for (int pos = 0; pos < splitUserInput.length; pos++) {
-            String target = splitUserInput[pos];
-            if (isTerm(pos)) {
-                Validator.validateIsNumber(target);
-                terms.addTerm(Double.parseDouble(target));
-                continue;
+            try {
+                parse(splitUserInput, pos);
+            } catch (InputMismatchException e) {
+                System.out.println(e.getMessage());
+                operators = null;
+                terms = null;
+                break;
             }
-            Validator.validateIsOperator(target);
-            operators.addOperator(target);
+
         }
+    }
+
+    private void parse(String[] splitUserInput, int pos) {
+        String target = splitUserInput[pos];
+        if (isTerm(pos)) {
+            addTerm(target);
+            return;
+        }
+        addOperator(target);
+    }
+
+    private void addTerm(String target) {
+        Validator.validateIsNumber(target);
+        terms.addTerm(Double.parseDouble(target));
+    }
+
+    private void addOperator(String target) {
+        Validator.validateIsOperator(target);
+        operators.addOperator(target);
     }
 
     private String[] splitUserInputByWhitespace(String userInput) {

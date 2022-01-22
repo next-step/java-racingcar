@@ -13,7 +13,12 @@ public class Input {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         String userInput = br.readLine().trim();
-        Validator.checkIsBlack(userInput);
+        try {
+            Validator.checkIsBlack(userInput);
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
 
         if (isQuit(userInput)) {
             System.exit(0);

@@ -19,7 +19,11 @@ public class Validator {
 
 
     public static void validateIsNumber(String target) {
+        try{
             Double.parseDouble(target);
+        } catch (NumberFormatException e){
+            throw new InputMismatchException("[ERROR] 해당 자리에는 숫자가 위치해야 합니다.(v op v op v ..)");
+        }
     }
 
     public static void validateIsOperator(String target) {
