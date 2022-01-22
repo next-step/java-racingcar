@@ -1,24 +1,25 @@
 package calculator;
 
-import java.io.BufferedReader;
+import java.util.Scanner;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class UserInput {
-    BufferedReader br;
-    String inputStr;
-    String[] inputList;
+    Scanner scan = new Scanner(System.in);
+    String[] inputArr;
 
     public UserInput() throws IOException {
-        br = new BufferedReader(new InputStreamReader(System.in));
-        Console();
-        validateUserInput(inputStr);
-
-        inputList = split(inputStr);
+        String userInput = "";
+        try {
+            userInput = console();
+            validateUserInput(userInput);
+        } catch (Exception e) {
+            System.out.println("\n[ERROR] " + e);
+        }
+        inputArr = split(userInput);
     }
 
-    private void Console() throws IOException {
-        inputStr = br.readLine();
+    private String console() throws IOException {
+        return scan.nextLine();
     }
 
     private String[] split(String userInput) {

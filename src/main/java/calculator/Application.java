@@ -10,7 +10,7 @@ public class Application {
         System.out.print(INPUT_MESSAGE);
         UserInput userInput = new UserInput();
         Seperator seperator = new Seperator();
-        seperator.seperate(userInput.inputList);
+        seperator.seperate(userInput.inputArr);
         Calculator calculator = new Calculator();
 
         double result = calculator.doMultipleOperation(seperator.number.getNumbers(), seperator.operator.getOperators());
