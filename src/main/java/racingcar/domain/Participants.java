@@ -1,17 +1,24 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.car.Car;
 
 public class Participants {
-    private final List<Car> cars;
 
-    private Participants(List<Car> cars) {
-        this.cars = cars;
+    private final String[] carNames;
+    private List<Car> cars = new ArrayList<>();
+
+    public Participants(String[] names) {
+        this.carNames = names;
+        createCars();
     }
 
-    public static Participants getInstance(List<Car> cars) {
-        return new Participants(cars);
+    private void createCars() {
+        for (String name : this.carNames) {
+            Car car = Car.from(name);
+            cars.add(car);
+        }
     }
 
     public List<Car> getParticipants() {

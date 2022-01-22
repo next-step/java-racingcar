@@ -1,45 +1,55 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import racingcar.domain.Participants;
-import racingcar.domain.car.Car;
 
 public class UserInput {
+
     static Printer printer = new Printer();
     static Scanner scan = new Scanner(System.in);
     static int NAME_LENGTH = 5;
+    static String[] carNames;
+    static Integer turn;
 
-    public static Participants createCars() {
+    public UserInput() {
+        carNames = setCarNames();
+        turn = setTurn();
+    }
+
+    private String[] setCarNames() {
         printer.printInputCarNameMessage();
         String[] names = getInputValue().split(",");
-        List<Car> cars = new ArrayList<>();
         try {
-            for (String name : names) {
-                name = name.trim();
+            for (int i = 0; i < names.length; i++) {
+                String name = names[i].trim();
                 validateCarName(name);
-                Car car = Car.from(name);
-                cars.add(car);
+                names[i] = name;
             }
         } catch (IllegalArgumentException e) {
             printer.printErrorMessage(e.getMessage());
-            return createCars();
+            return setCarNames();
         }
-        return Participants.getInstance(cars);
+        return names;
     }
 
-    public static int setTurn() {
-        String turn;
+    public String[] getCarNames() {
+        return carNames;
+    }
+
+    private int setTurn() {
+        String count;
         try {
             printer.printInputTurnMessage();
-            turn = getInputValue();
-            validateTurn(turn);
+            count = getInputValue();
+            validateTurn(count);
         } catch (IllegalArgumentException e) {
             printer.printErrorMessage(e.getMessage());
             return setTurn();
         }
-        return Integer.parseInt(turn);
+        return Integer.parseInt(count);
+    }
+
+    public int getTurn() {
+        return turn;
     }
 
     public static String getInputValue() {
