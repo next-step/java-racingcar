@@ -8,4 +8,8 @@ public class Winner {
         this.winnerName=winnerName;
     }
 
+    public String getWinnerName(){
+        return winnerName;
+    }
+
 }
