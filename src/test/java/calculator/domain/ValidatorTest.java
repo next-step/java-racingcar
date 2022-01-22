@@ -2,10 +2,6 @@ package calculator.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.ginsberg.junit.exit.ExpectSystemExit;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.InputMismatchException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,12 +9,22 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class ValidatorTest {
 
+    @ValueSource(strings = {"", " ", "    "})
+    @ParameterizedTest
     @Test
-    void 입력으로_공백이_들어옴_실패() {
+    void checkIsBlank_입력으로_공백이_들어옴() {
 
         // then
         assertThrows(IllegalArgumentException.class, () -> Validator.checkIsBlack(""));
     }
+
+    @Test
+    void checkIsBlank_공백이_아님() {
+
+        // then
+        assertDoesNotThrow(() -> Validator.checkIsBlack("1 + 2"));
+    }
+
 
     @Test
     void 숫자이다_성공() {
@@ -41,7 +47,6 @@ class ValidatorTest {
         // then
         assertDoesNotThrow((() -> Validator.validateIsOperator(operator)));
     }
-
 
     @Test
     void 연산자이다_실패_연산자가_아님() {
