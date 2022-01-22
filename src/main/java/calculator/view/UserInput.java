@@ -17,14 +17,14 @@ public class UserInput {
 
     public String getLine() {
         try {
-            return validateUserInput(TextConsole());
+            return validateUserInput(testConsole());
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return getLine();
         }
     }
 
-    public String TextConsole() {
+    public String testConsole() {
         return scanner.nextLine();
     }
 
