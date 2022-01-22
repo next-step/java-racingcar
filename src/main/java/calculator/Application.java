@@ -10,7 +10,7 @@ public class Application {
         seperator.seperate(userInput.inputList);
         Calculator calculator = new Calculator();
 
-        float result = calculator.doMultipleOperation(seperator.number.numbers, seperator.operator.operators);
+        double result = calculator.doMultipleOperation(seperator.number.numbers, seperator.operator.operators);
         System.out.println(result);
     }
 }
