@@ -21,7 +21,7 @@ public class UserInput {
     }
 
     public String Console() {
-        return scanner.next();
+        return scanner.nextLine();
     }
 
     public String validateUserInput(String userInput) {
