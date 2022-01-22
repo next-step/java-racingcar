@@ -11,5 +11,7 @@ public class Operators {
         this.operators = operators;
     }
 
-
+    protected List<String> getOperators() {
+        return operators;
+    }
 }
