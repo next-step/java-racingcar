@@ -4,8 +4,8 @@ import java.util.List;
 
 public class PivotContainer {
 
-    private Operator operator;
-    private Number number;
+    private final Operator operator;
+    private final Number number;
 
     private PivotContainer(String userInput) {
         operator = Operator.get();
