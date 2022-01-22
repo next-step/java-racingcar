@@ -13,7 +13,7 @@ public class Car {
         return location;
     }
 
-    public void setLocation(int location) {
+    public void updateLocation(int location) {
         this.location = location;
     }
 

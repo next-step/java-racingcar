@@ -18,7 +18,7 @@ public class PlayRacingGame {
             if (randomNumber >= 4) {
                 int location = car.getLocation();
                 location++;
-                car.setLocation(location);
+                car.updateLocation(location);
             }
         }
 
