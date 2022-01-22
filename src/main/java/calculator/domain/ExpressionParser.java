@@ -15,11 +15,14 @@ public class ExpressionParser {
         List<String> expressionOperators = new ArrayList<>();
 
         for (int pos = 0; pos < splitUserInput.length; pos++) {
+            String target = splitUserInput[pos];
             if (isTerm(pos)) {
-                expressionTerms.add(Double.parseDouble(splitUserInput[pos]));
+                Validator.validateIsNumber(target);
+                expressionTerms.add(Double.parseDouble(target));
                 continue;
             }
-            expressionOperators.add(splitUserInput[pos]);
+            Validator.validateIsOperator(target);
+            expressionOperators.add(target);
         }
 
         terms = new Terms(expressionTerms);

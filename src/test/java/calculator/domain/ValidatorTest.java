@@ -16,65 +16,38 @@ class ValidatorTest {
     @Test
     void 입력으로_공백이_들어옴_실패() {
 
-        //given
-        String[] userInput = " ".split("\\s++");
-
         // then
-        assertThrows(IllegalArgumentException.class, () -> Validator.validateUserInput(userInput));
+        assertThrows(IllegalArgumentException.class, () -> Validator.checkIsBlack(""));
     }
 
     @Test
-    void 홀수번째는_숫자이다_성공() {
-
-        // given
-        String[] userInput = "1 + 3".split("\\s++");
+    void 숫자이다_성공() {
 
         // then
-        assertDoesNotThrow(() -> Validator.validateUserInput(userInput));
+        assertDoesNotThrow(() -> Validator.validateIsNumber("1"));
     }
 
     @Test
-    void 홀수번째는_숫자이다_실패_숫자가아님() {
-
-        // given
-        String[] userInput = "/ + 3".split("\\s++");
-        ;
+    void 숫자이다_실패_숫자가아님() {
 
         // then
-        assertThrows(IllegalArgumentException.class, () -> Validator.validateUserInput(userInput));
-    }
-
-    @Test
-    void 공백이_여러개여도_성공한다() {
-
-        // given
-        String[] userInput = "1 +  3".split("\\s++");
-
-        // then
-        assertDoesNotThrow(() -> Validator.validateUserInput(userInput));
+        assertThrows(IllegalArgumentException.class, () -> Validator.validateIsNumber("+"));
     }
 
     @ValueSource(strings = {"+", "-", "*", "/"})
     @ParameterizedTest
-    void 짝수번째는_연산자이다_성공(String op) {
-
-        // given
-        String str = "1 " + op + " 3";
-        String[] userInput = str.split("\\s++");
+    void 연산자이다_성공(String operator) {
 
         // then
-        assertDoesNotThrow((() -> Validator.validateUserInput(userInput)));
+        assertDoesNotThrow((() -> Validator.validateIsOperator(operator)));
     }
 
 
     @Test
-    void 짝수번째는_연산자이다_실패_연산자가_아님() {
-
-        // given
-        String[] userInput = "1 2 3".split("\\s++");
+    void 연산자이다_실패_연산자가_아님() {
 
         // then
-        assertThrows(InputMismatchException.class, () -> Validator.validateUserInput(userInput));
+        assertThrows(InputMismatchException.class, () -> Validator.validateIsOperator("1"));
     }
 
     @ExpectSystemExit

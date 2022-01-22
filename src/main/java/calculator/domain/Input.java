@@ -13,12 +13,13 @@ public class Input {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         String userInput = br.readLine().trim();
+        Validator.checkIsBlack(userInput);
+
         if (isQuit(userInput)) {
             System.exit(0);
         }
 
         String[] splitUserInput = splitUserInputByWhitespace(userInput);
-        Validator.validateUserInput(splitUserInput);
 
         return splitUserInput;
     }
