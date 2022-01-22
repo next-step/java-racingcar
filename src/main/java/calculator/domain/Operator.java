@@ -18,11 +18,11 @@ public class Operator {
         return new Operator();
     }
 
-    public void addOperator(String ope) {
-        if (!SYMBOLS.contains(ope)) {
+    public void addOperator(String operator) {
+        if (!SYMBOLS.contains(operator)) {
             throw new IllegalArgumentException(NOT_OPERATIONS_MESSAGE);
         }
-        operators.add(ope);
+        operators.add(operator);
     }
 
     public List<String> getOperators() {
