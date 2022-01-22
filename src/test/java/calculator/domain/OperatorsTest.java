@@ -1,6 +1,7 @@
 package calculator.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -26,5 +27,24 @@ class OperatorsTest {
 
         assertThat(operators.nextOperator()).isEqualTo("+");
         assertThat(operators.nextOperator()).isEqualTo("-");
+    }
+
+    @Test
+    void hasNext_true() {
+        List<String> ops = new ArrayList<>(Arrays.asList("+", "-"));
+        Operators operators = new Operators(ops);
+
+        assertTrue(operators.hasNext());
+    }
+
+    @Test
+    void hasNext_false() {
+        List<String> ops = new ArrayList<>(Arrays.asList("+", "-"));
+        Operators operators = new Operators(ops);
+
+        operators.nextOperator();
+        operators.nextOperator();
+
+        assertFalse(operators.hasNext());
     }
 }
