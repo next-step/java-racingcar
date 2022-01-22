@@ -13,7 +13,7 @@ public class Calculator {
         process();
     }
 
-    public static Calculator of(final List<String> userInput) {
+    public static Calculator from(final List<String> userInput) {
         return new Calculator(userInput);
     }
 
@@ -22,7 +22,7 @@ public class Calculator {
         this.result = Integer.parseInt(userInput.get(0));
 
         for (int index = 1; index < userInput.size() - 1; index += 2) {
-            this.result = Operator.of(userInput.get(index))
+            this.result = Operator.from(userInput.get(index))
                     .operate(this.result, Integer.parseInt(userInput.get(index + 1)));
         }
 

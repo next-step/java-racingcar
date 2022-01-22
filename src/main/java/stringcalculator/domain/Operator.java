@@ -21,7 +21,7 @@ public enum Operator {
         this.operate = operate;
     }
 
-    public static Operator of(final String inputSign) {
+    public static Operator from(final String inputSign) {
         return Arrays.stream(Operator.values())
                 .filter(operator -> operator.sign.equals(inputSign))
                 .findFirst()
