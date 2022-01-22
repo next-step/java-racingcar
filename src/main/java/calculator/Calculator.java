@@ -32,10 +32,13 @@ public class Calculator {
         return calculatorFactory.get((CalculatorStrategy) map.get(ope), num1, num2);
     }
 
-    public double doMultipleOperation(List<Integer> numbers, List<String> operator) {
+    public double doMultipleOperation(Number number, Operator operator) {
+        List<Integer> numbers = number.getNumbers();
+        List<String> operators = operator.getOperators();
+
         double result = numbers.remove(0);
         for (int i = 0; i < numbers.size(); i++) {
-            result = doBinaryOperation(result, (double) numbers.get(i), operator.get(i));
+            result = doBinaryOperation(result, (double) numbers.get(i), operators.get(i));
         }
         return result;
     }
