@@ -1,48 +1,40 @@
 package calculator;
 
+import calculator.domain.calculator.Addition;
+import calculator.domain.calculator.Division;
+import calculator.domain.calculator.Multiplication;
+import calculator.domain.calculator.Subtraction;
+import calculator.domain.calculator.CalculatorFactory;
+import calculator.domain.calculator.CalculatorStrategy;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Calculator {
-    public Calculator(){
-        Map<String, Object> map = new HashMap<String, Object>();
-//        map.put("+", );
+
+    CalculatorFactory calculatorFactory;
+    Map<String, Object> map = new HashMap<>();
+    String ADD = "+";
+    String SUB = "-";
+    String MUL = "*";
+    String DIV = "/";
+
+    public Calculator() {
+        calculatorFactory = new CalculatorFactory();
+
+        map.put(ADD, new Addition());
+        map.put(SUB, new Subtraction());
+        map.put(MUL, new Multiplication());
+        map.put(DIV, new Division());
     }
 
-    public double add(double num1, double num2) {
-        return num1 + num2;
+    private double doBinaryOperation(double num1, double num2, String ope) {
+        return calculatorFactory.get((CalculatorStrategy) map.get(ope), num1, num2);
     }
 
-    public double sub(double num1, double num2) {
-        return num1 - num2;
-    }
-
-    public double mul(double num1, double num2) {
-        return num1 * num2;
-    }
-
-    public double div(double num1, double num2) {
-        return num1 / num2;
-    }
-
-    public double doBinaryOperation(double num1, double num2, String ope) {
-        switch (ope) {
-            case "+":
-                return add(num1, num2);
-            case "-":
-                return sub(num1, num2);
-            case "*":
-                return mul(num1, num2);
-            case "/":
-                return div(num1, num2);
-        }
-        return 0;
-    }
-
-    public double doMultipleOperation(List<Integer> numbers, List<String> operator){
+    public double doMultipleOperation(List<Integer> numbers, List<String> operator) {
         double result = numbers.remove(0);
-        for (int i=0; i < numbers.size(); i++){
+        for (int i = 0; i < numbers.size(); i++) {
             result = doBinaryOperation(result, (double) numbers.get(i), operator.get(i));
         }
         return result;
