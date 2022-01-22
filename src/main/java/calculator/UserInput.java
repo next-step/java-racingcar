@@ -26,12 +26,6 @@ public class UserInput {
         return userInput.trim().split("\\s+");
     }
 
-    public void printList() {
-        for (String s : inputList) {
-            System.out.println(s);
-        }
-    }
-
     public void validateUserInput(String userInput) {
         isEmptyString(userInput);
     }

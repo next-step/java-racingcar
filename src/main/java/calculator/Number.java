@@ -17,11 +17,4 @@ public class Number {
         }
         numbers.add(Integer.valueOf(num));
     }
-
-    public void print() {
-        System.out.println("calculator.Number Class========");
-        for (Integer i : numbers) {
-            System.out.println(i);
-        }
-    }
 }
