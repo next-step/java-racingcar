@@ -6,23 +6,28 @@ import java.util.Random;
 
 public class PlayRacingGame {
 
-    public int makeRandomNumber() {
+    public List<Integer> makeRandomNumbers(int carNum) {
         Random random = new Random();
-        int randomValue = random.nextInt(9);
-        return randomValue;
-    }
-
-    public void move(List<Car> cars) {
-        for (Car car : cars) {
-            int randomNumber = makeRandomNumber();
-            if (randomNumber >= 4) {
-                int location = car.getLocation();
-                location++;
-                car.updateLocation(location);
-            }
+        List<Integer>randomNumberList=new ArrayList<>();
+        for(int count=0;count<carNum;count++){
+            int randomValue = random.nextInt(9);
+            randomNumberList.add(randomValue);
         }
 
+        return randomNumberList;
     }
+
+//    public void move(List<Car> cars) {
+//        for (Car car : cars) {
+//            int randomNumber = makeRandomNumber();
+//            if (randomNumber >= 4) {
+//                int location = car.getLocation();
+//                location++;
+//                car.updateLocation(location);
+//            }
+//        }
+//
+//    }
 
     public void printCarsLocation(List<Car> cars) {
         for (Car car : cars) {

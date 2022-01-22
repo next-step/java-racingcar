@@ -20,7 +20,8 @@ public class Application {
         PlayRacingGame playRacingGame = new PlayRacingGame();
         System.out.println("실행 결과");
         for (; playGameNumber > 0; playGameNumber--) {
-            playRacingGame.move(carList);
+            List<Integer> randomNumberList = playRacingGame.makeRandomNumbers(carList.size());
+            cars.move(randomNumberList);
             playRacingGame.printCarsLocation(carList);
 
         }

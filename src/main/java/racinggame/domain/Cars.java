@@ -26,4 +26,16 @@ public class Cars {
         return cars;
     }
 
+    public void move(List<Integer> randomNumberList) {
+        for (int i=0;i< randomNumberList.size() ; i++) {
+            if (randomNumberList.get(i) >= 4) {
+                Car car = cars.get(i);
+                int location = car.getLocation();
+                location++;
+                car.updateLocation(location);
+            }
+        }
+
+    }
+
 }
