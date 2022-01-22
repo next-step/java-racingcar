@@ -1,15 +1,8 @@
 package calculator.domain;
 
-import calculator.domain.operator.Divide;
-import calculator.domain.operator.Minus;
-import calculator.domain.operator.Multiply;
-import calculator.domain.operator.Operator;
-import calculator.domain.operator.Operators;
-import calculator.domain.operator.Plus;
+ import calculator.domain.operator.Operators;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 
 public class Parser {
@@ -17,7 +10,6 @@ public class Parser {
     private final Numbers numbers;
     private final Operators operators;
     private final String formula;
-    private final Map<String, Operator> map;
 
     private List<String> parsedElements;
 
@@ -25,8 +17,6 @@ public class Parser {
         this.formula = formula;
         this.numbers = new Numbers();
         this.operators = new Operators();
-        this.map = new HashMap<>();
-        initOperatorMap();
 
         validateFormula();
         parseFormula();
@@ -41,25 +31,14 @@ public class Parser {
         return operators;
     }
 
-    private void initOperatorMap() {
-        map.put("+", new Plus());
-        map.put("-", new Minus());
-        map.put("*", new Multiply());
-        map.put("/", new Divide());
-    }
-
     private void distribution() {
         int index;
+        int ITERATION_UNIT = 2;
+        int ITERATION_UNIT_LIMIT = parsedElements.size() - 2;
 
-        for (index = 0; index < parsedElements.size() - 2; index += 2) {
+        for (index = 0; index < ITERATION_UNIT_LIMIT; index += ITERATION_UNIT) {
             numbers.add(new Number(parsedElements.get(index)));
-
-            // TODO: 보류
-            Operator operator = map.get(parsedElements.get(index + 1));
-            if (operator == null) {
-                throw new IllegalArgumentException("올바르지 않은 연산 기호입니다.");
-            }
-            operators.add(operator);
+            operators.add(operators.map().get(parsedElements.get(index + 1)));
         }
         numbers.add(new Number(parsedElements.get(index)));
     }
