@@ -21,4 +21,14 @@ public class Participants {
     public int getParticipantCount() {
         return cars.size();
     }
+
+    public void moveCarIfPositionChanged(int index, boolean bool) {
+        if (bool) {
+            this.cars.get(index).go();
+        }
+    }
+
+    public static Participants toParticipants(RacingResult racingResult) {
+        return Participants.getInstance(racingResult.getResult());
+    }
 }
