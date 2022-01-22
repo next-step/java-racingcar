@@ -1,29 +1,32 @@
 package calculator;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Calculator {
     public Calculator(){
-
+        Map<String, Object> map = new HashMap<String, Object>();
+//        map.put("+", );
     }
 
-    public float add(float num1, float num2) {
+    public double add(double num1, double num2) {
         return num1 + num2;
     }
 
-    public float sub(float num1, float num2) {
+    public double sub(double num1, double num2) {
         return num1 - num2;
     }
 
-    public float mul(float num1, float num2) {
+    public double mul(double num1, double num2) {
         return num1 * num2;
     }
 
-    public float div(float num1, float num2) {
+    public double div(double num1, double num2) {
         return num1 / num2;
     }
 
-    public float doBinaryOperation(float num1, float num2, String ope) {
+    public double doBinaryOperation(double num1, double num2, String ope) {
         switch (ope) {
             case "+":
                 return add(num1, num2);
@@ -37,10 +40,10 @@ public class Calculator {
         return 0;
     }
 
-    public float doMultipleOperation(List<Integer> numbers, List<String> operator){
-        float result = numbers.remove(0);
+    public double doMultipleOperation(List<Integer> numbers, List<String> operator){
+        double result = numbers.remove(0);
         for (int i=0; i < numbers.size(); i++){
-            result = doBinaryOperation(result, (float) numbers.get(i), operator.get(i));
+            result = doBinaryOperation(result, (double) numbers.get(i), operator.get(i));
         }
         return result;
     }
