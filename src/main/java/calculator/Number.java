@@ -12,7 +12,7 @@ public class Number {
     }
 
     public void addNumber(String num) {
-        if (!Character.isDigit(num.charAt(0))) {
+        if (!num.matches("[+-]?\\d*(\\.\\d+)?")) {
             throw new NumberFormatException("숫자가 아닙니다");
         }
         numbers.add(Integer.valueOf(num));
