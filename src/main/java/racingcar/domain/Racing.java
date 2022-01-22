@@ -18,7 +18,7 @@ public class Racing {
     private Racing() {
     }
 
-    public static Racing of() {
+    public static Racing get() {
         return new Racing();
     }
 

@@ -9,7 +9,7 @@ import racingcar.domain.Racing;
 public class Application {
 
     public static void main(String[] args) {
-        Racing racing = Racing.of();
+        Racing racing = Racing.get();
         UserInput userInput = new UserInput();
         Judgement judgement = new Judgement();
         userInput.userInputRun();
