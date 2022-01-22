@@ -1,35 +1,25 @@
 package calculator.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ExpressionParser {
 
-    private Operators operators;
-    private Terms terms;
+    private Operators operators = new Operators();
+    private Terms terms = new Terms();
 
-    private ExpressionParser() {
-    }
+    private ExpressionParser() {}
 
     public ExpressionParser(String userInput) {
         String[] splitUserInput = splitUserInputByWhitespace(userInput);
-
-        List<Double> expressionTerms = new ArrayList<>();
-        List<String> expressionOperators = new ArrayList<>();
 
         for (int pos = 0; pos < splitUserInput.length; pos++) {
             String target = splitUserInput[pos];
             if (isTerm(pos)) {
                 Validator.validateIsNumber(target);
-                expressionTerms.add(Double.parseDouble(target));
+                terms.addTerm(Double.parseDouble(target));
                 continue;
             }
             Validator.validateIsOperator(target);
-            expressionOperators.add(target);
+            operators.addOperator(target);
         }
-
-        terms = new Terms(expressionTerms);
-        operators = new Operators(expressionOperators);
     }
 
     private String[] splitUserInputByWhitespace(String userInput) {

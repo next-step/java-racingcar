@@ -1,18 +1,14 @@
 package calculator.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Terms {
 
-    private List<Double> terms;
+    private final List<Double> terms = new ArrayList<>();
     private int pointer = 0;
 
-
-    private Terms() {}
-
-    public Terms(List<Double> terms) {
-        this.terms = terms;
-    }
+    public Terms() {}
 
     protected List<Double> getTerms() {
         return terms;
@@ -20,5 +16,9 @@ public class Terms {
 
     public double nextTerm() {
         return terms.get(pointer++);
+    }
+
+    public void addTerm(double term) {
+        terms.add(term);
     }
 }

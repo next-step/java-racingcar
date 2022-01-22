@@ -1,17 +1,14 @@
 package calculator.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Operators {
 
-    private List<String> operators;
+    private final List<String> operators = new ArrayList<>();
     private int pointer = 0;
 
-    private Operators() {}
-
-    public Operators(List<String> operators) {
-        this.operators = operators;
-    }
+    public Operators() {}
 
     protected List<String> getOperators() {
         return operators;
@@ -23,5 +20,9 @@ public class Operators {
 
     public boolean hasNext() {
         return pointer < operators.size();
+    }
+
+    public void addOperator(String operator) {
+        operators.add(operator);
     }
 }
