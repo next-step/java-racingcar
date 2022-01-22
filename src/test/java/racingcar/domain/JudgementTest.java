@@ -22,20 +22,20 @@ class JudgementTest {
 
     @Test
     void winnerTest() {
-        Judgement judgement = Judgement.of();
+        Judgement judgement = Judgement.instance();
         assertThat(judgement.judge(cars)).isEqualTo("최종 우승자: java");
     }
 
     @Test
     void tieBreakerTest() {
-        Judgement judgement = Judgement.of();
+        Judgement judgement = Judgement.instance();
         cars.add(new Car("jUnit", new ForwardStrategy(), 4));
         assertThat(judgement.judge(cars)).isEqualTo("최종 우승자: java,jUnit");
     }
 
     @Test
     void noWinnerTest() {
-        Judgement judgement = Judgement.of();
+        Judgement judgement = Judgement.instance();
         cars = new ArrayList<>();
 
         cars.add(new Car("c", new ForwardStrategy(), 0));
