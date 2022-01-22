@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class UserInput {
-
     BufferedReader br;
     String inputStr;
     String[] inputList;
@@ -18,19 +17,19 @@ public class UserInput {
         inputList = split(inputStr);
     }
 
-    public void Console() throws IOException {
+    private void Console() throws IOException {
         inputStr = br.readLine();
     }
 
-    public String[] split(String userInput) {
+    private String[] split(String userInput) {
         return userInput.trim().split("\\s+");
     }
 
-    public void validateUserInput(String userInput) {
+    private void validateUserInput(String userInput) {
         isEmptyString(userInput);
     }
 
-    public void isEmptyString(String userInput) {
+    private void isEmptyString(String userInput) {
         if (userInput.trim().equals("")) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
