@@ -12,7 +12,7 @@ public class UserInput {
         try {
             userInput = console();
             validateUserInput(userInput);
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("\n[ERROR] " + e);
         }
         inputArr = split(userInput);
