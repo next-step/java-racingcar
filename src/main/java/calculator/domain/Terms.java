@@ -21,8 +21,4 @@ public class Terms {
     public double nextTerm() {
         return terms.get(pointer++);
     }
-
-    public boolean hasNext() {
-        return pointer < terms.size();
-    }
 }

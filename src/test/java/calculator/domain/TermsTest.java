@@ -1,7 +1,6 @@
 package calculator.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,24 +25,5 @@ class TermsTest {
 
         assertThat(terms.nextTerm()).isEqualTo(1);
         assertThat(terms.nextTerm()).isEqualTo(2);
-    }
-
-    @Test
-    void hasNext_true() {
-        List<Double> values = new ArrayList<>(Arrays.asList(1D, 2D));
-        Terms terms = new Terms(values);
-
-        assertTrue(terms.hasNext());
-    }
-
-    @Test
-    void hasNext_false() {
-        List<Double> values = new ArrayList<>(Arrays.asList(1D, 2D));
-        Terms terms = new Terms(values);
-
-        terms.nextTerm();
-        terms.nextTerm();
-
-        assertFalse(terms.hasNext());
     }
 }
