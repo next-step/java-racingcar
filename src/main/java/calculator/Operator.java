@@ -7,7 +7,7 @@ import java.util.List;
 public class Operator {
 
     private final static List<String> SYMBOLS = new ArrayList<>(Arrays.asList("+", "-", "*", "/"));
-    public final List<String> operators;
+    private List<String> operators;
 
     public Operator() {
         operators = new ArrayList<>();
@@ -18,5 +18,9 @@ public class Operator {
             throw new IllegalArgumentException("연산기호가 아닙니다.");
         }
         operators.add(ope);
+    }
+
+    public List<String> getOperators() {
+        return operators;
     }
 }
