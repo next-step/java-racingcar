@@ -5,6 +5,7 @@ import racinggame.domain.Car;
 import racinggame.domain.Cars;
 import racinggame.domain.GameInit;
 import racinggame.domain.PlayRacingGame;
+import racinggame.domain.Winner;
 
 public class Application {
 
@@ -13,8 +14,8 @@ public class Application {
         String[] carNames = gameInit.inputPlayerName();
         int playGameNumber = gameInit.inputTryNumber();
 
-        Cars cars = new Cars();
-        List<Car> carList = cars.createCarList(carNames);
+        Cars cars = new Cars(carNames);
+        List<Car> carList = cars.getCars();
 
         PlayRacingGame playRacingGame = new PlayRacingGame();
         System.out.println("실행 결과");
