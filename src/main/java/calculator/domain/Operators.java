@@ -20,4 +20,8 @@ public class Operators {
     public String nextOperator() {
         return operators.get(pointer++);
     }
+
+    public boolean hasNext() {
+        return pointer < operators.size();
+    }
 }
