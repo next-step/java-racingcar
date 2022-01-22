@@ -10,4 +10,8 @@ public class Terms {
     public Terms(List<Double> terms) {
         this.terms = terms;
     }
+
+    protected List<Double> getTerms(){
+        return terms;
+    }
 }
