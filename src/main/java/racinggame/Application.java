@@ -24,8 +24,8 @@ public class Application {
             playRacingGame.printCarsLocation(carList);
 
         }
-        List<String> winner = playRacingGame.findWinner(carList);
-        playRacingGame.printWinner(winner);
+        List<Winner> winnerList = playRacingGame.findWinner(carList);
+        playRacingGame.printWinner(winnerList);
     }
 
 
