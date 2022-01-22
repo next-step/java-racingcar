@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,7 +24,7 @@ public class RacingResult {
         for (int i = 0; i < cars.size(); i++) {
             stringBuilder = new StringBuilder();
 
-            int status = cars.get(i).getStatus();
+            int status = cars.get(i).getPosition();
             System.out.printf(RESULT_LINE, cars.get(i).getName());
             while (status-- > 0) {
                 stringBuilder.append(DASH);
