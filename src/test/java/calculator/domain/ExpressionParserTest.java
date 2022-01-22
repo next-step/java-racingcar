@@ -7,17 +7,16 @@ import org.junit.jupiter.api.Test;
 class ExpressionParserTest {
 
     @Test
-    void parseExpression_사용자_입력을_받아_Expression_반환() {
+    void parseExpression_사용자_입력을_받아_Operators_Terms_생성() {
 
         //given
         String[] userInput = "1 + 2 * 3".split("\\s+");
 
         // when
-        ExpressionParser parser = new ExpressionParser();
-        Expression expression = parser.parseExpression(userInput);
+        ExpressionParser parser = new ExpressionParser(userInput);
 
         // then
-        assertThat(expression.getOperators().size()).isEqualTo(2);
-        assertThat(expression.getTerms().size()).isEqualTo(3);
+        assertThat(parser.getOperator()).isNotNull();
+        assertThat(parser.getTerms()).isNotNull();
     }
 }
