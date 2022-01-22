@@ -8,10 +8,10 @@ import racingcar.domain.random.RandomGenerator;
 public class RacingController {
 
     private static final String HEAD_MESSAGE = "\n실행 결과";
-    private Participants participants;
+    private final Participants participants;
     private final int turnCount;
     private final int participantCount;
-    private Move move;
+    private final Move move;
 
     private RacingController(Participants participants, int turn) {
         this.participants = participants;
