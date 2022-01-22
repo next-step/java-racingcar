@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Number {
 
-    public final List<Integer> numbers;
+    private List<Integer> numbers;
 
     public Number() {
         numbers = new ArrayList<>();
@@ -16,5 +16,9 @@ public class Number {
             throw new NumberFormatException("숫자가 아닙니다");
         }
         numbers.add(Integer.valueOf(num));
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }

@@ -13,7 +13,7 @@ public class Application {
         seperator.seperate(userInput.inputList);
         Calculator calculator = new Calculator();
 
-        double result = calculator.doMultipleOperation(seperator.number.numbers, seperator.operator.operators);
+        double result = calculator.doMultipleOperation(seperator.number.getNumbers(), seperator.operator.operators);
         System.out.println(OUTPUT_MESSAGE + result);
     }
 }
