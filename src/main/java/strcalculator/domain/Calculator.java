@@ -17,12 +17,19 @@ public class Calculator {
             String operator = inputStr.get(i);
             if (operator.equals("+")) {
                 total = add(total, Integer.valueOf(inputStr.get(i + 1)));
-            } else if (operator.equals("-")) {
+                continue;
+            }
+            if (operator.equals("-")) {
                 total = subtract(total, Integer.valueOf(inputStr.get(i + 1)));
-            } else if (operator.equals("*")) {
+                continue;
+            }
+            if (operator.equals("*")) {
                 total = multiply(total, Integer.valueOf(inputStr.get(i + 1)));
-            } else if (operator.equals("/")) {
+                continue;
+            }
+            if (operator.equals("/")) {
                 total = divide(total, Integer.valueOf(inputStr.get(i + 1)));
+                continue;
             }
         }
         System.out.println(total);
