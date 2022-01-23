@@ -71,7 +71,7 @@ public class UserInput {
     }
 
     private void validateDuplicateCar(final List<String> splitUserInput) {
-        int size = splitUserInput.stream().distinct().collect(Collectors.toList()).size();
+        int size = (int) splitUserInput.stream().distinct().count();
 
         if (size != splitUserInput.size()) {
             throw new InputValidationException(CAR_NAME_DUPLICATE_ERROR);
