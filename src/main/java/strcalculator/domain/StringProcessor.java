@@ -55,4 +55,10 @@ public class StringProcessor {
     public List<String> getResult() {
         return result;
     }
+
+    public String[] parseInputNumber(){
+        String input = userInput.replaceAll(" ", "");
+        String []numbers=input.split("[+\\-x/]");;
+        return numbers;
+    }
 }
