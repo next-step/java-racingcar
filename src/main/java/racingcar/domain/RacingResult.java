@@ -36,7 +36,6 @@ public class RacingResult {
 
     public String getWinner() {
         System.out.print("최종 우승자: ");
-        //StringBuilder stringBuilder = new StringBuilder("최종 우승자: ");
 
         Collections.sort(cars);
         Car firstWinner = cars.get(0);
@@ -47,8 +46,6 @@ public class RacingResult {
             .collect(Collectors.joining(", "));
 
         return winners;
-
-        //System.out.println(stringBuilder.append(winners).toString());
     }
 
     public List<Car> getResult() {
