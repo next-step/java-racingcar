@@ -11,7 +11,7 @@ import racing.Racing;
 public class Application {
 
     public static void main(String[] args) throws IOException {
-//        calculateString();
+        calculateString();
 //        carRacing();
     }
 
@@ -26,12 +26,14 @@ public class Application {
     }
 
     public static void calculateString() throws IOException {
-//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//
-//        ElementGenerator validator = new ElementGenerator();
-//        String[] input = validator.stringCheck(br.readLine());
-//
-//        Calculator calculator = new Calculator();
-//        System.out.println(calculator.execute(input));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        ElementGenerator elementGenerator = new ElementGenerator(br.readLine());
+        String[] elements = elementGenerator.getElements();
+
+        Calculator calculator = new Calculator();
+        double result = calculator.execute(elements);
+
+        System.out.println(result);
     }
 }
