@@ -3,8 +3,12 @@ package strcalculator.domain;
 import java.util.List;
 
 public class Calculator {
-
+    private List<String> inputStr;
     public Calculator() {
+    }
+
+    public Calculator(List<String> inputStr) {
+        this.inputStr=inputStr;
     }
 
     public void calculate(List<String> result) {
