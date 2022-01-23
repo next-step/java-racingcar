@@ -58,7 +58,7 @@ public class StringProcessor {
 
     public String[] parseInputNumber(){
         String input = userInput.replaceAll(" ", "");
-        String []numbers=input.split("[+\\-x/]");;
+        String []numbers=input.split("[+\\-x/]");
         return numbers;
     }
 
