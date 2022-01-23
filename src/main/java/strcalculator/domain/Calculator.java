@@ -18,24 +18,24 @@ public class Calculator {
         this.operandList=operandList;
     }
 
-    public void calculate() {
-        int total = Integer.valueOf(inputStr.get(0));
-        for (int i = 1; i < inputStr.size(); i += 2) {
-            String operator = inputStr.get(i);
+    public void calculate(String[]numberList,String[]operandList) {
+        int total = Integer.valueOf(numberList[0]);
+        for (int i = 1; i < operandList.length; i++) {
+            String operator = operandList[i];
             if (operator.equals("+")) {
-                total = add(total, Integer.valueOf(inputStr.get(i + 1)));
+                total = add(total, Integer.valueOf(numberList[i]));
                 continue;
             }
             if (operator.equals("-")) {
-                total = subtract(total, Integer.valueOf(inputStr.get(i + 1)));
+                total = subtract(total, Integer.valueOf(numberList[i]));
                 continue;
             }
             if (operator.equals("*")) {
-                total = multiply(total, Integer.valueOf(inputStr.get(i + 1)));
+                total = multiply(total, Integer.valueOf(numberList[i]));
                 continue;
             }
             if (operator.equals("/")) {
-                total = divide(total, Integer.valueOf(inputStr.get(i + 1)));
+                total = divide(total, Integer.valueOf(numberList[i+1]));
                 continue;
             }
         }
