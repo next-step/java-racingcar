@@ -4,11 +4,18 @@ import java.util.List;
 
 public class Calculator {
     private List<String> inputStr;
+    private List<String> numberList;
+    private List<String> operandList;
     public Calculator() {
     }
 
     public Calculator(List<String> inputStr) {
         this.inputStr=inputStr;
+    }
+
+    public Calculator(List<String> numberList,List<String>operandList) {
+        this.numberList=numberList;
+        this.operandList=operandList;
     }
 
     public void calculate() {
