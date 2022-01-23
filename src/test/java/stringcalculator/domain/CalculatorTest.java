@@ -1,6 +1,7 @@
 package stringcalculator.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -105,4 +106,13 @@ class CalculatorTest {
         int result = Operator.of("/").operate(9, 6);
         assertThat(result).isEqualTo(1);
     }
+
+    @DisplayName("0으로 나누었을 때 Valid 테스트")
+    @ParameterizedTest
+    @EnumSource(Operator.class)
+    public void divideValidTest(Operator operator) {
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> Operator.of("/").operate(9, 0));
+    }
+
 }
