@@ -22,8 +22,8 @@ public class UserInput {
     private List<String> splitUserInput;
     private String carNameInput;
     private int racingTryCounter;
-    BufferedReader bufferedReader;
-    BufferedWriter log;
+    private final BufferedReader bufferedReader;
+    private final BufferedWriter log;
 
     public UserInput() {
         bufferedReader = new BufferedReader(new InputStreamReader(System.in));

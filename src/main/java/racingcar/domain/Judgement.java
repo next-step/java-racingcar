@@ -15,7 +15,7 @@ import racingcar.common.info.RacingGameInfo;
 public class Judgement {
 
     private static final String DELIMITER = " : ";
-    private BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
+    private final BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
 
     public void judge(final List<Car> cars) {
         int max = maxDriveLength(cars);
