@@ -36,10 +36,7 @@ public class CalculatorInit {
             exception.printStackTrace();
         }
 
-        if (judgeContinue == NUMBER_ONE) {
-            return true;
-        }
-        return false;
+        return judgeContinue == NUMBER_ONE;
     }
 
     public void start() {
