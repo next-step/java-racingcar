@@ -14,10 +14,10 @@
   - [x] String을 공백 기준으로 Split해서 String[]인 elements 생성 -createElements
   - [x] 사칙연산이 아닌 기호가 있을 때 예외처리 -validateCorrectOperator
 - 계산기 겍체 -Calculator
-  - [ ] 반복문을 통한 전체 계산 실행 -execute
-  - [ ] 사칙연산 기호에 따른 개별 연산 실행 -calculate
+  - [] 반복문을 통한 전체 계산 실행 -execute
+  - [] 사칙연산 기호에 따른 개별 연산 실행 -calculate
 - 연산자 객체 - Operator
-  - [ ] +, -, *, /의 사칙연산 메소드 구현 
+  - [x] +, -, *, /의 사칙연산 메소드 구현 
 
 ## 자동차 경주 기능 목록
 - 차 생성 CarGenerator
