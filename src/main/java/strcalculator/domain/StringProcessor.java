@@ -61,4 +61,10 @@ public class StringProcessor {
         String []numbers=input.split("[+\\-x/]");;
         return numbers;
     }
+
+    public String[] parseInputOperands(){
+        String input = userInput.replaceAll(" ", "");
+        String []operands=input.split("[0-9]+");
+        return operands;
+    }
 }
