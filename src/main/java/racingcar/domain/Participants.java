@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.car.Car;
-import racingcar.view.UserInput;
+import racingcar.view.UserConsole;
 
 public class Participants {
 
@@ -21,7 +21,7 @@ public class Participants {
     }
 
     public static Participants createCars() {
-        String[] names = UserInput.getInputValueWithMessage(NAME_MESSAGE).split(",");
+        String[] names = UserConsole.getConsoleTextFrom(NAME_MESSAGE).split(",");
         List<Car> cars = new ArrayList<>();
         try {
             for (String name : names) {

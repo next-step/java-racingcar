@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.view.UserInput;
+import racingcar.view.UserConsole;
 
 public class Turns {
 
@@ -12,7 +12,7 @@ public class Turns {
     public static int setTurn() {
         String turn;
         try {
-            turn = UserInput.getInputValueWithMessage(TURN_MESSAGE).trim();
+            turn = UserConsole.getConsoleTextFrom(TURN_MESSAGE).trim();
             validateTurn(turn);
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR_LOG + e.getMessage());
