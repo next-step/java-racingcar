@@ -14,9 +14,8 @@ public class Application {
             try {
                 String[] numbers = play.parseInputNumber();
                 String[] operands = play.parseInputOperands();
-                List<String> result = play.getResult();
-                Calculator calculator = new Calculator(result);
-                calculator.calculate(numbers,operands);
+                Calculator calculator = new Calculator(numbers,operands);
+                calculator.calculate();
                 break;
             } catch (IllegalArgumentException | ArithmeticException e) {
                 System.out.println("다시 입력해주세요.");
