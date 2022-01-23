@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import racingcar.domain.movable.ForwardStrategy;
 import racingcar.domain.movable.MovableStrategy;
 
 import java.util.ArrayList;
