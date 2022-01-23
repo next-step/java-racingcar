@@ -10,9 +10,9 @@
 
 ## 문자열 계산기 기능 목록
 - 연산 요소(숫자와 연산자들) 생성 객체 -ElementGenerator
-  - [ ] 입력값이 NULL 이거나 빈 공백 문자일 경우 예외처리 -isEmpty
-  - [ ] String을 공백 기준으로 Split해서 String[]인 elements 생성 -createElements
-  - [ ] 사칙연산이 아닌 기호가 있을 때 예외처리 -hasCorrectOperator
+  - [x] 입력값이 NULL 이거나 빈 공백 문자일 경우 예외처리 -validateEmpty
+  - [x] String을 공백 기준으로 Split해서 String[]인 elements 생성 -createElements
+  - [x] 사칙연산이 아닌 기호가 있을 때 예외처리 -validateCorrectOperator
 - 계산기 겍체 -Calculator
   - [ ] 반복문을 통한 전체 계산 실행 -execute
   - [ ] 사칙연산 기호에 따른 개별 연산 실행 -calculate

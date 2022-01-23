@@ -1,5 +1,5 @@
 import calculator.Calculator;
-import calculator.Validator;
+import calculator.ElementGenerator;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,7 +12,7 @@ public class Application {
 
     public static void main(String[] args) throws IOException {
 //        calculateString();
-        carRacing();
+//        carRacing();
     }
 
     private static void carRacing() throws IOException {
@@ -26,12 +26,12 @@ public class Application {
     }
 
     public static void calculateString() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        Validator validator = new Validator();
-        String[] input = validator.stringCheck(br.readLine());
-
-        Calculator calculator = new Calculator();
-        System.out.println(calculator.execute(input));
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//
+//        ElementGenerator validator = new ElementGenerator();
+//        String[] input = validator.stringCheck(br.readLine());
+//
+//        Calculator calculator = new Calculator();
+//        System.out.println(calculator.execute(input));
     }
 }
