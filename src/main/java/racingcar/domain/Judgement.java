@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import static racingcar.common.info.RacingGameInfo.*;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -19,15 +20,22 @@ public class Judgement {
     public void judge(final List<Car> cars) {
         int max = maxDriveLength(cars);
 
-        for (Car car : cars) {
-            printWinner(max, car);
+        try{
+            log.write(WINNER_IS);
+            log.flush();
+        }catch(IOException exception){
+            System.out.println(exception.getMessage());
+        }
+
+        for(int idx=0; idx<cars.size(); idx++){
+            printWinner(max, cars.get(idx));
         }
     }
 
     public void carsStatement(final List<Car> cars) {
         for (Car car : cars) {
             try{
-                log.write(car.getName() + DELIMITER + carPosition(car));
+                log.write(car.getName() + DELIMITER + carPosition(car)+'\n');
                 log.flush();
             }catch(IOException exception) {
                 exception.getMessage();
@@ -36,13 +44,12 @@ public class Judgement {
     }
 
     private void printWinner(final int max, final Car car){
-        if (max == car.getStep()) {
-            try{
-                log.write(WINNER_IS + car.getName());
-                log.flush();
-            }catch(IOException exception) {
-                exception.getMessage();
-            }
+
+        try {
+            log.write(car.toString(max));
+            log.flush();
+        }catch(IOException exception){
+            System.out.println(exception.getMessage());
         }
     }
 
