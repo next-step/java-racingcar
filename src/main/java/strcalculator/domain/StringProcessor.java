@@ -44,6 +44,11 @@ public class StringProcessor {
         }
     }
 
+    public boolean validation(){
+        boolean matches = userInput.matches("[+\\-x/]|[0-9]+");
+        System.out.println(userInput);
+        return matches;
+    }
     public List<String> getResult() {
         return result;
     }
