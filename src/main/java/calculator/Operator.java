@@ -2,19 +2,19 @@ package calculator;
 
 public class Operator {
 
-    private double add(double number1, double number2) {
+    public double add(double number1, double number2) {
         return number1 + number2;
     }
 
-    private double subtract(double number1, double number2) {
+    public double subtract(double number1, double number2) {
         return number1 - number2;
     }
 
-    private double multiple(double number1, double number2) {
+    public double multiple(double number1, double number2) {
         return number1 * number2;
     }
 
-    private double divide(double number1, double number2) {
+    public double divide(double number1, double number2) {
         int DIGIT_RANGE = 2;
         if (number2 == 0) {
             throw new IllegalArgumentException("[ERROR] 0으로 나눌 수 없습니다.");
