@@ -1,9 +1,8 @@
 package racingcar.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.movable.ForwardStrategy;
+import racingcar.domain.movable.RandomForwardStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +14,9 @@ class JudgementTest {
 
     @BeforeEach
     void setUp() {
-        cars.add(new Car("c", new ForwardStrategy(), 3));
-        cars.add(new Car("java", new ForwardStrategy(), 4));
-        cars.add(new Car("jpa", new ForwardStrategy(), 1));
+        cars.add(new Car("c", new RandomForwardStrategy(), 3));
+        cars.add(new Car("java", new RandomForwardStrategy(), 4));
+        cars.add(new Car("jpa", new RandomForwardStrategy(), 1));
     }
 
     @Test
@@ -29,7 +28,7 @@ class JudgementTest {
     @Test
     void tieBreakerTest() {
         Judgement judgement = Judgement.instance();
-        cars.add(new Car("jUnit", new ForwardStrategy(), 4));
+        cars.add(new Car("jUnit", new RandomForwardStrategy(), 4));
         assertThat(judgement.judge(cars)).isEqualTo("최종 우승자: java,jUnit");
     }
 
@@ -38,9 +37,9 @@ class JudgementTest {
         Judgement judgement = Judgement.instance();
         cars = new ArrayList<>();
 
-        cars.add(new Car("c", new ForwardStrategy(), 0));
-        cars.add(new Car("java", new ForwardStrategy(), 0));
-        cars.add(new Car("jpa", new ForwardStrategy(), 0));
+        cars.add(new Car("c", new RandomForwardStrategy(), 0));
+        cars.add(new Car("java", new RandomForwardStrategy(), 0));
+        cars.add(new Car("jpa", new RandomForwardStrategy(), 0));
 
         assertThat(judgement.judge(cars)).isEqualTo("우승자는 없습니다.");
     }
