@@ -12,10 +12,11 @@ public class Application {
             play.getInput();
             play.checkInput();
             try {
-                play.parseInput();
+                String[] numbers = play.parseInputNumber();
+                String[] operands = play.parseInputOperands();
                 List<String> result = play.getResult();
                 Calculator calculator = new Calculator(result);
-                calculator.calculate();
+                calculator.calculate(numbers,operands);
                 break;
             } catch (IllegalArgumentException | ArithmeticException e) {
                 System.out.println("다시 입력해주세요.");
