@@ -9,12 +9,15 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 ## 문자열 계산기 기능 목록
-- 입력된 내용 validation 확인 (Validator)
-  - [x] 입력값이 null 이거나 빈 공백 문자일 경우 예외처리
-  - [x] 사칙연산 기호가 아닌 경우 예외 처리 
-- 연산 실행 (Calculator)
-  - [x] 사칙연산 메소드 생성
-  - [x] 사칙연산 메소드 호출을 통한 전체 연산 실행
+- 연산 요소(숫자와 연산자들) 생성 객체 -ElementGenerator
+  - [ ] 입력값이 NULL 이거나 빈 공백 문자일 경우 예외처리 -isEmpty
+  - [ ] String을 공백 기준으로 Split해서 String[]인 elements 생성 -createElements
+  - [ ] 사칙연산이 아닌 기호가 있을 때 예외처리 -hasCorrectOperator
+- 계산기 겍체 -Calculator
+  - [ ] 반복문을 통한 전체 계산 실행 -execute
+  - [ ] 사칙연산 기호에 따른 개별 연산 실행 -calculate
+- 연산자 객체 - Operator
+  - [ ] +, -, *, /의 사칙연산 메소드 구현 
 
 ## 자동차 경주 기능 목록
 - 차 생성 CarGenerator
