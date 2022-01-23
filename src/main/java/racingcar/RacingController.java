@@ -32,7 +32,7 @@ public class RacingController {
             racingResult.getResultView();
             participants = Participants.toParticipants(racingResult);
         }
-        racingResult.getWinner();
+        System.out.println(racingResult.getWinner());
     }
 
     public RacingResult race(Participants participants) {

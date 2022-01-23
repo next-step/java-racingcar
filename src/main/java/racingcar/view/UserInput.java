@@ -3,7 +3,6 @@ package racingcar.view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Participants;
