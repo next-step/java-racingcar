@@ -47,10 +47,12 @@ public class StringProcessor {
         }
     }
 
-    public boolean validation(){
-        boolean matches = userInput.matches("[+\\-x/]|[0-9]+");
-        System.out.println(userInput);
-        return matches;
+    public void validation(){
+        boolean matches = userInput.matches("[+\\-*/]|[0-9]+");
+        if(matches==false){
+            throw  new IllegalArgumentException("숫자와 연산자, 공백문자만 입력할 수 있습니다.");
+        }
+
     }
     public List<String> getResult() {
         return result;
@@ -58,7 +60,7 @@ public class StringProcessor {
 
     public String[] parseInputNumber(){
         String input = userInput.replaceAll(" ", "");
-        String []numbers=input.split("[+\\-x/]");
+        String []numbers=input.split("[+\\-*/]");
         return numbers;
     }
 
