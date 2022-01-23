@@ -29,7 +29,7 @@ public class UserInput {
             ;
     }
 
-    public static UserInput of() {
+    public static UserInput instance() {
         return new UserInput();
     }
 

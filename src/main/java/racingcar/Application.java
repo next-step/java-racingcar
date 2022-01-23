@@ -12,7 +12,7 @@ public class Application {
 
     public static void main(String[] args) {
         Racing racing = Racing.instance();
-        UserInput userInput = UserInput.of();
+        UserInput userInput = UserInput.instance();
         Judgement judgement = Judgement.instance();
         new Helper().runner(userInput.getSplitUserInput(), racing);
         for (int time = START_FROM_ZERO; time < userInput.getRacingTime(); time++) {
