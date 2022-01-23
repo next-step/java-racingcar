@@ -11,6 +11,9 @@ public class StringProcessor {
 
     public StringProcessor() {
     }
+    public StringProcessor(String userInput){
+        this.userInput=userInput;
+    }
 
     public void getInput() {
         Scanner sc = new Scanner(System.in);
