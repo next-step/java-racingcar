@@ -45,8 +45,8 @@ public class Judgement {
     private int maxDriveLength(final List<Car> cars) {
         return cars.stream()
                 .mapToInt(Car::getStep)
-                .max().
-                getAsInt();
+                .max()
+                .getAsInt();
     }
 
     private String carPosition(final Car car) {
