@@ -26,4 +26,14 @@ public class Car {
         return name;
     }
 
+    public String toString(int max) {
+        StringBuilder playRacingResult = new StringBuilder();
+
+        if(max == getStep()){
+            playRacingResult.append(getName()+" ");
+        }
+
+        return playRacingResult.toString();
+    }
+
 }
