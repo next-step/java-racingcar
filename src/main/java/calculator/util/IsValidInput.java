@@ -14,16 +14,6 @@ public class IsValidInput {
         }
     }
 
-    public static void isNotOperator(List<String> formular) {
-        int inputMaxLength = formular.size();
-        for (int i = FIRST_OPERATOR; i < inputMaxLength; i += DISTANCE) {
-            Operation.fromString(formular.get(i))
-                .orElseThrow(() ->
-                    new IllegalArgumentException(FormulaOutput.ERROR_NOT_OPERATOR)
-                );
-        }
-    }
-
     public static void isNotNumber(List<String> formular) {
         int inputMaxLength = formular.size();
         for (int i = FIRST_NUMBER; i < inputMaxLength; i += DISTANCE) {

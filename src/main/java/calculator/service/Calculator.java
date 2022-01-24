@@ -16,11 +16,9 @@ public class Calculator {
         }
         while (formulaStack.size() > 1) {
             double prev = Double.parseDouble(formulaStack.pop());
-            Operation operator = Operation.fromString(formulaStack.pop()).get();
+            Operation operator = Operation.fromString(formulaStack.pop());
             double next = Double.parseDouble(formulaStack.pop());
-
             double result = operator.apply(prev, next);
-
             formulaStack.push(String.valueOf(result));
         }
 

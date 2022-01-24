@@ -1,9 +1,8 @@
 package calculator.util;
 
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import calculator.ui.FormulaOutput;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 public enum Operation {
     PLUS("+") {
@@ -40,13 +39,10 @@ public enum Operation {
         return symbol;
     }
 
-    private static final Map<String, Operation> stringToEnum =
-        Stream.of(values()).collect(Collectors.
-            toMap(Object::toString, e -> e));
-
-    public static Optional<Operation> fromString(String symbol) {
-        return Optional.ofNullable(Optional.ofNullable(stringToEnum.get(symbol)).orElseThrow(() ->
-            new IllegalArgumentException("입력값에 널값이 들어갔습니다.")
-        ));
+    public static Operation fromString(String symbol) {
+        return Arrays.stream(Operation.values())
+            .filter(value -> value.symbol.equals(symbol))
+            .findFirst()
+            .orElseThrow(() -> new NoSuchElementException(FormulaOutput.ERROR_NOT_OPERATOR));
     }
 }

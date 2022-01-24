@@ -17,7 +17,6 @@ public class FormulaInput {
             String input = bufferedReader.readLine();
             IsValidInput.isBlankOrNot(input);
             formular = FormulaUtil.split(input);
-            IsValidInput.isNotOperator(formular);
             IsValidInput.isNotNumber(formular);
         } catch (IllegalArgumentException | IOException e) {
             System.out.println(FormulaOutput.ERROR_MESSAGE + e.getMessage());
