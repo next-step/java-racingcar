@@ -1,6 +1,7 @@
 package calculator.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -71,5 +72,20 @@ class CalculatorTest {
 
         // then
         assertThat(result).isEqualTo(29L);
+    }
+
+    @Test
+    void divide_0으로_나눔() {
+
+        // given
+        ArrayList<Double> values = new ArrayList<>(Arrays.asList(1D, 0D));
+        Terms terms = new Terms();
+        terms.addTermAll(values);
+
+        List<String> ops = new ArrayList<>(Arrays.asList("/"));
+        Operators operators = new Operators();
+        operators.addOperatorAll(ops);
+
+        assertThrows(ArithmeticException.class, () -> Calculator.evaluate(terms, operators));
     }
 }
