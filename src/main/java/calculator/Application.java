@@ -9,7 +9,6 @@ import java.io.IOException;
 
 public class Application {
 
-
     public static void main(String[] args) throws IOException {
         while (true) {
             double result;
@@ -23,7 +22,7 @@ public class Application {
             try {
                 result = Calculator.evaluate(terms, operators);
             } catch (ArithmeticException e) {
-                System.out.println("[ERROR] 0으로 나눌 수 없습니다.");
+                System.out.println(e.getMessage());
                 continue;
             }
 

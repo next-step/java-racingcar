@@ -1,13 +1,13 @@
 package calculator.domain;
 
-import java.util.List;
-
 public class Calculator {
 
     private static final String ADD = "+";
     private static final String SUBTRACT = "-";
     private static final String MULTIPLY = "*";
     private static final String DIVIDE = "/";
+    private static final int INDIVISIBLE_NUMBER = 0;
+
 
     private Calculator() {}
 
@@ -15,7 +15,7 @@ public class Calculator {
 
         double acc = terms.nextTerm();
 
-        while (operators.hasNext()){
+        while (operators.hasNext()) {
             acc = calculate(acc, terms.nextTerm(), operators.nextOperator());
         }
 
@@ -33,7 +33,7 @@ public class Calculator {
             case DIVIDE:
                 return divide(acc, term);
             default:
-                throw new IllegalArgumentException("지원하지 않는 연산자 입니다.");
+                throw new ArithmeticException("[ERROR]지원하지 않는 연산자 입니다.");
         }
     }
 
@@ -50,6 +50,9 @@ public class Calculator {
     }
 
     private static double divide(double num1, double num2) {
+        if (num2 == INDIVISIBLE_NUMBER) {
+            throw new ArithmeticException("[ERROR] 0으로 나눌 수 없습니다.");
+        }
         return num1 / num2;
     }
 }
