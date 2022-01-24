@@ -25,10 +25,14 @@ public class Racing {
     public void drive() {
         IntStream.range(0, cars.size())
             .forEach(idx -> {
-                if (Racing.stopOrMoveForward()) {
-                    cars.get(idx).moveForward();
-                }
+                racingCondition(idx);
             });
+    }
+
+    public void racingCondition(int idx) {
+        if (Racing.stopOrMoveForward()) {
+            cars.get(idx).moveForward();
+        }
     }
 
     public void registerCar(final Car car) {
