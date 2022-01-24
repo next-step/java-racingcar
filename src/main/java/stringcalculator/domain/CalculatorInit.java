@@ -10,13 +10,13 @@ public class CalculatorInit {
     private static final int NUMBER_ONE = 1;
     private static int judgeContinue = 0;
 
-    public void start() {
+    public void start() throws IOException{
         do {
             continueCalculator();
         } while (repeatCalculator());
     }
 
-    private void continueCalculator() {
+    private void continueCalculator() throws IOException {
 
         UserInput input = new UserInput();
 
@@ -29,7 +29,8 @@ public class CalculatorInit {
             log.write(String.valueOf(calculator.getResult()) + '\n');
             log.flush();
         } catch (IllegalArgumentException | IOException exception) {
-            exception.getMessage();
+            log.write(exception.getMessage());
+            log.flush();
         }
     }
 
