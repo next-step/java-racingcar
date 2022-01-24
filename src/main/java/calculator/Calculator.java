@@ -1,4 +1,4 @@
-package calculatorFunction;
+package calculator;
 
 public class Calculator {
     public static void execute(){

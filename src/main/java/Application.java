@@ -1,4 +1,4 @@
-import calculatorFunction.Calculator;
+import calculator.Calculator;
 import java.util.Scanner;
 import racingcar.Race;
 
