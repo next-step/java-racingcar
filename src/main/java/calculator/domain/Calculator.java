@@ -60,4 +60,12 @@ public class Calculator {
     private void divideNumbers(int number) {
         result /= number;
     }
+
+    private void validateExpression(List<String> splitExpression) {
+        boolean isValidExpressionSize = splitExpression.size() % 2 == 0;
+        if (isValidExpressionSize) {
+            throw new IllegalArgumentException("[ERROR] 올바르지 않은 식입니다.");
+        }
+
+    }
 }
