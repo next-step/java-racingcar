@@ -1,11 +1,9 @@
 package racinggame.view;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import racinggame.domain.Judge;
 import racinggame.domain.RacingCar;
-import racinggame.domain.Utils;
 
 public class GameView {
 

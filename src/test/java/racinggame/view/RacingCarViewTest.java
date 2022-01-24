@@ -1,7 +1,7 @@
 package racinggame.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.lang.reflect.Field;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ class RacingCarViewTest {
         assertNotNull(racingCar.get(racingCarView));
     }
 
-    @ValueSource(ints = {1,2,3,4,5})
+    @ValueSource(ints = {1, 2, 3, 4, 5})
     @ParameterizedTest
     void drawCurrPosition(int position) {
         RacingCar car1 = new RacingCar("car1", position);

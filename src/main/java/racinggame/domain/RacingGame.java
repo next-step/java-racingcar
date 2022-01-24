@@ -5,6 +5,7 @@ import java.util.List;
 import racinggame.view.GameView;
 
 public class RacingGame {
+
     private static final String QUIT = "q";
 
     private GameView gameView;
@@ -34,6 +35,7 @@ public class RacingGame {
 
         gameView.printWinners();
     }
+
     private boolean isEnd(String input) {
         return input.equals(QUIT);
     }

@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 public class Validator {
+
     private static final int MINIMUM_PLAYER = 2;
     private static final int MAXIMUM_NAME_LENGTH = 5;
 

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class OperatorsTest {
+
     Operators operators;
 
     @BeforeEach

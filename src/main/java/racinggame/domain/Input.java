@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Input {
+
     private static final String SEPARATOR = ",";
 
     private Input() {}
