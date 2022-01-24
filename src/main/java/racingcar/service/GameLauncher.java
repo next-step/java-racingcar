@@ -24,25 +24,18 @@ public class GameLauncher {
         }
     }
 
-    public void printRacing() {
-        racingCarList.forEach(System.out::println);
+    public List<Car> getRacingCarList() {
+        return racingCarList;
     }
 
-    public void printWinner() {
+    public List<Car> getWinner() {
         int maxPosition = racingCarList.stream()
             .mapToInt(Car::getPosition)
             .max().getAsInt();
 
-        List<String> winnerList = racingCarList.stream()
+        return racingCarList.stream()
             .filter(car -> car.isSamePosition(maxPosition))
-            .map(Car::getName)
             .collect(Collectors.toList());
-
-        System.out.print("최종 우승자: " + String.join(", ", winnerList));
-    }
-
-    public List<Car> getRacingCarList() {
-        return racingCarList;
     }
 }
 
