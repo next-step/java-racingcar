@@ -13,11 +13,11 @@ public class InputView {
     public List<String> readLine() {
         Scanner scanner = new Scanner(System.in);
 
-        setUserInput(scanner.nextLine());
-
-        splitUserInput(userInput);
-
-        validateSplitedInput();
+    public static String getLine() {
+        String line = scanner.nextLine();
+        validateEmptyLine(line);
+        return line;
+    }
 
     public static void validateEmptyLine(String line) {
         if (line.isEmpty() || line == null) {
