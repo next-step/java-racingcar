@@ -1,16 +1,19 @@
 package racingcar;
 
+import java.util.stream.Stream;
+import racingcar.domain.car.Car;
 import racingcar.domain.car.Move;
 import racingcar.domain.Participants;
-import racingcar.domain.RacingResult;
 import racingcar.domain.random.RandomGenerator;
 
 public class RacingController {
 
-    private static final String HEAD_MESSAGE = "\n실행 결과";
-    private Participants participants;
+
+    private final Participants participants;
+    private final Printer printer = new Printer();
+
     private final int turnCount;
-    private Move move;
+    private final Move move;
 
     public RacingController(Participants participants, int turn) {
         this.participants = participants;
@@ -19,20 +22,29 @@ public class RacingController {
     }
 
     public void start() {
-        System.out.println(HEAD_MESSAGE);
-        RacingResult racingResult = new RacingResult(participants);
+        StringBuilder result_sb = new StringBuilder();
         for (int i = 0; i < turnCount; i++) {
-            racingResult = race(racingResult);
-            racingResult.getResultView();
+            race();
+            result_sb.append(printer.getResultOfOneTurn(participants));
         }
-        racingResult.printWinners();
+        printer.printResultMessage(result_sb);
     }
 
-    public RacingResult race(RacingResult result) {
+    public void race() {
         for (int i = 0; i < participants.count(); i++) {
-            result.moveCarIfPositionChanged(i,
-                move.isSatisfiedMoveCondition(new RandomGenerator()));
+            boolean condition = move.isSatisfiedMoveCondition(new RandomGenerator());
+            moveCarIfConditionIsSatisfied(i, condition);
         }
-        return result;
+    }
+
+    public void end() {
+        Stream<String> winnersName = participants.getWinners().map(Car::getName);
+        printer.printFinalWinners(winnersName);
+    }
+
+    public void moveCarIfConditionIsSatisfied(int index, boolean condition) {
+        if (condition) {
+            participants.get(index).go();
+        }
     }
 }
