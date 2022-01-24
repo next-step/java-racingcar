@@ -33,7 +33,7 @@ public class Console {
 
     private void validateUserInputEmpty(String userInput) {
         if (userInput.length() == 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(CalculatorException.INVALID_INPUT);
         }
     }
 
