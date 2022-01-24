@@ -3,6 +3,9 @@ package calculator.util;
 import java.util.List;
 
 public class IsValidInput {
+    private static final int FIRST_OPERATOR = 1;
+    private static final int FIRST_NUMBER = 0;
+    private static final int DISTANCE = 2;
 
     public static void isBlankOrNot(String input) {
         if (input == null || "".equals(input)) {
@@ -11,7 +14,8 @@ public class IsValidInput {
     }
 
     public static void isNotOperator(List<String> formular) {
-        for (int i = 1; i < formular.size(); i += 2) {
+        int inputMaxLength = formular.size();
+        for (int i = FIRST_OPERATOR; i < inputMaxLength; i += DISTANCE) {
             Operation.fromString(formular.get(i))
                 .orElseThrow(() ->
                     new IllegalArgumentException("사칙연산 기호가 아닙니다.")
@@ -20,7 +24,8 @@ public class IsValidInput {
     }
 
     public static void isNotNumber(List<String> formular) {
-        for (int i = 0; i < formular.size(); i += 2) {
+        int inputMaxLength = formular.size();
+        for (int i = FIRST_NUMBER; i < inputMaxLength; i += DISTANCE) {
             try {
                 Integer.parseInt(formular.get(i));
             } catch (NumberFormatException e) {
