@@ -8,7 +8,7 @@ public class Expression {
     private static final String MULTIPLY = "*";
     private static final String DIVIDE = "/";
 
-    private String[] userInput;
+    private final String[] userInput;
 
     public Expression(String[] userInput) {
         this.userInput = userInput;
