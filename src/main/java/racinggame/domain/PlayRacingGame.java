@@ -25,16 +25,4 @@ public class PlayRacingGame {
         }
         return winnerUsers;
     }
-
-    public void printWinner(List<Winner> winners) {
-        List<String> winnerNameList = new ArrayList<>();
-        String winnerNames = "";
-        System.out.print("최종 우승자: ");
-        for (Winner winner : winners) {
-            winnerNameList.add(winner.getWinnerName());
-        }
-        winnerNames = String.join(", ", winnerNameList);
-        System.out.println(winnerNames);
-    }
-
 }
