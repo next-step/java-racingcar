@@ -12,7 +12,6 @@ public enum Operator {
     DIVIDE("/", Operator::divide),
     MULTIPLE("*", Operator::multiple);
 
-
     private String sign;
     private ToIntBiFunction<Integer, Integer> operate;
 

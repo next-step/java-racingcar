@@ -11,7 +11,6 @@ public class CalculatorInit {
     private static int judgeContinue = 0;
 
     private void continueCalculator() {
-
         UserInput input = new UserInput();
         Calculator calculator = Calculator.from(input.getSplitUserInput());
         BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
