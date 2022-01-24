@@ -63,12 +63,23 @@ public class UserInput {
     }
 
     private void validateTurn(String turn) {
-        if (turn.trim().equals("")) {
-            throw new IllegalArgumentException("횟수를 입력해주세요.");
-        } else if (!turn.matches("[+-]?\\d*(\\.\\d+)?")) {
-            throw new NumberFormatException("입력한 값은 숫자가 아닙니다.");
-        } else if (Integer.parseInt(turn) < 1) {
-            throw new IllegalArgumentException("시도할 횟수는 1 이상이어야 합니다.");
-        }
+        checkIfValueIsNotEmpty(turn);
+        checkIfValueIsNotNumber(turn);
+        checkIfValueGreaterThan1(turn);
+    }
+
+    private void checkIfValueIsNotEmpty(String line){
+        if (line.equals(""))
+            throw new IllegalArgumentException("값을 입력해주세요.");
+    }
+
+    private void checkIfValueIsNotNumber(String line){
+        if (!line.matches("[+-]?\\d*(\\.\\d+)?"))
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
+    }
+
+    private void checkIfValueGreaterThan1(String line) {
+        if (Integer.parseInt(line) < 1)
+            throw new IllegalArgumentException("1 이상의 숫자를 입력해주세요");
     }
 }
