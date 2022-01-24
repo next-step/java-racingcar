@@ -47,7 +47,7 @@ public class RacingGame {
     private void showGameResult() {
         StringBuilder sb = new StringBuilder();
         for (Car car : carList) {
-            sb.append(car.checkWinner(maxPosition));
+            sb.append(car.checkSamePosition(maxPosition));
         }
         sb.setLength(sb.length() - 2);
 

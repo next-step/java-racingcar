@@ -10,8 +10,8 @@ public class Car {
         this.position = 0;
     }
 
-    public String checkWinner(int maxPosition) {
-        if(position == maxPosition) {
+    public String checkSamePosition(int position) {
+        if(this.position == position) {
             return name + ", ";
         }
         return "";
