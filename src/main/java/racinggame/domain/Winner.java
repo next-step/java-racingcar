@@ -12,7 +12,7 @@ public class Winner {
         System.out.println("최종 우승자: " + winnerList);
     }
 
-    private static List<String> findWinner(List<Car> cars) {
+    public static List<String> findWinner(List<Car> cars) {
         List<String> winnerUsers = new ArrayList<>();
         int maxLocation = findMaxLocation(cars);
         for (Car car : cars) {

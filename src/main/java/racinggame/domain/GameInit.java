@@ -20,7 +20,7 @@ public class GameInit {
         }
     }
 
-    private boolean lessThanMaxLength (List<String> playerNameList) {
+    public boolean lessThanMaxLength (List<String> playerNameList) {
         for (String playerName : playerNameList) {
             if (playerName.length() > MAX_LENGTH) {
                 System.out.println("[ERROR] 자동차의 이름은 5자를 초과할 수 없습니다.");
