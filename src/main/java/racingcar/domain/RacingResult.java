@@ -9,7 +9,7 @@ public class RacingResult {
     private static String RESULT_LINE = "%s : ";
     private static String DASH = "-";
     private static StringBuilder stringBuilder;
-    private Participants participants;
+    private final Participants participants;
 
     public RacingResult(Participants participants) {
         this.participants = participants;

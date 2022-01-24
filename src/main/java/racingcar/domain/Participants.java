@@ -3,14 +3,13 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import racingcar.domain.car.Car;
 
 public class Participants {
 
     private final String[] carNames;
-    private List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
 
     public Participants(String[] names) {
         this.carNames = names;
@@ -22,10 +21,6 @@ public class Participants {
             Car car = Car.from(name);
             cars.add(car);
         }
-    }
-
-    public List<Car> getParticipants() {
-        return this.cars;
     }
 
     public Car get(int index) {
