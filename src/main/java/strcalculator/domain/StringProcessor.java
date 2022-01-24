@@ -35,10 +35,6 @@ public class StringProcessor {
 
     }
 
-    public List<String> getResult() {
-        return result;
-    }
-
     public String[] parseInputNumber() {
         String[] numbers = userInput.split("[+\\-*/]");
         return numbers;
@@ -49,8 +45,8 @@ public class StringProcessor {
         return operands;
     }
 
-    public void deleteSpaceString(){
-         userInput = userInput.replaceAll(" ", "");
+    public void deleteSpaceString() {
+        userInput = userInput.replaceAll(" ", "");
 
     }
 
