@@ -17,9 +17,14 @@ public class Application {
     }
 
     private static void carRacing() throws IOException {
-        //입력 받아서 차 생성
+        //TODO: Step2에서 리팩토링 예정
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String carNames = br.readLine();
+
+        //차 생성
         CarGenerator carGenerator = new CarGenerator();
-        List<Car> cars = carGenerator.createCars(4);
+        List<Car> cars = carGenerator.createCars(carNames, 4);
 
         //레이스 실행
         Racing racing = new Racing(cars);
