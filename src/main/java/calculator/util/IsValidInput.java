@@ -1,5 +1,6 @@
 package calculator.util;
 
+import calculator.ui.FormulaOutput;
 import java.util.List;
 
 public class IsValidInput {
@@ -9,7 +10,7 @@ public class IsValidInput {
 
     public static void isBlankOrNot(String input) {
         if (input == null || "".equals(input)) {
-            throw new IllegalArgumentException("입력값이 Null이거나 빈 공백 문자입니다!");
+            throw new IllegalArgumentException(FormulaOutput.ERROR_NULL_OR_EMPTY);
         }
     }
 
@@ -18,7 +19,7 @@ public class IsValidInput {
         for (int i = FIRST_OPERATOR; i < inputMaxLength; i += DISTANCE) {
             Operation.fromString(formular.get(i))
                 .orElseThrow(() ->
-                    new IllegalArgumentException("사칙연산 기호가 아닙니다.")
+                    new IllegalArgumentException(FormulaOutput.ERROR_NOT_OPERATOR)
                 );
         }
     }
@@ -29,7 +30,7 @@ public class IsValidInput {
             try {
                 Integer.parseInt(formular.get(i));
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("피연산자가 숫자가 아닙니다.");
+                throw new IllegalArgumentException(FormulaOutput.ERROR_NOT_NUMBER);
             }
         }
     }
