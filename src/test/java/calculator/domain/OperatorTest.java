@@ -28,4 +28,24 @@ class OperatorTest {
         assertThat(Operator.contains(operator)).isFalse();
     }
 
+    @Test
+    void add() {
+        assertThat(Operator.PLUS.operate(1D, 3D)).isEqualTo(4D);
+    }
+
+    @Test
+    void subtract() {
+        assertThat(Operator.MINUS.operate(3D, 10D)).isEqualTo(-7D);
+    }
+
+    @Test
+    void multiply() {
+        assertThat(Operator.MULTIPLY.operate(5D, 3D)).isEqualTo(15D);
+    }
+
+    @Test
+    void divide() {
+        assertThat(Operator.DIVIDE.operate(10D, 2D)).isEqualTo(5D);
+    }
+
 }
