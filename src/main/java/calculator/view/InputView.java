@@ -19,7 +19,10 @@ public class InputView {
 
         validateSplitedInput();
 
-        return splitedInput;
+    public static void validateEmptyLine(String line) {
+        if (line.isEmpty() || line == null) {
+            throw new IllegalArgumentException("[ERROR] 빈 문자열 입니다.");
+        }
     }
 
     public void printResult(int result) {
