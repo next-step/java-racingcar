@@ -14,15 +14,6 @@ public class Cars {
         }
     }
 
-    public List<Car> createCarList(String[] carNames) {
-        //Car들 모임
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-        return cars;
-    }
-
     public List<Car> getCars() {
         return cars;
     }
