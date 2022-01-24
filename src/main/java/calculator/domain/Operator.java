@@ -12,19 +12,19 @@ public enum Operator {
     },
     MINUS("-") {
         @Override
-        public double operate(double number1, double number2) {
+        public double operate(final double number1, final double number2) {
             return number1 - number2;
         }
     },
     MULTIPLY("*") {
         @Override
-        public double operate(double number1, double number2) {
+        public double operate(final double number1, final double number2) {
             return number1 * number2;
         }
     },
     DIVIDE("/") {
         @Override
-        public double operate(double number1, double number2) {
+        public double operate(final double number1, final double number2) {
             return number1 / number2;
         }
     };
