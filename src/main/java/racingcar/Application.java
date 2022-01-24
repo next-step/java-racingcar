@@ -12,6 +12,9 @@ public class Application {
         Participants participants = new Participants(carNames);
 
         RacingController racingController = new RacingController(participants, turn);
+
         racingController.start();
+
+        racingController.end();
     }
 }
