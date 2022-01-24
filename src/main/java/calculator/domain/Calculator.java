@@ -18,11 +18,11 @@ public class Calculator {
         System.out.println(result);
     }
 
-    private void calculateNumbers() {
-        for (int i = Constant.INIT_ARITHMETIC; i < splitedInput.size();
-            i += Constant.NEXT_ARITHMETIC) {
-            char arithmetic = splitedInput.get(i).charAt(0);
-            int number = Integer.parseInt(splitedInput.get(i + 1));
+    public int getResult() {
+        return result;
+    }
+
+    private void calculateNumbers(List<String> splitExpression) {
 
         for (int i = Constant.INIT_OPERATOR_INDEX; i < splitExpression.size();
             i += Constant.NEXT_OPERATOR_DIFFERENCE) {
