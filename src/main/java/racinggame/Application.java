@@ -9,12 +9,13 @@ import racinggame.domain.Utils;
 
 public class Application {
 
+    private static final String QUIT = "q";
+
     public static void main(String[] args) throws IOException {
+        String[] carNames;
+        int trial;
 
         while (true) {
-            String[] carNames;
-            int trial;
-
             try {
                 carNames = Input.getCarNames();
                 trial = Input.getTrial();
@@ -31,7 +32,7 @@ public class Application {
             System.out.println("게임이 종료되었습니다. 중지하려면 q를 눌러주세요. 아무키나 누르면 다시 시작합니다.");
             String command = Utils.getInput();
 
-            if (command.equals("q")) {
+            if (command.equals(QUIT)) {
                 break;
             }
         }
