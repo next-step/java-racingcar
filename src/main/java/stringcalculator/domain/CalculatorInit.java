@@ -26,7 +26,7 @@ public class CalculatorInit {
         BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
         try {
             Calculator calculator = Calculator.of(input.getSplitUserInput());
-            log.write(String.valueOf(calculator.getResult()) + '\n');
+            log.write(String.valueOf(calculator.process()) + '\n');
             log.flush();
         } catch (IllegalArgumentException | IOException exception) {
             log.write(exception.getMessage());
