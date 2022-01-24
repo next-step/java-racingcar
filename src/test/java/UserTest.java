@@ -14,15 +14,14 @@ import stringCalculator.User;
 public class UserTest {
 
     @Test
-    void 공백존재(){
+    void 공백존재() {
 
-        User user= new User();
+        User user = new User();
         String userInput = "1 + 2 *  4 - 1";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
-        //user.getUserInput();
 
         assertThatIllegalArgumentException()
             .isThrownBy(user::getUserInput
@@ -30,17 +29,30 @@ public class UserTest {
 
     }
 
-    void 공백입력(){
-        User user= new User();
+    @Test
+    void 공백입력() {
+        User user = new User();
         String userInput = "";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
-        //user.getUserInput();
 
         assertThatIllegalArgumentException()
             .isThrownBy(user::getUserInput
             );
+    }
+
+    @Test
+    void 입력오류() {
+        User user = new User();
+        String userInput = "1 1 + 2 + 2 - 3";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+
+        assertThatIllegalArgumentException()
+            .isThrownBy((user::getUserInput));
     }
 }
