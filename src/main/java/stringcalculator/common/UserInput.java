@@ -38,9 +38,12 @@ public class UserInput {
         this.userInput = userInput;
     }
 
-    public boolean userInputRun(){
-        userInput();
+    public boolean userInputValidCheck(){
         return parsingUserInput();
+    }
+
+    public void userInputRun(){
+        userInput();
     }
 
     public List<String> getSplitUserInput() {

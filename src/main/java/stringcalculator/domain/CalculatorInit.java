@@ -19,8 +19,10 @@ public class CalculatorInit {
     private void continueCalculator() {
 
         UserInput input = new UserInput();
-        while (input.userInputRun())
-            ;
+
+        while (input.userInputValidCheck())
+            input.userInputRun();
+
         BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
         try {
             Calculator calculator = Calculator.of(input.getSplitUserInput());
