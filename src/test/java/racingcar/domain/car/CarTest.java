@@ -1,11 +1,15 @@
 package racingcar.domain.car;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Participants;
+import racingcar.domain.random.MoveGen;
+import racingcar.domain.random.NoMoveGen;
 
 class CarTest {
     @DisplayName("차량 인스턴스 생성 후 이름은 정확하게 저장된다")
@@ -38,16 +42,10 @@ class CarTest {
     @Test
     public void 위치비교시_우선순위_테스트() {
         //given
-        Car car1 = Car.from("jason");
-        Car car2 = Car.from("pobi");
+        Car car1 = Car.of("jason", 3);
+        Car car2 = Car.of("pobi", 2);
 
         //when
-        car1.go();
-        car1.go();
-        car1.go();
-
-        car2.go();
-        car2.go();
 
         //then
         Assertions.assertThat(car1.compareTo(car2)).isLessThan(0);
@@ -58,20 +56,11 @@ class CarTest {
     public void 내림차순_정렬_테스트() {
         //given
         List<Car> cars = new ArrayList<>();
-        Car car1 = Car.from("jason");
-        Car car2 = Car.from("pobi");
-        Car car3 = Car.from("sung");
+        Car car1 = Car.of("jason", 3);
+        Car car2 = Car.of("pobi", 2);
+        Car car3 = Car.of("sung",1);
 
         //when
-        car1.go();
-        car1.go();
-        car1.go();
-
-        car2.go();
-        car2.go();
-
-        car3.go();
-
         cars.add(car3);
         cars.add(car1);
         cars.add(car2);
@@ -90,13 +79,12 @@ class CarTest {
         //given
         Car car1 = Car.from("jason");
         Car car2 = Car.from("pobi");
+        Move move = Move.get();
+        Participants participants = Participants.getInstance(Arrays.asList(car1, car2));
 
         //when
-        car1.go();
-        car1.go();
-
-        car2.go();
-        car2.go();
+        participants.moveCarIfPositionChanged(0, move.isSatisfiedMoveCondition(new MoveGen()));
+        participants.moveCarIfPositionChanged(1, move.isSatisfiedMoveCondition(new MoveGen()));
 
         //then
         Assertions.assertThat(car1.getPosition()).isEqualTo(car2.getPosition());
@@ -108,14 +96,12 @@ class CarTest {
         //given
         Car car1 = Car.from("jason");
         Car car2 = Car.from("pobi");
+        Move move = Move.get();
+        Participants participants = Participants.getInstance(Arrays.asList(car1, car2));
 
         //when
-        car1.go();
-        car1.go();
-        car1.go();
-
-        car2.go();
-        car2.go();
+        participants.moveCarIfPositionChanged(0, move.isSatisfiedMoveCondition(new MoveGen()));
+        participants.moveCarIfPositionChanged(1, move.isSatisfiedMoveCondition(new NoMoveGen()));
 
         //then
         Assertions.assertThat(car1.getPosition()).isNotEqualTo(car2.getPosition());

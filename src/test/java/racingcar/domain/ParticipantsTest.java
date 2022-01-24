@@ -9,6 +9,30 @@ import racingcar.domain.car.Car;
 
 class ParticipantsTest {
 
+    final String NAME_LENGTH_ERROR_MESSAGE = "자동차 이름이 5자를 초과합니다.";
+
+    @Test
+    public void 이름이_5자_이하인_차량은_Exception발생안함() {
+        //given
+        String name = "jason";
+
+        //when
+
+        //then
+        Assertions.assertThatCode(() -> Participants.validateCarName(name)).doesNotThrowAnyException();
+    }
+
+    @Test
+    public void 이름이_5자를_초과한_차량은_Exception발생() {
+        //given
+        String name = "jason1";
+
+        //when
+
+        //then
+        Assertions.assertThatCode(() -> Participants.validateCarName(name)).hasMessageContaining(NAME_LENGTH_ERROR_MESSAGE);
+    }
+
     @Test
     public void 전진조건_만족시_차량의_위치가_일치하는지() {
         //given

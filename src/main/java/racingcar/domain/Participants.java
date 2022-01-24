@@ -37,7 +37,7 @@ public class Participants {
         return Participants.getInstance(cars);
     }
 
-    private static void validateCarName(String name) {
+    public static void validateCarName(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException(NAME_LENGTH_ERROR_MESSAGE);
         }
