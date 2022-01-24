@@ -1,17 +1,8 @@
 package strcalculator.domain;
 
-import java.util.List;
-
 public class Calculator {
-    private List<String> inputStr;
     private String[] numberList;
     private String[] operandList;
-    public Calculator() {
-    }
-
-    public Calculator(List<String> inputStr) {
-        this.inputStr=inputStr;
-    }
 
     public Calculator(String[] numberList,String[]operandList) {
         this.numberList=numberList;
