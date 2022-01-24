@@ -16,30 +16,6 @@ public class PlayRacingGame {
         return randomNumberList;
     }
 
-//    public void move(List<Car> cars) {
-//        for (Car car : cars) {
-//            int randomNumber = makeRandomNumber();
-//            if (randomNumber >= 4) {
-//                int location = car.getLocation();
-//                location++;
-//                car.updateLocation(location);
-//            }
-//        }
-//
-//    }
-
-//    public void printCarsLocation(List<Car> cars) {
-//        for (Car car : cars) {
-//            System.out.print(car.getCarName() + " : " + "");
-//            for (int i = 0; i < car.getLocation(); i++) {
-//                System.out.print('-');
-//            }
-//            System.out.println();
-//        }
-//        System.out.println();
-//    }
-
-
     public int findMaxLocation(List<Car> cars) {
         int maxLocation = 0;
         for (Car car : cars) {
