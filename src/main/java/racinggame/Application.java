@@ -13,16 +13,17 @@ public class Application {
 
     public static void main(String[] args) {
         GameInit gameInit = new GameInit();
-        String[] carNames = gameInit.inputPlayerName();
-        int playGameNumber = gameInit.inputTryNumber();
         Random random=new Random();
         ResultView resultView = new ResultView();
-        int maxLocation=0;
+        PlayRacingGame playRacingGame = new PlayRacingGame();
 
+        String[] carNames = gameInit.inputPlayerName();
         Cars cars = new Cars(carNames);
+
+        int playGameNumber = gameInit.inputTryNumber();
+        int maxLocation=0;
         List<Car> carList = cars.getCars();
 
-        PlayRacingGame playRacingGame = new PlayRacingGame();
         System.out.println("실행 결과");
         for (; playGameNumber > 0; playGameNumber--) {
             List<Integer> randomNumberList = playRacingGame.makeRandomNumbers(carList.size(),random);
