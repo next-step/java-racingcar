@@ -9,13 +9,13 @@ class CarTest {
     void 자동차_이름이_5글자_이상() {
         assertThatIllegalArgumentException()
             .isThrownBy(() -> {
-                new Car("안녕하세요박찬우입니다.");
+                new Car("안녕하세요박찬우입니다.", 4);
             });
     }
 
     @Test
     void 자동차_3라운드_결과() {
-        Car car = new Car("박찬우");
+        Car car = new Car("박찬우", 4);
         car.move();
         car.move();
         car.move();
