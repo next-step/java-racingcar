@@ -5,8 +5,7 @@ import java.util.List;
 
 public class Calculator {
 
-    private int result;
-    private final List<String> splitedInput;
+    public int result;
 
     public Calculator(List<String> splitExpression) {
         result = Integer.parseInt(splitExpression.get(0));
