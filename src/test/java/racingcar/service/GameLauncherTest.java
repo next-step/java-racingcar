@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import racingcar.Application;
@@ -23,7 +24,8 @@ class GameLauncherTest extends RandomConfigTest {
     }
 
     @Test
-    void 모든차앞으로전진() {
+    @DisplayName("모든 자동차 전진 테스트")
+    void moveAllRacingCarsTest() {
         GameLauncher gameLauncher = new GameLauncher(Arrays.asList("qwe", "asdf", "zx"));
         List<RacingCar> racingCars = gameLauncher.getRacingCarList();
         try (final MockedStatic<RandomUtil> mockRandoms = mockStatic(RandomUtil.class)) {

@@ -1,6 +1,7 @@
 package calculator.util;
 
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,7 +9,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ExpressionUtilTest {
 
     @Test
-    void 연산쪼깨기(){
+    @DisplayName("연산식 기호 분리 테스트")
+    void expressionIntoSymbolsTest() {
         List<String> result = ExpressionUtil.split("6 / 2 + 3");
 
         assertThat(result.size()).isEqualTo(5);

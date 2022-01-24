@@ -7,6 +7,7 @@ import static org.mockito.Mockito.mockStatic;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import racingcar.Application;
@@ -20,7 +21,8 @@ class RacingCarTest extends RandomConfigTest {
     }
 
     @Test
-    void 자동차이름_검사() {
+    @DisplayName("자동차 이름 검사 테스트")
+    void carNameValidationTest() {
         assertThatExceptionOfType(IllegalArgumentException.class)
             .isThrownBy(() -> {
                 new RacingCar("gdgdgdgdgdg");
@@ -28,7 +30,8 @@ class RacingCarTest extends RandomConfigTest {
     }
 
     @Test
-    void 앞으로전진() {
+    @DisplayName("자동차 전진 테스트")
+    void moveTest() {
         try (final MockedStatic<RandomUtil> mockRandoms = mockStatic(RandomUtil.class)) {
             mockRandoms
                 .when(() -> RandomUtil.pickNumberInRange(anyInt(), anyInt()))
