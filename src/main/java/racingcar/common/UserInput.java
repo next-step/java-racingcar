@@ -30,9 +30,11 @@ public class UserInput {
         log = new BufferedWriter(new OutputStreamWriter(System.out));
     }
 
-    public void userInputRun(){
-        while (inputCarName() | parsingCarName());
-        while (inputRacingTry() | parsingRacingTry());
+    public void userInputRun() {
+        while (inputCarName() | parsingCarName())
+            ;
+        while (inputRacingTry() | parsingRacingTry())
+            ;
     }
 
     public void setCarNameInput(String carNameInput) {
