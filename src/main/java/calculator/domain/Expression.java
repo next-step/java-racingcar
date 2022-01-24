@@ -29,22 +29,22 @@ public class Expression {
             int operand = Integer.parseInt(numbers.get(i));
             String operator = operators.get(i);
 
-            if (operator.equals("+")) {
+            if ("+".equals(operator)) {
                 result = Operation.addition(result, operand);
                 continue;
             }
 
-            if (operator.equals("-")) {
+            if ("-".equals(operator)) {
                 result = Operation.subtraction(result, operand);
                 continue;
             }
 
-            if (operator.equals("*")) {
+            if ("*".equals(operator)) {
                 result = Operation.multiplication(result, operand);
                 continue;
             }
 
-            if (operator.equals("/")) {
+            if ("/".equals(operator)) {
                 result = Operation.division(result, operand);
                 continue;
             }
