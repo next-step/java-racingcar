@@ -8,16 +8,19 @@ import java.util.List;
 
 public class Racing {
 
-    private List<Car> cars;
-    private int roundNumber; //경주 횟수
+    private final List<Car> cars;
+    private final int roundNumber; //경주 횟수
 
-    public Racing(List<Car> cars) {
+    public Racing(List<Car> cars) throws IOException {
         this.cars = cars;
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("시도할 횟수는 몇회인가요?");
+        this.roundNumber = Integer.parseInt(br.readLine());
     }
 
-    public void race() throws IOException {
-        setRoundNumber();
-        while (roundNumber-- > 0) {
+    public void race() {
+        for (int i = 0; i < roundNumber; i++) {
             startRound();
             System.out.println();
         }
@@ -29,12 +32,6 @@ public class Racing {
             car.move();
             car.printDistance();
         }
-    }
-
-    private void setRoundNumber() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("시도할 횟수는 몇회인가요?");
-        roundNumber = Integer.parseInt(br.readLine());
     }
 
     private void printWinner() {
