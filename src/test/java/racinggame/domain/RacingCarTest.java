@@ -9,6 +9,20 @@ import org.junit.jupiter.api.Test;
 class RacingCarTest {
 
     @Test
+    void 자동차의_이름_글자수_5자_이하_실패() {
+        String carName = "carcar1";
+
+        assertThrows(IllegalArgumentException.class, () -> Validator.validateNameLength(carName));
+    }
+
+    @Test
+    void 자동차의_이름_글자수_5자_이하_성공() {
+        String carName = "car1";
+
+        assertDoesNotThrow(() -> Validator.validateNameLength(carName));
+    }
+
+    @Test
     void 자동차_객체_생성() {
         RacingCar car = new RacingCar("car");
 

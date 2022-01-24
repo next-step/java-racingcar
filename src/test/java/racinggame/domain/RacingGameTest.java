@@ -12,6 +12,20 @@ import org.junit.jupiter.api.Test;
 class RacingGameTest {
 
     @Test
+    void 시도횟수는_숫자인지_검증하는_로직_실패() {
+        String trial = "a";
+
+        assertThrows(IllegalArgumentException.class, () -> Validator.isNumber(trial));
+    }
+
+    @Test
+    void 시도횟수는_숫자인지_검증하는_로직_성공() {
+        String trial = "5";
+
+        assertDoesNotThrow(() -> Validator.isNumber(trial));
+    }
+
+    @Test
     void RacingCar_리스트를_받아_RacingGame_객체_생성() {
         String[] carNames = {"car1", "car2"};
         List<RacingCar> racingCars = RacingCar.createRacingCarFromCarNames(carNames);
