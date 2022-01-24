@@ -28,16 +28,16 @@ public class PlayRacingGame {
 //
 //    }
 
-    public void printCarsLocation(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.print(car.getCarName() + " : " + "");
-            for (int i = 0; i < car.getLocation(); i++) {
-                System.out.print('-');
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
+//    public void printCarsLocation(List<Car> cars) {
+//        for (Car car : cars) {
+//            System.out.print(car.getCarName() + " : " + "");
+//            for (int i = 0; i < car.getLocation(); i++) {
+//                System.out.print('-');
+//            }
+//            System.out.println();
+//        }
+//        System.out.println();
+//    }
 
 
     public int findMaxLocation(List<Car> cars) {
