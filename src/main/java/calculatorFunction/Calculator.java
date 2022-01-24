@@ -8,11 +8,10 @@ public class Calculator {
         if(str.length()==0)
             throw new IllegalArgumentException("Error: need right expression");
         String[] stringArray = GetInput.parsing(str);
-        Calculator calculator = new Calculator();
-        calculator.calculate(stringArray);
+        Calculator.calculate(stringArray);
         return;
     }
-    public void calculate(String[] stringArray){
+    public static void calculate(String[] stringArray){
 
         for(int i=0; i< (stringArray.length-1)/2; i++){
             if (stringArray[0].equals("ERROR")) {
@@ -29,7 +28,7 @@ public class Calculator {
         return ;
     }
 
-    public void parseOperation(String[] stringArray, int start){
+    public static void parseOperation(String[] stringArray, int start){
         int firstOperand, secondOperand;
 
         if (stringArray[start].equals("ERROR") || stringArray[start + 2].equals("ERROR")) {
@@ -66,19 +65,19 @@ public class Calculator {
         return;
     }
 
-    public int add(int firstOperand, int secondOperand) {
+    public static int add(int firstOperand, int secondOperand) {
 
         return firstOperand + secondOperand;
     }
-    public int sub(int firstOperand, int secondOperand){
+    public static int sub(int firstOperand, int secondOperand){
 
         return firstOperand - secondOperand;
     }
-    public int mul(int firstOperand, int secondOperand) {
+    public static int mul(int firstOperand, int secondOperand) {
 
         return firstOperand * secondOperand;
     }
-    public int div(int firstOperand, int secondOperand) {
+    public static int div(int firstOperand, int secondOperand) {
 
         return firstOperand / secondOperand;
     }
