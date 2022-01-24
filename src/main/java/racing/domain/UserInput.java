@@ -8,8 +8,8 @@ import java.util.StringTokenizer;
 
 public class UserInput {
 
-    private static final int MIN_LENGTH = 1;
-    private static final int MAX_LENGTH = 5;
+    private static final int CAR_NAME_MIN_LENGTH = 1;
+    private static final int CAR_NAME_MAX_LENGTH = 5;
     private static final Scanner SCANNER = new Scanner(System.in);
 
     private UserInput() {
@@ -43,9 +43,9 @@ public class UserInput {
     }
 
     public static void checkNameLength(String name) {
-        if (name.length() < MIN_LENGTH || name.length() > MAX_LENGTH) {
+        if (name.length() < CAR_NAME_MIN_LENGTH || name.length() > CAR_NAME_MAX_LENGTH) {
             throw new IllegalArgumentException(
-                "[ERROR] 이름의 길이는 " + MIN_LENGTH + " ~ " + MAX_LENGTH + " 글자 까지만 가능합니다.");
+                "[ERROR] 이름의 길이는 " + CAR_NAME_MIN_LENGTH + " ~ " + CAR_NAME_MAX_LENGTH + " 글자 까지만 가능합니다.");
         }
     }
 
