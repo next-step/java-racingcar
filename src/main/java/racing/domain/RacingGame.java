@@ -1,6 +1,7 @@
 package racing.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingGame {
@@ -42,13 +43,15 @@ public class RacingGame {
             setMaxPosition(car.getPosition());
         }
 
-        StringBuilder sb = new StringBuilder();
+        List<String> winners = new ArrayList<>();
         for (Car car : cars) {
-            sb.append(car.checkSamePosition(maxPosition));
+            winners.add(car.checkSamePosition(maxPosition));
         }
-        sb.setLength(sb.length() - 2);
+        winners.removeAll(Arrays.asList("", null));
 
-        System.out.println("최종 우승자 : " + sb);
+        String resultOfWinners = String.join(", ", winners);
+
+        System.out.println("최종 우승자 : " + resultOfWinners);
     }
 
     private void setMaxPosition(int position) {

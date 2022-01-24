@@ -19,7 +19,7 @@ public class Car {
 
     public String checkSamePosition(int position) {
         if (this.position == position) {
-            return name + ", ";
+            return name;
         }
         return "";
     }
