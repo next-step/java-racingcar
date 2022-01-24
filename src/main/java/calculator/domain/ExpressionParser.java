@@ -30,11 +30,6 @@ public class ExpressionParser {
         return userInput.split("\\s+");
     }
 
-    private void rollback() {
-        operators.getOperators().clear();
-        terms.getTerms().clear();
-    }
-
     private void parse(String[] splitUserInput) {
         for (int pos = 0; pos < splitUserInput.length; pos++) {
             String target = splitUserInput[pos];
@@ -56,9 +51,14 @@ public class ExpressionParser {
         terms.addTerm(Double.parseDouble(target));
     }
 
+    private void rollback() {
+        operators.getOperators().clear();
+        terms.getTerms().clear();
+    }
+
     private void addOperator(String target) {
         Validator.validateIsOperator(target);
-        operators.addOperator(target);
+        operators.addOperator(Operator.get(target));
     }
 
     public Operators getOperators() {

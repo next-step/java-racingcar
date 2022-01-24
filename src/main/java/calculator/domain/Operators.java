@@ -5,16 +5,16 @@ import java.util.List;
 
 public class Operators {
 
-    private final List<String> operators = new ArrayList<>();
+    private final List<Operator> operators = new ArrayList<>();
     private int pointer = 0;
 
     public Operators() {}
 
-    protected List<String> getOperators() {
+    protected List<Operator> getOperators() {
         return operators;
     }
 
-    public String nextOperator() {
+    public Operator nextOperator() {
         return operators.get(pointer++);
     }
 
@@ -22,11 +22,11 @@ public class Operators {
         return pointer < operators.size();
     }
 
-    public void addOperator(String operator) {
+    public void addOperator(Operator operator) {
         operators.add(operator);
     }
 
-    protected void addOperatorAll(List<String> operators) {
+    protected void addOperatorAll(List<Operator> operators) {
         this.operators.addAll(operators);
     }
 }

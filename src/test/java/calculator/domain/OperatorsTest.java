@@ -16,8 +16,8 @@ class OperatorsTest {
     void before() {
         operators = new Operators();
 
-        operators.addOperator("+");
-        operators.addOperator("-");
+        operators.addOperator(Operator.PLUS);
+        operators.addOperator(Operator.MINUS);
     }
 
     @Test
@@ -32,8 +32,8 @@ class OperatorsTest {
 
     @Test
     void nextOperator() {
-        assertThat(operators.nextOperator()).isEqualTo("+");
-        assertThat(operators.nextOperator()).isEqualTo("-");
+        assertThat(operators.nextOperator()).isEqualTo(Operator.PLUS);
+        assertThat(operators.nextOperator()).isEqualTo(Operator.MINUS);
     }
 
     @Test

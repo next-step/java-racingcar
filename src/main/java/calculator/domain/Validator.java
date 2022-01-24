@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 
 public class Validator {
 
-    protected static final String OPERATORS = "+-*/";
+    private static final int INDIVISIBLE_NUMBER = 0;
 
     private Validator() {}
 
@@ -28,8 +28,14 @@ public class Validator {
     }
 
     public static void validateIsOperator(String target) {
-        if (!OPERATORS.contains(target)) {
+        if (!Operator.contains(target)) {
             throw new InputMismatchException("[ERROR] 해당 자리에는 연산자가 위치해야 합니다.(v op v op v ..)");
+        }
+    }
+
+    public static void validateIndivisibleNumber(Double num2) {
+        if (num2 == INDIVISIBLE_NUMBER) {
+            throw new ArithmeticException("[ERROR] 0으로 나눌 수 없습니다.");
         }
     }
 }
