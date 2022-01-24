@@ -1,7 +1,11 @@
 package calculator.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -48,4 +52,18 @@ class OperatorTest {
         assertThat(Operator.DIVIDE.operate(10D, 2D)).isEqualTo(5D);
     }
 
+    @Test
+    void divide_0으로_나눔() {
+
+        // given
+        ArrayList<Double> values = new ArrayList<>(Arrays.asList(1D, 0D));
+        Terms terms = new Terms();
+        terms.addTermAll(values);
+
+        List<Operator> ops = new ArrayList<>(Arrays.asList(Operator.DIVIDE));
+        Operators operators = new Operators();
+        operators.addOperatorAll(ops);
+
+        assertThrows(ArithmeticException.class, () -> Calculator.evaluate(terms, operators));
+    }
 }

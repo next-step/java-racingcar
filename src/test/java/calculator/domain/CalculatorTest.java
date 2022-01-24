@@ -1,7 +1,6 @@
 package calculator.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,20 +28,5 @@ class CalculatorTest {
 
         // then
         assertThat(result).isEqualTo(29L);
-    }
-
-    @Test
-    void divide_0으로_나눔() {
-
-        // given
-        ArrayList<Double> values = new ArrayList<>(Arrays.asList(1D, 0D));
-        Terms terms = new Terms();
-        terms.addTermAll(values);
-
-        List<Operator> ops = new ArrayList<>(Arrays.asList(Operator.DIVIDE));
-        Operators operators = new Operators();
-        operators.addOperatorAll(ops);
-
-        assertThrows(ArithmeticException.class, () -> Calculator.evaluate(terms, operators));
     }
 }
