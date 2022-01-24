@@ -11,11 +11,10 @@ class ValidatorTest {
 
     @ValueSource(strings = {"", " ", "    "})
     @ParameterizedTest
-    @Test
-    void checkIsBlank_입력으로_공백이_들어옴() {
+    void checkIsBlank_입력으로_공백이_들어옴(String blank) {
 
         // then
-        assertThrows(IllegalArgumentException.class, () -> Validator.checkIsBlack(""));
+        assertThrows(IllegalArgumentException.class, () -> Validator.checkIsBlack(blank));
     }
 
     @Test
