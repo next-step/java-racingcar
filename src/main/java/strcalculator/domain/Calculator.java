@@ -3,6 +3,8 @@ package strcalculator.domain;
 public class Calculator {
     private String[] numberList;
     private String[] operandList;
+    private int leftNumber=0;
+    private int rightNumber=0;
 
     public Calculator(String[] numberList,String[]operandList) {
         this.numberList=numberList;
@@ -10,42 +12,43 @@ public class Calculator {
     }
 
     public void calculate() {
-        int total = Integer.valueOf(numberList[0]);
+        leftNumber= Integer.valueOf(numberList[0]);
         for (int i = 1; i < operandList.length; i++) {
+            rightNumber=Integer.valueOf(numberList[i]);
             String operator = operandList[i];
             if (operator.equals("+")) {
-                total = add(total, Integer.valueOf(numberList[i]));
+                leftNumber = add();
                 continue;
             }
             if (operator.equals("-")) {
-                total = subtract(total, Integer.valueOf(numberList[i]));
+                leftNumber = subtract();
                 continue;
             }
             if (operator.equals("*")) {
-                total = multiply(total, Integer.valueOf(numberList[i]));
+                leftNumber = multiply();
                 continue;
             }
             if (operator.equals("/")) {
-                total = divide(total, Integer.valueOf(numberList[i+1]));
+                leftNumber = divide();
                 continue;
             }
         }
-        System.out.println(total);
+        System.out.println(leftNumber);
     }
 
-    public int add(int number1, int number2) {
-        return number1 + number2;
+    private int add() {
+        return leftNumber + rightNumber;
     }
 
-    public int subtract(int number1, int number2) {
-        return number1 - number2;
+    private int subtract() {
+        return leftNumber - rightNumber;
     }
 
-    public int multiply(int number1, int number2) {
-        return number1 * number2;
+    private int multiply() {
+        return leftNumber * rightNumber;
     }
 
-    public int divide(int number1, int number2) {
-        return number1 / number2;
+    private int divide() {
+        return leftNumber / rightNumber;
     }
 }
