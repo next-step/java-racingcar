@@ -31,10 +31,15 @@ public class UserInput {
     }
 
     public void userInputRun() {
-        while (inputCarName() | parsingCarName())
-            ;
-        while (inputRacingTry() | parsingRacingTry())
-            ;
+
+        do{
+            inputCarName();
+        }while(parsingCarName());
+
+        do{
+            inputRacingTry();
+        }while(parsingRacingTry());
+
     }
 
     public void setCarNameInput(String carNameInput) {
