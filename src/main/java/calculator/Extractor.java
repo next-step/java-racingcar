@@ -16,17 +16,17 @@ public class Extractor {
         return numbers;
     }
 
-    public void addOperator(Operator operators, String[] values, int index) {
+    public void addSymbol(Symbol symbols, String[] values, int index) {
         if (index % 2 == 1) {
-            operators.add(values[index]);
+            symbols.add(values[index]);
         }
     }
 
-    public Operator extractOperators(String[] values) {
-        Operator operator = new Operator();
+    public Symbol extractSymbols(String[] values) {
+        Symbol symbols = new Symbol();
         for (int i = 0; i < values.length; i++) {
-            addOperator(operator, values, i);
+            addSymbol(symbols, values, i);
         }
-        return operator;
+        return symbols;
     }
 }

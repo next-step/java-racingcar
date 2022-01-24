@@ -10,12 +10,12 @@ public class Application {
         UserInput userInput = new UserInput();
 
         Extractor extractor = new Extractor();
-        Number number = extractor.extractNumbers(userInput.splittedInput);
-        Operator operator = extractor.extractOperators(userInput.splittedInput);
+        Number numbers = extractor.extractNumbers(userInput.splittedInput);
+        Symbol symbols = extractor.extractSymbols(userInput.splittedInput);
 
         Calculator calculator = new Calculator();
 
-        double output = calculator.doMultipleOperation(number, operator);
+        double output = calculator.doMultipleOperation(numbers, symbols);
         printer.printOutputMessage(output);
     }
 }

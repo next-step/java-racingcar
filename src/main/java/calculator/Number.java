@@ -18,7 +18,15 @@ public class Number {
         numbers.add(Integer.valueOf(num));
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public int remove(int index) {
+        return numbers.remove(index);
+    }
+
+    public double get(int index) {
+        return numbers.get(index);
+    }
+
+    public int size() {
+        return numbers.size();
     }
 }
