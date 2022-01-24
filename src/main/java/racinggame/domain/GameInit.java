@@ -1,5 +1,6 @@
 package racinggame.domain;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class GameInit {
@@ -18,15 +19,13 @@ public class GameInit {
                 break;
             }
         }
-
         return playerNameList;
     }
 
     public int inputTryNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         Scanner scanner = new Scanner(System.in);
-        int tryNumber = scanner.nextInt();
-        return tryNumber;
+        return scanner.nextInt();
     }
 
     public boolean validationStringLength(String[] playerNameList) {
