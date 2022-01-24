@@ -1,7 +1,7 @@
 package calculator.ui;
 
 import calculator.util.FormulaUtil;
-import calculator.util.Operation;
+import calculator.util.IsValidInput;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,38 +15,14 @@ public class FormulaInput {
         System.out.println("계산할 연산식을 입력해주세요.");
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
             String input = bufferedReader.readLine();
-            isBlankOrNot(input);
+            IsValidInput.isBlankOrNot(input);
             formular = FormulaUtil.split(input);
-            isNotOperator(formular);
-            isNotNumber(formular);
+            IsValidInput.isNotOperator(formular);
+            IsValidInput.isNotNumber(formular);
         } catch (IllegalArgumentException | IOException e) {
             System.out.println("[ERROR] " + e.getMessage());
         }
         return formular;
     }
 
-    private static void isBlankOrNot(String input) {
-        if (input == null || "".equals(input)) {
-            throw new IllegalArgumentException("입력값이 Null이거나 빈 공백 문자입니다!");
-        }
-    }
-
-    private static void isNotOperator(List<String> formular){
-        for (int i = 1; i < formular.size(); i += 2) {
-            Operation.fromString(formular.get(i))
-                .orElseThrow(() ->
-                    new IllegalArgumentException("사칙연산 기호가 아닙니다.")
-                );
-        }
-    }
-
-    private static void isNotNumber(List<String> formular) {
-        for (int i = 0; i < formular.size(); i += 2) {
-            try{
-                Integer.parseInt(formular.get(i));
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("피연산자가 숫자가 아닙니다.");
-            }
-        }
-    }
 }
