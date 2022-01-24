@@ -19,6 +19,11 @@ public class RacingCar {
         this.carName = carName;
     }
 
+    public RacingCar(String carName, int position) {
+        this.carName = carName;
+        this.carPosition = position;
+    }
+
     public static List<RacingCar> createRacingCarFromCarNames(String[] carNames) {
         return Arrays.stream(carNames).map(RacingCar::new)
                 .collect(Collectors.toList());
