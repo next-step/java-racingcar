@@ -1,23 +1,23 @@
-package strcalculator;
+package calculator;
 
+import calculator.domain.Parser;
 import java.util.List;
-import strcalculator.domain.Calculator;
-import strcalculator.domain.StringProcessor;
+import calculator.domain.Calculator;
+import calculator.domain.Input;
+
 
 public class Application {
     public static void main(String[] args) {
-        StringProcessor play = new StringProcessor();
+        System.out.println("연산 가능한 수식을 입력해주세요. (숫자, 연산자, 공백 문자만 허용됩니다.)");
         while (true) {
-            play.getInput();
-            play.checkInput();
             try {
-                play.parseInput();
-                List<String> result = play.getResult();
+                String userInput = Input.getInput();
+                List<String> parsedInput = Parser.parseInput(userInput);
                 Calculator calculator = new Calculator();
-                calculator.calculate(result);
+                calculator.calculate(parsedInput);
                 break;
             } catch(IllegalArgumentException | ArithmeticException e) {
-                System.out.println("다시 입력해주세요.");
+                System.out.println("[ERROR] 연산 가능한 수식을 입력해주세요. (숫자, 연산자, 공백 문자만 허용됩니다.)");
             }
         }
     }
