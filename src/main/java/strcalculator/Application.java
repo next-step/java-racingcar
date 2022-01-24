@@ -11,6 +11,8 @@ public class Application {
             play.getInput();
             play.checkInput();
             try {
+
+                play.deleteSpaceString();
                 String[] numbers = play.parseInputNumber();
                 String[] operands = play.parseInputOperands();
                 Calculator calculator = new Calculator(numbers, operands);

@@ -40,14 +40,17 @@ public class StringProcessor {
     }
 
     public String[] parseInputNumber() {
-        String input = userInput.replaceAll(" ", "");
-        String[] numbers = input.split("[+\\-*/]");
+        String[] numbers = userInput.split("[+\\-*/]");
         return numbers;
     }
 
     public String[] parseInputOperands() {
-        String input = userInput.replaceAll(" ", "");
-        String[] operands = input.split("[0-9]+");
+        String[] operands = userInput.split("[0-9]+");
         return operands;
+    }
+
+    public void deleteSpaceString(){
+         userInput = userInput.replaceAll(" ", "");
+
     }
 }
