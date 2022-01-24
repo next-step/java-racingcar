@@ -11,7 +11,7 @@ public class Application {
 
         Participants participants = new Participants(carNames);
 
-        RacingController racingController = RacingController.getInstance(participants, turn);
+        RacingController racingController = new RacingController(participants, turn);
         racingController.start();
     }
 }

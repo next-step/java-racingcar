@@ -8,12 +8,8 @@ public class Move {
     private static final int BOUND = 4;
     private RandomFactory randomFactory;
 
-    private Move() {
+    public Move() {
         randomFactory = new RandomFactory();
-    }
-
-    public static Move get() {
-        return new Move();
     }
 
     public boolean isSatisfiedMoveCondition(RandomStrategy randomStrategy) {

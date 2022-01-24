@@ -11,7 +11,7 @@ class MoveTest {
     @Test
     void trueIfStatisfiedMoveCondition() {
         //given
-        Move move = Move.get();
+        Move move = new Move();
 
         //when
         boolean goAheadIfMoveCondition = move.isSatisfiedMoveCondition(new MoveGen());
@@ -24,7 +24,7 @@ class MoveTest {
     @Test
     void falseIfStatisfiedMoveCondition() {
         //given
-        Move move = Move.get();
+        Move move = new Move();
 
         //when
         boolean goAheadIfMoveCondition = move.isSatisfiedMoveCondition(new NoMoveGen());
