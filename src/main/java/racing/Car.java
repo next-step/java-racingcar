@@ -29,6 +29,7 @@ public class Car {
         return name;
     }
 
+    //TODO: Step2에서 리팩토링
     public void printDistance() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < distance; i++) {

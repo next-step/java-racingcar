@@ -14,6 +14,7 @@ public class Racing {
     public Racing(List<Car> cars) throws IOException {
         this.cars = cars;
 
+        //TODO: Step2에서 리팩토링
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("시도할 횟수는 몇회인가요?");
         this.roundNumber = Integer.parseInt(br.readLine());
@@ -29,7 +30,7 @@ public class Racing {
     private void startRound() {
         for (Car car : cars) {
             car.move();
-            car.printDistance();
+            car.printDistance(); //TODO: Step2에서 리팩토링
         }
     }
 }
