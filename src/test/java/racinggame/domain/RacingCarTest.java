@@ -3,8 +3,6 @@ package racinggame.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -28,18 +26,6 @@ class RacingCarTest {
     }
 
     @Test
-    void 자동차_이름과_위치출력() {
-        RacingCar car = new RacingCar("car");
-
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-
-        car.printCurrPosition();
-
-        assertEquals("car  : \n", out.toString());
-    }
-
-    @Test
     void canForward_전진실패() {
         int randomValue = 1;
         RacingCar racingCar = new RacingCar("car1");
@@ -53,18 +39,6 @@ class RacingCarTest {
         RacingCar racingCar = new RacingCar("car1");
 
         assertTrue(racingCar.canForward(randomValue));
-    }
-
-    @Test
-    void 자동차_이름과_위치출력_한칸_전진() {
-        RacingCar car = new RacingCar("car");
-
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-
-        car.forward();
-        car.printCurrPosition();
-        assertEquals("car  : -\n", out.toString());
     }
 
     @Test
