@@ -15,40 +15,47 @@ import racingcar.common.info.RacingGameInfo;
 public class Judgement {
 
     private static final String DELIMITER = " : ";
+    private static final String DASH_SIGH = "-";
+    private static final String NEW_LINE = "\n";
+    private static final int NUMBER_ZERO = 0;
     private final BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
 
     public void judge(final List<Car> cars) {
         int max = maxDriveLength(cars);
 
-        try{
+        try {
             log.write(WINNER_IS);
             log.flush();
-        }catch(IOException exception){
+        } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
 
-        for(Car car : cars){
+        for (Car car : cars) {
             printWinner(max, car);
         }
     }
 
     public void carsStatement(final List<Car> cars) {
         for (Car car : cars) {
-            try{
-                log.write(car.getName() + DELIMITER + carPosition(car)+'\n');
-                log.flush();
-            }catch(IOException exception) {
-                exception.getMessage();
-            }
+            carStatementMessage(car);
         }
     }
 
-    private void printWinner(final int max, final Car car){
+    public void carStatementMessage(Car car) {
+        try {
+            log.write(car.getName() + DELIMITER + carPosition(car) + NEW_LINE);
+            log.flush();
+        } catch (IOException exception) {
+            exception.getMessage();
+        }
+    }
+
+    private void printWinner(final int max, final Car car) {
 
         try {
             log.write(car.toString(max));
             log.flush();
-        }catch(IOException exception){
+        } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
     }
@@ -62,8 +69,8 @@ public class Judgement {
 
     private String carPosition(final Car car) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < car.getStep(); i++) {
-            stringBuilder.append("-");
+        for (int i = NUMBER_ZERO; i < car.getStep(); i++) {
+            stringBuilder.append(DASH_SIGH);
         }
 
         return stringBuilder.toString();

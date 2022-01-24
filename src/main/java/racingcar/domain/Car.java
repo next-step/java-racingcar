@@ -3,11 +3,12 @@ package racingcar.domain;
 public class Car {
 
     private final String name;
+    private final static int NUMBER_ZERO = 0;
     private int step;
 
     private Car(final String name) {
         this.name = name;
-        this.step = 0;
+        this.step = NUMBER_ZERO;
     }
 
     public static Car of(final String name) {
@@ -26,8 +27,10 @@ public class Car {
         return name;
     }
 
-    public StringBuilder maxCheck(int max, StringBuilder playRacingResult){
-        if(max == getStep()) return playRacingResult.append(getName()+" ");
+    public StringBuilder maxCheck(int max, StringBuilder playRacingResult) {
+        if (max == getStep()) {
+            return playRacingResult.append(getName() + " ");
+        }
         return playRacingResult;
     }
 
