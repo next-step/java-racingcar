@@ -5,7 +5,13 @@ import racingcar.domain.Participants;
 public class Application {
 
     public static void main(String[] args) {
-        RacingController racingController = RacingController.getInstance(UserInput.createCars(), UserInput.setTurn());
+        UserInput userInput = new UserInput();
+        String[] carNames = userInput.getCarNames();
+        int turn = userInput.getTurn();
+
+        Participants participants = new Participants(carNames);
+
+        RacingController racingController = new RacingController(participants, turn);
         racingController.start();
     }
 }
