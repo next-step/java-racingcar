@@ -28,10 +28,6 @@ public class Expression {
             int operand = Integer.parseInt(numbers.get(i));
             String operator = operators.get(i);
 
-            if (operator.equals("/") && operand == 0) {
-                throw new ArithmeticException();
-            }
-
             if (operator.equals("+")) {
                 result = Operation.addition(result, operand);
                 continue;

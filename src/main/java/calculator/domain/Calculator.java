@@ -15,21 +15,12 @@ public class Calculator {
 
         try {
             expression = new Expression(input);
-        } catch (IllegalArgumentException e) {
+            expression.calculate();
+            expression.printResult();
+        } catch (IllegalArgumentException | ArithmeticException e) {
             System.out.println(e.getMessage());
             startCalculate();
         }
-    }
-
-    private boolean checkDivideZero(Expression expression) {
-        try {
-            expression.calculate();
-            expression.printResult();
-        } catch (ArithmeticException e) {
-            System.out.println("0으로 나눌 수 없습니다.");
-            return true;
-        }
-        return false;
     }
 
     private String getUserInput() {

@@ -15,6 +15,8 @@ public class Operation {
     }
 
     public static double division(double result, int operand) {
+        if(operand == 0)
+            throw new ArithmeticException("[ERROR] 0으로 나눌 수 없습니다.");
         return result / (double) operand;
     }
 
