@@ -16,12 +16,11 @@ public class UserInput {
     public static List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String input = SCANNER.nextLine();
-        List<String> nameList;
 
         try {
-            nameList = splitStringByComma(input);
-            checkCarCount(nameList);
-            return nameList;
+            List<String> names = splitStringByComma(input);
+            checkCarCount(names);
+            return names;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return getCarNames();
@@ -29,18 +28,18 @@ public class UserInput {
     }
 
     public static List<String> splitStringByComma(String input) {
-        List<String> nameList = new ArrayList<>();
+        List<String> names = new ArrayList<>();
         StringTokenizer st = new StringTokenizer(input, ",");
 
         while (st.hasMoreTokens()) {
             String name = st.nextToken().trim();
-            nameList.add(name);
+            names.add(name);
         }
-        return nameList;
+        return names;
     }
 
-    public static void checkCarCount(List<String> nameList) {
-        if (nameList.size() < 1) {
+    public static void checkCarCount(List<String> names) {
+        if (names.size() < 1) {
             throw new IllegalArgumentException("[ERROR] 최소 1대 이상의 자동차가 필요합니다.");
         }
     }
