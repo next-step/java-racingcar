@@ -30,7 +30,7 @@ public class GameInit {
         return tryNumber;
     }
 
-     boolean validationStringLength(String[] playerNameList) {
+     private boolean validationStringLength(String[] playerNameList) {
         boolean isValidate = true;
         for (String playerName : playerNameList) {
             if (playerName.length() > MAX_CAR_NAME_LENGTH) {
