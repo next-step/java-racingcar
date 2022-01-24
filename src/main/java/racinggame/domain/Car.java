@@ -2,23 +2,24 @@ package racinggame.domain;
 
 public class Car {
 
-    private String carName;
-    int location = 0;
+    private final String name;
+    private int location;
 
-    public Car(String carName) {
-        this.carName = carName;
+    public Car(final String name) {
+        this.name = name;
+        this.location = 0;
+    }
+
+    public static Car of(final String name) {
+        return new Car(name);
     }
 
     public int getLocation() {
         return location;
     }
 
-    public void setLocation(int location) {
-        this.location = location;
-    }
-
-    public String getCarName() {
-        return carName;
+    public String getName() {
+        return name;
     }
 
 }
