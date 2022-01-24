@@ -40,10 +40,6 @@ public class Console {
             throw new IllegalArgumentException(CalculatorException.INVALID_NUMBER);
         }
 
-        if (!validateArithmetic()) {
-            throw new IllegalArgumentException(CalculatorException.INVALID_ARITHMATIC);
-        }
-
         if (!validateDivideZero()) {
             throw new IllegalArgumentException(CalculatorException.INVALID_DIVIDENUMBER);
         }
@@ -69,18 +65,6 @@ public class Console {
         if (userInput.length() == 0) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private Boolean validateArithmetic() {
-        for (int i = 0; i < splitedInput.size(); ++i) {
-            boolean isArithmetic = splitedInput.get(i).matches("[-*/+]");
-
-            if (i % 2 == 1 && !isArithmetic) {
-                return false;
-            }
-        }
-
-        return true;
     }
 
     private Boolean validateDivideZero() {
