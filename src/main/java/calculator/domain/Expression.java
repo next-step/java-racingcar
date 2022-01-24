@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Expression {
 
-    private List<String> numbers = new ArrayList<>();
-    private List<String> operators = new ArrayList<>();
+    private final List<String> numbers;
+    private final List<String> operators;
 
     private double result = 0;
 
