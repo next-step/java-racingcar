@@ -32,7 +32,7 @@ public class Application {
         }
         maxLocation=cars.findMaxLocation();
         List<Winner> winnerList = playRacingGame.findWinner(carList,maxLocation);
-        playRacingGame.printWinner(winnerList);
+        resultView.printWinner(winnerList);
     }
 
 
