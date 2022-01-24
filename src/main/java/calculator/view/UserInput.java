@@ -17,18 +17,22 @@ public class UserInput {
 
     public String getLine() {
         try {
-            return validateUserInput(scanner.nextLine());
+            return validateUserInput(userConsole());
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             return getLine();
         }
     }
 
-    private String validateUserInput(String userInput) {
+    private String userConsole() {
+        return scanner.nextLine();
+    }
+
+    public static String validateUserInput(String userInput) {
         return isEmptyString(userInput);
     }
 
-    private String isEmptyString(String userInput) {
+    private static String isEmptyString(String userInput) {
         if (userInput.trim().isEmpty()) {
             throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
