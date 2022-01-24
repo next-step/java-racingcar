@@ -15,12 +15,12 @@ public class RacingGame {
 
     public void startGame() {
         try {
-            List<String> nameList = UserInput.getCarNames();
+            final List<String> nameList = UserInput.getCarNames();
             for (String name : nameList) {
                 cars.add(new Car(name));
             }
 
-            int tryNumber = UserInput.getTryNumber();
+            final int tryNumber = UserInput.getTryNumber();
             startRacing(tryNumber);
             showGameResult();
 
@@ -30,7 +30,7 @@ public class RacingGame {
         }
     }
 
-    private void startRacing(int tryNumber) {
+    private void startRacing(final int tryNumber) {
         System.out.println("\n실행 결과");
         for (int i = 0; i < tryNumber; i++) {
             driveCars();
@@ -49,18 +49,17 @@ public class RacingGame {
             setMaxPosition(car.getPosition());
         }
 
-        List<String> winners = new ArrayList<>();
+        final List<String> winners = new ArrayList<>();
         for (Car car : cars) {
             winners.add(car.checkSamePosition(maxPosition));
         }
         winners.removeAll(Arrays.asList("", null));
 
-        String resultOfWinners = String.join(", ", winners);
-
+        final String resultOfWinners = String.join(", ", winners);
         System.out.println("최종 우승자 : " + resultOfWinners);
     }
 
-    private void setMaxPosition(int position) {
+    private void setMaxPosition(final int position) {
         if (position > maxPosition) {
             maxPosition = position;
         }
