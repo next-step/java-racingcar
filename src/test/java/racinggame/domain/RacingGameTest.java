@@ -51,7 +51,6 @@ class RacingGameTest {
         assertTrue(result);
     }
 
-    @Test
     @RepeatedTest(value = 1000)
     void getRandomValue_랜덤값을_생성()
             throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
