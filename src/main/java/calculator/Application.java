@@ -7,9 +7,10 @@ import calculator.view.UserInput;
 public class Application {
 
     public static void main(String[] args)  {
-        PivotContainer pivotContainer = PivotContainer.get(UserInput.console().getLine());
+        PivotContainer pivotContainer = PivotContainer.from(UserInput.console().getLine());
+        Calculator calculator = new Calculator();
 
-        double result = Calculator.get().doMultipleOperation(pivotContainer.getNumbers(), pivotContainer.getOperators());
+        double result = calculator.doMultipleOperation(pivotContainer.getNumbers(), pivotContainer.getOperators());
         System.out.println("계산결과: "+ result);
     }
 }

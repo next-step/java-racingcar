@@ -1,35 +1,45 @@
 package calculator.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Optional;
 
-public class Operator {
-
-    public static final List<String> SYMBOLS = new ArrayList<>(Arrays.asList("+", "-", "*", "/"));
-    private static final String NOT_OPERATIONS_MESSAGE = "연산기호가 아닙니다.";
-    private List<String> operators;
-
-    private Operator() {
-        operators = new ArrayList<>();
-    }
-
-    public static Operator get() {
-        return new Operator();
-    }
-
-    public void addOperator(String operator) {
-        if (!SYMBOLS.contains(operator)) {
-            throw new IllegalArgumentException(NOT_OPERATIONS_MESSAGE);
+public enum Operator {
+    PLUS("+") {
+        @Override
+        public double operate(final double number1, final double number2) {
+            return number1 + number2;
         }
-        operators.add(operator);
+    },
+    MINUS("-") {
+        @Override
+        public double operate(final double number1, final double number2) {
+            return number1 - number2;
+        }
+    },
+    MULTIPLY("*") {
+        @Override
+        public double operate(final double number1, final double number2) {
+            return number1 * number2;
+        }
+    },
+    DIVIDE("/") {
+        @Override
+        public double operate(final double number1, final double number2) {
+            return number1 / number2;
+        }
+    };
+
+    private final String symbol;
+
+    Operator(final String symbol) {
+        this.symbol = symbol;
     }
 
-    public List<String> getOperators() {
-        return this.operators;
-    }
+    public abstract double operate(final double number1, final double number2);
 
-    public void clear() {
-        this.operators.clear();
+    public static Optional<Operator> fromString(String symbol) {
+        return Arrays.stream(Operator.values())
+            .filter(v -> v.symbol.equalsIgnoreCase(symbol))
+            .findFirst();
     }
 }

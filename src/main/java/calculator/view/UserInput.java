@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class UserInput {
 
     private static final String INPUT_ERROR_MESSAGE = "잘못된 입력입니다.";
-    private Scanner scanner;
+    private final Scanner scanner;
 
     private UserInput() {
         scanner = new Scanner(System.in);
@@ -17,22 +17,22 @@ public class UserInput {
 
     public String getLine() {
         try {
-            return validateUserInput(textConsole());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+            return validateUserInput(userConsole());
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
             return getLine();
         }
     }
 
-    public String textConsole() {
+    private String userConsole() {
         return scanner.nextLine();
     }
 
-    public String validateUserInput(String userInput) {
+    public static String validateUserInput(String userInput) {
         return isEmptyString(userInput);
     }
 
-    public String isEmptyString(String userInput) {
+    private static String isEmptyString(String userInput) {
         if (userInput.trim().isEmpty()) {
             throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }

@@ -3,33 +3,29 @@ package calculator.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Number {
+public class Numbers {
 
     private static final String NOT_NUMBER_MESSAGE = "숫자가 아닙니다.";
     private List<Integer> numbers;
 
-    private Number() {
+    private Numbers() {
         numbers = new ArrayList<>();
     }
 
-    public static Number get() {
-        return new Number();
+    public static Numbers get() {
+        return new Numbers();
     }
 
-    public void addNumber(String num) {
-        for (char c : num.toCharArray()) {
-            if (!Character.isDigit(c)) {
+    public void addNumber(String number) {
+        for (char digit : number.toCharArray()) {
+            if (!Character.isDigit(digit)) {
                 throw new NumberFormatException(NOT_NUMBER_MESSAGE);
             }
         }
-        numbers.add(Integer.valueOf(num));
+        numbers.add(Integer.valueOf(number));
     }
 
     public List<Integer> getNumbers() {
         return this.numbers;
-    }
-
-    public void clear() {
-        this.numbers.clear();
     }
 }

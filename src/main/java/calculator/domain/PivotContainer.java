@@ -4,58 +4,50 @@ import java.util.List;
 
 public class PivotContainer {
 
-    private final Operator operator;
-    private final Number number;
+    private static final String SPACE = "\\s+";
+    private static final int IS_EVEN = 2;
+    private final Operators operators;
+    private final Numbers numbers;
 
     private PivotContainer(String userInput) {
-        operator = Operator.get();
-        number = Number.get();
+        operators = Operators.get();
+        numbers = Numbers.get();
 
-        try {
-            separateByNumbersAndOperators(split(userInput));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        separateByNumbersAndOperators(split(userInput));
     }
 
-    public static PivotContainer get(String userInput) {
+    public static PivotContainer from(String userInput) {
         return new PivotContainer(userInput);
     }
 
-    public String[] split(String userInput) {
-        return userInput.trim().split("\\s+");
+    private String[] split(String userInput) {
+        return userInput.trim().split(SPACE);
     }
 
-    public void separateByNumbersAndOperators(String[] spaceSeperatedListOfUserInput) {
-        try {
-            int length = spaceSeperatedListOfUserInput.length;
-            for (int pos = 0; pos < length; pos++) {
-                addToList(isNumberLocated(pos), spaceSeperatedListOfUserInput[pos]);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            number.clear();
-            operator.clear();
+    private void separateByNumbersAndOperators(String[] spaceSeperatedListOfUserInput) {
+        int length = spaceSeperatedListOfUserInput.length;
+        for (int pos = 0; pos < length; pos++) {
+            addToList(isNumberLocated(pos), spaceSeperatedListOfUserInput[pos]);
         }
     }
 
     private void addToList(boolean isNumber, String numberOrOperator) {
         if (isNumber) {
-            number.addNumber(numberOrOperator);
+            numbers.addNumber(numberOrOperator);
             return;
         }
-        operator.addOperator(numberOrOperator);
+        operators.addOperator(numberOrOperator);
     }
 
     private boolean isNumberLocated(int position) {
-        return position % 2 == 0;
+        return position % IS_EVEN == 0;
     }
 
     public List<Integer> getNumbers() {
-        return this.number.getNumbers();
+        return this.numbers.getNumbers();
     }
 
-    public List<String> getOperators() {
-        return this.operator.getOperators();
+    public List<Operator> getOperators() {
+        return this.operators.getOperators();
     }
 }
