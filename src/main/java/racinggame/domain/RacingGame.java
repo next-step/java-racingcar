@@ -2,18 +2,19 @@ package racinggame.domain;
 
 import java.io.IOException;
 import java.util.List;
+import racinggame.view.GameView;
 
 public class RacingGame {
     private static final String QUIT = "q";
 
-    private View gameView;
+    private GameView gameView;
     private List<RacingCar> racingCars;
     private int trial;
 
     public RacingGame() {}
 
     public RacingGame(List<RacingCar> racingCars, int trial) {
-        this.gameView = new View(racingCars);
+        this.gameView = new GameView(racingCars);
         this.racingCars = racingCars;
         this.trial = trial;
     }

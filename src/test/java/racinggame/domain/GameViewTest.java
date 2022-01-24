@@ -7,8 +7,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import racinggame.view.GameView;
 
-class ViewTest {
+class GameViewTest {
 
     @Test
     void 상태를_출력할_자동차_리스트를_받아_생성한다() {
@@ -18,10 +19,10 @@ class ViewTest {
         List<RacingCar> racingCars = RacingCar.createRacingCarFromCarNames(cars);
 
         // when
-        View view = new View(racingCars);
+        GameView gameView = new GameView(racingCars);
 
         // then
-        assertThat(view.getRacingCars()).isEqualTo(racingCars);
+        assertThat(gameView.getRacingCars()).isEqualTo(racingCars);
     }
 
     @Test
@@ -30,13 +31,13 @@ class ViewTest {
         // given
         String[] cars = {"car1", "car2"};
         List<RacingCar> racingCars = RacingCar.createRacingCarFromCarNames(cars);
-        View view = new View(racingCars);
+        GameView gameView = new GameView(racingCars);
 
         // when
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        view.printProgress();
+        gameView.printProgress();
 
         // then
         assertTrue(out.toString().contains("car1"));
@@ -49,13 +50,13 @@ class ViewTest {
         // given
         String[] cars = {"car1", "car2"};
         List<RacingCar> racingCars = RacingCar.createRacingCarFromCarNames(cars);
-        View view = new View(racingCars);
+        GameView gameView = new GameView(racingCars);
 
         // when
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        view.printWinners();
+        gameView.printWinners();
 
         // then
         assertTrue(out.toString().contains("car1, car2"));
