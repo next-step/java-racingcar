@@ -6,8 +6,10 @@ import java.util.Scanner;
 
 public class Console {
 
+    private final int MAX_NAME_LENGTH = 5;
     private int tryCount;
     private List<String> carNames;
+
 
     public Console() {
         setRacingCarNames();
@@ -35,8 +37,8 @@ public class Console {
     }
 
     private void validateCarNameLength(String carName) {
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException();
+        if (carName.length() > MAX_NAME_LENGTH) {
+        throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자를 초과할 수 없습니다.");
         }
     }
 
