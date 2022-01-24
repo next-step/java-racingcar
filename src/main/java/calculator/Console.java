@@ -31,6 +31,12 @@ public class Console {
         this.userInput = userInput;
     }
 
+    private void validateUserInputEmpty(String userInput) {
+        if (userInput.length() == 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private void splitUserInput(String userInput) {
         this.splitedInput = Arrays.asList(userInput.split(" "));
     }
@@ -46,20 +52,13 @@ public class Console {
             return false;
         }
 
-        for (int i = 0; i < splitedInput.size(); ++i) {
-            boolean isNumber = Character.isDigit(splitedInput.get(i).charAt(0));
+        boolean isNumber = true;
 
-            if (i % 2 == 0 && !isNumber) {
-                return false;
-            }
+        for (int i = Constant.NUMBER_INIT_INDEX; i < splitedInput.size();
+            i += Constant.NEXT_ARITHMETIC) {
+            isNumber = Character.isDigit(splitedInput.get(i).charAt(0));
         }
 
-        return true;
-    }
-
-    private void validateUserInputEmpty(String userInput) {
-        if (userInput.length() == 0) {
-            throw new IllegalArgumentException();
-        }
+        return isNumber;
     }
 }
