@@ -22,4 +22,7 @@ public class Car {
         return name;
     }
 
+    public void moveForward() {
+        this.location++;
+    }
 }
