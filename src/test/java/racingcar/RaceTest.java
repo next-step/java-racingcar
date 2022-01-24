@@ -1,6 +1,5 @@
 package racingcar;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
