@@ -4,13 +4,12 @@ import java.util.Scanner;
 
 public class Calculator {
 
-    private String input;
-
     public Calculator() {
     }
 
     public void startCalculate() {
         Expression expression;
+        String input;
         do {
             input = getUserInput();
             expression = new Expression(input);
