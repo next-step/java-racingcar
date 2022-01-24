@@ -23,11 +23,11 @@ public class UserInput {
         try {
             nameList = splitStringByComma(input);
             checkCarCount(nameList);
+            return nameList;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return getCarNames();
         }
-        return nameList;
     }
 
     public static List<String> splitStringByComma(String input) {
@@ -62,6 +62,7 @@ public class UserInput {
         try {
             tryNumber = SCANNER.nextInt();
             checkTryNumber(tryNumber);
+            return tryNumber;
         } catch (InputMismatchException e) {
             System.out.println("[ERROR] 숫자만 입력 해주세요.");
             return getTryNumber();
@@ -69,7 +70,6 @@ public class UserInput {
             System.out.println(e.getMessage());
             return getTryNumber();
         }
-        return tryNumber;
     }
 
     public static void checkTryNumber(int tryNumber) {
