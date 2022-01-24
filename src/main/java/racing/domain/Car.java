@@ -1,7 +1,9 @@
 package racing.domain;
 
 public class Car {
-    private final static int MIN_MOVE_NUM = 4;
+
+    private final static int STANDARD_NUMBER_MOVE_FORWARD = 4;
+    private final static int RANGE_OF_RANDOM_NUMBER = 10;
     private final String name;
     private int position;
 
@@ -11,7 +13,7 @@ public class Car {
     }
 
     public String checkSamePosition(int position) {
-        if(this.position == position) {
+        if (this.position == position) {
             return name + ", ";
         }
         return "";
@@ -28,11 +30,11 @@ public class Car {
     }
 
     private boolean isMove(int randomNumber) {
-        return randomNumber >= MIN_MOVE_NUM;
+        return randomNumber >= STANDARD_NUMBER_MOVE_FORWARD;
     }
 
     private int generateRandomNumber() {
-        return (int) (Math.random() * 9);
+        return (int) (Math.random() * RANGE_OF_RANDOM_NUMBER);
     }
 
     private void printStatus() {
