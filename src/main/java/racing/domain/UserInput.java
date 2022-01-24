@@ -36,17 +36,9 @@ public class UserInput {
 
         while (st.hasMoreTokens()) {
             String name = st.nextToken().trim();
-            checkNameLength(name);
             nameList.add(name);
         }
         return nameList;
-    }
-
-    public static void checkNameLength(String name) {
-        if (name.length() < CAR_NAME_MIN_LENGTH || name.length() > CAR_NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException(
-                "[ERROR] 이름의 길이는 " + CAR_NAME_MIN_LENGTH + " ~ " + CAR_NAME_MAX_LENGTH + " 글자 까지만 가능합니다.");
-        }
     }
 
     public static void checkCarCount(List<String> nameList) {

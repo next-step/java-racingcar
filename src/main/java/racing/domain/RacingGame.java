@@ -14,14 +14,20 @@ public class RacingGame {
     }
 
     public void startGame() {
-        List<String> nameList = UserInput.getCarNames();
-        int tryNumber = UserInput.getTryNumber();
-        for (String name : nameList) {
-            cars.add(new Car(name));
-        }
+        try {
+            List<String> nameList = UserInput.getCarNames();
+            for (String name : nameList) {
+                cars.add(new Car(name));
+            }
 
-        startRacing(tryNumber);
-        showGameResult();
+            int tryNumber = UserInput.getTryNumber();
+            startRacing(tryNumber);
+            showGameResult();
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            startGame();
+        }
     }
 
     private void startRacing(int tryNumber) {
