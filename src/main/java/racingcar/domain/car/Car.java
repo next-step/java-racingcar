@@ -8,8 +8,17 @@ public class Car implements Comparable<Car>{
         this.position = 0;
     }
 
+    private Car(String name, int position) {
+        this.name = name;
+        this.position = position;
+    }
+
     public static Car from(String name) {
         return new Car(name);
+    }
+
+    public static Car of(String name, int position) {
+        return new Car(name, position);
     }
 
     public String getName() {
