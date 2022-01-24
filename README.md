@@ -46,35 +46,38 @@
 
 #### Feedback
 
+> - 피드백 반영하기
+> - 기능과 로직이 명확하게 보일 수 있도록 리팩토링
+
 ###### 1. 네이밍
 
-- [ ]  StringProcessor인데 `play`라고 변수명을 지으신 이유가 있을까요?
-- [ ]  `getInput()`인데 값을 get하지 않고 있어요! 조금 더 좋은 네이밍을 생각해보면 어떨까요?
-- [ ]  `number1`, `number2` 보다 조금 더 의미있는 네이밍을 해보면 어떨까요?
+- [x]  StringProcessor인데 `play`라고 변수명을 지으신 이유가 있을까요?
+- [x]  `getInput()`인데 값을 get하지 않고 있어요! 조금 더 좋은 네이밍을 생각해보면 어떨까요?
+- [x]  `number1`, `number2` 보다 조금 더 의미있는 네이밍을 해보면 어떨까요?
 
 
 
 ###### 2. 기능 통합
 
-- [ ]  `getInput()`과 `checkInput()`을 하나로 합쳐보면 어떨까요?
+- [x]  `getInput()`과 `checkInput()`을 하나로 합쳐보면 어떨까요?
 
-- [ ]  `parseInput()`과 `getResult()`를 분리하지 않고 parseInput의 결과로 result를 리턴하면 어떨까요?
+- [x]  `parseInput()`과 `getResult()`를 분리하지 않고 parseInput의 결과로 result를 리턴하면 어떨까요?
 
   
 
 ###### 3. JAVA 컨벤션
 
-- [ ]  depth가 2를 초과한 것 같아요!! depth를 줄여보면 어떨까요?
-- [ ]  여기도 depth가 2를 초과한 것 같아요!!
-- [ ]  [매직넘버를 상수화](https://javabom.tistory.com/28)해보면 어떨까요?
-- [ ]  [String vs StringBuilder vs StringBuffer](https://velog.io/@dnjscksdn98/Java-String-vs-StringBuilder-vs-StringBuffer)를 읽어보시구 더 알맞은 방법을 찾아보면 어떨까요?
-- [ ]  `throws IllegalArgumentException`은 하지않아도 돼요!
+- [x]  depth가 2를 초과한 것 같아요!! depth를 줄여보면 어떨까요?
+- [x]  여기도 depth가 2를 초과한 것 같아요!!
+- [x]  [매직넘버를 상수화](https://javabom.tistory.com/28)해보면 어떨까요?
+- [x]  [String vs StringBuilder vs StringBuffer](https://velog.io/@dnjscksdn98/Java-String-vs-StringBuilder-vs-StringBuffer)를 읽어보시구 더 알맞은 방법을 찾아보면 어떨까요?
+- [x]  `throws IllegalArgumentException`은 하지않아도 돼요!
 
 
 
 ###### 4. 테스트
 
-- [ ] [StirngProcessor] 요기 있는 모든 public메서드에 대한 테스트를 작성해보면 어떨까요?
+- [x] [StirngProcessor] 요기 있는 모든 public메서드에 대한 테스트를 작성해보면 어떨까요?
 
 
 
@@ -98,11 +101,11 @@
 
 #### Feedback
 
-- [ ]  isValidate자체가 boolean이기 때문에 아래와 같이 작성할 수 있을 것 같아요 :)
-- [ ]  불필요한 라인을 제거할 수 있을 것 같아요!
-- [ ]  해당 함수를 private으로 만들고 `inputPlaterName()`을 테스트할 수는 없을까요?
-- [ ]  [정적 팩터리 메서드](https://tecoble.techcourse.co.kr/post/2020-05-26-static-factory-method/)를 이용해서 Cars객체를 생성할때 cars 필드들도 함께 set될 수 있게 만들어보면 어떨까요?
-- [ ]  carList가 아닌 Cars객체를 넘겨서 처리할 수 없을까요?
+- [x]  isValidate자체가 boolean이기 때문에 아래와 같이 작성할 수 있을 것 같아요 :)
+- [x]  불필요한 라인을 제거할 수 있을 것 같아요!
+- [ ]  해당 함수를 private으로 만들고 `inputPlayerName()`을 테스트할 수는 없을까요?
+- [x]  [정적 팩터리 메서드](https://tecoble.techcourse.co.kr/post/2020-05-26-static-factory-method/)를 이용해서 Cars객체를 생성할때 cars 필드들도 함께 set될 수 있게 만들어보면 어떨까요?
+- [x]  carList가 아닌 Cars객체를 넘겨서 처리할 수 없을까요?
 
 
 
