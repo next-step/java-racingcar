@@ -13,17 +13,25 @@ public class Calculator {
 
     public static void returnCalculatedValue(String[] stringArray){
         for(int i = 0; i < (stringArray.length-1) / 2; i++){
-            if (stringArray[0].equals("ERROR")) {
-                System.out.println("ERROR");
-                System.out.println("종료합니다.");
-                return;
-            }
-            if (stringArray[i * 2 + 1]==null) {
-                System.out.println("정답: " + Integer.parseInt(stringArray[i * 2]));
+            if (determineCalculatedValueValid(stringArray, i)) {
                 return;
             }
             parseOperation(stringArray,i * 2);
         }
+    }
+
+    public static boolean determineCalculatedValueValid(String[] stringArray, int i) {
+        if (stringArray[0].equals("ERROR")) {
+            System.out.println("ERROR");
+            System.out.println("종료합니다.");
+            return true;
+        }
+        if (stringArray[i * 2 + 1] == null) {
+            System.out.println("정답: " + Integer.parseInt(stringArray[i * 2]));
+            return true;
+        }
+
+        return false;
     }
 
     public static void parseOperation(String[] stringArray, int start){
