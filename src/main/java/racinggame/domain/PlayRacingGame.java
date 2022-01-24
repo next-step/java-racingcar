@@ -16,14 +16,6 @@ public class PlayRacingGame {
         return randomNumberList;
     }
 
-    public int findMaxLocation(List<Car> cars) {
-        int maxLocation = 0;
-        for (Car car : cars) {
-            maxLocation = Math.max(car.getLocation(), maxLocation);
-        }
-        return maxLocation;
-    }
-
     public List<Winner> findWinner(List<Car> cars,int maxLocation) {
         List<Winner> winnerUsers = new ArrayList<>();
 //        int maxLocation = findMaxLocation(cars);
