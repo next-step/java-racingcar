@@ -1,41 +1,46 @@
-package strcalculator.domain;
+package calculator.domain;
 
 import java.util.List;
 
 public class Calculator {
+
     public Calculator() {
     }
 
-    public void calculate (List<String> result) {
-        int total = Integer.valueOf(result.get(0));
-        for (int i = 1; i < result.size(); i += 2) {
-            String operator = result.get(i);
-            if (operator.equals("+")) {
-                total = add(total, Integer.valueOf(result.get(i+1)));
-            } else if (operator.equals("-")) {
-                total = subtract(total, Integer.valueOf(result.get(i+1)));
-            } else if (operator.equals("*")) {
-                total = multiply(total, Integer.valueOf(result.get(i+1)));
-            } else if (operator.equals("/")) {
-                total = divide(total, Integer.valueOf(result.get(i+1)));
-            }
+    public void calculate(List<String> parsedInput) {
+        int total = Integer.parseInt(parsedInput.get(0));
+        for (int i = 1; i < parsedInput.size(); i += 2) {
+            String operator = parsedInput.get(i);
+            int nextNumber = Integer.parseInt(parsedInput.get(i+1));
+            total = operate(operator, total, nextNumber);
         }
         System.out.println(total);
     }
 
-    public int add(int number1, int number2) {
-        return number1 + number2;
+    private int operate(String operator, int prevNumber, int nextNumber) {
+        if (operator.equals("+")) {
+            return add(prevNumber, nextNumber);
+        } else if (operator.equals("-")) {
+            return subtract(prevNumber, nextNumber);
+        } else if (operator.equals("*")) {
+            return multiply(prevNumber, nextNumber);
+        }
+        return divide(prevNumber, nextNumber);
     }
 
-    public int subtract(int number1, int number2) {
-        return number1 - number2;
+    private static int add(int prevNumber, int nextNumber) {
+        return prevNumber + nextNumber;
     }
 
-    public int multiply(int number1, int number2) {
-        return number1 * number2;
+    public int subtract(int prevNumber, int nextNumber) {
+        return prevNumber - nextNumber;
     }
 
-    public int divide(int number1, int number2) {
-        return number1 / number2;
+    public int multiply(int prevNumber, int nextNumber) {
+        return prevNumber * nextNumber;
+    }
+
+    public int divide(int prevNumber, int nextNumber) {
+        return prevNumber / nextNumber;
     }
 }
