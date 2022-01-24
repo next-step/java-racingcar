@@ -14,7 +14,7 @@ class RandomFactoryTest {
     void move() {
         //given
         final int BOUND = 4;
-        RandomFactory randomFactory = new RandomFactory();
+        RandomFactory randomFactory = RandomFactory.get();
 
         //when
         int random = randomFactory.getRandom(new MoveGen());
@@ -28,7 +28,7 @@ class RandomFactoryTest {
     void notMove() {
         //given
         final int BOUND = 4;
-        RandomFactory randomFactory = new RandomFactory();
+        RandomFactory randomFactory = RandomFactory.get();
 
         //when
         int random = randomFactory.getRandom(new NoMoveGen());
