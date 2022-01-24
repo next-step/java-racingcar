@@ -4,6 +4,7 @@ public class Car {
 
     private final static int STANDARD_NUMBER_MOVE_FORWARD = 4;
     private final static int RANGE_OF_RANDOM_NUMBER = 10;
+
     private final String name;
     private int position;
 
