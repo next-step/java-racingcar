@@ -18,17 +18,17 @@ class PlayRacingGameTest {
 
         Car car1 = new Car("a");
         Car car2 = new Car("b");
-        int maxLocation=0;
+        int maxLocation = 0;
 
         car1.updateLocation(5);
         car2.updateLocation(8);
-        maxLocation=Math.max(car1.getLocation(),car2.getLocation());
+        maxLocation = Math.max(car1.getLocation(), car2.getLocation());
         List<Car> carList = new ArrayList<>();
         carList.add(car1);
         carList.add(car2);
 
         PlayRacingGame playRacingGame = new PlayRacingGame();
-        List<Winner> winner = playRacingGame.findWinner(carList,maxLocation);
+        List<Winner> winner = playRacingGame.findWinner(carList, maxLocation);
 
         Assertions.assertThat(winner.get(0).getWinnerName()).isEqualTo("b");
 
@@ -37,7 +37,7 @@ class PlayRacingGameTest {
 
     @DisplayName("랜덤넘버_리스트_개수_확인")
     @Test
-    public void makeRandomNumbers(){
+    public void makeRandomNumbers() {
 
         Random random = new Random();
         PlayRacingGame playRacingGame = new PlayRacingGame();

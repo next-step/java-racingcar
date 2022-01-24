@@ -6,9 +6,9 @@ import java.util.Random;
 
 public class PlayRacingGame {
 
-    public List<Integer> makeRandomNumbers(int carNum,Random random) {
-        List<Integer>randomNumberList=new ArrayList<>();
-        for(int count=0;count<carNum;count++){
+    public List<Integer> makeRandomNumbers(int carNum, Random random) {
+        List<Integer> randomNumberList = new ArrayList<>();
+        for (int count = 0; count < carNum; count++) {
             int randomValue = random.nextInt(9);
             randomNumberList.add(randomValue);
         }
@@ -16,7 +16,7 @@ public class PlayRacingGame {
         return randomNumberList;
     }
 
-    public List<Winner> findWinner(List<Car> cars,int maxLocation) {
+    public List<Winner> findWinner(List<Car> cars, int maxLocation) {
         List<Winner> winnerUsers = new ArrayList<>();
         for (Car car : cars) {
             if (car.getLocation() == maxLocation) {

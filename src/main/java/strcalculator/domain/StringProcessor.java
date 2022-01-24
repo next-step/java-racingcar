@@ -11,8 +11,9 @@ public class StringProcessor {
 
     public StringProcessor() {
     }
-    public StringProcessor(String userInput){
-        this.userInput=userInput;
+
+    public StringProcessor(String userInput) {
+        this.userInput = userInput;
     }
 
     public void getInput() {
@@ -25,26 +26,28 @@ public class StringProcessor {
             throw new IllegalArgumentException("연산 가능한 수식을 입력해주세요.");
         }
     }
-    public void validation(){
+
+    public void validation() {
         boolean matches = userInput.matches("[+\\-*/]|[0-9]+");
-        if(matches==false){
-            throw  new IllegalArgumentException("숫자와 연산자, 공백문자만 입력할 수 있습니다.");
+        if (matches == false) {
+            throw new IllegalArgumentException("숫자와 연산자, 공백문자만 입력할 수 있습니다.");
         }
 
     }
+
     public List<String> getResult() {
         return result;
     }
 
-    public String[] parseInputNumber(){
+    public String[] parseInputNumber() {
         String input = userInput.replaceAll(" ", "");
-        String []numbers=input.split("[+\\-*/]");
+        String[] numbers = input.split("[+\\-*/]");
         return numbers;
     }
 
-    public String[] parseInputOperands(){
+    public String[] parseInputOperands() {
         String input = userInput.replaceAll(" ", "");
-        String []operands=input.split("[0-9]+");
+        String[] operands = input.split("[0-9]+");
         return operands;
     }
 }

@@ -1,6 +1,5 @@
 package strcalculator;
 
-import java.util.List;
 import strcalculator.domain.Calculator;
 import strcalculator.domain.StringProcessor;
 
@@ -14,7 +13,7 @@ public class Application {
             try {
                 String[] numbers = play.parseInputNumber();
                 String[] operands = play.parseInputOperands();
-                Calculator calculator = new Calculator(numbers,operands);
+                Calculator calculator = new Calculator(numbers, operands);
                 calculator.calculate();
                 break;
             } catch (IllegalArgumentException | ArithmeticException e) {

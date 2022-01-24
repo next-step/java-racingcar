@@ -1,20 +1,21 @@
 package strcalculator.domain;
 
 public class Calculator {
+
     private String[] numberList;
     private String[] operandList;
-    private int leftNumber=0;
-    private int rightNumber=0;
+    private int leftNumber = 0;
+    private int rightNumber = 0;
 
-    public Calculator(String[] numberList,String[]operandList) {
-        this.numberList=numberList;
-        this.operandList=operandList;
+    public Calculator(String[] numberList, String[] operandList) {
+        this.numberList = numberList;
+        this.operandList = operandList;
     }
 
     public void calculate() {
-        leftNumber= Integer.valueOf(numberList[0]);
+        leftNumber = Integer.valueOf(numberList[0]);
         for (int i = 1; i < operandList.length; i++) {
-            rightNumber=Integer.valueOf(numberList[i]);
+            rightNumber = Integer.valueOf(numberList[i]);
             String operator = operandList[i];
             if (operator.equals("+")) {
                 leftNumber = add();
