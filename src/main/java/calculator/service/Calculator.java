@@ -9,23 +9,23 @@ public class Calculator {
     private Calculator() {
     }
 
-    public static double run(List<String> formula){
-        Stack<String> formulaStack = new Stack<>();
+    public static double run(List<String> expression) {
+        Stack<String> symbols = new Stack<>();
 
-        for(int i = formula.size()-1; i>=0; i--){
-            formulaStack.push(formula.get(i));
+        for (int i = expression.size() - 1; i >= 0; i--) {
+            symbols.push(expression.get(i));
         }
 
-        while(formulaStack.size() > 1){
-            double prev = Double.parseDouble(formulaStack.pop());
-            Operation operator = Operation.fromString(formulaStack.pop()).get();
-            double next = Double.parseDouble(formulaStack.pop());
+        while (symbols.size() > 1) {
+            double prev = Double.parseDouble(symbols.pop());
+            Operation operator = Operation.fromString(symbols.pop()).get();
+            double next = Double.parseDouble(symbols.pop());
 
             double result = operator.apply(prev, next);
 
-            formulaStack.push(String.valueOf(result));
+            symbols.push(String.valueOf(result));
         }
 
-        return Double.parseDouble(formulaStack.pop());
+        return Double.parseDouble(symbols.pop());
     }
 }
