@@ -10,7 +10,7 @@ public class Car {
     private final String name;
     private int position;
 
-    public Car(String name) {
+    public Car(final String name) {
         checkNameLength(name);
         this.name = name;
         this.position = 0;
@@ -20,7 +20,7 @@ public class Car {
         return position;
     }
 
-    public static void checkNameLength(String name) {
+    public static void checkNameLength(final String name) {
         if (name.length() < CAR_NAME_MIN_LENGTH || name.length() > CAR_NAME_MAX_LENGTH) {
             throw new IllegalArgumentException(
                 "[ERROR] 이름의 길이는 " + CAR_NAME_MIN_LENGTH + " ~ " + CAR_NAME_MAX_LENGTH
@@ -28,7 +28,7 @@ public class Car {
         }
     }
 
-    public String checkSamePosition(int position) {
+    public String checkSamePosition(final int position) {
         if (this.position == position) {
             return name;
         }
@@ -36,14 +36,14 @@ public class Car {
     }
 
     public void drive() {
-        int randomNumber = generateRandomNumber();
+        final int randomNumber = generateRandomNumber();
         if (isMove(randomNumber)) {
             this.position++;
         }
         printStatus();
     }
 
-    private boolean isMove(int randomNumber) {
+    private boolean isMove(final int randomNumber) {
         return randomNumber >= STANDARD_NUMBER_MOVE_FORWARD;
     }
 
