@@ -1,25 +1,33 @@
 package racinggame.domain;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class GameInit {
+    private static final String SEPARATOR = ",";
+    private static final int MAX_LENGTH = 5;
 
-
-    public String[] inputPlayerName() {
+    public List<String> inputCarName() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String playerNames = "";
-        String[] playerNameList;
         while (true) {
             Scanner scanner = new Scanner(System.in);
-            playerNames = scanner.nextLine();
-            playerNameList = playerNames.split(",");
-            boolean isValidate = validationStringLength(playerNameList);
-            if (isValidate == true) {
-                break;
+            String userInput = scanner.nextLine();
+            List<String> carNames = Arrays.asList(userInput.split(SEPARATOR));
+            if (lessThanMaxLength(carNames)) {
+                return carNames;
             }
         }
-        return playerNameList;
+    }
+
+    private boolean lessThanMaxLength (List<String> playerNameList) {
+        for (String playerName : playerNameList) {
+            if (playerName.length() > MAX_LENGTH) {
+                System.out.println("[ERROR] 자동차의 이름은 5자를 초과할 수 없습니다.");
+                return false;
+            }
+        }
+        return true;
     }
 
     public int inputTryNumber() {
@@ -27,16 +35,4 @@ public class GameInit {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
-
-    public boolean validationStringLength(String[] playerNameList) {
-        boolean isValidate = true;
-        for (String playerName : playerNameList) {
-            if (playerName.length() > 5) {
-                System.out.println("자동차의 이름은 5자를 초과할 수 없습니다.");
-                isValidate = false;
-            }
-        }
-        return isValidate;
-    }
-
 }
