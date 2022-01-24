@@ -2,14 +2,14 @@ package racingcar.domain;
 
 public class FixedEngine implements Engine {
 
-    private boolean strategy;
+    private boolean isMovable;
 
-    protected FixedEngine(boolean strategy) {
-        this.strategy = strategy;
+    protected FixedEngine(boolean isMovable) {
+        this.isMovable = isMovable;
     }
 
     @Override
     public boolean movable() {
-        return strategy;
+        return isMovable;
     }
 }
