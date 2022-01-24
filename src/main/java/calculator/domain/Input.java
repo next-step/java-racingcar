@@ -11,13 +11,17 @@ public class Input {
 
     public static String getUserInput() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String userInput;
 
-        String userInput = br.readLine().trim();
-        try {
-            Validator.checkIsBlack(userInput);
-        } catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
-            return null;
+        while (true){
+            System.out.print("식을 입력해 주세요(그만하려면 q): ");
+            userInput = br.readLine().trim();
+            try {
+                Validator.checkIsBlack(userInput);
+                break;
+            } catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
+            }
         }
 
         if (isQuit(userInput)) {

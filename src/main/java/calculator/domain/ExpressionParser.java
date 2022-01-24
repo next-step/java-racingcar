@@ -1,5 +1,6 @@
 package calculator.domain;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 
 public class ExpressionParser {
@@ -9,29 +10,45 @@ public class ExpressionParser {
 
     private ExpressionParser() {}
 
-    public ExpressionParser(String userInput) {
-        String[] splitUserInput = splitUserInputByWhitespace(userInput);
+    public ExpressionParser(String userInput) throws IOException {
 
-        for (int pos = 0; pos < splitUserInput.length; pos++) {
+        while (true) {
+            String[] splitUserInput = splitUserInputByWhitespace(userInput);
+
             try {
-                parse(splitUserInput, pos);
+                parse(splitUserInput);
+                break;
             } catch (InputMismatchException e) {
                 System.out.println(e.getMessage());
-                operators = null;
-                terms = null;
-                break;
+                userInput = Input.getUserInput();
+                rollback();
             }
-
         }
     }
 
-    private void parse(String[] splitUserInput, int pos) {
-        String target = splitUserInput[pos];
-        if (isTerm(pos)) {
-            addTerm(target);
-            return;
+    private String[] splitUserInputByWhitespace(String userInput) {
+        return userInput.split("\\s+");
+    }
+
+    private void rollback() {
+        operators.getOperators().clear();
+        terms.getTerms().clear();
+    }
+
+    private void parse(String[] splitUserInput) {
+        for (int pos = 0; pos < splitUserInput.length; pos++) {
+            String target = splitUserInput[pos];
+
+            if (isTerm(pos)) {
+                addTerm(target);
+                continue;
+            }
+            addOperator(target);
         }
-        addOperator(target);
+    }
+
+    private boolean isTerm(int pos) {
+        return pos % 2 == 0;
     }
 
     private void addTerm(String target) {
@@ -42,14 +59,6 @@ public class ExpressionParser {
     private void addOperator(String target) {
         Validator.validateIsOperator(target);
         operators.addOperator(target);
-    }
-
-    private String[] splitUserInputByWhitespace(String userInput) {
-        return userInput.split("\\s+");
-    }
-
-    private boolean isTerm(int pos) {
-        return pos % 2 == 0;
     }
 
     public Operators getOperators() {
