@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,6 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import racinggame.domain.RacingCar;
 import racinggame.view.GameView;
 
 class GameViewTest {
