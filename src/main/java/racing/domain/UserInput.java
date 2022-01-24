@@ -8,8 +8,6 @@ import java.util.StringTokenizer;
 
 public class UserInput {
 
-    private static final int CAR_NAME_MIN_LENGTH = 1;
-    private static final int CAR_NAME_MAX_LENGTH = 5;
     private static final Scanner SCANNER = new Scanner(System.in);
 
     private UserInput() {
@@ -49,13 +47,11 @@ public class UserInput {
 
     public static int getTryNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int tryNumber;
-
         try {
-            tryNumber = SCANNER.nextInt();
+            int tryNumber = Integer.parseInt(SCANNER.nextLine());
             checkTryNumber(tryNumber);
             return tryNumber;
-        } catch (InputMismatchException e) {
+        } catch (NumberFormatException e) {
             System.out.println("[ERROR] 숫자만 입력 해주세요.");
             return getTryNumber();
         } catch (IllegalArgumentException e) {
