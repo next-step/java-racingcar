@@ -7,19 +7,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class RaceTest {
+
     @DisplayName("0~9사이의 정수를 반환하는지 100번 확인한다.")
     @Test
-    public void printRandomNumberTenTimes(){
+    public void printRandomNumberTenTimes() {
         Race race = new Race();
         int[] check = new int[10];
-        for(int i=0; i<100; i++) {
+        for (int i = 0; i < 100; i++) {
             int randomNumber = race.getRandomNumber();
             System.out.println(randomNumber);
             check[randomNumber]++;
         }
         int sum = 0;
-        for(int i=0; i<10; i++){
-            sum+=check[i];
+        for (int i = 0; i < 10; i++) {
+            sum += check[i];
         }
         assertThat(sum).isEqualTo(100);
     }
@@ -32,7 +33,7 @@ class RaceTest {
         cars[0] = new Car();
         cars[1] = new Car();
         cars[2] = new Car();
-        race.compareWithFour(cars,1,5);
+        race.compareWithFour(cars, 1, 5);
         assertThat(cars[1]).isEqualTo(1);
     }
 
@@ -44,7 +45,7 @@ class RaceTest {
         cars[0] = new Car();
         cars[1] = new Car();
         cars[2] = new Car();
-        race.compareWithFour(cars,1,4);
+        race.compareWithFour(cars, 1, 4);
         assertThat(cars[1]).isEqualTo(1);
     }
 
@@ -56,7 +57,7 @@ class RaceTest {
         cars[0] = new Car();
         cars[1] = new Car();
         cars[2] = new Car();
-        race.compareWithFour(cars,1,3);
+        race.compareWithFour(cars, 1, 3);
         assertThat(cars[1]).isEqualTo(0);
     }
 }
