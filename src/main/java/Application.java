@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 import racing.Car;
 import racing.CarGenerator;
+import racing.Judgement;
 import racing.Racing;
 
 public class Application {
@@ -23,6 +24,13 @@ public class Application {
         //레이스 실행
         Racing racing = new Racing(cars);
         racing.race();
+
+        //결과 판단
+        Judgement judgement = new Judgement(cars);
+        List<String> winners = judgement.judgeWinner();
+
+        //출력
+        System.out.println("최종우승자: " + String.join(", ", winners));
     }
 
     public static void calculateString() throws IOException {

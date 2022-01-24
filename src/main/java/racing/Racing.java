@@ -24,7 +24,6 @@ public class Racing {
             startRound();
             System.out.println();
         }
-        printWinner();
     }
 
     private void startRound() {
@@ -32,19 +31,5 @@ public class Racing {
             car.move();
             car.printDistance();
         }
-    }
-
-    private void printWinner() {
-        cars.sort((a, b) -> b.getDistance() - a.getDistance());
-        int bestScore = cars.get(0).getDistance();
-        List<String> winners = new ArrayList<>();
-
-        for (int i = 0; i < cars.size(); i++) {
-            if (i == 0 || cars.get(i).getDistance() == bestScore) {
-                winners.add(cars.get(i).getName());
-            }
-        }
-
-        System.out.println("최종우승자: " + String.join(", ", winners));
     }
 }
