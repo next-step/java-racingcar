@@ -12,7 +12,7 @@ import racing.Racing;
 public class Application {
 
     public static void main(String[] args) throws IOException {
-//        calculateString();
+        calculateString();
         carRacing();
     }
 
@@ -26,16 +26,10 @@ public class Application {
         CarGenerator carGenerator = new CarGenerator();
         List<Car> cars = carGenerator.createCars(carNames, 5, 4);
 
-        //레이스 실행
+        //레이스 실행과 결과 판단
         Racing racing = new Racing(cars);
-        racing.race();
-
-        //결과 판단
-        Judgement judgement = new Judgement(cars);
-        List<String> winners = judgement.judgeWinner();
-
-        //출력
-        System.out.println("최종우승자: " + String.join(", ", winners));
+        Judgement judgement = new Judgement(racing.race());
+        System.out.println("최종우승자: " + String.join(", ", judgement.judgeWinner()));
     }
 
     public static void calculateString() throws IOException {
