@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 
 public class FormulaInput {
 
-    FormulaInput() {
+    private FormulaInput() {
     }
 
     public static Formula getFormula() {
