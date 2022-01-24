@@ -11,12 +11,11 @@ import java.util.List;
 public class FormulaInput {
 
     public static List<String> getFormula() {
-        String input = "";
         List<String> formular = new ArrayList<>();
 
         System.out.println("계산할 연산식을 입력해주세요.");
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
-            input = bufferedReader.readLine();
+            String input = bufferedReader.readLine();
             isBlankOrNot(input);
 
             formular = FormulaUtil.split(input);
@@ -34,7 +33,7 @@ public class FormulaInput {
         }
     }
 
-    private static void isNotOperator(List<String> formular){
+    private static void isNotOperator(List<String> formular) {
         for (int i = 1; i < formular.size(); i += 2) {
             Operation.fromString(formular.get(i))
                 .orElseThrow(() ->
@@ -45,7 +44,7 @@ public class FormulaInput {
 
     private static void isNotNumber(List<String> formular) {
         for (int i = 0; i < formular.size(); i += 2) {
-            try{
+            try {
                 Integer.parseInt(formular.get(i));
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("피연산자가 숫자가 아닙니다.");
