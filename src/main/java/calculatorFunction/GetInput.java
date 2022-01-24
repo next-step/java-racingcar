@@ -7,6 +7,7 @@ public class GetInput {
     public static String inputString() {
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
+        str = str.replace(" ", "");
         return str;
     }
 

@@ -4,13 +4,13 @@ public class Calculator {
     public static void execute(){
         System.out.println("수식을 입력하시오: ");
         String str = GetInput.inputString();
-        str = str.replace(" ", "");
-        if(str.length()==0)
+        if (str.length()==0) {
             throw new IllegalArgumentException("Error: need right expression");
+        }
         String[] stringArray = GetInput.parsing(str);
         Calculator.calculate(stringArray);
-        return;
     }
+
     public static void calculate(String[] stringArray){
 
         for(int i=0; i< (stringArray.length-1)/2; i++){
@@ -25,7 +25,6 @@ public class Calculator {
             }
             parseOperation(stringArray,i*2);
         }
-        return ;
     }
 
     public static void parseOperation(String[] stringArray, int start){
@@ -61,8 +60,6 @@ public class Calculator {
             throw new IllegalArgumentException("Error: need right operator");
 
         stringArray[start+2]=String.valueOf(result);
-
-        return;
     }
 
     public static int add(int firstOperand, int secondOperand) {
