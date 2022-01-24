@@ -1,5 +1,6 @@
-package calculator;
+package calculator.domain;
 
+import calculator.Constant;
 import java.util.List;
 
 public class Calculator {
@@ -19,7 +20,8 @@ public class Calculator {
     }
 
     private void calculateNumbers() {
-        for (int i = Constant.INIT_ARITHMETIC; i < splitedInput.size(); i += Constant.NEXT_ARITHMETIC) {
+        for (int i = Constant.INIT_ARITHMETIC; i < splitedInput.size();
+            i += Constant.NEXT_ARITHMETIC) {
             char arithmetic = splitedInput.get(i).charAt(0);
             int number = Integer.parseInt(splitedInput.get(i + 1));
 

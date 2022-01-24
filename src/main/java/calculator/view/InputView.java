@@ -1,10 +1,11 @@
-package calculator;
+package calculator.view;
 
+import calculator.Constant;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class Console {
+public class InputView {
 
     private String userInput;
     private List<String> splitedInput;
