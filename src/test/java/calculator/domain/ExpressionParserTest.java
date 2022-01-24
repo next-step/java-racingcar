@@ -2,12 +2,13 @@ package calculator.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.io.IOException;
 import org.junit.jupiter.api.Test;
 
 class ExpressionParserTest {
 
     @Test
-    void parseExpression_사용자_입력을_받아_Operators_Terms_생성() {
+    void parseExpression_사용자_입력을_받아_Operators_Terms_생성() throws IOException {
 
         //given
         String userInput = "1 + 2 * 3";
