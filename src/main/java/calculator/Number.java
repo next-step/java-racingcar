@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Number {
 
-    private List<Integer> numbers;
+    private final List<Integer> numbers;
 
     public Number() {
         numbers = new ArrayList<>();
     }
 
-    public void addNumber(String num) {
+    public void add(String num) {
         if (!num.matches("[+-]?\\d*(\\.\\d+)?")) {
             throw new NumberFormatException("숫자가 아닙니다");
         }

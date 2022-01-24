@@ -9,11 +9,9 @@ public class Application {
     public static void main(String[] args) throws IOException {
         UserInput userInput = new UserInput();
 
-        Separator separator = new Separator();
-        separator.separate(userInput.inputArr);
-
-        Number number = separator.getNumberInstance();
-        Operator operator = separator.getOperatorInstance();
+        Extractor extractor = new Extractor();
+        Number number = extractor.extractNumbers(userInput.splittedInput);
+        Operator operator = extractor.extractOperators(userInput.splittedInput);
 
         Calculator calculator = new Calculator();
 

@@ -8,13 +8,13 @@ public class Operator {
 
     private final static List<String> SYMBOLS = new ArrayList<>(
         Arrays.asList(Calculator.ADD, Calculator.SUB, Calculator.MUL, Calculator.DIV));
-    private List<String> operators;
+    private final List<String> operators;
 
     public Operator() {
         operators = new ArrayList<>();
     }
 
-    public void addOperator(String ope) {
+    public void add(String ope) {
         if (!SYMBOLS.contains(ope)) {
             throw new IllegalArgumentException(ope + " 는 연산기호가 아닙니다.");
         }
