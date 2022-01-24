@@ -55,7 +55,7 @@ public class RacingGame {
         return this.racingCars;
     }
 
-    public int getTrial() {
+    protected int getTrial() {
         return this.trial;
     }
 }

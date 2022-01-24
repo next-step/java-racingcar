@@ -35,11 +35,11 @@ public class RacingCar {
         System.out.println(String.format("%-5s: %s", carName, dash));
     }
 
-    public String getCarName() {
+    protected String getCarName() {
         return this.carName;
     }
 
-    public int getPosition() {
+    protected int getPosition() {
         return this.carPosition;
     }
 }
