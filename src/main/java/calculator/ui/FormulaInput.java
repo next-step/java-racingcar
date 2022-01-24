@@ -26,7 +26,7 @@ public class FormulaInput {
     }
 
     private static void isBlankOrNot(String input) {
-        if (input == null || "".equals(input)) {
+        if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException("입력값이 Null이거나 빈 공백 문자입니다!");
         }
     }
