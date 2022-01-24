@@ -1,6 +1,6 @@
 package calculator;
 
-import calculator.service.Calculator;
+import calculator.domain.Calculator;
 import calculator.ui.FormulaInput;
 import java.util.List;
 

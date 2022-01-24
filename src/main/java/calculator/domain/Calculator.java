@@ -1,6 +1,5 @@
-package calculator.service;
+package calculator.domain;
 
-import calculator.util.Operation;
 import java.util.List;
 import java.util.Stack;
 
