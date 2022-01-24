@@ -16,13 +16,21 @@ public class Race {
         return;
     }
 
+    public static int getMaxScore(Car[] cars) {
+        int maximum = 0;
+        for (int i = 0; i < cars.length; i++) {
+            maximum = Math.max(maximum, cars[i].getPosition());
+        }
+        return maximum;
+    }
+
     public static void repeatGame(Car[] cars, int times) {
         while ((times--) > 0) {
             for (int i = 0; i < cars.length; i++) {
                 int randomNumber = Race.getRandomNumber();
                 Race.compareWithFour(cars, i, randomNumber);
             }
-            IOClass.printCurrent(cars);
+            IOClass.printCurrentPosition(cars);
             System.out.println();
         }
     }

@@ -6,8 +6,8 @@ public class Car {
     int position;
     final int INIT_POSITION = 0;
 
-    Car() {
-        this.name = "";
+    Car(String name) {
+        this.name = name;
         this.position = INIT_POSITION;
     }
 

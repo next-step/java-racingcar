@@ -29,9 +29,9 @@ class RaceTest {
     public void checkWhenRandomNumberIsFive() {
         Race race = new Race();
         Car[] cars = new Car[3];
-        cars[0] = new Car();
-        cars[1] = new Car();
-        cars[2] = new Car();
+        cars[0] = new Car("audi");
+        cars[1] = new Car("benz");
+        cars[2] = new Car("bmw");
         race.compareWithFour(cars, 1, 5);
         assertThat(cars[1]).isEqualTo(1);
     }
@@ -41,9 +41,9 @@ class RaceTest {
     public void checkWhenRandomNumberIsFour() {
         Race race = new Race();
         Car[] cars = new Car[3];
-        cars[0] = new Car();
-        cars[1] = new Car();
-        cars[2] = new Car();
+        cars[0] = new Car("audi");
+        cars[1] = new Car("benz");
+        cars[2] = new Car("bmw");
         race.compareWithFour(cars, 1, 4);
         assertThat(cars[1]).isEqualTo(1);
     }
@@ -53,9 +53,9 @@ class RaceTest {
     public void checkWhenRandomNumberIsThree() {
         Race race = new Race();
         Car[] cars = new Car[3];
-        cars[0] = new Car();
-        cars[1] = new Car();
-        cars[2] = new Car();
+        cars[0] = new Car("audi");
+        cars[1] = new Car("benz");
+        cars[2] = new Car("bmw");
         race.compareWithFour(cars, 1, 3);
         assertThat(cars[1]).isEqualTo(0);
     }
