@@ -5,9 +5,9 @@ import java.io.IOException;
 
 public class UserInput {
 
-    Printer printer = new Printer();
-    Scanner scan = new Scanner(System.in);
-    String[] inputArr;
+    private Printer printer = new Printer();
+    private Scanner scan = new Scanner(System.in);
+    public String[] splittedInput;
 
     public UserInput() throws IOException {
         String userInput = "";
@@ -17,7 +17,7 @@ public class UserInput {
         } catch (IllegalArgumentException e) {
             printer.printErrorMessage(e.getMessage());
         }
-        inputArr = split(userInput);
+        splittedInput = split(userInput);
     }
 
     private String console() throws IOException {

@@ -9,15 +9,13 @@ public class Application {
     public static void main(String[] args) throws IOException {
         UserInput userInput = new UserInput();
 
-        Separator separator = new Separator();
-        separator.separate(userInput.inputArr);
-
-        Number number = separator.getNumberInstance();
-        Operator operator = separator.getOperatorInstance();
+        Extractor extractor = new Extractor();
+        Number numbers = extractor.extractNumbers(userInput.splittedInput);
+        Symbol symbols = extractor.extractSymbols(userInput.splittedInput);
 
         Calculator calculator = new Calculator();
 
-        double output = calculator.doMultipleOperation(number, operator);
+        double output = calculator.doMultipleOperation(numbers, symbols);
         printer.printOutputMessage(output);
     }
 }
