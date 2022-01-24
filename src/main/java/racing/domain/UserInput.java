@@ -10,15 +10,14 @@ public class UserInput {
 
     private static final int MIN_LENGTH = 1;
     private static final int MAX_LENGTH = 5;
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     private UserInput() {
     }
 
     public static List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
+        String input = SCANNER.nextLine();
         List<String> nameList;
 
         try {
@@ -58,12 +57,10 @@ public class UserInput {
 
     public static int getTryNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-
-        Scanner sc = new Scanner(System.in);
         int tryNumber;
 
         try {
-            tryNumber = sc.nextInt();
+            tryNumber = SCANNER.nextInt();
             checkTryNumber(tryNumber);
         } catch (InputMismatchException e) {
             System.out.println("[ERROR] 숫자만 입력 해주세요.");
