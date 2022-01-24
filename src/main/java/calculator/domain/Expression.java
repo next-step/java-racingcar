@@ -24,7 +24,8 @@ public class Expression {
     }
 
     public void calculate() {
-        for (int i = 1, size = numbers.size(); i < size; i++) {
+        int numberSize = numbers.size();
+        for (int i = 1; i < numberSize; i++) {
             int operand = Integer.parseInt(numbers.get(i));
             String operator = operators.get(i);
 
