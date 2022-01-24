@@ -1,6 +1,6 @@
 package calculator.domain;
 
-import java.util.regex.Pattern;
+import java.util.List;
 
 public class Validator {
 
@@ -11,14 +11,39 @@ public class Validator {
 
     public static void isEmpty(String userInput) {
         if (userInput == null || userInput.trim().length() == 0) {
-            throw new IllegalArgumentException("[ERROR] 연산 가능한 수식을 입력해주세요.");
+            throw new IllegalArgumentException();
         }
     }
 
     public static void canCalculate(String userInput) {
         String cannotCalculate = "(.*)[^\\s\\d+*/-](.*)";
         if (userInput.matches(cannotCalculate)) {
-            throw new IllegalArgumentException("[ERROR] 숫자, 연산자, 공백 문자만 허용됩니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+    
+    public static void isRightOrder(List<String> parsedInput) {
+        for (int i = 0; i < parsedInput.size(); i++) {
+            String target = parsedInput.get(i);
+            if (i % 2 == 0) {
+                isNumber(target);
+            } else {
+                isOperator(target);
+            }
+        }
+    }
+
+    private static void isNumber(String target) {
+        try {
+            Double.parseDouble(target);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void isOperator(String target) {
+        if (!(target.equals("+") | target.equals("-") | target.equals("*") | target.equals("/"))) {
+            throw new IllegalArgumentException();
         }
     }
 }
