@@ -4,7 +4,6 @@ import java.util.stream.Stream;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Move;
 import racingcar.domain.Participants;
-import racingcar.domain.RacingResult;
 import racingcar.domain.random.RandomGenerator;
 
 public class RacingController {
@@ -24,24 +23,27 @@ public class RacingController {
 
     public void start() {
         System.out.println(HEAD_MESSAGE);
-        RacingResult racingResult = new RacingResult(participants);
-
         for (int i = 0; i < turnCount; i++) {
-            racingResult = race(racingResult);
+            race();
             printer.getResultView(participants);
         }
     }
 
-    public RacingResult race(RacingResult result) {
+    public void race() {
         for (int i = 0; i < participants.count(); i++) {
-            boolean bool = move.isSatisfiedMoveCondition(new RandomGenerator());
-            result.moveCarIfPositionChanged(i, bool);
+            boolean condition = move.isSatisfiedMoveCondition(new RandomGenerator());
+            moveCarIfConditionIsSatisfied(i, condition);
         }
-        return result;
     }
 
     public void end() {
         Stream<String> winnersName = participants.getWinners().map(Car::getName);
         printer.printFinalWinners(winnersName);
+    }
+
+    public void moveCarIfConditionIsSatisfied(int index, boolean condition) {
+        if (condition) {
+            participants.get(index).go();
+        }
     }
 }
