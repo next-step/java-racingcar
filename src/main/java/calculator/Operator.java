@@ -1,7 +1,6 @@
 package calculator;
 
 import java.util.Arrays;
-import java.util.Optional;
 import java.util.function.BiFunction;
 
 public enum Operator {
@@ -9,7 +8,14 @@ public enum Operator {
     ADD("+", (firstNumber, secondNumber) -> firstNumber + secondNumber),
     SUB("-", (firstNumber, secondNumber) -> firstNumber - secondNumber),
     MULTIPLY("*", (firstNumber, secondNumber) -> firstNumber * secondNumber),
-    DIVIDE("/", (firstNumber, secondNumber) -> firstNumber / secondNumber);
+    DIVIDE("/", (firstNumber, secondNumber) -> {
+
+        if (secondNumber == 0) {
+            throw new IllegalArgumentException(CalculatorException.INVALID_DIVIDENUMBER);
+        }
+
+        return firstNumber / secondNumber;
+    });
 
     private final String operator;
     private final BiFunction<Integer, Integer, Integer> expression;

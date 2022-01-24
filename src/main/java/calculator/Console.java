@@ -39,10 +39,6 @@ public class Console {
         if (!validateNumber()) {
             throw new IllegalArgumentException(CalculatorException.INVALID_NUMBER);
         }
-
-        if (!validateDivideZero()) {
-            throw new IllegalArgumentException(CalculatorException.INVALID_DIVIDENUMBER);
-        }
     }
 
     private Boolean validateNumber() {
@@ -65,18 +61,5 @@ public class Console {
         if (userInput.length() == 0) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private Boolean validateDivideZero() {
-        for (int i = Constant.INIT_ARITHMETIC; i < splitedInput.size(); ++i) {
-            boolean isZero = splitedInput.get(i).matches("0");
-            boolean isDivideBeforeZero = splitedInput.get(i - 1).matches("/");
-
-            if (i % 2 == 0 && isZero && isDivideBeforeZero) {
-                return false;
-            }
-        }
-
-        return true;
     }
 }
