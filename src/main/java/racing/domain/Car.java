@@ -20,7 +20,7 @@ public class Car {
         return position;
     }
 
-    public static void checkNameLength(final String name) {
+    private static void checkNameLength(final String name) {
         if (name.length() < CAR_NAME_MIN_LENGTH || name.length() > CAR_NAME_MAX_LENGTH) {
             throw new IllegalArgumentException(
                 "[ERROR] 이름의 길이는 " + CAR_NAME_MIN_LENGTH + " ~ " + CAR_NAME_MAX_LENGTH
