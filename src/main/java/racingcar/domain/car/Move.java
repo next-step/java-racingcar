@@ -9,7 +9,7 @@ public class Move {
     private RandomFactory randomFactory;
 
     private Move() {
-        randomFactory = new RandomFactory();
+        randomFactory = RandomFactory.get();
     }
 
     public static Move get() {
