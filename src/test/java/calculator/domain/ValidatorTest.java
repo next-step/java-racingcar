@@ -37,7 +37,7 @@ class ValidatorTest {
     void 숫자이다_실패_숫자가아님() {
 
         // then
-        assertThrows(IllegalArgumentException.class, () -> Validator.validateIsNumber("+"));
+        assertThrows(InputMismatchException.class, () -> Validator.validateIsNumber("+"));
     }
 
     @ValueSource(strings = {"+", "-", "*", "/"})
