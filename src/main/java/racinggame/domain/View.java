@@ -21,7 +21,15 @@ public class View {
     }
 
     public void printProgress() {
-        racingCars.forEach(RacingCar::printCurrPosition);
+        StringBuilder sb = new StringBuilder();
+        racingCars.forEach(car -> sb.append(drawCurrPosition(car)));
+
+        System.out.println(sb);
+    }
+
+    private String drawCurrPosition(RacingCar car) {
+        String trace = Utils.repeat("-", car.getPosition());
+        return String.format("%-5s: %s\n", car.getCarName(), trace);
     }
 
     public void printWinners() {

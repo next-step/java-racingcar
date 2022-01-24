@@ -30,16 +30,11 @@ public class RacingCar {
         this.carPosition += 1;
     }
 
-    public void printCurrPosition() {
-        String dash = Utils.repeat("-", carPosition);
-        System.out.println(String.format("%-5s: %s", carName, dash));
-    }
-
-    protected String getCarName() {
-        return this.carName;
-    }
-
-    protected int getPosition() {
+    public int getPosition() {
         return this.carPosition;
+    }
+
+    public String getCarName() {
+        return this.carName;
     }
 }
