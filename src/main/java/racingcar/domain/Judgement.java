@@ -27,8 +27,8 @@ public class Judgement {
             System.out.println(exception.getMessage());
         }
 
-        for(int idx=0; idx<cars.size(); idx++){
-            printWinner(max, cars.get(idx));
+        for(Car car : cars){
+            printWinner(max, car);
         }
     }
 
