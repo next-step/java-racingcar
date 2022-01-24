@@ -12,6 +12,11 @@ public class Expression {
     private double result = 0;
 
     public Expression(String expression) {
+
+        if (!Validator.checkValidate(expression)) {
+            throw new IllegalArgumentException("[ERROR] 유효한 식이 아닙니다.");
+        }
+
         expression = expression.replaceAll(" ", "");
         numbers = Arrays.asList(expression.split("[-+*/]"));
         operators = Arrays.asList(expression.split("[0-9]+"));
