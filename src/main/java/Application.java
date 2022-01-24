@@ -11,14 +11,14 @@ import racing.Racing;
 public class Application {
 
     public static void main(String[] args) throws IOException {
-        calculateString();
-//        carRacing();
+//        calculateString();
+        carRacing();
     }
 
     private static void carRacing() throws IOException {
         //입력 받아서 차 생성
         CarGenerator carGenerator = new CarGenerator();
-        List<Car> cars = carGenerator.createCars();
+        List<Car> cars = carGenerator.createCars(4);
 
         //레이스 실행
         Racing racing = new Racing(cars);
