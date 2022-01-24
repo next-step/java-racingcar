@@ -7,6 +7,7 @@ import racinggame.domain.Cars;
 import racinggame.domain.GameInit;
 import racinggame.domain.PlayRacingGame;
 import racinggame.domain.Winner;
+import racinggame.view.ResultView;
 
 public class Application {
 
@@ -15,6 +16,7 @@ public class Application {
         String[] carNames = gameInit.inputPlayerName();
         int playGameNumber = gameInit.inputTryNumber();
         Random random=new Random();
+        ResultView resultView = new ResultView();
         int maxLocation=0;
 
         Cars cars = new Cars(carNames);
@@ -25,7 +27,7 @@ public class Application {
         for (; playGameNumber > 0; playGameNumber--) {
             List<Integer> randomNumberList = playRacingGame.makeRandomNumbers(carList.size(),random);
             cars.move(randomNumberList);
-            playRacingGame.printCarsLocation(carList);
+            resultView.printCarsLocation(carList);
 
         }
         maxLocation=cars.findMaxLocation();
