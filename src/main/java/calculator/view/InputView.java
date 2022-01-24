@@ -7,11 +7,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private String userInput;
-    private List<String> splitedInput;
-
-    public List<String> readLine() {
-        Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static String getLine() {
         String line = scanner.nextLine();
