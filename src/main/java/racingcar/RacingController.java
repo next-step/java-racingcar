@@ -8,7 +8,7 @@ import racingcar.domain.random.RandomGenerator;
 
 public class RacingController {
 
-    private static final String HEAD_MESSAGE = "\n실행 결과";
+
     private final Participants participants;
     private final Printer printer = new Printer();
 
@@ -22,11 +22,12 @@ public class RacingController {
     }
 
     public void start() {
-        System.out.println(HEAD_MESSAGE);
+        StringBuilder result_sb = new StringBuilder();
         for (int i = 0; i < turnCount; i++) {
             race();
-            printer.getResultView(participants);
+            result_sb.append(printer.getResultOfOneTurn(participants));
         }
+        printer.printResultMessage(result_sb);
     }
 
     public void race() {

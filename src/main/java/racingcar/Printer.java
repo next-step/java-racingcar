@@ -8,6 +8,7 @@ import racingcar.domain.car.Car;
 
 public class Printer {
     private static final String DASH = "-";
+    private static final String HEAD_MESSAGE = "\n실행 결과\n";
     private static final String RESULT_FORMAT = "%s : %s\n";
     private static final String FINAL_RESULT_FORMAT = "최종 우승자 : %s";
 
@@ -26,19 +27,26 @@ public class Printer {
         System.out.println(ERROR_PREFIX + message);
     }
 
-    public static void printCarNameAndStatus(Car car) {
+    public static String createCarStatusMessage(Car car) {
         String repeated = new String(new char[car.getStatus()]).replace("\0", DASH);
-        System.out.printf(RESULT_FORMAT, car.getName(), repeated);
+        return String.format(RESULT_FORMAT, car.getName(), repeated);
     }
 
     public void printFinalWinners(Stream<String> winnersName) {
         System.out.printf(FINAL_RESULT_FORMAT, winnersName.collect(Collectors.joining(", ")));
     }
 
-    public void getResultView(Participants participants) {
+    public String getResultOfOneTurn(Participants participants) {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < participants.count(); i++) {
-            printCarNameAndStatus(participants.get(i));
+            sb.append(createCarStatusMessage(participants.get(i)));
         }
-        System.out.println();
+        return sb.append("\n").toString();
+    }
+
+    public void printResultMessage(StringBuilder result_sb) {
+        StringBuilder sb = new StringBuilder(HEAD_MESSAGE);
+        sb.append(result_sb);
+        System.out.println(sb);
     }
 }
