@@ -2,6 +2,7 @@ package calculator.service;
 
 import calculator.util.Operation;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Stack;
 
 public class Calculator {
@@ -18,7 +19,8 @@ public class Calculator {
 
         while (symbols.size() > 1) {
             double prev = Double.parseDouble(symbols.pop());
-            Operation operator = Operation.fromString(symbols.pop()).get();
+            Operation operator = Operation.fromString(symbols.pop()).orElseThrow(
+                NoSuchElementException::new);
             double next = Double.parseDouble(symbols.pop());
 
             double result = operator.apply(prev, next);
