@@ -53,4 +53,5 @@ public class StringProcessor {
          userInput = userInput.replaceAll(" ", "");
 
     }
+
 }

@@ -52,4 +52,5 @@ public class Calculator {
     private int divide() {
         return leftNumber / rightNumber;
     }
+
 }

@@ -35,5 +35,4 @@ public class Application {
         resultView.printWinner(winnerList);
     }
 
-
 }
