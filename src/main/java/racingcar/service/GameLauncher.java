@@ -34,7 +34,7 @@ public class GameLauncher {
             .max().getAsInt();
 
         List<String> winnerList = racingCarList.stream()
-            .filter(car -> car.getPosition() == maxPosition)
+            .filter(car -> car.isSamePosition(maxPosition))
             .map(Car::getName)
             .collect(Collectors.toList());
 

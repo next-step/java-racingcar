@@ -8,4 +8,6 @@ public interface Car {
     int getPosition();
 
     void moveForward();
+
+    boolean isSamePosition(int position);
 }

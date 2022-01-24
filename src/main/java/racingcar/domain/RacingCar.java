@@ -37,6 +37,10 @@ public class RacingCar implements Car {
         }
     }
 
+    public boolean isSamePosition(int position) {
+        return this.position == position;
+    }
+
     private void isCorrectNameSize(String name) {
         if (NAME_SIZE < name.length()) {
             throw new IllegalArgumentException("자동차 이름의 길이가 5를 초과했습니다!");
