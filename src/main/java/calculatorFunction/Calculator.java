@@ -27,7 +27,7 @@ public class Calculator {
             return true;
         }
         if (stringArray[i * 2 + 1] == null) {
-            System.out.println("정답: " + Integer.parseInt(stringArray[i * 2]));
+            System.out.println("정답: " + Double.parseDouble(stringArray[i * 2]));
             return true;
         }
 
@@ -35,7 +35,7 @@ public class Calculator {
     }
 
     public static void parseOperation(String[] stringArray, int start){
-        int firstOperand, secondOperand;
+        double firstOperand, secondOperand;
 
         if (stringArray[start].equals("ERROR") || stringArray[start + 2].equals("ERROR")) {
             stringArray[0] = "ERROR";
@@ -43,10 +43,10 @@ public class Calculator {
         }
 
         String operator=stringArray[start+1];
-        firstOperand=Integer.parseInt(stringArray[start]);
-        secondOperand=Integer.parseInt(stringArray[start+2]);
+        firstOperand=Double.parseDouble(stringArray[start]);
+        secondOperand=Double.parseDouble(stringArray[start+2]);
 
-        int result=0;
+        double result=0;
         if(operator.equals("+")){
             result=add(firstOperand,secondOperand);
         }
@@ -60,28 +60,30 @@ public class Calculator {
             if(secondOperand==0) {
                 stringArray[0] = "ERROR";
             }
-            else
-                result=div(firstOperand,secondOperand);
+            else {
+                result = div(firstOperand, secondOperand);
+            }
         }
-        else
+        else {
             throw new IllegalArgumentException("Error: need right operator");
+        }
 
         stringArray[start+2]=String.valueOf(result);
     }
 
-    public static int add(int firstOperand, int secondOperand) {
+    public static double add(double firstOperand, double secondOperand) {
 
         return firstOperand + secondOperand;
     }
-    public static int sub(int firstOperand, int secondOperand){
+    public static double sub(double firstOperand, double secondOperand){
 
         return firstOperand - secondOperand;
     }
-    public static int mul(int firstOperand, int secondOperand) {
+    public static double mul(double firstOperand, double secondOperand) {
 
         return firstOperand * secondOperand;
     }
-    public static int div(int firstOperand, int secondOperand) {
+    public static double div(double firstOperand, double secondOperand) {
 
         return firstOperand / secondOperand;
     }
