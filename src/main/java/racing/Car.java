@@ -2,13 +2,15 @@ package racing;
 
 public class Car {
 
-    private String name;
+    private final String name;
     private int distance;
+    private final int MOVE_THRESHOLD;
 
-    public Car(String name) {
+    public Car(String name, int moveThreshold) {
         validateNameLength(name);
         this.name = name;
         this.distance = 0;
+        this.MOVE_THRESHOLD = moveThreshold;
     }
 
     private void validateNameLength(String name) {
