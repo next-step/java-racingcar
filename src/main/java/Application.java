@@ -11,27 +11,19 @@ import racing.Racing;
 public class Application {
 
     public static void main(String[] args) throws IOException {
-//        calculateString();
-        carRacing();
+        List<Car> cars = generateCars();
+        startRacing(cars);
     }
 
-    private static void carRacing() throws IOException {
-        //입력 받아서 차 생성
-        CarGenerator carGenerator = new CarGenerator();
-        List<Car> cars = carGenerator.createCars();
-
-        //레이스 실행
+    private static void startRacing(List<Car> cars) throws IOException {
         Racing racing = new Racing(cars);
         racing.race();
     }
 
-    public static void calculateString() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        Validator validator = new Validator();
-        String[] input = validator.stringCheck(br.readLine());
-
-        Calculator calculator = new Calculator();
-        System.out.println(calculator.execute(input));
+    private static List<Car> generateCars() throws IOException {
+        CarGenerator carGenerator = new CarGenerator();
+        List<Car> cars = carGenerator.createCars();
+        return cars;
     }
+
 }
