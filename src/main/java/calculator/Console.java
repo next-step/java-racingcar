@@ -36,8 +36,16 @@ public class Console {
     }
 
     private void validateSplitedInput() {
-        if (!validateNumber() || !validateArithmetic() || !validateDivideZero()) {
-            throw new IllegalArgumentException();
+        if (!validateNumber()) {
+            throw new IllegalArgumentException(CalculatorException.INVALID_NUMBER);
+        }
+
+        if (!validateArithmetic()) {
+            throw new IllegalArgumentException(CalculatorException.INVALID_ARITHMATIC);
+        }
+
+        if (!validateDivideZero()) {
+            throw new IllegalArgumentException(CalculatorException.INVALID_DIVIDENUMBER);
         }
     }
 
