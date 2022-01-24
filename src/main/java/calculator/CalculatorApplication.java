@@ -2,7 +2,7 @@ package calculator;
 
 import java.util.List;
 
-public class ApplicationCalculatorMain {
+public class CalculatorApplication {
 
     public static void main(String[] args) {
         Console console = new Console();

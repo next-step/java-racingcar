@@ -1,6 +1,6 @@
 package racingcar;
 
-public class ApplicationRacingCar {
+public class RacingCarApplication {
     public static void main(String[] args) {
         Console console = new Console();
 
