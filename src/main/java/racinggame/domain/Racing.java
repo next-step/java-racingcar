@@ -50,42 +50,12 @@ public class Racing {
         }
         result.append("\n");
     }
-    
-//    public void printCarsLocation() {
-//        for (Car car : cars) {
-//            System.out.print(car.getName() + " : ");
-//            for (int i = 0; i < car.getLocation(); i++) {
-//                System.out.print('-');
-//            }
-//            System.out.println();
-//        }
-//        System.out.println();
-//    }
 
+    public List<Car> getCarInfo() {
+        return cars;
+    }
 
-//    public int findMaxLocation() {
-//        int maxLocation = 0;
-//        for (Car car : cars) {
-//            maxLocation = Math.max(car.getLocation(), maxLocation);
-//        }
-//        return maxLocation;
-//    }
-//
-//    public List<String> findWinner() {
-//        List<String> winnerUsers = new ArrayList<>();
-//        int maxLocation = findMaxLocation();
-//        for (Car car : cars) {
-//            if (car.getLocation() == maxLocation) {
-//                winnerUsers.add(car.getName());
-//            }
-//        }
-//        return winnerUsers;
-//    }
-//
-//    public void printWinner(List<String> winnerUsers) {
-//        System.out.print("최종 우승자: ");
-//        String winnerList = String.join(", ", winnerUsers);
-//        System.out.println(winnerList);
-//    }
-
+    public String getResult() {
+        return result.toString();
+    }
 }
