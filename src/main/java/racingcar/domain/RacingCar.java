@@ -30,6 +30,10 @@ public class RacingCar implements Car {
         return this.position == position;
     }
 
+    public boolean isSamePosition(int position) {
+        return this.position == position;
+    }
+
     private void isCorrectNameSize(String name) {
         if(name == null || name.isEmpty()){
             throw new IllegalArgumentException("자동차 이름이 빈값입니다!");
