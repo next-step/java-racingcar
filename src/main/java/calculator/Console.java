@@ -26,39 +26,40 @@ public class Console {
     }
 
     private void setUserInput(String userInput) {
-        validateUserInputEmpty(userInput);
+        if (!validateUserInputEmpty(userInput)) {
+            throw new IllegalArgumentException(CalculatorException.INVALID_INPUT);
+        }
 
         this.userInput = userInput;
     }
 
-    private void validateUserInputEmpty(String userInput) {
-        if (userInput.length() == 0) {
-            throw new IllegalArgumentException(CalculatorException.INVALID_INPUT);
-        }
+    public boolean validateUserInputEmpty(String userInput) {
+        return userInput.length() != 0;
     }
 
     private void splitUserInput(String userInput) {
-        this.splitedInput = Arrays.asList(userInput.split(" "));
+        splitedInput = Arrays.asList(userInput.split(" "));
     }
 
     private void validateSplitedInput() {
-        if (!validateNumber()) {
+        if (!validateNumber(splitedInput)) {
             throw new IllegalArgumentException(CalculatorException.INVALID_NUMBER);
         }
     }
 
-    private Boolean validateNumber() {
+    public boolean validateNumber(List<String> splitedInput) {
         if (splitedInput.size() % 2 == 0) {
             return false;
         }
 
-        boolean isNumber = true;
+        String isNumber = "";
 
         for (int i = Constant.NUMBER_INIT_INDEX; i < splitedInput.size();
             i += Constant.NEXT_ARITHMETIC) {
-            isNumber = Character.isDigit(splitedInput.get(i).charAt(0));
+
+            isNumber += splitedInput.get(i);
         }
 
-        return isNumber;
+        return isNumber.matches("[0-9]+");
     }
 }
