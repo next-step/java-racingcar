@@ -24,7 +24,7 @@ public class Application {
 
         //차 생성
         CarGenerator carGenerator = new CarGenerator();
-        List<Car> cars = carGenerator.createCars(carNames, 4);
+        List<Car> cars = carGenerator.createCars(carNames, 5, 4);
 
         //레이스 실행
         Racing racing = new Racing(cars);

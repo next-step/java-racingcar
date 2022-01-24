@@ -4,17 +4,19 @@ public class Car {
 
     private final String name;
     private int distance;
-    private final int MOVE_THRESHOLD;
+    private final int NAME_LENGTH_CONDITION;
+    private final int MOVE_CONDITION;
 
-    public Car(String name, int moveThreshold) {
-        validateNameLength(name);
+    public Car(String name, int nameLengthCondition, int moveCondition) {
         this.name = name;
         this.distance = 0;
-        this.MOVE_THRESHOLD = moveThreshold;
+        this.NAME_LENGTH_CONDITION = nameLengthCondition;
+        this.MOVE_CONDITION = moveCondition;
+        validateNameLength(name);
     }
 
     private void validateNameLength(String name) {
-        if (name.length() > 5) {
+        if (name.length() > NAME_LENGTH_CONDITION) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자를 초과할 수 없습니다.");
         }
     }
@@ -43,6 +45,6 @@ public class Car {
 
     private boolean moveCheck() {
         int random = (int) ((Math.random() * (10)));
-        return random >= MOVE_THRESHOLD;
+        return random >= MOVE_CONDITION;
     }
 }
