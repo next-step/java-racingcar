@@ -9,7 +9,7 @@ public class Application {
     public static void main(String[] args) {
         StringProcessor stringProcessor = new StringProcessor();
         while (true) {
-            stringProcessor.getInput();
+            stringProcessor.inputStringValue();
             stringProcessor.checkInput();
             try {
                 stringProcessor.deleteSpaceString();
