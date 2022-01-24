@@ -13,6 +13,10 @@ public class Car {
         this.position = 0;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     public String checkSamePosition(int position) {
         if (this.position == position) {
             return name + ", ";
@@ -20,14 +24,12 @@ public class Car {
         return "";
     }
 
-    public int drive() {
+    public void drive() {
         int randomNumber = generateRandomNumber();
         if (isMove(randomNumber)) {
-            position++;
+            this.position++;
         }
         printStatus();
-
-        return position;
     }
 
     private boolean isMove(int randomNumber) {

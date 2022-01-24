@@ -10,7 +10,6 @@ public class RacingGame {
 
     public RacingGame() {
         this.cars = new ArrayList<>();
-        this.maxPosition = 0;
     }
 
     public void startGame() {
@@ -34,18 +33,15 @@ public class RacingGame {
 
     private void driveCars() {
         for (Car car : cars) {
-            int position = car.drive();
-            setMaxPosition(position);
-        }
-    }
-
-    private void setMaxPosition(int position) {
-        if (position > maxPosition) {
-            maxPosition = position;
+            car.drive();
         }
     }
 
     private void showGameResult() {
+        for (Car car : cars) {
+            setMaxPosition(car.getPosition());
+        }
+
         StringBuilder sb = new StringBuilder();
         for (Car car : cars) {
             sb.append(car.checkSamePosition(maxPosition));
@@ -53,5 +49,11 @@ public class RacingGame {
         sb.setLength(sb.length() - 2);
 
         System.out.println("최종 우승자 : " + sb);
+    }
+
+    private void setMaxPosition(int position) {
+        if (position > maxPosition) {
+            maxPosition = position;
+        }
     }
 }
