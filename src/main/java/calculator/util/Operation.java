@@ -16,7 +16,7 @@ public enum Operation {
             return x - y;
         }
     },
-    TIMES("*") {
+    MULTIPLY("*") {
         public double apply(double x, double y) {
             return x * y;
         }

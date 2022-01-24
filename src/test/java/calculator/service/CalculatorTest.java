@@ -30,7 +30,7 @@ class CalculatorTest {
 
     @Test
     void 곱하기() {
-        double result = Operation.TIMES.apply(7, 3);
+        double result = Operation.MULTIPLY.apply(7, 3);
         assertThat(result).isEqualTo(21.0);
     }
 

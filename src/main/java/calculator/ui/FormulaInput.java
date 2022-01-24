@@ -12,7 +12,7 @@ public class FormulaInput {
 
     public static List<String> getFormula() {
         List<String> formular = new ArrayList<>();
-        System.out.println("계산할 연산식을 입력해주세요.");
+        System.out.println(FormulaOutput.REQUIRE_FORMULA_INPUT_MESSAGE);
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
             String input = bufferedReader.readLine();
             IsValidInput.isBlankOrNot(input);
@@ -20,7 +20,7 @@ public class FormulaInput {
             IsValidInput.isNotOperator(formular);
             IsValidInput.isNotNumber(formular);
         } catch (IllegalArgumentException | IOException e) {
-            System.out.println("[ERROR] " + e.getMessage());
+            System.out.println(FormulaOutput.ERROR_MESSAGE + e.getMessage());
         }
         return formular;
     }
