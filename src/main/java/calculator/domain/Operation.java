@@ -2,6 +2,8 @@ package calculator.domain;
 
 public class Operation {
 
+    private Operation() {}
+
     public static double addition(double result, int operand) {
         return result + (double) operand;
     }
