@@ -19,6 +19,7 @@ public class StringProcessor {
     public void inputStringValue() {
         Scanner sc = new Scanner(System.in);
         userInput = sc.nextLine();
+        checkInput();
     }
 
     public void checkInput() {

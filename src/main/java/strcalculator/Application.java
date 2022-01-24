@@ -10,7 +10,6 @@ public class Application {
         StringProcessor stringProcessor = new StringProcessor();
         while (true) {
             stringProcessor.inputStringValue();
-            stringProcessor.checkInput();
             try {
                 stringProcessor.deleteSpaceString();
                 String[] numbers = stringProcessor.parseInputNumber();
