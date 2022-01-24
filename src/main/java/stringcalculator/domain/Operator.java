@@ -34,9 +34,9 @@ public enum Operator {
     }
 
     public static void divideZeroValidation(int operand) {
-            if(operand == ZERO_NUMBER){
-                throw new IllegalArgumentException(ERROR_MESSAGE_DIVIDE);
-            }
+        if (operand == ZERO_NUMBER) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_DIVIDE);
+        }
     }
 
     private static int add(final int number, final int operand) {
