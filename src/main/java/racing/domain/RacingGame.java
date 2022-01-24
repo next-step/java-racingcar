@@ -5,11 +5,11 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final List<Car> carList;
+    private final List<Car> cars;
     private int maxPosition;
 
     public RacingGame() {
-        this.carList = new ArrayList<>();
+        this.cars = new ArrayList<>();
         this.maxPosition = 0;
     }
 
@@ -17,7 +17,7 @@ public class RacingGame {
         List<String> nameList = UserInput.getCarNames();
         int tryNumber = UserInput.getTryNumber();
         for (String name : nameList) {
-            carList.add(new Car(name));
+            cars.add(new Car(name));
         }
 
         startRacing(tryNumber);
@@ -33,7 +33,7 @@ public class RacingGame {
     }
 
     private void driveCars() {
-        for (Car car : carList) {
+        for (Car car : cars) {
             int position = car.drive();
             setMaxPosition(position);
         }
@@ -47,7 +47,7 @@ public class RacingGame {
 
     private void showGameResult() {
         StringBuilder sb = new StringBuilder();
-        for (Car car : carList) {
+        for (Car car : cars) {
             sb.append(car.checkSamePosition(maxPosition));
         }
         sb.setLength(sb.length() - 2);
