@@ -14,10 +14,8 @@ public class Calculator {
         calculateNumbers(splitExpression);
     }
 
-    public int getResult() {
-        calculateNumbers();
-
-        return result;
+    public void printResult() {
+        System.out.println(result);
     }
 
     private void calculateNumbers() {
