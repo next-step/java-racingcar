@@ -18,7 +18,7 @@ public enum Operation {
         this.operationInterface = operationInterface;
     }
 
-    public static Operation of(String operation) {
+    public static Operation from(String operation) {
         return Arrays.stream(values())
             .filter(op -> op.isEqual(operation))
             .findFirst()

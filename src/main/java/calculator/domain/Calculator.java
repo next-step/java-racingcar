@@ -41,7 +41,7 @@ public class Calculator {
 
     private void extractOperation(String[] splitExpression) {
         for (int index = START_OPERATION_INDEX; index < splitExpression.length; index += INTERVAL_OF_INDEX) {
-            operations.add(Operation.of(splitExpression[index]));
+            operations.add(Operation.from(splitExpression[index]));
         }
     }
 
