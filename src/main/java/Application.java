@@ -11,7 +11,7 @@ import racing.Racing;
 public class Application {
 
     public static void main(String[] args) throws IOException {
-        List<Car> cars = generateCars();
+        List<Car> cars = readyCars();
         startRacing(cars);
     }
 
@@ -20,9 +20,9 @@ public class Application {
         racing.race();
     }
 
-    private static List<Car> generateCars() throws IOException {
-        CarGenerator carGenerator = new CarGenerator();
-        List<Car> cars = carGenerator.createCars();
+    private static List<Car> readyCars() throws IOException {
+        String[] names = CarGenerator.readCarName();
+        List<Car> cars = CarGenerator.generateCars(names);
         return cars;
     }
 
