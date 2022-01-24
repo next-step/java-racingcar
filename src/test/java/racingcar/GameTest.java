@@ -2,7 +2,6 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,17 +14,18 @@ import racingcar.utils.InputView;
 
 public class GameTest {
 
-    @DisplayName("이름 splitter가 적절하게 입력되었을 때는 플레이어를 정상적으로 인식하며, 그렇지 않을 경우 IllegalArgumentException을 발생")
+    @DisplayName("이름 splitter가 적절하게 입력되었을 때는 플레이어를 정상적으로 인식")
     @Test
     void testNameSplitterValid() {
-        assertAll(
-            // Valid Case
-            () -> assertThat(InputView.parseCarNames("A,B,C")) // Given & When
-                    .isEqualTo(Arrays.asList("A", "B", "C")), // Then
-            // Invalid Case
-            () -> assertThatThrownBy(() -> InputView.parseCarNames("A B C")) // Given & When
-                    .isInstanceOf(IllegalArgumentException.class) // Then
-        );
+        assertThat(InputView.parseCarNames("A,B,C")) // Given & When
+            .isEqualTo(Arrays.asList("A", "B", "C")); // Then
+    }
+
+    @DisplayName("이름 splitter가 적절하게 입력되지않을 경우 IllegalArgumentException을 발생")
+    @Test
+    void testNameSplitterInvalid() {
+        assertThatThrownBy(() -> InputView.parseCarNames("A B C")) // Given & When
+            .isInstanceOf(IllegalArgumentException.class); // Then
     }
 
     @DisplayName("각 플레이어별 이름이 (5자) 지정된 글자 수 이내일 경우 통과하며, 그렇지 않을 경우 IllegalArgumentException을 발생")
@@ -39,7 +39,7 @@ public class GameTest {
             .map(Car::new)
             .collect(Collectors.toList())
         ))
-        // Then
+            // Then
             .isInstanceOf(IllegalArgumentException.class);
     }
 
