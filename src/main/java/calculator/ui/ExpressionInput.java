@@ -1,6 +1,6 @@
 package calculator.ui;
 
-import calculator.util.FormulaUtil;
+import calculator.util.ExpressionUtil;
 import calculator.util.Operation;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,9 +8,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FormulaInput {
+public class ExpressionInput {
 
-    public static List<String> getFormula() {
+    private ExpressionInput() {
+    }
+
+    public static List<String> getExpression() {
         List<String> formular = new ArrayList<>();
 
         System.out.println("계산할 연산식을 입력해주세요.");
@@ -18,7 +21,7 @@ public class FormulaInput {
             String input = bufferedReader.readLine();
             isBlankOrNot(input);
 
-            formular = FormulaUtil.split(input);
+            formular = ExpressionUtil.split(input);
             isNotOperator(formular);
             isNotNumber(formular);
         } catch (IllegalArgumentException | IOException e) {
