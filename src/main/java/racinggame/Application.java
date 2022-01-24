@@ -29,10 +29,10 @@ public class Application {
             RacingGame racingGame = new RacingGame(racingCars, trial);
             racingGame.start();
 
-            System.out.println("게임이 종료되었습니다. 중지하려면 q를 눌러주세요. 아무키나 누르면 다시 시작합니다.");
+            System.out.println("게임이 종료되었습니다. (종료 = q, 다시 시작 = 아무 키 입력)");
             String command = Utils.getInput();
 
-            if (command.equals(QUIT)) {
+            if (RacingGame.isQuit(command)) {
                 break;
             }
         }

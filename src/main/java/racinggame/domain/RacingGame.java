@@ -22,22 +22,21 @@ public class RacingGame {
 
     public void start() throws IOException {
         for (int i = 0; i < trial; i++) {
-            System.out.println("그만 하시려면 q, 계속하시려면 아무키나 입력해 주세요.");
-            String input = Utils.getInput();
+            System.out.println("계속 진행 하려면 아무키나 입력해 주세요.(종료 = q)");
+            String command = Utils.getInput();
 
-            if (isEnd(input)) {
+            if (isQuit(command)) {
                 System.exit(0);
             }
-
             progress();
+
             gameView.printProgress();
         }
-
         gameView.printWinners();
     }
 
-    private boolean isEnd(String input) {
-        return input.equals(QUIT);
+    public static boolean isQuit(String command) {
+        return command.equals(QUIT);
     }
 
     private void progress() {
