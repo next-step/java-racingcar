@@ -22,10 +22,7 @@ public class InputView {
         return turn;
     }
 
-    public static List<String> getCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String carNames = readString();
-
+    public static List<String> parseCarNames(final String carNames) {
         if (!carNames.contains(NAME_SPLITTER)) {
             throw new IllegalArgumentException("이름 구분자가 없거나 잘못되었습니다.");
         }
@@ -38,7 +35,8 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    private static String readString() {
+    public static String readCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         return scanner.nextLine();
     }
 }

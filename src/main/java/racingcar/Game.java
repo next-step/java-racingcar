@@ -3,23 +3,21 @@ package racingcar;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.movable.MovableStrategy;
 import racingcar.utils.OutputView;
-import racingcar.utils.Randoms;
 
 public class Game {
 
     private final Cars cars;
-    private final int RANDOM_BOUND = 10;
+    private final String WINNER_DELIMITER = ", ";
 
-    public Game(Cars cars) {
+    public Game(final Cars cars) {
         this.cars = cars;
     }
 
-    public void play() {
+    public void play(MovableStrategy strategy) {
         for (Car car: cars.get()) {
-            int random = Randoms.getRandomIntWithinRange(RANDOM_BOUND);
-            if (Randoms.moveAvailable(random))
-                car.run();
+            car.run(strategy);
             OutputView.printDistance(car);
         }
         System.out.println();
@@ -28,6 +26,6 @@ public class Game {
     public String winners() {
         return cars.filterWinners().stream()
             .map(Car::name)
-            .collect(Collectors.joining(", "));
+            .collect(Collectors.joining(WINNER_DELIMITER));
     }
 }

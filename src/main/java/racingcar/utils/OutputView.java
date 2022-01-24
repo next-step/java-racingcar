@@ -9,7 +9,7 @@ public class OutputView {
 
     private OutputView() {}
 
-    public static void printDistance(Car car) {
+    public static void printDistance(final Car car) {
         StringBuilder sb = new StringBuilder();
         sb.append(car.name() + CAR_RACER_SPLITTER);
         for (int index = 0; index < car.distance(); index++) {
@@ -18,7 +18,7 @@ public class OutputView {
         System.out.println(sb);
     }
 
-    public static void printWhoIsWinner(String winners) {
+    public static void printWhoIsWinner(final String winners) {
         System.out.print("최종 우승자 : " + winners);
     }
 
