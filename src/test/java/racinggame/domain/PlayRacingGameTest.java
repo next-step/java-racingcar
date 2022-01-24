@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import org.assertj.core.api.Assertions;
+import org.assertj.core.internal.bytebuddy.build.ToStringPlugin.Enhance;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -32,5 +34,16 @@ class PlayRacingGameTest {
 
 
     }
+
+    @DisplayName("랜덤넘버_리스트_개수_확인")
+    @Test
+    public void makeRandomNumbers(){
+
+        Random random = new Random();
+        PlayRacingGame playRacingGame = new PlayRacingGame();
+        List<Integer> randomNumbers = playRacingGame.makeRandomNumbers(3, random);
+        Assertions.assertThat(randomNumbers.size()).isEqualTo(3);
+    }
+
 
 }
