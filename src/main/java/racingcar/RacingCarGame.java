@@ -44,8 +44,6 @@ public class RacingCarGame {
     }
 
     private int getRandomMove() {
-        final int MIN_MOVE = 0;
-        final int MAX_MOVE = 9;
         return MIN_MOVE + RANDOM.nextInt(MAX_MOVE - MIN_MOVE + 1);
     }
 
@@ -56,9 +54,6 @@ public class RacingCarGame {
             moveCars(car, randomMove);
 
             String carName = car.getName();
-
-            car.move(distance);
-
             int totalMovingDistance = car.getMovingDistance();
 
             printGameStatus(carName, totalMovingDistance);
@@ -94,14 +89,13 @@ public class RacingCarGame {
     }
 
     private boolean checkMovable(int move) {
-        final int MOVABLE = 4;
         return MOVABLE <= move;
     }
 
-    private String getDashByMove(int move){
-        StringBuilder dash= new StringBuilder();
+    private String getDashByMove(int move) {
+        StringBuilder dash = new StringBuilder();
 
-        for(int i = 0; i < move; i++){
+        for (int i = 0; i < move; i++) {
             dash.append("-");
         }
         return dash.toString();
