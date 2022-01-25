@@ -4,6 +4,7 @@ public class Car {
 
     private final String name;
     private final static int NUMBER_ZERO = 0;
+    private final static String DELIMITER = " ";
     private int step;
 
     private Car(final String name) {
@@ -29,7 +30,7 @@ public class Car {
 
     public StringBuilder maxCheck(int max, StringBuilder playRacingResult) {
         if (max == getStep()) {
-            return playRacingResult.append(getName() + " ");
+            return playRacingResult.append(getName() + DELIMITER);
         }
         return playRacingResult;
     }
