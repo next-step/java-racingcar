@@ -28,6 +28,8 @@ public class RacingCarGame {
     }
 
     private int getRandomMove() {
+        final int MIN_MOVE = 0;
+        final int MAX_MOVE = 9;
         return MIN_MOVE + RANDOM.nextInt(MAX_MOVE - MIN_MOVE + 1);
     }
 
