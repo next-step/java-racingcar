@@ -1,15 +1,18 @@
 package calculator.domain;
 
-import java.util.Scanner;
+import calculator.view.UserInput;
 
 public class Calculator {
-    public Calculator() {
+    final private UserInput userInput;
+
+    public Calculator(UserInput userInput) {
+        this.userInput = userInput;
     }
 
-    public void startCalculate() {
+    public void calculate() {
         Expression expression;
         do {
-            String input = getUserInput();
+            String input = userInput.getInput();
             expression = new Expression(input);
         } while (checkDivideZero(expression));
     }
@@ -23,18 +26,5 @@ public class Calculator {
             return true;
         }
         return false;
-    }
-
-    private String getUserInput() {
-        System.out.println("식을 입력하세요");
-        Scanner scanner = new Scanner(System.in);
-        String str = scanner.nextLine();
-
-        while (!Validator.checkValidate(str)) {
-            System.out.println("유효한 식이 아닙니다. 다시 입력하세요.");
-            str = scanner.nextLine();
-        }
-
-        return str;
     }
 }
