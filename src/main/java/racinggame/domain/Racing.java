@@ -9,7 +9,7 @@ public class Racing {
     private static final int FORWARD_NUMBER = 4;
 
     private List<Car> cars = new ArrayList<>();
-    private StringBuilder result = new StringBuilder("");
+    private StringBuilder result = new StringBuilder();
 
     public Racing() {
     }
