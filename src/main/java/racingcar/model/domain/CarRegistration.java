@@ -16,7 +16,7 @@ public class CarRegistration {
     public void run(final List<String> input, final Racing racing) {
 
         for (String carName : input) {
-            racing.registerCar(Car.of(carName));
+            racing.registerCar(Car.get(carName));
         }
     }
 }

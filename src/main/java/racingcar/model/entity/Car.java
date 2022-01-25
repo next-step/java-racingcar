@@ -12,7 +12,7 @@ public class Car {
         this.step = NUMBER_ZERO;
     }
 
-    public static Car of(final String name) {
+    public static Car get(final String name) {
         return new Car(name);
     }
 
