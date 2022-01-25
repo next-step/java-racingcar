@@ -30,7 +30,7 @@ class RacingGameTest {
     @Test
     void RacingCar_리스트를_받아_RacingGame_객체_생성() {
         String[] carNames = {"car1", "car2"};
-        List<RacingCar> racingCars = RacingCar.createRacingCarFromCarNames(carNames);
+        List<RacingCar> racingCars = RacingCar.racingCarOf(carNames);
         int trial = 5;
 
         RacingGame racingGame = new RacingGame(racingCars, 5);

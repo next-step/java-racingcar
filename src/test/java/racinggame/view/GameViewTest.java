@@ -16,7 +16,7 @@ class GameViewTest {
 
         // given
         String[] cars = {"car1", "car2"};
-        List<RacingCar> racingCars = RacingCar.createRacingCarFromCarNames(cars);
+        List<RacingCar> racingCars = RacingCar.racingCarOf(cars);
 
         // when
         GameView gameView = new GameView(racingCars);
@@ -30,7 +30,7 @@ class GameViewTest {
 
         // given
         String[] cars = {"car1", "car2"};
-        List<RacingCar> racingCars = RacingCar.createRacingCarFromCarNames(cars);
+        List<RacingCar> racingCars = RacingCar.racingCarOf(cars);
         GameView gameView = new GameView(racingCars);
 
         // when
@@ -49,7 +49,7 @@ class GameViewTest {
 
         // given
         String[] cars = {"car1", "car2"};
-        List<RacingCar> racingCars = RacingCar.createRacingCarFromCarNames(cars);
+        List<RacingCar> racingCars = RacingCar.racingCarOf(cars);
         GameView gameView = new GameView(racingCars);
 
         // when

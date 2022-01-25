@@ -14,7 +14,8 @@ class RacingCarViewTest {
 
     @Test
     void 생성자_테스트() throws NoSuchFieldException, IllegalAccessException {
-        RacingCarView racingCarView = new RacingCarView(new RacingCar("car1"));
+        RacingCar car = new RacingCar("car", 0);
+        RacingCarView racingCarView = new RacingCarView(car);
 
         Field racingCar = RacingCarView.class.getDeclaredField("racingCar");
         racingCar.setAccessible(true);
@@ -24,8 +25,8 @@ class RacingCarViewTest {
     @ValueSource(ints = {1, 2, 3, 4, 5})
     @ParameterizedTest
     void drawCurrPosition(int position) {
-        RacingCar car1 = new RacingCar("car1", position);
-        RacingCarView racingCarView = new RacingCarView(car1);
+        RacingCar car = new RacingCar("car", 0);
+        RacingCarView racingCarView = new RacingCarView(car);
 
         String currPositionView = racingCarView.drawCurrPosition();
 
