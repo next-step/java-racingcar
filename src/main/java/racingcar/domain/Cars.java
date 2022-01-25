@@ -10,6 +10,7 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(final List<Car> cars) {
+        validateCarExists(cars);
         this.cars = cars;
     }
 
@@ -28,6 +29,12 @@ public class Cars {
         return cars.stream()
             .filter(car -> car.distance() == max)
             .collect(Collectors.toList());
+    }
+
+    private void validateCarExists(List<Car> cars) {
+        if (cars.size() == 0) {
+            throw new IllegalArgumentException("[ERROR] 플레이어가 존재하지 않습니다.");
+        }
     }
 
     private int calculateMax() {
