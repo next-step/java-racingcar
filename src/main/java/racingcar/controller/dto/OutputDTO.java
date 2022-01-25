@@ -3,27 +3,14 @@ package racingcar.controller.dto;
 import racingcar.model.entity.Car;
 
 public class OutputDTO {
-    private String name;
-    private int step;
+    private String resultMessage;
 
-    public OutputDTO(final Car car){
-        this.name = car.getName();
-        this.step = car.getStep();
+    public OutputDTO(String resultMessage) {
+        this.resultMessage = resultMessage;
     }
 
-    public String getName() {
-        return name;
+    public String getResultMessage() {
+        return resultMessage;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getStep() {
-        return step;
-    }
-
-    public void setStep(int step) {
-        this.step = step;
-    }
 }
