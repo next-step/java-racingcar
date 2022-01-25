@@ -28,6 +28,10 @@ public class Car {
     }
 
     private void validateName(final String name) {
+        if (name.length() == 0) {
+            throw new IllegalArgumentException("최소한 플레이어 이름은 비어있을 수 없습니다.");
+        }
+
         if (name.length() > LIMITED_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("이름은 " + LIMITED_CAR_NAME_LENGTH + "자를 넘을 수 없습니다.");
         }
