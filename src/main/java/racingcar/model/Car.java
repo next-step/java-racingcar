@@ -24,8 +24,8 @@ public class Car {
         }
     }
 
-    public void moveForward(RandomGenerator randomGenerator) {
-        if (randomGenerator.generateRandomNumber() >= 4) {
+    public void moveForward(int moveOrNot) {
+        if (moveOrNot >= 4) {
             this.position += "-";
         }
 
