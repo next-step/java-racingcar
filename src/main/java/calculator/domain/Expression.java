@@ -26,10 +26,8 @@ public class Expression {
     public void calculate() {
         int numberSize = numbers.size();
         for (int i = 1; i < numberSize; i++) {
-            int operand = Integer.parseInt(numbers.get(i));
-            String operator = operators.get(i);
-
-            result = Operation.calculate(operator, result, operand);
+            final int operand = Integer.parseInt(numbers.get(i));
+            result = Operation.calculate(operators.get(i), result, operand);
         }
     }
 
