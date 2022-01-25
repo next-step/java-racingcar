@@ -1,11 +1,8 @@
-package racingcar.common;
-
-import static racingcar.common.info.RacingGameErrorInfo.*;
-import static racingcar.common.info.RacingGameInfo.*;
+package racingcar.view;
 
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
-import racingcar.common.exception.InputValidationException;
+import racingcar.model.utils.exception.InputValidationException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,10 +10,8 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.common.info.RacingGameErrorInfo;
-import racingcar.common.info.RacingGameInfo;
 
-public class UserInput {
+public class RacingCarUserInput {
 
     private static final String DELIMITER = ",";
     private List<String> splitUserInput;
@@ -25,7 +20,7 @@ public class UserInput {
     private final BufferedReader bufferedReader;
     private final BufferedWriter log;
 
-    public UserInput() {
+    public RacingCarUserInput() {
         bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         log = new BufferedWriter(new OutputStreamWriter(System.out));
     }

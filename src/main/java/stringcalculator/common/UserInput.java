@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import racingcar.common.exception.InputValidationException;
 
 public class UserInput {
 

@@ -3,29 +3,23 @@ package racingcar.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static racingcar.common.info.RacingGameErrorInfo.*;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.assertj.core.api.AbstractBooleanAssert;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.common.UserInput;
-import racingcar.common.info.RacingGameErrorInfo;
-import racingcar.common.info.RacingGameInfo;
+import racingcar.view.RacingCarUserInput;
+import racingcar.model.entity.Car;
 
 public class ApplicationTest {
 
-    private UserInput userInput;
+    private RacingCarUserInput userInput;
 
     @DisplayName("객체 초기화")
     @BeforeEach
     void init() {
-        userInput = new UserInput();
+        userInput = new RacingCarUserInput();
     }
 
     @DisplayName("유저_입력_글자길이_테스트")
