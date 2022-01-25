@@ -11,6 +11,7 @@ import racinggame.view.ResultView;
 
 public class Application {
 
+    private static final int MAX_LOCATION_INIT=0;
     public static void main(String[] args) {
         GameInit gameInit = new GameInit();
         Random random=new Random();
@@ -21,7 +22,7 @@ public class Application {
         Cars cars = new Cars(carNames);
 
         int playGameNumber = gameInit.inputTryNumber();
-        int maxLocation=0;
+        int maxLocation;
         List<Car> carList = cars.getCars();
 
         System.out.println("실행 결과");
