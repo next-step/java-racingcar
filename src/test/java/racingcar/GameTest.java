@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.utils.Parser;
 import racingcar.view.InputView;
 
 public class GameTest {
@@ -17,22 +18,15 @@ public class GameTest {
     @DisplayName("이름 splitter가 적절하게 입력되었을 때는 플레이어를 정상적으로 인식")
     @Test
     void testNameSplitterValid() {
-        assertThat(InputView.parseCarNames("A,B,C")) // Given & When
+        assertThat(Parser.parseCarNames("A,B,C")) // Given & When
             .isEqualTo(Arrays.asList("A", "B", "C")); // Then
-    }
-
-    @DisplayName("이름 splitter가 적절하게 입력되지않을 경우 IllegalArgumentException을 발생")
-    @Test
-    void testNameSplitterInvalid() {
-        assertThatThrownBy(() -> InputView.parseCarNames("A B C")) // Given & When
-            .isInstanceOf(IllegalArgumentException.class); // Then
     }
 
     @DisplayName("각 플레이어별 이름이 (5자) 지정된 글자 수 이내일 경우 통과하며, 그렇지 않을 경우 IllegalArgumentException을 발생")
     @Test
     void testNameLengthValid() {
         // Given
-        List<String> carNames = InputView.parseCarNames("OK,Invalid,A_Car");
+        List<String> carNames = Parser.parseCarNames("OK,Invalid,A_Car");
 
         // When
         assertThatThrownBy(() -> new Cars(carNames.stream()
