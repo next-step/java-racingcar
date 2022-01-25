@@ -1,5 +1,6 @@
 package calculator.util;
 
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.DoubleBinaryOperator;
@@ -29,11 +30,13 @@ public enum Operation {
         return symbol;
     }
 
-    private static final Map<String, Operation> stringToEnum =
-        Stream.of(values()).collect(Collectors.
-            toMap(Object::toString, e -> e));
-
     public static Optional<Operation> from(String symbol) {
-        return Optional.ofNullable(stringToEnum.get(symbol));
+        return Arrays.stream(values())
+            .filter(operation -> operation.isSameSymbol(symbol))
+            .findAny();
+    }
+
+    private boolean isSameSymbol(String symbol) {
+        return this.symbol.equals(symbol);
     }
 }
