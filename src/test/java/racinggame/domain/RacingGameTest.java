@@ -40,7 +40,6 @@ class RacingGameTest {
         assertThat(racingGame.getTrial()).isEqualTo(trial);
     }
 
-    @Test
     @RepeatedTest(value = 1000)
     void getRandomValue_랜덤값을_생성()
             throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
