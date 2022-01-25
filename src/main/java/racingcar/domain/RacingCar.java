@@ -5,8 +5,6 @@ import racingcar.util.RandomUtil;
 
 public class RacingCar {
 
-    private static final int RANDOM_START = 0;
-    private static final int RANDOM_END = 9;
     private static final int THRESHOLD = 4;
     private static final int NAME_MAX_SIZE = 5;
     private final String name;
@@ -25,8 +23,8 @@ public class RacingCar {
         return position;
     }
 
-    public void moveForward() {
-        int randomNum = RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END);
+    public void moveForward(int randomNumber) {
+        int randomNum = randomNumber;
         if (THRESHOLD <= randomNum) {
             position++;
         }
