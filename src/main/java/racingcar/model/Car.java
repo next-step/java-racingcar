@@ -24,11 +24,8 @@ public class Car {
         }
     }
 
-    public void moveForward() {
-        RandomGenerator randomGenerator = new RandomGenerator();
-        int randomNumber = randomGenerator.generateRandomNumber();
-        //System.out.println(randomNumber);
-        if (randomNumber >= 4) {
+    public void moveForward(RandomGenerator randomGenerator) {
+        if (randomGenerator.generateRandomNumber() >= 4) {
             this.position += "-";
         }
 
