@@ -8,6 +8,7 @@ public class Calculator {
     public int result;
 
     public Calculator(List<String> splitExpression) {
+        validateEmptyExpression(splitExpression);
         result = Integer.parseInt(splitExpression.get(0));
 
         validateExpression(splitExpression);
@@ -65,6 +66,12 @@ public class Calculator {
         boolean isValidExpressionSize = splitExpression.size() % 2 == 0;
         if (isValidExpressionSize) {
             throw new IllegalArgumentException("[ERROR] 올바르지 않은 식입니다.");
+        }
+    }
+
+    private void validateEmptyExpression(List<String> splitExpression) {
+        if (splitExpression.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 빈 문자열 입니다.");
         }
     }
 }
