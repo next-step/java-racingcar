@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.movable.RandomMovableStrategy;
+import racingcar.utils.Parser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -11,8 +12,9 @@ public class Application {
 
     public static Cars setUp() {
         String carNames = InputView.readCarNames();
+
         return new Cars(
-            InputView.parseCarNames(carNames).stream()
+            Parser.parseCarNames(carNames).stream()
                 .map(Car::new)
                 .collect(Collectors.toList())
         );
