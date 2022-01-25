@@ -1,12 +1,13 @@
 package racingcar.model;
 
-import racingcar.util.Message;
 import racingcar.util.RandomGenerator;
 
 public class Car {
 
     private final String carName;
     private String position;
+    private final String CAR_NAME_LONGER_THAN_FIVE = "[ERROR] 자동차 이름은 5글자를 초과할 수 없습니다.";
+    private final String CAR_NAME_LESS_THAN_ONE = "[ERROR] 자동차 이름은 최소 1글자 이상이어야 합니다. ";
 
     public Car(String carName) {
         validateCarNameLength(carName);
@@ -15,13 +16,14 @@ public class Car {
     }
 
     private void validateCarNameLength(String carName) {
-        if(carName.length()<1){
-            throw new IllegalArgumentException(Message.CAR_NAME_LESS_THAN_ONE);
+        if (carName.length() < 1) {
+            throw new IllegalArgumentException(CAR_NAME_LESS_THAN_ONE);
         }
         if (carName.length() > 5) {
-            throw new IllegalArgumentException(Message.CAR_NAME_LONGER_THAN_FIVE);
+            throw new IllegalArgumentException(CAR_NAME_LONGER_THAN_FIVE);
         }
     }
+
     public void moveForward() {
         RandomGenerator randomGenerator = new RandomGenerator();
         int randomNumber = randomGenerator.generateRandomNumber();
@@ -31,6 +33,7 @@ public class Car {
         }
 
     }
+
     public String getCarName() {
         return carName;
     }
