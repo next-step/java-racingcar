@@ -5,7 +5,7 @@ import racingcar.util.RandomGenerator;
 
 public class Car {
 
-    private String carName;
+    private final String carName;
     private String position;
 
     public Car(String carName) {
@@ -14,6 +14,14 @@ public class Car {
         this.position = "";
     }
 
+    private void validateCarNameLength(String carName) {
+        if(carName.length()<1){
+            throw new IllegalArgumentException(Message.CAR_NAME_LESS_THAN_ONE);
+        }
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException(Message.CAR_NAME_LONGER_THAN_FIVE);
+        }
+    }
     public void moveForward() {
         RandomGenerator randomGenerator = new RandomGenerator();
         int randomNumber = randomGenerator.generateRandomNumber();
@@ -23,13 +31,6 @@ public class Car {
         }
 
     }
-
-    private void validateCarNameLength(String carName) {
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException(Message.CAR_NAME_ERROR);
-        }
-    }
-
     public String getCarName() {
         return carName;
     }
@@ -37,4 +38,6 @@ public class Car {
     public String getPosition() {
         return position;
     }
+
+
 }
