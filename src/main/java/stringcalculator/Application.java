@@ -10,3 +10,4 @@ public class Application {
         CalculatorInit.getInstance();
     }
 }
+

@@ -10,3 +10,4 @@ public class RacingGameErrorInfo {
     public static final String TRY_NUMBER_COUNT_ERROR = "횟수는 1부터 9까지 입니다.";
 
 }
+

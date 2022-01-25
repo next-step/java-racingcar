@@ -23,3 +23,4 @@ public class Application {
         judgement.judge(racing.getCars());
     }
 }
+

@@ -10,3 +10,4 @@ public class RacingGameInfo {
     public static final String WINNER_IS = "최종 우승자: ";
 
 }
+

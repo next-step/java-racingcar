@@ -6,3 +6,4 @@ public class InputValidationException extends RuntimeException {
         super(message);
     }
 }
+
