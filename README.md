@@ -38,6 +38,8 @@
     - [X] 각 자동차들을 움직임   #driveCars()
     - [X] 자동차 위치의 최대값을 갱신   #setMaxPosition()
   - [X] 경주가 끝나고 우승자 출력    #showGameResult()
+  - [X] 랜덤한 정수 생성   #generateRandomNumber()
+    - 0 ~ 9 의 랜덤한 정수를 반환
 
 - [X] 사용자 입력   UserInput
   - [X] 각 자동차에 이름을 부여하기 위한 사용자 입력   #getCarNames()
@@ -55,6 +57,4 @@
     - [X] 자동차를 전진/정지 상태 업데이트
     - [X] 자동차의 전진조건 확인   #isMove()
       - 생성한 랜덤 정수가 4 이상인 경우 true 를 반환
-    - [X] 랜덤한 정수 생성   #generateRandomNumber()
-      - 0 ~ 9 의 랜덤한 정수를 반환
     - [X] 자동차의 상태 출력   #printStatus()
