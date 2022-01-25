@@ -33,7 +33,7 @@ public class RacingCarGame {
         System.out.println("실행 결과");
 
         do {
-            moveCars();
+            loadGame();
 
             tryCount--;
 
@@ -49,7 +49,7 @@ public class RacingCarGame {
         return MIN_MOVE + RANDOM.nextInt(MAX_MOVE - MIN_MOVE + 1);
     }
 
-    private void moveCars() {
+    private void loadGame() {
         for (Car car : cars) {
             int distance = getRandomMove();
             String carName = car.getName();
