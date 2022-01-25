@@ -72,7 +72,7 @@ public class RacingCarGame {
         int maxMovingDistance = 0;
 
         for (Car car : cars) {
-            int movingDistance = car.getMovingDistance();
+            int movingDistance = car.getPosition();
             if (maxMovingDistance < movingDistance) {
                 maxMovingDistance = movingDistance;
             }
@@ -84,7 +84,7 @@ public class RacingCarGame {
         int maxMovingDistance = getMaxMovingDistance();
 
         winners = cars.stream()
-            .filter(car -> car.getMovingDistance() == maxMovingDistance).map(Car::getName)
+            .filter(car -> car.getPosition() == maxMovingDistance).map(Car::getName)
             .collect(Collectors.toList());
     }
 
