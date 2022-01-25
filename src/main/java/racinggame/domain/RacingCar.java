@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 public class RacingCar {
 
+    private static final int MOVING_SPACES = 1;
+
     private String carName;
     private int carPosition = 0;
 
@@ -28,8 +30,8 @@ public class RacingCar {
         return this.carPosition;
     }
 
-    public void forward() {
-        this.carPosition += 1;
+    public void moveForward() {
+        this.carPosition += MOVING_SPACES;
     }
 
     public void printCurrPosition() {

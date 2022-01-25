@@ -66,7 +66,7 @@ public class RacingGame {
         racingCars.forEach(car -> {
             int randomValue = getRandomValue();
             if (canForward(randomValue)) {
-                car.forward();
+                car.moveForward();
             }
 
             car.printCurrPosition();
