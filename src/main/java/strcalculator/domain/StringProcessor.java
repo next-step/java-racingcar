@@ -14,6 +14,7 @@ public class StringProcessor {
 
     public StringProcessor(String userInput) {
         this.userInput = userInput;
+        checkInput();
     }
 
     public void inputStringValue() {
