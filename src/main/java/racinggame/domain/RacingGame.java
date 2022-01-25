@@ -37,7 +37,8 @@ public class RacingGame {
         int max = Collections.max(carPositions);
 
         List<String> winners = getWinners(max);
-        printWinners(winners);
+
+        View.printWinnerOfGame(winners);
     }
 
     private List<Integer> getCarPositions() {
@@ -55,11 +56,6 @@ public class RacingGame {
                 .collect(Collectors.toList());
 
         return winners;
-    }
-
-    private void printWinners(List<String> winners) {
-        String result = String.join(", ", winners);
-        System.out.println("최종 우승자: " + result);
     }
 
     private void progress() {
