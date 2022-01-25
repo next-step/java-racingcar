@@ -23,22 +23,16 @@ class RacingCarTest extends RandomConfigTest{
     void 자동차이름_검사() {
         assertThatExceptionOfType(IllegalArgumentException.class)
             .isThrownBy(() -> {
-                new RacingCar("gdgdgdgdgdg");
+                new RacingCar("gdgㅗㅓㅏ,ㅗㅓㅜㅡg");
             });
     }
 
     @Test
     void 앞으로전진() {
-        try (final MockedStatic<RandomUtil> mockRandoms = mockStatic(RandomUtil.class)) {
-            mockRandoms
-                .when(() -> RandomUtil.pickNumberInRange(anyInt(), anyInt()))
-                .thenReturn(5);
             RacingCar car = new RacingCar("testN");
-
-            car.moveForward();
-
+            car.moveForward(5);
             assertThat(car.getPosition()).isEqualTo(1);
-        }
+
     }
 
     @AfterEach

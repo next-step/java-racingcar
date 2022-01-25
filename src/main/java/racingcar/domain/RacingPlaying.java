@@ -2,9 +2,12 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.util.RandomUtil;
 
 public class RacingPlaying {
 
+    private static final int RANDOM_START = 0;
+    private static final int RANDOM_END = 9;
     private final List<RacingCar> racingCarList;
     StringBuilder racingStatus = new StringBuilder();
 
@@ -16,7 +19,7 @@ public class RacingPlaying {
     }
 
     public String getGameStatus(int raceCount) {
-        while(raceCount > 0) {
+        while (raceCount > 0) {
             moveForwardAll();
             raceCount--;
         }
@@ -31,7 +34,7 @@ public class RacingPlaying {
 
     public void moveForwardAll() {
         for (RacingCar racingCar : racingCarList) {
-            racingCar.moveForward();
+            racingCar.moveForward(RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END));
             racingStatus.append(racingCar.getName() + ":" + racingCar.getPosition() + "\n");
         }
         racingStatus.append("----------------\n");
