@@ -38,14 +38,13 @@ public class Car {
         System.out.println(name + " : " + sb);
     }
 
-    public void move() {
-        if (moveCheck()) {
+    public void move(int random) {
+        if (moveCheck(random)) {
             distance++;
         }
     }
 
-    private boolean moveCheck() {
-        int random = (int) ((Math.random() * (10)));
+    private boolean moveCheck(int random) {
         return random >= MOVE_CONDITION;
     }
 }

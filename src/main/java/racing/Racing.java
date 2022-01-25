@@ -29,8 +29,12 @@ public class Racing {
 
     private void startRound() {
         for (Car car : cars) {
-            car.move();
+            car.move(makeRandom());
             car.printDistance(); //TODO: Step2에서 리팩토링
         }
+    }
+
+    private int makeRandom() {
+        return (int) (Math.random() * 10);
     }
 }
