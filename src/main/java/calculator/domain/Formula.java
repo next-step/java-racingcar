@@ -8,14 +8,16 @@ public class Formula {
 
     private final List<String> formular;
 
-    public Formula(String formulaInput) {
-        formular = FormulaUtil.split(formulaInput);
-        isNotOperator(formular);
-        isNotNumber(formular);
+    public Formula(String formular) {
+        List<String> fomularSplit = FormulaUtil.split(formular);
+        isNotOperator(fomularSplit);
+        isNotNumber(fomularSplit);
+        this.formular = fomularSplit;
     }
 
     private static void isNotOperator(List<String> formular) {
-        for (int i = 1; i < formular.size(); i += 2) {
+        final int operatorIndex = 2;
+        for (int i = 1; i < formular.size(); i += operatorIndex) {
             Operation.from(formular.get(i))
                 .orElseThrow(() ->
                     new IllegalArgumentException("사칙연산 기호가 아닙니다.")
@@ -24,7 +26,8 @@ public class Formula {
     }
 
     private static void isNotNumber(List<String> formular) {
-        for (int i = 0; i < formular.size(); i += 2) {
+        final int numberIndex = 2;
+        for (int i = 0; i < formular.size(); i += numberIndex) {
             try {
                 Integer.parseInt(formular.get(i));
             } catch (NumberFormatException e) {
