@@ -1,8 +1,10 @@
 package calculator.domain;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Validator {
+    private static final String NOT_A_NUMBER_NOR_OPERATOR = "(.*)[^\\s\\d+*/-](.*)";
 
     public Validator(String userInput) {
         isEmpty(userInput);
@@ -16,8 +18,7 @@ public class Validator {
     }
 
     public static void canCalculate(String userInput) {
-        String cannotCalculate = "(.*)[^\\s\\d+*/-](.*)";
-        if (userInput.matches(cannotCalculate)) {
+        if (userInput.matches(NOT_A_NUMBER_NOR_OPERATOR)) {
             throw new IllegalArgumentException();
         }
     }
