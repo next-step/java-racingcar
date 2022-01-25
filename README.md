@@ -30,8 +30,8 @@
   - [x] 뺄셈 - sub()   
   - [x] 곱셈 - multiply()     
   - [x] 나눗셈 - divide()     
-- [x] 공백 문자열을 빈 공백 문자로 분리하려면 String 클래스의 split(" ") 메소드를 활용한다. 반복적인 패턴을 찾아 반복문으로 구현한다. - FormulaUtil    
-- [x] 사용자에게 문자열 입력을 받아 유효성을 검증하는 기능 구현 - FormulaInput#getExpression()    
+- [x] 공백 문자열을 빈 공백 문자로 분리하려면 String 클래스의 split(" ") 메소드를 활용한다. 반복적인 패턴을 찾아 반복문으로 구현한다. - ExpressionUtil    
+- [x] 사용자에게 문자열 입력을 받아 유효성을 검증하는 기능 구현 - ExpressionInput#getExpression()    
   - [x] 입력값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw     
   - [x] 사칙연산 기호가 아닌 경우 IllegalArgumentException throw    
 
@@ -50,14 +50,14 @@
 
 ## 기능 구현
 - [x] 사용자에게 경주할 자동차 이름을 입력받는 기능 구현 - RacingCarInput#getCarName
-  - [x] 입력 값이 쉼표를 기준으로 구분되는지 검증 - isCommaSeperated()
+  - [x] 입력 값이 쉼표를 기준으로 구분
   - [x] 시도할 횟수가 입력받는 기능 구현 - getRaceCount()  
 - [x] 자동차 이름, 위치정보를 저장하는 자동차 클래스 - RacingCar 
-  - [x] 자동차 이름의 길이가 5이하인지 검증 - isCorrectNameSize()
-  - [x] 전진 하는 메서드 - moveForward()
-- [x] 자동차게임 실행하는 클래스 - GameLauncher
+  - [x] 자동차 이름의 길이가 5이하인지 검증 - validateNameSize()
+  - [x] 전진 하는 메서드 - move()
+- [x] 자동차게임 실행하는 클래스 - CarRace
   - [x] 필드로 자동차 리스트 관리
-  - [x] 여러 자동차 한번에 전진 - start()
+  - [x] 여러 자동차 한번에 전진 - moveCars()
   - [x] 시도마다 결과를 출력 - printRacing()
   - [x] 우승자를 선정해서 출력 - printWinner()
 - [x] 랜덤값 생성 클래스 - RandomUtil
