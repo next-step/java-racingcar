@@ -6,45 +6,39 @@ import java.util.Scanner;
 
 public class Console {
 
-    private int tryCount;
-    private List<String> carNames;
+    private static final String INPUT_CARNAME = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String INPUT_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
+    private final Scanner scanner = new Scanner(System.in);
 
-    public Console() {
-        setRacingCarNames();
-        setTryCount();
-    }
+    public List<String> setRacingCarNames() {
+        System.out.println(INPUT_CARNAME);
 
-    private void setRacingCarNames() {
-        Scanner scanner = new Scanner(System.in);
+        List<String> carNames = Arrays.asList(scanner.nextLine().split(","));
 
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-
-        carNames = Arrays.asList(scanner.nextLine().split(","));
+        validateCarNameEmpty(carNames);
 
         for (String carName : carNames) {
             validateCarNameLength(carName);
         }
+
+        return carNames;
     }
 
-    private void setTryCount() {
-        Scanner scanner = new Scanner(System.in);
+    public int setTryCount() {
+        System.out.println(INPUT_TRY_COUNT);
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
-
-        tryCount = Integer.parseInt(scanner.nextLine());
+        return Integer.parseInt(scanner.nextLine());
     }
 
     private void validateCarNameLength(String carName) {
         if (carName.length() > 5) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(RacingCarException.CAR_NAME_INVALID);
         }
     }
 
-    public int getTryCount() {
-        return tryCount;
-    }
-
-    public List<String> getCarNames() {
-        return carNames;
+    private void validateCarNameEmpty(List<String> carNames) {
+        if (carNames.isEmpty()) {
+            throw new IllegalArgumentException(RacingCarException.CAR_NAME_EMPTY);
+        }
     }
 }
