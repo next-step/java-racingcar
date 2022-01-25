@@ -19,8 +19,6 @@ public class Application {
         Cars cars = new Cars(carNames);
 
         int playGameNumber = gameInit.inputTryNumber();
-        int maxLocation;
-        List<Car> carList = cars.getCars();
         System.out.println("실행 결과");
         for (; playGameNumber > 0; playGameNumber--) {
             cars.move();
@@ -28,8 +26,8 @@ public class Application {
 
         }
 
-        maxLocation = cars.findMaxLocation();
-        List<Winner> winnerList = playRacingGame.findWinner(carList, maxLocation);
+        final int maxLocation = cars.findMaxLocation();
+        List<Winner> winnerList = playRacingGame.findWinner(cars, maxLocation);
         resultView.printWinner(winnerList);
     }
 

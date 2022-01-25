@@ -16,9 +16,9 @@ public class PlayRacingGame {
         return randomNumberList;
     }
 
-    public List<Winner> findWinner(List<Car> cars, int maxLocation) {
+    public List<Winner> findWinner(Cars cars, int maxLocation) {
         List<Winner> winnerUsers = new ArrayList<>();
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
             if (car.getLocation() == maxLocation) {
                 winnerUsers.add(new Winner(car.getCarName()));
             }
