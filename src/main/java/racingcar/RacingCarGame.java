@@ -1,90 +1,47 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RacingCarGame {
 
     private int tryCount;
-    private List<String> racingCarList;
-    private String[] racingResults;
-    private List<String> winners;
+    private List<RacingCar> cars;
+    private List<RacingCar> winners;
 
-    private static final Random RANDOM = new Random();
-    private final int MIN_MOVE = 0;
-    private final int MAX_MOVE = 9;
-    private final int MOVABLE = 4;
+    public void setRacingCarGame() {
+        Console console = new Console();
 
-    public RacingCarGame(int tryCount, List<String> racingCarList) {
-        this.tryCount = tryCount;
-        this.racingCarList = racingCarList;
-        racingResults = new String[racingCarList.size()];
-        Arrays.fill(racingResults, "");
-        winners = new ArrayList<>();
-    }
-
-    private int getRandomMove() {
-        return MIN_MOVE + RANDOM.nextInt(MAX_MOVE - MIN_MOVE + 1);
-    }
-
-    private boolean checkMovable(int move) {
-        return MOVABLE <= move;
+        cars = RacingCar.setRacingCars(console.setRacingCarNames());
+        tryCount = console.setTryCount();
     }
 
     public void playRacingCarGame() {
-        System.out.println("실행 결과");
+        setRacingCarGame();
 
         do {
             controlRacingCar();
-
+            PrintResult.printMoveState(cars);
             tryCount--;
-
         } while (tryCount > 0);
 
-        printGameResult();
+        setRacingWinners();
+
+        PrintResult.printGameResult(winners);
     }
 
     private void controlRacingCar() {
-        for (int i = 0; i < racingCarList.size(); ++i) {
-            int move = getRandomMove();
-
-            setRacingResults(i, move);
-        }
+        cars.forEach(RacingCar::moveCar);
     }
 
-    private void setRacingResults(int carNumber, int move) {
-        if (!checkMovable(move)) {
-            printMoveState(carNumber);
-            return;
-        }
+    private void setRacingWinners() {
+        int maxMove = cars.stream()
+            .mapToInt(RacingCar::getCarDist)
+            .max()
+            .orElse(0);
 
-        racingResults[carNumber] += "-";
-        printMoveState(carNumber);
-    }
-
-    private void printMoveState(int carNumber) {
-        System.out.println(racingCarList.get(carNumber) + " : " + racingResults[carNumber]);
-
-        if (carNumber == racingCarList.size() - 1) {
-            System.out.println();
-        }
-    }
-
-    private void printGameResult() {
-        int maxMove = Arrays.stream(racingResults).mapToInt(String::length).max().getAsInt();
-
-        for (int i = 0; i < racingResults.length; ++i) {
-            setRacingWinners(i, maxMove);
-        }
-
-        System.out.println("최종 우승자: " + String.join(", ", winners));
-    }
-
-    private void setRacingWinners(int i, int maxMove) {
-        if (racingResults[i].length() == maxMove) {
-            winners.add(racingCarList.get(i));
-        }
+        winners = cars.stream()
+            .filter(car -> car.getCarDist() == maxMove)
+            .collect(Collectors.toList());
     }
 }

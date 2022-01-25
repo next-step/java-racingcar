@@ -1,11 +1,9 @@
 package racingcar;
 
 public class RacingCarApplication {
-    public static void main(String[] args) {
-        Console console = new Console();
 
-        RacingCarGame racingCarGame = new RacingCarGame(console.getTryCount(),
-            console.getCarNames());
+    public static void main(String[] args) {
+        RacingCarGame racingCarGame = new RacingCarGame();
 
         racingCarGame.playRacingCarGame();
     }
