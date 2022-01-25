@@ -42,7 +42,7 @@ class CalculatorTest {
     @Test
     @DisplayName("나누기 테스트")
     void divideTest() {
-        double result = Operation.DIVDE.apply(6.0, 3.0);
+        double result = Operation.DIVIDE.apply(6.0, 3.0);
         assertThat(result).isEqualTo(2.0);
     }
 }
