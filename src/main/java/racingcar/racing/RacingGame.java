@@ -18,7 +18,7 @@ public class RacingGame {
         System.out.print("최종 우승자: " + String.join(", ", gameWinner));
     }
 
-    private void inputAll() {
+    public void inputAll() {
         carNameList = RacingCarInput.getCarName();
         raceCount = RacingCarInput.getRaceCount();
     }

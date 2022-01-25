@@ -13,13 +13,7 @@ public class RacingCar {
     private int position = 0;
 
     public RacingCar(String name) {
-        try {
-            isCorrectNameSize(name);
-        } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] " + e.getMessage());
-            RacingGame racingGame = new RacingGame();
-            racingGame.inputAll();
-        }
+        isValidLength(name);
         this.name = name;
     }
 
@@ -35,6 +29,16 @@ public class RacingCar {
         int randomNum = RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END);
         if (THRESHOLD <= randomNum) {
             position++;
+        }
+    }
+
+    private void isValidLength(String name) {
+        try {
+            isCorrectNameSize(name);
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] " + e.getMessage());
+            RacingGame racingGame = new RacingGame();
+            racingGame.inputAll();
         }
     }
 
