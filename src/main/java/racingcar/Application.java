@@ -2,7 +2,7 @@ package racingcar;
 
 
 import java.util.List;
-import racingcar.service.GameLauncher;
+import racingcar.service.carRace;
 import racingcar.ui.RacingCarInput;
 
 public class Application {
@@ -11,13 +11,13 @@ public class Application {
         RacingCarInput racingCarInput = new RacingCarInput();
         List<String> carNameList = racingCarInput.getCarName();
         int raceCount = racingCarInput.getRaceCount();
-        GameLauncher gameLauncher = new GameLauncher(carNameList);
+        carRace carRace = new carRace(carNameList);
         while (0 < raceCount) {
-            gameLauncher.moveForwardAll();
-            gameLauncher.printRacing();
+            carRace.moveForwardAll();
+            carRace.printRacing();
             raceCount--;
             System.out.println("------------------------------");
         }
-        gameLauncher.printWinner();
+        carRace.printWinner();
     }
 }

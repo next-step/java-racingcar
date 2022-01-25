@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.RacingCar;
 
-public class GameLauncher {
+public class CarRace {
 
     private final List<RacingCar> racingCars;
 
-    public GameLauncher(List<String> carName) {
+    public CarRace(List<String> carName) {
         racingCars = getRacingCars(carName);
     }
 
