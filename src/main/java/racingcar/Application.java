@@ -4,12 +4,10 @@ import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.movable.RandomMovableStrategy;
-import racingcar.utils.InputView;
-import racingcar.utils.OutputView;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Application {
-
-    private static final int RANDOM_BOUND = 10;
 
     public static Cars setUp() {
         String carNames = InputView.readCarNames();
@@ -27,7 +25,7 @@ public class Application {
 
         OutputView.printTurnResult();
         for (int index = 0; index < turn; index++) {
-            game.play(new RandomMovableStrategy(RANDOM_BOUND));
+            game.play(new RandomMovableStrategy());
         }
 
         OutputView.printWhoIsWinner(game.winners());

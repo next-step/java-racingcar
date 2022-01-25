@@ -12,8 +12,9 @@ public class Cars {
     }
 
     public List<Car> filterWinners() {
+        int max = calculateMax();
         return cars.stream()
-            .filter(car -> car.distance() == calculateMax())
+            .filter(car -> car.distance() == max)
             .collect(Collectors.toList());
     }
 

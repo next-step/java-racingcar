@@ -10,7 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.utils.InputView;
+import racingcar.view.InputView;
 
 public class GameTest {
 
