@@ -8,8 +8,10 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class Game {
-    private final String TRY_COUNT_LESS_THAN_ZERO="[ERROR] 시도 횟수는 1회 이상이어야 합니다.";
+
+    private final String TRY_COUNT_LESS_THAN_ZERO = "[ERROR] 시도 횟수는 1회 이상이어야 합니다.";
     private final String GAME_RESULT_MESSAGE = "출력결과";
+
     public void play() {
         List<Car> carList = new ArrayList<>();
         InputView inputView = new InputView();
@@ -30,16 +32,18 @@ public class Game {
 
         checkWinner(carList);
     }
-    private void validateTryCount(int tryCount){
-        if(tryCount<=0){
+
+    private void validateTryCount(int tryCount) {
+        if (tryCount <= 0) {
             throw new IllegalArgumentException(TRY_COUNT_LESS_THAN_ZERO);
         }
     }
+
     public void moveForwardByCount(List<Car> carList) {
         OutputView outputView = new OutputView();
         for (Car car : carList) {
-            RandomGenerator randomGenerator= new RandomGenerator();
-            int moveOrNot= randomGenerator.generateRandomNumber();
+            RandomGenerator randomGenerator = new RandomGenerator();
+            int moveOrNot = randomGenerator.generateRandomNumber();
             car.moveForward(moveOrNot);
             outputView.printResult(car.getCarName(), car.getPosition());
         }
