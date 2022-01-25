@@ -1,6 +1,7 @@
 package calculatorFunction;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class GetInput {
 
@@ -11,23 +12,27 @@ public class GetInput {
         return str;
     }
 
-    public static String[] parsing(String str) {
-        // 1 + 3 - 5
-        String[] array = new String[100];
-        int it = 0;
-        int strIt = 0;
-        array[it] = getInteger(str, strIt);
-        strIt = array[it].length() + strIt;
-        it++;
-
-        while (strIt != str.length()) {
-            array[it++] = getString(str, strIt);
-            strIt++;
-            array[it] = getInteger(str, strIt);
-            strIt = array[it].length() + strIt;
-            it++;
+    public static ArrayList<String> parsing(String str) {
+        ArrayList<String> array = new ArrayList<>();
+        String operand = "";
+        int operatorIdx = 0;
+        operand = getInteger(str, operatorIdx);
+        array.add(operand);
+        if (operand.equals("ERROR")) {
+            return array;
         }
+        operatorIdx = array.get(0).length() + operatorIdx;
 
+        while (operatorIdx != str.length()) {
+            array.add(getString(str, operatorIdx));
+            operatorIdx++;
+            operand = getInteger(str, operatorIdx);
+            array.add(operand);
+            if (operand.equals("ERROR")) {
+                return array;
+            }
+            operatorIdx = array.get(array.size() - 1).length() + operatorIdx;
+        }
         return array;
     }
 
