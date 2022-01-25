@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Winners {
 
-    private final List<Winner> winnerList=new ArrayList<>();
+    private final List<Winner> winnerList = new ArrayList<>();
 
-    public Winners(Cars cars,int maxLocation){
+    public Winners(Cars cars, int maxLocation) {
         for (Car car : cars.getCars()) {
             if (car.getLocation() == maxLocation) {
                 winnerList.add(new Winner(car.getCarName()));
@@ -15,8 +15,8 @@ public class Winners {
         }
     }
 
-    public List<Winner> getWinners(){
-        return winnerList;
+    public List<Winner> getWinners() {
+        return new ArrayList<>(winnerList);
     }
 
 }
