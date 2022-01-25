@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.model.domain.CarRegistration;
 import racingcar.model.domain.Racing;
 import racingcar.view.RacingCarUserInput;
 import racingcar.view.RacingCarUserOutput;
@@ -12,7 +13,7 @@ public class RacingController {
         RacingCarUserInput userInput = new RacingCarUserInput();
         RacingCarUserOutput judgement = new RacingCarUserOutput();
         userInput.userInputRun();
-        new Helper().run(userInput.getSplitUserInput(), racing);
+        CarRegistration.instance(userInput.getSplitUserInput(), racing);
         for (int time = NUMBER_ZERO; time < userInput.getRacingTryCounter(); time++) {
             racing.drive();
             judgement.carsStatement(racing.getCars());
