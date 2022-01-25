@@ -6,51 +6,34 @@ import java.util.List;
 
 public class Expression {
 
+    private static final String NUMBER_SPLIT_REGEX = "[-+*/]";
+    private static final String OPERATOR_SPLIT_REGEX = "[0-9]+";
+
     private List<String> numbers = new ArrayList<>();
     private List<String> operators = new ArrayList<>();
 
     private double result = 0;
 
     public Expression(String expression) {
-        expression = expression.replaceAll(" ", "");
-        numbers = Arrays.asList(expression.split("[-+*/]"));
-        operators = Arrays.asList(expression.split("[0-9]+"));
+        String newExpression = removeAllSpaces(expression);
+        this.numbers = parseStringToListByRegex(newExpression, NUMBER_SPLIT_REGEX);
+        this.operators = parseStringToListByRegex(newExpression, OPERATOR_SPLIT_REGEX);
         result = Integer.parseInt(numbers.get(0));
     }
 
-    public void calculate() {
-        for (int i = 1, size = numbers.size(); i < size; i++) {
-            int operand = Integer.parseInt(numbers.get(i));
-            String operator = operators.get(i);
-
-            if (operator.equals("/") && operand == 0) {
-                throw new ArithmeticException();
-            }
-
-            if (operator.equals("+")) {
-                result = Operation.addition(result, operand);
-                continue;
-            }
-
-            if (operator.equals("-")) {
-                result = Operation.subtraction(result, operand);
-                continue;
-            }
-
-            if (operator.equals("*")) {
-                result = Operation.multiplication(result, operand);
-                continue;
-            }
-
-            if (operator.equals("/")) {
-                result = Operation.division(result, operand);
-                continue;
-            }
-        }
+    public List<String> getNumber() {
+        return numbers;
     }
 
-    public void printResult() {
-        System.out.println("----------결과----------");
-        System.out.println(result);
+    public List<String> getOperators() {
+        return operators;
+    }
+
+    private String removeAllSpaces(String expression) {
+        return expression.replaceAll(" ", "");
+    }
+
+    private List<String> parseStringToListByRegex(String expression, String regex) {
+        return Arrays.asList(expression.split(regex));
     }
 }
