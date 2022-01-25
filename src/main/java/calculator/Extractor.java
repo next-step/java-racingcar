@@ -2,7 +2,7 @@ package calculator;
 
 public class Extractor {
 
-    public void addNumber(Number numbers, String[] values, int index) {
+    private void addNumber(Number numbers, String[] values, int index) {
         if (index % 2 == 0) {
             numbers.add(values[index]);
         }
@@ -16,7 +16,7 @@ public class Extractor {
         return numbers;
     }
 
-    public void addSymbol(Symbol symbols, String[] values, int index) {
+    private void addSymbol(Symbol symbols, String[] values, int index) {
         if (index % 2 == 1) {
             symbols.add(values[index]);
         }

@@ -52,11 +52,12 @@ public class UserInput {
         return turn;
     }
 
-    public String getInputValue() {
+    private String getInputValue() {
         return scan.nextLine().trim();
     }
 
     private void validateCarName(String name) {
+        checkIfValueIsNotEmpty(name);
         if (name.length() > NAME_LENGTH) {
             throw new IllegalArgumentException(String.format("자동차 이름이 %d자를 초과합니다.", NAME_LENGTH));
         }
@@ -64,7 +65,7 @@ public class UserInput {
 
     private void validateTurn(String turn) {
         checkIfValueIsNotEmpty(turn);
-        checkIfValueIsNotNumber(turn);
+        checkIfValueIsNumber(turn);
         checkIfValueGreaterThan1(turn);
     }
 
@@ -73,7 +74,7 @@ public class UserInput {
             throw new IllegalArgumentException("값을 입력해주세요.");
     }
 
-    private void checkIfValueIsNotNumber(String line){
+    private void checkIfValueIsNumber(String line){
         if (!line.matches("[+-]?\\d*(\\.\\d+)?"))
             throw new IllegalArgumentException("숫자를 입력해주세요.");
     }
