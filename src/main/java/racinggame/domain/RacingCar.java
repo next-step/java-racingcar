@@ -8,21 +8,23 @@ import racinggame.view.RacingCarView;
 public class RacingCar {
 
     private static final int MINIMUM_FORWARD_VALUE = 4;
+    private static final int INIT_POSITION = 0;
 
-    private final RacingCarView racingCarView = new RacingCarView(this);
+    private final RacingCarView racingCarView;
     private String carName;
-    private int carPosition = 0;
+    private int carPosition;
 
-    public RacingCar(String carName) {
-        this.carName = carName;
+    private RacingCar(String carName) {
+        this(carName, INIT_POSITION);
     }
 
     public RacingCar(String carName, int position) {
+        racingCarView = new RacingCarView(this);
         this.carName = carName;
         this.carPosition = position;
     }
 
-    public static List<RacingCar> createRacingCarFromCarNames(String[] carNames) {
+    public static List<RacingCar> racingCarOf(String[] carNames) {
         return Arrays.stream(carNames).map(RacingCar::new)
                 .collect(Collectors.toList());
     }

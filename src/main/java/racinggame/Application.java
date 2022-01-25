@@ -24,7 +24,7 @@ public class Application {
                 continue;
             }
 
-            List<RacingCar> racingCars = RacingCar.createRacingCarFromCarNames(carNames);
+            List<RacingCar> racingCars = RacingCar.racingCarOf(carNames);
 
             RacingGame racingGame = new RacingGame(racingCars, trial);
             racingGame.start();
