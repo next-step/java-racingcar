@@ -4,7 +4,7 @@ import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.movable.MovableStrategy;
-import racingcar.utils.OutputView;
+import racingcar.view.OutputView;
 
 public class Game {
 

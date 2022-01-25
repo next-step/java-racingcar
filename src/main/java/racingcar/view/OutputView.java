@@ -1,4 +1,4 @@
-package racingcar.utils;
+package racingcar.view;
 
 import racingcar.domain.Car;
 
