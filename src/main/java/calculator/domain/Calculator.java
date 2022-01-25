@@ -18,11 +18,11 @@ public class Calculator {
     }
 
     private int operate(String operator, int prevNumber, int nextNumber) {
-        if (operator.equals("+")) {
+        if ("+".equals(operator)) {
             return add(prevNumber, nextNumber);
-        } else if (operator.equals("-")) {
+        } else if ("-".equals(operator)) {
             return subtract(prevNumber, nextNumber);
-        } else if (operator.equals("*")) {
+        } else if ("*".equals(operator)) {
             return multiply(prevNumber, nextNumber);
         }
         return divide(prevNumber, nextNumber);
