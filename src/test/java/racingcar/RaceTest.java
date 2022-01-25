@@ -33,7 +33,7 @@ class RaceTest {
         cars[1] = new Car("benz");
         cars[2] = new Car("bmw");
         race.compareWithFour(cars, 1, 5);
-        assertThat(cars[1]).isEqualTo(1);
+        assertThat(cars[1].getPosition()).isEqualTo(1);
     }
 
     @DisplayName("난수가 4일때 배열의 숫자가 증가하는지 확인한다")
@@ -45,7 +45,7 @@ class RaceTest {
         cars[1] = new Car("benz");
         cars[2] = new Car("bmw");
         race.compareWithFour(cars, 1, 4);
-        assertThat(cars[1]).isEqualTo(1);
+        assertThat(cars[1].getPosition()).isEqualTo(1);
     }
 
     @DisplayName("난수가 3일때 배열의 숫자가 증가하는지 확인한다")
@@ -57,6 +57,6 @@ class RaceTest {
         cars[1] = new Car("benz");
         cars[2] = new Car("bmw");
         race.compareWithFour(cars, 1, 3);
-        assertThat(cars[1]).isEqualTo(0);
+        assertThat(cars[1].getPosition()).isEqualTo(0);
     }
 }
