@@ -10,25 +10,18 @@ public class Input {
 
     private Input() {}
 
-    public static String[] getCarNames() throws IOException {
+    public static String[] getCarNames() {
         System.out.println("경주할 자동차 이름을 ','로 구분해서 입력하세요.(2대 이상)");
         String inputCarNames = removeBlank(Utils.getInput());
         String[] carNames = splitNameByComma(inputCarNames);
 
         Validator.validatePossibleToStart(carNames);
-        validateNameLengthFromCarNames(carNames);
 
         return carNames;
     }
 
     private static String[] splitNameByComma(String inputCarNames) {
         return inputCarNames.split(SEPARATOR);
-    }
-
-    private static void validateNameLengthFromCarNames(String[] carNames) {
-        for (String carName : carNames) {
-            Validator.validateNameLength(carName);
-        }
     }
 
     public static int getTrial() throws IOException {

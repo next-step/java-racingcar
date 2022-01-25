@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,7 @@ import racinggame.domain.RacingCar;
 class GameViewTest {
 
     @Test
-    void 상태를_출력할_자동차_리스트를_받아_생성한다() {
+    void 상태를_출력할_자동차_리스트를_받아_생성한다() throws IOException {
 
         // given
         String[] cars = {"car1", "car2"};
@@ -26,7 +27,7 @@ class GameViewTest {
     }
 
     @Test
-    void 현재_자동차들의_상태를_출력한다() {
+    void 현재_자동차들의_상태를_출력한다() throws IOException {
 
         // given
         String[] cars = {"car1", "car2"};
@@ -45,7 +46,7 @@ class GameViewTest {
     }
 
     @Test
-    void 우승자를_출력() {
+    void 우승자를_출력() throws IOException {
 
         // given
         String[] cars = {"car1", "car2"};

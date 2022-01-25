@@ -7,13 +7,14 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.IOException;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class RacingCarTest {
 
     @Test
-    void 자동차이름_배열을_받아_자동차객체_리스트_생성() {
+    void 자동차이름_배열을_받아_자동차객체_리스트_생성() throws IOException {
         String[] carNames = {"car1", "car2"};
 
         List<RacingCar> racingCars = RacingCar.racingCarOf(carNames);

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -28,7 +29,7 @@ class RacingGameTest {
     }
 
     @Test
-    void RacingCar_리스트를_받아_RacingGame_객체_생성() {
+    void RacingCar_리스트를_받아_RacingGame_객체_생성() throws IOException {
         String[] carNames = {"car1", "car2"};
         List<RacingCar> racingCars = RacingCar.racingCarOf(carNames);
         int trial = 5;

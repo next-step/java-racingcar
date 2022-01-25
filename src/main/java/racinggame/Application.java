@@ -9,8 +9,6 @@ import racinggame.domain.Utils;
 
 public class Application {
 
-    private static final String QUIT = "q";
-
     public static void main(String[] args) throws IOException {
         String[] carNames;
         int trial;
@@ -25,7 +23,6 @@ public class Application {
             }
 
             List<RacingCar> racingCars = RacingCar.racingCarOf(carNames);
-
             RacingGame racingGame = new RacingGame(racingCars, trial);
             racingGame.start();
 
