@@ -10,7 +10,6 @@ public class RacingCarGame {
     private final static Random RANDOM = new Random();
     private final List<Car> cars = new ArrayList<>();
     private final List<String> carNames;
-    private final List<Integer> racingResults = new ArrayList<>();
     private List<String> winners;
     private int tryCount;
 
