@@ -1,8 +1,7 @@
 package racingcar;
 
-
 import java.util.List;
-import racingcar.service.carRace;
+import racingcar.service.CarRace;
 import racingcar.ui.RacingCarInput;
 
 public class Application {
@@ -11,13 +10,7 @@ public class Application {
         RacingCarInput racingCarInput = new RacingCarInput();
         List<String> carNameList = racingCarInput.getCarName();
         int raceCount = racingCarInput.getRaceCount();
-        carRace carRace = new carRace(carNameList);
-        while (0 < raceCount) {
-            carRace.moveForwardAll();
-            carRace.printRacing();
-            raceCount--;
-            System.out.println("------------------------------");
-        }
-        carRace.printWinner();
+        CarRace carRace = new CarRace(carNameList, raceCount);
+        carRace.run();
     }
 }

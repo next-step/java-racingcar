@@ -4,16 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.RacingCar;
+import racingcar.util.RandomUtil;
 
 public class CarRace {
 
-    private final List<RacingCar> racingCars;
+    private static final int RANDOM_START = 0;
+    private static final int RANDOM_END = 9;
 
-    public CarRace(List<String> carName) {
-        racingCars = getRacingCars(carName);
+    private final List<RacingCar> racingCars;
+    private int raceCount;
+
+    public CarRace(List<String> carName, int raceCount) {
+        racingCars = setRacingCars(carName);
+        this.raceCount = raceCount;
     }
 
-    public List<RacingCar> getRacingCars(List<String> carName) {
+    public List<RacingCar> setRacingCars(List<String> carName) {
         List<RacingCar> cars = new ArrayList<>();
         for (String name : carName) {
             cars.add(new RacingCar(name));
@@ -21,9 +27,20 @@ public class CarRace {
         return cars;
     }
 
-    public void moveForwardAll() {
+    public void run() {
+        while (0 < raceCount) {
+            moveCars();
+            printRacing();
+            raceCount--;
+            System.out.println("------------------------------");
+        }
+        printWinner();
+    }
+
+    public void moveCars() {
         for (RacingCar car : racingCars) {
-            car.moveForward();
+            int value = RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END);
+            car.move(value);
         }
     }
 
