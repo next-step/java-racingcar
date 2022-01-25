@@ -13,21 +13,7 @@ public class Calculator {
         return result;
     }
 
-    private double calculate(String operatorElement, double result, double operand) {
-        Operator operator = new Operator();
-
-        if ("+".equals(operatorElement)) {
-            return operator.add(result, operand);
-        }
-        if ("-".equals(operatorElement)) {
-            return operator.subtract(result, operand);
-        }
-        if ("*".equals(operatorElement)) {
-            return operator.multiple(result, operand);
-        }
-        if ("/".equals(operatorElement)) {
-            return operator.divide(result, operand);
-        }
-        throw new IllegalArgumentException();
+    private double calculate(String symbol, double number1, double number2) {
+        return Operator.operatorOf(symbol).apply(number1, number2);
     }
 }

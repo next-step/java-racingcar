@@ -1,26 +1,32 @@
 package calculator;
 
-public class Operator {
+import java.util.Arrays;
+import java.util.function.BiFunction;
 
-    public double add(double number1, double number2) {
-        return number1 + number2;
+public enum Operator {
+    ADD("+", (number1, number2) -> number1 + number2),
+    SUBTRACT("-", (number1, number2) -> number1 - number2),
+    MULTIPLY("*", (number1, number2) -> number1 * number2),
+    DIVIDE("/", (number1, number2) -> number1 / number2);
+
+    private final String symbol;
+    private final BiFunction<Double, Double, Double> operator;
+
+    Operator(String symbol, final BiFunction<Double, Double, Double> operator) {
+        this.symbol = symbol;
+        this.operator = operator;
     }
 
-    public double subtract(double number1, double number2) {
-        return number1 - number2;
+    public double apply(double number1, double number2) {
+        return operator.apply(number1, number2);
     }
 
-    public double multiple(double number1, double number2) {
-        return number1 * number2;
-    }
-
-    public double divide(double number1, double number2) {
-        int DIGIT_RANGE = 2;
-        if (number2 == 0) {
-            throw new IllegalArgumentException("[ERROR] 0으로 나눌 수 없습니다.");
-        }
-        return Math.round((number1 / number2) * Math.pow(10, DIGIT_RANGE)) / Math.pow(10,
-            DIGIT_RANGE);
+    public static Operator operatorOf(String symbol) {
+        return Arrays.stream(Operator.values())
+            .filter(operator -> symbol.equals(operator.symbol))
+            .findAny()
+            .orElseThrow(() -> new IllegalArgumentException("[ERROR] 사칙연산 기호가 아닙니다."));
     }
 
 }
+
