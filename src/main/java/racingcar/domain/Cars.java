@@ -39,8 +39,8 @@ public class Cars {
 
     private int calculateMax() {
         return cars.stream()
-            .map(Car::distance)
-            .max(Integer::compare)
-            .orElseThrow(IllegalArgumentException::new);
+            .mapToInt(Car::distance)
+            .max()
+            .orElseThrow(() -> new IllegalArgumentException("[ERROR] 예외가 발생하였습니다 : max 값이 존재하지 않습니다."));
     }
 }
