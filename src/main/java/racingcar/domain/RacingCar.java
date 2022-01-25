@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.racing.RacingGame;
 import racingcar.util.RandomUtil;
 
 public class RacingCar {
@@ -15,7 +16,9 @@ public class RacingCar {
         try {
             isCorrectNameSize(name);
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR]" + e.getMessage());
+            System.out.println("[ERROR] " + e.getMessage());
+            RacingGame racingGame = new RacingGame();
+            racingGame.inputAll();
         }
         this.name = name;
     }
