@@ -9,14 +9,11 @@ import java.util.StringTokenizer;
 
 public class User {
 
-    public List<String> getUserInput() {
-        Scanner scanner = new Scanner(System.in);
-        String[] userInputTokens;
-        String userInput = scanner.nextLine();
+    private static final int MIN_LENGTH = 3;
 
-        userInputTokens = userInput.split(" ");
+    public List<String> getUserInput(List<String> userInputTokens) {
 
-        if (userInputTokens.length < 3) {
+        if (userInputTokens.size() < MIN_LENGTH) {
             throw new IllegalArgumentException("공백은 허용되지 않습니다");
         }
 
@@ -26,20 +23,20 @@ public class User {
             }
         }
 
-        for (int i = 0; i < userInputTokens.length; i += 2) {
-            if (!userInputTokens[i].matches("[0-9]+")) {
+        for (int i = 0; i < userInputTokens.size(); i += 2) {
+            if (!userInputTokens.get(i).matches("[0-9]+")) {
                 throw new IllegalArgumentException("잘못된 입력입니다");
             }
         }
 
-        for (int i = 1; i < userInputTokens.length; i += 2) {
-            if (!userInputTokens[i].contains("+")
-                && !userInputTokens[i].contains("-")
-                && !userInputTokens[i].contains("*")
-                && !userInputTokens[i].contains("/")) {
+        for (int i = 1; i < userInputTokens.size(); i += 2) {
+            if (!userInputTokens.get(i).contains("+")
+                && !userInputTokens.get(i).contains("-")
+                && !userInputTokens.get(i).contains("*")
+                && !userInputTokens.get(i).contains("/")) {
                 throw new IllegalArgumentException("잘못된 입력입니다");
             }
         }
-        return Arrays.asList(userInputTokens);
+        return userInputTokens;
     }
 }
