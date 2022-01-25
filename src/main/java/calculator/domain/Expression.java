@@ -1,11 +1,14 @@
 package calculator.domain;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Expression {
 
-    private final List<String> numbers;
+    private final LinkedList<String> numbers;
     private final List<String> operators;
 
     private double result = 0;
@@ -17,17 +20,24 @@ public class Expression {
         }
 
         expression = expression.replaceAll(" ", "");
-        numbers = Arrays.asList(expression.split("[-+*/]"));
-        operators = Arrays.asList(expression.split("[0-9]+"));
-        result = Integer.parseInt(numbers.get(0));
+        numbers = new LinkedList<>(Arrays.asList(expression.split("[-+*/]")));
+        operators = Arrays.asList(expression.split("[0-9]+"))
+            .stream().filter(operand -> !operand.isEmpty())
+            .collect(Collectors.toList());
     }
 
     public void calculate() {
-        int numberSize = numbers.size();
-        for (int i = 1; i < numberSize; i++) {
-            final int operand = Integer.parseInt(numbers.get(i));
-            result = Operation.calculate(operators.get(i), result, operand);
+        result = convertNumber(numbers.poll());
+        for (String operator : operators) {
+            result = Operation.calculate(operator, result, convertNumber(numbers.poll()));
         }
+    }
+
+    private int convertNumber(String number) {
+        if (Objects.isNull(number)) {
+            throw new IllegalArgumentException();
+        }
+        return Integer.parseInt(number);
     }
 
     public void printResult() {
