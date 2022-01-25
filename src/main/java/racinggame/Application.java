@@ -7,6 +7,7 @@ import racinggame.domain.Cars;
 import racinggame.domain.GameInit;
 import racinggame.domain.PlayRacingGame;
 import racinggame.domain.Winner;
+import racinggame.domain.Winners;
 import racinggame.view.ResultView;
 
 public class Application {
@@ -27,8 +28,8 @@ public class Application {
         }
 
         final int maxLocation = cars.findMaxLocation();
-        List<Winner> winnerList = playRacingGame.findWinner(cars, maxLocation);
-        resultView.printWinner(winnerList);
+        Winners winners = new Winners(cars, maxLocation);
+        resultView.printWinner(winners);
     }
 
 }
