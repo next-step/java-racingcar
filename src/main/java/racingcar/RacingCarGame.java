@@ -38,11 +38,11 @@ public class RacingCarGame {
         return MOVABLE <= move;
     }
 
-    public void playRacingCarGame() {
+    public void play() {
         System.out.println("실행 결과");
 
         do {
-            controlRacingCar();
+            moveCars();
 
             tryCount--;
 
