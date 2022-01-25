@@ -58,7 +58,7 @@ public class RacingGame {
     }
 
     private void printWinners(List<String> winners) {
-        String result = winners.stream().collect(Collectors.joining(", "));
+        String result = String.join(", ", winners);
         System.out.println("최종 우승자: " + result);
     }
 
