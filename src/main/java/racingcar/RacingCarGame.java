@@ -84,8 +84,18 @@ public class RacingCarGame {
         return MOVABLE <= move;
     }
 
+    private String getDashByMove(int move){
+        StringBuilder dash= new StringBuilder();
+
+        for(int i = 0; i < move; i++){
+            dash.append("-");
+        }
+        return dash.toString();
+    }
+
     private void printGameStatus(String name, int move) {
-        System.out.println(name + ":" + move);
+        String dashes = getDashByMove(move);
+        System.out.println(name + ":" + dashes);
     }
 
     private void printGameResult() {
