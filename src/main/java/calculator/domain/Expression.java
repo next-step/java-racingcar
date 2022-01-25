@@ -12,13 +12,10 @@ public class Expression {
     private List<String> numbers = new ArrayList<>();
     private List<String> operators = new ArrayList<>();
 
-    private double result = 0;
-
     public Expression(String expression) {
         String newExpression = removeAllSpaces(expression);
         this.numbers = parseStringToListByRegex(newExpression, NUMBER_SPLIT_REGEX);
         this.operators = parseStringToListByRegex(newExpression, OPERATOR_SPLIT_REGEX);
-        result = Integer.parseInt(numbers.get(0));
     }
 
     public List<String> getNumbers() {
