@@ -1,8 +1,7 @@
 package stringcalculator;
 
-import stringcalculator.domain.CalculatorInit;
-
 import java.io.IOException;
+import stringcalculator.domain.CalculatorInit;
 
 public class Application {
 
