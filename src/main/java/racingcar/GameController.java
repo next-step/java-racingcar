@@ -10,7 +10,9 @@ import racingcar.view.OutputView;
 
 public class GameController {
 
-    public static Cars setUp() {
+    private GameController() {}
+
+    private static Cars setUp() {
         String carNames = InputView.readCarNames();
 
         return new Cars(
@@ -20,17 +22,22 @@ public class GameController {
         );
     }
 
+    private static void play(Cars cars, int turn) {
+        for (int index = 0; index < turn; index++) {
+            cars.moveAll(new RandomMovableStrategy());
+            OutputView.printDistance(cars);
+        }
+    }
+
     public static void main(String[] args) {
         Cars cars = setUp();
         int turn = InputView.getTurn();
 
         OutputView.printTurnResult();
-        for (int index = 0; index < turn; index++) {
-            cars.moveAll(new RandomMovableStrategy());
-            OutputView.printDistance(cars);
-        }
-        System.out.println();
 
+        play(cars, turn);
+
+        System.out.println();
         OutputView.printWhoIsWinner(cars);
     }
 }
