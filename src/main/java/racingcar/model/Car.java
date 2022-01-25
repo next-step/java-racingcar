@@ -16,10 +16,7 @@ public class Car {
         this.position = "";
     }
 
-    public void moveForward() {
-        RandomGenerator randomGenerator = new RandomGenerator();
-        int randomNumber = randomGenerator.generateRandomNumber();
-        //System.out.println(randomNumber);
+    public void moveForward(int randomNumber) {
         if (randomNumber >= MOVING_CONDITION) {
             this.position += "-";
         }
