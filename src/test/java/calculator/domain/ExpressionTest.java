@@ -11,7 +11,8 @@ class ExpressionTest {
         String[] splitUserInput = "1 + 2 + 3 * 5".split("\\s++");
 
         Expression expression = new Expression(splitUserInput);
-        long result = expression.evaluate();
+        Calculator calculator = new Calculator(expression);
+        long result = calculator.evaluate();
         assertThat(result).isEqualTo(30);
     }
 }

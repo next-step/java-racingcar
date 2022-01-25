@@ -14,7 +14,7 @@ public class Expression {
         this.userInput = userInput;
     }
 
-    public long evaluate() {
+    public long decomposition() {
         long acc = Long.parseLong(this.userInput[0]);
 
         for (int i = 1; i < this.userInput.length - 1; i += 2) {

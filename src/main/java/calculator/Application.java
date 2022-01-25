@@ -1,5 +1,6 @@
 package calculator;
 
+import calculator.domain.Calculator;
 import calculator.domain.Expression;
 import calculator.domain.Input;
 import java.io.IOException;
@@ -19,7 +20,8 @@ public class Application {
             }
 
             Expression expression = new Expression(splitUserInput);
-            long result = expression.evaluate();
+            Calculator calculator = new Calculator(expression);
+            long result = calculator.evaluate();
             System.out.println(result);
         }
     }
