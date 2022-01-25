@@ -1,36 +1,37 @@
 package racingcar.controller;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import racingcar.model.Car;
-import racingcar.model.User;
-import racingcar.util.Message;
+import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class Game {
-
+    private final String TRY_COUNT_LESS_THAN_ZERO="[ERROR] 시도 횟수는 1회 이상이어야 합니다.";
     public void play() {
         List<Car> carList = new ArrayList<>();
-        User user = new User();
+        InputView inputView = new InputView();
 
-        System.out.println(Message.INPUT_GUIDE_MESSAGE);
-        String[]carNames = user.getCarName();
+        String[] carNames = inputView.inputCarName();
 
         for (int i = 0; i < carNames.length; i++) {
             carList.add(new Car(carNames[i])); //car 객체 생성
         }
-        System.out.println(Message.ASK_TRY_COUNT);
-        int tryCount = user.getTryCount();
 
-        System.out.println(Message.GAME_RESULT_MESSAGE);
+        int tryCount = inputView.inputTryCount();
+        validateTryCount(tryCount);
+
         for (int i = 0; i < tryCount; i++) {
             moveForwardByCount(carList);
         }
 
         checkWinner(carList);
     }
-
+    private void validateTryCount(int tryCount){
+        if(tryCount<=0){
+            throw new IllegalArgumentException(TRY_COUNT_LESS_THAN_ZERO);
+        }
+    }
     public void moveForwardByCount(List<Car> carList) {
         OutputView outputView = new OutputView();
         for (Car car : carList) {
