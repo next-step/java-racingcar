@@ -12,9 +12,16 @@ public class OutputView {
 
     private OutputView() {}
 
-    public static void printDistance(final Car car) {
+    public static void printDistance(final Cars cars) {
+        cars.get()
+            .forEach(OutputView::carStatus);
+        System.out.println();
+    }
+
+    private static void carStatus(Car car) {
         StringBuilder sb = new StringBuilder();
-        sb.append(car.name() + CAR_RACER_SPLITTER);
+        sb.append(car.name());
+        sb.append(CAR_RACER_SPLITTER);
         for (int index = 0; index < car.distance(); index++) {
             sb.append(CAR_MOVE_CHAR);
         }

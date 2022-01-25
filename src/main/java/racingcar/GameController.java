@@ -8,7 +8,7 @@ import racingcar.utils.Parser;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-public class Application {
+public class GameController {
 
     public static Cars setUp() {
         String carNames = InputView.readCarNames();
@@ -22,13 +22,14 @@ public class Application {
 
     public static void main(String[] args) {
         Cars cars = setUp();
-        Game game = new Game(cars);
         int turn = InputView.getTurn();
 
         OutputView.printTurnResult();
         for (int index = 0; index < turn; index++) {
-            game.play(new RandomMovableStrategy());
+            cars.moveAll(new RandomMovableStrategy());
+            OutputView.printDistance(cars);
         }
+        System.out.println();
 
         OutputView.printWhoIsWinner(cars);
     }
