@@ -13,8 +13,6 @@ public class RacingCar {
     private String carName;
     private int carPosition = 0;
 
-    private RacingCar() {}
-
     public RacingCar(String carName) {
         this.carName = carName;
     }

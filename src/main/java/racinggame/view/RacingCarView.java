@@ -7,8 +7,6 @@ public class RacingCarView {
 
     private RacingCar racingCar;
 
-    private RacingCarView() {}
-
     public RacingCarView(RacingCar racingCar) {
         this.racingCar = racingCar;
     }

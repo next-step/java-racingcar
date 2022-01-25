@@ -11,8 +11,6 @@ public class GameView {
 
     private List<RacingCar> racingCars;
 
-    private GameView() {}
-
     public GameView(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
     }

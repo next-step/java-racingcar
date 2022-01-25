@@ -8,8 +8,6 @@ public class ExpressionParser {
     private Terms terms;
     private Operators operators;
 
-    private ExpressionParser() {}
-
     public ExpressionParser(String userInput) throws IOException {
         terms = new Terms();
         operators = new Operators();
