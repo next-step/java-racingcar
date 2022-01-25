@@ -3,16 +3,15 @@ package calculator.domain;
 import calculator.view.UserInput;
 
 public class Calculator {
-    final private UserInput userInput;
+    final private String input;
 
     public Calculator(UserInput userInput) {
-        this.userInput = userInput;
+        this.input = userInput.getInput();
     }
 
     public void calculate() {
         Expression expression;
         do {
-            String input = userInput.getInput();
             expression = new Expression(input);
         } while (checkDivideZero(expression));
     }

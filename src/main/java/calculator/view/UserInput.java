@@ -1,5 +1,6 @@
 package calculator.view;
 
+import calculator.domain.Validator;
 import java.util.Scanner;
 
 public class UserInput {
@@ -12,6 +13,14 @@ public class UserInput {
 
     public String getInput() {
         System.out.println("식을 입력하세요");
-        return scanner.nextLine();
+
+        String input = scanner.nextLine();
+
+        if (!Validator.isValidExpression(input)) {
+            System.out.println("[Error] 올바르지 못한 입력입니다.");
+            return getInput();
+        }
+
+        return input;
     }
 }
