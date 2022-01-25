@@ -7,36 +7,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
-
     private List<Car> cars;
-    private int roundNumber; //경주 횟수
 
     public Racing(List<Car> cars) {
         this.cars = cars;
     }
 
-    public void race() throws IOException {
-        setRoundNumber();
+    public void race(int roundNumber){
         while (roundNumber-- > 0) {
             startRound();
-            System.out.println();
         }
         printWinner();
     }
 
     private void startRound() {
         for (Car car : cars) {
-            int moveNum = car.getMoveRandomNumber();
-            car.move(moveNum);
+            car.round();
+            // TODO: UI 로직 분리하기
             printDistance(car);
         }
+        System.out.println();
     }
 
-    private void setRoundNumber() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("시도할 횟수는 몇회인가요?");
-        roundNumber = Integer.parseInt(br.readLine());
-    }
 
     //  TODO: 최종 우승자를 위한 객체가 필요하다.
     private void printWinner() {
