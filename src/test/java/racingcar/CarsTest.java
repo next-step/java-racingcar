@@ -29,7 +29,7 @@ public class CarsTest {
         cars = new Cars(Arrays.asList(A, B, C, D));
 
         for (int i = 0; i < TURNS; i++) {
-            cars.moveAll(new RandomMovableStrategy());
+            cars.moveAll(RandomMovableStrategy.getInstance());
         }
     }
 
@@ -81,12 +81,7 @@ public class CarsTest {
     // 자동차 이동 로직
     void carMove(Car car, List<Boolean> moves) {
         for (boolean carMoved: moves) {
-            car.run(new RandomMovableStrategy() {
-                @Override
-                public boolean isMovable() {
-                    return carMoved;
-                }
-            });
+            car.run(() -> carMoved);
         }
     }
 }

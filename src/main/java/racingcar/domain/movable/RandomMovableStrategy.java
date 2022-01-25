@@ -6,16 +6,29 @@ public class RandomMovableStrategy implements MovableStrategy {
 
     private final static int CONDITION_MOVE_AVAILABLE = 4;
     private final static int DEFAULT_BOUND = 10;
-    private final Random RANDOM = new Random();
+    private final static Random RANDOM = new Random();
 
-    public RandomMovableStrategy() {}
+    private volatile static RandomMovableStrategy instance;
+
+    private RandomMovableStrategy() {}
+
+    public static synchronized RandomMovableStrategy getInstance() {
+        if (instance == null) {
+            synchronized (RandomMovableStrategy.class) {
+                if (instance == null) {
+                    instance = new RandomMovableStrategy();
+                }
+            }
+        }
+        return instance;
+    }
 
     @Override
     public boolean isMovable() {
-        return getRandom(DEFAULT_BOUND) >= CONDITION_MOVE_AVAILABLE;
+        return getRandom() >= CONDITION_MOVE_AVAILABLE;
     }
 
-    private int getRandom(final int bound) {
-        return RANDOM.nextInt(bound);
+    private int getRandom() {
+        return RANDOM.nextInt(DEFAULT_BOUND);
     }
 }

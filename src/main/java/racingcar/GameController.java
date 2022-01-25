@@ -24,7 +24,7 @@ public class GameController {
 
     private static void play(Cars cars, int turn) {
         for (int index = 0; index < turn; index++) {
-            cars.moveAll(new RandomMovableStrategy());
+            cars.moveAll(RandomMovableStrategy.getInstance());
             OutputView.printDistance(cars);
         }
     }

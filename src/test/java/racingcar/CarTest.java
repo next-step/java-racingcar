@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.domain.Car;
-import racingcar.domain.movable.RandomMovableStrategy;
 
 public class CarTest {
 
@@ -53,12 +52,7 @@ public class CarTest {
     // 자동차 이동 로직
     void carMove(Car car, List<Boolean> moves) {
         for (boolean carMoved : moves) {
-            car.run(new RandomMovableStrategy() {
-                @Override
-                public boolean isMovable() {
-                    return carMoved;
-                }
-            });
+            car.run(() -> carMoved);
         }
     }
 }
