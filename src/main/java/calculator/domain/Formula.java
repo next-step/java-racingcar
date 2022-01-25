@@ -1,6 +1,7 @@
 package calculator.domain;
 
-import calculator.util.FormulaUtil;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Formula {
@@ -8,9 +9,10 @@ public class Formula {
     private final List<String> formular;
 
     public Formula(String formular) {
-        List<String> fomularSplit = FormulaUtil.split(formular);
+        List<String> fomularSplit = new ArrayList<>(Arrays.asList(formular.split(" ")));
         isNotOperator(fomularSplit);
         isNotNumber(fomularSplit);
+
         this.formular = fomularSplit;
     }
 
