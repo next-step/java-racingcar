@@ -1,7 +1,6 @@
 package calculator.domain;
 
 import calculator.util.FormulaUtil;
-import calculator.util.Operation;
 import java.util.List;
 
 public class Formula {

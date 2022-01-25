@@ -3,9 +3,7 @@ package calculator.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import calculator.domain.Formula;
-import calculator.util.Operation;
-import java.util.Arrays;
-import java.util.List;
+import calculator.domain.Operation;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {

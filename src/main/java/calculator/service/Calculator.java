@@ -1,7 +1,7 @@
 package calculator.service;
 
 import calculator.domain.Formula;
-import calculator.util.Operation;
+import calculator.domain.Operation;
 import java.util.List;
 import java.util.Stack;
 
