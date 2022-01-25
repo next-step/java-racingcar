@@ -7,6 +7,7 @@ import racinggame.view.GameView;
 public class RacingGame {
 
     private static final String QUIT = "q";
+    private static final int RANGE_OF_RANDOM_NUMBER = 9 - 0 + 1;
 
     private GameView gameView;
     private List<RacingCar> racingCars;
@@ -49,7 +50,7 @@ public class RacingGame {
     }
 
     public int getRandomValue() {
-        int random = (int) Math.floor(Math.random() * (9 - 0 + 1));
+        int random = (int) Math.floor(Math.random() * RANGE_OF_RANDOM_NUMBER);
         return random;
     }
 
