@@ -78,8 +78,7 @@ public class RacingGame {
     }
 
     public int getRandomValue() {
-        int random = (int) Math.floor(Math.random() * (9 - 0 + 1));
-        return random;
+        return (int) Math.floor(Math.random() * (9 - 0 + 1));
     }
 
     public List<RacingCar> getRacingCars() {
