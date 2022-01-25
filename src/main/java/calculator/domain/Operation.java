@@ -2,7 +2,7 @@ package calculator.domain;
 
 import java.util.Arrays;
 
-enum Operation {
+public enum Operation {
 
     PLUS("+") {
         @Override
