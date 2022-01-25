@@ -6,10 +6,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
+import org.assertj.core.api.ThrowableAssertAlternative;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import stringCalculator.Calculator;
 import stringCalculator.User;
+import stringCalculator.UserInputValue;
 
 public class UserTest {
 
@@ -17,42 +22,28 @@ public class UserTest {
     void 공백존재() {
 
         User user = new User();
-        String userInput = "1 + 2 *  4 - 1";
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(in);
 
         assertThatIllegalArgumentException()
-            .isThrownBy(user::getUserInput
-            );
-
+            .isThrownBy(
+                (ThrowingCallable) user.getUserInput(Arrays.asList("1", "+", "2", "*", " ", "4")));
     }
 
     @Test
     void 공백입력() {
         User user = new User();
-        String userInput = "";
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(in);
 
         assertThatIllegalArgumentException()
-            .isThrownBy(user::getUserInput
-            );
+            .isThrownBy(
+                (ThrowingCallable) user.getUserInput(Arrays.asList("")));
     }
 
     @Test
     void 입력오류() {
         User user = new User();
-        String userInput = "1 1 + 2 + 2 - 3";
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(in);
 
         assertThatIllegalArgumentException()
-            .isThrownBy((user::getUserInput));
+            .isThrownBy(
+                (ThrowingCallable) user.getUserInput(
+                    Arrays.asList("1", "1", "+", "2", "+", "2", "-", "3")));
     }
 }
