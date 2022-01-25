@@ -21,8 +21,8 @@ public class Expression {
 
         expression = expression.replaceAll(" ", "");
         numbers = new LinkedList<>(Arrays.asList(expression.split("[-+*/]")));
-        operators = Arrays.asList(expression.split("[0-9]+"))
-            .stream().filter(operand -> !operand.isEmpty())
+        operators = Arrays.stream(expression.split("[0-9]+"))
+            .filter(operand -> !operand.isEmpty())
             .collect(Collectors.toList());
     }
 
