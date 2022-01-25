@@ -10,7 +10,7 @@ public class User {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
 
-        return (userInput.split(","));
+        return userInput.split(",");
     }
 
     public int getTryCount() {
