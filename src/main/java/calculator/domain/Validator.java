@@ -24,7 +24,8 @@ public class Validator {
     }
     
     public static void isRightOrder(List<String> parsedInput) {
-        for (int i = 0; i < parsedInput.size(); i++) {
+        int inputSize = parsedInput.size();
+        for (int i = 0; i < inputSize; i++) {
             String target = parsedInput.get(i);
             if (i % 2 == 0) {
                 isNumber(target);
