@@ -48,6 +48,7 @@ public class RacingCarGame {
 
         } while (tryCount > 0);
 
+        judgeWinner();
         printGameResult();
     }
 
@@ -69,12 +70,27 @@ public class RacingCarGame {
         printMoveState(carNumber);
     }
 
-    private void printMoveState(int carNumber) {
-        System.out.println(racingCarList.get(carNumber) + " : " + racingResults[carNumber]);
+    private int getMaxMovingDistance() {
+        int maxMovingDistance = 0;
 
-        if (carNumber == racingCarList.size() - 1) {
-            System.out.println();
+        for (Car car : cars) {
+            int movingDistance = car.getMovingDistance();
+            if (maxMovingDistance < movingDistance) {
+                maxMovingDistance = movingDistance;
+            }
         }
+        return maxMovingDistance;
+    }
+
+    private void judgeWinner() {
+        int maxMovingDistance = getMaxMovingDistance();
+        System.out.println(maxMovingDistance);
+
+        winners = cars.stream()
+            .filter(car -> car.getMovingDistance() == maxMovingDistance).map(Car::getName)
+            .collect(Collectors.toList());
+
+        System.out.println(winners);
     }
 
     private void printGameResult() {
