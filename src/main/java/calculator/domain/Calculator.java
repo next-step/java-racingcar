@@ -33,7 +33,7 @@ public class Calculator {
                 case Constant.ADD:
                     addNumbers(number);
                     break;
-                case Constant.SUB:
+                case Constant.SUBTRACT:
                     subtractNumbers(number);
                     break;
                 case Constant.MULTIPLY:
