@@ -20,7 +20,8 @@ public class Calculator {
     public int process() {
         int result = Integer.parseInt(parsingInputFormat.get(NUMBER_ZERO));
 
-        for (int index = NUMBER_ONE; index < parsingInputFormat.size() - NUMBER_ONE; index += NUMBER_TWO) {
+        for (int index = NUMBER_ONE; index < parsingInputFormat.size() - NUMBER_ONE;
+            index += NUMBER_TWO) {
             result = Operator.of(parsingInputFormat.get(index))
                 .operate(result, Integer.parseInt(parsingInputFormat.get(index + NUMBER_ONE)));
         }

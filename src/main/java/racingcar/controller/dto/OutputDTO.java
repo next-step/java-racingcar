@@ -1,8 +1,7 @@
 package racingcar.controller.dto;
 
-import racingcar.model.entity.Car;
-
 public class OutputDTO {
+
     private String resultMessage;
 
     public OutputDTO(String resultMessage) {

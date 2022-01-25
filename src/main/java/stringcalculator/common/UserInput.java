@@ -1,6 +1,8 @@
 package stringcalculator.common;
 
-import static stringcalculator.common.ErrorMessage.*;
+import static stringcalculator.common.ErrorMessage.ERROR_MESSAGE_BLANK;
+import static stringcalculator.common.ErrorMessage.ERROR_MESSAGE_FORMAT;
+import static stringcalculator.common.ErrorMessage.ERROR_MESSAGE_NULL;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

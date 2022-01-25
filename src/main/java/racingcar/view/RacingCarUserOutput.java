@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import static racingcar.model.utils.info.RacingGameInfo.*;
+import static racingcar.model.utils.info.RacingGameInfo.WINNER_IS;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -33,7 +33,7 @@ public class RacingCarUserOutput {
         }
 
         for (Car car : cars) {
-            result+=car.toString(max);
+            result += car.toString(max);
         }
         outputDTO = new OutputDTO(result);
     }

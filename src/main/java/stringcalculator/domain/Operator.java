@@ -1,8 +1,7 @@
 package stringcalculator.domain;
 
-import static stringcalculator.common.ErrorMessage.*;
-
-import stringcalculator.common.ErrorMessage;
+import static stringcalculator.common.ErrorMessage.ERROR_MESSAGE_DIVIDE;
+import static stringcalculator.common.ErrorMessage.ERROR_MESSAGE_SIGN;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;

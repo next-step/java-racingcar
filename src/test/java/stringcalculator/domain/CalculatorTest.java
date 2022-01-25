@@ -7,21 +7,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import org.assertj.core.util.Strings;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
 import stringcalculator.common.UserInput;
-import stringcalculator.domain.Calculator;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
 
@@ -36,7 +32,7 @@ class CalculatorTest {
     @DisplayName("계산기 수행 검증")
     @Test
     void operatorTest() {
-        List<String> userInput  = new ArrayList<>((Arrays.asList("1", "+", "2", "-", "1")));
+        List<String> userInput = new ArrayList<>((Arrays.asList("1", "+", "2", "-", "1")));
         Calculator calculator = Calculator.of(userInput);
         int result = calculator.getResult();
         Assertions.assertThat(result).isEqualTo(2);
@@ -44,7 +40,7 @@ class CalculatorTest {
 
     @DisplayName("공백 테스트")
     @ParameterizedTest
-    @ValueSource(strings= {"", " "})
+    @ValueSource(strings = {"", " "})
     void blankTest(String input) {
         userInput.setUserInput(input);
         assertTrue(userInput.parsingUserInput());
@@ -53,7 +49,7 @@ class CalculatorTest {
     @DisplayName("null 테스트")
     @ParameterizedTest
     @NullSource
-    void nullTest(String input){
+    void nullTest(String input) {
         userInput.setUserInput(input);
         assertTrue(userInput.parsingUserInput());
     }
@@ -61,7 +57,7 @@ class CalculatorTest {
     @DisplayName("empty 테스트")
     @ParameterizedTest
     @EmptySource
-    void emptyTest(String input){
+    void emptyTest(String input) {
         userInput.setUserInput(input);
         assertTrue(userInput.parsingUserInput());
     }
@@ -69,8 +65,8 @@ class CalculatorTest {
     @DisplayName("null과 empty 그리고 공백, \t, \n 테스트")
     @ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings= {" ", "\t", "\n"})
-    void nullAndEmptyTest(String input){
+    @ValueSource(strings = {" ", "\t", "\n"})
+    void nullAndEmptyTest(String input) {
         userInput.setUserInput(input);
         assertTrue(userInput.parsingUserInput());
     }

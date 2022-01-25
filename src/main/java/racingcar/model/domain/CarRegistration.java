@@ -5,11 +5,11 @@ import racingcar.model.entity.Car;
 
 public class CarRegistration {
 
-    private CarRegistration(final List<String> userInput, final Racing racing){
+    private CarRegistration(final List<String> userInput, final Racing racing) {
         run(userInput, racing);
     }
 
-    public static CarRegistration instance(final List<String> userInput, final Racing racing){
+    public static CarRegistration instance(final List<String> userInput, final Racing racing) {
         return new CarRegistration(userInput, racing);
     }
 
