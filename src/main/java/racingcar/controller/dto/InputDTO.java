@@ -7,27 +7,17 @@ public class InputDTO {
     private String carNameInput;
     private int racingTryCounter;
 
+    public InputDTO(List<String> splitUserInput, String carNameInput, int racingTryCounter) {
+        this.splitUserInput = splitUserInput;
+        this.carNameInput = carNameInput;
+        this.racingTryCounter = racingTryCounter;
+    }
+
     public List<String> getSplitUserInput() {
         return splitUserInput;
     }
 
-    public void setSplitUserInput(List<String> splitUserInput) {
-        this.splitUserInput = splitUserInput;
-    }
-
-    public String getCarNameInput() {
-        return carNameInput;
-    }
-
-    public void setCarNameInput(String carNameInput) {
-        this.carNameInput = carNameInput;
-    }
-
     public int getRacingTryCounter() {
         return racingTryCounter;
-    }
-
-    public void setRacingTryCounter(int racingTryCounter) {
-        this.racingTryCounter = racingTryCounter;
     }
 }

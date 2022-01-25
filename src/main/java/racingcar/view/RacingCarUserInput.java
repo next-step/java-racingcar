@@ -1,48 +1,55 @@
 package racingcar.view;
 
-import static racingcar.model.utils.info.RacingGameErrorInfo.*;
-import static racingcar.model.utils.info.RacingGameInfo.*;
-
-import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
-import racingcar.controller.dto.InputDTO;
-import racingcar.model.utils.exception.InputValidationException;
+import static racingcar.model.utils.info.RacingGameErrorInfo.CAR_NAME_DUPLICATED_ERROR;
+import static racingcar.model.utils.info.RacingGameErrorInfo.CAR_NAME_LIMIT_ERROR;
+import static racingcar.model.utils.info.RacingGameErrorInfo.TRY_NUMBER_COUNT_ERROR;
+import static racingcar.model.utils.info.RacingGameInfo.RACING_CAR_INPUT;
+import static racingcar.model.utils.info.RacingGameInfo.RACING_TRY_INPUT;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.model.utils.info.RacingGameErrorInfo;
-import racingcar.model.utils.info.RacingGameInfo;
+import racingcar.controller.dto.InputDTO;
+import racingcar.model.utils.exception.InputValidationException;
 
 public class RacingCarUserInput {
 
     private static final String DELIMITER = ",";
     private final BufferedReader bufferedReader;
     private final BufferedWriter log;
-    private final InputDTO inputDTO;
+    private String carNameInput;
+    private int racingTryCounter;
+    private List<String> splitStrInput;
+    private InputDTO inputDTO;
 
     public RacingCarUserInput() {
         bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         log = new BufferedWriter(new OutputStreamWriter(System.out));
-        inputDTO = new InputDTO();
+    }
+
+    public InputDTO getInputDTO() {
+        return inputDTO;
     }
 
     public void userInputRun() {
-        do{
+        do {
             inputCarName();
-        }while(parsingCarName());
+        } while (parsingCarName());
 
-        do{
+        do {
             inputRacingTry();
-        }while(parsingRacingTry());
+        } while (parsingRacingTry());
+        inputDTO = new InputDTO(splitStrInput, carNameInput, racingTryCounter);
     }
 
     public boolean parsingCarName() {
         try {
-            List<String> splitStrInput = splitStr(inputDTO.getCarNameInput());
+            splitStrInput = splitStr(carNameInput);
             validateLengthLimit(splitStrInput);
             validateDuplicateCar(splitStrInput);
         } catch (InputValidationException exception) {
@@ -54,7 +61,7 @@ public class RacingCarUserInput {
 
     public boolean parsingRacingTry() {
         try {
-            validateNumberRange(inputDTO.getRacingTryCounter());
+            validateNumberRange(racingTryCounter);
         } catch (InputValidationException exception) {
             exception.getMessage();
             return true;
@@ -66,7 +73,7 @@ public class RacingCarUserInput {
         try {
             log.write(RACING_CAR_INPUT);
             log.flush();
-            inputDTO.setCarNameInput(bufferedReader.readLine());
+            carNameInput = bufferedReader.readLine();
         } catch (IOException exception) {
             exception.getMessage();
             return true;
@@ -78,7 +85,7 @@ public class RacingCarUserInput {
         try {
             log.write(RACING_TRY_INPUT);
             log.flush();
-            inputDTO.setRacingTryCounter(Integer.parseInt(bufferedReader.readLine()));
+            racingTryCounter = Integer.parseInt(bufferedReader.readLine());
         } catch (IOException exception) {
             exception.getMessage();
             return true;
