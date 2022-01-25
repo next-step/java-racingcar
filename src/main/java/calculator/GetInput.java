@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class GetInput {
 
+    private static final String ERROR = "ERROR";
+
     public static String inputString() {
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
@@ -15,13 +17,21 @@ public class GetInput {
         int it = 0;
         int strIt = 0;
         array[it] = getInteger(expression, strIt);
+        if (array[it].equals(ERROR)) {
+            return array;
+        }
         strIt = array[it].length() + strIt;
         it++;
 
         while (strIt != expression.length()) {
-            array[it++] = String.valueOf(expression.charAt(strIt));
+            String number = String.valueOf(expression.charAt(strIt));
+            array[it++] = number;
             strIt++;
             array[it] = getInteger(expression, strIt);
+            if (array[it].equals(ERROR)) {
+                array[0] = ERROR;
+                return array;
+            }
             strIt = array[it].length() + strIt;
             it++;
         }
@@ -40,16 +50,16 @@ public class GetInput {
         }
 
         if (number.length() == 0) {
-            return "ERROR";
+            return ERROR;
         } else if (number.charAt(0) == '0' && number.length() > 1) {
-            return "ERROR";
+            return ERROR;
         }
 
         return number;
     }
 
-    public static String getString(String str, int idx) {
-        return String.valueOf(str.charAt(idx));
-    }
+//    public static String getString(String str, int idx) {
+//        return String.valueOf(str.charAt(idx));
+//    }
 
 }

@@ -2,10 +2,13 @@ package calculator;
 
 public class Calculator {
 
+    private static final String BLANK = " ";
+    private static final String ERROR = "ERROR";
+
     public static void execute() {
         System.out.println("수식을 입력하시오: ");
         String expression = GetInput.inputString();
-        expression = expression.replace(" ", "");
+        expression = expression.replace(BLANK, "");
         if (expression.length() == 0) {
             throw new IllegalArgumentException("Error: need right expression");
         }
@@ -18,9 +21,8 @@ public class Calculator {
     public static void calculate(String[] stringArray) {
 
         for (int i = 0; i < (stringArray.length - 1) / 2; i++) {
-            if (stringArray[0].equals("ERROR")) {
-                System.out.println("ERROR");
-                System.out.println("종료합니다.");
+            if (stringArray[0].equals(ERROR)) {
+                System.out.println("ERROR: 종료합니다");
                 return;
             }
             if (stringArray[i * 2 + 1] == null) {
@@ -34,8 +36,8 @@ public class Calculator {
     public static void parseOperation(String[] stringArray, int start) {
         int firstOperand, secondOperand;
 
-        if (stringArray[start].equals("ERROR") || stringArray[start + 2].equals("ERROR")) {
-            stringArray[0] = "ERROR";
+        if (stringArray[start].equals(ERROR) || stringArray[start + 2].equals(ERROR)) {
+            stringArray[0] = ERROR;
             return;
         }
 
@@ -52,7 +54,8 @@ public class Calculator {
             result = mul(firstOperand, secondOperand);
         } else if (operator.equals("/")) {
             if (secondOperand == 0) {
-                stringArray[0] = "ERROR";
+                stringArray[0] = ERROR;
+                return;
             } else {
                 result = div(firstOperand, secondOperand);
             }
