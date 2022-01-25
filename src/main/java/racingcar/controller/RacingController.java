@@ -2,8 +2,8 @@ package racingcar.controller;
 
 import racingcar.model.domain.CarRegistration;
 import racingcar.model.domain.Racing;
-import racingcar.view.RacingCarUserInput;
-import racingcar.view.RacingCarUserOutput;
+import racingcar.view.RacingCarUserConsole;
+import racingcar.view.RacingCarUserResult;
 
 public class RacingController {
 
@@ -11,15 +11,15 @@ public class RacingController {
 
     public static void racingController() {
         Racing racing = Racing.get();
-        RacingCarUserInput userInput = new RacingCarUserInput();
-        RacingCarUserOutput userOutput = new RacingCarUserOutput();
-        userInput.userInputRun();
-        CarRegistration.instance(userInput.getInputDTO().getSplitUserInput(), racing);
-        for (int time = NUMBER_ZERO; time < userInput.getInputDTO().getRacingTryCounter(); time++) {
+        RacingCarUserConsole userConsole = new RacingCarUserConsole();
+        RacingCarUserResult userResult = new RacingCarUserResult();
+        userConsole.userInputRun();
+        CarRegistration.instance(userConsole.getInputDTO().getSplitUserInput(), racing);
+        for (int time = NUMBER_ZERO; time < userConsole.getInputDTO().getRacingTryCounter(); time++) {
             racing.drive();
-            userOutput.carsStatement(racing.getCars());
+            userResult.carsStatement(racing.getCars());
         }
-        userOutput.judge(racing.getCars());
-        System.out.println(userOutput.getOutputDTO().getResultMessage());
+        userResult.judge(racing.getCars());
+        System.out.println(userResult.getOutputDTO().getResultMessage());
     }
 }

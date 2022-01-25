@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 import racingcar.controller.dto.InputDTO;
 import racingcar.model.utils.exception.InputValidationException;
 
-public class RacingCarUserInput {
+public class RacingCarUserConsole {
 
     private static final String DELIMITER = ",";
     private final BufferedReader bufferedReader;
@@ -27,7 +27,7 @@ public class RacingCarUserInput {
     private List<String> splitStrInput;
     private InputDTO inputDTO;
 
-    public RacingCarUserInput() {
+    public RacingCarUserConsole() {
         bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         log = new BufferedWriter(new OutputStreamWriter(System.out));
     }

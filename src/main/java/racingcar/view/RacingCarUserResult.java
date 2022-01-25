@@ -9,7 +9,7 @@ import java.util.List;
 import racingcar.controller.dto.OutputDTO;
 import racingcar.model.entity.Car;
 
-public class RacingCarUserOutput {
+public class RacingCarUserResult {
 
     private static final String DELIMITER = " : ";
     private static final String DASH_SIGH = "-";
