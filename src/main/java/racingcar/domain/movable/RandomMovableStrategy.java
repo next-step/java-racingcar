@@ -4,12 +4,11 @@ import java.util.Random;
 
 public class RandomMovableStrategy implements MovableStrategy {
 
+    private final static int CONDITION_MOVE_AVAILABLE = 4;
+    private final static int DEFAULT_BOUND = 10;
     private final Random RANDOM = new Random();
-    private final int CONDITION_MOVE_AVAILABLE = 4;
-    private final int DEFAULT_BOUND = 10;
 
-    public RandomMovableStrategy() {
-    }
+    public RandomMovableStrategy() {}
 
     @Override
     public boolean isMovable() {

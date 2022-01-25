@@ -4,7 +4,7 @@ import racingcar.domain.movable.MovableStrategy;
 
 public class Car {
 
-    private final int LIMITED_CAR_NAME_LENGTH = 5;
+    private static final int LIMITED_CAR_NAME_LENGTH = 5;
 
     private final String name;
     private int distance;
