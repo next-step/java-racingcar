@@ -37,10 +37,11 @@ public class GetInput {
     }
 
     public static String getInteger(String str, int idx) {
-        String string = "";
+        StringBuilder string = new StringBuilder();
+
         for (int i = idx; i < str.length(); i++) {
             if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
-                string += str.charAt(i);
+                string.append(str.charAt(i));
             } else {
                 break;
             }
@@ -52,7 +53,7 @@ public class GetInput {
             return "ERROR";
         }
 
-        return string;
+        return string.toString();
     }
 
     public static String getString(String str, int idx) {
