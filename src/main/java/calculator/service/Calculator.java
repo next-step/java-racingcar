@@ -17,9 +17,9 @@ public class Calculator {
         }
 
         while (symbols.size() > 1) {
-            double prev = Double.parseDouble(symbols.pop());
+            double prev = convertToNumber(symbols.pop());
             Operation operator = Operation.from(symbols.pop());
-            double next = Double.parseDouble(symbols.pop());
+            double next = convertToNumber(symbols.pop());
 
             double result = operator.apply(prev, next);
 
@@ -27,5 +27,9 @@ public class Calculator {
         }
 
         return Double.parseDouble(symbols.pop());
+    }
+
+    private static double convertToNumber(String symbol) {
+        return Double.parseDouble(symbol);
     }
 }
