@@ -30,6 +30,6 @@ public class Application {
             game.play(new RandomMovableStrategy());
         }
 
-        OutputView.printWhoIsWinner(game.winners());
+        OutputView.printWhoIsWinner(cars);
     }
 }
