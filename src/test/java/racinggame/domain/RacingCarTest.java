@@ -7,14 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.IOException;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class RacingCarTest {
 
     @Test
-    void 자동차이름_배열을_받아_자동차객체_리스트_생성() throws IOException {
+    void 자동차이름_배열을_받아_자동차객체_리스트_생성() {
         String[] carNames = {"car1", "car2"};
 
         List<RacingCar> racingCars = RacingCar.racingCarOf(carNames);
@@ -27,14 +26,14 @@ class RacingCarTest {
     void 자동차의_이름_글자수_5자_이하_실패() {
         String carName = "carcar1";
 
-        assertThrows(IllegalArgumentException.class, () -> Validator.validateNameLength(carName));
+        assertThrows(IllegalArgumentException.class, () -> new RacingCar(carName, 0));
     }
 
     @Test
     void 자동차의_이름_글자수_5자_이하_성공() {
         String carName = "car1";
 
-        assertDoesNotThrow(() -> Validator.validateNameLength(carName));
+        assertDoesNotThrow(() -> new RacingCar(carName, 0));
     }
 
     @Test

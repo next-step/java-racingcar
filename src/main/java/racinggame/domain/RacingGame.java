@@ -1,6 +1,5 @@
 package racinggame.domain;
 
-import java.io.IOException;
 import java.util.List;
 import racinggame.view.GameView;
 
@@ -21,7 +20,7 @@ public class RacingGame {
         this.trial = trial;
     }
 
-    public void start() throws IOException {
+    public void start() {
         for (int i = 0; i < trial; i++) {
             System.out.println("계속 진행 하려면 아무키나 입력해 주세요.(종료 = q)");
             String command = Utils.getInput();

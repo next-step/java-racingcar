@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +26,7 @@ class InputTest {
     }
 
     @Test
-    void carNames_정상_입력() throws IOException {
+    void carNames_정상_입력() {
         InputStream inputStream = new ByteArrayInputStream("car1,car2".getBytes());
         System.setIn(inputStream);
 
@@ -38,7 +37,7 @@ class InputTest {
     }
 
     @Test
-    void 시도횟수_정상_입력() throws IOException {
+    void 시도횟수_정상_입력() {
         InputStream inputStream = new ByteArrayInputStream("5".getBytes());
         System.setIn(inputStream);
 
@@ -48,7 +47,7 @@ class InputTest {
     }
 
     @Test
-    void 시도횟수_입력값에_불필요한_공백이_들어왔을_때_제거() throws IOException {
+    void 시도횟수_입력값에_불필요한_공백이_들어왔을_때_제거() {
         InputStream inputStream = new ByteArrayInputStream("1 0".getBytes());
         System.setIn(inputStream);
 
@@ -56,7 +55,7 @@ class InputTest {
     }
 
     @Test
-    void 시도횟수_입력값에_불필요한_공백이_들어왔을_때_제거_값_잘들어오는지() throws IOException {
+    void 시도횟수_입력값에_불필요한_공백이_들어왔을_때_제거_값_잘들어오는지() {
 
         InputStream inputStream = new ByteArrayInputStream("1 0".getBytes());
         System.setIn(inputStream);
@@ -66,7 +65,7 @@ class InputTest {
     }
 
     @Test
-    void carName_입력값에_불필요한_공백이_들어왔을_때_제거() throws IOException {
+    void carName_입력값에_불필요한_공백이_들어왔을_때_제거() {
         InputStream inputStream = new ByteArrayInputStream("car1, car2, c ar3".getBytes());
         System.setIn(inputStream);
 

@@ -1,6 +1,5 @@
 package racinggame.domain;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,13 +26,13 @@ public class RacingCar {
         this.carPosition = position;
     }
 
-    public static List<RacingCar> racingCarOf(String[] carNames) throws IOException {
+    public static List<RacingCar> racingCarOf(String[] carNames) {
         List<RacingCar> racingCars;
-        while(true){
+        while (true) {
             try {
                 racingCars = createRacingCars(carNames);
                 break;
-            } catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 carNames = Input.getCarNames();
             }

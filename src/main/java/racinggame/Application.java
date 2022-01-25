@@ -1,6 +1,5 @@
 package racinggame;
 
-import java.io.IOException;
 import java.util.List;
 import racinggame.domain.Input;
 import racinggame.domain.RacingCar;
@@ -9,7 +8,7 @@ import racinggame.domain.Utils;
 
 public class Application {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         while (true) {
             String[] carNames = Input.getCarNames();

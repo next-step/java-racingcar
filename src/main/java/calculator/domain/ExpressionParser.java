@@ -1,6 +1,5 @@
 package calculator.domain;
 
-import java.io.IOException;
 import java.util.InputMismatchException;
 
 public class ExpressionParser {
@@ -8,7 +7,7 @@ public class ExpressionParser {
     private Terms terms;
     private Operators operators;
 
-    public ExpressionParser(String userInput) throws IOException {
+    public ExpressionParser(String userInput) {
         terms = new Terms();
         operators = new Operators();
 

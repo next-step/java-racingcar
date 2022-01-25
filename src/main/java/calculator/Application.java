@@ -5,11 +5,10 @@ import calculator.domain.ExpressionParser;
 import calculator.domain.Input;
 import calculator.domain.Operators;
 import calculator.domain.Terms;
-import java.io.IOException;
 
 public class Application {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         while (true) {
             double result;
 
