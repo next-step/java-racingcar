@@ -11,9 +11,9 @@ class IOclassTest {
     @Test
     public void exceedFiveCharacter() {
         Car[] cars = new Car[3];
-        cars[0].setName("one");
-        cars[1].setName("two");
-        cars[2].setName("threee");
+        cars[0]=new Car("one");
+        cars[1]=new Car("two");
+        cars[2]=new Car("threee");
         boolean flag = IOClass.checkCarName(cars);
         assertThat(flag).isEqualTo(false);
     }
@@ -22,9 +22,9 @@ class IOclassTest {
     @Test
     public void belowFiveCharacter() {
         Car[] cars = new Car[3];
-        cars[0].setName("one");
-        cars[1].setName("two");
-        cars[2].setName("three");
+        cars[0]=new Car("one");
+        cars[1]=new Car("two");
+        cars[2]=new Car("three");
         boolean flag = IOClass.checkCarName(cars);
         assertThat(flag).isEqualTo(true);
     }
