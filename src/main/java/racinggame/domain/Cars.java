@@ -7,7 +7,7 @@ import java.util.Random;
 public class Cars {
 
     private final List<Car> cars = new ArrayList<>();
-
+    private final Random random = new Random();
     public Cars(String[] carNames) {
         for (String carName:carNames) {
             cars.add(new Car(carName));
@@ -20,7 +20,6 @@ public class Cars {
 
 
     public void move() {
-        Random random = new Random();
         cars.forEach(car -> car.move(random.nextInt(9)));
     }
 
