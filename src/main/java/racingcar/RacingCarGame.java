@@ -51,7 +51,10 @@ public class RacingCarGame {
 
     private void loadGame() {
         for (Car car : cars) {
-            int distance = getRandomMove();
+            int randomMove = getRandomMove();
+
+            moveCars(car, randomMove);
+
             String carName = car.getName();
 
             car.move(distance);
@@ -60,6 +63,14 @@ public class RacingCarGame {
 
             printGameStatus(carName, totalMovingDistance);
         }
+    }
+
+    private void moveCars(Car car, int move) {
+        if (!checkMovable(move)) {
+            System.out.println();
+            return;
+        }
+        car.move(move);
     }
 
     private int getMaxMovingDistance() {
