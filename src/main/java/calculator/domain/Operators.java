@@ -5,10 +5,12 @@ import java.util.List;
 
 public class Operators {
 
-    private final List<Operator> operators = new ArrayList<>();
+    private final List<Operator> operators;
     private int pointer = 0;
 
-    public Operators() {}
+    public Operators() {
+        operators = new ArrayList<>();
+    }
 
     protected List<Operator> getOperators() {
         return operators;

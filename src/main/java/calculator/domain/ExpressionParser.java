@@ -5,12 +5,14 @@ import java.util.InputMismatchException;
 
 public class ExpressionParser {
 
-    private Operators operators = new Operators();
-    private Terms terms = new Terms();
+    private Terms terms;
+    private Operators operators;
 
     private ExpressionParser() {}
 
     public ExpressionParser(String userInput) throws IOException {
+        terms = new Terms();
+        operators = new Operators();
 
         while (true) {
             String[] splitUserInput = splitUserInputByWhitespace(userInput);

@@ -5,10 +5,12 @@ import java.util.List;
 
 public class Terms {
 
-    private final List<Double> terms = new ArrayList<>();
+    private final List<Double> terms;
     private int pointer = 0;
 
-    public Terms() {}
+    public Terms() {
+        terms = new ArrayList<>();
+    }
 
     protected List<Double> getTerms() {
         return terms;
