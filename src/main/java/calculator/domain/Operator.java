@@ -3,8 +3,8 @@ package calculator.domain;
 import java.util.function.BiFunction;
 
 public enum Operator {
-    PLUS("+", (num1, num2) -> num1 + num2),
-    MINUS("-", (num1, num2) -> num1 - num2),
+    ADD("+", (num1, num2) -> num1 + num2),
+    SUBTRACT("-", (num1, num2) -> num1 - num2),
     MULTIPLY("*", (num1, num2) -> num1 * num2),
     DIVIDE("/", (num1, num2) -> {
         Validator.validateIndivisibleNumber(num2);
@@ -12,24 +12,24 @@ public enum Operator {
     });
 
     private static final Operator NON_EXISTNT = null;
-    private String operator;
+    private String symbol;
     private BiFunction<Double, Double, Double> operate;
 
-    Operator(String operator, BiFunction<Double, Double, Double> operate) {
-        this.operator = operator;
+    Operator(String symbol, BiFunction<Double, Double, Double> operate) {
+        this.symbol = symbol;
         this.operate = operate;
     }
 
-    public static boolean contains(String operator) {
-        if (get(operator) == NON_EXISTNT) {
+    public static boolean contains(String symbol) {
+        if (get(symbol) == NON_EXISTNT) {
             return false;
         }
         return true;
     }
 
-    public static Operator get(String operator) {
+    public static Operator get(String symbol) {
         for (Operator op : Operator.values()) {
-            if (op.operator.equals(operator)) {
+            if (op.symbol.equals(symbol)) {
                 return op;
             }
         }

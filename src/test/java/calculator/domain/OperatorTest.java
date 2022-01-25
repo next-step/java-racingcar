@@ -14,8 +14,8 @@ class OperatorTest {
 
     @Test
     void get() {
-        assertThat(Operator.get("+")).isEqualTo(Operator.PLUS);
-        assertThat(Operator.get("-")).isEqualTo(Operator.MINUS);
+        assertThat(Operator.get("+")).isEqualTo(Operator.ADD);
+        assertThat(Operator.get("-")).isEqualTo(Operator.SUBTRACT);
         assertThat(Operator.get("*")).isEqualTo(Operator.MULTIPLY);
         assertThat(Operator.get("/")).isEqualTo(Operator.DIVIDE);
     }
@@ -34,12 +34,12 @@ class OperatorTest {
 
     @Test
     void add() {
-        assertThat(Operator.PLUS.operate(1D, 3D)).isEqualTo(4D);
+        assertThat(Operator.ADD.operate(1D, 3D)).isEqualTo(4D);
     }
 
     @Test
     void subtract() {
-        assertThat(Operator.MINUS.operate(3D, 10D)).isEqualTo(-7D);
+        assertThat(Operator.SUBTRACT.operate(3D, 10D)).isEqualTo(-7D);
     }
 
     @Test

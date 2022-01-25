@@ -18,7 +18,7 @@ class CalculatorTest {
         terms.addTermAll(values);
 
         List<Operator> ops = new ArrayList<>(
-                Arrays.asList(Operator.PLUS, Operator.PLUS, Operator.MULTIPLY, Operator.MINUS,
+                Arrays.asList(Operator.ADD, Operator.ADD, Operator.MULTIPLY, Operator.SUBTRACT,
                         Operator.DIVIDE));
         Operators operators = new Operators();
         operators.addOperatorAll(ops);
