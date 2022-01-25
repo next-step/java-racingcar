@@ -2,15 +2,15 @@ package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Cars {
 
-    private List<Car> cars = new ArrayList<>();
-    private static final int GO_POSSIBLE_VALUE = 4;
+    private final List<Car> cars = new ArrayList<>();
 
     public Cars(String[] carNames) {
-        for (int carNum = 0; carNum < carNames.length; carNum++) {
-            cars.add(new Car(carNames[carNum]));
+        for (String carName:carNames) {
+            cars.add(new Car(carName));
         }
     }
 
@@ -18,17 +18,24 @@ public class Cars {
         return cars;
     }
 
-    public void move(List<Integer> randomNumberList) {
-        for (int i = 0; i < randomNumberList.size(); i++) {
-            if (randomNumberList.get(i) >= GO_POSSIBLE_VALUE) {
-                Car car = cars.get(i);
-                int location = car.getLocation();
-                location++;
-                car.updateLocation(location);
-            }
-        }
 
+    public void move() {
+        Random random = new Random();
+        cars.forEach(car -> car.move(random.nextInt(9)));
     }
+
+//    public void moveT(List<Integer> randomNumberList) {
+//        randomNumberList.forEach();
+//        for (int randomNumber: randomNumberList) {
+//            if (randomNumber >= GO_POSSIBLE_VALUE) {
+//                Car car = cars.get(i);
+//                int location = car.getLocation();
+//                location++;
+//                car.updateLocation(location);
+//            }
+//        }
+//
+//    }
 
     public int findMaxLocation() {
         int maxLocation = 0;
