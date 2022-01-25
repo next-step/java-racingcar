@@ -12,6 +12,9 @@ public class RacingCarGame {
     private final List<String> carNames;
     private List<String> winners;
     private int tryCount;
+    private final int MIN_MOVE = 0;
+    private final int MAX_MOVE = 9;
+    private final int MOVABLE = 4;
 
     public RacingCarGame(int tryCount, List<String> carNames) {
         this.tryCount = tryCount;
