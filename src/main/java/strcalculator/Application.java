@@ -1,5 +1,6 @@
 package strcalculator;
 
+import java.util.Scanner;
 import strcalculator.domain.Calculator;
 import strcalculator.domain.StringProcessor;
 
@@ -7,9 +8,11 @@ public class Application {
 
     private static final String REPEAT="다시 입력해주세요.";
     public static void main(String[] args) {
-        StringProcessor stringProcessor = new StringProcessor();
+        Scanner sc = new Scanner(System.in);
+
         while (true) {
-            stringProcessor.inputStringValue();
+            StringProcessor stringProcessor = new StringProcessor(sc.nextLine());
+//            stringProcessor.inputStringValue();
             try {
                 stringProcessor.deleteSpaceString();
                 String[] numbers = stringProcessor.parseInputNumber();
