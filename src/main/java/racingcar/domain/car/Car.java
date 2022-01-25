@@ -1,14 +1,18 @@
 package racingcar.domain.car;
 
-public class Car implements Comparable<Car>{
+public class Car {
+
+    private static final String NAME_LENGTH_ERROR_MESSAGE = "자동차 이름이 5자를 초과합니다.";
     private final String name;
-    private int position;
+    public int position;
     private Car(String name) {
+        validateCarName(name);
         this.name = name;
         this.position = 0;
     }
 
     private Car(String name, int position) {
+        validateCarName(name);
         this.name = name;
         this.position = position;
     }
@@ -33,11 +37,13 @@ public class Car implements Comparable<Car>{
         this.position += 1;
     }
 
-    public int compareTo(Car o) {
-        return o.position - position;
+    private static void validateCarName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException(NAME_LENGTH_ERROR_MESSAGE);
+        }
     }
 
-    public boolean compareStatus(Car o) {
+    public boolean comparePosition(Car o) {
         return position == o.position;
     }
 }

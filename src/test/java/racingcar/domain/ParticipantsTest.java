@@ -19,7 +19,7 @@ class ParticipantsTest {
         //when
 
         //then
-        Assertions.assertThatCode(() -> Participants.validateCarName(name)).doesNotThrowAnyException();
+        Assertions.assertThatCode(() -> Car.from(name)).doesNotThrowAnyException();
     }
 
     @Test
@@ -30,7 +30,7 @@ class ParticipantsTest {
         //when
 
         //then
-        Assertions.assertThatCode(() -> Participants.validateCarName(name)).hasMessageContaining(NAME_LENGTH_ERROR_MESSAGE);
+        Assertions.assertThatCode(() -> Car.from(name)).hasMessageContaining(NAME_LENGTH_ERROR_MESSAGE);
     }
 
     @Test

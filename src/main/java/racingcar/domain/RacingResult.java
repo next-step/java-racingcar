@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.car.Car;
@@ -37,12 +38,17 @@ public class RacingResult {
     public String getWinner() {
         System.out.print("최종 우승자: ");
 
-        Collections.sort(cars);
+        Collections.sort(cars, new Comparator<Car>() {
+            @Override
+            public int compare(Car o1, Car o2) {
+                return o2.position - o1.position;
+            }
+        });
         Car firstWinner = cars.get(0);
 
         String winners = cars.stream()
-            .filter(car -> car.compareStatus(firstWinner))
-            .map(car -> car.getName())
+            .filter(car -> car.comparePosition(firstWinner))
+            .map(Car::getName)
             .collect(Collectors.joining(", "));
 
         return winners;

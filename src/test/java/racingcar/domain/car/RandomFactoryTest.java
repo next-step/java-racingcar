@@ -1,6 +1,7 @@
 package racingcar.domain.car;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.random.NoMoveGen;
@@ -20,7 +21,7 @@ class RandomFactoryTest {
         int random = randomFactory.getRandom(new MoveGen());
 
         //then
-        Assertions.assertThat(random >= BOUND).isTrue();
+        assertThat(random >= BOUND).isTrue();
     }
 
     @DisplayName("랜덤 값 4 미만은 전지하지 않는다.")
@@ -34,6 +35,6 @@ class RandomFactoryTest {
         int random = randomFactory.getRandom(new NoMoveGen());
 
         //then
-        Assertions.assertThat(random >= BOUND).isFalse();
+        assertThat(random >= BOUND).isFalse();
     }
 }

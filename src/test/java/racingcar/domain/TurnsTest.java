@@ -1,6 +1,7 @@
 package racingcar.domain;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 class TurnsTest {
@@ -16,7 +17,7 @@ class TurnsTest {
         //when
 
         //then
-        Assertions.assertThatCode(() -> Turns.validateTurn(turn)).doesNotThrowAnyException();
+        assertThatCode(() -> Turn.validateTurn(turn)).doesNotThrowAnyException();
     }
 
     @Test
@@ -27,7 +28,7 @@ class TurnsTest {
         //when
 
         //then
-        Assertions.assertThatCode(() -> Turns.validateTurn(turn)).hasMessageContaining(TURN_MESSAGE);
+        assertThatCode(() -> Turn.validateTurn(turn)).hasMessageContaining(TURN_MESSAGE);
     }
 
     @Test
@@ -38,7 +39,7 @@ class TurnsTest {
         //when
 
         //then
-        Assertions.assertThatCode(() -> Turns.validateTurn(turn)).hasMessageContaining(TURN_NOT_NATURAL_NUMBER_ERROR_MESSAGE);
+        assertThatCode(() -> Turn.validateTurn(turn)).hasMessageContaining(TURN_NOT_NATURAL_NUMBER_ERROR_MESSAGE);
     }
 
     @Test
@@ -50,7 +51,7 @@ class TurnsTest {
         //when
 
         //then
-        Assertions.assertThatCode(() -> Turns.validateTurn(turn1)).hasMessageContaining(TURN_NOT_NUMBER_ERROR_MESSAGE);
-        Assertions.assertThatCode(() -> Turns.validateTurn(turn2)).hasMessageContaining(TURN_NOT_NUMBER_ERROR_MESSAGE);
+        assertThatCode(() -> Turn.validateTurn(turn1)).hasMessageContaining(TURN_NOT_NUMBER_ERROR_MESSAGE);
+        assertThatCode(() -> Turn.validateTurn(turn2)).hasMessageContaining(TURN_NOT_NUMBER_ERROR_MESSAGE);
     }
 }

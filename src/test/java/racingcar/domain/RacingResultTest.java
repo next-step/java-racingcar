@@ -1,8 +1,9 @@
 package racingcar.domain;
 
+import static org.assertj.core.api.Assertions.*;
+
 import java.util.ArrayList;
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
@@ -36,7 +37,7 @@ class RacingResultTest {
         RacingResult racingResult = RacingResult.toRacingResult(participants);
 
         //then
-        Assertions.assertThat(racingResult.getWinner()).isEqualTo("jason");
+        assertThat(racingResult.getWinner()).isEqualTo("jason");
     }
 
     @Test
@@ -67,7 +68,7 @@ class RacingResultTest {
         RacingResult racingResult = RacingResult.toRacingResult(participants);
 
         //then
-        Assertions.assertThat(racingResult.getWinner()).isEqualTo("jason, sung");
+        assertThat(racingResult.getWinner()).isEqualTo("jason, sung");
     }
 
     @DisplayName("Participatns에서 RacingResult로 변환 후 둘은 같은 차량 리스트를 들고 있다.")
@@ -91,6 +92,6 @@ class RacingResultTest {
         RacingResult racingResult = RacingResult.toRacingResult(participants);
 
         //then
-        Assertions.assertThat(racingResult.getResult()).isEqualTo(participants.getParticipants());
+        assertThat(racingResult.getResult()).isEqualTo(participants.getParticipants());
     }
 }
