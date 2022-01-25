@@ -34,6 +34,7 @@ public class RacingCarGame {
     }
 
     private boolean checkMovable(int move) {
+        final int MOVABLE = 4;
         return MOVABLE <= move;
     }
 
