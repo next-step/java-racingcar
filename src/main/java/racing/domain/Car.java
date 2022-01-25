@@ -16,10 +16,6 @@ public class Car {
         this.position = 0;
     }
 
-    public int getPosition() {
-        return position;
-    }
-
     private static void checkNameLength(final String name) {
         if (name.length() < CAR_NAME_MIN_LENGTH || name.length() > CAR_NAME_MAX_LENGTH) {
             throw new IllegalArgumentException(
@@ -57,5 +53,9 @@ public class Car {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
