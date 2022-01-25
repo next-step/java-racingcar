@@ -65,14 +65,8 @@ public class RacingCarGame {
         }
     }
 
-    private void setRacingResults(int carNumber, int move) {
-        if (!checkMovable(move)) {
-            printMoveState(carNumber);
-            return;
-        }
-
-        racingResults[carNumber] += "-";
-        printMoveState(carNumber);
+    private void printGameStatus(String name, int move) {
+        System.out.println(name + ":" + move);
     }
 
     private int getMaxMovingDistance() {
