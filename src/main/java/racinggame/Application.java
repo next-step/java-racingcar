@@ -12,7 +12,8 @@ public class Application {
         List<String> carNames = gameInit.inputCarName();
         int playGameNumber = gameInit.inputTryNumber();
 
-        Racing game = new Racing(carNames, playGameNumber);
+        Racing game = new Racing();
+        game.race(carNames, playGameNumber);
         System.out.println(game.getResult());
         Winner.print(game.getCarInfo());
     }

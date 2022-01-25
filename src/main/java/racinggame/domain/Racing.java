@@ -11,7 +11,10 @@ public class Racing {
     private List<Car> cars = new ArrayList<>();
     private StringBuilder result = new StringBuilder("");
 
-    public Racing(List<String> carNames, int tryCount) {
+    public Racing() {
+    }
+
+    public void race(List<String> carNames, int tryCount) {
         registerCar(carNames);
         while (tryCount > 0) {
             move();
