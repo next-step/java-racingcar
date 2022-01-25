@@ -52,11 +52,16 @@ public class RacingCarGame {
         printGameResult();
     }
 
-    private void controlRacingCar() {
-        for (int i = 0; i < racingCarList.size(); ++i) {
-            int move = getRandomMove();
+    private void moveCars() {
+        for (Car car : cars) {
+            int distance = getRandomMove();
+            String carName = car.getName();
 
-            setRacingResults(i, move);
+            car.move(distance);
+
+            int totalMovingDistance = car.getMovingDistance();
+
+            printGameStatus(carName, totalMovingDistance);
         }
     }
 
