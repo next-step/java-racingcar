@@ -9,37 +9,40 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.controller.dto.InputDTO;
 import racingcar.view.RacingCarUserInput;
 import racingcar.model.entity.Car;
 
 public class ApplicationTest {
 
     private RacingCarUserInput userInput;
+    private InputDTO inputDTO;
 
     @DisplayName("객체 초기화")
     @BeforeEach
     void init() {
         userInput = new RacingCarUserInput();
+        inputDTO = new InputDTO();
     }
 
     @DisplayName("유저_입력_글자길이_테스트")
     @Test
     void userInputLengthTest() {
-        userInput.setCarNameInput("CarNameIsLong");
+        inputDTO.setCarNameInput("CarNameIsLong");
         assertTrue(userInput.parsingCarName() == true);
     }
 
     @DisplayName("유저_입력_중복_테스트")
     @Test
     void userInputDuplicationTest() {
-        userInput.setCarNameInput("Benz,Kia,Kia");
+        inputDTO.setCarNameInput("Benz,Kia,Kia");
         assertThat(userInput.parsingCarName() == true);
     }
 
     @DisplayName("입력_횟수_범위_테스트")
     @Test
     void userInputRacingTryTest() {
-        userInput.setRacingTryCounter(10);
+        inputDTO.setRacingTryCounter(10);
         assertThat(userInput.parsingRacingTry() == true);
     }
 
