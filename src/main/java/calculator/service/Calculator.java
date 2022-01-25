@@ -12,23 +12,40 @@ public class Calculator {
 
     public static double run(Formula formulaInput) {
         List<String> formula = formulaInput.getFormula();
-        Stack<String> formulaCalculator = new Stack<>();
+        Stack<Double> operandCalculator = new Stack<>();
+        Stack<Operation> operationCalculator = new Stack<>();
 
-        for (int i = formula.size() - 1; i >= 0; i--) {
-            formulaCalculator.push(formula.get(i));
-        }
+        initOperandCalculator(formula, operandCalculator);
+        initOperationCalculator(formula, operationCalculator);
 
-        while (formulaCalculator.size() > 1) {
-            double prev = Double.parseDouble(formulaCalculator.pop());
-            Operation operator = Operation.from(formulaCalculator.pop())
-                .orElseThrow(() -> new IllegalArgumentException("연산자 형식 오류"));
-            double next = Double.parseDouble(formulaCalculator.pop());
+        while (operandCalculator.size() > 1) {
+            Double prev = operandCalculator.pop();
+            Operation operator = operationCalculator.pop();
+            Double next = operandCalculator.pop();
 
             double result = operator.apply(prev, next);
 
-            formulaCalculator.push(String.valueOf(result));
+            operandCalculator.push(result);
         }
 
-        return Double.parseDouble(formulaCalculator.pop());
+        return operandCalculator.pop();
+    }
+
+    private static Stack<Double> initOperandCalculator(List<String> formula,
+        Stack<Double> operandCalculator) {
+        for (int i = formula.size() - 1; i >= 0; i -= 2) {
+            operandCalculator.push(Double.parseDouble(formula.get(i)));
+        }
+        return operandCalculator;
+    }
+
+    private static Stack<Operation> initOperationCalculator(List<String> formula,
+        Stack<Operation> operationCalculator) {
+        for (int i = formula.size() - 2; i >= 1; i -= 2) {
+            Operation operation = Operation.from(formula.get(i))
+                .orElseThrow(() -> new IllegalArgumentException("연산자 형식 오류"));
+            operationCalculator.push(operation);
+        }
+        return operationCalculator;
     }
 }
