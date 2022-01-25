@@ -38,7 +38,7 @@ public class RacingGame {
 
     private List<Integer> getCarPositions() {
         List<Integer> carPositions = racingCars.stream()
-                .map(car -> car.getPosition())
+                .map(RacingCar::getPosition)
                 .collect(Collectors.toList());
 
         return carPositions;
