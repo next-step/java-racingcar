@@ -9,15 +9,10 @@ public class Cars {
     private final List<Car> cars = new ArrayList<>();
     private final Random random = new Random();
     public Cars(String[] carNames) {
-        for (String carName:carNames) {
+        for (String carName : carNames) {
             cars.add(new Car(carName));
         }
     }
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
 
     public void move() {
         cars.forEach(car -> car.move(random.nextInt(9)));
@@ -42,6 +37,10 @@ public class Cars {
             maxLocation = Math.max(car.getLocation(), maxLocation);
         }
         return maxLocation;
+    }
+
+    public List<Car> getCars() {
+        return new ArrayList<>(cars);
     }
 
 }
