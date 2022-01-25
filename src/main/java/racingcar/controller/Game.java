@@ -14,16 +14,13 @@ public class Game {
     int randomNumber = randomGenerator.generateRandomNumber();
 
     public void play() {
-        ArrayList<String> carNameList;
-        String[] carNames; //입력 받은 자동차 이름들
-        int tryCount;
-        ArrayList<Car> carList = new ArrayList<>(); //경주를 하는 car 모음
+        ArrayList<Car> carList = new ArrayList<>();
         User user = new User();
 
         System.out.println(Message.INPUT_GUIDE_MESSAGE);
-        carNames = user.getCarName();
+        String[] carNames = user.getCarName();
         System.out.println(Message.ASK_TRY_COUNT);
-        tryCount = user.getTryCount();
+        int tryCount = user.getTryCount();
 
         for (int i = 0; i < carNames.length; i++) {
             carList.add(new Car(carNames[i])); //car 객체 생성
