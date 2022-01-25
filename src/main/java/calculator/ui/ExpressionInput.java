@@ -14,38 +14,30 @@ public class ExpressionInput {
     }
 
     public static List<String> getExpression() {
-        List<String> formular = new ArrayList<>();
+        List<String> expression = new ArrayList<>();
 
         System.out.println("계산할 연산식을 입력해주세요.");
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
             String input = bufferedReader.readLine();
             isBlankOrNot(input);
-
-            formular = ExpressionUtil.split(input);
-            isNotOperator(formular);
-            isNotNumber(formular);
+            expression = ExpressionUtil.split(input);
+            isNotNumber(expression);
         } catch (IllegalArgumentException | IOException e) {
             System.out.println("[ERROR] " + e.getMessage());
         }
-        return formular;
+        return expression;
     }
 
     private static void isBlankOrNot(String input) {
         if (input == null || "".equals(input)) {
-            throw new IllegalArgumentException("입력값이 Null이거나 빈 공백 문자입니다!");
+            throw new IllegalArgumentException("[ERROR] 입력값이 Null이거나 빈 공백 문자입니다!");
         }
     }
 
-    private static void isNotOperator(List<String> formular) {
-        for (int i = 1; i < formular.size(); i += 2) {
-            Operation.from(formular.get(i));
-        }
-    }
-
-    private static void isNotNumber(List<String> formular) {
-        for (int i = 0; i < formular.size(); i += 2) {
+    private static void isNotNumber(List<String> expression) {
+        for (int i = 0; i < expression.size(); i += 2) {
             try {
-                Integer.parseInt(formular.get(i));
+                Integer.parseInt(expression.get(i));
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("피연산자가 숫자가 아닙니다.");
             }
