@@ -22,8 +22,7 @@ public class Car {
         return BLANK;
     }
 
-    public int drive() {
-        int randomNumber = generateRandomNumber();
+    public int drive(int randomNumber) {
         if (isMove(randomNumber)) {
             position++;
         }
@@ -34,10 +33,6 @@ public class Car {
 
     private boolean isMove(int randomNumber) {
         return randomNumber >= MIN_MOVE_NUM;
-    }
-
-    private int generateRandomNumber() {
-        return (int) (Math.random() * 9);
     }
 
     private void printStatus() {

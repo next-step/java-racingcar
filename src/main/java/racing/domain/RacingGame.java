@@ -31,9 +31,14 @@ public class RacingGame {
         }
     }
 
+    private int generateRandomNumber() {
+        return (int) (Math.random() * 9);
+    }
+
     private void driveCars() {
         for (Car car : Cars) {
-            int position = car.drive();
+            int randomNumber = generateRandomNumber();
+            int position = car.drive(randomNumber);
             setMaxPosition(position);
         }
     }
