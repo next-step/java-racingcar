@@ -1,6 +1,7 @@
-package racingcar.common;
+package racingcar.view;
 
 import racingcar.common.exception.InputValidationException;
+import racingcar.domain.dto.InputDto;
 
 import java.io.*;
 import java.util.Arrays;
@@ -9,28 +10,27 @@ import java.util.stream.Collectors;
 
 import static racingcar.common.SystemMessage.*;
 
-public class UserInput {
+public class InputView {
 
     private static final String DELIMITER = ",";
     private static final int LENGTH_LIMIT_MAX = 5;
     private static final int LENGTH_LIMIT_MIN = 1;
 
-    private List<String> splitUserInput;
     private String carNameInput;
-    private int racingTime;
+    private InputDto inputDto = new InputDto();
 
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    private UserInput() {
+    private InputView() {
         while (parsingCarName())
             ;
         while (parsingRacingTime())
             ;
     }
 
-    public static UserInput instance() {
-        return new UserInput();
+    public static InputView instance() {
+        return new InputView();
     }
 
     private boolean parsingCarName() {
@@ -38,9 +38,9 @@ public class UserInput {
             log.write(CAR_NAME_INPUT_INFO);
             log.flush();
             this.carNameInput = bufferedReader.readLine();
-            splitUserInput = splitStr(carNameInput);
-            validateLengthLimit(splitUserInput);
-            validateDuplicateCar(splitUserInput);
+            inputDto.setSplitUserInput(splitStr(carNameInput));
+            validateLengthLimit(inputDto.getSplitUserInput());
+            validateDuplicateCar(inputDto.getSplitUserInput());
         } catch (IOException | InputValidationException exception) {
             exception.printStackTrace();
             return true;
@@ -52,7 +52,7 @@ public class UserInput {
         try {
             log.write(RACING_TIME_INPUT_INFO);
             log.flush();
-            this.racingTime = Integer.parseInt(bufferedReader.readLine());
+            inputDto.setRacingTime(Integer.parseInt(bufferedReader.readLine()));
 
         } catch (IOException | InputValidationException exception) {
             exception.printStackTrace();
@@ -82,12 +82,8 @@ public class UserInput {
         return Arrays.stream(userInput.split(DELIMITER)).collect(Collectors.toList());
     }
 
-    public List<String> getSplitUserInput() {
-        return splitUserInput;
-    }
-
-    public int getRacingTime() {
-        return racingTime;
+    public InputDto getInputDto() {
+        return inputDto;
     }
 
 }
