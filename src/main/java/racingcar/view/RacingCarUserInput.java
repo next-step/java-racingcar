@@ -1,5 +1,8 @@
 package racingcar.view;
 
+import static racingcar.model.utils.info.RacingGameErrorInfo.*;
+import static racingcar.model.utils.info.RacingGameInfo.*;
+
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 import racingcar.model.utils.exception.InputValidationException;
@@ -10,6 +13,8 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.model.utils.info.RacingGameErrorInfo;
+import racingcar.model.utils.info.RacingGameInfo;
 
 public class RacingCarUserInput {
 
