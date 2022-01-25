@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import calculator.util.Parser;
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
@@ -18,5 +17,4 @@ class CalculatorTest {
 
         assertThat(result).isEqualTo(1);
     }
-
 }
