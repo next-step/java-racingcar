@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import racingcar.racing.RacingGame;
-import racingcar.util.RandomUtil;
 
 public class RacingCar {
 

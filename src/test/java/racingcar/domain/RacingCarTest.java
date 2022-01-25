@@ -2,15 +2,11 @@ package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.mockStatic;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
 import racingcar.Application;
-import racingcar.util.RandomUtil;
 
 class RacingCarTest extends RandomConfigTest{
 
@@ -23,7 +19,7 @@ class RacingCarTest extends RandomConfigTest{
     void 자동차이름_검사() {
         assertThatExceptionOfType(IllegalArgumentException.class)
             .isThrownBy(() -> {
-                new RacingCar("gdgㅗㅓㅏ,ㅗㅓㅜㅡg");
+                new RacingCar("gdgdasdag");
             });
     }
 

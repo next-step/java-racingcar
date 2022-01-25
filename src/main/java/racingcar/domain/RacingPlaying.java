@@ -11,6 +11,11 @@ public class RacingPlaying {
     private final List<RacingCar> racingCarList;
     StringBuilder racingStatus = new StringBuilder();
 
+
+    public List<RacingCar> getRacingCarList() {
+        return racingCarList;
+    }
+
     public RacingPlaying(List<String> nameList) {
         racingCarList = new ArrayList<>();
         for (String name : nameList) {
@@ -20,7 +25,7 @@ public class RacingPlaying {
 
     public String getGameStatus(int raceCount) {
         while (raceCount > 0) {
-            moveForwardAll();
+            moveForwardAll(RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END));
             raceCount--;
         }
         return racingStatus.toString();
@@ -32,9 +37,9 @@ public class RacingPlaying {
         return winnerList;
     }
 
-    public void moveForwardAll() {
+    public void moveForwardAll(int randomNumber) {
         for (RacingCar racingCar : racingCarList) {
-            racingCar.moveForward(RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END));
+            racingCar.moveForward(randomNumber);
             racingStatus.append(racingCar.getName() + ":" + racingCar.getPosition() + "\n");
         }
         racingStatus.append("----------------\n");
