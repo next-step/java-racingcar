@@ -13,21 +13,11 @@ public class RacingCarGame {
     private final List<Integer> racingResults = new ArrayList<>();
     private List<String> winners;
     private int tryCount;
-    private final List<String> racingCarList;
-    private final String[] racingResults;
-    private final List<String> winners;
 
-    private static final Random RANDOM = new Random();
-    private final int MIN_MOVE = 0;
-    private final int MAX_MOVE = 9;
-    private final int MOVABLE = 4;
-
-    public RacingCarGame(int tryCount, List<String> racingCarList) {
+    public RacingCarGame(int tryCount, List<String> carNames) {
         this.tryCount = tryCount;
-        this.racingCarList = racingCarList;
-        racingResults = new String[racingCarList.size()];
-        Arrays.fill(racingResults, "");
-        winners = new ArrayList<>();
+        this.carNames = carNames;
+        initializeCar();
     }
 
     private int getRandomMove() {
