@@ -13,6 +13,7 @@ public class RacingCarInput {
             input = Console.readLine();
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
+            return getCarName();
         }
         return Arrays.asList(input.split(","));
     }
@@ -24,6 +25,7 @@ public class RacingCarInput {
             input = Console.readLine();
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
+            return getRaceCount();
         }
         return Integer.parseInt(input);
     }

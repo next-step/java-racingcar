@@ -1,6 +1,7 @@
 package calculator.ui;
 
 import calculator.domain.Formula;
+import calculator.util.Console;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,15 +13,15 @@ public class FormulaInput {
 
     public static Formula getFormula() {
         Formula formular = null;
-
         System.out.println("계산할 연산식을 입력해주세요.");
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
-            String input = bufferedReader.readLine();
+        try {
+            String input = Console.readLine();
             isBlankOrNot(input);
 
             formular = new Formula(input);
-        } catch (IllegalArgumentException | IOException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
+            return getFormula();
         }
         return formular;
     }
