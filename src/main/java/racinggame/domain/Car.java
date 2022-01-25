@@ -11,6 +11,9 @@ public class Car {
     }
 
     public static Car of(final String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("[ERROR] 자동차의 이름은 5자를 초과할 수 없습니다.");
+        }
         return new Car(name);
     }
 
