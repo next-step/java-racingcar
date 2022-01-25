@@ -3,16 +3,13 @@ package calculator.domain;
 import java.util.Scanner;
 
 public class Calculator {
-
-    private String input;
-
     public Calculator() {
     }
 
     public void startCalculate() {
         Expression expression;
         do {
-            input = getUserInput();
+            String input = getUserInput();
             expression = new Expression(input);
         } while (checkDivideZero(expression));
     }
