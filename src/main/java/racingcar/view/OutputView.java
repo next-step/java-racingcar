@@ -2,44 +2,32 @@ package racingcar.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.domain.car.Car;
-import racingcar.domain.car.Name;
+import racingcar.controller.ResultDto;
 
 public class OutputView {
 
-    private static final String MARK = "-";
     private static final String DELIMITER = ", ";
 
     private OutputView() {
     }
 
-    public static void showResult(List<Car> cars) {
+    public static void showResult(List<ResultDto> cars) {
         cars.forEach(OutputView::showCarStatus);
         System.out.println();
     }
 
-    private static void showCarStatus(Car car) {
-        String position = createPositionBar(car.position());
-        System.out.println(car.name().getName() + ": " + position);
+    private static void showCarStatus(ResultDto resultDto) {
+        System.out.println(resultDto.getCurrentStatus());
     }
 
-    private static String createPositionBar(int position) {
-        StringBuilder positionBar = new StringBuilder();
-        while (position-- > 0) {
-            positionBar.append(MARK);
-        }
-        return positionBar.toString();
-    }
-
-    public static void showWinners(List<Car> winners) {
+    public static void showWinners(List<ResultDto> winners) {
         String winnerNames = createWinnerNames(winners);
         System.out.println("최종 우승자: " + winnerNames);
     }
 
-    private static String createWinnerNames(List<Car> winners) {
+    private static String createWinnerNames(List<ResultDto> winners) {
         return winners.stream()
-            .map(Car::name)
-            .map(Name::getName)
+            .map(ResultDto::name)
             .collect(Collectors.joining(DELIMITER));
     }
 }

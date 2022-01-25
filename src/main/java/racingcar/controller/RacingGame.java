@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.Cars;
 import racingcar.domain.car.RandomEngine;
 import racingcar.domain.Round;
@@ -20,10 +22,26 @@ public class RacingGame {
         setUpGame();
         while (round.untilEnd()) {
             cars.moveAll();
-            OutputView.showResult(cars.cars());
+            List<ResultDto> currentResults = getCurrentResult();
+            OutputView.showResult(currentResults);
         }
         Winners winners = Winners.findWinners(cars.cars());
-        OutputView.showWinners(winners.winners());
+        List<ResultDto> winnersDto = getWinners(winners);
+        OutputView.showWinners(winnersDto);
+    }
+
+    private List<ResultDto> getWinners(Winners winners) {
+        return winners.winners()
+            .stream()
+            .map(ResultDto::new)
+            .collect(Collectors.toList());
+    }
+
+    private List<ResultDto> getCurrentResult() {
+        return cars.cars()
+            .stream()
+            .map(ResultDto::new)
+            .collect(Collectors.toList());
     }
 
     private void setUpGame() {
