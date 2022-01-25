@@ -4,11 +4,10 @@ import java.util.Scanner;
 
 public class UserInput {
 
-    static Printer printer = new Printer();
-    static Scanner scan = new Scanner(System.in);
-    static int NAME_LENGTH = 5;
-    static String[] carNames;
-    static Integer turn;
+    private final Printer printer = new Printer();
+    private final Scanner scan = new Scanner(System.in);
+    private final String[] carNames;
+    private final Integer turn;
 
     public UserInput() {
         carNames = setCarNames();
@@ -58,6 +57,7 @@ public class UserInput {
 
     private void validateCarName(String name) {
         checkIfValueIsNotEmpty(name);
+        int NAME_LENGTH = 5;
         if (name.length() > NAME_LENGTH) {
             throw new IllegalArgumentException(String.format("자동차 이름이 %d자를 초과합니다.", NAME_LENGTH));
         }
