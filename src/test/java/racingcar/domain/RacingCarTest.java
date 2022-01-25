@@ -15,9 +15,7 @@ class RacingCarTest {
     @DisplayName("자동차 이름의 길이가 5 보다 크면 IllegalArgumentException 발생한다")
     void When_CarNameLengthIsMoreThan5_Expect_IllegalArgumentException() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> {
-                new RacingCar("gdgdgdgdgdg");
-            });
+            .isThrownBy(() -> new RacingCar("gdgdgdgdgdg"));
     }
 
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
@@ -35,7 +33,7 @@ class RacingCarTest {
     void When_NumberIsLowerThan4_Expect_Stop(int number) {
         RacingCar car = new RacingCar("testN");
         car.move(number);
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isZero();
     }
 
 }

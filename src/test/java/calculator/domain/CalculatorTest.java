@@ -1,8 +1,7 @@
-package calculator.service;
+package calculator.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import calculator.util.Operation;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
