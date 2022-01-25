@@ -21,7 +21,7 @@ public class Expression {
         result = Integer.parseInt(numbers.get(0));
     }
 
-    public List<String> getNumber() {
+    public List<String> getNumbers() {
         return numbers;
     }
 
