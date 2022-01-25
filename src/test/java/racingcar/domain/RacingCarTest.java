@@ -2,55 +2,40 @@ package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.mockStatic;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
-import racingcar.Application;
-import racingcar.util.RandomUtil;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-class RacingCarTest extends RandomConfigTest {
 
-    @BeforeEach
-    void beforeEach() {
-        super.setUp();
-    }
+class RacingCarTest {
 
     @Test
-    @DisplayName("자동차 이름 검사 테스트")
-    void carNameValidationTest() {
+    @DisplayName("자동차 이름의 길이가 5 보다 크면 IllegalArgumentException 발생한다")
+    void When_CarNameLengthIsMoreThan5_Expect_IllegalArgumentException() {
         assertThatExceptionOfType(IllegalArgumentException.class)
             .isThrownBy(() -> {
                 new RacingCar("gdgdgdgdgdg");
             });
     }
 
-    @Test
-    @DisplayName("자동차 전진 테스트")
-    void moveTest() {
-        try (final MockedStatic<RandomUtil> mockRandoms = mockStatic(RandomUtil.class)) {
-            mockRandoms
-                .when(() -> RandomUtil.pickNumberInRange(anyInt(), anyInt()))
-                .thenReturn(5);
-            RacingCar car = new RacingCar("testN");
-
-            car.moveForward();
-
-            assertThat(car.getPosition()).isEqualTo(1);
-        }
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    @ParameterizedTest
+    @DisplayName("4이상의 숫자가 나왔을 때 자동차는 1씩 전진한다")
+    void When_NumberIs4OrMore_Expect_MoveForward(int number) {
+        RacingCar car = new RacingCar("testN");
+        car.move(number);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
-    @AfterEach
-    void tearDown() {
-        outputStandard();
+    @ValueSource(ints = {0, 1, 2, 3})
+    @ParameterizedTest
+    @DisplayName("4미만의 숫자가 나왔을 때 자동차는 멈춘다.")
+    void When_NumberIsLowerThan4_Expect_Stop(int number) {
+        RacingCar car = new RacingCar("testN");
+        car.move(number);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
-    }
 }
