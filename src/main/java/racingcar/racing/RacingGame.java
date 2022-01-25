@@ -1,6 +1,7 @@
 package racingcar.racing;
 
 import java.util.List;
+
 import racingcar.domain.RacingPlaying;
 import racingcar.ui.RacingCarInput;
 
@@ -11,7 +12,7 @@ public class RacingGame {
     public void playRacingGame() {
         inputAll();
         RacingPlaying racingPlaying = new RacingPlaying(carNameList);
-        String gameStatus = racingPlaying.getGameStatus(raceCount, carNameList);
+        String gameStatus = racingPlaying.getGameStatus(raceCount);
         List<String> gameWinner = racingPlaying.getGameWinner();
         System.out.println(gameStatus);
         System.out.print("최종 우승자: " + String.join(", ", gameWinner));
