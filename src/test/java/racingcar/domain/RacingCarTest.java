@@ -12,7 +12,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class RacingCarTest {
 
     @Test
-    @DisplayName("자동차 이름의 길이가 5 보다 크면 IllegalArgumentException 발생한다")
+    @DisplayName("자동차 이름의 길이가 5 보다 크면 IllegalArgumentException 이 발생한다")
     void When_CarNameLengthIsMoreThan5_Expect_IllegalArgumentException() {
         assertThatExceptionOfType(IllegalArgumentException.class)
             .isThrownBy(() -> new RacingCar("gdgdgdgdgdg"));
