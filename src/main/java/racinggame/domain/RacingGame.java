@@ -7,6 +7,10 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
 
+    private static final int MIN_NUMBER = 0;
+    private static final int MAX_NUMBER = 9;
+    private static final int THRESHOLD_NUMBER = 0;
+
     private List<RacingCar> racingCars;
     private int trial;
 
@@ -70,7 +74,7 @@ public class RacingGame {
     }
 
     private boolean canForward(int randomValue) {
-        return randomValue >= 4;
+        return randomValue >= THRESHOLD_NUMBER;
     }
 
     private boolean isEnd(String input) {
@@ -78,7 +82,7 @@ public class RacingGame {
     }
 
     public int getRandomValue() {
-        return (int) Math.floor(Math.random() * (9 - 0 + 1));
+        return (int) Math.floor(Math.random() * (MAX_NUMBER - MIN_NUMBER + 1));
     }
 
     public List<RacingCar> getRacingCars() {
