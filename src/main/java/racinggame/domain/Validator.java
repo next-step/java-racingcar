@@ -5,6 +5,8 @@ public class Validator {
     private static final int MINIMUM_PLAYER = 2;
     private static final int MAXIMUM_NAME_LENGTH = 5;
 
+    private Validator() {}
+
     public static void validatePossibleToStart(String[] carNames) {
         if (carNames.length < MINIMUM_PLAYER) {
             throw new IllegalArgumentException("참가자는 2명 이상입니다.");
