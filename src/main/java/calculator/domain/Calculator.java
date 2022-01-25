@@ -66,6 +66,5 @@ public class Calculator {
         if (isValidExpressionSize) {
             throw new IllegalArgumentException("[ERROR] 올바르지 않은 식입니다.");
         }
-
     }
 }
