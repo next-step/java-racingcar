@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private final List<Car> carList;
+    private final List<Car> Cars;
     private int maxPosition;
 
     public RacingGame() {
-        this.carList = new ArrayList<>();
+        this.Cars = new ArrayList<>();
         this.maxPosition = 0;
     }
 
@@ -16,7 +16,7 @@ public class RacingGame {
         List<String> nameList = UserInput.getCarNames();
         int tryNumber = UserInput.getTryNumber();
         for (String name : nameList) {
-            carList.add(new Car(name));
+            Cars.add(new Car(name));
         }
 
         startRacing(tryNumber);
@@ -32,7 +32,7 @@ public class RacingGame {
     }
 
     private void driveCars() {
-        for (Car car : carList) {
+        for (Car car : Cars) {
             int position = car.drive();
             setMaxPosition(position);
         }
@@ -46,7 +46,7 @@ public class RacingGame {
 
     private void showGameResult() {
         StringBuilder sb = new StringBuilder();
-        for (Car car : carList) {
+        for (Car car : Cars) {
             sb.append(car.checkWinner(maxPosition));
         }
         sb.setLength(sb.length() - 2);
