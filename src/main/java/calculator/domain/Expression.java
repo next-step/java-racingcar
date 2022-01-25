@@ -29,25 +29,7 @@ public class Expression {
             int operand = Integer.parseInt(numbers.get(i));
             String operator = operators.get(i);
 
-            if ("+".equals(operator)) {
-                result = Operation.addition(result, operand);
-                continue;
-            }
-
-            if ("-".equals(operator)) {
-                result = Operation.subtraction(result, operand);
-                continue;
-            }
-
-            if ("*".equals(operator)) {
-                result = Operation.multiplication(result, operand);
-                continue;
-            }
-
-            if ("/".equals(operator)) {
-                result = Operation.division(result, operand);
-                continue;
-            }
+            result = Operation.calculate(operator, result, operand);
         }
     }
 
