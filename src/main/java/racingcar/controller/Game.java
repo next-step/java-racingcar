@@ -5,16 +5,19 @@ import java.util.Comparator;
 import racingcar.model.Car;
 import racingcar.model.User;
 import racingcar.util.Message;
+import racingcar.util.RandomGenerator;
 import racingcar.view.OutputView;
 
 public class Game {
+
+    RandomGenerator randomGenerator = new RandomGenerator();
+    int randomNumber = randomGenerator.generateRandomNumber();
 
     public void play() {
         ArrayList<String> carNameList;
         String[] carNames; //입력 받은 자동차 이름들
         int tryCount;
         ArrayList<Car> carList = new ArrayList<>(); //경주를 하는 car 모음
-        //ArrayList<Car> winnerList = new ArrayList<>();
         User user = new User();
 
         System.out.println(Message.INPUT_GUIDE_MESSAGE);
@@ -36,7 +39,7 @@ public class Game {
     public void moveForwardByCount(ArrayList<Car> carList) {
         OutputView outputView = new OutputView();
         for (Car car : carList) {
-            car.moveForward();
+            car.moveForward(randomNumber);
             outputView.printResult(car.getCarName(), car.getPosition());
         }
         System.out.println();
@@ -49,7 +52,6 @@ public class Game {
         for (Car car : carList) {
             if (car.getPosition().length() > maxPosition) {
                 maxPosition = car.getPosition().length();
-
             }
         }
         for (Car car : carList) {
