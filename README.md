@@ -1,5 +1,9 @@
 # 자동차 경주 게임
 
+## 2단계 요구사항 
+
+- MVC 패키지 분리(domain, view)
+
 ## 기능 목록
 - [X] 각 자동차의 이름을 입력받는다. InputView#getCarNames()
   - [X] 자동차의 이름은 쉼표(,)를 기준으로 구분한다. StringUtils#splitCarNames()
