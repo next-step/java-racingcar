@@ -9,7 +9,8 @@ public class Calculator {
 
     public void calculate(List<String> parsedInput) {
         int total = Integer.parseInt(parsedInput.get(0));
-        for (int i = 1; i < parsedInput.size(); i += 2) {
+        int inputSize = parsedInput.size();
+        for (int i = 1; i < inputSize; i += 2) {
             String operator = parsedInput.get(i);
             int nextNumber = Integer.parseInt(parsedInput.get(i+1));
             total = operate(operator, total, nextNumber);
