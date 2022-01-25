@@ -42,7 +42,7 @@ public class Validator {
     }
 
     private static void isOperator(String target) {
-        if (!(target.equals("+") | target.equals("-") | target.equals("*") | target.equals("/"))) {
+        if (!("+".equals(target) || "-".equals(target) || "*".equals(target) || "/".equals(target))) {
             throw new IllegalArgumentException();
         }
     }
