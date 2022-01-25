@@ -7,6 +7,11 @@ import java.util.Random;
 
 public class RacingCarGame {
 
+    private final static Random RANDOM = new Random();
+    private final List<Car> cars = new ArrayList<>();
+    private final List<String> carNames;
+    private final List<Integer> racingResults = new ArrayList<>();
+    private List<String> winners;
     private int tryCount;
     private final List<String> racingCarList;
     private final String[] racingResults;
