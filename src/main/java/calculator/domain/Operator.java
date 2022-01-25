@@ -21,10 +21,7 @@ public enum Operator {
     }
 
     public static boolean contains(String symbol) {
-        if (get(symbol) == NON_EXISTNT) {
-            return false;
-        }
-        return true;
+        return get(symbol) != NON_EXISTNT;
     }
 
     public static Operator get(String symbol) {
