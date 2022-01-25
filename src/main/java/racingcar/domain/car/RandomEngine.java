@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import java.util.Random;
 
@@ -8,7 +8,7 @@ public class RandomEngine implements Engine {
     private static final int END_OF_RANGE = 10;
     private static final Random random = new Random();
 
-    protected RandomEngine() {
+    public RandomEngine() {
     }
 
     @Override
