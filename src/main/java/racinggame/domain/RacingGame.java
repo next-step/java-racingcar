@@ -1,15 +1,13 @@
 package racinggame.domain;
 
+import static racinggame.domain.Constants.*;
+
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-
-    private static final int MIN_NUMBER = 0;
-    private static final int MAX_NUMBER = 9;
-    private static final int THRESHOLD_NUMBER = 0;
 
     private List<RacingCar> racingCars;
     private int trial;
@@ -74,7 +72,7 @@ public class RacingGame {
     }
 
     private boolean isEnd(String input) {
-        return input.equals("q");
+        return input.equals(QUIT_COMMAND);
     }
 
     public int getRandomValue() {

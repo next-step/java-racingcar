@@ -1,12 +1,12 @@
 package racinggame.domain;
 
+import static racinggame.domain.Constants.*;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCar {
-
-    private static final int MOVING_SPACES = 1;
 
     private String carName;
     private int carPosition = 0;
