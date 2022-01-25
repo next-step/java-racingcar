@@ -1,7 +1,12 @@
 package racing.domain;
 
 public class Car {
+
     private final static int MIN_MOVE_NUM = 4;
+    private final static String COMMA_DELIMITER = ", ";
+    private final static String BLANK = "";
+    private final static String PROGRESS_STRING = "-";
+
     private final String name;
     private int position;
 
@@ -11,10 +16,10 @@ public class Car {
     }
 
     public String checkWinner(int maxPosition) {
-        if(position == maxPosition) {
-            return name + ", ";
+        if (position == maxPosition) {
+            return name + COMMA_DELIMITER;
         }
-        return "";
+        return BLANK;
     }
 
     public int drive() {
@@ -38,7 +43,7 @@ public class Car {
     private void printStatus() {
         System.out.print(name + " : ");
         for (int i = 0; i < position; i++) {
-            System.out.print("-");
+            System.out.print(PROGRESS_STRING);
         }
         System.out.println();
     }
