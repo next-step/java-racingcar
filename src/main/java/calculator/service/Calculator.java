@@ -11,24 +11,24 @@ public class Calculator {
     }
 
     public static double run(Formula formulaInput) {
-        List<String> formulaList = formulaInput.getFormula();
-        Stack<String> formula = new Stack<>();
+        List<String> formula = formulaInput.getFormula();
+        Stack<String> formulaCalculator = new Stack<>();
 
-        for (int i = formulaList.size() - 1; i >= 0; i--) {
-            formula.push(formulaList.get(i));
+        for (int i = formula.size() - 1; i >= 0; i--) {
+            formulaCalculator.push(formula.get(i));
         }
 
-        while (formula.size() > 1) {
-            double prev = Double.parseDouble(formula.pop());
-            Operation operator = Operation.from(formula.pop())
+        while (formulaCalculator.size() > 1) {
+            double prev = Double.parseDouble(formulaCalculator.pop());
+            Operation operator = Operation.from(formulaCalculator.pop())
                 .orElseThrow(() -> new IllegalArgumentException("연산자 형식 오류"));
-            double next = Double.parseDouble(formula.pop());
+            double next = Double.parseDouble(formulaCalculator.pop());
 
             double result = operator.apply(prev, next);
 
-            formula.push(String.valueOf(result));
+            formulaCalculator.push(String.valueOf(result));
         }
 
-        return Double.parseDouble(formula.pop());
+        return Double.parseDouble(formulaCalculator.pop());
     }
 }
