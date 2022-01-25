@@ -3,23 +3,30 @@ import calculator.Validator;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 import racing.Car;
 import racing.CarGenerator;
+import racing.Podium;
 import racing.Racing;
 
 public class Application {
+
     static final int CAR_NAME_LENGTH = 5;
 
     public static void main(String[] args) throws IOException {
         List<Car> cars = readyCars();
-        startRacing(cars);
+
+        int roundNumber = readRoundNumber();
+        startRacing(roundNumber, cars);
+
+        Podium.printRacing(roundNumber, cars);
+        Podium.printWinners(cars);
     }
 
-    private static void startRacing(List<Car> cars) throws IOException {
-        int roundNumber = readRoundNumber();
-        Racing racing = new Racing(cars);
-        racing.race(roundNumber);
+    private static void startRacing(int roundNumber, List<Car> cars) {
+        Racing racing = new Racing(roundNumber);
+        racing.race(cars);
     }
 
     private static int readRoundNumber() throws IOException {
@@ -34,5 +41,4 @@ public class Application {
         List<Car> cars = cg.generateCars(names);
         return cars;
     }
-
 }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarGenerator {
+
     final int carNameLength;
 
     public CarGenerator(int carNameLength) {
