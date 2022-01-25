@@ -44,12 +44,8 @@ public class Racing {
         return cars;
     }
 
-
     public static boolean stopOrMoveForward() {
-        if (generateRandomNumber() >= MIN_BOUND_STRAIGHT) {
-            return true;
-        }
-        return false;
+        return generateRandomNumber() >= MIN_BOUND_STRAIGHT;
     }
 }
 
