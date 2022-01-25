@@ -11,10 +11,9 @@ import racinggame.view.ResultView;
 
 public class Application {
 
-    private static final int MAX_LOCATION_INIT=0;
     public static void main(String[] args) {
         GameInit gameInit = new GameInit();
-        Random random=new Random();
+        Random random = new Random();
         ResultView resultView = new ResultView();
         PlayRacingGame playRacingGame = new PlayRacingGame();
 
@@ -27,13 +26,14 @@ public class Application {
 
         System.out.println("실행 결과");
         for (; playGameNumber > 0; playGameNumber--) {
-            List<Integer> randomNumberList = playRacingGame.makeRandomNumbers(carList.size(),random);
+            List<Integer> randomNumberList = playRacingGame.makeRandomNumbers(carList.size(),
+                random);
             cars.move(randomNumberList);
             resultView.printCarsLocation(carList);
 
         }
-        maxLocation=cars.findMaxLocation();
-        List<Winner> winnerList = playRacingGame.findWinner(carList,maxLocation);
+        maxLocation = cars.findMaxLocation();
+        List<Winner> winnerList = playRacingGame.findWinner(carList, maxLocation);
         resultView.printWinner(winnerList);
     }
 
