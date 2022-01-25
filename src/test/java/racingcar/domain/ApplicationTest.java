@@ -46,7 +46,7 @@ public class ApplicationTest {
     @Test
     public void maxCheckTest() {
         //given
-        final List<Car> cars = Arrays.asList(Car.of("a"), Car.of("aa"), Car.of("aaa"));
+        final List<Car> cars = Arrays.asList(Car.get("a"), Car.get("aa"), Car.get("aaa"));
 
         //when
         cars.get(0).moveForward();
