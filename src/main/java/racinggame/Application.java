@@ -10,17 +10,10 @@ import racinggame.domain.Utils;
 public class Application {
 
     public static void main(String[] args) throws IOException {
-        String[] carNames;
-        int trial;
 
         while (true) {
-            try {
-                carNames = Input.getCarNames();
-                trial = Input.getTrial();
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-                continue;
-            }
+            String[] carNames = Input.getCarNames();
+            int trial = Input.getTrial();
 
             List<RacingCar> racingCars = RacingCar.racingCarOf(carNames);
             RacingGame racingGame = new RacingGame(racingCars, trial);
