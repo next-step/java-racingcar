@@ -27,17 +27,6 @@ public class RacingCarGame {
         }
     }
 
-    private int getRandomMove() {
-        final int MIN_MOVE = 0;
-        final int MAX_MOVE = 9;
-        return MIN_MOVE + RANDOM.nextInt(MAX_MOVE - MIN_MOVE + 1);
-    }
-
-    private boolean checkMovable(int move) {
-        final int MOVABLE = 4;
-        return MOVABLE <= move;
-    }
-
     public void play() {
         System.out.println("실행 결과");
 
@@ -52,6 +41,12 @@ public class RacingCarGame {
         printGameResult();
     }
 
+    private int getRandomMove() {
+        final int MIN_MOVE = 0;
+        final int MAX_MOVE = 9;
+        return MIN_MOVE + RANDOM.nextInt(MAX_MOVE - MIN_MOVE + 1);
+    }
+
     private void moveCars() {
         for (Car car : cars) {
             int distance = getRandomMove();
@@ -63,10 +58,6 @@ public class RacingCarGame {
 
             printGameStatus(carName, totalMovingDistance);
         }
-    }
-
-    private void printGameStatus(String name, int move) {
-        System.out.println(name + ":" + move);
     }
 
     private int getMaxMovingDistance() {
@@ -83,13 +74,19 @@ public class RacingCarGame {
 
     private void judgeWinner() {
         int maxMovingDistance = getMaxMovingDistance();
-        System.out.println(maxMovingDistance);
 
         winners = cars.stream()
             .filter(car -> car.getMovingDistance() == maxMovingDistance).map(Car::getName)
             .collect(Collectors.toList());
+    }
 
-        System.out.println(winners);
+    private boolean checkMovable(int move) {
+        final int MOVABLE = 4;
+        return MOVABLE <= move;
+    }
+
+    private void printGameStatus(String name, int move) {
+        System.out.println(name + ":" + move);
     }
 
     private void printGameResult() {
