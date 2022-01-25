@@ -1,8 +1,6 @@
 package calculator.domain;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class Input {
 
@@ -10,13 +8,14 @@ public class Input {
 
     private Input() {}
 
-    public static String getUserInput() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static String getUserInput() {
+        Scanner scanner = new Scanner(System.in);
+
         String userInput;
 
         while (true) {
             System.out.print("식을 입력해 주세요(그만하려면 q): ");
-            userInput = br.readLine().trim();
+            userInput = scanner.nextLine().trim();
             try {
                 Validator.checkIsBlack(userInput);
                 break;

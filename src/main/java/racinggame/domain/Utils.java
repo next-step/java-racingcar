@@ -1,8 +1,6 @@
 package racinggame.domain;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class Utils {
 
@@ -16,9 +14,8 @@ public class Utils {
         return sb.toString();
     }
 
-    public static String getInput() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        return br.readLine();
+    public static String getInput() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
-
 }
