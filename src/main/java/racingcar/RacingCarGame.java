@@ -54,7 +54,7 @@ public class RacingCarGame {
             moveCars(car, randomMove);
 
             String carName = car.getName();
-            int totalMovingDistance = car.getMovingDistance();
+            int totalMovingDistance = car.getPosition();
 
             printGameStatus(carName, totalMovingDistance);
         }
