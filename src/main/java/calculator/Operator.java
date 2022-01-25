@@ -13,14 +13,8 @@ public enum Operator {
     }
 
 
-    public static Operator findBySymbol(String symbol) {
-
-        for (Operator value : values()) {
-            if (value.symbol.equals(symbol)) {
-                return value;
-            }
-        }
-        throw new IllegalArgumentException("[ERROR] 연산자는 +, -, * , / 만 가능합니다.");
+public static Operator findBySymbol(String symbol) {
+        return Arrays.stream(values()).filter(val -> val.symbol.equals(symbol)).findFirst().orElseThrow(IllegalArgumentException::new);
     }
 }
 
