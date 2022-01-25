@@ -4,24 +4,18 @@ import racingcar.util.RandomUtil;
 
 public class RacingCar {
 
-    private final String name;
-
-    private int position = 0;
-
     private static final int RANDOM_START = 0;
-
     private static final int RANDOM_END = 9;
-
     private static final int THRESHOLD = 4;
-
-    private static final int NAME_SIZE = 5;
-
+    private static final int NAME_MAX_SIZE = 5;
+    private final String name;
+    private int position = 0;
 
     public RacingCar(String name) {
         try {
             isCorrectNameSize(name);
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] " + e.getMessage());
+            System.out.println("[ERROR]" + e.getMessage());
         }
         this.name = name;
     }
@@ -42,7 +36,7 @@ public class RacingCar {
     }
 
     private void isCorrectNameSize(String name) {
-        if (NAME_SIZE < name.length()) {
+        if (NAME_MAX_SIZE < name.length()) {
             throw new IllegalArgumentException("자동차 이름의 길이가 5를 초과했습니다!");
         }
     }
