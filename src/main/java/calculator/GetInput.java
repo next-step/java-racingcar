@@ -41,7 +41,8 @@ public class GetInput {
 
     public static String getInteger(String expression, int idx) {
         String number = "";
-        for (int i = idx; i < expression.length(); i++) {
+        final int LENGTH = expression.length();
+        for (int i = idx; i < LENGTH; i++) {
             if (expression.charAt(i) >= '0' && expression.charAt(i) <= '9') {
                 number += expression.charAt(i);
             } else {

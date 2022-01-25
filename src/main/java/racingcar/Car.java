@@ -2,9 +2,9 @@ package racingcar;
 
 public class Car {
 
+    final int INIT_POSITION = 0;
     String name;
     int position;
-    final int INIT_POSITION = 0;
 
     Car(String name) {
         this.name = name;

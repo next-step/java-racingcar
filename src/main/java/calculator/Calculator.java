@@ -19,9 +19,9 @@ public class Calculator {
     }
 
     public static void calculate(String[] stringArray) {
-
-        for (int i = 0; i < (stringArray.length - 1) / 2; i++) {
-            if (stringArray[0].equals(ERROR)) {
+        final int LENGTH = (stringArray.length - 1) / 2;
+        for (int i = 0; i < LENGTH; i++) {
+            if (ERROR.equals(stringArray[0])) {
                 System.out.println("ERROR: 종료합니다");
                 return;
             }
@@ -36,7 +36,7 @@ public class Calculator {
     public static void parseOperation(String[] stringArray, int start) {
         int firstOperand, secondOperand;
 
-        if (stringArray[start].equals(ERROR) || stringArray[start + 2].equals(ERROR)) {
+        if (ERROR.equals(stringArray[start]) || ERROR.equals(stringArray[start + 2])) {
             stringArray[0] = ERROR;
             return;
         }

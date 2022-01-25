@@ -24,6 +24,7 @@ class RaceTest {
         assertThat(sum).isEqualTo(100);
     }
 
+
     @DisplayName("난수가 5일때 배열의 숫자가 증가하는지 확인한다")
     @Test
     public void checkWhenRandomNumberIsFive() {
