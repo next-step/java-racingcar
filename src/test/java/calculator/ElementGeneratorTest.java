@@ -2,7 +2,9 @@ package calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+
 import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ElementGeneratorTest {
@@ -33,11 +35,11 @@ class ElementGeneratorTest {
     void 정상() {
         String CORRECT_INPUT = "12 * 3 / 2";
         elementGenerator = new ElementGenerator(CORRECT_INPUT);
-        String[] elements = elementGenerator.getElements();
+        List<String> elements = elementGenerator.getElements();
 
-        for(int i = 0; i < elements.length; i++) {
-            if(i % 2 == 1) {
-                assertThat(elements[i]).isIn(Arrays.asList("+", "-", "*", "/"));
+        for (int i = 0; i < elements.size(); i++) {
+            if (i % 2 == 1) {
+                assertThat(elements.get(i)).isIn(Arrays.asList("+", "-", "*", "/"));
             }
         }
     }

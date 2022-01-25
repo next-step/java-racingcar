@@ -36,7 +36,7 @@ public class Application {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         ElementGenerator elementGenerator = new ElementGenerator(br.readLine());
-        String[] elements = elementGenerator.getElements();
+        List<String> elements = elementGenerator.getElements();
 
         Calculator calculator = new Calculator();
         double result = calculator.execute(elements);
