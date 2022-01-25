@@ -7,24 +7,28 @@ import racingcar.domain.RacingCar;
 
 public class GameLauncher {
 
-    private final List<RacingCar> racingCarList;
+    private final List<RacingCar> racingCars;
 
-    public GameLauncher(List<String> nameList) {
-        racingCarList = new ArrayList<>();
+    public GameLauncher(List<String> carName) {
+        racingCars = getRacingCars(carName);
+    }
 
-        for (String name : nameList) {
-            racingCarList.add(new RacingCar(name));
+    public List<RacingCar> getRacingCars(List<String> carName) {
+        List<RacingCar> cars = new ArrayList<>();
+        for (String name : carName) {
+            cars.add(new RacingCar(name));
         }
+        return cars;
     }
 
     public void moveForwardAll() {
-        for (RacingCar car : racingCarList) {
+        for (RacingCar car : racingCars) {
             car.moveForward();
         }
     }
 
     public void printRacing() {
-        racingCarList.forEach(System.out::println);
+        racingCars.forEach(System.out::println);
     }
 
     public void printWinner() {
@@ -34,20 +38,16 @@ public class GameLauncher {
     }
 
     private int maxPosition() {
-        return racingCarList.stream()
+        return racingCars.stream()
             .mapToInt(RacingCar::getPosition)
             .max().getAsInt();
     }
 
     private List<String> getWinners(int maxPosition) {
-        return racingCarList.stream()
+        return racingCars.stream()
             .filter(car -> car.getPosition() == maxPosition)
             .map(RacingCar::getName)
             .collect(Collectors.toList());
-    }
-
-    public List<RacingCar> getRacingCarList() {
-        return racingCarList;
     }
 }
 
