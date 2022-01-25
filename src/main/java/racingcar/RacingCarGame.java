@@ -20,6 +20,13 @@ public class RacingCarGame {
         initializeCar();
     }
 
+    private void initializeCar() {
+        for (String carName : carNames) {
+            Car car = new Car(carName);
+            cars.add(car);
+        }
+    }
+
     private int getRandomMove() {
         return MIN_MOVE + RANDOM.nextInt(MAX_MOVE - MIN_MOVE + 1);
     }
