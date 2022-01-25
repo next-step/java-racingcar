@@ -14,23 +14,14 @@ public class GetInput {
 
     public static ArrayList<String> parsing(String str) {
         ArrayList<String> array = new ArrayList<>();
-        String operand = "";
         int operatorIdx = 0;
-        operand = getInteger(str, operatorIdx);
-        array.add(operand);
-        if (operand.equals("ERROR")) {
-            return array;
-        }
+        array.add(getInteger(str, operatorIdx));
         operatorIdx = array.get(0).length() + operatorIdx;
 
         while (operatorIdx != str.length()) {
             array.add(getString(str, operatorIdx));
             operatorIdx++;
-            operand = getInteger(str, operatorIdx);
-            array.add(operand);
-            if (operand.equals("ERROR")) {
-                return array;
-            }
+            array.add(getInteger(str, operatorIdx));
             operatorIdx = array.get(array.size() - 1).length() + operatorIdx;
         }
         return array;
@@ -38,7 +29,6 @@ public class GetInput {
 
     public static String getInteger(String str, int idx) {
         StringBuilder string = new StringBuilder();
-
         for (int i = idx; i < str.length(); i++) {
             if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
                 string.append(str.charAt(i));
@@ -46,11 +36,11 @@ public class GetInput {
                 break;
             }
         }
-
         if (string.length() == 0) {
-            return "ERROR";
-        } else if (string.charAt(0) == '0' && string.length() > 1) {
-            return "ERROR";
+            throw new IllegalArgumentException("Error: need right expression");
+        }
+        else if (string.charAt(0) == '0' && string.length() > 1) {
+            throw new IllegalArgumentException("Error: need right operand");
         }
 
         return string.toString();

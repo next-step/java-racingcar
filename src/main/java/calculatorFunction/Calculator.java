@@ -24,11 +24,6 @@ public class Calculator {
     }
 
     public static boolean determineCalculatedValueValid(List<String> stringArray, int i) {
-        if (stringArray.get(0).equals("ERROR")) {
-            System.out.println("ERROR");
-            System.out.println("종료합니다.");
-            return true;
-        }
         if (i * 2 == stringArray.size() - 1) {
             System.out.println("정답: " + Double.parseDouble(stringArray.get(stringArray.size() - 1)));
             return true;
@@ -39,11 +34,6 @@ public class Calculator {
 
     public static void parseOperation(List<String> stringArray, int start){
         double firstOperand, secondOperand;
-
-        if (stringArray.get(start).equals("ERROR") || stringArray.get(start + 2).equals("ERROR")) {
-            stringArray.set(0, "ERROR");
-            return;
-        }
 
         String operator=stringArray.get(start + 1);
         firstOperand=Double.parseDouble(stringArray.get(start));
@@ -61,7 +51,7 @@ public class Calculator {
         }
         else if(operator.equals("/")){
             if(secondOperand==0) {
-                stringArray.set(0, "ERROR");
+                throw new IllegalArgumentException("Error: division by zero");
             }
             else {
                 result = div(firstOperand, secondOperand);
