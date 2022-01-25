@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
@@ -10,8 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.dto.InputDTO;
-import racingcar.view.RacingCarUserInput;
 import racingcar.model.entity.Car;
+import racingcar.view.RacingCarUserInput;
 
 public class ApplicationTest {
 
@@ -22,27 +21,24 @@ public class ApplicationTest {
     @BeforeEach
     void init() {
         userInput = new RacingCarUserInput();
-        inputDTO = new InputDTO();
+        inputDTO = new InputDTO(Arrays.asList("a", "aa", "aaa"), "CarNameIsLong", 10);
     }
 
     @DisplayName("유저_입력_글자길이_테스트")
     @Test
     void userInputLengthTest() {
-        inputDTO.setCarNameInput("CarNameIsLong");
         assertTrue(userInput.parsingCarName() == true);
     }
 
     @DisplayName("유저_입력_중복_테스트")
     @Test
     void userInputDuplicationTest() {
-        inputDTO.setCarNameInput("Benz,Kia,Kia");
         assertThat(userInput.parsingCarName() == true);
     }
 
     @DisplayName("입력_횟수_범위_테스트")
     @Test
     void userInputRacingTryTest() {
-        inputDTO.setRacingTryCounter(10);
         assertThat(userInput.parsingRacingTry() == true);
     }
 
@@ -50,10 +46,7 @@ public class ApplicationTest {
     @Test
     public void maxCheckTest() {
         //given
-        Car testCarA = Car.of("a");
-        Car testCarB = Car.of("aa");
-        Car testCarC = Car.of("aaa");
-        final List<Car> cars = Arrays.asList(testCarA, testCarB, testCarC);
+        final List<Car> cars = Arrays.asList(Car.of("a"), Car.of("aa"), Car.of("aaa"));
 
         //when
         cars.get(0).moveForward();
@@ -66,6 +59,6 @@ public class ApplicationTest {
             .getAsInt();
 
         //then
-        assertThat(testCarA.toString(max)).isEqualTo("a ");
+        assertThat(cars.get(0).toString(max)).isEqualTo("a ");
     }
 }
