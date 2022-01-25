@@ -26,8 +26,9 @@ public class Racing {
 
     private void startRound() {
         for (Car car : cars) {
-            car.move();
-            car.printDistance();
+            int moveNum = car.getMoveRandomNumber();
+            car.move(moveNum);
+            printDistance(car);
         }
     }
 
@@ -37,6 +38,7 @@ public class Racing {
         roundNumber = Integer.parseInt(br.readLine());
     }
 
+    //  TODO: 최종 우승자를 위한 객체가 필요하다.
     private void printWinner() {
         cars.sort((a, b) -> b.getDistance() - a.getDistance());
         int bestScore = cars.get(0).getDistance();
@@ -49,5 +51,17 @@ public class Racing {
         }
 
         System.out.println("최종우승자: " + String.join(", ", winners));
+    }
+
+    public void printDistance(Car car) {
+        String name = car.getName();
+        int dist = car.getDistance();
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < dist; i++) {
+            sb.append('-');
+        }
+
+        System.out.println(name + " : " + sb);
     }
 }

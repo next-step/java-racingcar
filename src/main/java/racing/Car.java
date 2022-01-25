@@ -2,6 +2,8 @@ package racing;
 
 public class Car {
 
+    private static final int NAME_LENGTH = 5;
+    private static final int MOVE_CHECK_NUMBER = 4;
     private String name;
     private int distance;
 
@@ -12,7 +14,7 @@ public class Car {
     }
 
     private void validateNameLength(String name) {
-        if (name.length() > 5) {
+        if (name.length() > NAME_LENGTH) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자를 초과할 수 없습니다.");
         }
     }
@@ -25,22 +27,13 @@ public class Car {
         return name;
     }
 
-    public void printDistance() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < distance; i++) {
-            sb.append('-');
-        }
-        System.out.println(name + " : " + sb);
-    }
-
-    public void move() {
-        if (moveCheck()) {
+    public void move(int moveNum) {
+        if (moveNum >= MOVE_CHECK_NUMBER) {
             distance++;
         }
     }
 
-    private boolean moveCheck() {
-        int random = (int) ((Math.random() * (10)));
-        return random >= 4;
+    public static int getMoveRandomNumber() {
+        return (int) ((Math.random() * (10)));
     }
 }
