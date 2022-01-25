@@ -19,7 +19,7 @@ public class Game {
         String[] carNames = inputView.inputCarName();
 
         for (int i = 0; i < carNames.length; i++) {
-            carList.add(new Car(carNames[i])); //car 객체 생성
+            carList.add(new Car(carNames[i]));
         }
 
         int tryCount = inputView.inputTryCount();

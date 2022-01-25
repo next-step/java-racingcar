@@ -1,7 +1,5 @@
 package racingcar.model;
 
-import racingcar.util.RandomGenerator;
-
 public class Car {
 
     private final String carName;
