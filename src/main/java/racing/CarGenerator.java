@@ -1,17 +1,17 @@
 package racing;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarGenerator {
-    public List<Car> createCars(String carNames, int nameLengthCondition, int moveCondition){
-        final String[] names = carNames.split(",");
-        final List<Car> cars = new ArrayList<>();
 
-        for (String name : names) {
-            cars.add(new Car(name, nameLengthCondition, moveCondition));
-        }
+    private CarGenerator() {
+    }
 
-        return cars;
+    public static List<Car> createCars(String carNames) {
+        return Arrays.stream(carNames.split(","))
+            .map(Car::new)
+            .collect(Collectors.toList());
     }
 }
