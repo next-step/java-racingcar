@@ -10,12 +10,11 @@ public enum Operation {
     MINUS("-", (leftNumber, rightNumber) -> leftNumber - rightNumber),
     MULTIPLY("*", (leftNumber, rightNumber) -> leftNumber * rightNumber),
     DIVIDE("/", (leftNumber, rightNumber) -> {
-        if(rightNumber.equals(0)) {
+        if (rightNumber.equals(0.0)) {
             throw new ArithmeticException("[ERROR] 0으로 나눌 수 없습니다.");
         }
         return leftNumber / rightNumber;
-    }),
-    UNKNOWN(null, null);
+    });
 
     private final String operator;
     private final BiFunction<Double, Double, Double> operate;
@@ -29,6 +28,7 @@ public enum Operation {
         return Arrays.stream(values())
             .filter(operation -> operation.operator.equals(operator))
             .findAny()
-            .get().operate.apply(leftNumber, rightNumber);
+            .orElseThrow(() -> new ArithmeticException("[ERROR] 사칙연산 기호만 입력해주세요."))
+            .operate.apply(leftNumber, rightNumber);
     }
 }
