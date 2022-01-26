@@ -23,7 +23,7 @@ public class Application {
             RacingCarLog.printCars(gameLog, gameLauncher.getRacingCarList());
         }
 
-        RacingCarLog.printWinner(gameLog, gameLauncher.getRacingCarList());
+        RacingCarLog.printWinner(gameLog, gameLauncher.getWinner());
 
         System.out.println(gameLog);
     }
