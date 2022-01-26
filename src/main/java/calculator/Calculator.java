@@ -1,19 +1,29 @@
 package calculator;
 
-import java.util.List;
+import java.util.LinkedList;
+import java.util.stream.Collectors;
 
 public class Calculator {
 
-    public double execute(List<String> input) {
-        double result = Double.parseDouble(input.get(0));
-        for (int i = 1; i < input.size(); i += 2) {
-            double operand = Double.parseDouble(input.get(i + 1));
-            result = calculate(input.get(i), result, operand);
-        }
-        return result;
+    private final LinkedList<Double> numbers;
+    private final LinkedList<String> operators;
+
+    public Calculator(LinkedList<String> numbers, LinkedList<String> operators) {
+        this.numbers = numbers.stream().map(Double::parseDouble)
+            .collect(Collectors.toCollection(LinkedList::new));
+        this.operators = operators;
     }
 
-    private double calculate(String symbol, double number1, double number2) {
-        return Operator.operatorOf(symbol).apply(number1, number2);
+    public Double execute() {
+        while (operatorsNotEmpty()) {
+            double v = Operator.operatorOf(operators.poll())
+                .apply(numbers.poll(), numbers.poll());
+            numbers.offerFirst(v);
+        }
+        return numbers.poll();
+    }
+
+    private boolean operatorsNotEmpty() {
+        return !operators.isEmpty();
     }
 }
