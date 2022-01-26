@@ -17,4 +17,10 @@ class StringProcessorTest {
             stringProcessor.validation();
         });
     }
+
+    @Test
+    @DisplayName("공백 or null 만 들어왔을때 오류 확인")
+    public void checkNullOrSpace(){
+        assertThrows(IllegalArgumentException.class,()->new StringProcessor(" "));
+    }
 }
