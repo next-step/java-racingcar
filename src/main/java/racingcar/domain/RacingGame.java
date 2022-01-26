@@ -10,15 +10,15 @@ public class RacingGame {
     private static final int RANDOM_START = 0;
     private static final int RANDOM_END = 9;
 
-    private final List<RacingCar> racingCars;
+    private final List<RacingCar> cars;
     private int tryNo;
 
     public RacingGame(String carName, int tryNo) {
-        racingCars = setRacingCars(carName);
+        cars = setCars(carName);
         this.tryNo = tryNo;
     }
 
-    public List<RacingCar> setRacingCars(String carName) {
+    public List<RacingCar> setCars(String carName) {
         return Arrays.stream(carName.split(","))
             .map(RacingCar::new)
             .collect(Collectors.toList());
@@ -26,37 +26,29 @@ public class RacingGame {
 
     public void race() {
         moveCars();
-        printRacing();
         tryNo--;
-        System.out.println("------------------------------");
-        printWinner();
     }
 
     public void moveCars() {
-        for (RacingCar car : racingCars) {
+        for (RacingCar car : cars) {
             int value = RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END);
             car.move(value);
         }
     }
 
-    public void printRacing() {
-        racingCars.forEach(System.out::println);
-    }
-
-    public void printWinner() {
+    public List<String> getWinners() {
         int maxPosition = maxPosition();
-        List<String> winners = getWinners(maxPosition);
-        System.out.print("최종 우승자: " + String.join(", ", winners));
+        return getWinnerNames(maxPosition);
     }
 
     private int maxPosition() {
-        return racingCars.stream()
+        return cars.stream()
             .mapToInt(RacingCar::getPosition)
             .max().getAsInt();
     }
 
-    private List<String> getWinners(int maxPosition) {
-        return racingCars.stream()
+    private List<String> getWinnerNames(int maxPosition) {
+        return cars.stream()
             .filter(car -> car.getPosition() == maxPosition)
             .map(RacingCar::getName)
             .collect(Collectors.toList());
@@ -64,6 +56,10 @@ public class RacingGame {
 
     public boolean isEnd() {
         return tryNo == 0;
+    }
+
+    public List<RacingCar> getCars() {
+        return cars;
     }
 }
 
