@@ -8,11 +8,12 @@ public class Application {
 
     public static void main(String[] args) {
         String carNames = InputView.getCarNames();
-        int tryNo = InputView.gettryNo();
+        int tryNo = InputView.getTryNo();
+
         RacingGame racingGame = new RacingGame(carNames, tryNo);
         while (!racingGame.isEnd()) {
             racingGame.race();
-            ResultView.printCars(racingGame.getCars());
+            ResultView.printCars(racingGame.getRacingCars());
         }
         ResultView.printWinners(racingGame.getWinners());
     }

@@ -10,11 +10,11 @@ public class RacingGame {
     private static final int RANDOM_START = 0;
     private static final int RANDOM_END = 9;
 
-    private final List<RacingCar> cars;
+    private final List<RacingCar> racingCars;
     private int tryNo;
 
     public RacingGame(String carName, int tryNo) {
-        cars = setCars(carName);
+        racingCars = setCars(carName);
         this.tryNo = tryNo;
     }
 
@@ -30,7 +30,7 @@ public class RacingGame {
     }
 
     public void moveCars() {
-        for (RacingCar car : cars) {
+        for (RacingCar car : racingCars) {
             int value = RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END);
             car.move(value);
         }
@@ -42,13 +42,13 @@ public class RacingGame {
     }
 
     private int maxPosition() {
-        return cars.stream()
+        return racingCars.stream()
             .mapToInt(RacingCar::getPosition)
             .max().getAsInt();
     }
 
     private List<String> getWinnerNames(int maxPosition) {
-        return cars.stream()
+        return racingCars.stream()
             .filter(car -> car.getPosition() == maxPosition)
             .map(RacingCar::getName)
             .collect(Collectors.toList());
@@ -58,8 +58,8 @@ public class RacingGame {
         return tryNo == 0;
     }
 
-    public List<RacingCar> getCars() {
-        return cars;
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
     }
 }
 
