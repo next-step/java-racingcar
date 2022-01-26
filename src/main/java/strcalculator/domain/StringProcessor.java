@@ -14,7 +14,7 @@ public class StringProcessor {
         checkInput();
     }
 
-    public void checkInput() {
+    private void checkInput() {
         if (userInput == null || userInput.trim().length() == 0) {
             throw new IllegalArgumentException("연산 가능한 수식을 입력해주세요.");
         }
