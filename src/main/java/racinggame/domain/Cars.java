@@ -18,19 +18,6 @@ public class Cars {
         cars.forEach(car -> car.move(random.nextInt(9)));
     }
 
-//    public void moveT(List<Integer> randomNumberList) {
-//        randomNumberList.forEach();
-//        for (int randomNumber: randomNumberList) {
-//            if (randomNumber >= GO_POSSIBLE_VALUE) {
-//                Car car = cars.get(i);
-//                int location = car.getLocation();
-//                location++;
-//                car.updateLocation(location);
-//            }
-//        }
-//
-//    }
-
     public int findMaxLocation() {
         int maxLocation = 0;
         for (Car car : cars) {
