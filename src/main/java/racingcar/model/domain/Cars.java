@@ -11,19 +11,20 @@ public class Cars {
 
     public Cars(final List<String> userInput) {
         run(userInput);
-        racing = Racing.get(cars);
     }
 
     public Racing getRacing() {
         return racing;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
     public void run(final List<String> input) {
         cars = new ArrayList<>();
         for (String carName : input) {
             cars.add(Car.get(carName));
         }
     }
-
 }
 
