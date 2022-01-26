@@ -14,7 +14,7 @@ public class Expression {
     private double result = 0;
 
     public Expression(String expression) {
-
+        //TODO: 방어적 복사본 사용할 것
         if (!Validator.checkValidate(expression)) {
             throw new IllegalArgumentException("[ERROR] 유효한 식이 아닙니다.");
         }
