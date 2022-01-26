@@ -64,6 +64,6 @@
 - [x] 게임 진행(RacingGame.start)
 - [x] 게임 View 출력.
   - [x] 게임 진행 현황 출력. (RacingGameView.printProgress)
-    - [x] 자동차의 이름과 현재 위치 반환.(RacingCarView.drawCurrPosition)
+    - [x] 자동차의 이름과 현재 위치 반환.(carResultView.drawCurrPosition)
   - [x] 우승자 출력. (RacingGameView.printWinners)
 - [x] 우승자 판별(Judge.getWinners)
