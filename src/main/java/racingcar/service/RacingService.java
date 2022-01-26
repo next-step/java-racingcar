@@ -2,6 +2,7 @@ package racingcar.service;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.movable.RandomForwardStrategy;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,6 +41,12 @@ public class RacingService {
                 .mapToInt(Car::getStep)
                 .max()
                 .getAsInt();
+    }
+
+    public void registerCars(final List<String> splitUserInput) {
+        for (String carName : splitUserInput) {
+            cars.getCars().add(Car.of(carName, new RandomForwardStrategy()));
+        }
     }
 
 }
