@@ -1,7 +1,7 @@
 package racing;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Judgement {
 
@@ -19,14 +19,9 @@ public class Judgement {
     }
 
     public List<String> judgeWinner() {
-        List<String> winners = new ArrayList<>();
-
-        for (int i = 0; i < cars.size(); i++) {
-            if (i == 0 || cars.get(i).getDistance() == bestScore) {
-                winners.add(cars.get(i).getName());
-            }
-        }
-
-        return winners;
+        return cars.stream()
+            .filter(car -> car.getDistance() == bestScore)
+            .map(Car::getName)
+            .collect(Collectors.toList());
     }
 }
