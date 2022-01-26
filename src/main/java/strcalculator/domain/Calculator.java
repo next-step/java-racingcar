@@ -6,8 +6,8 @@ import java.util.function.Supplier;
 
 public class Calculator {
 
-    private  String[] numberList;
-    private  String[] operandList;
+    private final String[] numberList;
+    private final String[] operandList;
     private int leftNumber = 0;
     private int rightNumber = 0;
 
