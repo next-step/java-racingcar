@@ -2,6 +2,7 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
@@ -20,14 +21,20 @@ public class RacingGame {
             for (String name : nameList) {
                 cars.add(new Car(name));
             }
+            checkCarCount(cars);
 
             final int tryNumber = UserInput.getTryNumber();
             startRacing(tryNumber);
             showGameResult();
-
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             startGame();
+        }
+    }
+
+    private static void checkCarCount(List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 최소 1대 이상의 자동차가 필요합니다.");
         }
     }
 
