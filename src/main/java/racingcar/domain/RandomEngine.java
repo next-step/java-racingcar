@@ -16,7 +16,7 @@ public class RandomEngine implements Engine {
         return createRandom() >= BOUNDARY;
     }
 
-    private int createRandom() {
+    public int createRandom() {
         return random.nextInt(END_OF_RANGE);
     }
 }
