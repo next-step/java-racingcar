@@ -5,10 +5,11 @@ public class Car {
     private static final int GO_POSSIBLE_VALUE = 4;
 
     private final String carName;
-    private int location = 0;
+    private Integer  location;
 
-    public Car(String carName) {
+    public Car(String carName,int location) {
         this.carName = carName;
+        this.location=location;
     }
 
     public int getLocation() {

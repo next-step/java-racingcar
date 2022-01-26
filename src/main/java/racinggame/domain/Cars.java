@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.Random;
 
 public class Cars {
+    private static final int CAR_INIT_LOCATION=0;
 
     private final List<Car> cars = new ArrayList<>();
     private final Random random = new Random();
+
     public Cars(String[] carNames) {
         for (String carName : carNames) {
-            cars.add(new Car(carName));
+            cars.add(new Car(carName,CAR_INIT_LOCATION));
         }
     }
 
