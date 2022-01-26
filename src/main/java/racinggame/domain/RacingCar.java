@@ -3,6 +3,7 @@ package racinggame.domain;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import racinggame.view.InputView;
 import racinggame.view.RacingCarView;
 
 public class RacingCar {
@@ -34,7 +35,7 @@ public class RacingCar {
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
-                carNames = Input.getCarNames();
+                carNames = InputView.getCarNames();
             }
         }
 

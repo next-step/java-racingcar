@@ -1,12 +1,15 @@
-package racinggame.domain;
+package racinggame.view;
 
-public class Input {
+import racinggame.domain.Utils;
+import racinggame.domain.Validator;
+
+public class InputView {
 
     private static final String SEPARATOR = ",";
     private static final String BLANK = "\\s+";
     private static final String EMPTY_STRING = "";
 
-    private Input() {}
+    private InputView() {}
 
     public static String[] getCarNames() {
         String[] carNames;

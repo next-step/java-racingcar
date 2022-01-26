@@ -1,7 +1,7 @@
 package racinggame;
 
 import java.util.List;
-import racinggame.domain.Input;
+import racinggame.view.InputView;
 import racinggame.domain.RacingCar;
 import racinggame.domain.RacingGame;
 import racinggame.domain.Utils;
@@ -11,8 +11,8 @@ public class Application {
     public static void main(String[] args) {
 
         while (true) {
-            String[] carNames = Input.getCarNames();
-            int trial = Input.getTrial();
+            String[] carNames = InputView.getCarNames();
+            int trial = InputView.getTrial();
 
             List<RacingCar> racingCars = RacingCar.racingCarOf(carNames);
             RacingGame racingGame = new RacingGame(racingCars, trial);
