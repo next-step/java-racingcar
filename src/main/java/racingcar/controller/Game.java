@@ -10,9 +10,6 @@ import racingcar.view.OutputView;
 
 public class Game {
 
-    RandomGenerator randomGenerator = new RandomGenerator();
-    int randomNumber = randomGenerator.generateRandomNumber();
-
     public void play() {
         ArrayList<Car> carList = new ArrayList<>();
         User user = new User();
@@ -34,8 +31,10 @@ public class Game {
     }
 
     public void moveForwardByCount(ArrayList<Car> carList) {
+        RandomGenerator randomGenerator = new RandomGenerator();
         OutputView outputView = new OutputView();
         for (Car car : carList) {
+            int randomNumber = randomGenerator.generateRandomNumber();
             car.moveForward(randomNumber);
             outputView.printResult(car.getCarName(), car.getPosition());
         }
