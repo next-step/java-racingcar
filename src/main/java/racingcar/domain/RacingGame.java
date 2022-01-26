@@ -44,7 +44,7 @@ public class RacingGame {
     private int maxPosition() {
         return racingCars.stream()
             .mapToInt(RacingCar::getPosition)
-            .max().getAsInt();
+            .max().orElseThrow(() -> new IllegalArgumentException("[ERROR] 최대 위치값을 찾는데 실패했습니다."));
     }
 
     private List<String> getWinnerNames(int maxPosition) {
