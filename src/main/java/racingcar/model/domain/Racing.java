@@ -9,18 +9,18 @@ public class Racing {
 
     private final static int MAX_RANDOM_RANGE = 10;
     private final static int MIN_BOUND_STRAIGHT = 4;
+    private List<Car> cars;
 
-    private static int generateRandomNumber() {
-        return (int) (Math.random() * MAX_RANDOM_RANGE);
+    private Racing(List<Car> cars) {
+        this.cars = cars;
     }
 
-    private final List<Car> cars = new ArrayList<>();
-
-    private Racing() {
+    public static Racing get(List<Car> cars){
+        return new Racing(cars);
     }
 
-    public static Racing get() {
-        return new Racing();
+    public List<Car> getCars() {
+        return cars;
     }
 
     public void drive() {
@@ -36,16 +36,12 @@ public class Racing {
         }
     }
 
-    public void registerCar(final Car car) {
-        cars.add(car);
-    }
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
     public static boolean stopOrMoveForward() {
         return generateRandomNumber() >= MIN_BOUND_STRAIGHT;
+    }
+
+    private static int generateRandomNumber() {
+        return (int) (Math.random() * MAX_RANDOM_RANGE);
     }
 }
 
