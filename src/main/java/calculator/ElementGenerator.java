@@ -1,43 +1,45 @@
 package calculator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedList;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class ElementGenerator {
 
     private final String input;
-    private final List<String> elements;
+    private final LinkedList<String> numbers;
+    private final LinkedList<String> operators;
 
     public ElementGenerator(String input) {
         this.input = input;
-        this.elements = new ArrayList<>();
-        validateEmpty();
-        createElements();
-        validateCorrectOperator();
+        validateFormat();
+
+        input = input.replaceAll(" ", "");
+        numbers = new LinkedList<>(Arrays.asList(input.split("[-+*/]")));
+        operators = Arrays.stream(input.split("[0-9]+")).filter(operand -> !operand.isEmpty())
+            .collect(Collectors.toCollection(LinkedList::new));
     }
 
-    private void validateEmpty() {
-        if (input == null || input.isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] Null이나 빈 공백 문자는 입력할 수 없습니다.");
+    private void validateFormat() {
+        if ( isEmptyOrNull(input) || isNotMatched(Pattern.compile("^\\d+(\\s*[-+*/]\\s*\\d+)+$"))) {
+            throw new IllegalArgumentException("[ERROR] 식의 포맷이 유효하지 않습니다.");
         }
     }
 
-    private void createElements() {
-        elements.addAll(Arrays.asList(input.split(" ")));
+    private boolean isEmptyOrNull (String input) {
+        return input == null || input.isEmpty();
     }
 
-    private void validateCorrectOperator() {
-        ArrayList<String> OPERATOR_CHAR = new ArrayList<>(Arrays.asList("+", "-", "*", "/"));
-
-        for (int i = 0; i < elements.size(); i++) {
-            if (i % 2 == 1 && !OPERATOR_CHAR.contains(elements.get(i))) {
-                throw new IllegalArgumentException("[ERROR] 사칙연산 기호만 입력하세요.");
-            }
-        }
+    private boolean isNotMatched(Pattern pattern) {
+        return !pattern.matcher(input).matches();
     }
 
-    public List<String> getElements() {
-        return elements;
+    public LinkedList<String> getNumbers() {
+        return numbers;
+    }
+
+    public LinkedList<String> getOperators() {
+        return operators;
     }
 }
