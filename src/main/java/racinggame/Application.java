@@ -1,12 +1,7 @@
 package racinggame;
 
-import java.util.List;
-import java.util.Random;
-import racinggame.domain.Car;
 import racinggame.domain.Cars;
 import racinggame.domain.GameInit;
-import racinggame.domain.PlayRacingGame;
-import racinggame.domain.Winner;
 import racinggame.domain.Winners;
 import racinggame.view.ResultView;
 
@@ -15,7 +10,6 @@ public class Application {
     public static void main(String[] args) {
         GameInit gameInit = new GameInit();
         ResultView resultView = new ResultView();
-        PlayRacingGame playRacingGame = new PlayRacingGame();
         String[] carNames = gameInit.inputPlayerName();
         Cars cars = new Cars(carNames);
 
