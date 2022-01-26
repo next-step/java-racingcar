@@ -51,7 +51,7 @@ public class RacingGame {
 
         final List<String> winners = new ArrayList<>();
         for (Car car : cars) {
-            winners.add(car.checkSamePosition(maxPosition));
+            winners.add(car.getNameBy(maxPosition));
         }
         winners.removeAll(Arrays.asList("", null));
 

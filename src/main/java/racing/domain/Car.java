@@ -11,6 +11,7 @@ public class Car {
     private int position;
 
     public Car(final String name) {
+        // TODO: 방어복사...?
         checkNameLength(name);
         this.name = name;
         this.position = 0;
@@ -24,11 +25,15 @@ public class Car {
         }
     }
 
-    public String checkSamePosition(final int position) {
-        if (this.position == position) {
-            return name;
+    public String getNameBy(int maxPosition) {
+        if (isSamePosition(maxPosition)) {
+            return this.name;
         }
         return "";
+    }
+
+    private boolean isSamePosition(final int position) {
+        return this.position == position;
     }
 
     public void drive() {
