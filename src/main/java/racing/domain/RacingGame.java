@@ -7,7 +7,6 @@ import java.util.List;
 public class RacingGame {
 
     private final List<Car> cars;
-    private int maxPosition;
 
     public RacingGame() {
         this.cars = new ArrayList<>();
@@ -45,8 +44,9 @@ public class RacingGame {
     }
 
     private void showGameResult() {
+        int maxPosition = 0;
         for (Car car : cars) {
-            setMaxPosition(car.getPosition());
+            maxPosition = setMaxPosition(maxPosition, car.getPosition());
         }
 
         final List<String> winners = new ArrayList<>();
@@ -59,9 +59,10 @@ public class RacingGame {
         System.out.println("최종 우승자 : " + resultOfWinners);
     }
 
-    private void setMaxPosition(final int position) {
-        if (position > maxPosition) {
-            maxPosition = position;
+    private int setMaxPosition(int maxPosition, int carPosition) {
+        if (carPosition > maxPosition) {
+            return carPosition;
         }
+        return maxPosition;
     }
 }
