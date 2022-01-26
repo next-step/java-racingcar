@@ -18,7 +18,8 @@ public class InputView {
     private static final int LENGTH_LIMIT_MIN = 1;
 
     private String carNameInput;
-    private InputDto inputDto = new InputDto();
+    private List<String> splitUserInput;
+    private int racingTime;
     private final Scanner scanner = new Scanner(System.in);
 
 
@@ -40,9 +41,9 @@ public class InputView {
         try {
             System.out.println(CAR_NAME_INPUT_INFO);
             this.carNameInput = scanner.next();
-            inputDto.setSplitUserInput(splitStr(carNameInput));
-            validateLengthLimit(inputDto.getSplitUserInput());
-            validateDuplicateCar(inputDto.getSplitUserInput());
+            this.splitUserInput = splitStr(carNameInput);
+            validateLengthLimit(splitUserInput);
+            validateDuplicateCar(splitUserInput);
         } catch (InputValidationException exception) {
             exception.printStackTrace();
             return true;
@@ -53,7 +54,7 @@ public class InputView {
     private boolean parsingRacingTime() {
         try {
             System.out.println(RACING_TIME_INPUT_INFO);
-            inputDto.setRacingTime(scanner.nextInt());
+            racingTime = scanner.nextInt();
 
         } catch (InputValidationException exception) {
             exception.printStackTrace();
@@ -83,8 +84,11 @@ public class InputView {
         return Arrays.stream(userInput.split(DELIMITER)).collect(Collectors.toList());
     }
 
-    public InputDto getInputDto() {
-        return inputDto;
+    public List<String> getSplitUserInput() {
+        return splitUserInput;
     }
 
+    public int getRacingTime() {
+        return racingTime;
+    }
 }
