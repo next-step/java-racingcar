@@ -16,10 +16,6 @@ public class Car {
         return location;
     }
 
-    public void updateLocation(int location) {
-        this.location = location;
-    }
-
     public String getCarName() {
         return carName;
     }
