@@ -14,11 +14,11 @@ public class RacingGame {
     private int tryNo;
 
     public RacingGame(String carName, int tryNo) {
-        racingCars = setCars(carName);
+        racingCars = setRacingCars(carName);
         this.tryNo = tryNo;
     }
 
-    public List<RacingCar> setCars(String carName) {
+    private List<RacingCar> setRacingCars(String carName) {
         return Arrays.stream(carName.split(","))
             .map(RacingCar::new)
             .collect(Collectors.toList());
