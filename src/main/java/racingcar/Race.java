@@ -3,26 +3,16 @@ import java.util.Random;
 
 public class Race {
     public static void execute() {
-        String[] carNames = InputView.getName();
-        if(!InputView.checkCarName(carNames)){
+        Car car = new Car();
+        car.carNames = InputView.getName();
+        car.cars = new int[car.carNames.length];
+        if(!InputView.checkCarName(car.carNames)){
             System.out.println("자동차 이름은 5자를 초과할 수 없습니다.");
             return ;
         }
-        int[] cars = new int[carNames.length];
-        int times = InputView.getTimes();
-        repeatGame(cars,carNames,times);
-        OutputView.printWinners(carNames, cars);
-    }
-
-    public static void repeatGame(int[] cars, String[] carNames, int times) {
-        while((times--)>0){
-            for(int i=0; i< cars.length; i++){
-                int randomNumber=Race.getRandomNumber();
-                Race.compareWithFour(cars,i,randomNumber);
-            }
-            OutputView.printCurrent(carNames, cars);
-            System.out.println();
-        }
+        car.times = InputView.getTimes();
+        car.repeatGame();
+        OutputView.printWinners(car.carNames, car.cars);
     }
 
     public static int getRandomNumber() {
