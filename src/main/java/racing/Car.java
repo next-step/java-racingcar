@@ -2,17 +2,20 @@ package racing;
 
 public class Car {
 
-    private final String name;
-    private int distance;
-    private final int NAME_LENGTH_CONDITION;
-    private final int MOVE_CONDITION;
+    private static final int NAME_LENGTH_CONDITION = 5;
+    private static final int MOVE_CONDITION = 4;
 
-    public Car(String name, int nameLengthCondition, int moveCondition) {
+    private final String name;
+    private int distance = 0;
+
+    public Car(String name) {
         this.name = name;
-        this.distance = 0;
-        this.NAME_LENGTH_CONDITION = nameLengthCondition;
-        this.MOVE_CONDITION = moveCondition;
         validateNameLength(name);
+    }
+
+    public Car(String name, int distance) {
+        this.name = name;
+        this.distance = distance;
     }
 
     private void validateNameLength(String name) {
@@ -21,30 +24,30 @@ public class Car {
         }
     }
 
-    public int getDistance() {
-        return distance;
+    public void move(int randomValue) {
+        if (moveCheck(randomValue)) {
+            distance++;
+        }
     }
 
-    public String getName() {
-        return name;
+    private boolean moveCheck(int randomValue) {
+        return randomValue >= MOVE_CONDITION;
     }
 
-    //TODO: Step2에서 리팩토링
+    //TODO: Step2에서 입출력 분리로 리팩토링 예정
     public void printDistance() {
-        StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder();
         for (int i = 0; i < distance; i++) {
             sb.append('-');
         }
         System.out.println(name + " : " + sb);
     }
 
-    public void move(int random) {
-        if (moveCheck(random)) {
-            distance++;
-        }
+    public int getDistance() {
+        return distance;
     }
 
-    private boolean moveCheck(int random) {
-        return random >= MOVE_CONDITION;
+    public String getName() {
+        return name;
     }
 }
