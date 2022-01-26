@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.controller.RacingGame;
+import racingcar.controller.GameLauncher;
 import racingcar.view.RacingCarOutput;
 
 public class RacingCar {
@@ -39,8 +39,8 @@ public class RacingCar {
             isCorrectNameSize(name);
         } catch (IllegalArgumentException e) {
             System.out.println(RacingCarOutput.ERROR_MESSAGE + e.getMessage());
-            RacingGame racingGame = new RacingGame();
-            racingGame.inputAll();
+            GameLauncher gameLauncher = new GameLauncher();
+            gameLauncher.inputAll();
         }
     }
 

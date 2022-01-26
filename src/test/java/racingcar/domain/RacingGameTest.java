@@ -6,12 +6,12 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-class RacingPlayingTest {
+class RacingGameTest {
 
     @Test
     void 모든차앞으로전진() {
-        RacingPlaying racingPlaying = new RacingPlaying(new ArrayList<>(Arrays.asList("pobi", "yang", "woo")));
-        List<RacingCar> racingCarList = racingPlaying.getRacingCarList();
+        RacingGame racingGame = new RacingGame(new ArrayList<>(Arrays.asList("pobi", "yang", "woo")));
+        List<RacingCar> racingCarList = racingGame.getRacingCarList();
         racingCarList.get(0).moveForward(5);
         racingCarList.get(1).moveForward(3);
         racingCarList.get(2).moveForward(6);

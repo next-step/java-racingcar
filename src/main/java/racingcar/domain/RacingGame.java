@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import racingcar.util.RandomUtil;
 
-public class RacingPlaying {
+public class RacingGame {
 
     private static final int RANDOM_START = 0;
     private static final int RANDOM_END = 9;
@@ -16,7 +16,7 @@ public class RacingPlaying {
         return racingCarList;
     }
 
-    public RacingPlaying(List<String> nameList) {
+    public RacingGame(List<String> nameList) {
         racingCarList = new ArrayList<>();
         for (String name : nameList) {
             racingCarList.add(new RacingCar(name));
