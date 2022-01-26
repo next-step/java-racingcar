@@ -2,47 +2,71 @@ package calculator;
 
 public class Calculator {
 
-    private static int DIGIT_RANGE = 2;
+    private final String[] input;
+    private double result;
 
-    public double execute(String[] input) {
-        double result = Double.parseDouble(input[0]);
+    public Calculator(String[] input) {
+        this.input = input;
+        this.result = Double.parseDouble(input[0]);
+    }
+
+    public void execute() {
         for (int i = 1; i < input.length; i += 2) {
             double operand = Double.parseDouble(input[i + 1]);
-            result = calculate(input[i], result, operand);
+            this.result = calculate(input[i], result, operand);
         }
+    }
+
+    public double getResult() {
         return result;
     }
 
-    private double calculate(String operator, double result, double operand) {
-        if (operator.equals("+")) {
-            return add(result, operand);
+    private static double calculate(String operator, double result, double operand) {
+        switch (operator) {
+            case "+":
+                return Operator.PLUS.operate(result, operand);
+            case "-":
+                return Operator.MINUS.operate(result, operand);
+            case "*":
+                return Operator.MULTI.operate(result, operand);
+            default:
+                return Operator.DIVIDE.operate(result, operand);
         }
-        if (operator.equals("-")) {
-            return subtract(result, operand);
+    }
+}
+
+
+enum Operator {
+    PLUS() {
+        @Override
+        public double operate(double number1, double number2) {
+            return number1 + number2;
         }
-        if (operator.equals("*")) {
-            return multiple(result, operand);
+    },
+    MINUS() {
+        @Override
+        public double operate(double number1, double number2) {
+            return number1 - number2;
         }
-        return divide(result, operand);
-    }
-
-    private double add(double number1, double number2) {
-        return number1 + number2;
-    }
-
-    private double subtract(double number1, double number2) {
-        return number1 - number2;
-    }
-
-    private double multiple(double number1, double number2) {
-        return number1 * number2;
-    }
-
-    private double divide(double number1, double number2) {
-        if (number2 == 0) {
-            throw new IllegalArgumentException("[ERROR] 0으로 나눌 수 없습니다.");
+    },
+    MULTI() {
+        @Override
+        public double operate(double number1, double number2) {
+            return number1 * number2;
         }
-        return Math.round((number1 / number2) * Math.pow(10, DIGIT_RANGE)) / Math.pow(10,
-            DIGIT_RANGE);
-    }
+    },
+    DIVIDE() {
+        @Override
+        public double operate(double number1, double number2) {
+            if (number2 == 0) {
+                throw new IllegalArgumentException("[ERROR] 0으로 나눌 수 없습니다.");
+            }
+            return Math.round((number1 / number2) * Math.pow(10, DIGIT_RANGE)) / Math.pow(10,
+                DIGIT_RANGE);
+        }
+    };
+
+    private static int DIGIT_RANGE = 2;
+
+    public abstract double operate(final double number1, final double number2);
 }
