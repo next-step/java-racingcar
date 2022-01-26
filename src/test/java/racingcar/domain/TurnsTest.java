@@ -17,7 +17,7 @@ class TurnsTest {
         //when
 
         //then
-        assertThatCode(() -> Turn.validateTurn(turn)).doesNotThrowAnyException();
+        assertThatCode(() -> Turn.createTurn(turn)).doesNotThrowAnyException();
     }
 
     @Test
@@ -28,7 +28,7 @@ class TurnsTest {
         //when
 
         //then
-        assertThatCode(() -> Turn.validateTurn(turn)).hasMessageContaining(TURN_MESSAGE);
+        assertThatCode(() -> Turn.createTurn(turn)).hasMessageContaining(TURN_MESSAGE);
     }
 
     @Test
@@ -39,7 +39,7 @@ class TurnsTest {
         //when
 
         //then
-        assertThatCode(() -> Turn.validateTurn(turn)).hasMessageContaining(TURN_NOT_NATURAL_NUMBER_ERROR_MESSAGE);
+        assertThatCode(() -> Turn.createTurn(turn)).hasMessageContaining(TURN_NOT_NATURAL_NUMBER_ERROR_MESSAGE);
     }
 
     @Test
@@ -51,7 +51,7 @@ class TurnsTest {
         //when
 
         //then
-        assertThatCode(() -> Turn.validateTurn(turn1)).hasMessageContaining(TURN_NOT_NUMBER_ERROR_MESSAGE);
-        assertThatCode(() -> Turn.validateTurn(turn2)).hasMessageContaining(TURN_NOT_NUMBER_ERROR_MESSAGE);
+        assertThatCode(() -> Turn.createTurn(turn1)).hasMessageContaining(TURN_NOT_NUMBER_ERROR_MESSAGE);
+        assertThatCode(() -> Turn.createTurn(turn2)).hasMessageContaining(TURN_NOT_NUMBER_ERROR_MESSAGE);
     }
 }
