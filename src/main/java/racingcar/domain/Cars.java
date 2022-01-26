@@ -24,8 +24,8 @@ public class Cars {
 
     private int calculateMax() {
         return cars.stream()
-            .map(Car::distance)
-            .max(Integer::compare)
-            .orElseThrow(IllegalArgumentException::new);
+            .mapToInt(Car::distance)
+            .max()
+            .orElseThrow(() -> new IllegalArgumentException("최대 이동 거리 값을 구할 수 없습니다."));
     }
 }
