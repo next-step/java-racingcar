@@ -44,7 +44,7 @@ public class Validator {
     }
 
     private static void isOperator(String target) {
-        if (!("+".equals(target) || "-".equals(target) || "*".equals(target) || "/".equals(target))) {
+        if (!Operator.isOperator(target)) {
             throw new IllegalArgumentException();
         }
     }
