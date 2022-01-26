@@ -33,28 +33,27 @@ public class Calculator {
     }
 
     public static void parseOperation(List<String> stringArray, int start){
-        double firstOperand, secondOperand;
-
+        Operations operations = new Operations();
         String operator=stringArray.get(start + 1);
-        firstOperand=Double.parseDouble(stringArray.get(start));
-        secondOperand=Double.parseDouble(stringArray.get(start + 2));
+        operations.firstOperand=Double.parseDouble(stringArray.get(start));
+        operations.secondOperand=Double.parseDouble(stringArray.get(start + 2));
 
         double result=0;
         if(operator.equals("+")){
-            result=add(firstOperand,secondOperand);
+            result=operations.add();
         }
         else if(operator.equals("-")){
-            result=sub(firstOperand,secondOperand);
+            result=operations.sub();
         }
         else if(operator.equals("*")){
-            result=mul(firstOperand,secondOperand);
+            result=operations.mul();
         }
         else if(operator.equals("/")){
-            if(secondOperand==0) {
+            if (operations.secondOperand==0) {
                 throw new IllegalArgumentException("Error: division by zero");
             }
             else {
-                result = div(firstOperand, secondOperand);
+                result = operations.div();
             }
         }
         else {
@@ -62,22 +61,5 @@ public class Calculator {
         }
 
         stringArray.set(start + 2, String.valueOf(result));
-    }
-
-    public static double add(double firstOperand, double secondOperand) {
-
-        return firstOperand + secondOperand;
-    }
-    public static double sub(double firstOperand, double secondOperand){
-
-        return firstOperand - secondOperand;
-    }
-    public static double mul(double firstOperand, double secondOperand) {
-
-        return firstOperand * secondOperand;
-    }
-    public static double div(double firstOperand, double secondOperand) {
-
-        return firstOperand / secondOperand;
     }
 }
