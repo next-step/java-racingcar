@@ -3,9 +3,8 @@ package racingcar.controller;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.movable.RandomMovableStrategy;
+import racingcar.domain.movable.MovableStrategy;
 import racingcar.utils.Parser;
-import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class GameController {
@@ -13,14 +12,12 @@ public class GameController {
     private final Cars cars;
     private final int turn;
 
-    public GameController() {
-        this.cars = setUpCars();
-        this.turn = InputView.getTurn();
+    public GameController(String carNames, int turn) {
+        this.cars = setUpCars(carNames);
+        this.turn = turn;
     }
 
-    private Cars setUpCars() {
-        String carNames = InputView.readCarNames();
-
+    private Cars setUpCars(String carNames) {
         return new Cars(
             Parser.parseCarNames(carNames).stream()
                 .map(Car::new)
@@ -28,10 +25,10 @@ public class GameController {
         );
     }
 
-    public void play() {
+    public void play(MovableStrategy strategy) {
         OutputView.printTurnResult();
         for (int index = 0; index < turn; index++) {
-            cars.moveAll(RandomMovableStrategy.getInstance());
+            cars.moveAll(strategy);
             OutputView.printDistance(cars);
         }
         System.out.println();
