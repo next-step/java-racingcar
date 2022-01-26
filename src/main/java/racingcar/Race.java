@@ -2,16 +2,16 @@ package racingcar;
 
 public class Race {
     public static void execute() {
-        String[] carNames = IOclass.getName();
-        if(!IOclass.checkCarName(carNames)){
+        String[] carNames = InputView.getName();
+        if(!InputView.checkCarName(carNames)){
             System.out.println("자동차 이름은 5자를 초과할 수 없습니다.");
             return ;
         }
         Race race = new Race();
         int[] cars = new int[carNames.length];
-        int times = IOclass.getTimes();
+        int times = InputView.getTimes();
         repeatGame(cars,carNames,times);
-        IOclass.printWinners(carNames, cars);
+        OutputView.printWinners(carNames, cars);
         return;
     }
 
@@ -21,7 +21,7 @@ public class Race {
                 int randomNumber=Race.getRandomNumber();
                 Race.compareWithFour(cars,i,randomNumber);
             }
-            IOclass.printCurrent(carNames, cars);
+            OutputView.printCurrent(carNames, cars);
             System.out.println();
         }
     }
