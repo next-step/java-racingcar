@@ -14,7 +14,8 @@ public class RacingController {
         userConsole.userInputRun();
         Cars cars = new Cars(
             userConsole.getInputDTO().getSplitUserInput());
-        for (int time = NUMBER_ZERO; time < userConsole.getInputDTO().getRacingTryCounter(); time++) {
+        for (int time = NUMBER_ZERO; time < userConsole.getInputDTO().getRacingTryCounter();
+            time++) {
             cars.getRacing().drive();
             userResult.carsStatement(cars.getRacing().getCars());
         }

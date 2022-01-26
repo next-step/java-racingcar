@@ -11,6 +11,7 @@ public class Cars {
 
     public Cars(final List<String> userInput) {
         run(userInput);
+        racing = Racing.get(cars);
     }
 
     public Racing getRacing() {
@@ -22,7 +23,6 @@ public class Cars {
         for (String carName : input) {
             cars.add(Car.get(carName));
         }
-        racing = Racing.get(cars);
     }
 
 }

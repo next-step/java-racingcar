@@ -1,6 +1,5 @@
 package racingcar.model.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 import racingcar.model.entity.Car;
@@ -15,7 +14,7 @@ public class Racing {
         this.cars = cars;
     }
 
-    public static Racing get(List<Car> cars){
+    public static Racing get(List<Car> cars) {
         return new Racing(cars);
     }
 
