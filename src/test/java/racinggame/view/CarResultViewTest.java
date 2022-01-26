@@ -10,25 +10,25 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racinggame.domain.RacingCar;
 import racinggame.domain.Utils;
 
-class RacingCarViewTest {
+class CarResultViewTest {
 
     @Test
     void 생성자_테스트() throws NoSuchFieldException, IllegalAccessException {
         RacingCar car = new RacingCar("car", 0);
-        RacingCarView racingCarView = new RacingCarView(car);
+        CarResultView carResultView = new CarResultView(car);
 
-        Field racingCar = RacingCarView.class.getDeclaredField("racingCar");
+        Field racingCar = CarResultView.class.getDeclaredField("racingCar");
         racingCar.setAccessible(true);
-        assertNotNull(racingCar.get(racingCarView));
+        assertNotNull(racingCar.get(carResultView));
     }
 
     @ValueSource(ints = {1, 2, 3, 4, 5})
     @ParameterizedTest
     void drawCurrPosition(int position) {
-        RacingCar car = new RacingCar("car", 0);
-        RacingCarView racingCarView = new RacingCarView(car);
+        RacingCar car = new RacingCar("car", position);
+        CarResultView carResultView = new CarResultView(car);
 
-        String currPositionView = racingCarView.drawCurrResult();
+        String currPositionView = carResultView.drawCurrResult();
 
         StringBuilder sb = new StringBuilder();
         sb.append("car1 : ")
