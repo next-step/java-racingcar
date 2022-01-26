@@ -1,6 +1,7 @@
 package calculator.domain;
 
 import calculator.Constant;
+import calculator.Operator;
 import java.util.List;
 
 public class Calculator {
@@ -30,22 +31,11 @@ public class Calculator {
 
         for (int i = Constant.INIT_OPERATOR_INDEX; i < splitExpression.size();
             i += Constant.NEXT_OPERATOR_DIFFERENCE) {
-            char operator = splitExpression.get(i).charAt(0);
+            String symbol = splitExpression.get(i);
             int number = Integer.parseInt(splitExpression.get(i + 1));
 
-            switch (operator) {
-                case Constant.ADD:
-                    addNumbers(number);
-                    break;
-                case Constant.SUBTRACT:
-                    subtractNumbers(number);
-                    break;
-                case Constant.MULTIPLY:
-                    multiplyNumbers(number);
-                    break;
-                case Constant.DIVIDE:
-                    divideNumbers(number);
-            }
+            Operator operator = Operator.findBySymbol(symbol);
+            result = operator.operate(result, number);
         }
     }
 
