@@ -8,10 +8,12 @@ import java.util.stream.Collectors;
 
 public class Expression {
 
+    private static final double INITIAL_RESULT_OF_CALCULATE = 0;
+
     private final LinkedList<String> numbers;
     private final List<String> operators;
 
-    private double result = 0;
+    private double resultCalculate;
 
     public Expression(String expression) {
         //TODO: 방어적 복사본 사용할 것
@@ -24,12 +26,13 @@ public class Expression {
         operators = Arrays.stream(expression.split("[0-9]+"))
             .filter(operand -> !operand.isEmpty())
             .collect(Collectors.toList());
+        resultCalculate = INITIAL_RESULT_OF_CALCULATE;
     }
 
     public void calculate() {
-        result = convertNumber(numbers.poll());
+        resultCalculate = convertNumber(numbers.poll());
         for (String operator : operators) {
-            result = Operation.calculate(operator, result, convertNumber(numbers.poll()));
+            resultCalculate = Operation.calculate(operator, resultCalculate, convertNumber(numbers.poll()));
         }
     }
 
@@ -42,6 +45,6 @@ public class Expression {
 
     public void printResult() {
         System.out.println("----------결과----------");
-        System.out.println(result);
+        System.out.println(resultCalculate);
     }
 }
