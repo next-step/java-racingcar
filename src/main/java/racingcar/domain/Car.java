@@ -25,7 +25,7 @@ public class Car {
     }
 
     public void moveForward() {
-        if (strategy.move()) {
+        if (strategy.move(RandomNumberGenerator.generateRandomNumber())) {
             this.step++;
         }
     }
