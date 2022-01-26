@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
 import racingcar.domain.movable.FixedForwardStrategy;
+import racingcar.domain.movable.RandomForwardStrategy;
 import racingcar.service.RacingService;
 
 import java.util.ArrayList;
@@ -25,6 +26,13 @@ public class MovingTest {
         Cars cars = Cars.of(inputs, new FixedForwardStrategy(false));
         RacingService.from(cars).drive();
         assertThat(cars.getCars().get(1).getStep()).isEqualTo(0);
+    }
+
+    @Test
+    void randomForwardStrategyTest() {
+        RandomForwardStrategy randomForwardStrategy = new RandomForwardStrategy();
+        assertThat(randomForwardStrategy.move(5)).isTrue();
+        assertThat(randomForwardStrategy.move(2)).isFalse();
     }
 
 }
