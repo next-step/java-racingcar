@@ -7,19 +7,19 @@ public enum Operation {
     PLUS("+") {
         @Override
         public double operate(final double leftNumber, final double rightNumber) {
-            return (double) (leftNumber + rightNumber);
+            return leftNumber + rightNumber;
         }
     },
     MINUS("-") {
         @Override
         public double operate(final double leftNumber, final double rightNumber) {
-            return (double) (leftNumber - rightNumber);
+            return leftNumber - rightNumber;
         }
     },
     MULTIPLY("*") {
         @Override
         public double operate(final double leftNumber, final double rightNumber) {
-            return (double) (leftNumber * rightNumber);
+            return leftNumber * rightNumber;
         }
     },
     DIVISION("/") {
@@ -28,7 +28,7 @@ public enum Operation {
             if (rightNumber == 0) {
                 throw new ArithmeticException("[ERROR] 0으로 나눌 수 없습니다.");
             }
-            return (double) (leftNumber / rightNumber);
+            return leftNumber / rightNumber;
         }
     };
 
