@@ -44,12 +44,12 @@ public class Car {
         printStatus();
     }
 
-    private boolean isMove(final int randomNumber) {
-        return randomNumber >= STANDARD_NUMBER_MOVE_FORWARD;
-    }
-
     private int generateRandomNumber() {
         return (int) (Math.random() * RANGE_OF_RANDOM_NUMBER);
+    }
+
+    private boolean isMove(final int randomNumber) {
+        return randomNumber >= STANDARD_NUMBER_MOVE_FORWARD;
     }
 
     private void printStatus() {
