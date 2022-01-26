@@ -24,18 +24,13 @@ public class Validator {
 
     private static void validateOddIndexIsNumber(String[] split) {
         for (int i = 0; i < split.length; i += 2) {
-            validateIsNumber(split[i]);
+            try {
+                Long.parseLong(split[i]);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다.");
+            }
         }
     }
-
-    private static void validateIsNumber(String target) {
-        try {
-            Long.parseLong(target);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다.");
-        }
-    }
-
 
     private static void validateEvenIndexIsOperator(String[] split) {
         for (int i = 1; i < split.length; i += 2) {
