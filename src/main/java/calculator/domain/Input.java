@@ -14,7 +14,7 @@ public class Input {
         String userInput;
 
         while (true) {
-            System.out.print("식을 입력해 주세요(그만하려면 q): ");
+            System.out.print(String.format("식을 입력해 주세요(그만하려면 %s): ", QUIT));
             userInput = scanner.nextLine().trim();
             try {
                 Validator.checkIsBlack(userInput);

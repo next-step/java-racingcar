@@ -5,7 +5,7 @@ import racinggame.view.GameView;
 
 public class RacingGame {
 
-    private static final String QUIT = "q";
+    public static final String QUIT = "q";
     private static final int RANGE_OF_RANDOM_NUMBER = 9 - 0 + 1;
 
     private GameView gameView;
@@ -22,7 +22,7 @@ public class RacingGame {
 
     public void start() {
         for (int i = 0; i < trial; i++) {
-            System.out.println("계속 진행 하려면 아무키나 입력해 주세요.(종료 = q)");
+            System.out.println(String.format("계속 진행 하려면 아무키나 입력해 주세요.(종료 = %s)", QUIT));
             String command = Utils.getInput();
 
             if (isQuit(command)) {

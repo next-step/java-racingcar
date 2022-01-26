@@ -30,7 +30,7 @@ public class InputView {
     }
 
     private static String inputCarNames() {
-        System.out.println("경주할 자동차 이름을 ','로 구분해서 입력하세요.(2대 이상)");
+        System.out.println(String.format("경주할 자동차 이름을 '%s'로 구분해서 입력하세요.(%d대 이상)", SEPARATOR, Validator.MINIMUM_PLAYER));
         return removeBlank(Utils.getInput());
     }
 

@@ -18,7 +18,7 @@ public class Application {
             RacingGame racingGame = new RacingGame(racingCars, trial);
             racingGame.start();
 
-            System.out.println("게임이 종료되었습니다. (종료 = q, 다시 시작 = 아무 키 입력)");
+            System.out.println(String.format("게임이 종료되었습니다. (종료 = %s, 다시 시작 = 아무 키 입력)", RacingGame.QUIT));
             String command = Utils.getInput();
 
             if (RacingGame.isQuit(command)) {
