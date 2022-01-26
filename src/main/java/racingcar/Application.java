@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.domain.RacingGame;
+import racingcar.controller.RacingGame;
 
 public class Application {
 

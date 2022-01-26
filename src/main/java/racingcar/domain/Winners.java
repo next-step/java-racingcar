@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.domain.car.Car;
 
 public class Winners {
 

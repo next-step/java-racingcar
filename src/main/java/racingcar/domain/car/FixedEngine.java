@@ -1,10 +1,10 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 public class FixedEngine implements Engine {
 
     private boolean isMovable;
 
-    protected FixedEngine(boolean isMovable) {
+    public FixedEngine(boolean isMovable) {
         this.isMovable = isMovable;
     }
 
