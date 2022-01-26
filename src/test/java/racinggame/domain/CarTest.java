@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
 
-    @DisplayName("Cars 움직임 테스트")
+    @DisplayName("Car 움직임 테스트")
     @Test
     public void moveCarsTest() {
         String[] carNames = {"a", "b"};
@@ -18,5 +18,12 @@ class CarTest {
         Assertions.assertThat(cars.getCars().get(0).getLocation()).isEqualTo(0);
         Assertions.assertThat(cars.getCars().get(1).getLocation()).isEqualTo(1);
 
+    }
+
+    @DisplayName("Car 위치값 얻기 테스트")
+    @Test
+    public void getLocationTest(){
+        Car car = new Car("a", 7);
+        Assertions.assertThat(car.getLocation()).isEqualTo(7);
     }
 }
