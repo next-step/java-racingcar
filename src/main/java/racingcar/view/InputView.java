@@ -6,6 +6,7 @@ import racingcar.domain.dto.InputDto;
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import static racingcar.common.SystemMessage.*;
@@ -17,15 +18,14 @@ public class InputView {
     private static final int LENGTH_LIMIT_MIN = 1;
 
     private String carNameInput;
-    private final InputDto inputDto = new InputDto();
+    private InputDto inputDto = new InputDto();
+    private final Scanner scanner = new Scanner(System.in);
 
-    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
 
     private InputView() {
     }
 
-    public static InputView of() {
+    public static InputView instance() {
         return new InputView();
     }
 
@@ -38,13 +38,12 @@ public class InputView {
 
     private boolean parsingCarName() {
         try {
-            log.write(CAR_NAME_INPUT_INFO);
-            log.flush();
-            this.carNameInput = bufferedReader.readLine();
+            System.out.println(CAR_NAME_INPUT_INFO);
+            this.carNameInput = scanner.next();
             inputDto.setSplitUserInput(splitStr(carNameInput));
             validateLengthLimit(inputDto.getSplitUserInput());
             validateDuplicateCar(inputDto.getSplitUserInput());
-        } catch (IOException | InputValidationException exception) {
+        } catch (InputValidationException exception) {
             exception.printStackTrace();
             return true;
         }
@@ -53,11 +52,10 @@ public class InputView {
 
     private boolean parsingRacingTime() {
         try {
-            log.write(RACING_TIME_INPUT_INFO);
-            log.flush();
-            inputDto.setRacingTime(Integer.parseInt(bufferedReader.readLine()));
+            System.out.println(RACING_TIME_INPUT_INFO);
+            inputDto.setRacingTime(scanner.nextInt());
 
-        } catch (IOException | InputValidationException exception) {
+        } catch (InputValidationException exception) {
             exception.printStackTrace();
             return true;
         }
