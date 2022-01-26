@@ -4,6 +4,8 @@ import java.util.InputMismatchException;
 
 public class ExpressionParser {
 
+    private static final String BLANK = "\\s+";
+
     private Terms terms;
     private Operators operators;
 
@@ -26,7 +28,7 @@ public class ExpressionParser {
     }
 
     private String[] splitUserInputByWhitespace(String userInput) {
-        return userInput.split("\\s+");
+        return userInput.split(BLANK);
     }
 
     private void parse(String[] splitUserInput) {

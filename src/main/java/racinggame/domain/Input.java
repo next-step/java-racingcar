@@ -3,6 +3,8 @@ package racinggame.domain;
 public class Input {
 
     private static final String SEPARATOR = ",";
+    private static final String BLANK = "\\s+";
+    private static final String EMPTY_STRING = "";
 
     private Input() {}
 
@@ -34,7 +36,7 @@ public class Input {
     }
 
     private static String removeBlank(String trial) {
-        return trial.replaceAll("\\s+", "");
+        return trial.replaceAll(BLANK, EMPTY_STRING);
     }
 
     public static int getTrial() {
