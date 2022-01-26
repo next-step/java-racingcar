@@ -1,49 +1,34 @@
 package calculator.domain;
 
 import java.util.Arrays;
+import java.util.function.BiFunction;
+import java.util.function.DoubleBinaryOperator;
 
 public enum Operation {
 
-    PLUS("+") {
-        @Override
-        public double operate(final double leftNumber, final double rightNumber) {
-            return leftNumber + rightNumber;
+    PLUS("+", (leftNumber, rightNumber) -> leftNumber + rightNumber),
+    MINUS("-", (leftNumber, rightNumber) -> leftNumber - rightNumber),
+    MULTIPLY("*", (leftNumber, rightNumber) -> leftNumber * rightNumber),
+    DIVIDE("/", (leftNumber, rightNumber) -> {
+        if(rightNumber.equals(0)) {
+            throw new ArithmeticException("[ERROR] 0으로 나눌 수 없습니다.");
         }
-    },
-    MINUS("-") {
-        @Override
-        public double operate(final double leftNumber, final double rightNumber) {
-            return leftNumber - rightNumber;
-        }
-    },
-    MULTIPLY("*") {
-        @Override
-        public double operate(final double leftNumber, final double rightNumber) {
-            return leftNumber * rightNumber;
-        }
-    },
-    DIVISION("/") {
-        @Override
-        public double operate(final double leftNumber, final double rightNumber) {
-            if (rightNumber == 0) {
-                throw new ArithmeticException("[ERROR] 0으로 나눌 수 없습니다.");
-            }
-            return leftNumber / rightNumber;
-        }
-    };
+        return leftNumber / rightNumber;
+    }),
+    UNKNOWN(null, null);
 
     private final String operator;
+    private final BiFunction<Double, Double, Double> operate;
 
-    Operation(final String operator) {
+    Operation(String operator, BiFunction<Double, Double, Double> operate) {
         this.operator = operator;
+        this.operate = operate;
     }
 
     public static double calculate(String operator, double leftNumber, double rightNumber) {
         return Arrays.stream(values())
             .filter(operation -> operation.operator.equals(operator))
             .findAny()
-            .get().operate(leftNumber, rightNumber);
+            .get().operate.apply(leftNumber, rightNumber);
     }
-
-    public abstract double operate(final double leftNumber, final double rightNumber);
 }
