@@ -22,7 +22,6 @@ public class Calculator {
 
     private String getUserInput() {
         System.out.println("식을 입력하세요");
-        String str = scanner.nextLine();
-        return str;
+        return scanner.nextLine();
     }
 }
