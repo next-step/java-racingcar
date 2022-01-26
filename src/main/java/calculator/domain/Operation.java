@@ -43,6 +43,6 @@ public enum Operation {
         return Arrays.stream(Operation.values())
             .filter(value -> value.symbol.equals(symbol))
             .findFirst()
-            .orElseThrow(() -> new NoSuchElementException(FormulaOutput.ERROR_NOT_OPERATOR));
+            .orElseThrow(() -> new IllegalArgumentException(FormulaOutput.ERROR_NOT_OPERATOR));
     }
 }

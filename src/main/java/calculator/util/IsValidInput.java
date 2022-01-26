@@ -5,12 +5,12 @@ import java.util.List;
 
 public class IsValidInput {
 
+    private static final int FIRST_NUMBER = 0;
+    private static final int DISTANCE = 2;
+
     private IsValidInput() {
 
     }
-
-    private static final int FIRST_NUMBER = 0;
-    private static final int DISTANCE = 2;
 
     public static void isBlankOrNot(String input) {
         if (input == null || "".equals(input)) {
