@@ -25,7 +25,7 @@ public class RacingPlaying {
 
     public String getGameStatus(int raceCount) {
         while (raceCount > 0) {
-            moveForwardAll(RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END));
+            moveForwardAll();
             raceCount--;
         }
         return racingStatus.toString();
@@ -36,9 +36,9 @@ public class RacingPlaying {
         return winner.chooseWinner();
     }
 
-    public void moveForwardAll(int randomNumber) {
+    public void moveForwardAll() {
         for (RacingCar racingCar : racingCarList) {
-            racingCar.moveForward(randomNumber);
+            racingCar.moveForward(RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END));
             racingStatus.append(racingCar.getName() + ":" + racingCar.getPosition() + "\n");
         }
         racingStatus.append("----------------\n");
