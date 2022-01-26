@@ -5,11 +5,11 @@ public class Car {
     private static final int GO_POSSIBLE_VALUE = 4;
 
     private final String carName;
-    private Integer  location;
+    private Integer location;
 
-    public Car(String carName,int location) {
+    public Car(String carName, int location) {
         this.carName = carName;
-        this.location=location;
+        this.location = location;
     }
 
     public int getLocation() {
@@ -25,7 +25,7 @@ public class Car {
     }
 
     public void move(Integer integer) {
-        if (integer >= GO_POSSIBLE_VALUE){
+        if (integer >= GO_POSSIBLE_VALUE) {
             location++;
         }
     }

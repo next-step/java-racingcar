@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class GameInit {
 
     private static final int MAX_CAR_NAME_LENGTH = 5;
-    private static final String CAR_NAME_LIMITED_LENGTH="자동차의 이름은 5자를 초과할 수 없습니다.";
-    private static final String GAME_PLAY_NUMBER="시도할 횟수는 몇 회인가요?";
-    private static final String GAME_INPUT_NAME="경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String CAR_NAME_LIMITED_LENGTH = "자동차의 이름은 5자를 초과할 수 없습니다.";
+    private static final String GAME_PLAY_NUMBER = "시도할 횟수는 몇 회인가요?";
+    private static final String GAME_INPUT_NAME = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
 
 
     public String[] inputPlayerName() {

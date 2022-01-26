@@ -11,7 +11,7 @@ public class RoundHistory {
         this.carHistoryList = carHistoryList;
     }
 
-    public List<CarHistory>getRoundHistory(){
+    public List<CarHistory> getRoundHistory() {
         return new ArrayList<>(carHistoryList);
     }
 }
