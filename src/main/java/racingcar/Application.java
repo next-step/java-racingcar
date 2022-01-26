@@ -2,8 +2,6 @@ package racingcar;
 
 
 import java.util.List;
-import java.util.stream.Collectors;
-import racingcar.domain.Car;
 import racingcar.service.GameLauncher;
 import racingcar.view.RacingCarInput;
 import racingcar.view.RacingCarLog;
