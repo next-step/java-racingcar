@@ -38,8 +38,7 @@ public class GetInput {
         }
         if (string.length() == 0) {
             throw new IllegalArgumentException("Error: need right expression");
-        }
-        else if (string.charAt(0) == '0' && string.length() > 1) {
+        } else if (string.charAt(0) == '0' && string.length() > 1) {
             throw new IllegalArgumentException("Error: need right operand");
         }
 
@@ -49,5 +48,4 @@ public class GetInput {
     public static String getString(String str, int idx) {
         return Character.toString(str.charAt(idx));
     }
-
 }

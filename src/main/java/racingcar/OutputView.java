@@ -1,6 +1,7 @@
 package racingcar;
 
 public class OutputView {
+
     public static void printCurrent(String[] carNames, int[] cars) {
         for (int i = 0; i < cars.length; i++) {
             System.out.print(carNames[i] + " : ");
@@ -11,8 +12,8 @@ public class OutputView {
         }
     }
 
-    public static int getMaxScore(int[] cars){
-        int maximum=0;
+    public static int getMaxScore(int[] cars) {
+        int maximum = 0;
         for (int i = 0; i < cars.length; i++) {
             maximum = Math.max(maximum, cars[i]);
         }
@@ -20,10 +21,10 @@ public class OutputView {
     }
 
     public static void printWinners(String[] carNames, int[] cars) {
-        int count=0;
+        int count = 0;
         int maximum = getMaxScore(cars);
         System.out.print("최종 우승자: ");
-        for (int i=0; i < cars.length; i++) {
+        for (int i = 0; i < cars.length; i++) {
             if (cars[i] != maximum) {
                 continue;
             }
