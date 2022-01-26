@@ -11,9 +11,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.controller.dto.InputDTO;
 import racingcar.model.domain.Cars;
+import racingcar.model.domain.FixNumberBehavior;
+import racingcar.model.domain.Racing;
 import racingcar.model.entity.Car;
 import racingcar.view.RacingCarUserConsole;
 
@@ -82,6 +83,16 @@ public class ApplicationTest {
     }
 
     @DisplayName("랜덤넘버가 4이상일 때 전진할 수 있는지 검증")
-    void name() {
+    @ParameterizedTest
+    @CsvSource({"a,aa,aaa"})
+    void fixRandomNumberTest(String one, String two, String three) {
+        final List<Car> cars = Arrays.asList(Car.get(one), Car.get(two), Car.get(three));
+        Racing racing = new Racing(cars, new FixNumberBehavior(true));
+        racing.drive();
+        assertAll(
+            () -> assertThat(cars.get(0).getStep()).isEqualTo(1),
+            () -> assertThat(cars.get(1).getStep()).isEqualTo(1),
+            () -> assertThat(cars.get(2).getStep()).isEqualTo(1)
+        );
     }
 }
