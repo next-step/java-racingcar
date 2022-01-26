@@ -18,21 +18,21 @@ public class Operation {
         return operation;
     }
 
-    public String operate(Operand left, Operand right) {
+    public int operate(Operand left, Operand right) {
         switch (operation) {
             case "+":
-                return String.valueOf(left.getNumber() + right.getNumber());
+                return left.getNumber() + right.getNumber();
             case "-":
-                return String.valueOf(left.getNumber() - right.getNumber());
+                return left.getNumber() - right.getNumber();
             case "*":
-                return String.valueOf(left.getNumber() * right.getNumber());
+                return left.getNumber() * right.getNumber();
             case "/":
                 if (right.getNumber() == 0) {
                     throw new ArithmeticException("0으로 나눌 수 없습니다");
                 }
-                return String.valueOf(left.getNumber() / right.getNumber());
+                return left.getNumber() / right.getNumber();
         }
-        return String.valueOf(0);
+        return 0;
     }
 
     private void validateOperation(String operation) {

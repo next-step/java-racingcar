@@ -20,18 +20,18 @@ public class Calculator {
         validateOperand(splitExpression);
         validateOperation(splitExpression);
         calculateExpression();
-        return operandList.get(operandList.size() - 1)
-            .getNumber();
+        return calculateExpression();
     }
 
-    private void calculateExpression() {
+    private int calculateExpression() {
+        int calculateResult = 0;
         Operand left = operandList.get(0);
         for (int index = 0; index < operationList.size(); index++) {
             Operation operation = operationList.get(index);
             Operand right = operandList.get(index + 1);
-            left = new Operand(operation.operate(left, right));
+            calculateResult = operation.operate(left, right);
         }
-        operandList.add(left);
+        return calculateResult;
     }
 
     private void validateOperation(String[] splitExpression) {
