@@ -9,17 +9,8 @@ public class StringProcessor {
     private String userInput;
     private List<String> result = new ArrayList<String>();
 
-    public StringProcessor() {
-    }
-
     public StringProcessor(String userInput) {
         this.userInput = userInput;
-        checkInput();
-    }
-
-    public void inputStringValue() {
-        Scanner sc = new Scanner(System.in);
-        userInput = sc.nextLine();
         checkInput();
     }
 
