@@ -24,7 +24,7 @@ class GameLauncherTest extends RandomConfigTest {
 
     @Test
     void 모든차앞으로전진() {
-        GameLauncher gameLauncher = new GameLauncher(Arrays.asList("qwe", "asdf", "zx"));
+        GameLauncher gameLauncher = new GameLauncher(Arrays.asList("qwe", "asdf", "zx"), 3);
         List<Car> racingCars = gameLauncher.getRacingCarList();
         try (final MockedStatic<RandomUtil> mockRandoms = mockStatic(RandomUtil.class)) {
             mockRandoms

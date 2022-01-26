@@ -2,7 +2,7 @@ package calculator;
 
 import calculator.domain.Formula;
 import calculator.service.Calculator;
-import calculator.ui.FormulaInput;
+import calculator.view.FormulaInput;
 
 public class Application {
 

@@ -5,19 +5,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.service.GameLauncher;
-import racingcar.ui.RacingCarInput;
+import racingcar.view.RacingCarInput;
 
 public class Application {
 
     public static void main(String[] args) {
         RacingCarInput racingCarInput = new RacingCarInput();
         List<String> carNameList = racingCarInput.getCarName();
+        final int endRaceCount = racingCarInput.getRaceCount();
 
-        int raceCount = racingCarInput.getRaceCount();
+        GameLauncher gameLauncher = new GameLauncher(carNameList, endRaceCount);
 
         StringBuilder gameLog = new StringBuilder();
-        GameLauncher gameLauncher = new GameLauncher(carNameList);
-        while (0 < raceCount) {
+        while (gameLauncher.isEnd()) {
             gameLauncher.moveForwardAll();
             List<Car> carList = gameLauncher.getRacingCarList();
 
@@ -26,8 +26,6 @@ public class Application {
                 gameLog.append("\n");
             }
             gameLog.append("------------------------------\n");
-
-            raceCount--;
         }
 
         List<String> winnerList = gameLauncher.getWinner().stream()

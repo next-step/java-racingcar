@@ -1,4 +1,4 @@
-package calculator.ui;
+package calculator.view;
 
 import calculator.domain.Formula;
 import calculator.util.Console;
