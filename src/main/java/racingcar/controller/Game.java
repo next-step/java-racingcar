@@ -16,8 +16,8 @@ public class Game {
 
         System.out.println(Message.INPUT_GUIDE_MESSAGE);
         String[] carNames = user.getCarName();
-        for (int i = 0; i < carNames.length; i++) {
-            carList.add(new Car(carNames[i]));
+        for (String carName:carNames) {
+            carList.add(new Car(carName));
         }
 
         System.out.println(Message.ASK_TRY_COUNT);
