@@ -9,7 +9,7 @@ public class FixedForwardStrategy implements MovableStrategy{
     }
 
     @Override
-    public boolean move() {
+    public boolean move(final int number) {
         return isMoved;
     }
 }
