@@ -9,7 +9,9 @@ import racingcar.view.RacingCarUserResult;
 public class RacingController {
 
     private static final int NUMBER_ZERO = 0;
+    private RacingController(){
 
+    }
     public static void racingController() {
         RacingCarUserConsole userConsole = new RacingCarUserConsole();
         RacingCarUserResult userResult = new RacingCarUserResult();
