@@ -12,7 +12,6 @@ public class Application {
 
         while (true) {
             StringProcessor stringProcessor = new StringProcessor(sc.nextLine());
-//            stringProcessor.inputStringValue();
             try {
                 stringProcessor.deleteSpaceString();
                 String[] numbers = stringProcessor.parseInputNumber();
