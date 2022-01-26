@@ -9,7 +9,7 @@ import racingcar.view.OutputView;
 public class Game {
 
     private final Cars cars;
-    private final String WINNER_DELIMITER = ", ";
+    private static final String WINNER_DELIMITER = ", ";
 
     public Game(final Cars cars) {
         this.cars = cars;
