@@ -11,14 +11,13 @@ import racinggame.domain.Winners;
 
 public class ResultView {
 
-    private List<RoundHistory> roundHistories = new ArrayList<>();
+    private final List<RoundHistory> roundHistories = new ArrayList<>();
 
     public ResultView() {
     }
 
     public void captureResult(Cars cars) {
         List<CarHistory> carHistories = new ArrayList<>();
-
         for (Car car : cars.getCars()) {
             carHistories.add(new CarHistory(car));
         }
@@ -28,13 +27,13 @@ public class ResultView {
 
     public void printCarsLocation() {
         for (RoundHistory roundHistory : roundHistories) {
-            roundHistory(roundHistory);
+            printCarNames(roundHistory);
             System.out.println();
         }
 
     }
 
-    private void roundHistory(RoundHistory roundHistory) {
+    private void printCarNames(RoundHistory roundHistory) {
         for (CarHistory carHistory : roundHistory.getRoundHistory()) {
             System.out.print(carHistory.getCarName() + " : " + "");
             printLocation(carHistory.getLocation());
@@ -49,14 +48,12 @@ public class ResultView {
     }
 
     public void printWinner(Winners winners) {
-        List<String> winnerNameList = new ArrayList<>();
-        String winnerNames = "";
+        List<String> winnerNames = new ArrayList<>();
         System.out.print("최종 우승자: ");
         for (Winner winner : winners.getWinners()) {
-            winnerNameList.add(winner.getWinnerName());
+            winnerNames.add(winner.getWinnerName());
         }
-        winnerNames = String.join(", ", winnerNameList);
-        System.out.println(winnerNames);
+        System.out.println(String.join(", ", winnerNames));
     }
 
 }
