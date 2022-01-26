@@ -22,7 +22,7 @@ public class RacingController {
     }
 
     public void start() {
-        StringBuilder result_sb = new StringBuilder();
+        StringBuilder resultSb = new StringBuilder();
         for (int i = 0; i < turnCount; i++) {
             race();
             result_sb.append(printer.getResultOfOneTurn(participants));
