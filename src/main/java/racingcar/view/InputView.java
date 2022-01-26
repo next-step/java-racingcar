@@ -19,13 +19,14 @@ public class InputView {
     }
 
     public static int getTryNo() {
-        String input = "";
         System.out.println("시도할 횟수는 몇 회인가요?");
+        int tryNo = 0;
         try {
-            input = Console.readLine();
-        } catch (IllegalArgumentException e) {
+            String input = Console.readLine();
+            tryNo = Integer.parseInt(input);
+        } catch ( NumberFormatException e) {
             System.out.println("[ERROR] " + e.getMessage());
         }
-        return Integer.parseInt(input);
+        return tryNo;
     }
 }
