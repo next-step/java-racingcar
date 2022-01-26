@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.movable.RandomMovableStrategy;
 import racingcar.utils.Parser;
 import racingcar.view.InputView;
 
@@ -46,7 +47,7 @@ public class GameTest {
         int moved = 3;
 
         // When
-        TestUtils.carMove(carA, moves);
+        carMove(carA, moves);
 
         // Then
         assertThat(carA.distance())
@@ -63,8 +64,8 @@ public class GameTest {
         Car a = new Car("A");
         Car b = new Car("B");
 
-        TestUtils.carMove(a, aMoves);
-        TestUtils.carMove(b, bMoves);
+        carMove(a, aMoves);
+        carMove(b, bMoves);
 
         Cars cars = new Cars(Arrays.asList(a, b));
 
@@ -73,4 +74,14 @@ public class GameTest {
             .isEqualTo(Arrays.asList(a));
     }
 
+    private void carMove(Car car, List<Boolean> moves) {
+        for (boolean carMoved: moves) {
+            car.run(new RandomMovableStrategy() {
+                @Override
+                public boolean isMovable() {
+                    return carMoved;
+                }
+            });
+        }
+    }
 }
