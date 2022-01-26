@@ -21,7 +21,7 @@ public class Car {
 
     public int distance() { return distance; }
 
-    public void run(MovableStrategy strategy) {
+    public void run(final MovableStrategy strategy) {
         if (strategy.isMovable()) {
             this.distance++;
         }

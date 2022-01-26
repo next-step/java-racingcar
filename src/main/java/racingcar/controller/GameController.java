@@ -12,12 +12,12 @@ public class GameController {
     private final Cars cars;
     private final int turn;
 
-    public GameController(String carNames, int turn) {
+    public GameController(final String carNames, final int turn) {
         this.cars = setUpCars(carNames);
         this.turn = turn;
     }
 
-    private Cars setUpCars(String carNames) {
+    private Cars setUpCars(final String carNames) {
         return new Cars(
             Parser.parseCarNames(carNames).stream()
                 .map(Car::new)
@@ -25,7 +25,7 @@ public class GameController {
         );
     }
 
-    public void play(MovableStrategy strategy) {
+    public void play(final MovableStrategy strategy) {
         OutputView.printTurnResult();
         for (int index = 0; index < turn; index++) {
             cars.moveAll(strategy);

@@ -14,7 +14,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void moveAll(MovableStrategy strategy) {
+    public void moveAll(final MovableStrategy strategy) {
         for (Car car: cars) {
             car.run(strategy);
         }
@@ -31,7 +31,7 @@ public class Cars {
             .collect(Collectors.toList());
     }
 
-    private void validateCarExists(List<Car> cars) {
+    private void validateCarExists(final List<Car> cars) {
         if (cars.size() == 0) {
             throw new IllegalArgumentException("[ERROR] 플레이어가 존재하지 않습니다.");
         }

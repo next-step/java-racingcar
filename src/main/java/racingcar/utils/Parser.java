@@ -8,7 +8,7 @@ public class Parser {
 
     private Parser() {}
 
-    public static List<String> parseCarNames(String carNames) {
+    public static List<String> parseCarNames(final String carNames) {
         String NAME_SPLITTER = ",";
         return Arrays.stream(carNames.split(NAME_SPLITTER))
             .map(String::trim)

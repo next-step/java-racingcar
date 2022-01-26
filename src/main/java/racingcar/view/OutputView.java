@@ -18,7 +18,7 @@ public class OutputView {
         System.out.println();
     }
 
-    private static void carStatus(Car car) {
+    private static void carStatus(final Car car) {
         StringBuilder sb = new StringBuilder();
         sb.append(car.name());
         sb.append(CAR_RACER_SPLITTER);
