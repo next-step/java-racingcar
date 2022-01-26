@@ -1,9 +1,7 @@
 package racingcar.view;
 
 import racingcar.common.exception.InputValidationException;
-import racingcar.domain.dto.InputDto;
 
-import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
