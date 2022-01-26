@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import org.junit.jupiter.api.Test;
-import racinggame.view.InputView;
+import racinggame.domain.Validator;
 
 class InputViewTest {
 
