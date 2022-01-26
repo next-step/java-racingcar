@@ -20,7 +20,7 @@ public class UserInput {
         splittedInput = split(userInput);
     }
 
-    private String console() throws IOException {
+    private String console() {
         printer.printInputMessage();
         return scan.nextLine();
     }
