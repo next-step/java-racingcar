@@ -22,7 +22,7 @@ class CarTest {
 
     @DisplayName("Car 위치값 얻기 테스트")
     @Test
-    public void getLocationTest(){
+    public void getLocationTest() {
         Car car = new Car("a", 7);
         Assertions.assertThat(car.getLocation()).isEqualTo(7);
     }

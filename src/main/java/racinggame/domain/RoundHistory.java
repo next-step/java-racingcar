@@ -5,13 +5,13 @@ import java.util.List;
 
 public class RoundHistory {
 
-    private final List<CarHistory> carHistoryList;
+    private final List<CarHistory> carHistories;
 
     public RoundHistory(List<CarHistory> carHistoryList) {
-        this.carHistoryList = carHistoryList;
+        this.carHistories = carHistoryList;
     }
 
     public List<CarHistory> getRoundHistory() {
-        return new ArrayList<>(carHistoryList);
+        return new ArrayList<>(carHistories);
     }
 }
