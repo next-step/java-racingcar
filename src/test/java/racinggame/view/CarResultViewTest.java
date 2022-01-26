@@ -28,7 +28,7 @@ class RacingCarViewTest {
         RacingCar car = new RacingCar("car", 0);
         RacingCarView racingCarView = new RacingCarView(car);
 
-        String currPositionView = racingCarView.drawCurrPosition();
+        String currPositionView = racingCarView.drawCurrResult();
 
         StringBuilder sb = new StringBuilder();
         sb.append("car1 : ")

@@ -4,14 +4,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import racinggame.view.InputView;
-import racinggame.view.RacingCarView;
+import racinggame.view.CarResultView;
 
 public class RacingCar {
 
     private static final int MINIMUM_FORWARD_VALUE = 4;
     private static final int INIT_POSITION = 0;
 
-    private final RacingCarView racingCarView;
+    private final CarResultView carResultView;
     private String carName;
     private int carPosition;
 
@@ -22,9 +22,9 @@ public class RacingCar {
     public RacingCar(String carName, int position) {
         Validator.validateNameLength(carName);
 
-        racingCarView = new RacingCarView(this);
         this.carName = carName;
         this.carPosition = position;
+        carResultView = new CarResultView(this);
     }
 
     public static List<RacingCar> racingCarOf(String[] carNames) {
@@ -56,7 +56,7 @@ public class RacingCar {
     }
 
     public String drawCurrPosition() {
-        return this.racingCarView.drawCurrPosition();
+        return this.carResultView.drawCurrResult();
     }
 
     public int getPosition() {
