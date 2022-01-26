@@ -1,6 +1,6 @@
 package calculator.domain;
 
-import calculator.ui.FormulaOutput;
+import calculator.view.FormulaOutput;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 

@@ -1,4 +1,4 @@
-package calculator.ui;
+package calculator.view;
 
 public class FormulaOutput {
 

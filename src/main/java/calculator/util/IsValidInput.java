@@ -1,6 +1,6 @@
 package calculator.util;
 
-import calculator.ui.FormulaOutput;
+import calculator.view.FormulaOutput;
 import java.util.List;
 
 public class IsValidInput {

@@ -1,5 +1,6 @@
 package calculator.util;
 
+import calculator.domain.Formular;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +10,7 @@ class FormulaUtilTest {
 
     @Test
     void 연산쪼깨기(){
-        List<String> result = FormulaUtil.split("6 / 2 + 3");
+        List<String> result = Formular.stringSpliter("6 / 2 + 3");
 
         assertThat(result.size()).isEqualTo(5);
         assertThat(result.get(0)).isEqualTo("6");

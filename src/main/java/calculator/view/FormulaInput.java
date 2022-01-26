@@ -1,6 +1,6 @@
-package calculator.ui;
+package calculator.view;
 
-import calculator.util.FormulaUtil;
+import calculator.domain.Formular;
 import calculator.util.IsValidInput;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,7 +16,7 @@ public class FormulaInput {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
             String input = bufferedReader.readLine();
             IsValidInput.isBlankOrNot(input);
-            formular = FormulaUtil.split(input);
+            formular = Formular.stringSpliter(input);
             IsValidInput.isNotNumber(formular);
         } catch (IllegalArgumentException | IOException e) {
             System.out.println(FormulaOutput.ERROR_MESSAGE + e.getMessage());
