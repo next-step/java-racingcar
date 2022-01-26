@@ -80,8 +80,8 @@
 - [ ] MVC 패턴 기반으로 리팩터링해 view 패키지의 객체가 domain 패키지 객체에 의존할 수 있지만, domain 패키지의 객체는 view 패키지 객체에 의존하지 않도록 구현한다.
 - [ ] 테스트 가능한 부분과 테스트하기 힘든 부분을 분리해 테스트 가능한 부분에 대해서만 단위 테스트를 진행한다.
 - [ ] setup() 조금 더 알맞은 위치 찾기.
-- [ ] mapToInt 활 용하기
-- [ ] Exception에 에러 메세지 넣기
+- [x] mapToInt 활 용하기
+- [x] Exception에 에러 메세지 넣기
 - [ ] RandomMovableStrategy 싱글톤 활용하기
 - [ ] play 테스트 작성하기
 - [x] 상수 static final로 선언하기
