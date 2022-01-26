@@ -7,8 +7,12 @@ public class RacingCar {
 
     private static final int THRESHOLD = 4;
     private static final int NAME_MAX_SIZE = 5;
-    private final String name;
+    private String name = "";
     private int position = 0;
+
+    public RacingCar() {
+
+    }
 
     public RacingCar(String name) {
         isValidLength(name);
@@ -40,7 +44,7 @@ public class RacingCar {
         }
     }
 
-    private void isCorrectNameSize(String name) {
+    public void isCorrectNameSize(String name) {
         if (NAME_MAX_SIZE < name.length()) {
             throw new IllegalArgumentException(RacingCarOutput.ERROR_CAR_NAME_LENGTH_MAX_FIVE);
         }
