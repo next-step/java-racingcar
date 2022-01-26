@@ -10,6 +10,10 @@ import java.util.List;
 
 public class FormulaInput {
 
+    private FormulaInput() {
+
+    }
+
     public static List<String> getFormula() {
         List<String> formular = new ArrayList<>();
         System.out.println(FormulaOutput.REQUIRE_FORMULA_INPUT_MESSAGE);

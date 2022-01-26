@@ -33,8 +33,7 @@ public class RacingPlaying {
 
     public List<String> getGameWinner() {
         Winner winner = new Winner(racingCarList);
-        List<String> winnerList = winner.chooseWinner();
-        return winnerList;
+        return winner.chooseWinner();
     }
 
     public void moveForwardAll(int randomNumber) {

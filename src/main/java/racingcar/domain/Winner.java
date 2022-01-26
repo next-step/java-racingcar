@@ -16,11 +16,10 @@ public class Winner {
             .mapToInt(RacingCar::getPosition)
             .max().getAsInt();
 
-        List<String> winnerList = racingCarList.stream()
+        return racingCarList.stream()
             .filter(car -> car.getPosition() == maxPosition)
             .map(RacingCar::getName)
             .collect(Collectors.toList());
-        return winnerList;
     }
 
 }

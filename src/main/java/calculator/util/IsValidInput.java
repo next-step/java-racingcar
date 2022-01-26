@@ -4,7 +4,11 @@ import calculator.view.FormulaOutput;
 import java.util.List;
 
 public class IsValidInput {
-    private static final int FIRST_OPERATOR = 1;
+
+    private IsValidInput() {
+
+    }
+
     private static final int FIRST_NUMBER = 0;
     private static final int DISTANCE = 2;
 
