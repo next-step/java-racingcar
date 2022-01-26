@@ -7,12 +7,12 @@ public class Validator {
     private Validator() {};
 
     public static void validateUserInput(String[] userInput) {
-        checkIsBlack(userInput);
+        checkIsBlank(userInput);
         validateOddIndexIsNumber(userInput);
         validateEvenIndexIsOperator(userInput);
     }
 
-    private static void checkIsBlack(String[] splitUserInput) {
+    private static void checkIsBlank(String[] splitUserInput) {
         if (isBlank(splitUserInput)) {
             throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다.");
         }
