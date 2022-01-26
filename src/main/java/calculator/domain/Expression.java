@@ -4,13 +4,14 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Queue;
 import java.util.stream.Collectors;
 
 public class Expression {
 
     private static final double INITIAL_RESULT_OF_CALCULATE = 0;
 
-    private final LinkedList<String> numbers;
+    private final Queue<String> numbers;
     private final List<String> operators;
 
     private double resultCalculate;
