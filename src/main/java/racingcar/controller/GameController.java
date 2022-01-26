@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.controller;
 
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
@@ -10,9 +10,15 @@ import racingcar.view.OutputView;
 
 public class GameController {
 
-    private GameController() {}
+    private final Cars cars;
+    private final int turn;
 
-    private static Cars setUp() {
+    public GameController() {
+        this.cars = setUpCars();
+        this.turn = InputView.getTurn();
+    }
+
+    private Cars setUpCars() {
         String carNames = InputView.readCarNames();
 
         return new Cars(
@@ -22,22 +28,14 @@ public class GameController {
         );
     }
 
-    private static void play(Cars cars, int turn) {
+    public void play() {
+        OutputView.printTurnResult();
         for (int index = 0; index < turn; index++) {
             cars.moveAll(RandomMovableStrategy.getInstance());
             OutputView.printDistance(cars);
         }
-    }
-
-    public static void main(String[] args) {
-        Cars cars = setUp();
-        int turn = InputView.getTurn();
-
-        OutputView.printTurnResult();
-
-        play(cars, turn);
-
         System.out.println();
         OutputView.printWhoIsWinner(cars);
     }
+
 }
