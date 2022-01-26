@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.regex.Pattern;
-import racingcar.view.UserConsole;
 
 public class Turn {
 
@@ -11,38 +10,28 @@ public class Turn {
     private static final Pattern DIGIT = Pattern.compile("[+-]?\\d*(\\.\\d+)?");
     private final int value;
 
-    private Turn() {
-        this.value = Integer.valueOf(setTurn());
+    private Turn(String input) {
+        this.value = Integer.valueOf(setTurn(input));
     }
 
-    public static Turn getInstance() {
-        return new Turn();
+    public static Turn createTurn(String input) {
+        return new Turn(input.trim());
     }
 
-    private String setTurn() {
-        String turn = UserConsole.getConsoleTextFrom(TURN_MESSAGE).trim();
-        try {
-            validateTurn(turn);
-        } catch (NumberFormatException e1) {
-            e1.printStackTrace();
-            return setTurn();
-        } catch (IllegalArgumentException e2) {
-            e2.printStackTrace();
-            return setTurn();
-        }
-
+    private String setTurn(String turn) {
+        validateTurn(turn);
         return turn;
     }
 
-    public static void validateTurn(String turn) {
+    private static void validateTurn(String turn) {
         if (turn.trim().isEmpty()) {
-            throw new IllegalArgumentException(TURN_MESSAGE);
+            throw new IllegalStateException(TURN_MESSAGE);
         }
         if (!DIGIT.matcher(turn).matches()) {
             throw new NumberFormatException(TURN_NOT_NUMBER_ERROR_MESSAGE);
         }
         if (Integer.parseInt(turn) < 1) {
-            throw new IllegalArgumentException(TURN_NOT_NATURAL_NUMBER_ERROR_MESSAGE);
+            throw new IllegalStateException(TURN_NOT_NATURAL_NUMBER_ERROR_MESSAGE);
         }
     }
 

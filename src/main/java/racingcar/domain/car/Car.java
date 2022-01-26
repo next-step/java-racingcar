@@ -4,7 +4,8 @@ public class Car {
 
     private static final String NAME_LENGTH_ERROR_MESSAGE = "자동차 이름이 5자를 초과합니다.";
     private final String name;
-    public int position;
+    private int position;
+
     private Car(String name) {
         validateCarName(name);
         this.name = name;

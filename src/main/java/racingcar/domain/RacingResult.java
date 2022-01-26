@@ -8,8 +8,6 @@ import racingcar.domain.car.Car;
 
 public class RacingResult {
 
-    private static String RESULT_LINE = "%s : ";
-    private static String DASH = "-";
     private List<Car> cars;
 
     private RacingResult(List<Car> cars) {
@@ -20,28 +18,15 @@ public class RacingResult {
         return new RacingResult(cars);
     }
 
-    public void getResultView() {
-        int carSize = cars.size();
-        for (int i = 0; i < carSize; i++) {
-            StringBuilder stringBuilder = new StringBuilder();
-
-            int position = cars.get(i).getPosition();
-            System.out.printf(RESULT_LINE, cars.get(i).getName());
-            for (int pos = 0; pos < position; pos++) {
-                stringBuilder.append(DASH);
-            }
-            System.out.println(stringBuilder.toString());
-        }
-        System.out.println();
+    public static RacingResult toRacingResult(Participants participants) {
+        return RacingResult.getInstance(participants.getParticipants());
     }
 
     public String getWinner() {
-        System.out.print("최종 우승자: ");
-
         Collections.sort(cars, new Comparator<Car>() {
             @Override
             public int compare(Car o1, Car o2) {
-                return o2.position - o1.position;
+                return o2.getPosition() - o1.getPosition();
             }
         });
         Car firstWinner = cars.get(0);
@@ -56,9 +41,5 @@ public class RacingResult {
 
     public List<Car> getResult() {
         return this.cars;
-    }
-
-    public static RacingResult toRacingResult(Participants participants) {
-        return RacingResult.getInstance(participants.getParticipants());
     }
 }

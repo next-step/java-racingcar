@@ -1,15 +1,19 @@
 package racingcar;
 
-import racingcar.domain.Participants;
-import racingcar.domain.Turn;
+import racingcar.domain.RacingRecord;
+import racingcar.domain.RacingResult;
+import racingcar.view.ResultView;
+import racingcar.view.UserConsole;
 
 public class Application {
 
     public static void main(String[] args) {
-        Participants participants = Participants.createCars();
-        Turn turn = Turn.getInstance();
+        RacingController racingController = RacingController.getInstance(UserConsole.names(), UserConsole.turn().getValue());
 
-        RacingController racingController = RacingController.getInstance(participants, turn.getValue());
-        racingController.start();
+        RacingResult racingResult = racingController.start();
+        RacingRecord racingRecord = racingController.getRaceRecord();
+
+        ResultView.printRacingResult(racingRecord.getResultRecord());
+        ResultView.printWinner(racingResult.getWinner());
     }
 }
