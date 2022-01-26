@@ -3,8 +3,6 @@ package racingcar;
 
 import racingcar.controller.RacingController;
 import racingcar.domain.Cars;
-import racingcar.domain.dto.InputDto;
-import racingcar.domain.movable.RandomForwardStrategy;
 import racingcar.service.RacingService;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
