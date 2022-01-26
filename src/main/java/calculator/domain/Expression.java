@@ -1,12 +1,8 @@
 package calculator.domain;
 
-public class Expression {
+import static calculator.domain.Constants.*;
 
-    protected static final String OPERATORS = "+-*/";
-    private static final String ADD = "+";
-    private static final String SUBTRACT = "-";
-    private static final String MULTIPLY = "*";
-    private static final String DIVIDE = "/";
+public class Expression {
 
     private final String[] userInput;
 

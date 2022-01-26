@@ -1,5 +1,7 @@
 package calculator.domain;
 
+import static calculator.domain.Constants.*;
+
 public class Validator {
 
     private Validator() {};
@@ -42,7 +44,7 @@ public class Validator {
     }
 
     private static void validateIsOperator(String target) {
-        if (!Expression.OPERATORS.contains(target)) {
+        if (!OPERATORS.contains(target)) {
             throw new IllegalArgumentException("[ERROR] 입력 형식이 맞지 않습니다.");
         }
     }

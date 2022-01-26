@@ -1,5 +1,7 @@
 package calculator.domain;
 
+import static calculator.domain.Constants.*;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,11 +25,11 @@ public class Input {
     }
 
     private static boolean isQuit(String userInput) {
-        return userInput.equals("q");
+        return userInput.equals(QUIT_COMMAND);
     }
 
     private static String[] splitUserInputByWhitespace(String userInput) {
-        return userInput.split("\\s+");
+        return userInput.split(SPLIT_DELIMITER);
     }
 
 }
