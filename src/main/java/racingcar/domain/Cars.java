@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.domain.movable.MovableStrategy;
 
 public class Cars {
 
@@ -9,6 +10,12 @@ public class Cars {
 
     public Cars(final List<Car> cars) {
         this.cars = cars;
+    }
+
+    public void moveAll(MovableStrategy strategy) {
+        for (Car car: cars) {
+            car.run(strategy);
+        }
     }
 
     public List<Car> filterWinners() {
