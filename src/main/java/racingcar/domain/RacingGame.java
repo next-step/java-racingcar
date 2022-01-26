@@ -11,11 +11,11 @@ public class RacingGame {
     private static final int RANDOM_END = 9;
 
     private final List<RacingCar> racingCars;
-    private int raceCount;
+    private int tryNo;
 
-    public RacingGame(String carName, int raceCount) {
+    public RacingGame(String carName, int tryNo) {
         racingCars = setRacingCars(carName);
-        this.raceCount = raceCount;
+        this.tryNo = tryNo;
     }
 
     public List<RacingCar> setRacingCars(String carName) {
@@ -24,13 +24,11 @@ public class RacingGame {
             .collect(Collectors.toList());
     }
 
-    public void run() {
-        while (0 < raceCount) {
-            moveCars();
-            printRacing();
-            raceCount--;
-            System.out.println("------------------------------");
-        }
+    public void race() {
+        moveCars();
+        printRacing();
+        tryNo--;
+        System.out.println("------------------------------");
         printWinner();
     }
 
@@ -62,6 +60,10 @@ public class RacingGame {
             .filter(car -> car.getPosition() == maxPosition)
             .map(RacingCar::getName)
             .collect(Collectors.toList());
+    }
+
+    public boolean isEnd() {
+        return tryNo == 0;
     }
 }
 

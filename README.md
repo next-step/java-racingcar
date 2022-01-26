@@ -51,7 +51,7 @@
 ## 기능 구현
 - [x] 사용자에게 경주할 자동차 이름을 입력받는 기능 구현 - RacingCarInput#getCarName
   - [x] 입력 값이 쉼표를 기준으로 구분
-  - [x] 시도할 횟수가 입력받는 기능 구현 - getRaceCount()  
+  - [x] 시도할 횟수가 입력받는 기능 구현 - gettryNo()  
 - [x] 자동차 이름, 위치정보를 저장하는 자동차 클래스 - RacingCar 
   - [x] 자동차 이름의 길이가 5이하인지 검증 - validateNameSize()
   - [x] 전진 하는 메서드 - move()

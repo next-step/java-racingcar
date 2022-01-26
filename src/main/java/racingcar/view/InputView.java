@@ -1,10 +1,11 @@
 package racingcar.view;
 
-import java.util.Arrays;
-import java.util.List;
 import racingcar.util.Console;
 
 public class InputView {
+
+    private InputView() {
+    }
 
     public static String getCarNames() {
         String input = "";
@@ -17,7 +18,7 @@ public class InputView {
         return input;
     }
 
-    public static int getRaceCount() {
+    public static int gettryNo() {
         String input = "";
         System.out.println("시도할 횟수는 몇 회인가요?");
         try {
