@@ -25,12 +25,18 @@ public class GameController {
         );
     }
 
-    public void play(final MovableStrategy strategy) {
-        OutputView.printTurnResult();
+    private void iterateCarMoves(final MovableStrategy strategy) {
         for (int index = 0; index < turn; index++) {
             cars.moveAll(strategy);
             OutputView.printDistance(cars);
         }
+    }
+
+    public void play(final MovableStrategy strategy) {
+        OutputView.printTurnResult();
+
+        iterateCarMoves(strategy);
+
         OutputView.printWhoIsWinner(cars);
         System.out.println();
     }
