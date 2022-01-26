@@ -24,16 +24,16 @@ public class RacingGame {
             .collect(Collectors.toList());
     }
 
-    public void race() {
-        moveCars();
-        tryNo--;
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
     }
 
-    public void moveCars() {
+    public void race() {
         for (RacingCar car : racingCars) {
             int value = RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END);
             car.move(value);
         }
+        tryNo--;
     }
 
     public List<String> getWinners() {
@@ -56,10 +56,6 @@ public class RacingGame {
 
     public boolean isEnd() {
         return tryNo == 0;
-    }
-
-    public List<RacingCar> getRacingCars() {
-        return racingCars;
     }
 }
 
