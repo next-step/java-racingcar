@@ -53,10 +53,10 @@
 
 ## 구조 변경 요구 사항
 
-- [ ] MVC 패턴 적용
-    - [ ] Controller#유저의 요청에 따라 비즈니스의 로직을 처리할 수 있도록 구성한다.
-    - [ ] Controller#처리된 데이터의 결과를 DTO로 반환한다.
-    - [ ] Model#Car객체의 데이터를 Entity에 담는다.
-    - [ ] View#유저의 Input 받는것을 처리한다.
-    - [ ] View#유저의 Output 결과를 보여준다.
-- [ ] 도메인별 요구되는 Test 코드 작성 수행한다.
+- [x] MVC 패턴 적용
+    - [x] Controller#유저의 요청에 따라 비즈니스의 로직을 처리할 수 있도록 구성한다.
+    - [x] Controller#처리된 데이터의 결과를 DTO로 반환한다.
+    - [x] Model#Car객체의 데이터를 Entity에 담는다.
+    - [x] View#유저의 Input 받는것을 처리한다.
+    - [x] View#유저의 Output 결과를 보여준다.
+- [x] 도메인별 요구되는 public 메소드에 대한 Test 코드 작성 수행한다.
