@@ -5,6 +5,8 @@ import java.util.InputMismatchException;
 public class Validator {
 
     private static final int INDIVISIBLE_NUMBER = 0;
+    private static final String EMPTY_STRING = "";
+    private static final String BLANK = "\\s+";
 
     private Validator() {}
 
@@ -15,7 +17,7 @@ public class Validator {
     }
 
     private static boolean isBlank(String userInput) {
-        return userInput.replaceAll("\\s+", "").equals("");
+        return userInput.replaceAll(BLANK, EMPTY_STRING).equals(EMPTY_STRING);
     }
 
 
