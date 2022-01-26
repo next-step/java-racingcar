@@ -17,20 +17,23 @@ public class InputView {
     private static final int LENGTH_LIMIT_MIN = 1;
 
     private String carNameInput;
-    private InputDto inputDto = new InputDto();
+    private final InputDto inputDto = new InputDto();
 
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
 
     private InputView() {
+    }
+
+    public static InputView of() {
+        return new InputView();
+    }
+
+    public void processConsoleInput() {
         while (parsingCarName())
             ;
         while (parsingRacingTime())
             ;
-    }
-
-    public static InputView instance() {
-        return new InputView();
     }
 
     private boolean parsingCarName() {

@@ -14,6 +14,7 @@ public class Application {
 
     public static void main(String[] args) {
         InputView inputView = InputView.instance();
+        inputView.processConsoleInput();
         RacingService racingService = RacingService.from(Cars.of(inputView.getInputDto().getSplitUserInput(), new RandomForwardStrategy()));
         RacingController racingController = new RacingController(racingService, ResultView.instance());
         for (int time = START_FROM_ZERO; time < inputView.getInputDto().getRacingTime(); time++) {
