@@ -2,6 +2,7 @@ package racingcar;
 
 public class Car {
 
+    private final int MIN_DISTANCE = 4;
     private int position = 0;
     private final String name;
 
@@ -10,6 +11,11 @@ public class Car {
     }
 
     public void move(int distance) {
+        if (!checkMovable(distance)) {
+            System.out.println();
+            return;
+        }
+
         position += distance;
     }
 
@@ -19,5 +25,9 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    private boolean checkMovable(int distance) {
+        return MIN_DISTANCE  <= distance;
     }
 }

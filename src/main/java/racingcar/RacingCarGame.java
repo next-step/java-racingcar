@@ -14,7 +14,6 @@ public class RacingCarGame {
     private int tryCount;
     private final int MIN_MOVE = 0;
     private final int MAX_MOVE = 9;
-    private final int MOVABLE = 4;
 
     public RacingCarGame(int tryCount, List<String> carNames) {
         this.tryCount = tryCount;
@@ -50,22 +49,12 @@ public class RacingCarGame {
     private void loadGame() {
         for (Car car : cars) {
             int randomMove = getRandomMove();
-
-            moveCars(car, randomMove);
+            car.move(randomMove);
 
             String carName = car.getName();
             int totalMovingDistance = car.getPosition();
-
             printGameStatus(carName, totalMovingDistance);
         }
-    }
-
-    private void moveCars(Car car, int move) {
-        if (!checkMovable(move)) {
-            System.out.println();
-            return;
-        }
-        car.move(move);
     }
 
     private int getMaxMovingDistance() {
@@ -86,10 +75,6 @@ public class RacingCarGame {
         winners = cars.stream()
             .filter(car -> car.getPosition() == maxMovingDistance).map(Car::getName)
             .collect(Collectors.toList());
-    }
-
-    private boolean checkMovable(int move) {
-        return MOVABLE <= move;
     }
 
     private String getDashByMove(int move) {
