@@ -31,8 +31,8 @@ public class GameController {
             cars.moveAll(strategy);
             OutputView.printDistance(cars);
         }
-        System.out.println();
         OutputView.printWhoIsWinner(cars);
+        System.out.println();
     }
 
 }
