@@ -12,7 +12,6 @@ public class Car {
 
     public void move(int distance) {
         if (!checkMovable(distance)) {
-            System.out.println();
             return;
         }
 
