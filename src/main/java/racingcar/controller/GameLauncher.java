@@ -1,4 +1,4 @@
-package racingcar.racing;
+package racingcar.controller;
 
 public class GameLauncher {
 

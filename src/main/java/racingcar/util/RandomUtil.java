@@ -1,6 +1,7 @@
 package racingcar.util;
 
 import java.util.Random;
+import racingcar.view.RacingCarOutput;
 
 public class RandomUtil {
 
@@ -16,15 +17,15 @@ public class RandomUtil {
 
     private static void validateRange(final int startInclusive, final int endInclusive) {
         if (endInclusive == Integer.MAX_VALUE) {
-            throw new IllegalArgumentException("끝값이 너무 큽니다. (스택 오버플로우 발생이 가능합니다)");
+            throw new IllegalArgumentException(RacingCarOutput.ERROR_REFLECTION);
         }
 
         if (endInclusive - startInclusive >= Integer.MAX_VALUE) {
-            throw new IllegalArgumentException("입력값이 너무 큽니다.");
+            throw new IllegalArgumentException(RacingCarOutput.ERROR_RANDOM_NUMBER_MAX_LIMIT);
         }
 
         if (startInclusive > endInclusive) {
-            throw new IllegalArgumentException("startInclusive가 endInclusive보다 클 수 없습니다.");
+            throw new IllegalArgumentException(RacingCarOutput.ERROR_START_NOT_BIG_END);
         }
     }
 }

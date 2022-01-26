@@ -1,9 +1,10 @@
-package racingcar.racing;
+package racingcar.controller;
 
 import java.util.List;
 
 import racingcar.domain.RacingPlaying;
-import racingcar.ui.RacingCarInput;
+import racingcar.view.RacingCarInput;
+import racingcar.view.RacingCarOutput;
 
 public class RacingGame {
     List<String> carNameList;
@@ -15,7 +16,7 @@ public class RacingGame {
         String gameStatus = racingPlaying.getGameStatus(raceCount);
         List<String> gameWinner = racingPlaying.getGameWinner();
         System.out.println(gameStatus);
-        System.out.print("최종 우승자: " + String.join(", ", gameWinner));
+        System.out.print(RacingCarOutput.SYSTEM_MESSAGE_FINAL_WINNER + String.join(", ", gameWinner));
     }
 
     public void inputAll() {

@@ -1,9 +1,7 @@
 package racingcar;
 
 
-import java.util.List;
-import racingcar.racing.GameLauncher;
-import racingcar.ui.RacingCarInput;
+import racingcar.controller.GameLauncher;
 
 public class Application {
 

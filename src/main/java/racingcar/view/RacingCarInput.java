@@ -1,13 +1,8 @@
-package racingcar.ui;
+package racingcar.view;
 
-import calculator.util.FormulaUtil;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import racingcar.util.Console;
 
 public class RacingCarInput {

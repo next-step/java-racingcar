@@ -1,6 +1,7 @@
 package racingcar.domain;
 
-import racingcar.racing.RacingGame;
+import racingcar.controller.RacingGame;
+import racingcar.view.RacingCarOutput;
 
 public class RacingCar {
 
@@ -33,7 +34,7 @@ public class RacingCar {
         try {
             isCorrectNameSize(name);
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] " + e.getMessage());
+            System.out.println(RacingCarOutput.ERROR_MESSAGE + e.getMessage());
             RacingGame racingGame = new RacingGame();
             racingGame.inputAll();
         }
@@ -41,7 +42,7 @@ public class RacingCar {
 
     private void isCorrectNameSize(String name) {
         if (NAME_MAX_SIZE < name.length()) {
-            throw new IllegalArgumentException("자동차 이름의 길이가 5를 초과했습니다!");
+            throw new IllegalArgumentException(RacingCarOutput.ERROR_CAR_NAME_LENGTH_MAX_FIVE);
         }
     }
 
