@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.List;
 import racingcar.utils.InputView;
 import racingcar.utils.OutputView;
 import racingcar.utils.StringUtils;
@@ -18,8 +19,9 @@ public class RacingGame {
             cars.moveAll();
             OutputView.showResult(cars.cars());
         }
-        Winners winners = Winners.findWinners(cars.cars());
-        OutputView.showWinners(winners.winners());
+        cars.findWinners();
+        List<Car> winners = cars.getWinners();
+        OutputView.showWinners(winners);
     }
 
     private void setUpGame() {
