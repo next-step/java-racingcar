@@ -8,15 +8,20 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class CarTest {
 
     @Test
-    void 자동차_생성_테스트() {
+    void 자동차_Name_테스트() {
         Engine engine = new RandomEngine();
         Car car = new Car("pobi", engine);
-        assertThat(car.name()).isEqualTo(new Name("pobi"));
+        assertThat(car.getName()).isEqualTo("pobi");
     }
 
     @Test
-    void 자동차_생성_예외_테스트() {
-        assertThatThrownBy(() -> new Car("pandas", new FixedEngine(true)))
+    void 자동차_Name_예외_테스트() {
+        Engine engine = new RandomEngine();
+        assertThatThrownBy(() -> new Car("", engine))
+            .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Car("hyeonho", engine))
+            .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Car(null, engine))
             .isInstanceOf(IllegalArgumentException.class);
     }
 

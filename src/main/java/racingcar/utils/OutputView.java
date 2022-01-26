@@ -3,7 +3,6 @@ package racingcar.utils;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
-import racingcar.domain.Name;
 
 public class OutputView {
 
@@ -20,7 +19,7 @@ public class OutputView {
 
     private static void showCarStatus(Car car) {
         String position = createPositionBar(car.position());
-        System.out.println(car.name().getName() + ": " + position);
+        System.out.println(car.getName() + ": " + position);
     }
 
     private static String createPositionBar(int position) {
@@ -38,8 +37,7 @@ public class OutputView {
 
     private static String createWinnerNames(List<Car> winners) {
         return winners.stream()
-            .map(Car::name)
-            .map(Name::getName)
+            .map(Car::getName)
             .collect(Collectors.joining(DELIMITER));
     }
 }

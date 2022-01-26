@@ -12,7 +12,7 @@ public class CarsTest {
         Cars cars = new Cars(new String[]{"pobi"}, new FixedEngine(true));
         assertThat(cars.cars()
             .get(0)
-            .name()).isEqualTo(new Name("pobi"));
+            .getName()).isEqualTo("pobi");
     }
 
     @Test
