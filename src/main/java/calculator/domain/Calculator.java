@@ -11,7 +11,10 @@ public class Calculator {
         validateEmptyExpression(splitExpression);
         result = Integer.parseInt(splitExpression.get(0));
 
-        validateExpression(splitExpression);
+        validateOperandAndOperator(splitExpression);
+
+        validateExpressionSize(splitExpression);
+
         calculateNumbers(splitExpression);
     }
 
@@ -62,8 +65,40 @@ public class Calculator {
         result /= number;
     }
 
-    private void validateExpression(List<String> splitExpression) {
+    private void validateOperandAndOperator(List<String> splitExpression) {
+        for (int i = 0; i < splitExpression.size(); i++) {
+            boolean isOperandPosition = i % 2 == 0;
+            boolean isOperatorPosition = i % 2 == 1;
+
+            if (isOperandPosition) {
+                validateOperand(splitExpression.get(i));
+            }
+
+            if (isOperatorPosition) {
+                validateOperator(splitExpression.get(i));
+            }
+        }
+    }
+
+    private void validateOperand(String operand) {
+        boolean isOperator = operand.matches("[+\\-*/]");
+
+        if (isOperator) {
+            throw new IllegalArgumentException("[ERROR] 연속된 문자는 입력 불가합니다.");
+        }
+    }
+
+    private void validateOperator(String operator) {
+        boolean isOperand = operator.matches("[0-9]");
+
+        if (isOperand) {
+            throw new IllegalArgumentException("[ERROR] 연속된 숫자는 입력 불가합니다.");
+        }
+    }
+
+    private void validateExpressionSize(List<String> splitExpression) {
         boolean isValidExpressionSize = splitExpression.size() % 2 == 0;
+
         if (isValidExpressionSize) {
             throw new IllegalArgumentException("[ERROR] 올바르지 않은 식입니다.");
         }
