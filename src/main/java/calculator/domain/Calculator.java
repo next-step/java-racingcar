@@ -1,11 +1,11 @@
 package calculator.domain;
 
-import calculator.Constant;
 import calculator.Operator;
 import java.util.List;
 
 public class Calculator {
-
+    public static final int INIT_OPERATOR_INDEX = 1;
+    public static final int NEXT_OPERATOR_DIFFERENCE = 2;
     public int result;
 
     public Calculator(List<String> splitExpression) {
@@ -29,8 +29,8 @@ public class Calculator {
 
     private void calculateNumbers(List<String> splitExpression) {
 
-        for (int i = Constant.INIT_OPERATOR_INDEX; i < splitExpression.size();
-            i += Constant.NEXT_OPERATOR_DIFFERENCE) {
+        for (int i = INIT_OPERATOR_INDEX; i < splitExpression.size();
+            i += NEXT_OPERATOR_DIFFERENCE) {
             String symbol = splitExpression.get(i);
             int number = Integer.parseInt(splitExpression.get(i + 1));
 

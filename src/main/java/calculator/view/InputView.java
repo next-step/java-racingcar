@@ -1,6 +1,5 @@
 package calculator.view;
 
-import calculator.Constant;
 import java.util.Scanner;
 
 public class InputView {
@@ -20,6 +19,6 @@ public class InputView {
     }
 
     public void printResult(int result) {
-        System.out.println(Constant.RESULT_TEXT + result);
+        System.out.println("연산의 결과는: " + result);
     }
 }
