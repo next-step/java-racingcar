@@ -6,16 +6,12 @@ import racingcar.model.entity.Car;
 
 public class Racing {
 
-    private final static int MAX_RANDOM_RANGE = 10;
-    private final static int MIN_BOUND_STRAIGHT = 4;
     private List<Car> cars;
+    private CarMoveBehavior carMoveBehavior;
 
-    private Racing(List<Car> cars) {
+    public Racing(List<Car> cars, final CarMoveBehavior carMoveBehavior) {
         this.cars = cars;
-    }
-
-    public static Racing get(List<Car> cars) {
-        return new Racing(cars);
+        this.carMoveBehavior = carMoveBehavior;
     }
 
     public List<Car> getCars() {
@@ -29,18 +25,10 @@ public class Racing {
             });
     }
 
-    public void racingCondition(int idx) {
-        if (Racing.stopOrMoveForward()) {
+    private void racingCondition(int idx) {
+        if (carMoveBehavior.moveBehavior()) {
             cars.get(idx).moveForward();
         }
-    }
-
-    public static boolean stopOrMoveForward() {
-        return generateRandomNumber() >= MIN_BOUND_STRAIGHT;
-    }
-
-    private static int generateRandomNumber() {
-        return (int) (Math.random() * MAX_RANDOM_RANGE);
     }
 }
 
