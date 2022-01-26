@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class RacingCarGame {
 
     private final static Random RANDOM = new Random();
-    private final List<Car> cars = new ArrayList<>();
+    private List<Car> cars;
     private final List<String> carNames;
     private List<String> winners;
     private int tryCount;
@@ -18,14 +18,22 @@ public class RacingCarGame {
     public RacingCarGame(int tryCount, List<String> carNames) {
         this.tryCount = tryCount;
         this.carNames = carNames;
-        initializeCar();
+
+        initializeCars();
     }
 
-    private void initializeCar() {
+    private void initializeCars() {
+        cars = makeCarsByCarNames();
+    }
+
+    private List<Car> makeCarsByCarNames() {
+        List<Car> cars = new ArrayList<>();
+
         for (String carName : carNames) {
             Car car = new Car(carName);
             cars.add(car);
         }
+        return cars;
     }
 
     public void play() {
