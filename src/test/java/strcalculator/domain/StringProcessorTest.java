@@ -29,7 +29,6 @@ class StringProcessorTest {
     @DisplayName("사칙연산 제외한 숫자만 남는지 확인")
     public void inputParseNumber(){
         StringProcessor stringProcessor = new StringProcessor("1+   2+  3");
-        stringProcessor.deleteSpaceString();
         String[] strings = stringProcessor.parseInputNumber();
         Arrays.stream(strings).allMatch((s)->s.matches("[0-9]+"));
 
@@ -39,7 +38,6 @@ class StringProcessorTest {
     @DisplayName("숫자를 제외한 사칙연산만 남는지 확인")
     public void inputParseOperands(){
         StringProcessor stringProcessor = new StringProcessor("1+   2+  3");
-        stringProcessor.deleteSpaceString();
         String[] strings = stringProcessor.parseInputNumber();
         Arrays.stream(strings).allMatch((s)->s.matches("[+\\-*/]"));
     }

@@ -13,7 +13,6 @@ public class Application {
         while (true) {
             StringProcessor stringProcessor = new StringProcessor(sc.nextLine());
             try {
-                stringProcessor.deleteSpaceString();
                 String[] numbers = stringProcessor.parseInputNumber();
                 String[] operands = stringProcessor.parseInputOperands();
                 Calculator calculator = new Calculator(numbers, operands);

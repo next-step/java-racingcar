@@ -11,6 +11,7 @@ public class StringProcessor {
 
     public StringProcessor(String userInput) {
         this.userInput = userInput;
+        deleteSpaceString();
         checkInput();
     }
 
@@ -38,7 +39,7 @@ public class StringProcessor {
         return operands;
     }
 
-    public void deleteSpaceString() {
+    private void deleteSpaceString() {
         userInput = userInput.replaceAll(" ", "");
 
     }
