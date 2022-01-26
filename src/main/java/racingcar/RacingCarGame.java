@@ -63,6 +63,8 @@ public class RacingCarGame {
             int totalMovingDistance = car.getPosition();
             printGameStatus(carName, totalMovingDistance);
         }
+
+        System.out.println();
     }
 
     private int getMaxMovingDistance() {
