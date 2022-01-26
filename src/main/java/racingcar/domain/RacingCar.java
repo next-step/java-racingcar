@@ -17,9 +17,18 @@ public class RacingCar implements Car {
         this.name = name;
     }
 
+    public RacingCar(String name, int position) {
+        this(name);
+        this.position = position;
+    }
+
     public void moveForward() {
         int randomNum = RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END);
-        if (THRESHOLD <= randomNum) {
+        moveForwardWithNum(randomNum);
+    }
+
+    public void moveForwardWithNum(int num) {
+        if (THRESHOLD <= num) {
             position++;
         }
     }

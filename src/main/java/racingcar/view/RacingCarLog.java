@@ -6,10 +6,11 @@ import racingcar.domain.Car;
 
 public class RacingCarLog {
 
-    private RacingCarLog(){}
+    private RacingCarLog() {
+    }
 
-    public static StringBuilder printCars(StringBuilder gameLog, List<Car> carList){
-        for(Car car : carList){
+    public static StringBuilder printCars(StringBuilder gameLog, List<Car> carList) {
+        for (Car car : carList) {
             gameLog.append(car);
             gameLog.append("\n");
         }
@@ -17,7 +18,7 @@ public class RacingCarLog {
         return gameLog;
     }
 
-    public static StringBuilder printWinner(StringBuilder gameLog, List<Car> carWinnerList){
+    public static StringBuilder printWinner(StringBuilder gameLog, List<Car> carWinnerList) {
         List<String> winnerList = carWinnerList.stream()
             .map(Car::getName)
             .collect(Collectors.toList());

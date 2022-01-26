@@ -22,7 +22,7 @@ public class GameLauncher {
     }
 
     public void moveForwardAll() {
-        currentCount ++;
+        currentCount++;
         for (Car car : racingCarList) {
             car.moveForward();
         }

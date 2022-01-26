@@ -6,21 +6,12 @@ import static org.mockito.Mockito.mockStatic;
 
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
-import racingcar.Application;
 import racingcar.domain.Car;
-import racingcar.domain.RandomConfigTest;
 import racingcar.util.RandomUtil;
 
-class GameLauncherTest extends RandomConfigTest {
-
-    @BeforeEach
-    void beforeEach() {
-        super.setUp();
-    }
+class GameLauncherTest{
 
     @Test
     void 모든차앞으로전진() {
@@ -38,15 +29,4 @@ class GameLauncherTest extends RandomConfigTest {
             assertThat(racingCars.get(2).getPosition()).isEqualTo(1);
         }
     }
-
-    @AfterEach
-    void tearDown() {
-        outputStandard();
-    }
-
-    @Override
-    public void runMain() {
-        Application.main(new String[]{});
-    }
-
 }
