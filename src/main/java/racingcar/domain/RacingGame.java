@@ -1,12 +1,11 @@
-package racingcar.service;
+package racingcar.domain;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.domain.RacingCar;
 import racingcar.util.RandomUtil;
 
-public class CarRace {
+public class RacingGame {
 
     private static final int RANDOM_START = 0;
     private static final int RANDOM_END = 9;
@@ -14,17 +13,15 @@ public class CarRace {
     private final List<RacingCar> racingCars;
     private int raceCount;
 
-    public CarRace(List<String> carName, int raceCount) {
+    public RacingGame(String carName, int raceCount) {
         racingCars = setRacingCars(carName);
         this.raceCount = raceCount;
     }
 
-    public List<RacingCar> setRacingCars(List<String> carName) {
-        List<RacingCar> cars = new ArrayList<>();
-        for (String name : carName) {
-            cars.add(new RacingCar(name));
-        }
-        return cars;
+    public List<RacingCar> setRacingCars(String carName) {
+        return Arrays.stream(carName.split(","))
+            .map(RacingCar::new)
+            .collect(Collectors.toList());
     }
 
     public void run() {
