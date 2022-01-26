@@ -6,6 +6,8 @@ public class Car {
     private static final int CAR_NAME_MAX_LENGTH = 5;
     private static final int STANDARD_NUMBER_MOVE_FORWARD = 4;
     private static final int RANGE_OF_RANDOM_NUMBER = 10;
+    private static final String SEPARATOR_BETWEEN_NAME_AND_POSITION = " : ";
+    private static final String MOVE_STATE = "-";
 
     private final String name;
     private int position;
@@ -53,9 +55,9 @@ public class Car {
     }
 
     private void printStatus() {
-        System.out.print(name + " : ");
+        System.out.print(name + SEPARATOR_BETWEEN_NAME_AND_POSITION);
         for (int i = 0; i < position; i++) {
-            System.out.print("-");
+            System.out.print(MOVE_STATE);
         }
         System.out.println();
     }
