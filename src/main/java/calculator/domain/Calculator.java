@@ -19,29 +19,6 @@ public class Calculator {
     }
 
     private int operate(String operator, int prevNumber, int nextNumber) {
-        if ("+".equals(operator)) {
-            return add(prevNumber, nextNumber);
-        } else if ("-".equals(operator)) {
-            return subtract(prevNumber, nextNumber);
-        } else if ("*".equals(operator)) {
-            return multiply(prevNumber, nextNumber);
-        }
-        return divide(prevNumber, nextNumber);
-    }
-
-    private static int add(int prevNumber, int nextNumber) {
-        return prevNumber + nextNumber;
-    }
-
-    public int subtract(int prevNumber, int nextNumber) {
-        return prevNumber - nextNumber;
-    }
-
-    public int multiply(int prevNumber, int nextNumber) {
-        return prevNumber * nextNumber;
-    }
-
-    public int divide(int prevNumber, int nextNumber) {
-        return prevNumber / nextNumber;
+        return Operator.getType(operator).operate(prevNumber, nextNumber);
     }
 }
