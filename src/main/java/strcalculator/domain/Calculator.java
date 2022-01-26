@@ -11,17 +11,16 @@ public class Calculator {
     private int leftNumber = 0;
     private int rightNumber = 0;
 
+    public Calculator(String[] numberList, String[] operandList) {
+        this.numberList = numberList;
+        this.operandList = operandList;
+    }
     private final Map<String, Supplier<Integer>> operandDivision = new HashMap<>();
     {
         operandDivision.put("+", ()-> leftNumber+rightNumber);
         operandDivision.put("-", ()-> leftNumber-rightNumber);
         operandDivision.put("*", ()-> leftNumber*rightNumber);
         operandDivision.put("/", ()-> leftNumber/rightNumber);
-    }
-
-    public Calculator(String[] numberList, String[] operandList) {
-        this.numberList = numberList;
-        this.operandList = operandList;
     }
 
     public void calculate() {
