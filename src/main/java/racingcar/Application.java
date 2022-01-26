@@ -6,32 +6,24 @@ import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.service.GameLauncher;
 import racingcar.view.RacingCarInput;
+import racingcar.view.RacingCarLog;
 
 public class Application {
 
     public static void main(String[] args) {
         RacingCarInput racingCarInput = new RacingCarInput();
         List<String> carNameList = racingCarInput.getCarName();
-        final int endRaceCount = racingCarInput.getRaceCount();
+        int endRaceCount = racingCarInput.getRaceCount();
 
         GameLauncher gameLauncher = new GameLauncher(carNameList, endRaceCount);
 
         StringBuilder gameLog = new StringBuilder();
-        while (gameLauncher.isEnd()) {
+        while (!gameLauncher.isEnd()) {
             gameLauncher.moveForwardAll();
-            List<Car> carList = gameLauncher.getRacingCarList();
-
-            for(Car car : carList){
-                gameLog.append(car);
-                gameLog.append("\n");
-            }
-            gameLog.append("------------------------------\n");
+            RacingCarLog.printCars(gameLog, gameLauncher.getRacingCarList());
         }
 
-        List<String> winnerList = gameLauncher.getWinner().stream()
-            .map(Car::getName)
-            .collect(Collectors.toList());
-        gameLog.append(String.join(",",winnerList));
+        RacingCarLog.printWinner(gameLog, gameLauncher.getRacingCarList());
 
         System.out.println(gameLog);
     }
