@@ -1,53 +1,74 @@
 package calculator;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-import calculator.Calculator;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
+import java.util.LinkedList;
 import org.junit.jupiter.api.Test;
-import org.assertj.core.api.Assertions;
 
 class CalculatorTest {
 
     private Calculator calculator;
 
-    @BeforeEach
-    void setUp() {
-        calculator = new Calculator();
-    }
-
     @Test
-    void 나눗셈_0으로_나눌_때() {
-        List<String> data = Arrays.asList("5", "/", "0");
+    void 나눗셈_0으로_나눌_때_애러() {
+        calculator = new Calculator(
+            new LinkedList(Arrays.asList("5", "0")),
+            new LinkedList(Arrays.asList("/"))
+        );
+
         assertThatIllegalArgumentException()
-            .isThrownBy(() -> calculator.execute(data));
+            .isThrownBy(() -> calculator.execute());
     }
 
     @Test
-    void 덧셈() {
-        List<String> data = Arrays.asList("5", "+", "9");
-        Assertions.assertThat(calculator.execute(data)).isEqualTo(14);
+    void 나눗셈_결과가_소숫점_2자리가_맞는지_확인() {
+        calculator = new Calculator(
+            new LinkedList(Arrays.asList("1", "3")),
+            new LinkedList(Arrays.asList("/"))
+        );
+        assertThat(hasTwoDecimalPoint(calculator.execute())).isTrue();
+    }
+
+    boolean hasTwoDecimalPoint(Double number) {
+        double compare = number * Math.pow(10, 2);
+        return compare == (int)compare;
     }
 
     @Test
-    void 뺼셈_결과_음수() {
-        List<String> data = Arrays.asList("1", "-", "3");
-        Assertions.assertThat(calculator.execute(data)).isEqualTo(-2);
+    void 덧셈_정상() {
+        calculator = new Calculator(
+            new LinkedList(Arrays.asList("5", "2")),
+            new LinkedList(Arrays.asList("+"))
+        );
+        assertThat(calculator.execute()).isEqualTo(7);
     }
 
     @Test
-    void 곱셈() {
-        List<String> data = Arrays.asList("5", "*", "3");
-        Assertions.assertThat(calculator.execute(data)).isEqualTo(15);
+    void 뺼셈_정상() {
+        calculator = new Calculator(
+            new LinkedList(Arrays.asList("2", "5")),
+            new LinkedList(Arrays.asList("-"))
+        );
+        assertThat(calculator.execute()).isEqualTo(-3);
     }
 
     @Test
-    void 나눗셈_결과_2자리_이상() {
-        List<String> data = Arrays.asList("1", "/", "3");
-        double result = calculator.execute(data);
-        Assertions.assertThat(result).isEqualTo(0.33);
+    void 곱셈_정상() {
+        calculator = new Calculator(
+            new LinkedList(Arrays.asList("5", "2")),
+            new LinkedList(Arrays.asList("*"))
+        );
+        assertThat(calculator.execute()).isEqualTo(10);
+    }
+
+    @Test
+    void 연속연산_정상() {
+        calculator = new Calculator(
+            new LinkedList(Arrays.asList("12", "3", "4")),
+            new LinkedList(Arrays.asList("+", "*"))
+        );
+        assertThat(calculator.execute()).isEqualTo(60);
     }
 }
