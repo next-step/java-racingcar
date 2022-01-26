@@ -14,7 +14,7 @@ public class Validator {
 
     private static void checkIsBlank(String[] splitUserInput) {
         if (isBlank(splitUserInput)) {
-            throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다.");
+            throw new IllegalArgumentException("[Error] 입력 값이 없습니다. 연산을 위해 식을 입력해주세요.");
         }
     }
 
@@ -27,7 +27,7 @@ public class Validator {
             try {
                 Long.parseLong(split[i]);
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다.");
+                throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다. 올바른 수식을 입력해 주세요.");
             }
         }
     }
@@ -40,7 +40,7 @@ public class Validator {
 
     private static void validateIsOperator(String target) {
         if (!OPERATORS.contains(target)) {
-            throw new IllegalArgumentException("[ERROR] 입력 형식이 맞지 않습니다.");
+            throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다. 올바른 수식을 입력해 주세요.");
         }
     }
 }
