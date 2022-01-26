@@ -6,6 +6,8 @@ import java.util.List;
 
 public class RacingGame {
 
+    private static final int RANGE_OF_RANDOM_NUMBER = 10;
+
     private final List<Car> cars;
 
     public RacingGame() {
@@ -39,8 +41,12 @@ public class RacingGame {
 
     private void driveCars() {
         for (Car car : cars) {
-            car.drive();
+            car.drive(generateRandomNumber());
         }
+    }
+
+    private int generateRandomNumber() {
+        return (int) (Math.random() * RANGE_OF_RANDOM_NUMBER);
     }
 
     private void showGameResult() {

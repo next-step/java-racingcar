@@ -5,18 +5,16 @@ public class Car {
     private static final int CAR_NAME_MIN_LENGTH = 1;
     private static final int CAR_NAME_MAX_LENGTH = 5;
     private static final int STANDARD_NUMBER_MOVE_FORWARD = 4;
-    private static final int RANGE_OF_RANDOM_NUMBER = 10;
     private static final String SEPARATOR_BETWEEN_NAME_AND_POSITION = " : ";
     private static final String MOVE_STATE = "-";
 
     private final String name;
     private int position;
 
-    public Car(final String name) {
-        // TODO: 방어복사...?
-        checkNameLength(name);
+    public Car(String name) {
         this.name = name;
         this.position = 0;
+        checkNameLength(this.name);
     }
 
     private static void checkNameLength(final String name) {
@@ -38,16 +36,11 @@ public class Car {
         return this.position == position;
     }
 
-    public void drive() {
-        final int randomNumber = generateRandomNumber();
-        if (isMove(randomNumber)) {
+    public void drive(int number) {
+        if (isMove(number)) {
             this.position++;
         }
         printStatus();
-    }
-
-    private int generateRandomNumber() {
-        return (int) (Math.random() * RANGE_OF_RANDOM_NUMBER);
     }
 
     private boolean isMove(final int randomNumber) {
