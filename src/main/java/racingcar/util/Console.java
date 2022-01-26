@@ -3,6 +3,7 @@ package racingcar.util;
 import java.lang.reflect.Field;
 import java.util.Objects;
 import java.util.Scanner;
+import racingcar.view.RacingCarOutput;
 
 public class Console {
 
@@ -28,7 +29,7 @@ public class Console {
             sourceClosedField.setAccessible(true);
             return sourceClosedField.getBoolean(scanner);
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            System.out.println("리플렉션 중 에러 발생");
+            System.out.println(RacingCarOutput.ERROR_REFLECTION);
         }
         return true;
     }

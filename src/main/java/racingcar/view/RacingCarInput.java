@@ -7,24 +7,28 @@ import racingcar.util.Console;
 
 public class RacingCarInput {
 
+    private RacingCarInput() {
+
+    }
+
     public static List<String> getCarName() {
         String input = "";
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
+        System.out.println(RacingCarOutput.REQUIRE_RACING_CAR_NAME);
         try {
             input = Console.readLine();
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] " + e.getMessage());
+            System.out.println(RacingCarOutput.ERROR_MESSAGE + e.getMessage());
         }
         return new ArrayList<>(Arrays.asList(input.split(",")));
     }
 
     public static int getRaceCount() {
         String input = "";
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(RacingCarOutput.SYSTEM_MESSAGE_TRY_COUNT);
         try {
             input = Console.readLine();
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] " + e.getMessage());
+            System.out.println(RacingCarOutput.ERROR_MESSAGE + e.getMessage());
         }
         return Integer.parseInt(input);
     }

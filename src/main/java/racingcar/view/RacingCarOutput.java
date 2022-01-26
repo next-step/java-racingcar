@@ -4,7 +4,10 @@ public class RacingCarOutput {
 
     private RacingCarOutput() {
     }
+
     public static final String SYSTEM_MESSAGE_FINAL_WINNER = "최종 우승자: ";
+    public static final String SYSTEM_MESSAGE_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
+    public static final String REQUIRE_RACING_CAR_NAME = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)";
     public static final String ERROR_CAR_NAME_LENGTH_MAX_FIVE = "자동차 이름의 길이가 5를 초과했습니다!";
     public static final String ERROR_MESSAGE = "[ERROR] ";
     public static final String ERROR_REFLECTION = "리플렉션 중 에러 발생";

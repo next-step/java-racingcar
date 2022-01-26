@@ -17,7 +17,7 @@ public class RandomUtil {
 
     private static void validateRange(final int startInclusive, final int endInclusive) {
         if (endInclusive == Integer.MAX_VALUE) {
-            throw new IllegalArgumentException(RacingCarOutput.ERROR_REFLECTION);
+            throw new IllegalArgumentException(RacingCarOutput.ERROR_RANDOM_NUMBER_MAX_OVERFLOW);
         }
 
         if (endInclusive - startInclusive >= Integer.MAX_VALUE) {
