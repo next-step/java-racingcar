@@ -27,7 +27,7 @@ public class Racing {
     }
 
     public List<Car> race() {
-        for (int i = 0; i < roundNumber; i++) {
+        while (roundNumber-- > 0) {
             startRound();
             System.out.println();
         }
