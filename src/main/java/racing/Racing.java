@@ -17,6 +17,7 @@ public class Racing {
         }
     }
 
+    // TODO: 단위 테스트 추가 방법을 생각해보자.
     private void startRound(List<Car> cars) {
         for (Car car : cars) {
             car.round();
