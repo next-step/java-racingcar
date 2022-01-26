@@ -10,11 +10,8 @@ public class Calculator {
     }
 
     public void startCalculate() {
-        Expression expression;
-        String input = getUserInput();
-
         try {
-            expression = new Expression(input);
+            Expression expression = new Expression(getUserInput());
             expression.calculate();
             expression.printResult();
         } catch (IllegalArgumentException | ArithmeticException e) {
