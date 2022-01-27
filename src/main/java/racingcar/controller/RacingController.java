@@ -12,7 +12,8 @@ public class RacingController {
     private final InputView inputView;
     private final ResultView resultView;
 
-    public RacingController(final RacingService racingService, final InputView inputView, final ResultView resultView) {
+    public RacingController(final RacingService racingService, final InputView inputView,
+        final ResultView resultView) {
         this.racingService = racingService;
         this.inputView = inputView;
         this.resultView = resultView;
@@ -26,12 +27,8 @@ public class RacingController {
     public void startRacing() {
         for (int time = START_FROM_ZERO; time < inputView.getRacingTime(); time++) {
             racingService.drive();
-            carsCurrentStatements();
         }
-    }
-
-    public void carsCurrentStatements() {
-        resultView.announceCurrentStatement(racingService.notifyCurrentStatement());
+        resultView.announceRacingDetails(racingService.getOutputDtos());
     }
 
     public String finishRacing() {
