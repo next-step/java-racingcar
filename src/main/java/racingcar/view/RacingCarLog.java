@@ -3,6 +3,7 @@ package racingcar.view;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
+import racingcar.domain.Winners;
 
 public class RacingCarLog {
 
@@ -18,8 +19,8 @@ public class RacingCarLog {
         return gameLog;
     }
 
-    public static StringBuilder printWinner(StringBuilder gameLog, List<Car> carWinnerList) {
-        List<String> winnerList = carWinnerList.stream()
+    public static StringBuilder printWinner(StringBuilder gameLog, Winners winners) {
+        List<String> winnerList = winners.getWinnerCars().stream()
             .map(Car::getName)
             .collect(Collectors.toList());
         gameLog.append(String.join(",", winnerList));
