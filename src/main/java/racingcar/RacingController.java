@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Participants;
-import racingcar.domain.RacingResult;
+import racingcar.domain.RacingGame;
 
 public class RacingController {
 
@@ -20,12 +20,9 @@ public class RacingController {
 
     public void start() {
         System.out.println(HEAD_MESSAGE);
-        RacingResult racingResult = RacingResult.getInstance(participants.getParticipants());
-        for (int i = 0; i < turnCount; i++) {
-            racingResult = participants.race();
-            racingResult.getResultView();
-            participants = Participants.toParticipants(racingResult);
-        }
-        System.out.println(racingResult.getWinner());
+        RacingGame racingGame = new RacingGame(participants, turnCount);
+        racingGame.game();
+        racingGame.printRacingProcess();
+        racingGame.printWinner();
     }
 }
