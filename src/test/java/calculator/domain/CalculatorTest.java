@@ -9,24 +9,6 @@ import org.junit.jupiter.api.Test;
 class CalculatorTest {
 
     @Test
-    public void 이항연산_정상동작() {
-        //given
-        Calculator calculator = new Calculator();
-
-        //when
-        double plus = calculator.doBinaryOperation(3, 5, Operator.PLUS);
-        double minus = calculator.doBinaryOperation(3, 5, Operator.MINUS);
-        double multiply = calculator.doBinaryOperation(3, 5, Operator.MULTIPLY);
-        double divide = calculator.doBinaryOperation(10, 5, Operator.DIVIDE);
-
-        //then
-        assertThat(plus).isEqualTo(8);
-        assertThat(minus).isEqualTo(-2);
-        assertThat(multiply).isEqualTo(15);
-        assertThat(divide).isEqualTo(2);
-    }
-
-    @Test
     public void 다항연산_정상동작() {
         //given
         Calculator calculator = new Calculator();
