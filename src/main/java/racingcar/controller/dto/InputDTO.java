@@ -8,7 +8,8 @@ public class InputDTO {
     private String carNameInput;
     private int racingTryCounter;
 
-    public InputDTO(List<String> splitUserInput, String carNameInput, int racingTryCounter) {
+    public InputDTO(final List<String> splitUserInput, final String carNameInput,
+        final int racingTryCounter) {
         this.splitUserInput = splitUserInput;
         this.carNameInput = carNameInput;
         this.racingTryCounter = racingTryCounter;

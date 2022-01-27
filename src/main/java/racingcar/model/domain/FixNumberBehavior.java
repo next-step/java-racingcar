@@ -4,7 +4,7 @@ public class FixNumberBehavior implements CarMoveBehavior {
 
     private final boolean isMove;
 
-    public FixNumberBehavior(boolean isMove) {
+    public FixNumberBehavior(final boolean isMove) {
         this.isMove = isMove;
     }
 

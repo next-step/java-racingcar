@@ -11,7 +11,7 @@ import racingcar.model.utils.exception.InputValidationException;
 
 public class Validation {
 
-    public static boolean parsingCarName(String name) {
+    public static boolean parsingCarName(final String name) {
         try {
             validateLengthLimit(StringUtils.splitStr(name));
             validateDuplicateCar(StringUtils.splitStr(name));
@@ -22,7 +22,7 @@ public class Validation {
         return false;
     }
 
-    public static boolean parsingRacingTry(int count) {
+    public static boolean parsingRacingTry(final int count) {
         try {
             validateNumberRange(count);
         } catch (InputValidationException exception) {
