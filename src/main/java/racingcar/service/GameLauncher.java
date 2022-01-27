@@ -2,15 +2,16 @@ package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.RacingCar;
+import racingcar.domain.Winners;
+import racingcar.service.strategy.MoveStrategy;
 
 public class GameLauncher {
 
     private final List<Car> racingCarList;
     private final int endRaceCount;
-    private int currentCount = 0;
+    private int currentCount;
 
     public GameLauncher(List<String> nameList, int endRaceCount) {
         racingCarList = new ArrayList<>();
@@ -18,32 +19,27 @@ public class GameLauncher {
             racingCarList.add(new RacingCar(name));
         }
 
+        this.currentCount = 0;
         this.endRaceCount = endRaceCount;
     }
 
-    public void moveForwardAll() {
-        currentCount++;
+    public void moveAll(MoveStrategy moveStrategy) {
         for (Car car : racingCarList) {
-            car.moveForward();
+            car.move(moveStrategy);
         }
+        currentCount++;
     }
 
     public boolean isEnd() {
         return endRaceCount <= currentCount;
     }
 
-    public List<Car> getRacingCarList() {
-        return racingCarList;
+    public Winners getWinner() {
+        return new Winners(racingCarList);
     }
 
-    public List<Car> getWinner() {
-        int maxPosition = racingCarList.stream()
-            .mapToInt(Car::getPosition)
-            .max().getAsInt();
-
-        return racingCarList.stream()
-            .filter(car -> car.isSamePosition(maxPosition))
-            .collect(Collectors.toList());
+    public List<Car> getRacingCarList() {
+        return racingCarList;
     }
 }
 
