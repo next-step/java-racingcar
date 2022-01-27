@@ -4,6 +4,7 @@ import calculator.Operator;
 import java.util.List;
 
 public class Calculator {
+
     public static final int INIT_OPERATOR_INDEX = 1;
     public static final int NEXT_OPERATOR_DIFFERENCE = 2;
     public int result;
@@ -37,22 +38,6 @@ public class Calculator {
             Operator operator = Operator.findBySymbol(symbol);
             result = operator.operate(result, number);
         }
-    }
-
-    private void addNumbers(int number) {
-        result += number;
-    }
-
-    private void subtractNumbers(int number) {
-        result -= number;
-    }
-
-    private void multiplyNumbers(int number) {
-        result *= number;
-    }
-
-    private void divideNumbers(int number) {
-        result /= number;
     }
 
     private void validateOperandAndOperator(List<String> splitExpression) {
