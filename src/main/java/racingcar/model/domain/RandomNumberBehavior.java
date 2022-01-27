@@ -14,7 +14,7 @@ public class RandomNumberBehavior implements CarMoveBehavior {
 
     }
 
-    public static RandomNumberBehavior getInstance(){
+    public static RandomNumberBehavior getInstance() {
         return randomNumberBehavior;
     }
 
