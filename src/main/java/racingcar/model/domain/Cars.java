@@ -1,6 +1,7 @@
 package racingcar.model.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import racingcar.model.entity.Car;
 
@@ -10,6 +11,10 @@ public class Cars {
 
     public Cars(final List<String> userInput) {
         run(userInput);
+    }
+
+    public List<Car> cars() {
+        return Collections.unmodifiableList(cars);
     }
 
     public List<Car> getCars() {
