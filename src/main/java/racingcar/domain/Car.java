@@ -4,6 +4,7 @@ import racingcar.domain.movable.MovableStrategy;
 
 public class Car {
 
+    private static final int ZERO_CAR_NAME_LENGTH = 0;
     private static final int LIMITED_CAR_NAME_LENGTH = 5;
 
     private final String name;
@@ -21,6 +22,8 @@ public class Car {
 
     public int distance() { return distance; }
 
+    public boolean isDistance(final int distance) { return this.distance == distance; }
+
     public void run(final MovableStrategy strategy) {
         if (strategy.isMovable()) {
             this.distance++;
@@ -28,7 +31,7 @@ public class Car {
     }
 
     private void validateName(final String name) {
-        if (name.length() == 0) {
+        if (name.length() == ZERO_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("최소한 플레이어 이름은 비어있을 수 없습니다.");
         }
 

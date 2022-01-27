@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,7 +8,17 @@ import racingcar.domain.movable.MovableStrategy;
 
 public class Cars {
 
+    private static final String NAME_SPLITTER = ",";
+
     private final List<Car> cars;
+
+    public Cars(final String cars) {
+        this(Arrays.stream(cars.split(NAME_SPLITTER))
+            .map(String::trim)
+            .map(Car::new)
+            .collect(Collectors.toList())
+        );
+    }
 
     public Cars(final List<Car> cars) {
         validateCarExists(cars);
@@ -24,10 +35,10 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public List<Car> filterWinners() {
+    public List<Car> getWinnerList() {
         int max = calculateMax();
         return cars.stream()
-            .filter(car -> car.distance() == max)
+            .filter(car -> car.isDistance(max))
             .collect(Collectors.toList());
     }
 
