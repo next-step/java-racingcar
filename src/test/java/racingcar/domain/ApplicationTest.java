@@ -15,6 +15,7 @@ import racingcar.controller.dto.InputDTO;
 import racingcar.model.domain.Cars;
 import racingcar.model.domain.FixNumberBehavior;
 import racingcar.model.domain.Racing;
+import racingcar.model.domain.RandomNumberBehavior;
 import racingcar.model.entity.Car;
 import racingcar.model.utils.common.Validation;
 import racingcar.view.RacingCarUserConsole;
@@ -67,8 +68,9 @@ public class ApplicationTest {
     @ParameterizedTest
     @CsvSource({"a,aa,aaa"})
     void carWrappingTest(String one, String two, String three) {
-        Cars cars = new Cars(Arrays.asList(one, two, three));
-        List<Car> carsRepo = cars.getRacing().getCars();
+        final List<Car> cars = Arrays.asList(new Car(one), new Car(two), new Car(three));
+        Racing racing = new Racing(cars, RandomNumberBehavior.getInstance());
+        List<Car> carsRepo = racing.getCars();
         assertAll(
             () -> assertThat(carsRepo.get(0).getName()).isEqualTo("a"),
             () -> assertThat(carsRepo.get(1).getName()).isEqualTo("aa"),
