@@ -1,20 +1,19 @@
 package racingcar.domain;
 
-import racingcar.util.RandomUtil;
+import racingcar.service.strategy.MoveStrategy;
 
 public class RacingCar implements Car {
 
-    private static final int RANDOM_START = 0;
-    private static final int RANDOM_END = 9;
     private static final int THRESHOLD = 4;
     private static final int NAME_SIZE = 5;
 
     private final String name;
-    private int position = 0;
+    private int position;
 
     public RacingCar(String name) {
         isCorrectNameSize(name);
         this.name = name;
+        this.position = 0;
     }
 
     public RacingCar(String name, int position) {
@@ -22,15 +21,11 @@ public class RacingCar implements Car {
         this.position = position;
     }
 
-    public void moveForward() {
-        int randomNum = RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END);
-        moveForwardWithNum(randomNum);
-    }
-
-    public void moveForwardWithNum(int num) {
-        if (THRESHOLD <= num) {
-            position++;
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.createMoveNumber() < THRESHOLD) {
+            return;
         }
+        position++;
     }
 
     public boolean isSamePosition(int position) {

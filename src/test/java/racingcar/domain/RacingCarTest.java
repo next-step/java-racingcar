@@ -2,17 +2,9 @@ package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.mockStatic;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.mockito.MockedStatic;
-import racingcar.Application;
-import racingcar.util.RandomUtil;
 
 class RacingCarTest {
 
@@ -25,13 +17,13 @@ class RacingCarTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1 + 3 - 5:-1", "5 * 4 / 2:10"}, delimiter = ':')
-    void 앞으로전진() {
+    @CsvSource(value = {"5:1", "2:0"}, delimiter = ':')
+    void 앞으로전진(int moveNum, int expectedPosition) {
         RacingCar car = new RacingCar("testN");
 
-        car.moveForwardWithNum(5);
+        car.move(()-> moveNum);
 
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(expectedPosition);
     }
 
     @Test

@@ -7,11 +7,11 @@ public class Winners {
 
     private List<Car> winnerCars;
 
-    public Winners(List<Car> cars){
+    public Winners(List<Car> cars) {
         this.winnerCars = filterWinners(cars);
     }
 
-    private List<Car> filterWinners(List<Car> cars){
+    private List<Car> filterWinners(List<Car> cars) {
         int maxPosition = cars.stream()
             .mapToInt(Car::getPosition)
             .max().orElseThrow(IllegalStateException::new);
