@@ -14,6 +14,10 @@ public class InputDTO {
         this.racingTryCounter = racingTryCounter;
     }
 
+    public String getCarNameInput() {
+        return carNameInput;
+    }
+
     public List<String> getSplitUserInput() {
         return splitUserInput;
     }
