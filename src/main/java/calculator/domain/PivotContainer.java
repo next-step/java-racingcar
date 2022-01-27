@@ -5,7 +5,7 @@ import java.util.List;
 public class PivotContainer {
 
     private static final String SPACE = "\\s+";
-    private static final int IS_EVEN = 2;
+    private static final int EVEN = 2;
     private final Operators operators;
     private final Numbers numbers;
 
@@ -40,7 +40,7 @@ public class PivotContainer {
     }
 
     private boolean isNumberLocated(int position) {
-        return position % IS_EVEN == 0;
+        return position % EVEN == 0;
     }
 
     public List<Integer> getNumbers() {
