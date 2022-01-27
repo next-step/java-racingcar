@@ -23,18 +23,5 @@ public class Car {
     public String getName() {
         return name;
     }
-
-    public StringBuilder maxCheck(int max, StringBuilder playRacingResult) {
-        if (max == getStep()) {
-            return playRacingResult.append(getName() + DELIMITER);
-        }
-        return playRacingResult;
-    }
-
-    public String toString(int max) {
-        StringBuilder playRacingResult = new StringBuilder();
-        maxCheck(max, playRacingResult);
-        return playRacingResult.toString();
-    }
 }
 
