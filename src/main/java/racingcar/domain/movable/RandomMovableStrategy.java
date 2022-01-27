@@ -8,20 +8,7 @@ public class RandomMovableStrategy implements MovableStrategy {
     private static final int DEFAULT_BOUND = 10;
     private static final Random RANDOM = new Random();
 
-    private static volatile RandomMovableStrategy instance;
-
-    private RandomMovableStrategy() {}
-
-    public static synchronized RandomMovableStrategy getInstance() {
-        if (instance == null) {
-            synchronized (RandomMovableStrategy.class) {
-                if (instance == null) {
-                    instance = new RandomMovableStrategy();
-                }
-            }
-        }
-        return instance;
-    }
+    public RandomMovableStrategy() {}
 
     @Override
     public boolean isMovable() {

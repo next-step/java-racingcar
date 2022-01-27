@@ -30,7 +30,9 @@ public class OutputView {
 
     public static void printWhoIsWinner(final Cars cars) {
         String winners = winners(cars);
+
         System.out.print("최종 우승자 : " + winners);
+        System.out.println();
     }
 
     public static void printTurnResult() {
@@ -38,7 +40,7 @@ public class OutputView {
     }
 
     private static String winners(final Cars cars) {
-        return cars.filterWinners().stream()
+        return cars.getWinnerList().stream()
             .map(Car::name)
             .collect(Collectors.joining(CAR_WINNER_DELIMITER));
     }
