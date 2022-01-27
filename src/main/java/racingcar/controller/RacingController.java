@@ -23,9 +23,9 @@ public class RacingController {
     public void run() throws IOException {
         RacingCarUserResult userResult = new RacingCarUserResult();
         startGame();
-        Cars cars = new Cars(parsingName);
+        Cars cars = new Cars(inputDTO.getSplitUserInput());
         Racing racing = new Racing(cars.getCars(), RandomNumberBehavior.getInstance());
-        for (int time = NUMBER_ZERO; time < count; time++) {
+        for (int idx = NUMBER_ZERO; idx < inputDTO.getRacingTryCounter(); idx++) {
             racing.drive();
             userResult.carsStatement(racing.getCars());
         }
