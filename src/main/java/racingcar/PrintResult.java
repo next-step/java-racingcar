@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 public class PrintResult {
 
     public static final String DASH = "-";
-    public static final String WINNERS_IS = "최종 우승자: ";
     public static final String COMMA = ", ";
+    public static final String WINNERS_IS = "최종 우승자: ";
 
     public static void printMoveState(List<RacingCar> racingCar) {
         racingCar.forEach(car -> {
