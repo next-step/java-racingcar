@@ -1,7 +1,7 @@
 package calculator;
 
 import java.util.Arrays;
-import java.util.function.BiFunction;
+import java.util.function.ToIntBiFunction;
 
 public enum Operator {
     ADD("+", (x, y) -> x + y),
@@ -10,10 +10,10 @@ public enum Operator {
     DIVIDE("/", (x, y) -> x / y);
 
     private final String symbol;
-    private final BiFunction<Integer, Integer, Integer> calculator;
+    private final ToIntBiFunction<Integer, Integer> calculator;
 
     Operator(String symbol,
-        BiFunction<Integer, Integer, Integer> calculator) {
+        ToIntBiFunction<Integer, Integer> calculator) {
         this.symbol = symbol;
         this.calculator = calculator;
     }
@@ -24,7 +24,7 @@ public enum Operator {
     }
 
     public int operate(int leftOperand, int rightOperand) {
-        return calculator.apply(leftOperand, rightOperand);
+        return calculator.applyAsInt(leftOperand, rightOperand);
     }
 }
 
