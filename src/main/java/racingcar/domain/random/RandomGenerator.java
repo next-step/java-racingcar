@@ -4,9 +4,10 @@ import java.util.Random;
 
 public class RandomGenerator implements RandomStrategy {
 
+    private static final Random random = new Random();
     private static final int LIMIT = 10;
 
     public int get() {
-        return new Random().nextInt(LIMIT);
+        return random.nextInt(LIMIT);
     }
 }
