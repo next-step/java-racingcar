@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Operators {
 
-    private static final String NOT_OPERATIONS_MESSAGE = "연산기호가 아닙니다.";
     private List<Operator> operators;
 
     private Operators() {
