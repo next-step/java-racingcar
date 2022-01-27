@@ -6,6 +6,7 @@ import java.util.List;
 public class Numbers {
 
     private static final String NOT_NUMBER_MESSAGE = "숫자가 아닙니다.";
+
     private List<Integer> numbers;
 
     private Numbers() {
