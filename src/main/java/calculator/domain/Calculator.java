@@ -10,12 +10,13 @@ public class Calculator {
     public int result;
 
     public Calculator(List<String> splitExpression) {
+        if ( splitExpression.size() % 2 == 0) {
+            throw new IllegalArgumentException("[ERROR] 올바르지 않은 식입니다.");
+        }
         validateEmptyExpression(splitExpression);
         result = Integer.parseInt(splitExpression.get(0));
 
         validateOperandAndOperator(splitExpression);
-
-        validateExpressionSize(splitExpression);
 
         calculateNumbers(splitExpression);
     }
@@ -40,16 +41,21 @@ public class Calculator {
         }
     }
 
+    private boolean isOperandPosition(int i) {
+        return i % 2 == 0;
+    }
+
+    private boolean isOperatorPosition(int i) {
+        return i % 2 == 1;
+    }
+
     private void validateOperandAndOperator(List<String> splitExpression) {
         for (int i = 0; i < splitExpression.size(); i++) {
-            boolean isOperandPosition = i % 2 == 0;
-            boolean isOperatorPosition = i % 2 == 1;
-
-            if (isOperandPosition) {
+            if (isOperandPosition(i)) {
                 validateOperand(splitExpression.get(i));
             }
 
-            if (isOperatorPosition) {
+            if (isOperatorPosition(i)) {
                 validateOperator(splitExpression.get(i));
             }
         }
@@ -68,14 +74,6 @@ public class Calculator {
 
         if (isOperand) {
             throw new IllegalArgumentException("[ERROR] 연속된 숫자는 입력 불가합니다.");
-        }
-    }
-
-    private void validateExpressionSize(List<String> splitExpression) {
-        boolean isValidExpressionSize = splitExpression.size() % 2 == 0;
-
-        if (isValidExpressionSize) {
-            throw new IllegalArgumentException("[ERROR] 올바르지 않은 식입니다.");
         }
     }
 
