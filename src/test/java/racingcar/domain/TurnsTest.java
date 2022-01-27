@@ -3,6 +3,7 @@ package racingcar.domain;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import racingcar.domain.car.Turn;
 
 class TurnsTest {
     String TURN_MESSAGE = "시도할 횟수는 몇 회인가요?";

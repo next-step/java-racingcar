@@ -1,7 +1,7 @@
-package racingcar;
+package racingcar.controller;
 
-import racingcar.domain.Participants;
-import racingcar.domain.RacingGame;
+import racingcar.domain.car.Participants;
+import racingcar.domain.racing.RacingGame;
 
 public class RacingController {
 

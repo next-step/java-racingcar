@@ -1,7 +1,8 @@
 package racingcar;
 
-import racingcar.domain.Participants;
-import racingcar.domain.Turn;
+import racingcar.controller.RacingController;
+import racingcar.domain.car.Participants;
+import racingcar.domain.car.Turn;
 
 public class Application {
 

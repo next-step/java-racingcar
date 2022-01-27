@@ -1,8 +1,8 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.domain.car.Car;
+import racingcar.domain.racing.RacingResult;
 import racingcar.domain.random.RandomGenerator;
 import racingcar.view.UserConsole;
 

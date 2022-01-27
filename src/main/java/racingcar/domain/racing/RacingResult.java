@@ -1,8 +1,9 @@
-package racingcar.domain;
+package racingcar.domain.racing;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.domain.car.Participants;
 import racingcar.domain.car.Car;
 
 public class RacingResult {

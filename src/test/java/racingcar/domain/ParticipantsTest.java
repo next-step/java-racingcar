@@ -7,6 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
+import racingcar.domain.car.Participants;
+import racingcar.domain.racing.RacingResult;
 import racingcar.domain.random.MoveGen;
 import racingcar.domain.random.NoMoveGen;
 
