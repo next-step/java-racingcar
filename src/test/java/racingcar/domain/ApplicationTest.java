@@ -16,6 +16,7 @@ import racingcar.model.domain.Cars;
 import racingcar.model.domain.FixNumberBehavior;
 import racingcar.model.domain.Racing;
 import racingcar.model.entity.Car;
+import racingcar.model.utils.common.Validation;
 import racingcar.view.RacingCarUserConsole;
 
 public class ApplicationTest {
@@ -26,26 +27,19 @@ public class ApplicationTest {
     @DisplayName("객체 초기화")
     @BeforeEach
     void init() {
-        userConsole = new RacingCarUserConsole();
         inputDTO = new InputDTO(Arrays.asList("a", "aa", "aaa"), "CarNameIsLong", 10);
     }
 
-    @DisplayName("유저_입력_글자길이_테스트")
+    @DisplayName("유저_입력_글자길이_및_입력_중복_테스트")
     @Test
-    void userInputLengthTest() {
-        assertTrue(userConsole.parsingCarName() == true);
-    }
-
-    @DisplayName("유저_입력_중복_테스트")
-    @Test
-    void userInputDuplicationTest() {
-        assertThat(userConsole.parsingCarName() == true);
+    void userInputLengthDuplicationTest() {
+        assertTrue(Validation.parsingCarName(inputDTO.getCarNameInput()) == true);
     }
 
     @DisplayName("입력_횟수_범위_테스트")
     @Test
     void userInputRacingTryTest() {
-        assertThat(userConsole.parsingRacingTry() == true);
+        assertThat(Validation.parsingRacingTry(inputDTO.getRacingTryCounter()) == true);
     }
 
     @DisplayName("우승자_확인_테스트")
@@ -53,7 +47,7 @@ public class ApplicationTest {
     @CsvSource({"a,aa,aaa"})
     public void maxCheckTest(String one, String two, String three) {
         //given
-        final List<Car> cars = Arrays.asList(Car.get(one), Car.get(two), Car.get(three));
+        final List<Car> cars = Arrays.asList(new Car(one), new Car(two), new Car(three));
 
         //when
         cars.get(0).moveForward();
@@ -86,7 +80,7 @@ public class ApplicationTest {
     @ParameterizedTest
     @CsvSource({"a,aa,aaa"})
     void fixRandomNumberTest(String one, String two, String three) {
-        final List<Car> cars = Arrays.asList(Car.get(one), Car.get(two), Car.get(three));
+        final List<Car> cars = Arrays.asList(new Car(one), new Car(two), new Car(three));
         Racing racing = new Racing(cars, new FixNumberBehavior(true));
         racing.drive();
         assertAll(
