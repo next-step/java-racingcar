@@ -1,10 +1,18 @@
 package racingcar.domain.car;
 
+import racingcar.domain.random.RandomGenerator;
+import racingcar.domain.random.RandomStrategy;
+
 public class Car {
 
     private static final String NAME_LENGTH_ERROR_MESSAGE = "자동차 이름이 5자를 초과합니다.";
+    private static final RandomStrategy randomStrategy = new RandomGenerator();
+    private static final int BOUND = 4;
+    private static final int MOVE_ONE_STEP = 1;
+
     private final String name;
     public int position;
+
     private Car(String name) {
         validateCarName(name);
         this.name = name;
@@ -34,7 +42,9 @@ public class Car {
     }
 
     public void go() {
-        this.position += 1;
+        if (randomStrategy.get() > BOUND) {
+            this.position += MOVE_ONE_STEP;
+        }
     }
 
     private static void validateCarName(String name) {
