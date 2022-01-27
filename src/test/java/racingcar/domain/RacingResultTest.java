@@ -35,7 +35,7 @@ class RacingResultTest {
 
         cars.get(2).go(new MoveGen());
 
-        RacingResult racingResult = new Participants(cars).race();
+        RacingResult racingResult = RacingResult.toRacingResult(new Participants(cars));
 
         //then
         assertThat(racingResult.getWinner()).isEqualTo("jason");
@@ -65,7 +65,7 @@ class RacingResultTest {
         cars.get(2).go(new MoveGen());
         cars.get(2).go(new MoveGen());
 
-        RacingResult racingResult = new Participants(cars).race();
+        RacingResult racingResult = RacingResult.toRacingResult(new Participants(cars));
 
         //then
         assertThat(racingResult.getWinner()).isEqualTo("jason, sung");
