@@ -6,16 +6,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.controller.dto.InputDTO;
-import racingcar.model.domain.Cars;
+import racingcar.controller.dto.OutputDTO;
 import racingcar.model.domain.FixNumberBehavior;
 import racingcar.model.domain.Racing;
 import racingcar.model.domain.RandomNumberBehavior;
+import racingcar.model.domain.Victory;
 import racingcar.model.entity.Car;
 import racingcar.model.utils.common.Validation;
 import racingcar.view.RacingCarUserConsole;
@@ -23,6 +25,7 @@ import racingcar.view.RacingCarUserConsole;
 public class ApplicationTest {
 
     private RacingCarUserConsole userConsole;
+    private static final String COMMAS = ",";
     private InputDTO inputDTO;
 
     @DisplayName("객체 초기화")
@@ -60,8 +63,14 @@ public class ApplicationTest {
             .max()
             .getAsInt();
 
+        Victory victory = Victory.maxCheck(cars);
+        List<OutputDTO> victoryResult = victory.victory()
+            .stream()
+            .map(OutputDTO::new)
+            .collect(Collectors.toList());
         //then
-        assertThat(cars.get(0).toString(max)).isEqualTo("a ");
+        assertThat(victoryResult.stream().map(OutputDTO::getCarName)
+            .collect(Collectors.joining(COMMAS))).isEqualTo("a");
     }
 
     @DisplayName("car클래스가 cars클래스에 Wrapping 검증")
