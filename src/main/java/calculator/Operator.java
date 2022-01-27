@@ -20,7 +20,7 @@ public enum Operator {
 
     public static Operator findBySymbol(String symbol) {
         return Arrays.stream(values()).filter(val -> val.symbol.equals(symbol)).findFirst()
-            .orElseThrow(IllegalArgumentException::new);
+            .orElseThrow(() -> new IllegalArgumentException("[ERROR] 입력 가능한 연산자는 +, -, *, / 입니다."));
     }
 
     public int operate(int leftOperand, int rightOperand) {
