@@ -8,9 +8,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.movable.RandomMovableStrategy;
@@ -19,6 +22,10 @@ public class CarsTest {
 
     private static final int TURNS = 10;
     private Cars cars;
+
+    static Stream<String> validCarNames() {
+        return Stream.of("A,B,C,D", "Jason", "Jason,Tommy", "Jason, Tommy", "J-son,>G1<");
+    }
 
     @BeforeEach
     void setUp() {
@@ -29,8 +36,24 @@ public class CarsTest {
         cars = new Cars(Arrays.asList(A, B, C, D));
 
         for (int i = 0; i < TURNS; i++) {
-            cars.moveAll(RandomMovableStrategy.getInstance());
+            cars.moveAll(new RandomMovableStrategy());
         }
+    }
+
+    @DisplayName("자동차 플레이어명이 유효한지 검사 (5자 이내이며, 최소 1명 이상의 플레이어 존재)")
+    @ParameterizedTest
+    @MethodSource("validCarNames")
+    void testCarNamesValid(String carNames) {
+        Cars cars = new Cars(carNames);
+        assertTrue(cars.get().size() >= 1); // Then
+    }
+
+    @DisplayName("플레이어 구분시 trim 동작 유효성 검사")
+    @Test
+    void testCarNamesTrimAfterSplitValid() {
+        Cars cars = new Cars("Jason, Tommy");
+        assertThat(cars.get().stream().map(Car::name).collect(Collectors.toList()))
+            .isEqualTo(Arrays.asList("Jason", "Tommy"));
     }
 
     @DisplayName("플레이어가 존재하지 않으면 IllegalArgumentException 발생")
@@ -43,7 +66,7 @@ public class CarsTest {
     @DisplayName("최소한 1명 이상의 우승자 존재 여부 확인")
     @Test
     void testWinnerExists() {
-        assertTrue(cars.filterWinners().size() >= 1);
+        assertTrue(cars.getWinnerList().size() >= 1);
     }
 
     @DisplayName("시나리오 상으로 의도한 플레이어가 우승하였는지 검증")
@@ -62,7 +85,7 @@ public class CarsTest {
         Cars cars = new Cars(Arrays.asList(a, b));
 
         // Then
-        assertThat(cars.filterWinners())
+        assertThat(cars.getWinnerList())
             .isEqualTo(Collections.singletonList(a));
     }
 
