@@ -20,10 +20,6 @@ public class RacingCarLog {
     }
 
     public static StringBuilder printWinner(StringBuilder gameLog, Winners winners) {
-        List<String> winnerList = winners.getWinnerCars().stream()
-            .map(Car::getName)
-            .collect(Collectors.toList());
-        gameLog.append(String.join(",", winnerList));
-        return gameLog;
+        return gameLog.append(winners);
     }
 }

@@ -18,14 +18,14 @@ public enum Operation {
         this.op = op;
     }
 
-    public double apply(double x, double y) {
-        return op.applyAsDouble(x, y);
-    }
-
     public static Optional<Operation> from(String symbol) {
         return Arrays.stream(values())
             .filter(operation -> operation.isSameSymbol(symbol))
             .findAny();
+    }
+
+    public double apply(double x, double y) {
+        return op.applyAsDouble(x, y);
     }
 
     private boolean isSameSymbol(String symbol) {

@@ -24,4 +24,12 @@ public class Winners {
     public List<Car> getWinnerCars() {
         return winnerCars;
     }
+
+    @Override
+    public String toString(){
+        List<String> winnerList = winnerCars.stream()
+            .map(Car::getName)
+            .collect(Collectors.toList());
+        return String.join(",", winnerList);
+    }
 }
