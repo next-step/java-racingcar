@@ -7,13 +7,9 @@ public class Car {
     private final static String DELIMITER = " ";
     private int step;
 
-    private Car(final String name) {
+    public Car(final String name) {
         this.name = name;
         this.step = NUMBER_ZERO;
-    }
-
-    public static Car get(final String name) {
-        return new Car(name);
     }
 
     public void moveForward() {
