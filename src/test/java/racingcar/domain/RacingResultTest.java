@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
+import racingcar.domain.random.MoveGen;
 
 class RacingResultTest {
 
@@ -23,18 +24,16 @@ class RacingResultTest {
         cars.add(car2);
         cars.add(car3);
 
-        Participants participants = Participants.getInstance(cars);
+        cars.get(0).go(new MoveGen());
+        cars.get(0).go(new MoveGen());
+        cars.get(0).go(new MoveGen());
 
-        participants.moveCarIfPositionChanged(0, true);
-        participants.moveCarIfPositionChanged(0, true);
-        participants.moveCarIfPositionChanged(0, true);
+        cars.get(1).go(new MoveGen());
+        cars.get(1).go(new MoveGen());
 
-        participants.moveCarIfPositionChanged(1, true);
-        participants.moveCarIfPositionChanged(1, true);
+        cars.get(2).go(new MoveGen());
 
-        participants.moveCarIfPositionChanged(2, true);
-
-        RacingResult racingResult = RacingResult.toRacingResult(participants);
+        RacingResult racingResult = new Participants(cars).race();
 
         //then
         assertThat(racingResult.getWinner()).isEqualTo("jason");
@@ -53,19 +52,18 @@ class RacingResultTest {
         cars.add(car2);
         cars.add(car3);
 
-        Participants participants = Participants.getInstance(cars);
+        cars.get(0).go(new MoveGen());
+        cars.get(0).go(new MoveGen());
+        cars.get(0).go(new MoveGen());
 
-        participants.moveCarIfPositionChanged(0, true);
-        participants.moveCarIfPositionChanged(0, true);
-        participants.moveCarIfPositionChanged(0, true);
+        cars.get(1).go(new MoveGen());
+        cars.get(1).go(new MoveGen());
 
-        participants.moveCarIfPositionChanged(1, true);
+        cars.get(2).go(new MoveGen());
+        cars.get(2).go(new MoveGen());
+        cars.get(2).go(new MoveGen());
 
-        participants.moveCarIfPositionChanged(2, true);
-        participants.moveCarIfPositionChanged(2, true);
-        participants.moveCarIfPositionChanged(2, true);
-
-        RacingResult racingResult = RacingResult.toRacingResult(participants);
+        RacingResult racingResult = new Participants(cars).race();
 
         //then
         assertThat(racingResult.getWinner()).isEqualTo("jason, sung");
@@ -79,14 +77,14 @@ class RacingResultTest {
         Car car1 = Car.from("jason");
         Car car2 = Car.from("pobi");
 
-        car1.go();
-        car1.go();
-        car2.go();
+        car1.go(new MoveGen());
+        car1.go(new MoveGen());
+        car2.go(new MoveGen());
 
         cars.add(car1);
         cars.add(car2);
 
-        Participants participants = Participants.getInstance(cars);
+        Participants participants = new Participants(cars);
 
         //when
         RacingResult racingResult = RacingResult.toRacingResult(participants);

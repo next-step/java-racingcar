@@ -1,11 +1,14 @@
 package racingcar.domain;
 
+import static org.assertj.core.api.Assertions.*;
+
 import java.util.ArrayList;
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
+import racingcar.domain.random.MoveGen;
+import racingcar.domain.random.NoMoveGen;
 
 class ParticipantsTest {
 
@@ -19,7 +22,7 @@ class ParticipantsTest {
         //when
 
         //then
-        Assertions.assertThatCode(() -> Car.from(name)).doesNotThrowAnyException();
+        assertThatCode(() -> Car.from(name)).doesNotThrowAnyException();
     }
 
     @Test
@@ -30,7 +33,7 @@ class ParticipantsTest {
         //when
 
         //then
-        Assertions.assertThatCode(() -> Car.from(name)).hasMessageContaining(NAME_LENGTH_ERROR_MESSAGE);
+        assertThatCode(() -> Car.from(name)).hasMessageContaining(NAME_LENGTH_ERROR_MESSAGE);
     }
 
     @Test
@@ -42,17 +45,12 @@ class ParticipantsTest {
         cars.add(car1);
         cars.add(car2);
 
-        Participants participants = Participants.getInstance(cars);
-
         //when
-        for (int i = 0; i < participants.getParticipantCount(); i++) {
-            participants.moveCarIfPositionChanged(i, true);
-        }
-        RacingResult result = RacingResult.toRacingResult(participants);
+        cars.stream().forEach(car -> car.go(new MoveGen()));
 
         //then
-        Assertions.assertThat(result.getResult().get(0).getPosition()).isEqualTo(1);
-        Assertions.assertThat(result.getResult().get(1).getPosition()).isEqualTo(1);
+        assertThat(cars.get(0).getPosition()).isEqualTo(1);
+        assertThat(cars.get(1).getPosition()).isEqualTo(1);
     }
 
     @Test
@@ -64,17 +62,12 @@ class ParticipantsTest {
         cars.add(car1);
         cars.add(car2);
 
-        Participants participants = Participants.getInstance(cars);
-
         //when
-        for (int i = 0; i < participants.getParticipantCount(); i++) {
-            participants.moveCarIfPositionChanged(i, false);
-        }
-        RacingResult result = RacingResult.toRacingResult(participants);
+        cars.stream().forEach(car -> car.go(new NoMoveGen()));
 
         //then
-        Assertions.assertThat(result.getResult().get(0).getPosition()).isEqualTo(0);
-        Assertions.assertThat(result.getResult().get(1).getPosition()).isEqualTo(0);
+        assertThat(cars.get(0).getPosition()).isEqualTo(0);
+        assertThat(cars.get(1).getPosition()).isEqualTo(0);
     }
 
     @DisplayName("RacingResult에서 Participatns로 변환 후 둘은 같은 차량 리스트를 들고 있다.")
@@ -85,9 +78,9 @@ class ParticipantsTest {
         Car car1 = Car.from("jason");
         Car car2 = Car.from("pobi");
 
-        car1.go();
-        car1.go();
-        car2.go();
+        car1.go(new MoveGen());
+        car1.go(new MoveGen());
+        car2.go(new MoveGen());
 
         cars.add(car1);
         cars.add(car2);
@@ -95,9 +88,9 @@ class ParticipantsTest {
         RacingResult racingResult = RacingResult.getInstance(cars);
 
         //when
-        Participants participants =  Participants.toParticipants(racingResult);
+        Participants participants =  new Participants(cars);
 
         //then
-        Assertions.assertThat(participants.getParticipants()).isEqualTo(racingResult.getResult());
+        assertThat(participants.getParticipants()).isEqualTo(racingResult.getResult());
     }
 }

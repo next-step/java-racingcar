@@ -5,9 +5,9 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class TurnsTest {
-    final String TURN_MESSAGE = "시도할 횟수는 몇 회인가요?";
-    final String TURN_NOT_NUMBER_ERROR_MESSAGE = "입력한 값은 숫자가 아닙니다.";
-    final String TURN_NOT_NATURAL_NUMBER_ERROR_MESSAGE = "시도할 횟수는 1 이상이어야 합니다.";
+    String TURN_MESSAGE = "시도할 횟수는 몇 회인가요?";
+    String TURN_NOT_NUMBER_ERROR_MESSAGE = "입력한 값은 숫자가 아닙니다.";
+    String TURN_NOT_NATURAL_NUMBER_ERROR_MESSAGE = "시도할 횟수는 1 이상이어야 합니다.";
 
     @Test
     public void 입력_횟수가_정상적인_숫자라면_Exception발생안한다() {

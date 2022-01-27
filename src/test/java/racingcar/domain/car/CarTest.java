@@ -3,15 +3,11 @@ package racingcar.domain.car;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Participants;
 import racingcar.domain.random.MoveGen;
-import racingcar.domain.random.NoMoveGen;
 
 class CarTest {
     @DisplayName("차량 인스턴스 생성 후 이름은 정확하게 저장된다")
@@ -33,8 +29,8 @@ class CarTest {
         Car car1 = Car.from("jason");
 
         //when
-        car1.go();
-        car1.go();
+        car1.go(new MoveGen());
+        car1.go(new MoveGen());
 
         //then
         assertThat(car1.getPosition()).isEqualTo(2);
@@ -54,50 +50,11 @@ class CarTest {
         cars.add(car1);
         cars.add(car2);
 
-        Collections.sort(cars, new Comparator<Car>() {
-            @Override
-            public int compare(Car o1, Car o2) {
-                return o2.position - o1.position;
-            }
-        });
+        Collections.sort(cars, (o1, o2) -> o2.position - o1.position);
 
         //then
         assertThat(cars.get(0).getName()).isEqualTo("jason");
         assertThat(cars.get(1).getName()).isEqualTo("pobi");
         assertThat(cars.get(2).getName()).isEqualTo("sung");
-    }
-
-    @DisplayName("두 차량이 호출한 go() 메서드의 횟수가 같다면 저장된 위치도 같다.")
-    @Test
-    public void 위치_비교_참_테스트() {
-        //given
-        Car car1 = Car.from("jason");
-        Car car2 = Car.from("pobi");
-        Move move = Move.get();
-        Participants participants = Participants.getInstance(Arrays.asList(car1, car2));
-
-        //when
-        participants.moveCarIfPositionChanged(0, move.isSatisfiedMoveCondition(new MoveGen()));
-        participants.moveCarIfPositionChanged(1, move.isSatisfiedMoveCondition(new MoveGen()));
-
-        //then
-        assertThat(car1.getPosition()).isEqualTo(car2.getPosition());
-    }
-
-    @DisplayName("두 차량이 호출한 go() 메서드의 횟수가 다르다면 저장된 위치도 다르다.")
-    @Test
-    public void 위치_비교_거짓_테스트() {
-        //given
-        Car car1 = Car.from("jason");
-        Car car2 = Car.from("pobi");
-        Move move = Move.get();
-        Participants participants = Participants.getInstance(Arrays.asList(car1, car2));
-
-        //when
-        participants.moveCarIfPositionChanged(0, move.isSatisfiedMoveCondition(new MoveGen()));
-        participants.moveCarIfPositionChanged(1, move.isSatisfiedMoveCondition(new NoMoveGen()));
-
-        //then
-        assertThat(car1.getPosition()).isNotEqualTo(car2.getPosition());
     }
 }
