@@ -1,11 +1,14 @@
 package racingcar;
 
+import racingcar.domain.RacingCarGame;
+import racingcar.view.InputView;
+
 public class Application {
     public static void main(String[] args) {
-        Console console = new Console();
+        InputView inputView = new InputView();
 
-        RacingCarGame racingCarGame = new RacingCarGame(console.getTryCount(),
-            console.getCarNames());
+        RacingCarGame racingCarGame = new RacingCarGame(inputView.getTryCount(),
+            inputView.getCarNames());
 
         racingCarGame.play();
     }

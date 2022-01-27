@@ -1,17 +1,17 @@
-package racingcar;
+package racingcar.view;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class Console {
+public class InputView {
 
     private final int MAX_NAME_LENGTH = 5;
     private int tryCount;
     private List<String> carNames;
 
 
-    public Console() {
+    public InputView() {
         setRacingCarNames();
         setTryCount();
     }
