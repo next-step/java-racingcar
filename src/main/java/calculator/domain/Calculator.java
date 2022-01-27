@@ -8,7 +8,7 @@ public class Calculator {
 
     }
 
-    public double doBinaryOperation(double number1, double number2, Operator symbol) {
+    private double doBinaryOperation(double number1, double number2, Operator symbol) {
         if (Operator.PLUS == symbol) {
             return Operator.PLUS.operate(number1, number2);
         }
@@ -25,12 +25,8 @@ public class Calculator {
     public double doMultipleOperation(List<Integer> numbers, List<Operator> operators) {
         double result = numbers.remove(0);
         int numberSize = numbers.size();
-        try {
-            for (int i = 0; i < numberSize; i++) {
-                result = doBinaryOperation(result, (double) numbers.get(i), operators.get(i));
-            }
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+        for (int i = 0; i < numberSize; i++) {
+            result = doBinaryOperation(result, (double) numbers.get(i), operators.get(i));
         }
         return result;
     }
