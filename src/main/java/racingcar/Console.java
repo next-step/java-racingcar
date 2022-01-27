@@ -6,12 +6,12 @@ import java.util.Scanner;
 
 public class Console {
 
-    private static final String INPUT_CARNAME = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String INPUT_CAR_NAME = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String INPUT_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
     private final Scanner scanner = new Scanner(System.in);
 
     public List<String> setRacingCarNames() {
-        System.out.println(INPUT_CARNAME);
+        System.out.println(INPUT_CAR_NAME);
 
         List<String> carNames = Arrays.asList(scanner.nextLine().split(","));
 
