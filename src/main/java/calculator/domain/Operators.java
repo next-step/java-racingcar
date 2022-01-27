@@ -17,8 +17,7 @@ public class Operators {
     }
 
     public void addOperator(String symbol) {
-        operators.add(Operator.fromString(symbol)
-            .orElseThrow(() -> new IllegalArgumentException(NOT_OPERATIONS_MESSAGE)));
+        operators.add(Operator.fromString(symbol));
     }
 
     public List<Operator> getOperators() {

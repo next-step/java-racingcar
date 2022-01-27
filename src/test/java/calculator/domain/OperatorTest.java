@@ -2,7 +2,6 @@ package calculator.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.Optional;
 import org.junit.jupiter.api.Test;
 
 class OperatorTest {
@@ -13,11 +12,10 @@ class OperatorTest {
         String plus = "+";
 
         //when
-        Optional<Operator> optional = Operator.fromString(plus);
+        Operator operator = Operator.fromString(plus);
 
         //then
-        assertThat(optional.isPresent()).isTrue();
-        assertThat(optional.get().name()).isEqualTo("PLUS");
+        assertThat(operator.name()).isEqualTo("PLUS");
     }
 
     @Test
@@ -26,11 +24,10 @@ class OperatorTest {
         String minus = "-";
 
         //when
-        Optional<Operator> optional = Operator.fromString(minus);
+        Operator operator = Operator.fromString(minus);
 
         //then
-        assertThat(optional.isPresent()).isTrue();
-        assertThat(optional.get().name()).isEqualTo("MINUS");
+        assertThat(operator.name()).isEqualTo("MINUS");
     }
 
     @Test
@@ -39,11 +36,10 @@ class OperatorTest {
         String multiply = "*";
 
         //when
-        Optional<Operator> optional = Operator.fromString(multiply);
+        Operator operator = Operator.fromString(multiply);
 
         //then
-        assertThat(optional.isPresent()).isTrue();
-        assertThat(optional.get().name()).isEqualTo("MULTIPLY");
+        assertThat(operator.name()).isEqualTo("MULTIPLY");
     }
 
     @Test
@@ -52,10 +48,9 @@ class OperatorTest {
         String divide = "/";
 
         //when
-        Optional<Operator> optional = Operator.fromString(divide);
+        Operator operator = Operator.fromString(divide);
 
         //then
-        assertThat(optional.isPresent()).isTrue();
-        assertThat(optional.get().name()).isEqualTo("DIVIDE");
+        assertThat(operator.name()).isEqualTo("DIVIDE");
     }
 }

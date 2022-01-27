@@ -29,6 +29,8 @@ public enum Operator {
         }
     };
 
+    private static final String NOT_OPERATIONS_MESSAGE = "연산기호가 아닙니다.";
+
     private final String symbol;
 
     Operator(final String symbol) {
@@ -37,9 +39,9 @@ public enum Operator {
 
     public abstract double operate(final double number1, final double number2);
 
-    public static Optional<Operator> fromString(String symbol) {
+    public static Operator fromString(String symbol) {
         return Arrays.stream(Operator.values())
             .filter(v -> v.symbol.equalsIgnoreCase(symbol))
-            .findFirst();
+            .findFirst().orElseThrow(() -> new IllegalArgumentException(NOT_OPERATIONS_MESSAGE));
     }
 }
