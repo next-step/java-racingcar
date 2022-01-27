@@ -4,7 +4,6 @@ import racingcar.service.strategy.MoveStrategy;
 
 public class RacingCar implements Car {
 
-    private static final int THRESHOLD = 4;
     private static final int NAME_SIZE = 5;
 
     private final String name;
@@ -22,7 +21,7 @@ public class RacingCar implements Car {
     }
 
     public void move(MoveStrategy moveStrategy) {
-        if (moveStrategy.createMoveNumber() < THRESHOLD) {
+        if (!moveStrategy.isMoveable()) {
             return;
         }
         position++;

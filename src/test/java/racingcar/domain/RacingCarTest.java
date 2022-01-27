@@ -17,8 +17,8 @@ class RacingCarTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"5:1", "2:0"}, delimiter = ':')
-    void 앞으로전진(int moveNum, int expectedPosition) {
+    @CsvSource(value = {"true:1", "flase:0"}, delimiter = ':')
+    void 앞으로전진(boolean moveNum, int expectedPosition) {
         RacingCar car = new RacingCar("testN");
 
         car.move(()-> moveNum);
