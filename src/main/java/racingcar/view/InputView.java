@@ -63,7 +63,8 @@ public class InputView {
 
     private void validateLengthLimit(final List<String> splitUserInput) {
         boolean match = splitUserInput.stream()
-                .allMatch(input -> input.length() <= LENGTH_LIMIT_MAX && input.length() >= LENGTH_LIMIT_MIN);
+            .allMatch(
+                input -> input.length() <= LENGTH_LIMIT_MAX && input.length() >= LENGTH_LIMIT_MIN);
 
         if (!match) {
             throw new InputValidationException(CAR_NAME_LENGTH_LIMIT_ERROR);

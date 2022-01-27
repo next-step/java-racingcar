@@ -11,7 +11,8 @@ public class Application {
 
     public static void main(String[] args) {
         RacingService racingService = RacingService.from(Cars.instance());
-        RacingController racingController = new RacingController(racingService, InputView.instance(), ResultView.instance());
+        RacingController racingController = new RacingController(racingService,
+            InputView.instance(), ResultView.instance());
         racingController.setUpRacing();
         racingController.startRacing();
         System.out.println(racingController.finishRacing());
