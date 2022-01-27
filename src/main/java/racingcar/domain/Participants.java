@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.car.Car;
+import racingcar.domain.random.RandomGenerator;
 import racingcar.view.UserConsole;
 
 public class Participants {
@@ -32,7 +33,7 @@ public class Participants {
     }
 
     public RacingResult race() {
-        cars.stream().forEach(car -> car.go());
+        cars.stream().forEach(car -> car.go(new RandomGenerator()));
 
         return RacingResult.getInstance(cars);
     }
