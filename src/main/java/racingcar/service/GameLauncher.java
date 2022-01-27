@@ -1,32 +1,23 @@
 package racingcar.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import racingcar.domain.Car;
-import racingcar.domain.RacingCar;
-import racingcar.domain.Winners;
-import racingcar.service.strategy.MoveStrategy;
+import racingcar.domain.Cars;
+import racingcar.domain.strategy.MoveStrategy;
 
 public class GameLauncher {
 
-    private final List<Car> racingCarList;
+    private final Cars cars;
     private final int endRaceCount;
     private int currentCount;
 
     public GameLauncher(List<String> nameList, int endRaceCount) {
-        racingCarList = new ArrayList<>();
-        for (String name : nameList) {
-            racingCarList.add(new RacingCar(name));
-        }
-
+        this.cars = Cars.of(nameList);
         this.currentCount = 0;
         this.endRaceCount = endRaceCount;
     }
 
-    public void moveAll(MoveStrategy moveStrategy) {
-        for (Car car : racingCarList) {
-            car.move(moveStrategy);
-        }
+    public void race(MoveStrategy moveStrategy) {
+        cars.moveAll(moveStrategy);
         currentCount++;
     }
 
@@ -34,12 +25,8 @@ public class GameLauncher {
         return endRaceCount <= currentCount;
     }
 
-    public Winners getWinner() {
-        return new Winners(racingCarList);
-    }
-
-    public List<Car> getRacingCarList() {
-        return racingCarList;
+    public Cars getCars() {
+        return cars;
     }
 }
 

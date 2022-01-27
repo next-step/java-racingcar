@@ -3,7 +3,7 @@ package racingcar;
 
 import java.util.List;
 import racingcar.service.GameLauncher;
-import racingcar.service.strategy.RandomMoveStrategy;
+import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.view.RacingCarInput;
 import racingcar.view.RacingCarLog;
 
@@ -18,11 +18,11 @@ public class Application {
 
         StringBuilder gameLog = new StringBuilder();
         while (!gameLauncher.isEnd()) {
-            gameLauncher.moveAll(new RandomMoveStrategy());
-            RacingCarLog.printCars(gameLog, gameLauncher.getRacingCarList());
+            gameLauncher.race(new RandomMoveStrategy());
+            gameLog.append(gameLauncher.getCars());
         }
 
-        RacingCarLog.printWinner(gameLog, gameLauncher.getWinner());
+        RacingCarLog.printWinner(gameLog, gameLauncher.getCars());
 
         System.out.println(gameLog);
     }

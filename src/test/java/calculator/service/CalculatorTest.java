@@ -14,8 +14,14 @@ class CalculatorTest {
     @DisplayName("복합 연산 테스트")
     @ParameterizedTest
     @CsvSource(value = {"1 + 3 - 5:-1", "5 * 4 / 2:10"}, delimiter = ':')
-    void run(String formula, double expected){
-        double result = Calculator.run(new Formula(formula));
+    void run(String expression, double expected){
+        // given
+        Formula formula = new Formula(expression);
+
+        // when
+        double result = Calculator.run(formula);
+
+        // then
         assertThat(result).isEqualTo(expected);
     }
 }

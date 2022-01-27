@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 
-import racingcar.service.strategy.MoveStrategy;
+import racingcar.domain.strategy.MoveStrategy;
 
 public interface Car {
 

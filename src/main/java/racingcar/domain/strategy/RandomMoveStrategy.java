@@ -1,4 +1,4 @@
-package racingcar.service.strategy;
+package racingcar.domain.strategy;
 
 import racingcar.util.RandomUtil;
 
