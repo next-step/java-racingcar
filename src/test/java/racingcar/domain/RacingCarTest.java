@@ -19,19 +19,25 @@ class RacingCarTest {
     @ParameterizedTest
     @CsvSource(value = {"true:1", "flase:0"}, delimiter = ':')
     void 앞으로전진(boolean moveNum, int expectedPosition) {
+        // given
         RacingCar car = new RacingCar("testN");
 
+        // when
         car.move(()-> moveNum);
 
+        // then
         assertThat(car.getPosition()).isEqualTo(expectedPosition);
     }
 
     @Test
     void 같은위치인지테스트() {
+        // given
         RacingCar car = new RacingCar("test1", 5);
 
+        // when
         boolean isSamePosition = car.isSamePosition(5);
 
+        // then
         assertThat(isSamePosition).isEqualTo(true);
     }
 }
