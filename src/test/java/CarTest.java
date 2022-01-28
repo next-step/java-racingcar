@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 
-public class ApplicationTest {
+public class CarTest {
 
     @Test
     @DisplayName("전진 불가한 경우")
