@@ -9,8 +9,8 @@ public class Validator {
 
     private Validator() {}
 
-    public static void validatePossibleToStart(List<RacingCar> racingCars) {
-        if (isPossibleToStart(racingCars)) {
+    public static void validatePossibleToStart(RacingCars racingCars) {
+        if (isPossibleToStart(racingCars.getRacingCars())) {
             throw new IllegalArgumentException(
                     String.format("게임을 시작하려면 %d명 이상의 참가자가 필요합니다.", MINIMUM_PLAYER));
         }

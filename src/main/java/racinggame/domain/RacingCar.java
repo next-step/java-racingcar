@@ -1,8 +1,6 @@
 package racinggame.domain;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 public class RacingCar {
 
@@ -12,7 +10,7 @@ public class RacingCar {
     private String carName;
     private int carPosition;
 
-    private RacingCar(String carName) {
+    public RacingCar(String carName) {
         this(carName, INIT_POSITION);
     }
 
@@ -20,12 +18,6 @@ public class RacingCar {
         Validator.validateNameLength(carName);
         this.carName = carName;
         this.carPosition = position;
-    }
-
-    public static List<RacingCar> racingCarOf(String[] carNames) {
-        return Arrays.stream(carNames)
-                .map(RacingCar::new)
-                .collect(Collectors.toList());
     }
 
     public boolean canForward(int randomValue) {
@@ -42,5 +34,23 @@ public class RacingCar {
 
     public String getCarName() {
         return this.carName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RacingCar racingCar = (RacingCar) o;
+        return carPosition == racingCar.carPosition && Objects.equals(carName,
+                racingCar.carName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName, carPosition);
     }
 }

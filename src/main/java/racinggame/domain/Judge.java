@@ -8,21 +8,21 @@ public class Judge {
 
     private Judge() {}
 
-    public static List<String> getWinners(List<RacingCar> racingCars) {
+    public static List<String> getWinners(RacingCars racingCars) {
         int maximumPosition = getHighScore(racingCars);
 
-        return racingCars.stream()
+        return racingCars.getRacingCars().stream()
                 .filter(car -> car.getPosition() == maximumPosition)
                 .map(RacingCar::getCarName)
                 .collect(Collectors.toList());
     }
 
-    private static int getHighScore(List<RacingCar> racingCars) {
+    private static int getHighScore(RacingCars racingCars) {
         return Collections.max(getCarPositions(racingCars));
     }
 
-    private static List<Integer> getCarPositions(List<RacingCar> racingCars) {
-        return racingCars.stream()
+    private static List<Integer> getCarPositions(RacingCars racingCars) {
+        return racingCars.getRacingCars().stream()
                 .map(RacingCar::getPosition)
                 .collect(Collectors.toList());
     }

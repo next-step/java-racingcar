@@ -1,7 +1,7 @@
 package racinggame.view;
 
 import java.util.List;
-import racinggame.domain.RacingCar;
+import racinggame.domain.RacingCars;
 
 public class GameView {
 
@@ -10,7 +10,7 @@ public class GameView {
 
     private List<CarResultView> carResultViews;
 
-    public GameView(List<RacingCar> racingCars) {
+    public GameView(RacingCars racingCars) {
         carResultViews = CarResultView.racingCarOf(racingCars);
     }
 

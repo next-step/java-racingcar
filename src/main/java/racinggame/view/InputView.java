@@ -2,16 +2,17 @@ package racinggame.view;
 
 import java.util.Scanner;
 import racinggame.domain.Validator;
-import racinggame.service.InputService;
 
 public class InputView {
 
     public static final String QUIT = "q";
+    private static final String SEPARATOR = ",";
 
-    public InputView() {}
+    public InputView() {
+    }
 
     public String inputCarNames() {
-        System.out.printf("경주할 자동차 이름을 %s로 구분해서 입력하세요.(%d대 이상)\n", InputService.SEPARATOR,
+        System.out.printf("경주할 자동차 이름을 %s로 구분해서 입력하세요.(%d대 이상)\n", SEPARATOR,
                 Validator.MINIMUM_PLAYER);
         return getInput();
     }

@@ -1,11 +1,9 @@
 package racinggame.controller;
 
-import java.util.List;
 import racinggame.domain.Judge;
-import racinggame.domain.RacingCar;
+import racinggame.domain.RacingCars;
 import racinggame.domain.RacingGame;
 import racinggame.domain.Trial;
-import racinggame.service.InputService;
 import racinggame.view.GameView;
 import racinggame.view.InputView;
 
@@ -14,22 +12,18 @@ public class RacingGameController {
     private static final int NORMAL_EXIT_CODE = 0;
     private static final String QUIT = "q";
     private final InputView inputView;
-    private final InputService inputService;
     private GameView gameView;
 
-    public RacingGameController(InputView inputView, InputService inputService) {
+    public RacingGameController(InputView inputView) {
         this.inputView = inputView;
-        this.inputService = inputService;
     }
 
-    public List<RacingCar> getRacingCars() {
-        List<RacingCar> racingCars;
-        String[] carNames;
+    public RacingCars getRacingCars() {
+        RacingCars racingCars;
 
         while (true) {
             try {
-                carNames = inputService.parseCarNames(inputView.inputCarNames());
-                racingCars = RacingCar.racingCarOf(carNames);
+                racingCars = new RacingCars(inputView.inputCarNames());
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -53,7 +47,7 @@ public class RacingGameController {
         return trial;
     }
 
-    public void startGame(List<RacingCar> racingCars, Trial trial) {
+    public void startGame(RacingCars racingCars, Trial trial) {
         RacingGame racingGame;
 
         while (true) {
@@ -80,7 +74,7 @@ public class RacingGameController {
         gameView.printResult();
     }
 
-    public void printWinners(List<RacingCar> racingCars) {
+    public void printWinners(RacingCars racingCars) {
         gameView.printWinners(Judge.getWinners(racingCars));
     }
 

@@ -1,22 +1,20 @@
 package racinggame.domain;
 
-import java.util.List;
-
 public class RacingGame {
 
     private static final int RANGE_OF_RANDOM_NUMBER = 9 - 0 + 1;
 
-    private List<RacingCar> racingCars;
+    private RacingCars racingCars;
 
     public RacingGame() {}
 
-    public RacingGame(List<RacingCar> racingCars) {
+    public RacingGame(RacingCars racingCars) {
         Validator.validatePossibleToStart(racingCars);
         this.racingCars = racingCars;
     }
 
     public void progress() {
-        racingCars.forEach(car -> {
+        racingCars.getRacingCars().forEach(car -> {
             int randomValue = getRandomValue();
             if (car.canForward(randomValue)) {
                 car.forward();
@@ -28,7 +26,7 @@ public class RacingGame {
         return (int) Math.floor(Math.random() * RANGE_OF_RANDOM_NUMBER);
     }
 
-    public List<RacingCar> getRacingCars() {
+    public RacingCars getRacingCars() {
         return this.racingCars;
     }
 }

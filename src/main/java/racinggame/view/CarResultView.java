@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racinggame.domain.RacingCar;
 import racinggame.Utils;
+import racinggame.domain.RacingCars;
 
 public class CarResultView {
 
@@ -21,8 +22,8 @@ public class CarResultView {
                 Utils.repeat(FOOTPRINTS, racingCar.getPosition()));
     }
 
-    public static List<CarResultView> racingCarOf(List<RacingCar> racingCars) {
-        return racingCars.stream()
+    public static List<CarResultView> racingCarOf(RacingCars racingCars) {
+        return racingCars.getRacingCars().stream()
                 .map(CarResultView::new)
                 .collect(Collectors.toList());
     }
