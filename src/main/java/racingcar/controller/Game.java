@@ -13,13 +13,13 @@ public class Game {
     private static final String GAME_RESULT_MESSAGE = "출력결과";
 
     public void play() {
-        List<Car> carList = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
         InputView inputView = new InputView();
 
         String[] carNames = inputView.inputCarName();
 
-        for (int i = 0; i < carNames.length; i++) {
-            carList.add(new Car(carNames[i]));
+        for (String carName: carNames) {
+            cars.add(new Car(carName));
         }
 
         int tryCount = inputView.inputTryCount();
@@ -27,10 +27,10 @@ public class Game {
 
         for (int i = 0; i < tryCount; i++) {
             System.out.println(GAME_RESULT_MESSAGE);
-            moveForwardByCount(carList);
+            moveForwardByCount(cars);
         }
 
-        checkWinner(carList);
+        checkWinner(cars);
     }
 
     private void validateTryCount(int tryCount) {
@@ -39,9 +39,9 @@ public class Game {
         }
     }
 
-    public void moveForwardByCount(List<Car> carList) {
+    public void moveForwardByCount(List<Car> cars) {
         OutputView outputView = new OutputView();
-        for (Car car : carList) {
+        for (Car car : cars) {
             RandomGenerator randomGenerator = new RandomGenerator();
             int moveOrNot = randomGenerator.generateRandomNumber();
             car.moveForward(moveOrNot);
@@ -50,17 +50,17 @@ public class Game {
         System.out.println();
     }
 
-    public void checkWinner(List<Car> carList) {
+    public void checkWinner(List<Car> cars) {
         ArrayList<String> winnerList = new ArrayList<>();
         OutputView outputView = new OutputView();
         int maxPosition = 0;
-        for (Car car : carList) {
+        for (Car car : cars) {
             if (car.getPosition().length() > maxPosition) {
                 maxPosition = car.getPosition().length();
 
             }
         }
-        for (Car car : carList) {
+        for (Car car : cars) {
             if (car.getPosition().length() == maxPosition) {
                 winnerList.add(car.getCarName());
             }
