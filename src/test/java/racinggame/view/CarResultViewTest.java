@@ -26,7 +26,6 @@ class CarResultViewTest {
         List<RacingCar> racingCars = RacingCar.racingCarOf(new String[]{"car1"});
         CarResultView carResultView = CarResultView.racingCarOf(racingCars).get(0);
 
-
         String currPositionView = carResultView.drawCurrResult();
 
         StringBuilder sb = new StringBuilder();
