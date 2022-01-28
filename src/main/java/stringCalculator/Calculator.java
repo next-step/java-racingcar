@@ -6,7 +6,7 @@ public class Calculator {
 
     public int calculateByOperator(List<String> userInput) {
         int result = Integer.parseInt(userInput.get(0));
-        int userInputSize= userInput.size();
+        int userInputSize = userInput.size();
         for (int i = 1; i < userInputSize - 1; i += 2) {
             if (userInput.get(i).equals("+")) {
                 result = sum(result, Integer.parseInt(userInput.get(i + 1)));
