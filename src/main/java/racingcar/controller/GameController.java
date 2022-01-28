@@ -9,19 +9,16 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class GameController {
-    private GameController() {}
 
-    public static Cars setUp() {
-        String carNames = InputView.readCarNames();
+    private static Cars cars;
+    private static int turn;
 
-        return new Cars(
-            Parser.parseCarNames(carNames).stream()
-                .map(Car::new)
-                .collect(Collectors.toList())
-        );
+    public GameController(final String carsName, final int turn) {
+        this.cars = new Cars(carsName);
+        this.turn = turn;
     }
 
-    private static void play(Cars cars, int turn) {
+    private static void play() {
         for (int index = 0; index < turn; index++) {
             cars.moveAll(RandomMovableStrategy.getInstance());
             OutputView.printDistance(cars);
@@ -29,11 +26,8 @@ public class GameController {
     }
 
     public static void startGame() {
-        Cars cars = setUp();
-        int turn = InputView.getTurn();
-
         OutputView.printTurnResult();
-        play(cars, turn);
+        play();
 
         OutputView.printWhoIsWinner(cars);
     }
