@@ -27,12 +27,20 @@ public class Validator {
         int inputSize = parsedInputs.size();
         for (int i = 0; i < inputSize; i++) {
             String target = parsedInputs.get(i);
-            if (i % 2 == 0) {
-                isNumber(target);
-            } else {
-                isOperator(target);
-            }
+            isCorrectType(target, i);
         }
+    }
+
+    private static void isCorrectType(String target, int index) {
+        if (isEven(index)) {
+            isNumber(target);
+        } else {
+            isOperator(target);
+        }
+    }
+
+    private static boolean isEven(int index) {
+        return index % 2 == 0;
     }
 
     private static void isNumber(String target) {
