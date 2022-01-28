@@ -8,7 +8,7 @@ public class FormularLauncher {
 
     public void start() {
         List<String> formula = FormulaInput.getFormula();
-        double result = Calculator.doCalculate(formula);
+        double result = Calculator.calculate(formula);
         System.out.println(result);
     }
 }

@@ -13,7 +13,7 @@ class CalculatorTest {
     @Test
     void run(){
         List<String> formula = Arrays.asList("1", "+", "3", "-", "5");
-        double result = Calculator.doCalculate(formula);
+        double result = Calculator.calculate(formula);
         assertThat(result).isEqualTo(-1);
     }
 
