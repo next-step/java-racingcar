@@ -32,4 +32,11 @@ public class ParserTest {
         assertThat(names)
             .isEqualTo(Arrays.asList("Jason", "holee"));
     }
+
+    @DisplayName("이름 splitter가 적절하게 입력되었을 때는 플레이어를 정상적으로 인식")
+    @Test
+    void testNameSplitterValid() {
+        assertThat(Parser.parseCarNames("A,B,C")) // Given & When
+            .isEqualTo(Arrays.asList("A", "B", "C")); // Then
+    }
 }
