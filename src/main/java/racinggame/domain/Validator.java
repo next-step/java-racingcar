@@ -6,7 +6,6 @@ public class Validator {
 
     public static final int MINIMUM_PLAYER = 2;
     private static final int MAXIMUM_NAME_LENGTH = 5;
-    private static final String EMPTY_STRING = "";
 
     private Validator() {}
 
@@ -37,14 +36,14 @@ public class Validator {
     }
 
     public static void checkIsBlank(String removedBlankInput) {
-        if (removedBlankInput.equals(EMPTY_STRING)) {
+        if (removedBlankInput.isEmpty()) {
             throw new IllegalArgumentException("값이 입력되지 않았습니다.");
         }
     }
 
     public static void checkNameIsBlank(String[] splitName) {
         for (String name : splitName) {
-            if (name.equals(EMPTY_STRING)) {
+            if (name.isEmpty()) {
                 throw new IllegalArgumentException("RacingCar의 이름은 공백일 수 없습니다.");
             }
         }
