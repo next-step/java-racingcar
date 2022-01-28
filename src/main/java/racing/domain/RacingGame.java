@@ -22,7 +22,7 @@ public class RacingGame {
             }
             checkCarCount(cars);
 
-            final int tryNumber = UserInput.getTryNumber();
+            final TryNumber tryNumber = UserInput.getTryNumber();
             startRacing(tryNumber);
             showGameResult();
         } catch (IllegalArgumentException e) {
@@ -37,9 +37,9 @@ public class RacingGame {
         }
     }
 
-    private void startRacing(final int tryNumber) {
+    private void startRacing(final TryNumber tryNumber) {
         System.out.println("\n실행 결과");
-        for (int i = 0; i < tryNumber; i++) {
+        while (tryNumber.isPossibleToRace()) {
             driveCars();
             System.out.println();
         }

@@ -19,10 +19,14 @@ public class UserInput {
             .collect(Collectors.toList());
     }
 
-    public static int getTryNumber() {
+    public static TryNumber getTryNumber() {
         try {
             System.out.println("시도할 횟수는 몇 회인가요?");
-            return new TryNumber(SCANNER.nextLine()).getTryNumber();
+            final int tryNumber = Integer.parseInt(SCANNER.nextLine());
+            return new TryNumber(tryNumber);
+        } catch (NumberFormatException nfe) {
+            System.out.println("[ERROR] 숫자만 입력 해주세요.");
+            return getTryNumber();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return getTryNumber();

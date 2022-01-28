@@ -4,19 +4,11 @@ public class TryNumber {
 
     private static final int MIN_TRY_NUMBER = 1;
 
-    private final int tryNumber;
+    private int tryNumber;
 
-    public TryNumber(String tryNumber) {
-        this.tryNumber = toInt(tryNumber);
-        isValidTryNumber(this.tryNumber);
-    }
-
-    private int toInt(String tryNumber) {
-        try {
-            return Integer.parseInt(tryNumber);
-        } catch (NumberFormatException nfe) {
-            throw new NumberFormatException("[ERROR] 숫자만 입력 해주세요.");
-        }
+    public TryNumber(int tryNumber) {
+        isValidTryNumber(tryNumber);
+        this.tryNumber = tryNumber;
     }
 
     private static void isValidTryNumber(final int tryNumber) {
@@ -25,7 +17,11 @@ public class TryNumber {
         }
     }
 
-    public int getTryNumber() {
-        return tryNumber;
+    public boolean isPossibleToRace() {
+        if(tryNumber == 0) {
+            return false;
+        }
+        this.tryNumber -= 1;
+        return true;
     }
 }
