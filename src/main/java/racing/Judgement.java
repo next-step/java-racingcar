@@ -14,7 +14,7 @@ public class Judgement {
     }
 
     private int getBestScore() {
-        cars.sort((a, b) -> b.getDistance() - a.getDistance());
+        cars.sort(Car::compareTo);
         return cars.get(0).getDistance();
     }
 
