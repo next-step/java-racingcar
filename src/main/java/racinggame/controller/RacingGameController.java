@@ -26,7 +26,7 @@ public class RacingGameController {
                 racingCars = new RacingCars(inputView.inputCarNames());
                 break;
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                inputView.printErrorMessage(e.getMessage());
             }
         }
 
@@ -41,7 +41,7 @@ public class RacingGameController {
                 trial = new Trial(inputView.inputTrial());
                 break;
             } catch (IllegalArgumentException | ArithmeticException e) {
-                System.out.println(e.getMessage());
+                inputView.printErrorMessage(e.getMessage());
             }
         }
         return trial;
@@ -55,7 +55,7 @@ public class RacingGameController {
                 racingGame = new RacingGame(racingCars);
                 break;
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                inputView.printErrorMessage(e.getMessage());
                 racingCars = getRacingCars();
             }
         }
