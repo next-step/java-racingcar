@@ -35,7 +35,8 @@ public class Expression {
     public void calculate() {
         resultCalculate = convertNumber(numbers.poll());
         for (String operator : operators) {
-            resultCalculate = Operation.calculate(operator, resultCalculate, convertNumber(numbers.poll()));
+            resultCalculate = Operation.calculate(operator, resultCalculate,
+                convertNumber(numbers.poll()));
         }
     }
 

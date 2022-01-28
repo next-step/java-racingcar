@@ -1,7 +1,6 @@
 package calculator.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -38,7 +37,7 @@ class ValidatorTest {
         assertThat(Validator.checkValidate(input)).isFalse();
     }
 
-    @ValueSource(strings = {"1+3/2", "1*23", "1-01", "1/0","1/01"})
+    @ValueSource(strings = {"1+3/2", "1*23", "1-01", "1/0", "1/01"})
     @ParameterizedTest
     void 정상적인_입력을_했을_경우_0으로_나눌_경우_포함(String input) {
         assertThat(Validator.checkValidate(input)).isTrue();

@@ -10,14 +10,15 @@ import org.junit.jupiter.params.provider.ValueSource;
 class TryNumberTest {
 
     @ParameterizedTest
-    @ValueSource(ints= {-1, 0, -2})
+    @ValueSource(ints = {-1, 0, -2})
     void tryNumber_유효하지_않은_정수_입력(int tryNumber) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> new TryNumber(tryNumber)).withMessage("[ERROR] 시도 횟수는 최소 1회 이상이어야 합니다.");
+            .isThrownBy(() -> new TryNumber(tryNumber))
+            .withMessage("[ERROR] 시도 횟수는 최소 1회 이상이어야 합니다.");
     }
 
     @ParameterizedTest
-    @ValueSource(ints= {1, 2, 3,4,5,6})
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6})
     void 레이싱_진행할_수_있으면_참_반환(int inputNumber) {
         TryNumber tryNumber = new TryNumber(inputNumber);
         assertThat(tryNumber.isPossibleToRace()).isTrue();
