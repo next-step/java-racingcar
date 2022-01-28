@@ -3,6 +3,9 @@ package calculator.domain;
 import java.util.List;
 
 public class Calculator {
+    private static final int FIRST_NUMBER = 0;
+    private static final int FIRST_OPERATOR = 1;
+    private static final int STEP_OF_OPERATOR = 2;
 
     private static Calculator instance = new Calculator();
 
@@ -14,9 +17,9 @@ public class Calculator {
     }
 
     public void calculate(List<String> parsedInput) {
-        int total = Integer.parseInt(parsedInput.get(0));
+        int total = Integer.parseInt(parsedInput.get(FIRST_NUMBER));
         int inputSize = parsedInput.size();
-        for (int i = 1; i < inputSize; i += 2) {
+        for (int i = FIRST_OPERATOR; i < inputSize; i += STEP_OF_OPERATOR) {
             String operator = parsedInput.get(i);
             int nextNumber = Integer.parseInt(parsedInput.get(i+1));
             total = operate(operator, total, nextNumber);
