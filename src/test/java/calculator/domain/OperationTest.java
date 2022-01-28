@@ -19,13 +19,10 @@ class OperationTest {
             Arguments.of("/", 3, 1, 3)
         );
     }
-
+    
     @ParameterizedTest
     @MethodSource
     void enum_정상_연산_확인(String operator, int firstNumber, int secondNumber, int actual) {
-        assertThat(Operation.calculate(operator, firstNumber, secondNumber)).isEqualTo(actual);
-        assertThat(Operation.calculate(operator, firstNumber, secondNumber)).isEqualTo(actual);
-        assertThat(Operation.calculate(operator, firstNumber, secondNumber)).isEqualTo(actual);
         assertThat(Operation.calculate(operator, firstNumber, secondNumber)).isEqualTo(actual);
     }
 
