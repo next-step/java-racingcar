@@ -1,7 +1,5 @@
 package racinggame.domain;
 
-import java.util.Scanner;
-
 public class Utils {
 
     private Utils() {}
@@ -12,10 +10,5 @@ public class Utils {
             sb.append(str);
         }
         return sb.toString();
-    }
-
-    public static String getInput() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
     }
 }

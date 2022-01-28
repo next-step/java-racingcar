@@ -1,5 +1,7 @@
 package racinggame.view;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import racinggame.domain.RacingCar;
 import racinggame.domain.Utils;
 
@@ -11,12 +13,18 @@ public class CarResultView {
     private int currPosition;
     private String currResult;
 
-    public CarResultView(RacingCar racingCar) {
+    private CarResultView(RacingCar racingCar) {
         this.racingCar = racingCar;
         this.currPosition = racingCar.getPosition();
-        this.currResult = String.format("%-5s: %s\n",
+        this.currResult = String.format("%-5s: %s",
                 racingCar.getCarName(),
                 Utils.repeat(FOOTPRINTS, racingCar.getPosition()));
+    }
+
+    public static List<CarResultView> racingCarOf(List<RacingCar> racingCars) {
+        return racingCars.stream()
+                .map(CarResultView::new)
+                .collect(Collectors.toList());
     }
 
     public String drawCurrResult() {

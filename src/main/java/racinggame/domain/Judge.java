@@ -23,7 +23,7 @@ public class Judge {
 
     private static List<Integer> getCarPositions(List<RacingCar> racingCars) {
         return racingCars.stream()
-                .map(car -> car.getPosition())
+                .map(RacingCar::getPosition)
                 .collect(Collectors.toList());
     }
 }

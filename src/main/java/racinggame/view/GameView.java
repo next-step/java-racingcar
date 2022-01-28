@@ -1,35 +1,29 @@
 package racinggame.view;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import racinggame.domain.Judge;
 import racinggame.domain.RacingCar;
 
 public class GameView {
 
     private static final String DELIMITER = ", ";
+    protected final StringBuilder result = new StringBuilder();
 
-    private List<RacingCar> racingCars;
+    private List<CarResultView> carResultViews;
 
     public GameView(List<RacingCar> racingCars) {
-        this.racingCars = racingCars;
+        carResultViews = CarResultView.racingCarOf(racingCars);
     }
 
-    public List<RacingCar> getRacingCars() {
-        return racingCars;
+    public void saveProgress() {
+        carResultViews.forEach(carView -> result.append(carView.drawCurrResult()).append("\n"));
     }
 
-    public void printProgress() {
-        StringBuilder sb = new StringBuilder();
-        racingCars.forEach(car -> sb.append(car.drawCurrPosition()));
-
-        System.out.println(sb);
-    }
-
-    public void printWinners() {
-        List<String> winners = Judge.getWinners(racingCars);
-
-        String result = winners.stream().collect(Collectors.joining(DELIMITER));
+    public void printWinners(List<String> winners) {
+        String result = String.join(DELIMITER, winners);
         System.out.println("최종 우승자: " + result);
+    }
+
+    public void printResult() {
+        System.out.print(result);
     }
 }

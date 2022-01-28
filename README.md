@@ -20,15 +20,15 @@
 
 - [x] 입력 받기 (Expression.getUserInput())
 - [x] 연산 (Calculator)
-    - [x] 덧셈(.add())
-    - [x] 뺄셈(.sub())
-    - [x] 곱셈(.mul())
-    - [x] 나눗셈(.div())
+  - [x] 덧셈(.add())
+  - [x] 뺄셈(.sub())
+  - [x] 곱셈(.mul())
+  - [x] 나눗셈(.div())
 - [x] 입력 검증 (Validator)
 - [x] 입력 형식 (number op number op number ...) 검증
-    - [x] 공백인지 ("", " ") -> IllegalArgumentException 
-    - [x] split 후 짝수번째 -> 숫자. -> NumberFormatException
-    - [x] split 후 홀수 번쨰 -> 연산자(+, - , *, /) -> InputMismatchException
+  - [x] 공백인지 ("", " ") -> IllegalArgumentException
+  - [x] split 후 짝수번째 -> 숫자. -> NumberFormatException
+  - [x] split 후 홀수 번쨰 -> 연산자(+, - , *, /) -> InputMismatchException
 - [x] 입력받은 식 파싱(ExpressionParser.parseExpression)
 - [x] 파싱된 식 계산 (Calculator.evaluate)
   - [x] 앞에서부터 하나씩 연산(Calculator.calculate)
@@ -48,7 +48,7 @@
 - 사용자는 몇 대의 자동차로 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
 - 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
 - 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.
-- 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다. 
+- 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
 
 ## 기능 구현 사항
 - [x] 자동차 이름 입력받기(Input.getCarName)
