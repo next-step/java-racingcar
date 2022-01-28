@@ -9,8 +9,8 @@ import racingcar.view.OutputView;
 
 public class Game {
 
-    private final String TRY_COUNT_LESS_THAN_ZERO = "[ERROR] 시도 횟수는 1회 이상이어야 합니다.";
-    private final String GAME_RESULT_MESSAGE = "출력결과";
+    private static final String TRY_COUNT_LESS_THAN_ZERO = "[ERROR] 시도 횟수는 1회 이상이어야 합니다.";
+    private static final String GAME_RESULT_MESSAGE = "출력결과";
 
     public void play() {
         List<Car> carList = new ArrayList<>();
