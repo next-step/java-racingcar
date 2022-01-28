@@ -26,7 +26,7 @@ public class Game {
 
         System.out.println(GAME_RESULT_MESSAGE);
         for (int i = 0; i < tryCount; i++) {
-            moveForwardByCount();
+            moveForwardByCarsSize();
             outputView.printResult(cars);
             System.out.println();
         }
@@ -40,7 +40,7 @@ public class Game {
         }
     }
 
-    public void moveForwardByCount() {
+    public void moveForwardByCarsSize() {
         for (Car car : cars) {
             RandomGenerator randomGenerator = new RandomGenerator();
             int moveOrNot = randomGenerator.generateRandomNumber();
