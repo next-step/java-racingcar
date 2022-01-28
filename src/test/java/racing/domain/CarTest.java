@@ -22,10 +22,10 @@ class CarTest {
 
     @Test
     void 자동차_움직임_여부() {
-        Car car1 = new Car("abc");
-        car1.drive(3);
-        assertThat(car1.getPosition()).isEqualTo(0);
-        car1.drive(4);
-        assertThat(car1.getPosition()).isEqualTo(1);
+        Car car = new Car("abc");
+        car.drive(3);
+        assertThat(car.getPosition()).isEqualTo(0);
+        car.drive(4);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }
