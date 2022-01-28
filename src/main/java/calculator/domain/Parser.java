@@ -6,11 +6,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
-    private static final Pattern NUMBER_OR_OPERATOR = Pattern.compile("[+*/-]|[0-9]+");
+    private static final Pattern NUMBER_OR_OPERATOR_REGEX = Pattern.compile("[+*/-]|[0-9]+");
 
     public static List<String> parseInput(String userInput) {
         List<String> result = new ArrayList<>();
-        Matcher matcher = NUMBER_OR_OPERATOR.matcher(userInput);
+        Matcher matcher = NUMBER_OR_OPERATOR_REGEX.matcher(userInput);
         while (matcher.find()) {
             result.add(matcher.group());
         }
