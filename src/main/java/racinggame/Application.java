@@ -3,6 +3,7 @@ package racinggame;
 import java.util.List;
 import racinggame.controller.RacingGameController;
 import racinggame.domain.RacingCar;
+import racinggame.domain.Trial;
 import racinggame.service.InputService;
 import racinggame.view.InputView;
 
@@ -14,7 +15,7 @@ public class Application {
 
         while (true) {
             List<RacingCar> racingCars = controller.getRacingCars();
-            int trial = controller.getTrial();
+            Trial trial = controller.getTrial();
 
             controller.startGame(racingCars, trial);
             controller.printResult();

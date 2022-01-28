@@ -4,6 +4,7 @@ import java.util.List;
 import racinggame.domain.Judge;
 import racinggame.domain.RacingCar;
 import racinggame.domain.RacingGame;
+import racinggame.domain.Trial;
 import racinggame.service.InputService;
 import racinggame.view.GameView;
 import racinggame.view.InputView;
@@ -38,22 +39,21 @@ public class RacingGameController {
         return racingCars;
     }
 
-    public int getTrial() {
-        int trial;
+    public Trial getTrial() {
+        Trial trial;
 
         while (true) {
             try {
-                trial = inputService.parseTrial(inputView.inputTrial());
+                trial = new Trial(inputView.inputTrial());
                 break;
             } catch (IllegalArgumentException | ArithmeticException e) {
                 System.out.println(e.getMessage());
             }
         }
-
         return trial;
     }
 
-    public void startGame(List<RacingCar> racingCars, int trial) {
+    public void startGame(List<RacingCar> racingCars, Trial trial) {
         RacingGame racingGame;
 
         while (true) {
@@ -69,8 +69,8 @@ public class RacingGameController {
         start(racingGame, trial);
     }
 
-    private void start(RacingGame racingGame, int trial) {
-        for (int i = 0; i < trial; i++) {
+    private void start(RacingGame racingGame, Trial trial) {
+        for (int i = 0; i < trial.getValue(); i++) {
             racingGame.progress();
             gameView.saveProgress();
         }

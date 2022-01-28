@@ -16,15 +16,6 @@ public class InputService {
         return splitName;
     }
 
-    public int parseTrial(String inputTrial) {
-        String removedBlankInput = removeBlank(inputTrial);
-
-        Validator.checkIsBlank(removedBlankInput);
-        Validator.isNumber(removedBlankInput);
-
-        return Integer.parseInt(removedBlankInput);
-    }
-
     private String removeBlank(String trial) {
         return trial.replaceAll(BLANK, EMPTY_STRING);
     }
