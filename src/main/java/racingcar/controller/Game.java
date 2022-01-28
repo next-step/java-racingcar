@@ -12,6 +12,7 @@ public class Game {
 
     private static final String TRY_COUNT_LESS_THAN_ZERO = "[ERROR] 시도 횟수는 1회 이상이어야 합니다.";
     private static final String GAME_RESULT_MESSAGE = "출력결과";
+    private static final int MINIMUM_TRY_COUNT=0;
     private List<Car> cars = new ArrayList<>();
     public void play() {
         InputView inputView = new InputView();
@@ -33,9 +34,8 @@ public class Game {
         Winner winner = new Winner(cars);
         outputView.printWinner(winner.getWinner());
     }
-
     private void validateTryCount(int tryCount) {
-        if (tryCount <= 0) {
+        if (tryCount <=MINIMUM_TRY_COUNT) {
             throw new IllegalArgumentException(TRY_COUNT_LESS_THAN_ZERO);
         }
     }
