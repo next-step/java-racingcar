@@ -16,7 +16,7 @@ public class Calculator {
         return instance;
     }
 
-    public void calculate(List<String> parsedInput) {
+    public int calculate(List<String> parsedInput) {
         int total = Integer.parseInt(parsedInput.get(FIRST_NUMBER));
         int inputSize = parsedInput.size();
         for (int i = FIRST_OPERATOR; i < inputSize; i += STEP_OF_OPERATOR) {
@@ -24,7 +24,7 @@ public class Calculator {
             int nextNumber = Integer.parseInt(parsedInput.get(i+1));
             total = operate(operator, total, nextNumber);
         }
-        System.out.println(total);
+        return total;
     }
 
     private int operate(String operator, int prevNumber, int nextNumber) {
