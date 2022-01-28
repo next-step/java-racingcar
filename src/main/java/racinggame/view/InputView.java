@@ -1,5 +1,3 @@
-
-
 package racinggame.view;
 
 import java.util.Scanner;
