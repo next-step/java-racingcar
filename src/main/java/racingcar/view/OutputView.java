@@ -22,8 +22,8 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printWinner(List<String> winnerList) {
+    public void printWinner(List<String> winners) {
         System.out.print(WINNER_MESSAGE);
-        System.out.print(String.join(",", winnerList));
+        System.out.print(String.join(",", winners));
     }
 }
