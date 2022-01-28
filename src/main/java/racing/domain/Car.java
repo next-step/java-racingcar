@@ -37,13 +37,13 @@ public class Car {
     }
 
     public void drive(int randomNumber) {
-        if (isMove(randomNumber)) {
+        if (isMovable(randomNumber)) {
             this.position++;
         }
         printStatus();
     }
 
-    private boolean isMove(final int randomNumber) {
+    private boolean isMovable(final int randomNumber) {
         return randomNumber >= STANDARD_NUMBER_MOVE_FORWARD;
     }
 
