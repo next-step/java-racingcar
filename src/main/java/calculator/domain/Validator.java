@@ -47,13 +47,13 @@ public class Validator {
         try {
             Double.parseDouble(target);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 연산 가능한 수식을 입력해주세요.");
         }
     }
 
     private static void isOperator(String target) {
         if (!Operator.isOperator(target)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 연산 가능한 수식을 입력해주세요.");
         }
     }
 }
