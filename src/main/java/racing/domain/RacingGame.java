@@ -17,8 +17,8 @@ public class RacingGame {
 
     public void startGame() {
         try {
-            final List<String> nameList = UserInput.getCarNames();
-            for (String name : nameList) {
+            final List<String> names = UserInput.getCarNames();
+            for (String name : names) {
                 cars.add(new Car(name));
             }
             checkCarCount(cars);
