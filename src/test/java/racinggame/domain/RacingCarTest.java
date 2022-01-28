@@ -13,16 +13,6 @@ import org.junit.jupiter.api.Test;
 class RacingCarTest {
 
     @Test
-    void 자동차이름_배열을_받아_자동차객체_리스트_생성() {
-        String[] carNames = {"car1", "car2"};
-
-        List<RacingCar> racingCars = RacingCar.racingCarOf(carNames);
-
-        assertEquals(racingCars.get(0).getCarName(), carNames[0]);
-        assertEquals(racingCars.get(1).getCarName(), carNames[1]);
-    }
-
-    @Test
     void 자동차의_이름_글자수_5자_이하_실패() {
         String carName = "carcar1";
 

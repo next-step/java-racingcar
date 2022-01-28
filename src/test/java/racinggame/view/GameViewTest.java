@@ -6,19 +6,26 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Judge;
-import racinggame.domain.RacingCar;
+import racinggame.domain.RacingCars;
 
 class GameViewTest {
 
-    private List<RacingCar> racingCars = new ArrayList<>(
-            Arrays.asList(new RacingCar("car1", 1), new RacingCar("car2", 3)));
+    private RacingCars racingCars;
+    private GameView gameView;
 
-    private GameView gameView = new GameView(racingCars);
+    @BeforeEach
+    void before() {
+        racingCars = new RacingCars("car1,car2");
+        racingCars.getRacingCars().get(0).forward();
+        racingCars.getRacingCars().get(1).forward();
+        racingCars.getRacingCars().get(1).forward();
+
+        gameView = new GameView(racingCars);
+    }
 
     @Test
     void 상태를_출력할_자동차_리스트를_받아_생성한다() throws NoSuchFieldException, IllegalAccessException {
@@ -40,8 +47,9 @@ class GameViewTest {
         gameView.saveProgress();
 
         // then
-        assertTrue(gameView.result.toString().contains("car1 : -"));
-        assertTrue(gameView.result.toString().contains("car2 : ---"));
+
+        assertThat(gameView.result.toString()).contains("car1 : -");
+        assertThat(gameView.result.toString()).contains("car2 : --");
     }
 
     @Test
@@ -55,8 +63,8 @@ class GameViewTest {
         gameView.printResult();
 
         // then
-        assertTrue(out.toString().contains("car1 : -"));
-        assertTrue(out.toString().contains("car2 : ---"));
+        assertThat(out.toString()).contains("car1 : -");
+        assertThat(out.toString()).contains("car2 : --");
     }
 
     @Test

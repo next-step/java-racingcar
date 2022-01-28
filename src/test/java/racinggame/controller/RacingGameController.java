@@ -8,13 +8,14 @@ import java.io.InputStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.RacingCar;
+import racinggame.domain.RacingCars;
 import racinggame.domain.Trial;
 import racinggame.service.InputService;
 import racinggame.view.InputView;
 
 class RacingGameControllerTest {
 
-    RacingGameController controller = new RacingGameController(new InputView(), new InputService());
+    RacingGameController controller = new RacingGameController(new InputView());
 
     @Test
     void getRacingCars() {
@@ -22,11 +23,11 @@ class RacingGameControllerTest {
         InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(inputStream);
 
-        List<RacingCar> racingCars = controller.getRacingCars();
+        RacingCars racingCars = controller.getRacingCars();
 
-        assertThat(racingCars.size()).isEqualTo(2);
-        assertThat(racingCars.get(0).getCarName()).isEqualTo("car1");
-        assertThat(racingCars.get(1).getCarName()).isEqualTo("car2");
+        assertThat(racingCars.getRacingCars().size()).isEqualTo(2);
+        assertThat(racingCars.getRacingCars().get(0).getCarName()).isEqualTo("car1");
+        assertThat(racingCars.getRacingCars().get(1).getCarName()).isEqualTo("car2");
     }
 
     @Test

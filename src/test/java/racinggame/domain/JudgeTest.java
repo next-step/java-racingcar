@@ -2,7 +2,6 @@ package racinggame.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -14,9 +13,12 @@ class JudgeTest {
         RacingCar car2 = new RacingCar("car2", 2);
         RacingCar car3 = new RacingCar("car3", 3);
 
-        List<String> winners = Judge.getWinners(Arrays.asList(car1, car2, car3));
+        RacingCars racingCars = new RacingCars("car1,car2,car2");
+        racingCars.getRacingCars().get(0).forward();
+
+        List<String> winners = Judge.getWinners(racingCars);
 
         assertThat(winners.size()).isEqualTo(1);
-        assertThat(winners.contains("car3")).isTrue();
+        assertThat(winners.contains("car1")).isTrue();
     }
 }
