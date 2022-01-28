@@ -58,7 +58,7 @@ public class RacingGame {
     private void showGameResult() {
         int maxPosition = 0;
         for (Car car : cars) {
-            maxPosition = setMaxPosition(maxPosition, car.getPosition());
+            maxPosition = Math.max(maxPosition, car.getPosition());
         }
 
         final List<String> winners = new ArrayList<>();
@@ -69,12 +69,5 @@ public class RacingGame {
 
         final String resultOfWinners = String.join(", ", winners);
         System.out.println("최종 우승자 : " + resultOfWinners);
-    }
-
-    private int setMaxPosition(int maxPosition, int carPosition) {
-        if (carPosition > maxPosition) {
-            return carPosition;
-        }
-        return maxPosition;
     }
 }
