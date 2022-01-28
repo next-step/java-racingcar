@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class InputViewTest {
 
-    InputView inputView;
+    private InputView inputView;
 
     @BeforeEach
     void before() {

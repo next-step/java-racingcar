@@ -15,10 +15,10 @@ import racinggame.domain.RacingCar;
 
 class GameViewTest {
 
-    List<RacingCar> racingCars = new ArrayList<>(
+    private List<RacingCar> racingCars = new ArrayList<>(
             Arrays.asList(new RacingCar("car1", 1), new RacingCar("car2", 3)));
 
-    GameView gameView = new GameView(racingCars);
+    private GameView gameView = new GameView(racingCars);
 
     @Test
     void 상태를_출력할_자동차_리스트를_받아_생성한다() throws NoSuchFieldException, IllegalAccessException {
