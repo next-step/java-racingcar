@@ -1,7 +1,6 @@
 package racinggame.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -10,43 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class InputServiceTest {
 
-    InputService inputService = new InputService();
-
-    @Test
-    void getTrial_입력() {
-        // given
-        String inputTrial = "10";
-
-        // when
-        int trial = inputService.parseTrial(inputTrial);
-
-        // then
-        assertThat(trial).isEqualTo(10);
-    }
-
-    @ValueSource(strings = {"1 0", " 10", " 1 0 ", "10 ", "1   0  "})
-    @ParameterizedTest
-    void getTrial_불필요한_공백이_들어왔을_때_제거(String inputTrial) {
-        // when
-        int trial = inputService.parseTrial(inputTrial);
-
-        // then
-        assertThat(trial).isEqualTo(10);
-    }
-
-    @Test
-    void 시도횟수는_숫자인지_검증하는_로직_실패() {
-        String trial = "a";
-
-        assertThrows(IllegalArgumentException.class, () -> inputService.parseTrial(trial));
-    }
-
-    @Test
-    void 시도횟수는_숫자인지_검증하는_로직_성공() {
-        String trial = "5";
-
-        assertDoesNotThrow(() -> inputService.parseTrial(trial));
-    }
+    private InputService inputService = new InputService();
 
     @Test
     void getCarNames_입력() {

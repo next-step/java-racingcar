@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.RacingCar;
+import racinggame.domain.Trial;
 import racinggame.service.InputService;
 import racinggame.view.InputView;
 
@@ -34,8 +35,8 @@ class RacingGameControllerTest {
         InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(inputStream);
 
-        int trial = controller.getTrial();
-        assertThat(trial).isEqualTo(5);
+        Trial trial = controller.getTrial();
+        assertThat(trial.getValue()).isEqualTo(5);
     }
 
     @ExpectSystemExit
