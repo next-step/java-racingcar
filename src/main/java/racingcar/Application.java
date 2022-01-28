@@ -11,6 +11,6 @@ import racingcar.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        new GameController(InputView.readCarNames(), InputView.getTurn()).startGame();
+        new GameController(InputView.readCarNames(), InputView.getTurn()).startGame(RandomMovableStrategy.getInstance());
     }
 }
