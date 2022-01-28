@@ -12,14 +12,14 @@ public class Winner {
     }
 
     public List<String> getWinner() {
-        List<String> winnerList = new ArrayList<>();
+        List<String> winners = new ArrayList<>();
         int maxPosition = getMaxPosition();
         for (Car car : cars) {
             if (car.getPosition() == maxPosition) {
-                winnerList.add(car.getCarName());
+                winners.add(car.getCarName());
             }
         }
-        return winnerList;
+        return winners;
     }
 
     private int getMaxPosition() {
