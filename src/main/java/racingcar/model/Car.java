@@ -1,20 +1,24 @@
 package racingcar.model;
 
-import java.util.List;
-import racingcar.util.RandomGenerator;
-
 public class Car {
+
     private static final String CAR_NAME_LONGER_THAN_FIVE = "[ERROR] 자동차 이름은 5글자를 초과할 수 없습니다.";
     private static final String CAR_NAME_LESS_THAN_ONE = "[ERROR] 자동차 이름은 최소 1글자 이상이어야 합니다. ";
-    private static final int MINIMUM_CAR_NAME_LENGTH=1;
-    private static final int MAXIMUM_CAR_NAME_LENGTH=5;
-    private static final int MOVE_FORWARD_CONDITION=4;
+    private static final int MINIMUM_CAR_NAME_LENGTH = 1;
+    private static final int MAXIMUM_CAR_NAME_LENGTH = 5;
+    private static final int MOVE_FORWARD_CONDITION = 4;
+    private static final int DEFAULT_POSITION = 0;
     private final String carName;
-    private String position;
+    private int position;
+
     public Car(String carName) {
+        this(carName, 0);
+    }
+
+    public Car(String carName, int position) {
         validateCarNameLength(carName);
         this.carName = carName;
-        this.position = "";
+        this.position = position;
     }
 
     private void validateCarNameLength(String carName) {
@@ -28,15 +32,16 @@ public class Car {
 
     public void moveForward(int moveOrNot) {
         if (moveOrNot >= MOVE_FORWARD_CONDITION) {
-            this.position += "-";
+            this.position++;
         }
 
     }
+
     public String getCarName() {
         return carName;
     }
 
-    public String getPosition() {
+    public int getPosition() {
         return position;
     }
 
