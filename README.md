@@ -83,7 +83,7 @@
 - [x] mapToInt 활 용하기
 - [x] Exception에 에러 메세지 넣기
 - [x] RandomMovableStrategy 싱글톤 활용하기
-- [ ] play 테스트 작성하기
+- [x] startGame 테스트 작성하기
 - [x] 상수 static final로 선언하기
 - [x] Parser 객체 테스트 작성하기
 
