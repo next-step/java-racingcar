@@ -24,7 +24,6 @@ public class Calculator {
                 result= divide(result,Integer.parseInt(userInput.get(i+1)));
                 continue;
             }
-            throw new IllegalArgumentException("사칙 연산이 아닙니다");
         }
         return result;
     }
