@@ -10,7 +10,7 @@ import racing.Racing;
 public class Application {
 
     public static void main(String[] args) throws IOException {
-        calculateString();
+//        calculateString();
         carRacing();
     }
 
