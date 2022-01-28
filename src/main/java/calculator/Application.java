@@ -13,7 +13,7 @@ public class Application {
             try {
                 String userInput = Input.getInput();
                 List<String> parsedInput = Parser.parseInput(userInput);
-                Calculator calculator = new Calculator();
+                Calculator calculator = Calculator.getInstance();
                 calculator.calculate(parsedInput);
                 break;
             } catch(IllegalArgumentException | ArithmeticException e) {

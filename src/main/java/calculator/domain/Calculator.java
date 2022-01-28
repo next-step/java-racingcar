@@ -4,7 +4,13 @@ import java.util.List;
 
 public class Calculator {
 
-    public Calculator() {
+    private static Calculator instance = new Calculator();
+
+    private Calculator() {
+    }
+
+    public static Calculator getInstance() {
+        return instance;
     }
 
     public void calculate(List<String> parsedInput) {
