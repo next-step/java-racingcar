@@ -11,6 +11,7 @@ import racinggame.view.InputView;
 public class RacingGameController {
 
     private static final int NORMAL_EXIT_CODE = 0;
+    private static final String QUIT = "q";
     private final InputView inputView;
     private final InputService inputService;
     private GameView gameView;
@@ -90,6 +91,6 @@ public class RacingGameController {
     }
 
     private boolean isQuit(String command) {
-        return command.equals(InputView.QUIT);
+        return QUIT.equals(command);
     }
 }
