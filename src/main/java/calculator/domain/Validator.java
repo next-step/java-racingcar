@@ -23,10 +23,10 @@ public class Validator {
         }
     }
     
-    public static void isRightOrder(List<String> parsedInput) {
-        int inputSize = parsedInput.size();
+    public static void isRightOrder(List<String> parsedInputs) {
+        int inputSize = parsedInputs.size();
         for (int i = 0; i < inputSize; i++) {
-            String target = parsedInput.get(i);
+            String target = parsedInputs.get(i);
             if (i % 2 == 0) {
                 isNumber(target);
             } else {
