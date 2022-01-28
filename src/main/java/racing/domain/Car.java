@@ -36,8 +36,8 @@ public class Car {
         return this.position == position;
     }
 
-    public void drive(int number) {
-        if (isMove(number)) {
+    public void drive(int randomNumber) {
+        if (isMove(randomNumber)) {
             this.position++;
         }
         printStatus();
