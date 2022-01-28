@@ -14,12 +14,6 @@ public class RacingGame {
         this.cars = new ArrayList<>();
     }
 
-    private static void checkCarCount(List<Car> cars) {
-        if (cars.isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] 최소 1대 이상의 자동차가 필요합니다.");
-        }
-    }
-
     public void startGame() {
         try {
             final List<String> names = UserInput.getCarNames();
@@ -37,6 +31,12 @@ public class RacingGame {
         }
     }
 
+    private static void checkCarCount(List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 최소 1대 이상의 자동차가 필요합니다.");
+        }
+    }
+    
     private void startRacing(final TryNumber tryNumber) {
         System.out.println("\n실행 결과");
         while (tryNumber.isPossibleToRace()) {
