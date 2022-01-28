@@ -1,18 +1,22 @@
 package racing.domain;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class UserInput {
 
     private static final Scanner SCANNER = new Scanner(System.in);
-
+    private static final String COMMA = ",";
     private UserInput() {
     }
 
     public static List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        return Parser.split(SCANNER.nextLine());
+        return Arrays.stream(SCANNER.nextLine().split(COMMA))
+            .map(name -> name.trim())
+            .collect(Collectors.toList());
     }
 
     public static int getTryNumber() {
