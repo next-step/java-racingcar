@@ -85,7 +85,7 @@
 - [x] RandomMovableStrategy 싱글톤 활용하기
 - [ ] play 테스트 작성하기
 - [x] 상수 static final로 선언하기
-- [ ] Parser 객체 테스트 작성하기
+- [x] Parser 객체 테스트 작성하기
 
 ## 마감 기한
 
