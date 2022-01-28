@@ -18,7 +18,7 @@ public class TryNumber {
     }
 
     public boolean isPossibleToRace() {
-        if (tryNumber == 0) {
+        if (this.tryNumber == 0) {
             return false;
         }
         this.tryNumber -= 1;
