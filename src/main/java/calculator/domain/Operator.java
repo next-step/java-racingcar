@@ -41,6 +41,7 @@ public enum Operator {
     public static Operator fromString(String symbol) {
         return Arrays.stream(Operator.values())
             .filter(operator -> operator.symbol.equals(symbol))
-            .findFirst().orElseThrow(() -> new IllegalArgumentException(NOT_OPERATIONS_MESSAGE));
+            .findFirst()
+            .orElseThrow(() -> new IllegalArgumentException(NOT_OPERATIONS_MESSAGE));
     }
 }
