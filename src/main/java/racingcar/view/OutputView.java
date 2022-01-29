@@ -1,6 +1,6 @@
 package racingcar.view;
 
-public class ResultView {
+public class OutputView {
 
     private static final String ENTER = "\n";
     private static final String HEAD_MESSAGE = ENTER + "실행 결과";

@@ -1,16 +1,16 @@
 package racingcar;
 
 import racingcar.controller.RacingController;
-import racingcar.view.ResultView;
-import racingcar.view.UserConsole;
+import racingcar.view.OutputView;
+import racingcar.view.InputView;
 
 public class Application {
 
     public static void main(String[] args) {
-        RacingController racingController = RacingController.getInstance(UserConsole.names(), UserConsole.turn().getValue());
+        RacingController racingController = RacingController.getInstance(InputView.names(), InputView.turn().getValue());
         racingController.start();
 
-        ResultView.printRacingResult(racingController.getRacingProcess());
-        ResultView.printWinner(racingController.getWinner());
+        OutputView.printRacingResult(racingController.getRacingProcess());
+        OutputView.printWinner(racingController.getWinner());
     }
 }

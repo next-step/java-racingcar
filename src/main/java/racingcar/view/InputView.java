@@ -1,20 +1,18 @@
 package racingcar.view;
 
 import java.util.Scanner;
-import javax.jws.soap.SOAPBinding.Use;
-import javax.xml.transform.Result;
 import racingcar.domain.car.Participants;
 import racingcar.domain.car.Turn;
 
-public class UserConsole {
+public class InputView {
 
     private static Scanner scanner = new Scanner(System.in);
     private static final String NAME_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String TURN_MESSAGE = "시도할 횟수는 몇 회인가요?";
-    private static final String COMMA = ",";
+    private static final String DELIMITER = ",";
 
     public static String getConsoleTextFrom(final String message) {
-        ResultView.printMessage(message);
+        OutputView.printMessage(message);
         String line = scanner.nextLine().trim();
         return line;
     }
@@ -22,7 +20,7 @@ public class UserConsole {
     public static Participants names() {
         try {
             String names = getConsoleTextFrom(NAME_MESSAGE);
-            return Participants.createCars(names.split(COMMA));
+            return Participants.createCars(names.split(DELIMITER));
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             return names();
