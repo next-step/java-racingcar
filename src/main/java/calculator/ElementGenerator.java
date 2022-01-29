@@ -2,23 +2,24 @@ package calculator;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class ElementGenerator {
 
     private final String input;
-    private final LinkedList<String> numbers;
-    private final LinkedList<String> operators;
+    private final List<String> numbers;
+    private final List<String> operators;
 
     public ElementGenerator(String input) {
         this.input = input;
         validateFormat();
 
         input = input.replaceAll(" ", "");
-        numbers = new LinkedList<>(Arrays.asList(input.split("[-+*/]")));
+        numbers = Arrays.asList(input.split("[-+*/]"));
         operators = Arrays.stream(input.split("[0-9]+")).filter(operand -> !operand.isEmpty())
-            .collect(Collectors.toCollection(LinkedList::new));
+            .collect(Collectors.toList());
     }
 
     private void validateFormat() {
@@ -35,11 +36,11 @@ public class ElementGenerator {
         return !pattern.matcher(input).matches();
     }
 
-    public LinkedList<String> getNumbers() {
+    public List<String> getNumbers() {
         return numbers;
     }
 
-    public LinkedList<String> getOperators() {
+    public List<String> getOperators() {
         return operators;
     }
 }
