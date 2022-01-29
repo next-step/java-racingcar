@@ -7,7 +7,7 @@ public class RacingController {
 
     private Participants participants;
     private final int turnCount;
-    private String rp;
+    private String racingProcess;
     private String winner;
 
     private RacingController(Participants participants, int turn) {
@@ -23,12 +23,12 @@ public class RacingController {
         RacingGame racingGame = new RacingGame(participants, turnCount);
         racingGame.game();
 
-        rp = racingGame.getRacingProcess();
+        racingProcess = racingGame.getRacingProcess();
         winner = racingGame.getWinner();
     }
 
     public String getRacingProcess() {
-        return this.rp;
+        return this.racingProcess;
     }
 
     public String getWinner() {
