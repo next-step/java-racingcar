@@ -24,8 +24,8 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public void move(int randomValue) {
-        if (moveCheck(randomValue)) {
+    public void move(int value) {
+        if (moveCheck(value)) {
             distance++;
         }
     }
