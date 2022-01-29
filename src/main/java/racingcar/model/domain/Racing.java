@@ -1,7 +1,7 @@
 package racingcar.model.domain;
 
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 import racingcar.model.entity.Car;
 
 public class Racing {
@@ -19,15 +19,13 @@ public class Racing {
     }
 
     public void drive() {
-        IntStream.range(0, cars.size())
-            .forEach(idx -> {
-                racingCondition(idx);
-            });
+        cars.stream()
+            .forEach(car -> racingCondition(car));
     }
 
-    private void racingCondition(int idx) {
+    private void racingCondition(Car car) {
         if (carMoveBehavior.moveBehavior()) {
-            cars.get(idx).moveForward();
+            car.moveForward();
         }
     }
 }
