@@ -1,6 +1,8 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.domain.Cars;
+import racingcar.domain.Turn;
 import racingcar.domain.movable.MovableStrategy;
 import racingcar.view.OutputView;
 
@@ -21,10 +23,8 @@ public class GameController {
     }
 
     private void moveCars(final MovableStrategy strategy) {
-        for (int index = 0; index < turn; index++) {
-            cars.moveAll(strategy);
-            OutputView.printDistance(cars);
-        }
+        List<ResultDto> result = cars.moveAll(strategy, new Turn(turn));
+        OutputView.printDistance(result, cars.get().size());
     }
 
 }

@@ -1,31 +1,28 @@
 package racingcar.view;
 
+import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.controller.ResultDto;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.PlayerName;
 
 public class OutputView {
 
-    private static final String CAR_RACER_SPLITTER = " : ";
-    private static final String CAR_MOVE_CHAR = "-";
     private static final String CAR_WINNER_DELIMITER = ", ";
 
     private OutputView() {}
 
-    public static void printDistance(final Cars cars) {
-        cars.get()
-            .forEach(OutputView::carStatus);
-        System.out.println();
-    }
-
-    private static void carStatus(final Car car) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(car.name());
-        sb.append(CAR_RACER_SPLITTER);
-        for (int index = 0; index < car.distance(); index++) {
-            sb.append(CAR_MOVE_CHAR);
+    public static void printDistance(final List<ResultDto> result, int size) {
+        int index = 0;
+        for (ResultDto resultDto: result) {
+            System.out.println(resultDto.currentStatus());
+            if (index % size == size - 1) {
+                System.out.println();
+            }
+            index++;
         }
-        System.out.println(sb);
+        System.out.println();
     }
 
     public static void printWhoIsWinner(final Cars cars) {
@@ -42,6 +39,7 @@ public class OutputView {
     private static String winners(final Cars cars) {
         return cars.getWinnerList().stream()
             .map(Car::name)
+            .map(PlayerName::get)
             .collect(Collectors.joining(CAR_WINNER_DELIMITER));
     }
 }

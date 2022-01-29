@@ -16,9 +16,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.PlayerName;
+import racingcar.domain.Turn;
 import racingcar.domain.movable.RandomMovableStrategy;
 
-public class CarsTest {
+class CarsTest {
 
     private static final int TURNS = 10;
     private Cars cars;
@@ -35,9 +37,7 @@ public class CarsTest {
         Car D = new Car("D");
         cars = new Cars(Arrays.asList(A, B, C, D));
 
-        for (int i = 0; i < TURNS; i++) {
-            cars.moveAll(new RandomMovableStrategy());
-        }
+        cars.moveAll(new RandomMovableStrategy(), new Turn(TURNS));
     }
 
     @DisplayName("자동차 플레이어명이 유효한지 검사 (5자 이내이며, 최소 1명 이상의 플레이어 존재)")
@@ -52,7 +52,7 @@ public class CarsTest {
     @Test
     void testCarNamesTrimAfterSplitValid() {
         Cars cars = new Cars("Jason, Tommy");
-        assertThat(cars.get().stream().map(Car::name).collect(Collectors.toList()))
+        assertThat(cars.get().stream().map(Car::name).map(PlayerName::get).collect(Collectors.toList()))
             .isEqualTo(Arrays.asList("Jason", "Tommy"));
     }
 
