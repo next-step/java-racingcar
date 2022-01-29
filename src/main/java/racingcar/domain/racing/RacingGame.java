@@ -25,12 +25,11 @@ public class RacingGame {
         }
     }
 
-    public void printRacingProcess() {
-        System.out.print(racingRecord.getResultRecord());
+    public String getRacingProcess() {
+        return racingRecord.getResultRecord();
     }
 
-    public void printWinner() {
-        String winner = results.get(results.size() - 1).getWinner();
-        System.out.print(winner);
+    public String getWinner() {
+        return results.get(results.size() - 1).getWinner();
     }
 }

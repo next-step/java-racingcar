@@ -8,6 +8,8 @@ import racingcar.domain.car.Car;
 
 public class RacingResult {
 
+    private static final String DELIMITER = ", ";
+
     private List<Car> cars;
 
     private RacingResult(List<Car> cars) {
@@ -19,15 +21,13 @@ public class RacingResult {
     }
 
     public String getWinner() {
-        System.out.print("최종 우승자: ");
-
         Collections.sort(cars, (o1, o2) -> o2.position - o1.position);
         Car firstWinner = cars.get(0);
 
         String winners = cars.stream()
             .filter(car -> car.comparePosition(firstWinner))
             .map(Car::getName)
-            .collect(Collectors.joining(", "));
+            .collect(Collectors.joining(DELIMITER));
 
         return winners;
     }

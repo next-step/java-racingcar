@@ -5,9 +5,10 @@ import racingcar.domain.racing.RacingGame;
 
 public class RacingController {
 
-    private static final String HEAD_MESSAGE = "\n실행 결과";
     private Participants participants;
     private final int turnCount;
+    private String rp;
+    private String winner;
 
     private RacingController(Participants participants, int turn) {
         this.participants = participants;
@@ -19,10 +20,18 @@ public class RacingController {
     }
 
     public void start() {
-        System.out.println(HEAD_MESSAGE);
         RacingGame racingGame = new RacingGame(participants, turnCount);
         racingGame.game();
-        racingGame.printRacingProcess();
-        racingGame.printWinner();
+
+        rp = racingGame.getRacingProcess();
+        winner = racingGame.getWinner();
+    }
+
+    public String getRacingProcess() {
+        return this.rp;
+    }
+
+    public String getWinner() {
+        return this.winner;
     }
 }
