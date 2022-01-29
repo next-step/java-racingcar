@@ -23,7 +23,8 @@ public class Participants {
     }
 
     public RacingResult race() {
-        cars.stream().forEach(car -> car.go(new RandomGenerator()));
+        cars.stream()
+            .forEach(car -> car.go(new RandomGenerator()));
 
         return RacingResult.getInstance(cars);
     }
