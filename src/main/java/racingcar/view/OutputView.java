@@ -14,15 +14,12 @@ public class OutputView {
     private OutputView() {}
 
     public static void printDistance(final List<ResultDto> result, int size) {
-        int index = 0;
         for (ResultDto resultDto: result) {
             System.out.println(resultDto.currentStatus());
-            if (index % size == size - 1) {
+            if (result.indexOf(resultDto) % size == size - 1) {
                 System.out.println();
             }
-            index++;
         }
-        System.out.println();
     }
 
     public static void printWhoIsWinner(final Cars cars) {
