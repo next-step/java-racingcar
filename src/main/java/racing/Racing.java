@@ -3,11 +3,13 @@ package racing;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
 
     private final List<Car> cars;
+    private final List<RoundResult> results = new ArrayList<>();
     private int roundNumber;
 
     public Racing(List<Car> cars){
@@ -26,22 +28,21 @@ public class Racing {
         }
     }
 
-    public List<Car> race() {
+    public void race() {
         while (roundNumber-- > 0) {
-            startRound();
-            System.out.println();
+            results.add(Round.play(cars));
         }
-        return cars;
+        printResult();
     }
 
-    private void startRound() {
-        for (Car car : cars) {
-            car.move(makeRandom());
-            car.printDistance(); //TODO: Step2에서 입출력 분리 리팩토링 예정
+    private void printResult() {
+        for(RoundResult result : results) {
+            System.out.println(result.getStringResult());
         }
     }
 
-    private int makeRandom() {
-        return (int) (Math.random() * 10);
+    public List<Car> getLastResult() {
+        final int LAST_INDEX = results.size() - 1;
+        return results.get(LAST_INDEX).getCars();
     }
 }

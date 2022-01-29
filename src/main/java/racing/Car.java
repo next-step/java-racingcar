@@ -34,13 +34,21 @@ public class Car implements Comparable<Car> {
         return randomValue >= MOVE_CONDITION;
     }
 
-    //TODO: Step2에서 입출력 분리로 리팩토링 예정
-    public void printDistance() {
+    @Override
+    public int compareTo(Car o) {
+        return o.distance - this.distance;
+    }
+
+    public boolean isSameDistance(int bestDistance) {
+        return distance == bestDistance;
+    }
+
+    public String getStringDistance() {
         final StringBuilder sb = new StringBuilder();
         for (int i = 0; i < distance; i++) {
             sb.append('-');
         }
-        System.out.println(name + " : " + sb);
+        return name + " : " + sb + "\n";
     }
 
     public int getDistance() {
@@ -49,14 +57,5 @@ public class Car implements Comparable<Car> {
 
     public String getName() {
         return name;
-    }
-
-    @Override
-    public int compareTo(Car o) {
-        return o.distance - this.distance;
-    }
-
-    public boolean isSameDistance(int bestDistance) {
-        return distance == bestDistance;
     }
 }
