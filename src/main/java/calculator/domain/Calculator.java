@@ -4,10 +4,6 @@ import java.util.List;
 
 public class Calculator {
 
-    public Calculator() {
-
-    }
-
     private double doBinaryOperation(double number1, double number2, Operator symbol) {
         if (Operator.PLUS == symbol) {
             return Operator.PLUS.operate(number1, number2);
