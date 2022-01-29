@@ -55,4 +55,8 @@ public class Car implements Comparable<Car> {
     public int compareTo(Car o) {
         return o.distance - this.distance;
     }
+
+    public boolean isSameDistance(int bestDistance) {
+        return distance == bestDistance;
+    }
 }

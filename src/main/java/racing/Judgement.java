@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 public class Judgement {
 
     private final List<Car> cars;
-    private final int bestScore;
+    private final int bestDistance;
 
     public Judgement(List<Car> cars) {
         this.cars = cars;
-        this.bestScore = getBestScore();
+        this.bestDistance = getBestScore();
     }
 
     private int getBestScore() {
@@ -20,7 +20,7 @@ public class Judgement {
 
     public List<String> judgeWinner() {
         return cars.stream()
-            .filter(car -> car.getDistance() == bestScore)
+            .filter(car -> car.isSameDistance(bestDistance))
             .map(Car::getName)
             .collect(Collectors.toList());
     }
