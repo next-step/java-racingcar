@@ -1,7 +1,6 @@
 package racingcar.domain.car;
 
 import java.util.regex.Pattern;
-import racingcar.view.UserConsole;
 
 public class Turn {
 
@@ -11,27 +10,13 @@ public class Turn {
     private static final Pattern DIGIT = Pattern.compile("[+-]?\\d*(\\.\\d+)?");
     private final int value;
 
-    private Turn() {
-        this.value = Integer.valueOf(setTurn());
+    public Turn(String input) {
+        validateTurn(input);
+        this.value = Integer.valueOf(input);
     }
 
-    public static Turn getInstance() {
-        return new Turn();
-    }
-
-    private String setTurn() {
-        String turn = UserConsole.getConsoleTextFrom(TURN_MESSAGE).trim();
-        try {
-            validateTurn(turn);
-        } catch (NumberFormatException e1) {
-            e1.printStackTrace();
-            return setTurn();
-        } catch (IllegalArgumentException e2) {
-            e2.printStackTrace();
-            return setTurn();
-        }
-
-        return turn;
+    public static Turn createTurn(String input) {
+        return new Turn(input.trim());
     }
 
     public static void validateTurn(String turn) {
