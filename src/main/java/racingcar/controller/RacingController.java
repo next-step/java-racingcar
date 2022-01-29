@@ -22,7 +22,6 @@ public class RacingController {
     private InputDTO inputDTO;
     private String name;
     private int count;
-    private List<String> parsingName;
 
     public void run() throws Exception {
         startGame();
@@ -50,21 +49,21 @@ public class RacingController {
     }
 
     private void startGame() throws IOException {
-        userCars();
+        userCarsReceive();
         userTry();
-        parsingName = StringUtils.splitStr(name);
+        List<String> parsingName = StringUtils.splitStr(name);
         inputDTO = new InputDTO(parsingName, name, count);
     }
 
     private void userTry() throws IOException {
-        do{
+        do {
                 count = inputRacingTry();
-            }while (Validation.parsingRacingTry(count));
+        }while (Validation.parsingRacingTry(count));
     }
 
-    private void userCars() throws IOException {
-        do{
+    private void userCarsReceive() throws IOException {
+        do {
             name = inputCarName();
-        }while (Validation.parsingCarName(name));
+        } while (Validation.parsingCarName(name));
     }
 }

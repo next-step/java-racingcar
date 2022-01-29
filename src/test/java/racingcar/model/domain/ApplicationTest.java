@@ -20,11 +20,9 @@ import racingcar.model.domain.RandomNumberBehavior;
 import racingcar.model.domain.Victory;
 import racingcar.model.entity.Car;
 import racingcar.model.utils.common.Validation;
-import racingcar.view.RacingCarUserConsole;
 
 public class ApplicationTest {
 
-    private RacingCarUserConsole userConsole;
     private static final String COMMAS = ",";
     private InputDTO inputDTO;
 
@@ -37,13 +35,13 @@ public class ApplicationTest {
     @DisplayName("유저_입력_글자길이_및_입력_중복_테스트")
     @Test
     void userInputLengthDuplicationTest() {
-        assertTrue(Validation.parsingCarName(inputDTO.getCarNameInput()) == true);
+        assertTrue(Validation.parsingCarName(inputDTO.getCarNameInput()));
     }
 
     @DisplayName("입력_횟수_범위_테스트")
     @Test
     void userInputRacingTryTest() {
-        assertThat(Validation.parsingRacingTry(inputDTO.getRacingTryCounter()) == true);
+        assertThat(Validation.parsingRacingTry(inputDTO.getRacingTryCounter()));
     }
 
     @DisplayName("우승자_확인_테스트")
@@ -94,10 +92,11 @@ public class ApplicationTest {
         final List<Car> cars = Arrays.asList(new Car(one), new Car(two), new Car(three));
         Racing racing = new Racing(cars, new FixNumberBehavior(true));
         racing.drive();
+        racing.drive();
         assertAll(
-            () -> assertThat(cars.get(0).getStep()).isEqualTo(1),
-            () -> assertThat(cars.get(1).getStep()).isEqualTo(1),
-            () -> assertThat(cars.get(2).getStep()).isEqualTo(1)
+            () -> assertThat(cars.get(0).getStep()).isEqualTo(2),
+            () -> assertThat(cars.get(1).getStep()).isEqualTo(2),
+            () -> assertThat(cars.get(2).getStep()).isEqualTo(2)
         );
     }
 }
