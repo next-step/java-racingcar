@@ -52,7 +52,7 @@ public class RacingController {
         userCarsReceive();
         userTry();
         List<String> parsingName = StringUtils.splitStr(name);
-        inputDTO = new InputDTO(parsingName, name, count);
+        inputDTO = new InputDTO(parsingName, count);
     }
 
     private void userTry() throws IOException {
