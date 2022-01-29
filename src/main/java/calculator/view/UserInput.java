@@ -23,7 +23,7 @@ public class UserInput {
         }
     }
 
-    public String getUserInputFrom(String userInput) {
+    private String getUserInputFrom(String userInput) {
         validateUserInput(userInput);
         return userInput;
     }
