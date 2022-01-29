@@ -14,9 +14,7 @@ public class Car {
     public int position;
 
     private Car(String name) {
-        validateCarName(name);
-        this.name = name;
-        this.position = INITIAL_POSITION;
+        this(name, INITIAL_POSITION);
     }
 
     private Car(String name, int position) {
@@ -33,12 +31,10 @@ public class Car {
         return new Car(name, position);
     }
 
-    public String getName() {
-        return this.name;
-    }
-
-    public int getPosition() {
-        return this.position;
+    private static void validateCarName(String name) {
+        if (name.length() > MAXIMUM_ALLOWED_NAME_LENGTH) {
+            throw new IllegalArgumentException(NAME_LENGTH_ERROR_MESSAGE);
+        }
     }
 
     public void go(RandomStrategy randomStrategy) {
@@ -47,13 +43,15 @@ public class Car {
         }
     }
 
-    private static void validateCarName(String name) {
-        if (name.length() > MAXIMUM_ALLOWED_NAME_LENGTH) {
-            throw new IllegalArgumentException(NAME_LENGTH_ERROR_MESSAGE);
-        }
-    }
-
     public boolean comparePosition(Car o) {
         return position == o.position;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getPosition() {
+        return this.position;
     }
 }
