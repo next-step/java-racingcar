@@ -17,10 +17,6 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
     public void run(final List<String> input) {
         cars = new ArrayList<>();
         for (String carName : input) {
