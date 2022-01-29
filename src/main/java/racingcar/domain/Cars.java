@@ -31,7 +31,7 @@ public class Cars {
     }
 
     public List<ResultDto> moveAll(final MovableStrategy strategy, Turn turn) {
-        while (turn.isTurnEnd()) {
+        while (!turn.isTurnEnd()) {
             result = Stream.concat(result.stream(), carList.stream().map(car -> car.run(strategy)))
                 .collect(Collectors.toList());
         }
