@@ -14,7 +14,7 @@ public class RacingGame {
     public RacingGame(Participants participants, int turnCount) {
         this.participants = participants;
         this.turnCount = turnCount;
-        results = new ArrayList<>();
+        this.results = new ArrayList<>();
         this.racingRecord = new RacingRecord();
     }
 
