@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.model.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -97,6 +97,18 @@ public class ApplicationTest {
             () -> assertThat(cars.get(0).getStep()).isEqualTo(2),
             () -> assertThat(cars.get(1).getStep()).isEqualTo(2),
             () -> assertThat(cars.get(2).getStep()).isEqualTo(2)
+        );
+    }
+
+    @DisplayName("일급 컬렉션 테스트")
+    @Test
+    void name() {
+        Cars cars = new Cars(inputDTO.getSplitUserInput());
+        List<Car> carsTest = cars.cars();
+        assertAll(
+            () -> assertThat(carsTest.get(0).getName()).isEqualTo("a"),
+            () -> assertThat(carsTest.get(1).getName()).isEqualTo("aa"),
+            () -> assertThat(carsTest.get(2).getName()).isEqualTo("aaa")
         );
     }
 }
