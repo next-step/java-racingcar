@@ -21,7 +21,7 @@ public class RacingController {
 
     public void start() {
         RacingGame racingGame = new RacingGame(participants, turnCount);
-        racingGame.game();
+        racingGame.gameStart();
 
         racingProcess = racingGame.getRacingProcess();
         winner = racingGame.getWinner();

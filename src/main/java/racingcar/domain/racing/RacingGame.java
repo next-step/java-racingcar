@@ -18,7 +18,7 @@ public class RacingGame {
         this.racingRecord = new RacingRecord();
     }
 
-    public void game() {
+    public void gameStart() {
         for (int i = 0; i < turnCount; i++) {
             results.add(participants.race());
             racingRecord.appendRecord(results.get(i));
