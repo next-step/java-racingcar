@@ -1,6 +1,8 @@
 package racingcar.view;
 
 import java.util.Scanner;
+import javax.jws.soap.SOAPBinding.Use;
+import javax.xml.transform.Result;
 import racingcar.domain.car.Participants;
 import racingcar.domain.car.Turn;
 
@@ -11,8 +13,8 @@ public class UserConsole {
     private static final String TURN_MESSAGE = "시도할 횟수는 몇 회인가요?";
     private static final String COMMA = ",";
 
-    public static String getConsoleTextFrom(String message) {
-        System.out.println(message);
+    public static String getConsoleTextFrom(final String message) {
+        ResultView.printMessage(message);
         String line = scanner.nextLine().trim();
         return line;
     }
