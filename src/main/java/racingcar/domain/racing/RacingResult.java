@@ -3,7 +3,6 @@ package racingcar.domain.racing;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.domain.car.Participants;
 import racingcar.domain.car.Car;
 
 public class RacingResult {
@@ -34,9 +33,5 @@ public class RacingResult {
 
     public List<Car> getResult() {
         return this.cars;
-    }
-
-    public static RacingResult toRacingResult(Participants participants) {
-        return RacingResult.getInstance(participants.getParticipants());
     }
 }
