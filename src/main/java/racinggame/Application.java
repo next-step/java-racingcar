@@ -1,5 +1,6 @@
 package racinggame;
 
+import racinggame.domain.AllRoundHistory;
 import racinggame.domain.Cars;
 import racinggame.domain.random.RandomGenerator;
 import racinggame.view.InputView;
@@ -16,14 +17,14 @@ public class Application {
         final RandomGenerator randomGenerator=new RandomGenerator();
 
         int playGameNumber = inputView.inputTryNumber();
-
+        final AllRoundHistory allRoundHistory=new AllRoundHistory();
         final ResultView resultView = new ResultView();
         for (; playGameNumber > 0; playGameNumber--) {
             cars.move(randomGenerator);
-            resultView.captureResult(cars);
+            allRoundHistory.captureRoundHistory(cars);
 
         }
-        resultView.printCarsLocation();
+        resultView.printCarsLocation(allRoundHistory.getAllRoundHistory());
 
         final int maxLocation = cars.findMaxLocation();
         final Winners winners = new Winners(cars, maxLocation);
