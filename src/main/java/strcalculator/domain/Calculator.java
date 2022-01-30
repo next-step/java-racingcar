@@ -15,12 +15,14 @@ public class Calculator {
         this.numberList = numberList;
         this.operandList = operandList;
     }
+
     private final Map<String, Supplier<Integer>> operandDivision = new HashMap<>();
+
     {
-        operandDivision.put("+", ()-> leftNumber+rightNumber);
-        operandDivision.put("-", ()-> leftNumber-rightNumber);
-        operandDivision.put("*", ()-> leftNumber*rightNumber);
-        operandDivision.put("/", ()-> leftNumber/rightNumber);
+        operandDivision.put("+", () -> leftNumber + rightNumber);
+        operandDivision.put("-", () -> leftNumber - rightNumber);
+        operandDivision.put("*", () -> leftNumber * rightNumber);
+        operandDivision.put("/", () -> leftNumber / rightNumber);
     }
 
     public void calculate() {
