@@ -1,8 +1,8 @@
-package racinggame.domain;
+package racinggame.view;
 
 import java.util.Scanner;
 
-public class GameInit {
+public class InputView {
 
     private static final int MAX_CAR_NAME_LENGTH = 5;
     private static final String CAR_NAME_LIMITED_LENGTH = "자동차의 이름은 5자를 초과할 수 없습니다.";
