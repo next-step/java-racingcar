@@ -14,9 +14,7 @@ public class InputView {
             Scanner scanner = new Scanner(System.in);
             String userInput = scanner.nextLine();
             List<String> carNames = Arrays.asList(userInput.split(SEPARATOR));
-            if (Car.isLessThanMax(carNames)) {
-                return carNames;
-            }
+            return carNames;
         }
     }
 

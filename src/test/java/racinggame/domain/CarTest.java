@@ -27,11 +27,11 @@ class CarTest {
         Assertions.assertThat(testCar2.getLocation()).isEqualTo(0);
     }
 
-    @DisplayName("각 자동차 이름은 5글자를 초과할 수 없다.")
-    @Test
-    void 자동차_이름_길이_제한(){
-        List<String> names = Arrays.asList("123", "23456", "123456");
-        boolean isCorrect = Car.isLessThanMax(names);
-        Assertions.assertThat(isCorrect).isFalse();
-    }
+//    @DisplayName("각 자동차 이름은 5글자를 초과할 수 없다.")
+//    @Test
+//    void 자동차_이름_길이_제한(){
+//        List<String> names = Arrays.asList("123", "23456", "123456");
+//        boolean isCorrect = Car.isLessThanMax(names);
+//        Assertions.assertThat(isCorrect).isFalse();
+//    }
 }
