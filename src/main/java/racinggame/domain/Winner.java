@@ -17,10 +17,8 @@ public class Winner {
     }
 
     private static int findMaxLocation(List<Car> cars) {
-        int maxLocation = 0;
-        for (Car car : cars) {
-            maxLocation = Math.max(car.getLocation(), maxLocation);
-        }
-        return maxLocation;
+        return cars.stream()
+            .mapToInt(Car::getLocation)
+            .max().getAsInt();
     }
 }
