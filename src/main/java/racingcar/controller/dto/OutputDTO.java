@@ -1,6 +1,5 @@
 package racingcar.controller.dto;
 
-import java.util.List;
 import racingcar.model.entity.Car;
 
 public class OutputDTO {
@@ -13,12 +12,6 @@ public class OutputDTO {
 
     public OutputDTO(final Car car) {
         this.car = car;
-    }
-
-    public void carsStatement(final List<Car> cars) {
-        for (Car car : cars) {
-            carStatementMessage();
-        }
     }
 
     public String getCarName() {
