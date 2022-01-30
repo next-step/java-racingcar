@@ -19,9 +19,7 @@ public class Cars {
 
     public void run(final List<String> input) {
         cars = new ArrayList<>();
-        for (String carName : input) {
-            cars.add(new Car(carName));
-        }
+        input.stream().forEach(carNmae->cars.add(new Car(carNmae)));
     }
 }
 
