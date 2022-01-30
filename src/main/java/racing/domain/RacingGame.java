@@ -41,8 +41,9 @@ public class RacingGame {
     }
 
     private void startRacing(final TryNumber tryNumber) {
-        while (tryNumber.nextStep()) {
+        while (tryNumber.hasNextStep()) {
             raceHistories.add(cars.driveCars());
+            tryNumber.nextStep();
         }
     }
 }
