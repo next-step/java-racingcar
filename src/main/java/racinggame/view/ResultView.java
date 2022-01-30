@@ -11,9 +11,11 @@ import racinggame.domain.Winners;
 
 public class ResultView {
 
+    private static  final String RUN_RESULT_TEXT="실행 결과";
     private final List<RoundHistory> roundHistories = new ArrayList<>();
 
     public ResultView() {
+        System.out.println(RUN_RESULT_TEXT);
     }
 
     public void captureResult(Cars cars) {
