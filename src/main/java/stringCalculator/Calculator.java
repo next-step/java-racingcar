@@ -5,24 +5,24 @@ import java.util.List;
 public class Calculator {
 
     public int calculateByOperator (List<String> userInput){
-        int result=Integer.parseInt(userInput.get(0));
+        int result = Integer.parseInt(userInput.get(0));
 
         for (int i=1; i<userInput.size()-1; i+=2){
-            if (userInput.get(i).equals("+")){
-                result = sum(result,Integer.parseInt(userInput.get(i+1)));
-                continue;
-            }
-            if (userInput.get(i).equals("-")){
-                result= subtract(result,Integer.parseInt(userInput.get(i+1)));
-                continue;
-            }
-            if (userInput.get(i).equals("*")){
-                result= multiply(result,Integer.parseInt(userInput.get(i+1)));
-                continue;
-            }
-            if (userInput.get(i).equals("/")){
-                result= divide(result,Integer.parseInt(userInput.get(i+1)));
-                continue;
+            int nextNumber = Integer.parseInt(userInput.get(i+1));
+
+            switch(userInput.get(i)) {
+                case "+":
+                    result = sum(result, nextNumber);
+                    continue;
+                case "-":
+                    result = subtract(result, nextNumber);
+                    continue;
+                case "*":
+                    result = multiply(result, nextNumber);
+                    continue;
+                case "/":
+                    result = divide(result, nextNumber);
+                    continue;
             }
         }
         return result;
