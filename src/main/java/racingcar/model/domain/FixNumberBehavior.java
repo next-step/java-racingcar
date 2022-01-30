@@ -2,22 +2,9 @@ package racingcar.model.domain;
 
 public class FixNumberBehavior implements CarMoveBehavior {
 
-    private static boolean isMove;
-    private static FixNumberBehavior fixNumberBehavior;
+    private final boolean isMove;
 
-    static {
-        fixNumberBehavior = new FixNumberBehavior(isMove);
-    }
-
-    private FixNumberBehavior() {
-
-    }
-
-    public static FixNumberBehavior getInstance(){
-        return fixNumberBehavior;
-    }
-
-    public FixNumberBehavior(final boolean isMove) {
+    public FixNumberBehavior(boolean isMove) {
         this.isMove = isMove;
     }
 
