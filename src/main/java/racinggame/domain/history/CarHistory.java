@@ -7,7 +7,7 @@ public class CarHistory {
     private final String carName;
     private final Integer location;
 
-    public CarHistory(Car car) {
+    public CarHistory(final Car car) {
         carName = car.getCarName();
         location = car.getLocation();
     }

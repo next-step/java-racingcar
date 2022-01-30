@@ -34,7 +34,7 @@ public class InputView {
         return tryNumber;
     }
 
-    private boolean validationStringLength(String[] playerNameList) {
+    private boolean validationStringLength(final String[] playerNameList) {
         boolean isValidate = true;
         for (String playerName : playerNameList) {
             if (playerName.length() > MAX_CAR_NAME_LENGTH) {

@@ -2,9 +2,9 @@ package racinggame.domain.winner;
 
 public class Winner {
 
-    private String winnerName;
+    private final String winnerName;
 
-    public Winner(String winnerName) {
+    public Winner(final String winnerName) {
         this.winnerName = winnerName;
     }
 

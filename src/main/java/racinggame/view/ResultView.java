@@ -18,7 +18,7 @@ public class ResultView {
 
 
 
-    public void printCarsLocation(List<RoundHistory> roundHistories) {
+    public void printCarsLocation(final List<RoundHistory> roundHistories) {
         for (RoundHistory roundHistory : roundHistories) {
             printCarNames(roundHistory);
             System.out.println();
@@ -26,21 +26,21 @@ public class ResultView {
 
     }
 
-    private void printCarNames(RoundHistory roundHistory) {
+    private void printCarNames(final RoundHistory roundHistory) {
         for (CarHistory carHistory : roundHistory.getRoundHistory()) {
             System.out.print(carHistory.getCarName() + " : " + "");
             printLocation(carHistory.getLocation());
         }
     }
 
-    private void printLocation(int location) {
+    private void printLocation(final int location) {
         for (int i = 0; i < location; i++) {
             System.out.print('-');
         }
         System.out.println();
     }
 
-    public void printWinner(Winners winners) {
+    public void printWinner(final Winners winners) {
         List<String> winnerNames = new ArrayList<>();
         System.out.print("최종 우승자: ");
         for (Winner winner : winners.getWinners()) {

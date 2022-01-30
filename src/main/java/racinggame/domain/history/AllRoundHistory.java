@@ -10,7 +10,7 @@ public class AllRoundHistory {
     private final List<RoundHistory> allRoundHistory = new ArrayList<>();
 
 
-    public void captureRoundHistory(Cars cars) {
+    public void captureRoundHistory(final Cars cars) {
         List<CarHistory> carHistories = new ArrayList<>();
         for (Car car : cars.getCars()) {
             carHistories.add(new CarHistory(car));

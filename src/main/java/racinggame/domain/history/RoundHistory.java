@@ -8,7 +8,7 @@ public class RoundHistory {
 
     private final List<CarHistory> carHistories;
 
-    public RoundHistory(List<CarHistory> carHistoryList) {
+    public RoundHistory(final List<CarHistory> carHistoryList) {
         this.carHistories = carHistoryList;
     }
 
