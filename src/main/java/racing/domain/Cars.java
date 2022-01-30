@@ -3,17 +3,15 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Cars {
 
     private static final int RANGE_OF_RANDOM_NUMBER = 10;
 
-    private List<Car> cars;
+    private final List<Car> cars = new ArrayList<>();
 
     public Cars(List<String> names) {
         checkCarCount(names);
-        cars = new ArrayList<>();
         for(String name: names) {
             cars.add(new Car(name));
         }
