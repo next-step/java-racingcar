@@ -1,7 +1,7 @@
 package racinggame;
 
 import racinggame.domain.Cars;
-import racinggame.domain.GameInit;
+import racinggame.view.InputView;
 import racinggame.domain.Winners;
 import racinggame.view.ResultView;
 
@@ -9,11 +9,11 @@ public class Application {
 
     public static void main(String[] args) {
 
-        final GameInit gameInit = new GameInit();
-        final String[] carNames = gameInit.inputPlayerName();
+        final InputView inputView = new InputView();
+        final String[] carNames = inputView.inputPlayerName();
         final Cars cars = new Cars(carNames);
 
-        int playGameNumber = gameInit.inputTryNumber();
+        int playGameNumber = inputView.inputTryNumber();
         System.out.println("실행 결과");
         final ResultView resultView = new ResultView();
         for (; playGameNumber > 0; playGameNumber--) {
