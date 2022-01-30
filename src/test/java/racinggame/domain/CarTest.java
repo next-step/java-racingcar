@@ -1,20 +1,27 @@
 package racinggame.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import calculator.domain.Validator;
-import java.util.Arrays;
-import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
-    @DisplayName("5자가 넘는 자동차 이름 입력")
-    @Test
-    void 자동차_이름_체크() {
+    @DisplayName("자동차는 5자 이하의 이름을 갖는다")
+    @ValueSource(strings = {"123", "가나다", "abc"})
+    @ParameterizedTest
+    void 자동차_이름_생성(final String name) {
+        Car car = Car.of(name);
+        final String actual = car.getName();
+        Assertions.assertThat(actual).isEqualTo(name);
+    }
+
+    @DisplayName("자동차 이름은 5자를 넘을 수 없다")
+    @ValueSource(strings = {"123456", "가나다라마바사", "abcdef"})
+    @ParameterizedTest
+    void 자동차_이름_체크(final String name) {
         Assertions.assertThatIllegalArgumentException()
-            .isThrownBy(() -> Car.of("123456"));
+            .isThrownBy(() -> Car.of(name));
     }
 
     @DisplayName("자동차가 전진하는지 확인")
@@ -26,12 +33,4 @@ class CarTest {
         Assertions.assertThat(testCar1.getLocation()).isEqualTo(1);
         Assertions.assertThat(testCar2.getLocation()).isEqualTo(0);
     }
-
-//    @DisplayName("각 자동차 이름은 5글자를 초과할 수 없다.")
-//    @Test
-//    void 자동차_이름_길이_제한(){
-//        List<String> names = Arrays.asList("123", "23456", "123456");
-//        boolean isCorrect = Car.isLessThanMax(names);
-//        Assertions.assertThat(isCorrect).isFalse();
-//    }
 }
