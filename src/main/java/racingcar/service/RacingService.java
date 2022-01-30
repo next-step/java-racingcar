@@ -33,10 +33,6 @@ public class RacingService {
             });
     }
 
-    public List<Car> notifyCurrentStatement() {
-        return cars.getCars();
-    }
-
     public List<String> judgeWinners() {
         return cars.getCars().stream()
             .filter(car -> (car.getStep() == maxDriveLength() && car.getStep() > 0))
