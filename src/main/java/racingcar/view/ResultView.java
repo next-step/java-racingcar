@@ -1,9 +1,9 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
-
 import java.util.List;
-import racingcar.domain.dto.OutputDto;
+import racingcar.domain.CarStateInRace;
+import racingcar.domain.MovingResult;
+import racingcar.domain.RacingResult;
 
 import static racingcar.common.SystemMessage.FINAL_WINNERS_INFO;
 import static racingcar.common.SystemMessage.NO_WINNER_INFO;
@@ -22,7 +22,8 @@ public class ResultView {
         return new ResultView();
     }
 
-    public String announceWinner(final List<String> judgeWinners) {
+    public String announceWinner(final RacingResult result) {
+        List<String> judgeWinners = result.getResult();
         stringBuilder.setLength(ZERO);
 
         if (judgeWinners.size() == ZERO) {
@@ -33,9 +34,10 @@ public class ResultView {
         return stringBuilder.toString();
     }
 
-    public void announceRacingDetails(final List<OutputDto> outputDtos) {
-        for (OutputDto dto : outputDtos) {
-            System.out.println(dto.getCurrentCarStatement());
+    public void announceRacingDetails(final MovingResult movingResult) {
+        List<CarStateInRace> carStateInRaces = movingResult.getCarsState();
+        for (CarStateInRace state : carStateInRaces) {
+            System.out.println(state.getCurrentCarStatement());
         }
     }
 

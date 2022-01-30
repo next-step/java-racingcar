@@ -23,12 +23,12 @@ class WinnerTest {
     @Test
     void winnerTest() {
         racingService.drive();
-        assertThat(racingService.judgeWinners()).containsExactly("c", "java", "jpa");
+        assertThat(racingService.judgeWinners().getResult()).containsExactly("c", "java", "jpa");
     }
 
     @Test
     void noWinnerTest() {
-        assertThat(racingService.judgeWinners().size()).isEqualTo(0);
+        assertThat(racingService.judgeWinners().getResult().size()).isEqualTo(0);
     }
 
 }

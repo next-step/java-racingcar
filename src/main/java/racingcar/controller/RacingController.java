@@ -28,7 +28,7 @@ public class RacingController {
         for (int time = START_FROM_ZERO; time < inputView.getRacingTime(); time++) {
             racingService.drive();
         }
-        resultView.announceRacingDetails(racingService.getOutputDtos());
+        resultView.announceRacingDetails(racingService.getMovingResult());
     }
 
     public String finishRacing() {
