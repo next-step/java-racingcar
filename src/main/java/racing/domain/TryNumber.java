@@ -7,17 +7,16 @@ public class TryNumber {
     private int tryNumber;
 
     public TryNumber(int tryNumber) {
-        isValidTryNumber(tryNumber);
+        checkValidTryNumber(tryNumber);
         this.tryNumber = tryNumber;
     }
-
-    //TODO: 메서드명 변경
-    private void isValidTryNumber(final int tryNumber) {
+    
+    private void checkValidTryNumber(final int tryNumber) {
         if (tryNumber < MIN_TRY_NUMBER) {
             throw new IllegalArgumentException("[ERROR] 시도 횟수는 최소 1회 이상이어야 합니다.");
         }
     }
-    
+
     public boolean nextStep() {
         if (this.tryNumber == 0) {
             return false;
