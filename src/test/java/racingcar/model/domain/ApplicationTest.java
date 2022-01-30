@@ -3,6 +3,7 @@ package racingcar.model.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static racingcar.model.utils.common.Parsing.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +16,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.controller.dto.InputDTO;
 import racingcar.controller.dto.OutputDTO;
 import racingcar.model.entity.Car;
+import racingcar.model.utils.common.Parsing;
 import racingcar.model.utils.common.Validation;
 
 public class ApplicationTest {
@@ -32,13 +34,13 @@ public class ApplicationTest {
     @Test
     void userInputLengthDuplicationTest() {
         String input = inputDTO.getSplitUserInput().stream().map(String::new).collect(Collectors.joining(","));
-        assertFalse(Validation.parsingCarName(input));
+        assertFalse(parsingCarName(input));
     }
 
     @DisplayName("입력_횟수_범위_테스트")
     @Test
     void userInputRacingTryTest() {
-        assertThat(Validation.parsingRacingTry(inputDTO.getRacingTryCounter()));
+        assertThat(parsingRacingTry(inputDTO.getRacingTryCounter()));
     }
 
     @DisplayName("우승자_확인_테스트")
