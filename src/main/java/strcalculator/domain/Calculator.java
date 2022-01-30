@@ -11,7 +11,7 @@ public class Calculator {
     private int leftNumber = 0;
     private int rightNumber = 0;
 
-    public Calculator(String[] numberList, String[] operandList) {
+    public Calculator(final String[] numberList, final String[] operandList) {
         this.numberList = numberList;
         this.operandList = operandList;
     }
