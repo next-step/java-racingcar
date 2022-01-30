@@ -1,10 +1,8 @@
-package racingcar.model;
+package racingcar.view;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-import racingcar.util.Message;
 
-public class User {
+public class InputView {
 
     public String[] getCarName() {
         Scanner scanner = new Scanner(System.in);
