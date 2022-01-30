@@ -2,8 +2,8 @@ package racingcar.domain.car;
 
 public class Name {
 
-    private static final String NAME_LENGTH_ERROR_MESSAGE = "자동차 이름이 5자를 초과합니다.";
     private static final int MAXIMUM_ALLOWED_NAME_LENGTH = 5;
+    private static final String NAME_LENGTH_ERROR_MESSAGE = "자동차 이름이 " + MAXIMUM_ALLOWED_NAME_LENGTH + "자를 초과합니다.";
 
     private final String name;
 
