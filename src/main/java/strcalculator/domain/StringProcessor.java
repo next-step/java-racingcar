@@ -1,9 +1,5 @@
 package strcalculator.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class StringProcessor {
 
     private String userInput;
@@ -12,6 +8,7 @@ public class StringProcessor {
         this.userInput = userInput;
         deleteSpaceString();
         checkInput();
+        validation();
     }
 
     private void checkInput() {
@@ -20,7 +17,7 @@ public class StringProcessor {
         }
     }
 
-    public void validation() {
+    private void validation() {
         final boolean matches = userInput.matches("[+\\-*/]|[0-9]+");
         if (matches == false) {
             throw new IllegalArgumentException("숫자와 연산자, 공백문자만 입력할 수 있습니다.");
