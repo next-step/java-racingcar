@@ -2,7 +2,7 @@ package racingcar.model.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,10 +14,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.controller.dto.InputDTO;
 import racingcar.controller.dto.OutputDTO;
-import racingcar.model.domain.FixNumberBehavior;
-import racingcar.model.domain.Racing;
-import racingcar.model.domain.RandomNumberBehavior;
-import racingcar.model.domain.Victory;
 import racingcar.model.entity.Car;
 import racingcar.model.utils.common.Validation;
 
@@ -29,13 +25,14 @@ public class ApplicationTest {
     @DisplayName("객체 초기화")
     @BeforeEach
     void init() {
-        inputDTO = new InputDTO(Arrays.asList("a", "aa", "aaa"), "CarNameIsLong", 10);
+        inputDTO = new InputDTO(Arrays.asList("a", "aa", "aaa"), 10);
     }
 
     @DisplayName("유저_입력_글자길이_및_입력_중복_테스트")
     @Test
     void userInputLengthDuplicationTest() {
-        assertTrue(Validation.parsingCarName(inputDTO.getCarNameInput()));
+        String input = inputDTO.getSplitUserInput().stream().map(String::new).collect(Collectors.joining(","));
+        assertFalse(Validation.parsingCarName(input));
     }
 
     @DisplayName("입력_횟수_범위_테스트")
