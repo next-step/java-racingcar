@@ -17,12 +17,16 @@ public class TryNumber {
         }
     }
 
-    public boolean nextStep() {
+    public boolean hasNextStep() {
         if (this.tryNumber == 0) {
             return false;
         }
-        decrease();
         return true;
+    }
+
+    public void nextStep() {
+        checkValidTryNumber(this.tryNumber);
+        decrease();
     }
 
     private void decrease() {
