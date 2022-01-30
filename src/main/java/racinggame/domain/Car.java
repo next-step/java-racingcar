@@ -5,6 +5,7 @@ import java.util.List;
 public class Car {
 
     private static final int DEFAULT_LOCATION = 0;
+    private static final int FORWARD_NUMBER = 4;
 
     private final CarName name;
     private int location;
@@ -22,15 +23,17 @@ public class Car {
         return new Car(name);
     }
 
+    public void moveForward(final int randomNumber) {
+        if (randomNumber >= FORWARD_NUMBER) {
+            this.location++;
+        }
+    }
+
     public int getLocation() {
         return location;
     }
 
     public String getName() {
         return name.get();
-    }
-
-    public void moveForward() {
-        this.location++;
     }
 }

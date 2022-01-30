@@ -24,13 +24,21 @@ class CarTest {
             .isThrownBy(() -> Car.of(name));
     }
 
-    @DisplayName("자동차가 전진하는지 확인")
-    @Test
-    void 자동차_이동() {
-        Car testCar1 = Car.of("test1");
-        Car testCar2 = Car.of("test2");
-        testCar1.moveForward();
-        Assertions.assertThat(testCar1.getLocation()).isEqualTo(1);
-        Assertions.assertThat(testCar2.getLocation()).isEqualTo(0);
+    @DisplayName("랜덤 넘버가 4 이상이면 자동차는 전진한다")
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    @ParameterizedTest
+    void 자동차_이동(final int number) {
+        Car testCar = Car.of("test");
+        testCar.moveForward(number);
+        Assertions.assertThat(testCar.getLocation()).isEqualTo(1);
+    }
+
+    @DisplayName("랜덤 넘버가 4 미만이면 자동차는 정지한다")
+    @ValueSource(ints = {0, 1, 2, 3})
+    @ParameterizedTest
+    void 자동차_정지(final int number) {
+        Car testCar = Car.of("test");
+        testCar.moveForward(number);
+        Assertions.assertThat(testCar.getLocation()).isEqualTo(0);
     }
 }
