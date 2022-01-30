@@ -1,16 +1,17 @@
-package racing.domain;
+package racing.view;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import racing.domain.TryNumber;
 
-public class UserInput {
+public class InputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
     private static final String COMMA = ",";
 
-    private UserInput() {
+    private InputView() {
     }
 
     public static List<String> getCarNames() {

@@ -3,6 +3,7 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import racing.view.InputView;
 
 public class RacingGame {
 
@@ -16,13 +17,13 @@ public class RacingGame {
 
     public void startGame() {
         try {
-            final List<String> names = UserInput.getCarNames();
+            final List<String> names = InputView.getCarNames();
             for (String name : names) {
                 cars.add(new Car(name));
             }
             checkCarCount(cars);
 
-            final TryNumber tryNumber = UserInput.getTryNumber();
+            final TryNumber tryNumber = InputView.getTryNumber();
             startRacing(tryNumber);
             showGameResult();
         } catch (IllegalArgumentException e) {
