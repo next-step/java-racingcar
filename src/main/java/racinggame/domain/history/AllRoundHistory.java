@@ -19,7 +19,7 @@ public class AllRoundHistory {
 
     }
 
-    public List<RoundHistory> getAllRoundHistory(){
+    public List<RoundHistory> getAllRoundHistory() {
         return new ArrayList<>(allRoundHistory);
     }
 }

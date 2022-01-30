@@ -14,10 +14,10 @@ public class Application {
         final InputView inputView = new InputView();
         final String[] carNames = inputView.inputPlayerName();
         final Cars cars = new Cars(carNames);
-        final RandomGenerator randomGenerator=new RandomGenerator();
+        final RandomGenerator randomGenerator = new RandomGenerator();
 
         int playGameNumber = inputView.inputTryNumber();
-        final AllRoundHistory allRoundHistory=new AllRoundHistory();
+        final AllRoundHistory allRoundHistory = new AllRoundHistory();
         final ResultView resultView = new ResultView();
         for (; playGameNumber > 0; playGameNumber--) {
             cars.move(randomGenerator);

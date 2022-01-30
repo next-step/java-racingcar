@@ -9,13 +9,12 @@ import racinggame.domain.winner.Winners;
 
 public class ResultView {
 
-    private static  final String RUN_RESULT_TEXT="실행 결과";
+    private static final String RUN_RESULT_TEXT = "실행 결과";
 
 
     public ResultView() {
         System.out.println(RUN_RESULT_TEXT);
     }
-
 
 
     public void printCarsLocation(final List<RoundHistory> roundHistories) {
