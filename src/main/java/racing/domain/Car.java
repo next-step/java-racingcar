@@ -5,15 +5,17 @@ public class Car {
     private static final int CAR_NAME_MIN_LENGTH = 1;
     private static final int CAR_NAME_MAX_LENGTH = 5;
     private static final int STANDARD_NUMBER_MOVE_FORWARD = 4;
-    private static final String SEPARATOR_BETWEEN_NAME_AND_POSITION = " : ";
-    private static final String MOVE_STATE = "-";
 
     private final String name;
     private int position;
 
     public Car(String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
         this.name = name;
-        this.position = 0;
+        this.position = position;
         checkNameLength(this.name);
     }
 
@@ -29,7 +31,7 @@ public class Car {
         if (isSamePosition(maxPosition)) {
             return this.name;
         }
-        return "";
+        return null;
     }
 
     private boolean isSamePosition(final int position) {
@@ -40,22 +42,17 @@ public class Car {
         if (isMovable(randomNumber)) {
             this.position++;
         }
-        printStatus();
     }
 
     private boolean isMovable(final int randomNumber) {
         return randomNumber >= STANDARD_NUMBER_MOVE_FORWARD;
     }
 
-    private void printStatus() {
-        System.out.print(name + SEPARATOR_BETWEEN_NAME_AND_POSITION);
-        for (int i = 0; i < position; i++) {
-            System.out.print(MOVE_STATE);
-        }
-        System.out.println();
-    }
-
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 }
