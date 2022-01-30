@@ -11,9 +11,13 @@ public class Application {
         int tryNumber = InputView.getTryNumber();
 
         Racing game = new Racing();
-        game.race(carNames, tryNumber);
+        game.registerCar(carNames);
+        while (tryNumber > 0) {
+            game.race();
+            ResultView.printRace(game.getCarInfo());
+            tryNumber--;
+        }
 
-        ResultView.printCars(game.getResult());
         ResultView.printWinners(game.getCarInfo());
     }
 
