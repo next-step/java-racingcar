@@ -45,7 +45,7 @@ public class Racing {
 
     private void calculateResult() {
         for (Car car : cars) {
-            result.append(car.getName() + " : ");
+            result.append(car.getName()).append(" : ");
             for (int i = 0; i < car.getLocation(); i++) {
                 result.append('-');
             }
