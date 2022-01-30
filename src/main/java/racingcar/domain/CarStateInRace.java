@@ -1,8 +1,8 @@
-package racingcar.domain.dto;
+package racingcar.domain;
 
 import racingcar.domain.Car;
 
-public class OutputDto {
+public class CarStateInRace {
 
     private final static String STEP = "-";
     private final static int ZERO = 0;
@@ -11,7 +11,7 @@ public class OutputDto {
     private final Car car;
     private StringBuilder stringBuilder = new StringBuilder();
 
-    public OutputDto(final Car car) {
+    public CarStateInRace(final Car car) {
         this.car = car;
     }
 
