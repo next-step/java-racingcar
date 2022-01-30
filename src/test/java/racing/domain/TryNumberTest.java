@@ -21,13 +21,13 @@ class TryNumberTest {
     @ValueSource(ints = {1, 2, 3, 4, 5, 6})
     void 레이싱_진행할_수_있으면_참_반환(int inputNumber) {
         TryNumber tryNumber = new TryNumber(inputNumber);
-        assertThat(tryNumber.isPossibleToRace()).isTrue();
+        assertThat(tryNumber.nextStep()).isTrue();
     }
 
     @Test
     void 레이싱_진행할_수_없으면_거짓_반환() {
         TryNumber tryNumber = new TryNumber(1);
-        tryNumber.isPossibleToRace();
-        assertThat(tryNumber.isPossibleToRace()).isFalse();
+        tryNumber.nextStep();
+        assertThat(tryNumber.nextStep()).isFalse();
     }
 }

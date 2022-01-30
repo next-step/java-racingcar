@@ -36,10 +36,10 @@ public class RacingGame {
             throw new IllegalArgumentException("[ERROR] 최소 1대 이상의 자동차가 필요합니다.");
         }
     }
-    
+
     private void startRacing(final TryNumber tryNumber) {
         System.out.println("\n실행 결과");
-        while (tryNumber.isPossibleToRace()) {
+        while (tryNumber.nextStep()) {
             driveCars();
             System.out.println();
         }
