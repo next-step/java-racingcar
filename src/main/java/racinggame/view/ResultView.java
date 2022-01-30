@@ -28,8 +28,9 @@ public class ResultView {
     }
 
     public static void printWinners(List<Car> cars) {
-        List<String> winnerUsers = Winner.findWinner(cars);
-        String winners = String.join(DELIMITER, winnerUsers);
+        Winner winner = new Winner(cars);
+        List<String> winnerNames = winner.getWinnersName();
+        String winners = String.join(DELIMITER, winnerNames);
         System.out.println("최종 우승자: " + winners);
     }
 }
