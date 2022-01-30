@@ -16,7 +16,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void printCar(Car car) {
+    private static void printCar(Car car) {
         StringBuilder result = new StringBuilder();
         result.append(car.getName()).append(" : ");
         int location = car.getLocation();
