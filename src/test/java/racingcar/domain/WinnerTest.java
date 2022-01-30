@@ -3,7 +3,6 @@ package racingcar.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.movable.FixedForwardStrategy;
-import racingcar.domain.movable.RandomForwardStrategy;
 import racingcar.service.RacingService;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-class JudgementTest {
+class WinnerTest {
     RacingService racingService;
 
     @BeforeEach
