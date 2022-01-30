@@ -24,20 +24,12 @@ public class RacingGame {
             raceHistories = new ArrayList<>();
             startRacing(tryNumber);
 
-            final List<String> winners = getWinners(cars.getMaxPosition(), cars.getCars());
             OutputView.printGameResult(raceHistories);
-            OutputView.printWinners(winners);
+            OutputView.printWinners(cars);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             start();
         }
-    }
-
-    private List<String> getWinners(final int maxPosition, List<Car> cars) {
-        return cars.stream()
-            .filter(car -> !Objects.isNull(car.getNameBy(maxPosition)))
-            .map(Car::getName)
-            .collect(Collectors.toList());
     }
 
     private void startRacing(final TryNumber tryNumber) {
