@@ -1,9 +1,8 @@
 package racingcar.controller;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import racingcar.model.Car;
-import racingcar.model.User;
+import racingcar.view.InputView;
 import racingcar.util.Message;
 import racingcar.util.RandomGenerator;
 import racingcar.view.OutputView;
@@ -12,7 +11,7 @@ public class Game {
 
     public void play() {
         ArrayList<Car> carList = new ArrayList<>();
-        User user = new User();
+        InputView user = new InputView();
 
         System.out.println(Message.INPUT_GUIDE_MESSAGE);
         String[] carNames = user.getCarName();
