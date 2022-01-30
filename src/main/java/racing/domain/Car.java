@@ -27,13 +27,6 @@ public class Car {
         }
     }
 
-    public String getNameBy(int maxPosition) {
-        if (isSamePosition(maxPosition)) {
-            return this.name;
-        }
-        return "";
-    }
-
     public boolean isSamePosition(final int position) {
         return this.position == position;
     }

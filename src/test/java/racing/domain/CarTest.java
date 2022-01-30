@@ -15,13 +15,6 @@ class CarTest {
             .isThrownBy(() -> new Car("abcdef"));
     }
 
-    @Test
-    void 자동차_이름_출력_확인() {
-        Car car1 = new Car("abc");
-        assertThat(car1.getNameBy(0)).isEqualTo("abc");
-        assertThat(car1.getNameBy(2)).isEmpty();
-    }
-
     @ParameterizedTest
     @ValueSource(ints = {4,5,6,7,8,9})
     void drive_인자가_4_이상일_경우_자동차는_움직인다(int randomNumber) {
