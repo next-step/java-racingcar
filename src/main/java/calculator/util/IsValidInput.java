@@ -8,8 +8,8 @@ public class IsValidInput {
     private static final int FIRST_NUMBER = 0;
     private static final int DISTANCE = 2;
 
-    private IsValidInput() {
-
+    private IsValidInput(String input) {
+        isBlankOrNot(input);
     }
 
     public static void isBlankOrNot(String input) {
