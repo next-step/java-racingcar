@@ -34,9 +34,10 @@ public class RacingService {
     }
 
     public List<String> judgeWinners() {
+        final int maxPosition = maxDriveLength();
         return cars.getCars().stream()
-            .filter(car -> (car.getStep() == maxDriveLength() && car.getStep() > 0))
-            .map(car -> car.getName())
+            .filter(car -> (car.getStep() == maxPosition && car.getStep() > 0))
+            .map(Car::getName)
             .collect(Collectors.toList());
     }
 
