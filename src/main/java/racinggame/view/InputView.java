@@ -3,7 +3,6 @@ package racinggame.view;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import racinggame.domain.Car;
 
 public class InputView {
     private static final String SEPARATOR = ",";

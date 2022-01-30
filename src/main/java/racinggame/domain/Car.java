@@ -1,7 +1,5 @@
 package racinggame.domain;
 
-import java.util.List;
-
 public class Car {
 
     private static final int DEFAULT_LOCATION = 0;
