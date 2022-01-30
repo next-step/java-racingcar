@@ -1,21 +1,24 @@
 package racing.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 import racing.view.InputView;
+import racing.view.OutputView;
 
 public class RacingGame {
 
     private static final int RANGE_OF_RANDOM_NUMBER = 10;
 
     private final List<Car> cars;
+    private List<List<CarHistory>> raceHistories;
 
     public RacingGame() {
         this.cars = new ArrayList<>();
     }
 
-    public void startGame() {
+    public void start() {
         try {
             final List<String> names = InputView.getCarNames();
             for (String name : names) {
@@ -24,14 +27,29 @@ public class RacingGame {
             checkCarCount(cars);
 
             final TryNumber tryNumber = InputView.getTryNumber();
+
+            raceHistories = new ArrayList<>();
             startRacing(tryNumber);
-            showGameResult();
+            final int maxPosition = getMaxPosition();
+            List<String> winners = getWinners(maxPosition);
+
+            OutputView.printGameResult(raceHistories);
+            OutputView.printWinners(winners);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            startGame();
+            start();
         }
     }
 
+    // 차들 관리
+    private List<String> getWinners(final int maxPosition) {
+        return cars.stream()
+            .filter(car -> !Objects.isNull(car.getNameBy(maxPosition)))
+            .map(car -> car.getName())
+            .collect(Collectors.toList());
+    }
+
+    // 차들 관리
     private static void checkCarCount(List<Car> cars) {
         if (cars.isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 최소 1대 이상의 자동차가 필요합니다.");
@@ -39,36 +57,31 @@ public class RacingGame {
     }
 
     private void startRacing(final TryNumber tryNumber) {
-        System.out.println("\n실행 결과");
         while (tryNumber.nextStep()) {
-            driveCars();
-            System.out.println();
+            raceHistories.add(driveCars());
         }
     }
 
-    private void driveCars() {
+    // 차들 관리
+    private List<CarHistory> driveCars() {
+        final List<CarHistory> carHistories = new ArrayList<>();
         for (Car car : cars) {
             car.drive(generateRandomNumber());
+            carHistories.add(new CarHistory(car.getName(), car.getPosition()));
         }
+        return carHistories;
     }
 
     private int generateRandomNumber() {
         return (int) (Math.random() * RANGE_OF_RANDOM_NUMBER);
     }
 
-    private void showGameResult() {
+    // 차들 관리
+    private int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
             maxPosition = Math.max(maxPosition, car.getPosition());
         }
-
-        final List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
-            winners.add(car.getNameBy(maxPosition));
-        }
-        winners.removeAll(Arrays.asList("", null));
-
-        final String resultOfWinners = String.join(", ", winners);
-        System.out.println("최종 우승자 : " + resultOfWinners);
+        return maxPosition;
     }
 }
