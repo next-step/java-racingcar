@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 
 class NumbersTest {
 
-    final String NOT_NUMBER_MESSAGE = "숫자가 아닙니다.";
-
     @Test
     public void 숫자를_넣는건_정상동작() {
         //given
@@ -29,6 +27,8 @@ class NumbersTest {
         String input = "jason";
 
         //then
-        assertThatCode(() -> numbers.addNumber(input)).hasMessageContaining(NOT_NUMBER_MESSAGE);
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            numbers.addNumber(input);
+        });
     }
 }

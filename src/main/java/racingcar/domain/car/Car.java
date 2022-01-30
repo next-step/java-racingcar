@@ -17,7 +17,7 @@ public class Car {
         this(name, INITIAL_POSITION);
     }
 
-    private Car(String name, int position) {
+    public Car(String name, int position) {
         validateCarName(name);
         this.name = name;
         this.position = position;
