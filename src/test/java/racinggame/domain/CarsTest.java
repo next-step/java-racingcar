@@ -4,6 +4,8 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.domain.car.Car;
+import racinggame.domain.car.Cars;
 
 class CarsTest {
 

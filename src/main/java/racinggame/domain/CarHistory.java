@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.domain.car.Car;
+
 public class CarHistory {
 
     private final String carName;

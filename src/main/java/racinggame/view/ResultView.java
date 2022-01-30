@@ -2,8 +2,6 @@ package racinggame.view;
 
 import java.util.ArrayList;
 import java.util.List;
-import racinggame.domain.Car;
-import racinggame.domain.Cars;
 import racinggame.domain.CarHistory;
 import racinggame.domain.RoundHistory;
 import racinggame.domain.Winner;

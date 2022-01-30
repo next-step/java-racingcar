@@ -2,6 +2,8 @@ package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import racinggame.domain.car.Car;
+import racinggame.domain.car.Cars;
 
 public class AllRoundHistory {
 

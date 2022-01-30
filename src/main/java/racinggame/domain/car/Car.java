@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.domain.car;
 
 import racinggame.domain.random.RandomGenerator;
 import racinggame.domain.random.RandomRule;

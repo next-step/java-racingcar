@@ -1,7 +1,7 @@
 package racinggame;
 
 import racinggame.domain.AllRoundHistory;
-import racinggame.domain.Cars;
+import racinggame.domain.car.Cars;
 import racinggame.domain.random.RandomGenerator;
 import racinggame.view.InputView;
 import racinggame.domain.Winners;

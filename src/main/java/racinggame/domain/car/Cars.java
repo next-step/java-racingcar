@@ -1,9 +1,7 @@
-package racinggame.domain;
+package racinggame.domain.car;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import racinggame.domain.random.RandomGenerator;
 import racinggame.domain.random.RandomRule;
 
 public class Cars {
