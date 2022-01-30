@@ -12,7 +12,8 @@ public class ProgressingConsole {
         this.isAbNormalRacingTime = true;
     }
 
-    public ProgressingConsole(final boolean isAbNormalCarsName, final boolean isAbNormalRacingTime) {
+    public ProgressingConsole(final boolean isAbNormalCarsName,
+        final boolean isAbNormalRacingTime) {
         this.isAbNormalCarsName = isAbNormalCarsName;
         this.isAbNormalRacingTime = isAbNormalRacingTime;
     }
