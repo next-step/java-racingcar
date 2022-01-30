@@ -5,14 +5,45 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UserInputValue {
+    private static final String BLANK_CARNAME = "빈 문자열입니다";
+    private static final String VALIDATE_NUMBER = "숫자가 올바르게 입력되어 있는지 확인해주세요";
+    private static final String VALIDATE_OPERATOR = "연산자가 올바르게 입력되어 있는지 확인해주세요";
 
     public List<String> userInput() {
-        String[] userInputTokens;
         Scanner scanner = new Scanner(System.in);
 
         String input = scanner.nextLine();
-        userInputTokens = input.split(" ");
+        List<String> userInputTokens = Arrays.asList(input.split(" "));
 
-        return Arrays.asList(userInputTokens);
+        validateBlankCarName(userInputTokens);
+        validateEmptyNumber(userInputTokens);
+        validateEmptyOperation(userInputTokens);
+
+        return userInputTokens;
+    }
+
+    public void validateBlankCarName(List<String> userInputTokens) {
+        if (userInputTokens.size() == 0) {
+            throw new IllegalArgumentException(BLANK_CARNAME);
+        }
+    }
+
+    public void validateEmptyNumber(List<String> userInputTokens) {
+        for (int i = 0; i < userInputTokens.size(); i += 2) {
+            if (!userInputTokens.get(i).matches("[0-9]+")) {
+                throw new IllegalArgumentException(VALIDATE_NUMBER);
+            }
+        }
+    }
+
+    public void validateEmptyOperation(List<String> userInputTokens) {
+        for (int i = 1; i < userInputTokens.size(); i += 2) {
+            if (!userInputTokens.get(i).contains("+")
+                && !userInputTokens.get(i).contains("-")
+                && !userInputTokens.get(i).contains("*")
+                && !userInputTokens.get(i).contains("/")) {
+                throw new IllegalArgumentException(VALIDATE_OPERATOR);
+            }
+        }
     }
 }
