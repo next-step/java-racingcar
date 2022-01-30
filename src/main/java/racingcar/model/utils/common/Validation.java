@@ -9,44 +9,28 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.model.utils.exception.InputValidationException;
 
+
 public class Validation {
 
-    public static boolean parsingCarName(final String name) {
-        try {
-            validateLengthLimit(StringUtils.splitStr(name));
-            validateDuplicateCar(StringUtils.splitStr(name));
-        } catch (InputValidationException exception) {
-            System.out.println(exception.getMessage());
-            return true;
-        }
-        return false;
-    }
+    private static final int START_NUMBER = 1;
+    private static final int LAST_NUMBER = 9;
+    private static final int LIMIT_NUMBEr = 5;
 
-    public static boolean parsingRacingTry(final int count) {
-        try {
-            validateNumberRange(count);
-        } catch (InputValidationException exception) {
-            System.out.println(exception.getMessage());
-            return true;
-        }
-        return false;
-    }
-
-    private static void validateNumberRange(final int number) {
-        if (number < 1 || number > 9) {
+    public static void validateNumberRange(final int number) {
+        if (number < START_NUMBER || number > LAST_NUMBER) {
             throw new InputValidationException(TRY_NUMBER_COUNT_ERROR);
         }
     }
 
-    private static void validateLengthLimit(final List<String> splitUserInput) {
+    public static void validateLengthLimit(final List<String> splitUserInput) {
         boolean match = splitUserInput.stream()
-            .allMatch(input -> input.length() <= 5 && input.length() >= 1);
+            .allMatch(input -> input.length() <= LIMIT_NUMBEr && input.length() >= START_NUMBER);
         if (!match) {
             throw new InputValidationException(CAR_NAME_LIMIT_ERROR);
         }
     }
 
-    private static void validateDuplicateCar(final List<String> splitUserInput) {
+    public static void validateDuplicateCar(final List<String> splitUserInput) {
         int size = splitUserInput.stream().distinct().collect(Collectors.toList()).size();
 
         if (size != splitUserInput.size()) {
