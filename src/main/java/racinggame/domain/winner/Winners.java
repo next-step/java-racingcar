@@ -1,9 +1,10 @@
-package racinggame.domain;
+package racinggame.domain.winner;
 
 import java.util.ArrayList;
 import java.util.List;
 import racinggame.domain.car.Car;
 import racinggame.domain.car.Cars;
+import racinggame.domain.winner.Winner;
 
 public class Winners {
 

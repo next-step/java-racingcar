@@ -1,7 +1,8 @@
-package racinggame.domain;
+package racinggame.domain.history;
 
 import java.util.ArrayList;
 import java.util.List;
+import racinggame.domain.history.CarHistory;
 
 public class RoundHistory {
 

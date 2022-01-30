@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.domain.history;
 
 import racinggame.domain.car.Car;
 

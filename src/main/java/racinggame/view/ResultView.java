@@ -2,10 +2,10 @@ package racinggame.view;
 
 import java.util.ArrayList;
 import java.util.List;
-import racinggame.domain.CarHistory;
-import racinggame.domain.RoundHistory;
-import racinggame.domain.Winner;
-import racinggame.domain.Winners;
+import racinggame.domain.history.CarHistory;
+import racinggame.domain.history.RoundHistory;
+import racinggame.domain.winner.Winner;
+import racinggame.domain.winner.Winners;
 
 public class ResultView {
 
