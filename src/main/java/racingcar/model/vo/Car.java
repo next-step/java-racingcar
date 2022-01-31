@@ -4,7 +4,6 @@ public class Car {
 
     private final String name;
     private final static int NUMBER_ZERO = 0;
-    private final static String DELIMITER = " ";
     private int step;
 
     public Car(final String name) {
