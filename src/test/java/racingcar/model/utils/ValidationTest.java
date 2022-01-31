@@ -25,7 +25,8 @@ public class ValidationTest {
     @DisplayName("유저_입력_글자길이_및_입력_중복_테스트")
     @Test
     void userInputLengthDuplicationTest() {
-        String input = inputDTO.getSplitUserInput().stream().map(String::new).collect(Collectors.joining(","));
+        String input = inputDTO.getSplitUserInput().stream().map(String::new)
+            .collect(Collectors.joining(","));
         assertFalse(parsingCarName(input));
     }
 

@@ -1,7 +1,8 @@
 package racingcar.model.utils;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static racingcar.model.utils.common.Parsing.*;
+import static racingcar.model.utils.common.Parsing.parsingCarName;
+import static racingcar.model.utils.common.Parsing.racingTryCheck;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,7 +12,7 @@ public class ParsingTest {
 
     @DisplayName("자동차_입력_테스트")
     @ParameterizedTest
-    @ValueSource(strings={"a,aa,aaaaaa"})
+    @ValueSource(strings = {"a,aa,aaaaaa"})
     void parsingCarNameTest(String input) {
         assertTrue(parsingCarName(input));
     }

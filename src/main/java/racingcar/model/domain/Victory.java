@@ -14,10 +14,6 @@ public class Victory {
         victories = cars;
     }
 
-    public List<Car> victory() {
-        return Collections.unmodifiableList(victories);
-    }
-
     public static Victory maxCheck(final List<Car> cars) {
 
         int max = maxDriveLength(cars);
@@ -30,7 +26,11 @@ public class Victory {
         return cars.stream().map(Car::getStep)
             .mapToInt(Integer::valueOf)
             .max()
-            .orElseThrow(()->new IllegalArgumentException(MAX_DRIVE_LENGTH));
+            .orElseThrow(() -> new IllegalArgumentException(MAX_DRIVE_LENGTH));
+    }
+
+    public List<Car> victory() {
+        return Collections.unmodifiableList(victories);
     }
 
 }

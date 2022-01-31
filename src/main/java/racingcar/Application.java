@@ -21,6 +21,7 @@ import racingcar.view.RacingCarUserResult;
 public class Application {
 
     private static final int NUMBER_ZERO = 0;
+
     public static void main(String[] args) throws Exception {
         InputDTO inputDTO = startGame();
         Cars cars = new Cars(inputDTO.getSplitUserInput());
@@ -34,6 +35,7 @@ public class Application {
         List<OutputDTO> victoryResult = convertVictory(victory);
         RacingCarUserResult.judge(victoryResult);
     }
+
     private static List<OutputDTO> convertVictory(final Victory victory) {
         return victory.victory()
             .stream()

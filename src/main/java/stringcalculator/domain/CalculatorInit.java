@@ -12,9 +12,8 @@ public class CalculatorInit {
     private static final String repeatPhrase = "계속하려면 1번을 눌러주세요.";
     private static final int NUMBER_ONE = 1;
     private static final String NEW_LINE = "\n";
-    private static int judgeContinue = 0;
     private static final CalculatorInit calculatorInit;
-
+    private static int judgeContinue = 0;
 
     static {
         calculatorInit = new CalculatorInit();

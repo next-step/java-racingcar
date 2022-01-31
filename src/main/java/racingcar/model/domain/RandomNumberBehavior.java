@@ -18,12 +18,12 @@ public class RandomNumberBehavior implements CarMoveBehavior {
         return randomNumberBehavior;
     }
 
+    private static int generateRandomNumber() {
+        return (int) (Math.random() * MAX_RANDOM_RANGE);
+    }
+
     @Override
     public boolean moveBehavior() {
         return generateRandomNumber() >= MIN_BOUND_STRAIGHT;
-    }
-
-    private static int generateRandomNumber() {
-        return (int) (Math.random() * MAX_RANDOM_RANGE);
     }
 }
