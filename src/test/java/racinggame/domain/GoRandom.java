@@ -1,14 +1,18 @@
 package racinggame.domain;
 
-import racinggame.domain.random.RandomGenerator;
-import racinggame.domain.random.RandomRule;
+import static racinggame.domain.random.RandomGoRule.GO_MIN_VALUE;
 
-public class GoRandom implements RandomRule {
+import racinggame.domain.random.GoRule;
 
-    private final int GO_VALUE=5;
+public class GoRandom implements GoRule {
+
+    private static final int GO_VALUE = 5;
 
     @Override
-    public int getRandomValue() {
-        return GO_VALUE;
+    public boolean isGo() {
+        if (GO_VALUE >= GO_MIN_VALUE) {
+            return true;
+        }
+        return false;
     }
 }
