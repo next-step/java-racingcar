@@ -8,6 +8,7 @@ import racingcar.model.vo.Car;
 public class Victory {
 
     private List<Car> victory;
+    private static final String MAX_DRIVE_LENGTH = "MAX 값을 구할 수 없습니다. 비교할 수 있는 정수값인지 확인하세요";
 
     private Victory(final List<Car> cars) {
         victory = cars;
@@ -30,10 +31,10 @@ public class Victory {
     }
 
     private static int maxDriveLength(final List<Car> cars) {
-        return cars.stream().map(car -> car.getStep())
-            .mapToInt(length -> Integer.valueOf(length))
+        return cars.stream().map(Car::getStep)
+            .mapToInt(Integer::valueOf)
             .max()
-            .getAsInt();
+            .orElseThrow(()->new IllegalArgumentException(MAX_DRIVE_LENGTH));
     }
 
 }
