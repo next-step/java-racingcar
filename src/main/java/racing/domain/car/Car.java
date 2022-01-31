@@ -1,30 +1,28 @@
-package racing.domain;
+package racing.domain.car;
 
 public class Car {
 
-    private static final int CAR_NAME_MIN_LENGTH = 1;
-    private static final int CAR_NAME_MAX_LENGTH = 5;
     private static final int STANDARD_NUMBER_MOVE_FORWARD = 4;
 
     private final Name name;
-    private int position;
+    private Position position;
 
     public Car(String name) {
         this(name, 0);
     }
 
-    public Car(String name, int position) {
+    public Car(String name, int value) {
         this.name = new Name(name);
-        this.position = position;
+        this.position = new Position(value);
     }
 
-    public boolean isSamePosition(final int position) {
-        return this.position == position;
+    public boolean isSamePosition(final Position position) {
+        return this.position.equals(position);
     }
 
     public void drive(int randomNumber) {
         if (isMovable(randomNumber)) {
-            this.position++;
+            position = position.move();
         }
     }
 
@@ -32,7 +30,7 @@ public class Car {
         return randomNumber >= STANDARD_NUMBER_MOVE_FORWARD;
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 

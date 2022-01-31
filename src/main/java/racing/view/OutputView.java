@@ -2,10 +2,11 @@ package racing.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racing.domain.Car;
-import racing.domain.CarHistory;
 import racing.domain.Cars;
-import racing.domain.Name;
+import racing.domain.car.Car;
+import racing.domain.car.CarHistory;
+import racing.domain.car.Name;
+import racing.domain.car.Position;
 
 public class OutputView {
 
@@ -33,14 +34,14 @@ public class OutputView {
 
     private static void printCarHistory(CarHistory carHistory) {
         System.out.print(carHistory.getName().getName() + SEPARATOR_BETWEEN_NAME_AND_POSITION);
-        for (int i = 0; i < carHistory.getPosition(); i++) {
+        for (int i = 0; i < carHistory.getPosition().getValue(); i++) {
             System.out.print(MOVE_STATE);
         }
     }
 
     public static void printWinners(Cars cars) {
         final String winners = cars.getCars().stream()
-            .filter(car -> car.isSamePosition(cars.getMaxPosition()))
+            .filter(car -> car.isSamePosition(new Position(cars.getMaxPosition())))
             .map(Car::getName)
             .map(Name::getName)
             .collect(Collectors.joining(COMMA));
