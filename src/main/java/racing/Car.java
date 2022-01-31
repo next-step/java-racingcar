@@ -1,19 +1,19 @@
 package racing;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Car {
 
     private static final int MOVE_CHECK_NUMBER = 4;
+    private static final int INITIAL_DISTANCE = 0;
     private String name;
-    private int distance;
     private List<Integer> roundScore;
 
     public Car(String name) {
         this.name = name;
-        this.distance = 0;
-        this.roundScore = new ArrayList<>();
+        this.roundScore = new ArrayList<>(Arrays.asList(INITIAL_DISTANCE));
     }
 
     public int getRoundDistance(int roundNumber) {
@@ -21,7 +21,7 @@ public class Car {
     }
 
     public int getDistance() {
-        return distance;
+        return roundScore.get(roundScore.size() - 1);
     }
 
     public String getName() {
@@ -34,10 +34,11 @@ public class Car {
     }
 
     public void move(int moveNum) {
+        int nowDistance = getDistance();
         if (moveNum >= MOVE_CHECK_NUMBER) {
-            distance++;
+            nowDistance++;
         }
-        roundScore.add(distance);
+        roundScore.add(nowDistance);
     }
 
     public static int getMoveRandomNumber() {
