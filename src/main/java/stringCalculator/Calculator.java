@@ -30,13 +30,11 @@ public class Calculator {
         }
         return result;
     }
-
-    private void checkDivideByZero(String operand) {
-        if ("0".equals(operand)) {
+    private void checkDivideByZero(String operand){
+        if("0".equals(operand)){
             throw new IllegalArgumentException("0으로 나뉠 수 없습니다");
         }
     }
-
     private int sum(int a, int b) {
         return a + b;
     }
