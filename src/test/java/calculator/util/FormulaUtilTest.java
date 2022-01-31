@@ -10,7 +10,7 @@ class FormulaUtilTest {
 
     @Test
     void 연산쪼깨기(){
-        List<String> result = Formular.stringSpliter("6 / 2 + 3");
+        List<String> result = new Formular("6 / 2 + 3").getSplitedFormular();
 
         assertThat(result.size()).isEqualTo(5);
         assertThat(result.get(0)).isEqualTo("6");
