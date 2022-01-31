@@ -20,8 +20,8 @@ public class Car {
         return carName;
     }
 
-    public void move(GoRule randomRule) {
-        if (randomRule.isGo()) {
+    public void move(GoRule goRule) {
+        if (goRule.isGo()) {
             location++;
         }
     }
