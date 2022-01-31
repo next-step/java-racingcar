@@ -18,8 +18,8 @@ public class ResultView {
         System.out.println(name + ":" + dashes);
     }
 
-    public void printGameResult(List<String> winners) {
-        System.out.println("최종 우승자: " + String.join(", ", winners));
+    public void printGameResult(String winners) {
+        System.out.println("최종 우승자: " + winners);
     }
 
 }

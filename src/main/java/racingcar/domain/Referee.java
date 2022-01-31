@@ -20,12 +20,13 @@ public class Referee {
         return maxMovingDistance;
     }
 
-    public List<String> getWinners(List<Car> cars) {
+    public String getWinners(List<Car> cars) {
         int maxMovingDistance = getMaxMovingDistance(cars);
 
-        return cars.stream()
+        List<String> winners = cars.stream()
             .filter(car -> car.getPosition() == maxMovingDistance).map(Car::getName)
             .collect(Collectors.toList());
+        return String.join(", ", winners);
     }
 
 }
