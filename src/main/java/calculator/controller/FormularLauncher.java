@@ -2,14 +2,16 @@ package calculator.controller;
 
 import calculator.domain.Calculator;
 import calculator.view.FormulaInput;
+import calculator.view.FormulaOutput;
 import java.util.List;
 
 public class FormularLauncher {
 
     public void start() {
-        List<String> formula = FormulaInput.getFormula();
+        FormulaOutput.printRequestFormula();
+        List<String> formula = FormulaInput.readFormula();
         Calculator calculator = new Calculator(formula);
         double result = calculator.calculate();
-        System.out.println(result);
+        FormulaOutput.printFormulaResult(result);
     }
 }

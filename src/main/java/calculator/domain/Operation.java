@@ -2,7 +2,6 @@ package calculator.domain;
 
 import calculator.view.FormulaOutput;
 import java.util.Arrays;
-import java.util.NoSuchElementException;
 
 public enum Operation {
     PLUS("+") {
