@@ -1,22 +1,23 @@
 package racingcar.domain;
 
-import racingcar.controller.GameLauncher;
-import racingcar.view.RacingCarOutput;
+import java.util.Objects;
 
 public class RacingCar {
 
+    private static final int DEFAULT_POSITION = 0;
     private static final int THRESHOLD = 4;
     private static final int NAME_MAX_SIZE = 5;
-    private String name = "";
-    private int position = 0;
-
-    public RacingCar() {
-
-    }
+    private String name;
+    private int position;
 
     public RacingCar(String name) {
-        isValidLength(name);
+        this(name, DEFAULT_POSITION);
+    }
+
+    public RacingCar(String name, int position) {
+        validate(name);
         this.name = name;
+        this.position = position;
     }
 
     public String getName() {
@@ -28,26 +29,23 @@ public class RacingCar {
     }
 
     public void moveForward(int randomNumber) {
-        int randomNum = randomNumber;
-        if (THRESHOLD <= randomNum) {
+        if (randomNumber >= THRESHOLD) {
             position++;
         }
     }
 
-    private void isValidLength(String name) {
-        try {
-            isCorrectNameSize(name);
-        } catch (IllegalArgumentException e) {
-            System.out.println(RacingCarOutput.ERROR_MESSAGE + e.getMessage());
-            GameLauncher gameLauncher = new GameLauncher();
-            gameLauncher.inputAll();
+    private void validate(String name) {
+        if (isCorrectNameSize(name) || isOver(name)) {
+            throw new IllegalArgumentException();
         }
     }
 
-    public void isCorrectNameSize(String name) {
-        if (NAME_MAX_SIZE < name.length()) {
-            throw new IllegalArgumentException(RacingCarOutput.ERROR_CAR_NAME_LENGTH_MAX_FIVE);
-        }
+    private boolean isCorrectNameSize(String name) {
+        return name.length() > NAME_MAX_SIZE;
+    }
+
+    private boolean isOver(String name) {
+        return Objects.isNull(name) || name.isEmpty();
     }
 
     @Override
