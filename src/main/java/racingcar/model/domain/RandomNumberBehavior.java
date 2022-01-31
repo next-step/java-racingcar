@@ -4,7 +4,7 @@ public class RandomNumberBehavior implements CarMoveBehavior {
 
     private final static int MAX_RANDOM_RANGE = 10;
     private final static int MIN_BOUND_STRAIGHT = 4;
-    private static RandomNumberBehavior randomNumberBehavior;
+    private final static RandomNumberBehavior randomNumberBehavior;
 
     static {
         randomNumberBehavior = new RandomNumberBehavior();
