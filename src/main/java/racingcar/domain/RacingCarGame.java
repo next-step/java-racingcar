@@ -3,13 +3,13 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 import racingcar.view.ResultView;
 
 public class RacingCarGame {
 
     private final static Random RANDOM = new Random();
     private final static ResultView resultView = new ResultView();
+    private final static Referee referee = new Referee();
     private List<Car> cars;
     private final List<String> carNames;
     private List<String> winners;
@@ -48,7 +48,7 @@ public class RacingCarGame {
 
         } while (tryCount > 0);
 
-        judgeWinner();
+        this.winners = referee.getWinners(cars);
         resultView.printGameResult(winners);
     }
 
@@ -67,26 +67,6 @@ public class RacingCarGame {
         }
 
         System.out.println();
-    }
-
-    private int getMaxMovingDistance() {
-        int maxMovingDistance = 0;
-
-        for (Car car : cars) {
-            int movingDistance = car.getPosition();
-            if (maxMovingDistance < movingDistance) {
-                maxMovingDistance = movingDistance;
-            }
-        }
-        return maxMovingDistance;
-    }
-
-    private void judgeWinner() {
-        int maxMovingDistance = getMaxMovingDistance();
-
-        winners = cars.stream()
-            .filter(car -> car.getPosition() == maxMovingDistance).map(Car::getName)
-            .collect(Collectors.toList());
     }
 
 }
