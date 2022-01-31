@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import racingcar.domain.Car;
+import racingcar.view.ResultView;
 
 public class RacingCarGame {
 
     private final static Random RANDOM = new Random();
+    private final static ResultView resultView = new ResultView();
     private List<Car> cars;
     private final List<String> carNames;
     private List<String> winners;
@@ -48,7 +49,7 @@ public class RacingCarGame {
         } while (tryCount > 0);
 
         judgeWinner();
-        printGameResult();
+        resultView.printGameResult(winners);
     }
 
     private int getRandomMove() {
@@ -62,7 +63,7 @@ public class RacingCarGame {
 
             String carName = car.getName();
             int totalMovingDistance = car.getPosition();
-            printGameStatus(carName, totalMovingDistance);
+            resultView.printGameStatus(carName, totalMovingDistance);
         }
 
         System.out.println();
@@ -88,21 +89,4 @@ public class RacingCarGame {
             .collect(Collectors.toList());
     }
 
-    private String getDashByMove(int move) {
-        StringBuilder dash = new StringBuilder();
-
-        for (int i = 0; i < move; i++) {
-            dash.append("-");
-        }
-        return dash.toString();
-    }
-
-    private void printGameStatus(String name, int move) {
-        String dashes = getDashByMove(move);
-        System.out.println(name + ":" + dashes);
-    }
-
-    private void printGameResult() {
-        System.out.println("최종 우승자: " + String.join(", ", winners));
-    }
 }
