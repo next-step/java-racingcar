@@ -2,7 +2,7 @@ package racingcar;
 
 
 import static racingcar.model.utils.common.Parsing.parsingCarName;
-import static racingcar.model.utils.common.Parsing.parsingRacingTry;
+import static racingcar.model.utils.common.Parsing.racingTryCheck;
 import static racingcar.view.RacingCarUserConsole.inputCarName;
 import static racingcar.view.RacingCarUserConsole.inputRacingTry;
 
@@ -56,7 +56,7 @@ public class Application {
         int count = 0;
         do {
             count = inputRacingTry();
-        } while (parsingRacingTry(count));
+        } while (racingTryCheck(count));
         return count;
     }
 
