@@ -2,13 +2,14 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import racing.domain.car.CarHistory;
 import racing.view.InputView;
 import racing.view.OutputView;
 
 public class RacingGame {
 
     private Cars cars;
-    private final List<List<CarHistory>> raceHistories = new ArrayList<>();;
+    private final List<List<CarHistory>> raceHistories = new ArrayList<>();
 
     public RacingGame() {
     }
