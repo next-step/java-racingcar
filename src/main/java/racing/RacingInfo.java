@@ -25,16 +25,16 @@ public class RacingInfo {
 
         final List<Car> cars = CarGenerator.createCars(carNames);
         MoveRule moveRule = initMoveRule(4);
-        Round round = initRound(moveRule);
+        Round round = initRound();
 
         return new RacingInfo(cars, round, moveRule);
     }
 
-    private static Round initRound(MoveRule moveRule) {
+    private static Round initRound() {
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("시도할 횟수는 몇회인가요?");
-            return new Round(Integer.parseInt(br.readLine()), moveRule);
+            return new Round(Integer.parseInt(br.readLine()));
         } catch (IOException e) {
             System.out.println("[ERROR] 입출력 예외 발생");
         }

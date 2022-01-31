@@ -12,8 +12,11 @@ public class CarGenerator {
     }
 
     public static List<Car> createCars(String carNames) {
+
+        final MoveRule rule = new MoveRule(4);
+
         return Arrays.stream(carNames.split(SPLIT_DELIMITER))
-            .map(Car::new)
+            .map(m -> new Car(m, rule))
             .collect(Collectors.toList());
     }
 }

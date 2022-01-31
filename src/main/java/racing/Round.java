@@ -5,24 +5,16 @@ import java.util.List;
 public class Round {
 
     private final int roundNumber;
-    private final MoveRule moveRule;
 
-    public Round (int roundNumber, MoveRule moveRule) {
+    public Round (int roundNumber) {
         this.roundNumber = roundNumber;
-        this.moveRule = moveRule;
     }
 
     public RoundResult play(List<Car> cars) {
         for(Car car : cars) {
-            move(moveRule.makeValue(), car);
+            car.moveByRule();
         }
         return new RoundResult(cars);
-    }
-
-    private void move(int value, Car car) {
-        if(value >= moveRule.getMoveCondition()) {
-            car.move();
-        }
     }
 
     public int getRoundNumber() {

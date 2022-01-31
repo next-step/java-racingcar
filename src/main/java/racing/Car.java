@@ -5,15 +5,17 @@ public class Car implements Comparable<Car> {
     private static final int NAME_LENGTH_CONDITION = 5;
 
     private final String name;
+    private final MoveRule rule;
     private int distance;
 
-    public Car(String name) {
-        this(name, 0);
+    public Car(String name, MoveRule rule) {
+        this(name, 0, rule);
     }
 
-    public Car(String name, int distance) {
+    public Car(String name, int distance, MoveRule rule) {
         this.name = name;
         this.distance = distance;
+        this.rule = rule;
         validateNameLength(name);
     }
 
@@ -23,8 +25,14 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public void move() {
-        distance++;
+    public void moveByRule() {
+        if(moveCheck()) {
+            distance++;
+        }
+    }
+
+    private boolean moveCheck() {
+        return rule.makeValue() >= rule.getMoveCondition();
     }
 
     @Override
