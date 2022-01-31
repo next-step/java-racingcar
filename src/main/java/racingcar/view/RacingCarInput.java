@@ -13,22 +13,22 @@ public class RacingCarInput {
 
     public static List<String> getCarName() {
         String input = "";
-        System.out.println(RacingCarOutput.REQUIRE_RACING_CAR_NAME);
+        RacingCarOutput.printRequestCarName();
         try {
             input = Console.readLine();
         } catch (IllegalArgumentException e) {
-            System.out.println(RacingCarOutput.ERROR_MESSAGE + e.getMessage());
+            RacingCarOutput.printExceptionMessage(e.getMessage());
         }
         return new ArrayList<>(Arrays.asList(input.split(",")));
     }
 
     public static int getRaceCount() {
         String input = "";
-        System.out.println(RacingCarOutput.SYSTEM_MESSAGE_TRY_COUNT);
+        RacingCarOutput.printRequestGameTry();
         try {
             input = Console.readLine();
         } catch (IllegalArgumentException e) {
-            System.out.println(RacingCarOutput.ERROR_MESSAGE + e.getMessage());
+            RacingCarOutput.printExceptionMessage(e.getMessage());
         }
         return Integer.parseInt(input);
     }

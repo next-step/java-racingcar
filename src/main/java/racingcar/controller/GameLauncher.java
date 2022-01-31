@@ -17,8 +17,8 @@ public class GameLauncher {
         Winners winners = new Winners(racingGame.getRacingCarLists());
         List<String> gameWinner = winners.getRacingWinnerLists();
 
-        System.out.println(gameStatus);
-        System.out.print(RacingCarOutput.SYSTEM_MESSAGE_FINAL_WINNER + String.join(", ", gameWinner));
+        RacingCarOutput.printGameScore(gameStatus);
+        RacingCarOutput.printWinnersResult(gameWinner);
     }
 
     public void inputAll() {

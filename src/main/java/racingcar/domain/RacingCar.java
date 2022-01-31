@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.Objects;
+import racingcar.view.RacingCarOutput;
 
 public class RacingCar {
 
@@ -36,7 +37,7 @@ public class RacingCar {
 
     private void validate(String name) {
         if (isCorrectNameSize(name) || isOver(name)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(RacingCarOutput.ERROR_CAR_NAME_OVER_OR_EMPTY);
         }
     }
 
