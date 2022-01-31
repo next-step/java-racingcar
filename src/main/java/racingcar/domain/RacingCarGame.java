@@ -19,11 +19,6 @@ public class RacingCarGame {
     public RacingCarGame(int tryCount, List<String> carNames) {
         this.tryCount = tryCount;
         this.carNames = carNames;
-
-        initializeCars();
-    }
-
-    private void initializeCars() {
         cars = makeCarsByCarNames();
     }
 
