@@ -1,11 +1,8 @@
 package racinggame.domain.car;
 
-import racinggame.domain.random.RandomGenerator;
-import racinggame.domain.random.RandomRule;
+import racinggame.domain.random.GoRule;
 
 public class Car {
-
-    private static final int GO_POSSIBLE_VALUE = 4;
 
     private final String carName;
     private int location;
@@ -23,9 +20,13 @@ public class Car {
         return carName;
     }
 
-    public void move(RandomRule randomRule) {
-        if (randomRule.getRandomValue() >= GO_POSSIBLE_VALUE) {
+    public void move(GoRule randomRule) {
+        if (randomRule.isGo()) {
             location++;
         }
+    }
+
+    public boolean isInLocation(int location) {
+        return this.location == location;
     }
 }
