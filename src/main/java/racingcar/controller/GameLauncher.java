@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.RacingGame;
+import racingcar.domain.Winners;
 import racingcar.view.RacingCarInput;
 import racingcar.view.RacingCarOutput;
 
@@ -12,7 +13,10 @@ public class GameLauncher {
         inputAll();
         RacingGame racingGame = new RacingGame(carNameList);
         String gameStatus = racingGame.getGameStatus(raceCount);
-        List<String> gameWinner = racingGame.getGameWinner();
+
+        Winners winners = new Winners(racingGame.getRacingCarLists());
+        List<String> gameWinner = winners.getRacingWinnerLists();
+
         System.out.println(gameStatus);
         System.out.print(RacingCarOutput.SYSTEM_MESSAGE_FINAL_WINNER + String.join(", ", gameWinner));
     }

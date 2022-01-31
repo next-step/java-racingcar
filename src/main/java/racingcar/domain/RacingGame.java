@@ -2,46 +2,31 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.util.RandomUtil;
+import racingcar.util.MoveUtil;
 
 public class RacingGame {
 
-    private static final int RANDOM_START = 0;
-    private static final int RANDOM_END = 9;
-    private final List<RacingCar> racingCarList;
-    StringBuilder racingStatus = new StringBuilder();
+    private static final int GAME_COUNT_LAST = 0;
 
-
-    public List<RacingCar> getRacingCarList() {
-        return racingCarList;
-    }
+    private final List<RacingCar> racingCarLists;
 
     public RacingGame(List<String> nameList) {
-        racingCarList = new ArrayList<>();
+        racingCarLists = new ArrayList<>();
         for (String name : nameList) {
-            racingCarList.add(new RacingCar(name));
+            racingCarLists.add(new RacingCar(name));
         }
     }
 
     public String getGameStatus(int raceCount) {
-        while (raceCount > 0) {
-            moveForwardAll();
+        StringBuilder currentResult = new StringBuilder();
+        while (raceCount > GAME_COUNT_LAST) {
+            currentResult.append(MoveUtil.moveForwardAll(racingCarLists));
             raceCount--;
         }
-        return racingStatus.toString();
+        return currentResult.toString();
     }
 
-    public List<String> getGameWinner() {
-        Winner winner = new Winner(racingCarList);
-        return winner.chooseWinner();
+    public List<RacingCar> getRacingCarLists() {
+        return racingCarLists;
     }
-
-    public void moveForwardAll() {
-        for (RacingCar racingCar : racingCarList) {
-            racingCar.moveForward(RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END));
-            racingStatus.append(racingCar.getName() + ":" + racingCar.getPosition() + "\n");
-        }
-        racingStatus.append("----------------\n");
-    }
-
 }
