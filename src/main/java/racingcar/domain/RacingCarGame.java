@@ -12,7 +12,6 @@ public class RacingCarGame {
     private final static Referee referee = new Referee();
     private List<Car> cars;
     private final List<String> carNames;
-    private List<String> winners;
     private int tryCount;
     private final int MIN_MOVE = 0;
     private final int MAX_MOVE = 9;
@@ -48,8 +47,10 @@ public class RacingCarGame {
 
         } while (tryCount > 0);
 
-        this.winners = referee.getWinners(cars);
-        resultView.printGameResult(winners);
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     private int getRandomMove() {
