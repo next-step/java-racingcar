@@ -6,11 +6,16 @@ import java.util.List;
 
 public class Formular {
 
-    private Formular() {
+    private final static String SPLIT_EMPTY_SPACE_NUMBER = " ";
+    private List<String> splitedFormular;
 
+    public Formular(String expressions) {
+        this.splitedFormular = new ArrayList<>(Arrays.asList(expressions.split(
+            SPLIT_EMPTY_SPACE_NUMBER)));
     }
 
-    public static List<String> stringSpliter(String expressions) {
-        return new ArrayList<>(Arrays.asList(expressions.split(" ")));
+    public List<String> getSplitedFormular() {
+        return splitedFormular;
     }
+
 }
