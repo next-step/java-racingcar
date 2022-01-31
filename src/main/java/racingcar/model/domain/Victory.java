@@ -7,8 +7,8 @@ import racingcar.model.vo.Car;
 
 public class Victory {
 
-    private List<Car> victories;
     private static final String MAX_DRIVE_LENGTH = "MAX 값을 구할 수 없습니다. 비교할 수 있는 정수값인지 확인하세요";
+    private List<Car> victories;
 
     private Victory(final List<Car> cars) {
         victories = cars;

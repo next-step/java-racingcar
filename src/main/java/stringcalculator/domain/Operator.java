@@ -12,8 +12,8 @@ public enum Operator {
     DIVIDE("/", Operator::divide),
     MULTIPLE("*", Operator::multiple);
 
-    private String sign;
-    private BiFunction<Integer, Integer, Integer> operate;
+    private final String sign;
+    private final BiFunction<Integer, Integer, Integer> operate;
     private final static int ZERO_NUMBER = 0;
 
     Operator(final String sign, final BiFunction<Integer, Integer, Integer> operate) {

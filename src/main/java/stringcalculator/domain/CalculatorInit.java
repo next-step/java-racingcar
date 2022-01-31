@@ -13,7 +13,7 @@ public class CalculatorInit {
     private static final int NUMBER_ONE = 1;
     private static final String NEW_LINE = "\n";
     private static int judgeContinue = 0;
-    private static CalculatorInit calculatorInit;
+    private static final CalculatorInit calculatorInit;
 
 
     static {
