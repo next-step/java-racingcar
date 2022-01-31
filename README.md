@@ -59,3 +59,19 @@
         - [X] 랜덤한 정수 생성 #generateRandomNumber()
             - 0 ~ 9 의 랜덤한 정수를 반환
         - [X] 자동차의 상태 출력 #printStatus()
+
+## Step 2 - MVC 패턴으로 리팩터링
+
+- 핵심 비즈니스 로직을 가지는 객체를 domain 패키지, UI 관련한 객체를 view 패키지에 구현한다.
+- MVC 패턴 기반으로 리팩터링해 view 패키지의 객체가 domain 패키지 객체에 의존할 수 있지만, domain 패키지의 객체는 view 패키지 객체에 의존하지 않도록 구현한다.
+
+### Cars : Car 들의 상태 관리
+- [X] 최대값 관리
+- [X] 랜덤넘버 생성
+- [X] Car들 움직이기
+
+### CarHistory : Car 의 현 상태정보
+
+### Car : 자동차 객체
+    - Name : 이름 객체
+    - Position : 위치 객체
