@@ -2,15 +2,15 @@ package racing.domain;
 
 public class CarHistory {
 
-    private final String name;
+    private final Name name;
     private final int position;
 
-    public CarHistory(String name, int position) {
-        this.name = name;
+    public CarHistory(Name name, int position) {
+        this.name = new Name(name);
         this.position = position;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 

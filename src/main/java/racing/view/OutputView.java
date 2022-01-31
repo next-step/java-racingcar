@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import racing.domain.Car;
 import racing.domain.CarHistory;
 import racing.domain.Cars;
+import racing.domain.Name;
 
 public class OutputView {
 
@@ -31,7 +32,7 @@ public class OutputView {
     }
 
     private static void printCarHistory(CarHistory carHistory) {
-        System.out.print(carHistory.getName() + SEPARATOR_BETWEEN_NAME_AND_POSITION);
+        System.out.print(carHistory.getName().getName() + SEPARATOR_BETWEEN_NAME_AND_POSITION);
         for (int i = 0; i < carHistory.getPosition(); i++) {
             System.out.print(MOVE_STATE);
         }
@@ -41,6 +42,7 @@ public class OutputView {
         final String winners = cars.getCars().stream()
             .filter(car -> car.isSamePosition(cars.getMaxPosition()))
             .map(Car::getName)
+            .map(Name::getName)
             .collect(Collectors.joining(COMMA));
         System.out.println("최종 우승자 : " + winners);
     }

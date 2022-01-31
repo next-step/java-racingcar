@@ -6,7 +6,7 @@ public class Car {
     private static final int CAR_NAME_MAX_LENGTH = 5;
     private static final int STANDARD_NUMBER_MOVE_FORWARD = 4;
 
-    private final String name;
+    private final Name name;
     private int position;
 
     public Car(String name) {
@@ -14,17 +14,8 @@ public class Car {
     }
 
     public Car(String name, int position) {
-        this.name = name;
+        this.name = new Name(name);
         this.position = position;
-        checkNameLength(this.name);
-    }
-
-    private static void checkNameLength(final String name) {
-        if (name.length() < CAR_NAME_MIN_LENGTH || name.length() > CAR_NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException(
-                "[ERROR] 이름의 길이는 " + CAR_NAME_MIN_LENGTH + " ~ " + CAR_NAME_MAX_LENGTH
-                    + " 글자 까지만 가능합니다.");
-        }
     }
 
     public boolean isSamePosition(final int position) {
@@ -45,7 +36,7 @@ public class Car {
         return position;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 }
