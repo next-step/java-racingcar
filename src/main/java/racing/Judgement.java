@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class Judgement {
 
+    private static final int FIRST_INDEX = 0;
     private final List<Car> cars;
     private final int bestDistance;
 
@@ -15,7 +16,7 @@ public class Judgement {
 
     private int getBestScore() {
         cars.sort(Car::compareTo);
-        return cars.get(0).getDistance();
+        return cars.get(FIRST_INDEX).getDistance();
     }
 
     public List<String> judgeWinner() {
