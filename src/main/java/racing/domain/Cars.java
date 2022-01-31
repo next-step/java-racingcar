@@ -13,15 +13,8 @@ public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
     public Cars(List<String> names) {
-        checkCarCount(names);
         for (String name : names) {
             cars.add(new Car(name));
-        }
-    }
-
-    private void checkCarCount(List<String> names) {
-        if (Objects.isNull(names)) {
-            throw new IllegalArgumentException("[ERROR] 최소 1대 이상의 자동차가 필요합니다.");
         }
     }
 
