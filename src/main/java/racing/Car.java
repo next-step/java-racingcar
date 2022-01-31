@@ -6,16 +6,16 @@ public class Car implements Comparable<Car> {
     private static final int MOVE_CONDITION = 4;
 
     private final String name;
-    private int distance = 0;
+    private int distance;
 
     public Car(String name) {
-        this.name = name;
-        validateNameLength(name);
+        this(name, 0);
     }
 
     public Car(String name, int distance) {
         this.name = name;
         this.distance = distance;
+        validateNameLength(name);
     }
 
     private void validateNameLength(String name) {
