@@ -15,9 +15,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.controller.dto.InputDTO;
 import racingcar.controller.dto.OutputDTO;
-import racingcar.model.entity.Car;
-import racingcar.model.utils.common.Parsing;
-import racingcar.model.utils.common.Validation;
+import racingcar.model.vo.Car;
 
 public class ApplicationTest {
 

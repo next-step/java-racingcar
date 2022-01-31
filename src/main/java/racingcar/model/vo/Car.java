@@ -1,4 +1,4 @@
-package racingcar.model.entity;
+package racingcar.model.vo;
 
 public class Car {
 

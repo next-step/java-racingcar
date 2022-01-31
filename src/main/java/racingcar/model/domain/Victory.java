@@ -3,7 +3,7 @@ package racingcar.model.domain;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.model.entity.Car;
+import racingcar.model.vo.Car;
 
 public class Victory {
 
