@@ -2,7 +2,8 @@ package racinggame.domain.car;
 
 import java.util.ArrayList;
 import java.util.List;
-import racinggame.domain.random.RandomRule;
+import racinggame.domain.random.GoRule;
+import racinggame.domain.winner.Winners;
 
 public class Cars {
 
@@ -17,11 +18,11 @@ public class Cars {
         }
     }
 
-    public void move(RandomRule randomRule) {
-        cars.forEach(car -> car.move(randomRule));
+    public void move(GoRule goRule) {
+        cars.forEach(car -> car.move(goRule));
     }
 
-    public int findMaxLocation() {
+    private int findMaxLocation() {
         int maxLocation = 0;
         for (Car car : cars) {
             maxLocation = Math.max(car.getLocation(), maxLocation);
@@ -33,4 +34,8 @@ public class Cars {
         return new ArrayList<>(cars);
     }
 
+    public Winners getWinners() {
+        return new Winners(cars, findMaxLocation());
+
+    }
 }
