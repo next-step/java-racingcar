@@ -2,7 +2,9 @@ package racinggame.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import racinggame.domain.car.Cars;
 import racinggame.domain.history.CarHistory;
+import racinggame.domain.history.RoundHistories;
 import racinggame.domain.history.RoundHistory;
 import racinggame.domain.winner.Winner;
 import racinggame.domain.winner.Winners;
@@ -13,11 +15,10 @@ public class ResultView {
 
 
     public ResultView() {
-        System.out.println(RUN_RESULT_TEXT);
+
     }
 
-
-    public void printCarsLocation(final List<RoundHistory> roundHistories) {
+    private void printCarsLocation(final List<RoundHistory> roundHistories) {
         for (RoundHistory roundHistory : roundHistories) {
             printCarNames(roundHistory);
             System.out.println();
@@ -39,13 +40,19 @@ public class ResultView {
         System.out.println();
     }
 
-    public void printWinner(final Winners winners) {
+    private void printWinner(final Winners winners) {
         List<String> winnerNames = new ArrayList<>();
         System.out.print("최종 우승자: ");
         for (Winner winner : winners.getWinners()) {
             winnerNames.add(winner.getWinnerName());
         }
         System.out.println(String.join(", ", winnerNames));
+    }
+
+    public void printResult(Cars cars, RoundHistories roundHistories) {
+        System.out.println(RUN_RESULT_TEXT);
+        this.printCarsLocation(roundHistories.getAllRoundHistory());
+        this.printWinner(cars.getWinners());
     }
 
 }
