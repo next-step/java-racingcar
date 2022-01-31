@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import java.util.List;
-
 public class ResultView {
 
     private String getDashByMove(int move) {

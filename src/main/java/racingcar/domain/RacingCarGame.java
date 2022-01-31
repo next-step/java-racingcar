@@ -9,7 +9,6 @@ public class RacingCarGame {
 
     private final static Random RANDOM = new Random();
     private final static ResultView resultView = new ResultView();
-    private final static Referee referee = new Referee();
     private List<Car> cars;
     private final List<String> carNames;
     private int tryCount;
@@ -41,7 +40,6 @@ public class RacingCarGame {
             tryCount--;
 
         } while (tryCount > 0);
-
     }
 
     public List<Car> getCars() {
