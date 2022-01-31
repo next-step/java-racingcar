@@ -8,12 +8,12 @@ public class Winner {
     private List<Car> cars;
 
     public Winner(List<Car> car) {
-        this.cars = car;
+        this.cars = new ArrayList<>(car);
     }
 
-    public List<String> getWinner() {
+    public List<String> findWinner() {
+        int maxPosition = findMaxPosition();
         List<String> winners = new ArrayList<>();
-        int maxPosition = getMaxPosition();
         for (Car car : cars) {
             if (car.getPosition() == maxPosition) {
                 winners.add(car.getCarName());
@@ -22,7 +22,7 @@ public class Winner {
         return winners;
     }
 
-    private int getMaxPosition() {
+    private int findMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
             if (car.getPosition() > maxPosition) {
