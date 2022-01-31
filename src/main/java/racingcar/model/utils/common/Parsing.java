@@ -18,7 +18,7 @@ public class Parsing {
         return false;
     }
 
-    public static boolean parsingRacingTry(final int count) {
+    public static boolean racingTryCheck(final int count) {
         try {
             validateNumberRange(count);
         } catch (InputValidationException exception) {
