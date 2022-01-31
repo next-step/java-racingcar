@@ -8,10 +8,9 @@ public class User {
 
     public List<String> getUserInput() {
         Scanner scanner = new Scanner(System.in);
-        String[] userInputTokens;
         String userInput = scanner.nextLine();
 
-        userInputTokens = userInput.split(" ");
+        String[] userInputTokens = userInput.split(" ");
 
         if (userInputTokens.length < 3) {
             throw new IllegalArgumentException("공백은 허용되지 않습니다");
