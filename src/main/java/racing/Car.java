@@ -3,7 +3,6 @@ package racing;
 public class Car implements Comparable<Car> {
 
     private static final int NAME_LENGTH_CONDITION = 5;
-    private static final int MOVE_CONDITION = 4;
 
     private final String name;
     private int distance;
@@ -24,14 +23,8 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public void move(int value) {
-        if (moveCheck(value)) {
-            distance++;
-        }
-    }
-
-    private boolean moveCheck(int randomValue) {
-        return randomValue >= MOVE_CONDITION;
+    public void move() {
+        distance++;
     }
 
     @Override
