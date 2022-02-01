@@ -53,4 +53,8 @@ public class RacingCar {
     public int hashCode() {
         return Objects.hash(carName, carPosition);
     }
+
+    public boolean isMatchePosition(int maxPosition) {
+        return this.carPosition == maxPosition;
+    }
 }
