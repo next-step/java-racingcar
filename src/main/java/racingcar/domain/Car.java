@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import racingcar.controller.ResultDto;
 import racingcar.domain.movable.MovableStrategy;
 
 public class Car {
@@ -21,10 +20,9 @@ public class Car {
 
     public boolean isDistance(final int distance) { return this.distance == distance; }
 
-    public ResultDto run(final MovableStrategy strategy) {
+    public void run(final MovableStrategy strategy) {
         if (strategy.isMovable()) {
             this.distance++;
         }
-        return new ResultDto(this);
     }
 }

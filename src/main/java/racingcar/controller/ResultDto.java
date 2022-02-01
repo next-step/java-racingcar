@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import racingcar.domain.Car;
 import racingcar.domain.PlayerName;
 
 public class ResultDto {
@@ -11,9 +10,9 @@ public class ResultDto {
     private final PlayerName name;
     private final int position;
 
-    public ResultDto(final Car car) {
-        this.name = car.name();
-        this.position = car.distance();
+    public ResultDto(final PlayerName name, final int position) {
+        this.name = name;
+        this.position = position;
     }
 
     public String currentStatus() {

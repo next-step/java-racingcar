@@ -13,7 +13,7 @@ public class Turn {
     }
 
     public boolean isTurnEnd() {
-        return --turns < 0;
+        return turns < 0;
     }
 
     private void validateTurn(int turn) {
@@ -22,4 +22,7 @@ public class Turn {
         }
     }
 
+    public void runGame() {
+        turns--;
+    }
 }

@@ -32,14 +32,23 @@ public class Cars {
 
     public List<ResultDto> moveAll(final MovableStrategy strategy, Turn turn) {
         while (!turn.isTurnEnd()) {
-            result = Stream.concat(result.stream(), carList.stream().map(car -> car.run(strategy)))
+            result = Stream.concat(result.stream(), carList.stream().map(car -> {
+                        car.run(strategy);
+                        return new ResultDto(car.name(), car.distance());
+                    })
+                )
                 .collect(Collectors.toList());
+            turn.runGame();
         }
         return result;
     }
 
     public List<Car> get() {
         return Collections.unmodifiableList(carList);
+    }
+
+    public int size() {
+        return carList.size();
     }
 
     public List<Car> getWinnerList() {
@@ -59,6 +68,7 @@ public class Cars {
         return carList.stream()
             .mapToInt(Car::distance)
             .max()
-            .orElseThrow(() -> new IllegalArgumentException("[ERROR] 예외가 발생하였습니다 : max 값이 존재하지 않습니다."));
+            .orElseThrow(
+                () -> new IllegalArgumentException("[ERROR] 예외가 발생하였습니다 : max 값이 존재하지 않습니다."));
     }
 }

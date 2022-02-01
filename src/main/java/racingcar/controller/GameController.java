@@ -24,7 +24,7 @@ public class GameController {
 
     private void moveCars(final MovableStrategy strategy) {
         List<ResultDto> result = cars.moveAll(strategy, new Turn(turn));
-        OutputView.printDistance(result, cars.get().size());
+        OutputView.printDistance(result, cars.size());
     }
 
 }
