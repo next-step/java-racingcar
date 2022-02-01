@@ -5,14 +5,12 @@ import java.util.Scanner;
 public class UserInput {
 
     private static final String INPUT_ERROR_MESSAGE = "잘못된 입력입니다.";
-    private final Scanner scanner =  new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
-    public UserInput() {
-
-    }
+    public UserInput() {}
 
     public UserInput(String test) {
-        validateUserInput(test);
+        checkEmptyString(test);
     }
 
     public String typeUserInput() {
@@ -24,17 +22,12 @@ public class UserInput {
     }
 
     private String getUserInputFrom(String userInput) {
-        validateUserInput(userInput);
+        checkEmptyString(userInput);
         return userInput;
     }
 
     private String userConsole() {
         return scanner.nextLine();
-    }
-
-    private String validateUserInput(String userInput) {
-        checkEmptyString(userInput);
-        return userInput;
     }
 
     private void checkEmptyString(String userInput) {
