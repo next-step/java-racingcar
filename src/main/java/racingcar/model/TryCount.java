@@ -6,12 +6,17 @@ public class TryCount {
 
     private int tryCount;
     public TryCount(int tryCountInput){
-        tryCount=validateTryCount(tryCount);
+        tryCount=validateTryCount(tryCountInput);
     }
-    private int validateTryCount(int tryCount) {
+    private int validateTryCount(int tryCountInput) {
         if (tryCount < MINIMUM_TRY_COUNT) {
             throw new IllegalArgumentException(TRY_COUNT_LESS_THAN_ZERO);
         }
-        return tryCount;
+        return tryCountInput;
     }
+
+    public boolean isUnderTryCount(int i){
+        return tryCount>i;
+    }
+
 }
