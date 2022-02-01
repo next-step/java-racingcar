@@ -17,7 +17,7 @@ public class RacingGameController {
     private final InputView inputView;
     private GameView gameView;
 
-    public RacingGameController(InputView inputView) {
+    public RacingGameController(final InputView inputView) {
         this.inputView = inputView;
     }
 
@@ -50,7 +50,7 @@ public class RacingGameController {
         return trial;
     }
 
-    public void startGame(RacingCars racingCars, Trial trial) {
+    public void startGame(RacingCars racingCars, final Trial trial) {
         RacingGame racingGame;
 
         while (true) {
@@ -66,7 +66,7 @@ public class RacingGameController {
         start(racingGame, trial);
     }
 
-    private void start(RacingGame racingGame, Trial trial) {
+    private void start(final RacingGame racingGame, final Trial trial) {
         for (int i = 0; i < trial.getValue(); i++) {
             racingGame.progress();
             gameView.saveProgress();
@@ -77,7 +77,7 @@ public class RacingGameController {
         gameView.printResult();
     }
 
-    public void printWinners(RacingCars racingCars) {
+    public void printWinners(final RacingCars racingCars) {
         gameView.printWinners(Judge.getWinners(racingCars));
     }
 
@@ -87,7 +87,7 @@ public class RacingGameController {
         }
     }
 
-    private boolean isQuit(String command) {
+    private boolean isQuit(final String command) {
         return QUIT.equals(command);
     }
 }

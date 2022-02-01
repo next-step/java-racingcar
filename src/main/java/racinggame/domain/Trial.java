@@ -5,9 +5,9 @@ public class Trial {
     private static final String BLANK = "\\s+";
     private static final String EMPTY_STRING = "";
 
-    private int value;
+    private final int value;
 
-    public Trial(String value) {
+    public Trial(final String value) {
         this.value = parse(value);
     }
 
@@ -15,8 +15,8 @@ public class Trial {
         return this.value;
     }
 
-    private int parse(String inputTrial) {
-        String removedBlankInput = removeBlank(inputTrial);
+    private int parse(final String inputTrial) {
+        final String removedBlankInput = removeBlank(inputTrial);
 
         Validator.checkIsBlank(removedBlankInput);
         Validator.isNumber(removedBlankInput);
@@ -24,7 +24,7 @@ public class Trial {
         return Integer.parseInt(removedBlankInput);
     }
 
-    private String removeBlank(String trial) {
+    private String removeBlank(final String trial) {
         return trial.replaceAll(BLANK, EMPTY_STRING);
     }
 }

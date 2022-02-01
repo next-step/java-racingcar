@@ -12,9 +12,9 @@ class RacingGameTest {
 
     @Test
     void RacingCar_리스트를_받아_RacingGame_객체_생성() {
-        RacingCars racingCars = new RacingCars("car1,car2");
+        final RacingCars racingCars = new RacingCars("car1,car2");
 
-        RacingGame racingGame = new RacingGame(racingCars);
+        final RacingGame racingGame = new RacingGame(racingCars);
 
         assertThat(racingGame.getRacingCars()).isEqualTo(racingCars);
     }
@@ -23,11 +23,11 @@ class RacingGameTest {
     void getRandomValue_랜덤값을_생성()
             throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
-        RacingGame racingGame = new RacingGame();
-        Method getRandomValue = RacingGame.class.getDeclaredMethod("getRandomValue");
+        final RacingGame racingGame = new RacingGame();
+        final Method getRandomValue = RacingGame.class.getDeclaredMethod("getRandomValue");
         getRandomValue.setAccessible(true);
 
-        int result = (int) getRandomValue.invoke(racingGame);
+        final int result = (int) getRandomValue.invoke(racingGame);
 
         assertTrue(result <= 9);
         assertTrue(result >= 0);

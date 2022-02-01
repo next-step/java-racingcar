@@ -19,12 +19,12 @@ class InputViewTest {
     @Test
     void carNames_정상_입력() {
         // given
-        String userInput = "car1,car2";
-        InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
+        final String userInput = "car1,car2";
+        final InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(inputStream);
 
         // when
-        String inputCarNames = inputView.inputCarNames();
+        final String inputCarNames = inputView.inputCarNames();
 
         // then
         assertThat(inputCarNames).isEqualTo(userInput);
@@ -33,12 +33,12 @@ class InputViewTest {
     @Test
     void 시도횟수_정상_입력() {
         // given
-        String inputTrial = "5";
-        InputStream inputStream = new ByteArrayInputStream(inputTrial.getBytes());
+        final String inputTrial = "5";
+        final InputStream inputStream = new ByteArrayInputStream(inputTrial.getBytes());
         System.setIn(inputStream);
 
         // when
-        String trial = inputView.inputTrial();
+        final String trial = inputView.inputTrial();
 
         // then
         assertThat(trial).isEqualTo(inputTrial);

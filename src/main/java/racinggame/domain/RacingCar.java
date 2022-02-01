@@ -7,20 +7,20 @@ public class RacingCar {
     private static final int MINIMUM_FORWARD_VALUE = 4;
     private static final int INIT_POSITION = 0;
 
-    private String name;
+    private final String name;
     private int position;
 
-    public RacingCar(String name) {
+    public RacingCar(final String name) {
         this(name, INIT_POSITION);
     }
 
-    public RacingCar(String name, int position) {
+    public RacingCar(final String name, final int position) {
         Validator.validateNameLength(name);
         this.name = name;
         this.position = position;
     }
 
-    public boolean canForward(int randomValue) {
+    public boolean canForward(final int randomValue) {
         return randomValue >= MINIMUM_FORWARD_VALUE;
     }
 
@@ -34,6 +34,10 @@ public class RacingCar {
 
     public String getName() {
         return this.name;
+    }
+
+    public boolean isMatchPosition(final int maxPosition) {
+        return this.position == maxPosition;
     }
 
     @Override
@@ -52,9 +56,5 @@ public class RacingCar {
     @Override
     public int hashCode() {
         return Objects.hash(name, position);
-    }
-
-    public boolean isMatchPosition(int maxPosition) {
-        return this.position == maxPosition;
     }
 }

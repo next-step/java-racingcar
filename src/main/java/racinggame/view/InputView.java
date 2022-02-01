@@ -31,7 +31,7 @@ public class InputView {
     }
 
     private static String getInput() {
-        Scanner scanner = new Scanner(System.in);
+        final Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 }

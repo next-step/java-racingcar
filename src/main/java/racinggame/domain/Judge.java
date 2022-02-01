@@ -8,8 +8,8 @@ public class Judge {
 
     private Judge() {}
 
-    public static List<String> getWinners(RacingCars racingCars) {
-        int maximumPosition = getHighScore(racingCars);
+    public static List<String> getWinners(final RacingCars racingCars) {
+        final int maximumPosition = getHighScore(racingCars);
 
         return racingCars.get().stream()
                 .filter(car -> car.isMatchPosition(maximumPosition))
@@ -17,11 +17,11 @@ public class Judge {
                 .collect(Collectors.toList());
     }
 
-    private static int getHighScore(RacingCars racingCars) {
+    private static int getHighScore(final RacingCars racingCars) {
         return Collections.max(getCarPositions(racingCars));
     }
 
-    private static List<Integer> getCarPositions(RacingCars racingCars) {
+    private static List<Integer> getCarPositions(final RacingCars racingCars) {
         return racingCars.get().stream()
                 .map(RacingCar::getPosition)
                 .collect(Collectors.toList());

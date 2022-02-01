@@ -16,8 +16,8 @@ class TrialTest {
     @Test
     void 생성자() {
         // given
-        String input = "5";
-        Trial trial = new Trial(input);
+        final String input = "5";
+        final Trial trial = new Trial(input);
 
         // then
         assertThat(trial.getValue()).isEqualTo(5);
@@ -25,9 +25,9 @@ class TrialTest {
 
     @ValueSource(strings = {"1 0", " 10", " 1 0 ", "10 ", "1   0  "})
     @ParameterizedTest
-    void getTrial_불필요한_공백이_들어왔을_때_제거(String inputTrial) {
+    void getTrial_불필요한_공백이_들어왔을_때_제거(final String inputTrial) {
         // when
-        int trial = new Trial(inputTrial).getValue();
+        final int trial = new Trial(inputTrial).getValue();
 
         // then
         assertThat(trial).isEqualTo(10);
@@ -36,7 +36,7 @@ class TrialTest {
     @Test
     void 시도횟수는_숫자인지_검증하는_로직_실패() {
         // given
-        String input = "a";
+        final String input = "a";
 
         // then
         assertThrows(NumberFormatException.class, () -> new Trial(input));
@@ -45,7 +45,7 @@ class TrialTest {
     @Test
     void 시도횟수는_숫자인지_검증하는_로직_성공() {
         // given
-        String input = "5";
+        final String input = "5";
 
         // then
         assertDoesNotThrow(() -> new Trial(input));

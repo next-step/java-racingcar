@@ -8,7 +8,7 @@ class UtilsTest {
 
     @Test
     void repeat_String() {
-        String repeatString = Utils.repeat("*", 5);
+        final String repeatString = Utils.repeat("*", 5);
 
         assertThat(repeatString).isEqualTo("*****");
     }

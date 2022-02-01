@@ -13,21 +13,21 @@ class RacingCarTest {
 
     @Test
     void 자동차의_이름_글자수_5자_이하_실패() {
-        String carName = "carcar1";
+        final String carName = "carcar1";
 
         assertThrows(NameLengthOverException.class, () -> new RacingCar(carName, 0));
     }
 
     @Test
     void 자동차의_이름_글자수_5자_이하_성공() {
-        String carName = "car1";
+        final String carName = "car1";
 
         assertDoesNotThrow(() -> new RacingCar(carName, 0));
     }
 
     @Test
     void 한_칸_전진() {
-        RacingCar car = new RacingCar("car", 0);
+        final RacingCar car = new RacingCar("car", 0);
 
         car.forward();
 
@@ -36,16 +36,16 @@ class RacingCarTest {
 
     @Test
     void canForward_전진실패() {
-        int randomValue = 1;
-        RacingCar car = new RacingCar("car", 0);
+        final int randomValue = 1;
+        final RacingCar car = new RacingCar("car", 0);
 
         assertFalse(car.canForward(randomValue));
     }
 
     @Test
     void canForward_전진가능() {
-        int randomValue = 5;
-        RacingCar car = new RacingCar("car", 0);
+        final int randomValue = 5;
+        final RacingCar car = new RacingCar("car", 0);
 
         assertTrue(car.canForward(randomValue));
     }

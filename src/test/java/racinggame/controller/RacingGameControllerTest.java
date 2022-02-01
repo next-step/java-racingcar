@@ -12,15 +12,15 @@ import racinggame.view.InputView;
 
 class RacingGameControllerTest {
 
-    RacingGameController controller = new RacingGameController(new InputView());
+    private final RacingGameController controller = new RacingGameController(new InputView());
 
     @Test
     void getRacingCars() {
-        String userInput = "car1, car2";
-        InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
+        final String userInput = "car1, car2";
+        final InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(inputStream);
 
-        RacingCars racingCars = controller.getRacingCars();
+        final RacingCars racingCars = controller.getRacingCars();
 
         assertThat(racingCars.get().size()).isEqualTo(2);
         assertThat(racingCars.get().get(0).getName()).isEqualTo("car1");
@@ -29,11 +29,11 @@ class RacingGameControllerTest {
 
     @Test
     void getTrial() {
-        String userInput = "5";
-        InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
+        final String userInput = "5";
+        final InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(inputStream);
 
-        Trial trial = controller.getTrial();
+        final Trial trial = controller.getTrial();
         assertThat(trial.getValue()).isEqualTo(5);
     }
 
@@ -41,7 +41,7 @@ class RacingGameControllerTest {
     @Test
     void checkIsRestart_q를_입력하면_종료된다() {
         // given
-        InputStream inputStream = new ByteArrayInputStream("q".getBytes());
+        final InputStream inputStream = new ByteArrayInputStream("q".getBytes());
         System.setIn(inputStream);
 
         // then

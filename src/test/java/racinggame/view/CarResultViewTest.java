@@ -13,21 +13,21 @@ class CarResultViewTest {
 
     @Test
     void 팩토리_메서드_테스트() {
-        RacingCars racingCars = new RacingCars("car1,car2");
-        List<CarResultView> carResultViews = CarResultView.racingCarOf(racingCars);
+        final RacingCars racingCars = new RacingCars("car1,car2");
+        final List<CarResultView> carResultViews = CarResultView.racingCarOf(racingCars);
 
         assertThat(carResultViews.size()).isEqualTo(2);
     }
 
     @ValueSource(ints = {1, 2, 3, 4, 5})
     @ParameterizedTest
-    void drawCurrPosition(int position) {
-        RacingCars racingCars = new RacingCars("car1");
-        CarResultView carResultView = CarResultView.racingCarOf(racingCars).get(0);
+    void drawCurrPosition(final int position) {
+        final RacingCars racingCars = new RacingCars("car1");
+        final CarResultView carResultView = CarResultView.racingCarOf(racingCars).get(0);
 
-        String currPositionView = carResultView.drawCurrResult();
+        final String currPositionView = carResultView.drawCurrResult();
 
-        StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder();
         sb.append("car1 : ")
                 .append(Utils.repeat("-", position));
 

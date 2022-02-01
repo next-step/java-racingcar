@@ -8,7 +8,7 @@ public class RacingGame {
 
     public RacingGame() {}
 
-    public RacingGame(RacingCars racingCars) {
+    public RacingGame(final RacingCars racingCars) {
         Validator.validatePossibleToStart(racingCars);
         this.racingCars = racingCars;
     }
@@ -30,3 +30,4 @@ public class RacingGame {
         return this.racingCars;
     }
 }
+

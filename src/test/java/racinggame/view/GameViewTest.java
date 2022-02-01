@@ -31,10 +31,10 @@ class GameViewTest {
     void 상태를_출력할_자동차_리스트를_받아_생성한다() throws NoSuchFieldException, IllegalAccessException {
 
         // when
-        Field racingCarViewsField = GameView.class.getDeclaredField("carResultViews");
+        final Field racingCarViewsField = GameView.class.getDeclaredField("carResultViews");
         racingCarViewsField.setAccessible(true);
 
-        List<CarResultView> racingCarViews = (List<CarResultView>) racingCarViewsField.get(gameView);
+        final List<CarResultView> racingCarViews = (List<CarResultView>) racingCarViewsField.get(gameView);
         // then
 
         assertThat(racingCarViews.size()).isEqualTo(2);
@@ -53,7 +53,7 @@ class GameViewTest {
 
     @Test
     void 게임_결과를_출력한다() {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        final ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
         // when
@@ -68,7 +68,7 @@ class GameViewTest {
     @Test
     void 우승자를_출력한다() {
         //when
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        final ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
         gameView.printWinners(Judge.getWinners(racingCars));

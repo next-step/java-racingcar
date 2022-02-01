@@ -10,27 +10,27 @@ public class RacingCars {
     private static final String BLANK = "\\s+";
     private static final String EMPTY_STRING = "";
 
-    private List<RacingCar> racingCars;
+    private final List<RacingCar> racingCars;
 
-    public RacingCars(String inputCarNames) {
-        String[] carNames = parse(inputCarNames);
+    public RacingCars(final String inputCarNames) {
+        final String[] carNames = parse(inputCarNames);
         racingCars = Arrays.stream(carNames)
                 .map(RacingCar::new)
                 .collect(Collectors.toList());
     }
 
-    private String[] parse(String inputCarNames) {
-        String[] splitName = splitNameByComma(removeBlank(inputCarNames));
+    private String[] parse(final String inputCarNames) {
+        final String[] splitName = splitNameByComma(removeBlank(inputCarNames));
         Validator.checkNameIsBlank(splitName);
 
         return splitName;
     }
 
-    private String removeBlank(String trial) {
+    private String removeBlank(final String trial) {
         return trial.replaceAll(BLANK, EMPTY_STRING);
     }
 
-    private String[] splitNameByComma(String inputCarNames) {
+    private String[] splitNameByComma(final String inputCarNames) {
         return inputCarNames.split(SEPARATOR);
     }
 

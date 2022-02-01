@@ -10,11 +10,11 @@ public class CarResultView {
 
     private static final String FOOTPRINTS = "-";
 
-    private RacingCar racingCar;
+    private final RacingCar racingCar;
     private int currPosition;
     private String currResult;
 
-    private CarResultView(RacingCar racingCar) {
+    private CarResultView(final RacingCar racingCar) {
         this.racingCar = racingCar;
         this.currPosition = racingCar.getPosition();
         this.currResult = String.format("%-5s: %s",
@@ -22,7 +22,7 @@ public class CarResultView {
                 Utils.repeat(FOOTPRINTS, racingCar.getPosition()));
     }
 
-    public static List<CarResultView> racingCarOf(RacingCars racingCars) {
+    public static List<CarResultView> racingCarOf(final RacingCars racingCars) {
         return racingCars.get().stream()
                 .map(CarResultView::new)
                 .collect(Collectors.toList());
