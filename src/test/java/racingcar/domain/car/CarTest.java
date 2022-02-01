@@ -61,40 +61,6 @@ class CarTest {
         });
     }
 
-    @Test
-    public void 전진조건_만족시_차량의_위치가_일치하는지() {
-        //given
-        List<Car> cars = new ArrayList<>();
-        Car car1 = Car.from("jason");
-        Car car2 = Car.from("pobi");
-        cars.add(car1);
-        cars.add(car2);
-
-        //when
-        cars.stream().forEach(car -> car.go(new MoveGen()));
-
-        //then
-        assertThat(cars.get(0).getPosition()).isEqualTo(1);
-        assertThat(cars.get(1).getPosition()).isEqualTo(1);
-    }
-
-    @Test
-    public void 전진조건_불만족시_차량의_위치가_변하지_않는지() {
-        //given
-        List<Car> cars = new ArrayList<>();
-        Car car1 = Car.from("jason");
-        Car car2 = Car.from("pobi");
-        cars.add(car1);
-        cars.add(car2);
-
-        //when
-        cars.stream().forEach(car -> car.go(new NoMoveGen()));
-
-        //then
-        assertThat(cars.get(0).getPosition()).isEqualTo(0);
-        assertThat(cars.get(1).getPosition()).isEqualTo(0);
-    }
-
     @DisplayName("List<Car>를 정렬하면 위치의 내림차순으로 정렬된다.")
     @Test
     public void 내림차순_정렬_테스트() {
