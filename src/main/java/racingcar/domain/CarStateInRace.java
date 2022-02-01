@@ -7,7 +7,7 @@ public class CarStateInRace {
 
     private String currentCarStatement;
     private final Car car;
-    private StringBuilder stringBuilder = new StringBuilder();
+    private final StringBuilder stringBuilder = new StringBuilder();
 
     public CarStateInRace(final Car car) {
         this.car = car;

@@ -13,7 +13,7 @@ public class ResultView {
     private static final int ZERO = 0;
     private static final String COMMA = ",";
 
-    private StringBuilder stringBuilder = new StringBuilder();
+    private final StringBuilder stringBuilder = new StringBuilder();
 
     private ResultView() {
     }
