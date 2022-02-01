@@ -7,21 +7,21 @@ public class RacingGame {
 
     private final Cars cars;
     private final MoveStrategy moveStrategy;
-    private int raceCount;
+    private int tryRaceCount;
 
-    public RacingGame(List<String> nameList, int raceCount, MoveStrategy moveStrategy) {
+    public RacingGame(List<String> nameList, int tryRaceCount, MoveStrategy moveStrategy) {
         this.cars = Cars.of(nameList);
-        this.raceCount = raceCount;
+        this.tryRaceCount = tryRaceCount;
         this.moveStrategy = moveStrategy;
     }
 
     public void race() {
         cars.moveAll(moveStrategy);
-        raceCount--;
+        tryRaceCount--;
     }
 
     public boolean isOngoing() {
-        return raceCount > 0;
+        return tryRaceCount > 0;
     }
 
     public Cars getCars() {
