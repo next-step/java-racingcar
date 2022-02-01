@@ -10,7 +10,6 @@ public class Turn {
     private static final String TURN_NOT_NATURAL_NUMBER_ERROR_MESSAGE = "시도할 횟수는 " + MINIMUM_INPUT_VALUE + " 이상이어야 합니다.";
     private static final Pattern DIGIT = Pattern.compile("[+-]?\\d*(\\.\\d+)?");
 
-
     private final int value;
 
     public Turn(String input) {
