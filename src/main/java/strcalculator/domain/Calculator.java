@@ -8,21 +8,20 @@ public class Calculator {
 
     private final String[] numberList;
     private final String[] operandList;
+    private final Map<String, Supplier<Integer>> operandDivision = new HashMap<>();
     private int leftNumber = 0;
     private int rightNumber = 0;
-
-    public Calculator(final String[] numberList, final String[] operandList) {
-        this.numberList = numberList;
-        this.operandList = operandList;
-    }
-
-    private final Map<String, Supplier<Integer>> operandDivision = new HashMap<>();
 
     {
         operandDivision.put("+", () -> leftNumber + rightNumber);
         operandDivision.put("-", () -> leftNumber - rightNumber);
         operandDivision.put("*", () -> leftNumber * rightNumber);
         operandDivision.put("/", () -> leftNumber / rightNumber);
+    }
+
+    public Calculator(final String[] numberList, final String[] operandList) {
+        this.numberList = numberList;
+        this.operandList = operandList;
     }
 
     public void calculate() {

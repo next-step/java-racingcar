@@ -19,4 +19,8 @@ public class CarHistory {
     public Integer getLocation() {
         return location;
     }
+
+    public boolean isInLocation(int location) {
+        return this.location == location;
+    }
 }

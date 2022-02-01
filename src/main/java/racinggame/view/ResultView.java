@@ -2,7 +2,6 @@ package racinggame.view;
 
 import java.util.ArrayList;
 import java.util.List;
-import racinggame.domain.car.Cars;
 import racinggame.domain.history.CarHistory;
 import racinggame.domain.history.RoundHistories;
 import racinggame.domain.history.RoundHistory;
@@ -49,10 +48,10 @@ public class ResultView {
         System.out.println(String.join(", ", winnerNames));
     }
 
-    public void printResult(Cars cars, RoundHistories roundHistories) {
+    public void printResult(RoundHistories roundHistories) {
         System.out.println(RUN_RESULT_TEXT);
         this.printCarsLocation(roundHistories.getAllRoundHistory());
-        this.printWinner(cars.getWinners());
+        this.printWinner(roundHistories.findWinners());
     }
 
 }
