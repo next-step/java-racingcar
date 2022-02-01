@@ -8,8 +8,7 @@ public class InputView {
     public static final String QUIT = "q";
     private static final String SEPARATOR = ",";
 
-    public InputView() {
-    }
+    public InputView() {}
 
     public String inputCarNames() {
         System.out.printf("경주할 자동차 이름을 %s로 구분해서 입력하세요.(%d대 이상)\n", SEPARATOR,
@@ -27,7 +26,7 @@ public class InputView {
         return getInput();
     }
 
-    public void printErrorMessage(String message){
+    public void printErrorMessage(String message) {
         System.out.println(message);
     }
 

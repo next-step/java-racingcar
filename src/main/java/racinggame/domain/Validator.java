@@ -10,8 +10,7 @@ public class Validator {
     public static final int MINIMUM_PLAYER = 2;
     private static final int MAXIMUM_NAME_LENGTH = 5;
 
-    private Validator() {
-    }
+    private Validator() {}
 
     public static void validatePossibleToStart(RacingCars racingCars) {
         if (isPossibleToStart(racingCars.get())) {
