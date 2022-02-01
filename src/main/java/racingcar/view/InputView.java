@@ -13,8 +13,7 @@ public class InputView {
 
     public static String getConsoleTextFrom(final String message) {
         OutputView.printMessage(message);
-        String line = scanner.nextLine().trim();
-        return line;
+        return scanner.nextLine().trim();
     }
 
     public static Participants names() {
