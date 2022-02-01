@@ -36,11 +36,13 @@ public class Car {
             this.position++;
         }
     }
-    public boolean findPositionWithMax(int maxPosition){
+
+    public boolean findPositionWithMax(int maxPosition) {
         return position == maxPosition;
     }
-    public int compareMaxPosition(int maxPosition){
-        return Math.max(position,maxPosition);
+
+    public int compareMaxPosition(int maxPosition) {
+        return Math.max(position, maxPosition);
     }
 
     public String getCarName() {

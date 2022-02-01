@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Random;
 
 public class Cars {
-    private static final int RANDOM_BOUND_VALUE=9;
 
-    private List<Car> cars= new ArrayList<>();
-    public Cars(String [] carNames){
+    private static final int RANDOM_BOUND_VALUE = 9;
+
+    private List<Car> cars = new ArrayList<>();
+
+    public Cars(String[] carNames) {
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
