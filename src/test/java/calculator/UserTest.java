@@ -1,6 +1,7 @@
 package calculator;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
