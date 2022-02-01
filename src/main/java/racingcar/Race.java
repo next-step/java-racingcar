@@ -1,20 +1,46 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Race {
 
     public static void execute() {
-        Car car = new Car();
-        car.carNames = InputView.getName();
-        car.cars = new int[car.carNames.length];
-        if (!InputView.checkCarName(car.carNames)) {
-            System.out.println("자동차 이름은 5자를 초과할 수 없습니다.");
+        ArrayList<Car> cars = new ArrayList<>();
+        String[] carNames = InputView.getName();
+        for (String carName: carNames) {
+            Car car = new Car(carName);
+            cars.add(car);
+        }
+
+        if (!isValidCarNames(cars)) {
             return;
         }
-        car.times = InputView.getTimes();
-        car.repeatGame();
-        OutputView.printWinners(car.carNames, car.cars);
+
+        int times = InputView.getTimes();
+        while ((times--) > 0) {
+            playGame(cars);
+        }
+        OutputView.printWinners(cars);
+    }
+
+    private static boolean isValidCarNames(ArrayList<Car> cars) {
+        for (Car car: cars) {
+            if (!InputView.isValidCarName(car.name)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static void playGame(ArrayList<Car> cars) {
+        for (Car car: cars) {
+            int randomNumber = Race.getRandomNumber();
+            Race.moveCarRandomly(car, randomNumber);
+        }
+        OutputView.printResult(cars);
+        System.out.println();
     }
 
     public static int getRandomNumber() {
@@ -22,9 +48,9 @@ public class Race {
         return randomNumber;
     }
 
-    public static void compareWithFour(int[] cars, int idx, int randomNumber) {
         if (randomNumber >= 4) {
-            cars[idx]++;
+    public static void moveCarRandomly(Car car, int randomNumber) {
+            car.distance++;
         }
     }
 }

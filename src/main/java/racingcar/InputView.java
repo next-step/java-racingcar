@@ -17,12 +17,7 @@ public class InputView {
         return sc.nextInt();
     }
 
-    public static boolean checkCarName(String[] carName) {
-        for (int i = 0; i < carName.length; i++) {
-            if (carName[i].length() > 5) {
-                return false;
-            }
-        }
-        return true;
+    public static boolean isValidCarName(String carName) {
+        return carName.length() <= 5;
     }
 }
