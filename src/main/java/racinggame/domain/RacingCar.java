@@ -54,7 +54,7 @@ public class RacingCar {
         return Objects.hash(name, position);
     }
 
-    public boolean isMatchePosition(int maxPosition) {
+    public boolean isMatchPosition(int maxPosition) {
         return this.position == maxPosition;
     }
 }
