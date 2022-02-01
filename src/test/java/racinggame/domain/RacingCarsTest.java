@@ -36,9 +36,9 @@ class RacingCarsTest {
         RacingCars racingCars = new RacingCars(inputCarNames);
         List<RacingCar> cars = racingCars.getRacingCars();
 
-        assertThat(cars.get(0).getCarName()).isEqualTo("car1");
-        assertThat(cars.get(1).getCarName()).isEqualTo("car2");
-        assertThat(cars.get(2).getCarName()).isEqualTo("car3");
+        assertThat(cars.get(0).getName()).isEqualTo("car1");
+        assertThat(cars.get(1).getName()).isEqualTo("car2");
+        assertThat(cars.get(2).getName()).isEqualTo("car3");
     }
 
     @ValueSource(strings = {"", " ", "car1, ,car2"})

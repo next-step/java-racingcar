@@ -5,12 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.ginsberg.junit.exit.ExpectSystemExit;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.List;
 import org.junit.jupiter.api.Test;
-import racinggame.domain.RacingCar;
 import racinggame.domain.RacingCars;
 import racinggame.domain.Trial;
-import racinggame.service.InputService;
 import racinggame.view.InputView;
 
 class RacingGameControllerTest {
@@ -26,8 +23,8 @@ class RacingGameControllerTest {
         RacingCars racingCars = controller.getRacingCars();
 
         assertThat(racingCars.getRacingCars().size()).isEqualTo(2);
-        assertThat(racingCars.getRacingCars().get(0).getCarName()).isEqualTo("car1");
-        assertThat(racingCars.getRacingCars().get(1).getCarName()).isEqualTo("car2");
+        assertThat(racingCars.getRacingCars().get(0).getName()).isEqualTo("car1");
+        assertThat(racingCars.getRacingCars().get(1).getName()).isEqualTo("car2");
     }
 
     @Test

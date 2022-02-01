@@ -7,17 +7,17 @@ public class RacingCar {
     private static final int MINIMUM_FORWARD_VALUE = 4;
     private static final int INIT_POSITION = 0;
 
-    private String carName;
-    private int carPosition;
+    private String name;
+    private int position;
 
-    public RacingCar(String carName) {
-        this(carName, INIT_POSITION);
+    public RacingCar(String name) {
+        this(name, INIT_POSITION);
     }
 
-    public RacingCar(String carName, int position) {
-        Validator.validateNameLength(carName);
-        this.carName = carName;
-        this.carPosition = position;
+    public RacingCar(String name, int position) {
+        Validator.validateNameLength(name);
+        this.name = name;
+        this.position = position;
     }
 
     public boolean canForward(int randomValue) {
@@ -25,15 +25,15 @@ public class RacingCar {
     }
 
     public void forward() {
-        this.carPosition += 1;
+        this.position += 1;
     }
 
     public int getPosition() {
-        return this.carPosition;
+        return this.position;
     }
 
-    public String getCarName() {
-        return this.carName;
+    public String getName() {
+        return this.name;
     }
 
     @Override
@@ -45,16 +45,16 @@ public class RacingCar {
             return false;
         }
         RacingCar racingCar = (RacingCar) o;
-        return carPosition == racingCar.carPosition && Objects.equals(carName,
-                racingCar.carName);
+        return position == racingCar.position && Objects.equals(name,
+                racingCar.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carName, carPosition);
+        return Objects.hash(name, position);
     }
 
     public boolean isMatchePosition(int maxPosition) {
-        return this.carPosition == maxPosition;
+        return this.position == maxPosition;
     }
 }

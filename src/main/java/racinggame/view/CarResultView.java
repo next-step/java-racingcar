@@ -18,7 +18,7 @@ public class CarResultView {
         this.racingCar = racingCar;
         this.currPosition = racingCar.getPosition();
         this.currResult = String.format("%-5s: %s",
-                racingCar.getCarName(),
+                racingCar.getName(),
                 Utils.repeat(FOOTPRINTS, racingCar.getPosition()));
     }
 

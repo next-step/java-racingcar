@@ -13,7 +13,7 @@ public class Judge {
 
         return racingCars.getRacingCars().stream()
                 .filter(car -> car.isMatchePosition(maximumPosition))
-                .map(RacingCar::getCarName)
+                .map(RacingCar::getName)
                 .collect(Collectors.toList());
     }
 
