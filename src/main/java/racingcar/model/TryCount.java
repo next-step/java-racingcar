@@ -18,8 +18,8 @@ public class TryCount {
         return tryCountInput;
     }
 
-    public boolean isUnderTryCount(int i) {
-        return tryCount > i;
+    public boolean isUnderTryCount(int moveCount) {
+        return tryCount > moveCount;
     }
 
 }
