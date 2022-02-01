@@ -11,6 +11,6 @@ public class TurnRequestDto {
     }
 
     public static Turn toEntity(TurnRequestDto turnRequestDto) {
-        return new Turn(turnRequestDto.value);
+        return Turn.createTurn(turnRequestDto.value);
     }
 }
