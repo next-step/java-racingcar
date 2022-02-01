@@ -10,15 +10,14 @@ import racingcar.view.RacingCarLog;
 public class Application {
 
     public static void main(String[] args) {
-        RacingCarInput racingCarInput = new RacingCarInput();
-        List<String> carNames = racingCarInput.getCarName();
-        int endRaceCount = racingCarInput.getRaceCount();
+        List<String> carNames = RacingCarInput.getCarName();
+        int endRaceCount = RacingCarInput.getRaceCount();
 
-        GameLauncher gameLauncher = new GameLauncher(carNames, endRaceCount);
+        GameLauncher gameLauncher = new GameLauncher(carNames, endRaceCount, new RandomMoveStrategy());
 
         StringBuilder gameLog = new StringBuilder();
         while (gameLauncher.isOngoing()) {
-            gameLauncher.race(new RandomMoveStrategy());
+            gameLauncher.race();
             gameLog.append(gameLauncher.getCars());
         }
 
