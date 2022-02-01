@@ -18,9 +18,7 @@ public class RacingService {
     private final RacingResult racingResult;
 
     private RacingService(final Cars cars) {
-        this.cars = cars;
-        this.movingResult = MovingResult.instance();
-        this.racingResult = RacingResult.instance();
+        this(cars, MovingResult.instance(), RacingResult.instance());
     }
 
     private RacingService(final Cars cars, final MovingResult movingResult,

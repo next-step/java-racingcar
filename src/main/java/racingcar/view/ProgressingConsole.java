@@ -8,8 +8,7 @@ public class ProgressingConsole {
     private boolean isAbNormalRacingTime;
 
     public ProgressingConsole() {
-        this.isAbNormalCarsName = true;
-        this.isAbNormalRacingTime = true;
+        this(true, true);
     }
 
     public ProgressingConsole(final boolean isAbNormalCarsName,
