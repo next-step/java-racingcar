@@ -14,27 +14,17 @@ public class OutputView {
         }
     }
 
-    public static int getMaxScore(ArrayList<Car> cars) {
-        int maximum = 0;
-        for (Car car: cars) {
-            maximum = Math.max(maximum, car.distance);
-        }
-        return maximum;
-    }
+    public static void printWinners(ArrayList<Car> winners) {
+        StringBuilder winnerNames = new StringBuilder();
 
-    public static void printWinners(ArrayList<Car> cars) {
-        int count = 0;
-        int maximum = getMaxScore(cars);
-        System.out.print("최종 우승자: ");
-        for (Car car: cars) {
-            if (car.distance != maximum) {
-                continue;
+        for (int i = 0; i < winners.size(); i++) {
+            winnerNames.append(winners.get(i).name);
+            if (i != (winners.size() - 1)) {
+                winnerNames.append(", ");
             }
-            if (count != 0) {
-                System.out.print(", ");
-            }
-            System.out.print(car.name);
-            count++;
         }
+
+        System.out.print("최종 우승자: ");
+        System.out.println(winnerNames);
     }
 }
