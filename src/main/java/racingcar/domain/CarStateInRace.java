@@ -14,7 +14,10 @@ public class CarStateInRace {
     }
 
     public void convertCurrentCarStatement() {
-        stringBuilder.append(car.getName() + ": ");
+        stringBuilder
+            .append(car.getName())
+            .append(": ");
+
         for (int step = ZERO; step < car.getStep(); step++) {
             stringBuilder.append(STEP);
         }
