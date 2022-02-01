@@ -22,9 +22,9 @@ class RacingGameControllerTest {
 
         RacingCars racingCars = controller.getRacingCars();
 
-        assertThat(racingCars.getRacingCars().size()).isEqualTo(2);
-        assertThat(racingCars.getRacingCars().get(0).getName()).isEqualTo("car1");
-        assertThat(racingCars.getRacingCars().get(1).getName()).isEqualTo("car2");
+        assertThat(racingCars.get().size()).isEqualTo(2);
+        assertThat(racingCars.get().get(0).getName()).isEqualTo("car1");
+        assertThat(racingCars.get().get(1).getName()).isEqualTo("car2");
     }
 
     @Test

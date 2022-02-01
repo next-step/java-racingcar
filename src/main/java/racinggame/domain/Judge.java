@@ -11,7 +11,7 @@ public class Judge {
     public static List<String> getWinners(RacingCars racingCars) {
         int maximumPosition = getHighScore(racingCars);
 
-        return racingCars.getRacingCars().stream()
+        return racingCars.get().stream()
                 .filter(car -> car.isMatchPosition(maximumPosition))
                 .map(RacingCar::getName)
                 .collect(Collectors.toList());
@@ -22,7 +22,7 @@ public class Judge {
     }
 
     private static List<Integer> getCarPositions(RacingCars racingCars) {
-        return racingCars.getRacingCars().stream()
+        return racingCars.get().stream()
                 .map(RacingCar::getPosition)
                 .collect(Collectors.toList());
     }

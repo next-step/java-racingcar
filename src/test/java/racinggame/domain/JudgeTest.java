@@ -11,7 +11,7 @@ class JudgeTest {
     void 우승자_판단() {
         // given
         RacingCars racingCars = new RacingCars("car1,car2,car2");
-        racingCars.getRacingCars().get(0).forward();
+        racingCars.get().get(0).forward();
 
         // when
         List<String> winners = Judge.getWinners(racingCars);

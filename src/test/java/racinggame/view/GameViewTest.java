@@ -20,9 +20,9 @@ class GameViewTest {
     @BeforeEach
     void before() {
         racingCars = new RacingCars("car1,car2");
-        racingCars.getRacingCars().get(0).forward();
-        racingCars.getRacingCars().get(1).forward();
-        racingCars.getRacingCars().get(1).forward();
+        racingCars.get().get(0).forward();
+        racingCars.get().get(1).forward();
+        racingCars.get().get(1).forward();
 
         gameView = new GameView(racingCars);
     }

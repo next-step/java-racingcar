@@ -14,8 +14,8 @@ public class Validator {
     }
 
     public static void validatePossibleToStart(RacingCars racingCars) {
-        if (isPossibleToStart(racingCars.getRacingCars())) {
-            throw new LackOfPlayerException(racingCars.getRacingCars());
+        if (isPossibleToStart(racingCars.get())) {
+            throw new LackOfPlayerException(racingCars.get());
         }
     }
 

@@ -23,7 +23,7 @@ public class CarResultView {
     }
 
     public static List<CarResultView> racingCarOf(RacingCars racingCars) {
-        return racingCars.getRacingCars().stream()
+        return racingCars.get().stream()
                 .map(CarResultView::new)
                 .collect(Collectors.toList());
     }

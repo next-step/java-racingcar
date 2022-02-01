@@ -34,7 +34,7 @@ public class RacingCars {
         return inputCarNames.split(SEPARATOR);
     }
 
-    public List<RacingCar> getRacingCars() {
+    public List<RacingCar> get() {
         return racingCars;
     }
 }

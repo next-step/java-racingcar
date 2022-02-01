@@ -24,7 +24,7 @@ class RacingCarsTest {
                 .collect(Collectors.toList());
 
         // when
-        List<RacingCar> racingCars = new RacingCars(inputCarNames).getRacingCars();
+        List<RacingCar> racingCars = new RacingCars(inputCarNames).get();
 
         // then
         assertThat(racingCars).isEqualTo(expected);
@@ -35,7 +35,7 @@ class RacingCarsTest {
         String inputCarNames = " car1, c  a r2, c ar3";
 
         RacingCars racingCars = new RacingCars(inputCarNames);
-        List<RacingCar> cars = racingCars.getRacingCars();
+        List<RacingCar> cars = racingCars.get();
 
         assertThat(cars.get(0).getName()).isEqualTo("car1");
         assertThat(cars.get(1).getName()).isEqualTo("car2");
