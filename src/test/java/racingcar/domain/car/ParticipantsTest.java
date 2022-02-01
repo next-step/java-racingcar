@@ -31,7 +31,11 @@ class ParticipantsTest {
 
         //when
         Participants participants = Participants.createCars(names);
+        List<String> carNames = participants.getParticipants().stream()
+            .map(Car::getName)
+            .collect(Collectors.toList());
 
         //then
+        assertThat(carNames).containsExactly("jason", "pobi");
     }
 }
