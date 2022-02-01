@@ -12,7 +12,7 @@ import racingcar.controller.dto.InputDTO;
 import racingcar.controller.dto.OutputDTO;
 import racingcar.model.domain.Cars;
 import racingcar.model.domain.Racing;
-import racingcar.model.domain.RandomNumberBehavior;
+import racingcar.model.domain.RandomMoveBehavior;
 import racingcar.model.domain.Victory;
 import racingcar.model.utils.common.StringUtils;
 import racingcar.view.RacingCarUserResult;
@@ -23,7 +23,7 @@ public class Controller {
     public static void run() throws Exception {
         InputDTO inputDTO = startGame();
         Cars cars = new Cars(inputDTO.getSplitUserInput());
-        Racing racing = new Racing(cars.cars(), RandomNumberBehavior.getInstance());
+        Racing racing = new Racing(cars.cars(), RandomMoveBehavior.getInstance());
         for (int idx = NUMBER_ZERO; idx < inputDTO.getRacingTryCounter(); idx++) {
             racing.drive();
             List<OutputDTO> result = convertCar(cars);

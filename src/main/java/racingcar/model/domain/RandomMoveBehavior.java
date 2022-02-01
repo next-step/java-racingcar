@@ -1,20 +1,20 @@
 package racingcar.model.domain;
 
-public class RandomNumberBehavior implements CarMoveBehavior {
+public class RandomMoveBehavior implements CarMoveBehavior {
 
     private final static int MAX_RANDOM_RANGE = 10;
     private final static int MIN_BOUND_STRAIGHT = 4;
-    private final static RandomNumberBehavior randomNumberBehavior;
+    private final static RandomMoveBehavior randomNumberBehavior;
 
     static {
-        randomNumberBehavior = new RandomNumberBehavior();
+        randomNumberBehavior = new RandomMoveBehavior();
     }
 
-    private RandomNumberBehavior() {
+    private RandomMoveBehavior() {
 
     }
 
-    public static RandomNumberBehavior getInstance() {
+    public static RandomMoveBehavior getInstance() {
         return randomNumberBehavior;
     }
 

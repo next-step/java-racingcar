@@ -14,7 +14,7 @@ public class RacingTest {
     @CsvSource({"a,aa,aaa"})
     void driveTest(String one, String two, String three) {
         final List<Car> cars = Arrays.asList(new Car(one), new Car(two), new Car(three));
-        Racing racing = new Racing(cars, new FixNumberBehavior(true));
+        Racing racing = new Racing(cars, new FixMoveBehavior(true));
         racing.drive();
     }
 }

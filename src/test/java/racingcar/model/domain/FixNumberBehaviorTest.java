@@ -17,7 +17,7 @@ public class FixNumberBehaviorTest {
     @CsvSource({"a,aa,aaa"})
     void fixRandomNumberTest(final String one, final String two, final String three) {
         final List<Car> cars = Arrays.asList(new Car(one), new Car(two), new Car(three));
-        final Racing racing = new Racing(cars, new FixNumberBehavior(true));
+        final Racing racing = new Racing(cars, new FixMoveBehavior(true));
         racing.drive();
         racing.drive();
         assertAll(
