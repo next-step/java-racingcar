@@ -23,4 +23,15 @@ class ParticipantsTest {
             .map(car -> car.getName())
             .collect(Collectors.toList())).containsExactlyInAnyOrder("jason", "pobi", "sung");
     }
+
+    @Test
+    public void 참가_차량_생성_테스트() {
+        //given
+        String[] names = {"jason", "pobi"};
+
+        //when
+        Participants participants = Participants.createCars(names);
+
+        //then
+    }
 }

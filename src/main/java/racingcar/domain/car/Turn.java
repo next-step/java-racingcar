@@ -1,6 +1,7 @@
 package racingcar.domain.car;
 
 import java.util.regex.Pattern;
+import racingcar.domain.dto.TurnRequestDto;
 
 public class Turn {
 

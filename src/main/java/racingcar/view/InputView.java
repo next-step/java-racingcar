@@ -3,6 +3,7 @@ package racingcar.view;
 import java.util.Scanner;
 import racingcar.domain.car.Participants;
 import racingcar.domain.car.Turn;
+import racingcar.domain.dto.TurnRequestDto;
 
 public class InputView {
 
@@ -26,10 +27,10 @@ public class InputView {
         }
     }
 
-    public static Turn setTurnCount() {
+    public static TurnRequestDto setTurnCount() {
         try {
             String turn = getConsoleTextFrom(TURN_MESSAGE);
-            return Turn.createTurn(turn.trim());
+            return new TurnRequestDto(turn);
         } catch (NumberFormatException | IllegalStateException e) {
             e.printStackTrace();
             return setTurnCount();
