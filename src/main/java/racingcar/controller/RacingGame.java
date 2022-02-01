@@ -9,6 +9,7 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingGame {
+
     private static final String GAME_RESULT_MESSAGE = "출력결과";
 
     private List<Car> raceResult;
@@ -17,13 +18,13 @@ public class RacingGame {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
         String[] carNames = inputView.inputCarNames();
-        Cars cars= new Cars(carNames);
+        Cars cars = new Cars(carNames);
         TryCount tryCount = new TryCount(inputView.inputTryCount());
 
         System.out.println(GAME_RESULT_MESSAGE);
-        int moveCount=0;
-        while(tryCount.isUnderTryCount(moveCount)){
-            raceResult=cars.moveForwardByCarsSize();
+        int moveCount = 0;
+        while (tryCount.isUnderTryCount(moveCount)) {
+            raceResult = cars.moveForwardByCarsSize();
             outputView.printResult(raceResult);
             moveCount++;
         }
