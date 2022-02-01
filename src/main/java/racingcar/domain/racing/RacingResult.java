@@ -24,7 +24,7 @@ public class RacingResult {
         Car firstWinner = cars.get(0);
 
         String winners = cars.stream()
-            .filter(car -> car.comparePosition(firstWinner))
+            .filter(car -> car.isSamePosition(firstWinner))
             .map(Car::getName)
             .collect(Collectors.joining(DELIMITER));
 

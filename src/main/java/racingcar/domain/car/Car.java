@@ -35,8 +35,8 @@ public class Car {
         }
     }
 
-    public boolean comparePosition(Car o) {
-        return position == o.position;
+    public boolean isSamePosition(Car other) {
+        return position == other.position;
     }
 
     public String getName() {
