@@ -15,8 +15,7 @@ public class Participants {
     }
 
     public static Participants createCars(String[] names) {
-        List<Car> cars;
-        cars = Arrays.stream(names)
+        List<Car> cars = Arrays.stream(names)
             .map(name -> Car.from(name.trim()))
             .collect(Collectors.toList());
         return new Participants(cars);
