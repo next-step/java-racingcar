@@ -5,6 +5,8 @@ import java.util.Random;
 
 public class Race {
 
+    private static final int MOVE_THRESHOLD = 4;
+
     public static void execute() {
         ArrayList<Car> cars = new ArrayList<>();
         String[] carNames = InputView.getName();
@@ -48,8 +50,8 @@ public class Race {
         return randomNumber;
     }
 
-        if (randomNumber >= 4) {
     public static void moveCarRandomly(Car car, int randomNumber) {
+        if (randomNumber >= MOVE_THRESHOLD) {
             car.distance++;
         }
     }
