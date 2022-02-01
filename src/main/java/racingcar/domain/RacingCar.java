@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Collections;
+
 public class RacingCar {
 
     private static final int THRESHOLD = 4;
@@ -21,6 +23,12 @@ public class RacingCar {
         return position;
     }
 
+    private void validateNameSize(String name) {
+        if (name.length() > NAME_SIZE) {
+            throw new IllegalArgumentException("자동차 이름의 길이가 5를 초과했습니다!");
+        }
+    }
+
     public void move(int value) {
         if (value >= THRESHOLD) {
             moveForward();
@@ -31,14 +39,8 @@ public class RacingCar {
         position++;
     }
 
-    private void validateNameSize(String name) {
-        if (name.length() > NAME_SIZE) {
-            throw new IllegalArgumentException("자동차 이름의 길이가 5를 초과했습니다!");
-        }
-    }
-
     @Override
     public String toString() {
-        return name + " : " + position;
+        return name + " : " + String.join("",Collections.nCopies(position, "-"));
     }
 }

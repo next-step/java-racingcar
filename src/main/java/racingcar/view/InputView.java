@@ -1,12 +1,13 @@
-package racingcar.ui;
+package racingcar.view;
 
-import java.util.Arrays;
-import java.util.List;
 import racingcar.util.Console;
 
-public class RacingCarInput {
+public class InputView {
 
-    public List<String> getCarName() {
+    private InputView() {
+    }
+
+    public static String getCarNames() {
         String input = "";
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
         try {
@@ -14,17 +15,18 @@ public class RacingCarInput {
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
         }
-        return Arrays.asList(input.split(","));
+        return input;
     }
 
-    public int getRaceCount() {
-        String input = "";
+    public static int getTryNo() {
         System.out.println("시도할 횟수는 몇 회인가요?");
+        int tryNo = 0;
         try {
-            input = Console.readLine();
-        } catch (IllegalArgumentException e) {
+            String input = Console.readLine();
+            tryNo = Integer.parseInt(input);
+        } catch ( NumberFormatException e) {
             System.out.println("[ERROR] " + e.getMessage());
         }
-        return Integer.parseInt(input);
+        return tryNo;
     }
 }
