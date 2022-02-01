@@ -1,12 +1,10 @@
-package racingcar;
+package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import racingcar.model.Car;
-import racingcar.model.Winner;
 
 public class WinnerTest {
 

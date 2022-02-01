@@ -1,14 +1,13 @@
-package stringCalculator;
+package calculator;
 
 import java.util.List;
 
 public class Calculator {
-
+    private static final String ZERO="0";
     public int calculateByOperator(List<String> userInput) {
         int result = Integer.parseInt(userInput.get(0));
         int userInputSize = userInput.size();
         for (int i = 1; i < userInputSize - 1; i += 2) {
-
             if (userInput.get(i).equals("+")) {
                 result = sum(result, Integer.parseInt(userInput.get(i + 1)));
                 continue;
@@ -32,7 +31,7 @@ public class Calculator {
     }
 
     private void checkDivideByZero(String operand) {
-        if ("0".equals(operand)) {
+        if (ZERO.equals(operand)) {
             throw new IllegalArgumentException("0으로 나뉠 수 없습니다");
         }
     }

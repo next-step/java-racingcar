@@ -1,10 +1,10 @@
-package calculator;
+package calculator.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import calculator.Calculator;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
-import stringCalculator.Calculator;
 
 public class CalculatorTest {
 
