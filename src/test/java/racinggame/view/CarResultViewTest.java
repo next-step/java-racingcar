@@ -6,7 +6,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racinggame.domain.RacingCar;
 import racinggame.Utils;
 import racinggame.domain.RacingCars;
 
@@ -14,7 +13,6 @@ class CarResultViewTest {
 
     @Test
     void 팩토리_메서드_테스트() {
-
         RacingCars racingCars = new RacingCars("car1,car2");
         List<CarResultView> carResultViews = CarResultView.racingCarOf(racingCars);
 

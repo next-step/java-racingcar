@@ -42,7 +42,6 @@ class GameViewTest {
 
     @Test
     void 현재_자동차들의_상태를_저장한다() {
-
         // when
         gameView.saveProgress();
 
@@ -54,7 +53,6 @@ class GameViewTest {
 
     @Test
     void 게임_결과를_출력한다() {
-
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
@@ -69,7 +67,6 @@ class GameViewTest {
 
     @Test
     void 우승자를_출력한다() {
-
         //when
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));

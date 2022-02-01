@@ -9,15 +9,14 @@ class JudgeTest {
 
     @Test
     void 우승자_판단() {
-        RacingCar car1 = new RacingCar("car1", 2);
-        RacingCar car2 = new RacingCar("car2", 2);
-        RacingCar car3 = new RacingCar("car3", 3);
-
+        // given
         RacingCars racingCars = new RacingCars("car1,car2,car2");
         racingCars.getRacingCars().get(0).forward();
 
+        // when
         List<String> winners = Judge.getWinners(racingCars);
 
+        // then
         assertThat(winners.size()).isEqualTo(1);
         assertThat(winners.contains("car1")).isTrue();
     }

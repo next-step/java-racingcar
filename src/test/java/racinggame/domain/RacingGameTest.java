@@ -12,7 +12,6 @@ class RacingGameTest {
 
     @Test
     void RacingCar_리스트를_받아_RacingGame_객체_생성() {
-        String[] carNames = {"car1", "car2"};
         RacingCars racingCars = new RacingCars("car1,car2");
 
         RacingGame racingGame = new RacingGame(racingCars);
