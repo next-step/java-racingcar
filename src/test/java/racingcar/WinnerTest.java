@@ -18,7 +18,7 @@ public class WinnerTest {
         );
         Winner winner = new Winner(cars);
 
-        List<String> winners = winner.getWinner();
+        List<String> winners = winner.findWinner();
 
         assertThat(winners).containsExactly("sam");
     }
