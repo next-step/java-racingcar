@@ -11,10 +11,10 @@ public class Application {
 
     public static void main(String[] args) {
         RacingCarInput racingCarInput = new RacingCarInput();
-        List<String> carNameList = racingCarInput.getCarName();
+        List<String> carNames = racingCarInput.getCarName();
         int endRaceCount = racingCarInput.getRaceCount();
 
-        GameLauncher gameLauncher = new GameLauncher(carNameList, endRaceCount);
+        GameLauncher gameLauncher = new GameLauncher(carNames, endRaceCount);
 
         StringBuilder gameLog = new StringBuilder();
         while (gameLauncher.isOngoing()) {
