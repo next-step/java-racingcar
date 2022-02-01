@@ -16,23 +16,23 @@ public class InputView {
         return scanner.nextLine().trim();
     }
 
-    public static Participants names() {
+    public static Participants setNames() {
         try {
             String names = getConsoleTextFrom(NAME_MESSAGE);
             return Participants.createCars(names.split(DELIMITER));
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
-            return names();
+            return setNames();
         }
     }
 
-    public static Turn turn() {
+    public static Turn setTurnCount() {
         try {
             String turn = getConsoleTextFrom(TURN_MESSAGE);
             return Turn.createTurn(turn.trim());
         } catch (NumberFormatException | IllegalStateException e) {
             e.printStackTrace();
-            return turn();
+            return setTurnCount();
         }
     }
 }
