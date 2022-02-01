@@ -6,10 +6,10 @@ public class TryCount {
 
     private int tryCount;
     public TryCount(int tryCountInput){
-        tryCount=validateTryCount(tryCountInput);
+        this.tryCount=validateTryCount(tryCountInput);
     }
     private int validateTryCount(int tryCountInput) {
-        if (tryCount < MINIMUM_TRY_COUNT) {
+        if (tryCountInput < MINIMUM_TRY_COUNT) {
             throw new IllegalArgumentException(TRY_COUNT_LESS_THAN_ZERO);
         }
         return tryCountInput;
