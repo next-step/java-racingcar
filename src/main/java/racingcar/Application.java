@@ -17,7 +17,7 @@ public class Application {
         GameLauncher gameLauncher = new GameLauncher(carNameList, endRaceCount);
 
         StringBuilder gameLog = new StringBuilder();
-        while (!gameLauncher.isEnd()) {
+        while (gameLauncher.isOngoing()) {
             gameLauncher.race(new RandomMoveStrategy());
             gameLog.append(gameLauncher.getCars());
         }

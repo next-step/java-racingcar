@@ -21,8 +21,8 @@ public class GameLauncher {
         currentCount++;
     }
 
-    public boolean isEnd() {
-        return endRaceCount <= currentCount;
+    public boolean isOngoing() {
+        return endRaceCount >= currentCount;
     }
 
     public Cars getCars() {
