@@ -4,6 +4,9 @@ import racinggame.domain.Judge;
 import racinggame.domain.RacingCars;
 import racinggame.domain.RacingGame;
 import racinggame.domain.Trial;
+import racinggame.exception.InputBlankException;
+import racinggame.exception.LackOfPlayerException;
+import racinggame.exception.NameLengthOverException;
 import racinggame.view.GameView;
 import racinggame.view.InputView;
 
@@ -25,7 +28,7 @@ public class RacingGameController {
             try {
                 racingCars = new RacingCars(inputView.inputCarNames());
                 break;
-            } catch (IllegalArgumentException e) {
+            } catch (NameLengthOverException e) {
                 inputView.printErrorMessage(e.getMessage());
             }
         }
@@ -40,7 +43,7 @@ public class RacingGameController {
             try {
                 trial = new Trial(inputView.inputTrial());
                 break;
-            } catch (IllegalArgumentException | ArithmeticException e) {
+            } catch (InputBlankException | NumberFormatException e) {
                 inputView.printErrorMessage(e.getMessage());
             }
         }
@@ -54,7 +57,7 @@ public class RacingGameController {
             try {
                 racingGame = new RacingGame(racingCars);
                 break;
-            } catch (IllegalArgumentException e) {
+            } catch (LackOfPlayerException e) {
                 inputView.printErrorMessage(e.getMessage());
                 racingCars = getRacingCars();
             }

@@ -1,18 +1,21 @@
 package racinggame.domain;
 
 import java.util.List;
+import racinggame.exception.InputBlankException;
+import racinggame.exception.LackOfPlayerException;
+import racinggame.exception.NameLengthOverException;
 
 public class Validator {
 
     public static final int MINIMUM_PLAYER = 2;
     private static final int MAXIMUM_NAME_LENGTH = 5;
 
-    private Validator() {}
+    private Validator() {
+    }
 
     public static void validatePossibleToStart(RacingCars racingCars) {
         if (isPossibleToStart(racingCars.getRacingCars())) {
-            throw new IllegalArgumentException(
-                    String.format("게임을 시작하려면 %d명 이상의 참가자가 필요합니다.", MINIMUM_PLAYER));
+            throw new LackOfPlayerException(racingCars.getRacingCars());
         }
     }
 
@@ -22,8 +25,7 @@ public class Validator {
 
     public static void validateNameLength(String carName) {
         if (carName.length() > MAXIMUM_NAME_LENGTH) {
-            throw new IllegalArgumentException(
-                    String.format("자동차 이름의 글자 수는 %d자 이하입니다.", MAXIMUM_NAME_LENGTH));
+            throw new NameLengthOverException(carName);
         }
     }
 
@@ -31,20 +33,20 @@ public class Validator {
         try {
             Integer.parseInt(trial);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도횟수는 숫자로 입력해주세요.");
+            throw new NumberFormatException("시도횟수는 숫자로 입력해주세요.");
         }
     }
 
     public static void checkIsBlank(String removedBlankInput) {
         if (removedBlankInput.isEmpty()) {
-            throw new IllegalArgumentException("값이 입력되지 않았습니다.");
+            throw new InputBlankException();
         }
     }
 
     public static void checkNameIsBlank(String[] splitName) {
-        for (String name : splitName) {
-            if (name.isEmpty()) {
-                throw new IllegalArgumentException("RacingCar의 이름은 공백일 수 없습니다.");
+        for (int i = 0; i < splitName.length; i++) {
+            if (splitName[i].isEmpty()) {
+                throw new InputBlankException(i);
             }
         }
     }
