@@ -2,7 +2,7 @@ package racingcar;
 
 
 import java.util.List;
-import racingcar.service.GameLauncher;
+import racingcar.domain.RacingGame;
 import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.view.RacingCarInput;
 import racingcar.view.RacingCarLog;
@@ -13,15 +13,15 @@ public class Application {
         List<String> carNames = RacingCarInput.getCarName();
         int endRaceCount = RacingCarInput.getRaceCount();
 
-        GameLauncher gameLauncher = new GameLauncher(carNames, endRaceCount, new RandomMoveStrategy());
+        RacingGame racingGame = new RacingGame(carNames, endRaceCount, new RandomMoveStrategy());
 
         StringBuilder gameLog = new StringBuilder();
-        while (gameLauncher.isOngoing()) {
-            gameLauncher.race();
-            gameLog.append(gameLauncher.getCars());
+        while (racingGame.isOngoing()) {
+            racingGame.race();
+            gameLog.append(racingGame.getCars());
         }
 
-        RacingCarLog.printWinner(gameLog, gameLauncher.getCars());
+        RacingCarLog.printWinner(gameLog, racingGame.getCars());
 
         System.out.println(gameLog);
     }

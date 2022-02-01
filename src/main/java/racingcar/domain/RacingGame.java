@@ -1,30 +1,27 @@
-package racingcar.service;
+package racingcar.domain;
 
 import java.util.List;
-import racingcar.domain.Cars;
 import racingcar.domain.strategy.MoveStrategy;
 
-public class GameLauncher {
+public class RacingGame {
 
     private final Cars cars;
-    private final int endRaceCount;
-    private int currentCount;
     private final MoveStrategy moveStrategy;
+    private int raceCount;
 
-    public GameLauncher(List<String> nameList, int endRaceCount, MoveStrategy moveStrategy) {
+    public RacingGame(List<String> nameList, int raceCount, MoveStrategy moveStrategy) {
         this.cars = Cars.of(nameList);
-        this.currentCount = 0;
-        this.endRaceCount = endRaceCount;
+        this.raceCount = raceCount;
         this.moveStrategy = moveStrategy;
     }
 
     public void race() {
         cars.moveAll(moveStrategy);
-        currentCount++;
+        raceCount--;
     }
 
     public boolean isOngoing() {
-        return endRaceCount >= currentCount;
+        return raceCount > 0;
     }
 
     public Cars getCars() {

@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.domain.Car;
+import racingcar.domain.RacingGame;
 
 class GameLauncherTest {
 
@@ -14,13 +15,13 @@ class GameLauncherTest {
     @CsvSource(value = {"true:1", "false:0"}, delimiter = ':')
     void 모든차앞으로전진(boolean moveNum, int expectedPosition) {
         // given
-        GameLauncher gameLauncher = new GameLauncher(Arrays.asList("qwe", "asdf", "zx"), 3, ()->moveNum);
+        RacingGame racingGame = new RacingGame(Arrays.asList("qwe", "asdf", "zx"), 3, ()->moveNum);
 
         // when
-        gameLauncher.race();
+        racingGame.race();
 
         // then
-        List<Car> racingCars = gameLauncher.getCars().getCars();
+        List<Car> racingCars = racingGame.getCars().getCars();
         assertThat(racingCars.get(0).getPosition()).isEqualTo(expectedPosition);
         assertThat(racingCars.get(1).getPosition()).isEqualTo(expectedPosition);
         assertThat(racingCars.get(2).getPosition()).isEqualTo(expectedPosition);

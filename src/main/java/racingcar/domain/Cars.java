@@ -7,7 +7,7 @@ import racingcar.domain.strategy.MoveStrategy;
 
 public class Cars {
 
-    List<Car> cars;
+    private List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
