@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.domain.Car;
-
 public class CarStateInRace {
 
     private final static String STEP = "-";
