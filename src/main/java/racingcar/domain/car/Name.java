@@ -18,7 +18,7 @@ public class Name {
         if (name.length() > MAXIMUM_ALLOWED_NAME_LENGTH) {
             throw new IllegalArgumentException(OVER_NAME_LENGTH_ERROR_MESSAGE);
         }
-        if (name.length() <= MINIMUM_ALLOWED_NAME_LENGTH) {
+        if (name.length() < MINIMUM_ALLOWED_NAME_LENGTH) {
             throw new IllegalArgumentException(UNDER_NAME_LENGTH_ERROR_MESSAGE);
         }
     }
