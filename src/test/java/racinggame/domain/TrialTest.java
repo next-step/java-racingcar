@@ -38,7 +38,7 @@ class TrialTest {
         String input = "a";
 
         // then
-        assertThrows(IllegalArgumentException.class, () -> new Trial(input));
+        assertThrows(NumberFormatException.class, () -> new Trial(input));
     }
 
     @Test

@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+import racinggame.exception.NameLengthOverException;
 
 class RacingCarTest {
 
@@ -14,7 +15,7 @@ class RacingCarTest {
     void 자동차의_이름_글자수_5자_이하_실패() {
         String carName = "carcar1";
 
-        assertThrows(IllegalArgumentException.class, () -> new RacingCar(carName, 0));
+        assertThrows(NameLengthOverException.class, () -> new RacingCar(carName, 0));
     }
 
     @Test

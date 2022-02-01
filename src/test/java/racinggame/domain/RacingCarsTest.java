@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racinggame.exception.InputBlankException;
 
 class RacingCarsTest {
 
@@ -44,6 +45,6 @@ class RacingCarsTest {
     @ValueSource(strings = {"", " ", "car1, ,car2"})
     @ParameterizedTest
     void 자동차이름_공백(String carNames) {
-        assertThrows(IllegalArgumentException.class, () -> new RacingCars(carNames));
+        assertThrows(InputBlankException.class, () -> new RacingCars(carNames));
     }
 }
