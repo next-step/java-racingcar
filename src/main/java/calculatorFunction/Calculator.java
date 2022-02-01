@@ -1,9 +1,14 @@
 package calculatorFunction;
 
-import java.util.List;
 import java.util.ArrayList;
 
 public class Calculator {
+
+    private ArrayList<String> parsedValues = null;
+
+    public Calculator(ArrayList<String> parsedValues) {
+        this.parsedValues = parsedValues;
+    }
 
     public static void execute() {
         System.out.println("수식을 입력하시오: ");
@@ -11,34 +16,35 @@ public class Calculator {
         if (str.length() == 0) {
             throw new IllegalArgumentException("Error: need right expression");
         }
-        ArrayList<String> stringArray = GetInput.parsing(str);
-        Calculator.returnCalculatedValue(stringArray);
+        ArrayList<String> parsedValues = GetInput.parsing(str);
+        Calculator calculator = new Calculator(parsedValues);
+        calculator.returnCalculatedValue();
     }
 
-    public static void returnCalculatedValue(List<String> stringArray) {
-        for (int i = 0; i < (stringArray.size() + 1) / 2; i++) {
-            if (determineCalculatedValueValid(stringArray, i)) {
+    public void returnCalculatedValue() {
+        for (int i = 0; i < (parsedValues.size() + 1) / 2; i++) {
+            if (determineCalculatedValueValid(i)) {
                 return;
             }
-            parseOperation(stringArray, i * 2);
+            parseOperation(i * 2);
         }
     }
 
-    public static boolean determineCalculatedValueValid(List<String> stringArray, int i) {
-        if (i * 2 == stringArray.size() - 1) {
+    public boolean determineCalculatedValueValid(int i) {
+        if (i * 2 == parsedValues.size() - 1) {
             System.out.println(
-                "정답: " + Double.parseDouble(stringArray.get(stringArray.size() - 1)));
+                "정답: " + Double.parseDouble(parsedValues.get(parsedValues.size() - 1)));
             return true;
         }
 
         return false;
     }
 
-    public static void parseOperation(List<String> stringArray, int start) {
+    public void parseOperation(int start) {
         Operations operations = new Operations();
-        String operator = stringArray.get(start + 1);
-        operations.firstOperand = Double.parseDouble(stringArray.get(start));
-        operations.secondOperand = Double.parseDouble(stringArray.get(start + 2));
+        String operator = parsedValues.get(start + 1);
+        operations.firstOperand = Double.parseDouble(parsedValues.get(start));
+        operations.secondOperand = Double.parseDouble(parsedValues.get(start + 2));
 
         double result = 0;
         if (operator.equals("+")) {
@@ -57,6 +63,6 @@ public class Calculator {
             throw new IllegalArgumentException("Error: need right operator");
         }
 
-        stringArray.set(start + 2, String.valueOf(result));
+        parsedValues.set(start + 2, String.valueOf(result));
     }
 }
