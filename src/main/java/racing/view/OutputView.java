@@ -1,11 +1,7 @@
 package racing.view;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import racing.domain.car.Cars;
 import racing.domain.car.Car;
-import racing.domain.car.Name;
-import racing.domain.car.Position;
 
 public class OutputView {
 

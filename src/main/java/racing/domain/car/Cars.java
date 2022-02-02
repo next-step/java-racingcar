@@ -42,7 +42,8 @@ public class Cars {
         final List<Car> carsState = new ArrayList<>();
         for (Car car : cars) {
             car.drive(generateRandomNumber());
-            carsState.add(new Car(new Name(car.getNameValue()), new Position(car.getPositionValue())));
+            carsState.add(
+                new Car(new Name(car.getNameValue()), new Position(car.getPositionValue())));
         }
         return new ArrayList<>(carsState);
     }
