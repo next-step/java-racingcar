@@ -14,7 +14,6 @@ public class RacingGameController {
 
     private static final int NORMAL_EXIT_CODE = 0;
     private static final String QUIT = "q";
-    private GameView gameView;
 
     public RacingGameController() {}
 
@@ -59,23 +58,23 @@ public class RacingGameController {
                 racingCars = getRacingCars();
             }
         }
-        gameView = new GameView(racingCars);
+        GameView.init(racingCars);
         start(racingGame, trial);
     }
 
     private void start(final RacingGame racingGame, final Trial trial) {
         for (int i = 0; i < trial.getValue(); i++) {
             racingGame.progress();
-            gameView.saveProgress();
+            GameView.saveProgress(racingGame.getRacingCars());
         }
     }
 
     public void printResult() {
-        gameView.printResult();
+        GameView.printResult();
     }
 
     public void printWinners(final RacingCars racingCars) {
-        gameView.printWinners(Judge.getWinners(racingCars));
+        GameView.printWinners(Judge.getWinners(racingCars));
     }
 
     public void checkIsRestart() {

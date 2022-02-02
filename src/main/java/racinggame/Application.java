@@ -3,7 +3,6 @@ package racinggame;
 import racinggame.controller.RacingGameController;
 import racinggame.domain.RacingCars;
 import racinggame.domain.Trial;
-import racinggame.view.InputView;
 
 public class Application {
 
