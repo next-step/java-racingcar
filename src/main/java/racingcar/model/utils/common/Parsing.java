@@ -18,14 +18,4 @@ public class Parsing {
         }
         return false;
     }
-
-    public static boolean racingTryCheck(final int count) {
-        try {
-            validateNumberRange(count);
-        } catch (InputValidationException exception) {
-            System.out.println(exception.getMessage());
-            return true;
-        }
-        return false;
-    }
 }

@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import static racingcar.model.utils.common.Parsing.parsingCarName;
-import static racingcar.model.utils.common.Parsing.racingTryCheck;
+import static racingcar.model.utils.common.Validation.validateNumberRange;
 import static racingcar.view.RacingCarUserConsole.inputCarName;
 import static racingcar.view.RacingCarUserConsole.inputRacingTry;
 
@@ -15,6 +15,7 @@ import racingcar.model.domain.Racing;
 import racingcar.model.domain.RandomMoveBehavior;
 import racingcar.model.domain.Victory;
 import racingcar.model.utils.common.StringUtils;
+import racingcar.model.utils.exception.InputValidationException;
 import racingcar.view.RacingCarUserResult;
 
 public class Controller {
@@ -56,7 +57,7 @@ public class Controller {
         int count = 0;
         do {
             count = inputRacingTry();
-        } while (racingTryCheck(count));
+        } while (validateNumberRange(count));
         return count;
     }
 
