@@ -1,13 +1,9 @@
-package racingcar.utils;
+package racingcar.view;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class InputView {
 
-    private static final String NAME_SPLITTER = ",";
     private static final Scanner scanner = new Scanner(System.in);
 
     private InputView() {}
@@ -20,15 +16,6 @@ public class InputView {
         System.out.println();
 
         return turn;
-    }
-
-    public static List<String> parseCarNames(final String carNames) {
-        if (!carNames.contains(NAME_SPLITTER)) {
-            throw new IllegalArgumentException("이름 구분자가 없거나 잘못되었습니다.");
-        }
-
-        return Arrays.stream(carNames.split(NAME_SPLITTER))
-            .collect(Collectors.toList());
     }
 
     private static int readInt() {

@@ -4,20 +4,18 @@ import java.util.Random;
 
 public class RandomMovableStrategy implements MovableStrategy {
 
-    private final Random RANDOM = new Random();
-    private final int CONDITION_MOVE_AVAILABLE = 4;
-    private final int bound;
+    private static final int CONDITION_MOVE_AVAILABLE = 4;
+    private static final int DEFAULT_BOUND = 10;
+    private static final Random RANDOM = new Random();
 
-    public RandomMovableStrategy(final int bound) {
-        this.bound = bound;
-    }
+    public RandomMovableStrategy() {}
 
     @Override
     public boolean isMovable() {
-        return getRandom(bound) >= CONDITION_MOVE_AVAILABLE;
+        return getRandom() >= CONDITION_MOVE_AVAILABLE;
     }
 
-    private int getRandom(final int bound) {
-        return RANDOM.nextInt(bound);
+    private int getRandom() {
+        return RANDOM.nextInt(DEFAULT_BOUND);
     }
 }
