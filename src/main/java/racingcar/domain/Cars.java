@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import racingcar.domain.strategy.MoveStrategy;
 
@@ -10,6 +11,8 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(List<Car> cars) {
+        verifyMinSize(cars);
+        verifyDuplicate(cars);
         this.cars = cars;
     }
 
@@ -19,6 +22,22 @@ public class Cars {
             cars.add(new RacingCar(name));
         }
         return new Cars(cars);
+    }
+
+    private void verifyMinSize(List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalStateException();
+        }
+    }
+
+    private void verifyDuplicate(List<Car> cars) {
+        Set<String> carNames = cars.stream()
+            .map(Car::getName)
+            .collect(Collectors.toSet());
+
+        if(carNames.size() != cars.size()){
+            throw new IllegalStateException();
+        }
     }
 
     public void moveAll(MoveStrategy moveStrategy) {
