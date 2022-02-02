@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.domain.car.Car;
 
 class CarTest {
 
@@ -21,7 +20,7 @@ class CarTest {
     void drive_인자가_4_이상일_경우_자동차는_움직인다(int randomNumber) {
         final Car car = new Car("abc");
         car.drive(randomNumber);
-        assertThat(car.getPosition().getValue()).isEqualTo(1);
+        assertThat(car.getPositionValue()).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -29,7 +28,7 @@ class CarTest {
     void drive_인자가_4_미만일_경우_자동차는_움직이지_않는다(int randomNumber) {
         final Car car = new Car("abc");
         car.drive(randomNumber);
-        assertThat(car.getPosition().getValue()).isEqualTo(0);
+        assertThat(car.getPositionValue()).isEqualTo(0);
     }
 
     @Test

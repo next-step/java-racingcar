@@ -30,8 +30,8 @@ public class Car {
         return randomNumber >= STANDARD_NUMBER_MOVE_FORWARD;
     }
 
-    public Position getPosition() {
-        return position;
+    public int getPositionValue() {
+        return position.getValue();
     }
 
     public Name getName() {

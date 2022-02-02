@@ -34,7 +34,7 @@ public class OutputView {
 
     private static void printCarHistory(CarHistory carHistory) {
         System.out.print(carHistory.getName().getName() + SEPARATOR_BETWEEN_NAME_AND_POSITION);
-        for (int i = 0; i < carHistory.getPosition().getValue(); i++) {
+        for (int i = 0; i < carHistory.getPositionValue(); i++) {
             System.out.print(MOVE_STATE);
         }
     }

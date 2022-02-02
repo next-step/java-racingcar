@@ -14,7 +14,7 @@ public class CarHistory {
         return name;
     }
 
-    public Position getPosition() {
-        return position;
+    public int getPositionValue() {
+        return position.getValue();
     }
 }

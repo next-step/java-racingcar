@@ -2,9 +2,9 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import racing.domain.car.Car;
 import racing.domain.car.CarHistory;
+import racing.domain.car.Position;
 
 public class Cars {
 
@@ -22,7 +22,7 @@ public class Cars {
         final List<CarHistory> carHistories = new ArrayList<>();
         for (Car car : cars) {
             car.drive(generateRandomNumber());
-            carHistories.add(new CarHistory(car.getName(), car.getPosition()));
+            carHistories.add(new CarHistory(car.getName(), new Position(car.getPositionValue())));
         }
         return carHistories;
     }
@@ -34,7 +34,7 @@ public class Cars {
     public final int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition().getValue());
+            maxPosition = Math.max(maxPosition, car.getPositionValue());
         }
         return maxPosition;
     }
