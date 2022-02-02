@@ -10,13 +10,12 @@ public class RacingCar implements Car {
     private int position;
 
     public RacingCar(String name) {
-        isCorrectNameSize(name);
-        this.name = name;
-        this.position = 0;
+        this(name, 0);
     }
 
     public RacingCar(String name, int position) {
-        this(name);
+        isCorrectNameSize(name);
+        this.name = name;
         this.position = position;
     }
 

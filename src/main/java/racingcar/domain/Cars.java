@@ -58,7 +58,8 @@ public class Cars {
     private int getMaxPosition() {
         return cars.stream()
             .mapToInt(Car::getPosition)
-            .max().orElseThrow(IllegalStateException::new);
+            .max()
+            .orElseThrow(()-> new IllegalStateException("최대 위치를 구할 수 없습니다."));
     }
 
     public List<Car> getCars() {
