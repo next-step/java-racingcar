@@ -1,5 +1,6 @@
 package racinggame.controller;
 
+import racinggame.domain.Retry;
 import racinggame.domain.Judge;
 import racinggame.domain.RacingCars;
 import racinggame.domain.RacingGame;
@@ -16,19 +17,16 @@ public class RacingGameController {
     private static final int NORMAL_EXIT_CODE = 0;
     private static final String QUIT = "q";
 
-    public RacingGameController() {}
+    public RacingGameController() {
+    }
 
     public RacingCars getRacingCars(String inputCarNames) {
         RacingCars racingCars;
-
-        while (true) {
-            try {
-                racingCars = new RacingCars(inputCarNames);
-                break;
-            } catch (NameLengthOverException e) {
-                InputView.printErrorMessage(e.getMessage());
-                inputCarNames = InputView.inputCarNames();
-            }
+        try {
+            racingCars = new RacingCars(inputCarNames);
+        } catch (NameLengthOverException | InputBlankException e) {
+            InputView.printErrorMessage(e.getMessage());
+            racingCars = Retry.createRacingCarsUntilValid();
         }
 
         return racingCars;
@@ -36,31 +34,25 @@ public class RacingGameController {
 
     public Trial getTrial(String inputTrial) {
         Trial trial;
-
-        while (true) {
-            try {
-                trial = new Trial(inputTrial);
-                break;
-            } catch (InputBlankException | NumberFormatException e) {
-                InputView.printErrorMessage(e.getMessage());
-                inputTrial = InputView.inputTrial();
-            }
+        try {
+            trial = new Trial(inputTrial);
+        } catch (InputBlankException | NumberFormatException e) {
+            InputView.printErrorMessage(e.getMessage());
+            trial = Retry.createTrialUntilValid();
         }
+
         return trial;
     }
 
     public void startGame(RacingCars racingCars, final Trial trial) {
         RacingGame racingGame;
-
-        while (true) {
-            try {
-                racingGame = new RacingGame(racingCars);
-                break;
-            } catch (LackOfPlayerException e) {
-                InputView.printErrorMessage(e.getMessage());
-                racingCars = getRacingCars(InputView.inputCarNames());
-            }
+        try {
+            racingGame = new RacingGame(racingCars);
+        } catch (LackOfPlayerException e) {
+            InputView.printErrorMessage(e.getMessage());
+            racingGame =  new RacingGame(Retry.createRacingCarsUntilValid());
         }
+
         GameView.init(racingCars);
         start(racingGame, trial);
     }
