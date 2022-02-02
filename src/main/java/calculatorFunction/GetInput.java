@@ -7,9 +7,9 @@ public class GetInput {
 
     public static String inputString() {
         Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        str = str.replace(" ", "");
-        return str;
+        String expression = sc.nextLine();
+        expression = expression.replace(" ", "");
+        return expression;
     }
 
     public static ArrayList<String> parse(String expression) {
@@ -26,11 +26,11 @@ public class GetInput {
         return parsedExpression;
     }
 
-    public static String getInteger(String str, int idx) {
+    public static String getInteger(String expression, int idx) {
         StringBuilder string = new StringBuilder();
-        for (int i = idx; i < str.length(); i++) {
-            if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
-                string.append(str.charAt(i));
+        for (int i = idx; i < expression.length(); i++) {
+            if (expression.charAt(i) >= '0' && expression.charAt(i) <= '9') {
+                string.append(expression.charAt(i));
             } else {
                 break;
             }
@@ -44,7 +44,7 @@ public class GetInput {
         return string.toString();
     }
 
-    public static String getString(String str, int idx) {
-        return Character.toString(str.charAt(idx));
+    public static String getString(String expression, int idx) {
+        return Character.toString(expression.charAt(idx));
     }
 }
