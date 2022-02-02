@@ -12,7 +12,8 @@ public class Application {
         final InputView inputView = new InputView();
         final ResultView resultView = new ResultView();
         final RacingGameService racingGameService = new RacingGameService();
-        final RacingGameController racingGameController = initGameController(inputView, resultView, racingGameService);
+        final RacingGameController racingGameController = initGameController(inputView, resultView,
+            racingGameService);
         racingGameController.run();
     }
 

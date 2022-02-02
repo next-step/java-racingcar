@@ -9,7 +9,7 @@ public class RacingGameService {
     private final RandomGoRule randomGenerator = new RandomGoRule();
     private final RoundHistories roundHistories = new RoundHistories();
 
-    public RoundHistories race(Cars cars, int tryNumber) {
+    public RoundHistories race(final Cars cars, final int tryNumber) {
         for (int i = 0; i < tryNumber; i++) {
             roundHistories.captureRoundHistory(cars.move(randomGenerator));
         }

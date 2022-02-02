@@ -7,7 +7,7 @@ public class Car {
     private final String carName;
     private int location;
 
-    public Car(String carName, int location) {
+    public Car(final String carName, final int location) {
         this.carName = carName;
         this.location = location;
     }
@@ -20,7 +20,7 @@ public class Car {
         return carName;
     }
 
-    public void move(GoRule goRule) {
+    public void move(final GoRule goRule) {
         if (goRule.isGo()) {
             location++;
         }
