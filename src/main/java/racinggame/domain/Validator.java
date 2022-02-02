@@ -1,5 +1,9 @@
 package racinggame.domain;
 
+import static racinggame.exception.ExceptionBaseMessage.INPUT_BLANK_MESSAGE;
+import static racinggame.exception.ExceptionBaseMessage.LACK_OF_PLAYER_MESSAGE;
+import static racinggame.exception.ExceptionBaseMessage.NAME_LENGTH_OVER_MESSAGE;
+
 import java.util.List;
 import racinggame.exception.InputBlankException;
 import racinggame.exception.LackOfPlayerException;
@@ -14,7 +18,8 @@ public class Validator {
 
     public static void validatePossibleToStart(final RacingCars racingCars) {
         if (isPossibleToStart(racingCars.get())) {
-            throw new LackOfPlayerException(racingCars.get());
+            throw new LackOfPlayerException(
+                    LACK_OF_PLAYER_MESSAGE + " (현재 참여인원: " + racingCars.get().size() + ")");
         }
     }
 
@@ -24,7 +29,8 @@ public class Validator {
 
     public static void validateNameLength(final String carName) {
         if (carName.length() > MAXIMUM_NAME_LENGTH) {
-            throw new NameLengthOverException(carName);
+            throw new NameLengthOverException(
+                    NAME_LENGTH_OVER_MESSAGE + " (Input: " + carName + ")");
         }
     }
 
@@ -38,14 +44,15 @@ public class Validator {
 
     public static void checkIsBlank(final String removedBlankInput) {
         if (removedBlankInput.isEmpty()) {
-            throw new InputBlankException();
+            throw new InputBlankException(INPUT_BLANK_MESSAGE);
         }
     }
 
     public static void checkNameIsBlank(final String[] splitName) {
         for (int i = 0; i < splitName.length; i++) {
             if (splitName[i].isEmpty()) {
-                throw new InputBlankException(i);
+                throw new InputBlankException(
+                        INPUT_BLANK_MESSAGE + " (" + i + "번째 자동차 이름이 공백입니다.)");
             }
         }
     }
