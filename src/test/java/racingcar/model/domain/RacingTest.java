@@ -1,5 +1,8 @@
 package racingcar.model.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
+
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -16,5 +19,10 @@ public class RacingTest {
         final List<Car> cars = Arrays.asList(new Car(one), new Car(two), new Car(three));
         Racing racing = new Racing(cars, new FixMoveBehavior(true));
         racing.drive();
+        assertAll(
+            () -> assertThat(cars.get(0).getStep()).isEqualTo(1),
+            () -> assertThat(cars.get(1).getStep()).isEqualTo(1),
+            () -> assertThat(cars.get(2).getStep()).isEqualTo(1)
+        );
     }
 }
