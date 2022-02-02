@@ -1,27 +1,27 @@
 package racinggame.controller;
 
 import racinggame.domain.car.Cars;
-import racinggame.domain.history.RoundHistories;
-import racinggame.domain.random.RandomGoRule;
+import racinggame.service.RacingGameService;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
 
 public class RacingGameController {
 
-    private final Cars cars;
-    private final int tryNumber;
+    private final InputView inputView;
+    private final ResultView resultView;
+    private final RacingGameService racingGameService;
 
-    public RacingGameController(String[] carNames, int tryNumber) {
-        this.cars = new Cars(carNames);
-        this.tryNumber = tryNumber;
+    public RacingGameController(InputView inputView, ResultView resultView,
+        RacingGameService racingGameService) {
+        this.inputView = inputView;
+        this.resultView = resultView;
+        this.racingGameService = racingGameService;
     }
 
-    public RoundHistories race() {
-        final RandomGoRule randomGenerator = new RandomGoRule();
-        final RoundHistories roundHistories = new RoundHistories();
-        for (int i = 0; i < tryNumber; i++) {
-            cars.move(randomGenerator);
-            roundHistories.captureRoundHistory(cars);
-        }
-        return roundHistories;
+    public void run() {
+        final Cars cars = new Cars(inputView.inputPlayerName());
+        final int tryNumber = inputView.inputTryNumber();
+        resultView.printResult(racingGameService.race(cars, tryNumber));
     }
 
 }

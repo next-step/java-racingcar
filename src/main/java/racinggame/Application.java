@@ -1,7 +1,7 @@
 package racinggame;
 
 import racinggame.controller.RacingGameController;
-import racinggame.domain.history.RoundHistories;
+import racinggame.service.RacingGameService;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 
@@ -10,15 +10,15 @@ public class Application {
     public static void main(String[] args) {
 
         final InputView inputView = new InputView();
-        final RacingGameController racingGameController = initGameController(inputView);
-        final RoundHistories roundHistories = racingGameController.race();
-
         final ResultView resultView = new ResultView();
-        resultView.printResult(roundHistories);
+        final RacingGameService racingGameService = new RacingGameService();
+        final RacingGameController racingGameController = initGameController(inputView, resultView,racingGameService);
+        racingGameController.run();
     }
 
-    private static RacingGameController initGameController(InputView inputView) {
-        return new RacingGameController(inputView.inputPlayerName(), inputView.inputTryNumber());
+    private static RacingGameController initGameController(InputView inputView,
+        ResultView resultView, RacingGameService racingGameService) {
+        return new RacingGameController(inputView, resultView, racingGameService);
     }
 
 }
