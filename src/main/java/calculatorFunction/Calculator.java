@@ -22,7 +22,8 @@ public class Calculator {
     }
 
     public void returnCalculatedValue() {
-        for (int i = 0; i < (parsedValues.size() + 1) / 2; i++) {
+        int parsedValuesSize = parsedValues.size();
+        for (int i = 0; i < (parsedValuesSize + 1) / 2; i++) {
             if (determineCalculatedValueValid(i)) {
                 return;
             }
@@ -31,7 +32,8 @@ public class Calculator {
     }
 
     public boolean determineCalculatedValueValid(int i) {
-        if (i * 2 == parsedValues.size() - 1) {
+        int parsedValuesSize = parsedValues.size();
+        if (i * 2 == parsedValuesSize - 1) {
             System.out.println(
                 "정답: " + Double.parseDouble(parsedValues.get(parsedValues.size() - 1)));
             return true;
