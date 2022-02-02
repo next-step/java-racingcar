@@ -3,6 +3,7 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.List;
 import racing.domain.car.CarHistory;
+import racing.domain.car.Cars;
 import racing.view.InputView;
 import racing.view.OutputView;
 
