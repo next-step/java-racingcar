@@ -12,7 +12,7 @@ import racingcar.model.vo.Car;
 
 public class CarsTest {
 
-    @DisplayName("일급_컬렉션_테스트")
+    @DisplayName("Car_클래스가_Cars_클래스로_Wrapping_되는지_검증")
     @Test
     void collectionTest() {
         final InputDTO inputDTO = new InputDTO(Arrays.asList("a", "aa", "aaa"), 10);
