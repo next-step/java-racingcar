@@ -27,7 +27,7 @@ public class Cars {
 
     private void checkSameNameCars(List<Car> cars) {
         if (cars.stream().count()
-            != cars.stream().map(Car::getName).distinct().count()) {
+            != cars.stream().map(Car::getNameValue).distinct().count()) {
             throw new IllegalArgumentException("[ERROR] 중복된 이름은 들어갈 수 없습니다.");
         }
     }
@@ -38,13 +38,13 @@ public class Cars {
         }
     }
 
-    public List<CarHistory> driveCars() {
-        final List<CarHistory> carHistories = new ArrayList<>();
+    public List<Car> driveCars() {
+        final List<Car> carsState = new ArrayList<>();
         for (Car car : cars) {
             car.drive(generateRandomNumber());
-            carHistories.add(new CarHistory(car.getName(), new Position(car.getPositionValue())));
+            carsState.add(new Car(new Name(car.getNameValue()), new Position(car.getPositionValue())));
         }
-        return carHistories;
+        return new ArrayList<>(carsState);
     }
 
     private int generateRandomNumber() {
@@ -62,5 +62,4 @@ public class Cars {
     public List<Car> getCars() {
         return new ArrayList<>(cars);
     }
-
 }
