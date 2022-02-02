@@ -13,10 +13,6 @@ public class Racing {
         this.carMoveBehavior = carMoveBehavior;
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
     public void drive() {
         cars.stream()
             .forEach(car -> racingCondition(car));
