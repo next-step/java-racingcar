@@ -1,16 +1,21 @@
 package calculatorFunction;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Calculator {
 
     private ArrayList<String> parsedValues = null;
+    private HashMap<String, Method> operatorMap = new HashMap<>();
 
     public Calculator(ArrayList<String> parsedValues) {
         this.parsedValues = parsedValues;
     }
 
-    public static void execute() {
+    public static void execute()
+        throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         System.out.println("수식을 입력하시오: ");
         String expression = GetInput.inputString();
         if (expression.length() == 0) {
@@ -18,10 +23,12 @@ public class Calculator {
         }
         ArrayList<String> parsedValues = GetInput.parse(expression);
         Calculator calculator = new Calculator(parsedValues);
+        calculator.setOperatorMap();
         calculator.returnCalculatedValue();
     }
 
-    public void returnCalculatedValue() {
+    public void returnCalculatedValue()
+        throws InvocationTargetException, IllegalAccessException {
         int parsedValuesSize = parsedValues.size();
         for (int i = 0; i < (parsedValuesSize + 1) / 2; i++) {
             if (determineCalculatedValueValid(i)) {
@@ -29,6 +36,13 @@ public class Calculator {
             }
             parseOperation(i * 2);
         }
+    }
+
+    public void setOperatorMap() throws NoSuchMethodException {
+        operatorMap.put("+", Operations.class.getMethod("add"));
+        operatorMap.put("-", Operations.class.getMethod("sub"));
+        operatorMap.put("*", Operations.class.getMethod("mul"));
+        operatorMap.put("/", Operations.class.getMethod("div"));
     }
 
     public boolean determineCalculatedValueValid(int i) {
@@ -42,29 +56,18 @@ public class Calculator {
         return false;
     }
 
-    public void parseOperation(int start) {
-        Operations operations = new Operations();
-        String operator = parsedValues.get(start + 1);
-        operations.firstOperand = Double.parseDouble(parsedValues.get(start));
-        operations.secondOperand = Double.parseDouble(parsedValues.get(start + 2));
+    public void parseOperation(int parseIdx)
+        throws InvocationTargetException, IllegalAccessException {
+        String operator = parsedValues.get(parseIdx + 1);
+        Operations.firstOperand = Double.parseDouble(parsedValues.get(parseIdx));
+        Operations.secondOperand = Double.parseDouble(parsedValues.get(parseIdx + 2));
 
-        double result = 0;
-        if (operator.equals("+")) {
-            result = operations.add();
-        } else if (operator.equals("-")) {
-            result = operations.sub();
-        } else if (operator.equals("*")) {
-            result = operations.mul();
-        } else if (operator.equals("/")) {
-            if (operations.secondOperand == 0) {
-                throw new IllegalArgumentException("Error: division by zero");
-            } else {
-                result = operations.div();
-            }
-        } else {
+        if (!operatorMap.containsKey(operator)) {
             throw new IllegalArgumentException("Error: need right operator");
         }
 
-        parsedValues.set(start + 2, String.valueOf(result));
+        double result = (double) operatorMap.get(operator).invoke(null);
+
+        parsedValues.set(parseIdx + 2, String.valueOf(result));
     }
 }

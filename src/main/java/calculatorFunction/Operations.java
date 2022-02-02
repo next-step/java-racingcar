@@ -2,21 +2,24 @@ package calculatorFunction;
 
 public class Operations {
 
-    double firstOperand, secondOperand;
+    static double firstOperand, secondOperand;
 
-    public double add() {
+    public static double add() {
         return firstOperand + secondOperand;
     }
 
-    public double sub() {
+    public static double sub() {
         return firstOperand - secondOperand;
     }
 
-    public double mul() {
+    public static double mul() {
         return firstOperand * secondOperand;
     }
 
-    public double div() {
+    public static double div() {
+        if (secondOperand == 0) {
+            throw new IllegalArgumentException("Error: division by zero");
+        }
         return firstOperand / secondOperand;
     }
 }
