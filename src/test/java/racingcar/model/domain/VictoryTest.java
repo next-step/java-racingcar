@@ -27,11 +27,6 @@ public class VictoryTest {
         cars.get(0).moveForward();
         cars.get(0).moveForward();
 
-        final int max = cars.stream().map(car -> car.getStep())
-            .mapToInt(length -> Integer.valueOf(length))
-            .max()
-            .getAsInt();
-
         Victory victory = Victory.maxCheck(cars);
         List<OutputDTO> victoryResult = victory.victory()
             .stream()
