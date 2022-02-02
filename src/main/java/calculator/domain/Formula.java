@@ -19,10 +19,7 @@ public class Formula {
     private static void isNotOperator(List<String> formular) {
         final int operatorIndex = 2;
         for (int i = 1; i < formular.size(); i += operatorIndex) {
-            Operation.from(formular.get(i))
-                .orElseThrow(() ->
-                    new IllegalArgumentException("사칙연산 기호가 아닙니다.")
-                );
+            Operation.from(formular.get(i));
         }
     }
 

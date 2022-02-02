@@ -42,8 +42,7 @@ public class Calculator {
     private static Stack<Operation> initOperationCalculator(List<String> formula,
         Stack<Operation> operationCalculator) {
         for (int i = formula.size() - 2; i >= 1; i -= 2) {
-            Operation operation = Operation.from(formula.get(i))
-                .orElseThrow(() -> new IllegalArgumentException("연산자 형식 오류"));
+            Operation operation = Operation.from(formula.get(i));
             operationCalculator.push(operation);
         }
         return operationCalculator;

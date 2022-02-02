@@ -1,7 +1,6 @@
 package calculator.domain;
 
 import java.util.Arrays;
-import java.util.Optional;
 import java.util.function.DoubleBinaryOperator;
 
 public enum Operation {
@@ -18,10 +17,11 @@ public enum Operation {
         this.op = op;
     }
 
-    public static Optional<Operation> from(String symbol) {
+    public static Operation from(String symbol) {
         return Arrays.stream(values())
             .filter(operation -> operation.isSameSymbol(symbol))
-            .findAny();
+            .findAny()
+            .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사칙연산 기호 입니다."));
     }
 
     public double apply(double x, double y) {
