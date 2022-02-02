@@ -26,4 +26,8 @@ public class Car {
         }
     }
 
+    public boolean isInLocation(int location) {
+        return this.location == location;
+    }
+
 }

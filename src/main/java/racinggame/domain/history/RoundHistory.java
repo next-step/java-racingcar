@@ -2,16 +2,18 @@ package racinggame.domain.history;
 
 import java.util.ArrayList;
 import java.util.List;
+import racinggame.domain.car.Car;
 
 public class RoundHistory {
 
-    private final List<CarHistory> carHistories;
+    private final List<Car> cars;
 
-    public RoundHistory(final List<CarHistory> carHistoryList) {
-        this.carHistories = carHistoryList;
+
+    public RoundHistory(final List<Car> cars) {
+        this.cars = cars;
     }
 
-    public List<CarHistory> getRoundHistory() {
-        return new ArrayList<>(carHistories);
+    public List<Car> getRoundHistory() {
+        return new ArrayList<>(cars);
     }
 }
