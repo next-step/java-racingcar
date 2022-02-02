@@ -1,6 +1,7 @@
 package racinggame.exception;
 
 public class ExceptionBaseMessage {
+
     public static final int MINIMUM_PLAYER = 2;
     private static final int MAXIMUM_NAME_LENGTH = 5;
     public static final String LACK_OF_PLAYER_MESSAGE = String.format(
