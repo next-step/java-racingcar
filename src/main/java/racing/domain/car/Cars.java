@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import racing.domain.car.Car;
-import racing.domain.car.CarHistory;
-import racing.domain.car.Position;
 
 public class Cars {
 
