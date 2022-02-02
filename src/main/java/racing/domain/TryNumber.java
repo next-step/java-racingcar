@@ -24,11 +24,9 @@ public class TryNumber {
     }
 
     public void nextStep() {
-        checkValidTryNumber(this.tryNumber);
-        decrease();
-    }
-
-    private void decrease() {
+        if(this.tryNumber == 0) {
+            throw new IllegalArgumentException("남은 시도 횟수가 없습니다.");
+        }
         this.tryNumber--;
     }
 }
