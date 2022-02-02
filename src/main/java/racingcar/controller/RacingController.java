@@ -31,8 +31,8 @@ public class RacingController {
         resultView.announceRacingDetails(racingService.getMovingResult());
     }
 
-    public String finishRacing() {
-        return resultView.announceWinner(racingService.judgeWinners());
+    public void finishRacing() {
+        System.out.println(resultView.announceWinner(racingService.judgeWinners()));
     }
 
 }

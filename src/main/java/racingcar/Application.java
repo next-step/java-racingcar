@@ -15,7 +15,7 @@ public class Application {
             InputView.instance(), ResultView.instance());
         racingController.setUpRacing();
         racingController.startRacing();
-        System.out.println(racingController.finishRacing());
+        racingController.finishRacing();
     }
 
 }
