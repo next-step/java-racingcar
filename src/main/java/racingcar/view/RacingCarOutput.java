@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
+import racingcar.domain.RacingCar;
 
 public class RacingCarOutput {
 
@@ -33,8 +34,9 @@ public class RacingCarOutput {
         System.out.println(SYSTEM_MESSAGE_FINAL_WINNER + String.join(", ", gameWinner));
     }
 
-    public static void printGameScore(String gameStatus) {
-        System.out.println(gameStatus);
+    public static void printGameScore(int raceCount, List<RacingCar> racingCarLists) {
+        ResultView resultView = new ResultView();
+        System.out.println(resultView.getGameStatus(raceCount, racingCarLists));
     }
 
 }
