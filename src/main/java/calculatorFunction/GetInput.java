@@ -2,6 +2,7 @@ package calculatorFunction;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class GetInput {
 
@@ -28,8 +29,9 @@ public class GetInput {
 
     public static String getInteger(String expression, int idx) {
         StringBuilder string = new StringBuilder();
+        String pattern = "^[0-9]*$";
         for (int i = idx; i < expression.length(); i++) {
-            if (expression.charAt(i) >= '0' && expression.charAt(i) <= '9') {
+            if (Pattern.matches(pattern, expression.substring(i, i + 1))) {
                 string.append(expression.charAt(i));
             } else {
                 break;
@@ -45,6 +47,6 @@ public class GetInput {
     }
 
     public static String getString(String expression, int idx) {
-        return Character.toString(expression.charAt(idx));
+        return expression.substring(idx, idx + 1);
     }
 }
