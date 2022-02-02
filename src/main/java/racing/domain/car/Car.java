@@ -21,7 +21,7 @@ public class Car {
     }
 
     public void drive(int condition) {
-        if (condition >= STANDARD_NUMBER_MOVE_FORWARD)) {
+        if (condition >= STANDARD_NUMBER_MOVE_FORWARD) {
             position = position.move();
         }
     }
