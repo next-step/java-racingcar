@@ -17,7 +17,7 @@ public class RacingGame {
     public void start() {
         try {
             final List<String> names = InputView.getCarNames();
-            cars = new Cars(names);
+            cars = new Cars(names, 0);
 
             final TryNumber tryNumber = InputView.getTryNumber();
             startRacing(tryNumber);

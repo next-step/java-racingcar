@@ -2,6 +2,8 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 import racing.domain.car.Car;
 import racing.domain.car.CarHistory;
 import racing.domain.car.Position;
@@ -10,11 +12,32 @@ public class Cars {
 
     private static final int RANGE_OF_RANDOM_NUMBER = 10;
 
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
 
-    public Cars(List<String> names) {
-        for (String name : names) {
-            cars.add(new Car(name));
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+        checkZeroCar(this.cars);
+        checkSameNameCars(this.cars);
+    }
+
+    public Cars(List<String> names, int initValue) {
+        this(
+            names.stream()
+                .map(name -> new Car(name, initValue))
+                .collect(Collectors.toList())
+        );
+    }
+
+    private void checkSameNameCars(List<Car> cars) {
+        if (cars.stream().count()
+            != cars.stream().map(Car::getName).distinct().count()) {
+            throw new IllegalArgumentException("[ERROR] 중복된 이름은 들어갈 수 없습니다.");
+        }
+    }
+
+    private void checkZeroCar(List<Car> cars) {
+        if (Objects.isNull(cars) || cars.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 자동차 개수는 적어도 1개 이상이어야 합니다.");
         }
     }
 
