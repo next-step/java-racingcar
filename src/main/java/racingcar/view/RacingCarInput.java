@@ -2,9 +2,11 @@ package racingcar.view;
 
 import java.util.Arrays;
 import java.util.List;
-import racingcar.util.Console;
+import java.util.Scanner;
 
 public class RacingCarInput {
+
+    private static Scanner scanner = new Scanner(System.in);
 
     private RacingCarInput(){}
 
@@ -12,7 +14,7 @@ public class RacingCarInput {
         String input = "";
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
         try {
-            input = Console.readLine();
+            input = scanner.nextLine();
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
             return getCarName();
@@ -24,7 +26,7 @@ public class RacingCarInput {
         String input = "";
         System.out.println("시도할 횟수는 몇 회인가요?");
         try {
-            input = Console.readLine();
+            input = scanner.nextLine();
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
             return getRaceCount();

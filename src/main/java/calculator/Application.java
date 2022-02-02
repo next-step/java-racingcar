@@ -7,7 +7,7 @@ import calculator.view.FormulaInput;
 public class Application {
 
     public static void main(String[] args) {
-        Formula formula = FormulaInput.getFormula();
+        Formula formula = FormulaInput.inputFormula();
         double result = Calculator.run(formula);
         System.out.println(result);
     }
