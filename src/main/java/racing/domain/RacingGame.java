@@ -2,39 +2,41 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racing.domain.car.CarHistory;
+import java.util.stream.Collectors;
+import racing.domain.car.Car;
 import racing.domain.car.Cars;
-import racing.view.InputView;
-import racing.view.OutputView;
+import racing.domain.car.Position;
 
 public class RacingGame {
 
+    private static final String COMMA = ", ";
+
+    private final List<List<Car>> raceStates = new ArrayList<>();
     private Cars cars;
-    private final List<List<CarHistory>> raceHistories = new ArrayList<>();
 
-    public RacingGame() {
+    public RacingGame(Cars cars) {
+        this.cars = cars;
     }
 
-    public void start() {
-        try {
-            final List<String> names = InputView.getCarNames();
-            cars = new Cars(names, 0);
-
-            final TryNumber tryNumber = InputView.getTryNumber();
-            startRacing(tryNumber);
-
-            OutputView.printGameResult(raceHistories);
-            OutputView.printWinners(cars);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            start();
-        }
+    public static RacingGame registerCars(List<String> names) {
+        return new RacingGame(new Cars(names, 0));
     }
 
-    private void startRacing(final TryNumber tryNumber) {
+    public void race(final TryNumber tryNumber) {
         while (tryNumber.hasNextStep()) {
-            raceHistories.add(cars.driveCars());
+            raceStates.add(cars.driveCars());
             tryNumber.nextStep();
         }
+    }
+
+    public List<List<Car>> raceResult() {
+        return new ArrayList(new ArrayList(raceStates));
+    }
+
+    public String decideWinners() {
+        return cars.getCars().stream()
+            .filter(car -> car.isSamePosition(new Position(cars.getMaxPosition())))
+            .map(Car::getNameValue)
+            .collect(Collectors.joining(COMMA));
     }
 }
