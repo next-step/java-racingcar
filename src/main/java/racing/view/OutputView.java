@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racing.domain.car.Cars;
 import racing.domain.car.Car;
-import racing.domain.car.CarHistory;
 import racing.domain.car.Name;
 import racing.domain.car.Position;
 
@@ -12,39 +11,33 @@ public class OutputView {
 
     private static final String SEPARATOR_BETWEEN_NAME_AND_POSITION = " : ";
     private static final String MOVE_STATE = "-";
-    private static final String COMMA = ",";
 
     private OutputView() {
     }
 
-    public static void printGameResult(List<List<CarHistory>> raceHistories) {
+    public static void printGameResult(List<List<Car>> raceStates) {
         System.out.println("\n실행 결과");
-        for (List<CarHistory> carHistories : raceHistories) {
-            printCarHistories(carHistories);
+        for (List<Car> raceState : raceStates) {
+            printCarHistories(raceState);
             System.out.println();
         }
     }
 
-    private static void printCarHistories(List<CarHistory> carHistories) {
-        for (CarHistory carHistory : carHistories) {
-            printCarHistory(carHistory);
+    private static void printCarHistories(List<Car> raceState) {
+        for (Car car : raceState) {
+            printCarHistory(car);
             System.out.println();
         }
     }
 
-    private static void printCarHistory(CarHistory carHistory) {
-        System.out.print(carHistory.getName().getName() + SEPARATOR_BETWEEN_NAME_AND_POSITION);
-        for (int i = 0; i < carHistory.getPositionValue(); i++) {
+    private static void printCarHistory(Car car) {
+        System.out.print(car.getNameValue() + SEPARATOR_BETWEEN_NAME_AND_POSITION);
+        for (int i = 0; i < car.getPositionValue(); i++) {
             System.out.print(MOVE_STATE);
         }
     }
 
-    public static void printWinners(Cars cars) {
-        final String winners = cars.getCars().stream()
-            .filter(car -> car.isSamePosition(new Position(cars.getMaxPosition())))
-            .map(Car::getName)
-            .map(Name::getName)
-            .collect(Collectors.joining(COMMA));
-        System.out.println("최종 우승자 : " + winners);
+    public static void printWinners(String winnersName) {
+        System.out.println("최종 우승자 : " + winnersName);
     }
 }
