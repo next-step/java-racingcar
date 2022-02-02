@@ -16,6 +16,17 @@ public class Validation {
     private static final int LAST_NUMBER = 9;
     private static final int LIMIT_NUMBEr = 5;
 
+    public static boolean validateCarName(final String name) {
+        try {
+            validateLengthLimit(StringUtils.splitStr(name));
+            validateDuplicateCar(StringUtils.splitStr(name));
+        } catch (InputValidationException exception) {
+            System.out.println(exception.getMessage());
+            return true;
+        }
+        return false;
+    }
+
     public static boolean validateNumberRange(final int number) {
         try {
             if (number < START_NUMBER || number > LAST_NUMBER) {
