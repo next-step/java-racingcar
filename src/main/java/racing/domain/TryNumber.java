@@ -24,7 +24,7 @@ public class TryNumber {
     }
 
     public void nextStep() {
-        if(this.tryNumber == 0) {
+        if (this.tryNumber == LIMIT_NEXT_STEP) {
             throw new IllegalArgumentException("남은 시도 횟수가 없습니다.");
         }
         this.tryNumber--;
