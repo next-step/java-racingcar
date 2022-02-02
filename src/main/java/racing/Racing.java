@@ -1,26 +1,31 @@
 package racing;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Racing {
 
-    final int rounds;
+    final private int rounds;
+    final private Cars cars;
 
-    public Racing(int rounds) {
+    public Racing(Cars cars, int rounds) {
+        this.cars = cars;
         this.rounds = rounds;
     }
 
-    public void race(List<Car> cars) {
+    public void race() {
         int roundCount = rounds;
         while (roundCount-- > 0) {
-            startRound(cars);
+            cars.round();
         }
     }
 
-    // TODO: 단위 테스트 추가 방법을 생각해보자.
-    private void startRound(List<Car> cars) {
-        for (Car car : cars) {
-            car.round();
-        }
+    public List<String> getWinner() {
+        final List<Car> cars = this.cars.getCars();
+        cars.sort((a, b) -> b.getDistance() - a.getDistance());
+        final int bestScore = cars.get(0).getDistance();
+        return cars.stream().filter(car -> car.getDistance() == bestScore)
+            .map(car -> car.getName())
+            .collect(Collectors.toList());
     }
 }
