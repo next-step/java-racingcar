@@ -11,8 +11,7 @@ public class RacingGameService {
 
     public RoundHistories race(Cars cars, int tryNumber) {
         for (int i = 0; i < tryNumber; i++) {
-            cars.move(randomGenerator);
-            roundHistories.captureRoundHistory(cars);
+            roundHistories.captureRoundHistory(cars.move(randomGenerator));
         }
         return roundHistories;
     }

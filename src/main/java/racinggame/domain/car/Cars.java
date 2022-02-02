@@ -16,8 +16,9 @@ public class Cars {
         }
     }
 
-    public void move(GoRule goRule) {
+    public Cars move(GoRule goRule) {
         cars.forEach(car -> car.move(goRule));
+        return this;
     }
 
     public List<Car> getCars() {
