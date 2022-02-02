@@ -16,7 +16,7 @@ public class Calculator {
         if (str.length() == 0) {
             throw new IllegalArgumentException("Error: need right expression");
         }
-        ArrayList<String> parsedValues = GetInput.parsing(str);
+        ArrayList<String> parsedValues = GetInput.parse(str);
         Calculator calculator = new Calculator(parsedValues);
         calculator.returnCalculatedValue();
     }

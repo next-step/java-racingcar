@@ -12,19 +12,18 @@ public class GetInput {
         return str;
     }
 
-    public static ArrayList<String> parsing(String str) {
-        ArrayList<String> array = new ArrayList<>();
-        int operatorIdx = 0;
-        array.add(getInteger(str, operatorIdx));
-        operatorIdx = array.get(0).length() + operatorIdx;
+    public static ArrayList<String> parse(String expression) {
+        ArrayList<String> parsedExpression = new ArrayList<>();
+        parsedExpression.add(getInteger(expression, 0));
+        int operatorIdx = parsedExpression.get(0).length();
 
-        while (operatorIdx != str.length()) {
-            array.add(getString(str, operatorIdx));
+        while (operatorIdx != expression.length()) {
+            parsedExpression.add(getString(expression, operatorIdx));
             operatorIdx++;
-            array.add(getInteger(str, operatorIdx));
-            operatorIdx = array.get(array.size() - 1).length() + operatorIdx;
+            parsedExpression.add(getInteger(expression, operatorIdx));
+            operatorIdx += parsedExpression.get(parsedExpression.size() - 1).length();
         }
-        return array;
+        return parsedExpression;
     }
 
     public static String getInteger(String str, int idx) {
