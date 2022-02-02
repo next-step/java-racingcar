@@ -20,14 +20,10 @@ public class Car {
         return this.position.equals(position);
     }
 
-    public void drive(int randomNumber) {
-        if (isMovable(randomNumber)) {
+    public void drive(int condition) {
+        if (condition >= STANDARD_NUMBER_MOVE_FORWARD)) {
             position = position.move();
         }
-    }
-
-    private boolean isMovable(final int randomNumber) {
-        return randomNumber >= STANDARD_NUMBER_MOVE_FORWARD;
     }
 
     public int getPositionValue() {
