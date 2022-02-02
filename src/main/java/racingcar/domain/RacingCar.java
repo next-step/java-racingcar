@@ -31,6 +31,9 @@ public class RacingCar implements Car {
     }
 
     private void isCorrectNameSize(String name) {
+        if(name == null || name.isEmpty()){
+            throw new IllegalArgumentException("자동차 이름이 빈값입니다!");
+        }
         if (NAME_SIZE < name.length()) {
             throw new IllegalArgumentException("자동차 이름의 길이가 5를 초과했습니다!");
         }

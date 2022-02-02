@@ -5,14 +5,16 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOf
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class RacingCarTest {
 
-    @Test
-    void 자동차이름검사_길이5초과() {
+    @ParameterizedTest
+    @ValueSource(strings = {"abcdefg", ""})
+    void 자동차이름_형식_유효성검증(String carName) {
         assertThatExceptionOfType(IllegalArgumentException.class)
             .isThrownBy(() -> {
-                new RacingCar("gdgdgdgdgdg");
+                new RacingCar(carName);
             });
     }
 
