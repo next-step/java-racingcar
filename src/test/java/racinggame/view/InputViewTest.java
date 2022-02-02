@@ -4,17 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class InputViewTest {
-
-    private InputView inputView;
-
-    @BeforeEach
-    void before() {
-        inputView = new InputView();
-    }
 
     @Test
     void carNames_정상_입력() {
@@ -24,7 +16,7 @@ class InputViewTest {
         System.setIn(inputStream);
 
         // when
-        final String inputCarNames = inputView.inputCarNames();
+        final String inputCarNames = InputView.inputCarNames();
 
         // then
         assertThat(inputCarNames).isEqualTo(userInput);
@@ -38,7 +30,7 @@ class InputViewTest {
         System.setIn(inputStream);
 
         // when
-        final String trial = inputView.inputTrial();
+        final String trial = InputView.inputTrial();
 
         // then
         assertThat(trial).isEqualTo(inputTrial);

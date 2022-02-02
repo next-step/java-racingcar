@@ -8,11 +8,10 @@ import java.io.InputStream;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.RacingCars;
 import racinggame.domain.Trial;
-import racinggame.view.InputView;
 
 class RacingGameControllerTest {
 
-    private final RacingGameController controller = new RacingGameController(new InputView());
+    private final RacingGameController controller = new RacingGameController();
 
     @Test
     void getRacingCars() {

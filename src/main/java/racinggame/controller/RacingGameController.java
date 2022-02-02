@@ -14,22 +14,19 @@ public class RacingGameController {
 
     private static final int NORMAL_EXIT_CODE = 0;
     private static final String QUIT = "q";
-    private final InputView inputView;
     private GameView gameView;
 
-    public RacingGameController(final InputView inputView) {
-        this.inputView = inputView;
-    }
+    public RacingGameController() {}
 
     public RacingCars getRacingCars() {
         RacingCars racingCars;
 
         while (true) {
             try {
-                racingCars = new RacingCars(inputView.inputCarNames());
+                racingCars = new RacingCars(InputView.inputCarNames());
                 break;
             } catch (NameLengthOverException e) {
-                inputView.printErrorMessage(e.getMessage());
+                InputView.printErrorMessage(e.getMessage());
             }
         }
 
@@ -41,10 +38,10 @@ public class RacingGameController {
 
         while (true) {
             try {
-                trial = new Trial(inputView.inputTrial());
+                trial = new Trial(InputView.inputTrial());
                 break;
             } catch (InputBlankException | NumberFormatException e) {
-                inputView.printErrorMessage(e.getMessage());
+                InputView.printErrorMessage(e.getMessage());
             }
         }
         return trial;
@@ -58,7 +55,7 @@ public class RacingGameController {
                 racingGame = new RacingGame(racingCars);
                 break;
             } catch (LackOfPlayerException e) {
-                inputView.printErrorMessage(e.getMessage());
+                InputView.printErrorMessage(e.getMessage());
                 racingCars = getRacingCars();
             }
         }
@@ -82,7 +79,7 @@ public class RacingGameController {
     }
 
     public void checkIsRestart() {
-        if (isQuit(inputView.inputRestartCommand())) {
+        if (isQuit(InputView.inputRestartCommand())) {
             System.exit(NORMAL_EXIT_CODE);
         }
     }

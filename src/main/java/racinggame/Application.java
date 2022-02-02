@@ -9,7 +9,7 @@ public class Application {
 
     public static void main(String[] args) {
 
-        final RacingGameController controller = new RacingGameController(new InputView());
+        final RacingGameController controller = new RacingGameController();
 
         while (true) {
             RacingCars racingCars = controller.getRacingCars();
