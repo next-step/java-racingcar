@@ -1,7 +1,7 @@
 package calculator.view;
 
+import calculator.domain.Formular;
 import calculator.util.Console;
-import calculator.util.IsValidInput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +14,7 @@ public class FormulaInput {
     public static List<String> readFormula() {
         List<String> formular = new ArrayList<>();
         try {
-            IsValidInput isValidInput = new IsValidInput(Console.readLine());
-            formular = isValidInput.getFormular();
+            formular = new Formular(Console.readLine()).getSplitedFormular();
         } catch (IllegalArgumentException e) {
             FormulaOutput.printExceptionMessage(e.getMessage());
         }

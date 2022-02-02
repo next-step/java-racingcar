@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import racingcar.util.MoveUtil;
 
@@ -27,6 +28,6 @@ public class RacingGame {
     }
 
     public List<RacingCar> getRacingCarLists() {
-        return racingCarLists;
+        return Collections.unmodifiableList(racingCarLists);
     }
 }
