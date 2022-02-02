@@ -4,6 +4,7 @@ import racinggame.domain.Judge;
 import racinggame.domain.RacingCars;
 import racinggame.domain.RacingGame;
 import racinggame.domain.Trial;
+import racinggame.domain.vo.WinnersVo;
 import racinggame.exception.InputBlankException;
 import racinggame.exception.LackOfPlayerException;
 import racinggame.exception.NameLengthOverException;
@@ -17,30 +18,32 @@ public class RacingGameController {
 
     public RacingGameController() {}
 
-    public RacingCars getRacingCars() {
+    public RacingCars getRacingCars(String inputCarNames) {
         RacingCars racingCars;
 
         while (true) {
             try {
-                racingCars = new RacingCars(InputView.inputCarNames());
+                racingCars = new RacingCars(inputCarNames);
                 break;
             } catch (NameLengthOverException e) {
                 InputView.printErrorMessage(e.getMessage());
+                inputCarNames = InputView.inputCarNames();
             }
         }
 
         return racingCars;
     }
 
-    public Trial getTrial() {
+    public Trial getTrial(String inputTrial) {
         Trial trial;
 
         while (true) {
             try {
-                trial = new Trial(InputView.inputTrial());
+                trial = new Trial(inputTrial);
                 break;
             } catch (InputBlankException | NumberFormatException e) {
                 InputView.printErrorMessage(e.getMessage());
+                inputTrial = InputView.inputTrial();
             }
         }
         return trial;
@@ -55,7 +58,7 @@ public class RacingGameController {
                 break;
             } catch (LackOfPlayerException e) {
                 InputView.printErrorMessage(e.getMessage());
-                racingCars = getRacingCars();
+                racingCars = getRacingCars(InputView.inputCarNames());
             }
         }
         GameView.init(racingCars);
@@ -69,12 +72,8 @@ public class RacingGameController {
         }
     }
 
-    public void printResult() {
-        GameView.printResult();
-    }
-
-    public void printWinners(final RacingCars racingCars) {
-        GameView.printWinners(Judge.getWinners(racingCars));
+    public WinnersVo getWinners(RacingCars racingCars) {
+        return new WinnersVo(Judge.getWinners(racingCars));
     }
 
     public void checkIsRestart() {

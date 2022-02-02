@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Judge;
 import racinggame.domain.RacingCars;
+import racinggame.domain.vo.WinnersVo;
 
 class GameViewTest {
 
@@ -54,7 +55,7 @@ class GameViewTest {
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        GameView.printWinners(Judge.getWinners(racingCars));
+        GameView.printWinners(new WinnersVo(Judge.getWinners(racingCars)));
 
         //then
         assertThat(out.toString()).contains("car2");

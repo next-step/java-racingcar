@@ -3,6 +3,10 @@ package racinggame;
 import racinggame.controller.RacingGameController;
 import racinggame.domain.RacingCars;
 import racinggame.domain.Trial;
+import racinggame.domain.vo.InputVo;
+import racinggame.domain.vo.WinnersVo;
+import racinggame.view.GameView;
+import racinggame.view.InputView;
 
 public class Application {
 
@@ -11,12 +15,16 @@ public class Application {
         final RacingGameController controller = new RacingGameController();
 
         while (true) {
-            RacingCars racingCars = controller.getRacingCars();
-            Trial trial = controller.getTrial();
+            InputVo inputVo = new InputVo(InputView.inputCarNames(), InputView.inputTrial());
+
+            RacingCars racingCars = controller.getRacingCars(inputVo.getCarNames());
+            Trial trial = controller.getTrial(inputVo.getTrial());
 
             controller.startGame(racingCars, trial);
-            controller.printResult();
-            controller.printWinners(racingCars);
+            WinnersVo winnersVo = controller.getWinners(racingCars);
+            GameView.printResult();
+            GameView.printWinners(winnersVo);
+
             controller.checkIsRestart();
         }
     }

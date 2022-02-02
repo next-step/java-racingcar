@@ -1,11 +1,11 @@
 package racinggame.view;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import racinggame.Utils;
 import racinggame.domain.RacingCar;
 import racinggame.domain.RacingCars;
+import racinggame.domain.vo.WinnersVo;
 
 public class GameView {
 
@@ -48,8 +48,8 @@ public class GameView {
         return steps;
     }
 
-    public static void printWinners(final List<String> winners) {
-        final String result = String.join(DELIMITER, winners);
+    public static void printWinners(final WinnersVo winners) {
+        final String result = String.join(DELIMITER, winners.get());
         System.out.println("최종 우승자: " + result);
     }
 

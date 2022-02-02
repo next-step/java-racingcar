@@ -16,10 +16,8 @@ class RacingGameControllerTest {
     @Test
     void getRacingCars() {
         final String userInput = "car1, car2";
-        final InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(inputStream);
 
-        final RacingCars racingCars = controller.getRacingCars();
+        final RacingCars racingCars = controller.getRacingCars(userInput);
 
         assertThat(racingCars.get().size()).isEqualTo(2);
         assertThat(racingCars.get().get(0).getName()).isEqualTo("car1");
@@ -29,10 +27,8 @@ class RacingGameControllerTest {
     @Test
     void getTrial() {
         final String userInput = "5";
-        final InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(inputStream);
 
-        final Trial trial = controller.getTrial();
+        final Trial trial = controller.getTrial(userInput);
         assertThat(trial.getValue()).isEqualTo(5);
     }
 
