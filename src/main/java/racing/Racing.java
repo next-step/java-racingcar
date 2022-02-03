@@ -8,21 +8,25 @@ public class Racing {
     private final List<Car> cars;
     private final Round round;
     private final List<RoundResult> results;
+    private int roundNumber;
 
     public Racing(RacingInfo info){
         cars = info.getCars();
         round = info.getRound();
+        roundNumber = round.getRoundNumber();
         results = new ArrayList<>();
     }
 
     public void race() {
-        int roundNumber = round.getRoundNumber();
-
-        while (roundNumber-- > 0) {
+        while (runGame())  {
             final RoundResult result = round.play(cars);
             results.add(result);
         }
         printResult();
+    }
+
+    private boolean runGame() {
+        return roundNumber-- > 0;
     }
 
     private void printResult() {
