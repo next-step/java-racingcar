@@ -9,18 +9,17 @@ public class Calculator {
         System.out.println("수식을 입력하시오: ");
         String expression = GetInput.inputString();
         expression = expression.replace(BLANK, "");
-        if (expression.length() == 0) {
+        if (expression.isEmpty()) {
             throw new IllegalArgumentException("Error: need right expression");
         }
-        String[] expressionArray = GetInput.parsing(expression);
+        String[] expressions = GetInput.parsing(expression);
         Calculator calculator = new Calculator();
-        calculator.calculate(expressionArray);
-        return;
+        calculator.calculate(expressions);
     }
 
     public static void calculate(String[] stringArray) {
-        final int LENGTH = (stringArray.length - 1) / 2;
-        for (int i = 0; i < LENGTH; i++) {
+        final int STRING_ARRAY_LENGTH = (stringArray.length - 1) / 2;
+        for (int i = 0; i < STRING_ARRAY_LENGTH; i++) {
             if (ERROR.equals(stringArray[0])) {
                 System.out.println("ERROR: 종료합니다");
                 return;

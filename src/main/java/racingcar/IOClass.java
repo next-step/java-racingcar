@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class IOClass {
@@ -11,8 +12,9 @@ public class IOClass {
         String str = sc.nextLine();
         str = str.replace(" ", "");
         String[] carNames = str.split(",");
-        Car[] cars = new Car[carNames.length];
-        for (int i = 0; i < cars.length; i++) {
+        final int CARS_COUNT = carNames.length;
+        Car[] cars = new Car[CARS_COUNT];
+        for (int i = 0; i < CARS_COUNT; i++) {
             cars[i] = new Car(carNames[i]);
         }
 
@@ -20,7 +22,8 @@ public class IOClass {
     }
 
     public static boolean checkCarName(Car[] cars) {
-        for (int i = 0; i < cars.length; i++) {
+        final int CARS_COUNT = cars.length;
+        for (int i = 0; i < CARS_COUNT; i++) {
             if (cars[i].getName().length() > 5) {
                 return false;
             }
@@ -36,7 +39,8 @@ public class IOClass {
     }
 
     public static void printCurrentPosition(Car[] cars) {
-        for (int i = 0; i < cars.length; i++) {
+        final int CARS_COUNT = cars.length;
+        for (int i = 0; i < CARS_COUNT; i++) {
             System.out.print(cars[i].getName() + " : ");
             for (int j = 0; j < cars[i].getPosition(); j++) {
                 System.out.print("-");
@@ -49,8 +53,9 @@ public class IOClass {
         int count = 0;
         int maxScore = Race.getMaxScore(cars);
         System.out.print("최종 우승자: ");
-        ArrayList<String> winnerNames = getWinnerNames(cars, maxScore);
-        for (int i = 0; i < winnerNames.size(); i++) {
+        List<String> winnerNames = getWinnerNames(cars, maxScore);
+        final int WINNERS_COUNT = winnerNames.size();
+        for (int i = 0; i < WINNERS_COUNT; i++) {
             if (count != 0) {
                 System.out.print(", ");
             }
@@ -59,9 +64,10 @@ public class IOClass {
         }
     }
 
-    static ArrayList<String> getWinnerNames(Car[] cars, int maxScore) {
-        ArrayList<String> winners = new ArrayList<>();
-        for (int i = 0; i < cars.length; i++) {
+    private static List<String> getWinnerNames(Car[] cars, int maxScore) {
+        List<String> winners = new ArrayList<>();
+        final int CARS_COUNT = cars.length;
+        for (int i = 0; i < CARS_COUNT; i++) {
             if (cars[i].getPosition() == maxScore) {
                 winners.add(cars[i].getName());
             }

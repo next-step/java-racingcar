@@ -14,26 +14,26 @@ public class GetInput {
 
     public static String[] parsing(String expression) {
         String[] array = new String[100];
-        int it = 0;
-        int strIt = 0;
-        array[it] = getInteger(expression, strIt);
-        if (array[it].equals(ERROR)) {
+        int arrayIterator = 0;
+        int expressionIterator = 0;
+        array[arrayIterator] = getInteger(expression, expressionIterator);
+        if (array[arrayIterator].equals(ERROR)) {
             return array;
         }
-        strIt = array[it].length() + strIt;
-        it++;
+        expressionIterator = array[arrayIterator].length() + expressionIterator;
+        arrayIterator++;
 
-        while (strIt != expression.length()) {
-            String number = String.valueOf(expression.charAt(strIt));
-            array[it++] = number;
-            strIt++;
-            array[it] = getInteger(expression, strIt);
-            if (array[it].equals(ERROR)) {
+        while (expressionIterator != expression.length()) {
+            String number = String.valueOf(expression.charAt(expressionIterator));
+            array[arrayIterator++] = number;
+            expressionIterator++;
+            array[arrayIterator] = getInteger(expression, expressionIterator);
+            if (array[arrayIterator].equals(ERROR)) {
                 array[0] = ERROR;
                 return array;
             }
-            strIt = array[it].length() + strIt;
-            it++;
+            expressionIterator = array[arrayIterator].length() + expressionIterator;
+            arrayIterator++;
         }
 
         return array;
@@ -41,8 +41,8 @@ public class GetInput {
 
     public static String getInteger(String expression, int idx) {
         String number = "";
-        final int LENGTH = expression.length();
-        for (int i = idx; i < LENGTH; i++) {
+        final int EXPRESSION_LENGTH = expression.length();
+        for (int i = idx; i < EXPRESSION_LENGTH; i++) {
             if (expression.charAt(i) >= '0' && expression.charAt(i) <= '9') {
                 number += expression.charAt(i);
             } else {
