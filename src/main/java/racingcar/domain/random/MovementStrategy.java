@@ -1,6 +1,6 @@
 package racingcar.domain.random;
 
-public interface RandomStrategy {
+public interface MovementStrategy {
 
     int get();
 }
