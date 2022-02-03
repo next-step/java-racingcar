@@ -29,6 +29,14 @@ public class Car {
         }
     }
 
+    public boolean checkMaxPosition(int maxPosition) {
+        return this.position.length() > maxPosition;
+    }
+
+    public boolean isMaxPosition(int maxPosition) {
+        return this.position.length() == maxPosition;
+    }
+
     public String getCarName() {
         return carName;
     }

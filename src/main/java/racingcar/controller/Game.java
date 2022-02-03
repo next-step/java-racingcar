@@ -56,7 +56,7 @@ public class Game {
         ArrayList<String> winners = new ArrayList<>();
 
         for (Car car : carList) {
-            if (car.getPosition().length() == maxPosition) {
+            if (car.isMaxPosition(maxPosition)) {
                 winners.add(car.getCarName());
             }
         }
@@ -66,7 +66,7 @@ public class Game {
     private int maximumDistance() {
         int maxPosition = 0;
         for (Car car : carList) {
-            if (car.getPosition().length() > maxPosition) {
+            if (car.checkMaxPosition(maxPosition)) {
                 maxPosition = car.getPosition().length();
             }
         }
