@@ -1,5 +1,8 @@
 package racingcar.domain.racing;
 
+import java.util.List;
+import racingcar.domain.car.Car;
+
 public class RacingRecord {
 
     private static final String ENTER = "\n";
@@ -11,8 +14,8 @@ public class RacingRecord {
         raceRecord = new StringBuilder();
     }
 
-    public void appendRecord(RacingResult racingResult) {
-        racingResult.getResult().forEach(car
+    public void appendRecord(List<Car> cars) {
+        cars.forEach(car
             -> raceRecord.append(String.format(RESULT_LINE, car.getName(), convertPositionToDashString(car.getPosition()))));
         raceRecord.append(ENTER);
     }

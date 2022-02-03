@@ -1,6 +1,6 @@
 package racingcar.domain.car;
 
-import racingcar.domain.random.RandomStrategy;
+import racingcar.domain.random.MovementStrategy;
 
 public class Car {
 
@@ -29,10 +29,11 @@ public class Car {
         return new Car(name, position);
     }
 
-    public void go(RandomStrategy randomStrategy) {
+    public Car go(MovementStrategy randomStrategy) {
         if (randomStrategy.get() > THRESHOLD_TO_MOVE) {
             this.position += MOVE_ONE_STEP;
         }
+        return Car.of(name.getName(), this.position);
     }
 
     public boolean isSamePosition(Car other) {
