@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.random.MoveGen;
-import racingcar.domain.random.NoMoveGen;
 
 class CarTest {
     @DisplayName("차량 인스턴스 생성 후 이름은 정확하게 저장된다")
