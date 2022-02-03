@@ -1,6 +1,6 @@
 package racingcar.domain.random;
 
-public class NoMoveGen implements RandomStrategy {
+public class NoMoveGen implements MovementStrategy {
 
     private static final int NO_MOVE = 3;
 

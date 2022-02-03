@@ -1,6 +1,6 @@
 package racingcar.domain.random;
 
-public class MoveGen implements RandomStrategy {
+public class MoveGen implements MovementStrategy {
 
     private static final int MOVE = 5;
 
