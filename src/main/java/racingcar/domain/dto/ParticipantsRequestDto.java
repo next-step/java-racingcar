@@ -10,7 +10,7 @@ public class ParticipantsRequestDto {
         this.names = names;
     }
 
-    public static Participants toEntity(ParticipantsRequestDto participantsRequestDto) {
-        return Participants.createCars(participantsRequestDto.names);
+    public Participants toEntity() {
+        return Participants.createCars(this.names);
     }
 }

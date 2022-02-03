@@ -10,7 +10,7 @@ public class TurnRequestDto {
         this.value = value;
     }
 
-    public static Turn toEntity(TurnRequestDto turnRequestDto) {
-        return Turn.createTurn(turnRequestDto.value);
+    public Turn toEntity() {
+        return Turn.createTurn(this.value);
     }
 }
