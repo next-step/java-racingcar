@@ -11,22 +11,22 @@ import racingcar.view.OutputView;
 
 public class GameController {
 
-    private static Cars cars;
-    private static int turn;
+    private final Cars cars;
+    private final int turn;
 
     public GameController(final String carsName, final int turn) {
         this.cars = new Cars(carsName);
         this.turn = turn;
     }
 
-    private static void play(final MovableStrategy strategy) {
+    private void play(final MovableStrategy strategy) {
         for (int index = 0; index < turn; index++) {
             cars.moveAll(strategy);
             OutputView.printDistance(cars);
         }
     }
 
-    public static void startGame(final MovableStrategy strategy) {
+    public void startGame(final MovableStrategy strategy) {
         OutputView.printTurnResult();
         play(strategy);
 
