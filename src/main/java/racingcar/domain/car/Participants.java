@@ -1,17 +1,22 @@
 package racingcar.domain.car;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.domain.racing.RacingResult;
-import racingcar.domain.random.RandomGenerator;
+import racingcar.domain.random.MovementGenerator;
+import racingcar.domain.random.MovementStrategy;
 
 public class Participants {
+
+    private static final String DELIMITER = ", ";
+    private static final MovementStrategy RANDOM = new MovementGenerator();
 
     private final List<Car> cars;
 
     public Participants(List<Car> cars) {
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
     }
 
     public static Participants createCars(String[] names) {
@@ -21,11 +26,24 @@ public class Participants {
         return new Participants(cars);
     }
 
-    public RacingResult race() {
-        cars.stream()
-            .forEach(car -> car.go(new RandomGenerator()));
+    public Participants race() {
+        List<Car> newCars = new ArrayList<>();
+        for (Car car : cars) {
+            newCars.add(car.go(RANDOM));
+        }
 
-        return RacingResult.getInstance(cars);
+        return new Participants(newCars);
+    }
+
+    public String findWinners() {
+        Collections.sort(cars, (car1, car2) -> car2.position - car1.position);
+
+        String winners = cars.stream()
+            .filter(car -> car.isSamePosition(cars.get(0)))
+            .map(Car::getName)
+            .collect(Collectors.joining(DELIMITER));
+
+        return winners;
     }
 
     public List<Car> getParticipants() {
