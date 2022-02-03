@@ -30,10 +30,11 @@ public class Car {
     }
 
     public Car go(MovementStrategy randomStrategy) {
+        int newPosition = this.position;
         if (randomStrategy.get() > THRESHOLD_TO_MOVE) {
-            this.position += MOVE_ONE_STEP;
+            newPosition += MOVE_ONE_STEP;
         }
-        return Car.of(name.getName(), this.position);
+        return Car.of(name.getName(), newPosition);
     }
 
     public boolean isSamePosition(Car other) {
