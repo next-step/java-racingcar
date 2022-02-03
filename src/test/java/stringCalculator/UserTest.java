@@ -10,7 +10,7 @@ public class UserTest {
         UserInputValue user = new UserInputValue();
 
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> user.validateBlankCarName(Arrays.asList("")));
+            .isThrownBy(() -> user.validateBlank(Arrays.asList("")));
     }
 
     @Test
