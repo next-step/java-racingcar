@@ -5,7 +5,6 @@ import java.util.List;
 public class InputDTO {
 
     private List<String> splitUserInput;
-    private String carNameInput;
     private int racingTryCounter;
 
     public InputDTO(final List<String> splitUserInput,

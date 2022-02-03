@@ -1,6 +1,6 @@
 package racingcar.controller.dto;
 
-import racingcar.model.vo.Car;
+import racingcar.model.domain.Car;
 
 public class OutputDTO {
 

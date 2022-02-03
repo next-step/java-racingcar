@@ -1,4 +1,4 @@
-package racingcar.model.vo;
+package racingcar.model.domain;
 
 public class Car {
 

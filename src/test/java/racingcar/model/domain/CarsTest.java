@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.dto.InputDTO;
-import racingcar.model.vo.Car;
 
 public class CarsTest {
 

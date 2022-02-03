@@ -3,7 +3,6 @@ package racingcar.model.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import racingcar.model.vo.Car;
 
 public class Cars {
 

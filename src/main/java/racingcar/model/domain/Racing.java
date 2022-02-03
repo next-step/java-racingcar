@@ -1,7 +1,6 @@
 package racingcar.model.domain;
 
 import java.util.List;
-import racingcar.model.vo.Car;
 
 public class Racing {
 

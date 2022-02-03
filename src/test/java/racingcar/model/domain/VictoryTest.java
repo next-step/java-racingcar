@@ -9,7 +9,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.controller.dto.OutputDTO;
-import racingcar.model.vo.Car;
 
 public class VictoryTest {
 
