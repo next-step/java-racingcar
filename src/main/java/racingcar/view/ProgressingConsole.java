@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class ProgressingConsole {
 
+    private static ProgressingConsole progressingConsole = new ProgressingConsole(false, false);
+
     private boolean isAbNormalCarsName;
     private boolean isAbNormalRacingTime;
 
@@ -14,8 +16,7 @@ public class ProgressingConsole {
     }
 
     public static boolean isContinue(final ProgressingConsole parser) {
-        ProgressingConsole parser1 = new ProgressingConsole(false, false);
-        return parser.equals(parser1);
+        return parser.equals(progressingConsole);
     }
 
     @Override
