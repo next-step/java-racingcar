@@ -9,8 +9,8 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(final List<String> userInput) {
-       List<Car> cars = new ArrayList<>(run(userInput));
-       this.cars = cars;
+        List<Car> cars = new ArrayList<>(run(userInput));
+        this.cars = cars;
     }
 
     public List<Car> cars() {

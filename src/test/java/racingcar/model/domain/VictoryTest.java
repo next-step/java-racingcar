@@ -19,7 +19,7 @@ public class VictoryTest {
     @CsvSource({"a,aa,aaa"})
     public void maxCheckTest(String one, String two, String three) {
         //given
-        final Cars cars = new Cars(Arrays.asList(one,two,three));
+        final Cars cars = new Cars(Arrays.asList(one, two, three));
 
         //when
         cars.cars().get(0).moveForward();

@@ -1,7 +1,5 @@
 package racingcar.model.domain;
 
-import java.util.List;
-
 public class Racing {
 
     private Cars cars;
