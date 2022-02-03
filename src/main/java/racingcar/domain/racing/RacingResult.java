@@ -19,7 +19,7 @@ public class RacingResult {
         return new RacingResult(cars);
     }
 
-    public String getWinner() {
+    public String findWinners() {
         Collections.sort(cars, (car1, car2) -> car2.position - car1.position);
         Car firstWinner = cars.get(0);
 
