@@ -22,15 +22,15 @@ public class Controller {
     private static final int NUMBER_ZERO = 0;
 
     public static void run() throws Exception {
-        InputDTO inputDTO = startGame();
-        Cars cars = new Cars(inputDTO.getSplitUserInput());
+        InputDTO inputDto = startGame();
+        Cars cars = new Cars(inputDto.getSplitUserInput());
         Racing racing = new Racing(cars, RandomMoveBehavior.getInstance());
-        for (int idx = NUMBER_ZERO; idx < inputDTO.getRacingTryCounter(); idx++) {
+        for (int idx = NUMBER_ZERO; idx < inputDto.getRacingTryCounter(); idx++) {
             racing.drive();
             List<OutputDTO> result = convertCar(cars);
             RacingCarUserResult.carStatus(result);
         }
-        Victory victory = Victory.maxCheck(cars.cars());
+        Victory victory = Victory.maxCheck(cars);
         List<OutputDTO> victoryResult = convertVictory(victory);
         RacingCarUserResult.judge(victoryResult);
     }

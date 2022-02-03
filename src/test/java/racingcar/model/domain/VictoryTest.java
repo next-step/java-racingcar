@@ -19,12 +19,12 @@ public class VictoryTest {
     @CsvSource({"a,aa,aaa"})
     public void maxCheckTest(String one, String two, String three) {
         //given
-        final List<Car> cars = Arrays.asList(new Car(one), new Car(two), new Car(three));
+        final Cars cars = new Cars(Arrays.asList(one,two,three));
 
         //when
-        cars.get(0).moveForward();
-        cars.get(0).moveForward();
-        cars.get(0).moveForward();
+        cars.cars().get(0).moveForward();
+        cars.cars().get(0).moveForward();
+        cars.cars().get(0).moveForward();
 
         Victory victory = Victory.maxCheck(cars);
         List<OutputDTO> victoryResult = victory.victory()

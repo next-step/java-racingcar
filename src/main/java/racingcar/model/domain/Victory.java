@@ -13,16 +13,16 @@ public class Victory {
         victories = cars;
     }
 
-    public static Victory maxCheck(final List<Car> cars) {
+    public static Victory maxCheck(final Cars cars) {
 
         int max = maxDriveLength(cars);
-        return new Victory(cars.stream()
+        return new Victory(cars.cars().stream()
             .filter(car -> car.isMax(max, car))
             .collect(Collectors.toList()));
     }
 
-    private static int maxDriveLength(final List<Car> cars) {
-        return cars.stream().map(Car::getStep)
+    private static int maxDriveLength(final Cars cars) {
+        return cars.cars().stream().map(Car::getStep)
             .mapToInt(Integer::valueOf)
             .max()
             .orElseThrow(() -> new IllegalArgumentException(MAX_DRIVE_LENGTH));
