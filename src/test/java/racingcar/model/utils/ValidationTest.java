@@ -3,7 +3,8 @@ package racingcar.model.utils;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static racingcar.model.utils.common.Validation.*;
+import static racingcar.model.utils.common.Validation.validateCarName;
+import static racingcar.model.utils.common.Validation.validateNumberRange;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;

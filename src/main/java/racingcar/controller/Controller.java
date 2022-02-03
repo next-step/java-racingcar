@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import static racingcar.model.utils.common.Validation.*;
+import static racingcar.model.utils.common.Validation.validateCarName;
 import static racingcar.model.utils.common.Validation.validateNumberRange;
 import static racingcar.view.RacingCarUserConsole.inputCarName;
 import static racingcar.view.RacingCarUserConsole.inputRacingTry;
@@ -18,6 +18,7 @@ import racingcar.model.utils.common.StringUtils;
 import racingcar.view.RacingCarUserResult;
 
 public class Controller {
+
     private static final int NUMBER_ZERO = 0;
 
     public static void run() throws Exception {

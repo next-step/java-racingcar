@@ -14,8 +14,8 @@ public class CarTest {
 
     public static Stream<Arguments> provideCarArguments() {
         return Stream.of(
-            Arguments.of(new Car("a"),5, false),
-            Arguments.of(new Car("a"),1, true)
+            Arguments.of(new Car("a"), 5, false),
+            Arguments.of(new Car("a"), 1, true)
         );
     }
 
