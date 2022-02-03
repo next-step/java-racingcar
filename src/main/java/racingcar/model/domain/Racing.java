@@ -4,16 +4,17 @@ import java.util.List;
 
 public class Racing {
 
-    private List<Car> cars;
+    private Cars cars;
     private CarMoveBehavior carMoveBehavior;
 
-    public Racing(List<Car> cars, final CarMoveBehavior carMoveBehavior) {
+    public Racing(Cars cars, final CarMoveBehavior carMoveBehavior) {
         this.cars = cars;
         this.carMoveBehavior = carMoveBehavior;
     }
 
     public void drive() {
-        cars.stream()
+
+        cars.cars().stream()
             .forEach(car -> racingCondition(car));
     }
 

@@ -25,17 +25,17 @@ public class RacingCarUserResult {
     }
 
     public static void carStatus(final List<OutputDTO> cars) {
-        cars.forEach(OutputDTO -> {
+        cars.forEach(OutputDto -> {
             try {
-                carDetailStatus(OutputDTO);
+                carDetailStatus(OutputDto);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
     }
 
-    private static void carDetailStatus(final OutputDTO outputDTO) throws Exception {
-        log.write(outputDTO.carStatementMessage());
+    private static void carDetailStatus(final OutputDTO outputDto) throws Exception {
+        log.write(outputDto.carStatementMessage());
         log.flush();
     }
 

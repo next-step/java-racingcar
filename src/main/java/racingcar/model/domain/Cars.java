@@ -9,16 +9,18 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(final List<String> userInput) {
-        run(userInput);
+       List<Car> cars = new ArrayList<>(run(userInput));
+       this.cars = cars;
     }
 
     public List<Car> cars() {
         return Collections.unmodifiableList(cars);
     }
 
-    public void run(final List<String> input) {
-        cars = new ArrayList<>();
-        input.stream().forEach(carNmae -> cars.add(new Car(carNmae)));
+    public List<Car> run(final List<String> input) {
+        ArrayList<Car> cars = new ArrayList<>();
+        input.forEach(carNmae -> cars.add(new Car(carNmae)));
+        return cars;
     }
 }
 
