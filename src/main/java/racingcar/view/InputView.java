@@ -13,8 +13,7 @@ public class InputView {
 
     public int getTryCount() {
         Scanner scanner = new Scanner(System.in);
-        int tryCount = scanner.nextInt();
 
-        return tryCount;
+        return scanner.nextInt();
     }
 }
