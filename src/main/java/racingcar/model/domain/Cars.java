@@ -25,7 +25,7 @@ public class Cars {
         return cars;
     }
 
-    public void carsDrive(final CarMoveBehavior carMoveBehavior){
+    public void carsDrive(final CarMoveBehavior carMoveBehavior) {
         cars.forEach(car -> carCondition(car, carMoveBehavior));
     }
 
@@ -35,13 +35,13 @@ public class Cars {
         }
     }
 
-    public List<Car> carIsMaxCheck(final int max){
+    public List<Car> carIsMaxCheck(final int max) {
         return cars.stream()
             .filter(car -> car.isMax(max))
             .collect(Collectors.toList());
     }
 
-    public int carMaxDistance(){
+    public int carMaxDistance() {
         return cars.stream().map(Car::getStep)
             .mapToInt(Integer::valueOf)
             .max()
