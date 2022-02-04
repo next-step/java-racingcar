@@ -12,7 +12,7 @@ public class InputView {
     private static final String DELIMITER = ",";
     private static final String ERROR_LOG = "빈 공백은 들어올 수 없습니다.";
 
-    public static String getConsoleTextFrom(final String message) {
+    private static String getConsoleTextFrom(final String message) {
         OutputView.printMessage(message);
         String line = scanner.nextLine().trim();
         try {
@@ -34,7 +34,7 @@ public class InputView {
         return new TurnRequestDto(turn);
     }
 
-    public static void validateInput(String input) {
+    private static void validateInput(String input) {
         if (input.isEmpty()) {
             throw new IllegalArgumentException(ERROR_LOG);
         }
