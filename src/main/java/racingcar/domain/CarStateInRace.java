@@ -13,18 +13,15 @@ public class CarStateInRace {
         this.car = car;
     }
 
-    public void convertCurrentCarStatement() {
-        stringBuilder
-            .append(car.getName())
-            .append(": ");
-
-        for (int step = ZERO; step < car.getStep(); step++) {
-            stringBuilder.append(STEP);
-        }
-        currentCarStatement = stringBuilder.toString();
+    public Car getCar() {
+        return car;
     }
 
     public String getCurrentCarStatement() {
         return currentCarStatement;
+    }
+
+    public void storeCurrentCarState(final String result) {
+        currentCarStatement = result;
     }
 }

@@ -6,7 +6,6 @@ import racingcar.view.ResultView;
 
 public class RacingController {
 
-    private static final int START_FROM_ZERO = 0;
 
     private final RacingGame racingGame;
     private final InputView inputView;
@@ -31,14 +30,12 @@ public class RacingController {
     }
 
     private void startRacing() {
-        for (int time = START_FROM_ZERO; time < inputView.getRacingTime(); time++) {
-            racingGame.drive();
-        }
+        racingGame.drive(inputView.getRacingTime(), resultView);
         resultView.announceRacingDetails(racingGame.getMovingResult());
     }
 
     private void finishRacing() {
-        System.out.println(resultView.announceWinner(racingGame.judgeWinners()));
+        resultView.announceWinner(racingGame.judgeWinners());
     }
 
 }

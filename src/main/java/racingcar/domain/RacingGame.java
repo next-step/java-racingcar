@@ -5,8 +5,11 @@ import racingcar.domain.movable.RandomForwardStrategy;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import racingcar.view.ResultView;
 
 public class RacingGame {
+
+    private static final int START_FROM_ZERO = 0;
 
     private final Cars cars;
     private final MovingResult movingResult;
@@ -27,12 +30,18 @@ public class RacingGame {
         return new RacingGame(cars);
     }
 
-    public void drive() {
+    public void drive(final int racingTime, final ResultView resultView) {
+        for (int time = START_FROM_ZERO; time < racingTime; time++) {
+            moveAll(resultView);
+        }
+    }
+
+    private void moveAll(final ResultView resultView) {
         IntStream.range(0, cars.getCars().size())
             .forEach(idx -> {
                 cars.getCars().get(idx).moveForward();
                 CarStateInRace carState = new CarStateInRace(cars.getCars().get(idx));
-                carState.convertCurrentCarStatement();
+                resultView.convertCurrentCarStatement(carState);
                 movingResult.storeCurrentRoundStatement(carState);
             });
     }
