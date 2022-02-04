@@ -20,5 +20,4 @@ public class RacingGameController {
         racingGame.race();
         resultView.printResult(racingGame.getRoundHistories());
     }
-
 }

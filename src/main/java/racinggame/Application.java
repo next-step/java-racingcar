@@ -7,7 +7,6 @@ import racinggame.view.ResultView;
 public class Application {
 
     public static void main(String[] args) {
-
         final InputView inputView = new InputView();
         final ResultView resultView = new ResultView();
         final RacingGameController racingGameController = initGameController(inputView, resultView);
@@ -18,5 +17,4 @@ public class Application {
         ResultView resultView) {
         return new RacingGameController(inputView, resultView);
     }
-
 }

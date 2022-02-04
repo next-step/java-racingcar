@@ -25,7 +25,6 @@ public class ResultView {
             printCarNames(roundHistory);
             System.out.println();
         }
-
     }
 
     private void printCarNames(final RoundHistory roundHistory) {
@@ -56,5 +55,4 @@ public class ResultView {
         this.printCarsLocation(roundHistories.getAllRoundHistory());
         this.printWinner(roundHistories.findWinners());
     }
-
 }

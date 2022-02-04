@@ -9,7 +9,6 @@ public class InputView {
     private static final String GAME_PLAY_NUMBER = "시도할 횟수는 몇 회인가요?";
     private static final String GAME_INPUT_NAME = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
 
-
     public String[] inputPlayerName() {
         System.out.println(GAME_INPUT_NAME);
         String playerNames = "";
@@ -23,7 +22,6 @@ public class InputView {
                 break;
             }
         }
-
         return playerNameList;
     }
 
@@ -44,5 +42,4 @@ public class InputView {
         }
         return isValidate;
     }
-
 }
