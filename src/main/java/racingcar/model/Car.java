@@ -3,7 +3,7 @@ package racingcar.model;
 import racingcar.util.Message;
 
 public class Car {
-
+  
     private static final int MOVING_CONDITION = 4;
     private static final int NAME_LENGTH = 5;
 
