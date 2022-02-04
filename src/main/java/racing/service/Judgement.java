@@ -1,7 +1,8 @@
-package racing;
+package racing.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racing.domain.Car;
 
 public class Judgement {
 

@@ -1,7 +1,11 @@
-package racing;
+package racing.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import racing.domain.Car;
+import racing.domain.RacingInfo;
+import racing.domain.Round;
+import racing.domain.RoundResult;
 
 public class Racing {
 
@@ -10,7 +14,7 @@ public class Racing {
     private final List<RoundResult> results;
     private int roundNumber;
 
-    public Racing(RacingInfo info){
+    public Racing(RacingInfo info) {
         cars = info.getCars();
         round = info.getRound();
         roundNumber = round.getRoundNumber();
@@ -18,25 +22,22 @@ public class Racing {
     }
 
     public void race() {
-        while (runGame())  {
+        while (runGame()) {
             final RoundResult result = round.play(cars);
             results.add(result);
         }
-        printResult();
     }
 
     private boolean runGame() {
         return roundNumber-- > 0;
     }
 
-    private void printResult() {
-        for(RoundResult result : results) {
-            System.out.println(result.getStringResult());
-        }
-    }
-
     public List<Car> getLastResult() {
         final int LAST_INDEX = results.size() - 1;
         return results.get(LAST_INDEX).getCars();
+    }
+
+    public List<RoundResult> getTotalRoundResults() {
+        return results;
     }
 }

@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 public class Car implements Comparable<Car> {
 
@@ -26,7 +26,7 @@ public class Car implements Comparable<Car> {
     }
 
     public void moveByRule() {
-        if(moveCheck()) {
+        if (moveCheck()) {
             distance++;
         }
     }

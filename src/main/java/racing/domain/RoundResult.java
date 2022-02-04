@@ -1,8 +1,9 @@
-package racing;
+package racing.domain;
 
 import java.util.List;
 
 public class RoundResult {
+
     private final List<Car> cars;
     private StringBuilder stringResult = new StringBuilder();
 
