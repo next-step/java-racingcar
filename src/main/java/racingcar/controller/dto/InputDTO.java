@@ -4,8 +4,8 @@ import java.util.List;
 
 public class InputDTO {
 
-    private List<String> splitUserInput;
-    private int racingTryCounter;
+    private final List<String> splitUserInput;
+    private final int racingTryCounter;
 
     public InputDTO(final List<String> splitUserInput,
         final int racingTryCounter) {

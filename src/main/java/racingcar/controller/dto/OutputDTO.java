@@ -8,7 +8,7 @@ public class OutputDTO {
     private static final String NEW_LINE = "\n";
     private static final int NUMBER_ZERO = 0;
     private static final String DASH_SIGH = "-";
-    private Car car;
+    private final Car car;
 
     public OutputDTO(final Car car) {
         this.car = car;

@@ -6,26 +6,20 @@ import java.util.stream.Collectors;
 
 public class Victory {
 
-    private static final String MAX_DRIVE_LENGTH = "MAX 값을 구할 수 없습니다. 비교할 수 있는 정수값인지 확인하세요";
-    private List<Car> victories;
+    private final List<Car> victories;
 
-    private Victory(final List<Car> cars) {
-        victories = cars;
+    private Victory(final List<Car> victories) {
+        this.victories = victories;
     }
 
     public static Victory maxCheck(final Cars cars) {
 
         int max = maxDriveLength(cars);
-        return new Victory(cars.cars().stream()
-            .filter(car -> car.isMax(max, car))
-            .collect(Collectors.toList()));
+        return new Victory(cars.carIsMaxCheck(max));
     }
 
     private static int maxDriveLength(final Cars cars) {
-        return cars.cars().stream().map(Car::getStep)
-            .mapToInt(Integer::valueOf)
-            .max()
-            .orElseThrow(() -> new IllegalArgumentException(MAX_DRIVE_LENGTH));
+        return cars.carMaxDistance();
     }
 
     public List<Car> victory() {
