@@ -5,13 +5,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.domain.random.MovementGenerator;
 import racingcar.domain.random.MovementStrategy;
 
 public class Participants {
 
     private static final String DELIMITER = ", ";
-
 
     private final List<Car> cars;
 
@@ -29,7 +27,7 @@ public class Participants {
     public Participants race(MovementStrategy movementStrategy) {
         List<Car> newCars = new ArrayList<>();
         for (Car car : cars) {
-            newCars.add(car.go(movementStrategy));
+            newCars.add(car.go(movementStrategy.get()));
         }
 
         return new Participants(newCars);

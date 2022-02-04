@@ -26,14 +26,14 @@ class CarTest {
     @Test
     public void go_메서드_테스트() {
         //given
-        Car car1 = Car.from("jason");
+        Car car = Car.from("jason");
 
         //when
-        car1.go(new MoveGen());
-        car1.go(new MoveGen());
+        Car car1 = car.go(new MoveGen().get());
+        Car car2 = car1.go(new MoveGen().get());
 
         //then
-        assertThat(car1.getPosition()).isEqualTo(2);
+        assertThat(car2.getPosition()).isEqualTo(2);
     }
 
     @Test

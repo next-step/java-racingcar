@@ -1,7 +1,5 @@
 package racingcar.domain.car;
 
-import racingcar.domain.random.MovementStrategy;
-
 public class Car {
 
     private static final int INITIAL_POSITION = 0;
@@ -28,9 +26,9 @@ public class Car {
         return new Car(name, position);
     }
 
-    public Car go(MovementStrategy randomStrategy) {
+    public Car go(int fuel) {
         int newPosition = this.position;
-        if (randomStrategy.get() > THRESHOLD_TO_MOVE) {
+        if (fuel > THRESHOLD_TO_MOVE) {
             newPosition += MOVE_ONE_STEP;
         }
         return Car.of(name.getName(), newPosition);
