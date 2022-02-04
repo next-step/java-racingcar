@@ -1,40 +1,30 @@
-package racingcar.service;
+package racingcar.domain;
 
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.CarStateInRace;
-import racingcar.domain.MovingResult;
-import racingcar.domain.RacingResult;
 import racingcar.domain.movable.RandomForwardStrategy;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class RacingService {
+public class RacingGame {
 
     private final Cars cars;
     private final MovingResult movingResult;
     private final RacingResult racingResult;
 
-    private RacingService(final Cars cars) {
+    private RacingGame(final Cars cars) {
         this(cars, MovingResult.instance(), RacingResult.instance());
     }
 
-    private RacingService(final Cars cars, final MovingResult movingResult,
+    private RacingGame(final Cars cars, final MovingResult movingResult,
         final RacingResult racingResult) {
         this.cars = cars;
         this.movingResult = movingResult;
         this.racingResult = racingResult;
     }
 
-    public static RacingService from(final Cars cars) {
-        return new RacingService(cars);
-    }
-
-    public static RacingService of(final Cars cars, final MovingResult movingResult,
-        final RacingResult racingResult) {
-        return new RacingService(cars, movingResult, racingResult);
+    public static RacingGame from(final Cars cars) {
+        return new RacingGame(cars);
     }
 
     public void drive() {

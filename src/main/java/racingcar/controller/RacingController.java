@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.service.RacingService;
+import racingcar.domain.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -8,31 +8,31 @@ public class RacingController {
 
     private static final int START_FROM_ZERO = 0;
 
-    private final RacingService racingService;
+    private final RacingGame racingGame;
     private final InputView inputView;
     private final ResultView resultView;
 
-    public RacingController(final RacingService racingService, final InputView inputView,
+    public RacingController(final RacingGame racingGame, final InputView inputView,
         final ResultView resultView) {
-        this.racingService = racingService;
+        this.racingGame = racingGame;
         this.inputView = inputView;
         this.resultView = resultView;
     }
 
     public void setUpRacing() {
         inputView.processConsoleInput();
-        racingService.registerCars(inputView.getSplitUserInput());
+        racingGame.registerCars(inputView.getSplitUserInput());
     }
 
     public void startRacing() {
         for (int time = START_FROM_ZERO; time < inputView.getRacingTime(); time++) {
-            racingService.drive();
+            racingGame.drive();
         }
-        resultView.announceRacingDetails(racingService.getMovingResult());
+        resultView.announceRacingDetails(racingGame.getMovingResult());
     }
 
     public void finishRacing() {
-        System.out.println(resultView.announceWinner(racingService.judgeWinners()));
+        System.out.println(resultView.announceWinner(racingGame.judgeWinners()));
     }
 
 }
