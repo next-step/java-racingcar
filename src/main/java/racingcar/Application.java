@@ -13,9 +13,7 @@ public class Application {
         RacingGame racingGame = RacingGame.from(Cars.instance());
         RacingController racingController = new RacingController(racingGame,
             InputView.instance(), ResultView.instance());
-        racingController.setUpRacing();
-        racingController.startRacing();
-        racingController.finishRacing();
+        racingController.run();
     }
 
 }

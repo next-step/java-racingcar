@@ -19,19 +19,25 @@ public class RacingController {
         this.resultView = resultView;
     }
 
-    public void setUpRacing() {
+    public void run() {
+        setUpRacing();
+        startRacing();
+        finishRacing();
+    }
+
+    private void setUpRacing() {
         inputView.processConsoleInput();
         racingGame.registerCars(inputView.getSplitUserInput());
     }
 
-    public void startRacing() {
+    private void startRacing() {
         for (int time = START_FROM_ZERO; time < inputView.getRacingTime(); time++) {
             racingGame.drive();
         }
         resultView.announceRacingDetails(racingGame.getMovingResult());
     }
 
-    public void finishRacing() {
+    private void finishRacing() {
         System.out.println(resultView.announceWinner(racingGame.judgeWinners()));
     }
 
