@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import racing.domain.startegy.MovingStrategy;
 
 public class Cars {
 
@@ -26,7 +27,7 @@ public class Cars {
     }
 
     private void checkSameNameCars(List<Car> cars) {
-        if (cars.stream().count()
+        if (cars.size()
             != cars.stream().map(Car::getNameValue).distinct().count()) {
             throw new IllegalArgumentException("[ERROR] 중복된 이름은 들어갈 수 없습니다.");
         }
@@ -38,18 +39,14 @@ public class Cars {
         }
     }
 
-    public List<Car> driveCars() {
+    public List<Car> driveCars(MovingStrategy movingStrategy) {
         final List<Car> carsState = new ArrayList<>();
         for (Car car : cars) {
-            car.drive(generateRandomNumber());
+            car.drive(movingStrategy.moving());
             carsState.add(
                 new Car(new Name(car.getNameValue()), new Position(car.getPositionValue())));
         }
         return new ArrayList<>(carsState);
-    }
-
-    private int generateRandomNumber() {
-        return (int) (Math.random() * RANGE_OF_RANDOM_NUMBER);
     }
 
     public final int getMaxPosition() {
@@ -62,5 +59,22 @@ public class Cars {
 
     public List<Car> getCars() {
         return new ArrayList<>(cars);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Cars cars1 = (Cars) o;
+        return Objects.equals(cars, cars1.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
     }
 }

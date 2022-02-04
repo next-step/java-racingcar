@@ -6,15 +6,19 @@ import java.util.stream.Collectors;
 import racing.domain.car.Car;
 import racing.domain.car.Cars;
 import racing.domain.car.Position;
+import racing.domain.startegy.MovingStrategy;
+import racing.domain.startegy.RandomMovingStrategy;
 
 public class RacingGame {
 
     private static final String COMMA = ", ";
 
+    private final MovingStrategy movingStrategy;
     private final List<List<Car>> raceStates = new ArrayList<>();
-    private Cars cars;
+    private final Cars cars;
 
     public RacingGame(Cars cars) {
+        movingStrategy = new RandomMovingStrategy();
         this.cars = cars;
     }
 
@@ -24,7 +28,7 @@ public class RacingGame {
 
     public void race(final TryNumber tryNumber) {
         while (tryNumber.hasNextStep()) {
-            raceStates.add(cars.driveCars());
+            raceStates.add(cars.driveCars(movingStrategy));
             tryNumber.nextStep();
         }
     }
