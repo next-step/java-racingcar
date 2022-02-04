@@ -11,10 +11,11 @@ import racinggame.domain.winner.Winners;
 public class ResultView {
 
     private static final String RUN_RESULT_TEXT = "실행 결과";
-    private static final String LOCATION_STAGE="-";
-    private static final String WINNER_TEXT="최종 우승자: ";
-    private static final String WINNER_JOIN_CHAR=", ";
-    private static final String CAR_NAME_CAR_STATE_BETWEEN_TEXT=" : ";
+    private static final String LOCATION_STAGE = "-";
+    private static final String WINNER_TEXT = "최종 우승자: ";
+    private static final String WINNER_JOIN_CHAR = ", ";
+    private static final String CAR_NAME_CAR_STATE_BETWEEN_TEXT = " : ";
+
     public ResultView() {
 
     }
@@ -29,7 +30,7 @@ public class ResultView {
 
     private void printCarNames(final RoundHistory roundHistory) {
         for (Car car : roundHistory.getRoundHistory()) {
-            System.out.print(car.getCarName() +CAR_NAME_CAR_STATE_BETWEEN_TEXT );
+            System.out.print(car.getCarName() + CAR_NAME_CAR_STATE_BETWEEN_TEXT);
             printLocation(car.getLocation());
         }
     }
