@@ -1,26 +1,27 @@
 package racingcar.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.util.Message;
 import racingcar.util.RandomGenerator;
 import racingcar.view.OutputView;
+import racingcar.model.Winner;
 
 public class Game {
+
     private List<Car> carList = new ArrayList<>();
 
     public void play() {
         InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
 
         System.out.println(Message.INPUT_GUIDE_MESSAGE);
         String[] carNames = inputView.getCarName();
-
-        for (String carName:carNames) {
-            Car carInformation = new Car(carName);
-            carList.add(carInformation);
-        }
+        carList = carInformation(carNames);
 
         System.out.println(Message.ASK_TRY_COUNT);
         int tryCount = inputView.getTryCount();
@@ -29,7 +30,17 @@ public class Game {
         for (int i = 0; i < tryCount; i++) {
             moveForwardByCount();
         }
-        checkWinner();
+
+        Winner winner = new Winner(carList);
+        outputView.printWinner(winner.winnerList());
+    }
+
+    private List<Car> carInformation(String[] carNames) {
+        for (String carName : carNames) {
+            Car carInformation = new Car(carName);
+            carList.add(carInformation);
+        }
+        return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
     }
 
     public void moveForwardByCount() {
@@ -41,35 +52,5 @@ public class Game {
             outputView.printResult(car.getCarName(), car.getPosition());
         }
         System.out.println();
-    }
-
-    public void checkWinner() {
-        OutputView outputView = new OutputView();
-
-        int maxPosition = maximumDistance();
-        ArrayList<String> winners = winnerList(maxPosition);
-
-        outputView.printWinner(winners);
-    }
-
-    public ArrayList<String> winnerList(int maxPosition) {
-        ArrayList<String> winners = new ArrayList<>();
-
-        for (Car car : carList) {
-            if (car.isMaxPosition(maxPosition)) {
-                winners.add(car.getCarName());
-            }
-        }
-        return winners;
-    }
-
-    private int maximumDistance() {
-        int maxPosition = 0;
-        for (Car car : carList) {
-            if (car.checkMaxPosition(maxPosition)) {
-                maxPosition = car.getPosition().length();
-            }
-        }
-        return maxPosition;
     }
 }
