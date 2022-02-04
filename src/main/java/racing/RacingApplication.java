@@ -1,14 +1,24 @@
 package racing;
 
+import racing.domain.RacingInfo;
+import racing.service.Judgement;
+import racing.service.Racing;
+import racing.view.InputView;
+import racing.view.ResultView;
+
 public class RacingApplication {
 
     public static void main(String[] args) {
-        RacingInfo info = RacingInfo.init();
+
+        String carNames = InputView.getCars();
+        int roundNumber = InputView.getRoundNumber();
+        RacingInfo info = RacingInfo.init(carNames, roundNumber);
 
         Racing racing = new Racing(info);
         racing.race();
+        ResultView.printResult(racing.getTotalRoundResults());
 
         Judgement judgement = new Judgement(racing.getLastResult());
-        System.out.println("최종우승자: " + String.join(", ", judgement.judgeWinner()));
+        ResultView.printWinners(judgement.judgeWinner());
     }
 }
