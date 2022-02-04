@@ -12,7 +12,7 @@ public class Round {
 
     public RoundResult play(List<Car> cars) {
         for (Car car : cars) {
-            car.moveByRule();
+            car.moveByRule(MoveRule.makeValue());
         }
         return new RoundResult(cars);
     }
