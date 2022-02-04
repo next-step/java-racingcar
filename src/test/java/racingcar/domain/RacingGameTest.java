@@ -11,7 +11,7 @@ import racingcar.view.ResultView;
 
 import static org.assertj.core.api.Assertions.*;
 
-class WinnerTest {
+class RacingGameTest {
     RacingGame racingGame;
 
     @BeforeEach
@@ -30,5 +30,7 @@ class WinnerTest {
     void noWinnerTest() {
         assertThat(racingGame.judgeWinners().getResult().size()).isEqualTo(0);
     }
+
+
 
 }
