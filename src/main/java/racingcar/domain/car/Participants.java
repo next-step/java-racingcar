@@ -11,7 +11,7 @@ import racingcar.domain.random.MovementStrategy;
 public class Participants {
 
     private static final String DELIMITER = ", ";
-    private static final MovementStrategy RANDOM = new MovementGenerator();
+
 
     private final List<Car> cars;
 
@@ -26,10 +26,10 @@ public class Participants {
         return new Participants(cars);
     }
 
-    public Participants race() {
+    public Participants race(MovementStrategy movementStrategy) {
         List<Car> newCars = new ArrayList<>();
         for (Car car : cars) {
-            newCars.add(car.go(RANDOM));
+            newCars.add(car.go(movementStrategy));
         }
 
         return new Participants(newCars);

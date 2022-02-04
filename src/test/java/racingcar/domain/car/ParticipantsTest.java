@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.random.MoveGen;
+import racingcar.domain.random.NoMoveGen;
 
 class ParticipantsTest {
 
@@ -38,6 +40,34 @@ class ParticipantsTest {
 
         //then
         assertThat(carNames).containsExactly("jason", "pobi");
+    }
+
+    @Test
+    public void race_이동_후에는_객체의_위치가_변해야한다() {
+        //given
+        List<Car> cars = Arrays.asList(Car.of("jason", 2), Car.of("pobi", 3));
+        Participants participants = new Participants(cars);
+
+        //when
+        Participants newParticipants = participants.race(new MoveGen());
+
+        //then
+        assertThat(newParticipants.getParticipants().get(0).getPosition()).isNotEqualTo(participants.getParticipants().get(0).getPosition());
+        assertThat(newParticipants.getParticipants().get(1).getPosition()).isNotEqualTo(participants.getParticipants().get(1).getPosition());
+    }
+
+    @Test
+    public void race_이동_후에는_객체의_위치가_변하지않는다() {
+        //given
+        List<Car> cars = Arrays.asList(Car.of("jason", 2), Car.of("pobi", 3));
+        Participants participants = new Participants(cars);
+
+        //when
+        Participants newParticipants = participants.race(new NoMoveGen());
+
+        //then
+        assertThat(newParticipants.getParticipants().get(0).getPosition()).isEqualTo(participants.getParticipants().get(0).getPosition());
+        assertThat(newParticipants.getParticipants().get(1).getPosition()).isEqualTo(participants.getParticipants().get(1).getPosition());
     }
 
     @Test
