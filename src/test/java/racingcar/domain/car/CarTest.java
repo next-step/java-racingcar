@@ -29,8 +29,8 @@ class CarTest {
         Car car = Car.from("jason");
 
         //when
-        Car car1 = car.go(new MoveGen().get());
-        Car car2 = car1.go(new MoveGen().get());
+        Car car1 = car.go(new MoveGen().generate());
+        Car car2 = car1.go(new MoveGen().generate());
 
         //then
         assertThat(car2.getPosition()).isEqualTo(2);

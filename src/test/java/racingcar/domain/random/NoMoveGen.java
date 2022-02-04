@@ -5,7 +5,7 @@ public class NoMoveGen implements MovementStrategy {
     private static final int NO_MOVE = 3;
 
     @Override
-    public int get() {
+    public int generate() {
         return NO_MOVE;
     }
 }

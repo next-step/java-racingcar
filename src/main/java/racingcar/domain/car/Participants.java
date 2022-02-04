@@ -27,7 +27,7 @@ public class Participants {
     public Participants race(MovementStrategy movementStrategy) {
         List<Car> newCars = new ArrayList<>();
         for (Car car : cars) {
-            newCars.add(car.go(movementStrategy.get()));
+            newCars.add(car.go(movementStrategy.generate()));
         }
 
         return new Participants(newCars);
