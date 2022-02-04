@@ -8,7 +8,7 @@ public class MoveRule {
         this.moveCondition = moveCondition;
     }
 
-    public int makeValue() {
+    public static int makeValue() {
         return (int) (Math.random() * 10);
     }
 
