@@ -12,8 +12,7 @@ public class Car {
     public int position;
 
     private Car(String name) {
-        this.name = new Name(name);
-        this.position = INITIAL_POSITION;
+        this(name, INITIAL_POSITION);
     }
 
     public Car(String name, int position) {
