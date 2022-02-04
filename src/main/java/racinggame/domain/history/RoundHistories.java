@@ -8,6 +8,7 @@ import racinggame.domain.winner.Winners;
 public class RoundHistories {
 
     private static final int LAST_ROUND_HISTORY_SUB_NUMBER = 1;
+
     private final List<RoundHistory> allRoundHistory = new ArrayList<>();
 
     public void captureRoundHistory(final List<Car> cars) {
@@ -33,7 +34,6 @@ public class RoundHistories {
             allRoundHistory.size() - LAST_ROUND_HISTORY_SUB_NUMBER);
         return new Winners(roundHistory.getRoundHistory(), this.findMaxLocation());
     }
-
 
     public List<RoundHistory> getAllRoundHistory() {
         return new ArrayList<>(allRoundHistory);
