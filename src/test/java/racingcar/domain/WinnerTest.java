@@ -7,6 +7,7 @@ import racingcar.domain.movable.FixedForwardStrategy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import racingcar.view.ResultView;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -21,7 +22,7 @@ class WinnerTest {
 
     @Test
     void winnerTest() {
-        racingGame.drive();
+        racingGame.drive(3, ResultView.instance());
         assertThat(racingGame.judgeWinners().getResult()).containsExactly("c", "java", "jpa");
     }
 
