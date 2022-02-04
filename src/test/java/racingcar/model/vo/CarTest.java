@@ -24,6 +24,6 @@ public class CarTest {
     @MethodSource("provideCarArguments")
     void carTest(Car car, int number, boolean expected) {
         car.moveForward();
-        assertThat(car.isMax(number, car)).isEqualTo(expected);
+        assertThat(car.isMax(number)).isEqualTo(expected);
     }
 }

@@ -15,8 +15,8 @@ public class Car {
         this.step++;
     }
 
-    public boolean isMax(final int max, final Car car) {
-        return car.getStep() == max;
+    public boolean isMax(final int max) {
+        return this.getStep() == max;
     }
 
     public int getStep() {
