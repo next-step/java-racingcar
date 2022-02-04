@@ -16,7 +16,6 @@ class CarsTest {
         Cars cars = new Cars(carNames);
         List<Car> carList = cars.getCars();
         Assertions.assertThat(2).isEqualTo(carList.size());
-
     }
 
 }

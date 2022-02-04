@@ -19,5 +19,4 @@ public class Winners {
     public List<Winner> getWinners() {
         return new ArrayList<>(winnerList);
     }
-
 }

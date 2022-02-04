@@ -11,5 +11,4 @@ public class Winner {
     public String getWinnerName() {
         return winnerName;
     }
-
 }

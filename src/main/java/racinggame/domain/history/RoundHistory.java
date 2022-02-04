@@ -8,7 +8,6 @@ public class RoundHistory {
 
     private final List<Car> cars;
 
-
     public RoundHistory(final List<Car> cars) {
         this.cars = cars;
     }
