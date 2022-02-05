@@ -19,23 +19,11 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public List<Car> run(final List<String> input) {
-        ArrayList<Car> cars = new ArrayList<>();
-        input.forEach(carName -> cars.add(new Car(carName)));
-        return cars;
-    }
-
     public void carsDrive(final CarMoveBehavior carMoveBehavior) {
         cars.forEach(car -> carState(car, carMoveBehavior));
     }
 
-    private void carState(final Car car, final CarMoveBehavior carMoveBehavior) {
-        if (carMoveBehavior.moveBehavior()) {
-            car.moveForward();
-        }
-    }
-
-    public List<Car> carIsMaxCheck(final int max) {
+    public List<Car> carMaxCheck(final int max) {
         return cars.stream()
             .filter(car -> car.isMax(max))
             .collect(Collectors.toList());
@@ -46,6 +34,18 @@ public class Cars {
             .mapToInt(Integer::valueOf)
             .max()
             .orElseThrow(() -> new IllegalArgumentException(MAX_DRIVE_LENGTH));
+    }
+
+    private void carState(final Car car, final CarMoveBehavior carMoveBehavior) {
+        if (carMoveBehavior.moveBehavior()) {
+            car.moveForward();
+        }
+    }
+
+    private List<Car> run(final List<String> input) {
+        ArrayList<Car> cars = new ArrayList<>();
+        input.forEach(carName -> cars.add(new Car(carName)));
+        return cars;
     }
 }
 
