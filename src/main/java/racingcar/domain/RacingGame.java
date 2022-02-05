@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.domain.movable.MovableStrategy;
 import racingcar.domain.movable.RandomForwardStrategy;
 
 import java.util.List;
@@ -11,23 +12,22 @@ public class RacingGame {
 
     private static final int START_FROM_ZERO = 0;
 
-    private final Cars cars;
     private final MovingResult movingResult;
     private final RacingResult racingResult;
+    private Cars cars;
 
-    private RacingGame(final Cars cars) {
-        this(cars, MovingResult.instance(), RacingResult.instance());
+    private RacingGame() {
+        this(MovingResult.instance(), RacingResult.instance());
     }
 
-    private RacingGame(final Cars cars, final MovingResult movingResult,
+    private RacingGame(final MovingResult movingResult,
         final RacingResult racingResult) {
-        this.cars = cars;
         this.movingResult = movingResult;
         this.racingResult = racingResult;
     }
 
-    public static RacingGame from(final Cars cars) {
-        return new RacingGame(cars);
+    public static RacingGame instance() {
+        return new RacingGame();
     }
 
     public void drive(final int racingTime, final ResultView resultView) {
@@ -63,10 +63,8 @@ public class RacingGame {
             .getAsInt();
     }
 
-    public void registerCars(final List<String> splitUserInput) {
-        for (String carName : splitUserInput) {
-            cars.getCars().add(Car.of(carName, new RandomForwardStrategy()));
-        }
+    public void registerCars(final List<String> splitUserInput, MovableStrategy strategy) {
+        cars = Cars.of(splitUserInput, strategy);
     }
 
     public MovingResult getMovingResult() {

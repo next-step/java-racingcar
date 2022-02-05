@@ -9,17 +9,10 @@ public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
-    private Cars() {
-    }
-
     private Cars(final List<String> input, final MovableStrategy strategy) {
         for (String carName : input) {
             cars.add(Car.of(carName, strategy));
         }
-    }
-
-    public static Cars instance() {
-        return new Cars();
     }
 
     public static Cars of(final List<String> input, final MovableStrategy strategy) {
