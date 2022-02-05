@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.List;
 import racingcar.domain.car.Participants;
+import racingcar.domain.car.Turn;
 import racingcar.domain.dto.ParticipantsRequestDto;
 import racingcar.domain.dto.TurnRequestDto;
 import racingcar.domain.racing.RacingGame;
@@ -34,9 +35,9 @@ public class RacingController {
         return participantsRequestDto.toEntity();
     }
 
-    private int makeTurnCount() {
+    private Turn makeTurnCount() {
         TurnRequestDto turnRequestDto = InputView.setTurnCount();
-        return turnRequestDto.toEntity().getValue();
+        return turnRequestDto.toEntity();
     }
 
     public void printRacingRecord(final List<Participants> cars) {
