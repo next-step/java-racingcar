@@ -14,11 +14,11 @@ public class Victory {
     public static Victory maxCheck(final Cars cars) {
 
         int max = maxDriveLength(cars);
-        return new Victory(cars.carIsMaxCheck(max));
+        return new Victory(cars.carMaxCheck(max));
     }
 
     private static int maxDriveLength(final Cars cars) {
-        return cars.carMaxDistance();
+        return cars.carMaxDistanceCount();
     }
 
     public List<Car> victory() {
