@@ -6,6 +6,7 @@ import racingcar.domain.car.Turn;
 import racingcar.domain.dto.ParticipantsRequestDto;
 import racingcar.domain.dto.TurnRequestDto;
 import racingcar.domain.racing.RacingGame;
+import racingcar.domain.random.RandomGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -22,7 +23,7 @@ public class RacingController {
 
     private RacingGame makeRacingGame() {
         try {
-            return new RacingGame(makeParticipants(), makeTurnCount());
+            return new RacingGame(makeParticipants(), makeTurnCount(), new RandomGenerator());
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             return makeRacingGame();
