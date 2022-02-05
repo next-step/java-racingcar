@@ -8,7 +8,6 @@ import racingcar.domain.dto.TurnRequestDto;
 import racingcar.domain.racing.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-import racingcar.view.RacingRecord;
 
 public class RacingController {
 
@@ -40,14 +39,11 @@ public class RacingController {
         return turnRequestDto.toEntity();
     }
 
-    public void printRacingRecord(final List<Participants> cars) {
-        for (Participants participants : cars) {
-            RacingRecord.appendRecord(participants.getParticipants());
-        }
-        OutputView.printRacingResult(RacingRecord.getResultRecord());
+    public void printRacingRecord(final List<Participants> racingResult) {
+        OutputView.printRacingResult(racingResult);
     }
 
-    public void printWinner(final List<Participants> cars) {
-        OutputView.printWinner(cars.get(cars.size() - 1).findWinners());
+    public void printWinner(final List<Participants> racingResult) {
+        OutputView.printWinner(racingResult.get(racingResult.size() - 1).findWinners());
     }
 }
