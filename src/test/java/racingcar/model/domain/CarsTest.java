@@ -5,22 +5,59 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.dto.InputDTO;
 
 public class CarsTest {
 
-    @DisplayName("Car_클래스가_Cars_클래스로_Wrapping_되는지_검증")
+    static InputDTO inputDTO;
+    static Cars cars;
+
+    @BeforeEach
+    void initTest(){
+        inputDTO = new InputDTO(Arrays.asList("a", "aa", "aaa"), 10);
+        cars = new Cars(inputDTO.getSplitUserInput());
+    }
+
+    @DisplayName("입력_자동차_객체_추가_테스트")
     @Test
-    void collectionTest() {
-        final InputDTO inputDTO = new InputDTO(Arrays.asList("a", "aa", "aaa"), 10);
-        final Cars cars = new Cars(inputDTO.getSplitUserInput());
-        final List<Car> carsTest = cars.cars();
+    void carsRunTest() {
         assertAll(
-            () -> assertThat(carsTest.get(0).getName()).isEqualTo("a"),
-            () -> assertThat(carsTest.get(1).getName()).isEqualTo("aa"),
-            () -> assertThat(carsTest.get(2).getName()).isEqualTo("aaa")
+            () -> assertThat(cars.cars().get(0).getName()).isEqualTo("a"),
+            () -> assertThat(cars.cars().get(1).getName()).isEqualTo("aa"),
+            () -> assertThat(cars.cars().get(2).getName()).isEqualTo("aaa")
         );
+    }
+
+    @DisplayName("자동차_전진_여부_테스트")
+    @Test
+    void carsDriveTest() {
+        cars.carsDrive(new FixMoveBehavior(true));
+        cars.cars()
+            .forEach(car -> assertThat(car.getStep()).isEqualTo(1));
+    }
+
+    @DisplayName("자동차_전진_최대이동_테스트")
+    @Test
+    void carMaxCheckTest() {
+        List<Car> cars = CarsTest.cars.carMaxCheck(0);
+        assertThat(cars.size()).isEqualTo(3);
+    }
+
+    @DisplayName("자동차_전진_최대이동_개수_테스트")
+    @Test
+    void carMaxDistanceTest() {
+        cars.cars().stream()
+            .map(car -> {
+                if (car.getName().equals("a")) {
+                    car.moveForward();
+                }
+                return true;})
+            .collect(Collectors.toList());
+
+        assertThat(cars.carMaxDistanceCount()).isEqualTo(1);
     }
 }
