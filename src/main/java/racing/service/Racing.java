@@ -22,14 +22,19 @@ public class Racing {
     }
 
     public void race() {
-        while (runGame()) {
-            final RoundResult result = round.play(cars);
-            results.add(result);
+        while (isInProgress(roundNumber)) {
+            runGame();
         }
     }
 
-    private boolean runGame() {
-        return roundNumber-- > 0;
+    private boolean isInProgress(int roundNumber) {
+        return roundNumber > 0;
+    }
+
+    private void runGame() {
+        final RoundResult result = round.play(cars);
+        results.add(result);
+        roundNumber--;
     }
 
     public List<Car> getLastResult() {
