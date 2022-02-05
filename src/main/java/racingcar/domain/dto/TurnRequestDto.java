@@ -4,9 +4,9 @@ import racingcar.domain.car.Turn;
 
 public class TurnRequestDto {
 
-    private String value;
+    private final String value;
 
-    public TurnRequestDto(String value) {
+    public TurnRequestDto(final String value) {
         this.value = value;
     }
 

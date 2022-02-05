@@ -6,7 +6,7 @@ public class ParticipantsRequestDto {
 
     private final String[] names;
 
-    public ParticipantsRequestDto(String[] names) {
+    public ParticipantsRequestDto(final String[] names) {
         this.names = names;
     }
 
