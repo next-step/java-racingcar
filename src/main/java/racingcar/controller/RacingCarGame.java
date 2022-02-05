@@ -1,8 +1,11 @@
-package racingcar;
+package racingcar.controller;
 
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+import racingcar.view.Console;
+import racingcar.view.PrintResult;
+import racingcar.domain.RacingCar;
 
 public class RacingCarGame {
 
