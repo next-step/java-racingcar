@@ -12,7 +12,7 @@ public class RacingApplication {
 
         String carNames = InputView.getCars();
         int roundNumber = InputView.getRoundNumber();
-        RacingInfo info = RacingInfo.init(carNames, roundNumber);
+        RacingInfo info = RacingInfo.of(carNames, roundNumber);
 
         Racing racing = new Racing(info);
         racing.race();
