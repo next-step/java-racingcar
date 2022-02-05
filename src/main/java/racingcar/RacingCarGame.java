@@ -12,12 +12,12 @@ public class RacingCarGame {
 
     private static final int MIN_MOVE = 0;
     private static final int MAX_MOVE = 9;
+    private static final int NUMBER_ZERO = 0;
 
     private static final Random random = new Random();
+    private static final Console console = new Console();
 
     public void setRacingCarGame() {
-        Console console = new Console();
-
         cars = RacingCar.setRacingCars(console.setRacingCarNames());
         tryCount = console.setTryCount();
     }
@@ -30,7 +30,7 @@ public class RacingCarGame {
             PrintResult.printMoveState(cars);
             tryCount--;
 
-        } while (tryCount > 0);
+        } while (tryCount > NUMBER_ZERO);
 
         setRacingWinners();
 
