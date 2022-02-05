@@ -21,52 +21,9 @@ public class Calculator {
         return result;
     }
 
-    private static double calculate(String operator, double result, double operand) {
-        switch (operator) {
-            case "+":
-                return Operator.PLUS.operate(result, operand);
-            case "-":
-                return Operator.MINUS.operate(result, operand);
-            case "*":
-                return Operator.MULTI.operate(result, operand);
-            default:
-                return Operator.DIVIDE.operate(result, operand);
-        }
+    private static double calculate(String identifier, double result, double operand) {
+        return Operator.calculate(identifier, result, operand);
     }
 }
 
 
-enum Operator {
-    PLUS() {
-        @Override
-        public double operate(double number1, double number2) {
-            return number1 + number2;
-        }
-    },
-    MINUS() {
-        @Override
-        public double operate(double number1, double number2) {
-            return number1 - number2;
-        }
-    },
-    MULTI() {
-        @Override
-        public double operate(double number1, double number2) {
-            return number1 * number2;
-        }
-    },
-    DIVIDE() {
-        @Override
-        public double operate(double number1, double number2) {
-            if (number2 == 0) {
-                throw new IllegalArgumentException("[ERROR] 0으로 나눌 수 없습니다.");
-            }
-            return Math.round((number1 / number2) * Math.pow(10, DIGIT_RANGE)) / Math.pow(10,
-                DIGIT_RANGE);
-        }
-    };
-
-    private static int DIGIT_RANGE = 2;
-
-    public abstract double operate(final double number1, final double number2);
-}
