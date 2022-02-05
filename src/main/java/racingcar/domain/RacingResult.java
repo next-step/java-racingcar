@@ -22,3 +22,4 @@ public class RacingResult {
         return Collections.unmodifiableList(result);
     }
 }
+
