@@ -21,15 +21,15 @@ public class Cars {
 
     public List<Car> run(final List<String> input) {
         ArrayList<Car> cars = new ArrayList<>();
-        input.forEach(carNmae -> cars.add(new Car(carNmae)));
+        input.forEach(carName -> cars.add(new Car(carName)));
         return cars;
     }
 
     public void carsDrive(final CarMoveBehavior carMoveBehavior) {
-        cars.forEach(car -> carCondition(car, carMoveBehavior));
+        cars.forEach(car -> carState(car, carMoveBehavior));
     }
 
-    private void carCondition(final Car car, final CarMoveBehavior carMoveBehavior) {
+    private void carState(final Car car, final CarMoveBehavior carMoveBehavior) {
         if (carMoveBehavior.moveBehavior()) {
             car.moveForward();
         }
