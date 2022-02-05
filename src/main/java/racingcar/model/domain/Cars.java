@@ -29,7 +29,7 @@ public class Cars {
             .collect(Collectors.toList());
     }
 
-    public int carMaxDistance() {
+    public int carMaxDistanceCount() {
         return cars.stream().map(Car::getStep)
             .mapToInt(Integer::valueOf)
             .max()
