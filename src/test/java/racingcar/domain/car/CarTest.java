@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.random.MoveGen;
+import racingcar.domain.random.MovementStrategy;
 
 class CarTest {
     @DisplayName("차량 인스턴스 생성 후 이름은 정확하게 저장된다")
@@ -27,10 +27,16 @@ class CarTest {
     public void go_메서드_테스트() {
         //given
         Car car = Car.from("jason");
+        MovementStrategy movementGoStrategy = new MovementStrategy() {
+            @Override
+            public int generate() {
+                return 5;
+            }
+        };
 
         //when
-        Car car1 = car.go(new MoveGen().generate());
-        Car car2 = car1.go(new MoveGen().generate());
+        Car car1 = car.go(movementGoStrategy.generate());
+        Car car2 = car1.go(movementGoStrategy.generate());
 
         //then
         assertThat(car2.getPosition()).isEqualTo(2);
