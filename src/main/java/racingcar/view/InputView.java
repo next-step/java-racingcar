@@ -19,11 +19,11 @@ public class InputView {
         String line = scanner.nextLine().trim();
         try {
             validateInput(line);
+            return line;
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             return getConsoleTextFrom(message);
         }
-        return line;
     }
 
     public static ParticipantsRequestDto setNames() {
