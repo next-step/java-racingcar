@@ -14,10 +14,10 @@ public class RacingController {
     public void start() {
         RacingGame racingGame = makeRacingGame();
 
-        List<Participants> participants = racingGame.start();
+        List<Participants> racingResult = racingGame.start();
 
-        printRacingRecord(participants);
-        printWinner(participants);
+        printRacingRecord(racingResult);
+        printWinner(racingResult);
     }
 
     private RacingGame makeRacingGame() {
