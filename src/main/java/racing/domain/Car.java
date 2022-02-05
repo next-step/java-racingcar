@@ -40,14 +40,6 @@ public class Car implements Comparable<Car> {
         return distance == bestDistance;
     }
 
-    public String getStringDistance() {
-        final StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < distance; i++) {
-            sb.append('-');
-        }
-        return name + " : " + sb + "\n";
-    }
-
     public int getDistance() {
         return distance;
     }
