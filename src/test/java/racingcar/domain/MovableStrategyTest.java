@@ -4,29 +4,22 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.movable.FixedForwardStrategy;
 import racingcar.domain.movable.RandomForwardStrategy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MovableStrategyTest {
-    List<String> inputs = new ArrayList<>(Arrays.asList("c", "java"));
 
     @Test
     void moveForwardTest() {
-        Car jpa = Car.of("jpa", new FixedForwardStrategy(true));
-        jpa.moveForward();
+        FixedForwardStrategy fixedForwardStrategy = new FixedForwardStrategy(true);
 
-        assertThat(jpa.getStep()).isEqualTo(1);
+        assertThat(fixedForwardStrategy.move(1)).isTrue();
     }
 
     @Test
     void noMoveForwardTest() {
-        Car jpa = Car.of("jpa", new FixedForwardStrategy(false));
-        jpa.moveForward();
+        FixedForwardStrategy fixedForwardStrategy = new FixedForwardStrategy(false);
 
-        assertThat(jpa.getStep()).isEqualTo(0);
+        assertThat(fixedForwardStrategy.move(1)).isFalse();
     }
 
     @Test
