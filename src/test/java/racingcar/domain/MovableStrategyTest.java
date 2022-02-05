@@ -7,25 +7,26 @@ import racingcar.domain.movable.RandomForwardStrategy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import racingcar.view.ResultView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MovingTest {
+public class MovableStrategyTest {
     List<String> inputs = new ArrayList<>(Arrays.asList("c", "java"));
 
     @Test
     void moveForwardTest() {
-        Cars cars = Cars.of(inputs, new FixedForwardStrategy(true));
-        RacingGame.from(cars).drive(1, ResultView.instance());
-        assertThat(cars.getCars().get(0).getStep()).isEqualTo(1);
+        Car jpa = Car.of("jpa", new FixedForwardStrategy(true));
+        jpa.moveForward();
+
+        assertThat(jpa.getStep()).isEqualTo(1);
     }
 
     @Test
     void noMoveForwardTest() {
-        Cars cars = Cars.of(inputs, new FixedForwardStrategy(false));
-        RacingGame.from(cars).drive(1, ResultView.instance());
-        assertThat(cars.getCars().get(1).getStep()).isEqualTo(0);
+        Car jpa = Car.of("jpa", new FixedForwardStrategy(false));
+        jpa.moveForward();
+
+        assertThat(jpa.getStep()).isEqualTo(0);
     }
 
     @Test
