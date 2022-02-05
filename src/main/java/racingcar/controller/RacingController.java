@@ -40,11 +40,11 @@ public class RacingController {
         return turnRequestDto.toEntity();
     }
 
-    public void printRacingRecord(final List<Participants> racingResult) {
+    private void printRacingRecord(final List<Participants> racingResult) {
         OutputView.printRacingResult(racingResult);
     }
 
-    public void printWinner(final List<Participants> racingResult) {
+    private void printWinner(final List<Participants> racingResult) {
         OutputView.printWinner(racingResult.get(racingResult.size() - 1).findWinners());
     }
 }
