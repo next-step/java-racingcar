@@ -9,7 +9,11 @@ public class RacingRecord {
     private static final String RESULT_LINE = "%s : %s" + ENTER;
     private static final String DASH = "-";
 
-    private static final StringBuilder raceRecord = new StringBuilder();
+    private final StringBuilder raceRecord;
+
+    public RacingRecord() {
+        raceRecord = new StringBuilder();
+    }
 
     public void appendRecord(List<Car> cars) {
         cars.forEach(car
