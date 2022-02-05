@@ -17,7 +17,7 @@ public class CarsTest {
     static Cars cars;
 
     @BeforeEach
-    void initTest(){
+    void initTest() {
         inputDTO = new InputDTO(Arrays.asList("a", "aa", "aaa"), 10);
         cars = new Cars(inputDTO.getSplitUserInput());
     }
@@ -55,7 +55,8 @@ public class CarsTest {
                 if (car.getName().equals("a")) {
                     car.moveForward();
                 }
-                return true;})
+                return true;
+            })
             .collect(Collectors.toList());
 
         assertThat(cars.carMaxDistanceCount()).isEqualTo(1);
