@@ -25,7 +25,7 @@ public class RacingGameController {
         try {
             racingCars = new RacingCars(inputCarNames);
         } catch (NameLengthOverException | InputBlankException e) {
-            InputView.printErrorMessage(e.getMessage());
+            System.out.println(e.getMessage());
             racingCars = Retry.createRacingCarsUntilValid();
         }
 
@@ -37,7 +37,7 @@ public class RacingGameController {
         try {
             trial = new Trial(inputTrial);
         } catch (InputBlankException | NumberFormatException e) {
-            InputView.printErrorMessage(e.getMessage());
+            System.out.println(e.getMessage());
             trial = Retry.createTrialUntilValid();
         }
 
@@ -49,7 +49,7 @@ public class RacingGameController {
         try {
             racingGame = new RacingGame(racingCars);
         } catch (LackOfPlayerException e) {
-            InputView.printErrorMessage(e.getMessage());
+            System.out.println(e.getMessage());
             racingGame =  new RacingGame(Retry.createRacingCarsUntilValid());
         }
 

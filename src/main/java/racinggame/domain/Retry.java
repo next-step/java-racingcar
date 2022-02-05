@@ -14,7 +14,7 @@ public class Retry {
                 racingCars = new RacingCars(InputView.inputCarNames());
                 break;
             } catch (NameLengthOverException | InputBlankException e) {
-                InputView.printErrorMessage(e.getMessage());
+                System.out.println(e.getMessage());
             }
         }
         return racingCars;
@@ -28,7 +28,7 @@ public class Retry {
                 trial = new Trial(InputView.inputTrial());
                 break;
             } catch (InputBlankException | NumberFormatException e) {
-                InputView.printErrorMessage(e.getMessage());
+                System.out.println(e.getMessage());
             }
         }
         return trial;
