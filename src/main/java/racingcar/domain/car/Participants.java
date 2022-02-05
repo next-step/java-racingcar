@@ -13,7 +13,7 @@ public class Participants {
 
     private final List<Car> cars;
 
-    public Participants(List<Car> cars) {
+    public Participants(final List<Car> cars) {
         this.cars = new ArrayList<>(cars);
     }
 
@@ -45,6 +45,6 @@ public class Participants {
     }
 
     public List<Car> getParticipants() {
-        return this.cars;
+        return Collections.unmodifiableList(cars);
     }
 }

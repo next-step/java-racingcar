@@ -12,7 +12,7 @@ public class Turn {
 
     private final int value;
 
-    public Turn(String input) {
+    public Turn(final String input) {
         validateTurn(input);
         this.value = Integer.valueOf(input);
     }
