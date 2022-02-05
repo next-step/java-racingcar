@@ -1,8 +1,8 @@
 import java.io.IOException;
 import java.util.List;
 import racing.Cars;
-import racing.RacingUI;
 import racing.Racing;
+import racing.RacingUI;
 
 public class Application {
 

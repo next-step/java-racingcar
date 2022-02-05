@@ -2,10 +2,8 @@ package calculator;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-import calculator.Calculator;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
 

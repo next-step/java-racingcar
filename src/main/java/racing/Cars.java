@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
+
     private final List<Car> cars;
 
     public Cars(final String[] names) {
@@ -12,7 +13,9 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Car> getCars() { return cars; }
+    public List<Car> getCars() {
+        return cars;
+    }
 
     public int getCarsSize() {
         return cars.size();
@@ -32,7 +35,7 @@ public class Cars {
             .collect(Collectors.toList());
     }
 
-    public void round(){
+    public void round() {
         for (Car car : cars) {
             int moveNum = Random.getMoveRandomNumber();
             car.move(moveNum);

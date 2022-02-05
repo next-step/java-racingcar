@@ -8,7 +8,7 @@ public class Random {
 
     public static List<Integer> getRandomNumbers(final int length) {
         List<Integer> randomNumbers = new ArrayList<>();
-        for(int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i++) {
             randomNumbers.add(getMoveRandomNumber());
         }
         return randomNumbers;
