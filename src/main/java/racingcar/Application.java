@@ -10,7 +10,7 @@ import racingcar.view.ResultView;
 public class Application {
 
     public static void main(String[] args) {
-        RacingGame racingGame = RacingGame.from(Cars.instance());
+        RacingGame racingGame = RacingGame.instance();
         RacingController racingController = new RacingController(racingGame,
             InputView.instance(), ResultView.instance());
         racingController.run();

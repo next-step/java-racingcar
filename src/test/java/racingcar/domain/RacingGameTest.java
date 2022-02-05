@@ -19,7 +19,8 @@ class RacingGameTest {
     @BeforeEach
     void setUp() {
         carNames = new ArrayList<>(Arrays.asList("c", "java", "jpa"));
-        racingGame = RacingGame.from(Cars.of(carNames, new FixedForwardStrategy(true)));
+        racingGame = RacingGame.instance();
+        racingGame.registerCars(carNames, new FixedForwardStrategy(true));
     }
 
     @Test
@@ -31,14 +32,6 @@ class RacingGameTest {
     @Test
     void 아무도_전진하지_못했다면_우승자는_없다() {
         assertThat(racingGame.judgeWinners().getResult().size()).isEqualTo(0);
-    }
-
-    @Test
-    void 자동차를_등록할_수_있다() {
-        Cars cars = Cars.instance();
-        racingGame = RacingGame.from(cars);
-        racingGame.registerCars(carNames);
-        assertThat(cars.getCars().size()).isEqualTo(3);
     }
 
 }

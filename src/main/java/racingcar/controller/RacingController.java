@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.RacingGame;
+import racingcar.domain.movable.RandomForwardStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -26,7 +27,7 @@ public class RacingController {
 
     private void setUpRacing() {
         inputView.processConsoleInput();
-        racingGame.registerCars(inputView.getSplitUserInput());
+        racingGame.registerCars(inputView.getSplitUserInput(), new RandomForwardStrategy());
     }
 
     private void startRacing() {
