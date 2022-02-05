@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Collections;
 import java.util.List;
 
 public class RacingResult {
@@ -18,6 +19,6 @@ public class RacingResult {
     }
 
     public List<String> getResult() {
-        return result;
+        return Collections.unmodifiableList(result);
     }
 }

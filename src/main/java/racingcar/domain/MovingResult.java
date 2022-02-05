@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MovingResult {
@@ -19,6 +20,6 @@ public class MovingResult {
     }
 
     public List<CarStateInRace> getCarsState() {
-        return carsState;
+        return Collections.unmodifiableList(carsState);
     }
 }
