@@ -18,7 +18,7 @@ public class RacingGame {
         this.turnCount = turnCount;
     }
 
-    public List<Participants> gameStart() {
+    public List<Participants> start() {
         List<Participants> cars = new ArrayList<>();
 
         for (int i = 0; i < turnCount; i++) {

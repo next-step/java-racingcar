@@ -14,7 +14,7 @@ public class RacingController {
     public void start() {
         RacingGame racingGame = makeRacingGame();
 
-        List<Participants> participants = racingGame.gameStart();
+        List<Participants> participants = racingGame.start();
 
         printRacingRecord(participants);
         printWinner(participants);
