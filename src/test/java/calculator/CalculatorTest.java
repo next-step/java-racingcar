@@ -8,12 +8,12 @@ class CalculatorTest {
 
     @Test
     public void parseOperationTest() {
-        String[] stringArray1 = {"13", "+", "5"};
-        String[] stringArray2 = {"10", "-", "5"};
+        String[] strings1 = {"13", "+", "5"};
+        String[] strings2 = {"10", "-", "5"};
         int start = 0;
-        Calculator.parseOperation(stringArray1, start);
-        assertThat(stringArray1[2]).isEqualTo("18");
-        Calculator.parseOperation(stringArray2, start);
-        assertThat(stringArray2[2]).isEqualTo("5");
+        Calculator.parseOperation(strings1, start);
+        assertThat(strings1[2]).isEqualTo("18");
+        Calculator.parseOperation(strings2, start);
+        assertThat(strings2[2]).isEqualTo("5");
     }
 }

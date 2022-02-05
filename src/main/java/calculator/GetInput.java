@@ -13,30 +13,30 @@ public class GetInput {
     }
 
     public static String[] parsing(String expression) {
-        String[] array = new String[100];
+        String[] strings = new String[100];
         int arrayIterator = 0;
         int expressionIterator = 0;
-        array[arrayIterator] = getInteger(expression, expressionIterator);
-        if (array[arrayIterator].equals(ERROR)) {
-            return array;
+        strings[arrayIterator] = getInteger(expression, expressionIterator);
+        if (strings[arrayIterator].equals(ERROR)) {
+            return strings;
         }
-        expressionIterator = array[arrayIterator].length() + expressionIterator;
+        expressionIterator = strings[arrayIterator].length() + expressionIterator;
         arrayIterator++;
 
         while (expressionIterator != expression.length()) {
             String number = String.valueOf(expression.charAt(expressionIterator));
-            array[arrayIterator++] = number;
+            strings[arrayIterator++] = number;
             expressionIterator++;
-            array[arrayIterator] = getInteger(expression, expressionIterator);
-            if (array[arrayIterator].equals(ERROR)) {
-                array[0] = ERROR;
-                return array;
+            strings[arrayIterator] = getInteger(expression, expressionIterator);
+            if (strings[arrayIterator].equals(ERROR)) {
+                strings[0] = ERROR;
+                return strings;
             }
-            expressionIterator = array[arrayIterator].length() + expressionIterator;
+            expressionIterator = strings[arrayIterator].length() + expressionIterator;
             arrayIterator++;
         }
 
-        return array;
+        return strings;
     }
 
     public static String getInteger(String expression, int idx) {

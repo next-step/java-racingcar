@@ -17,32 +17,32 @@ public class Calculator {
         calculator.calculate(expressions);
     }
 
-    public static void calculate(String[] stringArray) {
-        final int STRING_ARRAY_LENGTH = (stringArray.length - 1) / 2;
+    public static void calculate(String[] strings) {
+        final int STRING_ARRAY_LENGTH = (strings.length - 1) / 2;
         for (int i = 0; i < STRING_ARRAY_LENGTH; i++) {
-            if (ERROR.equals(stringArray[0])) {
+            if (ERROR.equals(strings[0])) {
                 System.out.println("ERROR: 종료합니다");
                 return;
             }
-            if (stringArray[i * 2 + 1] == null) {
-                System.out.println("정답: " + Integer.parseInt(stringArray[i * 2]));
+            if (strings[i * 2 + 1] == null) {
+                System.out.println("정답: " + Integer.parseInt(strings[i * 2]));
                 return;    //정수로 바꿔서 리턴
             }
-            parseOperation(stringArray, i * 2);
+            parseOperation(strings, i * 2);
         }
     }
 
-    public static void parseOperation(String[] stringArray, int start) {
+    public static void parseOperation(String[] strings, int start) {
         int firstOperand, secondOperand;
 
-        if (ERROR.equals(stringArray[start]) || ERROR.equals(stringArray[start + 2])) {
-            stringArray[0] = ERROR;
+        if (ERROR.equals(strings[start]) || ERROR.equals(strings[start + 2])) {
+            strings[0] = ERROR;
             return;
         }
 
-        String operator = stringArray[start + 1];
-        firstOperand = Integer.parseInt(stringArray[start]);
-        secondOperand = Integer.parseInt(stringArray[start + 2]);
+        String operator = strings[start + 1];
+        firstOperand = Integer.parseInt(strings[start]);
+        secondOperand = Integer.parseInt(strings[start + 2]);
 
         int result = 0;
         if (operator.equals("+")) {
@@ -53,7 +53,7 @@ public class Calculator {
             result = mul(firstOperand, secondOperand);
         } else if (operator.equals("/")) {
             if (secondOperand == 0) {
-                stringArray[0] = ERROR;
+                strings[0] = ERROR;
                 return;
             } else {
                 result = div(firstOperand, secondOperand);
@@ -62,7 +62,7 @@ public class Calculator {
             throw new IllegalArgumentException("Error: need right operator");
         }
 
-        stringArray[start + 2] = String.valueOf(result);
+        strings[start + 2] = String.valueOf(result);
     }
 
     public static int add(int firstOperand, int secondOperand) {

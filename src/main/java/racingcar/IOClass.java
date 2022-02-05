@@ -9,9 +9,9 @@ public class IOClass {
     public static Car[] getName() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        str = str.replace(" ", "");
-        String[] carNames = str.split(",");
+        String namesString = sc.nextLine();
+        namesString = namesString.replace(" ", "");
+        String[] carNames = namesString.split(",");
         final int CARS_COUNT = carNames.length;
         Car[] cars = new Car[CARS_COUNT];
         for (int i = 0; i < CARS_COUNT; i++) {

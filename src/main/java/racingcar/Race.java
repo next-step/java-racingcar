@@ -6,17 +6,6 @@ public class Race {
     private static final int MIN_NUMBER_FOR_START = 4;
 
     public static void execute() {
-        Car[] cars = IOClass.getName();
-        if (!IOClass.checkCarName(cars)) {
-            System.out.println("자동차 이름은 5자를 초과할 수 없습니다.");
-            return;
-        }
-
-        Race race = new Race();
-        int times = IOClass.getTimes();
-        repeatGame(cars, times);
-        IOClass.printWinners(cars);
-        return;
     }
 
     public static int getMaxScore(Car[] cars) {
