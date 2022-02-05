@@ -7,22 +7,22 @@ public class Car {
     private static final int MOVE_ONE_STEP = 1;
 
     private final Name name;
-    public int position;
+    public final int position;
 
-    private Car(String name) {
+    private Car(final String name) {
         this(name, INITIAL_POSITION);
     }
 
-    public Car(String name, int position) {
+    public Car(final String name, final int position) {
         this.name = new Name(name);
         this.position = position;
     }
 
-    public static Car from(String name) {
+    public static Car from(final String name) {
         return new Car(name);
     }
 
-    public static Car of(String name, int position) {
+    public static Car of(final String name, final int position) {
         return new Car(name, position);
     }
 
@@ -30,8 +30,10 @@ public class Car {
         int newPosition = this.position;
         if (fuel > THRESHOLD_TO_MOVE) {
             newPosition += MOVE_ONE_STEP;
+            return Car.of(name.getName(), newPosition);
         }
-        return Car.of(name.getName(), newPosition);
+
+        return this;
     }
 
     public boolean isSamePosition(Car other) {
