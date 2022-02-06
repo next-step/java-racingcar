@@ -8,19 +8,15 @@ public class InputView {
     private static final String ASK_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public String[] inputCarNames() {
+    public String inputCarNames() {
         System.out.println(INPUT_GUIDE_MESSAGE);
 
-        String userInput = SCANNER.nextLine();
-
-        return userInput.split(",");
+        return SCANNER.nextLine();
     }
 
     public int inputTryCount() {
         System.out.println(ASK_TRY_COUNT);
 
-        int tryCount = SCANNER.nextInt();
-
-        return tryCount;
+        return SCANNER.nextInt();
     }
 }
