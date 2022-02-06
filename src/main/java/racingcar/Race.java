@@ -6,19 +6,11 @@ import java.util.Random;
 public class Race {
 
     private static final int MOVE_THRESHOLD = 4;
+    private static ArrayList<Car> cars = new ArrayList<>();
 
-    public static void execute() {
-        ArrayList<Car> cars = new ArrayList<>();
+    public void execute() {
         String[] carNames = InputView.getName();
-        for (String carName: carNames) {
-            Car car = new Car(carName);
-            cars.add(car);
-        }
-
-        if (!isValidCarNames(cars)) {
-            return;
-        }
-
+        setCars(carNames);
         int times = InputView.getTimes();
         while ((times--) > 0) {
             playGame(cars);
@@ -27,14 +19,20 @@ public class Race {
         OutputView.printWinners(winners);
     }
 
-    private static boolean isValidCarNames(ArrayList<Car> cars) {
+    public static void setCars(String[] carNames) {
+        for (String carName: carNames) {
+            Car car = new Car(carName);
+            cars.add(car);
+        }
+        isValidCarNames(cars);
+    }
+
+    private static void isValidCarNames(ArrayList<Car> cars) {
         for (Car car: cars) {
             if (!InputView.isValidCarName(car.name)) {
-                return false;
+                throw new IllegalArgumentException("Error: Invalid car name");
             }
         }
-
-        return true;
     }
 
     public static void playGame(ArrayList<Car> cars) {
