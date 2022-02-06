@@ -4,9 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.Judge;
+import racinggame.domain.RacingCar;
 import racinggame.domain.RacingCars;
 import racinggame.domain.vo.WinnersVo;
 
@@ -16,12 +18,10 @@ class GameViewTest {
 
     @BeforeEach
     void before() {
-        racingCars = new RacingCars("car1,car2");
-        racingCars.get().get(0).forward();
-        racingCars.get().get(1).forward();
-        racingCars.get().get(1).forward();
+        RacingCar car1 = new RacingCar("car1", 1);
+        RacingCar car2 = new RacingCar("car2", 2);
+        racingCars = new RacingCars(Arrays.asList(car1, car2));
         GameView.init(racingCars);
-
     }
 
     @Test
