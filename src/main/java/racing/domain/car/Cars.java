@@ -3,7 +3,6 @@ package racing.domain.car;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import racing.domain.startegy.MovingStrategy;
 
 public class Cars {
@@ -15,10 +14,6 @@ public class Cars {
         for (Car car : cars) {
             this.cars.add(new Car(car));
         }
-    }
-
-    public Cars(List<String> names, int initValue) {
-        this(names.stream().map(name -> new Car(name, initValue)).collect(Collectors.toList()));
     }
 
     private void validateCars(List<Car> cars) {

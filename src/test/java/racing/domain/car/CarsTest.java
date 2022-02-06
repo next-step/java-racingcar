@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -39,9 +40,10 @@ class CarsTest {
 
     @ParameterizedTest
     @MethodSource
-    void 자동차_개수_확인(List<String> parameterCars) {
+    void 자동차_개수_확인(List<String> parameterCarNames) {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(
-            () -> new Cars(parameterCars, 0)).withMessage("[ERROR] 자동차 개수는 적어도 1개 이상이어야 합니다.");
+                () -> new Cars(parameterCarNames.stream().map(Car::new).collect(Collectors.toList())))
+            .withMessage("[ERROR] 자동차 개수는 적어도 1개 이상이어야 합니다.");
     }
 
     private static Stream<Arguments> 자동차_개수_확인() {

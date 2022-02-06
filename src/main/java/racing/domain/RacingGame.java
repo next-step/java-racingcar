@@ -13,18 +13,14 @@ public class RacingGame {
     private final MovingStrategy movingStrategy;
     private final Cars cars;
 
-    private RacingGame(MovingStrategy movingStrategy, Cars cars) {
-        this.movingStrategy = movingStrategy;
-        this.cars = cars;
-    }
-
     public RacingGame(MovingStrategy movingStrategy, List<Car> cars) {
         this.movingStrategy = movingStrategy;
         this.cars = new Cars(cars);
     }
 
     public static RacingGame registerCars(MovingStrategy movingStrategy, List<String> names) {
-        return new RacingGame(movingStrategy, new Cars(names, 0));
+        return new RacingGame(movingStrategy,
+            names.stream().map(Car::new).collect(Collectors.toList()));
     }
 
     public List<Cars> race(final TryNumber tryNumber) {
