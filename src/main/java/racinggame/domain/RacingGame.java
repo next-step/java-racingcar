@@ -14,12 +14,7 @@ public class RacingGame {
     }
 
     public void progress() {
-        racingCars.get().forEach(car -> {
-            int randomValue = getRandomValue();
-            if (car.canForward(randomValue)) {
-                car.forward();
-            }
-        });
+        racingCars.get().forEach(car -> car.forward(getRandomValue()));
     }
 
     public int getRandomValue() {

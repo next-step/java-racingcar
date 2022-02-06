@@ -20,12 +20,10 @@ public class RacingCar {
         this.position = position;
     }
 
-    public boolean canForward(final int randomValue) {
-        return randomValue >= MINIMUM_FORWARD_VALUE;
-    }
-
-    public void forward() {
-        this.position += 1;
+    public void forward(final int number) {
+        if(number >= MINIMUM_FORWARD_VALUE){
+            this.position += 1;
+        }
     }
 
     public int getPosition() {
