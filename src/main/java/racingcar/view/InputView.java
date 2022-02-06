@@ -1,8 +1,8 @@
 package racingcar.view;
 
 import java.util.Scanner;
-import racingcar.domain.dto.ParticipantsRequestDto;
-import racingcar.domain.dto.TurnRequestDto;
+import racingcar.dto.ParticipantsRequestDto;
+import racingcar.dto.TurnRequestDto;
 
 public class InputView {
 
