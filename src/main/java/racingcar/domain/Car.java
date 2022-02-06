@@ -4,7 +4,8 @@ import racingcar.domain.movable.MovableStrategy;
 
 public class Car {
 
-    private static final int LIMITED_CAR_NAME_LENGTH = 5;
+    private static final int MIN_LIMITED_CAR_NAME_LENGTH = 0;
+    private static final int MAX_LIMITED_CAR_NAME_LENGTH = 5;
 
     private final String name;
     private int distance;
@@ -28,8 +29,14 @@ public class Car {
     }
 
     private void validateName(final String name) {
-        if (name.length() > LIMITED_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("이름은 " + LIMITED_CAR_NAME_LENGTH + "자를 넘을 수 없습니다.");
+        int nameLength = name.length();
+
+        if (nameLength == MIN_LIMITED_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException("이름은 공백이 될 수 없습니다.");
+        }
+
+        if (nameLength > MAX_LIMITED_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException("이름은 " + MAX_LIMITED_CAR_NAME_LENGTH + "자를 넘을 수 없습니다.");
         }
     }
 }
