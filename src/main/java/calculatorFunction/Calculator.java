@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class Calculator {
 
-    private ArrayList<String> parsedValues = null;
+    private ArrayList<String> parsedValues;
     private HashMap<String, Method> operatorMap = new HashMap<>();
 
     public Calculator(ArrayList<String> parsedValues) {
