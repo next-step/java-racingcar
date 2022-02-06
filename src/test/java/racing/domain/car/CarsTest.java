@@ -51,12 +51,17 @@ class CarsTest {
     @ParameterizedTest
     @MethodSource
     void Car들_전진_움직임_확인(int movableNumber, List<Car> parameterCars) {
-        Cars cars = new Cars(parameterCars);
-        List<Car> moveCars = new ArrayList<>();
-        for (Car car : parameterCars) {
+        final Cars cars = new Cars(parameterCars);
+        final List<Car> moveCars = new ArrayList<>();
+        for (Car car : cars.getCars()) {
             moveCars.add(new Car(car.getNameValue(), car.getPositionValue() + 1));
         }
-        assertThat(cars.driveCars(() -> movableNumber)).isEqualTo(moveCars);
+
+        final List<Car> actual = cars.driveCars(() -> movableNumber);
+        for(int i = 0; i < actual.size(); i++) {
+            assertThat(moveCars.get(i).getNameValue()).isEqualTo(actual.get(i).getNameValue());
+            assertThat(moveCars.get(i).getPositionValue()).isEqualTo(actual.get(i).getPositionValue());
+        }
     }
 
     private static Stream<Arguments> Car들_전진_움직임_확인() {
@@ -71,10 +76,13 @@ class CarsTest {
 
     @ParameterizedTest
     @MethodSource
-    void Car들_움직이지_않는_것_확인(int movableNumber, List<Car> parameterCars) {
-        Cars cars = new Cars(parameterCars);
-        List<Car> moveCars = new ArrayList<>();
-        assertThat(cars.driveCars(() -> movableNumber)).isEqualTo(parameterCars);
+    void Car들_움직이지_않는_것_확인(int notMovableNumber, List<Car> parameterCars) {
+        final Cars cars = new Cars(parameterCars);
+        final List<Car> actual = cars.driveCars(() -> notMovableNumber);
+        for(int i = 0; i < actual.size(); i++) {
+            assertThat(parameterCars.get(i).getNameValue()).isEqualTo(actual.get(i).getNameValue());
+            assertThat(parameterCars.get(i).getPositionValue()).isEqualTo(actual.get(i).getPositionValue());
+        }
     }
     private static Stream<Arguments> Car들_움직이지_않는_것_확인() {
         return Stream.of(
