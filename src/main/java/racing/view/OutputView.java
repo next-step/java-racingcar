@@ -2,6 +2,7 @@ package racing.view;
 
 import java.util.List;
 import racing.domain.car.Car;
+import racing.domain.car.Cars;
 
 public class OutputView {
 
@@ -11,16 +12,16 @@ public class OutputView {
     private OutputView() {
     }
 
-    public static void printGameResult(List<List<Car>> raceStates) {
+    public static void printGameResult(List<Cars> raceStates) {
         System.out.println("\n실행 결과");
-        for (List<Car> raceState : raceStates) {
+        for (Cars raceState : raceStates) {
             printCarHistories(raceState);
             System.out.println();
         }
     }
 
-    private static void printCarHistories(List<Car> raceState) {
-        for (Car car : raceState) {
+    private static void printCarHistories(Cars raceState) {
+        for (Car car : raceState.getCars()) {
             printCarHistory(car);
             System.out.println();
         }

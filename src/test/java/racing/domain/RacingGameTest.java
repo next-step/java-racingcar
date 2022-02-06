@@ -43,7 +43,7 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(new Cars(cars));
         racingGame.race(new TryNumber(1));
         assertThat(racingGame.raceResult().stream().count()).isEqualTo(1);
-        assertThat(racingGame.raceResult().get(0).stream().count()).isEqualTo(3);
+        assertThat(racingGame.raceResult().get(0).getCars().stream().count()).isEqualTo(3);
     }
 
     @ParameterizedTest
