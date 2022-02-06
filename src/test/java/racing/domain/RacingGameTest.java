@@ -15,21 +15,56 @@ class RacingGameTest {
 
     @ParameterizedTest
     @MethodSource
-    void 레이싱_진행(List<Car> cars) {
-        RacingGame racingGame = new RacingGame(new Cars(cars));
-        assertThat(racingGame.race(new TryNumber(1)).size()).isEqualTo(1);
-        assertThat(racingGame.race(new TryNumber(1)).get(0).getCars().size()).isEqualTo(3);
+    void 레이싱_무조건_전진_진행(int tryNumberValue, int movableNumber, List<Car> cars) {
+        RacingGame racingGame = new RacingGame(() -> movableNumber, cars);
+        final List<Cars> racingResult = racingGame.race(new TryNumber((tryNumberValue)));
+        int move = 1;
+        for (Cars oneRacingCars : racingResult) {
+            for (int i = 0; i < oneRacingCars.getCars().size(); i++) {
+                assertThat(cars.get(i).getNameValue()).isEqualTo(
+                    oneRacingCars.getCars().get(i).getNameValue());
+                assertThat(cars.get(i).getPositionValue() + move).isEqualTo(
+                    oneRacingCars.getCars().get(i).getPositionValue());
+            }
+            move++;
+        }
     }
 
-    private static Stream<Arguments> 레이싱_진행() {
+    private static Stream<Arguments> 레이싱_무조건_전진_진행() {
         return Stream.of(
-            Arguments.of(Arrays.asList(new Car("a", 2), new Car("b", 4), new Car("C", 1))));
+            Arguments.of(1, 4, Arrays.asList(new Car("a", 2), new Car("b", 4), new Car("C", 1))),
+            Arguments.of(2, 5, Arrays.asList(new Car("a", 2), new Car("b", 4), new Car("C", 1))),
+            Arguments.of(3, 6, Arrays.asList(new Car("a", 2), new Car("b", 4), new Car("C", 1))),
+            Arguments.of(4, 7, Arrays.asList(new Car("a", 2), new Car("b", 4), new Car("C", 1))));
     }
 
     @ParameterizedTest
     @MethodSource
-    void 우승자_결졍(List<Car> cars) {
-        RacingGame racingGame = new RacingGame(new Cars(cars));
+    void 레이싱_무조건_스탑_진행(int tryNumberValue, int notMovableNumber, List<Car> cars) {
+        RacingGame racingGame = new RacingGame(() -> notMovableNumber, cars);
+        final List<Cars> racingResult = racingGame.race(new TryNumber((tryNumberValue)));
+        for (Cars oneRacingCars : racingResult) {
+            for (int i = 0; i < oneRacingCars.getCars().size(); i++) {
+                assertThat(cars.get(i).getNameValue()).isEqualTo(
+                    oneRacingCars.getCars().get(i).getNameValue());
+                assertThat(cars.get(i).getPositionValue()).isEqualTo(
+                    oneRacingCars.getCars().get(i).getPositionValue());
+            }
+        }
+    }
+
+    private static Stream<Arguments> 레이싱_무조건_스탑_진행() {
+        return Stream.of(
+            Arguments.of(1, 0, Arrays.asList(new Car("a", 2), new Car("b", 4), new Car("C", 1))),
+            Arguments.of(2, 1, Arrays.asList(new Car("a", 2), new Car("b", 4), new Car("C", 1))),
+            Arguments.of(3, 2, Arrays.asList(new Car("a", 2), new Car("b", 4), new Car("C", 1))),
+            Arguments.of(4, 3, Arrays.asList(new Car("a", 2), new Car("b", 4), new Car("C", 1))));
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    void 우승자_결졍(int movableNumber, List<Car> cars) {
+        RacingGame racingGame = new RacingGame(() -> movableNumber, cars);
         final List<Car> winners = racingGame.decideWinners();
         assertThat("b").isEqualTo(winners.get(0).getNameValue());
         assertThat(4).isEqualTo(winners.get(0).getPositionValue());
@@ -39,6 +74,6 @@ class RacingGameTest {
 
     private static Stream<Arguments> 우승자_결졍() {
         return Stream.of(
-            Arguments.of(Arrays.asList(new Car("a", 2), new Car("b", 4), new Car("cd", 4))));
+            Arguments.of(4, Arrays.asList(new Car("a", 2), new Car("b", 4), new Car("cd", 4))));
     }
 }
