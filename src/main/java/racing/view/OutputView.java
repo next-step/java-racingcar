@@ -1,6 +1,7 @@
 package racing.view;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import racing.domain.car.Car;
 import racing.domain.car.Cars;
 
@@ -8,6 +9,7 @@ public class OutputView {
 
     private static final String SEPARATOR_BETWEEN_NAME_AND_POSITION = " : ";
     private static final String MOVE_STATE = "-";
+    private static final String COMMA = ", ";
 
     private OutputView() {
     }
@@ -34,7 +36,7 @@ public class OutputView {
         }
     }
 
-    public static void printWinners(String winnersName) {
-        System.out.println("최종 우승자 : " + winnersName);
+    public static void printWinners(List<Car> winners) {
+        System.out.println("최종 우승자 : " + winners.stream().map(Car::getNameValue).collect(Collectors.joining(COMMA)));
     }
 }

@@ -11,8 +11,6 @@ import racing.domain.startegy.RandomMovingStrategy;
 
 public class RacingGame {
 
-    private static final String COMMA = ", ";
-
     private final MovingStrategy movingStrategy;
     private final Cars cars;
 
@@ -34,10 +32,10 @@ public class RacingGame {
         return raceStates;
     }
 
-    public String decideWinners() {
+    public List<Car> decideWinners() {
+        final Position maxPosition = cars.findMaxPosition();
         return cars.getCars().stream()
-            .filter(car -> car.isSamePosition(new Position(cars.getMaxPosition())))
-            .map(Car::getNameValue)
-            .collect(Collectors.joining(COMMA));
+            .filter(car -> car.isSamePosition(maxPosition))
+            .collect(Collectors.toList());
     }
 }

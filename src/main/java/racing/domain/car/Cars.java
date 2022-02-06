@@ -8,8 +8,6 @@ import racing.domain.startegy.MovingStrategy;
 
 public class Cars {
 
-    private static final int RANGE_OF_RANDOM_NUMBER = 10;
-
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -49,12 +47,12 @@ public class Cars {
         return new ArrayList<>(carsState);
     }
 
-    public final int getMaxPosition() {
+    public Position findMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
             maxPosition = Math.max(maxPosition, car.getPositionValue());
         }
-        return maxPosition;
+        return new Position(maxPosition);
     }
 
     public List<Car> getCars() {
@@ -77,4 +75,6 @@ public class Cars {
     public int hashCode() {
         return Objects.hash(cars);
     }
+
+
 }

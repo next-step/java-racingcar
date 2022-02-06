@@ -31,7 +31,7 @@ class CarsTest {
     @MethodSource
     void Car들_중_최대_위치_값_확인(List<Car> parameterCars) {
         final Cars cars = new Cars(parameterCars);
-        assertThat(cars.getMaxPosition()).isEqualTo(4);
+        assertThat(4).isEqualTo(cars.findMaxPosition().getValue());
     }
 
     @ParameterizedTest
