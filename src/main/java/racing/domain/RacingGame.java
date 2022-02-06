@@ -14,13 +14,18 @@ public class RacingGame {
     private final MovingStrategy movingStrategy;
     private final Cars cars;
 
-    public RacingGame(Cars cars) {
-        movingStrategy = new RandomMovingStrategy();
+    private RacingGame(MovingStrategy movingStrategy, Cars cars) {
+        this.movingStrategy = movingStrategy;
         this.cars = cars;
     }
 
-    public static RacingGame registerCars(List<String> names) {
-        return new RacingGame(new Cars(names, 0));
+    public RacingGame(MovingStrategy movingStrategy, List<Car> cars) {
+        this.movingStrategy = movingStrategy;
+        this.cars = new Cars(cars);
+    }
+
+    public static RacingGame registerCars(MovingStrategy movingStrategy, List<String> names) {
+        return new RacingGame(movingStrategy, new Cars(names, 0));
     }
 
     public List<Cars> race(final TryNumber tryNumber) {
