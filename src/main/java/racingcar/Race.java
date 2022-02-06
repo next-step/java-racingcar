@@ -7,6 +7,7 @@ public class Race {
 
     private static final int MOVE_THRESHOLD = 4;
     private static ArrayList<Car> cars = new ArrayList<>();
+    private static ArrayList<Car> winners = new ArrayList<>();
 
     public void execute() {
         String[] carNames = InputView.getName();
@@ -15,7 +16,7 @@ public class Race {
         while ((times--) > 0) {
             playGame(cars);
         }
-        ArrayList<Car> winners = getWinners(cars);
+        setWinners(cars);
         OutputView.printWinners(winners);
     }
 
@@ -63,16 +64,16 @@ public class Race {
         return maximum;
     }
 
-    public static ArrayList<Car> getWinners(ArrayList<Car> cars) {
+    public static void setWinners(ArrayList<Car> cars) {
         int maximum = getMaxScore(cars);
-
-        ArrayList<Car> winners = new ArrayList<>();
         for (Car car: cars) {
-            if (car.distance == maximum) {
+            if (isWinner(car, maximum)) {
                 winners.add(car);
             }
         }
+    }
 
-        return winners;
+    public static boolean isWinner(Car car, int maximum) {
+        return car.distance == maximum;
     }
 }
