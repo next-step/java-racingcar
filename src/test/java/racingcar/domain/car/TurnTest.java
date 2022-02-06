@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class TurnsTest {
+class TurnTest {
 
     @Test
     public void 입력_횟수가_정상적인_숫자라면_Exception발생안한다() {
