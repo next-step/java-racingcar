@@ -1,9 +1,9 @@
 package racinggame.controller;
 
-import racinggame.domain.Retry;
 import racinggame.domain.Judge;
 import racinggame.domain.RacingCars;
 import racinggame.domain.RacingGame;
+import racinggame.domain.Retry;
 import racinggame.domain.Trial;
 import racinggame.domain.vo.WinnersVo;
 import racinggame.exception.InputBlankException;
@@ -17,8 +17,7 @@ public class RacingGameController {
     private static final int NORMAL_EXIT_CODE = 0;
     private static final String QUIT = "q";
 
-    public RacingGameController() {
-    }
+    public RacingGameController() {}
 
     public RacingCars getRacingCars(String inputCarNames) {
         RacingCars racingCars;
@@ -50,7 +49,7 @@ public class RacingGameController {
             racingGame = new RacingGame(racingCars);
         } catch (LackOfPlayerException e) {
             System.out.println(e.getMessage());
-            racingGame =  new RacingGame(Retry.createRacingCarsUntilValid());
+            racingGame = new RacingGame(Retry.createRacingCarsUntilValid());
         }
 
         GameView.init(racingCars);

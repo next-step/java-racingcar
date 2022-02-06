@@ -16,7 +16,8 @@ public class GameView {
     private static final Map<String, String> resultOfCar = new HashMap<>();
     private static final Map<String, Integer> positionOfCar = new HashMap<>();
 
-    private GameView() {}
+    private GameView() {
+    }
 
     public static void init(RacingCars racingCars) {
         racingCars.get().stream()
@@ -56,6 +57,4 @@ public class GameView {
     public static void printResult() {
         System.out.print(result);
     }
-
-
 }
