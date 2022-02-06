@@ -1,10 +1,12 @@
-package racinggame.domain;
+package racinggame;
 
+import racinggame.domain.RacingCars;
+import racinggame.domain.Trial;
 import racinggame.exception.InputBlankException;
 import racinggame.exception.NameLengthOverException;
 import racinggame.view.InputView;
 
-public class Retry {
+public class RetryInput {
 
     public static RacingCars createRacingCarsUntilValid() {
         RacingCars racingCars;

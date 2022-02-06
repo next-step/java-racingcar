@@ -3,7 +3,6 @@ package racinggame;
 import racinggame.domain.Judge;
 import racinggame.domain.RacingCars;
 import racinggame.domain.RacingGame;
-import racinggame.domain.Retry;
 import racinggame.domain.Trial;
 import racinggame.domain.vo.InputVo;
 import racinggame.domain.vo.WinnersVo;
@@ -28,7 +27,7 @@ public class RacingGameApplication {
                 racingCars = getRacingCars(inputVo.getCarNames());
             } catch (NameLengthOverException | InputBlankException e) {
                 System.out.println(e.getMessage());
-                racingCars = Retry.createRacingCarsUntilValid();
+                racingCars = RetryInput.createRacingCarsUntilValid();
             }
 
             Trial trial;
@@ -36,7 +35,7 @@ public class RacingGameApplication {
                 trial = getTrial(inputVo.getTrial());
             } catch (InputBlankException | NumberFormatException e) {
                 System.out.println(e.getMessage());
-                trial = Retry.createTrialUntilValid();
+                trial = RetryInput.createTrialUntilValid();
             }
 
             RacingGame racingGame;
@@ -44,7 +43,7 @@ public class RacingGameApplication {
                 racingGame = new RacingGame(racingCars);
             } catch (LackOfPlayerException e) {
                 System.out.println(e.getMessage());
-                racingGame = new RacingGame(Retry.createRacingCarsUntilValid());
+                racingGame = new RacingGame(RetryInput.createRacingCarsUntilValid());
             }
             startGame(racingGame, trial);
 
