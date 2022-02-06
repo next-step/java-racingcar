@@ -14,12 +14,13 @@ public class Validator {
     public static final int MINIMUM_PLAYER = 2;
     private static final int MAXIMUM_NAME_LENGTH = 5;
 
-    private Validator() {}
+    private Validator() {
+    }
 
     public static void validatePossibleToStart(final RacingCars racingCars) {
         if (isPossibleToStart(racingCars.get())) {
             throw new LackOfPlayerException(
-                    LACK_OF_PLAYER_MESSAGE + " (현재 참여인원: " + racingCars.get().size() + ")");
+                    String.format("%s (현재 참여인원 %d)", LACK_OF_PLAYER_MESSAGE, racingCars.get().size()));
         }
     }
 
@@ -30,7 +31,7 @@ public class Validator {
     public static void validateNameLength(final String carName) {
         if (carName.length() > MAXIMUM_NAME_LENGTH) {
             throw new NameLengthOverException(
-                    NAME_LENGTH_OVER_MESSAGE + " (Input: " + carName + ")");
+                    String.format("%s (Input: %s)", NAME_LENGTH_OVER_MESSAGE, carName));
         }
     }
 
@@ -52,7 +53,7 @@ public class Validator {
         for (int i = 0; i < splitName.length; i++) {
             if (splitName[i].isEmpty()) {
                 throw new InputBlankException(
-                        INPUT_BLANK_MESSAGE + " (" + i + "번째 자동차 이름이 공백입니다.)");
+                        String.format("%s (%d번째 자동차 이름이 공백입니다.",INPUT_BLANK_MESSAGE, i));
             }
         }
     }
