@@ -15,11 +15,11 @@ public class Car {
         this.distance = 0;
     }
 
-    public String name() {
+    public String getName() {
         return name;
     }
 
-    public int distance() { return distance; }
+    public int getDistance() { return distance; }
 
     public void run(MovableStrategy strategy) {
         if (strategy.isMovable()) {

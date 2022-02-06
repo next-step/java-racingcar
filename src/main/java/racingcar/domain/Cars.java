@@ -31,7 +31,7 @@ public class Cars {
 
     public List<Car> filterWinners() {
         int max = calculateMax();
-        return cars.stream().filter(car -> car.distance() == max).collect(Collectors.toList());
+        return cars.stream().filter(car -> car.getDistance() == max).collect(Collectors.toList());
     }
 
     public List<Car> get() {
@@ -39,7 +39,7 @@ public class Cars {
     }
 
     private int calculateMax() {
-        return cars.stream().mapToInt(Car::distance).max()
+        return cars.stream().mapToInt(Car::getDistance).max()
             .orElseThrow(() -> new IllegalArgumentException("최대 이동 거리 값을 구할 수 없습니다."));
     }
 }

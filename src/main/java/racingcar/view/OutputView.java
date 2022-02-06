@@ -20,8 +20,8 @@ public class OutputView {
 
     public static void carStatus(final Car car) {
         StringBuilder sb = new StringBuilder();
-        sb.append(car.name() + CAR_RACER_SPLITTER);
-        for (int index = 0; index < car.distance(); index++) {
+        sb.append(car.getName() + CAR_RACER_SPLITTER);
+        for (int index = 0; index < car.getDistance(); index++) {
             sb.append(CAR_MOVE_CHAR);
         }
         System.out.println(sb);
@@ -34,7 +34,7 @@ public class OutputView {
 
     private static String winners(final Cars cars) {
         return cars.filterWinners().stream()
-            .map(Car::name)
+            .map(Car::getName)
             .collect(Collectors.joining(CAR_WINNER_DELIMITER));
     }
 
