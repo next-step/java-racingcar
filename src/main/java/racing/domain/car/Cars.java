@@ -25,7 +25,8 @@ public class Cars {
     }
 
     private void validateSameNameCars(List<Car> cars) {
-        if (cars.size() != cars.stream().map(Car::getNameValue).distinct().count()) {
+        final long distinctCarsSize = cars.stream().map(Car::getNameValue).distinct().count();
+        if (cars.size() != distinctCarsSize) {
             throw new IllegalArgumentException("[ERROR] 중복된 이름은 들어갈 수 없습니다.");
         }
     }
