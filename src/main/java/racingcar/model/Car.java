@@ -13,7 +13,7 @@ public class Car {
     }
 
     public Car(String name, int position) {
-        this.name =new Name(name);
+        this.name = new Name(name);
         this.position = position;
     }
 

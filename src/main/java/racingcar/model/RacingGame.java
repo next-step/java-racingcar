@@ -10,12 +10,13 @@ public class RacingGame {
     private TryCount tryCount;
     private List<RaceResult> totalResult;
 
-    public RacingGame(String carNamesInput, int tryCountInput){
-        this.cars=new Cars(carNamesInput);
-        this.tryCount=new TryCount(tryCountInput);
-        this.totalResult=new ArrayList<>();
+    public RacingGame(String carNamesInput, int tryCountInput) {
+        this.cars = new Cars(carNamesInput);
+        this.tryCount = new TryCount(tryCountInput);
+        this.totalResult = new ArrayList<>();
     }
-    public List<RaceResult> startRace(){
+
+    public List<RaceResult> startRace() {
         while (tryCount.isPlaying()) {
             raceResult = cars.moveCars();
             totalResult.add(new RaceResult(raceResult));
@@ -25,7 +26,7 @@ public class RacingGame {
         return totalResult;
     }
 
-    public List<Car> getFinalRoundResult(){
+    public List<Car> getFinalRoundResult() {
         return raceResult;
     }
 }

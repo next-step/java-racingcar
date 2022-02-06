@@ -3,7 +3,9 @@ package calculator;
 import java.util.List;
 
 public class Calculator {
-    private static final String ZERO="0";
+
+    private static final String ZERO = "0";
+
     public int calculateByOperator(List<String> userInput) {
         int result = Integer.parseInt(userInput.get(0));
         int userInputSize = userInput.size();

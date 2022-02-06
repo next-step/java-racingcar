@@ -18,11 +18,11 @@ public class TryCount {
         return tryCountInput;
     }
 
-    public boolean isPlaying(){
-        return tryCount >0;
+    public boolean isPlaying() {
+        return tryCount > 0;
     }
 
-    public void decreaseTryCount(){
+    public void decreaseTryCount() {
         this.tryCount--;
     }
 }

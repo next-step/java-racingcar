@@ -11,7 +11,7 @@ public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
-    public Cars(String carNames){
+    public Cars(String carNames) {
         for (String carName : carNames.split(",")) {
             cars.add(new Car(carName));
         }

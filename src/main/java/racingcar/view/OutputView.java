@@ -12,7 +12,7 @@ public class OutputView {
 
     public void printResult(List<RaceResult> totalResult) {
         System.out.println(GAME_RESULT_MESSAGE);
-        for (RaceResult raceResult: totalResult){
+        for (RaceResult raceResult : totalResult) {
             printEachRoundResult(raceResult.getRaceResultByRound());
         }
     }
