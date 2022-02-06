@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.view;
 
 import java.util.List;
+import racingcar.domain.Car;
 
 public class OutputView {
 
@@ -12,6 +13,7 @@ public class OutputView {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     public static void printWinners(List<Car> winners) {

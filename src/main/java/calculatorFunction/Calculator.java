@@ -12,17 +12,6 @@ public class Calculator {
         this.result = Double.parseDouble(parsedValues.get(0));
     }
 
-    public static void execute() {
-        System.out.println("수식을 입력하시오: ");
-        String expression = GetInput.inputString();
-        if (expression.length() == 0) {
-            throw new IllegalArgumentException("Error: need right expression");
-        }
-        ArrayList<String> parsedValues = GetInput.parse(expression);
-        Calculator calculator = new Calculator(parsedValues);
-        calculator.returnCalculatedValue();
-    }
-
     public void returnCalculatedValue() {
         int parsedValuesSize = parsedValues.size();
         for (int i = 0; i < (parsedValuesSize + 1) / 2; i++) {

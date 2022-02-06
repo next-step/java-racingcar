@@ -2,6 +2,7 @@ package racingcar;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Race;
 
 class RaceTest {
 

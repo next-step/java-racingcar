@@ -1,22 +1,19 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import racingcar.view.OutputView;
 
 public class Race {
 
     private final static ArrayList<Car> winners = new ArrayList<>();
 
-    public void execute() {
-        List<String> carNames = InputView.getName();
-        Cars cars = Cars.of(carNames);
-        int times = InputView.getTimes();
+    public static void playGames(List<Car> cars, int times) {
         while ((times--) > 0) {
-            playGame(cars.getCars());
+            Race.playGame(cars);
+            OutputView.printResult(cars);
         }
-        setWinners(cars.getCars());
-        OutputView.printWinners(winners);
     }
 
     public static void playGame(List<Car> cars) {
@@ -24,8 +21,6 @@ public class Race {
             int randomNumber = Race.getRandomNumber();
             car.moveCarRandomly(randomNumber);
         }
-        OutputView.printResult(cars);
-        System.out.println();
     }
 
     public static int getRandomNumber() {
@@ -47,6 +42,10 @@ public class Race {
                 winners.add(car);
             }
         }
+    }
+
+    public static ArrayList<Car> getWinners() {
+        return winners;
     }
 
     public static boolean isWinner(Car car, int maximum) {
