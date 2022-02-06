@@ -15,17 +15,6 @@ import racingcar.domain.movable.RandomMovableStrategy;
 import racingcar.utils.Parser;
 
 public class CarsTest {
-    @DisplayName("각 플레이어별 이름이 (5자) 지정된 글자 수 이내일 경우 통과하며, 그렇지 않을 경우 IllegalArgumentException을 발생")
-    @Test
-    void testNameLengthValid() {
-        List<String> carNames = Parser.parseCarNames("OK,Invalid,A_Car");
-
-        assertThatThrownBy(() -> new Cars(carNames.stream()
-            .map(Car::new)
-            .collect(Collectors.toList())
-        ))
-            .isInstanceOf(IllegalArgumentException.class);
-    }
 
     @DisplayName("3칸 이동하는 A와 2칸 이동하는 B가 주어졌을 때, 우승자를 필터링하면 A가 필터된다.")
     @Test
