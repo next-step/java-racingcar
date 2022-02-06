@@ -12,9 +12,8 @@ class TryNumberTest {
     @ParameterizedTest
     @ValueSource(ints = {-1, 0, -2})
     void tryNumber_유효하지_않은_정수_입력(int tryNumber) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> new TryNumber(tryNumber))
-            .withMessage("[ERROR] 시도 횟수는 최소 1회 이상이어야 합니다.");
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(
+            () -> new TryNumber(tryNumber)).withMessage("[ERROR] 시도 횟수는 최소 1회 이상이어야 합니다.");
     }
 
     @ParameterizedTest

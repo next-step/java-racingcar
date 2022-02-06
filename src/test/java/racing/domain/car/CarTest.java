@@ -16,7 +16,7 @@ class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {4,5,6,7,8,9})
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void drive_인자가_4_이상일_경우_자동차는_움직인다(int randomNumber) {
         final Car car = new Car("abc");
         car.drive(randomNumber);
@@ -24,7 +24,7 @@ class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0,1,2,3})
+    @ValueSource(ints = {0, 1, 2, 3})
     void drive_인자가_4_미만일_경우_자동차는_움직이지_않는다(int randomNumber) {
         final Car car = new Car("abc");
         car.drive(randomNumber);
@@ -33,13 +33,13 @@ class CarTest {
 
     @Test
     void 같은_위치에_있는지_확인() {
-        final Car car = new Car("abc",2);
+        final Car car = new Car("abc", 2);
         assertThat(car.isSamePosition(new Position(2))).isTrue();
     }
 
     @Test
     void 다른_위치에_있는지_확인() {
-        final Car car = new Car("abc",2);
+        final Car car = new Car("abc", 2);
         assertThat(car.isSamePosition(new Position(4))).isFalse();
     }
 }

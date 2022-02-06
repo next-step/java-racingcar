@@ -7,7 +7,6 @@ import racing.domain.car.Car;
 import racing.domain.car.Cars;
 import racing.domain.car.Position;
 import racing.domain.startegy.MovingStrategy;
-import racing.domain.startegy.RandomMovingStrategy;
 
 public class RacingGame {
 
@@ -39,8 +38,7 @@ public class RacingGame {
 
     public List<Car> decideWinners() {
         final Position maxPosition = cars.findMaxPosition();
-        return cars.getCars().stream()
-            .filter(car -> car.isSamePosition(maxPosition))
+        return cars.getCars().stream().filter(car -> car.isSamePosition(maxPosition))
             .collect(Collectors.toList());
     }
 }

@@ -37,6 +37,7 @@ public class OutputView {
     }
 
     public static void printWinners(List<Car> winners) {
-        System.out.println("최종 우승자 : " + winners.stream().map(Car::getNameValue).collect(Collectors.joining(COMMA)));
+        System.out.println("최종 우승자 : " + winners.stream().map(Car::getNameValue)
+            .collect(Collectors.joining(COMMA)));
     }
 }

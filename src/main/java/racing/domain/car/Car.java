@@ -54,8 +54,7 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return Objects.equals(name, car.name) && Objects.equals(position,
-            car.position);
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
     }
 
     @Override

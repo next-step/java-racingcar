@@ -12,7 +12,7 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         validateCars(cars);
-        for(Car car : cars) {
+        for (Car car : cars) {
             this.cars.add(new Car(car));
         }
     }
