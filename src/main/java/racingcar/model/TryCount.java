@@ -18,8 +18,11 @@ public class TryCount {
         return tryCountInput;
     }
 
-    public boolean isUnderTryCount(int moveCount) {
-        return tryCount > moveCount;
+    public boolean isPlaying(){
+        return tryCount >0;
     }
 
+    public void decreaseTryCount(){
+        this.tryCount--;
+    }
 }
