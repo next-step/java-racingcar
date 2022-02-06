@@ -19,6 +19,10 @@ public class RacingCars {
                 .collect(Collectors.toList());
     }
 
+    public RacingCars(List<RacingCar> racingCars){
+        this.racingCars = racingCars;
+    }
+
     private String[] parse(final String inputCarNames) {
         final String[] splitName = splitNameByComma(removeBlank(inputCarNames));
         Validator.checkNameIsBlank(splitName);
