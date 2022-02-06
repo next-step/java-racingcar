@@ -89,7 +89,7 @@
 
 ## step2
 
-- [ ] startGame()메서드는 static이여서 GameController객체가 필요없어 보인다. 인스턴스 객체를 만들어줄 필요가 있을지 고민해보자.
+- [x] startGame()메서드는 static이여서 GameController객체가 필요없어 보인다. 인스턴스 객체를 만들어줄 필요가 있을지 고민해보자.
 - [x] GameController의 cars, turn 맴버젼수에 대한 static 선언에 대해 고민해보자.
 - [x] CarTest를 만들어보자.
 - [x] name()와 distance() 메서드의 네이밍을 수정
