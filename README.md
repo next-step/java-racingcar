@@ -92,7 +92,7 @@
 - [ ] CarsTest 테스트의 패키지위치가 Cars의 위치와 맞지 않다. 테스트코드의 패키지 위치는 프로덕션코드의 위치와 동일하게 맞추기.
 - [ ] startGame()메서드는 static이여서 GameController객체가 필요없어 보인다. 인스턴스 객체를 만들어줄 필요가 있을지 고민해보자.
 - [x] GameController의 cars, turn 맴버젼수에 대한 static 선언에 대해 고민해보자.
-- [ ] CarTest를 만들어보자.
+- [x] CarTest를 만들어보자.
 - [x] name()와 distance() 메서드의 네이밍을 수정
   - JAVA는 메서드를 동사형으로 선언한다. 멤버변수에 대한 리턴은 get을 붙여서 해보자.
 - [ ] 팩토리메서드 vs 생성자를 통한 생성에 대해 고민해보자.
