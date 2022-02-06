@@ -1,24 +1,24 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class OutputView {
 
-    public static void printResult(ArrayList<Car> cars) {
+    public static void printResult(List<Car> cars) {
         for (Car car: cars) {
-            System.out.print(car.name + " : ");
-            for (int i = 0; i < car.distance; i++) {
+            System.out.print(car.getName() + " : ");
+            for (int i = 0; i < car.getDistance(); i++) {
                 System.out.print("-");
             }
             System.out.println();
         }
     }
 
-    public static void printWinners(ArrayList<Car> winners) {
+    public static void printWinners(List<Car> winners) {
         StringBuilder winnerNames = new StringBuilder();
 
         for (int i = 0; i < winners.size(); i++) {
-            winnerNames.append(winners.get(i).name);
+            winnerNames.append(winners.get(i).getName());
             if (i != (winners.size() - 1)) {
                 winnerNames.append(", ");
             }
