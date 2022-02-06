@@ -1,10 +1,11 @@
-package racinggame.controller;
+package racinggame;
 
 import racinggame.domain.Judge;
 import racinggame.domain.RacingCars;
 import racinggame.domain.RacingGame;
 import racinggame.domain.Retry;
 import racinggame.domain.Trial;
+import racinggame.domain.vo.InputVo;
 import racinggame.domain.vo.WinnersVo;
 import racinggame.exception.InputBlankException;
 import racinggame.exception.LackOfPlayerException;
@@ -12,14 +13,29 @@ import racinggame.exception.NameLengthOverException;
 import racinggame.view.GameView;
 import racinggame.view.InputView;
 
-public class RacingGameController {
+public class RacingGameApplication {
 
     private static final int NORMAL_EXIT_CODE = 0;
     private static final String QUIT = "q";
 
-    public RacingGameController() {}
+    public static void main(String[] args) {
 
-    public RacingCars getRacingCars(String inputCarNames) {
+        while (true) {
+            InputVo inputVo = new InputVo(InputView.inputCarNames(), InputView.inputTrial());
+
+            RacingCars racingCars = getRacingCars(inputVo.getCarNames());
+            Trial trial = getTrial(inputVo.getTrial());
+
+            startGame(racingCars, trial);
+            WinnersVo winnersVo = getWinners(racingCars);
+            GameView.printResult();
+            GameView.printWinners(winnersVo);
+
+            checkIsRestart();
+        }
+    }
+
+    public static RacingCars getRacingCars(String inputCarNames) {
         RacingCars racingCars;
         try {
             racingCars = new RacingCars(inputCarNames);
@@ -31,7 +47,7 @@ public class RacingGameController {
         return racingCars;
     }
 
-    public Trial getTrial(String inputTrial) {
+    public static Trial getTrial(String inputTrial) {
         Trial trial;
         try {
             trial = new Trial(inputTrial);
@@ -43,7 +59,7 @@ public class RacingGameController {
         return trial;
     }
 
-    public void startGame(RacingCars racingCars, final Trial trial) {
+    public static void startGame(RacingCars racingCars, final Trial trial) {
         RacingGame racingGame;
         try {
             racingGame = new RacingGame(racingCars);
@@ -56,7 +72,7 @@ public class RacingGameController {
         start(racingGame, trial);
     }
 
-    private void start(final RacingGame racingGame, final Trial trial) {
+    private static void start(final RacingGame racingGame, final Trial trial) {
         int count = trial.getValue();
         for (int i = 0; i < count; i++) {
             racingGame.progress();
@@ -64,17 +80,17 @@ public class RacingGameController {
         }
     }
 
-    public WinnersVo getWinners(RacingCars racingCars) {
+    public static WinnersVo getWinners(RacingCars racingCars) {
         return new WinnersVo(Judge.getWinners(racingCars));
     }
 
-    public void checkIsRestart() {
+    public static void checkIsRestart() {
         if (isQuit(InputView.inputRestartCommand())) {
             System.exit(NORMAL_EXIT_CODE);
         }
     }
 
-    private boolean isQuit(final String command) {
+    private static boolean isQuit(final String command) {
         return QUIT.equals(command);
     }
 }
