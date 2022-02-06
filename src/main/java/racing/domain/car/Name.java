@@ -7,7 +7,7 @@ public class Name {
     private static final int CAR_NAME_MIN_LENGTH = 1;
     private static final int CAR_NAME_MAX_LENGTH = 5;
 
-    final String value;
+    private final String value;
 
     public Name(String value) {
         checkNameLength(value);
