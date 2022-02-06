@@ -28,7 +28,7 @@ public class CarsTest {
         carMove(a, aMoves);
         carMove(b, bMoves);
 
-        Cars cars = new Cars(Arrays.asList(a, b));
+        Cars cars = Cars.fromCarList(Arrays.asList(a, b));
 
         assertThat(cars.filterWinners())
             .isEqualTo(Arrays.asList(a));

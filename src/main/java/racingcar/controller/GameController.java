@@ -15,7 +15,7 @@ public class GameController {
     private final int turn;
 
     public GameController(final String carsName, final int turn) {
-        this.cars = new Cars(carsName);
+        this.cars = Cars.fromString(carsName);
         this.turn = turn;
     }
 

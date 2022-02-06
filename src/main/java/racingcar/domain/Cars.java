@@ -9,18 +9,20 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(final String carNames) {
-        this(
-            Parser
+    private Cars(final List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public static Cars fromString (final String carNames) {
+        return new Cars(Parser
             .parseCarNames(carNames)
             .stream()
             .map(Car::new)
-            .collect(Collectors.toList())
-        );
+            .collect(Collectors.toList()));
     }
 
-    public Cars(final List<Car> cars) {
-        this.cars = cars;
+    public static Cars fromCarList (final List<Car> cars) {
+        return new Cars(cars);
     }
 
     public void moveAll(MovableStrategy strategy) {
