@@ -13,8 +13,8 @@ public class InputView {
         System.out.println(GAME_INPUT_NAME);
         String playerNames = "";
         String[] playerNameList;
+        Scanner scanner = new Scanner(System.in);
         while (true) {
-            Scanner scanner = new Scanner(System.in);
             playerNames = scanner.nextLine();
             playerNameList = playerNames.split(",");
             boolean isValidate = validationStringLength(playerNameList);
