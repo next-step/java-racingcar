@@ -68,27 +68,5 @@ class ParticipantsTest {
         assertThat(newParticipants.getParticipants().get(1).getPosition()).isEqualTo(participants.getParticipants().get(1).getPosition());
     }
 
-    @Test
-    public void 최종_우승자_단독() {
-        //given
-        List<Car> cars = Arrays.asList(new Car("jason", 3), new Car("pobi", 2), new Car("sung", 1));
 
-        //when
-        Participants participants = new Participants(cars);
-
-        //then
-        assertThat(participants.findWinners()).isEqualTo("jason");
-    }
-
-    @Test
-    public void 최종_우승자_공동() {
-        //given
-        List<Car> cars = Arrays.asList(new Car("jason", 3), new Car("pobi", 2), new Car("sung", 3));
-
-        //when
-        Participants participants = new Participants(cars);
-
-        //then
-        assertThat(participants.findWinners()).isEqualTo("jason, sung");
-    }
 }

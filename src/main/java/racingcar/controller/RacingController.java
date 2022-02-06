@@ -18,7 +18,7 @@ public class RacingController {
         List<Participants> racingResult = racingGame.start();
 
         printRacingRecord(racingResult);
-        printWinner(racingResult);
+        printWinner(racingGame.findWinners(racingResult));
     }
 
     private RacingGame makeRacingGame() {
@@ -44,7 +44,7 @@ public class RacingController {
         OutputView.printRacingResult(racingResult);
     }
 
-    private void printWinner(final List<Participants> racingResult) {
-        OutputView.printWinner(racingResult.get(racingResult.size() - 1).findWinners());
+    private void printWinner(final String winners) {
+        OutputView.printWinner(winners);
     }
 }

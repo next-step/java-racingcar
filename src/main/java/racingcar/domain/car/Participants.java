@@ -9,8 +9,6 @@ import racingcar.domain.random.MovementStrategy;
 
 public class Participants {
 
-    private static final String DELIMITER = ", ";
-
     private final List<Car> cars;
 
     public Participants(final List<Car> cars) {
@@ -31,17 +29,6 @@ public class Participants {
         }
 
         return new Participants(newCars);
-    }
-
-    public String findWinners() {
-        Collections.sort(cars, (car1, car2) -> car2.position - car1.position);
-
-        String winners = cars.stream()
-            .filter(car -> car.isSamePosition(cars.get(0)))
-            .map(Car::getName)
-            .collect(Collectors.joining(DELIMITER));
-
-        return winners;
     }
 
     public List<Car> getParticipants() {
