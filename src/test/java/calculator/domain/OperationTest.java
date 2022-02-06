@@ -10,6 +10,12 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class OperationTest {
+    
+    @ParameterizedTest
+    @MethodSource
+    void enum_정상_연산_확인(String operator, int firstNumber, int secondNumber, int actual) {
+        assertThat(Operation.calculate(operator, firstNumber, secondNumber)).isEqualTo(actual);
+    }
 
     private static Stream<Arguments> enum_정상_연산_확인() {
         return Stream.of(
@@ -18,12 +24,6 @@ class OperationTest {
             Arguments.of("*", 3, 5, 15),
             Arguments.of("/", 3, 1, 3)
         );
-    }
-    
-    @ParameterizedTest
-    @MethodSource
-    void enum_정상_연산_확인(String operator, int firstNumber, int secondNumber, int actual) {
-        assertThat(Operation.calculate(operator, firstNumber, secondNumber)).isEqualTo(actual);
     }
 
     @Test
