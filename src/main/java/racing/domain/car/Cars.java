@@ -44,7 +44,7 @@ public class Cars {
             carsState.add(
                 new Car(new Name(car.getNameValue()), new Position(car.getPositionValue())));
         }
-        return new ArrayList<>(carsState);
+        return carsState;
     }
 
     public Position findMaxPosition() {
