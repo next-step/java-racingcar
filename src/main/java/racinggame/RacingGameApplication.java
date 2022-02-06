@@ -23,10 +23,31 @@ public class RacingGameApplication {
         while (true) {
             InputVo inputVo = new InputVo(InputView.inputCarNames(), InputView.inputTrial());
 
-            RacingCars racingCars = getRacingCars(inputVo.getCarNames());
-            Trial trial = getTrial(inputVo.getTrial());
+            RacingCars racingCars;
+            try {
+                racingCars = getRacingCars(inputVo.getCarNames());
+            } catch (NameLengthOverException | InputBlankException e) {
+                System.out.println(e.getMessage());
+                racingCars = Retry.createRacingCarsUntilValid();
+            }
 
-            startGame(racingCars, trial);
+            Trial trial;
+            try {
+                trial = getTrial(inputVo.getTrial());
+            } catch (InputBlankException | NumberFormatException e) {
+                System.out.println(e.getMessage());
+                trial = Retry.createTrialUntilValid();
+            }
+
+            RacingGame racingGame;
+            try {
+                racingGame = new RacingGame(racingCars);
+            } catch (LackOfPlayerException e) {
+                System.out.println(e.getMessage());
+                racingGame = new RacingGame(Retry.createRacingCarsUntilValid());
+            }
+            startGame(racingGame, trial);
+
             WinnersVo winnersVo = getWinners(racingCars);
             GameView.printResult();
             GameView.printWinners(winnersVo);
@@ -35,40 +56,16 @@ public class RacingGameApplication {
         }
     }
 
-    public static RacingCars getRacingCars(String inputCarNames) {
-        RacingCars racingCars;
-        try {
-            racingCars = new RacingCars(inputCarNames);
-        } catch (NameLengthOverException | InputBlankException e) {
-            System.out.println(e.getMessage());
-            racingCars = Retry.createRacingCarsUntilValid();
-        }
-
-        return racingCars;
+    private static RacingCars getRacingCars(String inputCarNames) {
+        return new RacingCars(inputCarNames);
     }
 
     public static Trial getTrial(String inputTrial) {
-        Trial trial;
-        try {
-            trial = new Trial(inputTrial);
-        } catch (InputBlankException | NumberFormatException e) {
-            System.out.println(e.getMessage());
-            trial = Retry.createTrialUntilValid();
-        }
-
-        return trial;
+            return new Trial(inputTrial);
     }
 
-    public static void startGame(RacingCars racingCars, final Trial trial) {
-        RacingGame racingGame;
-        try {
-            racingGame = new RacingGame(racingCars);
-        } catch (LackOfPlayerException e) {
-            System.out.println(e.getMessage());
-            racingGame = new RacingGame(Retry.createRacingCarsUntilValid());
-        }
-
-        GameView.init(racingCars);
+    public static void startGame(final RacingGame racingGame, final Trial trial) {
+        GameView.init(racingGame.getRacingCars());
         start(racingGame, trial);
     }
 
