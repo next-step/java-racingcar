@@ -1,6 +1,6 @@
 package racingcar.domain.movable;
 
-public class FixedForwardStrategy implements MovableStrategy{
+public class FixedForwardStrategy implements MovableStrategy {
 
     private final boolean isMoved;
 
@@ -9,7 +9,7 @@ public class FixedForwardStrategy implements MovableStrategy{
     }
 
     @Override
-    public boolean move() {
+    public boolean move(final int number) {
         return isMoved;
     }
 }

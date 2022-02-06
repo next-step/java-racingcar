@@ -2,6 +2,6 @@ package racingcar.domain.movable;
 
 public interface MovableStrategy {
 
-    boolean move();
+    boolean move(final int number);
 
 }

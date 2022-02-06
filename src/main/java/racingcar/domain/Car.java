@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.domain.movable.MovableStrategy;
+import racingcar.domain.movable.RandomForwardStrategy;
 
 public class Car {
 
@@ -14,18 +15,12 @@ public class Car {
         this.step = 0;
     }
 
-    public Car(final String name, final MovableStrategy strategy, final int step) {
-        this.name = name;
-        this.strategy = strategy;
-        this.step = step;
-    }
-
     public static Car of(final String name, final MovableStrategy strategy) {
         return new Car(name, strategy);
     }
 
     public void moveForward() {
-        if (strategy.move()) {
+        if (strategy.move(RandomForwardStrategy.generateRandomNumber())) {
             this.step++;
         }
     }

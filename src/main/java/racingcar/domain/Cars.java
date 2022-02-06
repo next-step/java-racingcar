@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Collections;
 import racingcar.domain.movable.MovableStrategy;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
 }
