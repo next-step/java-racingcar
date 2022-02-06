@@ -57,7 +57,8 @@ public class RacingGameController {
     }
 
     private void start(final RacingGame racingGame, final Trial trial) {
-        for (int i = 0; i < trial.getValue(); i++) {
+        int count = trial.getValue();
+        for (int i = 0; i < count; i++) {
             racingGame.progress();
             GameView.saveProgress(racingGame.getRacingCars());
         }
