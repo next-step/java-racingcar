@@ -17,9 +17,7 @@ public class RacingController {
             final RacingGame racingGame = RacingGame.registerCars(names);
 
             final TryNumber tryNumber = InputView.getTryNumber();
-            racingGame.race(tryNumber);
-
-            OutputView.printGameResult(racingGame.raceResult());
+            OutputView.printGameResult(racingGame.race(tryNumber));
             OutputView.printWinners(racingGame.decideWinners());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());

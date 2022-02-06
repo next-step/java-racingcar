@@ -14,7 +14,6 @@ public class RacingGame {
     private static final String COMMA = ", ";
 
     private final MovingStrategy movingStrategy;
-    private final List<Cars> raceStates = new ArrayList<>();
     private final Cars cars;
 
     public RacingGame(Cars cars) {
@@ -26,15 +25,13 @@ public class RacingGame {
         return new RacingGame(new Cars(names, 0));
     }
 
-    public void race(final TryNumber tryNumber) {
+    public List<Cars> race(final TryNumber tryNumber) {
+        final List<Cars> raceStates = new ArrayList<>();
         while (tryNumber.hasNextStep()) {
-            raceStates.add(new Cars(cars.driveCars(movingStrategy)));
+            raceStates.add(new Cars(this.cars.driveCars(movingStrategy)));
             tryNumber.nextStep();
         }
-    }
-
-    public List<Cars> raceResult() {
-        return new ArrayList(raceStates);
+        return raceStates;
     }
 
     public String decideWinners() {

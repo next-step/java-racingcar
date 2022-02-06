@@ -41,9 +41,8 @@ class RacingGameTest {
     @MethodSource
     void 레이싱_진행(List<Car> cars) {
         RacingGame racingGame = new RacingGame(new Cars(cars));
-        racingGame.race(new TryNumber(1));
-        assertThat(racingGame.raceResult().stream().count()).isEqualTo(1);
-        assertThat(racingGame.raceResult().get(0).getCars().stream().count()).isEqualTo(3);
+        assertThat(racingGame.race(new TryNumber(1)).size()).isEqualTo(1);
+        assertThat(racingGame.race(new TryNumber(1)).get(0).getCars().size()).isEqualTo(3);
     }
 
     @ParameterizedTest
