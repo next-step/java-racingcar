@@ -42,30 +42,6 @@ class CarTest {
         assertThat(car2.getPosition()).isEqualTo(2);
     }
 
-    @Test
-    public void 이름이_5자_이하인_차량은_Exception발생안함() {
-        //given
-        String name = "jason";
-
-        //when
-
-        //then
-        assertThatCode(() -> Car.from(name)).doesNotThrowAnyException();
-    }
-
-    @Test
-    public void 이름이_5자를_초과한_차량은_Exception발생() {
-        //given
-        String name = "jason1";
-
-        //when
-
-        //then
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            Car.from(name);
-        });
-    }
-
     @DisplayName("List<Car>를 정렬하면 위치의 내림차순으로 정렬된다.")
     @Test
     public void 내림차순_정렬_테스트() {
