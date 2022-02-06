@@ -11,27 +11,26 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
+        validateCars(cars);
         this.cars = cars;
-        checkZeroCar(this.cars);
-        checkSameNameCars(this.cars);
     }
 
     public Cars(List<String> names, int initValue) {
-        this(
-            names.stream()
-                .map(name -> new Car(name, initValue))
-                .collect(Collectors.toList())
-        );
+        this(names.stream().map(name -> new Car(name, initValue)).collect(Collectors.toList()));
     }
 
-    private void checkSameNameCars(List<Car> cars) {
-        if (cars.size()
-            != cars.stream().map(Car::getNameValue).distinct().count()) {
+    private void validateCars(List<Car> cars) {
+        validateZeroCar(cars);
+        validateSameNameCars(cars);
+    }
+
+    private void validateSameNameCars(List<Car> cars) {
+        if (cars.size() != cars.stream().map(Car::getNameValue).distinct().count()) {
             throw new IllegalArgumentException("[ERROR] 중복된 이름은 들어갈 수 없습니다.");
         }
     }
 
-    private void checkZeroCar(List<Car> cars) {
+    private void validateZeroCar(List<Car> cars) {
         if (Objects.isNull(cars) || cars.isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 자동차 개수는 적어도 1개 이상이어야 합니다.");
         }
