@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import racingcar.model.Car;
 
 public class Cars {
 
@@ -10,13 +11,13 @@ public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
-    public Cars(String[] carNames) {
-        for (String carName : carNames) {
+    public Cars(String carNames){
+        for (String carName : carNames.split(",")) {
             cars.add(new Car(carName));
         }
     }
 
-    public List<Car> moveForwardByCarsSize() {
+    public List<Car> moveCars() {
         Random random = new Random();
         for (Car car : cars) {
             int moveOrNot = random.nextInt(RANDOM_BOUND_VALUE);
