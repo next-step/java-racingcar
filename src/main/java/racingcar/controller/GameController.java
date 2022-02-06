@@ -14,9 +14,13 @@ public class GameController {
     private final Cars cars;
     private final int turn;
 
-    public GameController(final String carsName, final int turn) {
+    private GameController(final String carsName, final int turn) {
         this.cars = Cars.fromString(carsName);
         this.turn = turn;
+    }
+
+    public static GameController of(final String carsName, final int turn) {
+        return new GameController(carsName, turn);
     }
 
     private void play(final MovableStrategy strategy) {

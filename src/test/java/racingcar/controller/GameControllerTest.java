@@ -12,7 +12,7 @@ public class GameControllerTest {
     @Test
     void playSuccess() {
         assertDoesNotThrow(
-            () -> new GameController("a,b,c,d", 6)
+            () -> GameController.of("a,b,c,d", 6)
                 .startGame(RandomMovableStrategy.getInstance())
         );
     }

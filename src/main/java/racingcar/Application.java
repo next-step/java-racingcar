@@ -10,7 +10,10 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class Application {
+
     public static void main(String[] args) {
-        new GameController(InputView.readCarNames(), InputView.getTurn()).startGame(RandomMovableStrategy.getInstance());
+        GameController game = GameController.of(InputView.readCarNames(), InputView.getTurn());
+
+        game.startGame(RandomMovableStrategy.getInstance());
     }
 }
