@@ -66,9 +66,7 @@ public class Game {
     private int maximumDistance() {
         int maxPosition = 0;
         for (Car car : carList) {
-            if (car.checkMaxPosition(maxPosition)) {
-                maxPosition = car.getPosition().length();
-            }
+            maxPosition = car.checkMaxPosition(maxPosition);
         }
         return maxPosition;
     }
