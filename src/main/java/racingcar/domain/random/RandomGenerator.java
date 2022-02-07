@@ -2,12 +2,12 @@ package racingcar.domain.random;
 
 import java.util.Random;
 
-public class RandomGenerator implements RandomStrategy {
+public class RandomGenerator implements MovementStrategy {
 
-    private static final Random random = new Random();
+    private static final Random RANDOM_GENERATOR = new Random();
     private static final int LIMIT = 10;
 
-    public int get() {
-        return random.nextInt(LIMIT);
+    public int generate() {
+        return RANDOM_GENERATOR.nextInt(LIMIT);
     }
 }

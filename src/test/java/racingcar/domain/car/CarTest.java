@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.random.MoveGen;
 
 class CarTest {
     @DisplayName("차량 인스턴스 생성 후 이름은 정확하게 저장된다")
@@ -22,18 +21,34 @@ class CarTest {
         assertThat(car.getName()).isEqualTo("jason");
     }
 
-    @DisplayName("go() 메서드 호출 후 차량의 위치는 그 횟수만큼 증가된다.")
     @Test
-    public void go_메서드_테스트() {
+    public void go_메서드의_인자가_5이상이면_차량의_위치는_그_횟수만큼_증가한다() {
         //given
-        Car car1 = Car.from("jason");
+        Car prevCar = Car.from("jason");
 
         //when
-        car1.go(new MoveGen());
-        car1.go(new MoveGen());
+        Car nextCar1 = prevCar.go(5);
+        Car nextCar2 = nextCar1.go(5);
 
         //then
-        assertThat(car1.getPosition()).isEqualTo(2);
+        assertThat(prevCar.getPosition()).isEqualTo(0);
+        assertThat(nextCar1.getPosition()).isEqualTo(1);
+        assertThat(nextCar2.getPosition()).isEqualTo(2);
+    }
+
+    @Test
+    public void go_메서드의_인자가_5미만이면_차량의_위치는_증가하지_않는다() {
+        //given
+        Car prevCar = Car.from("jason");
+
+        //when
+        Car nextCar1 = prevCar.go(4);
+        Car nextCar2 = nextCar1.go(4);
+
+        //then
+        assertThat(prevCar.getPosition()).isEqualTo(0);
+        assertThat(nextCar1.getPosition()).isEqualTo(0);
+        assertThat(nextCar2.getPosition()).isEqualTo(0);
     }
 
     @DisplayName("List<Car>를 정렬하면 위치의 내림차순으로 정렬된다.")
@@ -50,7 +65,7 @@ class CarTest {
         cars.add(car1);
         cars.add(car2);
 
-        Collections.sort(cars, (o1, o2) -> o2.position - o1.position);
+        Collections.sort(cars, (o1, o2) -> o2.getPosition() - o1.getPosition());
 
         //then
         assertThat(cars.get(0).getName()).isEqualTo("jason");

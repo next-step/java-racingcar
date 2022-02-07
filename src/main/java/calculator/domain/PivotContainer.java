@@ -6,6 +6,7 @@ public class PivotContainer {
 
     private static final String SPACE = "\\s+";
     private static final int EVEN = 2;
+
     private final Operators operators;
     private final Numbers numbers;
 

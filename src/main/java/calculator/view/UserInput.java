@@ -5,37 +5,34 @@ import java.util.Scanner;
 public class UserInput {
 
     private static final String INPUT_ERROR_MESSAGE = "잘못된 입력입니다.";
-    private final Scanner scanner;
+    private final Scanner scanner = new Scanner(System.in);
 
-    private UserInput() {
-        scanner = new Scanner(System.in);
+    public UserInput() {}
+
+    public UserInput(String test) {
+        checkEmptyString(test);
     }
 
-    public static UserInput console() {
-        return new UserInput();
-    }
-
-    public String getLine() {
+    public String typeUserInput() {
         try {
-            return validateUserInput(userConsole());
+            return getUserInputFrom(userConsole());
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            return getLine();
+            return typeUserInput();
         }
+    }
+
+    private String getUserInputFrom(String userInput) {
+        checkEmptyString(userInput);
+        return userInput;
     }
 
     private String userConsole() {
         return scanner.nextLine();
     }
 
-    public static String validateUserInput(String userInput) {
-        return isEmptyString(userInput);
-    }
-
-    private static String isEmptyString(String userInput) {
+    private void checkEmptyString(String userInput) {
         if (userInput.trim().isEmpty()) {
             throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
-        return userInput;
     }
 }

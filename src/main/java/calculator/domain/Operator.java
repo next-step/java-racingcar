@@ -1,7 +1,6 @@
 package calculator.domain;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 public enum Operator {
     PLUS("+") {
@@ -41,7 +40,8 @@ public enum Operator {
 
     public static Operator fromString(String symbol) {
         return Arrays.stream(Operator.values())
-            .filter(v -> v.symbol.equalsIgnoreCase(symbol))
-            .findFirst().orElseThrow(() -> new IllegalArgumentException(NOT_OPERATIONS_MESSAGE));
+            .filter(operator -> operator.symbol.equals(symbol))
+            .findFirst()
+            .orElseThrow(() -> new IllegalArgumentException(NOT_OPERATIONS_MESSAGE));
     }
 }

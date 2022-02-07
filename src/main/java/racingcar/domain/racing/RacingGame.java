@@ -1,36 +1,53 @@
 package racingcar.domain.racing;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import racingcar.domain.car.Car;
 import racingcar.domain.car.Participants;
+import racingcar.domain.car.Turn;
+import racingcar.domain.random.MovementStrategy;
 
 public class RacingGame {
 
-    private final Participants participants;
-    private final int turnCount;
-    private final List<RacingResult> results;
-    private final RacingRecord racingRecord;
+    private static final String DELIMITER = ", ";
 
-    public RacingGame(Participants participants, int turnCount) {
+    private final Turn turn;
+    private Participants participants;
+    private final MovementStrategy randomMovementStrategy;
+
+    public RacingGame(Participants participants, Turn turn, MovementStrategy movementStrategy) {
         this.participants = participants;
-        this.turnCount = turnCount;
-        results = new ArrayList<>();
-        this.racingRecord = new RacingRecord();
+        this.turn = turn;
+        this.randomMovementStrategy = movementStrategy;
     }
 
-    public void game() {
+    public List<Participants> start() {
+        List<Participants> cars = new ArrayList<>();
+        int turnCount = turn.getValue();
+
         for (int i = 0; i < turnCount; i++) {
-            results.add(participants.race());
-            racingRecord.appendRecord(results.get(i));
+            participants = participants.race(randomMovementStrategy);
+            cars.add(participants);
         }
+
+        return new ArrayList<>(cars);
     }
 
-    public void printRacingProcess() {
-        System.out.print(racingRecord.getResultRecord());
+    public String findWinners(List<Participants> racingResult) {
+        List<Car> cars = new ArrayList<>(finalResultOf(racingResult).getParticipants());
+        Collections.sort(cars, (car1, car2) -> car2.getPosition() - car1.getPosition());
+
+        String winners = cars.stream()
+            .filter(car -> car.isSamePosition(cars.get(0)))
+            .map(Car::getName)
+            .collect(Collectors.joining(DELIMITER));
+
+        return winners;
     }
 
-    public void printWinner() {
-        String winner = results.get(results.size() - 1).getWinner();
-        System.out.print(winner);
+    public Participants finalResultOf(List<Participants> racingResult) {
+        return racingResult.get(racingResult.size() - 1);
     }
 }
