@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import racing.domain.TryNumber;
 
 public class InputView {
 
@@ -20,17 +19,12 @@ public class InputView {
             .collect(Collectors.toList());
     }
 
-    public static TryNumber getTryNumber() {
+    public static int getTryNumber() {
         try {
             System.out.println("시도할 횟수는 몇 회인가요?");
-            final int tryNumber = Integer.parseInt(SCANNER.nextLine());
-            return new TryNumber(tryNumber);
+            return Integer.parseInt(SCANNER.nextLine());
         } catch (NumberFormatException nfe) {
-            System.out.println("[ERROR] 숫자만 입력 해주세요.");
-            return getTryNumber();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return getTryNumber();
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력 해주세요.");
         }
     }
 }
