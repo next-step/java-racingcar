@@ -9,7 +9,6 @@ import racingcar.view.RacingCarOutput;
 
 public class GameLauncher {
 
-
     private List<String> carNameLists;
     private int raceCount;
     private List<RacingCar> racingCarLists;
@@ -25,8 +24,6 @@ public class GameLauncher {
         List<String> gameWinner = winners.getRacingWinnerLists();
         RacingCarOutput.printWinnersResult(gameWinner);
     }
-
-
 
     public void inputAll() {
         carNameLists = RacingCarInput.getCarName();
