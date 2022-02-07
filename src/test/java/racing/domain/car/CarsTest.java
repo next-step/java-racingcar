@@ -63,8 +63,7 @@ class CarsTest {
         final List<Car> actual = cars.driveCars(() -> movableNumber);
         for (int i = 0; i < actual.size(); i++) {
             assertThat(moveCars.get(i).getNameValue()).isEqualTo(actual.get(i).getNameValue());
-            assertThat(moveCars.get(i).getPositionValue()).isEqualTo(
-                actual.get(i).getPositionValue());
+            assertThat(moveCars.get(i).getPositionValue()).isEqualTo(actual.get(i).getPositionValue());
         }
     }
 
@@ -85,8 +84,7 @@ class CarsTest {
         final List<Car> actual = cars.driveCars(() -> notMovableNumber);
         for (int i = 0; i < actual.size(); i++) {
             assertThat(parameterCars.get(i).getNameValue()).isEqualTo(actual.get(i).getNameValue());
-            assertThat(parameterCars.get(i).getPositionValue()).isEqualTo(
-                actual.get(i).getPositionValue());
+            assertThat(parameterCars.get(i).getPositionValue()).isEqualTo(actual.get(i).getPositionValue());
         }
     }
 
