@@ -23,8 +23,10 @@ public class UserInputValue {
     }
 
     public void validateBlankCarName(List<String> userInputTokens) {
-        if (userInputTokens.size() == 0) {
-            throw new IllegalArgumentException(BLANK_CARNAME);
+        for (String userInputToken: userInputTokens) {
+            if (userInputToken == "") {
+                throw new IllegalArgumentException(BLANK_CARNAME);
+            }
         }
     }
 
