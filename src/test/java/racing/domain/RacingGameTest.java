@@ -18,16 +18,13 @@ class RacingGameTest {
     void 레이싱_무조건_전진_진행(int tryNumberValue, int movableNumber, List<Car> cars) {
         RacingGame racingGame = new RacingGame(() -> movableNumber, cars);
         final List<Cars> racingResult = racingGame.race(new TryNumber((tryNumberValue)));
-        int move = 1;
-        for (Cars oneRacingCars : racingResult) {
-            for (int i = 0; i < oneRacingCars.getCars().size(); i++) {
-                assertThat(cars.get(i).getNameValue()).isEqualTo(
-                    oneRacingCars.getCars().get(i).getNameValue());
-                assertThat(cars.get(i).getPositionValue() + move).isEqualTo(
-                    oneRacingCars.getCars().get(i).getPositionValue());
-            }
-            move++;
-        }
+
+        assertThat(cars.get(0).getNameValue()).isEqualTo(racingResult.get(tryNumberValue - 1).getCars().get(0).getNameValue());
+        assertThat(cars.get(0).getPositionValue() + tryNumberValue).isEqualTo(racingResult.get(tryNumberValue - 1).getCars().get(0).getPositionValue());
+        assertThat(cars.get(1).getNameValue()).isEqualTo(racingResult.get(tryNumberValue - 1).getCars().get(1).getNameValue());
+        assertThat(cars.get(1).getPositionValue() + tryNumberValue).isEqualTo(racingResult.get(tryNumberValue - 1).getCars().get(1).getPositionValue());
+        assertThat(cars.get(2).getNameValue()).isEqualTo(racingResult.get(tryNumberValue - 1).getCars().get(2).getNameValue());
+        assertThat(cars.get(2).getPositionValue() + tryNumberValue).isEqualTo(racingResult.get(tryNumberValue - 1).getCars().get(2).getPositionValue());
     }
 
     private static Stream<Arguments> 레이싱_무조건_전진_진행() {
@@ -43,14 +40,13 @@ class RacingGameTest {
     void 레이싱_무조건_스탑_진행(int tryNumberValue, int notMovableNumber, List<Car> cars) {
         RacingGame racingGame = new RacingGame(() -> notMovableNumber, cars);
         final List<Cars> racingResult = racingGame.race(new TryNumber((tryNumberValue)));
-        for (Cars oneRacingCars : racingResult) {
-            for (int i = 0; i < oneRacingCars.getCars().size(); i++) {
-                assertThat(cars.get(i).getNameValue()).isEqualTo(
-                    oneRacingCars.getCars().get(i).getNameValue());
-                assertThat(cars.get(i).getPositionValue()).isEqualTo(
-                    oneRacingCars.getCars().get(i).getPositionValue());
-            }
-        }
+
+        assertThat(cars.get(0).getNameValue()).isEqualTo(racingResult.get(tryNumberValue - 1).getCars().get(0).getNameValue());
+        assertThat(cars.get(0).getPositionValue()).isEqualTo(racingResult.get(tryNumberValue - 1).getCars().get(0).getPositionValue());
+        assertThat(cars.get(1).getNameValue()).isEqualTo(racingResult.get(tryNumberValue - 1).getCars().get(1).getNameValue());
+        assertThat(cars.get(1).getPositionValue()).isEqualTo(racingResult.get(tryNumberValue - 1).getCars().get(1).getPositionValue());
+        assertThat(cars.get(2).getNameValue()).isEqualTo(racingResult.get(tryNumberValue - 1).getCars().get(2).getNameValue());
+        assertThat(cars.get(2).getPositionValue()).isEqualTo(racingResult.get(tryNumberValue - 1).getCars().get(2).getPositionValue());
     }
 
     private static Stream<Arguments> 레이싱_무조건_스탑_진행() {
