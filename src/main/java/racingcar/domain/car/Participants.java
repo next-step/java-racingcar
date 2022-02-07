@@ -25,10 +25,14 @@ public class Participants {
     public Participants race(MovementStrategy movementStrategy) {
         List<Car> newCars = new ArrayList<>();
         for (Car car : cars) {
-            newCars.add(car.go(movementStrategy.generate()));
+            newCars.add(carAfterRace(car, movementStrategy));
         }
 
         return new Participants(newCars);
+    }
+
+    public Car carAfterRace(Car car, MovementStrategy movementStrategy) {
+        return car.go(movementStrategy.generate());
     }
 
     public List<Car> getParticipants() {
