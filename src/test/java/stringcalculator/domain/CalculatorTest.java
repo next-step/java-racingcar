@@ -23,18 +23,12 @@ class CalculatorTest {
 
     private UserInput userInput;
 
-    @DisplayName("객체 초기화")
-    @BeforeEach
-    void name() {
-        userInput = new UserInput();
-    }
-
     @DisplayName("계산기 수행 검증")
     @Test
     void operatorTest() {
         List<String> userInput = new ArrayList<>((Arrays.asList("1", "+", "2", "-", "1")));
         Calculator calculator = Calculator.of(userInput);
-        int result = calculator.process();
+        int result = calculator.calculateNumbers();
         Assertions.assertThat(result).isEqualTo(2);
     }
 
@@ -42,24 +36,24 @@ class CalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
     void blankTest(String input) {
-        userInput.setUserInput(input);
-        assertTrue(userInput.parsingUserInput());
+        userInput = new UserInput(input);
+        assertTrue(userInput.inputParsing());
     }
 
     @DisplayName("null 테스트")
     @ParameterizedTest
     @NullSource
     void nullTest(String input) {
-        userInput.setUserInput(input);
-        assertTrue(userInput.parsingUserInput());
+        userInput = new UserInput(input);
+        assertTrue(userInput.inputParsing());
     }
 
     @DisplayName("empty 테스트")
     @ParameterizedTest
     @EmptySource
     void emptyTest(String input) {
-        userInput.setUserInput(input);
-        assertTrue(userInput.parsingUserInput());
+        userInput = new UserInput(input);
+        assertTrue(userInput.inputParsing());
     }
 
     @DisplayName("null과 empty 그리고 공백, \t, \n 테스트")
@@ -67,8 +61,8 @@ class CalculatorTest {
     @NullAndEmptySource
     @ValueSource(strings = {" ", "\t", "\n"})
     void nullAndEmptyTest(String input) {
-        userInput.setUserInput(input);
-        assertTrue(userInput.parsingUserInput());
+        userInput = new UserInput(input);
+        assertTrue(userInput.inputParsing());
     }
 
     @DisplayName("덧셈 테스트")

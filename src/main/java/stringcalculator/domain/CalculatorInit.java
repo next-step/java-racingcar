@@ -28,22 +28,22 @@ public class CalculatorInit {
 
     public void start() throws IOException {
         do {
-            continueCalculator();
+            calculate();
         } while (repeatCalculator());
     }
 
-    private void continueCalculator() throws IOException {
+    private void calculate() throws IOException {
 
         UserInput input = new UserInput();
 
-        while (input.userInputValidCheck()) {
-            input.userInputRun();
+        while (input.inputValid()) {
+            input.inputUser();
         }
 
         BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
         try {
-            Calculator calculator = Calculator.of(input.getSplitUserInput());
-            log.write(String.valueOf(calculator.process()) + NEW_LINE);
+            Calculator calculator = Calculator.of(input.splitUserInput());
+            log.write(String.valueOf(calculator.calculateNumbers()) + NEW_LINE);
             log.flush();
         } catch (IllegalArgumentException | IOException exception) {
             log.write(exception.getMessage());

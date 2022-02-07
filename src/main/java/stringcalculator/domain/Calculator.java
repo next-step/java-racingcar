@@ -17,7 +17,7 @@ public class Calculator {
         return new Calculator(parsingInputFormat);
     }
 
-    public int process() {
+    public int calculateNumbers() {
         int result = Integer.parseInt(parsingInputFormat.get(NUMBER_ZERO));
 
         for (int index = NUMBER_ONE; index < parsingInputFormat.size() - NUMBER_ONE;
