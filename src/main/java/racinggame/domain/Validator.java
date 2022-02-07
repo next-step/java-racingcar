@@ -14,8 +14,7 @@ public class Validator {
     public static final int MINIMUM_PLAYER = 2;
     private static final int MAXIMUM_NAME_LENGTH = 5;
 
-    private Validator() {
-    }
+    private Validator() {}
 
     public static void validatePossibleToStart(final RacingCars racingCars) {
         if (isPossibleToStart(racingCars.get())) {
@@ -43,8 +42,8 @@ public class Validator {
         }
     }
 
-    public static void checkIsBlank(final String removedBlankInput) {
-        if (removedBlankInput.isEmpty()) {
+    public static void checkIsBlank(final String input) {
+        if (input.isEmpty() | input.matches("\\s+")) {
             throw new InputBlankException(INPUT_BLANK_MESSAGE);
         }
     }
@@ -53,7 +52,7 @@ public class Validator {
         for (int i = 0; i < splitName.length; i++) {
             if (splitName[i].isEmpty()) {
                 throw new InputBlankException(
-                        String.format("%s (%d번째 자동차 이름이 공백입니다.",INPUT_BLANK_MESSAGE, i));
+                        String.format("%s (%d번째 자동차 이름이 공백입니다.", INPUT_BLANK_MESSAGE, i));
             }
         }
     }

@@ -21,7 +21,7 @@ public class RacingCar {
     }
 
     public void forward(final int number) {
-        if(number >= MINIMUM_FORWARD_VALUE){
+        if (number >= MINIMUM_FORWARD_VALUE) {
             this.position += 1;
         }
     }

@@ -19,7 +19,7 @@ public class RacingCars {
                 .collect(Collectors.toList());
     }
 
-    public RacingCars(List<RacingCar> racingCars){
+    public RacingCars(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
     }
 
