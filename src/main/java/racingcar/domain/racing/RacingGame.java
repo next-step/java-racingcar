@@ -37,7 +37,7 @@ public class RacingGame {
 
     public String findWinners(List<Participants> racingResult) {
         List<Car> cars = new ArrayList<>(finalResultOf(racingResult).getParticipants());
-        Collections.sort(cars, (car1, car2) -> car2.position - car1.position);
+        Collections.sort(cars, (car1, car2) -> car2.getPosition() - car1.getPosition());
 
         String winners = cars.stream()
             .filter(car -> car.isSamePosition(cars.get(0)))

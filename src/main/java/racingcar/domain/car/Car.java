@@ -7,7 +7,7 @@ public class Car {
     private static final int MOVE_ONE_STEP = 1;
 
     private final Name name;
-    public final int position;
+    private final int position;
 
     private Car(final String name) {
         this(name, INITIAL_POSITION);

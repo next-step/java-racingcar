@@ -65,7 +65,7 @@ class CarTest {
         cars.add(car1);
         cars.add(car2);
 
-        Collections.sort(cars, (o1, o2) -> o2.position - o1.position);
+        Collections.sort(cars, (o1, o2) -> o2.getPosition() - o1.getPosition());
 
         //then
         assertThat(cars.get(0).getName()).isEqualTo("jason");
