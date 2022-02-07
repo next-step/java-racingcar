@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class IOClass {
 
-    public static Car[] getName() {
+    public static Car[] inputName() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         Scanner sc = new Scanner(System.in);
         String namesString = sc.nextLine();
@@ -64,11 +64,11 @@ public class IOClass {
         }
     }
 
-    private static List<String> getWinnerNames(Car[] cars, int maxScore) {
+    private static List<String> getWinnerNames(Car[] cars, int maxPosition) {
         List<String> winners = new ArrayList<>();
         final int CARS_COUNT = cars.length;
         for (int i = 0; i < CARS_COUNT; i++) {
-            if (cars[i].getPosition() == maxScore) {
+            if (cars[i].isSamePosition(maxPosition)) {
                 winners.add(cars[i].getName());
             }
         }
