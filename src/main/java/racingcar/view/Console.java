@@ -11,9 +11,13 @@ public class Console {
     private static final String INPUT_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
     private static final int CAR_NAME_MAX = 5;
     private static final String DELIMETER = ",";
-    private final Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public List<String> setRacingCarNames() {
+    private Console() {
+
+    }
+
+    public static List<String> setRacingCarNames() {
         System.out.println(INPUT_CAR_NAME);
 
         List<String> carNames = Arrays.asList(scanner.nextLine().split(DELIMETER));
@@ -27,19 +31,19 @@ public class Console {
         return carNames;
     }
 
-    public int setTryCount() {
+    public static int setTryCount() {
         System.out.println(INPUT_TRY_COUNT);
 
         return Integer.parseInt(scanner.nextLine());
     }
 
-    private void validateCarNameLength(String carName) {
+    private static void validateCarNameLength(String carName) {
         if (carName.length() > CAR_NAME_MAX) {
             throw new IllegalArgumentException(RacingCarException.CAR_NAME_INVALID);
         }
     }
 
-    private void validateCarNameEmpty(List<String> carNames) {
+    private static void validateCarNameEmpty(List<String> carNames) {
         if (carNames.isEmpty()) {
             throw new IllegalArgumentException(RacingCarException.CAR_NAME_EMPTY);
         }
