@@ -5,6 +5,7 @@ public class Car {
     private final String name;
     private int distance;
     private static final int MOVE_THRESHOLD = 4;
+    private static final int LIMIT_NAME_LENGTH = 5;
 
     public Car(String name) {
         this.name = name;
@@ -12,12 +13,17 @@ public class Car {
         validateCarName(name);
     }
 
+    public Car(String name, int distance) {
+        this.name = name;
+        this.distance = distance;
+    }
+
     public static Car of(String name) {
         return new Car(name);
     }
 
     public static void validateCarName(String carName) {
-        if (carName.length() > 5) {
+        if (carName.length() > LIMIT_NAME_LENGTH) {
             throw new IllegalArgumentException("Error: Invalid car name");
         }
     }
