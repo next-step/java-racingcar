@@ -4,22 +4,20 @@ import java.util.List;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingGame;
 import racingcar.domain.Winners;
-import racingcar.util.Movable;
-import racingcar.util.RandomUtil;
 import racingcar.view.RacingCarInput;
 import racingcar.view.RacingCarOutput;
 
 public class GameLauncher {
 
 
-    private List<String> carNameList;
+    private List<String> carNameLists;
     private int raceCount;
     private List<RacingCar> racingCarLists;
     private RacingGame racingGame;
 
     public void start() {
         inputAll();
-        racingGame = new RacingGame(carNameList);
+        racingGame = new RacingGame(carNameLists);
         racingCarLists = racingGame.getRacingCarLists();
         RacingCarOutput.printGameScore(raceCount, racingCarLists);
 
@@ -31,7 +29,7 @@ public class GameLauncher {
 
 
     public void inputAll() {
-        carNameList = RacingCarInput.getCarName();
+        carNameLists = RacingCarInput.getCarName();
         raceCount = RacingCarInput.getRaceCount();
     }
 
