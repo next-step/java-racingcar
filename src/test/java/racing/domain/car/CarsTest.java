@@ -41,8 +41,9 @@ class CarsTest {
     @ParameterizedTest
     @MethodSource
     void 자동차_개수_확인(List<String> parameterCarNames) {
+        final List<Car> cars = parameterCarNames.stream().map(Car::new).collect(Collectors.toList());
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(
-                () -> new Cars(parameterCarNames.stream().map(Car::new).collect(Collectors.toList())))
+                () -> new Cars(cars))
             .withMessage("[ERROR] 자동차 개수는 적어도 1개 이상이어야 합니다.");
     }
 
