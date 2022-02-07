@@ -3,6 +3,8 @@ package racingcar.controller;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+
+import racingcar.domain.MoveStrategy;
 import racingcar.view.Console;
 import racingcar.view.PrintResult;
 import racingcar.domain.RacingCar;
@@ -12,12 +14,9 @@ public class RacingCarGame {
     private int tryCount;
     private List<RacingCar> cars;
     private List<RacingCar> winners;
-
-    private static final int MIN_MOVE = 0;
-    private static final int MAX_MOVE = 9;
     private static final int NUMBER_ZERO = 0;
 
-    private static final Random random = new Random();
+    private final MoveStrategy moveStrategy = () -> (int) (Math.random() * 9);
     private static final Console console = new Console();
 
     public void setRacingCarGame() {
