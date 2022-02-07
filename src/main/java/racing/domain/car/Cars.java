@@ -38,8 +38,7 @@ public class Cars {
         final List<Car> carsState = new ArrayList<>();
         for (Car car : cars) {
             car.drive(movingStrategy.moving());
-            carsState.add(
-                new Car(new Name(car.getNameValue()), new Position(car.getPositionValue())));
+            carsState.add(new Car(car));
         }
         return carsState;
     }
