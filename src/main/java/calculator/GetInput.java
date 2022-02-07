@@ -52,7 +52,9 @@ public class GetInput {
 
         if (number.length() == 0) {
             return ERROR;
-        } else if (number.charAt(0) == '0' && number.length() > 1) {
+        } 
+        
+        if (number.charAt(0) == '0') {
             return ERROR;
         }
 
