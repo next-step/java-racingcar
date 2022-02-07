@@ -3,7 +3,6 @@ package calculatorFunction;
 import java.util.ArrayList;
 
 public class Application {
-
     public static void main(String[] args) {
         System.out.println("수식을 입력하시오: ");
         String expression = GetInput.inputString();

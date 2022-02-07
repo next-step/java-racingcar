@@ -1,13 +1,11 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class WinnerTest {
-
     @Test
     void 가장_많이_전진한_자동차가_우승한다() {
         List<Car> cars = Arrays.asList(
