@@ -2,58 +2,57 @@ package racinggame.view;
 
 import java.util.ArrayList;
 import java.util.List;
-import racinggame.domain.Car;
-import racinggame.domain.Cars;
-import racinggame.domain.CarHistory;
-import racinggame.domain.RoundHistory;
-import racinggame.domain.Winner;
-import racinggame.domain.Winners;
+import racinggame.domain.car.Car;
+import racinggame.domain.history.RoundHistories;
+import racinggame.domain.history.RoundHistory;
+import racinggame.domain.winner.Winner;
+import racinggame.domain.winner.Winners;
 
 public class ResultView {
 
-    private final List<RoundHistory> roundHistories = new ArrayList<>();
+    private static final String RUN_RESULT_TEXT = "실행 결과";
+    private static final String LOCATION_STAGE = "-";
+    private static final String WINNER_TEXT = "최종 우승자: ";
+    private static final String WINNER_JOIN_CHAR = ", ";
+    private static final String CAR_NAME_CAR_STATE_BETWEEN_TEXT = " : ";
 
     public ResultView() {
-    }
-
-    public void captureResult(Cars cars) {
-        List<CarHistory> carHistories = new ArrayList<>();
-        for (Car car : cars.getCars()) {
-            carHistories.add(new CarHistory(car));
-        }
-        roundHistories.add(new RoundHistory(carHistories));
 
     }
 
-    public void printCarsLocation() {
+    private void printCarsLocation(final List<RoundHistory> roundHistories) {
         for (RoundHistory roundHistory : roundHistories) {
             printCarNames(roundHistory);
             System.out.println();
         }
-
     }
 
-    private void printCarNames(RoundHistory roundHistory) {
-        for (CarHistory carHistory : roundHistory.getRoundHistory()) {
-            System.out.print(carHistory.getCarName() + " : " + "");
-            printLocation(carHistory.getLocation());
+    private void printCarNames(final RoundHistory roundHistory) {
+        for (Car car : roundHistory.getRoundHistory()) {
+            System.out.print(car.getCarName() + CAR_NAME_CAR_STATE_BETWEEN_TEXT);
+            printLocation(car.getLocation());
         }
     }
 
-    private void printLocation(int location) {
+    private void printLocation(final int location) {
         for (int i = 0; i < location; i++) {
-            System.out.print('-');
+            System.out.print(LOCATION_STAGE);
         }
         System.out.println();
     }
 
-    public void printWinner(Winners winners) {
+    private void printWinner(final Winners winners) {
         List<String> winnerNames = new ArrayList<>();
-        System.out.print("최종 우승자: ");
+        System.out.print(WINNER_TEXT);
         for (Winner winner : winners.getWinners()) {
             winnerNames.add(winner.getWinnerName());
         }
-        System.out.println(String.join(", ", winnerNames));
+        System.out.println(String.join(WINNER_JOIN_CHAR, winnerNames));
     }
 
+    public void printResult(RoundHistories roundHistories) {
+        System.out.println(RUN_RESULT_TEXT);
+        this.printCarsLocation(roundHistories.getAllRoundHistory());
+        this.printWinner(roundHistories.findWinners());
+    }
 }

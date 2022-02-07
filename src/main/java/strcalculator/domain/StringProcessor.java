@@ -1,18 +1,14 @@
 package strcalculator.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class StringProcessor {
 
     private String userInput;
-    private List<String> result = new ArrayList<String>();
 
-    public StringProcessor(String userInput) {
+    public StringProcessor(final String userInput) {
         this.userInput = userInput;
         deleteSpaceString();
         checkInput();
+        validation();
     }
 
     private void checkInput() {
@@ -21,8 +17,8 @@ public class StringProcessor {
         }
     }
 
-    public void validation() {
-        boolean matches = userInput.matches("[+\\-*/]|[0-9]+");
+    private void validation() {
+        final boolean matches = userInput.matches("[+\\-*/]|[0-9]+");
         if (matches == false) {
             throw new IllegalArgumentException("숫자와 연산자, 공백문자만 입력할 수 있습니다.");
         }
@@ -30,12 +26,12 @@ public class StringProcessor {
     }
 
     public String[] parseInputNumber() {
-        String[] numbers = userInput.split("[+\\-*/]");
+        final String[] numbers = userInput.split("[+\\-*/]");
         return numbers;
     }
 
     public String[] parseInputOperands() {
-        String[] operands = userInput.split("[0-9]+");
+        final String[] operands = userInput.split("[0-9]+");
         return operands;
     }
 
