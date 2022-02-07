@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.RacingCar;
 
 class RacingCarTest {
 
@@ -32,17 +31,29 @@ class RacingCarTest {
     @Test
     @DisplayName("랜덤한 값이 MOVABLE보다 크면, 자동차의 dist가 1 증가한다.")
     void moveCar() {
-        int currentDist = madeRacingCars.get(0).getCarDist();
         int afterDist;
-        int graterThanMovable = 5;
 
-        madeRacingCars.get(0).moveCar(graterThanMovable);
+        MoveStrategy moveStrategy = () -> 5;
+
+        madeRacingCars.get(0).moveCar(moveStrategy);
 
         afterDist = madeRacingCars.get(0).getCarDist();
 
-        assertNotEquals(currentDist, afterDist);
-
         assertEquals(1, afterDist);
+    }
+
+    @Test
+    @DisplayName("랜덤한 값이 MOVABLE보다 작으면, 자동차의 dist가 움직이지 않는다.")
+    void moveNotCar() {
+        int afterDist;
+
+        MoveStrategy moveStrategy = () -> 3;
+
+        madeRacingCars.get(0).moveCar(moveStrategy);
+
+        afterDist = madeRacingCars.get(0).getCarDist();
+
+        assertEquals(0, afterDist);
     }
 
     @Test

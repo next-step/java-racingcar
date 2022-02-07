@@ -5,12 +5,10 @@ import java.util.stream.Collectors;
 
 public class RacingCar {
 
-    private int carDist;
-가    private final String carName;
     private static final int INIT_DIST = 0;
     private static final int MOVABLE = 4;
-
-    private static final MovingCar moveCar = new MovingCar();
+    private int carDist;
+    private final String carName;
 
     private RacingCar(String carName) {
         this.carName = carName;
@@ -24,7 +22,7 @@ public class RacingCar {
     }
 
     public void moveCar(MoveStrategy moveStrategy) {
-        if (moveStrategy.availMoveValue() >= MOVABLE) {
+        if (moveStrategy.movable() >= MOVABLE) {
             carDist++;
         }
     }

@@ -1,27 +1,25 @@
 package racingcar.controller;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 import racingcar.domain.MoveStrategy;
+import racingcar.domain.RandomGenerate;
 import racingcar.view.Console;
 import racingcar.view.PrintResult;
 import racingcar.domain.RacingCar;
 
 public class RacingCarGame {
 
+    private static final int TRY_COUNT_ZERO = 0;
+    private static final MoveStrategy moveStrategy = RandomGenerate::makeRandom;
     private int tryCount;
     private List<RacingCar> cars;
     private List<RacingCar> winners;
-    private static final int NUMBER_ZERO = 0;
-
-    private final MoveStrategy moveStrategy = () -> (int) (Math.random() * 9);
-    private static final Console console = new Console();
 
     public void setRacingCarGame() {
-        cars = RacingCar.setRacingCars(console.setRacingCarNames());
-        tryCount = console.setTryCount();
+        cars = RacingCar.setRacingCars(Console.setRacingCarNames());
+        tryCount = Console.setTryCount();
     }
 
     public void playRacingCarGame() {
@@ -32,7 +30,7 @@ public class RacingCarGame {
             PrintResult.printMoveState(cars);
             tryCount--;
 
-        } while (tryCount > NUMBER_ZERO);
+        } while (tryCount > TRY_COUNT_ZERO);
 
         setRacingWinners();
 
@@ -40,11 +38,7 @@ public class RacingCarGame {
     }
 
     private void moveRacingCar() {
-        cars.forEach(car -> car.moveCar(randomMove()));
-    }
-
-    private int randomMove() {
-        return MIN_MOVE + random.nextInt(MAX_MOVE - MIN_MOVE + 1);
+        cars.forEach(car -> car.moveCar(moveStrategy));
     }
 
     private void setRacingWinners() {
