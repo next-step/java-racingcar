@@ -11,14 +11,14 @@ public class Victory {
         this.victories = victories;
     }
 
-    public static Victory maxCheck(final Cars cars) {
+    public static Victory makeVictoryCars(final Cars cars) {
 
-        int max = maxDriveLength(cars);
-        return new Victory(cars.carMaxCheck(max));
+        int max = findMaxStepCar(cars);
+        return new Victory(cars.doMaxCar(max));
     }
 
-    private static int maxDriveLength(final Cars cars) {
-        return cars.carMaxDistanceCount();
+    private static int findMaxStepCar(final Cars cars) {
+        return cars.findMaxStepCars();
     }
 
     public List<Car> victory() {

@@ -15,8 +15,8 @@ public class RacingCarUserResult {
         new OutputStreamWriter(System.out));
 
 
-    public static void judge(final List<OutputDTO> output) throws Exception {
-        String victory = output.stream()
+    public static void printWinnerCar(final List<OutputDTO> outputDto) throws Exception {
+        String victory = outputDto.stream()
             .map(OutputDTO::getCarName)
             .collect(Collectors.joining(COMMAS));
         log.write(WINNER_IS + victory);
@@ -24,17 +24,17 @@ public class RacingCarUserResult {
 
     }
 
-    public static void carStatus(final List<OutputDTO> cars) {
+    public static void printCarStatus(final List<OutputDTO> cars) {
         cars.forEach(OutputDto -> {
             try {
-                carDetailStatus(OutputDto);
+                printCarResult(OutputDto);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
     }
 
-    private static void carDetailStatus(final OutputDTO outputDto) throws Exception {
+    private static void printCarResult(final OutputDTO outputDto) throws Exception {
         log.write(outputDto.carStatementMessage());
         log.flush();
     }

@@ -28,11 +28,11 @@ public class Controller {
         for (int idx = NUMBER_ZERO; idx < inputDto.getRacingTryCounter(); idx++) {
             racing.drive();
             List<OutputDTO> result = convertCar(cars);
-            RacingCarUserResult.carStatus(result);
+            RacingCarUserResult.printCarStatus(result);
         }
-        Victory victory = Victory.maxCheck(cars);
+        Victory victory = Victory.makeVictoryCars(cars);
         List<OutputDTO> victoryResult = convertVictory(victory);
-        RacingCarUserResult.judge(victoryResult);
+        RacingCarUserResult.printWinnerCar(victoryResult);
     }
 
     private static List<OutputDTO> convertVictory(final Victory victory) {
@@ -49,7 +49,7 @@ public class Controller {
     private static InputDTO startGame() throws IOException {
         String name = receiveUserCarse();
         int count = userTry();
-        List<String> parsingName = StringUtils.splitStr(name);
+        List<String> parsingName = StringUtils.splitUserInput(name);
         return new InputDTO(parsingName, count);
     }
 

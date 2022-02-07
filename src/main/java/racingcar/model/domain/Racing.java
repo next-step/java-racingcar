@@ -11,7 +11,7 @@ public class Racing {
     }
 
     public void drive() {
-        cars.carsDrive(carMoveBehavior);
+        cars.drive(carMoveBehavior);
     }
 }
 

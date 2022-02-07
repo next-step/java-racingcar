@@ -8,7 +8,7 @@ public class StringUtils {
 
     private static final String DELIMITER = ",";
 
-    public static List<String> splitStr(final String userInput) {
+    public static List<String> splitUserInput(final String userInput) {
         return Arrays.stream(userInput.split(DELIMITER)).collect(Collectors.toList());
     }
 }

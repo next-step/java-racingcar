@@ -17,6 +17,6 @@ public class StringUtilsTest {
     @ValueSource(strings = {"a,aa,aaa"})
     void splitStrTest(String input) {
         List<String> splitTest = new ArrayList(Arrays.asList("a", "aa", "aaa"));
-        assertThat(StringUtils.splitStr(input)).isEqualTo(splitTest);
+        assertThat(StringUtils.splitUserInput(input)).isEqualTo(splitTest);
     }
 }

@@ -35,7 +35,7 @@ public class CarsTest {
     @DisplayName("자동차_전진_여부_테스트")
     @Test
     void carsDriveTest() {
-        cars.carsDrive(new FixMoveBehavior(true));
+        cars.drive(new FixMoveBehavior(true));
         cars.cars()
             .forEach(car -> assertThat(car.getStep()).isEqualTo(1));
     }
@@ -43,7 +43,7 @@ public class CarsTest {
     @DisplayName("자동차_전진_최대이동_테스트")
     @Test
     void carMaxCheckTest() {
-        List<Car> cars = CarsTest.cars.carMaxCheck(0);
+        List<Car> cars = CarsTest.cars.doMaxCar(0);
         assertThat(cars.size()).isEqualTo(3);
     }
 
@@ -59,6 +59,6 @@ public class CarsTest {
             })
             .collect(Collectors.toList());
 
-        assertThat(cars.carMaxDistanceCount()).isEqualTo(1);
+        assertThat(cars.findMaxStepCars()).isEqualTo(1);
     }
 }

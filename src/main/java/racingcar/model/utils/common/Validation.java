@@ -18,8 +18,8 @@ public class Validation {
 
     public static boolean validateCarName(final String name) {
         try {
-            validateLengthLimit(StringUtils.splitStr(name));
-            validateDuplicateCar(StringUtils.splitStr(name));
+            validateLengthLimit(StringUtils.splitUserInput(name));
+            validateDuplicateCar(StringUtils.splitUserInput(name));
         } catch (InputValidationException exception) {
             System.out.println(exception.getMessage());
             return true;
