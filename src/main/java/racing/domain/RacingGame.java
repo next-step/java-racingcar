@@ -34,7 +34,8 @@ public class RacingGame {
 
     public List<Car> decideWinners() {
         final Position maxPosition = cars.findMaxPosition();
-        return cars.getCars().stream().filter(car -> car.isSamePosition(maxPosition))
+        return cars.getCars().stream()
+            .filter(car -> car.isSamePosition(maxPosition))
             .collect(Collectors.toList());
     }
 }
