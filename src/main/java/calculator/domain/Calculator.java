@@ -8,7 +8,7 @@ public class Calculator {
 
     public void startCalculate() {
         try {
-            Expression expression = new Expression(getUserInput());
+            final Expression expression = new Expression(getUserInput());
             expression.calculate();
             expression.printResult();
         } catch (IllegalArgumentException | ArithmeticException e) {
