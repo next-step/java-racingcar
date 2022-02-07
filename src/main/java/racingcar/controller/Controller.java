@@ -43,7 +43,10 @@ public class Controller {
     }
 
     private static List<OutputDTO> convertCar(final Cars cars) {
-        return cars.cars().stream().map(OutputDTO::new).collect(Collectors.toList());
+        return cars.cars()
+            .stream()
+            .map(OutputDTO::new)
+            .collect(Collectors.toList());
     }
 
     private static InputDTO startGame() throws IOException {

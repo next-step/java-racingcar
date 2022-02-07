@@ -12,9 +12,7 @@ public class Victory {
     }
 
     public static Victory makeVictoryCars(final Cars cars) {
-
-        int max = findMaxStepCar(cars);
-        return new Victory(cars.doMaxCar(max));
+        return new Victory(cars.doMaxCar(findMaxStepCar(cars)));
     }
 
     private static int findMaxStepCar(final Cars cars) {
