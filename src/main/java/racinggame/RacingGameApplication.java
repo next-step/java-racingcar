@@ -20,22 +20,23 @@ public class RacingGameApplication {
     public static void main(String[] args) {
 
         while (true) {
-            InputVo inputVo = new InputVo(InputView.inputCarNames(), InputView.inputTrial());
+
+            InputVo inputVo;
+            try {
+                inputVo = new InputVo(InputView.inputCarNames(), InputView.inputTrial());
+            } catch (IllegalAccessException e) {
+                System.out.println(e.getMessage());
+                continue;
+            }
+
+            Trial trial = getTrial(inputVo.getTrial());
 
             RacingCars racingCars;
             try {
                 racingCars = getRacingCars(inputVo.getCarNames());
             } catch (NameLengthOverException | InputBlankException e) {
                 System.out.println(e.getMessage());
-                racingCars = RetryInput.createRacingCarsUntilValid();
-            }
-
-            Trial trial;
-            try {
-                trial = getTrial(inputVo.getTrial());
-            } catch (InputBlankException | NumberFormatException e) {
-                System.out.println(e.getMessage());
-                trial = RetryInput.createTrialUntilValid();
+                continue;
             }
 
             RacingGame racingGame;
@@ -43,7 +44,7 @@ public class RacingGameApplication {
                 racingGame = new RacingGame(racingCars);
             } catch (LackOfPlayerException e) {
                 System.out.println(e.getMessage());
-                racingGame = new RacingGame(RetryInput.createRacingCarsUntilValid());
+                continue;
             }
             startGame(racingGame, trial);
 
@@ -60,7 +61,7 @@ public class RacingGameApplication {
     }
 
     public static Trial getTrial(String inputTrial) {
-            return new Trial(inputTrial);
+        return new Trial(inputTrial);
     }
 
     public static void startGame(final RacingGame racingGame, final Trial trial) {

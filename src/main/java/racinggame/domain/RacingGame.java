@@ -25,4 +25,3 @@ public class RacingGame {
         return this.racingCars;
     }
 }
-
