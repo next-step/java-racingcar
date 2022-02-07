@@ -1,7 +1,6 @@
 package racingcar.model;
 
 import racingcar.util.Message;
-import racingcar.util.RandomGenerator;
 
 public class Car {
     private static final int MOVING_CONDITION = 4;
@@ -20,13 +19,20 @@ public class Car {
         if (randomNumber >= MOVING_CONDITION) {
             this.position += "-";
         }
-
     }
 
     private void validateCarNameLength(String carName) {
         if (carName.length() > NAME_LENGTH) {
             throw new IllegalArgumentException(Message.CAR_NAME_ERROR);
         }
+    }
+
+    public boolean checkMaxPosition(int maxPosition) {
+        return this.position.length() > maxPosition;
+    }
+
+    public boolean isMaxPosition(int maxPosition) {
+        return this.position.length() == maxPosition;
     }
 
     public String getCarName() {
