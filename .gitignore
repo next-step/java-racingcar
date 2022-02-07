@@ -14,6 +14,8 @@
 .springBeans
 bin/
 
+/test/study/
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
