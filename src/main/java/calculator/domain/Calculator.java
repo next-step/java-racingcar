@@ -6,9 +6,6 @@ public class Calculator {
 
     private final Scanner scanner = new Scanner(System.in);
 
-    public Calculator() {
-    }
-
     public void startCalculate() {
         try {
             Expression expression = new Expression(getUserInput());

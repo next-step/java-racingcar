@@ -10,9 +10,6 @@ import racing.view.OutputView;
 
 public class RacingController {
 
-    public RacingController() {
-    }
-
     public void start() {
         try {
             final List<String> names = InputView.getCarNames();
