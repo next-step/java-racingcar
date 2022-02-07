@@ -5,12 +5,13 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 public class UserTest {
+
     @Test
     void 빈문자열만_입력하면_예외가_발생한다() {
         UserInputValue user = new UserInputValue();
 
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> user.validateBlankCarName(Arrays.asList("")));
+            .isThrownBy(() -> user.validateBlank(Arrays.asList("")));
     }
 
     @Test
