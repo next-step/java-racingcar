@@ -7,14 +7,10 @@ public class Cars {
 
     private final List<Car> cars = new ArrayList<>();
 
-    private Cars(final List<String> carNames) {
+    public Cars(final List<String> carNames) {
         for (String carName : carNames) {
             cars.add(Car.of(carName));
         }
-    }
-
-    public static Cars of(final List<String> carNames) {
-        return new Cars(carNames);
     }
 
     public List<Car> getCars() {
