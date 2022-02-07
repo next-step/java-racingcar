@@ -19,8 +19,8 @@ public class RacingGame {
     }
 
     public static RacingGame registerCars(MovingStrategy movingStrategy, List<String> names) {
-        return new RacingGame(movingStrategy,
-            names.stream().map(Car::new).collect(Collectors.toList()));
+        final List<Car> cars = names.stream().map(Car::new).collect(Collectors.toList());
+        return new RacingGame(movingStrategy, cars);
     }
 
     public List<Cars> race(final TryNumber tryNumber) {
