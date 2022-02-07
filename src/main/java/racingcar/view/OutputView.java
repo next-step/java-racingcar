@@ -20,11 +20,11 @@ public class OutputView {
             racingRecord.appendRecord(participants.getParticipants());
         }
 
-        printMessage(HEAD_MESSAGE + ENTER);
+        System.out.println(HEAD_MESSAGE);
         printMessage(racingRecord.getResultRecord());
     }
 
     public static void printWinner(final String winner) {
-        printMessage(FINAL_WINNER_MESSAGE + winner);
+        System.out.println(FINAL_WINNER_MESSAGE + winner);
     }
 }
