@@ -28,6 +28,6 @@ class CarTest {
     void 난수가_4_이상일_떄_자동차는_전진힌다(int randomNumber) {
         Car car = new Car("race");
         car.moveCarRandomly(randomNumber);
-        assertThat(car.getDistance()).isEqualTo(0);
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 }
