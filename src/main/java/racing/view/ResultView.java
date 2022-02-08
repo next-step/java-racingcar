@@ -26,7 +26,7 @@ public class ResultView {
             for(int i = 0; i < car.getDistance(); i++) {
                 sb.append('-');
             }
-            formattedResult.append(car.getName() + " : " + sb + "\n");
+            formattedResult.append(car.getName()).append(" : ").append(sb).append("\n");
         }
 
         return formattedResult;
