@@ -2,17 +2,12 @@ package calculator;
 
 public class Calculator {
 
-    private static final String BLANK = " ";
     private static final String ERROR = "ERROR";
 
     public static void execute() {
         System.out.println("수식을 입력하시오: ");
-        String expression = GetInput.inputString();
-        expression = expression.replace(BLANK, "");
-        if (expression.isEmpty()) {
-            throw new IllegalArgumentException("Error: need right expression");
-        }
-        String[] expressions = GetInput.parsing(expression);
+        String expression = InputView.inputString();
+        String[] expressions = InputView.parsing(expression);
         Calculator calculator = new Calculator();
         calculator.calculate(expressions);
     }

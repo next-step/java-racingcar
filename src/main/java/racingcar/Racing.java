@@ -8,7 +8,6 @@ public class Racing {
         int times = IOClass.getTimes();
         race.repeatGame(cars, times);
         IOClass.printWinners(cars);
-        return;
     }
 
 }
