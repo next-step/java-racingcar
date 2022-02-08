@@ -2,6 +2,15 @@ package racingcar.view;
 
 public class ResultView {
 
+    public void printGameStatus(String name, int move) {
+        String dashes = getDashByMove(move);
+        System.out.println(name + ":" + dashes);
+    }
+
+    public void printGameResult(String winners) {
+        System.out.println("최종 우승자: " + winners);
+    }
+
     private String getDashByMove(int move) {
         StringBuilder dash = new StringBuilder();
 
@@ -11,13 +20,5 @@ public class ResultView {
         return dash.toString();
     }
 
-    public void printGameStatus(String name, int move) {
-        String dashes = getDashByMove(move);
-        System.out.println(name + ":" + dashes);
-    }
-
-    public void printGameResult(String winners) {
-        System.out.println("최종 우승자: " + winners);
-    }
 
 }
