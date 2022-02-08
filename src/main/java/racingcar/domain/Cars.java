@@ -35,7 +35,7 @@ public class Cars {
     private void verifyDuplicate(List<Car> cars) {
         Set<Car> carNames = new HashSet<>(cars);
 
-        if(carNames.size() != cars.size()){
+        if (carNames.size() != cars.size()) {
             throw new IllegalStateException("자동차 이름이 중복되었습니다.");
         }
     }
@@ -58,7 +58,7 @@ public class Cars {
         return cars.stream()
             .mapToInt(Car::getPosition)
             .max()
-            .orElseThrow(()-> new IllegalStateException("최대 위치를 구할 수 없습니다."));
+            .orElseThrow(() -> new IllegalStateException("최대 위치를 구할 수 없습니다."));
     }
 
     public List<Car> getCars() {

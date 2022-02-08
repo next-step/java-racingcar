@@ -8,7 +8,8 @@ public class RacingCarInput {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    private RacingCarInput(){}
+    private RacingCarInput() {
+    }
 
     public static List<String> getCarName() {
         String input = "";
