@@ -12,14 +12,14 @@ import racingcar.util.RandomGenerator;
 import racingcar.view.OutputView;
 
 public class Game {
-    private List<Car> carList = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
 
     public void play() {
 
         System.out.println(Message.INPUT_GUIDE_MESSAGE);
         String[] carNames = InputView.getCarName();
 
-        carList = carInformation(carNames);
+        List<Car> cars = carInformation(carNames);
 
         System.out.println(Message.ASK_TRY_COUNT);
         int tryCount = InputView.getTryCount();
@@ -29,21 +29,21 @@ public class Game {
             moveForwardByCount();
         }
 
-        Winner winner = new Winner(carList);
+        Winner winner = new Winner(cars);
         OutputView.printWinner(winner.winnerList());
     }
 
     private List<Car> carInformation(String[] carNames) {
         for (String carName: carNames){
             Car carInformation = new Car(carName);
-            carList.add(carInformation);
+            cars.add(carInformation);
         }
         return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
     }
 
     public void moveForwardByCount() {
         RandomGenerator randomGenerator = new RandomGenerator();
-        for (Car car : carList) {
+        for (Car car : cars) {
             int randomNumber = randomGenerator.generateRandomNumber();
             car.moveForward(randomNumber);
             OutputView.printResult(car.getCarName(), car.getPosition());
