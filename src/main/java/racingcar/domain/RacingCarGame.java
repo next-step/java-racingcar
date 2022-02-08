@@ -7,13 +7,14 @@ import racingcar.view.ResultView;
 
 public class RacingCarGame {
 
+    private final int MIN_MOVE = 0;
+    private final int MAX_MOVE = 9;
     private final static Random RANDOM = new Random();
     private final static ResultView resultView = new ResultView();
     private List<Car> cars;
     private final List<String> carNames;
     private int tryCount;
-    private final int MIN_MOVE = 0;
-    private final int MAX_MOVE = 9;
+
 
     public RacingCarGame(int tryCount, List<String> carNames) {
         this.tryCount = tryCount;
