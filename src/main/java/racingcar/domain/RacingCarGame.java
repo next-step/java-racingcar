@@ -11,7 +11,7 @@ public class RacingCarGame {
     private final static int MAX_MOVE = 9;
     private final static Random RANDOM = new Random();
     private final static ResultView resultView = new ResultView();
-    private List<Car> cars;
+    private final List<Car> cars;
     private final List<String> carNames;
     private int tryCount;
 
