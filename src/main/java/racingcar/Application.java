@@ -12,9 +12,7 @@ public class Application {
         Referee referee = new Referee();
         ResultView resultView = new ResultView();
 
-        int tryCount = InputView.getTryCount();
-        List<String> carNames = InputView.getCarNames();
-        RacingCarGame racingCarGame = new RacingCarGame(tryCount, carNames);
+        RacingCarGame racingCarGame = new RacingCarGame(InputView.getCarNames(), InputView.getTryCount());
 
         racingCarGame.play();
 
