@@ -19,8 +19,8 @@ public class Cars {
     public List<Car> moveCars() {
         Random random = new Random();
         for (Car car : cars) {
-            int moveOrNot = random.nextInt(RANDOM_BOUND_VALUE);
-            car.moveForward(moveOrNot);
+            int moveCondition = random.nextInt(RANDOM_BOUND_VALUE);
+            car.moveForward(moveCondition);
         }
         return cars;
     }
