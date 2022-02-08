@@ -15,7 +15,6 @@ public class Validator {
     public static final int MINIMUM_PLAYER = 2;
     private static final int MAXIMUM_NAME_LENGTH = 5;
     private static final String NUMERIC_REGEX = "[0-9]+";
-    private static final String BLANKS_REGEX = "\\s+";
 
     private Validator() {}
 
@@ -45,12 +44,6 @@ public class Validator {
 
     private static boolean isNotNumber(String trial) {
         return !trial.matches(NUMERIC_REGEX);
-    }
-
-    public static void checkIsBlank(final String input) {
-        if (input.isEmpty() | input.matches(BLANKS_REGEX)) {
-            throw new InputBlankException(INPUT_BLANK_MESSAGE);
-        }
     }
 
     public static void checkNameIsBlank(final String[] splitName) {
