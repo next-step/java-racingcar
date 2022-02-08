@@ -1,15 +1,15 @@
-package racinggame;
+package racinggame.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
-import racinggame.util.Utils;
+import racinggame.util.StringUtils;
 
-class UtilsTest {
+class StringUtilsTest {
 
     @Test
     void repeat_String() {
-        final String repeatString = Utils.repeat("*", 5);
+        final String repeatString = StringUtils.repeat("*", 5);
 
         assertThat(repeatString).isEqualTo("*****");
     }

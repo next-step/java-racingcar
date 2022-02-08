@@ -1,8 +1,8 @@
 package racinggame.util;
 
-public class Utils {
+public class StringUtils {
 
-    private Utils() {}
+    private StringUtils() {}
 
     public static String repeat(final String str, final int num) {
         final StringBuilder sb = new StringBuilder();

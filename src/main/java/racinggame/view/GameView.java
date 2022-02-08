@@ -2,7 +2,7 @@ package racinggame.view;
 
 import java.util.HashMap;
 import java.util.Map;
-import racinggame.util.Utils;
+import racinggame.util.StringUtils;
 import racinggame.domain.RacingCar;
 import racinggame.domain.RacingCars;
 import racinggame.domain.vo.WinnersVo;
@@ -24,7 +24,7 @@ public class GameView {
                 .forEach(car -> {
                     String carName = car.getName();
                     resultOfCar.put(carName, String.format("%-5s: %s", carName,
-                            Utils.repeat(FOOTPRINTS, car.getPosition())));
+                            StringUtils.repeat(FOOTPRINTS, car.getPosition())));
                     positionOfCar.put(carName, 0);
                 });
     }
@@ -36,7 +36,7 @@ public class GameView {
     private static String drawCurrResult(RacingCar racingCar) {
         String carName = racingCar.getName();
         return resultOfCar.put(carName, resultOfCar.get(carName)
-                + Utils.repeat(FOOTPRINTS, countForward(racingCar)));
+                + StringUtils.repeat(FOOTPRINTS, countForward(racingCar)));
     }
 
     private static int countForward(RacingCar racingCar) {
