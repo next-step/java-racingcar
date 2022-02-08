@@ -16,18 +16,6 @@ class CarsTest {
 
     @ParameterizedTest
     @MethodSource
-    void Car들_중_최대_위치_값_확인(List<Car> parameterCars) {
-        final Cars cars = new Cars(parameterCars);
-        assertThat(4).isEqualTo(cars.findMaxPosition().getValue());
-    }
-
-    private static Stream<Arguments> Car들_중_최대_위치_값_확인() {
-        return Stream.of(
-            Arguments.of(Arrays.asList(new Car("a", 2), new Car("b", 4), new Car("C", 1))));
-    }
-
-    @ParameterizedTest
-    @MethodSource
     void 중복된_이름_확인(List<Car> parameterCars) {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(
             () -> new Cars(parameterCars)).withMessage("[ERROR] 중복된 이름은 들어갈 수 없습니다.");

@@ -44,7 +44,7 @@ public class Cars {
         return carsState;
     }
 
-    public Position findMaxPosition() {
+    private Position findMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
             maxPosition = Math.max(maxPosition, car.getPositionValue());
