@@ -5,6 +5,7 @@ import java.util.List;
 import racing.domain.Car;
 import racing.domain.RacingInfo;
 import racing.domain.Round;
+import racing.domain.CarResultVO;
 import racing.domain.RoundResult;
 
 public class Racing {
@@ -32,17 +33,17 @@ public class Racing {
     }
 
     private void runGame() {
-        final RoundResult result = round.play(cars);
-        results.add(result);
+        List<CarResultVO> result = round.play(cars);
+        results.add(new RoundResult(result));
         roundNumber--;
     }
 
-    public List<Car> getLastResult() {
+    public RoundResult getLastResult() {
         final int LAST_INDEX = results.size() - 1;
-        return results.get(LAST_INDEX).getCars();
+        return results.get(LAST_INDEX);
     }
 
-    public List<RoundResult> getTotalRoundResults() {
+    public List<RoundResult> getRoundResults() {
         return results;
     }
 }

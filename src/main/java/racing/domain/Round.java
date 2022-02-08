@@ -1,5 +1,6 @@
 package racing.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Round {
@@ -10,11 +11,15 @@ public class Round {
         this.roundNumber = roundNumber;
     }
 
-    public RoundResult play(List<Car> cars) {
+    public List<CarResultVO> play(List<Car> cars) {
+        List<CarResultVO> results = new ArrayList<>();
+
         for (Car car : cars) {
             car.moveByRule(MoveRule.makeValue());
+            results.add(new CarResultVO(car.getName(), car.getDistance()));
         }
-        return new RoundResult(cars);
+
+        return results;
     }
 
     public int getRoundNumber() {

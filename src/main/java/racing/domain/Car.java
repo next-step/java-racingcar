@@ -1,6 +1,6 @@
 package racing.domain;
 
-public class Car implements Comparable<Car> {
+public class Car {
 
     private static final int NAME_LENGTH_CONDITION = 5;
 
@@ -29,15 +29,6 @@ public class Car implements Comparable<Car> {
         if(rule.isMovable(value)) {
             distance++;
         }
-    }
-
-    @Override
-    public int compareTo(Car o) {
-        return o.distance - this.distance;
-    }
-
-    public boolean isSameDistance(int bestDistance) {
-        return distance == bestDistance;
     }
 
     public int getDistance() {
