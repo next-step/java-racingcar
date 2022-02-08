@@ -2,6 +2,7 @@ package racingcar;
 
 
 import java.util.List;
+import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
 import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.view.RacingCarInput;
@@ -13,7 +14,7 @@ public class Application {
         List<String> carNames = RacingCarInput.getCarName();
         int endRaceCount = RacingCarInput.getRaceCount();
 
-        RacingGame racingGame = new RacingGame(carNames, endRaceCount, new RandomMoveStrategy());
+        RacingGame racingGame = new RacingGame(Cars.of(carNames), endRaceCount, new RandomMoveStrategy());
 
         StringBuilder gameLog = new StringBuilder();
         while (racingGame.isOngoing()) {

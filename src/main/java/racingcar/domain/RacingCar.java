@@ -6,12 +6,13 @@ import racingcar.domain.strategy.MoveStrategy;
 public class RacingCar implements Car {
 
     private static final int NAME_SIZE = 5;
+    private static final int START_POSITION = 0;
 
     private final String name;
     private int position;
 
     public RacingCar(String name) {
-        this(name, 0);
+        this(name, START_POSITION);
     }
 
     public RacingCar(String name, int position) {

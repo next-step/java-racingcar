@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.List;
 import racingcar.domain.strategy.MoveStrategy;
 
 public class RacingGame {
@@ -9,8 +8,8 @@ public class RacingGame {
     private final MoveStrategy moveStrategy;
     private int tryRaceCount;
 
-    public RacingGame(List<String> nameList, int tryRaceCount, MoveStrategy moveStrategy) {
-        this.cars = Cars.of(nameList);
+    public RacingGame(Cars cars, int tryRaceCount, MoveStrategy moveStrategy) {
+        this.cars = cars;
         this.tryRaceCount = tryRaceCount;
         this.moveStrategy = moveStrategy;
     }
