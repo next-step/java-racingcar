@@ -7,11 +7,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.NoSuchElementException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class InputViewTest {
+
+    @BeforeEach
+    void before() {}
 
     @Test
     void carNames_정상_입력() {
@@ -54,20 +58,22 @@ class InputViewTest {
         assertThat(trial).isEqualTo("10");
     }
 
-    @Test
-    void 시도횟수는_숫자인지_검증하는_로직_성공() {
+    @ValueSource(strings = {"222", "0", "1", "10 "})
+    @ParameterizedTest
+    void 시도횟수는_숫자인지_검증하는_로직_성공(String input) {
         // given
-        InputStream inputStream = new ByteArrayInputStream("5".getBytes());
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
         // then
         assertDoesNotThrow(() -> InputView.inputTrial());
     }
 
-    @Test
-    void 시도횟수가_숫자가_아니면_재입력() {
+    @ValueSource(strings = {"a0", "aaa"})
+    @ParameterizedTest
+    void 시도횟수가_숫자가_아니면_재입력(String input) {
         // given
-        InputStream inputStream = new ByteArrayInputStream("a".getBytes());
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
         // then
