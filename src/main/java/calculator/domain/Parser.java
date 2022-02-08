@@ -14,7 +14,7 @@ public class Parser {
         while (matcher.find()) {
             result.add(matcher.group());
         }
-        Validator.isRightOrder(result);
+        Validator.checkOrder(result);
         return result;
     }
 }
