@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -8,10 +10,10 @@ public class InputView {
     private static final String ASK_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public String inputCarNames() {
+    public List<String> inputCarNames() {
         System.out.println(INPUT_GUIDE_MESSAGE);
-
-        return SCANNER.nextLine();
+        String [] parsedInput = SCANNER.nextLine().split(",");
+        return Arrays.asList(parsedInput);
     }
 
     public int inputTryCount() {
