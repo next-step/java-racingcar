@@ -9,9 +9,8 @@ public class Referee {
         int maxMovingDistance = 0;
 
         for (Car car : cars) {
-            int movingDistance = car.getPosition();
-            if (maxMovingDistance < movingDistance) {
-                maxMovingDistance = movingDistance;
+            if (car.isFartherThan(maxMovingDistance)) {
+                maxMovingDistance = car.getPosition();
             }
         }
         return maxMovingDistance;

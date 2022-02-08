@@ -34,4 +34,8 @@ public class Car {
     public boolean isWinner(int maxDistance) {
         return position == maxDistance;
     }
+
+    public boolean isFartherThan(int maxDistance) {
+        return maxDistance < position;
+    }
 }
