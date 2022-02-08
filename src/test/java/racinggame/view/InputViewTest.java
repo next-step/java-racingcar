@@ -7,15 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.NoSuchElementException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class InputViewTest {
-
-    @BeforeEach
-    void before() {}
 
     @Test
     void carNames_정상_입력() {
