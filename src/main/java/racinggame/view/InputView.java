@@ -1,10 +1,8 @@
 package racinggame.view;
 
-import static racinggame.exception.ExceptionBaseMessage.EXCEEDED_RETRIES_EXCEPTION_MESSAGE;
-
 import java.util.Scanner;
 import racinggame.domain.Validator;
-import racinggame.exception.InputBlankException;
+import racinggame.util.Retry;
 
 public class InputView {
 
@@ -15,7 +13,8 @@ public class InputView {
 
     private static int tryCount = 1;
 
-    private InputView() {}
+    private InputView() {
+    }
 
     public static String inputCarNames() {
         System.out.printf("경주할 자동차 이름을 %s로 구분해서 입력하세요.(%d대 이상)\n", SEPARATOR,
@@ -24,29 +23,22 @@ public class InputView {
     }
 
     public static String inputTrial() {
-        System.out.print("시도 횟수를 입력해 주세요: ");
-        String input = removeBlank(getInput());
 
-        try {
-            Validator.checkIsBlank(input);
+        String trial = Retry.retry(() -> {
+            System.out.print("시도 횟수를 입력해 주세요: ");
+            String input = removeBlank(getInput());
+
             Validator.validateIsNumber(input);
-        } catch (InputBlankException | NumberFormatException e) {
-            System.out.println(e.getMessage());
-            input = retryInputTrial();
-        }
-        return input;
+
+            return input;
+        }, 5, NumberFormatException.class);
+
+        return trial;
+
     }
 
     private static String removeBlank(final String trial) {
         return trial.replaceAll(BLANK, EMPTY_STRING);
-    }
-
-    private static String retryInputTrial() {
-        if (tryCount > 5) {
-            throw new IllegalArgumentException(EXCEEDED_RETRIES_EXCEPTION_MESSAGE);
-        }
-        tryCount++;
-        return InputView.inputTrial();
     }
 
     public static String inputRestartCommand() {

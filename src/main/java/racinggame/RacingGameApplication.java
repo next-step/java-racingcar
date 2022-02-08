@@ -9,6 +9,7 @@ import racinggame.domain.vo.WinnersVo;
 import racinggame.exception.InputBlankException;
 import racinggame.exception.LackOfPlayerException;
 import racinggame.exception.NameLengthOverException;
+import racinggame.util.Retry;
 import racinggame.view.GameView;
 import racinggame.view.InputView;
 
@@ -20,39 +21,25 @@ public class RacingGameApplication {
     public static void main(String[] args) {
 
         while (true) {
+            Retry.retry(() -> {
+                        InputVo inputVo = new InputVo(InputView.inputCarNames(), InputView.inputTrial());
 
-            InputVo inputVo;
-            try {
-                inputVo = new InputVo(InputView.inputCarNames(), InputView.inputTrial());
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-                continue;
-            }
+                        Trial trial = getTrial(inputVo.getTrial());
+                        RacingCars racingCars = getRacingCars(inputVo.getCarNames());
 
-            Trial trial = getTrial(inputVo.getTrial());
+                        RacingGame racingGame = new RacingGame(racingCars);
+                        startGame(racingGame, trial);
 
-            RacingCars racingCars;
-            try {
-                racingCars = getRacingCars(inputVo.getCarNames());
-            } catch (NameLengthOverException | InputBlankException e) {
-                System.out.println(e.getMessage());
-                continue;
-            }
+                        WinnersVo winnersVo = getWinners(racingCars);
+                        GameView.printResult();
+                        GameView.printWinners(winnersVo);
 
-            RacingGame racingGame;
-            try {
-                racingGame = new RacingGame(racingCars);
-            } catch (LackOfPlayerException e) {
-                System.out.println(e.getMessage());
-                continue;
-            }
-            startGame(racingGame, trial);
-
-            WinnersVo winnersVo = getWinners(racingCars);
-            GameView.printResult();
-            GameView.printWinners(winnersVo);
-
-            checkIsRestart();
+                        checkIsRestart();
+                        return null;
+                    },
+                    5,
+                    NameLengthOverException.class,
+                    InputBlankException.class, LackOfPlayerException.class);
         }
     }
 
