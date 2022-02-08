@@ -23,12 +23,12 @@ public class Car {
         }
     }
 
-    public boolean isSamePosition(int maxPosition) {
-        return position == maxPosition;
+    public boolean isSamePosition(int comparePosition) {
+        return position == comparePosition;
     }
 
-    public int compareMaxPosition(int maxPosition) {
-        return Math.max(position, maxPosition);
+    public int compareMaxPosition(int comparePosition) {
+        return Math.max(position, comparePosition);
     }
 
     public String getCarName() {
