@@ -23,8 +23,8 @@ public class Car {
         return new Car(name);
     }
 
-    public void moveForward(final int randomNumber) {
-        if (randomNumber >= FORWARD_NUMBER) {
+    public void moveForward(final int number) {
+        if (number >= FORWARD_NUMBER) {
             this.location++;
         }
     }
