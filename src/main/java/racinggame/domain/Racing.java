@@ -12,7 +12,7 @@ public class Racing {
     public Racing() {
     }
 
-    public void registerCar(List<String> carNames) {
+    public void registerCars(List<String> carNames) {
         for (String carName : carNames) {
             cars.add(Car.of(carName));
         }

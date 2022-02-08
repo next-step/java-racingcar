@@ -11,7 +11,7 @@ public class Application {
         int tryNumber = InputView.getTryNumber();
 
         Racing game = new Racing();
-        game.registerCar(carNames);
+        game.registerCars(carNames);
         while (tryNumber > 0) {
             game.race();
             ResultView.printRace(game.getCarInfo());
