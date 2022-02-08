@@ -15,8 +15,7 @@ public class InputView {
 
     private static int tryCount = 1;
 
-    private InputView() {
-    }
+    private InputView() {}
 
     public static String inputCarNames() {
         System.out.printf("경주할 자동차 이름을 %s로 구분해서 입력하세요.(%d대 이상)\n", SEPARATOR,
@@ -30,12 +29,11 @@ public class InputView {
 
         try {
             Validator.checkIsBlank(input);
-            Validator.isNumber(input);
+            Validator.validateIsNumber(input);
         } catch (InputBlankException | NumberFormatException e) {
             System.out.println(e.getMessage());
             input = retryInputTrial();
         }
-
         return input;
     }
 
