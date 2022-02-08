@@ -15,16 +15,14 @@ public class Game {
     private List<Car> carList = new ArrayList<>();
 
     public void play() {
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
 
         System.out.println(Message.INPUT_GUIDE_MESSAGE);
-        String[] carNames = inputView.getCarName();
+        String[] carNames = InputView.getCarName();
 
         carList = carInformation(carNames);
 
         System.out.println(Message.ASK_TRY_COUNT);
-        int tryCount = inputView.getTryCount();
+        int tryCount = InputView.getTryCount();
 
         System.out.println(Message.GAME_RESULT_MESSAGE);
         for (int i = 0; i < tryCount; i++) {
@@ -32,7 +30,7 @@ public class Game {
         }
 
         Winner winner = new Winner(carList);
-        outputView.printWinner(winner.winnerList());
+        OutputView.printWinner(winner.winnerList());
     }
 
     private List<Car> carInformation(String[] carNames) {
@@ -45,11 +43,10 @@ public class Game {
 
     public void moveForwardByCount() {
         RandomGenerator randomGenerator = new RandomGenerator();
-        OutputView outputView = new OutputView();
         for (Car car : carList) {
             int randomNumber = randomGenerator.generateRandomNumber();
             car.moveForward(randomNumber);
-            outputView.printResult(car.getCarName(), car.getPosition());
+            OutputView.printResult(car.getCarName(), car.getPosition());
         }
         System.out.println();
     }
