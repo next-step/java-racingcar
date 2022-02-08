@@ -2,7 +2,7 @@ package racinggame.view;
 
 import java.util.HashMap;
 import java.util.Map;
-import racinggame.Utils;
+import racinggame.util.Utils;
 import racinggame.domain.RacingCar;
 import racinggame.domain.RacingCars;
 import racinggame.domain.vo.WinnersVo;
