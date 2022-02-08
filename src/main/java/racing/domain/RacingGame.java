@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racing.domain.car.Car;
 import racing.domain.car.Cars;
-import racing.domain.car.Position;
 import racing.domain.startegy.MovingStrategy;
 
 public class RacingGame {
@@ -32,10 +31,7 @@ public class RacingGame {
         return raceStates;
     }
 
-    public List<Car> decideWinners() {
-        final Position maxPosition = cars.findMaxPosition();
-        return cars.getCars().stream()
-            .filter(car -> car.isSamePosition(maxPosition))
-            .collect(Collectors.toList());
+    public List<Car> getWinners() {
+        return cars.decideWinners();
     }
 }

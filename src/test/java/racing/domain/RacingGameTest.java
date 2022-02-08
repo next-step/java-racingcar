@@ -61,7 +61,7 @@ class RacingGameTest {
     @MethodSource
     void 우승자_결졍(int movableNumber, List<Car> cars) {
         RacingGame racingGame = new RacingGame(() -> movableNumber, cars);
-        final List<Car> winners = racingGame.decideWinners();
+        final List<Car> winners = racingGame.getWinners();
         assertThat("b").isEqualTo(winners.get(0).getNameValue());
         assertThat(4).isEqualTo(winners.get(0).getPositionValue());
         assertThat("cd").isEqualTo(winners.get(1).getNameValue());

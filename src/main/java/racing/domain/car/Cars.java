@@ -3,6 +3,7 @@ package racing.domain.car;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import racing.domain.startegy.MovingStrategy;
 
 public class Cars {
@@ -53,5 +54,12 @@ public class Cars {
 
     public List<Car> getCars() {
         return new ArrayList<>(cars);
+    }
+
+    public List<Car> decideWinners() {
+        final Position maxPosition = findMaxPosition();
+        return cars.stream()
+            .filter(car -> car.isSamePosition(maxPosition))
+            .collect(Collectors.toList());
     }
 }
