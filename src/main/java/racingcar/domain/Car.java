@@ -12,7 +12,7 @@ public class Car {
     }
 
     public void move(int distance) {
-        if (!checkMovable(distance)) {
+        if (!isMovable(distance)) {
             return;
         }
 
@@ -27,7 +27,11 @@ public class Car {
         return name;
     }
 
-    private boolean checkMovable(int distance) {
+    private boolean isMovable(int distance) {
         return MIN_DISTANCE <= distance;
+    }
+
+    public boolean isWinner(int maxDistance) {
+        return position == maxDistance;
     }
 }

@@ -24,7 +24,7 @@ public class Referee {
         int maxMovingDistance = getMaxMovingDistance(cars);
 
         List<String> winners = cars.stream()
-            .filter(car -> car.getPosition() == maxMovingDistance).map(Car::getName)
+            .filter(car -> car.isWinner(maxMovingDistance)).map(Car::getName)
             .collect(Collectors.toList());
         return String.join(", ", winners);
     }
