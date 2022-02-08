@@ -15,8 +15,7 @@ public class Application {
 
         int tryCount = inputView.getTryCount();
         List<String> carNames = inputView.getCarNames();
-        RacingCarGame racingCarGame = new RacingCarGame(tryCount, carNames
-        );
+        RacingCarGame racingCarGame = new RacingCarGame(tryCount, carNames);
 
         racingCarGame.play();
 
