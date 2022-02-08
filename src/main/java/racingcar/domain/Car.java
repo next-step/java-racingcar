@@ -27,7 +27,7 @@ public class Car {
         return name;
     }
 
-    private boolean isMovable(int distance) {
+    public boolean isMovable(int distance) {
         return MIN_DISTANCE <= distance;
     }
 
