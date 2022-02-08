@@ -51,19 +51,20 @@
 - 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
 
 ## 기능 구현 사항
-- [x] 자동차 이름 입력받기(Input.getCarName)
+- [x] 자동차 이름 입력받기(InputView.inputCarName)
   - [x] 참가 자동차는 2대 이상. (Validator.validatePossibleToStart)
-  - [x] 문자열에 들어온 공백 제거. (Input.removeBlank)
-  - [x] 자동차 이름은 `,`로 구분. (Input.splitNameByComma)
+  - [x] 문자열에 들어온 공백 제거. (removeBlank)
+  - [x] 자동차 이름은 `,`로 구분. (splitNameByComma)
   - [x] 자동차 이름별로 객체 생성(이름) (RacingCar)
     - [x] 자동차의 이름 글자수 5자 이하인가. (Validator.validateNameLength)
-    - [x] 자동차 한칸 전진.(RacingCar.forward)
-    - [x] 전진 여부 (RacingCar.canForward)
-- [x] 시도 횟수 입력(Input.getTrial)
-  - [x] 숫자가 아닌 입력 예외처리. (Validator.isNumber)
+    - [x] 전진 여부 검사 후 자동차 한칸 전진.(RacingCar.forward)
+- [x] 시도 횟수 입력(Input.inputTrial)
+  - [x] 숫자가 아닌 입력 예외처리. (Validator.validateIsNumber)
 - [x] 게임 진행(RacingGame.start)
-- [x] 게임 View 출력.
-  - [x] 게임 진행 현황 출력. (RacingGameView.printProgress)
-    - [x] 자동차의 이름과 현재 위치 반환.(carResultView.drawCurrPosition)
-  - [x] 우승자 출력. (RacingGameView.printWinners)
+- [x] 게임 View
+    - [x] 자동차의 이름과 현재 위치 저장(GameView.saveProgress)
+    - [x] 저장된 게임 결과 출력(GameView.printResult)
+    - [x] 우승자 출력. (RacingGameView.printWinners)
 - [x] 우승자 판별(Judge.getWinners)
+- [x] 재시작
+- [x] 유효하지 않은 입력 5번까지 재시도.
