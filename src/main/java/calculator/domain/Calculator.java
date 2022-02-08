@@ -3,6 +3,7 @@ package calculator.domain;
 import calculator.util.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
+import calculator.domain.StringParsing;
 
 public class Calculator {
 
@@ -16,9 +17,9 @@ public class Calculator {
 
     public int calculate(String expression) {
         String[] splitExpression = StringUtils.splitExpression(expression);
-        validateIdleExpression(splitExpression);
-        validateOperand(splitExpression);
-        validateOperation(splitExpression);
+        StringParsing stringParsing = new StringParsing(splitExpression);
+        operandList = stringParsing.getOperandList();
+        operationList = stringParsing.getOperationList();
         calculateExpression();
         return calculateExpression();
     }
@@ -32,23 +33,5 @@ public class Calculator {
             calculateResult = operation.operate(left, right);
         }
         return calculateResult;
-    }
-
-    private void validateOperation(String[] splitExpression) {
-        for (int index = 1; index < splitExpression.length; index += 2) {
-            operationList.add(new Operation(splitExpression[index]));
-        }
-    }
-
-    private void validateOperand(String[] splitExpression) {
-        for (int index = 0; index < splitExpression.length; index += 2) {
-            operandList.add(new Operand(splitExpression[index]));
-        }
-    }
-
-    private void validateIdleExpression(String[] splitExpression) {
-        if (splitExpression.length % 2 == 0) {
-            throw new IllegalArgumentException("[ERROR] 올바른 수식이 아닙니다");
-        }
     }
 }
