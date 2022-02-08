@@ -16,7 +16,7 @@ public class Application {
 
         racingCarGame.play();
 
-        String winners = referee.getWinners(racingCarGame.getCars());
+        List<String> winners = referee.getWinners(racingCarGame.getCars());
         resultView.printGameResult(winners);
     }
 }
