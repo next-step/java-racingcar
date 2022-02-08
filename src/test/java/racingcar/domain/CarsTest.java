@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,8 +9,10 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-public class CarsTest {
+class CarsTest {
 
     @ParameterizedTest
     @CsvSource(value = {"true:1", "false:0"}, delimiter = ':')
@@ -42,5 +45,29 @@ public class CarsTest {
         assertThat(winnerList.size()).isEqualTo(2);
         assertThat(winnerList.get(0).getName()).isEqualTo("bbb");
         assertThat(winnerList.get(1).getName()).isEqualTo("ccc");
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    void 유효성검증_최소사이즈(List<Car> names){
+        assertThatExceptionOfType(IllegalStateException.class)
+            .isThrownBy(() -> {
+                new Cars(names);
+            });
+    }
+
+    @Test
+    void 유효성검증_중복검사(){
+        // given
+        List<Car> cars = new ArrayList<>();
+        cars.add(new RacingCar("aaa"));
+        cars.add(new RacingCar("aaa"));
+        cars.add(new RacingCar("bbb"));
+
+        // when, then
+        assertThatExceptionOfType(IllegalStateException.class)
+            .isThrownBy(() -> {
+                new Cars(cars);
+            });
     }
 }

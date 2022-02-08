@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Objects;
 import racingcar.domain.strategy.MoveStrategy;
 
 public class RacingCar implements Car {
@@ -30,10 +31,6 @@ public class RacingCar implements Car {
         return this.position == position;
     }
 
-    public boolean isSamePosition(int position) {
-        return this.position == position;
-    }
-
     private void isCorrectNameSize(String name) {
         if(name == null || name.isEmpty()){
             throw new IllegalArgumentException("자동차 이름이 빈값입니다!");
@@ -49,6 +46,23 @@ public class RacingCar implements Car {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof RacingCar)) {
+            return false;
+        }
+        RacingCar racingCar = (RacingCar) o;
+        return Objects.equals(name, racingCar.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 
     @Override
