@@ -26,7 +26,7 @@ public class Car implements Comparable<Car> {
     }
 
     public void moveByRule(int value) {
-        if(value >= rule.getMoveCondition()) {
+        if(rule.isMovable(value)) {
             distance++;
         }
     }

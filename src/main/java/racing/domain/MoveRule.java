@@ -12,7 +12,7 @@ public class MoveRule {
         return (int) (Math.random() * 10);
     }
 
-    public int getMoveCondition() {
-        return moveCondition;
+    public boolean isMovable(int value) {
+        return value >= moveCondition;
     }
 }
