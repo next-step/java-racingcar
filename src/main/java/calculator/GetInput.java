@@ -8,8 +8,7 @@ public class GetInput {
 
     public static String inputString() {
         Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        return str;
+        return sc.nextLine();
     }
 
     public static String[] parsing(String expression) {
