@@ -7,7 +7,7 @@ public class Winner {
 
     private List<Car> carList;
 
-    private Winner(List<Car> car) {
+    public Winner(List<Car> car) {
         this.carList = new ArrayList<>(car);
     }
 
