@@ -10,8 +10,8 @@ public class RacingGame {
     private TryCount tryCount;
     private List<RaceResult> totalResult;
 
-    public RacingGame(String carNamesInput, int tryCountInput) {
-        this.cars = new Cars(carNamesInput);
+    public RacingGame(List<String> parsedInput, int tryCountInput) {
+        this.cars = new Cars(parsedInput);
         this.tryCount = new TryCount(tryCountInput);
         this.totalResult = new ArrayList<>();
     }
