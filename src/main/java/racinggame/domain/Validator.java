@@ -3,6 +3,7 @@ package racinggame.domain;
 import static racinggame.exception.ExceptionBaseMessage.INPUT_BLANK_MESSAGE;
 import static racinggame.exception.ExceptionBaseMessage.LACK_OF_PLAYER_MESSAGE;
 import static racinggame.exception.ExceptionBaseMessage.NAME_LENGTH_OVER_MESSAGE;
+import static racinggame.exception.ExceptionBaseMessage.NOT_A_NUMBER_EXCEPTION_MESSAGE;
 
 import java.util.List;
 import racinggame.exception.InputBlankException;
@@ -13,6 +14,8 @@ public class Validator {
 
     public static final int MINIMUM_PLAYER = 2;
     private static final int MAXIMUM_NAME_LENGTH = 5;
+    private static final String NUMERIC_REGEX = "[0-9]+";
+    private static final String BLANKS_REGEX = "\\s+";
 
     private Validator() {}
 
@@ -34,16 +37,18 @@ public class Validator {
         }
     }
 
-    public static void isNumber(final String trial) {
-        try {
-            Integer.parseInt(trial);
-        } catch (NumberFormatException e) {
-            throw new NumberFormatException("시도횟수는 숫자로 입력해주세요.");
+    public static void validateIsNumber(final String trial) {
+        if(isNotNumber(trial)){
+            throw new NumberFormatException(NOT_A_NUMBER_EXCEPTION_MESSAGE);
         }
     }
 
+    private static boolean isNotNumber(String trial) {
+        return !trial.matches(NUMERIC_REGEX);
+    }
+
     public static void checkIsBlank(final String input) {
-        if (input.isEmpty() | input.matches("\\s+")) {
+        if (input.isEmpty() | input.matches(BLANKS_REGEX)) {
             throw new InputBlankException(INPUT_BLANK_MESSAGE);
         }
     }
