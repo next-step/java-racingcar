@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private final int MAX_NAME_LENGTH = 5;
-    private int tryCount;
-    private List<String> carNames;
+    private final static int MAX_NAME_LENGTH = 5;
+    private static int tryCount;
+    private static List<String> carNames;
 
 
     public InputView() {
@@ -42,11 +42,11 @@ public class InputView {
         }
     }
 
-    public int getTryCount() {
+    public static int getTryCount() {
         return tryCount;
     }
 
-    public List<String> getCarNames() {
+    public static List<String> getCarNames() {
         return carNames;
     }
 }

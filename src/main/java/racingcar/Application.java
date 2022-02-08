@@ -9,12 +9,11 @@ import racingcar.view.ResultView;
 public class Application {
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
         Referee referee = new Referee();
         ResultView resultView = new ResultView();
 
-        int tryCount = inputView.getTryCount();
-        List<String> carNames = inputView.getCarNames();
+        int tryCount = InputView.getTryCount();
+        List<String> carNames = InputView.getCarNames();
         RacingCarGame racingCarGame = new RacingCarGame(tryCount, carNames);
 
         racingCarGame.play();
