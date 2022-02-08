@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.domain.validator;
 
 import static racinggame.exception.ExceptionBaseMessage.INPUT_BLANK_MESSAGE;
 import static racinggame.exception.ExceptionBaseMessage.LACK_OF_PLAYER_MESSAGE;
@@ -6,6 +6,8 @@ import static racinggame.exception.ExceptionBaseMessage.NAME_LENGTH_OVER_MESSAGE
 import static racinggame.exception.ExceptionBaseMessage.NOT_A_NUMBER_EXCEPTION_MESSAGE;
 
 import java.util.List;
+import racinggame.domain.RacingCar;
+import racinggame.domain.RacingCars;
 import racinggame.exception.InputBlankException;
 import racinggame.exception.LackOfPlayerException;
 import racinggame.exception.NameLengthOverException;

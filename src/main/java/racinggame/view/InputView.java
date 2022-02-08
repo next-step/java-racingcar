@@ -1,7 +1,7 @@
 package racinggame.view;
 
 import java.util.Scanner;
-import racinggame.domain.Validator;
+import racinggame.domain.validator.Validator;
 import racinggame.util.Retry;
 
 public class InputView {

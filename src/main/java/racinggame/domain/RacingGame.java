@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.domain.validator.Validator;
+
 public class RacingGame {
 
     private static final int RANGE_OF_RANDOM_NUMBER = 9 - 0 + 1;
