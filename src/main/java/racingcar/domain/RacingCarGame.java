@@ -16,9 +16,9 @@ public class RacingCarGame {
     private int tryCount;
 
 
-    public RacingCarGame(int tryCount, List<String> carNames) {
-        this.tryCount = tryCount;
+    public RacingCarGame(List<String> carNames, int tryCount) {
         this.carNames = carNames;
+        this.tryCount = tryCount;
         cars = makeCarsByCarNames();
     }
 
