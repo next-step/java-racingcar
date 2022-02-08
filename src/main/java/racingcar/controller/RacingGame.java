@@ -1,9 +1,13 @@
-package racingcar.domain;
+package racingcar.controller;
 
 import java.util.List;
-import racingcar.utils.InputView;
-import racingcar.utils.OutputView;
-import racingcar.utils.StringUtils;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.RandomEngine;
+import racingcar.domain.Round;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+import racingcar.domain.StringUtils;
 
 public class RacingGame {
 
