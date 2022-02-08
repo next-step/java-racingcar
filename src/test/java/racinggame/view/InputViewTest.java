@@ -28,7 +28,7 @@ class InputViewTest {
     }
 
     @Test
-    void 시도횟수_정상_입력() throws IllegalAccessException {
+    void 시도횟수_정상_입력() {
         // given
         final String inputTrial = "5";
         final InputStream inputStream = new ByteArrayInputStream(inputTrial.getBytes());
@@ -43,7 +43,7 @@ class InputViewTest {
 
     @ValueSource(strings = {"1 0", " 10", " 1 0 ", "10 ", "1   0  "})
     @ParameterizedTest
-    void getTrial_불필요한_공백이_들어왔을_때_제거(final String inputTrial) throws IllegalAccessException {
+    void getTrial_불필요한_공백이_들어왔을_때_제거(final String inputTrial) {
         InputStream inputStream = new ByteArrayInputStream(inputTrial.getBytes());
         System.setIn(inputStream);
 

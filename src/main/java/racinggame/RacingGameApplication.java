@@ -24,7 +24,7 @@ public class RacingGameApplication {
             InputVo inputVo;
             try {
                 inputVo = new InputVo(InputView.inputCarNames(), InputView.inputTrial());
-            } catch (IllegalAccessException e) {
+            } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 continue;
             }

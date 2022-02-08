@@ -15,14 +15,16 @@ public class InputView {
 
     private static int tryCount = 1;
 
-    private InputView() {}
+    private InputView() {
+    }
 
     public static String inputCarNames() {
-        System.out.printf("경주할 자동차 이름을 %s로 구분해서 입력하세요.(%d대 이상)\n", SEPARATOR, Validator.MINIMUM_PLAYER);
+        System.out.printf("경주할 자동차 이름을 %s로 구분해서 입력하세요.(%d대 이상)\n", SEPARATOR,
+                Validator.MINIMUM_PLAYER);
         return getInput();
     }
 
-    public static String inputTrial() throws IllegalAccessException {
+    public static String inputTrial() {
         System.out.print("시도 횟수를 입력해 주세요: ");
         String input = removeBlank(getInput());
 
@@ -41,9 +43,9 @@ public class InputView {
         return trial.replaceAll(BLANK, EMPTY_STRING);
     }
 
-    private static String retryInputTrial() throws IllegalAccessException {
+    private static String retryInputTrial() {
         if (tryCount > 5) {
-            throw new IllegalAccessException(EXCEEDED_RETRIES_EXCEPTION_MESSAGE);
+            throw new IllegalArgumentException(EXCEEDED_RETRIES_EXCEPTION_MESSAGE);
         }
         tryCount++;
         return InputView.inputTrial();
