@@ -3,7 +3,7 @@ package racinggame;
 import racinggame.domain.Judge;
 import racinggame.domain.RacingCars;
 import racinggame.domain.RacingGame;
-import racinggame.domain.Trial;
+import racinggame.domain.dto.TrialDto;
 import racinggame.domain.vo.InputVo;
 import racinggame.domain.vo.WinnersVo;
 import racinggame.exception.InputBlankException;
@@ -24,11 +24,10 @@ public class RacingGameApplication {
             Retry.retry(() -> {
                         InputVo inputVo = new InputVo(InputView.inputCarNames(), InputView.inputTrial());
 
-                        Trial trial = getTrial(inputVo.getTrial());
                         RacingCars racingCars = getRacingCars(inputVo.getCarNames());
 
                         RacingGame racingGame = new RacingGame(racingCars);
-                        startGame(racingGame, trial);
+                        startGame(racingGame, new TrialDto(inputVo.getTrial()));
 
                         WinnersVo winnersVo = getWinners(racingCars);
                         GameView.printResult();
@@ -47,17 +46,13 @@ public class RacingGameApplication {
         return new RacingCars(inputCarNames);
     }
 
-    public static Trial getTrial(String inputTrial) {
-        return new Trial(inputTrial);
-    }
-
-    public static void startGame(final RacingGame racingGame, final Trial trial) {
+    public static void startGame(final RacingGame racingGame, final TrialDto trialDto) {
         GameView.init(racingGame.getRacingCars());
-        start(racingGame, trial);
+        start(racingGame, trialDto);
     }
 
-    private static void start(final RacingGame racingGame, final Trial trial) {
-        int count = trial.getValue();
+    private static void start(final RacingGame racingGame, final TrialDto trialDto) {
+        int count = trialDto.getValue();
         for (int i = 0; i < count; i++) {
             racingGame.progress();
             GameView.saveProgress(racingGame.getRacingCars());

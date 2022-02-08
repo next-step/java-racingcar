@@ -1,10 +1,10 @@
-package racinggame.domain;
+package racinggame.domain.dto;
 
-public class Trial {
+public class TrialDto {
 
     private final int value;
 
-    public Trial(final String value) {
+    public TrialDto(final String value) {
         this.value = parse(value);
     }
 
