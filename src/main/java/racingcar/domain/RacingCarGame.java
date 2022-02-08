@@ -63,5 +63,4 @@ public class RacingCarGame {
 
         System.out.println();
     }
-
 }
