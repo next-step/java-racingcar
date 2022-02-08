@@ -2,23 +2,15 @@ package racingcar;
 
 public class Car {
 
-    static final int INIT_POSITION = 0;
-
+    private static final int INIT_POSITION = 0;
+    private static final int MAX_CAR_NAME_LENGTH = 5;
     private String name;
     private int position;
 
     Car(String name) {
+        checkCarName();
         this.name = name;
         this.position = INIT_POSITION;
-        checkCarName();
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public int getPosition() {
-        return this.position;
     }
 
     public boolean isSamePosition(int position) {
@@ -30,8 +22,18 @@ public class Car {
     }
 
     public void checkCarName() {
-        if (name.length() > 5) {
-            throw new RuntimeException("차의 이름은 5글자가 넘으면 안됩니다.");
+        if (name.length() > MAX_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException("차의 이름은 5글자가 넘으면 안됩니다.");
         }
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
+
+
 }
