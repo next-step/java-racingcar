@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class User {
 
     private static final int MINIMUM_TOKEN_NUMBER = 3;
-    private static final String NOT_NULL_ALLOWED = "공백은 허용되지 않습니다";
+    private static final String NOT_NULL_ALLOWED = "올바른 문자열을 입력해주세요";
 
     public List<String> getUserInput() {
         Scanner scanner = new Scanner(System.in);
