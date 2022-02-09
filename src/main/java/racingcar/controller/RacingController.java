@@ -9,7 +9,7 @@ import racingcar.view.RacingCarView;
 
 public class RacingController {
 
-    public void start(){
+    public void start() {
         List<String> carNames = RacingCarInput.getCarName();
         int endRaceCount = RacingCarInput.getRaceCount();
 
