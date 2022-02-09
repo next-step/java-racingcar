@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import racingcar.domain.strategy.MoveStrategy;
 
 public class RacingGame {
@@ -14,9 +16,14 @@ public class RacingGame {
         this.moveStrategy = moveStrategy;
     }
 
-    public void race() {
-        cars.moveAll(moveStrategy);
-        tryRaceCount--;
+    public List<Cars> race() {
+        List<Cars> racinglog = new ArrayList<>();
+        while (isOngoing()) {
+            racinglog.add(cars);
+            cars.moveAll(moveStrategy);
+            tryRaceCount--;
+        }
+        return racinglog;
     }
 
     public boolean isOngoing() {

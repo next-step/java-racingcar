@@ -11,19 +11,20 @@ import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
 import racingcar.domain.strategy.RandomMoveStrategy;
 
-class GameLauncherTest {
+class RacingGameTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"true:1", "false:0"}, delimiter = ':')
+    @CsvSource(value = {"true:3", "false:0"}, delimiter = ':')
     void 모든차앞으로전진(boolean moveNum, int expectedPosition) {
         // given
         RacingGame racingGame = new RacingGame(Cars.of(Arrays.asList("qwe", "asdf", "zx")), 3,
             () -> moveNum);
 
         // when
-        racingGame.race();
+        List<Cars> carLog = racingGame.race();
 
         // then
+        assertThat(carLog).hasSize(3);
         List<Car> racingCars = racingGame.getCars().getCars();
         assertThat(racingCars.get(0).getPosition()).isEqualTo(expectedPosition);
         assertThat(racingCars.get(1).getPosition()).isEqualTo(expectedPosition);

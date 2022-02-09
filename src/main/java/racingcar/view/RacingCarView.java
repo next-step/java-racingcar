@@ -4,9 +4,9 @@ import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
-public class RacingCarLog {
+public class RacingCarView {
 
-    private RacingCarLog() {
+    private RacingCarView() {
     }
 
     public static StringBuilder printWinner(StringBuilder gameLog, Cars cars) {

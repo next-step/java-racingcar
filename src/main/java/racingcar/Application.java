@@ -6,7 +6,7 @@ import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
 import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.view.RacingCarInput;
-import racingcar.view.RacingCarLog;
+import racingcar.view.RacingCarView;
 
 public class Application {
 
@@ -16,13 +16,11 @@ public class Application {
 
         RacingGame racingGame = new RacingGame(Cars.of(carNames), endRaceCount, new RandomMoveStrategy());
 
-        StringBuilder gameLog = new StringBuilder();
-        while (racingGame.isOngoing()) {
-            racingGame.race();
-            gameLog.append(racingGame.getCars());
-        }
+        racingGame.race();
 
-        RacingCarLog.printWinner(gameLog, racingGame.getCars());
+        StringBuilder gameLog = new StringBuilder();
+
+        RacingCarView.printWinner(gameLog, racingGame.getCars());
 
         System.out.println(gameLog);
     }
