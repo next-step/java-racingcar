@@ -2,7 +2,6 @@ package racingcar.model;
 
 public class Car {
 
-    private static final int MOVE_FORWARD_CONDITION = 4;
     private static final int DEFAULT_POSITION = 0;
 
     private int position;
@@ -17,10 +16,8 @@ public class Car {
         this.position = position;
     }
 
-    public void moveForward(int moveCondition) {
-        if (moveCondition >= MOVE_FORWARD_CONDITION) {
-            this.position++;
-        }
+    public void moveForward() {
+        this.position++;
     }
 
     public boolean isSamePosition(int comparePosition) {
