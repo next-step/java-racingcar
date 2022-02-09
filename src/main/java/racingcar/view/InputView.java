@@ -12,13 +12,12 @@ public class InputView {
 
     public List<String> inputCarNames() {
         System.out.println(INPUT_GUIDE_MESSAGE);
-        String [] parsedInput = SCANNER.nextLine().split(",");
+        String[] parsedInput = SCANNER.nextLine().split(",");
         return Arrays.asList(parsedInput);
     }
 
     public int inputTryCount() {
         System.out.println(ASK_TRY_COUNT);
-
         return SCANNER.nextInt();
     }
 }

@@ -1,6 +1,6 @@
 package racingcar.model;
 
-public class NeverMoveStrategy implements MoveStrategy{
+public class NeverMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean canMove() {
