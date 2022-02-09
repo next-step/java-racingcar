@@ -8,7 +8,7 @@ public class Car {
     private int position;
 
     Car(String name) {
-        checkCarName();
+        checkCarName(name);
         this.name = name;
         this.position = INIT_POSITION;
     }
@@ -21,7 +21,7 @@ public class Car {
         this.position++;
     }
 
-    public void checkCarName() {
+    public void checkCarName(String name) {
         if (name.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("차의 이름은 5글자가 넘으면 안됩니다.");
         }
