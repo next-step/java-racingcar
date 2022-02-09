@@ -17,7 +17,7 @@ public class Game {
         System.out.println(Message.INPUT_GUIDE_MESSAGE);
         String[] carNames = InputView.getCarName();
 
-        List<Car> cars = carInformation(carNames);
+        List<Car> cars = racingCars(carNames);
 
         System.out.println(Message.ASK_TRY_COUNT);
         int tryCount = InputView.getTryCount();
@@ -31,7 +31,7 @@ public class Game {
         OutputView.printWinner(winners.winnerList());
     }
 
-    private List<Car> carInformation(String[] carNames) {
+    private List<Car> racingCars(String[] carNames) {
         for (String carName: carNames){
             Car carInformation = new Car(carName);
             cars.add(carInformation);
