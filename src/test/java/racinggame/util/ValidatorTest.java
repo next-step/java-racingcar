@@ -1,6 +1,7 @@
-package racinggame.domain;
+package racinggame.util;
 
 import org.junit.jupiter.api.Test;
+import racinggame.util.Validator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

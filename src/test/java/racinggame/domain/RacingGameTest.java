@@ -34,6 +34,7 @@ class RacingGameTest {
         canForward.setAccessible(true);
         boolean result = (boolean) canForward.invoke(racingGame, randomValue);
 
+        System.out.println(result);
         assertFalse(result);
     }
 

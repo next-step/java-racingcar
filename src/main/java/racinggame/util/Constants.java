@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.util;
 
 public class Constants {
 

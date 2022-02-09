@@ -1,6 +1,6 @@
 package racinggame.domain;
 
-import static racinggame.domain.Constants.*;
+import static racinggame.util.Constants.*;
 
 import java.io.IOException;
 import java.util.Collections;

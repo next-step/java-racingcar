@@ -1,6 +1,6 @@
-package racinggame.domain;
+package racinggame.util;
 
-import static racinggame.domain.Constants.*;
+import static racinggame.util.Constants.*;
 
 public class Validator {
 
