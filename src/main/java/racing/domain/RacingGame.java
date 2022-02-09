@@ -18,7 +18,9 @@ public class RacingGame {
     }
 
     public static RacingGame registerCars(MovingStrategy movingStrategy, List<String> names) {
-        final List<Car> cars = names.stream().map(Car::new).collect(Collectors.toList());
+        final List<Car> cars = names.stream()
+            .map(Car::new)
+            .collect(Collectors.toList());
         return new RacingGame(movingStrategy, cars);
     }
 
