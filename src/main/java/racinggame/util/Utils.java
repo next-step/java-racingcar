@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,7 +6,8 @@ import java.io.InputStreamReader;
 
 public class Utils {
 
-    private Utils() {}
+    private Utils() {
+    }
 
     public static String repeat(String str, int num) {
         StringBuilder sb = new StringBuilder();

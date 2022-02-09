@@ -3,6 +3,7 @@ package racinggame.domain;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import racinggame.util.Utils;
 import racinggame.util.Validator;
 
 public class Input {

@@ -5,7 +5,7 @@ import java.util.List;
 import racinggame.domain.Input;
 import racinggame.domain.RacingCar;
 import racinggame.domain.RacingGame;
-import racinggame.domain.Utils;
+import racinggame.util.Utils;
 
 public class Application {
 

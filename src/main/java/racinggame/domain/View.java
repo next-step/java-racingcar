@@ -1,6 +1,7 @@
 package racinggame.domain;
 
 import java.util.List;
+import racinggame.util.Utils;
 
 public class View {
     private static final String DELIMITER = ", ";
