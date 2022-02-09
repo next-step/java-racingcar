@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.controller.GameController;
 import racingcar.domain.movable.RandomMovableStrategy;
 
 public class GameControllerTest {
