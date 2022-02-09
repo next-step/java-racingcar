@@ -38,7 +38,7 @@ public class Game {
             Car carInformation = new Car(carName);
             cars.add(carInformation);
         }
-        return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
+        return cars;
     }
 
     public void moveForwardByCount() {
