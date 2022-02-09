@@ -1,24 +1,12 @@
 package racingcar;
 
 
-import java.util.List;
-import racingcar.domain.Cars;
-import racingcar.domain.RacingGame;
-import racingcar.domain.strategy.RandomMoveStrategy;
-import racingcar.view.RacingCarInput;
-import racingcar.view.RacingCarView;
+import racingcar.controller.RacingController;
 
 public class Application {
 
     public static void main(String[] args) {
-        List<String> carNames = RacingCarInput.getCarName();
-        int endRaceCount = RacingCarInput.getRaceCount();
-
-        RacingGame racingGame = new RacingGame(Cars.of(carNames), endRaceCount, new RandomMoveStrategy());
-
-        List<Cars> racingLogs = racingGame.race();
-
-        RacingCarView.printRacing(racingLogs);
-        RacingCarView.printWinner(racingGame.getCars());
+        RacingController racingController = new RacingController();
+        racingController.start();
     }
 }
