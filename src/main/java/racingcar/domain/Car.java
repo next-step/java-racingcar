@@ -30,6 +30,10 @@ public class Car {
         }
     }
 
+    public boolean isEqualDistance (final int distance) {
+        return this.distance == distance;
+    }
+
     private void validateName(final String name) {
         int nameLength = name.length();
 
@@ -42,4 +46,5 @@ public class Car {
                 "이름은 " + MAX_LIMITED_CAR_NAME_LENGTH + "자를 넘을 수 없습니다.");
         }
     }
+
 }

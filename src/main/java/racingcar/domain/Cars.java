@@ -33,7 +33,8 @@ public class Cars {
 
     public List<Car> filterWinners() {
         final int max = calculateMax();
-        return cars.stream().filter(car -> car.getDistance() == max).collect(Collectors.toList());
+
+        return cars.stream().filter(car -> car.isEqualDistance(max)).collect(Collectors.toList());
     }
 
     public List<Car> get() {
