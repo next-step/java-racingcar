@@ -3,6 +3,11 @@ package racingcar.domain;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -55,5 +60,18 @@ class RacingCarTest {
         RacingCar racingCar = new RacingCar("yang");
         racingCar.moveForward(randomNumber);
         assertThat(racingCar.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    void 모든차는_앞으로_전진한다() {
+        List<RacingCar> racingCarList = new ArrayList<>(
+            Arrays.asList(new RacingCar("yang"), new RacingCar("woo"), new RacingCar("yu")));
+        racingCarList.get(0).moveForward(5);
+        racingCarList.get(1).moveForward(3);
+        racingCarList.get(2).moveForward(6);
+
+        Assertions.assertThat(racingCarList.get(0).getPosition()).isEqualTo(1);
+        Assertions.assertThat(racingCarList.get(1).getPosition()).isZero();
+        Assertions.assertThat(racingCarList.get(2).getPosition()).isEqualTo(1);
     }
 }
