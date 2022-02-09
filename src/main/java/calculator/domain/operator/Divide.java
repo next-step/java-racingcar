@@ -2,7 +2,8 @@ package calculator.domain.operator;
 
 public class Divide implements Operator {
 
-    public Divide() {}
+    public Divide() {
+    }
 
     @Override
     public int calculate(int total, int operand) {

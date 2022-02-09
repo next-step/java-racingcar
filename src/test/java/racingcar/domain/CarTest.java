@@ -13,6 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class CarTest {
+
     static Stream<String> invalidCarNames() {
         return Stream.of("", "OVER_FIVE_LENGTH");
     }
@@ -44,7 +45,7 @@ public class CarTest {
     }
 
     private void carMove(Car car, List<Boolean> moves) {
-        for (boolean carMoved: moves) {
+        for (boolean carMoved : moves) {
             car.run(() -> carMoved);
         }
     }

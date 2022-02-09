@@ -13,7 +13,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars fromString (final String carNames) {
+    public static Cars fromString(final String carNames) {
         return new Cars(Parser
             .parseCarNames(carNames)
             .stream()
@@ -21,7 +21,7 @@ public class Cars {
             .collect(Collectors.toList()));
     }
 
-    public static Cars fromCarList (final List<Car> cars) {
+    public static Cars fromCarList(final List<Car> cars) {
         return new Cars(cars);
     }
 

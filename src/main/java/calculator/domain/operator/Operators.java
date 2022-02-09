@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Operators {
+
     private final List<Operator> operators;
     private final Map<String, Operator> map;
 

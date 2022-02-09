@@ -28,7 +28,7 @@ public class CarsTest {
     }
 
     private void carMove(Car car, List<Boolean> moves) {
-        for (boolean carMoved: moves) {
+        for (boolean carMoved : moves) {
             car.run(() -> carMoved);
         }
     }

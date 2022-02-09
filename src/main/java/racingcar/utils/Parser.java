@@ -6,7 +6,8 @@ import java.util.stream.Collectors;
 
 public class Parser {
 
-    private Parser() {}
+    private Parser() {
+    }
 
     public static List<String> parseCarNames(String carNames) {
         String NAME_SPLITTER = ",";

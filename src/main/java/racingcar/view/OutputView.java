@@ -10,7 +10,8 @@ public class OutputView {
     private static final String CAR_MOVE_CHAR = "-";
     private static final String CAR_WINNER_DELIMITER = ", ";
 
-    private OutputView() {}
+    private OutputView() {
+    }
 
     public static void printDistance(final Cars cars) {
         cars.get()

@@ -20,7 +20,9 @@ public class Car {
         return name;
     }
 
-    public int getDistance() { return distance; }
+    public int getDistance() {
+        return distance;
+    }
 
     public void run(MovableStrategy strategy) {
         if (strategy.isMovable()) {
@@ -36,7 +38,8 @@ public class Car {
         }
 
         if (nameLength > MAX_LIMITED_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("이름은 " + MAX_LIMITED_CAR_NAME_LENGTH + "자를 넘을 수 없습니다.");
+            throw new IllegalArgumentException(
+                "이름은 " + MAX_LIMITED_CAR_NAME_LENGTH + "자를 넘을 수 없습니다.");
         }
     }
 }
