@@ -10,7 +10,7 @@ public class RacingGame implements Movable {
 
     private static final int RANDOM_START = 0;
     private static final int RANDOM_END = 9;
-    private static final String CONTOUR = "----------------\n";
+    private static final String LINE = "----------------\n";
 
     private final List<RacingCar> racingCarLists;
     private final int raceCount;
@@ -37,7 +37,7 @@ public class RacingGame implements Movable {
             String currentStatus = racingCar.getName() + ":" + racingCar.getPosition() + "\n";
             GameStatus.setStatus(currentStatus);
         }
-        GameStatus.setStatus(CONTOUR);
+        GameStatus.setStatus(LINE);
     }
 
     public List<RacingCar> getRacingCarLists() {
