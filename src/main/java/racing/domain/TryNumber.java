@@ -3,29 +3,30 @@ package racing.domain;
 public class TryNumber {
 
     private static final int MIN_TRY_NUMBER = 1;
+    private static final int LIMIT_NEXT_STEP = 0;
 
-    private final int tryNumber;
+    private int tryNumber;
 
-    public TryNumber(String tryNumber) {
-        this.tryNumber = toInt(tryNumber);
-        isValidTryNumber(this.tryNumber);
+    public TryNumber(int tryNumber) {
+        checkValidTryNumber(tryNumber);
+        this.tryNumber = tryNumber;
     }
 
-    private int toInt(String tryNumber) {
-        try {
-            return Integer.parseInt(tryNumber);
-        } catch (NumberFormatException nfe) {
-            throw new NumberFormatException("[ERROR] 숫자만 입력 해주세요.");
-        }
-    }
-
-    private static void isValidTryNumber(final int tryNumber) {
+    private void checkValidTryNumber(final int tryNumber) {
         if (tryNumber < MIN_TRY_NUMBER) {
-            throw new IllegalArgumentException("[ERROR] 시도 횟수는 최소 1회 이상이어야 합니다.");
+            throw new IllegalArgumentException(
+                "[ERROR] 시도 횟수는 최소 " + MIN_TRY_NUMBER + "회 이상이어야 합니다.");
         }
     }
 
-    public int getTryNumber() {
-        return tryNumber;
+    public boolean hasNextStep() {
+        return this.tryNumber != LIMIT_NEXT_STEP;
+    }
+
+    public void nextStep() {
+        if (this.tryNumber == LIMIT_NEXT_STEP) {
+            throw new IllegalArgumentException("남은 시도 횟수가 없습니다.");
+        }
+        this.tryNumber--;
     }
 }

@@ -6,12 +6,9 @@ public class Calculator {
 
     private final Scanner scanner = new Scanner(System.in);
 
-    public Calculator() {
-    }
-
     public void startCalculate() {
         try {
-            Expression expression = new Expression(getUserInput());
+            final Expression expression = new Expression(getUserInput());
             expression.calculate();
             expression.printResult();
         } catch (IllegalArgumentException | ArithmeticException e) {
