@@ -4,20 +4,15 @@ import java.util.List;
 import racingcar.util.Movable;
 import racingcar.util.RandomUtil;
 
-public class GameStatus implements Movable {
+public class GameStatus {
 
-    private static final int RANDOM_START = 0;
-    private static final int RANDOM_END = 9;
-    private static final String CONTOUR = "----------------\n";
+    private static StringBuilder racingStatus = new StringBuilder();
 
-    @Override
-    public String moveForwardAll(List<RacingCar> racingCarLists) {
-        StringBuilder racingStatus = new StringBuilder();
-        for (RacingCar racingCar : racingCarLists) {
-            racingCar.moveForward(RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END));
-            racingStatus.append(racingCar.getName() + ":" + racingCar.getPosition() + "\n");
-        }
-        racingStatus.append(CONTOUR);
-        return racingStatus.toString();
+    public static void setStatus(String currentStatus) {
+        racingStatus.append(currentStatus);
+    }
+
+    public static StringBuilder getRacingStatus() {
+        return racingStatus;
     }
 }
