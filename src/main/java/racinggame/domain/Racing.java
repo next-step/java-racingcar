@@ -18,11 +18,12 @@ public class Racing {
         }
     }
 
-    public void race() {
+    public List<Car> race() {
         for (Car car : cars) {
             int randomNumber = makeRandomNumber();
             car.moveForward(randomNumber);
         }
+        return cars;
     }
 
     private int makeRandomNumber() {

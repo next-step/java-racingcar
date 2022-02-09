@@ -17,8 +17,7 @@ public class Application {
         Racing game = new Racing();
         game.registerCars(carNames);
         while (tryNumber > 0) {
-            game.race();
-            List<RacingDTO> result = convertCars(game.getCarInfo());
+            List<RacingDTO> result = convertCars(game.race());
             ResultView.printRace(result);
             tryNumber--;
         }
@@ -30,7 +29,7 @@ public class Application {
 
     private static List<RacingDTO> convertCars(List<Car> cars) {
         return cars.stream()
-            .map(RacingDTO::new)
+            .map(RacingDTO::from)
             .collect(Collectors.toList());
     }
 }
