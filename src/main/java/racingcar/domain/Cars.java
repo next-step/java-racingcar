@@ -10,6 +10,10 @@ import racingcar.domain.strategy.MoveStrategy;
 
 public class Cars {
 
+    private static final String NOTNULL_MESSAGE = "빈값을 초기화할 수 없습니다.";
+    private static final String NAME_DUPLICATE_MESSAGE = "자동차 이름이 중복되었습니다.";
+    private static final String MAX_POSITION_MESSAGE = "최대 위치를 구할 수 없습니다.";
+
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -28,7 +32,7 @@ public class Cars {
 
     private void verifyMinSize(List<Car> cars) {
         if (cars == null || cars.isEmpty()) {
-            throw new IllegalStateException("빈값을 초기화할 수 없습니다.");
+            throw new IllegalStateException(NOTNULL_MESSAGE);
         }
     }
 
@@ -36,7 +40,7 @@ public class Cars {
         Set<Car> carNames = new HashSet<>(cars);
 
         if (carNames.size() != cars.size()) {
-            throw new IllegalStateException("자동차 이름이 중복되었습니다.");
+            throw new IllegalStateException(NAME_DUPLICATE_MESSAGE);
         }
     }
 
@@ -58,7 +62,7 @@ public class Cars {
         return cars.stream()
             .mapToInt(Car::getPosition)
             .max()
-            .orElseThrow(() -> new IllegalStateException("최대 위치를 구할 수 없습니다."));
+            .orElseThrow(() -> new IllegalStateException(MAX_POSITION_MESSAGE));
     }
 
     public List<Car> getCars() {
