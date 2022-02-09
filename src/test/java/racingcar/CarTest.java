@@ -25,7 +25,7 @@ public class CarTest {
     void 자동차_전진(int randomNumber) {
         Car car = new Car("wooni");
         car.moveForward(randomNumber);
-        assertThat(car.getPosition()).isEqualTo("-");
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -34,7 +34,7 @@ public class CarTest {
     void 자동차_정지(int randomNumber) {
         Car car = new Car("wooni");
         car.moveForward(randomNumber);
-        assertThat(car.getPosition()).isEqualTo("");
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
