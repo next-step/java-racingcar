@@ -6,12 +6,16 @@ import racingcar.view.OutputView;
 
 public class GameController {
 
+    private static final String VALIDATE_TURN_EXCEPTION_MESSAGE = "[ERROR] turn은 1 이상 정수이어야 합니다.";
+
     private final Cars cars;
     private final int turn;
 
     private GameController(final String carsName, final int turn) {
         this.cars = Cars.fromString(carsName);
         this.turn = turn;
+
+        validateTurn(turn);
     }
 
     public static GameController of(final String carsName, final int turn) {
@@ -30,5 +34,11 @@ public class GameController {
         play(strategy);
 
         OutputView.printWhoIsWinner(cars);
+    }
+
+    private void validateTurn (int turn) {
+        if (turn <= 0) {
+            throw new IllegalArgumentException(VALIDATE_TURN_EXCEPTION_MESSAGE);
+        }
     }
 }
