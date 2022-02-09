@@ -6,7 +6,7 @@ public class Constants {
 
     public static final int MIN_NUMBER = 0;
     public static final int MAX_NUMBER = 9;
-    public static final int THRESHOLD_NUMBER = 0;
+    public static final int THRESHOLD_NUMBER = 4;
 
     public static final String QUIT_COMMAND = "q";
 
