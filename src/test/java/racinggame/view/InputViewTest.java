@@ -6,74 +6,83 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Test;
-import racinggame.domain.Validator;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class InputViewTest {
 
     @Test
-    void 참여자는_두_명_이상이다_실패() {
-        String[] carNames = "car1".split(",");
-
-        assertThrows(IllegalArgumentException.class,
-                () -> Validator.validatePossibleToStart(carNames));
-    }
-
-    @Test
-    void 참여자는_두_명_이상이다_성공() {
-        String[] carNames = "car1,car2".split(",");
-
-        assertDoesNotThrow(() -> Validator.validatePossibleToStart(carNames));
-    }
-
-    @Test
     void carNames_정상_입력() {
-        InputStream inputStream = new ByteArrayInputStream("car1,car2".getBytes());
+        // given
+        final String userInput = "car1,car2";
+        final InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(inputStream);
 
-        String[] carNames = InputView.getCarNames();
+        // when
+        final String inputCarNames = InputView.inputCarNames();
 
-        assertThat(carNames[0]).isEqualTo("car1");
-        assertThat(carNames[1]).isEqualTo("car2");
+        // then
+        assertThat(inputCarNames).isEqualTo(userInput);
     }
 
     @Test
     void 시도횟수_정상_입력() {
-        InputStream inputStream = new ByteArrayInputStream("5".getBytes());
+        // given
+        final String inputTrial = "5";
+        final InputStream inputStream = new ByteArrayInputStream(inputTrial.getBytes());
         System.setIn(inputStream);
 
-        int trial = InputView.getTrial();
+        // when
+        final String trial = InputView.inputTrial();
 
-        assertThat(trial).isEqualTo(5);
+        // then
+        assertThat(trial).isEqualTo(inputTrial);
     }
 
-    @Test
-    void 시도횟수_입력값에_불필요한_공백이_들어왔을_때_제거() {
-        InputStream inputStream = new ByteArrayInputStream("1 0".getBytes());
+    @ValueSource(strings = {"1 0", " 10", " 1 0 ", "10 ", "1   0  "})
+    @ParameterizedTest
+    void getTrial_불필요한_공백이_들어왔을_때_제거(final String inputTrial) {
+        InputStream inputStream = new ByteArrayInputStream(inputTrial.getBytes());
         System.setIn(inputStream);
 
-        assertDoesNotThrow(() -> InputView.getTrial());
+        // when
+        final String trial = InputView.inputTrial();
+
+        // then
+        assertThat(trial).isEqualTo("10");
     }
 
-    @Test
-    void 시도횟수_입력값에_불필요한_공백이_들어왔을_때_제거_값_잘들어오는지() {
-
-        InputStream inputStream = new ByteArrayInputStream("1 0".getBytes());
+    @ValueSource(strings = {"222", "0", "1", "10 "})
+    @ParameterizedTest
+    void 시도횟수는_숫자인지_검증하는_로직_성공(String input) {
+        // given
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
-        int input = InputView.getTrial();
-        assertThat(input).isEqualTo(10);
+        // then
+        assertDoesNotThrow(() -> InputView.inputTrial());
     }
 
-    @Test
-    void carName_입력값에_불필요한_공백이_들어왔을_때_제거() {
-        InputStream inputStream = new ByteArrayInputStream("car1, car2, c ar3".getBytes());
+    @ValueSource(strings = {"a0", "aaa"})
+    @ParameterizedTest
+    void 시도횟수가_숫자가_아니면_재입력(String input) {
+        // given
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
-        String[] carNames = InputView.getCarNames();
+        // then
+        assertThrows(NoSuchElementException.class, () -> InputView.inputTrial());
+    }
 
-        assertThat(carNames[0]).isEqualTo("car1");
-        assertThat(carNames[1]).isEqualTo("car2");
-        assertThat(carNames[2]).isEqualTo("car3");
+    @ValueSource(strings = {" ", "", "\n", "\t"})
+    @ParameterizedTest
+    void 시도횟수에_공백이_들어오면_재입력(String input) {
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        // then
+        assertThrows(NoSuchElementException.class, () -> InputView.inputTrial());
     }
 }

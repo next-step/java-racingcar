@@ -1,35 +1,60 @@
 package racinggame.view;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import racinggame.domain.Judge;
+import java.util.HashMap;
+import java.util.Map;
+import racinggame.util.StringUtils;
 import racinggame.domain.RacingCar;
+import racinggame.domain.RacingCars;
+import racinggame.domain.vo.WinnersVo;
 
 public class GameView {
 
     private static final String DELIMITER = ", ";
+    private static final String FOOTPRINTS = "-";
 
-    private List<RacingCar> racingCars;
+    protected static final StringBuilder result = new StringBuilder();
+    private static final Map<String, String> resultOfCar = new HashMap<>();
+    private static final Map<String, Integer> positionOfCar = new HashMap<>();
 
-    public GameView(List<RacingCar> racingCars) {
-        this.racingCars = racingCars;
+    private GameView() {
     }
 
-    public List<RacingCar> getRacingCars() {
-        return racingCars;
+    public static void init(RacingCars racingCars) {
+        racingCars.get().stream()
+                .forEach(car -> {
+                    String carName = car.getName();
+                    resultOfCar.put(carName, String.format("%-5s: %s", carName,
+                            StringUtils.repeat(FOOTPRINTS, car.getPosition())));
+                    positionOfCar.put(carName, 0);
+                });
     }
 
-    public void printProgress() {
-        StringBuilder sb = new StringBuilder();
-        racingCars.forEach(car -> sb.append(car.drawCurrPosition()));
-
-        System.out.println(sb);
+    public static void saveProgress(RacingCars racingCars) {
+        racingCars.get().forEach(car -> result.append(drawCurrResult(car)).append("\n"));
     }
 
-    public void printWinners() {
-        List<String> winners = Judge.getWinners(racingCars);
+    private static String drawCurrResult(RacingCar racingCar) {
+        String carName = racingCar.getName();
+        return resultOfCar.put(carName, resultOfCar.get(carName)
+                + StringUtils.repeat(FOOTPRINTS, countForward(racingCar)));
+    }
 
-        String result = winners.stream().collect(Collectors.joining(DELIMITER));
+    private static int countForward(RacingCar racingCar) {
+        int currPosition = racingCar.getPosition();
+        String carName = racingCar.getName();
+
+        int steps = currPosition - positionOfCar.get(carName);
+        positionOfCar.put(carName, currPosition);
+
+        return steps;
+    }
+
+    public static void printWinners(final WinnersVo winners) {
+        final String result = String.join(DELIMITER, winners.get());
         System.out.println("최종 우승자: " + result);
+    }
+
+    public static void printResult() {
+        System.out.print(result);
     }
 }
