@@ -16,16 +16,24 @@ public class GameLauncher {
 
     public void start() {
         inputAll();
-        racingGame = new RacingGame(carNameLists);
-        racingCarLists = racingGame.getRacingCarLists();
-        RacingCarOutput.printGameScore(raceCount, racingCarLists);
+        racingGameProcess();
+        winnerProcess();
+    }
 
+    private void racingGameProcess() {
+        racingGame = new RacingGame(carNameLists, raceCount);
+        racingGame.runRace();
+        racingCarLists = racingGame.getRacingCarLists();
+        RacingCarOutput.printGameScore();
+    }
+
+    private void winnerProcess() {
         Winners winners = new Winners(racingCarLists);
         List<String> gameWinner = winners.getRacingWinnerLists();
         RacingCarOutput.printWinnersResult(gameWinner);
     }
 
-    public void inputAll() {
+    private void inputAll() {
         carNameLists = RacingCarInput.getCarName();
         raceCount = RacingCarInput.getRaceCount();
     }

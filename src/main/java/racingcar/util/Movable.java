@@ -5,5 +5,5 @@ import racingcar.domain.RacingCar;
 
 public interface Movable {
 
-    String moveForwardAll(List<RacingCar> racingCarLists);
+    void moveForwardAll();
 }
