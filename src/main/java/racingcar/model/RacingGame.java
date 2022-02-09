@@ -5,28 +5,22 @@ import java.util.List;
 
 public class RacingGame {
 
-    private Cars cars;
-    private List<Car> raceResult;
-    private TryCount tryCount;
-    private List<RaceResult> totalResult;
+    private final Cars cars;
+    private final TryCount tryCount;
 
-    public RacingGame(List<String> parsedInput, int tryCountInput) {
-        this.cars = new Cars(parsedInput);
-        this.tryCount = new TryCount(tryCountInput);
-        this.totalResult = new ArrayList<>();
+    public RacingGame(Cars cars, int tryCount) {
+        this.cars = cars;
+        this.tryCount = new TryCount(tryCount);
     }
 
     public List<RaceResult> startRace() {
+        List<RaceResult> totalResult = new ArrayList<>();
         while (tryCount.isPlaying()) {
-            raceResult = cars.moveCars();
-            totalResult.add(new RaceResult(raceResult));
-
+            RaceResult raceResult = new RaceResult(cars.moveCars());
+            totalResult.add(raceResult);
             tryCount.decreaseTryCount();
         }
         return totalResult;
     }
 
-    public List<Car> getFinalRoundResult() {
-        return raceResult;
-    }
 }
