@@ -36,5 +36,21 @@ public class CarTest {
         car.moveForward(randomNumber);
         assertThat(car.getPosition()).isEqualTo("");
     }
+
+    @Test
+    @DisplayName("현재 maxPosition보다 이동거리가 크다면 해당 값으로 갱신된다.")
+    void 현재_맥스_포지션과_이동거리_비교() {
+        Car wooni = new Car("wooni", 7);
+        assertThat(wooni.checkMaxPosition(8)).isEqualTo(8);
+    }
+
+
+    @Test
+    @DisplayName("현재 최대이동거리가 7일때, 최대이동거리 일치 여부 유효성 ")
+    void 최대_이동거리_일치_여부_판단() {
+        Car wooni = new Car("wonie",7);
+        int maxPosition = 7;
+        assertThat(wooni.isMaxPosition(maxPosition)).isEqualTo(true);
+    }
 }
 
