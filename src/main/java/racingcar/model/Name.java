@@ -10,10 +10,11 @@ public class Name {
     private final String name;
 
     public Name(String name) {
-        this.name = validateCarNameLength(name);
+        validateCarNameLength(name);
+        this.name = name;
     }
 
-    private String validateCarNameLength(String name) {
+    private void validateCarNameLength(String name) {
         if (name.length() < MINIMUM_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(CAR_NAME_LESS_THAN_ONE);
         }
@@ -21,7 +22,6 @@ public class Name {
             throw new IllegalArgumentException(CAR_NAME_LONGER_THAN_FIVE);
         }
 
-        return name;
     }
 
     public String getCarName() {
