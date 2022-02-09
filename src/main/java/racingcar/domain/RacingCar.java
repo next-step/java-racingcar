@@ -36,7 +36,7 @@ public class RacingCar {
     }
 
     private void validate(String name) {
-        if (isCorrectNameSize(name) || isOver(name)) {
+        if (isOver(name) || isCorrectNameSize(name)) {
             throw new IllegalArgumentException(RacingCarOutput.ERROR_CAR_NAME_OVER_OR_EMPTY);
         }
     }
