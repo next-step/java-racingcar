@@ -3,19 +3,19 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Winner {
+public class Winners {
 
-    private List<Car> carList;
+    private List<Car> cars;
 
-    public Winner(List<Car> car) {
-        this.carList = new ArrayList<>(car);
+    public Winners(List<Car> car) {
+        this.cars = new ArrayList<>(car);
     }
 
     public ArrayList<String> winnerList() {
         int maxPosition = maximumDistance();
         ArrayList<String> winners = new ArrayList<>();
 
-        for (Car car : carList) {
+        for (Car car : cars) {
             if (car.isMaxPosition((maxPosition))) {
                 winners.add(car.getCarName());
             }
@@ -25,7 +25,7 @@ public class Winner {
 
     private int maximumDistance() {
         int maxPosition = 0;
-        for (Car car : carList) {
+        for (Car car : cars) {
             maxPosition = car.checkMaxPosition(maxPosition);
         }
         return maxPosition;
