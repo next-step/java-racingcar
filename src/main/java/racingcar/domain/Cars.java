@@ -14,11 +14,11 @@ public class Cars {
     }
 
     public static Cars fromString(final String carNames) {
-        return new Cars(Parser
-            .parseCarNames(carNames)
-            .stream()
+        final List<Car> cars = Parser.parseCarNames(carNames).stream()
             .map(Car::new)
-            .collect(Collectors.toList()));
+            .collect(Collectors.toList());
+
+        return new Cars(cars);
     }
 
     public static Cars fromCarList(final List<Car> cars) {
@@ -32,7 +32,7 @@ public class Cars {
     }
 
     public List<Car> filterWinners() {
-        int max = calculateMax();
+        final int max = calculateMax();
         return cars.stream().filter(car -> car.getDistance() == max).collect(Collectors.toList());
     }
 
