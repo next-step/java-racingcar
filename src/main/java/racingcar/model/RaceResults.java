@@ -4,19 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RaceResults {
+
     private final List<RaceResult> raceResults;
     private final RaceResult lastRaceResult;
     private final List<String> winners;
     private int maxPosition;
 
-    public RaceResults(List<RaceResult> raceResults){
-        this.raceResults=raceResults;
-        this.lastRaceResult=raceResults.get(raceResults.size()-1);
-        this.winners=new ArrayList<>();
-        this.maxPosition=0;
+    public RaceResults(List<RaceResult> raceResults) {
+        this.raceResults = raceResults;
+        this.lastRaceResult = raceResults.get(raceResults.size() - 1);
+        this.winners = new ArrayList<>();
+        this.maxPosition = 0;
     }
 
-    public List<String> findWinners(){
+    public List<String> findWinners() {
         List<Car> carsAfterLastRace = lastRaceResult.getRaceResultByRound();
         findMaxPosition(carsAfterLastRace);
         findCarsWithMaxPosition(carsAfterLastRace);
@@ -31,11 +32,12 @@ public class RaceResults {
 
     private void findCarsWithMaxPosition(List<Car> carsAfterRace) {
         for (Car car : carsAfterRace) {
-           findCarWithSamePosition(car);
+            findCarWithSamePosition(car);
         }
     }
-    private void findCarWithSamePosition(Car car){
-        if(car.isSamePosition(maxPosition)){
+
+    private void findCarWithSamePosition(Car car) {
+        if (car.isSamePosition(maxPosition)) {
             winners.add(car.getCarName());
         }
     }

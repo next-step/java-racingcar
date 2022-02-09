@@ -21,7 +21,6 @@ public class UserTest {
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
-        //user.getUserInput();
 
         assertThatIllegalArgumentException()
             .isThrownBy(user::getUserInput
@@ -36,7 +35,6 @@ public class UserTest {
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
-        //user.getUserInput();
 
         assertThatIllegalArgumentException()
             .isThrownBy(user::getUserInput

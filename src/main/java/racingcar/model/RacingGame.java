@@ -22,5 +22,4 @@ public class RacingGame {
         }
         return totalResult;
     }
-
 }
