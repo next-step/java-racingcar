@@ -3,25 +3,32 @@ package racinggame.dto;
 import racinggame.domain.Car;
 
 public class RacingDTO {
-    private static final String FORWARD_SIGN = "-";
-    private static final String CAR_COLON = " : ";
 
-    private final Car car;
+    private String name;
+    private int location;
 
-    public RacingDTO(final Car car) {
-        this.car = car;
+    public RacingDTO(String name, int location) {
+        this.name = name;
+        this.location = location;
     }
 
-    public String carStatus() {
-        return car.getName() + CAR_COLON + carLocation();
+    public String getName() {
+        return name;
     }
 
-    private String carLocation() {
-        StringBuilder result = new StringBuilder();
-        int location = car.getLocation();
-        for (int i = 0; i < location; i++) {
-            result.append(FORWARD_SIGN);
-        }
-        return result.toString();
+    public int getLocation() {
+        return location;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLocation(int location) {
+        this.location = location;
+    }
+
+    public static RacingDTO from(Car car) {
+        return new RacingDTO(car.getName(), car.getLocation());
     }
 }
