@@ -7,15 +7,16 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import org.junit.jupiter.api.Test;
+import racinggame.view.InputView;
 
-class InputTest {
+class InputViewTest {
 
     @Test
     void carNames_정상_입력() throws IOException {
         InputStream inputStream = new ByteArrayInputStream("car1,car2".getBytes());
         System.setIn(inputStream);
 
-        String[] carNames = Input.getCarNames();
+        String[] carNames = InputView.getCarNames();
 
         assertThat(carNames[0]).isEqualTo("car1");
         assertThat(carNames[1]).isEqualTo("car2");
@@ -26,7 +27,7 @@ class InputTest {
         InputStream inputStream = new ByteArrayInputStream("5".getBytes());
         System.setIn(inputStream);
 
-        int trial = Input.getTrial();
+        int trial = InputView.getTrial();
 
         assertThat(trial).isEqualTo(5);
     }
@@ -36,7 +37,7 @@ class InputTest {
         InputStream inputStream = new ByteArrayInputStream("1 0".getBytes());
         System.setIn(inputStream);
 
-        assertDoesNotThrow(() -> Input.getTrial());
+        assertDoesNotThrow(() -> InputView.getTrial());
     }
 
     @Test
@@ -45,7 +46,7 @@ class InputTest {
         InputStream inputStream = new ByteArrayInputStream("1 0".getBytes());
         System.setIn(inputStream);
 
-        int input = Input.getTrial();
+        int input = InputView.getTrial();
         assertThat(input).isEqualTo(10);
     }
 
@@ -54,7 +55,7 @@ class InputTest {
         InputStream inputStream = new ByteArrayInputStream("car1, car2, c ar3".getBytes());
         System.setIn(inputStream);
 
-        String[] carNames = Input.getCarNames();
+        String[] carNames = InputView.getCarNames();
 
         assertThat(carNames[0]).isEqualTo("car1");
         assertThat(carNames[1]).isEqualTo("car2");

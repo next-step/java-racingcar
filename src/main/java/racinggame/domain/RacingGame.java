@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import racinggame.util.Utils;
+import racinggame.view.RacingGameView;
 
 public class RacingGame {
 
@@ -37,7 +38,7 @@ public class RacingGame {
 
         List<String> winners = getWinners(max);
 
-        View.printWinnerOfGame(winners);
+        RacingGameView.printWinnerOfGame(winners);
     }
 
     private List<Integer> getCarPositions() {

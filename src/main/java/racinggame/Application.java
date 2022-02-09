@@ -2,7 +2,7 @@ package racinggame;
 
 import java.io.IOException;
 import java.util.List;
-import racinggame.domain.Input;
+import racinggame.view.InputView;
 import racinggame.domain.RacingCar;
 import racinggame.domain.RacingGame;
 import racinggame.util.Utils;
@@ -16,8 +16,8 @@ public class Application {
             int trial;
 
             try {
-                carNames = Input.getCarNames();
-                trial = Input.getTrial();
+                carNames = InputView.getCarNames();
+                trial = InputView.getTrial();
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 continue;

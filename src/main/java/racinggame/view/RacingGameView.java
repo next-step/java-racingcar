@@ -1,9 +1,9 @@
-package racinggame.domain;
+package racinggame.view;
 
 import java.util.List;
 import racinggame.util.Utils;
 
-public class View {
+public class RacingGameView {
     private static final String DELIMITER = ", ";
 
     public static void printWinnerOfGame(List<String> winners) {

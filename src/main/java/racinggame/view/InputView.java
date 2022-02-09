@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.view;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import racinggame.util.Utils;
 import racinggame.util.Validator;
 
-public class Input {
+public class InputView {
 
-    private Input() {}
+    private InputView() {}
 
     public static String[] getCarNames() throws IOException {
         System.out.println("경주할 자동차 이름을 ','로 구분해서 입력하세요.(2대 이상)");

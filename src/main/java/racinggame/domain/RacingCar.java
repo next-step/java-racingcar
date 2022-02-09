@@ -5,6 +5,7 @@ import static racinggame.util.Constants.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import racinggame.view.RacingGameView;
 
 public class RacingCar {
 
@@ -35,6 +36,6 @@ public class RacingCar {
     }
 
     public void printCurrPosition() {
-        View.printCarStatus(this.carName, this.carPosition);
+        RacingGameView.printCarStatus(this.carName, this.carPosition);
     }
 }
