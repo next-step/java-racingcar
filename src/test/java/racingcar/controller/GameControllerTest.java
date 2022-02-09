@@ -8,7 +8,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import racingcar.domain.movable.RandomMovableStrategy;
 
 public class GameControllerTest {
 
@@ -28,24 +27,24 @@ public class GameControllerTest {
         );
     }
 
-    @DisplayName("GameController에 유효한 인자로 넣었을때, startGame 메서드가 정상 작동한다.")
+    @DisplayName("GameController 생성자 생성시 유효한 인자를 넣었을때, 정상 작동한다.")
     @ParameterizedTest
     @MethodSource("generateValidGameControllerParameter")
-    void GivenValidGameControllerParameter_WhenStartGame_ThenNotThrowException(String carNames,
+    void GivenValidGameControllerParameter_WhenCreateConstructor_ThenNotThrowException(
+        String carNames,
         int turn) {
         assertDoesNotThrow(
             () -> GameController.of(carNames, turn)
-                .startGame(RandomMovableStrategy.getInstance())
         );
     }
 
-    @DisplayName(value = "GameController에 turn을 0으로 인자를 넣었을때, IllegalArgumentException가 발생한다.")
+    @DisplayName(value = "GameController 생성자 생성시 turn을 0으로 인자를 넣었을때, IllegalArgumentException가 발생한다.")
     @ParameterizedTest
     @MethodSource("generateInvalidTurnGameControllerParameter")
-    void GivenTurnZero_WhenStartGame_ThenIllegalArgumentException(String carNames, int turn) {
+    void GivenTurnZero_WhenCreateConstructor_ThenIllegalArgumentException(String carNames,
+        int turn) {
         assertThatThrownBy(
             () -> GameController.of(carNames, turn)
-                .startGame(RandomMovableStrategy.getInstance())
         ).isInstanceOf(IllegalArgumentException.class);
     }
 }
