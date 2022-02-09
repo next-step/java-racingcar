@@ -44,7 +44,7 @@ public class Game {
         for (Car car : cars) {
             int randomNumber = randomGenerator.generateRandomNumber();
             car.moveForward(randomNumber);
-            OutputView.printResult(car.getCarName(), car.getPosition());
+            OutputView.printResult(car);
         }
         System.out.println();
     }
