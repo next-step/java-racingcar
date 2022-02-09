@@ -11,7 +11,7 @@ public class RaceResults {
     private int maxPosition;
 
     public RaceResults(List<RaceResult> raceResults) {
-        this.raceResults = raceResults;
+        this.raceResults = new ArrayList<>(raceResults);
         this.lastRaceResult = raceResults.get(raceResults.size() - 1);
         this.winners = new ArrayList<>();
         this.maxPosition = 0;
