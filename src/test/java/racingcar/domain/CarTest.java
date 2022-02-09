@@ -118,4 +118,13 @@ public class CarTest {
         assertThat(car.getDistance())
             .isEqualTo(AFTER_Three_MOVE_DISTANCE);
     }
+
+    @DisplayName("Car 인스턴스 생성후 IsEqualDistance 의 파라미터로 0이 주어질 때, true 가 반환된다.")
+    @Test
+    void GivenIsEqualDistanceParameterZero_WhenCreateInstanceAndIsEqualDistance_ThenTrue() {
+        final int ZERO_DISTANCE = 0;
+
+        assertThat(new Car("A").isEqualDistance(ZERO_DISTANCE))
+            .isEqualTo(true);
+    }
 }
