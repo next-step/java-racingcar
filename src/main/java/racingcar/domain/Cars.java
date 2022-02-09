@@ -64,15 +64,4 @@ public class Cars {
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
-
-    @Override
-    public String toString() {
-        StringBuilder carsState = new StringBuilder();
-        for (Car car : cars) {
-            carsState.append(car);
-            carsState.append("\n");
-        }
-        carsState.append("------------------------------\n");
-        return carsState.toString();
-    }
 }

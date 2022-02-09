@@ -16,12 +16,9 @@ public class Application {
 
         RacingGame racingGame = new RacingGame(Cars.of(carNames), endRaceCount, new RandomMoveStrategy());
 
-        racingGame.race();
+        List<Cars> racingLogs = racingGame.race();
 
-        StringBuilder gameLog = new StringBuilder();
-
-        RacingCarView.printWinner(gameLog, racingGame.getCars());
-
-        System.out.println(gameLog);
+        RacingCarView.printRacing(racingLogs);
+        RacingCarView.printWinner(racingGame.getCars());
     }
 }
