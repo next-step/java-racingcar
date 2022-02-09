@@ -39,7 +39,7 @@ public class GameControllerTest {
         );
     }
 
-    @DisplayName(value = "0으로 Price 객체를 생성할때, IllegalArgumentException이 발생한다.")
+    @DisplayName(value = "GameController에 turn을 0으로 인자를 넣었을때, IllegalArgumentException가 발생한다.")
     @ParameterizedTest
     @MethodSource("generateInvalidTurnGameControllerParameter")
     void GivenTurnZero_WhenStartGame_ThenIllegalArgumentException(String carNames, int turn) {
