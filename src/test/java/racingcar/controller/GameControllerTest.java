@@ -27,10 +27,10 @@ public class GameControllerTest {
         );
     }
 
-    @DisplayName("GameController 생성자 생성시 유효한 인자를 넣었을때, 정상 작동한다.")
+    @DisplayName("GameController instance 생성시 유효한 인자를 넣었을때, 에러가 발생하지 않는다.")
     @ParameterizedTest
     @MethodSource("generateValidGameControllerParameter")
-    void GivenValidGameControllerParameter_WhenCreateConstructor_ThenNotThrowException(
+    void GivenValidGameControllerParameter_WhenCreateInstance_ThenNotThrowException(
         String carNames,
         int turn) {
         assertDoesNotThrow(
@@ -38,10 +38,10 @@ public class GameControllerTest {
         );
     }
 
-    @DisplayName(value = "GameController 생성자 생성시 turn을 0으로 인자를 넣었을때, IllegalArgumentException가 발생한다.")
+    @DisplayName(value = "GameController instance 생성시 turn을 0으로 인자를 넣었을때, IllegalArgumentException가 발생한다.")
     @ParameterizedTest
     @MethodSource("generateInvalidTurnGameControllerParameter")
-    void GivenTurnZero_WhenCreateConstructor_ThenIllegalArgumentException(String carNames,
+    void GivenTurnZero_WhenCreateInstance_ThenIllegalArgumentException(String carNames,
         int turn) {
         assertThatThrownBy(
             () -> GameController.of(carNames, turn)
