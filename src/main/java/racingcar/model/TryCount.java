@@ -8,14 +8,14 @@ public class TryCount {
     private int tryCount;
 
     public TryCount(int tryCountInput) {
-        this.tryCount = validateTryCount(tryCountInput);
+        validateTryCount(tryCountInput);
+        this.tryCount = tryCountInput;
     }
 
-    private int validateTryCount(int tryCountInput) {
+    private void validateTryCount(int tryCountInput) {
         if (tryCountInput < MINIMUM_TRY_COUNT) {
             throw new IllegalArgumentException(TRY_COUNT_LESS_THAN_ZERO);
         }
-        return tryCountInput;
     }
 
     public boolean isPlaying() {
