@@ -9,7 +9,7 @@ public class ResultView {
     public static void printResult(List<RoundResult> results) {
         System.out.println("실행 결과");
         for (RoundResult result : results) {
-            System.out.println(formatResult(result.getCarInfos()));
+            System.out.println(formatResult(result.getResultVOS()));
         }
     }
 

@@ -12,7 +12,7 @@ public class Judgement {
     private final int bestDistance;
 
     public Judgement(RoundResult result) {
-        this.result = result.getCarInfos();
+        this.result = result.getResultVOS();
         this.bestDistance = getBestScore();
     }
 

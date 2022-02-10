@@ -1,17 +1,17 @@
 package racing.domain;
 
 import java.util.List;
+import racing.vo.CarResultVO;
 
 public class RoundResult {
 
-    private final List<Car> cars;
+    private final List<CarResultVO> resultVOS;
 
-    public RoundResult(List<Car> cars) {
-        this.cars = cars;
+    public RoundResult(List<CarResultVO> resultVOS) {
+        this.resultVOS = resultVOS;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<CarResultVO> getResultVOS() {
+        return resultVOS;
     }
-
 }
