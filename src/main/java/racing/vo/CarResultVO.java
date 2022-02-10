@@ -23,7 +23,7 @@ public class CarResultVO implements Comparable<CarResultVO> {
         return distance;
     }
 
-    public boolean isSameDistance(int bestDistance) {
-        return bestDistance == distance;
+    public boolean isSameDistance(int distance) {
+        return this.distance == distance;
     }
 }
