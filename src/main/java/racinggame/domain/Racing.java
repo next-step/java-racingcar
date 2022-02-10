@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 public class Racing {
     private static final int MAX_RANGE = 10;
+    private static final int FORWARD_NUMBER = 4;
+    private static final Random random = new Random();
 
     private List<Car> cars;
 
@@ -25,14 +27,22 @@ public class Racing {
 
     public List<Car> race() {
         for (Car car : cars) {
-            int randomNumber = makeRandomNumber();
-            car.moveForward(randomNumber);
+            moveCar(car, isMovable(generateRandomNumber()));
         }
         return cars;
     }
 
-    private int makeRandomNumber() {
-        Random random = new Random();
+    public void moveCar(Car car, boolean isMovable) {
+        if (isMovable) {
+            car.moveForward();
+        }
+    }
+
+    public boolean isMovable(int moveNumber) {
+        return moveNumber >= FORWARD_NUMBER;
+    }
+
+    private int generateRandomNumber() {
         return random.nextInt(MAX_RANGE);
     }
 
