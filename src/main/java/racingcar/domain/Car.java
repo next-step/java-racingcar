@@ -7,19 +7,14 @@ public class Car {
     private static final int MOVE_THRESHOLD = 4;
     private static final int LIMIT_NAME_LENGTH = 5;
 
-    public Car(String name) {
-        validateCarName(name);
-        this.name = name;
-        this.distance = 0;
-    }
-
     public Car(String name, int distance) {
+        validateCarName(name);
         this.name = name;
         this.distance = distance;
     }
 
     public static Car of(String name) {
-        return new Car(name);
+        return new Car(name, 0);
     }
 
     public static void validateCarName(String carName) {
