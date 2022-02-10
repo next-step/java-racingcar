@@ -1,17 +1,17 @@
 package racing.vo;
 
-public class CarResultVO implements Comparable<CarResultVO> {
+public class CarResult implements Comparable<CarResult> {
 
     private final String name;
     private final int distance;
 
-    public CarResultVO(String name, int distance) {
+    public CarResult(String name, int distance) {
         this.name = name;
         this.distance = distance;
     }
 
     @Override
-    public int compareTo(CarResultVO o) {
+    public int compareTo(CarResult o) {
         return o.distance - this.distance;
     }
 

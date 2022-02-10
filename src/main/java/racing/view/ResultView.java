@@ -1,7 +1,7 @@
 package racing.view;
 
 import java.util.List;
-import racing.vo.CarResultVO;
+import racing.vo.CarResult;
 import racing.domain.RoundResult;
 
 public class ResultView {
@@ -17,10 +17,10 @@ public class ResultView {
         System.out.println("최종 우승자: " + String.join(", ", judgeWinner));
     }
 
-    private static StringBuilder formatResult(List<CarResultVO> carResultVOS) {
+    private static StringBuilder formatResult(List<CarResult> carResultVOS) {
         final StringBuilder formattedResult = new StringBuilder();
 
-        for(CarResultVO vo : carResultVOS) {
+        for(CarResult vo : carResultVOS) {
             final StringBuilder sb = new StringBuilder();
             for(int i = 0; i < vo.getDistance(); i++) {
                 sb.append('-');

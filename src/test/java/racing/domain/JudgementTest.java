@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.service.Judgement;
-import racing.vo.CarResultVO;
+import racing.vo.CarResult;
 
 class JudgementTest {
 
@@ -17,11 +17,11 @@ class JudgementTest {
 
     @BeforeEach
     void setUp() {
-        List<CarResultVO> results = new ArrayList<>();
-        results.add(new CarResultVO("eohae", 8));
-        results.add(new CarResultVO("eo", 8));
-        results.add(new CarResultVO("a", 7));
-        results.add(new CarResultVO("b", 4));
+        List<CarResult> results = new ArrayList<>();
+        results.add(new CarResult("eohae", 8));
+        results.add(new CarResult("eo", 8));
+        results.add(new CarResult("a", 7));
+        results.add(new CarResult("b", 4));
 
         judgement = new Judgement(new RoundResult(results));
         winners = new ArrayList<>(Arrays.asList("eohae", "eo"));

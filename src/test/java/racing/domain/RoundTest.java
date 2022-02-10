@@ -1,12 +1,11 @@
 package racing.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import racing.vo.CarResultVO;
+import racing.vo.CarResult;
 
 class RoundTest {
 
@@ -29,7 +28,7 @@ class RoundTest {
         cars.add(new Car("a", goMoveRule));
         cars.add(new Car("b", goMoveRule));
 
-        List<CarResultVO> result = round.play(cars);
+        List<CarResult> result = round.play(cars);
 
         for(int i = 0; i < result.size(); i++) {
             assertThat(result.get(i).getDistance()).isEqualTo(1);

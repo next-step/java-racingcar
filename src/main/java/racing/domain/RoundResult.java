@@ -2,17 +2,17 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racing.vo.CarResultVO;
+import racing.vo.CarResult;
 
 public class RoundResult {
 
-    private final List<CarResultVO> resultVOS;
+    private final List<CarResult> results;
 
-    public RoundResult(List<CarResultVO> resultVOS) {
-        this.resultVOS = resultVOS;
+    public RoundResult(List<CarResult> results) {
+        this.results = results;
     }
 
-    public List<CarResultVO> getResultVOS() {
-        return new ArrayList<>(resultVOS);
+    public List<CarResult> getResultVOS() {
+        return new ArrayList<>(results);
     }
 }

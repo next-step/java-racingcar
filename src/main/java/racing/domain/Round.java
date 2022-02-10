@@ -2,7 +2,7 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racing.vo.CarResultVO;
+import racing.vo.CarResult;
 
 public class Round {
 
@@ -12,12 +12,12 @@ public class Round {
         this.roundNumber = roundNumber;
     }
 
-    public List<CarResultVO> play(List<Car> cars) {
-        List<CarResultVO> results = new ArrayList<>();
+    public List<CarResult> play(List<Car> cars) {
+        List<CarResult> results = new ArrayList<>();
 
         for (Car car : cars) {
             car.move();
-            results.add(new CarResultVO(car.getName(), car.getDistance()));
+            results.add(new CarResult(car.getName(), car.getDistance()));
         }
 
         return results;
