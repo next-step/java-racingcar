@@ -7,19 +7,35 @@ public class RacingGame {
 
     private final Cars cars;
     private final TryCount tryCount;
+    private MoveStrategy moveStrategy;
 
     public RacingGame(Cars cars, int tryCount) {
         this.cars = cars;
         this.tryCount = new TryCount(tryCount);
     }
 
-    public List<RaceResult> startRace() {
-        List<RaceResult> totalResult = new ArrayList<>();
+    public RacingGame(Cars cars, int tryCount, MoveStrategy moveStrategy) {
+        this(cars, tryCount);
+        this.moveStrategy = moveStrategy;
+    }
+
+    public RaceResults startRace() {
+        List<List<Car>> totalResult = new ArrayList<>();
         while (tryCount.isPlaying()) {
-            RaceResult raceResult = new RaceResult(cars.moveCars());
-            totalResult.add(raceResult);
+            List<Car> raceResultByRound = saveEachRoundResult(cars.moveCars(moveStrategy));
+            totalResult.add(raceResultByRound);
             tryCount.decreaseTryCount();
         }
-        return totalResult;
+        System.out.println(totalResult.get(0).get(0));
+        System.out.println(totalResult.get(1).get(0));
+        return new RaceResults(totalResult);
+    }
+
+    private List<Car> saveEachRoundResult(List<Car> raceResult) {
+        List<Car> raceResultByRound = new ArrayList<>();
+        for (Car car : raceResult) {
+            raceResultByRound.add(new Car(car.getCarName(), car.getPosition()));
+        }
+        return raceResultByRound;
     }
 }
