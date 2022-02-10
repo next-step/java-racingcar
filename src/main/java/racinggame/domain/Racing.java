@@ -46,6 +46,26 @@ public class Racing {
         return random.nextInt(MAX_RANGE);
     }
 
+    public List<String> getWinnersName() {
+        final int maxLocation = findMaxLocation();
+        final List<Car> winners = findWinners(maxLocation);
+        return winners.stream()
+            .map(Car::getName)
+            .collect(Collectors.toList());
+    }
+
+    private List<Car> findWinners(final int maxLocation) {
+        return cars.stream()
+            .filter(car -> car.getLocation() == maxLocation)
+            .collect(Collectors.toList());
+    }
+
+    private int findMaxLocation() {
+        return cars.stream()
+            .mapToInt(Car::getLocation)
+            .max().getAsInt();
+    }
+
     public List<Car> getCarInfo() {
         return cars;
     }
