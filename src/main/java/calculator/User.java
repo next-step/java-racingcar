@@ -18,8 +18,8 @@ public class User {
         if (userInputTokens.length < MINIMUM_TOKEN_NUMBER) {
             throw new IllegalArgumentException(NOT_NULL_ALLOWED);
         }
-        for (String token: userInputTokens) {
-            if (token.equals("")) {
+        for (String token : userInputTokens) {
+            if (token.isEmpty()) {
                 throw new IllegalArgumentException(NOT_NULL_ALLOWED);
             }
         }
