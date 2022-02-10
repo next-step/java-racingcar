@@ -8,9 +8,9 @@ public class Car {
     private static final int LIMIT_NAME_LENGTH = 5;
 
     public Car(String name) {
+        validateCarName(name);
         this.name = name;
         this.distance = 0;
-        validateCarName(name);
     }
 
     public Car(String name, int distance) {
