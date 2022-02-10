@@ -51,7 +51,7 @@ public class Calculator {
     }
 
     private int divide(int a, int b) {
-        if (b==ZERO) {
+        if (b == ZERO) {
             throw new IllegalArgumentException(CANNOT_DIVIDE_BY_ZERO);
         }
         return a / b;
