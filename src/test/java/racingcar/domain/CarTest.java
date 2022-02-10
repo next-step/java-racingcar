@@ -44,4 +44,15 @@ class CarTest {
 
         assertTrue(car.isWinner(DISTANCE));
     }
+
+    @Test
+    void 최대_전진_거리보다_멀리_전진했는지_판별한다() {
+        final int DISTANCE = 7;
+        final int MAX_DISTANCE = 5;
+        Car car = new Car("Dami");
+
+        car.move(DISTANCE);
+
+        assertTrue(car.isFartherThan(MAX_DISTANCE));
+    }
 }
