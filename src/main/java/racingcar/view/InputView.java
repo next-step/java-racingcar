@@ -9,12 +9,6 @@ public class InputView {
     private final static int MAX_NAME_LENGTH = 5;
     private final static Scanner scanner = new Scanner(System.in);
 
-    private static void validateCarNameLength(String carName) {
-        if (carName.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자를 초과할 수 없습니다.");
-        }
-    }
-
     public static int getTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
 
@@ -30,5 +24,11 @@ public class InputView {
             validateCarNameLength(carName);
         }
         return carNames;
+    }
+
+    private static void validateCarNameLength(String carName) {
+        if (carName.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자를 초과할 수 없습니다.");
+        }
     }
 }
