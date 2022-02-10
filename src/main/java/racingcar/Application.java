@@ -9,14 +9,11 @@ import racingcar.view.ResultView;
 public class Application {
 
     public static void main(String[] args) {
-        Referee referee = new Referee();
-        ResultView resultView = new ResultView();
-
         RacingCarGame racingCarGame = new RacingCarGame(InputView.getCarNames(), InputView.getTryCount());
 
         racingCarGame.play();
 
-        List<String> winners = referee.getWinners(racingCarGame.getCars());
-        resultView.printGameResult(winners);
+        List<String> winners = Referee.getWinners(racingCarGame.getCars());
+        ResultView.printGameResult(winners);
     }
 }
