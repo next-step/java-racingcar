@@ -3,7 +3,7 @@ package racing.service;
 import java.util.ArrayList;
 import java.util.List;
 import racing.domain.Car;
-import racing.domain.RacingInfo;
+import racing.dto.RacingInfoDto;
 import racing.domain.Round;
 import racing.vo.CarResultVO;
 import racing.domain.RoundResult;
@@ -15,7 +15,7 @@ public class Racing {
     private final List<RoundResult> results;
     private int roundNumber;
 
-    public Racing(RacingInfo info) {
+    public Racing(RacingInfoDto info) {
         cars = info.getCars();
         round = info.getRound();
         roundNumber = round.getRoundNumber();
@@ -33,8 +33,8 @@ public class Racing {
     }
 
     private void runGame() {
-        List<CarResultVO> result = round.play(cars);
-        results.add(new RoundResult(result));
+        List<CarResultVO> resultVO = round.play(cars);
+        results.add(new RoundResult(resultVO));
         roundNumber--;
     }
 

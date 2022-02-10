@@ -1,6 +1,6 @@
 package racing;
 
-import racing.domain.RacingInfo;
+import racing.dto.RacingInfoDto;
 import racing.service.Judgement;
 import racing.service.Racing;
 import racing.view.InputView;
@@ -12,9 +12,9 @@ public class RacingApplication {
 
         String carNames = InputView.getCars();
         int roundNumber = InputView.getRoundNumber();
-        RacingInfo info = RacingInfo.of(carNames, roundNumber);
+        RacingInfoDto infoDto = RacingInfoDto.of(carNames, roundNumber);
 
-        Racing racing = new Racing(info);
+        Racing racing = new Racing(infoDto);
         racing.race();
         ResultView.printResult(racing.getRoundResults());
 
