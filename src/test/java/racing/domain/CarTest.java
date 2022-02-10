@@ -19,7 +19,8 @@ public class CarTest {
     @Test
     void 자동차_이름이_5글자_이상_에러() {
         assertThatIllegalArgumentException()
-            .isThrownBy(() -> new Car("포르쉐입니다", moveRule));
+            .isThrownBy(() -> new Car("포르쉐입니다", moveRule))
+            .withMessage("[ERROR] 자동차 이름은 5자를 초과할 수 없습니다.");
     }
 
     @Test
