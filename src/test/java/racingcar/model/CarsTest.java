@@ -10,7 +10,8 @@ public class CarsTest {
 
     @Test
     void 입력받은_이름으로_Car객체_리스트를_만든다() {
-        Cars cars = new Cars(Arrays.asList("pobi", "woni", "jun"));
+        MoveStrategy moveStrategy = new RandomStrategy();
+        Cars cars = new Cars(Arrays.asList("pobi", "woni", "jun"),moveStrategy);
         List<Car> movedCars = cars.moveCars();
         assertThat(movedCars.get(0).getCarName()).isEqualTo("pobi");
         assertThat(movedCars.get(1).getCarName()).isEqualTo("woni");
@@ -19,7 +20,8 @@ public class CarsTest {
 
     @Test
     void 생성된_Car들이_전진한다() {
-        Cars cars = new Cars(Arrays.asList("pobi", "woni", "jun"));
+        MoveStrategy moveStrategy = new RandomStrategy();
+        Cars cars = new Cars(Arrays.asList("pobi", "woni", "jun"),moveStrategy);
         List<Car> movedCars = cars.moveCars();
         assertThat(movedCars.get(0).getPosition()).isNotNull();
     }
