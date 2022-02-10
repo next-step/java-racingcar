@@ -9,7 +9,7 @@ public class Cars {
 
     public Cars(final List<String> carNames) {
         for (String carName : carNames) {
-            cars.add(Car.of(carName));
+            cars.add(new Car(carName, 0));
         }
     }
 

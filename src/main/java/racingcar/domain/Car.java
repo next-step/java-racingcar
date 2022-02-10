@@ -13,10 +13,6 @@ public class Car {
         this.distance = distance;
     }
 
-    public static Car of(String name) {
-        return new Car(name, 0);
-    }
-
     public static void validateCarName(String carName) {
         if (carName.length() > LIMIT_NAME_LENGTH) {
             throw new IllegalArgumentException("Error: Invalid car name");
