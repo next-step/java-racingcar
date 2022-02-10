@@ -1,5 +1,6 @@
 package racing.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import racing.vo.CarResultVO;
 
@@ -12,6 +13,6 @@ public class RoundResult {
     }
 
     public List<CarResultVO> getResultVOS() {
-        return resultVOS;
+        return new ArrayList<>(resultVOS);
     }
 }
