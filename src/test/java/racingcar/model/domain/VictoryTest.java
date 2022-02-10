@@ -17,9 +17,9 @@ public class VictoryTest {
     @DisplayName("우승자_확인_테스트")
     @ParameterizedTest
     @CsvSource({"a,aa,aaa"})
-    public void maxCheckTest(String one, String two, String three) {
+    public void findVictoryCarTest(String car_a, String car_b, String car_c) {
         //given
-        final Cars cars = new Cars(Arrays.asList(one, two, three));
+        final Cars cars = new Cars(Arrays.asList(car_a, car_b, car_c));
 
         //when
         cars.cars().get(0).moveForward();
