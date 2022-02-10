@@ -35,7 +35,7 @@ public class Console {
         return carNames;
     }
 
-    public static int setTryCount() {
+    public static int getTryCount() {
         System.out.println(INPUT_TRY_COUNT);
 
         return Integer.parseInt(scanner.nextLine());

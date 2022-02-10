@@ -19,7 +19,7 @@ public class RacingCarGame {
 
     public void setRacingCarGame() {
         cars = RacingCar.setRacingCars(Console.setRacingCarNames());
-        tryCount = Console.setTryCount();
+        tryCount = Console.getTryCount();
     }
 
     public void playRacingCarGame() {
