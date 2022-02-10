@@ -2,9 +2,15 @@ package calculator.domain;
 
 import static calculator.domain.Constants.*;
 
+import java.util.regex.Pattern;
+
 public class Validator {
 
-    private Validator() {};
+
+    private Validator() {
+    }
+
+    ;
 
     public static void validateUserInput(String[] userInput) {
         checkIsBlank(userInput);
@@ -24,11 +30,15 @@ public class Validator {
 
     private static void validateOddIndexIsNumber(String[] split) {
         for (int i = 0; i < split.length; i += 2) {
-            try {
-                Long.parseLong(split[i]);
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다. 올바른 수식을 입력해 주세요.");
-            }
+            isNumber(split[i]);
+        }
+    }
+
+    private static void isNumber(String strNum) {
+        Pattern numericPattern = Pattern.compile(NUMERIC_REGEXP);
+
+        if (!numericPattern.matcher(strNum).matches()) {
+            throw new IllegalArgumentException("[Error] 입력 형식이 맞지 않습니다. 올바른 수식을 입력해 주세요.");
         }
     }
 

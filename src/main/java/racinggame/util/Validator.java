@@ -1,6 +1,9 @@
 package racinggame.util;
 
+import static calculator.domain.Constants.NUMERIC_REGEXP;
 import static racinggame.util.Constants.*;
+
+import java.util.regex.Pattern;
 
 public class Validator {
 
@@ -16,10 +19,10 @@ public class Validator {
         }
     }
 
-    public static void isNumber(String trial) {
-        try {
-            Integer.parseInt(trial);
-        } catch (NumberFormatException e) {
+    public static void isNumber(String strNum) {
+        Pattern numericPattern = Pattern.compile(NUMERIC_REGEXP);
+
+        if (!numericPattern.matcher(strNum).matches()) {
             throw new IllegalArgumentException("시도횟수는 숫자로 입력해주세요.");
         }
     }

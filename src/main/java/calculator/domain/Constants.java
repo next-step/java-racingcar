@@ -9,4 +9,5 @@ public class Constants {
 
     public static final String QUIT_COMMAND = "q";
     public static final String SPLIT_DELIMITER = "\\s+";
+    public static final String NUMERIC_REGEXP= "-?\\d+(\\.\\d+)?";
 }

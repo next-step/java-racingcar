@@ -12,4 +12,6 @@ public class Constants {
 
     public static final int MIN_CAR_COUNT = 2;
     public static final int MAX_CAR_NAME_LENGTH = 5;
+
+    public static final String NUMERIC_REGEXP= "-?\\d+(\\.\\d+)?";
 }
