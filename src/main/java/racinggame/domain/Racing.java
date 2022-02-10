@@ -3,19 +3,24 @@ package racinggame.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Racing {
     private static final int MAX_RANGE = 10;
 
-    private List<Car> cars = new ArrayList<>();
+    private List<Car> cars;
 
     public Racing() {
     }
 
-    public void registerCars(List<String> carNames) {
-        for (String carName : carNames) {
-            cars.add(Car.of(carName));
-        }
+    public void registerCarsByName(List<String> carNames) {
+        this.cars = carNames.stream()
+            .map(Car::of)
+            .collect(Collectors.toList());
+    }
+
+    public void registerCars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public List<Car> race() {
