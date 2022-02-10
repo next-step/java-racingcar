@@ -10,7 +10,7 @@ public class RacingCar {
     private int carDist;
     private final String carName;
 
-    private RacingCar(String carName) {
+    public RacingCar(String carName) {
         this.carName = carName;
         carDist = INIT_DIST;
     }
