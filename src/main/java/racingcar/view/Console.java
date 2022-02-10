@@ -2,6 +2,7 @@ package racingcar.view;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 import racingcar.common.RacingCarException;
 
@@ -11,6 +12,8 @@ public class Console {
     private static final String INPUT_TRY_COUNT = "시도할 횟수는 몇 회인가요?";
     private static final int CAR_NAME_MAX = 5;
     private static final String DELIMETER = ",";
+    private static final String SPACE = " ";
+    private static final String NOT_SPACE = "";
     private static final Scanner scanner = new Scanner(System.in);
 
     private Console() {
@@ -20,9 +23,10 @@ public class Console {
     public static List<String> setRacingCarNames() {
         System.out.println(INPUT_CAR_NAME);
 
-        List<String> carNames = Arrays.asList(scanner.nextLine().split(DELIMETER));
+        String inputNames = scanner.nextLine().replace(SPACE, NOT_SPACE);
+        validateCarNameEmpty(inputNames);
 
-        validateCarNameEmpty(carNames);
+        List<String> carNames = Arrays.asList(inputNames.split(DELIMETER));
 
         for (String carName : carNames) {
             validateCarNameLength(carName);
@@ -39,13 +43,13 @@ public class Console {
 
     private static void validateCarNameLength(String carName) {
         if (carName.length() > CAR_NAME_MAX) {
-            throw new IllegalArgumentException(RacingCarException.CAR_NAME_INVALID);
+            throw new RacingCarException(RacingCarException.CAR_NAME_INVALID);
         }
     }
 
-    private static void validateCarNameEmpty(List<String> carNames) {
-        if (carNames.isEmpty()) {
-            throw new IllegalArgumentException(RacingCarException.CAR_NAME_EMPTY);
+    private static void validateCarNameEmpty(String carNames) {
+        if (Objects.isNull(carNames) || carNames.isEmpty()) {
+            throw new RacingCarException(RacingCarException.CAR_NAME_EMPTY);
         }
     }
 }
