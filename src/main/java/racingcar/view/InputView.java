@@ -11,8 +11,11 @@ public class InputView {
 
     public static int getTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
+        String input = scanner.nextLine();
 
-        return Integer.parseInt(scanner.nextLine());
+        validateTryCount(input);
+
+        return Integer.parseInt(input);
     }
 
     public static List<String> getCarNames() {
