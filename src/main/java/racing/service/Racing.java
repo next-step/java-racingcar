@@ -15,11 +15,15 @@ public class Racing {
     private final List<RoundResult> results;
     private int roundNumber;
 
-    public Racing(RacingInfoDto info) {
-        cars = info.getCars();
-        round = info.getRound();
-        roundNumber = round.getRoundNumber();
-        results = new ArrayList<>();
+    public Racing(List<Car> cars, Round round, int roundNumber) {
+        this(cars, round, new ArrayList<>(), roundNumber);
+    }
+
+    public Racing(List<Car> cars, Round round, List<RoundResult> results, int roundNumber) {
+        this.cars = cars;
+        this.round = round;
+        this.results = results;
+        this.roundNumber = roundNumber;
     }
 
     public void race() {

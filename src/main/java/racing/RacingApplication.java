@@ -14,7 +14,7 @@ public class RacingApplication {
         int roundNumber = InputView.getRoundNumber();
         RacingInfoDto infoDto = RacingInfoDto.of(carNames, roundNumber);
 
-        Racing racing = new Racing(infoDto);
+        Racing racing = new Racing(infoDto.getCars(), infoDto.getRound(), infoDto.getRound().getRoundNumber());
         racing.race();
         ResultView.printResult(racing.getRoundResults());
 
