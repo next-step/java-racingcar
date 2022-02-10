@@ -1,4 +1,4 @@
-package racing.vo;
+package racing.domain;
 
 public class CarResult implements Comparable<CarResult> {
 

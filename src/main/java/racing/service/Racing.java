@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import racing.domain.Car;
 import racing.domain.Round;
-import racing.vo.CarResult;
+import racing.domain.CarResult;
 import racing.domain.RoundResult;
 
 public class Racing {

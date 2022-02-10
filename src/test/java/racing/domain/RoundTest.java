@@ -5,7 +5,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import racing.vo.CarResult;
 
 class RoundTest {
 
