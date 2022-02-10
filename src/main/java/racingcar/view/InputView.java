@@ -31,4 +31,15 @@ public class InputView {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자를 초과할 수 없습니다.");
         }
     }
+
+    private static void validateTryCount(String tryCount) {
+        if (tryCount.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 횟수는 공백일 수 없습니다.");
+        }
+
+        if (tryCount.matches("[^0-9]")) {
+            throw new IllegalArgumentException("[ERROR] 횟수는 숫자만 허용합니다.");
+        }
+    }
+
 }
