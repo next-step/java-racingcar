@@ -18,7 +18,7 @@ public class Application {
             try {
                 carNames = InputView.getCarNames();
                 trial = InputView.getTrial();
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException | NullPointerException e) {
                 System.out.println(e.getMessage());
                 continue;
             }
