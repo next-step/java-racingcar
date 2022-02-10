@@ -12,24 +12,14 @@ public class Calculator {
         this.result = Double.parseDouble(parsedValues.get(0));
     }
 
-    public void returnCalculatedValue() {
+    public void getAnswer() {
         int parsedValuesSize = parsedValues.size();
-        for (int i = 0; i < (parsedValuesSize + 1) / 2; i++) {
-            if (determineCalculatedValueValid(i)) {
-                return;
-            }
+        int i = 0;
+        while (i * 2 != parsedValuesSize - 1) {
             parseOperation(i * 2);
+            i += 1;
         }
-    }
-
-    public boolean determineCalculatedValueValid(int i) {
-        int parsedValuesSize = parsedValues.size();
-        if (i * 2 == parsedValuesSize - 1) {
-            System.out.println("정답: " + Double.parseDouble(parsedValues.get(parsedValues.size() - 1)));
-            return true;
-        }
-
-        return false;
+        System.out.println("정답: " + Double.parseDouble(parsedValues.get(parsedValues.size() - 1)));
     }
 
     public void parseOperation(int parseIdx) {

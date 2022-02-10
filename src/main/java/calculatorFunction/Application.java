@@ -11,6 +11,6 @@ public class Application {
         }
         ArrayList<String> parsedValues = GetInput.parse(expression);
         Calculator calculator = new Calculator(parsedValues);
-        calculator.returnCalculatedValue();
+        calculator.getAnswer();
     }
 }
