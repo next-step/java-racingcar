@@ -27,7 +27,7 @@ public class ValidationTest {
 
     @DisplayName("유저_입력_글자길이_및_입력_중복_테스트")
     @Test
-    void userInputLengthDuplicationTest() {
+    void inputLengthDuplicationTest() {
         String input = inputDTO.getSplitUserInput().stream().map(String::new)
             .collect(Collectors.joining(","));
         assertFalse(validateCarName(input));
@@ -35,21 +35,21 @@ public class ValidationTest {
 
     @DisplayName("입력_횟수_범위_테스트")
     @Test
-    void userInputRacingTryTest() {
+    void inputRacingTryTest() {
         assertThat(validateNumberRange(inputDTO.getRacingTryCounter()));
     }
 
     @DisplayName("자동차_입력_테스트")
     @ParameterizedTest
     @ValueSource(strings = {"a,aa,aaaaaa"})
-    void parsingCarNameTest(String input) {
+    void validCarNameTest(String input) {
         assertTrue(validateCarName(input));
     }
 
     @DisplayName("자동차_입력_테스트")
     @ParameterizedTest
     @ValueSource(ints = 10)
-    void parsingRacingTryTest(int input) {
+    void validRacingTryTest(int input) {
         assertTrue(validateNumberRange(input));
     }
 
