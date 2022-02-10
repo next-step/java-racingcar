@@ -3,6 +3,7 @@ package racing.dto;
 import java.util.List;
 import racing.domain.Car;
 import racing.domain.CarGenerator;
+import racing.domain.MoveRule;
 import racing.domain.Round;
 
 public class RacingInfoDto {
@@ -15,8 +16,8 @@ public class RacingInfoDto {
         this.round = round;
     }
 
-    public static RacingInfoDto of(String carNames, int roundNumber) {
-        final List<Car> cars = CarGenerator.createCars(carNames);
+    public static RacingInfoDto of(String carNames, int roundNumber, MoveRule moveRule) {
+        final List<Car> cars = CarGenerator.createCars(carNames, moveRule);
         Round round = new Round(roundNumber);
         return new RacingInfoDto(cars, round);
     }

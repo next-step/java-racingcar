@@ -25,8 +25,8 @@ public class Car {
         }
     }
 
-    public void moveByRule(int value) {
-        if(rule.isMovable(value)) {
+    public void moveByRule() {
+        if(rule.isMovable()) {
             distance++;
         }
     }
