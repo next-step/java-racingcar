@@ -14,7 +14,6 @@ class RacingCarTest {
     private List<RacingCar> madeRacingCars;
 
     @BeforeEach
-    @DisplayName("테스트에 필요한 자동차들을 생성한다.")
     void initCars() {
         List<String> carNames = Arrays.asList("aCar", "bCar", "cCar", "dCar");
 
