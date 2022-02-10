@@ -8,7 +8,7 @@ public class Car {
     private static final int NAME_LENGTH = 5;
     private static final int START_POSITION = 0;
 
-    private String carName;
+    private final String carName;
     private int position;
 
     public Car(String carName) {
