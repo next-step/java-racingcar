@@ -10,10 +10,9 @@ public class Calculator {
     public int result;
 
     public Calculator(List<String> splitExpression) {
-        if ( splitExpression.size() % 2 == 0) {
-            throw new IllegalArgumentException("[ERROR] 올바르지 않은 식입니다.");
-        }
+        validateExpressionSize(splitExpression);
         validateEmptyExpression(splitExpression);
+
         result = Integer.parseInt(splitExpression.get(0));
 
         validateOperandAndOperator(splitExpression);
@@ -49,6 +48,7 @@ public class Calculator {
         return i % 2 == 1;
     }
 
+
     private void validateOperandAndOperator(List<String> splitExpression) {
         for (int i = 0; i < splitExpression.size(); i++) {
             if (isOperandPosition(i)) {
@@ -80,6 +80,12 @@ public class Calculator {
     private void validateEmptyExpression(List<String> splitExpression) {
         if (splitExpression.isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 빈 문자열 입니다.");
+        }
+    }
+
+    private void validateExpressionSize(List<String> splitExpression) {
+        if (splitExpression.size() % 2 == 0) {
+            throw new IllegalArgumentException("[ERROR] 올바르지 않은 식입니다.");
         }
     }
 }
