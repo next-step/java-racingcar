@@ -22,7 +22,7 @@ public class CarTest {
     @DisplayName("가장_멀리_전진한_자동차_테스트")
     @ParameterizedTest
     @MethodSource("provideCarArguments")
-    void carTest(Car car, int number, boolean expected) {
+    void moveCarTest(Car car, int number, boolean expected) {
         car.moveForward();
         assertThat(car.isMax(number)).isEqualTo(expected);
     }
