@@ -6,7 +6,6 @@ import java.util.List;
 public class Cars {
 
     private final List<Car> cars;
-    private MoveStrategy moveStrategy;
 
     public Cars(List<String> parsedInput) {
         cars = new ArrayList<>();
@@ -15,14 +14,10 @@ public class Cars {
         }
     }
 
-    public Cars(List<String> parsedInput, MoveStrategy moveStrategy) {
-        this(parsedInput);
-        this.moveStrategy = moveStrategy;
-    }
+    public List<Car> moveCars(MoveStrategy moveStrategy) {
 
-    public List<Car> moveCars() {
         for (Car car : cars) {
-            if (moveStrategy.canMove()) {
+            if (moveStrategy.moveOrNot()) {
                 car.moveForward();
             }
         }
