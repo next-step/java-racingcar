@@ -9,7 +9,7 @@ public class FixMoveBehaviorTest {
 
     @DisplayName("주사위가_4이상인_경우_무조건_이동")
     @Test
-    void name() {
+    void moveStepCar() {
         FixMoveBehavior fixMoveBehavior = new FixMoveBehavior(true);
         assertTrue(fixMoveBehavior.moveBehavior());
     }
