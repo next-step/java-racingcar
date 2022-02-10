@@ -10,26 +10,14 @@ public class RacingCarGame {
     private final static int MIN_MOVE = 0;
     private final static int MAX_MOVE = 9;
     private final static Random RANDOM = new Random();
-    private final static ResultView resultView = new ResultView();
     private final List<Car> cars;
     private final List<String> carNames;
     private int tryCount;
-
 
     public RacingCarGame(List<String> carNames, int tryCount) {
         this.carNames = carNames;
         this.tryCount = tryCount;
         cars = makeCarsByCarNames();
-    }
-
-    private List<Car> makeCarsByCarNames() {
-        List<Car> cars = new ArrayList<>();
-
-        for (String carName : carNames) {
-            Car car = new Car(carName);
-            cars.add(car);
-        }
-        return cars;
     }
 
     public void play() {
@@ -47,6 +35,16 @@ public class RacingCarGame {
         return cars;
     }
 
+    private List<Car> makeCarsByCarNames() {
+        List<Car> cars = new ArrayList<>();
+
+        for (String carName : carNames) {
+            Car car = new Car(carName);
+            cars.add(car);
+        }
+        return cars;
+    }
+
     private int getRandomMove() {
         return MIN_MOVE + RANDOM.nextInt(MAX_MOVE - MIN_MOVE + 1);
     }
@@ -58,7 +56,7 @@ public class RacingCarGame {
 
             String carName = car.getName();
             int totalMovingDistance = car.getPosition();
-            resultView.printGameStatus(carName, totalMovingDistance);
+            ResultView.printGameStatus(carName, totalMovingDistance);
         }
 
         System.out.println();
