@@ -5,7 +5,7 @@ import java.util.List;
 import racing.domain.Car;
 import racing.domain.RacingInfo;
 import racing.domain.Round;
-import racing.domain.CarResultVO;
+import racing.vo.CarResultVO;
 import racing.domain.RoundResult;
 
 public class Racing {

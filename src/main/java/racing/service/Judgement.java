@@ -2,7 +2,7 @@ package racing.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racing.domain.CarResultVO;
+import racing.vo.CarResultVO;
 import racing.domain.RoundResult;
 
 public class Judgement {
