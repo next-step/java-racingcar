@@ -5,7 +5,6 @@ import java.util.Objects;
 public class Car {
 
     private static final int DEFAULT_LOCATION = 0;
-    private static final int FORWARD_NUMBER = 4;
 
     private final CarName name;
     private int location;
@@ -23,10 +22,8 @@ public class Car {
         return new Car(name);
     }
 
-    public void moveForward(final int number) {
-        if (number >= FORWARD_NUMBER) {
-            this.location++;
-        }
+    public void moveForward() {
+        this.location++;
     }
 
     public int getLocation() {
