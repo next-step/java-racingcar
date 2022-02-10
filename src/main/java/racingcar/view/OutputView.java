@@ -2,7 +2,6 @@ package racingcar.view;
 
 import java.util.List;
 import racingcar.model.Car;
-import racingcar.model.RaceResult;
 import racingcar.model.RaceResults;
 
 public class OutputView {
@@ -12,8 +11,8 @@ public class OutputView {
 
     public void printResult(RaceResults raceResults) {
         System.out.println(GAME_RESULT_MESSAGE);
-        for (RaceResult raceResult : raceResults.getRaceResults()) {
-            printEachRoundResult(raceResult.getRaceResultByRound());
+        for (List<Car> raceResult : raceResults.getRaceResults()) {
+            printEachRoundResult(raceResult);
         }
     }
 
