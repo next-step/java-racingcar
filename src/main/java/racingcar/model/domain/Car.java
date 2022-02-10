@@ -9,6 +9,12 @@ public class Car {
     public Car(final String name) {
         this.name = name;
         this.step = NUMBER_ZERO;
+        validateCarName(name);
+    }
+
+    private void validateCarName(String name) {
+        if(name.length() > 5)
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
     }
 
     public void moveForward() {
