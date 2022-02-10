@@ -5,44 +5,42 @@ import java.util.List;
 
 public class RaceResults {
 
-    private final List<RaceResult> raceResults;
-    private final RaceResult lastRaceResult;
-    private final List<String> winners;
-    private int maxPosition;
+    private final List<List<Car>> raceResults;
 
-    public RaceResults(List<RaceResult> raceResults) {
+    public RaceResults(List<List<Car>> raceResults) {
         this.raceResults = new ArrayList<>(raceResults);
-        this.lastRaceResult = raceResults.get(raceResults.size() - 1);
-        this.winners = new ArrayList<>();
-        this.maxPosition = 0;
+
     }
 
     public List<String> findWinners() {
-        List<Car> carsAfterLastRace = lastRaceResult.getRaceResultByRound();
-        findMaxPosition(carsAfterLastRace);
-        findCarsWithMaxPosition(carsAfterLastRace);
-        return winners;
+        List<Car> lastRaceResult = raceResults.get(raceResults.size() - 1);
+        int maxPosition = findMaxPosition(lastRaceResult);
+        return findCarsWithMaxPosition(lastRaceResult, maxPosition);
     }
 
-    public void findMaxPosition(List<Car> carsAfterRace) {
+    private int findMaxPosition(List<Car> carsAfterRace) {
+        int maxPosition = 0;
         for (Car car : carsAfterRace) {
             maxPosition = car.compareMaxPosition(maxPosition);
         }
+        return maxPosition;
     }
 
-    private void findCarsWithMaxPosition(List<Car> carsAfterRace) {
+    private List<String> findCarsWithMaxPosition(List<Car> carsAfterRace, int position) {
+        List<String> winners = new ArrayList<>();
         for (Car car : carsAfterRace) {
-            findCarWithSamePosition(car);
+            findCarWithSamePosition(car, position, winners);
         }
+        return winners;
     }
 
-    private void findCarWithSamePosition(Car car) {
-        if (car.isSamePosition(maxPosition)) {
+    private void findCarWithSamePosition(Car car, int position, List<String> winners) {
+        if (car.isSamePosition(position)) {
             winners.add(car.getCarName());
         }
     }
 
-    public List<RaceResult> getRaceResults() {
+    public List<List<Car>> getRaceResults() {
         return raceResults;
     }
 }
