@@ -13,7 +13,7 @@ import racingcar.controller.dto.OutputDTO;
 import racingcar.model.domain.Cars;
 import racingcar.model.domain.Racing;
 import racingcar.model.domain.RandomMoveBehavior;
-import racingcar.model.domain.Victory;
+import racingcar.model.domain.VictoryCars;
 import racingcar.model.utils.common.StringUtils;
 import racingcar.view.RacingCarUserResult;
 
@@ -30,12 +30,12 @@ public class Controller {
             List<OutputDTO> result = convertCar(cars);
             RacingCarUserResult.printCarStatus(result);
         }
-        Victory victory = Victory.makeVictoryCars(cars);
+        VictoryCars victory = VictoryCars.makeVictoryCars(cars);
         List<OutputDTO> victoryResult = convertVictory(victory);
         RacingCarUserResult.printWinnerCar(victoryResult);
     }
 
-    private static List<OutputDTO> convertVictory(final Victory victory) {
+    private static List<OutputDTO> convertVictory(final VictoryCars victory) {
         return victory.victory()
             .stream()
             .map(OutputDTO::new)

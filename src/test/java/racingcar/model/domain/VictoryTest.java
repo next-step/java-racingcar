@@ -26,7 +26,7 @@ public class VictoryTest {
         cars.cars().get(0).moveForward();
         cars.cars().get(0).moveForward();
 
-        Victory victory = Victory.makeVictoryCars(cars);
+        VictoryCars victory = VictoryCars.makeVictoryCars(cars);
         List<OutputDTO> victoryResult = victory.victory()
             .stream()
             .map(OutputDTO::new)
