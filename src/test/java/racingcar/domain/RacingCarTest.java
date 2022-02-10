@@ -11,13 +11,24 @@ import org.junit.jupiter.api.Test;
 
 class RacingCarTest {
 
+    private RacingCar racingCar;
     private List<RacingCar> madeRacingCars;
 
     @BeforeEach
     void initCars() {
         List<String> carNames = Arrays.asList("aCar", "bCar", "cCar", "dCar");
 
+        racingCar = new RacingCar("aCar");
         madeRacingCars = RacingCar.setRacingCars(carNames);
+    }
+
+    @Test
+    @DisplayName("레이싱 경기를 할 자동차 1대를 생성한다.")
+    void makeOneRacingCar() {
+        RacingCar racingCar = new RacingCar("aCar");
+
+        assertThat(racingCar.getCarName()).isEqualTo("aCar");
+        assertThat(racingCar.getCarDist()).isZero();
     }
 
     @Test
@@ -34,9 +45,9 @@ class RacingCarTest {
 
         MoveStrategy moveStrategy = () -> 5;
 
-        madeRacingCars.get(0).moveCar(moveStrategy);
+        racingCar.moveCar(moveStrategy);
 
-        afterDist = madeRacingCars.get(0).getCarDist();
+        afterDist = racingCar.getCarDist();
 
         assertEquals(1, afterDist);
     }
@@ -48,24 +59,10 @@ class RacingCarTest {
 
         MoveStrategy moveStrategy = () -> 3;
 
-        madeRacingCars.get(0).moveCar(moveStrategy);
+        racingCar.moveCar(moveStrategy);
 
-        afterDist = madeRacingCars.get(0).getCarDist();
+        afterDist = racingCar.getCarDist();
 
         assertEquals(0, afterDist);
-    }
-
-    @Test
-    @DisplayName("생성한 자동차의 이름을 알 수 있다.")
-    void getCarName() {
-        assertThat(madeRacingCars.get(0)
-            .getCarName()).isEqualTo("aCar");
-    }
-
-    @Test
-    @DisplayName("생성한 자동차의 이동한 거리를 알 수 있다.")
-    void getCarDist() {
-        assertThat(madeRacingCars.get(0)
-            .getCarDist()).isEqualTo(0);
     }
 }
