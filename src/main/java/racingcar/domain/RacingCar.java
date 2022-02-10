@@ -10,12 +10,12 @@ public class RacingCar implements Car {
     private final Name name;
     private int position;
 
-    public RacingCar(String name) {
+    public RacingCar(Name name) {
         this(name, START_POSITION);
     }
 
-    public RacingCar(String name, int position) {
-        this.name = new Name(name);
+    public RacingCar(Name name, int position) {
+        this.name = name;
         this.position = position;
     }
 

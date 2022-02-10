@@ -32,9 +32,9 @@ class CarsTest {
     void 우승자선별() {
         // given
         List<Car> carsInit = new ArrayList<>();
-        carsInit.add(new RacingCar("aaa", 0));
-        carsInit.add(new RacingCar("bbb", 2));
-        carsInit.add(new RacingCar("ccc", 2));
+        carsInit.add(new RacingCar(new Name("aaa"), 0));
+        carsInit.add(new RacingCar(new Name("bbb"), 2));
+        carsInit.add(new RacingCar(new Name("ccc"), 2));
         Cars cars = new Cars(carsInit);
 
         // when
@@ -59,9 +59,9 @@ class CarsTest {
     void 유효성검증_중복검사(){
         // given
         List<Car> cars = new ArrayList<>();
-        cars.add(new RacingCar("aaa"));
-        cars.add(new RacingCar("aaa"));
-        cars.add(new RacingCar("bbb"));
+        cars.add(new RacingCar(new Name("aaa")));
+        cars.add(new RacingCar(new Name("aaa")));
+        cars.add(new RacingCar(new Name("bbb")));
 
         // when, then
         assertThatExceptionOfType(IllegalStateException.class)

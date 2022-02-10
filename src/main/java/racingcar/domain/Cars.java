@@ -25,7 +25,7 @@ public class Cars {
     public static Cars of(List<String> names) {
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            cars.add(new RacingCar(name));
+            cars.add(new RacingCar(new Name(name)));
         }
         return new Cars(cars);
     }
