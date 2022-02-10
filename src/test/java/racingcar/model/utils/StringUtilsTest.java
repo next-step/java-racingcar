@@ -15,7 +15,7 @@ public class StringUtilsTest {
     @DisplayName("문자열_split_테스트")
     @ParameterizedTest
     @ValueSource(strings = {"a,aa,aaa"})
-    void splitStrTest(String input) {
+    void splitStringTest(String input) {
         List<String> splitTest = new ArrayList(Arrays.asList("a", "aa", "aaa"));
         assertThat(StringUtils.splitUserInput(input)).isEqualTo(splitTest);
     }
