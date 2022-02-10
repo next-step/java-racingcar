@@ -35,5 +35,13 @@ class CarTest {
         assertFalse(car.isMovable(distance));
     }
 
+    @Test
+    void 우승여부를_판별한다() {
+        final int DISTANCE = 5;
+        Car car = new Car("Dami");
 
+        car.move(DISTANCE);
+
+        assertTrue(car.isWinner(DISTANCE));
+    }
 }
