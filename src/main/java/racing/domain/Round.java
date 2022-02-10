@@ -16,7 +16,7 @@ public class Round {
         List<CarResultVO> results = new ArrayList<>();
 
         for (Car car : cars) {
-            car.moveByRule();
+            car.move();
             results.add(new CarResultVO(car.getName(), car.getDistance()));
         }
 
