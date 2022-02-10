@@ -1,18 +1,7 @@
 package racing.domain;
 
-public class MoveRule {
+public interface MoveRule {
+    int makeValue();
 
-    private final int moveCondition;
-
-    public MoveRule(int moveCondition) {
-        this.moveCondition = moveCondition;
-    }
-
-    public static int makeValue() {
-        return (int) (Math.random() * 10);
-    }
-
-    public boolean isMovable(int value) {
-        return value >= moveCondition;
-    }
+    boolean isMovable();
 }
