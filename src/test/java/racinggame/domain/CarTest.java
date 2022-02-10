@@ -1,6 +1,7 @@
 package racinggame.domain;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,32 +14,29 @@ class CarTest {
     void 자동차_이름_생성(final String name) {
         Car car = Car.of(name);
         final String actual = car.getName();
-        Assertions.assertThat(actual).isEqualTo(name);
+        assertThat(actual).isEqualTo(name);
     }
 
     @DisplayName("자동차 이름은 5자를 넘을 수 없다")
     @ValueSource(strings = {"123456", "가나다라마바사", "abcdef"})
     @ParameterizedTest
     void 자동차_이름_체크(final String name) {
-        Assertions.assertThatIllegalArgumentException()
+        assertThatIllegalArgumentException()
             .isThrownBy(() -> Car.of(name));
     }
 
-    @DisplayName("랜덤 넘버가 4 이상이면 자동차는 전진한다")
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    @ParameterizedTest
-    void 자동차_이동(final int number) {
-        Car testCar = Car.of("test");
-        testCar.moveForward(number);
-        Assertions.assertThat(testCar.getLocation()).isEqualTo(1);
+    @DisplayName("자동차의 기본 위치는 0이다")
+    @Test
+    void 자동차_기본_위치() {
+        Car car = new Car("test");
+        assertThat(car.getLocation()).isEqualTo(0);
     }
 
-    @DisplayName("랜덤 넘버가 4 미만이면 자동차는 정지한다")
-    @ValueSource(ints = {0, 1, 2, 3})
-    @ParameterizedTest
-    void 자동차_정지(final int number) {
-        Car testCar = Car.of("test");
-        testCar.moveForward(number);
-        Assertions.assertThat(testCar.getLocation()).isEqualTo(0);
+    @DisplayName("자동차 이름는 1씩 전진할 수 있다")
+    @Test
+    void 자동차_이동() {
+        Car car = new Car("test");
+        car.moveForward();
+        assertThat(car.getLocation()).isEqualTo(1);
     }
 }
