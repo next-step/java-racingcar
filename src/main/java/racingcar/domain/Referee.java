@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class Referee {
 
-    public List<String> getWinners(List<Car> cars) {
+    public static List<String> getWinners(List<Car> cars) {
         int maxMovingDistance = getMaxMovingDistance(cars);
 
         return cars.stream()
@@ -13,7 +13,7 @@ public class Referee {
             .collect(Collectors.toList());
     }
 
-    private int getMaxMovingDistance(List<Car> cars) {
+    private static int getMaxMovingDistance(List<Car> cars) {
         int maxMovingDistance = 0;
 
         for (Car car : cars) {
