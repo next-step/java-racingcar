@@ -2,6 +2,7 @@ package stringCalculator;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class UserInputValue {
@@ -24,7 +25,7 @@ public class UserInputValue {
 
     public void validateBlank(List<String> userInputTokens) {
         for (String userInputToken: userInputTokens) {
-            if (userInputToken == "") {
+            if (Objects.equals(userInputToken, "")) {
                 throw new IllegalArgumentException(BLANK_NAME);
             }
         }
