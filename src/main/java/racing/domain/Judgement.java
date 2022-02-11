@@ -13,10 +13,10 @@ public class Judgement {
 
     public Judgement(RoundResult result) {
         this.result = result.getResultVOS();
-        this.bestDistance = getBestScore();
+        this.bestDistance = getBestDistance();
     }
 
-    private int getBestScore() {
+    private int getBestDistance() {
         result.sort(CarResult::compareTo);
         return result.get(FIRST_INDEX).getDistance();
     }
