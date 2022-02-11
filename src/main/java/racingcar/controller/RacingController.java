@@ -13,16 +13,12 @@ public class RacingController {
         List<String> carNames = RacingCarInput.getCarName();
         int endRaceCount = RacingCarInput.getRaceCount();
 
-        RacingGame racingGame = initRacingGame(carNames, endRaceCount);
+        RacingGame racingGame = new RacingGame(
+            Cars.of(carNames), endRaceCount, new RandomMoveStrategy());
 
         List<Cars> racingLogs = racingGame.race();
 
         RacingCarView.printRacing(racingLogs);
         RacingCarView.printWinner(racingGame.getCars());
-    }
-
-    private RacingGame initRacingGame(List<String> carNames, int endRaceCount) {
-        return new RacingGame(
-            Cars.of(carNames), endRaceCount, new RandomMoveStrategy());
     }
 }

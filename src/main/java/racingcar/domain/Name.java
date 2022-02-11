@@ -9,11 +9,11 @@ public class Name {
     private final String name;
 
     public Name(String name) {
-        isCorrectNameSize(name);
+        verifyCorrectNameSize(name);
         this.name = name;
     }
 
-    private void isCorrectNameSize(String name) {
+    private void verifyCorrectNameSize(String name) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException(NOT_NULL_MESSAGE);
         }

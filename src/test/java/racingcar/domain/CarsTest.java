@@ -65,8 +65,6 @@ class CarsTest {
 
         // when, then
         assertThatExceptionOfType(IllegalStateException.class)
-            .isThrownBy(() -> {
-                new Cars(cars);
-            });
+            .isThrownBy(() -> new Cars(cars));
     }
 }

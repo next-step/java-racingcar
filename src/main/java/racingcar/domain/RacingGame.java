@@ -17,13 +17,13 @@ public class RacingGame {
     }
 
     public List<Cars> race() {
-        List<Cars> racinglog = new ArrayList<>();
+        List<Cars> racingLog = new ArrayList<>();
         while (isOngoing()) {
-            racinglog.add(cars);
+            racingLog.add(cars);
             cars.moveAll(moveStrategy);
             tryRaceCount--;
         }
-        return racinglog;
+        return racingLog;
     }
 
     public boolean isOngoing() {
