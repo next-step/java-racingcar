@@ -5,9 +5,6 @@ public class Race {
     private static final int MAX_NUMBER = 10;
     private static final int MIN_NUMBER_FOR_START = 4;
 
-    public static void execute() {
-    }
-
     public static int getMaxScore(Car[] cars) {
         final int CARS_COUNT = cars.length;
         int maximum = 0;
