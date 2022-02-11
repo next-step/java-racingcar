@@ -24,42 +24,19 @@ public class Calculator {
     }
 
     public static int calculateIndividual(int firstOperand, int secondOperand, String operator) {
-        int result = 0;
-        if (operator.equals("+")) {
-            result = add(firstOperand, secondOperand);
-        } else if (operator.equals("-")) {
-            result = sub(firstOperand, secondOperand);
-        } else if (operator.equals("*")) {
-            result = mul(firstOperand, secondOperand);
-        } else if (operator.equals("/")) {
-            if (secondOperand == 0) {
-                throw new IllegalArgumentException("Error: can't divide zero");
-            } else {
-                result = div(firstOperand, secondOperand);
-            }
-        } else {
-            throw new IllegalArgumentException("Error: need right operator");
+        if (operator == "+") {
+            return Operator.ADD.getCalculable().calculate(firstOperand, secondOperand);
         }
-        return result;
+        if (operator == "-") {
+            return Operator.SUB.getCalculable().calculate(firstOperand, secondOperand);
+        }
+        if (operator == "*") {
+            return Operator.MUL.getCalculable().calculate(firstOperand, secondOperand);
+        }
+        if (operator == "/") {
+            return Operator.DIV.getCalculable().calculate(firstOperand, secondOperand);
+        }
+        throw new IllegalArgumentException("Error: need right operator");
     }
 
-    public static int add(int firstOperand, int secondOperand) {
-
-        return firstOperand + secondOperand;
-    }
-
-    public static int sub(int firstOperand, int secondOperand) {
-
-        return firstOperand - secondOperand;
-    }
-
-    public static int mul(int firstOperand, int secondOperand) {
-
-        return firstOperand * secondOperand;
-    }
-
-    public static int div(int firstOperand, int secondOperand) {
-
-        return firstOperand / secondOperand;
-    }
 }
