@@ -14,6 +14,10 @@ public class Racing {
     private final List<RoundResult> roundResults;
     private int roundNumber;
 
+    public Racing(int roundNumber) {
+        this(new ArrayList<>(), new Round(roundNumber), roundNumber);
+    }
+
     public Racing(List<Car> cars, Round round, int roundNumber) {
         this(cars, round, new ArrayList<>(), roundNumber);
     }
@@ -48,5 +52,9 @@ public class Racing {
 
     public List<RoundResult> getRoundResults() {
         return roundResults;
+    }
+
+    public int getRoundNumber() {
+        return roundNumber;
     }
 }
