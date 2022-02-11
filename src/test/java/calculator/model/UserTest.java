@@ -23,7 +23,7 @@ public class UserTest {
         System.setIn(in);
 
         assertThatIllegalArgumentException()
-            .isThrownBy(user::getUserInput
+            .isThrownBy(user::parseUserInput
             );
 
     }
@@ -37,7 +37,7 @@ public class UserTest {
         System.setIn(in);
 
         assertThatIllegalArgumentException()
-            .isThrownBy(user::getUserInput
+            .isThrownBy(user::parseUserInput
             );
     }
 }
