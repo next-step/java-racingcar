@@ -6,28 +6,28 @@ import java.util.stream.Collectors;
 
 public class Winners {
 
-    private List<String> racingWinnerLists;
+    private List<String> winners;
 
-    public Winners(List<RacingCar> racingCarLists) {
-        this.racingWinnerLists = getWinners(racingCarLists);
+    public Winners(RacingCars racingCars) {
+        this.winners = getWinners(racingCars);
     }
 
-    private List<String> getWinners(List<RacingCar> racingCarLists) {
-        int maxPosition = getHighScore(racingCarLists);
+    private List<String> getWinners(RacingCars racingCars) {
+        int maxPosition = getHighScore(racingCars);
 
-        return racingCarLists.stream()
+        return racingCars.getRacingCars().stream()
             .filter(car -> car.getPosition() == maxPosition)
             .map(RacingCar::getName)
             .collect(Collectors.toList());
     }
 
-    private int getHighScore(List<RacingCar> racingCarLists) {
-        return racingCarLists.stream()
+    private int getHighScore(RacingCars racingCars) {
+        return racingCars.getRacingCars().stream()
             .mapToInt(RacingCar::getPosition)
             .max().getAsInt();
     }
 
-    public List<String> getRacingWinnerLists() {
-        return Collections.unmodifiableList(racingWinnerLists);
+    public List<String> getWinners() {
+        return Collections.unmodifiableList(winners);
     }
 }

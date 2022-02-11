@@ -31,10 +31,6 @@ public class RacingCarOutput {
         System.out.println(ERROR_MESSAGE + exceptionMessage);
     }
 
-    public static void printWinnersResult(List<String> gameWinner) {
-        System.out.println(SYSTEM_MESSAGE_FINAL_WINNER + String.join(", ", gameWinner));
-    }
-
     public static void printGameScore(final List<RacingCars> histories) {
         histories.forEach(racingCars -> printRacingCars(racingCars));
     }
@@ -48,6 +44,11 @@ public class RacingCarOutput {
 
     public static void printCar(final RacingCar racingCar) {
         System.out.println(racingCar.getName() + " : " + convertPosition(racingCar.getPosition()));
+    }
+
+    public static void printWinnersResult(List<String> gameWinner) {
+        System.out.println();
+        System.out.println(SYSTEM_MESSAGE_FINAL_WINNER + String.join(", ", gameWinner));
     }
 
     private static String convertPosition(final int position) {
