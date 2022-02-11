@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+@FunctionalInterface
 public interface Movable {
-    boolean isMovable(int randomNumber);
+    boolean isMovable();
 }
