@@ -22,20 +22,9 @@ public class RacingGame {
     public RaceResults startRace() {
         List<List<Car>> totalResult = new ArrayList<>();
         while (tryCount.isPlaying()) {
-            List<Car> raceResultByRound = saveEachRoundResult(cars.moveCars(moveStrategy));
-            totalResult.add(raceResultByRound);
+            totalResult.add(cars.moveCars(moveStrategy));
             tryCount.decreaseTryCount();
         }
-        System.out.println(totalResult.get(0).get(0));
-        System.out.println(totalResult.get(1).get(0));
         return new RaceResults(totalResult);
-    }
-
-    private List<Car> saveEachRoundResult(List<Car> raceResult) {
-        List<Car> raceResultByRound = new ArrayList<>();
-        for (Car car : raceResult) {
-            raceResultByRound.add(new Car(car.getCarName(), car.getPosition()));
-        }
-        return raceResultByRound;
     }
 }
