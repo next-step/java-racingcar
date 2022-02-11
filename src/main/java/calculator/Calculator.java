@@ -23,17 +23,17 @@ public class Calculator {
         return Integer.parseInt(expression[expressionLength - 1]);
     }
 
-    public static int calculateIndividual(int firstOperand, int secondOperand, String operator) {
-        if (operator == "+") {
+    private static int calculateIndividual(int firstOperand, int secondOperand, String operator) {
+        if (operator.equals("+")) {
             return Operator.ADD.getCalculable().calculate(firstOperand, secondOperand);
         }
-        if (operator == "-") {
+        if (operator.equals("-")) {
             return Operator.SUB.getCalculable().calculate(firstOperand, secondOperand);
         }
-        if (operator == "*") {
+        if (operator.equals("*")) {
             return Operator.MUL.getCalculable().calculate(firstOperand, secondOperand);
         }
-        if (operator == "/") {
+        if (operator.equals("/")) {
             return Operator.DIV.getCalculable().calculate(firstOperand, secondOperand);
         }
         throw new IllegalArgumentException("Error: need right operator");
