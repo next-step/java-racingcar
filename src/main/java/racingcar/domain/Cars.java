@@ -50,7 +50,7 @@ public class Cars {
         }
     }
 
-    public List<Car> getWinners() {
+    public List<Car> caculateWinners() {
         int maxPosition = getMaxPosition();
 
         return cars.stream()

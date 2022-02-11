@@ -38,7 +38,7 @@ class CarsTest {
         Cars cars = new Cars(carsInit);
 
         // when
-        List<Car> winnerList = cars.getWinners();
+        List<Car> winnerList = cars.caculateWinners();
 
         // then
         assertThat(winnerList.size()).isEqualTo(2);

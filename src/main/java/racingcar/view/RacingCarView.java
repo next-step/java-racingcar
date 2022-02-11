@@ -50,7 +50,7 @@ public class RacingCarView {
     public static void printWinner(Cars cars) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(WINNER_VIEW);
-        String winners = cars.getWinners().stream()
+        String winners = cars.caculateWinners().stream()
             .map(Car::getName)
             .collect(Collectors.joining(COMMA));
         stringBuilder.append(winners);

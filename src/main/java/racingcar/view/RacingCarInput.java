@@ -16,27 +16,25 @@ public class RacingCarInput {
     private RacingCarInput() {
     }
 
-    public static List<String> getCarName() {
-        String input = "";
+    public static List<String> inputCarName() {
         RacingCarView.printMessage(INPUT_CARNAME_MESSAGE);
         try {
-            input = scanner.nextLine();
+            String input = scanner.nextLine();
+            return Arrays.asList(input.split(COMMA));
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR_MESSAGE + e.getMessage());
-            return getCarName();
+            return inputCarName();
         }
-        return Arrays.asList(input.split(COMMA));
     }
 
-    public static int getRaceCount() {
-        String input = "";
+    public static int inputRaceCount() {
         RacingCarView.printMessage(INPUT_RETRY_MESSAGE);
         try {
-            input = scanner.nextLine();
+            String input = scanner.nextLine();
+            return Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR_MESSAGE + e.getMessage());
-            return getRaceCount();
+            return inputRaceCount();
         }
-        return Integer.parseInt(input);
     }
 }

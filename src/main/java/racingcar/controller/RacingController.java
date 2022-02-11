@@ -10,8 +10,8 @@ import racingcar.view.RacingCarView;
 public class RacingController {
 
     public void start() {
-        List<String> carNames = RacingCarInput.getCarName();
-        int endRaceCount = RacingCarInput.getRaceCount();
+        List<String> carNames = RacingCarInput.inputCarName();
+        int endRaceCount = RacingCarInput.inputRaceCount();
 
         RacingGame racingGame = new RacingGame(
             Cars.of(carNames), endRaceCount, new RandomMoveStrategy());
