@@ -15,7 +15,7 @@ class CarsTest {
 
     @ParameterizedTest
     @CsvSource(value = {"true:1", "false:0"}, delimiter = ':')
-    void 모든차앞으로전진(boolean moveNum, int expectedPosition) {
+    void 모든_자동차_앞으로_전진_또는_정지(boolean moveNum, int expectedPosition) {
         // given
         Cars cars = Cars.of(Arrays.asList("qwe", "asdf", "zx"));
 

@@ -20,10 +20,9 @@ public class RacingCar implements Car {
     }
 
     public void move(MoveStrategy moveStrategy) {
-        if (!moveStrategy.isMoveable()) {
-            return;
+        if (moveStrategy.isMoveable()) {
+            position++;
         }
-        position++;
     }
 
     public boolean isSamePosition(int position) {
