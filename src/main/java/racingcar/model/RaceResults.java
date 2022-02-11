@@ -9,7 +9,6 @@ public class RaceResults {
 
     public RaceResults(List<List<Car>> raceResults) {
         this.raceResults = new ArrayList<>(raceResults);
-
     }
 
     public List<String> findWinners() {
