@@ -26,7 +26,7 @@ class JudgementTest {
     }
 
     @Test
-    void wineer_판별하기() {
+    void 거리가_큰_순으로_wineer를_판별한다() {
         assertThat(judgement.judgeWinner())
             .isEqualTo(winners);
     }
