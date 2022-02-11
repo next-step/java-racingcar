@@ -3,9 +3,7 @@ package calculator.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import calculator.domain.Formula;
-import calculator.domain.Operation;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -23,23 +21,5 @@ class CalculatorTest {
 
         // then
         assertThat(result).isEqualTo(expected);
-    }
-
-    @Test
-    void 뺴기() {
-        int result = Calculator.sub(7, 3);
-        assertThat(result).isEqualTo(4);
-    }
-
-    @Test
-    void 곱하기() {
-        int result = Calculator.multiply(7, 3);
-        assertThat(result).isEqualTo(21);
-    }
-
-    @Test
-    void 나누기() {
-        int result = Calculator.divide(6, 3);
-        assertThat(result).isEqualTo(2);
     }
 }
