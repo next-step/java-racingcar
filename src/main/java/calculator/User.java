@@ -9,7 +9,7 @@ public class User {
     private static final int MINIMUM_TOKEN_NUMBER = 3;
     private static final String NOT_NULL_ALLOWED = "올바른 문자열을 입력해주세요";
 
-    public List<String> getUserInput() {
+    public List<String> parseUserInput() {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
 
