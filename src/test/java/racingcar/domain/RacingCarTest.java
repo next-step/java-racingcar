@@ -46,32 +46,18 @@ class RacingCarTest {
         assertThat(racingCar.getPosition()).isZero();
     }
 
-    @ValueSource(ints = {4, 5, 6, 7, 8})
-    @ParameterizedTest
-    void 사_이상이면_전진한다(int randomNumber) {
-        RacingCar car = new RacingCar("yang");
-        car.moveForward(randomNumber);
-        assertThat(car.getPosition()).isEqualTo(1);
-    }
-
-    @ValueSource(ints = {0, 1, 2, 3})
-    @ParameterizedTest
-    void 사_미만이면_정지한다(int randomNumber) {
-        RacingCar racingCar = new RacingCar("yang");
-        racingCar.moveForward(randomNumber);
-        assertThat(racingCar.getPosition()).isEqualTo(0);
-    }
-
     @Test
-    void 모든차는_앞으로_전진한다() {
-        List<RacingCar> racingCarList = new ArrayList<>(
-            Arrays.asList(new RacingCar("yang"), new RacingCar("woo"), new RacingCar("yu")));
-        racingCarList.get(0).moveForward(5);
-        racingCarList.get(1).moveForward(3);
-        racingCarList.get(2).moveForward(6);
-
-        Assertions.assertThat(racingCarList.get(0).getPosition()).isEqualTo(1);
-        Assertions.assertThat(racingCarList.get(1).getPosition()).isZero();
-        Assertions.assertThat(racingCarList.get(2).getPosition()).isEqualTo(1);
+    void 사_이상이면_전진한다() {
+        final RacingCar racingCar = new RacingCar("yang");
+        final RacingCar actual = racingCar.moveForward(() -> true);
+        assertThat(actual.getPosition()).isEqualTo(1);
     }
+
+   @Test
+    void 사_미만이면_정지한다() {
+        RacingCar racingCar = new RacingCar("yang");
+        final RacingCar actual = racingCar.moveForward(() -> false);
+        assertThat(actual.getPosition()).isEqualTo(0);
+    }
+
 }
