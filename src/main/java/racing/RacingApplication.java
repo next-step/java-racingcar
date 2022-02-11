@@ -3,8 +3,8 @@ package racing;
 import racing.domain.MoveRule;
 import racing.domain.RandomMoveRule;
 import racing.dto.RacingInfoDto;
-import racing.service.Judgement;
-import racing.service.Racing;
+import racing.domain.Judgement;
+import racing.domain.Racing;
 import racing.view.InputView;
 import racing.view.ResultView;
 
