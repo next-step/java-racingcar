@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.Objects;
 import racingcar.view.RacingCarOutput;
 
-public class RacingCar implements Movable{
+public class RacingCar{
 
     private static final int DEFAULT_POSITION = 0;
     private static final int THRESHOLD = 4;
@@ -21,6 +21,32 @@ public class RacingCar implements Movable{
         this.position = position;
     }
 
+    private void validate(String name) {
+        if (isOver(name) || isCorrectNameSize(name)) {
+            throw new IllegalArgumentException(RacingCarOutput.ERROR_CAR_NAME_OVER_OR_EMPTY);
+        }
+    }
+
+    private boolean isOver(String name) {
+        return Objects.isNull(name) || name.isEmpty();
+    }
+
+    private boolean isCorrectNameSize(String name) {
+        return name.length() > NAME_MAX_SIZE;
+    }
+
+    public RacingCar moveForward(final Movable movable) {
+        if (movable.isMovable()) {
+            return new RacingCar(name, position + 1);
+        }
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return name + " : " + position;
+    }
+
     public String getName() {
         return name;
     }
@@ -29,33 +55,20 @@ public class RacingCar implements Movable{
         return position;
     }
 
-    public void moveForward(int randomNumber) {
-        if (isMovable(randomNumber)) {
-            position++;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
         }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RacingCar racingCar = (RacingCar) o;
+        return position == racingCar.position && Objects.equals(name, racingCar.name);
     }
 
     @Override
-    public boolean isMovable(int randomNumber) {
-        return randomNumber >= THRESHOLD;
-    }
-
-    private void validate(String name) {
-        if (isOver(name) || isCorrectNameSize(name)) {
-            throw new IllegalArgumentException(RacingCarOutput.ERROR_CAR_NAME_OVER_OR_EMPTY);
-        }
-    }
-
-    private boolean isCorrectNameSize(String name) {
-        return name.length() > NAME_MAX_SIZE;
-    }
-
-    private boolean isOver(String name) {
-        return Objects.isNull(name) || name.isEmpty();
-    }
-
-    @Override
-    public String toString() {
-        return name + " : " + position;
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 }
