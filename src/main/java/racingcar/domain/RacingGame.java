@@ -3,44 +3,25 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import racingcar.util.Movable;
-import racingcar.util.RandomUtil;
 
-public class RacingGame implements Movable {
+public class RacingGame{
 
-    private static final int RANDOM_START = 0;
-    private static final int RANDOM_END = 9;
-    private static final String LINE = "----------------\n";
-
-    private final List<RacingCar> racingCarLists;
+    private final RacingCars racingCars;
     private final int raceCount;
 
-    public RacingGame(List<String> nameList, int raceCount) {
-        racingCarLists = new ArrayList<>();
+    public RacingGame(final RacingCars racingCars, final int raceCount) {
+        this.racingCars = racingCars;
         this.raceCount = raceCount;
+    }
 
-        for (String name : nameList) {
-            racingCarLists.add(new RacingCar(name));
+    public List<RacingCars> moveForwardAll(final Movable movable) {
+        final List<RacingCars> histories = new ArrayList<>();
+        RacingCars cars = racingCars;
+        for (int count = 0; count < raceCount; count++) {
+            cars = cars.race(movable);
+            histories.add(cars);
         }
+        return histories;
     }
 
-    public void runRace() {
-        for(int i = 0; i < raceCount; i++) {
-            moveForwardAll();
-        }
-    }
-
-    @Override
-    public void moveForwardAll() {
-        for (RacingCar racingCar : racingCarLists) {
-            racingCar.moveForward(RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END));
-            String currentStatus = racingCar.getName() + ":" + racingCar.getPosition() + "\n";
-            GameStatus.setStatus(currentStatus);
-        }
-        GameStatus.setStatus(LINE);
-    }
-
-    public List<RacingCar> getRacingCarLists() {
-        return Collections.unmodifiableList(racingCarLists);
-    }
 }
