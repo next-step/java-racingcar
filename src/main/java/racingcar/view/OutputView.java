@@ -7,9 +7,10 @@ import racingcar.model.RaceResults;
 public class OutputView {
 
     private static final String WINNER_MESSAGE = "최종 우승자: ";
-    private static final String GAME_RESULT_MESSAGE = "출력결과";
+    private static final String GAME_RESULT_MESSAGE = "실행결과";
 
     public void printResult(RaceResults raceResults) {
+        System.out.println();
         System.out.println(GAME_RESULT_MESSAGE);
         for (List<Car> raceResult : raceResults.getRaceResults()) {
             printEachRoundResult(raceResult);
