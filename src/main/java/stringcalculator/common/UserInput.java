@@ -1,6 +1,8 @@
 package stringcalculator.common;
 
-import static stringcalculator.common.ErrorMessage.*;
+import static stringcalculator.common.ErrorMessage.ERROR_MESSAGE_BLANK;
+import static stringcalculator.common.ErrorMessage.ERROR_MESSAGE_FORMAT;
+import static stringcalculator.common.ErrorMessage.ERROR_MESSAGE_NULL;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,7 +15,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import racingcar.common.exception.InputValidationException;
 
 public class UserInput {
 
@@ -24,36 +25,40 @@ public class UserInput {
     private static final int NUMBER_ONE = 1;
     private static final int EVEN_NUMBER_CONDITION = 2;
 
-    private final BufferedReader bufferedReader;
-    private final BufferedWriter log;
+    private final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    private final BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
 
     private List<String> splitUserInput;
     private String userInput;
 
     public UserInput() {
-        log = new BufferedWriter(new OutputStreamWriter(System.out));
-        bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         splitUserInput = new ArrayList<>();
         userInput = DELIMITER_NO_BLANK;
     }
 
-    public void setUserInput(String userInput) {
+    public UserInput(String userInput){
         this.userInput = userInput;
     }
 
-    public boolean userInputValidCheck() {
-        return parsingUserInput();
+    public boolean inputValid() {
+        return inputParsing();
     }
 
-    public void userInputRun() {
-        userInput();
+    public void inputUser() {
+        try {
+            log.write(INPUT_OPERATION_PHRASE);
+            log.flush();
+            this.userInput = bufferedReader.readLine();
+        } catch (IOException exception) {
+            exception.getMessage();
+        }
     }
 
-    public List<String> getSplitUserInput() {
+    public List<String> splitUserInput() {
         return splitUserInput;
     }
 
-    public boolean parsingUserInput() {
+    public boolean inputParsing() {
         try {
             validateNull(userInput);
             validateBlank(userInput);
@@ -88,16 +93,6 @@ public class UserInput {
     public void validateBlank(final String userInput) {
         if (userInput.isEmpty() || userInput.equals(" ")) {
             throw new IllegalArgumentException(ERROR_MESSAGE_BLANK);
-        }
-    }
-
-    private void userInput() {
-        try {
-            log.write(INPUT_OPERATION_PHRASE);
-            log.flush();
-            this.userInput = bufferedReader.readLine();
-        } catch (IOException exception) {
-            exception.getMessage();
         }
     }
 

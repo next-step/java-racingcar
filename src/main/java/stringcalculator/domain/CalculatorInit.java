@@ -1,17 +1,19 @@
 package stringcalculator.domain;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import stringcalculator.common.UserInput;
-
-import java.io.*;
 
 public class CalculatorInit {
 
     private static final String repeatPhrase = "계속하려면 1번을 눌러주세요.";
     private static final int NUMBER_ONE = 1;
     private static final String NEW_LINE = "\n";
+    private static final CalculatorInit calculatorInit;
     private static int judgeContinue = 0;
-    private static CalculatorInit calculatorInit;
-
 
     static {
         calculatorInit = new CalculatorInit();
@@ -26,22 +28,22 @@ public class CalculatorInit {
 
     public void start() throws IOException {
         do {
-            continueCalculator();
+            calculate();
         } while (repeatCalculator());
     }
 
-    private void continueCalculator() throws IOException {
+    private void calculate() throws IOException {
 
         UserInput input = new UserInput();
 
-        while (input.userInputValidCheck()) {
-            input.userInputRun();
+        while (input.inputValid()) {
+            input.inputUser();
         }
 
         BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
         try {
-            Calculator calculator = Calculator.of(input.getSplitUserInput());
-            log.write(String.valueOf(calculator.process()) + NEW_LINE);
+            Calculator calculator = Calculator.of(input.splitUserInput());
+            log.write(String.valueOf(calculator.calculateNumbers()) + NEW_LINE);
             log.flush();
         } catch (IllegalArgumentException | IOException exception) {
             log.write(exception.getMessage());

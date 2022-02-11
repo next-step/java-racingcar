@@ -1,8 +1,7 @@
 package stringcalculator.domain;
 
-import static stringcalculator.common.ErrorMessage.*;
-
-import stringcalculator.common.ErrorMessage;
+import static stringcalculator.common.ErrorMessage.ERROR_MESSAGE_DIVIDE;
+import static stringcalculator.common.ErrorMessage.ERROR_MESSAGE_SIGN;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
@@ -13,9 +12,9 @@ public enum Operator {
     DIVIDE("/", Operator::divide),
     MULTIPLE("*", Operator::multiple);
 
-    private String sign;
-    private BiFunction<Integer, Integer, Integer> operate;
     private final static int ZERO_NUMBER = 0;
+    private final String sign;
+    private final BiFunction<Integer, Integer, Integer> operate;
 
     Operator(final String sign, final BiFunction<Integer, Integer, Integer> operate) {
         this.sign = sign;
@@ -27,10 +26,6 @@ public enum Operator {
             .filter(operator -> operator.sign.equals(inputSign))
             .findFirst()
             .orElseThrow(() -> new IllegalArgumentException(ERROR_MESSAGE_SIGN));
-    }
-
-    public int operate(final int number, final int operand) {
-        return this.operate.apply(number, operand);
     }
 
     public static void divideZeroValidation(int operand) {
@@ -54,6 +49,10 @@ public enum Operator {
 
     private static int multiple(final int number, final int operand) {
         return number * operand;
+    }
+
+    public int operate(final int number, final int operand) {
+        return this.operate.apply(number, operand);
     }
 
 }
