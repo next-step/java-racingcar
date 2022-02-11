@@ -17,13 +17,13 @@ public class Calculator {
             int firstOperand = Integer.parseInt(expression[i]);
             String operator = expression[i + 1];
             int secondOperand = Integer.parseInt(expression[i + 2]);
-            int result = caculateIndividual(firstOperand, secondOperand, operator);
+            int result = calculateIndividual(firstOperand, secondOperand, operator);
             expression[i + 2] = Integer.toString(result);
         }
         return Integer.parseInt(expression[expressionLength - 1]);
     }
 
-    public static int caculateIndividual(int firstOperand, int secondOperand, String operator) {
+    public static int calculateIndividual(int firstOperand, int secondOperand, String operator) {
         int result = 0;
         if (operator.equals("+")) {
             result = add(firstOperand, secondOperand);
