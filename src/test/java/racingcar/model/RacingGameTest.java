@@ -10,9 +10,19 @@ class RacingGameTest {
 
     @Test
     void 시도횟수만큼_레이스를한다() {
-        MoveStrategy moveStrategy = new RandomStrategy();
-        RacingGame racingGame = new RacingGame(new Cars(Arrays.asList("pobi", "woni", "jun"),moveStrategy), 3);
-        List<RaceResult> totalResult = racingGame.startRace();
-        assertThat(totalResult.size()).isEqualTo(3);
+        RacingGame racingGame = new RacingGame(
+            new Cars(Arrays.asList(new Car("jiin"), new Car("leah"), new Car("sam"))), 3);
+        RaceResults raceResults = racingGame.startRace();
+        assertThat(raceResults.getRaceResults().size()).isEqualTo(3);
+    }
+
+    @Test
+    void 레이스_후_위치_확인() {
+        RacingGame racingGame = new RacingGame(
+            new Cars(Arrays.asList(new Car("jiin"), new Car("leah"), new Car("sam"))), 3,
+            () -> true);
+        RaceResults raceResults = racingGame.startRace();
+        List<Car> lastRaceResult = raceResults.getRaceResults().get(2);
+        assertThat(lastRaceResult.get(0).getPosition()).isEqualTo(3);
     }
 }
