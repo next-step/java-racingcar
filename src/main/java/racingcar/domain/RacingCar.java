@@ -6,7 +6,7 @@ import racingcar.view.RacingCarOutput;
 public class RacingCar{
 
     private static final int DEFAULT_POSITION = 0;
-    private static final int THRESHOLD = 4;
+    private static final int POSITION_PLUS_ONE = 1;
     private static final int NAME_MAX_SIZE = 5;
 
     private String name;
@@ -38,7 +38,7 @@ public class RacingCar{
 
     public RacingCar moveForward(final Movable movable) {
         if (movable.isMovable()) {
-            return new RacingCar(name, position + 1);
+            return new RacingCar(name, position + POSITION_PLUS_ONE);
         }
         return this;
     }

@@ -13,6 +13,7 @@ public class GameLauncher {
     private static final int RANDOM_START = 0;
     private static final int RANDOM_END = 9;
     private static final int END_SIZE = 1;
+    private static final int MOVABLE_STANDARD = 4;
 
     private String[] carNameLists;
     private int raceCount;
@@ -32,7 +33,7 @@ public class GameLauncher {
     }
 
     private void runRaceGame() {
-        final Movable movable = () -> RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END) >= 4;
+        final Movable movable = () -> RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END) >= MOVABLE_STANDARD;
         racingCars = new RacingCars(carNameLists);
         racingGame = new RacingGame(racingCars, raceCount);
         racingCarLists = racingGame.moveForwardAll(movable);
