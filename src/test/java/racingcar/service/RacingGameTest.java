@@ -35,7 +35,8 @@ class RacingGameTest {
     @CsvSource(value = {"4:true", "0:false"}, delimiter = ':')
     void 진행가능여부조회(int tryRaceCount, boolean isOngoing) {
         // given
-        RacingGame racingGame = new RacingGame(Cars.of(Arrays.asList("qwe", "asdf", "zx")), tryRaceCount,
+        RacingGame racingGame = new RacingGame(Cars.of(Arrays.asList("qwe", "asdf", "zx")),
+            tryRaceCount,
             new RandomMoveStrategy());
 
         // then

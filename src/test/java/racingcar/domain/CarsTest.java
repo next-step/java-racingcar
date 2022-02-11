@@ -20,7 +20,7 @@ class CarsTest {
         Cars cars = Cars.of(Arrays.asList("qwe", "asdf", "zx"));
 
         // when
-        cars.moveAll(()->moveNum);
+        cars.moveAll(() -> moveNum);
 
         // then
         assertThat(cars.getCars().get(0).getPosition()).isEqualTo(expectedPosition);
@@ -48,7 +48,7 @@ class CarsTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    void 유효성검증_최소사이즈(List<Car> names){
+    void 유효성검증_최소사이즈(List<Car> names) {
         assertThatExceptionOfType(IllegalStateException.class)
             .isThrownBy(() -> {
                 new Cars(names);
@@ -56,7 +56,7 @@ class CarsTest {
     }
 
     @Test
-    void 유효성검증_중복검사(){
+    void 유효성검증_중복검사() {
         // given
         List<Car> cars = new ArrayList<>();
         cars.add(new RacingCar(new Name("aaa")));

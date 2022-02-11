@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class OperationTest {
+
     @ParameterizedTest
     @CsvSource(value = {"3:7:10", "-1:7:6"}, delimiter = ':')
     void 더하기(double inputNum, double inputNum2, double expected) {

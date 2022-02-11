@@ -12,7 +12,7 @@ class CalculatorTest {
     @DisplayName("복합 연산 테스트")
     @ParameterizedTest
     @CsvSource(value = {"1 + 3 - 5:-1", "5 * 4 / 2:10"}, delimiter = ':')
-    void run(String expression, double expected){
+    void run(String expression, double expected) {
         // given
         Formula formula = new Formula(expression);
 

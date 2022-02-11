@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -25,7 +26,7 @@ class RacingCarTest {
         RacingCar car = new RacingCar(new Name("testN"));
 
         // when
-        car.move(()-> moveNum);
+        car.move(() -> moveNum);
 
         // then
         assertThat(car.getPosition()).isEqualTo(expectedPosition);
