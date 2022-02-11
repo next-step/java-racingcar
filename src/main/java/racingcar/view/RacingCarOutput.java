@@ -1,8 +1,8 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.domain.GameStatus;
 import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCars;
 
 public class RacingCarOutput {
 
@@ -35,8 +35,26 @@ public class RacingCarOutput {
         System.out.println(SYSTEM_MESSAGE_FINAL_WINNER + String.join(", ", gameWinner));
     }
 
-    public static void printGameScore() {
-        System.out.println(GameStatus.getRacingStatus().toString());
+    public static void printGameScore(final List<RacingCars> histories) {
+        histories.forEach(racingCars -> printRacingCars(racingCars));
     }
 
+    public static void printRacingCars(final RacingCars racingCars) {
+        System.out.println();
+        for (RacingCar car : racingCars.getRacingCars()) {
+            printCar(car);
+        }
+    }
+
+    public static void printCar(final RacingCar racingCar) {
+        System.out.println(racingCar.getName() + " : " + convertPosition(racingCar.getPosition()));
+    }
+
+    private static String convertPosition(final int position) {
+        final StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            stringBuilder.append("-");
+        }
+        return stringBuilder.toString();
+    }
 }
