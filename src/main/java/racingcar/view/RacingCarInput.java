@@ -11,7 +11,7 @@ public class RacingCarInput {
 
     }
 
-    public static List<String> getCarName() {
+    public static String[] getCarName() {
         String input = "";
         RacingCarOutput.printRequestCarName();
         try {
@@ -19,7 +19,7 @@ public class RacingCarInput {
         } catch (IllegalArgumentException e) {
             RacingCarOutput.printExceptionMessage(e.getMessage());
         }
-        return new ArrayList<>(Arrays.asList(input.split(",")));
+        return input.split(",");
     }
 
     public static int getRaceCount() {
