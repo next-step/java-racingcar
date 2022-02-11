@@ -8,6 +8,7 @@ public class RacingCar{
     private static final int DEFAULT_POSITION = 0;
     private static final int THRESHOLD = 4;
     private static final int NAME_MAX_SIZE = 5;
+
     private String name;
     private int position;
 
