@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.Objects;
 import racingcar.view.RacingCarOutput;
 
-public class RacingCar {
+public class RacingCar implements Movable{
 
     private static final int DEFAULT_POSITION = 0;
     private static final int THRESHOLD = 4;
@@ -30,9 +30,14 @@ public class RacingCar {
     }
 
     public void moveForward(int randomNumber) {
-        if (randomNumber >= THRESHOLD) {
+        if (isMovable(randomNumber)) {
             position++;
         }
+    }
+
+    @Override
+    public boolean isMovable(int randomNumber) {
+        return randomNumber >= THRESHOLD;
     }
 
     private void validate(String name) {
