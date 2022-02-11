@@ -7,20 +7,18 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<String> parsedInput) {
-        cars = new ArrayList<>();
-        for (String carName : parsedInput) {
-            cars.add(new Car(carName));
-        }
+    public Cars(List<Car> createdCars) {
+        cars = new ArrayList<>(createdCars);
     }
 
     public List<Car> moveCars(MoveStrategy moveStrategy) {
-
+        List<Car> carAfterRace = new ArrayList<>();
         for (Car car : cars) {
             if (moveStrategy.moveOrNot()) {
                 car.moveForward();
             }
+            carAfterRace.add(new Car(car.getCarName(), car.getPosition()));
         }
-        return cars;
+        return carAfterRace;
     }
 }
