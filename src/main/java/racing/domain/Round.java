@@ -5,13 +5,22 @@ import java.util.List;
 
 public class Round {
 
-    private final int roundNumber;
+    private int totalRoundNumber;
+    private final RoundResults roundResults;
 
-    public Round(int roundNumber) {
-        this.roundNumber = roundNumber;
+    public Round(int totalRoundNumber) {
+        this.totalRoundNumber = totalRoundNumber;
+        this.roundResults = new RoundResults();
     }
 
-    public List<CarResult> play(List<Car> cars) {
+    public void playTotalRound(List<Car> cars) {
+        while(inProgress()) {
+            play(cars);
+            totalRoundNumber--;
+        }
+    }
+
+    private void play(List<Car> cars) {
         List<CarResult> results = new ArrayList<>();
 
         for (Car car : cars) {
@@ -19,10 +28,14 @@ public class Round {
             results.add(new CarResult(car.getName(), car.getDistance()));
         }
 
-        return results;
+        roundResults.save(results);
     }
 
-    public int getRoundNumber() {
-        return roundNumber;
+    private boolean inProgress() {
+        return totalRoundNumber > 0;
+    }
+
+    public RoundResults getRoundResults() {
+        return roundResults;
     }
 }
