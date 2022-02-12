@@ -16,7 +16,7 @@ public class RacingApplication {
         racing.race();
         RoundResults results = racing.getResults();
 
-        Judgement judgement = new Judgement(results.getLastRawResult());
-        ResultView.printResultAndWinners(results.getRawResults(), judgement.judgeWinner());
+        Judgement judgement = new Judgement(results.getLastRoundResult());
+        ResultView.printResultAndWinners(results.getTotalRoundResults(), judgement.judgeWinner());
     }
 }

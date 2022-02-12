@@ -11,11 +11,11 @@ public class RoundResults {
         roundResults.add(roundResult);
     }
 
-    public List<List<CarResult>> getRawResults() {
+    public List<List<CarResult>> getTotalRoundResults() {
         return new ArrayList<>(roundResults);
     }
 
-    public List<CarResult> getLastRawResult() {
+    public List<CarResult> getLastRoundResult() {
         final int lastIndex = roundResults.size() - 1;
         return new ArrayList<>(roundResults.get(lastIndex));
     }
