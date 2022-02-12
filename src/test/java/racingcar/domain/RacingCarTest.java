@@ -3,6 +3,7 @@ package racingcar.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -64,5 +65,21 @@ class RacingCarTest {
         afterDist = racingCar.getCarDist();
 
         assertEquals(0, afterDist);
+    }
+
+    @Test
+    @DisplayName("자동차가 가장 멀리 갔는지 확인한다.")
+    void isMaxDist() {
+        int maxMove = 1;
+
+        MoveStrategy goMove = () -> 5;
+        MoveStrategy stopMove = () -> 3;
+
+        madeRacingCars.get(0).moveCar(goMove);
+        madeRacingCars.get(1).moveCar(stopMove);
+        madeRacingCars.get(2).moveCar(stopMove);
+        madeRacingCars.get(3).moveCar(stopMove);
+
+        assertTrue(madeRacingCars.get(0).isMaxDist(maxMove));
     }
 }
