@@ -27,6 +27,10 @@ public class RacingCar {
         }
     }
 
+    public boolean isMaxDist(int maxMove) {
+        return carDist == maxMove;
+    }
+
     public String getCarName() {
         return carName;
     }

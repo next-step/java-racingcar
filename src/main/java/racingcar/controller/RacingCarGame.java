@@ -48,7 +48,7 @@ public class RacingCarGame {
             .orElse(0);
 
         winners = cars.stream()
-            .filter(car -> car.getCarDist() == maxMove)
+            .filter(car -> car.isMaxDist(maxMove))
             .collect(Collectors.toList());
     }
 }
