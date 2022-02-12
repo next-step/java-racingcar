@@ -18,7 +18,7 @@ class NameTest {
     @ValueSource(strings = {"Leah", "Sam", "Jiin"})
     @ParameterizedTest
     void 자동차의_이름이_정상적으로_생성(final String name) {
-       Name carName = new Name(name);
-       assertThat(carName.getCarName()).isEqualTo(name);
+        Name carName = new Name(name);
+        assertThat(carName.getCarName()).isEqualTo(name);
     }
 }
