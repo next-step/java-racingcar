@@ -1,13 +1,14 @@
-package calculator;
+package calculator.model;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+
+import calculator.User;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
-import stringCalculator.User;
 
 public class UserTest {
 
@@ -20,10 +21,9 @@ public class UserTest {
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
-        //user.getUserInput();
 
         assertThatIllegalArgumentException()
-            .isThrownBy(user::getUserInput
+            .isThrownBy(user::parseUserInput
             );
 
     }
@@ -35,10 +35,9 @@ public class UserTest {
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
-        //user.getUserInput();
 
         assertThatIllegalArgumentException()
-            .isThrownBy(user::getUserInput
+            .isThrownBy(user::parseUserInput
             );
     }
 }

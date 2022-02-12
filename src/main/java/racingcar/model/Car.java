@@ -1,49 +1,57 @@
 package racingcar.model;
 
+import java.util.Objects;
+
 public class Car {
 
-    private static final String CAR_NAME_LONGER_THAN_FIVE = "[ERROR] 자동차 이름은 5글자를 초과할 수 없습니다.";
-    private static final String CAR_NAME_LESS_THAN_ONE = "[ERROR] 자동차 이름은 최소 1글자 이상이어야 합니다. ";
-    private static final int MINIMUM_CAR_NAME_LENGTH = 1;
-    private static final int MAXIMUM_CAR_NAME_LENGTH = 5;
-    private static final int MOVE_FORWARD_CONDITION = 4;
     private static final int DEFAULT_POSITION = 0;
-    private final String carName;
-    private int position;
 
-    public Car(String carName) {
-        this(carName, DEFAULT_POSITION);
+    private int position;
+    private final Name name;
+
+    public Car(String name) {
+        this(name, DEFAULT_POSITION);
     }
 
-    public Car(String carName, int position) {
-        validateCarNameLength(carName);
-        this.carName = carName;
+    public Car(String name, int position) {
+        this.name = new Name(name);
         this.position = position;
     }
 
-    private void validateCarNameLength(String carName) {
-        if (carName.length() < MINIMUM_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException(CAR_NAME_LESS_THAN_ONE);
-        }
-        if (carName.length() > MAXIMUM_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException(CAR_NAME_LONGER_THAN_FIVE);
-        }
+    public void moveForward() {
+        this.position++;
     }
 
-    public void moveForward(int moveOrNot) {
-        if (moveOrNot >= MOVE_FORWARD_CONDITION) {
-            this.position++;
-        }
+    public boolean isSamePosition(int comparePosition) {
+        return position == comparePosition;
+    }
 
+    public int compareMaxPosition(int comparePosition) {
+        return Math.max(position, comparePosition);
     }
 
     public String getCarName() {
-        return carName;
+        return name.getCarName();
     }
 
     public int getPosition() {
         return position;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return position == car.position && Objects.equals(name, car.name);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, name);
+    }
 }
