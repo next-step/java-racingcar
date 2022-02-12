@@ -7,21 +7,21 @@ public class Judgement {
 
     private static final int FIRST_INDEX = 0;
 
-    private final List<CarResult> lastResult;
+    private final List<CarResult> lastRoundResult;
     private final int bestDistance;
 
-    public Judgement(List<CarResult> lastResult) {
-        this.lastResult = lastResult;
+    public Judgement(List<CarResult> lastRoundResult) {
+        this.lastRoundResult = lastRoundResult;
         this.bestDistance = getBestDistance();
     }
 
     private int getBestDistance() {
-        lastResult.sort(CarResult::compareTo);
-        return lastResult.get(FIRST_INDEX).getDistance();
+        lastRoundResult.sort(CarResult::compareTo);
+        return lastRoundResult.get(FIRST_INDEX).getDistance();
     }
 
     public List<String> judgeWinner() {
-        return lastResult.stream()
+        return lastRoundResult.stream()
             .filter(carResult -> carResult.isSameDistance(bestDistance))
             .map(CarResult::getName)
             .collect(Collectors.toList());
