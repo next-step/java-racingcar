@@ -21,7 +21,6 @@ public class Name {
         if (name.length() > MAXIMUM_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(CAR_NAME_LONGER_THAN_FIVE);
         }
-
     }
 
     public String getCarName() {
