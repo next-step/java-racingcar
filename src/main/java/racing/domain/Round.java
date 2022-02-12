@@ -5,37 +5,37 @@ import java.util.List;
 
 public class Round {
 
+    private final RacingResult racingResult;
     private int totalRoundNumber;
-    private final RoundResults roundResults;
 
     public Round(int totalRoundNumber) {
         this.totalRoundNumber = totalRoundNumber;
-        this.roundResults = new RoundResults();
+        this.racingResult = new RacingResult();
     }
 
-    public void playTotalRound(List<Car> cars) {
-        while(inProgress()) {
-            play(cars);
+    public void play(List<Car> cars) {
+        while (inProgress()) {
+            executeRound(cars);
             totalRoundNumber--;
         }
     }
 
-    private void play(List<Car> cars) {
-        List<CarResult> results = new ArrayList<>();
+    private void executeRound(List<Car> cars) {
+        List<CarResult> roundResult = new ArrayList<>();
 
         for (Car car : cars) {
             car.move();
-            results.add(new CarResult(car.getName(), car.getDistance()));
+            roundResult.add(new CarResult(car.getName(), car.getDistance()));
         }
 
-        roundResults.save(results);
+        racingResult.save(roundResult);
     }
 
     private boolean inProgress() {
         return totalRoundNumber > 0;
     }
 
-    public RoundResults getRoundResults() {
-        return roundResults;
+    public RacingResult getRacingResult() {
+        return racingResult;
     }
 }

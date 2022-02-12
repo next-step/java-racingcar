@@ -14,10 +14,10 @@ public class Racing {
     }
 
     public void race() {
-        round.playTotalRound(cars);
+        round.play(cars);
     }
 
-    public RoundResults getResults() {
-        return round.getRoundResults();
+    public RacingResult getResult() {
+        return round.getRacingResult();
     }
 }
