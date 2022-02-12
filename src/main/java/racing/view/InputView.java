@@ -11,7 +11,7 @@ public class InputView {
         return sc.nextLine();
     }
 
-    public static int getRoundNumber() {
+    public static int getTotalRoundNumber() {
         System.out.println("시도할 횟수는 몇회인가요?");
         return Integer.parseInt(sc.nextLine());
     }
