@@ -12,7 +12,6 @@ import racingcar.domain.RacingCar;
 public class RacingCarGame {
 
     private static final int TRY_COUNT_ZERO = 0;
-    private static final MoveStrategy moveStrategy = RandomGenerate::makeRandom;
     private int tryCount;
     private List<RacingCar> cars;
     private List<RacingCar> winners;
@@ -24,9 +23,10 @@ public class RacingCarGame {
 
     public void playRacingCarGame() {
         setRacingCarGame();
+        final MoveStrategy moveStrategy = RandomGenerate::makeRandom;
 
         do {
-            moveRacingCar();
+            moveRacingCar(moveStrategy);
             PrintResult.printMoveState(cars);
             tryCount--;
 
@@ -37,7 +37,7 @@ public class RacingCarGame {
         PrintResult.printGameResult(winners);
     }
 
-    private void moveRacingCar() {
+    private void moveRacingCar(MoveStrategy moveStrategy) {
         cars.forEach(car -> car.moveCar(moveStrategy));
     }
 
