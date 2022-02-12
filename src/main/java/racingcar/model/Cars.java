@@ -7,14 +7,14 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<Car> createdCars) {
-        cars = new ArrayList<>(createdCars);
+    public Cars(List<Car> cars) {
+        this.cars = new ArrayList<>(cars);
     }
 
     public List<Car> moveCars(MoveStrategy moveStrategy) {
         List<Car> carAfterRace = new ArrayList<>();
         for (Car car : cars) {
-            if (moveStrategy.moveOrNot()) {
+            if (moveStrategy.canMove()) {
                 car.moveForward();
             }
             carAfterRace.add(new Car(car.getCarName(), car.getPosition()));
