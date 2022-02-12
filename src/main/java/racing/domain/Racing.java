@@ -1,5 +1,6 @@
 package racing.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import racing.dto.RacingInfo;
 
@@ -15,6 +16,10 @@ public class Racing {
 
     public void race() {
         round.play(cars);
+    }
+
+    public List<Car> getCars() {
+        return new ArrayList<>(cars);
     }
 
     public RacingResult getResult() {
