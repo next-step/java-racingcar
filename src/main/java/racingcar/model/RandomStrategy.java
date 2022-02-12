@@ -8,7 +8,7 @@ public class RandomStrategy implements MoveStrategy {
     private static final int MOVE_FORWARD_CONDITION = 4;
     private static final Random Random = new Random();
 
-    public boolean moveOrNot() {
+    public boolean canMove() {
         return generateRandomNumber() > MOVE_FORWARD_CONDITION;
     }
 

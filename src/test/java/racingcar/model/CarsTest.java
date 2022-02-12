@@ -13,7 +13,7 @@ public class CarsTest {
     void 입력받은_이름으로_Car객체_리스트를_만든다() {
         MoveStrategy moveStrategy = new MoveStrategy() {
             @Override
-            public boolean moveOrNot() {
+            public boolean canMove() {
                 if (new Random().nextInt(10) > 4) {
                     return true;
                 }
@@ -42,7 +42,7 @@ public class CarsTest {
         Cars cars = new Cars(Arrays.asList(new Car("jiin"), new Car("leah"), new Car("sam")));
         List<Car> movedCars = cars.moveCars(new MoveStrategy() {
             @Override
-            public boolean moveOrNot() {
+            public boolean canMove() {
                 return false;
             }
         });

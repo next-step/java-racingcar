@@ -2,5 +2,5 @@ package racingcar.model;
 
 public interface MoveStrategy {
 
-    boolean moveOrNot();
+    boolean canMove();
 }
