@@ -20,7 +20,7 @@ public class Console {
 
     }
 
-    public static List<String> setRacingCarNames() {
+    public static List<String> getRacingCarNames() {
         System.out.println(INPUT_CAR_NAME);
 
         String inputNames = scanner.nextLine().replace(SPACE, NOT_SPACE);

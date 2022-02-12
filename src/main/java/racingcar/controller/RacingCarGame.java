@@ -18,7 +18,7 @@ public class RacingCarGame {
     private List<RacingCar> winners;
 
     public void setRacingCarGame() {
-        cars = RacingCar.setRacingCars(Console.setRacingCarNames());
+        cars = RacingCar.setRacingCars(Console.getRacingCarNames());
         tryCount = Console.getTryCount();
     }
 
