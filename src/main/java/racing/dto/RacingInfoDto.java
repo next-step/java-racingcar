@@ -9,24 +9,23 @@ import racing.domain.Round;
 public class RacingInfoDto {
 
     private final List<Car> cars;
-    private final Round round;
+    private final int totalRoundNumber;
 
-    public RacingInfoDto(List<Car> cars, Round round) {
+    public RacingInfoDto(List<Car> cars, int totalRoundNumber) {
         this.cars = cars;
-        this.round = round;
+        this.totalRoundNumber = totalRoundNumber;
     }
 
-    public static RacingInfoDto of(String carNames, int roundNumber, MoveRule moveRule) {
+    public static RacingInfoDto of(String carNames, int totalRoundNumber, MoveRule moveRule) {
         final List<Car> cars = CarGenerator.createCars(carNames, moveRule);
-        Round round = new Round(roundNumber);
-        return new RacingInfoDto(cars, round);
+        return new RacingInfoDto(cars, totalRoundNumber);
     }
 
     public List<Car> getCars() {
         return cars;
     }
 
-    public Round getRound() {
-        return round;
+    public int getTotalRoundNumber() {
+        return totalRoundNumber;
     }
 }

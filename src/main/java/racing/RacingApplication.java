@@ -2,6 +2,7 @@ package racing;
 
 import racing.domain.MoveRule;
 import racing.domain.RandomMoveRule;
+import racing.domain.RoundResults;
 import racing.dto.RacingInfoDto;
 import racing.domain.Judgement;
 import racing.domain.Racing;
@@ -11,17 +12,17 @@ import racing.view.ResultView;
 public class RacingApplication {
 
     public static void main(String[] args) {
-
         String carNames = InputView.getCars();
-        int roundNumber = InputView.getRoundNumber();
+        int roundNumber = InputView.getTotalRoundNumber();
         MoveRule moveRule = new RandomMoveRule();
         RacingInfoDto infoDto = RacingInfoDto.of(carNames, roundNumber, moveRule);
 
-        Racing racing = new Racing(infoDto.getCars(), infoDto.getRound(), infoDto.getRound().getRoundNumber());
+        Racing racing = new Racing(infoDto.getCars(), infoDto.getTotalRoundNumber());
         racing.race();
-        ResultView.printResult(racing.getRoundResults());
 
-        Judgement judgement = new Judgement(racing.getLastResult());
-        ResultView.printWinners(judgement.judgeWinner());
+        RoundResults results = racing.getResults();
+        Judgement judgement = new Judgement(results.getLastRawResult());
+
+        ResultView.printResultAndWinners(results.getRawResults(), judgement.judgeWinner());
     }
 }
