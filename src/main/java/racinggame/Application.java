@@ -1,5 +1,6 @@
 package racinggame;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racinggame.domain.Car;
@@ -14,13 +15,19 @@ public class Application {
         int tryNumber = InputView.getTryNumber();
 
         Racing game = Racing.fromCarNames(carNames);
+        List<List<RacingDTO>> results = new ArrayList<>();
+        race(tryNumber, game, results);
+
+        ResultView.printRace(results);
+        ResultView.printWinners(game.getWinnersName());
+    }
+
+    private static void race(int tryNumber, Racing game, List<List<RacingDTO>> results) {
         while (tryNumber > 0) {
             List<RacingDTO> result = convertCars(game.race());
-            ResultView.printRace(result);
+            results.add(result);
             tryNumber--;
         }
-
-        ResultView.printWinners(game.getWinnersName());
     }
 
     private static List<RacingDTO> convertCars(List<Car> cars) {

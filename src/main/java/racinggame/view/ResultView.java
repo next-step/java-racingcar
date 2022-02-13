@@ -8,7 +8,13 @@ public class ResultView {
     private static final String CAR_COLON = " : ";
     private static final String DELIMITER = ", ";
 
-    public static void printRace(List<RacingDTO> cars) {
+    public static void printRace(List<List<RacingDTO>> race) {
+        for (List<RacingDTO> cars : race) {
+            printCars(cars);
+        }
+    }
+
+    public static void printCars(List<RacingDTO> cars) {
         for (RacingDTO car : cars) {
             printCar(car);
         }
