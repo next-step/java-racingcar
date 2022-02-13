@@ -14,8 +14,7 @@ public class Application {
         List<String> carNames = InputView.getCarNames();
         int tryNumber = InputView.getTryNumber();
 
-        Racing game = new Racing();
-        game.registerCarsByName(carNames);
+        Racing game = Racing.fromCarNames(carNames);
         while (tryNumber > 0) {
             List<RacingDTO> result = convertCars(game.race());
             ResultView.printRace(result);

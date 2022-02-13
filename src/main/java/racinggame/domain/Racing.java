@@ -1,6 +1,5 @@
 package racinggame.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -12,17 +11,19 @@ public class Racing {
 
     private List<Car> cars;
 
-    public Racing() {
+    private Racing(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public void registerCarsByName(List<String> carNames) {
-        this.cars = carNames.stream()
+    public static Racing fromCarNames(List<String> carNames) {
+        List<Car> cars = carNames.stream()
             .map(Car::of)
             .collect(Collectors.toList());
+        return new Racing(cars);
     }
 
-    public void registerCars(List<Car> cars) {
-        this.cars = cars;
+    public static Racing fromCars(List<Car> cars) {
+        return new Racing(cars);
     }
 
     public List<Car> race() {

@@ -12,15 +12,15 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class RacingTest {
 
+    final static List<String> testCarNames = Arrays.asList("123", "456", "789");
+
     @DisplayName("자동차 이름을 이용해 자동차를 등록할 수 있다")
     @Test
     void 이름을_통한_자동차_등록() {
-        List<String> carNames = Arrays.asList("123", "456", "789");
-        Racing racing = new Racing();
-        racing.registerCarsByName(carNames);
+        Racing game = Racing.fromCarNames(testCarNames);
 
         List<Car> expected = Arrays.asList(new Car("123"), new Car("456"), new Car("789"));
-        List<Car> actual = racing.getCarInfo();
+        List<Car> actual = game.getCarInfo();
 
         assertThat(actual).isEqualTo(expected);
     }
@@ -29,7 +29,7 @@ class RacingTest {
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     @ParameterizedTest
     void 사_이상일_경우_전진_가능(final int number) {
-        Racing game = new Racing();
+        Racing game = Racing.fromCarNames(testCarNames);
         assertThat(game.isMovable(number)).isTrue();
     }
 
@@ -37,7 +37,7 @@ class RacingTest {
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     @ParameterizedTest
     void 사_미만일_경우_전진_불가능(final int number) {
-        Racing game = new Racing();
+        Racing game = Racing.fromCarNames(testCarNames);
         assertThat(game.isMovable(number)).isTrue();
     }
 
@@ -46,9 +46,9 @@ class RacingTest {
     void 자동차_전진_확인() {
         Car testCar1 = Car.of("test1");
         Car testCar2 = Car.of("test2");
-        Racing racing = new Racing();
-        racing.moveCar(testCar1, true);
-        racing.moveCar(testCar2, false);
+        Racing game = Racing.fromCarNames(testCarNames);
+        game.moveCar(testCar1, true);
+        game.moveCar(testCar2, false);
         assertThat(testCar1.getLocation()).isEqualTo(1);
         assertThat(testCar2.getLocation()).isEqualTo(0);
     }
@@ -61,8 +61,7 @@ class RacingTest {
             new Car("test2", 5),
             new Car("test3", 2)
         );
-        Racing game = new Racing();
-        game.registerCars(cars);
+        Racing game = Racing.fromCars(cars);
         List<String> winners = game.getWinnersName();
 
         assertThat(winners).containsExactly("test2");
@@ -76,8 +75,7 @@ class RacingTest {
             new Car("test2", 3),
             new Car("test3", 5)
         );
-        Racing game = new Racing();
-        game.registerCars(cars);
+        Racing game = Racing.fromCars(cars);
         List<String> winners = game.getWinnersName();
         assertThat(winners).containsExactly("test1", "test3");
     }
@@ -85,8 +83,7 @@ class RacingTest {
     @DisplayName("우승자는 항상 1명 이상이다")
     @RepeatedTest(10)
     void 우승자_존재_확인() {
-        Racing game = new Racing();
-        game.registerCarsByName(Arrays.asList("1", "2", "3"));
+        Racing game = Racing.fromCarNames(testCarNames);
 
         for (int i = 0; i < 3; i++) {
             game.race();
