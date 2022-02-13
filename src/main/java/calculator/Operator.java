@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.function.BiFunction;
+
 public enum Operator {
     ADD("+", (a, b) -> a + b),
     SUB("-", (a, b) -> a - b),
@@ -7,21 +9,33 @@ public enum Operator {
     DIV("/", (a, b) -> a / b);
 
     private final String operator;
-    private final Calculable calculable;
+    private final BiFunction<Integer, Integer, Integer> expression;
 
-    Operator(String operator, Calculable calculable) {
+    Operator(String operator, BiFunction<Integer, Integer, Integer> expression) {
         this.operator = operator;
-        this.calculable = calculable;
+        this.expression = expression;
     }
 
-    public Calculable getCalculable() {
-        return calculable;
+    public static Operator findByOperator(String symbol) {
+        for (Operator operator : Operator.values()) {
+            if (operator.getOperator().equals(symbol)) {
+                return operator;
+            }
+        }
+        return Operator.ADD;
     }
-}
 
-interface Calculable {
+    private String getOperator() {
+        return operator;
+    }
 
-    int calculate(int a, int b);
+    public BiFunction<Integer, Integer, Integer> getExpression() {
+        return expression;
+    }
+
+    public int operate(int firstOperand, int secondOperand) {
+        return expression.apply(firstOperand, secondOperand);
+    }
 }
 
 

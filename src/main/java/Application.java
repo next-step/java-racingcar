@@ -1,6 +1,6 @@
-import calculator.Calculator;
+import calculator.CalculatorExcuter;
 import java.util.Scanner;
-import racingcar.Racing;
+import racingcar.controller.RacingGame;
 
 public class Application {
 
@@ -12,10 +12,10 @@ public class Application {
         System.out.println("문자열 계산기를 사용하시려면 1, 자동차 경주를 사용하시려면 2를 눌러주세요.");
         int gameType = sc.nextInt();
         if (gameType == CALCULATOR) {
-            Calculator.execute();
+            CalculatorExcuter.execute();
         }
         if (gameType == RACE) {
-            Racing.execute();
+            RacingGame.execute();
         }
     }
 }
