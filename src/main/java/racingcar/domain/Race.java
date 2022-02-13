@@ -3,7 +3,6 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import racingcar.view.OutputView;
 
 public class Race {
 
@@ -11,16 +10,16 @@ public class Race {
     private int times;
     private final List<List<Car>> histories = new ArrayList<>();
 
-    public Race(List<String> carNames, int times) {
-        this.cars = new Cars(carNames);
+    public Race(Cars cars, int times) {
+        this.cars = cars;
         this.times = times;
     }
 
-    public void playGames() {
+    public List<List<Car>> playGames() {
         while ((times--) > 0) {
             playGame();
         }
-        OutputView.printHistories(histories);
+        return histories;
     }
 
     public void playGame() {

@@ -7,6 +7,10 @@ public class Car {
     private static final int MOVE_THRESHOLD = 4;
     private static final int LIMIT_NAME_LENGTH = 5;
 
+    public Car(String name) {
+        this(name, 0);
+    }
+
     public Car(String name, int distance) {
         validateCarName(name);
         this.name = name;
