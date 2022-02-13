@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
-public class RacingCarView {
+public class RacingCarOutput {
 
     private static final String DASH = "-";
     private static final String ENTER = "\n";
@@ -14,7 +14,7 @@ public class RacingCarView {
     private static final String RACING_VIEW = "%s : %s" + ENTER;
     private static final String WINNER_VIEW = "최종 우승자: ";
 
-    private RacingCarView() {
+    private RacingCarOutput() {
     }
 
     public static void printMessage(String message) {

@@ -17,7 +17,7 @@ public class RacingCarInput {
     }
 
     public static List<String> inputCarName() {
-        RacingCarView.printMessage(INPUT_CARNAME_MESSAGE);
+        RacingCarOutput.printMessage(INPUT_CARNAME_MESSAGE);
         try {
             String input = scanner.nextLine();
             return Arrays.asList(input.split(COMMA));
@@ -28,7 +28,7 @@ public class RacingCarInput {
     }
 
     public static int inputRaceCount() {
-        RacingCarView.printMessage(INPUT_RETRY_MESSAGE);
+        RacingCarOutput.printMessage(INPUT_RETRY_MESSAGE);
         try {
             String input = scanner.nextLine();
             return Integer.parseInt(input);

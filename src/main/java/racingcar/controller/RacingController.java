@@ -5,7 +5,7 @@ import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
 import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.view.RacingCarInput;
-import racingcar.view.RacingCarView;
+import racingcar.view.RacingCarOutput;
 
 public class RacingController {
 
@@ -18,7 +18,7 @@ public class RacingController {
 
         List<Cars> racingLogs = racingGame.race();
 
-        RacingCarView.printRacing(racingLogs);
-        RacingCarView.printWinner(racingGame.getCars());
+        RacingCarOutput.printRacing(racingLogs);
+        RacingCarOutput.printWinner(racingGame.getCars());
     }
 }
