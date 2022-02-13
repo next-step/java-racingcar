@@ -5,16 +5,16 @@ import java.util.List;
 
 public class Winner {
 
-    private final List<Car> cars;
+    private final Cars cars;
     private final List<Car> winners = new ArrayList<>();
 
-    public Winner(List<Car> car) {
-        this.cars = new ArrayList<>(car);
+    public Winner(Cars cars) {
+        this.cars = cars;
     }
 
     public int getMaxScore() {
         int maximum = 0;
-        for (Car car: cars) {
+        for (Car car: cars.getCars()) {
             maximum = Math.max(maximum, car.getDistance());
         }
         return maximum;
@@ -22,7 +22,7 @@ public class Winner {
 
     public void setWinners() {
         int maximum = getMaxScore();
-        for (Car car: cars) {
+        for (Car car: cars.getCars()) {
             if (isWinner(car, maximum)) {
                 winners.add(car);
             }

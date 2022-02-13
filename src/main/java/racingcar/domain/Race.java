@@ -36,7 +36,7 @@ public class Race {
         return new Random().nextInt(10);
     }
 
-    public List<Car> getFinalResult() {
-        return cars.getCars();
+    public Cars getFinalResult() {
+        return cars;
     }
 }
