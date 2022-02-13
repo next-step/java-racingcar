@@ -4,13 +4,9 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public static String inputString() {
+    public static String inputExpressions() {
         Scanner sc = new Scanner(System.in);
-        String string = sc.nextLine();
-        return string;
-    }
-
-    public static String[] parsing(String expression) {
-        return expression.split(" ");
+        String expression = sc.nextLine();
+        return expression.split(",");
     }
 }
