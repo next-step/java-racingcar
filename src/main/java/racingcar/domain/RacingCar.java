@@ -3,11 +3,12 @@ package racingcar.domain;
 import java.util.Objects;
 import racingcar.view.RacingCarOutput;
 
-public class RacingCar {
+public class RacingCar{
 
     private static final int DEFAULT_POSITION = 0;
-    private static final int THRESHOLD = 4;
+    private static final int POSITION_PLUS_ONE = 1;
     private static final int NAME_MAX_SIZE = 5;
+
     private String name;
     private int position;
 
@@ -21,6 +22,32 @@ public class RacingCar {
         this.position = position;
     }
 
+    private void validate(String name) {
+        if (isOver(name) || isCorrectNameSize(name)) {
+            throw new IllegalArgumentException(RacingCarOutput.ERROR_CAR_NAME_OVER_OR_EMPTY);
+        }
+    }
+
+    private boolean isOver(String name) {
+        return Objects.isNull(name) || name.isEmpty();
+    }
+
+    private boolean isCorrectNameSize(String name) {
+        return name.length() > NAME_MAX_SIZE;
+    }
+
+    public RacingCar moveForward(final Movable movable) {
+        if (movable.isMovable()) {
+            return new RacingCar(name, position + POSITION_PLUS_ONE);
+        }
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return name + " : " + position;
+    }
+
     public String getName() {
         return name;
     }
@@ -29,28 +56,20 @@ public class RacingCar {
         return position;
     }
 
-    public void moveForward(int randomNumber) {
-        if (randomNumber >= THRESHOLD) {
-            position++;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
         }
-    }
-
-    private void validate(String name) {
-        if (isCorrectNameSize(name) || isOver(name)) {
-            throw new IllegalArgumentException(RacingCarOutput.ERROR_CAR_NAME_OVER_OR_EMPTY);
+        if (o == null || getClass() != o.getClass()) {
+            return false;
         }
-    }
-
-    private boolean isCorrectNameSize(String name) {
-        return name.length() > NAME_MAX_SIZE;
-    }
-
-    private boolean isOver(String name) {
-        return Objects.isNull(name) || name.isEmpty();
+        RacingCar racingCar = (RacingCar) o;
+        return position == racingCar.position && Objects.equals(name, racingCar.name);
     }
 
     @Override
-    public String toString() {
-        return name + " : " + position;
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 }

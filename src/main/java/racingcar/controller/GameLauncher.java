@@ -1,38 +1,49 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.domain.RacingCar;
+import racingcar.domain.Movable;
+import racingcar.domain.RacingCars;
 import racingcar.domain.RacingGame;
 import racingcar.domain.Winners;
-import racingcar.util.Movable;
 import racingcar.util.RandomUtil;
 import racingcar.view.RacingCarInput;
 import racingcar.view.RacingCarOutput;
 
 public class GameLauncher {
+    private static final int RANDOM_START = 0;
+    private static final int RANDOM_END = 9;
+    private static final int END_SIZE = 1;
+    private static final int MOVABLE_STANDARD = 4;
 
-
-    private List<String> carNameList;
+    private String[] carNameLists;
     private int raceCount;
-    private List<RacingCar> racingCarLists;
+    private List<RacingCars> racingCarLists;
+    private RacingCars racingCars;
     private RacingGame racingGame;
 
     public void start() {
         inputAll();
-        racingGame = new RacingGame(carNameList);
-        racingCarLists = racingGame.getRacingCarLists();
-        RacingCarOutput.printGameScore(raceCount, racingCarLists);
-
-        Winners winners = new Winners(racingCarLists);
-        List<String> gameWinner = winners.getRacingWinnerLists();
-        RacingCarOutput.printWinnersResult(gameWinner);
+        runRaceGame();
+        winnerProcess();
     }
 
-
-
-    public void inputAll() {
-        carNameList = RacingCarInput.getCarName();
+    private void inputAll() {
+        carNameLists = RacingCarInput.getCarName();
         raceCount = RacingCarInput.getRaceCount();
+    }
+
+    private void runRaceGame() {
+        final Movable movable = () -> RandomUtil.pickNumberInRange(RANDOM_START, RANDOM_END) >= MOVABLE_STANDARD;
+        racingCars = new RacingCars(carNameLists);
+        racingGame = new RacingGame(racingCars, raceCount);
+        racingCarLists = racingGame.moveForwardAll(movable);
+        RacingCarOutput.printGameScore(racingCarLists);
+    }
+
+    private void winnerProcess() {
+        Winners winners = new Winners(racingCarLists.get(racingCarLists.size() - END_SIZE));
+        List<String> gameWinner = winners.getWinners();
+        RacingCarOutput.printWinnersResult(gameWinner);
     }
 
 }

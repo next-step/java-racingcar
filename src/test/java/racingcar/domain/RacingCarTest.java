@@ -3,6 +3,11 @@ package racingcar.domain;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -41,19 +46,18 @@ class RacingCarTest {
         assertThat(racingCar.getPosition()).isZero();
     }
 
-    @ValueSource(ints = {4, 5, 6, 7, 8})
-    @ParameterizedTest
-    void 사_이상이면_전진한다(int randomNumber) {
-        RacingCar car = new RacingCar("yang");
-        car.moveForward(randomNumber);
-        assertThat(car.getPosition()).isEqualTo(1);
+    @Test
+    void 사_이상이면_전진한다() {
+        final RacingCar racingCar = new RacingCar("yang");
+        final RacingCar actual = racingCar.moveForward(() -> true);
+        assertThat(actual.getPosition()).isEqualTo(1);
     }
 
-    @ValueSource(ints = {0, 1, 2, 3})
-    @ParameterizedTest
-    void 사_미만이면_정지한다(int randomNumber) {
+   @Test
+    void 사_미만이면_정지한다() {
         RacingCar racingCar = new RacingCar("yang");
-        racingCar.moveForward(randomNumber);
-        assertThat(racingCar.getPosition()).isEqualTo(0);
+        final RacingCar actual = racingCar.moveForward(() -> false);
+        assertThat(actual.getPosition()).isEqualTo(0);
     }
+
 }
