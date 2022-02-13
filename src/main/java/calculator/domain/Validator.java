@@ -5,7 +5,7 @@ import java.util.List;
 public class Validator {
     private static final String NOT_A_NUMBER_NOR_OPERATOR_REGX = "(.*)[^\\s\\d+*/-](.*)";
 
-    public Validator(String userInput) {
+    public static void checkInput(String userInput) {
         checkEmpty(userInput);
         checkInputType(userInput);
     }

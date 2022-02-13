@@ -9,7 +9,7 @@ public class InputView {
         String userInput;
         Scanner sc = new Scanner(System.in);
         userInput = sc.nextLine();
-        new Validator(userInput);
+        Validator.checkInput(userInput);
         return userInput;
     }
 }
