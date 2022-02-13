@@ -15,17 +15,17 @@ public class Race {
         this.times = times;
     }
 
-    public List<List<Car>> playGames() {
+    public List<List<Car>> playGames(Movable movable) {
         while ((times--) > 0) {
-            playGame();
+            playGame(movable);
         }
         return histories;
     }
 
-    public void playGame() {
+    public void playGame(Movable movable) {
         List<Car> history = new ArrayList<>();
         for (Car car: cars.getCars()) {
-            car.moveCarRandomly(getRandomNumber());
+            car.moveCarRandomly(movable);
             history.add(new Car(car.getName(), car.getDistance()));
         }
         histories.add(history);

@@ -4,7 +4,6 @@ public class Car {
 
     private final String name;
     private int distance;
-    private static final int MOVE_THRESHOLD = 4;
     private static final int LIMIT_NAME_LENGTH = 5;
 
     public Car(String name) {
@@ -23,8 +22,8 @@ public class Car {
         }
     }
 
-    public void moveCarRandomly(int randomNumber) {
-        if (randomNumber >= MOVE_THRESHOLD) {
+    public void moveCarRandomly(Movable movable) {
+        if (movable.isMovable()) {
             this.distance++;
         }
     }
