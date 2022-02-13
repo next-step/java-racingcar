@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
+import racingcar.domain.TryRaceCount;
 import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.view.RacingCarInput;
 import racingcar.view.RacingCarOutput;
@@ -14,7 +15,7 @@ public class RacingController {
         int endRaceCount = RacingCarInput.inputRaceCount();
 
         RacingGame racingGame = new RacingGame(
-            Cars.of(carNames), endRaceCount, new RandomMoveStrategy());
+            Cars.of(carNames), new TryRaceCount(endRaceCount), new RandomMoveStrategy());
 
         List<Cars> racingLogs = racingGame.race();
 

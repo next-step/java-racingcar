@@ -14,7 +14,7 @@ class RacingGameTest {
     @CsvSource(value = {"true:3", "false:0"}, delimiter = ':')
     void 모든차앞으로전진(boolean moveNum, int expectedPosition) {
         // given
-        RacingGame racingGame = new RacingGame(Cars.of(Arrays.asList("qwe", "asdf", "zx")), 3,
+        RacingGame racingGame = new RacingGame(Cars.of(Arrays.asList("qwe", "asdf", "zx")), new TryRaceCount(3),
             () -> moveNum);
 
         // when
@@ -33,7 +33,7 @@ class RacingGameTest {
     void 진행가능여부조회(int tryRaceCount, boolean isOngoing) {
         // given
         RacingGame racingGame = new RacingGame(Cars.of(Arrays.asList("qwe", "asdf", "zx")),
-            tryRaceCount,
+            new TryRaceCount(tryRaceCount),
             new RandomMoveStrategy());
 
         // then
