@@ -4,10 +4,11 @@ public class Car {
 
     private final String name;
     private int distance;
+    private static final int DEFAULT_POSITION = 0;
     private static final int LIMIT_NAME_LENGTH = 5;
 
     public Car(String name) {
-        this(name, 0);
+        this(name, DEFAULT_POSITION);
     }
 
     public Car(String name, int distance) {

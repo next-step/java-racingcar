@@ -9,6 +9,7 @@ public class Race {
     private final Cars cars;
     private int times;
     private final List<List<Car>> histories = new ArrayList<>();
+    private static final int RANDOM_NUMBER_BOUND = 10;
 
     public Race(Cars cars, int times) {
         this.cars = cars;
@@ -32,7 +33,7 @@ public class Race {
     }
 
     public int getRandomNumber() {
-        return new Random().nextInt(10);
+        return new Random().nextInt(RANDOM_NUMBER_BOUND);
     }
 
     public Cars getFinalResult() {
