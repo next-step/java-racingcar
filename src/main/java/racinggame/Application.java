@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racinggame.domain.Car;
 import racinggame.domain.Racing;
-import racinggame.domain.Winners;
 import racinggame.dto.RacingDTO;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
@@ -21,8 +20,7 @@ public class Application {
             tryNumber--;
         }
 
-        Winners winners = new Winners(game.getWinnersName());
-        ResultView.printWinners(winners.get());
+        ResultView.printWinners(game.getWinnersName());
     }
 
     private static List<RacingDTO> convertCars(List<Car> cars) {
