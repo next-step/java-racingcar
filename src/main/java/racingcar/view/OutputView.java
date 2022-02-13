@@ -5,15 +5,25 @@ import racingcar.domain.Car;
 
 public class OutputView {
 
-    public static void printResult(List<Car> cars) {
-        for (Car car: cars) {
-            System.out.print(car.getName() + " : ");
-            for (int i = 0; i < car.getDistance(); i++) {
-                System.out.print("-");
-            }
-            System.out.println();
-        }
+    public static void printHistories(List<List<Car>> histories) {
+        histories.forEach(OutputView::printCars);
+    }
+
+    private static void printCars(List<Car> cars) {
         System.out.println();
+        cars.forEach(OutputView::printCar);
+    }
+
+    private static void printCar(Car car) {
+        System.out.println(car.getName() + " : " + convertPosition(car.getDistance()));
+    }
+
+    private static String convertPosition(int position) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            builder.append('-');
+        }
+        return builder.toString();
     }
 
     public static void printWinners(List<Car> winners) {
