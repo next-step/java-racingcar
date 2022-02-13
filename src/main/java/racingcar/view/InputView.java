@@ -42,7 +42,7 @@ public class InputView {
     }
 
     public static void validateCarNameCount(List<String> carNames) {
-        if (carNames.size() <= MIN_NAME_COUNT) {
+        if (carNames.size() < MIN_NAME_COUNT) {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 2개 이상이어야 합니다.");
         }
     }
