@@ -7,8 +7,8 @@ public class Winners {
 
     private final List<Car> raceReserts;
 
-    public Winners(List<Car> cars) {
-        this.raceReserts = new ArrayList<>(cars);
+    public Winners(List<Car> raceReserts) {
+        this.raceReserts = raceReserts;
     }
 
     public ArrayList<String> winnerList() {
