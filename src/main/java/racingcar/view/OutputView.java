@@ -19,7 +19,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void carStatus(final Car car) {
+    private static void carStatus(final Car car) {
         StringBuilder sb = new StringBuilder();
         sb.append(car.getName() + CAR_RACER_SPLITTER);
         for (int index = 0; index < car.getDistance(); index++) {
