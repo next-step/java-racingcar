@@ -1,64 +1,73 @@
 package racinggame.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Racing {
     private static final int MAX_RANGE = 10;
     private static final int FORWARD_NUMBER = 4;
+    private static final Random random = new Random();
 
-    private List<Car> cars = new ArrayList<>();
-    private StringBuilder result = new StringBuilder();
+    private List<Car> cars;
 
-    public Racing() {
+    private Racing(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public void race(List<String> carNames, int tryCount) {
-        registerCar(carNames);
-        while (tryCount > 0) {
-            move();
-            calculateResult();
-            tryCount--;
-        }
+    public static Racing fromCarNames(List<String> carNames) {
+        List<Car> cars = carNames.stream()
+            .map(Car::of)
+            .collect(Collectors.toList());
+        return new Racing(cars);
     }
 
-    private void registerCar(List<String> carNames) {
-        for (String carName : carNames) {
-            cars.add(Car.of(carName));
-        }
+    public static Racing fromCars(List<Car> cars) {
+        return new Racing(cars);
     }
 
-    private void move() {
+    public List<Car> race() {
         for (Car car : cars) {
-            int randomNumber = makeRandomNumber();
-            if (randomNumber >= FORWARD_NUMBER) {
-                car.moveForward();
-            }
+            moveCar(car, isMovable(generateRandomNumber()));
+        }
+        return cars;
+    }
+
+    public void moveCar(Car car, boolean isMovable) {
+        if (isMovable) {
+            car.moveForward();
         }
     }
 
-    private int makeRandomNumber() {
-        Random random = new Random();
+    public boolean isMovable(int moveNumber) {
+        return moveNumber >= FORWARD_NUMBER;
+    }
+
+    private int generateRandomNumber() {
         return random.nextInt(MAX_RANGE);
     }
 
-    private void calculateResult() {
-        for (Car car : cars) {
-            result.append(car.getName() + " : ");
-            for (int i = 0; i < car.getLocation(); i++) {
-                result.append('-');
-            }
-            result.append("\n");
-        }
-        result.append("\n");
+    public List<String> getWinnersName() {
+        final int maxLocation = findMaxLocation();
+        final List<Car> winners = findWinners(maxLocation);
+        return winners.stream()
+            .map(Car::getName)
+            .collect(Collectors.toList());
+    }
+
+    private List<Car> findWinners(final int maxLocation) {
+        return cars.stream()
+            .filter(car -> car.getLocation() == maxLocation)
+            .collect(Collectors.toList());
+    }
+
+    private int findMaxLocation() {
+        return cars.stream()
+            .mapToInt(Car::getLocation)
+            .max().getAsInt();
     }
 
     public List<Car> getCarInfo() {
         return cars;
-    }
-
-    public String getResult() {
-        return result.toString();
     }
 }

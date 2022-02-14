@@ -1,51 +1,58 @@
 package calculator.domain;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class Validator {
-    private static final String NOT_A_NUMBER_NOR_OPERATOR = "(.*)[^\\s\\d+*/-](.*)";
+    private static final String NOT_A_NUMBER_NOR_OPERATOR_REGX = "(.*)[^\\s\\d+*/-](.*)";
 
-    public Validator(String userInput) {
-        isEmpty(userInput);
-        canCalculate(userInput);
+    public static void checkInput(String userInput) {
+        checkEmpty(userInput);
+        checkInputType(userInput);
     }
 
-    public static void isEmpty(String userInput) {
+    public static void checkEmpty(String userInput) {
         if (userInput == null || userInput.trim().length() == 0) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void canCalculate(String userInput) {
-        if (userInput.matches(NOT_A_NUMBER_NOR_OPERATOR)) {
+    public static void checkInputType(String userInput) {
+        if (userInput.matches(NOT_A_NUMBER_NOR_OPERATOR_REGX)) {
             throw new IllegalArgumentException();
         }
     }
     
-    public static void isRightOrder(List<String> parsedInput) {
-        int inputSize = parsedInput.size();
+    public static void checkOrder(List<String> parsedInputs) {
+        int inputSize = parsedInputs.size();
         for (int i = 0; i < inputSize; i++) {
-            String target = parsedInput.get(i);
-            if (i % 2 == 0) {
-                isNumber(target);
-            } else {
-                isOperator(target);
-            }
+            String target = parsedInputs.get(i);
+            checkType(target, i);
         }
     }
 
-    private static void isNumber(String target) {
+    private static void checkType(String target, int index) {
+        if (isEven(index)) {
+            shouldNumber(target);
+        } else {
+            shouldOperator(target);
+        }
+    }
+
+    private static boolean isEven(int index) {
+        return index % 2 == 0;
+    }
+
+    private static void shouldNumber(String target) {
         try {
             Double.parseDouble(target);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 연산 가능한 수식을 입력해주세요.");
         }
     }
 
-    private static void isOperator(String target) {
+    private static void shouldOperator(String target) {
         if (!Operator.isOperator(target)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 연산 가능한 수식을 입력해주세요.");
         }
     }
 }

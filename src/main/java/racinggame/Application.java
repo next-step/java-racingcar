@@ -1,21 +1,38 @@
 package racinggame;
 
+import java.util.ArrayList;
 import java.util.List;
-import racinggame.domain.GameInit;
+import java.util.stream.Collectors;
+import racinggame.domain.Car;
 import racinggame.domain.Racing;
-import racinggame.domain.Winner;
+import racinggame.dto.RacingDTO;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
 
 public class Application {
-
     public static void main(String[] args) {
-        GameInit gameInit = new GameInit();
-        List<String> carNames = gameInit.inputCarName();
-        int playGameNumber = gameInit.inputTryNumber();
+        List<String> carNames = InputView.getCarNames();
+        int tryNumber = InputView.getTryNumber();
 
-        Racing game = new Racing();
-        game.race(carNames, playGameNumber);
-        System.out.println(game.getResult());
-        Winner.print(game.getCarInfo());
+        Racing game = Racing.fromCarNames(carNames);
+        List<List<RacingDTO>> results = new ArrayList<>();
+        race(tryNumber, game, results);
+
+        ResultView.printRace(results);
+        ResultView.printWinners(game.getWinnersName());
     }
 
+    private static void race(int tryNumber, Racing game, List<List<RacingDTO>> results) {
+        while (tryNumber > 0) {
+            List<RacingDTO> result = convertCars(game.race());
+            results.add(result);
+            tryNumber--;
+        }
+    }
+
+    private static List<RacingDTO> convertCars(List<Car> cars) {
+        return cars.stream()
+            .map(RacingDTO::from)
+            .collect(Collectors.toList());
+    }
 }

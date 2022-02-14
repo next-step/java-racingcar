@@ -1,20 +1,29 @@
 package racinggame.domain;
 
+import java.util.Objects;
+
 public class Car {
 
-    private final String name;
+    private static final int DEFAULT_LOCATION = 0;
+
+    private final CarName name;
     private int location;
 
     public Car(final String name) {
-        this.name = name;
-        this.location = 0;
+        this(name, DEFAULT_LOCATION);
+    }
+
+    public Car(final String name, int location) {
+        this.name = new CarName(name);
+        this.location = location;
     }
 
     public static Car of(final String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("[ERROR] 자동차의 이름은 5자를 초과할 수 없습니다.");
-        }
         return new Car(name);
+    }
+
+    public void moveForward() {
+        this.location++;
     }
 
     public int getLocation() {
@@ -22,10 +31,23 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.get();
     }
 
-    public void moveForward() {
-        this.location++;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return location == car.location && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, location);
     }
 }

@@ -21,6 +21,9 @@ public enum Operator {
     },
     DIVIDE("/") {
         public int operate(int prevNumber, int nextNumber) {
+            if (nextNumber == 0) {
+                throw new ArithmeticException("[ERROR] 0으로 나눌 수 없습니다.");
+            }
             return prevNumber / nextNumber;
         }
     };
