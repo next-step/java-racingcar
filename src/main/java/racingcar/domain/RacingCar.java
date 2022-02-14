@@ -1,18 +1,16 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCar {
 
-    private int carDist;
-
-    private final String carName;
     private static final int INIT_DIST = 0;
+    private static final int MOVABLE = 4;
+    private int carDist;
+    private final String carName;
 
-    private static final MovingCar moveCar = new MovingCar();
-
-    private RacingCar(String carName) {
+    public RacingCar(String carName) {
         this.carName = carName;
         carDist = INIT_DIST;
     }
@@ -23,10 +21,14 @@ public class RacingCar {
             .collect(Collectors.toList());
     }
 
-    public void moveCar(int number) {
-        if (moveCar.isMove(number)) {
+    public void moveCar(MoveStrategy moveStrategy) {
+        if (moveStrategy.movable() >= MOVABLE) {
             carDist++;
         }
+    }
+
+    public boolean isMaxDist(int maxMove) {
+        return carDist == maxMove;
     }
 
     public String getCarName() {
