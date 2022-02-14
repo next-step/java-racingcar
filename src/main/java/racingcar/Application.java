@@ -14,10 +14,12 @@ public class Application {
         List<String> carNames = InputView.getCarNames();
         List<Car> cars = new Cars(carNames).getCars();
         int tryCount = InputView.getTryCount();
-
         RacingCarGame racingCarGame = new RacingCarGame(cars, tryCount);
-        System.out.println("실행 결과");
+
+        ResultView.printGameResultMessage();
+
         racingCarGame.play();
+        ResultView.printGameStatus();
 
         List<Car> MovingCars = racingCarGame.getMovingCars();
         List<String> winners = Referee.getWinners(MovingCars);
