@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.List;
-import racingcar.view.ResultView;
 
 public class RacingCarGame {
 
@@ -32,9 +31,8 @@ public class RacingCarGame {
 
             String carName = car.getName();
             int totalMovingDistance = car.getPosition();
-            ResultView.printGameStatus(carName, totalMovingDistance);
-        }
 
-        System.out.println();
+            RacingTotalResult.addResult(new RacingResult(carName, totalMovingDistance));
+        }
     }
 }
