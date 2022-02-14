@@ -1,12 +1,17 @@
 package racingcar.view;
 
 import java.util.List;
+import racingcar.domain.RacingResult;
+import racingcar.domain.RacingTotalResult;
 
 public class ResultView {
 
-    public static void printGameStatus(String name, int move) {
-        String dashes = getDashByMove(move);
-        System.out.println(name + ":" + dashes);
+    public static void printGameStatus() {
+        List<RacingResult> racingResults = RacingTotalResult.getRacingResults();
+        racingResults.forEach(result -> {
+            String dashes = getDashByMove(result.getMovingDistance());
+            System.out.println(result.getCarName() + ":" + dashes);
+        });
     }
 
     public static void printGameResult(List<String> winners) {
