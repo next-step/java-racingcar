@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import racingcar.model.Car;
 import racingcar.util.Message;
@@ -17,6 +16,10 @@ public class OutputView {
         for (int i = 0; i < position; i++) {
             System.out.print("-");
         }
+    }
+
+    public static void printMessage(String message) {
+        System.out.println(message);
     }
 
     public static void printWinner(ArrayList<String> winnerList) {
