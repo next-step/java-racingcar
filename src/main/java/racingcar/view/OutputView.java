@@ -20,7 +20,7 @@ public class OutputView {
             .forEach(OutputView::printDistance);
     }
 
-    public static void printDistance(final CarMoveTurnHistory carMoveTurnHistory) {
+    private static void printDistance(final CarMoveTurnHistory carMoveTurnHistory) {
         carMoveTurnHistory.getCarMoveTurnHistory()
             .forEach(OutputView::carStatus);
         System.out.println();
