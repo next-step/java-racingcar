@@ -16,6 +16,15 @@ public class Car {
         this.distance = 0;
     }
 
+    private Car(final String name, final int distance) {
+        this.name = name;
+        this.distance = distance;
+    }
+
+    public Car of(final String name, final int distance) {
+        return new Car(name, distance);
+    }
+
     public String getName() {
         return name;
     }
@@ -24,10 +33,12 @@ public class Car {
         return distance;
     }
 
-    public void run(MovableStrategy strategy) {
+    public Car run(MovableStrategy strategy) {
         if (strategy.isMovable()) {
             this.distance++;
         }
+
+        return of(name, distance);
     }
 
     public boolean isEqualDistance(final int distance) {

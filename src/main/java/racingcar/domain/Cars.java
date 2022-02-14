@@ -25,10 +25,14 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public void moveAll(MovableStrategy strategy) {
+    public CarMoveTurnHistory moveAll(MovableStrategy strategy) {
+        CarMoveTurnHistory carMoveTurnHistory = CarMoveTurnHistory.create();
+
         for (Car car : cars) {
-            car.run(strategy);
+            carMoveTurnHistory.add(car.run(strategy));
         }
+
+        return carMoveTurnHistory;
     }
 
     public List<Car> filterWinners() {

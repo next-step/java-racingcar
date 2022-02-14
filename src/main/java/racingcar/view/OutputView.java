@@ -2,6 +2,8 @@ package racingcar.view;
 
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
+import racingcar.domain.CarMoveHistory;
+import racingcar.domain.CarMoveTurnHistory;
 import racingcar.domain.Cars;
 
 public class OutputView {
@@ -13,8 +15,13 @@ public class OutputView {
     private OutputView() {
     }
 
-    public static void printDistance(final Cars cars) {
-        cars.get()
+    public static void printMoveHistory(final CarMoveHistory carMoveHistory) {
+        carMoveHistory.getCarMoveHistory()
+            .forEach(OutputView::printDistance);
+    }
+
+    public static void printDistance(final CarMoveTurnHistory carMoveTurnHistory) {
+        carMoveTurnHistory.getCarMoveTurnHistory()
             .forEach(OutputView::carStatus);
         System.out.println();
     }

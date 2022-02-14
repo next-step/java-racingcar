@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.domain.CarMoveHistory;
 import racingcar.domain.Cars;
 import racingcar.domain.movable.MovableStrategy;
 import racingcar.view.OutputView;
@@ -23,10 +24,13 @@ public class GameController {
     }
 
     private void play(final MovableStrategy strategy) {
+        CarMoveHistory carMoveHistory = CarMoveHistory.create();
+
         for (int index = 0; index < turn; index++) {
-            cars.moveAll(strategy);
-            OutputView.printDistance(cars);
+            carMoveHistory.add(cars.moveAll(strategy));
         }
+
+        OutputView.printMoveHistory(carMoveHistory);
     }
 
     public void startGame(final MovableStrategy strategy) {
