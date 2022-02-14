@@ -20,10 +20,6 @@ public class Calculator {
         calculateNumbers(splitExpression);
     }
 
-    public void printResult() {
-        System.out.println(result);
-    }
-
     public int getResult() {
         return result;
     }
