@@ -36,7 +36,7 @@ public class GameController {
         OutputView.printWhoIsWinner(cars);
     }
 
-    private void validateTurn (int turn) {
+    private void validateTurn(int turn) {
         if (turn <= 0) {
             throw new IllegalArgumentException(VALIDATE_TURN_EXCEPTION_MESSAGE);
         }
