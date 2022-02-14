@@ -103,6 +103,11 @@
 - [x] GameControllerTest의 메소트명 고민해보기.
 - [x] 테스트명 작성에 대해 고민해보자.
 
+---
+
+- [x] auto formatting 설정
+
+
 ## 마감 기한
 
 목요일 18시
