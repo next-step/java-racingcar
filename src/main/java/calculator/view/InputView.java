@@ -17,8 +17,4 @@ public class InputView {
             throw new IllegalArgumentException("[ERROR] 빈 문자열 입니다.");
         }
     }
-
-    public void printResult(int result) {
-        System.out.println("연산의 결과는: " + result);
-    }
 }
