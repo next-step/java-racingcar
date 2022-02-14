@@ -106,7 +106,7 @@
 ---
 
 - [x] auto formatting 설정
-
+- [x] carStatus private으로 변경
 
 ## 마감 기한
 
