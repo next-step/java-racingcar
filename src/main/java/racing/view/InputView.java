@@ -1,7 +1,7 @@
 package racing.view;
 
 import java.util.Scanner;
-import racing.dto.RacingInfo;
+import racing.domain.RacingInfo;
 
 public class InputView {
 
@@ -20,6 +20,6 @@ public class InputView {
     public static RacingInfo getRacingInfo() {
         final String carNames = getCars();
         final int totalRoundNumber = getTotalRoundNumber();
-        return new RacingInfo(carNames, totalRoundNumber);
+        return new RacingInfo(carNames.split(","), totalRoundNumber);
     }
 }
