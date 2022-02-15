@@ -13,10 +13,10 @@ public class Car {
     }
 
     public Car(String name, int distance, MoveRule rule) {
+        validateNameLength(name);
         this.name = name;
         this.distance = distance;
         this.rule = rule;
-        validateNameLength(name);
     }
 
     private void validateNameLength(String name) {
@@ -26,7 +26,7 @@ public class Car {
     }
 
     public void move() {
-        if(rule.isMovable()) {
+        if (rule.isMovable()) {
             distance++;
         }
     }
