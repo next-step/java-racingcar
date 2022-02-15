@@ -8,9 +8,9 @@ public class Racing {
     private final List<Car> cars;
     private final Round round;
 
-    public Racing(RacingInfo info) {
-        this.round = new Round(info.getTotalRoundNumber());
-        this.cars = CarGenerator.createCars(info.getCarNames(), new RandomMoveRule());
+    public Racing(List<Car> cars, Round round) {
+        this.cars = cars;
+        this.round = round;
     }
 
     public void race() {
