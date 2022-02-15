@@ -20,7 +20,8 @@ public class ResultView {
 
         for (CarResult carResult : roundResult) {
             final StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < carResult.getDistance(); i++) {
+            final int carResultDistance = carResult.getDistance();
+            for (int i = 0; i < carResultDistance; i++) {
                 sb.append('-');
             }
             formattedResult.append(carResult.getName()).append(" : ").append(sb).append("\n");
@@ -28,5 +29,4 @@ public class ResultView {
 
         return formattedResult;
     }
-
 }
