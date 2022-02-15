@@ -2,7 +2,6 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racing.dto.RacingInfo;
 
 public class Racing {
 

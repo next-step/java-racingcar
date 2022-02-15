@@ -3,7 +3,7 @@ package racing;
 import racing.domain.Judgement;
 import racing.domain.Racing;
 import racing.domain.RacingResult;
-import racing.dto.RacingInfo;
+import racing.domain.RacingInfo;
 import racing.view.InputView;
 import racing.view.ResultView;
 
