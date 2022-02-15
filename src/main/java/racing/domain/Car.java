@@ -1,6 +1,6 @@
-package racing;
+package racing.domain;
 
-public class Car implements Comparable<Car> {
+public class Car {
 
     private static final int NAME_LENGTH_CONDITION = 5;
 
@@ -25,31 +25,10 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public void moveByRule() {
-        if(moveCheck()) {
+    public void move() {
+        if(rule.isMovable()) {
             distance++;
         }
-    }
-
-    private boolean moveCheck() {
-        return rule.makeValue() >= rule.getMoveCondition();
-    }
-
-    @Override
-    public int compareTo(Car o) {
-        return o.distance - this.distance;
-    }
-
-    public boolean isSameDistance(int bestDistance) {
-        return distance == bestDistance;
-    }
-
-    public String getStringDistance() {
-        final StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < distance; i++) {
-            sb.append('-');
-        }
-        return name + " : " + sb + "\n";
     }
 
     public int getDistance() {
