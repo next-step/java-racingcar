@@ -17,6 +17,17 @@ public class Cars {
         return cars;
     }
 
+    public int getMaxMovingDistance() {
+        int maxMovingDistance = 0;
+
+        for (Car car : cars) {
+            if (car.isFartherThan(maxMovingDistance)) {
+                maxMovingDistance = car.getPosition();
+            }
+        }
+        return maxMovingDistance;
+    }
+
     private List<Car> makeCarsByCarNames() {
         List<Car> cars = new ArrayList<>();
 
