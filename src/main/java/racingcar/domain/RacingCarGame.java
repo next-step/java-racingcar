@@ -28,11 +28,6 @@ public class RacingCarGame {
         for (Car car : cars) {
             int randomMove = Movement.getRandomMove();
             car.move(randomMove);
-
-            String carName = car.getName();
-            int totalMovingDistance = car.getPosition();
-
-            RacingTotalResult.addResult(new RacingResult(carName, totalMovingDistance));
         }
     }
 }
