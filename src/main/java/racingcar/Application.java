@@ -12,17 +12,18 @@ public class Application {
 
     public static void main(String[] args) {
         List<String> carNames = InputView.getCarNames();
-        List<Car> cars = new Cars(carNames).getCars();
+        Cars cars = new Cars(carNames);
         int tryCount = InputView.getTryCount();
+
         RacingCarGame racingCarGame = new RacingCarGame(cars, tryCount);
 
         ResultView.printGameResultMessage();
 
         racingCarGame.play();
-        ResultView.printGameStatus();
+        ResultView.printGameStatus(cars);
 
-        List<Car> MovingCars = racingCarGame.getMovingCars();
-        List<String> winners = Referee.getWinners(MovingCars);
+        //List<Car> movingCars = racingCarGame.getMovingCars();
+        List<String> winners = Referee.getWinners(cars);
         ResultView.printGameResult(winners);
     }
 }

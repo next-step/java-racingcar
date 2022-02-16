@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class ResultView {
 
@@ -11,8 +11,8 @@ public class ResultView {
     private final static String COLON = ":";
     private final static String DASH = "-";
 
-    public static void printGameStatus(List<Car> cars) {
-        cars.forEach(car -> {
+    public static void printGameStatus(Cars cars) {
+        cars.getCars().forEach(car -> {
             String dashes = getDashByMove(car.getPosition());
             System.out.println(car.getName() + COLON + dashes);
         });
