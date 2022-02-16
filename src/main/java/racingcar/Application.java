@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.List;
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingCarGame;
 import racingcar.domain.Referee;
@@ -22,7 +21,6 @@ public class Application {
         racingCarGame.play();
         ResultView.printGameStatus(cars);
 
-        //List<Car> movingCars = racingCarGame.getMovingCars();
         List<String> winners = Referee.getWinners(cars);
         ResultView.printGameResult(winners);
     }
