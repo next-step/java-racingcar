@@ -3,6 +3,8 @@ package racingcar.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -54,5 +56,18 @@ class CarTest {
         car.move(DISTANCE);
 
         assertTrue(car.isFartherThan(MAX_DISTANCE));
+    }
+
+    @Test
+    void 최대_전진거리를_리턴한다() {
+        final int MAX_DISTANCE = 5;
+        Cars cars = new Cars(Arrays.asList("dami", "jason"));
+        List<Car> totalCars = cars.getCars();
+
+        totalCars.forEach(car -> car.move(MAX_DISTANCE));
+
+        final int maxMovingDistance = cars.getMaxMovingDistance();
+
+        assertThat(maxMovingDistance).isEqualTo(MAX_DISTANCE);
     }
 }
