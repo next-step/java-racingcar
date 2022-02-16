@@ -1,6 +1,7 @@
 package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,8 +26,12 @@ class RacingTest {
         racing.race();
         List<CarResult> lastRoundResult = round.getRacingResult().getLastRoundResult();
 
-        assertThat(lastRoundResult.get(0).getName()).isEqualTo("a");
-        //distance확인, b의 distance도 확인
+        assertAll(
+            () -> assertThat(lastRoundResult.get(0).getName()).isEqualTo("a"),
+            () -> assertThat(lastRoundResult.get(0).getDistance()).isEqualTo(1),
+            () -> assertThat(lastRoundResult.get(1).getName()).isEqualTo("b"),
+            () -> assertThat(lastRoundResult.get(1).getDistance()).isEqualTo(0)
+        );
     }
 
 }
