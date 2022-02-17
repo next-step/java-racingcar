@@ -22,4 +22,12 @@ public class CarMoveTurnHistory {
     public void add(Car car) {
         carMoveTurnHistory.add(car);
     }
+
+    public void add(List<Car> cars) {
+        carMoveTurnHistory.addAll(cars);
+    }
+
+    public Car lastCar() {
+        return carMoveTurnHistory.get(carMoveTurnHistory.size() - 1);
+    }
 }

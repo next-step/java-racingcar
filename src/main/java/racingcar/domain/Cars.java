@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.movable.MovableStrategy;
@@ -27,11 +28,17 @@ public class Cars {
 
     public CarMoveTurnHistory moveAll(MovableStrategy strategy) {
         CarMoveTurnHistory carMoveTurnHistory = CarMoveTurnHistory.create();
+        List<Car> movedCars = new ArrayList<>();
 
         for (Car car : cars) {
-            carMoveTurnHistory.add(car.run(strategy));
+            Car movedCar = car.run(strategy);
+
+            carMoveTurnHistory.add(movedCar);
+            movedCars.add(movedCar);
         }
 
+        cars.clear();
+        cars.addAll(movedCars);
         return carMoveTurnHistory;
     }
 

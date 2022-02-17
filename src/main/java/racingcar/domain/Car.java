@@ -6,9 +6,10 @@ public class Car {
 
     private static final int MIN_LIMITED_CAR_NAME_LENGTH = 0;
     private static final int MAX_LIMITED_CAR_NAME_LENGTH = 5;
+    private static final int MOVE_DISTANCE_AT_ONCE = 1;
 
     private final String name;
-    private int distance;
+    private final int distance;
 
     public Car(final String name) {
         validateName(name);
@@ -21,7 +22,7 @@ public class Car {
         this.distance = distance;
     }
 
-    public Car of(final String name, final int distance) {
+    public static Car of(final String name, final int distance) {
         return new Car(name, distance);
     }
 
@@ -35,7 +36,7 @@ public class Car {
 
     public Car run(MovableStrategy strategy) {
         if (strategy.isMovable()) {
-            this.distance++;
+            return of(name, distance + MOVE_DISTANCE_AT_ONCE);
         }
 
         return of(name, distance);
