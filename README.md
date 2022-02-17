@@ -109,6 +109,7 @@
 - [x] carStatus private으로 변경
 - [x] Cars객체가 아닌 view에 전달을 위한 단순 정보만 가지고 있는 객체를 만들어보자.
 - [x] moveAll 메서드를 테스트해보자.
+- [x] 미사용 getter 삭제
 
 ## 마감 기한
 
