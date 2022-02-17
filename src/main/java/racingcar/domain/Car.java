@@ -7,17 +7,17 @@ public class Car {
     private static final int MIN_LIMITED_CAR_NAME_LENGTH = 0;
     private static final int MAX_LIMITED_CAR_NAME_LENGTH = 5;
     private static final int MOVE_DISTANCE_AT_ONCE = 1;
+    private static final int DEFAULT_CAR_DISTANCE = 0;
 
     private final String name;
     private final int distance;
 
     public Car(final String name) {
-        validateName(name);
-        this.name = name;
-        this.distance = 0;
+        this(name, DEFAULT_CAR_DISTANCE);
     }
 
     private Car(final String name, final int distance) {
+        validateName(name);
         this.name = name;
         this.distance = distance;
     }
