@@ -41,10 +41,6 @@ public class Cars {
         return cars.stream().filter(car -> car.isEqualDistance(max)).collect(Collectors.toList());
     }
 
-    public List<Car> get() {
-        return cars;
-    }
-
     private int calculateMax() {
         return cars.stream().mapToInt(Car::getDistance).max()
             .orElseThrow(() -> new IllegalArgumentException("최대 이동 거리 값을 구할 수 없습니다."));
