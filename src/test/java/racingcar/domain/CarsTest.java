@@ -24,7 +24,7 @@ public class CarsTest {
         assertThat(
             carMoveTurnHistory.getCarMoveTurnHistory()
                 .stream()
-                .map(x -> x.getDistance())
+                .map(Car::getDistance)
                 .allMatch(x -> x == 1)
         )
             .isEqualTo(true);
@@ -42,7 +42,7 @@ public class CarsTest {
         assertThat(
             carMoveTurnHistory.getCarMoveTurnHistory()
                 .stream()
-                .map(x -> x.getDistance())
+                .map(Car::getDistance)
                 .allMatch(x -> x == 0)
         )
             .isEqualTo(true);
@@ -64,7 +64,7 @@ public class CarsTest {
         assertThat(
             carMoveTurnHistory.getCarMoveTurnHistory()
                 .stream()
-                .map(x -> x.getDistance())
+                .map(Car::getDistance)
                 .allMatch(x -> x == turn)
         )
             .isEqualTo(true);
@@ -79,18 +79,24 @@ public class CarsTest {
         Car a = new Car("A");
         Car b = new Car("B");
 
-        carMove(a, aMoves);
-        carMove(b, bMoves);
+        CarMoveTurnHistory carAMoveTurnHistory = carMove(a, aMoves);
+        CarMoveTurnHistory carBMoveTurnHistory = carMove(b, bMoves);
 
-        Cars cars = Cars.fromCarList(Arrays.asList(a, b));
+        Cars cars = Cars.fromCarList(Arrays.asList(carAMoveTurnHistory.lastCar(), carBMoveTurnHistory.lastCar()));
 
-        assertThat(cars.filterWinners())
-            .isEqualTo(Arrays.asList(a));
+        assertThat(cars.filterWinners().get(0).getName())
+            .isEqualTo(a.getName());
     }
 
-    private void carMove(Car car, List<Boolean> moves) {
+    private CarMoveTurnHistory carMove(Car car, List<Boolean> moves) {
+        CarMoveTurnHistory carMoveTurnHistory = CarMoveTurnHistory.create();
+
+        carMoveTurnHistory.add(car);
+
         for (boolean carMoved : moves) {
-            car.run(() -> carMoved);
+            carMoveTurnHistory.add(carMoveTurnHistory.lastCar().run(() -> carMoved));
         }
+
+        return carMoveTurnHistory;
     }
 }

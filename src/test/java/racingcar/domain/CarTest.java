@@ -59,25 +59,31 @@ public class CarTest {
 
         Car car = new Car("A");
 
-        car.run(() -> true);
+        Car movedCar = car.run(() -> true);
 
-        assertThat(car.getDistance())
+        assertThat(movedCar.getDistance())
             .isEqualTo(AFTER_ONE_MOVE_DISTANCE);
     }
 
-    private void carMove(Car car, List<Boolean> moves) {
+    private CarMoveTurnHistory carMove(Car car, List<Boolean> moves) {
+        CarMoveTurnHistory carMoveTurnHistory = CarMoveTurnHistory.create();
+
+        carMoveTurnHistory.add(car);
+
         for (boolean carMoved : moves) {
-            car.run(() -> carMoved);
+            carMoveTurnHistory.add(carMoveTurnHistory.lastCar().run(() -> carMoved));
         }
+
+        return carMoveTurnHistory;
     }
 
     static Stream<Arguments> generateOneTimeCarMoveParameter() {
         return Stream.of(
-            Arguments.of(Arrays.asList(true)),
-            Arguments.of(Arrays.asList(true, false)),
-            Arguments.of(Arrays.asList(true, false, false)),
-            Arguments.of(Arrays.asList(false, true)),
-            Arguments.of(Arrays.asList(false, false, true))
+            Arguments.of(Arrays.asList(true), 1),
+            Arguments.of(Arrays.asList(true, false), 1),
+            Arguments.of(Arrays.asList(true, false, false), 1),
+            Arguments.of(Arrays.asList(false, true), 1),
+            Arguments.of(Arrays.asList(false, false, true), 1)
         );
     }
 
@@ -85,15 +91,14 @@ public class CarTest {
     @ParameterizedTest
     @MethodSource("generateOneTimeCarMoveParameter")
     void GivenListWithOneTrueBoolean_WhenCustomCarMoveMethod_ThenDistanceIsEqualToOne(
-        List<Boolean> moves) {
-        final int AFTER_ONE_MOVE_DISTANCE = 1;
+        List<Boolean> moves, int moveDistance) {
 
         Car car = new Car("A");
 
-        carMove(car, moves);
+        CarMoveTurnHistory carMoveTurnHistory = carMove(car, moves);
 
-        assertThat(car.getDistance())
-            .isEqualTo(AFTER_ONE_MOVE_DISTANCE);
+        assertThat(carMoveTurnHistory.lastCar().getDistance())
+            .isEqualTo(moveDistance);
     }
 
     static Stream<Arguments> generateThreeTimeCarMoveParameter() {
@@ -113,9 +118,9 @@ public class CarTest {
 
         Car car = new Car("A");
 
-        carMove(car, moves);
+        CarMoveTurnHistory carMoveTurnHistory = carMove(car, moves);
 
-        assertThat(car.getDistance())
+        assertThat(carMoveTurnHistory.lastCar().getDistance())
             .isEqualTo(AFTER_Three_MOVE_DISTANCE);
     }
 
