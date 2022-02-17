@@ -17,10 +17,6 @@ public class Racing {
         round.play(cars);
     }
 
-    public List<Car> getCars() {
-        return new ArrayList<>(cars);
-    }
-
     public RacingResult getResult() {
         return round.getRacingResult();
     }

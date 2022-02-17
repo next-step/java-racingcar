@@ -12,7 +12,7 @@ public class CarResult implements Comparable<CarResult> {
 
     @Override
     public int compareTo(CarResult o) {
-        return o.distance - this.distance;
+        return Integer.compare(o.distance, this.distance);
     }
 
     public String getName() {
