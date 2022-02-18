@@ -20,12 +20,16 @@ public class Car {
         }
     }
 
-    public boolean isSamePosition(int position) {
-        return this.position == position;
-    }
-
     public void go() {
         this.position++;
+    }
+
+    public int comparePosition(int maximum) {
+        return Math.max(maximum, position);
+    }
+
+    public boolean isSamePosition(int position) {
+        return this.position == position;
     }
 
     public String getName() {
@@ -36,7 +40,4 @@ public class Car {
         return this.position;
     }
 
-    public int comparePosition(int maximum) {
-        return Math.max(maximum, position);
-    }
 }

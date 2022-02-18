@@ -21,6 +21,12 @@ public class OutputView {
         }
     }
 
+    public void printWinners(Race race) {
+        System.out.print("최종 우승자: ");
+        List<String> winnerNames = getWinnerNames(race.getCars(), race.getMaxScore());
+        System.out.println(String.join(", ", winnerNames));
+    }
+
     private List<String> getWinnerNames(List<Car> cars, int maxPosition) {
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
@@ -30,11 +36,4 @@ public class OutputView {
         }
         return winners;
     }
-
-    public void printWinners(Race race) {
-        System.out.print("최종 우승자: ");
-        List<String> winnerNames = getWinnerNames(race.getCars(), race.getMaxScore());
-        System.out.println(String.join(", ", winnerNames));
-    }
-
 }
