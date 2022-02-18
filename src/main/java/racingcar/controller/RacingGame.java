@@ -16,5 +16,4 @@ public class RacingGame {
         race.repeatGame(times.getTimes());
         OutputView.printWinners(race);
     }
-
 }

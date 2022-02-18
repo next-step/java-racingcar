@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.Race;
 
 class RaceTest {
 
@@ -53,7 +51,5 @@ class RaceTest {
         cars.add(new Car("one"));
         cars.add(new Car("two"));
         cars.add(new Car("three"));
-
-
     }
 }

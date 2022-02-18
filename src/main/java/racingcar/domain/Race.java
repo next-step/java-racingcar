@@ -48,5 +48,4 @@ public class Race {
         }
         return maximum;
     }
-
 }
