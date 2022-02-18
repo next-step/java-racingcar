@@ -24,4 +24,12 @@ class CarTest {
         assertThatExceptionOfType(RuntimeException.class)
           .isThrownBy(() -> new Car("overFive"));
     }
+
+    @Test
+    public void isSamePosition() {
+        Car car = new Car("mizz");
+        assertThat(car.isSamePosition(0)).isTrue();
+        car.go();
+        assertThat(car.isSamePosition(1)).isTrue();
+    }
 }
