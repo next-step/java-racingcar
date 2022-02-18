@@ -14,18 +14,18 @@ public class Car {
         this.position = INIT_POSITION;
     }
 
+    private void checkCarName(String name) {
+        if (name.length() > MAX_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException("차의 이름은 5글자가 넘으면 안됩니다.");
+        }
+    }
+
     public boolean isSamePosition(int position) {
         return this.position == position;
     }
 
     public void go() {
         this.position++;
-    }
-
-    private void checkCarName(String name) {
-        if (name.length() > MAX_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("차의 이름은 5글자가 넘으면 안됩니다.");
-        }
     }
 
     public String getName() {
