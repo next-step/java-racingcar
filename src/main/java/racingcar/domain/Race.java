@@ -17,14 +17,14 @@ public class Race {
     public void repeatGame(int times) {
         for (int j = 0; j < times; j++) {
             for (Car car : cars) {
-                compareWithFour(car, (int) Math.floor(Math.random() * MAX_NUMBER));
+                raceOneTime(car, (int) Math.floor(Math.random() * MAX_NUMBER));
             }
             OutputView.printCurrentPosition(cars);
             System.out.println();
         }
     }
 
-    public void compareWithFour(Car car, int randomNumber) {
+    public void raceOneTime(Car car, int randomNumber) {
         if (randomNumber >= MIN_NUMBER_FOR_START) {
             car.go();
         }

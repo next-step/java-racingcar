@@ -19,7 +19,7 @@ class RaceTest {
         cars.add(new Car("benz"));
         cars.add(new Car("bmw"));
         Race race = new Race(cars);
-        race.compareWithFour(cars.get(1), 5);
+        race.raceOneTime(cars.get(1), 5);
         assertThat(cars.get(1).getPosition()).isEqualTo(1);
     }
 
@@ -31,7 +31,7 @@ class RaceTest {
         cars.add(new Car("benz"));
         cars.add(new Car("bmw"));
         Race race = new Race(cars);
-        race.compareWithFour(cars.get(1), 4);
+        race.raceOneTime(cars.get(1), 4);
         assertThat(cars.get(1).getPosition()).isEqualTo(1);
     }
 
@@ -43,7 +43,7 @@ class RaceTest {
         cars.add(new Car("benz"));
         cars.add(new Car("bmw"));
         Race race = new Race(cars);
-        race.compareWithFour(cars.get(1), 3);
+        race.raceOneTime(cars.get(1), 3);
         assertThat(cars.get(1).getPosition()).isEqualTo(0);
     }
 
