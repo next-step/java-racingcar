@@ -46,4 +46,14 @@ class RaceTest {
         race.compareWithFour(cars.get(1), 3);
         assertThat(cars.get(1).getPosition()).isEqualTo(0);
     }
+
+    @Test
+    public void getMaxScore() {
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("one"));
+        cars.add(new Car("two"));
+        cars.add(new Car("three"));
+
+
+    }
 }
