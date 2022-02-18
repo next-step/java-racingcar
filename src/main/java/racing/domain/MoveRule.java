@@ -1,7 +1,7 @@
 package racing.domain;
 
+@FunctionalInterface
 public interface MoveRule {
-    int makeValue();
 
     boolean isMovable();
 }

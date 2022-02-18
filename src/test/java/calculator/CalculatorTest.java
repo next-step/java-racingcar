@@ -33,7 +33,7 @@ class CalculatorTest {
 
     boolean hasTwoDecimalPoint(Double number) {
         double compare = number * Math.pow(10, 2);
-        return compare == (int)compare;
+        return compare == (int) compare;
     }
 
     @Test

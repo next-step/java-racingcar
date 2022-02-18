@@ -1,7 +1,6 @@
 package calculator;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -23,12 +22,12 @@ public class ElementGenerator {
     }
 
     private void validateFormat() {
-        if ( isEmptyOrNull(input) || isNotMatched(Pattern.compile("^\\d+(\\s*[-+*/]\\s*\\d+)+$"))) {
+        if (isEmptyOrNull(input) || isNotMatched(Pattern.compile("^\\d+(\\s*[-+*/]\\s*\\d+)+$"))) {
             throw new IllegalArgumentException("[ERROR] 식의 포맷이 유효하지 않습니다.");
         }
     }
 
-    private boolean isEmptyOrNull (String input) {
+    private boolean isEmptyOrNull(String input) {
         return input == null || input.isEmpty();
     }
 

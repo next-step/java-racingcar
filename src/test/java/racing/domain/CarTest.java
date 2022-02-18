@@ -13,20 +13,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        testMoveRule = new MoveRule() {
-            private static final int MOVE_CONDITION = 4;
-            private static final int MOVABLE_VALUE = 5;
-
-            @Override
-            public int makeValue() {
-                return MOVABLE_VALUE;
-            }
-
-            @Override
-            public boolean isMovable() {
-                return makeValue() >= MOVE_CONDITION;
-            }
-        };
+        testMoveRule = () -> true;
     }
 
     @Test

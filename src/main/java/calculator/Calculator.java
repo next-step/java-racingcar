@@ -18,7 +18,7 @@ public class Calculator {
     public Double execute() {
         Double result = numbers.get(0);
         numbers.remove(0);
-        for(final String operator: operators) {
+        for (final String operator : operators) {
             result = Operator.operatorOf(operator).apply(result, numbers.get(0));
             numbers.remove(0);
         }
