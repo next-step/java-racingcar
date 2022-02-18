@@ -4,8 +4,8 @@ public class Car {
 
     private static final int INIT_POSITION = 0;
     private static final int MAX_CAR_NAME_LENGTH = 5;
-    private final String name;
 
+    private final String name;
     private int position;
 
     public Car(String name) {
@@ -35,7 +35,6 @@ public class Car {
     public int getPosition() {
         return this.position;
     }
-
 
     public int comparePosition(int maximum) {
         return Math.max(maximum, position);
