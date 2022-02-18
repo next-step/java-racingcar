@@ -49,7 +49,4 @@ public class Race {
         return maximum;
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
 }
