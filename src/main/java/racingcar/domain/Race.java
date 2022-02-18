@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.view.OutputView;
 
@@ -27,6 +28,17 @@ public class Race {
         if (randomNumber >= MIN_NUMBER_FOR_START) {
             car.go();
         }
+    }
+
+    public List<String> WinnerNames() {
+        int maxPosition = getMaxScore();
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.isSamePosition(maxPosition)) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
     }
 
     public int getMaxScore() {

@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Race;
@@ -26,17 +25,7 @@ public class OutputView {
 
     public static void printWinners(Race race) {
         System.out.print("최종 우승자: ");
-        List<String> winnerNames = getWinnerNames(race.getCars(), race.getMaxScore());
+        List<String> winnerNames = race.WinnerNames();
         System.out.println(String.join(", ", winnerNames));
-    }
-
-    private static List<String> getWinnerNames(List<Car> cars, int maxPosition) {
-        List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.isSamePosition(maxPosition)) {
-                winners.add(car.getName());
-            }
-        }
-        return winners;
     }
 }
