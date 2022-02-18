@@ -2,6 +2,9 @@ package calculator;
 
 public class Calculator {
 
+    private Calculator() {
+    }
+
     public static int calculate(String[] expression) {
         final int expressionLength = expression.length;
         for (int i = 0; i < expressionLength - 1; i += 2) {

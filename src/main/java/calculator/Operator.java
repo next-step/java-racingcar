@@ -29,10 +29,6 @@ public enum Operator {
         return operator;
     }
 
-    public BiFunction<Integer, Integer, Integer> getExpression() {
-        return expression;
-    }
-
     public int operate(int firstOperand, int secondOperand) {
         return expression.apply(firstOperand, secondOperand);
     }
