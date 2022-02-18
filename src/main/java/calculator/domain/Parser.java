@@ -1,6 +1,6 @@
 package calculator.domain;
 
- import calculator.domain.operator.Operators;
+import calculator.domain.operator.Operators;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;

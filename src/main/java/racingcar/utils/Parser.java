@@ -6,11 +6,13 @@ import java.util.stream.Collectors;
 
 public class Parser {
 
-    private Parser() {}
+    private Parser() {
+    }
 
     public static List<String> parseCarNames(String carNames) {
         String NAME_SPLITTER = ",";
         return Arrays.stream(carNames.split(NAME_SPLITTER))
+            .map(String::trim)
             .collect(Collectors.toList());
     }
 }

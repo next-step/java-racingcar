@@ -73,6 +73,46 @@
 - [X] switch/case 예약어를 쓰지 않는다.
 - [X] 함수의 길이가 15라인을 넘어가지 않도록 구현한다.
 
+## 리펙토링 사항
+
+- [x] 핵심 비즈니스 로직을 가지는 객체를 domain 패키지에 구현한다.
+- [x] UI 관련한 객체를 view 패키지에 구현한다.
+- [x] MVC 패턴 기반으로 리팩터링해 view 패키지의 객체가 domain 패키지 객체에 의존할 수 있지만, domain 패키지의 객체는 view 패키지 객체에 의존하지 않도록 구현한다.
+- [x] 테스트 가능한 부분과 테스트하기 힘든 부분을 분리해 테스트 가능한 부분에 대해서만 단위 테스트를 진행한다.
+- [x] setup() 조금 더 알맞은 위치 찾기.
+- [x] mapToInt 활 용하기
+- [x] Exception에 에러 메세지 넣기
+- [x] RandomMovableStrategy 싱글톤 활용하기
+- [x] startGame 테스트 작성하기
+- [x] 상수 static final로 선언하기
+- [x] Parser 객체 테스트 작성하기
+
+## step2
+
+- [x] startGame()메서드는 static이여서 GameController객체가 필요없어 보인다. 인스턴스 객체를 만들어줄 필요가 있을지 고민해보자.
+- [x] GameController의 cars, turn 맴버젼수에 대한 static 선언에 대해 고민해보자.
+- [x] CarTest를 만들어보자.
+- [x] name()와 distance() 메서드의 네이밍을 수정
+  - JAVA는 메서드를 동사형으로 선언한다. 멤버변수에 대한 리턴은 get을 붙여서 해보자.
+- [x] 팩토리메서드 vs 생성자를 통한 생성에 대해 고민해보자. (Cars Factory Method 적용)
+- [x] 테스트코드의 패키지 위치는 프로덕션코드의 위치와 동일하게 맞추기
+- [x] 미사용 import 삭제하기 (`ctrl + alt + o`)
+- [x] 코드 포맷팅하기 (`opt + cmd + L`)
+- [x] 한 라인에 모든 결과를 담으려하면 오히려 가독성이 떨어질 수 있다. 분리하기.
+- [x] car.getDistance()를 하지않고 기능을 구현해보기.
+- [x] GameControllerTest의 메소트명 고민해보기.
+- [x] 테스트명 작성에 대해 고민해보자.
+
+---
+
+- [x] auto formatting 설정
+- [x] carStatus private으로 변경
+- [x] Cars객체가 아닌 view에 전달을 위한 단순 정보만 가지고 있는 객체를 만들어보자.
+- [x] moveAll 메서드를 테스트해보자.
+- [x] 미사용 getter 삭제
+- [x] Car 객체 VO로 변경 (상태 불변)
+- [x] this()를 활용해보자
+
 ## 마감 기한
 
 목요일 18시
