@@ -1,4 +1,5 @@
 import java.util.Objects;
+import java.util.Random;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
@@ -16,7 +17,7 @@ public class RacingCarApplication {
         int moveCount = CustomScanner.scanMoveCount();
 
         for (int i = 0; i < moveCount; i++) {
-            cars.moveRandom();
+            cars.moveRandom(new Random());
         }
     }
 

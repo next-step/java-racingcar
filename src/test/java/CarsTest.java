@@ -1,10 +1,16 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.*;
 
 class CarsTest {
 
@@ -49,5 +55,32 @@ class CarsTest {
 
         //then
         assertThat(result).isTrue();
+    }
+
+    @Test
+    @DisplayName("모든 차에 대해 moveRandom 을 1번씩 호출한다")
+    void allCarMove() {
+        //given
+        String[] carNames = {"a", "b"};
+        Cars cars = Cars.of(carNames);
+
+        Random randomNumberMock = Mockito.mock(Random.class);
+        when(randomNumberMock.nextInt(anyInt())).thenReturn(4);
+
+        List<Integer> initialPositions =  cars.getCars().stream()
+                .map(Car::getPosition)
+                .collect(Collectors.toList());
+        List<Integer> desiredPositions = initialPositions.stream()
+                .map(position -> position + 1)
+                .collect(Collectors.toList());
+
+        //when
+        cars.moveRandom(randomNumberMock);
+        List<Integer> afterPositions = cars.getCars().stream()
+                .map(Car::getPosition)
+                .collect(Collectors.toList());
+
+        //then
+        assertThat(afterPositions).isEqualTo(desiredPositions);
     }
 }

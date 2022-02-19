@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Cars {
     private List<Car> cars;
@@ -21,8 +22,10 @@ public class Cars {
         return cars.stream().allMatch(Car::isValid);
     }
 
-    public void moveRandom() {
-
+    public void moveRandom(Random random) {
+        for (Car car : cars) {
+            car.moveRandom(random);
+        }
     }
 
     public List<Car> getCars() {
