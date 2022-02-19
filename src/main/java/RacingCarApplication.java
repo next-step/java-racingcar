@@ -14,6 +14,10 @@ public class RacingCarApplication {
 
         AnnouncementPrinter.printMoveCountInputAnnouncement();
         int moveCount = CustomScanner.scanMoveCount();
+
+        for (int i = 0; i < moveCount; i++) {
+            cars.moveRandom();
+        }
     }
 
     private static String[] scanNullSafeCarNames() {

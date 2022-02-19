@@ -21,6 +21,10 @@ public class Cars {
         return cars.stream().allMatch(Car::isValid);
     }
 
+    public void moveRandom() {
+
+    }
+
     public List<Car> getCars() {
         return cars;
     }
