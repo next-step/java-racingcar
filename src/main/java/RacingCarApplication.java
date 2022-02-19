@@ -16,8 +16,11 @@ public class RacingCarApplication {
         AnnouncementPrinter.printMoveCountInputAnnouncement();
         int moveCount = CustomScanner.scanMoveCount();
 
+        AnnouncementPrinter.printMoveResultAnnouncement();
         for (int i = 0; i < moveCount; i++) {
             cars.moveRandom(new Random());
+            cars.printPositions();
+            System.out.println();
         }
 
         Winners winners = Winners.decideWinners(cars);

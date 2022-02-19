@@ -26,6 +26,10 @@ public class Cars {
         }
     }
 
+    public void printPositions() {
+        cars.forEach(Car::printPosition);
+    }
+
     public List<Car> getCars() {
         return cars;
     }

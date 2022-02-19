@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class Car {
@@ -19,6 +20,16 @@ public class Car {
         if (randomInt >= 4) {
             position++;
         }
+    }
+
+    public void printPosition() {
+        System.out.println(carName + " : " + getPositionAsString());
+    }
+
+    private String getPositionAsString() {
+        char[] array = new char[position];
+        Arrays.fill(array, '-');
+        return new String(array);
     }
 
     public String getCarName() {
