@@ -1,11 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    private Cars(List<Car> cars) {
         this.cars = cars;
     }
 

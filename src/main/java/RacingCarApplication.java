@@ -19,6 +19,8 @@ public class RacingCarApplication {
         for (int i = 0; i < moveCount; i++) {
             cars.moveRandom(new Random());
         }
+
+        Winners winners = Winners.decideWinners(cars);
     }
 
     private static String[] scanNullSafeCarNames() {
