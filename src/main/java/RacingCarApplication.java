@@ -11,6 +11,9 @@ public class RacingCarApplication {
             carNames = scanNullSafeCarNames();
             cars = Cars.of(carNames);
         }
+
+        AnnouncementPrinter.printMoveCountInputAnnouncement();
+        int moveCount = CustomScanner.scanMoveCount();
     }
 
     private static String[] scanNullSafeCarNames() {
