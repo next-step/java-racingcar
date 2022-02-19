@@ -38,6 +38,6 @@ class CarTest {
         car.move();
         car.move();
         car.move();
-        assertThat(car.convertStatus()).isEqualTo("박찬우 : ---");
+        assertThat(car.convertCarStatus()).isEqualTo("박찬우 : ---");
     }
 }

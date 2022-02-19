@@ -5,7 +5,7 @@ import java.util.Collections;
 public class Car {
 
     public static final int INITIAL_DISTANCE = 0;
-    public static final String CAR_STATUS_FORMAT = "%s : %s";
+    public static final String CAR_STATUS_FORMAT = "%s : %s\n";
     public static final String DISTANCE_FORMAT = "-";
 
     private final String name;
@@ -28,7 +28,7 @@ public class Car {
         distance++;
     }
 
-    public String convertStatus() {
+    public String convertCarStatus() {
         return String.format(CAR_STATUS_FORMAT, name, convertDistance());
     }
 
