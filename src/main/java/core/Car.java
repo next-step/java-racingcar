@@ -1,3 +1,5 @@
+package core;
+
 import java.util.Arrays;
 import java.util.Random;
 

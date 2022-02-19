@@ -1,3 +1,8 @@
+import core.Cars;
+import core.Winners;
+import utils.AnnouncementPrinter;
+import utils.CustomScanner;
+
 import java.util.Objects;
 import java.util.Random;
 
@@ -24,6 +29,7 @@ public class RacingCarApplication {
         }
 
         Winners winners = Winners.decideWinners(cars);
+        winners.printWinners();
     }
 
     private static String[] scanNullSafeCarNames() {
