@@ -1,14 +1,24 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
-        String carNameInput = ConsoleScanner.getInputCarNames();
-        String[] carNames = carNameInput.split(",");
+        AnnouncementPrinter.printCarNameInputAnnouncement();
+        String[] carNames = scanNullSafeCarNames();
 
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
+        Cars cars = Cars.of(carNames);
+        while (Boolean.FALSE.equals(cars.isValid())) {
+            AnnouncementPrinter.printCarNameInvalidAnnouncement();
+            carNames = scanNullSafeCarNames();
+            cars = Cars.of(carNames);
         }
+    }
+
+    private static String[] scanNullSafeCarNames() {
+        String[] carNames = CustomScanner.scanInputCarNames();
+        while (Objects.isNull(carNames)) {
+            AnnouncementPrinter.printEmptyCarNameInputAnnouncement();
+            carNames = CustomScanner.scanInputCarNames();
+        }
+        return carNames;
     }
 }
