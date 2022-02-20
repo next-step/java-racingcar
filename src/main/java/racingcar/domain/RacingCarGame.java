@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 import java.util.List;
-
+import racingcar.view.ResultView;
 public class RacingCarGame {
 
     private final List<Car> cars;
@@ -15,6 +15,8 @@ public class RacingCarGame {
     public void play() {
         do {
             loadGame();
+            ResultView.printGameStatus(cars);
+            ResultView.printGameResultBlankLine();
 
             tryCount--;
         } while (tryCount > 0);

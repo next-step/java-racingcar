@@ -19,7 +19,6 @@ public class Application {
         ResultView.printGameResultMessage();
 
         racingCarGame.play();
-        ResultView.printGameStatus(cars);
 
         List<String> winners = Referee.getWinners(cars);
         ResultView.printGameResult(winners);
