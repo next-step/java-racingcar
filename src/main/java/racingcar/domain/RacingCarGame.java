@@ -20,10 +20,6 @@ public class RacingCarGame {
         } while (tryCount > 0);
     }
 
-    public List<Car> getMovingCars() {
-        return cars;
-    }
-
     private void loadGame() {
         for (Car car : cars) {
             int randomMove = Movement.getRandomMove();
