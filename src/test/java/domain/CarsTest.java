@@ -20,7 +20,7 @@ class CarsTest {
 
     @Test
     void Car_List를_초기화한다() {
-        assertThat(cars.getCars().size()).isEqualTo(2);
+        assertThat(cars.getCars().size()).isEqualTo(3);
     }
 
     @Test

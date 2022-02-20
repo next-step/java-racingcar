@@ -2,6 +2,7 @@ package domain;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,12 @@ class CarTest {
     }
 
     @Test
+    void 잘못된_이름을_검출할_수_있다() {
+        assertThatThrownBy(() -> new Car("시원한아이시스"))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 위치의_초기값은_0이다() {
         assertThat(car.getDistance()).isEqualTo(0);
     }
@@ -38,6 +45,6 @@ class CarTest {
         car.move();
         car.move();
         car.move();
-        assertThat(car.convertCarStatus()).isEqualTo("박찬우 : ---");
+        assertThat(car.convertCarStatus()).isEqualTo("박찬우 : ---\n");
     }
 }
