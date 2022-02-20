@@ -22,15 +22,14 @@
 ## 구현 설계
 
 ### RacingGame
-- 생성자를 통해, Car의 이름과 시도할 횟수를 입력받는다.
-- Car의 집합인 Cars를 가진다.
-- 현재의 라운드를 가진다.
-- 모든 라운드의 수행 이후, 종료 조건을 boolean으로 반환한다. isEnd()
-- 한 번의 라운드를 수행한다. race()
-  - Cars에 모든 Car들에 대하여 전진 또는 멈춤을 수행한다. (난수 생성 및 주입)
-- Car에 대한 리스트를 반환한다. getCars()
-- 실제 승자를 반환한다. getWinners()
-- 생성된 난수를 통해서 true / false를 반환할 수 있다.
+- [x] 생성자를 통해, Car의 이름과 시도할 횟수를 입력 받는다.
+- [x] Car의 집합인 Cars를 가진다.
+- [x] 현재의 라운드를 가진다.
+- [x] 모든 라운드의 수행 이후, 종료 조건을 boolean으로 반환한다. isEnd()
+- [x] 한 번의 라운드를 수행한다. race()
+  - [x] Car에 주입하기 위한 난수를 생성한다.
+  - [x] Cars에 모든 Car들에 대하여 난수에 따른 전진을 수행한다.
+- [x] Car에 대한 리스트를 반환한다. getCars()
 
 ### Car
 - [x] 이름을 가진다.
@@ -45,15 +44,18 @@
 - [x] Car의 모든 위치 중에서 승자를 계산할 수 있다. 
 
 ### InputView
-- getCarNames()
-- getTryNo()
+- [x] getCarNames()
+- [x] getTryNo()
 
 ### ResultView
-- printCars()
-- printWinners()
+- [x] printCars()
+- [x] printWinners()
 
 ### Util
-- 난수를 생성할 수 있다.
+- [x] Car에 주입하기 위한 난수를 생성한다.
+- [x] 생성된 난수를 통해서 true / false를 반환할 수 있다.
+
+### 추가 기능 요구 사항
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
