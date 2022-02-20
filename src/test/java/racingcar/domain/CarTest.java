@@ -31,4 +31,15 @@ class CarTest {
         car.go();
         assertThat(car.isSamePosition(1)).isTrue();
     }
+
+    @Test
+    public void comparePosition() {
+        Car car = new Car("mizz");
+        for (int i = 0; i < 4; i++) {
+            car.go();
+        }
+        assertThat(car.comparePosition(3)).isEqualTo(4);
+        assertThat(car.comparePosition(4)).isEqualTo(4);
+        assertThat(car.comparePosition(5)).isEqualTo(5);
+    }
 }

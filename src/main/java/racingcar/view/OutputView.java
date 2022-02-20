@@ -2,7 +2,6 @@ package racingcar.view;
 
 import java.util.List;
 import racingcar.domain.Car;
-import racingcar.domain.Race;
 
 public class OutputView {
 
@@ -23,9 +22,8 @@ public class OutputView {
         }
     }
 
-    public static void printWinners(Race race) {
+    public static void printWinners(List<String> winnerNames) {
         System.out.print("최종 우승자: ");
-        List<String> winnerNames = race.WinnerNames();
         System.out.println(String.join(", ", winnerNames));
     }
 }

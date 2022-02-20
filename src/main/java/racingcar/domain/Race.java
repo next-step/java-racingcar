@@ -14,14 +14,23 @@ public class Race {
         this.cars = cars;
     }
 
-    public void repeatGame(int times) {
-        for (int j = 0; j < times; j++) {
-            for (Car car : cars) {
-                raceOneTime(car, (int) Math.floor(Math.random() * MAX_NUMBER));
-            }
-            OutputView.printCurrentPosition(cars);
-            System.out.println();
+    public void repeatGame(Times times) {
+        int count = times.getTimes();
+        for (int j = 0; j < count; j++) {
+            raceOneStage(cars);
         }
+    }
+
+    private void raceOneStage(List<Car> cars) {
+        for (Car car : cars) {
+            raceOneTime(car, getRandomNumber());
+        }
+        OutputView.printCurrentPosition(cars);
+        System.out.println();
+    }
+
+    private int getRandomNumber() {
+        return (int) Math.floor(Math.random() * MAX_NUMBER);
     }
 
     public void raceOneTime(Car car, int randomNumber) {
@@ -30,7 +39,7 @@ public class Race {
         }
     }
 
-    public List<String> WinnerNames() {
+    public List<String> getWinnerNames() {
         int maxPosition = getMaxScore();
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
@@ -41,7 +50,7 @@ public class Race {
         return winners;
     }
 
-    public int getMaxScore() {
+    private int getMaxScore() {
         int maximum = 0;
         for (Car car : cars) {
             maximum = car.comparePosition(maximum);

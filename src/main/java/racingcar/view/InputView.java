@@ -23,8 +23,8 @@ public class InputView {
         return cars;
     }
 
-    public static String inputTimes() {
+    public static int inputTimes() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return sc.nextLine();
+        return Integer.parseInt(sc.nextLine());
     }
 }

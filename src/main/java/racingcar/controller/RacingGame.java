@@ -13,7 +13,7 @@ public class RacingGame {
     public static void execute() {
         Race race = new Race(InputView.inputName());
         Times times = new Times(InputView.inputTimes());
-        race.repeatGame(times.getTimes());
-        OutputView.printWinners(race);
+        race.repeatGame(times);
+        OutputView.printWinners(race.getWinnerNames());
     }
 }
