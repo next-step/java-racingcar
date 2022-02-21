@@ -1,14 +1,18 @@
 package racingcar.view;
 
 import java.util.ArrayList;
+import java.util.List;
 import racingcar.model.Car;
 import racingcar.util.Message;
 
 public class OutputView {
 
-    public static void printResult(Car car) {
-        System.out.print(car.getCarName() + ": ");
-        printPosition(car.getPosition());
+    public static void printResult(List<Car> cars) {
+        for (Car car:cars){
+            System.out.print(car.getCarName() + ": ");
+            printPosition(car.getPosition());
+            System.out.println();
+        }
         System.out.println();
     }
 
