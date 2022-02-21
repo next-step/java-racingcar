@@ -6,11 +6,9 @@ import java.util.List;
 public class Cars {
 
     private final List<Car> cars;
-    private final List<String> carNames;
 
     public Cars(List<String> carNames) {
-        this.carNames = carNames;
-        cars = makeCarsByCarNames();
+        cars = makeCarsByCarNames(carNames);
     }
 
     public List<Car> getCars() {
@@ -28,7 +26,7 @@ public class Cars {
         return maxMovingDistance;
     }
 
-    private List<Car> makeCarsByCarNames() {
+    private List<Car> makeCarsByCarNames(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carNames) {
