@@ -8,27 +8,31 @@ public class Winners {
     private final List<Car> raceResults;
 
     public Winners(List<Car> raceResults) {
-        this.raceResults = raceResults;
+        this.raceResults = winnerList(raceResults);
     }
 
-    public ArrayList<String> winnerList() {
-        int maxPosition = maximumDistance();
-        ArrayList<String> winners = new ArrayList<>();
+    private List<Car> winnerList(List<Car> cars) {
+        int maxPosition = maximumDistance(cars);
+        List<Car> winners = new ArrayList<>();
 
-        for (Car raceResult : raceResults) {
-            if (raceResult.isMaxPosition((maxPosition))) {
-                winners.add(raceResult.getCarName());
+        for (Car car : cars) {
+            if (car.isMaxPosition((maxPosition))) {
+                winners.add(car);
             }
         }
         return winners;
     }
 
-    private int maximumDistance() {
+    private int maximumDistance(List<Car> cars) {
         int maxPosition = 0;
-        for (Car raceResult : raceResults) {
-            maxPosition = raceResult.checkMaxPosition(maxPosition);
+        for (Car car : cars) {
+            maxPosition = car.checkMaxPosition(maxPosition);
         }
         return maxPosition;
+    }
+
+    public List<Car> getRaceResults() {
+        return raceResults;
     }
 
 }

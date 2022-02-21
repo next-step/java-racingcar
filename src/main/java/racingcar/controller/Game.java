@@ -1,13 +1,11 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.Winners;
-import racingcar.view.InputView;
 import racingcar.util.Message;
-import racingcar.util.RandomGenerator;
+import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class Game {
@@ -30,8 +28,7 @@ public class Game {
             OutputView.printResult(moveCars);
         }
 
-        Winners winners = new Winners(cars);
-        OutputView.printWinner(winners.winnerList());
+        OutputView.printWinner(new Winners(cars).getRaceResults());
     }
 
 }
