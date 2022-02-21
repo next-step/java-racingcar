@@ -15,4 +15,8 @@ public class RacingGameView {
         String dash = Utils.repeat("-", carPosition);
         System.out.printf("%-5s: %s%n", carName, dash);
     }
+
+    public static void printQuitMessage() {
+        System.out.println("그만 하시려면 q, 계속하시려면 아무키나 입력해 주세요.");
+    }
 }

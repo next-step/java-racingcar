@@ -24,37 +24,9 @@ class RacingGameTest {
         assertThat(racingGame.getTrial()).isEqualTo(trial);
     }
 
-    @Test
-    void canForward_전진실패()
-            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        int randomValue = 1;
-
-        RacingGame racingGame = new RacingGame();
-        Method canForward = RacingGame.class.getDeclaredMethod("canForward", int.class);
-        canForward.setAccessible(true);
-        boolean result = (boolean) canForward.invoke(racingGame, randomValue);
-
-        System.out.println(result);
-        assertFalse(result);
-    }
-
-    @Test
-    void canForward_전진가능()
-            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-
-        int randomValue = 5;
-
-        RacingGame racingGame = new RacingGame();
-        Method canForward = RacingGame.class.getDeclaredMethod("canForward", int.class);
-        canForward.setAccessible(true);
-        boolean result = (boolean) canForward.invoke(racingGame, randomValue);
-
-        assertTrue(result);
-    }
-
     @RepeatedTest(value = 1000)
     void getRandomValue_랜덤값을_생성()
-            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
         RacingGame racingGame = new RacingGame();
         Method getRandomValue = RacingGame.class.getDeclaredMethod("getRandomValue");

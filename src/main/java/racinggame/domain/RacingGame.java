@@ -1,11 +1,11 @@
 package racinggame.domain;
 
-import static racinggame.util.Constants.*;
+import static racinggame.util.Constants.MAX_NUMBER;
+import static racinggame.util.Constants.MIN_NUMBER;
+import static racinggame.util.Constants.QUIT_COMMAND;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import racinggame.util.Utils;
 import racinggame.view.RacingGameView;
 
@@ -24,7 +24,7 @@ public class RacingGame {
 
     public void start() throws IOException {
         for (int i = 0; i < trial; i++) {
-            System.out.println("그만 하시려면 q, 계속하시려면 아무키나 입력해 주세요.");
+            RacingGameView.printQuitMessage();
             String input = Utils.getInput();
 
             if (isEnd(input)) {
@@ -34,25 +34,8 @@ public class RacingGame {
             progress();
         }
 
-        List<Integer> carPositions = getCarPositions();
-        int max = Collections.max(carPositions);
-
-        List<String> winners = getWinners(max);
-
-        RacingGameView.printWinnerOfGame(winners);
-    }
-
-    private List<Integer> getCarPositions() {
-        return racingCars.stream()
-            .map(RacingCar::getPosition)
-            .collect(Collectors.toList());
-    }
-
-    private List<String> getWinners(int max) {
-        return racingCars.stream()
-            .filter(car -> car.getPosition() == max)
-            .map(RacingCar::getCarName)
-            .collect(Collectors.toList());
+        Winners winners = new Winners(racingCars);
+        RacingGameView.printWinnerOfGame(winners.getWinners());
     }
 
     private void progress() {
