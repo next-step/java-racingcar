@@ -2,10 +2,11 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.util.RandomGenerator;
 
 public class Cars {
 
-    private Cars() {
+    public Cars() {
 
     }
 
@@ -17,5 +18,14 @@ public class Cars {
         return racingCars;
     }
 
+    public List<Car> moveForwardByCount(List<Car> racingCars) {
+        List<Car> racingHistory = new ArrayList<>();
+        for (Car racingCar : racingCars) {
+            racingCar.moveForward(RandomGenerator.generateRandomNumber());
+            racingHistory.add(racingCar);
+
+        }
+        return racingHistory;
+    }
 
 }
