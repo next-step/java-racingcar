@@ -5,19 +5,19 @@ import java.util.List;
 
 public class Winners {
 
-    private final List<Car> raceReserts;
+    private final List<Car> raceResults;
 
-    public Winners(List<Car> raceReserts) {
-        this.raceReserts = raceReserts;
+    public Winners(List<Car> raceResults) {
+        this.raceResults = raceResults;
     }
 
     public ArrayList<String> winnerList() {
         int maxPosition = maximumDistance();
         ArrayList<String> winners = new ArrayList<>();
 
-        for (Car raceResert : raceReserts) {
-            if (raceResert.isMaxPosition((maxPosition))) {
-                winners.add(raceResert.getCarName());
+        for (Car raceResult : raceResults) {
+            if (raceResult.isMaxPosition((maxPosition))) {
+                winners.add(raceResult.getCarName());
             }
         }
         return winners;
@@ -25,8 +25,8 @@ public class Winners {
 
     private int maximumDistance() {
         int maxPosition = 0;
-        for (Car raceReserts : raceReserts) {
-            maxPosition = raceReserts.checkMaxPosition(maxPosition);
+        for (Car raceResult : raceResults) {
+            maxPosition = raceResult.checkMaxPosition(maxPosition);
         }
         return maxPosition;
     }
