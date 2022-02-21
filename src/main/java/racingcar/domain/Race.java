@@ -2,11 +2,9 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.view.OutputView;
 
 public class Race {
 
-    private static final int MAX_NUMBER = 10;
     private static final int MIN_NUMBER_FOR_START = 4;
     private final List<Car> cars;
 
@@ -14,27 +12,8 @@ public class Race {
         this.cars = cars;
     }
 
-    public void repeatGame(Times times) {
-        while (times.isOngoing()) {
-            raceOneStage(cars);
-            times.decrease();
-        }
-    }
-
-    private void raceOneStage(List<Car> cars) {
-        for (Car car : cars) {
-            raceOneTime(car, getRandomNumber());
-        }
-        OutputView.printCurrentPosition(cars);
-        System.out.println();
-    }
-
-    private int getRandomNumber() {
-        return (int) Math.floor(Math.random() * MAX_NUMBER);
-    }
-
-    public void raceOneTime(Car car, int randomNumber) {
-        if (randomNumber >= MIN_NUMBER_FOR_START) {
+    public void raceOneTime(Car car, int condition) {
+        if (condition >= MIN_NUMBER_FOR_START) {
             car.go();
         }
     }
@@ -56,5 +35,9 @@ public class Race {
             maximum = car.comparePosition(maximum);
         }
         return maximum;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

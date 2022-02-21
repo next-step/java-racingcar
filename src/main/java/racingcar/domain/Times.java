@@ -2,7 +2,7 @@ package racingcar.domain;
 
 public class Times {
 
-    private final int minTimes = 1;
+    private final int MIN_TIMES_VALUE = 1;
     private int times;
 
     public Times(int times) {
@@ -11,7 +11,7 @@ public class Times {
     }
 
     private void validateTimes(int times) {
-        if (times < minTimes) {
+        if (times < MIN_TIMES_VALUE) {
             throw new IllegalArgumentException("[ERROR] - 0보다 큰 정수를 입력해주세요.");
         }
     }

@@ -15,6 +15,9 @@ class CarTest {
         int position = car.getPosition();
         car.go();
         assertThat(car.getPosition()).isEqualTo(position + 1);
+        position = car.getPosition();
+        car.go();
+        assertThat(car.getPosition()).isEqualTo(position + 1);
     }
 
     @DisplayName("자동차 이름이 5자를 초과하는 경우")
