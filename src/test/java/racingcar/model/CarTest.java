@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -44,11 +44,10 @@ public class CarTest {
         assertThat(wooni.checkMaxPosition(8)).isEqualTo(8);
     }
 
-
     @Test
     @DisplayName("현재 최대이동거리가 7일때, 최대이동거리 일치 여부 유효성 ")
     void 최대_이동거리_일치_여부_판단() {
-        Car wooni = new Car("wonie",7);
+        Car wooni = new Car("wonie", 7);
         int maxPosition = 7;
         assertThat(wooni.isMaxPosition(maxPosition)).isEqualTo(true);
     }
