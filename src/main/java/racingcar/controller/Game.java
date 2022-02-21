@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.Cars;
@@ -11,34 +12,26 @@ import racingcar.view.OutputView;
 
 public class Game {
 
-    private List<Car> cars;
-
     public void play() {
+
+        Cars racingCars = new Cars();
 
         OutputView.printMessage(Message.INPUT_GUIDE_MESSAGE);
         String[] carNames = InputView.getCarName();
 
-        cars = new Cars(carNames).getRacingCars();
+        List<Car> cars = Cars.createCars(carNames);
 
         OutputView.printMessage(Message.ASK_TRY_COUNT);
         int tryCount = InputView.getTryCount();
 
         OutputView.printMessage(Message.GAME_RESULT_MESSAGE);
         for (int i = 0; i < tryCount; i++) {
-            moveForwardByCount();
+            List<Car> moveCars = racingCars.moveForwardByCount(cars);
+            OutputView.printResult(moveCars);
         }
 
         Winners winners = new Winners(cars);
         OutputView.printWinner(winners.winnerList());
     }
 
-    public void moveForwardByCount() {
-        RandomGenerator randomGenerator = new RandomGenerator();
-        for (Car car : cars) {
-            int randomNumber = randomGenerator.generateRandomNumber();
-            car.moveForward(randomNumber);
-            OutputView.printResult(car);
-        }
-        System.out.println();
-    }
 }
