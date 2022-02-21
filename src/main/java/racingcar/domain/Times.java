@@ -2,8 +2,8 @@ package racingcar.domain;
 
 public class Times {
 
-    private final int times;
     private final int minTimes = 1;
+    private int times;
 
     public Times(int times) {
         validateTimes(times);
@@ -18,5 +18,13 @@ public class Times {
 
     public int getTimes() {
         return times;
+    }
+
+    public boolean isOngoing() {
+        return times > 0;
+    }
+
+    public void decrease() {
+        times--;
     }
 }

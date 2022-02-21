@@ -15,9 +15,9 @@ public class Race {
     }
 
     public void repeatGame(Times times) {
-        int count = times.getTimes();
-        for (int j = 0; j < count; j++) {
+        while (times.isOngoing()) {
             raceOneStage(cars);
+            times.decrease();
         }
     }
 
