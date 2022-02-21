@@ -5,15 +5,17 @@ import java.util.List;
 
 public class Cars {
 
-    private List<Car> racingCars = new ArrayList<>();
+    private Cars() {
 
-    public Cars(String[] carNames) {
+    }
+
+    public static List<Car> createCars(String[] carNames) {
+        List<Car> racingCars = new ArrayList<>();
         for (String carName : carNames) {
             racingCars.add(new Car(carName));
         }
-    }
-
-    public List<Car> getRacingCars() {
         return racingCars;
     }
+
+
 }
