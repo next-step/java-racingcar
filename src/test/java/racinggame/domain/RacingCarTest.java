@@ -22,7 +22,7 @@ class RacingCarTest {
     void 한_칸_전진() {
         RacingCar car = new RacingCar("car");
 
-        car.moveForward();
+        car.moveForward(5);
 
         assertThat(car.getPosition()).isEqualTo(1);
     }
@@ -46,7 +46,7 @@ class RacingCarTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        car.moveForward();
+        car.moveForward(5);
         car.printCurrPosition();
         assertEquals("car  : -\n", out.toString());
     }

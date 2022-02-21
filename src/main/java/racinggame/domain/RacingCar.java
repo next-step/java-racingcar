@@ -12,15 +12,15 @@ public class RacingCar {
     private String carName;
     private int carPosition = 0;
 
-    private RacingCar() {}
+    private RacingCar() {
+    }
 
     public RacingCar(String carName) {
         this.carName = carName;
     }
 
     public static List<RacingCar> createRacingCarFromCarNames(String[] carNames) {
-        return Arrays.stream(carNames).map(RacingCar::new)
-                .collect(Collectors.toList());
+        return Arrays.stream(carNames).map(RacingCar::new).collect(Collectors.toList());
     }
 
     public String getCarName() {
@@ -31,8 +31,14 @@ public class RacingCar {
         return this.carPosition;
     }
 
-    public void moveForward() {
-        this.carPosition += MOVING_SPACES;
+    public void moveForward(final int randomValue) {
+        if (canForward(randomValue)) {
+            this.carPosition += MOVING_SPACES;
+        }
+    }
+
+    private boolean canForward(int randomValue) {
+        return randomValue >= THRESHOLD_NUMBER;
     }
 
     public void printCurrPosition() {

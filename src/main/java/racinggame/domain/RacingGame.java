@@ -14,7 +14,8 @@ public class RacingGame {
     private List<RacingCar> racingCars;
     private int trial;
 
-    public RacingGame() {}
+    public RacingGame() {
+    }
 
     public RacingGame(List<RacingCar> racingCars, int trial) {
         this.racingCars = racingCars;
@@ -42,35 +43,24 @@ public class RacingGame {
     }
 
     private List<Integer> getCarPositions() {
-        List<Integer> carPositions = racingCars.stream()
-                .map(RacingCar::getPosition)
-                .collect(Collectors.toList());
-
-        return carPositions;
+        return racingCars.stream()
+            .map(RacingCar::getPosition)
+            .collect(Collectors.toList());
     }
 
     private List<String> getWinners(int max) {
-        List<String> winners = racingCars.stream()
-                .filter(car -> car.getPosition() == max)
-                .map(RacingCar::getCarName)
-                .collect(Collectors.toList());
-
-        return winners;
+        return racingCars.stream()
+            .filter(car -> car.getPosition() == max)
+            .map(RacingCar::getCarName)
+            .collect(Collectors.toList());
     }
 
     private void progress() {
         racingCars.forEach(car -> {
             int randomValue = getRandomValue();
-            if (canForward(randomValue)) {
-                car.moveForward();
-            }
-
+            car.moveForward(randomValue);
             car.printCurrPosition();
         });
-    }
-
-    private boolean canForward(int randomValue) {
-        return randomValue >= THRESHOLD_NUMBER;
     }
 
     private boolean isEnd(String input) {
