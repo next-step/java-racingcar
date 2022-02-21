@@ -24,6 +24,7 @@ public class RacingCarGame {
 
     private void loadGame() {
         for (Car car : cars) {
+            //TODO: 랜덤한 값을 마지막에 넣는다
             int randomMove = Movement.getRandomMove();
             car.move(randomMove);
         }
