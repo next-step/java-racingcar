@@ -4,6 +4,7 @@ public class Car {
 
     private static final int INIT_POSITION = 0;
     private static final int MAX_CAR_NAME_LENGTH = 5;
+    private static final int MIN_NUMBER_FOR_START = 4;
 
     private final String name;
     private int position;
@@ -20,7 +21,13 @@ public class Car {
         }
     }
 
-    public void go() {
+    public void raceOneTime(int condition) {
+        if (condition >= MIN_NUMBER_FOR_START) {
+            go();
+        }
+    }
+
+    private void go() {
         this.position++;
     }
 
