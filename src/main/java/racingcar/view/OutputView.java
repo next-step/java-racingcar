@@ -1,15 +1,36 @@
 package racingcar.view;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.model.Car;
 import racingcar.util.Message;
 
 public class OutputView {
-    public void printResult(String carName, String position){
-      System.out.println(carName+ ": "+ position );
+
+    public static void printResult(List<Car> cars) {
+        for (Car car:cars){
+            System.out.print(car.getCarName() + ": ");
+            printPosition(car.getPosition());
+            System.out.println();
+        }
+        System.out.println();
     }
-    public void printWinner(ArrayList<String> winnerList){
+
+    private static void printPosition(int position) {
+        for (int i = 0; i < position; i++) {
+            System.out.print("-");
+        }
+    }
+
+    public static void printMessage(String message) {
+        System.out.println(message);
+    }
+
+    public static void printWinner(List<Car> winners) {
         System.out.print(Message.WINNER_MESSAGE);
-        System.out.print(String.join(",",winnerList));
+        List<String> carNames = winners.stream()
+            .map(Car::getCarName)
+            .collect(Collectors.toList());
+        System.out.print(String.join(",", carNames));
     }
 }

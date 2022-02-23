@@ -2,10 +2,11 @@ package stringCalculator;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class UserInputValue {
-    private static final String BLANK_CARNAME = "빈 문자열입니다";
+    private static final String BLANK_NAME = "빈 문자열입니다";
     private static final String VALIDATE_NUMBER = "숫자가 올바르게 입력되어 있는지 확인해주세요";
     private static final String VALIDATE_OPERATOR = "연산자가 올바르게 입력되어 있는지 확인해주세요";
 
@@ -15,16 +16,18 @@ public class UserInputValue {
         String input = scanner.nextLine();
         List<String> userInputTokens = Arrays.asList(input.split(" "));
 
-        validateBlankCarName(userInputTokens);
+        validateBlank(userInputTokens);
         validateEmptyNumber(userInputTokens);
         validateEmptyOperation(userInputTokens);
 
         return userInputTokens;
     }
 
-    public void validateBlankCarName(List<String> userInputTokens) {
-        if (userInputTokens.size() == 0) {
-            throw new IllegalArgumentException(BLANK_CARNAME);
+    public void validateBlank(List<String> userInputTokens) {
+        for (String userInputToken: userInputTokens) {
+            if (Objects.equals(userInputToken, "")) {
+                throw new IllegalArgumentException(BLANK_NAME);
+            }
         }
     }
 

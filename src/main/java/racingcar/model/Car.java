@@ -1,26 +1,38 @@
 package racingcar.model;
 
 import racingcar.util.Message;
-import racingcar.util.RandomGenerator;
 
 public class Car {
+
     private static final int MOVING_CONDITION = 4;
     private static final int NAME_LENGTH = 5;
+    private static final int START_POSITION = 0;
 
-    private String carName;
-    private String position;
+    private final String carName;
+    private int position;
 
     public Car(String carName) {
+        this(carName, START_POSITION);
+    }
+
+    public Car(String carName, int position) {
         validateCarNameLength(carName);
         this.carName = carName;
-        this.position = "";
+        this.position = position;
     }
 
     public void moveForward(int randomNumber) {
         if (randomNumber >= MOVING_CONDITION) {
-            this.position += "-";
+            this.position++;
         }
+    }
 
+    public int checkMaxPosition(int maxPosition) {
+        return Math.max(this.position, maxPosition);
+    }
+
+    public boolean isMaxPosition(int maxPosition) {
+        return this.position == maxPosition;
     }
 
     private void validateCarNameLength(String carName) {
@@ -33,7 +45,7 @@ public class Car {
         return carName;
     }
 
-    public String getPosition() {
+    public int getPosition() {
         return position;
     }
 }

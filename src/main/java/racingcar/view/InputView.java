@@ -3,18 +3,15 @@ package racingcar.view;
 import java.util.Scanner;
 
 public class InputView {
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public String[] getCarName() {
-        Scanner scanner = new Scanner(System.in);
+    public static String[] getCarName() {
         String userInput = scanner.nextLine();
 
         return userInput.split(",");
     }
 
-    public int getTryCount() {
-        Scanner scanner = new Scanner(System.in);
-        int tryCount = scanner.nextInt();
-
-        return tryCount;
+    public static int getTryCount() {
+        return scanner.nextInt();
     }
 }
