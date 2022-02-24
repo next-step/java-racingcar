@@ -8,28 +8,53 @@ import java.util.Random;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
-        AnnouncementPrinter.printCarNameInputAnnouncement();
-        List<String> carNames = scanNullSafeCarNames();
-
-        Cars cars = Cars.of(carNames);
-        while (Boolean.FALSE.equals(cars.isValid())) {
-            AnnouncementPrinter.printCarNameInvalidAnnouncement();
-            carNames = scanNullSafeCarNames();
-            cars = Cars.of(carNames);
-        }
-
-        AnnouncementPrinter.printMoveCountInputAnnouncement();
-        int moveCount = CustomScanner.scanMoveCount();
-
+        Cars cars = createValidCars();
+        int moveCount = determineMoveCountFromInput();
         AnnouncementPrinter.printMoveResultAnnouncement();
         for (int i = 0; i < moveCount; i++) {
-            cars.moveRandom(new Random());
-            cars.printPositions();
-            System.out.println();
+            moveCarsRandomly(cars);
         }
+        announceWinners(cars);
+    }
 
+    private static void announceWinners(Cars cars) {
         Winners winners = Winners.decideWinners(cars);
         winners.printWinners();
+    }
+
+    private static Cars createValidCars() {
+        Cars cars = createInitialCarsFromInput();
+
+        while (Boolean.FALSE.equals(cars.isValid())) {
+            cars = recreateInvalidCars();
+        }
+        return cars;
+    }
+
+    private static void moveCarsRandomly(Cars cars) {
+        cars.moveRandom(new Random());
+        cars.printPositions();
+        System.out.println();
+    }
+
+    private static int determineMoveCountFromInput() {
+        AnnouncementPrinter.printMoveCountInputAnnouncement();
+        return CustomScanner.scanMoveCount();
+    }
+
+    private static Cars recreateInvalidCars() {
+        Cars cars;
+        List<String> carNames;
+        AnnouncementPrinter.printCarNameInvalidAnnouncement();
+        carNames = scanNullSafeCarNames();
+        cars = Cars.of(carNames);
+        return cars;
+    }
+
+    private static Cars createInitialCarsFromInput() {
+        AnnouncementPrinter.printCarNameInputAnnouncement();
+        List<String> carNames = scanNullSafeCarNames();
+        return Cars.of(carNames);
     }
 
     private static List<String> scanNullSafeCarNames() {
