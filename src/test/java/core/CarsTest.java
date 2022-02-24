@@ -1,5 +1,5 @@
-import core.Car;
-import core.Cars;
+package core;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +25,7 @@ class CarsTest {
 
         List<String> carNames = Arrays.asList(invalidCarName, validCarName);
 
-        Cars cars = Cars.of(carNames);
+        Cars cars = Cars.fromCarNames(carNames);
 
         //when
         boolean result = cars.isValid();
@@ -44,7 +44,7 @@ class CarsTest {
 
         List<String> carNames = Arrays.asList(carName, carName);
 
-        Cars cars = Cars.of(carNames);
+        Cars cars = Cars.fromCarNames(carNames);
 
         //when
         boolean result = cars.isValid();

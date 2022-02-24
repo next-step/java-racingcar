@@ -51,14 +51,14 @@ public class RacingCarApplication {
         List<String> carNames;
         AnnouncementPrinter.printCarNameInvalidAnnouncement();
         carNames = scanNullSafeCarNames();
-        cars = Cars.of(carNames);
+        cars = Cars.fromCarNames(carNames);
         return cars;
     }
 
     private static Cars createInitialCarsFromInput() {
         AnnouncementPrinter.printCarNameInputAnnouncement();
         List<String> carNames = scanNullSafeCarNames();
-        return Cars.of(carNames);
+        return Cars.fromCarNames(carNames);
     }
 
     private static List<String> scanNullSafeCarNames() {

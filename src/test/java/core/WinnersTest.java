@@ -1,6 +1,5 @@
-import core.Car;
-import core.Cars;
-import core.Winners;
+package core;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,18 +15,10 @@ class WinnersTest {
     @DisplayName("position 이 가장 큰 차들이 우승자가 된다 1")
     void decideWinners1() {
         //given
-        List<String> carNames = Arrays.asList("a", "b", "c");
-        Cars cars = Cars.of(carNames);
-
-        for (int i = 0; i < 4; i++) {
-            cars.getCars().get(0).move(Car.BASE_MOVE_VALUE);
-        }
-        for (int i = 0; i < 3; i++) {
-            cars.getCars().get(1).move(Car.BASE_MOVE_VALUE);
-        }
-        for (int i = 0; i < 2; i++) {
-            cars.getCars().get(2).move(Car.BASE_MOVE_VALUE);
-        }
+        Car car1 = TestCarGenerator.generate("a", 4);
+        Car car2 = TestCarGenerator.generate("b", 3);
+        Car car3 = TestCarGenerator.generate("c", 2);
+        Cars cars = Cars.fromCars(Arrays.asList(car1, car2, car3));
 
         List<String> winnerCarNames = new ArrayList<>();
         winnerCarNames.add("a");
@@ -44,18 +35,10 @@ class WinnersTest {
     @DisplayName("position 이 가장 큰 차들이 우승자가 된다 2")
     void decideWinners2() {
         //given
-        List<String> carNames = Arrays.asList("a", "b", "c");
-        Cars cars = Cars.of(carNames);
-
-        for (int i = 0; i < 4; i++) {
-            cars.getCars().get(0).move(Car.BASE_MOVE_VALUE);
-        }
-        for (int i = 0; i < 2; i++) {
-            cars.getCars().get(1).move(Car.BASE_MOVE_VALUE);
-        }
-        for (int i = 0; i < 4; i++) {
-            cars.getCars().get(2).move(Car.BASE_MOVE_VALUE);
-        }
+        Car car1 = TestCarGenerator.generate("a", 4);
+        Car car2 = TestCarGenerator.generate("b", 2);
+        Car car3 = TestCarGenerator.generate("c", 4);
+        Cars cars = Cars.fromCars(Arrays.asList(car1, car2, car3));
 
         List<String> winnerCarNames = new ArrayList<>();
         winnerCarNames.add("a");
