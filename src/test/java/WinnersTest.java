@@ -1,17 +1,14 @@
+import core.Car;
 import core.Cars;
 import core.Winners;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.when;
 
 class WinnersTest {
 
@@ -19,20 +16,17 @@ class WinnersTest {
     @DisplayName("position 이 가장 큰 차들이 우승자가 된다 1")
     void decideWinners1() {
         //given
-        Random randomNumberMock = Mockito.mock(Random.class);
-        when(randomNumberMock.nextInt(anyInt())).thenReturn(4);
-
         List<String> carNames = Arrays.asList("a", "b", "c");
         Cars cars = Cars.of(carNames);
 
         for (int i = 0; i < 4; i++) {
-            cars.getCars().get(0).moveRandom(randomNumberMock);
+            cars.getCars().get(0).move(Car.BASE_MOVE_VALUE);
         }
         for (int i = 0; i < 3; i++) {
-            cars.getCars().get(1).moveRandom(randomNumberMock);
+            cars.getCars().get(1).move(Car.BASE_MOVE_VALUE);
         }
         for (int i = 0; i < 2; i++) {
-            cars.getCars().get(2).moveRandom(randomNumberMock);
+            cars.getCars().get(2).move(Car.BASE_MOVE_VALUE);
         }
 
         List<String> winnerCarNames = new ArrayList<>();
@@ -50,20 +44,17 @@ class WinnersTest {
     @DisplayName("position 이 가장 큰 차들이 우승자가 된다 2")
     void decideWinners2() {
         //given
-        Random randomNumberMock = Mockito.mock(Random.class);
-        when(randomNumberMock.nextInt(anyInt())).thenReturn(4);
-
         List<String> carNames = Arrays.asList("a", "b", "c");
         Cars cars = Cars.of(carNames);
 
         for (int i = 0; i < 4; i++) {
-            cars.getCars().get(0).moveRandom(randomNumberMock);
+            cars.getCars().get(0).move(Car.BASE_MOVE_VALUE);
         }
         for (int i = 0; i < 2; i++) {
-            cars.getCars().get(1).moveRandom(randomNumberMock);
+            cars.getCars().get(1).move(Car.BASE_MOVE_VALUE);
         }
         for (int i = 0; i < 4; i++) {
-            cars.getCars().get(2).moveRandom(randomNumberMock);
+            cars.getCars().get(2).move(Car.BASE_MOVE_VALUE);
         }
 
         List<String> winnerCarNames = new ArrayList<>();

@@ -1,12 +1,11 @@
 package core;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class Car {
-    private static final int MAX_CAR_NAME_LENGTH = 5;
-    private static final int MIN_MOVE_VALUE = 4;
-    private static final int MAX_RANDOM_VALUE = 10;
+    public static final int MAX_CAR_NAME_LENGTH = 5;
+    public static final int BASE_MOVE_VALUE = 4;
+    public static final int MAX_MOVE_VALUE = 10;
     private final String carName;
     private int position;
 
@@ -19,9 +18,8 @@ public class Car {
         return carName.length() <= MAX_CAR_NAME_LENGTH;
     }
 
-    public void moveRandom(Random random) {
-        int randomInt = random.nextInt(MAX_RANDOM_VALUE);
-        if (randomInt >= MIN_MOVE_VALUE) {
+    public void move(int moveValue) {
+        if (moveValue >= BASE_MOVE_VALUE) {
             position++;
         }
     }

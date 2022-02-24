@@ -22,12 +22,6 @@ public class Cars {
         return cars.stream().allMatch(Car::isValid);
     }
 
-    public void moveRandom(Random random) {
-        for (Car car : cars) {
-            car.moveRandom(random);
-        }
-    }
-
     public void printPositions() {
         cars.forEach(Car::printPosition);
     }

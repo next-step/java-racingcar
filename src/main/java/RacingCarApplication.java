@@ -1,3 +1,4 @@
+import core.Car;
 import core.Cars;
 import core.Winners;
 import utils.AnnouncementPrinter;
@@ -32,7 +33,10 @@ public class RacingCarApplication {
     }
 
     private static void moveCarsRandomly(Cars cars) {
-        cars.moveRandom(new Random());
+        for (Car car : cars.getCars()) {
+            Random random = new Random();
+            car.move(random.nextInt(Car.MAX_MOVE_VALUE));
+        }
         cars.printPositions();
         System.out.println();
     }
