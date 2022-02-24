@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -28,7 +29,7 @@ class CarsTest {
         String invalidCarName = new String(invalidArray);
         String validCarName = new String(validArray);
 
-        String[] carNames = {invalidCarName, validCarName};
+        List<String> carNames = Arrays.asList(invalidCarName, validCarName);
 
         Cars cars = Cars.of(carNames);
 
@@ -47,7 +48,7 @@ class CarsTest {
         Arrays.fill(array, 'a');
         String carName = new String(array);
 
-        String[] carNames = {carName, carName};
+        List<String> carNames = Arrays.asList(carName, carName);
 
         Cars cars = Cars.of(carNames);
 
@@ -62,7 +63,7 @@ class CarsTest {
     @DisplayName("모든 차에 대해 moveRandom 을 1번씩 호출한다")
     void allCarMove() {
         //given
-        String[] carNames = {"a", "b"};
+        List<String> carNames = Arrays.asList("a", "b");
         Cars cars = Cars.of(carNames);
 
         Random randomNumberMock = Mockito.mock(Random.class);

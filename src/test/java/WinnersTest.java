@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -21,7 +22,7 @@ class WinnersTest {
         Random randomNumberMock = Mockito.mock(Random.class);
         when(randomNumberMock.nextInt(anyInt())).thenReturn(4);
 
-        String[] carNames = {"a", "b", "c"};
+        List<String> carNames = Arrays.asList("a", "b", "c");
         Cars cars = Cars.of(carNames);
 
         for (int i = 0; i < 4; i++) {
@@ -52,7 +53,7 @@ class WinnersTest {
         Random randomNumberMock = Mockito.mock(Random.class);
         when(randomNumberMock.nextInt(anyInt())).thenReturn(4);
 
-        String[] carNames = {"a", "b", "c"};
+        List<String> carNames = Arrays.asList("a", "b", "c");
         Cars cars = Cars.of(carNames);
 
         for (int i = 0; i < 4; i++) {

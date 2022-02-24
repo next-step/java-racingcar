@@ -3,13 +3,13 @@ import core.Winners;
 import utils.AnnouncementPrinter;
 import utils.CustomScanner;
 
-import java.util.Objects;
+import java.util.List;
 import java.util.Random;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
         AnnouncementPrinter.printCarNameInputAnnouncement();
-        String[] carNames = scanNullSafeCarNames();
+        List<String> carNames = scanNullSafeCarNames();
 
         Cars cars = Cars.of(carNames);
         while (Boolean.FALSE.equals(cars.isValid())) {
@@ -32,9 +32,9 @@ public class RacingCarApplication {
         winners.printWinners();
     }
 
-    private static String[] scanNullSafeCarNames() {
-        String[] carNames = CustomScanner.scanInputCarNames();
-        while (Objects.isNull(carNames)) {
+    private static List<String> scanNullSafeCarNames() {
+        List<String> carNames = CustomScanner.scanInputCarNames();
+        while (carNames.isEmpty()) {
             AnnouncementPrinter.printEmptyCarNameInputAnnouncement();
             carNames = CustomScanner.scanInputCarNames();
         }

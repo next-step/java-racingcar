@@ -1,17 +1,17 @@
 package utils;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class CustomScanner {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static String[] scanInputCarNames() {
+    public static List<String> scanInputCarNames() {
         String inputLine = scanner.nextLine();
 
         if (inputLine.isEmpty()) {
-            return null;
+            return Collections.emptyList();
         }
-        return inputLine.split(",");
+        return Arrays.asList(inputLine.split(","));
     }
 
     public static int scanMoveCount() {

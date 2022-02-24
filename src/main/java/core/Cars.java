@@ -9,7 +9,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars of(String[] carNames) {
+    public static Cars of(List<String> carNames) {
         List<Car> receivedCars = new ArrayList<>();
         for (String carName : carNames) {
             receivedCars.add(new Car(carName));
