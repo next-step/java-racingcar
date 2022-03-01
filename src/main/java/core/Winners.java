@@ -1,6 +1,9 @@
 package core;
 
+import com.sun.javafx.UnmodifiableArrayList;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -49,6 +52,6 @@ public class Winners {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 }
