@@ -15,9 +15,9 @@ class WinnersTest {
     @DisplayName("position 이 가장 큰 차들이 우승자가 된다 1")
     void decideWinners1() {
         //given
-        Car car1 = TestCarGenerator.generate("a", 4);
-        Car car2 = TestCarGenerator.generate("b", 3);
-        Car car3 = TestCarGenerator.generate("c", 2);
+        Car car1 = TestObjectGenerator.generateCar("a", 4);
+        Car car2 = TestObjectGenerator.generateCar("b", 3);
+        Car car3 = TestObjectGenerator.generateCar("c", 2);
         Cars cars = Cars.fromCars(Arrays.asList(car1, car2, car3));
 
         List<String> winnerCarNames = new ArrayList<>();
@@ -35,9 +35,9 @@ class WinnersTest {
     @DisplayName("position 이 가장 큰 차들이 우승자가 된다 2")
     void decideWinners2() {
         //given
-        Car car1 = TestCarGenerator.generate("a", 4);
-        Car car2 = TestCarGenerator.generate("b", 2);
-        Car car3 = TestCarGenerator.generate("c", 4);
+        Car car1 = TestObjectGenerator.generateCar("a", 4);
+        Car car2 = TestObjectGenerator.generateCar("b", 2);
+        Car car3 = TestObjectGenerator.generateCar("c", 4);
         Cars cars = Cars.fromCars(Arrays.asList(car1, car2, car3));
 
         List<String> winnerCarNames = new ArrayList<>();

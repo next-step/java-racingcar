@@ -1,5 +1,8 @@
 package utils;
 
+import core.Cars;
+import core.Winners;
+
 public class AnnouncementPrinter {
     private static final String CAR_NAME_INPUT_ANNOUNCEMENT = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String EMPTY_CAR_NAME_INPUT_ANNOUNCEMENT = "자동차 이름을 최소 1개 이상 입력하세요.";
@@ -25,5 +28,10 @@ public class AnnouncementPrinter {
 
     public static void printMoveResultAnnouncement() {
         System.out.println(MOVE_RESULT_ANNOUNCEMENT);
+    }
+
+    public static void announceWinners(Cars cars) {
+        Winners winners = Winners.decideWinners(cars);
+        winners.printWinners();
     }
 }
