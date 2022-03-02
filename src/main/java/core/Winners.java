@@ -24,12 +24,12 @@ public class Winners {
     }
 
     private static int comparePosition(List<Car> result, int currentMaxPosition, Car car) {
-        if (car.getPosition() > currentMaxPosition) {
+        if (car.comparePosition(currentMaxPosition) > 0) {
             currentMaxPosition = car.getPosition();
             changeWinnerToCurrentCar(result, car);
             return currentMaxPosition;
         }
-        if (car.getPosition() == currentMaxPosition) {
+        if (car.comparePosition(currentMaxPosition) == 0) {
             result.add(car);
         }
         return currentMaxPosition;

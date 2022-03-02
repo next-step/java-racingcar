@@ -24,6 +24,10 @@ public class Car {
         }
     }
 
+    public int comparePosition(int targetPosition) {
+        return Integer.compare(position, targetPosition);
+    }
+
     public void printPosition() {
         System.out.println(carName + " : " + getPositionAsString());
     }
