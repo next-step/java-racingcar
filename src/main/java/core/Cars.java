@@ -1,6 +1,7 @@
 package core;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cars {
     private final List<Car> cars;
@@ -24,10 +25,6 @@ public class Cars {
 
     public boolean isValid() {
         return cars.stream().allMatch(Car::isValid);
-    }
-
-    public void printPositions() {
-        cars.forEach(Car::printPosition);
     }
 
     public List<Car> getCars() {

@@ -1,7 +1,5 @@
 package core;
 
-import java.util.Arrays;
-
 public class Car {
     public static final int MAX_CAR_NAME_LENGTH = 5;
     public static final int BASE_MOVE_VALUE = 4;
@@ -26,16 +24,6 @@ public class Car {
 
     public int comparePosition(int targetPosition) {
         return Integer.compare(position, targetPosition);
-    }
-
-    public void printPosition() {
-        System.out.println(carName + " : " + getPositionAsString());
-    }
-
-    private String getPositionAsString() {
-        char[] array = new char[position];
-        Arrays.fill(array, '-');
-        return new String(array);
     }
 
     public String getCarName() {

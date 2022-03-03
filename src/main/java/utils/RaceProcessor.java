@@ -33,8 +33,7 @@ public class RaceProcessor {
             Random random = new Random();
             car.move(random.nextInt(Car.MAX_MOVE_VALUE));
         }
-        cars.printPositions();
-        System.out.println();
+        AnnouncementPrinter.printCarsPosition(cars);
     }
 
     private static Cars recreateInvalidCars() {

@@ -40,17 +40,6 @@ public class Winners {
         result.add(car);
     }
 
-    public void printWinners() {
-        Iterator<Car> iterator = cars.iterator();
-        if (iterator.hasNext()) {
-            System.out.print(iterator.next().getCarName());
-        }
-        while (iterator.hasNext()) {
-            System.out.println(", " + iterator.next().getCarName());
-        }
-        System.out.println("가 최종 우승했습니다.");
-    }
-
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
