@@ -40,7 +40,7 @@ public class AnnouncementPrinter {
             System.out.print(iterator.next().getCarName());
         }
         while (iterator.hasNext()) {
-            System.out.println(", " + iterator.next().getCarName());
+            System.out.print(", " + iterator.next().getCarName());
         }
         System.out.println("가 최종 우승했습니다.");
     }
