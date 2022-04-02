@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -53,12 +54,13 @@ class CarTest {
         car.move(Car.BASE_MOVE_VALUE - 1);
         int afterPosition = car.getPosition();
 
+
         //then
         assertThat(afterPosition).isEqualTo(initialPosition);
     }
 
     @Test
-    @DisplayName("랜덤값이 4 이상이면 움직인다")
+    @DisplayName("랜덤값이 BASE_MOVE_VALUE 이상이면 움직인다")
     void moveForBigInt() {
         //given
         Car car = new Car("a");
@@ -70,5 +72,20 @@ class CarTest {
 
         //then
         assertThat(afterPosition).isEqualTo(initialPosition + 1);
+    }
+
+    @Test
+    @DisplayName("positionHistory 의 tail 과 position 은 같다")
+    void positionHistoryIsSameWithPosition() {
+        //given
+        Car car = TestObjectGenerator.generateCar("a", 5);
+
+        //when
+        car.move(Car.BASE_MOVE_VALUE);
+        int position = car.getPosition();
+        int positionHistoryTail = car.getPositionHistory().get(car.getPositionHistory().size() - 1);
+
+        //then
+        assertThat(positionHistoryTail).isEqualTo(position);
     }
 }

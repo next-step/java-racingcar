@@ -19,7 +19,7 @@ class RaceProcessorTest {
         final int moveCount = 5;
 
         //when
-        RaceProcessor.moveCarsRandomly(cars, moveCount);
+        RaceProcessor.moveCarsRandomlyMoveCountTimes(cars, moveCount);
 
         //then
         verify(mockedCar, times(moveCount * carCount)).move(anyInt());

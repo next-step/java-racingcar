@@ -30,8 +30,11 @@ public class AnnouncementPrinter {
         System.out.println(MOVE_COUNT_INPUT_ANNOUNCEMENT);
     }
 
-    public static void printMoveResultAnnouncement() {
+    public static void printMoveResult(Cars cars, int moveCount) {
         System.out.println(MOVE_RESULT_ANNOUNCEMENT);
+        for (int i = 0; i < moveCount; i++) {
+            printCarsPositionAtTurn(cars, i);
+        }
     }
 
     public static void announceWinners(Winners winners) {
@@ -45,17 +48,17 @@ public class AnnouncementPrinter {
         System.out.println("가 최종 우승했습니다.");
     }
 
-    public static void printCarPosition(Car car) {
-        System.out.println(car.getCarName() + " : " + convertCarPositionToString(car));
+    private static void printCarPositionAtTurn(Car car, int turn) {
+        System.out.println(car.getCarName() + " : " + convertCarPositionToString(car.getPositionHistory().get(turn)));
     }
 
-    public static void printCarsPosition(Cars cars) {
-        cars.getCars().forEach(AnnouncementPrinter::printCarPosition);
+    private static void printCarsPositionAtTurn(Cars cars, int turn) {
+        cars.getCars().forEach(car -> AnnouncementPrinter.printCarPositionAtTurn(car, turn));
         System.out.println();
     }
 
-    private static String convertCarPositionToString(Car car) {
-        char[] array = new char[car.getPosition()];
+    private static String convertCarPositionToString(int position) {
+        char[] array = new char[position];
         Arrays.fill(array, '-');
         return new String(array);
     }

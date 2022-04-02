@@ -16,16 +16,15 @@ public class RaceProcessor {
         return cars;
     }
 
-    public static void moveCarsRandomly(Cars cars, int moveCount) {
-        AnnouncementPrinter.printMoveResultAnnouncement();
-        for (int i = 0; i < moveCount; i++) {
-            RaceProcessor.moveCarsRandomly(cars);
-        }
-    }
-
     public static int determineMoveCountFromInput() {
         AnnouncementPrinter.printMoveCountInputAnnouncement();
         return CustomScanner.scanMoveCount();
+    }
+
+    public static void moveCarsRandomlyMoveCountTimes(Cars cars, int moveCount) {
+        for (int i = 0; i < moveCount; i++) {
+            RaceProcessor.moveCarsRandomly(cars);
+        }
     }
 
     private static void moveCarsRandomly(Cars cars) {
@@ -33,7 +32,6 @@ public class RaceProcessor {
             Random random = new Random();
             car.move(random.nextInt(Car.MAX_MOVE_VALUE));
         }
-        AnnouncementPrinter.printCarsPosition(cars);
     }
 
     private static Cars recreateInvalidCars() {

@@ -1,7 +1,5 @@
 package core;
 
-import com.sun.javafx.UnmodifiableArrayList;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
