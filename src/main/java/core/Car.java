@@ -1,5 +1,7 @@
 package core;
 
+import utils.AnnouncementPrinter;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,14 +14,17 @@ public class Car {
     private int position;
     private List<Integer> positionHistory;
 
-    public Car(String carName) {
+    private Car(String carName, int position, List<Integer> positionHistory) {
         this.carName = carName;
-        this.position = 0;
-        this.positionHistory = new ArrayList<>();
+        this.position = position;
+        this.positionHistory = positionHistory;
     }
 
-    public boolean isValid() {
-        return carName.length() <= MAX_CAR_NAME_LENGTH;
+    public static Car create(String carName) {
+        if (carName.length() > MAX_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException(AnnouncementPrinter.CAR_NAME_INVALID_ANNOUNCEMENT);
+        }
+        return new Car(carName, 0, new ArrayList<>());
     }
 
     public void move(int moveValue) {

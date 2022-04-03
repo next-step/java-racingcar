@@ -5,7 +5,7 @@ import java.util.List;
 
 public class TestObjectGenerator {
     public static Car generateCar(String carName, int position) {
-        Car car = new Car(carName);
+        Car car = Car.create(carName);
         for (int i = 0; i < position; i++) {
             car.move(Car.BASE_MOVE_VALUE);
         }

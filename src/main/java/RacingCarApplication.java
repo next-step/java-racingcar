@@ -5,6 +5,7 @@ import utils.RaceProcessor;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
+        AnnouncementPrinter.printCarNameInputAnnouncement();
         Cars cars = RaceProcessor.createValidCars();
         int moveCount = RaceProcessor.determineMoveCountFromInput();
         RaceProcessor.moveCarsRandomlyMoveCountTimes(cars, moveCount);

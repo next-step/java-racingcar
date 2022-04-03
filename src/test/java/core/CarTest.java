@@ -1,53 +1,52 @@
 package core;
 
-import core.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import utils.AnnouncementPrinter;
 
 import java.util.Arrays;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
     @Test
-    @DisplayName("자동차 이름이 MAX_CAR_NAME_LENGTH 초과면 false 를 반환한다")
-    void isValidTooLong() {
+    @DisplayName("자동차 이름이 MAX_CAR_NAME_LENGTH 초과면 에러가 발생한다")
+    void createWithTooLongName() {
         //given
         char[] array = new char[Car.MAX_CAR_NAME_LENGTH + 1];
         Arrays.fill(array, 'a');
         String carName = new String(array);
-        Car car = new Car(carName);
-
-        //when
-        boolean result = car.isValid();
 
         //then
-        assertThat(result).isFalse();
+        assertThatThrownBy(() -> Car.create(carName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(AnnouncementPrinter.CAR_NAME_INVALID_ANNOUNCEMENT);
     }
 
     @Test
-    @DisplayName("자동차 이름이 MAX_CAR_NAME_LENGTH 이하면 true 를 반환한다")
-    void isValid() {
+    @DisplayName("자동차 이름이 MAX_CAR_NAME_LENGTH 이하면 입력받은 이름을 갖고 위치가 0인 Car 를 반환한다")
+    void create() {
         //given
         char[] array = new char[Car.MAX_CAR_NAME_LENGTH];
         Arrays.fill(array, 'a');
         String carName = new String(array);
-        Car car = new Car(carName);
 
         //when
-        boolean result = car.isValid();
+        Car result = Car.create(carName);
 
         //then
-        assertThat(result).isTrue();
+        assertThat(result.getCarName()).isEqualTo(carName);
+        assertThat(result.getPosition()).isEqualTo(0);
+        assertThat(result.getPositionHistory()).isEmpty();
     }
 
     @Test
     @DisplayName("랜덤값이 BASE_MOVE_VALUE 미만이면 움직이지 않는다")
     void stopMoveForSmallInt() {
         //given
-        Car car = new Car("a");
+        Car car = Car.create("a");
         int initialPosition = car.getPosition();
 
         //when
@@ -63,7 +62,7 @@ class CarTest {
     @DisplayName("랜덤값이 BASE_MOVE_VALUE 이상이면 움직인다")
     void moveForBigInt() {
         //given
-        Car car = new Car("a");
+        Car car = Car.create("a");
         int initialPosition = car.getPosition();
 
         //when

@@ -8,12 +8,12 @@ import java.util.Random;
 
 public class RaceProcessor {
     public static Cars createValidCars() {
-        Cars cars = createInitialCarsFromInput();
-
-        while (Boolean.FALSE.equals(cars.isValid())) {
-            cars = recreateInvalidCars();
+        try {
+            return createCarsFromInput();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return createValidCars();
         }
-        return cars;
     }
 
     public static int determineMoveCountFromInput() {
@@ -34,17 +34,7 @@ public class RaceProcessor {
         }
     }
 
-    private static Cars recreateInvalidCars() {
-        Cars cars;
-        List<String> carNames;
-        AnnouncementPrinter.printCarNameInvalidAnnouncement();
-        carNames = scanNullSafeCarNames();
-        cars = Cars.fromCarNames(carNames);
-        return cars;
-    }
-
-    private static Cars createInitialCarsFromInput() {
-        AnnouncementPrinter.printCarNameInputAnnouncement();
+    private static Cars createCarsFromInput() {
         List<String> carNames = scanNullSafeCarNames();
         return Cars.fromCarNames(carNames);
     }
