@@ -50,8 +50,8 @@ class CarTest {
         int initialPosition = car.getPosition();
 
         //when
-        car.move(Car.BASE_MOVE_VALUE - 1);
-        int afterPosition = car.getPosition();
+        Car movedCar = car.move(Car.BASE_MOVE_VALUE - 1);
+        int afterPosition = movedCar.getPosition();
 
 
         //then
@@ -66,8 +66,8 @@ class CarTest {
         int initialPosition = car.getPosition();
 
         //when
-        car.move(Car.BASE_MOVE_VALUE);
-        int afterPosition = car.getPosition();
+        Car movedCar = car.move(Car.BASE_MOVE_VALUE);
+        int afterPosition = movedCar.getPosition();
 
         //then
         assertThat(afterPosition).isEqualTo(initialPosition + 1);
@@ -80,9 +80,9 @@ class CarTest {
         Car car = TestObjectGenerator.generateCar("a", 5);
 
         //when
-        car.move(Car.BASE_MOVE_VALUE);
-        int position = car.getPosition();
-        int positionHistoryTail = car.getPositionHistory().get(car.getPositionHistory().size() - 1);
+        Car movedCar = car.move(Car.BASE_MOVE_VALUE);
+        int position = movedCar.getPosition();
+        int positionHistoryTail = movedCar.getPositionHistory().get(movedCar.getPositionHistory().size() - 1);
 
         //then
         assertThat(positionHistoryTail).isEqualTo(position);

@@ -1,7 +1,9 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Cars {
     private final List<Car> cars;
@@ -23,7 +25,15 @@ public class Cars {
         return new Cars(cars);
     }
 
+    public Cars moveCarsRandomly(Random random) {
+        List<Car> movedCars = new ArrayList<>();
+        for (Car car : cars) {
+            movedCars.add(car.move(random.nextInt(Car.MAX_MOVE_VALUE)));
+        }
+        return Cars.fromCars(movedCars);
+    }
+
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 }

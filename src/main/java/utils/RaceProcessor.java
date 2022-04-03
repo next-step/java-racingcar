@@ -21,17 +21,17 @@ public class RaceProcessor {
         return CustomScanner.scanMoveCount();
     }
 
-    public static void moveCarsRandomlyMoveCountTimes(Cars cars, int moveCount) {
+    public static Cars moveCarsRandomlyMoveCountTimes(Cars cars, int moveCount) {
+        Cars resultCars = cars;
         for (int i = 0; i < moveCount; i++) {
-            RaceProcessor.moveCarsRandomly(cars);
+            resultCars = RaceProcessor.moveCarsRandomly(resultCars);
         }
+        return resultCars;
     }
 
-    private static void moveCarsRandomly(Cars cars) {
-        for (Car car : cars.getCars()) {
-            Random random = new Random();
-            car.move(random.nextInt(Car.MAX_MOVE_VALUE));
-        }
+    private static Cars moveCarsRandomly(Cars cars) {
+        Random random = new Random();
+        return cars.moveCarsRandomly(random);
     }
 
     private static Cars createCarsFromInput() {

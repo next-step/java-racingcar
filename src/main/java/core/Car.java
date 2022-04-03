@@ -27,11 +27,14 @@ public class Car {
         return new Car(carName, 0, new ArrayList<>());
     }
 
-    public void move(int moveValue) {
+    public Car move(int moveValue) {
+        List<Integer> movedPositionHistory = new ArrayList<>(positionHistory);
+        int movedPosition = position;
         if (moveValue >= BASE_MOVE_VALUE) {
-            position++;
+            movedPosition++;
         }
-        positionHistory.add(position);
+        movedPositionHistory.add(movedPosition);
+        return new Car(carName, movedPosition, movedPositionHistory);
     }
 
     public int comparePosition(int targetPosition) {
