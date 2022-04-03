@@ -37,10 +37,6 @@ public class Car {
         return new Car(carName, movedPosition, movedPositionHistory);
     }
 
-    public int comparePosition(int targetPosition) {
-        return Integer.compare(position, targetPosition);
-    }
-
     public String getCarName() {
         return carName;
     }

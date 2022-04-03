@@ -14,17 +14,17 @@ public class Winners {
     public static Winners decideWinners(Cars cars) {
         CurrentWinners currentWinners = new CurrentWinners(new ArrayList<>());
         for (Car car : cars.getCars()) {
-            comparePosition(currentWinners, car);
+            decideCurrentWinners(currentWinners, car);
         }
         return new Winners(currentWinners.getCars());
     }
 
-    private static void comparePosition(CurrentWinners currentWinners, Car car) {
-        if (car.comparePosition(currentWinners.getPosition()) > 0) {
+    private static void decideCurrentWinners(CurrentWinners currentWinners, Car car) {
+        if (currentWinners.isBehind(car)) {
             currentWinners.changeWinner(car);
             return;
         }
-        if (car.comparePosition(currentWinners.getPosition()) == 0) {
+        if (currentWinners.isAtSamePosition(car)) {
             currentWinners.addWinner(car);
         }
     }
@@ -50,6 +50,14 @@ public class Winners {
 
         public void addWinner(Car car) {
             cars.add(car);
+        }
+
+        public boolean isBehind(Car car) {
+            return position < car.getPosition();
+        }
+
+        public boolean isAtSamePosition(Car car) {
+            return position == car.getPosition();
         }
 
         public List<Car> getCars() {
