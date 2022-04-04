@@ -19,4 +19,12 @@ public class StringTest {
         String[] result = "1".split(",");
         Assertions.assertThat(result).containsExactly("1");
     }
+
+    @Test
+    @DisplayName("\"(1,2)\" 값이 주어졌을 때 ()을 제거하고 \"1,2\"를 반환한다.")
+    void substring() {
+        String result = "(1,2)".substring(1, 4);
+        Assertions.assertThat(result).isEqualTo("1,2");
+    }
+
 }
