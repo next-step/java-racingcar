@@ -27,4 +27,27 @@ public class StringTest {
         Assertions.assertThat(result).isEqualTo("1,2");
     }
 
+    @Test
+    @DisplayName("\"abc\" 값이 주어졌을 때 String::charAt로 특정 위치의 문자를 가져온다.")
+    void charAt() {
+        String value = "abc";
+        char first = value.charAt(0);
+        char second = value.charAt(1);
+        char third = value.charAt(2);
+
+        Assertions.assertThat(first).isEqualTo('a');
+        Assertions.assertThat(second).isEqualTo('b');
+        Assertions.assertThat(third).isEqualTo('c');
+    }
+
+    @Test
+    @DisplayName("\"abc\" 값이 주어졌을 때 위치 값을 벗어나면 StringIndexOutOfBoundsException이 발생한다.")
+    void charAt_exception() {
+        String value = "abc";
+
+        Assertions.assertThatThrownBy(() -> value.charAt(4))
+                .isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: 4");
+    }
+
 }
