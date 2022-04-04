@@ -27,4 +27,11 @@ public class StringLearningTest {
         // then
         assertThat(split).containsExactly("1");
     }
+
+    @DisplayName("String의 substring()을 배운다.")
+    @Test
+    void substring_StringGiven_ShouldRemoveBracket() {
+        // given, when, then
+        assertThat("(1,2)".substring(1).substring(0, 3)).isEqualTo("1,2");
+    }
 }
