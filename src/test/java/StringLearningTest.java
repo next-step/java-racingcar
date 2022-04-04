@@ -1,4 +1,5 @@
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,5 +34,15 @@ public class StringLearningTest {
     void substring_StringGiven_ShouldRemoveBracket() {
         // given, when, then
         assertThat("(1,2)".substring(1).substring(0, 3)).isEqualTo("1,2");
+    }
+
+    @DisplayName("String의 charAt()을 배운다.")
+    @Test
+    void charAt_StringGiven_ShouldThrowIndexOutOfException() {
+        // given, when, then
+        assertThatThrownBy(() -> {
+            "abc".charAt(3);
+        }).isInstanceOf(IndexOutOfBoundsException.class)
+            .hasMessageContaining("String index out of range");
     }
 }
