@@ -28,21 +28,33 @@ public class SetTest {
     @Test
     @DisplayName("size 를 통해 Set 크기 리턴")
     void setSizeTest() {
-        assertThat(numbers).hasSize(3);
+        // given
+        // when
+        int size = numbers.size();
+        // then
+        assertThat(size).isEqualTo(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints ={1, 2, 3})
     @DisplayName("contains 를 통해 set value 존재 여부 리턴")
     void setContainsTest(Integer input) {
-        assertThat(numbers.contains(input)).isTrue();
+        // given
+        // when
+        boolean contains = numbers.contains(input);
+        // then
+        assertThat(contains).isTrue();
     }
 
     @ParameterizedTest
     @DisplayName("csvSource 를 이용해 set value 존재 확인")
     @CsvSource(value = {"0:false", "1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     void setContainsUsingCsvSourceTest(Integer input, boolean expected) {
-        assertThat(numbers.contains(input)).isEqualTo(expected);
+        // given
+        // when
+        boolean actual = numbers.contains(input);
+        // then
+        assertThat(actual).isEqualTo(expected);
     }
 
 }
