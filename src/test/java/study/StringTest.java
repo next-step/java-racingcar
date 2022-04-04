@@ -33,5 +33,16 @@ public class StringTest {
         assertThat(result).containsExactly("1");
     }
 
+    @Test
+    @DisplayName("substring 이용해 특정 range의 값만 추출")
+    void substringTest() throws Exception {
+        // given
+        String data = "(1,2)";
 
+        // when
+        String result = data.substring(1, data.length() - 1);
+
+        // then
+        assertThat(result).isEqualTo("1,2");
+    }
 }
