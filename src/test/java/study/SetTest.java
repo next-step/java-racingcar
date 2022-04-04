@@ -29,7 +29,7 @@ public class SetTest {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
-    @ParameterizedTest 
+    @ParameterizedTest
     @ValueSource(ints={1,2,3})
     void containsV1(int input){
         assertThat(numbers.contains(input)).isTrue();
@@ -39,7 +39,7 @@ public class SetTest {
     @CsvSource(value= {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     void containsV2(int input, Boolean expected){
         System.out.println(expected);
-        if(expected == true) assertThat(numbers.contains(input)).isTrue();
-        else if(expected == false) assertThat(numbers.contains(input)).isFalse();
+        assertThat(numbers.contains(input)).isEqualTo(expected);
+
     }
 }
