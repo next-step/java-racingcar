@@ -25,7 +25,7 @@ public class SetTest {
     @Test
     @DisplayName("멤버변수 numbers 의 크기가 3인지를 확인하는 테스트")
     void size() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
@@ -37,7 +37,7 @@ public class SetTest {
 
     @ParameterizedTest
     @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 경우 true, 4, 5의 경우  false")
-    @CsvSource(value = {"1:true","2:true", "3:true","4:false", "5:false"}, delimiter = ':')
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     void notContains(int num, boolean expected) {
         assertThat(numbers.contains(num)).isEqualTo(expected);
     }
