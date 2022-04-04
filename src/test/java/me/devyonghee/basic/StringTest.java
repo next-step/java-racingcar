@@ -1,4 +1,4 @@
-package me.devyonghee.string;
+package me.devyonghee.basic;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -16,8 +16,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 @DisplayName("문자열")
 class StringTest {
 
-    @ParameterizedTest(name = "{displayName}[{index}] {0}를 \",\" 로 분리하면 {1} ")
-    @DisplayName("분리")
+    @ParameterizedTest(name = "[{index}] {0}를 분리하면 {1} ")
+    @DisplayName("\",\" 분리")
     @MethodSource
     void split(String target, String[] expected) {
         //when
@@ -37,7 +37,7 @@ class StringTest {
         assertThat(oneTwo).isEqualTo("1,2");
     }
 
-    @ParameterizedTest(name = "{displayName}[{index}] {0} 위치의 문자는 {1}")
+    @ParameterizedTest(name = "[{index}] {0} 위치의 문자는 {1}")
     @DisplayName("\"abc\" 특정 위치 문자 조회")
     @CsvSource({"0,a", "1,b", "2,c"})
     void charAt_abc(int index, char expected) {
@@ -49,7 +49,7 @@ class StringTest {
         assertThat(characterOfAbc).isEqualTo(expected);
     }
 
-    @ParameterizedTest(name = "{displayName}[{index}] {0} 위치의 문자 조회 불가능")
+    @ParameterizedTest(name = "[{index}] {0} 위치의 문자 조회 불가능")
     @DisplayName("\"abc\" 길이를 벗어난 위치의 문자를 조회하면 IndexOutOfBoundsException")
     @ValueSource(ints = {Integer.MIN_VALUE, Integer.MAX_VALUE})
     void charAt_outOfLength_thrownIndexOutOfBoundsException(int index) {
