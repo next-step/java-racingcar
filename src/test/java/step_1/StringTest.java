@@ -14,7 +14,7 @@ public class StringTest {
 
     @Test
     @DisplayName("요구사항 1")
-    public void spilt() {
+    void spilt() {
         // given
         String arg = "1,2";
 
@@ -35,7 +35,7 @@ public class StringTest {
 
     @Test
     @DisplayName("요구사항 2")
-    public void subString() {
+    void subString() {
         // given
         String arg = "(1,2)";
 
@@ -50,7 +50,7 @@ public class StringTest {
     // delimiter 인자를 기준으로 value 의 각 요소를 나누어 해당 테스트 메소드의 파라미터 인자로 주입한다.¬
     @CsvSource(value = {"0:a", "1:b", "2:c"}, delimiter = ':')
     @DisplayName("요구사항 3-1 > \"abc\" 값이 주어졌을 때 String 의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습 테스트를 구현한다.")
-    public void charAt(int index, char value) {
+    void charAt(int index, char value) {
         // given
         String arg = "abc";
 
@@ -64,7 +64,7 @@ public class StringTest {
     @ParameterizedTest
     @ValueSource(ints = {-1, 3})
     @DisplayName("요구사항 3-2 > String 의 charAt() 메소드를 활용해 특정 위치의 문자를 가져올 때 위치 값을 벗어나면 StringIndexOutOfBoundsException 이 발생하는 부분에 대한 학습 테스트를 구현한다.")
-    public void exceptionOfType(int outOfBoundIndex) {
+    void exceptionOfType(int outOfBoundIndex) {
         // given
         String arg = "abc";
 
