@@ -4,8 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
 
@@ -29,7 +28,7 @@ public class StringTest {
 
     @ParameterizedTest
     @DisplayName("charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 테스트")
-    @CsvSource(value= {"0,a", "1,b,", "2,c"})
+    @CsvSource(value= {"0,a", "1,b,","2,c"})
     void charAt(int idx, char chr) {
         assertThat("abc".charAt(idx)).isEqualTo(chr);
     }
@@ -38,9 +37,12 @@ public class StringTest {
     @DisplayName("abc 값이 주어졌을 때 String의 charAt() 메소드를 활용해 문자 위치값이 벗어났을 때 StringIndexOutOfBoundsException 발생하는지 테스트")
     void charAtException() {
         String data = "abc";
-        assertThatThrownBy(() -> {
-            data.charAt(5);
-        }).isInstanceOf(IndexOutOfBoundsException.class)
+
+        assertThatThrownBy(() -> data.charAt(5))
+                .isInstanceOf(IndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 5");
+
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> data.charAt(9)).withMessageMatching("String index out of range: 9");
     }
 }
