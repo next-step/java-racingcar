@@ -3,7 +3,7 @@ package common;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,9 +30,9 @@ public class SetTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    void contains는_set의_파라미터_포함여부를_반환한다(int value) {
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void contains는_set의_파라미터_포함여부를_반환한다(int value, boolean expected) {
         boolean result = numbers.contains(value);
-        assertThat(result).isTrue();
+        assertThat(result).isEqualTo(expected);
     }
 }
