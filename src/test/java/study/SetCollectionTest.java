@@ -40,7 +40,7 @@ public class SetCollectionTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false"}, delimiter = ':')
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     @DisplayName("Set의 contains() 메소드를 CsvSource의 값으로 테스트")
     void containsCsvSourceTest(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
