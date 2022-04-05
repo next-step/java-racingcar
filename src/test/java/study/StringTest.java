@@ -32,7 +32,7 @@ public class StringTest {
 		assertThat(result).isEqualTo("1,2");
 	}
 
-	@DisplayName("문자열의 범위를 벗어난 경우 StringIndexOutOfBoundsException 발생")
+	@DisplayName("문자열의 범위를 벗어난 경우 StringIndexOutOfBoundsException 발생 (assertThatThrownBy() 활용)")
 	@Test
 	void charAtException() {
 		String data = "abc";
@@ -42,7 +42,7 @@ public class StringTest {
 			.hasMessageContaining("String index out of range: 3");
 	}
 
-	@DisplayName("문자열의 범위를 벗어난 경우 StringIndexOutOfBoundsException 발생")
+	@DisplayName("문자열의 범위를 벗어난 경우 StringIndexOutOfBoundsException 발생 (assertThatExceptionOfType() 활용)")
 	@Test
 	void charAtException2() {
 		String data = "abc";
