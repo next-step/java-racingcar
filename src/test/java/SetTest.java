@@ -24,7 +24,7 @@ public class SetTest {
 
     @Test
     void size() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest(name = "Set.contains()을 통해 특정 값이 존재하는지 알 수 있다.")
