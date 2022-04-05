@@ -28,7 +28,8 @@ public class SetCollectionTest {
     @Test
     @DisplayName("Set 크기 확인 테스트")
     void setSizeTest() {
-        assertThat(numbers.size()).isEqualTo(3);
+//        assertThat(numbers.size()).isEqualTo(3); // my code
+        assertThat(numbers).hasSize(3); // reviewed code
     }
 
     @Test
