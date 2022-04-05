@@ -36,8 +36,8 @@ public class SetTest {
     @ParameterizedTest
     @CsvSource({"1,true","2,true","3,true","4,false","5,false"})
     void contains2(String element, String boolType){
-        int target = Integer.valueOf(element);
-        boolean isContain = Boolean.valueOf(boolType);
+        int target = Integer.parseInt(element);
+        boolean isContain = Boolean.parseBoolean(boolType);
         assertThat(numbers.contains(target)).isEqualTo(isContain);
     }
 
