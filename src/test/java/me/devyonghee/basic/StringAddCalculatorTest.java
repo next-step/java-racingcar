@@ -1,15 +1,24 @@
 package me.devyonghee.basic;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.platform.commons.util.ReflectionUtils;
 
 @DisplayName("문자열 덧셈 계산기")
 class StringAddCalculatorTest {
+
+    @Test
+    @DisplayName("객체화 불가능")
+    void instance_thrownAssertionError() {
+        assertThatExceptionOfType(AssertionError.class)
+                .isThrownBy(() -> ReflectionUtils.newInstance(StringAddCalculator.class));
+    }
 
     @ParameterizedTest(name = "[{index}] {0} 을 더하면 0")
     @DisplayName("빈 문자열을 더하면 0")

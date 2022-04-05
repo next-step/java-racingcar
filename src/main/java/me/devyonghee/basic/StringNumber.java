@@ -1,6 +1,6 @@
 package me.devyonghee.basic;
 
-class StringNumber {
+final class StringNumber {
 
     private static final int DEFAULT_NUMBER = 0;
     private final String string;
