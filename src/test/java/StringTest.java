@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 public class StringTest {
 
     @Test
-    @DisplayName("\"1, 2\"를 \",\"로 split 했을 때 1과 2로 분리된다.")
+    @DisplayName("string split test")
     void string_split_test(){
         assertThat("1,2".split(",")).containsExactly("1", "2");
 
@@ -15,7 +15,7 @@ public class StringTest {
 
 
     @Test
-    @DisplayName("\"(1,2)\"값이 주어지면 \"1,2\"를 반환한다.")
+    @DisplayName("string substring test")
     void string_substring_test(){
         String string = "(1,2)";
         String res =  string.substring(1, string.length()-1);
