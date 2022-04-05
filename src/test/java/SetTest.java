@@ -35,10 +35,7 @@ public class SetTest {
   @DisplayName("Set에 존재하는 input에 대해서는 true, 존재하지 않는 input에 대해서는 false를 반환한다.")
   @ParameterizedTest
   @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"}, delimiter = ',')
-  void containsTrueFalse(String input, String expected) {
-    int inputInt = Integer.parseInt(input);
-    boolean expectedBoolean = Boolean.parseBoolean(expected);
-
-    assertThat(numbers.contains(inputInt)).isEqualTo(expectedBoolean);
+  void containsTrueFalse(int input, boolean expected) {
+    assertThat(numbers.contains(input)).isEqualTo(expected);
   }
 }
