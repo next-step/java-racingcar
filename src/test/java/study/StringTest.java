@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
+@DisplayName("String 클래스에 대한 학습 테스트")
 public class StringTest {
     @DisplayName("1, 2를 ,로 split 했을 때 [1, 2] 반환")
     @Test

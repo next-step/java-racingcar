@@ -12,6 +12,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayName("Set Collection 에 대한 학습 테스트")
 public class SetCollectionTest {
     private Set<Integer> numbers;
 
