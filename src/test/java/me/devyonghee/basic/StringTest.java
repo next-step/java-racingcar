@@ -3,27 +3,36 @@ package me.devyonghee.basic;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import java.util.stream.Stream;
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("문자열")
 class StringTest {
 
-    @ParameterizedTest(name = "[{index}] {0}를 분리하면 {1} ")
-    @DisplayName("\",\" 분리")
-    @MethodSource
-    void split(String target, String[] expected) {
+    @Test
+    @DisplayName("\"1,2\" 를 \",\" 로 나누면 [1,2]")
+    void split() {
+        //given
+        String oneTwo = "1,2";
         //when
-        String[] splitStrings = target.split(",");
+        String[] splitStrings = oneTwo.split(",");
         //then
-        assertThat(splitStrings).containsExactly(expected);
+        assertThat(splitStrings).containsExactly("1", "2");
+    }
+
+    @Test
+    @DisplayName("\"1\" 를 \",\" 로 나누면 [1]")
+    void split_withoutDelimiter() {
+        //given
+        String one = "1";
+        //when
+        String[] splitStrings = one.split(",");
+        //then
+        assertThat(splitStrings).containsExactly(one);
     }
 
     @Test
@@ -60,12 +69,5 @@ class StringTest {
         //then
         assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(charAtCallable)
                 .withMessageStartingWith("String index out of range");
-    }
-
-    private static Stream<Arguments> split() {
-        return Stream.of(
-                Arguments.of("1,2", new String[]{"1", "2"}),
-                Arguments.of("1", new String[]{"1"})
-        );
     }
 }
