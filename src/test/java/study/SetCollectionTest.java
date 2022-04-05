@@ -12,6 +12,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayName("Set 컬렉션 테스트")
 public class SetCollectionTest {
 
     private Set<Integer> numbers;
@@ -36,13 +37,12 @@ public class SetCollectionTest {
     @DisplayName("Set의 contains() 메소드를 활용해 값 존재 확인")
     void containsTest(int input) {
         assertThat(numbers.contains(input)).isTrue();
-
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     @DisplayName("Set의 contains() 메소드를 CsvSource의 값으로 테스트")
-    void containsCsvSourceTest(int input, boolean expected) {
+    void containsTest(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 }
