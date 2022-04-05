@@ -20,6 +20,13 @@ public class StringTest {
 
     @Test
     void charAt() throws Exception{
-        assertThrows(StringIndexOutOfBoundsException.class,()->{char result = "abc".charAt(4);} );
+        //junit5
+        //assertThrows(StringIndexOutOfBoundsException.class,()->{char result = "abc".charAt(4);} );
+
+        //assertJ
+        assertThatThrownBy(() -> {
+            "abc".charAt(3);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class);
+
     }
 }
