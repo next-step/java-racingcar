@@ -1,17 +1,18 @@
+package study;
+
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class SetCollectTest {
-
+public class SetTest {
 	private Set<Integer> numbers;
 
 	@BeforeEach
@@ -24,27 +25,20 @@ public class SetCollectTest {
 	}
 
 	@Test
-	void step1() {
+	@DisplayName("size() 메소드를 활용해 Set의 크기를 확인한다")
+	void 요구사항1() {
 		assertThat(numbers.size()).isEqualTo(3);
 	}
 
 	@ParameterizedTest
 	@ValueSource(ints = {1, 2, 3})
-	void step2_AssertJ_사용(int setNumbers) {
-		assertThat(numbers).contains(setNumbers);
+	void 요구사항2(int number) {
+		assertThat(numbers.contains(number)).isTrue();
 	}
 
 	@ParameterizedTest
-	@ValueSource(ints = {1, 2, 3})
-	void step2_Junit_사용(int setNumbers) {
-		assertTrue(numbers.contains(setNumbers));
-	}
-
-	@ParameterizedTest
-	@CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-	void step3_numbers에_값이_들어있는_경우(int setNumbers, boolean expected) {
-		boolean actualResult = numbers.contains(setNumbers);
-
-		assertThat(actualResult).isEqualTo(expected);
+	@CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "10:false"}, delimiter = ':')
+	void 요구사항3(int number, boolean expected) {
+		assertThat(numbers.contains(number)).isEqualTo(expected);
 	}
 }
