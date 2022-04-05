@@ -45,4 +45,32 @@ public class StringTest {
         // then
         assertThat(result).isEqualTo("1,2");
     }
+
+    @Test
+    @DisplayName("charAt 이용해 특정 위치의 문자 가져오기")
+    void charAtTest() throws Exception {
+        // given
+        String data = "abc";
+        int index = 1;
+
+        // when
+        char result = data.charAt(index);
+
+        // then
+        assertThat(result).isEqualTo('b');
+    }
+
+    @Test
+    @DisplayName("charAt 이용해 특정 위치의 문자 가져올때 위치 값 벗어날 경우")
+    void charAtOutOfBoundsTest() throws Exception {
+        // given
+        String data = "abc";
+        int index = data.length() + 1;
+
+        // when
+
+        // then
+        assertThatThrownBy(() -> data.charAt(index))
+                .isInstanceOf(StringIndexOutOfBoundsException.class);
+    }
 }
