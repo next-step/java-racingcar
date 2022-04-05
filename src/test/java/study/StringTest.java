@@ -27,5 +27,6 @@ public class StringTest {
         assertThatThrownBy(() -> {
             "abc".charAt(3);
         }).isInstanceOf(StringIndexOutOfBoundsException.class);
+
     }
 }
