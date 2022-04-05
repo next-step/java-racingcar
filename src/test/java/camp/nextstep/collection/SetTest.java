@@ -1,4 +1,4 @@
-package camp.nextstep.camp.collection;
+package camp.nextstep.collection;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
