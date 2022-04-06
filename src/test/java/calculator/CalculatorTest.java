@@ -13,4 +13,10 @@ public class CalculatorTest {
         assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
         assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("숫자 하나를 문자열로 입력하면 해당 숫자를 반환한다.")
+    void numberStringTest() throws Exception {
+        assertThat(StringAddCalculator.splitAndSum("1")).isEqualTo(1);
+    }
 }
