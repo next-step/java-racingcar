@@ -30,8 +30,7 @@ public class StringAddCalculator {
     private static int sum(String[] values) {
         int result = 0;
         for (String value : values) {
-            int num = toInt(value);
-            result += num;
+            result += toInt(value);
         }
         return result;
     }
