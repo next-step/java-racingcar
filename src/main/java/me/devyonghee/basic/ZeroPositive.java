@@ -45,7 +45,7 @@ final class ZeroPositive {
 
     private void validate(int number) {
         if (isNegative(number)) {
-            throw new IllegalStateException(String.format("number(%d) must be zero or positive", number));
+            throw new IllegalArgumentException(String.format("number(%d) must be zero or positive", number));
         }
     }
 

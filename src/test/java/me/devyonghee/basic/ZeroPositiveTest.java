@@ -1,7 +1,7 @@
 package me.devyonghee.basic;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 import org.junit.jupiter.api.DisplayName;
@@ -19,13 +19,13 @@ class ZeroPositiveTest {
     @Test
     @DisplayName("반드시 숫자 형태의 문자")
     void instance_notNumberFormat_thrownIllegalArgumentException() {
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> ZeroPositive.from("abc"));
+        assertThatIllegalArgumentException().isThrownBy(() -> ZeroPositive.from("abc"));
     }
 
     @Test
     @DisplayName("반드시 양수의 값")
     void instance_negative_thrownIllegalArgumentException() {
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> ZeroPositive.from("-1"));
+        assertThatIllegalArgumentException().isThrownBy(() -> ZeroPositive.from("-1"));
     }
 
     @Test

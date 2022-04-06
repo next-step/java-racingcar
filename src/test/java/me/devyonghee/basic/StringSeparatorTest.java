@@ -12,25 +12,28 @@ import org.junit.jupiter.api.Test;
 @DisplayName("문자열 분리")
 class StringSeparatorTest {
 
-    private static final Pattern DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final Pattern PATTERN = Pattern.compile("^//(.)\n");
+    private static final StringFilter STRING_FILTER = StringFilter.from(PATTERN);
+    private static final DelimiterFinder DELIMITER_FINDER = DelimiterFinder.from(PATTERN);
 
     @Test
     @DisplayName("객체화")
     void instance() {
-        assertThatNoException().isThrownBy(() -> StringSeparator.from(DELIMITER_PATTERN));
+        assertThatNoException().isThrownBy(() -> StringSeparator.of(STRING_FILTER, DELIMITER_FINDER));
     }
 
     @Test
-    @DisplayName("커스텀 구분자는 필수")
-    void instance_nullCustomDelimiter_thrownIllegalArgumentException() {
-        assertThatIllegalArgumentException().isThrownBy(() -> StringSeparator.from(null));
+    @DisplayName("필터와 구분자 탐지기는 필수")
+    void instance_nullArguments_thrownIllegalArgumentException() {
+        assertThatIllegalArgumentException().isThrownBy(() -> StringSeparator.of(STRING_FILTER, null));
+        assertThatIllegalArgumentException().isThrownBy(() -> StringSeparator.of(null, DELIMITER_FINDER));
     }
 
     @Test
     @DisplayName("커스텀 구분자가 포함된 문자열 분리")
     void separate_customDelimiter() {
         //given, when
-        List<String> strings = StringSeparator.from(DELIMITER_PATTERN).separate("//;\n1;2;3");
+        List<String> strings = StringSeparator.of(STRING_FILTER, DELIMITER_FINDER).separate("//;\n1;2;3");
         //then
         assertThat(strings).containsExactly("1", "2", "3");
     }
@@ -39,7 +42,7 @@ class StringSeparatorTest {
     @DisplayName("커스텀 구분자가 포함되지 않으면 기본 구분자로 분리")
     void separate_defaultDelimiter() {
         //given, when
-        List<String> strings = StringSeparator.from(DELIMITER_PATTERN).separate("1,2:3");
+        List<String> strings = StringSeparator.of(STRING_FILTER, DELIMITER_FINDER).separate("1,2:3");
         //then
         assertThat(strings).containsExactly("1", "2", "3");
     }
@@ -50,7 +53,7 @@ class StringSeparatorTest {
         //given
         String any = "any";
         //when
-        List<String> strings = StringSeparator.from(DELIMITER_PATTERN).separate(any);
+        List<String> strings = StringSeparator.of(STRING_FILTER, DELIMITER_FINDER).separate(any);
         //then
         assertThat(strings).hasSize(1)
                 .containsExactly(any);
@@ -60,7 +63,7 @@ class StringSeparatorTest {
     @DisplayName("null 을 분리하면 빈 컬렉션")
     void separate_null_emptyStrings() {
         //given, when
-        List<String> strings = StringSeparator.from(DELIMITER_PATTERN).separate(null);
+        List<String> strings = StringSeparator.of(STRING_FILTER, DELIMITER_FINDER).separate(null);
         //then
         assertThat(strings).isEmpty();
     }

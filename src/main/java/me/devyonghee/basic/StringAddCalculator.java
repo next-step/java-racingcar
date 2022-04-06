@@ -4,7 +4,9 @@ import java.util.regex.Pattern;
 
 final class StringAddCalculator {
 
-    private static final StringSeparator SEPARATOR = StringSeparator.from(Pattern.compile("//(.)\n(.*)"));
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("^//(.)\n");
+    private static final StringSeparator SEPARATOR = StringSeparator.of(
+            StringFilter.from(CUSTOM_DELIMITER_PATTERN), DelimiterFinder.from(CUSTOM_DELIMITER_PATTERN));
 
     private StringAddCalculator() {
         throw new AssertionError();
