@@ -49,6 +49,16 @@ public class StringAddCalculatorTest {
     @DisplayName("음수를 전달할 경우 RuntimeException 예외 발생")
     void negativeIntegerFailTest(String text) {
         assertThatThrownBy(() -> splitAndSum(text))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("음수는 허용하지 않습니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"a,2,3", "1,a:3", "//;\n1;2;a"})
+    @DisplayName("숫자 이외의 값을 전달할 경우 RuntimeException 예외 발생")
+    void invalidValueFailTest(String text) {
+        assertThatThrownBy(() -> splitAndSum(text))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("For input string: \"a\"");
     }
 }
