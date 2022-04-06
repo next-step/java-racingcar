@@ -2,6 +2,7 @@ package step2;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static step2.StringAddCalculator.DEFAULT_SUM;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,10 +12,10 @@ public class StringAddCalculatorTest {
     @Test
     public void splitAndSum_null_또는_빈문자는_0_반환한다() {
         int result = StringAddCalculator.splitAndSum(null);
-        assertThat(result).isEqualTo(0);
+        assertThat(result).isEqualTo(DEFAULT_SUM);
 
         result = StringAddCalculator.splitAndSum("");
-        assertThat(result).isEqualTo(0);
+        assertThat(result).isEqualTo(DEFAULT_SUM);
     }
 
     @Test
