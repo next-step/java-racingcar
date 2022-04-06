@@ -12,19 +12,18 @@ public class StringAddCalculatorTest {
         if (m.find()) {
             String customDelimiter = m.group(1);
             String[] values = m.group(2).split(customDelimiter);
-            return sum(values);
+            return sum(toInts(values));
         }
         String[] values = text.split(",|:");
-        return sum(values);
+        return sum(toInts(values));
     }
 
-    private static int sum(String[] values) {
-        int acc = 0;
-        for (String value: values) {
-
-            acc += toInt(value);
+    private static String[] toInts(String[] values) {
+        int[] numbers = new int[values.length];
+        for (int i = 0; i < values.length; i++) {
+            numbers[i] = toInt(values[i]);
         }
-        return acc;
+        return values;
     }
 
     private static int toInt(String value) {
@@ -33,5 +32,13 @@ public class StringAddCalculatorTest {
             throw new RuntimeException("Negative number is not accepted.");
         }
         return number;
+    }
+
+    private static int sum(String[] values) {
+        int acc = 0;
+        for (String value: values) {
+            acc += toInt(value);
+        }
+        return acc;
     }
 }
