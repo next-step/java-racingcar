@@ -10,20 +10,16 @@ public class StringAddCalculator {
             return 0;
         }
 
-        int sum = 0;
         String defaultDelimiter = "[,:]";
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        String[] tokens = text.split(defaultDelimiter);
 
         if (m.find()) {
             String customDelimiter = m.group(1);
-            String[] tokens = m.group(2).split(customDelimiter);
-            sum = sum(tokens);
-        } else {
-            String[] tokens = text.split(defaultDelimiter);
-            sum = sum(tokens);
+            tokens = m.group(2).split(customDelimiter);
         }
 
-        return sum;
+        return sum(tokens);
     }
 
     private static int sum(String[] tokens) {
