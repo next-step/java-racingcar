@@ -13,19 +13,22 @@ public class StringAddCalculatorTest {
             if (m.find()) {
                 String customDelimiter = m.group(1);
                 String[] values = m.group(2).split(customDelimiter);
-                for (String value: values) {
-                    result += Integer.parseInt(value);
-                }
+                sum(values, result);
             } else {
                 String[] values = text.split(",|:");
-                for (String value: values) {
-                    int number = Integer.parseInt(value);
-                    if (number < 0) {
-                        throw new RuntimeException("Negative number is not accepted.");
-                    }
-                    result += number;
-                }
+                sum(values, result);
             }
+        }
+        return result;
+    }
+
+    private static int sum(String[] values, int result) {
+        for (String value: values) {
+            int number = Integer.parseInt(value);
+            if (number < 0) {
+                throw new RuntimeException("Negative number is not accepted.");
+            }
+            result += number;
         }
         return result;
     }
