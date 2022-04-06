@@ -24,20 +24,6 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    public void splitAndSum_유효하지않은_문자하나는_RuntimeException_발생한다() {
-        assertThatThrownBy(() ->
-            StringAddCalculator.splitAndSum("r")
-        ).isInstanceOf(RuntimeException.class);
-    }
-
-    @Test
-    public void splitAndSum_유효하지않은_문자열은_RuntimeException_발생한다() {
-        assertThatThrownBy(() ->
-            StringAddCalculator.splitAndSum("go")
-        ).isInstanceOf(RuntimeException.class);
-    }
-
-    @Test
     public void splitAndSum_쉼표구분자() {
         int result = StringAddCalculator.splitAndSum("1,2");
         assertThat(result).isEqualTo(3);
