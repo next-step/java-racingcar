@@ -19,7 +19,11 @@ public class StringAddCalculator {
     private static int sum(final String[] values) {
         int result = 0;
         for (String value : values) {
-            result += Integer.parseInt(value);
+            final int number = Integer.parseInt(value);
+            if (number < 0) {
+                throw new RuntimeException("음수는 입력할 수 없습니다.");
+            }
+            result += number;
         }
         return result;
     }
