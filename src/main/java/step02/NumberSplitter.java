@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public final class NumberSplitter {
 
@@ -13,32 +12,29 @@ public final class NumberSplitter {
 
     private static final String DEFAULT_DELIMITER = "[,:]";
 
-    public List<Number> extractNumbersWithDelimiter(String text) {
+    public List<String> extractNumbersWithDelimiter(String text) {
         if (text == null || text.isEmpty()) {
             return Collections.emptyList();
         }
 
         Matcher matcher = CUSTOM_DELIMITER_EXTRACTION_PATTERN.matcher(text);
-        String[] numbersAsString;
 
         if (matcher.find()) {
-            numbersAsString = splitWitchCustomDelimiter(matcher);
-            return transformIntoNumbers(numbersAsString);
+            return splitWithCustomDelimiter(matcher);
         }
 
-        numbersAsString = text.split(DEFAULT_DELIMITER);
-        return transformIntoNumbers(numbersAsString);
+        return splitWithDefaultDelimiter(text);
     }
 
-    private String[] splitWitchCustomDelimiter(Matcher matcher) {
+    private List<String> splitWithDefaultDelimiter(String text) {
+        String[] splitNumbers = text.split(DEFAULT_DELIMITER);
+        return Arrays.asList(splitNumbers);
+    }
+
+    private List<String> splitWithCustomDelimiter(Matcher matcher) {
         String customDelimiter = matcher.group(1);
-        return matcher.group(2).split(customDelimiter + "|" + DEFAULT_DELIMITER);
-    }
-
-    private List<Number> transformIntoNumbers(String[] numbersAsString) {
-        return Arrays.stream(numbersAsString)
-                .map(number -> new Number(Integer.parseInt(number)))
-                .collect(Collectors.toList());
+        String[] splitNumbers = matcher.group(2).split(customDelimiter + "|" + DEFAULT_DELIMITER);
+        return Arrays.asList(splitNumbers);
     }
 
 }

@@ -14,14 +14,14 @@ class NumberSplitterTest {
 
     private final NumberSplitter numberSplitter = new NumberSplitter();
 
-    private List<Number> expectedNumberList;
+    private List<String> expectedNumberList;
 
     @BeforeEach
     void init() {
         expectedNumberList = new ArrayList<>();
-        expectedNumberList.add(new Number(1));
-        expectedNumberList.add(new Number(2));
-        expectedNumberList.add(new Number(3));
+        expectedNumberList.add("1");
+        expectedNumberList.add("2");
+        expectedNumberList.add("3");
     }
 
     @ParameterizedTest
@@ -32,7 +32,7 @@ class NumberSplitterTest {
         String inputText = "1:2:3";
 
         //when
-        List<Number> numberList = numberSplitter.extractNumbersWithDelimiter(inputText);
+        List<String> numberList = numberSplitter.extractNumbersWithDelimiter(inputText);
 
         //then
         assertThat(expectedNumberList.contains(numberList.get(index))).isEqualTo(hasElement);
@@ -46,7 +46,7 @@ class NumberSplitterTest {
         String inputText = "//;\\n1;2;3";
 
         //when
-        List<Number> numberList = numberSplitter.extractNumbersWithDelimiter(inputText);
+        List<String> numberList = numberSplitter.extractNumbersWithDelimiter(inputText);
 
         //then
         assertThat(expectedNumberList.contains(numberList.get(index))).isEqualTo(hasElement);
@@ -60,7 +60,7 @@ class NumberSplitterTest {
         String inputText = "//;\\n1;2,3";
 
         //when
-        List<Number> numberList = numberSplitter.extractNumbersWithDelimiter(inputText);
+        List<String> numberList = numberSplitter.extractNumbersWithDelimiter(inputText);
 
         //then
         assertThat(expectedNumberList.contains(numberList.get(index))).isEqualTo(hasElement);

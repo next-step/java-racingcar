@@ -17,21 +17,29 @@ class NumbersTest {
     @ParameterizedTest
     @DisplayName("숫자 합을 확인한다.")
     @MethodSource("numberListProvider")
-    void sumTest(List<Number> numberList, int expectedSum) {
+    void sumTest(List<Number> numberList, Number expectedNumber) {
         //when
         Numbers numbers = new Numbers(numberList);
 
         //then
-        assertThat(numbers.sum()).isEqualTo(new Number(expectedSum));
+        assertThat(numbers.sum()).isEqualTo(expectedNumber);
     }
 
     static Stream<Arguments> numberListProvider() {
         return Stream.of(
-                arguments(Collections.emptyList(), 0),
-                arguments(List.of(new Number(0)), 0),
-                arguments(List.of(new Number(0), new Number(1), new Number(2)), 3),
-                arguments(List.of(new Number(1), new Number(2), new Number(3)), 6),
-                arguments(List.of(new Number(3), new Number(4), new Number(5)), 12)
+                arguments(Collections.emptyList(), new Zero(0)),
+                arguments(List.of(new Zero(0)), new Zero(0)),
+                arguments(
+                        List.of(new Zero(0), new PositiveNumber(1), new PositiveNumber(2)),
+                        new PositiveNumber(3)
+                ),
+                arguments(
+                        List.of(new PositiveNumber(1), new PositiveNumber(2), new PositiveNumber(3)),
+                        new PositiveNumber(6)),
+                arguments(
+                        List.of(new PositiveNumber(3), new PositiveNumber(4), new PositiveNumber(5)),
+                        new PositiveNumber(12)
+                )
         );
     }
 
