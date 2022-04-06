@@ -22,37 +22,30 @@ public class StringAddCalculator {
             return DEFAULT_RESULT;
         }
 
-        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(expression);
-        if (m.find()) {
-            return splitAndSum(m.group(EXPRESSION_MATCH), m.group(CUSTOM_DELIMITER_MATCH));
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(expression);
+        if (matcher.find()) {
+            return splitAndSum(matcher.group(EXPRESSION_MATCH), matcher.group(CUSTOM_DELIMITER_MATCH));
         }
         return splitAndSum(expression, DEFAULT_DELIMITER);
     }
 
     private static int splitAndSum(String expression, String delimiter) {
         String[] stringNumbers = expression.split(delimiter);
-        checkNumber(stringNumbers);
+        checkIfPositiveInteger(stringNumbers);
         int[] numbers = toIntArray(stringNumbers);
-        checkNegative(numbers);
         return sum(numbers);
     }
 
-    private static int[] toIntArray(String[] numbers) {
-        return Arrays.stream(numbers)
-                .mapToInt(Integer::parseInt)
-                .toArray();
-    }
-
-    private static void checkNumber(String[] stringNumbers) {
+    private static void checkIfPositiveInteger(String[] stringNumbers) {
         Arrays.stream(stringNumbers)
-                .filter(strNum -> !isNumeric(strNum))
+                .filter(strNum -> !isInteger(strNum) || !isPositive(strNum))
                 .findAny()
                 .ifPresent(strNum -> {
-                    throw new IllegalArgumentException("can't be parsed to int. string = " + strNum);
+                    throw new IllegalArgumentException("Invalid operand provided. operand = " + strNum);
                 });
     }
 
-    private static boolean isNumeric(String strNum) {
+    private static boolean isInteger(String strNum) {
         if (strNum == null) {
             return false;
         }
@@ -64,13 +57,14 @@ public class StringAddCalculator {
         return true;
     }
 
-    private static void checkNegative(int[] numbers) {
-        Arrays.stream(numbers)
-                .filter(n -> n < 0)
-                .findAny()
-                .ifPresent(n -> {
-                    throw new IllegalArgumentException("can't process negative number. number = " + n);
-                });
+    private static boolean isPositive(String strNum) {
+        return Integer.parseInt(strNum) > 0;
+    }
+
+    private static int[] toIntArray(String[] numbers) {
+        return Arrays.stream(numbers)
+                .mapToInt(Integer::parseInt)
+                .toArray();
     }
 
     private static int sum(int[] numbers) {
