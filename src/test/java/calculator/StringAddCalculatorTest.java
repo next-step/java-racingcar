@@ -11,18 +11,14 @@ class StringAddCalculatorTest {
     @Test
     @DisplayName("Null 혹은 빈문자 테스트")
     void splitAndSumNullOrEmpty() throws Exception {
-        int result = StringAddCalculator.splitAndSum(null);
-        assertThat(result).isEqualTo(0);
-
-        result = StringAddCalculator.splitAndSum("");
-        assertThat(result).isEqualTo(0);
+        assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
+        assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
     }
 
     @Test
     @DisplayName("깔끔한 숫자 하나만 들어왔을 때")
     void splitAndSumOnlyOneNumber() throws Exception {
-        int result = StringAddCalculator.splitAndSum("1");
-        assertThat(result).isEqualTo(1);
+        assertThat(StringAddCalculator.splitAndSum("1")).isEqualTo(1);
     }
 
     @Test
@@ -35,22 +31,19 @@ class StringAddCalculatorTest {
     @Test
     @DisplayName("쉼표구분자만 있을 때")
     public void splitAndSumCommaSeparator() throws Exception {
-        int result = StringAddCalculator.splitAndSum("1,2");
-        assertThat(result).isEqualTo(3);
+        assertThat(StringAddCalculator.splitAndSum("1,2")).isEqualTo(3);
     }
 
     @Test
     @DisplayName("쉼표, 콜론 구분자 혼용")
     public void splitAndSumSeparatorWithCommaAndColon() throws Exception {
-        int result = StringAddCalculator.splitAndSum("1,2:3");
-        assertThat(result).isEqualTo(6);
+        assertThat(StringAddCalculator.splitAndSum("1,2:3")).isEqualTo(6);
     }
 
     @Test
     @DisplayName("Custom 구분자가 사용됐을 때")
     public void splitAndSumCustomSeparator() throws Exception {
-        int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
-        assertThat(result).isEqualTo(6);
+        assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
     }
 
     @Test
