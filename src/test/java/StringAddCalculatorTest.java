@@ -12,4 +12,9 @@ public class StringAddCalculatorTest {
         assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
         assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
     }
+
+    @Test
+    void 쉼표_구분자() {
+        assertThat(StringAddCalculator.splitAndSum("1,2")).isEqualTo(3);
+    }
 }
