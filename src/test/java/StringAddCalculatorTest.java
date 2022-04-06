@@ -9,7 +9,7 @@ public class StringAddCalculatorTest {
     //프로덕션코드를 만들어준다.
     @Test
     void 빈문자열이거나_null일_경우() {
-        int result = StringAddCalculator.splitAndSum(null);
-        assertThat(result).isEqualTo(0);
+        assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
+        assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
     }
 }
