@@ -30,10 +30,17 @@ public class StringAddCalculator {
     private static int sum(String[] values) {
         int result = 0;
         for (String value : values) {
-            int num = Integer.parseInt(value);
-            if(num <0) throw new RuntimeException();
+            int num = toInt(value);
             result += num;
         }
         return result;
+    }
+
+    private static int toInt(String value) {
+        int num = Integer.parseInt(value);
+        if(num < 0) {
+            throw new RuntimeException("음수는 허용하지 않습니다.");
+        }
+        return num;
     }
 }
