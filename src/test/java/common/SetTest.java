@@ -1,6 +1,7 @@
 package common;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -10,6 +11,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayName("Java Set class의")
 public class SetTest {
     private Set<Integer> numbers;
 
@@ -24,15 +26,12 @@ public class SetTest {
 
     @Test
     void size는_set의_크기를_반환한다() {
-        int expected = 3;
-        int result = numbers.size();
-        assertThat(result).isEqualTo(expected);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     void contains는_set의_파라미터_포함여부를_반환한다(int value, boolean expected) {
-        boolean result = numbers.contains(value);
-        assertThat(result).isEqualTo(expected);
+        assertThat(numbers.contains(value)).isEqualTo(expected);
     }
 }
