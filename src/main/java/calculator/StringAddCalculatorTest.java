@@ -21,12 +21,17 @@ public class StringAddCalculatorTest {
     private static int sum(String[] values) {
         int acc = 0;
         for (String value: values) {
-            int number = Integer.parseInt(value);
-            if (number < 0) {
-                throw new RuntimeException("Negative number is not accepted.");
-            }
-            acc += number;
+
+            acc += toInt(value);
         }
         return acc;
+    }
+
+    private static int toInt(String value) {
+        int number = Integer.parseInt(value);
+        if (number < 0) {
+            throw new RuntimeException("Negative number is not accepted.");
+        }
+        return number;
     }
 }
