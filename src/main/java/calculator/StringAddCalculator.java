@@ -9,7 +9,7 @@ public class StringAddCalculator {
     private static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER_REGEXP);
 
     public static int splitAndSum(String text) {
-        if(text == null || text.isBlank()){
+        if(isBlank(text)){
             return 0;
         }
 
@@ -20,6 +20,10 @@ public class StringAddCalculator {
         }
 
         return split(DEFAULT_DELIMITER, text);
+    }
+
+    private static boolean isBlank(String text) {
+        return text == null || text.isBlank();
     }
 
     private static int split(String delimiter, String text) {
