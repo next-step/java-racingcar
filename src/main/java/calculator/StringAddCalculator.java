@@ -31,26 +31,19 @@ public class StringAddCalculator {
         return sum(toInts(tokens));
     }
 
-    private static int[] toInts(String[] values) {
-        int[] numbers = new int[values.length];
+    private static PositiveInteger[] toInts(String[] values) {
+        PositiveInteger[] numbers = new PositiveInteger[values.length];
         for(int i=0; i<values.length; i++) {
-            numbers[i] = Integer.parseInt(values[i]);
+            numbers[i] = new PositiveInteger(values[i]);
         }
         return numbers;
     }
 
-    private static int sum(int[] numbers) {
+    private static int sum(PositiveInteger[] numbers) {
         int sum = 0;
-        for (int number : numbers) {
-            sum += validate(number);
+        for (PositiveInteger number : numbers) {
+            sum += number.getNumber();
         }
         return sum;
-    }
-
-    private static int validate(int number) {
-        if(number < 0) {
-            throw new RuntimeException("음수는 허용하지 않습니다.");
-        }
-        return number;
     }
 }
