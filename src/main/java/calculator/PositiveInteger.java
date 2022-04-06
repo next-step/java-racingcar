@@ -12,19 +12,20 @@ public class PositiveInteger {
         int number;
 
         try {
-            number = Integer.parseInt(item); // isNotNumber
+            number = Integer.parseInt(item);
         } catch (NumberFormatException e) {
             throw new RuntimeException();
         }
 
-        if (number < 0) { // isNegativeNumber
+        if (number < 0) {
             throw new RuntimeException();
         }
 
         return number;
     }
 
-    public int getNumber() {
-        return number;
+    public int addSum(int sum) {
+        return number + sum;
     }
+
 }

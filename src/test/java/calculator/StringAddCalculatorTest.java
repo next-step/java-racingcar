@@ -2,17 +2,19 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class StringAddCalculatorTest {
 
-    @Test
-    @DisplayName("Null 혹은 빈문자 테스트")
-    void splitAndSumNullOrEmpty() throws Exception {
-        assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
-        assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
+    @DisplayName("Null 혹은 빈 문자 테스트")
+    @ParameterizedTest
+    @NullAndEmptySource
+    void nullOrEmptyByAnnotation(String parameter) throws Exception {
+        assertThat(StringAddCalculator.splitAndSum(parameter)).isEqualTo(0);
     }
 
     @Test

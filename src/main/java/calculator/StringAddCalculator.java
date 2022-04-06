@@ -5,15 +5,15 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    public static final String DEFAULT_DELIMITER = ",|:";
-    private static final Pattern customPattern = Pattern.compile("//(.)\n(.*)");
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final Pattern CUSTOM_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(String source) {
         if (source == null || source.isEmpty()) {
             return 0;
         }
 
-        Matcher m = customPattern.matcher(source);
+        Matcher m = CUSTOM_PATTERN.matcher(source);
 
         if (m.find()) {
             String customDelimiter = m.group(1);
@@ -32,7 +32,7 @@ public class StringAddCalculator {
 
         for (String item : items) {
             PositiveInteger positiveInteger = new PositiveInteger(item);
-            sum += positiveInteger.getNumber();
+            sum = positiveInteger.addSum(sum);
         }
 
         return sum;
