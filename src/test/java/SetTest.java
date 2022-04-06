@@ -25,7 +25,7 @@ public class SetTest {
     @Test
     @DisplayName("Set의 size() 메소드를 활용해 Set의 크기를 확인")
     void sizeTest() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
@@ -38,7 +38,7 @@ public class SetTest {
     @ParameterizedTest
     @DisplayName("Set 에 존재/존재하지 않는 값들에 대해 확인")
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void containsTrueFalseTest(String input, String expected) {
-        assertThat(numbers.contains(Integer.parseInt(input))).isEqualTo(Boolean.parseBoolean(expected));
+    void containsTrueFalseTest(Integer input, Boolean expected) {
+        assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 }
