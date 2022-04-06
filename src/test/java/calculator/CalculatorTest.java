@@ -32,4 +32,10 @@ public class CalculatorTest {
         assertThat(StringAddCalculator.splitAndSum("1,2:3")).isEqualTo(6);
 
     }
+
+    @Test
+    @DisplayName("// 와 \n 문자 사이에 커스텀 구분자 지정하면 커스텀 구분자를 이용해 숫자의 합을 반환한다.")
+    void customSeparator() throws Exception {
+        assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
+    }
 }

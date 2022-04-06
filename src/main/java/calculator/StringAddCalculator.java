@@ -1,8 +1,12 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringAddCalculator {
 
-    public static final String REGEX = ",|:";
+    public static final String SEPARATOR = ",|:";
+    public static final String REGEX_PATTERN = "//(.)\n(.*)";
 
     public static int splitAndSum(String text) {
         if (text == null || text.isEmpty()) {
@@ -10,7 +14,17 @@ public class StringAddCalculator {
         }
 
         int result = 0;
-        String[] values = text.split(REGEX);
+        Matcher matcher = Pattern.compile(REGEX_PATTERN).matcher(text);
+        if (matcher.find()) {
+            String customSeparator = matcher.group(1);
+            String[] values = matcher.group(2).split(customSeparator);
+            for (String value : values) {
+                result += Integer.parseInt(value);
+            }
+            return result;
+        }
+
+        String[] values = text.split(SEPARATOR);
         for (String value : values) {
             result += Integer.parseInt(value);
         }
