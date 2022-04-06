@@ -5,14 +5,16 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+    private static final String DEFAULT_DELIMITER = "[,:]";
+    private static final Pattern CUSTOM_DELIMITER = Pattern.compile("//(.)\n(.*)");
+
     public static int splitAndSum(String text) {
         if (text == null || text.isEmpty()) {
             return 0;
         }
 
-        String defaultDelimiter = "[,:]";
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        String[] tokens = text.split(defaultDelimiter);
+        String[] tokens = text.split(DEFAULT_DELIMITER);
+        Matcher m = CUSTOM_DELIMITER.matcher(text);
 
         if (m.find()) {
             String customDelimiter = m.group(1);
