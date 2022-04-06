@@ -5,9 +5,8 @@ public class StringAddCalculator {
     public static final String DEFAULT_DELIMITER = ",|:";
 
     public static int splitAndSum(final String text) {
-        int result = 0;
         if (text == null || text.isBlank()) {
-            result = 0;
+            return 0;
         } else {
             String[] values;
             final Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
@@ -17,9 +16,14 @@ public class StringAddCalculator {
             } else {
                 values = text.split(DEFAULT_DELIMITER);
             }
-            for (String value : values) {
-                result += Integer.parseInt(value);
-            }
+            return sum(values);
+        }
+    }
+
+    private static int sum(final String[] values) {
+        int result = 0;
+        for (String value : values) {
+            result += Integer.parseInt(value);
         }
         return result;
     }
