@@ -38,16 +38,15 @@ public class StringAddCalculator {
     private static int sum(int[] numbers) {
         int sum = 0;
         for (int number : numbers) {
-            sum += number;
+            sum += validate(number);
         }
         return sum;
     }
 
-    private static int toInt(String value) {
-        int num = Integer.parseInt(value);
-        if(num < 0) {
+    private static int validate(int number) {
+        if(number < 0) {
             throw new RuntimeException("음수는 허용하지 않습니다.");
         }
-        return num;
+        return number;
     }
 }
