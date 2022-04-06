@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
@@ -42,9 +43,22 @@ public class StringTest {
         private static final String STRING = "abc";
 
         @Nested
+        @DisplayName("벗어나지 않은 위치 값이 주어지면")
+        class Context_notExceedLocationValue {
+            private final int NOT_EXCEED_LOCATION_VALUE = STRING.length() - 1;
+
+            @Test
+            @DisplayName("에러가 발생하지 않는다")
+            void It_doesNotAnyThrows() {
+                assertThatCode(() -> STRING.charAt(NOT_EXCEED_LOCATION_VALUE))
+                        .doesNotThrowAnyException();
+            }
+        }
+
+        @Nested
         @DisplayName("벗어난 위치 값이 주어지면")
         class Context_exceedLocationValue {
-            private final int EXCEED_LOCATION_VALUE = STRING.length() + 1;
+            private final int EXCEED_LOCATION_VALUE = STRING.length();
 
             @Test
             @DisplayName("StringIndexOutOfBoundsException을 던진다")
