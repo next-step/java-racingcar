@@ -8,7 +8,7 @@ public class StringAddCalculatorTest {
     //프로덕션코드(실제 동작하는 로직)가 아직 구현되지 않았기 때문에 처음에는 무조건 컴파일 에러가 난다.
     //프로덕션코드를 만들어준다.
     @Test
-    void name() {
+    void 빈문자열이거나_null일_경우() {
         int result = StringAddCalculator.splitAndSum(null);
         assertThat(result).isEqualTo(0);
     }
