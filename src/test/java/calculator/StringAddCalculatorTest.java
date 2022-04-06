@@ -1,20 +1,23 @@
 package calculator;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static calculator.StringAddCalculator.*;
+import static calculator.StringAddCalculator.splitAndSum;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("문자열 계산기 테스트")
 public class StringAddCalculatorTest {
 
-    @Test
+    @ParameterizedTest
+    @NullAndEmptySource
     @DisplayName("빈 문자열 또는 null 입력할 경우 0 반환")
-    void nullAndEmptyTest() {
-        assertThat(splitAndSum(null)).isEqualTo(0);
-        assertThat(splitAndSum("")).isEqualTo(0);
+    void nullAndEmptyTest(String text) {
+        assertThat(splitAndSum(text)).isEqualTo(0);
     }
 
     @Test
@@ -41,10 +44,11 @@ public class StringAddCalculatorTest {
         assertThat(splitAndSum("//;\n1;2;3")).isEqualTo(6);
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"-1,2,3", "1,-2:3", "//;\n1;2;-3"})
     @DisplayName("음수를 전달할 경우 RuntimeException 예외 발생")
-    void negativeIntegerFailTest() {
-        Assertions.assertThrows(RuntimeException.class,
-                ()-> splitAndSum("-1,2,3"));
+    void negativeIntegerFailTest(String text) {
+        assertThatThrownBy(() -> splitAndSum(text))
+                .isInstanceOf(RuntimeException.class);
     }
 }
