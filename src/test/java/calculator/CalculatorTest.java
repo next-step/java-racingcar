@@ -38,4 +38,11 @@ public class CalculatorTest {
     void customSeparator() throws Exception {
         assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
     }
+    
+    @Test
+    @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생한다.")
+    void negativeException() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
+    }
 }

@@ -19,14 +19,22 @@ public class StringAddCalculator {
             String customSeparator = matcher.group(1);
             String[] values = matcher.group(2).split(customSeparator);
             for (String value : values) {
-                result += Integer.parseInt(value);
+                int number = Integer.parseInt(value);
+                if (number < 0) {
+                    throw new RuntimeException();
+                }
+                result += number;
             }
             return result;
         }
 
         String[] values = text.split(SEPARATOR);
         for (String value : values) {
-            result += Integer.parseInt(value);
+            int number = Integer.parseInt(value);
+            if (number < 0) {
+                throw new RuntimeException();
+            }
+            result += number;
         }
         return result;
     }
