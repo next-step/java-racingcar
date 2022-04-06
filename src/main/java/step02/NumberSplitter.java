@@ -14,7 +14,7 @@ public final class NumberSplitter {
     private static final String DEFAULT_DELIMITER = "[,:]";
 
     public List<Number> extractNumbersWithDelimiter(String text) {
-        if (text.isEmpty()) {
+        if (text == null || text.isEmpty()) {
             return Collections.emptyList();
         }
 

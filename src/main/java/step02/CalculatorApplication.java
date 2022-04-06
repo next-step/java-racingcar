@@ -23,8 +23,7 @@ public class CalculatorApplication {
     public void run() {
         try {
             String inputText = consoleReader.readLine();
-            List<Number> numberList = splitAndTransformNumbers(inputText);
-            Numbers numbers = new Numbers(numberList);
+            Numbers numbers = new Numbers(splitAndTransformNumbers(inputText));
             outputView.printNumber(numbers.sum());
         } catch (Exception exception) {
             outputView.printExceptionMessage(exception);
