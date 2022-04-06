@@ -19,12 +19,12 @@ public class StringAddCalculator {
         return split("[,|:]", text);
     }
 
-    private static int split( String customDelimiter, String text) {
-        String[] tokens = text.split(customDelimiter);
+    private static int split(String delimiter, String text) {
+        String[] tokens = text.split(delimiter);
         return sum(tokens);
     }
 
-    private static int sum( String[] values) {
+    private static int sum(String[] values) {
         int result = 0;
         for (String value : values) {
             int num = Integer.parseInt(value);
