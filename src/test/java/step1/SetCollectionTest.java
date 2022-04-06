@@ -32,7 +32,7 @@ public class SetCollectionTest {
 
     @Test
     public void sizeTest() {
-        assertThat(numbers).hasSize(3);
+        assertThat(numbers).hasSize(3); 
     }
 
     @Test
