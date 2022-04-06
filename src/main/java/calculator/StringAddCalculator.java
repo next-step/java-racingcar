@@ -24,13 +24,21 @@ public class StringAddCalculator {
 
     private static int split(String delimiter, String text) {
         String[] tokens = text.split(delimiter);
-        return sum(tokens);
+        return sum(toInts(tokens));
     }
 
-    private static int sum(String[] values) {
+    private static int[] toInts(String[] values) {
+        int[] numbers = new int[values.length];
+        for(int i=0; i<values.length; i++) {
+            numbers[i] = Integer.parseInt(values[i]);
+        }
+        return numbers;
+    }
+
+    private static int sum(int[] numbers) {
         int sum = 0;
-        for (String value : values) {
-            sum += toInt(value);
+        for (int number : numbers) {
+            sum += number;
         }
         return sum;
     }
