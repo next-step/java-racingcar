@@ -39,4 +39,12 @@ class StringCalculatorTest {
     int actual = Integer.parseInt(expect);
     assertThat(calculator.calculate(input)).isEqualTo(actual);
   }
+
+  @ParameterizedTest
+  @DisplayName("구분자를 컴마(,) 이외에 콜론(:)을 사용할 수 있다.")
+  @CsvSource(value = {"1:2$3","2,3:5$10","1,1,2:20$24"},delimiter = '$')
+  void columnTest(String input, String expect) {
+    int actual = Integer.parseInt(expect);
+    assertThat(calculator.calculate(input)).isEqualTo(actual);
+  }
 }

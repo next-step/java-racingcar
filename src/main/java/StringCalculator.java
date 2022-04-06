@@ -4,16 +4,15 @@ import java.util.stream.Collectors;
 
 public class StringCalculator {
 
+  private String DELIMITER = ",|:";
+
   public int calculate(String str) {
     if (str == null || str.equals("")) {
       return 0;
     }
-
-    if (str.contains(",")) {
-      List<Integer> add = Arrays.stream(str.split(",")).map(Integer::parseInt)
-          .collect(Collectors.toList());
-      return add.get(0) + add.get(1);
-    }
-    return Integer.parseInt(str);
+    List<Integer> tokens = Arrays.stream(str.split(DELIMITER)).map(Integer::parseInt)
+        .collect(Collectors.toList());
+    return tokens.stream().reduce(Integer::sum).get();
   }
+
 }
