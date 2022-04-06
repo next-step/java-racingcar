@@ -25,4 +25,11 @@ public class CalculatorTest {
     void sumStringNumbers() throws Exception {
         assertThat(StringAddCalculator.splitAndSum("1,2")).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("구분자를 컴마 이외에 콜론을 해도 숫자의 합으로 반환한다.")
+    void anotherSeparator() throws Exception {
+        assertThat(StringAddCalculator.splitAndSum("1,2:3")).isEqualTo(6);
+
+    }
 }
