@@ -3,7 +3,6 @@ package me.devyonghee.basic;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -64,10 +63,8 @@ class StringTest {
     void charAt_outOfLength_thrownIndexOutOfBoundsException(int index) {
         //given
         String abc = "abc";
-        //when
-        ThrowingCallable charAtCallable = () -> abc.charAt(index);
-        //then
-        assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(charAtCallable)
+        //when, then
+        assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> abc.charAt(index))
                 .withMessageStartingWith("String index out of range");
     }
 }
