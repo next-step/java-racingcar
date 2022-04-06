@@ -28,11 +28,11 @@ public class StringAddCalculator {
     }
 
     private static int sum(String[] values) {
-        int result = 0;
+        int sum = 0;
         for (String value : values) {
-            result += toInt(value);
+            sum += toInt(value);
         }
-        return result;
+        return sum;
     }
 
     private static int toInt(String value) {
