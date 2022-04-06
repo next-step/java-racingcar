@@ -4,8 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    public static final String DEFAULT_DELIMITER = ",|:";
-    public static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
     private static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER_REGEXP);
 
     public static int splitAndSum(String text) {
