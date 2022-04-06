@@ -5,12 +5,14 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+  private static final String DELIMETER = "//(.)\n(.*)";
+
   public static int spliteAndSum(String text) {
     if (text == null || text.isBlank()) {
       return 0;
     }
 
-    Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+    Matcher m = Pattern.compile(DELIMETER).matcher(text);
     if (m.find()) {
       String customDelimeter = m.group(1);
       String[] tokens = m.group(2).split(customDelimeter);

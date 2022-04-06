@@ -36,7 +36,7 @@ class StringAddCalculatorTest {
   @Test
   void 음수를_전달할경우_예외를_발생한다() {
     assertThatThrownBy(() -> {
-      StringAddCalculator.spliteAndSum("-1,2,3s");
+      StringAddCalculator.spliteAndSum("-1,2,3");
     }).isInstanceOf(RuntimeException.class);
   }
 
