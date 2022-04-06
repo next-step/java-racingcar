@@ -1,5 +1,6 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class StringAddCalculatorTest {
@@ -16,5 +17,11 @@ public class StringAddCalculatorTest {
     @Test
     void 쉼표_구분자() {
         assertThat(StringAddCalculator.splitAndSum("1,2")).isEqualTo(3);
+    }
+
+    @DisplayName("커스텀 구분자는 '//'과 '\n' 사이에 위치하는 문자이다")
+    @Test
+    void 커스텀_구분자를_사용할_수_있다() {
+        assertThat(StringAddCalculator.splitAndSum("//:\n1:2")).isEqualTo(3);
     }
 }
