@@ -9,12 +9,12 @@ public class StringAddCalculator {
     private static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER_REGEXP);
 
     public static int splitAndSum(String text) {
-        if(isBlank(text)){
+        if (isBlank(text)) {
             return 0;
         }
 
         Matcher m = PATTERN.matcher(text);
-        if(m.find()) {
+        if (m.find()) {
             String customDelimiter = m.group(1);
             return split(customDelimiter, m.group(2));
         }
@@ -33,7 +33,7 @@ public class StringAddCalculator {
 
     private static PositiveInteger[] toInts(String[] values) {
         PositiveInteger[] numbers = new PositiveInteger[values.length];
-        for(int i=0; i<values.length; i++) {
+        for (int i = 0; i < values.length; i++) {
             numbers[i] = new PositiveInteger(values[i]);
         }
         return numbers;
