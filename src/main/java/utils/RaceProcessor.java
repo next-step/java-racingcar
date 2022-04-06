@@ -1,6 +1,5 @@
 package utils;
 
-import core.Car;
 import core.Cars;
 
 import java.util.List;
@@ -21,17 +20,16 @@ public class RaceProcessor {
         return CustomScanner.scanMoveCount();
     }
 
-    public static Cars moveCarsRandomlyMoveCountTimes(Cars cars, int moveCount) {
+    public static Cars moveCarsRandomlyMoveCountTimes(Cars cars, int moveCount, NumberGenerator numberGenerator) {
         Cars resultCars = cars;
         for (int i = 0; i < moveCount; i++) {
-            resultCars = RaceProcessor.moveCarsRandomly(resultCars);
+            resultCars = RaceProcessor.moveCarsRandomly(resultCars, numberGenerator);
         }
         return resultCars;
     }
 
-    private static Cars moveCarsRandomly(Cars cars) {
-        Random random = new Random();
-        return cars.moveCarsRandomly(random);
+    private static Cars moveCarsRandomly(Cars cars, NumberGenerator numberGenerator) {
+        return cars.moveCarsRandomly(numberGenerator);
     }
 
     private static Cars createCarsFromInput() {

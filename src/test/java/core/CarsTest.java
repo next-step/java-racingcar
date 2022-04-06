@@ -2,15 +2,13 @@ package core;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import utils.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.*;
 
 class CarsTest {
     @Test
@@ -32,15 +30,17 @@ class CarsTest {
     @DisplayName("모든 Car 의 move 가 한번씩 실행돼야 한다")
     void moveCarsRandomly() {
         //given
-        Car mockedCar = mock(Car.class);
+        final int initialPosition = 5;
+        Car car = TestObjectGenerator.generateCar("a", initialPosition);
         final int carCount = 3;
-        Cars cars = TestObjectGenerator.generateCars(mockedCar, carCount);
-        Random random = new Random();
+        Cars cars = TestObjectGenerator.generateCars(car, carCount);
+        NumberGenerator moveNumberGenerator = TestObjectGenerator.generateMoveNumberGenerator();
 
         //when
-        cars.moveCarsRandomly(random);
+        Cars result = cars.moveCarsRandomly(moveNumberGenerator);
 
         //then
-        verify(mockedCar, times(carCount)).move(anyInt());
+        result.getCars().forEach(movedCar ->
+                assertThat(movedCar.getPosition()).isEqualTo(initialPosition + 1));
     }
 }

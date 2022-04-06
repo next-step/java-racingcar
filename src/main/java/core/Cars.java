@@ -1,5 +1,7 @@
 package core;
 
+import utils.NumberGenerator;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -25,10 +27,10 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public Cars moveCarsRandomly(Random random) {
+    public Cars moveCarsRandomly(NumberGenerator numberGenerator) {
         List<Car> movedCars = new ArrayList<>();
         for (Car car : cars) {
-            movedCars.add(car.move(random.nextInt(Car.MAX_MOVE_VALUE)));
+            movedCars.add(car.move(numberGenerator.next()));
         }
         return Cars.fromCars(movedCars);
     }

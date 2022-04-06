@@ -1,5 +1,7 @@
 package core;
 
+import utils.NumberGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,5 +21,13 @@ public class TestObjectGenerator {
         }
 
         return Cars.fromCars(carList);
+    }
+
+    public static NumberGenerator generateMoveNumberGenerator() {
+        return () -> Car.BASE_MOVE_VALUE;
+    }
+
+    public static NumberGenerator generatorStopNumberGenerator() {
+        return () -> Car.BASE_MOVE_VALUE - 1;
     }
 }
