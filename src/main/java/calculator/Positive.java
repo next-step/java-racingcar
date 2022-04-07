@@ -6,14 +6,13 @@ public class Positive {
     private final int number;
 
     public Positive(String text) {
-        int number = toInt(text);
+        this(Integer.parseInt(text));
+    }
+
+    public Positive(int number) {
         checkNegative(number);
 
         this.number = number;
-    }
-
-    private int toInt(String text) {
-        return Integer.parseInt(text);
     }
 
     private void checkNegative(int number) {
