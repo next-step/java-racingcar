@@ -24,7 +24,7 @@ public class SetTest {
 
     @Test
     void setSize(){
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
@@ -35,10 +35,8 @@ public class SetTest {
 
     @ParameterizedTest
     @CsvSource({"1,true","2,true","3,true","4,false","5,false"})
-    void contains2(String element, String boolType){
-        int target = Integer.parseInt(element);
-        boolean isContain = Boolean.parseBoolean(boolType);
-        assertThat(numbers.contains(target)).isEqualTo(isContain);
+    void contains2(int value, boolean result){
+        assertThat(numbers.contains(value)).isEqualTo(result);
     }
 
 }
