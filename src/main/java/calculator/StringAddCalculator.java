@@ -9,12 +9,12 @@ public class StringAddCalculator {
             return 0;
         }
 
-        Pattern p = Pattern.compile("//(.)\\n(.*)");
-        Matcher m = p.matcher(input);
+        Matcher m = Pattern.compile("//(.)\\n(.*)").matcher(input);
         if (m.matches()) {
             String[] values = m.group(2).split(m.group(1));
             return sum(toIntArray(values));
         }
+
         String[] values = input.split(",|:");
         return sum(toIntArray(values));
     }
@@ -22,18 +22,17 @@ public class StringAddCalculator {
     private static int[] toIntArray(String[] values) {
         int[] numbers = new int[values.length];
         for (int i = 0; i < values.length; i++) {
-            int number = Integer.parseInt(values[i]);
-            isPositive(number);
-            numbers[i] = number;
+            numbers[i] = toInt(values[i]);
         }
-
         return numbers;
     }
 
-    private static void isPositive(int number) {
+    private static int toInt(String value) {
+        int number = Integer.parseInt(value);
         if (number < 0) {
             throw new RuntimeException();
         }
+        return number;
     }
 
     private static int sum(int[] numbers) {
@@ -41,7 +40,6 @@ public class StringAddCalculator {
         for(int number : numbers) {
             result += number;
         }
-
         return result;
     }
 }
