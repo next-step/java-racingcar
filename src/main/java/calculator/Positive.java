@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.Objects;
+
 public class Positive {
     private static final int MIN_NUMBER = 0;
     private static final String NEGATIVE_NUMBER_NOT_ALLOW_MESSAGE = "음수 값은 허용되지 않습니다.";
@@ -27,10 +29,21 @@ public class Positive {
     }
 
     @Override
-    public boolean equals(Object object) {
-        Positive positive = (Positive) object;
-       
-        return this.number == positive.getNumber();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Positive positive = (Positive) o;
+        return number == positive.number;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(number);
+    }
 }
