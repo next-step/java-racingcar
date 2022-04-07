@@ -5,55 +5,56 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class StringTest {
-    @Test
-    @DisplayName("1,2 를 ,로 split 했을 때 1과 2로 잘 분리되는지 확인")
-    void twoNumberSplitTest() {
-        String text = "1,2";
 
-        String[] splitted = text.split(",");
+  @Test
+  @DisplayName("1,2 를 ,로 split 했을 때 1과 2로 잘 분리되는지 확인")
+  void twoNumberSplitTest() {
+    String text = "1,2";
 
-        assertThat(splitted).contains("1", "2");
-    }
+    String[] splitted = text.split(",");
 
-    @Test
-    @DisplayName("1 을 ,로 split 했을 때 1만을 포함하는 배열이 반환되는지")
-    void oneNumberSplitTest() {
-        String text = "1";
+    assertThat(splitted).contains("1", "2");
+  }
 
-        String[] splitted = text.split(",");
+  @Test
+  @DisplayName("1 을 ,로 split 했을 때 1만을 포함하는 배열이 반환되는지")
+  void oneNumberSplitTest() {
+    String text = "1";
 
-        assertThat(splitted).containsExactly("1");
-    }
+    String[] splitted = text.split(",");
 
-    @Test
-    @DisplayName("(1,2) 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 1,2 를 반환")
-    void substringRemoveParenthesisTest() {
-        String text = "(1,2)";
+    assertThat(splitted).containsExactly("1");
+  }
 
-        String result = text.substring(1, text.length() - 1);
+  @Test
+  @DisplayName("(1,2) 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 1,2 를 반환")
+  void substringRemoveParenthesisTest() {
+    String text = "(1,2)";
 
-        assertThat(result).isEqualTo("1,2");
-    }
+    String result = text.substring(1, text.length() - 1);
 
-    @Test
-    @DisplayName("abc 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오기")
-    void charAtTest() {
-        String text = "abc";
+    assertThat(result).isEqualTo("1,2");
+  }
 
-        Character result = text.charAt(0);
+  @Test
+  @DisplayName("abc 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오기")
+  void charAtTest() {
+    String text = "abc";
 
-        assertThat(result).isEqualTo('a');
-    }
+    Character result = text.charAt(0);
 
-    @Test
-    @DisplayName("index 가 벗어난 charAt() 메서드의 StringIndexOutOfBoundsException 테스트")
-    void charAtExceptionTest() {
-        String text = "abc";
+    assertThat(result).isEqualTo('a');
+  }
 
-        assertThatThrownBy(() -> {
-            Character result = text.charAt(5);
-        }).isInstanceOf(IndexOutOfBoundsException.class);
-    }
+  @Test
+  @DisplayName("index 가 벗어난 charAt() 메서드의 StringIndexOutOfBoundsException 테스트")
+  void charAtExceptionTest() {
+    String text = "abc";
+
+    assertThatThrownBy(() -> {
+      Character result = text.charAt(5);
+    }).isInstanceOf(IndexOutOfBoundsException.class);
+  }
 
 
 }

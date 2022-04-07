@@ -11,34 +11,35 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SetTest {
-    private Set<Integer> numbers;
 
-    @BeforeEach
-    void setUp() {
-        numbers = new HashSet<>();
-        numbers.add(1);
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-    }
+  private Set<Integer> numbers;
 
-    @Test
-    @DisplayName("Set의 size() 메소드를 활용해 Set의 크기를 확인")
-    void sizeTest() {
-        assertThat(numbers).hasSize(3);
-    }
+  @BeforeEach
+  void setUp() {
+    numbers = new HashSet<>();
+    numbers.add(1);
+    numbers.add(1);
+    numbers.add(2);
+    numbers.add(3);
+  }
 
-    @ParameterizedTest
-    @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인")
-    @ValueSource(strings = {"1", "2", "3"})
-    void containsTest(String input) {
-        assertThat(numbers.contains(Integer.parseInt(input))).isTrue();
-    }
+  @Test
+  @DisplayName("Set의 size() 메소드를 활용해 Set의 크기를 확인")
+  void sizeTest() {
+    assertThat(numbers).hasSize(3);
+  }
 
-    @ParameterizedTest
-    @DisplayName("Set 에 존재/존재하지 않는 값들에 대해 확인")
-    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void containsTrueFalseTest(Integer input, Boolean expected) {
-        assertThat(numbers.contains(input)).isEqualTo(expected);
-    }
+  @ParameterizedTest
+  @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인")
+  @ValueSource(strings = {"1", "2", "3"})
+  void containsTest(String input) {
+    assertThat(numbers.contains(Integer.parseInt(input))).isTrue();
+  }
+
+  @ParameterizedTest
+  @DisplayName("Set 에 존재/존재하지 않는 값들에 대해 확인")
+  @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+  void containsTrueFalseTest(Integer input, Boolean expected) {
+    assertThat(numbers.contains(input)).isEqualTo(expected);
+  }
 }
