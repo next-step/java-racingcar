@@ -1,4 +1,5 @@
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -55,4 +56,19 @@ class StringCalculatorTest {
     String input = "//'\n1'2'3";
     assertThat(calculator.calculate(input)).isEqualTo(actual);
   }
+
+  @Test
+  @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다.")
+  void inputNegativeNumber() {
+    String input = "1:2,-3";
+    Exception exception = assertThrows(RuntimeException.class, () -> {
+      calculator.calculate(input);
+    });
+
+    String expectedMessage = "음수를 입력할 수 없습니다.";
+    String actualMessage = exception.getMessage();
+
+    assertThat(expectedMessage).isEqualTo(actualMessage);
+  }
+
 }

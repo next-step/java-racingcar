@@ -21,14 +21,23 @@ public class StringCalculator {
     if (matcher.find()) {
       String customDelimiter = matcher.group(DELIMITER_GROUP);
       return sum(getIntegerTokens(matcher.group(SPLIT_GROUP)
-                                         .split(customDelimiter)));
+          .split(customDelimiter)));
     }
 
     return sum(getIntegerTokens(str.split(DEFAULT_DELIMITER)));
   }
 
   public List<Integer> getIntegerTokens(String[] tokens) {
-    return Arrays.stream(tokens).map(Integer::parseInt).collect(Collectors.toList());
+    List<Integer> result = Arrays.stream(tokens).map(Integer::parseInt)
+        .collect(Collectors.toList());
+    findNegativeNumber(result);
+    return result;
+  }
+
+  private void findNegativeNumber(List<Integer> input) {
+    if (input.stream().anyMatch(num -> num < 0)) {
+      throw new IllegalArgumentException("음수를 입력할 수 없습니다.");
+    }
   }
 
   public int sum(List<Integer> numbers) {
