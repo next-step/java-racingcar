@@ -1,29 +1,15 @@
 package stringcalculator;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class StringCalculator {
-
-    private static final String COMMON_DELIMITER = "[,:]";
-    private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
-    private static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER);
-
     public int splitAndSum(String input) {
         if (input == null || input.isEmpty()) {
             return 0;
         }
-        String[] splitText = splitText(input);
-        PositiveNumbers numbers = PositiveNumbers.convertToPositiveNumbers(splitText);
-        return numbers.sum();
-    }
-
-    private String[] splitText(String input) {
-        Matcher matcher = PATTERN.matcher(input);
-        if (matcher.find()) {
-            String customDelimiter = matcher.group(1);
-            return matcher.group(2).split(customDelimiter);
+        String[] values = input.split("[,:]");
+        int result = 0;
+        for (String value : values) {
+            result += Integer.parseInt(value);
         }
-        return input.split(COMMON_DELIMITER);
+        return result;
     }
 }
