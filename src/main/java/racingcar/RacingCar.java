@@ -30,4 +30,7 @@ public class RacingCar {
         return randomNumberGenerator.generateRacingRandomNumber() >= MOVABLE_BOUNDARY_NUMBER;
     }
 
+    public int getDistance() {
+        return distance;
+    }
 }
