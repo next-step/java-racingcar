@@ -40,4 +40,10 @@ class StringAddCalculatorTest {
     }).isInstanceOf(RuntimeException.class);
   }
 
+  @Test
+  void 커스텀_구분자가_포함된_음수를_전달할경우_예외를_발생한다() {
+    assertThatThrownBy(() -> {
+      StringAddCalculator.spliteAndSum("//;\n1;2;-3");
+    }).isInstanceOf(RuntimeException.class);
+  }
 }

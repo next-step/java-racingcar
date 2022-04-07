@@ -4,6 +4,8 @@ public class PositiveInteger {
 
   private int number;
 
+  private PositiveInteger() {}
+
   public static PositiveInteger createPositiveIntegerByParsingString(String strNumber) {
     int number = Integer.parseInt(strNumber);;
     if (number < 0) {

@@ -15,16 +15,19 @@ public class StringAddCalculator {
       return 0;
     }
 
+    String[] splitedText = split(text);
+    return sum(toPositiveInteger(splitedText));
+  }
+
+  private static String[] split(String text) {
     Matcher m = pattern.matcher(text);
 
     if (m.find()) {
       String customDelimeter = m.group(1);
-      String[] tokens = m.group(2).split(customDelimeter);
-      return sum(toPositiveInteger(tokens));
+      return m.group(2).split(customDelimeter);
     }
 
-    String[] values = text.split(REGEX);
-    return sum(toPositiveInteger(values));
+    return text.split(REGEX);
   }
 
   private static int sum(PositiveInteger[] positiveIntegers) {
