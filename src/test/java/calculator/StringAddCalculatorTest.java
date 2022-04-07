@@ -40,4 +40,11 @@ class StringAddCalculatorTest {
             StringAddCalculator.splitAndSum("-1,2,3");
         }).isInstanceOf(RuntimeException.class);
     }
+
+    @Test
+    void 입력값_검증() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.splitAndSum("a,bc");
+        }).isInstanceOf(RuntimeException.class);
+    }
 }

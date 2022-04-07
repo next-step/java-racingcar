@@ -2,7 +2,7 @@ package calculator;
 
 public class Positive {
     private final int number;
-    static private final String NUMBER_REGEX_EXPRESSION = "[0-9]+";
+    static private final String NUMBER_REGEX_EXPRESSION = "^(?!-)[0-9]+";
 
     Positive(String value) {
         number = isValidNumber(value);
@@ -12,7 +12,7 @@ public class Positive {
         if(isOnlyNumber(value)) {
             return Integer.parseInt(value);
         }
-        throw new RuntimeException("음수이거나 숫자가 아닌 값을 입력하여 예외가 발생합니다.");
+        throw new IllegalArgumentException("음수이거나 숫자가 아닌 값을 입력하여 예외가 발생합니다.");
     }
 
     private boolean isOnlyNumber(String value) {
