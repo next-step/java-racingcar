@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.Scanner;
-
 public class ResultView {
 
     public void roundLogTrace(RacingCar[] racingCars) {
