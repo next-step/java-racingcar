@@ -12,10 +12,6 @@ public class StringAddCalculator {
             return DEFAULT_VALUE;
         }
 
-        if (text.length() == 1) {
-            return Integer.parseInt(text);
-        }
-
         Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
         if (hasCustomDelimiter(matcher)) {
             String customDelimiter = matcher.group(1);
