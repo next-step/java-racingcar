@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
     @Test
@@ -22,8 +23,24 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    @DisplayName("문자열 앞부분의 //와 \\n 사이에 위치하는 분자를 커스텀 구분자로 사용한다")
+    @DisplayName("문자열 앞부분의 //와 \\n 사이에 위치하는 분자를 커스텀 구분자로 사용")
     void customDelimiter() {
         assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("음수 전달하는 경우 RuntimeException 발생")
+    void inputHasNegativeValue() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.splitAndSum("//;\n-1;2");
+        }).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    @DisplayName("숫자 이외의 값 전달하는 경우 RuntimeException 발생")
+    void inputHasNonNumericValue() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.splitAndSum("//;\na;2");
+        }).isInstanceOf(RuntimeException.class);
     }
 }
