@@ -17,37 +17,29 @@ public class StringCalculator {
         if(m.find()){
             String customDelimiter = m.group(1);
             String [] values = split(customDelimiter, m.group(2));
-            return sum(toInts(values));
+            return sum(toPositiveNumbers(values));
         }
 
         String[] values = split(DEFAULT_DELIMITER, text);
-        return sum(toInts(values));
+        return sum(toPositiveNumbers(values));
     }
 
     private boolean isBlank(String text) {
         return text == null || text.isBlank();
     }
 
-    private int[] toInts (String [] values){
-        int[] numbers = new int[values.length];
+    private PositiveNumber[] toPositiveNumbers(String [] values){
+        PositiveNumber [] numbers = new PositiveNumber[values.length];
         for(int i = 0; i < values.length; i++){
-            numbers[i] = toInt(values[i]);
+            numbers[i] = new PositiveNumber(values[i]);
         }
         return numbers;
     }
 
-    private int toInt(String value) {
-        int number = Integer.parseInt(value);
-        if(number < 0){
-            throw new RuntimeException("음수는 불가 합니다.");
-        }
-        return number;
-    }
-
-    private int sum(int[] values) {
+    private int sum(PositiveNumber[] numbers) {
         int result = 0;
-        for (int value : values) {
-            result += value;
+        for (PositiveNumber number : numbers) {
+            result += number.getValue();
         }
         return result;
     }
