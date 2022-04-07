@@ -22,10 +22,12 @@ public class StringAddCalculator {
     return normalDelimiterSum(text);
   }
 
-  private Integer normalDelimiterSum(String text) {
-    List<Integer> splitted = split(BASE_SPLIT_REGEX, text);
-    checkPositive(splitted);
-    return sum(splitted);
+  private boolean isEmptyOrNull(String text) {
+    return text == null || text.isEmpty();
+  }
+
+  private boolean containsCustomDelimeter(String text) {
+    return text.matches(CUSTOM_DELIMITER_FIND_REGEX);
   }
 
   private Integer customDelimiterSum(String text) {
@@ -38,6 +40,15 @@ public class StringAddCalculator {
     List<Integer> splitted = split(BASE_SPLIT_REGEX + OR + customDelimeter, delimeterRemovedText);
     checkPositive(splitted);
     return sum(splitted);
+  }
+
+  private List<Integer> split(String delimiter, String text) {
+    try {
+      return Stream.of(text.split(delimiter))
+          .mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+    } catch (Exception e) {
+      throw new RuntimeException("input text must contains only delimiter or number");
+    }
   }
 
   private void checkPositive(List<Integer> nums) {
@@ -56,20 +67,10 @@ public class StringAddCalculator {
     return splittedNumber.stream().mapToInt(i -> i).sum();
   }
 
-  private List<Integer> split(String delimiter, String text) {
-    try {
-      return Stream.of(text.split(delimiter))
-          .mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
-    } catch (Exception e) {
-      throw new RuntimeException("input text must contains only delimiter or number");
-    }
+  private Integer normalDelimiterSum(String text) {
+    List<Integer> splitted = split(BASE_SPLIT_REGEX, text);
+    checkPositive(splitted);
+    return sum(splitted);
   }
 
-  private boolean containsCustomDelimeter(String text) {
-    return text.matches(CUSTOM_DELIMITER_FIND_REGEX);
-  }
-
-  private boolean isEmptyOrNull(String text) {
-    return text == null || text.isEmpty();
-  }
 }
