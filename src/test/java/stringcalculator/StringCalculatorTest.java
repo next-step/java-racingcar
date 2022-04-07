@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class StringCalculatorTest {
 
@@ -50,6 +51,28 @@ public class StringCalculatorTest {
     @DisplayName("커스텀 구분자를 통해 숫자 합계 반환")
     void sumNumbersByCustomDelimiterTest() {
         assertSplitAndSum("//!\n3!100!7", 110);
+    }
+
+    @Test
+    @DisplayName("일반 구분자 이용_음수 입력 시 RuntimeException 반환")
+    void negativeNumberUsingCommonDelimiterTest() {
+        // given
+        String negativeInput = "-1,0";
+        // when
+        Throwable throwable = catchThrowable(() -> stringCalculator.splitAndSum(negativeInput));
+        // then
+        assertThat(throwable).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    @DisplayName("커스텀 구분자 이용_음수 입력 시 RuntimeException 반환")
+    void negativeNumberUsingCustomDelimiterTest() {
+        // given
+        String negativeInput = "//!\n-1!0";
+        // when
+        Throwable throwable = catchThrowable(() -> stringCalculator.splitAndSum(negativeInput));
+        // then
+        assertThat(throwable).isInstanceOf(RuntimeException.class);
     }
 
     private void assertSplitAndSum(String input, int expected) {
