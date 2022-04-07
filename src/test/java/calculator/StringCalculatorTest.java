@@ -1,6 +1,7 @@
 package calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
@@ -28,5 +29,13 @@ public class StringCalculatorTest {
     void customDelimiterGiven_ReturnSum() {
         assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
         assertThat(StringAddCalculator.splitAndSum("//:\n1:2:3")).isEqualTo(6);
+    }
+
+    @Test
+    void noneNumberGiven_ShouldThrowRuntimeException() {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("abcd"))
+            .isInstanceOf(NumberFormatException.class);
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("1bcd"))
+            .isInstanceOf(NumberFormatException.class);
     }
 }
