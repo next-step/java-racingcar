@@ -14,17 +14,17 @@ public class StringAddCalculator {
 
         Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
         if (hasCustomDelimiter(matcher)) {
-            String customDelimiter = matcher.group(1);
-            String tokens = matcher.group(2);
-
-            return sum(split(tokens, customDelimiter));
+            return sum(split(matcher));
         }
 
         return sum(split(text));
     }
 
-    private static String[] split(String text, String delimiter) {
-        return text.split(delimiter);
+    private static String[] split(Matcher matcher) {
+        String customDelimiter = matcher.group(1);
+        String tokens = matcher.group(2);
+
+        return tokens.split(customDelimiter);
     }
 
     private static boolean hasCustomDelimiter(Matcher matcher) {
