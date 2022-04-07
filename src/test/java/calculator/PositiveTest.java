@@ -16,7 +16,8 @@ class PositiveTest {
 
             @Test
             void 변환된_양수를_리턴한다() {
-                assertThat(new Positive("1")).isEqualTo(1);
+                assertThat(new Positive("1"))
+                        .isEqualTo(new Positive("1"));
             }
         }
 

@@ -27,8 +27,10 @@ public class Positive {
     }
 
     @Override
-    public boolean equals(Object number) {
-        return this.number == (int) number;
+    public boolean equals(Object object) {
+        Positive positive = (Positive) object;
+       
+        return this.number == positive.getNumber();
     }
 
 }
