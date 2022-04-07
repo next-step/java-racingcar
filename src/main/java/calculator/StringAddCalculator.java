@@ -16,7 +16,7 @@ public class StringAddCalculator {
         if (hasCustomDelimiter(matcher)) {
             String customDelimiter = matcher.group(1);
             String[] tokens = matcher.group(2).split(customDelimiter);
-            // 덧셈 구현
+
             return sum(tokens);
         }
 
