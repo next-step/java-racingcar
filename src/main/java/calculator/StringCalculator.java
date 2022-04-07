@@ -1,46 +1,43 @@
 package calculator;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class StringCalculator {
 
-    public static final String DEFAULT_DELIMITER = ",|:";
-    public static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
 
     public int addString(String text) {
         if(isBlank(text)){
             return 0;
         }
 
-        Matcher m = Pattern.compile(CUSTOM_DELIMITER).matcher(text);
+        Matcher m = pattern.matcher(text);
         if(m.find()){
             String customDelimiter = m.group(1);
             String [] values = split(customDelimiter, m.group(2));
-            return sum(toPositiveNumbers(values));
+            return sum(values);
         }
 
         String[] values = split(DEFAULT_DELIMITER, text);
-        return sum(toPositiveNumbers(values));
+        return sum(values);
     }
 
     private boolean isBlank(String text) {
         return text == null || text.isBlank();
     }
 
-    private List<PositiveNumber> toPositiveNumbers(String [] values){
+    private int sum (String [] values){
         return Arrays.stream(values)
-            .map(value -> new PositiveNumber(value))
-            .collect(Collectors.toList());
-    }
-
-    private int sum(List<PositiveNumber> numbers) {
-        PositiveNumber result = new PositiveNumber(0);
-        numbers.stream().forEach(number -> result.plus(number));
-        return result.getValue();
+            .map(PositiveNumber::new)
+            .collect(Collectors.toList())
+            .stream()
+            .mapToInt(PositiveNumber::getValue)
+            .sum();
     }
 
     private String[] split(String customDelimiter, String text) {

@@ -21,10 +21,4 @@ class PositiveNumberTest {
         assertThat(positiveNumber1.getValue()).isEqualTo(1);
         assertThat(positiveNumber2.getValue()).isEqualTo(2);
     }
-
-    @Test
-    void plus(){
-        assertThat(positiveNumber1.plus(positiveNumber2).getValue()).isEqualTo(3);
-    }
-
 }
