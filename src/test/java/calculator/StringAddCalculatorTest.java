@@ -9,7 +9,15 @@ public class StringAddCalculatorTest {
     @Test
     @DisplayName("입력값이 빈 문자열 또는 null일 경우 0 반환")
     void inputIsEmptyOrNull() {
-        assertThat(StringAddCalculator.sum("")).isEqualTo(0);
-        assertThat(StringAddCalculator.sum(null)).isEqualTo(0);
+        assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
+        assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("입력값이 쉼표 또는 콜론을 구분자로 가지는 문자열일 경우 구분자를 기준으로 분리한 숫자의 합 반환")
+    void delimiterIsCommaOrColon() {
+        assertThat(StringAddCalculator.splitAndSum("1,2")).isEqualTo(3);
+        assertThat(StringAddCalculator.splitAndSum("1,2,3")).isEqualTo(6);
+        assertThat(StringAddCalculator.splitAndSum("1,2:3")).isEqualTo(6);
     }
 }
