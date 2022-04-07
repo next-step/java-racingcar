@@ -1,6 +1,8 @@
 package calculator;
 
 public class Positive {
+    private static final int MIN_NUMBER = 0;
+    private static final String NEGATIVE_NUMBER_NOT_ALLOW_MESSAGE = "음수 값은 허용되지 않습니다.";
     private final int number;
 
     public Positive(String text) {
@@ -15,8 +17,8 @@ public class Positive {
     }
 
     private void checkNegative(int number) {
-        if (number < 0) {
-            throw new RuntimeException("음수 값은 허용되지 않습니다.");
+        if (number < MIN_NUMBER) {
+            throw new RuntimeException(NEGATIVE_NUMBER_NOT_ALLOW_MESSAGE);
         }
     }
 
