@@ -1,34 +1,23 @@
 package calculator;
 
-import java.util.Arrays;
-import java.util.List;
+import calculator.factory.SplitterFactory;
+import calculator.factory.splitter.Splitter;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class StringAddCalculator {
-
-    public static final String SEPARATOR = ",|:";
-    public static final String CUSTOM_SEPARATOR_REGEX_PATTERN = "//(.)\n(.*)";
 
     public static int splitAndSum(String text) {
         if (isNullOrBlank(text)) {
             return 0;
         }
 
-        Matcher matcher = Pattern.compile(CUSTOM_SEPARATOR_REGEX_PATTERN).matcher(text);
-        if (matcher.find()) {
-            String customSeparator = matcher.group(1);
-            String[] values = matcher.group(2).split(customSeparator);
-            return Arrays.asList(values)
-                    .stream()
-                    .map(number-> new PositiveNumber(number))
-                    .mapToInt(PositiveNumber::getNumber)
-                    .sum();
-        }
+        Matcher matcher = Pattern.compile(SeparatorConst.CUSTOM_SEPARATOR_REGEX_PATTERN).matcher(text);
+        SplitterFactory factory = new SplitterFactory();
+        Splitter splitter = factory.getSplitter(matcher.find());
 
-        String[] values = text.split(SEPARATOR);
-        return Arrays.asList(values)
+        return splitter.split(text)
                 .stream()
                 .map(number-> new PositiveNumber(number))
                 .mapToInt(PositiveNumber::getNumber)
