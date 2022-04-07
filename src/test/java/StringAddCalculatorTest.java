@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
 
@@ -69,18 +69,18 @@ public class StringAddCalculatorTest {
   @DisplayName("음수가 들어왔을 경우, RuntimeException 을 반환")
   @ValueSource(strings = {"1,-1", "-5,-10", "1,2,5,6,-1"})
   void negativeNumberTest(String text) {
-    assertThrows(RuntimeException.class, () -> {
+    assertThatThrownBy(() -> {
       stringAddCalculator.calcSum(text);
-    });
+    }).isInstanceOf(RuntimeException.class);
   }
 
   @ParameterizedTest
   @DisplayName("숫자가 아닌 값이 들어왔을 경우, RuntimeException 을 반환")
   @ValueSource(strings = {"1,-asd1", "zx", "maskld,1k:123", "123mklz,123"})
   void notNumberTest(String text) {
-    assertThrows(RuntimeException.class, () -> {
+    assertThatThrownBy(() -> {
       stringAddCalculator.calcSum(text);
-    });
+    }).isInstanceOf(RuntimeException.class);
   }
 
 }
