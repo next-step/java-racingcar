@@ -29,6 +29,6 @@ class GameHostTest {
             for (int i = 0; i < rounds + 1; i++) {
                 host.proceedRound();
             }
-        }).isInstanceOf(UnsupportedOperationException.class);
+        }).isInstanceOf(IllegalStateException.class);
     }
 }

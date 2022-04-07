@@ -17,7 +17,7 @@ public class GameHost {
 
     public void proceedRound() {
         if (rounds <= 0) {
-            throw new UnsupportedOperationException("game is already over");
+            throw new IllegalStateException("game is already over");
         }
 
         this.rounds = rounds - 1;
