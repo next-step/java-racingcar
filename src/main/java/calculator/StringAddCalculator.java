@@ -33,27 +33,11 @@ public class StringAddCalculator {
     }
 
     private static int sum(String[] text) {
-        checkExistNegative(text);
         return Arrays.stream(text)
-                .map(Integer::parseInt)
+                .map(Positive::new)
+                .map(Positive::getNumber)
                 .reduce(Integer::sum)
                 .orElse(DEFAULT_VALUE);
-    }
-
-    private static void checkExistNegative(String[] text) {
-        if (hasNegative(text)) {
-            throw new RuntimeException("음수 값은 허용되지 않습니다.");
-        }
-    }
-
-    private static boolean hasNegative(String[] text) {
-        return Arrays.stream(text)
-                .map(Integer::parseInt)
-                .anyMatch(StringAddCalculator::isNegative);
-    }
-
-    private static boolean isNegative(Integer it) {
-        return it < 0;
     }
 
     private static boolean isEmpty(String text) {
