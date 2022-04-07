@@ -12,23 +12,15 @@ public class StringCalculator {
   private final static int DELIMITER_GROUP = 1;
   private final static int SPLIT_GROUP = 2;
 
-  private final String stringNumber;
-  private final Matcher matcher;
-
-  protected StringCalculator(String stringNumber) {
-    this.stringNumber = stringNumber;
-    if (stringNumber == null) {
-      stringNumber = "";
-    }
-    this.matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(stringNumber);
-  }
+  private final static Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER);
 
 
-  public int calculate() {
+
+  public int calculate(String stringNumber) {
     if (stringNumber == null || stringNumber.isBlank()) {
       return NULL_BLANK_RESULT;
     }
-
+    Matcher matcher = PATTERN.matcher(stringNumber);
     if (matcher.find()) {
       String customDelimiter = matcher.group(DELIMITER_GROUP);
 
