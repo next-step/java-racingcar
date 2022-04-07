@@ -17,7 +17,7 @@ public class StringAddCalculator {
       return 0;
     }
 
-    if (containsCustomDelimeter(text)) {
+    if (containsCustomDelimiter(text)) {
       return customDelimiterSum(text);
     }
 
@@ -28,7 +28,7 @@ public class StringAddCalculator {
     return text == null || text.isEmpty();
   }
 
-  private boolean containsCustomDelimeter(String text) {
+  private boolean containsCustomDelimiter(String text) {
     return text.matches(CUSTOM_DELIMITER_FIND_REGEX);
   }
 
@@ -36,10 +36,10 @@ public class StringAddCalculator {
     Matcher customDelimiterMatch = customDelimiterPattern.matcher(text);
     customDelimiterMatch.find();
 
-    String customDelimeter = customDelimiterMatch.group(1);
-    String delimeterRemovedText = customDelimiterMatch.group(2);
+    String customDelimiter = customDelimiterMatch.group(1);
+    String delimiterRemovedText = customDelimiterMatch.group(2);
 
-    List<Integer> splitted = split(BASE_SPLIT_REGEX + OR + customDelimeter, delimeterRemovedText);
+    List<Integer> splitted = split(BASE_SPLIT_REGEX + OR + customDelimiter, delimiterRemovedText);
     checkPositive(splitted);
     return sum(splitted);
   }
