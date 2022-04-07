@@ -5,7 +5,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-
     private static final int DEFAULT_VALUE = 0;
 
     public static int splitAndSum(String text) {
@@ -17,15 +16,19 @@ public class StringAddCalculator {
             return Integer.parseInt(text);
         }
 
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] tokens = m.group(2).split(customDelimiter);
+        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if (hasCustomDelimiter(matcher)) {
+            String customDelimiter = matcher.group(1);
+            String[] tokens = matcher.group(2).split(customDelimiter);
             // 덧셈 구현
             return sum(tokens);
         }
 
         return sum(split(text));
+    }
+
+    private static boolean hasCustomDelimiter(Matcher matcher) {
+        return matcher.find();
     }
 
     private static String[] split(String text) {
