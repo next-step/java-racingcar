@@ -20,13 +20,17 @@ public class StringAddCalculator {
         if (matcher.find()) {
             String customSeparator = matcher.group(1);
             String[] values = matcher.group(2).split(customSeparator);
-            return toInts(values).stream()
+            return Arrays.asList(values)
+                    .stream()
+                    .map(number-> new PositiveNumber(number))
                     .mapToInt(PositiveNumber::getNumber)
                     .sum();
         }
 
         String[] values = text.split(SEPARATOR);
-        return toInts(values).stream()
+        return Arrays.asList(values)
+                .stream()
+                .map(number-> new PositiveNumber(number))
                 .mapToInt(PositiveNumber::getNumber)
                 .sum();
     }
@@ -34,11 +38,4 @@ public class StringAddCalculator {
     private static boolean isNullOrBlank(String text) {
         return text == null || text.isEmpty();
     }
-
-    private static List<PositiveNumber> toInts(String[] values) {
-        return Arrays.asList(values).stream()
-                .map(number-> new PositiveNumber(number))
-                .collect(Collectors.toList());
-    }
-
 }
