@@ -1,7 +1,6 @@
 package me.devyonghee.basic;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 final class StringSeparator {
@@ -22,12 +21,12 @@ final class StringSeparator {
 
     List<String> separate(String target) {
         if (target == null) {
-            return Collections.emptyList();
+            throw new IllegalArgumentException("target to separate must not be null");
         }
         return Arrays.asList(split(target));
     }
 
-    private void validateNull(Object argument, String message) {
+    private <T> void validateNull(T argument, String message) {
         if (argument == null) {
             throw new IllegalArgumentException(message);
         }

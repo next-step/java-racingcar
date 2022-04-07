@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("구분자 탐지기")
 class DelimiterFinderTest {
 
     private static final Pattern DELIMITER_PATTERN = Pattern.compile("^//(.)\n");

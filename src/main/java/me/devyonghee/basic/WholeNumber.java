@@ -2,25 +2,26 @@ package me.devyonghee.basic;
 
 import java.util.Objects;
 
-final class ZeroPositive {
+final class WholeNumber {
 
-    static final ZeroPositive ZERO = new ZeroPositive(0);
+    static final WholeNumber ZERO = new WholeNumber(0);
+
     private final int number;
 
-    private ZeroPositive(String string) {
+    private WholeNumber(String string) {
         this(parseInt(string));
     }
 
-    private ZeroPositive(int number) {
+    private WholeNumber(int number) {
         validate(number);
         this.number = number;
     }
 
-    static ZeroPositive from(String string) {
+    static WholeNumber from(String string) {
         if (isBlank(string)) {
             return ZERO;
         }
-        return new ZeroPositive(string);
+        return new WholeNumber(string);
     }
 
     private static boolean isBlank(String target) {
@@ -35,8 +36,8 @@ final class ZeroPositive {
         }
     }
 
-    ZeroPositive add(ZeroPositive zeroPositive) {
-        return new ZeroPositive(number + zeroPositive.number);
+    WholeNumber add(WholeNumber wholeNumber) {
+        return new WholeNumber(number + wholeNumber.number);
     }
 
     int number() {
@@ -61,7 +62,7 @@ final class ZeroPositive {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ZeroPositive that = (ZeroPositive) o;
+        WholeNumber that = (WholeNumber) o;
         return number == that.number;
     }
 

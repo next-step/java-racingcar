@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 final class DelimiterFinder {
 
     private static final String DEFAULT_DELIMITER_REGEX = ",|:";
+    private static final int DELIMITER_GROUP_INDEX = 1;
+
     private final Pattern pattern;
 
     private DelimiterFinder(Pattern pattern) {
@@ -26,7 +28,7 @@ final class DelimiterFinder {
 
         Matcher matcher = pattern.matcher(target);
         if (matcher.find()) {
-            return matcher.group(1);
+            return matcher.group(DELIMITER_GROUP_INDEX);
         }
         return DEFAULT_DELIMITER_REGEX;
     }

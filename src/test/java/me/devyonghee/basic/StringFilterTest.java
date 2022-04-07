@@ -8,9 +8,11 @@ import java.util.regex.Pattern;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("문자열 필터")
 class StringFilterTest {
 
     private static final Pattern FILTER_PATTERN = Pattern.compile("^//(.)\n");
+    private static final StringFilter STRING_FILTER = StringFilter.from(FILTER_PATTERN);
 
     @Test
     @DisplayName("객체화")
@@ -28,7 +30,7 @@ class StringFilterTest {
     @DisplayName("문자열에 패턴이 포함되어 있으면 패턴 문자 제거")
     void string() {
         //given, when
-        String filteredString = StringFilter.from(FILTER_PATTERN).filter("//;\n1;2;3");
+        String filteredString = STRING_FILTER.filter("//;\n1;2;3");
         //then
         assertThat(filteredString).isEqualTo("1;2;3");
     }
@@ -38,7 +40,7 @@ class StringFilterTest {
     void string_notContains() {
         //given, when
         String abc = "abc";
-        String filteredString = StringFilter.from(FILTER_PATTERN).filter(abc);
+        String filteredString = STRING_FILTER.filter(abc);
         //then
         assertThat(filteredString).isEqualTo(abc);
     }
@@ -46,6 +48,6 @@ class StringFilterTest {
     @Test
     @DisplayName("주어진 문자가 null 이라면 IllegalArgumentException")
     void string_null_thrownIllegalArgumentException() {
-        assertThatIllegalArgumentException().isThrownBy(() -> StringFilter.from(FILTER_PATTERN).filter(null));
+        assertThatIllegalArgumentException().isThrownBy(() -> STRING_FILTER.filter(null));
     }
 }
