@@ -5,20 +5,23 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+    private static final String REGEX = "//(.)\n(.*)";
+    private static final String DELIMITER = ",|:";
+
     public static int splitAndSum(String text) {
         if (text == null || text.isBlank()) {
             return 0;
         }
 
-        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher matcher = Pattern.compile(REGEX).matcher(text);
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
-            String[] splitedByDelimiter = matcher.group(2).split(customDelimiter);
-            return sum(toInts(splitedByDelimiter));
+            String[] splitByDelimiter = matcher.group(2).split(customDelimiter);
+            return sum(toInts(splitByDelimiter));
         }
 
-        String[] splitedString = text.split(",|:");
-        return sum(toInts(splitedString));
+        String[] splitString = text.split(DELIMITER);
+        return sum(toInts(splitString));
     }
 
     private static int sum(int[] ints) {
