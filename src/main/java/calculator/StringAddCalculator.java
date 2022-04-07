@@ -14,18 +14,30 @@ public class StringAddCalculator {
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
             String[] splitedByDelimiter = matcher.group(2).split(customDelimiter);
-            return stringArraySum(splitedByDelimiter);
+            return sum(toInts(splitedByDelimiter));
         }
 
         String[] splitedString = text.split(",|:");
-        return stringArraySum(splitedString);
+        return sum(toInts(splitedString));
     }
 
-    private static int stringArraySum(String[] splitedString) {
+    private static int sum(int[] ints) {
         int result = 0;
-        for (String each : splitedString) {
-            result += Integer.parseInt(each);
+        for (int each : ints) {
+            result += each;
         }
         return result;
+    }
+
+    private static int[] toInts(String[] strings) {
+        int[] ints = new int[strings.length];
+        for (int index = 0; index < strings.length; index++) {
+            ints[index] = toInt(strings[index]);
+        }
+        return ints;
+    }
+
+    private static int toInt(String each) {
+        return Integer.parseInt(each);
     }
 }
