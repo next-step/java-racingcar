@@ -33,6 +33,13 @@ public class StringAddCalculatorTest {
   }
 
   @ParameterizedTest
+  @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환")
+  @CsvSource(value = {"1,1", "10,10", "120,120", "292150,292150"})
+  void onlyNumberTest(String text, int result) {
+    assertThat(stringAddCalculator.calcSum(text)).isEqualTo(result);
+  }
+
+  @ParameterizedTest
   @DisplayName("콤마, 콜론 구분자를 통해 구분된 숫자의 합을 반환")
   @CsvSource(value = {"1,1|2", "1,2:3|6", "10:1:2|13", "0:0,0|0", "100:100:11|211",
       "2:2,2|6"}, delimiter = '|')
