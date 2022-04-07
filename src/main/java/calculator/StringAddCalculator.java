@@ -1,7 +1,6 @@
 package calculator;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Arrays;
 
 public class StringAddCalculator {
 
@@ -10,32 +9,10 @@ public class StringAddCalculator {
             return 0;
         }
 
-        String[] numbers = getText(value).split(getSeparator(value));
+        PatternExtractor patternExtractor = new PatternExtractor(value);
+        String[] numbers = patternExtractor.getText().split(patternExtractor.getSeparator());
+
         return sum(numbers);
-    }
-
-    private static String getText(String value) {
-        Matcher matcher = getMatcher(value);
-
-        if (!matcher.find()) {
-            return value;
-        }
-
-        return matcher.group(2);
-    }
-
-    private static String getSeparator(String value) {
-        Matcher matcher = getMatcher(value);
-
-        if (!matcher.find()) {
-            return value;
-        }
-
-        return matcher.group(1);
-    }
-
-    private static Matcher getMatcher(String value) {
-        return Pattern.compile("//(.)\n(.*)").matcher(value);
     }
 
     private static int sum(String[] numbers) {

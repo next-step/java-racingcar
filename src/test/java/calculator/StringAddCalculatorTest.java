@@ -19,7 +19,7 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    void 빈_문자나_Null이_아닌_경우() {
+    void 커스텀_구분자를_지정한_경우() {
         Assertions.assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
     }
 
