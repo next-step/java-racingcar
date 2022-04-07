@@ -18,18 +18,22 @@ public class StringCalculator {
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
             String[] values = matcher.group(2).split(customDelimiter);
-            result = getResult(values, result);
+            for (String value : values) {
+                int number = Integer.parseInt(value);
+                if (number < 0) {
+                    throw new RuntimeException();
+                }
+                result += number;
+            }
         } else {
             String[] values = input.split(COMMON_DELIMITER);
-            result = getResult(values, result);
-        }
-        return result;
-    }
-
-    private int getResult(String[] values, int result) {
-        for (String value : values) {
-            int number = Integer.parseInt(value);
-            result += number;
+            for (String value : values) {
+                int number = Integer.parseInt(value);
+                if (number < 0) {
+                    throw new RuntimeException();
+                }
+                result += number;
+            }
         }
         return result;
     }
