@@ -14,21 +14,21 @@ public class StringAddCalculator {
 
         Matcher customDelimiterMatcher = Pattern.compile("//(.)\n(.*)").matcher(text);
         if (customDelimiterMatcher.find()) {
-            return sum(split(customDelimiterMatcher));
+            String customDelimiter = customDelimiterMatcher.group(1);
+            String tokens = customDelimiterMatcher.group(2);
+
+            return sum(split(tokens, customDelimiter));
         }
 
         return sum(split(text));
     }
 
-    private static String[] split(Matcher customDelimiterMatcher) {
-        String customDelimiter = customDelimiterMatcher.group(1);
-        String tokens = customDelimiterMatcher.group(2);
-
-        return tokens.split(customDelimiter);
+    private static String[] split(String text) {
+        return split(text, ",|:");
     }
 
-    private static String[] split(String text) {
-        return text.split(",|:");
+    private static String[] split(String text, String delimiter) {
+        return text.split(delimiter);
     }
 
     private static int sum(String[] text) {
