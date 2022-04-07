@@ -32,14 +32,14 @@ public class SetTest {
   @ParameterizedTest
   @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인")
   @ValueSource(strings = {"1", "2", "3"})
-  void containsTest(String input) {
-    assertThat(numbers.contains(Integer.parseInt(input))).isTrue();
+  void containsTest(int input) {
+    assertThat(numbers.contains(input)).isTrue();
   }
 
   @ParameterizedTest
   @DisplayName("Set 에 존재/존재하지 않는 값들에 대해 확인")
   @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-  void containsTrueFalseTest(Integer input, Boolean expected) {
+  void containsTrueFalseTest(int input, boolean expected) {
     assertThat(numbers.contains(input)).isEqualTo(expected);
   }
 }
