@@ -6,26 +6,37 @@ import java.util.stream.Collectors;
 
 public class StringCalculator {
 
-  private String CUSTOM_DELIMITER = "//(.*)\\n(.*)";
-  private String DEFAULT_DELIMITER = "[,:]";
+  private final static int NULL_BLANK_RESULT = 0;
+  private final static String CUSTOM_DELIMITER = "//(.*)\\n(.*)";
+  private final static String DEFAULT_DELIMITER = "[,:]";
+  private final static int DELIMITER_GROUP = 1;
+  private final static int SPLIT_GROUP = 2;
 
-  private int DELIMITER_GROUP = 1;
-  private int SPLIT_GROUP = 2;
+  private final String stringNumber;
+  private final Matcher matcher;
 
-  public int calculate(String str) {
-    if (str == null || str.isEmpty()) {
-      return 0;
+  protected StringCalculator(String stringNumber) {
+    this.stringNumber = stringNumber;
+    if (stringNumber == null) {
+      stringNumber = "";
+    }
+    this.matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(stringNumber);
+  }
+
+
+  public int calculate() {
+    if (stringNumber == null || stringNumber.isBlank()) {
+      return NULL_BLANK_RESULT;
     }
 
-    Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(str);
     if (matcher.find()) {
       String customDelimiter = matcher.group(DELIMITER_GROUP);
 
       return sum(getIntegerTokens(matcher.group(SPLIT_GROUP)
-                                         .split(customDelimiter)));
+          .split(customDelimiter)));
     }
 
-    return sum(getIntegerTokens(str.split(DEFAULT_DELIMITER)));
+    return sum(getIntegerTokens(stringNumber.split(DEFAULT_DELIMITER)));
   }
 
   public List<Integer> getIntegerTokens(String[] tokens) {
