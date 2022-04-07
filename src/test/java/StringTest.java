@@ -27,7 +27,7 @@ public class StringTest {
     }
 
     @ParameterizedTest
-    @DisplayName("charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 테스트")
+    @DisplayName("charAt() 메소드를 활용해 특정 위치의 문자를 성공적으로 가져오는 테스트")
     @CsvSource(value= {"0,a", "1,b,","2,c"})
     void charAt(int idx, char chr) {
         assertThat("abc".charAt(idx)).isEqualTo(chr);

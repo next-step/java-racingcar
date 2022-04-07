@@ -32,6 +32,7 @@ public class SetTest {
     @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인하는 테스트")
     @ValueSource(ints = {1,2,3})
     void contains(int num) {
+
         assertThat(numbers).contains(num);
     }
 
