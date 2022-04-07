@@ -1,7 +1,10 @@
 package calculator;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
 
@@ -28,20 +31,16 @@ public class StringCalculator {
         return text == null || text.isBlank();
     }
 
-    private PositiveNumber[] toPositiveNumbers(String [] values){
-        PositiveNumber [] numbers = new PositiveNumber[values.length];
-        for(int i = 0; i < values.length; i++){
-            numbers[i] = new PositiveNumber(values[i]);
-        }
-        return numbers;
+    private List<PositiveNumber> toPositiveNumbers(String [] values){
+        return Arrays.stream(values)
+            .map(value -> new PositiveNumber(value))
+            .collect(Collectors.toList());
     }
 
-    private int sum(PositiveNumber[] numbers) {
-        int result = 0;
-        for (PositiveNumber number : numbers) {
-            result += number.getValue();
-        }
-        return result;
+    private int sum(List<PositiveNumber> numbers) {
+        PositiveNumber result = new PositiveNumber(0);
+        numbers.stream().forEach(number -> result.plus(number));
+        return result.getValue();
     }
 
     private String[] split(String customDelimiter, String text) {
