@@ -5,10 +5,10 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-  private static final String DELIMETER = "//(.)\n(.*)";
-  private static final String REGEX = ",|:";
+  private static final String PATTERN_DELIMETER = "//(.)\n(.*)";
+  private static final String DEFAULT_DELIMETER = ",|:";
 
-  private static final Pattern pattern = Pattern.compile(DELIMETER);
+  private static final Pattern pattern = Pattern.compile(PATTERN_DELIMETER);
 
   public static int spliteAndSum(String text) {
     if (text == null || text.isBlank()) {
@@ -27,7 +27,7 @@ public class StringAddCalculator {
       return m.group(2).split(customDelimeter);
     }
 
-    return text.split(REGEX);
+    return text.split(DEFAULT_DELIMETER);
   }
 
   private static int sum(PositiveInteger[] positiveIntegers) {
