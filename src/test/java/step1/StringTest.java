@@ -3,7 +3,8 @@ package step1;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class StringTest {
 
@@ -22,12 +23,7 @@ public class StringTest {
     @Test
     @DisplayName("문자열 1, split 시 1 리턴")
     void stringSplitTest2() {
-        // given
-        String input = "1,";
-        // when
-        String[] split = input.split(",");
-        // then
-        assertThat(split).containsExactly("1");
+        assertThat("1,".split(",")).containsExactly("1");
     }
 
     @Test
