@@ -7,9 +7,14 @@ import org.junit.jupiter.api.Test;
 public class StringCalculatorTest {
 
     @Test
-    void nullAndEmptyStringGiven_ReturnZero() {
+    void nullOrEmptyStringGiven_ReturnZero() {
         assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
         assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
+    }
+
+    @Test
+    void singleStringGiven_ShouldParseInt() {
+        assertThat(StringAddCalculator.splitAndSum("1")).isEqualTo(1);
     }
 
     @Test
