@@ -15,10 +15,8 @@ class StringTest {
     @Test
     @DisplayName("\"1,2\" 를 \",\" 로 나누면 [1,2]")
     void split() {
-        //given
-        String oneTwo = "1,2";
-        //when
-        String[] splitStrings = oneTwo.split(",");
+        //given, when
+        String[] splitStrings = "1,2".split(",");
         //then
         assertThat(splitStrings).containsExactly("1", "2");
     }
@@ -26,12 +24,10 @@ class StringTest {
     @Test
     @DisplayName("\"1\" 를 \",\" 로 나누면 [1]")
     void split_withoutDelimiter() {
-        //given
-        String one = "1";
-        //when
-        String[] splitStrings = one.split(",");
+        //given, when
+        String[] splitStrings = "1".split(",");
         //then
-        assertThat(splitStrings).containsExactly(one);
+        assertThat(splitStrings).containsExactly("1");
     }
 
     @Test
@@ -49,10 +45,8 @@ class StringTest {
     @DisplayName("\"abc\" 특정 위치 문자 조회")
     @CsvSource({"0,a", "1,b", "2,c"})
     void charAt_abc(int index, char expected) {
-        //given
-        String abc = "abc";
-        //when
-        char characterOfAbc = abc.charAt(index);
+        //given, when
+        char characterOfAbc = "abc".charAt(index);
         //then
         assertThat(characterOfAbc).isEqualTo(expected);
     }
