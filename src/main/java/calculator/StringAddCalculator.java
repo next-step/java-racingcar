@@ -1,28 +1,32 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
-    static final String DEFAULT_DELIMITER = ",|:";
+    static private final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    static private final String DEFAULT_DELIMITER = ",|:";
+    static private final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
     public static int splitAndSum(String text) {
 
         if(isBlankOrNull(text)) {
             return 0;
         }
 
-        Matcher m = getMatcher(text);
+        Matcher matcher = getMatcher(text);
         String delimiter = DEFAULT_DELIMITER;
 
-        if(hasCustomDelimiter(m)) {
-            delimiter = getCustomDelimiter(m);
-            text = getText(m);
+        if(hasCustomDelimiter(matcher)) {
+            delimiter = getCustomDelimiter(matcher);
+            text = getText(matcher);
         }
 
         String[] values = split(text, delimiter);
 
-        return sum(toIntArray(values));
+        return sum(values);
     }
 
     private static boolean isBlankOrNull(String text) {
@@ -30,7 +34,7 @@ public class StringAddCalculator {
     }
 
     private static Matcher getMatcher(String text) {
-        return Pattern.compile(CUSTOM_DELIMITER).matcher(text);
+        return pattern.matcher(text);
     }
 
     private static boolean hasCustomDelimiter(Matcher m) {
@@ -49,25 +53,17 @@ public class StringAddCalculator {
         return text.split(delimiter);
     }
 
-    private static int sum(int[] numbers) {
+    private static int sum(String[] values) {
         int result = 0;
-        for (int number : numbers) {
-            result += number;
+
+        for (String value : values) {
+            result += getPositive(value).getNumber();;
         }
+
         return result;
     }
 
-    private static int[] toIntArray(String[] values) {
-        int size = values.length;
-        int[] numbers = new int[size];
-        for (int i = 0; i < size; i++) {
-            numbers[i] = getPositive(values[i]).getNumber();
-        }
-        return numbers;
-    }
-
     private static Positive getPositive(String value) {
-        Positive positive = new Positive(value);
-        return positive;
+        return new Positive(value);
     }
 }

@@ -10,8 +10,8 @@ class StringAddCalculatorTest {
 
     @Test
     void 빈문자열이거나_널일때() {
-        assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
-        assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
+        assertThat(StringAddCalculator.splitAndSum(null)).isZero();
+        assertThat(StringAddCalculator.splitAndSum("")).isZero();
     }
 
     @Test

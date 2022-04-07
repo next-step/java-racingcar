@@ -1,15 +1,22 @@
 package calculator;
 
 public class Positive {
-    private int number;
+    private final int number;
+    static private final String NUMBER_REGEX_EXPRESSION = "[0-9]+";
 
     Positive(String value) {
-        this(Integer.parseInt(value));
+        number = isValidNumber(value);
     }
 
-    Positive(int number) {
-        if(number < 0)  throw new RuntimeException("음수 입력시 예외가 발생합니다.");
-        this.number = number;
+    private int isValidNumber(String value) {
+        if(isOnlyNumber(value)) {
+            return Integer.parseInt(value);
+        }
+        throw new RuntimeException("음수이거나 숫자가 아닌 값을 입력하여 예외가 발생합니다.");
+    }
+
+    private boolean isOnlyNumber(String value) {
+        return value.matches(NUMBER_REGEX_EXPRESSION);
     }
 
     public int getNumber() {
