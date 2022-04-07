@@ -17,6 +17,10 @@ public class PositiveNumber {
     }
 
     public int getValue() {
-        return number;
+        return this.number;
+    }
+
+    public PositiveNumber add(PositiveNumber positiveNumber){
+        return new PositiveNumber(this.number + positiveNumber.number);
     }
 }

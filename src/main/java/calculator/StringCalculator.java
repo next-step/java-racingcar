@@ -1,6 +1,7 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -32,12 +33,17 @@ public class StringCalculator {
     }
 
     private int sum (String [] values){
-        return Arrays.stream(values)
+        PositiveNumber positiveNumber = new PositiveNumber(0);
+
+        List<PositiveNumber> positiveNumbers = Arrays.stream(values)
             .map(PositiveNumber::new)
-            .collect(Collectors.toList())
-            .stream()
-            .mapToInt(PositiveNumber::getValue)
-            .sum();
+            .collect(Collectors.toList());
+
+        for (PositiveNumber number : positiveNumbers) {
+            positiveNumber = positiveNumber.add(number);
+        }
+
+        return positiveNumber.getValue();
     }
 
     private String[] split(String customDelimiter, String text) {
