@@ -1,7 +1,10 @@
 package calculator;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringAddCalculator {
 
@@ -17,38 +20,25 @@ public class StringAddCalculator {
         if (matcher.find()) {
             String customSeparator = matcher.group(1);
             String[] values = matcher.group(2).split(customSeparator);
-            return sum(toInts(values));
+            return toInts(values).stream()
+                    .mapToInt(PositiveNumber::getNumber)
+                    .sum();
         }
 
         String[] values = text.split(SEPARATOR);
-        return sum(toInts(values));
+        return toInts(values).stream()
+                .mapToInt(PositiveNumber::getNumber)
+                .sum();
     }
 
     private static boolean isNullOrBlank(String text) {
         return text == null || text.isEmpty();
     }
 
-    private static int[] toInts(String[] values) {
-        int[] numbers = new int[values.length];
-        for (int i = 0; i < values.length; i++) {
-            numbers[i] = toInt(values[i]);
-        }
-        return numbers;
+    private static List<PositiveNumber> toInts(String[] values) {
+        return Arrays.asList(values).stream()
+                .map(number-> new PositiveNumber(number))
+                .collect(Collectors.toList());
     }
 
-    private static int toInt(String value) {
-        int number = Integer.parseInt(value);
-        if (number < 0) {
-            throw new RuntimeException();
-        }
-        return number;
-    }
-
-    private static int sum(int[] numbers) {
-        int sum = 0;
-        for (int number : numbers) {
-            sum += number;
-        }
-        return sum;
-    }
 }
