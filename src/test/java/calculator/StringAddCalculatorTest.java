@@ -2,14 +2,12 @@ package calculator;
 
 import org.junit.jupiter.api.Test;
 
-import java.sql.Array;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
     @Test
-    void 빈_문자열이나_null_일경우() {
+    void 빈_문자열이나_null_일경() {
         assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
         assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
     }
