@@ -12,23 +12,19 @@ public class StringAddCalculator {
             return DEFAULT_VALUE;
         }
 
-        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if (hasCustomDelimiter(matcher)) {
-            return sum(split(matcher));
+        Matcher customDelimiterMatcher = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if (customDelimiterMatcher.find()) {
+            return sum(split(customDelimiterMatcher));
         }
 
         return sum(split(text));
     }
 
-    private static String[] split(Matcher matcher) {
-        String customDelimiter = matcher.group(1);
-        String tokens = matcher.group(2);
+    private static String[] split(Matcher customDelimiterMatcher) {
+        String customDelimiter = customDelimiterMatcher.group(1);
+        String tokens = customDelimiterMatcher.group(2);
 
         return tokens.split(customDelimiter);
-    }
-
-    private static boolean hasCustomDelimiter(Matcher matcher) {
-        return matcher.find();
     }
 
     private static String[] split(String text) {
