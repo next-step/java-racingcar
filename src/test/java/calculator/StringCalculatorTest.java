@@ -1,5 +1,6 @@
 package calculator;
 
+import static calculator.StringAddCalculator.NEGATIVE_VALIDATION;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -37,5 +38,15 @@ public class StringCalculatorTest {
             .isInstanceOf(NumberFormatException.class);
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("1bcd"))
             .isInstanceOf(NumberFormatException.class);
+    }
+
+    @Test
+    void negativeGiven_ShouldThrowRuntimeException() {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1"))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(NEGATIVE_VALIDATION);
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-12321"))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(NEGATIVE_VALIDATION);
     }
 }

@@ -7,6 +7,7 @@ public class StringAddCalculator {
 
     private static final String REGEX = "//(.)\n(.*)";
     private static final String DELIMITER = ",|:";
+    public static final String NEGATIVE_VALIDATION = "0 이상의 값만 넣어주세요.";
 
     public static int splitAndSum(String text) {
         if (text == null || text.isBlank()) {
@@ -41,6 +42,10 @@ public class StringAddCalculator {
     }
 
     private static int toInt(String each) {
-        return Integer.parseInt(each);
+        int integer = Integer.parseInt(each);
+        if (integer < 0) {
+            throw new IllegalArgumentException(NEGATIVE_VALIDATION);
+        }
+        return integer;
     }
 }
