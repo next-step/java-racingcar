@@ -13,15 +13,16 @@ public class StringCalculator {
   private int SPLIT_GROUP = 2;
 
   public int calculate(String str) {
-    if (str == null || str.equals("")) {
+    if (str == null || str.isEmpty()) {
       return 0;
     }
 
     Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(str);
     if (matcher.find()) {
       String customDelimiter = matcher.group(DELIMITER_GROUP);
+
       return sum(getIntegerTokens(matcher.group(SPLIT_GROUP)
-          .split(customDelimiter)));
+                                         .split(customDelimiter)));
     }
 
     return sum(getIntegerTokens(str.split(DEFAULT_DELIMITER)));
