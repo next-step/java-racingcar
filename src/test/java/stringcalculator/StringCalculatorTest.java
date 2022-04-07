@@ -22,39 +22,38 @@ public class StringCalculatorTest {
     @NullAndEmptySource
     @DisplayName("빈값 혹은 null 입력시 0 반환")
     void emptyOrNullTest(String input) {
-        int result = stringCalculator.splitAndSum(input);
-        assertThat(result).isEqualTo(0);
+        assertSplitAndSum(input, 0);
     }
     
     @ParameterizedTest
     @CsvSource(value = {"1,2,3:6", "3,100:103", "6,4,1:11"}, delimiter = ':')
     @DisplayName("쉼표 구분자를 통해 숫자 합계 반환")
     void sumNumbersByCommaDelimiterTest(String input, int expected) {
-        int result = stringCalculator.splitAndSum(input);
-        assertThat(result).isEqualTo(expected);
+        assertSplitAndSum(input, expected);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:2:3|6", "3:100|103", "6:4:1|11"}, delimiter = '|')
     @DisplayName("콜론 구분자를 통해 숫자 합계 반환")
     void sumNumbersByColonDelimiterTest(String input, int expected) {
-        int result = stringCalculator.splitAndSum(input);
-        assertThat(result).isEqualTo(expected);
+        assertSplitAndSum(input, expected);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:2,3|6", "3:100,7|110", "6,4:1|11"}, delimiter = '|')
     @DisplayName("쉼표, 콜론 구분자를 통해 숫자 합계 반환")
     void sumNumbersByColonAndCommaDelimiterTest(String input, int expected) {
-        int result = stringCalculator.splitAndSum(input);
-        assertThat(result).isEqualTo(expected);
+        assertSplitAndSum(input, expected);
     }
 
     @Test
     @DisplayName("커스텀 구분자를 통해 숫자 합계 반환")
     void sumNumbersByCustomDelimiterTest() {
-        int result = stringCalculator.splitAndSum("//!\n3!100!7");
-        assertThat(result).isEqualTo(110);
+        assertSplitAndSum("//!\n3!100!7", 110);
     }
 
+    private void assertSplitAndSum(String input, int expected) {
+        int result = stringCalculator.splitAndSum(input);
+        assertThat(result).isEqualTo(expected);
+    }
 }
