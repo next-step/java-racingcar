@@ -1,9 +1,19 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringAddCalculator {
     public static int splitAndSum(String input) {
         if (input == null || input.equals("")) {
             return 0;
+        }
+
+        Pattern p = Pattern.compile("//(.)\\n(.*)");
+        Matcher m = p.matcher(input);
+        if (m.matches()) {
+            String[] values = m.group(2).split(m.group(1));
+            return sum(toIntArray(values));
         }
         String[] values = input.split(",|:");
 

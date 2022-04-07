@@ -20,4 +20,10 @@ public class StringAddCalculatorTest {
         assertThat(StringAddCalculator.splitAndSum("1,2,3")).isEqualTo(6);
         assertThat(StringAddCalculator.splitAndSum("1,2:3")).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("문자열 앞부분의 //와 \\n 사이에 위치하는 분자를 커스텀 구분자로 사용한다")
+    void customDelimiter() {
+        assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
+    }
 }
