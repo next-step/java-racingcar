@@ -20,16 +20,6 @@ public class PositiveInteger {
     return positiveInteger;
   }
 
-  @Deprecated
-  public static PositiveInteger[] from(String[] values) {
-    final int length = values.length;
-    PositiveInteger[] positiveIntegers = new PositiveInteger[length];
-    for (int i=0; i<length; i++) {
-      positiveIntegers[i] = createPositiveIntegerByParsingString(values[i]);
-    }
-    return positiveIntegers;
-  }
-
   public int sum(int otherNumber) {
     return otherNumber + this.number;
   }
