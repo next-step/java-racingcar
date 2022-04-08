@@ -31,7 +31,7 @@ public class StringAddCalculator {
   }
 
   private boolean containsCustomDelimiter(String text) {
-    return text.matches(CUSTOM_DELIMITER_FIND_REGEX);
+    return CUSTTOM_DELIMITER_PATTERN.matcher(text).find();
   }
 
   private int customDelimiterSum(String text) {
