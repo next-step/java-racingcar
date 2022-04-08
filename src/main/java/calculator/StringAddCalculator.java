@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,32 +9,36 @@ public class StringAddCalculator {
     public static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
 
      public static int splitAndSum(String text){
-         if(isaBlank(text)) {
+         if(isBlank(text)) {
              return 0;
          }
 
          Matcher m = Pattern.compile(CUSTOM_DELIMITER_REGEXP).matcher(text);
          if(m.find()){
              String customDelimiter = m.group(1);
-             String[] tokens= m.group(2).split(customDelimiter);
+             ArrayList<String> tokens = new ArrayList<>();
+             tokens = split(m.group(2), customDelimiter, tokens);
 
              return sum(toInts(tokens));
          }
-
-         String[] values = split(text, DEFAULT_DELIMITER);
+         ArrayList<String> values = new ArrayList<>();
+         values = split(text, DEFAULT_DELIMITER, values);
          return sum(toInts(values));
 
      }
 
-    private static String[] split(String text, String defaultDelimiter) {
-        return text.split(defaultDelimiter);
+    private static ArrayList<String> split(String text, String defaultDelimiter, ArrayList<String> values) {
+        for(String value : text.split(defaultDelimiter)){
+            values.add(value);
+        }
+        return values;
     }
 
-    private static boolean isaBlank(String text) {
+    private static boolean isBlank(String text) {
         return text == null || text.isBlank();
     }
 
-    private static int sum(int[] numbers){
+    private static int sum(ArrayList<Integer> numbers){
          int sum = 0;
          for (int number : numbers) {
              sum += number;
@@ -41,10 +46,10 @@ public class StringAddCalculator {
          return sum;
      }
 
-     private static int[] toInts(String[] values){
-         int[] numbers = new int[values.length];
-         for( int i = 0; i < values.length; i++){
-             numbers[i] = toInt(values[i]);
+     private static ArrayList<Integer> toInts(ArrayList<String> values){
+         ArrayList<Integer> numbers = new ArrayList<>();
+         for(String value : values){
+             numbers.add(toInt(value));
          }
          return numbers;
      }

@@ -4,11 +4,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class CTest {
+public class StringAddCalculatorTest {
     @Test
     void 빈_문자열_공백문자_일때() {
         assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
         assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
+    }
+
+    @Test
+    void 숫자_하나일때(){
+        assertThat(StringAddCalculator.splitAndSum("1")).isEqualTo(1);
     }
 
     @Test
