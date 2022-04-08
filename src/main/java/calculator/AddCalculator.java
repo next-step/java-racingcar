@@ -7,13 +7,16 @@ import java.util.regex.Pattern;
 
 public class AddCalculator {
 
+    private static final String NORMAL_DELIMITER = ":|,";
+    private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+
+    private static final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
+
     public static int execute(String str) {
         if (isInValidString(str))
             return 0;
 
-        String[] arr = splitString(str);
-
-        return getSum(arr);
+        return getSum(splitString(str));
     }
 
     private static String[] splitString(String str) {
@@ -23,11 +26,11 @@ public class AddCalculator {
             return arr;
         }
 
-        return str.split(":|,");
+        return str.split(NORMAL_DELIMITER);
     }
 
     private static String[] splitWithCustomDelimiter(String str) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(str);
+        Matcher m = pattern.matcher(str);
 
         if (m.find()) {
             String customDelimiter = m.group(1);
@@ -38,21 +41,25 @@ public class AddCalculator {
     }
 
     private static boolean isInValidString(String str) {
-        if (str == null || str.equals(""))
-            return true;
-        return false;
+        return (str == null || str.equals(""));
     }
 
     private static int getSum(String[] arr) {
         int sum = 0;
         for (String tmp : arr) {
-            sum += parseNum(tmp);
+            sum += parseInteger(tmp);
         }
         return sum;
     }
 
-    private static int parseNum(String tmp) {
-        int n = Integer.parseInt(tmp);
+    private static int parseInteger(String tmp) {
+        int n = 0;
+
+        try {
+            n = Integer.parseInt(tmp);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         checkNegativeNum(n);
 
