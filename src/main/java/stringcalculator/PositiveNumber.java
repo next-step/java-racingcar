@@ -2,7 +2,6 @@ package stringcalculator;
 
 public class PositiveNumber {
 
-    private static final String PARSING_FAIL_MESSAGE = "String to Integer Parsing Failed";
     private final int number;
 
     private PositiveNumber(int number) {
@@ -12,22 +11,8 @@ public class PositiveNumber {
         this.number = number;
     }
 
-
-    public static PositiveNumber createPositiveNumber(String string) {
-
-        return new PositiveNumber(getInteger(string));
-    }
-
-    private static int getInteger(String string) {
-        int parsedInt;
-        try {
-            parsedInt = Integer.parseInt(string);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            throw new NumberFormatException(PARSING_FAIL_MESSAGE);
-        }
-        return parsedInt;
-
+    static PositiveNumber createPositiveNumber(String input) {
+        return new PositiveNumber(Integer.parseInt(input));
     }
 
     int getNumber() {
