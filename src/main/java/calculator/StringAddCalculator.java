@@ -35,10 +35,8 @@ public class StringAddCalculator {
 
     private static int sum(String[] tokens) {
         return Arrays.stream(tokens)
-                .mapToInt(Integer::parseInt)
-                .peek(token -> {
-                    if (token < 0) throw new RuntimeException("음수는 계산할 수 없습니다.");
-                })
+                .map(NaturalNumber::new)
+                .mapToInt(NaturalNumber::getNumber)
                 .sum();
     }
 }
