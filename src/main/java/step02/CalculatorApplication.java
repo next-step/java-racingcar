@@ -27,8 +27,7 @@ public class CalculatorApplication {
     public void run() {
         try {
             String inputText = consoleReader.readLine();
-            List<Integer> numberList = splitAndConvertNumber(inputText);
-            Numbers numbers = new Numbers(NumberFactory.of(numberList));
+            Numbers numbers = new Numbers(splitAndConvertNumber(inputText));
             outputView.printNumber(numbers.sum());
         } catch (Exception exception) {
             outputView.printExceptionMessage(exception);
@@ -36,7 +35,7 @@ public class CalculatorApplication {
         outputView.printQuitMessage();
     }
 
-    private List<Integer> splitAndConvertNumber(String inputText) {
+    private List<Number> splitAndConvertNumber(String inputText) {
         try {
             List<String> stringNumbers = numberSplitter.extractNumbersWithDelimiter(inputText);
             return numberConverter.convertToNumber(stringNumbers);

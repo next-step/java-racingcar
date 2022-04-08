@@ -27,10 +27,10 @@ class NumbersTest {
 
     static Stream<Arguments> numberListProvider() {
         return Stream.of(
-                arguments(Collections.emptyList(), new Zero(0)),
-                arguments(List.of(new Zero(0)), new Zero(0)),
+                arguments(Collections.emptyList(), new Zero()),
+                arguments(List.of(new Zero()), new Zero()),
                 arguments(
-                        List.of(new Zero(0), new PositiveNumber(1), new PositiveNumber(2)),
+                        List.of(new Zero(), new PositiveNumber(1), new PositiveNumber(2)),
                         new PositiveNumber(3)
                 ),
                 arguments(

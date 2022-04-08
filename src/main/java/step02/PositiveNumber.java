@@ -7,7 +7,6 @@ public class PositiveNumber extends Number {
         validate(value);
     }
 
-    @Override
     public void validate(int value) {
         if (value <= 0) {
             throw new IllegalArgumentException("잘못된 객체 생성입니다.");

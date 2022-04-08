@@ -10,8 +10,6 @@ public abstract class Number {
         this.value = value;
     }
 
-    public abstract void validate(int value);
-
     public int getValue() {
         return value;
     }

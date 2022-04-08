@@ -5,8 +5,10 @@ import java.util.stream.Collectors;
 
 public final class NumberConverter {
 
-    public List<Integer> convertToNumber(List<String> stringNumbers) {
-        return stringNumbers.stream().map(Integer::parseInt).collect(Collectors.toList());
+    public List<Number> convertToNumber(List<String> stringNumbers) {
+        return stringNumbers.stream()
+                .map(stringNumber -> NumberFactory.from(Integer.parseInt(stringNumber)))
+                .collect(Collectors.toList());
     }
 
 }

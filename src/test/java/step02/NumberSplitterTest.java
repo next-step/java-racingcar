@@ -2,6 +2,7 @@ package step02;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -24,10 +25,9 @@ class NumberSplitterTest {
         expectedNumberList.add("3");
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"0:true", "1:true", "2:true"}, delimiter = ':')
+    @Test
     @DisplayName("기본 구분자를 기준으로 숫자 객체들을 반환한다")
-    void defaultDelimiterTest(int index, boolean hasElement) {
+    void defaultDelimiterTest() {
         //given
         String inputText = "1:2:3";
 
@@ -35,7 +35,7 @@ class NumberSplitterTest {
         List<String> numberList = numberSplitter.extractNumbersWithDelimiter(inputText);
 
         //then
-        assertThat(expectedNumberList.contains(numberList.get(index))).isEqualTo(hasElement);
+        assertThat(numberList).containsExactly("1", "2", "3");
     }
 
     @ParameterizedTest

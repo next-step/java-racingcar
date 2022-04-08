@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public enum NumberFactory {
 
     POSITIVE(PositiveNumber::new),
-    ZERO(Zero::new);
+    ZERO(number -> new Zero());
 
     private final Function<Integer, Number> numberFunction;
 
@@ -32,4 +32,5 @@ public enum NumberFactory {
                 .map(NumberFactory::from)
                 .collect(Collectors.toList());
     }
+
 }

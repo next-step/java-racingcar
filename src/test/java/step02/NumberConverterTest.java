@@ -1,10 +1,11 @@
 package step02;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
 
 class NumberConverterTest {
 
@@ -17,9 +18,14 @@ class NumberConverterTest {
         List<String> givenValues = List.of("0", "1", "2");
 
         //when
-        List<Integer> numbers = numberConverter.convertToNumber(givenValues);
+        List<Number> numbers = numberConverter.convertToNumber(givenValues);
 
         //then
-        Assertions.assertThat(numbers.containsAll(List.of(0, 1, 2))).isTrue();
+        assertThat(numbers.containsAll(
+                List.of(
+                        NumberFactory.from(0),
+                        NumberFactory.from(1),
+                        NumberFactory.from(2))
+        )).isTrue();
     }
 }

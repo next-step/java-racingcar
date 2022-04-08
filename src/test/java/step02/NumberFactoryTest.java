@@ -22,7 +22,7 @@ class NumberFactoryTest {
         Number number2 = NumberFactory.from(1);
 
         //then
-        assertThat(number1).isEqualTo(new Zero(0));
+        assertThat(number1).isEqualTo(new Zero());
         assertThat(number2).isEqualTo(new PositiveNumber(1));
     }
 
@@ -48,7 +48,7 @@ class NumberFactoryTest {
         return Stream.of(
                 arguments(
                         List.of(0, 1, 2),
-                        List.of(new Zero(0), new PositiveNumber(1), new PositiveNumber(2))
+                        List.of(new Zero(), new PositiveNumber(1), new PositiveNumber(2))
                 ), arguments(
                         List.of(1, 2, 3),
                         List.of(new PositiveNumber(1), new PositiveNumber(2), new PositiveNumber(3))
