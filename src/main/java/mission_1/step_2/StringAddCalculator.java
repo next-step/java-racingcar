@@ -24,6 +24,7 @@ public class StringAddCalculator {
     private static String[] split(String text) {
         String[] values  = text.split(DEFAULT_DELIMITER);
         Matcher  matcher = PATTERN.matcher(text);
+      
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
             values = matcher.group(2).split(customDelimiter);

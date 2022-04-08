@@ -10,7 +10,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
 
-
     @ParameterizedTest
     @NullAndEmptySource
     void 빈_문자열_공백문자_일때(String nullAndEmptyValue) {
