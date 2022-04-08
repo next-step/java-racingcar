@@ -14,7 +14,7 @@ public class StringCalculator {
             return 0;
         }
         String[] splitText = splitText(input);
-        PositiveNumbers numbers = PositiveNumber.convertToPositiveNumbers(splitText);
+        PositiveNumbers numbers = PositiveNumbers.convertToPositiveNumbers(splitText);
         return numbers.sum();
     }
 
