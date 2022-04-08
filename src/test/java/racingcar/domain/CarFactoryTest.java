@@ -12,7 +12,7 @@ class CarFactoryTest {
     void createCars() {
         int size = 5;
 
-        List<Car> cars = CarFactory.createCars(size);
+        List<Car> cars = CarFactory.generateCarsOfSize(size);
 
         assertThat(cars).hasSize(size);
     }

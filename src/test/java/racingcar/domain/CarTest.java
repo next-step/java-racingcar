@@ -1,13 +1,15 @@
 package racingcar.domain;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
+    @DisplayName("move 호출 마다 자동차 위치 증가")
     @Test
-    void move_호출마다_position_증가() {
+    void move() {
         Car car = new Car();
         int moveCount = 3;
 

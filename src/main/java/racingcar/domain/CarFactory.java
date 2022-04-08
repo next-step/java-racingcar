@@ -9,7 +9,7 @@ public class CarFactory {
         throw new AssertionError();
     }
 
-    public static List<Car> createCars(int size) {
+    public static List<Car> generateCarsOfSize(int size) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             cars.add(new Car());
