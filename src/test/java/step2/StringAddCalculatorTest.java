@@ -1,15 +1,17 @@
 package step2;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class StringAddCalculatorTest {
 
-    @Test
-    void 빈_문자열_혹은_null() {
-        assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
-        assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
+    @ParameterizedTest
+    @NullAndEmptySource
+    void 빈_문자열_혹은_null(String text) {
+        assertThat(StringAddCalculator.splitAndSum(text)).isEqualTo(0);
     }
 
     @Test
@@ -31,15 +33,15 @@ public class StringAddCalculatorTest {
 
     @Test
     void 음수_기본_구분자_예외처리() {
-        assertThatThrownBy(() -> {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
             StringAddCalculator.splitAndSum("-1,2:3");
-        }).isInstanceOf(RuntimeException.class);
+        });
     }
 
     @Test
     void 음수_커스텀_구분자_예외처리() {
-        assertThatThrownBy(() -> {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
             StringAddCalculator.splitAndSum("//;\n1;-2;3");
-        }).isInstanceOf(RuntimeException.class);
+        });
     }
 }
