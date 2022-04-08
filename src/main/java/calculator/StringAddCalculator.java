@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,19 +35,15 @@ public class StringAddCalculator {
         return sum(toInts(tokens));
     }
 
-    private static PositiveInteger[] toInts(String[] values) {
-        PositiveInteger[] numbers = new PositiveInteger[values.length];
-        for (int i = 0; i < values.length; i++) {
-            numbers[i] = new PositiveInteger(values[i]);
+    private static PositiveIntegers toInts(String[] values) {
+        List<PositiveInteger> numbers = new ArrayList<>();
+        for (String value : values) {
+            numbers.add(new PositiveInteger(value));
         }
-        return numbers;
+        return new PositiveIntegers(numbers);
     }
 
-    private static int sum(PositiveInteger[] numbers) {
-        int sum = 0;
-        for (PositiveInteger number : numbers) {
-            sum += number.getNumber();
-        }
-        return sum;
+    private static int sum(PositiveIntegers numbers) {
+        return numbers.sum();
     }
 }
