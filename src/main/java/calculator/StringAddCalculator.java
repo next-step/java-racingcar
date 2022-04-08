@@ -37,9 +37,8 @@ public class StringAddCalculator {
     private static int sum(String[] text) {
         return Arrays.stream(text)
                 .map(Positive::new)
-                .map(Positive::getNumber)
-                .reduce(Integer::sum)
-                .orElse(DEFAULT_VALUE);
+                .mapToInt(Positive::getNumber)
+                .sum();
     }
 
     private static boolean isEmpty(String text) {
