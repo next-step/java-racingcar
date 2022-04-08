@@ -1,40 +1,38 @@
 package stringcalculator;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
 
     public static final String COMMON_DELIMITER = "[,:]";
     public static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    public static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER);
 
     public int splitAndSum(String input) {
         if (input == null || input.isEmpty()) {
             return 0;
         }
+        Numbers numbers = convertToNumbers(splitText(input));
+        return numbers.sum();
+    }
 
-        int result = 0;
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(input);
+    private Numbers convertToNumbers(String[] splitText) {
+        List<PositiveNumber> collect = Arrays.stream(splitText)
+                .map(PositiveNumber::createPositiveNumber)
+                .collect(Collectors.toList());
+        return new Numbers(collect);
+    }
+
+    private String[] splitText(String input) {
+        Matcher matcher = PATTERN.matcher(input);
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
-            String[] values = matcher.group(2).split(customDelimiter);
-            for (String value : values) {
-                int number = Integer.parseInt(value);
-                if (number < 0) {
-                    throw new RuntimeException();
-                }
-                result += number;
-            }
-        } else {
-            String[] values = input.split(COMMON_DELIMITER);
-            for (String value : values) {
-                int number = Integer.parseInt(value);
-                if (number < 0) {
-                    throw new RuntimeException();
-                }
-                result += number;
-            }
+            return matcher.group(2).split(customDelimiter);
         }
-        return result;
+        return input.split(COMMON_DELIMITER);
     }
 }
