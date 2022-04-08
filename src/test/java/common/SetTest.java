@@ -11,7 +11,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("Java Set class의")
+@DisplayName("Java Set class 테스트")
 public class SetTest {
     private Set<Integer> numbers;
 

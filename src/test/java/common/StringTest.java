@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-@DisplayName("Java String class의")
+@DisplayName("Java String class 테스트")
 public class StringTest {
     @Test
     @DisplayName("split은 regex로 문자열을 분할해서 배열로 반환한다. regex로 매치되지 않으면 문자열을 포함한 배열을 반환한다.")

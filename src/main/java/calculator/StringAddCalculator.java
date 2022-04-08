@@ -1,59 +1,44 @@
 package calculator;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    private static final String SPLIT_PATTERN = "//(.)\n(.*)";
-    private static final String SPLIT_SEPARATOR = ",|:";
+    private static final String CUSTOM_DELIMITER_REGEX = "^//(.)\n(.*)$";
+    private static final int CUSTOM_DELIMITER_GROUP_INDEX = 1;
+    private static final int INPUT_STRING_GROUP_INDEX = 2;
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile(CUSTOM_DELIMITER_REGEX);
+    private static final String DEFAULT_DELIMITER = ",|:";
 
     public static int splitAndSum(String input) {
         if (input == null || input.isBlank()) {
             return 0;
         }
 
-        String[] inputArray = splitByPattern(input);
-
-        return sumIntArray(toInts(inputArray));
+        List<String> inputList = splitByPattern(input);
+        return sumInts(new CalculatorTargetInts(inputList).getList());
     }
 
-    private static int sumIntArray(int[] ints) {
+    private static int sumInts(List<CalculatorTargetInt> ints) {
         int result = 0;
 
-        for (int val : ints) {
-            result += val;
+        for (CalculatorTargetInt val : ints) {
+            result += val.getValue();
         }
 
         return result;
     }
 
-    private static int[] toInts(String[] strings) {
-        int[] ints = new int[strings.length];
+    private static List<String> splitByPattern(String input) {
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
 
-        for (int i = 0; i < strings.length; i++) {
-            ints[i] = toInt(strings[i]);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(CUSTOM_DELIMITER_GROUP_INDEX);
+            return Arrays.asList((matcher.group(INPUT_STRING_GROUP_INDEX).split(customDelimiter)));
         }
 
-        return ints;
-    }
-
-    private static int toInt(String val) {
-        int i = Integer.parseInt(val);
-
-        if (i < 0) {
-            throw new RuntimeException("음수는 합을 구할 수 없다.");
-        }
-        return i;
-    }
-
-    private static String[] splitByPattern(String input) {
-        Matcher m = Pattern.compile(SPLIT_PATTERN).matcher(input);
-
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
-        }
-
-        return input.split(SPLIT_SEPARATOR);
+        return Arrays.asList(input.split(DEFAULT_DELIMITER));
     }
 }
