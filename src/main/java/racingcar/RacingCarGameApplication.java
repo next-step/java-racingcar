@@ -11,5 +11,6 @@ public class RacingCarGameApplication {
 
         RacingGame racingGame = new RacingGame(carNames, totalRacingRound, randomNumberGenerator);
         racingGame.raceStart();
+        racingGame.winnersOfTheRace();
     }
 }

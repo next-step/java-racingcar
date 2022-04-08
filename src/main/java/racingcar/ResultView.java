@@ -19,4 +19,11 @@ public class ResultView {
         }
     }
 
+    public void winnerLogTrace(List<String> winners) {
+        for (String winner : winners) {
+            System.out.print(winner + " ");
+        }
+        System.out.println("가 최종 우승했습니다.");
+    }
+
 }
