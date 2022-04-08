@@ -1,5 +1,9 @@
 package stringcalculator;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class PositiveNumber {
 
     private final int number;
@@ -11,8 +15,15 @@ public class PositiveNumber {
         this.number = number;
     }
 
-    static PositiveNumber createPositiveNumber(String input) {
-        return new PositiveNumber(Integer.parseInt(input));
+    static PositiveNumbers convertToPositiveNumbers(String[] splitText) {
+        List<PositiveNumber> collect = Arrays.stream(splitText)
+                .map(v -> new PositiveNumber(getInteger(v)))
+                .collect(Collectors.toList());
+        return new PositiveNumbers(collect);
+    }
+
+    private static int getInteger(String v) {
+        return Integer.parseInt(v);
     }
 
     int getNumber() {

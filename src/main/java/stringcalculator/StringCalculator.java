@@ -1,10 +1,7 @@
 package stringcalculator;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class StringCalculator {
 
@@ -16,15 +13,9 @@ public class StringCalculator {
         if (input == null || input.isEmpty()) {
             return 0;
         }
-        Numbers numbers = convertToNumbers(splitText(input));
+        String[] splitText = splitText(input);
+        PositiveNumbers numbers = PositiveNumber.convertToPositiveNumbers(splitText);
         return numbers.sum();
-    }
-
-    private Numbers convertToNumbers(String[] splitText) {
-        List<PositiveNumber> collect = Arrays.stream(splitText)
-                .map(PositiveNumber::createPositiveNumber)
-                .collect(Collectors.toList());
-        return new Numbers(collect);
     }
 
     private String[] splitText(String input) {

@@ -1,8 +1,6 @@
 package stringcalculator;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class PositiveNumbers {
 
@@ -10,13 +8,6 @@ public class PositiveNumbers {
 
     public PositiveNumbers(List<PositiveNumber> positiveNumbers) {
         this.positiveNumbers = positiveNumbers;
-    }
-
-    static PositiveNumbers convertToPositiveNumbers(String[] splitText) {
-        List<PositiveNumber> positiveNumbers = Arrays.stream(splitText)
-                .map(PositiveNumber::createPositiveNumber)
-                .collect(Collectors.toList());
-        return new PositiveNumbers(positiveNumbers);
     }
 
     public int sum() {
