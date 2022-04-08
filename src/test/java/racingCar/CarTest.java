@@ -25,6 +25,12 @@ class CarTest {
   @DisplayName("4이상인 경우에는 전진한다.")
   void OnlyIfFourOrHigher() {
     car.setRandomValue(7);
-    assertThat(car.move()).isEqualTo('-');
+    assertThat(car.move()).isEqualTo("-");
+  }
+  @Test
+  @DisplayName("3이하인 경우에는 멈춘다.")
+  void OnlyIfThreeLessThen() {
+    car.setRandomValue(3);
+    assertThat(car.move()).isEqualTo(null);
   }
 }

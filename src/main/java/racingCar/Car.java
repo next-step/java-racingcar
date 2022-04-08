@@ -3,8 +3,11 @@ package racingCar;
 public class Car {
   private int randomValue;
 
-  public char move() {
-    return '-';
+  public String move() {
+    if(randomValue <=3) {
+      return null;
+    }
+    return "-";
   }
 
   public void setRandomValue(int randomValue) {
