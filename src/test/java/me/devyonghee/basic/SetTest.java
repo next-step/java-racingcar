@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-@DisplayName("집합")
+@DisplayName("중복된 원소를 포함한 집합")
 class SetTest {
 
     private Set<Integer> numbers;
@@ -27,10 +27,7 @@ class SetTest {
     @Test
     @DisplayName("중복된 원소는 사이즈에서 제외")
     void size() {
-        //when
-        int size = numbers.size();
-        //then
-        assertThat(size).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest(name = "[{index}] {0} 값은 포함인 것이 {1}")

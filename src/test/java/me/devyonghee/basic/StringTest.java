@@ -3,27 +3,31 @@ package me.devyonghee.basic;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import java.util.stream.Stream;
-import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("문자열")
 class StringTest {
 
-    @ParameterizedTest(name = "[{index}] {0}를 분리하면 {1} ")
-    @DisplayName("\",\" 분리")
-    @MethodSource
-    void split(String target, String[] expected) {
-        //when
-        String[] splitStrings = target.split(",");
+    @Test
+    @DisplayName("\"1,2\" 를 \",\" 로 나누면 [1,2]")
+    void split() {
+        //given, when
+        String[] splitStrings = "1,2".split(",");
         //then
-        assertThat(splitStrings).containsExactly(expected);
+        assertThat(splitStrings).containsExactly("1", "2");
+    }
+
+    @Test
+    @DisplayName("\"1\" 를 \",\" 로 나누면 [1]")
+    void split_withoutDelimiter() {
+        //given, when
+        String[] splitStrings = "1".split(",");
+        //then
+        assertThat(splitStrings).containsExactly("1");
     }
 
     @Test
@@ -41,10 +45,8 @@ class StringTest {
     @DisplayName("\"abc\" 특정 위치 문자 조회")
     @CsvSource({"0,a", "1,b", "2,c"})
     void charAt_abc(int index, char expected) {
-        //given
-        String abc = "abc";
-        //when
-        char characterOfAbc = abc.charAt(index);
+        //given, when
+        char characterOfAbc = "abc".charAt(index);
         //then
         assertThat(characterOfAbc).isEqualTo(expected);
     }
@@ -55,17 +57,8 @@ class StringTest {
     void charAt_outOfLength_thrownIndexOutOfBoundsException(int index) {
         //given
         String abc = "abc";
-        //when
-        ThrowingCallable charAtCallable = () -> abc.charAt(index);
-        //then
-        assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(charAtCallable)
+        //when, then
+        assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> abc.charAt(index))
                 .withMessageStartingWith("String index out of range");
-    }
-
-    private static Stream<Arguments> split() {
-        return Stream.of(
-                Arguments.of("1,2", new String[]{"1", "2"}),
-                Arguments.of("1", new String[]{"1"})
-        );
     }
 }
