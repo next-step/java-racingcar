@@ -8,6 +8,7 @@ public class StringAddCalculator {
     private static final int DEFAULT_VALUE = 0;
     private static final int CUSTOM_DELIMITER_GROUP_INDEX = 1;
     private static final int TEXT_GROUP_INDEX = 2;
+    private static final String DEFAULT_DELIMITER = ",|:";
 
     public static int splitAndSum(String text) {
         if (isEmpty(text)) {
@@ -26,7 +27,7 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String text) {
-        return split(text, ",|:");
+        return split(text, DEFAULT_DELIMITER);
     }
 
     private static String[] split(String text, String delimiter) {
