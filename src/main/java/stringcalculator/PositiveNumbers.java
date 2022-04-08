@@ -2,11 +2,11 @@ package stringcalculator;
 
 import java.util.List;
 
-public class Numbers {
+public class PositiveNumbers {
 
     private final List<PositiveNumber> positiveNumbers;
 
-    public Numbers(List<PositiveNumber> positiveNumbers) {
+    public PositiveNumbers(List<PositiveNumber> positiveNumbers) {
         this.positiveNumbers = positiveNumbers;
     }
 
