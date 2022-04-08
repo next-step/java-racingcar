@@ -1,8 +1,10 @@
 package racingcar;
 
+import java.util.List;
+
 public class ResultView {
 
-    public void roundLogTrace(RacingCar[] racingCars) {
+    public void roundLogTrace(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             distanceToHyphen(racingCar);
             System.out.println();

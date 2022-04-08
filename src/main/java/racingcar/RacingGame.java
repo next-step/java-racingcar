@@ -1,12 +1,14 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingGame {
 
     private final int totalRound;
     private final ResultView resultView;
     private final RandomNumberGenerator randomNumberGenerator;
-
-    private RacingCar[] racingCars;
+    private final List<RacingCar> racingCars = new ArrayList<>();
 
     public RacingGame(int racingCarCount, int totalRound, RandomNumberGenerator randomNumberGenerator) {
         this.totalRound = totalRound;
@@ -16,10 +18,8 @@ public class RacingGame {
     }
 
     private void readyRacingCars(int racingCarCount) {
-        racingCars = new RacingCar[racingCarCount];
-
-        for (int i = 0; i < racingCars.length; i++) {
-            racingCars[i] = new RacingCar();
+        for (int i = 0; i < racingCarCount; i++) {
+            racingCars.add(new RacingCar());
         }
     }
 
