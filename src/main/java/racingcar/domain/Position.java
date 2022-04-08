@@ -9,8 +9,13 @@ public class Position {
         this(DEFAULT_POSITION);
     }
 
-    public Position(int position) {
+    private Position(int position) {
+        assert position >= 0;
         this.position = position;
+    }
+
+    public Position move() {
+        return new Position(getPosition() + 1);
     }
 
     public int getPosition() {

@@ -23,7 +23,7 @@ public class RacingCarGame {
             throw new IllegalStateException("game is already over");
         }
 
-        this.rounds = rounds - 1;
+        rounds = rounds - 1;
     }
 
     private void moveOrStop(Car car) {
