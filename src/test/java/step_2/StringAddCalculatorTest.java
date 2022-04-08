@@ -2,16 +2,18 @@ package step_2;
 
 import mission_1.step_2.StringAddCalculator;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
 
-    @Test
-    void 빈_문자열_공백문자_일때() {
-        assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
-        assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
+    @ParameterizedTest
+    @NullAndEmptySource
+    void 빈_문자열_공백문자_일때(String nullAndEmptyValue) {
+        assertThat(StringAddCalculator.splitAndSum(nullAndEmptyValue)).isEqualTo(0);
     }
 
     @Test
@@ -31,11 +33,11 @@ public class StringAddCalculatorTest {
 
     @Test
     void 함수_기본_구본자() {
-        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,-2;-3")).isExactlyInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,-2;-3")).isExactlyInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 함수_커스텀_구분자() {
-        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("//;\n-1;-2;-3")).isExactlyInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("//;\n-1;-2;-3")).isExactlyInstanceOf(IllegalArgumentException.class);
     }
 }

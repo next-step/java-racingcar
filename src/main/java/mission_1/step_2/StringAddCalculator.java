@@ -5,11 +5,14 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    private final static String DEFAULT_DELIMITER = "[,:]";
-    private final static String CUSTOM_DELIMITER  = "//(.)\n(.*)";
+    private final static String  DEFAULT_DELIMITER = "[,:]";
+    private final static String  CUSTOM_DELIMITER  = "//(.)\n(.*)";
+    private final static Pattern PATTERN           = Pattern.compile(CUSTOM_DELIMITER);
 
     public static int splitAndSum(String text) {
-        if (isBlank(text)) return 0;
+        if (isBlank(text)) {
+            return 0;
+        }
 
         return sum(toInts(split(text)));
     }
@@ -20,7 +23,8 @@ public class StringAddCalculator {
 
     private static String[] split(String text) {
         String[] values  = text.split(DEFAULT_DELIMITER);
-        Matcher  matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(text);
+        Matcher  matcher = PATTERN.matcher(text);
+      
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
             values = matcher.group(2).split(customDelimiter);
@@ -41,15 +45,18 @@ public class StringAddCalculator {
     private static int[] toInts(String[] values) {
         int[] numbers = new int[values.length];
         for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = toInt(values[i]);
+            numbers[i] = toIntAndCheckNegativeNumber(values[i]);
         }
 
         return numbers;
     }
 
-    private static int toInt(String value) {
+    private static int toIntAndCheckNegativeNumber(String value) {
         int number = Integer.parseInt(value);
-        if (number < 0) throw new RuntimeException("음수는 허용되지 않습니다.");
+        if (number < 0) {
+            throw new IllegalArgumentException("음수는 허용되지 않습니다.");
+        }
+
         return number;
     }
 }
