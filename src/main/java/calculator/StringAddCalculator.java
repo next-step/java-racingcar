@@ -1,10 +1,10 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class StringAddCalculator {
 
@@ -41,15 +41,24 @@ public class StringAddCalculator {
     String customDelimiter = customDelimiterMatch.group(1);
     String delimiterRemovedText = customDelimiterMatch.group(2);
 
-    List<Integer> splitted = split(BASE_SPLIT_REGEX + OR + customDelimiter, delimiterRemovedText);
-    checkPositive(splitted);
-    return sum(splitted);
+    List<Integer> numbers = numberStrsToInts(
+        splitTextToNumberStrs(BASE_SPLIT_REGEX + OR + customDelimiter, delimiterRemovedText));
+    checkPositive(numbers);
+
+    return sum(numbers);
   }
 
-  private List<Integer> split(String delimiter, String text) {
+  private List<String> splitTextToNumberStrs(String delimiter, String text) {
     try {
-      return Stream.of(text.split(delimiter))
-          .mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+      return Arrays.stream(text.split(delimiter)).collect(Collectors.toList());
+    } catch (Exception e) {
+      throw new RuntimeException("input text must contains only delimiter or number");
+    }
+  }
+
+  private List<Integer> numberStrsToInts(List<String> numberStrs) {
+    try {
+      return numberStrs.stream().mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
     } catch (Exception e) {
       throw new RuntimeException("input text must contains only delimiter or number");
     }
@@ -72,9 +81,9 @@ public class StringAddCalculator {
   }
 
   private int normalDelimiterSum(String text) {
-    List<Integer> splitted = split(BASE_SPLIT_REGEX, text);
-    checkPositive(splitted);
-    return sum(splitted);
+    List<Integer> numbers = numberStrsToInts(splitTextToNumberStrs(BASE_SPLIT_REGEX, text));
+    checkPositive(numbers);
+    return sum(numbers);
   }
 
 }
