@@ -12,8 +12,12 @@ public class Numbers {
     }
 
     public Number sum() {
-        int sum = numbers.stream().mapToInt(Number::getNumber).sum();
-        return new Number(sum);
+        if (numbers.size() == 0) {
+            return new Zero();
+        }
+
+        int sum = numbers.stream().mapToInt(Number::getValue).sum();
+        return NumberFactory.from(sum);
     }
 
 }

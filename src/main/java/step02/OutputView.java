@@ -3,7 +3,7 @@ package step02;
 public class OutputView {
 
     public void printNumber(Number number) {
-        System.out.println(number.getNumber());
+        System.out.println(number.getValue());
     }
 
     public void printExceptionMessage(Exception exception) {
