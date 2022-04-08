@@ -14,15 +14,15 @@ public class Track {
     }
   }
 
-  public void setGameCount(int gameCount) {
-    this.gameCount = gameCount;
-  }
-
   public List<Car> getCars() {
     return cars;
   }
 
   public int getGameCount() {
     return gameCount;
+  }
+
+  public void setGameCount(int gameCount) {
+    this.gameCount = gameCount;
   }
 }
