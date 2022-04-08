@@ -4,20 +4,33 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    public static final int RETURN_VALUE_WHEN_EMTPY_TEXT = 0;
+    public static final String DEFAULT_SEPARATOR_PATTERN = ",|:";
+    public static final Pattern CUSTOM_SEPARATOR_PATTERN = Pattern.compile("//(.)\n(.*)");
+    public static final int SEPARATOR_GROUP = 1;
+    public static final int TEXT_GROUP = 2;
+
+    private StringAddCalculator() {
+    }
+
     public static int splitAndSum(String text) {
         if (text == null || text.isBlank()) {
-            return 0;
+            return RETURN_VALUE_WHEN_EMTPY_TEXT;
         }
 
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] tokens= m.group(2).split(customDelimiter);
+        Matcher customMatcher = getCustomSeparatorPatternMatcher(text);
+        if (customMatcher.find()) {
+            String customDelimiter = customMatcher.group(SEPARATOR_GROUP);
+            String[] tokens= customMatcher.group(TEXT_GROUP).split(customDelimiter);
             return sum(toInts(tokens));
         }
 
-        String[] tokens = text.split(",|:");
+        String[] tokens = text.split(DEFAULT_SEPARATOR_PATTERN);
         return sum(toInts(tokens));
+    }
+
+    private static Matcher getCustomSeparatorPatternMatcher(String text) {
+        return CUSTOM_SEPARATOR_PATTERN.matcher(text);
     }
 
     private static int sum(int[] numbers) {

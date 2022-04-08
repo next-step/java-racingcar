@@ -1,16 +1,17 @@
 package calculator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
-    @Test
-    void 빈문자열이거나_null일_경우() {
-        // 불필요한 로컬변수 미생성
-        assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
-        assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
+    @ParameterizedTest
+    @NullAndEmptySource
+    void 빈문자열이거나_null일_경우(String input) {
+        assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(0);
     }
 
     @Test
@@ -31,7 +32,7 @@ public class StringAddCalculatorTest {
     @Test
     void 음수_기본구분자() {
         assertThatThrownBy(() -> {
-            assertThat(StringAddCalculator.splitAndSum("1:-2,3")).isEqualTo(2);
+            StringAddCalculator.splitAndSum("1:-2,3");
         }).isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("음수는 허용하지 않습니다.");
     }
@@ -39,8 +40,22 @@ public class StringAddCalculatorTest {
     @Test
     void 음수_커스텀구분자() {
         assertThatThrownBy(() -> {
-            assertThat(StringAddCalculator.splitAndSum("//;\n-1;2;3")).isEqualTo(4);
+            StringAddCalculator.splitAndSum("//;\n-1;2;3");
         }).isInstanceOf(RuntimeException.class)
-        .hasMessageContaining("음수는 허용하지 않습니다.");
+                .hasMessageContaining("음수는 허용하지 않습니다.");
+    }
+
+    @Test
+    void 숫자이외_기본구분자() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.splitAndSum("1:A,3");
+        }).isInstanceOf(NumberFormatException.class);
+    }
+
+    @Test
+    void 숫자이외_커스텀구분자() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.splitAndSum("//;\nA;2;3");
+        }).isInstanceOf(NumberFormatException.class);
     }
 }
