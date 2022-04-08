@@ -18,6 +18,13 @@ class CarTest {
   @Test
   @DisplayName("자동차는 전진 또는 멈출 수 있다.")
   void ahead() {
-    assertThat(car.move()).isNotNegative();
+    assertThat(car.getRandomValue()).isNotNegative();
+  }
+
+  @Test
+  @DisplayName("4이상인 경우에는 전진한다.")
+  void OnlyIfFourOrHigher() {
+    car.setRandomValue(7);
+    assertThat(car.move()).isEqualTo('-');
   }
 }

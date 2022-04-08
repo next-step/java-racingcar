@@ -1,8 +1,17 @@
 package racingCar;
 
 public class Car {
+  private int randomValue;
 
-  public int move() {
-    return 0;
+  public char move() {
+    return '-';
+  }
+
+  public void setRandomValue(int randomValue) {
+    this.randomValue = randomValue;
+  }
+
+  public int getRandomValue() {
+    return randomValue;
   }
 }
