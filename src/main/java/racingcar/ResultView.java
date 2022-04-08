@@ -6,6 +6,7 @@ public class ResultView {
 
     public void roundLogTrace(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
+            System.out.print(racingCar.getCarName() + " : ");
             distanceToHyphen(racingCar);
             System.out.println();
         }
