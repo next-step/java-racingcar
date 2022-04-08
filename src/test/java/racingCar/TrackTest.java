@@ -23,4 +23,11 @@ class TrackTest {
     List<Car> cars = track.getCars();
     assertThat(cars.size()).isEqualTo(3);
   }
+
+  @Test
+  @DisplayName("몇 번 경주를 할지 테스트한다.")
+  void gameCountTest() {
+    track.setGameCount(3);
+    assertThat(track.getGameCount()).isEqualTo(3);
+  }
 }
