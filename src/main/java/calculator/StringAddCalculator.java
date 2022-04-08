@@ -9,16 +9,17 @@ public class StringAddCalculator {
     private static final int CUSTOM_DELIMITER_GROUP_INDEX = 1;
     private static final int TEXT_GROUP_INDEX = 2;
     private static final String DEFAULT_DELIMITER = ",|:";
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(String text) {
         if (isEmpty(text)) {
             return DEFAULT_VALUE;
         }
 
-        Matcher customDelimiterMatcher = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if (customDelimiterMatcher.find()) {
-            String customDelimiter = customDelimiterMatcher.group(CUSTOM_DELIMITER_GROUP_INDEX);
-            text = customDelimiterMatcher.group(TEXT_GROUP_INDEX);
+        Matcher customDelimiterPatternMatcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
+        if (customDelimiterPatternMatcher.find()) {
+            String customDelimiter = customDelimiterPatternMatcher.group(CUSTOM_DELIMITER_GROUP_INDEX);
+            text = customDelimiterPatternMatcher.group(TEXT_GROUP_INDEX);
 
             return sum(split(text, customDelimiter));
         }
