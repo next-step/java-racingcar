@@ -19,11 +19,11 @@ public class StringAddCalculator {
         }
 
         String[] tokens = text.split(DEFAULT_DELIMITER);
-        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(text);
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
 
-        if (m.find()) {
-            String customDelimiter = m.group(CUSTOM_DELIMITER_INDEX);
-            tokens = m.group(TOKENS_INDEX).split(customDelimiter);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(CUSTOM_DELIMITER_INDEX);
+            tokens = matcher.group(TOKENS_INDEX).split(customDelimiter);
         }
 
         return sum(tokens);
