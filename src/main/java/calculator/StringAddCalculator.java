@@ -2,25 +2,18 @@ package calculator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     private static final String DEFAULT_DELIMITER = ",|:";
-    private static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
-    private static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER_REGEXP);
-    private static final int MATCHER_DELIMITER = 1;
-    private static final int MATCHER_TEXT = 2;
 
     public static int splitAndSum(String text) {
         if (isBlank(text)) {
             return 0;
         }
 
-        Matcher m = PATTERN.matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(MATCHER_DELIMITER);
-            return split(customDelimiter, m.group(MATCHER_TEXT));
+        ExtractDelimiter extractDelimiter = new ExtractDelimiter(text);
+        if (extractDelimiter.isExtracted()) {
+            return split(extractDelimiter.getDelimiter(), extractDelimiter.getText());
         }
 
         return split(DEFAULT_DELIMITER, text);
