@@ -11,7 +11,7 @@ public class StringAddCalculator {
   private static final String OR = "|";
   private static final String BASE_SPLIT_REGEX = ",|:";
   private static final String CUSTOM_DELIMITER_FIND_REGEX = "^//(.*)\n(.*)";
-  private static final Pattern customDelimiterPattern = Pattern.compile(
+  private static final Pattern CUSTTOM_DELIMITER_PATTERN = Pattern.compile(
       CUSTOM_DELIMITER_FIND_REGEX);
 
   public Integer calcSum(String text) {
@@ -35,7 +35,7 @@ public class StringAddCalculator {
   }
 
   private Integer customDelimiterSum(String text) {
-    Matcher customDelimiterMatch = customDelimiterPattern.matcher(text);
+    Matcher customDelimiterMatch = CUSTTOM_DELIMITER_PATTERN.matcher(text);
     customDelimiterMatch.find();
 
     String customDelimiter = customDelimiterMatch.group(1);
