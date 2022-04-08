@@ -2,17 +2,18 @@ package racingcar.domain;
 
 public class Position {
 
-    private final int value;
+    private static final int DEFAULT_POSITION = 0;
+    private final int position;
 
     public Position() {
-        this(0);
+        this(DEFAULT_POSITION);
     }
 
-    public Position(int value) {
-        this.value = value;
+    public Position(int position) {
+        this.position = position;
     }
 
-    public int getValue() {
-        return value;
+    public int getPosition() {
+        return position;
     }
 }

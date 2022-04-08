@@ -13,6 +13,6 @@ public class Car {
     }
 
     public int position() {
-        return position.getValue();
+        return position.getPosition();
     }
 }
