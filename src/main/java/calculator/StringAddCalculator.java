@@ -14,7 +14,7 @@ public class StringAddCalculator {
   private static final Pattern CUSTTOM_DELIMITER_PATTERN = Pattern.compile(
       CUSTOM_DELIMITER_FIND_REGEX);
 
-  public Integer calcSum(String text) {
+  public int calcSum(String text) {
     if (isEmptyOrNull(text)) {
       return 0;
     }
@@ -34,7 +34,7 @@ public class StringAddCalculator {
     return text.matches(CUSTOM_DELIMITER_FIND_REGEX);
   }
 
-  private Integer customDelimiterSum(String text) {
+  private int customDelimiterSum(String text) {
     Matcher customDelimiterMatch = CUSTTOM_DELIMITER_PATTERN.matcher(text);
     customDelimiterMatch.find();
 
@@ -67,11 +67,11 @@ public class StringAddCalculator {
     }
   }
 
-  private Integer sum(List<Integer> splittedNumber) {
+  private int sum(List<Integer> splittedNumber) {
     return splittedNumber.stream().mapToInt(i -> i).sum();
   }
 
-  private Integer normalDelimiterSum(String text) {
+  private int normalDelimiterSum(String text) {
     List<Integer> splitted = split(BASE_SPLIT_REGEX, text);
     checkPositive(splitted);
     return sum(splitted);
