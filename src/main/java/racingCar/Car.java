@@ -17,6 +17,18 @@ public class Car {
     return STEP;
   }
 
+  public String move(int count) {
+    StringBuilder carMove = new StringBuilder();
+    for (int i = 0; i < count; i++) {
+      String step = step();
+      if (step == null) {
+        continue;
+      }
+      carMove.append(step);
+    }
+    return carMove.toString();
+  }
+
   public void initRandomValue() {
     Random random = new Random();
     this.randomValue = random.nextInt(RANDOM_BOUND_VALUE);
