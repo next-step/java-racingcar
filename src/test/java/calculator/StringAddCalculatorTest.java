@@ -50,6 +50,13 @@ public class StringAddCalculatorTest {
     @DisplayName("음수가 포함되면, 런타임 예외를 호출한다.")
     public void splitAndSum_negative() throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
-                .isInstanceOf(RuntimeException.class);
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("숫자가 아닌 값이 포함되면, 런타임 예외를 호출한다.")
+    public void splitAndSum_notNumber() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("a,ㅋ,3"))
+                .isInstanceOf(NumberFormatException.class);
     }
 }
