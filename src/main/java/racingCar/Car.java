@@ -4,12 +4,12 @@ import java.util.Random;
 
 public class Car {
 
-  private int randomValue;
   private final static int MIN_VALUE = 3;
   private final static String STEP = "-";
   private final static int RANDOM_BOUND_VALUE = 10;
+  private int randomValue;
 
-  public String move() {
+  public String step() {
     initRandomValue();
     if (randomValue <= MIN_VALUE) {
       return null;
