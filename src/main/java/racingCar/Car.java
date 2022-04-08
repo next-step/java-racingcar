@@ -1,9 +1,14 @@
 package racingCar;
 
+import java.util.Random;
+
 public class Car {
   private int randomValue;
 
+
   public String move() {
+    Random random = new Random();
+    this.randomValue = random.nextInt(10);
     if(randomValue <=3) {
       return null;
     }
@@ -11,7 +16,7 @@ public class Car {
   }
 
   public void setRandomValue(int randomValue) {
-    this.randomValue = randomValue;
+
   }
 
   public int getRandomValue() {

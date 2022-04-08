@@ -33,4 +33,12 @@ class CarTest {
     car.setRandomValue(3);
     assertThat(car.move()).isEqualTo(null);
   }
+
+  @Test
+  @DisplayName("랜덤 값은 0부터 9사이의 값이다.")
+  void randomValueRange() {
+    car.move();
+    assertThat(car.getRandomValue()).isGreaterThanOrEqualTo(0);
+    assertThat(car.getRandomValue()).isLessThanOrEqualTo(9);
+  }
 }
