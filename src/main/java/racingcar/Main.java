@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Car;
-import racingcar.domain.GameHost;
+import racingcar.domain.RacingCarGame;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
 
@@ -17,7 +17,7 @@ public class Main {
         List<Car> cars = initCars();
 
         // 진행자 생성
-        GameHost host = new GameHost(cars, rounds);
+        RacingCarGame host = new RacingCarGame(cars, rounds);
 
         // 경주 진행
         OutputView.printRaceStart();

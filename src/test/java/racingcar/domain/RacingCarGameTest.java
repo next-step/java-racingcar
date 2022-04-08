@@ -7,10 +7,10 @@ import java.util.Collections;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class GameHostTest {
+class RacingCarGameTest {
 
     private final int rounds = 10;
-    private GameHost host = new GameHost(Collections.emptyList(), rounds);
+    private RacingCarGame host = new RacingCarGame(Collections.emptyList(), rounds);
 
     @Test
     void rounds_만큼_proceedRound_호출하면_정상동작() {
