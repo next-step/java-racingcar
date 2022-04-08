@@ -13,6 +13,10 @@ public class StringAddCalculator {
     private static final String DEFAULT_DELIMITER = "[,:]";
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
+    private StringAddCalculator() {
+        throw new IllegalStateException(StringAddCalculator.class.getName() + " Cannot be instantiated");
+    }
+
     public static int splitAndSum(String text) {
         if (text == null || text.isEmpty()) {
             return DEFAULT_VALUE;
