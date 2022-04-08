@@ -6,20 +6,24 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+    private static final int DEFAULT_VALUE = 0;
+    public static final int CUSTOM_DELIMITER_INDEX = 1;
+    public static final int TOKENS_INDEX = 2;
+
     private static final String DEFAULT_DELIMITER = "[,:]";
-    private static final Pattern CUSTOM_DELIMITER = Pattern.compile("//(.)\n(.*)");
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public static int splitAndSum(String text) {
         if (text == null || text.isEmpty()) {
-            return 0;
+            return DEFAULT_VALUE;
         }
 
         String[] tokens = text.split(DEFAULT_DELIMITER);
-        Matcher m = CUSTOM_DELIMITER.matcher(text);
+        Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(text);
 
         if (m.find()) {
-            String customDelimiter = m.group(1);
-            tokens = m.group(2).split(customDelimiter);
+            String customDelimiter = m.group(CUSTOM_DELIMITER_INDEX);
+            tokens = m.group(TOKENS_INDEX).split(customDelimiter);
         }
 
         return sum(tokens);
