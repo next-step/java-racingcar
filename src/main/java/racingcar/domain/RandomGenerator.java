@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RandomGenerator {
@@ -11,8 +13,12 @@ public class RandomGenerator {
         throw new AssertionError();
     }
 
-    public static int generateRandom() {
-        return RANDOM_GENERATOR.nextInt(RANDOM_UPPER_BOUND);
+    public static List<Integer> generateRandomsOfSize(int size) {
+        List<Integer> randoms = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            randoms.add(RANDOM_GENERATOR.nextInt(RANDOM_UPPER_BOUND));
+        }
+        return randoms;
     }
 
 }

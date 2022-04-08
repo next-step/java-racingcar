@@ -13,9 +13,13 @@ public class RacingCarGame {
         this.rounds = rounds;
     }
 
-    public void proceedRound() {
+    public void proceedRound(List<Integer> randomNumbers) {
+        assert cars.size() == randomNumbers.size();
+
         decreaseGameRound();
-        cars.forEach(this::moveOrStop);
+        for (int i = 0; i < cars.size(); i++) {
+            this.moveOrStop(cars.get(i), randomNumbers.get(i));
+        }
     }
 
     private void decreaseGameRound() {
@@ -26,8 +30,8 @@ public class RacingCarGame {
         rounds = rounds - 1;
     }
 
-    private void moveOrStop(Car car) {
-        if (MOVE_LOWER_BOUND <= RandomGenerator.generateRandom()) {
+    private void moveOrStop(Car car, int random) {
+        if (MOVE_LOWER_BOUND <= random) {
             car.move();
         }
     }
