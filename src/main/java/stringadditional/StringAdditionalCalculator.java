@@ -1,42 +1,41 @@
 package stringadditional;
 
+import commons.Constant;
+import exceptions.InputValueException;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class StringAdditionalCalculator {
-
-    private static final String BASIC_SPLIT_REGEX = ",|:";
-    private static final String CUSTOM_SPLIT_REGEX = "//(.)\n(.*)";
-    private static final String NUMBER_RANGE_REGEX = "[0-9]";
-
     public int splitAndSum(String str) {
         if (str == null || str.isEmpty()) {
             return 0;
         }
 
         int result = 0;
-        Matcher matcher = Pattern.compile(CUSTOM_SPLIT_REGEX).matcher(str);
+        Matcher matcher = Constant.CUSTOM_SPLIT_PATTERN.matcher(str);
         if(matcher.find()) {
             String customDelimiter = matcher.group(1);
             String[] values = matcher.group(2).split(customDelimiter);
-            return splitValueSum(stringToInt(values));
+            return splitValueSum(convertStringToInt(values));
         }
 
-        String[] values = str.split(BASIC_SPLIT_REGEX);
-        return splitValueSum(stringToInt(values));
+        String[] values = str.split(Constant.BASIC_SPLIT_REGEX);
+        return splitValueSum(convertStringToInt(values));
     }
 
-    private int[] stringToInt(String[] values) {
-        int[] numbers = new int[values.length];
+    private List<Integer> convertStringToInt(String[] values) {
+        List<Integer> numbers = new ArrayList<>();
         for(int i = 0; i < values.length; i++) {
             confirmInputCorrectValue(values[i]);
-            numbers[i] = Integer.parseInt(values[i]);
+            numbers.add(Integer.parseInt(values[i]));
         }
 
         return numbers;
     }
 
-    private int splitValueSum(int[] values) {
+    private int splitValueSum(List<Integer> values) {
         int result = 0;
         for (int value : values) {
             result += value;
@@ -45,9 +44,9 @@ public class StringAdditionalCalculator {
         return result;
     }
 
-    private void confirmInputCorrectValue(String value) {
-        if(!value.matches(NUMBER_RANGE_REGEX)) {
-            throw new RuntimeException("숫자 이외의 값 또는 음수가 입력되었습니다.");
+    private void confirmInputCorrectValue(String value) throws InputValueException {
+        if(!value.matches(Constant.NUMBER_RANGE_REGEX)) {
+            throw new InputValueException(Constant.NEGATIVE_OR_NON_NUMERIC_ERR_MSG);
         }
     }
 }

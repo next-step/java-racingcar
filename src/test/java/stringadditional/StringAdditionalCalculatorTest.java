@@ -1,20 +1,30 @@
 package stringadditional;
 
+import commons.Constant;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class StringAdditionalCalculatorTest {
 
-    StringAdditionalCalculator stringAdditionalCalculator = new StringAdditionalCalculator();
+    StringAdditionalCalculator stringAdditionalCalculator;
+
+    @BeforeEach
+    void beforeEach() {
+         stringAdditionalCalculator = new StringAdditionalCalculator();
+    }
 
     @Test
     @DisplayName("빈 문자열 또는 null 값이 입력된 경우 0을 반환")
     void emptyStringInputReturnZero() {
-        assertThat(stringAdditionalCalculator.splitAndSum(null)).isEqualTo(0);
-        assertThat(stringAdditionalCalculator.splitAndSum("")).isEqualTo(0);
+        assertAll(
+                () -> assertThat(stringAdditionalCalculator.splitAndSum(null)).isEqualTo(0),
+                () -> assertThat(stringAdditionalCalculator.splitAndSum("")).isEqualTo(0)
+        );
     }
 
     @Test
@@ -48,7 +58,7 @@ public class StringAdditionalCalculatorTest {
     void exceptionWhenNegativeNumber() {
         assertThatThrownBy(() -> stringAdditionalCalculator.splitAndSum("1,-4,3"))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessage("숫자 이외의 값 또는 음수가 입력되었습니다.");
+                .hasMessage(Constant.NEGATIVE_OR_NON_NUMERIC_ERR_MSG);
     }
 
     @Test
@@ -56,7 +66,7 @@ public class StringAdditionalCalculatorTest {
     void exceptionWhenNegativeNumberAndCustomDelimiter() {
         assertThatThrownBy(() -> stringAdditionalCalculator.splitAndSum("//;\n1;-4;3"))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessage("숫자 이외의 값 또는 음수가 입력되었습니다.");
+                .hasMessage(Constant.NEGATIVE_OR_NON_NUMERIC_ERR_MSG);
     }
 
     @Test
