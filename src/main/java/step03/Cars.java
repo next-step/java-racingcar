@@ -13,13 +13,9 @@ public class Cars {
     }
 
     public List<Integer> move(List<Integer> moveCounts) {
-        int carSize = carList.size();
-        int index = 0;
-
-        while (index < carSize) {
+        for (int index = 0; index < carList.size(); index++) {
             Car car = carList.get(index);
             car.move(moveCounts.get(index));
-            index++;
         }
 
         return getCarCurrentLocations();

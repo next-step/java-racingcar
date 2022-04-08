@@ -23,19 +23,9 @@ public class RacingCarApplication {
     }
 
     public void run() {
-        int carCount = inputCarCount();
-        int trialCount = inputTrialCount();
+        int carCount = consoleReader.inputCarCount();
+        int trialCount = consoleReader.inputTrialCount();
         moveCars(carCount, trialCount);
-    }
-
-    private int inputTrialCount() {
-        outputView.printTrialCountMessage();
-        return consoleReader.readNumber();
-    }
-
-    private int inputCarCount() {
-        outputView.printCarCountMessage();
-        return consoleReader.readNumber();
     }
 
     private void moveCars(int carCount, int trialCount) {

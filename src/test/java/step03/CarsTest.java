@@ -28,9 +28,11 @@ class CarsTest {
         List<Integer> currentLocations = testCars.move(movementList);
 
         //then
-        assertThat(currentLocations.get(0)).isEqualTo(car1.getCurrentLocation());
-        assertThat(currentLocations.get(1)).isEqualTo(car2.getCurrentLocation());
-        assertThat(currentLocations.get(2)).isEqualTo(car3.getCurrentLocation());
+        assertThat(currentLocations).containsExactly(
+                car1.getCurrentLocation(),
+                car2.getCurrentLocation(),
+                car3.getCurrentLocation()
+        );
     }
 
 }
