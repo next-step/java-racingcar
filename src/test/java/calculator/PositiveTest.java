@@ -2,6 +2,8 @@ package calculator;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -22,22 +24,13 @@ class PositiveTest {
         }
 
         @Nested
-        class 음수_문자가_주어지면 {
+        class 숫자가_아니거나_음수_문자가_주어지면 {
 
-            @Test
-            void RuntimeException을_던진다() {
-                assertThatThrownBy(() -> new Positive("-1"))
+            @ParameterizedTest
+            @ValueSource(strings = {"-1", "a"})
+            void RuntimeException을_던진다(String value) {
+                assertThatThrownBy(() -> new Positive(value))
                         .isInstanceOf(RuntimeException.class);
-            }
-        }
-
-        @Nested
-        class 숫자가_아닌_값이_주어지면 {
-
-            @Test
-            void NumberForMatException을_던진다() {
-                assertThatThrownBy(() -> new Positive("a"))
-                        .isInstanceOf(NumberFormatException.class);
             }
         }
     }
