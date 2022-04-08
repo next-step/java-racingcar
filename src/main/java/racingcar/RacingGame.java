@@ -10,16 +10,16 @@ public class RacingGame {
     private final RandomNumberGenerator randomNumberGenerator;
     private final List<RacingCar> racingCars = new ArrayList<>();
 
-    public RacingGame(int racingCarCount, int totalRound, RandomNumberGenerator randomNumberGenerator) {
+    public RacingGame(String[] carNames, int totalRound, RandomNumberGenerator randomNumberGenerator) {
         this.totalRound = totalRound;
         this.resultView = new ResultView();
         this.randomNumberGenerator = randomNumberGenerator;
-        readyRacingCars(racingCarCount);
+        readyRacingCars(carNames);
     }
 
-    private void readyRacingCars(int racingCarCount) {
-        for (int i = 0; i < racingCarCount; i++) {
-            racingCars.add(new RacingCar());
+    private void readyRacingCars(String[] carNames) {
+        for (String carName : carNames) {
+            racingCars.add(new RacingCar(carName));
         }
     }
 

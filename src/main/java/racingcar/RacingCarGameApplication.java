@@ -6,10 +6,10 @@ public class RacingCarGameApplication {
         InputView inputView = new InputView();
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
-        int racingCarCount = inputView.insertRacingCarCount();
+        String[] carNames = inputView.insertRacingCarName();
         int totalRacingRound = inputView.insertTotalRacingRound();
 
-        RacingGame racingGame = new RacingGame(racingCarCount, totalRacingRound, randomNumberGenerator);
+        RacingGame racingGame = new RacingGame(carNames, totalRacingRound, randomNumberGenerator);
         racingGame.raceStart();
     }
 }

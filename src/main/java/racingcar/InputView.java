@@ -10,9 +10,22 @@ public class InputView {
         scanner = new Scanner(System.in);
     }
 
-    public int insertRacingCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return inputScannerInt();
+    private int inputScannerInt() {
+        return scanner.nextInt();
+    }
+
+    public String[] insertRacingCarName() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 (쉼표,)를 기준으로 구분).");
+        String carNamesWithComma = inputScannerString();
+        return splitCarNames(carNamesWithComma);
+    }
+
+    private String inputScannerString() {
+        return scanner.nextLine();
+    }
+
+    private String[] splitCarNames(String carNamesWithComma) {
+        return carNamesWithComma.split(",");
     }
 
     public int insertTotalRacingRound() {
@@ -20,7 +33,4 @@ public class InputView {
         return inputScannerInt();
     }
 
-    private int inputScannerInt() {
-        return scanner.nextInt();
-    }
 }
