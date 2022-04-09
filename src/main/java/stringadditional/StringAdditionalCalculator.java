@@ -13,7 +13,6 @@ public class StringAdditionalCalculator {
             return 0;
         }
 
-        int result = 0;
         Matcher matcher = Constant.CUSTOM_SPLIT_PATTERN.matcher(str);
         if(matcher.find()) {
             String customDelimiter = matcher.group(1);
@@ -27,9 +26,9 @@ public class StringAdditionalCalculator {
 
     private List<Integer> convertStringToInt(String[] values) {
         List<Integer> numbers = new ArrayList<>();
-        for(int i = 0; i < values.length; i++) {
-            confirmInputCorrectValue(values[i]);
-            numbers.add(Integer.parseInt(values[i]));
+        for (String value : values) {
+            confirmInputCorrectValue(value);
+            numbers.add(Integer.parseInt(value));
         }
 
         return numbers;
