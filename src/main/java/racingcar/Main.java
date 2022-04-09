@@ -1,4 +1,4 @@
-package step03;
+package racingcar;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package step03;
+package racingcar;
 
 import java.util.Collections;
 import java.util.List;
