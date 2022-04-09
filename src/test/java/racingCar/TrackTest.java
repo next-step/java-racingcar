@@ -8,7 +8,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class TrackTest {
-
   private Track track;
   @BeforeEach
   void init() {
