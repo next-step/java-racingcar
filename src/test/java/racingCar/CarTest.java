@@ -28,9 +28,9 @@ class CarTest {
   @DisplayName("입력한 횟수 만큼 자동차의 미터기가 작동합니다.")
   void meterTest() {
     Car car = new Car();
-    car.carMeter(4);
-    car.carMeter(4);
-    car.carMeter(3);
+    car.step(4);
+    car.step(4);
+    car.step(3);
     assertThat(car.getMeterParser()).isLessThanOrEqualTo(3);
   }
 }

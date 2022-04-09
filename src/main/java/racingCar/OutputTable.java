@@ -19,7 +19,7 @@ public final class OutputTable {
     for (int i = 0; i < InputTable.TRACK.getGameCount(); i++) {
       for (Car car : InputTable.TRACK.getCars()) {
         Random random = new Random();
-        car.carMeter(random.nextInt(RANDOM_BOUND_VALUE));
+        car.step(random.nextInt(RANDOM_BOUND_VALUE));
         System.out.println(car.move());
       }
       System.out.println();
