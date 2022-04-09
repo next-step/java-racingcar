@@ -10,11 +10,40 @@ public class Car {
     private final int moveCondition;
     private int moveCount;
 
-    public Car(int rangeStartRandomNumber, int rangeEndRandomNumber, int moveCondition) {
+    private Car(Builder builder) {
         this.generateNumber = new Random();
-        this.rangeStartRandomNumber = rangeStartRandomNumber;
-        this.rangeEndRandomNumber = rangeEndRandomNumber;
-        this.moveCondition = moveCondition;
+        this.rangeStartRandomNumber = builder.rangeStartRandomNumber;
+        this.rangeEndRandomNumber = builder.rangeEndRandomNumber;
+        this.moveCondition = builder.moveCondition;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    static class Builder {
+        private int rangeStartRandomNumber;
+        private int rangeEndRandomNumber;
+        private int moveCondition;
+
+        public Builder rangeStartRandomNumber(int rangeStartRandomNumber) {
+            this.rangeStartRandomNumber = rangeStartRandomNumber;
+            return this;
+        }
+
+        public Builder rangeEndRandomNumber(int rangeEndRandomNumber) {
+            this.rangeEndRandomNumber = rangeEndRandomNumber;
+            return this;
+        }
+
+        public Builder moveCondition(int moveCondition) {
+            this.moveCondition = moveCondition;
+            return this;
+        }
+
+        public Car build() {
+            return new Car(this);
+        }
     }
 
     public void addMoveCount() {

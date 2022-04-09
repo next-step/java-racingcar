@@ -11,10 +11,12 @@ public class Race {
             throw new IllegalArgumentException("자동차 대수는 1대 이상이어야 경주 할 수 있습니다.");
         }
 
-        return new Cars(carCount
-                , RANGE_START_RANDOM_NUMBER
-                , RANGE_END_RANDOM_NUMBER
-                , MOVE_CONDITION);
+        return Cars.builder()
+                .carCount(carCount)
+                .rangeStartRandomNumber(RANGE_START_RANDOM_NUMBER)
+                .rangeEndRandomNumber(RANGE_END_RANDOM_NUMBER)
+                .moveCondition(MOVE_CONDITION)
+                .build();
     }
 
     private static boolean checkCount(int count) {

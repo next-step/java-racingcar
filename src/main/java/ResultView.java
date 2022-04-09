@@ -10,7 +10,8 @@ public class ResultView {
     public static void printCarsMoveState(Cars cars, int tryCount) throws InterruptedException {
         for (int count = 0; count < tryCount; count++) {
             cars.addMove();
-            cars.getInstance().forEach(ResultView::print);
+            cars.getInstance()
+                    .forEach(ResultView::print);
             System.out.println();
             Thread.sleep(MAINTAIN_RACE_TIME_FOR_MILLISECOND);
         }
