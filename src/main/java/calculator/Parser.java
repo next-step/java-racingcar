@@ -1,17 +1,22 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Parser {
-	public static int[] toNaturalNumbers(String[] values) {
-		int[] numbers = new int[values.length];
+	static final int MIN_OF_NATURAL_NUMBER = 0;
+
+	public static List<Integer> toNaturalNumbers(String[] values) {
+		List<Integer> numbers = new ArrayList<>();
 		for (int i = 0; i < values.length; i++) {
-			numbers[i] = toNaturalNumber(values[i]);
+			numbers.add(toNaturalNumber(values[i]));
 		}
 		return numbers;
 	}
 
 	public static int toNaturalNumber(String value) {
 		int number = toInt(value);
-		if (number < 0) {
+		if (number < MIN_OF_NATURAL_NUMBER) {
 			throw new RuntimeException("음수는 허용하지 않습니다.");
 		}
 		return number;
