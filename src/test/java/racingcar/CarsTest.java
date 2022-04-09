@@ -29,10 +29,53 @@ class CarsTest {
 
         //then
         assertThat(carLocationResults).containsExactly(
-                new CarLocationResult(car1),
-                new CarLocationResult(car2),
-                new CarLocationResult(car3)
+                CarLocationResult.from(car1),
+                CarLocationResult.from(car2),
+                CarLocationResult.from(car3)
         );
+    }
+
+    @Test
+    @DisplayName("우승자 1명임을 확인한다.")
+    void winnerTest() {
+        //given
+        Car car1 = new Car("자동차1");
+        Car car2 = new Car("자동차2");
+        Car car3 = new Car("자동차3");
+
+        car1.move(4);
+        car1.move(3);
+        car1.move(3);
+
+        //when
+        Cars testCars = new Cars(List.of(car1, car2, car3));
+        List<CarName> winners = testCars.getWinners();
+
+        //then
+        assertThat(winners.size()).isOne();
+        assertThat(winners.get(0).getName()).isEqualTo(car1.getCarName());
+    }
+
+    @Test
+    @DisplayName("우승자 2명을 확인한다.")
+    void winnersTest() {
+        //given
+        Car car1 = new Car("자동차1");
+        Car car2 = new Car("자동차2");
+        Car car3 = new Car("자동차3");
+
+        car1.move(7);
+        car2.move(6);
+        car3.move(3);
+
+        //when
+        Cars testCars = new Cars(List.of(car1, car2, car3));
+        List<CarName> winners = testCars.getWinners();
+
+        //then
+        assertThat(winners.size()).isGreaterThanOrEqualTo(2);
+        assertThat(winners).contains(new CarName("자동차1"));
+        assertThat(winners).contains(new CarName("자동차2"));
     }
 
 }

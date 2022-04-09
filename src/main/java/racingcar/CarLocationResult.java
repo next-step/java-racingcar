@@ -8,9 +8,9 @@ public class CarLocationResult {
 
     private final int currentLocation;
 
-    public CarLocationResult(Car car) {
-        this.carName = car.getCarName();
-        this.currentLocation = car.getCurrentLocation();
+    private CarLocationResult(String carName, int currentLocation) {
+        this.carName = carName;
+        this.currentLocation = currentLocation;
     }
 
     public String getCarName() {
@@ -32,6 +32,10 @@ public class CarLocationResult {
     @Override
     public int hashCode() {
         return Objects.hash(carName, currentLocation);
+    }
+
+    public static CarLocationResult from(Car car) {
+        return new CarLocationResult(car.getCarName(), car.getCurrentLocation());
     }
 
 }

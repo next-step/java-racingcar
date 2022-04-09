@@ -24,18 +24,17 @@ public class RacingCarApplication {
 
     public void run() {
         try {
-            List<Car> carList = generateCarList(consoleReader.inputCarNames());
+            Cars cars = new Cars(generateCarList(consoleReader.inputCarNames()));
             int trialCount = consoleReader.inputTrialCount();
-            moveCars(carList, trialCount);
+            moveCars(cars, trialCount);
+            outputView.printWinners(cars.getWinners());
         } catch (Exception exception) {
             outputView.printErrorMessage(exception.getMessage());
         }
     }
 
-    private void moveCars(List<Car> carList, int trialCount) {
-        Cars cars = new Cars(carList);
-        int carCount = carList.size();
-
+    private void moveCars(Cars cars, int trialCount) {
+        int carCount = cars.size();
         int nowCount = 0;
         while (isRunning(nowCount, trialCount)) {
             List<Integer> movementList = randomNumberGenerator.generateRandomNumberList(carCount);
