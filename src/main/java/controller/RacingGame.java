@@ -10,19 +10,8 @@ public class RacingGame {
     private int numberOfGames;
 
     public void startRacingGame() {
-        carsProgress = new CarsProgress(validationInputValue(InputView.inputNumberOfCars()));
-        numberOfGames = Integer.parseInt(validationInputValue(InputView.inputNumberOfAttempts()));
-    }
-
-    public String validationInputValue(String numberOfCarsString) throws InputValueException {
-        if (!numberOfCarsString.matches(Constant.NUMERIC_REGEX)) {
-            throw new RuntimeException(Constant.NON_NUMERIC_ERR_MSG);
-        }
-
-        if (!numberOfCarsString.matches(Constant.POSITIVE_INTEGER_REGEX)) {
-            throw new RuntimeException(Constant.ZERO_OR_NEGATIVE_NUMERIC_ERR_MSG);
-        }
-
-        return numberOfCarsString;
+        InputService inputService = new InputService();
+        carsProgress = new CarsProgress(inputService.convertInputValue(InputView.inputNumberOfCars()));
+        numberOfGames = inputService.convertInputValue(InputView.inputNumberOfAttempts());
     }
 }

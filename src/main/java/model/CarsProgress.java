@@ -1,5 +1,6 @@
 package model;
 
+import controller.InputService;
 import domain.Cars;
 
 import java.util.ArrayList;
@@ -9,8 +10,7 @@ public class CarsProgress {
 
     private List<Cars> carsList;
 
-    public CarsProgress(String numberOfCarsString) {
-        int numberOfCars = Integer.parseInt(numberOfCarsString);
+    public CarsProgress(int numberOfCars) {
         carsList = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
             Cars cars = new Cars();
