@@ -12,7 +12,7 @@ public class Car {
         this(DEFAULT_POSITION);
     }
 
-    public Car(int position) {
+    protected Car(int position) {
         this.position = position;
     }
 
