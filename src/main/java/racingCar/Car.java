@@ -22,6 +22,10 @@ public class Car {
     return meterParser += step();
   }
 
+  public int getMeterParser() {
+    return meterParser;
+  }
+
   public void initRandomValue() {
     Random random = new Random();
     this.randomValue = random.nextInt(RANDOM_BOUND_VALUE);
