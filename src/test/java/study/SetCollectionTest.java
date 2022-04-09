@@ -29,7 +29,7 @@ public class SetCollectionTest {
     @DisplayName("set size() 메소들을 활용하여 set의 크기 확인")
     void setSizeMethod() {
         int setExpectSize = 3;
-        assertThat(numbers.size()).isEqualTo(setExpectSize);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
