@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import racingcar.model.Cars;
+import racingcar.model.factory.CarsFactory;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -11,6 +13,8 @@ public class RacingGame {
         int carMoveCount = inputView.inputCarMoveCount();
 
         OutputView outputView = new OutputView();
-        outputView.outputMoveCar(carCount, carMoveCount);
+
+        Cars cars = CarsFactory.create(carCount);
+        outputView.outputMoveCar(cars, carMoveCount);
     }
 }

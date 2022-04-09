@@ -1,12 +1,9 @@
 package racingcar.view;
 
 import racingcar.model.Cars;
-import racingcar.model.factory.CarsFactory;
 
 public class OutputView {
-    public void outputMoveCar(int carCount, int carMoveCount) {
-        Cars cars = CarsFactory.create(carCount);
-
+    public void outputMoveCar(Cars cars, int carMoveCount) {
         for (int i = 0; i < carMoveCount; i++) {
             cars.move();
             outputPosition(cars);
