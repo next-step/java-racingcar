@@ -1,28 +1,19 @@
 package racingcar.view;
 
+import racingcar.factory.CarsFactory;
 import racingcar.model.Car;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class OutputView {
     public void outputMoveCar(int carCount, int carMoveCount) {
-        List<Car> cars = createCars(carCount);
+        List<Car> cars = CarsFactory.create(carCount);
 
         for (int i = 0; i < carMoveCount; i++) {
             outputMove(cars);
             outputEmptyLine();
         }
-    }
-
-    private List<Car> createCars(int carCount) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
-
-        return cars;
     }
 
     private void outputMove(List<Car> cars) {
