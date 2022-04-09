@@ -8,9 +8,7 @@ public class RacingGame {
         InputView inputView = new InputView();
 
         int carCount = inputView.inputCarCount();
-        System.out.println("inputCarCount = " + carCount);
         int carMoveCount = inputView.inputCarMoveCount();
-        System.out.println("inputCarMoveCount = " + carMoveCount);
 
         OutputView outputView = new OutputView();
         outputView.outputMoveCar(carCount, carMoveCount);
