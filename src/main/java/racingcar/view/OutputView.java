@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.factory.CarsFactory;
+import racingcar.generator.RandomNumberGenerator;
 import racingcar.model.Car;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class OutputView {
 
     private void outputMove(List<Car> cars) {
         cars.forEach(car -> {
-            car.move();
+            car.move(new RandomNumberGenerator());
             outputPosition(car);
         });
     }

@@ -1,11 +1,10 @@
 package racingcar.model;
 
-import java.util.Random;
+import racingcar.generator.NumberGenerator;
 
 public class Car {
     public static final int MOVABLE_NUMBER = 4;
     private static final int DEFAULT_POSITION = 1;
-    private static final int RANDOM_NUMBER_BOUND = 10;
 
     private int position;
 
@@ -17,8 +16,8 @@ public class Car {
         this.position = position;
     }
 
-    public void move() {
-        move(getRandomNumber());
+    public boolean move(NumberGenerator numberGenerator) {
+        return move(numberGenerator.generate());
     }
 
     public boolean move(int number) {
@@ -34,7 +33,4 @@ public class Car {
         return this.position;
     }
 
-    private int getRandomNumber() {
-        return new Random().nextInt(RANDOM_NUMBER_BOUND);
-    }
 }
