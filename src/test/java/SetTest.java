@@ -34,6 +34,7 @@ public class SetTest {
     void isContain(int input) {
         numbers.add(input);
         assertThat(numbers.contains(input)).isTrue();
+
     }
 
     //
