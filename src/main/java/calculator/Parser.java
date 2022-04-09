@@ -8,8 +8,8 @@ public class Parser {
 
 	public static List<Integer> toNaturalNumbers(String[] values) {
 		List<Integer> numbers = new ArrayList<>();
-		for (int i = 0; i < values.length; i++) {
-			numbers.add(toNaturalNumber(values[i]));
+		for (String value : values) {
+			numbers.add(toNaturalNumber(value));
 		}
 		return numbers;
 	}
