@@ -3,6 +3,7 @@ package racingCar;
 import java.util.Random;
 
 public class Car {
+
   private final static int MIN_VALUE = 3;
   private final static String STEP = "-";
   private final static int RANDOM_BOUND_VALUE = 10;
