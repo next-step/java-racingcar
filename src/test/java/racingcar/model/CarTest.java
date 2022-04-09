@@ -46,13 +46,10 @@ public class CarTest {
 
         @Test
         void 현재_position을_리턴한다() {
-            assertThat(car.getPosition()).isEqualTo(0);
+            assertThat(car.getPosition()).isEqualTo(1);
 
-            Car newCar = new Car(1);
-            assertThat(newCar.getPosition()).isEqualTo(1);
-
-            newCar.move(Car.MOVABLE_NUMBER);
-            assertThat(newCar.getPosition()).isEqualTo(1);
+            car.move(Car.MOVABLE_NUMBER);
+            assertThat(car.getPosition()).isEqualTo(2);
         }
     }
 }

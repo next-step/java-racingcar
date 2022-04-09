@@ -2,7 +2,7 @@ package racingcar.model;
 
 public class Car {
     public static final int MOVABLE_NUMBER = 4;
-    private static final int DEFAULT_POSITION = 0;
+    private static final int DEFAULT_POSITION = 1;
 
     private int position;
 
