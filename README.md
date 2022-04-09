@@ -13,9 +13,10 @@
 
 ## ToDo
 
-- [ ] Car
-    - [ ] int position
+- [x] Car
+    - [x] int position
     - [x] boolean move()
+    - [x] int getPosition()
 - [x] InputView
     - [x] int inputCarCount()
     - [x] int inputCarMoveCount()

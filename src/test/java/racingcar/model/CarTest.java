@@ -2,6 +2,7 @@ package racingcar.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -38,5 +39,20 @@ public class CarTest {
             }
         }
 
+    }
+
+    @Nested
+    class getPosition_메서드는 {
+
+        @Test
+        void 현재_position을_리턴한다() {
+            assertThat(car.getPosition()).isEqualTo(0);
+
+            Car newCar = new Car(1);
+            assertThat(newCar.getPosition()).isEqualTo(1);
+
+            newCar.move(Car.MOVABLE_NUMBER);
+            assertThat(newCar.getPosition()).isEqualTo(1);
+        }
     }
 }
