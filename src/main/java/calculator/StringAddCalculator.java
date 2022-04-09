@@ -3,36 +3,34 @@ package calculator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static java.lang.Character.isDigit;
-
 public class StringAddCalculator {
     // 메서드는 가장 작은 단위로 분리!
-    public static final String DEFAULT_DELIMITER = ",|:";
-    public static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
+    private static final int CUSTOM_DELIMITER_GROUP = 1;
+    private static final int TEXT_GROUP = 2;
+    private static final Pattern DELIMITER = Pattern.compile(CUSTOM_DELIMITER_REGEXP);
+
+    private StringAddCalculator() {}
 
     public static int splitAndSum(String text) {
         if (isBlank(text)) {
             return 0;
         }
 
-        Matcher m = Pattern.compile(CUSTOM_DELIMITER_REGEXP).matcher(text);
+        Matcher m = DELIMITER.matcher(text);
         String customDelimiter = "";
         if (m.find()) {
-            customDelimiter = m.group(1);
-            String[] values = split(m.group(2), customDelimiter);
+            customDelimiter = m.group(CUSTOM_DELIMITER_GROUP);
+            String[] values = m.group(TEXT_GROUP).split(customDelimiter);
             return sum(toInts(values));
         }
-        String[] values = split(text, DEFAULT_DELIMITER);
+        String[] values = text.split(DEFAULT_DELIMITER);
         return sum(toInts(values));
     }
 
     private static boolean isBlank(String text) {
         return text == null || text.isBlank();
-    }
-
-    private static String[] split(String text, String defaultDelimiter) {
-        String[] values = text.split(defaultDelimiter);
-        return values;
     }
 
     private static int sum(int[] numbers) {
@@ -45,17 +43,12 @@ public class StringAddCalculator {
 
     private static int[] toInts(String[] values) {
         int[] numbers = new int[values.length];
+        PositiveNumber positiveNumber;
         for (int i = 0; i < values.length; i++) {
-            numbers[i] = toInt(values[i]);
+            positiveNumber = new PositiveNumber(values[i]);
+            numbers[i] = positiveNumber.getNumber();
         }
         return numbers;
     }
 
-    private static int toInt(String value) {
-        int number = Integer.parseInt(value);
-        if(number < 0) {
-            throw new RuntimeException("음수는 허용하지 않습니다.");
-        }
-        return number;
-    }
 }

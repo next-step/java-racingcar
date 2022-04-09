@@ -1,16 +1,20 @@
 package calculator;
 
-public class Positive {
-    private int number;
+public class PositiveNumber {
+    private final int number;
 
-    Positive(String value) {
+    PositiveNumber(String value) {
         this(Integer.parseInt(value));
     }
 
-    Positive(int number) {
+    PositiveNumber(int number) {
         if(number < 0) {
             throw new RuntimeException("음수는 허용하지 않습니다.");
         }
         this.number = number;
+    }
+
+    public int getNumber() {
+        return number;
     }
 }
