@@ -12,8 +12,15 @@ class CarTest {
     @Test
     @DisplayName("자동차의 시작 지점은 1이다.")
     void initLocationTest() {
-        Car car = new Car();
+        Car car = new Car("자동차1");
         assertThat(car.getCurrentLocation()).isEqualTo(1);
+        assertThat(car.getCarName()).isEqualTo("자동차1");
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 5자를 초과하면 예외를 발생시킨다.")
+    void initCarNameTest() {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car("123456"));
     }
 
     @ParameterizedTest
@@ -21,7 +28,7 @@ class CarTest {
     @DisplayName("자동차는 값이 4 이상일 경우 움직인다")
     void moveTest(int value, int expectedLocation) {
         //given
-        Car car = new Car();
+        Car car = new Car("자동차1");
 
         //when, then
         assertThat(car.move(value)).isEqualTo(expectedLocation);
