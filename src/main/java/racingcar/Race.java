@@ -7,14 +7,16 @@ import java.util.stream.IntStream;
 public class Race {
     private static final int CHECK_CAR_OR_TRY_COUNT = 0;
     private static final int RANGE_START_RANDOM_NUMBER = 0;
+    private static final int RANGE_LIST_START_NUMBER = 0;
     private static final int RANGE_END_RANDOM_NUMBER = 9;
     private static final int MOVE_CONDITION = 4;
+    private static final int MAINTAIN_RACE_TIME_FOR_MILLISECOND = 1000;
 
     public static void start(int carCount, int tryCount) throws InterruptedException {
         countValidate(carCount, tryCount);
 
         List<Car> carList = IntStream
-                .range(0, carCount)
+                .range(RANGE_LIST_START_NUMBER, carCount)
                 .mapToObj(count -> new Car(RANGE_START_RANDOM_NUMBER
                         , RANGE_END_RANDOM_NUMBER
                         , MOVE_CONDITION))
@@ -38,8 +40,24 @@ public class Race {
     }
 
     private static void carRaceUntilTryCount(List<Car> carList, int tryCount) throws InterruptedException {
+        System.out.println("\n실행 결과");
+
         for (int count = 0; count < tryCount; count++) {
             carList.forEach(Car::addMoveCount);
+            printCarsMoveState(carList);
+            Thread.sleep(MAINTAIN_RACE_TIME_FOR_MILLISECOND);
         }
+    }
+
+    private static void printCarsMoveState(List<Car> carList) {
+        carList.forEach(Race::print);
+        System.out.println();
+    }
+
+    private static void print(Car car) {
+        IntStream.range(RANGE_LIST_START_NUMBER, car.getMoveCount())
+                .mapToObj(count -> "-")
+                .forEach(System.out::print);
+        System.out.println();
     }
 }

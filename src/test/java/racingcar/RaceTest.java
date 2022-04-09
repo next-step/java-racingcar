@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class RaceTest {
@@ -19,7 +18,7 @@ class RaceTest {
 
     @Test
     @Order(2)
-    void 경주횟수가_0대일때() throws InterruptedException {
+    void 경주횟수가_0번일때() throws InterruptedException {
         assertThatThrownBy(() -> Race.start(1, 0))
                 .isInstanceOf(IllegalArgumentException.class);
     }
