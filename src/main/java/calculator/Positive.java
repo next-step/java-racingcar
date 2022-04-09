@@ -18,16 +18,16 @@ public class Positive {
         this.number = number;
     }
 
-    private int toInt(String text) {
-        return Integer.parseInt(text);
-    }
-
     private void checkInt(String text) {
         try {
             toInt(text);
         } catch (NumberFormatException e) {
             throw new RuntimeException(ONLY_NUMBER_VALUE_ALLOW_MESSAGE);
         }
+    }
+
+    private int toInt(String text) {
+        return Integer.parseInt(text);
     }
 
     private void checkNegative(int number) {
