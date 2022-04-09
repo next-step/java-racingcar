@@ -25,4 +25,14 @@ public class Track {
   public void setGameCount(int gameCount) {
     this.gameCount = gameCount;
   }
+
+  public void play() {
+    for (int i = 0; i < getGameCount(); i++) {
+      for (Car car : cars) {
+        car.carMeter();
+        System.out.println(car.move());
+      }
+      System.out.println();
+    }
+  }
 }
