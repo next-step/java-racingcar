@@ -14,10 +14,10 @@
 ## ToDo
 
 - [ ] Car
-  - [ ] int position
-  - [ ] void move()
-- [ ] InputView
-  - [x] int inputCarCount()
-  - [ ] int inputCarMoveCount()
+    - [ ] int position
+    - [ ] void move()
+- [x] InputView
+    - [x] int inputCarCount()
+    - [x] int inputCarMoveCount()
 - [ ] OutputView
-  - [ ] void outputMoveCar(int carCount, int carMoveCount)
+    - [ ] void outputMoveCar(int carCount, int carMoveCount)

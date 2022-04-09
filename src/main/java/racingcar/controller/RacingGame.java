@@ -5,7 +5,10 @@ import racingcar.view.InputView;
 public class RacingGame {
     public void start() {
         InputView inputView = new InputView();
-        int inputCarCount = inputView.inputCarCount();
-        System.out.println("inputCarCount = " + inputCarCount);
+
+        int carCount = inputView.inputCarCount();
+        System.out.println("inputCarCount = " + carCount);
+        int carMoveCount = inputView.inputCarMoveCount();
+        System.out.println("inputCarMoveCount = " + carMoveCount);
     }
 }
