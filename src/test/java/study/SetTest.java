@@ -24,7 +24,7 @@ public class SetTest {
 
     @Test
     void numbers_size() {
-        assertThat(this.numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
@@ -38,6 +38,4 @@ public class SetTest {
     void contains_or_not(int input, boolean output) {
         assertThat(numbers.contains(input)).isEqualTo(output);
     }
-
-
 }
