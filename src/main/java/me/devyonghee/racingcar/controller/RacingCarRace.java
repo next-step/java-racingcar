@@ -41,6 +41,4 @@ public final class RacingCarRace {
     private CarFactory carFactory(int carCount) {
         return CarFactory.of(carCount, RandomEngine.from(new Random(), RANDOM_LIMIT));
     }
-
-
 }
