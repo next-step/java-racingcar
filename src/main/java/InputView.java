@@ -11,6 +11,6 @@ public class InputView {
         System.out.println("시도할 횟수는 몇 회 인가요?");
         int tryCount = inputNumber.nextInt();
 
-        Race.start(carCount, tryCount);
+        ResultView.printCarsMoveState(Race.start(carCount), tryCount);
     }
 }
