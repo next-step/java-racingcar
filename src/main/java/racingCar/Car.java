@@ -8,6 +8,7 @@ public class Car {
   private final static String STEP = "-";
   private final static int RANDOM_BOUND_VALUE = 10;
   private int randomValue;
+  private String meterParser;
 
   public String step() {
     initRandomValue();
@@ -17,16 +18,9 @@ public class Car {
     return STEP;
   }
 
-  public String move(int count) {
-    StringBuilder carMove = new StringBuilder();
-    for (int i = 0; i < count; i++) {
-      String step = step();
-      if (step == null) {
-        continue;
-      }
-      carMove.append(step);
-    }
-    return carMove.toString();
+  public String move() {
+    if(step() == null) return meterParser;
+    return meterParser += step();
   }
 
   public void initRandomValue() {

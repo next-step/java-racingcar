@@ -44,4 +44,12 @@ class CarTest {
     assertThat(car.getRandomValue()).isGreaterThanOrEqualTo(0);
     assertThat(car.getRandomValue()).isLessThanOrEqualTo(9);
   }
+
+  @Test
+  @DisplayName("미터기 테스트")
+  void meterTest() {
+    car.step();
+    car.step();
+    car.step();
+  }
 }
