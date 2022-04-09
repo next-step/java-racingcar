@@ -5,7 +5,7 @@ import me.devyonghee.racingcar.utility.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingStadium {
+public final class RacingStadium {
 
     private final CarPreparer preparer;
     private final int cycleCount;

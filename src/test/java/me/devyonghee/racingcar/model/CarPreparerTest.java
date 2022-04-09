@@ -1,12 +1,10 @@
 package me.devyonghee.racingcar.model;
 
 import me.devyonghee.racingcar.model.sample.RandomEngineSample;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.assertj.core.api.Assertions.assertThatNoException;
+import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("자동자 준비자")
 class CarPreparerTest {
@@ -32,6 +30,6 @@ class CarPreparerTest {
         //when
         Tracks tracks = CarPreparer.of(CarFactory.of(count, RandomEngineSample.TEM_LIMIT_RANDOM_ENGINE), Distance.from(1)).tracks();
         //then
-        Assertions.assertThat(tracks.size()).isEqualTo(3);
+        assertThat(tracks.size()).isEqualTo(3);
     }
 }
