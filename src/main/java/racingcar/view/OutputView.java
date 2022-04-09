@@ -8,14 +8,10 @@ public class OutputView {
         Cars cars = CarsFactory.create(carCount);
 
         for (int i = 0; i < carMoveCount; i++) {
-            outputMove(cars);
+            cars.move();
+            outputPosition(cars);
             outputEmptyLine();
         }
-    }
-
-    private void outputMove(Cars cars) {
-        cars.move();
-        outputPosition(cars);
     }
 
     private void outputPosition(Cars cars) {
