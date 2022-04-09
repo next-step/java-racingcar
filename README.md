@@ -15,7 +15,7 @@
 
 - [ ] Car
     - [ ] int position
-    - [ ] void move()
+    - [x] boolean move()
 - [x] InputView
     - [x] int inputCarCount()
     - [x] int inputCarMoveCount()
