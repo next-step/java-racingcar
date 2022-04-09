@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestObjectGenerator {
-    public static Car generateCar(String carName, int position) {
+    public static Car generateCar(String inputCarName, int position) {
+        CarName carName = CarName.create(inputCarName);
         Car car = Car.create(carName);
         for (int i = 0; i < position; i++) {
             car = car.move(Car.BASE_MOVE_VALUE);
@@ -27,7 +28,10 @@ public class TestObjectGenerator {
         return () -> Car.BASE_MOVE_VALUE;
     }
 
-    public static NumberGenerator generatorStopNumberGenerator() {
-        return () -> Car.BASE_MOVE_VALUE - 1;
+    public static RaceModel generateRaceModel(Cars cars, int moveCount) {
+        RaceModel raceModel = new RaceModel();
+        raceModel.setCars(cars);
+        raceModel.setMoveCount(moveCount);
+        return raceModel;
     }
 }

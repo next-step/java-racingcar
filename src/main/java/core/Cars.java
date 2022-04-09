@@ -5,7 +5,6 @@ import utils.NumberGenerator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class Cars {
     private final List<Car> cars;
@@ -14,9 +13,9 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars fromCarNames(List<String> carNames) {
+    public static Cars fromCarNames(List<CarName> carNames) {
         List<Car> receivedCars = new ArrayList<>();
-        for (String carName : carNames) {
+        for (CarName carName : carNames) {
             receivedCars.add(Car.create(carName));
         }
 

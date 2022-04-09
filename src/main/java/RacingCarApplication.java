@@ -1,17 +1,23 @@
+import core.CarName;
 import core.Cars;
+import core.RaceModel;
 import core.Winners;
 import utils.AnnouncementPrinter;
-import utils.RaceProcessor;
+import utils.CustomScanner;
 import utils.RandomNumberGenerator;
+
+import java.util.List;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
         AnnouncementPrinter.printCarNameInputAnnouncement();
-        Cars cars = RaceProcessor.createValidCars();
-        int moveCount = RaceProcessor.determineMoveCountFromInput();
-        Cars movedCars = RaceProcessor.moveCarsRandomlyMoveCountTimes(cars, moveCount, new RandomNumberGenerator());
-        AnnouncementPrinter.printMoveResult(movedCars, moveCount);
-        Winners winners = Winners.decideWinners(movedCars);
+        List<CarName> carNames = CustomScanner.scanValidCarNames();
+        RaceModel raceModel = new RaceModel();
+        raceModel.setCars(Cars.fromCarNames(carNames));
+        raceModel.setMoveCount(CustomScanner.scanMoveCount());
+        raceModel.moveCarsRandomlyMoveCountTimes(new RandomNumberGenerator());
+        AnnouncementPrinter.printMoveResult(raceModel.getCars(), raceModel.getMoveCount());
+        Winners winners = Winners.decideWinners(raceModel.getCars());
         AnnouncementPrinter.announceWinners(winners);
     }
 }

@@ -20,8 +20,8 @@ class WinnersTest {
         Car car3 = TestObjectGenerator.generateCar("c", 2);
         Cars cars = Cars.fromCars(Arrays.asList(car1, car2, car3));
 
-        List<String> winnerCarNames = new ArrayList<>();
-        winnerCarNames.add("a");
+        List<CarName> winnerCarNames = new ArrayList<>();
+        winnerCarNames.add(CarName.create("a"));
 
         //when
         Winners winners = Winners.decideWinners(cars);
@@ -40,9 +40,9 @@ class WinnersTest {
         Car car3 = TestObjectGenerator.generateCar("c", 4);
         Cars cars = Cars.fromCars(Arrays.asList(car1, car2, car3));
 
-        List<String> winnerCarNames = new ArrayList<>();
-        winnerCarNames.add("a");
-        winnerCarNames.add("c");
+        List<CarName> winnerCarNames = new ArrayList<>();
+        winnerCarNames.add(CarName.create("a"));
+        winnerCarNames.add(CarName.create("c"));
 
         //when
         Winners winners = Winners.decideWinners(cars);

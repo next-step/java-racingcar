@@ -15,7 +15,10 @@ class CarsTest {
     @DisplayName("carName 이 carNames 로 구성된 Car 들이 만들어져야 한다")
     void fromCarNames() {
         //given
-        List<String> carNames = new ArrayList<>(Arrays.asList("abc", "bcd", "cde"));
+        CarName carName1 = CarName.create("abc");
+        CarName carName2 = CarName.create("bcd");
+        CarName carName3 = CarName.create("cde");
+        List<CarName> carNames = new ArrayList<>(Arrays.asList(carName1, carName2, carName3));
 
         //when
         Cars result = Cars.fromCarNames(carNames);
