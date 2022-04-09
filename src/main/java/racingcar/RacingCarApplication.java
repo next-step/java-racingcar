@@ -39,8 +39,8 @@ public class RacingCarApplication {
         int nowCount = 0;
         while (isRunning(nowCount, trialCount)) {
             List<Integer> movementList = randomNumberGenerator.generateRandomNumberList(carCount);
-            List<Integer> currentLocations = cars.move(movementList);
-            outputView.printCurrentCarMovements(currentLocations);
+            List<CarLocationResult> carLocationResults = cars.move(movementList);
+            outputView.printCurrentCarMovements(carLocationResults);
             nowCount++;
         }
     }

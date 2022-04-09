@@ -6,10 +6,13 @@ public class OutputView {
 
     private static final String CAR_MOVEMENT_MARKER = "-";
 
-    public void printCurrentCarMovements(List<Integer> carCurrentLocations) {
-        for (Integer carCurrentLocation : carCurrentLocations) {
-            String currentLocationsMarker = createCurrentLocationMarker(carCurrentLocation);
-            System.out.println(currentLocationsMarker);
+    private static final String CAR_LOCATION_RESULT_FORMAT = "%5s : %s\n";
+
+    public void printCurrentCarMovements(List<CarLocationResult> carCurrentLocations) {
+        for (CarLocationResult carCurrentLocation : carCurrentLocations) {
+            String carName = carCurrentLocation.getCarName();
+            String currentLocationsMarker = createCurrentLocationMarker(carCurrentLocation.getCurrentLocation());
+            System.out.printf(CAR_LOCATION_RESULT_FORMAT, carName, currentLocationsMarker);
         }
         System.out.println();
     }
@@ -24,4 +27,7 @@ public class OutputView {
         return stringBuilder.toString();
     }
 
+    public void printErrorMessage(String message) {
+        System.out.println(message);
+    }
 }

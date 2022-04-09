@@ -12,18 +12,18 @@ public class Cars {
         this.carList = Collections.unmodifiableList(carList);
     }
 
-    public List<Integer> move(List<Integer> moveCounts) {
+    public List<CarLocationResult> move(List<Integer> moveCounts) {
         for (int index = 0; index < carList.size(); index++) {
             Car car = carList.get(index);
             car.move(moveCounts.get(index));
         }
 
-        return getCarCurrentLocations();
+        return getCarLocationResult();
     }
 
-    private List<Integer> getCarCurrentLocations() {
+    private List<CarLocationResult> getCarLocationResult() {
         return carList.stream()
-                .map(Car::getCurrentLocation)
+                .map(CarLocationResult::new)
                 .collect(Collectors.toList());
     }
 
