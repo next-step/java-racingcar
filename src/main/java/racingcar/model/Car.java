@@ -4,7 +4,7 @@ public class Car {
     public static final int MOVABLE_NUMBER = 4;
     private static final int DEFAULT_POSITION = 0;
 
-    private final int position;
+    private int position;
 
     public Car() {
         this(DEFAULT_POSITION);
@@ -16,6 +16,7 @@ public class Car {
 
     public boolean move(int number) {
         if (number >= MOVABLE_NUMBER) {
+            this.position++;
             return true;
         }
 
