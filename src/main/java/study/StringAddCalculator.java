@@ -4,12 +4,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    public static int splitAndSum(String text) {  // 일반 메소드
+    private final static Pattern custom = Pattern.compile("//(.)\n(.*)");
+
+    private StringAddCalculator() {
+        throw new AssertionError();
+    };
+
+    public static int splitAndSum(String text) {
         if (text == null || text.isEmpty()) {
             return 0;
         }
 
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text); // 커스텀 구분자 확인
+        Matcher m = custom.matcher(text);
         if (m.find()) {
             String customDelimiter = m.group(1);
             String[] tokens= m.group(2).split(customDelimiter);
@@ -19,7 +25,17 @@ public class StringAddCalculator {
         return addEachItem(text.split( ",|:"));
     }
 
-    public static int getIfNumber(String text) {
+    private static int addEachItem(String[] numbers) {
+        int result = 0;
+        for(String num:numbers) {
+            int temp = getIfNumber(num);
+            checkPositive(temp);
+            result += temp;
+        }
+        return result;
+    }
+
+    private static int getIfNumber(String text) {
         try {
             return Integer.parseInt(text);
         } catch(NumberFormatException e){
@@ -27,19 +43,9 @@ public class StringAddCalculator {
         }
     }
 
-    public static void isPositive(int number) {
+    private static void checkPositive(int number) {
         if(number < 0){
             throw new RuntimeException();
         }
-    }
-
-    public static int addEachItem(String[] numbers) {
-        int result = 0;
-        for(String num:numbers) {
-            int temp = getIfNumber(num);
-            isPositive(temp);
-            result += temp;
-        }
-        return result;
     }
 }
