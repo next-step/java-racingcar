@@ -17,11 +17,7 @@ public class Car {
     }
 
     public boolean move(NumberGenerator numberGenerator) {
-        return move(numberGenerator.generate());
-    }
-
-    public boolean move(int number) {
-        if (number >= MOVABLE_NUMBER) {
+        if (numberGenerator.generate() >= MOVABLE_NUMBER) {
             this.position++;
             return true;
         }

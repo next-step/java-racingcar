@@ -25,7 +25,7 @@ public class CarTest {
             @ParameterizedTest
             @ValueSource(ints = {3})
             void false를_리턴한다(int number) {
-                assertThat(car.move(number)).isFalse();
+                assertThat(car.move(() -> number)).isFalse();
             }
         }
 
@@ -35,7 +35,7 @@ public class CarTest {
             @ParameterizedTest
             @ValueSource(ints = {4})
             void true를_리턴한다(int number) {
-                assertThat(car.move(number)).isTrue();
+                assertThat(car.move(() -> number)).isTrue();
             }
         }
 
@@ -48,7 +48,7 @@ public class CarTest {
         void 현재_position을_리턴한다() {
             assertThat(car.getPosition()).isEqualTo(1);
 
-            car.move(Car.MOVABLE_NUMBER);
+            car.move(() -> Car.MOVABLE_NUMBER);
             assertThat(car.getPosition()).isEqualTo(2);
         }
     }
