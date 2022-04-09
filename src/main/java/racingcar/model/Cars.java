@@ -3,7 +3,6 @@ package racingcar.model;
 import racingcar.generator.RandomNumberGenerator;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -18,9 +17,9 @@ public class Cars {
         );
     }
 
-    public List<Integer> getAllPositions() {
+    public int[] getAllPositions() {
         return this.cars.stream()
-                .map(Car::getPosition)
-                .collect(Collectors.toList());
+                .mapToInt(Car::getPosition)
+                .toArray();
     }
 }

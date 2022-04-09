@@ -1,9 +1,7 @@
 package racingcar.view;
 
-import racingcar.factory.CarsFactory;
 import racingcar.model.Cars;
-
-import java.util.List;
+import racingcar.model.factory.CarsFactory;
 
 public class OutputView {
     public void outputMoveCar(int carCount, int carMoveCount) {
@@ -21,7 +19,7 @@ public class OutputView {
     }
 
     private void outputPosition(Cars cars) {
-        List<Integer> allPositions = cars.getAllPositions();
+        int[] allPositions = cars.getAllPositions();
         for (int position : allPositions) {
             outputPosition(position);
         }

@@ -25,7 +25,7 @@ class CarsTest {
 
         @Test
         void 모든_자동차_position_목록을_리턴한다() {
-            List<Integer> allPositions = cars.getAllPositions();
+            int[] allPositions = cars.getAllPositions();
             assertThat(allPositions).containsExactly(3, 2, 1);
         }
     }

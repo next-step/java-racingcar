@@ -1,4 +1,4 @@
-package racingcar.factory;
+package racingcar.model.factory;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

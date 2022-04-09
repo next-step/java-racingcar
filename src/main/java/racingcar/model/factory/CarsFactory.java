@@ -1,4 +1,4 @@
-package racingcar.factory;
+package racingcar.model.factory;
 
 import racingcar.model.Car;
 import racingcar.model.Cars;
