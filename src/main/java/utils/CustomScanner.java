@@ -2,12 +2,21 @@ package utils;
 
 import core.CarName;
 
+import java.io.InputStream;
 import java.util.*;
 
 public class CustomScanner {
-    private static final Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner;
 
-    public static List<CarName> scanValidCarNames() {
+    private CustomScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public static CustomScanner create(InputStream inputStream) {
+        return new CustomScanner(new Scanner(inputStream));
+    }
+
+    public List<CarName> scanValidCarNames() {
         try {
             List<String> inputCarNames = scanNullSafeCarNames();
             List<CarName> carNames = new ArrayList<>();
@@ -21,7 +30,7 @@ public class CustomScanner {
         }
     }
 
-    private static List<String> scanNullSafeCarNames() {
+    private List<String> scanNullSafeCarNames() {
         List<String> carNames = scanInputCarNames();
         while (carNames.isEmpty()) {
             AnnouncementPrinter.printEmptyCarNameInputAnnouncement();
@@ -30,7 +39,7 @@ public class CustomScanner {
         return carNames;
     }
 
-    private static List<String> scanInputCarNames() {
+    private List<String> scanInputCarNames() {
         String inputLine = scanner.nextLine();
 
         if (inputLine.isEmpty()) {
@@ -39,7 +48,7 @@ public class CustomScanner {
         return Arrays.asList(inputLine.split(","));
     }
 
-    public static int scanMoveCount() {
+    public int scanMoveCount() {
         AnnouncementPrinter.printMoveCountInputAnnouncement();
         return scanner.nextInt();
     }

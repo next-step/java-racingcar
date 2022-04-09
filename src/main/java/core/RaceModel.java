@@ -1,10 +1,6 @@
 package core;
 
-import utils.AnnouncementPrinter;
-import utils.CustomScanner;
 import utils.NumberGenerator;
-
-import java.util.List;
 
 public class RaceModel {
     private Cars cars;
@@ -36,10 +32,5 @@ public class RaceModel {
 
     private static Cars moveCarsRandomly(Cars cars, NumberGenerator numberGenerator) {
         return cars.moveCarsRandomly(numberGenerator);
-    }
-
-    private static Cars createCarsFromInput() {
-        List<CarName> carNames = CustomScanner.scanValidCarNames();
-        return Cars.fromCarNames(carNames);
     }
 }
