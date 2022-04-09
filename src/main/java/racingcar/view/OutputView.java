@@ -1,14 +1,13 @@
 package racingcar.view;
 
 import racingcar.factory.CarsFactory;
-import racingcar.generator.RandomNumberGenerator;
-import racingcar.model.Car;
+import racingcar.model.Cars;
 
 import java.util.List;
 
 public class OutputView {
     public void outputMoveCar(int carCount, int carMoveCount) {
-        List<Car> cars = CarsFactory.create(carCount);
+        Cars cars = CarsFactory.create(carCount);
 
         for (int i = 0; i < carMoveCount; i++) {
             outputMove(cars);
@@ -16,15 +15,19 @@ public class OutputView {
         }
     }
 
-    private void outputMove(List<Car> cars) {
-        cars.forEach(car -> {
-            car.move(new RandomNumberGenerator());
-            outputPosition(car);
-        });
+    private void outputMove(Cars cars) {
+        cars.move();
+        outputPosition(cars);
     }
 
-    private void outputPosition(Car car) {
-        int position = car.getPosition();
+    private void outputPosition(Cars cars) {
+        List<Integer> allPositions = cars.getAllPositions();
+        for (int position : allPositions) {
+            outputPosition(position);
+        }
+    }
+
+    private void outputPosition(int position) {
         for (int j = 0; j < position; j++) {
             System.out.print("-");
         }
