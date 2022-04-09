@@ -7,15 +7,16 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
+@DisplayName("String 테스트")
 public class StringTest {
 
     @Test
     @DisplayName("split 테스트")
     void splitTest() {
-        final String DELIMETER = ",";
+        final String delimiter = ",";
 
-        String[] result1 = "1,2".split(DELIMETER);
-        String[] result2 = "1".split(DELIMETER);
+        String[] result1 = "1,2".split(delimiter);
+        String[] result2 = "1".split(delimiter);
 
         assertThat(result1).containsExactly("1", "2");
         assertThat(result2).contains("1");
