@@ -9,12 +9,10 @@ public class Car {
   private final static int RANDOM_BOUND_VALUE = 10;
   private final static int STOP_RESULT = 0;
   private final static int MOVE_RESULT = 1;
-  private int randomValue;
   private int meterParser;
 
   public int step() {
-    initRandomValue();
-    if (randomValue <= STOP_BOUNDARY_VALUE) {
+    if (getRandomValue() <= STOP_BOUNDARY_VALUE) {
       return STOP_RESULT;
     }
     return MOVE_RESULT;
@@ -32,12 +30,9 @@ public class Car {
     return meterParser;
   }
 
-  public void initRandomValue() {
+  protected int getRandomValue() {
     Random random = new Random();
-    this.randomValue = random.nextInt(RANDOM_BOUND_VALUE);
+    return random.nextInt(RANDOM_BOUND_VALUE);
   }
 
-  public int getRandomValue() {
-    return randomValue;
-  }
 }
