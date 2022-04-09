@@ -10,7 +10,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SetCollectionTest {
+class SetCollectionTest {
     private Set<Integer> numbers;
 
     @BeforeEach
@@ -25,15 +25,14 @@ public class SetCollectionTest {
     @Test
     @DisplayName("size 메서드를 활용해 Set의 크기를 확인하는 테스트")
     void sizeTest() {
-        int size = numbers.size();
-        assertThat(size).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @DisplayName("contains 메서드를 활용하여 값이 존재하는지 확인하는 테스트")
     @ValueSource(ints = {1, 2, 3})
     void containsTest(int number) {
-        assertThat(numbers.contains(number)).isTrue();
+        assertThat(numbers).contains(number);
     }
 
     @ParameterizedTest
