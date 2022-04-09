@@ -11,6 +11,9 @@ public class StringAddCalculator {
     private static final String DEFAULT_DELIMITER = ",|:";
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
+    private StringAddCalculator() {
+    }
+
     public static int splitAndSum(String text) {
         if (isEmpty(text)) {
             return DEFAULT_VALUE;
