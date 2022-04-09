@@ -2,9 +2,8 @@ package racingcar.model.factory;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.model.Cars;
-
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,14 +13,10 @@ class CarsFactoryTest {
     class create_메서드는 {
 
         @Test
-        void 생성한_자동차들을_리턴한다() {
-            int randomNumber = getRandomNumber();
-            assertThat(CarsFactory.create(randomNumber))
+        @ValueSource
+        void Cars_타입을_리턴한다() {
+            assertThat(CarsFactory.create(3))
                     .isInstanceOf(Cars.class);
-        }
-
-        private int getRandomNumber() {
-            return new Random().nextInt(10);
         }
     }
 }
