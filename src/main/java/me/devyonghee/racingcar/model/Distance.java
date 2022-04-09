@@ -20,7 +20,7 @@ public final class Distance {
         return new Distance(value);
     }
 
-    public Distance add(Distance distance) {
+    Distance add(Distance distance) {
         return from(value + distance.value);
     }
 

@@ -20,13 +20,21 @@ public final class RandomEngine {
         return new RandomEngine(random, limit);
     }
 
-    public int rotationCount() {
+    int rotationCount() {
         return random.nextInt(limit);
     }
 
     private void validateLimit(int limit) {
         if (limit <= 0) {
-            throw new IllegalArgumentException("'limit' must be positive");
+            throw new IllegalArgumentException(String.format("'limit'(%d) must be positive", limit));
         }
+    }
+
+    @Override
+    public String toString() {
+        return "RandomEngine{" +
+                "random=" + random +
+                ", limit=" + limit +
+                '}';
     }
 }

@@ -18,7 +18,7 @@ public final class CarPreparer {
         return new CarPreparer(factory, initialDistance);
     }
 
-    public Tracks tracks() {
+    Tracks tracks() {
         return Tracks.from(factory.cars()
                 .map(racingCar -> Track.of(racingCar, initialDistance)));
     }

@@ -21,18 +21,18 @@ public final class CarFactory {
         return new CarFactory(count, engine);
     }
 
-    private void validateCount(int count) {
-        if (count <= 0) {
-            throw new IllegalArgumentException(String.format("'count'(%d) must be greater than zero", count));
-        }
-    }
-
-    public RacingCars cars() {
+    RacingCars cars() {
         return RacingCars.from(
                 IntStream.range(0, count)
                         .mapToObj(index -> RacingCar.from(engine))
                         .collect(Collectors.toList())
         );
+    }
+
+    private void validateCount(int count) {
+        if (count < 0) {
+            throw new IllegalArgumentException(String.format("'count'(%d) must not be negative", count));
+        }
     }
 
     @Override

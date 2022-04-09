@@ -2,7 +2,7 @@ package me.devyonghee.racingcar.model;
 
 import me.devyonghee.racingcar.utility.Assert;
 
-public final class RacingCar {
+final class RacingCar {
 
     private static final int MIN_MOVING_ROTATION_LIMIT = 4;
 
@@ -13,11 +13,11 @@ public final class RacingCar {
         this.engine = engine;
     }
 
-    public static RacingCar from(RandomEngine engine) {
+    static RacingCar from(RandomEngine engine) {
         return new RacingCar(engine);
     }
 
-    public Movement movement() {
+    Movement movement() {
         if (engine.rotationCount() >= MIN_MOVING_ROTATION_LIMIT) {
             return Movement.MOVE;
         }

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public final class RacingCars {
+final class RacingCars {
 
     private final Collection<RacingCar> cars;
 
@@ -17,17 +17,17 @@ public final class RacingCars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public static RacingCars from(Collection<RacingCar> cars) {
+    static RacingCars from(Collection<RacingCar> cars) {
         return new RacingCars(cars);
     }
 
-    public <T> List<T> map(Function<RacingCar, T> function) {
+    <T> List<T> map(Function<RacingCar, T> function) {
         return cars.stream()
                 .map(function)
                 .collect(Collectors.toList());
     }
 
-    public int size() {
+    int size() {
         return cars.size();
     }
 }
