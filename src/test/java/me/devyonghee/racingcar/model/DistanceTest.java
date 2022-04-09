@@ -3,8 +3,7 @@ package me.devyonghee.racingcar.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.assertj.core.api.Assertions.assertThatNoException;
+import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("거리")
 class DistanceTest {
@@ -19,5 +18,14 @@ class DistanceTest {
     @DisplayName("반드시 0 이상")
     void instance_negative_thrownIllegalArgumentException() {
         assertThatIllegalArgumentException().isThrownBy(() -> Distance.from(-1));
+    }
+
+    @Test
+    @DisplayName("더하기")
+    void add() {
+        //given, when
+        Distance distance = Distance.from(1).add(Distance.from(2));
+        //then
+        assertThat(distance).isEqualTo(Distance.from(3));
     }
 }
