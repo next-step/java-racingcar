@@ -8,18 +8,17 @@ public class Car {
   private final static String STEP = "-";
   private final static int RANDOM_BOUND_VALUE = 10;
   private int randomValue;
-  private String meterParser;
+  private int meterParser;
 
-  public String step() {
+  public int step() {
     initRandomValue();
     if (randomValue <= MIN_VALUE) {
-      return null;
+      return 0;
     }
-    return STEP;
+    return 1;
   }
 
-  public String move() {
-    if(step() == null) return meterParser;
+  public int carMeter() {
     return meterParser += step();
   }
 
