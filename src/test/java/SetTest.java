@@ -18,15 +18,14 @@ public class SetTest {
     @BeforeEach
     void setUp() {
         numbers = new HashSet<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
     }
 
     @DisplayName("요구사항1. set size 테스트")
     void isSetSize(int input) {
-        numbers.add(1);
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-        assertThat(numbers.size()).isEqualTo(4);
+        assertThat(numbers.size()).isEqualTo(3);
     }
 
     @ParameterizedTest
@@ -42,10 +41,6 @@ public class SetTest {
     @CsvSource({"1,true","2,true","3,true","4,false","5,false"})
     @DisplayName("요구사항3. set contain 테스트2")
     void isContainExpected(String input, String expected) {
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-
         Assertions.assertEquals(numbers.contains(Integer.parseInt(input)), Boolean.parseBoolean(expected));
     }
 
