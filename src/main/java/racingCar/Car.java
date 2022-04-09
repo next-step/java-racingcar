@@ -18,8 +18,12 @@ public class Car {
     return 1;
   }
 
-  public int carMeter() {
-    return meterParser += step();
+  public void carMeter() {
+    this.meterParser += step();
+  }
+
+  public String move() {
+    return STEP.repeat(Math.max(0, getMeterParser()));
   }
 
   public int getMeterParser() {
