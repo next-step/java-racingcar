@@ -7,4 +7,14 @@ public class Car {
     public Car(CarMoveStrategy carMoveStrategy) {
         this.carMoveStrategy = carMoveStrategy;
     }
+
+    public void play() {
+        if (carMoveStrategy.isMovable()) {
+            moveCount++;
+        }
+    }
+
+    public int getMoveCount() {
+        return moveCount;
+    }
 }
