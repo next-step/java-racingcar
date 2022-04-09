@@ -8,13 +8,10 @@ public class Car {
         this.carMoveStrategy = carMoveStrategy;
     }
 
-    public void play() {
+    public int run() {
         if (carMoveStrategy.isMovable()) {
             moveCount++;
         }
-    }
-
-    public int getMoveCount() {
         return moveCount;
     }
 }

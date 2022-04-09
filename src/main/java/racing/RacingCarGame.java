@@ -1,5 +1,6 @@
 package racing;
 
+import racing.GameResult.GameRoundResult;
 import racing.model.Car;
 import racing.model.CarMoveStrategyImpl;
 import racing.model.CustomRandomImpl;
@@ -25,11 +26,19 @@ public class RacingCarGame {
                 .forEach(carMoveStrategy -> cars.add(new Car(carMoveStrategy)));
     }
 
-    public void run(int numMoves) {
+    public GameResult run(int numMoves) {
         if (numMoves < 1) {
             throw new IllegalArgumentException();
         }
-        IntStream.range(0, numMoves)
-                .forEach(i -> cars.forEach(Car::play));
+
+        GameResult gameResult = new GameResult();
+        for (int i = 0; i < numMoves; i++) {
+            GameRoundResult round = new GameRoundResult();
+            gameResult.addRoundResult(round);
+            cars.stream()
+                    .mapToInt(Car::run)
+                    .forEach(round::addResult);
+        }
+        return gameResult;
     }
 }

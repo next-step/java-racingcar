@@ -18,8 +18,7 @@ class CarTest {
     void carMoveForward(@ConvertWith(BooleanConverter.class) Boolean isMovable, int expected) {
         CarMoveStrategy carMoveStrategy = () -> isMovable;
         Car car = new Car(carMoveStrategy);
-        car.play();
-        assertThat(car.getMoveCount()).isEqualTo(expected);
+        assertThat(car.run()).isEqualTo(expected);
     }
 
     private static class BooleanConverter implements ArgumentConverter {

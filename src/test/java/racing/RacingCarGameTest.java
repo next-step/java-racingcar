@@ -1,9 +1,11 @@
 package racing;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class RacingCarGameTest {
@@ -20,5 +22,14 @@ class RacingCarGameTest {
     @ValueSource(ints = {-5, 0})
     void runThrowException(int input) {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> new RacingCarGame(3).run(input));
+    }
+
+    @DisplayName("게임 실행 결과는 null 이 아니다")
+    @Test
+    void testGameRun() {
+        RacingCarGame racingCarGame = new RacingCarGame(3);
+        GameResult gameResult = racingCarGame.run(5);
+        assertThat(gameResult).isNotNull();
+        assertThat(gameResult).isInstanceOf(GameResult.class);
     }
 }
