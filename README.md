@@ -20,5 +20,5 @@
 - [x] InputView
     - [x] int inputCarCount()
     - [x] int inputCarMoveCount()
-- [ ] OutputView
-    - [ ] void outputMoveCar(int carCount, int carMoveCount)
+- [x] OutputView
+    - [x] void outputMoveCar(int carCount, int carMoveCount)
