@@ -3,6 +3,8 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 class RacingGameTest {
@@ -19,6 +21,16 @@ class RacingGameTest {
     void roundCountNullCheck() throws Exception {
         assertThatThrownBy(() -> new RacingGame(new InputCarCount("3"), null))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("자동차 대수를 3개 입력하면 3개의 자동차가 생성된다.")
+    void carGenerate() throws Exception {
+        RacingGame racingGame = new RacingGame(new InputCarCount("3"), new InputRoundCount("2"));
+
+        List<Car> cars = racingGame.getCars();
+
+        assertThat(cars.size()).isEqualTo(3);
     }
 
 }
