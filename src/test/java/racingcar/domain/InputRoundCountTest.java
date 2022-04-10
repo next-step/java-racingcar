@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.InputRoundCount;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class InputRoundCountTest {
@@ -30,5 +31,11 @@ class InputRoundCountTest {
         assertThatThrownBy(() -> new InputRoundCount("0"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1 이상의 값만 가능합니다.");
+    }
+
+    @Test
+    @DisplayName("문자열 숫자를 입력하면 해당 숫자로 반환된다.")
+    void StringToInt() throws Exception {
+        assertThat(new InputCarCount("2").getCarCount()).isEqualTo(2);
     }
 }

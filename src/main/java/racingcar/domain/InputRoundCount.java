@@ -21,4 +21,7 @@ public class InputRoundCount {
         this.roundCount = roundCount;
     }
 
+    public int getRoundCount() {
+        return this.roundCount;
+    }
 }
