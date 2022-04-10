@@ -4,7 +4,7 @@ import racingcar.generator.NumberGenerator;
 
 public class Car {
     public static final int MOVABLE_NUMBER = 4;
-    private static final int DEFAULT_POSITION = 1;
+    private static final int DEFAULT_POSITION = 0;
 
     private int position;
 
