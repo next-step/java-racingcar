@@ -16,10 +16,9 @@ public class ResultView {
 
     public static void print(Car car) {
         StringBuilder sb = new StringBuilder();
-        sb.append(MessageFormat.format("[{0}] ", car.getId()));
-        final int location = car.getLocation();
-        sb.append("-".repeat(Math.max(0, location)));
-        sb.append(System.lineSeparator());
+        sb.append(MessageFormat.format("[{0}] ", car.getId()))
+          .append("-".repeat(Math.max(0, car.getLocation())))
+          .append(System.lineSeparator());
         System.out.print(sb);
     }
 }

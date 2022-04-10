@@ -10,6 +10,8 @@ import racing.domain.NumberOfRound;
 import racing.ui.ResultView;
 
 public class Game {
+    private static final int RANDOM_BOUND_UNDER = 10;
+
     private final NumberOfCars numberOfCars;
     private final NumberOfRound numberOfRound;
     private final List<Car> cars = new LinkedList<>();
@@ -26,7 +28,7 @@ public class Game {
 
         Random random = new Random();
         for (int i = 0; i < numberOfRound.number; i++) {
-            cars.forEach(car -> car.run(random.nextInt(10)));
+            cars.forEach(car -> car.run(random.nextInt(RANDOM_BOUND_UNDER)));
             ResultView.print(cars);
         }
     }
