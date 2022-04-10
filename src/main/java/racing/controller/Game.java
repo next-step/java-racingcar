@@ -7,6 +7,7 @@ import java.util.Random;
 import racing.domain.Car;
 import racing.domain.NumberOfCars;
 import racing.domain.NumberOfRound;
+import racing.ui.ResultView;
 
 public class Game {
     private final NumberOfCars numberOfCars;
@@ -26,10 +27,7 @@ public class Game {
         Random random = new Random();
         for (int i = 0; i < numberOfRound.number; i++) {
             cars.forEach(car -> car.run(random.nextInt(10)));
+            ResultView.print(cars);
         }
-    }
-
-    public void end() {
-        cars.forEach(System.out::println);
     }
 }

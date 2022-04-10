@@ -13,6 +13,5 @@ public class Application {
 
         Game game = new Game(numberOfCars, numberOfRound);
         game.start();
-        game.end();
     }
 }
