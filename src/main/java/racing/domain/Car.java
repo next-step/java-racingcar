@@ -5,6 +5,7 @@ import java.text.MessageFormat;
 public class Car {
     private static final int MIN_RESULT = 0;
     private final static int MAX_RESULT = 9;
+    private final static int RUN_CRITERIA_MIN_RESULT = 4;
 
     private final int id;
     private int location;
@@ -27,7 +28,7 @@ public class Car {
             throw new IllegalArgumentException(MessageFormat.format("{0} ~ {1}사이의 결과값이어야 합니다.", MIN_RESULT, MAX_RESULT));
         }
 
-        if (result >= 4) {
+        if (result >= RUN_CRITERIA_MIN_RESULT) {
             location++;
         }
     }
