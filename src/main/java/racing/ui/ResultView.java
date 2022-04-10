@@ -1,8 +1,8 @@
-package racing.view;
+package racing.ui;
 
-import racing.GameResult;
-import racing.GameResult.GameRoundResult;
-import racing.model.Counter;
+import racing.dto.GameResult;
+import racing.dto.GameResult.GameRoundResult;
+import racing.utils.Counter;
 
 import java.util.stream.IntStream;
 

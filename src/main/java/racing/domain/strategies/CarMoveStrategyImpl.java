@@ -1,4 +1,4 @@
-package racing.model;
+package racing.domain.strategies;
 
 public class CarMoveStrategyImpl implements CarMoveStrategy {
 

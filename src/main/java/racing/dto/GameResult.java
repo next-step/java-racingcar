@@ -1,6 +1,6 @@
-package racing;
+package racing.dto;
 
-import racing.model.Counter;
+import racing.utils.Counter;
 
 import java.util.ArrayList;
 import java.util.List;

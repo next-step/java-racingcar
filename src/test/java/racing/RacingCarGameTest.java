@@ -4,9 +4,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing.model.CarMoveStrategy;
-import racing.model.CarMoveStrategyImpl;
-import racing.model.CustomRandomImpl;
+import racing.domain.strategies.CarMoveStrategy;
+import racing.domain.strategies.CarMoveStrategyImpl;
+import racing.domain.strategies.CustomRandomImpl;
+import racing.dto.GameResult;
+import racing.service.RacingCarGame;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;

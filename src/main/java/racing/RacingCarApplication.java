@@ -1,10 +1,12 @@
 package racing;
 
-import racing.model.CarMoveStrategy;
-import racing.model.CarMoveStrategyImpl;
-import racing.model.CustomRandomImpl;
-import racing.view.InputView;
-import racing.view.ResultView;
+import racing.domain.strategies.CarMoveStrategy;
+import racing.domain.strategies.CarMoveStrategyImpl;
+import racing.domain.strategies.CustomRandomImpl;
+import racing.dto.GameResult;
+import racing.service.RacingCarGame;
+import racing.ui.InputView;
+import racing.ui.ResultView;
 
 public class RacingCarApplication {
     public static void main(String[] args) {

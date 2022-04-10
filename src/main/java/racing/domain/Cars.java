@@ -1,6 +1,7 @@
-package racing.model;
+package racing.domain;
 
-import racing.GameResult.GameRoundResult;
+import racing.domain.strategies.CarMoveStrategy;
+import racing.dto.GameResult.GameRoundResult;
 
 import java.util.List;
 

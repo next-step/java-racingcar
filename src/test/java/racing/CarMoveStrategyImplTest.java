@@ -1,7 +1,9 @@
-package racing.model;
+package racing;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.domain.strategies.CarMoveStrategy;
+import racing.domain.strategies.CarMoveStrategyImpl;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,4 +1,4 @@
-package racing.model;
+package racing.domain.strategies;
 
 /**
  * 자동차가 이동하는 규칙을 정의하기 위한 인터페이스

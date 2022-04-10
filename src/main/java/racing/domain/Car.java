@@ -1,4 +1,7 @@
-package racing.model;
+package racing.domain;
+
+import racing.domain.strategies.CarMoveStrategy;
+import racing.utils.Counter;
 
 public class Car {
     public static final int RUN_STEP = 1;

@@ -1,8 +1,9 @@
-package racing;
+package racing.service;
 
-import racing.model.Car;
-import racing.model.CarMoveStrategy;
-import racing.model.Cars;
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.domain.strategies.CarMoveStrategy;
+import racing.dto.GameResult;
 
 import java.util.List;
 import java.util.stream.Collectors;

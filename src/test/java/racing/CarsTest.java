@@ -1,8 +1,10 @@
-package racing.model;
+package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.GameResult.GameRoundResult;
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.dto.GameResult.GameRoundResult;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package racing.model;
+package racing.utils;
 
 import java.util.Objects;
 
