@@ -1,25 +1,15 @@
 package racingcar.view;
 
-import racingcar.model.Cars;
-
 import java.util.List;
 
 public class OutputView {
-    public static void outputMoveCar(Cars cars, int carMoveCount) {
-        for (int i = 0; i < carMoveCount; i++) {
-            cars.move();
-            outputPosition(cars);
-            outputEmptyLine();
-        }
-    }
-
     private OutputView() throws InstantiationException {
         throw new InstantiationException();
     }
 
-    private static void outputPosition(Cars cars) {
-        List<Integer> allPositions = cars.getAllPositions();
+    public static void outputPosition(List<Integer> allPositions) {
         allPositions.forEach(OutputView::outputPosition);
+        outputEmptyLine();
     }
 
     private static void outputPosition(int position) {

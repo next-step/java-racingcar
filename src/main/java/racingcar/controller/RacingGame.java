@@ -11,6 +11,10 @@ public class RacingGame {
         int carMoveCount = InputView.inputCarMoveCount();
 
         Cars cars = CarsFactory.create(carCount);
-        OutputView.outputMoveCar(cars, carMoveCount);
+
+        for (int i = 0; i < carMoveCount; i++) {
+            cars.move();
+            OutputView.outputPosition(cars.getAllPositions());
+        }
     }
 }
