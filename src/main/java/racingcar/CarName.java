@@ -13,7 +13,7 @@ public class CarName {
 
     private void validate(String name) {
         if (name == null || name.length() > 5) {
-            throw new IllegalArgumentException("이름이 5글자 초과되었습니다.");
+            throw new InvalidCarNameException("이름이 5글자 초과되었습니다.");
         }
     }
 

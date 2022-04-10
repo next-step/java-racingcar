@@ -1,8 +1,6 @@
 package racingcar;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCarApplication {
 
@@ -24,24 +22,30 @@ public class RacingCarApplication {
 
     public void run() {
         try {
-            Cars cars = new Cars(generateCarList(consoleReader.inputCarNames()));
+            List<Car> carList = generateCarList(consoleReader.inputCarNames());
             int trialCount = consoleReader.inputTrialCount();
-            moveCars(cars, trialCount);
-            outputView.printWinners(cars.getWinners());
+            List<CarName> winnerCarNames = moveCars(carList, trialCount);
+            outputView.printWinners(winnerCarNames);
         } catch (Exception exception) {
             outputView.printErrorMessage(exception.getMessage());
         }
     }
 
-    private void moveCars(Cars cars, int trialCount) {
+    private List<CarName> moveCars(List<Car> carList, int trialCount) {
+        Cars cars = new Cars(carList);
         int carCount = cars.size();
         int nowCount = 0;
+
         while (isRunning(nowCount, trialCount)) {
             List<Integer> movementList = randomNumberGenerator.generateRandomNumberList(carCount);
-            List<CarLocationResult> carLocationResults = cars.move(movementList);
+            cars.move(movementList);
+            List<CarLocationResult> carLocationResults
+                    = CarLocationResultConverter.convertIntoCarLocationResult(carList);
             outputView.printCurrentCarMovements(carLocationResults);
             nowCount++;
         }
+
+        return cars.getWinners();
     }
 
     private boolean isRunning(int nowCount, int trialCount) {
@@ -49,15 +53,8 @@ public class RacingCarApplication {
     }
 
     private List<Car> generateCarList(String carNamesAsString) {
-        List<String> carNames;
-
-        try {
-            carNames = Arrays.stream(carNamesAsString.split(",")).collect(Collectors.toList());
-        } catch (IllegalArgumentException illegalArgumentException) {
-            throw new IllegalArgumentException("잘못된 입력 값 입니다.");
-        }
-
-        return carNames.stream().map(Car::new).collect(Collectors.toList());
+        List<String> carList = StringUtil.split(carNamesAsString);
+        return CarConverter.convertToCarList(carList);
     }
 
 }

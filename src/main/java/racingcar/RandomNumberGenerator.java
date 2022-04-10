@@ -6,7 +6,8 @@ import java.util.Random;
 
 public class RandomNumberGenerator {
 
-    public static final int RANDOM_BOUND_NUMBER = 10;
+    private static final int RANDOM_BOUND_NUMBER = 10;
+
     private final Random random = new Random();
 
     public int generateRandomNumber() {
