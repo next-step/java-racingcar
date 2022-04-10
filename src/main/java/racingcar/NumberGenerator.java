@@ -1,12 +1,10 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class NumberGenerator {
 
-    private static final int RANDOM_NEXT_INT_BOUND = 10;
+    public static final int RANDOM_NEXT_INT_BOUND = 10;
     private final Random random;
 
     public NumberGenerator() {
@@ -15,13 +13,5 @@ public class NumberGenerator {
 
     public int generateRandomNumber() {
         return random.nextInt(RANDOM_NEXT_INT_BOUND);
-    }
-
-    public List<Integer> generateRandomNumbers(int roundCount) {
-        List<Integer> randomNumbers = new ArrayList<>();
-        for (int i = 0; i < roundCount; i++) {
-            randomNumbers.add(this.generateRandomNumber());
-        }
-        return randomNumbers;
     }
 }
