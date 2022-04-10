@@ -27,9 +27,9 @@ public class StringAndCalculator {
         if (matcher.find()) {
             String customDelimiter = matcher.group(MATCHER_FIRST_GROUP);
             return matcher.group(MATCHER_SECOND_GROUP).split(customDelimiter);
-        } else {
-            return text.split(NORMAL_MATCH_PATTERN);
         }
+
+        return text.split(NORMAL_MATCH_PATTERN);
     }
 
     private static List<Integer> stringsToIntegers(String[] values) {
@@ -46,8 +46,9 @@ public class StringAndCalculator {
         return intValue;
     }
 
-    private static int sumIntegers(List<Integer> values) {
-        return values.stream()
-                .reduce(0, Integer::sum);
+    private static int sumIntegers(List<Integer> integers) {
+        return integers.stream()
+                .mapToInt(item -> item)
+                .sum();
     }
 }

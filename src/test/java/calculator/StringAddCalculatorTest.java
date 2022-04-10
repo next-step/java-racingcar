@@ -44,5 +44,6 @@ public class StringAddCalculatorTest {
     @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생")
     void minusNumberTest() {
         assertThatThrownBy(() -> StringAndCalculator.splitAndSum("-1,2")).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> StringAndCalculator.splitAndSum("1,2,19.0")).isInstanceOf(RuntimeException.class);
     }
 }
