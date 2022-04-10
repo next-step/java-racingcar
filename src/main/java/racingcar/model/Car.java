@@ -26,6 +26,12 @@ public class Car {
         return this.position;
     }
 
+    /**
+     * 숫자 생성기 값에 따라 이동하였다면 true, 이동하지 않았더라면 false를 리턴합니다.
+     *
+     * @param numberGenerator 숫자 생성기
+     * @return 이동하였다면 true, 이동하지 않았더라면 false
+     */
     protected boolean move(NumberGenerator numberGenerator) {
         if (numberGenerator.generate() >= MOVABLE_NUMBER) {
             this.position++;
