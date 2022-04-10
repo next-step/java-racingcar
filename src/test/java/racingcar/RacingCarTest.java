@@ -3,17 +3,26 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 @DisplayName("자동차 경주 게임 테스트")
 public class RacingCarTest {
 
     @Test
     @DisplayName("주어진 횟수는 0 이상이어야 한다.")
     void roundCountTest() {
+        assertThatThrownBy(() -> new RacingCar(1, -1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("주어진 횟수는 0 이상이어야 합니다.");
     }
 
     @Test
     @DisplayName("사용자가 입력한 자동차는 1대 이상이어야 한다.")
     void carCountTest() {
+        assertThatThrownBy(() -> new RacingCar(0, 0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차는 1대 이상이어야 합니다.");
     }
 
     @Test
@@ -34,6 +43,8 @@ public class RacingCarTest {
     @Test
     @DisplayName("자동차의 초기 상태는 0이어야 한다.")
     void carStateTest() {
+        Car car = new Car();
+        assertThat(car.getState()).isZero();
     }
 
     @Test

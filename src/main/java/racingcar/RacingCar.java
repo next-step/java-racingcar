@@ -1,0 +1,32 @@
+package racingcar;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class RacingCar {
+    private final Cars cars;
+    private final int carCount;
+    private final int roundCount;
+
+    public RacingCar(int carCount, int roundCount) {
+        validate(carCount, roundCount);
+
+        this.carCount = carCount;
+        this.roundCount = roundCount;
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            Car car = new Car();
+            cars.add(car);
+        }
+        this.cars = new Cars(cars);
+    }
+
+    private void validate(int carCount, int roundCount) {
+        if (carCount <= 0) {
+            throw new IllegalArgumentException("자동차는 1대 이상이어야 합니다. 입력 값 : " + carCount);
+        }
+        if (roundCount < 0) {
+            throw new IllegalArgumentException("주어진 횟수는 0 이상이어야 합니다. 입력 값 : " + roundCount);
+        }
+    }
+}
