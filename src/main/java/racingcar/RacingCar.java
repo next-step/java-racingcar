@@ -27,4 +27,13 @@ public class RacingCar {
             throw new IllegalArgumentException("주어진 횟수는 0 이상이어야 합니다. 입력 값 : " + roundCount);
         }
     }
+
+    public void play() {
+        int count = 0;
+        while(count < roundCount) {
+            cars.play();
+            cars.print();
+            count++;
+        }
+    }
 }

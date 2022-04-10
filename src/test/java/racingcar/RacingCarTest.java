@@ -53,4 +53,11 @@ public class RacingCarTest {
         }
         assertThat(car.state()).isLessThanOrEqualTo(count);
     }
+
+    @Test
+    @DisplayName("자동차 경주 게임 실행 결과 테스트")
+    void playRacingCarTest() {
+        RacingCar racingCar = new RacingCar(3, 5);
+        racingCar.play();
+    }
 }

@@ -20,4 +20,21 @@ public final class Cars {
             throw new IllegalArgumentException("전달된 리스트가 올바르지 않습니다 : Cars is empty");
         }
     }
+
+    public void play() {
+        for(Car car : cars) {
+            car.move();
+        }
+    }
+
+    public void print() {
+        for(Car car : cars) {
+            int state = car.state();
+            for(int i=0; i<state; i++){
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
 }
