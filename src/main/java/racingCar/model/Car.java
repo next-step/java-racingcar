@@ -4,8 +4,6 @@ import racingCar.strategy.CarMoveStrategy;
 
 public class Car {
 
-
-  private final static String STEP = "-";
   private int meterParser;
 
   public int step(CarMoveStrategy carMoveStrategy) {
@@ -15,14 +13,7 @@ public class Car {
     return meterParser;
   }
 
-
-  public String move() {
-    return STEP.repeat(Math.max(0, getMeterParser()));
+  public int position() {
+    return this.meterParser;
   }
-
-  public int getMeterParser() {
-    return meterParser;
-  }
-
-
 }

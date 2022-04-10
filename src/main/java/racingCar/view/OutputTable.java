@@ -11,7 +11,7 @@ public final class OutputTable {
   private final static String HOW_MANY_GAMES = "시도할 회수는 몇 회 인가요?";
 
   private final static String OUTPUT_RESULT = "결과: ";
-
+  private final static String STEP = "-";
 
   public static void main(String[] args) {
     CarService game = new CarService();
@@ -27,7 +27,7 @@ public final class OutputTable {
     for (int i = 0; i < rounds; i++) {
       for (Car car : allCars) {
         car.step(new CarMoveRandomStrategy());
-        System.out.println(car.move());
+        System.out.println(STEP.repeat(Math.max(0, car.position())));
       }
       System.out.println();
     }
