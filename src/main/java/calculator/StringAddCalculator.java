@@ -9,13 +9,14 @@ public class StringAddCalculator {
 
     private static final String REGEX = "//(.)\n(.*)";
     private static final String DELIMITER = ",|:";
+    private static final Pattern pattern = Pattern.compile(REGEX);
 
     public static int splitAndSum(String text) {
         if (text == null || text.isBlank()) {
             return 0;
         }
 
-        Matcher matcher = Pattern.compile(REGEX).matcher(text);
+        Matcher matcher = pattern.matcher(text);
         if (matcher.find()) {
             String customDelimiter = matcher.group(1);
             String[] splitByDelimiter = matcher.group(2).split(customDelimiter);
