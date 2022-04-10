@@ -4,12 +4,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    public static final String DEFAULT_DELIMITER = ",|:";
-    public static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private static final String DEFAULT_DELIMITER = "[,:]";
+    private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+
+    private StringAddCalculator() {
+        throw new IllegalStateException("Util class");
+    }
 
     public static int splitAndSum(String text) {
 
-        if (text == null || text.isBlank()) {
+        if (isEmptyOrNull(text))  {
             return 0;
         }
 
@@ -23,6 +27,10 @@ public class StringAddCalculator {
 
         String[] values =  text.split(DEFAULT_DELIMITER);
         return sum(toInts(values));
+    }
+
+    private static boolean isEmptyOrNull(String text) {
+        return text == null || text.isBlank();
     }
 
     private static int sum(int[] values) {
@@ -41,8 +49,8 @@ public class StringAddCalculator {
         return numbers;
     }
 
-    private static int toInt(String item) {
-        int intItem = Integer.parseInt(item);
+    private static int toInt(String number) {
+        int intItem = Integer.parseInt(number);
         if (intItem < 0) {
             throw new RuntimeException("음수가 들어올 수 없습니다.");
         }
