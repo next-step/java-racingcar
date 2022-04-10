@@ -11,18 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 class CarsTest {
 
     @Test
-    @DisplayName("아규먼트로 들어온 숫자만큼 자동차들은 이동한다.")
+    @DisplayName("4 이상일 경우에 자동차들은 이동한다.")
     void carsMovementTest() {
         //given
-        Car car1 = Car.from("자동차1");
-        Car car2 = Car.from("자동차2");
-        Car car3 = Car.from("자동차3");
-
-        car1.move(1);
-        car2.move(2);
-        car3.move(3);
-
-        List<Integer> movementList = List.of(1, 2, 3);
+        List<Integer> movementList = List.of(2, 4, 6);
         List<Car> testCarList = List.of(Car.from("자동차1"), Car.from("자동차2"), Car.from("자동차3"));
         Cars testCars = new Cars(testCarList);
 
@@ -31,9 +23,9 @@ class CarsTest {
 
         //then
         assertAll(
-                () -> assertThat(testCarList.get(0).getCurrentLocationValue()).isEqualTo(car1.getCurrentLocationValue()),
-                () -> assertThat(testCarList.get(1).getCurrentLocationValue()).isEqualTo(car2.getCurrentLocationValue()),
-                () -> assertThat(testCarList.get(2).getCurrentLocationValue()).isEqualTo(car3.getCurrentLocationValue())
+                () -> assertThat(testCarList.get(0).getCurrentLocationValue()).isEqualTo(1),
+                () -> assertThat(testCarList.get(1).getCurrentLocationValue()).isEqualTo(2),
+                () -> assertThat(testCarList.get(2).getCurrentLocationValue()).isEqualTo(2)
         );
 
     }
