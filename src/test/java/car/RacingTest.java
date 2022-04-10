@@ -30,16 +30,16 @@ public class RacingTest {
     @Test
     void 랜덤_값에서_4이상_인_경우_전진한다() {
         Car car = new Car();
-        Assertions.assertThat(car.move(4)).isEqualTo("-");
-        Assertions.assertThat(car.move(7)).isEqualTo("-");
-        Assertions.assertThat(car.move(9)).isEqualTo("-");
+        car.move(4);
+        Assertions.assertThat(car.isMove()).isTrue();
+
     }
 
     @Test
     void 랜덤_값에서_4미만_인_경우_멈춘다() {
         Car car = new Car();
-        Assertions.assertThat(car.move(1)).isEqualTo("");
-        Assertions.assertThat(car.move(3)).isEqualTo("");
+        car.move(3);
+        Assertions.assertThat(car.isMove()).isFalse();
     }
 
 //    @Test

@@ -3,19 +3,18 @@ package car;
 import java.util.Random;
 
 public class Car {
-    private String distance;
+    private int distance;
 
     public Car() {
-        this.distance = "";
+        this.distance = 0;
     }
 
-    public String move(int number) {
+    public int move(int number) {
         if (number < 4) {
-            this.distance += "";
             return this.distance;
         }
 
-        this.distance += "-";
+        this.distance ++;
         return this.distance;
     }
 
@@ -24,7 +23,13 @@ public class Car {
         return random.nextInt(10);
     }
 
-    public String getDistance() {
-        return distance;
+    public void printDistance() {
+        for (int i = 0; i < this.distance; i++) {
+            System.out.print("-");
+        }
+    }
+
+    public boolean isMove() {
+        return this.distance > 0;
     }
 }

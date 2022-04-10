@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResultView {
-    private List<Car> cars = new ArrayList<>();
+    private List<Car> cars;
 
     public ResultView(List<Car> cars) {
         this.cars = cars;
@@ -12,7 +12,8 @@ public class ResultView {
 
     public void print() {
         for (Car car : cars) {
-            System.out.println(car.getDistance());
+            car.printDistance();
+            System.out.println();
         }
     }
 }
