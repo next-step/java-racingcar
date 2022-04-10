@@ -1,53 +1,28 @@
 package racingcar.app;
 
-import racingcar.domain.Car;
-import racingcar.domain.Round;
-import racingcar.dto.RoundResult;
+import racingcar.domain.Cars;
+import racingcar.domain.Rounds;
+import racingcar.dto.RoundResults;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Game {
     public void start() {
-        List<Car> cars = generateCars();
-        List<Round> rounds = generateRounds(cars);
+        Cars cars = generateCars();
+        Rounds rounds = generateRounds(cars);
 
-        List<RoundResult> roundResults = playRounds(rounds);
+        RoundResults roundResults = rounds.play();
 
         OutputView.printGameResult(roundResults);
     }
 
-    private List<Car> generateCars() {
+    private Cars generateCars() {
         int carCounts = InputView.inputCarCounts();
-        List<Car> cars = new ArrayList<>();
-
-        for (int i = 0; i < carCounts; i++) {
-            cars.add(new Car());
-        }
-
-        return cars;
+        return Cars.fromCarCounts(carCounts);
     }
 
-    private List<Round> generateRounds(List<Car> cars) {
+    private Rounds generateRounds(Cars cars) {
         int roundCounts = InputView.inputRounds();
-        List<Round> rounds = new ArrayList<>();
-
-        for (int i = 0; i < roundCounts; i++) {
-            rounds.add(new Round(cars));
-        }
-
-        return rounds;
-    }
-
-    private List<RoundResult> playRounds(List<Round> rounds) {
-        List<RoundResult> roundResults = new ArrayList<>();
-
-        for (Round round : rounds) {
-            roundResults.add(round.play());
-        }
-
-        return roundResults;
+        return Rounds.fromCarsAndRoundsCounts(cars, roundCounts);
     }
 }

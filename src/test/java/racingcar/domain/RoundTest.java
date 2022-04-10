@@ -11,9 +11,11 @@ import static org.mockito.Mockito.verify;
 
 class RoundTest {
     private final List<Car> mockCarList = new ArrayList<>();
+    private Cars mockCars;
 
     @BeforeEach
     public void init() {
+        mockCars = mock(Cars.class);
         mockCarList.add(mock(Car.class));
         mockCarList.add(mock(Car.class));
         mockCarList.add(mock(Car.class));
@@ -21,14 +23,12 @@ class RoundTest {
     }
 
     @Test
-    void play는_모든_car를_동작시킨다() {
-        Round round = new Round(mockCarList);
+    void play는_cars를_동작시킨다() {
+        Round round = new Round(mockCars);
 
         round.play();
 
-        List<Car> carList = round.getCars();
-        for (Car car : carList) {
-            verify(car).act();
-        }
+        Cars cars = round.getCars();
+        verify(cars).act();
     }
 }

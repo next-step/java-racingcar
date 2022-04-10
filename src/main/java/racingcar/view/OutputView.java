@@ -1,8 +1,7 @@
 package racingcar.view;
 
 import racingcar.dto.RoundResult;
-
-import java.util.List;
+import racingcar.dto.RoundResults;
 
 public class OutputView {
     public static void printPosition(int position) {
@@ -13,14 +12,13 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printGameResult(List<RoundResult> roundResults) {
+    public static void printGameResult(RoundResults roundResults) {
         System.out.println("실행 결과");
 
-        for (RoundResult roundResult : roundResults) {
+        for (RoundResult roundResult : roundResults.getRoundResults()) {
             printRoundResult(roundResult);
         }
     }
-
 
     public static void printRoundResult(RoundResult roundResult) {
         for (Integer carPosition : roundResult.getCarsPositions()) {

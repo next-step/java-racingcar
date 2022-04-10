@@ -2,24 +2,20 @@ package racingcar.domain;
 
 import racingcar.dto.RoundResult;
 
-import java.util.List;
-
 public class Round {
-    private List<Car> cars;
+    private final Cars cars;
 
-    public Round(List<Car> cars) {
+    public Round(Cars cars) {
         this.cars = cars;
     }
 
     public RoundResult play() {
-        for (Car car : cars) {
-            car.act();
-        }
+        cars.act();
 
-        return new RoundResult(cars);
+        return new RoundResult(cars.getCarPositions());
     }
 
-    public List<Car> getCars() {
+    public Cars getCars() {
         return cars;
     }
 }

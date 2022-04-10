@@ -1,17 +1,12 @@
 package racingcar.dto;
 
-import racingcar.domain.Car;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class RoundResult {
-    List<Integer> carsPositions = new ArrayList<>();
+    private final List<Integer> carsPositions;
 
-    public RoundResult(List<Car> cars) {
-        for (Car car : cars) {
-            carsPositions.add(car.getPosition());
-        }
+    public RoundResult(List<Integer> carsPositions) {
+        this.carsPositions = carsPositions;
     }
 
     public List<Integer> getCarsPositions() {
