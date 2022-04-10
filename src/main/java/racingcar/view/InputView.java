@@ -17,8 +17,7 @@ public class InputView {
             System.out.println(MESSAGE_INPUT_CAR_COUNT);
             carCount = new InputCarCount(scanner.nextLine());
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            System.out.println("");
+            renderErrorMessage(e.getMessage());
             return viewInputCarCount();
         }
         return carCount;
@@ -30,10 +29,14 @@ public class InputView {
             System.out.println(MESSAGE_INPUT_ROUND_COUNT);
             roundCount = new InputRoundCount(scanner.nextLine());
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            System.out.println("");
+            renderErrorMessage(e.getMessage());
             return viewInputRoundCount();
         }
         return roundCount;
+    }
+
+    private static void renderErrorMessage(String message) {
+        System.out.println(message);
+        System.out.println("");
     }
 }
