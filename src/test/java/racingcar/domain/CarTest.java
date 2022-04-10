@@ -42,4 +42,14 @@ public class CarTest {
         assertThatThrownBy(() -> new Car().stopOrGo(10))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("한번 전진할때마다 PositionView 의 반환값에 '-'가 추가된다.")
+    void returnPositionView() throws Exception {
+        Car car = new Car();
+        car.stopOrGo(9);
+        car.stopOrGo(9);
+
+        assertThat(car.getPositionView()).isEqualTo("--");
+    }
 }
