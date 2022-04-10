@@ -7,6 +7,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAndCalculator {
+    private final static String ABNORMAL_MATCH_PATTERN = "//(.)\n(.*)";
+    private final static String NORMAL_MATCH_PATTERN = "[,:]";
+
     public static int splitAndSum(String text) {
         if (Objects.isNull(text) || text.equals("")) {
             return 0;
@@ -16,12 +19,12 @@ public class StringAndCalculator {
     }
 
     private static String[] textToStrings(String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = Pattern.compile(ABNORMAL_MATCH_PATTERN).matcher(text);
         if (m.find()) {
             String customDelimiter = m.group(1);
             return m.group(2).split(customDelimiter);
         } else {
-            return text.split("[,:]");
+            return text.split(NORMAL_MATCH_PATTERN);
         }
     }
 
