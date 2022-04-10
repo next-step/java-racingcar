@@ -1,10 +1,12 @@
 package racingcar.model;
 
 import racingcar.generator.NumberGenerator;
+import racingcar.generator.RandomNumberGenerator;
 
 public class Car {
     public static final int MOVABLE_NUMBER = 4;
     private static final int DEFAULT_POSITION = 0;
+    private static final RandomNumberGenerator DEFAULT_NUMBER_GENERATOR = new RandomNumberGenerator();
 
     private int position;
 
@@ -16,7 +18,15 @@ public class Car {
         this.position = position;
     }
 
-    public boolean move(NumberGenerator numberGenerator) {
+    public void move() {
+        move(DEFAULT_NUMBER_GENERATOR);
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
+
+    protected boolean move(NumberGenerator numberGenerator) {
         if (numberGenerator.generate() >= MOVABLE_NUMBER) {
             this.position++;
             return true;
@@ -24,9 +34,4 @@ public class Car {
 
         return false;
     }
-
-    public int getPosition() {
-        return this.position;
-    }
-
 }

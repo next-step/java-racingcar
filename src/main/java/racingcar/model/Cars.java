@@ -1,7 +1,5 @@
 package racingcar.model;
 
-import racingcar.generator.RandomNumberGenerator;
-
 import java.util.List;
 
 public class Cars {
@@ -12,9 +10,7 @@ public class Cars {
     }
 
     public void move() {
-        this.cars.forEach(car ->
-                car.move(new RandomNumberGenerator())
-        );
+        this.cars.forEach(Car::move);
     }
 
     public int[] getAllPositions() {
