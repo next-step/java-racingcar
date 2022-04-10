@@ -1,5 +1,8 @@
 package racing;
 
+import racing.model.CarMoveStrategy;
+import racing.model.CarMoveStrategyImpl;
+import racing.model.CustomRandomImpl;
 import racing.view.InputView;
 import racing.view.ResultView;
 
@@ -8,7 +11,8 @@ public class RacingCarApplication {
         InputView inputView = new InputView();
         inputView.getUserInput();
 
-        RacingCarGame racingCarGame = new RacingCarGame(inputView.getNumCars());
+        CarMoveStrategy carMoveStrategy = new CarMoveStrategyImpl(new CustomRandomImpl());
+        RacingCarGame racingCarGame = new RacingCarGame(inputView.getNumCars(), carMoveStrategy);
         GameResult result = racingCarGame.run(inputView.getNumMoves());
 
         ResultView resultView = new ResultView();

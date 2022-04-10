@@ -2,8 +2,7 @@ package racing;
 
 import racing.GameResult.GameRoundResult;
 import racing.model.Car;
-import racing.model.CarMoveStrategyImpl;
-import racing.model.CustomRandomImpl;
+import racing.model.CarMoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +12,12 @@ public class RacingCarGame {
     private static final int MINIMUM_NUMBER_OF_CARS = 1;
     private static final int MINIMUM_NUMBER_OF_MOVES = 1;
 
+    private final CarMoveStrategy moveStrategy;
+
     List<Car> cars = new ArrayList<>();
 
-    public RacingCarGame(int numCars) {
+    public RacingCarGame(int numCars, CarMoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
         if (numCars < MINIMUM_NUMBER_OF_CARS) {
             throw new IllegalArgumentException();
         }
@@ -24,9 +26,7 @@ public class RacingCarGame {
 
     private void makeCars(int numCars) {
         IntStream.range(0, numCars)
-                .mapToObj(i -> new CustomRandomImpl())
-                .map(CarMoveStrategyImpl::new)
-                .forEach(carMoveStrategy -> cars.add(new Car(carMoveStrategy)));
+                .forEach(i -> cars.add(new Car(moveStrategy)));
     }
 
     public GameResult run(int numMoves) {
