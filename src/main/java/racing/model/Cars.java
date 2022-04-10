@@ -1,0 +1,21 @@
+package racing.model;
+
+import racing.GameResult.GameRoundResult;
+
+import java.util.List;
+
+public class Cars {
+    private final List<Car> cars;
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public GameRoundResult run(CarMoveStrategy moveStrategy) {
+        GameRoundResult round = new GameRoundResult();
+        cars.stream()
+                .mapToInt(car -> car.run(moveStrategy))
+                .forEach(round::addResult);
+        return round;
+    }
+}

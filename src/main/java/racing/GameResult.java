@@ -15,7 +15,7 @@ public class GameResult {
         rounds.forEach(GameRoundResult::prints);
     }
 
-    static class GameRoundResult {
+    public static class GameRoundResult {
         private final List<Integer> statusList = new ArrayList<>();
 
         public void prints() {

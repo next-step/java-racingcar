@@ -3,9 +3,10 @@ package racing;
 import racing.GameResult.GameRoundResult;
 import racing.model.Car;
 import racing.model.CarMoveStrategy;
+import racing.model.Cars;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingCarGame {
@@ -13,8 +14,7 @@ public class RacingCarGame {
     private static final int MINIMUM_NUMBER_OF_MOVES = 1;
 
     private final CarMoveStrategy moveStrategy;
-
-    List<Car> cars = new ArrayList<>();
+    private Cars cars;
 
     public RacingCarGame(int numCars, CarMoveStrategy moveStrategy) {
         this.moveStrategy = moveStrategy;
@@ -25,8 +25,8 @@ public class RacingCarGame {
     }
 
     private void makeCars(int numCars) {
-        IntStream.range(0, numCars)
-                .forEach(i -> cars.add(new Car()));
+        List<Car> carList = IntStream.range(0, numCars).mapToObj(i -> new Car()).collect(Collectors.toList());
+        cars = new Cars(carList);
     }
 
     public GameResult run(int numMoves) {
@@ -36,11 +36,8 @@ public class RacingCarGame {
 
         GameResult gameResult = new GameResult();
         for (int i = 0; i < numMoves; i++) {
-            GameRoundResult round = new GameRoundResult();
-            gameResult.addRoundResult(round);
-            cars.stream()
-                    .mapToInt(car -> car.run(moveStrategy))
-                    .forEach(round::addResult);
+            GameRoundResult result = cars.run(moveStrategy);
+            gameResult.addRoundResult(result);
         }
         return gameResult;
     }
