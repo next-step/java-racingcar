@@ -5,6 +5,14 @@ public class RacingInput {
   private int carCount;
   private int attemptCount;
 
+  public RacingInput() {
+  }
+
+  public RacingInput(int carCount, int attemptCount) {
+    this.carCount = carCount;
+    this.attemptCount = attemptCount;
+  }
+
   public int getCarCount() {
     return carCount;
   }
