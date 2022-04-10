@@ -1,16 +1,18 @@
 package racingCar.model;
 
+import racingCar.strategy.CarMoveStrategy;
+
 public class Car {
 
-  private final static int STOP_BOUNDARY_VALUE = 3;
+
   private final static String STEP = "-";
   private int meterParser;
 
-  public int step(int randomNo) {
-    if (randomNo <= STOP_BOUNDARY_VALUE) {
-      return meterParser;
+  public int step(CarMoveStrategy carMoveStrategy) {
+    if (carMoveStrategy.moveAble()) {
+      return meterParser += 1;
     }
-    return meterParser += 1;
+    return meterParser;
   }
 
 
