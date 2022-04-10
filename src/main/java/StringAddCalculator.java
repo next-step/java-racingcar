@@ -1,5 +1,8 @@
 public class StringAddCalculator {
 
+  private StringAddCalculator() {
+  }
+
   public static int splitAndSum(String text) {
     /*
     1. String을 int의 배열로 split한다.
