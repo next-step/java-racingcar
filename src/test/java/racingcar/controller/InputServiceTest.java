@@ -1,9 +1,7 @@
-package racingcar;
+package racingcar.controller;
 
 import commons.Constant;
-import controller.InputService;
-import controller.RacingGame;
-import model.CarsProgress;
+import racingcar.controller.InputService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class RacingCarInputTest {
+public class InputServiceTest {
 
     InputService inputService;
 

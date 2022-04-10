@@ -1,9 +1,7 @@
-package controller;
+package racingcar.controller;
 
-import commons.Constant;
-import exceptions.InputValueException;
-import model.CarsProgress;
-import view.InputView;
+import racingcar.model.CarsProgress;
+import racingcar.view.InputView;
 
 public class RacingGame {
     private CarsProgress carsProgress;

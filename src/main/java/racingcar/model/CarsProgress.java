@@ -1,7 +1,6 @@
-package model;
+package racingcar.model;
 
-import controller.InputService;
-import domain.Cars;
+import racingcar.domain.Cars;
 
 import java.util.ArrayList;
 import java.util.List;

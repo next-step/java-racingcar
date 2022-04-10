@@ -1,4 +1,4 @@
-package domain;
+package racingcar.domain;
 
 public class Cars {
     private int distanceTraveled = 0;

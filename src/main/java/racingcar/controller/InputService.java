@@ -1,4 +1,4 @@
-package controller;
+package racingcar.controller;
 
 import commons.Constant;
 import exceptions.InputValueException;
