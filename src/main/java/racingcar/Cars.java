@@ -13,7 +13,7 @@ public final class Cars {
         this.cars = cars;
     }
 
-    public void validate(List<Car> input) {
+    private void validate(List<Car> input) {
         Objects.requireNonNull(input, "전달된 리스트가 올바르지 않습니다 : Cars is null");
 
         if (input.isEmpty()) {
