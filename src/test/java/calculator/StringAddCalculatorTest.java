@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -36,11 +35,17 @@ public class StringAddCalculatorTest {
         assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"1;-2;3", "a;2;3"})
-    void splitAndSum은_음수나_숫자가_아닌_문자열을_입력받은_경우_런타임_예외를_발생시킨다(String input) {
+    @Test
+    void splitAndSum은_음수나_숫자가_아닌_문자열을_입력받은_경우_런타임_예외를_발생시킨다() {
         assertThatThrownBy(() -> {
-            StringAddCalculator.splitAndSum(input);
+            StringAddCalculator.splitAndSum("1;-2;3");
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void splitAndSum은_숫자가_아닌_문자열을_입력받은_경우_런타임_예외를_발생시킨다() {
+        assertThatThrownBy(() -> {
+            StringAddCalculator.splitAndSum("a;2;3");
+        }).isInstanceOf(NumberFormatException.class);
     }
 }
