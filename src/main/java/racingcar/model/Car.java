@@ -3,19 +3,22 @@ package racingcar.model;
 import racingcar.generator.NumberGenerator;
 import racingcar.generator.RandomNumberGenerator;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Car {
     protected static final int MOVABLE_NUMBER = 4;
     private static final int DEFAULT_POSITION = 0;
     private static final NumberGenerator DEFAULT_NUMBER_GENERATOR = new RandomNumberGenerator();
+    private static final int INCREASE_POSITION_COUNT = 1;
 
-    private int position;
+    private AtomicInteger position;
 
     public Car() {
         this(DEFAULT_POSITION);
     }
 
     protected Car(int position) {
-        this.position = position;
+        this.position = new AtomicInteger(position);
     }
 
     public void move() {
@@ -23,7 +26,7 @@ public class Car {
     }
 
     public int getPosition() {
-        return this.position;
+        return this.position.intValue();
     }
 
     /**
@@ -34,10 +37,16 @@ public class Car {
      */
     protected boolean move(NumberGenerator numberGenerator) {
         if (numberGenerator.generate() >= MOVABLE_NUMBER) {
-            this.position++;
+            increasePosition();
             return true;
         }
 
         return false;
+    }
+
+    private void increasePosition() {
+        this.position = new AtomicInteger(
+                this.position.intValue() + INCREASE_POSITION_COUNT
+        );
     }
 }
