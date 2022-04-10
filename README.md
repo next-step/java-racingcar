@@ -7,3 +7,10 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 레이싱카 구현 사항
+* 전진 조건을 구하는 random 함수 구현
+* random 함수를 이용한 자동차 경주 구현
+* 사용자에게 자동차 수, 시도 횟수를 입력 로직 구현
+* 사용자에게 자동차 수, 시도 횟수를 입력 ui 구현
+* 자동차 경주 결과 화면 출력 ui 구현
