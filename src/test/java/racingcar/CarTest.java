@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
@@ -42,11 +44,10 @@ class CarTest {
     @Test
     @DisplayName("이동 했을 때 위치 증가")
     void increaseCurrentLocationWhenCarMoves() {
-        int movableInput = 5;
         int moveCount = 3;
-        for (int i = 0; i < moveCount ; i++) {
-            car.move(movableInput);
-        }
+
+        List<Integer> integers = List.of(5, 5, 5);
+        car.move(integers);
 
         assertThat(car.getCurrentLocation()).isEqualTo(moveCount);
     }

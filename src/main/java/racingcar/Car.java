@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class Car {
 
     public static final int MINIMUM_NUMBER_FOR_MOVEMENT = 4;
@@ -13,6 +15,14 @@ public class Car {
         if (isMovable(input)) {
             this.currentLocation++;
         }
+    }
+
+    public void move(List<Integer> generatedNumbers) {
+        long movableCount = generatedNumbers.stream()
+                .filter(this::isMovable)
+                .count();
+
+        this.currentLocation += movableCount;
     }
 
     private boolean isMovable(int input) {
