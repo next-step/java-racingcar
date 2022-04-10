@@ -1,6 +1,5 @@
 
 package racingcar;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,18 +10,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    public static final String CAR_NAME = "testCar";
     private Car car;
 
     @BeforeEach
     void setUp() {
-        car = new Car(CAR_NAME, new DefaultMovingStrategy());
-    }
-
-    @Test
-    @DisplayName("자동차 이름 반환")
-    void returnCarName() {
-        assertThat(car.getCarName()).isEqualTo(CAR_NAME);
+        car = new Car();
     }
 
     @DisplayName("입력값이 0-4 일 경우 이동하지 않음")
@@ -45,5 +37,17 @@ class CarTest {
         int afterLocation = car.getCurrentLocation();
 
         assertThat(afterLocation).isEqualTo(beforeLocation + 1);
+    }
+
+    @Test
+    @DisplayName("이동 했을 때 위치 증가")
+    void increaseCurrentLocationWhenCarMoves() {
+        int movableInput = 5;
+        int moveCount = 3;
+        for (int i = 0; i < moveCount ; i++) {
+            car.move(movableInput);
+        }
+
+        assertThat(car.getCurrentLocation()).isEqualTo(moveCount);
     }
 }
