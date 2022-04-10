@@ -42,8 +42,8 @@ public class RacingGame {
         int tryCount = 0;
         for (int i = 0; i < roundCount.getRoundCount(); i++) {
             cars.forEach(car -> car.stopOrGo(ConditionGenerator.getInstance().generateRandomCondition()));
-            ResultView.renderResultView(cars, tryCount);
             tryCount++;
+            ResultView.renderResultView(cars, tryCount);
         }
         return tryCount;
     }
