@@ -2,11 +2,11 @@ package racingcar.domain;
 
 import racingcar.domain.input.InputCarCount;
 import racingcar.domain.input.InputRoundCount;
+import racingcar.util.ConditionGenerator;
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
 
@@ -37,7 +37,7 @@ public class RacingGame {
     public int play() {
         int tryCount = 0;
         for (int i = 0; i < roundCount.getRoundCount(); i++) {
-            cars.forEach(car -> car.stopOrGo(new Random().nextInt(10)));
+            cars.forEach(car -> car.stopOrGo(ConditionGenerator.getInstance().generateRandomCondition()));
             if (tryCount == 0) {
                 System.out.println(MESSAGE_RESULT);
             }
