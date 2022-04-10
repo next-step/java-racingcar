@@ -8,7 +8,7 @@ import racing.view.ResultView;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
+        InputView inputView = InputView.getInstance();
         int numCars = inputView.getNumCars();
         int numMoves = inputView.getNumMoves();
 
@@ -16,7 +16,7 @@ public class RacingCarApplication {
         RacingCarGame racingCarGame = new RacingCarGame(numCars, carMoveStrategy);
         GameResult result = racingCarGame.run(numMoves);
 
-        ResultView resultView = new ResultView();
+        ResultView resultView = ResultView.getInstance();
         resultView.printResult(result);
     }
 }
