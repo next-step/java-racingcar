@@ -11,6 +11,10 @@ public class Constant {
     public static final String ZERO_OR_NEGATIVE_NUMERIC_ERR_MSG = "0 또는 음수가 입력되었습니다.";
     public static final String NON_NUMERIC_ERR_MSG = "숫자 이외의 값이 입력되었습니다.";
 
+    public static final int RANDOM_MINIMUM_VALUE_CAN_BE_MOVED = 4;
+    public static final int MOVEMENT_DISTANCE_INITIAL_VALUE = 0;
+    public static final int RANDOM_NUMBER_BOUND = 10;
+
     // 문자열 덧셈 계산기
     public static final String BASIC_SPLIT_REGEX = ",|:";
     public static final String NUMBER_RANGE_REGEX = "[0-9]";

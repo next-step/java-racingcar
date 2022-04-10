@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import commons.Constant;
 import racingcar.domain.Cars;
 
 import java.util.ArrayList;
@@ -13,12 +14,18 @@ public class CarsProgress {
         carsList = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
             Cars cars = new Cars();
-            cars.setDistanceTraveled(0);
+            cars.setDistanceTraveled(Constant.MOVEMENT_DISTANCE_INITIAL_VALUE);
             carsList.add(cars);
         }
     }
 
     public List<Cars> getCarsList() {
         return carsList;
+    }
+
+    public void changeDistanceByCar(Cars cars, int determinationValue) {
+        if (determinationValue >= Constant.RANDOM_MINIMUM_VALUE_CAN_BE_MOVED) {
+            cars.setDistanceTraveled(cars.getDistanceTraveled() + 1);
+        }
     }
 }

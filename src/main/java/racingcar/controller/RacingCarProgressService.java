@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import commons.Constant;
 import racingcar.domain.Cars;
 import racingcar.model.CarsProgress;
 
@@ -11,7 +12,7 @@ public class RacingCarProgressService {
     private Random random = new Random();
 
     public void createCars(int numberOfCars) {
-         carsProgress = new CarsProgress(numberOfCars);
+        carsProgress = new CarsProgress(numberOfCars);
     }
 
     public List<Cars> getCarsList() {
@@ -19,6 +20,10 @@ public class RacingCarProgressService {
     }
 
     public int getRandomValue() {
-        return random.nextInt(10);
+        return random.nextInt(Constant.RANDOM_NUMBER_BOUND);
+    }
+
+    public void changeDistanceByCar(Cars cars, int determinationValue) {
+        carsProgress.changeDistanceByCar(cars, determinationValue);
     }
 }
