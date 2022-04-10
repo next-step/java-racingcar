@@ -12,6 +12,6 @@ public class Car {
         if (carMoveStrategy.isMovable()) {
             counter.add(RUN_STEP);
         }
-        return counter;
+        return new Counter(this.counter);
     }
 }

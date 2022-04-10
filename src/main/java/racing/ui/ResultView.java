@@ -28,14 +28,12 @@ public class ResultView {
     }
 
     private void printRoundResult(GameRoundResult round) {
-        round.getStatusList().forEach(status -> {
-            printMark(status);
-            System.out.println();
-        });
+        round.getStatusList().forEach(this::printMark);
         System.out.println();
     }
 
     private void printMark(Counter status) {
         IntStream.range(0, status.getCount()).mapToObj(i -> DISPLAY_MARK).forEach(System.out::print);
+        System.out.println();
     }
 }

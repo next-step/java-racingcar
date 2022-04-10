@@ -13,6 +13,11 @@ public class Counter {
         this.count = count;
     }
 
+    public Counter(Counter counter) {
+        Objects.requireNonNull(counter);
+        count = counter.getCount();
+    }
+
     public int getCount() {
         return count;
     }
