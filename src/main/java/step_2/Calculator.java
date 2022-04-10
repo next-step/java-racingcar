@@ -13,7 +13,9 @@ public class Calculator {
             return 0;
         }
 
-        return splitter.split().andThen(value -> new Numbers(value).sum()).apply(text);
+        return splitter.split()
+                .andThen(value -> new Numbers(value).sum())
+                .apply(text);
     }
 
     private boolean isBlank(String text) {
