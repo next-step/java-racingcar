@@ -22,4 +22,7 @@ public class InputCarCount {
         this.carCount = carCount;
     }
 
+    public int getCarCount() {
+        return this.carCount;
+    }
 }
