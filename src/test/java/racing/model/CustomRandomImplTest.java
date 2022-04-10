@@ -11,11 +11,11 @@ class CustomRandomImplTest {
     @ParameterizedTest
     @ValueSource(ints = {2, 5, 10})
     void testRandomRange(int bound) {
-        assertThat(new CustomRandomImpl().getRandomRange(bound)).isBetween(1, bound);
+        assertThat(new CustomRandomImpl().getRandomRange(bound)).isBetween(0, bound);
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {-5, 0, 1})
+    @ValueSource(ints = {-5, 0})
     void testRandomRangeThrowException(int bound) {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> new CustomRandomImpl().getRandomRange(bound));
     }
