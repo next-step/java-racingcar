@@ -7,7 +7,7 @@ import java.util.List;
 public class ResultView {
 
     private static final String MESSAGE_RESULT = "실행결과";
-    public static final int FIRST_TRY = 1;
+    private static final int FIRST_TRY = 1;
 
     public static void renderResultView(List<Car> cars, int tryCount) {
         if (isFirstResult(tryCount)) {
