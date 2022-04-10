@@ -33,7 +33,7 @@ public class CarRacing {
     public List<Car> start() {
         for (int i = 0; i < attempt; i++) {
             for (Car car : cars) {
-                car.move(car.randomNumber());
+                car.move();
             }
         }
 

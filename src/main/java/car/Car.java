@@ -11,8 +11,8 @@ public class Car {
         this.carRacing = carRacing;
     }
 
-    public int move(int number) {
-        if (number < carRacing.getMoveMinNumber()) {
+    public int move() {
+        if (this.randomNumber() < carRacing.getMoveMinNumber()) {
             return this.distance;
         }
 
@@ -20,7 +20,7 @@ public class Car {
         return this.distance;
     }
 
-    public int randomNumber() {
+    private int randomNumber() {
         Random random = new Random();
         return random.nextInt(10);
     }
