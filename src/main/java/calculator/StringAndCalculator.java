@@ -1,10 +1,11 @@
 package calculator;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringAndCalculator {
     private final static String ABNORMAL_MATCH_PATTERN = "//(.)\n(.*)";
@@ -29,11 +30,7 @@ public class StringAndCalculator {
     }
 
     private static List<Integer> stringsToIntegers(String[] values) {
-        List<Integer> integers = new ArrayList<>();
-        for (String value : values) {
-            integers.add(stringToInt(value));
-        }
-        return integers;
+        return Arrays.stream(values).map(StringAndCalculator::stringToInt).collect(Collectors.toList());
     }
 
     private static int stringToInt(String value) {
@@ -45,10 +42,6 @@ public class StringAndCalculator {
     }
 
     private static int sumIntegers(List<Integer> values) {
-        int result = 0;
-        for (Integer value : values) {
-            result += value;
-        }
-        return result;
+        return values.stream().reduce(0, Integer::sum);
     }
 }
