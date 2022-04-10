@@ -14,7 +14,7 @@ public class Cars {
     public GameRoundResult run(CarMoveStrategy moveStrategy) {
         GameRoundResult round = new GameRoundResult();
         cars.stream()
-                .mapToInt(car -> car.run(moveStrategy))
+                .map(car -> car.run(moveStrategy))
                 .forEach(round::addResult);
         return round;
     }

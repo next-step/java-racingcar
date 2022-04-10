@@ -1,5 +1,7 @@
 package racing;
 
+import racing.model.Counter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -16,11 +18,11 @@ public class GameResult {
     }
 
     public static class GameRoundResult {
-        private final List<Integer> statusList = new ArrayList<>();
+        private final List<Counter> statusList = new ArrayList<>();
 
         public void prints() {
-            for (Integer status : statusList) {
-                IntStream.range(0, status)
+            for (Counter status : statusList) {
+                IntStream.range(0, status.getCount())
                         .mapToObj(i -> "-")
                         .forEach(System.out::print);
                 System.out.println();
@@ -28,7 +30,7 @@ public class GameResult {
             System.out.println();
         }
 
-        public void addResult(int status) {
+        public void addResult(Counter status) {
             statusList.add(status);
         }
     }

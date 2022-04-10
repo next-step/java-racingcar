@@ -1,12 +1,14 @@
 package racing.model;
 
 public class Car {
-    int moveCount = 0;
+    public static final int RUN_STEP = 1;
+    public static final int INIT_VALUE = 0;
+    private final Counter counter = new Counter(INIT_VALUE);
 
-    public int run(CarMoveStrategy carMoveStrategy) {
+    public Counter run(CarMoveStrategy carMoveStrategy) {
         if (carMoveStrategy.isMovable()) {
-            moveCount++;
+            counter.add(RUN_STEP);
         }
-        return moveCount;
+        return counter;
     }
 }
