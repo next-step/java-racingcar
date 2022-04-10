@@ -7,14 +7,10 @@ import racingcar.view.OutputView;
 
 public class RacingGame {
     public void start() {
-        InputView inputView = new InputView();
-
-        int carCount = inputView.inputCarCount();
-        int carMoveCount = inputView.inputCarMoveCount();
-
-        OutputView outputView = new OutputView();
+        int carCount = InputView.inputCarCount();
+        int carMoveCount = InputView.inputCarMoveCount();
 
         Cars cars = CarsFactory.create(carCount);
-        outputView.outputMoveCar(cars, carMoveCount);
+        OutputView.outputMoveCar(cars, carMoveCount);
     }
 }
