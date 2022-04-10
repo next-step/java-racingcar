@@ -1,6 +1,8 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RacingCar {
     private final InputView inputView;
@@ -14,39 +16,23 @@ public class RacingCar {
     }
 
     public void run() {
-        String[] carNames = inputView.inputCarNames();
+        int carCount = inputView.inputCarCount();
         int roundCount = inputView.inputRoundCount();
 
-        Cars cars = Cars.generateCars(carNames);
+        List<Car> cars = generateCars(carCount);
 
-        printLocations(carNames, roundCount, cars);
-        printWinners(cars);
+        cars.forEach(c -> {
+            List<Integer> integers = numberGenerator.generateRandomNumbers(roundCount);
+            c.move(integers);
+            resultView.printResult(c.getCurrentLocation());
+        });
+
     }
 
-    private void printLocations(String[] carNames, int roundCount, Cars cars) {
-        int currentRound = 0;
-        while (inProgress(roundCount, currentRound)) {
-            moveCars(carNames.length, cars);
-            printResult(cars);
-            currentRound++;
-        }
+    private List<Car> generateCars(int carCount) {
+        return IntStream.range(0, carCount)
+                .mapToObj(n -> new Car())
+                .collect(Collectors.toList());
     }
 
-    private void printWinners(Cars cars) {
-        resultView.printWinners(cars);
-    }
-
-    private void printResult(Cars cars) {
-        List<Car> carList = cars.getCarList();
-        resultView.printEveryLocation(carList);
-    }
-
-    private void moveCars(int carCount, Cars cars) {
-        List<Integer> moveCounts = numberGenerator.generateRandomNumbers(carCount);
-        cars.move(moveCounts);
-    }
-
-    private boolean inProgress(int roundCount, int currentRound) {
-        return currentRound < roundCount;
-    }
 }
