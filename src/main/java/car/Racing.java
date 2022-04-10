@@ -1,6 +1,7 @@
 package car;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Racing {
@@ -10,7 +11,7 @@ public class Racing {
         int attemptCount = inputView.attemptCountQuestion();
 
         CarRacing carRacing = new CarRacing(carCount, attemptCount);
-        ArrayList<Car> result = carRacing.start();
+        List<Car> result = carRacing.start();
 
         ResultView resultView = new ResultView(result);
         resultView.print();

@@ -1,10 +1,10 @@
 package car;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CarRacing {
-    private ArrayList<Car> cars = new ArrayList<Car>();
+    private List<Car> cars = new ArrayList<Car>();
     private int attempt;
 
     public CarRacing(int participatingCarCount, int attempt) {
@@ -26,7 +26,7 @@ public class CarRacing {
         return this.attempt;
     }
 
-    public ArrayList<Car> start() {
+    public List<Car> start() {
         for (int i = 0; i < attempt; i++) {
             for (Car car : cars) {
                 car.move(car.randomNumber());

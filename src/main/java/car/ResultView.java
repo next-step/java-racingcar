@@ -1,11 +1,12 @@
 package car;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ResultView {
-    private ArrayList<Car> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
 
-    public ResultView(ArrayList<Car> cars) {
+    public ResultView(List<Car> cars) {
         this.cars = cars;
     }
 
