@@ -16,19 +16,19 @@ public class StringAddCalculatorTest {
 
     @Test
     @DisplayName("쉼표 구분자는 split이 된다.")
-    void 쉼표_구분텀자() {
+    void 쉼표_구분자는_Split이_된다() {
         assertThat(StringAddCalculator.splitAndSum("1,2")).isEqualTo(3);
     }
 
     @Test
     @DisplayName("컬럼 구분자는 split이 된다.")
-    void 컬럼_구분자를() {
+    void 컬럼_구분자는_Split이_된다() {
         assertThat(StringAddCalculator.splitAndSum("1:2")).isEqualTo(3);
     }
 
     @Test
     @DisplayName("커스텀 구분자는 split이 된다.")
-    void 커스텀_구분자() {
+    void 커스텀_구분자는_Split이_된다() {
         assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
     }
 
@@ -47,7 +47,4 @@ public class StringAddCalculatorTest {
             StringAddCalculator.splitAndSum(("//;\n1;-2;3"));
         }).isInstanceOf(RuntimeException.class);
     }
-
-
-
 }
