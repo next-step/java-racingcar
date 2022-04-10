@@ -1,25 +1,24 @@
-package racingcar;
+package racingcar.domain;
 
 import racingcar.constant.InputExceptionMessage;
 
-public class InputCarCount {
+public class InputRoundCount {
 
-    private int carCount;
+    private int roundCount;
 
-    public InputCarCount(String value) {
-        int carCount = 0;
+    public InputRoundCount(String value) {
+        int roundCount = 0;
         try {
-            carCount = Integer.parseInt(value);
+            roundCount = Integer.parseInt(value);
         } catch (NumberFormatException e) {
             throw new NumberFormatException(InputExceptionMessage.INVALID_NUMBER_FORMAT);
-
         }
 
-        if (carCount < 1) {
+        if (roundCount < 1) {
             throw new IllegalArgumentException(InputExceptionMessage.ONLY_POSITIVE);
         }
 
-        this.carCount = carCount;
+        this.roundCount = roundCount;
     }
 
 }
