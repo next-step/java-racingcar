@@ -36,7 +36,7 @@ public class UnsignedNumber {
   }
 
   /**
-   * 두 자연수를 + 연산자로 더한 값을 반환한다.
+   * 두 자연수의 합을 반환한다.
    *
    * @param a 첫 번째 피연산자
    * @param b 두 번째 피연산자
