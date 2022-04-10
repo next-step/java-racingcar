@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.domain.InputCarCount;
-import racingcar.domain.InputRoundCount;
+import racingcar.domain.input.InputCarCount;
+import racingcar.domain.input.InputRoundCount;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.input;
 
 import racingcar.constant.InputExceptionMessage;
 

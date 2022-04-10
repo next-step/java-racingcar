@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.input.InputCarCount;
+import racingcar.domain.input.InputRoundCount;
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
