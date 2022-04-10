@@ -1,41 +1,41 @@
 package racingcar.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    @Test
-    void 자동차는_4_이상_숫자를_입력하면_전진한다() {
-        Car car = new Car();
-        assertThat(car.decideAction(4)).isEqualTo(CarAction.GO_FORWARD);
-        assertThat(car.decideAction(9)).isEqualTo(CarAction.GO_FORWARD);
-        assertThat(car.decideAction(0)).isEqualTo(CarAction.STOP);
-        assertThat(car.decideAction(1)).isEqualTo(CarAction.STOP);
+    private Car car;
+    private final int DEFAULT_POSITION = 0;
+
+    @BeforeEach
+    void setUp() {
+        car = new Car();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"4|GO_FORWARD", "9|GO_FORWARD", "0|STOP", "1|STOP"}, delimiter = '|')
+    void 자동차는_4_이상_숫자를_입력하면_전진한다(int actionNo, CarAction carAction) {
+        assertThat(car.decideAction(actionNo)).isEqualTo(carAction);
     }
 
     @Test
     void 자동차는_전진_하거나_멈춘다() {
-        Car car = new Car();
-        int prevPosition = car.getPosition();
-
         car.act();
-        
-        assertThat(car.getPosition()).isIn(prevPosition, prevPosition + 1);
+        assertThat(car.getPosition()).isIn(DEFAULT_POSITION, DEFAULT_POSITION + 1);
     }
 
     @Test
     void 자동차는_현재_위치를_나타낸다() {
-        assertThat(new Car().getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(DEFAULT_POSITION);
     }
 
     @Test
     void 자동차는_전진하면_위치가_1_증가한다() {
-        Car car = new Car();
-        int prevPosition = car.getPosition();
-
         car.goForward();
-
-        assertThat(car.getPosition()).isEqualTo(prevPosition + 1);
+        assertThat(car.getPosition()).isEqualTo(DEFAULT_POSITION + 1);
     }
 }
