@@ -9,11 +9,12 @@ import racing.view.ResultView;
 public class RacingCarApplication {
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        inputView.getUserInput();
+        int numCars = inputView.getNumCars();
+        int numMoves = inputView.getNumMoves();
 
         CarMoveStrategy carMoveStrategy = new CarMoveStrategyImpl(new CustomRandomImpl());
-        RacingCarGame racingCarGame = new RacingCarGame(inputView.getNumCars(), carMoveStrategy);
-        GameResult result = racingCarGame.run(inputView.getNumMoves());
+        RacingCarGame racingCarGame = new RacingCarGame(numCars, carMoveStrategy);
+        GameResult result = racingCarGame.run(numMoves);
 
         ResultView resultView = new ResultView();
         resultView.printResult(result);
