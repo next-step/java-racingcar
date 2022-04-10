@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RacingGame {
 
@@ -30,6 +31,7 @@ public class RacingGame {
     public int play() {
         int tryCount = 0;
         for (int i = 0; i < roundCount.getRoundCount(); i++) {
+            cars.forEach(car -> car.stopOrGo(new Random().nextInt(10)));
             tryCount++;
         }
         return tryCount;
