@@ -16,7 +16,15 @@ public class StringAddCalculatorTest {
 	@DisplayName("쉼표 구분자")
 	@Test
 	void When_commaSeparator_Then_Sum() {
-		assertThat(StringAddCalculator.splitAndSum("1,2")).isEqualTo(3);
+		// given
+		String value = "1,2";
+		int expectSum = 3;
+
+		// when
+		int sum = StringAddCalculator.splitAndSum(value);
+
+		// then
+		assertThat(sum).isEqualTo(expectSum);
 	}
 
 	@DisplayName("숫자가 하나인 경우")
