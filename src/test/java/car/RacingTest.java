@@ -50,10 +50,5 @@ public class RacingTest {
         }
     }
 
-//    @Test
-//    void 경주() {
-//        Scanner scanner = new Scanner(System.in);
-//        scanner.nextInt();
-//    }
 }
 
