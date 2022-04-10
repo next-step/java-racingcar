@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingCar.model.Car;
-import racingCar.strategy.CarMoveRandomValueStrategy;
+import racingCar.strategy.CarMoveRandomStrategy;
 
 class CarTest {
 
@@ -30,9 +30,9 @@ class CarTest {
   @DisplayName("입력한 횟수 만큼 자동차의 미터기가 작동합니다.")
   void meterTest() {
     Car car = new Car();
-    car.step(new CarMoveRandomValueStrategy());
-    car.step(new CarMoveRandomValueStrategy());
-    car.step(new CarMoveRandomValueStrategy());
+    car.step(new CarMoveRandomStrategy());
+    car.step(new CarMoveRandomStrategy());
+    car.step(new CarMoveRandomStrategy());
     assertThat(car.getMeterParser()).isLessThanOrEqualTo(3);
   }
 }

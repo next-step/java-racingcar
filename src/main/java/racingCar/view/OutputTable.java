@@ -1,10 +1,9 @@
 package racingCar.view;
 
 import java.util.List;
-import java.util.Random;
 import racingCar.model.Car;
 import racingCar.service.CarGame;
-import racingCar.strategy.CarMoveRandomValueStrategy;
+import racingCar.strategy.CarMoveRandomStrategy;
 
 public final class OutputTable {
 
@@ -27,7 +26,7 @@ public final class OutputTable {
   public static void play(List<Car> allCars, Integer rounds) {
     for (int i = 0; i < rounds; i++) {
       for (Car car : allCars) {
-        car.step(new CarMoveRandomValueStrategy());
+        car.step(new CarMoveRandomStrategy());
         System.out.println(car.move());
       }
       System.out.println();

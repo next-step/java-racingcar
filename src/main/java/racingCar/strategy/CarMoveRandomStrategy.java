@@ -2,7 +2,7 @@ package racingCar.strategy;
 
 import java.util.Random;
 
-public class CarMoveRandomValueStrategy implements CarMoveStrategy {
+public class CarMoveRandomStrategy implements CarMoveStrategy {
 
   private final static int RANDOM_BOUND_VALUE = 10;
   private final static int STOP_BOUNDARY_VALUE = 3;
