@@ -7,6 +7,9 @@ import racingCar.strategy.CarMoveRandomStrategy;
 
 public final class OutputTable {
 
+  private OutputTable() {
+  }
+
   private final static String HOW_MANY_CARS = "자동차 대수는 몇 대 인가요?";
   private final static String HOW_MANY_GAMES = "시도할 회수는 몇 회 인가요?";
 
