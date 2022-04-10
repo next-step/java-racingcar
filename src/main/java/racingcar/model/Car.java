@@ -4,7 +4,7 @@ import racingcar.generator.NumberGenerator;
 import racingcar.generator.RandomNumberGenerator;
 
 public class Car {
-    public static final int MOVABLE_NUMBER = 4;
+    protected static final int MOVABLE_NUMBER = 4;
     private static final int DEFAULT_POSITION = 0;
     private static final RandomNumberGenerator DEFAULT_NUMBER_GENERATOR = new RandomNumberGenerator();
 
