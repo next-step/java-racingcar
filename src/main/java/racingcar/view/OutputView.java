@@ -2,6 +2,8 @@ package racingcar.view;
 
 import racingcar.model.Cars;
 
+import java.util.List;
+
 public class OutputView {
     public void outputMoveCar(Cars cars, int carMoveCount) {
         for (int i = 0; i < carMoveCount; i++) {
@@ -12,10 +14,8 @@ public class OutputView {
     }
 
     private void outputPosition(Cars cars) {
-        int[] allPositions = cars.getAllPositions();
-        for (int position : allPositions) {
-            outputPosition(position);
-        }
+        List<Integer> allPositions = cars.getAllPositions();
+        allPositions.forEach(this::outputPosition);
     }
 
     private void outputPosition(int position) {
