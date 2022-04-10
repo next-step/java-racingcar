@@ -1,46 +1,44 @@
 package carracing;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private static final boolean GO = true;
-    private static final boolean STOP = false;
-    private static boolean READY = true;
+    private static final Random random = new Random();
+    public static final int ZERO_TO_NINE = 10;
 
-    public static void main(String[] args) {
-        int countOfCars = InputView.inputCountofCars();
-        int tryCount = InputView.inputTryCount();
+    private RacingGame() {}
 
+    public static List<RacingCar> initRacingCars(int countOfCars) {
         List<RacingCar> carList = new ArrayList<>();
         while (countOfCars-- > 0) {
             carList.add(new RacingCar());
         }
-
-        System.out.println("실행 결과");
-        while (tryCount-- > 0) {
-            racing(carList);
-            ResultView.printRacingResult(carList);
-            System.out.println();
-            READY = false;
-        }
+        return carList;
     }
 
-    private static void racing(List<RacingCar> carList) {
+    public static void racing(List<RacingCar> carList) {
         for (int i = 0; i < carList.size(); i++) {
-            if(!READY && goAndStop()) {
-                carList.get(i).route.append("-");
-            }
+            moveOrStop(carList.get(i));
         }
     }
 
-    public static boolean goAndStop() {
-        Random random = new Random();
-        if(random.nextInt(10) >= 4) {
-            return GO;
+    private static void moveOrStop(RacingCar car) {
+        if(canMove()) {
+            car.moveForward();
+            return;
         }
-        return STOP;
+        car.stop();
     }
+
+    private static boolean canMove() {
+        int num = random.nextInt(ZERO_TO_NINE);
+        return num>= 4;
+    }
+
 }
