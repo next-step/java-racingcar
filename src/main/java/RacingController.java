@@ -1,3 +1,4 @@
+import racingcar.Printer;
 import racingcar.RacingCar;
 
 import java.util.Random;
@@ -18,11 +19,7 @@ public class RacingController {
         for (int attempt = 0; attempt < maxAttempts; attempt++) {
             for (int carIndex = 0; carIndex < cars.length; carIndex++) {
                 cars[carIndex] += RacingCar.move(new Random().nextInt(10));
-                for (int print = 0; print < cars[carIndex]; print++) {
-                    System.out.print("-");
-                }
-                System.out.println();
-                Thread.sleep(500);
+                Printer.print(cars[carIndex]);
             }
             System.out.println("<----------> 회차종료");
         }
