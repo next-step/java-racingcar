@@ -10,10 +10,13 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class RacingCarGame {
+    private static final int MINIMUM_NUMBER_OF_CARS = 1;
+    private static final int MINIMUM_NUMBER_OF_MOVES = 1;
+
     List<Car> cars = new ArrayList<>();
 
     public RacingCarGame(int numCars) {
-        if (numCars < 1) {
+        if (numCars < MINIMUM_NUMBER_OF_CARS) {
             throw new IllegalArgumentException();
         }
         makeCars(numCars);
@@ -27,7 +30,7 @@ public class RacingCarGame {
     }
 
     public GameResult run(int numMoves) {
-        if (numMoves < 1) {
+        if (numMoves < MINIMUM_NUMBER_OF_MOVES) {
             throw new IllegalArgumentException();
         }
 

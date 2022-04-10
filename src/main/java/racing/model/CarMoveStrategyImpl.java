@@ -2,6 +2,8 @@ package racing.model;
 
 public class CarMoveStrategyImpl implements CarMoveStrategy {
 
+    private static final int MINIMUM_VALUE = 4;
+
     private final CustomRandom random;
 
     public CarMoveStrategyImpl(CustomRandom random) {
@@ -16,6 +18,6 @@ public class CarMoveStrategyImpl implements CarMoveStrategy {
     @Override
     public boolean isMovable() {
         int randomRange = random.getRandomRange(10);
-        return randomRange >= 4;
+        return randomRange >= MINIMUM_VALUE;
     }
 }

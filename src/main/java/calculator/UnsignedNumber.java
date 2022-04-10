@@ -7,13 +7,16 @@ import java.util.Objects;
  */
 public class UnsignedNumber {
 
+  private static final String EXCEPTION_MESSAGE_FORMAT = "%d 는 Unsigned Number 가 아닙니다.";
+  private static final int MINIMUM_VALUE = 0;
+
   private final int number;
 
   public UnsignedNumber(String value) throws NumberFormatException, NullPointerException {
     Objects.requireNonNull(value);
     int number = Integer.parseInt(value);
-    if (number < 0) {
-      throw new NumberFormatException(String.format("%d 는 Unsigned Number 가 아닙니다.", number));
+    if (number < MINIMUM_VALUE) {
+      throw new NumberFormatException(String.format(EXCEPTION_MESSAGE_FORMAT, number));
     }
     this.number = number;
   }
