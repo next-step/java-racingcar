@@ -7,7 +7,7 @@ import racing.domain.NumberOfRound;
 
 public class InputView {
     final static String QUERY_NUMBER_OF_CARS = "자동차 대수는 몇 대 인가요?";
-    final static String QUERY_NUMBER_OF_ROUND = "자동차 대수는 몇 대 인가요?";
+    final static String QUERY_NUMBER_OF_ROUND = "시도할 회수는 몇 회 인가요?";
 
     private static final Scanner scanner = new Scanner(System.in);
 

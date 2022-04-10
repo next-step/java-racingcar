@@ -6,7 +6,17 @@ public class Car {
     private static final int MIN_RESULT = 0;
     final static int MAX_RESULT = 9;
 
+    private final int id;
     private int location;
+
+    public Car(final int id) {
+        this.id = id;
+        this.location = 0;
+    }
+
+    public int getId() {
+        return id;
+    }
 
     public int getLocation() {
         return location;
@@ -20,5 +30,13 @@ public class Car {
         if (result >= 4) {
             location++;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+               "id=" + id +
+               ", location=" + location +
+               '}';
     }
 }

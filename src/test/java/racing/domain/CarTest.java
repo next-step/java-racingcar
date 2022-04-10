@@ -14,10 +14,10 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car(1);
     }
 
-    @DisplayName("게임 결과가 4이상인 경우 한 칸 전진한다.")
+    @DisplayName("랜덤 결과가 4이상인 경우 한 칸 전진한다.")
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     @ParameterizedTest
     void 전진(int randomResult) {
@@ -31,7 +31,7 @@ public class CarTest {
         assertThat(car.getLocation()).isEqualTo(carBeforeLocation + 1);
     }
 
-    @DisplayName("게임 결과가 4미만이면 멈춰 있는다.")
+    @DisplayName("랜덤 결과가 4미만이면 멈춰 있는다.")
     @ValueSource(ints = {0, 1, 2, 3})
     @ParameterizedTest
     void 정지(int randomResult) {
@@ -45,7 +45,7 @@ public class CarTest {
         assertThat(car.getLocation()).isEqualTo(carBeforeLocation);
     }
 
-    @DisplayName("게임 결과는 0 ~ 9사이여야 한다. 그 외 범위라면 IllegalArgumentException이 발생한다.")
+    @DisplayName("랜덤 결과는 0 ~ 9사이여야 한다. 그 외 범위라면 IllegalArgumentException이 발생한다.")
     @ValueSource(ints = {-1, 10})
     @ParameterizedTest
     void 게임결과_범위(int randomResult) {
