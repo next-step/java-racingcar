@@ -1,12 +1,12 @@
 package racingcar;
 
-public class Car {
+public final class Car {
     private static final MoveValidator MOVE_VALIDATOR = new MoveValidator();
     private static final int DEFAULT_STATE = 0;
     private final int maxState;
     private int state;
 
-    Car(int maxState) {
+    public Car (int maxState) {
         state = DEFAULT_STATE;
         this.maxState = maxState;
     }

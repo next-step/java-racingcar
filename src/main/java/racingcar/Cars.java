@@ -7,9 +7,9 @@ import java.util.Objects;
 public final class Cars {
     private final List<Car> cars;
 
-    Cars(List<Car> input) {
-        validate(input);
+    public Cars(List<Car> input) {
         List<Car> cars = new ArrayList<>(input);
+        validate(cars);
         this.cars = cars;
     }
 
