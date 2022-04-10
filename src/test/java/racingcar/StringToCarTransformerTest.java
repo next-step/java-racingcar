@@ -8,7 +8,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-class CarConverterTest {
+class StringToCarTransformerTest {
 
     @Test
     @DisplayName("문자열 리스트를 통해 자동차 리스트를 반환한다")
@@ -17,7 +17,7 @@ class CarConverterTest {
         List<String> carNames = List.of("자동차1", "자동차2", "자동차3");
 
         //when
-        List<Car> cars = CarConverter.convertToCarList(carNames);
+        List<Car> cars = StringToCarTransformer.convertToCarList(carNames);
 
         //then
         assertAll(

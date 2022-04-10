@@ -54,7 +54,7 @@ public class RacingCarApplication {
 
     private List<Car> generateCarList(String carNamesAsString) {
         List<String> carList = StringUtil.split(carNamesAsString);
-        return CarConverter.convertToCarList(carList);
+        return StringToCarTransformer.convertToCarList(carList);
     }
 
 }
