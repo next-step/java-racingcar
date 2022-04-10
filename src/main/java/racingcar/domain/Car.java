@@ -14,6 +14,7 @@ public class Car {
         if (condition < GO_STOP_DIVISION_POINT) {
             return;
         }
+        this.position++;
     }
 
     public int getPosition() {
