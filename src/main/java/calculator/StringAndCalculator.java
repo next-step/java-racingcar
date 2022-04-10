@@ -12,25 +12,17 @@ public class StringAndCalculator {
             return 0;
         }
 
+        return sumIntegers(stringsToIntegers(textToStrings(text)));
+    }
+
+    private static String[] textToStrings(String text) {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
         if (m.find()) {
             String customDelimiter = m.group(1);
-            String[] tokens = m.group(2).split(customDelimiter);
-            List<Integer> integers = stringsToIntegers(tokens);
-            return sumValues(integers);
+            return m.group(2).split(customDelimiter);
         } else {
-            String[] tokens = text.split("[,:]");
-            List<Integer> integers = stringsToIntegers(tokens);
-            return sumValues(integers);
+            return text.split("[,:]");
         }
-    }
-
-    private static int sumValues(List<Integer> values) {
-        int result = 0;
-        for (Integer value : values) {
-            result += value;
-        }
-        return result;
     }
 
     private static List<Integer> stringsToIntegers(String[] values) {
@@ -47,5 +39,13 @@ public class StringAndCalculator {
             throw new RuntimeException();
         }
         return intValue;
+    }
+
+    private static int sumIntegers(List<Integer> values) {
+        int result = 0;
+        for (Integer value : values) {
+            result += value;
+        }
+        return result;
     }
 }
