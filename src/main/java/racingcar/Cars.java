@@ -27,14 +27,11 @@ public final class Cars {
         }
     }
 
-    public void print() {
+    public List<Integer> result() {
+        List<Integer> carStates = new ArrayList<>();
         for(Car car : cars) {
-            int state = car.state();
-            for(int i=0; i<state; i++){
-                System.out.print("-");
-            }
-            System.out.println();
+            carStates.add(car.state());
         }
-        System.out.println();
+        return List.copyOf(carStates);
     }
 }

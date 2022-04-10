@@ -28,12 +28,14 @@ public class RacingCar {
         }
     }
 
-    public void play() {
+    public ArrayList<ArrayList<Integer>> play() {
         int count = 0;
-        while(count < roundCount) {
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        while (count < roundCount) {
             cars.play();
-            cars.print();
+            result.add(new ArrayList<>(cars.result()));
             count++;
         }
+        return result;
     }
 }
