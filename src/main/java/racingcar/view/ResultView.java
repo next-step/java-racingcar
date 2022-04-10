@@ -12,6 +12,10 @@ public class ResultView {
         if (isFirstResult(tryCount)) {
             System.out.println(MESSAGE_RESULT);
         }
+        renderResult(cars);
+    }
+
+    private static void renderResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getPositionView());
         }
