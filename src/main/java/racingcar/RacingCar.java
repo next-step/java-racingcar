@@ -3,7 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingCar {
+public final class RacingCar {
     private final Cars cars;
     private final int roundCount;
 

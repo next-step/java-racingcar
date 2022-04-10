@@ -22,14 +22,14 @@ public final class Cars {
     }
 
     public void play() {
-        for(Car car : cars) {
+        for (Car car : cars) {
             car.move();
         }
     }
 
     public List<Integer> result() {
         List<Integer> carStates = new ArrayList<>();
-        for(Car car : cars) {
+        for (Car car : cars) {
             carStates.add(car.state());
         }
         return List.copyOf(carStates);

@@ -8,7 +8,7 @@ public final class RandomGenerator {
     private final static int RANDOM_NUMBER_MAX = 9;
     private static final Random RANDOM = new Random();
 
-    RandomGenerator() {
+    public RandomGenerator() {
     }
 
     public int generate() {
