@@ -2,7 +2,7 @@ package racingCar.view;
 
 import java.util.List;
 import racingCar.model.Car;
-import racingCar.service.CarGame;
+import racingCar.service.CarService;
 import racingCar.strategy.CarMoveRandomStrategy;
 
 public final class OutputTable {
@@ -14,7 +14,7 @@ public final class OutputTable {
 
 
   public static void main(String[] args) {
-    CarGame game = new CarGame();
+    CarService game = new CarService();
     System.out.println(HOW_MANY_CARS);
     List<Car> allCars = game.readyCars();
     System.out.println(HOW_MANY_GAMES);

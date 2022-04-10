@@ -5,7 +5,7 @@ import racingCar.model.Track;
 import racingCar.model.Car;
 import racingCar.view.InputTable;
 
-public class CarGame {
+public class CarService {
   private final static Track TRACK = new Track();
 
   public List<Car> readyCars() {
