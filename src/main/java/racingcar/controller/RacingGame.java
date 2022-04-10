@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.domain.Cars;
+import racingcar.domain.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -11,9 +11,8 @@ public class RacingGame {
     private int numberOfGames;
 
     public void startRacingGame() {
-        InputService inputService = new InputService();
-        racingCarProgressService.createCars(inputService.convertInputValue(InputView.inputNumberOfCars()));
-        numberOfGames = inputService.convertInputValue(InputView.inputNumberOfAttempts());
+        racingCarProgressService.createCars(InputView.inputNumberOfCars());
+        numberOfGames = InputView.inputNumberOfAttempts();
 
         racingCarProgress();
     }
@@ -25,12 +24,12 @@ public class RacingGame {
     }
 
     private void movingCars() {
-        List<Cars> carsList = racingCarProgressService.getCarsList();
-        for (Cars cars : carsList) {
-            racingCarProgressService.changeDistanceByCar(cars, getRandomValue());
+        List<Car> cars = racingCarProgressService.getCarsList();
+        for (Car car : cars) {
+            racingCarProgressService.changeDistanceByCar(car, getRandomValue());
         }
 
-        OutputView.printCarRacingIntermediateState(carsList);
+        OutputView.printCarRacingIntermediateState(cars);
     }
 
     private int getRandomValue() {

@@ -3,7 +3,7 @@ package racingcar.controller;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Cars;
+import racingcar.domain.Car;
 
 import java.util.List;
 
@@ -39,13 +39,13 @@ public class RacingCarProgressServiceTest {
     @DisplayName("랜덤값 결과에 따른 자동차 이동거리 변경")
     void changeDistanceTraveled() {
         racingCarProgressService.createCars(2);
-        List<Cars> carsList = racingCarProgressService.getCarsList();
-        racingCarProgressService.changeDistanceByCar(carsList.get(0), 4);
-        racingCarProgressService.changeDistanceByCar(carsList.get(1), 2);
+        List<Car> cars = racingCarProgressService.getCarsList();
+        racingCarProgressService.changeDistanceByCar(cars.get(0), 4);
+        racingCarProgressService.changeDistanceByCar(cars.get(1), 2);
 
         assertAll(
-                () -> assertThat(carsList.get(0).getDistanceTraveled()).isEqualTo(1),
-                () -> assertThat(carsList.get(1).getDistanceTraveled()).isEqualTo(0)
+                () -> assertThat(cars.get(0).getDistanceTraveled()).isEqualTo(1),
+                () -> assertThat(cars.get(1).getDistanceTraveled()).isEqualTo(0)
         );
     }
 }

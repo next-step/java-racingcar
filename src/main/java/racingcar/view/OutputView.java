@@ -1,21 +1,23 @@
 package racingcar.view;
 
-import racingcar.commons.Constant;
-import racingcar.domain.Cars;
+import racingcar.domain.Car;
 
 import java.util.List;
 
 public class OutputView {
-    public static void printCarRacingIntermediateState(List<Cars> carsList) {
-        for (Cars cars : carsList) {
-            System.out.println(getDashOnDistanceByCars(cars.getDistanceTraveled()));
+    public static final String MOVE_DISTANCE_MARK = "-";
+    public static final String LINE_DIVISION = "\n";
+
+    public static void printCarRacingIntermediateState(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(getDashOnDistanceByCars(car.getDistanceTraveled()));
         }
-        System.out.print(Constant.LINE_DIVISION);
+        System.out.print(LINE_DIVISION);
     }
 
     public static String getDashOnDistanceByCars(int movementDistance) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(Constant.MOVE_DISTANCE_MARK.repeat(Math.max(0, movementDistance)));
+        stringBuilder.append(MOVE_DISTANCE_MARK.repeat(movementDistance));
         return stringBuilder.toString();
     }
 }

@@ -1,31 +1,30 @@
 package racingcar.model;
 
-import racingcar.commons.Constant;
-import racingcar.domain.Cars;
+import racingcar.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarsProgress {
+    public static final int RANDOM_MINIMUM_VALUE_CAN_BE_MOVED = 4;
 
-    private List<Cars> carsList;
+    private List<Car> carsList;
 
     public CarsProgress(int numberOfCars) {
         carsList = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            Cars cars = new Cars();
-            cars.setDistanceTraveled(Constant.MOVEMENT_DISTANCE_INITIAL_VALUE);
-            carsList.add(cars);
+            Car car = new Car();
+            carsList.add(car);
         }
     }
 
-    public List<Cars> getCarsList() {
+    public List<Car> getCarsList() {
         return carsList;
     }
 
-    public void changeDistanceByCar(Cars cars, int determinationValue) {
-        if (determinationValue >= Constant.RANDOM_MINIMUM_VALUE_CAN_BE_MOVED) {
-            cars.setDistanceTraveled(cars.getDistanceTraveled() + 1);
+    public void changeDistanceByCar(Car car, int determinationValue) {
+        if (determinationValue >= RANDOM_MINIMUM_VALUE_CAN_BE_MOVED) {
+            car.changeDistance();
         }
     }
 }

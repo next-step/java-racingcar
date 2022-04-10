@@ -1,13 +1,14 @@
 package racingcar.controller;
 
-import racingcar.commons.Constant;
-import racingcar.domain.Cars;
+import racingcar.domain.Car;
 import racingcar.model.CarsProgress;
 
 import java.util.List;
 import java.util.Random;
 
 public class RacingCarProgressService {
+    public static final int RANDOM_NUMBER_BOUND = 10;
+
     private CarsProgress carsProgress;
     private Random random = new Random();
 
@@ -15,15 +16,15 @@ public class RacingCarProgressService {
         carsProgress = new CarsProgress(numberOfCars);
     }
 
-    public List<Cars> getCarsList() {
+    public List<Car> getCarsList() {
         return carsProgress.getCarsList();
     }
 
     public int getRandomValue() {
-        return random.nextInt(Constant.RANDOM_NUMBER_BOUND);
+        return random.nextInt(RANDOM_NUMBER_BOUND);
     }
 
-    public void changeDistanceByCar(Cars cars, int determinationValue) {
-        carsProgress.changeDistanceByCar(cars, determinationValue);
+    public void changeDistanceByCar(Car car, int determinationValue) {
+        carsProgress.changeDistanceByCar(car, determinationValue);
     }
 }
