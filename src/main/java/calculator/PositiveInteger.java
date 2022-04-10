@@ -19,7 +19,7 @@ public final class PositiveInteger {
         }
     }
 
-    public int getNumber() {
+    public int number() {
         return number;
     }
 }

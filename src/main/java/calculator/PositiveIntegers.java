@@ -1,17 +1,27 @@
 package calculator;
 
-import java.util.List;
+import java.util.*;
 
 public final class PositiveIntegers {
     private final List<PositiveInteger> positiveIntegers;
 
-    public PositiveIntegers(List<PositiveInteger> positiveIntegers) {
+    public PositiveIntegers(List<PositiveInteger> inputs) {
+        List<PositiveInteger> positiveIntegers = new ArrayList<>(inputs);
+        validate(positiveIntegers);
         this.positiveIntegers = positiveIntegers;
+    }
+
+    public void validate(List<PositiveInteger> positiveIntegers) {
+        Objects.requireNonNull(positiveIntegers, "전달된 리스트가 올바르지 않습니다 : List is null");
+
+        if (positiveIntegers.isEmpty()) {
+            throw new IllegalArgumentException("전달된 리스트가 올바르지 않습니다 : List size is 0");
+        }
     }
 
     public int sum() {
         return positiveIntegers.stream()
-                .mapToInt(PositiveInteger::getNumber)
+                .mapToInt(PositiveInteger::number)
                 .sum();
     }
 }

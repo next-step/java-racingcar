@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StringAddCalculator {
-    private static final String DEFAULT_DELIMITER = ",|:";
 
     public static int splitAndSum(String text) {
         if (isBlank(text)) {
@@ -12,11 +11,7 @@ public class StringAddCalculator {
         }
 
         ExtractDelimiter extractDelimiter = new ExtractDelimiter(text);
-        if (extractDelimiter.isExtracted()) {
-            return split(extractDelimiter.getDelimiter(), extractDelimiter.getText());
-        }
-
-        return split(DEFAULT_DELIMITER, text);
+        return split(extractDelimiter.delimiter(), extractDelimiter.text());
     }
 
     private static boolean isBlank(String text) {
