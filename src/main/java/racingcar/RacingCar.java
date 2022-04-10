@@ -15,7 +15,7 @@ public class RacingCar {
         this.roundCount = roundCount;
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            Car car = new Car();
+            Car car = new Car(roundCount);
             cars.add(car);
         }
         this.cars = new Cars(cars);

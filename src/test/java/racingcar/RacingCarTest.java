@@ -2,6 +2,8 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -47,12 +49,21 @@ public class RacingCarTest {
     @Test
     @DisplayName("자동차의 초기 상태는 0이어야 한다.")
     void carStateTest() {
-        Car car = new Car();
+        Car car = new Car(5);
         assertThat(car.getState()).isZero();
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {1, 5})
     @DisplayName("자동차의 현재 상태는 주어진 횟수값을 넘을 수 없다.")
-    void carStateFailTest() {
+    void carStateFailTest(int count) {
+        Car car = new Car(count);
+        assertThatThrownBy(() -> {
+            for (int i = 0; i<=count; i++){
+                car.move();
+            }
+        })
+        .isInstanceOf(IllegalStateException.class)
+        .hasMessageContaining("자동차의 상태는 시도 횟수를 넘을 수 없습니다.");
     }
 }
