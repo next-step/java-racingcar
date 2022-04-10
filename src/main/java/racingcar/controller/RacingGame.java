@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.Cars;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
@@ -28,6 +29,8 @@ public class RacingGame {
         for (Cars cars : carsList) {
             racingCarProgressService.changeDistanceByCar(cars, getRandomValue());
         }
+
+        OutputView.printCarRacingIntermediateState(carsList);
     }
 
     private int getRandomValue() {
