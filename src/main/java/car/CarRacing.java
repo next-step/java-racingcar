@@ -6,15 +6,17 @@ import java.util.List;
 public class CarRacing {
     private List<Car> cars = new ArrayList<Car>();
     private int attempt;
+    private int moveMinNumber;
 
-    public CarRacing(int participatingCarCount, int attempt) {
+    public CarRacing(int participatingCarCount, int attempt, int moveMinNumber) {
         participatingCar(participatingCarCount);
         this.attempt = attempt;
+        this.moveMinNumber = moveMinNumber;
     }
 
     private void participatingCar(int number) {
         for (int i = 0; i < number; i++) {
-            cars.add(new Car());
+            cars.add(new Car(this));
         }
     }
 
@@ -25,6 +27,8 @@ public class CarRacing {
     public int getAttemptCount() {
         return this.attempt;
     }
+
+    public int getMoveMinNumber() {return this.moveMinNumber; }
 
     public List<Car> start() {
         for (int i = 0; i < attempt; i++) {

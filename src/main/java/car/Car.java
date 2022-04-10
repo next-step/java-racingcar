@@ -4,13 +4,15 @@ import java.util.Random;
 
 public class Car {
     private int distance;
+    private CarRacing carRacing;
 
-    public Car() {
+    public Car(CarRacing carRacing) {
         this.distance = 0;
+        this.carRacing = carRacing;
     }
 
     public int move(int number) {
-        if (number < 4) {
+        if (number < carRacing.getMoveMinNumber()) {
             return this.distance;
         }
 

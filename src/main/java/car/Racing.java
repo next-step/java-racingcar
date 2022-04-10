@@ -9,8 +9,9 @@ public class Racing {
         InputView inputView = new InputView();
         int carCount = inputView.carCountQuestion();
         int attemptCount = inputView.attemptCountQuestion();
+        int moveMaxNumber = 4;
 
-        CarRacing carRacing = new CarRacing(carCount, attemptCount);
+        CarRacing carRacing = new CarRacing(carCount, attemptCount, moveMaxNumber);
         List<Car> result = carRacing.start();
 
         ResultView resultView = new ResultView(result);
