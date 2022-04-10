@@ -2,15 +2,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    public static final String DEFAULT_DELIMITER = ",|:";
-    public static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
-    public static final int CUSTOM_DELIMITER_INDEX = 1;
-    public static final int NUMBER_INDEX = 2;
-    public static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER_REGEXP);
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
+    private static final int CUSTOM_DELIMITER_INDEX = 1;
+    private static final int NUMBER_INDEX = 2;
+    private static final int ZERO = 0;
+    private static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER_REGEXP);
 
     public static int splitAndSum(final String text) {
         if (isBlank(text)) {
-            return 0;
+            return ZERO;
         }
         return sum(toInts(split(text)));
     }

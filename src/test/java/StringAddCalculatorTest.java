@@ -14,6 +14,11 @@ public class StringAddCalculatorTest {
         assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(0);
     }
 
+    @Test
+    void 숫자_하나를_문자로_입력() {
+        assertThat(StringAddCalculator.splitAndSum("1")).isEqualTo(1);
+    }
+
     @ValueSource(strings = { "1,2", "1:2"})
     @ParameterizedTest
     void 쉼표_콜론_기본구분자(String input) {
@@ -31,6 +36,12 @@ public class StringAddCalculatorTest {
     @ParameterizedTest
     void 음수(String delimiter) {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum(delimiter))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    void 올바르지_않은_입력값() {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("1-2"))
                 .isInstanceOf(RuntimeException.class);
     }
 }
