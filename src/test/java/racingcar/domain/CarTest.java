@@ -28,4 +28,18 @@ public class CarTest {
 
         assertThat(car.getPosition()).isEqualTo(oldPosition + 1);
     }
+
+    @Test
+    @DisplayName("condition 음수일경우 IllegalArgument 예외를 반환한다.")
+    void negativeException() throws Exception {
+        assertThatThrownBy(() -> new Car().stopOrGo(-1))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("condition 9보다 크면 IllegalArgument 예외를 반환한다.")
+    void overflowException() throws Exception {
+        assertThatThrownBy(() -> new Car().stopOrGo(10))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

@@ -11,9 +11,14 @@ public class Car {
     }
 
     public void stopOrGo(int condition) {
+        if (condition < 0 || condition > 9) {
+            throw new IllegalArgumentException();
+        }
+
         if (condition < GO_STOP_DIVISION_POINT) {
             return;
         }
+
         this.position++;
     }
 
