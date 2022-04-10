@@ -3,6 +3,8 @@ package racingcar.view;
 import java.util.List;
 
 public class OutputView {
+    private static final String CAR_POSITION_SYMBOL = "-";
+
     private OutputView() throws InstantiationException {
         throw new InstantiationException();
     }
@@ -14,7 +16,7 @@ public class OutputView {
 
     private static void outputPosition(int position) {
         for (int j = 0; j < position; j++) {
-            System.out.print("-");
+            System.out.print(CAR_POSITION_SYMBOL);
         }
 
         outputEmptyLine();
