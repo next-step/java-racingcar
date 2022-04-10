@@ -22,3 +22,15 @@
     - [x] int inputCarMoveCount()
 - [x] OutputView
     - [x] void outputMoveCar(Cars cars, int carMoveCount)
+
+## ToDo - 문장
+
+- 자동차
+    - 자동차는 위치값을 갖는다.
+    - 자동차는 랜덤한 값 결과에 따라 위치값이 이동될 수 있다.
+- 입력
+    - 자동차 개수를 입력받는다.
+    - 자동차가 이동할 숫자를 입력받을 수 있다.
+- 출력
+    - 자동차 이동 결과를 출력한다.
+        - 자동차 목록과 이동할 숫자를 인자로 받는다.
