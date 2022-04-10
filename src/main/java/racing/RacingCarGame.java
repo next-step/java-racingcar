@@ -1,6 +1,5 @@
 package racing;
 
-import racing.GameResult.GameRoundResult;
 import racing.model.Car;
 import racing.model.CarMoveStrategy;
 import racing.model.Cars;
@@ -35,10 +34,9 @@ public class RacingCarGame {
         }
 
         GameResult gameResult = new GameResult();
-        for (int i = 0; i < numMoves; i++) {
-            GameRoundResult result = cars.run(moveStrategy);
-            gameResult.addRoundResult(result);
-        }
+        IntStream.range(0, numMoves)
+                .mapToObj(i -> cars.run(moveStrategy))
+                .forEach(gameResult::addRoundResult);
         return gameResult;
     }
 }
