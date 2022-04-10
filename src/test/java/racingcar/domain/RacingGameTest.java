@@ -3,8 +3,6 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.*;
 
 class RacingGameTest {
@@ -28,9 +26,6 @@ class RacingGameTest {
     void carGenerate() throws Exception {
         RacingGame racingGame = new RacingGame(new InputCarCount("3"), new InputRoundCount("2"));
 
-        List<Car> cars = racingGame.getCars();
-
-        assertThat(cars.size()).isEqualTo(3);
+        assertThat(racingGame.getCars().size()).isEqualTo(3);
     }
-
 }
