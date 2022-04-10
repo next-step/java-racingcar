@@ -4,11 +4,17 @@ import racing.model.Counter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GameResult {
     private final List<GameRoundResult> rounds = new ArrayList<>();
 
+    public List<GameRoundResult> getRounds() {
+        return rounds;
+    }
+
     public void addRoundResult(GameRoundResult round) {
+        Objects.requireNonNull(round);
         rounds.add(round);
     }
 
@@ -20,11 +26,8 @@ public class GameResult {
         }
 
         public void addResult(Counter status) {
+            Objects.requireNonNull(status);
             statusList.add(status);
         }
-    }
-
-    public List<GameRoundResult> getRounds() {
-        return rounds;
     }
 }
