@@ -26,7 +26,7 @@ public class RacingCarGame {
 
     private void makeCars(int numCars) {
         IntStream.range(0, numCars)
-                .forEach(i -> cars.add(new Car(moveStrategy)));
+                .forEach(i -> cars.add(new Car()));
     }
 
     public GameResult run(int numMoves) {
@@ -39,7 +39,7 @@ public class RacingCarGame {
             GameRoundResult round = new GameRoundResult();
             gameResult.addRoundResult(round);
             cars.stream()
-                    .mapToInt(Car::run)
+                    .mapToInt(car -> car.run(moveStrategy))
                     .forEach(round::addResult);
         }
         return gameResult;

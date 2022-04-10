@@ -1,14 +1,9 @@
 package racing.model;
 
 public class Car {
-    final CarMoveStrategy carMoveStrategy;
     int moveCount = 0;
 
-    public Car(CarMoveStrategy carMoveStrategy) {
-        this.carMoveStrategy = carMoveStrategy;
-    }
-
-    public int run() {
+    public int run(CarMoveStrategy carMoveStrategy) {
         if (carMoveStrategy.isMovable()) {
             moveCount++;
         }

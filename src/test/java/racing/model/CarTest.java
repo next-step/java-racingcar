@@ -16,9 +16,8 @@ class CarTest {
     @ParameterizedTest
     @CsvSource(value = {"true,1", "false,0"}, delimiter = ',')
     void carMoveForward(@ConvertWith(BooleanConverter.class) Boolean isMovable, int expected) {
-        CarMoveStrategy carMoveStrategy = () -> isMovable;
-        Car car = new Car(carMoveStrategy);
-        assertThat(car.run()).isEqualTo(expected);
+        CarMoveStrategy moveStrategy = () -> isMovable;
+        assertThat(new Car().run(moveStrategy)).isEqualTo(expected);
     }
 
     private static class BooleanConverter implements ArgumentConverter {
