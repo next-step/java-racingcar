@@ -6,16 +6,14 @@ import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;
+    private final RaceCondition raceCondition;
 
     private Cars(Builder builder) {
         this.cars = IntStream
                 .range(0, builder.carCount)
-                .mapToObj(count -> Car.builder()
-                        .rangeStartRandomNumber(builder.rangeStartRandomNumber)
-                        .rangeEndRandomNumber(builder.rangeEndRandomNumber)
-                        .moveCondition(builder.moveCondition)
-                        .build())
+                .mapToObj(count -> new Car())
                 .collect(Collectors.toList());
+        this.raceCondition = builder.raceCondition;
     }
 
     public static Builder builder() {
@@ -24,27 +22,15 @@ public class Cars {
 
     public static class Builder {
         private int carCount;
-        private int rangeStartRandomNumber;
-        private int rangeEndRandomNumber;
-        private int moveCondition;
+        private RaceCondition raceCondition;
 
         public Builder carCount(int carCount) {
             this.carCount = carCount;
             return this;
         }
 
-        public Builder rangeStartRandomNumber(int rangeStartRandomNumber) {
-            this.rangeStartRandomNumber = rangeStartRandomNumber;
-            return this;
-        }
-
-        public Builder rangeEndRandomNumber(int rangeEndRandomNumber) {
-            this.rangeEndRandomNumber = rangeEndRandomNumber;
-            return this;
-        }
-
-        public Builder moveCondition(int moveCondition) {
-            this.moveCondition = moveCondition;
+        public Builder raceCondition(RaceCondition raceCondition) {
+            this.raceCondition = raceCondition;
             return this;
         }
 
@@ -57,7 +43,8 @@ public class Cars {
         return cars;
     }
 
-    public void addMove() {
-        cars.forEach(Car::addMoveCount);
+    public void addMove(int moveCondition) {
+        cars.forEach(car ->
+                car.addMoveCount(raceCondition.generateCondition(), moveCondition));
     }
 }

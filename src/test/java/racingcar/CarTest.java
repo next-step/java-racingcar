@@ -4,7 +4,10 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,27 +15,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
     @ParameterizedTest
     @Order(1)
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    void 경주중_자동차가_전진하는_경우(int rangeStartRandomNumber) {
-        Car car = Car.builder()
-                .rangeStartRandomNumber(rangeStartRandomNumber)
-                .rangeEndRandomNumber(10)
-                .moveCondition(4)
-                .build();
-        car.addMoveCount();
+    @CsvSource({"9,4"})
+    void 경주중_자동차가_전진하는_경우(int rangeEndNumber, int rangeStartNumber) {
+        Car car = new Car();
+        Random random = new Random();
+
+        int generateNumber = random.nextInt(rangeEndNumber + 1) + rangeStartNumber;
+        car.addMoveCount(generateNumber, 4);
         assertThat(car.getMoveCount()).isEqualTo(1);
     }
 
     @ParameterizedTest
     @Order(2)
-    @ValueSource(ints = {1, 2, 3})
-    void 경주중_자동차가_멈춰있는_경우(int rangeEndRandomNumber) {
-        Car car = Car.builder()
-                .rangeStartRandomNumber(0)
-                .rangeEndRandomNumber(rangeEndRandomNumber)
-                .moveCondition(4)
-                .build();
-        car.addMoveCount();
+    @ValueSource(ints = {3})
+    void 경주중_자동차가_멈춰있는_경우(int rangeEndNumber) {
+        Car car = new Car();
+        Random random = new Random();
+
+        int generateNumber = random.nextInt(rangeEndNumber + 1);
+        car.addMoveCount(generateNumber, 4);
         assertThat(car.getMoveCount()).isZero();
     }
 }
