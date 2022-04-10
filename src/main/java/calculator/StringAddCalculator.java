@@ -1,9 +1,10 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 public class StringAddCalculator {
 
@@ -38,11 +39,11 @@ public class StringAddCalculator {
     return text.split(DEFAULT_SPLIT_PATTERN);
   }
 
-  private static int summingInt(Stream<UnsignedNumber> numbers) {
-    return numbers.reduce(new UnsignedNumber("0"), UnsignedNumber::sum).intValue();
+  private static int summingInt(Collection<UnsignedNumber> numbers) {
+    return numbers.stream().reduce(new UnsignedNumber("0"), UnsignedNumber::sum).intValue();
   }
 
-  private static Stream<UnsignedNumber> toPositiveNumbers(String[] values) {
-    return Arrays.stream(values).map(UnsignedNumber::new);
+  private static Collection<UnsignedNumber> toPositiveNumbers(String[] values) {
+    return Arrays.stream(values).map(UnsignedNumber::new).collect(Collectors.toList());
   }
 }
