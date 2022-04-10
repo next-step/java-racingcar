@@ -3,7 +3,6 @@ package carracing;
 import java.util.List;
 
 public class ResultView {
-
     public static final String ROUTE = "-";
 
     private ResultView() {}

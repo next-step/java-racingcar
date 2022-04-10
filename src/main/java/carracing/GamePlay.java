@@ -3,7 +3,6 @@ package carracing;
 import java.util.List;
 
 public class GamePlay {
-
     public static void main(String[] args) {
         int countOfCars = InputView.inputCountofCars();
         int tryCount = InputView.inputTryCount();
