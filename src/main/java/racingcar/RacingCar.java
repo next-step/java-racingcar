@@ -5,13 +5,11 @@ import java.util.List;
 
 public class RacingCar {
     private final Cars cars;
-    private final int carCount;
     private final int roundCount;
 
     public RacingCar(int carCount, int roundCount) {
         validate(carCount, roundCount);
 
-        this.carCount = carCount;
         this.roundCount = roundCount;
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
