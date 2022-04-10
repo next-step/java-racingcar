@@ -1,10 +1,9 @@
 package step3;
 
 import java.util.List;
-import step3.domain.RacingHistories;
 import step3.domain.RandomProceedPolicy;
-import step3.ui.Cui;
 import step3.service.PlayService;
+import step3.ui.Cui;
 
 public class RacingCarMainApp {
 

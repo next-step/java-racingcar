@@ -5,10 +5,10 @@ import java.util.List;
 
 public class RacingGame {
 
-    private int carCount;
-    private int tryCount;
-    private ProceedPolicy proceedPolicy;
-    private RacingHistories histories = new RacingHistories();
+    private final int carCount;
+    private final int tryCount;
+    private final ProceedPolicy proceedPolicy;
+    private final RacingHistories histories = new RacingHistories();
 
     public RacingGame(int carCount, int tryCount, ProceedPolicy proceedPolicy) {
         this.carCount = carCount;
