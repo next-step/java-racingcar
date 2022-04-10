@@ -10,24 +10,21 @@ public class Positive {
     private final int number;
 
     public Positive(String text) {
-        checkInt(text);
-
-        int number = toInt(text);
-        checkNegative(number);
-
-        this.number = number;
+        this(toInt(text));
     }
 
-    private int toInt(String text) {
-        return Integer.parseInt(text);
-    }
-
-    private void checkInt(String text) {
+    private static int toInt(String text) {
         try {
-            toInt(text);
+            return Integer.parseInt(text);
         } catch (NumberFormatException e) {
             throw new RuntimeException(ONLY_NUMBER_VALUE_ALLOW_MESSAGE);
         }
+    }
+
+    public Positive(int number) {
+        checkNegative(number);
+
+        this.number = number;
     }
 
     private void checkNegative(int number) {
