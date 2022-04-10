@@ -1,7 +1,8 @@
-package racingCar;
+package racingCar.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingCar.model.Car;
 
 public class Track {
 
