@@ -26,4 +26,12 @@ public class RacingGame {
     public List<Car> getCars() {
         return this.cars;
     }
+
+    public int play() {
+        int tryCount = 0;
+        for (int i = 0; i < roundCount.getRoundCount(); i++) {
+            tryCount++;
+        }
+        return tryCount;
+    }
 }

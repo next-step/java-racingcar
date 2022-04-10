@@ -28,4 +28,12 @@ class RacingGameTest {
 
         assertThat(racingGame.getCars().size()).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("라운드 횟수 만큼 플레이를 진행한다.")
+    void playCount() throws Exception {
+        RacingGame racingGame = new RacingGame(new InputCarCount("3"), new InputRoundCount("2"));
+
+        assertThat(racingGame.play()).isEqualTo(2);
+    }
 }
