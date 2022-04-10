@@ -14,7 +14,7 @@ public class PositiveNumbers {
 
     static PositiveNumbers convertToPositiveNumbers(String[] splitText) {
         List<PositiveNumber> positiveNumbers = Arrays.stream(splitText)
-                .map(PositiveNumber::CreatePositiveNumber)
+                .map(PositiveNumber::createPositiveNumber)
                 .collect(Collectors.toList());
         return new PositiveNumbers(positiveNumbers);
     }
