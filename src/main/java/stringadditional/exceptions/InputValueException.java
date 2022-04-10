@@ -1,4 +1,4 @@
-package exceptions;
+package stringadditional.exceptions;
 
 public class InputValueException extends RuntimeException{
     public InputValueException() {}

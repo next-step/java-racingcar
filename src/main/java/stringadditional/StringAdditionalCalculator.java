@@ -1,7 +1,7 @@
 package stringadditional;
 
-import commons.Constant;
-import exceptions.InputValueException;
+import stringadditional.commons.Constant;
+import stringadditional.exceptions.InputValueException;
 
 import java.util.ArrayList;
 import java.util.List;

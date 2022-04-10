@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import commons.Constant;
+import racingcar.commons.Constant;
 
 import java.util.Scanner;
 

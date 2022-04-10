@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import commons.Constant;
+import racingcar.commons.Constant;
 import racingcar.domain.Cars;
 
 import java.util.ArrayList;

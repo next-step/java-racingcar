@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import commons.Constant;
+import racingcar.commons.Constant;
 import racingcar.domain.Cars;
 import racingcar.model.CarsProgress;
 

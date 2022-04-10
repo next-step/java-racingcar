@@ -1,7 +1,7 @@
 package racingcar.controller;
 
-import commons.Constant;
-import exceptions.InputValueException;
+import racingcar.commons.Constant;
+import racingcar.exceptions.InputValueException;
 
 public class InputService {
 
