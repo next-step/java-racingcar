@@ -15,6 +15,7 @@ public class Game {
     private final NumberOfCars numberOfCars;
     private final NumberOfRound numberOfRound;
     private final List<Car> cars = new LinkedList<>();
+    private final Random random = new Random();
 
     public Game(final NumberOfCars numberOfCars, final NumberOfRound numberOfRound) {
         this.numberOfCars = numberOfCars;
@@ -22,14 +23,21 @@ public class Game {
     }
 
     public void start() {
+        equipRacingCar();
+
+        for (int i = 0; i < numberOfRound.number; i++) {
+            proceedRound();
+            ResultView.print(cars);
+        }
+    }
+
+    private void equipRacingCar() {
         for (int i = 0; i < numberOfCars.number; i++) {
             cars.add(new Car(i));
         }
+    }
 
-        Random random = new Random();
-        for (int i = 0; i < numberOfRound.number; i++) {
-            cars.forEach(car -> car.run(random.nextInt(RANDOM_BOUND_UNDER)));
-            ResultView.print(cars);
-        }
+    private void proceedRound() {
+        cars.forEach(car -> car.run(random.nextInt(RANDOM_BOUND_UNDER)));
     }
 }
