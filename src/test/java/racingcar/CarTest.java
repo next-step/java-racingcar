@@ -22,7 +22,7 @@ class CarTest {
 
         int generateNumber = random.nextInt(rangeEndNumber + 1) + rangeStartNumber;
         car.addMoveCount(generateNumber, 4);
-        assertThat(car.getMoveCount()).isEqualTo(1);
+        assertThat(car.moveCountExpression()).isEqualTo("-");
     }
 
     @ParameterizedTest
@@ -34,6 +34,6 @@ class CarTest {
 
         int generateNumber = random.nextInt(rangeEndNumber + 1);
         car.addMoveCount(generateNumber, 4);
-        assertThat(car.getMoveCount()).isZero();
+        assertThat(car.moveCountExpression()).isBlank();
     }
 }
