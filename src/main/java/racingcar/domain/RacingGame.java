@@ -1,10 +1,14 @@
 package racingcar.domain;
 
+import racingcar.view.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
+
+    private static final String MESSAGE_RESULT = "실행결과";
 
     private InputCarCount carCount;
     private InputRoundCount roundCount;
@@ -32,6 +36,10 @@ public class RacingGame {
         int tryCount = 0;
         for (int i = 0; i < roundCount.getRoundCount(); i++) {
             cars.forEach(car -> car.stopOrGo(new Random().nextInt(10)));
+            if (tryCount == 0) {
+                System.out.println(MESSAGE_RESULT);
+            }
+            ResultView.renderResultView(cars);
             tryCount++;
         }
         return tryCount;
