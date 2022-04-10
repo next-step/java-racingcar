@@ -12,14 +12,16 @@ public class StringAddCalculator {
         if (isBlank(text)) {
             return 0;
         }
-        final Matcher m = PATTERN.matcher(text);
-        if (m.find()) {
-            final String customDelimiter = m.group(CUSTOM_DELIMITER_INDEX);
-            final String[] values = m.group(NUMBER_INDEX).split(customDelimiter);
-            return sum(toInts(values));
+        return sum(toInts(split(text)));
+    }
+
+    private static String[] split(final String text) {
+        final Matcher matcher = PATTERN.matcher(text);
+        if (matcher.find()) {
+            final String customDelimiter = matcher.group(CUSTOM_DELIMITER_INDEX);
+            return matcher.group(NUMBER_INDEX).split(customDelimiter);
         }
-        final String[] values = text.split(DEFAULT_DELIMITER);
-        return sum(toInts(values));
+        return text.split(DEFAULT_DELIMITER);
     }
 
     private static boolean isBlank(final String text) {
