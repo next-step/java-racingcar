@@ -1,6 +1,7 @@
 
 import charactercalculator.CharCalculator;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -15,6 +16,13 @@ import org.junit.jupiter.api.Test;
  * 문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다.
  */
 public class CalculateTest {
+
+    @DisplayName("빈 문자열 또는 null 값을 입력할 경우 0을 반환해야 한다.")
+    @Test
+    void null_input_test(){
+        CharCalculator target = new CharCalculator();
+        Assertions.assertThat(target.calculate()).isEqualTo(0);
+    }
 
     @Test
     void zero_comma_test(){

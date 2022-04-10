@@ -1,50 +1,60 @@
 package charactercalculator;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CharCalculator {
-    private String expression;
+    private String text;
+    private Matcher m;
 
-    static List<String> expressionList = Arrays.asList(":",",");
+//    static List<String> expressionList = Arrays.asList(":",",");
     public CharCalculator(String input) {
-        this.expression = input;
+        this.text = input;
+        // 생성자 생성될 때만 한번 선언하게 리펙토링
+        if(!isEmpty(input)){
+            m = Pattern.compile("//(.)\n(.*)").matcher(this.text);
+        }
     }
+    public CharCalculator() {
+    }
+
 
     public int calculate() {
         int result = 0;
-        if(isEmpty(expression)){
-            result = getResult(result);
+        if(isEmpty(text)){
+            return 0;
         }
-        return result;
+        return getResult(result);
     }
 
-    private boolean isEmpty(String input) {
-        return this.expression != "" || this.expression == null;
+    private boolean isEmpty(String text) {
+        return "".equals(text) || text == null;
     }
 
     private int getResult(int result) {
-        String customSeparator = ",|:";
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(this.expression);
-        if(m.find()){
-            customSeparator = m.group(1);
-            this.expression = m.group(2);
-        }
-        String[] numberStrings = this.expression.split(customSeparator);
+        String customSeparator = getSeparator();
+        String[] numberStrings = this.text.split(customSeparator);
         for (String numberString : numberStrings) {
             result += getNumber(numberString);
         }
         return result;
     }
 
+    private String getSeparator() {
+        String customSeparator = ",|:";
+        if(m.find()){
+            customSeparator = m.group(1);
+            this.text = m.group(2);
+        }
+        return customSeparator;
+    }
+
     private int getNumber(String numberString) {
-        int result =Integer.parseInt(numberString);
+        int result = Integer.parseInt(numberString);
         if(isMinus(result)) {
             throw new RuntimeException("양수를 입력해야 합니다.");
         }
-        return Integer.parseInt(numberString);
+        return result;
     }
 
     private boolean isMinus(int result) {
