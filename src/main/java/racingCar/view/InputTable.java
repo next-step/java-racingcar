@@ -1,10 +1,8 @@
 package racingCar.view;
 
-import java.util.List;
 import java.util.Scanner;
 
 public final class InputTable {
-
 
   private final static Scanner SCANNER = new Scanner(System.in);
 

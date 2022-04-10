@@ -26,7 +26,7 @@ public final class OutputTable {
   public static void play(List<Car> allCars, Integer rounds) {
     for (int i = 0; i < rounds; i++) {
       for (Car car : allCars) {
-        car.step(new CarMoveRandomStrategy());
+        car.move(new CarMoveRandomStrategy());
         System.out.println(STEP.repeat(Math.max(0, car.position())));
       }
       System.out.println();

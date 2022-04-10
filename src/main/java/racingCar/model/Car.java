@@ -4,16 +4,16 @@ import racingCar.strategy.CarMoveStrategy;
 
 public class Car {
 
-  private int meterParser;
+  private int position;
 
-  public int step(CarMoveStrategy carMoveStrategy) {
+  public int move(CarMoveStrategy carMoveStrategy) {
     if (carMoveStrategy.moveAble()) {
-      return meterParser += 1;
+      return position += 1;
     }
-    return meterParser;
+    return position;
   }
 
   public int position() {
-    return this.meterParser;
+    return this.position;
   }
 }

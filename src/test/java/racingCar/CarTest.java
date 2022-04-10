@@ -9,19 +9,18 @@ import racingCar.strategy.CarMoveRandomStrategy;
 
 class CarTest {
 
-
   @Test
   @DisplayName("4이상인 경우에는 전진한다.")
   void onlyIfFourOrHigher() {
     Car car = new Car();
-    assertThat(car.step(() -> true)).isEqualTo(1);
+    assertThat(car.move(() -> true)).isEqualTo(1);
   }
 
   @Test
   @DisplayName("3이하인 경우에는 멈춘다.")
   void onlyIfThreeLessThen() {
     Car car = new Car();
-    assertThat(car.step(() -> false)).isEqualTo(0);
+    assertThat(car.move(() -> false)).isEqualTo(0);
 
   }
 
@@ -30,9 +29,9 @@ class CarTest {
   @DisplayName("입력한 횟수 만큼 자동차의 미터기가 작동합니다.")
   void meterTest() {
     Car car = new Car();
-    car.step(new CarMoveRandomStrategy());
-    car.step(new CarMoveRandomStrategy());
-    car.step(new CarMoveRandomStrategy());
-    assertThat(car.getMeterParser()).isLessThanOrEqualTo(3);
+    car.move(new CarMoveRandomStrategy());
+    car.move(new CarMoveRandomStrategy());
+    car.move(new CarMoveRandomStrategy());
+    assertThat(car.position()).isLessThanOrEqualTo(3);
   }
 }
