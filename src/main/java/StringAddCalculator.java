@@ -4,15 +4,18 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
     public static final String DEFAULT_DELIMITER = ",|:";
     public static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
+    public static final int CUSTOM_DELIMITER_INDEX = 1;
+    public static final int NUMBER_INDEX = 2;
+    public static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER_REGEXP);
 
     public static int splitAndSum(final String text) {
         if (isBlank(text)) {
             return 0;
         }
-        final Matcher m = Pattern.compile(CUSTOM_DELIMITER_REGEXP).matcher(text);
+        final Matcher m = PATTERN.matcher(text);
         if (m.find()) {
-            final String customDelimiter = m.group(1);
-            final String[] values = m.group(2).split(customDelimiter);
+            final String customDelimiter = m.group(CUSTOM_DELIMITER_INDEX);
+            final String[] values = m.group(NUMBER_INDEX).split(customDelimiter);
             return sum(toInts(values));
         }
         final String[] values = text.split(DEFAULT_DELIMITER);
