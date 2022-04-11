@@ -1,6 +1,7 @@
 package step3.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static step3.domain.Car.DEFAULT_POSITION;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +18,10 @@ class CarTest {
 
     @Test
     void createCarTest() {
-        assertThat(car).isNotNull();
+        Car carCreated = new Car();
+
+        assertThat(carCreated).isNotNull();
+        assertThat(carCreated.getPosition()).isEqualTo(DEFAULT_POSITION);
     }
 
     @DisplayName("차량 전진 요청 시 위치 전진한다.")

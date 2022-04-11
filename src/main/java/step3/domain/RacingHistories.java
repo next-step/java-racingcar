@@ -12,7 +12,7 @@ public class RacingHistories {
         List<Integer> positions = cars.getPositions();
         for (Integer position : positions) {
             sb.append(printPosition(position));
-            sb.append("\n");
+            sb.append(System.lineSeparator());
         }
 
         histories.add(sb.toString());

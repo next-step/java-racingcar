@@ -2,10 +2,11 @@ package step3.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import step3.exception.NoProceedPolicyException;
 
 public class Cars {
 
-    List<Car> cars;
+    private List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -13,7 +14,7 @@ public class Cars {
 
     public void proceedWithPolicy(ProceedPolicy proceedPolicy) {
         if (proceedPolicy == null) {
-            throw new RuntimeException("실제 게임 진행은 전진 정책이 필요합니다.");
+            throw new NoProceedPolicyException("실제 게임 진행은 전진 정책이 필요합니다.");
         }
 
         for (Car car : cars) {

@@ -27,8 +27,10 @@ class CarsTest {
 
     @Test
     void createTest() {
-        assertThat(cars).isNotNull();
-        assertThat(cars.size()).isEqualTo(3);
+        Cars carsCreated = new Cars(List.of(new Car(), new Car(), new Car()));
+
+        assertThat(carsCreated).isNotNull();
+        assertThat(carsCreated.size()).isEqualTo(3);
     }
 
     @Test
