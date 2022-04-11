@@ -4,13 +4,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 class StringAddCalculatorTest {
 
-  @Test
-  void 빈_문자열_공백문자_일때_0을_반환한다() {
-    assertThat(StringAddCalculator.spliteAndSum(null)).isEqualTo(0);
-    assertThat(StringAddCalculator.spliteAndSum("")).isEqualTo(0);
+  @ParameterizedTest
+  @NullAndEmptySource
+  void 빈_문자열_공백문자_일때_0을_반환한다(String input) {
+    assertThat(StringAddCalculator.spliteAndSum(input)).isEqualTo(0);
   }
 
   @Test
@@ -45,5 +47,12 @@ class StringAddCalculatorTest {
     assertThatThrownBy(() -> {
       StringAddCalculator.spliteAndSum("//;\n1;2;-3");
     }).isInstanceOf(RuntimeException.class);
+  }
+
+  @Test
+  void 숫자가_아닌_문자를_전달할경우_예외를_발생한다() {
+    assertThatThrownBy(() -> {
+      StringAddCalculator.spliteAndSum("//;\n1;2;a");
+    }).isInstanceOf(NumberFormatException.class);
   }
 }

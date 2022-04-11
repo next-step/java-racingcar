@@ -7,12 +7,17 @@ public class StringAddCalculator {
 
   private static final String PATTERN_DELIMETER = "//(.)\n(.*)";
   private static final String DEFAULT_DELIMETER = ",|:";
+  private static final int DEFAULT_NUMBER = 0;
+  private static final int DELIMETER_GROUP = 1;
+  private static final int TARGET_GROUP = 2;
 
   private static final Pattern pattern = Pattern.compile(PATTERN_DELIMETER);
 
+  private StringAddCalculator() {}
+
   public static int spliteAndSum(String text) {
     if (text == null || text.isBlank()) {
-      return 0;
+      return DEFAULT_NUMBER;
     }
 
     String[] splitedText = split(text);
@@ -20,11 +25,11 @@ public class StringAddCalculator {
   }
 
   private static String[] split(String text) {
-    Matcher m = pattern.matcher(text);
+    Matcher matcher = pattern.matcher(text);
 
-    if (m.find()) {
-      String customDelimeter = m.group(1);
-      return m.group(2).split(customDelimeter);
+    if (matcher.find()) {
+      String customDelimeter = matcher.group(DELIMETER_GROUP);
+      return matcher.group(TARGET_GROUP).split(customDelimeter);
     }
 
     return text.split(DEFAULT_DELIMETER);
