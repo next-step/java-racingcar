@@ -22,7 +22,13 @@ public class CarTest {
         Car car = new Car(1L);
         car.move();
         assertThat(car.getDistance()).isEqualTo(1);
+    }
 
+    @Test
+    @DisplayName("자동차가 네번 움직인다.")
+    void 자동차가_네번_움직인다() {
+        Car car = new Car(1L);
+        car.move();
         car.move();
         car.move();
         car.move();
