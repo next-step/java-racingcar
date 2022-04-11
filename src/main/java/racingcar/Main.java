@@ -3,7 +3,8 @@ package racingcar;
 import racingcar.domain.Car;
 import racingcar.domain.CarFactory;
 import racingcar.domain.RacingCarGame;
-import racingcar.domain.RandomGenerator;
+import racingcar.domain.strategy.MoveStrategy;
+import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
 
@@ -15,16 +16,16 @@ public class Main {
 
         int carCount = InputView.promptCarCount();
         int rounds = InputView.promptRounds();
-        List<Car> cars = CarFactory.generateCarsOfSize(carCount);
 
-        RacingCarGame game = new RacingCarGame(cars, rounds);
+        List<Car> cars = CarFactory.generateCarsOfSize(carCount);
+        MoveStrategy strategy = new RandomMoveStrategy();
+
+        RacingCarGame game = new RacingCarGame(cars, rounds, strategy);
 
         OutputView.printRaceStart();
         for (int i = 0; i < rounds; i++) {
-            List<Integer> randomNumbers = RandomGenerator.generateRandomsOfSize(cars.size());
-            game.proceedRound(randomNumbers);
+            game.proceedRound();
             OutputView.printCars(cars);
         }
     }
-
 }

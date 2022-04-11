@@ -1,27 +1,24 @@
 package racingcar.domain;
 
+import racingcar.domain.strategy.MoveStrategy;
+
 import java.util.List;
 
 public class RacingCarGame {
 
-    private static final int MOVE_LOWER_BOUND = 4;
     private final List<Car> cars;
     private int rounds;
+    private final MoveStrategy moveStrategy;
 
-    public RacingCarGame(List<Car> cars, int rounds) {
+    public RacingCarGame(List<Car> cars, int rounds, MoveStrategy moveStrategy) {
         this.cars = cars;
         this.rounds = rounds;
+        this.moveStrategy = moveStrategy;
     }
 
-    public void proceedRound(List<Integer> randomNumbers) {
-        if (cars.size() != randomNumbers.size()) {
-            throw new IllegalArgumentException("random numbers' size must be equal with cars' size");
-        }
-
+    public void proceedRound() {
         decreaseGameRound();
-        for (int i = 0; i < cars.size(); i++) {
-            this.moveOrStop(cars.get(i), randomNumbers.get(i));
-        }
+        cars.forEach(moveStrategy::moveOrStop);
     }
 
     private void decreaseGameRound() {
@@ -30,11 +27,5 @@ public class RacingCarGame {
         }
 
         rounds = rounds - 1;
-    }
-
-    private void moveOrStop(Car car, int random) {
-        if (MOVE_LOWER_BOUND <= random) {
-            car.move();
-        }
     }
 }
