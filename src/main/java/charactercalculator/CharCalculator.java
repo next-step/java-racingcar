@@ -7,7 +7,7 @@ public class CharCalculator {
     private String text;
     private Matcher m;
 
-    //    static List<String> expressionList = Arrays.asList(":",",");
+//    static List<String> expressionList = Arrays.asList(":",",");
     public CharCalculator(String input) {
         this.text = input;
         // 생성자 생성될 때만 한번 선언하게 리펙토링
