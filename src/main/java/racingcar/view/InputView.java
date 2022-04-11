@@ -11,28 +11,24 @@ public class InputView {
     private static final String MESSAGE_INPUT_ROUND_COUNT = "시도할 횟수는 몇 회 인가요?";
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static InputCarCount viewInputCarCount() {
-        InputCarCount carCount = null;
+    public static InputCarCount renderCarCountInputView() {
         try {
             System.out.println(MESSAGE_INPUT_CAR_COUNT);
-            carCount = new InputCarCount(scanner.nextLine());
+            return new InputCarCount(scanner.nextLine());
         } catch (IllegalArgumentException e) {
             renderErrorMessage(e.getMessage());
-            return viewInputCarCount();
+            return renderCarCountInputView();
         }
-        return carCount;
     }
 
-    public static InputRoundCount viewInputRoundCount() {
-        InputRoundCount roundCount = null;
+    public static InputRoundCount renderRoundCountInputView() {
         try {
             System.out.println(MESSAGE_INPUT_ROUND_COUNT);
-            roundCount = new InputRoundCount(scanner.nextLine());
+            return new InputRoundCount(scanner.nextLine());
         } catch (IllegalArgumentException e) {
             renderErrorMessage(e.getMessage());
-            return viewInputRoundCount();
+            return renderRoundCountInputView();
         }
-        return roundCount;
     }
 
     private static void renderErrorMessage(String message) {

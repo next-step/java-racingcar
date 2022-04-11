@@ -8,8 +8,8 @@ import racingcar.view.InputView;
 public class Main {
 
     public static void main(String[] args) {
-        InputCarCount carCount = InputView.viewInputCarCount();
-        InputRoundCount roundCount = InputView.viewInputRoundCount();
+        InputCarCount carCount = InputView.renderCarCountInputView();
+        InputRoundCount roundCount = InputView.renderRoundCountInputView();
 
         RacingGame racingGame = new RacingGame(carCount, roundCount);
         racingGame.play();
