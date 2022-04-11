@@ -8,19 +8,19 @@ import racing.module.map.RacingMap;
 import racing.module.move.CarMoveDecider;
 import racing.module.move.BasicCarMoveDecider;
 
-public class RacingGameDriver {
+public class RacingGameEngine {
 
     private List<Car> cars;
     private RacingMap racingMap;
     private CarMoveDecider carMoveDecider;
 
-    public RacingGameDriver(Builder builder) {
+    public RacingGameEngine(Builder builder) {
         this.cars = builder.cars;
         this.racingMap = builder.racingMap;
         this.carMoveDecider = builder.carMoveDecider;
     }
 
-    public void nextTurn(){
+    public void executeTurn(){
         for (Car car : cars) {
             moveOrStop(car);
         }
@@ -52,14 +52,14 @@ public class RacingGameDriver {
             return this;
         }
 
-        public RacingGameDriver build(){
+        public RacingGameEngine build(){
             if(isMapDefaultCondition()){
                 racingMap = new BasicRacingMap(cars);
             }
             if(isCarMoveDeciderDefaultCondition()) {
                 carMoveDecider = new BasicCarMoveDecider();
             }
-            return new RacingGameDriver(this);
+            return new RacingGameEngine(this);
         }
 
         private boolean isCarMoveDeciderDefaultCondition() {

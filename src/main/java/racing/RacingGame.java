@@ -1,7 +1,6 @@
 package racing;
 
 import java.util.List;
-import racing.module.RacingGameDriver;
 import racing.module.UserInput;
 
 public class RacingGame {
