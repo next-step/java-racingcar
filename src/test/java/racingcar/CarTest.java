@@ -7,33 +7,36 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Random;
-
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CarTest {
     @ParameterizedTest
     @Order(1)
-    @CsvSource({"9,4"})
-    void 경주중_자동차가_전진하는_경우(int rangeEndNumber, int rangeStartNumber) {
+    @ValueSource(ints = {-1, 10})
+    void 경주환경_범위에_해당되지_않은_범위를_입력_받았을때(int condition) {
         Car car = new Car();
-        Random random = new Random();
-
-        int generateNumber = random.nextInt(rangeEndNumber + 1) + rangeStartNumber;
-        car.addMoveCount(generateNumber, 4);
-        assertThat(car.moveCountExpression()).isEqualTo("-");
+        assertThatThrownBy(() -> car.addMoveCount(condition))
+                .isInstanceOf(IllegalArgumentException.class);
     }
+
 
     @ParameterizedTest
     @Order(2)
-    @ValueSource(ints = {3})
-    void 경주중_자동차가_멈춰있는_경우(int rangeEndNumber) {
+    @CsvSource({"4,9"})
+    void 경주중_자동차가_이동하는_경우(int condition) {
         Car car = new Car();
-        Random random = new Random();
+        car.addMoveCount(condition);
+        assertThat(car.moveCountExpression("-")).isEqualTo("-");
+    }
 
-        int generateNumber = random.nextInt(rangeEndNumber + 1);
-        car.addMoveCount(generateNumber, 4);
-        assertThat(car.moveCountExpression()).isBlank();
+    @ParameterizedTest
+    @Order(3)
+    @ValueSource(ints = {0, 3})
+    void 경주중_자동차가_멈춰있는_경우(int condition) {
+        Car car = new Car();
+        car.addMoveCount(condition);
+        assertThat(car.moveCountExpression("-")).isBlank();
     }
 }

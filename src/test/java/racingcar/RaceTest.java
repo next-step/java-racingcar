@@ -1,35 +1,39 @@
 package racingcar;
 
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import view.ResultView;
 
-import static org.mockito.Mockito.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class RaceTest {
     @Test
-    void 자동차_대수가_0대일때() {
+    @Order(1)
+    void 자동차_대수는_1대_이상이어야_한다() {
         Cars cars = Cars.builder()
                 .carCount(0)
                 .raceCondition(new RaceCondition())
                 .build();
-        assertThatThrownBy(() -> new Race(new ResultView()).start(cars, 1))
+        assertThatThrownBy(() -> new Race(new ResultView()).start(0, 1))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {3})
-    void 주어진_횟수만큼_레이스가_진행되는지(int tryCount) throws InterruptedException {
+    @Order(2)
+    @ValueSource(ints = {3, 4, 5})
+    void 주어진_횟수만큼_레이스가_진행된다(int tryCount) throws InterruptedException {
         int carCount = 3;
-        ResultView resultView = mock(ResultView.class);
+        ResultView resultView = new ResultView();
         Cars cars = Cars.builder()
                 .carCount(carCount)
                 .raceCondition(new RaceCondition())
                 .build();
-        new Race(resultView).start(cars, tryCount);
-
-        verify(resultView,times(tryCount)).printCarsMoveState(cars);
+        assertThat(new Race(resultView).start(3, tryCount)).isEqualTo(tryCount);
     }
 }
