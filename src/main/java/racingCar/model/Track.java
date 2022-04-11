@@ -9,9 +9,14 @@ public class Track {
   private int gameCount;
 
   public void addCar(String names) {
-    for (int i = 0; i < 3; i++) {
-      cars.add(new Car("temp"));
+    String[] splitNames = splitNames(names);
+    for (String name : splitNames) {
+      cars.add(new Car(name));
     }
+  }
+
+  private String[] splitNames(String names) {
+    return names.split(",");
   }
 
   public List<Car> getCars() {

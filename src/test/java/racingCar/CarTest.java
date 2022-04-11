@@ -1,6 +1,7 @@
 package racingCar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,5 +34,14 @@ class CarTest {
     car.move(new CarMoveRandomStrategy());
     car.move(new CarMoveRandomStrategy());
     assertThat(car.position()).isLessThanOrEqualTo(3);
+  }
+
+  @Test
+  @DisplayName(" 자동차 이름은 5자를 초과할 수 없습니다.")
+  void nameSizeTest() {
+    assertThatThrownBy(() -> {
+      Car car = new Car("testtesrefefdedede");
+    }).isInstanceOf(RuntimeException.class);
+
   }
 }
