@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class RacingCarGameApplication {
 
     public static void main(String[] args) {
@@ -17,6 +19,7 @@ public class RacingCarGameApplication {
             resultView.roundLogTrace(racingGame.getRacingCars());
         }
 
-        racingGame.winnersOfTheRace();
+        List<String> winners = racingGame.winnersOfTheRace();
+        resultView.winnerLogTrace(winners);
     }
 }

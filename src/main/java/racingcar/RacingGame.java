@@ -4,15 +4,18 @@ import java.util.*;
 
 import static java.util.Collections.*;
 import static java.util.Comparator.*;
+import static java.util.stream.Collectors.*;
 
 public class RacingGame {
 
-    private int longestDistance;
     private List<RacingCar> racingCars = new ArrayList<>();
-    private List<String> winners = new ArrayList<>();
 
     public RacingGame(String[] carNames) {
         readyRacingCars(carNames);
+    }
+
+    public RacingGame(List<RacingCar> racingCars) {
+        this.racingCars = racingCars;
     }
 
     private void readyRacingCars(String[] carNames) {
@@ -27,21 +30,17 @@ public class RacingGame {
         }
     }
 
-    private void findLongestDistance() {
-        longestDistance = max(racingCars, comparing(RacingCar::getDistance))
+    public List<String> winnersOfTheRace() {
+        int longestDistance = findLongestDistance();
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.getDistance() == longestDistance)
+                .map(RacingCar::getCarName)
+                .collect(toList());
+    }
+
+    private int findLongestDistance() {
+        return max(racingCars, comparing(RacingCar::getDistance))
                 .getDistance();
-    }
-
-    public void winnersOfTheRace() {
-        for (RacingCar racingCar : racingCars) {
-            isWinner(racingCar);
-        }
-    }
-
-    private void isWinner(RacingCar racingCar) {
-        if (racingCar.getDistance() == longestDistance) {
-            winners.add(racingCar.getCarName());
-        }
     }
 
     public List<RacingCar> getRacingCars() {
