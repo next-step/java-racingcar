@@ -4,8 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    static String DEFAULT_DELIMETER = ",|:";
-    static String CUSTOM_DELIMETER = "//(.)\n(.*)";
+    static String DEFAULT_DELIMITER = ",|:";
+    static String CUSTOM_DELIMITER = "//(.)\n(.*)";
 
     public static int splitAndSum(String input) {
         int result = 0;
@@ -13,20 +13,19 @@ public class StringAddCalculator {
         if (input == null || input.isEmpty()) {
             return 0;
         }
-        String delimeter = DEFAULT_DELIMETER;
+        String delimiter = DEFAULT_DELIMITER;
 
-
-        if (Pattern.matches(CUSTOM_DELIMETER, input)) {
-            Pattern pattern = Pattern.compile(CUSTOM_DELIMETER);
+        if (Pattern.matches(CUSTOM_DELIMITER, input)) {
+            Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
             Matcher matcher = pattern.matcher(input);
 
             if (matcher.find()) {
-                delimeter = matcher.group(1);
+                delimiter = matcher.group(1);
                 input = matcher.group(2);
             }
         }
 
-        Pattern pattern = Pattern.compile(delimeter);
+        Pattern pattern = Pattern.compile(delimiter);
         String[] strings = pattern.split(input);
 
         for (String string: strings) {
