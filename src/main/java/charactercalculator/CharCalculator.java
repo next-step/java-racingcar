@@ -14,6 +14,7 @@ public class CharCalculator {
         // 생성자 생성될 때만 한번 선언하게 리펙토링
         if(!isEmpty(input)){
             m = pattern.matcher(this.input);
+
         }
     }
     public CharCalculator() {
@@ -42,12 +43,11 @@ public class CharCalculator {
     }
 
     private String getSeparator() {
-        String customSeparator = ",|:";
         if(m.find()){
-            customSeparator = m.group(1);
             this.input = m.group(2);
+            return m.group(1);
         }
-        return customSeparator;
+        return ",|:";
     }
 
     private int getNumber(String numberString) {
