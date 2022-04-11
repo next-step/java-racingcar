@@ -19,7 +19,7 @@ class TrackTest {
   @Test
   @DisplayName("몇 대의 차량과 경주를 할지 테스트한다.")
   void countTest() {
-    track.addCar(3);
+    track.addCar(null);
     assertThat(track.getCars().size()).isEqualTo(3);
   }
 

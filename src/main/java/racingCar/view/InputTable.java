@@ -9,8 +9,8 @@ public final class InputTable {
   private InputTable() {
   }
 
-  public static Integer howManyCar() {
-    return SCANNER.nextInt();
+  public static String insertName() {
+    return SCANNER.next();
   }
 
   public static Integer howManyGame() {
