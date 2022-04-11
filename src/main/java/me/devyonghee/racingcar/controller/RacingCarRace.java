@@ -12,8 +12,6 @@ import java.util.Scanner;
 
 public final class RacingCarRace {
 
-    private static final int RANDOM_LIMIT = 10;
-
     private final InputView inputView;
     private final ResultView resultView;
 
@@ -39,6 +37,6 @@ public final class RacingCarRace {
     }
 
     private CarFactory carFactory(int carCount) {
-        return CarFactory.of(carCount, RandomEngine.from(new Random(), RANDOM_LIMIT));
+        return CarFactory.of(carCount, RandomMovementPolicy.from(new Random()));
     }
 }

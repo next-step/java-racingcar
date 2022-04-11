@@ -4,23 +4,18 @@ import me.devyonghee.racingcar.utility.Assert;
 
 final class RacingCar {
 
-    private static final int MIN_MOVING_ROTATION_LIMIT = 4;
+    private final MovementPolicy policy;
 
-    private final RandomEngine engine;
-
-    private RacingCar(RandomEngine engine) {
-        Assert.notNull(engine, "'engine' must not be null");
-        this.engine = engine;
+    private RacingCar(MovementPolicy policy) {
+        Assert.notNull(policy, "movement policy must not be null");
+        this.policy = policy;
     }
 
-    static RacingCar from(RandomEngine engine) {
-        return new RacingCar(engine);
+    static RacingCar from(MovementPolicy policy) {
+        return new RacingCar(policy);
     }
 
     Movement movement() {
-        if (engine.rotationCount() >= MIN_MOVING_ROTATION_LIMIT) {
-            return Movement.MOVE;
-        }
-        return Movement.STOP;
+        return policy.movement();
     }
 }

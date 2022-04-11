@@ -1,6 +1,5 @@
 package me.devyonghee.racingcar.model;
 
-import me.devyonghee.racingcar.model.sample.RandomEngineSample;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,13 +11,13 @@ class CarFactoryTest {
     @Test
     @DisplayName("객체화")
     void instance() {
-        assertThatNoException().isThrownBy(() -> CarFactory.of(1, RandomEngineSample.TEM_LIMIT_RANDOM_ENGINE));
+        assertThatNoException().isThrownBy(() -> CarFactory.of(1, new MovementPolicy.Fake(true)));
     }
 
     @Test
     @DisplayName("자동차 대수는 0이상")
     void instance_negativeCarCount_thrownIllegalArgumentException() {
-        assertThatIllegalArgumentException().isThrownBy(() -> CarFactory.of(-1, RandomEngineSample.TEM_LIMIT_RANDOM_ENGINE));
+        assertThatIllegalArgumentException().isThrownBy(() -> CarFactory.of(-1, new MovementPolicy.Fake(true)));
     }
 
     @Test
@@ -33,7 +32,7 @@ class CarFactoryTest {
         //given
         int count = 1;
         //when
-        RacingCars cars = CarFactory.of(count, RandomEngineSample.TEM_LIMIT_RANDOM_ENGINE).cars();
+        RacingCars cars = CarFactory.of(count, new MovementPolicy.Fake(true)).cars();
         //then
         assertThat(cars.size()).isEqualTo(count);
     }

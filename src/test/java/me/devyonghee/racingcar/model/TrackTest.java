@@ -1,6 +1,5 @@
 package me.devyonghee.racingcar.model;
 
-import me.devyonghee.racingcar.model.sample.RandomEngineSample;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,17 +13,19 @@ import static org.mockito.Mockito.when;
 @DisplayName("경주로")
 class TrackTest {
 
+    public static final Track TRACK_AT_ZERO = Track.of(RacingCar.from(new MovementPolicy.Fake(true)), Distance.ZERO);
+
     @Test
     @DisplayName("객체화")
     void instance() {
-        assertThatNoException().isThrownBy(() -> Track.of(RacingCar.from(RandomEngineSample.TEM_LIMIT_RANDOM_ENGINE), Distance.from(0)));
+        assertThatNoException().isThrownBy(() -> Track.of(RacingCar.from(new MovementPolicy.Fake(true)), Distance.ZERO));
     }
 
     @Test
     @DisplayName("자동차, 거리는 필수")
     void instance_nullArgument_thrownIllegalArgumentException() {
-        assertThatIllegalArgumentException().isThrownBy(() -> Track.of(null, Distance.from(0)));
-        assertThatIllegalArgumentException().isThrownBy(() -> Track.of(RacingCar.from(RandomEngineSample.TEM_LIMIT_RANDOM_ENGINE), null));
+        assertThatIllegalArgumentException().isThrownBy(() -> Track.of(null, Distance.ZERO));
+        assertThatIllegalArgumentException().isThrownBy(() -> Track.of(RacingCar.from(new MovementPolicy.Fake(true)), null));
     }
 
     @Test
@@ -34,7 +35,7 @@ class TrackTest {
         Random random = mock(Random.class);
         when(random.nextInt(anyInt())).thenReturn(4);
         //when
-        Track track = Track.of(RacingCar.from(RandomEngine.from(random, 10)), Distance.ZERO).movedTrack();
+        Track track = Track.of(RacingCar.from(RandomMovementPolicy.from(random)), Distance.ZERO).movedTrack();
         //then
         assertThat(track.distance()).isEqualTo(Distance.ONE);
     }
@@ -47,7 +48,7 @@ class TrackTest {
         when(random.nextInt(anyInt())).thenReturn(0);
         Distance initialDistance = Distance.ZERO;
         //when
-        Track track = Track.of(RacingCar.from(RandomEngine.from(random, 10)), initialDistance).movedTrack();
+        Track track = Track.of(RacingCar.from(RandomMovementPolicy.from(random)), initialDistance).movedTrack();
         //then
         assertThat(track.distance()).isEqualTo(initialDistance);
     }

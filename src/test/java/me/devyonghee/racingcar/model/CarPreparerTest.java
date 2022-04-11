@@ -1,6 +1,5 @@
 package me.devyonghee.racingcar.model;
 
-import me.devyonghee.racingcar.model.sample.RandomEngineSample;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,14 +11,14 @@ class CarPreparerTest {
     @Test
     @DisplayName("객체화")
     void instance() {
-        assertThatNoException().isThrownBy(() -> CarPreparer.of(CarFactory.of(1, RandomEngineSample.TEM_LIMIT_RANDOM_ENGINE), Distance.from(1)));
+        assertThatNoException().isThrownBy(() -> CarPreparer.of(CarFactory.of(1, new MovementPolicy.Fake(true)), Distance.ONE));
     }
 
     @Test
     @DisplayName("생산자와 초기 거리는 필수")
     void instance_nullArgument_thrownIllegalArgumentException() {
-        assertThatIllegalArgumentException().isThrownBy(() -> CarPreparer.of(CarFactory.of(1, RandomEngineSample.TEM_LIMIT_RANDOM_ENGINE), null));
-        assertThatIllegalArgumentException().isThrownBy(() -> CarPreparer.of(null, Distance.from(1)));
+        assertThatIllegalArgumentException().isThrownBy(() -> CarPreparer.of(CarFactory.of(1, new MovementPolicy.Fake(true)), null));
+        assertThatIllegalArgumentException().isThrownBy(() -> CarPreparer.of(null, Distance.ONE));
     }
 
     @Test
@@ -28,7 +27,7 @@ class CarPreparerTest {
         //given
         int count = 3;
         //when
-        Tracks tracks = CarPreparer.of(CarFactory.of(count, RandomEngineSample.TEM_LIMIT_RANDOM_ENGINE), Distance.from(1)).tracks();
+        Tracks tracks = CarPreparer.of(CarFactory.of(count, new MovementPolicy.Fake(true)), Distance.ONE).tracks();
         //then
         assertThat(tracks.size()).isEqualTo(3);
     }

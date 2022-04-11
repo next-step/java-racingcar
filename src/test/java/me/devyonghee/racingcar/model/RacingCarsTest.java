@@ -15,6 +15,8 @@ class RacingCarsTest {
     @DisplayName("객체화")
     void instance() {
         assertThatNoException().isThrownBy(() -> RacingCars.from(Collections.emptyList()));
+        assertThatNoException().isThrownBy(() -> RacingCars.from(
+                Collections.singletonList(RacingCar.from(new MovementPolicy.Fake(true)))));
     }
 
     @Test

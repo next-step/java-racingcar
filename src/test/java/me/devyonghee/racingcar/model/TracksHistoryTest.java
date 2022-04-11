@@ -15,6 +15,8 @@ class TracksHistoryTest {
     @DisplayName("객체화")
     void instance() {
         assertThatNoException().isThrownBy(() -> TracksHistory.from(Collections.emptyList()));
+        assertThatNoException().isThrownBy(() -> TracksHistory.from(Collections.singletonList(
+                Tracks.from(Collections.singletonList(TrackTest.TRACK_AT_ZERO)))));
     }
 
     @Test

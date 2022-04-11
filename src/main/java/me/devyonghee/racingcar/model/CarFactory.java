@@ -8,23 +8,23 @@ import java.util.stream.IntStream;
 public final class CarFactory {
 
     private final int count;
-    private final RandomEngine engine;
+    private final MovementPolicy policy;
 
-    private CarFactory(int count, RandomEngine engine) {
+    private CarFactory(int count, MovementPolicy policy) {
         validateCount(count);
-        Assert.notNull(engine, "'engine' must not be null");
+        Assert.notNull(policy, "'policy' must not be null");
         this.count = count;
-        this.engine = engine;
+        this.policy = policy;
     }
 
-    public static CarFactory of(int count, RandomEngine engine) {
-        return new CarFactory(count, engine);
+    public static CarFactory of(int count, MovementPolicy policy) {
+        return new CarFactory(count, policy);
     }
 
     RacingCars cars() {
         return RacingCars.from(
                 IntStream.range(0, count)
-                        .mapToObj(index -> RacingCar.from(engine))
+                        .mapToObj(index -> RacingCar.from(policy))
                         .collect(Collectors.toList())
         );
     }
@@ -39,7 +39,7 @@ public final class CarFactory {
     public String toString() {
         return "CarFactory{" +
                 "count=" + count +
-                ", engine=" + engine +
+                ", policy=" + policy +
                 '}';
     }
 }

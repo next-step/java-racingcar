@@ -11,6 +11,7 @@ class DistanceTest {
     @Test
     @DisplayName("객체화")
     void instance() {
+        assertThatNoException().isThrownBy(() -> Distance.from(0));
         assertThatNoException().isThrownBy(() -> Distance.from(Integer.MAX_VALUE));
     }
 
@@ -24,8 +25,8 @@ class DistanceTest {
     @DisplayName("더하기")
     void add() {
         //given, when
-        Distance distance = Distance.from(1).add(Distance.from(2));
+        Distance distance = Distance.ONE.add(Distance.ONE);
         //then
-        assertThat(distance).isEqualTo(Distance.from(3));
+        assertThat(distance).isEqualTo(Distance.from(2));
     }
 }

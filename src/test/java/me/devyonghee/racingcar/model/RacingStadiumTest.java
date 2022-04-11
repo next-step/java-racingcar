@@ -1,6 +1,5 @@
 package me.devyonghee.racingcar.model;
 
-import me.devyonghee.racingcar.model.sample.RandomEngineSample;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +8,7 @@ import static org.assertj.core.api.Assertions.*;
 @DisplayName("레이싱 경기장")
 class RacingStadiumTest {
 
-    private static final CarPreparer ZERO_DISTANCE_PREPARER = CarPreparer.of(CarFactory.of(3, RandomEngineSample.TEM_LIMIT_RANDOM_ENGINE), Distance.ZERO);
+    private static final CarPreparer ZERO_DISTANCE_PREPARER = CarPreparer.of(CarFactory.of(3, new MovementPolicy.Fake(true)), Distance.ZERO);
 
     @Test
     @DisplayName("객체화")
