@@ -18,7 +18,15 @@ public class StringAddCalculator {
 
         for (String string: strings) {
             if (isNumeric(string)) {
-                result += Integer.parseInt(string);
+                Integer parsedInt = Integer.parseInt(string);
+
+                if (parsedInt < 0) {
+                    throw new RuntimeException("음수 문자열은 허용되지 않습니다.");
+                }
+                result += parsedInt;
+            }
+            else{
+                throw new RuntimeException("digit형식의 문자열만 허용됩니다. ex) '1,2,3'");
             }
         }
         return result;
