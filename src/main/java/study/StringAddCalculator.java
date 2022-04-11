@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    private final static Pattern custom = Pattern.compile("//(.)\n(.*)");
+    private static final Pattern custom = Pattern.compile("//(.)\n(.*)");
 
     private StringAddCalculator() {
         throw new AssertionError();
