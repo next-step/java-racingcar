@@ -14,10 +14,7 @@ public class BasicRacingMap implements RacingMap{
 
     @Override
     public void showCars(){
-        for (Car car : cars) {
-            int position = car.currentPosition();
-            showCarPosition(position);
-        }
+        cars.stream().forEach(car -> showCarPosition(car.currentPosition()));
         System.out.println();
     }
 
