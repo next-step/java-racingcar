@@ -9,14 +9,14 @@ public class StringAddCalculator {
             return 0;
         }
         List<String> stringValueList = SplitStringNumber.splitToStringValueList(text);
-        return sum(toPositiveNumberList(stringValueList));
+        return sum(convertPositiveNumberList(stringValueList));
     }
 
     private static boolean isBlank(String text) {
         return text == null || text.isBlank();
     }
 
-    private static List<PositiveNumber> toPositiveNumberList(List<String> stringValueList) {
+    private static List<PositiveNumber> convertPositiveNumberList(List<String> stringValueList) {
         List<PositiveNumber> positiveNumberList = new ArrayList<>(stringValueList.size());
         for (String value : stringValueList) {
             positiveNumberList.add(new PositiveNumber(value));
