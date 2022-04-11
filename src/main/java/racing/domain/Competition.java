@@ -2,39 +2,42 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Competition {
+    private static final Random RANDOM = new Random();
+    private static final int RANDOM_NUMBER_BOUND = 10;
+
     private final List<Car> cars;
     private final int round;
+    private Movable movable;
 
-    public Competition(int unit, int round) {
+    public Competition(int unit, int round, Movable movable) {
         cars = new ArrayList<>(unit);
         for (int i = 0; i < unit; i++) {
-            cars.add(i, new Car());
+            cars.add(i, new Car(movable));
         }
 
         this.round = round;
     }
 
-    public void progressCompetition() {
+    public List<Car> progressCompetition() {
         for (int i = 0; i < round; i++) {
             progressEachRound();
         }
+
+        return cars;
     }
 
-    private void progressEachRound() {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).accumulateOneLap();
+    public List<Car> progressEachRound() {
+        for (Car car : cars) {
+            car.accumulateOneRound(createRandomNumber());
         }
 
-        printRoundStatus();
+        return cars;
     }
 
-    private void printRoundStatus() {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).printCarStatus();
-            System.out.println();
-        }
-        System.out.println();
+    private int createRandomNumber() {
+        return RANDOM.nextInt(RANDOM_NUMBER_BOUND);
     }
 }
