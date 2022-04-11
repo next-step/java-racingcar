@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -18,6 +19,12 @@ public class Cars {
             Car car = carList.get(index);
             car.move(moveCounts.get(index));
         }
+    }
+
+    public List<CarLocationResult> getCarLocationResult() {
+        return carList.stream()
+                .map(CarLocationResult::from)
+                .collect(Collectors.toList());
     }
 
     public List<CarName> getWinners() {

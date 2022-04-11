@@ -76,4 +76,23 @@ class CarsTest {
         assertThat(winners).contains(new CarName("자동차2"));
     }
 
+    @Test
+    @DisplayName("사용자별 현재 위치를 변경하는 객체를 반환한다")
+    void convertIntoCarLocationResultTest() {
+        //given
+        List<Car> carList = List.of(Car.from("자동차1"), Car.from("자동차2"), Car.from("자동차3"));
+        Cars cars = new Cars(carList);
+
+        //when
+        List<CarLocationResult> carLocationResults = cars.getCarLocationResult();
+
+        //then
+        assertAll(
+                () -> assertThat(carLocationResults.get(0).getCarName()).isEqualTo("자동차1"),
+                () -> assertThat(carLocationResults.get(1).getCarName()).isEqualTo("자동차2"),
+                () -> assertThat(carLocationResults.get(2).getCarName()).isEqualTo("자동차3")
+        );
+    }
+
+
 }
