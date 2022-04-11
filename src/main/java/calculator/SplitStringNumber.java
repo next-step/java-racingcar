@@ -15,13 +15,13 @@ public class SplitStringNumber {
         Matcher matcher = pattern.matcher(text);
         if (matcher.find()) {
             String customDelimiter = matcher.group(CUSTOM_DELIMITER_GROUP);
-            return List.of(split(matcher.group(VALUE_GROUP), customDelimiter));
+            return split(matcher.group(VALUE_GROUP), customDelimiter);
         }
-        return List.of(split(text, DEFAULT_DELIMITER));
+        return split(text, DEFAULT_DELIMITER);
     }
 
-    private static String[] split(String text, String delimiter) {
-        return text.split(delimiter);
+    private static List<String> split(String text, String delimiter) {
+        return List.of(text.split(delimiter));
     }
 
 }
