@@ -1,6 +1,6 @@
 package racingcar.domain.strategy;
 
-public class RandomMoveStrategy implements MoveStrategy {
+public class DefaultMoveStrategy implements MoveStrategy {
 
     private static final int MOVE_LOWER_BOUND = 4;
 

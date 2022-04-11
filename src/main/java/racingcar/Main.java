@@ -4,7 +4,7 @@ import racingcar.domain.Car;
 import racingcar.domain.CarFactory;
 import racingcar.domain.RacingCarGame;
 import racingcar.domain.strategy.MoveStrategy;
-import racingcar.domain.strategy.RandomMoveStrategy;
+import racingcar.domain.strategy.DefaultMoveStrategy;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
 
@@ -18,7 +18,7 @@ public class Main {
         int rounds = InputView.promptRounds();
 
         List<Car> cars = CarFactory.generateCarsOfSize(carCount);
-        MoveStrategy strategy = new RandomMoveStrategy();
+        MoveStrategy strategy = new DefaultMoveStrategy();
 
         RacingCarGame game = new RacingCarGame(cars, rounds, strategy);
 

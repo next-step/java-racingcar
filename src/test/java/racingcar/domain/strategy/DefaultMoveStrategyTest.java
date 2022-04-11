@@ -6,9 +6,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RandomMoveStrategyTest {
+class DefaultMoveStrategyTest {
 
-    MoveStrategy strategy = new RandomMoveStrategy();
+    MoveStrategy strategy = new DefaultMoveStrategy();
 
     @DisplayName("0~3은 이동 실패")
     @ParameterizedTest
