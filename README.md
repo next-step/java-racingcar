@@ -17,8 +17,15 @@
 |```private```|```id: Long```|자동차의 id|
 |```private```|```distance: int```|자동차가 전진한 거리|
 |----------------|----------------|----------------|
-|```private```|```run():void```|자동차가 한칸 전진하다.|
-|```private```|```isRun(): Boolean```| 자동차가 전진할 수 있는지  |
+|```private```|```move():void```|자동차가 한칸 전진하다. (distance의 값이 1 증가한다)|
+|```private```|```canMove(value: int): Boolean```| 자동차가 전진할 수 있는가  |
+|```private```|```getDistance(): int```| 자동차가 지나간 거리를 반환한다.  |
+
+
+#### 테스트 케이스
+- ```canMove(value: int)``` 메서드에  ```value``` parameter가 4 이상일때  true를 반환한다.
+- ```run()``` distance가 1 증가한다.
+- ```getDistane()``` distance를 반환한다.
 
 ### RacingGame Class
 
@@ -38,7 +45,10 @@
 |```private```|```carCount: int```|게임에 참가할 자동차의 개수를 입력 받는다.|
 |```private```|```round: int```|게임을 진행할 라운드를 입력받는다.|
 |----------------|----------------|----------------|
-|```private```|```loader(): RacingGame```|RacingGame을 생성한다.|
+|```private```|```InputView(carCount: int, round: int): RacingGame```|RacingGame을 생성한다.|
+
+#### 테스트 케이스
+- ```InputView()```:  자동차 개수가 ```carCount```,  round가 ```round```인 ```RacingGame```을 생성한다. 
 
 ### ResultView Class
 |접근 제어자|속성|설명|
@@ -46,4 +56,8 @@
 |```private```|```result: List<Map<Long, String>>```|자동차가 달려간 거리를 담고있는 리스트|
 |----------------|----------------|----------------|
 |```private```|```print(): void```|자동차가 달려간 거리를 출력한다.|
-|```private```|```sumDistance(): void```|라운드 별로 자동차가 달려간 거리를 더한다.|
+|```private```|```sumDistance(distances: List<Map<Long, String>>): void```|라운드 별로 자동차가 달려간 거리를 더한다.|
+
+#### 테스트 케이스
+```print()``` 출력이 된다.
+```sumDistance(List<Map<Long, String>>)``` 
