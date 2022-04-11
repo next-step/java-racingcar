@@ -8,48 +8,35 @@ public class StringAddCalculator {
     static String CUSTOM_DELIMITER = "//(.)\n(.*)";
 
     public static int splitAndSum(String input) {
-        int result = 0;
-
         if (input == null || input.isEmpty()) {
             return 0;
         }
+
         String delimiter = DEFAULT_DELIMITER;
 
-        if (Pattern.matches(CUSTOM_DELIMITER, input)) {
-            Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
-            Matcher matcher = pattern.matcher(input);
-
-            if (matcher.find()) {
-                delimiter = matcher.group(1);
-                input = matcher.group(2);
-            }
+        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(input);
+        if (matcher.find()) {
+            delimiter = matcher.group(1);
+            input = matcher.group(2);
         }
 
         Pattern pattern = Pattern.compile(delimiter);
-        String[] strings = pattern.split(input);
+        return sum(pattern.split(input));
+    }
 
+    private static int sum(String[] strings) {
+        int result = 0;
         for (String string: strings) {
-            if (isNumeric(string)) {
-                Integer parsedInt = Integer.parseInt(string);
-
-                if (parsedInt < 0) {
-                    throw new RuntimeException("음수 문자열은 허용되지 않습니다.");
-                }
-                result += parsedInt;
-            }
-            else{
-                throw new RuntimeException("digit형식의 문자열만 허용됩니다. ex) '1,2,3'");
-            }
+            result += parseInt(string);
         }
         return result;
     }
 
-    public static boolean isNumeric(String text) {
-        try {
-            Double.parseDouble(text);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
+    private static int parseInt(String value) {
+        Integer num = Integer.parseInt(value);
+        if (num < 0) {
+            throw new RuntimeException("음수 문자열은 허용되지 않습니다.");
         }
+        return num;
     }
 }
