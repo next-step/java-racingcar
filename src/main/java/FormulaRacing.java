@@ -4,10 +4,10 @@ import java.util.List;
 
 public class FormulaRacing {
     public static void main(String[] args) {
-        int countOfCar = Prompt.ask("레이싱에 참여할 자동차 대수를 입력해주세요.");
-        int maxAttempts = Prompt.ask("시도할 횟수는 몇 번인가요?");
+        String[] cars = Prompt.ask("레이싱에 참여할 자동차를 쉼표(,)를 기준으로 입력해주세요.");
+        int maxAttempts = Prompt.askAttempt("시도할 횟수는 몇 번인가요?");
 
-        start(new Rule(countOfCar, maxAttempts));
+        start(new Rule(cars.length, maxAttempts));
     }
 
     private static void start(Rule rule) {
