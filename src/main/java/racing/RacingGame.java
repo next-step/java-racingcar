@@ -5,7 +5,7 @@ import racing.module.OutputView;
 import racing.module.UserInput;
 
 public class RacingGame {
-    
+
     public static void main(String[] args) {
         RacingGame.start();
     }

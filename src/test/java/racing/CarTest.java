@@ -10,14 +10,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
 
-    @Test
-    @DisplayName("시작점이 음수인 자동차는 생성할 수 없다")
-    void validateCar(){
-        assertThatThrownBy(()->{
-            new Car(-1);
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-
     @ParameterizedTest
     @ValueSource(ints = {0,1,2})
     @DisplayName("현재 자동차 위치")
