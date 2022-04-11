@@ -26,7 +26,7 @@ public class RacingGame {
         }
     }
 
-    protected Cars createCars() {
+    private Cars createCars() {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; ++i) {
             cars.add(new Car());
