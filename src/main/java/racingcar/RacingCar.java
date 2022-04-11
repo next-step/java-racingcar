@@ -16,11 +16,6 @@ public class RacingCar {
         this.carName = carName;
     }
 
-    public RacingCar(String carName, int distance) {
-        this.carName = carName;
-        this.distance = distance;
-    }
-
     private boolean invalidCarName(String carName) {
         return carName.length() > MAX_CAR_NAME_SIZE;
     }
