@@ -6,7 +6,7 @@ public class Car {
 
     private Position position;
 
-    public Car (Position position) {
+    public Car(Position position) {
         this.position = position;
     }
 
