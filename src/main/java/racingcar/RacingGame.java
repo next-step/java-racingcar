@@ -1,38 +1,49 @@
 package racingcar;
 
+import java.util.*;
+
+import static java.util.Collections.*;
+import static java.util.Comparator.*;
+import static java.util.stream.Collectors.*;
+
 public class RacingGame {
 
-    private final int totalRound;
-    private final ResultView resultView;
-    private final RandomNumberGenerator randomNumberGenerator;
+    private List<RacingCar> racingCars = new ArrayList<>();
 
-    private RacingCar[] racingCars;
-
-    public RacingGame(int racingCarCount, int totalRound, RandomNumberGenerator randomNumberGenerator) {
-        this.totalRound = totalRound;
-        this.resultView = new ResultView();
-        this.randomNumberGenerator = randomNumberGenerator;
-        readyRacingCars(racingCarCount);
+    public RacingGame(String[] carNames) {
+        readyRacingCars(carNames);
     }
 
-    private void readyRacingCars(int racingCarCount) {
-        racingCars = new RacingCar[racingCarCount];
+    public RacingGame(List<RacingCar> racingCars) {
+        this.racingCars = racingCars;
+    }
 
-        for (int i = 0; i < racingCars.length; i++) {
-            racingCars[i] = new RacingCar();
+    private void readyRacingCars(String[] carNames) {
+        for (String carName : carNames) {
+            racingCars.add(new RacingCar(carName));
         }
     }
 
-    public void raceStart() {
-        for (int i = 0; i < totalRound; i++) {
-            roundStart();
-            resultView.roundLogTrace(racingCars);
-        }
-    }
-
-    private void roundStart() {
+    public void roundStart(RandomNumberGenerator randomNumberGenerator) {
         for (RacingCar racingCar : racingCars) {
             racingCar.moveOrStop(randomNumberGenerator.generateRacingRandomNumber());
         }
+    }
+
+    public List<String> winnersOfTheRace() {
+        int longestDistance = findLongestDistance();
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.getDistance() == longestDistance)
+                .map(RacingCar::getCarName)
+                .collect(toList());
+    }
+
+    private int findLongestDistance() {
+        return max(racingCars, comparing(RacingCar::getDistance))
+                .getDistance();
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
     }
 }
