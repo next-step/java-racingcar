@@ -1,12 +1,10 @@
 
 package racingcar;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,16 +37,5 @@ class CarTest {
         int afterLocation = car.getCurrentLocation();
 
         assertThat(afterLocation).isEqualTo(beforeLocation + 1);
-    }
-
-    @Test
-    @DisplayName("이동 했을 때 위치 증가")
-    void increaseCurrentLocationWhenCarMoves() {
-        int moveCount = 3;
-
-        List<Integer> integers = List.of(5, 5, 5);
-        car.move(integers);
-
-        assertThat(car.getCurrentLocation()).isEqualTo(moveCount);
     }
 }
