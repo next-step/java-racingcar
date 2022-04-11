@@ -15,7 +15,7 @@ public class RacingCarGameApplication {
         RacingGame racingGame = new RacingGame(carNames);
 
         for (int i = 0; i < totalRacingRound; i++) {
-            racingGame.roundStart(randomNumberGenerator);
+            racingGame.roundStart(randomNumberGenerator.generateRacingRandomNumber());
             resultView.roundLogTrace(racingGame.getRacingCars());
         }
 

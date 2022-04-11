@@ -24,9 +24,9 @@ public class RacingGame {
         }
     }
 
-    public void roundStart(RandomNumberGenerator randomNumberGenerator) {
+    public void roundStart(int randomNumber) {
         for (RacingCar racingCar : racingCars) {
-            racingCar.moveOrStop(randomNumberGenerator.generateRacingRandomNumber());
+            racingCar.moveOrStop(randomNumber);
         }
     }
 
