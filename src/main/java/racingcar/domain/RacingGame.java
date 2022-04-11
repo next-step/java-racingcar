@@ -24,6 +24,10 @@ public class RacingGame {
     private void init(InputCarCount carCount, InputRoundCount roundCount) {
         this.carCount = carCount;
         this.roundCount = roundCount;
+        generateCars();
+    }
+
+    private void generateCars() {
         this.cars = new ArrayList<>();
         for (int i = 0; i < carCount.getCarCount(); i++) {
             this.cars.add(new Car());
@@ -41,10 +45,14 @@ public class RacingGame {
     public int play() {
         int tryCount = 0;
         for (int i = 0; i < roundCount.getRoundCount(); i++) {
-            cars.forEach(car -> car.stopOrGo(ConditionGenerator.getInstance().generateRandomCondition()));
-            tryCount++;
+            tryCount = roundStart(tryCount);
             ResultView.renderResultView(cars, tryCount);
         }
         return tryCount;
+    }
+
+    private int roundStart(int tryCount) {
+        cars.forEach(car -> car.stopOrGo(ConditionGenerator.getInstance().generateRandomCondition()));
+        return ++tryCount;
     }
 }
