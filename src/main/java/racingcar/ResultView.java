@@ -1,15 +1,24 @@
 package racingcar;
 
+import java.util.List;
+
 public class ResultView {
 
-    // TODO 각 라운드별로 출력할 수 있게 변경 [2022.04.10 - hahoho87]
-    public void printResult(int resultLocation) {
+    public void printEveryLocation(List<Integer> resultLocations) {
+        for (Integer resultLocation : resultLocations) {
+            String currentLocationView = printResult(resultLocation);
+            System.out.println(currentLocationView);
+        }
+        System.out.println();
+    }
+
+    public String printResult(int resultLocation) {
         StringBuilder stringBuilder = new StringBuilder();
         int count = 0;
         while (count < resultLocation) {
             stringBuilder.append("-");
             count++;
         }
-        System.out.println(stringBuilder.toString());
+        return stringBuilder.toString();
     }
 }

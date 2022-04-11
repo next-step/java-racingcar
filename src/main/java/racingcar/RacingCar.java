@@ -1,8 +1,6 @@
 package racingcar;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingCar {
     private final InputView inputView;
@@ -19,20 +17,12 @@ public class RacingCar {
         int carCount = inputView.inputCarCount();
         int roundCount = inputView.inputRoundCount();
 
-        List<Car> cars = generateCars(carCount);
+        Cars cars = Cars.generateCars(carCount);
 
-        cars.forEach(c -> {
-            List<Integer> integers = numberGenerator.generateRandomNumbers(roundCount);
-            c.move(integers);
-            resultView.printResult(c.getCurrentLocation());
-        });
-
+        for (int i = 0; i < roundCount; i++) {
+            List<Integer> moveCounts = numberGenerator.generateRandomNumbers(carCount);
+            List<Integer> currentLocations = cars.move(moveCounts);
+            resultView.printEveryLocation(currentLocations);
+        }
     }
-
-    private List<Car> generateCars(int carCount) {
-        return IntStream.range(0, carCount)
-                .mapToObj(n -> new Car())
-                .collect(Collectors.toList());
-    }
-
 }
