@@ -23,7 +23,7 @@ public class Main {
         for (int i = 0; i < rounds; i++) {
             List<Integer> randomNumbers = RandomGenerator.generateRandomsOfSize(cars.size());
             game.proceedRound(randomNumbers);
-            OutputView.printCurrentPosition(cars);
+            OutputView.printCars(cars);
         }
     }
 

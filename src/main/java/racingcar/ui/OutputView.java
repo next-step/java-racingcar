@@ -15,15 +15,12 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public static void printCurrentPosition(List<Car> cars) {
-        cars.forEach(OutputView::printCurrentPosition);
+    public static void printCars(List<Car> cars) {
+        cars.forEach(OutputView::printCar);
         System.out.println();
     }
 
-    private static void printCurrentPosition(Car car) {
-        for (int i = 0; i < car.position(); i++) {
-            System.out.print("-");
-        }
-        System.out.println();
+    private static void printCar(Car car) {
+        System.out.println(car);
     }
 }

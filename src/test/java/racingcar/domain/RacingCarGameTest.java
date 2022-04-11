@@ -52,11 +52,12 @@ class RacingCarGameTest {
     @Test
     void proceedRound_정지() {
         List<Integer> stopNumbers = getStopNumbers();
+        Car stoppedCar = new Car(new Position());
 
         game.proceedRound(stopNumbers);
 
         cars.forEach(car -> {
-            assertThat(car.position()).isZero();
+            assertThat(car).isEqualTo(stoppedCar);
         });
     }
 
@@ -64,11 +65,13 @@ class RacingCarGameTest {
     @Test
     void proceedRound_이동() {
         List<Integer> moveNumbers = getMoveNumbers();
+        Car movedCar = new Car(new Position());
+        movedCar.move();
 
         game.proceedRound(moveNumbers);
 
         cars.forEach(car -> {
-            assertThat(car.position()).isOne();
+            assertThat(car).isEqualTo(movedCar);
         });
     }
 

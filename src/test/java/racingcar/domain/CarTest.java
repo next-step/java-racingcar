@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    @DisplayName("Car는 move 호출 횟수로 동등성 비교")
+    @DisplayName("move 호출 횟수로 동등성 비교")
     @Test
     void move() {
         Car car1 = new Car(new Position());
