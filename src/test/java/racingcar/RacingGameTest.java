@@ -15,9 +15,13 @@ class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        RacingCar pobi = new RacingCar("pobi", 3);
-        RacingCar crong = new RacingCar("crong", 4);
-        RacingCar honux = new RacingCar("honux", 4);
+        RacingCar pobi = new RacingCar("pobi");
+        RacingCar crong = new RacingCar("crong");
+        RacingCar honux = new RacingCar("honux");
+
+        pobi.moveOrStop(3);
+        crong.moveOrStop(5);
+        honux.moveOrStop(5);
 
         List<RacingCar> racingCars = Arrays.asList(pobi, crong, honux);
         racingGame = new RacingGame(racingCars);

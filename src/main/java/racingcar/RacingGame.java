@@ -10,23 +10,13 @@ public class RacingGame {
 
     private List<RacingCar> racingCars = new ArrayList<>();
 
-    public RacingGame(String[] carNames) {
-        readyRacingCars(carNames);
-    }
-
     public RacingGame(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
     }
 
-    private void readyRacingCars(String[] carNames) {
-        for (String carName : carNames) {
-            racingCars.add(new RacingCar(carName));
-        }
-    }
-
-    public void roundStart(RandomNumberGenerator randomNumberGenerator) {
+    public void roundStart(int randomNumber) {
         for (RacingCar racingCar : racingCars) {
-            racingCar.moveOrStop(randomNumberGenerator.generateRacingRandomNumber());
+            racingCar.moveOrStop(randomNumber);
         }
     }
 
