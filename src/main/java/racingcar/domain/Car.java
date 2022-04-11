@@ -11,14 +11,24 @@ public class Car {
     }
 
     public void stopOrGo(int condition) {
-        if (condition < 0 || condition > 9) {
+        if (isOutOfBound(condition)) {
             throw new IllegalArgumentException();
         }
-
-        if (condition < GO_STOP_DIVISION_POINT) {
+        if (isStop(condition)) {
             return;
         }
+        go();
+    }
 
+    private boolean isStop(int condition) {
+        return condition < GO_STOP_DIVISION_POINT;
+    }
+
+    private boolean isOutOfBound(int condition) {
+        return condition < 0 || condition > 9;
+    }
+
+    private void go() {
         this.position++;
     }
 
