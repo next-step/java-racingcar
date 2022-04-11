@@ -7,19 +7,29 @@ public class InputCarCount {
     private int carCount;
 
     public InputCarCount(String value) {
-        int carCount = 0;
+        this.carCount = toPositiveNumber(value);
+    }
+
+    private int toPositiveNumber(String value) {
         try {
-            carCount = Integer.parseInt(value);
+            return toIntAndValidPositive(value);
         } catch (NumberFormatException e) {
             throw new NumberFormatException(InputExceptionMessage.INVALID_NUMBER_FORMAT);
-
-        }
-
-        if (carCount < 1) {
+        } catch (IllegalArgumentException ie) {
             throw new IllegalArgumentException(InputExceptionMessage.ONLY_POSITIVE);
         }
+    }
 
-        this.carCount = carCount;
+    private int toIntAndValidPositive(String value) {
+        int carCount = Integer.parseInt(value);
+        validatePositive(carCount);
+        return carCount;
+    }
+
+    private void validatePositive(int carCount) {
+        if (carCount < 1) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getCarCount() {

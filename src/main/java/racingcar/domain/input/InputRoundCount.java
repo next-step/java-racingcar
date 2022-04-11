@@ -7,18 +7,29 @@ public class InputRoundCount {
     private int roundCount;
 
     public InputRoundCount(String value) {
-        int roundCount = 0;
+        this.roundCount = toPositiveNumber(value);
+    }
+
+    private int toPositiveNumber(String value) {
         try {
-            roundCount = Integer.parseInt(value);
+            return toIntAndValidPositive(value);
         } catch (NumberFormatException e) {
             throw new NumberFormatException(InputExceptionMessage.INVALID_NUMBER_FORMAT);
-        }
-
-        if (roundCount < 1) {
+        } catch (IllegalArgumentException ie) {
             throw new IllegalArgumentException(InputExceptionMessage.ONLY_POSITIVE);
         }
+    }
 
-        this.roundCount = roundCount;
+    private int toIntAndValidPositive(String value) {
+        int carCount = Integer.parseInt(value);
+        validatePositive(carCount);
+        return carCount;
+    }
+
+    private void validatePositive(int carCount) {
+        if (carCount < 1) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getRoundCount() {
