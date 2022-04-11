@@ -12,7 +12,7 @@ public class CarFactory {
     public static List<Car> generateCarsOfSize(int size) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            cars.add(new Car());
+            cars.add(new Car(new Position()));
         }
         return cars;
     }
