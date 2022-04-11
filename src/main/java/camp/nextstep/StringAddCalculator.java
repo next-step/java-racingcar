@@ -1,6 +1,5 @@
 package camp.nextstep;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,22 +18,14 @@ public class StringAddCalculator {
   public static final String CUSTOM_DELIMITER_REGEX = "//(.+)\n(.*)";
 
   public static int splitAndSum(String input) {
-    if (input == null || input.length() < 1) {
+    if (isEmpty(input)) {
       return 0;
     }
-
-    String[] strings = split(input);
-    return Arrays.stream(strings)
-        .mapToInt(StringAddCalculator::parseInt)
-        .sum();
+    return sum(toInt(split(input)));
   }
 
-  private static int parseInt(String s) {
-    int number = Integer.parseInt(s);
-    if (number < 0) {
-      throw new RuntimeException("음수를 허용하지 않습니다.");
-    }
-    return number;
+  private static boolean isEmpty(String input) {
+    return input == null || input.length() < 1;
   }
 
   private static String[] split(String input) {
@@ -46,6 +37,22 @@ public class StringAddCalculator {
 
     String delimiter = matcher.group(1);
     return matcher.group(2).split(delimiter);
+  }
+
+  private static int[] toInt(String[] strings) {
+    int[] result = new int[strings.length];
+    for (int i = 0; i < strings.length; i++) {
+      result[i] = new PositiveNumber(strings[i]).getNumber();
+    }
+    return result;
+  }
+
+  private static int sum(int[] numbers) {
+    int result = 0;
+    for (int number : numbers) {
+      result += number;
+    }
+    return result;
   }
 
 }
