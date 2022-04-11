@@ -5,13 +5,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
-public class StringTest {
+class StringTest {
 
     @Test
     @DisplayName("1,2를 ,로 split 할 경우 1과 2로 잘 분리하는지에 대한 테스트")
     void splitTest() {
-        String[] str = "1,2".split(",");
-        assertThat(str).containsExactly("1","2");
+        assertThat( "1,2".split(",")).containsExactly("1","2");
     }
 
     @Test
