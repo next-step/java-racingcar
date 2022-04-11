@@ -16,7 +16,7 @@ public class ResultView {
         return stringBuilder.toString();
     }
 
-    public static void printRacingCarsRoutes(List<RacingCar> carList) {
-        carList.forEach(car -> System.out.println(makeRacingCarRoute(car)));
+    public static void printRacingCarsRoutes(List<RacingCar> cars) {
+        cars.forEach(car -> System.out.println(makeRacingCarRoute(car)));
     }
 }

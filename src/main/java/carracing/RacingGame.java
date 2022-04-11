@@ -11,17 +11,15 @@ public class RacingGame {
     private RacingGame() {}
 
     public static List<RacingCar> initRacingCars(int countOfCars) {
-        List<RacingCar> carList = new ArrayList<>();
+        List<RacingCar> cars = new ArrayList<>();
         while (countOfCars-- > 0) {
-            carList.add(new RacingCar());
+            cars.add(new RacingCar());
         }
-        return carList;
+        return cars;
     }
 
-    public static void racing(List<RacingCar> carList) {
-        for (int i = 0; i < carList.size(); i++) {
-            moveOrStop(carList.get(i));
-        }
+    public static void racing(List<RacingCar> cars) {
+        cars.forEach(RacingGame::moveOrStop);
     }
 
     private static void moveOrStop(RacingCar car) {
