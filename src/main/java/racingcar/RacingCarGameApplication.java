@@ -1,6 +1,8 @@
 package racingcar;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarGameApplication {
 
@@ -12,7 +14,12 @@ public class RacingCarGameApplication {
         String[] carNames = inputView.insertRacingCarName();
         int totalRacingRound = inputView.insertTotalRacingRound();
 
-        RacingGame racingGame = new RacingGame(carNames);
+        List<String> carNameList = Arrays.asList(carNames);
+        List<RacingCar> racingCars = carNameList.stream()
+                .map(RacingCar::new)
+                .collect(Collectors.toList());
+
+        RacingGame racingGame = new RacingGame(racingCars);
 
         for (int i = 0; i < totalRacingRound; i++) {
             racingGame.roundStart(randomNumberGenerator.generateRacingRandomNumber());
