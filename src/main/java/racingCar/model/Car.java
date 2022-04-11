@@ -7,6 +7,7 @@ public class Car {
   private final String name;
   private int position;
   private static final Integer MAX_NAME_LENGTH = 5;
+  private final static String STEP = "-";
 
   public Car(String name) {
     validationNameSize(name);
@@ -28,5 +29,10 @@ public class Car {
 
   public int position() {
     return this.position;
+  }
+
+  @Override
+  public String toString() {
+    return name + " : " + STEP.repeat(Math.max(0, position()));
   }
 }
