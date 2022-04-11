@@ -2,12 +2,16 @@ package racingCar;
 
 public class Car {
 
-    private static final int BOUNDARY = 4;
+    private final MovableStrategy movableStrategy;
 
     private String distance = "";
 
+    public Car (MovableStrategy movableStrategy) {
+        this.movableStrategy = movableStrategy;
+    }
+
     public String move(int value) {
-        if (value >= BOUNDARY) {
+        if (movableStrategy.canMove(value)) {
             this.distance += "-";
             return "-";
         }

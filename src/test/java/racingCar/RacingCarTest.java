@@ -11,7 +11,7 @@ public class RacingCarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car(new NormalStrategy());
     }
 
     @Test

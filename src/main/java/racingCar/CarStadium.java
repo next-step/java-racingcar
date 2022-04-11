@@ -17,7 +17,8 @@ public class CarStadium {
 
     public static void initCars(int nums) {
         for (int i = 0; i < nums; ++i) {
-            carList.add(new Car());
+            Car car = new Car(new NormalStrategy());
+            carList.add(car);
         }
     }
 
