@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.model;
+
+import racingcar.exception.InvalidCarNameException;
 
 import java.util.Objects;
 

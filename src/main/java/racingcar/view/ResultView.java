@@ -1,9 +1,12 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.model.CarLocationResult;
+import racingcar.model.CarName;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class OutputView {
+public class ResultView {
 
     private static final String CAR_MOVEMENT_MARKER = "-";
 
