@@ -1,7 +1,7 @@
-package racing;
+package racing.module;
 
 import java.util.List;
-import racing.module.RacingGameEngine;
+import racing.Car;
 
 public class OutputView {
 
