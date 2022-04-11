@@ -17,12 +17,8 @@ public class RacingGame {
         List<Car> cars = userInput.settingCarsByUserInput();
         int turnTime = userInput.settingTurnCountByUserInput();
 
-        System.out.println(GAME_RESULT);
-
-        RacingGameDriver racingGameDriver = new RacingGameDriver.Builder(cars).build();
-        for(int i = 0; i < turnTime; i ++){
-            racingGameDriver.nextTurn();
-        }
+        OutputView outputView = new OutputView(cars, turnTime);
+        outputView.printResult();
     }
 
 }
