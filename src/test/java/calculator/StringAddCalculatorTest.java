@@ -54,4 +54,10 @@ public class StringAddCalculatorTest {
                 StringAddCalculator.splitAndSum("1,-1")
         );
     }
+
+    @Test
+    void 커스텀_구분자_기준으로_합계_반환() {
+        int result = StringAddCalculator.splitAndSum("//@\n1@5@6");
+        assertThat(result).isEqualTo(12);
+    }
 }
