@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,11 +35,7 @@ public class StringAddCalculator {
     }
 
     private static int sum(int[] values) {
-        int result = 0;
-        for (int item : values) {
-            result += item;
-        }
-        return result;
+        return Arrays.stream(values).reduce(0, Integer::sum);
     }
 
     private static int[] toInts(String[] values) {
