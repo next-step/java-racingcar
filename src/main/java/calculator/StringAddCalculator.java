@@ -1,34 +1,28 @@
 package calculator;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class StringAddCalculator {
 
-  public static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
-  public static final String DEFAULT_DELIMITERS = ",|:";
+  private static final int MIN_VALUE = 0;
 
-  public static int splitAndSum(String input) {
-    if (input == null || input.isBlank()) {
-      return 0;
-    }
-    return calculate(split(input));
+  private StringAddCalculator() {
   }
 
-  private static String[] split(String input) {
-    Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(input);
-    if (m.find()) {
-      String customDelimiter = m.group(1);
-      return m.group(2).split(customDelimiter);
+  public static int splitAndSum(String expression) {
+    if (isBlank(expression)) {
+      return MIN_VALUE;
     }
-    return input.split(DEFAULT_DELIMITERS);
+    return calculate(StringParser.split(expression));
+  }
+
+  private static boolean isBlank(String expression) {
+    return expression == null || expression.isBlank();
   }
 
   private static int calculate(String[] tokens) {
     int result = 0;
     for (String token : tokens) {
-      StringNumber number = new StringNumber(token);
-      result += number.getNumber();
+      PositiveNumber number = new PositiveNumber(token);
+      result = number.add(result);
     }
     return result;
   }
