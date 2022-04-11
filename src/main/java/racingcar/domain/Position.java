@@ -13,7 +13,9 @@ public class Position {
     }
 
     private Position(int position) {
-        assert position >= 0;
+        if (position < DEFAULT_POSITION) {
+            throw new IllegalArgumentException("position must be at least 0");
+        }
         this.position = position;
     }
 

@@ -14,7 +14,9 @@ public class RacingCarGame {
     }
 
     public void proceedRound(List<Integer> randomNumbers) {
-        assert cars.size() == randomNumbers.size();
+        if (cars.size() != randomNumbers.size()) {
+            throw new IllegalArgumentException("random numbers' size must be equal with cars' size");
+        }
 
         decreaseGameRound();
         for (int i = 0; i < cars.size(); i++) {
