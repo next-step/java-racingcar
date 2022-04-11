@@ -39,4 +39,5 @@ class CarTest {
         car.addMoveCount(condition);
         assertThat(car.moveCountExpression("-")).isBlank();
     }
+
 }

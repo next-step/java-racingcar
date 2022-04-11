@@ -16,10 +16,6 @@ class RaceTest {
     @Test
     @Order(1)
     void 자동차_대수는_1대_이상이어야_한다() {
-        Cars cars = Cars.builder()
-                .carCount(0)
-                .raceCondition(new RaceCondition())
-                .build();
         assertThatThrownBy(() -> new Race(new ResultView()).start(0, 1))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -30,10 +26,7 @@ class RaceTest {
     void 주어진_횟수만큼_레이스가_진행된다(int tryCount) throws InterruptedException {
         int carCount = 3;
         ResultView resultView = new ResultView();
-        Cars cars = Cars.builder()
-                .carCount(carCount)
-                .raceCondition(new RaceCondition())
-                .build();
-        assertThat(new Race(resultView).start(3, tryCount)).isEqualTo(tryCount);
+        assertThat(new Race(resultView).start(carCount, tryCount)).isEqualTo(tryCount);
     }
+
 }

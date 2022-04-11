@@ -15,4 +15,5 @@ public class InputView {
 
         new Race(new ResultView()).start(carCount, tryCount);
     }
+
 }
