@@ -7,10 +7,6 @@ public class RacingCar {
         return position;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
     public void moveForward() {
         this.position += 1;
     }
