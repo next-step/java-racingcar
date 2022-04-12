@@ -9,7 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class SetTest {
+class SetTest {
   private Set<Integer> numbers;
 
   @BeforeEach
@@ -23,7 +23,7 @@ public class SetTest {
 
   @Test
   void size() {
-    assertThat(numbers.size()).isEqualTo(3);
+    assertThat(numbers).hasSize(3);
   }
 
   @ParameterizedTest
@@ -35,7 +35,7 @@ public class SetTest {
   @DisplayName("Set에 존재하는 input에 대해서는 true, 존재하지 않는 input에 대해서는 false를 반환한다.")
   @ParameterizedTest
   @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"}, delimiter = ',')
-  void containsTrueFalse(int input, boolean expected) {
+  void contains(int input, boolean expected) {
     assertThat(numbers.contains(input)).isEqualTo(expected);
   }
 }
