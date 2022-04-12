@@ -22,7 +22,6 @@ public class NumberGenerator {
         for (int i = 0; i < roundCount; i++) {
             randomNumbers.add(this.generateRandomNumber());
         }
-
         return randomNumbers;
     }
 }

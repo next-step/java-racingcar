@@ -20,12 +20,24 @@ public class RacingCar {
         Cars cars = Cars.generateCars(carCount);
 
         int currentRound = 0;
-        while (currentRound < roundCount) {
-            List<Integer> moveCounts = numberGenerator.generateRandomNumbers(carCount);
-            cars.move(moveCounts);
-            List<Integer> currentLocations = cars.getCurrentLocations();
-            resultView.printEveryLocation(currentLocations);
+        while (inProgress(roundCount, currentRound)) {
+            moveCars(carCount, cars);
+            printResult(cars);
             currentRound++;
         }
+    }
+
+    private void printResult(Cars cars) {
+        List<Integer> currentLocations = cars.getCurrentLocations();
+        resultView.printEveryLocation(currentLocations);
+    }
+
+    private void moveCars(int carCount, Cars cars) {
+        List<Integer> moveCounts = numberGenerator.generateRandomNumbers(carCount);
+        cars.move(moveCounts);
+    }
+
+    private boolean inProgress(int roundCount, int currentRound) {
+        return currentRound < roundCount;
     }
 }
