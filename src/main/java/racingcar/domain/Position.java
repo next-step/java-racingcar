@@ -12,7 +12,7 @@ public class Position {
         this(DEFAULT_POSITION);
     }
 
-    private Position(int position) {
+    public Position(int position) {
         if (position < DEFAULT_POSITION) {
             throw new IllegalArgumentException("position must be at least 0");
         }
