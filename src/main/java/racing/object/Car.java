@@ -5,10 +5,7 @@ import racing.strategy.MoveStrategy;
 public class Car {
 
   private int distance;
-  private MoveStrategy moveStrategy;
-
-  public Car() {
-  }
+  private final MoveStrategy moveStrategy;
 
   public Car(MoveStrategy moveStrategy) {
     this.moveStrategy = moveStrategy;
@@ -21,19 +18,11 @@ public class Car {
   }
 
   public void move() {
-    addDistance();
+    this.distance++;
   }
 
   public int getDistance() {
     return distance;
-  }
-
-  public void setMoveStrategy(MoveStrategy moveStrategy) {
-    this.moveStrategy = moveStrategy;
-  }
-
-  private void addDistance() {
-    this.distance++;
   }
 
 }
