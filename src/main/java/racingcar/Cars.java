@@ -12,15 +12,14 @@ public class Cars {
         this.carList = cars;
     }
 
-    public List<Car> get() {
-        return this.carList;
-    }
-
-    public List<Integer> move(List<Integer> moveCounts) {
+    public void move(List<Integer> moveCounts) {
         for (int i = 0; i < carList.size(); i++) {
             Car car = carList.get(i);
             car.move(moveCounts.get(i));
         }
+    }
+
+    public List<Integer> getCurrentLocations() {
         return carList.stream()
                 .map(Car::getCurrentLocation)
                 .collect(Collectors.toList());
