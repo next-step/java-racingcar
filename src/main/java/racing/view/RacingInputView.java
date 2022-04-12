@@ -15,15 +15,13 @@ public class RacingInputView {
   }
 
   private RacingInput printAndGetRacingInput(Scanner scanner) {
-    RacingInput racingInput = new RacingInput();
-
     System.out.println("자동차 대수는 몇 대 인가요?");
-    racingInput.setCarCount(scanner.nextInt());
+    int carCount = scanner.nextInt();
 
     System.out.println("시도할 횟수는 몇 회 인가요?");
-    racingInput.setAttemptCount(scanner.nextInt());
+    int attemptCount = scanner.nextInt();
 
-    return racingInput;
+    return new RacingInput(carCount, attemptCount);
   }
 
 }
