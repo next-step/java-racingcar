@@ -11,7 +11,10 @@ public class SplitStringNumber {
     private static final int VALUE_GROUP = 2;
     private static final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER_REGEXP);
 
-    public static List<String> splitToStringValueList(String text) {
+    private SplitStringNumber() {
+    }
+
+    public static List<String> split(String text) {
         Matcher matcher = pattern.matcher(text);
         if (matcher.find()) {
             String customDelimiter = matcher.group(CUSTOM_DELIMITER_GROUP);

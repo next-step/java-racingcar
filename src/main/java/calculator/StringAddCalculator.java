@@ -4,19 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StringAddCalculator {
+
+    private StringAddCalculator() {
+    }
+
     public static int splitAndSum(String text) {
         if (isBlank(text)) {
             return 0;
         }
-        List<String> stringValueList = SplitStringNumber.splitToStringValueList(text);
-        return sum(convertToPositiveNumberList(stringValueList));
+        List<String> stringValueList = SplitStringNumber.split(text);
+        return sum(convert(stringValueList));
     }
 
     private static boolean isBlank(String text) {
         return text == null || text.isBlank();
     }
 
-    private static List<PositiveNumber> convertToPositiveNumberList(List<String> stringValueList) {
+    private static List<PositiveNumber> convert(List<String> stringValueList) {
         List<PositiveNumber> positiveNumberList = new ArrayList<>(stringValueList.size());
         for (String value : stringValueList) {
             positiveNumberList.add(new PositiveNumber(value));
