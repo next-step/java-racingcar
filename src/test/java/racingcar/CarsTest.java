@@ -32,4 +32,18 @@ public class CarsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("Cars is empty");
     }
+
+    @Test
+    @DisplayName("Cars 리스트에서 Car가 move하는지 테스트")
+    void playTest() {
+        ArrayList<Car> carsList = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            carsList.add(new Car());
+        }
+        Cars cars = new Cars(carsList);
+        Cars newCars = cars.play(new RandomMovingStrategy());
+        newCars.result()
+                .stream()
+                .forEach(System.out::println);
+    }
 }

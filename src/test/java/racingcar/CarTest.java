@@ -9,27 +9,34 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
 
     @Test
+    @DisplayName("자동차의 초기 상태는 0이어야 한다.")
+    void carStateTest() {
+        Car car = new Car();
+        assertThat(car.state()).isZero();
+    }
+
+    @Test
     @DisplayName("자동차가 movable 하다면 한칸 전진한다.")
     void movableTest() {
         Car car = new Car();
-        car.move(new MovingStrategy() {
+        Car nextCar = car.move(new MovingStrategy() {
             @Override
             public boolean movable() {
                 return true;
             }
         });
-        assertThat(car.state()).isEqualTo(1);
+        assertThat(nextCar.state()).isEqualTo(car.state()+1);
     }
     @Test
     @DisplayName("자동차가 unmovable 하다면 멈춰있는다.")
     void unmovableTest() {
         Car car = new Car();
-        car.move(new MovingStrategy() {
+        Car nextCar = car.move(new MovingStrategy() {
             @Override
             public boolean movable() {
                 return false;
             }
         });
-        assertThat(car.state()).isEqualTo(0);
+        assertThat(nextCar.state()).isEqualTo(car.state());
     }
 }

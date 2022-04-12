@@ -32,7 +32,7 @@ public final class RacingCar {
         int count = 0;
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
         while (count < roundCount) {
-            cars.play();
+            cars.play(new RandomMovingStrategy());
             result.add(new ArrayList<>(cars.result()));
             count++;
         }

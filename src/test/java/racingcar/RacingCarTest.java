@@ -30,46 +30,15 @@ public class RacingCarTest {
                 .hasMessageContaining("자동차는 1대 이상이어야 합니다.");
     }
 
-    @Test
-    @DisplayName("랜덤으로 생성한 값의 범위는 0~9이어야 한다.")
-    void randomNumberTest() {
-        RandomGenerator randomGenerator = new RandomGenerator();
-        int number = randomGenerator.generateNumber();
-        assertThat(number).isGreaterThanOrEqualTo(0);
-        assertThat(number).isLessThanOrEqualTo(9);
-    }
-
-    @Test
-    @DisplayName("자동차의 초기 상태는 0이어야 한다.")
-    void carStateTest() {
-        Car car = new Car();
-        assertThat(car.state()).isZero();
-    }
-
     @ParameterizedTest
     @ValueSource(ints = {1, 5})
     @DisplayName("자동차의 현재 상태는 주어진 횟수값을 넘지 않는다.")
     void carStateFailTest(int count) {
-        Car car = new Car();
-        for (int i = 0; i < count; i++) {
-            car.move(new RandomMovingStrategy());
-        }
-        assertThat(car.state()).isLessThanOrEqualTo(count);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"3:5"}, delimiter = ':')
     @DisplayName("자동차 경주 게임 실행 결과 테스트")
     void playRacingCarTest(int carCount, int roundCount) {
-        RacingCar racingCar = new RacingCar(carCount, roundCount);
-        ArrayList<ArrayList<Integer>> result = racingCar.play();
-
-        assertThat(result).hasSize(roundCount);
-        for (ArrayList<Integer> carState : result) {
-            assertThat(carState).hasSize(carCount);
-            for (int state : carState) {
-                assertThat(state).isLessThanOrEqualTo(roundCount);
-            }
-        }
     }
 }

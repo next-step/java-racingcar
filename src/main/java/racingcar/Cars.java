@@ -21,10 +21,12 @@ public final class Cars {
         }
     }
 
-    public void play() {
+    public Cars play(MovingStrategy movingStrategy) {
+        List<Car> nextCars = new ArrayList<>();
         for (Car car : cars) {
-            car.move(new RandomMovingStrategy());
+            nextCars.add(car.move(movingStrategy));
         }
+        return new Cars(nextCars);
     }
 
     public List<Integer> result() {
