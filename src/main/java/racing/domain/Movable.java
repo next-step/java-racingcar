@@ -1,5 +1,5 @@
 package racing.domain;
 
-public interface Movable<T> {
-    int moveForwardOrStop(T t);
+public interface Movable {
+    boolean isMovable();
 }
