@@ -1,7 +1,6 @@
 package racing.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static racing.strategy.NumberCompareMoveStrategy.CAN_MOVE_NUMBER;
 
 import java.util.List;
@@ -26,8 +25,8 @@ class RacingServiceTest {
     List<RacingOutput> racingOutputs = racingService.race(racingInput);
 
     int distanceSum = 0;
-    for (int distance: racingOutputs.get(racingOutputs.size()-1).getDistances()) {
-        distanceSum += distance;
+    for (int distance : racingOutputs.get(racingOutputs.size() - 1).getDistances()) {
+      distanceSum += distance;
     }
 
     assertThat(distanceSum).isEqualTo(expected);

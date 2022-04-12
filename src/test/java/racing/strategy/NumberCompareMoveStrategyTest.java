@@ -1,7 +1,6 @@
 package racing.strategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,7 +12,8 @@ class NumberCompareMoveStrategyTest {
   @DisplayName("생성된 숫자에 의해 움직이거나 움직이지 않는 조건이 되는지 확인")
   @CsvSource(value = {"1|false", "2|false", "5|true", "10|true"}, delimiter = '|')
   void moveTest(int number, boolean expected) {
-    NumberCompareMoveStrategy numberCompareMoveStrategy = new NumberCompareMoveStrategy(new FixedNumberGenerator(number));
+    NumberCompareMoveStrategy numberCompareMoveStrategy = new NumberCompareMoveStrategy(
+        new FixedNumberGenerator(number));
     assertThat(numberCompareMoveStrategy.canMove()).isEqualTo(expected);
   }
 }

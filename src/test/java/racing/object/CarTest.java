@@ -1,6 +1,7 @@
 package racing.object;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racing.strategy.NumberCompareMoveStrategy.CAN_MOVE_NUMBER;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ class CarTest {
   @Test
   @DisplayName("앞으로 1회 이동했을 때 이동 거리 확인")
   void oneMoveTest() {
-    Car car = new Car(new NumberCompareMoveStrategy(new FixedNumberGenerator(5)));
+    Car car = new Car(new NumberCompareMoveStrategy(new FixedNumberGenerator(CAN_MOVE_NUMBER + 1)));
     car.attempt();
 
     assertThat(car.getDistance()).isEqualTo(1);
@@ -25,7 +26,7 @@ class CarTest {
   @DisplayName("앞으로 n회 이동했을 때 이동 거리 확인")
   @CsvSource(value = {"1|1", "2|2", "0|0", "10|10", "100|100"}, delimiter = '|')
   void nMoveTest(int n, int expected) {
-    Car car = new Car(new NumberCompareMoveStrategy(new FixedNumberGenerator(5)));
+    Car car = new Car(new NumberCompareMoveStrategy(new FixedNumberGenerator(CAN_MOVE_NUMBER + 1)));
     for (int i = 0; i < n; i++) {
       car.attempt();
     }
@@ -39,7 +40,7 @@ class CarTest {
   void randomMoveTest(int attempt) {
     //given
     NumberCompareMoveStrategy numberCompareMoveStrategy = new NumberCompareMoveStrategy(
-        new FixedNumberGenerator(5));
+        new FixedNumberGenerator(CAN_MOVE_NUMBER + 1));
     Car car = new Car(numberCompareMoveStrategy);
 
     //when
@@ -57,7 +58,7 @@ class CarTest {
   void randomCarMoveTest(int carCount, int attempt) {
     //given
     NumberCompareMoveStrategy numberCompareMoveStrategy = new NumberCompareMoveStrategy(
-        new FixedNumberGenerator(5));
+        new FixedNumberGenerator(CAN_MOVE_NUMBER + 1));
     Car[] cars = new Car[carCount];
     for (int i = 0; i < carCount; i++) {
       cars[i] = new Car(numberCompareMoveStrategy);
