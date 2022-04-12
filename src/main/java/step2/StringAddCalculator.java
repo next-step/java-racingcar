@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
 	private StringAddCalculator() {
+		throw new RuntimeException("유틸성 클래스 인스턴스화 방지");
 	}
 
 	private static final String DEFAULT_DELIMITER = ",|:";
@@ -31,9 +32,9 @@ public class StringAddCalculator {
 	}
 
 	private static int sum(String[] values) {
-		NonNegative result = new NonNegative(0);
+		Positive result = new Positive(0);
 		for (String value : values) {
-			result = result.add(new NonNegative(value));
+			result = result.add(new Positive(value));
 		}
 		return result.toResult();
 	}
