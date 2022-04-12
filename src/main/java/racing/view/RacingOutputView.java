@@ -14,6 +14,11 @@ public class RacingOutputView {
     this.racingOutputs = racingOutputs;
   }
 
+  public void printRacingOutput() {
+    printResultTitle();
+    printCarDistance();
+  }
+
   public void printCarDistance() {
     for (RacingOutput racingOutput : racingOutputs) {
       printRacingOutput(racingOutput);
@@ -28,7 +33,7 @@ public class RacingOutputView {
     System.out.println(EMPTY);
   }
 
-  public void printResultTitle() {
+  private void printResultTitle() {
     System.out.println("실행 결과");
   }
 }

@@ -8,7 +8,7 @@ public class RacingOutput {
 
   private List<Integer> distances;
 
-  RacingOutput(List<Car> cars) {
+  public RacingOutput(List<Car> cars) {
     this.distances = new ArrayList<>();
     for (Car c : cars) {
       this.distances.add(c.getDistance());
