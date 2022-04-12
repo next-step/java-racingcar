@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
 
     public static int splitAndSum(String text) {
-        if(isBlank(text)) {
+        if(text == null || text.isBlank()) {
             return 0;
         }
 
@@ -34,20 +34,18 @@ public class StringAddCalculator {
         return text;
     }
 
-    private static boolean isBlank(String text) {
-        return text == null || text.isBlank();
-    }
-
     private static int getNumber(String value) {
-        int number = Integer.parseInt(value);
-        checkNumberIsValid(number);
-        return number;
+        return parseValidNumber(value);
     }
 
-    private static void checkNumberIsValid(int number) {
+    private static int parseValidNumber(String value) {
+        int number = Integer.parseInt(value);
+
         if(number < 0) {
             throw new RuntimeException();
         }
+
+        return number;
     }
 
     private static int sum(String[] values) {
