@@ -1,27 +1,20 @@
 package racing.module;
 
 import java.util.List;
-import racing.Car;
+import racing.module.map.RacingMap;
 
 public class OutputView {
 
     private static final String GAME_RESULT = "실행 결과";
-    private RacingGameEngine racingGameEngine;
-    private int turnTime;
+    private RacingMap racingMap;
 
-
-    public OutputView(List<Car> cars, int turnTime) {
-        this.racingGameEngine =  new RacingGameEngine.Builder(cars).build();
-        this.turnTime = turnTime;
+    public OutputView(RacingMap racingMap) {
+        this.racingMap = racingMap;
     }
 
     public void printResult(){
         System.out.println(GAME_RESULT);
-
-        for(int i = 0; i < turnTime; i++){
-            racingGameEngine.executeTurn();
-        }
+        List<String> map = racingMap.getMap();
+        map.forEach(System.out::println);
     }
-
-
 }

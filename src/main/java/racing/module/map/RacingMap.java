@@ -1,7 +1,10 @@
 package racing.module.map;
 
+import java.util.List;
+
 public interface RacingMap {
 
-    void showCars();
+    List<String> getMap();
 
+    void drawCar(int currentPosition);
 }

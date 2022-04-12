@@ -1,33 +1,30 @@
 package racing.module.map;
 
+import java.util.ArrayList;
 import java.util.List;
-import racing.Car;
 
 public class BasicRacingMap implements RacingMap{
 
     private static final StringBuilder sb = new StringBuilder();
-    private List<Car> cars;
+    private List<String> map = new ArrayList<>();
 
-    public BasicRacingMap(List<Car> cars) {
-        this.cars = cars;
-    }
+    public BasicRacingMap() {}
 
     @Override
-    public void showCars(){
-        cars.stream().forEach(car -> showCarPosition(car.currentPosition()));
-        System.out.println();
-    }
-
-    private void showCarPosition(int position) {
-        for(int i = 0; i < position; i++){
+    public void drawCar(int currentPosition) {
+        for(int i = 0; i < currentPosition; i++){
             sb.append("-");
         }
-        System.out.println(sb);
+        map.add(sb.toString());
         clearStringBuilder(sb);
     }
 
     private void clearStringBuilder(StringBuilder sb){
         sb.setLength(0);
+    }
+
+    public List<String> getMap(){
+        return this.map;
     }
 
 }

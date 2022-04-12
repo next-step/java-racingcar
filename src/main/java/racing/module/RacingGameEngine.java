@@ -23,14 +23,18 @@ public class RacingGameEngine {
     public void executeTurn(){
         for (Car car : cars) {
             moveOrStop(car);
+            racingMap.drawCar(car.currentPosition());
         }
-        racingMap.showCars();
     }
 
     private void moveOrStop(Car car) {
         if(carMoveDecider.isMovingForwardCondition()){
             car.moveForward();
         }
+    }
+
+    public RacingMap getRacingMap() {
+        return this.racingMap;
     }
 
     public static class Builder{
@@ -54,7 +58,7 @@ public class RacingGameEngine {
 
         public RacingGameEngine build(){
             if(isMapDefaultCondition()){
-                racingMap = new BasicRacingMap(cars);
+                racingMap = new BasicRacingMap();
             }
             if(isCarMoveDeciderDefaultCondition()) {
                 carMoveDecider = new BasicCarMoveDecider();
