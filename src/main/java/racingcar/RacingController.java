@@ -1,30 +1,17 @@
 package racingcar;
 
-import java.util.Random;
+import java.util.List;
 
 public class RacingController {
-    private final static int BOUND = 10;
-
     public static void start(Rule rule) {
-        int[] cars = readyCars(rule.getCountOfCar());
+        List<RacingCar> cars = rule.readyCars();
 
-        System.out.println("실행 결과");
+        Printer.print("부릉부릉!! 레이싱 시작");
 
-        for (int attempt = 0; attempt < rule.getMaxAttempts(); attempt++) {
-            turnAroundCircuit(cars);
-            int round = attempt;
-            System.out.println(++round +"회차 종료");
-        }
-    }
+        Racing racing = new Racing(rule.getMaxAttempts(), cars);
+        racing.start();
+        racing.end();
 
-    private static int[] readyCars(int countOfCar) {
-        return new int[countOfCar];
-    }
-
-    private static void turnAroundCircuit(int[] cars) {
-        for (int carIndex = 0; carIndex < cars.length; carIndex++) {
-            cars[carIndex] += new RacingCar().move(new Random().nextInt(BOUND));
-            Printer.print(cars[carIndex]);
-        }
+        Printer.print("레이싱 종료");
     }
 }
