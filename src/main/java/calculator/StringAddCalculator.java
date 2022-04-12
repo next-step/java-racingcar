@@ -1,16 +1,20 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     public static int splitAndSum(String text) {
-        if (isBlank(text))
+        if (isBlank(text)) {
             return 0;
+        }
 
         Integer values = customSplitAndSum(text);
-        if (values != null)
+        if (values != null) {
             return values;
+        }
 
         return sum(split(text));
     }
@@ -45,11 +49,11 @@ public class StringAddCalculator {
         return sum;
     }
 
-    private static int[] toInts(String[] values) {
-        int[] numbers = new int[values.length];
+    private static List<Integer> toInts(String[] values) {
+        List<Integer> numbers = new ArrayList<>();
 
         for (int i = 0; i < values.length; i++) {
-            numbers[i] = toInt(values[i]);
+            numbers.add(toInt(values[i]));
         }
 
         return numbers;
@@ -58,7 +62,7 @@ public class StringAddCalculator {
     private static int toInt(String value) {
         int number = Integer.parseInt(value);
         if (number < 0) {
-            throw new RuntimeException();
+            throw new NegativeNumberException(number);
         }
         return number;
     }
