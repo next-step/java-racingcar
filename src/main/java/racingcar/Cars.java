@@ -23,7 +23,7 @@ public final class Cars {
 
     public void play() {
         for (Car car : cars) {
-            car.move();
+            car.move(new RandomMovingStrategy());
         }
     }
 

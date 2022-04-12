@@ -42,7 +42,7 @@ public class RacingCarTest {
     @Test
     @DisplayName("자동차의 초기 상태는 0이어야 한다.")
     void carStateTest() {
-        Car car = new Car(5);
+        Car car = new Car();
         assertThat(car.state()).isZero();
     }
 
@@ -50,9 +50,9 @@ public class RacingCarTest {
     @ValueSource(ints = {1, 5})
     @DisplayName("자동차의 현재 상태는 주어진 횟수값을 넘지 않는다.")
     void carStateFailTest(int count) {
-        Car car = new Car(count);
+        Car car = new Car();
         for (int i = 0; i < count; i++) {
-            car.move();
+            car.move(new RandomMovingStrategy());
         }
         assertThat(car.state()).isLessThanOrEqualTo(count);
     }
