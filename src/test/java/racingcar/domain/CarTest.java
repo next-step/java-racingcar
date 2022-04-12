@@ -9,7 +9,7 @@ public class CarTest {
     
     @Test
     @DisplayName("condition 값이 4 보다 작으면 Car 의 위치값은 유지된다.")
-    void carStop() throws Exception {
+    void carStop() {
         Car car = new Car();
         int oldPosition = car.getPosition();
 
@@ -20,7 +20,7 @@ public class CarTest {
 
     @Test
     @DisplayName("condition 값이 4 보다 작으면 Car 의 위치값 1 증가한다.")
-    void carGo() throws Exception {
+    void carGo() {
         Car car = new Car();
         int oldPosition = car.getPosition();
 
@@ -31,21 +31,21 @@ public class CarTest {
 
     @Test
     @DisplayName("condition 음수일경우 IllegalArgument 예외를 반환한다.")
-    void negativeException() throws Exception {
+    void negativeException() {
         assertThatThrownBy(() -> new Car().stopOrGo(-1))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("condition 9보다 크면 IllegalArgument 예외를 반환한다.")
-    void overflowException() throws Exception {
+    void overflowException() {
         assertThatThrownBy(() -> new Car().stopOrGo(10))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("한번 전진할때마다 PositionView 의 반환값에 '-'가 추가된다.")
-    void returnPositionView() throws Exception {
+    void returnPositionView() {
         Car car = new Car();
         car.stopOrGo(9);
         car.stopOrGo(9);
