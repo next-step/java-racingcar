@@ -61,7 +61,7 @@ class CarsTest {
 
         car1.move(true);
         car2.move(true);
-        car3.move(true);
+        car3.move(false);
 
         //when
         Cars testCars = new Cars(List.of(car1, car2, car3));
