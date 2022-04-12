@@ -9,7 +9,7 @@ public final class MoveValidator {
     }
 
     public boolean validate() {
-        int number = randomGenerator.generate();
+        int number = randomGenerator.generateNumber();
         if (number >= MOVE_BOUNDARY_NUMBER) {
             return true;
         }

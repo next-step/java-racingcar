@@ -34,7 +34,7 @@ public class RacingCarTest {
     @DisplayName("랜덤으로 생성한 값의 범위는 0~9이어야 한다.")
     void randomNumberTest() {
         RandomGenerator randomGenerator = new RandomGenerator();
-        int number = randomGenerator.generate();
+        int number = randomGenerator.generateNumber();
         assertThat(number).isGreaterThanOrEqualTo(0);
         assertThat(number).isLessThanOrEqualTo(9);
     }
