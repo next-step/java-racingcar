@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.model.TrialCount;
 import racingcar.util.StringUtil;
 import racingcar.model.Car;
 
@@ -13,7 +14,7 @@ public class InputView {
 
     private static final String TRIAL_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
 
-    public static final String DEFAULT_DELIMITER = ",";
+    private static final String DEFAULT_DELIMITER = ",";
 
     private final Scanner scanner = new Scanner(System.in);
 
@@ -31,10 +32,9 @@ public class InputView {
         return carNames.stream().map(Car::from).collect(Collectors.toList());
     }
 
-    public int inputTrialCount() {
+    public TrialCount inputTrialCount() {
         System.out.println(TRIAL_COUNT_MESSAGE);
-        return readNumber();
+        return new TrialCount(readNumber());
     }
-
 
 }

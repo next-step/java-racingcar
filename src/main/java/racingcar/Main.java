@@ -1,12 +1,10 @@
 package racingcar;
 
-import racingcar.view.InputView;
-import racingcar.view.ResultView;
+import racingcar.model.GameManager;
 
 public class Main {
-
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
+        GameManager gameManager = new GameManager();
+        gameManager.start();
     }
 }
