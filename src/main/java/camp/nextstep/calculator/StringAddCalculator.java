@@ -1,4 +1,4 @@
-package camp.nextstep;
+package camp.nextstep.calculator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

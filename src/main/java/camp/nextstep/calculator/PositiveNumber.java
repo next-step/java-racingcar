@@ -1,4 +1,4 @@
-package camp.nextstep;
+package camp.nextstep.calculator;
 
 import static java.lang.Integer.*;
 
