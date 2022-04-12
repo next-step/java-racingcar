@@ -7,4 +7,8 @@ public class Printer {
         }
         System.out.println();
     }
+
+    public static void print(String printable) {
+        System.out.println(printable);
+    }
 }

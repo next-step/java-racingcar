@@ -18,7 +18,7 @@ public class Racing {
         for (int attempt = 0; attempt < this.maxAttempts; attempt++) {
             turnAroundCircuit();
             int round = attempt;
-            System.out.println(++round +"회차 종료");
+            Printer.print(++round +"회차 종료");
         }
     }
 
