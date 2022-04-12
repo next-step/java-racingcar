@@ -14,8 +14,8 @@ public class Car {
         return new Car(carName);
     }
 
-    public int move(int number) {
-        if(currentLocation.meetsMovementRule(number)) {
+    public int move(boolean canMove) {
+        if(canMove) {
             currentLocation.moveForward();
         }
         return currentLocation.getLocationValue();

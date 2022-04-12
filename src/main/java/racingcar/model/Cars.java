@@ -14,10 +14,10 @@ public class Cars {
         this.carList = Collections.unmodifiableList(carList);
     }
 
-    public void move(List<Integer> moveCounts) {
+    public void move(List<Boolean> movableList) {
         for (int index = 0; index < carList.size(); index++) {
             Car car = carList.get(index);
-            car.move(moveCounts.get(index));
+            car.move(movableList.get(index));
         }
     }
 

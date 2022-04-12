@@ -17,7 +17,7 @@ class CarsTest {
     @DisplayName("4 이상일 경우에 자동차들은 이동한다.")
     void carsMovementTest() {
         //given
-        List<Integer> movementList = List.of(2, 4, 6);
+        List<Boolean> movementList = List.of(false, true, true);
         List<Car> testCarList = List.of(Car.from("자동차1"), Car.from("자동차2"), Car.from("자동차3"));
         Cars testCars = new Cars(testCarList);
 
@@ -41,9 +41,9 @@ class CarsTest {
         Car car2 = Car.from("자동차2");
         Car car3 = Car.from("자동차3");
 
-        car1.move(4);
-        car1.move(3);
-        car1.move(3);
+        car1.move(true);
+        car1.move(false);
+        car1.move(false);
 
         //when
         Cars testCars = new Cars(List.of(car1, car2, car3));
@@ -62,9 +62,9 @@ class CarsTest {
         Car car2 = Car.from("자동차2");
         Car car3 = Car.from("자동차3");
 
-        car1.move(7);
-        car2.move(6);
-        car3.move(3);
+        car1.move(true);
+        car2.move(true);
+        car3.move(true);
 
         //when
         Cars testCars = new Cars(List.of(car1, car2, car3));

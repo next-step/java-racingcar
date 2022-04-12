@@ -27,14 +27,14 @@ class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"5:2", "4:2", "3:1"}, delimiter = ':')
+    @CsvSource(value = {"true:2", "true:2", "false:1"}, delimiter = ':')
     @DisplayName("자동차는 값이 4 이상일 경우 움직인다")
-    void moveTest(int value, int expectedLocation) {
+    void moveTest(boolean canMove, int expectedLocation) {
         //given
         Car car = Car.from("자동차1");
 
         //when, then
-        assertThat(car.move(value)).isEqualTo(expectedLocation);
+        assertThat(car.move(canMove)).isEqualTo(expectedLocation);
     }
 
 }
