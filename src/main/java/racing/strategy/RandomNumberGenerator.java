@@ -13,6 +13,6 @@ public class RandomNumberGenerator implements NumberGenerator {
 
   @Override
   public int generate() {
-    return random.nextInt(10);
+    return random.nextInt(RANDOM_NEXT_INT_BOUND);
   }
 }
