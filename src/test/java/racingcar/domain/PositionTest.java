@@ -10,15 +10,13 @@ class PositionTest {
     @DisplayName("move 호출 횟수로 동등성 비교")
     @Test
     void move() {
-        Position position1 = new Position();
-        Position position2 = new Position();
+        Position position = new Position();
 
         int moveCount = 3;
         for (int i = 0; i < moveCount; i++) {
-            position1.move();
-            position2.move();
+            position = position.move();
         }
 
-        assertThat(position1).isEqualTo(position2);
+        assertThat(position).isEqualTo(new Position(3));
     }
 }
