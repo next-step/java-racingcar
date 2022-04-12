@@ -10,4 +10,8 @@ public class Car {
         }
         return movement;
     }
+
+    public int getMovement() {
+        return movement;
+    }
 }
