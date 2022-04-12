@@ -18,17 +18,12 @@ public class RacingInputView {
     RacingInput racingInput = new RacingInput();
 
     System.out.println("자동차 대수는 몇 대 인가요?");
-    racingInput.setCarCount(inputToInt(scanner.nextLine()));
+    racingInput.setCarCount(scanner.nextInt());
 
     System.out.println("시도할 횟수는 몇 회 인가요?");
     racingInput.setAttemptCount(scanner.nextInt());
 
     return racingInput;
   }
-
-  private int inputToInt(String input) {
-    return Integer.parseInt(input.trim());
-  }
-
 
 }
