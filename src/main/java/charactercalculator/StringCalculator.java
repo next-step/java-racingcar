@@ -3,20 +3,20 @@ package charactercalculator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CharCalculator {
+public class StringCalculator {
     private String input;
     private Matcher matcher;
     private static final Pattern pattern = Pattern.compile("//(.)\n(.*)");
 
 //    static List<String> expressionList = Arrays.asList(":",",");
-    public CharCalculator(String input) {
+    public StringCalculator(String input) {
         this.input = input;
         // 생성자 생성될 때만 한번 선언하게 리펙토링
         if(!isEmpty(input)){
             matcher = pattern.matcher(this.input);
         }
     }
-    public CharCalculator() {
+    public StringCalculator() {
     }
 
 
