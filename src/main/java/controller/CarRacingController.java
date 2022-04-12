@@ -5,7 +5,6 @@ import view.InputView;
 import view.ResultView;
 
 public class CarRacingController {
-    private final StringBuilder racingResult = new StringBuilder();
     private final InputView inputView;
     private final ResultView resultView;
 
@@ -15,14 +14,9 @@ public class CarRacingController {
     }
 
     public void runRacingCar() {
-        initRacingResult();
         int carCount = inputView.inputCarCount();
         int attemptCount = inputView.inputAttemptCount();
         startRacing(attemptCount, new Cars(carCount));
-    }
-
-    private void initRacingResult() {
-        racingResult.setLength(0);
     }
 
     private void startRacing(int attemptCount, Cars cars) {
