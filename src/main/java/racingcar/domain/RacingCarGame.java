@@ -18,7 +18,7 @@ public class RacingCarGame {
 
     public void proceedRound() {
         decreaseGameRound();
-        cars.forEach(moveStrategy::moveOrStop);
+        cars.forEach(car -> car.move(moveStrategy));
     }
 
     private void decreaseGameRound() {

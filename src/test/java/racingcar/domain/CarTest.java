@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.strategy.RandomMoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,7 +15,7 @@ class CarTest {
 
         int moveCount = 3;
         for (int i = 0; i < moveCount; i++) {
-            car.move();
+            car.move(new RandomMoveStrategy());
         }
 
         assertThat(car).isEqualTo(new Car(new Position(moveCount)));

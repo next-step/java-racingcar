@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.strategy.MoveStrategy;
+
 import java.util.Objects;
 
 public class Car {
@@ -10,8 +12,10 @@ public class Car {
         this.position = position;
     }
 
-    public void move() {
-        this.position = position.move();
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.canMove()) {
+            this.position = position.move();
+        }
     }
 
     @Override

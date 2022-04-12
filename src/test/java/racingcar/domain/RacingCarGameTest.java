@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
 import racingcar.domain.strategy.MoveStrategy;
-import racingcar.domain.strategy.DefaultMoveStrategy;
+import racingcar.domain.strategy.RandomMoveStrategy;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ class RacingCarGameTest {
 
     @Test
     void rounds_만큼_proceedRound_호출하면_정상동작() {
-        RacingCarGame game = generateGame(new DefaultMoveStrategy());
+        RacingCarGame game = generateGame(new RandomMoveStrategy());
         assertThatNoException().isThrownBy(() -> {
             for (int i = 0; i < rounds; i++) {
                 game.proceedRound();
@@ -25,7 +25,7 @@ class RacingCarGameTest {
 
     @Test
     void rounds_보다_proceedRound_많이_호출하면_예외() {
-        RacingCarGame game = generateGame(new DefaultMoveStrategy());
+        RacingCarGame game = generateGame(new RandomMoveStrategy());
         assertThatThrownBy(() -> {
             for (int i = 0; i < rounds + 1; i++) {
                 game.proceedRound();
