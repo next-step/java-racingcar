@@ -6,20 +6,18 @@ import java.util.function.Function;
 public class Calculator {
 
     private final Splitter splitter;
-    private final NumberConverter numberConverter;
 
-    public Calculator(Splitter splitter, NumberConverter numberConverter) {
+    public Calculator(Splitter splitter) {
         this.splitter = splitter;
-        this.numberConverter = numberConverter;
     }
 
-    public int splitAndSum(String text) {
+    public int sum(String text) {
         if (isBlank(text)) {
             return 0;
         }
 
         return splitter.split()
-                .andThen(numberConverter.toInts())
+                .andThen(value -> new Numbers(value).getValues())
                 .andThen(this.sum())
                 .apply(text);
     }
