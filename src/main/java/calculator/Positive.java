@@ -2,7 +2,7 @@ package calculator;
 
 public class Positive {
     private final int number;
-    static private final String NUMBER_REGEX_EXPRESSION = "^(?!-)[0-9]+";
+    private static final String NUMBER_REGEX_EXPRESSION = "^(?!-)[0-9]+";
 
     Positive(String value) {
         number = isValidNumber(value);

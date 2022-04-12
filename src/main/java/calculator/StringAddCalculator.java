@@ -1,15 +1,17 @@
 package calculator;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    static private final String CUSTOM_DELIMITER = "//(.)\n(.*)";
-    static private final String DEFAULT_DELIMITER = ",|:";
-    static private final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
+    private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
+
+    private StringAddCalculator() {
+
+    }
+
     public static int splitAndSum(String text) {
 
         if(isBlankOrNull(text)) {
@@ -55,11 +57,9 @@ public class StringAddCalculator {
 
     private static int sum(String[] values) {
         int result = 0;
-
         for (String value : values) {
-            result += getPositive(value).getNumber();;
+            result += getPositive(value).getNumber();
         }
-
         return result;
     }
 
