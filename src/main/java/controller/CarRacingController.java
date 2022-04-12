@@ -13,13 +13,13 @@ public class CarRacingController {
         this.resultView = resultView;
     }
 
-    public void runRacingCar() {
+    public void startRacing() {
         int carCount = inputView.inputCarCount();
         int attemptCount = inputView.inputAttemptCount();
-        startRacing(attemptCount, new Cars(carCount));
+        runCars(attemptCount, new Cars(carCount));
     }
 
-    private void startRacing(int attemptCount, Cars cars) {
+    private void runCars(int attemptCount, Cars cars) {
         resultView.printResultHeader();
         for (int i = 0; i < attemptCount; i++) {
             cars.moveCars();

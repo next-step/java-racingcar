@@ -13,9 +13,7 @@ public class ResultView {
     }
 
     public void printResult(List<Integer> carsPosition) {
-        for (int carPosition : carsPosition) {
-            System.out.println(POSITION_BAR.repeat(Math.max(0, carPosition)));
-        }
+        carsPosition.forEach(carPosition -> System.out.println(POSITION_BAR.repeat(Math.max(0, carPosition))));
         System.out.print(NEW_LINE);
     }
 }
