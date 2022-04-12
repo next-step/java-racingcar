@@ -10,7 +10,7 @@ public class RacingInputView {
     try (Scanner scanner = new Scanner(System.in)) {
       return printAndGetRacingInput(scanner);
     } catch (RuntimeException e) {
-      throw new UserInputFailException("사용자 입력을 받는데 실패했습니다.", e);
+      throw new UserInputFailException(e);
     }
   }
 
