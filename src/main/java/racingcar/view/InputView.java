@@ -7,8 +7,8 @@ public final class InputView {
     private static final String ROUND_INPUT_LABEL = "시도할 횟수는 몇 회 인가요?";
     private static final Scanner SCANNER = new Scanner(System.in);
 
-     private InputView() {
-         throw new AssertionError();
+    private InputView() {
+        throw new AssertionError();
     }
 
     public static int inputNumber() {
