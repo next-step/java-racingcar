@@ -35,14 +35,4 @@ public class Car {
     public int getPosition() {
         return this.position;
     }
-
-    public String getPositionView() {
-        StringBuilder bs = new StringBuilder();
-        int i = 0;
-        while (i != this.position) {
-            bs.append("-");
-            i++;
-        }
-        return bs.toString();
-    }
 }

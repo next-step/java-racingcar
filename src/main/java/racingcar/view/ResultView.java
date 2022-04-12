@@ -18,7 +18,7 @@ public class ResultView {
 
     private static void renderResult(List<Car> cars, int tryCount) {
         for (Car car : cars) {
-            System.out.println(car.getPositionView());
+            System.out.println(new ResultBuilder(car.getPosition()).build());
         }
         System.out.println("[ROUND " + tryCount + " END]");
     }
