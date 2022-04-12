@@ -12,15 +12,13 @@ import java.util.stream.Stream;
 
 public class Splitter {
 
-    private final static String  DEFAULT_DELIMITER = "[,:]";
-    private final static String  CUSTOM_DELIMITER  = "//(.)\n(.*)";
-    private final static Pattern DELIMITER_PATTERN = Pattern.compile(CUSTOM_DELIMITER);
-    private final static Pattern INTEGER_PATTERN   = Pattern.compile("-?\\d+(\\.\\d+)?");
+    private final Pattern INTEGER_PATTERN = Pattern.compile("-?\\d+(\\.\\d+)?");
+    private final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
-    public static Function<String, List<String>> split() {
+    public Function<String, List<String>> split() {
         return text -> {
             List<String> defaultDelimiterResult = split(text);
-            List<String> customDelimiterResult  = split(DELIMITER_PATTERN.matcher(text));
+            List<String> customDelimiterResult = split(CUSTOM_DELIMITER_PATTERN.matcher(text));
 
             return Stream.of(defaultDelimiterResult, customDelimiterResult)
                     .filter(list -> isDigit().test(list))
@@ -29,18 +27,18 @@ public class Splitter {
         };
     }
 
-    public static List<String> split(String text) {
-        return List.of(text.split(DEFAULT_DELIMITER));
+    public List<String> split(String text) {
+        return List.of(text.split("[,:]"));
     }
 
-    public static List<String> split(Matcher matcher) {
+    public List<String> split(Matcher matcher) {
         return matcher.results()
                 .map(matchResult -> matchResult.group(2).split(matchResult.group(1)))
                 .flatMap(Arrays::stream)
                 .collect(Collectors.toList());
     }
 
-    private static Predicate<List<String>> isDigit() {
+    private Predicate<List<String>> isDigit() {
         return strings -> strings.stream().allMatch(string -> INTEGER_PATTERN.matcher(string).matches());
     }
 }
