@@ -19,7 +19,7 @@ public class Car {
         return new Car(new PositiveInteger(state.value()));
     }
 
-    public int state() {
-        return state.value();
+    public PositiveInteger state() {
+        return state;
     }
 }

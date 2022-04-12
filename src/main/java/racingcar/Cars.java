@@ -3,6 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public final class Cars {
     private final List<Car> cars;
@@ -22,18 +23,16 @@ public final class Cars {
     }
 
     public Cars play(MovingStrategy movingStrategy) {
-        List<Car> nextCars = new ArrayList<>();
+        List<Car> result = new ArrayList<>();
         for (Car car : cars) {
-            nextCars.add(car.move(movingStrategy));
+            result.add(car.move(movingStrategy));
         }
-        return new Cars(nextCars);
+        return new Cars(result);
     }
 
-    public List<Integer> result() {
-        List<Integer> carStates = new ArrayList<>();
-        for (Car car : cars) {
-            carStates.add(car.state());
-        }
-        return List.copyOf(carStates);
+    public List<PositiveInteger> states() {
+        return cars.stream()
+                .map(Car::state)
+                .collect(Collectors.toList());
     }
 }

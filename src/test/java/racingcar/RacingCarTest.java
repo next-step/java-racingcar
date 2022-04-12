@@ -3,10 +3,10 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -33,12 +33,14 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 5})
     @DisplayName("자동차의 현재 상태는 주어진 횟수값을 넘지 않는다.")
-    void carStateFailTest(int count) {
-    }
+    void carsStateTest(int count) {
+        RacingCar racingCar = new RacingCar(1, count);
 
-    @ParameterizedTest
-    @CsvSource(value = {"3:5"}, delimiter = ':')
-    @DisplayName("자동차 경주 게임 실행 결과 테스트")
-    void playRacingCarTest(int carCount, int roundCount) {
+        ArrayList<Cars> playResult = racingCar.play();
+
+        List<PositiveInteger> lastGameResult = playResult.get(playResult.size() - 1).states();
+        for (PositiveInteger result : lastGameResult) {
+            assertThat(result.value()).isLessThanOrEqualTo(count);
+        }
     }
 }

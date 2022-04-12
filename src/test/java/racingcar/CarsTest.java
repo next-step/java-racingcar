@@ -1,10 +1,13 @@
 package racingcar;
 
 import org.assertj.core.api.Assertions;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Cars 일급 컬렉션 테스트")
 public class CarsTest {
@@ -34,16 +37,13 @@ public class CarsTest {
     }
 
     @Test
-    @DisplayName("Cars 리스트에서 Car가 move하는지 테스트")
+    @DisplayName("Cars를 play했을 때 결과를 잘 반환하는지 테스트")
     void playTest() {
-        ArrayList<Car> carsList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            carsList.add(new Car());
-        }
-        Cars cars = new Cars(carsList);
-        Cars newCars = cars.play(new RandomMovingStrategy());
-        newCars.result()
-                .stream()
-                .forEach(System.out::println);
+        Cars cars = new Cars(Lists.newArrayList(new Car()));
+
+        Cars result = cars.play(new RandomMovingStrategy());
+
+        assertThat(result.states().get(0).value())
+                .isGreaterThanOrEqualTo(cars.states().get(0).value());
     }
 }

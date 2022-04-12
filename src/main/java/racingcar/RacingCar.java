@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class RacingCar {
+    private static final MovingStrategy RANDOM_MOVING_STRATEGY = new RandomMovingStrategy();
     private final Cars cars;
     private final int roundCount;
 
@@ -13,8 +14,7 @@ public final class RacingCar {
         this.roundCount = roundCount;
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            Car car = new Car();
-            cars.add(car);
+            cars.add(new Car());
         }
         this.cars = new Cars(cars);
     }
@@ -28,13 +28,10 @@ public final class RacingCar {
         }
     }
 
-    public ArrayList<ArrayList<Integer>> play() {
-        int count = 0;
-        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
-        while (count < roundCount) {
-            cars.play(new RandomMovingStrategy());
-            result.add(new ArrayList<>(cars.result()));
-            count++;
+    public ArrayList<Cars> play() {
+        ArrayList<Cars> result = new ArrayList<>();
+        for (int count = 0; count < roundCount; count++) {
+            result.add(cars.play(RANDOM_MOVING_STRATEGY));
         }
         return result;
     }

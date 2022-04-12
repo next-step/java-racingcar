@@ -12,7 +12,7 @@ public class CarTest {
     @DisplayName("자동차의 초기 상태는 0이어야 한다.")
     void carStateTest() {
         Car car = new Car();
-        assertThat(car.state()).isZero();
+        assertThat(car.state()).isEqualTo(PositiveInteger.ZERO);
     }
 
     @Test
@@ -25,8 +25,9 @@ public class CarTest {
                 return true;
             }
         });
-        assertThat(nextCar.state()).isEqualTo(car.state()+1);
+        assertThat(nextCar.state()).isEqualTo(PositiveInteger.add(car.state(), new PositiveInteger(1)));
     }
+
     @Test
     @DisplayName("자동차가 unmovable 하다면 멈춰있는다.")
     void unmovableTest() {
