@@ -1,8 +1,8 @@
 package racingcar;
 
 public class RolledResult {
-    public boolean isMoved;
-    public Car car;
+    public final boolean isMoved;
+    public final Car car;
 
 
     public RolledResult(boolean isMoved, Car car) {

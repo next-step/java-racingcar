@@ -21,7 +21,7 @@ public class RaceTest {
     void CarShouldMove() {
         Car car = new Car();
         car.move();
-        assertThat(car.track).hasSize(2);
+        assertThat(car.getTrack()).hasSize(2);
     }
 
     @Test
@@ -29,9 +29,9 @@ public class RaceTest {
         Car car = new Car();
         RolledResult movedResult = Race.roll(car);
         if (movedResult.isMoved) {
-            assertThat(movedResult.car.track).hasSize(2);
+            assertThat(movedResult.car.getTrack()).hasSize(2);
         } else {
-            assertThat(movedResult.car.track).hasSize(1);
+            assertThat(movedResult.car.getTrack()).hasSize(1);
         }
     }
 }
