@@ -1,20 +1,22 @@
 package racingcar.view;
 
-import java.util.ArrayList;
+import racingcar.PositiveInteger;
+
+import java.util.List;
 
 public class ResultView {
 
-    public ResultView() {
+    private ResultView() {
+        throw new AssertionError();
     }
 
-    public void print(ArrayList<ArrayList<Integer>> result) {
+    public static void print(List<PositiveInteger> states) {
         StringBuilder sb = new StringBuilder();
-        for(ArrayList<Integer> roundResult: result) {
-            for(int carState : roundResult) {
-                for(int i=0; i<carState; i++){
-                    sb.append("-");
-                }
-                sb.append("\n");
+        for (PositiveInteger state : states) {
+
+            sb.append("|");
+            for (int i = 0; i < state.value(); i++) {
+                sb.append("-");
             }
             sb.append("\n");
         }

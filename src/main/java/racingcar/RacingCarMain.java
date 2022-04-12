@@ -7,14 +7,14 @@ import java.util.ArrayList;
 
 public class RacingCarMain {
     public static void main(String[] args) {
-
         int number = InputView.inputNumber();
         int round = InputView.inputRound();
-        ResultView resultView = new ResultView();
+
         RacingCar racingCar = new RacingCar(number, round);
+        ArrayList<Cars> result = racingCar.play();
 
-        ArrayList<ArrayList<Integer>> result = racingCar.play();
-
-        resultView.print(result);
+        for (Cars cars : result) {
+            ResultView.print(cars.states());
+        }
     }
 }
