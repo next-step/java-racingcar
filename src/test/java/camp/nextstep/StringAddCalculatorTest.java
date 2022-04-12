@@ -46,15 +46,15 @@ public class StringAddCalculatorTest {
   }
 
   @Test
-  public void NaN_쉼표_콜론구분자_RuntimeException() {
+  public void NaN_쉼표_콜론구분자_NumberFormatException() {
     assertThatThrownBy(() -> StringAddCalculator.splitAndSum("1:2,abcde"))
         .isInstanceOf(RuntimeException.class);
   }
 
   @Test
-  public void NaN_커스텀구분자_RuntimeException() {
+  public void NaN_커스텀구분자_NumberFormatException() {
     assertThatThrownBy(() -> StringAddCalculator.splitAndSum("//;\n1;2;abcde"))
-        .isInstanceOf(RuntimeException.class);
+        .isInstanceOf(NumberFormatException.class);
   }
 
 }

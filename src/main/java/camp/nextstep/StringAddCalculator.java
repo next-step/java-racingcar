@@ -41,8 +41,10 @@ public class StringAddCalculator {
 
   private static int[] toInt(String[] strings) {
     int[] result = new int[strings.length];
-    for (int i = 0; i < strings.length; i++) {
-      result[i] = new PositiveNumber(strings[i]).getNumber();
+    int index = 0;
+    for (String str : strings) {
+      result[index] = new PositiveNumber(str).getNumber();
+      index++;
     }
     return result;
   }
