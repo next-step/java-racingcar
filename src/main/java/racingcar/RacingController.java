@@ -23,7 +23,7 @@ public class RacingController {
 
     private static void turnAroundCircuit(int[] cars) {
         for (int carIndex = 0; carIndex < cars.length; carIndex++) {
-            cars[carIndex] += RacingCar.move(new Random().nextInt(BOUND));
+            cars[carIndex] += new RacingCar().move(new Random().nextInt(BOUND));
             Printer.print(cars[carIndex]);
         }
     }

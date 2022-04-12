@@ -16,6 +16,6 @@
 - 레이싱을 시작, 관리하는 RacingController 생성
  
 ### 리팩토링
+- RacingCar가 이동거리 상태를 가지도록 변경
 - Rule에게 차량 준비하는 책임 부여 
 - 게임 시작 책임이 있는 Racing 객체 생성
-- RacingCar가 이동거리 상태를 가지도록 변경
