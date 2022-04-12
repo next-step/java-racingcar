@@ -76,7 +76,7 @@ class StringAddCalculatorTest {
     @CsvSource(value = {"'d,2,3'=d"}, delimiter = '=')
     void splitAndSumNumberFormatExceptionTest(String value, String expected) {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum(value))
-            .isInstanceOf(NumberFormatException.class)
-            .hasMessage("For input string: \"%s\"", expected);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("숫자만 허용합니다(입력값 : %s).", expected);
     }
 }
