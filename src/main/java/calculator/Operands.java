@@ -1,7 +1,7 @@
 package calculator;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Operands {
     private final List<Operand> operands;
@@ -21,12 +21,6 @@ public class Operands {
     }
 
     public static Operands fromStringList(List<String> list) {
-        List<Operand> operands = new ArrayList<>();
-
-        for (String stringOperand : list) {
-            operands.add(new Operand(stringOperand));
-        }
-
-        return new Operands(operands);
+        return new Operands(list.stream().map(Operand::new).collect(Collectors.toList()));
     }
 }
