@@ -11,4 +11,10 @@ public final class Assert {
             throw new IllegalArgumentException(message);
         }
     }
+
+    public static void hasText(String text, String message) {
+        if (text == null || text.isBlank()) {
+            throw new IllegalArgumentException(message);
+        }
+    }
 }

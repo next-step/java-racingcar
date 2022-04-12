@@ -2,6 +2,8 @@ package me.devyonghee.racingcar.utility;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.platform.commons.util.ReflectionUtils;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -24,6 +26,17 @@ class AssertTest {
         String error = "error";
         //when, then
         assertThatIllegalArgumentException().isThrownBy(() -> Assert.notNull(null, error))
+                .withMessage(error);
+    }
+
+    @ParameterizedTest
+    @DisplayName("텍스트 존재 검증")
+    @NullAndEmptySource
+    void hasText(String text) {
+        //given
+        String error = "error";
+        //when, then
+        assertThatIllegalArgumentException().isThrownBy(() -> Assert.hasText(text, error))
                 .withMessage(error);
     }
 }
