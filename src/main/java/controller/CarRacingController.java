@@ -5,7 +5,6 @@ import view.InputView;
 import view.ResultView;
 
 public class CarRacingController {
-    private static final String NEW_LINE = "\n";
     private final StringBuilder racingResult = new StringBuilder();
     private final InputView inputView;
     private final ResultView resultView;
