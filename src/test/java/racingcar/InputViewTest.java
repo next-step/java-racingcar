@@ -14,10 +14,5 @@ public class InputViewTest {
     // getTryNumber
 
 
-    @Test
-    void ranDomShouldBeZeroToNineAtLeastTenTimes() {
-        for (int i = 0; i < 10; i++) {
-            assertThat(InputView.getRandom()).isBetween(0, 9);
-        }
-    }
+
 }

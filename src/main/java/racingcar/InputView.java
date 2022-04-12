@@ -14,7 +14,5 @@ public class InputView {
         return 0 < i && i < 10;
     }
 
-    public static int getRandom() {
-        return new Random().nextInt(10);
-    }
+
 }
