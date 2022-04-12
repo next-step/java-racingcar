@@ -1,4 +1,4 @@
-package racing.strategy;
+package racing.domain.strategy;
 
 import java.util.Random;
 

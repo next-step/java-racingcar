@@ -1,7 +1,7 @@
 package racing.view;
 
 import java.util.Scanner;
-import racing.dto.RacingInput;
+import racing.domain.dto.RacingInput;
 import racing.exception.UserInputFailException;
 
 public class RacingInputView {

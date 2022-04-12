@@ -1,16 +1,16 @@
 package racing.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racing.strategy.NumberCompareMoveStrategy.CAN_MOVE_NUMBER;
+import static racing.domain.strategy.NumberCompareMoveStrategy.CAN_MOVE_NUMBER;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing.dto.RacingInput;
-import racing.dto.RacingOutput;
-import racing.strategy.FixedNumberGenerator;
-import racing.strategy.NumberCompareMoveStrategy;
+import racing.domain.dto.RacingInput;
+import racing.domain.dto.RacingOutput;
+import racing.domain.strategy.FixedNumberGenerator;
+import racing.domain.strategy.NumberCompareMoveStrategy;
 
 class RacingServiceTest {
 

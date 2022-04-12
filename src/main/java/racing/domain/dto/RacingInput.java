@@ -1,4 +1,4 @@
-package racing.dto;
+package racing.domain.dto;
 
 public class RacingInput {
 

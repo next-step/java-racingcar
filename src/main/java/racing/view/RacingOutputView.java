@@ -1,7 +1,7 @@
 package racing.view;
 
 import java.util.List;
-import racing.dto.RacingOutput;
+import racing.domain.dto.RacingOutput;
 
 public class RacingOutputView {
 

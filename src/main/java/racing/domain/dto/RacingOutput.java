@@ -1,8 +1,8 @@
-package racing.dto;
+package racing.domain.dto;
 
 import java.util.ArrayList;
 import java.util.List;
-import racing.object.Car;
+import racing.domain.Car;
 
 public class RacingOutput {
 

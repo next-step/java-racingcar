@@ -2,10 +2,10 @@ package racing.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import racing.dto.RacingInput;
-import racing.dto.RacingOutput;
-import racing.object.Car;
-import racing.strategy.MoveStrategy;
+import racing.domain.Car;
+import racing.domain.dto.RacingInput;
+import racing.domain.dto.RacingOutput;
+import racing.domain.strategy.MoveStrategy;
 
 public class RacingService {
 

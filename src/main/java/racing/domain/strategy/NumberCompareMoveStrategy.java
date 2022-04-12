@@ -1,4 +1,4 @@
-package racing.strategy;
+package racing.domain.strategy;
 
 public class NumberCompareMoveStrategy implements MoveStrategy {
 
