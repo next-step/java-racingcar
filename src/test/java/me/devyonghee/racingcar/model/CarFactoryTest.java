@@ -11,29 +11,22 @@ class CarFactoryTest {
     @Test
     @DisplayName("객체화")
     void instance() {
-        assertThatNoException().isThrownBy(() -> CarFactory.of(1, new MovementPolicy.Fake(true)));
+        assertThatNoException().isThrownBy(() -> CarFactory.of(NameWriter.from("abc"), new MovementPolicy.Fake(true)));
     }
 
     @Test
-    @DisplayName("자동차 대수는 0이상")
-    void instance_negativeCarCount_thrownIllegalArgumentException() {
-        assertThatIllegalArgumentException().isThrownBy(() -> CarFactory.of(-1, new MovementPolicy.Fake(true)));
-    }
-
-    @Test
-    @DisplayName("사용할 엔진은 필수")
+    @DisplayName("작명가와 사용할 엔진은 필수")
     void instance_nullEngine_thrownIllegalArgumentException() {
-        assertThatIllegalArgumentException().isThrownBy(() -> CarFactory.of(1, null));
+        assertThatIllegalArgumentException().isThrownBy(() -> CarFactory.of(NameWriter.from("abc"), null));
+        assertThatIllegalArgumentException().isThrownBy(() -> CarFactory.of(null, new MovementPolicy.Fake(true)));
     }
 
     @Test
-    @DisplayName("자동차들 생성")
+    @DisplayName("주어진 이름대로 자동차들 생성")
     void cars() {
-        //given
-        int count = 1;
-        //when
-        RacingCars cars = CarFactory.of(count, new MovementPolicy.Fake(true)).cars();
+        //given, when
+        RacingCars cars = CarFactory.of(NameWriter.from("abc,123"), new MovementPolicy.Fake(true)).cars();
         //then
-        assertThat(cars.size()).isEqualTo(count);
+        assertThat(cars.size()).isEqualTo(2);
     }
 }

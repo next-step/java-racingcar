@@ -28,15 +28,15 @@ public final class RacingCarRace {
 
     public void race() {
         resultView.print(TracksHistoryResponse.from(
-                racingStadium(inputView.carCount(), inputView.cycleCount()).history()
+                racingStadium(inputView.carNames(), inputView.cycleCount()).history()
         ));
     }
 
-    private RacingStadium racingStadium(int carCount, int cycleCount) {
-        return RacingStadium.of(CarPreparer.of(carFactory(carCount), Distance.ZERO), cycleCount);
+    private RacingStadium racingStadium(String names, int cycleCount) {
+        return RacingStadium.of(CarPreparer.of(carFactory(names), Distance.ZERO), cycleCount);
     }
 
-    private CarFactory carFactory(int carCount) {
-        return CarFactory.of(carCount, RandomMovementPolicy.from(new Random()));
+    private CarFactory carFactory(String names) {
+        return CarFactory.of(NameWriter.from(names), RandomMovementPolicy.from(new Random()));
     }
 }

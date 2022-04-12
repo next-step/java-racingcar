@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.*;
 @DisplayName("레이싱 경기장")
 class RacingStadiumTest {
 
-    private static final CarPreparer ZERO_DISTANCE_PREPARER = CarPreparer.of(CarFactory.of(3, new MovementPolicy.Fake(true)), Distance.ZERO);
+    private static final CarPreparer ZERO_DISTANCE_PREPARER = CarPreparer.of(CarFactory.of(NameWriter.from("abc"), new MovementPolicy.Fake(true)), Distance.ZERO);
 
     @Test
     @DisplayName("객체화")
