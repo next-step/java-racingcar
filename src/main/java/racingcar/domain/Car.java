@@ -9,7 +9,7 @@ public class Car {
     private Position position;
 
     public Car() {
-        this.position = new Position();
+        this(new Position());
     }
 
     public Car(Position position) {
