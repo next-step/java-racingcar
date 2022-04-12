@@ -2,14 +2,14 @@ package calculator;
 
 import java.util.List;
 
-public class StringAddCalculator {
+public class StringSumCalculator {
 
     public static int splitAndSum(String input) {
         if (input == null || input.isBlank()) {
             return 0;
         }
 
-        List<String> stringOperands = new StringSplitter(input).split();
-        return SumOperands.fromStringList(stringOperands).sum();
+        List<String> stringOperands = StringSplitterFactory.resolve(input).split();
+        return Operands.fromStringList(stringOperands).sum();
     }
 }
