@@ -4,15 +4,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CharCalculator {
-    private String text;
-    private Matcher m;
+    private String input;
+    private Matcher matcher;
+    private static final Pattern pattern = Pattern.compile("//(.)\n(.*)");
 
 //    static List<String> expressionList = Arrays.asList(":",",");
     public CharCalculator(String input) {
-        this.text = input;
+        this.input = input;
         // 생성자 생성될 때만 한번 선언하게 리펙토링
         if(!isEmpty(input)){
-            m = Pattern.compile("//(.)\n(.*)").matcher(this.text);
+            matcher = pattern.matcher(this.input);
         }
     }
     public CharCalculator() {
@@ -21,19 +22,19 @@ public class CharCalculator {
 
     public int calculate() {
         int result = 0;
-        if(isEmpty(text)){
+        if(isEmpty(input)){
             return 0;
         }
         return getResult(result);
     }
 
-    private boolean isEmpty(String text) {
-        return "".equals(text) || text == null;
+    private boolean isEmpty(String input) {
+        return "".equals(input) || input == null;
     }
 
     private int getResult(int result) {
         String customSeparator = getSeparator();
-        String[] numberStrings = this.text.split(customSeparator);
+        String[] numberStrings = this.input.split(customSeparator);
         for (String numberString : numberStrings) {
             result += getNumber(numberString);
         }
@@ -41,12 +42,11 @@ public class CharCalculator {
     }
 
     private String getSeparator() {
-        String customSeparator = ",|:";
-        if(m.find()){
-            customSeparator = m.group(1);
-            this.text = m.group(2);
+        if(matcher.find()){
+            this.input = matcher.group(2);
+            return matcher.group(1);
         }
-        return customSeparator;
+        return ",|:";
     }
 
     private int getNumber(String numberString) {
