@@ -1,8 +1,5 @@
 package step_2;
 
-import java.util.List;
-import java.util.function.Function;
-
 public class Calculator {
 
     private final Splitter splitter;
@@ -16,17 +13,10 @@ public class Calculator {
             return 0;
         }
 
-        return splitter.split()
-                .andThen(value -> new Numbers(value).getValues())
-                .andThen(this.sum())
-                .apply(text);
+        return splitter.split().andThen(value -> new Numbers(value).sum()).apply(text);
     }
 
     private boolean isBlank(String text) {
         return text == null || text.isBlank();
-    }
-
-    private Function<List<Integer>, Integer> sum() {
-        return numbers -> numbers.stream().mapToInt(number -> number).sum();
     }
 }

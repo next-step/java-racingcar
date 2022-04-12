@@ -32,18 +32,20 @@ public class Numbers {
     }
 
     private final Number[] numbers;
-    private final int size;
 
     public Numbers(Collection<String> chars) {
         this.numbers = chars.stream().map(Number::new).toArray(Number[]::new);
-        this.size = numbers.length;
     }
 
     public List<Integer> getValues() {
         return Arrays.stream(this.numbers).map(Number::getValue).collect(Collectors.toList());
     }
 
+    public int sum() {
+        return getValues().stream().mapToInt(value -> value).sum();
+    }
+
     public int size() {
-        return size;
+        return this.numbers.length;
     }
 }
