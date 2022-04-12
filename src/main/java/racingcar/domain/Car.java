@@ -8,6 +8,10 @@ public class Car {
 
     private Position position;
 
+    public Car() {
+        this.position = new Position();
+    }
+
     public Car(Position position) {
         this.position = position;
     }
