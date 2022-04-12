@@ -2,33 +2,35 @@ package controller;
 
 import domain.Cars;
 import view.InputView;
+import view.ResultView;
 
 public class CarRacingController {
-    private static final String RESULT_MESSAGE = "실행 결과";
+    private static final String NEW_LINE = "\n";
+    private final StringBuilder racingResult = new StringBuilder();
     private final InputView inputView;
+    private final ResultView resultView;
 
-    public CarRacingController(InputView inputView) {
+    public CarRacingController(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
+        this.resultView = resultView;
     }
 
     public void runRacingCar() {
+        initRacingResult();
         int carCount = inputView.inputCarCount();
         int attemptCount = inputView.inputAttemptCount();
-        Cars cars = new Cars(carCount);
+        startRacing(attemptCount, new Cars(carCount));
+    }
 
-        printResultMessage();
-        startRacing(attemptCount, cars);
+    private void initRacingResult() {
+        racingResult.setLength(0);
     }
 
     private void startRacing(int attemptCount, Cars cars) {
+        resultView.printResultHeader();
         for (int i = 0; i < attemptCount; i++) {
             cars.moveCars();
-            cars.printCarsPosition();
-            System.out.println();
+            resultView.printResult(cars.getCarsPosition());
         }
-    }
-
-    private void printResultMessage() {
-        System.out.println(RESULT_MESSAGE);
     }
 }

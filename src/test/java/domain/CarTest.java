@@ -1,14 +1,10 @@
 package domain;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -41,13 +37,9 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(beforePosition);
     }
 
-    @DisplayName("자동차의 상태 출력 테스트")
+    @DisplayName("자동차의 위치 테스트")
     @Test
-    void carPositionPrintTest() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
-        car.printPosition();
-
-        Assertions.assertEquals("-".repeat(Math.max(0, car.getPosition())), outputStream.toString().trim());
+    void carPositionTest() {
+        assertThat(car.getPosition()).isEqualTo(5);
     }
 }
