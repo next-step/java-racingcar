@@ -1,13 +1,9 @@
 package racing.module;
 
-import racing.view.OutputView;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class CarGame {
-    private final Random RANDOM = new Random();
     private final List<Car> carList = new ArrayList<>();
 
     public CarGame(int carCnt) {
@@ -16,9 +12,9 @@ public class CarGame {
         }
     }
 
-    public void play() {
+    public void play(NumberGenerator generator, int number) {
         for (Car car : carList) {
-            car.move(RANDOM.nextInt(10));
+            car.move(generator.getNumber(number));
         }
     }
 

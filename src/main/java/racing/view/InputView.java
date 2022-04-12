@@ -3,11 +3,11 @@ package racing.view;
 import exception.CustomException;
 import java.util.Scanner;
 
-public class InputView {
+public final class InputView {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     private InputView() throws CustomException {
-        throw new CustomException("유틸성 클래스입니다.");
+        throw new CustomException("유틸성클래스는 인스턴스 생성을 할 수 없습니다.");
     }
 
     public static int inputCar() {

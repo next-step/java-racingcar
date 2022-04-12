@@ -22,6 +22,6 @@ class CarTest {
     @DisplayName("이동값이 4이상일때는 움직인다.")
     void move(int speed) {
         car.move(speed);
-        assertThat(car.getPosition()).isEqualTo(speed);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }
