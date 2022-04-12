@@ -26,7 +26,7 @@ public class InputView {
     }
 
     private void validateInput(String input) {
-        if (!input.matches(CORRECT_INPUT_PATTERN)) {
+        if (!input.matches(CORRECT_INPUT_PATTERN) || Integer.parseInt(input) < 1) {
             throw new IllegalStateException(WRONG_INPUT_MESSAGE);
         }
     }
