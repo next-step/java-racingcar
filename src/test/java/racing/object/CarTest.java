@@ -60,8 +60,6 @@ class CarTest {
     NumberCompareMoveStrategy numberCompareMoveStrategy = new NumberCompareMoveStrategy(
         new FixedNumberGenerator(5));
     Car[] cars = new Car[carCount];
-    int[] distancesReal = new int[carCount];
-    int[] distancesExcepted = new int[carCount];
     for (int i = 0; i < carCount; i++) {
       cars[i] = new Car(numberCompareMoveStrategy);
     }
@@ -71,10 +69,6 @@ class CarTest {
       for (int j = 0; j < attempt; j++) {
         cars[i].attempt();
       }
-    }
-
-    for (int i = 0; i < cars.length; i++) {
-      distancesReal[i] = cars[i].getDistance();
     }
 
     //then
