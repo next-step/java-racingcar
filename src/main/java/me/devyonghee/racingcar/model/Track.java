@@ -21,6 +21,10 @@ public final class Track {
         return new Track(car, distance);
     }
 
+    public RacingCar car() {
+        return car;
+    }
+
     public Distance distance() {
         return distance;
     }

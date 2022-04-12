@@ -2,7 +2,7 @@ package me.devyonghee.racingcar.model;
 
 import me.devyonghee.racingcar.utility.Assert;
 
-final class RacingCar {
+public final class RacingCar {
 
     private final Name name;
     private final MovementPolicy policy;
@@ -20,5 +20,9 @@ final class RacingCar {
 
     Movement movement() {
         return policy.movement();
+    }
+
+    public Name name() {
+        return name;
     }
 }

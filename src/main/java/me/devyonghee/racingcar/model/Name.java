@@ -19,6 +19,10 @@ public final class Name {
         return new Name(value);
     }
 
+    public String value() {
+        return value;
+    }
+
     private void validate(String value) {
         Assert.hasText(value, "name must be provided");
         if (value.length() > MAX_LENGTH) {
