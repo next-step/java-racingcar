@@ -44,7 +44,7 @@ public class Numbers {
     public int sum() {
         return Arrays.stream(this.numbers)
                 .reduce((before, after) -> after.add(before.getValue()))
-                .orElseThrow()
+                .orElseThrow((() -> new ArithmeticException("주어진 값을 더할 수 없습니다.")))
                 .getValue();
     }
 
