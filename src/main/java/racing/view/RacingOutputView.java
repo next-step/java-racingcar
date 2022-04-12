@@ -1,19 +1,29 @@
 package racing.view;
 
 import java.util.List;
-import racing.object.Car;
+import racing.dto.RacingOutput;
 
 public class RacingOutputView {
 
   public static final String DISTANCE = "-";
   public static final String EMPTY = "";
 
-  public void printCarDistance(List<Car> cars) {
-    for (Car car : cars) {
-      for (int i = 0; i < car.getDistance(); i++) {
-        System.out.print(DISTANCE);
-      }
-      System.out.println(EMPTY);
+  private List<RacingOutput> racingOutputs;
+
+  public RacingOutputView(List<RacingOutput> racingOutputs) {
+    this.racingOutputs = racingOutputs;
+  }
+
+  public void printCarDistance() {
+    for (RacingOutput racingOutput : racingOutputs) {
+      printRacingOutput(racingOutput);
+    }
+    System.out.println(EMPTY);
+  }
+
+  private void printRacingOutput(RacingOutput racingOutput) {
+    for (int distance : racingOutput.getDistances()) {
+      System.out.print(DISTANCE);
     }
     System.out.println(EMPTY);
   }
