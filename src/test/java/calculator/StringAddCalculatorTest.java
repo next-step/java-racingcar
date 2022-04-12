@@ -8,8 +8,8 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 public class StringAddCalculatorTest {
     @Test
     void 빈_문자열_공백문자_일때() {
-       assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
-       assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
+        assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
+        assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
     }
 
     @Test
@@ -39,12 +39,13 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    void 음수가_포함될경우_RuntimeException_발생() {
-        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> StringAddCalculator.splitAndSum("1,2,-1"));
+    void 음수가_포함될경우_NegativeNumberException_발생() {
+        assertThatExceptionOfType(NegativeNumberException.class).isThrownBy(() -> StringAddCalculator.splitAndSum("1,2,-1"));
     }
 
     @Test
-    void 커스텀_구분자에_음수가_포함된_경우_RuntimeException_발생() {
-        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> StringAddCalculator.splitAndSum("//;\n1;2;-5"));
+    void 커스텀_구분자에_음수가_포함된_경우_NegativeNumberException_발생() {
+        assertThatExceptionOfType(NegativeNumberException.class).isThrownBy(() -> StringAddCalculator.splitAndSum("//;\n1;2;-5"));
     }
+
 }
