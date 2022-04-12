@@ -19,10 +19,13 @@ public class RacingCar {
 
         Cars cars = Cars.generateCars(carCount);
 
-        for (int i = 0; i < roundCount; i++) {
+        int currentRound = 0;
+        while (currentRound < roundCount) {
             List<Integer> moveCounts = numberGenerator.generateRandomNumbers(carCount);
-            List<Integer> currentLocations = cars.move(moveCounts);
+            cars.move(moveCounts);
+            List<Integer> currentLocations = cars.getCurrentLocations();
             resultView.printEveryLocation(currentLocations);
+            currentRound++;
         }
     }
 }
