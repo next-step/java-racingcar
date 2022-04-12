@@ -21,6 +21,9 @@ public class OutputView {
     }
 
     private static void printCar(Car car) {
-        System.out.println(car);
+        for (int i = 0; i < car.position(); i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }

@@ -22,6 +22,10 @@ public class Car {
         }
     }
 
+    public int position() {
+        return position.getPosition();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -35,12 +39,4 @@ public class Car {
         return Objects.hash(position);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < position.getPosition(); i++) {
-            sb.append("-");
-        }
-        return sb.toString();
-    }
 }
