@@ -37,4 +37,8 @@ public class Game {
         trialCount.increaseNextTrial();
     }
 
+    public List<CarName> getWinners() {
+        return cars.getWinners();
+    }
+
 }

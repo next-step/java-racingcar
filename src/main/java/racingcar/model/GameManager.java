@@ -21,15 +21,29 @@ public class GameManager {
     }
 
     public void start() {
-        Cars cars = new Cars(inputView.inputCars());
-        TrialCount trialCount = inputView.inputTrialCount();
-        Game game = new Game(cars, trialCount, new MovementChecker());
+        Game game = generateGame();
+        playGame(game);
+        printWinner(game);
 
+    }
+
+    private void printWinner(Game game) {
+        List<CarName> winners = game.getWinners();
+        resultView.printWinners(winners);
+    }
+
+    private void playGame(Game game) {
         while (game.hasNextTrial()) {
             List<CarLocationResult> carLocationResults = game.play();
             resultView.printCurrentCarMovements(carLocationResults);
             game.increaseNextTrial();
         }
+    }
+
+    private Game generateGame() {
+        Cars cars = new Cars(inputView.inputCars());
+        TrialCount trialCount = inputView.inputTrialCount();
+        return new Game(cars, trialCount);
     }
 
 }
