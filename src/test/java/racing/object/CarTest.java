@@ -15,8 +15,8 @@ class CarTest {
   @Test
   @DisplayName("앞으로 1회 이동했을 때 이동 거리 확인")
   void oneMoveTest() {
-    Car car = new Car();
-    car.move();
+    Car car = new Car(new NumberCompareMoveStrategy(new FixedNumberGenerator(5)));
+    car.attempt();
 
     assertThat(car.getDistance()).isEqualTo(1);
   }
@@ -25,9 +25,9 @@ class CarTest {
   @DisplayName("앞으로 n회 이동했을 때 이동 거리 확인")
   @CsvSource(value = {"1|1", "2|2", "0|0", "10|10", "100|100"}, delimiter = '|')
   void nMoveTest(int n, int expected) {
-    Car car = new Car();
+    Car car = new Car(new NumberCompareMoveStrategy(new FixedNumberGenerator(5)));
     for (int i = 0; i < n; i++) {
-      car.move();
+      car.attempt();
     }
 
     assertThat(car.getDistance()).isEqualTo(expected);
@@ -40,8 +40,7 @@ class CarTest {
     //given
     NumberCompareMoveStrategy numberCompareMoveStrategy = new NumberCompareMoveStrategy(
         new FixedNumberGenerator(5));
-    Car car = new Car();
-    car.setMoveStrategy(numberCompareMoveStrategy);
+    Car car = new Car(numberCompareMoveStrategy);
 
     //when
     for (int i = 0; i < attempt; i++) {
