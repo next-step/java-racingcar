@@ -1,12 +1,12 @@
-package racing.module;
+package racing.view;
 
 import exception.CustomException;
 import java.util.Scanner;
 
-public class Input {
+public class InputView {
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    private Input() throws CustomException {
+    private InputView() throws CustomException {
         throw new CustomException("유틸성 클래스입니다.");
     }
 
