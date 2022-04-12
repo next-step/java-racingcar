@@ -15,7 +15,7 @@ public class CarTest {
         Car car = new Car();
 
         car.move(5);
-        assertThat(car.getCurMoveStateBar()).isEqualTo("-");
+        assertThat(car.checkPosition(1)).isTrue();
     }
 
     @Test
@@ -24,10 +24,10 @@ public class CarTest {
         Car car = new Car();
 
         car.move(0);
-        assertThat(car.getCurMoveStateBar()).isEqualTo("");
+        assertThat(car.checkPosition(0)).isTrue();
 
         car.move(1);
-        assertThat(car.getCurMoveStateBar()).isEqualTo("");
+        assertThat(car.checkPosition(0)).isTrue();
     }
 
     @Test
