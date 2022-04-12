@@ -3,7 +3,6 @@ package view;
 import java.util.List;
 
 public class ResultView {
-
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String POSITION_BAR = "-";
     private static final String NEW_LINE = "\n";
