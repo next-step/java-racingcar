@@ -2,9 +2,9 @@ package stringcalculator;
 
 public class PositiveNumber {
 
-    public static final String PARSING_FAIL_MESSAGE = "String to Integer Parsing Failed";
-    private final int number;
 
+    public static final String PARSING_FAIL_MESSAGE = "String to Integer Parsing Failed";
+  
     private PositiveNumber(int number) {
         if (number < 0) {
             throw new RuntimeException();
@@ -12,7 +12,9 @@ public class PositiveNumber {
         this.number = number;
     }
 
+  
     public static PositiveNumber createPositiveNumber(String string) {
+  
         return new PositiveNumber(getInteger(string));
     }
 
@@ -25,6 +27,7 @@ public class PositiveNumber {
             throw new NumberFormatException(PARSING_FAIL_MESSAGE);
         }
         return parsedInt;
+      
     }
 
     int getNumber() {
