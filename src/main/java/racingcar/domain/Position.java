@@ -7,7 +7,6 @@ public class Position {
     private static final int DEFAULT_POSITION = 0;
     private final int position;
 
-    //==생성 메서드==//
     public Position() {
         this(DEFAULT_POSITION);
     }
@@ -19,18 +18,15 @@ public class Position {
         this.position = position;
     }
 
-    //==비즈니스 로직==//
     public Position move() {
         return new Position(position + 1);
     }
 
 
-    //==getter==//
     public int getPosition() {
         return position;
     }
 
-    //=공통 메서드==//
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
