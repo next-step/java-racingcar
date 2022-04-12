@@ -5,6 +5,7 @@ import java.util.List;
 import racing.dto.RacingInput;
 import racing.object.Car;
 import racing.strategy.NumberCompareMoveStrategy;
+import racing.strategy.RandomNumberGenerator;
 import racing.view.RacingInputView;
 import racing.view.RacingOutputView;
 
@@ -46,7 +47,7 @@ public class RacingGame {
   private List<Car> makeCars(RacingInput racingInput) {
     List<Car> cars = new ArrayList<>();
     for (int i = 0; i < racingInput.getCarCount(); i++) {
-      cars.add(new Car(new NumberCompareMoveStrategy()));
+      cars.add(new Car(new NumberCompareMoveStrategy(new RandomNumberGenerator())));
     }
     return cars;
   }

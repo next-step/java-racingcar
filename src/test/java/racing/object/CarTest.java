@@ -1,7 +1,6 @@
 package racing.object;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,7 +18,7 @@ class CarTest {
     Car car = new Car();
     car.move();
 
-    assertEquals(car.getDistance(), 1);
+    assertThat(car.getDistance()).isEqualTo(1);
   }
 
   @ParameterizedTest
@@ -31,7 +30,7 @@ class CarTest {
       car.move();
     }
 
-    assertEquals(car.getDistance(), expected);
+    assertThat(car.getDistance()).isEqualTo(expected);
   }
 
   @ParameterizedTest
@@ -50,7 +49,7 @@ class CarTest {
     }
 
     //then
-    assertEquals(car.getDistance(), attempt);
+    assertThat(car.getDistance()).isEqualTo(attempt);
   }
 
   @ParameterizedTest
@@ -58,7 +57,8 @@ class CarTest {
   @CsvSource(value = {"1|1", "100|100", "52|52", "0|0"}, delimiter = '|')
   void randomCarMoveTest(int carCount, int attempt) {
     //given
-    NumberCompareMoveStrategy numberCompareMoveStrategy = new NumberCompareMoveStrategy(new FixedNumberGenerator(5));
+    NumberCompareMoveStrategy numberCompareMoveStrategy = new NumberCompareMoveStrategy(
+        new FixedNumberGenerator(5));
     Car[] cars = new Car[carCount];
     int[] distancesReal = new int[carCount];
     int[] distancesExcepted = new int[carCount];
@@ -78,7 +78,9 @@ class CarTest {
     }
 
     //then
-    assertArrayEquals(distancesReal, distancesExcepted);
+    for (int i = 0; i < cars.length; i++) {
+      assertThat(cars[i].getDistance()).isEqualTo(attempt);
+    }
   }
 
 }
