@@ -18,4 +18,22 @@ public final class PositiveInteger {
     public int value() {
         return value;
     }
+
+    public static PositiveInteger add(PositiveInteger origin, PositiveInteger add) {
+        return new PositiveInteger(origin.value + add.value);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof PositiveInteger) {
+            PositiveInteger positiveInteger = (PositiveInteger) obj;
+            return this.value == positiveInteger.value;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.valueOf(value).hashCode();
+    }
 }

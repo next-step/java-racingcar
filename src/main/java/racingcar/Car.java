@@ -1,22 +1,24 @@
 package racingcar;
 
 public class Car {
+    private static final int MOVE_STATE = 1;
     private final PositiveInteger state;
 
     public Car() {
         this.state = PositiveInteger.ZERO;
     }
 
-    public Car(int state) {
-        this.state = new PositiveInteger(state);
+    public Car(PositiveInteger state) {
+        this.state = state;
     }
 
     public Car move(MovingStrategy movingStrategy) {
         if (movingStrategy.movable()) {
-            return new Car(state.value()+1);
+            return new Car(PositiveInteger.add(state, new PositiveInteger(MOVE_STATE)));
         }
-        return new Car(state.value());
+        return new Car(new PositiveInteger(state.value()));
     }
+
     public int state() {
         return state.value();
     }
