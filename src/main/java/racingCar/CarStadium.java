@@ -7,11 +7,12 @@ public class CarStadium {
 
     private static final int BOUND = 10;
 
+    private static final Random random = new Random();
+
     private static LinkedList<Car> carList = new LinkedList<>();
     private static int rounds = 0;
 
     public static int extractRandomNumber() {
-        Random random = new Random();
         return random.nextInt(BOUND);
     }
 

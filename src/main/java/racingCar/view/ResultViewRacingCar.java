@@ -7,7 +7,10 @@ import java.util.LinkedList;
 
 public class ResultViewRacingCar {
 
-    public void resultViewRacing() {
+    private ResultViewRacingCar() {
+    };
+
+    public static void resultViewRacing() {
         System.out.println();
         System.out.println("실행결과");
 
@@ -18,7 +21,7 @@ public class ResultViewRacingCar {
         }
     }
 
-    private void resultViewCarMove() {
+    private static void resultViewCarMove() {
         LinkedList<Car> list = CarStadium.getCars();
 
         for (int i = 0; i < list.size(); ++i) {
@@ -27,7 +30,7 @@ public class ResultViewRacingCar {
         System.out.println();
     }
 
-    private void resultViewCarMove(Car car) {
+    private static void resultViewCarMove(Car car) {
         car.move(CarStadium.extractRandomNumber());
         System.out.println(car.getDistance());
     }

@@ -6,12 +6,17 @@ import java.util.Scanner;
 
 public class InputViewRacingCar {
 
-    public void inputRacingData() {
+    private static final Scanner scanner = new Scanner(System.in);
+
+    private InputViewRacingCar() {
+    };
+
+    public static void inputRacingData() {
         inputPlayCarNum();
         inputRounds();
     }
 
-    private void inputPlayCarNum() {
+    private static void inputPlayCarNum() {
         System.out.println("자동차 대수는 몇 대 인가요?");
 
         int nums = input();
@@ -19,7 +24,7 @@ public class InputViewRacingCar {
         CarStadium.initCars(nums);
     }
 
-    private void inputRounds() {
+    private static void inputRounds() {
         System.out.println("시도할 회수는 몇 회 인가요?");
 
         int rounds = input();
@@ -27,8 +32,7 @@ public class InputViewRacingCar {
         CarStadium.initRounds(rounds);
     }
 
-    private int input() {
-        Scanner scanner = new Scanner(System.in);
+    private static int input() {
         return scanner.nextInt();
     }
 }
