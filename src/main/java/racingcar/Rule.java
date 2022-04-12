@@ -20,10 +20,6 @@ public class Rule {
         return cars;
     }
 
-    public int getCountOfCar() {
-        return countOfCar;
-    }
-
     public int getMaxAttempts() {
         return maxAttempts;
     }
