@@ -1,38 +1,33 @@
 package racingcar.controller;
 
-import racingcar.domain.Car;
+import racingcar.model.Car;
+import racingcar.model.Cars;
+import racingcar.model.PositionControl;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.List;
-
 public class RacingGame {
-    private RacingCarProgressService racingCarProgressService = new RacingCarProgressService();
-    private int numberOfGames;
+    private Cars cars;
 
     public void startRacingGame() {
-        racingCarProgressService.createCars(InputView.inputNumberOfCars());
-        numberOfGames = InputView.inputNumberOfAttempts();
-
-        racingCarProgress();
+        cars = new Cars(InputView.inputNumberOfCars());
+        int numberOfGames = InputView.inputNumberOfAttempts();
+        progressNumberOfGames(numberOfGames);
     }
 
-    private void racingCarProgress() {
+    private void progressNumberOfGames(int numberOfGames) {
+        OutputView.printCarRacingResult();
         for (int i = 0; i < numberOfGames; i++) {
-            movingCars();
+            carMovementByRound();
         }
     }
 
-    private void movingCars() {
-        List<Car> cars = racingCarProgressService.getCarsList();
-        for (Car car : cars) {
-            racingCarProgressService.changeDistanceByCar(car, getRandomValue());
+    private void carMovementByRound() {
+        PositionControl positionControl = new PositionControl();
+        for (Car car : cars.getCars()) {
+            car.move();
         }
 
         OutputView.printCarRacingIntermediateState(cars);
-    }
-
-    private int getRandomValue() {
-        return racingCarProgressService.getRandomValue();
     }
 }

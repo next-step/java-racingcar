@@ -1,21 +1,29 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
-
-import java.util.List;
+import racingcar.model.Car;
+import racingcar.model.Cars;
 
 public class OutputView {
-    public static final String MOVE_DISTANCE_MARK = "-";
-    public static final String LINE_DIVISION = "\n";
+    private static final String RACING_RESULT_PROMPT = "실행결과";
+    private static final String MOVE_DISTANCE_MARK = "-";
+    private static final String LINE_DIVISION = "\n";
 
-    public static void printCarRacingIntermediateState(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.println(getDashOnDistanceByCars(car.getDistanceTraveled()));
+    private OutputView() {
+        throw new AssertionError();
+    }
+
+    public static void printCarRacingResult() {
+        System.out.println(RACING_RESULT_PROMPT);
+    }
+
+    public static void printCarRacingIntermediateState(Cars cars) {
+        for (Car car : cars.getCars()) {
+            System.out.println(getDashOnDistanceByCars(car.currentPosition()));
         }
         System.out.print(LINE_DIVISION);
     }
 
-    public static String getDashOnDistanceByCars(int movementDistance) {
+    private static String getDashOnDistanceByCars(int movementDistance) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(MOVE_DISTANCE_MARK.repeat(movementDistance));
         return stringBuilder.toString();
