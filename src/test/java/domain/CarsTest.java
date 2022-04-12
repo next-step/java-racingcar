@@ -11,6 +11,6 @@ class CarsTest {
     @ValueSource(ints = {1, 2, 3, 4, 5, 100})
     void constructCarsTest(int size) {
         Cars cars = new Cars(size);
-        assertThat(cars.getCars()).hasSize(size);
+        assertThat(cars.getCarsPosition()).hasSize(size);
     }
 }
