@@ -17,7 +17,7 @@ public class FormulaRacing {
 
         Racing racing = new Racing(rule.getMaxAttempts(), cars);
         racing.start();
-        racing.end();
+        racing.cleanUp();
 
         Printer.print("레이싱 종료");
     }

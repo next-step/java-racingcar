@@ -28,7 +28,7 @@ public class Racing {
         }
     }
 
-    public void end() {
+    public void cleanUp() {
         for (RacingCar car: cars) {
             car.reset();
         }
