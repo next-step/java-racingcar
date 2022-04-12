@@ -8,8 +8,8 @@ public final class PositiveIntegers {
     private final List<PositiveInteger> positiveIntegers;
 
     public PositiveIntegers(List<PositiveInteger> inputs) {
+        validate(inputs);
         List<PositiveInteger> positiveIntegers = new ArrayList<>(inputs);
-        validate(positiveIntegers);
         this.positiveIntegers = positiveIntegers;
     }
 

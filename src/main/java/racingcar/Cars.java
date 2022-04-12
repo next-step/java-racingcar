@@ -8,8 +8,8 @@ public final class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> input) {
+        validate(input);
         List<Car> cars = new ArrayList<>(input);
-        validate(cars);
         this.cars = cars;
     }
 
