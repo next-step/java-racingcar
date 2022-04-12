@@ -3,10 +3,11 @@ package racingcar;
 public class Car {
 
     public static final int MINIMUM_NUMBER_FOR_MOVEMENT = 4;
+    public static final int START_LOCATION = 1;
     private int currentLocation;
 
     public Car() {
-        this.currentLocation = 1;
+        this.currentLocation = START_LOCATION;
     }
 
     public int getCurrentLocation() {

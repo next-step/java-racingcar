@@ -4,6 +4,8 @@ import java.util.List;
 
 public class ResultView {
 
+    public static final String PATH_SYMBOL = "-";
+
     public void printEveryLocation(List<Integer> resultLocations) {
         for (Integer resultLocation : resultLocations) {
             String currentLocationView = printResult(resultLocation);
@@ -16,7 +18,7 @@ public class ResultView {
         StringBuilder stringBuilder = new StringBuilder();
         int count = 0;
         while (count < resultLocation) {
-            stringBuilder.append("-");
+            stringBuilder.append(PATH_SYMBOL);
             count++;
         }
         return stringBuilder.toString();
