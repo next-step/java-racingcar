@@ -33,6 +33,8 @@ public class GameManager {
     }
 
     private void playGame(Game game) {
+        resultView.printCurrentCarMovements(game.getInitCarLocationResult());
+
         while (game.hasNextTrial()) {
             List<CarLocationResult> carLocationResults = game.play();
             resultView.printCurrentCarMovements(carLocationResults);

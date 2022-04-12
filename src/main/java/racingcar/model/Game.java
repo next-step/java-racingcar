@@ -22,8 +22,11 @@ public class Game {
         this(cars, trialCount, new MovementChecker());
     }
 
+    public List<CarLocationResult> getInitCarLocationResult() {
+        return cars.getCarLocationResult();
+    }
+
     public List<CarLocationResult> play() {
-        boolean canMove = movementChecker.canMove(RandomNumberUtil.generateRandomNumber());
         List<Integer> randomNumberList = RandomNumberUtil.generateRandomNumberList(cars.size());
         cars.move(movementChecker.checkMovableList(randomNumberList));
         return cars.getCarLocationResult();
