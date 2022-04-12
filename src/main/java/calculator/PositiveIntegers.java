@@ -1,6 +1,8 @@
 package calculator;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public final class PositiveIntegers {
     private final List<PositiveInteger> positiveIntegers;
