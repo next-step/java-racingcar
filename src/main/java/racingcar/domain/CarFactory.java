@@ -1,7 +1,7 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarFactory {
 
@@ -9,11 +9,9 @@ public class CarFactory {
         throw new AssertionError();
     }
 
-    public static List<Car> generateCarsOfSize(int carSize) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carSize; i++) {
-            cars.add(new Car());
-        }
-        return cars;
+    public static List<Car> generateCars(List<CarName> carNames) {
+        return carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 }
