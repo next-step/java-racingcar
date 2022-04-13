@@ -1,10 +1,10 @@
 package calculator;
 
-import static calculator.StringAddCalculator.NEGATIVE_VALIDATION;
+import org.junit.jupiter.api.Test;
+
+import static calculator.ExceptionCode.NEGATIVE_VALIDATION;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
-import org.junit.jupiter.api.Test;
 
 public class StringCalculatorTest {
 
@@ -44,9 +44,9 @@ public class StringCalculatorTest {
     void negativeGiven_ShouldThrowRuntimeException() {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1"))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining(NEGATIVE_VALIDATION);
+            .hasMessageContaining(NEGATIVE_VALIDATION.getMessage());
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-12321"))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining(NEGATIVE_VALIDATION);
+            .hasMessageContaining(NEGATIVE_VALIDATION.getMessage());
     }
 }

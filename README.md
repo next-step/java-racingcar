@@ -7,3 +7,15 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## Step3 기능목록 
+- 입력받으면 이동하는 자동차 객체에 기능 추가
+- 동작하는 레이싱 게임 구현
+- 자동차의 이동 거리를 출력해주는 Printer 추가 
+- 사용자에게 입력을 받는 Prompt 추가 
+- 레이싱을 시작, 관리하는 RacingController 생성
+ 
+### 리팩토링
+- RacingCar가 이동거리 상태를 가지도록 변경
+- Rule에게 차량 준비하는 책임 부여 
+- 게임 시작과 종료 책임이 있는 Racing 객체 생성
