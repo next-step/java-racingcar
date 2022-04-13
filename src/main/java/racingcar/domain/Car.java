@@ -6,13 +6,15 @@ import java.util.Objects;
 
 public class Car {
 
+    private CarName carName;
     private Position position;
 
-    public Car() {
-        this(new Position());
+    public Car(CarName carName) {
+        this(carName, new Position());
     }
 
-    public Car(Position position) {
+    public Car(CarName carName, Position position) {
+        this.carName = carName;
         this.position = position;
     }
 
@@ -22,7 +24,11 @@ public class Car {
         }
     }
 
-    public int position() {
+    public String getName() {
+        return carName.getName();
+    }
+
+    public int getPosition() {
         return position.getPosition();
     }
 
@@ -31,12 +37,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(position, car.position);
+        return Objects.equals(carName, car.carName) && Objects.equals(position, car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return Objects.hash(carName, position);
     }
-
 }
