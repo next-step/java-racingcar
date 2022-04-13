@@ -1,21 +1,26 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
     private static final int CHECK_CAR_COUNT = 0;
+    private static final String CARS_DELIMITER = ",";
+    private static final int FIRST_INDEX = 0;
     private final List<Car> cars;
     private final RaceCondition raceCondition;
 
     private Cars(Builder builder) {
-        this.cars = IntStream
-                .range(0, builder.carCount)
-                .mapToObj(count -> new Car())
+        this.cars = toStringList(splitCarsName(builder.carsName))
+                .stream()
+                .map(Car::new)
                 .collect(Collectors.toList());
         this.raceCondition = builder.raceCondition;
+    }
+
+    public Cars(List<Car> cars, RaceCondition raceCondition) {
+        this.cars = cars;
+        this.raceCondition = raceCondition;
     }
 
     public static Builder builder() {
@@ -26,26 +31,76 @@ public class Cars {
         return cars.size() > CHECK_CAR_COUNT;
     }
 
-    public void addMove() {
-        cars.forEach(car ->
-                car.addMoveCount(raceCondition.generateCondition()));
+    public List<Car> getCopyCarList() {
+        List<Car> copyCarList = new ArrayList<>();
+        for(Car car : cars) {
+            copyCarList.add(new Car(car.carName(), car.position()));
+        }
+        return copyCarList;
     }
 
-    public List<String> carsMoveState(String expression) {
+    public boolean checkSizeFromInput(int checkSize) {
+        return cars.size() == checkSize;
+    }
+
+    private String[] splitCarsName(String carsName) {
+        return carsName.split(CARS_DELIMITER);
+    }
+
+    private List<String> toStringList(String[] carsName) {
+        if (validateCarsName(carsName)) {
+            return Arrays.stream(carsName)
+                    .collect(Collectors.toList());
+        }
+        throw new IllegalArgumentException("자동차 이름 처리 간 문제가 발생 하였습니다.");
+    }
+
+    private boolean validateCarsName(String[] carsName) {
+        return carsName != null && carsName.length > 0;
+    }
+
+    public void addMove() {
+        cars.forEach(car ->
+                car.move(raceCondition.generateCondition()));
+    }
+
+    public List<String> convertPositionToExpression(String carNameColon, String expression) {
         List<String> moveStates = new ArrayList<>();
         for (Car car : cars) {
-            moveStates.add(car.moveCountExpression(expression));
+            moveStates.add(car.carExpression(carNameColon, expression));
         }
-
         return moveStates;
     }
 
+    private Car findRaceWinner() {
+        if (checkSize()) {
+            cars.sort(Comparator.reverseOrder());
+            return cars.get(FIRST_INDEX);
+        }
+        throw new IllegalArgumentException("Car List 에는 한건 이상의 데이터가 있어야 합니다.");
+    }
+
+    private List<Car> makeRaceWinners() {
+        Car winner = findRaceWinner();
+        return cars.stream()
+                .filter(car -> car.isEqualPosition(winner))
+                .collect(Collectors.toList());
+    }
+
+    public String getWinners() {
+        List<String> winners = makeRaceWinners().stream()
+                .map(Car::carName)
+                .collect(Collectors.toList());
+
+        return String.join(CARS_DELIMITER, winners);
+    }
+
     public static class Builder {
-        private int carCount;
+        private String carsName;
         private RaceCondition raceCondition;
 
-        public Builder carCount(int carCount) {
-            this.carCount = carCount;
+        public Builder carsName(String carsName) {
+            this.carsName = carsName;
             return this;
         }
 

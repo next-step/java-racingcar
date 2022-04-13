@@ -1,19 +1,18 @@
 package view;
 
-import racingcar.Race;
-
 import java.util.Scanner;
 
 public class InputView {
-    public static void main(String[] args) throws InterruptedException {
-        Scanner inputNumber = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int carCount = inputNumber.nextInt();
+    public static int inputRaceTryCount() {
         System.out.println("시도할 횟수는 몇 회 인가요?");
-        int tryCount = inputNumber.nextInt();
+        return input.nextInt();
+    }
 
-        new Race(new ResultView()).start(carCount, tryCount);
+    public static String inputCarsName() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return input.nextLine();
     }
 
 }

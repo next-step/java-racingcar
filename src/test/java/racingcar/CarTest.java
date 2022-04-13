@@ -17,7 +17,7 @@ class CarTest {
     @ValueSource(ints = {-1, 10})
     void 경주환경_범위에_해당되지_않은_범위를_입력_받았을때(int condition) {
         Car car = new Car();
-        assertThatThrownBy(() -> car.addMoveCount(condition))
+        assertThatThrownBy(() -> car.move(condition))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -27,8 +27,8 @@ class CarTest {
     @CsvSource({"4,9"})
     void 경주중_자동차가_이동하는_경우(int condition) {
         Car car = new Car();
-        car.addMoveCount(condition);
-        assertThat(car.moveCountExpression("-")).isEqualTo("-");
+        car.move(condition);
+        assertThat(car.checkPosition(1)).isTrue();
     }
 
     @ParameterizedTest
@@ -36,8 +36,8 @@ class CarTest {
     @ValueSource(ints = {0, 3})
     void 경주중_자동차가_멈춰있는_경우(int condition) {
         Car car = new Car();
-        car.addMoveCount(condition);
-        assertThat(car.moveCountExpression("-")).isBlank();
+        car.move(condition);
+        assertThat(car.checkPosition(1)).isFalse();
     }
 
 }
