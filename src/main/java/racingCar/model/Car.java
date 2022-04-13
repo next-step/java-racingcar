@@ -26,6 +26,9 @@ public class Car {
     }
     return position;
   }
+  public String name() {
+    return this.name;
+  }
 
   public int position() {
     return this.position;
