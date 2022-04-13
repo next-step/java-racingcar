@@ -6,7 +6,7 @@ import racingcar.dto.RoundResults;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-public class Game {
+public class RacingGame {
     public void start() {
         Cars cars = generateCars();
         Rounds rounds = generateRounds(cars);
@@ -17,12 +17,10 @@ public class Game {
     }
 
     private Cars generateCars() {
-        int carCounts = InputView.inputCarCounts();
-        return Cars.fromCarCounts(carCounts);
+        return new Cars(InputView.inputCarCounts());
     }
 
     private Rounds generateRounds(Cars cars) {
-        int roundCounts = InputView.inputRounds();
-        return Rounds.fromCarsAndRoundsCounts(cars, roundCounts);
+        return new Rounds(cars, InputView.inputRounds());
     }
 }

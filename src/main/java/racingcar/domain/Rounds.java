@@ -1,10 +1,10 @@
 package racingcar.domain;
 
-import racingcar.dto.RoundResult;
 import racingcar.dto.RoundResults;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Rounds {
     private final List<Round> rounds;
@@ -13,23 +13,15 @@ public class Rounds {
         this.rounds = rounds;
     }
 
-    public RoundResults play() {
-        List<RoundResult> roundResults = new ArrayList<>();
+    public Rounds(Cars cars, Integer roundCount) {
+        this.rounds = new ArrayList<>();
 
-        for (Round round : rounds) {
-            roundResults.add(round.play());
-        }
-
-        return new RoundResults(roundResults);
-    }
-
-    public static Rounds fromCarsAndRoundsCounts(Cars cars, int roundCounts) {
-        List<Round> rounds = new ArrayList<>();
-
-        for (int i = 0; i < roundCounts; i++) {
+        for (int i = 0; i < roundCount; i++) {
             rounds.add(new Round(cars));
         }
+    }
 
-        return new Rounds(rounds);
+    public RoundResults play() {
+        return new RoundResults(rounds.stream().map(Round::play).collect(Collectors.toList()));
     }
 }

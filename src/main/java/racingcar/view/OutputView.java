@@ -4,10 +4,13 @@ import racingcar.dto.RoundResult;
 import racingcar.dto.RoundResults;
 
 public class OutputView {
+    private static final String START_LINE = "|";
+    private static final String CAR_POSITION = "-";
+
     public static void printPosition(int position) {
-        System.out.print("|");
+        System.out.print(START_LINE);
         for (int i = 0; i < position; i++) {
-            System.out.print("-");
+            System.out.print(CAR_POSITION);
         }
         System.out.println();
     }

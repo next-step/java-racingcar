@@ -2,12 +2,21 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public Cars(Integer carCount) {
+        this.cars = new ArrayList<>();
+
+        for (int i = 0; i < carCount; i++) {
+            cars.add(new Car());
+        }
     }
 
     public void act() {
@@ -17,22 +26,6 @@ public class Cars {
     }
 
     public List<Integer> getCarPositions() {
-        List<Integer> carPositions = new ArrayList<>();
-
-        for (Car car : cars) {
-            carPositions.add(car.getPosition());
-        }
-
-        return carPositions;
-    }
-
-    public static Cars fromCarCounts(int carCounts) {
-        List<Car> cars = new ArrayList<>();
-
-        for (int i = 0; i < carCounts; i++) {
-            cars.add(new Car());
-        }
-
-        return new Cars(cars);
+        return cars.stream().map(Car::getPosition).collect(Collectors.toList());
     }
 }
