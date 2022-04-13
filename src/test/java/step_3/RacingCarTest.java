@@ -6,6 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.stream.IntStream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -49,6 +51,14 @@ public class RacingCarTest {
     @Test
     @DisplayName("현재 회차의 전진 이력")
     void forwardHistory() {
-        assertThat(new RacingCar(5).forwardHistory()).isEqualTo(3);
+        // given
+        int totalRound = 7;
+        RacingCar racingCar = new RacingCar(totalRound);
+
+        // when
+        IntStream.range(0, totalRound).forEach(thisRound -> racingCar.stopOfForward(thisRound, thisRound));
+
+        // then
+        assertThat(racingCar.forwardHistory()).isEqualTo(3);
     }
 }
