@@ -14,7 +14,7 @@ public final class ResultView {
     private static final String DISTANCE_STRING = "-";
     private static final String RACING_RESULT_FORMAT = "%s : %s";
 
-    private static final String WINNER_DELIMITER = ",";
+    private static final String WINNER_DELIMITER = ", ";
     private static final String WINNER_RESULT_FORMAT = "%s가 최종 우승했습니다.";
 
 
