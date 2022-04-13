@@ -2,7 +2,6 @@ package racingcar.view;
 
 import racingcar.domain.Car;
 import racingcar.domain.Histories;
-import racingcar.domain.History;
 import racingcar.domain.Round;
 
 import java.util.List;

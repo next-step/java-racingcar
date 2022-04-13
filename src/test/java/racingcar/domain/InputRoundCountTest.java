@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.input.InputCarCount;
 import racingcar.domain.input.InputRoundCount;
 import racingcar.domain.input.RoundCount;
 
