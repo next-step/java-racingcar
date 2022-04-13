@@ -42,6 +42,14 @@ class CarTest {
     assertThatThrownBy(() -> {
       Car car = new Car("testtesrefefdedede");
     }).isInstanceOf(RuntimeException.class);
-
   }
+
+  @Test
+  @DisplayName(" 자동차 이름은 공백일 수 없습니다.")
+  void blankNameTest() {
+    assertThatThrownBy(() -> {
+      Car car = new Car("");
+    }).isInstanceOf(RuntimeException.class);
+  }
+
 }
