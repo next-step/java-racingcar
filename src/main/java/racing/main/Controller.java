@@ -13,11 +13,11 @@ public class Controller {
         int unit = InputView.inputNumberOfCars();
         int round = InputView.inputNumberOfRounds();
 
-        Competition competition = new Competition(unit, round, new RandomCondition());
-//        List<Cars> snapshots = competition.progressEntireRoundAndRecordAllSnapshot();
-//        ResultView.print(snapshots);
+        Competition competition = new Competition(unit, round);
+        List<Cars> snapshots = competition.progressEntireRoundAndRecordAllSnapshot(new RandomCondition());
+        ResultView.print(snapshots);
 
-        Cars snapshot = competition.progressEntireRoundAndRecordLastSnapshot();
-        ResultView.print(snapshot);
+//        Cars snapshot = competition.progressEntireRoundAndRecordLastSnapshot(new RandomCondition());
+//        ResultView.print(snapshot);
     }
 }

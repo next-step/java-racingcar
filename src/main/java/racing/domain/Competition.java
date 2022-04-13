@@ -6,33 +6,28 @@ import java.util.List;
 public class Competition {
     private final Cars cars;
     private final int round;
-    private Movable movable;
 
-    public Competition(int unit, int round, Movable movable) {
+    public Competition(int unit, int round) {
         cars = new Cars(unit);
         this.round = round;
-        this.movable = movable;
     }
 
-    public Cars progressEntireRoundAndRecordLastSnapshot() {
+    public Cars progressEntireRoundAndRecordLastSnapshot(Movable movable) {
         for (int i = 0; i < round; i++) {
-            progressEachRound();
+            progressEachRound(movable);
         }
         return cars;
     }
 
-    public List<Cars> progressEntireRoundAndRecordAllSnapshot() {
+    public List<Cars> progressEntireRoundAndRecordAllSnapshot(Movable movable) {
         List<Cars> snapshots = new ArrayList<>(round);
         for (int i = 0; i < round; i++) {
-            snapshots.add(i, progressEachRound().newInstance());
+            snapshots.add(i, progressEachRound(movable));
         }
         return snapshots;
     }
 
-    private Cars progressEachRound() {
-        for (Car car : cars.getCars()) {
-            car.move(movable);
-        }
-        return cars;
+    private Cars progressEachRound(Movable movable) {
+        return cars.move(movable);
     }
 }

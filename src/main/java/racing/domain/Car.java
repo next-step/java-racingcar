@@ -14,18 +14,14 @@ public class Car {
         this.distance = distance;
     }
 
-    public int move(Movable movable) {
+    Car move(Movable movable) {
         if (movable.isMovable()) {
-            return ++distance;
+            return new Car(++distance);
         }
-        return distance;
+        return new Car(distance);
     }
 
     public int getDistance() {
         return distance;
-    }
-
-    public Car newInstance() {
-        return new Car(distance);
     }
 }

@@ -18,18 +18,16 @@ public class Cars {
         return cars;
     }
 
-    public Cars newInstance() {
-        List<Car> newCars = new ArrayList<>(cars.size());
-        for (int i = 0, len = cars.size(); i < len; i++) {
-            newCars.add(i, cars.get(i).newInstance());
+    Cars move(Movable movable) {
+        List<Car> carList = new ArrayList<>(cars.size());
+        for (Car car : cars) {
+            carList.add(car.move(movable));
         }
-
-        return new Cars(newCars);
+        return new Cars(carList);
     }
 
     private List<Car> initCars(int unit) {
-        List<Car> cars;
-        cars = new ArrayList<>(unit);
+        List<Car> cars = new ArrayList<>(unit);
         for (int i = 0; i < unit; i++) {
             cars.add(i, new Car());
         }
