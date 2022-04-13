@@ -1,6 +1,8 @@
 package racingCar;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 public class CarStadium {
@@ -34,13 +36,53 @@ public class CarStadium {
         rounds = nums;
     }
 
-
     public static int getRounds() {
         return rounds;
     }
 
     public static LinkedList<Car> getCars() {
         return carList;
+    }
+
+    public static ArrayList<String> getWinners(LinkedList<Car> list) {
+        ArrayList<String> winners = findWinners(list, getMaxDistance(list));
+
+        return winners;
+    }
+
+    private static ArrayList<String> findWinners(LinkedList<Car> list, int max) {
+        ArrayList<String> winners = new ArrayList<>();
+
+        for (int j = 0; j < list.size(); ++j) {
+            Car car = list.get(j);
+            addWinners(max, winners, car);
+        }
+
+        return winners;
+    }
+
+    private static void addWinners(int max, ArrayList<String> winners, Car car) {
+        if (max == car.getDistance().length()) {
+            winners.add(car.getName());
+        }
+    }
+
+    private static int getMaxDistance(LinkedList<Car> list) {
+        int maxDistance = 0;
+
+        for (int j = 0; j < list.size(); ++j) {
+            int distance = list.get(j).getDistance().length();
+            maxDistance = getMaxDistance(maxDistance, distance);
+        }
+
+        return maxDistance;
+    }
+
+    private static int getMaxDistance(int maxDistance, int distance) {
+        if (distance > maxDistance) {
+            maxDistance = distance;
+        }
+        return maxDistance;
     }
 
 

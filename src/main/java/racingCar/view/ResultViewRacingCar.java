@@ -11,7 +11,9 @@ import java.util.List;
 public class ResultViewRacingCar {
 
     private ResultViewRacingCar() {
-    };
+    }
+
+    ;
 
     public static void resultViewRacing() {
         System.out.println();
@@ -24,29 +26,7 @@ public class ResultViewRacingCar {
             resultViewCarData(list);
         }
 
-        // TODO
-        // 리팩토링 필요
-        // CarStadium에서 우승자를 찾아야하는게 맞을듯
-        int max = 0;
-        int j;
-        for(j = 0; j < list.size(); ++j) {
-            int distance = list.get(j).getDistance().length();
-            if (distance > max) {
-                max = distance;
-            }
-        }
-
-        for(j = 0; j < list.size(); ++j) {
-            Car car = list.get(j);
-            if (max == car.getDistance().length()) {
-                System.out.print(car.getName() + ", ");
-            }
-        }
-        System.out.print("가 최종 우승했습니다");
-        System.out.println();
-        //
-
-
+        resultViewWinners(list);
     }
 
     private static void resultViewCarData(List<Car> list) {
@@ -66,5 +46,25 @@ public class ResultViewRacingCar {
         //TODO view에서 자동차를 move하는게 맞나???
         car.move(CarStadium.extractRandomNumber());
         System.out.println(car.getDistance());
+    }
+
+    private static void resultViewWinners(LinkedList<Car> list) {
+        ArrayList<String> winners = CarStadium.getWinners(list);
+
+        for (int i = 0; i < winners.size(); ++i) {
+            resultViewWinners(winners, i);
+        }
+
+        System.out.print("가 최종 우승했습니다.");
+        System.out.println();
+
+    }
+
+    private static void resultViewWinners(ArrayList<String> winners, int i) {
+        if (i == 0) {
+            System.out.print(winners.get(i));
+            return;
+        }
+        System.out.print("," + winners.get(i));
     }
 }
