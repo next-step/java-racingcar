@@ -75,4 +75,13 @@ public class RacingCarTest {
         assertThatThrownBy(() -> new Car("abcabcabc", new NormalStrategy()))
                 .isInstanceOf(InvalidCarNameException.class);
     }
+
+    @Test
+    public void 자동차이름분리_테스트() {
+        String names = "kim,jeong,lee";
+        String[] carNames = names.split(",");
+
+        assertThat(carNames).containsExactly("kim","jeong","lee");
+
+    }
 }

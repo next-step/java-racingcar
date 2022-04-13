@@ -16,16 +16,24 @@ public class CarStadium {
         return random.nextInt(BOUND);
     }
 
-    public static void initCars(int nums) {
-        for (int i = 0; i < nums; ++i) {
-            Car car = new Car("ykim", new NormalStrategy());
+    public static void initCars(String cars) {
+
+        String[] carNames = splitCarNames(cars);
+
+        for (int i = 0; i < carNames.length; ++i) {
+            Car car = new Car(carNames[i], new NormalStrategy());
             carList.add(car);
         }
+    }
+
+    private static String[] splitCarNames(String cars) {
+        return cars.split(",");
     }
 
     public static void initRounds(int nums) {
         rounds = nums;
     }
+
 
     public static int getRounds() {
         return rounds;
