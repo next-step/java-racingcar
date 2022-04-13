@@ -17,13 +17,13 @@
 |```private```|```id: Long```|자동차의 id|
 |```private```|```distance: int```|자동차가 전진한 거리|
 |----------------|----------------|----------------|
-|```private```|```move():void```|자동차가 한칸 전진하다. (distance의 값이 1 증가한다)|
-|```private```|```canMove(value: int): Boolean```| 자동차가 전진할 수 있는가  |
-|```private```|```getDistance(): int```| 자동차가 지나간 거리를 반환한다.  |
+|```public```|```move():void```|자동차가 한칸 전진하다. (distance의 값이 1 증가한다)|
+|```public```|```canBeMove(value: int): Boolean```| 자동차가 전진할 수 있는가  |
+|```public```|```getDistance(): int```| 자동차가 지나간 거리를 반환한다.  |
 
 
 #### 테스트 케이스
-- ```canMove(value: int)``` 메서드에  ```value``` parameter가 4 이상일때  true를 반환한다.
+- ```canBeMove(value: int)``` 메서드에  ```value``` parameter가 4 이상일때  true를 반환한다.
 - ```run()``` distance가 1 증가한다.
 - ```getDistane()``` distance를 반환한다.
 
@@ -34,9 +34,11 @@
 |```private```|```cars:  List<Car>```|경주에 참가한 자동차들|
 |```private```|```round: int```|경기 라운드|
 |```private```|```result: ResultView```|자동차가 달려간 거리를 담고있는 리스트|
+|```private```|```random: Random```|차동차에게 던져줄 난수를 생성하는 객|
 |----------------|----------------|----------------|
-|```public```|```play(): void```|경기를 시작한다.|
+|```public```|```playRacing(): void```|경기를 시작한다.|
 |```private```|```dispatch(): void```|경기 진행상태를 ResultView에 보낸다.|
+|```private```|```getRandomNumber(): int```|난수를 생성한다.|
 
 
 ### InputView Class
