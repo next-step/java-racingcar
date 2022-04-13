@@ -16,26 +16,26 @@ public class CarTest {
 
     @Test
     void 차가_전진() {
-        assertThat(car.moveForwardOrStop(() -> true)).isEqualTo(1);
+        assertThat(car.move(() -> true)).isEqualTo(1);
     }
 
     @Test
     void 차가_정지() {
-        assertThat(car.moveForwardOrStop(() -> false)).isEqualTo(0);
+        assertThat(car.move(() -> false)).isEqualTo(0);
     }
 
     @Test
     void 차의_누적거리() {
         assertAll(
-                () -> car.accumulateOneRound(() -> true),
+                () -> car.move(() -> true),
                 () -> assertThat(car.getDistance()).isEqualTo(1),
-                () -> car.accumulateOneRound(() -> false),
+                () -> car.move(() -> false),
                 () -> assertThat(car.getDistance()).isEqualTo(1),
-                () -> car.accumulateOneRound(() -> true),
+                () -> car.move(() -> true),
                 () -> assertThat(car.getDistance()).isEqualTo(2),
-                () -> car.accumulateOneRound(() -> true),
+                () -> car.move(() -> true),
                 () -> assertThat(car.getDistance()).isEqualTo(3),
-                () -> car.accumulateOneRound(() -> false),
+                () -> car.move(() -> false),
                 () -> assertThat(car.getDistance()).isEqualTo(3)
         );
     }

@@ -1,9 +1,6 @@
 package racing.domain;
 
 public class Car {
-    private static final int STOP = 0;
-    private static final int MOVE_FORWARD = 1;
-
     private final String name;
     private int distance;
 
@@ -17,16 +14,11 @@ public class Car {
         this.distance = distance;
     }
 
-    public int accumulateOneRound(Movable movable) {
-        distance += moveForwardOrStop(movable);
-        return distance;
-    }
-
-    public int moveForwardOrStop(Movable movable) {
+    public int move(Movable movable) {
         if (movable.isMovable()) {
-            return MOVE_FORWARD;
+            return ++distance;
         }
-        return STOP;
+        return distance;
     }
 
     public int getDistance() {

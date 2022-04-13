@@ -31,7 +31,7 @@ public class Competition {
 
     private Cars progressEachRound() {
         for (Car car : cars.getCars()) {
-            car.accumulateOneRound(movable);
+            car.move(movable);
         }
         return cars;
     }
