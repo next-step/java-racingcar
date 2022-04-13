@@ -2,12 +2,15 @@ package racingcar;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RaceTest {
     @Test
     void createThreeCars() {
-        assertThat(Race.createCars(3)).hasSize(3);
+        Race race = new Race();
+        assertThat(race.createCars(3)).hasSize(3);
     }
 
     @Test

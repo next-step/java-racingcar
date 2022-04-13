@@ -5,11 +5,12 @@ import java.util.List;
 import java.util.Random;
 
 public class Race {
-    public static List<Car> createCars(int n) {
-        List<Car> cars = new ArrayList<Car>();
-        Car car = new Car();
+    public final List<Car> cars = new ArrayList<Car>();;
+
+    public List<Car> createCars(int n) {
+//        List<Car> cars = new ArrayList<Car>();
         for (int i = 0; i < n; i++) {
-            cars.add(car);
+            this.cars.add(new Car());
         }
         return cars;
     }
@@ -20,8 +21,17 @@ public class Race {
 
     public static RolledResult roll(Car car) {
         int n = Race.getRandom();
-        if (n < 4) return new RolledResult(false, car);
+        if (n < 4) {
+            return new RolledResult(false, car);
+        };
         car.move();
         return new RolledResult(true, car);
+    }
+
+    public void rollCars () {
+        for (Car car:
+             this.cars) {
+            roll(car);
+        }
     }
 }

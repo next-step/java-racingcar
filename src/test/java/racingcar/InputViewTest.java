@@ -12,7 +12,4 @@ public class InputViewTest {
         assertThat(InputView.isInputRange(11)).isFalse();
     }
     // getTryNumber
-
-
-
 }
