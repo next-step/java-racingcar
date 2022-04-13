@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import racingcar.model.Cars;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
@@ -18,12 +20,16 @@ public class RacingCarController {
 
     Cars cars = new Cars(count);
     for (int i = 0; i < times; i++) {
-      playOneTurn(cars);
+      cars.move(getRandomNumbers(count));
       OutputView.printOutput(cars.getPositions());
     }
   }
 
-  public static void playOneTurn(Cars cars) {
-    cars.getCars().forEach(car -> car.moveOrStop(RandomUtil.getRandomNumber()));
+  private static List<Integer> getRandomNumbers(int count) {
+    List<Integer> randomNumbers = new ArrayList<>();
+    for (int i = 0; i < count; i++) {
+      randomNumbers.add(RandomUtil.getRandomNumber());
+    }
+    return randomNumbers;
   }
 }

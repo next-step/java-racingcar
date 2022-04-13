@@ -23,6 +23,12 @@ public class Cars {
     return cars;
   }
 
+  public void move(List<Integer> randomNumbers) {
+    for (int i = 0; i < randomNumbers.size(); i++) {
+      getCars().get(i).moveOrStop(randomNumbers.get(i));
+    }
+  }
+
   public List<Integer> getPositions() {
     return cars.stream()
         .map(Car::getPosition)
