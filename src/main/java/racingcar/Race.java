@@ -8,7 +8,6 @@ public class Race {
     public final List<Car> cars = new ArrayList<Car>();;
 
     public List<Car> createCars(int n) {
-//        List<Car> cars = new ArrayList<Car>();
         for (int i = 0; i < n; i++) {
             this.cars.add(new Car());
         }
