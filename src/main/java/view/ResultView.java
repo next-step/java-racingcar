@@ -1,6 +1,5 @@
 package view;
 
-import racingcar.Car;
 import racingcar.Cars;
 
 import java.util.List;
@@ -11,7 +10,7 @@ public class ResultView {
 
     public static void print(List<Cars> raceResult) {
         System.out.println("실행 결과");
-        raceResult.forEach(cars-> {
+        raceResult.forEach(cars -> {
             cars.convertPositionToExpression(CAR_NAME_COLON, MOVE_EXPRESSION)
                     .forEach(System.out::println);
             System.out.println();
