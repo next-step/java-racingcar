@@ -30,8 +30,13 @@ public class RacingTest {
 
     @Test
     void 자동차는_이름을_가진다() throws Exception {
-        step4.Car car = new step4.Car("pobi");
+        Car car = new Car("pobi");
         Assertions.assertThat(car.getName()).isEqualTo("pobi");
+    }
+
+    @Test
+    void 자동차_이름은_5자를_초과할_수_없다() throws Exception {
+        Assertions.assertThatThrownBy(() -> new step4.Car("pobiws")).isInstanceOf(Exception.class);
     }
 }
 
