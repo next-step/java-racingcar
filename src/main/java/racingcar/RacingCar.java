@@ -1,7 +1,10 @@
 package racingcar;
 
+import racingcar.dto.RoundResult;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class RacingCar {
     private static final MovingStrategy RANDOM_MOVING_STRATEGY = new RandomMovingStrategy();
@@ -28,12 +31,14 @@ public final class RacingCar {
         }
     }
 
-    public ArrayList<Cars> play() {
-        ArrayList<Cars> results = new ArrayList<>();
+    public List<RoundResult> play() {
+        List<Cars> results = new ArrayList<>();
         for (int count = 0; count < roundCount; count++) {
             playAndAdd(results);
         }
-        return results;
+        return results.stream()
+                .map(result -> RoundResult.of(result.states()))
+                .collect(Collectors.toList());
     }
     private void playAndAdd(List<Cars> results) {
         if(results.isEmpty()) {

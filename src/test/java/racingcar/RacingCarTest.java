@@ -4,8 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.dto.RoundResult;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,9 +36,9 @@ public class RacingCarTest {
     void carsStateTest(int count) {
         RacingCar racingCar = new RacingCar(1, count);
 
-        ArrayList<Cars> playResult = racingCar.play();
+        List<RoundResult> playResult = racingCar.play();
 
-        List<PositiveInteger> lastGameResult = playResult.get(playResult.size() - 1).states();
+        List<PositiveInteger> lastGameResult = playResult.get(playResult.size() - 1).getStates();
         for (PositiveInteger result : lastGameResult) {
             assertThat(result.value()).isLessThanOrEqualTo(count);
         }
