@@ -29,10 +29,19 @@ public final class RacingCar {
     }
 
     public ArrayList<Cars> play() {
-        ArrayList<Cars> result = new ArrayList<>();
+        ArrayList<Cars> results = new ArrayList<>();
         for (int count = 0; count < roundCount; count++) {
-            result.add(cars.play(RANDOM_MOVING_STRATEGY));
+            playAndAdd(results);
         }
-        return result;
+        return results;
+    }
+    private void playAndAdd(List<Cars> results) {
+        if(results.isEmpty()) {
+            results.add(cars.play(RANDOM_MOVING_STRATEGY));
+            return;
+        }
+
+        Cars currentCars = results.get(results.size()-1);
+        results.add(currentCars.play(RANDOM_MOVING_STRATEGY));
     }
 }

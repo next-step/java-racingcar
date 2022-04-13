@@ -25,9 +25,7 @@ public final class Cars {
     public Cars play(MovingStrategy movingStrategy) {
         List<Car> result = new ArrayList<>();
         for (Car car : cars) {
-            Car newCar = car.move(movingStrategy);
-            PositiveInteger newState = PositiveInteger.add(car.state(), newCar.state());
-            result.add(new Car(newState));
+            result.add(car.move(movingStrategy));
         }
         return new Cars(result);
     }
