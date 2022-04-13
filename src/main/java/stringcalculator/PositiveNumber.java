@@ -12,7 +12,9 @@ public class PositiveNumber {
         this.number = number;
     }
 
+
     public static PositiveNumber createPositiveNumber(String string) {
+
         return new PositiveNumber(getInteger(string));
     }
 
@@ -25,6 +27,7 @@ public class PositiveNumber {
             throw new NumberFormatException(PARSING_FAIL_MESSAGE);
         }
         return parsedInt;
+
     }
 
     int getNumber() {
