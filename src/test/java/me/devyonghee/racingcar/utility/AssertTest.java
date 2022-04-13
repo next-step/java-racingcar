@@ -6,6 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.platform.commons.util.ReflectionUtils;
 
+import java.util.Collections;
+
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
@@ -38,5 +40,12 @@ class AssertTest {
         //when, then
         assertThatIllegalArgumentException().isThrownBy(() -> Assert.hasText(text, error))
                 .withMessage(error);
+    }
+
+    @Test
+    @DisplayName("빈 컬렉션 검증")
+    void notEmpty() {
+        assertThatIllegalArgumentException().isThrownBy(() -> Assert.notEmpty(null, "message"));
+        assertThatIllegalArgumentException().isThrownBy(() -> Assert.notEmpty(Collections.emptyList(), "message"));
     }
 }

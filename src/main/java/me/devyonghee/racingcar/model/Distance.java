@@ -20,12 +20,16 @@ public final class Distance {
         return new Distance(value);
     }
 
+    public int value() {
+        return value;
+    }
+
     Distance add(Distance distance) {
         return from(value + distance.value);
     }
 
-    public int value() {
-        return value;
+    boolean greaterThan(Distance distance) {
+        return value > distance.value;
     }
 
     @Override

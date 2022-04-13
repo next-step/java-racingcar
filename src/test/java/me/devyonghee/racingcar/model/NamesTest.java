@@ -14,13 +14,13 @@ class NamesTest {
     @Test
     @DisplayName("객체화")
     void instance() {
-        assertThatNoException().isThrownBy(() -> Names.from(Collections.emptyList()));
         assertThatNoException().isThrownBy(() -> Names.from(Collections.singletonList(Name.from("abc"))));
     }
 
     @Test
     @DisplayName("컬렉션은 필수")
-    void instance_nullCollection_thrownIllegalArgumentException() {
+    void instance_emptyCollection_thrownIllegalArgumentException() {
         assertThatIllegalArgumentException().isThrownBy(() -> Names.from(null));
+        assertThatIllegalArgumentException().isThrownBy(() -> Names.from(Collections.emptyList()));
     }
 }

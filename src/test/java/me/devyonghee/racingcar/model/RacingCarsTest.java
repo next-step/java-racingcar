@@ -1,5 +1,6 @@
 package me.devyonghee.racingcar.model;
 
+import me.devyonghee.racingcar.model.sample.RacingCarSample;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,14 +15,14 @@ class RacingCarsTest {
     @Test
     @DisplayName("객체화")
     void instance() {
-        assertThatNoException().isThrownBy(() -> RacingCars.from(Collections.emptyList()));
         assertThatNoException().isThrownBy(() -> RacingCars.from(
-                Collections.singletonList(RacingCar.from(Name.from("abc"), new MovementPolicy.Fake(true)))));
+                Collections.singletonList(RacingCarSample.ONLY_MOVE_CAR)));
     }
 
     @Test
     @DisplayName("컬렉션은 필수")
-    void instance_nullCollection_thrownIllegalArgumentException() {
+    void instance_emptyCollection_thrownIllegalArgumentException() {
         assertThatIllegalArgumentException().isThrownBy(() -> RacingCars.from(null));
+        assertThatIllegalArgumentException().isThrownBy(() -> RacingCars.from(Collections.emptyList()));
     }
 }

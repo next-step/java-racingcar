@@ -4,6 +4,7 @@ import me.devyonghee.racingcar.utility.Assert;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public final class TracksHistory {
@@ -11,7 +12,7 @@ public final class TracksHistory {
     private final List<Tracks> history;
 
     private TracksHistory(List<Tracks> history) {
-        Assert.notNull(history, "'history' must not be null");
+        Assert.notEmpty(history, "'history' must not empty");
         this.history = new ArrayList<>(history);
     }
 
@@ -25,6 +26,11 @@ public final class TracksHistory {
 
     public List<Tracks> list() {
         return Collections.unmodifiableList(history);
+    }
+
+    public Tracks lastFarthestTracks() {
+        return new LinkedList<>(history).getLast()
+                .farthestTracks();
     }
 
     @Override

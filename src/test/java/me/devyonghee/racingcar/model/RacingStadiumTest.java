@@ -1,14 +1,14 @@
 package me.devyonghee.racingcar.model;
 
+import me.devyonghee.racingcar.model.sample.CarPreparerSample;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static me.devyonghee.racingcar.model.sample.CarPreparerSample.ZERO_DISTANCE_PREPARER;
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("레이싱 경기장")
 class RacingStadiumTest {
-
-    private static final CarPreparer ZERO_DISTANCE_PREPARER = CarPreparer.of(CarFactory.of(NameWriter.from("abc"), new MovementPolicy.Fake(true)), Distance.ZERO);
 
     @Test
     @DisplayName("객체화")
@@ -34,7 +34,7 @@ class RacingStadiumTest {
         //given
         int tenCycleCount = 10;
         //when
-        TracksHistory history = RacingStadium.of(ZERO_DISTANCE_PREPARER, tenCycleCount).history();
+        TracksHistory history = RacingStadium.of(CarPreparerSample.ZERO_DISTANCE_PREPARER, tenCycleCount).history();
         //then
         assertThat(history.size()).isEqualTo(tenCycleCount);
     }

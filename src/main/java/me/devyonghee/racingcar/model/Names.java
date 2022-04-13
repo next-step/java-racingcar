@@ -13,7 +13,7 @@ public final class Names {
     private final List<Name> names;
 
     private Names(List<Name> names) {
-        Assert.notNull(names, "names must not be null");
+        Assert.notEmpty(names, "names must not empty");
         this.names = new ArrayList<>(names);
     }
 

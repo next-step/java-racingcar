@@ -13,7 +13,7 @@ final class RacingCars {
     private final Collection<RacingCar> cars;
 
     private RacingCars(Collection<RacingCar> cars) {
-        Assert.notNull(cars, "'cars' must not be null");
+        Assert.notEmpty(cars, "'cars' must not empty");
         this.cars = new ArrayList<>(cars);
     }
 

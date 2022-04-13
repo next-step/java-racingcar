@@ -29,11 +29,19 @@ public final class Track {
         return distance;
     }
 
+    boolean distanceGreaterThan(Track track) {
+        return distance.greaterThan(track.distance);
+    }
+
     Track movedTrack() {
         if (car.movement() == Movement.MOVE) {
             return of(car, distance.add(MOVEMENT_DISTANCE));
         }
         return of(car, distance.add(STOP_DISTANCE));
+    }
+
+    public boolean equalDistance(Track track) {
+        return distance.equals(track.distance);
     }
 
     @Override

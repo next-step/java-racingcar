@@ -14,7 +14,7 @@ public final class RacingCar {
         this.policy = policy;
     }
 
-    static RacingCar from(Name name, MovementPolicy policy) {
+    public static RacingCar from(Name name, MovementPolicy policy) {
         return new RacingCar(name, policy);
     }
 

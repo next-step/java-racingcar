@@ -5,6 +5,7 @@ import me.devyonghee.racingcar.utility.Assert;
 import me.devyonghee.racingcar.view.InputView;
 import me.devyonghee.racingcar.view.ResultView;
 import me.devyonghee.racingcar.view.dto.TracksHistoryResponse;
+import me.devyonghee.racingcar.view.dto.WinnerResponse;
 
 import java.io.PrintStream;
 import java.util.Random;
@@ -27,9 +28,9 @@ public final class RacingCarRace {
     }
 
     public void race() {
-        resultView.print(TracksHistoryResponse.from(
-                racingStadium(inputView.carNames(), inputView.cycleCount()).history()
-        ));
+        TracksHistory history = racingStadium(inputView.carNames(), inputView.cycleCount()).history();
+        resultView.print(TracksHistoryResponse.from(history));
+        resultView.print(WinnerResponse.from(history.lastFarthestTracks()));
     }
 
     private RacingStadium racingStadium(String names, int cycleCount) {
