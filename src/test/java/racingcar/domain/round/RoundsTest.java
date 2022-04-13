@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.round;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

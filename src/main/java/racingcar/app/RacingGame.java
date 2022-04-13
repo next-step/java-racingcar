@@ -1,7 +1,7 @@
 package racingcar.app;
 
-import racingcar.domain.Cars;
-import racingcar.domain.Rounds;
+import racingcar.domain.car.Cars;
+import racingcar.domain.round.Rounds;
 import racingcar.dto.RoundResults;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;

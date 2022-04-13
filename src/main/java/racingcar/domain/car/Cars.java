@@ -1,4 +1,6 @@
-package racingcar.domain;
+package racingcar.domain.car;
+
+import racingcar.domain.car.strategy.CarActionStrategyFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +23,7 @@ public class Cars {
 
     public void act() {
         for (Car car : cars) {
-            car.act();
+            car.act(CarActionStrategyFactory.resolve());
         }
     }
 

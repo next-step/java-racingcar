@@ -1,10 +1,10 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.domain.car.strategy.MoveStrategy;
+import racingcar.domain.car.strategy.StopStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,16 +18,16 @@ public class CarTest {
         car = new Car();
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"4|GO_FORWARD", "9|GO_FORWARD", "0|STOP", "1|STOP"}, delimiter = '|')
-    void 자동차는_4_이상_숫자를_입력하면_전진한다(int actionNo, CarAction carAction) {
-        assertThat(car.decideAction(actionNo)).isEqualTo(carAction);
+    @Test
+    void 자동차는_전진한다() {
+        car.act(new MoveStrategy());
+        assertThat(car.getPosition()).isEqualTo(DEFAULT_POSITION + 1);
     }
 
     @Test
-    void 자동차는_전진_하거나_멈춘다() {
-        car.act();
-        assertThat(car.getPosition()).isIn(DEFAULT_POSITION, DEFAULT_POSITION + 1);
+    void 자동차는_멈춘다() {
+        car.act(new StopStrategy());
+        assertThat(car.getPosition()).isEqualTo(DEFAULT_POSITION);
     }
 
     @Test

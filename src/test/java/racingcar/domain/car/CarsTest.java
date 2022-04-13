@@ -1,8 +1,9 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.car.strategy.CarActionStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ class CarsTest {
     void act는_자동차_전체를_동작시킨다() {
         cars.act();
 
-        mockCarList.forEach(car -> verify(car).act());
+        mockCarList.forEach(car -> verify(car).act(any(CarActionStrategy.class)));
     }
 
     @Test

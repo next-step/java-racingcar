@@ -1,8 +1,9 @@
-package racingcar.domain;
+package racingcar.domain.round;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.car.Cars;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;

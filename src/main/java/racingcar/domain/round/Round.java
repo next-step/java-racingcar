@@ -1,5 +1,6 @@
-package racingcar.domain;
+package racingcar.domain.round;
 
+import racingcar.domain.car.Cars;
 import racingcar.dto.RoundResult;
 
 public class Round {
