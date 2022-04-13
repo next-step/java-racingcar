@@ -8,7 +8,7 @@ public class CarGame {
 
     public CarGame(int carCnt) {
         for (int i = 0; i < carCnt; i++) {
-            carList.add(new Car(0));
+            carList.add(new Car());
         }
     }
 
