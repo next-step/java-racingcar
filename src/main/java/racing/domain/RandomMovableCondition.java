@@ -3,7 +3,7 @@ package racing.domain;
 import java.util.Random;
 
 public class RandomMovableCondition implements Movable {
-    private static final Random RANDOM = new Random();
+    private final Random RANDOM = new Random();
     private static final int RANDOM_NUMBER_BOUND = 10;
     private static final int MIN_MOVABLE_NUMBER = 4;
 
