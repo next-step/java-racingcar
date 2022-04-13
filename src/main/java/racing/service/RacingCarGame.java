@@ -1,12 +1,10 @@
 package racing.service;
 
-import racing.domain.Car;
 import racing.domain.Cars;
 import racing.domain.strategies.CarMoveStrategy;
 import racing.dto.GameResult;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingCarGame {
@@ -16,17 +14,17 @@ public class RacingCarGame {
     private final CarMoveStrategy moveStrategy;
     private Cars cars;
 
-    public RacingCarGame(int numCars, CarMoveStrategy moveStrategy) {
-        this.moveStrategy = moveStrategy;
-        if (numCars < MINIMUM_NUMBER_OF_CARS) {
+    public RacingCarGame(List<String> nameOfCars, CarMoveStrategy moveStrategy) {
+        if (nameOfCars == null || nameOfCars.size() < MINIMUM_NUMBER_OF_CARS) {
             throw new IllegalArgumentException();
         }
-        makeCars(numCars);
+
+        this.moveStrategy = moveStrategy;
+        makeCars(nameOfCars);
     }
 
-    private void makeCars(int numCars) {
-        List<Car> carList = IntStream.range(0, numCars).mapToObj(i -> new Car()).collect(Collectors.toList());
-        cars = new Cars(carList);
+    private void makeCars(List<String> nameOfCars) {
+        cars = new Cars(nameOfCars);
     }
 
     public GameResult run(int numMoves) {

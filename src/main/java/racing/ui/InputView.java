@@ -23,11 +23,6 @@ public class InputView {
         return instance;
     }
 
-    public int getNumCars() {
-        System.out.println(ASK_NUMBER_OF_CARS);
-        return scanner.nextInt();
-    }
-
     public int getNumMoves() {
         System.out.println(ASK_NUMBER_OF_TRYS);
         return scanner.nextInt();

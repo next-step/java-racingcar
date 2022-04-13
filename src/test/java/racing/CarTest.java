@@ -19,7 +19,7 @@ class CarTest {
     @MethodSource("provideSource")
     void carMoveForward(Boolean isMovable, Counter expected) {
         CarMoveStrategy moveStrategy = () -> isMovable;
-        assertThat(new Car().run(moveStrategy)).isEqualTo(expected);
+        assertThat(new Car("carA").run(moveStrategy)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> provideSource() {

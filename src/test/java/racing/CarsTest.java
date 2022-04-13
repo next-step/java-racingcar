@@ -2,7 +2,6 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.domain.Car;
 import racing.domain.Cars;
 import racing.dto.GameResult.GameRoundResult;
 
@@ -15,8 +14,8 @@ class CarsTest {
     @DisplayName("자동차들은 이동후 GameRoundResult 를 반환한다")
     @Test
     void carMoveForward() {
-        List<Car> carList = List.of(new Car(), new Car());
-        Cars cars = new Cars(carList);
+        List<String> names = List.of("carA", "carB", "carAB");
+        Cars cars = new Cars(names);
 
         assertThat(cars.run(() -> true)).isInstanceOf(GameRoundResult.class);
     }

@@ -8,14 +8,16 @@ import racing.service.RacingCarGame;
 import racing.ui.InputView;
 import racing.ui.ResultView;
 
+import java.util.List;
+
 public class RacingCarApplication {
     public static void main(String[] args) {
         InputView inputView = InputView.getInstance();
-        int numCars = inputView.getNumCars();
+        List<String> nameOfCars = inputView.getNameOfCars();
         int numMoves = inputView.getNumMoves();
 
         CarMoveStrategy carMoveStrategy = new CarMoveStrategyImpl(new CustomRandomImpl());
-        RacingCarGame racingCarGame = new RacingCarGame(numCars, carMoveStrategy);
+        RacingCarGame racingCarGame = new RacingCarGame(nameOfCars, carMoveStrategy);
         GameResult result = racingCarGame.run(numMoves);
 
         ResultView resultView = ResultView.getInstance();
