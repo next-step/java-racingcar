@@ -6,6 +6,6 @@ public class race {
         CarRace carRace = new CarRace();
         carRace.inputView();
         carRace.startRaces();
-//        carRace.resultView();
+        carRace.resultView();
     }
 }

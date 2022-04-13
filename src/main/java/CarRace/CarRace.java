@@ -34,6 +34,21 @@ public class CarRace {
         }
     }
 
+    public void resultView() {
+        System.out.println("\n실행 결과");
+        raceInfoBoards.forEach(raceInfoBoard -> {
+            raceInfoBoard.forEach(this::printRaceResultOfEachCar);
+            System.out.println();
+        });
+    }
+
+    public void printRaceResultOfEachCar(int result) {
+        for (int i = 0; i < result; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
     private ArrayList<Integer> startEachRace() {
         ArrayList<Integer> raceInfoBoard = new ArrayList<>();
         for (int j = 0; j < this.numberOfCars; j++) {
