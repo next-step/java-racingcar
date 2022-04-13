@@ -1,8 +1,6 @@
-package step3.view;
+package step3.model;
 
 import step3.impl.RandomStrategy;
-import step3.model.Count;
-import step3.model.TryStrategy;
 
 public class RacingConfig {
 
@@ -12,13 +10,13 @@ public class RacingConfig {
     private final Count tryCount;
     private final TryStrategy tryStrategy;
 
-    public RacingConfig(Count carCount, Count tryCount, TryStrategy tryStrategy) {
-        this.carCount = carCount;
-        this.tryCount = tryCount;
+    public RacingConfig(int carCount, int tryCount, TryStrategy tryStrategy) {
+        this.carCount = new Count(carCount);
+        this.tryCount = new Count(tryCount);
         this.tryStrategy = tryStrategy;
     }
 
-    public RacingConfig(Count carCount, Count tryCount) {
+    public RacingConfig(int carCount, int tryCount) {
         this(carCount, tryCount, DEFAULT_TRY_STRATEGY);
     }
 

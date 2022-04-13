@@ -1,6 +1,6 @@
 package step3.view;
 
-import step3.model.Count;
+import step3.model.RacingConfig;
 
 import java.util.List;
 import java.util.Scanner;
@@ -17,26 +17,25 @@ public class View {
 
     public View() {
         this.scanner = new Scanner(System.in);
-        Count carCount = askCarCount();
-        Count tryCount = askTryCount();
+        int carCount = askCarCount();
+        int tryCount = askTryCount();
         this.racingConfig = new RacingConfig(carCount, tryCount);
         this.scanner.close();
     }
 
-    private Count askCarCount() {
+    private int askCarCount() {
         show("자동차 대수는 몇 대 인가요?");
         return saveCount();
     }
 
-    private Count askTryCount() {
+    private int askTryCount() {
         show("시도할 회수는 몇 회 인가요?");
         return saveCount();
     }
 
-    private Count saveCount() {
+    private int saveCount() {
         String input = this.scanner.next();
-        int count = Integer.parseInt(input);
-        return new Count(count);
+        return Integer.parseInt(input);
     }
 
     public RacingConfig requestStart() {

@@ -1,7 +1,5 @@
 package step3.model;
 
-import step3.view.RacingConfig;
-
 import java.util.List;
 
 public class RacingGame {
