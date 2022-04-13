@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class CarName {
 
-    private final int MAX_NAME_LENGTH = 5;
-    private String name;
+    private static final int MAX_NAME_LENGTH = 5;
+    private final String name;
 
     public CarName(String name) {
         validateName(name);
