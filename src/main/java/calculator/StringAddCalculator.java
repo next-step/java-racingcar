@@ -12,26 +12,24 @@ public class StringAddCalculator {
 
         if(text == null || text.isBlank())return 0;
 
-
         int result = 0;
 
         Matcher m = Pattern.compile(DELIMITER_CUSTOM_REGEXP).matcher(text);
         if(m.find()){
             String customDelimiter = m.group(1);
-            String[] numStrs = m.group(2).split(customDelimiter);
-
-            for (String numStr : numStrs) {
-                int number = Integer.parseInt(numStr);
-                result += number;
-            }
-        }else{
-            String[] numStrs = text.split(DELIMITER_DEFUALT_REGEXP);
-            for (String numStr : numStrs) {
-                int number = Integer.parseInt(numStr);
-                result += number;
-            }
+            String[] values = m.group(2).split(customDelimiter);
+            return sum(result, values);
         }
 
+        String[] values = text.split(DELIMITER_DEFUALT_REGEXP);
+        return sum(result, values);
+    }
+
+    private static int sum(int result, String[] values) {
+        for (String value : values) {
+            int number = Integer.parseInt(value);
+            result += number;
+        }
         return result;
     }
 
