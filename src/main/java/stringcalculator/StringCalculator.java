@@ -5,9 +5,9 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
-    public static final String COMMON_DELIMITER = "[,:]";
-    public static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
-    public static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER);
+    private static final String COMMON_DELIMITER = "[,:]";
+    private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private static final Pattern PATTERN = Pattern.compile(CUSTOM_DELIMITER);
 
     public int splitAndSum(String input) {
         if (input == null || input.isEmpty()) {
