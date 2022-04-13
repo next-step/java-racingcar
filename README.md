@@ -5,5 +5,7 @@
 * 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
 * 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
 
-## 온라인 코드 리뷰 과정
-* [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+## 기능 구현
+* inputView : 경주할 자동차 대 수와 총 경주 횟수를 입력 받는다.
+* startRace : 경주를 시작하고, 그 결과를 저장한다.
+* resultView : 경주 결과를 출력한다.
