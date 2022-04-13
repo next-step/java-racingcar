@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ResultView {
 
-    public static final String PATH_SYMBOL = "-";
+    private static final String PATH_SYMBOL = "-";
 
     public void printEveryLocation(List<Integer> resultLocations) {
         for (Integer resultLocation : resultLocations) {

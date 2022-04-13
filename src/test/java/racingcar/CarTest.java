@@ -14,7 +14,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car(new DefaultMovingStrategy());
     }
 
     @DisplayName("입력값이 0-4 일 경우 이동하지 않음")

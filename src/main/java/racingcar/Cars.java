@@ -27,7 +27,7 @@ public class Cars {
 
     public static Cars generateCars(int carCount) {
         return new Cars(IntStream.range(0, carCount)
-                .mapToObj(n -> new Car())
+                .mapToObj(n -> new Car(new DefaultMovingStrategy()))
                 .collect(Collectors.toList()));
     }
 }
