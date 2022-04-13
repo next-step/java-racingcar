@@ -18,21 +18,26 @@ public class GameResult {
     }
 
     public List<String> getWinners() {
-        for (GameRoundResult round : rounds) {
-            Map<String, Counter> carStatus = round.getCarStatus();
-            int max = carStatus.values()
-                    .stream()
-                    .mapToInt(Counter::getCount)
-                    .max().orElse(0);
-
-            return carStatus.entrySet()
-                    .stream()
-                    .filter(stringCounterEntry -> stringCounterEntry.getValue().getCount() == max)
-                    .map(Map.Entry::getKey)
-                    .collect(Collectors.toList());
+        if (rounds.isEmpty()) {
+            throw new IllegalStateException("게임 결과는 진행 후 호출 가능");
         }
 
-        return Collections.emptyList();
+        GameRoundResult lastRound = rounds.get(rounds.size() - 1);
+        int max = getMax(lastRound);
+        return lastRound.carStatus
+                .entrySet()
+                .stream()
+                .filter(stringCounterEntry -> stringCounterEntry.getValue().getCount() == max)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+    }
+
+    private int getMax(GameRoundResult lastRound) {
+        return lastRound.carStatus
+                .values()
+                .stream()
+                .mapToInt(Counter::getCount)
+                .max().orElse(0);
     }
 
     public static class GameRoundResult {
