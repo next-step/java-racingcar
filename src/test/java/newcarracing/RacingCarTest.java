@@ -24,4 +24,11 @@ class RacingCarTest {
             .hasMessageContaining("초과")
         ;
     }
+
+    @Test
+    void 경주용_자동차_한칸_전진() {
+        RacingCar racingCar = new RacingCar("pobi");
+        racingCar.moveForward();
+        assertThat(racingCar.getPosition()).isEqualTo(1);
+    }
 }

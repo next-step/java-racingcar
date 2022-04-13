@@ -1,10 +1,11 @@
 package newcarracing;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar>{
     private static final int MAX_LENGTH_OF_NAME = 5;
+    private static final String ROUTE = "-";
 
     private String name;
-    private Integer position;
+    private int position;
 
     public RacingCar(String name) {
         if(name.length() > MAX_LENGTH_OF_NAME){
@@ -13,7 +14,7 @@ public class RacingCar {
         this.name = name;
     }
 
-    public RacingCar(String name, Integer position) {
+    public RacingCar(String name, int position) {
         this.name = name;
         this.position = position;
     }
@@ -22,7 +23,29 @@ public class RacingCar {
         return name;
     }
 
-    public Integer getPosition() {
+    public int getPosition() {
         return position;
+    }
+
+    public void moveForward() {
+        this.position += 1;
+    }
+
+    public boolean isMaxPosition(int maxPosition) {
+        return this.position == maxPosition;
+    };
+
+    public String createRacingCarRoute(RacingCar car) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(this.getName() + " : ");
+        for(int i=0; i < this.position; i++) {
+            stringBuilder.append(ROUTE);
+        }
+        return stringBuilder.toString();
+    }
+
+    @Override
+    public int compareTo(RacingCar car) {
+        return this.position - car.getPosition();
     }
 }

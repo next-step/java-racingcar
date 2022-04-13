@@ -3,21 +3,13 @@ package newcarracing;
 import java.util.List;
 
 public class ResultView {
-    private static final String ROUTE = "-";
+
+    private static final String WINNERS_DELIMITER = ", ";
 
     private ResultView() {}
 
     public static void printRacingCarsRoutes(List<RacingCar> cars) {
-        cars.forEach(car -> System.out.println(createRacingCarRoute(car)));
-    }
-
-    public static String createRacingCarRoute(RacingCar car) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(car.getName() + " : ");
-        for(int i=0; i < car.getPosition(); i++) {
-            stringBuilder.append(ROUTE);
-        }
-        return stringBuilder.toString();
+        cars.forEach(car -> System.out.println(car.createRacingCarRoute(car)));
     }
 
     public static void printWinners(List<RacingCar> cars) {
@@ -36,7 +28,7 @@ public class ResultView {
 
     private static void appendDelimiter(StringBuilder stringBuilder, int currentIndex, int lastIndex) {
         if(currentIndex < lastIndex) {
-            stringBuilder.append(", ");
+            stringBuilder.append(WINNERS_DELIMITER);
         }
     }
 }
