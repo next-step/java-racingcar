@@ -40,6 +40,7 @@ public final class RacingCar {
                 .map(result -> RoundResult.of(result.states()))
                 .collect(Collectors.toList());
     }
+
     private void playAndAdd(List<Cars> results) {
         if(results.isEmpty()) {
             results.add(cars.play(RANDOM_MOVING_STRATEGY));
