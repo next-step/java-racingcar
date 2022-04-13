@@ -22,20 +22,4 @@ class RacingGameTest {
         assertThatThrownBy(() -> new RacingGame(new InputCarCount("3"), null))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    @Test
-    @DisplayName("자동차 대수를 3개 입력하면 3개의 자동차가 생성된다.")
-    void carGenerate() {
-        RacingGame racingGame = new RacingGame(new InputCarCount("3"), new InputRoundCount("2"));
-
-        assertThat(racingGame.getCars().size()).isEqualTo(3);
-    }
-
-    @Test
-    @DisplayName("라운드 횟수 만큼 플레이를 진행한다.")
-    void playCount() {
-        RacingGame racingGame = new RacingGame(new InputCarCount("3"), new InputRoundCount("2"));
-
-        assertThat(racingGame.play()).isEqualTo(2);
-    }
 }

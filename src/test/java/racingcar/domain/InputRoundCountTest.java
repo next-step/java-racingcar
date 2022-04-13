@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.input.InputCarCount;
 import racingcar.domain.input.InputRoundCount;
+import racingcar.domain.input.RoundCount;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -35,8 +36,9 @@ class InputRoundCountTest {
     }
 
     @Test
-    @DisplayName("문자열 숫자를 입력하면 해당 숫자로 반환된다.")
+    @DisplayName("문자열 숫자를 입력하면 문자열 숫자가 최종 라운드인 Round가 반환된다.")
     void StringToInt() {
-        assertThat(new InputCarCount("2").getCarCount()).isEqualTo(2);
+        RoundCount roundTwo = new RoundCount(2);
+        assertThat(new InputRoundCount("2").toRound()).isEqualTo(new Round(roundTwo));
     }
 }

@@ -1,15 +1,16 @@
 package racingcar.domain.input;
 
-public class InputRoundCount extends PositiveNumber {
+import racingcar.domain.Round;
 
-    private int roundCount;
+public class InputRoundCount {
+
+    private RoundCount roundCount;
 
     public InputRoundCount(String value) {
-        super(value);
-        this.roundCount = super.positiveNumber;
+        this.roundCount = new RoundCount(value);
     }
 
-    public int getRoundCount() {
-        return this.roundCount;
+    public Round toRound() {
+        return new Round(this.roundCount);
     }
 }

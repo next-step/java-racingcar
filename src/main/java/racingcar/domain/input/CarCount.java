@@ -2,12 +2,12 @@ package racingcar.domain.input;
 
 import racingcar.constant.InputExceptionMessage;
 
-public class PositiveNumber {
+public class CarCount {
 
-    protected final int positiveNumber;
+    private final int carCount;
 
-    public PositiveNumber(String value) {
-        this.positiveNumber = toPositiveNumber(value);
+    public CarCount(String value) {
+        this.carCount = toPositiveNumber(value);
     }
 
     private int toPositiveNumber(String value) {
@@ -30,5 +30,9 @@ public class PositiveNumber {
         if (number < 1) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public int getCount() {
+        return this.carCount;
     }
 }

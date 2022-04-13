@@ -1,15 +1,23 @@
 package racingcar.domain.input;
 
-public class InputCarCount extends PositiveNumber {
+import racingcar.domain.Car;
 
-    private int carCount;
+import java.util.ArrayList;
+import java.util.List;
+
+public class InputCarCount {
+
+    private CarCount carCount;
 
     public InputCarCount(String value) {
-        super(value);
-        this.carCount = super.positiveNumber;
+        this.carCount = new CarCount(value);
     }
 
-    public int getCarCount() {
-        return this.carCount;
+    public List<Car> toCars() {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < carCount.getCount(); i++) {
+            cars.add(new Car());
+        }
+        return cars;
     }
 }

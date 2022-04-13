@@ -33,8 +33,8 @@ class InputCarCountTest {
     }
 
     @Test
-    @DisplayName("문자열 숫자를 입력하면 해당 숫자로 반환된다.")
+    @DisplayName("문자열 숫자를 입력하면 해당 숫자만큼의 List<Car> 를 반환한다.")
     void StringToInt() {
-        assertThat(new InputCarCount("2").getCarCount()).isEqualTo(2);
+        assertThat(new InputCarCount("2").toCars().size()).isEqualTo(2);
     }
 }
