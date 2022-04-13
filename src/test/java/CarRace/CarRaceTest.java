@@ -29,11 +29,11 @@ public class CarRaceTest {
     @CsvSource(value = {"3:5", "2:1"}, delimiter = ':')
     void checkRaceInfoBoard(int numberOfCars, int numberOfRaces) {
         CarRace carRace = new CarRace(numberOfCars, numberOfRaces);
-        carRace.startRace();
+        carRace.startRaces();
 
-        assertThat(carRace.raceInfoBoard.size()).isEqualTo(numberOfRaces);
-        assertThat(carRace.raceInfoBoard.get(0).size()).isEqualTo(numberOfCars);
-        assertThat(carRace.raceInfoBoard.get(0).get(0)).isBetween(0, numberOfRaces);
+        assertThat(carRace.raceInfoBoards.size()).isEqualTo(numberOfRaces);
+        assertThat(carRace.raceInfoBoards.get(0).size()).isEqualTo(numberOfCars);
+        assertThat(carRace.raceInfoBoards.get(0).get(0)).isBetween(0, numberOfRaces);
     }
 
 }
