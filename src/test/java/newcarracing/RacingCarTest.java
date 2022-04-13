@@ -23,6 +23,5 @@ class RacingCarTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("초과")
         ;
-
     }
 }
