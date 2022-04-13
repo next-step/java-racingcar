@@ -17,15 +17,8 @@ public class StringAddCalculatorTest {
      */
 
     @Test
-    void 일단실패테스트만들어() {
+    public void splitAndSum_null_또는_빈문자() {
         int result = StringAddCalculator.splitAndSum(null);
-        assertThat(result).isEqualTo(0);
-    }
-
-    @Test
-    void 널_OR_빈_문자열_OR_공백문자_일떄() {
-        int result = 0;
-        result = StringAddCalculator.splitAndSum(null);
         assertThat(result).isEqualTo(0);
 
         result = StringAddCalculator.splitAndSum("");
@@ -33,45 +26,34 @@ public class StringAddCalculatorTest {
     }
 
     @Test
-    void 널_OR_빈_문자열_OR_공백문자_일떄2() {
-        //로컨변수 없이 간단하게도 좋다
-        assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
-        assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
+    public void splitAndSum_숫자하나() throws Exception {
+        int result = StringAddCalculator.splitAndSum("1");
+        assertThat(result).isEqualTo(1);
     }
-//
+
     @Test
-    void 문자열숫자_하나만_입력() {
-        assertThat(StringAddCalculator.splitAndSum("1")).isEqualTo(1);
+    public void splitAndSum_쉼표구분자() throws Exception {
+        int result = StringAddCalculator.splitAndSum("1,2");
+        assertThat(result).isEqualTo(3);
     }
-//
+
     @Test
-    void 쉼표_구분자() {
-        assertThat(StringAddCalculator.splitAndSum("1,2")).isEqualTo(3);
+    public void splitAndSum_쉼표_또는_콜론_구분자() throws Exception {
+        int result = StringAddCalculator.splitAndSum("1,2:3");
+        assertThat(result).isEqualTo(6);
     }
-//
+
     @Test
-    void 콜론_구분자() {
-        assertThat(StringAddCalculator.splitAndSum("1,2:3")).isEqualTo(6);
+    public void splitAndSum_custom_구분자() throws Exception {
+        int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
+        assertThat(result).isEqualTo(6);
     }
-//
+
     @Test
-    void 커스텀_구분자() {
-        assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
+    public void splitAndSum_negative() throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
+                .isInstanceOf(RuntimeException.class);
     }
-//
-    @Test
-    void 음수_기본구분자() {
-        assertThatThrownBy(()->{
-           StringAddCalculator.splitAndSum("-1:2,3");
-        }).isInstanceOf(RuntimeException.class);
-    }
-//
-//    @Test
-//    void 음수_커스텀구분자() {
-//        assertThatThrownBy(()->{
-//            StringAddCalculator.splitAndSum("//;\n-1;2;3");
-//        }).isInstanceOf(RuntimeException.class);
-//    }
 
 
 }

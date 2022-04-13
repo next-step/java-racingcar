@@ -8,6 +8,11 @@ public class StringAddCalculator {
     private final static String DELIMITER_DEFUALT_REGEXP = ",|:";
     private final static String DELIMITER_CUSTOM_REGEXP  = "//(.)\n(.*)";
 
+    /*
+    public 함수는 한 개에 간결하게(가독성 좋게)
+
+    private 함수는 많으면 많을수록 좋음(메소드 분리)
+     */
     public static int splitAndSum(String text) {
 
         //로컬변수 int result = 0 을 선언하고 메소드 전체 블록 안에서 사용하는 것은 올바르지 않다.
@@ -39,6 +44,7 @@ public class StringAddCalculator {
         return sum;
     }
 
+    //메소드 분리시 추상화 레벨 1이 됨.
     private static int sum(int[] values) {
         int sum = 0;
         for (int value : values) {
