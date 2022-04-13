@@ -20,6 +20,9 @@ public class RacingCar {
     }
 
     public RacingCar() {
+        //input관련 UI로직을 InputView클래스에 깔끔이 추출하는 방법이 떠오르지 않는다.
+        //int carNum, tryNum 값을 묶는 vo를 설계해야할까? => vo클래스에 getter/setter, 생성자함수도 만들어야 될듯...
+
         System.out.println("자동차 대수는 몇 대 인가요?");
         this.carNum = sc.nextInt();
         System.out.println("시도할 회수는 몇 회 인가요?");
@@ -32,29 +35,22 @@ public class RacingCar {
 
         for (int tryCnt = 0; tryCnt < tryNum; tryCnt++) {
 
-            move();
+            moveAllCars();
 
-            showState();
+            ResultView.showState(carNum, cars);
         }
 
     }
 
-    private void showState() {
+    private void moveAllCars() {
         for (int i = 0; i < carNum; i++) {
-            StringBuilder sb = new StringBuilder();
-            for (int j = 0; j < cars[i]; j++) {
-                sb.append('-');
-            }
-            System.out.println(sb.toString());
+            checkMoveCondition(i);
         }
-        System.out.println("");
     }
 
-    private void move() {
-        for (int i = 0; i < carNum; i++) {
-            if(getRandomNum() >= 4){
-                cars[i]++;
-            }
+    private void checkMoveCondition(int i) {
+        if(getRandomNum() >= 4){
+            cars[i]++;
         }
     }
 
