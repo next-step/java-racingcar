@@ -32,7 +32,7 @@ public final class Tracks {
         return Collections.unmodifiableList(tracks);
     }
 
-    public Tracks farthestTracks() {
+    Tracks farthestTracks() {
         Track farthestTrack = farthestTrack();
         return Tracks.from(tracks.stream()
                 .filter(track -> track.equalDistance(farthestTrack))

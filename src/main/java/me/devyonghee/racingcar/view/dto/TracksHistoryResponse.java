@@ -11,7 +11,7 @@ public final class TracksHistoryResponse {
 
     private final List<List<TrackHistoryResponse>> trackHistoryResponses;
 
-    public TracksHistoryResponse(List<List<TrackHistoryResponse>> trackHistoryResponses) {
+    private TracksHistoryResponse(List<List<TrackHistoryResponse>> trackHistoryResponses) {
         this.trackHistoryResponses = trackHistoryResponses;
     }
 

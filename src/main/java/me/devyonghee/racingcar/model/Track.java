@@ -40,7 +40,7 @@ public final class Track {
         return of(car, distance.add(STOP_DISTANCE));
     }
 
-    public boolean equalDistance(Track track) {
+    boolean equalDistance(Track track) {
         return distance.equals(track.distance);
     }
 
