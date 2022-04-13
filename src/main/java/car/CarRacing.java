@@ -16,7 +16,7 @@ public class CarRacing {
 
     private void participatingCar(int number) {
         for (int i = 0; i < number; i++) {
-            cars.add(new Car(this));
+            cars.add(new Car("pobi"));
         }
     }
 
@@ -33,7 +33,7 @@ public class CarRacing {
     public List<Car> start() {
         for (int i = 0; i < attempt; i++) {
             for (Car car : cars) {
-                car.move();
+                car.move(4);
             }
         }
 

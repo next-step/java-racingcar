@@ -3,7 +3,10 @@ package car;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import step4.Dice;
+import step4.Racing;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,6 +40,13 @@ public class RacingTest {
     @Test
     void 자동차_이름은_5자를_초과할_수_없다() throws Exception {
         Assertions.assertThatThrownBy(() -> new step4.Car("pobiws")).isInstanceOf(Exception.class);
+    }
+
+    @Test
+    void 자동차_이름을_같이_출력한다() throws Exception {
+        Car car = new Car("pobi");
+        car.move(4);
+        Assertions.assertThat(car.getName() + " : " + car.getDistance()).isEqualTo("pobi : -");
     }
 }
 
