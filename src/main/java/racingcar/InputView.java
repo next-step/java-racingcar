@@ -7,6 +7,9 @@ public class InputView {
 
     private static final String INPUT_CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String INPUT_ROUND_COUNT_MESSAGE = "총 라운드 수를 입력하세요.";
+    private static final int MINIMUM_NAME_LENGTH = 5;
+    private static final String CAR_NAME_EMPTY_ERROR_MESSAGE = "자동차 이름은 비어있을 수 없습니다.";
+    public static final String CAR_NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 다섯 글자 이하여야 합니다.";
     private final Scanner scanner = new Scanner(System.in);
 
     public int inputCarCount() {
@@ -20,18 +23,30 @@ public class InputView {
     }
 
     public String[] getCarNameArray(String inputString) {
-        if (inputString.isEmpty()) {
-            throw new IllegalArgumentException("Car names must not be null or empty");
-        }
+        validateEmptyInput(inputString);
         String[] carNames = inputString.split(",");
-        if (!validateCarNameLength(carNames)) {
-            throw new IllegalArgumentException("The name of the car cannot exceed five characters");
-        }
+        validateNameLength(carNames);
         return carNames;
     }
 
-    private boolean validateCarNameLength(String[] carNames) {
-        return Arrays.stream(carNames).allMatch(c -> c.length() < 5);
+    private void validateNameLength(String[] carNames) {
+        if (!isValidNameLength(carNames)) {
+            throw new IllegalArgumentException(CAR_NAME_LENGTH_ERROR_MESSAGE);
+        }
+    }
+
+    private void validateEmptyInput(String inputString) {
+        if (inputString.isEmpty()) {
+            throw new IllegalArgumentException(CAR_NAME_EMPTY_ERROR_MESSAGE);
+        }
+    }
+
+    private boolean isValidNameLength(String[] carNames) {
+        return Arrays.stream(carNames).allMatch(this::validateCarNameLength);
+    }
+
+    private boolean validateCarNameLength(String carName) {
+        return carName.length() <= MINIMUM_NAME_LENGTH;
     }
 
     public int inputRoundCount() {
