@@ -15,6 +15,9 @@ class CarsTest {
     @DisplayName("자동차들은 이동후 GameRoundResult 를 반환한다")
     @Test
     void carMoveForward() {
-        assertThat(new Cars(List.of(new Car(), new Car())).run(() -> true)).isInstanceOf(GameRoundResult.class);
+        List<Car> carList = List.of(new Car(), new Car());
+        Cars cars = new Cars(carList);
+
+        assertThat(cars.run(() -> true)).isInstanceOf(GameRoundResult.class);
     }
 }
