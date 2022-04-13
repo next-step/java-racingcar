@@ -22,7 +22,7 @@ class CounterTest {
         assertThat(new Counter(1).getCount()).isEqualTo(1);
     }
 
-    @DisplayName("")
+    @DisplayName("add 기능 테스트")
     @ParameterizedTest
     @CsvSource(value = {"0, 1, 1", "1, 2, 3"})
     void addTest(int init, int runStep, int expected) {
