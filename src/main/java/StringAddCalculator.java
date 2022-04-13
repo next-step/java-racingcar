@@ -1,5 +1,7 @@
 public class StringAddCalculator {
 
+  private static final int DEFAULT_VALUE = 0;
+
   private StringAddCalculator() {
   }
 
@@ -10,7 +12,7 @@ public class StringAddCalculator {
     3. 결과값을 반환한다.
      */
     if (isBlank(text)) {
-      return 0;
+      return DEFAULT_VALUE;
     }
 
     return StringNumbers.from(text)

@@ -32,11 +32,11 @@ public class StringNumbers {
 
   private static List<String> split(String text) {
 
-    Matcher m = CUSTOM_DELIMITER_PATTERN.matcher(text);
+    Matcher customDelimiterMatcher = CUSTOM_DELIMITER_PATTERN.matcher(text);
 
-    if (m.find()) {
-      String customDelimiter = m.group(1);
-      return Arrays.asList(m.group(2).split(customDelimiter));
+    if (customDelimiterMatcher.find()) {
+      String customDelimiter = customDelimiterMatcher.group(1);
+      return Arrays.asList(customDelimiterMatcher.group(2).split(customDelimiter));
     }
 
     return Arrays.asList(text.split(DEFAULT_DELIMITER));
