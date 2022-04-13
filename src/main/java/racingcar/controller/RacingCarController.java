@@ -20,7 +20,6 @@ public class RacingCarController {
     for (int i = 0; i < times; i++) {
       playOneTurn(cars);
       OutputView.printOutput(cars.getPositions());
-      System.out.println();
     }
   }
 

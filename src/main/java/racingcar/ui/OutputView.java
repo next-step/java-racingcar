@@ -9,5 +9,6 @@ public class OutputView {
 
   public static void printOutput(List<Integer> results) {
     results.forEach(position -> System.out.println("-".repeat(position)));
+    System.out.println();
   }
 }
