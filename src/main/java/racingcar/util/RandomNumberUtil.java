@@ -1,19 +1,20 @@
-package step03;
+package racingcar.util;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RandomNumberGenerator {
+public class RandomNumberUtil {
 
-    public static final int RANDOM_BOUND_NUMBER = 10;
-    private final Random random = new Random();
+    private RandomNumberUtil() {}
 
-    public int generateRandomNumber() {
-        return random.nextInt(RANDOM_BOUND_NUMBER);
+    private static final int RANDOM_BOUND_NUMBER = 10;
+
+    public static int generateRandomNumber() {
+        return new Random().nextInt(RANDOM_BOUND_NUMBER);
     }
 
-    public List<Integer> generateRandomNumberList(int size) {
+    public static List<Integer> generateRandomNumberList(int size) {
         List<Integer> randomNumbers = new ArrayList<>();
 
         int count = 0;
