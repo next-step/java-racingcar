@@ -10,6 +10,10 @@ public class Car {
         this.position = INITIAL_POSITION;
     }
 
+    public Car(Car car) {
+        this.position = car.position;
+    }
+
     public void stopOrGo(int condition) {
         if (isOutOfBound(condition)) {
             throw new IllegalArgumentException();

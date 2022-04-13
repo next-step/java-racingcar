@@ -15,6 +15,10 @@ public class RoundCount {
         this.roundCount = roundCount;
     }
 
+    public RoundCount(RoundCount round) {
+        this.roundCount = round.roundCount;
+    }
+
     private int toPositiveNumber(String value) {
         try {
             return toIntAndValidPositive(value);

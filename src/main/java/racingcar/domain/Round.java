@@ -14,6 +14,11 @@ public class Round {
         this.currentRound = new RoundCount(INITIAL_ROUND);
     }
 
+    public Round(Round round) {
+        this.totalRound = new RoundCount(round.totalRound);
+        this.currentRound = new RoundCount(round.currentRound);
+    }
+
     public void nextRound() {
         currentRound.up();
     }

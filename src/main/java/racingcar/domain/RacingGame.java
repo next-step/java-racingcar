@@ -24,12 +24,14 @@ public class RacingGame {
         return carCount == null || roundCount == null;
     }
 
-    public void play() {
+    public Histories play() {
+        Histories histories = new Histories();
         while (round.isOngoing()) {
             roundProceed();
-            ResultView.renderResultView(cars, round.getCurrentRound());
+            histories.add(new History(round, cars));
             round.nextRound();
         }
+        return histories;
     }
 
     private void roundProceed() {
