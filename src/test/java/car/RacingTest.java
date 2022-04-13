@@ -27,5 +27,11 @@ public class RacingTest {
         Car car = new Car("pobi");
         Assertions.assertThat(car.move(2)).isEqualTo("");
     }
+
+    @Test
+    void 자동차는_이름을_가진다() throws Exception {
+        step4.Car car = new step4.Car("pobi");
+        Assertions.assertThat(car.getName()).isEqualTo("pobi");
+    }
 }
 
