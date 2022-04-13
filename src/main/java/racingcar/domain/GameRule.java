@@ -1,20 +1,17 @@
-package racingcar;
+package racingcar.domain;
 
 import exception.OutOfRangeException;
 import util.Range;
 
-public class Car {
-	private int move = 0;
+public class GameRule {
+	private GameRule() {}
 
-	public int run(int randomNumber) {
+	public static boolean isMoveCar(int randomNumber) {
 		validateRandomNumber(randomNumber);
-		if (GameRule.isMoveCar(randomNumber)) {
-			move++;
-		}
-		return move;
+		return randomNumber >= 4;
 	}
 
-	private void validateRandomNumber(int randomNumber) {
+	private static void validateRandomNumber(int randomNumber) {
 		if (Range.of(1, 9).contain(randomNumber)) {
 			return;
 		}
