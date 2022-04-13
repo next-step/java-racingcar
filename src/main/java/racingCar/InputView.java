@@ -8,6 +8,15 @@ public class InputView {
     public static int getInput(String message) {
         System.out.println(message);
 
-        return Integer.parseInt(scanner.nextLine());
+        return toInt(scanner.nextLine());
+    }
+
+    public static int toInt(String input) {
+        int number = Integer.parseInt(input);
+        if (number < 0) {
+            throw new RuntimeException();
+        }
+
+        return number;
     }
 }
