@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public final class RacingCar {
-    private static final MovingStrategy RANDOM_MOVING_STRATEGY = new RandomMovingStrategy();
     private final Cars cars;
     private final int roundCount;
 
@@ -31,23 +30,23 @@ public final class RacingCar {
         }
     }
 
-    public List<RoundResult> play() {
+    public List<RoundResult> play(MovingStrategy movingStrategy) {
         List<Cars> results = new ArrayList<>();
         for (int count = 0; count < roundCount; count++) {
-            playAndAdd(results);
+            playAndAdd(results, movingStrategy);
         }
         return results.stream()
                 .map(result -> RoundResult.of(result.states()))
                 .collect(Collectors.toList());
     }
 
-    private void playAndAdd(List<Cars> results) {
+    private void playAndAdd(List<Cars> results, MovingStrategy movingStrategy) {
         if(results.isEmpty()) {
-            results.add(cars.play(RANDOM_MOVING_STRATEGY));
+            results.add(cars.play(movingStrategy));
             return;
         }
 
         Cars currentCars = results.get(results.size()-1);
-        results.add(currentCars.play(RANDOM_MOVING_STRATEGY));
+        results.add(currentCars.play(movingStrategy));
     }
 }
