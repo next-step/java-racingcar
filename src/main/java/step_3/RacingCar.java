@@ -1,23 +1,33 @@
 package step_3;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class RacingCar {
 
-    private final int[] roundResults;
+    private final static int MAX_ROULETTE_SCORE = 10;
+    private final Random roulette;
+    private final List<Integer> roundResults;
 
     public RacingCar(int totalRound) {
         this.checkNegativeArgs(totalRound);
-        this.roundResults = new int[totalRound];
+        this.roundResults = new ArrayList<>(totalRound);
+        this.roulette = new Random();
     }
 
-    public void stopOfForward(int thisRound, int roundResult) {
-        this.checkNegativeArgs(thisRound, roundResult);
-        this.roundResults[thisRound] = roundResult;
+    public int stopOrForward(int thisRound) {
+        this.checkNegativeArgs(thisRound);
+        this.roundResults.add(thisRound, roulette.nextInt(MAX_ROULETTE_SCORE));
+
+        return this.roundResults.get(thisRound);
     }
 
-    public long forwardHistory() {
-        return Arrays.stream(this.roundResults).filter(roundResult -> roundResult >= 4).count();
+    public int forwardHistory() {
+        return (int) this.roundResults.stream()
+                .filter(roundResult -> roundResult >= 4)
+                .count();
     }
 
     private void checkNegativeArgs(int... args) {
