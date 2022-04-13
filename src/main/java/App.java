@@ -1,18 +1,16 @@
 import racingcar.InputView;
+import racingcar.RacingCar;
+import racingcar.ResultView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class App {
 
-    static final InputView inputView = new InputView();
-
     public static void main(String[] args) {
-        List<Integer> inputDataList = new ArrayList<>();
+        int participantCarNumber = InputView.enterTheNumberOfCars();
+        int tryNumber = InputView.enterTheNumberOfTry();
 
-        inputDataList = inputView.printInput();
-
+        RacingCar racingCar = new RacingCar();
+        ResultView.show(racingCar.start(participantCarNumber, tryNumber));
     }
 
 }
