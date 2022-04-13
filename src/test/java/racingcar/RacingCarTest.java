@@ -36,11 +36,53 @@ public class RacingCarTest {
     void carsStateTest(int count) {
         RacingCar racingCar = new RacingCar(1, count);
 
-        List<RoundResult> playResult = racingCar.play();
+        List<RoundResult> playResult = racingCar.play(new RandomMovingStrategy());
 
         List<PositiveInteger> lastGameResult = playResult.get(playResult.size() - 1).getStates();
         for (PositiveInteger result : lastGameResult) {
             assertThat(result.value()).isLessThanOrEqualTo(count);
+        }
+    }
+
+    @Test
+    @DisplayName("모두 movable하다면 Car의 상태는 round횟수와 같다.")
+    void allMovableTest() {
+        RacingCar racingCar = new RacingCar(3, 5);
+
+        List<RoundResult> playResult = racingCar.play(new MovingStrategy() {
+            @Override
+            public boolean movable() {
+                return true;
+            }
+        });
+
+        for (int round = 1; round <= playResult.size(); round++) {
+            int index = round - 1;
+            List<PositiveInteger> states = playResult.get(index).getStates();
+            for (PositiveInteger state : states) {
+                assertThat(state.value()).isEqualTo(round);
+            }
+        }
+    }
+
+    @Test
+    @DisplayName("모두 unmovable하다면 Car의 상태는 항상 0이다.")
+    void allunMovableTest() {
+        RacingCar racingCar = new RacingCar(1, 3);
+
+        List<RoundResult> playResult = racingCar.play(new MovingStrategy() {
+            @Override
+            public boolean movable() {
+                return false;
+            }
+        });
+
+        for (int round = 1; round <= playResult.size(); round++) {
+            int index = round - 1;
+            List<PositiveInteger> states = playResult.get(index).getStates();
+            for (PositiveInteger state : states) {
+                assertThat(state.value()).isZero();
+            }
         }
     }
 }
