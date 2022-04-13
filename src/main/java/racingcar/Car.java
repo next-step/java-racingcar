@@ -1,6 +1,6 @@
 package racingcar;
 
-public class Car {
+public final class Car {
     private static final int MOVE_STATE = 1;
     private final PositiveInteger state;
 
