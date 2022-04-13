@@ -5,19 +5,16 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final int carCount;
-    private final int tryCount;
+    private Cars cars;
     private final ProceedPolicy proceedPolicy;
     private final RacingHistories histories = new RacingHistories();
 
-    public RacingGame(int carCount, int tryCount, ProceedPolicy proceedPolicy) {
-        this.carCount = carCount;
-        this.tryCount = tryCount;
+    public RacingGame(List<String> carNames, ProceedPolicy proceedPolicy) {
+        this.cars = createCars(carNames);
         this.proceedPolicy = proceedPolicy;
     }
 
-    public void run() {
-        Cars cars = createCars();
+    public void run(int tryCount) {
         histories.add(cars);
 
         for (int i = 0; i < tryCount; ++i) {
@@ -26,15 +23,15 @@ public class RacingGame {
         }
     }
 
-    private Cars createCars() {
+    private Cars createCars(List<String> carNames) throws IllegalArgumentException {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; ++i) {
-            cars.add(new Car());
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
         return new Cars(cars);
     }
 
-    public List<String> getRacingHistory() {
-        return histories.getHistories();
+    public RacingHistories getRacingHistories() {
+        return histories;
     }
 }

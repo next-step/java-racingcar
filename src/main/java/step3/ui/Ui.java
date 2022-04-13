@@ -1,12 +1,13 @@
 package step3.ui;
 
 import java.util.List;
+import step3.domain.RacingHistories;
 
 public interface Ui {
 
-    int inputCarCount();
+    List<String> inputCarNames();
 
     int inputTryCount();
 
-    void showResult(List<String> results);
+    void showResult(RacingHistories results);
 }

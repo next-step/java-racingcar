@@ -26,6 +26,21 @@ public class Cars {
         return cars.size();
     }
 
+    public List<Car> getCars() {
+        return this.cars;
+    }
+
+    public List<String> firstRankNames() {
+        int maxPosition = cars.stream()
+            .mapToInt(Car::getPosition)
+            .max().getAsInt();
+
+        return cars.stream()
+            .filter(car -> car.getPosition() == maxPosition)
+            .map(car -> car.getName())
+            .collect(Collectors.toList());
+    }
+
     public List<Integer> getPositions() {
         return cars.stream()
             .map(Car::getPosition)

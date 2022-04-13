@@ -1,17 +1,23 @@
 package step3.ui;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import step3.domain.RacingHistories;
+import step3.domain.RacingHistory;
 
 public class Cui implements Ui{
 
     @Override
-    public int inputCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    public List<String> inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         Scanner scanner = new Scanner(System.in);
-        int carCount = scanner.nextInt();
-        System.out.println(carCount);
-        return carCount;
+        String carNamesString = scanner.nextLine();
+        List<String> carNames = Arrays.stream(carNamesString.split(","))
+            .collect(Collectors.toList());
+        System.out.println(carNamesString);
+        return carNames;
     }
 
     @Override
@@ -24,10 +30,13 @@ public class Cui implements Ui{
     }
 
     @Override
-    public void showResult(List<String> histories) {
+    public void showResult(RacingHistories histories) {
         System.out.println(System.lineSeparator() + "실행 결과");
-        for (String history : histories) {
-            System.out.println(history);
+        for (RacingHistory history : histories.getHistories()) {
+            System.out.println(history.getRacerPositionsString());
         }
+
+        System.out.print(histories.printWinner());
+        System.out.println(" 이(가) 최종 우승했습니다.");
     }
 }
