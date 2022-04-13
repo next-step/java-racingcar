@@ -18,7 +18,7 @@ public class CarStadium {
 
     public static void initCars(int nums) {
         for (int i = 0; i < nums; ++i) {
-            Car car = new Car(new NormalStrategy());
+            Car car = new Car("ykim", new NormalStrategy());
             carList.add(car);
         }
     }
@@ -34,4 +34,6 @@ public class CarStadium {
     public static LinkedList<Car> getCars() {
         return carList;
     }
+
+
 }

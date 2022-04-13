@@ -1,9 +1,11 @@
 package racingCar;
 
+import calculator.AddCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class RacingCarTest {
 
@@ -11,7 +13,7 @@ public class RacingCarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car(new NormalStrategy());
+        car = new Car("ykim", new NormalStrategy());
     }
 
     @Test
@@ -61,5 +63,16 @@ public class RacingCarTest {
             int result = CarStadium.extractRandomNumber();
             assertThat(car.move(result)).isIn("-", "");
         }
+    }
+
+    @Test
+    public void 자동차이름_테스트() {
+        assertThat(car.getName()).isEqualTo("ykim");
+    }
+
+    @Test
+    public void 자동차이름길이가_넘어가면_에러처리_테스트() {
+        assertThatThrownBy(() -> new Car("abcabcabc", new NormalStrategy()))
+                .isInstanceOf(InvalidCarNameException.class);
     }
 }
