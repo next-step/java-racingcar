@@ -5,7 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import racing.domain.Car;
-import racing.domain.strategies.CarMoveStrategy;
 import racing.utils.Counter;
 
 import java.util.stream.Stream;
@@ -18,8 +17,9 @@ class CarTest {
     @ParameterizedTest
     @MethodSource("provideSource")
     void carMoveForward(Boolean isMovable, Counter expected) {
-        CarMoveStrategy moveStrategy = () -> isMovable;
-        assertThat(new Car("carA").run(moveStrategy)).isEqualTo(expected);
+        Car carA = new Car("carA");
+        carA.run(() -> isMovable);
+        assertThat(carA.getCounter()).isEqualTo(expected);
     }
 
     private static Stream<Arguments> provideSource() {

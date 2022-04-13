@@ -18,9 +18,11 @@ public class Cars {
 
     public GameRoundResult run(CarMoveStrategy moveStrategy) {
         GameRoundResult round = new GameRoundResult();
-        cars.stream()
-                .map(car -> car.run(moveStrategy))
-                .forEach(round::addResult);
+        cars.forEach(car -> {
+            car.run(moveStrategy);
+            round.addResult(car.getName(), car.getCounter());
+        });
+
         return round;
     }
 }

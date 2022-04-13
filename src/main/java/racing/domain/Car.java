@@ -16,14 +16,17 @@ public class Car {
         name = nameOfCar;
     }
 
-    public Counter run(CarMoveStrategy carMoveStrategy) {
+    public void run(CarMoveStrategy carMoveStrategy) {
         if (carMoveStrategy.isMovable()) {
             counter.add(RUN_STEP);
         }
-        return new Counter(this.counter);
     }
 
     public String getName() {
         return name;
+    }
+
+    public Counter getCounter() {
+        return new Counter(this.counter);
     }
 }
