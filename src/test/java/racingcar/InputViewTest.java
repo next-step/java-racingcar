@@ -4,9 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EmptySource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,7 +23,7 @@ class InputViewTest {
     void throwExceptionNoInput(String empty) {
         assertThatThrownBy(() -> inputView.getCarNameArray(empty))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("must not be null or empty");
+                .hasMessageContaining("비어있을 수 없습니다");
     }
 
     @Test
@@ -42,7 +40,7 @@ class InputViewTest {
     void validateLengthOfCarName(String input) {
         assertThatThrownBy(() -> inputView.getCarNameArray(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("five characters");
+                .hasMessageContaining("다섯 글자 이하");
     }
 
 }
