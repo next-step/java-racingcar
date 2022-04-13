@@ -12,14 +12,7 @@ public class RaceTest {
         Race race = new Race();
         assertThat(race.createCars(3)).hasSize(3);
     }
-
-    @Test
-    void randomShouldBeZeroToNineAtLeastTenTimes() {
-        for (int i = 0; i < 10; i++) {
-            assertThat(Race.getRandom()).isBetween(0, 9);
-        }
-    }
-
+    
     @Test
     void CarShouldMove() {
         Car car = new Car();
