@@ -2,7 +2,7 @@ package stringcalculator;
 
 public class PositiveNumber {
 
-    public static final String PARSING_FAIL_MESSAGE = "String to Integer Parsing Failed";
+    private static final String PARSING_FAIL_MESSAGE = "String to Integer Parsing Failed";
     private final int number;
 
     private PositiveNumber(int number) {
