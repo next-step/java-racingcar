@@ -1,6 +1,7 @@
 package step3.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static step3.domain.Car.DEFAULT_POSITION;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -13,15 +14,22 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("test");
     }
 
     @Test
     void createCarTest() {
-        Car carCreated = new Car();
+        Car carCreated = new Car("car1");
 
         assertThat(carCreated).isNotNull();
         assertThat(carCreated.getPosition()).isEqualTo(DEFAULT_POSITION);
+    }
+
+    @DisplayName("차 이름의 길이는 5 초과하면 예외 발생한다.")
+    @Test
+    void createCarTest2() {
+        assertThatThrownBy(() -> new Car("carName"))
+            .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("차량 전진 요청 시 위치 전진한다.")

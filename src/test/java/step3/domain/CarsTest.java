@@ -18,16 +18,16 @@ class CarsTest {
 
     @BeforeEach
     void setUp() {
-         car1 = new Car();
-         car2 = new Car();
-         car3 = new Car();
+         car1 = new Car("car1");
+         car2 = new Car("car2");
+         car3 = new Car("car2");
 
          cars = new Cars(List.of(car1, car2, car3));
     }
 
     @Test
     void createTest() {
-        Cars carsCreated = new Cars(List.of(new Car(), new Car(), new Car()));
+        Cars carsCreated = new Cars(List.of(new Car("car1"), new Car("car2"), new Car("car3")));
 
         assertThat(carsCreated).isNotNull();
         assertThat(carsCreated.size()).isEqualTo(3);
