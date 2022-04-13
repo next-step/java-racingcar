@@ -7,15 +7,15 @@ import java.util.regex.Pattern;
 public class InputView {
 
     private static final Pattern onlyNumberPattern = Pattern.compile("^[0-9]*?");
-    private static final Scanner scanner = new Scanner(System.in);
 
-    public static int enterTheNumberOfCars() {
+
+    public static int enterTheNumberOfCars(Scanner scanner) {
         System.out.println("자동차 대수는 몇 대 인가요?");
 
         return validInputData(scanner.nextLine());
     }
 
-    public static int enterTheNumberOfTry() {
+    public static int enterTheNumberOfTry(Scanner scanner) {
         System.out.println("시도할 회수는 몇 회 인가요?");
         return validInputData(scanner.nextLine());
     }
@@ -27,6 +27,7 @@ public class InputView {
             return checkPositive(input);
         }
 
+        System.out.println("잘못된 입력값 입니다");
         throw new RuntimeException();
     }
 
