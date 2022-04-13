@@ -1,8 +1,6 @@
 package racingcar;
 
-import java.util.List;
-
-public class App {
+public class RacingApp {
     public static void main(String[] args) throws Exception {
         int carNumber = InputView.getNumber("car");
         int tryNumber = InputView.getNumber("try");
