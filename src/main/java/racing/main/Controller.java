@@ -2,7 +2,7 @@ package racing.main;
 
 import racing.domain.Cars;
 import racing.domain.Competition;
-import racing.domain.RandomCondition;
+import racing.domain.RandomMovableCondition;
 import racing.ui.InputView;
 import racing.ui.ResultView;
 
@@ -14,10 +14,10 @@ public class Controller {
         int round = InputView.inputNumberOfRounds();
 
         Competition competition = new Competition(unit, round);
-        List<Cars> snapshots = competition.progressEntireRoundAndRecordAllSnapshot(new RandomCondition());
+        List<Cars> snapshots = competition.progressEntireRoundAndRecordAllSnapshot(new RandomMovableCondition());
         ResultView.print(snapshots);
 
-//        Cars snapshot = competition.progressEntireRoundAndRecordLastSnapshot(new RandomCondition());
+//        Cars snapshot = competition.progressEntireRoundAndRecordLastSnapshot(new RandomMovableCondition());
 //        ResultView.print(snapshot);
     }
 }
