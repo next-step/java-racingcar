@@ -9,21 +9,25 @@ public class ResultView {
     private ResultView() {
     }
 
-    public static void print(final Cars snapshot) {
+    public static void printRoundStatus(final Cars snapshot) {
         for (Car car : snapshot.getCars()) {
-            for (int i = 0, len = car.getDistance(); i < len; i++) {
-                System.out.print("-");
-            }
+            printCarStatus(car);
             System.out.println();
         }
     }
 
-    public static void print(final List<Cars> snapshots) {
+    public static void printEntireStatus(final List<Cars> snapshots) {
         System.out.println("실행 결과");
 
         for (Cars cars : snapshots) {
-            print(cars);
+            printRoundStatus(cars);
             System.out.println();
+        }
+    }
+
+    private static void printCarStatus(Car car) {
+        for (int i = 0, len = car.getDistance(); i < len; i++) {
+            System.out.print("-");
         }
     }
 }

@@ -15,9 +15,9 @@ public class Controller {
 
         Competition competition = new Competition(unit, round);
         List<Cars> snapshots = competition.progressEntireRoundAndRecordAllSnapshot(new RandomMovableCondition());
-        ResultView.print(snapshots);
+        ResultView.printEntireStatus(snapshots);
 
 //        Cars snapshot = competition.progressEntireRoundAndRecordLastSnapshot(new RandomMovableCondition());
-//        ResultView.print(snapshot);
+//        ResultView.printRoundStatus(snapshot);
     }
 }
