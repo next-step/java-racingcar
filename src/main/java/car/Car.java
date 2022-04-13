@@ -12,6 +12,10 @@ public class Car {
         this.name = name;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public String move(int number) {
         if (number < EXCESS_NUMBERS) {
             return "";
@@ -24,4 +28,5 @@ public class Car {
     public void print() {
 
     }
+
 }
