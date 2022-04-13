@@ -8,6 +8,7 @@ public class Track {
   private final List<Car> cars = new ArrayList<>();
   private int gameCount;
 
+
   public void addCar(String names) {
     String[] splitNames = splitNames(names);
     for (String name : splitNames) {
@@ -18,6 +19,7 @@ public class Track {
   private String[] splitNames(String names) {
     return names.split(",");
   }
+
 
   public List<Car> getCars() {
     return cars;

@@ -4,6 +4,7 @@ import racingCar.strategy.CarMoveStrategy;
 
 public class Car {
 
+
   private final String name;
   private int position;
   private static final Integer MAX_NAME_LENGTH = 5;
@@ -23,15 +24,18 @@ public class Car {
     }
   }
 
+
   public int move(CarMoveStrategy carMoveStrategy) {
     if (carMoveStrategy.moveAble()) {
       return position += 1;
     }
     return position;
   }
+
   public String name() {
     return this.name;
   }
+
 
   public int position() {
     return this.position;
@@ -41,4 +45,5 @@ public class Car {
   public String toString() {
     return name + " : " + STEP.repeat(Math.max(0, position()));
   }
+
 }

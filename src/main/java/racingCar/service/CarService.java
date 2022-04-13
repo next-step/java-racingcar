@@ -10,6 +10,7 @@ public class CarService {
   private final static Track TRACK = new Track();
 
   public List<Car> readyCars() {
+
     TRACK.addCar(InputTable.insertName());
     return TRACK.getCars();
   }
