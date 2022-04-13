@@ -1,20 +1,17 @@
 package car;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Racing {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         InputView inputView = new InputView();
-        int carCount = inputView.carCountQuestion();
+        List<Car> cars = inputView.carNameQuestion();
         int attemptCount = inputView.attemptCountQuestion();
-        int moveMaxNumber = 4;
 
-        CarRacing carRacing = new CarRacing(carCount, attemptCount, moveMaxNumber);
-        List<Car> result = carRacing.start();
+        CarRacing racing = new CarRacing(cars);
+        racing.play(attemptCount);
 
-        ResultView resultView = new ResultView(result);
+        ResultView resultView = new ResultView(racing);
         resultView.print();
     }
 }

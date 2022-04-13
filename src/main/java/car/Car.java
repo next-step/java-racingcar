@@ -7,13 +7,21 @@ public class Car {
     private String name;
     private StringBuilder distance;
 
-    public Car(String name) {
+    public Car(String name) throws Exception {
+        if (name.length() > 5) {
+            throw new Exception("이름은 5자를 초과할 수 없습니다");
+        }
+
         this.distance = new StringBuilder();
         this.name = name;
     }
 
     public String getName() {
         return this.name;
+    }
+
+    public String getDistance() {
+        return this.distance.toString();
     }
 
     public String move(int number) {

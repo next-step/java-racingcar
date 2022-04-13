@@ -4,40 +4,67 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacing {
-    private List<Car> cars = new ArrayList<Car>();
-    private int attempt;
-    private int moveMinNumber;
+    private List<Car> cars;
 
-    public CarRacing(int participatingCarCount, int attempt, int moveMinNumber) {
-        participatingCar(participatingCarCount);
-        this.attempt = attempt;
-        this.moveMinNumber = moveMinNumber;
+    public CarRacing(List<Car> cars) {
+        this.cars = cars;
     }
 
-    private void participatingCar(int number) {
-        for (int i = 0; i < number; i++) {
-            cars.add(new Car("pobi"));
+    public void play(int attemptNumber) {
+        for (int i = 0; i < attemptNumber; i++) {
+            racing();
         }
     }
 
-    public int getParticipatingCarCount() {
-        return cars.size();
+    private void racing() {
+        for (Car car : cars) {
+            car.move(Dice.roll());
+            car.print();
+        }
+        System.out.println();
     }
 
-    public int getAttemptCount() {
-        return this.attempt;
+    public List<Car> finish() {
+        int max = getMaxDistance();
+        List<Car> winners = getWinners(max);
+
+        for (Car winner : winners) {
+            System.out.print(winner.getName() + " ");
+        }
+        System.out.println("최종 우승했습니다.");
+
+        return winners;
+    }
+    private int getMaxDistance() {
+        int max = Integer.MIN_VALUE;
+
+        for (Car car : cars) {
+            max = getMax(max, car);
+        }
+        return max;
     }
 
-    public int getMoveMinNumber() {return this.moveMinNumber; }
+    private int getMax(int max, Car car) {
+        if (max < car.getDistance().length()) {
+            max = car.getDistance().length();
+        }
+        return max;
+    }
 
-    public List<Car> start() {
-        for (int i = 0; i < attempt; i++) {
-            for (Car car : cars) {
-                car.move(4);
-            }
+    private List<Car> getWinners(int max) {
+        List<Car> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            getWinner(max, winners, car);
         }
 
-        return cars;
+        return winners;
+    }
+
+    private void getWinner(int max, List<Car> winners, Car car) {
+        if (max == car.getDistance().length()) {
+            winners.add(car);
+        }
     }
 }
 
