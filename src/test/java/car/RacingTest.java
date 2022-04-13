@@ -17,13 +17,13 @@ public class RacingTest {
     }
 
     @Test
-    void 랜덤_값에서_4이상_인_경우_전진한다() {
+    void 랜덤_값에서_4이상_인_경우_전진한다() throws Exception {
         Car car = new Car("pobi");
         Assertions.assertThat(car.move(4)).isEqualTo("-");
     }
 
     @Test
-    void 랜덤_값에서_4미만_인_경우_멈춘다() {
+    void 랜덤_값에서_4미만_인_경우_멈춘다() throws Exception {
         Car car = new Car("pobi");
         Assertions.assertThat(car.move(2)).isEqualTo("");
     }
