@@ -8,16 +8,15 @@ import java.util.stream.Collectors;
 public final class Cars {
     private final List<Car> cars;
 
-    public Cars(List<Car> input) {
-        validate(input);
-        List<Car> cars = new ArrayList<>(input);
-        this.cars = cars;
+    public Cars(List<Car> cars) {
+        validate(cars);
+        this.cars = new ArrayList<>(cars);
     }
 
-    private void validate(List<Car> input) {
-        Objects.requireNonNull(input, "전달된 리스트가 올바르지 않습니다 : Cars is null");
+    private void validate(List<Car> cars) {
+        Objects.requireNonNull(cars, "전달된 리스트가 올바르지 않습니다 : Cars is null");
 
-        if (input.isEmpty()) {
+        if (cars.isEmpty()) {
             throw new IllegalArgumentException("전달된 리스트가 올바르지 않습니다 : Cars is empty");
         }
     }

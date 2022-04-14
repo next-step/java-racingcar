@@ -12,8 +12,7 @@ public class RacingCarMain {
         int round = InputView.inputRound();
 
         RacingCar racingCar = new RacingCar(number, round);
-        MovingStrategy randomMovingStrategy = new RandomMovingStrategy();
-        List<RoundResult> result = racingCar.play(randomMovingStrategy);
+        List<RoundResult> result = racingCar.play(new RandomMovingStrategy());
 
         ResultView.print(result);
     }

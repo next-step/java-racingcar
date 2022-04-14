@@ -9,15 +9,14 @@ public final class PositiveIntegers {
 
     public PositiveIntegers(List<PositiveInteger> inputs) {
         validate(inputs);
-        List<PositiveInteger> positiveIntegers = new ArrayList<>(inputs);
-        this.positiveIntegers = positiveIntegers;
+        this.positiveIntegers = new ArrayList<>(inputs);
     }
 
     public void validate(List<PositiveInteger> positiveIntegers) {
-        Objects.requireNonNull(positiveIntegers, "전달된 리스트가 올바르지 않습니다 : List is null");
+        Objects.requireNonNull(positiveIntegers, "전달된 리스트가 올바르지 않습니다 : PositiveIntegers is null");
 
         if (positiveIntegers.isEmpty()) {
-            throw new IllegalArgumentException("전달된 리스트가 올바르지 않습니다 : List size is 0");
+            throw new IllegalArgumentException("전달된 리스트가 올바르지 않습니다 : PositiveIntegers is empty");
         }
     }
 

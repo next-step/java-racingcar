@@ -15,11 +15,11 @@ public class RoundResult {
         this.states = new ArrayList<>(states);
     }
 
-    private void validate(List<PositiveInteger> input) {
-        Objects.requireNonNull(input, "전달된 리스트가 올바르지 않습니다 : list is null");
+    private void validate(List<PositiveInteger> states) {
+        Objects.requireNonNull(states, "전달된 리스트가 올바르지 않습니다 : RoundResult is null");
 
-        if (input.isEmpty()) {
-            throw new IllegalArgumentException("전달된 리스트가 올바르지 않습니다 : list is empty");
+        if (states.isEmpty()) {
+            throw new IllegalArgumentException("전달된 리스트가 올바르지 않습니다 : RoundResult is empty");
         }
     }
 
