@@ -30,7 +30,7 @@ public final class OutputTable {
         .sorted(Comparator.comparing(RacingCarHistory::round)).collect(Collectors.toList());
     for (RacingCarHistory car : cars) {
       System.out.println(car.car());
-      if (car.carCount() == allCars.size()) {
+      if (car.carIndex() == allCars.size()) {
         System.out.println();
       }
     }
@@ -41,7 +41,7 @@ public final class OutputTable {
     for (Car car : allCars) {
       for (int i = 0; i < rounds; i++) {
         car = car.move(new CarMoveRandomStrategy());
-        printCars.add(new RacingCarHistory(i, car, allCars.size()));
+        printCars.add(new RacingCarHistory(i, car, car.index()));
       }
     }
     return printCars;

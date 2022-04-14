@@ -4,12 +4,12 @@ public class RacingCarHistory {
 
   private Integer round;
   private Car car;
-  private Integer carSize;
+  private Integer carIndex;
 
-  public RacingCarHistory(Integer round, Car car, Integer carSize) {
+  public RacingCarHistory(Integer round, Car car, Integer carIndex) {
     this.round = round;
     this.car = car;
-    this.carSize = carSize;
+    this.carIndex = carIndex;
   }
 
   public Integer round() {
@@ -20,7 +20,7 @@ public class RacingCarHistory {
     return car;
   }
 
-  public Integer carCount() {
-    return this.carSize;
+  public Integer carIndex() {
+    return this.carIndex;
   }
 }

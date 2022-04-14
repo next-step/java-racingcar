@@ -11,8 +11,9 @@ public class Track {
   private int gameCount;
 
   public void addCar(String names) {
-    for (String carName : readyCarNames(names)) {
-      cars.add(new Car(carName));
+    String[] carNames = readyCarNames(names);
+    for (int i = 0; i < carNames.length; i++) {
+      cars.add(new Car(i + 1, carNames[i]));
     }
   }
 
