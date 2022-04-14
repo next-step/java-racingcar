@@ -13,6 +13,10 @@ public final class InputTable {
     return SCANNER.nextInt();
   }
 
+  public static String insertCarNames() {
+    return SCANNER.next();
+  }
+
   public static Integer howManyGame() {
     return SCANNER.nextInt();
   }

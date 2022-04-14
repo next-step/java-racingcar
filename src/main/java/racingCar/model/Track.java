@@ -8,9 +8,9 @@ public class Track {
   private final List<Car> cars = new ArrayList<>();
   private int gameCount;
 
-  public void addCar(int carCount) {
-    for (int i = 0; i < carCount; i++) {
-      cars.add(new Car());
+  public void addCar(String names) {
+    for (int i = 0; i < names.length(); i++) {
+      cars.add(new Car(names));
     }
   }
 
