@@ -5,10 +5,15 @@ import java.util.Scanner;
 
 public class RacingGame {
 
-    public static void main(String[] args) {
-        Random random = new Random();
-        Scanner scanner = new Scanner(System.in);
+    private final Random random;
+    private final Scanner scanner;
 
+    public RacingGame(Random random, Scanner scanner) {
+        this.random = random;
+        this.scanner = scanner;
+    }
+
+    public void play() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         int carCount = scanner.nextInt();
 
@@ -34,6 +39,11 @@ public class RacingGame {
             }
             System.out.println();
         }
+    }
+
+    public static void main(String[] args) {
+        RacingGame racingGame = new RacingGame(new Random(), new Scanner(System.in));
+        racingGame.play();
     }
 
 }
