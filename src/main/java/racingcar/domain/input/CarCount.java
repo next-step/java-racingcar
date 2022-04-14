@@ -1,6 +1,7 @@
 package racingcar.domain.input;
 
-import racingcar.constant.InputExceptionMessage;
+import racingcar.domain.input.exception.InvalidNumberException;
+import racingcar.domain.input.exception.OnlyPositiveException;
 
 public class CarCount {
 
@@ -14,9 +15,7 @@ public class CarCount {
         try {
             return toIntAndValidPositive(value);
         } catch (NumberFormatException e) {
-            throw new NumberFormatException(InputExceptionMessage.INVALID_NUMBER_FORMAT);
-        } catch (IllegalArgumentException ie) {
-            throw new IllegalArgumentException(InputExceptionMessage.ONLY_POSITIVE);
+            throw new InvalidNumberException();
         }
     }
 
@@ -28,7 +27,7 @@ public class CarCount {
 
     private void validatePositive(int number) {
         if (number < 1) {
-            throw new IllegalArgumentException();
+            throw new OnlyPositiveException();
         }
     }
 
