@@ -10,10 +10,10 @@ import java.util.List;
 
 public class Controller {
     public static void main(String[] args) {
-        int unit = InputView.inputNumberOfCars();
+        String[] carNameArr = InputView.inputNumberOfCars().split(",");
         int round = InputView.inputNumberOfRounds();
 
-        Competition competition = new Competition(unit, round);
+        Competition competition = new Competition(carNameArr, round);
         List<Cars> snapshots = competition.progressEntireRoundAndRecordAllSnapshot(new RandomMovableCondition());
         ResultView.printEntireStatus(snapshots);
 

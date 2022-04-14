@@ -6,8 +6,8 @@ import java.util.List;
 public class Cars {
     private final List<Car> cars;
 
-    Cars(int unit) {
-        this.cars = initCars(unit);
+    Cars(String[] carNameArr) {
+        this.cars = initCars(carNameArr);
     }
 
     private Cars(List<Car> cars) {
@@ -26,10 +26,11 @@ public class Cars {
         return new Cars(carList);
     }
 
-    private List<Car> initCars(int unit) {
-        List<Car> cars = new ArrayList<>(unit);
-        for (int i = 0; i < unit; i++) {
-            cars.add(i, new Car());
+    private List<Car> initCars(String[] carNameArr) {
+        int numberOfCars = carNameArr.length;
+        List<Car> cars = new ArrayList<>(numberOfCars);
+        for (int i = 0; i < numberOfCars; i++) {
+            cars.add(i, new Car(carNameArr[i]));
         }
         return cars;
     }

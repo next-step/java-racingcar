@@ -11,7 +11,7 @@ public class CarTest {
 
     @BeforeEach
     void 차를_생성() {
-        car = new Car();
+        car = new Car("test");
     }
 
     @Test
