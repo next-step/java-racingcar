@@ -1,8 +1,8 @@
 package racingcar.racing;
 
 public class RacingCar {
-    int id;
-    int progress;
+    private final int id;
+    private int progress;
 
     public RacingCar(int id, int progress) {
         this.id = id;
@@ -13,8 +13,8 @@ public class RacingCar {
         return this.id;
     }
 
-    public void setProgress() {
-        progress += 1;
+    public void setProgress(int result) {
+        progress = result;
     }
 
     public int getProgress() {

@@ -12,6 +12,10 @@ public class RacingGameRepository {
         store.put(racingCar.getId(), racingCar);
     }
 
+    public RacingCar findById(int racingCarId) {
+        return store.get(racingCarId);
+    }
+
     public List<RacingCar> findAll() {
         return new ArrayList<>(store.values());
     }

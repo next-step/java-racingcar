@@ -18,8 +18,11 @@ public class RacingGameService {
     }
 
     public void playGame(RacingCar racingCar, int tryNumber) {
-        RacingCar car = racingPolicy.racing(racingCar, tryNumber, RACING_POLICY_VALUE);
-        racingGameRepository.save(car);
+        for (int i = 0; i < tryNumber; i++) {
+            racingCar.setProgress(racingPolicy.racing(racingCar.getProgress(), RACING_POLICY_VALUE));
+            racingGameRepository.save(racingCar);
+        }
+
     }
 
     public List<RacingCar> findAll() {

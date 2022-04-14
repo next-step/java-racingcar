@@ -1,8 +1,6 @@
-package racingcarver2.racing;
+package racingcar.racing;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingGameTest {
 
