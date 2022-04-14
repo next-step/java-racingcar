@@ -21,6 +21,7 @@ public class PositiveIntegerTest {
     void addTest() {
         PositiveInteger one = new PositiveInteger(1);
         PositiveInteger two = new PositiveInteger(2);
+
         assertThat(PositiveInteger.add(one, two)).isEqualTo(new PositiveInteger(3));
     }
 }

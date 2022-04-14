@@ -39,10 +39,13 @@ public class CarsTest {
     @Test
     @DisplayName("Cars를 play했을 때 결과를 잘 반환하는지 테스트")
     void playTest() {
+        // given
         Cars cars = new Cars(Lists.newArrayList(new Car()));
 
+        // when
         Cars result = cars.play(new RandomMovingStrategy());
 
+        // then
         assertThat(result.states().get(0).value())
                 .isGreaterThanOrEqualTo(cars.states().get(0).value());
     }

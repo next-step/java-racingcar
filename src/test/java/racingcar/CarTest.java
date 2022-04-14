@@ -21,6 +21,7 @@ public class CarTest {
     @DisplayName("자동차의 초기 상태는 0이어야 한다.")
     void carStateTest() {
         Car car = new Car();
+
         assertThat(car.state()).isEqualTo(PositiveInteger.ZERO);
     }
 
@@ -28,7 +29,9 @@ public class CarTest {
     @DisplayName("자동차가 movable 하다면 한칸 전진한다.")
     void movableTest() {
         Car car = new Car();
+
         Car nextCar = car.move(() -> true);
+
         assertThat(nextCar.state()).isEqualTo(PositiveInteger.add(car.state(), new PositiveInteger(1)));
     }
 
@@ -36,7 +39,9 @@ public class CarTest {
     @DisplayName("자동차가 unmovable 하다면 멈춰있는다.")
     void unmovableTest() {
         Car car = new Car();
+
         Car nextCar = car.move(() -> false);
+
         assertThat(nextCar.state()).isEqualTo(car.state());
     }
 }
