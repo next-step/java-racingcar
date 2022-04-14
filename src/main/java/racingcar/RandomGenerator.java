@@ -11,7 +11,7 @@ public final class RandomGenerator {
     public RandomGenerator() {
     }
 
-    public int generateNumber() {
+    public int getOneNumberFrom0to9() {
         int number = RANDOM.nextInt(RANDOM_NUMBER_BOUND) + RANDOM_NUMBER_MIN;
         validate(number);
         return number;

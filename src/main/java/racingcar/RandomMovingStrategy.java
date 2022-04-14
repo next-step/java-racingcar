@@ -7,6 +7,6 @@ public class RandomMovingStrategy implements MovingStrategy {
 
     @Override
     public boolean movable() {
-        return randomGenerator.generateNumber() >= MOVE_BOUNDARY_NUMBER;
+        return randomGenerator.getOneNumberFrom0to9() >= MOVE_BOUNDARY_NUMBER;
     }
 }
