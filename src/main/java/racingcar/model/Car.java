@@ -11,9 +11,8 @@ public class Car {
     private static final int DEFAULT_POSITION = 0;
     private static final NumberGenerator DEFAULT_NUMBER_GENERATOR = new RandomNumberGenerator();
     private static final int INCREASE_POSITION_COUNT = 1;
-
-    private AtomicInteger position;
     private final Name name;
+    private AtomicInteger position;
 
     public Car(String name) {
         this.name = new Name(name);
@@ -44,14 +43,15 @@ public class Car {
         return false;
     }
 
-    public String getStatus() {
-        return String.format("%s : %s", this.name, getPositionBar(this.position));
-    }
-
     private void increasePosition() {
         this.position = new AtomicInteger(
                 this.position.intValue() + INCREASE_POSITION_COUNT
         );
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s : %s", this.name, getPositionBar(this.position));
     }
 
     private String getPositionBar(AtomicInteger position) {
