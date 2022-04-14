@@ -13,18 +13,6 @@
 
 ## ToDo
 
-- [x] Car
-    - [x] int position
-    - [x] boolean move()
-    - [x] int getPosition()
-- [x] InputView
-    - [x] int inputCarCount()
-    - [x] int inputCarMoveCount()
-- [x] OutputView
-    - [x] void outputMoveCar(Cars cars, int carMoveCount)
-
-## ToDo - 문장
-
 - [x] 자동차
     - [x] 자동차는 위치값을 갖는다.
     - [x] 자동차는 랜덤한 값 결과에 따라 위치값이 이동될 수 있다.
