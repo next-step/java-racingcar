@@ -1,22 +1,77 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    @DisplayName("move 호출 횟수로 동등성 비교")
+    private static final CarName POBI = new CarName("POBI");
+    private static final CarName CRONG = new CarName("CRONG");
+
     @Test
-    void move() {
-        Car car = new Car(new Position());
+    void equals_ReturnsTrue_IfCarNamesAndPositionAreSame() {
+        Car pobiCar1 = new Car(POBI, new Position());
+        Car pobiCar2 = new Car(POBI, new Position());
+
+        assertThat(pobiCar1).isEqualTo(pobiCar2);
+    }
+
+    @Test
+    void equals_ReturnsFalse_IfCarNamesAreDifferent() {
+        Car pobiCar = new Car(POBI, new Position());
+        Car crongCar = new Car(CRONG, new Position());
+
+        assertThat(pobiCar).isNotEqualTo(crongCar);
+    }
+
+    @Test
+    void equals_ReturnsFalse_IfPositionsAreDifferent() {
+        Car pobiCar1 = new Car(POBI, new Position(2));
+        Car pobiCar2 = new Car(POBI, new Position(3));
+
+        assertThat(pobiCar1).isNotEqualTo(pobiCar2);
+    }
+
+    @Test
+    void move_IncreasesPosition_IfConditionIsTrue() {
+        int startPosition = 5;
+        Car pobiCar = new Car(POBI, new Position(startPosition));
 
         int moveCount = 3;
         for (int i = 0; i < moveCount; i++) {
-            car.move(() -> true);
+            pobiCar.move(() -> true);
         }
 
-        assertThat(car).isEqualTo(new Car(new Position(moveCount)));
+        assertThat(pobiCar.getPosition()).isEqualTo(startPosition + moveCount);
+    }
+
+    @Test
+    void move_DoesNotIncreasePosition_IfConditionIsFalse() {
+        int startPosition = 5;
+        Car pobiCar = new Car(POBI, new Position(startPosition));
+
+        int moveCount = 3;
+        for (int i = 0; i < moveCount; i++) {
+            pobiCar.move(() -> false);
+        }
+
+        assertThat(pobiCar.getPosition()).isEqualTo(startPosition);
+    }
+
+    @Test
+    void compareTo() {
+        Car thousandCar = new Car(POBI, new Position(1000));
+        Car hundredCar = new Car(POBI, new Position(100));
+
+        assertThat(thousandCar).isGreaterThan(hundredCar);
+    }
+
+    @Test
+    void compareTo_Returns0_IfPositionsAreSame() {
+        Car tenCar1 = new Car(POBI, new Position(10));
+        Car tenCar2 = new Car(POBI, new Position(10));
+
+        assertThat(tenCar1).isEqualByComparingTo(tenCar2);
     }
 }

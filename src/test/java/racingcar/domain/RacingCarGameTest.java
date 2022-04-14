@@ -2,39 +2,43 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
 import racingcar.domain.strategy.MoveStrategy;
-import racingcar.domain.strategy.RandomMoveStrategy;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatNoException;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingCarGameTest {
 
-    private static final int carSize = 10;
-    private static final int rounds = 10;
+    private static final List<CarName> CAR_NAMES =
+            List.of(new CarName("pobi"), new CarName("crong"), new CarName("honux"));
+    private static final int ROUNDS = 5;
+    private static final MoveStrategy ALWAYS_MOVE_STRATEGY = () -> true;
 
     @Test
-    void rounds_만큼_proceedRound_호출하면_정상동작() {
-        RacingCarGame game = generateGame(new RandomMoveStrategy());
+    void proceedRound_DoesNotThrowException_IfRoundsIsGreaterThanZero() {
+        RacingCarGame game = createRacingCarGame();
+
         assertThatNoException().isThrownBy(() -> {
-            for (int i = 0; i < rounds; i++) {
+            for (int i = 0; i < ROUNDS; i++) {
                 game.proceedRound();
             }
         });
     }
 
     @Test
-    void rounds_보다_proceedRound_많이_호출하면_예외() {
-        RacingCarGame game = generateGame(new RandomMoveStrategy());
+    void proceedRound_ThrowsException_IfRoundsIsEqualOrLessThanZero() {
+        RacingCarGame game = createRacingCarGame();
+
         assertThatThrownBy(() -> {
-            for (int i = 0; i < rounds + 1; i++) {
+            for (int i = 0; i < ROUNDS + 1; i++) {
                 game.proceedRound();
             }
         }).isInstanceOf(IllegalStateException.class);
     }
 
-    private RacingCarGame generateGame(MoveStrategy strategy) {
-        List<Car> cars = CarFactory.generateCarsOfSize(carSize);
-        return new RacingCarGame(cars, rounds, strategy);
+    private RacingCarGame createRacingCarGame() {
+        Cars cars = CarFactory.generateCars(CAR_NAMES);
+        return new RacingCarGame(cars, ROUNDS, ALWAYS_MOVE_STRATEGY);
     }
 }

@@ -2,15 +2,13 @@ package racingcar.domain;
 
 import racingcar.domain.strategy.MoveStrategy;
 
-import java.util.List;
-
 public class RacingCarGame {
 
-    private final List<Car> cars;
+    private final Cars cars;
     private int rounds;
     private final MoveStrategy moveStrategy;
 
-    public RacingCarGame(List<Car> cars, int rounds, MoveStrategy moveStrategy) {
+    public RacingCarGame(Cars cars, int rounds, MoveStrategy moveStrategy) {
         this.cars = cars;
         this.rounds = rounds;
         this.moveStrategy = moveStrategy;
@@ -18,14 +16,13 @@ public class RacingCarGame {
 
     public void proceedRound() {
         decreaseGameRound();
-        cars.forEach(car -> car.move(moveStrategy));
+        cars.move(moveStrategy);
     }
 
     private void decreaseGameRound() {
         if (rounds <= 0) {
             throw new IllegalStateException("game is already over");
         }
-
         rounds = rounds - 1;
     }
 }
