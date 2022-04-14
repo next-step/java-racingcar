@@ -14,16 +14,12 @@ class CarsTest {
     @Test
     void 각_Car들이_전진을_시도하게한다() {
         TryStrategy alwaysTrueStrategy = () -> true;
-        TryStrategy alwaysFalseStrategy = () -> false;
         int carCount = 3;
         Cars successCars = new Cars(carCount, alwaysTrueStrategy);
-        Cars failCars = new Cars(carCount, alwaysFalseStrategy);
 
         successCars.tryOnceEach();
-        failCars.tryOnceEach();
 
         assertThat(successCars.getSuccessCountEach()).containsExactly(1, 1, 1);
-        assertThat(failCars.getSuccessCountEach()).containsExactly(0, 0, 0);
     }
 
 }
