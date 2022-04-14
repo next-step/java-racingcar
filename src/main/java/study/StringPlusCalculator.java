@@ -5,15 +5,21 @@ import java.util.regex.Pattern;
 
 public class StringPlusCalculator {
 
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
+
+    private StringPlusCalculator() {
+    }
+
     public static int sumOfNumbers(String s) {
         if (isEmptyOrNull(s)) {
             return 0;
         }
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(s);
-        if (m.find()) {
-            return sum(split(m.group(2), m.group(1)));
+        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEXP).matcher(s);
+        if (matcher.find()) {
+            return sum(split(matcher.group(2), matcher.group(1)));
         }
-        return sum(split(s, ",|:"));
+        return sum(split(s, DEFAULT_DELIMITER));
     }
 
     private static int sum(String[] values) {
@@ -27,10 +33,10 @@ public class StringPlusCalculator {
     }
 
     private static boolean isNonNegativeInteger(String s) {
-        if (s.matches("[+-]?\\d*(\\.\\d+)?") && Integer.parseInt(s) >= 0) {
+        if (s.matches("[+]?\\d*(\\.\\d+)?")) {
             return true;
         }
-        throw new RuntimeException();
+        throw new RuntimeException("음수가 포함되어 있습니다.");
     }
 
     private static String[] split(String text, String delimiter) {
@@ -38,40 +44,6 @@ public class StringPlusCalculator {
     }
 
     private static boolean isEmptyOrNull(String s) {
-        if (s == null || s.isEmpty()) {
-            return true;
-        }
-        return false;
+        return s == null || s.isEmpty();
     }
-
-//    public static int run(String s) {
-//        int result = 0;
-//
-//        if (s == null || s.isEmpty()) {
-//            return result;
-//        }
-//
-//        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(s);
-//        if (m.find()) {
-//            String customDelimiter = m.group(1);
-//            String[] tokens = m.group(2).split(customDelimiter);
-//            for (String s1 : tokens) {
-//                if (s1.matches("[+-]?\\d*(\\.\\d+)?") && Integer.parseInt(s1) >= 0) {
-//                    result += Integer.parseInt(s1);
-//                } else {
-//                    throw new RuntimeException();
-//                }
-//            }
-//        } else {
-//            String[] sp2 = s.split(",|:");
-//            for (String s2 : sp2) {
-//                if (s2.matches("[+-]?\\d*(\\.\\d+)?") && Integer.parseInt(s2) >= 0) {
-//                    result += Integer.parseInt(s2);
-//                } else {
-//                    throw new RuntimeException();
-//                }
-//            }
-//        }
-//        return result;
-//    }
 }
