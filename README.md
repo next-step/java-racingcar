@@ -31,9 +31,12 @@ Race result(phase: 5)
 ---
 ```
 
-## Todo
+# Todo
+
+## Step3
 
 ### InputView
+
 - [x] getNumber
 - [x] isInputRange
 
@@ -47,3 +50,25 @@ Race result(phase: 5)
 ### ResultView
 
 - [x] printResult
+
+## Step4
+
+### InputView
+
+- [ ] Fix getNumber -> getCarNames
+
+### Race
+
+- [ ] findWinner
+
+### ResultView
+
+- [ ] Fix printResult to include car.name
+- [ ] printWinner
+
+### Questions
+
+#### Which is better?
+
+- [ ] car.track -> car.position
+- [ ] Fix printResult to print '-' stemming from position
