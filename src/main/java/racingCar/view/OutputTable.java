@@ -26,22 +26,30 @@ public final class OutputTable {
     System.out.println(HOW_MANY_GAMES);
     Integer rounds = game.gameRound();
     System.out.println(OUTPUT_RESULT);
-    List<RacingCarHistory> cars = play(allCars, rounds).stream()
-        .sorted(Comparator.comparing(RacingCarHistory::round)).collect(Collectors.toList());
-    for (RacingCarHistory car : cars) {
-      System.out.println(car.car());
-      if (car.carIndex() == allCars.size()) {
-        System.out.println();
-      }
+    List<RacingCarHistory> racingHistories = play(allCars, rounds);
+    historyPrint(allCars, racingHistories);
+  }
+
+  private static void historyPrint(List<Car> allCars, List<RacingCarHistory> racingHistories) {
+    racingHistories.sort(Comparator.comparingInt(RacingCarHistory::round));
+    for (RacingCarHistory racingCarHistory : racingHistories) {
+      System.out.println(racingCarHistory.car());
+      enter(allCars, racingCarHistory);
     }
   }
 
-  public static List<RacingCarHistory> play(List<Car> allCars, Integer rounds) {
+  private static void enter(List<Car> allCars, RacingCarHistory racingCarHistory) {
+    if (racingCarHistory.carIndex() == allCars.size()) {
+      System.out.println();
+    }
+  }
+
+  private static List<RacingCarHistory> play(List<Car> allCars, Integer rounds) {
     List<RacingCarHistory> printCars = new ArrayList<>();
     for (Car car : allCars) {
       for (int i = 0; i < rounds; i++) {
         car = car.move(new CarMoveRandomStrategy());
-        printCars.add(new RacingCarHistory(i, car, car.index()));
+        printCars.add(new RacingCarHistory(i + 1, car, car.index()));
       }
     }
     return printCars;

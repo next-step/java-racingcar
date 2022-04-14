@@ -23,4 +23,11 @@ public class RacingCarHistory {
   public Integer carIndex() {
     return this.carIndex;
   }
+
+  @Override
+  public String toString() {
+    return "RacingCarHistory{" +
+        "round=" + round +
+        ", car=" + car;
+  }
 }
