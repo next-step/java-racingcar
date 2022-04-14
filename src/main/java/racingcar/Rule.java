@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rule {
-    private final int countOfCar;
+    private final String[] carNames;
     private final int maxAttempts;
 
-    public Rule(int countOfCar, int maxAttempts) {
-        this.countOfCar = countOfCar;
+    public Rule(String[] carNames, int maxAttempts) {
+        this.carNames = carNames;
         this.maxAttempts = maxAttempts;
     }
 
     public List<RacingCar> readyCars() {
-        List<RacingCar> cars = new ArrayList<>(countOfCar);
-        for (int count = 0; count < countOfCar; count++) {
-            cars.add(new RacingCar());
+        List<RacingCar> cars = new ArrayList<>(carNames.length);
+        for (String carName : carNames) {
+            cars.add(new RacingCar(carName));
         }
         return cars;
     }
