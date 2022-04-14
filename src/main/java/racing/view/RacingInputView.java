@@ -1,27 +1,34 @@
 package racing.view;
 
 import java.util.Scanner;
-import racing.domain.dto.RacingInput;
 import racing.exception.UserInputFailException;
 
 public class RacingInputView {
 
-  public RacingInput printAndGetRacingInput() {
+  private int carCount;
+  private int attemptCount;
+
+  public void setRacingUserInput() {
     try (Scanner scanner = new Scanner(System.in)) {
-      return printAndGetRacingInput(scanner);
+      setRacingUserInput(scanner);
     } catch (RuntimeException e) {
       throw new UserInputFailException(e);
     }
   }
 
-  private RacingInput printAndGetRacingInput(Scanner scanner) {
+  private void setRacingUserInput(Scanner scanner) {
     System.out.println("자동차 대수는 몇 대 인가요?");
-    int carCount = scanner.nextInt();
+    this.carCount = scanner.nextInt();
 
     System.out.println("시도할 횟수는 몇 회 인가요?");
-    int attemptCount = scanner.nextInt();
-
-    return new RacingInput(carCount, attemptCount);
+    this.attemptCount = scanner.nextInt();
   }
 
+  public int getCarCount() {
+    return carCount;
+  }
+
+  public int getAttemptCount() {
+    return attemptCount;
+  }
 }
