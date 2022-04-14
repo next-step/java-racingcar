@@ -25,18 +25,18 @@ public class RacingGame {
         }
 
         while (round-- > 0) {
-            for (Car car : cars) {
-                int speed = random.nextInt(10);
-                System.out.print("speed = " + speed + ": ");
-                car.setSpeed(speed);
-                car.move();
-                for (int j = 0; j < car.getDistance(); j++) {
-                    System.out.print("-");
-                }
-                System.out.println();
-            }
-            System.out.println();
+            playRound(cars);
         }
+    }
+
+    private void playRound(Car[] cars) {
+        for (Car car : cars) {
+            int speed = random.nextInt(10);
+            car.setSpeed(speed);
+            car.move();
+            OutputView.printRound(speed, car.getDistance());
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
