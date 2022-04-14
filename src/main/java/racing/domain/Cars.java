@@ -2,17 +2,13 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racing.domain.strategy.MoveStrategy;
 
 public class Cars {
 
   private final List<Car> cars;
 
-  public Cars(int carCount, MoveStrategy moveStrategy) {
-    cars = new ArrayList<>();
-    for (int i = 0; i < carCount; i++) {
-      cars.add(new Car(moveStrategy));
-    }
+  public Cars(List<Car> cars) {
+    this.cars = cars;
   }
 
   public void attempt() {
