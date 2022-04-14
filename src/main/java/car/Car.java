@@ -3,14 +3,14 @@ package car;
 public class Car {
     public static final int EXCESS_NUMBERS = 4;
     private String name;
-    private StringBuilder distance;
+    private int distance;
 
     public Car(String name)  {
         if (name.length() > 5) {
             throw new RuntimeException("이름은 5자를 초과할 수 없습니다");
         }
 
-        this.distance = new StringBuilder();
+        this.distance = 0;
         this.name = name;
     }
 
@@ -18,8 +18,8 @@ public class Car {
         return this.name;
     }
 
-    public String getDistance() {
-        return this.distance.toString();
+    public int getDistance() {
+        return this.distance;
     }
 
     public String move(int number) {
@@ -27,12 +27,18 @@ public class Car {
             return "";
         }
 
-        this.distance.append("-");
-        return this.distance.toString();
+        this.distance++;
+        return this.print();
     }
 
-    public void print() {
+    public String print() {
+        String distanceToString = "";
 
+        for (int i = 0; i < this.distance; i++) {
+            distanceToString += "-";
+        }
+
+        return distanceToString;
     }
 
 }
