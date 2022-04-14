@@ -36,8 +36,8 @@ public final class RacingStadium {
     }
 
     private void validateCycleCount(int cycleCount) {
-        if (cycleCount < 0) {
-            throw new IllegalArgumentException(String.format("'cycleCount'(%d) must not be negative", cycleCount));
+        if (cycleCount <= 0) {
+            throw new IllegalArgumentException(String.format("'cycleCount'(%d) must be positive", cycleCount));
         }
     }
 

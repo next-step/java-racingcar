@@ -29,4 +29,11 @@ class DistanceTest {
         //then
         assertThat(distance).isEqualTo(Distance.from(2));
     }
+
+    @Test
+    @DisplayName("더 큰지 여부")
+    void greaterThan() {
+        assertThat(Distance.ONE.greaterThan(Distance.ZERO)).isTrue();
+        assertThat(Distance.ONE.greaterThan(Distance.ONE)).isFalse();
+    }
 }

@@ -35,6 +35,6 @@ class RandomMovementPolicyTest {
         Random random = mock(Random.class);
         when(random.nextInt(anyInt())).thenReturn(randomNumber);
         //when, then
-        assertThat(RacingCar.from(RandomMovementPolicy.from(random)).movement()).isEqualTo(expected);
+        assertThat(RandomMovementPolicy.from(random).movement()).isEqualTo(expected);
     }
 }

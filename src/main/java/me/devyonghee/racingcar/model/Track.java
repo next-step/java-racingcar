@@ -21,8 +21,16 @@ public final class Track {
         return new Track(car, distance);
     }
 
+    public RacingCar car() {
+        return car;
+    }
+
     public Distance distance() {
         return distance;
+    }
+
+    boolean distanceGreaterThan(Track track) {
+        return distance.greaterThan(track.distance);
     }
 
     Track movedTrack() {
@@ -30,6 +38,10 @@ public final class Track {
             return of(car, distance.add(MOVEMENT_DISTANCE));
         }
         return of(car, distance.add(STOP_DISTANCE));
+    }
+
+    boolean equalDistance(Track track) {
+        return distance.equals(track.distance);
     }
 
     @Override
