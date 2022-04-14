@@ -16,5 +16,8 @@ public class RacingGame {
             cars.move();
             OutputView.outputStatus(cars);
         }
+
+        Cars winnerCars = cars.findWinners();
+        OutputView.outputWinners(winnerCars);
     }
 }

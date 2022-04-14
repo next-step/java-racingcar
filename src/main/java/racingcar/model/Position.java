@@ -5,9 +5,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 public class Position {
+    public static final int DEFAULT_POSITION = 0;
     private static final int INCREASE_POSITION_COUNT = 1;
     private static final int INITIAL_VALUE = 0;
-    private static final int DEFAULT_POSITION = 0;
 
     private final AtomicInteger position;
 
@@ -27,6 +27,10 @@ public class Position {
         return new Position(
                 this.position.intValue() + INCREASE_POSITION_COUNT
         );
+    }
+
+    public int getPosition() {
+        return this.position.intValue();
     }
 
     @Override

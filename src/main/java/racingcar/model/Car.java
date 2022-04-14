@@ -41,6 +41,18 @@ public class Car {
         return false;
     }
 
+    public boolean matchPosition(int position) {
+        return this.position.equals(new Position(position));
+    }
+
+    public String toName() {
+        return this.name.toString();
+    }
+
+    public int getPosition() {
+        return this.position.getPosition();
+    }
+
     @Override
     public String toString() {
         return String.format("%s : %s", this.name, this.position);

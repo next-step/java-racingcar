@@ -35,4 +35,13 @@ class PositionTest {
             assertThat(string).isEqualTo("--");
         }
     }
+
+    @Nested
+    class getPosition_메서드는 {
+
+        @Test
+        void 현재_포지션을_리턴한다() {
+            assertThat(position.getPosition()).isEqualTo(2);
+        }
+    }
 }

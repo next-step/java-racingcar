@@ -51,4 +51,35 @@ public class CarTest {
             assertThat(car.toString()).isEqualTo("car : --");
         }
     }
+
+    @Nested
+    class matchPosition_메서드는 {
+
+        @Nested
+        class 같은_포지션이_주어질_경우 {
+
+            @Test
+            void true를_리턴한다() {
+                assertThat(car.matchPosition(2)).isTrue();
+            }
+        }
+
+        @Nested
+        class 다른_포지션이_주어질_경우 {
+
+            @Test
+            void false를_리턴한다() {
+                assertThat(car.matchPosition(3)).isFalse();
+            }
+        }
+    }
+
+    @Nested
+    class getPosition_메서드는 {
+
+        @Test
+        void 현재_포지션을_리턴한다() {
+            assertThat(car.getPosition()).isEqualTo(2);
+        }
+    }
 }
