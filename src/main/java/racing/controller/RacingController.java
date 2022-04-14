@@ -18,7 +18,7 @@ public class RacingController {
     Cars cars = Cars.makeCars(racingInputView.getCarCount(),
         new NumberCompareMoveStrategy(new RandomNumberGenerator()));
 
-    for (int i = 0; i < racingInputView.getCarCount(); i++) {
+    for (int i = 0; i < racingInputView.getAttemptCount(); i++) {
       cars.attempt();
       racingOutputView.printCarDistance(cars);
     }
