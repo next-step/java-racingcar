@@ -17,13 +17,13 @@ public class RacingTest {
     }
 
     @Test
-    void 랜덤_값에서_4이상_인_경우_전진한다() throws Exception {
+    void 랜덤_값에서_4이상_인_경우_전진한다()  {
         Car car = new Car("pobi");
         Assertions.assertThat(car.move(4)).isEqualTo("-");
     }
 
     @Test
-    void 랜덤_값에서_4미만_인_경우_멈춘다() throws Exception {
+    void 랜덤_값에서_4미만_인_경우_멈춘다()  {
         Car car = new Car("pobi");
         Assertions.assertThat(car.move(2)).isEqualTo("");
     }
@@ -35,19 +35,19 @@ public class RacingTest {
     }
 
     @Test
-    void 자동차_이름은_5자를_초과할_수_없다() throws Exception {
+    void 자동차_이름은_5자를_초과할_수_없다()  {
         Assertions.assertThatThrownBy(() -> new Car("pobiws")).isInstanceOf(Exception.class);
     }
 
     @Test
-    void 자동차_이름을_같이_출력한다() throws Exception {
+    void 자동차_이름을_같이_출력한다() {
         Car car = new Car("pobi");
         car.move(4);
         Assertions.assertThat(car.getName() + " : " + car.getDistance()).isEqualTo("pobi : -");
     }
 
     @Test
-    void 우승자는_한명_이상일_수_있다() throws Exception {
+    void 우승자는_한명_이상일_수_있다() {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("pobi"));
         cars.add(new Car("crong"));

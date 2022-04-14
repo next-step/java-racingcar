@@ -1,15 +1,13 @@
 package car;
 
-import java.util.Random;
-
 public class Car {
     public static final int EXCESS_NUMBERS = 4;
     private String name;
     private StringBuilder distance;
 
-    public Car(String name) throws Exception {
+    public Car(String name)  {
         if (name.length() > 5) {
-            throw new Exception("이름은 5자를 초과할 수 없습니다");
+            throw new RuntimeException("이름은 5자를 초과할 수 없습니다");
         }
 
         this.distance = new StringBuilder();
