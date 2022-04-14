@@ -14,9 +14,4 @@ public class RacingCar {
         this.movement += this.condition > 3 ? 1 : 0;
         return movement;
     }
-
-    public void reset() {
-        this.movement = 0;
-        this.condition = 0;
-    }
 }

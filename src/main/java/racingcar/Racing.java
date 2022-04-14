@@ -27,10 +27,4 @@ public class Racing {
             Printer.print(car.move(random.nextInt(BOUND)));
         }
     }
-
-    public void cleanUp() {
-        for (RacingCar car: cars) {
-            car.reset();
-        }
-    }
 }
