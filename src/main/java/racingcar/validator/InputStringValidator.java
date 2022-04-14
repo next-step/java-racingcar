@@ -1,4 +1,4 @@
-package racingcarver2;
+package racingcar.validator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
