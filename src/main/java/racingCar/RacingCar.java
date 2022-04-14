@@ -5,17 +5,14 @@ import java.util.List;
 
 public class RacingCar {
 
-    public static void RacingCarGame(){
-        List<Integer> inputList = InputView.Input();
-        int N = (int) inputList.get(0);
-        int M = (int) inputList.get(1);
+    public static void RacingCarGame(int N, int M){
 
         List<String> stringList = CarConstructor(N);
 
         System.out.println("\n실행 결과");
         while(M>0){
             for (int i =0; i < N; i++) {
-                IsAdvance(stringList, i);
+                IsAdvance(RandomNumber(),stringList, i);
                 ResultView.Result(stringList, i);
             }
             System.out.println("");
@@ -35,14 +32,17 @@ public class RacingCar {
         return (int) (Math.random()*10);
     }
 
-    private static void IsAdvance(List<String> stringList, int i){
-        int tmp = RandomNumber();
-        if(tmp >=4){
+    private static void IsAdvance(int number, List<String> stringList, int i){
+        if(number >=4){
             stringList.set(i, stringList.get(i)+"-");
         }
     }
 
     public static void main(String[] args) {
-        RacingCar.RacingCarGame();
+        List<Integer> inputList = InputView.Input();
+        int N = (int) inputList.get(0);
+        int M = (int) inputList.get(1);
+
+        RacingCar.RacingCarGame(N, M);
     }
 }
