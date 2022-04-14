@@ -33,5 +33,6 @@ class CarTest {
     car.move(new CarMoveRandomStrategy());
     car.move(new CarMoveRandomStrategy());
     assertThat(car.position()).isLessThanOrEqualTo(3);
+
   }
 }
