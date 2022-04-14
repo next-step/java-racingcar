@@ -2,8 +2,6 @@ package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -17,11 +15,7 @@ class CarsTest {
   @ValueSource(ints = {1, 5, 9, 10})
   void oneMoveTest(int carCount) {
     //given
-    List<Car> carList = new ArrayList<>();
-    for (int i = 0; i < carCount; i++) {
-      carList.add(new Car(new MustMoveStrategy()));
-    }
-    Cars cars = new Cars(carList);
+    Cars cars = Cars.makeCars(carCount, new MustMoveStrategy());
 
     //when
     cars.attempt();
@@ -35,11 +29,7 @@ class CarsTest {
   @CsvSource(value = {"1|1|1", "2|2|2", "20|20|20", "25|25|25", "100|100|100"}, delimiter = '|')
   void nMoveTest(int carCount, int attempt, int expected) {
     //given
-    List<Car> carList = new ArrayList<>();
-    for (int i = 0; i < carCount; i++) {
-      carList.add(new Car(new MustMoveStrategy()));
-    }
-    Cars cars = new Cars(carList);
+    Cars cars = Cars.makeCars(carCount, new MustMoveStrategy());
 
     //when
     for (int i = 0; i < attempt; i++) {

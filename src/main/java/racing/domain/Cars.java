@@ -2,6 +2,7 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import racing.domain.strategy.MoveStrategy;
 
 public class Cars {
 
@@ -23,6 +24,14 @@ public class Cars {
       distances.add(c.getDistance());
     }
     return distances;
+  }
+
+  public static Cars makeCars(int carCount, MoveStrategy moveStrategy) {
+    List<Car> carList = new ArrayList<>();
+    for (int i = 0; i < carCount; i++) {
+      carList.add(new Car(moveStrategy));
+    }
+    return new Cars(carList);
   }
 
 }

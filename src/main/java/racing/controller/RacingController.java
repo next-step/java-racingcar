@@ -1,8 +1,5 @@
 package racing.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import racing.domain.Car;
 import racing.domain.Cars;
 import racing.domain.strategy.NumberCompareMoveStrategy;
 import racing.domain.strategy.RandomNumberGenerator;
@@ -18,11 +15,8 @@ public class RacingController {
     RacingOutputView racingOutputView = new RacingOutputView();
     racingOutputView.printResultTitle();
 
-    List<Car> carList = new ArrayList<>();
-    for (int i = 0; i < racingInputView.getCarCount(); i++) {
-      carList.add(new Car(new NumberCompareMoveStrategy(new RandomNumberGenerator())));
-    }
-    Cars cars = new Cars(carList);
+    Cars cars = Cars.makeCars(racingInputView.getCarCount(),
+        new NumberCompareMoveStrategy(new RandomNumberGenerator()));
 
     for (int i = 0; i < racingInputView.getCarCount(); i++) {
       cars.attempt();
