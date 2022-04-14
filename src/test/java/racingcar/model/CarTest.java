@@ -13,7 +13,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        this.car = new Car("car");
+        this.car = new Car("car", 2);
     }
 
     @Nested
@@ -46,10 +46,10 @@ public class CarTest {
 
         @Test
         void 현재_position을_리턴한다() {
-            assertThat(car.getPosition()).isEqualTo(0);
+            assertThat(car.getPosition()).isEqualTo(2);
 
             car.move(() -> Car.MOVABLE_NUMBER);
-            assertThat(car.getPosition()).isEqualTo(1);
+            assertThat(car.getPosition()).isEqualTo(3);
         }
     }
 
@@ -60,7 +60,7 @@ public class CarTest {
         void 이름과_포지션_문자열을_리턴한다() {
             String actual = car.getStatus();
 
-            assertThat(actual).isEqualTo("car : ");
+            assertThat(actual).isEqualTo("car : --");
         }
     }
 }
