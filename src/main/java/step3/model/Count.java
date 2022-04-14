@@ -11,11 +11,6 @@ public class Count {
         this.count = count;
     }
 
-    public Count add(Count value) {
-        int result = this.count + value.getCount();
-        return new Count(result);
-    }
-
     public int getCount() {
         return count;
     }

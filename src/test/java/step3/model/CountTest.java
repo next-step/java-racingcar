@@ -22,14 +22,4 @@ class CountTest {
         assertThatThrownBy(() -> new Count(-1))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    @Test
-    void Count_객체_간의_덧셈_연산이_가능하다() {
-        Count one = new Count(1);
-        Count two = new Count(2);
-
-        Count result = one.add(two);
-
-        assertThat(result.getCount()).isEqualTo(3);
-    }
 }
