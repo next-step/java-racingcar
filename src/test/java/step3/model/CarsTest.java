@@ -1,15 +1,21 @@
 package step3.model;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DisplayNameGeneration;
-import org.junit.jupiter.api.DisplayNameGenerator;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @DisplayName("Cars 테스트")
 class CarsTest {
+
+    private EachTryResult allSuccessResult;
+
+    @BeforeEach
+    void setUp() {
+        allSuccessResult = new EachTryResult(Arrays.asList(1, 1, 1));
+    }
 
     @Test
     void 각_Car들이_전진을_시도하게한다() {
@@ -19,7 +25,7 @@ class CarsTest {
 
         successCars.tryOnceEach();
 
-        assertThat(successCars.getSuccessCountEach()).containsExactly(1, 1, 1);
+        assertThat(successCars.getEachTryResult()).usingRecursiveComparison().isEqualTo(allSuccessResult);
     }
 
 }
