@@ -4,6 +4,8 @@ public class Car {
 
     private static final int INITIAL_POSITION = 0;
     private static final int GO_STOP_DIVISION_POINT = 4;
+    private static final int BOUND_MIN = 0;
+    private static final int BOUND_MAX = 9;
     private int position;
 
     public Car() {
@@ -29,7 +31,7 @@ public class Car {
     }
 
     private boolean isOutOfBound(int condition) {
-        return condition < 0 || condition > 9;
+        return condition < BOUND_MIN || condition > BOUND_MAX;
     }
 
     private void go() {
