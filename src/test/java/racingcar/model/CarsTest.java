@@ -14,9 +14,9 @@ class CarsTest {
     @BeforeEach
     void setUp() {
         this.cars = new Cars(List.of(
-                new Car(3),
-                new Car(2),
-                new Car(1)
+                new Car("pobi", 3),
+                new Car("crong", 2),
+                new Car("honux", 1)
         ));
     }
 
@@ -27,6 +27,20 @@ class CarsTest {
         void 모든_자동차_position_목록을_리턴한다() {
             List<Integer> allPositions = cars.getAllPositions();
             assertThat(allPositions).containsExactly(3, 2, 1);
+        }
+    }
+
+    @Nested
+    class getStatus_메서드는 {
+
+        @Test
+        void 모든_자동차_이름과_목록을_리턴한다() {
+            List<String> carsStatus = cars.getStatus();
+            assertThat(carsStatus).containsExactly(
+                    "pobi : ---",
+                    "crong : --",
+                    "honux : -"
+            );
         }
     }
 }

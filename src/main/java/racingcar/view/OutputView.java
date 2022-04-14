@@ -1,24 +1,14 @@
 package racingcar.view;
 
-import java.util.List;
+import racingcar.model.Cars;
 
 public class OutputView {
-    private static final String CAR_POSITION_SYMBOL = "-";
-
     private OutputView() throws InstantiationException {
         throw new InstantiationException();
     }
 
-    public static void outputPosition(List<Integer> allPositions) {
-        allPositions.forEach(OutputView::outputPosition);
-        outputEmptyLine();
-    }
-
-    private static void outputPosition(int position) {
-        for (int j = 0; j < position; j++) {
-            System.out.print(CAR_POSITION_SYMBOL);
-        }
-
+    public static void outputStatus(Cars cars) {
+        cars.getStatus().forEach(System.out::println);
         outputEmptyLine();
     }
 

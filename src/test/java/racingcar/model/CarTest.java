@@ -52,4 +52,15 @@ public class CarTest {
             assertThat(car.getPosition()).isEqualTo(1);
         }
     }
+
+    @Nested
+    class getStatus_메서드는 {
+
+        @Test
+        void 이름과_포지션_문자열을_리턴한다() {
+            String actual = car.getStatus();
+
+            assertThat(actual).isEqualTo("car : ");
+        }
+    }
 }

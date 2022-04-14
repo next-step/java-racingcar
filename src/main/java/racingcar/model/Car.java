@@ -4,6 +4,7 @@ import racingcar.generator.NumberGenerator;
 import racingcar.generator.RandomNumberGenerator;
 
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
 
 public class Car {
     protected static final int MOVABLE_NUMBER = 4;
@@ -14,14 +15,14 @@ public class Car {
     private AtomicInteger position;
     private final Name name;
 
-    protected Car(int position) {
-        this.position = new AtomicInteger(position);
-        this.name = new Name();
-    }
-
     public Car(String name) {
         this.name = new Name(name);
         this.position = new AtomicInteger(DEFAULT_POSITION);
+    }
+
+    protected Car(String name, int position) {
+        this.name = new Name(name);
+        this.position = new AtomicInteger(position);
     }
 
     public void move() {
@@ -47,9 +48,21 @@ public class Car {
         return false;
     }
 
+    public String getStatus() {
+        return String.format("%s : %s", this.name, getPositionBar(this.position));
+    }
+
     private void increasePosition() {
         this.position = new AtomicInteger(
                 this.position.intValue() + INCREASE_POSITION_COUNT
         );
+    }
+
+    private String getPositionBar(AtomicInteger position) {
+        StringBuilder stringBuilder = new StringBuilder();
+        IntStream.range(0, position.intValue())
+                .forEach(action -> stringBuilder.append("-"));
+
+        return stringBuilder.toString();
     }
 }

@@ -14,7 +14,7 @@ public class RacingGame {
 
         for (int i = 0; i < carMoveCount; i++) {
             cars.move();
-            OutputView.outputPosition(cars.getAllPositions());
+            OutputView.outputStatus(cars);
         }
     }
 }

@@ -19,4 +19,10 @@ public class Cars {
                 .map(Car::getPosition)
                 .collect(Collectors.toList());
     }
+
+    public List<String> getStatus() {
+        return cars.stream()
+                .map(Car::getStatus)
+                .collect(Collectors.toList());
+    }
 }
