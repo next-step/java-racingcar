@@ -7,7 +7,6 @@ public class Car {
         return position;
     }
 
-
     public void move(int condition) {
         if (condition >= 4) {
             position++;
