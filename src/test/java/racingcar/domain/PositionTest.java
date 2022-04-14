@@ -1,22 +1,32 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class PositionTest {
 
-    @DisplayName("move 호출 횟수로 동등성 비교")
     @Test
     void move() {
-        Position position = new Position();
+        int startPosition = 5;
+        Position position = new Position(startPosition);
 
         int moveCount = 3;
         for (int i = 0; i < moveCount; i++) {
             position = position.move();
         }
 
-        assertThat(position).isEqualTo(new Position(3));
+        assertThat(position).isEqualTo(new Position(startPosition + moveCount));
+    }
+
+    @Test
+    void equals() {
+        assertThat(new Position(10)).isEqualTo(new Position(10));
+    }
+
+    @Test
+    void compareTo() {
+        assertThat(new Position(1000)).isGreaterThan(new Position(10));
+        assertThat(new Position(10)).isEqualByComparingTo(new Position(10));
     }
 }
