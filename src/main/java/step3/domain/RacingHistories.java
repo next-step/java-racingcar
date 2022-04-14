@@ -2,6 +2,7 @@ package step3.domain;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 import step3.exception.NoFinalWinnerException;
 
 public class RacingHistories {
@@ -26,15 +27,9 @@ public class RacingHistories {
         }
 
         List<String> firstRankNames = histories.get(histories.size() - 1).getFirstRankNames();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < firstRankNames.size(); ++i) {
-            sb.append(firstRankNames.get(i));
-            if (i != firstRankNames.size()-1) {
-                sb.append(", ");
-            }
-        }
 
-        return sb.toString();
+        return firstRankNames.stream()
+            .collect(Collectors.joining(","));
     }
 
     private String printPosition(int position) {

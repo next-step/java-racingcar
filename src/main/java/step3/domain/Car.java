@@ -4,6 +4,7 @@ public class Car {
 
     public static final int DEFAULT_POSITION = 1;
     public static final int MAXIMUM_NAME_LENGTH = 5;
+    private static final String NAME_REGEX = "^[a-zA-Z0-9]*$";
     private int position;
     private String name;
 
@@ -14,8 +15,8 @@ public class Car {
     }
 
     private void validate(String name) throws IllegalArgumentException {
-        if (name.isEmpty()) {
-            throw new IllegalArgumentException("차 이름은 공백 불가.");
+        if (!name.matches(NAME_REGEX)) {
+            throw new IllegalArgumentException("차 이름은 알파벳 또는 숫자로만 이루어집니다");
         }
 
         if (name.length() > MAXIMUM_NAME_LENGTH) {

@@ -14,12 +14,7 @@ public class RacingCarMainApp {
         PlayService playService = new PlayService(new RandomProceedPolicy());
 
         List<String> carNames = userInterface.inputCarNames();
-        try {
-            playService.createGame(carNames);
-        } catch (IllegalArgumentException e) {
-            System.err.println("차 이름 길이는 5 초과 불가");
-            System.exit(e.hashCode());
-        }
+        playService.createGame(carNames);
 
         int tryCount = userInterface.inputTryCount();
 

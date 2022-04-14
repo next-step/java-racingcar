@@ -2,6 +2,7 @@ package step3.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -24,11 +25,9 @@ public class RacingGame {
     }
 
     private Cars createCars(List<String> carNames) throws IllegalArgumentException {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-        return new Cars(cars);
+        return new Cars(carNames.stream()
+            .map(Car::new)
+            .collect(Collectors.toList()));
     }
 
     public RacingHistories getRacingHistories() {

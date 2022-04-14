@@ -32,6 +32,13 @@ class CarTest {
             .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("차 이름은 알파벳과 숫자 외의 Character 가 있으면 예외 발생한다.")
+    @Test
+    void createCarTest3() {
+        assertThatThrownBy(() -> new Car("한글은안됩니다!~"))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("차량 전진 요청 시 위치 전진한다.")
     @Test
     void carProceedTest() {

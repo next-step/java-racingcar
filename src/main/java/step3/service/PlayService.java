@@ -15,7 +15,12 @@ public class PlayService {
     }
 
     public void createGame(List<String> carNames) {
-        racingGame = new RacingGame(carNames, proceedPolicy);
+        try {
+            racingGame = new RacingGame(carNames, proceedPolicy);
+        } catch (IllegalArgumentException e) {
+            System.err.println("차 이름 길이는 5 초과 불가");
+            System.exit(1);
+        }
     }
     public RacingHistories playRacingGame(int tryCount) {
         racingGame.run(tryCount);
