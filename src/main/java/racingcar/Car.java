@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Objects;
+
 public final class Car {
     private static final int MOVE_STATE = 1;
     private final PositiveInteger state;
@@ -9,7 +11,12 @@ public final class Car {
     }
 
     public Car(PositiveInteger state) {
+        validate(state);
         this.state = state;
+    }
+
+    private void validate(PositiveInteger state) {
+        Objects.requireNonNull(state, "Car 생성시 전달된 state 가 올바르지 않습니다. : state is null");
     }
 
     public Car move(MovingStrategy movingStrategy) {

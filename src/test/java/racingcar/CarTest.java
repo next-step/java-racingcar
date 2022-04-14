@@ -4,9 +4,18 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("Car 클래스 테스트")
 public class CarTest {
+
+    @Test
+    @DisplayName("Car 생성시 state 로 null 이 들어오면 오류가 발생한다.")
+    void carNullTest() {
+        assertThatThrownBy(()-> new Car(null))
+                .isInstanceOf(NullPointerException.class)
+                .hasMessageContaining("state is null");
+    }
 
     @Test
     @DisplayName("자동차의 초기 상태는 0이어야 한다.")
