@@ -27,6 +27,10 @@ public class Competition {
         return snapshots;
     }
 
+    public String getWinner(Cars snapshot) {
+        return cars.getWinner(snapshot);
+    }
+
     private Cars progressEachRound(Movable movable) {
         return cars.move(movable);
     }

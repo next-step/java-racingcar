@@ -16,6 +16,8 @@ public class Controller {
         Competition competition = new Competition(carNameArr, round);
         List<Cars> snapshots = competition.progressEntireRoundAndRecordAllSnapshot(new RandomMovableCondition());
         ResultView.printEntireStatus(snapshots);
+        String winners = competition.getWinner(snapshots.get(snapshots.size() - 1));
+        ResultView.printWinners(winners);
 
 //        Cars snapshot = competition.progressEntireRoundAndRecordLastSnapshot(new RandomMovableCondition());
 //        ResultView.printRoundStatus(snapshot);

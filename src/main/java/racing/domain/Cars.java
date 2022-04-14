@@ -26,6 +26,30 @@ public class Cars {
         return new Cars(carList);
     }
 
+    String getWinner(Cars snapshot) {
+        StringBuffer winners = new StringBuffer();
+        int maxDistance = 0;
+        for (Car car : snapshot.getCars()) {
+            if (winners == null) {
+                winners.append(car.getName());
+                maxDistance = car.getDistance();
+                continue;
+            }
+
+            if (car.getDistance() == maxDistance) {
+                winners.append(", " + car.getName());
+            }
+
+            if (car.getDistance() > maxDistance) {
+                winners = new StringBuffer();
+                winners.append(car.getName());
+                maxDistance = car.getDistance();
+            }
+        }
+
+        return winners.toString();
+    }
+
     private List<Car> initCars(String[] carNameArr) {
         int numberOfCars = carNameArr.length;
         List<Car> cars = new ArrayList<>(numberOfCars);
