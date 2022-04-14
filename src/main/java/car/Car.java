@@ -22,23 +22,30 @@ public class Car {
         return this.distance;
     }
 
-    public String move(int number) {
+    public int move(int number) {
         if (number < EXCESS_NUMBERS) {
-            return "";
+            return this.distance;
         }
 
-        this.distance++;
-        return this.print();
+        return this.distance++;
     }
 
-    public String print() {
+    public void play(int attemptNumber) {
+        for (int i = 0; i < attemptNumber; i++) {
+            this.move(Dice.roll());
+            this.print();
+        }
+        System.out.println();
+    }
+
+    public void print() {
         String distanceToString = "";
 
         for (int i = 0; i < this.distance; i++) {
             distanceToString += "-";
         }
 
-        return distanceToString;
+        System.out.println(this.getName() + " : " + distanceToString);
     }
 
 }

@@ -3,31 +3,26 @@ package car;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarRacing {
+public class CarRacingGame {
     private List<Car> cars;
     private int max;
 
-    public CarRacing(List<Car> cars) {
+    public CarRacingGame(List<Car> cars) {
         this.cars = cars;
         this.max = Integer.MIN_VALUE;
     }
 
-    public void play(int attemptNumber) {
-        for (int i = 0; i < attemptNumber; i++) {
-            racing();
-        }
-    }
-
-    private void racing() {
+    public void start(int attemptNumber) {
         for (Car car : cars) {
-            car.move(Dice.roll());
-            car.print();
+            car.play(attemptNumber);
         }
-        System.out.println();
     }
 
     public List<Car> finish() {
-        int max = getMaxDistance();
+        for (Car car : cars) {
+            setMaxDistance(car);
+        }
+
         List<Car> winners = getWinners();
 
         for (Car winner : winners) {
@@ -37,15 +32,8 @@ public class CarRacing {
 
         return winners;
     }
-    private int getMaxDistance() {
-        for (Car car : cars) {
-            replaceMaxValue(car);
-        }
 
-        return this.max;
-    }
-
-    private void replaceMaxValue(Car car) {
+    private void setMaxDistance(Car car) {
         if (this.max < car.getDistance()) {
             this.max = car.getDistance();
         }
@@ -55,16 +43,17 @@ public class CarRacing {
         List<Car> winners = new ArrayList<>();
 
         for (Car car : cars) {
-            getWinner(winners, car);
+            addWinner(winners, car);
         }
 
         return winners;
     }
 
-    private void getWinner(List<Car> winners, Car car) {
+    private void addWinner(List<Car> winners, Car car) {
         if (this.max == car.getDistance()) {
             winners.add(car);
         }
+
     }
 }
 

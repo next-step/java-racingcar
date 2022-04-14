@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RacingTest {
+public class CarRacingGameTest {
 
     @Test
     void 랜덤_한_숫자_0에서_9사이_값을_구한다() {
@@ -19,13 +19,13 @@ public class RacingTest {
     @Test
     void 랜덤_값에서_4이상_인_경우_전진한다()  {
         Car car = new Car("pobi");
-        Assertions.assertThat(car.move(4)).isEqualTo("-");
+        Assertions.assertThat(car.move(4)).isEqualTo(1);
     }
 
     @Test
     void 랜덤_값에서_4미만_인_경우_멈춘다()  {
         Car car = new Car("pobi");
-        Assertions.assertThat(car.move(2)).isEqualTo("");
+        Assertions.assertThat(car.move(2)).isEqualTo(0);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class RacingTest {
     void 자동차_이름을_같이_출력한다() {
         Car car = new Car("pobi");
         car.move(4);
-        Assertions.assertThat(car.getName() + " : " + car.print()).isEqualTo("pobi : -");
+        Assertions.assertThat(car.getName()).isEqualTo("pobi");
     }
 
     @Test
@@ -53,9 +53,13 @@ public class RacingTest {
         cars.add(new Car("crong"));
         cars.add(new Car("honux"));
 
-        CarRacing racing = new CarRacing(cars);
-        racing.play(5);
-        List<Car> winners = racing.finish();
+        CarRacingGame racingGame = new CarRacingGame(cars);
+        racingGame.start(5);
+        List<Car> winners = racingGame.finish();
+
+        for (Car winner : winners) {
+            System.out.println("winner = " + winner);
+        }
 
         Assertions.assertThat(winners.size()).isGreaterThan(0);
     }

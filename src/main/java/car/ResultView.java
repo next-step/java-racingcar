@@ -1,9 +1,9 @@
 package car;
 
 public class ResultView {
-    private CarRacing racing;
+    private CarRacingGame racing;
 
-    public ResultView(CarRacing racing) {
+    public ResultView(CarRacingGame racing) {
         this.racing = racing;
     }
 
