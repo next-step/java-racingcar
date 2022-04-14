@@ -1,11 +1,6 @@
 package racingcar.ui;
 
-import racingcar.domain.CarName;
-
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class InputView {
 
@@ -15,13 +10,9 @@ public class InputView {
         throw new AssertionError();
     }
 
-    public static List<CarName> promptCarNames() {
+    public static String[] promptCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String[] names = SCANNER.next().split(",");
-
-        return Arrays.stream(names)
-                .map(CarName::new)
-                .collect(Collectors.toList());
+        return SCANNER.next().split(",");
     }
 
     public static int promptRounds() {

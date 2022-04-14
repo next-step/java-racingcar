@@ -1,11 +1,20 @@
 package racingcar.domain;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class CarName {
 
     private static final int MAX_NAME_LENGTH = 5;
     private final String name;
+
+    public static List<CarName> createCarNames(String[] carNames) {
+        return Arrays.stream(carNames)
+                .map(CarName::new)
+                .collect(Collectors.toList());
+    }
 
     public CarName(String name) {
         validateName(name);
