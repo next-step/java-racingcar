@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.dto.InputCars;
 import racingcar.dto.RoundResult;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -11,7 +12,7 @@ public class RacingCarMain {
         int number = InputView.inputNumber();
         int round = InputView.inputRound();
 
-        RacingCar racingCar = new RacingCar(number, round);
+        RacingCar racingCar = new RacingCar(InputCars.fromNonEmptySize(number), round);
         List<RoundResult> result = racingCar.play(new RandomMovingStrategy());
 
         ResultView.print(result);

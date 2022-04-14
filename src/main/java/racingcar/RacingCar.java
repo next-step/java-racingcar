@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.dto.InputCars;
 import racingcar.dto.RoundResult;
 
 import java.util.ArrayList;
@@ -10,21 +11,14 @@ public final class RacingCar {
     private final Cars cars;
     private final int roundCount;
 
-    public RacingCar(int carCount, int roundCount) {
-        validate(carCount, roundCount);
+    public RacingCar(InputCars inputCars, int roundCount) {
+        validate(roundCount);
 
         this.roundCount = roundCount;
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
-        this.cars = new Cars(cars);
+        this.cars = inputCars.getCars();
     }
 
-    private void validate(int carCount, int roundCount) {
-        if (carCount <= 0) {
-            throw new IllegalArgumentException("자동차는 1대 이상이어야 합니다. 입력 값 : " + carCount);
-        }
+    private void validate(int roundCount) {
         if (roundCount < 0) {
             throw new IllegalArgumentException("주어진 횟수는 0 이상이어야 합니다. 입력 값 : " + roundCount);
         }
