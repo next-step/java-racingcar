@@ -1,4 +1,4 @@
-package study.step3;
+package study.step3.util;
 
 import java.util.Random;
 
@@ -10,7 +10,7 @@ public class NumberGenerator {
         Random random = new Random();
 
         int num = random.nextInt(maxValue);
-        if(num > 9) {
+        if (num > 9) {
             throw new IllegalArgumentException("Please change the maxValue");
         }
 

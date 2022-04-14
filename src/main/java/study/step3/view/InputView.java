@@ -1,4 +1,4 @@
-package study.step3;
+package study.step3.view;
 
 public class InputView {
     public static void carCount() {
