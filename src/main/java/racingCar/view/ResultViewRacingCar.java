@@ -11,9 +11,7 @@ import java.util.List;
 public class ResultViewRacingCar {
 
     private ResultViewRacingCar() {
-    }
-
-    ;
+    };
 
     public static void resultViewRacing() {
         System.out.println();
@@ -43,8 +41,8 @@ public class ResultViewRacingCar {
     }
 
     private static void resultViewCarDistance(Car car) {
-        //TODO view에서 자동차를 move하는게 맞나???
-        car.move(CarStadium.extractRandomNumber());
+        CarStadium.moveCar(car);
+
         System.out.println(car.getDistance());
     }
 

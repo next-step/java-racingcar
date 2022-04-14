@@ -19,7 +19,6 @@ public class CarStadium {
     }
 
     public static void initCars(String cars) {
-
         String[] carNames = splitCarNames(cars);
 
         for (int i = 0; i < carNames.length; ++i) {
@@ -42,6 +41,10 @@ public class CarStadium {
 
     public static LinkedList<Car> getCars() {
         return carList;
+    }
+
+    public static void moveCar(Car car) {
+        car.move(extractRandomNumber());
     }
 
     public static ArrayList<String> getWinners(LinkedList<Car> list) {

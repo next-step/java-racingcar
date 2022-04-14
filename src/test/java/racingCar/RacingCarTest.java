@@ -82,6 +82,5 @@ public class RacingCarTest {
         String[] carNames = names.split(",");
 
         assertThat(carNames).containsExactly("kim","jeong","lee");
-
     }
 }
