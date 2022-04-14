@@ -5,9 +5,11 @@ import java.util.List;
 
 public class CarRacing {
     private List<Car> cars;
+    private int max;
 
     public CarRacing(List<Car> cars) {
         this.cars = cars;
+        this.max = Integer.MIN_VALUE;
     }
 
     public void play(int attemptNumber) {
@@ -26,7 +28,7 @@ public class CarRacing {
 
     public List<Car> finish() {
         int max = getMaxDistance();
-        List<Car> winners = getWinners(max);
+        List<Car> winners = getWinners();
 
         for (Car winner : winners) {
             System.out.print(winner.getName() + " ");
@@ -36,33 +38,31 @@ public class CarRacing {
         return winners;
     }
     private int getMaxDistance() {
-        int max = Integer.MIN_VALUE;
-
         for (Car car : cars) {
-            max = getMax(max, car);
+            replaceMaxValue(car);
         }
-        return max;
+
+        return this.max;
     }
 
-    private int getMax(int max, Car car) {
-        if (max < car.getDistance().length()) {
-            max = car.getDistance().length();
+    private void replaceMaxValue(Car car) {
+        if (this.max < car.getDistance()) {
+            this.max = car.getDistance();
         }
-        return max;
     }
 
-    private List<Car> getWinners(int max) {
+    private List<Car> getWinners() {
         List<Car> winners = new ArrayList<>();
 
         for (Car car : cars) {
-            getWinner(max, winners, car);
+            getWinner(winners, car);
         }
 
         return winners;
     }
 
-    private void getWinner(int max, List<Car> winners, Car car) {
-        if (max == car.getDistance().length()) {
+    private void getWinner(List<Car> winners, Car car) {
+        if (this.max == car.getDistance()) {
             winners.add(car);
         }
     }
