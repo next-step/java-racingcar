@@ -50,12 +50,7 @@ public class RacingCarTest {
     void allMovableTest() {
         RacingCar racingCar = new RacingCar(InputCars.fromNonEmptySize(3), 5);
 
-        List<RoundResult> playResult = racingCar.play(new MovingStrategy() {
-            @Override
-            public boolean movable() {
-                return true;
-            }
-        });
+        List<RoundResult> playResult = racingCar.play(()->true);
 
         for (int round = 1; round <= playResult.size(); round++) {
             int index = round - 1;
@@ -71,12 +66,7 @@ public class RacingCarTest {
     void allunMovableTest() {
         RacingCar racingCar = new RacingCar(InputCars.fromNonEmptySize(1), 3);
 
-        List<RoundResult> playResult = racingCar.play(new MovingStrategy() {
-            @Override
-            public boolean movable() {
-                return false;
-            }
-        });
+        List<RoundResult> playResult = racingCar.play(()->false);
 
         for (int round = 1; round <= playResult.size(); round++) {
             int index = round - 1;

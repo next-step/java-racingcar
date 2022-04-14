@@ -19,12 +19,7 @@ public class CarTest {
     @DisplayName("자동차가 movable 하다면 한칸 전진한다.")
     void movableTest() {
         Car car = new Car();
-        Car nextCar = car.move(new MovingStrategy() {
-            @Override
-            public boolean movable() {
-                return true;
-            }
-        });
+        Car nextCar = car.move(() -> true);
         assertThat(nextCar.state()).isEqualTo(PositiveInteger.add(car.state(), new PositiveInteger(1)));
     }
 
@@ -32,12 +27,7 @@ public class CarTest {
     @DisplayName("자동차가 unmovable 하다면 멈춰있는다.")
     void unmovableTest() {
         Car car = new Car();
-        Car nextCar = car.move(new MovingStrategy() {
-            @Override
-            public boolean movable() {
-                return false;
-            }
-        });
+        Car nextCar = car.move(() -> false);
         assertThat(nextCar.state()).isEqualTo(car.state());
     }
 }
