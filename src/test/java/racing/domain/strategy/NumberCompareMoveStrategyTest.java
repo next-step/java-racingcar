@@ -14,6 +14,7 @@ class NumberCompareMoveStrategyTest {
   void moveTest(int number, boolean expected) {
     NumberCompareMoveStrategy numberCompareMoveStrategy = new NumberCompareMoveStrategy(
         new FixedNumberGenerator(number));
+
     assertThat(numberCompareMoveStrategy.canMove()).isEqualTo(expected);
   }
 }

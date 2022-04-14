@@ -1,7 +1,6 @@
 package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racing.domain.strategy.NumberCompareMoveStrategy.CAN_MOVE_NUMBER;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.domain.strategy.FixedNumberGenerator;
-import racing.domain.strategy.NumberCompareMoveStrategy;
+import racing.domain.strategy.MustMoveStrategy;
 
 class CarsTest {
 
@@ -21,8 +19,7 @@ class CarsTest {
     //given
     List<Car> carList = new ArrayList<>();
     for (int i = 0; i < carCount; i++) {
-      carList.add(
-          new Car(new NumberCompareMoveStrategy(new FixedNumberGenerator(CAN_MOVE_NUMBER + 1))));
+      carList.add(new Car(new MustMoveStrategy()));
     }
     Cars cars = new Cars(carList);
 
@@ -40,8 +37,7 @@ class CarsTest {
     //given
     List<Car> carList = new ArrayList<>();
     for (int i = 0; i < carCount; i++) {
-      carList.add(
-          new Car(new NumberCompareMoveStrategy(new FixedNumberGenerator(CAN_MOVE_NUMBER + 1))));
+      carList.add(new Car(new MustMoveStrategy()));
     }
     Cars cars = new Cars(carList);
 

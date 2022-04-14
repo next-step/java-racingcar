@@ -1,7 +1,6 @@
 package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racing.domain.strategy.NumberCompareMoveStrategy.CAN_MOVE_NUMBER;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,15 +9,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.domain.strategy.FixedNumberGenerator;
-import racing.domain.strategy.NumberCompareMoveStrategy;
+import racing.domain.strategy.MustMoveStrategy;
 
 class CarTest {
 
   @Test
   @DisplayName("앞으로 1회 이동했을 때 이동 거리 확인")
   void oneMoveTest() {
-    Car car = new Car(new NumberCompareMoveStrategy(new FixedNumberGenerator(CAN_MOVE_NUMBER + 1)));
+    Car car = new Car(new MustMoveStrategy());
     car.attempt();
 
     assertThat(car.getDistance()).isEqualTo(1);
@@ -28,7 +26,7 @@ class CarTest {
   @DisplayName("앞으로 n회 이동했을 때 이동 거리 확인")
   @CsvSource(value = {"1|1", "2|2", "0|0", "10|10", "100|100"}, delimiter = '|')
   void nMoveTest(int n, int expected) {
-    Car car = new Car(new NumberCompareMoveStrategy(new FixedNumberGenerator(CAN_MOVE_NUMBER + 1)));
+    Car car = new Car(new MustMoveStrategy());
     for (int i = 0; i < n; i++) {
       car.attempt();
     }
@@ -41,9 +39,7 @@ class CarTest {
   @ValueSource(ints = {1, 10, 50, 10000})
   void randomMoveTest(int attempt) {
     //given
-    NumberCompareMoveStrategy numberCompareMoveStrategy = new NumberCompareMoveStrategy(
-        new FixedNumberGenerator(CAN_MOVE_NUMBER + 1));
-    Car car = new Car(numberCompareMoveStrategy);
+    Car car = new Car(new MustMoveStrategy());
 
     //when
     for (int i = 0; i < attempt; i++) {
@@ -59,11 +55,9 @@ class CarTest {
   @CsvSource(value = {"1|1", "100|100", "52|52", "0|0"}, delimiter = '|')
   void randomCarMoveTest(int carCount, int attempt) {
     //given
-    NumberCompareMoveStrategy numberCompareMoveStrategy = new NumberCompareMoveStrategy(
-        new FixedNumberGenerator(CAN_MOVE_NUMBER + 1));
     List<Car> cars = new ArrayList<>();
     for (int i = 0; i < carCount; i++) {
-      cars.add(new Car(numberCompareMoveStrategy));
+      cars.add(new Car(new MustMoveStrategy()));
     }
 
     //when
