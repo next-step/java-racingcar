@@ -1,13 +1,10 @@
 package racingCar.view;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 import racingCar.model.Car;
 import racingCar.model.RacingCarHistory;
 import racingCar.service.CarService;
-import racingCar.strategy.CarMoveRandomStrategy;
 
 public final class OutputTable {
 
@@ -26,8 +23,9 @@ public final class OutputTable {
     System.out.println(HOW_MANY_GAMES);
     Integer rounds = game.gameRound();
     System.out.println(OUTPUT_RESULT);
-    List<RacingCarHistory> racingHistories = play(allCars, rounds);
+    List<RacingCarHistory> racingHistories = game.play(allCars, rounds);
     historyPrint(allCars, racingHistories);
+    List<Car> finishCars = game.gameResult(racingHistories, rounds);
   }
 
   private static void historyPrint(List<Car> allCars, List<RacingCarHistory> racingHistories) {
@@ -44,14 +42,4 @@ public final class OutputTable {
     }
   }
 
-  private static List<RacingCarHistory> play(List<Car> allCars, Integer rounds) {
-    List<RacingCarHistory> printCars = new ArrayList<>();
-    for (Car car : allCars) {
-      for (int i = 0; i < rounds; i++) {
-        car = car.move(new CarMoveRandomStrategy());
-        printCars.add(new RacingCarHistory(i + 1, car, car.index()));
-      }
-    }
-    return printCars;
-  }
 }
