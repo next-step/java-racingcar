@@ -3,7 +3,7 @@ package racingcar;
 import java.util.Objects;
 
 public final class Car {
-    private static final int MOVE_STATE = 1;
+    private static final Distance MOVE_STATE = new Distance(PositiveInteger.ONE);
     private final PositiveInteger state;
 
     public Car() {
@@ -21,7 +21,7 @@ public final class Car {
 
     public Car move(MovingStrategy movingStrategy) {
         if (movingStrategy.movable()) {
-            return new Car(PositiveInteger.add(state, new PositiveInteger(MOVE_STATE)));
+            return new Car(PositiveInteger.add(state, MOVE_STATE.value()));
         }
         return new Car(new PositiveInteger(state.value()));
     }
