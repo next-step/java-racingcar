@@ -5,17 +5,17 @@ import racingcar.view.ResultView;
 
 import java.util.List;
 
-public class GameManager {
+public class GameController {
 
     private final InputView inputView;
 
     private final ResultView resultView;
 
-    public GameManager() {
+    public GameController() {
         this(new InputView(), new ResultView());
     }
 
-    public GameManager(InputView inputView, ResultView resultView) {
+    public GameController(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
         this.resultView = resultView;
     }
