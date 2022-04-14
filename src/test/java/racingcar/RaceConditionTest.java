@@ -10,5 +10,4 @@ class RaceConditionTest {
         RaceCondition raceCondition = new RaceCondition();
         assertThat(raceCondition.generateCondition()).isBetween(0, 9);
     }
-
 }

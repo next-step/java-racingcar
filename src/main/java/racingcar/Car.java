@@ -17,6 +17,11 @@ public class Car implements Comparable<Car> {
         this.position = new Position(position);
     }
 
+    public Car(Car car) {
+        this.carName = car.carName;
+        this.position = car.position;
+    }
+
     public void move(int generateCondition) {
         if (!validateCondition(generateCondition)) {
             throw new IllegalArgumentException("경주 환경에 문제가 생겼습니다. 관리자에게 문의 해 주세요.");
@@ -36,14 +41,6 @@ public class Car implements Comparable<Car> {
         return generateCondition >= MOVE_CONDITION;
     }
 
-    public String carExpression(String carNameColon, String positionExpression) {
-        return carName + carNameColon + position.positionToExpression(positionExpression);
-    }
-
-    public boolean checkPosition(int checkPosition) {
-        return position.checkPosition(checkPosition);
-    }
-
     public boolean isEqualPosition(Car car) {
         return position.isEqualPosition(car.position);
     }
@@ -52,9 +49,10 @@ public class Car implements Comparable<Car> {
         return carName.toString();
     }
 
-    public int position() {
-        return position.getPosition();
+    public String getExpression() {
+        return position.getExpression();
     }
+
 
     @Override
     public int compareTo(Car car) {

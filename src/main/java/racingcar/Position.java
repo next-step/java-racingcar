@@ -1,6 +1,7 @@
 package racingcar;
 
 public class Position implements Comparable<Position> {
+    private static final String MOVE_EXPRESSION = "-";
     private int position;
 
     public Position() {
@@ -11,28 +12,20 @@ public class Position implements Comparable<Position> {
         this.position = position;
     }
 
-    public int getPosition() {
-        return position;
-    }
-
     public void add() {
         position++;
     }
 
-    public boolean checkPosition(int checkPosition) {
-        return position == checkPosition;
+    public String getExpression() {
+        String expression = "";
+        for(int i = 0; i<position; i++) {
+            expression += MOVE_EXPRESSION;
+        }
+        return expression;
     }
 
     public boolean isEqualPosition(Position comparePosition) {
         return position == comparePosition.position;
-    }
-
-    public String positionToExpression(String moveExpression) {
-        String expression = "";
-        for (int i = 0; i < position; i++) {
-            expression += moveExpression;
-        }
-        return expression;
     }
 
     @Override

@@ -1,25 +1,16 @@
 package view;
 
-import racingcar.Cars;
-
-import java.util.List;
+import racingcar.RaceRecord;
 
 public class ResultView {
-    private static final String CAR_NAME_COLON = " : ";
-    private static final String MOVE_EXPRESSION = "-";
-
-    public static void print(List<Cars> raceResult) {
+    public static void print(RaceRecord raceRecords) {
         System.out.println("실행 결과");
-        raceResult.forEach(cars -> {
-            cars.convertPositionToExpression(CAR_NAME_COLON, MOVE_EXPRESSION)
-                    .forEach(System.out::println);
-            System.out.println();
-        });
-        printWinners(raceResult.get(raceResult.size() - 1));
+        System.out.println(raceRecords.getRecord());
+        printWinners(raceRecords.getRaceWinners());
     }
 
-    private static void printWinners(Cars cars) {
-        System.out.println(cars.getWinners() + "가 최종 우승했습니다.");
+    private static void printWinners(String winners) {
+        System.out.println(winners + "가 최종 우승했습니다.");
     }
 
 }

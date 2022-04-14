@@ -2,15 +2,14 @@ package service;
 
 import racingcar.Cars;
 import racingcar.RaceCondition;
+import racingcar.RaceRecord;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Race {
-    private final List<Cars> raceResult = new ArrayList<>();
+    private final RaceRecord raceRecord = new RaceRecord();
     private final RaceCondition raceCondition = new RaceCondition();
 
-    public List<Cars> start(String carsName, int tryCount) {
+    public RaceRecord start(String carsName, int tryCount) {
         Cars cars = Cars.builder()
                 .carsName(carsName)
                 .raceCondition(raceCondition)
@@ -21,11 +20,10 @@ public class Race {
         }
 
         for (int count = 0; count < tryCount; count++) {
-            cars.addMove();
-            raceResult.add(new Cars(cars.getCopyCarList(), raceCondition));
+            raceRecord.addRecord(cars.addMove());
         }
 
-        return raceResult;
+        return raceRecord;
     }
 
 }
