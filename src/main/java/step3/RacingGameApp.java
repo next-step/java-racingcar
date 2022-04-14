@@ -1,5 +1,6 @@
 package step3;
 
+import step3.model.GameResult;
 import step3.model.RacingGame;
 import step3.view.InputView;
 import step3.view.ResultView;
@@ -11,9 +12,9 @@ public class RacingGameApp {
         InputView inputView = new InputView();
 
         RacingGame racingGame = new RacingGame(inputView.requestStart());
-        racingGame.race();
+        GameResult gameResult = racingGame.race();
 
         ResultView resultView = new ResultView();
-        resultView.printResult(racingGame.getResult());
+        resultView.printResult(gameResult);
     }
 }

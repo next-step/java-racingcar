@@ -19,7 +19,12 @@ public class Cars {
         cars.forEach(Car::tryOnce);
     }
 
-    public List<Integer> getSuccessCountEach() {
+    public EachTryResult getEachTryResult() {
+        List<Integer> successCountEach = getSuccessCountEach();
+        return new EachTryResult(successCountEach);
+    }
+
+    private List<Integer> getSuccessCountEach() {
         return cars.stream()
                 .map(Car::getSuccessCount)
                 .collect(Collectors.toList());
