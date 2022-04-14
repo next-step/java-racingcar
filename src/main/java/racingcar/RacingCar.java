@@ -14,22 +14,21 @@ public class RacingCar {
     }
 
     public void run() {
-        int carCount = inputView.inputCarCount();
+        String[] carNames = inputView.inputCarNames();
         int roundCount = inputView.inputRoundCount();
 
-        Cars cars = Cars.generateCars(carCount);
+        Cars cars = Cars.generateCars(carNames);
 
         int currentRound = 0;
         while (inProgress(roundCount, currentRound)) {
-            moveCars(carCount, cars);
+            moveCars(carNames.length, cars);
             printResult(cars);
             currentRound++;
         }
     }
 
     private void printResult(Cars cars) {
-        List<Integer> currentLocations = cars.getCurrentLocations();
-        resultView.printEveryLocation(currentLocations);
+        resultView.printEveryLocation(cars.getCarList());
     }
 
     private void moveCars(int carCount, Cars cars) {

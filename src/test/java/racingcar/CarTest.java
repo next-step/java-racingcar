@@ -3,6 +3,7 @@ package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -10,11 +11,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
+    public static final String CAR_NAME = "testCar";
     private Car car;
 
     @BeforeEach
     void setUp() {
-        car = new Car(new DefaultMovingStrategy());
+        car = new Car(CAR_NAME, new DefaultMovingStrategy());
+    }
+
+    @Test
+    @DisplayName("자동차 이름 반환")
+    void returnCarName() {
+        assertThat(car.getCarName()).isEqualTo(CAR_NAME);
     }
 
     @DisplayName("입력값이 0-4 일 경우 이동하지 않음")
