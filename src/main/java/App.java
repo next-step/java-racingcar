@@ -1,18 +1,11 @@
-import racingcar.InputView;
-import racingcar.RacingCar;
-import racingcar.ResultView;
-
-import java.util.Scanner;
-
+import racingcarver2.InputView;
+import racingcarver2.ResultView;
 
 public class App {
-    private static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        int participantCarNumber = InputView.enterTheNumberOfCars(scanner);
-        int tryNumber = InputView.enterTheNumberOfTry(scanner);
+        InputView.show();
 
-        RacingCar racingCar = new RacingCar();
-        ResultView.show(racingCar.start(participantCarNumber, tryNumber));
+        ResultView.show();
     }
 
 }
