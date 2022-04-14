@@ -11,6 +11,7 @@ public class ResultView {
 
     public static void printRoundStatus(final Cars snapshot) {
         for (Car car : snapshot.getCars()) {
+            System.out.print(car.getName() + " : ");
             printCarStatus(car);
             System.out.println();
         }
