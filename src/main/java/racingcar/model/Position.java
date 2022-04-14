@@ -7,8 +7,13 @@ import java.util.stream.IntStream;
 public class Position {
     private static final int INCREASE_POSITION_COUNT = 1;
     private static final int INITIAL_VALUE = 0;
+    private static final int DEFAULT_POSITION = 0;
 
     private final AtomicInteger position;
+
+    public Position() {
+        this(DEFAULT_POSITION);
+    }
 
     public Position(int position) {
         this(new AtomicInteger(position));

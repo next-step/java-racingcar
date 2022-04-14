@@ -26,6 +26,7 @@ public class CarTest {
             @ValueSource(ints = {3})
             void false를_리턴한다(int number) {
                 assertThat(car.move(() -> number)).isFalse();
+                assertThat(car).isEqualTo(new Car("car", 2));
             }
         }
 
@@ -36,6 +37,7 @@ public class CarTest {
             @ValueSource(ints = {4})
             void true를_리턴한다(int number) {
                 assertThat(car.move(() -> number)).isTrue();
+                assertThat(car).isEqualTo(new Car("car", 3));
             }
         }
 
