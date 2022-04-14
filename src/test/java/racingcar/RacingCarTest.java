@@ -31,4 +31,10 @@ class RacingCarTest {
         assertThat(racingCar.moveCondition(number)).isFalse();
     }
 
+    @Test
+    void 랜덤값_범위검증() {
+        assertThat(racingCar.getRandomNumber()).isGreaterThanOrEqualTo(0);
+        assertThat(racingCar.getRandomNumber()).isLessThanOrEqualTo(9);
+    }
+
 }
