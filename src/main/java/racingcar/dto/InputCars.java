@@ -1,7 +1,7 @@
 package racingcar.dto;
 
-import racingcar.Car;
-import racingcar.Cars;
+import racingcar.model.Car;
+import racingcar.model.Cars;
 
 import java.util.ArrayList;
 import java.util.List;

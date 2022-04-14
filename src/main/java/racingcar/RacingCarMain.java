@@ -1,7 +1,9 @@
 package racingcar;
 
+import racingcar.controller.RacingCar;
 import racingcar.dto.InputCars;
 import racingcar.dto.RoundResult;
+import racingcar.model.RandomMovingStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 

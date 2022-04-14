@@ -4,8 +4,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.controller.RacingCar;
 import racingcar.dto.InputCars;
 import racingcar.dto.RoundResult;
+import racingcar.model.PositiveInteger;
+import racingcar.model.RandomMovingStrategy;
 
 import java.util.List;
 

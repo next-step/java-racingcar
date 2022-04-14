@@ -1,6 +1,6 @@
 package racingcar.dto;
 
-import racingcar.PositiveInteger;
+import racingcar.model.PositiveInteger;
 
 import java.util.ArrayList;
 import java.util.Collections;

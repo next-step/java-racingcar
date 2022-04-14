@@ -4,6 +4,9 @@ import org.assertj.core.api.Assertions;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.Car;
+import racingcar.model.Cars;
+import racingcar.model.RandomMovingStrategy;
 
 import java.util.ArrayList;
 

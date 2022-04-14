@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.PositiveInteger;
+import racingcar.model.PositiveInteger;
 import racingcar.dto.RoundResult;
 
 import java.util.List;

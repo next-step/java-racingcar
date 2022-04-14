@@ -1,7 +1,9 @@
-package racingcar;
+package racingcar.controller;
 
 import racingcar.dto.InputCars;
 import racingcar.dto.RoundResult;
+import racingcar.model.Cars;
+import racingcar.model.MovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
