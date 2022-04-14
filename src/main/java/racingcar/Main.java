@@ -11,8 +11,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List<CarName> carNames = InputView.promptCarNames();
-        List<Car> cars = CarFactory.generateCars(carNames);
+        String[] carNameStrings = InputView.promptCarNames();
+        List<CarName> carNames = CarName.createCarNames(carNameStrings);
+        Cars cars = new Cars(CarFactory.generateCars(carNames));
         int rounds = InputView.promptRounds();
         RacingCarGame game = new RacingCarGame(cars, rounds, new RandomMoveStrategy());
 
@@ -20,11 +21,11 @@ public class Main {
 
         for (int i = 0; i < rounds; i++) {
             game.proceedRound();
-            OutputView.printCars(cars);
+            OutputView.printCurrentPositions(cars);
         }
 
-        GameResult result = game.getResult();
-        OutputView.printResult(result);
+        List<String> winCarNames = cars.getMostDistantCarNames();
+        OutputView.printWinCarNames(winCarNames);
     }
 
 }
