@@ -8,7 +8,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import exception.OutOfRangeException;
-import racingcar.domain.Car;
 
 public class CarTest {
 
@@ -20,7 +19,7 @@ public class CarTest {
 		Car car = new Car();
 
 		// when
-		int numbersOfMove = car.run(randomNumber);
+		int numbersOfMove = car.run(new RandomMovingRule(() -> randomNumber));
 
 		// then
 		assertThat(numbersOfMove).isEqualTo(0);
@@ -34,21 +33,21 @@ public class CarTest {
 		Car car = new Car();
 
 		// when
-		int numbersOfMove = car.run(randomNumber);
+		int numbersOfMove = car.run(new RandomMovingRule(() -> randomNumber));
 
 		// then
 		assertThat(numbersOfMove).isEqualTo(1);
 	}
 
 	@DisplayName("랜덤이 범위를 벗어나면 RunTimeException발생")
-	@ValueSource(ints = {0,10})
+	@ValueSource(ints = {-1,10})
 	@ParameterizedTest
 	public void When_RandomNumberIsOutOfRange_Expected_RunTimeException(int randomNumber) {
 		// given
 		Car car = new Car();
 
 		// when, then
-		assertThatThrownBy(() -> car.run(randomNumber))
+		assertThatThrownBy(() -> car.run(new RandomMovingRule(() -> randomNumber)))
 			.isInstanceOf(OutOfRangeException.class);
 	}
 }
