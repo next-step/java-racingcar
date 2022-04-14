@@ -6,32 +6,41 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-  private List<Car> cars;
+  private final List<Car> values;
 
   public Cars(List<Car> cars) {
-    this.cars = cars;
+    this.values = cars;
   }
 
-  public Cars(int count) {
-    cars = new ArrayList<>();
-    for (int i = 0; i < count; i++) {
-      cars.add(new Car());
-    }
-  }
-
-  public List<Car> getCars() {
-    return cars;
+  public List<Car> getValues() {
+    return values;
   }
 
   public void move(List<Integer> randomNumbers) {
-    for (int i = 0; i < randomNumbers.size(); i++) {
-      getCars().get(i).moveOrStop(randomNumbers.get(i));
+    int size = randomNumbers.size();
+    if (size != values.size()) {
+      throw new RuntimeException("실행 중 오류가 발생했습니다.");
+    }
+    for (int i = 0; i < size; i++) {
+      values.get(i).moveOrStop(randomNumbers.get(i));
     }
   }
 
   public List<Integer> getPositions() {
-    return cars.stream()
+    return values.stream()
         .map(Car::getPosition)
         .collect(Collectors.toList());
+  }
+
+  public int size() {
+    return values.size();
+  }
+
+  public static Cars makeCars(int count) {
+    List<Car> cars = new ArrayList<>();
+    for (int i = 0; i < count; i++) {
+      cars.add(new Car());
+    }
+    return new Cars(cars);
   }
 }

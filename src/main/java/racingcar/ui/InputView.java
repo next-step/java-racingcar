@@ -4,13 +4,17 @@ import java.util.Scanner;
 
 public class InputView {
 
-  private static Scanner SCANNER = new Scanner(System.in);
+  private static final Scanner SCANNER = new Scanner(System.in);
 
   private InputView() {
   }
 
   public static int getIntInput() {
-    return SCANNER.nextInt();
+    int input = SCANNER.nextInt();
+    if (input < 1) {
+      throw new RuntimeException("1보다 작은 숫자는 입력할 수 없습니다.");
+    }
+    return input;
   }
 
   public static void printCountQuestion() {

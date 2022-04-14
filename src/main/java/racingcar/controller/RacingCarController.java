@@ -1,11 +1,10 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import static racingcar.util.RandomUtil.getRandomNumbers;
+
 import racingcar.model.Cars;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
-import racingcar.util.RandomUtil;
 
 public class RacingCarController {
 
@@ -18,18 +17,10 @@ public class RacingCarController {
     InputView.printTimesQuestion();
     int times = InputView.getIntInput();
 
-    Cars cars = new Cars(count);
+    Cars cars = Cars.makeCars(count);
     for (int i = 0; i < times; i++) {
-      cars.move(getRandomNumbers(count));
+      cars.move(getRandomNumbers(cars.size()));
       OutputView.printOutput(cars.getPositions());
     }
-  }
-
-  private static List<Integer> getRandomNumbers(int count) {
-    List<Integer> randomNumbers = new ArrayList<>();
-    for (int i = 0; i < count; i++) {
-      randomNumbers.add(RandomUtil.getRandomNumber());
-    }
-    return randomNumbers;
   }
 }

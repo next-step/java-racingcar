@@ -2,24 +2,21 @@ package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 
 class CarTest {
 
-  @ParameterizedTest
-  @ValueSource(ints = {0, 1, 2, 3})
-  void moveOrStop_stop(int number) {
+  @Test
+  void moveOrStop_stop() {
     Car car = new Car();
-    car.moveOrStop(number);
+    car.moveOrStop(3);
     assertThat(car.getPosition()).isZero();
   }
 
-  @ParameterizedTest
-  @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-  void moveOrStop_move(int number) {
+  @Test
+  void moveOrStop_move() {
     Car car = new Car();
-    car.moveOrStop(number);
+    car.moveOrStop(4);
     assertThat(car.getPosition()).isEqualTo(1);
   }
 }

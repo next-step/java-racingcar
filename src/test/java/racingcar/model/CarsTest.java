@@ -32,20 +32,20 @@ class CarsTest {
   @Test
   void getPositions_all_move() {
     for (int i = 0; i < 5; i++) {
-      cars.getCars().get(i).moveOrStop(5);
+      cars.getValues().get(i).moveOrStop(5);
     }
 
-    assertThat(cars.getPositions()).hasSize(cars.getCars().size());
+    assertThat(cars.getPositions()).hasSize(cars.getValues().size());
     assertThat(cars.getPositions()).containsExactly(1, 1, 1, 1, 1);
   }
 
   @Test
   void getPositions_all_stop() {
     for (int i = 0; i < 5; i++) {
-      cars.getCars().get(i).moveOrStop(1);
+      cars.getValues().get(i).moveOrStop(1);
     }
 
-    assertThat(cars.getPositions()).hasSize(cars.getCars().size());
+    assertThat(cars.getPositions()).hasSize(cars.getValues().size());
     assertThat(cars.getPositions()).containsExactly(0, 0, 0, 0, 0);
   }
 }

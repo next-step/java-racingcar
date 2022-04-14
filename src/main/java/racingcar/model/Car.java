@@ -6,8 +6,12 @@ public class Car {
 
   private int position;
 
+  public Car(int position) {
+    this.position = position;
+  }
+
   public Car() {
-    this.position = 0;
+    this(0);
   }
 
   public int getPosition() {
