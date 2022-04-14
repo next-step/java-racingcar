@@ -10,7 +10,7 @@ public class Car {
     }
 
     private Car(String name, int distance) {
-        this.name = "";
+        this.name = name;
         this.distance = distance;
     }
 
@@ -23,5 +23,9 @@ public class Car {
 
     public int getDistance() {
         return distance;
+    }
+
+    public String getName() {
+        return name;
     }
 }
