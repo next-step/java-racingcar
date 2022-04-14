@@ -12,13 +12,16 @@ public class Car {
     private static final int INCREASE_POSITION_COUNT = 1;
 
     private AtomicInteger position;
-
-    public Car() {
-        this(DEFAULT_POSITION);
-    }
+    private final Name name;
 
     protected Car(int position) {
         this.position = new AtomicInteger(position);
+        this.name = new Name();
+    }
+
+    public Car(String name) {
+        this.name = new Name(name);
+        this.position = new AtomicInteger(DEFAULT_POSITION);
     }
 
     public void move() {

@@ -13,7 +13,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        this.car = new Car();
+        this.car = new Car("car");
     }
 
     @Nested

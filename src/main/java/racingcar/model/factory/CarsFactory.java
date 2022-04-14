@@ -3,16 +3,24 @@ package racingcar.model.factory;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarsFactory {
-    public static Cars create(int carCount) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
+    private static final String CAR_NAME_DELIMITER = ",";
 
-        return new Cars(cars);
+    public static Cars create(String carNames) {
+        return new Cars(toCars(split(carNames)));
+    }
+
+    private static String[] split(String carNames) {
+        return carNames.split(CAR_NAME_DELIMITER);
+    }
+
+    private static List<Car> toCars(String[] carNameStrings) {
+        return Arrays.stream(carNameStrings)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 }
