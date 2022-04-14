@@ -4,7 +4,7 @@ import racingcar.domain.strategy.MoveStrategy;
 
 import java.util.Objects;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private CarName carName;
     private Position position;
@@ -29,7 +29,7 @@ public class Car {
     }
 
     public int getPosition() {
-        return position.getPosition();
+        return position.getSteps();
     }
 
     @Override
@@ -43,5 +43,10 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(carName, position);
+    }
+
+    @Override
+    public int compareTo(Car anotherCar) {
+        return position.compareTo(anotherCar.position);
     }
 }
