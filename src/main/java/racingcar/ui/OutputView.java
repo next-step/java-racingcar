@@ -17,8 +17,8 @@ public class OutputView {
     }
 
     public static void printCurrentPositions(Cars cars) {
-        Map<String, Integer> currentPositionsByCarName = cars.getCurrentPositionsByCarName();
-        currentPositionsByCarName.forEach(OutputView::printCurrentPosition);
+        Map<String, Integer> nameToPosition = cars.getNameToPosition();
+        nameToPosition.forEach(OutputView::printCurrentPosition);
         System.out.println();
     }
 

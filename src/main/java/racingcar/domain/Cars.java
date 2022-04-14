@@ -28,7 +28,7 @@ public class Cars {
         cars.forEach(car -> car.move(strategy));
     }
 
-    public Map<String, Integer> getCurrentPositionsByCarName() {
+    public Map<String, Integer> getNameToPosition() {
         return cars.stream()
                 .collect(Collectors.toMap(Car::getName, Car::getPosition));
     }
