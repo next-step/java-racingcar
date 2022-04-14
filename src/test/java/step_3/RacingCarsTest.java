@@ -1,5 +1,6 @@
 package step_3;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +13,12 @@ public class RacingCarsTest {
 
     final int totalRounds = 5;
     final int totalRacingCarCount = 3;
+    RacingCars racingCars;
+
+    @BeforeEach
+    void beforeEach() {
+        this.racingCars = new RacingCars(totalRounds, totalRacingCarCount);
+    }
 
     @Test
     @DisplayName("게임에 참여하는 레이싱 카의 집합 객체 생성")
@@ -22,16 +29,15 @@ public class RacingCarsTest {
     @Test
     @DisplayName("회차 별 전진 혹은 정지")
     void stopOrForwardAtEachRound() {
-        RacingCars racingCars = new RacingCars(totalRounds, totalRacingCarCount);
-        assertThat(racingCars.roundFight(0)).containsAnyOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+        this.racingCars.roundFight(0);
+        assertThat(racingCars.forwardHistoriesByRound()).containsAnyOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
     }
 
     @Test
     @DisplayName("각 레이싱 카 별 최종 전진 횟수")
     void totalForwardHistory() {
-        RacingCars racingCars = new RacingCars(totalRounds, totalRacingCarCount);
-        IntStream.range(0, totalRounds).forEach(racingCars::roundFight);
-        assertThat(racingCars.totalForwardHistory()).containsAnyOf(0, 1, 2, 3, 4);
+        IntStream.range(0, totalRounds).forEach(this.racingCars::roundFight);
+        assertThat(racingCars.forwardHistoriesByRound()).containsAnyOf(0, 1, 2, 3, 4);
     }
 
     @Test

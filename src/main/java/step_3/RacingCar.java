@@ -8,6 +8,7 @@ import java.util.Random;
 public class RacingCar {
 
     private final static int MAX_ROULETTE_SCORE = 10;
+    private final static int FORWARD_CONDITION = 4;
     private final Random roulette;
     private final List<Integer> roundResults;
 
@@ -17,16 +18,14 @@ public class RacingCar {
         this.roulette = new Random();
     }
 
-    public int stopOrForward(int thisRound) {
+    public void stopOrForward(int thisRound) {
         this.checkNegativeArgs(thisRound);
         this.roundResults.add(thisRound, roulette.nextInt(MAX_ROULETTE_SCORE));
-
-        return this.roundResults.get(thisRound);
     }
 
     public int forwardHistory() {
         return (int) this.roundResults.stream()
-                .filter(roundResult -> roundResult >= 4)
+                .filter(result -> result >= FORWARD_CONDITION)
                 .count();
     }
 

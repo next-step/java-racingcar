@@ -15,23 +15,19 @@ public class RacingCars {
                 .collect(Collectors.toList());
     }
 
-    public List<Integer> roundFight(int thisRound) {
-        return this.racingCars
-                .stream()
-                .map(racingCar -> racingCar.stopOrForward(thisRound))
-                .collect(Collectors.toList());
+    public void roundFight(final int thisRound) {
+        this.racingCars.forEach(racingCar -> racingCar.stopOrForward(thisRound));
     }
 
-    public List<Integer> totalForwardHistory() {
-        return this.racingCars
-                .stream()
+    public List<Integer> forwardHistoriesByRound() {
+        return racingCars.stream()
                 .map(RacingCar::forwardHistory)
                 .collect(Collectors.toList());
     }
 
     public void checkTotalRacingCarCount(int totalRacingCarCount) {
         if (totalRacingCarCount < 1) {
-            throw new IllegalArgumentException("참여하는 레이킹 카의 수는 1개 이상이어야 합니다.");
+            throw new IllegalArgumentException("참여하는 레이킹 카의 수는 1대 이상이어야 합니다.");
         }
     }
 }

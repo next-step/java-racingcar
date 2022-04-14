@@ -18,7 +18,8 @@ public class RacingCarTest {
     @DisplayName("정지 혹은 전진")
     void stopOrForward() {
         RacingCar racingCar = new RacingCar(1);
-        assertThat(racingCar.stopOrForward(0)).isIn(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+        racingCar.stopOrForward(0);
+        assertThat(racingCar.forwardHistory()).isIn(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
     }
 
     @Test
