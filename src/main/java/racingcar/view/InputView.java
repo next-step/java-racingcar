@@ -11,6 +11,8 @@ public class InputView {
     private static final String MESSAGE_INPUT_ROUND_COUNT = "시도할 횟수는 몇 회 인가요?";
     private static final Scanner scanner = new Scanner(System.in);
 
+    private InputView() { }
+
     public static InputCarCount renderCarCountInputView() {
         try {
             System.out.println(MESSAGE_INPUT_CAR_COUNT);

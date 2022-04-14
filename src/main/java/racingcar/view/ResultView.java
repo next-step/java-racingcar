@@ -10,6 +10,8 @@ public class ResultView {
 
     private static final String MESSAGE_RESULT = "실행결과";
 
+    private ResultView() { }
+
     public static void renderResultView(Histories histories) {
         System.out.println(MESSAGE_RESULT);
         histories.getHistories()
