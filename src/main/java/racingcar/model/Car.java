@@ -29,10 +29,6 @@ public class Car {
         move(DEFAULT_NUMBER_GENERATOR);
     }
 
-    public int getPosition() {
-        return this.position.intValue();
-    }
-
     /**
      * 숫자 생성기 값에 따라 이동하였다면 true, 이동하지 않았더라면 false를 리턴합니다.
      *

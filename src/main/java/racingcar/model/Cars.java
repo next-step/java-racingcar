@@ -14,12 +14,6 @@ public class Cars {
         this.cars.forEach(Car::move);
     }
 
-    public List<Integer> getAllPositions() {
-        return this.cars.stream()
-                .map(Car::getPosition)
-                .collect(Collectors.toList());
-    }
-
     public List<String> getStatus() {
         return cars.stream()
                 .map(Car::getStatus)

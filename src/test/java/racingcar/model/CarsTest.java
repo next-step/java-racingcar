@@ -21,16 +21,6 @@ class CarsTest {
     }
 
     @Nested
-    class getAllPositions_메서드는 {
-
-        @Test
-        void 모든_자동차_position_목록을_리턴한다() {
-            List<Integer> allPositions = cars.getAllPositions();
-            assertThat(allPositions).containsExactly(3, 2, 1);
-        }
-    }
-
-    @Nested
     class getStatus_메서드는 {
 
         @Test

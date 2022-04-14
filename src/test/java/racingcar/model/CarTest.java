@@ -42,18 +42,6 @@ public class CarTest {
     }
 
     @Nested
-    class getPosition_메서드는 {
-
-        @Test
-        void 현재_position을_리턴한다() {
-            assertThat(car.getPosition()).isEqualTo(2);
-
-            car.move(() -> Car.MOVABLE_NUMBER);
-            assertThat(car.getPosition()).isEqualTo(3);
-        }
-    }
-
-    @Nested
     class getStatus_메서드는 {
 
         @Test
