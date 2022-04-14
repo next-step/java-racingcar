@@ -1,12 +1,13 @@
 package racingCar.model;
 
+import java.util.Objects;
 import racingCar.strategy.CarMoveStrategy;
 
 public class Car {
 
+  private static final int MIN_CAR_NAME_LENGTH = 5;
   private String name;
   private int position;
-  private static final int MIN_CAR_NAME_LENGTH = 5;
 
   public Car(String name) {
     this(name, 0);
@@ -18,11 +19,11 @@ public class Car {
     this.position = position;
   }
 
-  public int move(CarMoveStrategy carMoveStrategy) {
+  public Car move(CarMoveStrategy carMoveStrategy) {
     if (carMoveStrategy.moveAble()) {
-      return position += 1;
+      return new Car(this.name, this.position + 1);
     }
-    return position;
+    return this;
   }
 
   private void carNameValidation(String name) {
@@ -34,7 +35,32 @@ public class Car {
     }
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Car car = (Car) o;
+    return position == car.position && Objects.equals(name, car.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, position);
+  }
+
   public int position() {
     return this.position;
+  }
+
+  @Override
+  public String toString() {
+    return "Car{" +
+        "name='" + name + '\'' +
+        ", position=" + position +
+        '}';
   }
 }

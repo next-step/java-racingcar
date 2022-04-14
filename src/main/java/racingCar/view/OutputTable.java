@@ -1,7 +1,11 @@
 package racingCar.view;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingCar.model.Car;
+import racingCar.model.RacingCarHistory;
 import racingCar.service.CarService;
 import racingCar.strategy.CarMoveRandomStrategy;
 
@@ -11,6 +15,7 @@ public final class OutputTable {
   private static final String HOW_MANY_GAMES = "시도할 회수는 몇 회 인가요?";
   private static final String OUTPUT_RESULT = "결과: ";
   private static final String STEP = "-";
+
   private OutputTable() {
   }
 
@@ -21,16 +26,24 @@ public final class OutputTable {
     System.out.println(HOW_MANY_GAMES);
     Integer rounds = game.gameRound();
     System.out.println(OUTPUT_RESULT);
-    play(allCars, rounds);
+    List<RacingCarHistory> cars = play(allCars, rounds).stream()
+        .sorted(Comparator.comparing(RacingCarHistory::round)).collect(Collectors.toList());
+    for (RacingCarHistory car : cars) {
+      System.out.println(car.car());
+      if (car.carCount() == allCars.size()) {
+        System.out.println();
+      }
+    }
   }
 
-  public static void play(List<Car> allCars, Integer rounds) {
-    for (int i = 0; i < rounds; i++) {
-      for (Car car : allCars) {
-        car.move(new CarMoveRandomStrategy());
-        System.out.println(STEP.repeat(Math.max(0, car.position())));
+  public static List<RacingCarHistory> play(List<Car> allCars, Integer rounds) {
+    List<RacingCarHistory> printCars = new ArrayList<>();
+    for (Car car : allCars) {
+      for (int i = 0; i < rounds; i++) {
+        car = car.move(new CarMoveRandomStrategy());
+        printCars.add(new RacingCarHistory(i, car, allCars.size()));
       }
-      System.out.println();
     }
+    return printCars;
   }
 }
