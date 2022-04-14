@@ -3,6 +3,8 @@ package racing.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static racing.domain.strategy.NumberCompareMoveStrategy.CAN_MOVE_NUMBER;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -59,21 +61,21 @@ class CarTest {
     //given
     NumberCompareMoveStrategy numberCompareMoveStrategy = new NumberCompareMoveStrategy(
         new FixedNumberGenerator(CAN_MOVE_NUMBER + 1));
-    Car[] cars = new Car[carCount];
+    List<Car> cars = new ArrayList<>();
     for (int i = 0; i < carCount; i++) {
-      cars[i] = new Car(numberCompareMoveStrategy);
+      cars.add(new Car(numberCompareMoveStrategy));
     }
 
     //when
-    for (int i = 0; i < cars.length; i++) {
+    for (Car car : cars) {
       for (int j = 0; j < attempt; j++) {
-        cars[i].attempt();
+        car.attempt();
       }
     }
 
     //then
-    for (int i = 0; i < cars.length; i++) {
-      assertThat(cars[i].getDistance()).isEqualTo(attempt);
+    for (Car car : cars) {
+      assertThat(car.getDistance()).isEqualTo(attempt);
     }
   }
 
