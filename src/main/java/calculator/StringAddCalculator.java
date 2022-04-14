@@ -1,20 +1,20 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class StringAddCalculator {
 
   private static final String OR = "|";
   private static final String BASE_SPLIT_REGEX = ",|:";
   private static final String CUSTOM_DELIMITER_FIND_REGEX = "^//(.*)\n(.*)";
-  private static final Pattern customDelimiterPattern = Pattern.compile(
+  private static final Pattern CUSTTOM_DELIMITER_PATTERN = Pattern.compile(
       CUSTOM_DELIMITER_FIND_REGEX);
 
-  public Integer calcSum(String text) {
+  public int calcSum(String text) {
     if (isEmptyOrNull(text)) {
       return 0;
     }
@@ -31,25 +31,34 @@ public class StringAddCalculator {
   }
 
   private boolean containsCustomDelimiter(String text) {
-    return text.matches(CUSTOM_DELIMITER_FIND_REGEX);
+    return CUSTTOM_DELIMITER_PATTERN.matcher(text).find();
   }
 
-  private Integer customDelimiterSum(String text) {
-    Matcher customDelimiterMatch = customDelimiterPattern.matcher(text);
+  private int customDelimiterSum(String text) {
+    Matcher customDelimiterMatch = CUSTTOM_DELIMITER_PATTERN.matcher(text);
     customDelimiterMatch.find();
 
     String customDelimiter = customDelimiterMatch.group(1);
     String delimiterRemovedText = customDelimiterMatch.group(2);
 
-    List<Integer> splitted = split(BASE_SPLIT_REGEX + OR + customDelimiter, delimiterRemovedText);
-    checkPositive(splitted);
-    return sum(splitted);
+    List<Integer> numbers = numberStrsToInts(
+        splitTextToNumberStrs(BASE_SPLIT_REGEX + OR + customDelimiter, delimiterRemovedText));
+    checkPositive(numbers);
+
+    return sum(numbers);
   }
 
-  private List<Integer> split(String delimiter, String text) {
+  private List<String> splitTextToNumberStrs(String delimiter, String text) {
     try {
-      return Stream.of(text.split(delimiter))
-          .mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+      return Arrays.stream(text.split(delimiter)).collect(Collectors.toList());
+    } catch (Exception e) {
+      throw new RuntimeException("input text must contains only delimiter or number");
+    }
+  }
+
+  private List<Integer> numberStrsToInts(List<String> numberStrs) {
+    try {
+      return numberStrs.stream().mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
     } catch (Exception e) {
       throw new RuntimeException("input text must contains only delimiter or number");
     }
@@ -67,14 +76,14 @@ public class StringAddCalculator {
     }
   }
 
-  private Integer sum(List<Integer> splittedNumber) {
+  private int sum(List<Integer> splittedNumber) {
     return splittedNumber.stream().mapToInt(i -> i).sum();
   }
 
-  private Integer normalDelimiterSum(String text) {
-    List<Integer> splitted = split(BASE_SPLIT_REGEX, text);
-    checkPositive(splitted);
-    return sum(splitted);
+  private int normalDelimiterSum(String text) {
+    List<Integer> numbers = numberStrsToInts(splitTextToNumberStrs(BASE_SPLIT_REGEX, text));
+    checkPositive(numbers);
+    return sum(numbers);
   }
 
 }
