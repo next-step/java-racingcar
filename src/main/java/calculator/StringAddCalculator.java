@@ -3,7 +3,7 @@ package calculator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static calculator.ExceptionCode.NEGATIVE_VALIDATION;
+import static code.ExceptionCode.NEGATIVE_VALIDATION;
 
 public class StringAddCalculator {
 
