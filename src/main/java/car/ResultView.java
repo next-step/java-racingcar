@@ -1,19 +1,13 @@
 package car;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ResultView {
-    private List<Car> cars;
+    private CarRacingGame racing;
 
-    public ResultView(List<Car> cars) {
-        this.cars = cars;
+    public ResultView(CarRacingGame racing) {
+        this.racing = racing;
     }
 
     public void print() {
-        for (Car car : cars) {
-            car.printDistance();
-            System.out.println();
-        }
+        this.racing.finish();
     }
 }
