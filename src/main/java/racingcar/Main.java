@@ -13,7 +13,7 @@ public class Main {
 
         String[] carNameStrings = InputView.promptCarNames();
         List<CarName> carNames = CarName.createCarNames(carNameStrings);
-        Cars cars = new Cars(CarFactory.generateCars(carNames));
+        Cars cars = CarFactory.generateCars(carNames);
         int rounds = InputView.promptRounds();
         RacingCarGame game = new RacingCarGame(cars, rounds, new RandomMoveStrategy());
 

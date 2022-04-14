@@ -9,9 +9,10 @@ public class CarFactory {
         throw new AssertionError();
     }
 
-    public static List<Car> generateCars(List<CarName> carNames) {
-        return carNames.stream()
+    public static Cars generateCars(List<CarName> carNames) {
+        List<Car> cars = carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
+        return new Cars(cars);
     }
 }
