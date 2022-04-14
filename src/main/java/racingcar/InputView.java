@@ -12,11 +12,6 @@ public class InputView {
     public static final String CAR_NAME_LENGTH_ERROR_MESSAGE = "자동차 이름은 다섯 글자 이하여야 합니다.";
     private final Scanner scanner = new Scanner(System.in);
 
-    public int inputCarCount() {
-        System.out.println(INPUT_CAR_NAME_MESSAGE);
-        return scanner.nextInt();
-    }
-
     public String[] inputCarNames() {
         System.out.println(INPUT_CAR_NAME_MESSAGE);
         return getCarNameArray(scanner.nextLine());

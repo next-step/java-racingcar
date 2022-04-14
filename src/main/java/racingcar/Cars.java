@@ -1,8 +1,8 @@
 package racingcar;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
 
@@ -25,9 +25,13 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public static Cars generateCars(int carCount) {
-        return new Cars(IntStream.range(0, carCount)
-                .mapToObj(n -> new Car(new DefaultMovingStrategy()))
+    public List<Car> getCarList() {
+        return carList;
+    }
+
+    public static Cars generateCars(String[] carNames) {
+        return new Cars(Arrays.stream(carNames)
+                .map(name -> new Car(name, new DefaultMovingStrategy()))
                 .collect(Collectors.toList()));
     }
 }

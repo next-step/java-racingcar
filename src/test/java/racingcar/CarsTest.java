@@ -1,5 +1,6 @@
 package racingcar;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,6 +16,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
 
+    Cars cars;
+
+    @BeforeEach
+    void setUp() {
+        String[] carNames = {"1", "2", "3", "4", "5"};
+        cars = Cars.generateCars(carNames);
+    }
+
     @ParameterizedTest
     @CsvSource(value = {
             "1,1,1,1,1:1,1,1,1,1",
@@ -23,14 +32,20 @@ class CarsTest {
     }, delimiter = ':')
     @DisplayName("이동 후 현재 위치 목록 반환")
     void returnCurrentLocationsAfterMove(String moveCountsString, String expectedString) {
-        // given
-        Cars cars = Cars.generateCars(5);
-        // when
         List<Integer> moveCounts = convertStringToIntArray(moveCountsString);
         cars.move(moveCounts);
-        // then
+
         List<Integer> expected = convertStringToIntArray(expectedString);
         assertThat(cars.getCurrentLocations()).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"0:1","1:2","2:3","3:4","4:5"}, delimiter = ':')
+    @DisplayName("carList 반환")
+    void returnCarList(int index, String name) {
+        List<Car> carList = cars.getCarList();
+        assertThat(carList).hasSize(5);
+        assertThat(carList.get(index).getCarName()).isEqualTo(name);
     }
 
     private List<Integer> convertStringToIntArray(String moveCountsString) {
