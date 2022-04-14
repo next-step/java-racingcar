@@ -36,11 +36,15 @@ public class RacingCar {
     }
 
     public void move(Car car) {
-        int randomNumber = new Random().nextInt(RANDOM_MAX);
+        int randomNumber = getRandomNumber();
         if(moveCondition(randomNumber)) {
             car.go();
         }
         car.stop();
+    }
+
+    public int getRandomNumber() {
+        return new Random().nextInt(RANDOM_MAX);
     }
 
 
