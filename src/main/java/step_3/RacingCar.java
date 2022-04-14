@@ -3,24 +3,20 @@ package step_3;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 public class RacingCar {
 
-    private final static int MAX_ROULETTE_SCORE = 10;
     private final static int FORWARD_CONDITION = 4;
-    private final Random roulette;
     private final List<Integer> roundResults;
 
     public RacingCar(int totalRound) {
         this.checkNegativeArgs(totalRound);
         this.roundResults = new ArrayList<>(totalRound);
-        this.roulette = new Random();
     }
 
     public void stopOrForward(int thisRound) {
         this.checkNegativeArgs(thisRound);
-        this.roundResults.add(thisRound, roulette.nextInt(MAX_ROULETTE_SCORE));
+        this.roundResults.add(thisRound, Roulette.spin());
     }
 
     public int forwardHistory() {
