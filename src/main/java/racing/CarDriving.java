@@ -1,2 +1,6 @@
-package racing;public enum CarDriving {
+package racing;
+
+public enum CarDriving {
+    GO,
+    STOP
 }

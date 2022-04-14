@@ -1,34 +1,26 @@
 package racing.view;
 
 import racing.Car;
+import racing.CarDriving;
 import racing.Racing;
+import racing.RacingGameManagement;
 import racing.exception.CarsNullPointerException;
 import racing.exception.RacingNullPointerException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class ResultView {
-    private final List<Car> cars;
-    private final Racing racing;
+    public static final String RESULT_INTRODUCE_MESSAGE = "실행 결과";
 
-    public ResultView(Racing racing, List<Car> cars) {
-        this.racing = racing;
-        this.cars = cars;
+    public static void draw(Racing racing, List<Car> cars, RacingGameManagement carDrivingStatus) {
+        checkObjectsNull(racing, cars);
+        System.out.println(RESULT_INTRODUCE_MESSAGE);
+        drawRacingResult(racing, cars, carDrivingStatus);
     }
 
-    public void draw() {
-        checkObjectsNull();
-
-        List<StringBuilder> result = initResult(racing);
-        System.out.println("실행 결과");
-
-        for (int i = 0; i < racing.getAttemptsCount(); i++) {
-            drawCars(result, i);
-        }
-    }
-
-    private void checkObjectsNull() {
+    private static void checkObjectsNull(Racing racing, List<Car> cars) {
         if (racing == null) {
             throw new RacingNullPointerException();
         }
@@ -38,29 +30,38 @@ public class ResultView {
         }
     }
 
-    private List<StringBuilder> initResult(Racing racing) {
-        List<StringBuilder> result = new ArrayList<>();
+    private static void drawRacingResult(Racing racing, List<Car> cars, RacingGameManagement carDrivingStatus) {
+        List<StringBuilder> result = initRacingResult(racing.getAttemptsCount());
         for (int i = 0; i < racing.getAttemptsCount(); i++) {
+            drawCars(cars, result, i, carDrivingStatus);
+        }
+    }
+
+    private static List<StringBuilder> initRacingResult(int attemptsCount) {
+        List<StringBuilder> result = new ArrayList<>();
+        for (int i = 0; i < attemptsCount; i++) {
             result.add(new StringBuilder());
         }
         return result;
     }
 
-    private void drawCars(List<StringBuilder> result, int i) {
+    private static void drawCars(List<Car> cars, List<StringBuilder> result, int i, RacingGameManagement carDrivingStatus) {
         for (int j = 0; j < cars.size(); j++) {
-            boolean isMoved = cars.get(j).getStatues().get(i);
-            initResult(result, j, isMoved);
+            UUID carId = cars.get(j).getId();
+            CarDriving carDriving = carDrivingStatus.getStatus(carId).get(i);
+
+            addCarString(result.get(j), carDriving);
             System.out.println(result.get(j));
         }
 
         System.out.println();
     }
 
-    private void initResult(List<StringBuilder> result, int j, boolean isMoved) {
-        if (!isMoved) {
+    private static void addCarString(StringBuilder j, CarDriving carDriving) {
+        if (carDriving == CarDriving.STOP) {
             return;
         }
 
-        result.get(j).append("-");
+        j.append("-");
     }
 }

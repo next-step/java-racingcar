@@ -4,7 +4,7 @@ import racing.exception.DuplicatedCarException;
 
 import java.util.*;
 
-public class RacingGameStatus {
+public class RacingGameManagement {
     Map<UUID, List<CarDriving>> carStatuses = new HashMap<>();
 
     public void addCar(UUID carId) {

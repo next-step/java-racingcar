@@ -6,18 +6,16 @@ import racing.view.ResultView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingGameService {
-    public static void StartGame() {
-        InputView inputView = new InputView();
-        int carCount = inputView.getCarCount();
-        int attemptsCount = inputView.getAttemptsCount();
-
+public class RacingService {
+    public void StartRacingGame() {
+        int carCount = InputView.inputCarCount();
+        int attemptsCount = InputView.inputAttemptsCount();
         List<Car> cars = generateCars(carCount);
-        CarDrivingStatus carDrivingStatus = initCarDrivingStatus(cars);
-        Racing racing = new Racing(cars, attemptsCount, carDrivingStatus);
+        RacingGameManagement racingGameManagement = initRacingGameManagement(cars);
+        Racing racing = new Racing(cars, attemptsCount, racingGameManagement);
 
         racing.StartRacing();
-        ResultView.draw(racing, cars, carDrivingStatus);
+        ResultView.draw(racing, cars, racingGameManagement);
     }
 
     private static List<Car> generateCars(int carCount) {
@@ -32,8 +30,8 @@ public class RacingGameService {
         return new Car();
     }
 
-    private static CarDrivingStatus initCarDrivingStatus(List<Car> cars) {
-        CarDrivingStatus carDrivingStatus = new CarDrivingStatus();
+    private static RacingGameManagement initRacingGameManagement(List<Car> cars) {
+        RacingGameManagement carDrivingStatus = new RacingGameManagement();
 
         for (Car car : cars) {
             carDrivingStatus.addCar(car.getId());
