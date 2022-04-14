@@ -43,7 +43,7 @@ public class RacingTest {
     void 자동차_이름을_같이_출력한다() {
         Car car = new Car("pobi");
         car.move(4);
-        Assertions.assertThat(car.getName() + " : " + car.getDistance()).isEqualTo("pobi : -");
+        Assertions.assertThat(car.getName() + " : " + car.print()).isEqualTo("pobi : -");
     }
 
     @Test
