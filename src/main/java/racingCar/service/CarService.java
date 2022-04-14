@@ -15,6 +15,7 @@ public class CarService {
   }
 
   public Integer gameRound() {
+    System.out.println("테스트");
     return InputTable.howManyGame();
   }
 }
