@@ -7,18 +7,16 @@ import racingCar.strategy.CarMoveRandomStrategy;
 
 public final class OutputTable {
 
+  private static final String WHAT_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+  private static final String HOW_MANY_GAMES = "시도할 회수는 몇 회 인가요?";
+  private static final String OUTPUT_RESULT = "결과: ";
+  private static final String STEP = "-";
   private OutputTable() {
   }
 
-  private final static String HOW_MANY_CARS = "자동차 대수는 몇 대 인가요?";
-  private final static String HOW_MANY_GAMES = "시도할 회수는 몇 회 인가요?";
-
-  private final static String OUTPUT_RESULT = "결과: ";
-  private final static String STEP = "-";
-
   public static void main(String[] args) {
     CarService game = new CarService();
-    System.out.println(HOW_MANY_CARS);
+    System.out.println(WHAT_CAR_NAMES);
     List<Car> allCars = game.readyCars();
     System.out.println(HOW_MANY_GAMES);
     Integer rounds = game.gameRound();
