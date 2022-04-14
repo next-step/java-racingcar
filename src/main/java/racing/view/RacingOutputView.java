@@ -23,12 +23,12 @@ public class RacingOutputView {
     for (RacingOutput racingOutput : racingOutputs) {
       printRacingOutput(racingOutput);
     }
-    System.out.println(EMPTY);
   }
 
   private void printRacingOutput(RacingOutput racingOutput) {
     for (int distance : racingOutput.getDistances()) {
-      System.out.print(DISTANCE);
+      System.out.print(DISTANCE.repeat(distance));
+      System.out.println(EMPTY);
     }
     System.out.println(EMPTY);
   }
