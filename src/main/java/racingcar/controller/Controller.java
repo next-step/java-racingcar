@@ -1,11 +1,9 @@
 package racingcar.controller;
 
-import racingcar.InputView;
-import racingcar.ResultView;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 import racingcar.model.Cars;
 import racingcar.service.GameService;
-
-import java.util.Arrays;
 
 public class Controller {
     public static void main(String[] args) {

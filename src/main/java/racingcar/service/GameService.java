@@ -1,6 +1,6 @@
 package racingcar.service;
 
-import racingcar.ResultView;
+import racingcar.view.ResultView;
 import racingcar.model.Cars;
 
 public class GameService {
