@@ -1,6 +1,6 @@
 package view;
 
-import controller.constant.RacingCarSetting;
+import constant.RacingCarSetting;
 import helper.RandomHelper;
 import model.Car;
 import model.Cars;

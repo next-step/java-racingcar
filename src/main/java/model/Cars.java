@@ -1,5 +1,6 @@
 package model;
 
+import constant.ErrorMessage;
 import exception.NotEnoughCarsException;
 
 import java.util.List;
@@ -9,7 +10,7 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         if (cars == null || cars.size() <= 0) {
-            throw new NotEnoughCarsException("0대 이상의 차가 필요합니다.");
+            throw new NotEnoughCarsException(ErrorMessage.NOT_ENOUGH_CAR);
         }
 
         this.cars = cars;

@@ -1,6 +1,6 @@
-package controller.constant;
+package constant;
 
 public class RacingCarSetting {
-    
+
     public static final int RACING_DEFAULT_RANDOM_NUMBER_BOUND = 9;
 }

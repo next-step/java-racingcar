@@ -2,6 +2,8 @@ package controller;
 
 import model.Car;
 import model.Cars;
+import model.PositiveCarMoveCount;
+import model.PositiveCarsNumber;
 import view.InputView;
 import view.ResultView;
 
@@ -12,11 +14,11 @@ public class RacingGameController {
 
     public static void main(String args[]) {
         InputView inputView = new InputView();
-        int carsNumber = inputView.getInputCarsNumber();
-        int carMoveCount = inputView.getInputCarMoveCount();
+        PositiveCarsNumber positiveCarsNumber = inputView.getInputCarsNumber();
+        PositiveCarMoveCount positiveCarMoveCount = inputView.getInputCarMoveCount();
 
-        Cars cars = makeCars(carsNumber);
-        moveCars(carMoveCount, cars);
+        Cars cars = makeCars(positiveCarsNumber.getCarsNumber());
+        moveCars(positiveCarMoveCount, cars);
     }
 
     private static Cars makeCars(int carsNumber) {
@@ -27,9 +29,9 @@ public class RacingGameController {
         return new Cars(cars);
     }
 
-    private static void moveCars(int carMoveCount, Cars cars) {
+    private static void moveCars(PositiveCarMoveCount positiveCarMoveCount, Cars cars) {
         ResultView resultView = new ResultView();
-        for (int i = 0; i < carMoveCount; i++) {
+        for (int i = 0; i < positiveCarMoveCount.getCarMoveCount(); i++) {
             resultView.printMoveCarResult(cars);
         }
     }
