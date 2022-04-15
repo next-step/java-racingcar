@@ -9,9 +9,8 @@ import java.util.List;
 
 public class Main {
 
-    private static int rounds;
-    private static RacingCarGame game;
     private static Cars cars;
+    private static RacingCarGame game;
 
     public static void main(String[] args) {
         initGame();
@@ -21,14 +20,13 @@ public class Main {
 
     private static void initGame() {
         cars = new Cars(InputView.promptNames());
-        rounds = InputView.promptRounds();
-        game = new RacingCarGame(cars, rounds, new RandomMoveStrategy());
+        game = new RacingCarGame(cars, InputView.promptRounds(), new RandomMoveStrategy());
     }
 
     private static void startGame() {
         OutputView.printRaceStart();
-        for (int i = 0; i < rounds; i++) {
-            game.proceedRound();
+        while (!game.isFinished()) {
+            game.moveCars();
             OutputView.printCurrentPositions(cars);
         }
     }

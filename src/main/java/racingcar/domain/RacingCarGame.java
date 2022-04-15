@@ -10,19 +10,26 @@ public class RacingCarGame {
 
     public RacingCarGame(Cars cars, int rounds, MoveStrategy moveStrategy) {
         this.cars = cars;
-        this.rounds = rounds;
+        this.rounds = validateRounds(rounds);
         this.moveStrategy = moveStrategy;
     }
 
-    public void proceedRound() {
-        decreaseGameRound();
-        cars.move(moveStrategy);
+    private int validateRounds(int rounds) {
+        if (rounds <= 0) {
+            throw new IllegalArgumentException("rounds must be greater than 0");
+        }
+        return rounds;
     }
 
-    private void decreaseGameRound() {
+    public boolean isFinished() {
+        return rounds == 0;
+    }
+
+    public void moveCars() {
         if (rounds <= 0) {
             throw new IllegalStateException("game is already over");
         }
         rounds = rounds - 1;
+        cars.move(moveStrategy);
     }
 }
