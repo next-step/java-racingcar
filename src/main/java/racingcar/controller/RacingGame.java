@@ -5,7 +5,7 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingGame {
-    private Cars cars;
+    private static Cars cars;
 
     public void startRacingGame() {
         cars = new Cars(InputView.inputNumberOfCars());
