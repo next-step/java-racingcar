@@ -12,23 +12,13 @@ public class Cars {
     this.values = cars;
   }
 
-  public List<Car> getValues() {
-    return values;
+  public void move(MovingStrategy movingStrategy) {
+    values.forEach(car -> car.moveOrStop(movingStrategy));
   }
 
-  public void move(List<Integer> randomNumbers) {
-    int size = randomNumbers.size();
-    if (size != values.size()) {
-      throw new RuntimeException("실행 중 오류가 발생했습니다.");
-    }
-    for (int i = 0; i < size; i++) {
-      values.get(i).moveOrStop(randomNumbers.get(i));
-    }
-  }
-
-  public List<Integer> getPositions() {
+  public List<Integer> collectPositions() {
     return values.stream()
-        .map(Car::getPosition)
+        .map(Car::getCurrentPosition)
         .collect(Collectors.toList());
   }
 
@@ -36,7 +26,7 @@ public class Cars {
     return values.size();
   }
 
-  public static Cars makeCars(int count) {
+  public static Cars createCars(int count) {
     List<Car> cars = new ArrayList<>();
     for (int i = 0; i < count; i++) {
       cars.add(new Car());

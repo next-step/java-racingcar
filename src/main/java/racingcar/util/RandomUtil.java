@@ -1,7 +1,5 @@
 package racingcar.util;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class RandomUtil {
@@ -12,15 +10,7 @@ public class RandomUtil {
   private RandomUtil() {
   }
 
-  public static int getRandomNumber() {
+  public static int createRandomNumber() {
     return RANDOM_SINGLETON.nextInt(MAX_BOUND);
-  }
-
-  public static List<Integer> getRandomNumbers(int size) {
-    List<Integer> randomNumbers = new ArrayList<>();
-    for (int i = 0; i < size; i++) {
-      randomNumbers.add(RandomUtil.getRandomNumber());
-    }
-    return randomNumbers;
   }
 }
