@@ -1,6 +1,6 @@
 package me.devyonghee.racingcar.view.dto;
 
-import me.devyonghee.racingcar.model.Name;
+import me.devyonghee.racingcar.model.CarName;
 import me.devyonghee.racingcar.model.RacingCar;
 import me.devyonghee.racingcar.model.Track;
 import me.devyonghee.racingcar.model.Tracks;
@@ -21,7 +21,7 @@ public class WinnerResponse {
                 .stream()
                 .map(Track::car)
                 .map(RacingCar::name)
-                .map(Name::value)
+                .map(CarName::value)
                 .collect(Collectors.toList()));
     }
 

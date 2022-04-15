@@ -9,25 +9,25 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 @DisplayName("이름")
-class NameTest {
+class CarNameTest {
 
     @Test
     @DisplayName("객체화")
     void instance() {
-        assertThatNoException().isThrownBy(() -> Name.from("a"));
-        assertThatNoException().isThrownBy(() -> Name.from("12345"));
+        assertThatNoException().isThrownBy(() -> CarName.from("a"));
+        assertThatNoException().isThrownBy(() -> CarName.from("12345"));
     }
 
     @ParameterizedTest
     @DisplayName("반드시 문자가 존재해야 함")
     @NullAndEmptySource
     void instance_blank_thrownIllegalArgumentException(String name) {
-        assertThatIllegalArgumentException().isThrownBy(() -> Name.from(name));
+        assertThatIllegalArgumentException().isThrownBy(() -> CarName.from(name));
     }
 
     @Test
     @DisplayName("5자 이하의 이름만 가능")
     void instance_overFiveLength_thrownIllegalArgumentException() {
-        assertThatIllegalArgumentException().isThrownBy(() -> Name.from("123456"));
+        assertThatIllegalArgumentException().isThrownBy(() -> CarName.from("123456"));
     }
 }

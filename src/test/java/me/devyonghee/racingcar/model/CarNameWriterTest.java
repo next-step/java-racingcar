@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("작명가")
-class NameWriterTest {
+class CarNameWriterTest {
 
     @Test
     @DisplayName("객체화")
@@ -29,8 +29,8 @@ class NameWriterTest {
     @DisplayName("이름들 추출")
     void names() {
         assertThat(NameWriter.from("abc,123").names())
-                .extracting(Names::list, InstanceOfAssertFactories.list(Name.class))
-                .containsExactly(Name.from("abc"), Name.from("123"));
+                .extracting(CarNames::list, InstanceOfAssertFactories.list(CarName.class))
+                .containsExactly(CarName.from("abc"), CarName.from("123"));
     }
 
     @Test
@@ -40,7 +40,7 @@ class NameWriterTest {
         String name = "abc";
         //when, then
         assertThat(NameWriter.from(name).names())
-                .extracting(Names::list, InstanceOfAssertFactories.list(Name.class))
-                .containsExactly(Name.from(name));
+                .extracting(CarNames::list, InstanceOfAssertFactories.list(CarName.class))
+                .containsExactly(CarName.from(name));
     }
 }

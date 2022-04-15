@@ -4,19 +4,19 @@ import me.devyonghee.racingcar.utility.Assert;
 
 import java.util.Objects;
 
-public final class Name {
+public final class CarName {
 
     private static final int MAX_LENGTH = 5;
 
     private final String value;
 
-    private Name(String value) {
+    private CarName(String value) {
         validate(value);
         this.value = value;
     }
 
-    public static Name from(String value) {
-        return new Name(value);
+    public static CarName from(String value) {
+        return new CarName(value);
     }
 
     public String value() {
@@ -43,7 +43,7 @@ public final class Name {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Name name = (Name) o;
+        CarName name = (CarName) o;
         return Objects.equals(value, name.value);
     }
 }

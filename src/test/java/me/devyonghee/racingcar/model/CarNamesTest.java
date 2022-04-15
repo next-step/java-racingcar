@@ -9,18 +9,18 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 @DisplayName("자동차 이름들 생성")
-class NamesTest {
+class CarNamesTest {
 
     @Test
     @DisplayName("객체화")
     void instance() {
-        assertThatNoException().isThrownBy(() -> Names.from(Collections.singletonList(Name.from("abc"))));
+        assertThatNoException().isThrownBy(() -> CarNames.from(Collections.singletonList(CarName.from("abc"))));
     }
 
     @Test
     @DisplayName("컬렉션은 필수")
     void instance_emptyCollection_thrownIllegalArgumentException() {
-        assertThatIllegalArgumentException().isThrownBy(() -> Names.from(null));
-        assertThatIllegalArgumentException().isThrownBy(() -> Names.from(Collections.emptyList()));
+        assertThatIllegalArgumentException().isThrownBy(() -> CarNames.from(null));
+        assertThatIllegalArgumentException().isThrownBy(() -> CarNames.from(Collections.emptyList()));
     }
 }
