@@ -2,7 +2,8 @@ package racingcar.model;
 
 public class Car {
     private Position position;
-    private PositionControl positionControl = new PositionControl();
+    private MovingStrategy movingStrategy = new PositionControl();
+
 
     public Car() {
         this(new Position());
@@ -12,11 +13,12 @@ public class Car {
         this.position = position;
     }
 
-    public void move() {
-        if (positionControl.matchMovementCondition(RandomRange.getRandomValue())) {
+    public void move(int randomValue) {
+        if (movingStrategy.matchMovementCondition(randomValue)) {
             position.increaseValue();
         }
     }
+
 
     public int currentPosition() {
         return position.getValue();

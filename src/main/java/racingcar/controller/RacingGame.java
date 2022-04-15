@@ -1,8 +1,6 @@
 package racingcar.controller;
 
-import racingcar.model.Car;
 import racingcar.model.Cars;
-import racingcar.model.PositionControl;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -23,10 +21,7 @@ public class RacingGame {
     }
 
     private void carMovementByRound() {
-        PositionControl positionControl = new PositionControl();
-        for (Car car : cars.getCars()) {
-            car.move();
-        }
+        cars.runRace();
 
         OutputView.printCarRacingIntermediateState(cars);
     }

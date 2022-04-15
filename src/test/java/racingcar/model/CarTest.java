@@ -2,6 +2,8 @@ package racingcar.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,11 +17,12 @@ class CarTest {
         assertThat(car.currentPosition()).isEqualTo(0);
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("자동차가 움직인 후의 위치 변화 확인")
-    void checkPositionMovedCar() {
+    @CsvSource({"0,0", "3,0", "4,1", "9,1"})
+    void checkPositionMovedCar(int input, int expected) {
         Car car = new Car();
-        car.move();
-        assertThat(car.currentPosition()).isEqualTo(1);
+        car.move(input);
+        assertThat(car.currentPosition()).isEqualTo(expected);
     }
 }
