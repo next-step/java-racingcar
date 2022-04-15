@@ -37,7 +37,7 @@ public class RacingCarTest {
     void numberGenerator() {
         int val = NumberGenerator.randomVal(10);
 
-        assertThat(val).isGreaterThan(-1).isLessThan(10);
+        assertThat(val).isNotNegative().isLessThan(10);
     }
 
     @DisplayName("입력값이 4이상의 경우는 전진하고 그외에는 멈춘다")
