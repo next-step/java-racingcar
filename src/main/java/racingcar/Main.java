@@ -9,22 +9,32 @@ import java.util.List;
 
 public class Main {
 
+    private static int rounds;
+    private static RacingCarGame game;
+    private static Cars cars;
+
     public static void main(String[] args) {
+        initGame();
+        startGame();
+        finishGame();
+    }
 
-        List<String> names = InputView.promptNames();
-        Cars cars = new Cars(names);
-        int rounds = InputView.promptRounds();
-        RacingCarGame game = new RacingCarGame(cars, rounds, new RandomMoveStrategy());
+    private static void initGame() {
+        cars = new Cars(InputView.promptNames());
+        rounds = InputView.promptRounds();
+        game = new RacingCarGame(cars, rounds, new RandomMoveStrategy());
+    }
 
+    private static void startGame() {
         OutputView.printRaceStart();
-
         for (int i = 0; i < rounds; i++) {
             game.proceedRound();
             OutputView.printCurrentPositions(cars);
         }
-
-        List<String> winCarNames = cars.getMostDistantCarNames();
-        OutputView.printWinCarNames(winCarNames);
     }
 
+    private static void finishGame() {
+        List<Car> mostDistantCars = cars.getMostDistantCars();
+        OutputView.printWinners(mostDistantCars);
+    }
 }
