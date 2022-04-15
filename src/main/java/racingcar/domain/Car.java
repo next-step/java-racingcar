@@ -24,12 +24,12 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public String getName() {
-        return name.getName();
+    public CarName getName() {
+        return name;
     }
 
-    public int getPosition() {
-        return position.getSteps();
+    public Position getPosition() {
+        return position;
     }
 
     @Override

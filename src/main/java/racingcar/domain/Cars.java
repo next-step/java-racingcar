@@ -31,17 +31,16 @@ public class Cars {
         cars.forEach(car -> car.move(strategy));
     }
 
-    public Map<String, Integer> getNameToPosition() {
+    public Map<CarName, Position> getCurrentPositions() {
         return cars.stream()
                 .collect(Collectors.toMap(Car::getName, Car::getPosition));
     }
 
-    public List<String> getMostDistantCarNames() {
+    public List<Car> getMostDistantCars() {
         Car mostDistantCar = Collections.max(cars);
 
         return cars.stream()
                 .filter(car -> car.compareTo(mostDistantCar) == 0)
-                .map(Car::getName)
                 .collect(Collectors.toList());
     }
 }
