@@ -48,12 +48,16 @@ public class CarService {
   public Winner winner(List<Car> gameResult) {
     Winner winner = new Winner(gameResult.get(0));
     for (int i = 1; i < gameResult.size(); i++) {
-      Car nextCar = gameResult.get(i);
-      if (winner.winnerCar().position() < nextCar.position()) {
-        winner = new Winner(nextCar);
-      }
+      winner = winnerCalculator(winner, gameResult.get(i));
     }
     gameResult.remove(winner.winnerCar());
+    return winner;
+  }
+
+  private Winner winnerCalculator(Winner winner, Car nextCar) {
+    if (winner.winnerCar().position() < nextCar.position()) {
+      winner = new Winner(nextCar);
+    }
     return winner;
   }
 
