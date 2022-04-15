@@ -10,15 +10,15 @@ public class RacingController {
 
   public void startGame() {
     RacingInputView racingInputView = new RacingInputView();
-    racingInputView.setRacingUserInput();
+    int carCount = racingInputView.getRacingCarCount();
+    int attemptCount = racingInputView.getRacingAttemptCount();
 
     RacingOutputView racingOutputView = new RacingOutputView();
     racingOutputView.printResultTitle();
 
-    Cars cars = Cars.makeCars(racingInputView.getCarCount(),
-        new NumberCompareMoveStrategy(new RandomNumberGenerator()));
+    Cars cars = Cars.makeCars(carCount, new NumberCompareMoveStrategy(new RandomNumberGenerator()));
 
-    for (int i = 0; i < racingInputView.getAttemptCount(); i++) {
+    for (int i = 0; i < attemptCount; i++) {
       cars.attempt();
       racingOutputView.printCarDistance(cars);
     }
