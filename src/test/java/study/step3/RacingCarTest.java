@@ -32,20 +32,12 @@ public class RacingCarTest {
                 .hasMessage("자동차는 2대 이상이어야 한다");
     }
 
-    @DisplayName("0 ~ 9 사이의 random 값을 생성해야 한다")
-    @RepeatedTest(100)
-    void numberGenerator() {
-        int val = NumberGenerator.randomVal(10);
-
-        assertThat(val).isNotNegative().isLessThan(10);
-    }
-
     @DisplayName("입력값이 4이상의 경우는 전진하고 그외에는 멈춘다")
     @ParameterizedTest
     @CsvSource(value = {"1:0", "2:0", "4:1", "5:1", "9:1"}, delimiter = ':')
     void carMove(int input, int expected) {
-        Car car = new Car();
-        car.move(input);
+        Car car = new Car(new TestMove(input));
+        car.move();
         assertThat(car.getPosition().value()).isEqualTo(expected);
     }
 }

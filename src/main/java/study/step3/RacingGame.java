@@ -6,7 +6,6 @@ import study.step3.view.ResultView;
 import java.util.List;
 
 public class RacingGame {
-    private static final int MAX_VALUE = 10;
     private GameConfig gameConfig;
 
     public RacingGame(GameConfig gameConfig) {
@@ -22,7 +21,7 @@ public class RacingGame {
 
     private void carMove() {
         for (Car car : gameConfig.getCars()) {
-            car.move(NumberGenerator.randomVal(MAX_VALUE));
+            car.move();
         }
         ResultView.show(gameConfig.getCars());
         ResultView.printEnd();

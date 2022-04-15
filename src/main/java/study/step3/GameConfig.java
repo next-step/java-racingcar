@@ -22,7 +22,7 @@ public class GameConfig {
         this.gameCount = gameCount;
         this.carCount = carCount;
         IntStream.range(0, carCount)
-                .forEach(i -> cars.add(new Car()));
+                .forEach(i -> cars.add(new Car(new RandomMove())));
     }
 
     public List<Car> getCars() {
