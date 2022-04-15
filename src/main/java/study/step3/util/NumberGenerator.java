@@ -8,6 +8,9 @@ import java.util.Random;
 public class NumberGenerator {
     private static final int RANDOM_MAX_LIMIT = 9;
 
+    private NumberGenerator() {
+    }
+
     public static int randomVal(int maxValue) {
         Random random = new Random();
 
