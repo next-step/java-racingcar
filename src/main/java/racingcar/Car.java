@@ -2,7 +2,7 @@ package racingcar;
 
 public class Car {
     private String track;
-    private String name;
+    public final String name;
 
     public Car(String name) {
         this.track = "-";
@@ -15,5 +15,9 @@ public class Car {
 
     public void move() {
         this.track += "-";
+    }
+
+    public void setTrackForTest(String s) {
+        this.track = s;
     }
 }
