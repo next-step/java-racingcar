@@ -6,9 +6,10 @@ import racingCar.strategy.CarMoveStrategy;
 public class Car {
 
   private static final int MIN_CAR_NAME_LENGTH = 5;
-  private Integer index;
-  private String name;
-  private int position;
+  private static final String STEP = "-";
+  private final Integer index;
+  private final String name;
+  private final int position;
 
   public Car(Integer index, String name) {
     this(index, name, 0);
@@ -69,10 +70,6 @@ public class Car {
 
   @Override
   public String toString() {
-    return "Car{" +
-        "index=" + index +
-        ", name='" + name + '\'' +
-        ", position=" + position +
-        '}';
+    return name + " : " + STEP.repeat(position);
   }
 }
