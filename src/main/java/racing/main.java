@@ -1,7 +1,7 @@
 package racing;
 
 import racing.module.CarGame;
-import racing.module.RandomNumberGenerator;
+import racing.module.RandomStrategy;
 import racing.view.InputView;
 import racing.view.OutputView;
 
@@ -14,9 +14,9 @@ public class Main {
         OutputView.startPrint();
 
         for (int i = 0; i < trial; i++) {
-            carGame.play(new RandomNumberGenerator(), 0);
+            carGame.play(new RandomStrategy());
             OutputView.printCarsPosition(carGame.getCarList());
-            System.out.print("\n");
+            OutputView.nextline();
         }
     }
 }

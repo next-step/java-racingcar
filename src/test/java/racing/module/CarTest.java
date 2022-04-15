@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
-    private Car car = new Car(0);
+    private Car car = new Car();
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})

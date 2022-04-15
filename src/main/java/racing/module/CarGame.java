@@ -12,9 +12,9 @@ public class CarGame {
         }
     }
 
-    public void play(NumberGenerator generator, int number) {
+    public void play(MoveStrategy strategy) {
         for (Car car : carList) {
-            car.move(generator.canMove(number));
+            car.move(strategy.canMove());
         }
     }
 

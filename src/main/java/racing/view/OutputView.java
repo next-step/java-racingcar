@@ -2,7 +2,6 @@ package racing.view;
 
 import exception.CustomException;
 import racing.module.Car;
-
 import java.util.List;
 
 public class OutputView {
@@ -16,6 +15,10 @@ public class OutputView {
 
     public static void startPrint() {
         System.out.println("\n실행결과");
+    }
+
+    public static void nextline() {
+        System.out.println("\n");
     }
 
     public static void printCarsPosition(List<Car> carList) {
