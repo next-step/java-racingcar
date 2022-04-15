@@ -10,7 +10,7 @@ import racingCar.model.Winner;
 import racingCar.strategy.CarMoveRandomStrategy;
 import racingCar.view.InputTable;
 
-public class CarService {
+public class GameService {
 
   private final static Track TRACK = new Track();
 

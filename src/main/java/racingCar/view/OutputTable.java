@@ -5,7 +5,7 @@ import java.util.List;
 import racingCar.model.Car;
 import racingCar.model.RacingCarHistory;
 import racingCar.model.Winner;
-import racingCar.service.CarService;
+import racingCar.service.GameService;
 
 public final class OutputTable {
 
@@ -18,7 +18,7 @@ public final class OutputTable {
   }
 
   public static void main(String[] args) {
-    CarService game = new CarService();
+    GameService game = new GameService();
     System.out.println(WHAT_CAR_NAMES);
     List<Car> allCars = game.readyCars();
     System.out.println(HOW_MANY_GAMES);
