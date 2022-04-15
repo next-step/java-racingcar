@@ -8,9 +8,10 @@ public class RacingApp {
         int tryNumber = InputView.getTryNumber();
         Race race = new Race();
         race.createCars(carNames);
-        for (int i = 1; i <= tryNumber; i++) {
-            ResultView.printResult(race.cars, i);
+        ResultView.printResult(race.cars, 1);
+        for (int i = 2; i <= tryNumber; i++) {
             race.rollCars();
+            ResultView.printResult(race.cars, i);
         }
         List<String> winners = race.findWinners();
         ResultView.printWinners(winners);
