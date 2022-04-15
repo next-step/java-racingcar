@@ -8,7 +8,7 @@ import java.util.Collections;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
-@DisplayName("이름들")
+@DisplayName("자동차 이름들 생성")
 class NamesTest {
 
     @Test
