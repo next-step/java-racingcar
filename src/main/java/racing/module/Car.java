@@ -2,7 +2,7 @@ package racing.module;
 
 public class Car {
     private static final int DEFAULT_POSITION = 0;
-    private int position = 0;
+    private int position;
 
     public Car() {
         this(DEFAULT_POSITION);
