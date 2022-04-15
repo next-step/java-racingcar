@@ -1,4 +1,4 @@
-package CarRace;
+package carrace;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,12 +16,10 @@ public class CarRaceTest {
     }
 
     @Test
-    @DisplayName("4이상의 number를 입력받을 때에만 1 리턴")
-    void getOneIfMoreThanFour() {
+    @DisplayName("DECISION_VALUE(4) 이상의 number를 입력받을 때에만 GO(1) 리턴")
+    void getOneIfMoreThanDecisionValue() {
         CarRace carRace = new CarRace();
-        assertThat(carRace.goIfMoreThanFour(4)).isEqualTo(1);
-        assertThat(carRace.goIfMoreThanFour(8)).isEqualTo(1);
-        assertThat(carRace.goIfMoreThanFour(1)).isEqualTo(0);
+        assertThat(carRace.goIfMoreThanDecisionValue()).isIn(CarRaceRule.STOP.getValue(), CarRaceRule.GO.getValue());
     }
 
     @ParameterizedTest
@@ -31,9 +29,8 @@ public class CarRaceTest {
         CarRace carRace = new CarRace(numberOfCars, numberOfRaces);
         carRace.startRaces();
 
-        assertThat(carRace.raceInfoBoards.size()).isEqualTo(numberOfRaces);
-        assertThat(carRace.raceInfoBoards.get(0).size()).isEqualTo(numberOfCars);
-        assertThat(carRace.raceInfoBoards.get(0).get(0)).isBetween(0, numberOfRaces);
+        assertThat(carRace.getRaceInfoBoards().size()).isEqualTo(numberOfRaces * numberOfCars);
+        assertThat(carRace.getRaceInfoBoards().get(0)).isBetween(0, numberOfRaces);
     }
 
 }
