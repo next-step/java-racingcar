@@ -57,6 +57,7 @@ Race result(phase: 5)
 
 - [x] Fix getNumber -> getTryNumber
 - [x] Add getCarNames, parseInput
+- [x] Fix createCar to get carNames
 
 ### Race
 

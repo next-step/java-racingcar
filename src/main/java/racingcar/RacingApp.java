@@ -5,7 +5,7 @@ public class RacingApp {
         String[] carNames = InputView.getCarNames();
         int tryNumber = InputView.getTryNumber();
         Race race = new Race();
-        race.createCars(carNumber);
+        race.createCars(carNames);
         for (int i = 1; i <= tryNumber; i++) {
             ResultView.printResult(race.cars, i);
             race.rollCars();

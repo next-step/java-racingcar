@@ -10,7 +10,8 @@ public class InputViewTest {
 
     @Test
     void parseInputShouldReturnCarNames() {
-        assertThat(InputView.parseInput("pobi,crong,honux")).hasSize(3);
+        String[] expected = {"pobi", "crong", "honux"};
+        assertThat(InputView.parseInput("pobi,crong,honux")).isEqualTo(expected);
     }
 
     @Test
