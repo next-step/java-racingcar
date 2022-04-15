@@ -15,7 +15,7 @@ public class Car {
         this.positionHistory = new ArrayList<>();
     }
 
-    public void run(){
+    public void move(){
         if(getRandomNum() >= 4){
             this.position++;
         }
@@ -26,10 +26,6 @@ public class Car {
     public int getRandomNum() {
         Random random = new Random();
         return random.nextInt(10);
-    }
-
-    public int getPosition() {
-        return position;
     }
 
     public List<Integer> getPositionHistory() {

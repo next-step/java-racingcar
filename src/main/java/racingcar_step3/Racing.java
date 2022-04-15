@@ -28,23 +28,23 @@ public class Racing {
         ResultView.showAllStates(cars, tryNum);
     }
     
-    public void runAllTime(){
+    public void moveAllTime(){
         //주어진 횟수동안
         for (int tryCnt = 0; tryCnt < tryNum; tryCnt++) {
-            runEachCar();
+            moveEachCar();
         }
     }
 
-    private void runEachCar() {
+    private void moveEachCar() {
         //전진 또는 멈춤 시키기 Car객체에게
         for (Car car : cars) {
-            car.run();
+            car.move();
         }
     }
 
     public static void main(String[] args) {
         Racing racing = new Racing();
-        racing.runAllTime();
+        racing.moveAllTime();
         racing.showResult();
     }
 }

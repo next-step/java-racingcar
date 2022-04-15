@@ -11,17 +11,18 @@ public class ResultView {
         }
     }
 
-    private static void showEachState(List<Car> cars, int i) {
-        for (Car car : cars) {
-            StringBuilder sb = makeTrace(i, car);
+    private static void showEachState(List<Car> cars, int tryIdx) {
+        cars.forEach(car -> {
+            StringBuilder sb = makeTrace(car, tryIdx);
             System.out.println(sb);
-        }
+        });
         System.out.println("");
     }
 
-    private static StringBuilder makeTrace(int i, Car car) {
+    private static StringBuilder makeTrace(Car car, int tryIdx) {
         StringBuilder sb = new StringBuilder();
-        for (int j = 0; j < car.getPositionHistory().get(i); j++) {
+        List<Integer> positionHistory = car.getPositionHistory();
+        for (int i = 0; i < positionHistory.get(tryIdx); i++) {
             sb.append('-');
         }
         return sb;
