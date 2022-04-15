@@ -1,23 +1,30 @@
 package study.step3;
 
 import study.step3.util.NumberGenerator;
+import study.step3.view.ResultView;
 
 import java.util.List;
 
 public class RacingGame {
-    private List<Car> cars;
+    private static final int MAX_VALUE = 10;
+    private GameConfig gameConfig;
 
-    public RacingGame(List<Car> cars) {
-        this.cars = cars;
+    public RacingGame(GameConfig gameConfig) {
+        this.gameConfig = gameConfig;
     }
 
     public void play() {
-        for (Car car : cars) {
-            car.move(NumberGenerator.randomVal(10));
+        ResultView.printStart();
+        for (int i = 0; i < gameConfig.getGameCount(); i++) {
+            carMove();
         }
     }
 
-    public List<Car> getCars() {
-        return cars;
+    private void carMove() {
+        for (Car car : gameConfig.getCars()) {
+            car.move(NumberGenerator.randomVal(MAX_VALUE));
+        }
+        ResultView.show(gameConfig.getCars());
+        ResultView.printEnd();
     }
 }
