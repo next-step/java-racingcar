@@ -1,15 +1,19 @@
 package study.step3;
 
 public class Car {
-    private int position;
+    private Position position;
 
-    public int getPosition() {
-        return position;
+    public Car() {
+        this.position = new Position(0);
     }
 
     public void move(int condition) {
         if (condition >= 4) {
-            position++;
+            position.forward();
         }
+    }
+
+    public Position getPosition() {
+        return position;
     }
 }

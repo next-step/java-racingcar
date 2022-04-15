@@ -46,6 +46,6 @@ public class RacingCarTest {
     void carMove(int input, int expected) {
         Car car = new Car();
         car.move(input);
-        assertThat(car.getPosition()).isEqualTo(expected);
+        assertThat(car.getPosition().value()).isEqualTo(expected);
     }
 }
