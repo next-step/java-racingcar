@@ -9,7 +9,7 @@ import java.util.Collections;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
-@DisplayName("레이싱 자동차들")
+@DisplayName("레이싱 자동차들 생성")
 class RacingCarsTest {
 
     @Test
