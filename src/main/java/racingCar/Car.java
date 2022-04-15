@@ -4,9 +4,11 @@ public class Car {
 
     private final MovableStrategy movableStrategy;
 
+    private CarName name;
     private String distance = "";
 
-    public Car (MovableStrategy movableStrategy) {
+    public Car(String name, MovableStrategy movableStrategy) {
+        this.name = new CarName(name);
         this.movableStrategy = movableStrategy;
     }
 
@@ -21,5 +23,9 @@ public class Car {
 
     public String getDistance() {
         return this.distance;
+    }
+
+    public String getName() {
+        return name.getName();
     }
 }
