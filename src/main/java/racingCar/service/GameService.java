@@ -26,12 +26,16 @@ public class GameService {
   public List<RacingCarHistory> play(List<Car> allCars, Integer rounds) {
     List<RacingCarHistory> printCars = new ArrayList<>();
     for (Car car : allCars) {
-      for (int i = 0; i < rounds; i++) {
-        car = car.move(new CarMoveRandomStrategy());
-        printCars.add(new RacingCarHistory(i + 1, car));
-      }
+      addRacingHistory(rounds, printCars, car);
     }
     return printCars;
+  }
+
+  private void addRacingHistory(Integer rounds, List<RacingCarHistory> printCars, Car car) {
+    for (int i = 0; i < rounds; i++) {
+      car = car.move(new CarMoveRandomStrategy());
+      printCars.add(new RacingCarHistory(i + 1, car));
+    }
   }
 
   public List<Car> gameResult(List<RacingCarHistory> racingHistories,
