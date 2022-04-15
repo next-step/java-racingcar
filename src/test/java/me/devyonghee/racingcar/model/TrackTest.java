@@ -25,6 +25,18 @@ class TrackTest {
     }
 
     @Test
+    @DisplayName("주어진 자동차는 동일한 자동차로 반환")
+    void car() {
+        assertThat(Track.of(RacingCarSample.ONLY_MOVE_CAR, Distance.ZERO).car()).isEqualTo(RacingCarSample.ONLY_MOVE_CAR);
+    }
+
+    @Test
+    @DisplayName("주어진 거리는 동일한 거리로 반환")
+    void distance() {
+        assertThat(Track.of(RacingCarSample.ONLY_MOVE_CAR, Distance.ZERO).distance()).isEqualTo(Distance.ZERO);
+    }
+
+    @Test
     @DisplayName("다음 단계에서 자동차가 움직이면 거리는 증가")
     void movedTrack_move_increaseDistance() {
         //given, when
