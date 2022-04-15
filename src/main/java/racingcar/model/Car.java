@@ -3,27 +3,27 @@ package racingcar.model;
 import racingcar.generator.NumberGenerator;
 import racingcar.generator.RandomNumberGenerator;
 
+import java.util.Objects;
+
 public class Car {
     protected static final int MOVABLE_NUMBER = 4;
-    private static final int DEFAULT_POSITION = 0;
-    private static final RandomNumberGenerator DEFAULT_NUMBER_GENERATOR = new RandomNumberGenerator();
+    private static final NumberGenerator DEFAULT_NUMBER_GENERATOR = new RandomNumberGenerator();
 
-    private int position;
+    private final Name name;
+    private Position position;
 
-    public Car() {
-        this(DEFAULT_POSITION);
+    public Car(String name) {
+        this.name = new Name(name);
+        this.position = new Position();
     }
 
-    protected Car(int position) {
-        this.position = position;
+    protected Car(String name, int position) {
+        this.name = new Name(name);
+        this.position = new Position(position);
     }
 
     public void move() {
         move(DEFAULT_NUMBER_GENERATOR);
-    }
-
-    public int getPosition() {
-        return this.position;
     }
 
     /**
@@ -34,10 +34,46 @@ public class Car {
      */
     protected boolean move(NumberGenerator numberGenerator) {
         if (numberGenerator.generate() >= MOVABLE_NUMBER) {
-            this.position++;
+            this.position = this.position.increase();
             return true;
         }
 
         return false;
+    }
+
+    public boolean matchPosition(int position) {
+        return this.position.equals(new Position(position));
+    }
+
+    public String toName() {
+        return this.name.toString();
+    }
+
+    public int getPosition() {
+        return this.position.getPosition();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s : %s", this.name, this.position);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Car car = (Car) o;
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 }

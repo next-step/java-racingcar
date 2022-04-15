@@ -14,19 +14,54 @@ class CarsTest {
     @BeforeEach
     void setUp() {
         this.cars = new Cars(List.of(
-                new Car(3),
-                new Car(2),
-                new Car(1)
+                new Car("pang", 5),
+                new Car("nem", 5),
+                new Car("pobi", 3),
+                new Car("crong", 2),
+                new Car("honux", 1)
         ));
     }
 
     @Nested
-    class getAllPositions_메서드는 {
+    class getStatus_메서드는 {
 
         @Test
-        void 모든_자동차_position_목록을_리턴한다() {
-            List<Integer> allPositions = cars.getAllPositions();
-            assertThat(allPositions).containsExactly(3, 2, 1);
+        void 모든_자동차_이름과_목록을_리턴한다() {
+            List<String> carsStatus = cars.getStatus();
+            assertThat(carsStatus).containsExactly(
+                    "pang : -----",
+                    "nem : -----",
+                    "pobi : ---",
+                    "crong : --",
+                    "honux : -"
+            );
+        }
+    }
+
+    @Nested
+    class findWinners_메서드는 {
+
+        @Test
+        void 포지션이_제일_긴_자동차들을_리턴한다() {
+            Cars winners = cars.findWinners();
+
+            assertThat(winners).isEqualTo(
+                    new Cars(List.of(
+                            new Car("pang", 5),
+                            new Car("nem", 5)
+                    ))
+            );
+        }
+    }
+
+    @Nested
+    class toString_메서드는 {
+
+        @Test
+        void name() {
+            assertThat(cars.toString()).isEqualTo(
+                    "pang, nem, pobi, crong, honux"
+            );
         }
     }
 }
