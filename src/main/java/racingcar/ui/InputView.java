@@ -8,7 +8,7 @@ public class InputView {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     private InputView() {
-        throw new AssertionError();
+        throw new UnsupportedOperationException();
     }
 
     public static List<String> promptNames() {

@@ -11,7 +11,7 @@ import java.util.Map;
 public class OutputView {
 
     private OutputView() {
-        throw new AssertionError();
+        throw new UnsupportedOperationException();
     }
 
     public static void printRaceStart() {
