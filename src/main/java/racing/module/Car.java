@@ -1,9 +1,9 @@
 package racing.module;
 
 public class Car {
-    private int position = 0;
     private static final int DEFAULT_POSITION = 0;
     private static final int BOUNDARY_NUMBER = 4;
+    private int position = 0;
 
     public Car() {
         this(DEFAULT_POSITION);
