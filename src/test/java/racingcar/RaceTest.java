@@ -2,6 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,6 +20,22 @@ public class RaceTest {
         Car car = new Car("test");
         car.move();
         assertThat(car.getTrack()).hasSize(2);
+    }
+
+    @Test
+    void findWinners() {
+        Race race = new Race();
+        String[] carNames = {"pobi", "crong", "honux"};
+        race.createCars(carNames);
+        List<Car> cars = race.cars;
+        cars.get(0).setTrackForTest("--");
+        List<String> expected = new ArrayList<String>() {{
+            add("pobi");
+        }};
+        assertThat(race.findWinners()).isEqualTo(expected);
+        cars.get(2).setTrackForTest("--");
+        expected.add("honux");
+        assertThat(race.findWinners()).isEqualTo(expected);
     }
 
     @Test

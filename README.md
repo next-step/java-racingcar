@@ -61,7 +61,7 @@ Race result(phase: 5)
 
 ### Race
 
-- [ ] findWinner
+- [x] findWinners
 
 ### ResultView
 
