@@ -6,15 +6,17 @@ import java.util.stream.IntStream;
 
 public class GameConfig {
 
+    private static final int GAME_COUNT_LIMIT = 1;
+    private static final int CAR_COUNT_LIMIT = 2;
     private int gameCount;
     private int carCount;
     private List<Car> cars = new ArrayList<>();
 
     public GameConfig(int gameCount, int carCount) {
-        if (gameCount < 1)
+        if (gameCount < GAME_COUNT_LIMIT)
             throw new IllegalArgumentException("게임횟수는 1회 이상이어야 한다");
 
-        if (carCount < 2)
+        if (carCount < CAR_COUNT_LIMIT)
             throw new IllegalArgumentException("자동차는 2대 이상이어야 한다");
 
         this.gameCount = gameCount;
