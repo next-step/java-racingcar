@@ -1,4 +1,4 @@
-package commons;
+package stringadditional.commons;
 
 import java.util.regex.Pattern;
 
