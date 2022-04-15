@@ -65,7 +65,7 @@ Race result(phase: 5)
 
 ### ResultView
 
-- [ ] Fix printResult to include car.name
+- [x] Fix printResult to include car.name
 - [ ] printWinner
 
 ### Questions
