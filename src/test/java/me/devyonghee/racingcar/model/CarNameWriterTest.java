@@ -5,17 +5,18 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("자동차 이름 작명가")
 class CarNameWriterTest {
 
-    @Test
+    @ParameterizedTest
     @DisplayName("객체화")
-    void instance() {
-        assertThatNoException().isThrownBy(() -> NameWriter.from("abc"));
-        assertThatNoException().isThrownBy(() -> NameWriter.from("abc,123"));
+    @ValueSource(strings = {"abc", "abc,123"})
+    void instance(String names) {
+        assertThatNoException().isThrownBy(() -> NameWriter.from(names));
     }
 
     @ParameterizedTest
