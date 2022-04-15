@@ -15,20 +15,20 @@ public class Car {
         this.positionHistory = new ArrayList<>();
     }
 
-    public void move(){
-        if(getRandomNum() >= 4){
+    public void move(int randomValue){
+        if(moveCondition(randomValue)){
             this.position++;
         }
-
         positionHistory.add(this.position);
     }
 
-    public int getRandomNum() {
-        Random random = new Random();
-        return random.nextInt(10);
+    private boolean moveCondition(int randomValue) {
+        return randomValue >= 4;
     }
 
     public List<Integer> getPositionHistory() {
         return positionHistory;
     }
+
+
 }

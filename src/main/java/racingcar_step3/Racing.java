@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Getter
 public class Racing {
@@ -38,8 +39,12 @@ public class Racing {
     private void moveEachCar() {
         //전진 또는 멈춤 시키기 Car객체에게
         for (Car car : cars) {
-            car.move();
+            car.move(getRandomNum());
         }
+    }
+
+    public int getRandomNum() {
+        return new Random().nextInt(10);
     }
 
     public static void main(String[] args) {
