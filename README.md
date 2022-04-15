@@ -30,6 +30,13 @@ RacingGame
 - 책임
   - 레이싱 게임 진행
 
+RacingGameService
+- 상태
+  - GameConfig
+  - RacingGame
+- 책임
+  - 레이싱 게임 진행을 위한 비즈니스 로직
+
 Application
 - 레이싱게임을 진행하는 System
 

@@ -1,22 +1,18 @@
 package study.step3;
 
-import study.step3.model.Count;
+import study.step3.service.RacingGameService;
 import study.step3.view.InputView;
-import study.step3.view.View;
+import study.step3.view.ResultView;
 
 public class Application {
     public static void main(String[] args) {
-        View view = new View();
+        InputView inputView = new InputView();
 
-        Count count = view.input();
-        view.result();
-
-        GameConfig gameConfig = new GameConfig(count.getGame(), count.getCar());
+        GameConfig gameConfig = new GameConfig(inputView.gameCount(), inputView.carCount());
         RacingGame racingGame = new RacingGame(gameConfig.getCars());
+        RacingGameService racingGameService = new RacingGameService(gameConfig, racingGame);
 
-        for (int i = 0; i < gameConfig.getGameCount(); i++) {
-            racingGame.play();
-            view.carStatus(racingGame.getCars());
-        }
+        ResultView resultView = new ResultView(racingGameService);
+
     }
 }
