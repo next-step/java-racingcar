@@ -13,7 +13,7 @@ class CarTest {
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("이동값이 4미만일때는 움직이지 않는다.")
     void dontMove(int speed) {
-        car.move(speed);
+        car.move(speed > 3);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
@@ -21,7 +21,7 @@ class CarTest {
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     @DisplayName("이동값이 4이상일때는 움직인다.")
     void move(int speed) {
-        car.move(speed);
+        car.move(speed > 3);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 }

@@ -14,7 +14,7 @@ public class CarGame {
 
     public void play(NumberGenerator generator, int number) {
         for (Car car : carList) {
-            car.move(generator.getNumber(number));
+            car.move(generator.canMove(number));
         }
     }
 

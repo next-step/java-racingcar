@@ -2,7 +2,6 @@ package racing.module;
 
 public class Car {
     private static final int DEFAULT_POSITION = 0;
-    private static final int BOUNDARY_NUMBER = 4;
     private int position = 0;
 
     public Car() {
@@ -13,8 +12,8 @@ public class Car {
         this.position = position;
     }
 
-    public void move(int speed) {
-        if (speed >= BOUNDARY_NUMBER) {
+    public void move(boolean canMove) {
+        if (canMove) {
             position++;
         }
     }
