@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class RandomNumCondition implements Condition{
+public class RandomNumCondition implements Condition {
 
     @Override
     public boolean isSatisfiedBy() {

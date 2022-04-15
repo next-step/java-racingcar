@@ -4,9 +4,9 @@ import org.jetbrains.annotations.NotNull;
 
 
 public class RacingCarGame {
-     public RacingCar[] racingCars;
-     public int numOfRound;
-     public Condition condition;
+    public RacingCar[] racingCars;
+    public int numOfRound;
+    public Condition condition;
 
     public RacingCarGame(RacingCar[] racingCars, int numOfRound, Condition condition) {
         this.racingCars = racingCars;
@@ -23,7 +23,7 @@ public class RacingCarGame {
     }
 
     private static void proceedRacingCars(RacingCar @NotNull [] racingCars, Condition condition) {
-        for (RacingCar racingCar: racingCars) {
+        for (RacingCar racingCar : racingCars) {
             if (condition.isSatisfiedBy()) {
                 racingCar.proceed();
             }
