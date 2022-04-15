@@ -15,7 +15,7 @@ class CarsTest {
   @ValueSource(ints = {1, 5, 9, 10})
   void oneMoveTest(int carCount) {
     //given
-    Cars cars = Cars.makeCars(carCount, new MustMoveStrategy());
+    Cars cars = Cars.newInstance(carCount, new MustMoveStrategy());
 
     //when
     cars.attempt();
@@ -29,7 +29,7 @@ class CarsTest {
   @CsvSource(value = {"1|1|1", "2|2|2", "20|20|20", "25|25|25", "100|100|100"}, delimiter = '|')
   void nMoveTest(int carCount, int attempt, int expected) {
     //given
-    Cars cars = Cars.makeCars(carCount, new MustMoveStrategy());
+    Cars cars = Cars.newInstance(carCount, new MustMoveStrategy());
 
     //when
     for (int i = 0; i < attempt; i++) {

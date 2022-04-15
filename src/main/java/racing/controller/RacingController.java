@@ -16,7 +16,7 @@ public class RacingController {
     RacingOutputView racingOutputView = new RacingOutputView();
     racingOutputView.printResultTitle();
 
-    Cars cars = Cars.makeCars(carCount, new NumberCompareMoveStrategy(new RandomNumberGenerator()));
+    Cars cars = Cars.newInstance(carCount, new NumberCompareMoveStrategy(new RandomNumberGenerator()));
 
     for (int i = 0; i < attemptCount; i++) {
       cars.attempt();

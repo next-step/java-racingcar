@@ -26,7 +26,7 @@ public class Cars {
     return distances;
   }
 
-  public static Cars makeCars(int carCount, MoveStrategy moveStrategy) {
+  public static Cars newInstance(int carCount, MoveStrategy moveStrategy) {
     List<Car> carList = new ArrayList<>();
     for (int i = 0; i < carCount; i++) {
       carList.add(new Car(moveStrategy));
