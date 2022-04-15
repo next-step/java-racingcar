@@ -55,7 +55,8 @@ Race result(phase: 5)
 
 ### InputView
 
-- [ ] Fix getNumber -> getCarNames
+- [x] Fix getNumber -> getTryNumber
+- [x] Add getCarNames, parseInput
 
 ### Race
 

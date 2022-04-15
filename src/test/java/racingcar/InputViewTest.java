@@ -5,7 +5,14 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class InputViewTest {
-    // getCarNumber
+    // getCarNames
+
+
+    @Test
+    void parseInputShouldReturnCarNames() {
+        assertThat(InputView.parseInput("pobi,crong,honux")).hasSize(3);
+    }
+
     @Test
     void inputShouldBeOneToNine() {
         assertThat(InputView.isInputRange(8)).isTrue();
