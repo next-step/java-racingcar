@@ -11,7 +11,7 @@ public class CarStadium {
 
     private static final Random random = new Random();
 
-    private static LinkedList<Car> carList = new LinkedList<>();
+    private static List<Car> carList = new ArrayList<>();
     private static int rounds = 0;
 
     public static int extractRandomNumber() {
@@ -21,8 +21,8 @@ public class CarStadium {
     public static void initCars(String cars) {
         String[] carNames = splitCarNames(cars);
 
-        for (int i = 0; i < carNames.length; ++i) {
-            Car car = new Car(carNames[i], new NormalStrategy());
+        for (String name : carNames) {
+            Car car = new Car(name, new NormalStrategy());
             carList.add(car);
         }
     }
@@ -39,7 +39,7 @@ public class CarStadium {
         return rounds;
     }
 
-    public static LinkedList<Car> getCars() {
+    public static List<Car> getCars() {
         return carList;
     }
 
@@ -47,34 +47,34 @@ public class CarStadium {
         car.move(extractRandomNumber());
     }
 
-    public static ArrayList<String> getWinners(LinkedList<Car> list) {
-        ArrayList<String> winners = findWinners(list, getMaxDistance(list));
+    public static List<String> getWinners(List<Car> cars) {
+        List<String> winners = findWinners(cars, getMaxDistance(cars));
 
         return winners;
     }
 
-    private static ArrayList<String> findWinners(LinkedList<Car> list, int max) {
-        ArrayList<String> winners = new ArrayList<>();
+    private static List<String> findWinners(List<Car> cars, int max) {
+        List<String> winners = new ArrayList<>();
 
-        for (int j = 0; j < list.size(); ++j) {
-            Car car = list.get(j);
+        for (int j = 0; j < cars.size(); ++j) {
+            Car car = cars.get(j);
             addWinners(max, winners, car);
         }
 
         return winners;
     }
 
-    private static void addWinners(int max, ArrayList<String> winners, Car car) {
+    private static void addWinners(int max, List<String> winners, Car car) {
         if (max == car.getDistance().length()) {
             winners.add(car.getName());
         }
     }
 
-    private static int getMaxDistance(LinkedList<Car> list) {
+    private static int getMaxDistance(List<Car> cars) {
         int maxDistance = 0;
 
-        for (int j = 0; j < list.size(); ++j) {
-            int distance = list.get(j).getDistance().length();
+        for (int j = 0; j < cars.size(); ++j) {
+            int distance = cars.get(j).getDistance().length();
             maxDistance = getMaxDistance(maxDistance, distance);
         }
 

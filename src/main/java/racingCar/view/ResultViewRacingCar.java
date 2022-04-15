@@ -3,8 +3,6 @@ package racingCar.view;
 import racingCar.Car;
 import racingCar.CarStadium;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,21 +15,20 @@ public class ResultViewRacingCar {
         System.out.println();
         System.out.println("실행결과");
 
-        LinkedList<Car> list = CarStadium.getCars();
+        List<Car> cars = CarStadium.getCars();
         int rounds = CarStadium.getRounds();
 
         for (int i = 0; i < rounds; ++i) {
-            resultViewCarData(list);
+            resultViewCarData(cars);
         }
 
-        resultViewWinners(list);
+        resultViewWinners(cars);
     }
 
-    private static void resultViewCarData(List<Car> list) {
-
-        for (int i = 0; i < list.size(); ++i) {
-            resultViewCarName(list.get(i));
-            resultViewCarDistance(list.get(i));
+    private static void resultViewCarData(List<Car> cars) {
+        for (Car car : cars) {
+            resultViewCarName(car);
+            resultViewCarDistance(car);
         }
         System.out.println();
     }
@@ -46,8 +43,8 @@ public class ResultViewRacingCar {
         System.out.println(car.getDistance());
     }
 
-    private static void resultViewWinners(LinkedList<Car> list) {
-        ArrayList<String> winners = CarStadium.getWinners(list);
+    private static void resultViewWinners(List<Car> cars) {
+        List<String> winners = CarStadium.getWinners(cars);
 
         for (int i = 0; i < winners.size(); ++i) {
             resultViewWinners(winners, i);
@@ -55,10 +52,9 @@ public class ResultViewRacingCar {
 
         System.out.print("가 최종 우승했습니다.");
         System.out.println();
-
     }
 
-    private static void resultViewWinners(ArrayList<String> winners, int i) {
+    private static void resultViewWinners(List<String> winners, int i) {
         if (i == 0) {
             System.out.print(winners.get(i));
             return;
