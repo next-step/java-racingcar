@@ -18,7 +18,7 @@ public class RacingGameController {
         PositiveCarMoveCount positiveCarMoveCount = inputView.getInputCarMoveCount();
 
         Cars cars = makeCars(positiveCarsNumber.getCarsNumber());
-        moveCars(positiveCarMoveCount, cars);
+        moveCars(positiveCarMoveCount.getCarMoveCount(), cars);
     }
 
     private static Cars makeCars(int carsNumber) {
@@ -29,9 +29,9 @@ public class RacingGameController {
         return new Cars(cars);
     }
 
-    private static void moveCars(PositiveCarMoveCount positiveCarMoveCount, Cars cars) {
+    private static void moveCars(int carMoveCount, Cars cars) {
         ResultView resultView = new ResultView();
-        for (int i = 0; i < positiveCarMoveCount.getCarMoveCount(); i++) {
+        for (int i = 0; i < carMoveCount; i++) {
             resultView.printMoveCarResult(cars);
         }
     }

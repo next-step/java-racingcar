@@ -10,9 +10,11 @@ public class ResultView {
 
     private final String PRINT_RESULT = "실행 결과";
 
-    public void printMoveCarResult(Cars cars) {
+    public ResultView() {
         System.out.println(PRINT_RESULT);
+    }
 
+    public void printMoveCarResult(Cars cars) {
         for (Car car : cars.getCars()) {
             int randomNumber = RandomHelper.makeRandomNumber(RacingCarSetting.RACING_DEFAULT_RANDOM_NUMBER_BOUND);
             car.move(new MovingRule(randomNumber));
