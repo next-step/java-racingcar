@@ -1,20 +1,21 @@
 package racingcar;
 
-import java.util.Scanner;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.stream.IntStream;
 
 public class RacingCar {
-    public static void main(String[] args) {
-        start();
+    public int location = 0;
+
+    public static RacingCar @NotNull [] createBatch(int size) {
+        RacingCar[] racingCars= new RacingCar[size];
+        IntStream.range(0, size).forEach(i ->
+                racingCars[i] = new RacingCar()
+        );
+        return racingCars;
     }
 
-    public static String start() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        Scanner scanner = new Scanner(System.in);
-        int numOfCar = scanner.nextInt();
-
-        System.out.println("시도할 횟수는 몇 회 인가요?");
-        int numOfGame = scanner.nextInt();
-
-        return "";
+    public void proceed() {
+        location += 1;
     }
 }
