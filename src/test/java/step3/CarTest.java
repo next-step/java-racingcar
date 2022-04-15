@@ -9,10 +9,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarTest {
 
 
+    MovableStrategy movableStrategy = new RandomNumMovableStrategy();
+
     @Test
     @DisplayName("4이상의 숫자가 전달되면 한번 전진한다.")
     void 움직임_테스트() {
-        Car car = new Car();
+        Car car = new Car(movableStrategy);
 
         car.move(5);
         assertThat(car.checkPosition(1)).isTrue();
@@ -21,7 +23,7 @@ public class CarTest {
     @Test
     @DisplayName("3이하 숫자가 전달되면 한번 전진한다.")
     void 멈춤_테스트() {
-        Car car = new Car();
+        Car car = new Car(movableStrategy);
 
         car.move(0);
         assertThat(car.checkPosition(0)).isTrue();
@@ -33,7 +35,7 @@ public class CarTest {
     @Test
     @DisplayName("0~9 사이의 숫자가 아니라면 예외발생")
     void 움직임_숫자범위예외발생_테스트() {
-        Car car = new Car();
+        Car car = new Car(movableStrategy);
         assertThatThrownBy(() -> {
             car.move(10);
         }).isInstanceOf(IllegalArgumentException.class);

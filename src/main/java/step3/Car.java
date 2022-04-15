@@ -6,14 +6,19 @@ public class Car {
 
     private final String CAR_STATE_BAR = "-";
     private Integer curMove = 0;
+    private final MovableStrategy movableStrategy;
+
+    public Car(MovableStrategy movableStrategy) {
+        this.movableStrategy = movableStrategy;
+    }
 
 
     public int move(int num){
-        if(num < 0 || 9 < num){
+        if(num < 0 || 9 < num) {
             throw new IllegalArgumentException();
         }
 
-        if(num >= 4){
+        if(movableStrategy.canMove(num)){
             curMove += 1;
         }
 

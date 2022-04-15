@@ -9,6 +9,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
 
+    MovableStrategy movableStrategy = new RandomNumMovableStrategy();
+
     @Test
     @DisplayName("각 자동차는 4이상의 숫자가 들어오면 움직인다.")
     void 자동차들_움직임_테스트(){
@@ -17,7 +19,7 @@ public class CarsTest {
 
         List<Car> carList = new ArrayList<>();
         for(int i=0; i<carCnt; i++){
-            carList.add(new Car());
+            carList.add(new Car(movableStrategy));
         }
 
         Cars cars = new Cars(carList);
@@ -35,7 +37,7 @@ public class CarsTest {
 
         List<Car> carList = new ArrayList<>();
         for(int i=0; i<carCnt; i++){
-            carList.add(new Car());
+            carList.add(new Car(movableStrategy));
         }
 
         Cars cars = new Cars(carList);

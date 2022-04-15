@@ -7,10 +7,12 @@ public class Application {
 
     private final Input input;
     private final View view;
+    private final MovableStrategy movableStrategy;
 
-    public Application(Input input, View view) {
+    public Application(Input input, View view, MovableStrategy movableStrategy) {
         this.input = input;
         this.view = view;
+        this.movableStrategy = movableStrategy;
     }
 
     public void run() {
@@ -28,7 +30,7 @@ public class Application {
     private Cars generateCars(int cnt){
         List<Car> carList = new ArrayList<>();
         for(int i=0; i<cnt; i++){
-            carList.add(new Car());
+            carList.add(new Car(movableStrategy));
         }
         return new Cars(carList);
     }
