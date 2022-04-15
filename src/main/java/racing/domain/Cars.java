@@ -28,19 +28,14 @@ public class Cars {
 
     String getWinner(Cars snapshot) {
         StringBuffer winners = new StringBuffer();
-        int maxDistance = 0;
+        int maxDistance = -1;
         for (Car car : snapshot.getCars()) {
-            if (winners == null) {
+            if (maxDistance == -1) {
                 winners.append(car.getName());
                 maxDistance = car.getDistance();
-                continue;
-            }
-
-            if (car.getDistance() == maxDistance) {
+            } else if (maxDistance == car.getDistance()) {
                 winners.append(", " + car.getName());
-            }
-
-            if (car.getDistance() > maxDistance) {
+            } else if (maxDistance > car.getDistance()) {
                 winners = new StringBuffer();
                 winners.append(car.getName());
                 maxDistance = car.getDistance();
