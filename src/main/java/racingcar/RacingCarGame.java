@@ -17,6 +17,7 @@ public class RacingCarGame {
     public RacingCar[] start() {
         for (int i = 0; i < numOfRound; i++) {
             proceedRacingCars(racingCars, condition);
+            ResultView.showResult(racingCars);
         }
         return racingCars;
     }

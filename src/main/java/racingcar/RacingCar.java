@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.stream.IntStream;
 
 public class RacingCar {
-    public int location = 0;
+    public int location = 1;
 
     public static RacingCar @NotNull [] createBatch(int size) {
         RacingCar[] racingCars= new RacingCar[size];
