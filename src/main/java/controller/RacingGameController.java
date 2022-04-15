@@ -11,5 +11,6 @@ public class RacingGameController {
         int carsNumber = inputView.getInputCarsNumber();
         int carMoveCount = inputView.getInputCarMoveCount();
         int randomNumber = RandomHelper.makeRandomNumber(RacingCarSetting.RACING_DEFAULT_RANDOM_NUMBER_BOUND);
+
     }
 }
