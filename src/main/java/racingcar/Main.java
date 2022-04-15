@@ -11,9 +11,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String[] carNameStrings = InputView.promptCarNames();
-        List<CarName> carNames = CarName.createCarNames(carNameStrings);
-        Cars cars = CarFactory.generateCars(carNames);
+        List<String> names = InputView.promptNames();
+        Cars cars = new Cars(names);
         int rounds = InputView.promptRounds();
         RacingCarGame game = new RacingCarGame(cars, rounds, new RandomMoveStrategy());
 
