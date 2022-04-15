@@ -3,7 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
-import racingcar.model.PositiveInteger;
+import racingcar.model.Distance;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -24,7 +24,7 @@ public class CarTest {
     void carStateTest() {
         Car car = new Car();
 
-        assertThat(car.state()).isEqualTo(PositiveInteger.ZERO);
+        assertThat(car.state()).isEqualTo(Distance.ZERO);
     }
 
     @Test
@@ -34,7 +34,7 @@ public class CarTest {
 
         Car nextCar = car.move(() -> true);
 
-        assertThat(nextCar.state()).isEqualTo(PositiveInteger.add(car.state(), new PositiveInteger(1)));
+        assertThat(nextCar.state()).isEqualTo(Distance.add(car.state(), new Distance(1)));
     }
 
     @Test

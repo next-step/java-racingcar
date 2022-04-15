@@ -3,30 +3,29 @@ package racingcar.model;
 import java.util.Objects;
 
 public final class Car {
-    private static final Distance MOVE_STATE = new Distance(PositiveInteger.ONE);
-    private final PositiveInteger state;
+    private final Distance state;
 
     public Car() {
-        this.state = PositiveInteger.ZERO;
+        this.state = Distance.ZERO;
     }
 
-    public Car(PositiveInteger state) {
+    public Car(Distance state) {
         validate(state);
         this.state = state;
     }
 
-    private void validate(PositiveInteger state) {
+    private void validate(Distance state) {
         Objects.requireNonNull(state, "Car 생성시 전달된 state 가 올바르지 않습니다. : state is null");
     }
 
     public Car move(MovingStrategy movingStrategy) {
         if (movingStrategy.movable()) {
-            return new Car(PositiveInteger.add(state, MOVE_STATE.value()));
+            return new Car(Distance.add(state, Distance.MOVE_STATE));
         }
-        return new Car(new PositiveInteger(state.value()));
+        return new Car(new Distance(state.value()));
     }
 
-    public PositiveInteger state() {
+    public Distance state() {
         return state;
     }
 }

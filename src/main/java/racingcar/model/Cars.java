@@ -29,7 +29,7 @@ public final class Cars {
         return new Cars(result);
     }
 
-    public List<PositiveInteger> states() {
+    public List<Distance> states() {
         return cars.stream()
                 .map(Car::state)
                 .collect(Collectors.toList());
