@@ -41,7 +41,7 @@ public final class OutputTable {
   }
 
   private static void enter(List<Car> allCars, RacingCarHistory racingCarHistory) {
-    if (racingCarHistory.carIndex() == allCars.size()) {
+    if (racingCarHistory.car().index() == allCars.size()) {
       System.out.println();
     }
   }

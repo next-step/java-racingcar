@@ -4,12 +4,10 @@ public class RacingCarHistory {
 
   private Integer round;
   private Car car;
-  private Integer carIndex;
 
-  public RacingCarHistory(Integer round, Car car, Integer carIndex) {
+  public RacingCarHistory(Integer round, Car car) {
     this.round = round;
     this.car = car;
-    this.carIndex = carIndex;
   }
 
   public Integer round() {
@@ -20,9 +18,6 @@ public class RacingCarHistory {
     return car;
   }
 
-  public Integer carIndex() {
-    return this.carIndex;
-  }
 
   @Override
   public String toString() {

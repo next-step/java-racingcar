@@ -28,7 +28,7 @@ public class CarService {
     for (Car car : allCars) {
       for (int i = 0; i < rounds; i++) {
         car = car.move(new CarMoveRandomStrategy());
-        printCars.add(new RacingCarHistory(i + 1, car, car.index()));
+        printCars.add(new RacingCarHistory(i + 1, car));
       }
     }
     return printCars;
