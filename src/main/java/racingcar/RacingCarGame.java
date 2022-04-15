@@ -18,7 +18,7 @@ public class RacingCarGame {
     }
 
     private void racingCarGame(int carNumber, int trialNumber) {
-        List<Car> cars = CarGroup.createCars(carNumber, trialNumber);
+        List<Car> cars = CarGroup.createCars(carNumber);
         CarGroup carGroup = new CarGroup(cars);
         carGroup.moveCarGroup(trialNumber);
         OutputView.racingResult(trialNumber, carNumber, carGroup.getCarMoveDistanceTrace());

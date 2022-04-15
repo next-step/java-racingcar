@@ -13,22 +13,23 @@ public class CarGroup {
         this.cars = cars;
     }
 
-    public static List<Car> createCars(int carNumber, int trialNumber) {
-        validateNumber(carNumber, trialNumber);
+    public static List<Car> createCars(int carNumber) {
+        validateNumber(carNumber);
         List<Car> cars = new ArrayList<>();
         for (int i = 1; i <= carNumber; i++) {
-            cars.add(new Car(0, trialNumber));
+            cars.add(new Car(0));
         }
         return cars;
     }
 
-    private static void validateNumber(int carNumber, int trialNumber) {
-        if (carNumber < 0 || trialNumber < 0) {
+    private static void validateNumber(int number) {
+        if (number < 0) {
             throw new RuntimeException("음수 값은 허용하지 않습니다.");
         }
     }
 
     public void moveCarGroup(int trialNumber) {
+        validateNumber(trialNumber);
         for (int i = 0; i < trialNumber; i++) {
             moveCarPerTrial();
         }

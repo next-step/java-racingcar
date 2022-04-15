@@ -8,12 +8,12 @@ public class Car {
     private int moveDistance;
     private List<Integer> moveDistanceTrace;
 
-    Car(int moveDistance, int trialNumber) {
+    Car(int moveDistance) {
         if (moveDistance < 0) {
             throw new RuntimeException("음수 입력값은 허용하지 않습니다.");
         }
         this.moveDistance = moveDistance;
-        this.moveDistanceTrace = new ArrayList<>(trialNumber);
+        this.moveDistanceTrace = new ArrayList<>();
     }
 
     public List<Integer> getMoveDistanceTrace() {
