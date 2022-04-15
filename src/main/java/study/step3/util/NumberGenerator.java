@@ -6,11 +6,13 @@ import java.util.Random;
  * 랜덤값 생성기
  */
 public class NumberGenerator {
+    private static final int RANDOM_MAX_LIMIT = 9;
+
     public static int randomVal(int maxValue) {
         Random random = new Random();
 
         int num = random.nextInt(maxValue);
-        if (num > 9) {
+        if (num > RANDOM_MAX_LIMIT) {
             throw new IllegalArgumentException("Please change the maxValue");
         }
 
