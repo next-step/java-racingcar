@@ -10,4 +10,8 @@ public class ResultView {
         }
         System.out.println();
     }
+
+    public static void printWinners(List<String> winners) {
+        System.out.printf("🎉 Winner: %s\n", winners);
+    }
 }

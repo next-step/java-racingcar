@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class RacingApp {
     public static void main(String[] args) throws Exception {
         String[] carNames = InputView.getCarNames();
@@ -10,5 +12,7 @@ public class RacingApp {
             ResultView.printResult(race.cars, i);
             race.rollCars();
         }
+        List<String> winners = race.findWinners();
+        ResultView.printWinners(winners);
     }
 }
