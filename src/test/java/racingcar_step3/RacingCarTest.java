@@ -14,11 +14,11 @@ public class RacingCarTest {
 
      */
 
-    private RacingCar rc;
+    private Racing rc;
 
     @BeforeEach
     void init(){
-        rc = new RacingCar(3, 5);
+        rc = new Racing();
     }
 
     @Test
@@ -27,10 +27,10 @@ public class RacingCarTest {
         assertThat(rc.getTryNum()).isGreaterThan(0);
     }
 
-    @Test
-    void 랜덤값이_0_9_사이값인가() {
-        assertThat(rc.getRandomNum())
-                .isGreaterThanOrEqualTo(0)
-                .isLessThanOrEqualTo(9);
-    }
+//    @Test
+//    void 랜덤값이_0_9_사이값인가() {
+//        assertThat(rc.getRandomNum())
+//                .isGreaterThanOrEqualTo(0)
+//                .isLessThanOrEqualTo(9);
+//    }
 }
