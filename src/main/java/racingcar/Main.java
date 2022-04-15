@@ -6,6 +6,7 @@ import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -19,8 +20,12 @@ public class Main {
     }
 
     private static void initGame() {
-        cars = new Cars(InputView.promptNames());
-        game = new RacingCarGame(cars, InputView.promptRounds(), new RandomMoveStrategy());
+        List<String> names = InputView.promptNames();
+        List<Car> carList = names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        cars = new Cars(carList);
+        game = new RacingCarGame(Main.cars, InputView.promptRounds(), new RandomMoveStrategy());
     }
 
     private static void startGame() {

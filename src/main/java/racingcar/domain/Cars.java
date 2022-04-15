@@ -9,23 +9,20 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<String> names) {
-        validateDuplicateName(names);
-        this.cars = createCars(names);
+    public Cars(List<Car> cars) {
+        validateDuplicateName(cars);
+        this.cars = cars;
     }
 
-    private void validateDuplicateName(List<String> names) {
-        Set<String> namesSet = new HashSet<>(names);
-        if (names.size() != namesSet.size()) {
+    private void validateDuplicateName(List<Car> cars) {
+        Set<CarName> names = cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toSet());
+        if (cars.size() != names.size()) {
             throw new IllegalArgumentException("cars can't have same name");
         }
     }
 
-    private List<Car> createCars(List<String> names) {
-        return names.stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
-    }
 
     public void move(MoveStrategy strategy) {
         cars.forEach(car -> car.move(strategy));
