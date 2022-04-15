@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.*;
 
-@DisplayName("작명가")
+@DisplayName("자동차 이름 작명가")
 class CarNameWriterTest {
 
     @Test
