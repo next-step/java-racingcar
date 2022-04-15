@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 import racingCar.model.Car;
 import racingCar.model.RacingCarHistory;
+import racingCar.model.Winner;
 import racingCar.service.CarService;
 
 public final class OutputTable {
@@ -25,7 +26,10 @@ public final class OutputTable {
     System.out.println(OUTPUT_RESULT);
     List<RacingCarHistory> racingHistories = game.play(allCars, rounds);
     historyPrint(allCars, racingHistories);
-    List<Car> finishCars = game.gameResult(racingHistories, rounds);
+    List<Car> gameResult = game.gameResult(racingHistories, rounds);
+    Winner winner = game.winner(gameResult);
+    String racingGameWinner = game.coWinner(winner, gameResult);
+    System.out.println(racingGameWinner);
   }
 
   private static void historyPrint(List<Car> allCars, List<RacingCarHistory> racingHistories) {
