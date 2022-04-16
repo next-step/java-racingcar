@@ -1,6 +1,7 @@
 package racingcar.dto;
 
 import racingcar.model.CarName;
+import racingcar.model.Cars;
 import racingcar.model.Distance;
 
 import java.util.ArrayList;
@@ -12,12 +13,14 @@ public class RoundResult {
     private final List<CarName> carNames;
     private final List<Distance> states;
     private final int carsCount;
+    private final List<CarName> winner;
 
     private RoundResult(List<CarName> carNames, List<Distance> states) {
         validate(carNames, states);
         this.carNames = new ArrayList<>(carNames);
         this.states = new ArrayList<>(states);
         this.carsCount = carNames.size();
+        this.winner = Cars.findWinner(carsCount, this.carNames, this.states);
     }
 
     private void validate(List<CarName> carNames, List<Distance> states) {
@@ -31,6 +34,7 @@ public class RoundResult {
             throw new IllegalArgumentException("RoundResult 에 전달된 리스트가 올바르지 않습니다 : states is empty");
         }
     }
+
     public List<CarName> getCarNames() {
         return Collections.unmodifiableList(carNames);
     }
@@ -41,6 +45,10 @@ public class RoundResult {
 
     public int getCarsCount() {
         return carsCount;
+    }
+
+    public List<CarName> getWinner() {
+        return Collections.unmodifiableList(winner);
     }
 
     public static RoundResult of(List<CarName> carNames, List<Distance> states) {
