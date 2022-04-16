@@ -9,9 +9,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class ImmutableNumberModelTest {
+public class NumberModelTest {
 
   private static Stream<Arguments> modelAndValuesToTest() {
+    // Arguments.of(클래스, 유효한 생성자 파라미터, 유효하지않은 파라미터)
     return Stream.of(
         Arguments.of(CarCount.class, 1, 0),
         Arguments.of(TryCount.class, 1, 0),
