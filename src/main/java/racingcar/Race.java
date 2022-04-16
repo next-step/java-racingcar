@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class Race {
     public final List<Car> cars = new ArrayList<Car>();
-    ;
 
     public List<Car> createCars(String[] carNames) {
         for (String carName : carNames) {
@@ -24,7 +23,6 @@ public class Race {
         if (n < 4) {
             return new RolledResult(false, car);
         }
-        ;
         car.move();
         return new RolledResult(true, car);
     }

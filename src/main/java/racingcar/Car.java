@@ -16,8 +16,4 @@ public class Car {
     public void move() {
         this.position += 1;
     }
-
-//    public void setTrackForTest(String s) {
-//        this.track = s;
-//    }
 }
