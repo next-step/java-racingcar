@@ -3,16 +3,19 @@ package domain;
 import util.MoveStrategy;
 
 public class Car {
-    private static final int BOUNDARY_NUMBER = 4;
-    private int position;
+    private final Position position;
+
+    public Car() {
+        position = new Position();
+    }
 
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
-            position++;
+            position.goForward();
         }
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 }

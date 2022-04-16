@@ -1,5 +1,7 @@
 package view;
 
+import domain.Positions;
+
 import java.util.List;
 
 public class ResultView {
@@ -15,12 +17,16 @@ public class ResultView {
         return resultView;
     }
 
-    public void printResultHeader() {
+    public void printResult(List<Positions> positionsList) {
         System.out.println(RESULT_MESSAGE);
+        for (Positions positions : positionsList) {
+            printEachAttempt(positions);
+            System.out.println();
+        }
+        System.out.print(NEW_LINE);
     }
 
-    public void printResult(List<Integer> carsPosition) {
-        carsPosition.forEach(carPosition -> System.out.println(POSITION_BAR.repeat(Math.max(0, carPosition))));
-        System.out.print(NEW_LINE);
+    private void printEachAttempt(Positions positions) {
+        positions.getPositions().forEach(carPosition -> System.out.println("|" + POSITION_BAR.repeat(Math.max(0, carPosition))));
     }
 }

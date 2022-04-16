@@ -15,13 +15,10 @@ public class Cars {
         }
     }
 
-    public void moveCars(MoveStrategy moveStrategy) {
+    public Positions moveCars(MoveStrategy moveStrategy) {
         cars.forEach(car -> car.move(moveStrategy));
-    }
-
-    public List<Integer> getCarsPosition() {
-        return cars.stream()
+        return new Positions(cars.stream()
                 .map(Car::getPosition)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 }

@@ -22,15 +22,15 @@ public class CarTest {
     @ParameterizedTest
     @CsvSource(value = {"true:1", "false:0"}, delimiter = ':')
     void carMoveTest(boolean movable, int moveDistance) {
-        int beforePosition = car.getPosition();
+        int beforePosition = car.getPosition().getPosition();
 
         car.move(TestMoveStrategy.getInstance(movable));
 
-        assertThat(car.getPosition()).isEqualTo(beforePosition + moveDistance);
+        assertThat(car.getPosition().getPosition()).isEqualTo(beforePosition + moveDistance);
     }
 
     static class TestMoveStrategy implements MoveStrategy {
-        private static TestMoveStrategy testMoveStrategy = new TestMoveStrategy();
+        private static final TestMoveStrategy testMoveStrategy = new TestMoveStrategy();
         private static boolean moveState = false;
 
         private TestMoveStrategy() {
