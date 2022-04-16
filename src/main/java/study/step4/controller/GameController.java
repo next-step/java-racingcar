@@ -23,6 +23,11 @@ public class GameController {
     public void start() {
         RacingGame racingGame = raceGameSetting();
 
+        gameplay(racingGame);
+    }
+
+    private void gameplay(RacingGame racingGame) {
+        racingGame.play();
     }
 
     private RacingGame raceGameSetting() {
