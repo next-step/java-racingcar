@@ -22,8 +22,8 @@ public class InputView {
         return SCANNER.nextInt();
     }
 
-    private static int validateInputValue(int value) {
-        if (value < 0) {
+    public static int validateInputValue(int value) {
+        if (value <= 0) {
             throw new IllegalStateException("자동차는 1대 이상 입력되어야 합니다.");
         }
 

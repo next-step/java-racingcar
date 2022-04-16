@@ -12,7 +12,7 @@ class CarsTest {
     void confirmCarObjectCreation() {
         int numberOfCars = 3;
 
-        Cars cars = new Cars(numberOfCars);
+        Cars cars = new Cars(new RandomMovingStrategy(), numberOfCars);
 
         assertThat(cars.getCars()).hasSize(numberOfCars);
     }

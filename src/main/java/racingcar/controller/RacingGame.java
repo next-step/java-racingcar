@@ -1,28 +1,23 @@
 package racingcar.controller;
 
 import racingcar.model.Cars;
+import racingcar.model.MovingStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingGame {
-    private static Cars cars;
 
-    public void startRacingGame() {
-        cars = new Cars(InputView.inputNumberOfCars());
+    public void startRacingGame(MovingStrategy movingStrategy) {
+        Cars cars = new Cars(movingStrategy, InputView.inputNumberOfCars());
         int numberOfGames = InputView.inputNumberOfAttempts();
-        progressNumberOfGames(numberOfGames);
+        progressNumberOfGames(cars, numberOfGames);
     }
 
-    private void progressNumberOfGames(int numberOfGames) {
+    private void progressNumberOfGames(Cars cars, int numberOfGames) {
         OutputView.printCarRacingResult();
         for (int i = 0; i < numberOfGames; i++) {
-            carMovementByRound();
+            cars.runRace();
+            OutputView.printCarRacingIntermediateState(cars);
         }
-    }
-
-    private void carMovementByRound() {
-        cars.runRace();
-
-        OutputView.printCarRacingIntermediateState(cars);
     }
 }

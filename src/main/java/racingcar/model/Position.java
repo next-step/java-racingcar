@@ -4,7 +4,7 @@ public class Position {
     private static final int POSITION_INITIAL_VALUE = 0;
     private int position;
 
-    Position() {
+    public Position() {
         this(POSITION_INITIAL_VALUE);
     }
 
