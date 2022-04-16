@@ -1,15 +1,14 @@
 package util;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomNumberGenerator {
 
   private RandomNumberGenerator() {}
 
-  private static final Random RANDOM = new Random();
+  private static final ThreadLocalRandom RANDOM = ThreadLocalRandom.current();
 
   public static int generateRandomNumberInRange(int maxNumber) {
-    RANDOM.setSeed(System.currentTimeMillis());
     return RANDOM.nextInt(maxNumber);
   }
 }

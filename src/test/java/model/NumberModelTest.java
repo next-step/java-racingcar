@@ -11,8 +11,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class NumberModelTest {
 
-  private static Stream<Arguments> modelAndValuesToTest() {
-    // Arguments.of(클래스, 유효한 생성자 파라미터, 유효하지않은 파라미터)
+  private static Stream<Arguments> modelAndValues() {
+    // given
+    // Arguments.of(테스트 대상 클래스, 유효한 생성자 파라미터, 유효하지않은 파라미터)
     return Stream.of(
         Arguments.of(CarCount.class, 1, 0),
         Arguments.of(TryCount.class, 1, 0),
@@ -21,19 +22,30 @@ public class NumberModelTest {
   }
 
   @ParameterizedTest
-  @MethodSource("modelAndValuesToTest")
+  @MethodSource("modelAndValues")
   void 모델_생성_성공(Class<? extends NumberModel> clazz, int validValue) {
-    assertDoesNotThrow(() -> clazz.getDeclaredConstructor(int.class).newInstance(validValue));
+    //then
+    assertDoesNotThrow(
+        // when
+        () -> clazz.getDeclaredConstructor(int.class)
+            .newInstance(validValue)
+    );
   }
 
   @ParameterizedTest
-  @MethodSource("modelAndValuesToTest")
+  @MethodSource("modelAndValues")
   void 모델_생성_실패(Class<? extends NumberModel> clazz, int validValue, int invalidValue) {
-    // 실제로는 IllegalArgumentException을 발생시키나, getDeclaredConstructor에서 이 Exception을 catch하여
-    // InvocationTargetException을 발생시킨다.
+
+    // then
     assertThrows(
+        /*
+         * 실제로는 IllegalArgumentException을 발생시키나, getDeclaredConstructor에서 이 Exception을
+         * catch하여 InvocationTargetException을 발생시킨다.
+         */
         InvocationTargetException.class,
-        () -> clazz.getDeclaredConstructor(int.class).newInstance(invalidValue)
+        // when
+        () -> clazz.getDeclaredConstructor(int.class)
+            .newInstance(invalidValue)
     );
   }
 }
