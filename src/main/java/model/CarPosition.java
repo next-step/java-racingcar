@@ -16,6 +16,7 @@ public class CarPosition extends MutableNumberModel {
     setValue(value + number);
   }
 
+  @Override
   public void validateValue(int value) {
     validateArgument(
         value,

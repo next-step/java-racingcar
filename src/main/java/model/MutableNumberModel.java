@@ -1,12 +1,9 @@
 package model;
 
-public abstract class MutableNumberModel implements NumberModel {
-
-  protected int value;
+public abstract class MutableNumberModel extends abstractNumberModel {
 
   public MutableNumberModel(int value) {
-    validateValue(value);
-    this.value = value;
+    super(value);
   }
 
   public int getValue() {
