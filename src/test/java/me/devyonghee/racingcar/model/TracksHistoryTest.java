@@ -27,6 +27,16 @@ class TracksHistoryTest {
         assertThatIllegalArgumentException().isThrownBy(() -> TracksHistory.from(Collections.emptyList()));
     }
 
+
+    @Test
+    @DisplayName("주어진 리스트 그대로 반환")
+    void list() {
+        //given
+        Tracks singleTracks = Tracks.from(Collections.singletonList(Track.of(RacingCarSample.ONLY_MOVE_CAR, Distance.ZERO)));
+        //when, then
+        assertThat(TracksHistory.from(Collections.singletonList(singleTracks)).list()).containsExactly(singleTracks);
+    }
+
     @Test
     @DisplayName("마지막 기록에서 가장 멀리간 트랙들")
     void lastFarthestTracks() {

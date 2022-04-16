@@ -4,9 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
+import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.assertj.core.api.Assertions.assertThatNoException;
+import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("자동차 이름들 생성")
 class CarNamesTest {
@@ -22,5 +22,15 @@ class CarNamesTest {
     void instance_emptyCollection_thrownIllegalArgumentException() {
         assertThatIllegalArgumentException().isThrownBy(() -> CarNames.from(null));
         assertThatIllegalArgumentException().isThrownBy(() -> CarNames.from(Collections.emptyList()));
+    }
+
+
+    @Test
+    @DisplayName("주어진 리스트 그대로 반환")
+    void list() {
+        //given
+        List<CarName> nameList = Collections.singletonList(CarName.from("abc"));
+        //when, then
+        assertThat(CarNames.from(nameList).list()).containsExactlyElementsOf(nameList);
     }
 }
