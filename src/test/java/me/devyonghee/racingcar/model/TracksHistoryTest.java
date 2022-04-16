@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -32,9 +33,9 @@ class TracksHistoryTest {
     @DisplayName("주어진 리스트 그대로 반환")
     void list() {
         //given
-        Tracks singleTracks = Tracks.from(Collections.singletonList(Track.of(RacingCarSample.ONLY_MOVE_CAR, Distance.ZERO)));
+        List<Tracks> tracksList = Collections.singletonList(Tracks.from(Collections.singletonList(Track.of(RacingCarSample.ONLY_MOVE_CAR, Distance.ZERO))));
         //when, then
-        assertThat(TracksHistory.from(Collections.singletonList(singleTracks)).list()).containsExactly(singleTracks);
+        assertThat(TracksHistory.from(tracksList).list()).containsExactlyElementsOf(tracksList);
     }
 
     @Test
