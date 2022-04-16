@@ -1,29 +1,26 @@
 package controller;
 
 import domain.Cars;
+import java.util.Objects;
+import model.CarCount;
+import model.TryCount;
 import uiview.InputView;
 import uiview.OutputView;
-import util.Validator;
 
 public class TrafficController {
 
-  private static final String CAR_COUNT_ERROR_MESSAGE = "차 갯수는 %d 이상이어야 합니다.";
-  private static final String TRY_COUNT_ERROR_MESSAGE = "시도 횟수는 %d 이상이어야 합니다.";
+  private static final String MESSAGE_FOR_UNABLE_TO_START = "준비 데이터가 충분하지 않아 게임을 시작할 수 없습니다.";
   private static final String MESSAGE_FOR_INPUT_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
   private static final String MESSAGE_FOR_INPUT_TRY_COUNT = "시도할 대수는 몇 회 회가요?";
   private static final String POSITION_MARKER = "-";
   private static final String RESULT_GUIDE_MESSAGE = "실행결과";
-  private static final int MAX_RANDOM_VALUE = 10;
-  private static final int CAR_INITIAL_POSITION = 0;
-  private static final int MIN_DISTANCE_TO_MOVE = 4;
-  private static final int MIN_CAR_COUNT = 1;
-  private static final int MIN_TRY_COUNT = 1;
+  private static final int MAX_NUMBER_BOUND = 10;
 
   private final InputView inputView;
   private final OutputView outputView;
 
-  private int carCount;
-  private int tryCount;
+  private CarCount carCount;
+  private TryCount tryCount;
   private Cars cars;
 
 
@@ -41,18 +38,13 @@ public class TrafficController {
   }
 
   public TrafficController carCount(int carCount) {
-    validateCarCount(carCount);
-    this.carCount = carCount;
+    this.carCount = new CarCount(carCount);
     return this;
   }
 
   public TrafficController createCars() {
     validateCarCount(carCount);
-    this.cars = new Cars(
-        this.carCount,
-        CAR_INITIAL_POSITION,
-        MIN_DISTANCE_TO_MOVE
-    );
+    this.cars = new Cars(this.carCount.getValue());
     return this;
   }
 
@@ -61,16 +53,15 @@ public class TrafficController {
   }
 
   public TrafficController tryCount(int tryCount) {
-    validateTryCount(tryCount);
-    this.tryCount = tryCount;
+    this.tryCount = new TryCount(tryCount);
     return this;
   }
 
   public void start() {
     validateBeforeStart();
     outputView.print(RESULT_GUIDE_MESSAGE);
-    for (int i = 0; i < tryCount; i++) {
-      cars.moveAllCar(MAX_RANDOM_VALUE);
+    for (int i = 0; i < tryCount.getValue(); i++) {
+      cars.moveAllCarRandomly(MAX_NUMBER_BOUND);
       printResult();
       outputView.printEmpty();
     }
@@ -80,24 +71,22 @@ public class TrafficController {
     cars.getPositions().forEach(count -> outputView.print(POSITION_MARKER, count));
   }
 
-  private void validateCarCount(int carCount) {
-    Validator.validateArgument(
-        carCount,
-        (arg) -> arg >= MIN_CAR_COUNT,
-        String.format(CAR_COUNT_ERROR_MESSAGE, MIN_CAR_COUNT)
-    );
+  private void validateCarCount(CarCount carCount) {
+    Objects.requireNonNull(carCount);
+    carCount.validate();
   }
 
-  private void validateTryCount(int tryCount) {
-    Validator.validateArgument(
-        tryCount,
-        (arg) -> arg >= MIN_TRY_COUNT,
-        String.format(TRY_COUNT_ERROR_MESSAGE, MIN_TRY_COUNT)
-    );
+  private void validateTryCount(TryCount tryCount) {
+    Objects.requireNonNull(tryCount);
+    tryCount.validate();
   }
 
   private void validateBeforeStart() {
-    validateCarCount(carCount);
-    validateTryCount(tryCount);
+    try {
+      validateCarCount(carCount);
+      validateTryCount(tryCount);
+    } catch (Exception e) {
+      outputView.print(MESSAGE_FOR_UNABLE_TO_START);
+    }
   }
 }

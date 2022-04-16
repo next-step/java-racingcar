@@ -10,7 +10,7 @@ public class RandomNumberGeneratorTest {
   void generate() {
     final int maxNumber = 10;
     for (int i = 0 ; i < 100 ; i++) {
-      assertThat(RandomNumberGenerator.generate(maxNumber)).isLessThan(maxNumber);
+      assertThat(RandomNumberGenerator.generateRandomNumberInRange(maxNumber)).isLessThan(maxNumber);
     }
   }
 }

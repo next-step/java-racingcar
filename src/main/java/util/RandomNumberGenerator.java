@@ -8,7 +8,7 @@ public class RandomNumberGenerator {
 
   private static final Random RANDOM = new Random();
 
-  public static int generate(int maxNumber) {
+  public static int generateRandomNumberInRange(int maxNumber) {
     RANDOM.setSeed(System.currentTimeMillis());
     return RANDOM.nextInt(maxNumber);
   }

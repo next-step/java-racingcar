@@ -27,8 +27,7 @@ public class TrafficControllerTest {
   @Test
   void carCount_잘못된_값() {
     assertThrows(IllegalArgumentException.class, () -> TrafficController.init()
-        .carCount(INVALID_CAR_COUNT)
-        );
+        .carCount(INVALID_CAR_COUNT));
   }
 
   @Test
@@ -56,7 +55,7 @@ public class TrafficControllerTest {
 
   @Test
   void createCar_수행_실패() {
-    assertThrows(IllegalArgumentException.class, () -> TrafficController.init()
+    assertThrows(NullPointerException.class, () -> TrafficController.init()
         .createCars()
         .start()
     );
@@ -74,7 +73,7 @@ public class TrafficControllerTest {
 
   @Test
   void start_실행_실패() {
-    assertThrows(IllegalArgumentException.class, () -> TrafficController.init()
+    assertThrows(NullPointerException.class, () -> TrafficController.init()
         .start());
   }
 }
