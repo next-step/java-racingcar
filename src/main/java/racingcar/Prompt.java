@@ -8,14 +8,14 @@ public class Prompt {
     public static String[] ask(String question) {
         String input;
         do {
-            Printer.print(question);
+            Printer.println(question);
             input = SCANNER.nextLine();
         } while (InputValidator.isInputWrong(input));
         return input.split(",");
     }
 
     public static int askAttempt(String question) {
-        Printer.print(question);
+        Printer.println(question);
         return SCANNER.nextInt();
     }
 }

@@ -21,4 +21,12 @@ public class RacingCar {
         this.movement += condition > MOVE_THRESHOLD ? MOVE : STAY;
         return movement;
     }
+
+    public int getMovement() {
+        return movement;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
