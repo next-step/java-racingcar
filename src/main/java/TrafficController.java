@@ -58,7 +58,7 @@ public class TrafficController {
   }
 
   public void start() {
-    validateRequirements();
+    validateBeforeStart();
     outputView.print(RESULT_GUIDE_MESSAGE);
     for (int i = 0; i < tryCount; i++) {
       cars.moveAllCar(MAX_RANDOM_VALUE);
@@ -87,7 +87,7 @@ public class TrafficController {
     );
   }
 
-  private void validateRequirements() {
+  private void validateBeforeStart() {
     validateCarCount(carCount);
     validateTryCount(tryCount);
   }
