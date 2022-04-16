@@ -18,7 +18,7 @@ class CarGameTest {
 
     @Test
     @DisplayName("생성된 자동차들이 모두 움직였는지 확인")
-    void AlwayMovingplay() {
+    void alwayMovingplay() {
         CarGame carGame = new CarGame(3);
         carGame.play(alwaysTrueStrategy);
         for (Car car : carGame.getCarList()) {
@@ -29,7 +29,7 @@ class CarGameTest {
 
     @Test
     @DisplayName("생성된 자동차들이 모두 안움직였는지 확인")
-    void AlwayStayplay() {
+    void alwayStayplay() {
         CarGame carGame = new CarGame(3);
         carGame.play(alwaysFalseStrategy);
         for (Car car : carGame.getCarList()) {
