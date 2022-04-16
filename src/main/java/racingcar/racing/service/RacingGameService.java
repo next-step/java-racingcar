@@ -1,7 +1,10 @@
-package racingcar.racing;
+package racingcar.racing.service;
 
 
 import racingcar.play.RacingGamePolicy;
+import racingcar.racing.RacingCar;
+import racingcar.racing.RacingRecord;
+import racingcar.racing.repository.RacingGameRepository;
 
 import java.util.List;
 
@@ -19,14 +22,13 @@ public class RacingGameService {
 
     public void playGame(RacingCar racingCar, int tryNumber) {
         for (int i = 0; i < tryNumber; i++) {
-            racingCar.setProgress(racingPolicy.racing(racingCar.getProgress(), RACING_POLICY_VALUE));
-            racingGameRepository.save(racingCar);
+            racingCar.forward(racingPolicy.racing(RACING_POLICY_VALUE));
+            racingGameRepository.save(racingCar, i);
         }
-
     }
 
-    public List<RacingCar> findAll() {
-        return racingGameRepository.findAll();
+    public List<RacingRecord> findAllByTryNumber(int tryNumber) {
+        return racingGameRepository.findAllByTryNumber(tryNumber);
     }
 
 }

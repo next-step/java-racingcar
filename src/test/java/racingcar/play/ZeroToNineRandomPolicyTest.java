@@ -1,23 +1,27 @@
 package racingcar.play;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import racingcar.racing.RacingCar;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.generator.NumberGenerator;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ZeroToNineRandomPolicyTest {
 
-    static final RacingGamePolicy racingGamePolicy = new ZeroToNineRandomPolicy();
+    static final RacingGamePolicy racingGamePolicy = new ZeroToNineRandomPolicy(new NumberGenerator());
 
-    @Test
     @DisplayName("0-9 랜덤 정책 테스트")
-    void racing() {
+    @ParameterizedTest
+    @ValueSource(ints = {5})
+    void racing(int tryNumber) {
 
-        RacingCar racingCar = new RacingCar(0, 3);
+        for(int i = 0; i < tryNumber; i++ ) {
+            int result = racingGamePolicy.racing(10);
 
-        int result = racingGamePolicy.racing(racingCar.getProgress(), 10);
-        assertThat(result).isGreaterThanOrEqualTo(racingCar.getProgress());
+            assertThat(result).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(9);
+        }
     }
+
 }

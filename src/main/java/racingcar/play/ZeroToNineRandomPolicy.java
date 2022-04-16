@@ -1,24 +1,17 @@
 package racingcar.play;
-import racingcar.racing.NumberGenerator;
-
+import racingcar.generator.Generator;
 
 public class ZeroToNineRandomPolicy implements RacingGamePolicy {
 
-    private static final int FORWARD_CONDITION = 4;
+    Generator<Integer, Integer> numberGenerator;
+
+    public ZeroToNineRandomPolicy(Generator<Integer, Integer> generator) {
+        numberGenerator = generator;
+    }
 
     @Override
-    public int racing(int progress, int value) {
-        NumberGenerator numberGenerator = new NumberGenerator(value);
-
-        return forward(progress, numberGenerator.generateNumber());
+    public int racing(int value) {
+        return numberGenerator.generate(value);
     }
 
-
-    private int forward(int progress, int value) {
-        if (value > FORWARD_CONDITION) {
-           progress += 1;
-        }
-
-        return progress;
-    }
 }
