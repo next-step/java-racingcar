@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.input.CarName;
+
 public class Car {
 
     private static final int INITIAL_POSITION = 0;
@@ -7,9 +9,14 @@ public class Car {
     private static final int BOUND_MIN = 0;
     private static final int BOUND_MAX = 9;
     private int position;
-    private final String carName;
+    private final CarName carName;
 
     public Car(String carName) {
+        this.position = INITIAL_POSITION;
+        this.carName = new CarName(carName);
+    }
+
+    public Car(CarName carName) {
         this.position = INITIAL_POSITION;
         this.carName = carName;
     }
