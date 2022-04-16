@@ -14,7 +14,7 @@ public class Cars {
 
   public static Cars createCars(List<String> carNames, int startPosition) {
     List<Car> cars = carNames.stream()
-        .map(name -> new Car(startPosition, name))
+        .map(name -> new Car(name, startPosition))
         .collect(Collectors.toList());
     return new Cars(cars);
   }
@@ -23,14 +23,27 @@ public class Cars {
     values.forEach(car -> car.moveOrStop(movingStrategy));
   }
 
-  public List<Position> collectPositions() {
+//  public List<Position> collectPositions() {
+//    return values.stream()
+//        .map(Car::getPosition)
+//        .collect(Collectors.toList());
+//  }
+
+  public List<Car> findWinners() {
+    Car winnerCar = values.stream()
+        .max(Car::compareTo)
+        .orElse(null);
     return values.stream()
-        .map(Car::getPosition)
+        .filter(car -> car.hasSamePosition(winnerCar))
         .collect(Collectors.toList());
   }
 
   public int size() {
     return values.size();
+  }
+
+  public List<Car> getValues() {
+    return values;
   }
 
   @Override

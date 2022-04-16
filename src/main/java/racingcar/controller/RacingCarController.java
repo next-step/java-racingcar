@@ -3,26 +3,34 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.model.Cars;
 import racingcar.model.MovingStrategy;
-import racingcar.ui.OutputView;
+import racingcar.ui.ResultView;
 
 public class RacingCarController {
 
   private static final int START_POSITION = 0;
 
   private MovingStrategy movingStrategy;
+  private int maxTimes;
 
-  public RacingCarController(MovingStrategy movingStrategy) {
+  public RacingCarController(MovingStrategy movingStrategy, int maxTimes) {
     this.movingStrategy = movingStrategy;
+    this.maxTimes = maxTimes;
   }
 
   public void run(List<String> carNames, int times) {
     validateTimes(times);
+
     Cars cars = Cars.createCars(carNames, START_POSITION);
-    OutputView.printOutputStatement();
+    ResultView.printOutputStatement();
     for (int i = 0; i < times; i++) {
-      cars.move(movingStrategy);
-      OutputView.printOutput(cars.collectPositions());
+      playOneTurn(cars);
     }
+    ResultView.printWinners(cars.findWinners());
+  }
+
+  private void playOneTurn(Cars cars) {
+    cars.move(movingStrategy);
+    ResultView.printOutput(cars);
   }
 
   private static void validateTimes(int value) {

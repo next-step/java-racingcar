@@ -19,6 +19,10 @@ public class Position {
     return value;
   }
 
+  public int compareTo(Position other) {
+    return value - other.value;
+  }
+
   private static void validatePosition(int value) {
     if (value < 0) {
       throw new IllegalArgumentException("위치는 음수일 수 없습니다.");
