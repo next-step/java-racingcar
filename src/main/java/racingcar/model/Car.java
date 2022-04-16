@@ -6,13 +6,13 @@ public class Car {
 
   private Position position;
 
+  public Car() {
+    this(0);
+  }
+
   public Car(int position) {
     validatePosition(position);
     this.position = new Position(position);
-  }
-
-  public Car() {
-    this(0);
   }
 
   public int getCurrentPosition() {

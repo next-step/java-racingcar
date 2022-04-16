@@ -12,6 +12,15 @@ public class Cars {
     this.values = cars;
   }
 
+  public static Cars createCars(int count) {
+    validateCount(count);
+    List<Car> cars = new ArrayList<>();
+    for (int i = 0; i < count; i++) {
+      cars.add(new Car());
+    }
+    return new Cars(cars);
+  }
+
   public void move(MovingStrategy movingStrategy) {
     values.forEach(car -> car.moveOrStop(movingStrategy));
   }
@@ -24,15 +33,6 @@ public class Cars {
 
   public int size() {
     return values.size();
-  }
-
-  public static Cars createCars(int count) {
-    validateCount(count);
-    List<Car> cars = new ArrayList<>();
-    for (int i = 0; i < count; i++) {
-      cars.add(new Car());
-    }
-    return new Cars(cars);
   }
 
   private static void validateCount(int count) {
