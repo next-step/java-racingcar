@@ -1,6 +1,6 @@
 package model;
 
-public abstract class ImmutableNumberModel implements NumberModel {
+public abstract class AbstractImmutableNumberModel implements NumberModel {
 
   protected final int value;
 
@@ -8,7 +8,7 @@ public abstract class ImmutableNumberModel implements NumberModel {
     return value;
   }
 
-  public ImmutableNumberModel(int value) {
+  public AbstractImmutableNumberModel(int value) {
     validateValue(value);
     this.value = value;
   }

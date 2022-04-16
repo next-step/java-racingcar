@@ -3,7 +3,7 @@ package model;
 import static util.Validator.buildArgumentErrorMessage;
 import static util.Validator.validateArgument;
 
-public class CarPosition extends MutableNumberModel {
+public class CarPosition extends AbstractMutableNumberModel {
 
   private static final String INITIAL_POSITION_ERROR_MESSAGE = "차의 시작 위치는 %d 이상이어야 합니다.";
   private static final int MIN_INITIAL_POSITION = 0;

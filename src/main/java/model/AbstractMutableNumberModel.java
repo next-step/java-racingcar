@@ -1,10 +1,10 @@
 package model;
 
-public abstract class MutableNumberModel implements NumberModel {
+public abstract class AbstractMutableNumberModel implements NumberModel {
 
   protected int value;
 
-  public MutableNumberModel(int value) {
+  public AbstractMutableNumberModel(int value) {
     validateValue(value);
     this.value = value;
   }
