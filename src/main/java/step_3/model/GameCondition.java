@@ -1,13 +1,13 @@
-package step_3;
+package step_3.model;
 
-public class RacingGameConditions {
+public class GameCondition {
 
     private final int totalRounds;
     private final int totalRacingCarCount;
 
-    public RacingGameConditions() {
-        this.totalRounds = GameHost.howManyPlay();
-        this.totalRacingCarCount = GameHost.howManyCars();
+    public GameCondition(int totalRounds, int totalRacingCarCount) {
+        this.totalRounds = totalRounds;
+        this.totalRacingCarCount = totalRacingCarCount;
     }
 
     public int getTotalRounds() {
