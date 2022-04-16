@@ -10,7 +10,7 @@ public class ArgumentValidator {
       Predicate<T> predication,
       String errorMessage
   ) {
-    if (!predication.test(arg)) {
+    if (arg == null || !predication.test(arg)) {
       throw new IllegalArgumentException(errorMessage);
     }
   }

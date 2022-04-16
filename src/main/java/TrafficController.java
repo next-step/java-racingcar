@@ -74,7 +74,7 @@ public class TrafficController {
   private void validateCarCount(int carCount) {
     ArgumentValidator.validate(
         carCount,
-        (arg) -> arg != null && arg >= MIN_CAR_COUNT,
+        (arg) -> arg >= MIN_CAR_COUNT,
         String.format("차 갯수는 %d 이상이어야 합니다.", MIN_CAR_COUNT)
     );
   }
@@ -82,7 +82,7 @@ public class TrafficController {
   private void validateTryCount(int tryCount) {
     ArgumentValidator.validate(
         tryCount,
-        (arg) -> arg != null && arg >= MIN_TRY_COUNT,
+        (arg) -> arg >= MIN_TRY_COUNT,
         String.format("시도 횟수는 %d 이상이어야 합니다.", MIN_TRY_COUNT)
     );
   }
