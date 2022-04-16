@@ -2,6 +2,7 @@ package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -11,32 +12,39 @@ import racing.domain.strategy.MustMoveStrategy;
 class CarsTest {
 
   @ParameterizedTest
-  @DisplayName("앞으로 1회 시도했을 때 이동 거리 확인")
-  @ValueSource(ints = {1, 5, 9, 10})
-  void oneMoveTest(int carCount) {
+  @DisplayName("앞으로 1회 시도했을 때 이동 거리와 자동차 이름 확인")
+  @ValueSource(strings = {"test1,test2,test3", "A,B,C,D", "car1,car2,car3", "자동차1,자동차2,자동차3"})
+  void oneMoveTest(String carNameInput) {
     //given
-    Cars cars = Cars.newInstance(carCount, new MustMoveStrategy());
+    Cars namedCars = Cars.newInstance(carNameInput, new MustMoveStrategy());
 
     //when
-    cars.attempt();
+    namedCars.attempt();
 
     //then
-    assertThat(cars.getDistances()).hasSize(carCount).containsOnly(1);
+    assertThat(namedCars.getDistances()).hasSize(
+        carNameInput.split(Cars.CAR_NAME_DELIMITER).length).containsOnly(1);
+    assertThat(namedCars.getNames()).containsExactlyElementsOf(
+        Arrays.asList(carNameInput.split(Cars.CAR_NAME_DELIMITER)));
   }
 
   @ParameterizedTest
-  @DisplayName("앞으로 n회 시도했을 때 이동 거리 확인")
-  @CsvSource(value = {"1|1|1", "2|2|2", "20|20|20", "25|25|25", "100|100|100"}, delimiter = '|')
-  void nMoveTest(int carCount, int attempt, int expected) {
+  @DisplayName("앞으로 n회 시도했을 때 이동 거리와 자동차 이름 확인")
+  @CsvSource(value = {"test1,test2,test3|1|1", "A,B,C,D|2|2", "car1,car2,car3|20|20",
+      "자동차1,자동차2,자동차3|25|25"}, delimiter = '|')
+  void nMoveTest(String carNameInput, int attempt, int expected) {
     //given
-    Cars cars = Cars.newInstance(carCount, new MustMoveStrategy());
+    Cars namedCars = Cars.newInstance(carNameInput, new MustMoveStrategy());
 
     //when
     for (int i = 0; i < attempt; i++) {
-      cars.attempt();
+      namedCars.attempt();
     }
 
     //then
-    assertThat(cars.getDistances()).hasSize(carCount).containsOnly(attempt);
+    assertThat(namedCars.getDistances()).hasSize(
+        carNameInput.split(Cars.CAR_NAME_DELIMITER).length).containsOnly(attempt);
+    assertThat(namedCars.getNames()).containsExactlyElementsOf(
+        Arrays.asList(carNameInput.split(Cars.CAR_NAME_DELIMITER)));
   }
 }

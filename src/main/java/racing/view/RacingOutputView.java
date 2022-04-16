@@ -1,7 +1,7 @@
 package racing.view;
 
-import racing.domain.NamedCar;
-import racing.domain.NamedCars;
+import racing.domain.Car;
+import racing.domain.Cars;
 
 public class RacingOutputView {
 
@@ -13,15 +13,15 @@ public class RacingOutputView {
     System.out.println("실행 결과");
   }
 
-  public void printCarNameAndDistance(NamedCars cars) {
-    for (NamedCar car : cars.getNamedCars()) {
+  public void printCarNameAndDistance(Cars cars) {
+    for (Car car : cars.getNamedCars()) {
       System.out.print(car.getCarName() + " : " + DISTANCE.repeat(car.getDistance()));
       System.out.println(EMPTY);
     }
     System.out.println(EMPTY);
   }
 
-  public void printWinner(NamedCars cars) {
+  public void printWinner(Cars cars) {
     StringBuilder winnerSb = new StringBuilder();
     for (String name : cars.getNames()) {
       winnerSb.append(name + CAR_NAME_DELIMITER);

@@ -1,6 +1,6 @@
 package racing.controller;
 
-import racing.domain.NamedCars;
+import racing.domain.Cars;
 import racing.domain.strategy.MoveStrategy;
 import racing.domain.strategy.WinnerCarStrategy;
 import racing.view.RacingInputView;
@@ -28,13 +28,13 @@ public class RacingController {
 
     racingCarNameOutputView.printResultTitle();
 
-    NamedCars cars = NamedCars.newInstance(carNames, moveStrategy);
+    Cars cars = Cars.newInstance(carNames, moveStrategy);
     for (int i = 0; i < attemptCount; i++) {
       cars.attempt();
       racingCarNameOutputView.printCarNameAndDistance(cars);
     }
 
-    NamedCars winners = winnerCarStrategy.getWinners(cars);
+    Cars winners = winnerCarStrategy.getWinners(cars);
     racingCarNameOutputView.printWinner(winners);
 
   }
