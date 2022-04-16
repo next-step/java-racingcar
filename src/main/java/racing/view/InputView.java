@@ -10,9 +10,9 @@ public final class InputView {
         throw new CustomException("유틸성클래스는 인스턴스 생성을 할 수 없습니다.");
     }
 
-    public static int inputCar() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return SCANNER.nextInt();
+    public static String inputCarName() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return SCANNER.nextLine();
     }
 
     public static int inputTrial() {

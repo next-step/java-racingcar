@@ -5,7 +5,7 @@ import racing.module.Car;
 import java.util.List;
 
 public class OutputView {
-    private static final String STARTING_LINE = "#";
+    private static final String STARTING_LINE = " : ";
     private static final String CAR_POSITION_BAR = "-";
     private static final String NEW_LINE = "\n";
 
@@ -23,6 +23,7 @@ public class OutputView {
 
     public static void printCarsPosition(List<Car> carList) {
         for (Car car : carList) {
+            System.out.print(car.getCarName());
             System.out.print(STARTING_LINE);
             printCarPosition(car.getPosition());
             System.out.print(NEW_LINE);

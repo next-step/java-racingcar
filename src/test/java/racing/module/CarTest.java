@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
     private final MoveStrategy alwaysTrueStrategy = () -> true;
     private final MoveStrategy alwaysFalseStrategy = () -> false;
-    private final Car car = new Car();
+    private final Car car = new Car("test");
 
     @Test
     @DisplayName("자동차가 움직이지 않는지 확인")

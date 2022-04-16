@@ -7,10 +7,10 @@ import racing.view.OutputView;
 
 public class Main {
     public static void main(String[] args) {
-        int carCnt = InputView.inputCar();
+        String carName = InputView.inputCarName();
         int trial = InputView.inputTrial();
 
-        CarGame carGame = new CarGame(carCnt);
+        CarGame carGame = new CarGame(carName);
         OutputView.startPrint();
 
         for (int i = 0; i < trial; i++) {
