@@ -39,7 +39,7 @@ public class Race {
         int max = 1;
         List<String> winners = new ArrayList<String>();
         for (Car car : cars) {
-            max = getMax(max, car.getTrack().length());
+            max = getMax(max, car.getPosition());
         }
         for (Car car : cars) {
             collectWinner(max, car, winners);
@@ -55,7 +55,7 @@ public class Race {
     }
 
     public List<String> collectWinner(int max, Car car, List<String> winners) {
-        if (car.getTrack().length() == max) {
+        if (car.getPosition() == max) {
             winners.add((car.name));
         }
         return winners;
