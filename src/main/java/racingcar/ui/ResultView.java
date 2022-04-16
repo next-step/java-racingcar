@@ -1,9 +1,8 @@
 package racingcar.ui;
 
-import java.util.List;
-
 import racingcar.domain.Car;
 import racingcar.domain.CarStadium;
+import racingcar.domain.Cars;
 
 public class ResultView {
 	private final InputView inputView;
@@ -14,9 +13,10 @@ public class ResultView {
 
 	public void showResult() {
 		CarStadium carStadium = new CarStadium(inputView);
+		carStadium.carComes();
 
 		int rounds = carStadium.getRounds();
-		List<Car> cars = carStadium.getCars();
+		Cars cars = carStadium.getCars();
 
 		System.out.println();
 		System.out.println("실행 결과");
@@ -26,9 +26,8 @@ public class ResultView {
 		}
 	}
 
-	private void resultMoveCar(List<Car> cars) {
-		for (int i = 0; i < cars.size(); i++) {
-			// 자동차 이동
+	private void resultMoveCar(Cars cars) {
+		for (int i = 0; i < cars.count(); i++) {
 			Car car = cars.get(i);
 			car.move();
 			System.out.println(car.carStatus());
