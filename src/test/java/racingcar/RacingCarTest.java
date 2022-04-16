@@ -97,4 +97,23 @@ public class RacingCarTest {
         assertThat(playResult).hasSize(1);
         assertThat(playResult.get(0).getCarsCount()).isEqualTo(inputCarsInfo.split(",").length);
     }
+
+    @Test
+    @DisplayName("자동차 경주 결과에서 자동차의 이름을 받아올 수 있다")
+    void roundResultCarNameTest() {
+        // given
+        String input = "test";
+        RacingCar racingCar = new RacingCar(InputCars.fromCarsInfo(input), 1);
+
+        // when
+        List<RoundResult> playResult = racingCar.play(new RandomMovingStrategy());
+
+        // then
+        String[] split = input.split(",");
+        for (RoundResult roundResult : playResult) {
+            for (int i = 0; i < split.length; i++) {
+                assertThat(roundResult.getCarNames().get(i).value()).isEqualTo(split[i]);
+            }
+        }
+    }
 }
