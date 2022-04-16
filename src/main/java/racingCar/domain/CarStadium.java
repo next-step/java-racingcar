@@ -1,7 +1,9 @@
-package racingCar;
+package racingCar.domain;
+
+import racingCar.NormalStrategy;
+import racingCar.domain.Car;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -65,7 +67,7 @@ public class CarStadium {
     }
 
     private static void addWinners(int max, List<String> winners, Car car) {
-        if (max == car.getDistance().length()) {
+        if (max == car.getPosition().length()) {
             winners.add(car.getName());
         }
     }
@@ -74,7 +76,7 @@ public class CarStadium {
         int maxDistance = 0;
 
         for (int j = 0; j < cars.size(); ++j) {
-            int distance = cars.get(j).getDistance().length();
+            int distance = cars.get(j).getPosition().length();
             maxDistance = getMaxDistance(maxDistance, distance);
         }
 

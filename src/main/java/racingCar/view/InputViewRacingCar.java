@@ -1,6 +1,6 @@
 package racingCar.view;
 
-import racingCar.CarStadium;
+import racingCar.domain.CarStadium;
 
 import java.util.Scanner;
 

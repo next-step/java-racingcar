@@ -1,4 +1,6 @@
-package racingCar;
+package racingCar.domain;
+
+import racingCar.exception.InvalidCarNameException;
 
 public class CarName {
 

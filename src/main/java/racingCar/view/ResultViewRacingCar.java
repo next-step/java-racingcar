@@ -1,9 +1,8 @@
 package racingCar.view;
 
-import racingCar.Car;
-import racingCar.CarStadium;
+import racingCar.domain.Car;
+import racingCar.domain.CarStadium;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class ResultViewRacingCar {
@@ -40,7 +39,7 @@ public class ResultViewRacingCar {
     private static void resultViewCarDistance(Car car) {
         CarStadium.moveCar(car);
 
-        System.out.println(car.getDistance());
+        System.out.println(car.getPosition());
     }
 
     private static void resultViewWinners(List<Car> cars) {
