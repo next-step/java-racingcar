@@ -16,8 +16,7 @@ public class StringTest {
     @Test
     @DisplayName("String 클래스에 대한 학습 테스트 - 요구사항 2")
     void substring() {
-        String substringValue = "(1,2)".substring(1, 4);
-        assertThat(substringValue).isEqualTo("1,2");
+        assertThat("(1,2)".substring(1, 4)).isEqualTo("1,2");
     }
 
     @Test

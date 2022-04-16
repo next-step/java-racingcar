@@ -4,17 +4,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    public static final String DEFAULT_DELIMITER = ",|:";
-    public static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
+    private static final Pattern compile = Pattern.compile(CUSTOM_DELIMITER_REGEXP);
     
     public static int splitAndSum(String text) {
         if (isBlank(text)) {
             return 0;
         }
-        Matcher m = Pattern.compile(CUSTOM_DELIMITER_REGEXP).matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] values = split(m.group(2), customDelimiter);
+        Matcher matcher = compile.matcher(text);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(1);
+            String[] values = split(matcher.group(2), customDelimiter);
             return sum(toInts(values));
         }
         String[] values = split(text, DEFAULT_DELIMITER);
@@ -30,8 +31,9 @@ public class StringAddCalculator {
     }
 
     private static int[] toInts(String[] values) {
-        int[] numbers = new int[values.length];
-        for (int i = 0; i < values.length; i++) {
+        int valuesLength = values.length;
+        int[] numbers = new int[valuesLength];
+        for (int i = 0; i < valuesLength; i++) {
             numbers[i] = toInt(values[i]);
         }
         return numbers;
@@ -46,8 +48,7 @@ public class StringAddCalculator {
     }
 
     private static String[] split(String text, String defaultDelimiter) {
-        String[] values = text.split(defaultDelimiter);
-        return values;
+        return text.split(defaultDelimiter);
     }
 
     private static boolean isBlank(String text) {
