@@ -18,7 +18,9 @@ Cars
 RandomNumberGenerator
 - 랜덤한 값을(0~9) 생성한다
 
-Application
-- 레이싱게임을 진행하는 System
+GameController
+- View 와 RacingGame 을 연결한다
 
+RacingGame
+- 레이싱게임을 진행하는 주체(레이싱 관련 객체를 연결한다)
 
