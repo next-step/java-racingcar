@@ -27,7 +27,7 @@ public class RacingOutputView {
       winnerSb.append(name + CAR_NAME_DELIMITER);
     }
     winnerSb.delete(winnerSb.length() - 2, winnerSb.length());
-    System.out.println(winnerSb.toString() + "가 최종 우승했습니다");
+    System.out.println(winnerSb + "가 최종 우승했습니다");
   }
 
 }
