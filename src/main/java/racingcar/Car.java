@@ -5,7 +5,7 @@ import java.util.Random;
 public class Car {
 	public static final int LIMIT_RANDOM_NUMBER = 10;
 	public static final int MOVE_CONDITION = 4;
-	public static final String movingUnit = "-";
+	public static final String MOVING_UNIT = "-";
 	private String status = "";
 	private int valueToMovable;
 
@@ -17,7 +17,7 @@ public class Car {
 
 	public void move() {
 		if (isMovable()) {
-			status += movingUnit;
+			status += MOVING_UNIT;
 		}
 
 		status += "";
