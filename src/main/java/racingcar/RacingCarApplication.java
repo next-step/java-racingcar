@@ -1,11 +1,10 @@
 package racingcar;
 
 import racingcar.domain.Cars;
-import racingcar.domain.MovingRule;
 import racingcar.domain.RandomMovingRule;
 import racingcar.domain.RacingCarGame;
-import racingcar.ui.InputView;
-import racingcar.ui.ResultView;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 import util.RandomUtil;
 
 public class RacingCarApplication {

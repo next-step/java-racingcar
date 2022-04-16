@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import racingcar.ui.Result;
+import racingcar.view.Result;
 
 public class RacingCarGame {
 	private final Cars cars;
