@@ -24,7 +24,9 @@ public final class ResultView {
         for (RoundResult roundResult : roundResults) {
             printRoundResult(roundResult.getCarsCount(), roundResult.getCarNames(), roundResult.getStates());
         }
-        printWinner(roundResults.get(roundResults.size()-1).getWinner());
+        if (!roundResults.isEmpty()) {
+            printWinner(roundResults.get(roundResults.size() - 1).getWinner());
+        }
     }
 
     private static void printStartText() {
@@ -49,7 +51,7 @@ public final class ResultView {
 
     private static void printWinner(List<CarName> winners) {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.join(WINNER_NAME_DELIMITER,getCarName(winners)));
+        sb.append(String.join(WINNER_NAME_DELIMITER, getCarName(winners)));
         sb.append(WIN_RESULT_TEXT);
         System.out.println(sb);
     }
