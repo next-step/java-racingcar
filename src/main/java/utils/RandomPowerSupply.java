@@ -4,9 +4,9 @@ import core.Car;
 
 import java.util.Random;
 
-public class RandomNumberGenerator implements NumberGenerator {
+public class RandomPowerSupply implements PowerSupply {
     @Override
-    public int next() {
+    public int supply() {
         Random random = new Random();
         return random.nextInt(Car.MAX_MOVE_VALUE);
     }

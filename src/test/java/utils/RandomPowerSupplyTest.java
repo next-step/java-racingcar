@@ -5,17 +5,17 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RandomNumberGeneratorTest {
+class RandomPowerSupplyTest {
 
     @Test
     @DisplayName("MAX_MOVE_VALUE 까지의 정수를 반환한다")
     void next() {
         //given
-        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        PowerSupply powerSupply = new RandomPowerSupply();
 
         for (int i = 0; i < 50; i++) {
             //when
-            int result = numberGenerator.next();
+            int result = powerSupply.supply();
 
             //then
             assertThat(result).isBetween(0, 10);

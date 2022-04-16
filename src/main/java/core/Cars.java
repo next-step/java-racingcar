@@ -1,6 +1,6 @@
 package core;
 
-import utils.NumberGenerator;
+import utils.PowerSupply;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,10 +26,10 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public Cars moveCarsRandomly(NumberGenerator numberGenerator) {
+    public Cars moveCarsRandomly(PowerSupply powerSupply) {
         List<Car> movedCars = new ArrayList<>();
         for (Car car : cars) {
-            movedCars.add(car.move(numberGenerator.next()));
+            movedCars.add(car.move(powerSupply.supply()));
         }
         return Cars.fromCars(movedCars);
     }

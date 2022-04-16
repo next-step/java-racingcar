@@ -1,6 +1,6 @@
 package core;
 
-import utils.NumberGenerator;
+import utils.PowerSupply;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class TestObjectGenerator {
         return Cars.fromCars(carList);
     }
 
-    public static NumberGenerator generateMoveNumberGenerator() {
+    public static PowerSupply generateMovablePowerSupply() {
         return () -> Car.BASE_MOVE_VALUE;
     }
 

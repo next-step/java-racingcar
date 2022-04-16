@@ -1,6 +1,6 @@
 package core;
 
-import utils.NumberGenerator;
+import utils.PowerSupply;
 
 import java.util.List;
 
@@ -17,10 +17,10 @@ public class RaceModel {
         return new RaceModel(Cars.fromCarNames(carNames), moveCount);
     }
 
-    public void moveCarsRandomlyMoveCountTimes(NumberGenerator numberGenerator) {
+    public void moveCarsRandomlyMoveCountTimes(PowerSupply powerSupply) {
         Cars resultCars = cars;
         for (int i = 0; i < moveCount; i++) {
-            resultCars = moveCarsRandomly(resultCars, numberGenerator);
+            resultCars = moveCarsRandomly(resultCars, powerSupply);
         }
         cars = resultCars;
     }
@@ -33,7 +33,7 @@ public class RaceModel {
         return moveCount;
     }
 
-    private static Cars moveCarsRandomly(Cars cars, NumberGenerator numberGenerator) {
-        return cars.moveCarsRandomly(numberGenerator);
+    private static Cars moveCarsRandomly(Cars cars, PowerSupply powerSupply) {
+        return cars.moveCarsRandomly(powerSupply);
     }
 }

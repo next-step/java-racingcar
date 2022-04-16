@@ -3,7 +3,7 @@ import core.RaceModel;
 import core.Winners;
 import utils.AnnouncementPrinter;
 import utils.CustomScanner;
-import utils.RandomNumberGenerator;
+import utils.RandomPowerSupply;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class RacingCarApplication {
         AnnouncementPrinter.printCarNameInputAnnouncement();
         List<CarName> carNames = customScanner.scanValidCarNames();
         RaceModel raceModel = RaceModel.initialize(carNames, customScanner.scanMoveCount());
-        raceModel.moveCarsRandomlyMoveCountTimes(new RandomNumberGenerator());
+        raceModel.moveCarsRandomlyMoveCountTimes(new RandomPowerSupply());
         AnnouncementPrinter.printMoveResult(raceModel.getCars(), raceModel.getMoveCount());
         Winners winners = Winners.decideWinners(raceModel.getCars());
         AnnouncementPrinter.announceWinners(winners);

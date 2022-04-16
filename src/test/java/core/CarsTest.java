@@ -2,7 +2,7 @@ package core;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import utils.NumberGenerator;
+import utils.PowerSupply;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,10 +37,10 @@ class CarsTest {
         Car car = TestObjectGenerator.generateCar("a", initialPosition);
         final int carCount = 3;
         Cars cars = TestObjectGenerator.generateCars(car, carCount);
-        NumberGenerator moveNumberGenerator = TestObjectGenerator.generateMoveNumberGenerator();
+        PowerSupply powerSupply = TestObjectGenerator.generateMovablePowerSupply();
 
         //when
-        Cars result = cars.moveCarsRandomly(moveNumberGenerator);
+        Cars result = cars.moveCarsRandomly(powerSupply);
 
         //then
         result.getCars().forEach(movedCar ->

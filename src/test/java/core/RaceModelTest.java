@@ -2,7 +2,7 @@ package core;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import utils.NumberGenerator;
+import utils.PowerSupply;
 
 import java.util.List;
 
@@ -32,11 +32,11 @@ class RaceModelTest {
     void moveCarsRandomlyMoveCountTimes() {
         //given
         final int moveCount = 3;
-        NumberGenerator moveNumberGenerator = TestObjectGenerator.generateMoveNumberGenerator();
+        PowerSupply powerSupply = TestObjectGenerator.generateMovablePowerSupply();
         RaceModel raceModel = TestObjectGenerator.generateRaceModel("a", 3, moveCount);
 
         //when
-        raceModel.moveCarsRandomlyMoveCountTimes(moveNumberGenerator);
+        raceModel.moveCarsRandomlyMoveCountTimes(powerSupply);
 
         //then
         raceModel.getCars().getCars().forEach(movedCar -> assertThat(movedCar.getPosition()).isEqualTo(moveCount));
