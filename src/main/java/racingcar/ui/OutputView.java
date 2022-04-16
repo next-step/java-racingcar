@@ -35,7 +35,11 @@ public class OutputView {
 
     public static void printWinners(List<Car> winners) {
         StringBuilder sb = new StringBuilder();
-        winners.forEach(winner -> sb.append(winner.getName().getName() + ","));
+        for (Car winner : winners) {
+            CarName carName = winner.getName();
+            String name = carName.getName();
+            sb.append(name + ",");
+        }
         sb.deleteCharAt(sb.length() - 1);
         System.out.println(sb + " 이(가) 최종 우승했습니다");
     }
