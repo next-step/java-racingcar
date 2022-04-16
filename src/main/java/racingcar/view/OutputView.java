@@ -18,7 +18,7 @@ public class OutputView {
 
     public static void printCarRacingIntermediateState(Cars cars) {
         for (Car car : cars.getCars()) {
-            System.out.println(getDashOnDistanceByCars(car.currentPosition()));
+            System.out.println(car.getName() + " : " + getDashOnDistanceByCars(car.currentPosition()));
         }
         System.out.print(LINE_DIVISION);
     }

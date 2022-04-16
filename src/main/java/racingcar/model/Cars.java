@@ -13,9 +13,6 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        for (Car car : cars) {
-            System.out.println("car.getName() = " + car.getName());
-        }
         return cars;
     }
 
