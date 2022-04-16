@@ -45,18 +45,18 @@ class PositionTest {
         assertThat(position.equals(anotherPosition)).isEqualTo(expected);
     }
 
-    @ParameterizedTest
-    @MethodSource("provideArgumentsForCompareTo")
-    void compareTo(Position position, Position anotherPosition, int expected) {
-        assertThat(position.compareTo(anotherPosition)).isEqualTo(expected);
-    }
-
     private static Stream<Arguments> provideArgumentsForEquals() {
         return Stream.of(
                 Arguments.of(new Position(), new Position(), true),
                 Arguments.of(new Position(TEN), new Position(TEN), true),
                 Arguments.of(new Position(TEN), new Position(HUNDRED), false)
         );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideArgumentsForCompareTo")
+    void compareTo(Position position, Position anotherPosition, int expected) {
+        assertThat(position.compareTo(anotherPosition)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> provideArgumentsForCompareTo() {

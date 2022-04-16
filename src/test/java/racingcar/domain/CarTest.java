@@ -54,13 +54,6 @@ class CarTest {
         assertThat(car.equals(anotherCar)).isEqualTo(expected);
     }
 
-    @ParameterizedTest
-    @MethodSource("provideArgumentsForCompareTo")
-    void compareTo(Car car, Car anotherCar, int expected) {
-        assertThat(car.compareTo(anotherCar)).isEqualTo(expected);
-    }
-
-
     private static Stream<Arguments> provideArgumentsForEquals() {
         return Stream.of(
                 Arguments.of(new Car(POBI), new Car(POBI), true),
@@ -68,6 +61,12 @@ class CarTest {
                 Arguments.of(new Car(POBI, TEN), new Car(POBI, ZERO), false),
                 Arguments.of(new Car(POBI, ZERO), new Car(CRONG, ZERO), false)
         );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideArgumentsForCompareTo")
+    void compareTo(Car car, Car anotherCar, int expected) {
+        assertThat(car.compareTo(anotherCar)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> provideArgumentsForCompareTo() {
@@ -82,5 +81,4 @@ class CarTest {
                 Arguments.of(new Car(POBI, ZERO), new Car(POBI, TEN), SMALLER)
         );
     }
-
 }

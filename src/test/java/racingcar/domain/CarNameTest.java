@@ -14,7 +14,7 @@ class CarNameTest {
     private static final String POBI = "pobi";
     private static final String CRONG = "crong";
 
-    @DisplayName("생성자 유효성 검사")
+    @DisplayName("이름이 null/공백이거나 5글자를 초과하면 예외를 던진다.")
     @ParameterizedTest
     @NullAndEmptySource
     @ValueSource(strings = {"long name"})
