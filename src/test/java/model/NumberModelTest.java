@@ -1,7 +1,7 @@
 package model;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.stream.Stream;
@@ -21,7 +21,7 @@ public class NumberModelTest {
     );
   }
 
-  @ParameterizedTest
+  @ParameterizedTest(name = "{1}로 {0} 생성이 성공")
   @MethodSource("modelAndValues")
   void 모델_생성_성공(Class<? extends NumberModel> clazz, int validValue) {
     //then
@@ -32,20 +32,20 @@ public class NumberModelTest {
     );
   }
 
-  @ParameterizedTest
+  @ParameterizedTest(name = "{2}로 {0} 생성이 실패")
   @MethodSource("modelAndValues")
   void 모델_생성_실패(Class<? extends NumberModel> clazz, int validValue, int invalidValue) {
-
-    // then
-    assertThrows(
-        /*
-         * 실제로는 IllegalArgumentException을 발생시키나, getDeclaredConstructor에서 이 Exception을
-         * catch하여 InvocationTargetException을 발생시킨다.
-         */
-        InvocationTargetException.class,
-        // when
-        () -> clazz.getDeclaredConstructor(int.class)
-            .newInstance(invalidValue)
-    );
+    /*
+     * 실제로는 IllegalArgumentException을 발생시키나, getDeclaredConstructor에서 이 Exception을
+     * catch하여 InvocationTargetException을 발생시키기 때문에 getTargetException()으로
+     * IllegalArgumentException을 검사한다.
+     */
+    try {
+      clazz.getDeclaredConstructor(int.class).newInstance(invalidValue);
+    } catch (InvocationTargetException e) {
+      assertThat(e.getTargetException()).isInstanceOf(IllegalArgumentException.class);
+    } catch (Exception ignored) {
+      throw new AssertionError();
+    }
   }
 }
