@@ -1,43 +1,43 @@
 package racingcar.domain;
 
-import java.util.Random;
+import racingcar.util.generator.NumberGenerator;
+import racingcar.util.strategy.move.MoveStrategy;
 
 public class Car {
-	public static final int LIMIT_RANDOM_NUMBER = 10;
-	public static final int MOVE_CONDITION = 4;
 	public static final String MOVING_UNIT = "-";
+	private NumberGenerator numberGenerator;
+	private MoveStrategy moveStrategy;
+	private int value;
 	private String status = "";
-	private int valueToMovable;
 
-	private void randomNumber() {
-		Random random = new Random();
-		int number = random.nextInt(LIMIT_RANDOM_NUMBER);
-		this.valueToMovable = number;
+	public Car(MoveStrategy moveStrategy) {
+		this.moveStrategy = moveStrategy;
+	}
+
+	public Car(NumberGenerator numberGenerator, MoveStrategy moveStrategy) {
+		this.numberGenerator = numberGenerator;
+		this.moveStrategy = moveStrategy;
 	}
 
 	public void move() {
-		if (isMovable()) {
+		this.value = getNumber();
+
+		if (isMovable(value)) {
 			status += MOVING_UNIT;
 		}
 
 		status += "";
 	}
 
-	public boolean isMovable() {
-		randomNumber();
-
-		if (this.valueToMovable >= MOVE_CONDITION) {
-			return true;
-		}
-
-		return false;
+	public boolean isMovable(int number) {
+		return moveStrategy.isMovable(number);
 	}
 
 	public String carStatus() {
 		return status;
 	}
 
-	public int getValueToMovable() {
-		return valueToMovable;
+	private int getNumber() {
+		return this.numberGenerator.generate();
 	}
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import racingcar.ui.InputView;
+import racingcar.util.generator.RandomNumberGenerator;
+import racingcar.util.strategy.move.CarMoveStrategy;
 
 public class CarStadium {
 	private final List<Car> cars = new ArrayList<>();
@@ -26,7 +28,7 @@ public class CarStadium {
 
 	private void carComes() {
 		for (int i = 0; i < numberOfCars; i++) {
-			cars.add(new Car());
+			cars.add(new Car(new RandomNumberGenerator(), new CarMoveStrategy()));
 		}
 	}
 }
