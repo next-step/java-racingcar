@@ -31,10 +31,8 @@ public class OutputView {
     }
 
     public static void printWinner(Cars cars) {
-        StringBuilder winnerOutputString = new StringBuilder();
         List<String> winners = cars.getWinnerNames();
-        winnerOutputString.append(String.join(WINNER_CONNECTION_SEPARATOR, winners));
-        winnerOutputString.append("가 최종 우승했습니다.");
+        String winnerOutputString = String.join(WINNER_CONNECTION_SEPARATOR, winners) + "가 최종 우승했습니다.";
         System.out.println(winnerOutputString);
     }
 }
