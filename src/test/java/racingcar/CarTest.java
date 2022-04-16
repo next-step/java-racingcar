@@ -1,4 +1,4 @@
-package racingCar;
+package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class CarTest {
+class CarTest {
     @Test
     @DisplayName("자동차를 생성한다")
     void 자동차를_생성한다() {

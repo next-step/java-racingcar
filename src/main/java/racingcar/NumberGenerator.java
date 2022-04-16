@@ -1,4 +1,4 @@
-package racingCar;
+package racingcar;
 
 public interface NumberGenerator {
     int MAX = 9;

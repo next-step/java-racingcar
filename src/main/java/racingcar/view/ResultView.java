@@ -1,4 +1,4 @@
-package racingCar.view;
+package racingcar.view;
 
 import java.util.List;
 
@@ -14,11 +14,11 @@ public class ResultView {
     }
 
     private void print(int distance) {
-        String result = "";
+        StringBuilder builder = new StringBuilder();
         for (int i = 0; i < distance; i++) {
-            result += MOVED_EXPRESSION;
+            builder.append(MOVED_EXPRESSION);
         }
-        System.out.println(result);
+        System.out.println(builder.toString());
     }
 
 }

@@ -1,6 +1,6 @@
-package racingCar;
+package racingcar;
 
-import racingCar.view.ResultView;
+import racingcar.view.ResultView;
 
 import java.security.SecureRandom;
 import java.util.List;
@@ -38,7 +38,7 @@ public class RacingCar implements NumberGenerator {
     }
 
     private List<Integer> getCurrentRacingResult() {
-        return getCars().stream().map((car) -> car.getDistance()).collect(Collectors.toList());
+        return getCars().stream().map(car -> car.getDistance()).collect(Collectors.toList());
     }
 
     private void playRound() {
