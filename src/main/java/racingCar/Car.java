@@ -2,11 +2,10 @@ package racingCar;
 
 
 public class Car {
-    private Long id;
+
     private int distance;
 
-    public Car(long id) {
-        this.id = id;
+    public Car() {
         this.distance = 0;
     }
 
