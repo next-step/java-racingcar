@@ -8,14 +8,14 @@ import racing.domain.strategy.NameValidationStrategy;
 import racing.domain.strategy.NumberCompareMoveStrategy;
 import racing.domain.strategy.RandomNumberGenerator;
 import racing.domain.strategy.WinnerCarStrategy;
-import racing.view.RacingCarNameInputView;
-import racing.view.RacingCarNameOutputView;
+import racing.view.RacingInputView;
+import racing.view.RacingOutputView;
 
 public class RacingGame {
 
   public static void main(String[] args) {
-    RacingCarNameInputView racingCarNameInputView = new RacingCarNameInputView();
-    RacingCarNameOutputView racingCarNameOutputView = new RacingCarNameOutputView();
+    RacingInputView racingCarNameInputView = new RacingInputView();
+    RacingOutputView racingCarNameOutputView = new RacingOutputView();
     MoveStrategy moveStrategy = new NumberCompareMoveStrategy(new RandomNumberGenerator());
     NameValidationStrategy nameValidationStrategy = new NameLengthValidationStrategy();
     WinnerCarStrategy winnerCarStrategy = new DistanceWinnerStrategy();

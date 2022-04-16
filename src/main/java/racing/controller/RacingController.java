@@ -4,19 +4,19 @@ import racing.domain.NamedCars;
 import racing.domain.strategy.MoveStrategy;
 import racing.domain.strategy.NameValidationStrategy;
 import racing.domain.strategy.WinnerCarStrategy;
-import racing.view.RacingCarNameInputView;
-import racing.view.RacingCarNameOutputView;
+import racing.view.RacingInputView;
+import racing.view.RacingOutputView;
 
 public class RacingController {
 
-  private final RacingCarNameInputView racingCarNameInputView;
-  private final RacingCarNameOutputView racingCarNameOutputView;
+  private final RacingInputView racingCarNameInputView;
+  private final RacingOutputView racingCarNameOutputView;
   private final MoveStrategy moveStrategy;
   private final NameValidationStrategy nameValidationStrategy;
   private final WinnerCarStrategy winnerCarStrategy;
 
-  public RacingController(RacingCarNameInputView racingCarNameInputView,
-      RacingCarNameOutputView racingCarNameOutputView,
+  public RacingController(RacingInputView racingCarNameInputView,
+      RacingOutputView racingCarNameOutputView,
       MoveStrategy moveStrategy, NameValidationStrategy nameValidationStrategy,
       WinnerCarStrategy winnerCarStrategy) {
     this.racingCarNameInputView = racingCarNameInputView;

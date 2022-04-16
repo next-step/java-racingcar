@@ -3,7 +3,7 @@ package racing.view;
 import racing.domain.NamedCar;
 import racing.domain.NamedCars;
 
-public class RacingCarNameOutputView {
+public class RacingOutputView {
 
   public static final String DISTANCE = "-";
   public static final String EMPTY = "";

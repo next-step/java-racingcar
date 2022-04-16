@@ -3,11 +3,11 @@ package racing.view;
 import java.util.Scanner;
 import racing.exception.UserInputFailException;
 
-public class RacingCarNameInputView {
+public class RacingInputView {
 
   private final Scanner scanner;
 
-  public RacingCarNameInputView() {
+  public RacingInputView() {
     this.scanner = new Scanner(System.in);
   }
 
