@@ -10,11 +10,7 @@ public class InputView {
   }
 
   public static int getIntInput() {
-    int input = SCANNER.nextInt();
-    if (input < 1) {
-      throw new RuntimeException("1보다 작은 숫자는 입력할 수 없습니다.");
-    }
-    return input;
+    return SCANNER.nextInt();
   }
 
   public static void printCountQuestion() {

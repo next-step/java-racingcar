@@ -27,10 +27,17 @@ public class Cars {
   }
 
   public static Cars createCars(int count) {
+    validateCount(count);
     List<Car> cars = new ArrayList<>();
     for (int i = 0; i < count; i++) {
       cars.add(new Car());
     }
     return new Cars(cars);
+  }
+
+  private static void validateCount(int count) {
+    if (count < 0) {
+      throw new RuntimeException("음수는 입력할 수 없습니다.");
+    }
   }
 }
