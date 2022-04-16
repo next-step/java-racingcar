@@ -26,13 +26,13 @@ class CarTest {
   @DisplayName("앞으로 n회 이동했을 때 이동 거리와 자동차 이름 확인")
   @CsvSource(value = {"A|1|1", "B|2|2", "C|0|0", "D|10|10", "E|100|100"}, delimiter = '|')
   void nMoveTest(String carName, int attempt, int expected) {
-    Car namedCar = Car.newInstance(carName, new MustMoveStrategy());
+    Car car = Car.newInstance(carName, new MustMoveStrategy());
     for (int i = 0; i < attempt; i++) {
-      namedCar.attempt();
+      car.attempt();
     }
 
-    assertThat(namedCar.getDistance()).isEqualTo(expected);
-    assertThat(namedCar.getCarName()).isEqualTo(carName);
+    assertThat(car.getDistance()).isEqualTo(expected);
+    assertThat(car.getCarName()).isEqualTo(carName);
   }
 
 }

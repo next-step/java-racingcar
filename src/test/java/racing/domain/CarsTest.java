@@ -20,15 +20,15 @@ class CarsTest {
   @ValueSource(strings = {"test1,test2,test3", "A,B,C,D", "car1,car2,car3", "자동차1,자동차2,자동차3"})
   void oneMoveTest(String carNameInput) {
     //given
-    Cars namedCars = Cars.newInstance(carNameInput, new MustMoveStrategy());
+    Cars cars = Cars.newInstance(carNameInput, new MustMoveStrategy());
 
     //when
-    namedCars.attempt();
+    cars.attempt();
 
     //then
-    assertThat(namedCars.getDistances()).hasSize(
+    assertThat(cars.getDistances()).hasSize(
         carNameInput.split(Cars.CAR_NAME_DELIMITER).length).containsOnly(1);
-    assertThat(namedCars.getNames()).containsExactlyElementsOf(
+    assertThat(cars.getNames()).containsExactlyElementsOf(
         Arrays.asList(carNameInput.split(Cars.CAR_NAME_DELIMITER)));
   }
 
@@ -38,17 +38,17 @@ class CarsTest {
       "자동차1,자동차2,자동차3|25|25"}, delimiter = '|')
   void nMoveTest(String carNameInput, int attempt, int expected) {
     //given
-    Cars namedCars = Cars.newInstance(carNameInput, new MustMoveStrategy());
+    Cars cars = Cars.newInstance(carNameInput, new MustMoveStrategy());
 
     //when
     for (int i = 0; i < attempt; i++) {
-      namedCars.attempt();
+      cars.attempt();
     }
 
     //then
-    assertThat(namedCars.getDistances()).hasSize(
+    assertThat(cars.getDistances()).hasSize(
         carNameInput.split(Cars.CAR_NAME_DELIMITER).length).containsOnly(attempt);
-    assertThat(namedCars.getNames()).containsExactlyElementsOf(
+    assertThat(cars.getNames()).containsExactlyElementsOf(
         Arrays.asList(carNameInput.split(Cars.CAR_NAME_DELIMITER)));
   }
 

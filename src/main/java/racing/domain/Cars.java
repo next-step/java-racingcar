@@ -35,8 +35,8 @@ public class Cars {
   }
 
   public void attempt() {
-    for (Car namedCar : values) {
-      namedCar.attempt();
+    for (Car car : values) {
+      car.attempt();
     }
   }
 
@@ -52,7 +52,7 @@ public class Cars {
 
     return values
         .stream()
-        .filter(namedCar -> namedCar.getDistance() == max)
+        .filter(car -> car.getDistance() == max)
         .collect(collectingAndThen(toList(), Cars::new));
   }
 
