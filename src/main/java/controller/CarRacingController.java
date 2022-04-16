@@ -5,13 +5,8 @@ import view.InputView;
 import view.ResultView;
 
 public class CarRacingController {
-    private final InputView inputView;
-    private final ResultView resultView;
-
-    public CarRacingController(InputView inputView, ResultView resultView) {
-        this.inputView = inputView;
-        this.resultView = resultView;
-    }
+    private final InputView inputView = InputView.getInstance();
+    private final ResultView resultView = ResultView.getInstance();
 
     public void startRacing() {
         int carCount = inputView.inputCarCount();

@@ -8,6 +8,14 @@ public class InputView {
     private static final String WRONG_INPUT_MESSAGE = "1이상의 정수만 입력할 수 있습니다.";
     private static final String CORRECT_INPUT_PATTERN = "[0-9]*";
     private final Scanner scanner = new Scanner(System.in);
+    private static final InputView inputView = new InputView();
+
+    private InputView() {
+    }
+
+    public static InputView getInstance() {
+        return inputView;
+    }
 
     public int inputCarCount() {
         System.out.println(INPUT_CAR_COUNT_MESSAGE);
