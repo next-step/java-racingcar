@@ -52,6 +52,10 @@ public class Car {
         return this.position;
     }
 
+    public String getCarName() {
+        return this.carName.getCarName();
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Car)) {

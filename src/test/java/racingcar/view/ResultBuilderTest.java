@@ -10,13 +10,13 @@ class ResultBuilderTest {
 
 
     @Test
-    @DisplayName("position 숫자 만큼 '-'가 추가되어 반환된다.")
+    @DisplayName("tom 자동차가 두번 가면 'tom : --'를 반환한다.")
     void buildResult() {
         Car car = new Car("tom");
         car.stopOrGo(9);
         car.stopOrGo(9);
 
-        assertThat(new ResultBuilder(car.getPosition()).build()).isEqualTo("--");
+        assertThat(new ResultBuilder(car.getPosition(), car.getCarName()).build()).isEqualTo("tom : --");
     }
 
 }
