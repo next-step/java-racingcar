@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.strategy.MoveStrategy;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -46,9 +45,7 @@ class RacingCarGameTest {
 
     private static Cars createCars() {
         List<String> names = List.of("pobi", "crong", "honux");
-        List<Car> carList = names.stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
-        return new Cars(carList);
+        List<Car> cars = Car.createCars(names);
+        return new Cars(cars);
     }
 }
