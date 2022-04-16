@@ -7,7 +7,7 @@ public class CarTest {
     @Test
     void newCarShouldBeWithTrackAndName() {
         Car car = new Car("testName");
-        assertThat(car.getPosition()).isEqualTo("-");
+        assertThat(car.getPosition()).isEqualTo(1);
         assertThat(car.name).isEqualTo("testName");
     }
 }

@@ -10,11 +10,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RaceTest {
     @Test
     void createThreeCars() {
-        Race race = new Race();
+        Race race = new Race(new RandomStrategy());
         String[] carNames = {"pobi", "crong", "honux"};
         assertThat(race.createCars(carNames)).hasSize(3);
     }
-    
+
     @Test
     void CarShouldMove() {
         Car car = new Car("test");
@@ -24,7 +24,7 @@ public class RaceTest {
 
     @Test
     void findWinners() {
-        Race race = new Race();
+        Race race = new Race(new RandomStrategy());
         String[] carNames = {"pobi", "crong", "honux"};
         race.createCars(carNames);
         List<Car> cars = race.cars;
@@ -41,11 +41,23 @@ public class RaceTest {
     @Test
     void rollTest() {
         Car car = new Car("test");
-        RolledResult movedResult = Race.roll(car);
+        Race race = new Race(new RandomStrategy());
+        RolledResult movedResult = race.roll(car);
         if (movedResult.isMoved) {
             assertThat(movedResult.car.getPosition()).isEqualTo(2);
         } else {
             assertThat(movedResult.car.getPosition()).isEqualTo(1);
+        }
+    }
+
+    @Test
+    void rollCarsTestWithAlwaysWinStrategy() {
+        String[] carNames = {"pobi", "crong", "honux"};
+        Race race = new Race(new AlwaysWinStrategy());
+        race.createCars(carNames);
+        race.rollCars();
+        for (Car car : race.cars) {
+            assertThat(car.getPosition()).isEqualTo(2);
         }
     }
 }

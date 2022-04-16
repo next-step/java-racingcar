@@ -2,10 +2,14 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Race {
     public final List<Car> cars = new ArrayList<Car>();
+    private RollStrategy rollStrategy;
+
+    public Race(RollStrategy rollStrategy) {
+        this.rollStrategy = rollStrategy;
+    }
 
     public List<Car> createCars(String[] carNames) {
         for (String carName : carNames) {
@@ -14,17 +18,8 @@ public class Race {
         return cars;
     }
 
-    public static int getRandom() {
-        return new Random().nextInt(10);
-    }
-
-    public static RolledResult roll(Car car) {
-        int n = Race.getRandom();
-        if (n < 4) {
-            return new RolledResult(false, car);
-        }
-        car.move();
-        return new RolledResult(true, car);
+    public RolledResult roll(Car car) {
+        return this.rollStrategy.roll(car);
     }
 
     public void rollCars() {
