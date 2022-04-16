@@ -1,9 +1,7 @@
 import racing.RacingService;
-import racing.exception.CarsNullPointerException;
-import racing.exception.RacingNullPointerException;
 
 public class App {
-    public static void main(String[] args) throws RacingNullPointerException, CarsNullPointerException {
+    public static void main(String[] args) {
         new RacingService().StartRacingGame();
     }
 }

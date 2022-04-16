@@ -1,15 +1,17 @@
 package racing;
 
-import java.util.UUID;
-
 public class Car {
-    private final UUID id;
+    private final String carName;
 
-    public Car() {
-        id = UUID.randomUUID();
+    public Car(String carName) {
+        this.carName = carName;
     }
 
-    public UUID getId() {
-        return id;
+    public String getCarName() {
+        return carName;
+    }
+
+    public void move(RacingGameManagement racingGameManagement) {
+        racingGameManagement.addDrivingStatus(this, CarDrivingType.from(RandomMoveNumber.generate()));
     }
 }

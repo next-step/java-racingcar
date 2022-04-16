@@ -3,23 +3,60 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.exception.DuplicatedCarException;
 
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameManagementTest {
     @Test
-    @DisplayName("RacingGameManagement 객체에 동일차량을 중복 등록시 DuplicatedCarException 발생한다")
+    @DisplayName("이동상태 GO 를 추가한다")
     void duplicatedCarTest() {
+        RacingCars racingCars = generateCars(new String[]{"CarA", "CarB"});
+        RacingGameManagement racingGameManagement = initRacingGameManagement(racingCars);
+        racingGameManagement.addDrivingStatus(racingCars.findCarByCarName("CarA"), CarDrivingType.GO);
 
-        assertThatExceptionOfType(DuplicatedCarException.class).isThrownBy(() -> {
-            RacingGameManagement racingGameManagement = new RacingGameManagement();
-            Car car = new Car();
+        CarDrivingTypes carDrivingTypes = racingGameManagement.findDrivingTypes(racingCars.findCarByCarName("CarA"));
 
-            racingGameManagement.addCar(car.getId());
-            racingGameManagement.addCar(car.getId());
-        });
+        assertThat(carDrivingTypes.getCarDrivingType(0)).isEqualTo(CarDrivingType.GO);
+    }
 
+    @Test
+    @DisplayName("우승차 리스트를 가져온다")
+    void winnerCarsTest() {
+        RacingCars racingCars = generateCars(new String[]{"CarA", "CarB", "CarC"});
+        RacingGameManagement racingGameManagement = initRacingGameManagement(racingCars);
+        racingGameManagement.addDrivingStatus(racingCars.findCarByCarName("CarA"), CarDrivingType.GO);
+        racingGameManagement.addDrivingStatus(racingCars.findCarByCarName("CarA"), CarDrivingType.GO);
+        racingGameManagement.addDrivingStatus(racingCars.findCarByCarName("CarC"), CarDrivingType.GO);
+        racingGameManagement.addDrivingStatus(racingCars.findCarByCarName("CarC"), CarDrivingType.GO);
 
+        WinnerRacingCars winners = racingGameManagement.findWinners();
+
+        assertThat(winners.get()).contains("CarA", "CarC");
+    }
+
+    private static RacingCars generateCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(generateCar(carName));
+        }
+        return new RacingCars(cars);
+    }
+
+    private static Car generateCar(String carNames) {
+        return new Car(carNames);
+    }
+
+    private static RacingGameManagement initRacingGameManagement(RacingCars racingCars) {
+        Map<Car, CarDrivingTypes> racingGameManagement = new HashMap<>();
+
+        for (Car car : racingCars) {
+            racingGameManagement.put(car, new CarDrivingTypes(new ArrayList<CarDrivingType>()));
+        }
+        return new RacingGameManagement(racingGameManagement);
     }
 }

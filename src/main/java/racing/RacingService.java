@@ -4,38 +4,41 @@ import racing.view.InputView;
 import racing.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RacingService {
     public void StartRacingGame() {
-        int carCount = InputView.inputCarCount();
+        String[] carNames = InputView.inputRacingCarNames().split(",");
         int attemptsCount = InputView.inputAttemptsCount();
-        List<Car> cars = generateCars(carCount);
-        RacingGameManagement racingGameManagement = initRacingGameManagement(cars);
-        Racing racing = new Racing(cars, attemptsCount, racingGameManagement);
 
-        racing.StartRacing();
-        ResultView.draw(racing, cars, racingGameManagement);
+        RacingCars racingCars = generateCars(carNames);
+        RacingGameManagement racingGameManagement = initRacingGameManagement(racingCars);
+        RacingGame racingGame = new RacingGame(racingCars, attemptsCount, racingGameManagement);
+
+        racingGame.StartRacing();
+        ResultView.print(racingGame, racingCars, racingGameManagement);
     }
 
-    private static List<Car> generateCars(int carCount) {
+    private static RacingCars generateCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(generateCar());
+        for (String carName : carNames) {
+            cars.add(generateCar(carName));
         }
-        return cars;
+        return new RacingCars(cars);
     }
 
-    private static Car generateCar() {
-        return new Car();
+    private static Car generateCar(String carNames) {
+        return new Car(carNames);
     }
 
-    private static RacingGameManagement initRacingGameManagement(List<Car> cars) {
-        RacingGameManagement carDrivingStatus = new RacingGameManagement();
+    private static RacingGameManagement initRacingGameManagement(RacingCars racingCars) {
+        Map<Car, CarDrivingTypes> racingGameManagement = new HashMap<>();
 
-        for (Car car : cars) {
-            carDrivingStatus.addCar(car.getId());
+        for (Car car : racingCars) {
+            racingGameManagement.put(car, new CarDrivingTypes(new ArrayList<CarDrivingType>()));
         }
-        return carDrivingStatus;
+        return new RacingGameManagement(racingGameManagement);
     }
 }

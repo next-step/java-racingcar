@@ -1,67 +1,66 @@
 package racing.view;
 
-import racing.Car;
-import racing.CarDriving;
-import racing.Racing;
-import racing.RacingGameManagement;
+import racing.*;
 import racing.exception.CarsNullPointerException;
 import racing.exception.RacingNullPointerException;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ResultView {
-    public static final String RESULT_INTRODUCE_MESSAGE = "실행 결과";
+    private static final String RESULT_INTRODUCE_MESSAGE = "실행 결과";
 
-    public static void draw(Racing racing, List<Car> cars, RacingGameManagement carDrivingStatus) {
-        checkObjectsNull(racing, cars);
+    public static void print(RacingGame racingGame, RacingCars racingCars, RacingGameManagement carDrivingStatus) {
+        validateObjectsNull(racingGame, racingCars);
+
         System.out.println(RESULT_INTRODUCE_MESSAGE);
-        drawRacingResult(racing, cars, carDrivingStatus);
+        drawRacingResult(racingGame, racingCars, carDrivingStatus);
+        System.out.println(carDrivingStatus.findWinners());
     }
 
-    private static void checkObjectsNull(Racing racing, List<Car> cars) {
-        if (racing == null) {
+    private static void validateObjectsNull(RacingGame racingGame, RacingCars racingCars) {
+        if (racingGame == null) {
             throw new RacingNullPointerException();
         }
 
-        if (cars == null) {
+        if (racingCars == null) {
             throw new CarsNullPointerException();
         }
     }
 
-    private static void drawRacingResult(Racing racing, List<Car> cars, RacingGameManagement carDrivingStatus) {
-        List<StringBuilder> result = initRacingResult(racing.getAttemptsCount());
-        for (int i = 0; i < racing.getAttemptsCount(); i++) {
-            drawCars(cars, result, i, carDrivingStatus);
+    private static void drawRacingResult(RacingGame racingGame, RacingCars racingCars, RacingGameManagement carDrivingStatus) {
+        RacingViewRepository racingViewRepository = initRacingResult(racingCars);
+        for (int attemptsNumber = 0; attemptsNumber < racingGame.getAttemptsCount(); attemptsNumber++) {
+            drawCars(racingCars, racingViewRepository, attemptsNumber, carDrivingStatus);
         }
     }
 
-    private static List<StringBuilder> initRacingResult(int attemptsCount) {
-        List<StringBuilder> result = new ArrayList<>();
-        for (int i = 0; i < attemptsCount; i++) {
-            result.add(new StringBuilder());
+    private static RacingViewRepository initRacingResult(RacingCars racingCars) {
+        Map<String, StringBuilder> result = new HashMap<>();
+        for (Car car : racingCars) {
+            result.put(car.getCarName(), new StringBuilder());
         }
-        return result;
+
+        return new RacingViewRepository(result);
     }
 
-    private static void drawCars(List<Car> cars, List<StringBuilder> result, int i, RacingGameManagement carDrivingStatus) {
-        for (int j = 0; j < cars.size(); j++) {
-            UUID carId = cars.get(j).getId();
-            CarDriving carDriving = carDrivingStatus.getStatus(carId).get(i);
-
-            addCarString(result.get(j), carDriving);
-            System.out.println(result.get(j));
+    private static void drawCars(RacingCars racingCars, RacingViewRepository racingViewRepository, int attemptsNumber, RacingGameManagement racingGameManagement) {
+        for (Car car : racingCars) {
+            String carName = car.getCarName();
+            CarDrivingType carDriving = racingGameManagement.findDrivingTypes(car).getCarDrivingType(attemptsNumber);
+            addCarString(racingViewRepository, carDriving, carName);
+            racingViewRepository.print(carName);
         }
+        
 
         System.out.println();
     }
 
-    private static void addCarString(StringBuilder j, CarDriving carDriving) {
-        if (carDriving == CarDriving.STOP) {
+    private static void addCarString(RacingViewRepository racingViewRepository, CarDrivingType carDriving, String carName) {
+        if (carDriving == CarDrivingType.STOP) {
             return;
         }
 
-        j.append("-");
+        racingViewRepository.add(carName);
     }
 }
