@@ -17,10 +17,6 @@ public class Controller {
         Competition competition = new Competition(carNameArr, round);
         List<Cars> snapshots = competition.progressEntireRoundAndRecordAllSnapshot(new RandomMovableCondition());
         ResultView.printEntireStatus(snapshots);
-        System.out.println("====");
-        System.out.println(snapshots.get(snapshots.size() - 1).getCars());
-        System.out.println("====");
-
         String winners = competition.getWinner(snapshots.get(snapshots.size() - 1));
         ResultView.printWinners(winners);
     }
