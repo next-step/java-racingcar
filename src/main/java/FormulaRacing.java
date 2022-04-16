@@ -12,9 +12,12 @@ public class FormulaRacing {
     private static void start(Rule rule) {
         Printer.println("부릉부릉!! 레이싱 시작");
 
-        // 레이싱의 역할을 축소해서 cars에게 한바퀴 돌라고 역할주기?
-        Racing racing = new Racing(rule.getMaxAttempts(), rule.getCars());
-        racing.start();
+        for (int attempt = 0; attempt < rule.getMaxAttempts(); attempt++) {
+            RacingCars cars = rule.getCars();
+            cars.turnAroundCircuit();
+            Printer.print(cars);
+            Printer.println((attempt+1) +"회차 종료");
+        }
 
         Printer.println("레이싱 종료");
     }
