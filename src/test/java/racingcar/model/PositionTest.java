@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class PositionTest {
 
   @Test
-  void createFail() {
+  void create_fail() {
     assertThatThrownBy(() -> new Position(-1)).isInstanceOf(IllegalArgumentException.class);
   }
 
@@ -16,5 +16,14 @@ class PositionTest {
   void increment() {
     Position position = new Position(0).increment();
     assertThat(position).isEqualTo(new Position(1));
+  }
+
+  @Test
+  void compareTo() {
+    Position position = new Position(0);
+    Position incrementedPosition = new Position(1);
+
+    assertThat(position.compareTo(incrementedPosition)).isNegative();
+    assertThat(incrementedPosition.compareTo(position)).isPositive();
   }
 }

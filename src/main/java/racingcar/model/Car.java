@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Car {
 
-  private static String TO_STRING_FORMAT = "%s : %s";
+  private static final String OUTPUT_FORMAT = "%s : %s";
 
   private final Name name;
 
@@ -34,9 +34,9 @@ public class Car {
     return compareTo(other) == 0;
   }
 
-  public String toString() {
+  public String createOutput() {
     return String.format(
-        TO_STRING_FORMAT,
+        OUTPUT_FORMAT,
         name.getValue(),
         "-".repeat(position.getPosition())
     );

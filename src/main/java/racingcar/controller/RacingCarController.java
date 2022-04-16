@@ -9,12 +9,10 @@ public class RacingCarController {
 
   private static final int START_POSITION = 0;
 
-  private MovingStrategy movingStrategy;
-  private int maxTimes;
+  private final MovingStrategy movingStrategy;
 
-  public RacingCarController(MovingStrategy movingStrategy, int maxTimes) {
+  public RacingCarController(MovingStrategy movingStrategy) {
     this.movingStrategy = movingStrategy;
-    this.maxTimes = maxTimes;
   }
 
   public void run(List<String> carNames, int times) {

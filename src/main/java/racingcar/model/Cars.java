@@ -23,12 +23,6 @@ public class Cars {
     values.forEach(car -> car.moveOrStop(movingStrategy));
   }
 
-//  public List<Position> collectPositions() {
-//    return values.stream()
-//        .map(Car::getPosition)
-//        .collect(Collectors.toList());
-//  }
-
   public List<Car> findWinners() {
     Car winnerCar = values.stream()
         .max(Car::compareTo)

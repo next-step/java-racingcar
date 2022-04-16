@@ -13,10 +13,7 @@ public class RacingCarApplication {
     InputView.printTimesQuestion();
     int times = InputView.getIntInput();
 
-    RacingCarController carController = new RacingCarController(
-        RandomMovingStrategy.getInstance(),
-        times
-    );
+    RacingCarController carController = new RacingCarController(RandomMovingStrategy.getInstance());
     carController.run(SplitUtil.splitToList(carNames), times);
   }
 }

@@ -9,7 +9,7 @@ class NameTest {
 
   @ParameterizedTest
   @ValueSource(strings = {"", "가나다라마바"})
-  void createFail(String value) {
+  void create_fail(String value) {
     assertThatThrownBy(() -> new Name(value)).isInstanceOf(IllegalArgumentException.class);
   }
 }

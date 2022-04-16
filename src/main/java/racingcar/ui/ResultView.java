@@ -7,7 +7,7 @@ import racingcar.model.Cars;
 
 public class ResultView {
 
-  private static final String WINNER_FORMAT = "가 최종 우승했습니다.";
+  private static final String WINNER_FORMAT = "%s가 최종 우승했습니다.";
 
   private ResultView() {
   }
@@ -17,7 +17,7 @@ public class ResultView {
   }
 
   public static void printOutput(Cars cars) {
-    cars.getValues().forEach(car -> System.out.println(car.toString()));
+    cars.getValues().forEach(car -> System.out.println(car.createOutput()));
     System.out.println();
   }
 
@@ -25,6 +25,6 @@ public class ResultView {
     String winnerNames = winners.stream()
         .map(Car::getName)
         .collect(Collectors.joining(", "));
-    System.out.printf(winnerNames + WINNER_FORMAT);
+    System.out.printf(WINNER_FORMAT, winnerNames);
   }
 }
