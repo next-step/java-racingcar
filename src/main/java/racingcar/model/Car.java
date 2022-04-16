@@ -15,8 +15,8 @@ public class Car {
     this.position = new Position(position);
   }
 
-  public int getCurrentPosition() {
-    return position.getPosition();
+  public Position getPosition() {
+    return position;
   }
 
   public void moveOrStop(MovingStrategy movingStrategy) {

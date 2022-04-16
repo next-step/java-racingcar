@@ -8,19 +8,19 @@ class CarTest {
 
   @Test
   void moveOrStop_stop() {
-    Car notMovedCar = new Car();
     Car car = new Car();
     car.moveOrStop(() -> false);
 
+    Car notMovedCar = new Car();
     assertThat(car).isEqualTo(notMovedCar);
   }
 
   @Test
   void moveOrStop_move() {
-    Car movedCar = new Car(1);
     Car car = new Car();
     car.moveOrStop(() -> true);
 
+    Car movedCar = new Car(1);
     assertThat(car).isEqualTo(movedCar);
   }
 }

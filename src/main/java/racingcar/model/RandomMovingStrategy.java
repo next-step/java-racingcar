@@ -1,10 +1,12 @@
 package racingcar.model;
 
-import racingcar.util.RandomUtil;
+import java.util.Random;
 
 public class RandomMovingStrategy implements MovingStrategy {
 
+  private static final int MAX_BOUND = 10;
   private static final int MOVE_BOUND = 4;
+  private static final Random RANDOM = new Random();
   private static final RandomMovingStrategy STRATEGY = new RandomMovingStrategy();
 
   private RandomMovingStrategy() {
@@ -16,6 +18,10 @@ public class RandomMovingStrategy implements MovingStrategy {
 
   @Override
   public boolean movable() {
-    return RandomUtil.createRandomNumber() >= MOVE_BOUND;
+    return createRandomNumber() >= MOVE_BOUND;
+  }
+
+  private int createRandomNumber() {
+    return RANDOM.nextInt(MAX_BOUND);
   }
 }

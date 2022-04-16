@@ -11,28 +11,20 @@ class CarsTest {
 
   @BeforeEach
   void setup() {
-    cars = Cars.createCars(5);
+    cars = Cars.createCars(5, 0);
   }
 
   @Test
   void makeCars() {
-    Cars testCars = Cars.createCars(10);
+    Cars testCars = Cars.createCars(10, 0);
     assertThat(testCars.size()).isEqualTo(10);
   }
 
   @Test
-  void allMove() {
+  void move() {
     cars.move(() -> true);
 
-    assertThat(cars.collectPositions()).hasSize(cars.size());
-    assertThat(cars.collectPositions()).containsExactly(1, 1, 1, 1, 1);
-  }
-
-  @Test
-  void allStop() {
-    cars.move(() -> false);
-
-    assertThat(cars.collectPositions()).hasSize(cars.size());
-    assertThat(cars.collectPositions()).containsExactly(0, 0, 0, 0, 0);
+    Cars movedCars = Cars.createCars(5, 1);
+    assertThat(cars).isEqualTo(movedCars);
   }
 }
