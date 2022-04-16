@@ -27,8 +27,8 @@ public final class OutputTable {
     List<RacingCarHistory> racingHistories = game.play(allCars, rounds);
     historyPrint(allCars, racingHistories);
     List<Car> gameResult = game.gameResult(racingHistories, rounds);
-    Winner winner = game.winner(gameResult);
-    String racingGameWinner = game.coWinner(winner, gameResult);
+    Winner winner = game.winnerCalculator(gameResult);
+    String racingGameWinner = game.sameScoreChecker(winner, gameResult);
     System.out.println(racingGameWinner + WINNER_TEXT_PRINT);
   }
 

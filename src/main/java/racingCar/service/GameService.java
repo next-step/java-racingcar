@@ -49,36 +49,36 @@ public class GameService {
     return resultList;
   }
 
-  public Winner winner(List<Car> gameResult) {
-    Winner winner = new Winner(gameResult.get(0));
-    for (int i = 1; i < gameResult.size(); i++) {
-      winner = winnerCalculator(winner, gameResult.get(i));
+  public Winner winnerCalculator(List<Car> racingGameParticipants) {
+    Winner winner = new Winner(racingGameParticipants.get(0));
+    for (int i = 1; i < racingGameParticipants.size(); i++) {
+      winner = winnerChecker(winner, racingGameParticipants.get(i));
     }
-    gameResult.remove(winner.winnerCar());
+    racingGameParticipants.remove(winner.winnerCar());
     return winner;
   }
 
-  private Winner winnerCalculator(Winner winner, Car nextCar) {
+  private Winner winnerChecker(Winner winner, Car nextCar) {
     if (winner.winnerCar().position() < nextCar.position()) {
       winner = new Winner(nextCar);
     }
     return winner;
   }
 
-  public String coWinner(Winner winner, List<Car> gameResult) {
+  public String sameScoreChecker(Winner winner, List<Car> otherParticipants) {
     Car winnerCar = winner.winnerCar();
-    String coWinner = winnerCar.name();
-    for (Car car : gameResult) {
-      coWinner = winnerCalculator(winnerCar, coWinner, car);
+    String coWinnerNames = winnerCar.name();
+    for (Car otherParticipant : otherParticipants) {
+      coWinnerNames = coWinnerLineUp(winnerCar, coWinnerNames, otherParticipant);
     }
-    return coWinner;
+    return coWinnerNames;
   }
 
-  private String winnerCalculator(Car winnerCar, String coWinner, Car car) {
-    if(winnerCar.position() == car.position()) {
-      coWinner = coWinner.concat(", ").concat(car.name());
+  private String coWinnerLineUp(Car winnerCar, String coWinnerNames, Car otherParticipant) {
+    if (winnerCar.position() == otherParticipant.position()) {
+      coWinnerNames = coWinnerNames.concat(", ").concat(otherParticipant.name());
     }
-    return coWinner;
+    return coWinnerNames;
   }
 
 }
