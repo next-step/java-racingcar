@@ -6,9 +6,9 @@ public class RandomNumberGeneratorTest {
 
   @Test
   void generate() {
-    RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-    for (int i = 0 ; i < 10 ; i++) {
-      assertThat(randomNumberGenerator.generate()).isLessThan(10);
+    final int maxNumber = 10;
+    for (int i = 0 ; i < 100 ; i++) {
+      assertThat(RandomNumberGenerator.generate(maxNumber)).isLessThan(maxNumber);
     }
   }
 }

@@ -2,14 +2,14 @@ import java.util.Random;
 
 public class RandomNumberGenerator {
 
-  private static final Random RANDOM = new Random();
-  private static final int MAX_RANDOM_VALUE = 10;
+  private RandomNumberGenerator() {}
 
-  public RandomNumberGenerator() {
+  private static final Random RANDOM = new Random();
+  static {
     RANDOM.setSeed(System.currentTimeMillis());
   }
 
-  public int generate() {
-    return RANDOM.nextInt(MAX_RANDOM_VALUE);
+  public static int generate(int maxNumber) {
+    return RANDOM.nextInt(maxNumber);
   }
 }

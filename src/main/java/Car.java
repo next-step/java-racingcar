@@ -1,21 +1,35 @@
 public class Car {
 
-  private static final int INITIAL_POSITION = 0;
-  private static final int MINIMUM_DISTANCE_TO_MOVE = 4;
+  private static final int MIN_INITIAL_POSITION = 0;
+  private static final int MOVE_DISTANCE = 1;
 
+  private final int minNumberToMove;
   private int position;
 
-  public Car() {
-    this.position = INITIAL_POSITION;
+  public Car(int initialPosition, int minimumDistanceToMove) {
+    validateMinInitialPosition(initialPosition);
+
+    this.position = initialPosition;
+    this.minNumberToMove = minimumDistanceToMove;
   }
 
-  public void move(int distance) {
-    if (distance >= MINIMUM_DISTANCE_TO_MOVE) {
-      position += distance;
+  public void move(int number) {
+    if (number >= minNumberToMove) {
+      position += MOVE_DISTANCE;
     }
   }
 
   public int getPosition() {
     return position;
   }
+
+  private void validateMinInitialPosition(int initialPosition) {
+    ArgumentValidator.validate(
+        initialPosition,
+        (arg) -> arg >= MIN_INITIAL_POSITION,
+        String.format("차의 시작 위치는 %d 이상이어야 합니다.", MIN_INITIAL_POSITION)
+    );
+  }
+
+
 }
