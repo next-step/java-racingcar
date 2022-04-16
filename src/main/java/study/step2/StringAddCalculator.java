@@ -1,4 +1,4 @@
-package study;
+package study.step2;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -7,7 +7,10 @@ public class StringAddCalculator {
     private static final String DEFAULT_DELIMITER = ",|:";
     private static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
     private static final Pattern compile = Pattern.compile(CUSTOM_DELIMITER_REGEXP);
-    
+
+    private StringAddCalculator() {
+    }
+
     public static int splitAndSum(String text) {
         if (isBlank(text)) {
             return 0;

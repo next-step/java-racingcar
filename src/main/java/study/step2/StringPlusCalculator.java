@@ -1,4 +1,4 @@
-package study;
+package study.step2;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -7,6 +7,7 @@ public class StringPlusCalculator {
 
     private static final String DEFAULT_DELIMITER = ",|:";
     private static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
+    private static final Pattern compile = Pattern.compile(CUSTOM_DELIMITER_REGEXP);
 
     private StringPlusCalculator() {
     }
@@ -15,7 +16,7 @@ public class StringPlusCalculator {
         if (isEmptyOrNull(s)) {
             return 0;
         }
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEXP).matcher(s);
+        Matcher matcher = compile.matcher(s);
         if (matcher.find()) {
             return sum(split(matcher.group(2), matcher.group(1)));
         }
@@ -36,7 +37,7 @@ public class StringPlusCalculator {
         if (s.matches("[+]?\\d*(\\.\\d+)?")) {
             return true;
         }
-        throw new RuntimeException("음수가 포함되어 있습니다.");
+        throw new RuntimeException("음수가 포함되어 RuntimeException 발생하였습니다.");
     }
 
     private static String[] split(String text, String delimiter) {
