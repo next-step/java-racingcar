@@ -5,6 +5,7 @@ import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
+import racingcar.model.CarName;
 import racingcar.model.Cars;
 import racingcar.model.RandomMovingStrategy;
 
@@ -43,7 +44,7 @@ public class CarsTest {
     @DisplayName("Cars를 play했을 때 결과를 잘 반환하는지 테스트")
     void playTest() {
         // given
-        Cars cars = new Cars(Lists.newArrayList(new Car()));
+        Cars cars = new Cars(Lists.newArrayList(new Car(CarName.from("test"))));
 
         // when
         Cars result = cars.play(new RandomMovingStrategy());

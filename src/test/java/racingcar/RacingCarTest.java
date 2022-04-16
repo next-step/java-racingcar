@@ -18,20 +18,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("자동차 경주 게임 테스트")
 public class RacingCarTest {
 
+    public static final InputCars TEST_CAR_NAME = InputCars.fromCarsInfo("test");
+
     @Test
     @DisplayName("주어진 횟수는 0 이상이어야 한다.")
     void roundCountTest() {
-        assertThatThrownBy(() -> new RacingCar(InputCars.fromNonEmptySize(1), -1))
+        assertThatThrownBy(() -> new RacingCar(InputCars.fromCarsInfo("jisu"), -1))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("주어진 횟수는 0 이상이어야 합니다.");
-    }
-
-    @Test
-    @DisplayName("사용자가 입력한 자동차는 1대 이상이어야 한다.")
-    void carCountTest() {
-        assertThatThrownBy(() -> new RacingCar(InputCars.fromNonEmptySize(0), 0))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차는 1대 이상이어야 합니다.");
     }
 
     @ParameterizedTest
@@ -39,7 +33,7 @@ public class RacingCarTest {
     @DisplayName("자동차의 현재 상태는 주어진 횟수값을 넘지 않는다.")
     void carsStateTest(int count) {
         // given
-        RacingCar racingCar = new RacingCar(InputCars.fromNonEmptySize(1), count);
+        RacingCar racingCar = new RacingCar(InputCars.fromCarsInfo("jisu"), count);
 
         // when
         List<RoundResult> playResult = racingCar.play(new RandomMovingStrategy());
@@ -55,7 +49,7 @@ public class RacingCarTest {
     @DisplayName("모두 movable하다면 Car의 상태는 round횟수와 같다.")
     void allMovableTest() {
         // given
-        RacingCar racingCar = new RacingCar(InputCars.fromNonEmptySize(3), 5);
+        RacingCar racingCar = new RacingCar(InputCars.fromCarsInfo("jisu"), 5);
 
         // when
         List<RoundResult> playResult = racingCar.play(()->true);
@@ -74,7 +68,7 @@ public class RacingCarTest {
     @DisplayName("모두 unmovable하다면 Car의 상태는 항상 0이다.")
     void allunMovableTest() {
         // given
-        RacingCar racingCar = new RacingCar(InputCars.fromNonEmptySize(1), 3);
+        RacingCar racingCar = new RacingCar(TEST_CAR_NAME, 3);
 
         // when
         List<RoundResult> playResult = racingCar.play(()->false);

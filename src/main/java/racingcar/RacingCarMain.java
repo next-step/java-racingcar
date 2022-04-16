@@ -11,10 +11,10 @@ import java.util.List;
 
 public class RacingCarMain {
     public static void main(String[] args) {
-        int number = InputView.inputNumber();
+        String carsInfo = InputView.inputCarsInfo();
         int round = InputView.inputRound();
 
-        RacingCar racingCar = new RacingCar(InputCars.fromNonEmptySize(number), round);
+        RacingCar racingCar = new RacingCar(InputCars.fromCarsInfo(carsInfo), round);
         List<RoundResult> result = racingCar.play(new RandomMovingStrategy());
 
         ResultView.print(result);

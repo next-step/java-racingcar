@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
+import racingcar.model.CarName;
 import racingcar.model.Distance;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,10 +12,19 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("Car 클래스 테스트")
 public class CarTest {
 
+    private static final CarName TEST_CAR_NAME = CarName.from("test");
+
     @Test
-    @DisplayName("Car 생성시 state 로 null 이 들어오면 오류가 발생한다.")
-    void carNullTest() {
-        assertThatThrownBy(()-> new Car(null))
+    @DisplayName("Car 생성시 CarName 에 null 이 들어오면 오류가 발생한다.")
+    void carNameNullTest() {
+        assertThatThrownBy(() -> new Car(null, Distance.MOVE_STATE))
+                .isInstanceOf(NullPointerException.class)
+                .hasMessageContaining("name is null");
+    }
+    @Test
+    @DisplayName("Car 생성시 state 에 null 이 들어오면 오류가 발생한다.")
+    void carStateNullTest() {
+        assertThatThrownBy(() -> new Car(TEST_CAR_NAME, null))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessageContaining("state is null");
     }
@@ -22,7 +32,7 @@ public class CarTest {
     @Test
     @DisplayName("자동차의 초기 상태는 0이어야 한다.")
     void carStateTest() {
-        Car car = new Car();
+        Car car = new Car(TEST_CAR_NAME);
 
         assertThat(car.state()).isEqualTo(Distance.ZERO);
     }
@@ -30,17 +40,17 @@ public class CarTest {
     @Test
     @DisplayName("자동차가 movable 하다면 한칸 전진한다.")
     void movableTest() {
-        Car car = new Car();
+        Car car = new Car(TEST_CAR_NAME);
 
         Car nextCar = car.move(() -> true);
 
-        assertThat(nextCar.state()).isEqualTo(Distance.add(car.state(), new Distance(1)));
+        assertThat(nextCar.state()).isEqualTo(Distance.add(car.state(), Distance.MOVE_STATE));
     }
 
     @Test
     @DisplayName("자동차가 unmovable 하다면 멈춰있는다.")
     void unmovableTest() {
-        Car car = new Car();
+        Car car = new Car(TEST_CAR_NAME);
 
         Car nextCar = car.move(() -> false);
 
