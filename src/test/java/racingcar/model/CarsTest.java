@@ -2,6 +2,9 @@ package racingcar.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,10 +13,8 @@ class CarsTest {
     @Test
     @DisplayName("자동차 객체 생성 확인")
     void confirmCarObjectCreation() {
-        int numberOfCars = 3;
+        Cars cars = new Cars(new RandomMovingStrategy(), new String[]{"pobi", "cron", "yuna"});
 
-        Cars cars = new Cars(new RandomMovingStrategy(), numberOfCars);
-
-        assertThat(cars.getCars()).hasSize(numberOfCars);
+        assertThat(cars.getCars()).hasSize(3);
     }
 }

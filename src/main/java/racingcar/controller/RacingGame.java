@@ -19,5 +19,7 @@ public class RacingGame {
             cars.runRace();
             OutputView.printCarRacingIntermediateState(cars);
         }
+
+        OutputView.printWinner(cars);
     }
 }

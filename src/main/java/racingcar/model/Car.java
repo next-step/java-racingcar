@@ -5,8 +5,8 @@ public class Car {
     private MovingStrategy movingStrategy;
     private String name;
 
-    public Car(MovingStrategy movingStrategy, String name) {
-        this.position = new Position();
+    public Car(Position position, MovingStrategy movingStrategy, String name) {
+        this.position = position;
         this.movingStrategy = movingStrategy;
         this.name = name;
     }
