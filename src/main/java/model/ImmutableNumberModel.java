@@ -1,8 +1,15 @@
 package model;
 
-public abstract class ImmutableNumberModel extends abstractNumberModel {
+public abstract class ImmutableNumberModel implements NumberModel {
+
+  protected final int value;
+
+  public int getValue() {
+    return value;
+  }
 
   public ImmutableNumberModel(int value) {
-    super(value);
+    validateValue(value);
+    this.value = value;
   }
 }
