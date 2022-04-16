@@ -8,27 +8,31 @@ import racingcar.util.generator.RandomNumberGenerator;
 import racingcar.util.strategy.move.CarMoveStrategy;
 
 public class CarStadium {
-	private final List<Car> cars = new ArrayList<>();
+	private Cars cars;
 	private int rounds;
-	private final int numberOfCars;
+	private int numberOfCars;
 
 	public CarStadium(InputView input) {
 		this.numberOfCars = input.getNumberOfCars();
-		rounds = input.getRounds();
-		carComes();
+		this.rounds = input.getRounds();
 	}
 
 	public int getRounds() {
 		return rounds;
 	}
 
-	public List<Car> getCars() {
+	public Cars getCars() {
 		return cars;
 	}
 
-	private void carComes() {
-		for (int i = 0; i < numberOfCars; i++) {
-			cars.add(new Car(new RandomNumberGenerator(), new CarMoveStrategy()));
+	public void carComes() {
+		List<Car> carList = new ArrayList<>();
+
+		for (int i = 0; i < this.numberOfCars; i++) {
+			Car car = new Car(new RandomNumberGenerator(), new CarMoveStrategy());
+			carList.add(car);
 		}
+
+		this.cars = new Cars(carList);
 	}
 }
