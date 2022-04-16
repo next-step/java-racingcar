@@ -21,8 +21,7 @@ public class RacingGame {
     WinnerCarStrategy winnerCarStrategy = new DistanceWinnerStrategy();
 
     RacingController racingController = new RacingController(racingCarNameInputView,
-        racingCarNameOutputView,
-        moveStrategy, nameValidationStrategy, winnerCarStrategy);
+        racingCarNameOutputView, moveStrategy, nameValidationStrategy, winnerCarStrategy);
 
     racingController.startGame();
   }

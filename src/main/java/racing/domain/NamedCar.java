@@ -13,7 +13,7 @@ public class NamedCar extends Car {
   }
 
   public String getCarName() {
-    return carName.getCarName();
+    return carName.getValue();
   }
 
   public static NamedCar newInstance(String name, NameValidationStrategy nameValidationStrategy,

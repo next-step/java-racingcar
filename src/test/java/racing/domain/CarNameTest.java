@@ -20,7 +20,7 @@ class CarNameTest {
     CarName carName = new CarName(name, new NameLengthValidationStrategy());
 
     //then
-    assertThat(carName.getCarName()).isEqualTo(name);
+    assertThat(carName.getValue()).isEqualTo(name);
   }
 
   @Test

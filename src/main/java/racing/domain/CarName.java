@@ -5,22 +5,22 @@ import racing.exception.CarNameUnsuitableException;
 
 public class CarName {
 
-  private final String carName;
+  private final String value;
   private final NameValidationStrategy nameValidationStrategy;
 
   public CarName(String carName, NameValidationStrategy nameValidationStrategy) {
-    this.carName = carName;
+    this.value = carName;
     this.nameValidationStrategy = nameValidationStrategy;
     validCheck();
   }
 
-  public String getCarName() {
-    return carName;
+  public String getValue() {
+    return value;
   }
 
   private void validCheck() {
-    if (!nameValidationStrategy.isValid(carName)) {
-      throw new CarNameUnsuitableException(carName);
+    if (!nameValidationStrategy.isValid(value)) {
+      throw new CarNameUnsuitableException(value);
     }
   }
 }
