@@ -36,7 +36,7 @@ public class RacingGameManagementTest {
 
         WinnerRacingCars winners = racingGameManagement.findWinners();
 
-        assertThat(winners.get()).contains("CarA", "CarC");
+        assertThat(winners.getCars()).contains("CarA", "CarC");
     }
 
     private static RacingCars generateCars(String[] carNames) {

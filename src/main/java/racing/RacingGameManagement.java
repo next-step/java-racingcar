@@ -29,26 +29,26 @@ public class RacingGameManagement {
     }
 
     public WinnerRacingCars findWinners() {
-        List<String> winnerCars = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
         int topMovingCount = 0;
 
         for (Map.Entry<Car, CarDrivingTypes> next : racingCarManagement.entrySet()) {
             int laps = next.getValue().getGoMovingCount();
-            topMovingCount = setWinnerCars(winnerCars, topMovingCount, next, laps);
+            topMovingCount = setWinnerCars(cars, topMovingCount, next, laps);
         }
 
-        return new WinnerRacingCars(winnerCars);
+        return new WinnerRacingCars(new RacingCars(cars));
     }
 
-    private int setWinnerCars(List<String> winnerCars, int topMovingCount, Map.Entry<Car, CarDrivingTypes> next, int laps) {
+    private int setWinnerCars(List<Car> winnerCars, int topMovingCount, Map.Entry<Car, CarDrivingTypes> next, int laps) {
         if (topMovingCount == next.getValue().getGoMovingCount()) {
-            winnerCars.add(next.getKey().getCarName());
+            winnerCars.add(next.getKey());
             return topMovingCount;
         }
 
         if (topMovingCount < laps) {
             winnerCars.clear();
-            winnerCars.add(next.getKey().getCarName());
+            winnerCars.add(next.getKey());
             return laps;
         }
 
