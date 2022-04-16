@@ -26,9 +26,28 @@ class RacingCarTest {
     }
 
     @Test
-    void 경주용_자동차_한칸_전진() {
+    void 경주용_자동차_전진_실패() {
         RacingCar racingCar = new RacingCar("pobi");
-        racingCar.moveForward();
+        racingCar.moveForward(createFalseCondition());
+        assertThat(racingCar.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    void 경주용_자동차_한칸_전진_성공_결과_리턴() {
+        RacingCar racingCar = new RacingCar("pobi");
+        racingCar.moveForward(createTrueCondition());
         assertThat(racingCar.getPosition()).isEqualTo(1);
+    }
+
+    private GameRule createFalseCondition() {
+        GameRule gameRule = new GameRule();
+        gameRule.setRuleCondition(() -> false);
+        return gameRule;
+    }
+
+    private GameRule createTrueCondition() {
+        GameRule gameRule = new GameRule();
+        gameRule.setRuleCondition(() -> true);
+        return gameRule;
     }
 }

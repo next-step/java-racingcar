@@ -11,7 +11,7 @@ class ResultViewTest {
     @Test
     void 자동차_위치_출력() {
         RacingCar racingCar = new RacingCar("pobi", 5);
-        assertThat(racingCar.createRacingCarRoute(racingCar)).isEqualTo("pobi : -----") ;
+        assertThat(ResultView.createRacingCarRoute(racingCar)).isEqualTo("pobi : -----") ;
     }
 
     @Test
