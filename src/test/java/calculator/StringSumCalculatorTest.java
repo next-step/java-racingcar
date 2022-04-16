@@ -36,7 +36,7 @@ public class StringSumCalculatorTest {
     }
 
     @Test
-    void splitAndSum은_음수나_숫자가_아닌_문자열을_입력받은_경우_런타임_예외를_발생시킨다() {
+    void splitAndSum은_음수를_입력받은_경우_런타임_예외를_발생시킨다() {
         assertThatThrownBy(() -> {
             StringSumCalculator.splitAndSum("1;-2;3");
         }).isInstanceOf(IllegalArgumentException.class);

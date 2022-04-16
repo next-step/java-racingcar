@@ -32,7 +32,7 @@ public class Operand {
         return value;
     }
 
-    public Operand sum(Operand operand) {
+    public Operand add(Operand operand) {
         return new Operand(this.value + operand.getValue());
     }
 }

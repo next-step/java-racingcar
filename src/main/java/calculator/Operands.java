@@ -7,20 +7,25 @@ public class Operands {
     private final List<Operand> operands;
 
     public Operands(List<Operand> operands) {
+        validateNotEmpty(operands);
         this.operands = operands;
     }
 
-    public int sum() {
-        Operand accOperand = new Operand();
-
-        for (Operand operand : operands) {
-            accOperand = accOperand.sum(operand);
+    private void validateNotEmpty(List<Operand> operands) {
+        if (isNullOrEmpty(operands)) {
+            throw new IllegalArgumentException("빈 컬렉션은 합을 구할 수 없다.");
         }
-
-        return accOperand.getValue();
     }
 
-    public static Operands fromStringList(List<String> list) {
-        return new Operands(list.stream().map(Operand::new).collect(Collectors.toList()));
+    private boolean isNullOrEmpty(List<Operand> operands) {
+        return operands == null || operands.isEmpty();
+    }
+
+    public int sum() {
+        return operands.stream().mapToInt(Operand::getValue).sum();
+    }
+
+    public static Operands from(List<String> textForOperands) {
+        return new Operands(textForOperands.stream().map(Operand::new).collect(Collectors.toList()));
     }
 }

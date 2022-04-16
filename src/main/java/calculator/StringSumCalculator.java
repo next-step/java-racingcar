@@ -10,8 +10,8 @@ public class StringSumCalculator {
             return DEFAULT_RESULT;
         }
 
-        List<String> stringOperands = StringSplitterFactory.resolve(input).split();
-        return Operands.fromStringList(stringOperands).sum();
+        List<String> textForOperands = StringSplitterFactory.resolve(input).split();
+        return Operands.from(textForOperands).sum();
     }
 
     private static boolean isNullOrBlank(String input) {
