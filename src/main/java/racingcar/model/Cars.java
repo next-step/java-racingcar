@@ -6,8 +6,6 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-  private static final int CARS_MIN_COUNT = 1;
-
   private final List<Car> values;
 
   public Cars(List<Car> cars) {
@@ -15,7 +13,6 @@ public class Cars {
   }
 
   public static Cars createCars(List<String> carNames, int startPosition) {
-    validateCount(carNames);
     List<Car> cars = carNames.stream()
         .map(name -> new Car(startPosition, name))
         .collect(Collectors.toList());
@@ -34,12 +31,6 @@ public class Cars {
 
   public int size() {
     return values.size();
-  }
-
-  private static void validateCount(List<String> carNames) {
-    if (carNames.size() < CARS_MIN_COUNT) {
-      throw new RuntimeException(String.format("자동차는 %d대 이상이어야 합니다.", CARS_MIN_COUNT));
-    }
   }
 
   @Override

@@ -7,6 +7,7 @@ public class Position {
   private final int value;
 
   public Position(int value) {
+    validatePosition(value);
     this.value = value;
   }
 
@@ -16,6 +17,12 @@ public class Position {
 
   public int getPosition() {
     return value;
+  }
+
+  private static void validatePosition(int value) {
+    if (value < 0) {
+      throw new IllegalArgumentException("위치는 음수일 수 없습니다.");
+    }
   }
 
   @Override
