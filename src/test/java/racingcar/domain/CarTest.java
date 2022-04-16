@@ -10,7 +10,7 @@ public class CarTest {
     @Test
     @DisplayName("condition 값이 4 보다 작으면 Car 의 위치값은 유지된다.")
     void carStop() {
-        Car car = new Car();
+        Car car = new Car("test");
         int oldPosition = car.getPosition();
 
         car.stopOrGo(3);
@@ -21,7 +21,7 @@ public class CarTest {
     @Test
     @DisplayName("condition 값이 4 보다 작으면 Car 의 위치값 1 증가한다.")
     void carGo() {
-        Car car = new Car();
+        Car car = new Car("test");
         int oldPosition = car.getPosition();
 
         car.stopOrGo(5);
@@ -32,14 +32,14 @@ public class CarTest {
     @Test
     @DisplayName("condition 음수일경우 IllegalArgument 예외를 반환한다.")
     void negativeException() {
-        assertThatThrownBy(() -> new Car().stopOrGo(-1))
+        assertThatThrownBy(() -> new Car("test").stopOrGo(-1))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("condition 9보다 크면 IllegalArgument 예외를 반환한다.")
     void overflowException() {
-        assertThatThrownBy(() -> new Car().stopOrGo(10))
+        assertThatThrownBy(() -> new Car("test").stopOrGo(10))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

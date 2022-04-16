@@ -7,13 +7,16 @@ public class Car {
     private static final int BOUND_MIN = 0;
     private static final int BOUND_MAX = 9;
     private int position;
+    private final String carName;
 
-    public Car() {
+    public Car(String carName) {
         this.position = INITIAL_POSITION;
+        this.carName = carName;
     }
 
     public Car(Car car) {
         this.position = car.position;
+        this.carName = car.carName;
     }
 
     public void stopOrGo(int condition) {
@@ -40,5 +43,14 @@ public class Car {
 
     public int getPosition() {
         return this.position;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Car)) {
+            return false;
+        }
+        Car c = (Car) obj;
+        return c.carName.equals(carName) && c.position == (position);
     }
 }

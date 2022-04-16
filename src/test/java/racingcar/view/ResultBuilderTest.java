@@ -12,7 +12,7 @@ class ResultBuilderTest {
     @Test
     @DisplayName("position 숫자 만큼 '-'가 추가되어 반환된다.")
     void buildResult() {
-        Car car = new Car();
+        Car car = new Car("tom");
         car.stopOrGo(9);
         car.stopOrGo(9);
 

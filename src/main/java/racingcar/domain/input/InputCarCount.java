@@ -4,6 +4,7 @@ import racingcar.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputCarCount {
 
@@ -14,10 +15,9 @@ public class InputCarCount {
     }
 
     public List<Car> toCars() {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount.getCount(); i++) {
-            cars.add(new Car());
-        }
-        return cars;
+        return carCount.getCarNames()
+                .stream()
+                .map(carName -> new Car(carName))
+                .collect(Collectors.toList());
     }
 }
