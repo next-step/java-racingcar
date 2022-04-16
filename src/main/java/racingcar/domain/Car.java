@@ -7,7 +7,7 @@ public class Car {
 	public static final String MOVING_UNIT = "-";
 	private NumberGenerator numberGenerator;
 	private MoveStrategy moveStrategy;
-	private int value;
+	private int valueToMovable;
 	private String status = "";
 
 	public Car(MoveStrategy moveStrategy) {
@@ -20,9 +20,9 @@ public class Car {
 	}
 
 	public void move() {
-		this.value = getNumber();
+		this.valueToMovable = generateValueToMove();
 
-		if (isMovable(value)) {
+		if (isMovable(valueToMovable)) {
 			status += MOVING_UNIT;
 		}
 
@@ -37,7 +37,11 @@ public class Car {
 		return status;
 	}
 
-	private int getNumber() {
+	public int getValueToMove() {
+		return valueToMovable;
+	}
+
+	private int generateValueToMove() {
 		return this.numberGenerator.generate();
 	}
 }
