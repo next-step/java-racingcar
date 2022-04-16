@@ -3,7 +3,11 @@ package racing.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -46,5 +50,30 @@ class CarsTest {
         carNameInput.split(Cars.CAR_NAME_DELIMITER).length).containsOnly(attempt);
     assertThat(namedCars.getNames()).containsExactlyElementsOf(
         Arrays.asList(carNameInput.split(Cars.CAR_NAME_DELIMITER)));
+  }
+
+  @RepeatedTest(100)
+  @DisplayName("자동차들 중 제일 멀리 이동한 자동차가 우승자로 선정되는지 확인")
+  void winnerTest() {
+    //given
+    Cars winCars = Cars.newInstance("win1,win2", new MustMoveStrategy());
+    Cars loseCars = Cars.newInstance("lose1,lose2,lose3", new MustMoveStrategy());
+    Random random = new Random();
+    int winAttempt = 100;
+    for (int i = 0; i < winAttempt; i++) {
+      winCars.attempt();
+    }
+    for (int i = 0; i < random.nextInt(winAttempt); i++) {
+      loseCars.attempt();
+    }
+
+    //when
+    Cars winners = new Cars(
+        Stream.concat(winCars.getValues().stream(), loseCars.getValues().stream())
+            .collect(Collectors.toList())).getWinners();
+
+    //then
+    assertThat(winCars.getValues()).containsExactlyElementsOf(winners.getValues());
+
   }
 }

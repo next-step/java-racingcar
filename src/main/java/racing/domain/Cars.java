@@ -1,51 +1,65 @@
 package racing.domain;
 
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import racing.domain.strategy.MoveStrategy;
 
 
 public class Cars {
 
   public static final String CAR_NAME_DELIMITER = ",";
-  private final List<Car> namedCars;
+  private final List<Car> values;
 
-  public Cars(List<Car> namedCars) {
-    this.namedCars = namedCars;
+  public Cars(List<Car> values) {
+    this.values = values;
   }
 
   public List<String> getNames() {
     List<String> names = new ArrayList<>();
-    for (Car namedCar : namedCars) {
-      names.add(namedCar.getCarName());
+    for (Car car : values) {
+      names.add(car.getCarName());
     }
     return names;
   }
 
   public List<Integer> getDistances() {
     List<Integer> distances = new ArrayList<>();
-    for (Car c : namedCars) {
+    for (Car c : values) {
       distances.add(c.getDistance());
     }
     return distances;
   }
 
-  public List<Car> getNamedCars() {
-    return namedCars;
-  }
-
   public void attempt() {
-    for (Car namedCar : namedCars) {
+    for (Car namedCar : values) {
       namedCar.attempt();
     }
+  }
+
+  public List<Car> getValues() {
+    return values;
+  }
+
+  public Cars getWinners() {
+    int max = getDistances()
+        .stream()
+        .max(Integer::compareTo)
+        .orElseThrow();
+
+    return values
+        .stream()
+        .filter(namedCar -> namedCar.getDistance() == max)
+        .collect(collectingAndThen(toList(), Cars::new));
   }
 
   public static Cars newInstance(String carNames, MoveStrategy moveStrategy) {
     List<Car> cars = Arrays.stream(carNames.split(CAR_NAME_DELIMITER))
         .map(n -> new Car(n, moveStrategy))
-        .collect(Collectors.toList());
+        .collect(toList());
 
     return new Cars(cars);
   }
