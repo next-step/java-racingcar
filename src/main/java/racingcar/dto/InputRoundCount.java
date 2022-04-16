@@ -1,6 +1,7 @@
-package racingcar.domain.input;
+package racingcar.dto;
 
 import racingcar.domain.Round;
+import racingcar.domain.input.RoundCount;
 
 public class InputRoundCount {
 

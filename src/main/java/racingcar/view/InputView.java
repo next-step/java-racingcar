@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.domain.input.InputCarCount;
-import racingcar.domain.input.InputRoundCount;
+import racingcar.dto.InputCar;
+import racingcar.dto.InputRoundCount;
 
 import java.util.Scanner;
 
@@ -13,10 +13,10 @@ public class InputView {
 
     private InputView() { }
 
-    public static InputCarCount renderCarCountInputView() {
+    public static InputCar renderCarCountInputView() {
         try {
             System.out.println(MESSAGE_INPUT_CAR_COUNT);
-            return new InputCarCount(scanner.nextLine());
+            return new InputCar(scanner.nextLine());
         } catch (IllegalArgumentException e) {
             renderErrorMessage(e.getMessage());
             return renderCarCountInputView();

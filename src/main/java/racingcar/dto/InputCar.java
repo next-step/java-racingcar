@@ -1,21 +1,21 @@
-package racingcar.domain.input;
+package racingcar.dto;
 
 import racingcar.domain.Car;
+import racingcar.domain.input.CarInfo;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InputCarCount {
+public class InputCar {
 
-    private CarCount carCount;
+    private CarInfo carInfo;
 
-    public InputCarCount(String value) {
-        this.carCount = new CarCount(value);
+    public InputCar(String value) {
+        this.carInfo = new CarInfo(value);
     }
 
     public List<Car> toCars() {
-        return carCount.getCarNames()
+        return carInfo.getCarNames()
                 .stream()
                 .map(carName -> new Car(carName))
                 .collect(Collectors.toList());

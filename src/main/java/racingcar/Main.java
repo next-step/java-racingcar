@@ -1,8 +1,8 @@
 package racingcar;
 
 import racingcar.domain.Histories;
-import racingcar.domain.input.InputCarCount;
-import racingcar.domain.input.InputRoundCount;
+import racingcar.dto.InputCar;
+import racingcar.dto.InputRoundCount;
 import racingcar.domain.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -10,10 +10,10 @@ import racingcar.view.ResultView;
 public class Main {
 
     public static void main(String[] args) {
-        InputCarCount carCount = InputView.renderCarCountInputView();
-        InputRoundCount roundCount = InputView.renderRoundCountInputView();
+        InputCar inputCar = InputView.renderCarCountInputView();
+        InputRoundCount inputRound = InputView.renderRoundCountInputView();
 
-        RacingGame racingGame = new RacingGame(carCount, roundCount);
+        RacingGame racingGame = new RacingGame(inputCar, inputRound);
         Histories histories = racingGame.play();
 
         ResultView.renderResultView(histories);
