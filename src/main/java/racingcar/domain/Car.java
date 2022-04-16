@@ -2,12 +2,20 @@ package racingcar.domain;
 
 import racingcar.domain.strategy.MoveStrategy;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Car implements Comparable<Car> {
 
     private CarName name;
     private Position position;
+
+    public static List<Car> createCars(List<String> names) {
+        return names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+    }
 
     public Car(String name) {
         this(name, 0);

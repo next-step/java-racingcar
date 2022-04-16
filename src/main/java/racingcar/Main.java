@@ -1,12 +1,13 @@
 package racingcar;
 
-import racingcar.domain.*;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.RacingCarGame;
 import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Main {
 
@@ -18,10 +19,8 @@ public class Main {
     }
 
     private static Cars createCars() {
-        List<Car> cars = InputView.promptNames()
-                .stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
+        List<String> names = InputView.promptNames();
+        List<Car> cars = Car.createCars(names);
         return new Cars(cars);
     }
 
