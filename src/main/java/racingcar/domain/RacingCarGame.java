@@ -12,15 +12,15 @@ public class RacingCarGame {
 
     public RacingCarGame(Cars cars, int rounds, MoveStrategy moveStrategy) {
         this.cars = cars;
-        this.rounds = rounds;
+        this.rounds = validateRounds(rounds);
         this.moveStrategy = moveStrategy;
-        validateRounds();
     }
 
-    private void validateRounds() {
-        if (isFinished()) {
+    private int validateRounds(int rounds) {
+        if (rounds <= MINIMUM_ROUND) {
             throw new IllegalArgumentException("rounds must be greater than 0");
         }
+        return rounds;
     }
 
     public void moveCars() {
