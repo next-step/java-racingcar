@@ -38,6 +38,14 @@ public class CarTest {
     }
 
     @Test
+    @DisplayName("자동차 생성시 지정한 이름은 name()을 통해서 얻을 수 있다.")
+    void carNameTest() {
+        Car car = new Car(TEST_CAR_NAME);
+
+        assertThat(car.name().value()).isEqualTo(TEST_CAR_NAME.value());
+    }
+
+    @Test
     @DisplayName("자동차가 movable 하다면 한칸 전진한다.")
     void movableTest() {
         Car car = new Car(TEST_CAR_NAME);

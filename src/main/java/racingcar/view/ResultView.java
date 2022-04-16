@@ -1,12 +1,14 @@
 package racingcar.view;
 
-import racingcar.model.Distance;
 import racingcar.dto.RoundResult;
+import racingcar.model.CarName;
+import racingcar.model.Distance;
 
 import java.util.List;
 
 public final class ResultView {
-    public static final String START_LINE = "|";
+    public static final String START_TEXT = "실행 결과";
+    public static final String START_LINE = " : ";
     public static final String CAR_STATE = "-";
     public static final String NEW_LINE = System.lineSeparator();
 
@@ -15,20 +17,29 @@ public final class ResultView {
     }
 
     public static void print(List<RoundResult> roundResults) {
+        printStartText();
         for (RoundResult roundResult : roundResults) {
-            printStates(roundResult.getStates());
+            printRoundResult(roundResult.getCarsCount(), roundResult.getCarNames(), roundResult.getStates());
         }
     }
 
-    public static void printStates(List<Distance> states) {
-        StringBuilder sb = new StringBuilder();
-        for (Distance state : states) {
-            sb.append(START_LINE);
-            for (int i = 0; i < state.value(); i++) {
-                sb.append(CAR_STATE);
-            }
-            sb.append(NEW_LINE);
+    private static void printStartText() {
+        System.out.println(START_TEXT);
+    }
+
+    public static void printRoundResult(int carsCount, List<CarName> carNames, List<Distance> states) {
+        for (int i = 0; i < carsCount; i++) {
+            printCarInfo(carNames.get(i), states.get(i));
         }
+    }
+
+    private static void printCarInfo(CarName carName, Distance state) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(carName.value() + START_LINE);
+        for (int j = 0; j < state.value(); j++) {
+            sb.append(CAR_STATE);
+        }
+        sb.append(NEW_LINE);
         System.out.println(sb);
     }
 }

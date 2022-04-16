@@ -29,6 +29,10 @@ public final class Car {
         return new Car(name, new Distance(state.value()));
     }
 
+    public CarName name() {
+        return name;
+    }
+
     public Distance state() {
         return state;
     }

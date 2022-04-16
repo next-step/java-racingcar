@@ -18,12 +18,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("자동차 경주 게임 테스트")
 public class RacingCarTest {
 
-    public static final InputCars TEST_CAR_NAME = InputCars.fromCarsInfo("test");
+    public static final InputCars TEST_CAR_NAME = InputCars.fromCarsInfo("test1");
 
     @Test
     @DisplayName("주어진 횟수는 0 이상이어야 한다.")
     void roundCountTest() {
-        assertThatThrownBy(() -> new RacingCar(InputCars.fromCarsInfo("jisu"), -1))
+        assertThatThrownBy(() -> new RacingCar(TEST_CAR_NAME, -1))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("주어진 횟수는 0 이상이어야 합니다.");
     }
@@ -33,7 +33,7 @@ public class RacingCarTest {
     @DisplayName("자동차의 현재 상태는 주어진 횟수값을 넘지 않는다.")
     void carsStateTest(int count) {
         // given
-        RacingCar racingCar = new RacingCar(InputCars.fromCarsInfo("jisu"), count);
+        RacingCar racingCar = new RacingCar(TEST_CAR_NAME, count);
 
         // when
         List<RoundResult> playResult = racingCar.play(new RandomMovingStrategy());
@@ -49,10 +49,10 @@ public class RacingCarTest {
     @DisplayName("모두 movable하다면 Car의 상태는 round횟수와 같다.")
     void allMovableTest() {
         // given
-        RacingCar racingCar = new RacingCar(InputCars.fromCarsInfo("jisu"), 5);
+        RacingCar racingCar = new RacingCar(TEST_CAR_NAME, 5);
 
         // when
-        List<RoundResult> playResult = racingCar.play(()->true);
+        List<RoundResult> playResult = racingCar.play(() -> true);
 
         // then
         for (int round = 1; round <= playResult.size(); round++) {
@@ -71,7 +71,7 @@ public class RacingCarTest {
         RacingCar racingCar = new RacingCar(TEST_CAR_NAME, 3);
 
         // when
-        List<RoundResult> playResult = racingCar.play(()->false);
+        List<RoundResult> playResult = racingCar.play(() -> false);
 
         // then
         for (int round = 1; round <= playResult.size(); round++) {
@@ -81,5 +81,20 @@ public class RacingCarTest {
                 assertThat(state.value()).isZero();
             }
         }
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"test", "test1,test2", "test1,test2,test3"})
+    @DisplayName(",로 구분한 자동차 이름만큼 결과값이 생성된다")
+    void roundResultSizeTest(String inputCarsInfo) {
+        // given
+        RacingCar racingCar = new RacingCar(InputCars.fromCarsInfo(inputCarsInfo), 1);
+
+        // when
+        List<RoundResult> playResult = racingCar.play(new RandomMovingStrategy());
+
+        // then
+        assertThat(playResult).hasSize(1);
+        assertThat(playResult.get(0).getCarsCount()).isEqualTo(inputCarsInfo.split(",").length);
     }
 }

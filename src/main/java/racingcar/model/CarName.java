@@ -7,11 +7,11 @@ public final class CarName {
     private final String name;
 
     private CarName(String name) {
+        validate(name);
         this.name = name;
     }
 
     public static CarName from(String name) {
-        validate(name);
         return new CarName(name);
     }
 
@@ -26,7 +26,7 @@ public final class CarName {
         }
     }
 
-    public String get() {
+    public String value() {
         return name;
     }
 

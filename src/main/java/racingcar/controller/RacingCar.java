@@ -32,17 +32,17 @@ public final class RacingCar {
             playAndAdd(results, movingStrategy);
         }
         return results.stream()
-                .map(result -> RoundResult.of(result.states()))
+                .map(result -> RoundResult.of(result.names(), result.states()))
                 .collect(Collectors.toList());
     }
 
     private void playAndAdd(List<Cars> results, MovingStrategy movingStrategy) {
-        if(results.isEmpty()) {
+        if (results.isEmpty()) {
             results.add(cars.play(movingStrategy));
             return;
         }
 
-        Cars currentCars = results.get(results.size()-1);
+        Cars currentCars = results.get(results.size() - 1);
         results.add(currentCars.play(movingStrategy));
     }
 }

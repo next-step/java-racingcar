@@ -37,6 +37,7 @@ public class CarNameTest {
     void equalsTest() {
         CarName carName1 = CarName.from("hello");
         CarName carName2 = CarName.from("hello");
+
         assertThat(carName1).isEqualTo(carName2);
     }
 
@@ -45,6 +46,7 @@ public class CarNameTest {
     void hashCodeTest() {
         CarName carName1 = CarName.from("hello");
         CarName carName2 = CarName.from("hello");
+
         assertThat(carName1.hashCode()).isEqualTo(carName2.hashCode());
     }
 }

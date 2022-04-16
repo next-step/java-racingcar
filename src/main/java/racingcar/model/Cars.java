@@ -29,6 +29,11 @@ public final class Cars {
         return new Cars(result);
     }
 
+    public List<CarName> names() {
+        return cars.stream()
+                .map(Car::name)
+                .collect(Collectors.toList());
+    }
     public List<Distance> states() {
         return cars.stream()
                 .map(Car::state)

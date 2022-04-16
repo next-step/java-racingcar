@@ -35,7 +35,7 @@ public final class InputCars {
 
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carsCount; i++) {
-            cars.add(new Car(CarName.from(carNames[i])));
+            cars.add(new Car(CarName.from(carNames[i].trim())));
         }
 
         return new InputCars(cars);
