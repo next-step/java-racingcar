@@ -3,7 +3,7 @@ package carracing;
 import java.util.List;
 
 public class ResultView {
-    public static final String ROUTE = "-";
+    private static final String ROUTE = "-";
 
     private ResultView() {}
 
@@ -16,9 +16,7 @@ public class ResultView {
         return stringBuilder.toString();
     }
 
-    public static void printRacingCarsRoutes(List<RacingCar> carList) {
-        for (int i = 0; i < carList.size(); i++){
-            System.out.println(makeRacingCarRoute(carList.get(i)));
-        }
+    public static void printRacingCarsRoutes(List<RacingCar> cars) {
+        cars.forEach(car -> System.out.println(makeRacingCarRoute(car)));
     }
 }
