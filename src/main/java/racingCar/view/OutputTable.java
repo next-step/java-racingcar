@@ -35,7 +35,7 @@ public final class OutputTable {
   private static void historyPrint(List<Car> allCars, List<RacingCarHistory> racingHistories) {
     racingHistories.sort(Comparator.comparingInt(RacingCarHistory::round));
     for (RacingCarHistory racingCarHistory : racingHistories) {
-      System.out.println(racingCarHistory.car());
+      System.out.println(racingCarHistory);
       enter(allCars, racingCarHistory);
     }
   }

@@ -59,7 +59,7 @@ public class GameService {
   }
 
   private Winner winnerChecker(Winner winner, Car nextCar) {
-    if (winner.winnerCar().position() < nextCar.position()) {
+    if (winner.winnerCar().position().match(nextCar.position())) {
       winner = new Winner(nextCar);
     }
     return winner;
@@ -67,7 +67,7 @@ public class GameService {
 
   public String sameScoreChecker(Winner winner, List<Car> otherParticipants) {
     Car winnerCar = winner.winnerCar();
-    String coWinnerNames = winnerCar.name();
+    String coWinnerNames = winnerCar.toString();
     for (Car otherParticipant : otherParticipants) {
       coWinnerNames = coWinnerLineUp(winnerCar, coWinnerNames, otherParticipant);
     }
@@ -76,7 +76,7 @@ public class GameService {
 
   private String coWinnerLineUp(Car winnerCar, String coWinnerNames, Car otherParticipant) {
     if (winnerCar.position() == otherParticipant.position()) {
-      coWinnerNames = coWinnerNames.concat(", ").concat(otherParticipant.name());
+      coWinnerNames = coWinnerNames.concat(", ").concat(otherParticipant.toString());
     }
     return coWinnerNames;
   }

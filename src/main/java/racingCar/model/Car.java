@@ -6,10 +6,9 @@ import racingCar.strategy.CarMoveStrategy;
 public class Car {
 
   private static final int MIN_CAR_NAME_LENGTH = 5;
-  private static final String STEP = "-";
   private final Integer index;
   private final String name;
-  private final int position;
+  private final Position position;
 
   public Car(Integer index, String name) {
     this(index, name, 0);
@@ -19,12 +18,12 @@ public class Car {
     carNameValidation(name);
     this.index = index;
     this.name = name;
-    this.position = position;
+    this.position = new Position(position);
   }
 
   public Car move(CarMoveStrategy carMoveStrategy) {
     if (carMoveStrategy.moveAble()) {
-      return new Car(this.index, this.name, this.position + 1);
+      return new Car(this.index, this.name, this.position.increase());
     }
     return this;
   }
@@ -47,16 +46,16 @@ public class Car {
       return false;
     }
     Car car = (Car) o;
-    return position == car.position && Objects.equals(index, car.index)
+    return position.x == car.position.x && Objects.equals(index, car.index)
         && Objects.equals(name, car.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(index, name, position);
+    return Objects.hash(index, name, position.x);
   }
 
-  public int position() {
+  public Position position() {
     return this.position;
   }
 
@@ -64,12 +63,9 @@ public class Car {
     return index;
   }
 
-  public String name() {
-    return name;
-  }
 
   @Override
   public String toString() {
-    return name + " : " + STEP.repeat(position);
+    return name;
   }
 }
