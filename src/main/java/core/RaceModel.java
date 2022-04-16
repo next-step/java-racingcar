@@ -2,9 +2,20 @@ package core;
 
 import utils.NumberGenerator;
 
+import java.util.List;
+
 public class RaceModel {
     private Cars cars;
     private int moveCount;
+
+    private RaceModel(Cars cars, int moveCount) {
+        this.cars = cars;
+        this.moveCount = moveCount;
+    }
+
+    public static RaceModel initialize(List<CarName> carNames, int moveCount) {
+        return new RaceModel(Cars.fromCarNames(carNames), moveCount);
+    }
 
     public void moveCarsRandomlyMoveCountTimes(NumberGenerator numberGenerator) {
         Cars resultCars = cars;
@@ -12,14 +23,6 @@ public class RaceModel {
             resultCars = moveCarsRandomly(resultCars, numberGenerator);
         }
         cars = resultCars;
-    }
-
-    public void setCars(Cars cars) {
-        this.cars = cars;
-    }
-
-    public void setMoveCount(int moveCount) {
-        this.moveCount = moveCount;
     }
 
     public Cars getCars() {

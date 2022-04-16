@@ -28,10 +28,19 @@ public class TestObjectGenerator {
         return () -> Car.BASE_MOVE_VALUE;
     }
 
-    public static RaceModel generateRaceModel(Cars cars, int moveCount) {
-        RaceModel raceModel = new RaceModel();
-        raceModel.setCars(cars);
-        raceModel.setMoveCount(moveCount);
-        return raceModel;
+    public static RaceModel generateRaceModel(String inputCarName, int carCount, int moveCount) {
+        List<CarName> carNames = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            carNames.add(CarName.create(inputCarName));
+        }
+        return RaceModel.initialize(carNames, moveCount);
+    }
+
+    public static List<CarName> generateCarNames() {
+        List<CarName> carNames = new ArrayList<>();
+        carNames.add(CarName.create("a"));
+        carNames.add(CarName.create("b"));
+        carNames.add(CarName.create("c"));
+        return carNames;
     }
 }
