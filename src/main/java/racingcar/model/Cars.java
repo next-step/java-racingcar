@@ -1,11 +1,12 @@
 package racingcar.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
+
+  private static final int CARS_MIN_COUNT = 1;
 
   private final List<Car> values;
 
@@ -13,12 +14,11 @@ public class Cars {
     this.values = cars;
   }
 
-  public static Cars createCars(int count, int startPosition) {
-    validateCount(count);
-    List<Car> cars = new ArrayList<>();
-    for (int i = 0; i < count; i++) {
-      cars.add(new Car(startPosition));
-    }
+  public static Cars createCars(List<String> carNames, int startPosition) {
+    validateCount(carNames);
+    List<Car> cars = carNames.stream()
+        .map(name -> new Car(startPosition, name))
+        .collect(Collectors.toList());
     return new Cars(cars);
   }
 
@@ -36,9 +36,9 @@ public class Cars {
     return values.size();
   }
 
-  private static void validateCount(int count) {
-    if (count < 0) {
-      throw new RuntimeException("음수는 입력할 수 없습니다.");
+  private static void validateCount(List<String> carNames) {
+    if (carNames.size() < CARS_MIN_COUNT) {
+      throw new RuntimeException(String.format("자동차는 %d대 이상이어야 합니다.", CARS_MIN_COUNT));
     }
   }
 
