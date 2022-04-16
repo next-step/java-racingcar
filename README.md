@@ -25,8 +25,6 @@
 - [X] 자동차 이름은 5자 이하로 
 - [X] Input을 검증하는 InputValidator 생성 
 - [X] 각 자동차는 점수를 가지고 있도록 한다 
-- [ ] RacingCar를 담고 있는 일급컬렉션 cars를 생성.
+- [X] RacingCar를 담고 있는 일급컬렉션 cars를 생성.
 - [ ] Printer 인터페이스를 추가해 변경에 유연하게 대비
-- Rule 객체에 List<Car> 들어가도록 변경 
-- 한 회차의 결과를 자동차 이름과 함께 출력 
-- 우승자를 결정하는 Organizer.award()를 구현
+- [X] 한 회차의 결과를 자동차 이름과 함께 출력 

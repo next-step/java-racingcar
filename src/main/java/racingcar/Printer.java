@@ -1,13 +1,6 @@
 package racingcar;
 
 public class Printer {
-    private static void print(int count) {
-        for (int print = 0; print < count; print++) {
-            System.out.print("-");
-        }
-        System.out.println();
-    }
-
     public static void println(String printable) {
         System.out.println(printable);
     }
@@ -21,5 +14,16 @@ public class Printer {
             print(car.getName() + " : ");
             print(car.getMovement());
         }
+    }
+
+    private static void print(int count) {
+        for (int print = 0; print < count; print++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
+    public static void award(String winners) {
+        System.out.println("이번 대회 승자는 " + winners + "입니다.");
     }
 }
