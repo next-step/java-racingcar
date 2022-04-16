@@ -30,6 +30,4 @@ public class Car {
         String.format("차의 시작 위치는 %d 이상이어야 합니다.", MIN_INITIAL_POSITION)
     );
   }
-
-
 }
