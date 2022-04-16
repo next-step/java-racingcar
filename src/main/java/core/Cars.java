@@ -5,6 +5,7 @@ import utils.PowerSupply;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -14,12 +15,11 @@ public class Cars {
     }
 
     public static Cars fromCarNames(List<CarName> carNames) {
-        List<Car> receivedCars = new ArrayList<>();
-        for (CarName carName : carNames) {
-            receivedCars.add(Car.create(carName));
-        }
+        List<Car> cars = carNames.stream()
+                .map(Car::create)
+                .collect(Collectors.toList());
 
-        return new Cars(receivedCars);
+        return new Cars(cars);
     }
 
     public static Cars fromCars(List<Car> cars) {
