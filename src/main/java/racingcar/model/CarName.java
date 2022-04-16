@@ -29,4 +29,18 @@ public final class CarName {
     public String get() {
         return name;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof CarName) {
+            CarName carName = (CarName) obj;
+            return this.name.equals(carName.name);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return String.valueOf(name).hashCode();
+    }
 }

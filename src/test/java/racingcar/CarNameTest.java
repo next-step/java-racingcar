@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.CarName;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @DisplayName("자동차 이름 규칙에 대한 테스트")
 public class CarNameTest {
 
@@ -28,5 +30,21 @@ public class CarNameTest {
         Assertions.assertThatThrownBy(() -> CarName.from("abcdef"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 글자수는 5자를 넘을 수 없습니다.");
+    }
+
+    @Test
+    @DisplayName("같은 name값을 가진 carName 객체는 equals가 true이다")
+    void equalsTest() {
+        CarName carName1 = CarName.from("hello");
+        CarName carName2 = CarName.from("hello");
+        assertThat(carName1).isEqualTo(carName2);
+    }
+
+    @Test
+    @DisplayName("같은 name값을 가진 carName 객체는 hashCode가 true이다")
+    void hashCodeTest() {
+        CarName carName1 = CarName.from("hello");
+        CarName carName2 = CarName.from("hello");
+        assertThat(carName1.hashCode()).isEqualTo(carName2.hashCode());
     }
 }
