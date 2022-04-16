@@ -24,16 +24,13 @@ public final class ResultView {
         for (RoundResult roundResult : roundResults) {
             printRoundResult(roundResult.getCarsCount(), roundResult.getCarNames(), roundResult.getStates());
         }
-        if (!roundResults.isEmpty()) {
-            printWinner(roundResults.get(roundResults.size() - 1).getWinner());
-        }
     }
 
     private static void printStartText() {
         System.out.println(START_TEXT);
     }
 
-    public static void printRoundResult(int carsCount, List<CarName> carNames, List<Distance> states) {
+    private static void printRoundResult(int carsCount, List<CarName> carNames, List<Distance> states) {
         for (int i = 0; i < carsCount; i++) {
             printCarInfo(carNames.get(i), states.get(i));
         }
@@ -49,7 +46,7 @@ public final class ResultView {
         System.out.println(sb);
     }
 
-    private static void printWinner(List<CarName> winners) {
+    public static void printWinner(List<CarName> winners) {
         StringBuilder sb = new StringBuilder();
         sb.append(String.join(WINNER_NAME_DELIMITER, getCarName(winners)));
         sb.append(WIN_RESULT_TEXT);

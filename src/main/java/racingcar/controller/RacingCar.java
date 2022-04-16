@@ -17,7 +17,7 @@ public final class RacingCar {
         validate(roundCount);
 
         this.roundCount = roundCount;
-        this.cars = inputCars.getCars();
+        this.cars = inputCars.value();
     }
 
     private void validate(int roundCount) {

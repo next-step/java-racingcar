@@ -2,9 +2,8 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
-import java.util.Queue;
-import java.util.LinkedList;
 import java.util.stream.Collectors;
 
 public final class Cars {
@@ -43,29 +42,15 @@ public final class Cars {
                 .collect(Collectors.toList());
     }
 
-    public static List<CarName> findWinner(int count, List<CarName> names, List<Distance> states) {
-        int maxState = Distance.ZERO.value();
-        Queue<CarName> candidates = new LinkedList<>();
+    public List<CarName> findWinner() {
+        final int maxState = cars.stream()
+                .mapToInt(car -> car.state().value())
+                .max()
+                .orElseThrow(NoSuchElementException::new);
 
-        for (int i = 0; i < count; i++) {
-            maxState = updateCandidate(maxState, candidates, names.get(i), states.get(i).value());
-        }
-
-        return candidates.stream().collect(Collectors.toList());
-    }
-
-    private static int updateCandidate(int maxState, Queue<CarName> candidates, CarName name, int state) {
-        if (maxState > state) {
-            return maxState;
-        }
-
-        if (maxState == state) {
-            candidates.add(name);
-            return maxState;
-        }
-
-        candidates.clear();
-        candidates.add(name);
-        return state;
+        return cars.stream()
+                .filter(car -> car.state().value() == maxState)
+                .map(Car::name)
+                .collect(Collectors.toList());
     }
 }

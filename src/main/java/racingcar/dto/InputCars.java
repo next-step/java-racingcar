@@ -17,7 +17,7 @@ public final class InputCars {
         this.cars = new Cars(cars);
     }
 
-    public Cars getCars() {
+    public Cars value() {
         return cars;
     }
 

@@ -2,7 +2,9 @@ package racingcar;
 
 import racingcar.controller.RacingCar;
 import racingcar.dto.InputCars;
+import racingcar.dto.ResultCars;
 import racingcar.dto.RoundResult;
+import racingcar.model.CarName;
 import racingcar.model.RandomMovingStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -18,5 +20,12 @@ public class RacingCarMain {
         List<RoundResult> result = racingCar.play(new RandomMovingStrategy());
 
         ResultView.print(result);
+
+        if (!result.isEmpty()) {
+            RoundResult roundResult = result.get(result.size() - 1);
+            ResultCars resultCars = ResultCars.of(roundResult.getCarsCount(), roundResult.getCarNames(), roundResult.getStates());
+            List<CarName> winners = resultCars.value().findWinner();
+            ResultView.printWinner(winners);
+        }
     }
 }
