@@ -35,7 +35,7 @@ public class Cars {
                 maxDistance = car.getDistance();
             } else if (maxDistance == car.getDistance()) {
                 winners.append(", " + car.getName());
-            } else if (maxDistance > car.getDistance()) {
+            } else if (maxDistance < car.getDistance()) {
                 winners = new StringBuffer();
                 winners.append(car.getName());
                 maxDistance = car.getDistance();
