@@ -10,6 +10,7 @@ import java.util.Objects;
 
 public final class InputCars {
     public static final String CAR_DELIMITER = ",";
+
     private final Cars cars;
 
     private InputCars(List<Car> cars) {

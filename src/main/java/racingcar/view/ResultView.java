@@ -7,10 +7,10 @@ import racingcar.model.Distance;
 import java.util.List;
 
 public final class ResultView {
-    public static final String START_TEXT = "실행 결과";
-    public static final String START_LINE = " : ";
-    public static final String CAR_STATE = "-";
-    public static final String NEW_LINE = System.lineSeparator();
+    private static final String START_TEXT = "실행 결과";
+    private static final String START_LINE = " : ";
+    private static final String CAR_STATE = "-";
+    private static final String NEW_LINE = System.lineSeparator();
 
     private ResultView() {
         throw new AssertionError();
