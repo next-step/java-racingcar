@@ -17,20 +17,12 @@ public class NamedCars {
     this.namedCars = namedCars;
   }
 
-
   public List<String> getNames() {
     List<String> names = new ArrayList<>();
     for (NamedCar namedCar : namedCars) {
       names.add(namedCar.getCarName());
     }
     return names;
-  }
-
-
-  public void attempt() {
-    for (NamedCar namedCar : namedCars) {
-      namedCar.attempt();
-    }
   }
 
   public List<Integer> getDistances() {
@@ -41,6 +33,16 @@ public class NamedCars {
     return distances;
   }
 
+  public List<NamedCar> getNamedCars() {
+    return namedCars;
+  }
+
+  public void attempt() {
+    for (NamedCar namedCar : namedCars) {
+      namedCar.attempt();
+    }
+  }
+
   public static NamedCars newInstance(String carNames,
       NameValidationStrategy nameValidationStrategy, MoveStrategy moveStrategy) {
     List<NamedCar> cars = Arrays.stream(carNames.split(CAR_NAME_DELIMITER))
@@ -49,4 +51,5 @@ public class NamedCars {
 
     return new NamedCars(cars);
   }
+
 }

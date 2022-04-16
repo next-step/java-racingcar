@@ -2,6 +2,7 @@ package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -25,6 +26,8 @@ class NamedCarsTest {
     //then
     assertThat(namedCars.getDistances()).hasSize(
         carNameInput.split(NamedCars.CAR_NAME_DELIMITER).length).containsOnly(1);
+    assertThat(namedCars.getNames()).containsExactlyElementsOf(
+        Arrays.asList(carNameInput.split(NamedCars.CAR_NAME_DELIMITER)));
   }
 
   @ParameterizedTest
@@ -44,5 +47,7 @@ class NamedCarsTest {
     //then
     assertThat(namedCars.getDistances()).hasSize(
         carNameInput.split(NamedCars.CAR_NAME_DELIMITER).length).containsOnly(attempt);
+    assertThat(namedCars.getNames()).containsExactlyElementsOf(
+        Arrays.asList(carNameInput.split(NamedCars.CAR_NAME_DELIMITER)));
   }
 }
