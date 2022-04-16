@@ -1,3 +1,8 @@
+package domain;
+
+import static util.Validator.validateArgument;
+import static util.RandomNumberGenerator.generate;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,7 +25,7 @@ public class Cars {
 
   public void moveAllCar(int maxNumber) {
     validateMaxRandomNumber(maxNumber);
-    cars.forEach(car -> car.move(RandomNumberGenerator.generate(maxNumber)));
+    cars.forEach(car -> car.move(generate(maxNumber)));
   }
 
   public List<Integer> getPositions() {
@@ -28,7 +33,7 @@ public class Cars {
   }
 
   private void validateCarCount(int carCount) {
-    ArgumentValidator.validate(
+    validateArgument(
         carCount,
         (arg) -> arg >= MIN_CAR_COUNT,
         String.format("차 갯수는 %d대 이상이어야 합니다.", MIN_CAR_COUNT)
@@ -36,7 +41,7 @@ public class Cars {
   }
 
   private void validateMaxRandomNumber(int maxNumber) {
-    ArgumentValidator.validate(
+    validateArgument(
         maxNumber,
         (arg) -> arg > minNumberToMove,
         "최대 랜덤 숫자는 움직일 수 있는 숫자보다 커야합니다.");

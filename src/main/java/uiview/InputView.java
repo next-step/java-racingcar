@@ -1,3 +1,5 @@
+package uiview;
+
 import java.util.Scanner;
 
 public class InputView {

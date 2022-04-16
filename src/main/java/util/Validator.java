@@ -1,11 +1,13 @@
+package util;
+
 import java.util.function.Predicate;
 
-public class ArgumentValidator {
+public class Validator {
 
-  private ArgumentValidator() {
+  private Validator() {
   }
 
-  public static <T> void validate(
+  public static <T> void validateArgument(
       T arg,
       Predicate<T> predication,
       String errorMessage

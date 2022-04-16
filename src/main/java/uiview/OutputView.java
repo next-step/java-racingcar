@@ -1,3 +1,5 @@
+package uiview;
+
 public class OutputView {
 
   public void print(String text, int textRepeatCount) {

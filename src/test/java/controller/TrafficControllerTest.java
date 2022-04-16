@@ -1,3 +1,5 @@
+package controller;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -47,6 +49,7 @@ public class TrafficControllerTest {
     assertDoesNotThrow(() -> TrafficController.init()
         .carCount(VALID_CAR_COUNT)
         .createCars()
+        .tryCount(VALID_TRY_COUNT)
         .start()
     );
   }
@@ -60,12 +63,18 @@ public class TrafficControllerTest {
   }
 
   @Test
-  void start_수행() {
+  void start_실행_성공() {
     assertDoesNotThrow(() -> TrafficController.init()
         .carCount(VALID_CAR_COUNT)
         .createCars()
         .tryCount(VALID_TRY_COUNT)
         .start()
     );
+  }
+
+  @Test
+  void start_실행_실패() {
+    assertThrows(IllegalArgumentException.class, () -> TrafficController.init()
+        .start());
   }
 }

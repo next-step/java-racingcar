@@ -1,5 +1,14 @@
+package controller;
+
+import domain.Cars;
+import uiview.InputView;
+import uiview.OutputView;
+import util.Validator;
+
 public class TrafficController {
 
+  private static final String CAR_COUNT_ERROR_MESSAGE = "차 갯수는 %d 이상이어야 합니다.";
+  private static final String TRY_COUNT_ERROR_MESSAGE = "시도 횟수는 %d 이상이어야 합니다.";
   private static final String MESSAGE_FOR_INPUT_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
   private static final String MESSAGE_FOR_INPUT_TRY_COUNT = "시도할 대수는 몇 회 회가요?";
   private static final String POSITION_MARKER = "-";
@@ -72,18 +81,18 @@ public class TrafficController {
   }
 
   private void validateCarCount(int carCount) {
-    ArgumentValidator.validate(
+    Validator.validateArgument(
         carCount,
         (arg) -> arg >= MIN_CAR_COUNT,
-        String.format("차 갯수는 %d 이상이어야 합니다.", MIN_CAR_COUNT)
+        String.format(CAR_COUNT_ERROR_MESSAGE, MIN_CAR_COUNT)
     );
   }
 
   private void validateTryCount(int tryCount) {
-    ArgumentValidator.validate(
+    Validator.validateArgument(
         tryCount,
         (arg) -> arg >= MIN_TRY_COUNT,
-        String.format("시도 횟수는 %d 이상이어야 합니다.", MIN_TRY_COUNT)
+        String.format(TRY_COUNT_ERROR_MESSAGE, MIN_TRY_COUNT)
     );
   }
 
