@@ -1,9 +1,11 @@
 package racing;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.exception.CarNameMaximumLengthExceedException;
+import racing.exception.DuplicatedCarException;
 import racing.exception.RacingCarNotFoundException;
 
 import java.util.ArrayList;
@@ -64,6 +66,18 @@ public class RacingCarsTest {
             RacingCars racingCars = new RacingCars(cars);
             racingCars.findCarByCarName("없는차");
         });
+    }
 
+    @Test
+    @DisplayName("차 이름이 중복되면 예외발생")
+    void duplicatedCarNameExceptionTest() {
+        assertThatExceptionOfType(DuplicatedCarException.class).isThrownBy(() -> {
+            Car car1 = new Car("CarA");
+            Car car2 = new Car("CarA");
+            List<Car> cars = new ArrayList<>();
+            cars.add(car1);
+            cars.add(car2);
+            new RacingCars(cars);
+        });
     }
 }
