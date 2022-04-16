@@ -2,6 +2,8 @@ package racingcar.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,5 +31,14 @@ class CarTest {
         Car car = new Car(new Position(), new FixedFalseMovingStrategy(), "pobi");
         car.move();
         assertThat(car.currentPosition()).isZero();
+    }
+
+    @ParameterizedTest
+    @DisplayName("자동차 저장된 이름 확인")
+    @ValueSource(strings = {"pobi", "crong", "honux"})
+    void checkSavedNames(String value) {
+        Car car = new Car(new Position(), new FixedFalseMovingStrategy(), value);
+
+        assertThat(car.getName()).isEqualTo(value);
     }
 }

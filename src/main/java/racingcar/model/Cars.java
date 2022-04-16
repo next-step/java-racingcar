@@ -1,19 +1,22 @@
 package racingcar.model;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();
 
-    public Cars(MovingStrategy movingStrategy, String[] names) {
-        this(new Position(), movingStrategy, names);
+    public void create(MovingStrategy movingStrategy, String[] names) {
+        for (String name : names) {
+            cars.add(createCar(new Position(), movingStrategy, name));
+        }
     }
 
-    Cars(Position position, MovingStrategy movingStrategy, String[] names) {
-        for (String name : names) {
-            cars.add(new Car(position, movingStrategy, name));
-        }
+    public Car createCar(Position position, MovingStrategy movingStrategy, String name) {
+        return new Car(position, movingStrategy, name);
     }
 
     public List<Car> getCars() {

@@ -5,11 +5,21 @@ import racingcar.model.MovingStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-public class RacingGame {
+public class RacingGameController {
 
-    public void startRacingGame(MovingStrategy movingStrategy) {
-        Cars cars = new Cars(movingStrategy, InputView.inputNumberOfCars());
+    private final MovingStrategy movingStrategy;
+
+    public RacingGameController(MovingStrategy movingStrategy) {
+        this.movingStrategy = movingStrategy;
+    }
+
+    public void start() {
+        String[] carNames = InputView.inputCarNames();
         int numberOfGames = InputView.inputNumberOfAttempts();
+
+        Cars cars = new Cars();
+        cars.create(movingStrategy, carNames);
+
         progressNumberOfGames(cars, numberOfGames);
     }
 

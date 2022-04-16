@@ -2,6 +2,8 @@ package racingcar.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -14,12 +16,11 @@ class InputViewTest {
         assertThat(InputView.separateInputCars("pobi,crong,honux")).contains("pobi", "crong", "honux");
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("입력된 자동차의 갯수가 1 미만인 경우 예외발생")
-    void checkTheNumberOfEnteredCars() {
-        int inputCarsSize = 0;
-
-        assertThatThrownBy(() -> InputView.checkTheNumberOfInputCars(inputCarsSize))
+    @NullAndEmptySource
+    void checkTheNumberOfEnteredCars(String value) {
+        assertThatThrownBy(() -> InputView.checkTheNumberOfInputCars(value))
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessage("자동차는 1대 이상 입력되어야 합니다.");
     }
@@ -33,5 +34,4 @@ class InputViewTest {
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessage("자동차의 이름은 5자를 초과할 수 없습니다.");
     }
-
 }

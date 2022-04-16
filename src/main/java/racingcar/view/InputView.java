@@ -13,7 +13,7 @@ public class InputView {
         throw new AssertionError();
     }
 
-    public static String[] inputNumberOfCars() {
+    public static String[] inputCarNames() {
         System.out.println(NAME_OF_THE_CARS_PROMPT);
         String[] carNames = separateInputCars(SCANNER.nextLine());
 
@@ -28,24 +28,24 @@ public class InputView {
     }
 
     public static String[] separateInputCars(String value) {
+        checkTheNumberOfInputCars(value);
         return value.split(BASIC_SPLIT_REGEX);
     }
 
-    public static void validateInputValue(String[] values) {
-        checkTheNumberOfInputCars(values.length);
+    private static void validateInputValue(String[] values) {
         for (String value : values) {
             checkLengthCarName(value);
         }
     }
 
-    public static void checkTheNumberOfInputCars(int value) {
-        if (value <= 0) {
+    public static void checkTheNumberOfInputCars(String value) {
+        if (value == null || value.isEmpty()) {
             throw new IllegalStateException("자동차는 1대 이상 입력되어야 합니다.");
         }
     }
 
     public static void checkLengthCarName(String value) {
-        if(value.length() > 5) {
+        if (value.length() > 5) {
             throw new IllegalStateException("자동차의 이름은 5자를 초과할 수 없습니다.");
         }
     }

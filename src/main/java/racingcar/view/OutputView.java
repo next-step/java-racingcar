@@ -21,15 +21,13 @@ public class OutputView {
 
     public static void printCarRacingIntermediateState(Cars cars) {
         for (Car car : cars.getCars()) {
-            System.out.println(car.getName() + " : " + getDashOnDistanceByCars(car.currentPosition()));
+            System.out.println(car.getName() + "\t: " + getDashOnDistanceByCars(car.currentPosition()));
         }
         System.out.print(LINE_DIVISION);
     }
 
-    private static String getDashOnDistanceByCars(int movementDistance) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(MOVE_DISTANCE_MARK.repeat(movementDistance));
-        return stringBuilder.toString();
+    public static String getDashOnDistanceByCars(int movementDistance) {
+        return MOVE_DISTANCE_MARK.repeat(movementDistance);
     }
 
     public static void printWinner(Cars cars) {
