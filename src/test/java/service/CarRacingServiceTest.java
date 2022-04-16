@@ -20,7 +20,7 @@ class CarRacingServiceTest {
     @DisplayName("자동차 등록 테스트 - 총 자동차 대수와 각 자동차의 위치 확인")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 5, 100})
-    void name(int carCount) {
+    void carRegisterTest(int carCount) {
         carRacingService.registerNewCars(carCount);
         carRacingService =  new CarRacingService(TestMoveStrategy.getInstance(true));
         Cars cars = (Cars) ReflectionTestUtils.getField(carRacingService, "cars");
@@ -32,7 +32,7 @@ class CarRacingServiceTest {
     @DisplayName("여러 자동차의 주행 확인")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:false", "3:true", "5:true", "100:true", "200:false"}, delimiter = ':')
-    void name2(int attemptCount, boolean movable) {
+    void carRacingTest(int attemptCount, boolean movable) {
         carRacingService =  new CarRacingService(TestMoveStrategy.getInstance(movable));
         carRacingService.registerNewCars(5);
         List<Positions> positionsList = carRacingService.startRacing(attemptCount);
