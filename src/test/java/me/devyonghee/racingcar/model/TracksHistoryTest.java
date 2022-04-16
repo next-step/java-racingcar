@@ -28,7 +28,6 @@ class TracksHistoryTest {
         assertThatIllegalArgumentException().isThrownBy(() -> TracksHistory.from(Collections.emptyList()));
     }
 
-
     @Test
     @DisplayName("주어진 리스트 그대로 반환")
     void list() {
