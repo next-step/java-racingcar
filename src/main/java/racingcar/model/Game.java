@@ -10,16 +10,16 @@ public class Game {
 
     private final TrialCount trialCount;
 
-    private final MovementChecker movementChecker;
+    private final RuleChecker ruleChecker;
 
-    public Game(Cars cars, TrialCount trialCount, MovementChecker movementChecker) {
+    public Game(Cars cars, TrialCount trialCount, RuleChecker ruleChecker) {
         this.cars = cars;
         this.trialCount = trialCount;
-        this.movementChecker = movementChecker;
+        this.ruleChecker = ruleChecker;
     }
 
     public Game(Cars cars, TrialCount trialCount) {
-        this(cars, trialCount, new MovementChecker());
+        this(cars, trialCount, new RuleChecker());
     }
 
     public List<CarLocationResult> getInitCarLocationResult() {
@@ -28,7 +28,7 @@ public class Game {
 
     public List<CarLocationResult> play() {
         List<Integer> randomNumberList = RandomNumberUtil.generateRandomNumberList(cars.size());
-        cars.move(movementChecker.checkMovableList(randomNumberList));
+        cars.move(ruleChecker.checkRule(randomNumberList));
         return cars.getCarLocationResult();
     }
 
