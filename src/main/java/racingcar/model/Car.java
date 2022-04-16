@@ -1,7 +1,9 @@
 package racingcar.model;
 
 public class Car {
-    private final StringBuilder sb = new StringBuilder();
+    private final static int MAX_CAR_NAME = 5;
+
+    private StringBuilder showCarDistance;
 
     private String carName;
     private int distance = 0;
@@ -11,7 +13,6 @@ public class Car {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
         this.carName = carName;
-        sb.append(carName + " : ");
     }
 
     public String getCarName() {
@@ -19,13 +20,12 @@ public class Car {
     }
 
     private boolean isOverFive(String carName) {
-        return carName.length() > 6;
+        return carName.length() > MAX_CAR_NAME;
     }
 
     public boolean isMove(MovingStrategy movingStrategy){
         if(movingStrategy.movable()){
             distance += 1;
-            sb.append("-");
             return true;
         }
         return false;
@@ -35,7 +35,12 @@ public class Car {
         return this.distance;
     }
 
-    public String getShowDistance(){
-        return sb.toString();
+    public String showCarDistance() {
+        showCarDistance = new StringBuilder();
+        for (int i = 0; i < distance; i++) {
+            showCarDistance.append("-");
+        }
+        return showCarDistance.toString();
     }
+
 }

@@ -7,12 +7,10 @@ import racingcar.service.GameService;
 
 public class Controller {
     public static void main(String[] args) {
-        InputView.askCars();
-        String carList = InputView.nextString();
+        String carList = InputView.askCars( );
         Cars cars = new Cars(carList);
 
-        InputView.askTryCount();
-        int playCount = InputView.nextInt();
+        int playCount = InputView.askTryCount();
 
         GameService.start(cars, playCount);
 

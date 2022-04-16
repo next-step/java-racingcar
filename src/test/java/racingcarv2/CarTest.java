@@ -47,13 +47,13 @@ class CarTest {
         assertThat(car.getDistance()).isEqualTo(3);
     }
 
-    @DisplayName("전진 조건에 의한 화면 표현 테스트")
-    @Test
-    void show_distance_test(){
-        Car car = new Car("pobi");
-        car.isMove(() -> true);
-        car.isMove(() -> true);
-        car.isMove(() -> true);
-        assertThat(car.getShowDistance()).isEqualTo("pobi : ---");
-    }
+//    @DisplayName("전진 조건에 의한 화면 표현 테스트")
+//    @Test
+//    void show_distance_test(){
+//        Car car = new Car("pobi");
+//        car.isMove(() -> true);
+//        car.isMove(() -> true);
+//        car.isMove(() -> true);
+//        assertThat(car.getShowDistance()).isEqualTo("pobi : ---");
+//    }
 }

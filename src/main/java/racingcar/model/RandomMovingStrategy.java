@@ -10,10 +10,7 @@ public class RandomMovingStrategy implements MovingStrategy{
 
     @Override
     public boolean movable() {
-        if(getRandomNumber() >= FORWARD_NUM){
-            return true;
-        }
-        return false;
+        return getRandomNumber() >= FORWARD_NUM;
     }
 
     private int getRandomNumber(){

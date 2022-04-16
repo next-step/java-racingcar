@@ -8,11 +8,12 @@ public class GameService {
         int startCount = 0;
 
         ResultView.printStartResult();
-        while ( startCount != playCount) {
+        while ( startCount != playCount ) {
             cars.play();
-            ResultView.printCars(cars);
-            System.out.println("\n");
+            cars.appendCarsStatus();
             startCount++;
         }
+        ResultView.printCars(cars);
+
     }
 }
