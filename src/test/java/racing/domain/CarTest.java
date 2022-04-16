@@ -18,6 +18,7 @@ class CarTest {
     Car car = Car.newInstance(carName, new MustMoveStrategy());
 
     car.attempt();
+
     assertAll(
         () -> assertThat(car.getDistance()).isEqualTo(1),
         () -> assertThat(car.getCarName()).isEqualTo(carName)
@@ -32,6 +33,7 @@ class CarTest {
     for (int i = 0; i < attempt; i++) {
       car.attempt();
     }
+
     assertAll(
         () -> assertThat(car.getDistance()).isEqualTo(expected),
         () -> assertThat(car.getCarName()).isEqualTo(carName)

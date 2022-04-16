@@ -3,9 +3,9 @@ package racing.domain;
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import racing.domain.strategy.MoveStrategy;
 
 
@@ -19,19 +19,17 @@ public class Cars {
   }
 
   public List<String> getNames() {
-    List<String> names = new ArrayList<>();
-    for (Car car : values) {
-      names.add(car.getCarName());
-    }
-    return names;
+    return values
+        .stream()
+        .map(Car::getCarName)
+        .collect(Collectors.toList());
   }
 
   public List<Integer> getDistances() {
-    List<Integer> distances = new ArrayList<>();
-    for (Car c : values) {
-      distances.add(c.getDistance());
-    }
-    return distances;
+    return values
+        .stream()
+        .map(Car::getDistance)
+        .collect(Collectors.toList());
   }
 
   public void attempt() {
