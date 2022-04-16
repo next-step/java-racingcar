@@ -1,34 +1,45 @@
 package racing.controller;
 
-import racing.domain.Cars;
+import racing.domain.NamedCars;
 import racing.domain.strategy.MoveStrategy;
-import racing.view.RacingInputView;
-import racing.view.RacingOutputView;
+import racing.domain.strategy.NameValidationStrategy;
+import racing.domain.strategy.WinnerCarStrategy;
+import racing.view.RacingCarNameInputView;
+import racing.view.RacingCarNameOutputView;
 
 public class RacingController {
 
-  private final RacingInputView racingInputView;
-  private final RacingOutputView racingOutputView;
+  private final RacingCarNameInputView racingCarNameInputView;
+  private final RacingCarNameOutputView racingCarNameOutputView;
   private final MoveStrategy moveStrategy;
+  private final NameValidationStrategy nameValidationStrategy;
+  private final WinnerCarStrategy winnerCarStrategy;
 
-  public RacingController(RacingInputView racingInputView,
-      RacingOutputView racingOutputView, MoveStrategy moveStrategy) {
-    this.racingInputView = racingInputView;
-    this.racingOutputView = racingOutputView;
+  public RacingController(RacingCarNameInputView racingCarNameInputView,
+      RacingCarNameOutputView racingCarNameOutputView,
+      MoveStrategy moveStrategy, NameValidationStrategy nameValidationStrategy,
+      WinnerCarStrategy winnerCarStrategy) {
+    this.racingCarNameInputView = racingCarNameInputView;
+    this.racingCarNameOutputView = racingCarNameOutputView;
     this.moveStrategy = moveStrategy;
+    this.nameValidationStrategy = nameValidationStrategy;
+    this.winnerCarStrategy = winnerCarStrategy;
   }
 
   public void startGame() {
-    int carCount = racingInputView.getRacingCarCount();
-    int attemptCount = racingInputView.getRacingAttemptCount();
+    String carNames = racingCarNameInputView.getRacingCarNames();
+    int attemptCount = racingCarNameInputView.getRacingAttemptCount();
 
-    racingOutputView.printResultTitle();
+    racingCarNameOutputView.printResultTitle();
 
-    Cars cars = Cars.newInstance(carCount, moveStrategy);
-
+    NamedCars cars = NamedCars.newInstance(carNames, nameValidationStrategy, moveStrategy);
     for (int i = 0; i < attemptCount; i++) {
       cars.attempt();
-      racingOutputView.printCarDistance(cars);
+      racingCarNameOutputView.printCarNameAndDistance(cars);
     }
+
+    NamedCars winners = winnerCarStrategy.getWinners(cars);
+    racingCarNameOutputView.printWinner(winners);
+
   }
 }
