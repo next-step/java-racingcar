@@ -13,8 +13,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class PositionTest {
 
-    private static final int TEN = 10;
-    private static final int HUNDRED = 100;
+    private static final int SMALL_POSITION = 1;
+    private static final int BIG_POSITION = 100;
 
     @DisplayName("생성자에 음수 전달하면 예외")
     @Test
@@ -48,8 +48,8 @@ class PositionTest {
     private static Stream<Arguments> provideArgumentsForEquals() {
         return Stream.of(
                 Arguments.of(new Position(), new Position(), true),
-                Arguments.of(new Position(TEN), new Position(TEN), true),
-                Arguments.of(new Position(TEN), new Position(HUNDRED), false)
+                Arguments.of(new Position(SMALL_POSITION), new Position(SMALL_POSITION), true),
+                Arguments.of(new Position(SMALL_POSITION), new Position(BIG_POSITION), false)
         );
     }
 
@@ -66,9 +66,9 @@ class PositionTest {
 
         return Stream.of(
                 Arguments.of(new Position(), new Position(), SAME),
-                Arguments.of(new Position(TEN), new Position(TEN), SAME),
-                Arguments.of(new Position(HUNDRED), new Position(TEN), GREATER),
-                Arguments.of(new Position(TEN), new Position(HUNDRED), SMALLER)
+                Arguments.of(new Position(SMALL_POSITION), new Position(SMALL_POSITION), SAME),
+                Arguments.of(new Position(BIG_POSITION), new Position(SMALL_POSITION), GREATER),
+                Arguments.of(new Position(SMALL_POSITION), new Position(BIG_POSITION), SMALLER)
         );
     }
 }

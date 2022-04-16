@@ -14,9 +14,9 @@ class CarsTest {
     private static final String POBI = "pobi";
     private static final String CRONG = "crong";
     private static final String HONUX = "honux";
-    private static final int ZERO = 0;
-    private static final int FIVE = 5;
-    private static final int TEN = 10;
+    private static final int SMALL_POSITION = 0;
+    private static final int MIDDLE_POSITION = 5;
+    private static final int BIG_POSITION = 10;
 
     @DisplayName("중복 이름이 있으면 예외")
     @Test
@@ -29,25 +29,28 @@ class CarsTest {
 
     @Test
     void getCurrentPositions() {
-        List<Car> carList = List.of(new Car(POBI, ZERO), new Car(CRONG, FIVE), new Car(HONUX, TEN));
+        List<Car> carList = List.of(
+                new Car(POBI, SMALL_POSITION),
+                new Car(CRONG, MIDDLE_POSITION),
+                new Car(HONUX, BIG_POSITION));
         Cars cars = new Cars(carList);
 
         Map<CarName, Position> currentPositions = cars.getCurrentPositions();
 
         assertThat(currentPositions).containsOnly(
-                entry(new CarName(POBI), new Position(ZERO)),
-                entry(new CarName(CRONG), new Position(FIVE)),
-                entry(new CarName(HONUX), new Position(TEN))
+                entry(new CarName(POBI), new Position(SMALL_POSITION)),
+                entry(new CarName(CRONG), new Position(MIDDLE_POSITION)),
+                entry(new CarName(HONUX), new Position(BIG_POSITION))
         );
     }
 
     @Test
     void getMostDistantCars() {
-        List<Car> carList = List.of(new Car(POBI, ZERO), new Car(CRONG, TEN), new Car(HONUX, TEN));
+        List<Car> carList = List.of(new Car(POBI, SMALL_POSITION), new Car(CRONG, BIG_POSITION), new Car(HONUX, BIG_POSITION));
         Cars cars = new Cars(carList);
 
         List<Car> mostDistantCars = cars.getMostDistantCars();
 
-        assertThat(mostDistantCars).containsExactly(new Car(CRONG, TEN), new Car(HONUX, TEN));
+        assertThat(mostDistantCars).containsExactly(new Car(CRONG, BIG_POSITION), new Car(HONUX, BIG_POSITION));
     }
 }

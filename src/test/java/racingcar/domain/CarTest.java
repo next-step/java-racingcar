@@ -13,8 +13,8 @@ class CarTest {
 
     private static final String POBI = "pobi";
     private static final String CRONG = "crong";
-    private static final int ZERO = 0;
-    private static final int TEN = 10;
+    private static final int SMALL_POSITION = 1;
+    private static final int BIG_POSITION = 100;
 
     @Test
     void move_IncreasesPosition_IfConditionIsTrue() {
@@ -57,9 +57,9 @@ class CarTest {
     private static Stream<Arguments> provideArgumentsForEquals() {
         return Stream.of(
                 Arguments.of(new Car(POBI), new Car(POBI), true),
-                Arguments.of(new Car(POBI, TEN), new Car(POBI, TEN), true),
-                Arguments.of(new Car(POBI, TEN), new Car(POBI, ZERO), false),
-                Arguments.of(new Car(POBI, ZERO), new Car(CRONG, ZERO), false)
+                Arguments.of(new Car(POBI, BIG_POSITION), new Car(POBI, BIG_POSITION), true),
+                Arguments.of(new Car(POBI, BIG_POSITION), new Car(POBI, SMALL_POSITION), false),
+                Arguments.of(new Car(POBI, SMALL_POSITION), new Car(CRONG, SMALL_POSITION), false)
         );
     }
 
@@ -76,9 +76,9 @@ class CarTest {
 
         return Stream.of(
                 Arguments.of(new Car(POBI), new Car(POBI), SAME),
-                Arguments.of(new Car(POBI, TEN), new Car(POBI, TEN), SAME),
-                Arguments.of(new Car(POBI, TEN), new Car(POBI, ZERO), GREATER),
-                Arguments.of(new Car(POBI, ZERO), new Car(POBI, TEN), SMALLER)
+                Arguments.of(new Car(POBI, BIG_POSITION), new Car(POBI, BIG_POSITION), SAME),
+                Arguments.of(new Car(POBI, BIG_POSITION), new Car(POBI, SMALL_POSITION), GREATER),
+                Arguments.of(new Car(POBI, SMALL_POSITION), new Car(POBI, BIG_POSITION), SMALLER)
         );
     }
 }
