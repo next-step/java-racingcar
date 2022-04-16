@@ -1,6 +1,6 @@
 package domain;
 
-import util.RandomNumberGenerator;
+import util.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,8 @@ public class Cars {
         }
     }
 
-    public void moveCars() {
-        cars.forEach(car -> car.move(RandomNumberGenerator.getRandomNumber()));
+    public void moveCars(MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.move(moveStrategy));
     }
 
     public List<Integer> getCarsPosition() {
