@@ -14,7 +14,7 @@ public class CarGame {
 
     public void play(MoveStrategy strategy) {
         for (Car car : carList) {
-            car.move(strategy.canMove());
+            car.attempt(strategy);
         }
     }
 

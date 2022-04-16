@@ -12,10 +12,14 @@ public class Car {
         this.position = position;
     }
 
-    public void move(boolean canMove) {
-        if (canMove) {
-            position++;
+    public void attempt(MoveStrategy strategy) {
+        if (strategy.canMove()) {
+            move();
         }
+    }
+
+    public void move() {
+        position++;
     }
 
     public int getPosition() {
