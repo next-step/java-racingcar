@@ -1,6 +1,7 @@
 package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -26,10 +27,12 @@ class CarsTest {
     cars.attempt();
 
     //then
-    assertThat(cars.getDistances()).hasSize(
-        carNameInput.split(Cars.CAR_NAME_DELIMITER).length).containsOnly(1);
-    assertThat(cars.getNames()).containsExactlyElementsOf(
-        Arrays.asList(carNameInput.split(Cars.CAR_NAME_DELIMITER)));
+    assertAll(
+        () -> assertThat(cars.getDistances()).hasSize(
+            carNameInput.split(Cars.CAR_NAME_DELIMITER).length).containsOnly(1),
+        () -> assertThat(cars.getNames()).containsExactlyElementsOf(
+            Arrays.asList(carNameInput.split(Cars.CAR_NAME_DELIMITER)))
+    );
   }
 
   @ParameterizedTest
@@ -46,10 +49,12 @@ class CarsTest {
     }
 
     //then
-    assertThat(cars.getDistances()).hasSize(
-        carNameInput.split(Cars.CAR_NAME_DELIMITER).length).containsOnly(attempt);
-    assertThat(cars.getNames()).containsExactlyElementsOf(
-        Arrays.asList(carNameInput.split(Cars.CAR_NAME_DELIMITER)));
+    assertAll(
+        () -> assertThat(cars.getDistances()).hasSize(
+            carNameInput.split(Cars.CAR_NAME_DELIMITER).length).containsOnly(attempt),
+        () -> assertThat(cars.getNames()).containsExactlyElementsOf(
+            Arrays.asList(carNameInput.split(Cars.CAR_NAME_DELIMITER)))
+    );
   }
 
   @RepeatedTest(100)

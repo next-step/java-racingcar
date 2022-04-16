@@ -1,6 +1,7 @@
 package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,9 +18,10 @@ class CarTest {
     Car car = Car.newInstance(carName, new MustMoveStrategy());
 
     car.attempt();
-
-    assertThat(car.getDistance()).isEqualTo(1);
-    assertThat(car.getCarName()).isEqualTo(carName);
+    assertAll(
+        () -> assertThat(car.getDistance()).isEqualTo(1),
+        () -> assertThat(car.getCarName()).isEqualTo(carName)
+    );
   }
 
   @ParameterizedTest
@@ -30,9 +32,10 @@ class CarTest {
     for (int i = 0; i < attempt; i++) {
       car.attempt();
     }
-
-    assertThat(car.getDistance()).isEqualTo(expected);
-    assertThat(car.getCarName()).isEqualTo(carName);
+    assertAll(
+        () -> assertThat(car.getDistance()).isEqualTo(expected),
+        () -> assertThat(car.getCarName()).isEqualTo(carName)
+    );
   }
 
 }
