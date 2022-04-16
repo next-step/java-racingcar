@@ -10,25 +10,26 @@ import java.util.stream.Collectors;
 
 public class Main {
 
-    private static Cars cars;
-    private static RacingCarGame game;
-
     public static void main(String[] args) {
-        initGame();
-        startGame();
-        finishGame();
+        Cars cars = createCars();
+        RacingCarGame game = createGame(cars);
+        startGame(game, cars);
+        finishGame(cars);
     }
 
-    private static void initGame() {
-        List<String> names = InputView.promptNames();
-        List<Car> carList = names.stream()
+    private static Cars createCars() {
+        List<Car> cars = InputView.promptNames()
+                .stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
-        cars = new Cars(carList);
-        game = new RacingCarGame(Main.cars, InputView.promptRounds(), new RandomMoveStrategy());
+        return new Cars(cars);
     }
 
-    private static void startGame() {
+    private static RacingCarGame createGame(Cars cars) {
+        return new RacingCarGame(cars, InputView.promptRounds(), new RandomMoveStrategy());
+    }
+
+    private static void startGame(RacingCarGame game, Cars cars) {
         OutputView.printRaceStart();
         while (!game.isFinished()) {
             game.moveCars();
@@ -36,7 +37,7 @@ public class Main {
         }
     }
 
-    private static void finishGame() {
+    private static void finishGame(Cars cars) {
         List<Car> mostDistantCars = cars.getMostDistantCars();
         OutputView.printWinners(mostDistantCars);
     }
