@@ -2,8 +2,8 @@ package racingcar.ui;
 
 import java.util.List;
 
-import racingcar.Car;
-import racingcar.CarStadium;
+import racingcar.domain.Car;
+import racingcar.domain.CarStadium;
 
 public class ResultView {
 	private final InputView inputView;
