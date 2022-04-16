@@ -23,7 +23,8 @@ public class RacingService {
 
     private static RacingCars generateCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        Arrays.stream(carNames).forEach(carName -> cars.add(generateCar(carName)));
+        Arrays.stream(carNames)
+                .forEach(carName -> cars.add(generateCar(carName)));
 
         return new RacingCars(cars);
     }
@@ -34,7 +35,8 @@ public class RacingService {
 
     private static RacingGameManagement initRacingGameManagement(RacingCars racingCars) {
         Map<Car, CarDrivingTypes> racingGameManagement = new HashMap<>();
-        racingCars.stream().forEach(car -> racingGameManagement.put(car, new CarDrivingTypes(new ArrayList<>())));
+        racingCars.stream()
+                .forEach(car -> racingGameManagement.put(car, new CarDrivingTypes(new ArrayList<>())));
 
         return new RacingGameManagement(racingGameManagement);
     }

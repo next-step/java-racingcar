@@ -24,7 +24,9 @@ public class RacingCars implements Iterable<Car> {
     }
 
     private void validateCarNameDuplicated() {
-        Set<String> collect = cars.stream().map(Car::getCarName).collect(Collectors.toSet());
+        Set<String> collect = cars.stream()
+                .map(Car::getCarName)
+                .collect(Collectors.toSet());
         if (collect.size() < cars.size()) {
             throw new DuplicatedCarException("차 이름은 중복으로 지정할 수 없습니다.");
         }
@@ -37,7 +39,10 @@ public class RacingCars implements Iterable<Car> {
     }
 
     public Car findCarByCarName(String carName) {
-        return cars.stream().filter(c -> c.getCarName().equals(carName)).findFirst().orElseThrow(() -> new RacingCarNotFoundException(carName));
+        return cars.stream()
+                .filter(c -> c.getCarName().equals(carName))
+                .findFirst()
+                .orElseThrow(() -> new RacingCarNotFoundException(carName));
     }
 
     public Stream<Car> stream() {

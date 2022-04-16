@@ -13,7 +13,9 @@ public class WinnerRacingCars {
     }
 
     public String getCars() {
-        return cars.stream().map(Car::getCarName).collect(Collectors.joining(DELIMITER));
+        return cars.stream()
+                .map(Car::getCarName)
+                .collect(Collectors.joining(DELIMITER));
     }
 
     @Override

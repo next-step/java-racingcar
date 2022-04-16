@@ -18,7 +18,8 @@ public class RacingGame {
 
     public void StartRacing() {
         validateObjects();
-        IntStream.range(0, attemptsCount).forEach(i -> moveCars());
+        IntStream.range(0, attemptsCount)
+                .forEach(i -> moveCars());
     }
 
     private void validateObjects() {
