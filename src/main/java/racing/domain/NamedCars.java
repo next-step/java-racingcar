@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import racing.domain.strategy.MoveStrategy;
-import racing.domain.strategy.NameValidationStrategy;
 
 
 public class NamedCars {
@@ -43,10 +42,9 @@ public class NamedCars {
     }
   }
 
-  public static NamedCars newInstance(String carNames,
-      NameValidationStrategy nameValidationStrategy, MoveStrategy moveStrategy) {
+  public static NamedCars newInstance(String carNames, MoveStrategy moveStrategy) {
     List<NamedCar> cars = Arrays.stream(carNames.split(CAR_NAME_DELIMITER))
-        .map(n -> new NamedCar(new CarName(n, nameValidationStrategy), moveStrategy))
+        .map(n -> new NamedCar(new CarName(n), moveStrategy))
         .collect(Collectors.toList());
 
     return new NamedCars(cars);

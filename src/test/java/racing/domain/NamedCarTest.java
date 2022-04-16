@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racing.domain.strategy.MustMoveStrategy;
-import racing.domain.strategy.NameLengthValidationStrategy;
 
 class NamedCarTest {
 
@@ -17,8 +16,7 @@ class NamedCarTest {
   @DisplayName("앞으로 1회 이동했을 때 이동 거리와 자동차 이름 확인")
   void oneMoveTest() {
     String carName = "car";
-    NamedCar namedCar = NamedCar.newInstance(carName, new NameLengthValidationStrategy(),
-        new MustMoveStrategy());
+    NamedCar namedCar = NamedCar.newInstance(carName, new MustMoveStrategy());
 
     namedCar.attempt();
 
@@ -30,8 +28,7 @@ class NamedCarTest {
   @DisplayName("앞으로 n회 이동했을 때 이동 거리와 자동차 이름 확인")
   @CsvSource(value = {"A|1|1", "B|2|2", "C|0|0", "D|10|10", "E|100|100"}, delimiter = '|')
   void nMoveTest(String carName, int n, int expected) {
-    NamedCar namedCar = NamedCar.newInstance(carName, new NameLengthValidationStrategy(),
-        new MustMoveStrategy());
+    NamedCar namedCar = NamedCar.newInstance(carName, new MustMoveStrategy());
     for (int i = 0; i < n; i++) {
       namedCar.attempt();
     }
@@ -45,8 +42,7 @@ class NamedCarTest {
   @CsvSource(value = {"test|1", "test2|2", "test3|0", "test4|10", "test5|100"}, delimiter = '|')
   void randomMoveTest(String carName, int attempt) {
     //given
-    NamedCar namedCar = NamedCar.newInstance(carName, new NameLengthValidationStrategy(),
-        new MustMoveStrategy());
+    NamedCar namedCar = NamedCar.newInstance(carName, new MustMoveStrategy());
 
     //when
     for (int i = 0; i < attempt; i++) {

@@ -1,7 +1,6 @@
 package racing.domain;
 
 import racing.domain.strategy.MoveStrategy;
-import racing.domain.strategy.NameValidationStrategy;
 
 public class NamedCar extends Car {
 
@@ -16,8 +15,7 @@ public class NamedCar extends Car {
     return carName.getValue();
   }
 
-  public static NamedCar newInstance(String name, NameValidationStrategy nameValidationStrategy,
-      MoveStrategy moveStrategy) {
-    return new NamedCar(new CarName(name, nameValidationStrategy), moveStrategy);
+  public static NamedCar newInstance(String name, MoveStrategy moveStrategy) {
+    return new NamedCar(new CarName(name), moveStrategy);
   }
 }

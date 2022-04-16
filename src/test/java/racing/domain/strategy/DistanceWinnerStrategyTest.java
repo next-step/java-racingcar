@@ -15,10 +15,8 @@ class DistanceWinnerStrategyTest {
   @DisplayName("자동차들 중 제일 멀리 이동한 자동차가 선정되는지 확인")
   void winnerTest() {
     //given
-    NamedCars winCars = NamedCars.newInstance("win1,win2", new NameLengthValidationStrategy(),
-        new MustMoveStrategy());
-    NamedCars loseCars = NamedCars.newInstance("lose1,lose2,lose3",
-        new NameLengthValidationStrategy(), new MustMoveStrategy());
+    NamedCars winCars = NamedCars.newInstance("win1,win2", new MustMoveStrategy());
+    NamedCars loseCars = NamedCars.newInstance("lose1,lose2,lose3", new MustMoveStrategy());
     Random random = new Random();
     DistanceWinnerStrategy distanceWinnerStrategy = new DistanceWinnerStrategy();
     int winAttempt = 100;
