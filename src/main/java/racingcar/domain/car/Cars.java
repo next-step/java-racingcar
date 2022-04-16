@@ -1,6 +1,6 @@
 package racingcar.domain.car;
 
-import racingcar.domain.car.strategy.CarActionStrategyFactory;
+import racingcar.domain.car.strategy.CarActionStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,21 +10,41 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
+        validateCars(cars);
         this.cars = cars;
     }
 
-    public Cars(Integer carCount) {
-        this.cars = new ArrayList<>();
-
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+    private void validateCars(List<Car> cars) {
+        if (isNullOrEmpty(cars)) {
+            throw new IllegalArgumentException("빈 컬렉션은 Cars를 생성 할 수 없다.");
         }
     }
 
-    public void act() {
-        for (Car car : cars) {
-            car.act(CarActionStrategyFactory.resolve());
+    private boolean isNullOrEmpty(List<Car> cars) {
+        return cars == null || cars.isEmpty();
+    }
+
+    public Cars(int carCount, CarActionStrategy carActionStrategy) {
+        validateCarCountsAndStrategy(carCount, carActionStrategy);
+        this.cars = new ArrayList<>();
+
+        for (int i = 0; i < carCount; i++) {
+            cars.add(new Car(carActionStrategy));
         }
+    }
+
+    private void validateCarCountsAndStrategy(int carCount, CarActionStrategy carActionStrategy) {
+        if (carCount < 1) {
+            throw new IllegalArgumentException("Cars는 최소 1대 이상이어야 합니다.");
+        }
+
+        if (carActionStrategy == null) {
+            throw new IllegalArgumentException("carActionStrategy는 null일 수 없습니다.");
+        }
+    }
+
+    public Cars act() {
+        return new Cars(cars.stream().map(Car::act).collect(Collectors.toList()));
     }
 
     public List<Integer> getCarPositions() {

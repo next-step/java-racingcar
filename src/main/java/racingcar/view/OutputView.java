@@ -1,7 +1,8 @@
 package racingcar.view;
 
-import racingcar.dto.RoundResult;
-import racingcar.dto.RoundResults;
+import racingcar.domain.round.Round;
+
+import java.util.List;
 
 public class OutputView {
     private static final String START_LINE = "|";
@@ -15,17 +16,17 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printGameResult(RoundResults roundResults) {
+    public static void printGameResult(List<Round> rounds) {
         System.out.println("실행 결과");
 
-        for (RoundResult roundResult : roundResults.getRoundResults()) {
-            printRoundResult(roundResult);
+        for (Round round : rounds) {
+            printRoundResult(round);
         }
     }
 
-    public static void printRoundResult(RoundResult roundResult) {
-        for (Integer carPosition : roundResult.getCarsPositions()) {
-            printPosition(carPosition);
+    public static void printRoundResult(Round round) {
+        for (Integer position : round.getCars().getCarPositions()) {
+            printPosition(position);
         }
         System.out.println();
     }
