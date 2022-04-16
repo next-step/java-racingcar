@@ -1,7 +1,6 @@
 package racing;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.Collectors;
 
 public class WinnerRacingCars {
     private static final String WINNER_MESSAGE = "가 최종 우승했습니다.";
@@ -14,13 +13,7 @@ public class WinnerRacingCars {
     }
 
     public String getCars() {
-        List<String> carList = new ArrayList<>();
-
-        for (Car car : cars) {
-            carList.add(car.getCarName());
-        }
-
-        return String.join(DELIMITER, carList);
+        return cars.stream().map(Car::getCarName).collect(Collectors.joining(DELIMITER));
     }
 
     @Override

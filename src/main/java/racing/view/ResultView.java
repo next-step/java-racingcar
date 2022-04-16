@@ -37,9 +37,7 @@ public class ResultView {
 
     private static RacingViewRepository initRacingResult(RacingCars racingCars) {
         Map<String, StringBuilder> result = new HashMap<>();
-        for (Car car : racingCars) {
-            result.put(car.getCarName(), new StringBuilder());
-        }
+        racingCars.stream().forEach(car -> result.put(car.getCarName(), new StringBuilder()));
 
         return new RacingViewRepository(result);
     }
@@ -51,7 +49,6 @@ public class ResultView {
             addCarString(racingViewRepository, carDriving, carName);
             racingViewRepository.print(carName);
         }
-        
 
         System.out.println();
     }

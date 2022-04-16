@@ -2,6 +2,7 @@ package racing;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class CarDrivingTypes implements Iterable<CarDrivingType> {
     private final List<CarDrivingType> carDrivingTypes;
@@ -32,6 +33,10 @@ public class CarDrivingTypes implements Iterable<CarDrivingType> {
 
     public CarDrivingType getCarDrivingType(int attemptsNumber) {
         return carDrivingTypes.get(attemptsNumber);
+    }
+
+    public Stream<CarDrivingType> stream() {
+        return carDrivingTypes.stream();
     }
 
     @Override

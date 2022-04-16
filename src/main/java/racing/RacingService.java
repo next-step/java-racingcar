@@ -3,14 +3,14 @@ package racing;
 import racing.view.InputView;
 import racing.view.ResultView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class RacingService {
+
+    public static final String REGEX = ",";
+
     public void StartRacingGame() {
-        String[] carNames = InputView.inputRacingCarNames().split(",");
+        String[] carNames = InputView.inputRacingCarNames().split(REGEX);
         int attemptsCount = InputView.inputAttemptsCount();
 
         RacingCars racingCars = generateCars(carNames);
@@ -23,9 +23,8 @@ public class RacingService {
 
     private static RacingCars generateCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(generateCar(carName));
-        }
+        Arrays.stream(carNames).forEach(carName -> cars.add(generateCar(carName)));
+
         return new RacingCars(cars);
     }
 
@@ -35,10 +34,8 @@ public class RacingService {
 
     private static RacingGameManagement initRacingGameManagement(RacingCars racingCars) {
         Map<Car, CarDrivingTypes> racingGameManagement = new HashMap<>();
+        racingCars.stream().forEach(car -> racingGameManagement.put(car, new CarDrivingTypes(new ArrayList<>())));
 
-        for (Car car : racingCars) {
-            racingGameManagement.put(car, new CarDrivingTypes(new ArrayList<CarDrivingType>()));
-        }
         return new RacingGameManagement(racingGameManagement);
     }
 }

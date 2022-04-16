@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingCars implements Iterable<Car> {
     private final List<Car> cars;
@@ -37,6 +38,10 @@ public class RacingCars implements Iterable<Car> {
 
     public Car findCarByCarName(String carName) {
         return cars.stream().filter(c -> c.getCarName().equals(carName)).findFirst().orElseThrow(() -> new RacingCarNotFoundException(carName));
+    }
+
+    public Stream<Car> stream() {
+        return cars.stream();
     }
 
     @Override
