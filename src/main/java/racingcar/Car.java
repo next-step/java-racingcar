@@ -4,6 +4,7 @@ public class Car implements Comparable<Car> {
     private static final int MOVE_CONDITION = 4;
     private static final int RANGE_START_RANDOM_NUMBER = 0;
     private static final int RANGE_END_RANDOM_NUMBER = 9;
+    private static final String CAR_NAME_COLON = " : ";
     private final CarName carName;
     private final Position position;
 
@@ -18,8 +19,8 @@ public class Car implements Comparable<Car> {
     }
 
     public Car(Car car) {
-        this.carName = car.carName;
-        this.position = car.position;
+        this.carName = new CarName(car.carName);
+        this.position = new Position(car.position);
     }
 
     public void move(int generateCondition) {
@@ -28,7 +29,7 @@ public class Car implements Comparable<Car> {
         }
 
         if (isMove(generateCondition)) {
-            position.add();
+            this.position.add();
         }
     }
 
@@ -49,10 +50,10 @@ public class Car implements Comparable<Car> {
         return carName.toString();
     }
 
-    public String getExpression() {
-        return position.getExpression();
+    @Override
+    public String toString() {
+        return carName.toString() + CAR_NAME_COLON + position.toString();
     }
-
 
     @Override
     public int compareTo(Car car) {

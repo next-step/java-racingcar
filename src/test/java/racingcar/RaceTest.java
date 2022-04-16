@@ -16,7 +16,7 @@ class RaceTest {
     @Test
     @Order(1)
     void 자동차_대수는_1대_이상이어야_한다() {
-        assertThatThrownBy(() -> new Race().start("", 1))
+        assertThatThrownBy(() -> new Race().start("", new RunRace(1)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -24,6 +24,11 @@ class RaceTest {
     @Order(2)
     @ValueSource(ints = {3, 4, 5})
     void 주어진_횟수만큼_레이스가_진행된다(int tryCount) {
-        assertThat(new Race().start("pobi", tryCount).getSize()).isEqualTo(tryCount);
+        Cars cars = Cars.builder()
+                .carsName("car,truck")
+                .raceCondition(new RaceCondition())
+                .build();
+
+        assertThat(new RunRace(tryCount).run(new RaceRecord(), cars).getSize()).isEqualTo(tryCount);
     }
 }

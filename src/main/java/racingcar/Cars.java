@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 public class Cars {
     private static final int CHECK_CAR_COUNT = 0;
     private static final String CARS_DELIMITER = ",";
-    private static final String CAR_NAME_COLON = " : ";
     private static final String NEW_LINE = "\n";
     private static final int FIRST_INDEX = 0;
     private final List<Car> cars;
@@ -56,7 +55,7 @@ public class Cars {
         return carsName != null && !carsName.isBlank() && carsName.length() > 0;
     }
 
-    public Cars addMove() {
+    public Cars move() {
         List<Car> carList = new ArrayList<>();
         for (Car car : cars) {
             int generateCondition = raceCondition.generateCondition();
@@ -73,23 +72,26 @@ public class Cars {
     }
 
     public Car getCurrentWinner() {
-        return cars.get(FIRST_INDEX);
+        if (checkSize()) {
+            reverseSortCarsFromPosition();
+            return cars.get(FIRST_INDEX);
+        }
+        throw new IllegalArgumentException("Car List 에는 한건 이상의 데이터가 있어야 합니다.");
     }
 
-    public List<Car> findRaceWinners(Car winner) {
-        return cars.stream()
+    public RaceWinners findRaceWinners(Car winner) {
+        return new RaceWinners(cars.stream()
                 .filter(car -> car.isEqualPosition(winner))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 
     @Override
     public String toString() {
-        String record = "";
-        for(Car car : cars) {
-            record += car.carName() + CAR_NAME_COLON + car.getExpression() + NEW_LINE;
+        String carsExpression = "";
+        for (Car car : cars) {
+            carsExpression += car.toString() + NEW_LINE;
         }
-        record += NEW_LINE;
-        return record;
+        return carsExpression;
     }
 
     public static class Builder {

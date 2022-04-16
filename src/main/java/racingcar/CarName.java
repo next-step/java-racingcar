@@ -9,6 +9,11 @@ public class CarName {
         this.carName = carName;
     }
 
+    public CarName(CarName carName) {
+        validate(carName.carName);
+        this.carName = carName.carName;
+    }
+
     private void validate(String carName) {
         if (carName.length() > CAR_NAME_SIZE) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");

@@ -12,11 +12,16 @@ public class Position implements Comparable<Position> {
         this.position = position;
     }
 
+    public Position(Position position) {
+        this.position = position.position;
+    }
+
     public void add() {
         position++;
     }
 
-    public String getExpression() {
+    @Override
+    public String toString() {
         String expression = "";
         for(int i = 0; i<position; i++) {
             expression += MOVE_EXPRESSION;
