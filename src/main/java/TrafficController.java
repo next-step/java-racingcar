@@ -58,6 +58,7 @@ public class TrafficController {
   }
 
   public void start() {
+    validateRequirements();
     outputView.print(RESULT_GUIDE_MESSAGE);
     for (int i = 0; i < tryCount; i++) {
       cars.moveAllCar(MAX_RANDOM_VALUE);
@@ -84,5 +85,10 @@ public class TrafficController {
         (arg) -> arg != null && arg >= MIN_TRY_COUNT,
         String.format("시도 횟수는 %d 이상이어야 합니다.", MIN_TRY_COUNT)
     );
+  }
+
+  private void validateRequirements() {
+    validateCarCount(carCount);
+    validateTryCount(tryCount);
   }
 }
