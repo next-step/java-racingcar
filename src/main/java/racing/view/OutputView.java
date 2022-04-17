@@ -2,6 +2,7 @@ package racing.view;
 
 import exception.CustomException;
 import racing.module.Car;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,7 +10,6 @@ public class OutputView {
     private static final String STARTING_LINE = " : ";
     private static final String CAR_POSITION_BAR = "-";
     private static final String NEW_LINE = "\n";
-    private static final String COMMA = ",";
     private static final String WINNER_MESSAGE_START = "최종 우승자는 ";
     private static final String WINNER_MESSAGE_END = "입니다.";
 

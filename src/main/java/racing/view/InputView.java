@@ -1,6 +1,7 @@
 package racing.view;
 
 import exception.CustomException;
+
 import java.util.Scanner;
 
 public final class InputView {

@@ -4,10 +4,8 @@ import exception.CustomException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -50,12 +48,12 @@ class CarGameTest {
         CarGame carGame = new CarGame("a,b,c");
         List<Car> carList = carGame.getCarList();
         for (Car car : carList) {
-            if(Objects.equals(car.getCarName(), "a")){
+            if (Objects.equals(car.getCarName(), "a")) {
                 car.move();
                 car.move();
             }
 
-            if(Objects.equals(car.getCarName(), "b")){
+            if (Objects.equals(car.getCarName(), "b")) {
                 car.move();
             }
         }
@@ -68,7 +66,7 @@ class CarGameTest {
         CarGame carGame = new CarGame("a,b,c");
         List<Car> carList = carGame.getCarList();
         for (Car car : carList) {
-            if(Objects.equals(car.getCarName(), "a")){
+            if (Objects.equals(car.getCarName(), "a")) {
                 car.move();
             }
         }

@@ -4,7 +4,7 @@ import exception.CustomException;
 
 public class Car {
     private static final int DEFAULT_POSITION = 0;
-    private CarName carName;
+    private final CarName carName;
     private int position;
 
     private Car() throws CustomException {
@@ -30,7 +30,7 @@ public class Car {
         return position;
     }
 
-    public String getCarName(){
+    public String getCarName() {
         return carName.getName();
     }
 }
