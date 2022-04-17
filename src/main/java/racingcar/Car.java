@@ -2,7 +2,7 @@ package racingcar;
 
 
 public class Car {
-
+    private static final int MIN_NUMBER_BE_MOVES = 4;
     private int distance;
 
     public Car() {
@@ -13,12 +13,12 @@ public class Car {
         return this.distance;
     }
 
-    public void move() {
+    private void move() {
         this.distance += 1;
     }
 
-    public boolean canBeMove(int value) {
-        return (value >= 4);
+    private boolean canBeMove(int value) {
+        return (value >= MIN_NUMBER_BE_MOVES);
     }
 
     public void play(int number) {
