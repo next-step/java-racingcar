@@ -31,8 +31,7 @@ public class InputView {
     }
 
     private Count saveCount() {
-        String input = this.scanner.next();
-        return new Count(Integer.parseInt(input));
+        return new Count(this.scanner.nextInt());
     }
 
     public RacingConfigDto requestStart() {
