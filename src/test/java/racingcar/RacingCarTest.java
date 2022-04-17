@@ -29,7 +29,7 @@ class RacingCarTest  {
 
     @Test
     @DisplayName("round가 음수일땐 에러를 뱉는다.")
-    void VariableRoundWillBeNotNegative() {
+    void argumentExceptionErrorTest() {
         int carCount = 4;
         int round = -1;
 
