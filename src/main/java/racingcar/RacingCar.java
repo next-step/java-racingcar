@@ -38,7 +38,7 @@ public class RacingCar implements NumberGenerator {
     }
 
     private List<Integer> getCurrentRacingResult() {
-        return getCars().stream().map(car -> car.getDistance()).collect(Collectors.toList());
+        return getCars().stream().map(Car::getDistance).collect(Collectors.toList());
     }
 
     private void playRound() {
