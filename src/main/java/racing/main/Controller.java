@@ -1,5 +1,6 @@
 package racing.main;
 
+import racing.domain.Car;
 import racing.domain.Cars;
 import racing.domain.Competition;
 import racing.domain.RandomMovableCondition;
@@ -17,7 +18,7 @@ public class Controller {
         List<Cars> snapshots = competition.progressEntireRoundAndRecordAllSnapshot(new RandomMovableCondition());
         ResultView.printEntireStatus(snapshots);
 
-        String winners = competition.getWinner(snapshots.get(snapshots.size() - 1));
-        ResultView.printWinners(winners);
+        List<Car> winningCars = competition.getCarsWithMaxDistance(snapshots.get(snapshots.size() - 1));
+        ResultView.printWinneringCars(winningCars);
     }
 }

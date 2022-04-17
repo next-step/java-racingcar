@@ -1,6 +1,7 @@
 package racing.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -35,22 +36,25 @@ public class Cars {
         return new Cars(carList);
     }
 
-    String getWinner(Cars snapshot) {
-        StringBuffer winners = new StringBuffer();
+    List<Car> getCarsWithMaxDistance(final Cars snapshot) {
+        List<Car> winningCars = new ArrayList<>();
+        int maxDistance = getMaxDistance(snapshot);
+
+        for (Car car : snapshot.getCars()) {
+            Car nullableCar = car.getCarMovingMaxDistance(maxDistance);
+            winningCars.add(nullableCar);
+        }
+        winningCars.removeAll(Collections.singletonList(null));
+
+        return winningCars;
+    }
+
+    private int getMaxDistance(final Cars snapshot) {
         int maxDistance = -1;
         for (Car car : snapshot.getCars()) {
-            if (maxDistance == -1) {
-                winners.append(car.getName());
-                maxDistance = car.getDistance();
-            } else if (maxDistance == car.getDistance()) {
-                winners.append(", " + car.getName());
-            } else if (maxDistance < car.getDistance()) {
-                winners = new StringBuffer();
-                winners.append(car.getName());
-                maxDistance = car.getDistance();
-            }
+            maxDistance = car.getGreaterDistance(maxDistance);
         }
 
-        return winners.toString();
+        return maxDistance;
     }
 }

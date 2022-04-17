@@ -20,6 +20,14 @@ public class Car {
         return new Car(name, distance);
     }
 
+    int getGreaterDistance(int distance) {
+        return this.distance > distance ? this.distance : distance;
+    }
+
+    Car getCarMovingMaxDistance(int maxDistance) {
+        return this.distance == maxDistance ? this : null;
+    }
+
     public int getDistance() {
         return distance;
     }

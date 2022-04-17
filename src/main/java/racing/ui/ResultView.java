@@ -32,7 +32,13 @@ public class ResultView {
         }
     }
 
-    public static void printWinners(String winners) {
-        System.out.println(winners + "가 최종 우승했습니다.");
+    public static void printWinneringCars(final List<Car> winningCars) {
+        StringBuffer winningCarsName = new StringBuffer();
+        for (Car winningCar : winningCars) {
+            winningCarsName.append(winningCar.getName() + ", ");
+        }
+        winningCarsName.deleteCharAt(winningCarsName.lastIndexOf(", "));
+
+        System.out.println(winningCarsName.toString() + "가 최종 우승했습니다.");
     }
 }
