@@ -7,14 +7,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
 
     @Test
-    void 거리_덧셈() {
+    void 자동차_이동_숫자_4_미만() {
         Car car = new Car();
         int prevDistance = car.getDistance();
-        int addDistance = 3;
+        int value = 3;
 
-        car.addDistance(addDistance);
+        car.move(value);
 
-        assertThat(prevDistance+addDistance).isEqualTo(car.getDistance());
+        assertThat(prevDistance).isEqualTo(car.getDistance());
     }
 
+    @Test
+    void 자동차_이동_숫자_4_이상() {
+        Car car = new Car();
+        int prevDistance = car.getDistance();
+        int value = 4;
+
+        car.move(value);
+
+        assertThat(prevDistance+1).isEqualTo(car.getDistance());
+    }
 }

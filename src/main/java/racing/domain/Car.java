@@ -1,18 +1,24 @@
 package racing.domain;
 
+import racing.util.ForwardUtil;
+
 public class Car {
 
     private int distance;
-
-    public Car() {
-        this.distance = 0;
-    }
 
     public int getDistance() {
         return distance;
     }
 
-    public void addDistance(int distance) {
-        this.distance += distance;
+    public void move(int value)
+    {
+        this.distance += getDistance(value);
+    }
+
+    private int getDistance(int value) {
+        if(ForwardUtil.isAvailableForward(value)) {
+            return 1;
+        }
+        return 0;
     }
 }

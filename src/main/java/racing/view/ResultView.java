@@ -2,9 +2,11 @@ package racing.view;
 
 import racing.domain.Car;
 
+import java.util.List;
+
 public class ResultView {
 
-    public void printCarsPosition(Car cars[]) {
+    public void printCarsPosition(List<Car> cars) {
         int index = 1;
         for (Car car : cars) {
             System.out.print(index+"번 car:");
