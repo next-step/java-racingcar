@@ -1,13 +1,12 @@
 package racingcar;
 
-import racingcar.service.RacingCar;
+import racingcar.service.RacingCarGameService;
 import racingcar.view.InputView;
-import racingcar.view.ResultView;
 
 public class RacingCarGame {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         InputView inputView = new InputView();
-        RacingCar racingCar = new RacingCar(inputView.CAR_COUNT, inputView.TRY_COUNT);
-        racingCar.startGame();
+        RacingCarGameService racingCarGameService = new RacingCarGameService(inputView.getCarCount(), inputView.getTryCount());
+        racingCarGameService.startGame();
     }
 }

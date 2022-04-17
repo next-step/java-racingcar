@@ -1,36 +1,38 @@
 package racingcar.view;
 
+import racingcar.domain.CarCount;
+import racingcar.domain.TryCount;
+
 import java.util.Scanner;
 
 public class InputView {
-    public final int CAR_COUNT;
-    public final int TRY_COUNT;
     private final static Scanner scanner = new Scanner(System.in);
+    private CarCount carCount;
+    private TryCount tryCount;
 
-    public InputView() {
-        CAR_COUNT = setCarCount();
-        TRY_COUNT = setTryCount();
+    public InputView() throws Exception {
+        setCarCount();
+        setTryCount();
     }
 
-    private int setTryCount() {
-        ResultView.printTryCountQuestion();
-        int tryCount = scanner.nextInt();
-        if(isValid(tryCount))   return tryCount;
-        return 0;
+    private void setTryCount() throws Exception {
+        System.out.println("시도할 횟수는 몇 회 인가요?");
+        int tryCountInput = scanner.nextInt();
+        tryCount = new TryCount(tryCountInput);
     }
 
-    private int setCarCount() {
-        ResultView.printCarCountQuestion();
-        int carCount = scanner.nextInt();
-        if(isValid(carCount))   return carCount;
-        return 0;
+    private void setCarCount() throws Exception {
+        System.out.println("자동차 대수는 몇 대 인가요?");
+        int carCountInput = scanner.nextInt();
+        carCount = new CarCount(carCountInput);
     }
 
-    private boolean isValid(int carCount) {
-        if(carCount > 0)    return true;
-        throw new IllegalArgumentException("0이하의 수를 입력하면 게임을 진행할 수 없습니다.");
+    public int getCarCount() {
+        return carCount.CAR_COUNT;
     }
 
-
+    public int getTryCount() {
+        return tryCount.TRY_COUNT;
+    }
 
 }

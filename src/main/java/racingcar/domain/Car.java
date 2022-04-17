@@ -1,21 +1,22 @@
 package racingcar.domain;
 
 public class Car {
-    private String currentPosition;
+    private static final String LINE = "-";
+    private final StringBuilder currentPosition;
 
     public Car() {
-        currentPosition = "";
+        currentPosition = new StringBuilder();
     }
 
     public String getCurrentPosition() {
-        return this.currentPosition;
+        return toString(currentPosition);
     }
 
-    public String go() {
-        return this.currentPosition += "-";
+    private String toString(StringBuilder currentPosition) {
+        return currentPosition.toString();
     }
 
-    public String stop() {
-        return this.currentPosition = this.currentPosition;
+    public void go() {
+         currentPosition.append(LINE);
     }
 }
