@@ -13,13 +13,16 @@ public class Car {
     private Position position;
 
     public Car(String name) {
-        this.name = new Name(name);
-        this.position = new Position();
+        this(new Name(name), new Position());
     }
 
     protected Car(String name, int position) {
-        this.name = new Name(name);
-        this.position = new Position(position);
+        this(new Name(name), new Position(position));
+    }
+
+    protected Car(Name name, Position position) {
+        this.name = name;
+        this.position = position;
     }
 
     public void move() {
