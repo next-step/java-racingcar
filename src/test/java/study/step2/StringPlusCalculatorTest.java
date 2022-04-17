@@ -1,12 +1,12 @@
-package study;
+package study.step2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import study.step2.StringPlusCalculator;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringPlusCalculatorTest {
     @Test
@@ -42,7 +42,7 @@ public class StringPlusCalculatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"-1,2,3"}) // "a,2,3", "//;\\na;2;3"
+    @ValueSource(strings = {"-1,2,3", "a,2,3", "//;\\na;2;3"})
     @DisplayName("숫자 이외의 값 또는 음수를 전달하는 경우")
     void 숫자_이외의_값_또는_음수를_전달하는_경우(String input) {
         assertThatThrownBy(() -> {
