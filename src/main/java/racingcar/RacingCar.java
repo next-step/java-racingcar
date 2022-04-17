@@ -19,6 +19,11 @@ public class RacingCar {
 
         Cars cars = Cars.generateCars(carNames);
 
+        printLocations(carNames, roundCount, cars);
+        printWinners(cars.getCarList());
+    }
+
+    private void printLocations(String[] carNames, int roundCount, Cars cars) {
         int currentRound = 0;
         while (inProgress(roundCount, currentRound)) {
             moveCars(carNames.length, cars);
@@ -27,8 +32,13 @@ public class RacingCar {
         }
     }
 
+    private void printWinners(List<Car> carList) {
+        resultView.printWinners(carList);
+    }
+
     private void printResult(Cars cars) {
-        resultView.printEveryLocation(cars.getCarList());
+        List<Car> carList = cars.getCarList();
+        resultView.printEveryLocation(carList);
     }
 
     private void moveCars(int carCount, Cars cars) {
