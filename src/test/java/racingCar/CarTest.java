@@ -45,23 +45,5 @@ class CarTest {
     assertThat(car.position().increase()).isLessThanOrEqualTo(3);
   }
 
-  @Test
-  @DisplayName("자동차 이름은 5자를 초과할 수 없습니다.")
-  void tooLongCarName() {
-    assertThatThrownBy(() -> {
-      Car car = new Car("aaaaaaaaaaaaaaaa");
-    }).isInstanceOf(RuntimeException.class);
-  }
-
-  @Test
-  @DisplayName("자동차 이름은 null이거나 공백일 수 없습니다.")
-  void carNameIsNotBlank() {
-    assertThatThrownBy(() -> {
-      Car car = new Car(null);
-    }).isInstanceOf(RuntimeException.class);
-    assertThatThrownBy(() -> {
-      Car car = new Car(" ");
-    }).isInstanceOf(RuntimeException.class);
-  }
 
 }

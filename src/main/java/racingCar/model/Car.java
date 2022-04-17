@@ -5,34 +5,23 @@ import racingCar.strategy.CarMoveStrategy;
 
 public class Car {
 
-  private static final int MIN_CAR_NAME_LENGTH = 5;
-  private final String name;
+  private final CarName carName;
   private final Position position;
 
   public Car(String name) {
-    this(name, 0);
+    this(new CarName(name).toString(), 0);
   }
 
   public Car(String name, int position) {
-    carNameValidation(name);
-    this.name = name;
+    this.carName = new CarName(name);
     this.position = new Position(position);
   }
 
   public Car move(CarMoveStrategy carMoveStrategy) {
     if (carMoveStrategy.moveAble()) {
-      return new Car(this.name, this.position.increase());
+      return new Car(this.carName.toString(), this.position.increase());
     }
     return this;
-  }
-
-  private void carNameValidation(String name) {
-    if (name == null || name.isBlank()) {
-      throw new IllegalArgumentException("자동차의 이름은 null이거나 공백일 수 없습니다.");
-    }
-    if (name.length() > MIN_CAR_NAME_LENGTH) {
-      throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다.");
-    }
   }
 
   @Override
@@ -44,12 +33,13 @@ public class Car {
       return false;
     }
     Car car = (Car) o;
-    return position.x == car.position.x && Objects.equals(name, car.name);
+    return position.x == car.position.x && Objects.equals(carName.toString(),
+        car.carName.toString());
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, position.x);
+    return Objects.hash(carName.toString(), position.x);
   }
 
   public Position position() {
@@ -59,6 +49,6 @@ public class Car {
 
   @Override
   public String toString() {
-    return name;
+    return carName.toString();
   }
 }
