@@ -10,7 +10,14 @@ public class StringAddCalculator {
         }
 
         String[] values = StringSplit.split(text);
-        return StringCalculation.sum(StringCasting.toInts(values));
+        return sum(StringCasting.toInts(values));
     }
 
+    private static int sum(int[] numbers) {
+        int sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+        return sum;
+    }
 }
