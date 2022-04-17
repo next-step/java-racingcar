@@ -9,10 +9,11 @@ public class RacingTest {
     @Test
     @DisplayName("차량 생성 테스트")
     void circuitTest() {
-        int carCount = 3;
-        int racingCount = 3;
-        Circuit circuit = new Circuit(carCount, racingCount);
+        int numberOfCars = 3;
+        int countOfMoves = 3;
+        Circuit circuit = new Circuit(numberOfCars, countOfMoves);
         circuit.startRacing();
+        assertThat(numberOfCars).isEqualTo(circuit.getCars().size());
     }
 
     @Test

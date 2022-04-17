@@ -1,5 +1,7 @@
 package racing;
 
+import com.sun.nio.sctp.IllegalReceiveException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +29,22 @@ public class Car {
 
     public List<Boolean> getMoves() {
         return moves;
+    }
+
+    public void printMove(int index) {
+        if (moves.size() < index) {
+            throw new IllegalReceiveException();
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < index; i++) {
+            if (moves.get(i)) {
+                result.append("-");
+            }
+        }
+
+        System.out.println(result);
+
     }
 
 }

@@ -11,7 +11,6 @@ public class Engine {
 
     public boolean cycle() {
         int randomNumber = random.nextInt(10);
-        System.out.println("randomNumber = " + randomNumber);
         return randomNumber >= 4;
     }
 }
