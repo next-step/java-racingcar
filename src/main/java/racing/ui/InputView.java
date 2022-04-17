@@ -19,7 +19,7 @@ public class InputView {
             checkCarNamesLength(carNames);
         } catch (CarNameLengthException e) {
             System.out.println(e.getMessage());
-            inputCarNames();
+            return inputCarNames();
         }
 
         return carNames;
