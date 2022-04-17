@@ -1,9 +1,8 @@
 package step_3;
 
-import step_3.controller.RacingGameController;
-import step_3.model.FinalResult;
-import step_3.service.GameConditionService;
-import step_3.service.RacingCarService;
+import step_3.controller.RacingGame;
+import step_3.model.GameResult;
+import step_3.model.GameCondition;
 import step_3.view.ResultView;
 
 public class RacingGameApplication {
@@ -13,10 +12,9 @@ public class RacingGameApplication {
     }
 
     public void run(String[] args) {
-        RacingCarService racingCarService = new RacingCarService();
-        GameConditionService gameConditionService = new GameConditionService();
-        RacingGameController racingGameController = new RacingGameController(racingCarService, gameConditionService);
-        FinalResult finalResult = racingGameController.gameStart();
-        ResultView.printResult(finalResult);
+        GameCondition gameCondition = new GameCondition();
+        RacingGame racingGame = new RacingGame(gameCondition);
+        GameResult gameResult = racingGame.gameStart();
+        ResultView.printResult(gameResult);
     }
 }

@@ -16,7 +16,7 @@ class RoundResultTest {
     @Test
     @DisplayName("레이싱 카 별 라운드 결과 객체 생성")
     void create() {
-        assertThat(new RoundResult().getBehaviorByRacingCarId()).isEmpty();
+        assertThat(new RoundResult().getRoundResult()).isEmpty();
     }
 
     @Test
@@ -24,7 +24,7 @@ class RoundResultTest {
     void record_1() {
         RoundResult roundResult = new RoundResult();
         roundResult.record(this.id, Behavior.FORWARD);
-        assertThat(roundResult.getBehavior(this.id)).isEqualTo(Behavior.FORWARD);
+        assertThat(roundResult.getRoundResult().get(this.id)).isEqualTo(Behavior.FORWARD.symbol);
     }
 
     @Test
@@ -36,7 +36,7 @@ class RoundResultTest {
         RoundResult lastRoundResult = new RoundResult();
         lastRoundResult.record(firstRoundResult);
 
-        assertAll(() -> assertThat(lastRoundResult.getBehaviorByRacingCarId().keySet()).contains(this.id),
-                () -> assertThat(lastRoundResult.getBehavior(id)).isEqualTo(Behavior.FORWARD));
+        assertAll(() -> assertThat(lastRoundResult.getRoundResult().keySet()).contains(this.id),
+                () -> assertThat(lastRoundResult.getRoundResult().get(id)).isEqualTo(Behavior.FORWARD.symbol));
     }
 }

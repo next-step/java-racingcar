@@ -12,9 +12,9 @@ import java.util.stream.Stream;
 
 public class Splitter {
 
-    private final static Pattern INTEGER_PATTERN = Pattern.compile("-?\\d+(\\.\\d+)?");
-    private final static Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
-    private final static String DEFAULT_DELIMITER = "[,:]";
+    private static final Pattern INTEGER_PATTERN = Pattern.compile("-?\\d+(\\.\\d+)?");
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final String DEFAULT_DELIMITER = "[,:]";
 
     public Function<String, List<String>> split() {
         return text -> {

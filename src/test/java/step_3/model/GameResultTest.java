@@ -9,7 +9,7 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class FinalResultTest {
+class GameResultTest {
 
     RoundResult roundResult;
 
@@ -22,26 +22,26 @@ class FinalResultTest {
     @Test
     @DisplayName("게임 결과 Model 생성")
     void create() {
-        assertThat(new FinalResult().getRoundResults()).isEmpty();
+        assertThat(new GameResult().getGameResult()).isEmpty();
     }
 
     @Test
     @DisplayName("라운드 결과 주입")
     void record_1() {
-        FinalResult finalResult = new FinalResult();
-        finalResult.record(this.roundResult);
-        assertThat(finalResult.getRoundResults()).hasSize(1);
+        GameResult gameResult = new GameResult();
+        gameResult.record(this.roundResult);
+        assertThat(gameResult.getGameResult()).hasSize(1);
     }
 
     @Test
     @DisplayName("서로 다른 객체를 합쳤을 때, 동일한 속성 데이터 인지 확인")
     void record_2() {
-        FinalResult firstFinalResult = new FinalResult();
-        firstFinalResult.record(this.roundResult);
+        GameResult firstGameResult = new GameResult();
+        firstGameResult.record(this.roundResult);
 
-        FinalResult lastFinalResult = new FinalResult();
-        lastFinalResult.record(firstFinalResult);
+        GameResult lastGameResult = new GameResult();
+        lastGameResult.record(firstGameResult);
 
-        assertThat(lastFinalResult.getRoundResults().get(0)).isSameAs(firstFinalResult.getRoundResults().get(0));
+        assertThat(lastGameResult.getGameResult().get(0)).isSameAs(firstGameResult.getGameResult().get(0));
     }
 }

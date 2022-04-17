@@ -5,14 +5,18 @@ import step_3.util.Behavior;
 import step_3.util.Roulette;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingCars {
 
     private final List<RacingCar> racingCars;
 
-    public RacingCars(List<RacingCar> racingCars) {
-        this.hasRacingCar(racingCars);
-        this.racingCars = racingCars;
+    public RacingCars(int totalRacingCarCount) {
+        this.hasRacingCar(totalRacingCarCount);
+        this.racingCars = Stream.generate(RacingCar::new)
+                .limit(totalRacingCarCount)
+                .collect(Collectors.toList());
     }
 
     public RoundResult roundFight() {
@@ -28,8 +32,8 @@ public class RacingCars {
 
     }
 
-    private void hasRacingCar(List<RacingCar> racingCars) {
-        if (racingCars == null || racingCars.isEmpty()) {
+    private void hasRacingCar(int totalRacingCarCount) {
+        if (totalRacingCarCount < 1) {
             throw new IllegalArgumentException("참여하는 레이킹 카의 수는 1대 이상이어야 합니다.");
         }
     }

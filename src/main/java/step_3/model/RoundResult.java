@@ -2,35 +2,26 @@ package step_3.model;
 
 import step_3.util.Behavior;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class RoundResult {
 
-    private final Map<String, Behavior> behaviorByRacingCarId;
+    private final Map<String, String> roundResult;
 
     public RoundResult() {
-        this.behaviorByRacingCarId = new HashMap<>();
+        this.roundResult = new LinkedHashMap<>();
+    }
+
+    public Map<String, String> getRoundResult() {
+        return this.roundResult;
     }
 
     public void record(String racingCarId, Behavior behavior) {
-        this.behaviorByRacingCarId.put(racingCarId, behavior);
+        this.roundResult.put(racingCarId, behavior.symbol);
     }
 
     public void record(RoundResult roundResult) {
-        this.behaviorByRacingCarId.putAll(roundResult.getBehaviorByRacingCarId());
-    }
-
-    public Map<String, Behavior> getBehaviorByRacingCarId() {
-        return this.behaviorByRacingCarId;
-    }
-
-    public Set<String> getRacingCarIds() {
-        return this.behaviorByRacingCarId.keySet();
-    }
-
-    public Behavior getBehavior(String racingCarId) {
-        return this.behaviorByRacingCarId.get(racingCarId);
+        this.roundResult.putAll(roundResult.getRoundResult());
     }
 }
