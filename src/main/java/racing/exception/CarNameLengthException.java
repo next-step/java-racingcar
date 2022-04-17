@@ -1,7 +1,7 @@
 package racing.exception;
 
-public class CharacterExceedException extends RuntimeException {
-    public CharacterExceedException(String message) {
-        super(message);
+public class CarNameLengthException extends RuntimeException {
+    public CarNameLengthException(String message, String carName) {
+        super("ERROR] " + message + " (" + carName + " : " + carName.length() + "자)");
     }
 }

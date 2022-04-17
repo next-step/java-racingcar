@@ -1,5 +1,8 @@
 package racing.ui;
 
+import racing.domain.CarName;
+import racing.exception.CarNameLengthException;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -8,10 +11,24 @@ public class InputView {
     private InputView() {
     }
 
-    public static String inputCars() {
+    public static String[] inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String[] carNames = scanner.nextLine().split(",");
 
-        return scanner.nextLine();
+        try {
+            checkCarNamesLength(carNames);
+        } catch (CarNameLengthException e) {
+            System.out.println(e.getMessage());
+            inputCarNames();
+        }
+
+        return carNames;
+    }
+
+    private static void checkCarNamesLength(String[] carNames) throws CarNameLengthException {
+        for (String carName : carNames) {
+            new CarName(carName);
+        }
     }
 
     public static int inputNumberOfRounds() {
