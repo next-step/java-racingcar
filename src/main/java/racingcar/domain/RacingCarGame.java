@@ -4,26 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import racingcar.view.Result;
+import racingcar.view.Results;
 
 public class RacingCarGame {
 	private final Cars cars;
 	private final int playCount;
-	private List<Result> results;
 
 	public RacingCarGame(Cars cars, int playCount) {
 		this.cars = cars;
 		this.playCount = playCount;
-		results = new ArrayList<>();
 	}
 
-	public void start(RandomGenerator randomGenerator) {
+	public Results start(RandomGenerator randomGenerator) {
+		Results results = new Results();
 		for (int i = 0; i < playCount; i++) {
 			cars.play(randomGenerator);
-			results.add(new Result(cars));
+			results.add(cars.result());
 		}
-	}
-
-	public List<Result> getResults() {
 		return results;
 	}
 }

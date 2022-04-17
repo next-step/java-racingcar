@@ -1,18 +1,19 @@
 package racingcar.view;
 
-import racingcar.domain.Cars;
+import java.util.List;
 
 public class Result {
-	private final String MOVE_PRINT = "-";
-	private Cars cars;
+	private static final String START_CHARACTER = "|";
+	private final List<String> results;
 
-	public Result(Cars cars) {
-		this.cars = cars;
+	public Result(List<String> results) {
+		this.results = results;
 	}
 
 	public void print() {
-		cars.getCarsMove()
-			.forEach(move -> System.out.println(MOVE_PRINT.repeat(move)));
+		for (String result : results) {
+			System.out.println(START_CHARACTER + result);
+		}
 		System.out.println();
 	}
 }

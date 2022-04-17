@@ -20,10 +20,10 @@ public class CarTest {
 		RandomGenerator randomGenerator = () -> randomNumber;
 
 		// when
-		int numbersOfMove = car.run(randomGenerator.generate());
+		MoveCount moveCount = car.run(randomGenerator.generate());
 
 		// then
-		assertThat(numbersOfMove).isEqualTo(0);
+		assertThat(moveCount.count()).isEqualTo(0);
 	}
 
 	@DisplayName("랜덤값 4이상으로 실행시 1 이동")
@@ -35,10 +35,10 @@ public class CarTest {
 		RandomGenerator randomGenerator = () -> randomNumber;
 
 		// when
-		int numbersOfMove = car.run(randomGenerator.generate());
+		MoveCount moveCount = car.run(randomGenerator.generate());
 
 		// then
-		assertThat(numbersOfMove).isEqualTo(1);
+		assertThat(moveCount.count()).isEqualTo(1);
 	}
 
 	@DisplayName("랜덤이 범위를 벗어나면 RunTimeException발생")

@@ -6,8 +6,8 @@ public class ResultView {
 
 	private ResultView() {}
 
-	public static void print(List<Result> results) {
+	public static void print(Results results) {
 		System.out.println("\n실행결과");
-		results.forEach(Result::print);
+		results.print();
 	}
 }

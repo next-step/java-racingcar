@@ -6,14 +6,17 @@ import util.Range;
 public class Car {
 	public static final int RANDOM_MIN = 0;
 	public static final int RANDOM_MAX = 9;
-	private int move = 0;
+	private final MoveCount moveCount;
 
-	public int run(int randomNumber) {
-		validateRandomNumber(randomNumber);
+	public Car() {
+		this.moveCount = new MoveCount();
+	}
+
+	public MoveCount run(int randomNumber) {
 		if (isMoveCar(randomNumber)) {
-			move++;
+			moveCount.add();
 		}
-		return move;
+		return moveCount;
 	}
 
 	public boolean isMoveCar(int randomNumber) {
@@ -28,10 +31,8 @@ public class Car {
 		throw new OutOfRangeException("랜덤숫자가 범위를 초과하였습니다.");
 	}
 
-	public int getMove() {
-		return move;
+	@Override
+	public String toString() {
+		return moveCount.toString();
 	}
-
-
-
 }

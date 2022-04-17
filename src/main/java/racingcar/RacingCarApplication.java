@@ -5,6 +5,7 @@ import racingcar.domain.RandomMovingRule;
 import racingcar.domain.RacingCarGame;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
+import racingcar.view.Results;
 import util.RandomUtil;
 
 public class RacingCarApplication {
@@ -13,8 +14,9 @@ public class RacingCarApplication {
 		int playCount = InputView.inputPlayCount();
 
 		RacingCarGame game = new RacingCarGame(Cars.of(carCount), playCount);
-		game.start(() -> RandomUtil.createRandomNumber(RandomMovingRule.RANDOM_MIN, RandomMovingRule.RANDOM_MAX));
+		Results results = game.start(
+			() -> RandomUtil.createRandomNumber(RandomMovingRule.RANDOM_MIN, RandomMovingRule.RANDOM_MAX));
 
-		ResultView.print(game.getResults());
+		ResultView.print(results);
 	}
 }
