@@ -20,7 +20,7 @@ public class Cars {
 
   public static Cars newInstance(String carNames, MoveStrategy moveStrategy) {
     List<Car> cars = Arrays.stream(carNames.split(CAR_NAME_DELIMITER))
-        .map(n -> new Car(n, moveStrategy))
+        .map(carName -> new Car(carName, moveStrategy))
         .collect(toList());
 
     return new Cars(cars);
