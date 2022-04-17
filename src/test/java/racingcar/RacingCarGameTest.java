@@ -15,7 +15,7 @@ public class RacingCarGameTest {
         RacingCar[] racingCars = {new RacingCar(), new RacingCar(), new RacingCar()};
 
         RandomNumCondition condition = spy(new RandomNumCondition());
-        doReturn(true).when(condition).isSatisfiedBy();
+        doReturn(true).when(condition).isSatisfied();
 
         RacingCarGame racingCarGame = new RacingCarGame(racingCars, numOfRound, condition);
         racingCarGame.start();
@@ -32,7 +32,7 @@ public class RacingCarGameTest {
         RacingCar[] racingCars = {new RacingCar(), new RacingCar(), new RacingCar()};
 
         RandomNumCondition condition = spy(new RandomNumCondition());
-        doReturn(false).when(condition).isSatisfiedBy();
+        doReturn(false).when(condition).isSatisfied();
 
         RacingCarGame racingCarGame = new RacingCarGame(racingCars, numOfRound, condition);
         racingCarGame.start();

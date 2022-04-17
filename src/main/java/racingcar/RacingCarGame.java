@@ -24,7 +24,7 @@ public class RacingCarGame {
 
     private static void proceedRacingCars(RacingCar @NotNull [] racingCars, Condition condition) {
         for (RacingCar racingCar : racingCars) {
-            if (condition.isSatisfiedBy()) {
+            if (condition.isSatisfied()) {
                 racingCar.proceed();
             }
         }
