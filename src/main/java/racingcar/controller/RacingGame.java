@@ -9,8 +9,7 @@ public class RacingGame {
 
     private final int tryCount;
     private final Cars cars;
-
-    private int movedCount = 0;
+    private final RacingGameMoveCounter racingGameMoveCounter;
 
     protected RacingGame(int tryCount) {
         this(tryCount, DEFAULT_CAR_NAMES);
@@ -19,20 +18,17 @@ public class RacingGame {
     public RacingGame(int tryCount, String carNames) {
         this.tryCount = tryCount;
         this.cars = CarsFactory.create(carNames);
+        this.racingGameMoveCounter = new RacingGameMoveCounter();
     }
 
     public boolean end() {
-        return this.movedCount >= this.tryCount;
+        return this.racingGameMoveCounter.isSameOrBiggerThen(tryCount);
     }
 
     public RacingResult race() {
         this.cars.move();
-        increaseMovedCount();
+        racingGameMoveCounter.increase();
 
         return new RacingResult(cars);
-    }
-
-    private synchronized void increaseMovedCount() {
-        this.movedCount++;
     }
 }
