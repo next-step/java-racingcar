@@ -21,8 +21,6 @@ class CarsTest {
             new Car("ydh", 0)
         )
     );
-
-    assertThat(cars.size()).isEqualTo(5);
     assertThat(cars).isEqualTo(expectedCars);
   }
 

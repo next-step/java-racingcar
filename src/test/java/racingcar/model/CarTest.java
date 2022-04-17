@@ -42,9 +42,9 @@ class CarTest {
   }
 
   @Test
-  void createOutput() {
+  void testToString() {
     Car car = new Car("yeny", 3);
 
-    assertThat(car.createOutput()).isEqualTo("yeny : ---");
+    assertThat(car.toString()).isEqualTo("yeny : ---");
   }
 }

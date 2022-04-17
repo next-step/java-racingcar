@@ -7,7 +7,7 @@ public class Position {
   private final int value;
 
   public Position(int value) {
-    validatePosition(value);
+    validateNotNegative(value);
     this.value = value;
   }
 
@@ -23,7 +23,7 @@ public class Position {
     return value - other.value;
   }
 
-  private static void validatePosition(int value) {
+  private static void validateNotNegative(int value) {
     if (value < 0) {
       throw new IllegalArgumentException("위치는 음수일 수 없습니다.");
     }

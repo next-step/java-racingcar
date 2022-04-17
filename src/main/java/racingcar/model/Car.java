@@ -31,10 +31,11 @@ public class Car {
   }
 
   public boolean hasSamePosition(Car other) {
-    return compareTo(other) == 0;
+    return position.equals(other.position);
   }
 
-  public String createOutput() {
+  @Override
+  public String toString() {
     return String.format(
         OUTPUT_FORMAT,
         name.getValue(),

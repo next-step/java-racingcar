@@ -10,7 +10,7 @@ public class Name {
   private final String value;
 
   public Name(String value) {
-    validateName(value);
+    validateLength(value);
     this.value = value;
   }
 
@@ -18,8 +18,8 @@ public class Name {
     return value;
   }
 
-  private static void validateName(String value) {
-    if (value.isEmpty() || value.length() > NAME_MAX_LENGTH) {
+  private static void validateLength(String value) {
+    if (value.length() < NAME_MIN_LENGTH || value.length() > NAME_MAX_LENGTH) {
       throw new IllegalArgumentException(
           String.format("이름은 %d자 이상, %d자 이하여야 합니다.", NAME_MIN_LENGTH, NAME_MAX_LENGTH)
       );

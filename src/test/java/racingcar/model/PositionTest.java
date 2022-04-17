@@ -3,12 +3,14 @@ package racingcar.model;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class PositionTest {
 
+  @DisplayName("생성 시, 위치가 음수라면 예외를 던진다.")
   @Test
-  void create_fail() {
+  void create() {
     assertThatThrownBy(() -> new Position(-1)).isInstanceOf(IllegalArgumentException.class);
   }
 

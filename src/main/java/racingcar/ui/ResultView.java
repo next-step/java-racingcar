@@ -17,7 +17,7 @@ public class ResultView {
   }
 
   public static void printOutput(Cars cars) {
-    cars.getValues().forEach(car -> System.out.println(car.createOutput()));
+    cars.getValues().forEach(car -> System.out.println(car.toString()));
     System.out.println();
   }
 
