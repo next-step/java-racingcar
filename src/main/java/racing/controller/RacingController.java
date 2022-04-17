@@ -1,27 +1,37 @@
 package racing.controller;
 
 import racing.domain.Cars;
-import racing.domain.strategy.NumberCompareMoveStrategy;
-import racing.domain.strategy.RandomNumberGenerator;
+import racing.domain.strategy.MoveStrategy;
 import racing.view.RacingInputView;
 import racing.view.RacingOutputView;
 
 public class RacingController {
 
-  public void startGame() {
-    RacingInputView racingInputView = new RacingInputView();
-    racingInputView.setRacingUserInput();
+  private final RacingInputView racingCarNameInputView;
+  private final RacingOutputView racingCarNameOutputView;
+  private final MoveStrategy moveStrategy;
 
-    RacingOutputView racingOutputView = new RacingOutputView();
-    racingOutputView.printResultTitle();
-
-    Cars cars = Cars.makeCars(racingInputView.getCarCount(),
-        new NumberCompareMoveStrategy(new RandomNumberGenerator()));
-
-    for (int i = 0; i < racingInputView.getAttemptCount(); i++) {
-      cars.attempt();
-      racingOutputView.printCarDistance(cars);
-    }
+  public RacingController(RacingInputView racingCarNameInputView,
+      RacingOutputView racingCarNameOutputView, MoveStrategy moveStrategy) {
+    this.racingCarNameInputView = racingCarNameInputView;
+    this.racingCarNameOutputView = racingCarNameOutputView;
+    this.moveStrategy = moveStrategy;
   }
 
+  public void startGame() {
+    String carNames = racingCarNameInputView.getRacingCarNames();
+    int attemptCount = racingCarNameInputView.getRacingAttemptCount();
+
+    racingCarNameOutputView.printResultTitle();
+
+    Cars cars = Cars.newInstance(carNames, moveStrategy);
+    for (int i = 0; i < attemptCount; i++) {
+      cars.attempt();
+      racingCarNameOutputView.printCarNameAndDistance(cars);
+    }
+
+    Cars winners = cars.getWinners();
+    racingCarNameOutputView.printWinner(winners);
+
+  }
 }
