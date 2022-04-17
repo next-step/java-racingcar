@@ -38,7 +38,9 @@ public class GameResult {
         int minIndex = Math.min(this.gameResult.size(), gameResult.getGameResult().size());
         int maxIndex = Math.max(this.gameResult.size(), gameResult.getGameResult().size());
 
-        IntStream.range(minIndex, maxIndex)
-                .forEach(index -> this.gameResult.add(gameResult.getGameResult().get(index)));
+        if (gameResult.getGameResult().size() > this.gameResult.size()) {
+            IntStream.range(minIndex, maxIndex)
+                    .forEach(index -> this.gameResult.add(gameResult.getGameResult().get(index)));
+        }
     }
 }
