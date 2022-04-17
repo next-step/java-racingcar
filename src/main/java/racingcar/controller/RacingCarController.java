@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import racingcar.model.Cars;
 import racingcar.model.MovingStrategy;
+import racingcar.model.Winners;
 import racingcar.ui.ResultView;
 
 public class RacingCarController {
@@ -25,7 +26,7 @@ public class RacingCarController {
     for (int i = 0; i < times; i++) {
       playOneTurn(cars);
     }
-    ResultView.printWinners(cars.findWinners());
+    ResultView.printWinners(Winners.findWinners(cars));
   }
 
   private void playOneTurn(Cars cars) {

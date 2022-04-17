@@ -39,20 +39,4 @@ class CarsTest {
     Cars movedCars = Cars.createCars(List.of("yeny", "yeeun", "pobi", "jason", "ydh"), 1);
     assertThat(cars).isEqualTo(movedCars);
   }
-
-  @Test
-  void findWinners() {
-    Cars cars = new Cars(
-        List.of(
-            new Car("yeny", 3),
-            new Car("yeeun", 3),
-            new Car("pobi", 2),
-            new Car("jason", 1),
-            new Car("ydh", 0)
-        )
-    );
-
-    List<Car> winners = cars.findWinners();
-    assertThat(winners).containsExactly(cars.getValues().get(0), cars.getValues().get(1));
-  }
 }

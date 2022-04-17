@@ -1,9 +1,9 @@
 package racingcar.ui;
 
-import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.model.Winners;
 
 public class ResultView {
 
@@ -21,8 +21,8 @@ public class ResultView {
     System.out.println();
   }
 
-  public static void printWinners(List<Car> winners) {
-    String winnerNames = winners.stream()
+  public static void printWinners(Winners winners) {
+    String winnerNames = winners.getValues().stream()
         .map(Car::getName)
         .collect(Collectors.joining(", "));
     System.out.printf(WINNER_FORMAT, winnerNames);

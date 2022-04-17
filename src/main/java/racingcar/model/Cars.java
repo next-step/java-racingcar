@@ -25,15 +25,6 @@ public class Cars {
     values.forEach(car -> car.moveOrStop(movingStrategy));
   }
 
-  public List<Car> findWinners() {
-    Car winnerCar = values.stream()
-        .max(Car::compareTo)
-        .orElseThrow(IllegalStateException::new);
-    return values.stream()
-        .filter(car -> car.hasSamePosition(winnerCar))
-        .collect(Collectors.toList());
-  }
-
   public int size() {
     return values.size();
   }
