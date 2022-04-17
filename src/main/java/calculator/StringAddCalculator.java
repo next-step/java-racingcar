@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 public class StringAddCalculator {
     private static final String DEFAULT_DELIMITER = "[,:]";
     private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private static final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
 
     private StringAddCalculator() {
         throw new IllegalStateException("Util class");
@@ -18,7 +19,8 @@ public class StringAddCalculator {
             return 0;
         }
 
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(text);
+
+        Matcher matcher = pattern.matcher(text);
 
         if(matcher.find()) {
             String customDelimiter = matcher.group(1);
