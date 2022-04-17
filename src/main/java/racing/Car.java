@@ -14,11 +14,12 @@ public class Car {
     public Car(Engine engine, int moveCount) {
         this.engine = engine;
         this.moves = new ArrayList<>();
+        moves.add(true);
         this.moveCount = moveCount;
     }
 
     public void racingStart() {
-        for (int i = 0; i < moveCount; i++) {
+        for (int i = 0; i < moveCount - 1; i++) {
             move();
         }
     }
@@ -37,7 +38,7 @@ public class Car {
         }
 
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i <= index; i++) {
             if (moves.get(i)) {
                 result.append("-");
             }
