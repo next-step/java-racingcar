@@ -1,6 +1,7 @@
 package carrace;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RecordCarRace {
@@ -11,10 +12,6 @@ public class RecordCarRace {
     }
 
     public List<Integer> getRaceInfoBoards() {
-        return raceInfoBoards;
-    }
-
-    public void setRaceInfoBoards(List<Integer> raceInfoBoards) {
-        this.raceInfoBoards = raceInfoBoards;
+        return Collections.unmodifiableList(raceInfoBoards);
     }
 }

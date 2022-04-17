@@ -1,14 +1,15 @@
 package carrace;
 
 public class CarRace {
-    private RandomMoving randomMoving = new RandomMoving();
-    private RecordCarRace recordCarRace = new RecordCarRace();
+    private static final int GO = 1;
+    private static final int STOP = 0;
+
+    private final RandomMoving randomMoving = new RandomMoving();
+    private final RecordCarRace recordCarRace = new RecordCarRace();
 
     private int numberOfCars;
     private int numberOfRaces;
 
-    private static final int GO = 1;
-    private static final int STOP = 0;
 
     public CarRace() {
     }
@@ -47,31 +48,7 @@ public class CarRace {
         return numberOfCars;
     }
 
-    public void setNumberOfCars(int numberOfCars) {
-        this.numberOfCars = numberOfCars;
-    }
-
-    public int getNumberOfRaces() {
-        return numberOfRaces;
-    }
-
-    public void setNumberOfRaces(int numberOfRaces) {
-        this.numberOfRaces = numberOfRaces;
-    }
-
-    public RandomMoving getRandomMoving() {
-        return randomMoving;
-    }
-
-    public void setRandomMoving(RandomMoving randomMoving) {
-        this.randomMoving = randomMoving;
-    }
-
     public RecordCarRace getRecordCarRace() {
         return recordCarRace;
-    }
-
-    public void setRecordCarRace(RecordCarRace recordCarRace) {
-        this.recordCarRace = recordCarRace;
     }
 }
