@@ -9,13 +9,18 @@ public class Circuit {
     private final List<Car> cars;
     private final Integer numberOfRacing;
 
-    public Circuit(int carCount, int racingCount) {
-        this.numberOfRacing = racingCount;
+    public Circuit(int numberOfCars, int numberOfMoves) {
+        this.numberOfRacing = numberOfMoves;
         Engine engine = new Engine();
-        cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(engine, racingCount));
+        cars = createCars(engine, numberOfCars, numberOfMoves);
+    }
+
+    private List<Car> createCars(Engine engine, int numberOfCar, int numberOfMoves) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < numberOfCar; i++) {
+            cars.add(new Car(engine, numberOfMoves));
         }
+        return cars;
     }
 
     public void startRacing() {
