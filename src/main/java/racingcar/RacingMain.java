@@ -9,9 +9,9 @@ import racingcar.view.OutputView;
 public class RacingMain {
     public static void main(String[] args) {
         String carNames = InputView.inputCarNames();
-        int tryCount = InputView.inputTryCount();
-
         Cars cars = CarsFactory.create(carNames);
+
+        int tryCount = InputView.inputTryCount();
         RacingGame racingGame = new RacingGame(tryCount);
 
         while (!racingGame.end()) {
