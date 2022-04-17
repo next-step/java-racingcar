@@ -20,13 +20,13 @@ public class StringAddCalculator {
             input = matcher.group(2);
         }
 
-        Pattern pattern = Pattern.compile(delimiter);
-        return sum(pattern.split(input));
+        int sum = sum(input.split(delimiter));
+        return sum;
     }
 
     private static int sum(String[] strings) {
         int result = 0;
-        for (String string: strings) {
+        for (String string : strings) {
             result += parseInt(string);
         }
         return result;
