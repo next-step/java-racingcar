@@ -31,6 +31,10 @@ public class Cars {
         .collect(Collectors.toUnmodifiableList());
   }
 
+  public void validate() {
+    validateCarCount(cars.size());
+  }
+
   private void validateCarCount(int carCount) {
     validateArgument(
         carCount,

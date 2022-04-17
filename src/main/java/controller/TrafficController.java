@@ -19,7 +19,6 @@ public class TrafficController {
   private final InputView inputView;
   private final OutputView outputView;
 
-  private CarCount carCount;
   private TryCount tryCount;
   private Cars cars;
 
@@ -33,18 +32,13 @@ public class TrafficController {
     return new TrafficController();
   }
 
-  public TrafficController insertCarCount() {
-    return carCount(inputView.scanInt(MESSAGE_FOR_INPUT_CAR_COUNT));
+  public TrafficController createCarsByInsertingCarCount() {
+    return createCars(new CarCount(inputView.scanInt(MESSAGE_FOR_INPUT_CAR_COUNT)));
   }
 
-  public TrafficController carCount(int carCount) {
-    this.carCount = new CarCount(carCount);
-    return this;
-  }
-
-  public TrafficController createCars() {
+  public TrafficController createCars(CarCount carCount) {
     validateCarCount(carCount);
-    this.cars = new Cars(this.carCount.getValue());
+    this.cars = new Cars(carCount.getValue());
     return this;
   }
 
@@ -73,7 +67,6 @@ public class TrafficController {
 
   private void validateCarCount(CarCount carCount) {
     Objects.requireNonNull(carCount);
-    carCount.validate();
   }
 
   private void validateTryCount(TryCount tryCount) {
@@ -83,7 +76,8 @@ public class TrafficController {
 
   private void validateBeforeStart() {
     try {
-      validateCarCount(carCount);
+      Objects.requireNonNull(cars);
+      cars.validate();
       validateTryCount(tryCount);
     } catch (Exception e) {
       outputView.print(MESSAGE_FOR_UNABLE_TO_START);
