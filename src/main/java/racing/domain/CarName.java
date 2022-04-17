@@ -4,7 +4,7 @@ import racing.exception.CarNameUnsuitableException;
 
 public class CarName {
 
-  public static int LENGTH_LIMIT = 5;
+  private static final int LENGTH_LIMIT = 5;
   private final String value;
 
   public CarName(String carName) {
