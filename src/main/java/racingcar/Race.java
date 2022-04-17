@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import racingcar.view.ResultView;
 
 public class Race {
     private int carCount;
@@ -15,14 +16,17 @@ public class Race {
     }
 
     public void startRace() {
+        ResultView.printResultMessage();
         for (int i = 0; i < raceCount; i++) {
             oneRound();
+            ResultView.printNextRound();
         }
     }
 
     private void oneRound() {
         for (RacingCar racingCar : racingCars) {
-            racingCar.moveOrStop();
+            int position = racingCar.moveOrStop();
+            ResultView.printPosition(position);
         }
     }
 
