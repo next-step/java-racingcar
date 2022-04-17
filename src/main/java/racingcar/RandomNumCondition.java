@@ -1,12 +1,14 @@
 package racingcar;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public class RandomNumCondition implements Condition {
+    private RandomGenerator randomGenerator;
+
+    public RandomNumCondition(RandomGenerator randomGenerator) {
+        this.randomGenerator = randomGenerator;
+    }
 
     @Override
     public boolean isSatisfied() {
-        int randomNum = ThreadLocalRandom.current().nextInt(0, 9);
-        return randomNum >= 4;
+        return randomGenerator.generate() >= 4;
     }
 }

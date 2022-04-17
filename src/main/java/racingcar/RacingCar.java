@@ -3,7 +3,6 @@ package racingcar;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class RacingCar {

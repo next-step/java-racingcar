@@ -34,13 +34,17 @@ public class RacingCarGameTest {
         Assertions.assertThat(racingCars[2].getLocation().getX()).isEqualTo(0);
     }
 
-    private class SatisfiedCondition implements Condition {
+    static class SatisfiedCondition implements Condition {
+
+        @Override
         public boolean isSatisfied() {
             return true;
         }
     }
 
-    private class DisSatisfiedCondition implements Condition {
+    static class DisSatisfiedCondition implements Condition {
+
+        @Override
         public boolean isSatisfied() {
             return false;
         }
