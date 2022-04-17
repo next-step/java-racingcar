@@ -5,9 +5,10 @@ import java.util.Objects;
 public class Position {
 
   private static final String STEP = "-";
-  private int x;
+  private final int x;
 
   public Position(int x) {
+    valid(x);
     this.x = x;
   }
 
@@ -38,6 +39,11 @@ public class Position {
     return this.x < other.x;
   }
 
+  public void valid(int x) {
+    if(x < 0) {
+      throw new IllegalArgumentException("포지션은 음수 값을 넣을 수 없습니다.");
+    }
+  }
   @Override
   public String toString() {
     return STEP.repeat(x);

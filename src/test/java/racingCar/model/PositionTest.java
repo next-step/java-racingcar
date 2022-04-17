@@ -1,6 +1,7 @@
 package racingCar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,5 +26,11 @@ class PositionTest {
     assertThat(new Position(2).toString()).isEqualTo("--");
   }
 
-
+  @Test
+  @DisplayName("포지션은 공백일 수 없습니다.")
+  void positionNegativeTest() {
+    assertThatThrownBy(() -> {
+      Position position = new Position(-1);
+    }).isInstanceOf(RuntimeException.class);
+  }
 }
