@@ -8,6 +8,9 @@ public class Racing {
 
     private InputValue iv;
     private List<Car> cars = new ArrayList<>();
+    private List<String> winnerList = new ArrayList<>();
+    private int maxPosition;
+
 
     public Racing() {
         //자동차이름과 시도횟수 입력받는 책임을 InputView클래스에게 위임
@@ -24,6 +27,7 @@ public class Racing {
 
     public void start(){
         moveAllTime();
+        getMaxPosition();
         showResult();
         showWinner();
     }
@@ -50,9 +54,28 @@ public class Racing {
         ResultView.showAllStates(cars, iv.getTryNum());
     }
 
-    private void showWinner() {
-        ResultView.showWinner(cars);
+    private void getMaxPosition() {
+        for (Car car : cars) {
+            int pos = car.getPosition();
+            if(pos >= maxPosition){
+                maxPosition = pos;
+            }
+        }
     }
 
+    private void showWinner() {
+        ResultView.showWinner(getWinnerList());
+    }
 
+    private String getWinnerList(){
+        for (Car car : cars) {
+            addWinner(car);
+        }
+        return String.join(", ", winnerList);
+    }
+
+    private void addWinner(Car car) {
+        if(car.getPosition() == maxPosition)
+            winnerList.add(car.getName());
+    }
 }
