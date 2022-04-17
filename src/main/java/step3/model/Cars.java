@@ -20,13 +20,13 @@ public class Cars {
     }
 
     public EachTryResult getEachTryResult() {
-        List<Integer> successCountEach = getSuccessCountEach();
-        return new EachTryResult(successCountEach);
+        List<Integer> moveCountEach = getMoveCountEach();
+        return new EachTryResult(moveCountEach);
     }
 
-    private List<Integer> getSuccessCountEach() {
+    private List<Integer> getMoveCountEach() {
         return cars.stream()
-                .map(Car::getSuccessCount)
+                .map(Car::getMoveCount)
                 .collect(Collectors.toList());
     }
 }

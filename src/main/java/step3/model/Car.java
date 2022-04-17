@@ -2,21 +2,21 @@ package step3.model;
 
 public class Car {
 
-    private int successCount;
+    private int moveCount;
     private final TryStrategy tryStrategy;
 
     public Car(TryStrategy tryStrategy) {
-        this.successCount = 0;
+        this.moveCount = 0;
         this.tryStrategy = tryStrategy;
     }
 
     public void tryOnce() {
         if (tryStrategy.canGoForward()) {
-            this.successCount += 1;
+            this.moveCount += 1;
         }
     }
 
-    public int getSuccessCount() {
-        return successCount;
+    public int getMoveCount() {
+        return moveCount;
     }
 }

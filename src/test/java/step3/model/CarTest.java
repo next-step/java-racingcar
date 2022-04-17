@@ -20,7 +20,7 @@ class CarTest {
 
         car.tryOnce();
 
-        assertThat(car.getSuccessCount()).isEqualTo(1);
+        assertThat(car.getMoveCount()).isEqualTo(1);
     }
 
     @Test
@@ -29,7 +29,7 @@ class CarTest {
 
         car.tryOnce();
 
-        assertThat(car.getSuccessCount()).isEqualTo(0);
+        assertThat(car.getMoveCount()).isZero();
     }
 
 }

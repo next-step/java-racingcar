@@ -16,11 +16,11 @@ class EachTryResultTest {
 
     @Test
     void 성공_횟수_리스트를_입력_받아서_1회_시도의_결과를_기록하는_객체를_생성한다() {
-        List<Integer> successCount = Arrays.asList(1, 1, 1);
+        List<Integer> moveCounts = Arrays.asList(1, 1, 1);
 
-        EachTryResult eachTryResult = new EachTryResult(successCount);
+        EachTryResult eachTryResult = new EachTryResult(moveCounts);
 
-        assertThat(eachTryResult.getSuccessCounts()).isEqualTo(successCount);
+        assertThat(eachTryResult.getMoveCounts()).isEqualTo(moveCounts);
     }
 
 }

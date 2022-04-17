@@ -31,8 +31,8 @@ public class ResultView {
     }
 
     private String parseToString(EachTryResult eachTryResult) {
-        List<Integer> successCounts = eachTryResult.getSuccessCounts();
-        return successCounts.stream()
+        List<Integer> moveCounts = eachTryResult.getMoveCounts();
+        return moveCounts.stream()
                 .map(DISPLAY_CHARACTER::repeat)
                 .collect(Collectors.joining(LINE_BREAK_PER_CAR));
     }
