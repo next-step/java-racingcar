@@ -11,10 +11,18 @@ public class RacingTest {
     @DisplayName("차량 생성 테스트")
     void circuitTest() {
         int numberOfCars = 3;
-        int countOfMoves = 3;
-        Circuit circuit = new Circuit(numberOfCars, countOfMoves);
+        int numberOfMoves = 3;
+        Circuit circuit = new Circuit(numberOfCars, numberOfMoves);
         circuit.startRacing();
         assertThat(numberOfCars).isEqualTo(circuit.getCars().size());
+
+
+        int errorNumberOfCar = 0;
+        int errorNumberOfMove = 0;
+        assertThatThrownBy(() -> new Circuit(errorNumberOfCar, numberOfMoves))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Circuit(numberOfCars, errorNumberOfMove))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
