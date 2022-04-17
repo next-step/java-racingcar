@@ -4,31 +4,33 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import service.Race;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class RaceTest {
+class CarNameTest {
     @Test
     @Order(1)
-    void 자동차_대수는_1대_이상이어야_한다() {
-        assertThatThrownBy(() -> new Race().start("", new RunRace(1)))
+    void 자동차이름은_5글자를_초과할수_없다() {
+        assertThatThrownBy(() -> new Car("abcdef"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @ParameterizedTest
+    @Test
     @Order(2)
-    @ValueSource(ints = {3, 4, 5})
-    void 주어진_횟수만큼_레이스가_진행된다(int tryCount) {
+    void 자동차이름을_쉼표로_구분한다() {
         Cars cars = Cars.builder()
-                .carsName("car,truck")
+                .carsName("abc,cdf")
                 .raceCondition(new RaceCondition())
                 .build();
+        assertThat(cars.getCarsSize()).isEqualTo(2);
+    }
 
-        assertThat(new RunRace(tryCount).run(new RaceRecord(), cars).getSize()).isEqualTo(tryCount);
+    @Test
+    @Order(3)
+    void 자동차이름_객체_생성() {
+        CarName carName = new CarName("테스트");
+        assertThat(carName.toString()).isEqualTo("테스트");
     }
 }

@@ -1,14 +1,16 @@
 package view;
 
-import racingcar.Cars;
+import racingcar.RaceRecord;
 
 public class ResultView {
-    private static final String MOVE_EXPRESSION = "-";
+    public static void print(RaceRecord raceRecords) {
+        System.out.println("실행 결과");
+        System.out.println(raceRecords.getRecord());
+        printWinners(raceRecords.getRaceWinners());
+    }
 
-    public void printCarsMoveState(Cars cars) {
-        cars.carsMoveState(MOVE_EXPRESSION)
-                .forEach(System.out::println);
-        System.out.println();
+    private static void printWinners(String winners) {
+        System.out.println(winners + "가 최종 우승했습니다.");
     }
 
 }
