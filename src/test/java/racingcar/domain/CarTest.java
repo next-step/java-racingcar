@@ -1,77 +1,84 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private static final CarName POBI = new CarName("POBI");
-    private static final CarName CRONG = new CarName("CRONG");
-
-    @Test
-    void equals_ReturnsTrue_IfCarNamesAndPositionAreSame() {
-        Car pobiCar1 = new Car(POBI, new Position());
-        Car pobiCar2 = new Car(POBI, new Position());
-
-        assertThat(pobiCar1).isEqualTo(pobiCar2);
-    }
-
-    @Test
-    void equals_ReturnsFalse_IfCarNamesAreDifferent() {
-        Car pobiCar = new Car(POBI, new Position());
-        Car crongCar = new Car(CRONG, new Position());
-
-        assertThat(pobiCar).isNotEqualTo(crongCar);
-    }
-
-    @Test
-    void equals_ReturnsFalse_IfPositionsAreDifferent() {
-        Car pobiCar1 = new Car(POBI, new Position(2));
-        Car pobiCar2 = new Car(POBI, new Position(3));
-
-        assertThat(pobiCar1).isNotEqualTo(pobiCar2);
-    }
+    private static final String POBI = "pobi";
+    private static final String CRONG = "crong";
+    private static final int SMALL_POSITION = 1;
+    private static final int BIG_POSITION = 100;
 
     @Test
     void move_IncreasesPosition_IfConditionIsTrue() {
+        // given
         int startPosition = 5;
-        Car pobiCar = new Car(POBI, new Position(startPosition));
-
         int moveCount = 3;
+        Car car = new Car(POBI, startPosition);
+
+        // when
         for (int i = 0; i < moveCount; i++) {
-            pobiCar.move(() -> true);
+            car.move(() -> true);
         }
 
-        assertThat(pobiCar.getPosition()).isEqualTo(startPosition + moveCount);
+        // then
+        assertThat(car).isEqualTo(new Car(POBI, startPosition + moveCount));
     }
 
     @Test
     void move_DoesNotIncreasePosition_IfConditionIsFalse() {
+        // given
         int startPosition = 5;
-        Car pobiCar = new Car(POBI, new Position(startPosition));
-
         int moveCount = 3;
+        Car car = new Car(POBI, startPosition);
+
+        // when
         for (int i = 0; i < moveCount; i++) {
-            pobiCar.move(() -> false);
+            car.move(() -> false);
         }
 
-        assertThat(pobiCar.getPosition()).isEqualTo(startPosition);
+        // then
+        assertThat(car).isEqualTo(new Car(POBI, startPosition));
     }
 
-    @Test
-    void compareTo() {
-        Car thousandCar = new Car(POBI, new Position(1000));
-        Car hundredCar = new Car(POBI, new Position(100));
-
-        assertThat(thousandCar).isGreaterThan(hundredCar);
+    @ParameterizedTest
+    @MethodSource("provideArgumentsForEquals")
+    void equals(Car car, Car anotherCar, boolean expected) {
+        assertThat(car.equals(anotherCar)).isEqualTo(expected);
     }
 
-    @Test
-    void compareTo_Returns0_IfPositionsAreSame() {
-        Car tenCar1 = new Car(POBI, new Position(10));
-        Car tenCar2 = new Car(POBI, new Position(10));
+    private static Stream<Arguments> provideArgumentsForEquals() {
+        return Stream.of(
+                Arguments.of(new Car(POBI), new Car(POBI), true),
+                Arguments.of(new Car(POBI, BIG_POSITION), new Car(POBI, BIG_POSITION), true),
+                Arguments.of(new Car(POBI, BIG_POSITION), new Car(POBI, SMALL_POSITION), false),
+                Arguments.of(new Car(POBI, SMALL_POSITION), new Car(CRONG, SMALL_POSITION), false)
+        );
+    }
 
-        assertThat(tenCar1).isEqualByComparingTo(tenCar2);
+    @ParameterizedTest
+    @MethodSource("provideArgumentsForCompareTo")
+    void compareTo(Car car, Car anotherCar, int expected) {
+        assertThat(car.compareTo(anotherCar)).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> provideArgumentsForCompareTo() {
+        final int SAME = 0;
+        final int GREATER = 1;
+        final int SMALLER = -1;
+
+        return Stream.of(
+                Arguments.of(new Car(POBI), new Car(POBI), SAME),
+                Arguments.of(new Car(POBI, BIG_POSITION), new Car(POBI, BIG_POSITION), SAME),
+                Arguments.of(new Car(POBI, BIG_POSITION), new Car(POBI, SMALL_POSITION), GREATER),
+                Arguments.of(new Car(POBI, SMALL_POSITION), new Car(POBI, BIG_POSITION), SMALLER)
+        );
     }
 }

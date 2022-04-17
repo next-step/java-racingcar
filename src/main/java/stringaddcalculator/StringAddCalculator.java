@@ -14,7 +14,7 @@ public class StringAddCalculator {
 
 
     private StringAddCalculator() {
-        throw new AssertionError();
+        throw new UnsupportedOperationException();
     }
 
     public static int splitAndSum(String expression) {

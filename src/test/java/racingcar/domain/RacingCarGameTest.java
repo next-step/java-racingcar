@@ -1,44 +1,51 @@
 package racingcar.domain;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.strategy.MoveStrategy;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThatNoException;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class RacingCarGameTest {
-
-    private static final List<CarName> CAR_NAMES =
-            List.of(new CarName("pobi"), new CarName("crong"), new CarName("honux"));
     private static final int ROUNDS = 5;
     private static final MoveStrategy ALWAYS_MOVE_STRATEGY = () -> true;
 
+    @DisplayName("라운드가 음수면 예외")
     @Test
-    void proceedRound_DoesNotThrowException_IfRoundsIsGreaterThanZero() {
-        RacingCarGame game = createRacingCarGame();
-
-        assertThatNoException().isThrownBy(() -> {
-            for (int i = 0; i < ROUNDS; i++) {
-                game.proceedRound();
-            }
-        });
+    void validation() {
+        assertThatThrownBy(() -> new RacingCarGame(createCars(), -1, ALWAYS_MOVE_STRATEGY))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    void proceedRound_ThrowsException_IfRoundsIsEqualOrLessThanZero() {
-        RacingCarGame game = createRacingCarGame();
+    void isFinished_WhenMoveCarsIsCalledRoundsTimes_True() {
+        RacingCarGame game = new RacingCarGame(createCars(), ROUNDS, ALWAYS_MOVE_STRATEGY);
 
-        assertThatThrownBy(() -> {
-            for (int i = 0; i < ROUNDS + 1; i++) {
-                game.proceedRound();
-            }
-        }).isInstanceOf(IllegalStateException.class);
+        for (int i = 0; i < ROUNDS; i++) {
+            game.moveCars();
+        }
+
+        assertThat(game.isFinished()).isTrue();
     }
 
-    private RacingCarGame createRacingCarGame() {
-        Cars cars = CarFactory.generateCars(CAR_NAMES);
-        return new RacingCarGame(cars, ROUNDS, ALWAYS_MOVE_STRATEGY);
+    @Test
+    void isFinished_WhenMoveCarsIsCalledLessThanRoundsTimes_False() {
+        RacingCarGame game = new RacingCarGame(createCars(), ROUNDS, ALWAYS_MOVE_STRATEGY);
+
+        for (int i = 0; i < ROUNDS - 1; i++) {
+            game.moveCars();
+        }
+
+        assertThat(game.isFinished()).isFalse();
+    }
+
+
+    private static Cars createCars() {
+        List<String> names = List.of("pobi", "crong", "honux");
+        List<Car> cars = Car.createCars(names);
+        return new Cars(cars);
     }
 }

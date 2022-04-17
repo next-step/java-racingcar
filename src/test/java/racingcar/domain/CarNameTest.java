@@ -11,19 +11,22 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarNameTest {
 
-    @Test
-    void equals() {
-        assertThat(new CarName("pobi")).isEqualTo(new CarName("pobi"));
-    }
+    private static final String POBI = "pobi";
+    private static final String CRONG = "crong";
 
-    @DisplayName("이름 유효성 검사")
+    @DisplayName("이름이 null/공백이거나 5글자를 초과하면 예외를 던진다.")
     @ParameterizedTest
     @NullAndEmptySource
     @ValueSource(strings = {"long name"})
-    void validation(String name) {
-        assertThatThrownBy(() -> new CarName(name))
+    void validation(String invalidName) {
+        assertThatThrownBy(() -> new CarName(invalidName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void equals() {
+        assertThat(new CarName(POBI)).isEqualTo(new CarName(POBI));
+        assertThat(new CarName(POBI)).isNotEqualTo(new CarName(CRONG));
+    }
 
 }
