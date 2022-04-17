@@ -4,16 +4,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class RacingCar {
     private Point coordinate = new Point(0, 0);
 
     public static RacingCar @NotNull [] createBatch(int size) {
-        RacingCar[] racingCars = new RacingCar[size];
-        IntStream.range(0, size).forEach(i ->
-                racingCars[i] = new RacingCar()
-        );
-        return racingCars;
+        return Stream.generate(RacingCar::new)
+                .limit(size)
+                .toArray(RacingCar[]::new);
     }
 
     public void proceed() {
