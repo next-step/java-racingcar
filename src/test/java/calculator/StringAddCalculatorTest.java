@@ -1,6 +1,5 @@
 package calculator;
 
-import exception.NegativeException;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -37,12 +36,12 @@ public class StringAddCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"-1,2,5", "1,-5,6", "1:3,-8", "-1:-2:-8"})
     void 음수를_전달할_경우_RuntimeException_발생(String input) {
-        assertThrows(NegativeException.class, () -> StringAddCalculator.splitAndSum(input));
+        assertThrows(RuntimeException.class, () -> StringAddCalculator.splitAndSum(input));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"//:\n1:-2:3", "//!\n-1!2!3", "//@\n3@2@-1", "//a\n-1a-3a-2"})
     void 음수를_전달할_경우_커스텀_구분자_일경우(String input) {
-        assertThrows(NegativeException.class, () -> StringAddCalculator.splitAndSum(input));
+        assertThrows(RuntimeException.class, () -> StringAddCalculator.splitAndSum(input));
     }
 }

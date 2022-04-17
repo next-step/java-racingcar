@@ -1,15 +1,19 @@
 package model;
 
 public class Car {
-    private int position;
+    private Position position;
 
-    public void move(MovingRule movingRule) {
-        if (movingRule.isMoveForward()) {
-            this.position++;
+    public Car(Position position) {
+        this.position = position;
+    }
+
+    public void move(MoveRule moveRule) {
+        if (moveRule.isMoveForward()) {
+            this.position.plus();
         }
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 }

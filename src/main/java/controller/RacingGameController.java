@@ -1,39 +1,19 @@
 package controller;
 
-import model.Car;
-import model.Cars;
-import model.PositiveCarMoveCount;
-import model.PositiveCarsNumber;
+import model.PositiveNumber;
+import service.RacingCarGame;
 import view.InputView;
-import view.ResultView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RacingGameController {
 
     public static void main(String args[]) {
-        InputView inputView = new InputView();
-        PositiveCarsNumber positiveCarsNumber = inputView.getInputCarsNumber();
-        PositiveCarMoveCount positiveCarMoveCount = inputView.getInputCarMoveCount();
+        InputView inputView = InputView.getInstance();
 
-        Cars cars = makeCars(positiveCarsNumber.getCarsNumber());
-        moveCars(positiveCarMoveCount.getCarMoveCount(), cars);
-    }
+        PositiveNumber carsNumber = inputView.getInputCarsNumber();
+        PositiveNumber carMoveCount = inputView.getInputCarMoveCount();
 
-    private static Cars makeCars(int carsNumber) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carsNumber; i++) {
-            cars.add(new Car());
-        }
-        return new Cars(cars);
-    }
-
-    private static void moveCars(int carMoveCount, Cars cars) {
-        ResultView resultView = new ResultView();
-        for (int i = 0; i < carMoveCount; i++) {
-            resultView.printMoveCarResult(cars);
-        }
+        RacingCarGame racingCarGame = RacingCarGame.getInstance();
+        racingCarGame.play(carsNumber, carMoveCount);
     }
 
 }

@@ -1,9 +1,7 @@
 package calculator;
 
-import exception.NegativeException;
-
 public class Positive {
-    private int number;
+    private final int number;
 
     public Positive(String value) {
         this(Integer.parseInt(value));
@@ -11,7 +9,7 @@ public class Positive {
 
     public Positive(int number) {
         if (number < 0) {
-            throw new NegativeException();
+            throw new RuntimeException();
         }
         this.number = number;
     }
