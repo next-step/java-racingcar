@@ -5,11 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Circuit {
+    private static final int MAX_NUMBER_OF_CARS = 10;
+    private static final int MAX_NUMBER_OF_MOVES = 10;
 
     private final List<Car> cars;
     private final Integer numberOfRacing;
 
     public Circuit(int numberOfCars, int numberOfMoves) {
+        if (numberOfCars > MAX_NUMBER_OF_CARS || numberOfMoves > MAX_NUMBER_OF_MOVES) {
+            throw new IllegalArgumentException();
+        }
         this.numberOfRacing = numberOfMoves;
         Engine engine = new Engine();
         cars = createCars(engine, numberOfCars, numberOfMoves);
