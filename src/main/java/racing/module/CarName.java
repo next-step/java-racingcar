@@ -3,8 +3,8 @@ package racing.module;
 import exception.CustomException;
 
 public class CarName {
-    private static int LENGTH_LIMIT = 5;
-    private String name;
+    private static final int LENGTH_LIMIT = 5;
+    private final String name;
 
     private CarName() throws CustomException {
         throw new CustomException("자동차의 이름없이 생성이 불가능합니다.");
