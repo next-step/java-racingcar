@@ -18,6 +18,14 @@ public class Cars {
     this.values = values;
   }
 
+  public static Cars newInstance(String carNames, MoveStrategy moveStrategy) {
+    List<Car> cars = Arrays.stream(carNames.split(CAR_NAME_DELIMITER))
+        .map(n -> new Car(n, moveStrategy))
+        .collect(toList());
+
+    return new Cars(cars);
+  }
+
   public List<String> getNames() {
     return values
         .stream()
@@ -53,13 +61,4 @@ public class Cars {
         .filter(car -> car.getDistance() == max)
         .collect(collectingAndThen(toList(), Cars::new));
   }
-
-  public static Cars newInstance(String carNames, MoveStrategy moveStrategy) {
-    List<Car> cars = Arrays.stream(carNames.split(CAR_NAME_DELIMITER))
-        .map(n -> new Car(n, moveStrategy))
-        .collect(toList());
-
-    return new Cars(cars);
-  }
-
 }

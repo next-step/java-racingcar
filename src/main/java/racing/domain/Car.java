@@ -13,12 +13,12 @@ public class Car {
     this.moveStrategy = moveStrategy;
   }
 
-  public String getCarName() {
-    return carName.getValue();
-  }
-
   public static Car newInstance(String carName, MoveStrategy moveStrategy) {
     return new Car(carName, moveStrategy);
+  }
+
+  public String getCarName() {
+    return carName.getValue();
   }
 
   public void attempt() {
