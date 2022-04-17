@@ -58,7 +58,7 @@ public class Cars {
 
     return values
         .stream()
-        .filter(car -> car.getDistance() == max)
+        .filter(car -> car.isDistanceEqual(max))
         .collect(collectingAndThen(toList(), Cars::new));
   }
 }
