@@ -1,10 +1,10 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarsTest {
@@ -22,6 +22,13 @@ class CarsTest {
         )
     );
     assertThat(cars).isEqualTo(expectedCars);
+  }
+
+  @DisplayName("중복된 이름이 있으면 예외를 던진다.")
+  @Test
+  void createCarsWithSameName() {
+    assertThatThrownBy(() -> Cars.createCars(List.of("yeeun", "yeeun", "yeny"), 0))
+        .isInstanceOf(IllegalArgumentException.class);
   }
 
   @Test
@@ -45,9 +52,7 @@ class CarsTest {
         )
     );
 
-    List<String> winnerNames = cars.findWinners().stream()
-        .map(Car::getName)
-        .collect(Collectors.toList());
-    assertThat(winnerNames).containsExactly("yeny", "yeeun");
+    List<Car> winners = cars.findWinners();
+    assertThat(winners).containsExactly(cars.getValues().get(0), cars.getValues().get(1));
   }
 }

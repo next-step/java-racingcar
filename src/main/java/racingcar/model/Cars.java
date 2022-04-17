@@ -2,6 +2,7 @@ package racingcar.model;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -9,6 +10,7 @@ public class Cars {
   private final List<Car> values;
 
   public Cars(List<Car> cars) {
+    validateSameNames(cars);
     this.values = cars;
   }
 
@@ -26,7 +28,7 @@ public class Cars {
   public List<Car> findWinners() {
     Car winnerCar = values.stream()
         .max(Car::compareTo)
-        .orElse(null);
+        .orElseThrow(IllegalStateException::new);
     return values.stream()
         .filter(car -> car.hasSamePosition(winnerCar))
         .collect(Collectors.toList());
@@ -38,6 +40,15 @@ public class Cars {
 
   public List<Car> getValues() {
     return values;
+  }
+
+  private void validateSameNames(List<Car> values) {
+    Set<String> carNameSet = values.stream()
+        .map(Car::getName)
+        .collect(Collectors.toSet());
+    if (carNameSet.size() != values.size()) {
+      throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+    }
   }
 
   @Override
