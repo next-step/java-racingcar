@@ -9,6 +9,6 @@ public class RandomNumCondition implements Condition {
 
     @Override
     public boolean isSatisfied() {
-        return randomGenerator.generate() >= 4;
+        return randomGenerator.generate() >= 4 && randomGenerator.generate() <= 9;
     }
 }
