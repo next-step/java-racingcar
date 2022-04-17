@@ -75,7 +75,7 @@ public class GameService {
   }
 
   private String coWinnerLineUp(Car winnerCar, String coWinnerNames, Car otherParticipant) {
-    if (winnerCar.position() == otherParticipant.position()) {
+    if (winnerCar.position().equals(otherParticipant.position())) {
       coWinnerNames = coWinnerNames.concat(", ").concat(otherParticipant.toString());
     }
     return coWinnerNames;
