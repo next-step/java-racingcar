@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import racingcar.dto.InputCar;
 import racingcar.dto.InputRoundCount;
-import racingcar.util.ConditionGenerator;
 
 import java.util.List;
 
@@ -34,6 +33,6 @@ public class RacingGame {
     }
 
     private void roundProceed() {
-        cars.forEach(car -> car.stopOrGo(ConditionGenerator.getInstance().generateRandomCondition()));
+        cars.forEach(car -> car.move());
     }
 }
