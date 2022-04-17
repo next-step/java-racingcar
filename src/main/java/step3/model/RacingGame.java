@@ -1,15 +1,13 @@
 package step3.model;
 
-import step3.view.dto.RacingConfigDto;
-
 public class RacingGame {
 
     private final int tryCount;
     private final Cars cars;
 
-    public RacingGame(RacingConfigDto racingConfigDto) {
-        this.tryCount = racingConfigDto.getTryCount();
-        this.cars = new Cars(racingConfigDto.getCarCount(), racingConfigDto.getTryStrategy());
+    public RacingGame(Count tryCount, Count carCount, TryStrategy tryStrategy) {
+        this.tryCount = tryCount.getCount();
+        this.cars = new Cars(carCount.getCount(), tryStrategy);
     }
 
     public GameResult race() {
