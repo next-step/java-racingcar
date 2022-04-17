@@ -44,4 +44,30 @@ class PositionTest {
             assertThat(position.getPosition()).isEqualTo(2);
         }
     }
+
+    @Nested
+    class match_메서드는 {
+
+        @Nested
+        class 같은_포지션_숫자가_주어질경우 {
+
+            @Test
+            void true를_리턴한다() {
+                final int samePositionNumber = 2;
+
+                assertThat(PositionTest.this.position.match(samePositionNumber)).isTrue();
+            }
+        }
+
+        @Nested
+        class 다른_포지션_숫자가_주어질경우 {
+
+            @Test
+            void false를_리턴한다() {
+                final int notSamePositionNumber = 3;
+
+                assertThat(position.match(notSamePositionNumber)).isFalse();
+            }
+        }
+    }
 }

@@ -31,7 +31,7 @@ public class Cars {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
-                .orElse(Position.DEFAULT_POSITION);
+                .orElse(Position.DEFAULT);
     }
 
     private Cars getMatchPositionCars(int position) {

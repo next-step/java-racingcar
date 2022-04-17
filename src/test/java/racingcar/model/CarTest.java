@@ -21,7 +21,6 @@ public class CarTest {
 
         @Nested
         class number가_4미만이_주어질경우 {
-
             @ParameterizedTest
             @ValueSource(ints = {3})
             void false를_리턴한다(int number) {

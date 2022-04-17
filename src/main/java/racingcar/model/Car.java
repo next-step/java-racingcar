@@ -13,16 +13,12 @@ public class Car {
     private Position position;
 
     public Car(String name) {
-        this(new Name(name), new Position());
+        this(name, Position.DEFAULT);
     }
 
     protected Car(String name, int position) {
-        this(new Name(name), new Position(position));
-    }
-
-    protected Car(Name name, Position position) {
-        this.name = name;
-        this.position = position;
+        this.name = new Name(name);
+        this.position = new Position(position);
     }
 
     public void move() {
@@ -45,7 +41,7 @@ public class Car {
     }
 
     public boolean matchPosition(int position) {
-        return this.position.equals(new Position(position));
+        return this.position.match(position);
     }
 
     public String toName() {
