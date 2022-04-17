@@ -29,4 +29,8 @@ public class RacingGame {
 
         return true;
     }
+
+    public List<String> winners() {
+        return cars.winners();
+    }
 }

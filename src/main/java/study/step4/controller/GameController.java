@@ -27,9 +27,15 @@ public class GameController {
         RacingGame racingGame = raceGameSetting();
 
         gameplay(racingGame);
+        winners(racingGame);
+    }
+
+    private void winners(RacingGame racingGame) {
+        resultView.winners(racingGame.winners());
     }
 
     private void gameplay(RacingGame racingGame) {
+        resultView.start();
         while (racingGame.nextGame()) {
             resultView.printPlay(racingGame.play());
             resultView.plintln();

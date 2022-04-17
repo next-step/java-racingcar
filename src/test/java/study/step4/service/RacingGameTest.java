@@ -10,7 +10,9 @@ import study.step4.controller.CarsPositionModel;
 import study.step4.domain.Cars;
 import study.step4.domain.strategy.TestMoveStrategy;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.groups.Tuple.tuple;
@@ -48,5 +50,19 @@ class RacingGameTest {
         racingGame.play();
 
         assertThat(racingGame.nextGame()).isTrue();
+    }
+
+    @DisplayName("우승자 테스트")
+    @Test
+    void winners() {
+        var carNames = new String[]{"a", "b", "c"};
+        Cars cars = new Cars(carNames, new TestMoveStrategy(4));
+        RacingGame racingGame = new RacingGame(cars, 2);
+
+        racingGame.play();
+        racingGame.play();
+
+        assertThat(racingGame.winners()).isEqualTo("a, b, c");
+
     }
 }

@@ -26,4 +26,8 @@ public class Car {
     public CarPosition getCarPosition() {
         return carPosition;
     }
+
+    public int comparator() {
+        return 0;
+    }
 }

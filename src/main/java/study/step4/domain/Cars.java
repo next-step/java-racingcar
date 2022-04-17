@@ -28,4 +28,9 @@ public class Cars {
         cars.forEach(Car::move);
 
     }
+
+    public List<String> winners() {
+
+        return null;
+    }
 }
