@@ -34,14 +34,14 @@ public class Winner {
   public static Winner winnerCalculator(List<Car> gameParticipants) {
     Winner winner = getChallenger(gameParticipants.get(0));
     for (int i = 1; i < gameParticipants.size(); i++) {
-      winner = findWinner(winner, getChallenger(gameParticipants.get(i)));
+      winner = findWinner(winner, gameParticipants.get(i));
     }
     return winner;
   }
 
-  private static Winner findWinner(Winner winner, Winner gameChallenger) {
-    if (winner.match(gameChallenger)) {
-      winner = gameChallenger;
+  private static Winner findWinner(Winner winner, Car challenger) {
+    if (winner.match(challenger)) {
+      winner = getChallenger(challenger);
     }
     return winner;
   }
@@ -69,8 +69,8 @@ public class Winner {
     return new Winner(winnerSplit[0], new Position(winnerSplit[1].length()));
   }
 
-  private boolean match(Winner gameChallenger) {
-    return this.position.match(gameChallenger.position);
+  private boolean match(Car challenger) {
+    return this.position.match(getChallenger(challenger).position);
   }
 
   @Override
