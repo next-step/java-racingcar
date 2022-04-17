@@ -10,7 +10,7 @@ public class ResultView {
     }
 
     public static void showLocation(RacingCar racingCar) {
-        for (int i = 0; i < racingCar.location; i++) {
+        for (int i = 0; i < racingCar.getLocation(); i++) {
             System.out.printf("-");
         }
         System.out.printf("\n");

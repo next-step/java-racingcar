@@ -20,9 +20,9 @@ public class RacingCarGameTest {
         RacingCarGame racingCarGame = new RacingCarGame(racingCars, numOfRound, condition);
         racingCarGame.start();
 
-        Assertions.assertThat(racingCars[0].location).isEqualTo(3);
-        Assertions.assertThat(racingCars[1].location).isEqualTo(3);
-        Assertions.assertThat(racingCars[2].location).isEqualTo(3);
+        Assertions.assertThat(racingCars[0].getLocation()).isEqualTo(3);
+        Assertions.assertThat(racingCars[1].getLocation()).isEqualTo(3);
+        Assertions.assertThat(racingCars[2].getLocation()).isEqualTo(3);
     }
 
     @Test
@@ -37,8 +37,8 @@ public class RacingCarGameTest {
         RacingCarGame racingCarGame = new RacingCarGame(racingCars, numOfRound, condition);
         racingCarGame.start();
 
-        Assertions.assertThat(racingCars[0].location).isEqualTo(0);
-        Assertions.assertThat(racingCars[1].location).isEqualTo(0);
-        Assertions.assertThat(racingCars[2].location).isEqualTo(0);
+        Assertions.assertThat(racingCars[0].getLocation()).isEqualTo(0);
+        Assertions.assertThat(racingCars[1].getLocation()).isEqualTo(0);
+        Assertions.assertThat(racingCars[2].getLocation()).isEqualTo(0);
     }
 }
