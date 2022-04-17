@@ -6,12 +6,13 @@ import racingcar.view.dto.RacingResult;
 
 public class RacingGame {
     private static final String DEFAULT_CAR_NAMES = "car";
+
     private final int tryCount;
     private final Cars cars;
 
     private int movedCount = 0;
 
-    public RacingGame(int tryCount) {
+    protected RacingGame(int tryCount) {
         this(tryCount, DEFAULT_CAR_NAMES);
     }
 
