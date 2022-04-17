@@ -25,12 +25,20 @@ public class inputView {
     }
 
     static class Input {
-        int numOfCar;
-        int numOfRound;
+        private int numOfCar;
+        private int numOfRound;
 
         public Input(int numOfCar, int numOfRound) {
             this.numOfCar = numOfCar;
             this.numOfRound = numOfRound;
+        }
+
+        public int getNumOfCar() {
+            return numOfCar;
+        }
+
+        public int getNumOfRound() {
+            return numOfRound;
         }
     }
 }
