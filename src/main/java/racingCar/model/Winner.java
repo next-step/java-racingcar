@@ -1,6 +1,7 @@
 package racingCar.model;
 
 import java.util.List;
+import java.util.Objects;
 import racingCar.util.StringUtils;
 
 public class Winner {
@@ -11,6 +12,23 @@ public class Winner {
   public Winner(String name, Position position) {
     this.name = new CarName(name);
     this.position = position;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Winner winner = (Winner) o;
+    return Objects.equals(name.toString(), winner.name.toString());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name.toString());
   }
 
   public static Winner winnerCalculator(List<Car> gameParticipants) {
