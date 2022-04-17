@@ -1,9 +1,9 @@
 package racingcar;
 
 import racingcar.controller.RacingGame;
-import racingcar.model.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+import racingcar.view.dto.RacingResult;
 
 public class RacingMain {
     public static void main(String[] args) {
@@ -11,15 +11,11 @@ public class RacingMain {
         int tryCount = InputView.inputTryCount();
 
         RacingGame racingGame = new RacingGame(tryCount, carNames);
-
-        Cars cars = null;
+        RacingResult result = null;
         while (!racingGame.end()) {
-            cars = racingGame.race();
-            OutputView.outputStatus(cars);
+            result = racingGame.race();
+            OutputView.outputStatus(result);
         }
-
-        assert cars != null;
-        Cars winnerCars = cars.findWinners();
-        OutputView.outputWinners(winnerCars);
+        OutputView.outputWinners(result);
     }
 }

@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.Cars;
 import racingcar.model.factory.CarsFactory;
+import racingcar.view.dto.RacingResult;
 
 public class RacingGame {
     private static final String DEFAULT_CAR_NAMES = "car";
@@ -23,11 +24,11 @@ public class RacingGame {
         return this.movedCount >= this.tryCount;
     }
 
-    public Cars race() {
+    public RacingResult race() {
         this.cars.move();
         increaseMovedCount();
 
-        return this.cars;
+        return new RacingResult(cars);
     }
 
     private synchronized void increaseMovedCount() {
