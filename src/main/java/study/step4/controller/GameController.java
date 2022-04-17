@@ -3,9 +3,12 @@ package study.step4.controller;
 
 import study.step4.domain.Car;
 import study.step4.domain.Cars;
+import study.step4.domain.strategy.RandomMoveStrategy;
 import study.step4.service.RacingGame;
 import study.step4.view.InputView;
 import study.step4.view.ResultView;
+
+import java.util.List;
 
 public class GameController {
     private final InputView inputView;
@@ -27,7 +30,10 @@ public class GameController {
     }
 
     private void gameplay(RacingGame racingGame) {
-        racingGame.play();
+        while (racingGame.nextGame()) {
+            resultView.printPlay(racingGame.play());
+            resultView.plintln();
+        }
     }
 
     private RacingGame raceGameSetting() {
@@ -42,6 +48,6 @@ public class GameController {
     }
 
     private Cars carSetting() {
-        return new Cars(inputView.carSetting());
+        return new Cars(inputView.carSetting(), new RandomMoveStrategy());
     }
 }
