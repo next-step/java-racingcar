@@ -21,14 +21,18 @@ public class OutputView {
             return;
         }
 
-        Cars cars = racingResult.getCars();
+        Cars cars = getCarsFrom(racingResult);
         Cars winnerCars = cars.findWinners();
         System.out.println(winnerCars + WINNER_MESSAGE);
     }
 
     public static void outputStatus(RacingResult racingResult) {
-        Cars cars = racingResult.getCars();
+        Cars cars = getCarsFrom(racingResult);
         cars.getStatus().forEach(System.out::println);
         outputEmptyLine();
+    }
+
+    private static Cars getCarsFrom(RacingResult racingResult) {
+        return racingResult.getCars();
     }
 }
