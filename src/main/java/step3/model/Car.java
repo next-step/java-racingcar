@@ -2,12 +2,15 @@ package step3.model;
 
 public class Car {
 
-    private int moveCount;
     private final TryStrategy tryStrategy;
+    private final String name;
 
-    public Car(TryStrategy tryStrategy) {
-        this.moveCount = 0;
+    private int moveCount;
+
+    public Car(Name name, TryStrategy tryStrategy) {
         this.tryStrategy = tryStrategy;
+        this.name = name.getValue();
+        this.moveCount = 0;
     }
 
     public void tryOnce() {

@@ -14,7 +14,7 @@ class CountTest {
 
     @Test
     void 정수를_입력받아서_Wrapping하는_Count_객체를_생성() {
-        assertThat(new Count(1).getCount()).isEqualTo(1);
+        assertThat(new Count(1).getValue()).isEqualTo(1);
     }
 
     @Test

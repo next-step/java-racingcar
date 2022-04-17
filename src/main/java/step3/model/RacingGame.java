@@ -5,9 +5,9 @@ public class RacingGame {
     private final int tryCount;
     private final Cars cars;
 
-    public RacingGame(Count tryCount, Count carCount, TryStrategy tryStrategy) {
-        this.tryCount = tryCount.getCount();
-        this.cars = new Cars(carCount.getCount(), tryStrategy);
+    public RacingGame(Count tryCount, Names names, TryStrategy tryStrategy) {
+        this.tryCount = tryCount.getValue();
+        this.cars = new Cars(names, tryStrategy);
     }
 
     public GameResult race() {

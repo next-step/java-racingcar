@@ -8,10 +8,11 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(int count, TryStrategy tryStrategy) {
+    public Cars(Names names, TryStrategy tryStrategy) {
         this.cars = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            cars.add(new Car(tryStrategy));
+        for (Name name : names.getEachNames()) {
+            Car car = new Car(name, tryStrategy);
+            cars.add(car);
         }
     }
 
