@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Cars;
-import racingcar.domain.RandomMovingRule;
+import racingcar.domain.GameRule;
 import racingcar.domain.RacingCarGame;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -15,7 +15,7 @@ public class RacingCarApplication {
 
 		RacingCarGame game = new RacingCarGame(Cars.of(carCount), playCount);
 		Results results = game.start(
-			() -> RandomUtil.createRandomNumber(RandomMovingRule.RANDOM_MIN, RandomMovingRule.RANDOM_MAX));
+			() -> RandomUtil.createRandomNumber(GameRule.RANDOM_MIN, GameRule.RANDOM_MAX));
 
 		ResultView.print(results);
 	}
