@@ -13,8 +13,7 @@ public class StringTest {
         String digitLikeStrings = "1,2";
         String[] strings = digitLikeStrings.split(",");
 
-        assertThat(strings).containsExactly("1");
-        assertThat(strings).containsExactly("2");
+        assertThat(strings).containsExactly("1", "2");
     }
 
     @Test
@@ -28,7 +27,7 @@ public class StringTest {
     @Test
     void substring() {
         String someString = "(1,2)";
-        String extractedString = someString.substring(1, 3);
+        String extractedString = someString.substring(1, 4);
 
         assertThat(extractedString).isEqualTo("1,2");
     }
@@ -38,9 +37,9 @@ public class StringTest {
     void getStringWithCharAt() {
         String someString = "abc";
 
-        assertThat(someString.charAt(0)).isEqualTo("a");
-        assertThat(someString.charAt(1)).isEqualTo("b");
-        assertThat(someString.charAt(2)).isEqualTo("c");
+        assertThat(someString.charAt(0)).isEqualTo('a');
+        assertThat(someString.charAt(1)).isEqualTo('b');
+        assertThat(someString.charAt(2)).isEqualTo('c');
     }
 
     @Test
