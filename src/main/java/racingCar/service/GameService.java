@@ -50,4 +50,9 @@ public class GameService {
     return resultList;
   }
 
+  public String addWinner(List<Car> otherGameParticipants) {
+    Winner winner = Winner.winnerCalculator(otherGameParticipants);
+    return Winner.coWinner(winner, otherGameParticipants);
+  }
+
 }
