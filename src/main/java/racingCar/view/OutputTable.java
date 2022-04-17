@@ -34,16 +34,17 @@ public final class OutputTable {
 
   private static void historyPrint(List<Car> allCars, List<RacingCarHistory> racingHistories) {
     racingHistories.sort(Comparator.comparingInt(RacingCarHistory::round));
-    for (RacingCarHistory racingCarHistory : racingHistories) {
-      System.out.println(racingCarHistory);
-      enter(allCars, racingCarHistory);
+    for (int i = 0; i < racingHistories.size(); i++) {
+      System.out.println(racingHistories.get(i));
+      enter(i + 1, allCars.size());
     }
   }
 
-  private static void enter(List<Car> allCars, RacingCarHistory racingCarHistory) {
-    if (racingCarHistory.car().index() == allCars.size()) {
+  private static void enter(int index, int carSize) {
+    if (index % carSize == 0) {
       System.out.println();
     }
   }
+
 
 }

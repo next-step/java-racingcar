@@ -12,8 +12,8 @@ public class Track {
 
   public void addCar(String names) {
     String[] carNames = readyCarNames(names);
-    for (int i = 0; i < carNames.length; i++) {
-      cars.add(new Car(i + 1, carNames[i]));
+    for (String carName : carNames) {
+      cars.add(new Car(carName));
     }
   }
 

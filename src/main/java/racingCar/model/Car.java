@@ -6,24 +6,22 @@ import racingCar.strategy.CarMoveStrategy;
 public class Car {
 
   private static final int MIN_CAR_NAME_LENGTH = 5;
-  private final Integer index;
   private final String name;
   private final Position position;
 
-  public Car(Integer index, String name) {
-    this(index, name, 0);
+  public Car(String name) {
+    this(name, 0);
   }
 
-  public Car(Integer index, String name, int position) {
+  public Car(String name, int position) {
     carNameValidation(name);
-    this.index = index;
     this.name = name;
     this.position = new Position(position);
   }
 
   public Car move(CarMoveStrategy carMoveStrategy) {
     if (carMoveStrategy.moveAble()) {
-      return new Car(this.index, this.name, this.position.increase());
+      return new Car(this.name, this.position.increase());
     }
     return this;
   }
@@ -46,21 +44,16 @@ public class Car {
       return false;
     }
     Car car = (Car) o;
-    return position.x == car.position.x && Objects.equals(index, car.index)
-        && Objects.equals(name, car.name);
+    return position.x == car.position.x && Objects.equals(name, car.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(index, name, position.x);
+    return Objects.hash(name, position.x);
   }
 
   public Position position() {
     return this.position;
-  }
-
-  public Integer index() {
-    return index;
   }
 
 
