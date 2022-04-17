@@ -6,8 +6,8 @@ import java.util.List;
 public class Cars {
     private final List<Car> cars;
 
-    Cars(String[] carNameArr) {
-        this.cars = initCars(carNameArr);
+    Cars(String[] carNames) {
+        this.cars = initCars(carNames);
     }
 
     private Cars(List<Car> cars) {
@@ -45,11 +45,11 @@ public class Cars {
         return winners.toString();
     }
 
-    private List<Car> initCars(String[] carNameArr) {
-        int numberOfCars = carNameArr.length;
+    private List<Car> initCars(String[] carNames) {
+        int numberOfCars = carNames.length;
         List<Car> cars = new ArrayList<>(numberOfCars);
         for (int i = 0; i < numberOfCars; i++) {
-            cars.add(i, new Car(carNameArr[i]));
+            cars.add(i, new Car(carNames[i]));
         }
         return cars;
     }

@@ -7,8 +7,8 @@ public class Competition {
     private final Cars cars;
     private final int round;
 
-    public Competition(String[] carNameArr, int round) {
-        cars = new Cars(carNameArr);
+    public Competition(String[] carNames, int round) {
+        cars = new Cars(carNames);
         this.round = round;
     }
 
