@@ -1,14 +1,14 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
-import racingcar.view.ResultView;
+import racingcar.module.ResultView;
 
 public class Race {
     private int carCount;
     private int raceCount;
     private ArrayList<RacingCar> racingCars;
 
-    Race(int carCount, int raceCount) {
+    public Race(int carCount, int raceCount) {
         this.carCount = carCount;
         this.raceCount = raceCount;
 

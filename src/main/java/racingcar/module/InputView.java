@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.module;
 
 public class InputView {
     private static final String INSERT_CAR_COUNT_PHRASE = "자동차 대수는 몇 대 인가요?";

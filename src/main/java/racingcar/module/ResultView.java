@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.module;
 
 public class ResultView {
     private static final String RESULT_MESSAGE = "실행 결과";

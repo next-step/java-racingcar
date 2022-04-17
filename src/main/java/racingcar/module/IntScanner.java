@@ -1,7 +1,6 @@
-package racingcar;
+package racingcar.module;
 
 import java.util.Scanner;
-import racingcar.view.InputView;
 
 public class IntScanner {
     public static Scanner scanner = new Scanner(System.in);

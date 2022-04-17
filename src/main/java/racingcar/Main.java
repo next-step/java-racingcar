@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.domain.Race;
+import racingcar.module.IntScanner;
+
 public class Main {
     public static void main(String[] args) {
         int carCount = IntScanner.insertCarCount();

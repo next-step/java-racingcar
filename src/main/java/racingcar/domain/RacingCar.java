@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Random;
 
@@ -7,7 +7,7 @@ public class RacingCar {
     private static final int MOVE_UNIT = 1;
     private int position;
 
-    RacingCar() {
+    public RacingCar() {
         position = 0;
     }
 
