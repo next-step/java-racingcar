@@ -1,12 +1,13 @@
 package racing;
 
+import exception.CustomException;
 import racing.module.CarGame;
 import racing.module.RandomStrategy;
 import racing.view.InputView;
 import racing.view.OutputView;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CustomException {
         String carName = InputView.inputCarName();
         int trial = InputView.inputTrial();
 
@@ -18,5 +19,7 @@ public class Main {
             OutputView.printCarsPosition(carGame.getCarList());
             OutputView.nextline();
         }
+
+        OutputView.printWinner(carGame.getWinner());
     }
 }

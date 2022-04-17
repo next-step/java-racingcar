@@ -11,7 +11,7 @@ public class Car {
         throw new CustomException("자동차의 이름없이 생성이 불가능합니다.");
     }
 
-    public Car(String carName) {
+    public Car(String carName) throws CustomException {
         this.carName = new CarName(carName);
         this.position = DEFAULT_POSITION;
     }

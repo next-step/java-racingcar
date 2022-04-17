@@ -10,12 +10,8 @@ public class CarName {
         throw new CustomException("자동차의 이름없이 생성이 불가능합니다.");
     }
 
-    public CarName(String name) {
-        try {
-            validName(name);
-        } catch(Exception ignored){
-
-        }
+    public CarName(String name) throws CustomException {
+        validName(name);
         this.name = name;
     }
 
