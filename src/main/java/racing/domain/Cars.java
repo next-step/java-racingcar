@@ -10,6 +10,15 @@ public class Cars {
         this.cars = initCars(carNames);
     }
 
+    private List<Car> initCars(String[] carNames) {
+        int numberOfCars = carNames.length;
+        List<Car> cars = new ArrayList<>(numberOfCars);
+        for (int i = 0; i < numberOfCars; i++) {
+            cars.add(i, new Car(carNames[i]));
+        }
+        return cars;
+    }
+
     private Cars(List<Car> cars) {
         this.cars = cars;
     }
@@ -43,14 +52,5 @@ public class Cars {
         }
 
         return winners.toString();
-    }
-
-    private List<Car> initCars(String[] carNames) {
-        int numberOfCars = carNames.length;
-        List<Car> cars = new ArrayList<>(numberOfCars);
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(i, new Car(carNames[i]));
-        }
-        return cars;
     }
 }
