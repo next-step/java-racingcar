@@ -3,23 +3,24 @@ package racingcar.controller;
 import racingcar.model.Cars;
 
 public class RacingGame {
-    private final int carMoveCount;
-    private int carMovedCount = 0;
+    private final int tryCount;
 
-    public RacingGame(int carMoveCount) {
-        this.carMoveCount = carMoveCount;
+    private int movedCount = 0;
+
+    public RacingGame(int tryCount) {
+        this.tryCount = tryCount;
     }
 
     public boolean end() {
-        return this.carMovedCount >= this.carMoveCount;
+        return this.movedCount >= this.tryCount;
     }
 
     public void race(Cars cars) {
         cars.move();
-        increaseCarMoveCount();
+        increaseMovedCount();
     }
 
-    private synchronized void increaseCarMoveCount() {
-        this.carMovedCount++;
+    private synchronized void increaseMovedCount() {
+        this.movedCount++;
     }
 }
