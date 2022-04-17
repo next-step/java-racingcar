@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingTest {
     @Test
@@ -19,10 +20,14 @@ public class RacingTest {
     @Test
     @DisplayName("차량 이동 회수 테스트")
     void carTest() {
-        int racingCount = 3;
+        int moveCount = 3;
         Engine engine = new Engine();
-        Car car = new Car(engine, racingCount);
+        Car car = new Car(engine, moveCount);
         car.racingStart();
-        assertThat(racingCount).isEqualTo(car.getMoves().size());
+        assertThat(moveCount).isEqualTo(car.getMoves().size());
+
+        int errorMoveCount = 0;
+        assertThatThrownBy(() -> new Car(engine, errorMoveCount))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
