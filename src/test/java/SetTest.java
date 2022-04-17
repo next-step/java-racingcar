@@ -25,7 +25,7 @@ public class SetTest {
     @Test
     @DisplayName("size")
     void requirementFirst() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
@@ -38,7 +38,7 @@ public class SetTest {
     @ParameterizedTest
     @DisplayName("contains - input/expected")
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void requirementThird(String input, String expected) {
-        assertThat(numbers.contains(Integer.parseInt(input))).isEqualTo(Boolean.parseBoolean(expected));
+    void requirementThird(int value, boolean text) {
+        assertThat(numbers.contains(value)).isEqualTo(text);
     }
 }
