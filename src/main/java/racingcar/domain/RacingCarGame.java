@@ -16,9 +16,9 @@ public class RacingCarGame {
 		results = new ArrayList<>();
 	}
 
-	public void start(MovingRule movingRule) {
+	public void start(RandomGenerator randomGenerator) {
 		for (int i = 0; i < playCount; i++) {
-			cars.play(movingRule);
+			cars.play(randomGenerator);
 			results.add(new Result(cars));
 		}
 	}

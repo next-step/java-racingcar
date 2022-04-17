@@ -13,8 +13,7 @@ public class RacingCarApplication {
 		int playCount = InputView.inputPlayCount();
 
 		RacingCarGame game = new RacingCarGame(Cars.of(carCount), playCount);
-		game.start(new RandomMovingRule(
-			() -> RandomUtil.createRandomNumber(RandomMovingRule.RANDOM_MIN, RandomMovingRule.RANDOM_MAX)));
+		game.start(() -> RandomUtil.createRandomNumber(RandomMovingRule.RANDOM_MIN, RandomMovingRule.RANDOM_MAX));
 
 		ResultView.print(game.getResults());
 	}

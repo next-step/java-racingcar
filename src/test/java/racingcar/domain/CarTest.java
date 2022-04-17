@@ -17,9 +17,10 @@ public class CarTest {
 	public void When_lessThan4_Expected_0(int randomNumber) {
 		// given
 		Car car = new Car();
+		RandomGenerator randomGenerator = () -> randomNumber;
 
 		// when
-		int numbersOfMove = car.run(new RandomMovingRule(() -> randomNumber));
+		int numbersOfMove = car.run(randomGenerator.generate());
 
 		// then
 		assertThat(numbersOfMove).isEqualTo(0);
@@ -31,9 +32,10 @@ public class CarTest {
 	public void When_moreThanOrEqual4_Expected_1(int randomNumber) {
 		// given
 		Car car = new Car();
+		RandomGenerator randomGenerator = () -> randomNumber;
 
 		// when
-		int numbersOfMove = car.run(new RandomMovingRule(() -> randomNumber));
+		int numbersOfMove = car.run(randomGenerator.generate());
 
 		// then
 		assertThat(numbersOfMove).isEqualTo(1);
@@ -45,9 +47,10 @@ public class CarTest {
 	public void When_RandomNumberIsOutOfRange_Expected_RunTimeException(int randomNumber) {
 		// given
 		Car car = new Car();
+		RandomGenerator randomGenerator = () -> randomNumber;
 
 		// when, then
-		assertThatThrownBy(() -> car.run(new RandomMovingRule(() -> randomNumber)))
+		assertThatThrownBy(() -> car.run(randomGenerator.generate()))
 			.isInstanceOf(OutOfRangeException.class);
 	}
 }

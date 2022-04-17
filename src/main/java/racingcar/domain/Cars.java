@@ -18,9 +18,9 @@ public class Cars {
 		return new Cars(cars);
 	}
 
-	public void play(MovingRule movingRule) {
+	public void play(RandomGenerator randomGenerator) {
 		cars.forEach(
-			car -> car.run(movingRule));
+			car -> car.run(randomGenerator.generate()));
 	}
 
 	public List<Integer> getCarsMove() {

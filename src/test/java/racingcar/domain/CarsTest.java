@@ -7,6 +7,6 @@ class CarsTest {
 	public void playTest() {
 		Cars cars = Cars.of(3);
 
-		cars.play(new RandomMovingRule(() -> 1));
+		cars.play(() -> 1);
 	}
 }
