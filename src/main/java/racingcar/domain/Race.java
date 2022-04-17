@@ -1,12 +1,13 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 import racingcar.module.ResultView;
 
 public class Race {
     private int carCount;
     private int raceCount;
-    private ArrayList<RacingCar> racingCars;
+    private List<RacingCar> racingCars;
 
     public Race(int carCount, int raceCount) {
         this.carCount = carCount;
@@ -24,10 +25,12 @@ public class Race {
     }
 
     private void oneRound() {
-        for (RacingCar racingCar : racingCars) {
-            int position = racingCar.moveOrStop();
-            ResultView.printPosition(position);
-        }
+        racingCars.forEach(
+            racingCar -> {
+                int position = racingCar.moveOrStop();
+                ResultView.printPosition(position);
+            }
+        );
     }
 
     private void makeRacingCars(int carCount) {
