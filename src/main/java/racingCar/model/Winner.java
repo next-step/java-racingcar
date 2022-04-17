@@ -32,12 +32,16 @@ public class Winner {
   }
 
   public static Winner winnerCalculator(List<Car> gameParticipants) {
-    Winner winner = getWinner(gameParticipants.get(0));
+    Winner winner = getChallenger(gameParticipants.get(0));
     for (int i = 1; i < gameParticipants.size(); i++) {
-      Winner gameChallenger = getWinner(gameParticipants.get(i));
-      if (winner.match(gameChallenger)) {
-        winner = gameChallenger;
-      }
+      winner = findWinner(winner, getChallenger(gameParticipants.get(i)));
+    }
+    return winner;
+  }
+
+  private static Winner findWinner(Winner winner, Winner gameChallenger) {
+    if (winner.match(gameChallenger)) {
+      winner = gameChallenger;
     }
     return winner;
   }
@@ -45,7 +49,7 @@ public class Winner {
   public static String coWinner(Winner winner, List<Car> otherGameParticipants) {
     String coWinner = winner.name.toString();
     for (Car otherGameParticipant : otherGameParticipants) {
-      coWinner = getCoWinner(winner, coWinner, getWinner(otherGameParticipant));
+      coWinner = getCoWinner(winner, coWinner, getChallenger(otherGameParticipant));
     }
     return coWinner;
   }
@@ -60,7 +64,7 @@ public class Winner {
     return coWinner;
   }
 
-  private static Winner getWinner(Car car) {
+  private static Winner getChallenger(Car car) {
     String[] winnerSplit = StringUtils.split(car.toString(), " : ");
     return new Winner(winnerSplit[0], new Position(winnerSplit[1].length()));
   }
