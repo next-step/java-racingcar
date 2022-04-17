@@ -8,29 +8,34 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class StringAndCalculator {
-    private final static String ABNORMAL_MATCH_PATTERN = "//(.)\n(.*)";
-    private final static String NORMAL_MATCH_PATTERN = "[,:]";
+    private static final String EXTENSION_MATCH_PATTERN = "//(.)\n(.*)";
+    private static final String NORMAL_MATCH_PATTERN = "[,:]";
+    private static final int MATCHER_FIRST_GROUP = 1;
+    private static final int MATCHER_SECOND_GROUP = 2;
+    private static final int ZERO_VALUE = 0;
 
     public static int splitAndSum(String text) {
-        if (Objects.isNull(text) || text.equals("")) {
-            return 0;
+        if (Objects.isNull(text) || text.isEmpty()) {
+            return ZERO_VALUE;
         }
 
         return sumIntegers(stringsToIntegers(textToStrings(text)));
     }
 
     private static String[] textToStrings(String text) {
-        Matcher m = Pattern.compile(ABNORMAL_MATCH_PATTERN).matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(customDelimiter);
-        } else {
-            return text.split(NORMAL_MATCH_PATTERN);
+        Matcher matcher = Pattern.compile(EXTENSION_MATCH_PATTERN).matcher(text);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(MATCHER_FIRST_GROUP);
+            return matcher.group(MATCHER_SECOND_GROUP).split(customDelimiter);
         }
+
+        return text.split(NORMAL_MATCH_PATTERN);
     }
 
     private static List<Integer> stringsToIntegers(String[] values) {
-        return Arrays.stream(values).map(StringAndCalculator::stringToInt).collect(Collectors.toList());
+        return Arrays.stream(values)
+                .map(StringAndCalculator::stringToInt)
+                .collect(Collectors.toList());
     }
 
     private static int stringToInt(String value) {
@@ -41,7 +46,9 @@ public class StringAndCalculator {
         return intValue;
     }
 
-    private static int sumIntegers(List<Integer> values) {
-        return values.stream().reduce(0, Integer::sum);
+    private static int sumIntegers(List<Integer> integers) {
+        return integers.stream()
+                .mapToInt(item -> item)
+                .sum();
     }
 }

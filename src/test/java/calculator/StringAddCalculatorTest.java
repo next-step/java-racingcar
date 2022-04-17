@@ -2,16 +2,18 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
-    @Test
+    @ParameterizedTest
+    @NullAndEmptySource
     @DisplayName("빈문자열이나 널일때")
-    void emptyStringOrNullTest() {
-        assertThat(StringAndCalculator.splitAndSum(null)).isEqualTo(0);
-        assertThat(StringAndCalculator.splitAndSum("")).isEqualTo(0);
+    void emptyStringOrNullTest(String input) {
+        assertThat(StringAndCalculator.splitAndSum(input)).isEqualTo(0);
     }
 
     @Test
@@ -42,5 +44,6 @@ public class StringAddCalculatorTest {
     @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생")
     void minusNumberTest() {
         assertThatThrownBy(() -> StringAndCalculator.splitAndSum("-1,2")).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> StringAndCalculator.splitAndSum("1,2,19.0")).isInstanceOf(RuntimeException.class);
     }
 }
