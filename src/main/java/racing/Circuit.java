@@ -16,11 +16,11 @@ public class Circuit {
     }
 
     private List<Car> createCars(Engine engine, int numberOfCar, int numberOfMoves) {
-        List<Car> cars = new ArrayList<>();
+        List<Car> createdCars = new ArrayList<>();
         for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car(engine, numberOfMoves));
+            createdCars.add(new Car(engine, numberOfMoves));
         }
-        return cars;
+        return createdCars;
     }
 
     public void startRacing() {
