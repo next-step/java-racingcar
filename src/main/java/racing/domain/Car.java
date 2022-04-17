@@ -5,8 +5,7 @@ public class Car {
     private int distance;
 
     Car(String name) {
-        this.name = name;
-        this.distance = 0;
+        this(name, 0);
     }
 
     private Car(String name, int distance) {
