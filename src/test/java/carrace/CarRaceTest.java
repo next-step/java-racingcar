@@ -8,18 +8,21 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarRaceTest {
+    final int GO = 1;
+    final int STOP = 0;
 
     @Test
     @DisplayName("0에서 9사이 int값 반환")
     void isBetweenZeroAndNine() {
-        assertThat(new CarRace().getRandomNumberBetweenZeroAndNine()).isBetween(0, 9);
+        assertThat(new RandomNumberGenerator().getRandomBetweenZeroAndNine()).isBetween(0, 9);
     }
 
     @Test
     @DisplayName("DECISION_VALUE(4) 이상의 number를 입력받을 때에만 GO(1) 리턴")
     void getOneIfMoreThanDecisionValue() {
         CarRace carRace = new CarRace();
-        assertThat(carRace.goIfMoreThanDecisionValue()).isIn(CarRaceRule.STOP.getValue(), CarRaceRule.GO.getValue());
+        assertThat(carRace.move(() -> true)).isEqualTo(GO);
+        assertThat(carRace.move(() -> false)).isEqualTo(STOP);
     }
 
     @ParameterizedTest
@@ -29,8 +32,8 @@ public class CarRaceTest {
         CarRace carRace = new CarRace(numberOfCars, numberOfRaces);
         carRace.startRaces();
 
-        assertThat(carRace.getRaceInfoBoards().size()).isEqualTo(numberOfRaces * numberOfCars);
-        assertThat(carRace.getRaceInfoBoards().get(0)).isBetween(0, numberOfRaces);
+        assertThat(carRace.getRecordCarRace().getRaceInfoBoards().size()).isEqualTo(numberOfRaces * numberOfCars);
+        assertThat(carRace.getRecordCarRace().getRaceInfoBoards().get(0)).isBetween(0, numberOfRaces);
     }
 
 }

@@ -3,11 +3,11 @@ package carrace;
 public class Race {
 
     public static void main(String[] args) {
-        CarRace carRace = new CarRace();
-        PrintUI ui = new PrintUI();
-
-        ui.inputView(carRace);
+        InputView inputView = new InputView();
+        CarRace carRace = inputView.makeCarRaceByInput();
         carRace.startRaces();
-        ui.resultView(carRace);
+
+        ResultView resultView = new ResultView();
+        resultView.printCarRaceResult(carRace);
     }
 }

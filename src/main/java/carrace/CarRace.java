@@ -1,13 +1,14 @@
 package carrace;
 
-import java.util.*;
-
 public class CarRace {
+    private RandomMoving randomMoving = new RandomMoving();
+    private RecordCarRace recordCarRace = new RecordCarRace();
+
     private int numberOfCars;
     private int numberOfRaces;
-    private List<Integer> raceInfoBoards;
 
-    private static final Random random = new Random();
+    private static final int GO = 1;
+    private static final int STOP = 0;
 
     public CarRace() {
     }
@@ -15,7 +16,6 @@ public class CarRace {
     public CarRace(int numberOfCars, int numberOfRaces) {
         this.numberOfCars = numberOfCars;
         this.numberOfRaces = numberOfRaces;
-        this.raceInfoBoards = new ArrayList<>();
     }
 
     public void startRaces() {
@@ -26,29 +26,21 @@ public class CarRace {
 
     private void startEachRace() {
         for (int j = 0; j < this.numberOfCars; j++) {
-            this.raceInfoBoards.add(resultOfEachCarRacing());
+            recordCarRace.record(resultOfEachCarRacing());
         }
     }
     
     private int resultOfEachCarRacing() {
         int result = 0;
         for (int i = 0; i < this.numberOfRaces; i++) {
-            result += goIfMoreThanDecisionValue();
+            result += move(randomMoving);
         }
 
         return result;
     }
 
-    public int goIfMoreThanDecisionValue() {
-        return isMoreThanDecisionValue() ? CarRaceRule.GO.getValue() : CarRaceRule.STOP.getValue();
-    }
-
-    public boolean isMoreThanDecisionValue() {
-        return getRandomNumberBetweenZeroAndNine() >= CarRaceRule.DECISION_VALUE.getValue();
-    }
-
-    public int getRandomNumberBetweenZeroAndNine() {
-        return (random.nextInt() & Integer.MAX_VALUE) % 10;
+    public int move(Moving moving) {
+        return moving.isMove() ? GO : STOP;
     }
 
     public int getNumberOfCars() {
@@ -67,11 +59,19 @@ public class CarRace {
         this.numberOfRaces = numberOfRaces;
     }
 
-    public List<Integer> getRaceInfoBoards() {
-        return raceInfoBoards;
+    public RandomMoving getRandomMoving() {
+        return randomMoving;
     }
 
-    public void setRaceInfoBoards(List<Integer> raceInfoBoards) {
-        this.raceInfoBoards = raceInfoBoards;
+    public void setRandomMoving(RandomMoving randomMoving) {
+        this.randomMoving = randomMoving;
+    }
+
+    public RecordCarRace getRecordCarRace() {
+        return recordCarRace;
+    }
+
+    public void setRecordCarRace(RecordCarRace recordCarRace) {
+        this.recordCarRace = recordCarRace;
     }
 }
