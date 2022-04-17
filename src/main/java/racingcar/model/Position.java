@@ -8,16 +8,15 @@ public class Position {
     private static final int INCREASE_POSITION_COUNT = 1;
     private static final int INITIAL_VALUE = 0;
 
-    private final int position;
+    private int position;
 
     public Position(int position) {
         this.position = position;
     }
 
-    public Position increase() {
-        return new Position(
-                this.position + INCREASE_POSITION_COUNT
-        );
+    public synchronized Position increase() {
+        this.position = this.position + INCREASE_POSITION_COUNT;
+        return this;
     }
 
     public int getPosition() {

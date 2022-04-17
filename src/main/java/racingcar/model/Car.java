@@ -10,7 +10,7 @@ public class Car {
     private static final NumberGenerator DEFAULT_NUMBER_GENERATOR = new RandomNumberGenerator();
 
     private final Name name;
-    private Position position;
+    private final Position position;
 
     public Car(String name) {
         this(name, Position.DEFAULT);
@@ -33,7 +33,7 @@ public class Car {
      */
     protected boolean move(NumberGenerator numberGenerator) {
         if (numberGenerator.generate() >= MOVABLE_NUMBER) {
-            this.position = this.position.increase();
+            this.position.increase();
             return true;
         }
 
