@@ -17,11 +17,19 @@ public class RacingTest {
         assertThat(numberOfCars).isEqualTo(circuit.getCars().size());
 
 
-        int errorNumberOfCar = 0;
-        int errorNumberOfMove = 0;
-        assertThatThrownBy(() -> new Circuit(errorNumberOfCar, numberOfMoves))
+        int errorMinNumberOfCar = 0;
+        int errorMinNumberOfMove = 0;
+        assertThatThrownBy(() -> new Circuit(errorMinNumberOfCar, numberOfMoves))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Circuit(numberOfCars, errorNumberOfMove))
+        assertThatThrownBy(() -> new Circuit(numberOfCars, errorMinNumberOfMove))
+                .isInstanceOf(IllegalArgumentException.class);
+
+
+        int errorMaxNumberOfCar = 100;
+        int errorMaxNumberOfMove = 100;
+        assertThatThrownBy(() -> new Circuit(errorMaxNumberOfCar, numberOfMoves))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Circuit(numberOfCars, errorMaxNumberOfMove))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
