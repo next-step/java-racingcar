@@ -1,13 +1,19 @@
 package racingcar;
 
 public class Car {
-    private String track = "-";
+    private int position;
+    public final String name;
 
-    public String getTrack() {
-        return this.track;
-    };
+    public Car(String name) {
+        this.position = 1;
+        this.name = name;
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
 
     public void move() {
-        this.track += "-";
+        this.position += 1;
     }
 }
