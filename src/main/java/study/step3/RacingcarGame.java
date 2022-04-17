@@ -2,26 +2,15 @@ package study.step3;
 
 import java.util.*;
 
-public class RacingcarGame {
+import static study.step3.InputView.numberOfAttempt;
+import static study.step3.InputView.numberOfCar;
 
-    private int numberOfCar;
-    private int numberOfAttempt;
-    private InputView inputView = new InputView();
-    private ResultView resultView = new ResultView();
+public class RacingcarGame {
     private List<Racingcar> racingcarList = new ArrayList<>();
-    private List<Map<Integer, Integer>> list = new ArrayList<>();
+    static List<Integer> resultList = new ArrayList<>();
 
     public RacingcarGame() {
-        configRacingcarGame();
         createRacingcar();
-    }
-
-    private void configRacingcarGame() {
-        System.out.println("자동차의 대수는 몇 대 인가요?");
-        numberOfCar = inputView.getNumber();
-        System.out.println("시도할 횟수는 몇 회 인가요?");
-        numberOfAttempt = inputView.getNumber();
-        System.out.println("실행결과");
     }
 
     private void createRacingcar() {
@@ -34,9 +23,9 @@ public class RacingcarGame {
         for (int i = 1; i <= numberOfAttempt; i++) {
             for (Racingcar car : racingcarList) {
                 car.tryToMoveForward();
-                resultView.print(i, car);
+                resultList.add(car.getPosition());
             }
-            System.out.println(" ");
+            resultList.add(-1);
         }
     }
 }

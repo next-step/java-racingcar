@@ -1,19 +1,16 @@
 package study.step3;
 
-import java.util.Random;
-
 public class Racingcar {
-    private int successCount;
+    private int position;
+    private RandomNumber randomNumber = new RandomNumber();
 
-    public int getSuccessCount() {
-        return successCount;
+    public int getPosition() {
+        return position;
     }
 
-    public int tryToMoveForward() {
-        int randomValue = new Random().nextInt(10);
-        if (4 <= randomValue) {
-            successCount++;
+    public void tryToMoveForward() {
+        if (4 <= randomNumber.generateRandomNumber()) {
+            position++;
         }
-        return randomValue;
     }
 }

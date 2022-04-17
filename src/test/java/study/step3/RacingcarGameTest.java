@@ -1,21 +1,20 @@
 package study.step3;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.io.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingcarGameTest {
+
+    private RandomNumber randomNumber = new RandomNumber();
+
     @Test
-    @DisplayName("각 자동차 획득한 숫자가 4이상인 경우 전진한다.")
-    void 각_자동차_획득한_숫자가_4이상의_경우() {
-        Racingcar racingcar = new Racingcar();
-        assertThat(racingcar.tryToMoveForward()).isBetween(4,9);
-    }
-    @Test
-    @DisplayName("각 자동차 획득한 숫자가 3이하인 경우 정지한다.")
-    void 각_자동차_획득한_숫자가_3이하인_경우() {
-        Racingcar racingcar = new Racingcar();
-        assertThat(racingcar.tryToMoveForward()).isBetween(0,3);
+    @DisplayName("0부터 9까지의 랜덤한 숫자를 만든다.")
+    void 영부터_구까지의_랜덤한_숫자생성() {
+        assertThat(randomNumber.generateRandomNumber()).isBetween(0,9);
     }
 }
