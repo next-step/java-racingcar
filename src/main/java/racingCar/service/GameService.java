@@ -8,6 +8,7 @@ import racingCar.model.RacingCarHistory;
 import racingCar.model.Track;
 import racingCar.model.Winner;
 import racingCar.strategy.CarMoveRandomStrategy;
+import racingCar.util.StringUtils;
 import racingCar.view.InputTable;
 
 public class GameService {
@@ -47,38 +48,6 @@ public class GameService {
       }
     }
     return resultList;
-  }
-
-  public Winner winnerCalculator(List<Car> racingGameParticipants) {
-    Winner winner = new Winner(racingGameParticipants.get(0));
-    for (int i = 1; i < racingGameParticipants.size(); i++) {
-      winner = winnerChecker(winner, racingGameParticipants.get(i));
-    }
-    racingGameParticipants.remove(winner.winnerCar());
-    return winner;
-  }
-
-  private Winner winnerChecker(Winner winner, Car nextCar) {
-    if (winner.winnerCar().position().match(nextCar.position())) {
-      winner = new Winner(nextCar);
-    }
-    return winner;
-  }
-
-  public String sameScoreChecker(Winner winner, List<Car> otherParticipants) {
-    Car winnerCar = winner.winnerCar();
-    String coWinnerNames = winnerCar.toString();
-    for (Car otherParticipant : otherParticipants) {
-      coWinnerNames = coWinnerLineUp(winnerCar, coWinnerNames, otherParticipant);
-    }
-    return coWinnerNames;
-  }
-
-  private String coWinnerLineUp(Car winnerCar, String coWinnerNames, Car otherParticipant) {
-    if (winnerCar.position().equals(otherParticipant.position())) {
-      coWinnerNames = coWinnerNames.concat(", ").concat(otherParticipant.toString());
-    }
-    return coWinnerNames;
   }
 
 }

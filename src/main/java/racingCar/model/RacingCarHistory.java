@@ -21,6 +21,6 @@ public class RacingCarHistory {
 
   @Override
   public String toString() {
-    return String.format("%s : %s", car.toString(), car.position().toString());
+    return car.toString();
   }
 }

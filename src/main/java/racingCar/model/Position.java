@@ -3,15 +3,17 @@ package racingCar.model;
 import java.util.Objects;
 
 public class Position {
-  private static final String STEP = "-";
-  protected int x;
 
-  protected Position(int x) {
+  private static final String STEP = "-";
+  private int x;
+
+  public Position(int x) {
     this.x = x;
   }
 
-  public int increase() {
-    return this.x = x + 1;
+
+  public static Position increase(Position origin, Position addPosition) {
+    return new Position(origin.x + addPosition.x);
   }
 
   @Override

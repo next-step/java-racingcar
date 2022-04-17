@@ -1,12 +1,11 @@
 package racingCar;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingCar.model.Car;
-import racingCar.strategy.CarMoveRandomStrategy;
+import racingCar.model.Position;
 
 class CarTest {
 
@@ -14,7 +13,7 @@ class CarTest {
   @DisplayName("4이상인 경우에는 전진한다.")
   void onlyIfFourOrHigher() {
     Car car = new Car("klom");
-    assertThat(car.move(() -> true)).isEqualTo(new Car("klom", 1));
+    assertThat(car.move(() -> true).toString()).isEqualTo(new Car("klom", new Position(1)).toString());
   }
 
   @Test
@@ -32,17 +31,7 @@ class CarTest {
     car = car.move(() -> true);
     car = car.move(() -> true);
     car = car.move(() -> true);
-    assertThat(car).isEqualTo(new Car("klom", 4));
-  }
-
-  @Test
-  @DisplayName("입력한 횟수 만큼 자동차의 미터기가 작동합니다.")
-  void meterTest() {
-    Car car = new Car("klom");
-    car.move(new CarMoveRandomStrategy());
-    car.move(new CarMoveRandomStrategy());
-    car.move(new CarMoveRandomStrategy());
-    assertThat(car.position().increase()).isLessThanOrEqualTo(3);
+    assertThat(car.toString()).isEqualTo(new Car("klom", new Position(4)).toString());
   }
 
 
