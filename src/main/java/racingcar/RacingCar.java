@@ -2,10 +2,11 @@ package racingcar;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.awt.*;
 import java.util.stream.IntStream;
 
 public class RacingCar {
-    private int location = 1;
+    private Point coordinate = new Point(0, 0);
 
     public static RacingCar @NotNull [] createBatch(int size) {
         RacingCar[] racingCars = new RacingCar[size];
@@ -16,10 +17,10 @@ public class RacingCar {
     }
 
     public void proceed() {
-        location += 1;
+        this.coordinate.setLocation(coordinate.getX() + 1, 0);
     }
 
-    public int getLocation() {
-        return location;
+    public Point getLocation() {
+        return coordinate.getLocation();
     }
 }
