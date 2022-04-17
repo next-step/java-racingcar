@@ -19,4 +19,8 @@ public class Results {
 			result.print();
 		}
 	}
+
+	public int size() {
+		return results.size();
+	}
 }

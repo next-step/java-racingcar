@@ -10,11 +10,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 class CarsTest {
 
 	@DisplayName("원하는 사이즈만큼 Cars가 생성되는지 확인")
-	@ValueSource(ints = {0,1,2,3})
+	@ValueSource(ints = {3, 10, 100, 300})
 	@ParameterizedTest
-	public void playTest(int size) {
+	public void when_giveCarsSize_expected_CreatedSameSize(int size) {
 		// given
 		Cars cars = Cars.of(size);
+
 		// when
 		int carsSize = cars.size();
 
