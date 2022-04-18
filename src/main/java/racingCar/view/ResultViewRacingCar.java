@@ -1,8 +1,6 @@
 package racingCar.view;
 
 import racingCar.domain.Car;
-import racingCar.domain.CarStadium;
-
 import java.util.List;
 
 public class ResultViewRacingCar {
@@ -10,25 +8,15 @@ public class ResultViewRacingCar {
     private ResultViewRacingCar() {
     };
 
-    public static void resultViewRacing() {
+    public static void resultViewCarData(List<Car> cars) {
         System.out.println();
         System.out.println("실행결과");
 
-        List<Car> cars = CarStadium.getCars();
-        int rounds = CarStadium.getRounds();
-
-        for (int i = 0; i < rounds; ++i) {
-            resultViewCarData(cars);
-        }
-
-        resultViewWinners(cars);
-    }
-
-    private static void resultViewCarData(List<Car> cars) {
         for (Car car : cars) {
             resultViewCarName(car);
-            resultViewCarDistance(car);
+            resultViewCarPosition(car);
         }
+
         System.out.println();
     }
 
@@ -36,18 +24,14 @@ public class ResultViewRacingCar {
         System.out.print(car.getName() + " : ");
     }
 
-    private static void resultViewCarDistance(Car car) {
-        CarStadium.moveCar(car);
-
+    private static void resultViewCarPosition(Car car) {
         for (int i = 0; i < car.getPosition(); ++i) {
             System.out.print("-");
         }
         System.out.println();
     }
 
-    private static void resultViewWinners(List<Car> cars) {
-        List<String> winners = CarStadium.getWinners(cars);
-
+    public static void resultViewWinners(List<String> winners) {
         for (int i = 0; i < winners.size(); ++i) {
             resultViewWinners(winners, i);
         }

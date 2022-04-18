@@ -2,6 +2,8 @@ package racingCar.domain;
 
 import racingCar.NormalStrategy;
 import racingCar.domain.Car;
+import racingCar.view.InputViewRacingCar;
+import racingCar.view.ResultViewRacingCar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,6 @@ import java.util.Random;
 public class CarStadium {
 
     private static final int BOUND = 10;
-
     private static final Random random = new Random();
 
     private static List<Car> carList = new ArrayList<>();
@@ -20,31 +21,53 @@ public class CarStadium {
         return random.nextInt(BOUND);
     }
 
-    public static void initCars(String[] carNames) {
+    public static void startRacing() {
+        initRacingData();
+
+        moveAndViewRacingCar();
+
+        resultViewRacing();
+    }
+
+    private static void initRacingData() {
+        initCars(InputViewRacingCar.inputPlayCarNum());
+        initRounds(InputViewRacingCar.inputRounds());
+    }
+
+    private static void moveAndViewRacingCar() {
+        for(int i = 0; i < rounds; i++) {
+            moveCars();
+            ResultViewRacingCar.resultViewCarData(carList);
+        }
+    }
+
+    private static void moveCars() {
+        for (Car car : carList) {
+            moveCar(car);
+        }
+    }
+
+    private static void resultViewRacing() {
+        ResultViewRacingCar.resultViewWinners(getWinners(carList));
+    }
+
+    private static void initCars(String[] carNames) {
         for (String name : carNames) {
             Car car = new Car(name, new NormalStrategy());
             carList.add(car);
         }
     }
 
-    public static void initRounds(int nums) {
+    private static void initRounds(int nums) {
         rounds = nums;
     }
 
-    public static int getRounds() {
-        return rounds;
-    }
-
-    public static List<Car> getCars() {
-        return carList;
-    }
-
-    public static void moveCar(Car car) {
+    private static void moveCar(Car car) {
         car.move(extractRandomNumber());
     }
 
-    public static List<String> getWinners(List<Car> cars) {
-        List<String> winners = findWinners(cars, getMaxDistance(cars));
+    private static List<String> getWinners(List<Car> cars) {
+        List<String> winners = findWinners(cars, getMaxPosition(cars));
 
         return winners;
     }
@@ -66,21 +89,20 @@ public class CarStadium {
         }
     }
 
-    private static int getMaxDistance(List<Car> cars) {
-        int maxDistance = 0;
+    private static int getMaxPosition(List<Car> cars) {
+        int maxPosition = 0;
 
         for (int j = 0; j < cars.size(); ++j) {
-            int distance = cars.get(j).getPosition();
-            maxDistance = getMaxDistance(maxDistance, distance);
+            int position = cars.get(j).getPosition();
+            maxPosition = getMaxPosition(maxPosition, position);
         }
-
-        return maxDistance;
+        return maxPosition;
     }
 
-    private static int getMaxDistance(int maxDistance, int distance) {
-        if (distance > maxDistance) {
-            maxDistance = distance;
+    private static int getMaxPosition(int maxPosition, int position) {
+        if (position > maxPosition) {
+            maxPosition = position;
         }
-        return maxDistance;
+        return maxPosition;
     }
 }
