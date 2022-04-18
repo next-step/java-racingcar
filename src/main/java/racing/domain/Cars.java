@@ -3,7 +3,6 @@ package racing.domain;
 import racing.domain.strategies.CarMoveStrategy;
 import racing.dto.GameResult.GameRoundResult;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,7 +12,7 @@ public class Cars {
     public Cars(List<String> nameOfCars) {
         cars = nameOfCars.stream()
                 .map(Car::new)
-                .collect(Collectors.toCollection(ArrayList::new));
+                .collect(Collectors.toList());
     }
 
     public GameRoundResult run(CarMoveStrategy moveStrategy) {
