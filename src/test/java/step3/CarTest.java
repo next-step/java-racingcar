@@ -16,20 +16,17 @@ public class CarTest {
     void 움직임_테스트() {
         Car car = new Car(movableStrategy);
 
-        car.move(5);
-        assertThat(car.checkPosition(1)).isTrue();
+        assertThat(car.move(5)).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("3이하 숫자가 전달되면 한번 전진한다.")
+    @DisplayName("3이하 숫자가 전달되면 움직이지 않는다.")
     void 멈춤_테스트() {
         Car car = new Car(movableStrategy);
 
-        car.move(0);
-        assertThat(car.checkPosition(0)).isTrue();
+        assertThat(car.move(0)).isEqualTo(0);
 
-        car.move(1);
-        assertThat(car.checkPosition(0)).isTrue();
+        assertThat(car.move(3)).isEqualTo(0);
     }
 
     @Test

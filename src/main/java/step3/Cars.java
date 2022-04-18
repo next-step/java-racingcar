@@ -11,11 +11,13 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void moveAll(List<Integer> moveCntList){
+    public List<Integer> moveAll(List<Integer> moveCntList){
+        List<Integer> curLocList = new ArrayList<>();
         for (int i=0; i<cars.size(); i++) {
             Car car = cars.get(i);
-            car.move(moveCntList.get(i));
+            curLocList.add(car.move(moveCntList.get(i)));
         }
+        return curLocList;
     }
 
     public List<String> getCurMoveStateExps(){
@@ -26,14 +28,5 @@ public class Cars {
         return curMoveStateBars;
     }
 
-    public boolean checkPositions(List<Integer> positionList){
-        for(int i=0; i<cars.size(); i++){
-            Car car = cars.get(i);
-            if(!car.checkPosition(positionList.get(i))){
-                return false;
-            }
-        }
-        return true;
-    }
 
 }
