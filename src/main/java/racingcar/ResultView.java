@@ -1,8 +1,6 @@
 package racingcar;
 
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -13,13 +11,6 @@ public class ResultView {
     public void printEveryLocation(List<Car> carList) {
         carList.forEach(c -> System.out.println(this.printNameAndLocation(c)));
         System.out.println();
-    }
-
-    private Integer getWinnerLocation(List<Car> carList) {
-        return carList.stream()
-                .mapToInt(Car::getCurrentLocation)
-                .max()
-                .orElseThrow(NoSuchElementException::new);
     }
 
     public String printNameAndLocation(Car car) {
@@ -41,16 +32,8 @@ public class ResultView {
         stringBuilder.append(car.getCarName()).append(": ");
     }
 
-    public void printWinners(List<Car> carList) {
-        String winners = this.getWinners(carList);
+    public void printWinners(Cars cars) {
+        String winners = cars.getWinners();
         System.out.println(winners + WINNER_ANNOUNCMENT_MESSAGE);
-    }
-    public String getWinners(List<Car> carList) {
-        Integer winnerLocation = getWinnerLocation(carList);
-
-        return carList.stream()
-                .filter(c -> c.getCurrentLocation() == winnerLocation)
-                .map(Car::getCarName)
-                .collect(Collectors.joining(", "));
     }
 }
