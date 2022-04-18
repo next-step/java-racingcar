@@ -25,11 +25,11 @@ class RacingGameTest {
     @Test
     void play() {
         var carNames = new String[]{"a", "b", "c"};
-        Cars cars = new Cars(carNames, new TestMoveStrategy(4));
+        Cars cars = new Cars(carNames);
 
         RacingGame racingGame = new RacingGame(cars, 1);
 
-        List<CarsPositionModel> result = racingGame.play();
+        List<CarsPositionModel> result = racingGame.play(new TestMoveStrategy(4));
         assertThat(result)
                 .extracting("carName", "position")
                 .contains(tuple("a", 1), tuple("b", 1),tuple("c", 1));
@@ -40,27 +40,27 @@ class RacingGameTest {
     @Test
     void nextGame() {
         var carNames = new String[]{"a", "b", "c"};
-        Cars cars = new Cars(carNames, new TestMoveStrategy(4));
+        Cars cars = new Cars(carNames);
         RacingGame racingGame = new RacingGame(cars, 4);
 
-        racingGame.play();
-        racingGame.play();
-        racingGame.play();
-        racingGame.play();
-        racingGame.play();
+        racingGame.play(new TestMoveStrategy(4));
+        racingGame.play(new TestMoveStrategy(4));
+        racingGame.play(new TestMoveStrategy(4));
+        racingGame.play(new TestMoveStrategy(4));
+        racingGame.play(new TestMoveStrategy(4));
 
-        assertThat(racingGame.nextGame()).isTrue();
+        assertThat(racingGame.isPlay()).isTrue();
     }
 
     @DisplayName("우승자 테스트")
     @Test
     void winners() {
         var carNames = new String[]{"a", "b", "c"};
-        Cars cars = new Cars(carNames, new TestMoveStrategy(4));
+        Cars cars = new Cars(carNames);
         RacingGame racingGame = new RacingGame(cars, 2);
 
-        racingGame.play();
-        racingGame.play();
+        racingGame.play(new TestMoveStrategy(4));
+        racingGame.play(new TestMoveStrategy(4));
 
         assertThat(racingGame.winners()).isEqualTo("a, b, c");
 

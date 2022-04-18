@@ -36,8 +36,8 @@ public class GameController {
 
     private void gameplay(RacingGame racingGame) {
         resultView.start();
-        while (racingGame.nextGame()) {
-            resultView.printPlay(racingGame.play());
+        while (racingGame.isPlay()) {
+            resultView.printPlay(racingGame.play(new RandomMoveStrategy()));
             resultView.plintln();
         }
     }
@@ -54,6 +54,6 @@ public class GameController {
     }
 
     private Cars carSetting() {
-        return new Cars(inputView.carSetting(), new RandomMoveStrategy());
+        return new Cars(inputView.carSetting());
     }
 }

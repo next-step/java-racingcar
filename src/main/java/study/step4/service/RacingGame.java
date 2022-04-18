@@ -2,6 +2,7 @@ package study.step4.service;
 
 import study.step4.controller.CarsPositionModel;
 import study.step4.domain.Cars;
+import study.step4.domain.strategy.MoveStrategy;
 
 import java.util.List;
 
@@ -15,13 +16,13 @@ public class RacingGame {
         this.gameCount = gameCount;
     }
 
-    public List<CarsPositionModel> play() {
-        cars.move();
+    public List<CarsPositionModel> play(MoveStrategy moveStrategy) {
+        cars.move(moveStrategy);
 
         return cars.toCarsPositionModel();
     }
 
-    public boolean nextGame() {
+    public boolean isPlay() {
         if(gameCount == GAME_TERMINATED_COUNT)
             return false;
 

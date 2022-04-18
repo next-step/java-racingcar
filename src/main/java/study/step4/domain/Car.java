@@ -3,18 +3,15 @@ package study.step4.domain;
 import study.step4.domain.strategy.MoveStrategy;
 
 public class Car {
-    private static final int CAR_START_POSITION = 0;
     private final CarName carName;
     private CarPosition carPosition;
-    private final MoveStrategy moveStrategy;
 
-    public Car(CarName carName, MoveStrategy moveStrategy) {
+    public Car(CarName carName) {
         this.carName = carName;
-        this.carPosition = new CarPosition(CAR_START_POSITION);
-        this.moveStrategy = moveStrategy;
+        this.carPosition = CarPosition.createDefault();
     }
 
-    public void move() {
+    public void move(MoveStrategy moveStrategy) {
         if(moveStrategy.isMovable())
             carPosition = carPosition.forward();
     }

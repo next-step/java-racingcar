@@ -12,9 +12,9 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
-    public Cars(String[] cars, MoveStrategy moveStrategy) {
+    public Cars(String[] cars) {
         Arrays.stream(cars)
-                .map(car -> new Car(new CarName(car), moveStrategy))
+                .map(car -> new Car(new CarName(car)))
                 .forEach(this.cars::add);
     }
 
@@ -24,8 +24,10 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public void move() {
-        cars.forEach(Car::move);
+    public void move(MoveStrategy moveStrategy) {
+        for (Car car : cars) {
+            car.move(moveStrategy);
+        }
 
     }
 
