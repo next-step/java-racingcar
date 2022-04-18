@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Car {
     private static final int MIN_NUMBER_OF_MOVES = 1;
+
     private final List<Boolean> moves;
     private final int moveCount;
 

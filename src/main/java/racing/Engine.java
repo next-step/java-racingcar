@@ -3,9 +3,9 @@ package racing;
 import java.util.Random;
 
 public class Engine {
-    private final static Integer MAX_RANDOM_NUMBER = 10;
-    private final static Integer REFERENCE_NUMBER = 4;
-    Random random;
+    private static final Integer MAX_RANDOM_NUMBER = 10;
+    private static final Integer REFERENCE_NUMBER = 4;
+    private final Random random;
 
     public Engine() {
         this.random = new Random();
