@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import racingcar.service.NumberStrategy;
+import racingcar.service.RandomMoveStrategy;
+
 public class Car {
     private static final String LINE = "-";
     private final StringBuilder currentPosition;
@@ -16,7 +19,15 @@ public class Car {
         return currentPosition.toString();
     }
 
-    public void go() {
+    private void go() {
          currentPosition.append(LINE);
+    }
+
+    private void stop() {
+        return;
+    }
+
+    public void move(NumberStrategy randomMoveStrategy) {
+        if(randomMoveStrategy.isMovable())  go();
     }
 }
