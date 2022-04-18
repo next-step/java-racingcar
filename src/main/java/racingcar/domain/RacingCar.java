@@ -20,4 +20,8 @@ public class RacingCar {
 
         return position;
     }
+
+    public String getName() {
+        return name;
+    }
 }

@@ -30,7 +30,7 @@ public class Race {
         racingCars.forEach(
             racingCar -> {
                 int position = racingCar.moveOrStop();
-                ResultView.printPosition(position);
+                ResultView.printPosition(racingCar.getName(), position);
             }
         );
     }
