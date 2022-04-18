@@ -1,5 +1,4 @@
 package study.step4.domain;
-package study.step4.domain;
 
 public class CarPosition {
     private static final int CAR_START_POSITION = 0;
