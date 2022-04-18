@@ -16,8 +16,8 @@ public final class InputView {
     }
 
     public static String inputCarsInfo() {
+        System.out.println(CAR_INPUT_LABEL);
         try {
-            System.out.println(CAR_INPUT_LABEL);
             return SCANNER.nextLine();
         } catch (NoSuchElementException e) {
             throw new InputException("자동차 이름 입력이 잘못되었습니다. ");
@@ -25,8 +25,8 @@ public final class InputView {
     }
 
     public static int inputRound() {
+        System.out.println(ROUND_INPUT_LABEL);
         try {
-            System.out.println(ROUND_INPUT_LABEL);
             return SCANNER.nextInt();
         } catch (InputMismatchException e) {
             throw new InputException("시도 횟수 입력이 잘못되었습니다. 올바른 숫자를 입력해주세요. ");
