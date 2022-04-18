@@ -7,10 +7,17 @@ public class Car {
 	public static final int RANDOM_MIN = 0;
 	public static final int RANDOM_MAX = 9;
 	public static final int ENGINE_START_MIN = 4;
+	public static final String CAR_TO_STRING_TEXT = " : ";
 	private final MoveCount moveCount;
+	private CarName carName;
 
 	public Car() {
 		this.moveCount = new MoveCount();
+	}
+
+	public Car(CarName carName) {
+		this();
+		this.carName = carName;
 	}
 
 	public void run(int enginePower) {
@@ -33,7 +40,7 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return moveCount.toString();
+		return carName.toString() + CAR_TO_STRING_TEXT + moveCount.toString();
 	}
 
 	public boolean isSamePosition(int position) {
