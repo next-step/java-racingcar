@@ -14,7 +14,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car(1);
+        car = new Car();
     }
 
     @DisplayName("랜덤 결과가 4이상인 경우 한 칸 전진한다.")

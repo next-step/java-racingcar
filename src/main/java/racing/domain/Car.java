@@ -7,16 +7,10 @@ public class Car {
     private static final int MAX_RESULT = 9;
     private static final int RUN_CRITERIA_MIN_RESULT = 4;
 
-    private final int id;
     private int location;
 
-    public Car(final int id) {
-        this.id = id;
+    public Car() {
         this.location = 0;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public int getLocation() {
@@ -36,8 +30,7 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-               "id=" + id +
-               ", location=" + location +
+               "location=" + location +
                '}';
     }
 }

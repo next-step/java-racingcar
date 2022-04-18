@@ -33,7 +33,7 @@ public class Game {
 
     private void equipRacingCar() {
         for (int i = 0; i < numberOfCars.number; i++) {
-            cars.add(new Car(i));
+            cars.add(new Car());
         }
     }
 
