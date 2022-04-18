@@ -24,10 +24,6 @@ public class Car {
         return Math.max(this.distance, distance);
     }
 
-    Car getCarMovingMaxDistance(int maxDistance) {
-        return this.distance == maxDistance ? this : null;
-    }
-
     public int getDistance() {
         return distance;
     }

@@ -41,12 +41,16 @@ public class Cars {
         int maxDistance = getMaxDistance(snapshot);
 
         for (Car car : snapshot.getCars()) {
-            Car nullableCar = car.getCarMovingMaxDistance(maxDistance);
-            winningCars.add(nullableCar);
+            addCarLocatedAtMaxDistance(winningCars, car, maxDistance);
         }
-        winningCars.removeAll(Collections.singletonList(null));
 
         return winningCars;
+    }
+
+    private void addCarLocatedAtMaxDistance(List<Car> winningCars, Car car, int maxDistance) {
+        if (car.getDistance() == maxDistance) {
+            winningCars.add(car);
+        }
     }
 
     private int getMaxDistance(final Cars snapshot) {
