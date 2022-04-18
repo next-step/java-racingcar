@@ -41,8 +41,8 @@ public class SetTest {
             "4, false",
             "5, false",
     })
-    void parametrizedContains(String numStr, String expected) {
-        Assertions.assertThat(numbers.contains(Integer.parseInt(numStr)))
-                .isEqualTo(Boolean.parseBoolean(expected));
+    void parametrizedContains(int value, boolean result) {
+        Assertions.assertThat(numbers.contains(value))
+                .isEqualTo(result);
     }
 }
