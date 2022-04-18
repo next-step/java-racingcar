@@ -1,6 +1,6 @@
 package racing.ui;
 
-import racing.domain.CarName;
+import racing.domain.CarValidator;
 import racing.exception.CarNameLengthException;
 
 import java.util.Scanner;
@@ -25,9 +25,9 @@ public class InputView {
         return carNames;
     }
 
-    private static void checkCarNamesLength(String[] carNames) throws CarNameLengthException {
+    private static void checkCarNamesLength(String[] carNames) {
         for (String carName : carNames) {
-            new CarName(carName);
+            CarValidator.checkCarNamesLength(carName);
         }
     }
 
