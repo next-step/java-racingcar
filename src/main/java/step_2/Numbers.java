@@ -2,8 +2,6 @@ package step_2;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Numbers {
 
@@ -29,20 +27,25 @@ public class Numbers {
         public int getValue() {
             return this.value;
         }
+
+        public Number add(int beforeValue) {
+            return new Number(Math.addExact(this.value, beforeValue));
+        }
     }
 
     private final Number[] numbers;
 
     public Numbers(Collection<String> chars) {
-        this.numbers = chars.stream().map(Number::new).toArray(Number[]::new);
-    }
-
-    public List<Integer> getValues() {
-        return Arrays.stream(this.numbers).map(Number::getValue).collect(Collectors.toList());
+        this.numbers = chars.stream()
+                .map(Number::new)
+                .toArray(Number[]::new);
     }
 
     public int sum() {
-        return getValues().stream().mapToInt(value -> value).sum();
+        return Arrays.stream(this.numbers)
+                .reduce((before, after) -> after.add(before.getValue()))
+                .orElseThrow((() -> new ArithmeticException("주어진 값을 더할 수 없습니다.")))
+                .getValue();
     }
 
     public int size() {
