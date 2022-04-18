@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.view.OutputView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,4 +16,11 @@ public class RacingGame {
         return carList;
     }
 
+    public void startGame(int value, RacingStrategy strategy, OutputView outputView) {
+        for (int i = 0; i < value; i++) {
+            carList.get(i).moveOrStop(strategy.createNumber());
+            outputView.printResult(carList.get(i));
+        }
+        outputView.printVacuum();
+    }
 }
