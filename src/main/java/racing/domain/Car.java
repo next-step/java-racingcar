@@ -21,7 +21,7 @@ public class Car {
     }
 
     int getGreaterDistance(int distance) {
-        return this.distance > distance ? this.distance : distance;
+        return Math.max(this.distance, distance);
     }
 
     Car getCarMovingMaxDistance(int maxDistance) {
