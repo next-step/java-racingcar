@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingCar.service.GameService;
 
 class WinnerTest {
 
@@ -17,8 +18,8 @@ class WinnerTest {
         new Car("b", new Position(2)),
         new Car("c", new Position(4)),
         new Car("d", new Position(3)));
-
-    Winner winner = Winner.winnerCalculator(gameParticipants);
+    GameService gameService = new GameService();
+    Winner winner = gameService.winnerCalculator(gameParticipants);
 
     assertThat(winner).isEqualTo(new Winner("c", new Position(4)));
   }
@@ -32,9 +33,9 @@ class WinnerTest {
         new Car("c", new Position(1)),
         new Car("d", new Position(2)),
         new Car("e", new Position(3)));
-
-    Winner winner = Winner.winnerCalculator(gameParticipants);
-    String coWinner = Winner.coWinner(winner, gameParticipants);
+    GameService gameService = new GameService();
+    Winner winner = gameService.winnerCalculator(gameParticipants);
+    String coWinner = winner.coWinner(winner, gameParticipants);
     assertThat(coWinner).isEqualTo("a, e");
   }
 

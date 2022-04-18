@@ -8,7 +8,7 @@ import racingCar.model.RacingCarHistory;
 import racingCar.model.Track;
 import racingCar.model.Winner;
 import racingCar.strategy.CarMoveRandomStrategy;
-import racingCar.util.StringUtils;
+import racingCar.util.CommonUtils;
 import racingCar.view.InputTable;
 
 public class GameService {
@@ -51,8 +51,16 @@ public class GameService {
   }
 
   public String addWinner(List<Car> otherGameParticipants) {
-    Winner winner = Winner.winnerCalculator(otherGameParticipants);
-    return Winner.coWinner(winner, otherGameParticipants);
+    Winner winner = winnerCalculator(otherGameParticipants);
+    return winner.coWinner(winner, otherGameParticipants);
+  }
+
+  public Winner winnerCalculator(List<Car> gameParticipants) {
+    Winner winner = CommonUtils.getChallenger(gameParticipants.get(0));
+    for (Car participant : gameParticipants) {
+      winner = winner.findWinner(winner, participant);
+    }
+    return winner;
   }
 
 }
