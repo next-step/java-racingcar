@@ -2,22 +2,33 @@ package racingcar.controller;
 
 import racingcar.model.Cars;
 import racingcar.model.factory.CarsFactory;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.view.dto.RacingResult;
 
 public class RacingGame {
-    public void start() {
-        String carNames = InputView.inputCarNames();
-        int carMoveCount = InputView.inputCarMoveCount();
+    private static final String DEFAULT_CAR_NAMES = "car";
 
-        Cars cars = CarsFactory.create(carNames);
+    private final int tryCount;
+    private final Cars cars;
+    private final RacingGameMoveCounter racingGameMoveCounter;
 
-        for (int i = 0; i < carMoveCount; i++) {
-            cars.move();
-            OutputView.outputStatus(cars);
-        }
+    protected RacingGame(int tryCount) {
+        this(tryCount, DEFAULT_CAR_NAMES);
+    }
 
-        Cars winnerCars = cars.findWinners();
-        OutputView.outputWinners(winnerCars);
+    public RacingGame(int tryCount, String carNames) {
+        this.tryCount = tryCount;
+        this.cars = CarsFactory.create(carNames);
+        this.racingGameMoveCounter = new RacingGameMoveCounter();
+    }
+
+    public boolean end() {
+        return this.racingGameMoveCounter.isSameOrBiggerThen(tryCount);
+    }
+
+    public RacingResult race() {
+        this.cars.move();
+        racingGameMoveCounter.increase();
+
+        return new RacingResult(cars);
     }
 }

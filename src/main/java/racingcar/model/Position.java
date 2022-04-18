@@ -1,36 +1,30 @@
 package racingcar.model;
 
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 public class Position {
-    public static final int DEFAULT_POSITION = 0;
+    public static final int DEFAULT = 0;
     private static final int INCREASE_POSITION_COUNT = 1;
     private static final int INITIAL_VALUE = 0;
 
-    private final AtomicInteger position;
-
-    public Position() {
-        this(DEFAULT_POSITION);
-    }
+    private int position;
 
     public Position(int position) {
-        this(new AtomicInteger(position));
-    }
-
-    public Position(AtomicInteger position) {
         this.position = position;
     }
 
-    public Position increase() {
-        return new Position(
-                this.position.intValue() + INCREASE_POSITION_COUNT
-        );
+    public synchronized Position increase() {
+        this.position = this.position + INCREASE_POSITION_COUNT;
+        return this;
     }
 
     public int getPosition() {
-        return this.position.intValue();
+        return this.position;
+    }
+
+    public boolean match(int position) {
+        return this.position == position;
     }
 
     @Override
@@ -43,8 +37,8 @@ public class Position {
             return false;
         }
 
-        Position position1 = (Position) o;
-        return Objects.equals(position.intValue(), position1.position.intValue());
+        Position position = (Position) o;
+        return this.position == position.position;
     }
 
     @Override
@@ -55,10 +49,9 @@ public class Position {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        IntStream.range(INITIAL_VALUE, this.position.intValue())
+        IntStream.range(INITIAL_VALUE, this.position)
                 .forEach(action -> stringBuilder.append("-"));
 
         return stringBuilder.toString();
     }
-
 }
