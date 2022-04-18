@@ -3,10 +3,10 @@ package domain.car;
 public class Car {
     public static final int EXCESS_NUMBERS = 4;
     private Name name;
-    private int distance;
+    private Distance distance;
 
     public Car(String name)  {
-        this.distance = 0;
+        this.distance = new Distance();
         this.name = new Name(name);
     }
 
@@ -15,15 +15,16 @@ public class Car {
     }
 
     public int getDistance() {
-        return this.distance;
+        return this.distance.value();
     }
 
     public int move(int number) {
         if (number < EXCESS_NUMBERS) {
-            return this.distance;
+            return this.distance.value();
         }
 
-        return this.distance++;
+        this.distance.incrementDistance();
+        return this.distance.value();
     }
 
     public void play(int attemptNumber) {
@@ -37,7 +38,7 @@ public class Car {
     public void print() {
         String distanceToString = "";
 
-        for (int i = 0; i < this.distance; i++) {
+        for (int i = 0; i < this.distance.value(); i++) {
             distanceToString += "-";
         }
 
