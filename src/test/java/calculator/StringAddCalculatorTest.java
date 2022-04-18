@@ -39,8 +39,8 @@ public class StringAddCalculatorTest {
     void 커스텀구분자() {
         assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
     }
-
-
+}
+/*
     @DisplayName("음수 전달할 경우 RuntimeException 발생")
     @Test
     void 음수전달_익셉션발생() {
@@ -48,3 +48,5 @@ public class StringAddCalculatorTest {
                 .isInstanceOf(RuntimeException.class);
     }
 }
+*/
+
