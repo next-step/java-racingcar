@@ -2,6 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -37,12 +38,44 @@ class CarsTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0:1","1:2","2:3","3:4","4:5"}, delimiter = ':')
+    @CsvSource(value = {"0:1", "1:2", "2:3", "3:4", "4:5"}, delimiter = ':')
     @DisplayName("carList 반환")
     void returnCarList(int index, String name) {
         List<Car> carList = cars.getCarList();
         assertThat(carList).hasSize(5);
         assertThat(carList.get(index).getCarName()).isEqualTo(name);
+    }
+
+    @Test
+    @DisplayName("경주 우승자 반환_1명")
+    void printSingleWinnerTest() {
+        moveCar(0, 3);
+        moveCar(1, 2);
+        moveCar(2, 2);
+        moveCar(3, 1);
+
+        assertThat(cars.getWinners()).isEqualTo("1");
+    }
+
+
+    @Test
+    @DisplayName("경주 우승자 출력_여러명")
+    void printMultiWinnerTest() {
+
+        moveCar(0, 3);
+        moveCar(1, 3);
+        moveCar(2, 3);
+        moveCar(3, 3);
+        moveCar(4, 1);
+
+        assertThat(cars.getWinners()).isEqualTo("1, 2, 3, 4");
+    }
+
+
+    private void moveCar(int index, int times) {
+        for (int i = 0; i < times; i++) {
+            cars.getCarList().get(index).move(5);
+        }
     }
 
     private List<Integer> convertStringToIntArray(String moveCountsString) {

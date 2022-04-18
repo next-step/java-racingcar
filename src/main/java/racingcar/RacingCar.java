@@ -20,7 +20,7 @@ public class RacingCar {
         Cars cars = Cars.generateCars(carNames);
 
         printLocations(carNames, roundCount, cars);
-        printWinners(cars.getCarList());
+        printWinners(cars);
     }
 
     private void printLocations(String[] carNames, int roundCount, Cars cars) {
@@ -32,8 +32,8 @@ public class RacingCar {
         }
     }
 
-    private void printWinners(List<Car> carList) {
-        resultView.printWinners(carList);
+    private void printWinners(Cars cars) {
+        resultView.printWinners(cars);
     }
 
     private void printResult(Cars cars) {

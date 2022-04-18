@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -34,4 +35,21 @@ public class Cars {
                 .map(name -> new Car(name, new DefaultMovingStrategy()))
                 .collect(Collectors.toList()));
     }
+
+    public String getWinners() {
+        Integer winnerLocation = getWinnerLocation();
+
+        return carList.stream()
+                .filter(c -> c.getCurrentLocation() == winnerLocation)
+                .map(Car::getCarName)
+                .collect(Collectors.joining(", "));
+    }
+
+    private Integer getWinnerLocation() {
+        return this.carList.stream()
+                .mapToInt(Car::getCurrentLocation)
+                .max()
+                .orElseThrow(NoSuchElementException::new);
+    }
+
 }
