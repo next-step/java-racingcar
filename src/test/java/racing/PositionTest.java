@@ -30,4 +30,13 @@ class PositionTest {
         position.add(runStep);
         assertThat(position.getCurrentPosition()).isEqualTo(expected);
     }
+
+    @DisplayName("Position CompareTo 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"0, 1, -1", "1, 0, 1", "1, 1, 0"})
+    void carCompareTest(int first, int second, int result) {
+        Position positionA = new Position(first);
+        Position positionB = new Position(second);
+        assertThat(positionA.compareTo(positionB)).isEqualTo(result);
+    }
 }

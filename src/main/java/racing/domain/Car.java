@@ -2,7 +2,7 @@ package racing.domain;
 
 import racing.domain.strategies.CarMoveStrategy;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private static final int RUN_STEP = 1;
     private static final String NAME_EXCEPTION_MESSAGE = "자동차 이름은 5글자를 초과하지 않아야합니다.";
     private final Position position;
@@ -28,5 +28,10 @@ public class Car {
 
     public Position getPosition() {
         return new Position(this.position);
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return getPosition().compareTo(car.getPosition());
     }
 }

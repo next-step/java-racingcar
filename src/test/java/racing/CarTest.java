@@ -53,4 +53,13 @@ class CarTest {
                 Arguments.of(false, new Position(0))
         );
     }
+
+    @DisplayName("전진을 더 많이 한 자동차가 양수를 반환한다")
+    @Test
+    void carCompareTest() {
+        Car carA = new Car("carA");
+        carA.run(() -> true);
+        Car carB = new Car("carB");
+        assertThat(carA.compareTo(carB) > 0).isTrue();
+    }
 }
