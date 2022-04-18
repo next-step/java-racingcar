@@ -1,26 +1,34 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Condition;
 import racingcar.domain.RacingCar;
 
 public class RacingCarTest {
-    RacingCar racingCar;
+    class TrueCondition implements Condition {
+        @Override
+        public boolean getCondition() {
+            return true;
+        }
+    }
 
-    @BeforeEach
-    void setUp() {
-        racingCar = new RacingCar();
+    class FalseCondition implements Condition {
+        @Override
+        public boolean getCondition() {
+            return false;
+        }
     }
 
     @Test
-    void 전진조건_테스트() {
-        assertThat(RacingCar.random()).isGreaterThanOrEqualTo(0)
-                .isLessThanOrEqualTo(9);
+    void 이동_테스트() {
+        RacingCar racingCar = new RacingCar(new TrueCondition());
+        assertThat(racingCar.moveOrStop()).isEqualTo(1);
     }
 
     @Test
-    void 이동_또는_정지_테스트() {
-        assertThat(racingCar.moveOrStop()).isGreaterThanOrEqualTo(0);
+    void 멈춤_테스트() {
+        RacingCar racingCar = new RacingCar(new FalseCondition());
+        assertThat(racingCar.moveOrStop()).isEqualTo(0);
     }
 }

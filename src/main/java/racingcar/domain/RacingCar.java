@@ -3,24 +3,20 @@ package racingcar.domain;
 import java.util.Random;
 
 public class RacingCar {
-    private static final int MOVE_CONDITION = 4;
     private static final int MOVE_UNIT = 1;
     private int position;
+    private Condition condition;
 
-    public RacingCar() {
-        position = 0;
+    public RacingCar(Condition condition) {
+        this.position = 0;
+        this.condition = condition;
     }
 
     public int moveOrStop() {
-        int r = random();
-        if (r >= MOVE_CONDITION) {
+        if (condition.getCondition()) {
             position += MOVE_UNIT;
         }
 
         return position;
-    }
-
-    public static int random() {
-        return new Random().nextInt(10);
     }
 }

@@ -8,10 +8,12 @@ public class Race {
     private int carCount;
     private int raceCount;
     private List<RacingCar> racingCars;
+    private Condition condition;
 
-    public Race(int carCount, int raceCount) {
+    public Race(int carCount, int raceCount, Condition condition) {
         this.carCount = carCount;
         this.raceCount = raceCount;
+        this.condition = condition;
 
         makeRacingCars(carCount);
     }
@@ -37,7 +39,7 @@ public class Race {
         racingCars = new ArrayList<>();
 
         for (int i = 0; i < carCount; i++) {
-            racingCars.add(new RacingCar());
+            racingCars.add(new RacingCar(condition));
         }
     }
 
