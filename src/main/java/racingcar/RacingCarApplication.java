@@ -1,39 +1,26 @@
 package racingcar;
 
-import racingcar.domain.Car;
-import racingcar.domain.RandomNumber;
+import racingcar.domain.RacingGame;
+import racingcar.domain.RandomStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RacingCarApplication {
+
     public static void main(String[] args) {
+
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
-        RandomNumber randomNumber = new RandomNumber();
+        RandomStrategy randomStrategy = new RandomStrategy();
+        RacingGame rg = new RacingGame();
 
         int carNumber = inputView.askNumberOfCars();
         int triesNumber = inputView.askNumberOfTries();
 
-        List<Car> carList = new ArrayList<>();
-
-        for (int i = 0; i < carNumber; i++) {
-            carList.add(new Car());
-        }
+        rg.createCar(carNumber);
 
         for (int i = 0; i < triesNumber; i++) {
-            for (int j = 0; j < carList.size(); j++) {
-                carList.get(j).moveOrStop(randomNumber.createRandomNumber());
-                outputView.printResult(carList.get(j));
-            }
-            System.out.println("======" + (i+1)+ "회 ======");
-            System.out.println("");
+            rg.startGame(carNumber, randomStrategy, outputView);
         }
-
-
-
-
     }
 }
