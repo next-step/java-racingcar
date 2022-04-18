@@ -2,6 +2,7 @@ package step3.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -21,13 +22,12 @@ public class Cars {
     }
 
     public EachTryResult getEachTryResult() {
-        List<Integer> moveCountEach = getMoveCountEach();
+        Map<String, Integer> moveCountEach = getMoveCountEach();
         return new EachTryResult(moveCountEach);
     }
 
-    private List<Integer> getMoveCountEach() {
+    private Map<String, Integer> getMoveCountEach() {
         return values.stream()
-                .map(Car::getMoveCount)
-                .collect(Collectors.toList());
+                .collect(Collectors.toMap(Car::getName, Car::getMoveCount));
     }
 }
