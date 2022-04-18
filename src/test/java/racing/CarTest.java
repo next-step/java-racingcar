@@ -54,7 +54,7 @@ class CarTest {
         );
     }
 
-    @DisplayName("전진을 더 많이 한 자동차가 양수를 반환한다")
+    @DisplayName("더 많이 이동한 자동차가 양수를 반환한다")
     @Test
     void carCompareTest() {
         Car carA = new Car("carA");

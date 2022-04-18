@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.strategies.CarMoveStrategy;
 import racing.domain.strategies.CarMoveStrategyImpl;
 import racing.domain.strategies.CustomRandomImpl;
-import racing.dto.GameResult;
 import racing.service.RacingCarGame;
 
 import java.util.Collections;
@@ -42,8 +41,7 @@ class RacingCarGameTest {
     void testGameRun(int numberOfMoves) {
         List<String> names = List.of("carA", "carB");
         RacingCarGame racingCarGame = new RacingCarGame(names, createMoveStrategy());
-        GameResult gameResult = racingCarGame.run(numberOfMoves);
-        assertThat(gameResult).isInstanceOf(GameResult.class);
-        assertThat(gameResult.getWinners()).hasSizeGreaterThanOrEqualTo(1);
+        List<String> winner = racingCarGame.getWinner();
+        assertThat(winner).hasSizeGreaterThan(0);
     }
 }
