@@ -56,6 +56,7 @@ public class TrafficController {
     outputView.print(RESULT_GUIDE_MESSAGE);
     for (int i = 0; i < tryCount.getValue(); i++) {
       cars.moveAllCarRandomly(MAX_NUMBER_BOUND);
+      tryCount.race();
       printResult();
       outputView.printEmpty();
     }

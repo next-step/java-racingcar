@@ -23,4 +23,8 @@ public class Car {
   public int getPosition() {
     return carPosition.getValue();
   }
+
+  public boolean positionEqualTo(int expectedPosition) {
+    return carPosition.getValue() == expectedPosition;
+  }
 }

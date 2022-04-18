@@ -31,7 +31,7 @@ public class CarTest {
     car.move(MIN_NUMBER_TO_MOVE);
 
     // then
-    assertThat(car.getPosition()).isEqualTo(CAR_MOVING_DISTANCE);
+    assertThat(car.positionEqualTo(CAR_MOVING_DISTANCE)).isTrue();
   }
 
   @Test
