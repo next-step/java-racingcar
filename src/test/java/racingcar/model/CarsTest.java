@@ -1,38 +1,42 @@
 package racingcar.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.jupiter.api.BeforeEach;
+import java.util.List;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarsTest {
 
-  private Cars cars;
+  @Test
+  void createCars() {
+    Cars cars = Cars.createCars(List.of("yeny", "yeeun", "pobi", "jason", "ydh"), 0);
+    Cars expectedCars = new Cars(
+        List.of(
+            new Car("yeny", 0),
+            new Car("yeeun", 0),
+            new Car("pobi", 0),
+            new Car("jason", 0),
+            new Car("ydh", 0)
+        )
+    );
+    assertThat(cars).isEqualTo(expectedCars);
+  }
 
-  @BeforeEach
-  void setup() {
-    cars = Cars.createCars(5);
+  @DisplayName("중복된 이름이 있으면 예외를 던진다.")
+  @Test
+  void createCarsWithSameName() {
+    assertThatThrownBy(() -> Cars.createCars(List.of("yeeun", "yeeun", "yeny"), 0))
+        .isInstanceOf(IllegalArgumentException.class);
   }
 
   @Test
-  void makeCars() {
-    Cars testCars = Cars.createCars(10);
-    assertThat(testCars.size()).isEqualTo(10);
-  }
-
-  @Test
-  void allMove() {
+  void move() {
+    Cars cars = Cars.createCars(List.of("yeny", "yeeun", "pobi", "jason", "ydh"), 0);
     cars.move(() -> true);
 
-    assertThat(cars.collectPositions()).hasSize(cars.size());
-    assertThat(cars.collectPositions()).containsExactly(1, 1, 1, 1, 1);
-  }
-
-  @Test
-  void allStop() {
-    cars.move(() -> false);
-
-    assertThat(cars.collectPositions()).hasSize(cars.size());
-    assertThat(cars.collectPositions()).containsExactly(0, 0, 0, 0, 0);
+    Cars movedCars = Cars.createCars(List.of("yeny", "yeeun", "pobi", "jason", "ydh"), 1);
+    assertThat(cars).isEqualTo(movedCars);
   }
 }

@@ -10,15 +10,15 @@ public class InputView {
   }
 
   public static int getIntInput() {
-    int input = SCANNER.nextInt();
-    if (input < 1) {
-      throw new RuntimeException("1보다 작은 숫자는 입력할 수 없습니다.");
-    }
-    return input;
+    return SCANNER.nextInt();
   }
 
-  public static void printCountQuestion() {
-    System.out.println("자동차 대수는 몇 대 인가요?");
+  public static String getStringInput() {
+    return SCANNER.nextLine();
+  }
+
+  public static void printCarsQuestion() {
+    System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
   }
 
   public static void printTimesQuestion() {
