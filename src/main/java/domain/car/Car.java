@@ -2,20 +2,16 @@ package domain.car;
 
 public class Car {
     public static final int EXCESS_NUMBERS = 4;
-    private String name;
+    private Name name;
     private int distance;
 
     public Car(String name)  {
-        if (name.length() > 5) {
-            throw new RuntimeException("이름은 5자를 초과할 수 없습니다");
-        }
-
         this.distance = 0;
-        this.name = name;
+        this.name = new Name(name);
     }
 
     public String getName() {
-        return this.name;
+        return this.name.value();
     }
 
     public int getDistance() {
