@@ -26,7 +26,7 @@ public class Parser {
 		try {
 			return Integer.parseInt(value);
 		} catch (NumberFormatException nfe) {
-			throw new RuntimeException("숫자로 변환할 수 없는 값입니다.: " + value, nfe);
+			throw new RuntimeException("정수로 변환할 수 없는 값입니다.: " + value, nfe);
 		}
 	}
 }
