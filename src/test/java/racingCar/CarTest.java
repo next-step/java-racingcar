@@ -25,4 +25,11 @@ public class CarTest {
     void RandomNumberIsMoreThanFour() {
         assertThat(car.canMoveForward(4)).isTrue();
     }
+
+    @DisplayName("전진 시 1씩 전진잔다")
+    @Test
+    void moveOneAtOnce() {
+        car.moveForward();
+        assertThat(car.getDistance()).isEqualTo(1);
+    }
 }

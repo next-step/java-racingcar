@@ -5,7 +5,7 @@ public class Car {
 
     public void tryMove() {
         if (canMoveForward(getRandomValue())) {
-            distance++;
+            moveForward();
         }
     }
 
@@ -15,6 +15,10 @@ public class Car {
 
     private int getRandomValue() {
         return RandomInteger.next();
+    }
+
+    public void moveForward() {
+        distance++;
     }
 
     public int getDistance() {
