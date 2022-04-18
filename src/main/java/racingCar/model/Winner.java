@@ -2,8 +2,7 @@ package racingCar.model;
 
 import java.util.List;
 import java.util.Objects;
-import racingCar.util.CommonUtils;
-import racingCar.util.StringUtils;
+import racingCar.util.WinnerUtils;
 
 public class Winner {
 
@@ -36,15 +35,14 @@ public class Winner {
   public String coWinner(Winner winner, List<Car> otherGameParticipants) {
     String coWinner = winner.name.toString();
     for (Car otherGameParticipant : otherGameParticipants) {
-      coWinner = getCoWinner(winner, coWinner,
-          CommonUtils.getChallenger(otherGameParticipant));
+      coWinner = getCoWinner(winner, coWinner, WinnerUtils.getChallenger(otherGameParticipant));
     }
     return coWinner;
   }
 
   public Winner findWinner(Winner winner, Car challenger) {
     if (winner.match(challenger)) {
-      winner = CommonUtils.getChallenger(challenger);
+      winner = WinnerUtils.getChallenger(challenger);
     }
     return winner;
   }
@@ -60,8 +58,8 @@ public class Winner {
   }
 
 
-  boolean match(Car challenger) {
-    return this.position.match(CommonUtils.getChallenger(challenger).position);
+  private boolean match(Car challenger) {
+    return this.position.match(WinnerUtils.getChallenger(challenger).position);
   }
 
   @Override
