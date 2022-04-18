@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import racingCar.util.StringUtils;
 
-public class Track {
+public final class Track {
 
   private static final String CAR_DELIMITER = ",";
   private final List<Car> cars = new ArrayList<>();

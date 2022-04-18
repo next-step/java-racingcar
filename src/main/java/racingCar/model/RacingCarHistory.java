@@ -1,6 +1,6 @@
 package racingCar.model;
 
-public class RacingCarHistory {
+public final class RacingCarHistory {
 
   private final Integer round;
   private final Car car;

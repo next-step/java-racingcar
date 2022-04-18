@@ -1,6 +1,6 @@
 package racingCar.model;
 
-public class CarName {
+public final class CarName {
 
   private static final int MIN_CAR_NAME_LENGTH = 5;
   private static final String VALID_NULL_NAME = "자동차의 이름은 null이거나 공백일 수 없습니다.";

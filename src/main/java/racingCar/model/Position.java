@@ -2,7 +2,7 @@ package racingCar.model;
 
 import java.util.Objects;
 
-public class Position {
+public final class Position {
 
   private static final String STEP = "-";
   private static final int INCREASE_MOVE_VALUE = 1;

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import racingCar.util.WinnerUtils;
 
-public class Winner {
+public final class Winner {
 
   private final CarName name;
   private final Position position;
