@@ -2,7 +2,7 @@ package racingcar;
 
 import racingcar.domain.Cars;
 import racingcar.domain.GameRule;
-import racingcar.domain.RacingCarGame;
+import racingcar.domain.CountOfGamePlay;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 import racingcar.view.Results;
@@ -13,8 +13,9 @@ public class RacingCarApplication {
 		int carCount = InputView.inputCarCount();
 		int playCount = InputView.inputPlayCount();
 
-		RacingCarGame game = new RacingCarGame(Cars.of(carCount), playCount);
-		Results results = game.start(
+		CountOfGamePlay countOfGamePlay = new CountOfGamePlay(playCount);
+
+		Results results = countOfGamePlay.run(Cars.of(carCount),
 			() -> RandomUtil.createRandomNumber(GameRule.RANDOM_MIN, GameRule.RANDOM_MAX));
 
 		ResultView.print(results);

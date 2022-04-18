@@ -1,17 +1,16 @@
 package racingcar.domain;
 
+import racingcar.view.Result;
 import racingcar.view.Results;
 
-public class RacingCarGame {
-	private final Cars cars;
+public class CountOfGamePlay {
 	private final int playCount;
 
-	public RacingCarGame(Cars cars, int playCount) {
-		this.cars = cars;
+	public CountOfGamePlay(int playCount) {
 		this.playCount = playCount;
 	}
 
-	public Results start(RandomGenerator randomGenerator) {
+	public Results run(Cars cars, RandomGenerator randomGenerator) {
 		Results results = new Results();
 		for (int i = 0; i < playCount; i++) {
 			cars.play(randomGenerator);
