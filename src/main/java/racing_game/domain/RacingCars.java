@@ -1,8 +1,8 @@
-package step_3.domain;
+package racing_game.domain;
 
-import step_3.model.RoundResult;
-import step_3.util.Behavior;
-import step_3.util.Roulette;
+import racing_game.model.RoundResult;
+import racing_game.util.Behavior;
+import racing_game.util.Roulette;
 
 import java.util.List;
 import java.util.stream.Collectors;

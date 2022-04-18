@@ -1,4 +1,4 @@
-package step_3.view;
+package racing_game.view;
 
 import java.util.Scanner;
 

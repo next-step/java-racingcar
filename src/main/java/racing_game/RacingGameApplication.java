@@ -1,9 +1,9 @@
-package step_3;
+package racing_game;
 
-import step_3.controller.RacingGame;
-import step_3.model.GameResult;
-import step_3.model.GameCondition;
-import step_3.view.ResultView;
+import racing_game.controller.RacingGame;
+import racing_game.model.GameResult;
+import racing_game.model.GameCondition;
+import racing_game.view.ResultView;
 
 public class RacingGameApplication {
 

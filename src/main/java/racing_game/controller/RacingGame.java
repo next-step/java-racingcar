@@ -1,8 +1,8 @@
-package step_3.controller;
+package racing_game.controller;
 
-import step_3.domain.RacingCars;
-import step_3.model.GameCondition;
-import step_3.model.GameResult;
+import racing_game.domain.RacingCars;
+import racing_game.model.GameCondition;
+import racing_game.model.GameResult;
 
 import java.util.stream.Stream;
 

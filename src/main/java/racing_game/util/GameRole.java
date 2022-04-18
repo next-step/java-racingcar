@@ -1,4 +1,4 @@
-package step_3.util;
+package racing_game.util;
 
 public class GameRole {
 

@@ -1,4 +1,4 @@
-package step_3.model;
+package racing_game.model;
 
 import java.util.ArrayList;
 import java.util.List;

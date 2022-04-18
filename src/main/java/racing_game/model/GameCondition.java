@@ -1,6 +1,6 @@
-package step_3.model;
+package racing_game.model;
 
-import step_3.view.InputView;
+import racing_game.view.InputView;
 
 public class GameCondition {
 

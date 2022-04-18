@@ -1,7 +1,7 @@
-package step_3.domain;
+package racing_game.domain;
 
-import step_3.util.Behavior;
-import step_3.util.GameRole;
+import racing_game.util.Behavior;
+import racing_game.util.GameRole;
 
 import java.util.UUID;
 

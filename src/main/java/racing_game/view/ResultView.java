@@ -1,6 +1,6 @@
-package step_3.view;
+package racing_game.view;
 
-import step_3.model.GameResult;
+import racing_game.model.GameResult;
 
 import java.util.concurrent.atomic.AtomicReference;
 

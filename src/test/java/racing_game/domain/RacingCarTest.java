@@ -1,11 +1,11 @@
-package step_3.domain;
+package racing_game.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step_3.util.Behavior;
+import racing_game.util.Behavior;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

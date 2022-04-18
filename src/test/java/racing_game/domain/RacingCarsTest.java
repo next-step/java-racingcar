@@ -1,9 +1,9 @@
-package step_3.domain;
+package racing_game.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step_3.model.RoundResult;
-import step_3.util.Behavior;
+import racing_game.model.RoundResult;
+import racing_game.util.Behavior;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

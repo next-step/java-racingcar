@@ -1,9 +1,9 @@
-package step_3.model;
+package racing_game.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step_3.util.Behavior;
+import racing_game.util.Behavior;
 
 import java.util.List;
 import java.util.UUID;

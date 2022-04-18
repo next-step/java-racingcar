@@ -1,6 +1,6 @@
-package step_3.model;
+package racing_game.model;
 
-import step_3.util.Behavior;
+import racing_game.util.Behavior;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
