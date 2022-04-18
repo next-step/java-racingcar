@@ -4,31 +4,33 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    public static final String DEFAULT_DELIMITER = ",|:";
-    public static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
-    public static final int MINIMUM = 0;
+    private static final String DEFAULT_DELIMITER = ",|:";
+    private static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
+    private static final int MINIMUM = 0;
+    private static final int FIRST = 1;
+    private static final int SECOND = 2;
+    private static final Pattern PATTERNCASING = Pattern.compile(CUSTOM_DELIMITER_REGEXP);
+
+    private StringAddCalculator() {
+    }
 
     public static int splitAndSum(String str) {
         if (isBlank(str)) {
             return MINIMUM;
         }
 
-        Matcher m = Pattern.compile(CUSTOM_DELIMITER_REGEXP).matcher(str);
+        Matcher m = PATTERNCASING.matcher(str);
         if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] values = m.group(2).split(customDelimiter);
+            String customDelimiter = m.group(FIRST);
+            String[] values = m.group(SECOND).split(customDelimiter);
             return sum(toInts(values));
         }
-        String[] values = split(str);
+        String[] values = str.split(DEFAULT_DELIMITER);
         return sum(toInts(values));
     }
 
     private static boolean isBlank(String str) {
         return str == null || str.isBlank();
-    }
-
-    private static String[] split(String str) {
-        return str.split(DEFAULT_DELIMITER);
     }
 
     private static int[] toInts(String[] values) {
@@ -50,7 +52,7 @@ public class StringAddCalculator {
     private static int toInt(String value) {
         int number = Integer.parseInt(value);
         if (number < MINIMUM) {
-            throw new RuntimeException("음수는 허용하지 않습니다.");
+            throw new IllegalArgumentException("음수는 허용하지 않습니다.");
         }
         return number;
     }
