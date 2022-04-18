@@ -3,7 +3,7 @@ package racingcar.model;
 import java.util.Objects;
 
 public final class CarName {
-    public static final int MAX_LENGTH = 5;
+    private static final int MAX_LENGTH = 5;
 
     private final String name;
 
