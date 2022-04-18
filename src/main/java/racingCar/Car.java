@@ -1,10 +1,6 @@
 package racingCar;
 
-import java.util.Random;
-
 public class Car {
-    static Random random = new Random();
-    static final int BOUND = 10;
     int distance = 0;
 
     public void tryMove() {
@@ -13,12 +9,12 @@ public class Car {
         }
     }
 
-    public int getRandomValue() {
-        return random.nextInt(BOUND);
-    }
-
     public boolean canMoveForward(int number) {
         return number >= 4;
+    }
+
+    private int getRandomValue() {
+        return RandomInteger.next();
     }
 
     public int getDistance() {
