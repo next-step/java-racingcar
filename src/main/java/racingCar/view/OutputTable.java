@@ -4,7 +4,6 @@ import java.util.Comparator;
 import java.util.List;
 import racingCar.model.Car;
 import racingCar.model.RacingCarHistory;
-import racingCar.model.Winner;
 import racingCar.service.GameService;
 
 public final class OutputTable {
@@ -43,6 +42,5 @@ public final class OutputTable {
       System.out.println();
     }
   }
-
 
 }

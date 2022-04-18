@@ -18,7 +18,6 @@ public final class RacingCarHistory {
     return car;
   }
 
-
   @Override
   public String toString() {
     return car.toString();

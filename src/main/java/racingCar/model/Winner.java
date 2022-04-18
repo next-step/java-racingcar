@@ -1,6 +1,5 @@
 package racingCar.model;
 
-import java.util.List;
 import java.util.Objects;
 import racingCar.util.WinnerUtils;
 
@@ -31,7 +30,6 @@ public final class Winner {
     return Objects.hash(name);
   }
 
-
   public boolean match(Car challenger) {
     return this.position.match(WinnerUtils.getChallenger(challenger).position);
   }
@@ -39,7 +37,6 @@ public final class Winner {
   public boolean equalPosition(Winner challenger) {
     return this.position.equals(challenger.position);
   }
-
 
   @Override
   public String toString() {

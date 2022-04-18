@@ -13,7 +13,6 @@ public final class Position {
     this.x = x;
   }
 
-
   public Position increase() {
     return new Position(this.x + INCREASE_MOVE_VALUE);
   }
@@ -34,7 +33,6 @@ public final class Position {
   public int hashCode() {
     return Objects.hash(x);
   }
-
 
   public boolean match(Position other) {
     return this.x < other.x;
