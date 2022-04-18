@@ -1,4 +1,4 @@
-package car;
+package domain.car;
 
 public class ResultView {
     private CarRacingGame racing;

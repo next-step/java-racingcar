@@ -1,4 +1,4 @@
-package car;
+package domain.car;
 
 public class Car {
     public static final int EXCESS_NUMBERS = 4;

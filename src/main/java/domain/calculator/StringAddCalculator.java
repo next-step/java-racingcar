@@ -1,6 +1,4 @@
-package calculator;
-
-import java.util.Arrays;
+package domain.calculator;
 
 public class StringAddCalculator {
 
