@@ -1,7 +1,5 @@
 package racingCar.view;
 
-import racingCar.CarStadium;
-
 import java.util.Scanner;
 
 public class InputViewRacingCar {
@@ -11,25 +9,20 @@ public class InputViewRacingCar {
     private InputViewRacingCar() {
     };
 
-    public static void inputRacingData() {
-        inputPlayCarNum();
-        inputRounds();
-    }
-
-    private static void inputPlayCarNum() {
+    public static String[] inputPlayCarNum() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
 
-        String inputCars = inputString();
-
-        CarStadium.initCars(inputCars);
+        return splitCarNames(inputString());
     }
 
-    private static void inputRounds() {
+    private static String[] splitCarNames(String cars) {
+        return cars.split(",");
+    }
+
+    public static int inputRounds() {
         System.out.println("시도할 회수는 몇 회 인가요?");
 
-        int rounds = inputInt();
-
-        CarStadium.initRounds(rounds);
+        return inputInt();
     }
 
     private static String inputString() {

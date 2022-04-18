@@ -1,8 +1,10 @@
 package racingCar;
 
-import calculator.AddCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingCar.domain.Car;
+import racingCar.domain.CarStadium;
+import racingCar.exception.InvalidCarNameException;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -18,16 +20,16 @@ public class RacingCarTest {
 
     @Test
     public void 전진테스트() {
-        assertThat(car.move(4)).isEqualTo("-");
-        assertThat(car.move(6)).isEqualTo("-");
-        assertThat(car.move(8)).isEqualTo("-");
+        assertThat(car.move(4)).isEqualTo(1);
+        assertThat(car.move(6)).isEqualTo(2);
+        assertThat(car.move(8)).isEqualTo(3);
     }
 
     @Test
     public void 정지테스트() {
-        assertThat(car.move(3)).isEqualTo("");
-        assertThat(car.move(2)).isEqualTo("");
-        assertThat(car.move(0)).isEqualTo("");
+        assertThat(car.move(3)).isEqualTo(0);
+        assertThat(car.move(2)).isEqualTo(0);
+        assertThat(car.move(0)).isEqualTo(0);
     }
 
     @Test
@@ -36,15 +38,15 @@ public class RacingCarTest {
         car.move(6);
         car.move(8);
 
-        assertThat(car.getDistance()).isEqualTo("---");
+        assertThat(car.getPosition()).isEqualTo(3);
 
         car.move(2);
 
-        assertThat(car.getDistance()).isEqualTo("---");
+        assertThat(car.getPosition()).isEqualTo(3);
 
         car.move(9);
 
-        assertThat(car.getDistance()).isEqualTo("----");
+        assertThat(car.getPosition()).isEqualTo(4);
 
     }
 
@@ -54,14 +56,6 @@ public class RacingCarTest {
             assertThat(CarStadium.extractRandomNumber())
                     .isGreaterThan(-1)
                     .isLessThan(10);
-        }
-    }
-
-    @Test
-    public void 자동차_전진테스트() {
-        for (int i = 0; i < 100; ++i) {
-            int result = CarStadium.extractRandomNumber();
-            assertThat(car.move(result)).isIn("-", "");
         }
     }
 
@@ -83,4 +77,5 @@ public class RacingCarTest {
 
         assertThat(carNames).containsExactly("kim","jeong","lee");
     }
+
 }

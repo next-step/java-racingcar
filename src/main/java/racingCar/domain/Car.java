@@ -1,28 +1,30 @@
-package racingCar;
+package racingCar.domain;
+
+import racingCar.MovableStrategy;
 
 public class Car {
 
     private final MovableStrategy movableStrategy;
 
     private CarName name;
-    private String distance = "";
+    private Position position;
 
     public Car(String name, MovableStrategy movableStrategy) {
+        this.position = new Position();
         this.name = new CarName(name);
         this.movableStrategy = movableStrategy;
     }
 
-    public String move(int value) {
+    public int move(int value) {
         if (movableStrategy.canMove(value)) {
-            this.distance += "-";
-            return "-";
+            return this.position.forward();
         }
 
-        return "";
+        return 0;
     }
 
-    public String getDistance() {
-        return this.distance;
+    public int getPosition() {
+        return this.position.getPosition();
     }
 
     public String getName() {
