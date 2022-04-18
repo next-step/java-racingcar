@@ -25,6 +25,7 @@ CarFactory
 
 RacingGame
 - Racing Game의 round는 음수가 될 수 없다. 만약 음수를 받는다면 에러를 뱉는다.
+- 설정된 round 보다 더 많은 라운드를 진행할때 에러를 뱉는다.
 
 ResultView
 - 매 라운드 마다 현재 움직인 거리를 출력한다.

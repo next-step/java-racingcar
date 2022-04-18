@@ -1,20 +1,22 @@
 package racingcar;
 
 
+import java.util.Objects;
+
 public class Car {
     private static final int MIN_NUMBER_BE_MOVES = 4;
-    private int distance;
+    private Position position;
 
     public Car() {
-        this.distance = 0;
+        this.position = new Position();
     }
 
-    public int getDistance() {
-        return this.distance;
+    public Car(Position position) {
+        this.position = position;
     }
 
     private void move() {
-        this.distance += 1;
+        this.position = this.position.move();
     }
 
     private boolean canBeMove(int value) {
@@ -25,5 +27,22 @@ public class Car {
         if(canBeMove(number)) {
             move();
         }
+    }
+
+    public int getDistance() {
+        return this.position.getPosition();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(position, car.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
     }
 }
