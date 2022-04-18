@@ -36,4 +36,20 @@ public class RaceTest {
         Race race = new Race(carNames, 5, new TrueCondition());
         race.startRace();
     }
+
+    @Test
+    void 랜덤_우승자_테스트() {
+        Race race = new Race(carNames, 5, new RaceCondition(10, 4));
+        race.startRace();
+
+        assertThat(race.getWinners()).isNotEmpty();
+    }
+
+    @Test
+    void 다수_우승자_테스트() {
+        Race race = new Race(carNames, 5, new TrueCondition());
+        race.startRace();
+
+        assertThat(race.getWinners().size()).isEqualTo(carNames.size());
+    }
 }

@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.module.ResultView;
 
 public class Race {
@@ -24,6 +25,7 @@ public class Race {
             oneRound();
             ResultView.printNextRound();
         }
+        ResultView.printWinners(getWinners());
     }
 
     private void oneRound() {
@@ -49,5 +51,12 @@ public class Race {
 
     public int getRaceCount() {
         return raceCount;
+    }
+
+    public List<String> getWinners() {
+        int winnerPosition = racingCars.stream().mapToInt(RacingCar::getPosition).max()
+                .orElseThrow(RuntimeException::new);
+        return racingCars.stream().filter(it -> it.getPosition() == winnerPosition)
+                .map(RacingCar::getName).collect(Collectors.toList());
     }
 }
