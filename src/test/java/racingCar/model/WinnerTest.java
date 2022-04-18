@@ -34,8 +34,7 @@ class WinnerTest {
         new Car("d", new Position(2)),
         new Car("e", new Position(3)));
     GameService gameService = new GameService();
-    Winner winner = gameService.winnerCalculator(gameParticipants);
-    String coWinner = gameService.coWinner(winner, gameParticipants);
+    String coWinner = gameService.addWinner(gameParticipants);
     assertThat(coWinner).isEqualTo("a, e");
   }
 
