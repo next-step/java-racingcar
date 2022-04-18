@@ -1,9 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Condition;
-import racingcar.domain.RacingCar;
 
 public class RacingCarTest {
     class TrueCondition implements Condition {
