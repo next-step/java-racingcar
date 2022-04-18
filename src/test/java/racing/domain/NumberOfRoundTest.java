@@ -23,7 +23,7 @@ public class NumberOfRoundTest {
     @ParameterizedTest
     void 음수_입력(int number) {
         assertThatThrownBy(() -> new NumberOfRound(number))
-                .isInstanceOf(RuntimeException.class)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("양수");
     }
 }

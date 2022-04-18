@@ -23,7 +23,7 @@ public class NumberOfCarsTest {
     @ParameterizedTest
     void 음수_입력(int number) {
         assertThatThrownBy(() -> new NumberOfCars(number))
-                .isInstanceOf(RuntimeException.class)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("양수");
     }
 
