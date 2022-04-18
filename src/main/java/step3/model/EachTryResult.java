@@ -27,6 +27,7 @@ public class EachTryResult {
                 .stream()
                 .filter(entry -> entry.getValue().equals(winnerMoveCount))
                 .map(Map.Entry::getKey)
+                .sorted(String::compareTo)
                 .collect(Collectors.toList());
     }
 

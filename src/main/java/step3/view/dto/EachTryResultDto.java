@@ -19,6 +19,7 @@ public class EachTryResultDto {
     private String initEachTryResult(Map<String, Integer> moveCountEach) {
         return moveCountEach.entrySet()
                 .stream()
+                .sorted(Map.Entry.comparingByKey())
                 .map(this::parseEntry)
                 .collect(Collectors.joining(LINE_BREAK_PER_CAR));
     }
