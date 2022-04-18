@@ -27,12 +27,9 @@ public class Car {
     }
 
     public void move() {
-        if (getRandomNo() >= FORWARD_NUM)
-            this.position++;
-    }
-
-    private int getRandomNo() {
         Random random = new Random();
-        return random.nextInt(MAX_BOUND);
+        int randomNo = random.nextInt(MAX_BOUND);
+        if (randomNo >= FORWARD_NUM)
+            this.position++;
     }
 }
