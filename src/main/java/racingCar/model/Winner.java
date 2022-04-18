@@ -33,8 +33,8 @@ public class Winner {
 
   public static Winner winnerCalculator(List<Car> gameParticipants) {
     Winner winner = getChallenger(gameParticipants.get(0));
-    for (int i = 1; i < gameParticipants.size(); i++) {
-      winner = findWinner(winner, gameParticipants.get(i));
+    for (Car participant : gameParticipants) {
+      winner = findWinner(winner, participant);
     }
     return winner;
   }
