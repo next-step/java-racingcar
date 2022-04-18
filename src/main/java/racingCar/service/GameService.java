@@ -51,16 +51,42 @@ public class GameService {
   }
 
   public String addWinner(List<Car> otherGameParticipants) {
-    Winner winner = winnerCalculator(otherGameParticipants);
-    return winner.coWinner(winner, otherGameParticipants);
+    return coWinner(winnerCalculator(otherGameParticipants), otherGameParticipants);
   }
 
   public Winner winnerCalculator(List<Car> gameParticipants) {
     Winner winner = WinnerUtils.getChallenger(gameParticipants.get(0));
     for (Car participant : gameParticipants) {
-      winner = winner.findWinner(winner, participant);
+      winner = findWinner(winner, participant);
     }
     return winner;
   }
+
+  private Winner findWinner(Winner winner, Car challenger) {
+    if (winner.match(challenger)) {
+      winner = WinnerUtils.getChallenger(challenger);
+    }
+    return winner;
+  }
+
+  public String coWinner(Winner winner, List<Car> otherGameParticipants) {
+    String coWinner = winner.toString();
+    for (Car otherGameParticipant : otherGameParticipants) {
+      coWinner = getCoWinner(winner, WinnerUtils.getChallenger(otherGameParticipant),
+          winner.toString());
+    }
+    return coWinner;
+  }
+
+  private String getCoWinner(Winner winner, Winner challenger, String coWinner) {
+    if (winner.toString().equals(challenger.toString())) {
+      return winner.toString();
+    }
+    if (winner.equalPosition(challenger)) {
+      return coWinner.concat(", ").concat(challenger.toString());
+    }
+    return coWinner;
+  }
+
 
 }
