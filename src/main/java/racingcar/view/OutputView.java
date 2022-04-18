@@ -4,11 +4,16 @@ import racingcar.domain.Car;
 
 public class OutputView {
 
+    private static final String DASH = "-";
+    private static final int INITIALIZATION = 0;
+    private static final StringBuilder result = new StringBuilder();
+
     public void printResult(Car car) {
-        String result = "";
-        for (int i = 0; i < car.getMovement(); i++) {
-            result += "-";
+        result.setLength(INITIALIZATION);
+        for (int i = INITIALIZATION; i < car.getMovement(); i++) {
+            result.append(DASH);
         }
         System.out.println(result);
     }
+
 }
