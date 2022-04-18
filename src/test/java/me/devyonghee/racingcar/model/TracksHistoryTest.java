@@ -32,9 +32,9 @@ class TracksHistoryTest {
     @DisplayName("주어진 리스트 그대로 반환")
     void list() {
         //given
-        List<Tracks> tracksList = Collections.singletonList(Tracks.from(Collections.singletonList(Track.of(RacingCarSample.ONLY_MOVE_CAR, Distance.ZERO))));
+        List<Tracks> tracksGroup = Collections.singletonList(Tracks.from(Collections.singletonList(Track.of(RacingCarSample.ONLY_MOVE_CAR, Distance.ZERO))));
         //when, then
-        assertThat(TracksHistory.from(tracksList).list()).containsExactlyElementsOf(tracksList);
+        assertThat(TracksHistory.from(tracksGroup).list()).containsExactlyElementsOf(tracksGroup);
     }
 
     @Test

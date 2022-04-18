@@ -28,8 +28,8 @@ class CarNamesTest {
     @DisplayName("주어진 리스트 그대로 반환")
     void list() {
         //given
-        List<CarName> nameList = Collections.singletonList(CarName.from("abc"));
+        List<CarName> namesGroup = Collections.singletonList(CarName.from("abc"));
         //when, then
-        assertThat(CarNames.from(nameList).list()).containsExactlyElementsOf(nameList);
+        assertThat(CarNames.from(namesGroup).list()).containsExactlyElementsOf(namesGroup);
     }
 }

@@ -31,8 +31,8 @@ class RacingCarsTest {
     @DisplayName("주어진 리스트의 크기 반환")
     void size() {
         //given
-        List<RacingCar> twoRacingCarList = Arrays.asList(RacingCarSample.ONLY_MOVE_CAR, RacingCarSample.ONLY_MOVE_CAR);
+        List<RacingCar> twoRacingCars = Arrays.asList(RacingCarSample.ONLY_MOVE_CAR, RacingCarSample.ONLY_MOVE_CAR);
         //when, then
-        assertThat(RacingCars.from(twoRacingCarList).size()).isEqualTo(twoRacingCarList.size());
+        assertThat(RacingCars.from(twoRacingCars).size()).isEqualTo(twoRacingCars.size());
     }
 }

@@ -31,18 +31,18 @@ class TracksTest {
     @DisplayName("주어진 리스트 그대로 반환")
     void list() {
         //given
-        List<Track> trackList = Collections.singletonList(TrackSample.TRACK_AT_ZERO);
+        List<Track> tracksGroup = Collections.singletonList(TrackSample.TRACK_AT_ZERO);
         //when, then
-        assertThat(Tracks.from(trackList).list()).containsExactlyElementsOf(trackList);
+        assertThat(Tracks.from(tracksGroup).list()).containsExactlyElementsOf(tracksGroup);
     }
 
     @Test
     @DisplayName("주어진 리스트 동일한 크기 반환")
     void size() {
         //given
-        List<Track> twoTrackList = Arrays.asList(TrackSample.TRACK_AT_ZERO, TrackSample.TRACK_AT_ZERO);
+        List<Track> twoTracksGroup = Arrays.asList(TrackSample.TRACK_AT_ZERO, TrackSample.TRACK_AT_ZERO);
         //when, then
-        assertThat(Tracks.from(twoTrackList).size()).isEqualTo(twoTrackList.size());
+        assertThat(Tracks.from(twoTracksGroup).size()).isEqualTo(twoTracksGroup.size());
     }
 
     @Test
