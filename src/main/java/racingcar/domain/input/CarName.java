@@ -1,18 +1,19 @@
 package racingcar.domain.input;
 
+import racingcar.domain.input.exception.MaximumCarNameException;
+import racingcar.domain.input.exception.RequiredCarNameException;
+
 public class CarName {
 
-    private static final String REQUIRED_CAR_NAME_MESSAGE = "자동차 이름은 필수로 입력해야합니다.";
-    private static final String MAX_CAR_NAME_MESSAGE = "자동차의 이름은 5자를 초과할 수 없습니다.";
     private static final int MAX_LENGTH_CAR_NAME = 5;
     private String carName;
 
     public CarName(String carName) {
         if (isNullOrBlank(carName)) {
-            throw new IllegalArgumentException(REQUIRED_CAR_NAME_MESSAGE);
+            throw new RequiredCarNameException();
         }
         if (isOverMaxLength(carName)) {
-            throw new IllegalArgumentException(MAX_CAR_NAME_MESSAGE);
+            throw new MaximumCarNameException();
         }
         this.carName = carName;
     }
