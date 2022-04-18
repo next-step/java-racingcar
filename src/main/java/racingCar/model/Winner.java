@@ -43,8 +43,11 @@ public final class Winner {
     return this.position.match(WinnerUtils.getChallenger(challenger).position);
   }
 
-  public boolean equalPosition(Winner challenger) {
-    return this.position.equals(challenger.position);
+  public Winner addCoWinner(Winner challenger) {
+    if (!this.equals(challenger) && this.position.equals(challenger.position)) {
+      return new Winner(this.name.concat(", ").concat(challenger.name));
+    }
+    return this;
   }
 
   @Override

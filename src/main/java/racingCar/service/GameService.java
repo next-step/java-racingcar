@@ -51,7 +51,7 @@ public class GameService {
   }
 
   public String addWinner(List<Car> otherGameParticipants) {
-    return coWinner(winnerCalculator(otherGameParticipants), otherGameParticipants);
+    return getCoWinner(winnerCalculator(otherGameParticipants), otherGameParticipants);
   }
 
   public Winner winnerCalculator(List<Car> gameParticipants) {
@@ -62,9 +62,9 @@ public class GameService {
     return winner;
   }
 
-  public String coWinner(Winner winner, List<Car> otherGameParticipants) {
+  public String getCoWinner(Winner winner, List<Car> otherGameParticipants) {
     for (Car otherGameParticipant : otherGameParticipants) {
-      winner = getCoWinner(winner, WinnerUtils.getChallenger(otherGameParticipant));
+      winner = winner.addCoWinner(WinnerUtils.getChallenger(otherGameParticipant));
     }
     return winner.toString();
   }
@@ -76,11 +76,5 @@ public class GameService {
     return winner;
   }
 
-  private Winner getCoWinner(Winner winner, Winner challenger) {
-    if (!winner.equals(challenger) && winner.equalPosition(challenger)) {
-      return new Winner(winner.toString().concat(", ").concat(challenger.toString()));
-    }
-    return winner;
-  }
 
 }
