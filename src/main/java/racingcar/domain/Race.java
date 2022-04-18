@@ -5,17 +5,17 @@ import java.util.List;
 import racingcar.module.ResultView;
 
 public class Race {
-    private int carCount;
+    private List<String> carNames;
     private int raceCount;
     private List<RacingCar> racingCars;
     private Condition condition;
 
-    public Race(int carCount, int raceCount, Condition condition) {
-        this.carCount = carCount;
+    public Race(List<String> carNames, int raceCount, Condition condition) {
+        this.carNames = carNames;
         this.raceCount = raceCount;
         this.condition = condition;
 
-        makeRacingCars(carCount);
+        makeRacingCars(carNames);
     }
 
     public void startRace() {
@@ -35,16 +35,16 @@ public class Race {
         );
     }
 
-    private void makeRacingCars(int carCount) {
+    private void makeRacingCars(List<String> carNames) {
         racingCars = new ArrayList<>();
 
-        for (int i = 0; i < carCount; i++) {
-            racingCars.add(new RacingCar(condition));
+        for (String carName : carNames) {
+            racingCars.add(new RacingCar(carName, condition));
         }
     }
 
     public int getCarCount() {
-        return carCount;
+        return carNames.size();
     }
 
     public int getRaceCount() {
