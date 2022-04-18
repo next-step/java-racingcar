@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Position {
 
   private static final String STEP = "-";
+  private static final int INCREASE_MOVE_VALUE = 1;
   private final int x;
 
   public Position(int x) {
@@ -13,8 +14,8 @@ public class Position {
   }
 
 
-  public static Position increase(Position origin, Position addPosition) {
-    return new Position(origin.x + addPosition.x);
+  public Position increase() {
+    return new Position(this.x + INCREASE_MOVE_VALUE);
   }
 
   @Override
@@ -40,10 +41,11 @@ public class Position {
   }
 
   public void valid(int x) {
-    if(x < 0) {
+    if (x < 0) {
       throw new IllegalArgumentException("포지션은 음수 값을 넣을 수 없습니다.");
     }
   }
+
   @Override
   public String toString() {
     return STEP.repeat(x);

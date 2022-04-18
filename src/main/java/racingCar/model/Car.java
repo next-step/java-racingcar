@@ -3,7 +3,7 @@ package racingCar.model;
 import java.util.Objects;
 import racingCar.strategy.CarMoveStrategy;
 
-public class Car {
+public final class Car {
 
   private final CarName carName;
   private final Position position;
@@ -19,7 +19,7 @@ public class Car {
 
   public Car move(CarMoveStrategy carMoveStrategy) {
     if (carMoveStrategy.moveAble()) {
-      return new Car(this.carName.toString(), Position.increase(position, new Position(1)));
+      return new Car(carName.toString(), position.increase());
     }
     return this;
   }
