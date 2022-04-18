@@ -20,17 +20,11 @@ public class CarStadium {
         return random.nextInt(BOUND);
     }
 
-    public static void initCars(String cars) {
-        String[] carNames = splitCarNames(cars);
-
+    public static void initCars(String[] carNames) {
         for (String name : carNames) {
             Car car = new Car(name, new NormalStrategy());
             carList.add(car);
         }
-    }
-
-    private static String[] splitCarNames(String cars) {
-        return cars.split(",");
     }
 
     public static void initRounds(int nums) {
@@ -67,7 +61,7 @@ public class CarStadium {
     }
 
     private static void addWinners(int max, List<String> winners, Car car) {
-        if (max == car.getPosition().length()) {
+        if (max == car.getPosition()) {
             winners.add(car.getName());
         }
     }
@@ -76,7 +70,7 @@ public class CarStadium {
         int maxDistance = 0;
 
         for (int j = 0; j < cars.size(); ++j) {
-            int distance = cars.get(j).getPosition().length();
+            int distance = cars.get(j).getPosition();
             maxDistance = getMaxDistance(maxDistance, distance);
         }
 
@@ -89,6 +83,4 @@ public class CarStadium {
         }
         return maxDistance;
     }
-
-
 }

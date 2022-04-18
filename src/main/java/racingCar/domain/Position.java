@@ -2,17 +2,17 @@ package racingCar.domain;
 
 public class Position {
 
-    private String position = "";
+    private int position = 0;
 
     public Position() {
     }
 
-    public String forward() {
-        position += "-";
+    public int forward() {
+        position += 1;
         return position;
     }
 
-    public String getPosition() {
+    public int getPosition() {
         return position;
     }
 }

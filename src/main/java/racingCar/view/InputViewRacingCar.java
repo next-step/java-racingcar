@@ -21,7 +21,11 @@ public class InputViewRacingCar {
 
         String inputCars = inputString();
 
-        CarStadium.initCars(inputCars);
+        CarStadium.initCars(splitCarNames(inputCars));
+    }
+
+    private static String[] splitCarNames(String cars) {
+        return cars.split(",");
     }
 
     private static void inputRounds() {

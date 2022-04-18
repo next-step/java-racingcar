@@ -39,7 +39,10 @@ public class ResultViewRacingCar {
     private static void resultViewCarDistance(Car car) {
         CarStadium.moveCar(car);
 
-        System.out.println(car.getPosition());
+        for (int i = 0; i < car.getPosition(); ++i) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 
     private static void resultViewWinners(List<Car> cars) {

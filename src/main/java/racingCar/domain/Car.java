@@ -15,15 +15,15 @@ public class Car {
         this.movableStrategy = movableStrategy;
     }
 
-    public String move(int value) {
+    public int move(int value) {
         if (movableStrategy.canMove(value)) {
             return this.position.forward();
         }
 
-        return "";
+        return 0;
     }
 
-    public String getPosition() {
+    public int getPosition() {
         return this.position.getPosition();
     }
 
