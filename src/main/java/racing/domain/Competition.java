@@ -12,6 +12,11 @@ public class Competition {
         this.round = round;
     }
 
+    Competition(Cars cars) {
+        this.cars = cars;
+        round = 0;
+    }
+
     public List<Cars> progressEntireRoundAndRecordAllSnapshot(Movable movable) {
         List<Cars> snapshots = new ArrayList<>(round);
         for (int i = 0; i < round; i++) {
