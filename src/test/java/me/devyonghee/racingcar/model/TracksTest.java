@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -24,6 +25,24 @@ class TracksTest {
     void instance_emptyCollection_thrownIllegalArgumentException() {
         assertThatIllegalArgumentException().isThrownBy(() -> Tracks.from(Collections.emptyList()));
         assertThatIllegalArgumentException().isThrownBy(() -> Tracks.from(null));
+    }
+
+    @Test
+    @DisplayName("주어진 리스트 그대로 반환")
+    void list() {
+        //given
+        List<Track> tracksGroup = Collections.singletonList(TrackSample.TRACK_AT_ZERO);
+        //when, then
+        assertThat(Tracks.from(tracksGroup).list()).containsExactlyElementsOf(tracksGroup);
+    }
+
+    @Test
+    @DisplayName("주어진 리스트 동일한 크기 반환")
+    void size() {
+        //given
+        List<Track> twoTracksGroup = Arrays.asList(TrackSample.TRACK_AT_ZERO, TrackSample.TRACK_AT_ZERO);
+        //when, then
+        assertThat(Tracks.from(twoTracksGroup).size()).isEqualTo(twoTracksGroup.size());
     }
 
     @Test

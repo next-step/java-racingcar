@@ -31,7 +31,7 @@ class DistanceTest {
     }
 
     @Test
-    @DisplayName("더 큰지 여부")
+    @DisplayName("1의 거리보다 더 큰지 비교")
     void greaterThan() {
         assertThat(Distance.ONE.greaterThan(Distance.ZERO)).isTrue();
         assertThat(Distance.ONE.greaterThan(Distance.ONE)).isFalse();

@@ -8,26 +8,26 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public final class Names {
+public final class CarNames {
 
-    private final List<Name> names;
+    private final List<CarName> names;
 
-    private Names(List<Name> names) {
+    private CarNames(List<CarName> names) {
         Assert.notEmpty(names, "names must not empty");
         this.names = new ArrayList<>(names);
     }
 
-    static Names from(List<Name> names) {
-        return new Names(names);
+    static CarNames from(List<CarName> names) {
+        return new CarNames(names);
     }
 
-    <T> List<T> map(Function<Name, T> function) {
+    <T> List<T> map(Function<CarName, T> function) {
         return names.stream()
                 .map(function)
                 .collect(Collectors.toList());
     }
 
-    List<Name> list() {
+    List<CarName> list() {
         return Collections.unmodifiableList(names);
     }
 }

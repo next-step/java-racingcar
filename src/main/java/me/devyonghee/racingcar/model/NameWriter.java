@@ -20,10 +20,10 @@ public final class NameWriter {
         return new NameWriter(names);
     }
 
-    public Names names() {
-        return Names.from(
+    public CarNames names() {
+        return CarNames.from(
                 Arrays.stream(names.split(DELIMITER))
-                        .map(Name::from)
+                        .map(CarName::from)
                         .collect(Collectors.toList())
         );
     }

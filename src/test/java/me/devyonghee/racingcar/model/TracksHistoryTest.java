@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -25,6 +26,15 @@ class TracksHistoryTest {
     void instance_emptyCollection_thrownIllegalArgumentException() {
         assertThatIllegalArgumentException().isThrownBy(() -> TracksHistory.from(null));
         assertThatIllegalArgumentException().isThrownBy(() -> TracksHistory.from(Collections.emptyList()));
+    }
+
+    @Test
+    @DisplayName("주어진 리스트 그대로 반환")
+    void list() {
+        //given
+        List<Tracks> tracksGroup = Collections.singletonList(Tracks.from(Collections.singletonList(Track.of(RacingCarSample.ONLY_MOVE_CAR, Distance.ZERO))));
+        //when, then
+        assertThat(TracksHistory.from(tracksGroup).list()).containsExactlyElementsOf(tracksGroup);
     }
 
     @Test
