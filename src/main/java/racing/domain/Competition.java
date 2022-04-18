@@ -7,16 +7,14 @@ public class Competition {
     private final Cars cars;
     private final int round;
 
-    public Competition(int unit, int round) {
-        cars = new Cars(unit);
+    public Competition(String[] carNames, int round) {
+        cars = new Cars(carNames);
         this.round = round;
     }
 
-    public Cars progressEntireRoundAndRecordLastSnapshot(Movable movable) {
-        for (int i = 0; i < round; i++) {
-            progressEachRound(movable);
-        }
-        return cars;
+    Competition(Cars cars) {
+        this.cars = cars;
+        round = 0;
     }
 
     public List<Cars> progressEntireRoundAndRecordAllSnapshot(Movable movable) {
@@ -29,5 +27,9 @@ public class Competition {
 
     private Cars progressEachRound(Movable movable) {
         return cars.move(movable);
+    }
+
+    public List<Car> getCarsWithMaxDistance(Cars snapshot) {
+        return cars.getCarsWithMaxDistance(snapshot);
     }
 }

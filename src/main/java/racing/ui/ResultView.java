@@ -6,28 +6,51 @@ import racing.domain.Cars;
 import java.util.List;
 
 public class ResultView {
+    private static final String NEW_LINE_TEXT = System.getProperty("line.separator");
+
     private ResultView() {
     }
 
-    public static void printRoundStatus(final Cars snapshot) {
-        for (Car car : snapshot.getCars()) {
-            printCarStatus(car);
-            System.out.println();
-        }
-    }
-
     public static void printEntireStatus(final List<Cars> snapshots) {
-        System.out.println("실행 결과");
+        StringBuffer competitionStatus = new StringBuffer();
+        competitionStatus.append("실행 결과");
+        competitionStatus.append(NEW_LINE_TEXT);
 
         for (Cars cars : snapshots) {
-            printRoundStatus(cars);
-            System.out.println();
+            competitionStatus.append(getRoundStatus(cars));
+            competitionStatus.append(NEW_LINE_TEXT);
         }
+
+        System.out.println(competitionStatus.toString());
     }
 
-    private static void printCarStatus(Car car) {
-        for (int i = 0, len = car.getDistance(); i < len; i++) {
-            System.out.print("-");
+    private static String getRoundStatus(final Cars snapshot) {
+        StringBuffer roundStatus = new StringBuffer();
+        for (Car car : snapshot.getCars()) {
+            roundStatus.append(car.getName() + " : ");
+            roundStatus.append(getCarStatus(car));
+            roundStatus.append(NEW_LINE_TEXT);
         }
+
+        return roundStatus.toString();
+    }
+
+    private static String getCarStatus(Car car) {
+        StringBuffer carStatus = new StringBuffer();
+        for (int i = 0, len = car.getDistance(); i < len; i++) {
+            carStatus.append("-");
+        }
+
+        return carStatus.toString();
+    }
+
+    public static void printWinneringCars(final List<Car> winningCars) {
+        StringBuffer winningCarsName = new StringBuffer();
+        for (Car winningCar : winningCars) {
+            winningCarsName.append(winningCar.getName() + ", ");
+        }
+        winningCarsName.deleteCharAt(winningCarsName.lastIndexOf(", "));
+
+        System.out.println(winningCarsName.toString() + "가 최종 우승했습니다.");
     }
 }

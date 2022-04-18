@@ -1,16 +1,26 @@
 package racing.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
     private final List<Car> cars;
 
-    Cars(int unit) {
-        this.cars = initCars(unit);
+    Cars(String[] carNames) {
+        this.cars = initCars(carNames);
     }
 
-    private Cars(List<Car> cars) {
+    private List<Car> initCars(String[] carNames) {
+        int numberOfCars = carNames.length;
+        List<Car> cars = new ArrayList<>(numberOfCars);
+        for (int i = 0; i < numberOfCars; i++) {
+            cars.add(i, new Car(carNames[i]));
+        }
+        return cars;
+    }
+
+    Cars(List<Car> cars) {
         this.cars = cars;
     }
 
@@ -26,11 +36,29 @@ public class Cars {
         return new Cars(carList);
     }
 
-    private List<Car> initCars(int unit) {
-        List<Car> cars = new ArrayList<>(unit);
-        for (int i = 0; i < unit; i++) {
-            cars.add(i, new Car());
+    List<Car> getCarsWithMaxDistance(final Cars snapshot) {
+        List<Car> winningCars = new ArrayList<>();
+        int maxDistance = getMaxDistance(snapshot);
+
+        for (Car car : snapshot.getCars()) {
+            addCarLocatedAtMaxDistance(winningCars, car, maxDistance);
         }
-        return cars;
+
+        return winningCars;
+    }
+
+    private void addCarLocatedAtMaxDistance(List<Car> winningCars, Car car, int maxDistance) {
+        if (car.getDistance() == maxDistance) {
+            winningCars.add(car);
+        }
+    }
+
+    private int getMaxDistance(final Cars snapshot) {
+        int maxDistance = -1;
+        for (Car car : snapshot.getCars()) {
+            maxDistance = car.getGreaterDistance(maxDistance);
+        }
+
+        return maxDistance;
     }
 }
