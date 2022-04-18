@@ -9,8 +9,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CompetitionTest {
-    private Competition competition;
+class CarsTest {
     private Cars cars;
 
     @BeforeEach
@@ -22,7 +21,6 @@ class CompetitionTest {
         carList.add(new Car("sonny", 5));
 
         cars = new Cars(carList);
-        competition = new Competition(cars);
     }
 
     @Test
@@ -31,6 +29,6 @@ class CompetitionTest {
                 new Car("tobi", 5)
                 , new Car("sonny", 5)
         );
-        assertThat(competition.getCarsWithMaxDistance(cars)).isEqualTo(winningCars);
+        assertThat(cars.getCarsWithMaxDistance(cars)).isEqualTo(winningCars);
     }
 }
