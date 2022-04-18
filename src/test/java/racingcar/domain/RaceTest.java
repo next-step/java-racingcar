@@ -17,6 +17,13 @@ public class RaceTest {
         carNames.add("차3");
     }
 
+    class FalseCondition implements Condition {
+        @Override
+        public boolean getCondition() {
+            return false;
+        }
+    }
+
     class TrueCondition implements Condition {
         @Override
         public boolean getCondition() {
@@ -51,5 +58,20 @@ public class RaceTest {
         race.startRace();
 
         assertThat(race.getWinners().size()).isEqualTo(carNames.size());
+    }
+
+    @Test
+    void 특정_우승자_테스트() {
+        List<Condition> conditions = new ArrayList<>();
+        conditions.add(new TrueCondition());
+        conditions.add(new FalseCondition());
+        conditions.add(new FalseCondition());
+
+        Race race = new Race(carNames, 5, conditions);
+        race.startRace();
+
+        List<String> expectedWinners = new ArrayList<>();
+        expectedWinners.add(carNames.get(0));
+        assertThat(race.getWinners()).isEqualTo(expectedWinners);
     }
 }

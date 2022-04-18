@@ -9,14 +9,23 @@ public class Race {
     private List<String> carNames;
     private int raceCount;
     private List<RacingCar> racingCars;
-    private Condition condition;
+    private Condition defaultCondition;
+    private List<Condition> conditions;
 
     public Race(List<String> carNames, int raceCount, Condition condition) {
         this.carNames = carNames;
         this.raceCount = raceCount;
-        this.condition = condition;
+        this.defaultCondition = condition;
 
-        makeRacingCars(carNames);
+        makeRacingCarsByDefaultCondition();
+    }
+
+    public Race(List<String> carNames, int raceCount, List<Condition> conditions) {
+        this.carNames = carNames;
+        this.raceCount = raceCount;
+        this.conditions = conditions;
+
+        makeRacingCarsByVariousCondition();
     }
 
     public void startRace() {
@@ -37,11 +46,19 @@ public class Race {
         );
     }
 
-    private void makeRacingCars(List<String> carNames) {
+    private void makeRacingCarsByDefaultCondition() {
         racingCars = new ArrayList<>();
 
         for (String carName : carNames) {
-            racingCars.add(new RacingCar(carName, condition));
+            racingCars.add(new RacingCar(carName, defaultCondition));
+        }
+    }
+
+    private void makeRacingCarsByVariousCondition() {
+        racingCars = new ArrayList<>();
+
+        for (int i = 0; i < carNames.size(); i++) {
+            racingCars.add(new RacingCar(carNames.get(i), conditions.get(i)));
         }
     }
 
