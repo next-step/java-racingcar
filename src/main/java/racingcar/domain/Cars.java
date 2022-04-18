@@ -30,6 +30,10 @@ public class Cars {
 		return cars.size();
 	}
 
+	public boolean isSameSize(int size) {
+		return cars.size() == size;
+	}
+
 	public Result result() {
 		return new Result(cars.stream()
 			.map(Car::toString)

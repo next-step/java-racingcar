@@ -21,4 +21,8 @@ public class MoveCount {
 	public String toString() {
 		return MOVE_DEFAULT_STRING.repeat(move);
 	}
+
+	public boolean isSame(int position) {
+		return move == position;
+	}
 }

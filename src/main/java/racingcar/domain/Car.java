@@ -6,26 +6,26 @@ import util.Range;
 public class Car {
 	public static final int RANDOM_MIN = 0;
 	public static final int RANDOM_MAX = 9;
+	public static final int ENGINE_START_MIN = 4;
 	private final MoveCount moveCount;
 
 	public Car() {
 		this.moveCount = new MoveCount();
 	}
 
-	public MoveCount run(int randomNumber) {
-		if (isMoveCar(randomNumber)) {
+	public void run(int enginePower) {
+		if (isMoveCar(enginePower)) {
 			moveCount.add();
 		}
-		return moveCount;
 	}
 
-	public boolean isMoveCar(int randomNumber) {
-		validateRandomNumber(randomNumber);
-		return randomNumber >= 4;
+	public boolean isMoveCar(int enginePower) {
+		validateRandomNumber(enginePower);
+		return enginePower >= ENGINE_START_MIN;
 	}
 
-	private void validateRandomNumber(int randomNumber) {
-		if (Range.of(RANDOM_MIN, RANDOM_MAX).contain(randomNumber)) {
+	private void validateRandomNumber(int enginePower) {
+		if (Range.of(RANDOM_MIN, RANDOM_MAX).contain(enginePower)) {
 			return;
 		}
 		throw new OutOfRangeException("랜덤숫자가 범위를 초과하였습니다.");
@@ -34,5 +34,9 @@ public class Car {
 	@Override
 	public String toString() {
 		return moveCount.toString();
+	}
+
+	public boolean isSamePosition(int position) {
+		return moveCount.isSame(position);
 	}
 }

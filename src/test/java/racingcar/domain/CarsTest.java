@@ -17,9 +17,9 @@ class CarsTest {
 		Cars cars = Cars.of(size);
 
 		// when
-		int carsSize = cars.size();
+		boolean isSameSize = cars.isSameSize(size);
 
 		// then
-		assertThat(carsSize).isEqualTo(size);
+		assertThat(isSameSize).isTrue();
 	}
 }
