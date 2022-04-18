@@ -19,6 +19,10 @@ public class GameResultDto {
         this.winners = initWinners(gameResult.getWinnerNames());
     }
 
+    public static GameResultDto of(GameResult gameResult) {
+        return new GameResultDto(gameResult);
+    }
+
     private List<EachTryResultDto> initEachTryResultDtos(List<EachTryResult> eachTryResults) {
         return eachTryResults.stream()
                 .map(EachTryResultDto::new)
@@ -27,10 +31,6 @@ public class GameResultDto {
 
     private String initWinners(List<String> winnerNames) {
         return String.join(", ", winnerNames);
-    }
-
-    public static GameResultDto of(GameResult gameResult) {
-        return new GameResultDto(gameResult);
     }
 
     @Override
