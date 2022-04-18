@@ -18,7 +18,7 @@ public class CarTest {
     }
 
     @DisplayName("랜덤 결과가 4이상인 경우 한 칸 전진한다.")
-    @ValueSource(ints = { 4, 5, 6, 7, 8, 9 })
+    @ValueSource(ints = { 4, 9 })
     @ParameterizedTest
     void 전진(int randomResult) {
         //given
@@ -32,7 +32,7 @@ public class CarTest {
     }
 
     @DisplayName("랜덤 결과가 4미만이면 멈춰 있는다.")
-    @ValueSource(ints = { 0, 1, 2, 3 })
+    @ValueSource(ints = { 0, 3 })
     @ParameterizedTest
     void 정지(int randomResult) {
         //given
