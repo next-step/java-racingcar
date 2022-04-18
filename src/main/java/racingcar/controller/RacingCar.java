@@ -1,5 +1,8 @@
-package racingcar.domain;
+package racingcar.controller;
 
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.NumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
