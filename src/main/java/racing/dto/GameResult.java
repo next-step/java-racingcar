@@ -1,6 +1,6 @@
 package racing.dto;
 
-import racing.utils.Counter;
+import racing.domain.Position;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -27,7 +27,7 @@ public class GameResult {
         return lastRound.carStatus
                 .entrySet()
                 .stream()
-                .filter(stringCounterEntry -> stringCounterEntry.getValue().getCount() == max)
+                .filter(stringCounterEntry -> stringCounterEntry.getValue().getCurrentPosition() == max)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
@@ -36,18 +36,18 @@ public class GameResult {
         return lastRound.carStatus
                 .values()
                 .stream()
-                .mapToInt(Counter::getCount)
+                .mapToInt(Position::getCurrentPosition)
                 .max().orElse(0);
     }
 
     public static class GameRoundResult {
-        private final Map<String, Counter> carStatus = new HashMap<>();
+        private final Map<String, Position> carStatus = new HashMap<>();
 
-        public Map<String, Counter> getCarStatus() {
+        public Map<String, Position> getCarStatus() {
             return carStatus;
         }
 
-        public void addResult(String name, Counter status) {
+        public void addResult(String name, Position status) {
             Objects.requireNonNull(name);
             Objects.requireNonNull(status);
             carStatus.put(name, status);

@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.Car;
-import racing.utils.Counter;
+import racing.domain.Position;
 
 import java.util.stream.Stream;
 
@@ -33,24 +33,24 @@ class CarTest {
 
     @DisplayName("자동차의 이동횟수 초기값은 0")
     @Test
-    void getCounter() {
+    void getPosition() {
         Car carA = new Car("carA");
-        assertThat(carA.getCounter()).isEqualTo(new Counter(0));
+        assertThat(carA.getPosition()).isEqualTo(new Position(0));
     }
 
     @DisplayName("전략에 따라 자동차 전진 또는 멈춤")
     @ParameterizedTest
     @MethodSource("provideSource")
-    void carMoveForward(Boolean isMovable, Counter expected) {
+    void carMoveForward(Boolean isMovable, Position expected) {
         Car carA = new Car("carA");
         carA.run(() -> isMovable);
-        assertThat(carA.getCounter()).isEqualTo(expected);
+        assertThat(carA.getPosition()).isEqualTo(expected);
     }
 
     private static Stream<Arguments> provideSource() {
         return Stream.of(
-                Arguments.of(true, new Counter(1)),
-                Arguments.of(false, new Counter(0))
+                Arguments.of(true, new Position(1)),
+                Arguments.of(false, new Position(0))
         );
     }
 }

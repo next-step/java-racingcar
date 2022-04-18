@@ -20,7 +20,7 @@ public class Cars {
         GameRoundResult round = new GameRoundResult();
         cars.forEach(car -> {
             car.run(moveStrategy);
-            round.addResult(car.getName(), car.getCounter());
+            round.addResult(car.getName(), car.getPosition());
         });
 
         return round;

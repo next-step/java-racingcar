@@ -1,8 +1,8 @@
 package racing.ui;
 
+import racing.domain.Position;
 import racing.dto.GameResult;
 import racing.dto.GameResult.GameRoundResult;
-import racing.utils.Counter;
 
 import java.util.List;
 import java.util.Objects;
@@ -38,11 +38,11 @@ public class ResultView {
         System.out.println();
     }
 
-    private void printMark(String name, Counter status) {
+    private void printMark(String name, Position status) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(name);
         stringBuilder.append(" : ");
-        IntStream.range(0, status.getCount())
+        IntStream.range(0, status.getCurrentPosition())
                 .mapToObj(i -> DISPLAY_MARK)
                 .forEach(stringBuilder::append);
         System.out.println(stringBuilder);
