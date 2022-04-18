@@ -7,11 +7,11 @@ public class Names {
 
     private static final String DELIMITER = ",";
 
-    private List<Name> eachNames;
+    private List<Name> values;
 
     public Names(String input) {
         String[] splits = input.split(DELIMITER);
-        this.eachNames = initNames(splits);
+        this.values = initNames(splits);
     }
 
     private List<Name> initNames(String[] splits) {
@@ -22,7 +22,7 @@ public class Names {
         return names;
     }
 
-    public List<Name> getEachNames() {
-        return eachNames;
+    public List<Name> getValues() {
+        return values;
     }
 }

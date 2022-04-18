@@ -1,5 +1,6 @@
 package step3.model;
 
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -21,6 +22,6 @@ class NamesTest {
 
         Names names = new Names(input);
 
-        assertThat(names.getEachNames()).usingRecursiveComparison().isEqualTo(expect);
+        assertThat(names.getValues()).usingRecursiveComparison().isEqualTo(expect);
     }
 }

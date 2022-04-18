@@ -6,18 +6,18 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-    private final List<Car> cars;
+    private final List<Car> values;
 
     public Cars(Names names, TryStrategy tryStrategy) {
-        this.cars = new ArrayList<>();
-        for (Name name : names.getEachNames()) {
+        this.values = new ArrayList<>();
+        for (Name name : names.getValues()) {
             Car car = new Car(name, tryStrategy);
-            cars.add(car);
+            values.add(car);
         }
     }
 
     public void tryOnceEach() {
-        cars.forEach(Car::tryOnce);
+        values.forEach(Car::tryOnce);
     }
 
     public EachTryResult getEachTryResult() {
@@ -26,7 +26,7 @@ public class Cars {
     }
 
     private List<Integer> getMoveCountEach() {
-        return cars.stream()
+        return values.stream()
                 .map(Car::getMoveCount)
                 .collect(Collectors.toList());
     }
