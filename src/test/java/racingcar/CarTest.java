@@ -17,10 +17,15 @@ public class CarTest {
     @Test
     @DisplayName("Car 생성시 CarName 에 null 이 들어오면 오류가 발생한다.")
     void carNameNullTest() {
+        assertThatThrownBy(() -> new Car(null))
+                .isInstanceOf(NullPointerException.class)
+                .hasMessageContaining("name is null");
+
         assertThatThrownBy(() -> new Car(null, Distance.MOVE_STATE))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessageContaining("name is null");
     }
+
     @Test
     @DisplayName("Car 생성시 state 에 null 이 들어오면 오류가 발생한다.")
     void carStateNullTest() {
