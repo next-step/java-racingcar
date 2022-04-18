@@ -4,8 +4,8 @@ import java.text.MessageFormat;
 
 public class Car {
     private static final int MIN_RESULT = 0;
-    private final static int MAX_RESULT = 9;
-    private final static int RUN_CRITERIA_MIN_RESULT = 4;
+    private static final int MAX_RESULT = 9;
+    private static final int RUN_CRITERIA_MIN_RESULT = 4;
 
     private final int id;
     private int location;
