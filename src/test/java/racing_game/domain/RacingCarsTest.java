@@ -1,5 +1,6 @@
 package racing_game.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing_game.model.RoundResult;
@@ -10,25 +11,31 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingCarsTest {
 
-    final int totalRacingCarCount = 3;
+    String[] names;
+
+    @BeforeEach
+    void beforeEach() {
+        this.names = new String[]{"pobi"};
+    }
 
     @Test
     @DisplayName("게임에 참여하는 레이싱 카의 집합 객체 생성")
     void createRacingCars() {
-        assertThat(new RacingCars(totalRacingCarCount)).isInstanceOf(RacingCars.class);
+        assertThat(new RacingCars(this.names)).isInstanceOf(RacingCars.class);
     }
 
     @Test
     @DisplayName("회차 별 전진 혹은 정지")
     void stopOrForwardAtEachRound() {
-        RacingCars racingCars = new RacingCars(totalRacingCarCount);
+        RacingCars racingCars = new RacingCars(this.names);
         RoundResult roundResult = racingCars.roundFight();
         assertThat(roundResult.getRoundResult().values()).containsAnyOf(Behavior.FORWARD.symbol, Behavior.STOP.symbol);
     }
 
     @Test
-    @DisplayName("참여 레이싱 카 0대에 대한 예외 처리")
+    @DisplayName("레이싱 카 이름 길이 체크")
     void racingCarsThrowZeroArgs() {
-        assertThatThrownBy(() -> new RacingCars(0)).isExactlyInstanceOf(IllegalArgumentException.class);
+        String[] names = {"pobipobi"};
+        assertThatThrownBy(() -> new RacingCars(names)).isExactlyInstanceOf(IllegalArgumentException.class);
     }
 }

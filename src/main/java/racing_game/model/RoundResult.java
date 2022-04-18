@@ -1,6 +1,7 @@
 package racing_game.model;
 
-import racing_game.util.Behavior;
+import racing_game.domain.RacingCar;
+import racing_game.util.Roulette;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -17,8 +18,8 @@ public class RoundResult {
         return this.roundResult;
     }
 
-    public void record(String racingCarId, Behavior behavior) {
-        this.roundResult.put(racingCarId, behavior.symbol);
+    public void record(RacingCar racingCar) {
+        this.roundResult.put(racingCar.getName(), racingCar.stopOrForward(Roulette.spin()).symbol);
     }
 
     public void record(RoundResult roundResult) {

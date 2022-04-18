@@ -3,10 +3,9 @@ package racing_game.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing_game.util.Behavior;
+import racing_game.domain.RacingCar;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -15,12 +14,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class GameResultTest {
 
+    String name;
+    RacingCar racingCar;
     RoundResult roundResult;
 
     @BeforeEach
     void beforeEach() {
+        this.name = "pobi";
+        this.racingCar = new RacingCar(this.name);
         this.roundResult = new RoundResult();
-        roundResult.record(UUID.randomUUID().toString(), Behavior.FORWARD);
+        this.roundResult.record(racingCar);
     }
 
     @Test
@@ -52,13 +55,12 @@ class GameResultTest {
     @Test
     @DisplayName("서로 다른 GameResult 객체를 합쳤을 때")
     void record_3() {
-        String id = UUID.randomUUID().toString();
         int size = 5;
         int testIndex = 3;
 
         List<RoundResult> roundResults = Stream.generate(() -> {
                     RoundResult roundResult = new RoundResult();
-                    roundResult.record(id, Behavior.FORWARD);
+                    roundResult.record(this.racingCar);
 
                     return roundResult;
                 })

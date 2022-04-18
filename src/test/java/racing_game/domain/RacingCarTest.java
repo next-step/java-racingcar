@@ -8,20 +8,35 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racing_game.util.Behavior;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingCarTest {
 
+    String name;
     RacingCar racingCar;
 
     @BeforeEach
     void beforeEach() {
-        racingCar = new RacingCar();
+        this.name = "pobi";
+        this.racingCar = new RacingCar(name);
     }
 
     @Test
     @DisplayName("레이싱 카 객체 생성")
     void createRacingCar() {
-        assertThat(new RacingCar()).isInstanceOf(RacingCar.class);
+        assertThat(new RacingCar(name)).isInstanceOf(RacingCar.class);
+    }
+
+    @Test
+    @DisplayName("생성된 레이킹 카의 이름 조회")
+    void getName() {
+        assertThat(this.racingCar.getName()).isEqualTo(this.name);
+    }
+
+    @Test
+    @DisplayName("레이싱 카 이름 길이 체크")
+    void checkName() {
+        assertThatThrownBy(() -> new RacingCar(this.name + this.name)).isExactlyInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest(name = "정지 - {0}")

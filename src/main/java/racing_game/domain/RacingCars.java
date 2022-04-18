@@ -1,38 +1,30 @@
 package racing_game.domain;
 
 import racing_game.model.RoundResult;
-import racing_game.util.Behavior;
-import racing_game.util.Roulette;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class RacingCars {
 
     private final List<RacingCar> racingCars;
 
-    public RacingCars(int totalRacingCarCount) {
-        this.hasRacingCar(totalRacingCarCount);
-        this.racingCars = Stream.generate(RacingCar::new)
-                .limit(totalRacingCarCount)
+    public RacingCars(String[] names) {
+        this.checkParticipantsCount(names.length);
+        this.racingCars = Arrays.stream(names)
+                .map(RacingCar::new)
                 .collect(Collectors.toList());
     }
 
     public RoundResult roundFight() {
         return this.racingCars
                 .stream()
-                .collect(RoundResult::new,
-                        (roundResult, racingCar) -> {
-                            String racingCarId = racingCar.getId();
-                            Behavior behavior = racingCar.stopOrForward(Roulette.spin());
-                            roundResult.record(racingCarId, behavior);
-                        },
-                        RoundResult::record);
+                .collect(RoundResult::new, RoundResult::record, RoundResult::record);
 
     }
 
-    private void hasRacingCar(int totalRacingCarCount) {
+    private void checkParticipantsCount(int totalRacingCarCount) {
         if (totalRacingCarCount < 1) {
             throw new IllegalArgumentException("참여하는 레이킹 카의 수는 1대 이상이어야 합니다.");
         }

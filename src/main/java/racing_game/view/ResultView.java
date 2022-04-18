@@ -18,9 +18,9 @@ public class ResultView {
     public static void printResult(GameResult gameResult) {
         printMessage(EXECUTE_RESULT_MESSAGE);
         gameResult.getGameResult().forEach(result -> {
-            AtomicReference<String> a = new AtomicReference<>("");
-            result.forEach(r -> a.getAndAccumulate(r, (before, after) -> before += ("\n" + after)));
-            printMessage(a.get());
+            AtomicReference<String> thisRoundResult = new AtomicReference<>("");
+            result.forEach(r -> thisRoundResult.getAndAccumulate(r, (before, after) -> before += ("\n" + after)));
+            printMessage(thisRoundResult.get());
         });
     }
 }
