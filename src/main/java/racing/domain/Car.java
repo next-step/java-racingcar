@@ -22,6 +22,10 @@ public class Car {
         return new Car(name, distance);
     }
 
+    boolean isLocatedAt(int maxDistance) {
+        return this.distance == maxDistance;
+    }
+
     int getGreaterDistance(int distance) {
         return Math.max(this.distance, distance);
     }

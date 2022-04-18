@@ -48,7 +48,7 @@ public class Cars {
     }
 
     private void addCarLocatedAtMaxDistance(List<Car> winningCars, Car car, int maxDistance) {
-        if (car.getDistance() == maxDistance) {
+        if (car.isLocatedAt(maxDistance)) {
             winningCars.add(car);
         }
     }
