@@ -1,7 +1,5 @@
 package racing.domain;
 
-import racing.util.ForwardUtil;
-
 public class Car {
 
     private int distance;
@@ -10,15 +8,16 @@ public class Car {
         return distance;
     }
 
-    public void move(int value)
-    {
-        this.distance += getDistance(value);
+    public void move(int value) {
+        if(isAvailableForward(value)) {
+            this.distance++;
+        }
     }
 
-    private int getDistance(int value) {
-        if(ForwardUtil.isAvailableForward(value)) {
-            return 1;
+    private boolean isAvailableForward(int value) {
+        if(value >= 4) {
+            return true;
         }
-        return 0;
+        return false;
     }
 }
