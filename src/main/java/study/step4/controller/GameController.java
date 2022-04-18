@@ -14,6 +14,13 @@ public class GameController {
     private final InputView inputView;
     private final ResultView resultView;
 
+    public void start() {
+        RacingGame racingGame = raceGameSetting();
+
+        gameplay(racingGame);
+        winners(racingGame);
+    }
+
     public GameController() {
         this(new InputView(), new ResultView());
     }
@@ -21,13 +28,6 @@ public class GameController {
     public GameController(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
         this.resultView = resultView;
-    }
-
-    public void start() {
-        RacingGame racingGame = raceGameSetting();
-
-        gameplay(racingGame);
-        winners(racingGame);
     }
 
     private void winners(RacingGame racingGame) {
