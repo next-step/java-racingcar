@@ -13,6 +13,15 @@ public final class Winner {
     this.position = position;
   }
 
+  public Winner(String name) {
+    this.name = name;
+    this.position = position();
+  }
+
+  private Position position() {
+    return this.position;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {

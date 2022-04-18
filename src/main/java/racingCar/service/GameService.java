@@ -62,6 +62,13 @@ public class GameService {
     return winner;
   }
 
+  public String coWinner(Winner winner, List<Car> otherGameParticipants) {
+    for (Car otherGameParticipant : otherGameParticipants) {
+      winner = getCoWinner(winner, WinnerUtils.getChallenger(otherGameParticipant));
+    }
+    return winner.toString();
+  }
+
   private Winner findWinner(Winner winner, Car challenger) {
     if (winner.match(challenger)) {
       winner = WinnerUtils.getChallenger(challenger);
@@ -69,24 +76,11 @@ public class GameService {
     return winner;
   }
 
-  public String coWinner(Winner winner, List<Car> otherGameParticipants) {
-    String coWinner = winner.toString();
-    for (Car otherGameParticipant : otherGameParticipants) {
-      coWinner = getCoWinner(winner, WinnerUtils.getChallenger(otherGameParticipant),
-          winner.toString());
+  private Winner getCoWinner(Winner winner, Winner challenger) {
+    if (!winner.equals(challenger) && winner.equalPosition(challenger)) {
+      return new Winner(winner.toString().concat(", ").concat(challenger.toString()));
     }
-    return coWinner;
+    return winner;
   }
-
-  private String getCoWinner(Winner winner, Winner challenger, String coWinner) {
-    if (winner.toString().equals(challenger.toString())) {
-      return winner.toString();
-    }
-    if (winner.equalPosition(challenger)) {
-      return coWinner.concat(", ").concat(challenger.toString());
-    }
-    return coWinner;
-  }
-
 
 }
