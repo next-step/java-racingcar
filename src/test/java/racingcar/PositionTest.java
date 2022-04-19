@@ -8,15 +8,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 class PositionTest {
 
     @Test
-    @DisplayName("move를 3번 호출한 Position과 new Position(3)은 같다. ")
+    @DisplayName("Position 이동 시 위치가 1 증가한다.")
     void 포지션_테스트 () {
         Position position = new Position();
-
-        int moveCount = 3;
-        for (int i = 0; i < moveCount; i++) {
-            position = position.move();
-        }
-
-        assertThat(position).isEqualTo(new Position(3));
+        assertThat(position.move()).isEqualTo(new Position(1));
     }
 }
