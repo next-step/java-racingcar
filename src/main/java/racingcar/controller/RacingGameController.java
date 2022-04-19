@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.Cars;
-import racingcar.model.MovingStrategy;
+import racingcar.strategy.MovingStrategy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,7 +14,7 @@ public class RacingGameController {
     }
 
     public void start() {
-        String[] carNames = InputView.inputCarNames();
+        String carNames = InputView.inputCarNames();
         int numberOfGames = InputView.inputNumberOfAttempts();
 
         Cars cars = new Cars();

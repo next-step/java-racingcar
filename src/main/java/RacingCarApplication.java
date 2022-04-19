@@ -1,5 +1,5 @@
 import racingcar.controller.RacingGameController;
-import racingcar.model.RandomMovingStrategy;
+import racingcar.strategy.RandomMovingStrategy;
 
 public class RacingCarApplication {
     public static void main(String[] args) {

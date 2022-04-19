@@ -1,22 +1,37 @@
 package racingcar.model;
 
+import racingcar.strategy.MovingStrategy;
+
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
+    private static final String BASIC_SPLIT_REGEX = ",";
+    private static final String MINIMUM_NUMBER_OF_CAR_NAMES_INPUT_ERR_MSG = "자동차는 1대 이상 입력되어야 합니다.";
+
     private List<Car> cars = new ArrayList<>();
 
-    public void create(MovingStrategy movingStrategy, String[] names) {
-        for (String name : names) {
-            cars.add(createCar(new Position(), movingStrategy, name));
+    public void create(MovingStrategy movingStrategy, String names) {
+        String[] separateNames = separateInputCars(names);
+        for (String separateName : separateNames) {
+            cars.add(Car.create(new Position(), movingStrategy, separateName));
         }
     }
 
-    public Car createCar(Position position, MovingStrategy movingStrategy, String name) {
-        return new Car(position, movingStrategy, name);
+    public static String[] separateInputCars(String value) {
+        checkTheNumberOfInputCars(value);
+        return value.split(BASIC_SPLIT_REGEX);
+    }
+
+    public static void checkTheNumberOfInputCars(String value) {
+        if (checkNullAndEmpty(value)) {
+            throw new IllegalStateException(MINIMUM_NUMBER_OF_CAR_NAMES_INPUT_ERR_MSG);
+        }
+    }
+
+    private static boolean checkNullAndEmpty(String value) {
+        return (value == null || value.isEmpty());
     }
 
     public List<Car> getCars() {
@@ -29,19 +44,18 @@ public class Cars {
         }
     }
 
-    public List<String> getWinnerNames() {
+    public List<CarName> getWinnerNames() {
         int maxPosition = getMaxPosition();
         return cars.stream()
-                .filter(car -> car.currentPosition() == maxPosition)
-                .map(Car::getName)
+                .filter(car -> car.compareWithMaxPosition(maxPosition))
+                .map(Car::getCarName)
                 .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
-        Comparator<Car> comparatorByPosition = Comparator.comparingInt(Car::currentPosition);
         return cars.stream()
-                .max(comparatorByPosition)
-                .orElseThrow(NoSuchElementException::new)
-                .currentPosition();
+                .max(Car::compareTo)
+                .orElseThrow()
+                .getCurrentPosition();
     }
 }
