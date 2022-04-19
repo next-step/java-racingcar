@@ -45,7 +45,7 @@ public class CarTest {
     void carNameTest() {
         Car car = new Car(TEST_CAR_NAME);
 
-        assertThat(car.name().value()).isEqualTo(TEST_CAR_NAME.value());
+        assertThat(car.name()).isEqualTo(TEST_CAR_NAME);
     }
 
     @Test
