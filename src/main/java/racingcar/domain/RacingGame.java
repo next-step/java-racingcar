@@ -37,5 +37,4 @@ public class RacingGame {
         }
         return winners;
     }
-
 }

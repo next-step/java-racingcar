@@ -20,4 +20,5 @@ public class RandomStrategy implements RacingStrategy{
         }
         return true;
     }
+  
 }
