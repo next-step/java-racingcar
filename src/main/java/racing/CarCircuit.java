@@ -11,7 +11,6 @@ public class CarCircuit {
         Circuit circuit = new Circuit(carCount, racingCount);
         circuit.startRacing();
 
-        ResultView outView = new ResultView();
-        outView.view(circuit);
+        ResultView.view(circuit);
     }
 }
