@@ -2,6 +2,7 @@ package racingcar.racing;
 
 
 import racingcar.play.RacingMovePolicy;
+import racingcar.racing.dto.RacingGameParam;
 import racingcar.racing.model.Car;
 import racingcar.racing.model.RacingRecord;
 import racingcar.racing.repository.RacingGameRepository;
@@ -23,9 +24,9 @@ public class RacingGame {
         this.racingPolicy = racingGamePolicy;
     }
 
-    public void startRacingGame(int carNumber, int tryNumber) {
-        for (int i = 0; i < carNumber; i++) {
-            playGame(new Car(i, X_COORDINATE_INIT_VALUE), tryNumber);
+    public void startRacingGame(RacingGameParam racingGameParam) {
+        for (int i = 0; i < racingGameParam.getCarNumber(); i++) {
+            playGame(new Car(i, X_COORDINATE_INIT_VALUE), racingGameParam.getTryNumber());
         }
     }
 

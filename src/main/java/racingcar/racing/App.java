@@ -11,8 +11,7 @@ public class App {
         RacingGameParam racingGameParam = InputView.enterParam();
 
         RacingGame racingGame = new RacingGame(new ZeroToNineRandomPolicy());
-
-        racingGame.startRacingGame(racingGameParam.getCarNumber(), racingGameParam.getTryNumber());
+        racingGame.startRacingGame(racingGameParam);
 
         for(int i = 0 ; i < racingGameParam.getTryNumber(); i++) {
             ResultView.show(racingGame.getResult(i));
