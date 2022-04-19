@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.strategy;
 
 public class FixedFalseMovingStrategy implements MovingStrategy {
 

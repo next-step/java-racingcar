@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.strategy;
 
 public interface MovingStrategy {
     boolean decideWhetherToMove();
