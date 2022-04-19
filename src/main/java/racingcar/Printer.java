@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class Printer {
     public static void println(String printable) {
         System.out.println(printable);
@@ -23,7 +25,15 @@ public class Printer {
         System.out.println();
     }
 
-    public static void award(String winners) {
-        System.out.println("이번 대회 승자는 " + winners + "입니다.");
+    public static void award(List<String> winners) {
+        println("이번 대회 승자 : " + decorateWinners(winners));
+    }
+
+    private static String decorateWinners(List<String> winners) {
+        StringBuilder decoratedWinners = new StringBuilder();
+        for (String winner : winners) {
+            decoratedWinners.append(winner.trim()).append(" ");
+        }
+        return decoratedWinners.toString();
     }
 }

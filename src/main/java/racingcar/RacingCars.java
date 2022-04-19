@@ -27,13 +27,14 @@ public class RacingCars {
         }
     }
 
-    public String award() {
+    public List<String> award() {
         RacingCar highScoreCar = getHighestScoreCar();
-        StringBuilder winners = new StringBuilder();
+        List<String> winners = new ArrayList<>();
+
         for (RacingCar car : cars) {
-            winners.append(car.compareWithHighestScoreCar(highScoreCar)).append(" ");
+            winners.add(car.compareWithHighestScoreCar(highScoreCar));
         }
-        return winners.toString();
+        return winners;
     }
 
     private RacingCar getHighestScoreCar() {

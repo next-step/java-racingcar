@@ -18,6 +18,6 @@ public class RacingCarsTest {
         for (int attempt=0; attempt < 3; attempt++) {
             racingCars.turnAroundCircuit();
         }
-        assertThat(racingCars.award().length()).isGreaterThan(4);
+        assertThat(racingCars.award().size()).isGreaterThan(1);
     }
 }
