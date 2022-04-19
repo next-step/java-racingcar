@@ -1,6 +1,9 @@
-package racingcar;
+package racingcar.controller;
 
+import racingcar.dto.InputCars;
 import racingcar.dto.RoundResult;
+import racingcar.model.Cars;
+import racingcar.model.MovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,24 +13,21 @@ public final class RacingCar {
     private final Cars cars;
     private final int roundCount;
 
-    public RacingCar(int carCount, int roundCount) {
-        validate(carCount, roundCount);
+    public RacingCar(InputCars inputCars, int roundCount) {
+        validate(roundCount);
 
         this.roundCount = roundCount;
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
-        this.cars = new Cars(cars);
+        this.cars = inputCars.value();
     }
 
-    private void validate(int carCount, int roundCount) {
-        if (carCount <= 0) {
-            throw new IllegalArgumentException("자동차는 1대 이상이어야 합니다. 입력 값 : " + carCount);
-        }
-        if (roundCount < 0) {
+    private void validate(int roundCount) {
+        if (isNegative(roundCount)) {
             throw new IllegalArgumentException("주어진 횟수는 0 이상이어야 합니다. 입력 값 : " + roundCount);
         }
+    }
+
+    private boolean isNegative(int value) {
+        return value < 0;
     }
 
     public List<RoundResult> play(MovingStrategy movingStrategy) {
@@ -36,17 +36,17 @@ public final class RacingCar {
             playAndAdd(results, movingStrategy);
         }
         return results.stream()
-                .map(result -> RoundResult.of(result.states()))
+                .map(result -> RoundResult.of(result.names(), result.states()))
                 .collect(Collectors.toList());
     }
 
     private void playAndAdd(List<Cars> results, MovingStrategy movingStrategy) {
-        if(results.isEmpty()) {
+        if (results.isEmpty()) {
             results.add(cars.play(movingStrategy));
             return;
         }
 
-        Cars currentCars = results.get(results.size()-1);
+        Cars currentCars = results.get(results.size() - 1);
         results.add(currentCars.play(movingStrategy));
     }
 }
