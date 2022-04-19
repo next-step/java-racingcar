@@ -38,11 +38,11 @@ public class Cars {
         }
     }
 
-    List<Car> getCarsWithMaxDistance(final Cars snapshot) {
+    List<Car> getCarsWithMaxDistance() {
         List<Car> winningCars = new ArrayList<>();
-        int maxDistance = getMaxDistance(snapshot);
+        int maxDistance = getMaxDistance();
 
-        for (Car car : snapshot.getCars()) {
+        for (Car car : getCars()) {
             addCarLocatedAtMaxDistance(winningCars, car, maxDistance);
         }
 
@@ -55,9 +55,9 @@ public class Cars {
         }
     }
 
-    private int getMaxDistance(final Cars snapshot) {
+    private int getMaxDistance() {
         int maxDistance = -1;
-        for (Car car : snapshot.getCars()) {
+        for (Car car : getCars()) {
             maxDistance = car.getGreaterDistance(maxDistance);
         }
 

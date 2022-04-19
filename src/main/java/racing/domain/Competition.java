@@ -31,6 +31,6 @@ public class Competition {
     }
 
     public List<Car> getCarsWithMaxDistance() {
-        return cars.getCarsWithMaxDistance(records.getLastResult());
+        return cars.getCarsWithMaxDistance();
     }
 }

@@ -29,6 +29,6 @@ class CarsTest {
                 new Car("tobi", 5)
                 , new Car("sonny", 5)
         );
-        assertThat(cars.getCarsWithMaxDistance(cars)).isEqualTo(winningCars);
+        assertThat(cars.getCarsWithMaxDistance()).isEqualTo(winningCars);
     }
 }
