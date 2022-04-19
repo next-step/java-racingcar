@@ -20,6 +20,10 @@ public class Car {
     return name.getValue();
   }
 
+  public int getPosition() {
+    return position.getPosition();
+  }
+
   public void moveOrStop(MovingStrategy movingStrategy) {
     if (movingStrategy.movable()) {
       position = position.increment();
@@ -32,15 +36,6 @@ public class Car {
 
   public boolean hasSamePosition(Car other) {
     return position.equals(other.position);
-  }
-
-  @Override
-  public String toString() {
-    return String.format(
-        OUTPUT_FORMAT,
-        name.getValue(),
-        "-".repeat(position.getPosition())
-    );
   }
 
   @Override
