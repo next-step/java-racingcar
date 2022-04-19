@@ -43,7 +43,7 @@ public class Cars {
 
     private int maxPosition() {
         return cars.stream()
-                .max(Car::comparator)
+                .max(Car::compareTo)
                 .orElseThrow()
                 .getCarPosition()
                 .getPosition();
