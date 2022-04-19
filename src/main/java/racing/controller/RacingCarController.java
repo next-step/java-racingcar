@@ -26,6 +26,14 @@ public class RacingCarController {
             }
             resultView.printCarsPosition(cars);
         }
+
+        resultView.printWinners(getWinnerList(cars));
+
+    }
+
+    private List<Car> getWinnerList(List<Car> cars) {
+        RacingWinner racingWinner = new RacingWinner();
+        return racingWinner.getWinnerList(cars);
     }
 
     private List<Car> makeCars(List<String> carNames) {
