@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.exception.RaceBuilderException;
+import racingcar.exception.WinnerException;
 import racingcar.module.ResultView;
 
 public class Race {
@@ -33,9 +35,16 @@ public class Race {
 
     public List<String> getWinners() {
         int winnerPosition = racingCars.stream().mapToInt(RacingCar::getPosition).max()
-                .orElseThrow(RuntimeException::new);
-        return racingCars.stream().filter(it -> it.getPosition() == winnerPosition)
+                .orElseThrow(WinnerException::new);
+
+        List<String> winnerNames = racingCars.stream().filter(it -> it.getPosition() == winnerPosition)
                 .map(RacingCar::getName).collect(Collectors.toList());
+
+        if (winnerNames.isEmpty()) {
+            throw new WinnerException("우승자가 존재하지 않습니다.");
+        }
+
+        return winnerNames;
     }
 
     public static class RaceBuilder {
@@ -47,11 +56,19 @@ public class Race {
         private Condition condition = new RaceCondition(INT_RANGE, MOVE_CONDITION);
 
         public RaceBuilder setCarNames(List<String> carNames) {
+            if (carNames.isEmpty()) {
+                throw new RaceBuilderException("자동차 이름은 1개 이상 입력해야합니다.");
+            }
+
             this.carNames = carNames;
             return this;
         }
 
         public RaceBuilder setRaceCount(int raceCount) {
+            if (raceCount <= 0) {
+                throw new RaceBuilderException("경기 회수는 1 이상의 수를 입력해주세요");
+            }
+
             this.raceCount = raceCount;
             return this;
         }
