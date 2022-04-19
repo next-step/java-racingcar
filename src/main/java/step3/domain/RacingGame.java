@@ -1,11 +1,9 @@
 package step3.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-
     private Cars cars;
     private final ProceedPolicy proceedPolicy;
     private final RacingHistories histories = new RacingHistories();

@@ -37,7 +37,7 @@ public class Cars {
 
         return cars.stream()
             .filter(car -> car.getPosition() == maxPosition)
-            .map(car -> car.getName())
+            .map(Car::getName)
             .collect(Collectors.toList());
     }
 
