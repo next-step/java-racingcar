@@ -17,6 +17,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("InputCars DTO 테스트")
 public class InputCarsTest {
 
+    public static final InputCars TEST_INPUT_CARS = InputCars.fromCarsInfo("test1");
+
     @Test
     @DisplayName("입력받은 CarsInfo 가 null 이면 NullPointerException 이 발생한다.")
     void inputCarsInfoNullTest() {

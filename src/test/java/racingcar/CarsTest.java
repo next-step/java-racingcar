@@ -44,7 +44,7 @@ public class CarsTest {
     @DisplayName("Cars를 play했을 때 결과(이름, 상태)를 잘 반환하는지 테스트")
     void playTest() {
         // given
-        Cars cars = new Cars(Lists.newArrayList(new Car(CarName.from("test"))));
+        Cars cars = new Cars(Lists.newArrayList(new Car(CarNameTest.TEST_CAR_NAME)));
 
         // when
         Cars result = cars.play(new RandomMovingStrategy());

@@ -14,6 +14,6 @@ public class RandomGeneratorTest {
     void generatorNumberTest() {
         RandomGenerator randomGenerator = new RandomGenerator();
 
-        assertThat(randomGenerator.getOneNumberFrom0to9()).isBetween(0,9);
+        assertThat(randomGenerator.getOneNumberFrom0to9()).isBetween(0, 9);
     }
 }

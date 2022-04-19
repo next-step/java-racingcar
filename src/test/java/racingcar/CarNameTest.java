@@ -10,6 +10,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("자동차 이름 규칙에 대한 테스트")
 public class CarNameTest {
 
+    public static final CarName TEST_CAR_NAME = CarName.from("test");
+
     @Test
     @DisplayName("자동차 이름이 null 이면 NullPointerException 이 발생한다.")
     void carNameNullTest() {

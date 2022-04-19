@@ -10,6 +10,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("Distance 클래스 테스트")
 public class DistanceTest {
 
+    public static final Distance TEST_DISTANCE = Distance.ZERO;
+
     @Test
     @DisplayName("0미만의 값을 생성하면 예외가 발생한다.")
     void negativeValueTest() {

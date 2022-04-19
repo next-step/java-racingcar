@@ -3,16 +3,14 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
-import racingcar.model.CarName;
 import racingcar.model.Distance;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.CarNameTest.TEST_CAR_NAME;
 
 @DisplayName("Car 클래스 테스트")
 public class CarTest {
-
-    private static final CarName TEST_CAR_NAME = CarName.from("test");
 
     @Test
     @DisplayName("Car 생성시 CarName 에 null 이 들어오면 오류가 발생한다.")
