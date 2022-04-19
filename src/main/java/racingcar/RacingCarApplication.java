@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 import racingcar.domain.RandomStrategy;
+import racingcar.exception.CarNameException;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -16,14 +17,20 @@ public class RacingCarApplication {
         RandomStrategy randomStrategy = new RandomStrategy();
         RacingGame racingGame = new RacingGame();
 
-        int carNumber = inputView.askNumberOfCars();
-        int triesNumber = inputView.askNumberOfTries();
+        try {
+            String[] names = inputView.askNameOfCars();
+            racingGame.createCar(names);
+        } catch (CarNameException e) {
+            e.printStackTrace();
+            return;
+        }
 
-        racingGame.createCar(carNumber);
+        int triesNumber = inputView.askNumberOfTries();
 
         for (int i = 0; i < triesNumber; i++) {
             List<Car> cars = racingGame.startGame(randomStrategy);
             outputView.printResult(cars);
         }
+
     }
 }
