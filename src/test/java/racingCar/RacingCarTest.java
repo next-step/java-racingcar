@@ -18,13 +18,24 @@ public class RacingCarTest {
     }
 
     @Test
-    void 전진유효값(){
+    void 움직이는경우(){
         StartGame startGame = new StartGame();
-        assertThat(startGame.validationAdvance(4)).isTrue();
-        assertThat(startGame.validationAdvance(3)).isFalse();
-        assertThat(startGame.validationAdvance(2)).isFalse();
-        assertThat(startGame.validationAdvance(1)).isFalse();
-        assertThat(startGame.validationAdvance(0)).isFalse();
+        Car car = new Car(1);
+
+        startGame.moveCar(4, car.cars, 0);
+        assertThat(car.cars.get(0)).isEqualTo("--");
+
+    }
+
+    @Test
+    void 안움직이는경우(){
+        StartGame startGame = new StartGame();
+        Car car = new Car(1);
+        startGame.moveCar(3, car.cars, 0);
+
+        assertThat(car.cars.get(0)).isEqualTo("-");
+
+
     }
 
 

@@ -7,3 +7,9 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+##기능목록
+*자동차는 전진 또는 멈출 수 있다.
+    -유효값은 0 ~ 9 사이의 값이다.
+    -4이상인 경우 전진한다.
