@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -2,10 +2,10 @@ package racingcar.controller;
 
 import java.util.Arrays;
 import java.util.List;
-import racingcar.model.Cars;
-import racingcar.model.MovingStrategy;
-import racingcar.model.Winners;
-import racingcar.ui.ResultView;
+import racingcar.domain.Cars;
+import racingcar.domain.MovingStrategy;
+import racingcar.domain.Winners;
+import racingcar.view.ResultView;
 
 public class RacingCarController {
 

@@ -1,9 +1,9 @@
-package racingcar.ui;
+package racingcar.view;
 
 import java.util.stream.Collectors;
-import racingcar.model.Car;
-import racingcar.model.Cars;
-import racingcar.model.Winners;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.Winners;
 
 public class ResultView {
 
