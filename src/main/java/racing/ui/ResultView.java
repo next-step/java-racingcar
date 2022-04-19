@@ -17,7 +17,7 @@ public class ResultView {
     public static void print(Car car) {
         StringBuilder sb = new StringBuilder();
         sb.append('|')
-          .append(LOCATION_EXPRESSION_CHARACTER.repeat(Math.max(0, car.getLocation())))
+          .append(LOCATION_EXPRESSION_CHARACTER.repeat(Math.max(0, car.getLocation().number)))
           .append(System.lineSeparator());
         System.out.print(sb);
     }

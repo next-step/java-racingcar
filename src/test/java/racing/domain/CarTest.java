@@ -22,13 +22,13 @@ public class CarTest {
     @ParameterizedTest
     void 전진(int randomResult) {
         //given
-        int carBeforeLocation = car.getLocation();
+        int carBeforeLocation = car.getLocation().number;
 
         //when
         car.run(randomResult);
 
         //then
-        assertThat(car.getLocation()).isEqualTo(carBeforeLocation + 1);
+        assertThat(car.getLocation().number).isEqualTo(carBeforeLocation + 1);
     }
 
     @DisplayName("랜덤 결과가 4미만이면 멈춰 있는다.")
@@ -36,13 +36,13 @@ public class CarTest {
     @ParameterizedTest
     void 정지(int randomResult) {
         //given
-        int carBeforeLocation = car.getLocation();
+        int carBeforeLocation = car.getLocation().number;
 
         //when
         car.run(randomResult);
 
         //then
-        assertThat(car.getLocation()).isEqualTo(carBeforeLocation);
+        assertThat(car.getLocation().number).isEqualTo(carBeforeLocation);
     }
 
     @DisplayName("랜덤 결과는 0 ~ 9사이여야 한다. 그 외 범위라면 IllegalArgumentException이 발생한다.")

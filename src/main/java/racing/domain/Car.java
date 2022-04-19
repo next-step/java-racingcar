@@ -7,13 +7,13 @@ public class Car {
     private static final int MAX_RESULT = 9;
     private static final int RUN_CRITERIA_MIN_RESULT = 4;
 
-    private int location;
+    private Location location;
 
     public Car() {
-        this.location = 0;
+        this.location = new Location();
     }
 
-    public int getLocation() {
+    public Location getLocation() {
         return location;
     }
 
@@ -23,7 +23,7 @@ public class Car {
         }
 
         if (result >= RUN_CRITERIA_MIN_RESULT) {
-            location++;
+            location.forward();
         }
     }
 
