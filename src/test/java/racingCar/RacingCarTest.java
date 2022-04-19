@@ -20,20 +20,20 @@ public class RacingCarTest {
     @Test
     void 움직이는경우(){
         StartGame startGame = new StartGame();
-        Car car = new Car(1);
+        Cars cars = new Cars(1);
 
-        startGame.moveCar(4, car.cars, 0);
-        assertThat(car.cars.get(0)).isEqualTo("--");
+        startGame.moveCar(4, cars.carList, 0);
+        assertThat(cars.carList.get(0)).isEqualTo("--");
 
     }
 
     @Test
     void 안움직이는경우(){
         StartGame startGame = new StartGame();
-        Car car = new Car(1);
-        startGame.moveCar(3, car.cars, 0);
+        Cars cars = new Cars(1);
+        startGame.moveCar(3, cars.carList, 0);
 
-        assertThat(car.cars.get(0)).isEqualTo("-");
+        assertThat(cars.carList.get(0)).isEqualTo("-");
 
 
     }

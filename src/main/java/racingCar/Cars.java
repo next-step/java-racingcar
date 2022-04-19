@@ -3,13 +3,13 @@ package racingCar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Car {
+public class Cars {
 
-    List<String> cars = new ArrayList<>();
+    List<String> carList = new ArrayList<>();
 
-    public Car(int N) {
+    public Cars(int N) {
         for (int i =0; i < N; i++) {
-            this.cars.add("-");
+            this.carList.add("-");
         }
     }
 
