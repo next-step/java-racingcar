@@ -23,11 +23,9 @@ public final class Cars {
     }
 
     public Cars play(MovingStrategy movingStrategy) {
-        List<Car> result = new ArrayList<>();
-        for (Car car : cars) {
-            result.add(car.move(movingStrategy));
-        }
-        return new Cars(result);
+        return cars.stream()
+                .map(car -> car.move(movingStrategy))
+                .collect(Collectors.collectingAndThen(Collectors.toList(), Cars::new));
     }
 
     public List<CarName> names() {
