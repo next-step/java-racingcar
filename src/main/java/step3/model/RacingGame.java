@@ -2,18 +2,18 @@ package step3.model;
 
 public class RacingGame {
 
-    private final int tryCount;
+    private final Count tryCount;
     private final Cars cars;
     private final GameResult gameResult;
 
     public RacingGame(Count tryCount, Names names, TryStrategy tryStrategy) {
-        this.tryCount = tryCount.getValue();
+        this.tryCount = tryCount;
         this.cars = new Cars(names, tryStrategy);
         this.gameResult = new GameResult();
     }
 
     public GameResult race() {
-        for (int i = 0; i < tryCount; i++) {
+        for (int i = 0; i < this.tryCount.getValue(); i++) {
             cars.tryOnceEach();
             updateGameResult();
         }
