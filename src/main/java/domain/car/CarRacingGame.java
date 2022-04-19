@@ -5,11 +5,11 @@ import java.util.List;
 
 public class CarRacingGame {
     private List<Car> cars;
-    private int max;
+    private Max max;
 
     public CarRacingGame(List<Car> cars) {
         this.cars = cars;
-        this.max = Integer.MIN_VALUE;
+        this.max = new Max(Integer.MIN_VALUE);
     }
 
     public void start(int attemptNumber) {
@@ -33,10 +33,9 @@ public class CarRacingGame {
         return winners;
     }
 
+
     private void setMaxDistance(Car car) {
-        if (this.max < car.getDistance()) {
-            this.max = car.getDistance();
-        }
+        max.changeMax(car.getDistance());
     }
 
     private List<Car> getWinners() {
@@ -50,7 +49,7 @@ public class CarRacingGame {
     }
 
     private void addWinner(List<Car> winners, Car car) {
-        if (this.max == car.getDistance()) {
+        if (max.equals(new Max(car.getDistance()))) {
             winners.add(car);
         }
 

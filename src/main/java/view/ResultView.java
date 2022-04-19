@@ -1,4 +1,6 @@
-package domain.car;
+package view;
+
+import domain.car.CarRacingGame;
 
 public class ResultView {
     private CarRacingGame racing;

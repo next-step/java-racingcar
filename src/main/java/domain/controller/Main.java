@@ -1,4 +1,9 @@
-package domain.car;
+package domain.controller;
+
+import domain.car.Car;
+import domain.car.CarRacingGame;
+import view.InputView;
+import view.ResultView;
 
 import java.util.List;
 
