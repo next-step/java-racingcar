@@ -3,13 +3,13 @@ package step3.model;
 public class Car {
 
     private final TryStrategy tryStrategy;
-    private final String name;
+    private final Name name;
 
     private int moveCount;
 
     public Car(Name name, TryStrategy tryStrategy) {
         this.tryStrategy = tryStrategy;
-        this.name = name.getValue();
+        this.name = name;
         this.moveCount = 0;
     }
 
@@ -20,7 +20,7 @@ public class Car {
     }
 
     public String getName() {
-        return this.name;
+        return this.name.getValue();
     }
 
     public int getMoveCount() {
