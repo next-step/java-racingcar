@@ -4,8 +4,6 @@ import java.util.Objects;
 
 public class Car {
 
-  private static final String OUTPUT_FORMAT = "%s : %s";
-
   private final Name name;
 
   private Position position;

@@ -2,7 +2,6 @@ package racingcar.model;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Winners {
 
@@ -17,13 +16,7 @@ public class Winners {
   }
 
   public static Winners findWinners(Cars cars) {
-    Car winnerCar = cars.getValues().stream()
-        .max(Car::compareTo)
-        .orElseThrow(IllegalStateException::new);
-    List<Car> winners = cars.getValues().stream()
-        .filter(car -> car.hasSamePosition(winnerCar))
-        .collect(Collectors.toList());
-    return new Winners(winners);
+    return new Winners(cars.findWinners());
   }
 
   @Override

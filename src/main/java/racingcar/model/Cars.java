@@ -33,6 +33,15 @@ public class Cars {
     return values;
   }
 
+  public List<Car> findWinners() {
+    Car winnerCar = values.stream()
+        .max(Car::compareTo)
+        .orElseThrow(IllegalStateException::new);
+    return values.stream()
+        .filter(car -> car.hasSamePosition(winnerCar))
+        .collect(Collectors.toList());
+  }
+
   private void validateSameNames(List<Car> values) {
     Set<String> carNameSet = values.stream()
         .map(Car::getName)
