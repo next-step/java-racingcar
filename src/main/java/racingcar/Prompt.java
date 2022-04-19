@@ -8,11 +8,7 @@ public class Prompt {
     public static String[] ask(String question) {
         Printer.println(question);
         String input = SCANNER.nextLine();
-        InputValidator.validateBlank(input);
-
-        String[] carNames = input.split(",");
-        InputValidator.validateCarNames(carNames);
-        return carNames;
+        return input.split(",");
     }
 
     public static int askAttempt(String question) {

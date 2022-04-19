@@ -9,7 +9,7 @@ public class InputValidatorTest {
 
     @Test
     void carNameIsBlankGiven_ThrowException() {
-        assertThatThrownBy(() -> InputValidator.validateBlank(""))
+        assertThatThrownBy(() -> InputValidator.validateCarNames(new String[]{"  "}))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(PromptMessage.INPUT_HAVE_TO_BE_NOT_BLANK.getMessage());
     }
