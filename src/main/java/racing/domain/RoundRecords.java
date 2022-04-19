@@ -15,7 +15,7 @@ public class RoundRecords {
         records.add(new Cars(record));
     }
 
-    public List<Cars> getEntrieRecords() {
+    public List<Cars> getEntireRecords() {
         return Collections.unmodifiableList(records);
     }
 

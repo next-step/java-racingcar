@@ -15,7 +15,7 @@ public class Controller {
         int round = InputView.inputNumberOfRounds();
 
         Competition competition = new Competition(carNames, round);
-        List<Cars> records = competition.progressCompetitionAndgetEntireRecords(new RandomMovableCondition());
+        List<Cars> records = competition.progressCompetitionAndGetEntireRecords(new RandomMovableCondition());
         ResultView.printEntireStatus(records);
 
         List<Car> winningCars = competition.getCarsWithMaxDistance();
