@@ -31,8 +31,8 @@ public class Car implements Comparable<Car> {
         return position.getValue();
     }
 
-    public CarName getCarName() {
-        return carName;
+    public String getCarName() {
+        return carName.getName();
     }
 
     public boolean compareWithMaxPosition(int maxPosition) {

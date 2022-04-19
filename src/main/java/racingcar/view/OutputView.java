@@ -1,11 +1,9 @@
 package racingcar.view;
 
 import racingcar.model.Car;
-import racingcar.model.CarName;
 import racingcar.model.Cars;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class OutputView {
     private static final String RACING_RESULT_PROMPT = "실행결과";
@@ -23,7 +21,7 @@ public class OutputView {
 
     public static void printCarRacingIntermediateState(Cars cars) {
         for (Car car : cars.getCars()) {
-            System.out.println(car.getCarName().getName() + "\t: " + getDashOnDistanceByCars(car.getCurrentPosition()));
+            System.out.println(car.getCarName() + "\t: " + getDashOnDistanceByCars(car.getCurrentPosition()));
         }
         System.out.print(LINE_DIVISION);
     }
@@ -33,10 +31,7 @@ public class OutputView {
     }
 
     public static void printWinner(Cars cars) {
-        List<String> winners = cars.getWinnerNames()
-                .stream()
-                .map(CarName::getName)
-                .collect(Collectors.toList());
+        List<String> winners = cars.getWinnerNames();
         String winnerOutputString = String.join(WINNER_CONNECTION_SEPARATOR, winners) + "가 최종 우승했습니다.";
         System.out.println(winnerOutputString);
     }

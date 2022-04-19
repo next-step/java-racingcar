@@ -4,6 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.strategy.FixedFalseMovingStrategy;
+import racingcar.strategy.FixedTrueMovingStrategy;
+import racingcar.strategy.RandomMovingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,7 +17,7 @@ class CarTest {
     void checkInitialPositionCreatedCarObject() {
         Car car = new Car(new Position(), new RandomMovingStrategy(), "pobi");
 
-        assertThat(car.currentPosition()).isZero();
+        assertThat(car.getCurrentPosition()).isZero();
     }
 
     @Test
@@ -22,7 +25,7 @@ class CarTest {
     void checkPositionMovedCar() {
         Car car = new Car(new Position(), new FixedTrueMovingStrategy(), "pobi");
         car.move();
-        assertThat(car.currentPosition()).isOne();
+        assertThat(car.getCurrentPosition()).isOne();
     }
 
     @Test
@@ -30,7 +33,7 @@ class CarTest {
     void checkPositionNotMovedCar() {
         Car car = new Car(new Position(), new FixedFalseMovingStrategy(), "pobi");
         car.move();
-        assertThat(car.currentPosition()).isZero();
+        assertThat(car.getCurrentPosition()).isZero();
     }
 
     @ParameterizedTest
@@ -39,6 +42,6 @@ class CarTest {
     void checkSavedNames(String value) {
         Car car = new Car(new Position(), new FixedFalseMovingStrategy(), value);
 
-        assertThat(car.getName()).isEqualTo(value);
+        assertThat(car.getCarName()).isEqualTo(value);
     }
 }

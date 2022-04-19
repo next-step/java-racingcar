@@ -44,7 +44,7 @@ public class Cars {
         }
     }
 
-    public List<CarName> getWinnerNames() {
+    public List<String> getWinnerNames() {
         int maxPosition = getMaxPosition();
         return cars.stream()
                 .filter(car -> car.compareWithMaxPosition(maxPosition))
