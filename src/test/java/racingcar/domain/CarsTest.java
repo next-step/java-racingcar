@@ -30,12 +30,13 @@ class CarsTest {
     }, delimiter = ':')
     @DisplayName("이동 후 현재 위치 목록 반환")
     void returnCurrentLocationsAfterMove(String moveCountsString, String expectedString) {
+
         List<Integer> moveCounts = convertStringToIntArray(moveCountsString);
         cars.move(moveCounts);
-
         List<Integer> expected = convertStringToIntArray(expectedString);
         assertThat(cars.getCurrentLocations()).isEqualTo(expected);
     }
+
 
     @ParameterizedTest
     @CsvSource(value = {"0:1", "1:2", "2:3", "3:4", "4:5"}, delimiter = ':')
