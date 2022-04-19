@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarRaceTest {
@@ -20,20 +24,47 @@ public class CarRaceTest {
     @Test
     @DisplayName("DECISION_VALUE(4) 이상의 number를 입력받을 때에만 GO(1) 리턴")
     void getOneIfMoreThanDecisionValue() {
-        CarRace carRace = new CarRace();
-        assertThat(carRace.move(() -> true)).isEqualTo(GO);
-        assertThat(carRace.move(() -> false)).isEqualTo(STOP);
+        Car car = new Car("jess");
+        assertThat(car.move(() -> true)).isEqualTo(GO);
+        assertThat(car.move(() -> false)).isEqualTo(STOP);
     }
 
     @ParameterizedTest
     @DisplayName("입력받은 값을 기준으로 계산된 raceInfoBoard 체크")
-    @CsvSource(value = {"3:5", "2:1"}, delimiter = ':')
-    void checkRaceInfoBoard(int numberOfCars, int numberOfRaces) {
-        CarRace carRace = new CarRace(numberOfCars, numberOfRaces);
+    @CsvSource(value = {"jess,apollo:5", "jess,apollo,kim:1"}, delimiter = ':')
+    void checkRaceInfoBoard(String carNames, int numberOfRaces) {
+        CarRace carRace = new CarRace(carNames, numberOfRaces);
         carRace.startRaces();
 
-        assertThat(carRace.getRecordCarRace().getRaceInfoBoards().size()).isEqualTo(numberOfRaces * numberOfCars);
-        assertThat(carRace.getRecordCarRace().getRaceInfoBoards().get(0)).isBetween(0, numberOfRaces);
+        assertThat(carRace.getRecordCarRace().getRaceInfoBoards().size())
+                .isEqualTo(numberOfRaces * carRace.getNumberOfCars());
+        assertThat(carRace.getRecordCarRace().getRaceInfoBoards().get(0))
+                .isBetween(0, numberOfRaces);
+    }
+
+    @Test
+    @DisplayName("입력받은 carNames -> cars로 변환 확인")
+    void splitCarNames() {
+        String carNames = "jess,apollo,kim";
+        List<Car> cars = new Splitter().splitCarNames(carNames);
+
+        assertThat(cars.get(0).getName()).isEqualTo("jess");
+        assertThat(cars.get(1).getName()).isEqualTo("apoll");
+        assertThat(cars.get(2).getName()).isEqualTo("kim");
+    }
+
+    @Test
+    @DisplayName("우승자 확인")
+    void checkWinners() {
+        RaceWinner raceWinner = new RaceWinner(3);
+        List<Integer> raceInfoBoards = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 2, 2, 2, 1, 1, 1));
+        String carNames = "jess,apollo,kim";
+        List<Car> cars = new Splitter().splitCarNames(carNames);
+
+        raceWinner.confirmWinners(raceInfoBoards, cars);
+
+        assertThat(raceWinner.getWinners().size()).isEqualTo(1);
+        assertThat(raceWinner.getWinners().get(0).getName()).isEqualTo("kim");
     }
 
 }

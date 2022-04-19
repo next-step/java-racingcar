@@ -1,22 +1,20 @@
 package carrace;
 
+
+import java.util.List;
+
 public class CarRace {
-    private static final int GO = 1;
-    private static final int STOP = 0;
-
-    private final RandomMoving randomMoving = new RandomMoving();
     private final RecordCarRace recordCarRace = new RecordCarRace();
+    private final RaceWinner raceWinner;
 
-    private int numberOfCars;
-    private int numberOfRaces;
+    private List<Car> cars;
+    private final int numberOfRaces;
 
-
-    public CarRace() {
-    }
-
-    public CarRace(int numberOfCars, int numberOfRaces) {
-        this.numberOfCars = numberOfCars;
+    public CarRace(String carNames, int numberOfRaces) {
+        cars = new Splitter().splitCarNames(carNames);
         this.numberOfRaces = numberOfRaces;
+
+        raceWinner = new RaceWinner(cars.size());
     }
 
     public void startRaces() {
@@ -26,29 +24,28 @@ public class CarRace {
     }
 
     private void startEachRace() {
-        for (int j = 0; j < this.numberOfCars; j++) {
-            recordCarRace.record(resultOfEachCarRacing());
+        for (Car car : this.cars) {
+            recordCarRace.record(car.race(numberOfRaces));
         }
     }
-    
-    private int resultOfEachCarRacing() {
-        int result = 0;
-        for (int i = 0; i < this.numberOfRaces; i++) {
-            result += move(randomMoving);
-        }
 
-        return result;
+    public void endRaces() {
+        raceWinner.confirmWinners(recordCarRace.getRaceInfoBoards(), cars);
     }
 
-    public int move(Moving moving) {
-        return moving.isMove() ? GO : STOP;
+    public List<Car> getCars() {
+        return cars;
     }
 
     public int getNumberOfCars() {
-        return numberOfCars;
+        return cars.size();
     }
 
     public RecordCarRace getRecordCarRace() {
         return recordCarRace;
+    }
+
+    public RaceWinner getRaceWinner() {
+        return raceWinner;
     }
 }
