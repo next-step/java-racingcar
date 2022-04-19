@@ -12,10 +12,10 @@ public class RacingCarController {
 
     public void startGame() {
         InputView inputView = new InputView();
-        int carNumber = inputView.inputCarNumber();
+        List<String> carNames = inputView.inputCarNames();
         int moveCount = inputView.inputMoveNumber();
 
-        List<Car> cars = makeCars(carNumber);
+        List<Car> cars = makeCars(carNames);
 
         ResultView resultView = new ResultView();
 
@@ -28,10 +28,10 @@ public class RacingCarController {
         }
     }
 
-    private List<Car> makeCars(int carNumber) {
+    private List<Car> makeCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int j = 0; j < carNumber; j++) {
-            cars.add(new Car());
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
         return cars;
     }

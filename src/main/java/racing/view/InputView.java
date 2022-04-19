@@ -1,16 +1,21 @@
 package racing.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
 
     static final Scanner scanner = new Scanner(System.in);
+    static final String CAR_NAME_DELIMITER = ",";
+    static final int CAR_NAME_MAX_LENGTH = 5;
 
-    public int inputCarNumber() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int carNumber = scanner.nextInt();
-        validCarNumber(carNumber);
-        return carNumber;
+    public List<String> inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String input = scanner.next();
+        List<String> carNames = Arrays.asList(input.split(CAR_NAME_DELIMITER));
+        validCarNames(carNames);
+        return carNames;
     }
 
     public int inputMoveNumber() {
@@ -19,9 +24,11 @@ public class InputView {
         return moveCount;
     }
 
-    private void validCarNumber(int carNumber) {
-        if(carNumber < 0) {
-            throw new RuntimeException("자동차의 숫자는 0 이상이여야 합니다.");
+    private void validCarNames(List<String> carNames) {
+        for (String carName : carNames) {
+            if(carName.length() > CAR_NAME_MAX_LENGTH) {
+                throw new RuntimeException("자동차의 이름은 5글자를 초과할 수 없습니다.");
+            }
         }
     }
 }
