@@ -24,11 +24,11 @@ public class Cars {
     }
 
     public Cars(List<String> carNames, CarActionStrategy carActionStrategy) {
-        validateCarCountsAndStrategy(carNames, carActionStrategy);
+        validateCarNamesAndStrategy(carNames, carActionStrategy);
         this.cars = carNames.stream().map(name -> new Car(name, carActionStrategy)).collect(Collectors.toList());
     }
 
-    private void validateCarCountsAndStrategy(List<String> carNames, CarActionStrategy carActionStrategy) {
+    private void validateCarNamesAndStrategy(List<String> carNames, CarActionStrategy carActionStrategy) {
         if (carNames == null || carNames.isEmpty()) {
             throw new IllegalArgumentException("Cars는 최소 1대 이상이어야 합니다.");
         }
