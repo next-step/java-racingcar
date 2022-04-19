@@ -1,6 +1,6 @@
 package racingcar.exception;
 
-public class InputException extends RuntimeException{
+public class InputException extends RuntimeException {
 
     public InputException() {
     }
