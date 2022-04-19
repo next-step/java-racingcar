@@ -14,8 +14,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("자동차 경주 - Round 테스트")
 class RoundTest {
+    private static final int WINNER_POSITION = 5;
+
     private Cars cars;
-    private final List<Integer> carPositions = List.of(5, 1, 2, 4, 3);
+    private final List<Integer> carPositions = List.of(WINNER_POSITION, 1, 2, 4, WINNER_POSITION);
 
     @BeforeEach
     public void init() {
@@ -23,14 +25,14 @@ class RoundTest {
     }
 
     private Cars createMovableCars(List<Integer> carPositions) {
-        return new Cars(carPositions.stream().map(position -> new Car(position, () -> true)).collect(Collectors.toList()));
+        return new Cars(carPositions.stream().map(position -> new Car(Integer.toString(position), position, () -> true)).collect(Collectors.toList()));
     }
 
     @Test
     void play는_cars를_동작시킨다() {
         Round round = new Round(cars);
 
-        assertThat(round.play().getCars().getCarPositions())
+        assertThat(round.play().getCars().getCars().stream().map(Car::getPosition).collect(Collectors.toList()))
                 .isEqualTo(carPositions.stream().map(position -> position + 1).collect(Collectors.toList()));
     }
 
@@ -42,4 +44,14 @@ class RoundTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void getWinners는_승자_목록을_반환한다() {
+        Round round = new Round(cars);
+
+        List<Car> winners = round.getWinners();
+
+        assertThat(winners.size()).isEqualTo(2);
+        assertThat(winners.get(0).getName()).isEqualTo(Integer.toString(WINNER_POSITION));
+        assertThat(winners.get(0).getPosition()).isEqualTo(WINNER_POSITION);
+    }
 }

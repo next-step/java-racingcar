@@ -15,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("자동차 경주 - Rounds 테스트")
 class RoundsTest {
     private static final int ROUND_COUNTS = 4;
+    private static final String CAR_NAME = "왕민";
 
     private List<Integer> carPositions;
     private Cars movableCars;
@@ -26,7 +27,7 @@ class RoundsTest {
     }
 
     private Cars createMovableCars(List<Integer> carPositions) {
-        return new Cars(carPositions.stream().map(position -> new Car(position, () -> true)).collect(Collectors.toList()));
+        return new Cars(carPositions.stream().map(position -> new Car(CAR_NAME, position, () -> true)).collect(Collectors.toList()));
     }
 
     @Test
@@ -35,8 +36,8 @@ class RoundsTest {
 
         for (int i = 0; i < ROUND_COUNTS; i++) {
             carPositions = carPositions.stream().map(position -> position + 1).collect(Collectors.toList());
-            assertThat(roundResults.get(i).getCars().getCarPositions())
-                    .isEqualTo(new Round(createMovableCars(carPositions)).getCars().getCarPositions());
+            assertThat(roundResults.get(i).getCars().getCars().stream().map(Car::getPosition).collect(Collectors.toList()))
+                    .isEqualTo(new Round(createMovableCars(carPositions)).getCars().getCars().stream().map(Car::getPosition).collect(Collectors.toList()));
         }
     }
 

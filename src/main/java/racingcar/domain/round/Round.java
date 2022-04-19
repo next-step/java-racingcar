@@ -1,6 +1,11 @@
 package racingcar.domain.round;
 
+import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
+
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class Round {
     private final Cars cars;
@@ -22,5 +27,14 @@ public class Round {
 
     public Cars getCars() {
         return cars;
+    }
+
+    public List<Car> getWinners() {
+        int winnerPosition = getWinnerPosition();
+        return cars.getCars().stream().filter(car -> car.getPosition() == winnerPosition).collect(Collectors.toList());
+    }
+
+    private int getWinnerPosition() {
+        return cars.getCars().stream().mapToInt(Car::getPosition).max().orElseThrow(NoSuchElementException::new);
     }
 }
