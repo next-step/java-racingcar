@@ -32,7 +32,7 @@ public class Printer {
     private static String decorateWinners(List<String> winners) {
         StringBuilder decoratedWinners = new StringBuilder();
         for (String winner : winners) {
-            decoratedWinners.append(winner.trim()).append(" ");
+            decoratedWinners.append(winner).append(" ");
         }
         return decoratedWinners.toString();
     }
