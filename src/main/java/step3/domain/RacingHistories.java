@@ -2,7 +2,6 @@ package step3.domain;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 import step3.exception.NoFinalWinnerException;
 
 public class RacingHistories {
@@ -11,12 +10,11 @@ public class RacingHistories {
 
     public void add(Cars cars) {
         StringBuilder racingStatus = new StringBuilder();
-        List<Car> carList = cars.getCars();
-        for (Car car : carList) {
-            racingStatus.append(car.getName() + " : ");
-            racingStatus.append(printPosition(car.getPosition()));
-            racingStatus.append(System.lineSeparator());
-        }
+        cars.getCars().forEach(car -> {
+                racingStatus.append(car.getName()).append(" : ");
+                racingStatus.append(makePositionDash(car.getPosition()));
+                racingStatus.append(System.lineSeparator());
+            });
 
         histories.add(new RacingHistory(cars.firstRankNames(), racingStatus.toString()));
     }
@@ -28,16 +26,11 @@ public class RacingHistories {
 
         List<String> firstRankNames = histories.get(histories.size() - 1).getFirstRankNames();
 
-        return firstRankNames.stream()
-            .collect(Collectors.joining(","));
+        return String.join(",", firstRankNames);
     }
 
-    private String printPosition(int position) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < position; ++i) {
-            sb.append('-');
-        }
-        return sb.toString();
+    private String makePositionDash(int position) {
+        return "-".repeat(Math.max(0, position));
     }
 
     public List<RacingHistory> getHistories() {
