@@ -1,23 +1,16 @@
 package study.step4.service;
 
-import org.assertj.core.groups.Tuple;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import study.step4.controller.CarsPositionModel;
 import study.step4.domain.Cars;
-import study.step4.domain.strategy.TestMoveStrategy;
+import study.step4.util.TestMoveStrategy;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.groups.Tuple.tuple;
-import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("레이싱 게임 테스트")
 class RacingGameTest {

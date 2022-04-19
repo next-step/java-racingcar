@@ -8,12 +8,9 @@ public class RandomNumberGenerator {
     private RandomNumberGenerator() {
     }
 
-    public static int impl(int maxValue) {
+    public static int impl() {
         Random random = new Random();
-        int num = random.nextInt(maxValue);
-        if (num > RANDOM_MAX_LIMIT) {
-            throw new IllegalArgumentException("Please change the maxValue");
-        }
+        int num = random.nextInt(RANDOM_MAX_LIMIT);
 
         return num;
     }

@@ -1,8 +1,9 @@
-package study.step4.domain.strategy;
+package study.step4.util;
 
+import study.step4.domain.strategy.MoveStrategy;
 import study.step4.util.RandomNumberGenerator;
 
-public class TestMoveStrategy implements MoveStrategy{
+public class TestMoveStrategy implements MoveStrategy {
     private static final int MOVE_CONDITION = 4;
     private int input;
 
