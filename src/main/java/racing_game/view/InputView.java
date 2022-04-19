@@ -9,14 +9,15 @@ public class InputView {
     private InputView() {
     }
 
-    public static String inputValueWithMessage(String message) {
+    public static String inputString(String message) {
         ResultView.printMessage(message);
 
-        return inputValue();
+        return SCANNER.next();
     }
 
-    public static String inputValue() {
+    public static int inputInteger(String message) {
+        ResultView.printMessage(message);
 
-        return SCANNER.next();
+        return SCANNER.nextInt();
     }
 }

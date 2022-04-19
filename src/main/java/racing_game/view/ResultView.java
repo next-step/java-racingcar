@@ -1,6 +1,7 @@
 package racing_game.view;
 
 import racing_game.model.GameResult;
+import racing_game.util.Delimiter;
 
 import java.util.Map;
 import java.util.Objects;
@@ -10,7 +11,6 @@ import java.util.stream.Collectors;
 
 public class ResultView {
 
-    private static final String DELIMITER = ",";
     private static final String BLANK = "";
     private static final String EXECUTE_RESULT_MESSAGE = "실행 결과";
     private static final String WINNER_PRESENTATION = "가 최종 우승했습니다.";
@@ -51,7 +51,7 @@ public class ResultView {
                 .stream()
                 .filter(entry -> Objects.equals(entry.getValue().length(), maxForward.length()))
                 .map(Map.Entry::getKey)
-                .collect(Collectors.joining(DELIMITER));
+                .collect(Collectors.joining(Delimiter.COMMA.symbol));
 
         printMessage(String.format("\n%s%s", winners, WINNER_PRESENTATION));
     }
