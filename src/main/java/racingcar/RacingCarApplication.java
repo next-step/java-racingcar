@@ -32,5 +32,7 @@ public class RacingCarApplication {
             outputView.printResult(cars);
         }
 
+        List<String> winnerList = racingGame.calMaxWinner();
+        outputView.printWinner(winnerList);
     }
 }
