@@ -11,6 +11,7 @@ import study.step4.domain.Cars;
 import study.step4.domain.strategy.TestMoveStrategy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,7 +63,7 @@ class RacingGameTest {
         racingGame.play(new TestMoveStrategy(4));
         racingGame.play(new TestMoveStrategy(4));
 
-        assertThat(racingGame.winners()).isEqualTo("a, b, c");
+        assertThat(racingGame.winners()).isEqualTo(Arrays.asList("a", "b", "c"));
 
     }
 }

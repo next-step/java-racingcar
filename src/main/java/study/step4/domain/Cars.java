@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
+
 public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
@@ -21,7 +23,7 @@ public class Cars {
     public List<CarsPositionModel> toCarsPositionModel() {
         return cars.stream()
                 .map(CarsPositionModel::from)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     public void move(MoveStrategy moveStrategy) {
@@ -32,7 +34,18 @@ public class Cars {
     }
 
     public List<String> winners() {
+        int max = maxPosition();
+        return cars.stream()
+                .filter(c -> c.getCarPosition().getPosition() == max)
+                .map(c -> c.getCarName().getCarName())
+                .collect(toList());
+    }
 
-        return null;
+    private int maxPosition() {
+        return cars.stream()
+                .max(Car::comparator)
+                .orElseThrow()
+                .getCarPosition()
+                .getPosition();
     }
 }

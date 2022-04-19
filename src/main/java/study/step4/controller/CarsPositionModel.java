@@ -22,4 +22,13 @@ public class CarsPositionModel {
     public static CarsPositionModel from(Car car) {
         return new CarsPositionModel(car.getCarName().getCarName(), car.getCarPosition().getPosition());
     }
+
+    public String toMarker() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.getPosition(); i++) {
+            sb.append("-");
+        }
+        return sb.toString();
+    }
+
 }

@@ -25,7 +25,10 @@ public class Car {
         return carPosition;
     }
 
-    public int comparator() {
-        return 0;
+    public int comparator(Car car) {
+        if(this.getCarPosition().getPosition() >= car.getCarPosition().getPosition()) {
+            return 1;
+        }
+        return -1;
     }
 }
