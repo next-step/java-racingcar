@@ -3,7 +3,7 @@ package racingcar;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class inputView {
+public class InputView {
     public static Input entry() {
         try {
             return scanInput();
