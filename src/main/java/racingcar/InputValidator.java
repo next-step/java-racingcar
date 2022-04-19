@@ -1,21 +1,23 @@
 package racingcar;
 
-import static code.PromptMessage.CAR_NAME_IS_EQUAL_LOWER_THAN_5;
-import static code.PromptMessage.INPUT_HAVE_TO_BE_NOT_BLANK;
+import code.PromptMessage;
 
 public class InputValidator {
-    public static boolean isInputWrong(String input) {
+    public static void validateBlank(String input) {
         if (input.isBlank()) {
-            System.out.println(INPUT_HAVE_TO_BE_NOT_BLANK);
-            return true;
+            throw new IllegalArgumentException(PromptMessage.INPUT_HAVE_TO_BE_NOT_BLANK.getMessage());
         }
-        String[] carNames = input.split(",");
+    }
+
+    public static void validateCarNames(String[] carNames) {
         for (String carName : carNames) {
-            if (carName.length() > 5) {
-                System.out.println(CAR_NAME_IS_EQUAL_LOWER_THAN_5.getMessage());
-                return true;
-            }
+            validateLength(carName);
         }
-        return false;
+    }
+
+    private static void validateLength(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException(PromptMessage.CAR_NAME_IS_EQUAL_LOWER_THAN_5.getMessage());
+        }
     }
 }
