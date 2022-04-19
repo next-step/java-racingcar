@@ -8,6 +8,7 @@ import racingcar.model.Distance;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.CarNameTest.TEST_CAR_NAME;
+import static racingcar.DistanceTest.*;
 
 @DisplayName("Car 클래스 테스트")
 public class CarTest {
@@ -19,7 +20,7 @@ public class CarTest {
                 .isInstanceOf(NullPointerException.class)
                 .hasMessageContaining("name is null");
 
-        assertThatThrownBy(() -> new Car(null, Distance.ONE))
+        assertThatThrownBy(() -> new Car(null, TEST_DISTANCE))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessageContaining("name is null");
     }
@@ -37,7 +38,7 @@ public class CarTest {
     void carStateTest() {
         Car car = new Car(TEST_CAR_NAME);
 
-        assertThat(car.state()).isEqualTo(Distance.ZERO);
+        assertThat(car.state()).isEqualTo(ZERO);
     }
 
     @Test
@@ -55,7 +56,7 @@ public class CarTest {
 
         Car nextCar = car.move(() -> true);
 
-        assertThat(nextCar.state()).isEqualTo(Distance.add(car.state(), Distance.ONE));
+        assertThat(nextCar.state()).isEqualTo(Distance.add(car.state(), ONE));
     }
 
     @Test

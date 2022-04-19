@@ -11,6 +11,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class DistanceTest {
 
     public static final Distance TEST_DISTANCE = Distance.ZERO;
+    public static final Distance ZERO = Distance.ZERO;
+    public static final Distance ONE = Distance.ONE;
 
     @Test
     @DisplayName("0미만의 값을 생성하면 예외가 발생한다.")
