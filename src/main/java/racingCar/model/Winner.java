@@ -13,14 +13,6 @@ public final class Winner {
     this.position = position;
   }
 
-  public Winner(String name) {
-    this.name = name;
-    this.position = position();
-  }
-
-  private Position position() {
-    return this.position;
-  }
 
   @Override
   public boolean equals(Object o) {
@@ -45,10 +37,11 @@ public final class Winner {
 
   public Winner addCoWinner(Winner challenger) {
     if (!this.equals(challenger) && this.position.equals(challenger.position)) {
-      return new Winner(this.name.concat(", ").concat(challenger.name));
+      return new Winner(this.name.concat(", ").concat(challenger.name), this.position);
     }
     return this;
   }
+
 
   @Override
   public String toString() {

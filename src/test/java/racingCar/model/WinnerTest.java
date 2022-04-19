@@ -28,14 +28,14 @@ class WinnerTest {
   @DisplayName("공동 우승자 테스트")
   void coWinnerTest() {
     List<Car> gameParticipants = Arrays.asList(
-        new Car("a", new Position(3)),
-        new Car("b", new Position(2)),
-        new Car("c", new Position(1)),
-        new Car("d", new Position(2)),
-        new Car("e", new Position(3)));
+        new Car("a", new Position(1)),
+        new Car("b", new Position(3)),
+        new Car("c", new Position(3)),
+        new Car("d", new Position(1)),
+        new Car("e", new Position(1)));
     GameService gameService = new GameService();
     String coWinner = gameService.addWinner(gameParticipants);
-    assertThat(coWinner).isEqualTo("a, e");
+    assertThat(coWinner).isEqualTo("b, c");
   }
 
 
