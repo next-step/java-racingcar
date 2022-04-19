@@ -10,14 +10,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class OperandTest {
 
     @Test
-    void Operand는_음수로_생설_할_경우_런타임_예외를_발새시킨다() {
+    void Operand는_음수로_생설_할_경우_런타임_예외를_발생시킨다() {
         assertThatThrownBy(() -> {
             new Operand("-1");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    void Operand는_숫자가_아닌_문자열로_생설_할_경우_런타임_예외를_발새시킨다() {
+    void Operand는_숫자가_아닌_문자열로_생설_할_경우_런타임_예외를_발생시킨다() {
         assertThatThrownBy(() -> {
             new Operand("abc");
         }).isInstanceOf(NumberFormatException.class);
@@ -29,6 +29,6 @@ class OperandTest {
         Operand two = new Operand(2);
         Operand three = new Operand(3);
 
-        assertThat(one.add(two).getValue()).isEqualTo(three.getValue());
+        assertThat(one.add(two)).isEqualTo(three);
     }
 }

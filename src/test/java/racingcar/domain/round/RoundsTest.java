@@ -16,17 +16,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class RoundsTest {
     private static final int ROUND_COUNTS = 4;
 
-    private List<Integer> carPositionList;
+    private List<Integer> carPositions;
     private Cars movableCars;
 
     @BeforeEach
     public void init() {
-        carPositionList = List.of(5, 1, 2, 4, 3);
-        movableCars = createMovableCars(carPositionList);
+        carPositions = List.of(5, 1, 2, 4, 3);
+        movableCars = createMovableCars(carPositions);
     }
 
-    private Cars createMovableCars(List<Integer> carPositionList) {
-        return new Cars(carPositionList.stream().map(position -> new Car(position, () -> true)).collect(Collectors.toList()));
+    private Cars createMovableCars(List<Integer> carPositions) {
+        return new Cars(carPositions.stream().map(position -> new Car(position, () -> true)).collect(Collectors.toList()));
     }
 
     @Test
@@ -34,9 +34,9 @@ class RoundsTest {
         List<Round> roundResults = new Rounds(movableCars, ROUND_COUNTS).play();
 
         for (int i = 0; i < ROUND_COUNTS; i++) {
-            carPositionList = carPositionList.stream().map(position -> position + 1).collect(Collectors.toList());
+            carPositions = carPositions.stream().map(position -> position + 1).collect(Collectors.toList());
             assertThat(roundResults.get(i).getCars().getCarPositions())
-                    .isEqualTo(new Round(createMovableCars(carPositionList)).getCars().getCarPositions());
+                    .isEqualTo(new Round(createMovableCars(carPositions)).getCars().getCarPositions());
         }
     }
 

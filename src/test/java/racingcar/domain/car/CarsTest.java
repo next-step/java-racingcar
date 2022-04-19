@@ -12,16 +12,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("자동차 경주 - Cars 테스트")
 class CarsTest {
-    private final List<Integer> carPositionList = List.of(5, 1, 2, 4, 3);
+    private final List<Integer> carPositions = List.of(5, 1, 2, 4, 3);
     private Cars movableCars;
 
     @BeforeEach
     public void init() {
-        movableCars = createMovableCars(carPositionList);
+        movableCars = createMovableCars(carPositions);
     }
 
-    private Cars createMovableCars(List<Integer> carPositionList) {
-        return new Cars(carPositionList.stream().map(position -> new Car(position, () -> true)).collect(Collectors.toList()));
+    private Cars createMovableCars(List<Integer> carPositions) {
+        return new Cars(carPositions.stream().map(position -> new Car(position, () -> true)).collect(Collectors.toList()));
     }
 
     @Test
@@ -48,11 +48,11 @@ class CarsTest {
     @Test
     void act는_자동차_전체를_동작시킨다() {
         assertThat(movableCars.act().getCarPositions())
-                .isEqualTo(carPositionList.stream().map(position -> position + 1).collect(Collectors.toList()));
+                .isEqualTo(carPositions.stream().map(position -> position + 1).collect(Collectors.toList()));
     }
 
     @Test
     void getCarPositions은_자동차들의_현재위치_리스트를_반환한다() {
-        assertThat(movableCars.getCarPositions()).isEqualTo(carPositionList);
+        assertThat(movableCars.getCarPositions()).isEqualTo(carPositions);
     }
 }

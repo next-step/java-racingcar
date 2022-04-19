@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("문자열 덧셈 Operands 테스트")
 class OperandsTest {
     @Test
-    void Operand는_빈_컬렉션으로_생설_할_경우_런타임_예외를_발새시킨다() {
+    void Operand는_빈_컬렉션으로_생설_할_경우_런타임_예외를_발생시킨다() {
         assertThatThrownBy(() -> {
             new Operands(List.of());
         }).isInstanceOf(IllegalArgumentException.class);

@@ -15,15 +15,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("자동차 경주 - Round 테스트")
 class RoundTest {
     private Cars cars;
-    private final List<Integer> carPositionList = List.of(5, 1, 2, 4, 3);
+    private final List<Integer> carPositions = List.of(5, 1, 2, 4, 3);
 
     @BeforeEach
     public void init() {
-        cars = createMovableCars(carPositionList);
+        cars = createMovableCars(carPositions);
     }
 
-    private Cars createMovableCars(List<Integer> carPositionList) {
-        return new Cars(carPositionList.stream().map(position -> new Car(position, () -> true)).collect(Collectors.toList()));
+    private Cars createMovableCars(List<Integer> carPositions) {
+        return new Cars(carPositions.stream().map(position -> new Car(position, () -> true)).collect(Collectors.toList()));
     }
 
     @Test
@@ -31,7 +31,7 @@ class RoundTest {
         Round round = new Round(cars);
 
         assertThat(round.play().getCars().getCarPositions())
-                .isEqualTo(carPositionList.stream().map(position -> position + 1).collect(Collectors.toList()));
+                .isEqualTo(carPositions.stream().map(position -> position + 1).collect(Collectors.toList()));
     }
 
 
