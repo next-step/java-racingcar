@@ -30,4 +30,12 @@ public class OutputView {
     public void printVacuum() {
         System.out.println(EMPTYLETTER);
     }
+
+    public void printWinner(List<String> winners) {
+        for (String winner : winners) {
+            System.out.print(winner + " ");
+        }
+        System.out.print("가 최종 우승했습니다.");
+    }
+
 }
