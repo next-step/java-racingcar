@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 import exception.OutOfRangeException;
 import util.Range;
 
@@ -11,6 +13,10 @@ public class CarName {
 	public CarName(String name) {
 		validateCarName(name);
 		this.name = name;
+	}
+
+	public static CarName of(String name) {
+		return new CarName(name);
 	}
 
 	private void validateCarName(String name) {
