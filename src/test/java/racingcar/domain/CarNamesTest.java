@@ -24,10 +24,10 @@ class CarNamesTest {
 	public void When_CarNames_Expected_SameSizeCarList() {
 		// given
 		CarNames carNames = new CarNames("test1,test2");
-		Cars cars = Cars.of(carNames);
+		RacingCars racingCars = RacingCars.of(carNames);
 
 		// when
-		boolean isSameSize = cars.isSameSize(carNames.values().size());
+		boolean isSameSize = racingCars.isSameSize(carNames.values().size());
 
 		// then
 		assertThat(isSameSize).isTrue();

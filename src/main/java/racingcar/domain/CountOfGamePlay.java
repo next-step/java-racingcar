@@ -1,8 +1,5 @@
 package racingcar.domain;
 
-import racingcar.view.Result;
-import racingcar.view.Results;
-
 public class CountOfGamePlay {
 	private final int playCount;
 
@@ -10,12 +7,10 @@ public class CountOfGamePlay {
 		this.playCount = playCount;
 	}
 
-	public Results run(Cars cars, RandomGenerator randomGenerator) {
-		Results results = new Results();
+	public RacingCars run(RacingCars racingCars, EngineStrategy engineStrategy) {
 		for (int i = 0; i < playCount; i++) {
-			cars.play(randomGenerator);
-			results.add(cars.result());
+			racingCars.play(engineStrategy);
 		}
-		return results;
+		return racingCars;
 	}
 }
