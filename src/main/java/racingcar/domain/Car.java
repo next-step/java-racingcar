@@ -5,11 +5,11 @@ import java.util.Objects;
 import exception.OutOfRangeException;
 import util.Range;
 
-public class Car {
-	public static final int RANDOM_MIN = 0;
-	public static final int RANDOM_MAX = 9;
-	public static final int ENGINE_START_MIN = 4;
-	public static final String CAR_TO_STRING_TEXT = " : ";
+public class Car implements Comparable<Car> {
+	private static final int RANDOM_MIN = 0;
+	private static final int RANDOM_MAX = 9;
+	private static final int ENGINE_START_MIN = 4;
+	private static final String CAR_TO_STRING_TEXT = " : ";
 	private final MoveCount moveCount;
 	private final CarName carName;
 
@@ -57,7 +57,16 @@ public class Car {
 		return carName.toString() + CAR_TO_STRING_TEXT + moveCount.toString();
 	}
 
-	public boolean isSamePosition(int position) {
-		return moveCount.isSame(position);
+	public boolean isSamePosition(MoveCount moveCount) {
+		return moveCount.isSame(moveCount);
+	}
+
+	@Override
+	public int compareTo(Car target) {
+		return this.moveCount.compareTo(target.moveCount);
+	}
+
+	public boolean isSamePositionCar(Car target) {
+		return this.moveCount.isSame(target.moveCount);
 	}
 }

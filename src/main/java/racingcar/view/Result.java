@@ -1,18 +1,18 @@
 package racingcar.view;
 
-import java.util.List;
+import racingcar.domain.RankingCars;
 
 public class Result {
-	private final List<String> results;
 
-	public Result(List<String> results) {
-		this.results = results;
+	private final RankingCars rankingCars;
+
+	public Result(RankingCars rankingCars) {
+		this.rankingCars = rankingCars;
 	}
 
 	public void print() {
-		for (String result : results) {
-			System.out.println(result);
-		}
+		rankingCars.results()
+			.forEach(System.out::println);
 		System.out.println();
 	}
 }
