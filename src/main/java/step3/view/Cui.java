@@ -1,4 +1,4 @@
-package step3.ui;
+package step3.view;
 
 import java.util.Arrays;
 import java.util.List;

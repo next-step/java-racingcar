@@ -2,7 +2,7 @@ package step3.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static step3.domain.Car.DEFAULT_POSITION;
+import static step3.domain.Position.DEFAULT_POSITION;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
