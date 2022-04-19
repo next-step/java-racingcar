@@ -1,4 +1,4 @@
-package calculator;
+package code;
 
 public enum ExceptionCode {
     NEGATIVE_VALIDATION("0 이상의 값만 넣어주세요.");
