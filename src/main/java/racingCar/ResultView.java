@@ -3,7 +3,7 @@ package racingCar;
 import java.util.List;
 
 public class ResultView {
-    public static void Result(List<String> stringArray, int i){
-        System.out.println(stringArray.get(i));
+    public static void result(List<String> cars, int i){
+        System.out.println(cars.get(i));
     }
 }
