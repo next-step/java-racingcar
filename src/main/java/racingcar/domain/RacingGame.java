@@ -7,9 +7,9 @@ public class RacingGame {
 
     private static final List<Car> cars = new ArrayList<>();
 
-    public List<Car> createCar(int number) {
-        for (int i = 0; i < number; i++) {
-            cars.add(new Car());
+    public List<Car> createCar(String[] names) {
+        for (int i = 0; i < names.length; i++) {
+            cars.add(new Car(names[i]));
         }
         return cars;
     }
