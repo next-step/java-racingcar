@@ -11,11 +11,11 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.domain.car.CarTest.VALID_CAR_NAME;
 
 @DisplayName("자동차 경주 - Rounds 테스트")
 class RoundsTest {
     private static final int ROUND_COUNTS = 4;
-    private static final String CAR_NAME = "왕민";
 
     private List<Integer> carPositions;
     private Cars movableCars;
@@ -27,7 +27,7 @@ class RoundsTest {
     }
 
     private Cars createMovableCars(List<Integer> carPositions) {
-        return new Cars(carPositions.stream().map(position -> new Car(CAR_NAME, position, () -> true)).collect(Collectors.toList()));
+        return new Cars(carPositions.stream().map(position -> new Car(VALID_CAR_NAME, position, () -> true)).collect(Collectors.toList()));
     }
 
     @Test

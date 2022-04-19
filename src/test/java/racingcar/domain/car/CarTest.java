@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("자동차 경주 - Car 테스트")
 public class CarTest {
     private static final int DEFAULT_POSITION = 0;
-    private static final String VALID_CAR_NAME = "왕민";
+    public static final String VALID_CAR_NAME = "왕민";
     private static final String OVERSIZE_CAR_NAME = "wangmin";
 
     private Car movableCar;
