@@ -10,7 +10,7 @@ public class Max {
         this.max = max;
     }
 
-    public void changeMax(int distance) {
+    public void fixMaxValue(int distance) {
         if (max < distance) {
             max = distance;
         }
@@ -28,4 +28,5 @@ public class Max {
     public int hashCode() {
         return Objects.hash(max);
     }
+
 }

@@ -4,24 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacingGame {
-    private List<Car> cars;
+    private Cars cars;
     private Max max;
 
     public CarRacingGame(List<Car> cars) {
-        this.cars = cars;
+        this.cars = new Cars(cars);
         this.max = new Max(Integer.MIN_VALUE);
     }
 
     public void start(int attemptNumber) {
-        for (Car car : cars) {
-            car.play(attemptNumber);
-        }
+        cars.play(attemptNumber);
     }
 
     public List<Car> finish() {
-        for (Car car : cars) {
-            setMaxDistance(car);
-        }
+        cars.fixMaxDistance(max);
 
         List<Car> winners = getWinners();
 
@@ -33,19 +29,8 @@ public class CarRacingGame {
         return winners;
     }
 
-
-    private void setMaxDistance(Car car) {
-        max.changeMax(car.getDistance());
-    }
-
     private List<Car> getWinners() {
-        List<Car> winners = new ArrayList<>();
-
-        for (Car car : cars) {
-            addWinner(winners, car);
-        }
-
-        return winners;
+        return cars.findWinner(max);
     }
 
     private void addWinner(List<Car> winners, Car car) {
