@@ -1,8 +1,9 @@
-import racingcar.controller.RacingGame;
+import racingcar.controller.RacingGameController;
+import racingcar.strategy.RandomMovingStrategy;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame();
-        racingGame.startRacingGame();
+        RacingGameController racingGameController = new RacingGameController(new RandomMovingStrategy());
+        racingGameController.start();
     }
 }

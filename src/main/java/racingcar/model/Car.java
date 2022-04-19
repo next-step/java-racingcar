@@ -1,26 +1,46 @@
 package racingcar.model;
 
-public class Car {
+import racingcar.strategy.MovingStrategy;
+
+public class Car implements Comparable<Car> {
     private Position position;
-    private MovingStrategy movingStrategy = new PositionControl();
+    private MovingStrategy movingStrategy;
+    private CarName carName;
 
-
-    public Car() {
-        this(new Position());
+    public Car(Position position, MovingStrategy movingStrategy, String name) {
+        this(position, movingStrategy, new CarName(name));
     }
 
-    Car(Position position) {
+    Car(Position position, MovingStrategy movingStrategy, CarName carName) {
         this.position = position;
+        this.movingStrategy = movingStrategy;
+        this.carName = carName;
     }
 
-    public void move(int randomValue) {
-        if (movingStrategy.matchMovementCondition(randomValue)) {
+    public static Car create(Position position, MovingStrategy movingStrategy, String name) {
+        return new Car(position, movingStrategy, name);
+    }
+
+    public void move() {
+        if (movingStrategy.decideWhetherToMove()) {
             position.increaseValue();
         }
     }
 
-
-    public int currentPosition() {
+    public int getCurrentPosition() {
         return position.getValue();
+    }
+
+    public String getCarName() {
+        return carName.getName();
+    }
+
+    public boolean compareWithMaxPosition(int maxPosition) {
+        return this.position.getValue() == maxPosition;
+    }
+
+    @Override
+    public int compareTo(Car otherCar) {
+        return this.position.getValue() - otherCar.position.getValue();
     }
 }
