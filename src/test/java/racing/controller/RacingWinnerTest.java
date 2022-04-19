@@ -24,7 +24,7 @@ class RacingWinnerTest {
     private Car addCar(String carName, int distance) {
         Car car = new Car(carName);
         for (int i = 0; i < distance; i++) {
-            car.move(5);
+            car.move(Car.FORWARD_STANDARD_NUMBER);
         }
         cars.add(car);
         return car;

@@ -20,15 +20,19 @@ public class RacingCarController {
         ResultView resultView = new ResultView();
 
         for (int i = 0; i < moveCount; i++) {
-            for (Car car : cars) {
-                int value = getRandomValue();
-                car.move(value);
-            }
-            resultView.printCarsPosition(cars);
+            goStage(cars, resultView);
         }
 
         resultView.printWinners(getWinnerList(cars));
 
+    }
+
+    private void goStage(List<Car> cars, ResultView resultView) {
+        for (Car car : cars) {
+            int value = getRandomValue();
+            car.move(value);
+        }
+        resultView.printCurrentStage(cars);
     }
 
     private List<Car> getWinnerList(List<Car> cars) {

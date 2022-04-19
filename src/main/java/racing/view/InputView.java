@@ -20,15 +20,18 @@ public class InputView {
 
     public int inputMoveNumber() {
         System.out.println("시도할 회수는 몇 회 인가요?");
-        int moveCount = scanner.nextInt();
-        return moveCount;
+        return scanner.nextInt();
     }
 
     private void validCarNames(List<String> carNames) {
         for (String carName : carNames) {
-            if(carName.length() > CAR_NAME_MAX_LENGTH) {
-                throw new RuntimeException("자동차의 이름은 5글자를 초과할 수 없습니다.");
-            }
+            validNameLength(carName);
+        }
+    }
+
+    private void validNameLength(String carName) {
+        if(carName.length() > CAR_NAME_MAX_LENGTH) {
+            throw new RuntimeException("자동차의 이름은 5글자를 초과할 수 없습니다.");
         }
     }
 }

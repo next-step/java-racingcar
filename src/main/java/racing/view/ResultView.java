@@ -6,17 +6,19 @@ import java.util.List;
 
 public class ResultView {
 
-    public void printCarsPosition(List<Car> cars) {
-        int index = 1;
+    public void printCurrentStage(List<Car> cars) {
         for (Car car : cars) {
-            System.out.print(car.getName() + " : ");
-            for (int distance = 0; distance < car.getDistance(); distance++) {
-                System.out.print("-");
-            }
-            index++;
-            System.out.println();
+            printCarPosition(car);
         }
 
+        System.out.println();
+    }
+
+    private void printCarPosition(Car car) {
+        System.out.print(car.getName() + " : ");
+        for (int distance = 0; distance < car.getDistance(); distance++) {
+            System.out.print("-");
+        }
         System.out.println();
     }
 
