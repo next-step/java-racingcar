@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.List;
-
 public class RacingCar implements Comparable {
     private final static int MOVE_THRESHOLD = 3;
     private final static int MOVE = 1;
@@ -10,12 +8,7 @@ public class RacingCar implements Comparable {
     private int movement;
     private String name;
 
-    public RacingCar() {
-        this.movement = 0;
-    }
-
     public RacingCar(String name) {
-        this();
         this.name = name;
     }
 
@@ -32,11 +25,11 @@ public class RacingCar implements Comparable {
         return name;
     }
 
-    public List<RacingCar> compareHighScoreCar(RacingCar highestCar, List<RacingCar> winnerCars) {
+    public String compareWithHighestScoreCar(RacingCar highestCar) {
         if (this.movement == highestCar.getMovement()) {
-            winnerCars.add(this);
+            return this.name;
         }
-        return winnerCars;
+        return "";
     }
 
     @Override
