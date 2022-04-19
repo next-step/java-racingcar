@@ -1,11 +1,11 @@
-package racing_game.domain;
+package racing.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing_game.util.Behavior;
+import racing.util.Behavior;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -30,7 +30,7 @@ public class RacingCarTest {
     @Test
     @DisplayName("생성된 레이킹 카의 이름 조회")
     void getName() {
-        assertThat(this.racingCar.getName()).isEqualTo(this.name);
+        assertThat(this.racingCar.getName().getName()).isEqualTo(this.name);
     }
 
     @Test

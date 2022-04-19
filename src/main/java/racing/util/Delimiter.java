@@ -1,7 +1,8 @@
-package racing_game.util;
+package racing.util;
 
 public enum Delimiter {
-    COMMA(",");
+    COMMA(","),
+    NEW_LINE("\n");
 
     public final String symbol;
 

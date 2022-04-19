@@ -1,10 +1,10 @@
-package racing_game.domain;
+package racing.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing_game.model.RoundResult;
-import racing_game.util.Behavior;
+import racing.model.RoundResult;
+import racing.util.Behavior;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

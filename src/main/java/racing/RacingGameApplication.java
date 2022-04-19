@@ -1,9 +1,9 @@
-package racing_game;
+package racing;
 
-import racing_game.controller.RacingGame;
-import racing_game.model.GameResult;
-import racing_game.model.GameCondition;
-import racing_game.view.ResultView;
+import racing.controller.RacingGame;
+import racing.model.GameCondition;
+import racing.model.RoundResult;
+import racing.view.ResultView;
 
 public class RacingGameApplication {
 
@@ -14,7 +14,7 @@ public class RacingGameApplication {
     public void run(String[] args) {
         GameCondition gameCondition = new GameCondition();
         RacingGame racingGame = new RacingGame(gameCondition);
-        GameResult gameResult = racingGame.gameStart();
-        ResultView.printResult(gameResult);
+        RoundResult roundResult = racingGame.gameStart();
+        ResultView.printResult(roundResult);
     }
 }

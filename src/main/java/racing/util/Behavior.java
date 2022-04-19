@@ -1,4 +1,4 @@
-package racing_game.util;
+package racing.util;
 
 public enum Behavior {
     FORWARD("-"), STOP("");

@@ -1,10 +1,10 @@
-package racing_game.model;
+package racing.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing_game.domain.RacingCar;
-import racing_game.util.Behavior;
+import racing.domain.RacingCar;
+import racing.util.Behavior;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -31,7 +31,7 @@ class RoundResultTest {
     void record_1() {
         RoundResult roundResult = new RoundResult();
         roundResult.record(this.racingCar);
-        assertThat(roundResult.getRoundResult().get(this.name)).containsAnyOf(Behavior.FORWARD.symbol, Behavior.STOP.symbol);
+        assertThat(roundResult.getRoundResult().get(this.racingCar.getName())).containsAnyOf(Behavior.FORWARD.symbol, Behavior.STOP.symbol);
     }
 
     @Test
@@ -41,9 +41,10 @@ class RoundResultTest {
         firstRoundResult.record(this.racingCar);
 
         RoundResult lastRoundResult = new RoundResult();
-        lastRoundResult.record(firstRoundResult);
+        lastRoundResult.record(this.racingCar);
+        lastRoundResult.combined(firstRoundResult);
 
-        assertAll(() -> assertThat(lastRoundResult.getRoundResult().keySet()).contains(this.name),
-                () -> assertThat(lastRoundResult.getRoundResult().get(this.name)).containsAnyOf(Behavior.FORWARD.symbol, Behavior.STOP.symbol));
+        assertAll(() -> assertThat(lastRoundResult.getRoundResult().keySet()).contains(this.racingCar.getName()),
+                () -> assertThat(lastRoundResult.getRoundResult().get(this.racingCar.getName())).containsAnyOf(Behavior.FORWARD.symbol, Behavior.STOP.symbol));
     }
 }

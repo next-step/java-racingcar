@@ -1,7 +1,7 @@
-package racing_game.model;
+package racing.model;
 
-import racing_game.util.Delimiter;
-import racing_game.view.InputView;
+import racing.util.Delimiter;
+import racing.view.InputView;
 
 import java.util.Optional;
 

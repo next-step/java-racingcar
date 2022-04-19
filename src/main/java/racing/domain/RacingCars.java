@@ -1,6 +1,6 @@
-package racing_game.domain;
+package racing.domain;
 
-import racing_game.model.RoundResult;
+import racing.model.RoundResult;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +20,7 @@ public class RacingCars {
     public RoundResult roundFight() {
         return this.racingCars
                 .stream()
-                .collect(RoundResult::new, RoundResult::record, RoundResult::record);
+                .collect(RoundResult::new, RoundResult::record, RoundResult::combined);
 
     }
 
