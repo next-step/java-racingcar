@@ -2,17 +2,18 @@ package racing_game.view;
 
 import racing_game.model.GameResult;
 
-import java.util.Comparator;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BinaryOperator;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class ResultView {
 
+    private static final String DELIMITER = ",";
     private static final String BLANK = "";
     private static final String EXECUTE_RESULT_MESSAGE = "실행 결과";
+    private static final String WINNER_PRESENTATION = "가 최종 우승했습니다.";
     private static final BinaryOperator<String> COMBINE = (left, right) -> left + " : " + right;
     private static final BinaryOperator<String> NEW_LINE = (before, after) -> before += ("\n" + after);
 
@@ -39,12 +40,19 @@ public class ResultView {
 
     private static void findWinner(GameResult gameResult) {
         int finalRoundNumber = gameResult.getGameResult().size() - 1;
-        String winner = gameResult.getGameResult().get(finalRoundNumber)
-                .entrySet()
+        Map<String, String> finalRoundResult = gameResult.getGameResult().get(finalRoundNumber);
+        String maxForward = finalRoundResult.entrySet()
                 .stream()
-                .max(Map.Entry.comparingByKey())
-                .orElseThrow()
-                .getKey();
-        printMessage("\n" + winner);
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getValue)
+                .orElseThrow();
+
+        String winners = finalRoundResult.entrySet()
+                .stream()
+                .filter(entry -> Objects.equals(entry.getValue().length(), maxForward.length()))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.joining(DELIMITER));
+
+        printMessage(String.format("\n%s%s", winners, WINNER_PRESENTATION));
     }
 }
