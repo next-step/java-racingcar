@@ -14,7 +14,7 @@ public class OutputView {
     public void printResult(List<Car> cars) {
         for (int i = 0; i < cars.size(); i++) {
             int movement = cars.get(i).getMovement();
-            System.out.println(plusMovement(movement));
+            System.out.println(cars.get(i).getName() + " : " + plusMovement(movement));
             result.setLength(INITIALIZATION);
         }
         printVacuum();
