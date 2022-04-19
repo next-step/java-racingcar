@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.Car;
 import racing.domain.Position;
@@ -16,10 +17,17 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class CarTest {
 
+    @DisplayName("이름이 공백이거나 null인 경우 예외를 던진다")
+    @ParameterizedTest
+    @NullAndEmptySource
+    void invalidCarName(String name) {
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> new Car(name));
+    }
+
     @DisplayName("이름 5글자를 초과하면 예외를 던진다")
     @ParameterizedTest
     @ValueSource(strings = {"Super Car", "Porsche", "Sports SUV"})
-    void carMoveForward(String name) {
+    void validCarName(String name) {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> new Car(name));
     }
 
