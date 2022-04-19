@@ -1,8 +1,7 @@
 package racingcar.domain;
 
-import racingcar.domain.input.InputCarCount;
-import racingcar.domain.input.InputRoundCount;
-import racingcar.util.ConditionGenerator;
+import racingcar.dto.InputCar;
+import racingcar.dto.InputRoundCount;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ public class RacingGame {
     private Round round;
     private List<Car> cars;
 
-    public RacingGame(InputCarCount inputCar, InputRoundCount inputRound) {
+    public RacingGame(InputCar inputCar, InputRoundCount inputRound) {
         if (isNull(inputCar, inputRound)) {
             throw new IllegalArgumentException();
         }
@@ -19,7 +18,7 @@ public class RacingGame {
         round = inputRound.toRound();
     }
 
-    private boolean isNull(InputCarCount carCount, InputRoundCount roundCount) {
+    private boolean isNull(InputCar carCount, InputRoundCount roundCount) {
         return carCount == null || roundCount == null;
     }
 
@@ -34,6 +33,6 @@ public class RacingGame {
     }
 
     private void roundProceed() {
-        cars.forEach(car -> car.stopOrGo(ConditionGenerator.getInstance().generateRandomCondition()));
+        cars.forEach(car -> car.move());
     }
 }
