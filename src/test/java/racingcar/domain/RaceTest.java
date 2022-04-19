@@ -59,19 +59,4 @@ public class RaceTest {
 
         assertThat(race.getWinners().size()).isEqualTo(carNames.size());
     }
-
-    @Test
-    void 특정_우승자_테스트() {
-        List<Condition> conditions = new ArrayList<>();
-        conditions.add(new TrueCondition());
-        conditions.add(new FalseCondition());
-        conditions.add(new FalseCondition());
-
-        Race race = new Race(carNames, 5, conditions);
-        race.startRace();
-
-        List<String> expectedWinners = new ArrayList<>();
-        expectedWinners.add(carNames.get(0));
-        assertThat(race.getWinners()).isEqualTo(expectedWinners);
-    }
 }
