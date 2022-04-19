@@ -18,7 +18,7 @@ public class Car {
     }
 
     public void proceedWithPolicy(ProceedPolicy proceedPolicy) {
-        if (proceedPolicy.canMoveForward(this)) {
+        if (proceedPolicy.canMoveForward()) {
             proceed();
         }
     }
