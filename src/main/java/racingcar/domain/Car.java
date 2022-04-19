@@ -10,9 +10,6 @@ public class Car {
 	private int valueToMovable;
 	private String status = "";
 
-	public Car() {
-	}
-
 	public Car(MoveStrategy moveStrategy) {
 		this.moveStrategy = moveStrategy;
 	}

@@ -10,6 +10,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import racingcar.util.generator.RandomNumberGenerator;
+import racingcar.util.strategy.move.CarMoveStrategy;
+
 class CarsTest {
 
 	@ParameterizedTest
@@ -18,7 +21,7 @@ class CarsTest {
 	void getCarsSize(int number) {
 		List<Car> carList = new ArrayList<>();
 		for (int i = 0; i < number; i++) {
-			carList.add(new Car());
+			carList.add(new Car(new RandomNumberGenerator(), new CarMoveStrategy()));
 		}
 
 		Cars cars = new Cars(carList);
@@ -31,7 +34,7 @@ class CarsTest {
 	 void getCar() {
 		List<Car> carList = new ArrayList<>();
 		for (int i = 0; i < 2; i++) {
-			carList.add(new Car());
+			carList.add(new Car(new RandomNumberGenerator(), new CarMoveStrategy()));
 		}
 
 		Cars cars = new Cars(carList);
