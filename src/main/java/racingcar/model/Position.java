@@ -2,7 +2,7 @@ package racingcar.model;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
 
   private final int value;
 
@@ -19,6 +19,7 @@ public class Position {
     return value;
   }
 
+  @Override
   public int compareTo(Position other) {
     return value - other.value;
   }
