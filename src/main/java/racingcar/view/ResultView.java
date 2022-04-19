@@ -1,8 +1,6 @@
 package racingcar.view;
 
-import racingcar.Car;
-
-import java.util.List;
+import racingcar.Cars;
 
 public class ResultView {
 
@@ -12,8 +10,8 @@ public class ResultView {
         throw new IllegalStateException("Utility class.");
     }
 
-    public static void printCarsPosition (List<Car> cars) {
-        cars.forEach(car -> print(car.getDistance()));
+    public static void printCarsPosition (Cars cars) {
+        cars.getCars().forEach(car -> print(car.getDistance()));
         System.out.println();
     }
 

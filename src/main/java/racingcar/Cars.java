@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.pattern.NumberGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,4 +27,15 @@ public class Cars {
             throw new IllegalArgumentException("자동차의 개수는 음수가 될 수 없습니다.");
         }
     }
+
+    public void play(NumberGenerator numberGenerator) {
+        for (Car car:cars) {
+            car.play(numberGenerator.generate());
+        }
+    }
+
+    public List<Car> getCars(){
+        return cars;
+    }
+
 }

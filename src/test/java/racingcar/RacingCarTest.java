@@ -2,9 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
+import racingcar.pattern.RandomNumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -15,12 +13,9 @@ class RacingCarTest  {
         int carCount = 4;
         int round = -1;
 
-        List<Car> cars = new ArrayList<>();
-        for (int number = 0; number < carCount; number++) {
-            cars.add(new Car());
-        }
-
-        assertThatThrownBy(() -> new RacingCar(cars, round))
+        Cars cars = new Cars(Cars.createCars(carCount));
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        assertThatThrownBy(() -> new RacingCar(cars, round, randomNumberGenerator))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("round는 음수가 될 수 없습니다");
     }
@@ -31,12 +26,9 @@ class RacingCarTest  {
         int carCount = 4;
         int round = 4;
 
-        List<Car> cars = new ArrayList<>();
-        for (int number = 0; number < carCount; number++) {
-            cars.add(new Car());
-        }
-
-        RacingCar racingCar = new RacingCar(cars, round);
+        Cars cars = new Cars(Cars.createCars(carCount));
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        RacingCar racingCar = new RacingCar(cars, round, randomNumberGenerator);
 
         for (int currentRound = 0; currentRound < round; currentRound++) {
             racingCar.playRound();

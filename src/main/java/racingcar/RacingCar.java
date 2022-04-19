@@ -1,16 +1,16 @@
 package racingcar;
 
-import java.security.SecureRandom;
-import java.util.List;
+import racingcar.pattern.NumberGenerator;
 
-public class RacingCar implements NumberGenerator {
-    private List<Car> cars;
+public class RacingCar  {
+    private Cars cars;
     private int round;
-    private SecureRandom random = new SecureRandom();
+    private final NumberGenerator numberGenerator;
 
-    public RacingCar(List<Car> cars, int round) {
+    public RacingCar(Cars cars, int round, NumberGenerator numberGenerator) {
         this.cars = cars;
         this.setRound(round);
+        this.numberGenerator = numberGenerator;
     }
 
     private void setRound(int round) {
@@ -22,9 +22,7 @@ public class RacingCar implements NumberGenerator {
 
     public void playRound() {
         decreaseRound();
-        for (Car car:cars) {
-            car.play(generateNumber());
-        }
+        cars.play(numberGenerator);
     }
 
     private void decreaseRound() {
@@ -34,8 +32,4 @@ public class RacingCar implements NumberGenerator {
         round = round - 1;
     }
 
-    @Override
-    public int generateNumber() {
-        return this.random.nextInt(MAX +1);
-    }
 }

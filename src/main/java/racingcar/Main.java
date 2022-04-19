@@ -1,9 +1,8 @@
 package racingcar;
 
+import racingcar.pattern.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
-
-import java.util.List;
 
 public class Main {
 
@@ -12,8 +11,9 @@ public class Main {
         int carCount = InputView.getCarCount();
         int round = InputView.getGameRound();
 
-        List<Car> cars = CarFactory.createCars(carCount);
-        RacingCar racingCar = new RacingCar(cars, round);
+        Cars cars = new Cars(Cars.createCars(carCount));
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        RacingCar racingCar = new RacingCar(cars, round, randomNumberGenerator);
 
         for (int currentRound = 0; currentRound < round; currentRound++) {
             racingCar.playRound();
