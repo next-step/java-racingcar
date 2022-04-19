@@ -2,7 +2,7 @@ package racingcar.model;
 
 public final class Distance {
     public static final Distance ZERO = new Distance(0);
-    public static final Distance MOVE_STATE = new Distance(1);
+    public static final Distance ONE = new Distance(1);
 
     private final int value;
 

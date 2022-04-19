@@ -3,13 +3,15 @@ package racingcar.model;
 import java.util.Objects;
 
 public final class Car {
+    private static final Distance INIT_STATE = Distance.ZERO;
+    private static final Distance MOVE_STATE = Distance.ONE;
     private final CarName name;
     private final Distance state;
 
     public Car(CarName name) {
         validate(name);
         this.name = name;
-        this.state = Distance.ZERO;
+        this.state = INIT_STATE;
     }
 
     public Car(CarName name, Distance state) {
@@ -29,7 +31,7 @@ public final class Car {
 
     public Car move(MovingStrategy movingStrategy) {
         if (movingStrategy.movable()) {
-            return new Car(name, Distance.add(state, Distance.MOVE_STATE));
+            return new Car(name, Distance.add(state, MOVE_STATE));
         }
         return new Car(name, new Distance(state.value()));
     }

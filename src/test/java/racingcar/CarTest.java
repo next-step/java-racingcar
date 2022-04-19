@@ -21,7 +21,7 @@ public class CarTest {
                 .isInstanceOf(NullPointerException.class)
                 .hasMessageContaining("name is null");
 
-        assertThatThrownBy(() -> new Car(null, Distance.MOVE_STATE))
+        assertThatThrownBy(() -> new Car(null, Distance.ONE))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessageContaining("name is null");
     }
@@ -57,7 +57,7 @@ public class CarTest {
 
         Car nextCar = car.move(() -> true);
 
-        assertThat(nextCar.state()).isEqualTo(Distance.add(car.state(), Distance.MOVE_STATE));
+        assertThat(nextCar.state()).isEqualTo(Distance.add(car.state(), Distance.ONE));
     }
 
     @Test
