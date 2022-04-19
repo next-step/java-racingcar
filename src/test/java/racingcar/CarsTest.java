@@ -66,7 +66,7 @@ public class CarsTest {
 
         // when
         ResultCars resultCars = ResultCars.of(count, names, states);
-        List<CarName> winner = resultCars.value().findWinner();
+        List<CarName> winner = resultCars.value().findWinnerCarNames();
 
         // then
         assertThat(winner.get(0)).isEqualTo(CarName.from("test1"));

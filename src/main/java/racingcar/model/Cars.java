@@ -42,15 +42,19 @@ public final class Cars {
                 .collect(Collectors.toList());
     }
 
-    public List<CarName> findWinner() {
-        final int maxState = cars.stream()
-                .mapToInt(car -> car.state().value())
-                .max()
-                .orElseThrow(NoSuchElementException::new);
+    public List<CarName> findWinnerCarNames() {
+        final int maxState = getMaxState();
 
         return cars.stream()
                 .filter(car -> car.state().value() == maxState)
                 .map(Car::name)
                 .collect(Collectors.toList());
+    }
+
+    private int getMaxState() {
+        return cars.stream()
+                .mapToInt(car -> car.state().value())
+                .max()
+                .orElseThrow(NoSuchElementException::new);
     }
 }
