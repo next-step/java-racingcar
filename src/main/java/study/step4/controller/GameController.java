@@ -14,13 +14,6 @@ public class GameController {
     private final InputView inputView;
     private final ResultView resultView;
 
-    public void start() {
-        RacingGame racingGame = raceGameSetting();
-
-        gameplay(racingGame);
-        winners(racingGame);
-    }
-
     public GameController() {
         this(new InputView(), new ResultView());
     }
@@ -30,8 +23,22 @@ public class GameController {
         this.resultView = resultView;
     }
 
-    private void winners(RacingGame racingGame) {
-        resultView.winners(racingGame.winners());
+    private Cars carSetting() {
+        return new Cars(inputView.carSetting());
+    }
+
+    private RacingGame raceGameSetting() {
+        Cars cars = carSetting();
+        int gameCount = gameCountSetting();
+
+        return new RacingGame(cars, gameCount);
+    }
+
+    public void start() {
+        RacingGame racingGame = raceGameSetting();
+
+        gameplay(racingGame);
+        winners(racingGame);
     }
 
     private void gameplay(RacingGame racingGame) {
@@ -42,18 +49,13 @@ public class GameController {
         }
     }
 
-    private RacingGame raceGameSetting() {
-        Cars cars = carSetting();
-        int gameCount = gameCountSetting();
 
-        return new RacingGame(cars, gameCount);
+    private void winners(RacingGame racingGame) {
+        resultView.winners(racingGame.winners());
     }
+
 
     private int gameCountSetting() {
         return inputView.gameCountSetting();
-    }
-
-    private Cars carSetting() {
-        return new Cars(inputView.carSetting());
     }
 }
