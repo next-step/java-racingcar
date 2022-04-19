@@ -1,6 +1,5 @@
 package racingcar.racing;
 
-import racingcar.generator.NumberGenerator;
 import racingcar.play.ZeroToNineRandomPolicy;
 import racingcar.racing.dto.RacingGameParam;
 import racingcar.view.InputView;
@@ -11,11 +10,14 @@ public class App {
 
         RacingGameParam racingGameParam = InputView.enterParam();
 
-        RacingGame racingGame = new RacingGame(new ZeroToNineRandomPolicy(new NumberGenerator()));
+        RacingGame racingGame = new RacingGame(new ZeroToNineRandomPolicy());
 
-        racingGame.startRacingGame(racingGameParam);
+        racingGame.startRacingGame(racingGameParam.getCarNumber(), racingGameParam.getTryNumber());
 
-        ResultView.show(racingGameParam.getTryNumber(), racingGame);
+        for(int i = 0 ; i < racingGameParam.getTryNumber(); i++) {
+            ResultView.show(racingGame.getResult(i));
+        }
+
     }
 
 }

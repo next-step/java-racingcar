@@ -5,7 +5,8 @@ import java.util.regex.Pattern;
 
 public class InputStringValidator {
 
-    private static final Pattern onlyNumberPattern = Pattern.compile("^[0-9]*?");
+    private static final Pattern onlyNumberPattern = Pattern.compile("^[0-9]*$");
+
     private static final String WRONG_INPUT_ERROR_MESSAGE = "잘못된 입력값 입니다";
 
     public static int valid(String input) {

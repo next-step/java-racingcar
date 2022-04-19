@@ -1,7 +1,6 @@
 package racingcar.view;
 
-import racingcar.racing.RacingGame;
-import racingcar.racing.RacingRecord;
+import racingcar.racing.model.RacingRecord;
 
 import java.util.List;
 
@@ -12,14 +11,14 @@ public class ResultView {
     private static final StringBuilder strBuilder = new StringBuilder("\n\n실행 결과\n");
 
 
-    public static void show(int tryNumber, RacingGame racingGame) {
+    public static void show(List<RacingRecord> recordList) {
         printHead();
 
-        for (int i = 0; i < tryNumber; i++) {
-            printBody(racingGame.getResult(i));
-        }
+        printBody(recordList);
 
+        printFoot();
     }
+
 
     private static void printHead() {
         System.out.print(strBuilder.toString());
@@ -29,20 +28,17 @@ public class ResultView {
         for (RacingRecord record : racingRecords) {
             printDash(record);
         }
-
-        printFoot();
     }
-
-    private static void printFoot() {
-        System.out.println(EMPTY);
-    }
-
 
     private static void printDash(RacingRecord racingRecord) {
         for (int i = 0; i < racingRecord.getCurPos(); i++) {
             System.out.print(DASH);
         }
 
+        System.out.println(EMPTY);
+    }
+
+    private static void printFoot() {
         System.out.println(EMPTY);
     }
 }

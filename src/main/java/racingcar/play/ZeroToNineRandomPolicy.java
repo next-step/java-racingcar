@@ -1,17 +1,16 @@
 package racingcar.play;
-import racingcar.generator.Generator;
 
-public class ZeroToNineRandomPolicy implements RacingGamePolicy {
+import java.util.Random;
 
-    Generator<Integer, Integer> numberGenerator;
+public class ZeroToNineRandomPolicy implements RacingMovePolicy {
 
-    public ZeroToNineRandomPolicy(Generator<Integer, Integer> generator) {
-        numberGenerator = generator;
-    }
+    private static final Random random = new Random();
+
+    private static final int FORWARD_CONDITION = 4;
 
     @Override
-    public int racing(int value) {
-        return numberGenerator.generate(value);
+    public boolean racing(int value) {
+        return random.nextInt(value) > FORWARD_CONDITION;
     }
 
 }

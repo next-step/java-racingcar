@@ -1,19 +1,20 @@
 package racingcar.racing.repository;
 
-import racingcar.racing.RacingCar;
-import racingcar.racing.RacingRecord;
+import racingcar.racing.model.RacingRecord;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class RacingGameRepository {
     private static final Map<Integer, RacingRecord> store = new HashMap<>();
 
-    private int sequence = 0;
+    private static int sequence = 0;
 
-    public void save(RacingCar racingCar, int tryNumber) {
-        RacingRecord record= new RacingRecord(racingCar.getId(), racingCar.getxCoordinate(), tryNumber);
-        store.put(sequence++, record);
+    public void save(RacingRecord racingRecord) {
+        store.put(sequence++, racingRecord);
     }
 
     public List<RacingRecord> findAllById(int carId) {
@@ -21,7 +22,7 @@ public class RacingGameRepository {
 
         return recordList.stream()
                 .filter(racingRecord -> racingRecord.getCarId() == carId)
-                .sorted(Comparator.comparing(RacingRecord::getCarId))
+                .sorted()
                 .collect(Collectors.toList());
     }
 
@@ -30,7 +31,7 @@ public class RacingGameRepository {
 
         return recordList.stream()
                 .filter(record -> record.getTryNumber() == tryNumber)
-                .sorted(Comparator.comparing(RacingRecord::getCarId))
+                .sorted()
                 .collect(Collectors.toList());
 
     }
