@@ -1,7 +1,5 @@
 package racing.domain;
 
-import java.util.List;
-
 public class Competition {
     private final Cars cars;
     private final int round;
@@ -11,14 +9,14 @@ public class Competition {
         this.round = round;
     }
 
-    public List<Cars> progressCompetitionAndGetEntireRecords(Movable movable) {
+    public RoundRecords progressCompetitionAndGetEntireRecords(Movable movable) {
         RoundRecords records = new RoundRecords();
         for (int i = 0; i < round; i++) {
             progressEachRound(movable);
             saveEachRoundRecord(records);
         }
 
-        return records.getEntireRecords();
+        return records;
     }
 
     private void progressEachRound(Movable movable) {
@@ -27,9 +25,5 @@ public class Competition {
 
     private void saveEachRoundRecord(RoundRecords records) {
         records.addRoundRecord(cars);
-    }
-
-    public List<Car> getCarsWithMaxDistance() {
-        return cars.getCarsWithMaxDistance();
     }
 }

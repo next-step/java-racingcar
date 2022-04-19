@@ -19,7 +19,13 @@ public class RoundRecords {
         return Collections.unmodifiableList(records);
     }
 
-    public Cars getLastResult() {
+    public List<Car> getWinningCars() {
+        return getLastResult().getCarsWithMaxDistance();
+    }
+
+    private Cars getLastResult() {
         return records.get(records.size() - 1);
     }
+
+
 }

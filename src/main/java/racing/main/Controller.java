@@ -1,9 +1,6 @@
 package racing.main;
 
-import racing.domain.Car;
-import racing.domain.Cars;
-import racing.domain.Competition;
-import racing.domain.RandomMovableCondition;
+import racing.domain.*;
 import racing.ui.InputView;
 import racing.ui.ResultView;
 
@@ -15,10 +12,10 @@ public class Controller {
         int round = InputView.inputNumberOfRounds();
 
         Competition competition = new Competition(carNames, round);
-        List<Cars> records = competition.progressCompetitionAndGetEntireRecords(new RandomMovableCondition());
-        ResultView.printEntireStatus(records);
+        RoundRecords records = competition.progressCompetitionAndGetEntireRecords(new RandomMovableCondition());
+        ResultView.printEntireStatus(records.getEntireRecords());
 
-        List<Car> winningCars = competition.getCarsWithMaxDistance();
+        List<Car> winningCars = records.getWinningCars();
         ResultView.printWinneringCars(winningCars);
     }
 }
