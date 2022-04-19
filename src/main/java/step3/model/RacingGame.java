@@ -1,27 +1,33 @@
 package step3.model;
 
-import step3.view.dto.RacingConfigDto;
-
 public class RacingGame {
 
     private final int tryCount;
     private final Cars cars;
+    private final GameResult gameResult;
 
-    public RacingGame(RacingConfigDto racingConfigDto) {
-        this.tryCount = racingConfigDto.getTryCount();
-        this.cars = new Cars(racingConfigDto.getCarCount(), racingConfigDto.getTryStrategy());
+    public RacingGame(Count tryCount, Names names, TryStrategy tryStrategy) {
+        this.tryCount = tryCount.getValue();
+        this.cars = new Cars(names, tryStrategy);
+        this.gameResult = new GameResult();
     }
 
     public GameResult race() {
-
-        GameResult gameResult = new GameResult();
-
         for (int i = 0; i < tryCount; i++) {
             cars.tryOnceEach();
-            EachTryResult eachTryResult = cars.getEachTryResult();
-            gameResult.addTryResult(eachTryResult);
+            updateGameResult();
         }
+        updateWinner();
 
         return gameResult;
+    }
+
+    private void updateGameResult() {
+        EachTryResult eachTryResult = cars.getEachTryResult();
+        gameResult.addTryResult(eachTryResult);
+    }
+
+    private void updateWinner() {
+        gameResult.updateWinner();
     }
 }

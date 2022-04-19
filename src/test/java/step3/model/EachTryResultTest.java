@@ -1,12 +1,10 @@
 package step3.model;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DisplayNameGeneration;
-import org.junit.jupiter.api.DisplayNameGenerator;
-import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.List;
+import org.junit.jupiter.api.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,13 +12,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("각 시도 결과 테스트")
 class EachTryResultTest {
 
+    Map<String, Integer> map;
+
+    @BeforeEach
+    void setUp() {
+        map = new HashMap<>();
+        map.put("가", 1);
+        map.put("나", 2);
+        map.put("다", 2);
+    }
+
     @Test
-    void 성공_횟수_리스트를_입력_받아서_1회_시도의_결과를_기록하는_객체를_생성한다() {
-        List<Integer> successCount = Arrays.asList(1, 1, 1);
+    void 문자열_과_정수형_맵을_입력_받아서_1회_시도의_결과를_기록하는_객체를_생성한다() {
+        EachTryResult eachTryResult = new EachTryResult(map);
+        assertThat(eachTryResult.getMoveCountEach()).isEqualTo(map);
+    }
 
-        EachTryResult eachTryResult = new EachTryResult(successCount);
-
-        assertThat(eachTryResult.getSuccessCounts()).isEqualTo(successCount);
+    @Test
+    void 각_회차까지의_결과의_우승자의_이름을_구한다() {
+        EachTryResult eachTryResult = new EachTryResult(map);
+        assertThat(eachTryResult.getWinnerNames()).containsExactly("나", "다");
     }
 
 }

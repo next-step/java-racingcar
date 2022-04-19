@@ -13,23 +13,24 @@ class CarTest {
 
     private final TryStrategy alwaysTrueStrategy = () -> true;
     private final TryStrategy alwaysFalseStrategy = () -> false;
+    private final Name name = new Name("가나다");
 
     @Test
     void 전진하는_조건을_만족하는_경우_전진에_성공한_횟수가_1_증가() {
-        Car car = new Car(alwaysTrueStrategy);
+        Car car = new Car(name, alwaysTrueStrategy);
 
         car.tryOnce();
 
-        assertThat(car.getSuccessCount()).isEqualTo(1);
+        assertThat(car.getMoveCount()).isEqualTo(1);
     }
 
     @Test
     void 전진하는_조건을_만족하지_않는_경우_전진에_성공한_횟수가_증가하지_않음() {
-        Car car = new Car(alwaysFalseStrategy);
+        Car car = new Car(name, alwaysFalseStrategy);
 
         car.tryOnce();
 
-        assertThat(car.getSuccessCount()).isEqualTo(0);
+        assertThat(car.getMoveCount()).isZero();
     }
 
 }
