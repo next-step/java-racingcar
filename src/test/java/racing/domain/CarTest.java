@@ -16,12 +16,14 @@ public class CarTest {
 
     @Test
     void 차가_전진() {
-        assertThat(car.move(() -> true).getDistance()).isEqualTo(1);
+        car.move(() -> true);
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 
     @Test
     void 차가_정지() {
-        assertThat(car.move(() -> false).getDistance()).isEqualTo(0);
+        car.move(() -> false);
+        assertThat(car.getDistance()).isEqualTo(0);
     }
 
     @Test

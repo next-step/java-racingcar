@@ -1,7 +1,6 @@
 package racing.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -24,16 +23,18 @@ public class Cars {
         this.cars = cars;
     }
 
+    Cars(Cars cars) {
+        this(cars.getCars());
+    }
+
     public List<Car> getCars() {
         return cars;
     }
 
-    Cars move(Movable movable) {
-        List<Car> carList = new ArrayList<>(cars.size());
+    void move(Movable movable) {
         for (Car car : cars) {
-            carList.add(car.move(movable));
+            car.move(movable);
         }
-        return new Cars(carList);
     }
 
     List<Car> getCarsWithMaxDistance(final Cars snapshot) {

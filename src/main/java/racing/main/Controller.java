@@ -15,10 +15,10 @@ public class Controller {
         int round = InputView.inputNumberOfRounds();
 
         Competition competition = new Competition(carNames, round);
-        List<Cars> snapshots = competition.progressEntireRoundAndRecordAllSnapshot(new RandomMovableCondition());
-        ResultView.printEntireStatus(snapshots);
+        List<Cars> records = competition.progressCompetitionAndgetEntireRecords(new RandomMovableCondition());
+        ResultView.printEntireStatus(records);
 
-        List<Car> winningCars = competition.getCarsWithMaxDistance(snapshots.get(snapshots.size() - 1));
+        List<Car> winningCars = competition.getCarsWithMaxDistance();
         ResultView.printWinneringCars(winningCars);
     }
 }

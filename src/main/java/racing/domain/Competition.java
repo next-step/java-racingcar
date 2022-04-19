@@ -1,30 +1,36 @@
 package racing.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Competition {
     private final Cars cars;
     private final int round;
+    private final RoundRecords records;
 
     public Competition(String[] carNames, int round) {
         cars = new Cars(carNames);
         this.round = round;
+        this.records = new RoundRecords();
     }
 
-    public List<Cars> progressEntireRoundAndRecordAllSnapshot(Movable movable) {
-        List<Cars> snapshots = new ArrayList<>(round);
+    public List<Cars> progressCompetitionAndgetEntireRecords(Movable movable) {
         for (int i = 0; i < round; i++) {
-            snapshots.add(i, progressEachRound(movable));
+            progressEachRound(movable);
+            saveEachRoundRecord();
         }
-        return snapshots;
+
+        return records.getEntrieRecords();
     }
 
-    private Cars progressEachRound(Movable movable) {
-        return cars.move(movable);
+    private void progressEachRound(Movable movable) {
+        cars.move(movable);
     }
 
-    public List<Car> getCarsWithMaxDistance(Cars snapshot) {
-        return cars.getCarsWithMaxDistance(snapshot);
+    private void saveEachRoundRecord() {
+        records.addRoundRecord(cars);
+    }
+
+    public List<Car> getCarsWithMaxDistance() {
+        return cars.getCarsWithMaxDistance(records.getLastResult());
     }
 }
