@@ -4,8 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.Car;
 import racing.domain.Position;
@@ -13,23 +13,8 @@ import racing.domain.Position;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class CarTest {
-
-    @DisplayName("이름이 공백이거나 null인 경우 예외를 던진다")
-    @ParameterizedTest
-    @NullAndEmptySource
-    void invalidCarName(String name) {
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> new Car(name));
-    }
-
-    @DisplayName("이름 5글자를 초과하면 예외를 던진다")
-    @ParameterizedTest
-    @ValueSource(strings = {"Super Car", "Porsche", "Sports SUV"})
-    void validCarName(String name) {
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> new Car(name));
-    }
 
     @DisplayName("getName()은 자동차 이름을 반환")
     @ParameterizedTest
@@ -37,6 +22,26 @@ class CarTest {
     void getName(String name) {
         Car carA = new Car(name);
         assertThat(carA.getName()).isEqualTo(name);
+    }
+
+    @DisplayName("getPosition()은 자동차 위치를 반환")
+    @ParameterizedTest
+    @CsvSource(value = {"carA,true,1", "carB,false,0"}, delimiter = ',')
+    void getPosition(String name, Boolean shouldMove, Integer result) {
+        Car car = new Car(name);
+        car.run(() -> shouldMove);
+        assertThat(car.getPosition()).isEqualTo(new Position(result));
+    }
+
+    @DisplayName("자동차A의 위치가 자동차B 보다 앞서면 1, 같으면 0, 뒤쳐지면 -1 반환")
+    @ParameterizedTest
+    @CsvSource(value = {"carA,true,carB,true,0", "carA,true,carB,false,1", "carA,false,carB,true,-1"}, delimiter = ',')
+    void compareToTest(String nameA, Boolean moveA, String nameB, Boolean moveB, Integer result) {
+        Car carA = new Car(nameA);
+        carA.run(() -> moveA);
+        Car carB = new Car(nameB);
+        carB.run(() -> moveB);
+        assertThat(carA.compareTo(carB)).isEqualTo(result);
     }
 
     @DisplayName("자동차의 이동횟수 초기값은 0")

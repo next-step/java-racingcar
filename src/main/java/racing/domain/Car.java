@@ -4,15 +4,11 @@ import racing.domain.strategies.CarMoveStrategy;
 
 public class Car implements Comparable<Car> {
     private static final int RUN_STEP = 1;
-    private static final String NAME_EXCEPTION_MESSAGE = "자동차 이름은 5글자를 초과하지 않아야합니다.";
     private final Position position;
-    private final String name;
+    private final CarName name;
 
     public Car(String nameOfCar) {
-        if (nameOfCar == null || nameOfCar.isBlank() || nameOfCar.length() > 5) {
-            throw new IllegalArgumentException(NAME_EXCEPTION_MESSAGE);
-        }
-        name = nameOfCar;
+        name = new CarName(nameOfCar);
         position = new Position();
     }
 
@@ -23,7 +19,7 @@ public class Car implements Comparable<Car> {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public Position getPosition() {
