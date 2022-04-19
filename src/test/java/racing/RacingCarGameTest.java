@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class RacingCarGameTest {
 
-    @DisplayName("자동차 이름을 입력하지 않으면 예외 발생")
+    @DisplayName("자동차 이름을 입력하지 않으면 예외를 던진다")
     @Test
     void createGameThrowException() {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> new RacingCarGame(Collections.emptyList(), createMoveStrategy()));
@@ -27,7 +27,7 @@ class RacingCarGameTest {
         return new CarMoveStrategyImpl(new CustomRandomImpl());
     }
 
-    @DisplayName("이동횟수를 1 보다 작게 입력하면 예외 발생")
+    @DisplayName("이동횟수를 1 보다 작게 입력하면 예외를 던진다")
     @ParameterizedTest
     @ValueSource(ints = {-1, 0})
     void runThrowException(int numberOfMoves) {

@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class CarTest {
 
-    @DisplayName("이름 5글자를 초과하면 예외 발생")
+    @DisplayName("이름 5글자를 초과하면 예외를 던진다")
     @ParameterizedTest
     @ValueSource(strings = {"Super Car", "Porsche", "Sports SUV"})
     void carMoveForward(String name) {
