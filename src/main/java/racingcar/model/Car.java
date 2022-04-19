@@ -11,8 +11,8 @@ public class Car {
     private PositiveNumber moveDistance;
     private List<PositiveNumber> moveDistanceTrace;
 
-    Car(int moveDistance) {
-        this.id = new Identity();
+    Car(int moveDistance, String id) {
+        this.id = new Identity(id);
         this.moveDistance = new PositiveNumber(moveDistance);
         this.moveDistanceTrace = new ArrayList<>();
         if (moveDistance > 0) {

@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.*;
 import racingcar.pattern.ValueGenerateStrategy;
+import racingcar.util.SplitString;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -17,23 +18,24 @@ public class RacingCarGame {
     }
 
     public void gameStart() {
-        PositiveNumber carNumber = new PositiveNumber(InputView.carNumber());
+        List<String> carNames = SplitString.split(InputView.carNames());
         PositiveNumber trialNumber = new PositiveNumber(InputView.trialNumber());
 
         OutputView.guide();
-        racingCarGame(carNumber, trialNumber);
+        racingCarGame(carNames, trialNumber);
     }
 
-    private void racingCarGame(PositiveNumber carNumber, PositiveNumber trialNumber) {
-        List<Car> cars = CarGroup.createCars(carNumber);
+    private void racingCarGame(List<String> carNames, PositiveNumber trialNumber) {
+        List<Car> cars = CarGroup.createCars(carNames);
         CarGroup carGroup = new CarGroup(cars);
 
         carGroup.moveCarGroup(trialNumber, valueGenerateStrategy);
 
-        Map<Identity, CarMoveDistance> CarMoveDistanceMap = getCarMoveDistanceMap(cars);
+        Map<Identity, CarMoveDistance> carMoveDistanceMap = getCarMoveDistanceMap(cars);
         for (int trialStep = 0; trialStep < trialNumber.getNumber(); trialStep++) {
-            OutputView.racingResult(new PositiveNumber(trialStep), CarMoveDistanceMap);
+            OutputView.racing(new PositiveNumber(trialStep), carMoveDistanceMap);
         }
+        OutputView.printRacingGameResult(carGroup.getWinners());
     }
 
     private Map<Identity, CarMoveDistance> getCarMoveDistanceMap(List<Car> cars) {
