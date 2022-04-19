@@ -21,9 +21,13 @@ public final class RacingCar {
     }
 
     private void validate(int roundCount) {
-        if (roundCount < 0) {
+        if (isNegative(roundCount)) {
             throw new IllegalArgumentException("주어진 횟수는 0 이상이어야 합니다. 입력 값 : " + roundCount);
         }
+    }
+
+    private boolean isNegative(int value) {
+        return value < 0;
     }
 
     public List<RoundResult> play(MovingStrategy movingStrategy) {

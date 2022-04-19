@@ -12,9 +12,13 @@ public final class Distance {
     }
 
     private void validate(int value) {
-        if (value < 0) {
+        if (isNegative(value)) {
             throw new IllegalArgumentException(String.format("Distance : 음수(%d)는 허용하지 않습니다.", value));
         }
+    }
+
+    private boolean isNegative(int value) {
+        return value < 0;
     }
 
     public int value() {
