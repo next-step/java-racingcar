@@ -1,23 +1,24 @@
 package racingCar;
 
 public class Car {
-    int distance = 0;
+    private int distance = 0;
+    private IntegerGeneratorStrategy strategy;
+
+    Car(IntegerGeneratorStrategy strategy) {
+        this.strategy = strategy;
+    }
 
     public void tryMove() {
-        if (canMoveForward(getRandomValue())) {
+        if (canMoveForward(strategy.generate())) {
             moveForward();
         }
     }
 
-    public boolean canMoveForward(int number) {
+    private boolean canMoveForward(int number) {
         return number >= 4;
     }
 
-    private int getRandomValue() {
-        return RandomInteger.next();
-    }
-
-    public void moveForward() {
+    private void moveForward() {
         distance++;
     }
 

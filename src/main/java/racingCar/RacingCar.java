@@ -7,7 +7,7 @@ public class RacingCar {
 
         Car[] cars = new Car[numberOfCars];
         for (int i = 0; i < cars.length; i++) {
-            cars[i] = new Car();
+            cars[i] = new Car(new RandomIntegerGenerator());
         }
 
         for (int round = 0; round < numberOfRounds; round++) {
