@@ -20,7 +20,7 @@ public class Cars {
 
     public List<CarsPositionModel> toCarsPositionModel() {
         return cars.stream()
-                .map(car -> new CarsPositionModel(car.getCarName().getCarName(), car.getCarPosition().getPosition()))
+                .map(CarsPositionModel::from)
                 .collect(Collectors.toList());
     }
 
