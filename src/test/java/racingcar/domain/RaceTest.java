@@ -32,21 +32,23 @@ public class RaceTest {
     }
 
     @Test
-    void 자동차수와_경기_횟수_테스트() {
-        Race race = new Race(carNames, 5, new TrueCondition());
-        assertThat(race.getCarCount()).isEqualTo(3);
-        assertThat(race.getRaceCount()).isEqualTo(5);
-    }
-
-    @Test
     void 경주_테스트() {
-        Race race = new Race(carNames, 5, new TrueCondition());
+        Race race = new Race.RaceBuilder()
+                .setCarNames(carNames)
+                .setRaceCount(5)
+                .setCondition(new TrueCondition())
+                .build();
+
         race.startRace();
     }
 
     @Test
     void 랜덤_우승자_테스트() {
-        Race race = new Race(carNames, 5, new RaceCondition(10, 4));
+        Race race = new Race.RaceBuilder()
+                .setCarNames(carNames)
+                .setRaceCount(5)
+                .setCondition(new RaceCondition(10, 4))
+                .build();
         race.startRace();
 
         assertThat(race.getWinners()).isNotEmpty();
@@ -54,7 +56,12 @@ public class RaceTest {
 
     @Test
     void 다수_우승자_테스트() {
-        Race race = new Race(carNames, 5, new TrueCondition());
+        Race race = new Race.RaceBuilder()
+                .setCarNames(carNames)
+                .setRaceCount(5)
+                .setCondition(new TrueCondition())
+                .build();
+
         race.startRace();
 
         assertThat(race.getWinners().size()).isEqualTo(carNames.size());
