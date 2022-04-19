@@ -5,6 +5,7 @@ import racing.domain.Cars;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ResultView {
@@ -29,9 +30,10 @@ public class ResultView {
         stringBuilder.setLength(BUILDER_LENGTH);
         stringBuilder.append(car.getName());
         stringBuilder.append(DISPLAY_COLON);
-        IntStream.range(0, car.getPosition().getCurrentPosition())
+        String displayPosition = IntStream.range(0, car.getPosition().getCurrentPosition())
                 .mapToObj(i -> DISPLAY_MARK)
-                .forEach(stringBuilder::append);
+                .collect(Collectors.joining());
+        stringBuilder.append(displayPosition);
         System.out.println(stringBuilder);
     }
 
