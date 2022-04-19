@@ -13,12 +13,11 @@ public class Cars {
 		this.cars = cars;
 	}
 
-	public static Cars of(int carCount) {
-		List<Car> cars = new ArrayList<>();
-		for (int i = 0; i < carCount; i++) {
-			cars.add(new Car());
-		}
-		return new Cars(cars);
+	public static Cars of(CarNames carNames) {
+		return new Cars(carNames.values()
+			.stream()
+			.map(Car::new)
+			.collect(Collectors.toList()));
 	}
 
 	public void play(RandomGenerator randomGenerator) {
