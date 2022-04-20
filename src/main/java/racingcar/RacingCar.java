@@ -37,4 +37,12 @@ public class RacingCar {
     public int isLongestDistance(int longestDistance) {
         return Math.max(longestDistance, this.distance);
     }
+
+    public String myDistanceToString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < distance; i++) {
+            sb.append("-");
+        }
+        return sb.toString();
+    }
 }

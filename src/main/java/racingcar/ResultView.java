@@ -8,15 +8,13 @@ public class ResultView {
         for (RacingCar racingCar : racingCars) {
             System.out.print(racingCar.getCarName() + " : ");
             distanceToHyphen(racingCar);
-            System.out.println();
         }
         System.out.println();
     }
 
     private void distanceToHyphen(RacingCar racingCar) {
-        for (int i = 0; i < racingCar.getDistance(); i++) {
-            System.out.print("-");
-        }
+        String distance = racingCar.myDistanceToString();
+        System.out.println(distance);
     }
 
     public void winnerLogTrace(List<String> winners) {
