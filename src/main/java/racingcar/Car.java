@@ -5,6 +5,9 @@ public class Car {
     public final String name;
 
     public Car(String name) {
+        if (name.length() > 5 || name.length() < 1) {
+            throw new IllegalArgumentException("Car name size should between 1 and 5");
+        }
         this.position = 1;
         this.name = name;
     }
