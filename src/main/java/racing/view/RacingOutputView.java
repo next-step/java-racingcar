@@ -23,8 +23,8 @@ public class RacingOutputView {
 
   public void printWinner(Cars cars) {
     StringBuilder winnerSb = new StringBuilder();
-    for (String name : cars.getNames()) {
-      winnerSb.append(name + CAR_NAME_DELIMITER);
+    for (Car car : cars.getValues()) {
+      winnerSb.append(car.getCarName() + CAR_NAME_DELIMITER);
     }
     winnerSb.delete(winnerSb.length() - 2, winnerSb.length());
     System.out.println(winnerSb + "가 최종 우승했습니다");

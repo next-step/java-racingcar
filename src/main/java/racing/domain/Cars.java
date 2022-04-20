@@ -12,6 +12,7 @@ import racing.domain.strategy.MoveStrategy;
 
 public class Cars {
 
+  public static final String CAR_NAME_DELIMITER = ",";
   private final List<Car> values;
 
   public Cars(List<Car> values) {
@@ -19,22 +20,15 @@ public class Cars {
   }
 
   public static Cars newInstance(String carNames) {
-    return new Cars(Arrays.stream(carNames.split(","))
+    return new Cars(Arrays.stream(carNames.split(CAR_NAME_DELIMITER))
         .map(carName -> new Car(carName))
         .collect(Collectors.toList()));
   }
 
   public static Cars newInstance(String carNames, Distance distance) {
-    return new Cars(Arrays.stream(carNames.split(","))
+    return new Cars(Arrays.stream(carNames.split(CAR_NAME_DELIMITER))
         .map(carName -> new Car(carName, distance))
         .collect(Collectors.toList()));
-  }
-
-  public List<String> getNames() {
-    return values
-        .stream()
-        .map(Car::getCarName)
-        .collect(Collectors.toList());
   }
 
   public void attempt(MoveStrategy moveStrategy) {
@@ -62,19 +56,6 @@ public class Cars {
       maxDistance = car.getMaxDistance(maxDistance);
     }
     return maxDistance;
-  }
-
-  public boolean matchDistances(List<Distance> distances) {
-    if (values.size() != distances.size()) {
-      return false;
-    }
-
-    for (int i = 0; i < distances.size(); i++) {
-      if (!values.get(i).isDistanceEqual(distances.get(i))) {
-        return false;
-      }
-    }
-    return true;
   }
 
   @Override
