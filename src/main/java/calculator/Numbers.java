@@ -1,4 +1,4 @@
-package step_2;
+package calculator;
 
 import java.util.Arrays;
 import java.util.Collection;

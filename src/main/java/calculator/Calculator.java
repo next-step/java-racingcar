@@ -1,4 +1,4 @@
-package step_2;
+package calculator;
 
 public class Calculator {
 
