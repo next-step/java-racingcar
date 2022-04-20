@@ -18,9 +18,9 @@ public class Cars {
     this.values = values;
   }
 
-  public static Cars newInstance(String carNames, MoveStrategy moveStrategy) {
+  public static Cars newInstance(String carNames) {
     List<Car> cars = Arrays.stream(carNames.split(CAR_NAME_DELIMITER))
-        .map(carName -> new Car(carName, moveStrategy))
+        .map(carName -> new Car(carName))
         .collect(toList());
 
     return new Cars(cars);
@@ -33,9 +33,9 @@ public class Cars {
         .collect(Collectors.toList());
   }
 
-  public void attempt() {
+  public void attempt(MoveStrategy moveStrategy) {
     for (Car car : values) {
-      car.attempt();
+      car.attempt(moveStrategy);
     }
   }
 

@@ -15,9 +15,9 @@ class CarTest {
   @DisplayName("앞으로 1회 이동했을 때 이동 거리와 자동차 이름 확인")
   void oneMoveTest() {
     String carName = "car";
-    Car car = Car.newInstance(carName, new MustMoveStrategy());
+    Car car = Car.newInstance(carName);
 
-    car.attempt();
+    car.attempt(new MustMoveStrategy());
 
     assertAll(
         () -> assertThat(car.isDistanceEqual(new Distance(1))).isTrue(),
@@ -29,9 +29,10 @@ class CarTest {
   @DisplayName("앞으로 n회 이동했을 때 이동 거리와 자동차 이름 확인")
   @CsvSource(value = {"A|1|1", "B|2|2", "C|0|0", "D|10|10", "E|100|100"}, delimiter = '|')
   void nMoveTest(String carName, int attempt, int expected) {
-    Car car = Car.newInstance(carName, new MustMoveStrategy());
+    MustMoveStrategy mustMoveStrategy = new MustMoveStrategy();
+    Car car = Car.newInstance(carName);
     for (int i = 0; i < attempt; i++) {
-      car.attempt();
+      car.attempt(mustMoveStrategy);
     }
 
     assertAll(

@@ -4,25 +4,23 @@ import racing.domain.strategy.MoveStrategy;
 
 public class Car {
 
-  private Distance distance;
+  private final Distance distance;
   private final CarName carName;
-  private final MoveStrategy moveStrategy;
 
-  public Car(String carName, MoveStrategy moveStrategy) {
+  public Car(String carName) {
     this.distance = new Distance();
     this.carName = new CarName(carName);
-    this.moveStrategy = moveStrategy;
   }
 
-  public static Car newInstance(String carName, MoveStrategy moveStrategy) {
-    return new Car(carName, moveStrategy);
+  public static Car newInstance(String carName) {
+    return new Car(carName);
   }
 
   public String getCarName() {
     return carName.getValue();
   }
 
-  public void attempt() {
+  public void attempt(MoveStrategy moveStrategy) {
     if (moveStrategy.canMove()) {
       move();
     }

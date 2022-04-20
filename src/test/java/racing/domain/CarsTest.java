@@ -23,12 +23,12 @@ class CarsTest {
   @ValueSource(strings = {"test1,test2,test3", "A,B,C,D", "car1,car2,car3", "자동차1,자동차2,자동차3"})
   void oneMoveTest(String carNameInput) {
     //given
-    Cars cars = Cars.newInstance(carNameInput, new MustMoveStrategy());
+    Cars cars = Cars.newInstance(carNameInput);
     List<Distance> distanceExpected = Arrays.asList(
-        new Distance[]{new Distance(1), new Distance(1), new Distance(1)});
+        new Distance(1), new Distance(1), new Distance(1));
 
     //when
-    cars.attempt();
+    cars.attempt(new MustMoveStrategy());
 
     //then
     assertAll(
@@ -44,7 +44,8 @@ class CarsTest {
       "자동차1,자동차2,자동차3|25|25"}, delimiter = '|')
   void nMoveTest(String carNameInput, int attempt, int expected) {
     //given
-    Cars cars = Cars.newInstance(carNameInput, new MustMoveStrategy());
+    MustMoveStrategy mustMoveStrategy = new MustMoveStrategy();
+    Cars cars = Cars.newInstance(carNameInput);
     List<Distance> distanceExpected = new ArrayList<>();
     for (int i = 0; i < carNameInput.split(Cars.CAR_NAME_DELIMITER).length; i++) {
       distanceExpected.add(new Distance(expected));
@@ -52,7 +53,7 @@ class CarsTest {
 
     //when
     for (int i = 0; i < attempt; i++) {
-      cars.attempt();
+      cars.attempt(mustMoveStrategy);
     }
 
     //then
@@ -67,15 +68,20 @@ class CarsTest {
   @DisplayName("자동차들 중 제일 멀리 이동한 자동차가 우승자로 선정되는지 확인")
   void winnerTest() {
     //given
-    Cars winCars = Cars.newInstance("win1,win2", new MustMoveStrategy());
-    Cars loseCars = Cars.newInstance("lose1,lose2,lose3", new MustNotMoveStrategy());
+    MustMoveStrategy mustMoveStrategy = new MustMoveStrategy();
+    MustNotMoveStrategy mustNotMoveStrategy = new MustNotMoveStrategy();
+    Cars winCars = Cars.newInstance("win1,win2");
+    Cars loseCars = Cars.newInstance("lose1,lose2,lose3");
     Cars allCars = new Cars(
         Stream.concat(winCars.getValues().stream(), loseCars.getValues().stream())
             .collect(Collectors.toList()));
 
     int attempt = 100;
     for (int i = 0; i < attempt; i++) {
-      allCars.attempt();
+      winCars.attempt(mustMoveStrategy);
+    }
+    for (int i = 0; i < attempt; i++) {
+      loseCars.attempt(mustNotMoveStrategy);
     }
 
     //when
