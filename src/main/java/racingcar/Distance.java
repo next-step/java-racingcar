@@ -18,16 +18,24 @@ public class Distance {
         this.distance = distance;
     }
 
-    public boolean isLongestDistance(int longestDistance) {
-        return distance == longestDistance;
-    }
-
     public void goStraight() {
         this.distance++;
     }
 
     public int findLongestDistance(int longestDistance) {
         return Math.max(distance, longestDistance);
+    }
+
+    public boolean isLongestDistance(int longestDistance) {
+        return distance == longestDistance;
+    }
+
+    public String distanceToString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < distance; i++) {
+            sb.append("-");
+        }
+        return sb.toString();
     }
 
     @Override
@@ -43,11 +51,4 @@ public class Distance {
         return Objects.hash(distance);
     }
 
-    public String distanceToString() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < distance; i++) {
-            sb.append("-");
-        }
-        return sb.toString();
-    }
 }

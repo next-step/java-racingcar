@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Objects;
+
 public class RacingCar {
 
     private static final int MOVABLE_BOUNDARY_NUMBER = 4;
@@ -7,16 +9,23 @@ public class RacingCar {
     private String carName;
     private Distance distance;
 
-    public RacingCar() { }
+    public RacingCar() {
+        this("", new Distance());
+    }
 
     public RacingCar(String carName) {
         this(carName, new Distance());
     }
 
+    public RacingCar(int distance) {
+        this("", new Distance(distance));
+    }
+
     public RacingCar(String carName, Distance distance) {
         if (invalidCarName(carName)) {
-            this.carName = carName.substring(0, MAX_CAR_NAME_SIZE);
+            carName = carName.substring(0, MAX_CAR_NAME_SIZE);
         }
+        this.carName = carName;
         this.distance = distance;
     }
 
@@ -44,5 +53,18 @@ public class RacingCar {
 
     public String myDistanceToString() {
         return distance.distanceToString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return Objects.equals(carName, racingCar.carName) && Objects.equals(distance, racingCar.distance);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName, distance);
     }
 }
