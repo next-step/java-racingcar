@@ -1,6 +1,5 @@
 package racing.module;
 
-import exception.CustomException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,7 @@ class CarTest {
     private Car car;
 
     @BeforeEach
-    void setUp() throws CustomException {
+    void setUp() {
         car = new Car("test");
     }
 
@@ -28,13 +27,6 @@ class CarTest {
     @DisplayName("자동차가 움직이는지 확인")
     void attemptAndMove() {
         car.attempt(alwaysTrueStrategy);
-        assertThat(car.getPosition()).isEqualTo(1);
-    }
-
-    @Test
-    @DisplayName("자동차가 움직이는지 확인")
-    void onlyMove() {
-        car.move();
         assertThat(car.getPosition()).isEqualTo(1);
     }
 

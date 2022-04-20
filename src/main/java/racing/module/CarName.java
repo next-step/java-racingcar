@@ -1,26 +1,23 @@
 package racing.module;
 
-import exception.CustomException;
+import exception.EmptyCarNameException;
+import exception.InvalidCarNameSizeException;
 
 public class CarName {
     private static final int LENGTH_LIMIT = 5;
     private final String name;
 
-    private CarName() throws CustomException {
-        throw new CustomException("자동차의 이름없이 생성이 불가능합니다.");
-    }
-
-    public CarName(String name) throws CustomException {
+    public CarName(String name) {
         validName(name);
         this.name = name;
     }
 
-    private void validName(String name) throws CustomException {
+    private void validName(String name) {
         if (name.isEmpty()) {
-            throw new CustomException("공백 자동차 이름은 허용하지 않습니다.");
+            throw new EmptyCarNameException("공백 자동차 이름은 허용하지 않습니다.");
         }
         if (name.length() > LENGTH_LIMIT) {
-            throw new CustomException("자동차 이름이 적합하지 않습니다. 이름 : " + name);
+            throw new InvalidCarNameSizeException("자동차 이름이 적합하지 않습니다. 이름 : " + name);
         }
     }
 

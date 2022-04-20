@@ -7,7 +7,7 @@ import java.util.Scanner;
 public final class InputView {
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    private InputView() throws CustomException {
+    private InputView() {
         throw new CustomException("유틸성클래스는 인스턴스 생성을 할 수 없습니다.");
     }
 

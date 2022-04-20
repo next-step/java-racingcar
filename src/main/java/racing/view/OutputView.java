@@ -13,7 +13,7 @@ public class OutputView {
     private static final String WINNER_MESSAGE_START = "최종 우승자는 ";
     private static final String WINNER_MESSAGE_END = "입니다.";
 
-    private OutputView() throws CustomException {
+    private OutputView() {
         throw new CustomException("유틸성클래스는 인스턴스 생성을 할 수 없습니다.");
     }
 
@@ -43,8 +43,14 @@ public class OutputView {
 
     public static void printWinner(List<Car> carList) {
         System.out.print(WINNER_MESSAGE_START);
-        System.out.print(carList.stream().map(Car::getCarName).collect(Collectors.joining(",")));
+        System.out.print(getWinnerString(carList));
         System.out.print(WINNER_MESSAGE_END);
         System.out.print(NEW_LINE);
+    }
+
+    private static String getWinnerString(List<Car> carList){
+        return carList.stream()
+                .map(Car::getCarName)
+                .collect(Collectors.joining(","));
     }
 }
