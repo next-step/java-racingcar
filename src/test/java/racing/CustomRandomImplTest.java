@@ -20,7 +20,7 @@ class CustomRandomImplTest {
         assertThat(new CustomRandomImpl().getRandomRange(boundTen)).isBetween(0, 9);
     }
 
-    @DisplayName("랜덤 생성시 0이하 범위는 예외 발생")
+    @DisplayName("랜덤 생성시 0이하 범위는 예외를 던진다")
     @ParameterizedTest
     @ValueSource(ints = {-1, 0})
     void testRandomRangeThrowException(int bound) {

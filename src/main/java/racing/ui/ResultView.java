@@ -1,18 +1,22 @@
 package racing.ui;
 
-import racing.dto.GameResult;
-import racing.dto.GameResult.GameRoundResult;
-import racing.utils.Counter;
+import racing.domain.Car;
+import racing.domain.Cars;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ResultView {
     private static final String PRINT_RESULT_MESSAGE = "실행 결과";
     private static final String DISPLAY_MARK = "-";
+    private static final String WINNER_JOIN_DELIMITER = ",";
+    private static final String DISPLAY_COLON = " : ";
+    private static final String WINNER_PRINT_FORMAT = "%s 가 최종 우승했습니다.%n";
+    private static final int BUILDER_LENGTH = 0;
     private static ResultView instance;
-
-    private ResultView() {
-    }
+    private final StringBuilder stringBuilder = new StringBuilder();
 
     public static ResultView getInstance() {
         if (instance == null) {
@@ -21,19 +25,35 @@ public class ResultView {
         return instance;
     }
 
-    public void printResult(GameResult result) {
+    private void printMark(Car car) {
+        assert car != null;
+        stringBuilder.setLength(BUILDER_LENGTH);
+        stringBuilder.append(car.getName());
+        stringBuilder.append(DISPLAY_COLON);
+        String displayPosition = IntStream.range(0, car.getPosition().getCurrentPosition())
+                .mapToObj(i -> DISPLAY_MARK)
+                .collect(Collectors.joining());
+        stringBuilder.append(displayPosition);
+        System.out.println(stringBuilder);
+    }
+
+    public void printRound(Cars cars) {
+        Objects.requireNonNull(cars);
+        cars.getCars().forEach(this::printMark);
+        System.out.println();
+    }
+
+    public void printWinner(List<String> winner) {
+        if (winner == null || winner.isEmpty()) {
+            return;
+        }
+
+        String joinWinners = String.join(WINNER_JOIN_DELIMITER, winner);
+        System.out.printf(WINNER_PRINT_FORMAT, joinWinners);
+    }
+
+    public void startPrint() {
         System.out.println();
         System.out.println(PRINT_RESULT_MESSAGE);
-        result.getRounds().forEach(this::printRoundResult);
-    }
-
-    private void printRoundResult(GameRoundResult round) {
-        round.getStatusList().forEach(this::printMark);
-        System.out.println();
-    }
-
-    private void printMark(Counter status) {
-        IntStream.range(0, status.getCount()).mapToObj(i -> DISPLAY_MARK).forEach(System.out::print);
-        System.out.println();
     }
 }

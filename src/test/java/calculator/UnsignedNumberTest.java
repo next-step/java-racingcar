@@ -1,14 +1,14 @@
 package calculator;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class UnsignedNumberTest {
 
@@ -44,7 +44,7 @@ class UnsignedNumberTest {
     assertThat(new UnsignedNumber(input).intValue()).isEqualTo(expected);
   }
 
-  @DisplayName("범위를 벗어난 값을 입력하면 예외 발생")
+  @DisplayName("범위를 벗어난 값을 입력하면 예외를 던진다")
   @ParameterizedTest
   @ValueSource(strings = {"2147483648", "4294967296"})
   void intValueThrowException(String input) {

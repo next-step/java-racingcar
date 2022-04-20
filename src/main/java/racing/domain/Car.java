@@ -1,17 +1,33 @@
 package racing.domain;
 
 import racing.domain.strategies.CarMoveStrategy;
-import racing.utils.Counter;
 
-public class Car {
-    public static final int RUN_STEP = 1;
-    public static final int INIT_VALUE = 0;
-    private final Counter counter = new Counter(INIT_VALUE);
+public class Car implements Comparable<Car> {
+    private static final int RUN_STEP = 1;
+    private final Position position;
+    private final CarName name;
 
-    public Counter run(CarMoveStrategy carMoveStrategy) {
+    public Car(String nameOfCar) {
+        name = new CarName(nameOfCar);
+        position = new Position();
+    }
+
+    public void run(CarMoveStrategy carMoveStrategy) {
         if (carMoveStrategy.isMovable()) {
-            counter.add(RUN_STEP);
+            position.add(RUN_STEP);
         }
-        return new Counter(this.counter);
+    }
+
+    public String getName() {
+        return name.getName();
+    }
+
+    public Position getPosition() {
+        return new Position(this.position);
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return getPosition().compareTo(car.getPosition());
     }
 }
