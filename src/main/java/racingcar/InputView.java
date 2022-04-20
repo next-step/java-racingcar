@@ -4,6 +4,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputView {
+    private static final Scanner scanner = new Scanner(System.in);
+
     public static Input entry() {
         try {
             return scanInput();
@@ -22,20 +24,14 @@ public class InputView {
 
     private static String[] scanCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
-        Scanner scanner = new Scanner(System.in);
         String carNames = scanner.nextLine();
-        scanner.close();
 
         return carNames.split(",");
     }
 
     private static int scanNumOfRound() {
         System.out.println("시도할 횟수는 몇 회 인가요?");
-        Scanner scanner = new Scanner(System.in);
-        int numOfRound = scanner.nextInt();
-        scanner.close();
-
-        return numOfRound;
+        return scanner.nextInt();
     }
 
     static class Input {

@@ -14,11 +14,26 @@ public class RacingCar {
     }
 
     public static RacingCar[] createBatch(String[] carNames) {
+        validateCarNames(carNames);
         return Arrays.asList(carNames)
                 .stream()
                 .map(name -> new RacingCar(name))
                 .collect(Collectors.toList())
                 .toArray(new RacingCar[carNames.length]);
+    }
+
+    private static void validateCarNames(String[] carNames) {
+        for (String carName : carNames) {
+            validateLength(carName);
+        }
+
+    }
+
+    private static void validateLength(String carName) throws IllegalStateException {
+        if (carName.length() > 5) {
+            throw new IllegalStateException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
+
     }
 
     public void proceed() {
