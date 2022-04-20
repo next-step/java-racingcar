@@ -5,19 +5,23 @@ public class RacingCar {
     private static final int MOVABLE_BOUNDARY_NUMBER = 4;
     private static final int MAX_CAR_NAME_SIZE = 5;
     private String carName;
-    private int distance;
+    private Distance distance;
 
     public RacingCar() { }
 
     public RacingCar(String carName) {
+        this(carName, new Distance());
+    }
+
+    public RacingCar(String carName, Distance distance) {
         if (invalidCarName(carName)) {
-            carName = carName.substring(0, MAX_CAR_NAME_SIZE);
+            this.carName = carName.substring(0, MAX_CAR_NAME_SIZE);
         }
-        this.carName = carName;
+        this.distance = distance;
     }
 
     public boolean isWinner(int longestDistance) {
-        return this.distance == longestDistance;
+        return distance.isLongestDistance(longestDistance);
     }
 
     private boolean invalidCarName(String carName) {
@@ -26,7 +30,7 @@ public class RacingCar {
 
     public void moveOrStop(int randomNumber) {
         if (randomNumber >= MOVABLE_BOUNDARY_NUMBER) {
-            distance++;
+            distance.goStraight();
         }
     }
 
@@ -34,15 +38,11 @@ public class RacingCar {
         return carName;
     }
 
-    public int isLongestDistance(int longestDistance) {
-        return Math.max(longestDistance, this.distance);
+    public int findLongestDistance(int longestDistance) {
+        return distance.findLongestDistance(longestDistance);
     }
 
     public String myDistanceToString() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < distance; i++) {
-            sb.append("-");
-        }
-        return sb.toString();
+        return distance.distanceToString();
     }
 }

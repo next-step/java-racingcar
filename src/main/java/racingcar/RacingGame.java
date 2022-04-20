@@ -29,7 +29,7 @@ public class RacingGame {
     private int findLongestDistance() {
         int longestDistance = 0;
         for (RacingCar racingCar : racingCars) {
-            longestDistance = racingCar.isLongestDistance(longestDistance);
+            longestDistance = racingCar.findLongestDistance(longestDistance);
         }
         return longestDistance;
     }
