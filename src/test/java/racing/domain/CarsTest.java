@@ -1,13 +1,9 @@
 package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,18 +20,13 @@ class CarsTest {
   void oneMoveTest(String carNameInput) {
     //given
     Cars cars = Cars.newInstance(carNameInput);
-    List<Distance> distanceExpected = Arrays.asList(
-        new Distance(1), new Distance(1), new Distance(1));
+    Cars carsExpected = Cars.newInstance(carNameInput, new Distance(1));
 
     //when
     cars.attempt(new MustMoveStrategy());
 
     //then
-    assertAll(
-        () -> assertThat(cars.matchDistances(distanceExpected)),
-        () -> assertThat(cars.getNames()).containsExactlyElementsOf(
-            Arrays.asList(carNameInput.split(Cars.CAR_NAME_DELIMITER)))
-    );
+    assertThat(cars).isEqualTo(carsExpected);
   }
 
   @ParameterizedTest
@@ -46,10 +37,7 @@ class CarsTest {
     //given
     MustMoveStrategy mustMoveStrategy = new MustMoveStrategy();
     Cars cars = Cars.newInstance(carNameInput);
-    List<Distance> distanceExpected = new ArrayList<>();
-    for (int i = 0; i < carNameInput.split(Cars.CAR_NAME_DELIMITER).length; i++) {
-      distanceExpected.add(new Distance(expected));
-    }
+    Cars carsExpected = Cars.newInstance(carNameInput, new Distance(expected));
 
     //when
     for (int i = 0; i < attempt; i++) {
@@ -57,11 +45,7 @@ class CarsTest {
     }
 
     //then
-    assertAll(
-        () -> assertThat(cars.matchDistances(distanceExpected)),
-        () -> assertThat(cars.getNames()).containsExactlyElementsOf(
-            Arrays.asList(carNameInput.split(Cars.CAR_NAME_DELIMITER)))
-    );
+    assertThat(cars).isEqualTo(carsExpected);
   }
 
   @Test
@@ -70,25 +54,20 @@ class CarsTest {
     //given
     MustMoveStrategy mustMoveStrategy = new MustMoveStrategy();
     MustNotMoveStrategy mustNotMoveStrategy = new MustNotMoveStrategy();
-    Cars winCars = Cars.newInstance("win1,win2");
-    Cars loseCars = Cars.newInstance("lose1,lose2,lose3");
-    Cars allCars = new Cars(
-        Stream.concat(winCars.getValues().stream(), loseCars.getValues().stream())
-            .collect(Collectors.toList()));
-
-    int attempt = 100;
-    for (int i = 0; i < attempt; i++) {
-      winCars.attempt(mustMoveStrategy);
-    }
-    for (int i = 0; i < attempt; i++) {
-      loseCars.attempt(mustNotMoveStrategy);
-    }
+    List<Car> allCars = new ArrayList<>();
+    allCars.add(new Car("win1", new Distance(100)));
+    allCars.add(new Car("lose1", new Distance(1)));
+    allCars.add(new Car("win2", new Distance(100)));
+    allCars.add(new Car("lose2", new Distance(1)));
+    allCars.add(new Car("lose3", new Distance(1)));
+    Cars cars = new Cars(allCars);
+    Cars winCars = Cars.newInstance("win1,win2", new Distance(100));
 
     //when
-    Cars winners = allCars.getWinners();
+    Cars winners = cars.getWinners();
 
     //then
-    assertThat(winCars.getValues()).containsExactlyElementsOf(winners.getValues());
+    assertThat(winners).isEqualTo(winCars);
 
   }
 }

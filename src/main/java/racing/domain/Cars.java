@@ -5,13 +5,13 @@ import static java.util.stream.Collectors.toList;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import racing.domain.strategy.MoveStrategy;
 
 
 public class Cars {
 
-  public static final String CAR_NAME_DELIMITER = ",";
   private final List<Car> values;
 
   public Cars(List<Car> values) {
@@ -19,11 +19,15 @@ public class Cars {
   }
 
   public static Cars newInstance(String carNames) {
-    List<Car> cars = Arrays.stream(carNames.split(CAR_NAME_DELIMITER))
+    return new Cars(Arrays.stream(carNames.split(","))
         .map(carName -> new Car(carName))
-        .collect(toList());
+        .collect(Collectors.toList()));
+  }
 
-    return new Cars(cars);
+  public static Cars newInstance(String carNames, Distance distance) {
+    return new Cars(Arrays.stream(carNames.split(","))
+        .map(carName -> new Car(carName, distance))
+        .collect(Collectors.toList()));
   }
 
   public List<String> getNames() {
@@ -72,4 +76,17 @@ public class Cars {
     }
     return true;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Cars)) {
+      return false;
+    }
+    Cars cars = (Cars) o;
+    return Objects.equals(values, cars.values);
+  }
+
 }
