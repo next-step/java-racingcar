@@ -44,11 +44,16 @@ public class GameService {
       Integer rounds) {
     List<Car> resultList = new ArrayList<>();
     for (RacingCarHistory racingHistory : racingHistories) {
-      if (Objects.equals(racingHistory.round(), rounds)) {
-        resultList.add(racingHistory.car());
-      }
+      sameRoundResult(rounds, resultList, racingHistory);
     }
     return resultList;
+  }
+
+  private void sameRoundResult(Integer rounds, List<Car> resultList,
+      RacingCarHistory racingHistory) {
+    if (Objects.equals(racingHistory.round(), rounds)) {
+      resultList.add(racingHistory.car());
+    }
   }
 
   public String findWinners(List<Car> cars) {
@@ -59,7 +64,6 @@ public class GameService {
 
     return StringUtils.join(coWinnerNameList);
   }
-
 
 
 }
