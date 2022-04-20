@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 public interface MovingStrategy {
   boolean movable();

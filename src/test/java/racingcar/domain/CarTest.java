@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,12 +39,5 @@ class CarTest {
     Car car2 = new Car("yeeun", 0);
 
     assertThat(car1.hasSamePosition(car2)).isTrue();
-  }
-
-  @Test
-  void testToString() {
-    Car car = new Car("yeny", 3);
-
-    assertThat(car.toString()).isEqualTo("yeny : ---");
   }
 }

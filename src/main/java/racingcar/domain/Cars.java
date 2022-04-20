@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.Objects;
@@ -31,6 +31,15 @@ public class Cars {
 
   public List<Car> getValues() {
     return values;
+  }
+
+  public List<Car> findWinners() {
+    Car winnerCar = values.stream()
+        .max(Car::compareTo)
+        .orElseThrow(IllegalStateException::new);
+    return values.stream()
+        .filter(car -> car.hasSamePosition(winnerCar))
+        .collect(Collectors.toList());
   }
 
   private void validateSameNames(List<Car> values) {

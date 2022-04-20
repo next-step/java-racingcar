@@ -1,8 +1,8 @@
 package racingcar;
 
 import racingcar.controller.RacingCarController;
-import racingcar.model.RandomMovingStrategy;
-import racingcar.ui.InputView;
+import racingcar.domain.RandomMovingStrategy;
+import racingcar.view.InputView;
 
 public class RacingCarApplication {
 
