@@ -20,7 +20,7 @@ public class RacingCarGameApplication {
                 .collect(collectingAndThen(toList(), RacingGame::new));
 
         for (int i = 0; i < totalRacingRound; i++) {
-            racingGame.roundStart(randomNumberGenerator.generateRacingRandomNumber());
+            racingGame.roundStart(randomNumberGenerator);
             resultView.roundLogTrace(racingGame.getRacingCars());
         }
 

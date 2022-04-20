@@ -12,9 +12,9 @@ public class RacingGame {
         this.racingCars = racingCars;
     }
 
-    public void roundStart(int randomNumber) {
+    public void roundStart(RandomNumberGenerator randomNumberGenerator) {
         for (RacingCar racingCar : racingCars) {
-            racingCar.moveOrStop(randomNumber);
+            racingCar.moveOrStop(randomNumberGenerator.generateRacingRandomNumber());
         }
     }
 
