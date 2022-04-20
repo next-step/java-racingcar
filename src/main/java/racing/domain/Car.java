@@ -15,11 +15,14 @@ public class Car {
         this.distance = distance;
     }
 
-    Car move(Movable movable) {
+    void move(Movable movable) {
         if (movable.isMovable()) {
-            return new Car(name, ++distance);
+            ++distance;
         }
-        return new Car(name, distance);
+    }
+
+    boolean isLocatedAt(int maxDistance) {
+        return this.distance == maxDistance;
     }
 
     int getGreaterDistance(int distance) {

@@ -24,23 +24,25 @@ public class Cars {
         this.cars = cars;
     }
 
+    Cars(Cars cars) {
+        this(cars.getCars());
+    }
+
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
-    Cars move(Movable movable) {
-        List<Car> carList = new ArrayList<>(cars.size());
+    void move(Movable movable) {
         for (Car car : cars) {
-            carList.add(car.move(movable));
+            car.move(movable);
         }
-        return new Cars(carList);
     }
 
-    List<Car> getCarsWithMaxDistance(final Cars snapshot) {
+    List<Car> getCarsWithMaxDistance() {
         List<Car> winningCars = new ArrayList<>();
-        int maxDistance = getMaxDistance(snapshot);
+        int maxDistance = getMaxDistance();
 
-        for (Car car : snapshot.getCars()) {
+        for (Car car : getCars()) {
             addCarLocatedAtMaxDistance(winningCars, car, maxDistance);
         }
 
@@ -48,14 +50,14 @@ public class Cars {
     }
 
     private void addCarLocatedAtMaxDistance(List<Car> winningCars, Car car, int maxDistance) {
-        if (car.getDistance() == maxDistance) {
+        if (car.isLocatedAt(maxDistance)) {
             winningCars.add(car);
         }
     }
 
-    private int getMaxDistance(final Cars snapshot) {
+    private int getMaxDistance() {
         int maxDistance = -1;
-        for (Car car : snapshot.getCars()) {
+        for (Car car : getCars()) {
             maxDistance = car.getGreaterDistance(maxDistance);
         }
 
