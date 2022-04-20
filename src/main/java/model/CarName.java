@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Objects;
 import util.Validator;
 
 public class CarName {

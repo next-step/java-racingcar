@@ -19,7 +19,6 @@ public class TrafficController {
   private static final String ERROR_MESSAGE_OF_NON_CARS = "게임을 시작하기 위해서는 차를 입력해주세요";
   private static final String MESSAGE_FOR_INPUT_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
   private static final String MESSAGE_FOR_INPUT_TRY_COUNT = "시도할 대수는 몇 회 회가요?";
-  private static final String CAR_RAW_NAMES_DELIMITER = ",";
   private static final String WINNERS_DELIMITER = ", ";
   private static final String MESSAGE_FOR_FINAL_RESULT = "%s가 최종 우승했습니다.";
   private static final String RESULT_GUIDE_MESSAGE = "실행결과";
@@ -41,9 +40,7 @@ public class TrafficController {
   }
 
   public TrafficController createCars(String rawCarNames) {
-    List<String> carNames = Stream.of(rawCarNames.split(CAR_RAW_NAMES_DELIMITER))
-        .collect(Collectors.toUnmodifiableList());
-    this.cars = new Cars(carNames);
+    this.cars = Cars.fromString(rawCarNames);
     return this;
   }
 

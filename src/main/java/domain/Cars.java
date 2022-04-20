@@ -5,20 +5,21 @@ import static util.Validator.validateArgument;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Cars {
 
+  private static final String CAR_RAW_NAMES_DELIMITER = ",";
   private static final int MIN_CAR_COUNT = 1;
 
   private final List<Car> cars;
 
-  public Cars(List<String> carNames) {
-    validateCarNames(carNames);
-    cars = new ArrayList<>();
-    for (String carName : carNames) {
-      cars.add(new Car(carName));
-    }
+
+  public Cars(List<Car> cars) {
+    validateCarCount(cars.size());
+    this.cars = cars;
   }
 
   public void moveAllCarRandomly(int randomNumberBound) {
@@ -44,8 +45,20 @@ public class Cars {
         .collect(Collectors.toUnmodifiableList());
   }
 
-  private void validateCarNames(List<String> carNames) {
-    validateCarCount(carNames.size());
+  public static Cars fromString(String text) {
+    Objects.requireNonNull(text);
+    List<String> carNames = splitCarNames(text);
+    List<Car> cars = new ArrayList<>();
+    for (String carName : carNames) {
+      cars.add(new Car(carName));
+    }
+    return new Cars(cars);
+
+  }
+
+  private static List<String> splitCarNames(String text) {
+    return Stream.of(text.split(CAR_RAW_NAMES_DELIMITER))
+        .collect(Collectors.toUnmodifiableList());
   }
 
   private void validateCarCount(int carCount) {
