@@ -1,17 +1,24 @@
 package racingcar;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.awt.*;
-import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class RacingCar {
-    private Point coordinate = new Point(0, 0);
+    private Point coordinate;
+    private String name;
 
-    public static RacingCar @NotNull [] createBatch(int size) {
-        return Stream.generate(RacingCar::new)
-                .limit(size)
-                .toArray(RacingCar[]::new);
+    public RacingCar(String name) {
+        this.coordinate = new Point(0, 0);
+        this.name = name;
+    }
+
+    public static RacingCar[] createBatch(String[] carNames) {
+        return Arrays.asList(carNames)
+                .stream()
+                .map(name -> new RacingCar(name))
+                .collect(Collectors.toList())
+                .toArray(new RacingCar[carNames.length]);
     }
 
     public void proceed() {
@@ -20,5 +27,9 @@ public class RacingCar {
 
     public Point getLocation() {
         return coordinate.getLocation();
+    }
+
+    public String getName() {
+        return name;
     }
 }

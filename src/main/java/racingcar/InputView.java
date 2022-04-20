@@ -14,21 +14,37 @@ public class InputView {
     }
 
     private static Input scanInput() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        Scanner scanner = new Scanner(System.in);
-        int numOfCar = scanner.nextInt();
+        String[] carNames = scanCarNames();
+        int numOfRound = scanNumOfRound();
+        
+        return new Input(carNames, carNames.length, numOfRound);
+    }
 
+    private static String[] scanCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
+        Scanner scanner = new Scanner(System.in);
+        String carNames = scanner.nextLine();
+        scanner.close();
+
+        return carNames.split(",");
+    }
+
+    private static int scanNumOfRound() {
         System.out.println("시도할 횟수는 몇 회 인가요?");
+        Scanner scanner = new Scanner(System.in);
         int numOfRound = scanner.nextInt();
         scanner.close();
-        return new Input(numOfCar, numOfRound);
+
+        return numOfRound;
     }
 
     static class Input {
+        private String[] carNames;
         private int numOfCar;
         private int numOfRound;
 
-        public Input(int numOfCar, int numOfRound) {
+        public Input(String[] carNames, int numOfCar, int numOfRound) {
+            this.carNames = carNames;
             this.numOfCar = numOfCar;
             this.numOfRound = numOfRound;
         }
@@ -39,6 +55,10 @@ public class InputView {
 
         public int getNumOfRound() {
             return numOfRound;
+        }
+
+        public String[] getCarNames() {
+            return carNames;
         }
     }
 }

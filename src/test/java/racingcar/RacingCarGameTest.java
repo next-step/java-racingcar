@@ -10,7 +10,7 @@ public class RacingCarGameTest {
     @DisplayName("전진_조건_만족시_한칸_전진")
     void proceedCarWhenConditionSatisfied() {
         int numOfRound = 3;
-        RacingCar[] racingCars = {new RacingCar(), new RacingCar(), new RacingCar()};
+        RacingCar[] racingCars = {new RacingCar("cool"), new RacingCar("good"), new RacingCar("amaz")};
 
         RacingCarGame racingCarGame = new RacingCarGame(racingCars, numOfRound, new SatisfiedCondition());
         racingCarGame.start();
@@ -24,7 +24,7 @@ public class RacingCarGameTest {
     @DisplayName("전진_조건_만족시키지_못했을경우_전진하지_않음")
     void notProceedCarWhenConditionDisSatisfied() {
         int numOfRound = 3;
-        RacingCar[] racingCars = {new RacingCar(), new RacingCar(), new RacingCar()};
+        RacingCar[] racingCars = {new RacingCar("cool"), new RacingCar("good"), new RacingCar("amaz")};
 
         RacingCarGame racingCarGame = new RacingCarGame(racingCars, numOfRound, new DisSatisfiedCondition());
         racingCarGame.start();
