@@ -2,8 +2,6 @@ package racingcar;
 
 import java.util.*;
 
-import static java.util.Collections.*;
-import static java.util.Comparator.*;
 import static java.util.stream.Collectors.*;
 
 public class RacingGame {
@@ -14,23 +12,26 @@ public class RacingGame {
         this.racingCars = racingCars;
     }
 
-    public void roundStart(int randomNumber) {
+    public void roundStart(RandomNumberGenerator randomNumberGenerator) {
         for (RacingCar racingCar : racingCars) {
-            racingCar.moveOrStop(randomNumber);
+            racingCar.moveOrStop(randomNumberGenerator.generateRacingRandomNumber());
         }
     }
 
     public List<String> winnersOfTheRace() {
         int longestDistance = findLongestDistance();
         return racingCars.stream()
-                .filter(racingCar -> racingCar.getDistance() == longestDistance)
+                .filter(racingCar -> racingCar.isWinner(longestDistance))
                 .map(RacingCar::getCarName)
                 .collect(toList());
     }
 
     private int findLongestDistance() {
-        return max(racingCars, comparing(RacingCar::getDistance))
-                .getDistance();
+        int longestDistance = 0;
+        for (RacingCar racingCar : racingCars) {
+            longestDistance = racingCar.findLongestDistance(longestDistance);
+        }
+        return longestDistance;
     }
 
     public List<RacingCar> getRacingCars() {

@@ -24,8 +24,7 @@ public class RacingCarTest {
         racingCar.moveOrStop(randomNumber);
 
         assertThat(racingCar)
-                .extracting("distance")
-                .isEqualTo(distance);
+                .isEqualTo(new RacingCar(distance));
     }
 
     @DisplayName("이름이 부여된 자동차가 기존 기능을 정상적으로 수행하는지 테스트")
@@ -37,8 +36,7 @@ public class RacingCarTest {
         namedRacingCar.moveOrStop(randomNumber);
 
         assertThat(namedRacingCar)
-                .extracting("distance")
-                .isEqualTo(distance);
+                .isEqualTo(new RacingCar("daham", new Distance(distance)));
     }
 
     @DisplayName("이름이 5자 초과를 한 자동차는 substring 수행")
