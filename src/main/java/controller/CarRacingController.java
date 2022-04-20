@@ -1,11 +1,9 @@
 package controller;
 
-import domain.Positions;
+import domain.CarRacingResultDto;
 import service.CarRacingService;
 import view.InputView;
 import view.ResultView;
-
-import java.util.List;
 
 public class CarRacingController {
     private final InputView inputView;
@@ -19,10 +17,10 @@ public class CarRacingController {
     }
 
     public void startRacingGame() {
-        int carCount = inputView.inputCarCount();
-        int attemptCount = inputView.inputAttemptCount();
-        carRacingService.registerNewCars(carCount);
-        List<Positions> racingResult = carRacingService.startRacing(attemptCount);
-        resultView.printResult(racingResult);
+        String carsName = inputView.inputCarsName();
+        String attemptCount = inputView.inputAttemptCount();
+
+        CarRacingResultDto result = carRacingService.registerCarsAndStartRacing(carsName, attemptCount);
+        resultView.printRacingResult(result);
     }
 }
