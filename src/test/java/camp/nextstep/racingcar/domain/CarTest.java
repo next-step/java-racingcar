@@ -14,7 +14,7 @@ public class CarTest {
   @ParameterizedTest
   @ValueSource(ints = {0, 1, 2, 3})
   void should_Not_Move(int input) {
-    Car car = new Car();
+    Car car = new Car("마이바흐");
     car.move(new DefaultMoveCondition(() -> input));
     assertThat(car.getPosition()).isZero();
   }
@@ -23,7 +23,7 @@ public class CarTest {
   @ParameterizedTest
   @ValueSource(ints = {4, 5, 6, 7, 8, 9, 10})
   void should_Move(int input) {
-    Car car = new Car();
+    Car car = new Car("마이바흐");
     car.move(new DefaultMoveCondition(() -> input));
     assertThat(car.getPosition()).isEqualTo(1);
   }

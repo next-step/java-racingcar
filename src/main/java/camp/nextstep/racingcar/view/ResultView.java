@@ -18,11 +18,11 @@ public class ResultView {
 
   private static void printCarRecord(List<CarRecord> carRecords) {
     for (CarRecord carRecord : carRecords) {
+      System.out.print(carRecord.getName() + " : ");
       printCarDistance(carRecord);
       System.out.println();
     }
   }
-
   private static void printCarDistance(CarRecord carRecord) {
     for (int i = 0; i < carRecord.getDistance(); i++) {
       System.out.print(DISTANCE_MARK);

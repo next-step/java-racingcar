@@ -19,7 +19,7 @@ public class Cars {
     List<CarRecord> carRecords = new ArrayList<>();
     for (Car car : cars) {
       car.move(moveCondition);
-      carRecords.add(new CarRecord(car.getPosition()));
+      carRecords.add(new CarRecord(car.getName(), car.getPosition()));
     }
     return carRecords;
   }

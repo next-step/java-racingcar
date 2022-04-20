@@ -15,11 +15,10 @@ import java.util.List;
 public class RacingGameController {
 
   public void race() {
-    PositiveNumber countOfCar = new PositiveNumber(InputView.getCountOfCar());
+    Cars cars = new Cars(CarFactory.of(InputView.getCarNames()));
     PositiveNumber rounds = new PositiveNumber(InputView.getRounds());
     MoveCondition moveCondition = new DefaultMoveCondition(new RandomNumberGenerator());
 
-    Cars cars = new Cars(CarFactory.of(countOfCar.getNumber()));
     List<RaceRecord> raceRecords = new ArrayList<>();
     for (int round = 1; round <= rounds.getNumber(); round++) {
       raceRecords.add(new RaceRecord(round, cars.race(moveCondition)));

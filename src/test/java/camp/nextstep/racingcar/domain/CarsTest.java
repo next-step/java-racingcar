@@ -10,9 +10,9 @@ import org.junit.jupiter.api.Test;
 public class CarsTest {
 
   @Test
-  public void 주어진_자동차_수_따른_자동차들_생성() {
-    Cars cars = new Cars(CarFactory.of(4));
-    assertThat(cars.size()).isEqualTo(4);
+  public void 주어진_자동차_이름으로_자동차들_생성() {
+    Cars cars = new Cars(CarFactory.of("pobi,crong,honux"));
+    assertThat(cars.size()).isEqualTo(3);
   }
 
 }
