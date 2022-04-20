@@ -9,14 +9,14 @@ public abstract class AbstractMutableNumberModel implements NumberModel {
     this.value = value;
   }
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
-  public int toInt() {
-    return value;
-  }
+//  @Override
+//  public String toString() {
+//    return String.valueOf(value);
+//  }
+//
+//  public int toInt() {
+//    return value;
+//  }
 
   /*
    setValue()를 protected로 선언하여 이 추상클래스의 구현클래스만 사용할 수 있도록 하여,

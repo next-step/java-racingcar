@@ -5,7 +5,6 @@ import static uiview.InputView.scanString;
 import static uiview.OutputView.print;
 import static uiview.OutputView.printEmpty;
 
-import domain.CarInfo;
 import domain.Cars;
 import java.util.List;
 import java.util.Objects;
@@ -13,14 +12,13 @@ import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import model.TryCount;
+import uiview.OutputView;
 
 public class TrafficController {
 
   private static final String ERROR_MESSAGE_OF_NON_CARS = "게임을 시작하기 위해서는 차를 입력해주세요";
   private static final String MESSAGE_FOR_INPUT_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
   private static final String MESSAGE_FOR_INPUT_TRY_COUNT = "시도할 대수는 몇 회 회가요?";
-  private static final String POSITION_MARKER = "-";
-  private static final String COLUMN_MARKER = " : ";
   private static final String CAR_RAW_NAMES_DELIMITER = ",";
   private static final String WINNERS_DELIMITER = ", ";
   private static final String MESSAGE_FOR_FINAL_RESULT = "%s가 최종 우승했습니다.";
@@ -65,7 +63,8 @@ public class TrafficController {
     do {
       cars.moveAllCarRandomly(MAX_NUMBER_BOUND);
       tryCount.race();
-      cars.getCarsInfo().forEach(carInfo -> print(buildPositionViewFrom(carInfo)));
+      List<String> currentPositionMark = cars.markingPositions();
+      currentPositionMark.forEach(OutputView::print);
       printEmpty();
     } while (!tryCount.isFinished());
 
@@ -83,11 +82,7 @@ public class TrafficController {
     return stringJoiner.toString();
   }
 
-  private String buildPositionViewFrom(CarInfo carInfo) {
-    return carInfo.getNameOfCar()
-        + COLUMN_MARKER
-        + POSITION_MARKER.repeat(carInfo.getPositionOfCar());
-  }
+
 
   private void validateBeforeStart() {
     Objects.requireNonNull(cars, ERROR_MESSAGE_OF_NON_CARS);

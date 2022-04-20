@@ -32,14 +32,6 @@ public class CarsTest {
   }
 
   @Test
-  void CarInfo_리스트_획득_성공() {
-    List<CarInfo> carInfoList = new Cars(CAR_NAMES).getCarsInfo();
-    for (int i = 0; i < carInfoList.size(); i++) {
-      assertThat(carInfoList.get(i).getNameOfCar()).isEqualTo(CAR_NAMES.get(i));
-    }
-  }
-
-  @Test
   void findWinners_성공() {
     Cars cars = new Cars(CAR_NAMES);
     List<String> winners = cars.findWinners();

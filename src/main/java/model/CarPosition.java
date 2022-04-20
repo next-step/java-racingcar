@@ -5,6 +5,7 @@ import static util.Validator.validateArgument;
 
 public class CarPosition extends AbstractMutableNumberModel implements Comparable<CarPosition> {
 
+  private static final String POSITION_MARKER = "-";
   private static final String INITIAL_POSITION_ERROR_MESSAGE = "차의 시작 위치는 %d 이상이어야 합니다.";
   private static final int MIN_INITIAL_POSITION = 0;
 
@@ -18,7 +19,7 @@ public class CarPosition extends AbstractMutableNumberModel implements Comparabl
 
   @Override
   public String toString() {
-    return String.valueOf(value);
+    return POSITION_MARKER.repeat(value);
   }
 
   @Override

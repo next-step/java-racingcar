@@ -5,7 +5,6 @@ import static util.Validator.validateArgument;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -26,23 +25,22 @@ public class Cars {
     cars.forEach(car -> car.move(generateRandomNumberInRange(randomNumberBound)));
   }
 
-  public List<CarInfo> getCarsInfo() {
+  public List<String> findWinners() {
+    List<Car> sortedCars = cars.stream()
+        .sorted(Car::compareTo)
+        .collect(Collectors.toUnmodifiableList());
+
+    Car winner = sortedCars.get(0);
+
     return cars.stream()
-        .map(Car::getCarInfo)
+        .filter((car) -> car.compareTo(winner) >= 1)
+        .map(Car::toString)
         .collect(Collectors.toUnmodifiableList());
   }
 
-  public List<String> findWinners() {
-    final int winnerPosition = cars.stream()
-        .map(Car::getCarInfo)
-        .max(CarInfo::compareTo)
-        .orElseThrow(NoSuchElementException::new)
-        .getPositionOfCar();
-
+  public List<String> markingPositions() {
     return cars.stream()
-        .map(Car::getCarInfo)
-        .filter((carInfo) -> carInfo.getPositionOfCar() == winnerPosition)
-        .map(CarInfo::getNameOfCar)
+        .map(Car::markPosition)
         .collect(Collectors.toUnmodifiableList());
   }
 
