@@ -7,55 +7,56 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private static final String BASIC_SPLIT_REGEX = ",";
-    private static final String MINIMUM_NUMBER_OF_CAR_NAMES_INPUT_ERR_MSG = "자동차는 1대 이상 입력되어야 합니다.";
 
-    private List<Car> cars = new ArrayList<>();
+  private static final String BASIC_SPLIT_REGEX = ",";
+  private static final String MINIMUM_NUMBER_OF_CAR_NAMES_INPUT_ERR_MSG = "자동차는 1대 이상 입력되어야 합니다.";
 
-    public void create(MovingStrategy movingStrategy, String names) {
-        String[] separateNames = separateInputCars(names);
-        for (String separateName : separateNames) {
-            cars.add(Car.create(new Position(), movingStrategy, separateName));
-        }
+  private List<Car> cars = new ArrayList<>();
+
+  public void create(MovingStrategy movingStrategy, String names) {
+    String[] separateNames = separateInputCars(names);
+    for (String separateName : separateNames) {
+      cars.add(Car.create(new Position(), movingStrategy, separateName));
     }
+  }
 
-    public static String[] separateInputCars(String value) {
-        checkTheNumberOfInputCars(value);
-        return value.split(BASIC_SPLIT_REGEX);
-    }
+  public static String[] separateInputCars(String value) {
+    checkTheNumberOfInputCars(value);
+    return value.split(BASIC_SPLIT_REGEX);
+  }
 
-    public static void checkTheNumberOfInputCars(String value) {
-        if (checkNullAndEmpty(value)) {
-            throw new IllegalStateException(MINIMUM_NUMBER_OF_CAR_NAMES_INPUT_ERR_MSG);
-        }
+  public static void checkTheNumberOfInputCars(String value) {
+    if (checkNullAndEmpty(value)) {
+      throw new IllegalStateException(MINIMUM_NUMBER_OF_CAR_NAMES_INPUT_ERR_MSG);
     }
+  }
 
-    private static boolean checkNullAndEmpty(String value) {
-        return (value == null || value.isEmpty());
-    }
+  private static boolean checkNullAndEmpty(String value) {
+    return (value == null || value.isEmpty());
+  }
 
-    public List<Car> getCars() {
-        return cars;
-    }
+  public List<Car> getCars() {
+    return cars;
+  }
 
-    public void runRace() {
-        for (Car car : cars) {
-            car.move();
-        }
+  public void runRace() {
+    for (Car car : cars) {
+      car.move();
     }
+  }
 
-    public List<String> getWinnerNames() {
-        int maxPosition = getMaxPosition();
-        return cars.stream()
-                .filter(car -> car.compareWithMaxPosition(maxPosition))
-                .map(Car::getCarName)
-                .collect(Collectors.toList());
-    }
+  public List<String> getWinnerNames() {
+    int maxPosition = getMaxPosition();
+    return cars.stream()
+        .filter(car -> car.compareWithMaxPosition(maxPosition))
+        .map(Car::getCarName)
+        .collect(Collectors.toList());
+  }
 
-    private int getMaxPosition() {
-        return cars.stream()
-                .max(Car::compareTo)
-                .orElseThrow()
-                .getCurrentPosition();
-    }
+  private int getMaxPosition() {
+    return cars.stream()
+        .max(Car::compareTo)
+        .orElseThrow()
+        .getCurrentPosition();
+  }
 }
