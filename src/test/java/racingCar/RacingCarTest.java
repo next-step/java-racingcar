@@ -5,16 +5,15 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 
-import static java.lang.System.lineSeparator;
-import static java.lang.System.setIn;
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarTest {
     @Test
     void 게임테스트(){
-        String userInput = String.format("3%s5", lineSeparator(), lineSeparator());
-        setIn(new ByteArrayInputStream(userInput.getBytes()));
-        RacingCarMain.main(null);
+        StartGame startGame = new StartGame();
+        Cars cars = new Cars(3);
+
+        startGame.racingCarGame(3,5, cars.carList);
     }
 
     @Test
