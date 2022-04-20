@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
+  private static final String COLUMN_MARKER = " : ";
+  private static final String POSITION_MARKER = "-";
   private static final String DEFAULT_CAR_NAME = "name";
   private static final int INITIAL_POSITION = 0;
   private static final int MIN_NUMBER_TO_MOVE = 4;
@@ -16,31 +18,31 @@ public class CarTest {
   void move_움직임_성공() {
     // given
     Car car = new Car(DEFAULT_CAR_NAME);
-
+    Car expected = new Car(DEFAULT_CAR_NAME, CAR_MOVING_DISTANCE);
     // when
     car.move(MIN_NUMBER_TO_MOVE);
 
     // then
-    assertThat(car.getCarInfo().getPositionOfCar()).isEqualTo(CAR_MOVING_DISTANCE);
+    assertThat(car.equals(expected)).isTrue();
   }
 
   @Test
   void move_움직임_실패() {
     // given
     Car car = new Car(DEFAULT_CAR_NAME);
+    Car expected = new Car(DEFAULT_CAR_NAME, INITIAL_POSITION);
 
     // when
     car.move(MIN_NUMBER_TO_MOVE - 1);
 
     // then
-    assertThat(car.getCarInfo().getPositionOfCar()).isEqualTo(INITIAL_POSITION);
+    assertThat(car.equals(expected)).isTrue();
   }
 
   @Test
-  void carInfo_획득_성공() {
-    Car car = new Car(DEFAULT_CAR_NAME);
-    CarInfo carInfo = car.getCarInfo();
-    assertThat(carInfo.getNameOfCar().equals(DEFAULT_CAR_NAME)).isTrue();
-    assertThat(carInfo.getPositionOfCar()).isEqualTo(INITIAL_POSITION);
+  void markPosition_성공() {
+    Car car = new Car(DEFAULT_CAR_NAME, CAR_MOVING_DISTANCE);
+    String positionMark = car.markPosition();
+    assertThat(positionMark).isEqualTo(DEFAULT_CAR_NAME + COLUMN_MARKER + POSITION_MARKER);
   }
 }

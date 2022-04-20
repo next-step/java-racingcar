@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.Objects;
 import model.CarName;
 import model.CarPosition;
 
@@ -42,5 +43,22 @@ public class Car implements Comparable<Car> {
   @Override
   public int compareTo(Car other) {
     return carPosition.compareTo(other.carPosition);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Car car = (Car) o;
+    return carName.equals(car.carName) && carPosition.equals(car.carPosition);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(carPosition, carName);
   }
 }
