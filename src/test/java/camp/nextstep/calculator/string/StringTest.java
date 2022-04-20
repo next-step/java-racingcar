@@ -1,4 +1,4 @@
-package camp.nextstep.string;
+package camp.nextstep.calculator.string;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
