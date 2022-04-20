@@ -1,4 +1,4 @@
-package camp.nextstep.calculator;
+package camp.nextstep.racingcar.domain;
 
 import static java.lang.Integer.parseInt;
 
