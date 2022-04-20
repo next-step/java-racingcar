@@ -1,7 +1,8 @@
 package step3.model;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Names {
 
@@ -10,16 +11,17 @@ public class Names {
     private List<Name> values;
 
     public Names(String input) {
-        String[] splits = input.split(DELIMITER);
-        this.values = initNames(splits);
+        this.values = initNames(splitByDelimiter(input));
+    }
+
+    private String[] splitByDelimiter(String input) {
+        return input.split(DELIMITER);
     }
 
     private List<Name> initNames(String[] splits) {
-        List<Name> names = new ArrayList<>();
-        for (String split : splits) {
-            names.add(new Name(split));
-        }
-        return names;
+        return Arrays.stream(splits)
+                .map(Name::new)
+                .collect(Collectors.toList());
     }
 
     public List<Name> getValues() {
