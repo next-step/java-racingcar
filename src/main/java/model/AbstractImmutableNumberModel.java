@@ -11,10 +11,6 @@ public abstract class AbstractImmutableNumberModel implements NumberModel {
     return String.valueOf(value);
   }
 
-  public int toInt() {
-    return this.value;
-  }
-
   public AbstractImmutableNumberModel(int value) {
     validateValue(value);
     this.value = value;
