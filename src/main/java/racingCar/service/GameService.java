@@ -16,13 +16,13 @@ public class GameService {
 
   private final static Track TRACK = new Track();
 
-  public List<Car> readyCars() {
-    TRACK.addCar(InputTable.insertCarNames());
+  public List<Car> readyCars(String names) {
+    TRACK.addCar(names);
     return TRACK.getCars();
   }
 
-  public Integer gameRound() {
-    return InputTable.howManyGame();
+  public Integer gameRound(Integer rounds) {
+    return rounds;
   }
 
   public List<RacingCarHistory> play(List<Car> allCars, Integer rounds) {
@@ -59,6 +59,7 @@ public class GameService {
 
     return StringUtils.join(coWinnerNameList);
   }
+
 
 
 }
