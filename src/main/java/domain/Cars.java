@@ -34,7 +34,7 @@ public class Cars {
     Car winner = sortedCars.get(0);
 
     return cars.stream()
-        .filter((car) -> car.compareTo(winner) >= 1)
+        .filter((car) -> car.compareTo(winner) <= 0)
         .map(Car::toString)
         .collect(Collectors.toUnmodifiableList());
   }

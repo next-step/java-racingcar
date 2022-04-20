@@ -9,7 +9,7 @@ public class OutputView {
   }
 
   public static void print(String text) {
-    print(text, 0);
+    print(text, 1);
   }
 
   public static void printEmpty() {

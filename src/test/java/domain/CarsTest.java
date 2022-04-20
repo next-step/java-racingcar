@@ -51,16 +51,20 @@ public class CarsTest {
 
   @Test
   void findWinners_성공() {
-    Car car1 = new Car(CAR_NAME_1, 1);
+    Car car1 = new Car(CAR_NAME_1, 0);
     Car car2 = new Car(CAR_NAME_2, 1);
-    Car car3 = new Car(CAR_NAME_3, 0);
+    Car car3 = new Car(CAR_NAME_3, 2);
+    Car car4 = new Car(CAR_NAME_4, 1);
+    Car car5 = new Car(CAR_NAME_5, 2);
 
-    Cars cars = new Cars(List.of(car1, car2, car3));
+    Cars cars = new Cars(List.of(car1, car2, car3, car4, car5));
     List<String> winners = cars.findWinners();
 
-    assertThat(winners.contains(CAR_NAME_1)).isTrue();
-    assertThat(winners.contains(CAR_NAME_2)).isTrue();
-    assertThat(winners.contains(CAR_NAME_3)).isFalse();
+    assertThat(winners.contains(CAR_NAME_1)).isFalse();
+    assertThat(winners.contains(CAR_NAME_2)).isFalse();
+    assertThat(winners.contains(CAR_NAME_3)).isTrue();
+    assertThat(winners.contains(CAR_NAME_4)).isFalse();
+    assertThat(winners.contains(CAR_NAME_5)).isTrue();
   }
 
   @Test
