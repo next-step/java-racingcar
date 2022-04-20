@@ -3,7 +3,9 @@ package racing.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
@@ -22,14 +24,15 @@ class CarsTest {
   void oneMoveTest(String carNameInput) {
     //given
     Cars cars = Cars.newInstance(carNameInput, new MustMoveStrategy());
+    List<Distance> distanceExpected = Arrays.asList(
+        new Distance[]{new Distance(1), new Distance(1), new Distance(1)});
 
     //when
     cars.attempt();
 
     //then
     assertAll(
-        () -> assertThat(cars.getDistances()).hasSize(
-            carNameInput.split(Cars.CAR_NAME_DELIMITER).length).containsOnly(1),
+        () -> assertThat(cars.matchDistances(distanceExpected)),
         () -> assertThat(cars.getNames()).containsExactlyElementsOf(
             Arrays.asList(carNameInput.split(Cars.CAR_NAME_DELIMITER)))
     );
@@ -42,6 +45,10 @@ class CarsTest {
   void nMoveTest(String carNameInput, int attempt, int expected) {
     //given
     Cars cars = Cars.newInstance(carNameInput, new MustMoveStrategy());
+    List<Distance> distanceExpected = new ArrayList<>();
+    for (int i = 0; i < carNameInput.split(Cars.CAR_NAME_DELIMITER).length; i++) {
+      distanceExpected.add(new Distance(expected));
+    }
 
     //when
     for (int i = 0; i < attempt; i++) {
@@ -50,8 +57,7 @@ class CarsTest {
 
     //then
     assertAll(
-        () -> assertThat(cars.getDistances()).hasSize(
-            carNameInput.split(Cars.CAR_NAME_DELIMITER).length).containsOnly(attempt),
+        () -> assertThat(cars.matchDistances(distanceExpected)),
         () -> assertThat(cars.getNames()).containsExactlyElementsOf(
             Arrays.asList(carNameInput.split(Cars.CAR_NAME_DELIMITER)))
     );

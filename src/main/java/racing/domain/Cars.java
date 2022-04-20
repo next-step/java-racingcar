@@ -33,13 +33,6 @@ public class Cars {
         .collect(Collectors.toList());
   }
 
-  public List<Integer> getDistances() {
-    return values
-        .stream()
-        .map(Car::getDistance)
-        .collect(Collectors.toList());
-  }
-
   public void attempt() {
     for (Car car : values) {
       car.attempt();
@@ -51,14 +44,32 @@ public class Cars {
   }
 
   public Cars getWinners() {
-    int max = getDistances()
-        .stream()
-        .max(Integer::compareTo)
-        .orElseThrow();
+    Distance max = getMaxDistance();
 
     return values
         .stream()
         .filter(car -> car.isDistanceEqual(max))
         .collect(collectingAndThen(toList(), Cars::new));
+  }
+
+  private Distance getMaxDistance() {
+    Distance maxDistance = new Distance();
+    for (Car car : values) {
+      maxDistance = car.getMaxDistance(maxDistance);
+    }
+    return maxDistance;
+  }
+
+  public boolean matchDistances(List<Distance> distances) {
+    if (values.size() != distances.size()) {
+      return false;
+    }
+
+    for (int i = 0; i < distances.size(); i++) {
+      if (!values.get(i).isDistanceEqual(distances.get(i))) {
+        return false;
+      }
+    }
+    return true;
   }
 }

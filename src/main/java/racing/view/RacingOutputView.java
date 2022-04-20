@@ -15,7 +15,7 @@ public class RacingOutputView {
 
   public void printCarNameAndDistance(Cars cars) {
     for (Car car : cars.getValues()) {
-      System.out.print(car.getCarName() + " : " + DISTANCE.repeat(car.getDistance()));
+      System.out.print(car.getCarName() + " : " + DISTANCE.repeat(car.getCurrentDistance()));
       System.out.println(EMPTY);
     }
     System.out.println(EMPTY);

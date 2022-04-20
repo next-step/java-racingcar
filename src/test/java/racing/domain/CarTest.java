@@ -20,7 +20,7 @@ class CarTest {
     car.attempt();
 
     assertAll(
-        () -> assertThat(car.getDistance()).isEqualTo(1),
+        () -> assertThat(car.isDistanceEqual(new Distance(1))).isTrue(),
         () -> assertThat(car.getCarName()).isEqualTo(carName)
     );
   }
@@ -35,7 +35,7 @@ class CarTest {
     }
 
     assertAll(
-        () -> assertThat(car.getDistance()).isEqualTo(expected),
+        () -> assertThat(car.isDistanceEqual(new Distance(expected))).isTrue(),
         () -> assertThat(car.getCarName()).isEqualTo(carName)
     );
   }
