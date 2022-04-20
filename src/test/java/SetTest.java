@@ -38,5 +38,4 @@ public class SetTest {
   void containsWithCsvSource(String input, String expected) {
     assertThat(numbers.contains(Integer.parseInt(input))).isEqualTo(Boolean.valueOf(expected));
   }
-
 }

@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Objects;
-
 public abstract class AbstractImmutableNumberModel implements NumberModel {
 
   protected final int value;

@@ -9,8 +9,6 @@ import domain.Cars;
 import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import model.TryCount;
 import uiview.OutputView;
 
