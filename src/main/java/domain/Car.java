@@ -14,7 +14,11 @@ public class Car implements Comparable<Car> {
   private final CarName carName;
 
   public Car(String name) {
-    this.carPosition = new CarPosition(INITIAL_POSITION);
+    this(name, INITIAL_POSITION);
+  }
+
+  public Car(String name, int position) {
+    this.carPosition = new CarPosition(position);
     this.carName = new CarName(name);
   }
 
@@ -29,7 +33,6 @@ public class Car implements Comparable<Car> {
         + COLUMN_MARKER
         + carPosition;
   }
-
 
   @Override
   public String toString() {
