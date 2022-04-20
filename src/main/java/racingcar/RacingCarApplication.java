@@ -1,5 +1,10 @@
 package racingcar;
 
+import racingcar.controller.RacingCar;
+import racingcar.domain.NumberGenerator;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
 public class RacingCarApplication {
 
 
