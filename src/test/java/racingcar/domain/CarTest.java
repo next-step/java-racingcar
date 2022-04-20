@@ -52,28 +52,4 @@ class CarTest {
 		assertThat(car.carStatus()).doesNotContain("-");
 	}
 
-	@ParameterizedTest
-	@ValueSource(ints = {4, 5, 6, 7, 8, 9})
-	@DisplayName("자동차 객체의 전진 조건은 4이상 10미만 이다")
-	void isCarMovableTrue(int number) {
-		MoveStrategy moveStrategy = new CarMoveStrategy();
-		Car car = new Car(moveStrategy);
-
-		boolean movable = car.isMovable(number);
-
-		assertThat(movable).isTrue();
-	}
-
-	@ParameterizedTest
-	@ValueSource(ints = {0, 1, 2, 3})
-	@DisplayName("자동차 객체의 전진하지 않는조건은 0이상 4미만 이다")
-	void isCarMovableFalse(int number) {
-		MoveStrategy moveStrategy = new CarMoveStrategy();
-		Car car = new Car(moveStrategy);
-
-		boolean movable = car.isMovable(number);
-
-		assertThat(movable).isFalse();
-	}
-
 }

@@ -10,10 +10,6 @@ public class Car {
 	private int valueToMovable;
 	private String status = "";
 
-	public Car(MoveStrategy moveStrategy) {
-		this.moveStrategy = moveStrategy;
-	}
-
 	public Car(NumberGenerator numberGenerator, MoveStrategy moveStrategy) {
 		this.numberGenerator = numberGenerator;
 		this.moveStrategy = moveStrategy;
