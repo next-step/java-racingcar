@@ -1,35 +1,33 @@
 package camp.nextstep.racingcar.domain;
 
+import java.util.Objects;
+
 public class Car {
 
-  private final String name;
-  private int position;
+  private final CarName name;
+  private Position position;
 
   public Car(String name) {
-    validateName(name);
-
-    this.name = name;
-    this.position = 0;
-  }
-
-  private void validateName(String name) {
-    if (name == null || name.length() > 5) {
-      new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-    }
+    this.name = new CarName(name);
+    this.position = new Position(0);
   }
 
   public void move(MoveCondition condition) {
     if (!condition.isSatisfied()) {
       return;
     }
-    this.position++;
+    position.moveForward();
   }
 
   public int getPosition() {
-    return position;
+    return position.getPosition();
   }
 
   public String getName() {
-    return name;
+    return name.getName();
+  }
+
+  public boolean isSamePosition(Car car) {
+    return Objects.equals(this.position, car.getPosition());
   }
 }

@@ -24,6 +24,7 @@ public class RacingGameController {
       raceRecords.add(new RaceRecord(round, cars.race(moveCondition)));
     }
     ResultView.print(raceRecords);
+    ResultView.printWinner(cars.getWinners());
   }
 
 }
