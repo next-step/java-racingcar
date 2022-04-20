@@ -14,15 +14,10 @@ class CarTest {
   @Test
   @DisplayName("앞으로 1회 이동했을 때 이동 거리와 자동차 이름 확인")
   void oneMoveTest() {
-    String carName = "car";
-    Car car = Car.newInstance(carName);
-
+    Car car = new Car("car");
     car.attempt(new MustMoveStrategy());
 
-    assertAll(
-        () -> assertThat(car.isDistanceEqual(new Distance(1))).isTrue(),
-        () -> assertThat(car.getCarName()).isEqualTo(carName)
-    );
+    assertThat(car).isEqualTo(new Car("car", new Distance(1)));
   }
 
   @ParameterizedTest
@@ -30,15 +25,12 @@ class CarTest {
   @CsvSource(value = {"A|1|1", "B|2|2", "C|0|0", "D|10|10", "E|100|100"}, delimiter = '|')
   void nMoveTest(String carName, int attempt, int expected) {
     MustMoveStrategy mustMoveStrategy = new MustMoveStrategy();
-    Car car = Car.newInstance(carName);
+    Car car = new Car(carName);
     for (int i = 0; i < attempt; i++) {
       car.attempt(mustMoveStrategy);
     }
 
-    assertAll(
-        () -> assertThat(car.isDistanceEqual(new Distance(expected))).isTrue(),
-        () -> assertThat(car.getCarName()).isEqualTo(carName)
-    );
+    assertThat(car).isEqualTo(new Car(carName, new Distance(expected)));
   }
 
 }

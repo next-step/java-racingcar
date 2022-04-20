@@ -1,5 +1,6 @@
 package racing.domain;
 
+import java.util.Objects;
 import racing.domain.strategy.MoveStrategy;
 
 public class Car {
@@ -8,12 +9,12 @@ public class Car {
   private final CarName carName;
 
   public Car(String carName) {
-    this.distance = new Distance();
-    this.carName = new CarName(carName);
+    this(carName, new Distance(0));
   }
 
-  public static Car newInstance(String carName) {
-    return new Car(carName);
+  public Car(String carName, Distance distance) {
+    this.distance = distance;
+    this.carName = new CarName(carName);
   }
 
   public String getCarName() {
@@ -41,4 +42,18 @@ public class Car {
   public int getCurrentDistance() {
     return this.distance.getAmount();
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Car)) {
+      return false;
+    }
+    Car car = (Car) o;
+    return Objects.equals(distance, car.distance) && Objects.equals(carName,
+        car.carName);
+  }
+
 }
