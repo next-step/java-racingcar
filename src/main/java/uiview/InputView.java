@@ -6,6 +6,7 @@ public class InputView {
 
   private static final Scanner scanner = new Scanner(System.in);
 
+
   private InputView() {}
 
   public static int scanInt(String description) {

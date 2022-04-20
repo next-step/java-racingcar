@@ -14,6 +14,7 @@ public class Car implements Comparable<Car> {
   private final CarPosition carPosition;
   private final CarName carName;
 
+
   public Car(String name) {
     this(name, INITIAL_POSITION);
   }

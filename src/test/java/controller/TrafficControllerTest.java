@@ -27,6 +27,7 @@ public class TrafficControllerTest {
   private static final int VALID_TRY_COUNT = 5;
   private static final int INVALID_TRY_COUNT = 0;
 
+
   @Test
   void init_수행_검사() {
     assertThat(TrafficController.init()).isNotNull();

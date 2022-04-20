@@ -77,8 +77,6 @@ public class TrafficController {
     return stringJoiner.toString();
   }
 
-
-
   private void validateBeforeStart() {
     Objects.requireNonNull(cars, ERROR_MESSAGE_OF_NON_CARS);
   }
