@@ -1,33 +1,40 @@
-package car;
+package domain.car;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Car {
     public static final int EXCESS_NUMBERS = 4;
-    private String name;
-    private int distance;
+    private Name name;
+    private Distance distance;
 
     public Car(String name)  {
-        if (name.length() > 5) {
-            throw new RuntimeException("이름은 5자를 초과할 수 없습니다");
-        }
-
-        this.distance = 0;
-        this.name = name;
+        this.distance = new Distance();
+        this.name = new Name(name);
     }
 
     public String getName() {
-        return this.name;
+        return this.name.value();
     }
 
     public int getDistance() {
-        return this.distance;
+        return this.distance.value();
     }
 
     public int move(int number) {
         if (number < EXCESS_NUMBERS) {
-            return this.distance;
+            return this.distance.value();
         }
 
-        return this.distance++;
+        this.distance.incrementDistance();
+        return this.distance.value();
+    }
+
+    public List<Car> getWinner(List<Car> winner, Max max) {
+        if (distance.isMax(max)) {
+            winner.add(this);
+        }
+        return winner;
     }
 
     public void play(int attemptNumber) {
@@ -41,7 +48,7 @@ public class Car {
     public void print() {
         String distanceToString = "";
 
-        for (int i = 0; i < this.distance; i++) {
+        for (int i = 0; i < this.distance.value(); i++) {
             distanceToString += "-";
         }
 

@@ -1,4 +1,9 @@
-package car;
+package domain.controller;
+
+import domain.car.Car;
+import domain.car.CarRacingGame;
+import view.InputView;
+import view.ResultView;
 
 import java.util.List;
 
@@ -12,6 +17,7 @@ public class Main {
         racing.start(attemptCount);
 
         ResultView resultView = new ResultView(racing);
-        resultView.print();
+        List<Car> finish = racing.finish();
+        resultView.print(finish);
     }
 }
