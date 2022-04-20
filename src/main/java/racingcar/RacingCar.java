@@ -16,6 +16,10 @@ public class RacingCar {
         this.carName = carName;
     }
 
+    public boolean isWinner(int longestDistance) {
+        return this.distance == longestDistance;
+    }
+
     private boolean invalidCarName(String carName) {
         return carName.length() > MAX_CAR_NAME_SIZE;
     }
@@ -26,11 +30,11 @@ public class RacingCar {
         }
     }
 
-    public int getDistance() {
-        return distance;
-    }
-
     public String getCarName() {
         return carName;
+    }
+
+    public int isLongestDistance(int longestDistance) {
+        return Math.max(longestDistance, this.distance);
     }
 }
