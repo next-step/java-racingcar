@@ -1,19 +1,26 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    public static final String DEFAULT_DELIMITER = ",|:";
-    public static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private static final String DEFAULT_DELIMITER = "[,:]";
+    private static final String CUSTOM_DELIMITER = "//(.)\n(.*)";
+    private static final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER);
+
+    private StringAddCalculator() {
+        throw new IllegalStateException("Util class");
+    }
 
     public static int splitAndSum(String text) {
 
-        if (text == null || text.isBlank()) {
+        if (isEmptyOrNull(text))  {
             return 0;
         }
 
-        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER).matcher(text);
+
+        Matcher matcher = pattern.matcher(text);
 
         if(matcher.find()) {
             String customDelimiter = matcher.group(1);
@@ -25,12 +32,12 @@ public class StringAddCalculator {
         return sum(toInts(values));
     }
 
+    private static boolean isEmptyOrNull(String text) {
+        return text == null || text.isBlank();
+    }
+
     private static int sum(int[] values) {
-        int result = 0;
-        for (int item : values) {
-            result += item;
-        }
-        return result;
+        return Arrays.stream(values).reduce(0, Integer::sum);
     }
 
     private static int[] toInts(String[] values) {
@@ -41,8 +48,8 @@ public class StringAddCalculator {
         return numbers;
     }
 
-    private static int toInt(String item) {
-        int intItem = Integer.parseInt(item);
+    private static int toInt(String number) {
+        int intItem = Integer.parseInt(number);
         if (intItem < 0) {
             throw new RuntimeException("음수가 들어올 수 없습니다.");
         }
