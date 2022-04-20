@@ -6,14 +6,14 @@ import racingcar.pattern.RandomNumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class RacingCarTest  {
+class RacingCarTest {
     @Test
     @DisplayName("round가 음수일땐 에러를 뱉는다.")
     void argumentExceptionErrorTest() {
         int carCount = 4;
         int round = -1;
 
-        Cars cars = new Cars(Cars.createCars(carCount));
+        Cars cars = Cars.createCars(carCount);
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         assertThatThrownBy(() -> new RacingCar(cars, round, randomNumberGenerator))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -26,7 +26,7 @@ class RacingCarTest  {
         int carCount = 4;
         int round = 4;
 
-        Cars cars = new Cars(Cars.createCars(carCount));
+        Cars cars = Cars.createCars(carCount);
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         RacingCar racingCar = new RacingCar(cars, round, randomNumberGenerator);
 

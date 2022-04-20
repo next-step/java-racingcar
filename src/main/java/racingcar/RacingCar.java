@@ -6,6 +6,7 @@ public class RacingCar  {
     private Cars cars;
     private int round;
     private final NumberGenerator numberGenerator;
+    private final int ZERO = 0;
 
     public RacingCar(Cars cars, int round, NumberGenerator numberGenerator) {
         this.cars = cars;
@@ -14,7 +15,7 @@ public class RacingCar  {
     }
 
     private void setRound(int round) {
-        if(round < 0) {
+        if(round < ZERO) {
             throw new IllegalArgumentException("round는 음수가 될 수 없습니다");
         }
         this.round = round;

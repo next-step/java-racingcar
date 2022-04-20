@@ -12,29 +12,29 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static List<Car> createCars(int carCount) {
+    public static Cars createCars(int carCount) {
         validatePositiveNumber(carCount);
 
         List<Car> cars = new ArrayList<>();
         for (int number = 0; number < carCount; number++) {
             cars.add(new Car());
         }
-        return cars;
+        return new Cars(cars);
     }
 
     private static void validatePositiveNumber(int carCount) {
-        if(carCount < 0) {
+        if (carCount < 0) {
             throw new IllegalArgumentException("자동차의 개수는 음수가 될 수 없습니다.");
         }
     }
 
     public void play(NumberGenerator numberGenerator) {
-        for (Car car:cars) {
+        for (Car car : cars) {
             car.play(numberGenerator.generate());
         }
     }
 
-    public List<Car> getCars(){
+    public List<Car> getCars() {
         return cars;
     }
 

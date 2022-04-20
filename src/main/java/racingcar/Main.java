@@ -11,7 +11,7 @@ public class Main {
         int carCount = InputView.getCarCount();
         int round = InputView.getGameRound();
 
-        Cars cars = new Cars(Cars.createCars(carCount));
+        Cars cars = Cars.createCars(carCount);
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         RacingCar racingCar = new RacingCar(cars, round, randomNumberGenerator);
 

@@ -10,7 +10,7 @@ class CarsTest {
     @Test
     @DisplayName("입력한 수 만큼 Car instance를 반환한다.")
     void crateCarTest() {
-        assertThat(Cars.createCars(3)).hasSize(3);
+        assertThat(Cars.createCars(3).getCars()).hasSize(3);
     }
 
     @Test
