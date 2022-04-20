@@ -17,7 +17,7 @@ class CarNameTest {
 
         CarName carName = new CarName(name);
 
-        assertThat(carName.getName()).isEqualTo(name);
+        assertThat(carName.getValue()).isEqualTo(name);
     }
 
     @Test

@@ -46,17 +46,16 @@ public class Cars {
   }
 
   public List<String> getWinnerNames() {
-    int maxPosition = getMaxPosition();
+    Car maxPositionCar = getMaxPositionCar();
     return cars.stream()
-        .filter(car -> car.compareWithMaxPosition(maxPosition))
+        .filter(car -> car.compareWithMaxPosition(maxPositionCar))
         .map(Car::getCarName)
         .collect(Collectors.toList());
   }
 
-  private int getMaxPosition() {
+  private Car getMaxPositionCar() {
     return cars.stream()
         .max(Car::compareTo)
-        .orElseThrow()
-        .getCurrentPosition();
+        .orElseThrow();
   }
 }

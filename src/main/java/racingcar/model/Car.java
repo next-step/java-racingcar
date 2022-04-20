@@ -4,9 +4,9 @@ import racingcar.strategy.MovingStrategy;
 
 public class Car implements Comparable<Car> {
 
-  private Position position;
-  private MovingStrategy movingStrategy;
-  private CarName carName;
+  private final Position position;
+  private final CarName carName;
+  private final MovingStrategy movingStrategy;
 
   public Car(Position position, MovingStrategy movingStrategy, String name) {
     this(position, movingStrategy, new CarName(name));
@@ -33,15 +33,15 @@ public class Car implements Comparable<Car> {
   }
 
   public String getCarName() {
-    return carName.getName();
+    return carName.getValue();
   }
 
-  public boolean compareWithMaxPosition(int maxPosition) {
-    return this.position.getValue() == maxPosition;
+  public boolean compareWithMaxPosition(Car maxPositionCar) {
+    return this.position.equals(maxPositionCar.position);
   }
 
   @Override
   public int compareTo(Car otherCar) {
-    return this.position.getValue() - otherCar.position.getValue();
+    return this.position.compareTo(otherCar.position);
   }
 }
