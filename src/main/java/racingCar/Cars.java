@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
+    List<Car> carList = new ArrayList<>();
 
-    List<String> carList = new ArrayList<>();
-
-    public Cars(int N) {
-        for (int i =0; i < N; i++) {
-            this.carList.add("-");
+    public Cars(int countOfCar) {
+        for (int i =0; i < countOfCar; i++) {
+            Car car = new Car("-");
+            this.carList.add(car);
         }
     }
 

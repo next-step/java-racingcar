@@ -18,25 +18,31 @@ public class RacingCarTest {
     }
 
     @Test
+    void 랜덤유효값(){
+        StartGame startGame = new StartGame();
+        for(int i=0; i<10; i++){
+            int randomNumber = startGame.randomNumber();
+            assertThat(randomNumber).isBetween(0,9);
+        }
+    }
+
+    @Test
     void 움직이는경우(){
         StartGame startGame = new StartGame();
-        Cars cars = new Cars(1);
+        Car car = new Car("-");
 
-        startGame.moveCar(4, cars.carList, 0);
-        assertThat(cars.carList.get(0)).isEqualTo("--");
+        startGame.moveCar(4, car);
+        assertThat(car.getMove()).isEqualTo("--");
 
     }
 
     @Test
     void 안움직이는경우(){
         StartGame startGame = new StartGame();
-        Cars cars = new Cars(1);
-        startGame.moveCar(3, cars.carList, 0);
+        Car car = new Car("-");
 
-        assertThat(cars.carList.get(0)).isEqualTo("-");
-
+        startGame.moveCar(3, car);
+        assertThat(car.getMove()).isEqualTo("-");
 
     }
-
-
 }
