@@ -1,14 +1,15 @@
 package racingCar.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import racingCar.model.Car;
 import racingCar.model.RacingCarHistory;
 import racingCar.model.Track;
-import racingCar.model.Winner;
+import racingCar.model.Winners;
 import racingCar.strategy.CarMoveRandomStrategy;
-import racingCar.util.WinnerUtils;
+import racingCar.util.StringUtils;
 import racingCar.view.InputTable;
 
 public class GameService {
@@ -50,30 +51,13 @@ public class GameService {
     return resultList;
   }
 
-  public String addWinner(List<Car> otherGameParticipants) {
-    return getCoWinner(winnerCalculator(otherGameParticipants), otherGameParticipants);
-  }
+  public String findWinners(List<Car> cars) {
+    Winners winners = new Winners();
+    List<String> coWinnerNameList = winners.findCoWinnerNameList(cars,
+        winners.findWinnerPosition(cars));
+    coWinnerNameList.removeAll(Collections.singletonList(null));
 
-  public Winner winnerCalculator(List<Car> gameParticipants) {
-    Winner winner = WinnerUtils.getChallenger(gameParticipants.get(0));
-    for (Car participant : gameParticipants) {
-      winner = findWinner(winner, participant);
-    }
-    return winner;
-  }
-
-  public String getCoWinner(Winner winner, List<Car> otherGameParticipants) {
-    for (Car otherGameParticipant : otherGameParticipants) {
-      winner = winner.addCoWinner(WinnerUtils.getChallenger(otherGameParticipant));
-    }
-    return winner.toString();
-  }
-
-  private Winner findWinner(Winner winner, Car challenger) {
-    if (winner.match(challenger)) {
-      winner = WinnerUtils.getChallenger(challenger);
-    }
-    return winner;
+    return StringUtils.join(coWinnerNameList);
   }
 
 

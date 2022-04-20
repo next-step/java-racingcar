@@ -26,7 +26,8 @@ public final class OutputTable {
     List<RacingCarHistory> racingHistories = game.play(allCars, rounds);
     historyPrint(allCars, racingHistories);
     List<Car> gameResult = game.gameResult(racingHistories, rounds);
-    System.out.println(game.addWinner(gameResult) + WINNER_TEXT_PRINT);
+    String winners = game.findWinners(gameResult);
+    System.out.println(winners + WINNER_TEXT_PRINT);
   }
 
   private static void historyPrint(List<Car> allCars, List<RacingCarHistory> racingHistories) {

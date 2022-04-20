@@ -8,6 +8,10 @@ public final class Position {
   private static final int INCREASE_MOVE_VALUE = 1;
   private final int x;
 
+  public Position() {
+    this(0);
+  }
+
   public Position(int x) {
     valid(x);
     this.x = x;
@@ -44,8 +48,17 @@ public final class Position {
     }
   }
 
+
+  int positionCompare(int curPosition) {
+    return Math.max(curPosition, this.x);
+  }
+
   @Override
   public String toString() {
     return STEP.repeat(x);
+  }
+
+  public boolean equalPosition(int winnerPosition) {
+    return winnerPosition == this.x;
   }
 }
