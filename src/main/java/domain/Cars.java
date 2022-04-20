@@ -1,4 +1,4 @@
-package racingcar;
+package domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private static final int CHECK_CAR_COUNT = 0;
     private static final String CARS_DELIMITER = ",";
     private static final String NEW_LINE = "\n";
+    private static final int CHECK_CAR_COUNT = 0;
     private static final int FIRST_INDEX = 0;
     private final List<Car> cars;
     private final RaceCondition raceCondition;
@@ -31,12 +31,8 @@ public class Cars {
         return new Builder();
     }
 
-    public int getCarsSize() {
-        return cars.size();
-    }
-
-    public boolean checkSize() {
-        return cars.size() > CHECK_CAR_COUNT;
+    public boolean isSize(int size) {
+        return cars.size() == size;
     }
 
     private String[] splitCarsName(String carsName) {
@@ -72,7 +68,7 @@ public class Cars {
     }
 
     public Car getCurrentWinner() {
-        if (checkSize()) {
+        if (!isSize(CHECK_CAR_COUNT)) {
             reverseSortCarsFromPosition();
             return cars.get(FIRST_INDEX);
         }
@@ -87,11 +83,9 @@ public class Cars {
 
     @Override
     public String toString() {
-        String carsExpression = "";
-        for (Car car : cars) {
-            carsExpression += car.toString() + NEW_LINE;
-        }
-        return carsExpression;
+        return cars.stream()
+                .map(car-> car + NEW_LINE)
+                .collect(Collectors.joining());
     }
 
     public static class Builder {

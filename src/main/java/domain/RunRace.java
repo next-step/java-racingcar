@@ -1,4 +1,4 @@
-package racingcar;
+package domain;
 
 public class RunRace {
     private final int tryCount;

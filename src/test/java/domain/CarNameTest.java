@@ -1,4 +1,4 @@
-package racingcar;
+package domain;
 
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -24,7 +24,7 @@ class CarNameTest {
                 .carsName("abc,cdf")
                 .raceCondition(new RaceCondition())
                 .build();
-        assertThat(cars.getCarsSize()).isEqualTo(2);
+        assertThat(cars.isSize(2)).isTrue();
     }
 
     @Test

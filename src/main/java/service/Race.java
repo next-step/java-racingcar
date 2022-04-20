@@ -1,12 +1,13 @@
 package service;
 
-import racingcar.Cars;
-import racingcar.RaceCondition;
-import racingcar.RaceRecord;
-import racingcar.RunRace;
+import domain.Cars;
+import domain.RaceCondition;
+import domain.RaceRecord;
+import domain.RunRace;
 
 
 public class Race {
+    private static final int CHECK_CAR_COUNT = 0;
     private final RaceRecord raceRecord = new RaceRecord();
     private final RaceCondition raceCondition = new RaceCondition();
 
@@ -16,11 +17,11 @@ public class Race {
                 .raceCondition(raceCondition)
                 .build();
 
-        if (!cars.checkSize()) {
+        if (cars.isSize(CHECK_CAR_COUNT)) {
             throw new IllegalArgumentException("자동차 대수는 1대 이상이어야 경주 할 수 있습니다.");
         }
 
-        return runRace.run(raceRecord,cars);
+        return runRace.run(raceRecord, cars);
     }
 
 }

@@ -1,4 +1,4 @@
-package racingcar;
+package domain;
 
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;

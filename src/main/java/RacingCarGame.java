@@ -1,4 +1,4 @@
-import racingcar.RunRace;
+import domain.RunRace;
 import service.Race;
 import view.InputView;
 import view.ResultView;

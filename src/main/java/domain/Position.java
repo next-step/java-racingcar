@@ -1,4 +1,4 @@
-package racingcar;
+package domain;
 
 public class Position implements Comparable<Position> {
     private static final String MOVE_EXPRESSION = "-";

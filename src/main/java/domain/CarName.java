@@ -1,4 +1,4 @@
-package racingcar;
+package domain;
 
 public class CarName {
     private static final int CAR_NAME_SIZE = 5;
