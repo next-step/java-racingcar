@@ -15,4 +15,8 @@ public class Distance {
     public void incrementDistance() {
         this.distance++;
     }
+
+    public boolean isMax(Max max) {
+        return max.equals(new Max(distance));
+    }
 }

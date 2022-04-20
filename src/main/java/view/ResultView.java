@@ -1,6 +1,9 @@
 package view;
 
+import domain.car.Car;
 import domain.car.CarRacingGame;
+
+import java.util.List;
 
 public class ResultView {
     private CarRacingGame racing;
@@ -9,7 +12,10 @@ public class ResultView {
         this.racing = racing;
     }
 
-    public void print() {
-        this.racing.finish();
+    public void print(List<Car> winners) {
+        for (Car winner : winners) {
+            System.out.print(winner.getName() + " ");
+        }
+        System.out.println("최종 우승했습니다.");
     }
 }

@@ -17,15 +17,7 @@ public class CarRacingGame {
     }
 
     public List<Car> finish() {
-        cars.fixMaxDistance(max);
-
         List<Car> winners = getWinners();
-
-        for (Car winner : winners) {
-            System.out.print(winner.getName() + " ");
-        }
-        System.out.println("최종 우승했습니다.");
-
         return winners;
     }
 

@@ -1,5 +1,8 @@
 package domain.car;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
     public static final int EXCESS_NUMBERS = 4;
     private Name name;
@@ -25,6 +28,13 @@ public class Car {
 
         this.distance.incrementDistance();
         return this.distance.value();
+    }
+
+    public List<Car> getWinner(List<Car> winner, Max max) {
+        if (distance.isMax(max)) {
+            winner.add(this);
+        }
+        return winner;
     }
 
     public void play(int attemptNumber) {

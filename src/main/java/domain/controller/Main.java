@@ -17,6 +17,7 @@ public class Main {
         racing.start(attemptCount);
 
         ResultView resultView = new ResultView(racing);
-        resultView.print();
+        List<Car> finish = racing.finish();
+        resultView.print(finish);
     }
 }
