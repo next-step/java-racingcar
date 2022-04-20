@@ -28,6 +28,6 @@ public class Car {
   }
 
   public boolean isSamePosition(Car car) {
-    return Objects.equals(this.position, car.getPosition());
+    return Objects.equals(this.getPosition(), car.getPosition());
   }
 }
