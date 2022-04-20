@@ -1,31 +1,37 @@
 package controller;
 
+import static uiview.InputView.scanInt;
+import static uiview.InputView.scanString;
+import static uiview.OutputView.print;
+import static uiview.OutputView.printEmpty;
+
+import domain.CarInfo;
 import domain.Cars;
+import java.util.List;
 import java.util.Objects;
-import model.CarCount;
+import java.util.StringJoiner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import model.TryCount;
-import uiview.InputView;
-import uiview.OutputView;
 
 public class TrafficController {
 
-  private static final String MESSAGE_FOR_UNABLE_TO_START = "준비 데이터가 충분하지 않아 게임을 시작할 수 없습니다.";
+  private static final String ERROR_MESSAGE_OF_NON_CARS = "게임을 시작하기 위해서는 차를 입력해주세요";
   private static final String MESSAGE_FOR_INPUT_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
   private static final String MESSAGE_FOR_INPUT_TRY_COUNT = "시도할 대수는 몇 회 회가요?";
   private static final String POSITION_MARKER = "-";
+  private static final String COLUMN_MARKER = " : ";
+  private static final String CAR_RAW_NAMES_DELIMITER = ",";
+  private static final String WINNERS_DELIMITER = ", ";
+  private static final String MESSAGE_FOR_FINAL_RESULT = "%s가 최종 우승했습니다.";
   private static final String RESULT_GUIDE_MESSAGE = "실행결과";
   private static final int MAX_NUMBER_BOUND = 10;
-
-  private final InputView inputView;
-  private final OutputView outputView;
 
   private TryCount tryCount;
   private Cars cars;
 
 
   private TrafficController() {
-    this.inputView = new InputView();
-    this.outputView = new OutputView();
   }
 
   public static TrafficController init() {
@@ -33,17 +39,18 @@ public class TrafficController {
   }
 
   public TrafficController createCarsByInsertingCarCount() {
-    return createCars(new CarCount(inputView.scanInt(MESSAGE_FOR_INPUT_CAR_COUNT)));
+    return createCars(scanString(MESSAGE_FOR_INPUT_CAR_COUNT));
   }
 
-  public TrafficController createCars(CarCount carCount) {
-    validateCarCount(carCount);
-    this.cars = new Cars(carCount.getValue());
+  public TrafficController createCars(String rawCarNames) {
+    List<String> carNames = Stream.of(rawCarNames.split(CAR_RAW_NAMES_DELIMITER))
+        .collect(Collectors.toUnmodifiableList());
+    this.cars = new Cars(carNames);
     return this;
   }
 
   public TrafficController insertTryCount() {
-    return tryCount(inputView.scanInt(MESSAGE_FOR_INPUT_TRY_COUNT));
+    return tryCount(scanInt(MESSAGE_FOR_INPUT_TRY_COUNT));
   }
 
   public TrafficController tryCount(int tryCount) {
@@ -53,35 +60,36 @@ public class TrafficController {
 
   public void start() {
     validateBeforeStart();
-    outputView.print(RESULT_GUIDE_MESSAGE);
-    for (int i = 0; i < tryCount.getValue(); i++) {
+    print(RESULT_GUIDE_MESSAGE);
+
+    do {
       cars.moveAllCarRandomly(MAX_NUMBER_BOUND);
       tryCount.race();
-      printResult();
-      outputView.printEmpty();
-    }
+      cars.getCarsInfo().forEach(carInfo -> print(buildPositionViewFrom(carInfo)));
+      printEmpty();
+    } while (!tryCount.isFinished());
+
+    print(buildFinalResult());
   }
 
-  private void printResult() {
-    cars.getPositions().forEach(count -> outputView.print(POSITION_MARKER, count));
+  private String buildFinalResult() {
+    return String.format(MESSAGE_FOR_FINAL_RESULT, getWinners());
   }
 
-  private void validateCarCount(CarCount carCount) {
-    Objects.requireNonNull(carCount);
+  private String getWinners() {
+    StringJoiner stringJoiner = new StringJoiner(WINNERS_DELIMITER);
+    cars.findWinners()
+        .forEach(stringJoiner::add);
+    return stringJoiner.toString();
   }
 
-  private void validateTryCount(TryCount tryCount) {
-    Objects.requireNonNull(tryCount);
-    tryCount.validate();
+  private String buildPositionViewFrom(CarInfo carInfo) {
+    return carInfo.getNameOfCar()
+        + COLUMN_MARKER
+        + POSITION_MARKER.repeat(carInfo.getPositionOfCar());
   }
 
   private void validateBeforeStart() {
-    try {
-      Objects.requireNonNull(cars);
-      cars.validate();
-      validateTryCount(tryCount);
-    } catch (Exception e) {
-      outputView.print(MESSAGE_FOR_UNABLE_TO_START);
-    }
+    Objects.requireNonNull(cars, ERROR_MESSAGE_OF_NON_CARS);
   }
 }

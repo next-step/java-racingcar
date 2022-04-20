@@ -2,10 +2,7 @@ package model;
 
 public interface NumberModel {
 
-  int getValue();
+  String toString();
+  int toInt();
   void validateValue(int value);
-
-  default void validate() {
-    validateValue(getValue());
-  }
 }

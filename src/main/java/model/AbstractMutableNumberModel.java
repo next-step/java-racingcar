@@ -9,8 +9,13 @@ public abstract class AbstractMutableNumberModel implements NumberModel {
     this.value = value;
   }
 
-  public int getValue() {
-    return this.value;
+  @Override
+  public String toString() {
+    return String.valueOf(value);
+  }
+
+  public int toInt() {
+    return value;
   }
 
   /*
@@ -20,6 +25,18 @@ public abstract class AbstractMutableNumberModel implements NumberModel {
    */
   protected void setValue(int value) {
     this.value = value;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AbstractMutableNumberModel that = (AbstractMutableNumberModel) o;
+    return value == that.value;
   }
 
   abstract public void validateValue(int value);

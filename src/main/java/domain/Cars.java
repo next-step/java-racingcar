@@ -5,6 +5,7 @@ import static util.Validator.validateArgument;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -13,11 +14,11 @@ public class Cars {
 
   private final List<Car> cars;
 
-  public Cars(int carCount) {
-    validateCarCount(carCount);
+  public Cars(List<String> carNames) {
+    validateCarNames(carNames);
     cars = new ArrayList<>();
-    for (int i = 0; i < carCount; i++) {
-      cars.add(new Car());
+    for (String carName : carNames) {
+      cars.add(new Car(carName));
     }
   }
 
@@ -25,14 +26,28 @@ public class Cars {
     cars.forEach(car -> car.move(generateRandomNumberInRange(randomNumberBound)));
   }
 
-  public List<Integer> getPositions() {
+  public List<CarInfo> getCarsInfo() {
     return cars.stream()
-        .map(Car::getPosition)
+        .map(Car::getCarInfo)
         .collect(Collectors.toUnmodifiableList());
   }
 
-  public void validate() {
-    validateCarCount(cars.size());
+  public List<String> findWinners() {
+    final int winnerPosition = cars.stream()
+        .map(Car::getCarInfo)
+        .max(CarInfo::compareTo)
+        .orElseThrow(NoSuchElementException::new)
+        .getPositionOfCar();
+
+    return cars.stream()
+        .map(Car::getCarInfo)
+        .filter((carInfo) -> carInfo.getPositionOfCar() == winnerPosition)
+        .map(CarInfo::getNameOfCar)
+        .collect(Collectors.toUnmodifiableList());
+  }
+
+  private void validateCarNames(List<String> carNames) {
+    validateCarCount(carNames.size());
   }
 
   private void validateCarCount(int carCount) {

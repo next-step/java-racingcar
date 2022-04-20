@@ -1,5 +1,6 @@
 package domain;
 
+import model.CarName;
 import model.CarPosition;
 
 public class Car {
@@ -9,9 +10,11 @@ public class Car {
   private static final int INITIAL_POSITION = 0;
 
   private final CarPosition carPosition;
+  private final CarName carName;
 
-  public Car() {
+  public Car(String name) {
     this.carPosition = new CarPosition(INITIAL_POSITION);
+    this.carName = new CarName(name);
   }
 
   public void move(int number) {
@@ -20,11 +23,7 @@ public class Car {
     }
   }
 
-  public int getPosition() {
-    return carPosition.getValue();
-  }
-
-  public boolean positionEqualTo(int expectedPosition) {
-    return carPosition.getValue() == expectedPosition;
+  public CarInfo getCarInfo() {
+    return new CarInfo(carName, carPosition);
   }
 }
