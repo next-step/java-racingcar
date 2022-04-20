@@ -2,14 +2,18 @@ package racing.view;
 
 import exception.CustomException;
 import racing.module.Car;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
-    private static final String STARTING_LINE = "#";
+    private static final String STARTING_LINE = " : ";
     private static final String CAR_POSITION_BAR = "-";
     private static final String NEW_LINE = "\n";
+    private static final String WINNER_MESSAGE_START = "최종 우승자는 ";
+    private static final String WINNER_MESSAGE_END = "입니다.";
 
-    private OutputView() throws CustomException {
+    private OutputView() {
         throw new CustomException("유틸성클래스는 인스턴스 생성을 할 수 없습니다.");
     }
 
@@ -23,6 +27,7 @@ public class OutputView {
 
     public static void printCarsPosition(List<Car> carList) {
         for (Car car : carList) {
+            System.out.print(car.getCarName());
             System.out.print(STARTING_LINE);
             printCarPosition(car.getPosition());
             System.out.print(NEW_LINE);
@@ -34,5 +39,18 @@ public class OutputView {
         for (int i = 0; i < position; i++) {
             System.out.print(CAR_POSITION_BAR);
         }
+    }
+
+    public static void printWinner(List<Car> carList) {
+        System.out.print(WINNER_MESSAGE_START);
+        System.out.print(getWinnerString(carList));
+        System.out.print(WINNER_MESSAGE_END);
+        System.out.print(NEW_LINE);
+    }
+
+    private static String getWinnerString(List<Car> carList){
+        return carList.stream()
+                .map(Car::getCarName)
+                .collect(Collectors.joining(","));
     }
 }
