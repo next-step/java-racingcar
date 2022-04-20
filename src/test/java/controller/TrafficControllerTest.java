@@ -4,12 +4,29 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import model.CarCount;
+import java.util.StringJoiner;
+import java.util.stream.Stream;
+import model.CarPosition;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class TrafficControllerTest {
 
-  private static final int VALID_CAR_COUNT = 10;
+  private static final String CAR_NAMES_DELIMITER = ",";
+  private static final String CAR_NAME_1 = "name1";
+  private static final String CAR_NAME_2 = "name2";
+  private static final String CAR_NAME_3 = "name3";
+  private static final String CAR_NAME_4 = "name4";
+  private static final String CAR_NAME_5 = "name5";
+  private static final String VALID_RAW_CAR_NAMES = new StringJoiner(CAR_NAMES_DELIMITER)
+      .add(CAR_NAME_1)
+      .add(CAR_NAME_2)
+      .add(CAR_NAME_3)
+      .add(CAR_NAME_4)
+      .add(CAR_NAME_5)
+      .toString();
   private static final int VALID_TRY_COUNT = 5;
   private static final int INVALID_TRY_COUNT = 0;
 
@@ -34,16 +51,17 @@ public class TrafficControllerTest {
   @Test
   void createCar_수행_성공() {
     assertDoesNotThrow(() -> TrafficController.init()
-        .createCars(new CarCount(VALID_CAR_COUNT))
+        .createCars(VALID_RAW_CAR_NAMES)
         .tryCount(VALID_TRY_COUNT)
         .start()
     );
   }
 
-  @Test
-  void createCar_수행_실패() {
-    assertThrows(NullPointerException.class, () -> TrafficController.init()
-        .createCars(new CarCount(VALID_CAR_COUNT))
+  @ParameterizedTest
+  @ValueSource(strings = {"", " , ", "여섯글자이름, 다섯자이름"})
+  void createCar_수행_실패(String invalidNRawCarNames) {
+    assertThrows(IllegalArgumentException.class, () -> TrafficController.init()
+        .createCars(invalidNRawCarNames)
         .start()
     );
   }
@@ -51,7 +69,7 @@ public class TrafficControllerTest {
   @Test
   void start_실행_성공() {
     assertDoesNotThrow(() -> TrafficController.init()
-        .createCars(new CarCount(VALID_CAR_COUNT))
+        .createCars(VALID_RAW_CAR_NAMES)
         .tryCount(VALID_TRY_COUNT)
         .start()
     );
