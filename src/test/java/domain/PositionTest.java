@@ -11,10 +11,10 @@ class PositionTest {
     @Test
     void goForwardTest() {
         Position position = new Position();
-        position.goForward();
-
         Position afterPosition = new Position();
         ReflectionTestUtils.setField(afterPosition, "position", 1);
+
+        position.goForward();
 
         Assertions.assertThat(position.equals(position)).isTrue();
     }
