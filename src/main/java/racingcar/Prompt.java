@@ -6,11 +6,8 @@ public class Prompt {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public static String[] ask(String question) {
-        String input;
-        do {
-            Printer.println(question);
-            input = SCANNER.nextLine();
-        } while (InputValidator.isInputWrong(input));
+        Printer.println(question);
+        String input = SCANNER.nextLine();
         return input.split(",");
     }
 
