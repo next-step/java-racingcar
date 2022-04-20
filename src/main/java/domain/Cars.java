@@ -2,23 +2,36 @@ package domain;
 
 import util.MoveStrategy;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private final List<Car> cars = new ArrayList<>();
+    private static final String DELIMITER = ",";
+    private final List<Car> cars;
 
-    public Cars(int number) {
-        for (int i = 0; i < number; i++) {
-            cars.add(new Car());
-        }
+    public Cars(String name) {
+        cars = Arrays.stream(name.split(DELIMITER))
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
-    public Positions moveCars(MoveStrategy moveStrategy) {
+    public Map<String, Integer> moveCars(MoveStrategy moveStrategy) {
         cars.forEach(car -> car.move(moveStrategy));
-        return new Positions(cars.stream()
+        return cars.stream()
+                .collect(Collectors.toMap(Car::getName, car -> car.getPosition().getPosition()));
+    }
+
+    public List<Car> findWinners() {
+        Position maxPosition = getMaxPosition();
+        return cars.stream()
+                .filter(car -> car.equalPosition(maxPosition))
+                .collect(Collectors.toList());
+    }
+
+    private Position getMaxPosition() {
+        return cars.stream()
                 .map(Car::getPosition)
-                .collect(Collectors.toList()));
+                .max(Position::compareTo)
+                .orElseThrow(() -> new IllegalArgumentException("우승자가 없습니다."));
     }
 }
