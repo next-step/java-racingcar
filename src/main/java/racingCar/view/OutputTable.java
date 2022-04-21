@@ -6,6 +6,7 @@ import racingCar.controller.GameController;
 import racingCar.model.Car;
 import racingCar.model.RacingCarHistory;
 import racingCar.service.GameService;
+import racingCar.util.StringUtils;
 
 public final class OutputTable {
 
@@ -33,6 +34,10 @@ public final class OutputTable {
   public static void outputGameResult(List<Car> allCars, List<RacingCarHistory> racingHistories) {
     System.out.println(OUTPUT_RESULT);
     historyPrint(allCars, racingHistories);
+  }
+
+  public static String printWinners(List<String> winners) {
+    return StringUtils.join(winners);
   }
 
   public static void findAllWinners(String winners) {

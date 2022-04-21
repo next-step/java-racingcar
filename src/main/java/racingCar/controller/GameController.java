@@ -3,6 +3,7 @@ package racingCar.controller;
 import java.util.List;
 import racingCar.model.Car;
 import racingCar.model.RacingCarHistory;
+import racingCar.model.Winners;
 import racingCar.service.GameService;
 import racingCar.view.InputTable;
 import racingCar.view.OutputTable;
@@ -29,9 +30,8 @@ public class GameController {
 
     List<Car> result = getGameResult(racingCarHistories, rounds);
 
-    String gameWinners = winners(result);
-
-    OutputTable.findAllWinners(gameWinners);
+    List<String> gameWinners = winners(result);
+    OutputTable.findAllWinners(OutputTable.printWinners(gameWinners));
 
   }
 
@@ -51,7 +51,7 @@ public class GameController {
     return gameService.gameResult(racingHistories, rounds);
   }
 
-  public String winners(List<Car> allCars) {
+  public List<String> winners(List<Car> allCars) {
     return gameService.findWinners(allCars);
   }
 

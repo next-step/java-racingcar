@@ -56,13 +56,11 @@ public class GameService {
     }
   }
 
-  public String findWinners(List<Car> cars) {
+  public List<String> findWinners(List<Car> cars) {
     Winners winners = new Winners();
-    List<String> coWinnerNameList = winners.findCoWinnerNameList(cars,
-        winners.findWinnerPosition(cars));
+    List<String> coWinnerNameList = winners.findCoWinnerNameList(cars, winners.findWinnerPosition(cars));
     coWinnerNameList.removeAll(Collections.singletonList(null));
-
-    return StringUtils.join(coWinnerNameList);
+    return coWinnerNameList;
   }
 
 
