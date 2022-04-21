@@ -32,25 +32,20 @@ public class Race {
         int max = 1;
         List<String> winners = new ArrayList<String>();
         for (Car car : cars) {
-            max = getMax(max, car.getPosition());
+            max = car.compareMax(max);
         }
         for (Car car : cars) {
-            collectWinner(max, car, winners);
+            car.collectWinner(max, winners);
         }
         return winners;
     }
 
-    public int getMax(int max, int target) {
-        if (max >= target) {
-            return max;
-        }
-        return target;
-    }
+//    public int getMax(int max, Car car) {
+//        if (car.isWinner(max)) {
+//            return car.;
+//        }
+//        return max;
+//    }
 
-    public List<String> collectWinner(int max, Car car, List<String> winners) {
-        if (car.getPosition() == max) {
-            winners.add((car.name));
-        }
-        return winners;
-    }
+
 }

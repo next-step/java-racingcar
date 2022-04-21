@@ -9,8 +9,7 @@ public class CarTest {
     @Test
     void newCarShouldBeWithTrackAndName() {
         Car car = new Car("test");
-        assertThat(car.getPosition()).isEqualTo(1);
-        assertThat(car.name).isEqualTo("test");
+        assertThat(car).isEqualTo(new Car("test"));
     }
 
     @Test

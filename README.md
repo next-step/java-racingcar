@@ -76,3 +76,6 @@ gony	: ----
 
 - [ ] car.track -> car.position
 - [ ] Fix printResult to generate '-' stemming from position
+
+## Step5
+- [ ] Add Position class
