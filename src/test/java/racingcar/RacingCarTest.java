@@ -58,7 +58,7 @@ public class RacingCarTest {
             int index = round - 1;
             List<Distance> states = playResult.get(index).getStates();
             for (Distance state : states) {
-                assertThat(state.value()).isEqualTo(round);
+                assertThat(state).isEqualTo(new Distance(round));
             }
         }
     }
@@ -75,9 +75,9 @@ public class RacingCarTest {
         // then
         for (int round = 1; round <= playResult.size(); round++) {
             int index = round - 1;
-            List<Distance> states = playResult.get(index).getStates();
+            List<Distance> states = playResult.get(index).getDistances();
             for (Distance state : states) {
-                assertThat(state.value()).isZero();
+                assertThat(state).isEqualTo(DistanceTest.ZERO);
             }
         }
     }
