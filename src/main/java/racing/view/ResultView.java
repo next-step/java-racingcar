@@ -1,6 +1,10 @@
 package racing.view;
 
-import racing.model.RoundResult;
+import racing.domain.RacingCar.Name;
+import racing.util.Delimiter;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -9,15 +13,12 @@ public class ResultView {
     private ResultView() {
     }
 
-    public static void printNewLineMessage(String dialogue) {
+    public static void printMessage(String dialogue) {
         System.out.println(dialogue);
     }
 
-    public static void printMessage(String dialogue) {
-        System.out.print(dialogue);
-    }
-
-    public static void printResult(RoundResult roundResult) {
-        printNewLineMessage(String.format("%s%S", roundResult.getWinners(), WINNER_PRESENTATION));
+    public static void printResult(List<Name> winners) {
+        String result = winners.stream().map(Name::toString).collect(Collectors.joining(Delimiter.COMMA.symbol));
+        printMessage(String.format("%s%S", result, WINNER_PRESENTATION));
     }
 }

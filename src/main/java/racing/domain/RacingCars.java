@@ -1,9 +1,10 @@
 package racing.domain;
 
-import racing.model.RoundResult;
+import racing.util.Roulette;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class RacingCars {
@@ -20,7 +21,7 @@ public class RacingCars {
     public RoundResult roundFight() {
         return this.racingCars
                 .stream()
-                .collect(RoundResult::new, RoundResult::record, RoundResult::combined);
+                .collect(RoundResult::new, (roundResult, racingCar) -> roundResult.record(racingCar, Roulette.spin()), RoundResult::combined);
 
     }
 
@@ -28,5 +29,18 @@ public class RacingCars {
         if (totalRacingCarCount < 1) {
             throw new IllegalArgumentException("참여하는 레이킹 카의 수는 1대 이상이어야 합니다.");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCars that = (RacingCars) o;
+        return Objects.equals(racingCars, that.racingCars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(racingCars);
     }
 }
