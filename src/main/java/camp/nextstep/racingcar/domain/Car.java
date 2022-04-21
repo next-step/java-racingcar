@@ -1,28 +1,33 @@
 package camp.nextstep.racingcar.domain;
 
-import java.util.UUID;
+import java.util.Objects;
 
 public class Car {
 
-    private final UUID id = UUID.randomUUID();
-    private int distance;
+  private final CarName name;
+  private Position position;
 
-    public void move(MoveCondition condition) {
-        if (condition.isSatisfied()) {
-            this.distance += 1;
-        }
-    }
+  public Car(String name) {
+    this.name = new CarName(name);
+    this.position = new Position(0);
+  }
 
-    public int getDistance() {
-        return distance;
+  public void move(MoveCondition condition) {
+    if (!condition.isSatisfied()) {
+      return;
     }
+    position.moveForward();
+  }
 
-    public UUID getId() {
-        return id;
-    }
+  public int getPosition() {
+    return position.getPosition();
+  }
 
-    @Override
-    public String toString() {
-        return "Car{" + "id=" + id + ", distance=" + distance + '}';
-    }
+  public String getName() {
+    return name.getName();
+  }
+
+  public boolean isSamePosition(Car car) {
+    return Objects.equals(this.getPosition(), car.getPosition());
+  }
 }

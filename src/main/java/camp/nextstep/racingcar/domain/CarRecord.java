@@ -4,16 +4,20 @@ import java.util.UUID;
 
 public class CarRecord {
 
-    private final UUID carId;
-    private final int distance;
+  private final String name;
+  private final int distance;
 
-    public CarRecord(UUID carId, int distance) {
-        this.carId  = carId;
-        this.distance = distance;
-    }
+  public CarRecord(String name, int distance) {
+    this.name = name;
+    this.distance = distance;
+  }
 
-    public int getDistance() {
-        return distance;
-    }
+  public int getDistance() {
+    return distance;
+  }
+
+  public String getName() {
+    return name;
+  }
 
 }
