@@ -15,9 +15,9 @@ public class Stadium {
         final NumberOfCars numberOfCars = InputView.inputNumberOfCars();
         final NumberOfRound numberOfRound = InputView.inputNumberOfRound();
 
-        Game game = new Game();
+        Game game = new Game(numberOfRound);
         final List<Car> cars = game.equipRacingCar(numberOfCars);
-        for (int i = 0; i < numberOfRound.getNumber(); i++) {
+        while (game.isLeftRound()) {
             game.proceedRound();
             ResultView.print(cars);
         }

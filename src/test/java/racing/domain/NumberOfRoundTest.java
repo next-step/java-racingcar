@@ -9,8 +9,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class NumberOfRoundTest {
 
-    @DisplayName("양수로 만들어진다.")
-    @ValueSource(ints = { 1, 2, 10 })
+    @DisplayName("0과 양수로 만들어진다.")
+    @ValueSource(ints = { 0, 10 })
     @ParameterizedTest
     void 양수_입력(int number) {
         final NumberOfRound numberOfRound = NumberOfRound.of(number);
@@ -18,12 +18,12 @@ public class NumberOfRoundTest {
         assertThat(numberOfRound.getNumber()).isEqualTo(number);
     }
 
-    @DisplayName("0과 음수는 Exception이 발생한다.")
-    @ValueSource(ints = { -1, 0 })
+    @DisplayName("음수는 Exception이 발생한다.")
+    @ValueSource(ints = { -1 })
     @ParameterizedTest
     void 음수_입력(int number) {
         assertThatThrownBy(() -> NumberOfRound.of(number))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("양수");
+                .hasMessageContaining("음수");
     }
 }

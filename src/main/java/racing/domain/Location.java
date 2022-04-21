@@ -7,7 +7,7 @@ public class Location {
     private final int number;
 
     private Location(final int number) {
-        if (number <= 0) {
+        if (number < 0) {
             throw new IllegalArgumentException("음수가 될 수 없습니다.");
         }
         this.number = number;
@@ -23,10 +23,6 @@ public class Location {
 
     public Location forward() {
         return Location.of(this.number + 1);
-    }
-
-    public int getNumber() {
-        return number;
     }
 
     @Override
