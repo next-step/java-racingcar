@@ -8,18 +8,18 @@ public class Car implements Comparable<Car> {
   private final CarName carName;
   private final MovingStrategy movingStrategy;
 
-  public Car(Position position, MovingStrategy movingStrategy, String name) {
-    this(position, movingStrategy, new CarName(name));
+  public Car(MovingStrategy movingStrategy, String name) {
+    this(movingStrategy, new CarName(name));
   }
 
-  Car(Position position, MovingStrategy movingStrategy, CarName carName) {
-    this.position = position;
+  Car(MovingStrategy movingStrategy, CarName carName) {
+    this.position = Position.create();
     this.movingStrategy = movingStrategy;
     this.carName = carName;
   }
 
-  public static Car create(Position position, MovingStrategy movingStrategy, String name) {
-    return new Car(position, movingStrategy, name);
+  public static Car create(MovingStrategy movingStrategy, String name) {
+    return new Car(movingStrategy, name);
   }
 
   public void move() {

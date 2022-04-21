@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import racingcar.strategy.FixedTrueMovingStrategy;
 import racingcar.strategy.RandomMovingStrategy;
 
 import java.util.List;
@@ -17,17 +18,14 @@ class CarsTest {
     private static final String MINIMUM_NUMBER_OF_CAR_NAMES_INPUT_ERR_MSG = "자동차는 1대 이상 입력되어야 합니다.";
 
     private Cars cars;
-
     @BeforeEach
     void beforeEach() {
-        cars = new Cars();
+        cars = Cars.create(new FixedTrueMovingStrategy(), "pobi,crong,honux");
     }
 
     @Test
     @DisplayName("자동차 객체 생성 확인")
     void confirmCarObjectCreation() {
-        cars.create(new RandomMovingStrategy(), "pobi,crong,honux");
-
         List<Car> result = cars.getCars();
 
         assertThat(result).hasSize(3);
@@ -36,21 +34,21 @@ class CarsTest {
     @Test
     @DisplayName("자동차 경주 우승자 찾기")
     void findCarRacingWinner() {
-        cars.getCars().add(new Car(new Position(1), new RandomMovingStrategy(), "pobi"));
-        cars.getCars().add(new Car(new Position(3), new RandomMovingStrategy(), "crong"));
-        cars.getCars().add(new Car(new Position(5), new RandomMovingStrategy(), "honux"));
+        List<Car> participateCars = cars.getCars();
+        participateCars.get(0).move();
 
         List<String> result = cars.getWinnerNames();
 
-        assertThat(result).containsExactly("honux");
+        assertThat(result).containsExactly("pobi");
     }
 
     @Test
     @DisplayName("자동차 경주 다수의 우승자 찾기")
     void findCarRacingMultipleWinner() {
-        cars.getCars().add(new Car(new Position(5), new RandomMovingStrategy(), "pobi"));
-        cars.getCars().add(new Car(new Position(5), new RandomMovingStrategy(), "crong"));
-        cars.getCars().add(new Car(new Position(5), new RandomMovingStrategy(), "honux"));
+        List<Car> participateCars = cars.getCars();
+        for (Car participateCar : participateCars) {
+            participateCar.move();
+        }
 
         List<String> result = cars.getWinnerNames();
 

@@ -17,8 +17,7 @@ public class RacingGameController {
     String carNames = InputView.inputCarNames();
     int numberOfGames = InputView.inputNumberOfAttempts();
 
-    Cars cars = new Cars();
-    cars.create(movingStrategy, carNames);
+    Cars cars = Cars.create(movingStrategy, carNames);
 
     progressNumberOfGames(cars, numberOfGames);
   }

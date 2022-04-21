@@ -15,6 +15,10 @@ public class Position implements Comparable<Position> {
     this.value = position;
   }
 
+  public static Position create() {
+    return new Position();
+  }
+
   public void increaseValue() {
     value = value + 1;
   }

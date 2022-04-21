@@ -11,13 +11,17 @@ public class Cars {
   private static final String BASIC_SPLIT_REGEX = ",";
   private static final String MINIMUM_NUMBER_OF_CAR_NAMES_INPUT_ERR_MSG = "자동차는 1대 이상 입력되어야 합니다.";
 
-  private List<Car> cars = new ArrayList<>();
+  private final List<Car> cars = new ArrayList<>();
 
-  public void create(MovingStrategy movingStrategy, String names) {
-    String[] separateNames = separateInputCars(names);
+  public Cars(MovingStrategy movingStrategy, String[] separateNames) {
     for (String separateName : separateNames) {
-      cars.add(Car.create(new Position(), movingStrategy, separateName));
+      cars.add(Car.create(movingStrategy, separateName));
     }
+  }
+
+  public static Cars create(MovingStrategy movingStrategy, String names) {
+    String[] separateNames = separateInputCars(names);
+    return new Cars(movingStrategy, separateNames);
   }
 
   public static String[] separateInputCars(String value) {
