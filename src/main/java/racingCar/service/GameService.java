@@ -9,8 +9,6 @@ import racingCar.model.RacingCarHistory;
 import racingCar.model.Track;
 import racingCar.model.Winners;
 import racingCar.strategy.CarMoveRandomStrategy;
-import racingCar.util.StringUtils;
-import racingCar.view.InputTable;
 
 public class GameService {
 
@@ -49,19 +47,17 @@ public class GameService {
     return resultList;
   }
 
+  public List<String> findWinnerNames(List<Car> candidates) {
+    List<String> coWinnerNameList = new Winners(candidates).findWinnerNameList();
+    coWinnerNameList.removeAll(Collections.singletonList(null));
+    return coWinnerNameList;
+  }
+
   private void sameRoundResult(Integer rounds, List<Car> resultList,
       RacingCarHistory racingHistory) {
     if (Objects.equals(racingHistory.round(), rounds)) {
       resultList.add(racingHistory.car());
     }
   }
-
-  public List<String> findWinners(List<Car> cars) {
-    Winners winners = new Winners();
-    List<String> coWinnerNameList = winners.findCoWinnerNameList(cars, winners.findWinnerPosition(cars));
-    coWinnerNameList.removeAll(Collections.singletonList(null));
-    return coWinnerNameList;
-  }
-
 
 }

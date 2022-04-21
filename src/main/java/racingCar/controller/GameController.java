@@ -30,8 +30,7 @@ public class GameController {
 
     List<Car> result = getGameResult(racingCarHistories, rounds);
 
-    List<String> gameWinners = winners(result);
-    OutputTable.findAllWinners(OutputTable.printWinners(gameWinners));
+    OutputTable.findAllWinners(OutputTable.printWinners(winners(result)));
 
   }
 
@@ -52,7 +51,7 @@ public class GameController {
   }
 
   public List<String> winners(List<Car> allCars) {
-    return gameService.findWinners(allCars);
+    return gameService.findWinnerNames(allCars);
   }
 
 }
