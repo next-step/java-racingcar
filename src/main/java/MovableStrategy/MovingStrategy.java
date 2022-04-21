@@ -1,5 +1,5 @@
 package MovableStrategy;
 
-public interface MovableStrategy {
+public interface MovingStrategy {
     boolean movable();
 }

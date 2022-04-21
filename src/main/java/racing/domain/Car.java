@@ -1,6 +1,6 @@
-package racing;
+package racing.domain;
 
-import MovableStrategy.MovableStrategy;
+import MovableStrategy.MovingStrategy;
 
 public class Car {
     private final String name;
@@ -16,8 +16,8 @@ public class Car {
     }
 
 
-    public void move(MovableStrategy movableStrategy) {
-        if (movableStrategy.move()) {
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) {
             position++;
         }
     }
