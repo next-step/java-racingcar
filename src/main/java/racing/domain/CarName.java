@@ -1,10 +1,11 @@
 package racing.domain;
 
+import java.util.Objects;
 import racing.exception.CarNameUnsuitableException;
 
 public class CarName {
 
-  public static int LENGTH_LIMIT = 5;
+  private static final int LENGTH_LIMIT = 5;
   private final String value;
 
   public CarName(String carName) {
@@ -24,4 +25,17 @@ public class CarName {
       throw new CarNameUnsuitableException("자동차 이름이 적합하지 않습니다. 이름 : " + value);
     }
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof CarName)) {
+      return false;
+    }
+    CarName carName = (CarName) o;
+    return Objects.equals(value, carName.value);
+  }
+
 }

@@ -1,18 +1,16 @@
 package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.strategy.MustMoveStrategy;
+import racing.domain.strategy.MustNotMoveStrategy;
 
 class CarsTest {
 
@@ -21,18 +19,14 @@ class CarsTest {
   @ValueSource(strings = {"test1,test2,test3", "A,B,C,D", "car1,car2,car3", "자동차1,자동차2,자동차3"})
   void oneMoveTest(String carNameInput) {
     //given
-    Cars cars = Cars.newInstance(carNameInput, new MustMoveStrategy());
+    Cars cars = Cars.newInstance(carNameInput);
+    Cars carsExpected = Cars.newInstance(carNameInput, new Distance(1));
 
     //when
-    cars.attempt();
+    cars.attempt(new MustMoveStrategy());
 
     //then
-    assertAll(
-        () -> assertThat(cars.getDistances()).hasSize(
-            carNameInput.split(Cars.CAR_NAME_DELIMITER).length).containsOnly(1),
-        () -> assertThat(cars.getNames()).containsExactlyElementsOf(
-            Arrays.asList(carNameInput.split(Cars.CAR_NAME_DELIMITER)))
-    );
+    assertThat(cars).isEqualTo(carsExpected);
   }
 
   @ParameterizedTest
@@ -41,44 +35,39 @@ class CarsTest {
       "자동차1,자동차2,자동차3|25|25"}, delimiter = '|')
   void nMoveTest(String carNameInput, int attempt, int expected) {
     //given
-    Cars cars = Cars.newInstance(carNameInput, new MustMoveStrategy());
+    MustMoveStrategy mustMoveStrategy = new MustMoveStrategy();
+    Cars cars = Cars.newInstance(carNameInput);
+    Cars carsExpected = Cars.newInstance(carNameInput, new Distance(expected));
 
     //when
     for (int i = 0; i < attempt; i++) {
-      cars.attempt();
+      cars.attempt(mustMoveStrategy);
     }
 
     //then
-    assertAll(
-        () -> assertThat(cars.getDistances()).hasSize(
-            carNameInput.split(Cars.CAR_NAME_DELIMITER).length).containsOnly(attempt),
-        () -> assertThat(cars.getNames()).containsExactlyElementsOf(
-            Arrays.asList(carNameInput.split(Cars.CAR_NAME_DELIMITER)))
-    );
+    assertThat(cars).isEqualTo(carsExpected);
   }
 
-  @RepeatedTest(100)
+  @Test
   @DisplayName("자동차들 중 제일 멀리 이동한 자동차가 우승자로 선정되는지 확인")
   void winnerTest() {
     //given
-    Cars winCars = Cars.newInstance("win1,win2", new MustMoveStrategy());
-    Cars loseCars = Cars.newInstance("lose1,lose2,lose3", new MustMoveStrategy());
-    Random random = new Random();
-    int winAttempt = 100;
-    for (int i = 0; i < winAttempt; i++) {
-      winCars.attempt();
-    }
-    for (int i = 0; i < random.nextInt(winAttempt); i++) {
-      loseCars.attempt();
-    }
+    MustMoveStrategy mustMoveStrategy = new MustMoveStrategy();
+    MustNotMoveStrategy mustNotMoveStrategy = new MustNotMoveStrategy();
+    List<Car> allCars = new ArrayList<>();
+    allCars.add(new Car("win1", new Distance(100)));
+    allCars.add(new Car("lose1", new Distance(1)));
+    allCars.add(new Car("win2", new Distance(100)));
+    allCars.add(new Car("lose2", new Distance(1)));
+    allCars.add(new Car("lose3", new Distance(1)));
+    Cars cars = new Cars(allCars);
+    Cars winCars = Cars.newInstance("win1,win2", new Distance(100));
 
     //when
-    Cars winners = new Cars(
-        Stream.concat(winCars.getValues().stream(), loseCars.getValues().stream())
-            .collect(Collectors.toList())).getWinners();
+    Cars winners = cars.getWinners();
 
     //then
-    assertThat(winCars.getValues()).containsExactlyElementsOf(winners.getValues());
+    assertThat(winners).isEqualTo(winCars);
 
   }
 }

@@ -24,9 +24,9 @@ public class RacingController {
 
     racingCarNameOutputView.printResultTitle();
 
-    Cars cars = Cars.newInstance(carNames, moveStrategy);
+    Cars cars = Cars.newInstance(carNames);
     for (int i = 0; i < attemptCount; i++) {
-      cars.attempt();
+      cars.attempt(moveStrategy);
       racingCarNameOutputView.printCarNameAndDistance(cars);
     }
 

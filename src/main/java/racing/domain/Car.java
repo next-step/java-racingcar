@@ -1,38 +1,59 @@
 package racing.domain;
 
+import java.util.Objects;
 import racing.domain.strategy.MoveStrategy;
 
 public class Car {
 
-  private int distance;
+  private final Distance distance;
   private final CarName carName;
-  private final MoveStrategy moveStrategy;
 
-  public Car(String carName, MoveStrategy moveStrategy) {
+  public Car(String carName) {
+    this(carName, new Distance(0));
+  }
+
+  public Car(String carName, Distance distance) {
+    this.distance = distance;
     this.carName = new CarName(carName);
-    this.moveStrategy = moveStrategy;
   }
 
   public String getCarName() {
     return carName.getValue();
   }
 
-  public static Car newInstance(String carName, MoveStrategy moveStrategy) {
-    return new Car(carName, moveStrategy);
-  }
-
-  public void attempt() {
+  public void attempt(MoveStrategy moveStrategy) {
     if (moveStrategy.canMove()) {
       move();
     }
   }
 
-  public void move() {
-    this.distance++;
+  public boolean isDistanceEqual(Distance distance) {
+    return this.distance.equals(distance);
   }
 
-  public int getDistance() {
-    return distance;
+  public void move() {
+    this.distance.increase();
+  }
+
+  public Distance getMaxDistance(Distance maxDistance) {
+    return this.distance.getLarger(maxDistance);
+  }
+
+  public int getCurrentDistance() {
+    return this.distance.getAmount();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Car)) {
+      return false;
+    }
+    Car car = (Car) o;
+    return Objects.equals(distance, car.distance) && Objects.equals(carName,
+        car.carName);
   }
 
 }
