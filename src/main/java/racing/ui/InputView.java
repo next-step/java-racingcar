@@ -18,7 +18,7 @@ public class InputView {
         System.out.println(QUERY_NUMBER_OF_CARS);
         while (true) {
             try {
-                return new NumberOfCars(scanner.nextInt());
+                return NumberOfCars.of(scanner.nextInt());
             } catch (Exception e) {
                 System.out.printf("%s 다시 입력해주세요." + System.lineSeparator(), e.getMessage());
                 scanner.nextLine();
@@ -30,7 +30,7 @@ public class InputView {
         System.out.println(QUERY_NUMBER_OF_ROUND);
         while (true) {
             try {
-                return new NumberOfRound(scanner.nextInt());
+                return NumberOfRound.of(scanner.nextInt());
             } catch (Exception e) {
                 System.out.printf("%s 다시 입력해주세요." + System.lineSeparator(), e.getMessage());
                 scanner.nextLine();

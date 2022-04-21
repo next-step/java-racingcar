@@ -13,16 +13,16 @@ public class NumberOfCarsTest {
     @ValueSource(ints = { 1, 2, 10 })
     @ParameterizedTest
     void 양수_입력(int number) {
-        final NumberOfCars numberOfCars = new NumberOfCars(number);
+        final NumberOfCars numberOfCars = NumberOfCars.of(number);
 
-        assertThat(numberOfCars.number).isEqualTo(number);
+        assertThat(numberOfCars.getNumber()).isEqualTo(number);
     }
 
     @DisplayName("0과 음수는 Exception이 발생한다.")
     @ValueSource(ints = { -1, 0 })
     @ParameterizedTest
     void 음수_입력(int number) {
-        assertThatThrownBy(() -> new NumberOfCars(number))
+        assertThatThrownBy(() -> NumberOfCars.of(number))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("양수");
     }

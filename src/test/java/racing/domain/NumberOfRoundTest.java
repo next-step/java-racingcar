@@ -13,16 +13,16 @@ public class NumberOfRoundTest {
     @ValueSource(ints = { 1, 2, 10 })
     @ParameterizedTest
     void 양수_입력(int number) {
-        final NumberOfRound numberOfRound = new NumberOfRound(number);
+        final NumberOfRound numberOfRound = NumberOfRound.of(number);
 
-        assertThat(numberOfRound.number).isEqualTo(number);
+        assertThat(numberOfRound.getNumber()).isEqualTo(number);
     }
 
     @DisplayName("0과 음수는 Exception이 발생한다.")
     @ValueSource(ints = { -1, 0 })
     @ParameterizedTest
     void 음수_입력(int number) {
-        assertThatThrownBy(() -> new NumberOfRound(number))
+        assertThatThrownBy(() -> NumberOfRound.of(number))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("양수");
     }

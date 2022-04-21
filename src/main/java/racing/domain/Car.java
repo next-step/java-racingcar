@@ -10,7 +10,7 @@ public class Car {
     private Location location;
 
     public Car() {
-        this.location = new Location();
+        this.location = Location.of();
     }
 
     public Location getLocation() {
@@ -23,7 +23,7 @@ public class Car {
         }
 
         if (result >= RUN_CRITERIA_MIN_RESULT) {
-            location.forward();
+            this.location = location.forward();
         }
     }
 

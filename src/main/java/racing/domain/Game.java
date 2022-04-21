@@ -13,7 +13,7 @@ public class Game {
     public Game() {}
 
     public List<Car> equipRacingCar(final NumberOfCars numberOfCars) {
-        for (int i = 0; i < numberOfCars.number; i++) {
+        for (int i = 0; i < numberOfCars.getNumber(); i++) {
             cars.add(new Car());
         }
         return cars;

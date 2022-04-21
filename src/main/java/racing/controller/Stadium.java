@@ -17,7 +17,7 @@ public class Stadium {
 
         Game game = new Game();
         final List<Car> cars = game.equipRacingCar(numberOfCars);
-        for (int i = 0; i < numberOfRound.number; i++) {
+        for (int i = 0; i < numberOfRound.getNumber(); i++) {
             game.proceedRound();
             ResultView.print(cars);
         }
