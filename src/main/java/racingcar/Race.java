@@ -40,12 +40,4 @@ public class Race {
         return winners;
     }
 
-//    public int getMax(int max, Car car) {
-//        if (car.isWinner(max)) {
-//            return car.;
-//        }
-//        return max;
-//    }
-
-
 }

@@ -8,7 +8,7 @@ public class Car {
     public final String name;
 
     public Car(String name) {
-        this(name, 1); // can't be below exception handler?
+        this(name, 1); // How to handle?: Call to 'this()' must be first statement in constructor body
         if (name.length() > 5 || name.length() < 1) {
             throw new IllegalArgumentException("Car name size should between 1 and 5");
         }
@@ -18,10 +18,6 @@ public class Car {
         this.name = name;
         this.position = new Position(at);
     }
-
-//    public int getPosition() {
-//        return this.position;
-//    }
 
     public void move() {
         position.move();
