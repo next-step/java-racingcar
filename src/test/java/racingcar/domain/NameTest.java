@@ -21,7 +21,7 @@ class NameTest {
     }
 
     @Test
-    @DisplayName("5이하의 이름을 Wrapping 하는 이름 객체를 만든다")
+    @DisplayName("글자수 5 이하의 이름을 Wrapping 하는 이름 객체를 만든다")
     void createName() {
         String expect = "abcde";
 
