@@ -8,9 +8,6 @@ public final class Position {
   private static final int INCREASE_MOVE_VALUE = 1;
   private final int x;
 
-  public Position() {
-    this(0);
-  }
 
   public Position(int x) {
     valid(x);
@@ -38,27 +35,15 @@ public final class Position {
     return Objects.hash(x);
   }
 
-  public boolean match(Position other) {
-    return this.x < other.x;
-  }
 
   public void valid(int x) {
     if (x < 0) {
       throw new IllegalArgumentException("포지션은 음수 값을 넣을 수 없습니다.");
     }
   }
-
-
-  int positionCompare(int curPosition) {
-    return Math.max(curPosition, this.x);
-  }
-
   @Override
   public String toString() {
     return STEP.repeat(x);
   }
 
-  public boolean equalPosition(int winnerPosition) {
-    return winnerPosition == this.x;
-  }
 }
