@@ -26,19 +26,19 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("Car 생성시 state 에 null 이 들어오면 오류가 발생한다.")
-    void carStateNullTest() {
+    @DisplayName("Car 생성시 distance 에 null 이 들어오면 오류가 발생한다.")
+    void carDistanceNullTest() {
         assertThatThrownBy(() -> new Car(TEST_CAR_NAME, null))
                 .isInstanceOf(NullPointerException.class)
-                .hasMessageContaining("state is null");
+                .hasMessageContaining("distance is null");
     }
 
     @Test
     @DisplayName("자동차의 초기 상태는 0이어야 한다.")
-    void carStateTest() {
+    void carDistanceTest() {
         Car car = new Car(TEST_CAR_NAME);
 
-        assertThat(car.state()).isEqualTo(ZERO);
+        assertThat(car.distance()).isEqualTo(ZERO);
     }
 
     @Test
@@ -56,7 +56,7 @@ public class CarTest {
 
         Car nextCar = car.move(() -> true);
 
-        assertThat(nextCar.state()).isEqualTo(Distance.add(car.state(), ONE));
+        assertThat(nextCar.distance()).isEqualTo(Distance.add(car.distance(), ONE));
     }
 
     @Test
@@ -66,16 +66,16 @@ public class CarTest {
 
         Car nextCar = car.move(() -> false);
 
-        assertThat(nextCar.state()).isEqualTo(car.state());
+        assertThat(nextCar.distance()).isEqualTo(car.distance());
     }
 
     @Test
     @DisplayName("car의 현재 Distance와 입력받은 max값을 비교해 max값을 반환한다.")
-    void getMaxStateTest() {
+    void getMaxDistanceTest() {
         Car car = new Car(TEST_CAR_NAME, new Distance(3));
 
-        Distance maxState = car.getMaxState(new Distance(4));
+        Distance maxDistance = car.getMaxDistance(new Distance(4));
 
-        assertThat(maxState).isEqualTo(new Distance(4));
+        assertThat(maxDistance).isEqualTo(new Distance(4));
     }
 }

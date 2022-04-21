@@ -33,26 +33,26 @@ public final class Cars {
                 .collect(Collectors.toList());
     }
 
-    public List<Distance> states() {
+    public List<Distance> distances() {
         return cars.stream()
-                .map(Car::state)
+                .map(Car::distance)
                 .collect(Collectors.toList());
     }
 
     public List<CarName> findWinnerCarNames() {
-        final Distance maxState = getMaxState();
+        final Distance maxDistance = getMaxDistance();
 
         return cars.stream()
-                .filter(car -> car.isMaxState(maxState))
+                .filter(car -> car.isMaxDistance(maxDistance))
                 .map(Car::name)
                 .collect(Collectors.toList());
     }
 
-    private Distance getMaxState() {
-        Distance maxState = Distance.ZERO;
+    private Distance getMaxDistance() {
+        Distance maxDistance = Distance.ZERO;
         for (Car car : cars) {
-            maxState = car.getMaxState(maxState);
+            maxDistance = car.getMaxDistance(maxDistance);
         }
-        return maxState;
+        return maxDistance;
     }
 }

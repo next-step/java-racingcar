@@ -36,7 +36,7 @@ public final class RacingCar {
             playAndAdd(results, movingStrategy);
         }
         return results.stream()
-                .map(result -> RoundResult.of(result.names(), result.states()))
+                .map(result -> RoundResult.of(result.names(), result.distances()))
                 .collect(Collectors.toList());
     }
 

@@ -30,7 +30,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 5})
     @DisplayName("자동차의 현재 상태는 주어진 횟수값을 넘지 않는다.")
-    void carsStateTest(int count) {
+    void carsDistanceTest(int count) {
         // given
         RacingCar racingCar = new RacingCar(TEST_INPUT_CARS, count);
 
@@ -38,7 +38,7 @@ public class RacingCarTest {
         List<RoundResult> playResult = racingCar.play(new RandomMovingStrategy());
 
         // then
-        List<Distance> lastGameResult = playResult.get(playResult.size() - 1).getStates();
+        List<Distance> lastGameResult = playResult.get(playResult.size() - 1).getDistances();
         for (Distance result : lastGameResult) {
             assertThat(result.value()).isLessThanOrEqualTo(count);
         }
@@ -56,9 +56,9 @@ public class RacingCarTest {
         // then
         for (int round = 1; round <= playResult.size(); round++) {
             int index = round - 1;
-            List<Distance> states = playResult.get(index).getStates();
-            for (Distance state : states) {
-                assertThat(state).isEqualTo(new Distance(round));
+            List<Distance> distances = playResult.get(index).getDistances();
+            for (Distance distance : distances) {
+                assertThat(distance).isEqualTo(new Distance(round));
             }
         }
     }
@@ -75,9 +75,9 @@ public class RacingCarTest {
         // then
         for (int round = 1; round <= playResult.size(); round++) {
             int index = round - 1;
-            List<Distance> states = playResult.get(index).getDistances();
-            for (Distance state : states) {
-                assertThat(state).isEqualTo(DistanceTest.ZERO);
+            List<Distance> distances = playResult.get(index).getDistances();
+            for (Distance distance : distances) {
+                assertThat(distance).isEqualTo(DistanceTest.ZERO);
             }
         }
     }

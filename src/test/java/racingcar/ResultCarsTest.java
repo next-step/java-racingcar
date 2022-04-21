@@ -27,8 +27,8 @@ public class ResultCarsTest {
     }
 
     @Test
-    @DisplayName("입력받은 states 리스트가 null이면 NullPointerException이 발생한다.")
-    void statesNullTest() {
+    @DisplayName("입력받은 distances 리스트가 null이면 NullPointerException이 발생한다.")
+    void distancesNullTest() {
         Assertions.assertThatThrownBy(() -> ResultCars.of(1, Lists.newArrayList(TEST_CAR_NAME), null))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessageContaining("is null");
@@ -42,20 +42,20 @@ public class ResultCarsTest {
     }
 
     @Test
-    @DisplayName("count, names, states 를 입력하면 ResultCars가 생성된다")
+    @DisplayName("count, names, distances 를 입력하면 ResultCars가 생성된다")
     void resultCarsOfTest() {
         // given
         int count = 2;
         List<CarName> names = InputCars.fromCarsInfo("test,test1").value().names();
-        List<Distance> states = Lists.newArrayList(new Distance(2), new Distance(3));
+        List<Distance> distances = Lists.newArrayList(new Distance(2), new Distance(3));
 
         // when
-        ResultCars resultCars = ResultCars.of(count, names, states);
+        ResultCars resultCars = ResultCars.of(count, names, distances);
 
         // then
         for (int i = 0; i < count; i++) {
             assertThat(resultCars.value().names().get(i)).isEqualTo(names.get(i));
-            assertThat(resultCars.value().states().get(i)).isEqualTo(states.get(i));
+            assertThat(resultCars.value().distances().get(i)).isEqualTo(distances.get(i));
         }
     }
 }
