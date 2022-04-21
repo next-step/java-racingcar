@@ -3,6 +3,7 @@ package domain;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.util.ReflectionTestUtils;
 
 class PositionTest {
 
@@ -10,8 +11,11 @@ class PositionTest {
     @Test
     void goForwardTest() {
         Position position = new Position();
-        int beforePosition = position.getPosition();
+        Position afterPosition = new Position();
+        ReflectionTestUtils.setField(afterPosition, "position", 1);
+
         position.goForward();
-        Assertions.assertThat(position.getPosition()).isEqualTo(beforePosition + 1);
+
+        Assertions.assertThat(position.equals(position)).isTrue();
     }
 }
