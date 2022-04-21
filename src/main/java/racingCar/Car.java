@@ -1,17 +1,28 @@
 package racingCar;
 
 public class Car {
-    private String move;
 
-    public Car(String move) {
-        this.move = move;
+    private Position position;
+
+    public Car(){
+        this.position = new Position();
     }
 
-    public String getMove() {
-        return move;
+    public Car(int position) {
+        this.position = new Position(position);
     }
 
-    public void setMove(String move) {
-        this.move = move;
+    public Position currentPosition(){
+        return this.position;
+    }
+    public void move(RandomNumber randomNumber){
+        if (randomNumber.canMovePosition()){
+            this.position.increase();
+        }
+    }
+    public void move(int number){
+        if (number>=RandomNumber.MOVE_CRITERIA){
+            this.position.increase();
+        }
     }
 }

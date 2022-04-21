@@ -8,9 +8,12 @@ public class Cars {
 
     public Cars(int countOfCar) {
         for (int i =0; i < countOfCar; i++) {
-            Car car = new Car("-");
+            Car car = new Car();
             this.carList.add(car);
         }
     }
 
+    public List<Car> getCarList() {
+        return carList;
+    }
 }
