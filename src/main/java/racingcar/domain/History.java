@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,5 +22,20 @@ public class History {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public List<Car> topCars() {
+        int maxPosition = getMaxPosition();
+        return cars.stream()
+                .filter(car -> car.isTop(maxPosition))
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition() {
+        Comparator<Car> carComparator = Comparator.comparingInt(Car::getPosition);
+        return cars.stream()
+                .max(carComparator)
+                .get()
+                .getPosition();
     }
 }

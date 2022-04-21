@@ -29,4 +29,18 @@ public class CarTest {
 
         assertThat(car.getPosition()).isEqualTo(oldPosition + 1);
     }
+
+    @Test
+    @DisplayName("maxPosition 값과 자동차의 position 값이 같으면 Top 이다.")
+    void isTop() {
+        int maxPosition = 3;
+        assertThat(new Car("paul", 3).isTop(maxPosition)).isTrue();
+    }
+
+    @Test
+    @DisplayName("maxPosition 값과 자동차의 position 같지 않으면 Top 이 아니다.")
+    void isNotTop() {
+        int maxPosition = 3;
+        assertThat(new Car("paul", 2).isTop(maxPosition)).isFalse();
+    }
 }
