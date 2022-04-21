@@ -81,3 +81,5 @@ gony	: ----
 
 - [x] Add Position class
 - [x] Add Car(name, at) constructor
+- [x] Remove getPosition
+- [x] Refator with Cars first class collection
