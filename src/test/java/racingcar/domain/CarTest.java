@@ -15,19 +15,6 @@ class CarTest {
 
 	@ParameterizedTest
 	@ValueSource(ints = {4, 5, 6, 7, 8, 9})
-	@DisplayName("자동차 객체는 전진을 시도했을때 생성한 숫자를 가지고 있다")
-	void getValueToMoveTest(int number) {
-		NumberGenerator generator = () -> number;
-		MoveStrategy moveStrategy = new CarMoveStrategy();
-		Car car = new Car(generator, moveStrategy);
-
-		car.move();
-
-		assertThat(car.getValueToMove()).isEqualTo(number);
-	}
-
-	@ParameterizedTest
-	@ValueSource(ints = {4, 5, 6, 7, 8, 9})
 	@DisplayName("자동차 객체가 움직일때 전달받은 값이 4이상이면 자동차는 한칸 전진한다")
 	void movableTrue(int number) {
 		NumberGenerator generator = () -> number;
