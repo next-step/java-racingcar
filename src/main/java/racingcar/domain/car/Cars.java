@@ -3,10 +3,18 @@ package racingcar.domain.car;
 import racingcar.domain.car.strategy.CarActionStrategy;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
+
+    public Cars(CarNames carNames, CarActionStrategy carActionStrategy) {
+        this(carNames.getCarNames()
+                .stream()
+                .map(name -> new Car(name, carActionStrategy))
+                .collect(Collectors.toList()));
+    }
 
     public Cars(List<Car> cars) {
         validateCars(cars);
@@ -23,26 +31,27 @@ public class Cars {
         return cars == null || cars.isEmpty();
     }
 
-    public Cars(List<String> carNames, CarActionStrategy carActionStrategy) {
-        validateCarNamesAndStrategy(carNames, carActionStrategy);
-        this.cars = carNames.stream().map(name -> new Car(name, carActionStrategy)).collect(Collectors.toList());
-    }
-
-    private void validateCarNamesAndStrategy(List<String> carNames, CarActionStrategy carActionStrategy) {
-        if (carNames == null || carNames.isEmpty()) {
-            throw new IllegalArgumentException("Cars는 최소 1대 이상이어야 합니다.");
-        }
-
-        if (carActionStrategy == null) {
-            throw new IllegalArgumentException("carActionStrategy는 null일 수 없습니다.");
-        }
-    }
-
     public Cars act() {
-        return new Cars(cars.stream().map(Car::act).collect(Collectors.toList()));
+        return new Cars(cars.stream()
+                .map(Car::act)
+                .collect(Collectors.toList()));
     }
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public List<Car> getWinnerCars() {
+        int winnerPosition = getWinnerPosition();
+        return cars.stream()
+                .filter(car -> car.getPosition().getPosition() == winnerPosition)
+                .collect(Collectors.toList());
+    }
+
+    private int getWinnerPosition() {
+        return cars.stream()
+                .mapToInt(car -> car.getPosition().getPosition())
+                .max()
+                .orElseThrow(() -> new NoSuchElementException("car없이 승자를 구할 수 없습니다."));
     }
 }

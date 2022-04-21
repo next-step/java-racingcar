@@ -1,14 +1,13 @@
 package racingcar.app;
 
 import calculator.StringSplitterFactory;
+import racingcar.domain.car.CarNames;
 import racingcar.domain.car.Cars;
 import racingcar.domain.car.strategy.CarActionStrategy;
 import racingcar.domain.car.strategy.RandomMoveStrategy;
 import racingcar.domain.round.Rounds;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-
-import java.util.List;
 
 public class RacingGame {
     public void start() {
@@ -19,11 +18,11 @@ public class RacingGame {
     }
 
     private Cars generateCars(CarActionStrategy carActionStrategy) {
-        return new Cars(getNames(), carActionStrategy);
+        return new Cars(getCarNames(), carActionStrategy);
     }
 
-    private List<String> getNames() {
-        return StringSplitterFactory.resolve(InputView.inputCarNames()).split();
+    private CarNames getCarNames() {
+        return CarNames.from(StringSplitterFactory.resolve(InputView.inputCarNames()).split());
     }
 
     private Rounds generateRounds(Cars cars) {

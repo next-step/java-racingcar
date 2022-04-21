@@ -22,10 +22,14 @@ public class Operands {
     }
 
     public int sum() {
-        return operands.stream().mapToInt(Operand::getValue).sum();
+        return operands.stream()
+                .mapToInt(Operand::getValue)
+                .sum();
     }
 
     public static Operands from(List<String> textForOperands) {
-        return new Operands(textForOperands.stream().map(Operand::new).collect(Collectors.toList()));
+        return new Operands(textForOperands.stream()
+                .map(Operand::new)
+                .collect(Collectors.toList()));
     }
 }

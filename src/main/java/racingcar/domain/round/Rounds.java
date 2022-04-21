@@ -23,7 +23,7 @@ public class Rounds {
         }
 
         if (roundCount < MIN_ROUND_COUNT) {
-            throw new IllegalArgumentException("Rounds는 최소 1회 이상이어야 합니다.");
+            throw new IllegalArgumentException(String.format("Rounds는 최소 %d회 이상이어야 합니다.", MIN_ROUND_COUNT));
         }
     }
 

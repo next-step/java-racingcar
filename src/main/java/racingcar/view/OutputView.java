@@ -1,6 +1,8 @@
 package racingcar.view;
 
 import racingcar.domain.car.Car;
+import racingcar.domain.car.CarName;
+import racingcar.domain.car.CarPosition;
 import racingcar.domain.round.Round;
 
 import java.util.List;
@@ -11,15 +13,15 @@ public class OutputView {
     private static final String CAR_POSITION = "-";
     private static final String NAME_DELIMITER = ", ";
 
-    private static void printPosition(int position) {
-        for (int i = 0; i < position; i++) {
+    private static void printPosition(CarPosition position) {
+        for (int i = 0; i < position.getPosition(); i++) {
             System.out.print(CAR_POSITION);
         }
         System.out.println();
     }
 
-    private static void printName(String name) {
-        System.out.print(name);
+    private static void printName(CarName name) {
+        System.out.print(name.getName());
     }
 
     public static void printGameResult(List<Round> rounds) {
@@ -29,7 +31,7 @@ public class OutputView {
             printRoundResult(round);
         }
 
-        printWinner(rounds.get(rounds.size() - 1).getWinners());
+        printWinner(rounds.get(rounds.size() - 1).getCars().getWinnerCars());
     }
 
     private static void printWinner(List<Car> cars) {
@@ -38,7 +40,9 @@ public class OutputView {
     }
 
     private static String getNames(List<Car> cars) {
-        return cars.stream().map(Car::getName).collect(Collectors.joining(NAME_DELIMITER));
+        return cars.stream()
+                .map(car -> car.getName().getName())
+                .collect(Collectors.joining(NAME_DELIMITER));
     }
 
     private static void printRoundResult(Round round) {

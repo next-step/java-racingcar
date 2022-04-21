@@ -3,7 +3,7 @@ package calculator;
 import java.util.Objects;
 
 public class Operand {
-    private final static int ZERO = 0;
+    private static final int ZERO = 0;
 
     private final int value;
 
