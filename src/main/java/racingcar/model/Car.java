@@ -9,19 +9,13 @@ public final class Car {
     private final Distance state;
 
     public Car(CarName name) {
-        validate(name);
-        this.name = name;
-        this.state = INIT_STATE;
+        this(name, INIT_STATE);
     }
 
     public Car(CarName name, Distance state) {
         validate(name, state);
         this.name = name;
         this.state = state;
-    }
-
-    private void validate(CarName name) {
-        Objects.requireNonNull(name, "Car 생성시 전달된 carName 이 올바르지 않습니다. : name is null");
     }
 
     private void validate(CarName name, Distance state) {
