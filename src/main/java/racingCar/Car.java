@@ -15,11 +15,14 @@ public class Car {
     public Position currentPosition(){
         return this.position;
     }
+    /*
     public void move(RandomNumber randomNumber){
         if (randomNumber.canMovePosition()){
             this.position.increase();
         }
     }
+     */
+
     public void move(int number){
         if (number>=RandomNumber.MOVE_CRITERIA){
             this.position.increase();

@@ -13,7 +13,7 @@ public class ResultView {
     public void resultOfCars(List<Car> cars){
         for (int i=0; i<cars.size(); i++) {
             this.resultOfCar(cars.get(i).currentPosition());
-            cars.get(i).move(new RandomNumber());
+            cars.get(i).move(new RandomNumber().getRandomNumber());
         }
         System.out.println("");
     }

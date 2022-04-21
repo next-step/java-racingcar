@@ -14,9 +14,12 @@ public class RandomNumber {
     public boolean validateRandomNumber() {
         return 0<=this.randomNumber && this.randomNumber <=9;
     }
-
+    
     public boolean canMovePosition(){
         return (this.randomNumber>=MOVE_CRITERIA);
     }
 
+    public int getRandomNumber() {
+        return randomNumber;
+    }
 }
