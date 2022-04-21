@@ -1,11 +1,11 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import racingcar.ui.InputView;
 import racingcar.util.generator.RandomNumberGenerator;
 import racingcar.util.strategy.move.CarMoveStrategy;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CarStadium {
 	private Cars cars;
@@ -17,15 +17,16 @@ public class CarStadium {
 		this.rounds = input.getRounds();
 	}
 
-	public int getRounds() {
-		return rounds;
+	public void racingStart() {
+		carComes();
+
+		for (int i = 0; i < this.rounds; i++) {
+			eachCarMove();
+			System.out.println();
+		}
 	}
 
-	public Cars getCars() {
-		return cars;
-	}
-
-	public void carComes() {
+	private void carComes() {
 		List<Car> carList = new ArrayList<>();
 
 		for (int i = 0; i < this.numberOfCars; i++) {
@@ -34,5 +35,13 @@ public class CarStadium {
 		}
 
 		this.cars = new Cars(carList);
+	}
+
+	private void eachCarMove() {
+		for (int i = 0; i < cars.count(); i++) {
+			Car car = cars.get(i);
+			car.move();
+			System.out.println(car.carStatus());
+		}
 	}
 }
