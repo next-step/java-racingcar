@@ -78,4 +78,6 @@ gony	: ----
 - [ ] Fix printResult to generate '-' stemming from position
 
 ## Step5
-- [ ] Add Position class
+
+- [x] Add Position class
+- [x] Add Car(name, at) constructor

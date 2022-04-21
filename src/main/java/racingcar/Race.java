@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
-    public final List<Car> cars = new ArrayList<Car>();
+    public final Cars cars = new Cars();
     private RollStrategy rollStrategy;
 
     public Race(RollStrategy rollStrategy) {
         this.rollStrategy = rollStrategy;
     }
 
-    public List<Car> createCars(String[] carNames) {
+    public Cars createCars(String[] carNames) {
         for (String carName : carNames) {
             this.cars.add(new Car(carName));
         }
