@@ -1,14 +1,15 @@
 package racingcar.domain;
 
-import java.util.Random;
-
 public class RacingCar {
     private static final int MOVE_UNIT = 1;
+
+    private String name;
     private int position;
     private Condition condition;
 
-    public RacingCar(Condition condition) {
+    public RacingCar(String name, Condition condition) {
         this.position = 0;
+        this.name = name;
         this.condition = condition;
     }
 
@@ -17,6 +18,14 @@ public class RacingCar {
             position += MOVE_UNIT;
         }
 
+        return position;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
         return position;
     }
 }
