@@ -10,10 +10,10 @@ import java.util.List;
 public class CarStadium {
 	private Cars cars;
 	private int rounds;
-	private int numberOfCars;
+	private String[] carNames;
 
 	public CarStadium(InputView input) {
-		this.numberOfCars = input.getNumberOfCars();
+		this.carNames = input.getCarNames();
 		this.rounds = input.getRounds();
 	}
 
@@ -29,8 +29,8 @@ public class CarStadium {
 	private void carComes() {
 		List<Car> carList = new ArrayList<>();
 
-		for (int i = 0; i < this.numberOfCars; i++) {
-			Car car = new Car(new RandomNumberGenerator(), new CarMoveStrategy());
+		for (int i = 0; i < this.carNames.length; i++) {
+			Car car = new Car(this.carNames[i]);
 			carList.add(car);
 		}
 
@@ -41,7 +41,7 @@ public class CarStadium {
 		for (int i = 0; i < cars.count(); i++) {
 			Car car = cars.get(i);
 			car.move();
-			System.out.println(car.carStatus());
+			System.out.println(car.name() + ": " + car.carStatus());
 		}
 	}
 }

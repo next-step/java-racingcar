@@ -3,31 +3,28 @@ package racingcar.ui;
 import java.util.Scanner;
 
 public class InputView {
-	private int numberOfCars;
+	private Scanner scanner;
+	private String carNames;
 	private int rounds;
 
 	public InputView() {
-		inputCarNumber();
+		this.scanner = new Scanner(System.in);
+		inputCarNames();
 		inputTryNumber();
 	}
 
 	private void inputTryNumber() {
 		System.out.println("시도할 횟수는 몇 회 인가요?");
-		this.rounds = input();
+		this.rounds = scanner.nextInt();
 	}
 
-	private void inputCarNumber() {
-		System.out.println("자동차 대수는 몇 대 인가요?");
-		this.numberOfCars = input();
+	private void inputCarNames() {
+		System.out.println("경주할 자동차의 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
+		this.carNames = scanner.next();
 	}
 
-	private int input() {
-		Scanner scanner = new Scanner(System.in);
-		return scanner.nextInt();
-	}
-
-	public int getNumberOfCars() {
-		return numberOfCars;
+	public String [] getCarNames() {
+		return this.carNames.split(",");
 	}
 
 	public int getRounds() {
