@@ -4,18 +4,22 @@ import racingcar.strategy.MovingStrategy;
 
 public class Car implements Comparable<Car> {
 
-  private final Position position;
-  private final CarName carName;
   private final MovingStrategy movingStrategy;
+  private final CarName carName;
+  private final Position position;
 
   public Car(MovingStrategy movingStrategy, String name) {
     this(movingStrategy, CarName.create(name));
   }
 
   Car(MovingStrategy movingStrategy, CarName carName) {
-    this.position = Position.create();
+    this(movingStrategy, carName, Position.create());
+  }
+
+  Car(MovingStrategy movingStrategy, CarName carName, Position position) {
     this.movingStrategy = movingStrategy;
     this.carName = carName;
+    this.position = position;
   }
 
   public static Car create(MovingStrategy movingStrategy, String name) {
