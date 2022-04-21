@@ -3,6 +3,8 @@ package racingcar.domain.input;
 import racingcar.domain.input.exception.MaximumCarNameException;
 import racingcar.domain.input.exception.RequiredCarNameException;
 
+import java.util.Objects;
+
 public class CarName {
 
     private static final int MAX_LENGTH_CAR_NAME = 5;
@@ -26,16 +28,20 @@ public class CarName {
         return carName == null || carName.isBlank();
     }
 
-    public String getCarName() {
+    public String get() {
         return this.carName;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof CarName)) {
-            return false;
-        }
-        CarName cn = (CarName) obj;
-        return cn.carName.equals(carName);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarName carName1 = (CarName) o;
+        return Objects.equals(carName, carName1.carName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName);
     }
 }

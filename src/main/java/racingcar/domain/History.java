@@ -32,10 +32,10 @@ public class History {
     }
 
     private int getMaxPosition() {
-        Comparator<Car> carComparator = Comparator.comparingInt(Car::getPosition);
-        return cars.stream()
-                .max(carComparator)
-                .get()
-                .getPosition();
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = car.maxPosition(maxPosition);
+        }
+        return maxPosition;
     }
 }

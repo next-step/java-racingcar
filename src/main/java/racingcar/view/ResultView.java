@@ -3,6 +3,7 @@ package racingcar.view;
 import racingcar.domain.Car;
 import racingcar.domain.Histories;
 import racingcar.domain.Round;
+import racingcar.domain.input.CarName;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,17 +29,18 @@ public class ResultView {
     private static void renderWinner(Histories histories) {
         List<Car> winners = histories.findWinners();
         String winnerNames = winners.stream()
-                .map(Car::getCarName)
+                .map(Car::carName)
+                .map(CarName::get)
                 .collect(Collectors.joining(WINNERS_DELIMITER));
         System.out.println(winnerNames + MESSAGE_WIN);
     }
 
     private static void renderResult(List<Car> cars, Round round) {
         for (Car car : cars) {
-            System.out.println(new ResultBuilder(car.getPosition(), car.getCarName()).build());
+            System.out.println(new ResultBuilder(car.position().get(), car.carName().get()).build());
         }
         System.out.println(BLANK_LINE);
-        System.out.println(MESSAGE_CURRENT_ROUND_END + round.getCurrentRound());
+        System.out.println(MESSAGE_CURRENT_ROUND_END + round.currentRound().get());
         System.out.println(BLANK_LINE);
     }
 

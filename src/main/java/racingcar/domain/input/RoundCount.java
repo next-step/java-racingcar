@@ -40,7 +40,7 @@ public class RoundCount {
         }
     }
 
-    public int getCount() {
+    public int get() {
         return this.roundCount;
     }
 

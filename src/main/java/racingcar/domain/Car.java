@@ -8,18 +8,16 @@ import java.util.Objects;
 
 public class Car {
 
-    private static final int INITIAL_POSITION = 0;
-
-    private int position;
+    private final Position position;
     private final CarName carName;
     private final MovingStrategy strategy;
 
     public Car(String carName) {
-        this(new CarName(carName), new RandomMoving(), INITIAL_POSITION);
+        this(new CarName(carName), new RandomMoving(), new Position());
     }
 
     public Car(CarName carName) {
-        this(carName, new RandomMoving(), INITIAL_POSITION);
+        this(carName, new RandomMoving(), new Position());
     }
 
     public Car(String carName, int position) {
@@ -27,10 +25,18 @@ public class Car {
     }
 
     public Car(String carName, MovingStrategy strategy) {
-        this(new CarName(carName), strategy, INITIAL_POSITION);
+        this(new CarName(carName), strategy, new Position());
+    }
+
+    public Car(String carName, MovingStrategy strategy, int position) {
+        this(new CarName(carName), strategy, new Position(position));
     }
 
     public Car(CarName carName, MovingStrategy strategy, int position) {
+        this(carName, strategy, new Position(position));
+    }
+
+    public Car(CarName carName, MovingStrategy strategy, Position position) {
         this.position = position;
         this.carName = carName;
         this.strategy = strategy;
@@ -50,19 +56,23 @@ public class Car {
     }
 
     private void go() {
-        this.position++;
-    }
-
-    public int getPosition() {
-        return this.position;
+        position.up();
     }
 
     public boolean isTop(int maxPosition) {
-        return this.position == maxPosition;
+        return position.isMaxPosition(maxPosition);
     }
 
-    public String getCarName() {
-        return this.carName.getCarName();
+    public int maxPosition(int maxPosition) {
+        return position.maxPosition(maxPosition);
+    }
+
+    public Position position() {
+        return position;
+    }
+
+    public CarName carName() {
+        return carName;
     }
 
     @Override
@@ -70,11 +80,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position && Objects.equals(carName, car.carName) && Objects.equals(strategy, car.strategy);
+        return Objects.equals(position, car.position) && Objects.equals(carName, car.carName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, carName, strategy);
+        return Objects.hash(position, carName);
     }
 }
