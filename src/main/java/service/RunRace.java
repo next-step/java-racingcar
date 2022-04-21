@@ -1,4 +1,7 @@
-package domain;
+package service;
+
+import domain.Cars;
+import domain.RaceRecord;
 
 public class RunRace {
     private final int tryCount;

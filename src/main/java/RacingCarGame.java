@@ -1,5 +1,5 @@
-import domain.RunRace;
-import service.Race;
+import service.RunRace;
+import controller.Race;
 import view.InputView;
 import view.ResultView;
 

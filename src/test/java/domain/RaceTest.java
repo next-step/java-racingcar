@@ -1,10 +1,11 @@
 package domain;
 
+import service.RunRace;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import service.Race;
+import controller.Race;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

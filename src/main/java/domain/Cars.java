@@ -31,7 +31,7 @@ public class Cars {
         return new Builder();
     }
 
-    public boolean isSize(int size) {
+    public boolean checkSize(int size) {
         return cars.size() == size;
     }
 
@@ -68,7 +68,7 @@ public class Cars {
     }
 
     public Car getCurrentWinner() {
-        if (!isSize(CHECK_CAR_COUNT)) {
+        if (!checkSize(CHECK_CAR_COUNT)) {
             reverseSortCarsFromPosition();
             return cars.get(FIRST_INDEX);
         }

@@ -1,9 +1,9 @@
-package service;
+package controller;
 
 import domain.Cars;
 import domain.RaceCondition;
 import domain.RaceRecord;
-import domain.RunRace;
+import service.RunRace;
 
 
 public class Race {
@@ -17,7 +17,7 @@ public class Race {
                 .raceCondition(raceCondition)
                 .build();
 
-        if (cars.isSize(CHECK_CAR_COUNT)) {
+        if (cars.checkSize(CHECK_CAR_COUNT)) {
             throw new IllegalArgumentException("자동차 대수는 1대 이상이어야 경주 할 수 있습니다.");
         }
 

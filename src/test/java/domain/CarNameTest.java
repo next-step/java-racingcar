@@ -24,7 +24,7 @@ class CarNameTest {
                 .carsName("abc,cdf")
                 .raceCondition(new RaceCondition())
                 .build();
-        assertThat(cars.isSize(2)).isTrue();
+        assertThat(cars.checkSize(2)).isTrue();
     }
 
     @Test
