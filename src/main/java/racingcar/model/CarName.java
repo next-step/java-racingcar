@@ -16,6 +16,10 @@ public class CarName {
     this.value = name;
   }
 
+  public static CarName create(String name) {
+    return new CarName(name);
+  }
+
   public String getValue() {
     return value;
   }

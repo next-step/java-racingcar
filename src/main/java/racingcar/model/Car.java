@@ -9,7 +9,7 @@ public class Car implements Comparable<Car> {
   private final MovingStrategy movingStrategy;
 
   public Car(MovingStrategy movingStrategy, String name) {
-    this(movingStrategy, new CarName(name));
+    this(movingStrategy, CarName.create(name));
   }
 
   Car(MovingStrategy movingStrategy, CarName carName) {
