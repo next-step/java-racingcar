@@ -1,15 +1,15 @@
 package racingcar.model;
 
-import racingcar.strategy.MovingStrategy;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.commons.Constant;
+import racingcar.exception.InputValueException;
+import racingcar.strategy.MovingStrategy;
 
 public class Cars {
 
   private static final String BASIC_SPLIT_REGEX = ",";
-  private static final String MINIMUM_NUMBER_OF_CAR_NAMES_INPUT_ERR_MSG = "자동차는 1대 이상 입력되어야 합니다.";
 
   private final List<Car> cars = new ArrayList<>();
 
@@ -31,7 +31,7 @@ public class Cars {
 
   public static void checkTheNumberOfInputCars(String value) {
     if (checkNullAndEmpty(value)) {
-      throw new IllegalStateException(MINIMUM_NUMBER_OF_CAR_NAMES_INPUT_ERR_MSG);
+      throw new InputValueException(Constant.MINIMUM_NUMBER_OF_CAR_NAMES_INPUT_ERR_MSG);
     }
   }
 
