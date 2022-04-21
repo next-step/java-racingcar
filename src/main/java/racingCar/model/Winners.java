@@ -32,7 +32,7 @@ public class Winners {
   public List<String> findWinnerNameList() {
     List<String> carNames = new ArrayList<>();
     for (Car car : cars) {
-      carNames.add(car.equalsMaxPosition(findWinnerPosition()));
+      carNames.add(car.equalsMaxPositionGetCarName(findWinnerPosition()));
     }
     return carNames;
   }

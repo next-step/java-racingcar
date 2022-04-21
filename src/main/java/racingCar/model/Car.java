@@ -59,7 +59,7 @@ public final class Car {
     return Math.max(curPosition, position.toString().length());
   }
 
-  public String equalsMaxPosition(int winnerPosition) {
+  public String equalsMaxPositionGetCarName(int winnerPosition) {
     if (position.toString().length() == winnerPosition) {
       return this.carName.toString();
     }
