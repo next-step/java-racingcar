@@ -1,6 +1,6 @@
 package racingcar.domain.input;
 
-import racingcar.domain.input.exception.InvalidCarNameException;
+import racingcar.domain.exception.InvalidCarNameException;
 
 import java.util.Arrays;
 import java.util.List;

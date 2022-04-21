@@ -2,10 +2,8 @@ package racingcar.domain.input;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.dto.InputRoundCount;
-import racingcar.domain.input.RoundCount;
-import racingcar.domain.input.exception.InvalidNumberException;
-import racingcar.domain.input.exception.OnlyPositiveException;
+import racingcar.domain.exception.InvalidNumberException;
+import racingcar.domain.exception.OnlyPositiveException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

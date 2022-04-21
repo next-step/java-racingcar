@@ -1,7 +1,7 @@
 package racingcar.domain.input;
 
-import racingcar.domain.input.exception.InvalidNumberException;
-import racingcar.domain.input.exception.OnlyPositiveException;
+import racingcar.domain.exception.InvalidNumberException;
+import racingcar.domain.exception.OnlyPositiveException;
 
 public class RoundCount {
 

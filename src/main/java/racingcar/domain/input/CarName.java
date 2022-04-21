@@ -1,7 +1,7 @@
 package racingcar.domain.input;
 
-import racingcar.domain.input.exception.MaximumCarNameException;
-import racingcar.domain.input.exception.RequiredCarNameException;
+import racingcar.domain.exception.MaximumCarNameException;
+import racingcar.domain.exception.RequiredCarNameException;
 
 import java.util.Objects;
 

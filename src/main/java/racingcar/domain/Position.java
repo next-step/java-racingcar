@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.exception.PositionInvalidException;
+
 import java.util.Objects;
 
 public class Position {
@@ -14,7 +16,7 @@ public class Position {
 
     public Position(int position) {
         if (position < 0) {
-            throw new RuntimeException();
+            throw new PositionInvalidException();
         }
         this.position = position;
     }

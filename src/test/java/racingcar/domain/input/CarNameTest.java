@@ -2,8 +2,8 @@ package racingcar.domain.input;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.input.exception.MaximumCarNameException;
-import racingcar.domain.input.exception.RequiredCarNameException;
+import racingcar.domain.exception.MaximumCarNameException;
+import racingcar.domain.exception.RequiredCarNameException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
