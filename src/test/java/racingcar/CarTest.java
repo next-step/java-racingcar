@@ -68,4 +68,14 @@ public class CarTest {
 
         assertThat(nextCar.state()).isEqualTo(car.state());
     }
+
+    @Test
+    @DisplayName("car의 현재 Distance와 입력받은 max값을 비교해 max값을 반환한다.")
+    void getMaxStateTest() {
+        Car car = new Car(TEST_CAR_NAME, new Distance(3));
+
+        Distance maxState = car.getMaxState(new Distance(4));
+
+        assertThat(maxState).isEqualTo(new Distance(4));
+    }
 }

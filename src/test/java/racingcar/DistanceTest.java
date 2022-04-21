@@ -29,4 +29,10 @@ public class DistanceTest {
 
         assertThat(Distance.add(one, two)).isEqualTo(new Distance(3));
     }
+
+    @Test
+    @DisplayName("compareTo 를 이용해 두 Distance 를 비교한다")
+    void compareToTest() {
+        assertThat(new Distance(1).compareTo(new Distance(2))).isEqualTo(-1);
+    }
 }

@@ -2,7 +2,6 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -41,7 +40,7 @@ public final class Cars {
     }
 
     public List<CarName> findWinnerCarNames() {
-        final int maxState = getMaxState();
+        final Distance maxState = getMaxState();
 
         return cars.stream()
                 .filter(car -> car.isMaxState(maxState))
@@ -49,10 +48,11 @@ public final class Cars {
                 .collect(Collectors.toList());
     }
 
-    private int getMaxState() {
-        return cars.stream()
-                .mapToInt(car -> car.state().value())
-                .max()
-                .orElseThrow(NoSuchElementException::new);
+    private Distance getMaxState() {
+        Distance maxState = Distance.ZERO;
+        for (Car car : cars) {
+            maxState = car.getMaxState(maxState);
+        }
+        return maxState;
     }
 }

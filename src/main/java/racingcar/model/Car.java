@@ -30,8 +30,15 @@ public final class Car {
         return new Car(name, new Distance(state.value()));
     }
 
-    public boolean isMaxState(int maxState) {
-        return state.value() == maxState;
+    public boolean isMaxState(Distance maxState) {
+        return state.equals(maxState);
+    }
+
+    public Distance getMaxState(Distance maxState) {
+        if (state.compareTo(maxState) < 0) {
+            return maxState;
+        }
+        return state;
     }
 
     public CarName name() {

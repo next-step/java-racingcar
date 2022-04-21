@@ -42,4 +42,8 @@ public final class Distance {
     public int hashCode() {
         return Integer.valueOf(value).hashCode();
     }
+
+    public int compareTo(Distance distance) {
+        return value - distance.value();
+    }
 }
