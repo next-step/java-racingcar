@@ -44,7 +44,7 @@ public final class Cars {
         final int maxState = getMaxState();
 
         return cars.stream()
-                .filter(car -> car.state().value() == maxState)
+                .filter(car -> car.isMaxState(maxState))
                 .map(Car::name)
                 .collect(Collectors.toList());
     }
