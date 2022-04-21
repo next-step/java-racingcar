@@ -18,8 +18,11 @@ public class Game {
     }
 
     public List<Car> equipRacingCar(final NumberOfCars numberOfCars) {
-        for (int i = 0; i < numberOfCars.getNumber(); i++) {
+        int index = 0;
+        NumberOfCars addCarsIndex = NumberOfCars.of(index);
+        while (!addCarsIndex.equals(numberOfCars)) {
             cars.add(new Car());
+            addCarsIndex = NumberOfCars.of(++index);
         }
         return cars;
     }

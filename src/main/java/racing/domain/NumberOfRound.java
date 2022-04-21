@@ -23,10 +23,6 @@ public class NumberOfRound {
         return new NumberOfRound(this.number - 1);
     }
 
-    public int getNumber() {
-        return number;
-    }
-
     @Override
     public boolean equals(final Object o) {
         if (this == o) {return true;}
