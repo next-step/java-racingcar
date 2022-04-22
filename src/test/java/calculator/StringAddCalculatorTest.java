@@ -37,16 +37,14 @@ public class StringAddCalculatorTest {
     @DisplayName("//, \n문자 사이의 커스텀구분자를 지정하기 관련 테스트")
     @Test
     void 커스텀구분자() {
-        assertThat(StringAddCalculator.splitAndSum("//;\n1;2;3")).isEqualTo(6);
+        assertThat(StringAddCalculator.splitAndSum("//,\n1,2,3")).isEqualTo(6);
     }
-}
-/*
+
     @DisplayName("음수 전달할 경우 RuntimeException 발생")
     @Test
     void 음수전달_익셉션발생() {
-        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("-1,2,3"))
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum("1,-2,3"))
                 .isInstanceOf(RuntimeException.class);
     }
 }
-*/
 
