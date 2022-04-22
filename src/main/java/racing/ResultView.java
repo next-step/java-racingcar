@@ -8,29 +8,29 @@ public class ResultView {
 
     public static void view(Circuit circuit) {
         System.out.println("실행 결과");
-        for (int roundNumber = 0; roundNumber < circuit.getNumberOfRacing(); roundNumber++) {
-            viewRound(circuit.getCars(), roundNumber);
+        for (int round = 0; round < circuit.getTotalRound(); round++) {
+            viewRound(circuit.getCars(), round);
         }
     }
 
-    private static void viewRound(List<Car> cars, int roundNumber) {
-        System.out.printf("%d 회 \n", roundNumber + 1);
+    private static void viewRound(List<Car> cars, int round) {
+        System.out.printf("%d 회 \n", round + 1);
 
         for (Car car : cars) {
-            viewCar(car, roundNumber);
+            viewCar(car, round);
         }
     }
 
-    private static void viewCar(Car car, int roundNumber) {
-        System.out.println(getCarMoves(car, roundNumber));
+    private static void viewCar(Car car, int round) {
+        System.out.println(getCarDistance(car, round));
     }
 
-    private static StringBuilder getCarMoves(Car car, int roundNumber) {
-        StringBuilder result = new StringBuilder();
-        for (int round = 0; round <= roundNumber; round++) {
-            result.append(move(car.isRoundMove(round)));
+    private static StringBuilder getCarDistance(Car car, int round) {
+        StringBuilder distance = new StringBuilder();
+        for (int i = 0; i <= round; i++) {
+            distance.append(move(car.isRoundMove(i)));
         }
-        return result;
+        return distance;
     }
 
     private static String move(Boolean isMove) {
