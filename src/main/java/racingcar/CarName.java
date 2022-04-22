@@ -3,7 +3,7 @@ package racingcar;
 import java.util.Objects;
 
 public class CarName {
-    private int MAX_NUMBER_OF_CAR_NAME_CHARACTER = 5;
+    private static final int  MAX_NUMBER_OF_CAR_NAME_CHARACTER = 5;
     private final String carName;
 
     public CarName(String name) {
@@ -28,5 +28,9 @@ public class CarName {
     @Override
     public int hashCode() {
         return Objects.hash(carName);
+    }
+
+    public String  getName() {
+        return carName;
     }
 }

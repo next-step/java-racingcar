@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String carNames = InputView.getCarCount();
+        String carNames = InputView.getCarNames();
         int round = InputView.getGameRound();
 
         Cars cars = Cars.createCars(carNames);

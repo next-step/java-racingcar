@@ -47,4 +47,8 @@ public class Car {
     public int hashCode() {
         return Objects.hash(position);
     }
+
+    public String getName() {
+        return carName.getName();
+    }
 }

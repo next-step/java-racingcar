@@ -22,7 +22,6 @@ class RacingCarTest {
     @Test
     @DisplayName("입력받은 라운드 보다 더 많은 라운드를 진행할때 에러를 뱉는다.")
     void roundErrorTest() {
-        int carCount = 4;
         int round = 4;
 
         Cars cars = Cars.createCars("green,so");

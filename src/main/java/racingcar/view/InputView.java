@@ -9,7 +9,7 @@ public class InputView {
         throw new IllegalStateException("Utility class");
     }
     
-    public static String getCarCount() {
+    public static String getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표로 구분)");
         return SCANNER.next();
     }
