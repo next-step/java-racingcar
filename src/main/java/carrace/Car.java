@@ -1,8 +1,7 @@
 package carrace;
 
 public class Car {
-    private static final int GO = 1;
-    private static final int STOP = 0;
+
 
     private final RandomMoving randomMoving = new RandomMoving();
 
@@ -21,8 +20,8 @@ public class Car {
         return result;
     }
 
-    public int move(Moving moving) {
-        return moving.isMove() ? GO : STOP;
+    private int move(RandomMoving randomMoving) {
+        return randomMoving.move(randomMoving.isMove());
     }
 
     public String getName() {

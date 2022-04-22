@@ -12,21 +12,11 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarRaceTest {
-    final int GO = 1;
-    final int STOP = 0;
 
     @Test
     @DisplayName("0에서 9사이 int값 반환")
     void isBetweenZeroAndNine() {
         assertThat(new RandomNumberGenerator().getRandomBetweenZeroAndNine()).isBetween(0, 9);
-    }
-
-    @Test
-    @DisplayName("DECISION_VALUE(4) 이상의 number를 입력받을 때에만 GO(1) 리턴")
-    void getOneIfMoreThanDecisionValue() {
-        Car car = new Car("jess");
-        assertThat(car.move(() -> true)).isEqualTo(GO);
-        assertThat(car.move(() -> false)).isEqualTo(STOP);
     }
 
     @ParameterizedTest
