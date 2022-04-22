@@ -3,44 +3,49 @@ package racingcar.model;
 import racingcar.strategy.MovingStrategy;
 
 public class Car implements Comparable<Car> {
-    private Position position;
-    private MovingStrategy movingStrategy;
-    private CarName carName;
 
-    public Car(Position position, MovingStrategy movingStrategy, String name) {
-        this(position, movingStrategy, new CarName(name));
-    }
+  private final MovingStrategy movingStrategy;
+  private final CarName carName;
+  private final Position position;
 
-    Car(Position position, MovingStrategy movingStrategy, CarName carName) {
-        this.position = position;
-        this.movingStrategy = movingStrategy;
-        this.carName = carName;
-    }
+  public Car(MovingStrategy movingStrategy, String name) {
+    this(movingStrategy, CarName.create(name));
+  }
 
-    public static Car create(Position position, MovingStrategy movingStrategy, String name) {
-        return new Car(position, movingStrategy, name);
-    }
+  Car(MovingStrategy movingStrategy, CarName carName) {
+    this(movingStrategy, carName, Position.create());
+  }
 
-    public void move() {
-        if (movingStrategy.decideWhetherToMove()) {
-            position.increaseValue();
-        }
-    }
+  Car(MovingStrategy movingStrategy, CarName carName, Position position) {
+    this.movingStrategy = movingStrategy;
+    this.carName = carName;
+    this.position = position;
+  }
 
-    public int getCurrentPosition() {
-        return position.getValue();
-    }
+  public static Car create(MovingStrategy movingStrategy, String name) {
+    return new Car(movingStrategy, name);
+  }
 
-    public String getCarName() {
-        return carName.getName();
+  public void move() {
+    if (movingStrategy.decideWhetherToMove()) {
+      position.increaseValue();
     }
+  }
 
-    public boolean compareWithMaxPosition(int maxPosition) {
-        return this.position.getValue() == maxPosition;
-    }
+  public int getCurrentPosition() {
+    return position.getValue();
+  }
 
-    @Override
-    public int compareTo(Car otherCar) {
-        return this.position.getValue() - otherCar.position.getValue();
-    }
+  public String getCarName() {
+    return carName.getValue();
+  }
+
+  public boolean compareWithMaxPosition(Car maxPositionCar) {
+    return this.position.equals(maxPositionCar.position);
+  }
+
+  @Override
+  public int compareTo(Car otherCar) {
+    return this.position.compareTo(otherCar.position);
+  }
 }

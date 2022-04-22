@@ -1,22 +1,51 @@
 package racingcar.model;
 
-public class Position {
-    private static final int POSITION_INITIAL_VALUE = 0;
-    private int position;
+import java.util.Objects;
 
-    public Position() {
-        this(POSITION_INITIAL_VALUE);
-    }
+public class Position implements Comparable<Position> {
 
-    Position(int position) {
-        this.position = position;
-    }
+  private static final int POSITION_INITIAL_VALUE = 0;
+  private int value;
 
-    public void increaseValue() {
-        position = position + 1;
-    }
+  public Position() {
+    this(POSITION_INITIAL_VALUE);
+  }
 
-    public int getValue() {
-        return position;
+  Position(int position) {
+    this.value = position;
+  }
+
+  public static Position create() {
+    return new Position();
+  }
+
+  public void increaseValue() {
+    value = value + 1;
+  }
+
+  public int getValue() {
+    return value;
+  }
+
+  @Override
+  public int compareTo(Position otherPosition) {
+    return Integer.compare(value, otherPosition.value);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Position position = (Position) o;
+    return value == position.value;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(value);
+  }
 }
