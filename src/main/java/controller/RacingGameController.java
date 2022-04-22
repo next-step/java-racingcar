@@ -1,6 +1,6 @@
 package controller;
 
-import model.PositiveNumber;
+import model.MoveCount;
 import service.RacingCarGame;
 import view.InputView;
 
@@ -10,10 +10,13 @@ public class RacingGameController {
         InputView inputView = InputView.getInstance();
 
         String carsName = inputView.getInputCarsName();
-        PositiveNumber carMoveCount = inputView.getInputCarMoveCount();
+        MoveCount moveCount = inputView.getInputCarMoveCount();
 
-        RacingCarGame racingCarGame = RacingCarGame.getInstance();
-        racingCarGame.play(carsName, carMoveCount);
+        RacingCarGame racingCarGame = new RacingCarGame(carsName, moveCount);
+
+        while (racingCarGame.isDone()) {
+            racingCarGame.race();
+        }
     }
 
 }

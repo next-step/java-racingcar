@@ -1,44 +1,24 @@
 package service;
 
-import model.Car;
 import model.Cars;
-import model.Position;
-import model.PositiveNumber;
-import view.ResultView;
-
-import java.util.ArrayList;
-import java.util.List;
+import model.MoveCount;
 
 public class RacingCarGame {
 
-    private RacingCarGame() {
+    private final Cars cars;
+    private final MoveCount moveCount;
 
+    public RacingCarGame(String carNames, MoveCount moveCount) {
+        this.cars = new Cars(carNames);
+        this.moveCount = moveCount;
     }
 
-    public static RacingCarGame getInstance() {
-        return new RacingCarGame();
+    public void race() {
+        moveCount.decreaseMoveCount();
+        cars.moveCars();
     }
 
-    public void play(String carsName, PositiveNumber carMoveCount) {
-//        Cars cars = makeCars(carNumber);
-//        moveCars(carMoveCount, cars);
-    }
-
-    private Cars makeCars(PositiveNumber carsNumber) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carsNumber.getNumber(); i++) {
-            cars.add(new Car(new Position()));
-        }
-        return new Cars(cars);
-    }
-
-    private void moveCars(PositiveNumber carMoveCount, Cars cars) {
-        ResultView resultView = ResultView.getInstance();
-        resultView.printResult();
-
-        for (int i = 0; i < carMoveCount.getNumber(); i++) {
-            cars.moveCars();
-            cars.printCarsPosition();
-        }
+    public boolean isDone() {
+        return moveCount.isDone();
     }
 }

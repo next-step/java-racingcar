@@ -1,6 +1,6 @@
 package view;
 
-import model.PositiveNumber;
+import model.MoveCount;
 
 import java.util.Scanner;
 
@@ -28,9 +28,9 @@ public class InputView {
     }
 
 
-    public PositiveNumber getInputCarMoveCount() {
+    public MoveCount getInputCarMoveCount() {
         printCarMoveCount();
-        return new PositiveNumber(scanner.nextInt());
+        return new MoveCount(scanner.nextInt());
     }
 
     private void printCarMoveCount() {
