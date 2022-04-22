@@ -12,7 +12,7 @@ class RaceTest {
     @Test
     @Order(1)
     void 자동차_대수는_1대_이상이어야_한다() {
-        assertThatThrownBy(() -> new Race().start("",1))
+        assertThatThrownBy(() -> new Race().start("", new RunRace(1)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

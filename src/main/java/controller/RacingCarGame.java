@@ -11,6 +11,6 @@ public class RacingCarGame {
         String carsName = InputView.inputCarsName();
         int raceTryCount = InputView.inputRaceTryCount();
 
-        ResultView.print(race.start(carsName, raceTryCount));
+        ResultView.print(race.start(carsName, new RunRace(raceTryCount)));
     }
 }
