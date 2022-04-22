@@ -12,20 +12,14 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars createCars(int carCount) {
-        validatePositiveNumber(carCount);
+    public static Cars createCars(String names) {
+        String[] carNames = names.split(",");
 
         List<Car> cars = new ArrayList<>();
-        for (int number = 0; number < carCount; number++) {
-            cars.add(new Car());
+        for (int number = 0; number < carNames.length; number++) {
+            cars.add(new Car(new CarName(carNames[number])));
         }
         return new Cars(cars);
-    }
-
-    private static void validatePositiveNumber(int carCount) {
-        if (carCount < 0) {
-            throw new IllegalArgumentException("자동차의 개수는 음수가 될 수 없습니다.");
-        }
     }
 
     public void play(NumberGenerator numberGenerator) {

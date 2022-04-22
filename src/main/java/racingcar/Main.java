@@ -8,10 +8,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int carCount = InputView.getCarCount();
+        String carNames = InputView.getCarCount();
         int round = InputView.getGameRound();
 
-        Cars cars = Cars.createCars(carCount);
+        Cars cars = Cars.createCars(carNames);
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         RacingCar racingCar = new RacingCar(cars, round, randomNumberGenerator);
 

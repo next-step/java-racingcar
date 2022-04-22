@@ -5,13 +5,15 @@ import java.util.Objects;
 
 public class Car {
     private static final int MIN_NUMBER_BE_MOVES = 4;
+    private CarName carName;
     private Position position;
 
-    public Car() {
-        this.position = new Position();
+    public Car(CarName carName){
+        this(carName, new Position());
     }
 
-    public Car(Position position) {
+    public Car(CarName carName, Position position) {
+        this.carName = carName;
         this.position = position;
     }
 
