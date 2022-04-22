@@ -5,7 +5,7 @@ import racing.domain.strategy.NormalMove;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MovingStrategy {
+public class NormalMoveTest {
     @Test
     void NormalMove_경계선값_4_true_반환() {
         assertThat(new NormalMove(4).movable()).isTrue();
