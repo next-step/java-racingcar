@@ -1,4 +1,4 @@
-package racingcar;
+package domain;
 
 public class Car implements Comparable<Car> {
     private static final int MOVE_CONDITION = 4;
@@ -52,7 +52,7 @@ public class Car implements Comparable<Car> {
 
     @Override
     public String toString() {
-        return carName.toString() + CAR_NAME_COLON + position.toString();
+        return carName + CAR_NAME_COLON + position;
     }
 
     @Override

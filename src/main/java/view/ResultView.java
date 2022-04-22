@@ -1,6 +1,6 @@
 package view;
 
-import racingcar.RaceRecord;
+import domain.RaceRecord;
 
 public class ResultView {
     public static void print(RaceRecord raceRecords) {

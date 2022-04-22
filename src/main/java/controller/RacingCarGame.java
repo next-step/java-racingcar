@@ -1,5 +1,7 @@
-import racingcar.RunRace;
-import service.Race;
+package controller;
+
+import domain.RunRace;
+import domain.Race;
 import view.InputView;
 import view.ResultView;
 
