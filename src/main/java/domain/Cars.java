@@ -36,19 +36,12 @@ public class Cars {
     }
 
     private String[] splitCarsName(String carsName) {
-        if (validateCarsName(carsName)) {
-            return carsName.split(CARS_DELIMITER);
-        }
-        throw new IllegalArgumentException("자동차 이름 처리 간 문제가 발생 하였습니다.");
+        return carsName.split(CARS_DELIMITER);
     }
 
     private List<String> toStringList(String[] carsName) {
         return Arrays.stream(carsName)
                 .collect(Collectors.toList());
-    }
-
-    private boolean validateCarsName(String carsName) {
-        return carsName != null && !carsName.isBlank() && carsName.length() > 0;
     }
 
     public Cars move() {
@@ -84,7 +77,7 @@ public class Cars {
     @Override
     public String toString() {
         return cars.stream()
-                .map(car-> car + NEW_LINE)
+                .map(car -> car + NEW_LINE)
                 .collect(Collectors.joining());
     }
 

@@ -1,5 +1,7 @@
-import service.RunRace;
-import controller.Race;
+package controller;
+
+import domain.RunRace;
+import domain.Race;
 import view.InputView;
 import view.ResultView;
 
@@ -9,6 +11,6 @@ public class RacingCarGame {
         String carsName = InputView.inputCarsName();
         int raceTryCount = InputView.inputRaceTryCount();
 
-        ResultView.print(race.start(carsName, new RunRace(raceTryCount)));
+        ResultView.print(race.start(carsName, raceTryCount));
     }
 }

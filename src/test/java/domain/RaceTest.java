@@ -1,11 +1,9 @@
 package domain;
 
-import service.RunRace;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import controller.Race;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -14,7 +12,7 @@ class RaceTest {
     @Test
     @Order(1)
     void 자동차_대수는_1대_이상이어야_한다() {
-        assertThatThrownBy(() -> new Race().start("", new RunRace(1)))
+        assertThatThrownBy(() -> new Race().start("",1))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
