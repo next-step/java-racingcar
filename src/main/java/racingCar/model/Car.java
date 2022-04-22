@@ -30,6 +30,14 @@ public final class Car {
     return this;
   }
 
+  String carName() {
+    return this.carName.toString();
+  }
+  int currentPosition() {
+    return this.position.toString().length();
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -59,10 +67,4 @@ public final class Car {
     return Math.max(curPosition, position.toString().length());
   }
 
-  public String equalsMaxPositionGetCarName(int winnerPosition) {
-    if (position.toString().length() == winnerPosition) {
-      return this.carName.toString();
-    }
-    return null;
-  }
 }

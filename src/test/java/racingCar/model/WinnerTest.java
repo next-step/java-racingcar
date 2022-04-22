@@ -20,7 +20,6 @@ class WinnerTest {
                                    new Car("bopi", 5));
 
     List<String> coWinnerNameList = new Winners(cars).findWinnerNameList();
-    coWinnerNameList.removeAll(Collections.singletonList(null));
     assertThat(coWinnerNameList).isEqualTo(List.of("hello", "bopi"));
   }
 

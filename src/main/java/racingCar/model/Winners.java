@@ -32,9 +32,15 @@ public class Winners {
   public List<String> findWinnerNameList() {
     List<String> carNames = new ArrayList<>();
     for (Car car : cars) {
-      carNames.add(car.equalsMaxPositionGetCarName(findWinnerPosition()));
+      addCarName(carNames, car);
     }
     return carNames;
+  }
+
+  private void addCarName(List<String> carNames, Car car) {
+    if(car.currentPosition() == findWinnerPosition()) {
+      carNames.add(car.carName());
+    }
   }
 
   private int findWinnerPosition() {
