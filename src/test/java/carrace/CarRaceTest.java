@@ -43,17 +43,6 @@ public class CarRaceTest {
     }
 
     @Test
-    @DisplayName("입력받은 carNames -> cars로 변환 확인")
-    void splitCarNames() {
-        String carNames = "jess,apollo,kim";
-        List<Car> cars = new Splitter().splitCarNames(carNames);
-
-        assertThat(cars.get(0).getName()).isEqualTo("jess");
-        assertThat(cars.get(1).getName()).isEqualTo("apoll");
-        assertThat(cars.get(2).getName()).isEqualTo("kim");
-    }
-
-    @Test
     @DisplayName("우승자 확인")
     void checkWinners() {
         RaceWinner raceWinner = new RaceWinner(3);
