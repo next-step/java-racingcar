@@ -3,6 +3,7 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,9 +12,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("문자열 덧셈 Operands 테스트")
 class OperandsTest {
     @Test
-    void Operand는_빈_컬렉션으로_생설_할_경우_런타임_예외를_발새시킨다() {
+    void Operand는_빈_컬렉션으로_생성_할_경우_런타임_예외를_발생시킨다() {
         assertThatThrownBy(() -> {
-            new Operands(List.of());
+            new Operands(Collections.emptyList());
         }).isInstanceOf(IllegalArgumentException.class);
     }
 

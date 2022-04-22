@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rounds {
+    private static final int MIN_ROUND_COUNT = 1;
+
     private final int roundCount;
     private final Cars cars;
 
@@ -20,8 +22,8 @@ public class Rounds {
             throw new IllegalArgumentException("cars는 null일 수 없습니다.");
         }
 
-        if (roundCount < 1) {
-            throw new IllegalArgumentException("Rounds는 최소 1회 이상이어야 합니다.");
+        if (roundCount < MIN_ROUND_COUNT) {
+            throw new IllegalArgumentException(String.format("Rounds는 최소 %d회 이상이어야 합니다.", MIN_ROUND_COUNT));
         }
     }
 

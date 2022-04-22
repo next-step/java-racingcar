@@ -1,7 +1,9 @@
 package calculator;
 
+import java.util.Objects;
+
 public class Operand {
-    private final static int ZERO = 0;
+    private static final int ZERO = 0;
 
     private final int value;
 
@@ -34,5 +36,18 @@ public class Operand {
 
     public Operand add(Operand operand) {
         return new Operand(this.value + operand.getValue());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Operand operand = (Operand) o;
+        return this.value == operand.getValue();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getValue());
     }
 }

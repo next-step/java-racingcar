@@ -1,5 +1,7 @@
 package racingcar.app;
 
+import calculator.StringSplitterFactory;
+import racingcar.domain.car.CarNames;
 import racingcar.domain.car.Cars;
 import racingcar.domain.car.strategy.CarActionStrategy;
 import racingcar.domain.car.strategy.RandomMoveStrategy;
@@ -16,7 +18,11 @@ public class RacingGame {
     }
 
     private Cars generateCars(CarActionStrategy carActionStrategy) {
-        return new Cars(InputView.inputCarCounts(), carActionStrategy);
+        return new Cars(getCarNames(), carActionStrategy);
+    }
+
+    private CarNames getCarNames() {
+        return CarNames.from(StringSplitterFactory.resolve(InputView.inputCarNames()).split());
     }
 
     private Rounds generateRounds(Cars cars) {

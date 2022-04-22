@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
+import racingcar.domain.car.CarName;
+import racingcar.domain.car.CarPosition;
 import racingcar.domain.car.Cars;
 
 import java.util.List;
@@ -11,22 +13,27 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.domain.car.CarNameTest.VALID_CAR_NAME;
 
 @DisplayName("자동차 경주 - Rounds 테스트")
 class RoundsTest {
     private static final int ROUND_COUNTS = 4;
 
-    private List<Integer> carPositionList;
+    private List<CarPosition> carPositions;
+    private CarPosition defaultPosition = CarPosition.createDefault();
     private Cars movableCars;
 
     @BeforeEach
     public void init() {
-        carPositionList = List.of(5, 1, 2, 4, 3);
-        movableCars = createMovableCars(carPositionList);
+        carPositions = List.of(defaultPosition, defaultPosition, defaultPosition, defaultPosition, defaultPosition);
+        movableCars = createMovableCars(carPositions);
     }
 
-    private Cars createMovableCars(List<Integer> carPositionList) {
-        return new Cars(carPositionList.stream().map(position -> new Car(position, () -> true)).collect(Collectors.toList()));
+    private Cars createMovableCars(List<CarPosition> carPositions) {
+        return new Cars(carPositions
+                .stream()
+                .map(position -> new Car(new CarName(VALID_CAR_NAME), defaultPosition, () -> true))
+                .collect(Collectors.toList()));
     }
 
     @Test
@@ -34,9 +41,18 @@ class RoundsTest {
         List<Round> roundResults = new Rounds(movableCars, ROUND_COUNTS).play();
 
         for (int i = 0; i < ROUND_COUNTS; i++) {
-            carPositionList = carPositionList.stream().map(position -> position + 1).collect(Collectors.toList());
-            assertThat(roundResults.get(i).getCars().getCarPositions())
-                    .isEqualTo(new Round(createMovableCars(carPositionList)).getCars().getCarPositions());
+            carPositions = carPositions
+                    .stream()
+                    .map(CarPosition::increase)
+                    .collect(Collectors.toList());
+
+            assertThat(roundResults.get(i)
+                    .getCars()
+                    .getCars()
+                    .stream()
+                    .map(Car::getPosition)
+                    .collect(Collectors.toList()))
+                    .isEqualTo(carPositions);
         }
     }
 
