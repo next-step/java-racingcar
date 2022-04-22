@@ -1,7 +1,5 @@
 package racing;
 
-import com.sun.nio.sctp.IllegalReceiveException;
-
 import java.util.List;
 
 public class ResultView {
@@ -19,32 +17,24 @@ public class ResultView {
         System.out.printf("%d 회 \n", roundNumber + 1);
 
         for (Car car : cars) {
-            viewCar(car.getMoves(), roundNumber);
+            viewCar(car, roundNumber);
         }
     }
 
-    private static void viewCar(List<Boolean> moves, int roundNumber) {
-        validateCarMoves(moves, roundNumber);
-
-        System.out.println(getCarMoves(moves, roundNumber));
+    private static void viewCar(Car car, int roundNumber) {
+        System.out.println(getCarMoves(car, roundNumber));
     }
 
-    private static void validateCarMoves(List<Boolean> moves, int roundNumber) {
-        if (moves.size() < roundNumber) {
-            throw new IllegalReceiveException();
-        }
-    }
-
-    private static StringBuilder getCarMoves(List<Boolean> moves, int roundNumber) {
+    private static StringBuilder getCarMoves(Car car, int roundNumber) {
         StringBuilder result = new StringBuilder();
         for (int round = 0; round <= roundNumber; round++) {
-            result.append(getMove(moves, round));
+            result.append(move(car.isRoundMove(round)));
         }
         return result;
     }
 
-    private static String getMove(List<Boolean> moves, int round) {
-        if (moves.get(round)) {
+    private static String move(Boolean isMove) {
+        if (isMove) {
             return MOVE;
         }
         return NO_MOVE;

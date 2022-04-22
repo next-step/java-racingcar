@@ -36,4 +36,8 @@ public class Car {
         return moves;
     }
 
+    public boolean isRoundMove(int round) {
+        return moves.get(round);
+    }
+
 }
