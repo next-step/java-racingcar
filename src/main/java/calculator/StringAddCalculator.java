@@ -9,6 +9,7 @@ public class StringAddCalculator {
     public static final String DEFAULT_DELIMITER = ",|:";
     public static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
     public static final int BLANK_RESULT = 0;
+    public static final int LIMIT_CRITERIA = 0;
 
      public static int splitAndSum(String text){
 
@@ -60,8 +61,8 @@ public class StringAddCalculator {
 
      private static int toInt(String value){
          int number = Integer.parseInt(value);
-         if(number < 0){
-             throw new RuntimeException("음수 허용X");
+         if(number < LIMIT_CRITERIA){
+             throw new RuntimeException("음수는 허용하지 않습니다.");
          }
          return number;
      }
