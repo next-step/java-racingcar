@@ -15,36 +15,36 @@
 
 ## 3단계 - 자동차 경주 구현 목록
 
-* [ ] 입력 View
-    * [ ] 자동차 시도횟수 메시지 출력 및 입력
-    * [ ] 자동차 이름 메시지 출력 및 입력
+* [X] 입력 View
+    * [X] 자동차 시도횟수 메시지 출력 및 입력
+    * [X] 자동차 이름 메시지 출력 및 입력
 
 
-* [ ] 출력 View
-    * [ ] 자동차 이름과 문자 "-" 을 출력
+* [X] 출력 View
+    * [X] 자동차 이름과 문자 "-" 을 출력
       > pobi: ---<br>
       you: -----
 
-    * [ ] 우승차 출력 메시지
-      > 자동차 you 가 우승했습니다.
+    * [X] 우승차 출력 메시지
+      > 최종 우승: pobi, you
 
 
-* [ ] 도메인별 기능
+* [X] 도메인별 기능
     * [X] 1 ~ 9 랜덤숫자 생성
-    * [ ] 차 이동 조건
-        * [ ] 값이 4 ~ 9 사이일 경우
-    * [ ] 우승자 조회
+    * [X] 차 이동 조건
+        * [X] 값이 4 ~ 9 사이일 경우
+    * [X] 우승자 조회
 
 
-* [ ] 유효성 체크
-    * [ ] IllegalArgumentException 처리
+* [X] 유효성 체크
+    * [X] IllegalArgumentException 처리
         * [X] 이동조건 값 1 ~ 9의 범위에 없는 경우
         * [X] 차이름 5글자 초과
         * [X] 차이름 공백일 경우
-        * [ ] 차이름 중복
+        * [X] 차이름 중복
 
 * [ ] 도메인 객체 분리
-    * [ ] RacingGame
+    * [X] RacingGame
     * [X] Car
         * [X] Movable 전략패턴
         * [X] ~~생성자 인자 int Position 추가~~
@@ -53,18 +53,19 @@
         * [X] CarName 객체 적용
         * [X] Position 객체 적용
         * [X] TryCount 객체 적용
-    * [ ] CarName
+    * [X] CarName
         * [X] 유효성체크
             * [X] 글자가 5자 초과시 예외
             * [X] 공백일경우 예외
         * [X] 일급 컬렉션
-    * [ ] Cars
-        * [ ] 모든차 이동
+    * [X] Cars
+        * [X] 모든차 이동
     * [X] Position
         * [X] Position 증가
         * [X] Position 값 생성자 초기화
         * [X] Position 비교 메서드
-    * [ ] WinnerCars
+    * [X] WinnerCars
+        * [X] 우승차 찾기
     * [X] MovableStrategy
         * [X] NormalMove
     * [X] Random
