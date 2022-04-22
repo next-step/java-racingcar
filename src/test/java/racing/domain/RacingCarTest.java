@@ -24,13 +24,13 @@ public class RacingCarTest {
     @Test
     @DisplayName("레이싱 카 객체 생성")
     void createRacingCar() {
-        assertThat(new RacingCar(name)).isInstanceOf(RacingCar.class);
+        assertThat(new RacingCar(this.name)).isEqualTo(new RacingCar(this.name));
     }
 
     @Test
     @DisplayName("생성된 레이킹 카의 이름 조회")
     void getName() {
-        assertThat(this.racingCar.getName().getName()).isEqualTo(this.name);
+        assertThat(this.racingCar.getName()).isEqualTo(new RacingCar.Name(this.name));
     }
 
     @Test

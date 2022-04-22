@@ -3,7 +3,6 @@ package racing.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.model.RoundResult;
 import racing.util.Behavior;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,7 +20,7 @@ public class RacingCarsTest {
     @Test
     @DisplayName("게임에 참여하는 레이싱 카의 집합 객체 생성")
     void createRacingCars() {
-        assertThat(new RacingCars(this.names)).isInstanceOf(RacingCars.class);
+        assertThat(new RacingCars(this.names)).isEqualTo(new RacingCars(this.names));
     }
 
     @Test

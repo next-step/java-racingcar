@@ -1,12 +1,11 @@
-package racing.model;
+package racing.domain;
 
-import racing.domain.RacingCar;
 import racing.domain.RacingCar.Name;
 import racing.util.Delimiter;
-import racing.util.Roulette;
 import racing.view.ResultView;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -23,8 +22,8 @@ public class RoundResult {
         return this.roundResult;
     }
 
-    public void record(RacingCar racingCar) {
-        this.roundResult.put(racingCar.getName(), racingCar.stopOrForward(Roulette.spin()).symbol);
+    public void record(RacingCar racingCar, int rouletteResult) {
+        this.roundResult.put(racingCar.getName(), racingCar.stopOrForward(rouletteResult).symbol);
     }
 
     public RoundResult printAndCombined(RoundResult roundResult) {
@@ -42,14 +41,14 @@ public class RoundResult {
     public RoundResult printResultsByName() {
         String resultsByName = this.roundResult.entrySet()
                 .stream()
-                .map(entry -> entry.getKey().getName() + " : " + entry.getValue())
+                .map(entry -> entry.getKey() + " : " + entry.getValue())
                 .collect(Collectors.joining(Delimiter.NEW_LINE.symbol));
-        ResultView.printNewLineMessage(resultsByName + Delimiter.NEW_LINE.symbol);
+        ResultView.printMessage(resultsByName + Delimiter.NEW_LINE.symbol);
 
         return this;
     }
 
-    public String getWinners() {
+    public List<Name> getWinners() {
         int maxForward = this.roundResult
                 .entrySet()
                 .stream()
@@ -61,7 +60,7 @@ public class RoundResult {
                 .entrySet()
                 .stream()
                 .filter(result -> Objects.equals(result.getValue().length(), maxForward))
-                .map(result -> result.getKey().getName())
-                .collect(Collectors.joining(Delimiter.COMMA.symbol));
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 }
