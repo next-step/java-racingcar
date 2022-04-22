@@ -37,7 +37,7 @@ public class ResultView {
 
     private static void renderResult(List<Car> cars, Round round) {
         for (Car car : cars) {
-            System.out.println(new ResultBuilder(car.position().get(), car.carName()).build());
+            System.out.println(new ResultBuilder(car.position(), car.carName()).build());
         }
         System.out.println(BLANK_LINE);
         System.out.println(MESSAGE_CURRENT_ROUND_END + round.currentRound());

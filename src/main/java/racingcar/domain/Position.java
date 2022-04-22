@@ -7,6 +7,7 @@ import java.util.Objects;
 public class Position {
 
     private static final int INITIAL_POSITION = 0;
+    private static final int POSITION_INVALID_DIVISION_POINT = 0;
 
     private int position;
 
@@ -15,7 +16,7 @@ public class Position {
     }
 
     public Position(int position) {
-        if (position < 0) {
+        if (position < POSITION_INVALID_DIVISION_POINT) {
             throw new PositionInvalidException();
         }
         this.position = position;
@@ -36,8 +37,8 @@ public class Position {
         return maxPosition;
     }
 
-    public int get() {
-        return this.position;
+    public boolean isSameMoveDistance(int moveDistance) {
+        return this.position == moveDistance;
     }
 
     @Override
@@ -51,5 +52,10 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(position);
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(this.position);
     }
 }
