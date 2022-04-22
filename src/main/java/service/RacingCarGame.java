@@ -1,6 +1,7 @@
 package service;
 
 import dto.CarInfo;
+import dto.CarWinnerDto;
 import model.Cars;
 import model.MoveCount;
 
@@ -28,4 +29,9 @@ public class RacingCarGame {
     public List<CarInfo> getCarsInfo() {
         return cars.getCarsInfo();
     }
+
+    public List<CarWinnerDto> getCarWinner() {
+        return cars.getWinnerCars();
+    }
+
 }

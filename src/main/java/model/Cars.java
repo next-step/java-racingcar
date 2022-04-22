@@ -1,6 +1,7 @@
 package model;
 
 import dto.CarInfo;
+import dto.CarWinnerDto;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,4 +36,12 @@ public class Cars {
                 .map(x -> new CarInfo(x.getCarName(), x.getPosition()))
                 .collect(Collectors.toList());
     }
+
+    public List<CarWinnerDto> getWinnerCars() {
+        List<Car> winnerCars = WinnerCars.getWinnerCars(this.cars);
+        return winnerCars.stream()
+                .map(x -> new CarWinnerDto(x.getCarName()))
+                .collect(Collectors.toList());
+    }
+
 }

@@ -3,11 +3,16 @@ package view;
 import model.CarName;
 import model.Position;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ResultView {
 
     private static final String PRINT_RESULT = "실행 결과";
     private static final String PRINT_POSITION = "-";
     private static final String CAR_NAME_POSITION_SEPARATOR = " : ";
+    private static final String CAR_NAME_COLLECTORS_JOINING = ", ";
+    private static final String WINNER_CAR_NAME_APPEND_TEXT = "가 최종 우승했습니다.";
 
 
     public static void printResult() {
@@ -34,5 +39,13 @@ public class ResultView {
         }
 
         return stringBuilder.toString();
+    }
+
+    public static void printWinnerCars(List<CarName> carNames) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String winnerCarNames = carNames.stream().map(CarName::getName).collect(Collectors.joining(CAR_NAME_COLLECTORS_JOINING));
+        stringBuilder.append(winnerCarNames);
+        stringBuilder.append(WINNER_CAR_NAME_APPEND_TEXT);
+        System.out.println(stringBuilder);
     }
 }
