@@ -36,20 +36,4 @@ public class Car {
         return moves;
     }
 
-    public void printMove(int index) {
-        if (moves.size() < index) {
-            throw new IllegalReceiveException();
-        }
-
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i <= index; i++) {
-            if (moves.get(i)) {
-                result.append("-");
-            }
-        }
-
-        System.out.println(result);
-
-    }
-
 }
