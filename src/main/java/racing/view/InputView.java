@@ -1,26 +1,18 @@
 package racing.view;
 
-import java.util.Scanner;
+import racing.Console;
 
 public class InputView {
-    private static final String CAR_COUNT_MESSAGE = "자동차 대수는 몇 대 인가요?";
-    private static final String ATTEMPTS_COUNT_MESSAGE = "시도할 횟수는 몇 회 인가요?";
-    private static final Scanner SCANNER = new Scanner(System.in);
+    private static final String TRY_COUNT_INPUT_MESSAGE = "시도할 횟수를 입력해 주세요.";
+    private static final String CAR_NAMES_INPUT_MESSAGE = "차이름을 입력해 주세요(쉽표(,)를 기준으로 구분)";
 
-    public static int inputCarCount() {
-        showMessage(CAR_COUNT_MESSAGE);
-
-        return SCANNER.nextInt();
+    public static int getTryCount() {
+        System.out.println(TRY_COUNT_INPUT_MESSAGE);
+        return Console.readInteger();
     }
 
-    public static int inputAttemptsCount() {
-        showMessage(ATTEMPTS_COUNT_MESSAGE);
-
-        return SCANNER.nextInt();
+    public static String getCarNames() {
+        System.out.println(CAR_NAMES_INPUT_MESSAGE);
+        return Console.readLine();
     }
-
-    private static void showMessage(String carCountMessage) {
-        System.out.println(carCountMessage);
-    }
-
 }
