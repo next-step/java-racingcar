@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.exception.MaximumCarNameException;
 import racingcar.domain.exception.RequiredCarNameException;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarNameTest {
@@ -33,4 +34,9 @@ class CarNameTest {
                 .hasMessage("자동차의 이름은 5자를 초과할 수 없습니다.");
     }
 
+    @Test
+    @DisplayName("CarName 객체를 String 으로 변환 시 CarName 의 내부 변수(carName)을 반환한다.")
+    void carNamePrint() {
+        assertThat(new CarName("tom").toString()).isEqualTo("tom");
+    }
 }

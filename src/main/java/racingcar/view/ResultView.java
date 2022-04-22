@@ -30,14 +30,14 @@ public class ResultView {
         List<Car> winners = histories.findWinners();
         String winnerNames = winners.stream()
                 .map(Car::carName)
-                .map(CarName::get)
+                .map(CarName::toString)
                 .collect(Collectors.joining(WINNERS_DELIMITER));
         System.out.println(winnerNames + MESSAGE_WIN);
     }
 
     private static void renderResult(List<Car> cars, Round round) {
         for (Car car : cars) {
-            System.out.println(new ResultBuilder(car.position().get(), car.carName().get()).build());
+            System.out.println(new ResultBuilder(car.position().get(), car.carName()).build());
         }
         System.out.println(BLANK_LINE);
         System.out.println(MESSAGE_CURRENT_ROUND_END + round.currentRound().get());

@@ -28,10 +28,6 @@ public class CarName {
         return carName == null || carName.isBlank();
     }
 
-    public String get() {
-        return this.carName;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,5 +39,10 @@ public class CarName {
     @Override
     public int hashCode() {
         return Objects.hash(carName);
+    }
+
+    @Override
+    public String toString() {
+        return this.carName;
     }
 }
