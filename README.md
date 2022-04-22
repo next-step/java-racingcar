@@ -30,29 +30,47 @@
 
 
 * [ ] 도메인별 기능
-    * [ ] 1 ~ 9 랜덤숫자 생성
+    * [X] 1 ~ 9 랜덤숫자 생성
     * [ ] 차 이동 조건
         * [ ] 값이 4 ~ 9 사이일 경우
-    * [ ] 우승자 추출
+    * [ ] 우승자 조회
 
 
 * [ ] 유효성 체크
-    * [ ] IllegalException 처리
-        * [ ] 이동조건 값 1 ~ 9의 범위에 없는 경우
-        * [ ] 차이름 5글자 초과 또는 공백일 경우
+    * [ ] IllegalArgumentException 처리
+        * [X] 이동조건 값 1 ~ 9의 범위에 없는 경우
+        * [X] 차이름 5글자 초과
+        * [X] 차이름 공백일 경우
         * [ ] 차이름 중복
 
 * [ ] 도메인 객체 분리
     * [ ] RacingGame
     * [X] Car
         * [X] Movable 전략패턴
-        * [X] 생성자 인자 int Position 추가
+        * [X] ~~생성자 인자 int Position 추가~~
+            * [X] 생성자 인자 Position 객체로 변경
+        * [X] Position 비교 메서드
+        * [X] CarName 객체 적용
+        * [X] Position 객체 적용
+        * [X] TryCount 객체 적용
     * [ ] CarName
+        * [X] 유효성체크
+            * [X] 글자가 5자 초과시 예외
+            * [X] 공백일경우 예외
+        * [X] 일급 컬렉션
     * [ ] Cars
+        * [ ] 모든차 이동
+    * [X] Position
+        * [X] Position 증가
+        * [X] Position 값 생성자 초기화
+        * [X] Position 비교 메서드
     * [ ] WinnerCars
-    * [ ] MovableStrategy
-    * [ ] NormalMove
-    * [ ] Random
+    * [X] MovableStrategy
+        * [X] NormalMove
+    * [X] Random
+    * [X] TryCount
+        * [X] 시도횟수 초과시 예외
+        * [X] 시도횟수 기준 완료유무
 
 ----------------
 
@@ -79,9 +97,9 @@
 
 * ### ***상태 객체에게 메시지를 보내라***
     * 항상 상태객체에게 질문을 하라
-        * ex) car의 위치값을 구할 때
-            * (틀린 방식) if (car.getPosition() == 3) {...}
-            * (올바른 방식) if (car.isPosition(3)) {...}
+      > ex) car의 위치값을 구할 때
+      > * (틀린 방식) if (car.getPosition() == 3) {...}
+      > * (올바른 방식) if (car.isPosition(3)) {...}
     * 위처럼 최대한 getter 를 줄여라
         * 테스트하기 용이해짐
         * 중복이 제거됨
@@ -119,4 +137,15 @@
             * 객체가 값에 대한 책임을 져야한다
             * 유효성 체크도 진행해서 값의 정확성을 클래스가 보장
         * equals 를 필수적으로 오버라이딩 하자
-    * 생성자가 여러개일 때 마지막에 구현체?를 놓음
+    * 생성자가 여러개일 경우 인자가 가장 많은 생성자에 로직구현과 초기화를 하고<br>
+      마지막 단락에 생성자를 놓는다.
+    * public 으로 열린 도메인 메서드의 코드는 리팩토리를 통해 최대한 줄여라
+        * 1줄도 괜찮다고 생각함 (By.포비)
+        * 마치 함수형 프로그래밍이나 체이닝처럼
+  > public Car(String name) {<br>
+  > &nbsp;&nbsp;&nbsp;&nbsp;this(name, 0);<br>
+  > }<br><Br>
+  > public Car(String name, int position) {<br>
+  > &nbsp;&nbsp;&nbsp;&nbsp;this.name = new CarName(name);<br>
+  > &nbsp;&nbsp;&nbsp;&nbsp;this.position = new Position(position);<br>
+  > }
