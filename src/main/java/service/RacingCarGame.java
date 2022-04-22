@@ -19,9 +19,9 @@ public class RacingCarGame {
         return new RacingCarGame();
     }
 
-    public void play(PositiveNumber carNumber, PositiveNumber carMoveCount) {
-        Cars cars = makeCars(carNumber);
-        moveCars(carMoveCount, cars);
+    public void play(String carsName, PositiveNumber carMoveCount) {
+//        Cars cars = makeCars(carNumber);
+//        moveCars(carMoveCount, cars);
     }
 
     private Cars makeCars(PositiveNumber carsNumber) {

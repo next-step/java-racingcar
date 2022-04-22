@@ -9,11 +9,11 @@ public class RacingGameController {
     public static void main(String args[]) {
         InputView inputView = InputView.getInstance();
 
-        PositiveNumber carsNumber = inputView.getInputCarsNumber();
+        String carsName = inputView.getInputCarsName();
         PositiveNumber carMoveCount = inputView.getInputCarMoveCount();
 
         RacingCarGame racingCarGame = RacingCarGame.getInstance();
-        racingCarGame.play(carsNumber, carMoveCount);
+        racingCarGame.play(carsName, carMoveCount);
     }
 
 }
