@@ -17,12 +17,20 @@ class CarNamesTest {
 
     @Test
     void 공백의_이름일때_에러_발생() {
-        assertThatThrownBy(() -> new CarName("")).isInstanceOf(IllegalStateException.class);
+        final String ERROR_MESSAGE = "자동차의 이름은 공백일 수 없습니다.";
+
+        assertThatThrownBy(() -> new CarName(""))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage(ERROR_MESSAGE);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"sanghyuk", "minsuo", "gorrrg"})
     void 자동차의_이름이_5글자_초과할때_에러_발생(String name) {
-        assertThatThrownBy(() -> new CarName(name)).isInstanceOf(IllegalStateException.class);
+        final String ERROR_MESSAGE = "자동차의 이름은 5글자를 초과할 수 없습니다.";
+
+        assertThatThrownBy(() -> new CarName(name))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage(ERROR_MESSAGE);
     }
 }

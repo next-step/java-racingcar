@@ -1,22 +1,33 @@
 package controller;
 
+import dto.CarInfo;
 import model.MoveCount;
 import service.RacingCarGame;
 import view.InputView;
+import view.ResultView;
+
+import java.util.List;
 
 public class RacingGameController {
 
     public static void main(String args[]) {
-        InputView inputView = InputView.getInstance();
-
-        String carsName = inputView.getInputCarsName();
-        MoveCount moveCount = inputView.getInputCarMoveCount();
+        String carsName = InputView.getInputCarsName();
+        MoveCount moveCount = InputView.getInputCarMoveCount();
 
         RacingCarGame racingCarGame = new RacingCarGame(carsName, moveCount);
 
-        while (racingCarGame.isDone()) {
+        ResultView.printResult();
+        while (!racingCarGame.isDone()) {
             racingCarGame.race();
+            printResult(racingCarGame.getCarsInfo());
         }
+    }
+
+    private static void printResult(List<CarInfo> carInfos) {
+        for (CarInfo carDto : carInfos) {
+            ResultView.printExecuteResult(carDto.getCarName(), carDto.getPosition());
+        }
+        ResultView.printLineBreak();
     }
 
 }

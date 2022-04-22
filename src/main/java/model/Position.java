@@ -2,6 +2,9 @@ package model;
 
 public class Position {
 
+    private static final int MINIMUM_POSITION = 0;
+    private static final String EXCEED_MINIMUM_POSITION_ERROR_MESSAGE = "위치는 0이상 이여야 됩니다.";
+
     private int position;
 
     public void plus() {
@@ -13,6 +16,9 @@ public class Position {
     }
 
     public Position(int position) {
+        if (position < MINIMUM_POSITION) {
+            throw new IllegalStateException(EXCEED_MINIMUM_POSITION_ERROR_MESSAGE);
+        }
         this.position = position;
     }
 }

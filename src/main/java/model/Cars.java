@@ -1,5 +1,7 @@
 package model;
 
+import dto.CarInfo;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,5 +28,11 @@ public class Cars {
         for (Car car : cars) {
             car.move(new RandomMoveRule());
         }
+    }
+
+    public List<CarInfo> getCarsInfo() {
+        return cars.stream()
+                .map(x -> new CarInfo(x.getCarName(), x.getPosition()))
+                .collect(Collectors.toList());
     }
 }

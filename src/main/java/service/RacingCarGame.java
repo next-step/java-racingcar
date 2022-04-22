@@ -1,7 +1,10 @@
 package service;
 
+import dto.CarInfo;
 import model.Cars;
 import model.MoveCount;
+
+import java.util.List;
 
 public class RacingCarGame {
 
@@ -20,5 +23,9 @@ public class RacingCarGame {
 
     public boolean isDone() {
         return moveCount.isDone();
+    }
+
+    public List<CarInfo> getCarsInfo() {
+        return cars.getCarsInfo();
     }
 }
