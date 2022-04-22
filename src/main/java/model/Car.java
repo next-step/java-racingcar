@@ -1,8 +1,8 @@
 package model;
 
 public class Car {
-    private Position position;
-    private CarName carName;
+    private final Position position;
+    private final CarName carName;
 
     public Car(CarName carName) {
         this(carName, 0);
