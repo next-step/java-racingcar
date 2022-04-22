@@ -3,6 +3,8 @@ package racingcar.domain.input;
 import racingcar.domain.exception.InvalidNumberException;
 import racingcar.domain.exception.OnlyPositiveException;
 
+import java.util.Objects;
+
 public class RoundCount {
 
     private int roundCount;
@@ -40,10 +42,6 @@ public class RoundCount {
         }
     }
 
-    public int get() {
-        return this.roundCount;
-    }
-
     public void up() {
         this.roundCount++;
     }
@@ -59,5 +57,19 @@ public class RoundCount {
         }
         RoundCount rc = (RoundCount) obj;
         return rc.roundCount == roundCount;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(roundCount);
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(this.roundCount);
+    }
+
+    public int toInt() {
+        return this.roundCount;
     }
 }

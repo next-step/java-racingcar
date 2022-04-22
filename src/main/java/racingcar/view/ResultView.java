@@ -40,7 +40,7 @@ public class ResultView {
             System.out.println(new ResultBuilder(car.position().get(), car.carName()).build());
         }
         System.out.println(BLANK_LINE);
-        System.out.println(MESSAGE_CURRENT_ROUND_END + round.currentRound().get());
+        System.out.println(MESSAGE_CURRENT_ROUND_END + round.currentRound());
         System.out.println(BLANK_LINE);
     }
 
