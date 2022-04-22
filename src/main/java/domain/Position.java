@@ -1,5 +1,8 @@
 package domain;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class Position implements Comparable<Position> {
     private static final String MOVE_EXPRESSION = "-";
     private int position;
@@ -22,11 +25,9 @@ public class Position implements Comparable<Position> {
 
     @Override
     public String toString() {
-        String expression = "";
-        for(int i = 0; i<position; i++) {
-            expression += MOVE_EXPRESSION;
-        }
-        return expression;
+        return IntStream.range(0,position)
+                .mapToObj(position-> MOVE_EXPRESSION)
+                .collect(Collectors.joining());
     }
 
     public boolean isEqualPosition(Position comparePosition) {
