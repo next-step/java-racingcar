@@ -1,4 +1,4 @@
-package newcarracing;
+package newcarracing.view;
 
 import java.util.Scanner;
 

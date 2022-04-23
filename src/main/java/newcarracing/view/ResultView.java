@@ -1,4 +1,7 @@
-package newcarracing;
+package newcarracing.view;
+
+import newcarracing.domain.RacingCar;
+import newcarracing.domain.RacingCars;
 
 import java.util.List;
 
@@ -9,10 +12,10 @@ public class ResultView {
 
     private ResultView() {}
 
-    public static void printGameResult(List<RacingGameResult> racingGameResults) {
+    public static void printGameResult(List<RacingCars> racingGameResults) {
         System.out.println("실행 결과");
-        for(RacingGameResult racingGameResult : racingGameResults) {
-            printRacingCarsRoutes(racingGameResult.getRacingCars());
+        for(RacingCars racingCars : racingGameResults) {
+            printRacingCarsRoutes(racingCars.getRacingCars());
             System.out.println();
         }
         // 최종 결과 확인

@@ -1,20 +1,20 @@
-package newcarracing;
+package newcarracing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RacingGameResult {
+public class RacingCars {
     private List<RacingCar> racingCars = new ArrayList<>();
 
-    public RacingGameResult(List<RacingCar> racingCars) throws CloneNotSupportedException {
+    public RacingCars(List<RacingCar> racingCars) throws CloneNotSupportedException {
         for (RacingCar car : racingCars) {
             this.racingCars.add((RacingCar) car.clone());
         }
     }
 
     public List<RacingCar> getRacingCars() {
-        return racingCars;
+        return this.racingCars;
     }
 
     public List<RacingCar> getWinners() {
@@ -23,8 +23,10 @@ public class RacingGameResult {
     }
 
     private int findMaxPosition() {
-        return this.racingCars.stream().max(RacingCar::compareTo).get().getPosition();
+        int maxPosition = 0;
+        for (RacingCar car : this.racingCars) {
+            maxPosition = car.maxPosition(maxPosition);
+        }
+        return maxPosition;
     }
-
-
 }

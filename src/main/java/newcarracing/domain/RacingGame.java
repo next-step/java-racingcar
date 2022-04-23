@@ -1,18 +1,20 @@
-package newcarracing;
+package newcarracing.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    private GameRule gameRule;
+    private static GameRule gameRule;
 
-    public RacingGame(RuleCondition ruleCondition) {
+    public static RacingGame makeRacingGame(RuleCondition ruleCondition) {
+        RacingGame racingGame = new RacingGame();
         gameRule = new GameRule();
         gameRule.setRuleCondition(ruleCondition);
+        return racingGame;
     }
 
-    public List<RacingGameResult> play(String[] carNames, int tryCount) throws CloneNotSupportedException {
-        List<RacingGameResult> racingGameResults = new ArrayList<>();
+    public List<RacingCars> play(String[] carNames, int tryCount) throws CloneNotSupportedException {
+        List<RacingCars> racingGameResults = new ArrayList<>();
         List<RacingCar> racingCars = initRacingCars(carNames);
         for (int i = 1; i <= tryCount; i++) {
             racingGameResults.add(racing(racingCars));
@@ -24,8 +26,8 @@ public class RacingGame {
         return Arrays.stream(carNames).map(RacingCar::new).collect(Collectors.toList());
     }
 
-    private RacingGameResult racing(List<RacingCar> cars) throws CloneNotSupportedException {
+    private RacingCars racing(List<RacingCar> cars) throws CloneNotSupportedException {
         cars.forEach(car -> car.moveForward(gameRule));
-        return new RacingGameResult(cars);
+        return new RacingCars(cars);
     }
 }
