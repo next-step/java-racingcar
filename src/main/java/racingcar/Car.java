@@ -1,6 +1,5 @@
 package racingcar;
 
-
 import java.util.Objects;
 
 public class Car {
@@ -8,7 +7,7 @@ public class Car {
     private CarName carName;
     private Position position;
 
-    public Car(CarName carName){
+    public Car(CarName carName) {
         this(carName, new Position());
     }
 
@@ -26,7 +25,7 @@ public class Car {
     }
 
     public void play(int number) {
-        if(canBeMove(number)) {
+        if (canBeMove(number)) {
             move();
         }
     }
@@ -50,5 +49,13 @@ public class Car {
 
     public String getName() {
         return carName.getName();
+    }
+
+    public int maxPosition(int maxPosition) {
+        return position.maxPosition(maxPosition);
+    }
+
+    public boolean isWinner(int maxPosition) {
+        return position.isMaxPosition(maxPosition);
     }
 }

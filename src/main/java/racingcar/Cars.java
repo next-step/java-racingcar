@@ -4,6 +4,7 @@ import racingcar.pattern.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -32,4 +33,7 @@ public class Cars {
         return cars;
     }
 
+    public List<Car> getWinners(int maxPosition) {
+        return getCars().stream().filter(car -> car.isWinner(maxPosition)).collect(Collectors.toList());
+    }
 }

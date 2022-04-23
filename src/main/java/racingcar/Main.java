@@ -19,5 +19,6 @@ public class Main {
             racingCar.playRound();
             ResultView.printCarsPosition(cars);
         }
+        ResultView.printWinner(cars);
     }
 }
