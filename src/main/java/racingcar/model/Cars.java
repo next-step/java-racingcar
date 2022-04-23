@@ -43,7 +43,7 @@ public final class Cars {
         final Distance maxDistance = getMaxDistance();
 
         return cars.stream()
-                .filter(car -> car.isMaxDistance(maxDistance))
+                .filter(car -> car.isSameDistance(maxDistance))
                 .map(Car::name)
                 .collect(Collectors.toList());
     }
