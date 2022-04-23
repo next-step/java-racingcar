@@ -9,14 +9,14 @@ public class ResultView {
 
     private ResultView() {}
 
-    public static void printGameResult(List<RacingGameResult> racingGameResults) {
+    public static void printGameResult(List<RacingCars> racingGameResult) {
         System.out.println("실행 결과");
-        for(RacingGameResult racingGameResult : racingGameResults) {
-            printRacingCarsRoutes(racingGameResult.getRacingCars());
+        for(RacingCars racingCars : racingGameResult) {
+            printRacingCarsRoutes(racingCars.getRacingCars());
             System.out.println();
         }
         // 최종 결과 확인
-        printWinners(racingGameResults.get(racingGameResults.size()-1).getWinners());
+        printWinners(racingGameResult.get(racingGameResult.size()-1).getWinners());
     }
 
     static void printRacingCarsRoutes(List<RacingCar> cars) {
