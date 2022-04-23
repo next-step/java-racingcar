@@ -2,42 +2,55 @@ package racingcar.model;
 
 import racingcar.pattern.ValueGenerateStrategy;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Car {
     private static final int MOVE_BOUNDARY_VALUE = 4;
-    private Identity id;
+    private static final int UNIT_DISTANCE = 1;
+    private Name name;
     private PositiveNumber moveDistance;
-    private List<PositiveNumber> moveDistanceTrace;
 
     Car(int moveDistance, String id) {
-        this.id = new Identity(id);
+        this.name = new Name(id);
         this.moveDistance = new PositiveNumber(moveDistance);
-        this.moveDistanceTrace = new ArrayList<>();
-        if (moveDistance > 0) {
-            this.moveDistanceTrace.add(new PositiveNumber(this.moveDistance.getNumber()));
-        }
     }
 
-    public List<PositiveNumber> getMoveDistanceTrace() {
-        return this.moveDistanceTrace;
+
+    public boolean isWinner(int maxDistance) {
+        return this.moveDistance.isMaxNumber(maxDistance);
     }
 
-    public Identity getId() {
-        return this.id;
-    }
-
-    public PositiveNumber getMoveDistance() {
-        return this.moveDistance;
+    public int maxDistance(int maxDistance) {
+        return this.moveDistance.maxNumber(maxDistance);
     }
 
     public void tryToMove(ValueGenerateStrategy valueGenerateStrategy) {
         if (new PositiveNumber(valueGenerateStrategy.generate()).isGreaterThanOrEqual(MOVE_BOUNDARY_VALUE)) {
-            this.moveDistance.add(new PositiveNumber(1));
-            this.moveDistanceTrace.add(new PositiveNumber(this.moveDistance.getNumber()));
-            return;
+            this.moveDistance.plus(new PositiveNumber(UNIT_DISTANCE));
         }
-        this.moveDistanceTrace.add(new PositiveNumber(this.moveDistance.getNumber()));
+    }
+
+    public String getName() {
+        return this.name.getName();
+    }
+
+    public int getMoveDistance() {
+        return this.moveDistance.getNumber();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Car car = (Car) o;
+
+        if (name != null ? !name.equals(car.name) : car.name != null) return false;
+        return moveDistance != null ? moveDistance.equals(car.moveDistance) : car.moveDistance == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (moveDistance != null ? moveDistance.hashCode() : 0);
+        return result;
     }
 }

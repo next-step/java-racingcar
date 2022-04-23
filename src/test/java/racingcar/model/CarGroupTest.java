@@ -3,48 +3,45 @@ package racingcar.model;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarGroupTest {
 
     @Test
-    void createCars_자동차그룹의_자동차_갯수가_같다() {
-        List<String> carNames = List.of("wu2ee", "pobi");
-        List<Car> cars = CarGroup.createCars(carNames);
-        assertThat(cars).hasSize(2);
+    void getNames_자동차그룹의_이름이_같다() {
+        CarGroup carGroup = new CarGroup("wu2ee,pobi");
+        assertThat(carGroup.getNames()).isEqualTo(List.of("wu2ee", "pobi"));
     }
 
     @Test
-    void moveCarGroup_모든_자동차가_움직인다() {
-        List<String> carNames = List.of("wu2ee", "pobi", "crong", "honux");
-        List<Car> cars = CarGroup.createCars(carNames);
-        CarGroup carGroup = new CarGroup(cars);
-
-        carGroup.moveCarGroup(new PositiveNumber(5), () -> 4);
-        assertThat(cars.stream().map(car -> car.getMoveDistance().getNumber()).collect(Collectors.toList())).containsExactly(5, 5, 5, 5);
+    void moveCarGroupPerTrial_모든_자동차가_움직인다() {
+        CarGroup carGroup = new CarGroup("wu2ee,pobi,crong,honux");
+        carGroup.moveCarGroupPerTrial(() -> 4);
+        assertThat(carGroup).isEqualTo(
+                new CarGroup(
+                        List.of(
+                                new Car(1, "wu2ee"),
+                                new Car(1, "pobi"),
+                                new Car(1, "crong"),
+                                new Car(1, "honux")
+                        )
+                ));
     }
 
     @Test
-    void moveCarGroup_모든_자동차가_움직이지_않는다() {
-        List<String> carNames = List.of("wu2ee", "pobi", "crong", "honux", "gulb", "kash");
-        List<Car> cars = CarGroup.createCars(carNames);
-        CarGroup carGroup = new CarGroup(cars);
-
-        carGroup.moveCarGroup(new PositiveNumber(5), () -> 3);
-        assertThat(cars.stream().map(car -> car.getMoveDistance().getNumber()).collect(Collectors.toList())).containsExactly(0, 0, 0, 0, 0, 0);
-    }
-
-    @Test
-    void moveCarGroup_시도한_횟수만큼_이동한다() {
-        List<String> carNames = List.of("wu2ee", "pobi", "crong", "honux", "gulb", "kash");
-        List<Car> cars = CarGroup.createCars(carNames);
-        CarGroup carGroup = new CarGroup(cars);
-
-        carGroup.moveCarGroup(new PositiveNumber(5), () -> 3);
-        List<Integer> trialSizes = cars.stream().map(car -> car.getMoveDistanceTrace().size()).collect(Collectors.toList());
-        assertThat(trialSizes.stream().reduce((x, y) -> x+y).get()).isEqualTo(5 * 6);
+    void moveCarGroupPerTrial_모든_자동차가_움직이지_않는다() {
+        CarGroup carGroup = new CarGroup("wu2ee,pobi,crong,honux");
+        carGroup.moveCarGroupPerTrial(() -> 3);
+        assertThat(carGroup).isEqualTo(
+                new CarGroup(
+                        List.of(
+                                new Car(0, "wu2ee"),
+                                new Car(0, "pobi"),
+                                new Car(0, "crong"),
+                                new Car(0, "honux")
+                        )
+                ));
     }
 
     @Test
@@ -55,7 +52,7 @@ class CarGroupTest {
                 new Car(7, "honux"));
 
         CarGroup carGroup = new CarGroup(cars);
-        assertThat(carGroup.getWinners().get(0).getIdentity()).isEqualTo("honux");
+        assertThat(carGroup.getWinners()).isEqualTo(List.of("honux"));
     }
 
     @Test
@@ -66,6 +63,6 @@ class CarGroupTest {
                 new Car(7, "honux"));
 
         CarGroup carGroup = new CarGroup(cars);
-        assertThat(carGroup.getWinners().stream().map(Identity::getIdentity).collect(Collectors.toList())).contains("honux","pobi");
+        assertThat(carGroup.getWinners()).isEqualTo(List.of("pobi","honux"));
     }
 }
