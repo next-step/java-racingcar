@@ -33,11 +33,11 @@ public class Winners {
         }
 
         public void compare(Car car) {
-            if (isBehind(car)) {
+            if (car.isAhead(position)) {
                 changeWinner(car);
                 return;
             }
-            if (isAtSamePosition(car)) {
+            if (car.isAtSamePosition(position)) {
                 addWinner(car);
             }
         }
@@ -50,14 +50,6 @@ public class Winners {
 
         private void addWinner(Car car) {
             cars.add(car);
-        }
-
-        private boolean isBehind(Car car) {
-            return position < car.getPosition();
-        }
-
-        private boolean isAtSamePosition(Car car) {
-            return position == car.getPosition();
         }
 
         public List<Car> getCars() {

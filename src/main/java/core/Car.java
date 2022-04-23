@@ -32,6 +32,18 @@ public class Car {
         return new Car(carName, movedPosition, movedPositionHistory);
     }
 
+    public boolean isAhead(int position) {
+        return getPosition() > position;
+    }
+
+    public boolean isBehind(int position) {
+        return getPosition() < position;
+    }
+
+    public boolean isAtSamePosition(int position) {
+        return getPosition() == position;
+    }
+
     public CarName getCarName() {
         return carName;
     }
