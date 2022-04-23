@@ -1,4 +1,7 @@
-package newcarracing;
+package newcarracing.view;
+
+import newcarracing.domain.RacingGame;
+import newcarracing.domain.RandomRuleCondition;
 
 public class GamePlay {
     public static void main(String[] args) throws CloneNotSupportedException {

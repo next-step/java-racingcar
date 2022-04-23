@@ -1,5 +1,6 @@
-package newcarracing;
+package newcarracing.view;
 
+import newcarracing.domain.RacingCar;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

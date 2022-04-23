@@ -1,4 +1,4 @@
-package newcarracing;
+package newcarracing.domain;
 
 import java.util.Objects;
 

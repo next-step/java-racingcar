@@ -1,4 +1,4 @@
-package newcarracing;
+package newcarracing.domain;
 
 public class GameRule {
     private RuleCondition ruleCondition;
