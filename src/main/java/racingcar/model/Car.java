@@ -31,8 +31,8 @@ public final class Car {
         return new Car(name, new Distance(distance.value()));
     }
 
-    public boolean isSameDistance(Distance maxDistance) {
-        return distance.equals(maxDistance);
+    public boolean isSameDistance(Distance distance) {
+        return distance.equals(distance);
     }
 
     public CarName name() {
