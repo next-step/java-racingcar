@@ -1,6 +1,6 @@
 package racing;
 
-import racing.module.CarGame;
+import racing.model.CarGame;
 import racing.module.RandomStrategy;
 import racing.view.InputView;
 import racing.view.OutputView;
