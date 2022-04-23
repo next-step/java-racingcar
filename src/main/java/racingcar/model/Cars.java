@@ -49,10 +49,14 @@ public final class Cars {
     }
 
     private Distance getMaxDistance() {
-        Distance maxDistance = Distance.ZERO;
-        for (Car car : cars) {
-            maxDistance = car.getMaxDistance(maxDistance);
-        }
-        return maxDistance;
+        return new Distance(maxDistanceValue());
+    }
+
+    private int maxDistanceValue() {
+        return cars.stream()
+                .map(Car::distance)
+                .mapToInt(Distance::value)
+                .max()
+                .orElseThrow(() -> new IllegalStateException("Cars 의 최대 Distance 값을 구하는데 실패했습니다."));
     }
 }

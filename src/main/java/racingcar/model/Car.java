@@ -35,13 +35,6 @@ public final class Car {
         return distance.equals(maxDistance);
     }
 
-    public Distance getMaxDistance(Distance maxDistance) {
-        if (distance.compareTo(maxDistance) < 0) {
-            return maxDistance;
-        }
-        return distance;
-    }
-
     public CarName name() {
         return name;
     }
