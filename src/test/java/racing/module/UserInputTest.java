@@ -43,7 +43,6 @@ class UserInputTest {
     void settingTurnCountByUserInputTest(){
         assertThat(userInput.settingTurnCountByUserInput()).isEqualTo(5);
         assertEquals("시도할 회수는 몇 회 인가요?\n", outputStreamCaptor.toString());
-
     }
 
 }
