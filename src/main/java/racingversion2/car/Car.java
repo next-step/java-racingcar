@@ -30,4 +30,8 @@ public class Car {
     public int getPosition() {
         return position.getPosition();
     }
+
+    public boolean isWinner(int winningPosition){
+        return position.isBigger(winningPosition);
+    }
 }

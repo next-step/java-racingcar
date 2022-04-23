@@ -18,4 +18,7 @@ public class Position {
         return this.position;
     }
 
+    public boolean isBigger(int winningPosition) {
+        return this.position > winningPosition;
+    }
 }
