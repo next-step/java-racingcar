@@ -5,6 +5,7 @@ import java.util.Objects;
 public final class Car {
     private static final Distance INIT_DISTANCE = Distance.ZERO;
     private static final Distance MOVE_DISTANCE = Distance.ONE;
+
     private final CarName name;
     private final Distance distance;
 
