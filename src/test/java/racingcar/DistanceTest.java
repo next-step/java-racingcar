@@ -49,12 +49,11 @@ public class DistanceTest {
         List<Distance> distances = Lists.newArrayList(threeDistance, fourDistance, fiveDistance);
 
         // when
-        int maxDistance = distances.stream()
-                .mapToInt(Distance::value)
-                .max()
+        Distance maxDistance = distances.stream()
+                .max(Distance::compareTo)
                 .orElseThrow(IllegalStateException::new);
 
         // then
-        assertThat(new Distance(maxDistance)).isEqualTo(fiveDistance);
+        assertThat(maxDistance).isEqualTo(fiveDistance);
     }
 }
