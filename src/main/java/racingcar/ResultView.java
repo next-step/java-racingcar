@@ -3,7 +3,7 @@ package racingcar;
 import java.util.List;
 
 public class ResultView {
-    public static void printResult(List<Car> cars, int n) {
+    public static void printResult(Cars cars, int n) {
         System.out.printf("Race result(phase: %d)\n", n);
         for (Car car : cars) {
             String track = createTrack(car);
@@ -13,7 +13,7 @@ public class ResultView {
     }
 
     public static void printWinners(List<String> winners) {
-        System.out.printf("🎉 Winner: %s\n", winners);
+        System.out.printf("🎉 Winners: %s\n", winners);
     }
 
     public static String createTrack(Car car) {

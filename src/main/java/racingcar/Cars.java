@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,6 +33,7 @@ public class Cars extends ArrayList<Car> {
     public Car remove(int index) {
         throw new IllegalCallerException("remove does not allowed.");
     }
+
 
     public List<String> collectWinner(int max, List<String> winners, Cars cars) {
         for (Car car : cars) {
