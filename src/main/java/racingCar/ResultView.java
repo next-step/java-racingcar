@@ -3,17 +3,13 @@ package racingCar;
 import java.util.List;
 
 public class ResultView {
-    public void resultOfCar(Position position){
-        for(int i=0; i<position.getPosition(); i++){
-            System.out.print("-");
-        }
-        System.out.println("");
-    }
 
-    public void resultOfCars(List<Car> cars){
-        for (int i=0; i<cars.size(); i++) {
-            this.resultOfCar(cars.get(i).currentPosition());
-            cars.get(i).move(new RandomNumber().getRandomNumber());
+    public void resultOfCars(Cars cars){
+        RandomNumber randomNumber = new RandomNumber();
+        for (int i=0; i<cars.carsSize(); i++) {
+            System.out.println((cars.makePosition(i)));
+            int temporaryRandomNumber = randomNumber.createRandomNumber();
+            cars.carsMove(i, temporaryRandomNumber);
         }
         System.out.println("");
     }

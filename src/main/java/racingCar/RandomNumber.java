@@ -3,23 +3,15 @@ package racingCar;
 
 public class RandomNumber {
     public static final int ROUNDUP_NUMBER = 10;
-    public static final int MOVE_CRITERIA = 4;
+    public static final int RANDOM_MINIMUM = 0;
+    public static final int RANDOM_MAXIMUM = 9;
 
-    private int randomNumber;
+    public int createRandomNumber(){
+        return (int) (Math.random()*ROUNDUP_NUMBER);
 
-    public RandomNumber(){
-        this.randomNumber = (int) (Math.random()*ROUNDUP_NUMBER);
     }
 
-    public boolean validateRandomNumber() {
-        return 0<=this.randomNumber && this.randomNumber <=9;
-    }
-    
-    public boolean canMovePosition(){
-        return (this.randomNumber>=MOVE_CRITERIA);
-    }
-
-    public int getRandomNumber() {
-        return randomNumber;
+    public boolean validateRandomNumber(int randomNumber) {
+        return RANDOM_MINIMUM<=randomNumber && randomNumber <=RANDOM_MAXIMUM;
     }
 }

@@ -13,11 +13,20 @@ public class Position {
         this.position = position;
     }
 
-    public int getPosition(){
-        return this.position;
+    public String makePosition(){
+        String temporaryString = "";
+        for(int i=0; i<this.position;i++){
+            temporaryString+="-";
+        }
+        return temporaryString;
     }
 
     public void increase(){
         this.position++;
+    }
+
+    public boolean checkPosition(int position){
+        return this.position == position;
+
     }
 }

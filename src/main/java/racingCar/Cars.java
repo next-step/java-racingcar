@@ -13,7 +13,15 @@ public class Cars {
         }
     }
 
-    public List<Car> getCarList() {
-        return carList;
+    public void carsMove(int index, int randomNumber) {
+        this.carList.get(index).move(randomNumber);
+    }
+
+    public int carsSize(){
+        return this.carList.size();
+    }
+
+    public String makePosition(int index){
+        return this.carList.get(index).makePosition();
     }
 }

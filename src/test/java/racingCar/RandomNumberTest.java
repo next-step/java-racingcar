@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Test;
 public class RandomNumberTest {
 
     @Test
-    void 랜덤유효값확인(){
+    void 랜덤유효범위확인(){
         RandomNumber randomNumber = new RandomNumber();
-        Assertions.assertThat(randomNumber.validateRandomNumber()).isTrue();
+        int temporaryRandomNumber = randomNumber.createRandomNumber();
+        Assertions.assertThat(randomNumber.validateRandomNumber(temporaryRandomNumber)).isTrue();
     }
 }

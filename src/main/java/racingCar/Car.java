@@ -2,6 +2,8 @@ package racingCar;
 
 public class Car {
 
+    public static final int MOVE_CRITERIA = 4;
+
     private Position position;
 
     public Car(){
@@ -12,20 +14,26 @@ public class Car {
         this.position = new Position(position);
     }
 
-    public Position currentPosition(){
-        return this.position;
+    public String makePosition(){
+        return this.position.makePosition();
     }
-    /*
-    public void move(RandomNumber randomNumber){
-        if (randomNumber.canMovePosition()){
-            this.position.increase();
+    public void move(int randomNumber){
+        if(!new RandomNumber().validateRandomNumber(randomNumber)){
+            throw new IllegalStateException("randomNumber의 유효범위는 0~9입니다.");
         }
-    }
-     */
 
-    public void move(int number){
-        if (number>=RandomNumber.MOVE_CRITERIA){
+        if (canMovePosition(randomNumber)){
             this.position.increase();
         }
+
+    }
+
+    public boolean canMovePosition(int randomNumber){
+        return (randomNumber>=MOVE_CRITERIA);
+    }
+
+    public Boolean checkPosition(int position){
+        return this.position.checkPosition(position);
+
     }
 }

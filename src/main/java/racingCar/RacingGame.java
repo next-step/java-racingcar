@@ -13,7 +13,7 @@ public class RacingGame {
 
         System.out.println("\n실행 결과");
         while(numberOfGame>0){
-            resultView.resultOfCars(cars.getCarList());
+            resultView.resultOfCars(cars);
             numberOfGame--;
         }
     }
