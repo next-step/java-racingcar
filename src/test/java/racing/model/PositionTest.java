@@ -25,6 +25,17 @@ class PositionTest {
     }
 
     @Test
+    @DisplayName("isMaxPosition 확인")
+    void isMaxPosition() {
+        Position position = new Position();
+        position.move();
+        position.move();
+        position.move();
+
+        assertThat(position.isMaxPosition(3)).isTrue();
+    }
+
+    @Test
     @DisplayName("위치가 제대로 움직였는지 확인")
     void move() {
         Position position = new Position();
