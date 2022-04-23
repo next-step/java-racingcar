@@ -4,7 +4,7 @@ public class CarRacingApp {
 
   public static void main(String[] args) {
     TrafficController.init()
-        .createCarsByInsertingCarCount()
+        .createCarsByInsertingCarNames()
         .insertTryCount()
         .start();
   }

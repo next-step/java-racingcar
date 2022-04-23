@@ -9,10 +9,6 @@ public abstract class AbstractMutableNumberModel implements NumberModel {
     this.value = value;
   }
 
-  public int getValue() {
-    return this.value;
-  }
-
   /*
    setValue()를 protected로 선언하여 이 추상클래스의 구현클래스만 사용할 수 있도록 하여,
    외부에서 setter를 직접 사용하는 것을 막도록 한다.
@@ -20,6 +16,18 @@ public abstract class AbstractMutableNumberModel implements NumberModel {
    */
   protected void setValue(int value) {
     this.value = value;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AbstractMutableNumberModel that = (AbstractMutableNumberModel) o;
+    return value == that.value;
   }
 
   abstract public void validateValue(int value);

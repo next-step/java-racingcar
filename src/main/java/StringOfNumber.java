@@ -10,6 +10,7 @@ public class StringOfNumber {
    */
   private final int intValue;
 
+
   private StringOfNumber(int intValue) {
     if (intValue < 0) {
       throw new RuntimeException("음수는 허용되지 않습니다.");

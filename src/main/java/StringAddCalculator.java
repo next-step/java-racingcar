@@ -2,6 +2,7 @@ public class StringAddCalculator {
 
   private static final int DEFAULT_VALUE = 0;
 
+
   private StringAddCalculator() {
   }
 

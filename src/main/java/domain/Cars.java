@@ -5,34 +5,60 @@ import static util.Validator.validateArgument;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Cars {
 
+  private static final String CAR_RAW_NAMES_DELIMITER = ",";
   private static final int MIN_CAR_COUNT = 1;
 
   private final List<Car> cars;
 
-  public Cars(int carCount) {
-    validateCarCount(carCount);
-    cars = new ArrayList<>();
-    for (int i = 0; i < carCount; i++) {
-      cars.add(new Car());
-    }
+
+  public Cars(List<Car> cars) {
+    validateCarCount(cars.size());
+    this.cars = cars;
   }
 
-  public void moveAllCarRandomly(int randomNumberBound) {
-    cars.forEach(car -> car.move(generateRandomNumberInRange(randomNumberBound)));
+  public void moveAllCar(int moveNumberBound) {
+    cars.forEach(car -> car.move(generateRandomNumberInRange(moveNumberBound)));
   }
 
-  public List<Integer> getPositions() {
+  public Winners findWinners() {
+    List<Car> sortedCars = cars.stream()
+        .sorted(Car::compareTo)
+        .collect(Collectors.toUnmodifiableList());
+
+    Car winner = sortedCars.get(0);
+
+    return new Winners(cars.stream()
+        .filter((car) -> car.compareTo(winner) <= 0)
+        .map(Car::toString)
+        .collect(Collectors.toUnmodifiableList()));
+  }
+
+  public List<String> markingPositions() {
     return cars.stream()
-        .map(Car::getPosition)
+        .map(Car::markPosition)
         .collect(Collectors.toUnmodifiableList());
   }
 
-  public void validate() {
-    validateCarCount(cars.size());
+  public static Cars fromString(String text) {
+    Objects.requireNonNull(text);
+    List<String> carNames = splitCarNames(text);
+    List<Car> cars = new ArrayList<>();
+    for (String carName : carNames) {
+      cars.add(new Car(carName));
+    }
+    return new Cars(cars);
+
+  }
+
+  private static List<String> splitCarNames(String text) {
+    return Stream.of(text.split(CAR_RAW_NAMES_DELIMITER))
+        .collect(Collectors.toUnmodifiableList());
   }
 
   private void validateCarCount(int carCount) {

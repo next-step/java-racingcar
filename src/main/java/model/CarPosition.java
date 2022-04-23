@@ -3,8 +3,9 @@ package model;
 import static util.Validator.buildArgumentErrorMessage;
 import static util.Validator.validateArgument;
 
-public class CarPosition extends AbstractMutableNumberModel {
+public class CarPosition extends AbstractMutableNumberModel implements Comparable<CarPosition> {
 
+  private static final String POSITION_MARKER = "-";
   private static final String INITIAL_POSITION_ERROR_MESSAGE = "차의 시작 위치는 %d 이상이어야 합니다.";
   private static final int MIN_INITIAL_POSITION = 0;
 
@@ -17,6 +18,11 @@ public class CarPosition extends AbstractMutableNumberModel {
   }
 
   @Override
+  public String toString() {
+    return POSITION_MARKER.repeat(value);
+  }
+
+  @Override
   public void validateValue(int value) {
     validateArgument(
         value,
@@ -25,4 +31,13 @@ public class CarPosition extends AbstractMutableNumberModel {
     );
   }
 
+  @Override
+  public int compareTo(CarPosition other) {
+    if (this.value > other.value) {
+      return -1;
+    } else if (this.value == other.value) {
+      return 0;
+    }
+    return 1;
+  }
 }

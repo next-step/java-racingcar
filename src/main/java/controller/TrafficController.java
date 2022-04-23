@@ -1,49 +1,50 @@
 package controller;
 
+import static uiview.InputView.scanInt;
+import static uiview.InputView.scanString;
+import static uiview.OutputView.print;
+import static uiview.OutputView.printEmpty;
+
 import domain.Cars;
+import domain.Winners;
+import java.util.List;
 import java.util.Objects;
-import model.CarCount;
+import java.util.StringJoiner;
 import model.TryCount;
-import uiview.InputView;
 import uiview.OutputView;
 
 public class TrafficController {
 
-  private static final String MESSAGE_FOR_UNABLE_TO_START = "준비 데이터가 충분하지 않아 게임을 시작할 수 없습니다.";
-  private static final String MESSAGE_FOR_INPUT_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
+  private static final String ERROR_MESSAGE_OF_NON_CARS = "게임을 시작하기 위해서는 차를 입력해주세요";
+  private static final String MESSAGE_FOR_INPUT_CAR_COUNT = "자동차의 이름을 ','로 구분하여 넣어주세요.";
   private static final String MESSAGE_FOR_INPUT_TRY_COUNT = "시도할 대수는 몇 회 회가요?";
-  private static final String POSITION_MARKER = "-";
+  private static final String WINNERS_DELIMITER = ", ";
+  private static final String MESSAGE_FOR_FINAL_RESULT = "%s이(가) 최종 우승했습니다.";
   private static final String RESULT_GUIDE_MESSAGE = "실행결과";
   private static final int MAX_NUMBER_BOUND = 10;
-
-  private final InputView inputView;
-  private final OutputView outputView;
 
   private TryCount tryCount;
   private Cars cars;
 
 
   private TrafficController() {
-    this.inputView = new InputView();
-    this.outputView = new OutputView();
   }
 
   public static TrafficController init() {
     return new TrafficController();
   }
 
-  public TrafficController createCarsByInsertingCarCount() {
-    return createCars(new CarCount(inputView.scanInt(MESSAGE_FOR_INPUT_CAR_COUNT)));
+  public TrafficController createCarsByInsertingCarNames() {
+    return createCars(scanString(MESSAGE_FOR_INPUT_CAR_COUNT));
   }
 
-  public TrafficController createCars(CarCount carCount) {
-    validateCarCount(carCount);
-    this.cars = new Cars(carCount.getValue());
+  public TrafficController createCars(String rawCarNames) {
+    this.cars = Cars.fromString(rawCarNames);
     return this;
   }
 
   public TrafficController insertTryCount() {
-    return tryCount(inputView.scanInt(MESSAGE_FOR_INPUT_TRY_COUNT));
+    return tryCount(scanInt(MESSAGE_FOR_INPUT_TRY_COUNT));
   }
 
   public TrafficController tryCount(int tryCount) {
@@ -53,35 +54,24 @@ public class TrafficController {
 
   public void start() {
     validateBeforeStart();
-    outputView.print(RESULT_GUIDE_MESSAGE);
-    for (int i = 0; i < tryCount.getValue(); i++) {
-      cars.moveAllCarRandomly(MAX_NUMBER_BOUND);
+    print(RESULT_GUIDE_MESSAGE);
+
+    do {
+      cars.moveAllCar(MAX_NUMBER_BOUND);
       tryCount.race();
-      printResult();
-      outputView.printEmpty();
-    }
+      List<String> currentPositionMark = cars.markingPositions();
+      currentPositionMark.forEach(OutputView::print);
+      printEmpty();
+    } while (!tryCount.isFinished());
+
+    print(buildFinalResult(cars.findWinners()));
   }
 
-  private void printResult() {
-    cars.getPositions().forEach(count -> outputView.print(POSITION_MARKER, count));
-  }
-
-  private void validateCarCount(CarCount carCount) {
-    Objects.requireNonNull(carCount);
-  }
-
-  private void validateTryCount(TryCount tryCount) {
-    Objects.requireNonNull(tryCount);
-    tryCount.validate();
+  private String buildFinalResult(Winners winners) {
+    return String.format(MESSAGE_FOR_FINAL_RESULT, winners.toString());
   }
 
   private void validateBeforeStart() {
-    try {
-      Objects.requireNonNull(cars);
-      cars.validate();
-      validateTryCount(tryCount);
-    } catch (Exception e) {
-      outputView.print(MESSAGE_FOR_UNABLE_TO_START);
-    }
+    Objects.requireNonNull(cars, ERROR_MESSAGE_OF_NON_CARS);
   }
 }

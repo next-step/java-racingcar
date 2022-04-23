@@ -11,6 +11,7 @@ public class StringNumbers {
 
   private final List<StringOfNumber> stringNumbers;
 
+
   private StringNumbers(List<StringOfNumber> stringNumbers) {
     this.stringNumbers = stringNumbers;
   }
