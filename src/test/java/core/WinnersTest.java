@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,15 +21,12 @@ class WinnersTest {
         Car car3 = TestObjectGenerator.generateCar("c", 2);
         Cars cars = Cars.fromCars(Arrays.asList(car1, car2, car3));
 
-        List<CarName> winnerCarNames = new ArrayList<>();
-        winnerCarNames.add(CarName.create("a"));
-
         //when
         Winners winners = Winners.decideWinners(cars);
 
         //then
-        assertThat(winners.getCars().size()).isEqualTo(1);
-        winners.getCars().forEach(car -> assertThat(winnerCarNames).contains(car.getCarName()));
+        assertThat(winners.size()).isEqualTo(1);
+        assertThat(winners.getCars()).contains(car1);
     }
 
     @Test
@@ -40,15 +38,47 @@ class WinnersTest {
         Car car3 = TestObjectGenerator.generateCar("c", 4);
         Cars cars = Cars.fromCars(Arrays.asList(car1, car2, car3));
 
-        List<CarName> winnerCarNames = new ArrayList<>();
-        winnerCarNames.add(CarName.create("a"));
-        winnerCarNames.add(CarName.create("c"));
+        List<Car> winnerCars = new ArrayList<>();
+        winnerCars.add(car1);
+        winnerCars.add(car3);
 
         //when
-        Winners winners = Winners.decideWinners(cars);
+        Winners result = Winners.decideWinners(cars);
 
         //then
-        assertThat(winners.getCars().size()).isEqualTo(2);
-        winners.getCars().forEach(car -> assertThat(winnerCarNames).contains(car.getCarName()));
+        assertThat(result.size()).isEqualTo(2);
+        assertThat(result.getCars()).containsAll(winnerCars);
+    }
+
+    @Test
+    @DisplayName("자동차들의 이름이 모두 반환돼야 한다")
+    void names() {
+        //given
+        Winners winners = TestObjectGenerator.generateWinners();
+        CarName carName1 = CarName.create("a");
+        CarName carName2 = CarName.create("b");
+        List<CarName> winnerNames = Arrays.asList(carName1, carName2);
+
+        //when
+        List<CarName> result = winners.names();
+
+        //then
+        assertThat(result.size()).isEqualTo(2);
+        assertThat(result).containsAll(winnerNames);
+    }
+
+    @Test
+    @DisplayName("자동차들의 이름이 모두 String 으로 반환돼야 한다")
+    void namesAsString() {
+        //given
+        Winners winners = TestObjectGenerator.generateWinners();
+        List<String> winnerNames = Arrays.asList("a", "b");
+
+        //when
+        List<String> result = winners.namesAsString();
+
+        //then
+        assertThat(result.size()).isEqualTo(winnerNames.size());
+        assertThat(result).containsAll(winnerNames);
     }
 }

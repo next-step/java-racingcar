@@ -3,6 +3,7 @@ package core;
 import utils.PowerSupply;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TestObjectGenerator {
@@ -42,5 +43,14 @@ public class TestObjectGenerator {
         carNames.add(CarName.create("b"));
         carNames.add(CarName.create("c"));
         return carNames;
+    }
+
+    public static Winners generateWinners() {
+        Car car1 = generateCar("a", 4);
+        Car car2 = generateCar("b", 4);
+        Car car3 = generateCar("c", 2);
+        List<Car> carList = Arrays.asList(car1, car2, car3);
+        Cars cars = Cars.fromCars(carList);
+        return Winners.decideWinners(cars);
     }
 }

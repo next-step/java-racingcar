@@ -3,6 +3,7 @@ package core;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class Car {
     public static final int MAX_CAR_NAME_LENGTH = 5;
@@ -54,5 +55,18 @@ public class Car {
 
     public List<Integer> getPositionHistory() {
         return Collections.unmodifiableList(positionHistory);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position && carName.equals(car.carName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName, position);
     }
 }

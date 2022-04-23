@@ -5,7 +5,6 @@ import core.Cars;
 import core.Winners;
 
 import java.util.Arrays;
-import java.util.Iterator;
 
 public class AnnouncementPrinter {
     public static final String CAR_NAME_INPUT_ANNOUNCEMENT = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
@@ -34,14 +33,7 @@ public class AnnouncementPrinter {
     }
 
     public static void announceWinners(Winners winners) {
-        Iterator<Car> iterator = winners.getCars().iterator();
-        if (iterator.hasNext()) {
-            System.out.print(iterator.next().getCarName());
-        }
-        while (iterator.hasNext()) {
-            System.out.print(", " + iterator.next().getCarName());
-        }
-        System.out.println("가 최종 우승했습니다.");
+        System.out.println(String.join(", ", winners.namesAsString()) + "가 최종 우승했습니다.");
     }
 
     private static void printCarPositionAtTurn(Car car, int turn) {

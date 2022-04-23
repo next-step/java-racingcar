@@ -3,6 +3,7 @@ package core;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Winners {
     private final CurrentWinners cars;
@@ -23,6 +24,18 @@ public class Winners {
         return cars.getCars();
     }
 
+    public List<CarName> names() {
+        return cars.names();
+    }
+
+    public List<String> namesAsString() {
+        return cars.namesAsString();
+    }
+
+    public int size() {
+        return cars.size();
+    }
+
     private static class CurrentWinners {
         private final List<Car> cars;
         private int position;
@@ -40,6 +53,23 @@ public class Winners {
             if (car.isAtSamePosition(position)) {
                 addWinner(car);
             }
+        }
+
+        public List<CarName> names() {
+            return cars.stream()
+                    .map(Car::getCarName)
+                    .collect(Collectors.toList());
+        }
+
+        public List<String> namesAsString() {
+            return cars.stream()
+                    .map(Car::getCarName)
+                    .map(CarName::toString)
+                    .collect(Collectors.toList());
+        }
+
+        public int size() {
+            return cars.size();
         }
 
         private void changeWinner(Car car) {

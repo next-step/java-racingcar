@@ -5,6 +5,7 @@ import utils.PowerSupply;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -34,7 +35,33 @@ public class Cars {
         return Cars.fromCars(movedCars);
     }
 
+    public List<CarName> names() {
+        return cars.stream()
+                .map(Car::getCarName)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> namesAsString() {
+        return cars.stream()
+                .map(Car::getCarName)
+                .map(CarName::toString)
+                .collect(Collectors.toList());
+    }
+
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars1 = (Cars) o;
+        return cars.equals(cars1.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
     }
 }
