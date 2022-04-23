@@ -9,7 +9,11 @@ public class RacingCar {
     private String name;
 
     public RacingCar(String name) {
-        this.coordinate = new Point(0, 0);
+        this(name, new Point(0, 0));
+    }
+
+    public RacingCar(String name, Point coordinate) {
+        this.coordinate = coordinate;
         this.name = name;
     }
 

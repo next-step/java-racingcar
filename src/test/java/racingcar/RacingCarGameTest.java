@@ -4,6 +4,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
+import java.util.List;
+
 
 public class RacingCarGameTest {
     @Test
@@ -32,6 +35,18 @@ public class RacingCarGameTest {
         Assertions.assertThat(racingCars[0].getLocation().getX()).isEqualTo(0);
         Assertions.assertThat(racingCars[1].getLocation().getX()).isEqualTo(0);
         Assertions.assertThat(racingCars[2].getLocation().getX()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("가장 location값이 큰 우승자 구하기")
+    void findWinner() {
+        RacingCar[] racingCars = {
+                new RacingCar("aaa", new Point(3, 0)),
+                new RacingCar("bbb", new Point(3, 0)),
+                new RacingCar("ccc", new Point(1, 0))};
+        List<RacingCar> winners = RacingCarGame.findWinners(racingCars);
+
+        Assertions.assertThat(winners).containsExactly(racingCars[0], racingCars[1]);
     }
 
     static class SatisfiedCondition implements Condition {
