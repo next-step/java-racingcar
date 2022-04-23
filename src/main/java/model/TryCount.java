@@ -8,6 +8,7 @@ public class TryCount extends AbstractMutableNumberModel {
 
   private static final String TRY_COUNT_ERROR_MESSAGE = "시도 횟수는 %d 이상이어야 합니다.";
   private static final int MIN_TRY_COUNT = 1;
+  private static final int TURN_COUNT = 1;
   private static final int FINISHED_TRY_COUNT = 0;
 
   public TryCount(int value) {
@@ -15,7 +16,7 @@ public class TryCount extends AbstractMutableNumberModel {
   }
 
   public void race() {
-    setValue(value - 1);
+    setValue(value - TURN_COUNT);
   }
 
   public boolean isFinished() {
