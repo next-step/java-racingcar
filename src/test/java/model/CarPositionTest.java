@@ -11,6 +11,15 @@ class CarPositionTest {
   private static final int VALID_CAR_POSITION = 1;
   private static final int INVALID_CAR_POSITION = -1;
 
+  @Test
+  void add_성공() {
+    CarPosition carPosition = new CarPosition(0);
+    carPosition.add(5);
+    CarPosition expected = new CarPosition(5);
+
+    assertThat(carPosition.compareTo(expected)).isEqualTo(0);
+  }
+
 
   @Test
   void CarPosition_생성_성공() {
