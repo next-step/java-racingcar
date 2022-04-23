@@ -33,8 +33,8 @@ public class RacingCarGame {
         return x;
     }
 
-    public static List<RacingCar> findWinners(RacingCar[] racingCars) {
-        ArrayList<RacingCar> winners = new ArrayList<>();
+    public static List<String> findWinners(RacingCar[] racingCars) {
+        ArrayList<String> winners = new ArrayList<>();
 
         double winnerLocation = findWinnerLocation(racingCars);
 
@@ -44,9 +44,9 @@ public class RacingCarGame {
         return winners;
     }
 
-    private static void addWinner(double winnerLocation, RacingCar racingCar, ArrayList<RacingCar> winners) {
+    private static void addWinner(double winnerLocation, RacingCar racingCar, ArrayList<String> winners) {
         if (winnerLocation == racingCar.getLocation().getX()) {
-            winners.add(racingCar);
+            winners.add(racingCar.getName());
         }
     }
 
@@ -56,6 +56,7 @@ public class RacingCarGame {
             proceedRacingCars(racingCars, condition);
             ResultView.showResult(racingCars);
         }
+        ResultView.showWinners(racingCars);
         return racingCars;
     }
 

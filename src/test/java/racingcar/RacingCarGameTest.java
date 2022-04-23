@@ -44,9 +44,8 @@ public class RacingCarGameTest {
                 new RacingCar("aaa", new Point(3, 0)),
                 new RacingCar("bbb", new Point(3, 0)),
                 new RacingCar("ccc", new Point(1, 0))};
-        List<RacingCar> winners = RacingCarGame.findWinners(racingCars);
-
-        Assertions.assertThat(winners).containsExactly(racingCars[0], racingCars[1]);
+        List<String> winners = RacingCarGame.findWinners(racingCars);
+        Assertions.assertThat(winners).containsExactly(racingCars[0].getName(), racingCars[1].getName());
     }
 
     static class SatisfiedCondition implements Condition {
