@@ -27,6 +27,12 @@ class PositionTest {
   }
 
   @Test
+  @DisplayName("포지션의 길이를 테스트합니다.")
+  void positionLengthTest() {
+    assertThat(new Position(5).toString().length()).isEqualTo(5);
+  }
+
+  @Test
   @DisplayName("포지션은 공백일 수 없습니다.")
   void positionNegativeTest() {
     assertThatThrownBy(() -> {

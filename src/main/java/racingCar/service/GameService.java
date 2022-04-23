@@ -1,27 +1,26 @@
 package racingCar.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import racingCar.model.Car;
 import racingCar.model.RacingCarHistory;
 import racingCar.model.Track;
-import racingCar.model.Winner;
+import racingCar.model.Winners;
 import racingCar.strategy.CarMoveRandomStrategy;
-import racingCar.util.WinnerUtils;
-import racingCar.view.InputTable;
 
 public class GameService {
 
   private final static Track TRACK = new Track();
 
-  public List<Car> readyCars() {
-    TRACK.addCar(InputTable.insertCarNames());
+  public List<Car> readyCars(String names) {
+    TRACK.addCar(names);
     return TRACK.getCars();
   }
 
-  public Integer gameRound() {
-    return InputTable.howManyGame();
+  public Integer gameRound(Integer rounds) {
+    return rounds;
   }
 
   public List<RacingCarHistory> play(List<Car> allCars, Integer rounds) {
@@ -43,38 +42,22 @@ public class GameService {
       Integer rounds) {
     List<Car> resultList = new ArrayList<>();
     for (RacingCarHistory racingHistory : racingHistories) {
-      if (Objects.equals(racingHistory.round(), rounds)) {
-        resultList.add(racingHistory.car());
-      }
+      sameRoundResult(rounds, resultList, racingHistory);
     }
     return resultList;
   }
 
-  public String addWinner(List<Car> otherGameParticipants) {
-    return getCoWinner(winnerCalculator(otherGameParticipants), otherGameParticipants);
+  public List<String> findWinnerNames(List<Car> candidates) {
+    List<String> coWinnerNameList = new Winners(candidates).findWinnerNameList();
+    coWinnerNameList.removeAll(Collections.singletonList(null));
+    return coWinnerNameList;
   }
 
-  public Winner winnerCalculator(List<Car> gameParticipants) {
-    Winner winner = WinnerUtils.getChallenger(gameParticipants.get(0));
-    for (Car participant : gameParticipants) {
-      winner = findWinner(winner, participant);
+  private void sameRoundResult(Integer rounds, List<Car> resultList,
+      RacingCarHistory racingHistory) {
+    if (Objects.equals(racingHistory.round(), rounds)) {
+      resultList.add(racingHistory.car());
     }
-    return winner;
   }
-
-  public String getCoWinner(Winner winner, List<Car> otherGameParticipants) {
-    for (Car otherGameParticipant : otherGameParticipants) {
-      winner = winner.addCoWinner(WinnerUtils.getChallenger(otherGameParticipant));
-    }
-    return winner.toString();
-  }
-
-  private Winner findWinner(Winner winner, Car challenger) {
-    if (winner.match(challenger)) {
-      winner = WinnerUtils.getChallenger(challenger);
-    }
-    return winner;
-  }
-
 
 }

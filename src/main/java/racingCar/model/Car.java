@@ -8,8 +8,14 @@ public final class Car {
   private final CarName carName;
   private final Position position;
 
+
   public Car(String name) {
     this(new CarName(name).toString(), new Position(0));
+  }
+
+  public Car(String name, int position) {
+    this.carName = new CarName(name);
+    this.position = new Position(position);
   }
 
   public Car(String name, Position position) {
@@ -23,6 +29,14 @@ public final class Car {
     }
     return this;
   }
+
+  String carName() {
+    return this.carName.toString();
+  }
+  int currentPosition() {
+    return this.position.toString().length();
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -47,4 +61,10 @@ public final class Car {
   public String toString() {
     return String.format("%s : %s", carName.toString(), position.toString());
   }
+
+
+  public int changeMaxPosition(int curPosition) {
+    return Math.max(curPosition, position.toString().length());
+  }
+
 }

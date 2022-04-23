@@ -2,9 +2,11 @@ package racingCar.view;
 
 import java.util.Comparator;
 import java.util.List;
+import racingCar.controller.GameController;
 import racingCar.model.Car;
 import racingCar.model.RacingCarHistory;
 import racingCar.service.GameService;
+import racingCar.util.StringUtils;
 
 public final class OutputTable {
 
@@ -17,16 +19,29 @@ public final class OutputTable {
   }
 
   public static void main(String[] args) {
-    GameService game = new GameService();
+    GameController controller = new GameController(new GameService());
+    controller.run();
+  }
+
+  public static void inputCarNames() {
     System.out.println(WHAT_CAR_NAMES);
-    List<Car> allCars = game.readyCars();
+  }
+
+  public static void inputGameRounds() {
     System.out.println(HOW_MANY_GAMES);
-    Integer rounds = game.gameRound();
+  }
+
+  public static void outputGameResult(List<Car> allCars, List<RacingCarHistory> racingHistories) {
     System.out.println(OUTPUT_RESULT);
-    List<RacingCarHistory> racingHistories = game.play(allCars, rounds);
     historyPrint(allCars, racingHistories);
-    List<Car> gameResult = game.gameResult(racingHistories, rounds);
-    System.out.println(game.addWinner(gameResult) + WINNER_TEXT_PRINT);
+  }
+
+  public static String printWinners(List<String> winners) {
+    return StringUtils.join(winners);
+  }
+
+  public static void findAllWinners(String winners) {
+    System.out.println(winners + WINNER_TEXT_PRINT);
   }
 
   private static void historyPrint(List<Car> allCars, List<RacingCarHistory> racingHistories) {

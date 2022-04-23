@@ -13,7 +13,7 @@ class CarTest {
   @DisplayName("4이상인 경우에는 전진한다.")
   void onlyIfFourOrHigher() {
     Car car = new Car("klom");
-    assertThat(car.move(() -> true).toString()).isEqualTo(new Car("klom", new Position(1)).toString());
+    assertThat(car.move(() -> true).toString()).isEqualTo(new Car("klom", 1).toString());
   }
 
   @Test
@@ -31,7 +31,7 @@ class CarTest {
     car = car.move(() -> true);
     car = car.move(() -> true);
     car = car.move(() -> true);
-    assertThat(car.toString()).isEqualTo(new Car("klom", new Position(4)).toString());
+    assertThat(car.toString()).isEqualTo(new Car("klom", 4).toString());
   }
 
 
