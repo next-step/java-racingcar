@@ -6,6 +6,7 @@ import static uiview.OutputView.print;
 import static uiview.OutputView.printEmpty;
 
 import domain.Cars;
+import domain.Winners;
 import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
@@ -63,18 +64,11 @@ public class TrafficController {
       printEmpty();
     } while (!tryCount.isFinished());
 
-    print(buildFinalResult());
+    print(buildFinalResult(cars.findWinners()));
   }
 
-  private String buildFinalResult() {
-    return String.format(MESSAGE_FOR_FINAL_RESULT, getWinners());
-  }
-
-  private String getWinners() {
-    StringJoiner stringJoiner = new StringJoiner(WINNERS_DELIMITER);
-    cars.findWinners()
-        .forEach(stringJoiner::add);
-    return stringJoiner.toString();
+  private String buildFinalResult(Winners winners) {
+    return String.format(MESSAGE_FOR_FINAL_RESULT, winners.toString());
   }
 
   private void validateBeforeStart() {

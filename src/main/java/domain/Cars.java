@@ -26,17 +26,17 @@ public class Cars {
     cars.forEach(car -> car.move(generateRandomNumberInRange(randomNumberBound)));
   }
 
-  public List<String> findWinners() {
+  public Winners findWinners() {
     List<Car> sortedCars = cars.stream()
         .sorted(Car::compareTo)
         .collect(Collectors.toUnmodifiableList());
 
     Car winner = sortedCars.get(0);
 
-    return cars.stream()
+    return new Winners(cars.stream()
         .filter((car) -> car.compareTo(winner) <= 0)
         .map(Car::toString)
-        .collect(Collectors.toUnmodifiableList());
+        .collect(Collectors.toUnmodifiableList()));
   }
 
   public List<String> markingPositions() {
