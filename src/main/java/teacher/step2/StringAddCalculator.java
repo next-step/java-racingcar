@@ -1,4 +1,4 @@
-package study.step2;
+package teacher.step2;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
