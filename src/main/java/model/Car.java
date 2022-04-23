@@ -1,10 +1,16 @@
 package model;
 
 public class Car {
-    private Position position;
+    private final Position position;
+    private final CarName carName;
 
-    public Car(Position position) {
-        this.position = position;
+    public Car(CarName carName) {
+        this(carName, 0);
+    }
+
+    public Car(CarName carName, int position) {
+        this.position = new Position(position);
+        this.carName = carName;
     }
 
     public void move(MoveRule moveRule) {
@@ -15,5 +21,9 @@ public class Car {
 
     public Position getPosition() {
         return position;
+    }
+
+    public CarName getCarName() {
+        return carName;
     }
 }

@@ -1,20 +1,28 @@
 package model;
 
-import view.ResultView;
+import dto.CarInfo;
+import dto.CarWinnerDto;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
-    public static final String NOT_ENOUGH_CAR = "차량의 댓수가 부족합니다.";
+    private static final String CAR_NAME_DELIMITER = ",";
 
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        if (cars == null || cars.isEmpty()) {
-            throw new RuntimeException(NOT_ENOUGH_CAR);
-        }
+    public Cars(String carNames) {
+        this.cars = toCarList(carNames);
+    }
 
-        this.cars = cars;
+    private List<Car> toCarList(String carNames) {
+        List<CarName> carNameList = makeCarNameList(carNames);
+        return carNameList.stream().map(Car::new).collect(Collectors.toList());
+    }
+
+    private List<CarName> makeCarNameList(String carNames) {
+        return Arrays.stream(carNames.split(CAR_NAME_DELIMITER)).map(CarName::new).collect(Collectors.toList());
     }
 
     public void moveCars() {
@@ -23,13 +31,17 @@ public class Cars {
         }
     }
 
-    public void printCarsPosition() {
-        ResultView resultView = ResultView.getInstance();
-
-        for (Car car : this.cars) {
-            resultView.printPosition(car.getPosition());
-        }
-
-        resultView.printLineBreak();
+    public List<CarInfo> getCarsInfo() {
+        return cars.stream()
+                .map(x -> new CarInfo(x.getCarName(), x.getPosition()))
+                .collect(Collectors.toList());
     }
+
+    public List<CarWinnerDto> getWinnerCars() {
+        List<Car> winnerCars = WinnerCars.getWinnerCars(this.cars);
+        return winnerCars.stream()
+                .map(x -> new CarWinnerDto(x.getCarName()))
+                .collect(Collectors.toList());
+    }
+
 }
