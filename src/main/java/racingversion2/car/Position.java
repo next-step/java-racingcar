@@ -1,5 +1,7 @@
 package racingversion2.car;
 
+import java.util.Objects;
+
 public class Position {
 
     private int position;
@@ -18,7 +20,7 @@ public class Position {
         return this.position;
     }
 
-    public boolean isBigger(int winningPosition) {
-        return this.position > winningPosition;
+    public boolean isWinningPosition(int winningPosition) {
+        return this.position >= winningPosition;
     }
 }

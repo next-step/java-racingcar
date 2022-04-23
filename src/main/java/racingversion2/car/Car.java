@@ -32,6 +32,6 @@ public class Car {
     }
 
     public boolean isWinner(int winningPosition){
-        return position.isBigger(winningPosition);
+        return position.isWinningPosition(winningPosition);
     }
 }

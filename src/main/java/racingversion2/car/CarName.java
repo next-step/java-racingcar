@@ -1,5 +1,7 @@
 package racingversion2.car;
 
+import java.util.Objects;
+
 public class CarName {
 
     private final static String INVALID_CAR_NAME_LENGTH_MESSAGE = "자동차 이름은 5자를 초과할 수 없습니다.";
