@@ -5,32 +5,22 @@ import java.util.Collections;
 import java.util.List;
 
 public class Winners {
-    private final List<Car> cars;
+    private final CurrentWinners cars;
 
-    private Winners(List<Car> cars) {
+    private Winners(CurrentWinners cars) {
         this.cars = cars;
     }
 
     public static Winners decideWinners(Cars cars) {
         CurrentWinners currentWinners = new CurrentWinners(new ArrayList<>());
         for (Car car : cars.getCars()) {
-            decideCurrentWinners(currentWinners, car);
+            currentWinners.compare(car);
         }
-        return new Winners(currentWinners.getCars());
-    }
-
-    private static void decideCurrentWinners(CurrentWinners currentWinners, Car car) {
-        if (currentWinners.isBehind(car)) {
-            currentWinners.changeWinner(car);
-            return;
-        }
-        if (currentWinners.isAtSamePosition(car)) {
-            currentWinners.addWinner(car);
-        }
+        return new Winners(currentWinners);
     }
 
     public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
+        return cars.getCars();
     }
 
     private static class CurrentWinners {
@@ -42,30 +32,36 @@ public class Winners {
             this.position = 0;
         }
 
-        public void changeWinner(Car car) {
+        public void compare(Car car) {
+            if (isBehind(car)) {
+                changeWinner(car);
+                return;
+            }
+            if (isAtSamePosition(car)) {
+                addWinner(car);
+            }
+        }
+
+        private void changeWinner(Car car) {
             cars.clear();
             cars.add(car);
             position = car.getPosition();
         }
 
-        public void addWinner(Car car) {
+        private void addWinner(Car car) {
             cars.add(car);
         }
 
-        public boolean isBehind(Car car) {
+        private boolean isBehind(Car car) {
             return position < car.getPosition();
         }
 
-        public boolean isAtSamePosition(Car car) {
+        private boolean isAtSamePosition(Car car) {
             return position == car.getPosition();
         }
 
         public List<Car> getCars() {
             return Collections.unmodifiableList(cars);
-        }
-
-        public int getPosition() {
-            return position;
         }
     }
 }
