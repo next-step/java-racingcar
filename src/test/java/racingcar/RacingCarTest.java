@@ -24,4 +24,13 @@ class RacingCarTest {
         Assertions.assertThat(racingCars[1].getName()).isEqualTo("good");
         Assertions.assertThat(racingCars[2].getName()).isEqualTo("amaz");
     }
+
+    @Test
+    @DisplayName("입력한 자동차 이름이 5자 초과할 경우 예외 발생")
+    void validateCarName() {
+        Assertions.assertThatThrownBy(() -> RacingCar.createBatch(new String[]{"tddWithJava", "good", "amaze"}))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");
+    }
+
 }
