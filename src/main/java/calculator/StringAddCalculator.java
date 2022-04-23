@@ -4,15 +4,24 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+    private static final int SUMMED_VALUE_IS_ZERO = 0;
+    private static final Pattern PATTERN = Pattern.compile("//(.)\n(.*)");
+    private static final int DELIMITER = 1;
+    private static final int TARGET = 2;
+
+    private StringAddCalculator() {
+        throw new AssertionError();
+    }
+
     public static int splitAndSum(String text) {
         if (isBlankText(text)) {
-            return 0;
+            return SUMMED_VALUE_IS_ZERO;
         }
 
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] values = m.group(2).split(customDelimiter);
+        Matcher matcher = PATTERN.matcher(text);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(DELIMITER);
+            String[] values = matcher.group(TARGET).split(customDelimiter);
             return sum(values);
         }
 
@@ -36,7 +45,7 @@ public class StringAddCalculator {
 
     private static int isPositiveNumber(int number) {
         if (number < 0) {
-            throw new RuntimeException("음수는 입력할 수 없습니다.");
+            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
         }
         return number;
     }

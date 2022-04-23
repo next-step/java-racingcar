@@ -4,16 +4,18 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import calculator.StringAddCalculator;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringAddCalculatorTest {
     @DisplayName("빈 문자열, 공백 문자열 일때 계산")
-    @Test
-    void splitAndSum() {
-        assertThat(StringAddCalculator.splitAndSum(null)).isEqualTo(0);
-        assertThat(StringAddCalculator.splitAndSum("")).isEqualTo(0);
+    @ParameterizedTest
+    @NullAndEmptySource
+    void splitAndSum(String text) {
+        assertThat(StringAddCalculator.splitAndSum(text)).isEqualTo(0);
     }
 
     @DisplayName("문자 하나 일때 계산")

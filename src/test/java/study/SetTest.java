@@ -27,14 +27,14 @@ class SetTest {
     @DisplayName("set 크기 확인")
     @Test
     void size() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("set 내부에 값이 존재하는지 확인")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void contains(int input) {
-        assertThat(numbers.contains(input)).isTrue();
+        assertThat(numbers).contains(input);
     }
 
     @DisplayName("contains 입력값에 따라 set 내부에 값이 존재, 미존재 모두 확인")
