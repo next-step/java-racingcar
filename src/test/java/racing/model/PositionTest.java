@@ -25,21 +25,6 @@ class PositionTest {
     }
 
     @Test
-    @DisplayName("위치가 제일 먼지 확인")
-    void isMaxPosition() {
-        Position position = new Position();
-        position.move();
-        position.move();
-        position.move();
-
-        Position position2 = new Position();
-        position2.move();
-        position2.move();
-
-        assertThat(position.isMaxPosition(position2.getPosition())).isEqualTo(true);
-    }
-
-    @Test
     @DisplayName("위치가 제대로 움직였는지 확인")
     void move() {
         Position position = new Position();

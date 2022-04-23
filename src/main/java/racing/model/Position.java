@@ -12,7 +12,7 @@ public class Position {
 
     public Position(int position) {
         if (position < INITIAL_POSITION) {
-            throw new InvalidPositionException("자동차 위치는 음수가 될 수 없습니다.");
+            throw new InvalidPositionException();
         }
         this.position = position;
     }
