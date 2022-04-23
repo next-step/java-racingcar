@@ -1,27 +1,28 @@
-package racing.module;
+package racing.model;
+
+import racing.module.MoveStrategy;
 
 public class Car {
-    private static final int DEFAULT_POSITION = 0;
     private final CarName carName;
-    private int position;
+    private final Position position;
 
     public Car(String carName) {
         this.carName = new CarName(carName);
-        this.position = DEFAULT_POSITION;
+        this.position = new Position();
     }
 
     public void attempt(MoveStrategy strategy) {
         if (strategy.canMove()) {
-            position++;
+            position.move();
         }
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
-    public Boolean checkPosition(int position) {
-        return this.position == position;
+    public boolean isWinner(int maxPosition) {
+        return position.isMaxPosition(maxPosition);
     }
 
     public String getCarName() {

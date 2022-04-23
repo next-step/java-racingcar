@@ -1,7 +1,10 @@
-package racing.module;
+package racing.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.model.Car;
+import racing.model.CarGame;
+import racing.module.MoveStrategy;
 
 import java.util.List;
 import java.util.Objects;

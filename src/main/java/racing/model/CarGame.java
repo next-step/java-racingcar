@@ -1,4 +1,6 @@
-package racing.module;
+package racing.model;
+
+import racing.module.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,7 @@ public class CarGame {
 
     public List<Car> getWinner() {
         return carList.stream()
-                .filter(car -> car.checkPosition(getMaxPosition()))
+                .filter(car -> car.isWinner(getMaxPosition()))
                 .collect(Collectors.toList());
     }
 

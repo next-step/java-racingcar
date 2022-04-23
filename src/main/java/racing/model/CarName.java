@@ -1,4 +1,4 @@
-package racing.module;
+package racing.model;
 
 import exception.EmptyCarNameException;
 import exception.InvalidCarNameSizeException;
