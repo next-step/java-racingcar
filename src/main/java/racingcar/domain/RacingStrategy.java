@@ -1,5 +1,6 @@
 package racingcar.domain;
 
-public interface RacingStrategy {
-    public int createNumber();
+interface RacingStrategy {
+
+    boolean checkCondition();
 }

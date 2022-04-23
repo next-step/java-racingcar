@@ -2,25 +2,29 @@ package racingcar;
 
 import racingcar.domain.RacingGame;
 import racingcar.domain.RandomStrategy;
+import racingcar.exception.CarNameException;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingCarApplication {
 
     public static void main(String[] args) {
-
-        InputView inputView = new InputView();
         OutputView outputView = new OutputView();
+        InputView inputView = new InputView();
         RandomStrategy randomStrategy = new RandomStrategy();
-        RacingGame rg = new RacingGame();
-
-        int carNumber = inputView.askNumberOfCars();
-        int triesNumber = inputView.askNumberOfTries();
-
-        rg.createCar(carNumber);
-
-        for (int i = 0; i < triesNumber; i++) {
-            rg.startGame(carNumber, randomStrategy, outputView);
+        RacingGame racingGame = new RacingGame();
+        try {
+            racingGame.createCar(inputView.askNameOfCars());
+        } catch (CarNameException e) {
+            e.printStackTrace();
+            return;
         }
+
+        int tries = inputView.askNumberOfTries();
+        for (int i = 0; i < tries; i++) {
+            outputView.printResult(racingGame.startGame(randomStrategy));
+        }
+        racingGame.calMaxPosition();
+        outputView.printWinner(racingGame.findWinner());
     }
 }
