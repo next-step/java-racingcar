@@ -78,8 +78,13 @@ gony	: ----
 - [ ] Fix printResult to generate '-' stemming from position
 
 ## Step5
-
+### Todo
 - [x] Add Position class
 - [x] Add Car(name, at) constructor
 - [x] Remove getPosition
 - [x] Refactor with Cars first class collection
+
+### Requested changes
+
+- [x] move exception handler from Car(name) to Car(name, at)
+- [x] move collectWinner from Car to Cars
