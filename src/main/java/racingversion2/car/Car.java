@@ -13,8 +13,12 @@ public class Car {
         this.position = position;
     }
 
-    public void move() {
-        if(MoveDecider.isMovingForwardCondition()){
+    public Car(String carName, int position) {
+        this(new CarName(carName), new Position(position));
+    }
+
+    public void move(int random) {
+        if(MoveDecider.isMovingForwardCondition(random)) {
             position.increase();
         }
     }

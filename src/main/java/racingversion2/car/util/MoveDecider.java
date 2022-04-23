@@ -4,8 +4,8 @@ public class MoveDecider {
 
     private final static int MINIMUM_MOVABLE_VALUE = 4;
 
-    public static boolean isMovingForwardCondition(){
-        return RandomValueGenerator.generateRandomValue() >= MINIMUM_MOVABLE_VALUE;
+    public static boolean isMovingForwardCondition(int random){
+        return random >= MINIMUM_MOVABLE_VALUE;
     }
 
 }

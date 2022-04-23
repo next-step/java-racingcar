@@ -2,6 +2,8 @@ package racingversion2.car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import racingversion2.car.util.RandomValueGenerator;
 
 public class Cars {
 
@@ -13,20 +15,27 @@ public class Cars {
         }
     }
 
+    public Cars(List<Car> cars){
+        this.cars = cars;
+    }
+
     public List<Car> executeTurn() {
-        cars.stream().forEach(car -> car.move());
+        cars.stream()
+            .forEach(car -> car.move(RandomValueGenerator.generateRandomValue()));
         return cars;
     }
 
-    public List<Car> findWinners(){
-        List<Car> winners = new ArrayList<>();
-        cars.stream()
-            .filter(car -> car.getPosition() == winningPosition())
-            .forEach(car -> winners.add(car));
-        return winners;
+    public List<Car> findWinners(int winningPosition){
+        return cars.stream()
+            .filter(car -> car.getPosition() == winningPosition)
+            .collect(Collectors.toList());
+
     }
 
-    private int winningPosition(){
-        return cars.stream().mapToInt(car -> car.getPosition()).max().getAsInt();
+    public int winningPosition(){
+        return cars.stream()
+            .mapToInt(car -> car.getPosition())
+            .max()
+            .getAsInt();
     }
 }
