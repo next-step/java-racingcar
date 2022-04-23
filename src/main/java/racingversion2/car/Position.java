@@ -1,7 +1,5 @@
 package racingversion2.car;
 
-import java.util.Objects;
-
 public class Position {
 
     private int position;

@@ -1,6 +1,5 @@
 package racingversion2.car;
 
-
 import racingversion2.car.util.MoveDecider;
 
 public class Car {
