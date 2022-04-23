@@ -37,4 +37,11 @@ public class Location {
     public int hashCode() {
         return Objects.hash(number);
     }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+               "number=" + number +
+               '}';
+    }
 }

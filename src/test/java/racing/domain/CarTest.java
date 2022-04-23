@@ -1,55 +1,34 @@
 package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 
 public class CarTest {
+    @DisplayName("전진 조건이 맞으면 전진한다.")
+    @Test
+    void run_if_condition_true() {
+        Rule rule = () -> true;
+        Car car = new Car(rule);
+        final Location beforeLocation = car.getLocation();
 
-    private Car car;
+        car.run();
 
-    @BeforeEach
-    void setUp() {
-        car = new Car();
+        final Location afterLocation = car.getLocation();
+        assertThat(beforeLocation).isNotEqualTo(afterLocation);
     }
 
-    @DisplayName("랜덤 결과가 4이상인 경우 한 칸 전진한다.")
-    @ValueSource(ints = { 4, 9 })
-    @ParameterizedTest
-    void 전진(int randomResult) {
-        //given
-        Location carBeforeLocation = car.getLocation();
+    @DisplayName("전진 조건이 맞지않으면 전진하지 않는다.")
+    @Test
+    void no_run_if_condition_false() {
+        Rule rule = () -> false;
+        Car car = new Car(rule);
+        final Location beforeLocation = car.getLocation();
 
-        //when
-        car.run(randomResult);
+        car.run();
 
-        //then
-        assertThat(car.getLocation()).isEqualTo(carBeforeLocation.forward());
-    }
-
-    @DisplayName("랜덤 결과가 4미만이면 멈춰 있는다.")
-    @ValueSource(ints = { 0, 3 })
-    @ParameterizedTest
-    void 정지(int randomResult) {
-        //given
-        Location carBeforeLocation = car.getLocation();
-
-        //when
-        car.run(randomResult);
-
-        //then
-        assertThat(car.getLocation()).isEqualTo(carBeforeLocation);
-    }
-
-    @DisplayName("랜덤 결과는 0 ~ 9사이여야 한다. 그 외 범위라면 IllegalArgumentException이 발생한다.")
-    @ValueSource(ints = { -1, 10 })
-    @ParameterizedTest
-    void 게임결과_범위(int randomResult) {
-        assertThatThrownBy(() -> car.run(randomResult))
-                .isInstanceOf(IllegalArgumentException.class);
+        final Location afterLocation = car.getLocation();
+        assertThat(beforeLocation).isEqualTo(afterLocation);
     }
 }
