@@ -31,13 +31,6 @@ public class Car {
         return position.compareMax(max);
     }
 
-    public List<String> collectWinner(int max, List<String> winners) {
-        if (this.position.isMaxPosition(max)) {
-            winners.add((name));
-        }
-        return winners;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -49,5 +42,9 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(position, name);
+    }
+
+    public boolean isWinner(int max) {
+        return this.position.isMaxPosition(max);
     }
 }

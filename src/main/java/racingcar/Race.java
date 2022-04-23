@@ -31,12 +31,10 @@ public class Race {
     public List<String> findWinners() {
         int max = 1;
         List<String> winners = new ArrayList<String>();
-        for (Car car : cars) {
+        for (Car car : this.cars) {
             max = car.compareMax(max);
         }
-        for (Car car : cars) {
-            car.collectWinner(max, winners);
-        }
+        winners = this.cars.collectWinner(max, winners, this.cars);
         return winners;
     }
 

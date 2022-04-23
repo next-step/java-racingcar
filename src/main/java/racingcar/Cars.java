@@ -33,4 +33,12 @@ public class Cars extends ArrayList<Car> {
         throw new IllegalCallerException("remove does not allowed.");
     }
 
+    public List<String> collectWinner(int max, List<String> winners, Cars cars) {
+        for (Car car : cars) {
+            if (car.isWinner(max)) {
+                winners.add(car.name);
+            }
+        }
+        return winners;
+    }
 }
