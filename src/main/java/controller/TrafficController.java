@@ -57,7 +57,7 @@ public class TrafficController {
     print(RESULT_GUIDE_MESSAGE);
 
     do {
-      cars.moveAllCarRandomly(MAX_NUMBER_BOUND);
+      cars.moveAllCar(MAX_NUMBER_BOUND);
       tryCount.race();
       List<String> currentPositionMark = cars.markingPositions();
       currentPositionMark.forEach(OutputView::print);

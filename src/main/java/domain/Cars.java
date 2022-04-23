@@ -22,8 +22,8 @@ public class Cars {
     this.cars = cars;
   }
 
-  public void moveAllCarRandomly(int randomNumberBound) {
-    cars.forEach(car -> car.move(generateRandomNumberInRange(randomNumberBound)));
+  public void moveAllCar(int moveNumberBound) {
+    cars.forEach(car -> car.move(generateRandomNumberInRange(moveNumberBound)));
   }
 
   public Winners findWinners() {
