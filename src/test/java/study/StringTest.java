@@ -10,8 +10,7 @@ class StringTest {
     @DisplayName("문자열 \"1,2\" split")
     @Test
     void split() {
-        String[] result = "1,2".split(",");
-        assertThat(result).containsExactly("1", "2");
+        assertThat("1,2".split(",")).containsExactly("1", "2");
     }
 
     @DisplayName("문자열 \"1\" split 하였을 때 배열로 출력")
