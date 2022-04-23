@@ -1,40 +1,36 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
 
     private static final List<Car> cars = new ArrayList<>();
     private static final List<String> winners = new ArrayList<>();
+    private int max = 0;
 
-    public List<Car> createCar(String[] names) {
+    public void createCar(String[] names) {
         for (int i = 0; i < names.length; i++) {
             cars.add(new Car(names[i]));
         }
-        return cars;
     }
 
     public List<Car> startGame(RacingStrategy strategy) {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).moveOrStop(strategy, strategy.createNumber());
-        }
+        cars.forEach(car -> car.moveOrStop(strategy));
         return cars;
     }
 
-    public List<String> calMaxWinner() {
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < cars.size(); i++) {
-            list.add(cars.get(i).getMovement());
-        }
-        Integer max = Collections.max(list);
+    public void calMaxPosition() {
+        cars.forEach(car ->
+           max = car.getMaxPosition(max));
+    }
 
-        for (Car car : cars) {
-            if (max == car.getMovement()) {
+    public List<String> findWinner() {
+        cars.forEach(car -> {
+            if(car.isWinner(max)) {
                 winners.add(car.getName());
             }
-        }
+        });
         return winners;
     }
 }
