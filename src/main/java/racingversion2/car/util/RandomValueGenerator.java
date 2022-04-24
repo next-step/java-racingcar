@@ -6,7 +6,7 @@ public class RandomValueGenerator {
 
     private static final Random RANDOM = new Random();
 
-    public static int generateRandomValue(){
+    public static int generateRandomValue() {
         return RANDOM.nextInt(10);
     }
 

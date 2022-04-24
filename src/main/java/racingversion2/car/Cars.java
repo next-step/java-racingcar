@@ -10,12 +10,12 @@ public class Cars {
     private List<Car> cars = new ArrayList<>();
 
     public Cars(CarName[] carNames) {
-        for(int i = 0; i < carNames.length; i ++){
+        for (int i = 0; i < carNames.length; i++) {
             cars.add(new Car(carNames[i], new Position()));
         }
     }
 
-    public Cars(List<Car> cars){
+    public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
@@ -24,7 +24,8 @@ public class Cars {
             .forEach(car -> car.move(RandomValueGenerator.generateRandomValue()));
         return cars;
     }
-    public List<Car> findWinners(){
+
+    public List<Car> findWinners() {
         int winningPosition = winningPosition();
 
         return cars.stream()
@@ -32,7 +33,7 @@ public class Cars {
             .collect(Collectors.toList());
     }
 
-    private int winningPosition(){
+    private int winningPosition() {
         return cars.stream()
             .mapToInt(car -> car.getPosition())
             .max()

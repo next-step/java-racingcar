@@ -10,9 +10,9 @@ class RandomValueGeneratorTest {
 
     @Test
     @DisplayName("0 이상 9 이하의 랜덤 숫자를 만들어 준다.")
-    void randomValueGenerator(){
-        for(int i = 0 ; i < 100; i ++){
-            assertThat(RandomValueGenerator.generateRandomValue()).isBetween(0,9);
+    void randomValueGenerator() {
+        for (int i = 0; i < 100; i++) {
+            assertThat(RandomValueGenerator.generateRandomValue()).isBetween(0, 9);
         }
     }
 }

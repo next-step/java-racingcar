@@ -12,7 +12,7 @@ public class RacingGame {
         start();
     }
 
-    public static void start(){
+    public static void start() {
         InputView inputView = new InputView();
         CarName[] carNames = inputView.settingCarNames();
         int turnCount = inputView.settingTryCount();

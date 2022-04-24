@@ -11,12 +11,12 @@ public class OutputView {
     private static final String WINNER_MESSAGE = "가 최종 우승했습니다";
 
 
-    public void printResult(){
+    public void printResult() {
         System.out.println(System.lineSeparator() + GAME_RESULT);
     }
 
-    public void printCars(List<Car> cars){
-        for(Car car : cars){
+    public void printCars(List<Car> cars) {
+        for (Car car : cars) {
             String carMoveHistory = printCarMoveHistory(car.getPosition());
             System.out.printf("%s : %s\n", car.getName(), carMoveHistory);
         }
@@ -29,10 +29,10 @@ public class OutputView {
 
     public void printWinners(List<Car> winners) {
         StringBuilder sb = new StringBuilder();
-        for(Car car : winners){
+        for (Car car : winners) {
             sb.append(car.getName() + WINNER_SEPARATOR);
         }
-        sb.delete(sb.length()-2, sb.length());
+        sb.delete(sb.length() - 2, sb.length());
         System.out.println(sb + WINNER_MESSAGE);
     }
 }

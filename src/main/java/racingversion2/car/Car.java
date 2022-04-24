@@ -17,7 +17,7 @@ public class Car {
     }
 
     public void move(int random) {
-        if(MoveDecider.isMovingForwardCondition(random)) {
+        if (MoveDecider.isMovingForwardCondition(random)) {
             position.increase();
         }
     }
@@ -30,7 +30,7 @@ public class Car {
         return position.getPosition();
     }
 
-    public boolean isWinner(int winningPosition){
+    public boolean isWinner(int winningPosition) {
         return position.isWinningPosition(winningPosition);
     }
 }

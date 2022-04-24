@@ -10,7 +10,7 @@ class CarsTest {
 
     @Test
     @DisplayName("우승자 자동차를 찾는다.")
-    void findWinners(){
+    void findWinners() {
         Car jaden = new Car("jaden", 3);
         Car bmw = new Car("bmw", 1);
         Car benz = new Car("benz", 3);
