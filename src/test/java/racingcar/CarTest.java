@@ -17,13 +17,13 @@ class CarTest {
 
     @Test
     public void 자동차_전진() {
-        car.go();
+        car.move(() -> true);
         assertThat(car.getCurrentPosition()).isNotBlank().isEqualTo("-");
     }
 
     @Test
     public void 자동차_정지() {
-        car.stop();
+        car.move(() -> false);
         assertThat(car.getCurrentPosition()).isBlank().isEqualTo("");
     }
 }
