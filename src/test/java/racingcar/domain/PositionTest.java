@@ -1,17 +1,16 @@
 package racingcar.domain;
 
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PositionTest {
 
     @Test
     @DisplayName("현재 위치를 문자열로 표현한다")
     void initPosition() {
-        Position position = new Position();
+        Position position = new Position("");
 
         String initPosition = position.show();
 
@@ -21,7 +20,7 @@ class PositionTest {
     @Test
     @DisplayName("현재 위치를 숫자로 표현한다")
     void showPositionLength() {
-        Position position = new Position();
+        Position position = new Position("");
 
         int initPosition = position.length();
 
