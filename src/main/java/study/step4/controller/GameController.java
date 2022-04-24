@@ -24,6 +24,13 @@ public class GameController {
         this.resultView = resultView;
     }
 
+    public void start() {
+        RacingGame racingGame = raceGameSetting();
+
+        gameplay(racingGame);
+        winners(racingGame);
+    }
+
     private RacingGame raceGameSetting() {
         Cars cars = carSetting();
         GameCount gameCount = gameCountSetting();
@@ -37,13 +44,6 @@ public class GameController {
 
     private GameCount gameCountSetting() {
         return new GameCount(inputView.gameCountSetting());
-    }
-
-    public void start() {
-        RacingGame racingGame = raceGameSetting();
-
-        gameplay(racingGame);
-        winners(racingGame);
     }
 
     private void gameplay(RacingGame racingGame) {
