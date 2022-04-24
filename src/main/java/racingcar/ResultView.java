@@ -17,7 +17,7 @@ public class ResultView {
     }
 
     public static String createTrack(Car car) {
-        return car.createTrack();
+        return "-".repeat(car.position().at());
     }
 
 

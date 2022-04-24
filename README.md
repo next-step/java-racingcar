@@ -90,3 +90,5 @@ gony	: ----
 - [x] move collectWinner from Car to Cars
 - [x] fix: remove extending ArrayList, implement iterator
 - [x] fix: implement add, get at Cars
+- [x] fix: remove cars argument, use this.cars
+- [x] fix: remove createTrack at Position, Car but implement at ResultView 

@@ -11,6 +11,10 @@ public class Position {
         this.at = i;
     }
 
+    public int at() {
+        return this.at;
+    }
+
     public Position(String s) {
         this(Integer.parseInt(s));
     }
@@ -41,10 +45,6 @@ public class Position {
 
     public void move() {
         this.at = this.at + 1;
-    }
-
-    public String createTrack() {
-        return "-".repeat(this.at);
     }
 
     public int compareMax(int max) {

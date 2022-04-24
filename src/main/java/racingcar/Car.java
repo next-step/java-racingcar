@@ -11,6 +11,10 @@ public class Car {
         this(name, 1);
     }
 
+    public Position position() {
+        return this.position;
+    }
+
     public Car(String name, int at) {
         if (name.length() > 5 || name.length() < 1) {
             throw new IllegalArgumentException("Car name size should between 1 and 5");
@@ -21,10 +25,6 @@ public class Car {
 
     public void move() {
         position.move();
-    }
-
-    public String createTrack() {
-        return position.createTrack();
     }
 
     public int compareMax(int max) {

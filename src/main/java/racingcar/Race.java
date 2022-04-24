@@ -34,7 +34,7 @@ public class Race {
         for (Car car : this.cars) {
             max = car.compareMax(max);
         }
-        winners = this.cars.collectWinner(max, winners, this.cars);
+        winners = this.cars.collectWinner(max, winners);
         return winners;
     }
 
