@@ -1,19 +1,21 @@
 package racingcar.service;
 
+import racingcar.model.PlayCount;
 import racingcar.view.ResultView;
 import racingcar.model.Cars;
 
 public class GameService {
-    public static void start(Cars cars, int playCount) {
-        int startCount = 0;
-
+    public static void start(Cars cars, PlayCount playCount) {
+        int index = 0;
         ResultView.printStartResult();
-        while ( startCount != playCount ) {
+
+        while ( !playCount.isLast(index) ) {
             cars.play();
             cars.appendCarsStatus();
-            startCount++;
+            index++;
         }
         ResultView.printCars(cars);
 
     }
+
 }
