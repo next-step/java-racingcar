@@ -13,20 +13,21 @@ public class Circuit {
     private final List<Car> cars;
     private final Integer totalRound;
 
-    public Circuit(int numberOfCars, int numberOfMoves) {
-        if (numberOfCars > MAX_NUMBER_OF_CARS || numberOfMoves > MAX_NUMBER_OF_MOVES
-                || numberOfCars < MIN_NUMBER_OF_CARS || numberOfMoves < MIN_NUMBER_OF_MOVES) {
+    public Circuit(String[] carNames, int numberOfMoves) {
+
+        if (carNames.length > MAX_NUMBER_OF_CARS || numberOfMoves > MAX_NUMBER_OF_MOVES
+                || carNames.length < MIN_NUMBER_OF_CARS || numberOfMoves < MIN_NUMBER_OF_MOVES) {
             throw new IllegalArgumentException();
         }
         this.totalRound = numberOfMoves;
         Engine engine = new Engine();
-        cars = createCars(engine, numberOfCars, numberOfMoves);
+        cars = createCars(engine, carNames, numberOfMoves);
     }
 
-    private List<Car> createCars(Engine engine, int numberOfCar, int numberOfMoves) {
+    private List<Car> createCars(Engine engine, String[] carNames, int numberOfMoves) {
         List<Car> createdCars = new ArrayList<>();
-        for (int i = 0; i < numberOfCar; i++) {
-            createdCars.add(new Car(engine, numberOfMoves));
+        for (String carName : carNames) {
+            createdCars.add(new Car(carName, engine, numberOfMoves));
         }
         return createdCars;
     }

@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class CarCircuit {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int carCount = InputView.inputCarCount(scanner);
+        String[] carNames = InputView.inputCarNames(scanner);
         int racingCount = InputView.inputRacingCount(scanner);
 
-        Circuit circuit = new Circuit(carCount, racingCount);
+        Circuit circuit = new Circuit(carNames, racingCount);
         circuit.startRacing();
 
         ResultView.view(circuit);
