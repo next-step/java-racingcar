@@ -19,7 +19,6 @@ public class StringCalculator {
     public StringCalculator() {
     }
 
-
     public int calculate() {
         int result = 0;
         if(isEmpty(input)){

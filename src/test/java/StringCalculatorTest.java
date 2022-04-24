@@ -1,5 +1,5 @@
 
-import charactercalculator.CharCalculator;
+import charactercalculator.StringCalculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,36 +15,36 @@ import org.junit.jupiter.api.Test;
  * 예를 들어 “//;\n1;2;3”과 같이 값을 입력할 경우 커스텀 구분자는 세미콜론(;)이며, 결과 값은 6이 반환되어야 한다.
  * 문자열 계산기에 숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 throw한다.
  */
-public class CalculateTest {
+public class StringCalculatorTest {
 
     @DisplayName("빈 문자열 또는 null 값을 입력할 경우 0을 반환해야 한다.")
     @Test
     void null_input_test(){
-        CharCalculator target = new CharCalculator();
+        StringCalculator target = new StringCalculator();
         Assertions.assertThat(target.calculate()).isEqualTo(0);
     }
 
     @Test
     void zero_comma_test(){
-        CharCalculator target = new CharCalculator("");
+        StringCalculator target = new StringCalculator("");
         Assertions.assertThat(target.calculate()).isEqualTo(0);
     }
 
     @Test
     void one_two_test(){
-        CharCalculator target = new CharCalculator("1,2");
+        StringCalculator target = new StringCalculator("1,2");
         Assertions.assertThat(target.calculate()).isEqualTo(3);
     }
 
     @Test
     void one_two_three_test(){
-        CharCalculator target = new CharCalculator("1,2:3");
+        StringCalculator target = new StringCalculator("1,2:3");
         Assertions.assertThat(target.calculate()).isEqualTo(6);
     }
 
     @Test
     void minus_test(){
-        CharCalculator target = new CharCalculator("-1,2:3");
+        StringCalculator target = new StringCalculator("-1,2:3");
         Assertions.assertThatThrownBy(() -> target.calculate())
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("양수를 입력해야 합니다.");
@@ -52,7 +52,7 @@ public class CalculateTest {
 
     @Test
     void custom_separator_test(){
-        CharCalculator target = new CharCalculator("//;\n1;2;3");
+        StringCalculator target = new StringCalculator("//;\n1;2;3");
         Assertions.assertThat(target.calculate()).isEqualTo(6);
     }
 }
