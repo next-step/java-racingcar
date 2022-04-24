@@ -49,7 +49,33 @@ public class CarsTest {
     assertThrows(IllegalArgumentException.class, () -> Cars.fromString(" , "));
   }
 
+  @Test
+  void findWinners_단수우승자_성공() {
+    Car car1 = new Car(CAR_NAME_1, 0);
+    Car car2 = new Car(CAR_NAME_2, 1);
+    Car car3 = new Car(CAR_NAME_3, 1);
+    Car car4 = new Car(CAR_NAME_4, 1);
+    Car car5 = new Car(CAR_NAME_5, 2);
 
+    Cars cars = new Cars(List.of(car1, car2, car3, car4, car5));
+    Winners winners = new Winners(List.of(CAR_NAME_5));
+
+    assertThat(cars.findWinners().equals(winners)).isTrue();
+  }
+
+  @Test
+  void findWinners_복수우승자_성공() {
+    Car car1 = new Car(CAR_NAME_1, 0);
+    Car car2 = new Car(CAR_NAME_2, 1);
+    Car car3 = new Car(CAR_NAME_3, 2);
+    Car car4 = new Car(CAR_NAME_4, 1);
+    Car car5 = new Car(CAR_NAME_5, 2);
+
+    Cars cars = new Cars(List.of(car1, car2, car3, car4, car5));
+    Winners winners = new Winners(List.of(CAR_NAME_3, CAR_NAME_5));
+
+    assertThat(cars.findWinners().equals(winners)).isTrue();
+  }
 
   @Test
   void markingPositions_성공() {
