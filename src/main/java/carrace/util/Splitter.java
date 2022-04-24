@@ -1,4 +1,6 @@
-package carrace;
+package carrace.util;
+
+import carrace.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;

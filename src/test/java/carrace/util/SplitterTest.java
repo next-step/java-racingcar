@@ -1,5 +1,7 @@
-package carrace;
+package carrace.util;
 
+import carrace.Car;
+import carrace.util.Splitter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

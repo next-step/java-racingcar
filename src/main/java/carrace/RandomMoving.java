@@ -1,5 +1,7 @@
 package carrace;
 
+import carrace.util.RandomNumberGenerator;
+
 public class RandomMoving implements Moving {
     private static final int DECISION_VALUE = 4;
     private static final int GO = 1;

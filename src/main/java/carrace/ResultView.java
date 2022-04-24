@@ -1,47 +1,31 @@
 package carrace;
 
 public class ResultView {
-    public void printCarRaceResult(CarRace carRace) {
-        System.out.println("\n실행 결과");
-        int index = 0;
-        for (int result : carRace.getRecordCarRace().getRaceInfoBoards()) {
-            printResultOfEachCar(result, getCarName(carRace, index));
-            index++;
-
-            divideEndOfEachRace(index, carRace.getNumberOfCars());
+    public void printCarRace(CarRace carRace) {
+        for (Car car : carRace.getCars()) {
+            printResultOfEachCar(car);
         }
-
-        printWinners(carRace);
+        System.out.println();
     }
 
-    private String getCarName(CarRace carRace, int index) {
-        return carRace.getCars().get(index % carRace.getNumberOfCars()).getName();
-    }
-
-    private void printResultOfEachCar(int result, String carName) {
-        System.out.print(carName + " : ");
-        for (int i = 0; i < result; i++) {
+    private void printResultOfEachCar(Car car) {
+        System.out.print(car.getName() + " : ");
+        for (int i = 0; i < car.getPosition(); i++) {
             System.out.print("-");
         }
         System.out.println();
     }
 
-    private void divideEndOfEachRace(int index, int numberOfCars) {
-        if (index % numberOfCars == 0) {
-            System.out.println();
-        }
-    }
-
-    private void printWinners(CarRace carRace) {
+    public void printWinners(CarRace carRace) {
         int i = 0;
         for (Car car : carRace.getRaceWinner().getWinners()) {
-            printCommoa(i++);
+            printComma(i++);
             System.out.print(car.getName());
         }
         System.out.println("가 우승했습니다.");
     }
 
-    private void printCommoa(int i) {
+    private void printComma(int i) {
         if (i != 0) {
             System.out.print(", ");
         }
