@@ -27,6 +27,10 @@ public class Cars {
     }
 
     public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy == null) {
+            throw new NullPointerException("move 전략이 null 입니다");
+        }
+
         for (Car car : cars) {
             car.move(moveStrategy);
         }
