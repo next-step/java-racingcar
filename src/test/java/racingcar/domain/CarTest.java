@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import racingcar.domain.Car;
 import racingcar.util.generator.NumberGenerator;
 import racingcar.util.strategy.move.CarMoveStrategy;
 import racingcar.util.strategy.move.MoveStrategy;
