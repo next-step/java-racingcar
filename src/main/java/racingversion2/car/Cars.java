@@ -24,15 +24,15 @@ public class Cars {
             .forEach(car -> car.move(RandomValueGenerator.generateRandomValue()));
         return cars;
     }
+    public List<Car> findWinners(){
+        int winningPosition = winningPosition();
 
-    public List<Car> findWinners(int winningPosition){
         return cars.stream()
             .filter(car -> car.isWinner(winningPosition))
             .collect(Collectors.toList());
-
     }
 
-    public int winningPosition(){
+    private int winningPosition(){
         return cars.stream()
             .mapToInt(car -> car.getPosition())
             .max()

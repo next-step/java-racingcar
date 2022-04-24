@@ -20,7 +20,7 @@ public class RacingGame {
         OutputView outputView = new OutputView();
         outputView.printResult();
         IntStream.range(0, turnCount).forEach(turn -> outputView.printCars(cars.executeTurn()));
-        outputView.printWinners(cars.findWinners(cars.winningPosition()));
+        outputView.printWinners(cars.findWinners());
     }
 
 }
