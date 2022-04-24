@@ -1,5 +1,6 @@
 package racingcarwinner.domain;
 
+import racingcarwinner.Exception.IllegalNameSizeException;
 import racingcarwinner.strategy.MoveStrategy;
 
 public class Car {
@@ -8,8 +9,13 @@ public class Car {
     private final String name;
 
     public Car(String name) {
-        this.name = name;
+        this.name = isLessThanFive(name);
         position = new StringBuilder();
+    }
+
+    private String isLessThanFive(String name) {
+        if(name.length() <= 5)  return name;
+        throw new IllegalNameSizeException();
     }
 
     public String getPosition() {
