@@ -5,6 +5,9 @@ public class CarPosition {
     private final int position;
 
     public CarPosition(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("car postion 은 음수가될수 없다");
+        }
         this.position = position;
     }
 
