@@ -34,9 +34,21 @@ public class DistanceTest {
     }
 
     @Test
-    @DisplayName("compareTo 를 이용해 두 Distance 를 비교한다")
-    void compareToTest() {
-        assertThat(new Distance(1).compareTo(new Distance(2))).isEqualTo(-1);
+    @DisplayName("compareTo 비교시 기준값보다 비교값이 클 경우 -1을 리턴한다.")
+    void compareToLessTest() {
+        assertThat(ZERO.compareTo(ONE)).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("compareTo 비교시 기준값보다 비교값이 같을 경우 0을 리턴한다.")
+    void compareToEqualTest() {
+        assertThat(ONE.compareTo(ONE)).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("compareTo 비교시 기준값보다 비교값이 작을 경우 1을 리턴한다.")
+    void compareToGreaterTest() {
+        assertThat(ONE.compareTo(ZERO)).isEqualTo(1);
     }
 
     @Test

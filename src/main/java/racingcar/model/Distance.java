@@ -1,6 +1,6 @@
 package racingcar.model;
 
-public final class Distance implements Comparable {
+public final class Distance implements Comparable<Distance> {
     public static final Distance ZERO = new Distance(0);
     public static final Distance ONE = new Distance(1);
 
@@ -44,11 +44,7 @@ public final class Distance implements Comparable {
     }
 
     @Override
-    public int compareTo(Object obj) {
-        if (obj instanceof Distance) {
-            Distance distance = (Distance) obj;
-            return value - distance.value();
-        }
-        return 0;
+    public int compareTo(Distance distance) {
+        return value - distance.value();
     }
 }
