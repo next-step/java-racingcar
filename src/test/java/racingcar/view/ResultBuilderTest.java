@@ -16,7 +16,7 @@ class ResultBuilderTest {
         car.move();
         car.move();
 
-        assertThat(new ResultBuilder(car.getPosition(), car.getCarName()).build()).isEqualTo("tom : --");
+        assertThat(new ResultBuilder(car.position(), car.carName()).build()).isEqualTo("tom : --");
     }
 
 }

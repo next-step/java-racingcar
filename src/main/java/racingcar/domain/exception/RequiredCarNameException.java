@@ -1,4 +1,4 @@
-package racingcar.domain.input.exception;
+package racingcar.domain.exception;
 
 public class RequiredCarNameException extends IllegalArgumentException {
 

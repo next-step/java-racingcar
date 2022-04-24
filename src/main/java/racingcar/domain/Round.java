@@ -30,8 +30,8 @@ public class Round {
         return true;
     }
 
-    public int getCurrentRound() {
-        return this.currentRound.getCount();
+    public RoundCount currentRound() {
+        return this.currentRound;
     }
 
     @Override

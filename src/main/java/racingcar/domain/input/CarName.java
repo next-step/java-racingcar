@@ -1,7 +1,9 @@
 package racingcar.domain.input;
 
-import racingcar.domain.input.exception.MaximumCarNameException;
-import racingcar.domain.input.exception.RequiredCarNameException;
+import racingcar.domain.exception.MaximumCarNameException;
+import racingcar.domain.exception.RequiredCarNameException;
+
+import java.util.Objects;
 
 public class CarName {
 
@@ -26,16 +28,21 @@ public class CarName {
         return carName == null || carName.isBlank();
     }
 
-    public String getCarName() {
-        return this.carName;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarName carName1 = (CarName) o;
+        return Objects.equals(carName, carName1.carName);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof CarName)) {
-            return false;
-        }
-        CarName cn = (CarName) obj;
-        return cn.carName.equals(carName);
+    public int hashCode() {
+        return Objects.hash(carName);
+    }
+
+    @Override
+    public String toString() {
+        return this.carName;
     }
 }

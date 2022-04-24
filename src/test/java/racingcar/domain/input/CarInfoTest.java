@@ -2,9 +2,7 @@ package racingcar.domain.input;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.input.CarInfo;
-import racingcar.domain.input.exception.InvalidCarNameException;
-import racingcar.dto.InputCar;
+import racingcar.domain.exception.InvalidCarNameException;
 
 import static org.assertj.core.api.Assertions.*;
 

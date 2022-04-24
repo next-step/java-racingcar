@@ -21,7 +21,7 @@ class RoundTest {
             tryCount++;
         }
 
-        assertThat(tryCount).isEqualTo(totalRound.getCount());
+        assertThat(tryCount).isEqualTo(totalRound.toInt());
     }
 
 }

@@ -22,4 +22,19 @@ public class History {
     public List<Car> getCars() {
         return cars;
     }
+
+    public List<Car> topCars() {
+        int maxPosition = getMaxPosition();
+        return cars.stream()
+                .filter(car -> car.isTop(maxPosition))
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = car.compareMaxPosition(maxPosition);
+        }
+        return maxPosition;
+    }
 }
