@@ -7,7 +7,6 @@ public class RacingGame {
 
     private static final List<Car> cars = new ArrayList<>();
     private static final List<String> winners = new ArrayList<>();
-    private int max = 0;
 
     public void createCar(String[] names) {
         for (int i = 0; i < names.length; i++) {
@@ -20,12 +19,16 @@ public class RacingGame {
         return cars;
     }
 
-    public void calMaxPosition() {
-        cars.forEach(car ->
-           max = car.getMaxPosition(max));
+    public int calMaxPosition() {
+        int maxValue = 0;
+        for (Car car : cars) {
+            maxValue = car.getMaxPosition(maxValue);
+        }
+        return maxValue;
     }
 
     public List<String> findWinner() {
+        int max = calMaxPosition();
         cars.forEach(car -> {
             if(car.isWinner(max)) {
                 winners.add(car.getName());

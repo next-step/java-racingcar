@@ -24,7 +24,6 @@ public class RacingCarApplication {
         for (int i = 0; i < tries; i++) {
             outputView.printResult(racingGame.startGame(randomStrategy));
         }
-        racingGame.calMaxPosition();
         outputView.printWinner(racingGame.findWinner());
     }
 }
