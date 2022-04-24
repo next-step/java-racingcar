@@ -27,14 +27,12 @@ public class Cars {
   }
 
   public Winners findWinners() {
-    List<Car> sortedCars = cars.stream()
-        .sorted(Car::compareTo)
-        .collect(Collectors.toUnmodifiableList());
-
-    Car winner = sortedCars.get(0);
+    Car winner = cars.stream()
+        .max(Car::compareTo)
+        .orElseThrow();
 
     return new Winners(cars.stream()
-        .filter((car) -> car.compareTo(winner) <= 0)
+        .filter((car) -> car.compareTo(winner) == 0)
         .map(Car::toString)
         .collect(Collectors.toUnmodifiableList()));
   }
