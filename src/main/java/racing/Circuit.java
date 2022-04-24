@@ -11,23 +11,25 @@ public class Circuit {
     private static final int MIN_NUMBER_OF_MOVES = 1;
 
     private final List<Car> cars;
+
+    private final List<Car> winners;
     private final Integer totalRound;
 
     public Circuit(String[] carNames, int numberOfMoves) {
-
         if (carNames.length > MAX_NUMBER_OF_CARS || numberOfMoves > MAX_NUMBER_OF_MOVES
                 || carNames.length < MIN_NUMBER_OF_CARS || numberOfMoves < MIN_NUMBER_OF_MOVES) {
             throw new IllegalArgumentException();
         }
         this.totalRound = numberOfMoves;
         Engine engine = new Engine();
-        cars = createCars(engine, carNames, numberOfMoves);
+        cars = createCars(carNames, engine, numberOfMoves);
+        winners = new ArrayList<>();
     }
 
-    private List<Car> createCars(Engine engine, String[] carNames, int numberOfMoves) {
+    private List<Car> createCars(String[] carNames, Engine engine, int numberOfMoves) {
         List<Car> createdCars = new ArrayList<>();
         for (String carName : carNames) {
-            createdCars.add(new Car(carName, engine, numberOfMoves));
+            createdCars.add(new Car(carName.trim(), engine, numberOfMoves));
         }
         return createdCars;
     }
@@ -35,6 +37,37 @@ public class Circuit {
     public void startRacing() {
         for (Car car : cars) {
             car.racingStart();
+        }
+        findWinners(cars);
+    }
+
+    public String whoIsWinners() {
+        StringBuilder winnersName = new StringBuilder(this.winners.get(0).getCarName());
+        if (winners.size() == 1) {
+            return winnersName.toString();
+        }
+
+        for (int i = 1; i < this.winners.size(); i++) {
+            winnersName.append(", ").append(winners.get(i).getCarName());
+        }
+
+        return winnersName.toString();
+    }
+
+    private void findWinners(List<Car> cars) {
+        int maxDistance = 0;
+        for (Car car : cars) {
+            int carDistance = (int) car.getMoves().stream().filter(item -> item).count();
+            if (carDistance > maxDistance) {
+                maxDistance = carDistance;
+            }
+        }
+
+        for (Car car : cars) {
+            int carDistance = (int) car.getMoves().stream().filter(item -> item).count();
+            if (carDistance == maxDistance) {
+                this.winners.add(car);
+            }
         }
     }
 

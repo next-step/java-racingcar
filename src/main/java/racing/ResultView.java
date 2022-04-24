@@ -22,7 +22,7 @@ public class ResultView {
     }
 
     private static void viewCar(Car car, int round) {
-        System.out.println(getCarDistance(car, round));
+        System.out.println(car.getCarName() + ": " + getCarDistance(car, round));
     }
 
     private static StringBuilder getCarDistance(Car car, int round) {
