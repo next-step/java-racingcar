@@ -3,6 +3,7 @@ package racingcarv2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.service.GameService;
 
@@ -28,7 +29,15 @@ class CarsTest {
     @DisplayName("자동차 경주 우승자 확인 테스트")
     @Test
     void is_winner_test(){
-        GameService.start(cars, 5);
-        assertThat(cars.isWinners().size()).isGreaterThan(1);
+        Cars testCars = new Cars();
+
+        Car pobi = new Car("pobi",3);
+        Car crong = new Car("crong",2);
+        Car honux = new Car("honux",1);
+        testCars.add(pobi);
+        testCars.add(crong);
+        testCars.add(honux);
+
+        assertThat(testCars.isWinners()).contains(new Car("pobi",3));
     }
 }
