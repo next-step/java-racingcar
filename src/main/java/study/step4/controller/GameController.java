@@ -4,6 +4,7 @@ package study.step4.controller;
 import study.step4.domain.Car;
 import study.step4.domain.Cars;
 import study.step4.domain.strategy.RandomMoveStrategy;
+import study.step4.service.GameCount;
 import study.step4.service.RacingGame;
 import study.step4.view.InputView;
 import study.step4.view.ResultView;
@@ -23,15 +24,19 @@ public class GameController {
         this.resultView = resultView;
     }
 
+    private RacingGame raceGameSetting() {
+        Cars cars = carSetting();
+        GameCount gameCount = gameCountSetting();
+
+        return new RacingGame(cars, gameCount);
+    }
+
     private Cars carSetting() {
         return new Cars(inputView.carSetting());
     }
 
-    private RacingGame raceGameSetting() {
-        Cars cars = carSetting();
-        int gameCount = gameCountSetting();
-
-        return new RacingGame(cars, gameCount);
+    private GameCount gameCountSetting() {
+        return new GameCount(inputView.gameCountSetting());
     }
 
     public void start() {
@@ -54,8 +59,4 @@ public class GameController {
         resultView.winners(racingGame.winners());
     }
 
-
-    private int gameCountSetting() {
-        return inputView.gameCountSetting();
-    }
 }

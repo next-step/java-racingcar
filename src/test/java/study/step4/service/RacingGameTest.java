@@ -21,7 +21,7 @@ class RacingGameTest {
         var carNames = new String[]{"a", "b", "c"};
         Cars cars = new Cars(carNames);
 
-        RacingGame racingGame = new RacingGame(cars, 1);
+        RacingGame racingGame = new RacingGame(cars, new GameCount(1));
 
         List<CarsPositionModel> result = racingGame.play(new TestMoveStrategy(4));
         assertThat(result)
@@ -35,7 +35,7 @@ class RacingGameTest {
     void nextGame() {
         var carNames = new String[]{"a", "b", "c"};
         Cars cars = new Cars(carNames);
-        RacingGame racingGame = new RacingGame(cars, 4);
+        RacingGame racingGame = new RacingGame(cars, new GameCount(4));
 
         racingGame.play(new TestMoveStrategy(4));
         racingGame.play(new TestMoveStrategy(4));
@@ -51,7 +51,7 @@ class RacingGameTest {
     void winners() {
         var carNames = new String[]{"a", "b", "c"};
         Cars cars = new Cars(carNames);
-        RacingGame racingGame = new RacingGame(cars, 2);
+        RacingGame racingGame = new RacingGame(cars, new GameCount(2));
 
         racingGame.play(new TestMoveStrategy(4));
         racingGame.play(new TestMoveStrategy(4));

@@ -7,11 +7,10 @@ import study.step4.domain.strategy.MoveStrategy;
 import java.util.List;
 
 public class RacingGame {
-    private static final int GAME_TERMINATED_COUNT = 0;
     private Cars cars;
-    private int gameCount;
+    private GameCount gameCount;
 
-    public RacingGame(Cars cars, int gameCount) {
+    public RacingGame(Cars cars, GameCount gameCount) {
         this.cars = cars;
         this.gameCount = gameCount;
     }
@@ -23,10 +22,10 @@ public class RacingGame {
     }
 
     public boolean isPlay() {
-        if(gameCount == GAME_TERMINATED_COUNT)
+        if(gameCount.isTerminated())
             return false;
 
-        gameCount--;
+        gameCount.consume();
 
         return true;
     }

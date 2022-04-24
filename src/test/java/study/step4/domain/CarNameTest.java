@@ -22,10 +22,11 @@ class CarNameTest {
     }
 
     @DisplayName("자동차 이름은 5자 초과시 exception 이 발생한다")
-    @Test
-    void carNameException() {
+    @ParameterizedTest
+    @ValueSource(strings = {"abcdef", "abcdefg", "abcdefghi"})
+    void carNameException(String name) {
         assertThatThrownBy(() -> {
-            CarName carName = new CarName("abcdef");
+            CarName carName = new CarName(name);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5자를 초과할 수 없다");
     }
