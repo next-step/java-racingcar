@@ -5,21 +5,18 @@ import racingcarwinner.strategy.MoveStrategy;
 
 public class Car {
     private static final String POSITION_STRING = "-";
-    private StringBuilder position;
+    private final StringBuilder position;
     private final String name;
+    private int currentPosition;
 
     public Car(String name) {
-        this.name = isLessThanFive(name);
-        position = new StringBuilder();
+        this.name = assertNameSize(name);
+        position = new StringBuilder().append(name).append(" : ");
     }
 
-    private String isLessThanFive(String name) {
+    private String assertNameSize(String name) {
         if(name.length() <= 5)  return name;
         throw new IllegalNameSizeException();
-    }
-
-    public String getPosition() {
-        return position.toString();
     }
 
     public String getCarName() {
@@ -27,7 +24,7 @@ public class Car {
     }
 
     public int getPositionNumber() {
-        return position.length();
+        return currentPosition;
     }
 
     public void move(MoveStrategy moveStrategy) {
@@ -36,19 +33,20 @@ public class Car {
 
     private void go() {
         position.append(POSITION_STRING);
+        currentPosition += 1;
     }
 
     @Override
     public String toString() {
-        return new StringBuilder(name).append(" : ").append(position.toString()).toString();
+        return position.toString();
     }
 
     public boolean isMaxPosition(int maxPosition) {
-        return position.length() == maxPosition;
+        return currentPosition == maxPosition;
     }
 
-    public int isEqualMax(int max) {
-        if(max < getPositionNumber())   return getPositionNumber();
+    public int isMax(int max) {
+        if(max < currentPosition)   return currentPosition;
         return max;
     }
 }

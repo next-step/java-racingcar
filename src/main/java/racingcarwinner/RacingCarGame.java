@@ -1,8 +1,8 @@
 package racingcarwinner;
 
-import racingcarwinner.domain.CarCount;
 import racingcarwinner.domain.ParticipatedCars;
 import racingcarwinner.domain.TryCount;
+import racingcarwinner.factory.ObjectFactory;
 import racingcarwinner.service.ParticipatedCarsUtils;
 import racingcarwinner.service.RacingCarGameUtils;
 import racingcarwinner.view.InputView;
@@ -10,18 +10,15 @@ import racingcarwinner.view.InputView;
 public class RacingCarGame {
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
 
-        String carNames = inputView.getCarNamesInput();
-        String[] carNamesArray = new ParticipatedCarsUtils(carNames).getCarNames();
-        CarCount carCount = new CarCount(carNamesArray);
+        ObjectFactory factory = new ObjectFactory();
 
-        ParticipatedCars participatedCars = new ParticipatedCars(carNamesArray);
+        ParticipatedCars participatedCars = factory.createParticipatedCars();
 
-        int tryCountInput = inputView.getTryCountInput();
-        TryCount tryCount = new TryCount(tryCountInput);
+        TryCount tryCount = factory.createTryCount();
 
-        RacingCarGameUtils racingCarGameUtils = new RacingCarGameUtils(carCount, tryCount);
+        RacingCarGameUtils racingCarGameUtils = factory.createRacingCarGameUtils(tryCount);
+
         racingCarGameUtils.play(participatedCars);
 
     }

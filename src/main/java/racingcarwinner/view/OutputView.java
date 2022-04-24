@@ -16,11 +16,8 @@ public class OutputView {
     public void printGameResult(ParticipatedCars participatedCars) {
         printNextLine();
 
-        List<Car> participatedCarList = participatedCars.getParticipatedCars();
-
-        for(Car car : participatedCarList) {
-            System.out.println(car);
-        }
+        List<Car> participatedCarsList = participatedCars.getParticipatedCars();
+        participatedCarsList.forEach(System.out::println);
     }
 
     public void printWinnerResult(WinnerCars winnerCars) {

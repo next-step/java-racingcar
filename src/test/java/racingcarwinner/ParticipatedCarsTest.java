@@ -2,12 +2,13 @@ package racingcarwinner;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcarwinner.Exception.NoWinnerException;
 import racingcarwinner.domain.Car;
 import racingcarwinner.domain.ParticipatedCars;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ParticipatedCarsTest {
 
@@ -17,22 +18,13 @@ class ParticipatedCarsTest {
     @BeforeEach
     void setUp() {
         participatedCars = new ParticipatedCars(names);
-
         List<Car> cars = participatedCars.getParticipatedCars();
-
-        cars.get(0).move(() -> true);
-        cars.get(0).move(() -> true);
-        cars.get(0).move(() -> true);
-
-        cars.get(1).move(() -> true);
-        cars.get(1).move(() -> true);
-
-        cars.get(2).move(() -> true);
     }
 
     @Test
-    void 참가자동차_생성() {
-        assertThat(participatedCars.getParticipatedCars()).hasSize(3);
+    void 모든자동차_움직이지않은경우_우승자구할수없는예외() {
+        assertThatThrownBy(() -> {
+            participatedCars.getMaxPositionList();
+        }).isInstanceOf(NoWinnerException.class);
     }
-
 }
