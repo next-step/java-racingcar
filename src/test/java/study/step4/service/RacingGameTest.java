@@ -8,6 +8,7 @@ import study.step4.util.TestMoveStrategy;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.groups.Tuple.tuple;
@@ -33,17 +34,17 @@ class RacingGameTest {
     @DisplayName("게임 종료 테스트")
     @Test
     void nextGame() {
+        int gameCount = 4;
         var carNames = new String[]{"a", "b", "c"};
         Cars cars = new Cars(carNames);
-        RacingGame racingGame = new RacingGame(cars, new GameCount(4));
+        RacingGame racingGame = new RacingGame(cars, new GameCount(gameCount));
 
-        racingGame.play(new TestMoveStrategy(4));
-        racingGame.play(new TestMoveStrategy(4));
-        racingGame.play(new TestMoveStrategy(4));
-        racingGame.play(new TestMoveStrategy(4));
-        racingGame.play(new TestMoveStrategy(4));
+        while(gameCount > 0) {
+            racingGame.play(new TestMoveStrategy(4));
+            gameCount--;
+        }
 
-        assertThat(racingGame.isPlay()).isTrue();
+        assertThat(racingGame.isTerminated()).isTrue();
     }
 
     @DisplayName("우승자 테스트")

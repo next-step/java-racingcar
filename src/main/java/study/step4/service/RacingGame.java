@@ -16,18 +16,14 @@ public class RacingGame {
     }
 
     public List<CarsPositionModel> play(MoveStrategy moveStrategy) {
+        gameCount.consume();
         cars.move(moveStrategy);
 
         return cars.toCarsPositionModel();
     }
 
-    public boolean isPlay() {
-        if(gameCount.isTerminated())
-            return false;
-
-        gameCount.consume();
-
-        return true;
+    public boolean isTerminated() {
+        return gameCount.isTerminated();
     }
 
     public List<String> winners() {

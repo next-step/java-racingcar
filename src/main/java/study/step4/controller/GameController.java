@@ -48,7 +48,7 @@ public class GameController {
 
     private void gameplay(RacingGame racingGame) {
         resultView.start();
-        while (racingGame.isPlay()) {
+        while (racingGame.isTerminated()) {
             resultView.printPlay(racingGame.play(new RandomMoveStrategy()));
             resultView.plintln();
         }
