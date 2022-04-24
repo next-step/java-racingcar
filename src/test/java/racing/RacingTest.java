@@ -14,31 +14,31 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class RacingTest {
     @ParameterizedTest
     @MethodSource("provideInputCar")
-    void circuitTest(int numberOfCar, int numberOfRacing) {
-        Circuit circuit = new Circuit(numberOfCar, numberOfRacing);
+    void circuitTest(String[] carNames, int numberOfRacing) {
+        Circuit circuit = new Circuit(carNames, numberOfRacing);
         circuit.startRacing();
-        assertThat(numberOfCar).isEqualTo(circuit.getCars().size());
+        assertThat(carNames.length).isEqualTo(circuit.getCars().size());
 
 
-        int errorMinNumberOfCar = 0;
+        String[] errorMinNumberOfCar = new String[0];
         int errorMinNumberOfMove = 0;
         assertThatThrownBy(() -> new Circuit(errorMinNumberOfCar, numberOfRacing))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Circuit(numberOfCar, errorMinNumberOfMove))
+        assertThatThrownBy(() -> new Circuit(carNames, errorMinNumberOfMove))
                 .isInstanceOf(IllegalArgumentException.class);
 
 
-        int errorMaxNumberOfCar = 100;
+        String[] errorMaxNumberOfCar = new String[100];
         int errorMaxNumberOfMove = 100;
         assertThatThrownBy(() -> new Circuit(errorMaxNumberOfCar, numberOfRacing))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Circuit(numberOfCar, errorMaxNumberOfMove))
+        assertThatThrownBy(() -> new Circuit(carNames, errorMaxNumberOfMove))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     private static Stream<Arguments> provideInputCar() {
         return Stream.of(
-                Arguments.of(3, 3)
+                Arguments.of(new String[]{"first", "twice"}, 3)
         );
     }
 
@@ -48,12 +48,13 @@ public class RacingTest {
     void carTest() {
         int moveCount = 3;
         Engine engine = new Engine();
-        Car car = new Car(engine, moveCount);
+        String carName = "min";
+        Car car = new Car(carName, engine, moveCount);
         car.racingStart();
         assertThat(moveCount).isEqualTo(car.getMoves().size());
 
         int errorMoveCount = 0;
-        assertThatThrownBy(() -> new Car(engine, errorMoveCount))
+        assertThatThrownBy(() -> new Car(carName, engine, errorMoveCount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
