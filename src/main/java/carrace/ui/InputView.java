@@ -1,4 +1,6 @@
-package carrace;
+package carrace.ui;
+
+import carrace.CarRace;
 
 import java.util.Scanner;
 

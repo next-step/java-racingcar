@@ -1,6 +1,9 @@
 package carrace;
 
 
+import carrace.ui.InputView;
+import carrace.ui.ResultView;
+
 public class Race {
 
     public static void main(String[] args) {

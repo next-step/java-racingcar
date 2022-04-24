@@ -1,5 +1,7 @@
 package carrace;
 
+import carrace.moving.RandomMoving;
+
 public class Car {
 
     private final RandomMoving randomMoving = new RandomMoving();
@@ -12,14 +14,13 @@ public class Car {
         this.name = name;
     }
 
-    public void race() {
-        this.position += move(randomMoving);
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
     }
 
-    public void race(int numberOfRaces) {
-        for (int i = 0; i < numberOfRaces; i++) {
-            this.position += move(randomMoving);
-        }
+    public void race() {
+        this.position += move(randomMoving);
     }
 
     private int move(RandomMoving randomMoving) {

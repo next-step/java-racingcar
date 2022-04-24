@@ -25,4 +25,19 @@ public class RaceWinner {
     public List<Car> getWinners() {
         return Collections.unmodifiableList(winners);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RaceWinner that = (RaceWinner) o;
+
+        return winners != null ? winners.equals(that.winners) : that.winners == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return winners != null ? winners.hashCode() : 0;
+    }
 }

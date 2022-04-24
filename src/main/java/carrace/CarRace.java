@@ -6,11 +6,10 @@ import carrace.util.Splitter;
 import java.util.List;
 
 public class CarRace {
-    private final RecordCarRace recordCarRace = new RecordCarRace();
-
     private final RaceWinner raceWinner = new RaceWinner();
 
     private List<Car> cars;
+
     private final int numberOfRaces;
 
     public CarRace(String carNames, int numberOfRaces) {
@@ -38,10 +37,6 @@ public class CarRace {
 
     public int getNumberOfCars() {
         return cars.size();
-    }
-
-    public RecordCarRace getRecordCarRace() {
-        return recordCarRace;
     }
 
     public RaceWinner getRaceWinner() {

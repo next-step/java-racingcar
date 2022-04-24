@@ -1,4 +1,4 @@
-package carrace;
+package carrace.moving;
 
 import carrace.util.RandomNumberGenerator;
 

@@ -1,4 +1,7 @@
-package carrace;
+package carrace.ui;
+
+import carrace.Car;
+import carrace.CarRace;
 
 public class ResultView {
     public void printCarRace(CarRace carRace) {

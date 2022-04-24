@@ -1,5 +1,6 @@
 package carrace;
 
+import carrace.moving.RandomMoving;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
