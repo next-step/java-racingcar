@@ -8,15 +8,6 @@ import org.junit.jupiter.api.Test;
 
 class CarsTest {
 
-    @Test
-    @DisplayName("우승자가 되기위한 위치를 찾는다.")
-    void findWinningPosition(){
-        Cars cars = new Cars(List.of(new Car("jaden", 0),
-            new Car("bmw", 1),
-            new Car("benz", 3)));
-
-        assertThat(cars.winningPosition()).isEqualTo(3);
-    }
 
     @Test
     @DisplayName("우승자 자동차를 찾는다.")
@@ -27,7 +18,7 @@ class CarsTest {
 
         Cars cars = new Cars(List.of(jaden, bmw, benz));
 
-        List<Car> winners = cars.findWinners(cars.winningPosition());
+        List<Car> winners = cars.findWinners();
         assertThat(winners).doesNotContain(bmw);
         assertThat(winners).contains(jaden, benz);
     }

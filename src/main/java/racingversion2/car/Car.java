@@ -13,7 +13,7 @@ public class Car {
     }
 
     public Car(String carName, int position) {
-        this(new CarName(carName), new Position(position));
+        this(CarName.of(carName), new Position(position));
     }
 
     public void move(int random) {
