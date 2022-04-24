@@ -26,7 +26,7 @@ public class RacingGameRepository {
                 .collect(Collectors.toList());
     }
 
-    public List<RacingRecord> findAllByTryNumber(int tryNumber) {
+    public List<RacingRecord> findAllRacingRecordByTryNumber(int tryNumber) {
         List<RacingRecord> recordList = new ArrayList<>(store.values());
 
         return recordList.stream()
@@ -35,6 +35,7 @@ public class RacingGameRepository {
                 .collect(Collectors.toList());
 
     }
+
 
 
     public void clearStore() {

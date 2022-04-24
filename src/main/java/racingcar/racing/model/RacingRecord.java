@@ -10,11 +10,13 @@ public class RacingRecord implements Comparable<RacingRecord> {
     private final int tryNumber;
     private final int carId;
     private final int curPos;
+    private final String participantName;
 
-    public RacingRecord(int carId, int curPos, int tryNumber) {
+    public RacingRecord(int carId, int curPos, int tryNumber, String participantName) {
         this.carId = carId;
         this.curPos = curPos;
         this.tryNumber = tryNumber;
+        this.participantName = participantName;
     }
 
     public int getTryNumber() {
@@ -27,6 +29,10 @@ public class RacingRecord implements Comparable<RacingRecord> {
 
     public int getCurPos() {
         return curPos;
+    }
+
+    public String getParticipantName() {
+        return participantName;
     }
 
 

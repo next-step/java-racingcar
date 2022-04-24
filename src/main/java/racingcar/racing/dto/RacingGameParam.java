@@ -18,4 +18,8 @@ public class RacingGameParam {
     public int getTryNumber() {
         return tryNumber;
     }
+
+    public String[] getNames() {
+        return names;
+    }
 }

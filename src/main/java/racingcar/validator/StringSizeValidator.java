@@ -1,7 +1,7 @@
 package racingcar.validator;
 
 
-public class StringToListStringValidator implements Validator<String[], String>{
+public class StringSizeValidator implements Validator<String[], String>{
 
     private static final String DEFAULT_DELIMITER = ",";
 

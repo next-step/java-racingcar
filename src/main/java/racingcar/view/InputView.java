@@ -2,7 +2,7 @@ package racingcar.view;
 
 
 import racingcar.racing.dto.RacingGameParam;
-import racingcar.validator.StringToListStringValidator;
+import racingcar.validator.StringSizeValidator;
 import racingcar.validator.StringToNumberValidator;
 import racingcar.validator.Validator;
 
@@ -18,7 +18,7 @@ public class InputView {
 
     private static final Validator<Integer, String> numberValidator = new StringToNumberValidator();
 
-    private static final Validator<String[], String> stringValidator = new StringToListStringValidator();
+    private static final Validator<String[], String> stringValidator = new StringSizeValidator();
 
     public static RacingGameParam enterParam() {
         String[] names = stringValidator.valid(enterParticipant());

@@ -1,31 +1,42 @@
 package racingcar.racing.model;
 
-import racingcar.racing.Movable;
-
 public class Car implements Movable {
 
     private final int id;
 
-    private int xCoordinate;
+    private final String participantName;
+
+    private int position;
 
 
-    public Car(int id, int xCoordinate) {
-        this.id = id;
-        this.xCoordinate = xCoordinate;
+    public Car(int id, String participantName) {
+       this(id, participantName, 0);
     }
 
-    public int getxCoordinate() {
-        return xCoordinate;
+
+    public Car(int id, String participantName, int position) {
+
+        this.id = id;
+        this.participantName = participantName;
+        this.position = position;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     public int getId() {
         return id;
     }
 
+    public String getParticipantName() {
+        return participantName;
+    }
+
     @Override
     public void forward(boolean value) {
         if(value) {
-            xCoordinate++;
+            position++;
         }
     }
 
