@@ -13,15 +13,21 @@ public class Car {
 
 	public Car(String name) {
 		this(new RandomNumberGenerator(), new CarMoveStrategy());
-		this.position = new Position();
 		this.name = new Name(name);
+		this.position = new Position("");
+	}
+
+	public Car(String name, String position) {
+		this(new RandomNumberGenerator(), new CarMoveStrategy());
+		this.name = new Name(name);
+		this.position = new Position(position);
 	}
 
 	public Car(NumberGenerator numberGenerator, MoveStrategy moveStrategy) {
 		this.numberGenerator = numberGenerator;
 		this.moveStrategy = moveStrategy;
-		this.name = new Name("test");
-		this.position = new Position();
+		this.name = new Name("car");
+		this.position = new Position("");
 	}
 
 	public void move() {
