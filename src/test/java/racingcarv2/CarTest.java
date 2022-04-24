@@ -37,6 +37,9 @@ class CarTest {
                 .hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");
     }
 
+    /**
+     * 랜덤값 생성 관련 테스트
+     */
     @DisplayName("전진 조건에 의한 이동거리 테스트")
     @Test
     void move_test(){
