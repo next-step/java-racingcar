@@ -50,22 +50,22 @@ public class CarsTest {
         Cars result = cars.play(new RandomMovingStrategy());
 
         // then
-        assertThat(result.states().get(0).value())
-                .isGreaterThanOrEqualTo(cars.states().get(0).value());
+        assertThat(result.distances().get(0).value())
+                .isGreaterThanOrEqualTo(cars.distances().get(0).value());
         assertThat(result.names().get(0))
                 .isEqualTo(cars.names().get(0));
     }
 
     @Test
-    @DisplayName("Cars중에서 state값이 가장 큰 자동차들이 우승자가 되는 findWinner 테스트")
+    @DisplayName("Cars중에서 distance값이 가장 큰 자동차들이 우승자가 되는 findWinner 테스트")
     void findWinnerTest() {
         // given
         int count = 2;
         List<CarName> names = InputCars.fromCarsInfo("test,test1").value().names();
-        List<Distance> states = Lists.newArrayList(new Distance(2), new Distance(3));
+        List<Distance> distances = Lists.newArrayList(new Distance(2), new Distance(3));
 
         // when
-        ResultCars resultCars = ResultCars.of(count, names, states);
+        ResultCars resultCars = ResultCars.of(count, names, distances);
         List<CarName> winner = resultCars.value().findWinnerCarNames();
 
         // then

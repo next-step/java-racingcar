@@ -1,8 +1,11 @@
 package racingcar;
 
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Distance;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -28,5 +31,41 @@ public class DistanceTest {
         Distance two = new Distance(2);
 
         assertThat(Distance.add(one, two)).isEqualTo(new Distance(3));
+    }
+
+    @Test
+    @DisplayName("compareTo 비교시 기준값보다 비교값이 클 경우 -1을 리턴한다.")
+    void compareToLessTest() {
+        assertThat(ZERO.compareTo(ONE)).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("compareTo 비교시 기준값보다 비교값이 같을 경우 0을 리턴한다.")
+    void compareToEqualTest() {
+        assertThat(ONE.compareTo(ONE)).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("compareTo 비교시 기준값보다 비교값이 작을 경우 1을 리턴한다.")
+    void compareToGreaterTest() {
+        assertThat(ONE.compareTo(ZERO)).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("stream max를 이용해 Distance 리스트의 max 값을 구한다.")
+    void getMaxDistanceTest() {
+        // given
+        Distance threeDistance = new Distance(3);
+        Distance fourDistance = new Distance(4);
+        Distance fiveDistance = new Distance(5);
+        List<Distance> distances = Lists.newArrayList(threeDistance, fourDistance, fiveDistance);
+
+        // when
+        Distance maxDistance = distances.stream()
+                .max(Distance::compareTo)
+                .orElseThrow(IllegalStateException::new);
+
+        // then
+        assertThat(maxDistance).isEqualTo(fiveDistance);
     }
 }

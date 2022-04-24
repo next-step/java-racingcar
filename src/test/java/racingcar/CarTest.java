@@ -26,19 +26,19 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("Car 생성시 state 에 null 이 들어오면 오류가 발생한다.")
-    void carStateNullTest() {
+    @DisplayName("Car 생성시 distance 에 null 이 들어오면 오류가 발생한다.")
+    void carDistanceNullTest() {
         assertThatThrownBy(() -> new Car(TEST_CAR_NAME, null))
                 .isInstanceOf(NullPointerException.class)
-                .hasMessageContaining("state is null");
+                .hasMessageContaining("distance is null");
     }
 
     @Test
     @DisplayName("자동차의 초기 상태는 0이어야 한다.")
-    void carStateTest() {
+    void carDistanceTest() {
         Car car = new Car(TEST_CAR_NAME);
 
-        assertThat(car.state()).isEqualTo(ZERO);
+        assertThat(car.distance()).isEqualTo(ZERO);
     }
 
     @Test
@@ -56,7 +56,7 @@ public class CarTest {
 
         Car nextCar = car.move(() -> true);
 
-        assertThat(nextCar.state()).isEqualTo(Distance.add(car.state(), ONE));
+        assertThat(nextCar.distance()).isEqualTo(Distance.add(car.distance(), ONE));
     }
 
     @Test
@@ -66,6 +66,22 @@ public class CarTest {
 
         Car nextCar = car.move(() -> false);
 
-        assertThat(nextCar.state()).isEqualTo(car.state());
+        assertThat(nextCar.distance()).isEqualTo(car.distance());
+    }
+
+    @Test
+    @DisplayName("입력받은 Distance와 Car가 가진 Distance가 같으면 true를 반환한다.")
+    void isSameDistanceTest() {
+        Car car = new Car(TEST_CAR_NAME, ONE);
+
+        assertThat(car.isSameDistance(ONE)).isTrue();
+    }
+
+    @Test
+    @DisplayName("입력받은 Distance와 Car가 가진 Distance가 다르면 false를 반환한다.")
+    void isSameDistanceFailTest() {
+        Car car = new Car(TEST_CAR_NAME, ONE);
+
+        assertThat(car.isSameDistance(ZERO)).isFalse();
     }
 }

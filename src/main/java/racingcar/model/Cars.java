@@ -2,7 +2,6 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -34,25 +33,29 @@ public final class Cars {
                 .collect(Collectors.toList());
     }
 
-    public List<Distance> states() {
+    public List<Distance> distances() {
         return cars.stream()
-                .map(Car::state)
+                .map(Car::distance)
                 .collect(Collectors.toList());
     }
 
     public List<CarName> findWinnerCarNames() {
-        final int maxState = getMaxState();
+        final Distance maxDistance = getMaxDistance();
 
         return cars.stream()
-                .filter(car -> car.state().value() == maxState)
+                .filter(car -> car.isSameDistance(maxDistance))
                 .map(Car::name)
                 .collect(Collectors.toList());
     }
 
-    private int getMaxState() {
+    private Distance getMaxDistance() {
+        return maxDistanceValue();
+    }
+
+    private Distance maxDistanceValue() {
         return cars.stream()
-                .mapToInt(car -> car.state().value())
-                .max()
-                .orElseThrow(NoSuchElementException::new);
+                .map(Car::distance)
+                .max(Distance::compareTo)
+                .orElseThrow(() -> new IllegalStateException("Cars 의 최대 Distance 값을 구하는데 실패했습니다."));
     }
 }

@@ -22,7 +22,7 @@ public final class ResultView {
     public static void print(List<RoundResult> roundResults) {
         printStartText();
         for (RoundResult roundResult : roundResults) {
-            printRoundResult(roundResult.getCarsCount(), roundResult.getCarNames(), roundResult.getStates());
+            printRoundResult(roundResult.getCarsCount(), roundResult.getCarNames(), roundResult.getDistances());
         }
     }
 

@@ -23,7 +23,7 @@ public class RacingCarMain {
 
         if (!result.isEmpty()) {
             RoundResult roundResult = result.get(result.size() - 1);
-            ResultCars resultCars = ResultCars.of(roundResult.getCarsCount(), roundResult.getCarNames(), roundResult.getStates());
+            ResultCars resultCars = ResultCars.of(roundResult.getCarsCount(), roundResult.getCarNames(), roundResult.getDistances());
             List<CarName> winners = resultCars.value().findWinnerCarNames();
             ResultView.printWinner(winners);
         }
