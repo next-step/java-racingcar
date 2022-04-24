@@ -1,11 +1,10 @@
 package racingcar.domain;
 
-import racingcar.ui.InputView;
-import racingcar.util.generator.RandomNumberGenerator;
-import racingcar.util.strategy.move.CarMoveStrategy;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import racingcar.ui.InputView;
 
 public class CarStadium {
 	private Cars cars;
@@ -24,6 +23,12 @@ public class CarStadium {
 			eachCarMove();
 			System.out.println();
 		}
+	}
+
+	public void showWinners() {
+		List<Car> winners = Winners.list(cars);
+		String carNames = winners.stream().map(Car::name).collect(Collectors.joining(","));
+		System.out.println("우승자는 " + carNames + " 입니다");
 	}
 
 	private void carComes() {
