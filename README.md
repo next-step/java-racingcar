@@ -88,3 +88,5 @@ gony	: ----
 
 - [x] move exception handler from Car(name) to Car(name, at)
 - [x] move collectWinner from Car to Cars
+- [x] fix: remove extending ArrayList, implement iterator
+- 

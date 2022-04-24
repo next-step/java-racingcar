@@ -5,8 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
-public class Cars extends ArrayList<Car> {
+public class Cars implements Iterable<Car>{
     private final List<Car> cars;
+    private int index;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -29,12 +30,6 @@ public class Cars extends ArrayList<Car> {
         return Objects.hash(cars);
     }
 
-    @Override
-    public Car remove(int index) {
-        throw new IllegalCallerException("remove does not allowed.");
-    }
-
-
     public List<String> collectWinner(int max, List<String> winners, Cars cars) {
         for (Car car : cars) {
             if (car.isWinner(max)) {
@@ -42,5 +37,10 @@ public class Cars extends ArrayList<Car> {
             }
         }
         return winners;
+    }
+
+    @Override
+    public Iterator<Car> iterator() {
+        return this.cars.iterator();
     }
 }
