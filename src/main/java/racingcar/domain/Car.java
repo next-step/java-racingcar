@@ -63,8 +63,8 @@ public class Car {
         return position.isMaxPosition(maxPosition);
     }
 
-    public int maxPosition(int maxPosition) {
-        return position.maxPosition(maxPosition);
+    public int compareMaxPosition(int maxPosition) {
+        return position.compareToMax(maxPosition);
     }
 
     public Position position() {

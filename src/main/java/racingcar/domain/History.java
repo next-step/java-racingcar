@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +33,7 @@ public class History {
     private int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
-            maxPosition = car.maxPosition(maxPosition);
+            maxPosition = car.compareMaxPosition(maxPosition);
         }
         return maxPosition;
     }

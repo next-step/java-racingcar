@@ -30,7 +30,7 @@ public class Position {
         this.position++;
     }
 
-    public int maxPosition(int maxPosition) {
+    public int compareToMax(int maxPosition) {
         if (maxPosition < this.position) {
             return this.position;
         }
