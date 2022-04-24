@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,7 +9,7 @@ public class Operands {
 
     public Operands(List<Operand> operands) {
         validateNotEmpty(operands);
-        this.operands = operands;
+        this.operands = new ArrayList<>(operands);
     }
 
     private void validateNotEmpty(List<Operand> operands) {

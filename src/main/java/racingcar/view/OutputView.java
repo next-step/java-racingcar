@@ -1,8 +1,6 @@
 package racingcar.view;
 
 import racingcar.domain.car.Car;
-import racingcar.domain.car.CarName;
-import racingcar.domain.car.CarPosition;
 import racingcar.domain.round.Round;
 
 import java.util.List;
@@ -13,15 +11,15 @@ public class OutputView {
     private static final String CAR_POSITION = "-";
     private static final String NAME_DELIMITER = ", ";
 
-    private static void printPosition(CarPosition position) {
-        for (int i = 0; i < position.getPosition(); i++) {
+    private static void printPosition(int position) {
+        for (int i = 0; i < position; i++) {
             System.out.print(CAR_POSITION);
         }
         System.out.println();
     }
 
-    private static void printName(CarName name) {
-        System.out.print(name.getName());
+    private static void printName(String name) {
+        System.out.print(name);
     }
 
     public static void printGameResult(List<Round> rounds) {
@@ -35,13 +33,12 @@ public class OutputView {
     }
 
     private static void printWinner(List<Car> cars) {
-        System.out.print(getNames(cars));
-        System.out.println("이(가) 최종 우승 했습니다.");
+        System.out.printf("%s이(가) 최종 우승 했습니다.%n", getNames(cars));
     }
 
     private static String getNames(List<Car> cars) {
         return cars.stream()
-                .map(car -> car.getName().getName())
+                .map(Car::getName)
                 .collect(Collectors.joining(NAME_DELIMITER));
     }
 

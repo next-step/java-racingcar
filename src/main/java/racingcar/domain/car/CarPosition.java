@@ -8,7 +8,7 @@ public class CarPosition {
 
     private final int position;
 
-    public CarPosition() {
+    private CarPosition() {
         this(DEFAULT_POSITION);
     }
 

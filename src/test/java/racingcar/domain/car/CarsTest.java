@@ -9,20 +9,12 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.domain.car.CarNameTest.VALID_CAR_NAME;
+import static racingcar.domain.car.CarNameTest.validCarName;
+import static racingcar.domain.car.CarTest.*;
 
 @DisplayName("자동차 경주 - Cars 테스트")
 class CarsTest {
-    private static final String WINNER_NAME = "win";
-    private static final String LOSER_NAME = "lose";
-    private static final int WINNER_POSITION = 10;
-
-    private final CarPosition winnerPosition = new CarPosition(WINNER_POSITION);
-    private final CarPosition defaultPosition = CarPosition.createDefault();
-    private final Car winner = new Car(new CarName(WINNER_NAME), winnerPosition, () -> true);
-    private final Car defaultCar = new Car(new CarName(LOSER_NAME), defaultPosition, () -> true);
-
-    private final CarNames carNames = new CarNames(List.of(new CarName(VALID_CAR_NAME)));
+    private final CarNames carNames = new CarNames(List.of(validCarName));
 
     @Test
     void Cars는_빈_컬렉션으로_생성_할_경우_런타임_예외를_발생_시킨다() {
@@ -49,18 +41,18 @@ class CarsTest {
                 .collect(Collectors.toList()))
                 .isEqualTo(cars.getCars()
                         .stream()
-                        .map(car -> car.getPosition().increase())
+                        .map(car -> car.getPosition() + MOVABLE_DISTANCE)
                         .collect(Collectors.toList()));
     }
 
     @Test
     void getWinners는_승자_목록을_반환한다() {
-        Cars cars = new Cars(List.of(winner, defaultCar, winner, defaultCar));
+        Cars cars = new Cars(List.of(winnerCar, defaultCar, winnerCar, defaultCar));
 
         List<Car> winners = cars.getWinnerCars();
 
         assertThat(winners.size()).isEqualTo(2);
-        assertThat(winners.get(0).getName()).isEqualTo(winner.getName());
-        assertThat(winners.get(0).getPosition()).isEqualTo(winner.getPosition());
+        assertThat(winners.get(0).getName()).isEqualTo(winnerCar.getName());
+        assertThat(winners.get(0).getPosition()).isEqualTo(winnerCar.getPosition());
     }
 }

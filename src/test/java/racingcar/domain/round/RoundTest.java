@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
-import racingcar.domain.car.CarName;
 import racingcar.domain.car.CarPosition;
 import racingcar.domain.car.Cars;
 
@@ -13,7 +12,7 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingcar.domain.car.CarNameTest.VALID_CAR_NAME;
+import static racingcar.domain.car.CarNameTest.validCarName;
 
 @DisplayName("자동차 경주 - Round 테스트")
 class RoundTest {
@@ -31,7 +30,7 @@ class RoundTest {
 
     private Cars createMovableCars(List<CarPosition> carPositions) {
         return new Cars(carPositions.stream()
-                .map(position -> new Car(new CarName(VALID_CAR_NAME), position, () -> true))
+                .map(position -> new Car(validCarName, position, () -> true))
                 .collect(Collectors.toList()));
     }
 
@@ -45,9 +44,13 @@ class RoundTest {
                 .stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList()))
-                .isEqualTo(carPositions.stream()
-                        .map(CarPosition::increase)
-                        .collect(Collectors.toList()));
+                .isEqualTo(getMovedPositions(carPositions));
+    }
+
+    private List<Integer> getMovedPositions(List<CarPosition> carPositions) {
+        return carPositions.stream()
+                .map(carPosition -> carPosition.increase().getPosition())
+                .collect(Collectors.toList());
     }
 
     @Test

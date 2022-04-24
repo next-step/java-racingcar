@@ -1,5 +1,7 @@
 package racingcar.domain.car;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,7 +10,7 @@ public class CarNames {
 
     public CarNames(List<CarName> carNames) {
         validateCarNames(carNames);
-        this.carNames = carNames;
+        this.carNames = new ArrayList<>(carNames);
     }
 
     private void validateCarNames(List<CarName> carNames) {
@@ -24,6 +26,6 @@ public class CarNames {
     }
 
     public List<CarName> getCarNames() {
-        return carNames;
+        return Collections.unmodifiableList(carNames);
     }
 }

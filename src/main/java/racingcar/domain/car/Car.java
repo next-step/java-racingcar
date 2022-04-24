@@ -24,12 +24,12 @@ public class Car {
         }
     }
 
-    public CarPosition getPosition() {
-        return this.position;
+    public int getPosition() {
+        return position.getPosition();
     }
 
-    public CarName getName() {
-        return name;
+    public String getName() {
+        return name.getName();
     }
 
     private Car goForward() {
