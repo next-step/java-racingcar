@@ -10,11 +10,19 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.domain.car.CarNameTest.validCarName;
-import static racingcar.domain.car.CarTest.*;
+import static racingcar.domain.car.CarTest.MOVABLE_DISTANCE;
+import static racingcar.domain.car.CarTest.defaultCar;
+import static racingcar.domain.car.CarTest.winnerCar;
 
 @DisplayName("자동차 경주 - Cars 테스트")
 class CarsTest {
     private final CarNames carNames = new CarNames(List.of(validCarName));
+
+    @Test
+    void Cars는_car목록으로_생성이_가능하다() {
+        assertThat(new Cars(List.of(defaultCar, defaultCar)))
+                .isInstanceOf(Cars.class);
+    }
 
     @Test
     void Cars는_빈_컬렉션으로_생성_할_경우_런타임_예외를_발생_시킨다() {
@@ -46,7 +54,7 @@ class CarsTest {
     }
 
     @Test
-    void getWinners는_승자_목록을_반환한다() {
+    void getWinnerCars는_승자_목록을_반환한다() {
         Cars cars = new Cars(List.of(winnerCar, defaultCar, winnerCar, defaultCar));
 
         List<Car> winners = cars.getWinnerCars();

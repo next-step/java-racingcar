@@ -19,6 +19,12 @@ class CarNamesTest {
     }
 
     @Test
+    void CarNames는_이름_문자열로_생성이_가능하다() {
+        assertThat(CarNames.from(List.of(validCarName.getName(), validCarName.getName())))
+                .isInstanceOf(CarNames.class);
+    }
+
+    @Test
     void CarNames는_1대_미만_생성_할_경우_런타임_예외를_발생_시킨다() {
         assertThatThrownBy(() -> {
             new CarNames(Collections.emptyList());

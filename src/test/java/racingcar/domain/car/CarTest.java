@@ -3,6 +3,7 @@ package racingcar.domain.car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.car.strategy.RandomMoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -27,6 +28,18 @@ public class CarTest {
     void setUp() {
         movableCar = new Car(validCarName, () -> true);
         nonMovableCar = new Car(validCarName, () -> false);
+    }
+
+    @Test
+    void Car는_이름과_이동전략으로_생성이_가능하다() {
+        assertThat(new Car(validCarName, new RandomMoveStrategy()))
+                .isInstanceOf(Car.class);
+    }
+
+    @Test
+    void Car는_이름_위치_이동전략으로_생성이_가능하다() {
+        assertThat(new Car(validCarName, defaultPosition, new RandomMoveStrategy()))
+                .isInstanceOf(Car.class);
     }
 
     @Test
