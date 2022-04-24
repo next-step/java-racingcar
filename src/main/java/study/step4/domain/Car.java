@@ -3,7 +3,7 @@ package study.step4.domain;
 import study.step4.domain.strategy.MoveStrategy;
 import study.step4.util.Comparable;
 
-public class Car implements Comparable {
+public class Car implements Comparable<Car> {
     private final CarName carName;
     private CarPosition carPosition;
 
@@ -26,9 +26,10 @@ public class Car implements Comparable {
         return carPosition;
     }
 
+
     @Override
-    public int compareTo(Object o) {
-        Car car = (Car) o;
+    public int compareTo(Car obj) {
+        Car car = obj;
         return carPosition.getPosition() - car.carPosition.getPosition();
     }
 }
