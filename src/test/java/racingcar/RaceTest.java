@@ -27,7 +27,7 @@ public class RaceTest {
         Race race = new Race(new RandomStrategy());
         String[] carNames = {"pobi", "crong", "honux"};
         race.createCars(carNames);
-        List<Car> cars = race.cars;
+        Cars cars = race.cars;
         cars.get(0).move();
         List<String> expected = new ArrayList<String>() {{
             add("pobi");

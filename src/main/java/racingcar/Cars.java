@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
-public class Cars implements Iterable<Car>{
+public class Cars implements Iterable<Car> {
     private final List<Car> cars;
     private int index;
 
@@ -42,5 +42,13 @@ public class Cars implements Iterable<Car>{
     @Override
     public Iterator<Car> iterator() {
         return this.cars.iterator();
+    }
+
+    public void add(Car car) {
+        this.cars.add(car);
+    }
+
+    public Car get(int i) {
+        return this.cars.get(i);
     }
 }

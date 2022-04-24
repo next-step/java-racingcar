@@ -27,10 +27,4 @@ public class CarsTest {
         c.add(new Car("A"));
         assertThat(c).hasSize(1);
     }
-
-    @Test
-    void removeCarShouldThrowException() {
-        Cars c = new Cars();
-        assertThatThrownBy(() -> c.remove(0)).isInstanceOf(IllegalCallerException.class);
-    }
 }
