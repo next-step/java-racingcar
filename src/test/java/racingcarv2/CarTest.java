@@ -13,7 +13,7 @@ class CarTest {
 
     @BeforeEach
     void setUp(){
-        car = new Car("pobi");
+        car = new Car("pobi", 3);
     }
 
     /**
@@ -32,7 +32,7 @@ class CarTest {
     @DisplayName("Car 이름 5자 초과 valid 확인 테스트")
     @Test
     void car_name_vaild_test(){
-        assertThatThrownBy(() -> new Car("overfivename"))
+        assertThatThrownBy(() -> new Car("overfivename", 3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");
     }
@@ -47,13 +47,17 @@ class CarTest {
         assertThat(car.getDistance()).isEqualTo(3);
     }
 
-//    @DisplayName("전진 조건에 의한 화면 표현 테스트")
-//    @Test
-//    void show_distance_test(){
-//        Car car = new Car("pobi");
-//        car.isMove(() -> true);
-//        car.isMove(() -> true);
-//        car.isMove(() -> true);
-//        assertThat(car.getShowDistance()).isEqualTo("pobi : ---");
-//    }
+    @Test
+    void max_move_test(){
+        Car car = new Car("pobi", 3);
+        assertThat(car.isWinner(3)).isTrue();
+    }
+
+    @Test
+    void is_winner_test(){
+        int maxPosition = 3;
+        Car car = new Car("pobi", 3);
+        assertThat(car.isWinner(maxPosition)).isTrue();
+    }
+
 }

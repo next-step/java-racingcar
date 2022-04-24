@@ -3,7 +3,6 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 public class Cars {
     private static final StringBuilder carsStatus = new StringBuilder();
@@ -11,12 +10,19 @@ public class Cars {
     private final List<Car> cars = new ArrayList<>();
     private int winnerScore;
 
+    public Cars(){
+    }
+
     public Cars(String carList) {
         String[] carNames = carList.split(",");
 
         for (String car : carNames) {
             cars.add(new Car(car));
         }
+    }
+
+    public void add(Car car) {
+        cars.add(car);
     }
 
     public List<Car> getCars() {
@@ -42,6 +48,9 @@ public class Cars {
     }
 
     public List<Car> isWinners() {
+        for (Car car : cars) {
+            checkWinnerScore(car);
+        }
         List<Car> winnerCars = new ArrayList<>();
         for (Car car : cars) {
             checkWinnerCar(winnerCars, car);
@@ -50,7 +59,7 @@ public class Cars {
     }
 
     private void checkWinnerCar(List<Car> winnerCars, Car car) {
-        if(car.getDistance() == winnerScore){
+        if(car.isWinner(winnerScore)){
             winnerCars.add(car);
         }
     }
