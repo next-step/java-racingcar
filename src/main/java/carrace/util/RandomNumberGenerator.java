@@ -1,4 +1,4 @@
-package carrace;
+package carrace.util;
 
 import java.util.Random;
 
