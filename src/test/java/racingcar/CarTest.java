@@ -72,8 +72,16 @@ public class CarTest {
     @Test
     @DisplayName("입력받은 Distance와 Car가 가진 Distance가 같으면 true를 반환한다.")
     void isSameDistanceTest() {
-        Car car = new Car(TEST_CAR_NAME, Distance.ONE);
+        Car car = new Car(TEST_CAR_NAME, ONE);
 
-        assertThat(car.isSameDistance(Distance.ONE)).isTrue();
+        assertThat(car.isSameDistance(ONE)).isTrue();
+    }
+
+    @Test
+    @DisplayName("입력받은 Distance와 Car가 가진 Distance가 다르면 false를 반환한다.")
+    void isSameDistanceFailTest() {
+        Car car = new Car(TEST_CAR_NAME, ONE);
+
+        assertThat(car.isSameDistance(ZERO)).isFalse();
     }
 }

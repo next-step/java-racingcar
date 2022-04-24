@@ -32,7 +32,7 @@ public final class Car {
     }
 
     public boolean isSameDistance(Distance distance) {
-        return distance.equals(distance);
+        return this.distance.equals(distance);
     }
 
     public CarName name() {
