@@ -26,7 +26,7 @@ public class Game {
     }
 
     public boolean isLeftRound() {
-        return !this.numberOfRound.equals(NumberOfRound.of(0));
+        return numberOfRound.isLeftRound();
     }
 
     public void proceedRound() {
