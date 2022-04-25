@@ -2,7 +2,6 @@ package core;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import utils.PowerSupply;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,7 +41,7 @@ class CarsTest {
         PowerSupply powerSupply = TestObjectGenerator.generateMovablePowerSupply();
 
         //when
-        Cars result = cars.moveCarsRandomly(powerSupply);
+        Cars result = cars.moveBy(powerSupply);
 
         //then
         assertThat(result).isEqualTo(movedCars);

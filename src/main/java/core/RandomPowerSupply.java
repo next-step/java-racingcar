@@ -1,6 +1,4 @@
-package utils;
-
-import core.Car;
+package core;
 
 import java.util.Random;
 

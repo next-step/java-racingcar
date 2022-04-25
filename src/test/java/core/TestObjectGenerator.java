@@ -1,7 +1,5 @@
 package core;
 
-import utils.PowerSupply;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,12 +27,9 @@ public class TestObjectGenerator {
         return () -> Car.BASE_MOVE_VALUE;
     }
 
-    public static RaceModel generateRaceModel(String inputCarName, int carCount, int moveCount) {
-        List<CarName> carNames = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carNames.add(CarName.create(inputCarName));
-        }
-        return RaceModel.initialize(carNames, moveCount);
+    public static RacingGame generateRacingGame() {
+        PowerSupply movablePowerSupply = generateMovablePowerSupply();
+        return new RacingGame(movablePowerSupply);
     }
 
     public static List<CarName> generateCarNames() {

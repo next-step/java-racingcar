@@ -1,7 +1,5 @@
 package core;
 
-import utils.PowerSupply;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -27,7 +25,7 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public Cars moveCarsRandomly(PowerSupply powerSupply) {
+    public Cars moveBy(PowerSupply powerSupply) {
         List<Car> movedCars = new ArrayList<>();
         for (Car car : cars) {
             movedCars.add(car.move(powerSupply.supply()));

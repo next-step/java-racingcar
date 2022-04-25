@@ -1,4 +1,4 @@
-package utils;
+package core;
 
 public interface PowerSupply {
     int supply();
