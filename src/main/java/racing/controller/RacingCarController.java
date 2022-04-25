@@ -7,6 +7,8 @@ import racing.view.ResultView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RacingCarController {
 
@@ -41,11 +43,9 @@ public class RacingCarController {
     }
 
     private List<Car> makeCars(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-        return cars;
+        return carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     private int getRandomValue() {

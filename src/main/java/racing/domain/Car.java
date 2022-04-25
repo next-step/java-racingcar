@@ -1,6 +1,6 @@
 package racing.domain;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     public static final int FORWARD_STANDARD_NUMBER = 4;
 
@@ -30,5 +30,10 @@ public class Car {
 
     private boolean isAvailableForward(int value) {
         return value >= FORWARD_STANDARD_NUMBER;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return this.distance - o.distance;
     }
 }

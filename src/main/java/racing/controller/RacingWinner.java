@@ -2,35 +2,27 @@ package racing.controller;
 
 import racing.domain.Car;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingWinner {
 
     public List<Car> getWinnerList(List<Car> cars) {
-        List<Car> winners = new ArrayList<>();
         int maxDistance = getMaxDistance(cars);
-        for (Car car : cars) {
-            addWinner(maxDistance, winners, car);
-        }
-        return winners;
+        return createWinnerList(cars, maxDistance);
     }
 
     private int getMaxDistance(List<Car> cars) {
-        int maxDistance = 0;
-        for (Car car : cars) {
-            maxDistance = Math.max(car.getDistance(), maxDistance);
-        }
-        return maxDistance;
+        return cars.stream()
+                .max(Car::compareTo)
+                .orElseThrow()
+                .getDistance();
     }
 
-    private void addWinner(int maxDistance, List<Car> winners, Car car) {
-        if(isWinner(maxDistance, car)) {
-            winners.add(car);
-        }
+    private List<Car> createWinnerList(List<Car> cars, int maxDistance) {
+        return cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .collect(Collectors.toList());
     }
 
-    private boolean isWinner(int maxDistance, Car car) {
-        return car.getDistance() == maxDistance;
-    }
 }
