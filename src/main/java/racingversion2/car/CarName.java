@@ -7,14 +7,14 @@ public class CarName {
 
     private String name;
 
-    public CarName(String name) {
-        if(name.length() > MAXIMUM_CAR_NAME_LENGTH){
-            throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH_MESSAGE);
-        }
+    private CarName(String name) {
         this.name = name;
     }
 
     public static CarName of(String name) {
+        if (name.length() > MAXIMUM_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH_MESSAGE);
+        }
         return new CarName(name);
     }
 

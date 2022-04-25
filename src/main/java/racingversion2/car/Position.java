@@ -4,17 +4,18 @@ public class Position {
 
     private int position;
 
-    public Position(){}
+    public Position() {
+    }
 
     public Position(int position) {
         this.position = position;
     }
 
-    public void increase(){
-        this.position ++;
+    public void increase() {
+        this.position++;
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return this.position;
     }
 

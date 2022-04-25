@@ -9,22 +9,21 @@ public class InputView {
     private static final String HOW_MANY_TRIES_MESSAGE = "시도할 회수는 몇 회 인가요?";
     private final Scanner scanner = new Scanner(System.in);
 
-    public CarName[] settingCarNames(){
+    public CarName[] settingCarNames() {
         System.out.println(INSERT_CAR_NAMES_MESSAGE);
         return splitCarName(scanner.nextLine());
     }
 
-    public int settingTryCount(){
+    public int settingTryCount() {
         System.out.println(HOW_MANY_TRIES_MESSAGE);
         return scanner.nextInt();
     }
 
-    private CarName[] splitCarName(String carNames){
+    private CarName[] splitCarName(String carNames) {
         String[] nameArray = carNames.split(",");
         CarName[] carNameArray = new CarName[nameArray.length];
         for (int i = 0; i < nameArray.length; i++) {
             carNameArray[i] = CarName.of(nameArray[i]);
-
         }
         return carNameArray;
     }
