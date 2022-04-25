@@ -58,17 +58,16 @@ public class Circuit {
     }
 
     private void findWinners(List<Car> cars) {
-        int maxDistance = 0;
+        int maxMoveDistance = 0;
         for (Car car : cars) {
-            int carDistance = car.getMoves().getDistance();
-            if (carDistance > maxDistance) {
-                maxDistance = carDistance;
+            int carDistance = car.getMoveDistance();
+            if (carDistance > maxMoveDistance) {
+                maxMoveDistance = carDistance;
             }
         }
 
         for (Car car : cars) {
-            int carDistance = car.getMoves().getDistance();
-            if (carDistance == maxDistance) {
+            if (car.getMoveDistance() == maxMoveDistance) {
                 this.winners.add(car);
             }
         }

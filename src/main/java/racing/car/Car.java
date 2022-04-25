@@ -1,7 +1,6 @@
 package racing.car;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Car {
 
@@ -37,12 +36,15 @@ public class Car {
         moves.addMove(engine.cycle());
     }
 
-    public Moves getMoves() {
-        return moves;
+    public int getMoveDistance() {
+        return moves.getDistance();
     }
 
     public boolean isRoundMove(int round) {
         return moves.getMove(round);
     }
 
+    public int getMovesCount() {
+        return this.moves.getTotalMovesCount();
+    }
 }

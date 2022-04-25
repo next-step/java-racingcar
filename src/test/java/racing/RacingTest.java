@@ -8,7 +8,10 @@ import org.junit.jupiter.params.provider.MethodSource;
 import racing.car.Car;
 import racing.car.Engine;
 import racing.car.MoveCount;
+import racing.car.Moves;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -54,7 +57,7 @@ public class RacingTest {
         String carName = "min";
         Car car = new Car(carName, engine, moveCount);
         car.racingStart();
-        assertThat(moveCount).isEqualTo(car.getMoves().howToMoves());
+        assertThat(moveCount).isEqualTo(car.getMovesCount());
 
         int errorMoveCount = 0;
         assertThatThrownBy(() -> new Car(carName, engine, errorMoveCount))
@@ -70,5 +73,14 @@ public class RacingTest {
 
         assertThatThrownBy(() -> new MoveCount(0))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("이동 테스트")
+    void MovesTest() {
+        List<Boolean> inputData = Arrays.asList(true, false, true);
+        Moves moves = new Moves(inputData);
+        assertThat(moves.getDistance())
+                .isEqualTo(2);
     }
 }

@@ -1,16 +1,16 @@
 package racing.car;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Moves {
     private final List<Boolean> moves;
 
     public Moves(List<Boolean> moves) {
+        if (Objects.isNull(moves)) {
+            throw new IllegalArgumentException("Moves 초기화 실패하였습니다.");
+        }
         this.moves = moves;
-    }
-
-    public List<Boolean> getMoves() {
-        return moves;
     }
 
     public void addMove(boolean cycle) {
@@ -27,7 +27,7 @@ public class Moves {
                 .count();
     }
 
-    public int howToMoves() {
+    public int getTotalMovesCount() {
         return this.moves.size();
     }
 }
