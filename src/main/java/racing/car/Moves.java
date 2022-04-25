@@ -6,6 +6,7 @@ import java.util.Objects;
 public class Moves {
     private static final Integer MOVE = 1;
     private static final Integer NOME_MOVE = 0;
+    private static final Integer DISTANCE_INITIALIZE_VALUE = 0;
     private final List<Boolean> moves;
 
     public Moves(List<Boolean> moves) {
@@ -20,14 +21,14 @@ public class Moves {
     }
 
     public int getRoundDistance(int round) {
-        int result = 0;
+        int distance = DISTANCE_INITIALIZE_VALUE;
         for (int i = 0; i < round; i++) {
-            result += getResult(moves.get(i));
+            distance += addDistance(moves.get(i));
         }
-        return result;
+        return distance;
     }
 
-    private int getResult(Boolean move) {
+    private int addDistance(Boolean move) {
         if (move) {
             return MOVE;
         }
