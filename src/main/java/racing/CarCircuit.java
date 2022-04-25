@@ -1,5 +1,8 @@
 package racing;
 
+import racing.view.InputView;
+import racing.view.ResultView;
+
 import java.util.Scanner;
 
 public class CarCircuit {

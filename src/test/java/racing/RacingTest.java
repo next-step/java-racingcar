@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racing.car.Car;
+import racing.car.Engine;
+import racing.car.MoveCount;
 
 import java.util.stream.Stream;
 
@@ -51,7 +54,7 @@ public class RacingTest {
         String carName = "min";
         Car car = new Car(carName, engine, moveCount);
         car.racingStart();
-        assertThat(moveCount).isEqualTo(car.getMoves().size());
+        assertThat(moveCount).isEqualTo(car.getMoves().howToMoves());
 
         int errorMoveCount = 0;
         assertThatThrownBy(() -> new Car(carName, engine, errorMoveCount))

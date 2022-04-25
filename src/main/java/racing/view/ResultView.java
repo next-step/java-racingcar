@@ -1,4 +1,7 @@
-package racing;
+package racing.view;
+
+import racing.Circuit;
+import racing.car.Car;
 
 import java.util.List;
 

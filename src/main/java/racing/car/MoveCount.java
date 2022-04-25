@@ -1,4 +1,4 @@
-package racing;
+package racing.car;
 
 public class MoveCount {
     private static final Integer MIN_NUMBER_OF_MOVES = 0;

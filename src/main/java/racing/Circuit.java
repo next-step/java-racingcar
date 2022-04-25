@@ -1,6 +1,9 @@
 package racing;
 
 
+import racing.car.Car;
+import racing.car.Engine;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,14 +60,14 @@ public class Circuit {
     private void findWinners(List<Car> cars) {
         int maxDistance = 0;
         for (Car car : cars) {
-            int carDistance = (int) car.getMoves().stream().filter(item -> item).count();
+            int carDistance = car.getMoves().getDistance();
             if (carDistance > maxDistance) {
                 maxDistance = carDistance;
             }
         }
 
         for (Car car : cars) {
-            int carDistance = (int) car.getMoves().stream().filter(item -> item).count();
+            int carDistance = car.getMoves().getDistance();
             if (carDistance == maxDistance) {
                 this.winners.add(car);
             }

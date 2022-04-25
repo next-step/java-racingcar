@@ -1,4 +1,4 @@
-package racing;
+package racing.car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,9 @@ public class Car {
     private final Engine engine;
 
     private final MoveCount moveCount;
-    private final List<Boolean> moves;
+    private final Moves moves;
 
-    public Car(CarName name, Engine engine, MoveCount count, List<Boolean> moves) {
+    public Car(CarName name, Engine engine, MoveCount count, Moves moves) {
         this.name = name;
         this.engine = engine;
         this.moveCount = count;
@@ -19,7 +19,7 @@ public class Car {
     }
 
     public Car(String name, Engine engine, int moveCount) {
-        this(new CarName(name), engine, new MoveCount(moveCount), new ArrayList<>());
+        this(new CarName(name), engine, new MoveCount(moveCount), new Moves(new ArrayList<>()));
     }
 
 
@@ -34,15 +34,15 @@ public class Car {
     }
 
     private void move() {
-        moves.add(engine.cycle());
+        moves.addMove(engine.cycle());
     }
 
-    public List<Boolean> getMoves() {
+    public Moves getMoves() {
         return moves;
     }
 
     public boolean isRoundMove(int round) {
-        return moves.get(round);
+        return moves.getMove(round);
     }
 
 }
