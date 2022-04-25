@@ -15,13 +15,7 @@ public class InputView {
             throw new IllegalArgumentException("자동차 이름을 입력하세요.");
         }
 
-        String[] cars = carNames.split(",");
-        for (String carName : cars) {
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자를 초과할수 없습니다.");
-            }
-        }
-        return cars;
+        return carNames.split(",");
     }
 
     public static int inputRacingCount(Scanner scanner) {

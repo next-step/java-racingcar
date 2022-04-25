@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Car {
     private static final int MIN_NUMBER_OF_MOVES = 1;
+    private static final int MAX_NAME_SIZE = 5;
 
     private final String carName;
 
@@ -16,6 +17,9 @@ public class Car {
     private final Engine engine;
 
     public Car(String carName, Engine engine, int moveCount) {
+        if (carName.length() > MAX_NAME_SIZE) {
+            throw new IllegalArgumentException();
+        }
         if (moveCount < MIN_NUMBER_OF_MOVES) {
             throw new IllegalArgumentException();
         }

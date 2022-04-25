@@ -11,6 +11,7 @@ public class ResultView {
         for (int round = 0; round < circuit.getTotalRound(); round++) {
             viewRound(circuit.getCars(), round);
         }
+        System.out.println(circuit.whoIsWinners() + "가 최종 우승하였습니다.");
     }
 
     private static void viewRound(List<Car> cars, int round) {
