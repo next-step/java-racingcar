@@ -1,6 +1,8 @@
-package study.step3;
+package study.step4.util;
 
-public class TestMove implements MoveStrategy{
+import study.step3.MoveStrategy;
+
+public class TestMove implements MoveStrategy {
     private int value;
 
     public TestMove(int value) {
