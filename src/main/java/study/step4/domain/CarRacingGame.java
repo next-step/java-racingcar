@@ -15,15 +15,23 @@ public class CarRacingGame {
         this.numberOfAttempts = numberOfAttempts;
     }
 
+    public static CarRacingGame of(String carNameWithComma, int numberOfAttempts) {
+        return new CarRacingGame(new Cars(carNameWithComma), numberOfAttempts);
+    }
+
     public List<Car> start() {
         List<Car> carList = this.cars.getCars();
         List<Car> resultList = new ArrayList<>();
         for (int round = 1; round <= numberOfAttempts; round++) {
-            for (Car car : carList) {
-                resultList.add(car.move(RandomNumber.create()));
-            }
-            resultList.add(null);
+            progressGame(carList, resultList);
         }
         return resultList;
+    }
+
+    private void progressGame(List<Car> carList, List<Car> resultList) {
+        for (Car car : carList) {
+            resultList.add(car.move(RandomNumber.create()));
+        }
+        resultList.add(null);
     }
 }

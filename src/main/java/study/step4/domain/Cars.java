@@ -1,6 +1,7 @@
 package study.step4.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,14 +11,13 @@ public class Cars {
     public Cars(String carNameWithComma) {
         this.cars = new ArrayList<>();
         String[] carNameArray = carNameWithComma.split(",");
-        int length = carNameArray.length;
-        for (int i = 0; i < length; i++) {
-            this.cars.add(new Car(carNameArray[i], 0));
+        for (String carName : carNameArray) {
+            this.cars.add(new Car(carName, 0));
         }
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     @Override

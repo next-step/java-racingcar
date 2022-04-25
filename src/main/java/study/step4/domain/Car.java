@@ -3,10 +3,9 @@ package study.step4.domain;
 import java.util.Objects;
 
 public class Car {
-
+    private static final int MOVE_NUMBER = 4; // 매직넘버 상수화
     private String name;
     private int position;
-    private static final int MOVE_NUMBER = 4; // 매직넘버 상수화
 
     public Car(String name, int position) {
         this.name = name;
