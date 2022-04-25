@@ -44,6 +44,11 @@ public class Car implements Comparable<Car> {
         + carPosition;
   }
 
+
+  public boolean isSamePosition(Car other) {
+    return carPosition.equals(other.carPosition);
+  }
+
   public void validateMoveNumber(int number) {
     validateArgument(
         number,

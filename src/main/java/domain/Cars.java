@@ -32,7 +32,7 @@ public class Cars {
         .orElseThrow();
 
     return new Winners(cars.stream()
-        .filter((car) -> car.compareTo(winner) == 0)
+        .filter((car) -> car.isSamePosition(winner))
         .map(Car::toString)
         .collect(Collectors.toUnmodifiableList()));
   }

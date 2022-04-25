@@ -74,7 +74,7 @@ public class CarsTest {
     Cars cars = new Cars(List.of(car1, car2, car3, car4, car5));
     Winners winners = new Winners(List.of(CAR_NAME_3, CAR_NAME_5));
 
-    assertThat(cars.findWinners().equals(winners)).isTrue();
+    assertThat(cars.findWinners()).isEqualTo(winners);
   }
 
   @Test
