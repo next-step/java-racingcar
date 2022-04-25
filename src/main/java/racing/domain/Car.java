@@ -6,7 +6,7 @@ public class Car {
 
     public Car(Rule rule) {
         this.rule = rule;
-        this.location = Location.of();
+        this.location = Location.defaultLocation();
     }
 
     public Location getLocation() {

@@ -20,7 +20,7 @@ public class ResultView {
 
         StringBuilder sb = new StringBuilder();
         sb.append('|');
-        Location locationIndex = Location.of();
+        Location locationIndex = Location.defaultLocation();
         while (!locationIndex.equals(carLocation)) {
             sb.append(LOCATION_EXPRESSION_CHARACTER);
             locationIndex = locationIndex.forward();

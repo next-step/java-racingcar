@@ -6,23 +6,19 @@ public class Location {
     private static final int DEFAULT_LOCATION = 0;
     private final int number;
 
-    private Location(final int number) {
+    public Location(final int number) {
         if (number < 0) {
             throw new IllegalArgumentException("음수가 될 수 없습니다.");
         }
         this.number = number;
     }
 
-    public static Location of() {
+    public static Location defaultLocation() {
         return new Location(DEFAULT_LOCATION);
     }
 
-    public static Location of(final int number) {
-        return new Location(number);
-    }
-
     public Location forward() {
-        return Location.of(this.number + 1);
+        return new Location(this.number + 1);
     }
 
     @Override
