@@ -42,13 +42,13 @@ public class Circuit {
     }
 
     public String whoIsWinners() {
-        StringBuilder winnersName = new StringBuilder(this.winners.get(0).getCarName());
+        StringBuilder winnersName = new StringBuilder(this.winners.get(0).getName());
         if (winners.size() == 1) {
             return winnersName.toString();
         }
 
         for (int i = 1; i < this.winners.size(); i++) {
-            winnersName.append(", ").append(winners.get(i).getCarName());
+            winnersName.append(", ").append(winners.get(i).getName());
         }
 
         return winnersName.toString();

@@ -1,36 +1,34 @@
 package racing;
 
-import com.sun.nio.sctp.IllegalReceiveException;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
     private static final int MIN_NUMBER_OF_MOVES = 1;
-    private static final int MAX_NAME_SIZE = 5;
 
-    private final String carName;
-
-    private final List<Boolean> moves;
-    private final int moveCount;
-
+    private final CarName name;
     private final Engine engine;
 
-    public Car(String carName, Engine engine, int moveCount) {
-        if (carName.length() > MAX_NAME_SIZE) {
-            throw new IllegalArgumentException();
-        }
+    private final int moveCount;
+    private final List<Boolean> moves;
+
+    public Car(CarName name, Engine engine, int moveCount, List<Boolean> moves) {
         if (moveCount < MIN_NUMBER_OF_MOVES) {
             throw new IllegalArgumentException();
         }
-        this.carName = carName;
+        this.name = name;
         this.engine = engine;
-        this.moves = new ArrayList<>();
         this.moveCount = moveCount;
+        this.moves = moves;
     }
 
-    public String getCarName() {
-        return this.carName;
+    public Car(String name, Engine engine, int moveCount) {
+        this(new CarName(name), engine, moveCount, new ArrayList<>());
+    }
+
+
+    public String getName() {
+        return this.name.getName();
     }
 
     public void racingStart() {
