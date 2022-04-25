@@ -57,4 +57,15 @@ public class RacingTest {
         assertThatThrownBy(() -> new Car(carName, engine, errorMoveCount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("이동 회수 테스트")
+    void MoveCountTest() {
+        MoveCount moveCount = new MoveCount(3);
+        assertThat(moveCount.isUnderCount(2))
+                .isEqualTo(true);
+
+        assertThatThrownBy(() -> new MoveCount(0))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

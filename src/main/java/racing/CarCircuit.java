@@ -12,6 +12,5 @@ public class CarCircuit {
         circuit.startRacing();
 
         ResultView.view(circuit);
-        System.out.println("circuit.whoIsWinners() = " + circuit.whoIsWinners());
     }
 }

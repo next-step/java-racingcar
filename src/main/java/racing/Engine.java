@@ -13,6 +13,6 @@ public class Engine {
 
     public boolean cycle() {
         int randomNumber = random.nextInt(MAX_RANDOM_NUMBER);
-        return randomNumber >= REFERENCE_NUMBER;
+        return randomNumber > REFERENCE_NUMBER;
     }
 }

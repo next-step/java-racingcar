@@ -4,26 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
-    private static final int MIN_NUMBER_OF_MOVES = 1;
 
     private final CarName name;
     private final Engine engine;
 
-    private final int moveCount;
+    private final MoveCount moveCount;
     private final List<Boolean> moves;
 
-    public Car(CarName name, Engine engine, int moveCount, List<Boolean> moves) {
-        if (moveCount < MIN_NUMBER_OF_MOVES) {
-            throw new IllegalArgumentException();
-        }
+    public Car(CarName name, Engine engine, MoveCount count, List<Boolean> moves) {
         this.name = name;
         this.engine = engine;
-        this.moveCount = moveCount;
+        this.moveCount = count;
         this.moves = moves;
     }
 
     public Car(String name, Engine engine, int moveCount) {
-        this(new CarName(name), engine, moveCount, new ArrayList<>());
+        this(new CarName(name), engine, new MoveCount(moveCount), new ArrayList<>());
     }
 
 
@@ -32,7 +28,7 @@ public class Car {
     }
 
     public void racingStart() {
-        for (int i = 0; i < moveCount; i++) {
+        for (int i = 0; moveCount.isUnderCount(i); i++) {
             move();
         }
     }
