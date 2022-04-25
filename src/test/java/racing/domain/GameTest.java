@@ -33,7 +33,7 @@ class GameTest {
         assertThat(count).isEqualTo(5);
     }
 
-    Rule getDefaultRule() {
+    GameRule getDefaultRule() {
         return () -> true;
     }
 }

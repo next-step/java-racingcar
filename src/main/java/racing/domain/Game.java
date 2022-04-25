@@ -7,19 +7,19 @@ import racing.exception.GameException;
 
 public class Game {
     private NumberOfRound numberOfRound;
-    private final Rule rule;
+    private final GameRule gameRule;
     private final List<Car> cars = new LinkedList<>();
 
-    public Game(final NumberOfRound numberOfRound, final Rule rule) {
+    public Game(final NumberOfRound numberOfRound, final GameRule gameRule) {
         this.numberOfRound = numberOfRound;
-        this.rule = rule;
+        this.gameRule = gameRule;
     }
 
     public List<Car> equipRacingCar(final NumberOfCars numberOfCars) {
         int index = 0;
         NumberOfCars addCarsIndex = NumberOfCars.of(index);
         while (!addCarsIndex.equals(numberOfCars)) {
-            cars.add(new Car(rule));
+            cars.add(new Car(gameRule));
             addCarsIndex = NumberOfCars.of(++index);
         }
         return cars;
