@@ -6,7 +6,6 @@ import racing.car.Car;
 import java.util.List;
 
 public class ResultView {
-    private final static String NO_MOVE = "";
     private final static String MOVE = "-";
 
     public static void view(Circuit circuit) {
@@ -26,21 +25,12 @@ public class ResultView {
     }
 
     private static void viewCar(Car car, int round) {
-        System.out.println(car.getName() + ": " + getCarDistance(car, round));
+        System.out.println(car.getName() + ": " + getCarDistanceByRound(car, round));
     }
 
-    private static StringBuilder getCarDistance(Car car, int round) {
+    private static StringBuilder getCarDistanceByRound(Car car, int round) {
         StringBuilder distance = new StringBuilder();
-        for (int i = 0; i <= round; i++) {
-            distance.append(move(car.isRoundMove(i)));
-        }
+        distance.append(MOVE.repeat(Math.max(0, car.getRoundDistance(round) + 1)));
         return distance;
-    }
-
-    private static String move(Boolean isMove) {
-        if (isMove) {
-            return MOVE;
-        }
-        return NO_MOVE;
     }
 }

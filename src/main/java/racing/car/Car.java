@@ -40,8 +40,8 @@ public class Car {
         return moves.getDistance();
     }
 
-    public boolean isRoundMove(int round) {
-        return moves.getMove(round);
+    public int getRoundDistance(int round) {
+        return moves.getRoundDistance(round);
     }
 
     public int getMovesCount() {
