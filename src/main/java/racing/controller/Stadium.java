@@ -18,8 +18,8 @@ public class Stadium {
         final NumberOfRound numberOfRound = InputView.inputNumberOfRound();
         final GameRule gameRule = new RandomGameRule();
 
-        Game game = new Game(numberOfRound, gameRule);
-        final List<Car> cars = game.equipRacingCar(numberOfCars);
+        Game game = new Game(numberOfRound, gameRule, numberOfCars);
+        final List<Car> cars = game.getCars();
         while (game.isLeftRound()) {
             game.proceedRound();
             ResultView.print(cars);

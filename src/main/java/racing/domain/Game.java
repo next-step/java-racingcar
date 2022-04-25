@@ -10,19 +10,19 @@ public class Game {
     private final GameRule gameRule;
     private final List<Car> cars = new LinkedList<>();
 
-    public Game(final NumberOfRound numberOfRound, final GameRule gameRule) {
+    public Game(final NumberOfRound numberOfRound, final GameRule gameRule, final NumberOfCars numberOfCars) {
         this.numberOfRound = numberOfRound;
         this.gameRule = gameRule;
+        equipRacingCar(numberOfCars);
     }
 
-    public List<Car> equipRacingCar(final NumberOfCars numberOfCars) {
+    private void equipRacingCar(final NumberOfCars numberOfCars) {
         int index = 0;
         NumberOfCars addCarsIndex = NumberOfCars.of(index);
         while (!addCarsIndex.equals(numberOfCars)) {
             cars.add(new Car(gameRule));
             addCarsIndex = NumberOfCars.of(++index);
         }
-        return cars;
     }
 
     public boolean isLeftRound() {
@@ -35,5 +35,16 @@ public class Game {
         }
         cars.forEach(Car::run);
         this.numberOfRound = this.numberOfRound.decrease();
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+               "cars=" + cars +
+               '}';
     }
 }
