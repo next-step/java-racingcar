@@ -5,19 +5,20 @@ import java.util.regex.Pattern;
 
 public class SplitMatcher {
 
-    private static final String SPLIT_PATTERN_REGEX = "^//(.)\n(.*)$";
+    private static final String CUSTOM_PATTERN_REGEX = "^//(.)\n(.*)$";
+    private static final Pattern DEFAULT_PATTERN = Pattern.compile(CUSTOM_PATTERN_REGEX);
     private final Matcher matcher;
 
-    private SplitMatcher(String regex, String text) {
-        this.matcher = Pattern.compile(regex).matcher(text);
+    private SplitMatcher(Matcher matcher) {
+        this.matcher = matcher;
     }
 
     public static SplitMatcher of(String text) {
-        return SplitMatcher.of(SPLIT_PATTERN_REGEX, text);
+        return new SplitMatcher(DEFAULT_PATTERN.matcher(text));
     }
 
     public static SplitMatcher of(String regex, String text) {
-        return new SplitMatcher(regex, text);
+        return new SplitMatcher(Pattern.compile(regex).matcher(text));
     }
 
     public boolean find() {

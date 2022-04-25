@@ -1,5 +1,6 @@
 package step2;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -7,20 +8,20 @@ public class PositiveNumbers {
 
     private final List<PositiveNumber> positiveNumbers;
 
-    private PositiveNumbers(List<PositiveNumber> positiveNumbers) {
+    private PositiveNumbers(String[] values) {
+        List<PositiveNumber> positiveNumbers = new ArrayList<>(values.length);
+        for (String value : values) {
+            positiveNumbers.add(PositiveNumber.of(value));
+        }
         this.positiveNumbers = positiveNumbers;
     }
 
-    public static PositiveNumbers of(List<PositiveNumber> numbers) {
-        return new PositiveNumbers(numbers);
+    public static PositiveNumbers of(String[] values) {
+        return new PositiveNumbers(values);
     }
 
     public int sum() {
-        int sum = 0;
-        for (PositiveNumber number : this.getPositiveNumbers()) {
-            sum += number.getNumber();
-        }
-        return sum;
+        return this.getPositiveNumbers().stream().map(PositiveNumber::getNumber).reduce(0, Integer::sum);
     }
 
     public List<PositiveNumber> getPositiveNumbers() {

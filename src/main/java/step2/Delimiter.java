@@ -20,12 +20,7 @@ public class Delimiter {
         return new Delimiter(customDelimeter);
     }
 
-    public List<PositiveNumber> split(String data) {
-        String[] values = data.split(this.customDelimeter);
-        List<PositiveNumber> numbers = new ArrayList<>(values.length);
-        for (String value : values) {
-            numbers.add(PositiveNumber.of(value));
-        }
-        return numbers;
+    public String[] split(String data) {
+        return data.split(this.customDelimeter);
     }
 }
