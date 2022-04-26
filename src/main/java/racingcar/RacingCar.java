@@ -2,6 +2,8 @@ package racingcar;
 
 import racingcar.pattern.NumberGenerator;
 
+import java.util.Map;
+
 public class RacingCar  {
     private Cars cars;
     private int round;
@@ -39,5 +41,9 @@ public class RacingCar  {
 
     public Winners findWinners() {
         return new Winners(cars.getWinners(getMaxPosition()));
+    }
+
+    public Map<String, Integer> getDistance() {
+        return cars.getPositions();
     }
 }

@@ -4,6 +4,7 @@ import racingcar.pattern.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -42,5 +43,13 @@ public class Cars {
             maxPosition = car.maxPosition(maxPosition);
         }
         return maxPosition;
+    }
+
+    public Map<String, Integer> getPositions() {
+        return cars.stream()
+                   .collect(Collectors.toMap(
+                           Car::getName,
+                           Car::getDistance
+                   ));
     }
 }

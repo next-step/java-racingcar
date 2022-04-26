@@ -17,7 +17,7 @@ public class Main {
 
         for (int currentRound = 0; currentRound < round; currentRound++) {
             racingCar.playRound();
-            ResultView.printCarsPosition(cars);
+            ResultView.printCarsPosition(racingCar);
         }
         ResultView.printWinner(racingCar.findWinners());
     }

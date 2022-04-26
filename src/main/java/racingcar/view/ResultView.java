@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import racingcar.Car;
-import racingcar.Cars;
+import racingcar.RacingCar;
 import racingcar.Winners;
 
 import java.util.List;
@@ -15,15 +15,14 @@ public class ResultView {
         throw new IllegalStateException("Utility class.");
     }
 
-    public static void printCarsPosition(Cars cars) {
-        cars.getCars().forEach(car -> print(car.getName(), car.getDistance()));
+    public static void printCarsPosition(RacingCar racingCar) {
+        racingCar.getDistance()
+                 .forEach(ResultView::print);
         System.out.println();
     }
 
     private static void print(String name, int distance) {
-        StringBuilder builder = new StringBuilder();
-        builder.append(MOVED_EXPRESSION.repeat(Math.max(0, distance)));
-        System.out.println(name + " : " + builder.toString());
+        System.out.println(name + " : " + MOVED_EXPRESSION.repeat(Math.max(0, distance)));
     }
 
     public static void printWinner(Winners winners) {
