@@ -7,6 +7,9 @@ public class Position {
   private int position;
 
   public Position(int position) {
+    if (position < 0) {
+      throw new IllegalArgumentException("위치 값은 0보다 작을 수 없습니다.");
+    }
     this.position = position;
   }
 
