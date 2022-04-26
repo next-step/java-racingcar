@@ -1,18 +1,12 @@
 package racingcar.domain;
 
-import racingcar.exception.CarNameException;
-
 public class Car {
 
-    private static final int MAX_LENGTH = 5;
-    private final String name;
+    private final CarName carName;
     private final Position position;
 
-    public Car(String name) {
-        if (name.length() > MAX_LENGTH) {
-            throw new CarNameException("자동차의 이름은 5글자를 넘을 수 없습니다.");
-        }
-        this.name = name;
+    public Car(CarName carName) {
+        this.carName = carName;
         this.position = new Position();
     }
 
@@ -34,8 +28,8 @@ public class Car {
         return position.getMovement();
     }
 
-    public String getName() {
-        return name;
+    public String getCarName() {
+        return carName.getName();
     }
 
 }
