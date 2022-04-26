@@ -8,25 +8,25 @@ import java.util.List;
 
 public class OutputView {
 
-    public OutputView() {
+    public static void print() {
         printNextLine();
         System.out.println("실행 결과");
     }
 
-    public void printGameResult(ParticipatedCars participatedCars) {
+    public static void printGameResult(ParticipatedCars participatedCars) {
         printNextLine();
 
         List<Car> participatedCarsList = participatedCars.getParticipatedCars();
         participatedCarsList.forEach(System.out::println);
     }
 
-    public void printWinnerResult(WinnerCars winnerCars) {
+    public static void printWinnerResult(WinnerCars winnerCars) {
         printNextLine();
 
         System.out.println(winnerCars.getWinnerCarsName() + "가 최종 우승했습니다.");
     }
 
-    private void printNextLine() {
+    private static void printNextLine() {
         System.out.println();
     }
 }
