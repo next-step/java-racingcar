@@ -1,6 +1,7 @@
 package racing;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -11,11 +12,10 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class CarNameTest {
 
-    @DisplayName("자동차 이름의 객체 생성하면 CarName의 인스턴스를 반환한다")
-    @ParameterizedTest
-    @ValueSource(strings = {"carA", "carB", "car🫣"})
-    void createCarName(String name) {
-        assertThat(new CarName(name)).isInstanceOf(CarName.class);
+    @DisplayName("carName 객체 동등성 비교")
+    @Test
+    void createCarName() {
+        assertThat(new CarName("carA")).isEqualTo(new CarName("carA"));
     }
 
     @DisplayName("자동차 이름이 null 이거나 빈값이면 예외를 던진다")
