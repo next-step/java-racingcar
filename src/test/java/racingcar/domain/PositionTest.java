@@ -28,10 +28,13 @@ class PositionTest {
     }
 
     @Test
-    @DisplayName("이동 단위는 - 이다")
+    @DisplayName("현재 위치에서 한칸 전진한다")
     void movingUnit() {
-        String unit = "-";
+        Position position = new Position("");
+        String expect = "-";
 
-        assertThat(Position.MOVING_UNIT).isEqualTo(unit);
+        position.forward();
+
+        assertThat(position.show()).isEqualTo(expect);
     }
 }
