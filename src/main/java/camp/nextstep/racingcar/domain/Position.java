@@ -6,6 +6,10 @@ public class Position {
 
   private int position;
 
+  public Position() {
+    this(0);
+  }
+
   public Position(int position) {
     if (position < 0) {
       throw new IllegalArgumentException("위치 값은 0보다 작을 수 없습니다.");
@@ -36,5 +40,12 @@ public class Position {
   @Override
   public int hashCode() {
     return Objects.hash(position);
+  }
+
+  public Position maxPosition(Position maxPosition) {
+    if (this.position >= maxPosition.getPosition()) {
+      return this;
+    }
+    return maxPosition;
   }
 }

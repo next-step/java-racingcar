@@ -8,19 +8,22 @@ public class Car {
   private Position position;
 
   public Car(String name) {
+    this(name, new Position());
+  }
+
+  public Car(String name, Position position) {
     this.name = new CarName(name);
-    this.position = new Position(0);
+    this.position = position;
   }
 
   public void move(MoveCondition condition) {
-    if (!condition.isSatisfied()) {
-      return;
+    if (condition.isSatisfied()) {
+      position.moveForward();
     }
-    position.moveForward();
   }
 
-  public int getPosition() {
-    return position.getPosition();
+  public Position getPosition() {
+    return position;
   }
 
   public String getName() {
@@ -29,5 +32,9 @@ public class Car {
 
   public boolean isSamePosition(Car car) {
     return Objects.equals(this.getPosition(), car.getPosition());
+  }
+
+  public Position maxPosition(Position maxPosition) {
+    return position.maxPosition(maxPosition);
   }
 }

@@ -1,43 +1,45 @@
 package camp.nextstep.racingcar.view;
 
+import static java.lang.System.out;
+
 import camp.nextstep.racingcar.domain.Car;
-import camp.nextstep.racingcar.domain.CarRecord;
-import camp.nextstep.racingcar.domain.RaceRecord;
+import camp.nextstep.racingcar.domain.Position;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultView {
 
-  public static final String DISTANCE_MARK = "-";
-  public static final String WINNER_DELIMITER = ", ";
+    public static final String DISTANCE_MARK = "-";
+    public static final String WINNER_DELIMITER = ", ";
 
-  public static void print(List<RaceRecord> records) {
-    System.out.println("실행 결과");
-    for (RaceRecord record : records) {
-      printCarRecord(record.getCarRecords());
-      System.out.println();
+    public static void print(List<Car> cars) {
+        for (Car car : cars) {
+            printCar(car);
+        }
+        out.println();
     }
-  }
 
-  public static void printWinner(List<Car> winners) {
-    String names = winners.stream()
-        .map(Car::getName)
-        .collect(Collectors.joining(WINNER_DELIMITER));
-    System.out.println(names + "가 최종 우승했습니다.");
-  }
-
-  private static void printCarRecord(List<CarRecord> carRecords) {
-    for (CarRecord carRecord : carRecords) {
-      System.out.print(carRecord.getName() + " : ");
-      printCarDistance(carRecord);
-      System.out.println();
+    public static void printWinner(List<Car> cars) {
+        out.println("최종 우승자: " + String.join(WINNER_DELIMITER, toWinnerNames(cars)));
     }
-  }
 
-  private static void printCarDistance(CarRecord carRecord) {
-    for (int i = 0; i < carRecord.getDistance(); i++) {
-      System.out.print(DISTANCE_MARK);
+    private static void printCar(Car car) {
+        out.println(car.getName() + " : " + toGraphicDistance(car.getPosition()));
     }
-  }
 
+    private static String toGraphicDistance(Position position) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < position.getPosition(); i++) {
+            sb.append(DISTANCE_MARK);
+        }
+        return sb.toString();
+    }
+
+    private static List<String> toWinnerNames(List<Car> cars) {
+        List<String> winnerNames = new ArrayList<>(cars.size());
+        for (Car car : cars) {
+            winnerNames.add(car.getName());
+        }
+        return winnerNames;
+    }
 }
