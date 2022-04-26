@@ -1,7 +1,7 @@
 package racingcar.model;
 
 public class PlayCount {
-    private int value = 0;
+    private final int value;
 
     public PlayCount(int value) {
         this.value = value;

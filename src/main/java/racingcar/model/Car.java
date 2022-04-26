@@ -3,7 +3,7 @@ package racingcar.model;
 import java.util.Objects;
 
 public class Car {
-    private final static int MAX_CAR_NAME = 5;
+    private static final int MAX_CAR_NAME = 5;
 
     private StringBuilder showCarDistance;
 

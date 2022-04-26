@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Cars {
     private static final StringBuilder carsStatus = new StringBuilder();
+    static final RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
 
     private final List<Car> cars = new ArrayList<>();
     private int winnerScore;
@@ -23,6 +24,7 @@ public class Cars {
 
     public void add(Car car) {
         cars.add(car);
+        checkWinnerScore(car);
     }
 
     public List<Car> getCars() {
@@ -34,11 +36,13 @@ public class Cars {
     }
 
     public void play() {
-        RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
         for (Car car : cars) {
             car.isMove(randomMovingStrategy);
             checkWinnerScore(car);
+            carsStatus.append(car.getCarName() + " : " + car.showCarDistance());
+            carsStatus.append("\n");
         }
+        carsStatus.append("\n");
     }
 
     private void checkWinnerScore(Car car) {
@@ -48,9 +52,6 @@ public class Cars {
     }
 
     public List<Car> isWinners() {
-        for (Car car : cars) {
-            checkWinnerScore(car);
-        }
         List<Car> winnerCars = new ArrayList<>();
         for (Car car : cars) {
             checkWinnerCar(winnerCars, car);
@@ -62,13 +63,5 @@ public class Cars {
         if(car.isWinner(winnerScore)){
             winnerCars.add(car);
         }
-    }
-
-    public void appendCarsStatus(){
-        for (Car car : cars) {
-            carsStatus.append(car.getCarName() + " : " + car.showCarDistance());
-            carsStatus.append("\n");
-        }
-        carsStatus.append("\n");
     }
 }

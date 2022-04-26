@@ -11,7 +11,6 @@ public class GameService {
 
         while ( !playCount.isLast(index) ) {
             cars.play();
-            cars.appendCarsStatus();
             index++;
         }
         ResultView.printCars(cars);
