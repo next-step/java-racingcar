@@ -1,5 +1,10 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import racingcar.view.RoundResult;
+
 public class CountOfGamePlay {
 	private final int playCount;
 
@@ -7,10 +12,11 @@ public class CountOfGamePlay {
 		this.playCount = playCount;
 	}
 
-	public RacingCars run(RacingCars racingCars, EngineStrategy engineStrategy) {
+	public List<RoundResult> run(RacingCars racingCars, EngineStrategy engineStrategy) {
+		List<RoundResult> results = new ArrayList<>();
 		for (int i = 0; i < playCount; i++) {
-			racingCars.play(engineStrategy);
+			results.add(racingCars.play(engineStrategy));
 		}
-		return racingCars;
+		return results;
 	}
 }
