@@ -10,13 +10,19 @@ class NameTest {
     @Test
     @DisplayName("이름은 5자를 초과 할 수 없다")
     void exceedName() {
-        assertThatThrownBy(() -> new Name("nameExceed")).isInstanceOf(IllegalArgumentException.class);
+        String errorMessage = "이름은 5자를 초과 할 수 없습니다.";
+
+        assertThatThrownBy(() -> new Name("nameExceed"))
+            .isInstanceOf(IllegalArgumentException.class).hasMessageContaining(errorMessage);
     }
 
     @Test
     @DisplayName("이름은 공백이 될 수 없다")
     void emptyName() {
-        assertThatThrownBy(() -> new Name("")).isInstanceOf(IllegalArgumentException.class);
+        String errorMessage = "이름은 공백이 될 수 없습니다.";
+
+        assertThatThrownBy(() -> new Name(""))
+            .isInstanceOf(IllegalArgumentException.class).hasMessageContaining(errorMessage);
     }
 
     @Test
