@@ -7,8 +7,8 @@ public class Location {
     private final int number;
 
     public Location(final int number) {
-        if (number < 0) {
-            throw new IllegalArgumentException("음수가 될 수 없습니다.");
+        if (number < DEFAULT_LOCATION) {
+            throw new IllegalArgumentException("위치는 0이상이어야 합니다.");
         }
         this.number = number;
     }
