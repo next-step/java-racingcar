@@ -27,7 +27,7 @@ public class GameCount {
     }
 
     public boolean isTerminated() {
-        return gameCount == GAME_TERMINATED_COUNT;
+        return gameCount != GAME_TERMINATED_COUNT;
     }
 
     public void consume() {
