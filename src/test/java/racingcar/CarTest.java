@@ -1,29 +1,39 @@
 package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.RandomStrategy;
+
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private final Car car = new Car();
-    private final RandomStrategy randomStrategy = new RandomStrategy();
+    private final Car car = new Car("jisu");
 
-
-    @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    @DisplayName("랜덤 전략을 이용한 자동차 전진 테스트")
-    void moveTest(int value) {
-        assertThat(car.moveOrStop(randomStrategy, value)).isEqualTo(1);
+    @Test
+    @DisplayName("랜덤 전략을 사용한 자동차 전진 테스트")
+    void moveTest() {
+        car.moveOrStop(new RandomStrategy() {
+            @Override
+            public boolean checkCondition() {
+                return true;
+            }
+        });
+        assertThat(car.getMovement()).isEqualTo(1);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    @DisplayName("랜덤 전략을 이용한 자동차 멈춤 테스트")
-    void stopTest(int value) {
-        assertThat(car.moveOrStop(randomStrategy, value)).isZero();
+    @Test
+    @DisplayName("랜덤 전략을 사용한 자동차 멈춤 테스트")
+    void stopTest() {
+        car.moveOrStop(new RandomStrategy() {
+            @Override
+            public boolean checkCondition() {
+                return false;
+            }
+        });
+        assertThat(car.getMovement()).isZero();
     }
+
 }
