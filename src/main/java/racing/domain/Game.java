@@ -20,7 +20,7 @@ public class Game {
         int index = 0;
         NumberOfCars addCarsIndex = NumberOfCars.of(index);
         while (!addCarsIndex.equals(numberOfCars)) {
-            cars.add(new Car(gameRule));
+            cars.add(new Car());
             addCarsIndex = NumberOfCars.of(++index);
         }
     }
@@ -33,7 +33,7 @@ public class Game {
         if (!isLeftRound()) {
             throw new GameException("모든 Round가 종료되었습니다.");
         }
-        cars.forEach(Car::run);
+        cars.forEach(car -> car.run(gameRule));
         this.numberOfRound = this.numberOfRound.decrease();
     }
 

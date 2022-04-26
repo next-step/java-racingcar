@@ -1,11 +1,9 @@
 package racing.domain;
 
 public class Car {
-    private final GameRule gameRule;
     private Location location;
 
-    public Car(GameRule gameRule) {
-        this.gameRule = gameRule;
+    public Car() {
         this.location = Location.defaultLocation();
     }
 
@@ -13,7 +11,7 @@ public class Car {
         return location;
     }
 
-    public void run() {
+    public void run(GameRule gameRule) {
         if (gameRule.isPassedCondition()) {
             this.location = location.forward();
         }
@@ -22,8 +20,7 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-               "gameRule=" + gameRule +
-               ", location=" + location +
+               "location=" + location +
                '}';
     }
 }
