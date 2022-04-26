@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.CarName;
 import racingcar.domain.RandomStrategy;
 
 
@@ -10,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private Car car = new Car("jisu");
+    private Car car = new Car(new CarName("jisu"));
 
     @Test
     @DisplayName("랜덤 전략을 사용한 자동차 전진 테스트")

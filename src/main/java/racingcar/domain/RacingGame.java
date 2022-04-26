@@ -10,7 +10,7 @@ public class RacingGame {
 
     public void createCar(String[] names) {
         for (int i = 0; i < names.length; i++) {
-            cars.add(new Car(names[i]));
+            cars.add(new Car(new CarName(names[i])));
         }
     }
 
@@ -31,7 +31,7 @@ public class RacingGame {
         int max = calMaxPosition();
         cars.forEach(car -> {
             if(car.isWinner(max)) {
-                winners.add(car.getName());
+                winners.add(car.getCarName());
             }
         });
         return winners;
