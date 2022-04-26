@@ -2,10 +2,11 @@ package study.step4.domain;
 
 public class CarPosition {
     private static final int CAR_START_POSITION = 0;
+    private static final int MIN_POSITION = 0;
     private final int position;
 
     public CarPosition(int position) {
-        if (position < 0) {
+        if (position < MIN_POSITION) {
             throw new IllegalArgumentException("car postion 은 음수가될수 없다");
         }
         this.position = position;

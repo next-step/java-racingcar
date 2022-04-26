@@ -4,10 +4,11 @@ import java.util.Objects;
 
 public class GameCount {
     private static final int GAME_TERMINATED_COUNT = 0;
+    private static final int GAME_MIN_COUNT = 0;
     private int gameCount;
 
     public GameCount(int gameCount) {
-        if (gameCount <= 0 ) {
+        if (gameCount <= GAME_MIN_COUNT ) {
             throw new IllegalArgumentException("game 횟수는 1 이상이어야 합니다");
         }
         this.gameCount = gameCount;
