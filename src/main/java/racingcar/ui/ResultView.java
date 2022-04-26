@@ -11,11 +11,11 @@ public class ResultView {
 	}
 
 	public void showResult() {
-		CarStadium carStadium1 = new CarStadium();
+		CarStadium carStadium = new CarStadium();
 
 		executionResult();
-		raceStart(carStadium1);
-		showWinners(carStadium1);
+		raceStart(carStadium);
+		showWinners(carStadium);
 	}
 
 	private void executionResult() {
@@ -23,10 +23,10 @@ public class ResultView {
 		System.out.println("실행 결과");
 	}
 
-	private void raceStart(CarStadium carStadium1) {
-		Cars cars = carStadium1.carComes(inputView.getCarNames());
+	private void raceStart(CarStadium carStadium) {
+		Cars cars = carStadium.carComes(inputView.getCarNames());
 		for (int i = 0; i < inputView.getRounds(); i++) {
-			carStadium1.race();
+			carStadium.race();
 			showMove(cars);
 			System.out.println();
 		}
@@ -38,8 +38,8 @@ public class ResultView {
 		}
 	}
 
-	private void showWinners(CarStadium carStadium1) {
-		String winners = carStadium1.showWinners();
+	private void showWinners(CarStadium carStadium) {
+		String winners = carStadium.showWinners();
 		System.out.println("우승자는 " + winners + " 입니다");
 	}
 }
