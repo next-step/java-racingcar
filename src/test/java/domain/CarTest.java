@@ -65,4 +65,20 @@ public class CarTest {
     String positionMark = car.markPosition();
     assertThat(positionMark).isEqualTo(DEFAULT_CAR_NAME + COLUMN_MARKER + POSITION_MARKER);
   }
+
+  @Test
+  void isSamePosition_성공() {
+    Car car = new Car(DEFAULT_CAR_NAME, 1);
+    Car otherCar = new Car("other", 1);
+
+    assertThat(car.isSamePosition(otherCar)).isTrue();
+  }
+
+  @Test
+  void isSamePosition_실패() {
+    Car car = new Car(DEFAULT_CAR_NAME, 1);
+    Car otherCar = new Car("other", 2);
+
+    assertThat(car.isSamePosition(otherCar)).isFalse();
+  }
 }

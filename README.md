@@ -35,7 +35,8 @@
 - 자동차의 이름을 반환할 수 있다.
 
 ### Winners
-- 우승자 출력에 필요한 String을 반환할 수 있다.
+- 우승자 목록을 알 수 있다.
+- 우승자는 1명 이상이다.
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)

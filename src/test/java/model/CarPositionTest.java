@@ -20,7 +20,6 @@ class CarPositionTest {
     assertThat(carPosition.compareTo(expected)).isEqualTo(0);
   }
 
-
   @Test
   void CarPosition_생성_성공() {
     assertDoesNotThrow(() -> new CarPosition(VALID_CAR_POSITION));

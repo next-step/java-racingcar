@@ -34,10 +34,10 @@ public class CarPosition extends AbstractMutableNumberModel implements Comparabl
   @Override
   public int compareTo(CarPosition other) {
     if (this.value > other.value) {
-      return -1;
+      return 1;
     } else if (this.value == other.value) {
       return 0;
     }
-    return 1;
+    return -1;
   }
 }
