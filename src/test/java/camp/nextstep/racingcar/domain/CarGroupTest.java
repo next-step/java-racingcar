@@ -7,17 +7,17 @@ import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class CarsTest {
+public class CarGroupTest {
 
   @Test
   public void 주어진_자동차_이름으로_자동차들_생성() {
-    Cars cars = new Cars(CarFactory.of("pobi,crong,honux"));
-    assertThat(cars.size()).isEqualTo(3);
+    CarGroup carGroup = new CarGroup(CarFactory.of("pobi,crong,honux"));
+    assertThat(carGroup.size()).isEqualTo(3);
   }
 
   @Test
   public void 자동차_이름_5글자_초과_예외() {
-    assertThatThrownBy(() -> new Cars(CarFactory.of("pobi,crong,honux,iamfivenames")))
+    assertThatThrownBy(() -> CarFactory.of("pobi,crong,honux,iamfivenames"))
         .isInstanceOf(IllegalArgumentException.class);
   }
 
@@ -27,8 +27,8 @@ public class CarsTest {
     Car pobi = new Car("pobi", new Position(3));
     Car crong = new Car("crong", new Position(1));
     Car honux = new Car("honux", new Position(2));
-    Cars cars = new Cars(Arrays.asList(pobi, crong, honux));
-    assertThat(cars.getWinners()).contains(pobi);
+    CarGroup carGroup = new CarGroup(Arrays.asList(pobi, crong, honux));
+    assertThat(carGroup.getWinners()).contains(pobi);
   }
 
   @Test
@@ -37,8 +37,8 @@ public class CarsTest {
     Car pobi = new Car("pobi", new Position(3));
     Car crong = new Car("crong", new Position(1));
     Car honux = new Car("honux", new Position(3));
-    Cars cars = new Cars(Arrays.asList(pobi, crong, honux));
-    assertThat(cars.getWinners()).contains(pobi, honux);
+    CarGroup carGroup = new CarGroup(Arrays.asList(pobi, crong, honux));
+    assertThat(carGroup.getWinners()).contains(pobi, honux);
   }
 
 }

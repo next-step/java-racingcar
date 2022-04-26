@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Cars {
+public class CarGroup {
 
   private final List<Car> cars;
 
-  public Cars(List<Car> cars) {
+  public CarGroup(List<Car> cars) {
     this.cars = cars;
   }
 

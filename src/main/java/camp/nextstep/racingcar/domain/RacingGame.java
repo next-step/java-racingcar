@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final Cars cars;
+    private final CarGroup carGroup;
     private Round round;
 
     public RacingGame(String carNames, Round round) {
@@ -13,12 +13,12 @@ public class RacingGame {
     }
 
     public RacingGame(List<Car> cars, Round round) {
-        this.cars = new Cars(cars);
+        this.carGroup = new CarGroup(cars);
         this.round = round;
     }
 
     public void race(MoveCondition moveCondition) {
-        cars.move(moveCondition);
+        carGroup.move(moveCondition);
         round.finishPerRound();
     }
 
@@ -27,11 +27,11 @@ public class RacingGame {
     }
 
     public List<Car> getWinners() {
-        return cars.getWinners();
+        return carGroup.getWinners();
     }
 
     public List<Car> getCars() {
-        return Collections.unmodifiableList(cars.getCars());
+        return Collections.unmodifiableList(carGroup.getCars());
     }
 
 }
