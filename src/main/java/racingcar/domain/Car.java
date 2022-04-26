@@ -32,7 +32,7 @@ public class Car {
 
 	public void move() {
 		if (isMovable(generateValueToMove())) {
-			position.forward(Position.MOVING_UNIT);
+			position.forward();
 		}
 	}
 

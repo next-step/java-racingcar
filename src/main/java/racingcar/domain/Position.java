@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Position {
-    public static final String MOVING_UNIT = "-";
+    private static final String MOVING_UNIT = "-";
 
     private String position;
 
@@ -9,8 +9,8 @@ public class Position {
         this.position = position;
     }
 
-    public void forward(String movingUnit) {
-        position += movingUnit;
+    public void forward() {
+        position += MOVING_UNIT;
     }
 
     public String show() {
