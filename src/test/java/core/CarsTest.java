@@ -34,7 +34,7 @@ class CarsTest {
         //given
         final int initialPosition = 5;
         Car car = TestObjectGenerator.generateCar("a", initialPosition);
-        Car movedCar = TestObjectGenerator.generateCar("a", initialPosition + 1);
+        Car movedCar = car.move(Car.BASE_MOVE_VALUE);
         final int carCount = 3;
         Cars cars = TestObjectGenerator.generateCars(car, carCount);
         Cars movedCars = TestObjectGenerator.generateCars(movedCar, carCount);

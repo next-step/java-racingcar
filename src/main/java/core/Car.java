@@ -1,26 +1,25 @@
 package core;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Car {
     public static final int MAX_CAR_NAME_LENGTH = 5;
     public static final int BASE_MOVE_VALUE = 4;
     public static final int MAX_MOVE_VALUE = 10;
+    private final String id;
     private final CarName carName;
     private int position;
     private List<Integer> positionHistory;
 
-    private Car(CarName carName, int position, List<Integer> positionHistory) {
+    private Car(String id, CarName carName, int position, List<Integer> positionHistory) {
+        this.id = id;
         this.carName = carName;
         this.position = position;
         this.positionHistory = positionHistory;
     }
 
     public static Car create(CarName carName) {
-        return new Car(carName, 0, new ArrayList<>());
+        return new Car(UUID.randomUUID().toString(), carName, 0, new ArrayList<>());
     }
 
     public Car move(int moveValue) {
@@ -30,7 +29,7 @@ public class Car {
             movedPosition++;
         }
         movedPositionHistory.add(movedPosition);
-        return new Car(carName, movedPosition, movedPositionHistory);
+        return new Car(id, carName, movedPosition, movedPositionHistory);
     }
 
     public boolean isAhead(int position) {
@@ -43,6 +42,10 @@ public class Car {
 
     public boolean isAtSamePosition(int position) {
         return getPosition() == position;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public CarName getCarName() {
@@ -62,11 +65,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position && carName.equals(car.carName);
+        return position == car.position && id.equals(car.id) && carName.equals(car.carName) && positionHistory.equals(car.positionHistory);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carName, position);
+        return Objects.hash(id, carName, position, positionHistory);
     }
 }
