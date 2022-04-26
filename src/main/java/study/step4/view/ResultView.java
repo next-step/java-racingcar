@@ -8,6 +8,7 @@ public class ResultView {
     private static final String DISPLAY_CAR = "-";
     private static final String COMMA = ",";
     private static final String DELIMITER = " :";
+    private static final String GAME_RESULT_MESSAGE = "실행 결과";
 
     public void printPlay(List<CarsPositionModel> cars) {
         StringBuilder sb = new StringBuilder();
@@ -25,7 +26,7 @@ public class ResultView {
     }
 
     public void start() {
-        System.out.println("실행 결과");
+        System.out.println(GAME_RESULT_MESSAGE);
     }
 
     public void winners(List<String> winners) {

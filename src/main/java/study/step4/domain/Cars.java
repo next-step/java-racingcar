@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import static java.util.stream.Collectors.toList;
 
 public class Cars {
+    private static final String NULL_POINTER_MOVE_STRATEGTY = "move 전략이 null 입니다";
     private final List<Car> cars = new ArrayList<>();
 
     public Cars(String[] cars) {
@@ -28,7 +29,7 @@ public class Cars {
 
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy == null) {
-            throw new NullPointerException("move 전략이 null 입니다");
+            throw new NullPointerException(NULL_POINTER_MOVE_STRATEGTY);
         }
 
         for (Car car : cars) {

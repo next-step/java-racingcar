@@ -1,7 +1,6 @@
 package study.step4.domain;
 
 import study.step4.domain.strategy.MoveStrategy;
-import study.step4.util.Comparable;
 
 public class Car implements Comparable<Car> {
     private final CarName carName;
