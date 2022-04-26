@@ -38,14 +38,14 @@ public class Position {
         return Objects.hash(position);
     }
 
-    public int maxPosition(int maxPosition) {
-        if (this.position > maxPosition) {
-            return this.position;
+    public Position maxPosition(Position maxPosition) {
+        if (this.position > maxPosition.position) {
+            return this;
         }
         return maxPosition;
     }
 
-    public boolean isMaxPosition(int maxPosition) {
-        return this.position == maxPosition;
+    public boolean isMaxPosition(Position maxPosition) {
+        return this == maxPosition;
     }
 }

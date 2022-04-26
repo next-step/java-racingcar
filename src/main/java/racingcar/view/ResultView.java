@@ -26,13 +26,12 @@ public class ResultView {
         System.out.println(name + " : " + builder.toString());
     }
 
-    public static void printWinner(Cars cars) {
-        System.out.println(String.join(", ", getWinners(cars)) + "가 최종 우승했습니다.");
+    public static void printWinner(Winners winners) {
+        System.out.println(String.join(", ", getWinners(winners.getWinners())) + "가 최종 우승했습니다.");
     }
 
-    private static List<String> getWinners(Cars cars) {
-        return Winners
-                .findWinners(cars)
+    private static List<String> getWinners(List<Car> cars) {
+        return cars
                 .stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());

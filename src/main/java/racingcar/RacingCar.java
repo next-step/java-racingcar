@@ -33,4 +33,11 @@ public class RacingCar  {
         round = round - 1;
     }
 
+    private Position getMaxPosition() {
+        return cars.getMaxPosition();
+    }
+
+    public Winners findWinners() {
+        return new Winners(cars.getWinners(getMaxPosition()));
+    }
 }

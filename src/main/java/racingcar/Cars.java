@@ -32,7 +32,15 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> getWinners(int maxPosition) {
+    public List<Car> getWinners(Position maxPosition) {
         return getCars().stream().filter(car -> car.isWinner(maxPosition)).collect(Collectors.toList());
+    }
+
+    public Position getMaxPosition() {
+        Position maxPosition = new Position(0);
+        for (Car car : this.cars) {
+            maxPosition = car.maxPosition(maxPosition);
+        }
+        return maxPosition;
     }
 }

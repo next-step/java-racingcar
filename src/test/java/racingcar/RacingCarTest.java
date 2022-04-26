@@ -4,6 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.pattern.RandomNumberGenerator;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingCarTest {
@@ -35,5 +39,17 @@ class RacingCarTest {
         assertThatThrownBy(racingCar::playRound)
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessage("모든 라운드가 종료 되었습니다.");
+    }
+
+    @Test
+    @DisplayName("우승자를 찾는 테스트")
+    void findWinner() {
+        List<Car> carList = new ArrayList<>();
+        Car winner = new Car("win",4);
+        carList.add(winner);
+        carList.add(new Car("lose",2));
+        RacingCar racingCar = new RacingCar(new Cars(carList), 3, new RandomNumberGenerator());
+
+        assertThat(racingCar.findWinners().getWinners().get(0)).isEqualTo(winner);
     }
 }

@@ -59,11 +59,11 @@ public class Car {
         return carName.getName();
     }
 
-    public int maxPosition(int maxPosition) {
+    public Position maxPosition(Position maxPosition) {
         return position.maxPosition(maxPosition);
     }
 
-    public boolean isWinner(int maxPosition) {
+    public boolean isWinner(Position maxPosition) {
         return position.isMaxPosition(maxPosition);
     }
 }
