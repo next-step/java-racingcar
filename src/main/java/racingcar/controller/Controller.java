@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.model.PlayCount;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 import racingcar.model.Cars;
@@ -10,7 +11,7 @@ public class Controller {
         String carList = InputView.askCars( );
         Cars cars = new Cars(carList);
 
-        int playCount = InputView.askTryCount();
+        PlayCount playCount = new PlayCount(InputView.askTryCount());
 
         GameService.start(cars, playCount);
 

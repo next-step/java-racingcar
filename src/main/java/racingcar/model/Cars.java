@@ -3,13 +3,16 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 public class Cars {
     private static final StringBuilder carsStatus = new StringBuilder();
+    static final RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
 
     private final List<Car> cars = new ArrayList<>();
     private int winnerScore;
+
+    public Cars(){
+    }
 
     public Cars(String carList) {
         String[] carNames = carList.split(",");
@@ -17,6 +20,11 @@ public class Cars {
         for (String car : carNames) {
             cars.add(new Car(car));
         }
+    }
+
+    public void add(Car car) {
+        cars.add(car);
+        checkWinnerScore(car);
     }
 
     public List<Car> getCars() {
@@ -28,11 +36,13 @@ public class Cars {
     }
 
     public void play() {
-        RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
         for (Car car : cars) {
             car.isMove(randomMovingStrategy);
             checkWinnerScore(car);
+            carsStatus.append(car.getCarName() + " : " + car.showCarDistance());
+            carsStatus.append("\n");
         }
+        carsStatus.append("\n");
     }
 
     private void checkWinnerScore(Car car) {
@@ -50,16 +60,8 @@ public class Cars {
     }
 
     private void checkWinnerCar(List<Car> winnerCars, Car car) {
-        if(car.getDistance() == winnerScore){
+        if(car.isWinner(winnerScore)){
             winnerCars.add(car);
         }
-    }
-
-    public void appendCarsStatus(){
-        for (Car car : cars) {
-            carsStatus.append(car.getCarName() + " : " + car.showCarDistance());
-            carsStatus.append("\n");
-        }
-        carsStatus.append("\n");
     }
 }
