@@ -57,8 +57,12 @@ public class Car implements Comparable<Car> {
 		return carName.toString() + CAR_TO_STRING_TEXT + moveCount.toString();
 	}
 
+	public String carName() {
+		return carName.toString();
+	}
+
 	public boolean isSamePosition(MoveCount moveCount) {
-		return moveCount.isSame(moveCount);
+		return moveCount.equals(moveCount);
 	}
 
 	@Override
@@ -67,6 +71,23 @@ public class Car implements Comparable<Car> {
 	}
 
 	public boolean isSamePositionCar(Car target) {
-		return this.moveCount.isSame(target.moveCount);
+		return this.moveCount.equals(target.moveCount);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+
+		Car car = (Car)o;
+
+		return carName.equals(car.carName);
+	}
+
+	@Override
+	public int hashCode() {
+		return carName.hashCode();
 	}
 }
