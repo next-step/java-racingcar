@@ -1,3 +1,5 @@
+package view;
+
 public class ResultView {
 
     public void printRaceStart() {
@@ -11,4 +13,5 @@ public class ResultView {
     public void printResultOfTurn(StringBuilder result) {
         System.out.println(result);
     }
+
 }
