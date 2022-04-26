@@ -1,15 +1,12 @@
 package study.step4.controller;
 
 
-import study.step4.domain.Car;
 import study.step4.domain.Cars;
 import study.step4.domain.strategy.RandomMoveStrategy;
 import study.step4.service.GameCount;
 import study.step4.service.RacingGame;
 import study.step4.view.InputView;
 import study.step4.view.ResultView;
-
-import java.util.List;
 
 public class GameController {
     private final InputView inputView;
@@ -27,7 +24,7 @@ public class GameController {
     public void start() {
         RacingGame racingGame = raceGameSetting();
 
-        gameplay(racingGame);
+        gameplay(racingGame, new RandomMoveStrategy());
         winners(racingGame);
     }
 
@@ -46,10 +43,10 @@ public class GameController {
         return new GameCount(inputView.gameCountSetting());
     }
 
-    private void gameplay(RacingGame racingGame) {
+    private void gameplay(RacingGame racingGame, RandomMoveStrategy randomMoveStrategy) {
         resultView.start();
         while (racingGame.isTerminated()) {
-            resultView.printPlay(racingGame.play(new RandomMoveStrategy()));
+            resultView.printPlay(racingGame.play(randomMoveStrategy));
             resultView.plintln();
         }
     }
