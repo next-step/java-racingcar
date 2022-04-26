@@ -10,9 +10,11 @@ public class ResultView {
     private static final String DELIMITER = " :";
 
     public void printPlay(List<CarsPositionModel> cars) {
+        StringBuilder sb = new StringBuilder();
         cars.forEach(car -> {
-            System.out.println(car.getCarName() + DELIMITER + toMarker(car));
+            sb.append(car.getCarName() + DELIMITER + toMarker(car)).append(System.lineSeparator());
         });
+        System.out.println(sb);
     }
 
     public void plintln() {
@@ -25,7 +27,6 @@ public class ResultView {
 
     public void winners(List<String> winners) {
         System.out.println(String.join(COMMA,winners) + "가 최종 우승했습니다");
-
     }
 
     private String toMarker(CarsPositionModel car) {
