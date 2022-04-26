@@ -8,45 +8,33 @@ import racingcar.ui.InputView;
 
 public class CarStadium {
 	private Cars cars;
-	private int rounds;
-	private String[] carNames;
 
-	public CarStadium(InputView input) {
-		this.carNames = input.getCarNames();
-		this.rounds = input.getRounds();
+	public void race() {
+		eachCarMove();
 	}
 
-	public void racingStart() {
-		carComes();
-
-		for (int i = 0; i < this.rounds; i++) {
-			eachCarMove();
-			System.out.println();
-		}
-	}
-
-	public void showWinners() {
+	public String showWinners() {
 		List<Car> winners = Winners.list(cars);
 		String carNames = winners.stream().map(Car::name).collect(Collectors.joining(","));
-		System.out.println("우승자는 " + carNames + " 입니다");
+		return carNames;
 	}
 
-	private void carComes() {
+	public Cars carComes(String[] carNames) {
 		List<Car> carList = new ArrayList<>();
 
-		for (int i = 0; i < this.carNames.length; i++) {
-			Car car = new Car(this.carNames[i]);
+		for (int i = 0; i < carNames.length; i++) {
+			Car car = new Car(carNames[i]);
 			carList.add(car);
 		}
-
 		this.cars = new Cars(carList);
+
+		return this.cars;
 	}
 
 	private void eachCarMove() {
 		for (int i = 0; i < cars.count(); i++) {
 			Car car = cars.get(i);
 			car.move();
-			System.out.println(car.name() + ": " + car.carStatus());
 		}
 	}
 }
