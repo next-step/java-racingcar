@@ -26,10 +26,6 @@ public class MoveCount implements Comparable<MoveCount> {
 		return MOVE_DEFAULT_STRING.repeat(move);
 	}
 
-	public boolean isSame(MoveCount moveCount) {
-		return move == moveCount.move;
-	}
-
 	@Override
 	public int compareTo(MoveCount targetMoveCount) {
 		if (this.move > targetMoveCount.move) {
@@ -38,5 +34,22 @@ public class MoveCount implements Comparable<MoveCount> {
 			return 0;
 		}
 		return -1;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+
+		MoveCount moveCount = (MoveCount)o;
+
+		return move == moveCount.move;
+	}
+
+	@Override
+	public int hashCode() {
+		return move;
 	}
 }

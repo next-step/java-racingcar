@@ -3,6 +3,7 @@ package racingcar.domain;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -25,5 +26,13 @@ class CarNameTest {
 
 		assertThatThrownBy(() -> new CarName(carName))
 			.isInstanceOf(OutOfRangeException.class);
+	}
+
+	@DisplayName("CarName 동등성 비교")
+	@Test
+	public void equalsAndHashCodeOverridingTest() {
+		CarName carName = CarName.of("poby");
+
+		assertThat(carName.equals(CarName.of("poby"))).isTrue();
 	}
 }
