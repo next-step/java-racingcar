@@ -9,7 +9,7 @@ public class Car {
     private int movement = 0;
 
     public Car(String name, int movement) {
-        if(name.length() > MAX_LENGTH) {
+        if (name.length() > MAX_LENGTH) {
             throw new CarNameException("자동차의 이름은 5글자를 넘을 수 없습니다.");
         }
         this.name = name;
@@ -20,11 +20,10 @@ public class Car {
         this(name, 0);
     }
 
-    public int moveOrStop(RacingStrategy racingStrategy) {
+    public void moveOrStop(RacingStrategy racingStrategy) {
         if (racingStrategy.checkCondition()) {
-            movement++;
+            this.movement++;
         }
-        return movement;
     }
 
     public boolean isWinner(int max) {
