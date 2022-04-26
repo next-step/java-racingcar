@@ -15,10 +15,9 @@ public class Cars {
 
     public static Cars createCars(String names) {
         String[] carNames = names.split(",");
-
         List<Car> cars = new ArrayList<>();
         for (int number = 0; number < carNames.length; number++) {
-            cars.add(new Car(new CarName(carNames[number])));
+            cars.add(new Car(carNames[number]));
         }
         return new Cars(cars);
     }

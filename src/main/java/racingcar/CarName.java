@@ -3,7 +3,7 @@ package racingcar;
 import java.util.Objects;
 
 public class CarName {
-    private static final int  MAX_NUMBER_OF_CAR_NAME_CHARACTER = 5;
+    private static final int MAX_NUMBER_OF_CAR_NAME = 5;
     private final String carName;
 
     public CarName(String name) {
@@ -12,8 +12,12 @@ public class CarName {
     }
 
     private void validateCarName(String name) {
-        if (name.length() > MAX_NUMBER_OF_CAR_NAME_CHARACTER) {
+        if (name.length() > MAX_NUMBER_OF_CAR_NAME) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 넘을 수 없습니다.");
+        }
+
+        if(name.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름은 null이 될 수 없습니다.");
         }
     }
 
@@ -30,7 +34,7 @@ public class CarName {
         return Objects.hash(carName);
     }
 
-    public String  getName() {
+    public String getName() {
         return carName;
     }
 }

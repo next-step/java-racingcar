@@ -13,10 +13,10 @@ class CarTest {
     @Test
     @DisplayName("자동차가 움직이면 Position이 1 증가한다")
     void Car() {
-        String carName = "hello";
-        Car car = new Car(new CarName(carName), new Position());
+        CarName carName = new CarName("hello");
+        Car car = new Car(carName, new Position());
         car.play(MOVABLE_NUMBER);
-        assertThat(car).isEqualTo(new Car (new CarName(carName), new Position(1)));
+        assertThat(car).isEqualTo(new Car(carName, new Position(1)));
     }
 
     @ParameterizedTest
