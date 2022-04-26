@@ -13,7 +13,7 @@ public class OutputView {
 
     public void printResult(List<Car> cars) {
         cars.forEach(car -> {
-            System.out.println(car.getName() + " : " + plusMovement(car.getMovement()));
+            System.out.println(car.getName() + " : " + plusMovement(car.getPosition()));
             result.setLength(INITIALIZATION);
         });
         printVacuum();

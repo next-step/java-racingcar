@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private final Car car = new Car("jisu");
+    private Car car = new Car("jisu");
 
     @Test
     @DisplayName("랜덤 전략을 사용한 자동차 전진 테스트")
@@ -21,7 +21,7 @@ class CarTest {
                 return true;
             }
         });
-        assertThat(car.getMovement()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
@@ -33,7 +33,7 @@ class CarTest {
                 return false;
             }
         });
-        assertThat(car.getMovement()).isZero();
+        assertThat(car.getPosition()).isZero();
     }
 
 }
