@@ -41,8 +41,8 @@ public class Cars {
     public List<String> winners() {
         int max = maxPosition();
         return cars.stream()
-                .filter(c -> c.getCarPosition().getPosition() == max)
-                .map(c -> c.getCarName().getCarName())
+                .filter(c -> c.position() == max)
+                .map(c -> c.name())
                 .collect(toList());
     }
 
@@ -50,7 +50,6 @@ public class Cars {
         return cars.stream()
                 .max(Car::compareTo)
                 .orElseThrow()
-                .getCarPosition()
-                .getPosition();
+                .position();
     }
 }

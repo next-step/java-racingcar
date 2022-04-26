@@ -17,17 +17,18 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public CarName getCarName() {
-        return carName;
+    public String name() {
+        return carName.getCarName();
     }
 
-    public CarPosition getCarPosition() {
-        return carPosition;
+    public int position() {
+        return carPosition.getPosition();
     }
-
 
     @Override
     public int compareTo(Car obj) {
         return carPosition.getPosition() - obj.carPosition.getPosition();
     }
+
+
 }
