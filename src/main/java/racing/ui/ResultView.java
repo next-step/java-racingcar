@@ -1,7 +1,8 @@
 package racing.ui;
 
-import racing.domain.Car;
-import racing.domain.Cars;
+import racing.domain.Position;
+import racing.domain.RacingHistories;
+import racing.domain.RoundHistory;
 
 import java.util.List;
 import java.util.Objects;
@@ -25,35 +26,49 @@ public class ResultView {
         return instance;
     }
 
-    private void printMark(Car car) {
-        assert car != null;
+    public void showProgress(RacingHistories racingHistories) {
+        Objects.requireNonNull(racingHistories);
+
         stringBuilder.setLength(BUILDER_LENGTH);
-        stringBuilder.append(car.getName());
+        stringBuilder.append(System.lineSeparator());
+
+        stringBuilder.append(PRINT_RESULT_MESSAGE);
+        stringBuilder.append(System.lineSeparator());
+
+        List<RoundHistory> roundHistories = racingHistories.getRoundHistories();
+        roundHistories.forEach(this::appendRoundHistory);
+
+        System.out.print(stringBuilder);
+    }
+
+    private void appendRoundHistory(RoundHistory roundHistory) {
+        roundHistory.getCarPositions().forEach(this::appendCarPositions);
+        stringBuilder.append(System.lineSeparator());
+    }
+
+    private void appendCarPositions(String name, Position value) {
+        int position = value.getCurrentPosition();
+        stringBuilder.append(name);
         stringBuilder.append(DISPLAY_COLON);
-        String displayPosition = IntStream.range(0, car.getPosition().getCurrentPosition())
+        String displayPosition = getSkidMark(position);
+        stringBuilder.append(displayPosition);
+        stringBuilder.append(System.lineSeparator());
+    }
+
+    private String getSkidMark(int position) {
+        return IntStream.range(0, position)
                 .mapToObj(i -> DISPLAY_MARK)
                 .collect(Collectors.joining());
-        stringBuilder.append(displayPosition);
-        System.out.println(stringBuilder);
     }
 
-    public void printRound(Cars cars) {
-        Objects.requireNonNull(cars);
-        cars.getCars().forEach(this::printMark);
-        System.out.println();
-    }
-
-    public void printWinner(List<String> winner) {
+    public void showWinner(List<String> winner) {
         if (winner == null || winner.isEmpty()) {
             return;
         }
 
         String joinWinners = String.join(WINNER_JOIN_DELIMITER, winner);
-        System.out.printf(WINNER_PRINT_FORMAT, joinWinners);
-    }
-
-    public void startPrint() {
-        System.out.println();
-        System.out.println(PRINT_RESULT_MESSAGE);
+        stringBuilder.setLength(0);
+        stringBuilder.append(String.format(WINNER_PRINT_FORMAT, joinWinners));
+        System.out.print(stringBuilder);
     }
 }

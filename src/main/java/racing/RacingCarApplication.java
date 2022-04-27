@@ -1,6 +1,6 @@
 package racing;
 
-import racing.domain.Cars;
+import racing.domain.RacingHistories;
 import racing.domain.strategies.CarMoveStrategy;
 import racing.domain.strategies.CarMoveStrategyImpl;
 import racing.domain.strategies.CustomRandomImpl;
@@ -17,16 +17,12 @@ public class RacingCarApplication {
         int numMoves = inputView.getNumMoves();
 
         CarMoveStrategy carMoveStrategy = new CarMoveStrategyImpl(new CustomRandomImpl());
-        RacingCarGame racingCarGame = new RacingCarGame(nameOfCars, carMoveStrategy);
+        RacingCarGame racingCarGame = new RacingCarGame();
 
         ResultView resultView = ResultView.getInstance();
-        Cars cars = racingCarGame.getCars();
-        resultView.startPrint();
-        for (int i = 0; i < numMoves; i++) {
-            racingCarGame.run(numMoves);
-            resultView.printRound(cars);
-        }
-        resultView.printWinner(racingCarGame.getWinner());
+        RacingHistories racingHistories = racingCarGame.run(numMoves, nameOfCars, carMoveStrategy);
+        resultView.showProgress(racingHistories);
+        resultView.showWinner(racingHistories.getWinners());
     }
 }
 

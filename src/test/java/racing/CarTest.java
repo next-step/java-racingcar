@@ -36,11 +36,13 @@ class CarTest {
     @DisplayName("자동차A의 위치가 자동차B 보다 앞서면 1, 같으면 0, 뒤쳐지면 -1 반환")
     @ParameterizedTest
     @CsvSource(value = {"carA,true,carB,true,0", "carA,true,carB,false,1", "carA,false,carB,true,-1"}, delimiter = ',')
-    void compareToTest(String nameA, Boolean moveA, String nameB, Boolean moveB, Integer result) {
+    void compareToTest(String nameA, Boolean shouldMoveA, String nameB, Boolean shouldMoveB, Integer result) {
         Car carA = new Car(nameA);
-        carA.run(() -> moveA);
+        carA.run(() -> shouldMoveA);
+
         Car carB = new Car(nameB);
-        carB.run(() -> moveB);
+        carB.run(() -> shouldMoveB);
+
         assertThat(carA.compareTo(carB)).isEqualTo(result);
     }
 
@@ -71,8 +73,10 @@ class CarTest {
     @Test
     void carCompareTest() {
         Car carA = new Car("carA");
-        carA.run(() -> true);
+        carA.run(new CarHaveToMoveStrategyImpl());
+
         Car carB = new Car("carB");
+
         assertThat(carA.compareTo(carB) > 0).isTrue();
     }
 }

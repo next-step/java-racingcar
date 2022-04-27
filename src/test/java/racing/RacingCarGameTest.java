@@ -1,49 +1,47 @@
 package racing;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.strategies.CarMoveStrategy;
-import racing.domain.strategies.CarMoveStrategyImpl;
-import racing.domain.strategies.CustomRandomImpl;
 import racing.service.RacingCarGame;
 
-import java.util.Collections;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class RacingCarGameTest {
 
-    @DisplayName("자동차 이름을 입력하지 않으면 예외를 던진다")
-    @Test
-    void createGameThrowException() {
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> new RacingCarGame(Collections.emptyList(), createMoveStrategy()))
-                .withMessage("자동차 이름은 필수값입니다");
-    }
-
-    private CarMoveStrategy createMoveStrategy() {
-        return new CarMoveStrategyImpl(new CustomRandomImpl());
-    }
-
     @DisplayName("이동횟수를 1 보다 작게 입력하면 예외를 던진다")
     @ParameterizedTest
     @ValueSource(ints = {-1, 0})
-    void runThrowException(int numberOfMoves) {
-        RacingCarGame game = new RacingCarGame(List.of("carA", "carB"), createMoveStrategy());
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> game.run(numberOfMoves))
+    void movesLessThanOne(int numberOfMoves) {
+        RacingCarGame game = new RacingCarGame();
+        List<String> carNames = List.of("carA", "carB");
+        CarHaveToMoveStrategyImpl moveStrategy = new CarHaveToMoveStrategyImpl();
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> game.run(numberOfMoves, carNames, moveStrategy))
                 .withMessageMatching("이동횟수는 \\d 이상이어야 합니다");
     }
 
-    @DisplayName("정상적으로 게임 실행 시 우승 자동차 1대 이상")
+    @DisplayName("경주 자동차 이름이 null 또는 빈 값이면 예외를 던진다")
     @ParameterizedTest
-    @ValueSource(ints= {1, 5})
-    void testGameRun(int numberOfMoves) {
-        List<String> names = List.of("carA", "carB");
-        RacingCarGame racingCarGame = new RacingCarGame(names, createMoveStrategy());
-        List<String> winner = racingCarGame.getWinner();
-        assertThat(winner).hasSizeGreaterThan(0);
+    @NullAndEmptySource
+    void nullOrEmptyCarNames(List<String> carNames) {
+        RacingCarGame game = new RacingCarGame();
+        CarHaveToMoveStrategyImpl moveStrategy = new CarHaveToMoveStrategyImpl();
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> game.run(1, carNames, moveStrategy))
+                .withMessageMatching("자동차 이름은 필수값입니다");
+    }
+
+    @DisplayName("자동차 이동전략이 null 이면 예외를 던진다")
+    @ParameterizedTest
+    @NullSource
+    void nullOrEmptyStrategy(CarMoveStrategy moveStrategy) {
+        RacingCarGame game = new RacingCarGame();
+        List<String> carNames = List.of("carA", "carB");
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> game.run(1, carNames, moveStrategy))
+                .withMessageMatching("이동 전략은 필수값입니다");
     }
 }
