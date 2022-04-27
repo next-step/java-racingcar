@@ -1,7 +1,7 @@
-package RacingCar;
+package racingCar;
 
-import RacingCar.domains.PositiveNumber;
-import RacingCar.views.InputView;
+import racingCar.domains.PositiveNumber;
+import racingCar.views.InputView;
 
 public class RacingCarMain {
     public static void main(String[] args) {
