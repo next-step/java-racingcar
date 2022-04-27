@@ -1,44 +1,51 @@
 package racingcar.domain;
 
 import racingcar.util.generator.NumberGenerator;
+import racingcar.util.generator.RandomNumberGenerator;
+import racingcar.util.strategy.move.CarMoveStrategy;
 import racingcar.util.strategy.move.MoveStrategy;
 
 public class Car {
-	public static final String MOVING_UNIT = "-";
 	private NumberGenerator numberGenerator;
 	private MoveStrategy moveStrategy;
-	private int valueToMovable;
-	private String status = "";
+	private Name name;
+	private Position position;
 
-	public Car(MoveStrategy moveStrategy) {
-		this.moveStrategy = moveStrategy;
+	public Car(String name) {
+		this(new RandomNumberGenerator(), new CarMoveStrategy());
+		this.name = new Name(name);
+		this.position = new Position("");
+	}
+
+	public Car(String name, String position) {
+		this(new RandomNumberGenerator(), new CarMoveStrategy());
+		this.name = new Name(name);
+		this.position = new Position(position);
 	}
 
 	public Car(NumberGenerator numberGenerator, MoveStrategy moveStrategy) {
 		this.numberGenerator = numberGenerator;
 		this.moveStrategy = moveStrategy;
+		this.name = new Name("car");
+		this.position = new Position("");
 	}
 
 	public void move() {
-		this.valueToMovable = generateValueToMove();
-
-		if (isMovable(valueToMovable)) {
-			status += MOVING_UNIT;
+		if (isMovable(generateValueToMove())) {
+			position.forward();
 		}
-
-		status += "";
 	}
 
 	public boolean isMovable(int number) {
 		return moveStrategy.isMovable(number);
 	}
 
-	public String carStatus() {
-		return status;
+	public String name() {
+		return this.name.showName();
 	}
 
-	public int getValueToMove() {
-		return valueToMovable;
+	public String carStatus() {
+		return position.show();
 	}
 
 	private int generateValueToMove() {

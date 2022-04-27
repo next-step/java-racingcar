@@ -2,37 +2,39 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import racingcar.ui.InputView;
-import racingcar.util.generator.RandomNumberGenerator;
-import racingcar.util.strategy.move.CarMoveStrategy;
 
 public class CarStadium {
 	private Cars cars;
-	private int rounds;
-	private int numberOfCars;
 
-	public CarStadium(InputView input) {
-		this.numberOfCars = input.getNumberOfCars();
-		this.rounds = input.getRounds();
+	public void race() {
+		eachCarMove();
 	}
 
-	public int getRounds() {
-		return rounds;
+	public String showWinners() {
+		List<Car> winners = Winners.list(cars);
+		String carNames = winners.stream().map(Car::name).collect(Collectors.joining(","));
+		return carNames;
 	}
 
-	public Cars getCars() {
-		return cars;
-	}
-
-	public void carComes() {
+	public Cars carComes(String[] carNames) {
 		List<Car> carList = new ArrayList<>();
 
-		for (int i = 0; i < this.numberOfCars; i++) {
-			Car car = new Car(new RandomNumberGenerator(), new CarMoveStrategy());
+		for (int i = 0; i < carNames.length; i++) {
+			Car car = new Car(carNames[i]);
 			carList.add(car);
 		}
-
 		this.cars = new Cars(carList);
+
+		return this.cars;
+	}
+
+	private void eachCarMove() {
+		for (int i = 0; i < cars.count(); i++) {
+			Car car = cars.get(i);
+			car.move();
+		}
 	}
 }

@@ -1,6 +1,5 @@
 package racingcar.ui;
 
-import racingcar.domain.Car;
 import racingcar.domain.CarStadium;
 import racingcar.domain.Cars;
 
@@ -12,25 +11,35 @@ public class ResultView {
 	}
 
 	public void showResult() {
-		CarStadium carStadium = new CarStadium(inputView);
-		carStadium.carComes();
+		CarStadium carStadium = new CarStadium();
 
-		int rounds = carStadium.getRounds();
-		Cars cars = carStadium.getCars();
+		executionResult();
+		raceStart(carStadium);
+		showWinners(carStadium);
+	}
 
+	private void executionResult() {
 		System.out.println();
 		System.out.println("실행 결과");
-		for (int i = 0; i < rounds; i++) {
-			resultMoveCar(cars);
+	}
+
+	private void raceStart(CarStadium carStadium) {
+		Cars cars = carStadium.carComes(inputView.getCarNames());
+		for (int i = 0; i < inputView.getRounds(); i++) {
+			carStadium.race();
+			showMove(cars);
 			System.out.println();
 		}
 	}
 
-	private void resultMoveCar(Cars cars) {
+	private void showMove(Cars cars) {
 		for (int i = 0; i < cars.count(); i++) {
-			Car car = cars.get(i);
-			car.move();
-			System.out.println(car.carStatus());
+			System.out.println(cars.get(i).name() + ": " + cars.get(i).carStatus());
 		}
+	}
+
+	private void showWinners(CarStadium carStadium) {
+		String winners = carStadium.showWinners();
+		System.out.println("우승자는 " + winners + " 입니다");
 	}
 }
