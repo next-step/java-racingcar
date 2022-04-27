@@ -10,7 +10,7 @@ public class PositiveNumberTest {
 
     @DisplayName("생성자 매개변수에 음수를 받을 경우 IllegalArgumentException 발생")
     @Test
-    void negativeParmeterThrowException() {
+    void negativeParameterThrowException() {
         assertThatThrownBy(() -> {
             new PositiveNumber(-1);
         }).isInstanceOf(IllegalArgumentException.class);
