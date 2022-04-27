@@ -19,7 +19,7 @@ public class RaceTest {
     void CarShouldMove() {
         Car car = new Car("test");
         car.move();
-        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(car).isEqualTo(new Car("test", 2));
     }
 
     @Test
@@ -27,7 +27,7 @@ public class RaceTest {
         Race race = new Race(new RandomStrategy());
         String[] carNames = {"pobi", "crong", "honux"};
         race.createCars(carNames);
-        List<Car> cars = race.cars;
+        Cars cars = race.cars;
         cars.get(0).move();
         List<String> expected = new ArrayList<String>() {{
             add("pobi");
@@ -44,9 +44,9 @@ public class RaceTest {
         Race race = new Race(new RandomStrategy());
         RolledResult movedResult = race.roll(car);
         if (movedResult.isMoved) {
-            assertThat(movedResult.car.getPosition()).isEqualTo(2);
+            assertThat(movedResult.car).isEqualTo(new Car("test",2));
         } else {
-            assertThat(movedResult.car.getPosition()).isEqualTo(1);
+            assertThat(movedResult.car).isEqualTo(new Car("test",1));
         }
     }
 
@@ -57,7 +57,7 @@ public class RaceTest {
         race.createCars(carNames);
         race.rollCars();
         for (Car car : race.cars) {
-            assertThat(car.getPosition()).isEqualTo(2);
+            assertThat(car).isEqualTo(new Car(car.name,2));
         }
     }
 }

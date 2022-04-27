@@ -76,3 +76,19 @@ gony	: ----
 
 - [ ] car.track -> car.position
 - [ ] Fix printResult to generate '-' stemming from position
+
+## Step5
+### Todo
+- [x] Add Position class
+- [x] Add Car(name, at) constructor
+- [x] Remove getPosition
+- [x] Refactor with Cars first class collection
+
+### Requested changes
+
+- [x] move exception handler from Car(name) to Car(name, at)
+- [x] move collectWinner from Car to Cars
+- [x] fix: remove extending ArrayList, implement iterator
+- [x] fix: implement add, get at Cars
+- [x] fix: remove cars argument, use this.cars
+- [x] fix: remove createTrack at Position, Car but implement at ResultView 
