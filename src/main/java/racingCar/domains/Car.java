@@ -1,17 +1,22 @@
 package racingCar.domains;
 
-import java.util.Random;
+import racingCar.interfaces.NumberGeneratorStrategy;
 
 public class Car {
     private int position;
+    private NumberGeneratorStrategy strategy;
 
     public Car() {
+        this(new RandomNumberGenerator());
+    }
+
+    public Car(NumberGeneratorStrategy strategy) {
         this.position = 0;
+        this.strategy = strategy;
     }
 
     public void move() {
-        Random random = new Random();
-        if (random.nextInt(10) >= 4) {
+        if (strategy.generate() >= 4) {
             position++;
         }
     }
